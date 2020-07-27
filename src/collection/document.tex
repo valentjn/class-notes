@@ -1,9 +1,6 @@
 \hypersetup{pdftitle={Gesammelte Vorlesungsnotizen}}
 
-% use a section for table of contents (otherwise there is a page break before it)
-\setuptoc{toc}{leveldown}
-
-\automark[section]{chapter}
+\automark[chapter]{part}
 \ihead{\leftmark}
 \ifoot{\vspace{-1.5mm}\rightmark}
 
@@ -30,17 +27,29 @@ Fehler können unter \url{https://github.com/valentjn/class-notes} gemeldet werd
 Die \LaTeX{}-Umsetzung der Notizen steht unter der CC-BY-SA-4.0-Lizenz
 (\url{https://creativecommons.org/licenses/by-sa/4.0/}).
 
-%\setcounter{tocdepth}{3}
-%\shorttableofcontents{Kurzes Inhaltsverzeichnis}{0}
-\setcounter{tocdepth}{0}
+% only include parts in list of parts
+\setcounter{tocdepth}{\parttocdepth}
+
+% list of parts
 \renewcommand*{\contentsname}{Vorlesungen}
 \tableofcontents
+
 \pagebreak
 
-\setcounter{tocdepth}{3}
+% use a chapter heading for main table of contents
+\unsettoc{toc}{leveldown}
+
+% include everything up to subsubsections in main table of contents
+% (and part-wise tables of contents)
+\setcounter{tocdepth}{\subsubsectiontocdepth}
+
+% main table of contents
 \renewcommand*{\contentsname}{Inhaltsverzeichnis}
 \tableofcontents
+
 \pagebreak
 
-\renewcommand*{\contentsname}{Inhaltsverzeichnis}
+% use a section for table of contents (otherwise there is a page break before it)
+\setuptoc{toc}{leveldown}
+
 \input{collectionInclude}

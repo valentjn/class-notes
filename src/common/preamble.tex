@@ -1,11 +1,14 @@
 \RequirePackage{luatex85}
-\input{documentclass}
 \documentclass[
   % font size
   12pt,
+  % format \chapter like \section, \section like \subsection, and \subsection like \subsubsection
+  headings=small,
   % spacing between paragraphs
   parskip=half-,
-]{\documentClassName}
+  % no numbers after section numbers despite roman numerals
+  numbers=noendperiod,
+]{scrreprt}
 
 \def\standalonedoc{false}
 \setparsizes{0em}{0.45\baselineskip plus .45\baselineskip}{0em plus 1fil}
@@ -24,7 +27,7 @@
 
 % use GoMono as typewriter font
 \usepackage[
-  % otherwise, bold is not available ("undefined font shape" warnings)
+  % otherwise bold is not available ("undefined font shape" warnings)
   type1,
   % scale to match main font size
   scale=0.88,
@@ -209,9 +212,6 @@
 % graue Farbe für Header
 \definecolor{mygray}{gray}{0.5}
 
-% Bitstream Charter für Überschriften
-\setkomafont{disposition}{\boldmath\fontfamily{bch}\selectfont\bfseries}
-
 % scrpage2 page style
 \setkomafont{pageheadfoot}{\boldmath\fontfamily{bch}\selectfont\color{mygray}\bfseries}
 \setkomafont{pagenumber}{\usekomafont{pagehead}}
@@ -223,6 +223,39 @@
 \pagestyle{scrheadings}
 \clearscrheadings
 \ofoot{\vspace{-1.5mm}-- \pagemark \;--}
+
+% use a section for table of contents (otherwise there is a page break before it)
+\setuptoc{toc}{leveldown}
+
+% make indent and width of numbering dynamic in table of contents
+\RedeclareSectionCommands[tocdynnumwidth=true]{part,chapter,section,subsection}
+\RedeclareSectionCommands[tocdynindent=true]{section,subsection}
+
+% increase spacing for four-digit page numbers in table of contents
+\RedeclareSectionCommands[tocpagenumberwidth=2em]{part,chapter,section,subsection}
+
+% don't change page style on part and chapter pages
+\renewcommand*{\partpagestyle}{scrheadings}
+\renewcommand*{\chapterpagestyle}{scrheadings}
+
+% use Charter for headings, use bold math
+\setkomafont{disposition}{\boldmath\fontfamily{bch}\selectfont\bfseries}
+
+% format \chapter like \section, \section like \subsection, and \subsection like \subsubsection
+% (most values taken over from the KOMA-Script manual)
+\RedeclareSectionCommand[
+  beforeskip=-1ex plus -1ex minus -0.2ex,
+  afterskip=2.3ex plus 0.2ex,
+  afterindent=false,
+]{chapter}
+\RedeclareSectionCommand[
+  beforeskip=-3.25ex plus -1ex minus -0.2ex,
+  afterskip=1.5ex plus 0.2ex,
+]{section}
+\RedeclareSectionCommand[
+  beforeskip=-3.25ex plus -1ex minus -0.2ex,
+  afterskip=1.5ex plus 0.2ex,
+]{subsection}
 
 \makeatletter
 %\@addtoreset{chapter}{part}

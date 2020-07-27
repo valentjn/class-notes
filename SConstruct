@@ -37,7 +37,7 @@ class Helper(object):
       collectionIncludeTex += f"""
 {{%
   \subimport{{{dirPath}}}{{metadata}}%
-  \input{{chapter}}%
+  \input{{part}}%
   \subimport{{{dirPath}}}{{include}}%
 }}
 """
@@ -102,8 +102,6 @@ for dirName in dirNames:
   env.InstallAs(target=f"build/{dirPath}/{dirName}.tex", source="build/common/preamble.tex")
 
   if dirType == "lectures":
-    dependencies.extend(env.Install(target=f"build/{dirPath}",
-        source=f"build/{dirType}/documentClass.tex"))
     dependencies.extend(env.Install(target=f"build/{dirPath}",
         source=f"build/{dirType}/document.tex"))
   else:
