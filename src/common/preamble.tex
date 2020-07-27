@@ -246,12 +246,25 @@
 % use Charter for headings, use bold math
 \setkomafont{disposition}{\boldmath\fontfamily{bch}\selectfont\bfseries}
 
-% format \chapter like \section, \section like \subsection, and \subsection like \subsubsection
-% (most values taken over from the KOMA-Script manual)
+% remove "part" prefix in headings
+\renewcommand*{\partformat}{\thepart\autodot\quad}
+
+% format \part like \chapter, \chapter like \section, \section like \subsection, and
+% \subsection like \subsubsection (values are taken over from KOMA-Script defaults)
+\renewcommand*{\partheadstartvskip}{}
+\renewcommand*{\partheadmidvskip}{}
+\renewcommand*{\partheadendvskip}{}
+\renewcommand*{\partheademptypage}{}
+\renewcommand*{\raggedpart}{\raggedright}
 \RedeclareSectionCommand[
-  beforeskip=-1ex plus -1ex minus -0.2ex,
+  beforeskip=\dimexpr-2.8\baselineskip-\parskip\relax,
+  afterskip=1.35\baselineskip plus 0.09\baselineskip minus 0.15\baselineskip,
+  innerskip=0.5\baselineskip,
+]{part}
+\renewcommand*{\chapterheadstartvskip}{}
+\RedeclareSectionCommand[
+  beforeskip=-3.5ex plus -1ex minus -0.2ex,
   afterskip=2.3ex plus 0.2ex,
-  afterindent=false,
 ]{chapter}
 \RedeclareSectionCommand[
   beforeskip=-3.25ex plus -1ex minus -0.2ex,
