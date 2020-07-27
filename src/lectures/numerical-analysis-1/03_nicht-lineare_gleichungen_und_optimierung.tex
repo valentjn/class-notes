@@ -1,12 +1,12 @@
-\section{%
+\chapter{%
     Nicht-lineare Gleichungen und Optimierung%
 }
 
-\subsection{%
+\section{%
     Nullstellen von Funktionen%
 }
 
-\subsubsection{%
+\subsection{%
     Bisektionsverfahren%
 }
 
@@ -42,7 +42,7 @@ Im Falle des Bisektionsverfahrens ist $p = 1$ und $c = \frac{1}{2}$,
 die Bisektion ist also recht langsam
 (ungefähr drei Schritte für eine Dezimalstelle).
 
-\subsubsection{%
+\subsection{%
     Sekanten-Verfahren%
 }
 
@@ -74,7 +74,7 @@ ist das Sekanten-Verfah\-ren etwas ef"|fizienter als die Newton-Iteration
 
 \pagebreak
 
-\subsubsection{%
+\subsection{%
     Inverse Interpolation%
 }
 
@@ -132,7 +132,7 @@ verläuft wie folgt:
 
 \pagebreak
 
-\subsubsection{%
+\subsection{%
     \name{Newton}-Verfahren%
 }
 
@@ -175,7 +175,7 @@ teilweise merkwürdig aussehende Fraktale (\textbf{\name{Newton}-Fraktale}).
 Ein solches ergibt sich bspw. für die Gleichung
 $z^3 - 1 = 0$, $z \in \complex$.
 
-\subsubsection{%
+\subsection{%
     \name{Müller}s Verfahren%
 }
 
@@ -208,7 +208,7 @@ In der Praxis treten jedoch solche und andere Ausnahmefälle
 
 Für glatte Funktionen konvergiert Müllers Verfahren lokal fast mit Ordnung $2$.
 
-\subsubsection{%
+\subsection{%
     Schranken für Nullstellen von Polynonmen%
 }
 
@@ -218,7 +218,7 @@ $p(x) = a_n x^n + \dotsb + a_1 x + a_0$ können abgeschätzt werden:
     |x| \le \max\left\{1, \sum_{i=0}^{n-1} \frac{|a_i|}{|a_n|}\right\}.
 \end{align*}
 
-\subsubsection{%
+\subsection{%
     \name{Sturm}sche Kette%
 }
 
@@ -291,7 +291,7 @@ $p_n, \dotsc, p_0$ bildet eine Sturmsche Kette.
 Mithilfe Sturmscher Ketten können somit die Eigenwerte beliebiger
 symmetrischer tridiagonaler Matrizen bestimmt werden.
 
-\subsubsection{%
+\subsection{%
     Nullstellenbestimmung mit \matlab{}%
 }
 
@@ -316,11 +316,11 @@ Hier werden alle Nullstellen (reell wie komplex) bestimmt.
 
 \pagebreak
 
-\subsection{%
+\section{%
     Nicht-lineare Systeme%
 }
 
-\subsubsection{%
+\subsection{%
     Nicht-lineares Gleichungssystem%
 }
 
@@ -346,7 +346,7 @@ nicht-linearen Ausgleichsproblem.
 Für $m < n$ ist das System i.\,A. unterbestimmt,
 d.\,h. Unbekannte $x_j$ können frei gewählt werden.
 
-\subsubsection{%
+\subsection{%
     \name{Banach}scher Fixpunktsatz%
 }
 
@@ -429,7 +429,7 @@ Es gilt $c < 1$, falls $\varepsilon < \frac{1}{\norm{A^{-1}} c_f}$ gilt.
 Für ein hinreichend kleines $\varepsilon > 0$ sind beide Bedingungen
 erfüllt und der Fixpunktsatz von Banach lässt sich anwenden.
 
-\subsubsection{%
+\subsection{%
     Multivariates \name{Newton}-Verfahren%
 }
 
@@ -450,7 +450,7 @@ quadratisch, d.\,h.
     x \approx x_\ast.
 \end{align*}
 
-\subsubsection{%
+\subsection{%
     \name{Kantorovich}-Kriterium%
 }
 
@@ -469,7 +469,7 @@ konvergiert gegen $x_\ast$.
 
 \pagebreak
 
-\subsubsection{%
+\subsection{%
     Fortsetzungsmethode%
 }
 
@@ -490,7 +490,7 @@ Parameterfolge $t_0 < t_1 < \dotsb$ zu lösen.
 Die Lösungen $x(t_k)$ dienen dabei jeweils als Startwerte zur Berechnung
 von $x(t_{k+1})$.
 
-\subsubsection{%
+\subsection{%
     Gedämpftes \name{Newton}-Verfahren%
 }
 
@@ -538,7 +538,7 @@ beeinträchtigt.
 
 \pagebreak
 
-\subsubsection{%
+\subsection{%
     \name{Gauß}-\name{Newton}-Verfahren%
 }
 
@@ -559,11 +559,11 @@ $m \times n$-Matrix $f'(x)$ gelöst.
 
 \pagebreak
 
-\subsection{%
+\section{%
     Minimierung ohne Nebenbedingungen%
 }
 
-\subsubsection{%
+\subsection{%
     Goldene Suche%
 }
 
@@ -598,7 +598,7 @@ dem Vergleich zwischen $f(x)$ und $f(b)$ erreicht. \\
 Für beliebige Startpunkte $a \le b \le c$ ist die Intervalllänge nach
 $n$ Schritten $\le r^{n-1} (c - a)$.
 
-\subsubsection{%
+\subsection{%
     Quadratische Suche%
 }
 
@@ -622,7 +622,7 @@ nahe bei $x_\ast$, sodass die Methode immer durchführbar ist.
 
 \pagebreak
 
-\subsubsection{%
+\subsection{%
     Steilster Abstieg%
 }
 
@@ -702,7 +702,7 @@ Für
 verringert sich zum Beispiel in jedem Iterationsschritt der Abstand zum Minimum
 im Ursprung nur um weniger als $1$ Prozent.
 
-\subsubsection{%
+\subsection{%
     \name{Kantorovich}-Ungleichung%
 }
 
@@ -722,7 +722,7 @@ $\kappa := \lambda_{\max} / \lambda_{\min}$ den Quotienten der extremalen
 Eigenwerte von $A$ und $\norm{z}_A := \sqrt{z^t A z}$ die von $A$ induzierte
 Norm.
 
-\subsubsection{%
+\subsection{%
     \emph{Einschub}: Konjugierte Gradienten (cg-Verfahren)%
 }
 
@@ -769,7 +769,7 @@ mit nur einer Matrix-Multiplikation ($Au_\ell$) auszukommen.
 
 \pagebreak
 
-\subsubsection{%
+\subsection{%
     Konjugierte Gradienten von \name{Fletcher} und \name{Reeves}%
 }
 
@@ -835,7 +835,7 @@ Variante von Fletcher und Reeves.
 
 \pagebreak
 
-\subsubsection{%
+\subsection{%
     Minimierung mit \matlab{}%
 }
 

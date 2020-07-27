@@ -1,12 +1,12 @@
-\section{%
+\chapter{%
     Approximation%
 }
 
-\subsection{%
+\section{%
     Interpolation mit Polynomen%
 }
 
-\subsubsection{%
+\subsection{%
     \name{Lagrange}-Form und 4-Punkt-Formel%
 }
 
@@ -62,7 +62,7 @@ Daraus folgt für die zweite Ableitung durch Taylorentwicklung
     \approx \frac{f(x + h) - 2f(x) + f(x - h)}{h^2}.
 \end{align*}
 
-\subsubsection{%
+\subsection{%
     Schema von \name{Aitken}-\name{Neville}%
 }
 
@@ -105,7 +105,7 @@ die Koef"|fizienten der Polynome der vorherigen Spalte.
 Die neuen Koef"|fizienten können dann mithilfe der Definition von $p_i^j$
 berechnet werden.
 
-\subsubsection{%
+\subsection{%
     Polynome in \name{Newton}-Form, \name{Horner}-Schema%
 }
 
@@ -143,7 +143,7 @@ $a_n$ ist der höchste Koef"|fizient von $p(x)$, dann subtrahiert man
 den letzten Summanden $q(x) = p(x) - a_n (x - x_0) \dotsm (x - x_{n-1})$.
 $a_{n-1}$ ist wiederum der höchste Koef"|fizient dieses Restterms $q(x)$ usw.
 
-\subsubsection{%
+\subsection{%
     \name{Hermite}-Interpolation%
 }
 
@@ -175,7 +175,7 @@ $f(1), f(2), f'(2), f''(2), f(4), f'(4)$.
 
 \pagebreak
 
-\subsubsection{%
+\subsection{%
     Dividierte Dif"|ferenzen%
 }
 
@@ -224,7 +224,7 @@ Dabei schreibt man in die $j$-te Spalte $\frac{1}{j!} f^{(j)}(x_k)$
 Ansonsten, falls es zwei verschiedene Stellen in $\Delta_i^j$ gibt, kann man
 den Eintrag mittels der Definition der Dividierten Dif"|ferenz berechnen.
 
-\subsubsection{%
+\subsection{%
     Integraldarstellung Dividierter Dif"|ferenzen%
 }
 
@@ -257,7 +257,7 @@ $i = 1, \dotsc, n$ ausdrücken:
     \vol S = \frac{1}{n!} \cdot |\det(p_1 - p_0, \dotsc, p_n - p_0)|.
 \end{align*}
 
-\subsubsection{%
+\subsection{%
     \name{Newton}-Form und Dividerte Dif"|ferenzen%
 }
 
@@ -279,7 +279,7 @@ Das Schema zur Berechnung des neuen höchsten Koef"|fizienten als
 Dividerte Dif"|ferenz wird um eine neue Diagonale ergänzt. \\
 Außerdem können Ableitungen mit der Newton-Form einfach interpoliert werden.
 
-\subsubsection{%
+\subsection{%
     Fehler bei der Interpolation glatter Funktionen%
 }
 
@@ -322,7 +322,7 @@ Sie sind daher am Rand dichter verteilt wie in der Mitte.
 Verwendet man die Tschebyscheff-Knoten als Stützstellen bei der Interpolation,
 so verringert sich der Fehler an den Rändern deutlich.
 
-\subsubsection{%
+\subsection{%
     Polynominterpolation mit \matlab{}%
 }
 
@@ -334,11 +334,11 @@ Polynom, das die Fehlerquadratsumme minimiert, bestimmt.
 Mit \code{p = polyval(a, x);} kann das Polynom in den Punkten $x_k$ ausgewertet
 werden (d.\,h. $p_k = p(x_k)$).
 
-\subsection{%
+\section{%
     Orthogonale Polynome%
 }
 
-\subsubsection{%
+\subsection{%
     Allgemeines%
 }
 
@@ -419,7 +419,7 @@ und erhält die Koef"|fizienten durch Lösen des LGS mit der sog.
 
 \pagebreak
 
-\subsubsection{%
+\subsection{%
     Dreigliedrige Rekursion für orthogonale Polynome%
 }
 
@@ -450,7 +450,7 @@ allgemeinem Normierungsfaktor $\alpha_n$ gilt die Rekursion
 wobei die Formeln für $\beta'_n, \gamma'_n$ aus denen von $\beta_n, \gamma_n$
 entstehen, wenn man $q_n$ durch $p_n$ ersetzt.
 
-\subsubsection{%
+\subsection{%
     Nullstellen orthogonaler Polynome%
 }
 
@@ -458,7 +458,7 @@ Das orthogonale Polynom $p_n$ vom Grad $n$ zu einer Gewichtsfunktion $w$
 auf $(a, b)$ hat $n$ einfache Nullstellen in $(a, b)$.
 (Diese liegen zwischen denen von $p_{n+1}$.)
 
-\subsubsection{%
+\subsection{%
     \name{Legendre}-Polynome%
 }
 
@@ -480,7 +480,7 @@ mit $\xi(x) = x$ und erfüllen die dreigliedrige Rekursion
 
 \pagebreak
 
-\subsubsection{%
+\subsection{%
     \name{Tschebyscheff}-Polynome%
 }
 
@@ -530,7 +530,7 @@ Damit kann die schnelle Fourier-Transformation zur näherungsweisen Berechnung
 der \\
 Entwicklungs-Koef"|fizienten herangezogen werden.
 
-\subsubsection{%
+\subsection{%
     Minimalität der \name{Tschebyscheff}-Polynome%
 }
 
@@ -548,13 +548,13 @@ auf dem Intervall $[-1,1]$ für die Nullstellen $\xi_k$ von $p_n$ minimal.
 
 \pagebreak
 
-\subsection{%
+\section{%
     Diskrete \name{Fourier}-Transformation%
 }
 
 \setcounter{subsubsection}{-1}
 
-\subsubsection{%
+\subsection{%
     \emph{Einschub}: \name{Fourier}-Reihen%
 }
 
@@ -598,7 +598,7 @@ aus links- und rechtsseitigem Grenzwert. \\
 Daher schreibt man oft $f(x) \sim \sum \dotsb$ statt
 $f(x) = \sum \dotsb$.
 
-\subsubsection{%
+\subsection{%
     Komplexe Einheitswurzeln%
 }
 
@@ -613,7 +613,7 @@ $w_n^{k + nm} = w_n^k$ für $m \in \integer$.
 Die Einheitswurzeln $w_n^k$ bilden ein dem Einheitskreis einbeschriebenes
 regelmäßiges $n$-Eck.
 
-\subsubsection{%
+\subsection{%
     \name{Fourier}-Matrix%
 }
 
@@ -631,7 +631,7 @@ erhält man die \textbf{\name{Fourier}-Matrix}
 Dabei ist $W_n/\sqrt{n}$ unitär, d.\,h. $W_n^\ast W_n/n$ ist die
 Einheitsmatrix.
 
-\subsubsection{%
+\subsection{%
     Diskrete \name{Fourier}-Transformation%
 }
 
@@ -673,7 +673,7 @@ interpretiert werden:
 \end{align*}
 Diese Approximation ist für glatte Funktionen und $n \gg |k|$ sehr genau.
 
-\subsubsection{%
+\subsection{%
     Schnelle \name{Fourier}-Transformation%
 }
 
@@ -732,7 +732,7 @@ Produktpolynoms $r$. \\
 Insgesamt werden $\O(n \log n)$ Operationen benötigt, während die
 direkte Berechnung der Koef"|fizienten $\O(n^2)$ Operationen erfordert.
 
-\subsubsection{%
+\subsection{%
     Trigonometrische Interpolation%
 }
 
@@ -772,7 +772,7 @@ Genauigkeitsverlust.
 
 \pagebreak
 
-\subsubsection{%
+\subsection{%
     \name{Fourier}-Transformation zyklischer Gleichungssysteme%
 }
 
@@ -836,11 +836,11 @@ wieder zyklisch.
 
 \pagebreak
 
-\subsection{%
+\section{%
     Splines%
 }
 
-\subsubsection{%
+\subsection{%
     Kubische \name{Hermite}-Interpolation%
 }
 
@@ -865,7 +865,7 @@ dif"|ferenzierbaren \textbf{kubischen \name{Hermite}-Spline} $q$.
 Nach Konstruktion ist $q$ dabei eindeutig durch die Daten $f(x_j), f'(x_j)$,
 $j = 0, \dotsc, n$ bestimmt.
 
-\subsubsection{%
+\subsection{%
     Kubische Splines%
 }
 
@@ -895,7 +895,7 @@ zwischen $f_{k-1}, f_k, f_{k+1}$ und $d_{k-1}^+, d_k, d_{k+1}^-$:
 \end{align*}
 mit $\Delta_k := x_k - x_{k-1}$.
 
-\subsubsection{%
+\subsection{%
     Natürliche Spline-Interpolation%
 }
 
@@ -948,7 +948,7 @@ Stützstellen interpoliert werden.
 Nicht-äquidistante Stützstellen sind bspw. sinnvoll, falls die Daten Bereiche
 aufweisen, in denen sie unterschiedlich schnell schwanken.
 
-\subsubsection{%
+\subsection{%
     Splineinterpolation mit \matlab{}%
 }
 
@@ -985,11 +985,11 @@ ausgewertet.
 
 \pagebreak
 
-\subsection{%
+\section{%
     B-Splines%
 }
 
-\subsubsection{%
+\subsection{%
     Knotenfolge
 }
 
@@ -1005,7 +1005,7 @@ maximale Anzahl der Wiederholungen von $\tau_k$ in der Folge bzw.
 Vektor $\tau$.
 Man spricht dann von einfachen oder doppelten Knoten usw.
 
-\subsubsection{%
+\subsection{%
     Rekursion für B-Splines%
 }
 
@@ -1032,7 +1032,7 @@ außerhalb von $\left[\tau_k, \tau_{k+n+1}\right)$.
 Auf jeden nicht-leeren Knotenintervall $\left[\tau_i, \tau_{i+1}\right)$, \\
 $k \le i \le k + n$ ist er ein nicht-negatives Polynom vom Grad $n$.
 
-\subsubsection{%
+\subsection{%
     Stetige Abhängigkeit vom Knotenvektor%
 }
 
@@ -1059,7 +1059,7 @@ Intervall nur endlich viele B-Splines nicht null sind.
 
 \pagebreak
 
-\subsubsection{%
+\subsection{%
     Ableitung von B-Splines%
 }
 
@@ -1078,7 +1078,7 @@ $\tau_k, \dotsc, \tau_{k+n+1}$ Vielfachheit $m \le n$ hat.
 Insbesondere ist $b_k^n$ stetig auf $\real$, wenn keiner seiner Knoten
 Vielfachheit $n + 1$ hat.
 
-\subsubsection{%
+\subsection{%
     Uniforme B-Splines%
 }
 
@@ -1118,7 +1118,7 @@ $\xi\colon \dotsc, -h, 0, h, \dotsc$
 sind skalierte Translate von $b^n$, d.\,h. $b_k^n(x) = b^n(x/h - k)$,
 $k \in \integer$.
 
-\subsubsection{%
+\subsection{%
     \name{Marsden}-Identität%
 }
 
@@ -1140,7 +1140,7 @@ Beispielsweise ist
 mit $\tau_k^n := (\tau_{k+1} + \dotsb + \tau_{k+n}) / n$ den sogenannten
 Knotenmitteln.
 
-\subsubsection{%
+\subsection{%
     Splines%
 }
 
@@ -1165,7 +1165,7 @@ Die entsprechenden Indizes werden mit $k \sim D$ bezeichnet:
 Insbesondere sind $k = \ell - n, \dotsc, \ell$ die relevanten Indizes für ein
 nicht-leeres Knotenintervall $D = [\tau_\ell, \tau_{\ell+1})$.
 
-\subsubsection{%
+\subsection{%
     Auswertung von Splines (\name{de-Boor}-Algorithmus)%
 }
 
@@ -1203,7 +1203,7 @@ nur $n - r$ Schritte der Rekurstion werden benötigt.
 
 \pagebreak
 
-\subsubsection{%
+\subsection{%
     Ableitung von Splines%
 }
 
@@ -1242,7 +1242,7 @@ relevant.
 Dies ist konsistent zur Dif"|ferenzbildung bei den Koef"|fizienten, die den
 Bereich der Indizes um Eins reduziert.
 
-\subsubsection{%
+\subsection{%
     \name{Schoenberg}-Schema%
 }
 
@@ -1272,7 +1272,7 @@ für $m \le 2$, falls beide Ableitungen existieren.
 Für eine äquidistante Knotenfolge bleibt das Vorzeichen aller Ableitungen
 bis zur Ordnung $n$ erhalten.
 
-\subsubsection{%
+\subsection{%
     Quasi-Interpolant%
 }
 
@@ -1299,7 +1299,7 @@ $\psi_k(s) := (\xi_{k+1} - s) \dotsm (\xi_{k+n} - s)$.
 Diese Identität für Polynome vom Grad $\le n$ kann man durch
 Koef"|fizientenvergleich oder durch Auswertung an $n + 1$ Punkten prüfen.
 
-\subsubsection{%
+\subsection{%
     Fehler der Quasi-Interpolation%
 }
 
@@ -1328,7 +1328,7 @@ beschränkt, so lässt sich ebenfalls der Fehler der Ableitungen abschätzen:
 \end{align*}
 für alle $j \le n$, für die die Ableitungen existieren.
 
-\subsubsection{%
+\subsection{%
     Lösbarkeit von Interpolationsproblemen mit B-Splines%
 }
 
