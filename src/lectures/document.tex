@@ -28,7 +28,14 @@ Fehler können unter \url{https://github.com/valentjn/class-notes} gemeldet werd
 Die \LaTeX{}-Umsetzung der Notizen steht unter der CC-BY-SA-4.0-Lizenz
 (\url{https://creativecommons.org/licenses/by-sa/4.0/}).
 
-\tableofcontents
+{%
+  % set chapter mark in footer and remove number 0
+  \renewcommand*{\chaptermarkformat}{}
+  \chaptermark{Inhaltsverzeichnis}
+
+  \tableofcontents%
+}
+
 \pagebreak
 
 \input{include}

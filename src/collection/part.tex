@@ -1,6 +1,15 @@
 \part{\vorlesung{}}
 \thispagestyle{empty}
 
-\renewcommand*{\contentsname}{Inhaltsverzeichnis dieser Vorlesung}
-\localtableofcontents
+{%
+  % set chapter mark in footer and remove number 0
+  \renewcommand*{\chaptermarkformat}{}
+  \chaptermark{Inhaltsverzeichnis}
+
+  % set title of table of contents
+  \renewcommand*{\contentsname}{Inhaltsverzeichnis dieser Vorlesung}
+
+  \localtableofcontents%
+}
+
 \pagebreak
