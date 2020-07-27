@@ -29,7 +29,7 @@ class Helper(object):
 
   @staticmethod
   def buildCollectionIncludeTex(dirNames, target, source, env):
-    dirNames = sorted(x for x in dirNames if x != "collection")
+    dirNames = [x for x in dirNames if x != "collection"]
     collectionIncludeTex = ""
 
     for dirName in dirNames:
@@ -91,8 +91,45 @@ for rootDirName, dirNames, fileNames in os.walk("src", followlinks=True):
     file_ = File(os.path.join(rootDirName, fileName))
     env.InstallAs(target=Helper.translateSrcToBuild(file_), source=file_)
 
+# reference list to order the names of the lectures that actually exist
+dirNameOrder = [
+      "analysis-1",
+      "analysis-2",
+      "analysis-3",
+      "analysis-4",
+      "functional-analysis-1",
+      "functional-analysis-2",
+      "linear-algebra-and-analytical-geometry-1",
+      "linear-algebra-and-analytical-geometry-2",
+      "algebra",
+      "topology",
+      "probability-theory",
+      "mathematical-statistics",
+      "numerical-linear-algebra",
+      "numerical-analysis-1",
+      "numerical-analysis-2",
+      "partial-differential-equations",
+      "linear-control-theory",
+      "approximation-and-geometric-modeling",
+      "finite-elements",
+      "programming-and-software-engineering",
+      "data-structures-and-algorithms",
+      "automata-and-formal-languages",
+      "computability-and-complexity",
+      "algorithmic-geometry",
+      "discrete-optimization",
+      "cryptographic-procedures",
+      "visual-computing",
+      "modeling-and-simulation",
+      "optical-phenomena",
+      "basic-principles-of-geosciences",
+      "history-of-wind-energy-use",
+    ]
+
 # list of targets (collection must be at the end)
 dirNames = ([x.name for x in Glob("src/lectures/*") if x.isdir()] + ["collection"])
+dirNames.sort(key=lambda x: ((dirNameOrder.index(x), 0) if x in dirNameOrder else
+      (len(dirNameOrder), x)))
 pdfs = []
 
 for dirName in dirNames:
