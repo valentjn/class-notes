@@ -27,25 +27,31 @@ Fehler können unter \url{https://github.com/valentjn/class-notes} gemeldet werd
 Die \LaTeX{}-Umsetzung der Notizen steht unter der CC-BY-SA-4.0-Lizenz
 (\url{https://creativecommons.org/licenses/by-sa/4.0/}).
 
-% only include parts in list of parts
-\setcounter{tocdepth}{\parttocdepth}
+{%
+  % only include parts in list of parts
+  \setcounter{tocdepth}{\parttocdepth}
 
-% list of parts
-\renewcommand*{\contentsname}{Vorlesungen}
-\tableofcontents
+  % use dotted lines for list of parts, make font smaller
+  \RedeclareSectionCommand[tocstyle=dottedtocline]{part}
+
+  % list of parts
+  \renewcommand*{\contentsname}{Vorlesungen}
+  \tableofcontents%
+}
 
 \pagebreak
 
-% use a chapter heading for main table of contents
-\unsettoc{toc}{leveldown}
+{%
+  % use a chapter heading for main table of contents
+  \unsettoc{toc}{leveldown}
 
-% include everything up to subsubsections in main table of contents
-% (and part-wise tables of contents)
-\setcounter{tocdepth}{\subsubsectiontocdepth}
+  % include everything up to subsubsections in main table of contents
+  % (and part-wise tables of contents)
+  \setcounter{tocdepth}{\subsubsectiontocdepth}
 
-% main table of contents
-\renewcommand*{\contentsname}{Inhaltsverzeichnis}
-\tableofcontents
+  % main table of contents
+  \tableofcontents%
+}
 
 \pagebreak
 
