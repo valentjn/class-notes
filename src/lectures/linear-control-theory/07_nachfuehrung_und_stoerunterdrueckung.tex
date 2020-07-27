@@ -16,12 +16,12 @@ Einige Beispiele sind:
     \emph{Pilot}:
     Wie muss der Joystick nach vorne bewegt werden, damit sich das Flugzeug nach vorne um
     einen vorgegebenen Winkel neigt?
-    
+
     \item
     \emph{Autofahrer}:
     Wie muss das Gaspedal nach unten gedrückt werden, damit das Auto mit einer vorgegebenen
     Geschwindigkeit fährt?
-    
+
     \item
     \emph{Industrie}:
     Wie muss ein Schweißroboter gesteuert werden, damit er einem bestimmten Pfad auf einer
@@ -89,7 +89,7 @@ $z$ erreicht zwar $r_0$ nicht (auch nicht asymptotisch), allerdings gelten folge
 \begin{itemize}
     \item
     Stabilisierung und approximative Nachführung
-    
+
     \item
     Robustheit dieser beiden Eigenschaften, da im Wesentlichen unabhängig von den Werten von
     $a, b, c$
@@ -98,10 +98,10 @@ Man erhält aber auch folgende Nachteile:
 \begin{itemize}
     \item
     große Fehler führen zu großem Regelaufwand
-    
+
     \item
     kleine Nachführungsfehler erfordern eine hohe Verstärkung
-    
+
     \item
     hohe Verstärkungen destabilisieren oft kompliziertere Systeme
 \end{itemize}
@@ -139,7 +139,7 @@ Die Vorgehensweise bei der Gestaltung eines solchen Reglers ist:
 \begin{enumerate}
     \item
     Wähle $k_p$, sodass $u = k_p (r - z)$ das System stabilisiert.
-    
+
     \item
     Passe $k_f$ so an, dass die stationäre Verstärkung des Systems gleich $1$ ist.
 \end{enumerate}
@@ -260,13 +260,13 @@ heißt \begriff{verallgemeinerte Anlage (generalized plant)} mit
 \begin{itemize}
     \item
     $u$ dem \begriff{Steuereingang (control input)},
-    
+
     \item
     $d$ der \begriff{verallgemeinerten Störung (generalized disturbance)},
-    
+
     \item
     $y$ dem \begriff{Messausgang (measurement output)} und
-    
+
     \item
     $e$ dem \begriff{Leistungsausgang (performance output)}.
 \end{itemize}
@@ -278,7 +278,7 @@ zu gestalten, der
     \item
     das System stabilisiert\\
     (d.\,h. $\lim_{t \to \infty} x(t) = 0$ für $d = 0$ und alle $x(0)$) und
-    
+
     \item
     \begriff{Regulation}
     für alle konstanten verallgemeinerten Störungen $d$ erzielt\\
@@ -358,7 +358,7 @@ $F$ und $G$ wählt man wie folgt:
 \begin{enumerate}
     \item
     Wähle ein beliebiges $F$, sodass $A - BF$ eine Hurwitz-Matrix ist.
-    
+
     \item
     Wenn $(\Pi, \Gamma)$ eine Lösung der Regulatorgleichung ist,
     dann setze $G := \Gamma + F\Pi$.
@@ -410,7 +410,7 @@ Man prüft zunächst, ob
     \item
     $(A, B)$ stabilisierbar und
     $\left(\smallpmatrix{A & B_d \\ 0 & 0}, \smallpmatrix{C & D_d}\right)$ entdeckbar und
-    
+
     \item
     die Regulatorgleichung (R0)
     $\smallpmatrix{A & B \\ C_e & D_e} \smallpmatrix{\Pi \\ \Gamma} +
@@ -422,7 +422,7 @@ In diesem Fall wählt man
     \item
     $F$ und $L$, sodass $A - BF$ und $\smallpmatrix{A & B_d \\ 0 & 0} - L\smallpmatrix{C & D_d}$
     Hurwitz-Matrizen sind, und
-    
+
     \item
     $G := \Gamma + F\Pi$ mit $(\Pi, \Gamma)$ einer Lösung der Regulatorgleichung (R0).
 \end{enumerate}
@@ -474,16 +474,16 @@ unter folgenden Bedingungen erstellen:
     \item
     \begriff{andauernde Störung (persistent disturbance)}:\\
     $S$ hat keine Eigenwerte in $\complex^-$.
-    
+
     \item
     Existenz einer stabilisierender Zustandsrückführungs-Verstärkung:\\
     $(A, B)$ ist stabilisierbar.
-    
+
     \item
     Existenz eines Zustands- und Störungsschätzers:\\
     $(A_E, C_E) := \left(\smallpmatrix{A & B_d \\ 0 & S}, \smallpmatrix{C & D_d}\right)$
     ist entdeckbar.
-    
+
     \item
     Lösbarkeit der Regulatorgleichung (R):\\
     Es gibt $\Gamma$ und $\Pi$ mit
@@ -495,7 +495,7 @@ In diesem Fall wählt man
     \item
     $F$ und $L$, sodass $A - BF$ und $\smallpmatrix{A & B_d \\ 0 & S} - L\smallpmatrix{C & D_d}$
     Hurwitz-Matrizen sind, und
-    
+
     \item
     $G := \Gamma + F\Pi$ mit $(\Gamma, \Pi)$ einer Lösung der Regulatorgleichung (R).
 \end{enumerate}
@@ -653,7 +653,7 @@ verallgemeinerte Anlage (CL) die folgenden Eigenschaften hat:
     $\lim_{t \to \infty} x(t) = 0$ und\\
     $\lim_{t \to \infty} x_K(t) = 0$
     (äquivalent dazu: $\A$ ist eine Hurwitz-Matrix).
-    
+
     \item
     Für alle Trajektorien von (CL) gilt $\lim_{t \to \infty} e(t) = 0$.
 \end{itemize}
@@ -730,13 +730,13 @@ wie folgt vorgehen:
 \begin{enumerate}
     \item
     Löse die Regulatorgleichung und erhalte $\Gamma$.
-    
+
     \item
     Vorkompensiere die verallgemeinerte Anlage (P), indem
     $\smallpmatrix{\dot{\xi}_1 \\ u} = \smallpmatrix{S & I & 0 \\ \Gamma & 0 & I}
     \smallpmatrix{\xi_1 \\ u_1 \\ u_2}$
     der Anlage vorgeschaltet wird.
-    
+
     \item
     Entwerfe einen stabilisierenden Regler für die vorkompensierte Anlage.
 \end{enumerate}

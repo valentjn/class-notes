@@ -13,10 +13,10 @@ $(P, C, K, (c_k)_{k \in K}, (d_k)_{k \in K})$ wird definiert durch endliche Meng
 \begin{itemize}
     \item
     $P$ (\begriff{Klartexte}),
-    
+
     \item
     $C$ (\begriff{Geheimtexte}) und
-    
+
     \item
     $K$ (\begriff{Schlüssel})
 \end{itemize}
@@ -24,7 +24,7 @@ sowie durch Funktionen für jeden Schlüssel $k \in K$ mit
 \begin{itemize}
     \item
     $c_k\colon P \rightarrow C$ (\begriff{Codierungs-/Verschlüsselungsfunktion}) und
-    
+
     \item
     $d_k\colon C \rightarrow P$ (\begriff{Decodierungs-/Entschlüsselungsfunktion}),
 \end{itemize}
@@ -51,10 +51,10 @@ Alice will Bob eine Nachricht schicken und Eve (\emph{eavesdropper}) will mithö
     Alice und Bob wählen einen gemeinsamen Schlüssel $k \in K$.
     Dieser ist beiden vor der Übertragung schon bekannt oder wird über einen
     sicheren Kanal übermittelt.
-    
+
     \item
     Alice verschlüsselt $x \in P$ durch $y = c_k(x)$ und sendet $y$ an Bob.
-    
+
     \item
     Bob empfängt $y$ und entschlüsselt $y$ durch $d_k(y) = d_k(c_k(x)) = x$.
 \end{enumerate}
@@ -80,16 +80,16 @@ Angreifer kennen also zumindest das verwendete kryptografische System.
     \begriff{Bruch des Schlüssels}:
     Eve kann nicht nur Nachrichten entschlüsseln und lesen, sondern auch
     Fehlnachrichten verschlüsseln und verschicken
-    
+
     \item
     \begriff{globale Lösung}:
     funktionierendes Entschlüsselungsverfahren ohne Kenntnis des Schlüssels\\
     (Eve kann keine Fehlnachrichten verschlüsseln)
-    
+
     \item
     \begriff{lokale Lösung}:
     nur eine einzelne Nachricht entschlüsselt
-    
+
     \item
     \begriff{Informationsgewinn}:
     partielle Informationen über Schlüssel oder Klartext
@@ -102,15 +102,15 @@ Angreifer kennen also zumindest das verwendete kryptografische System.
     \item
     \begriff{ausschließlich Geheimtext (ciphertext-only)}:
     Eve kennt nur Geheimtexte
-    
+
     \item
     \begriff{bekannter Klartext (known-plaintext)}:
     Eve kennt Klartexte und zugehörige Geheimtexte
-    
+
     \item
     \begriff{gewählter Klartext (chosen-plaintext)}:
     Eve kann Klartexte verschlüsseln lassen
-    
+
     \item
     \begriff{gewählter Geheimtext (chosen-ciphertext)}:
     Eve kann Geheimtexte entschlüsseln lassen
@@ -123,15 +123,15 @@ Angreifer kennen also zumindest das verwendete kryptografische System.
     \item
     \begriff{perfekte/absolute Sicherheit}:
     Entschlüsselung beweisbar unmöglich
-    
+
     \item
     \begriff{Berechnungssicherheit}:
     Entschlüsselung beweisbar für die Praxis zu aufwändig
-    
+
     \item
     \begriff{relative Berechnungssicherheit}:
     Entschlüsselung mindestens so schwer wie die Lösung eines als schwierig geltenden Problems
-    
+
     \item
     \begriff{pragmatische Sicherheit}:
     trotz intensiver Suche keine ef"|fiziente Methode zur Entschlüsselung bekannt
@@ -334,7 +334,7 @@ $|P| \le |C| \le |K|$.
 
 \begin{Beweis}
     Für alle $k \in K$ ist $c_k\colon P \rightarrow C$ injektiv, d.\,h. $|P| \le |C|$.
-    
+
     Sei $x \in P$ fest.
     Dann gibt es für jedes $y \in C$ ein $k_y \in K$ mit $c_{k_y}(x) = y$.
     Sonst gäbe es ein $y \in C$ mit $c_k(x) \not= y$ für alle $k \in K$,
@@ -359,7 +359,7 @@ $\forall_{x \in P} \forall_{y \in C} \exists!_{k_{x,y} \in K}\; c_{k_{xy}}(x) = 
     wobei $k_{x,y_1} \not= k_{x,y_2}$ für $y_1 \not= y_2$.
     Die Abbildung $f_x\colon C \rightarrow K$, $y \mapsto k_{x,y}$ ist für alle $x \in P$
     injektiv und wegen $|C| = |K|$ daher bijektiv, weswegen $k_{x,y} \in K$ eindeutig bestimmt ist.
-    
+
     Sei nun $y \in C$ fest.
     Mit dem Satz von Bayes gilt $\Pr(x) = \Pr(x \;|\; y) = \frac{\Pr(y \;|\; x) \Pr(x)}{\Pr(y)}$,
     also $\Pr(y \;|\; x) = \Pr(y)$.
@@ -367,7 +367,7 @@ $\forall_{x \in P} \forall_{y \in C} \exists!_{k_{x,y} \in K}\; c_{k_{xy}}(x) = 
     $\Pr(k_{xy}) = \Pr(y)$ für alle $x \in P$.
     Wie eben ist $g_y\colon P \rightarrow K$, $x \mapsto k_{x,y}$ bijektiv, d.\,h.
     $\Pr(k) = \Pr(y)$ ist für alle $k \in K$ gleich.
-    
+
     "`$\Leftarrow$"':
     Es gilt $\Pr(y) = \sum_{x \in P} \Pr(y \;|\; x) \Pr(x)$
     (Gesetz der totalen Wahrscheinlichkeit).
@@ -441,13 +441,13 @@ wobei $y := c_k(x)$ für $x \in \BB^{64}$ und $k \in \BB^{64}$ wie folgt definie
     Wende eine Initialpermutation $\IP\colon \BB^{64} \rightarrow \BB^{64}$ auf $x$ an
     (siehe unten) und teile das Ergebnis auf, d.\,h.
     $L_0 R_0 := \IP(x)$ mit $L_0, R_0 \in \BB^{32}$.
-    
+
     \item
     Berechne sukzessive für $i = 1, \dotsc, 16$ die Wörter $L_i, R_i \in \BB^{32}$ durch\\
     $L_i := R_{i-1}$ und $R_i := L_{i-1} \xor f(R_{i-1}, k_i)$,
     wobei die Rundenfunktion $f\colon \BB^{32} \times \BB^{48} \rightarrow \BB^{32}$
     und der Rundenschlüssel $k_i \in \BB^{48}$ weiter unten definiert sind.
-    
+
     \item
     Berechne $y := \IP^{-1}(R_{16} L_{16})$.
 \end{enumerate}
@@ -472,16 +472,16 @@ ist wie folgt definiert:
     $E\colon \BB^{32} \rightarrow \BB^{48}$,
     wobei alle 32 Bit in $E(A)$ auftauchen und 16 der Bits an bestimmten Stellen wiederholt werden
     (ebenfalls statisch).
-    
+
     \item
     Berechne $B := E(A) \xor J$ und zerlege das Ergebnis in $B =: B_1 \cdots B_8$ mit
     $B_i \in \BB^6$.
-    
+
     \item
     Transformiere $B_i$ in $C_i := S_i(B_i) \in \BB^4$ mittels den sog. \begriff{S-Boxen}
     $S_i\colon \BB^6 \rightarrow \BB^4$
     (statisch).
-    
+
     \item
     Bilde $C := C_1 \cdots C_8 \in \BB^{32}$ und wende eine statische Bitpermutation an:
     $f(A, J) := P(C)$.
@@ -503,16 +503,16 @@ $k \in \BB^{64}$ wie folgt berechnet:
     \item
     Wähle bestimmte 56 Bit aus $k$ mittels der statischen Abbildung
     $\PC_1\colon \BB^{64} \rightarrow \BB^{56}$.
-    
+
     \item
     Zerlege das Ergebnis in $C_0 D_0 := \PC_1(k)$ mit $C_0, D_0 \in \BB^{28}$.
-    
+
     \item
     Berechne für $i = 1, \dotsc, 16$ die Wörter $C_i, D_i \in \BB^{28}$ durch
     $C_i := \sigma_i(C_{i-1})$ und\\
     $D_i := \sigma_i(D_{i-1})$, wobei $\sigma_i$ die zyklische Linksverschiebung um ein Bit
     für $i \in \{1, 2, 9, 16\}$ und um zwei Bit sonst ist.
-    
+
     \item
     Wähle bestimmte 48 Bit aus $C_i D_i$ mittels der statischen Abbildung
     $\PC_2\colon \BB^{56} \rightarrow \BB^{48}$ und setze
@@ -542,7 +542,7 @@ Für den so erhaltenen Text $z \in \BB^{64}$ gilt $z = x$.
     Induktiv beweist man nun $L_i' = R_{16-i}$ und $R_i' = L_{16-i}$ für $i = 0, \dotsc, 16$.
     Daraus folgt dann die Behauptung mit
     $z = \IP^{-1}(R_{16}' L_{16}') = \IP^{-1}(L_0 R_0) = \IP^{-1}(\IP(x)) = x$.
-    
+
     Angenommen, es gilt $L_{i-1}' = R_{17-i}$ und $R_{i-1}' = L_{17-i}$ für ein
     $i \in \{1, \dotsc, 16\}$.\\
     Dann ist $L_i' := R_{i-1}' = L_{17-i} = R_{16-i}$ und
@@ -601,7 +601,7 @@ Der \begriff{ECB-Modus} (engl. \emph{electronic codebook}) ist wie folgt definie
     \item
     Sei $x = x_1 x_2 \cdots$ mit $x_i \in \BB^n$ ein Klartext und $k \in K$ ein Schlüssel.\\
     Dann ist der entsprechende Geheimtext $y := y_1 y_2 \cdots$ mit $y_i := c_k(x_i) \in \BB^n$.
-    
+
     \item
     Sei $y = y_1 y_2 \cdots$ mit $y_i \in \BB^n$ ein Geheimtext und $k \in K$ ein Schlüssel.\\
     Dann ist der entsprechende Geheimtext $x := x_1 x_2 \cdots$ mit $x_i := d_k(y_i) \in \BB^n$.
@@ -678,7 +678,7 @@ Zunächst wählt man einen festen Initialisierungsblock $y_0 \in \BB^n$.
     Sei $x = x_1 x_2 \cdots$ mit $x_i \in \BB^n$ ein Klartext und $k \in K$ ein Schlüssel.\\
     Dann ist der entsprechende Geheimtext $y := y_1 y_2 \cdots$ mit
     $y_i := c_k(y_{i-1} \xor x_i) \in \BB^n$.
-    
+
     \item
     Sei $y = y_1 y_2 \cdots$ mit $y_i \in \BB^n$ ein Geheimtext und $k \in K$ ein Schlüssel.\\
     Dann ist der entsprechende Geheimtext $x := x_1 x_2 \cdots$ mit
@@ -807,7 +807,7 @@ Zunächst wählt man einen festen Initialisierungsblock $I_1 \in \BB^n$.
     $y_i := x_i \xor \pi_r(z_i)$ und
     $I_{i+1} := \sigma_r(I_i \leftarrow y_i)$.\\
     Dann ist der entsprechende Geheimtext $y := y_1 y_2 \cdots$.
-    
+
     \item
     Sei $y \in \BB^\ast$ ein Geheimtext und $k \in K$ ein Schlüssel.\\
     Unterteile $y$ in $y = y_1 y_2 \cdots$ mit $y_i \in \BB^r$.
@@ -985,7 +985,7 @@ Zunächst wählt man einen festen Initialisierungsblock $z_0 \in \BB^n$.
     durch $z_i := c_k(z_{i-1})$ und
     $y_i := x_i \xor \pi_r(z_i)$.\\
     Dann ist der entsprechende Geheimtext $y := y_1 y_2 \cdots$.
-    
+
     \item
     Sei $y \in \BB^\ast$ ein Geheimtext und $k \in K$ ein Schlüssel.\\
     Unterteile $y$ in $y = y_1 y_2 \cdots$ mit $y_i \in \BB^r$.

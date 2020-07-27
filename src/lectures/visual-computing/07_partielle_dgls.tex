@@ -48,10 +48,10 @@ Wenn $A^2 + B^2 + C^2 \not= 0$ in $D$ ist, dann heißt die PDE
 \begin{itemize}
     \item
     \begriff{elliptisch}, falls $AC - B^2 > 0$ in $D$,
-    
+
     \item
     \begriff{parabolisch}, falls $AC - B^2 = 0$ in $D$, und
-    
+
     \item
     \begriff{hyperbolisch}, falls $AC - B^2 < 0$ in $D$.
 \end{itemize}
@@ -67,14 +67,14 @@ Diese Klassifikation ist analog zu der von Kegelschnitten $Ax^2 + 2Bxy + Cy^2 + 
     ($\Delta u = f$),\\
     \begriff{\name{Helmholtz}-Gleichung}
     ($\Delta u + \varrho u = f$)
-    
+
     \item
     \emph{parabolische PDEs}:
     \begriff{1D-Wärmeleitungsgleichung}
     ($k \partial_x^2 u - \partial_t u = 0$),\\
     \begriff{Dif"|fusionsgleichung}
     ($\partial_t u(\vec{x}, t) = \div(D(u, \vec{x}) \nabla u(\vec{x}, t))$)
-    
+
     \item
     \emph{hyperbolische PDE}:
     \begriff{Wellengleichung}
@@ -135,7 +135,7 @@ $w$ und $v$ müssen also die ODEs
     $v'' + \lambda v = 0$
     mit $v(\pi) = v(-\pi)$ und $v'(\pi) = v'(-\pi)$
     (\begriff{harmonischer Oszillator})
-    
+
     \item
     $r^2 w'' + rw' - \lambda w = 0$
     (\begriff{\name{Bessel}sche DGL}) und
@@ -170,7 +170,7 @@ man bekommt zwei ODEs
 \begin{itemize}
     \item
     $X'' + \lambda X = 0$ und
-    
+
     \item
     $T' + \lambda DT = 0$.
 \end{itemize}
@@ -218,7 +218,7 @@ Sei $h := \Delta x = \Delta y$.
     $\partial_x u(x_i, y_j) \approx \frac{u_E - u_P}{h}$ (\begriff{Vorwärts-Diff.quot.}),
     $\partial_x u(x_i, y_j) \approx \frac{u_P - u_W}{h}$ (\begriff{Rückwärts-Diff.quot.}) oder
     $\partial_x u(x_i, y_j) \approx \frac{u_E - u_W}{2h}$ (\begriff{zentraler Dif"|f.quot.})
-    
+
     \item
     $\partial_y u(x_i, y_j) \approx \frac{u_N - u_P}{h}$,
     $\partial_y u(x_i, y_j) \approx \frac{u_P - u_S}{h}$ oder
@@ -261,22 +261,22 @@ Dazu setzt man $u_i^n \approx u(x_i, t_n)$ mit Gitterweiten $\Delta x$ und $\Del
     \begriff{Upwind-Methode}:
     $u_i^{n+1} := u_i^n - c \frac{\Delta t}{\Delta x} (u_i^n - u_{i-1}^n)$
     (Zeit vorwärts, Ort rückwärts)
-    
+
     \item
     \begriff{Downwind-Methode}:
     $u_i^{n+1} := u_i^n - c \frac{\Delta t}{\Delta x} (u_{i+1}^n - u_i^n)$
     (Zeit vorwärts, Ort vorwärts)
-    
+
     \item
     \begriff{zentrierte Methode}:
     $u_i^{n+1} := u_i^n - c \frac{\Delta t}{2 \Delta x} (u_{i+1}^n - u_{i-1}^n)$
     (Zeit vorwärts, Ort zentriert)
-    
+
     \item
     \begriff{Leap-Frog-Methode}:
     $u_i^{n+1} := u_i^{n-1} - c \frac{\Delta t}{\Delta x} (u_{i+1}^n - u_{i-1}^n)$
     (Zeit zentriert, Ort zentriert)
-    
+
     \item
     \begriff{\name{Lax}-\name{Wendroff}-Methode}:
     $u_i^{n+1} := u_i^n - c \frac{\Delta t}{2 \Delta x} (u_{i+1}^n - u_{i-1}^n) +

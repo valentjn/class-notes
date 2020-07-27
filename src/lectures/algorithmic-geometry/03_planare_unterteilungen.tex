@@ -45,7 +45,7 @@ Der Sweep-Line-Algorithmus verwaltet 2 Datenstrukturen.
     \begriff{$X$-Struktur} (Min-Heap über $x$-Koordinaten):
     enthält alle Strecken-Endpunkte rechts der SL und die Schnittpunkte rechts der SL,
     die zu Strecken gehören, die die SL momentan schneiden und auf ihr benachbart sind
-    
+
     \item
     \begriff{$Y$-Struktur} (2-4-Baum):
     enthält alle Strecken, die die SL momentan schneiden, geordnet gemäß der $y$-Koordinate
@@ -57,17 +57,17 @@ Der \begriff{Sweep-Line-Algorithmus (SL-Algorithmus)} arbeitet wie folgt.
 \begin{enumerate}
     \item
     Füge alle Endpunkte gemäß ihrer $x$-Koordinate in die $X$-Struktur ein.
-    
+
     \item
     Die $Y$-Struktur enthält anfangs keine Elemente.
-    
+
     \item
     Wiederhole Folgendes, während die $X$-Struktur nicht-leer ist:
     \begin{enumerate}
         \item
         Bestimme den Punkt $p$ aus der $X$-Struktur mit der kleinsten $x$-Koordinate und
         entferne ihn aus der $X$-Struktur.
-        
+
         \item
         Rufe $\code{process}(p)$ auf.
     \end{enumerate}
@@ -81,13 +81,13 @@ Der \begriff{Sweep-Line-Algorithmus (SL-Algorithmus)} arbeitet wie folgt.
     \item
     Ist $p$ der linke Endpunkt einer Strecke $s$, dann füge $s$ in die $Y$-Struktur ein,
     teste auf Schnittpunkte rechts der SL und füge sie ggf. in die $X$-Struktur ein.
-    
+
     \item
     Ist $p$ der rechte Endpunkt einer Strecke $s$, dann entferne $s$ aus der $Y$-Struktur,
     teste ggf.
     die beiden neu benachbarten Strecken in der $Y$-Struktur auf einen Schnittpunkt rechts der SL
     und füge ihn ggf. in die $X$-Struktur ein.
-    
+
     \item
     Ist $p$ der Schnittpunkt zweier Strecken $s_1$ und $s_2$, dann tausche $s_1$ und $s_2$ in
     der $Y$-Struktur, teste zwei neue Nachbarschaften auf Schnittpunkte rechts der SL und
@@ -177,7 +177,7 @@ $\O((n + k)\log n)$ Zeit.
     \item
     Berechne die Trapezierung der Endpunkte
     (also nur die vertikalen Strahlen der Endpunkte).
-    
+
     \item
     Füge die Strecken zufällig nacheinander in die Trapezierung ein
     (evtl. müssen vertikale Strahlen gekürzt werden oder bei Schnittpunkten
@@ -194,7 +194,7 @@ Pseudoecken ist, die auf dem Rand von $\tau$ liegen.
 \begin{itemize}
     \item
     Es kann Trapeze $\tau$ geben mit $\deg(\tau) = \Theta(n)$.
-    
+
     \item
     Es kann sein, dass bei jeder Einfügung einer Strecke viele Trapeze durchquert werden müssen.
     Wählt man z.\,B. lauter horizontale, übereinander liegende Strecken, die symmetrisch um einen
@@ -221,7 +221,7 @@ $\O(n \log n + k)$
     mit $R := R' \cup \{s\}$ ausgedrückt werden:
     $\sum_{\tau \in \T(R),\; s \text{ begrenzt } \tau} \deg(\tau)$
     (Rückwärtsanalyse).
-    
+
     Ist nur die Trapezierung $\T(R)$ gegeben, so hätte jede Strecke $s \in R$ mit gleicher
     Wahrscheinlichkeit als letzte eingefügt werden können.
     Mit $r := |R|$ sind die erw. Kosten für das Einfügen des $r$-ten Segments gleich
@@ -236,7 +236,7 @@ $\O(n \log n + k)$
     und Pseudoecken
     (bei der Summerierung werden gleiche Ecken, Schnittpunkte oder Pseudoecken nur $\O(1)$-mal
     mehrfach gezählt).
-    
+
     Es gilt $\EE[k_R] = \frac{r(r-1)}{n(n-1)} k$
     (ein Schnittpunkt ist in $R$ genau dann, wenn beide Strecken in $R$ sind).
     Damit erhält man $\frac{2}{r} \cdot \O(n + k_R)
@@ -275,7 +275,7 @@ eine Triangulierung des Polygons berechnen.
 \begin{enumerate}
     \item
     Konstruiere die Trapezierung der Kanten.
-    
+
     \item
     Für jedes Trapez, das Polygonecken auf gegenüberliegenden vertikalen Strahlen besitzt,
     verbinde diese Ecken, falls sie noch nicht verbunden sind.
@@ -284,7 +284,7 @@ eine Triangulierung des Polygons berechnen.
     sodass die $x$-Koordinaten jedes Teils monoton steigen oder fallen),
     deren eine Seite eine einzelne Kante ist
     (\begriff{$x$-Kammpolygon}).
-    
+
     \item
     Trianguliere jedes $x$-monotone Polygon.
 \end{enumerate}
@@ -300,7 +300,7 @@ Damit können Polygone mit $n$ Ecken in $\O(n \log n)$ Zeit trianguliert werden.
 \begin{itemize}
     \item
     Durch obigen Algorithmus kann man annehmen, dass jede Facette von $\P$ ein Dreieck ist.
-    
+
     \item
     Man kann außerdem annehmen, dass die \begriff{äußere Fläche} (d.\,h. die Umrandung von $\P$)
     ebenfalls ein Dreieck ist.
@@ -330,10 +330,10 @@ $|I| \ge \frac{|V|}{24}$ und $\forall_{x \in I}\; \deg(x) \le 11$.
     so bekommt man $3k \le 2m$.
     Aus dem eulerschen Polyedersatz $n - m + k = 2$ erhält man
     $m = n + k - 2 \le n + \frac{2m}{3} - 2$, d.\,h. $m \le 3n - 6$.
-    
+
     Damit gilt $\sum_{x \in V} \deg(x) = 2m \le 6n - 12$, denn jede Kante ist genau zu zwei Knoten
     inzident.
-    
+
     Es gibt daher $\ge \frac{n}{2}$ Knoten, die Grad $\le 11$ haben:
     Sei $S := \{x \in V \;|\; \deg(x) \le 11\}$, dann wäre andernfalls $|S| < \frac{n}{2}$, also
     $|V \setminus S| > n - \frac{n}{2} = \frac{n}{2}$.
@@ -341,7 +341,7 @@ $|I| \ge \frac{|V|}{24}$ und $\forall_{x \in I}\; \deg(x) \le 11$.
     $6n - 12 \ge \sum_{x \in V} \deg(x)$\\
     $\ge \sum_{x \in V \setminus S} \deg(x)
     \ge \sum_{x \in V \setminus S} 12 = 6n$, ein Widerspruch.
-    
+
     Indem man nacheinander Ecken aus $S$ wählt, wobei man darauf achtet, keine Ecke zu wählen,
     der zu einer der bereits gewählten Ecken benachbart ist,
     erhält man eine unabhängige Menge $I$ mit $I \subset S$.
@@ -358,7 +358,7 @@ von Triangulierungen mit $h \in \natural_0$ und wird wie folgt konstruiert.
 \begin{enumerate}
     \item
     Sei $T_0 := T$ mit $T$ der ursprünglichen Triangulierung von $\P$.
-    
+
     \item
     $T_{i+1}$ erhält man aus $T_i$, indem man gemäß dem Lemma eine unabhängige Menge
     $I$ von Knoten aus $T_i$ findet mit
@@ -366,7 +366,7 @@ von Triangulierungen mit $h \in \natural_0$ und wird wie folgt konstruiert.
     (mit $n_i$ der Knotenzahl von $T_i$).
     Anschließend entferne die Knoten von $I$ aus $T_i$ und trianguliere die
     so entstandenen "`Löcher"' neu, um $T_{i+1}$ zu erhalten.
-    
+
     \item
     Höre auf, sobald $n_i$ eine konstante Größe erreicht hat.
 \end{enumerate}
@@ -379,7 +379,7 @@ von Triangulierungen mit $h \in \natural_0$ und wird wie folgt konstruiert.
 \begin{enumerate}
     \item
     Lokalisiere $q$ in $T_h$.
-    
+
     \item
     Bestimmung der Position in $T_i$ aus der Position in $T_{i+1}$, indem die $\O(1)$
     (hier höchstens elf) Dreiecke untersucht werden, die zu dem Loch gehören, in dem sich
@@ -396,7 +396,7 @@ $\O(\log n)$
     $h \le j < \log_{23/24} \frac{c}{n}
     = \frac{\log(c/n)}{\log(23/24)}$\\
     $= \frac{1}{\log(23/24)} (\log c - \log n) = \O(\log n)$.
-    
+
     Jeder Lokalisierungsschritt in obigem Algorithmus kostet $\O(1)$ Zeit,
     da immer nur $\O(1)$ Dreiecke untersucht werden müssen.
     Damit ist der Gesamt-Zeitaufwand $\O(\log h)$.
@@ -433,7 +433,7 @@ $\left\lfloor \frac{n}{3} \right\rfloor$ Wächtern überwacht werden.
     (Dreiecke als Knoten, Kanten zwischen benachbarten Dreiecken) ein Baum,
     da er zusammenhängend und kreisfrei ist
     (gäbe es einen Kreis, hätte das Polygon ein Loch).
-    
+
     Anschließend berechne eine $3$-Färbung der Ecken der Triangulierung,
     d.\,h. jede Ecke bekommt eine Farbe $\text{r}, \text{g}, \text{b}$ zugewiesen,
     wobei zwei benachbarte Ecken jeweils verschiedene Farben haben müssen.
@@ -441,18 +441,18 @@ $\left\lfloor \frac{n}{3} \right\rfloor$ Wächtern überwacht werden.
     \begin{enumerate}
         \item
         Wähle ein beliebiges Dreieck und färbe die Ecken in den drei Farben.
-        
+
         \item
         Wähle ein Dreieck, von dem zwei Ecken bereits gefärbt sind, und färbe die dritte Ecke
         entsprechend.
-        
+
         \item
         Wiederhole \emph{(2)}, bis alle Dreiecke gefärbt sind.
     \end{enumerate}
     Das ist möglich, weil der duale Graph ein Baum ist:
     Gäbe es zwei benachbarte Ecken mit derselben Farbe, dann gäbe es einen Kreis im Baum,
     ein Widerspruch.
-    
+
     Schließlich platziert man Wächter an den Ecken mit der Farbe, die am seltensten vorkommt.
     Das sind $\le \left\lfloor \frac{n}{3} \right\rfloor$-viele und die Wächter überwachen
     jedes Dreieck, damit auch das gesamte Polygon.
@@ -495,13 +495,13 @@ Sie sieht baumähnlich aus und besteht aus Knoten der folgenden Arten:
     \item
     \emph{Trapeze}:
     stellen die Blätter dar (Knoten mit Ausgangsgrad $0$)
-    
+
     \item
     \emph{$X$-Knoten}:
     enthalten einen Punkt,
     stellen eine Unterteilung in zwei Hälften
     (mit geraden Rändern) dar, gemäß der $x$-Koordinate des Knotenpunkts
-    
+
     \item
     \emph{$Y$-Knoten}:
     enthalten eine Strecke
@@ -525,7 +525,7 @@ $q$ in $\tau_i, Q_i$ zu lokalisieren.
         \item
         Ist das Trapez, das $q$ enthält, identisch in $\tau_i$ und $\tau_{i-1}$,
         dann ist der Aufwand, $q$ in $\tau_i$ zu lokalisieren, gleich $0$.
-        
+
         \item
         Ansonsten ist der Aufwand $\O(1)$.
         Dieser Fall tritt mit Wahrscheinlichkeit $\O(\frac{1}{i})$ ein, da $s_i$
@@ -568,17 +568,17 @@ Die erwartete Zeit zur Lokalisierung von $q \in \real^2$ in $\T(S), Q(S)$ beträ
 \begin{enumerate}
     \item
     Bringe die Strecken in eine zufällige Reihenfolge.
-    
+
     \item
     Füge die ersten $\frac{n}{\log n}$ Strecken ein.
-    
+
     \item
     Verfolge das gesamte Polygon durch $\T_{n/\log n}$ und bestimme dabei die Positionen
     aller noch nicht eingefügten Strecken.
-    
+
     \item
     Füge die nächsten $\frac{n}{\log \log n}$ Strecken ein usw.
-    
+
     \item
     Wiederhole, bis $\log \dotsb \log n$ konstant ist
     (d.\,h. bis Lokalisierung in konstanter Zeit möglich ist).

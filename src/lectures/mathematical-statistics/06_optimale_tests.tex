@@ -8,11 +8,11 @@
         \item
         einfache Hypothesen
         $H_0\colon \theta = \theta_0$ vs. $H_1\colon \theta = \theta_1$,
-        
+
         \item
         für einseitige (zusammengesetzte) Hypothesen, z.\,B.
         $H_0\colon \theta \le \theta_0$ vs. $H_1\colon \theta > \theta_0$, und
-        
+
         \item
         für zweiseitige Hypothesen
         $H_0\colon \theta = \theta_0$ vs. $H_1\colon \theta \not= \theta_0$,
@@ -73,7 +73,7 @@
     In diesem Fall wählt man $k := \overline{k}$ und $\gamma \in [0, 1]$, sodass
     $P_{\theta_0}(\{x \;|\; Y(x) \le \overline{k}\}) -
     \gamma P_{\theta_0}(\{x \;|\; Y(x) = \overline{k}\}) = 1 - \alpha$.
-    
+
     Die Randomisierung bewirkt, dass das vorgegebene Niveau $\alpha$ voll ausgeschöpft wird,
     d.\,h. $\EE_{\theta_0}(\delta(X)) = \alpha$.
     Dies hat aber auch zur Folge, dass die Gütefunktion für $\theta = \theta_1$
@@ -102,7 +102,7 @@
     Außerdem gilt $\PP(H_0 \text{ abl.} | H_1 \text{ wahr}) = \PP_{0.8}(X > 7)
     = 1 - \PP_{0.8}(X \le 7) = 1 - 1.5 \cdot 10^{-5}$,
     d.\,h. die Fehlerwahrscheinlichkeit 2. Art ist sehr klein.
-    
+
     Nun betrachtet man den randomisierten Test
     $\delta_{\text{r}}(x) := 0$ für $\frac{p(x, 0.8)}{p(x, 0.2)} < k$,
     $\delta_{\text{r}}(x) := \gamma$ für $\frac{p(x, 0.8)}{p(x, 0.2)} = k$ und
@@ -194,7 +194,7 @@
     Also gehört die Verteilung von $X$ zu einer $1$-parametrigen Exponentialfamilie.
     $c\colon \real \rightarrow \real$ ist streng monoton wachsend, d.\,h.
     $\P$ besitzt nach obiger Bemerkung einen monotonen Dichtequotienten bzgl. $T$.
-    
+
     Wegen $\PP_\mu(T(X) = c) = 0$ für alle $c \in \real$
     kann $\gamma$ beliebig gewählt werden, z.\,B. $\gamma = 1$.
     Der nicht-randomisierte Test $\delta(x) := \1_{\{T(X) \ge c\}}$ aus dem Satz hat die
@@ -212,7 +212,7 @@
     $1 - \Phi\!\left(c - \frac{\mu_0}{\sigma/\sqrt{n}}\right) = \alpha
     \iff \Phi\!\left(c - \frac{\mu_0}{\sigma/\sqrt{n}}\right) = 1 - \alpha
     \iff c = z_{1-\alpha} + \frac{\mu_0}{\sigma/\sqrt{n}}$.
-    
+
     Nach dem Satz ist daher
     $\delta(X) = \1_{\left\{\frac{\overline{X} - \mu_0}
     {\sigma/\sqrt{n}} \,\ge\, z_{1-\alpha}\right\}}$
@@ -230,11 +230,11 @@
         \item
         $H_0\colon \theta = \theta_0$ vs.
         $H_1\colon \theta \not= \theta_0$
-        
+
         \item
         $H_0\colon \theta \in [\theta_1, \theta_2]$ vs.
         $H_1\colon \theta \notin [\theta_1, \theta_2]$
-        
+
         \item
         $H_0\colon \theta \notin (\theta_1, \theta_2)$ vs.
         $H_1\colon \theta \in (\theta_1, \theta_2)$
@@ -273,8 +273,8 @@
     Für spezielle $1$-parametrige Exponentialfamilien mit monotonem Dichtequotienten können
     unter gewissen weiteren Regularitätsvoraussetzungen gleichmäßig beste Tests
     (unter allen unverfälschten Tests) konstruiert werden.
-    
-    
+
+
     Diese hier angesprochenen Tests erhält man auch als Kombination zweier einseitiger Tests.
     Im Folgenden seien die Annahmen des Satzes zu optimalen einseitigen Tests erfüllt.
     \begin{enumerate}[label=\arabic*.]
@@ -282,7 +282,7 @@
         Bestimme die Konstanten $\gamma_r$ und $c_r$ zum rechtsseitigen Testproblem\\
         $H_0\colon \theta \le \theta_0$ vs.
         $H_1\colon \theta > \theta_0$.
-        
+
         \item
         Bestimme die Konstanten $\gamma_\ell$ und $c_\ell$ zum linksseitigen Testproblem\\
         $H_0\colon \theta \ge \theta_0$ vs.
@@ -335,15 +335,15 @@
     \begin{enumerate}[label=\arabic*.]
         \item
         Berechne den MLS $\widehat{\theta}$ von $\theta \in \Theta$.
-        
+
         \item
         Berechne den MLS $\widehat{\theta}_0$ von $\theta \in \Theta_0$.
-        
+
         \item
         Berechne $\lambda(x) := \frac{p(x, \widehat{\theta})}{p(x, \widehat{\theta}_0)}
         = \frac{\sup_{\theta \in \Theta} p(x, \theta)}{\sup_{\theta \in \Theta_0} p(x, \theta)}$
         (leichter zu berechnender Zähler).
-        
+
         \item
         Finde eine strikt monotone Funktion $h$ auf dem Bild von $\lambda$,
         sodass die Verteilung von $h(\lambda(X))$ unter $H_0$ bekannt ist.
@@ -403,7 +403,7 @@
     $\widehat{\sigma}_0^2 := {S^\ast}^2(X) = \frac{1}{n} \sum_{i=1}^n (X_i - \mu_0)^2$,
     also ist $\widehat{\theta}_0 := (\mu_0, \widehat{\sigma}_0^2)$ der MLS für
     $\theta \in \Theta_0$.
-    
+
     Somit erhält man den verallg. L.-Q.-Test $\delta(X) = \1_{\{h(\lambda(X)) \ge h_{1-\alpha}\}}$
     mit $\lambda(x) := \frac{p(x, \widehat{\theta})}{p(x, \widehat{\theta}_0)}$.\\
     Also gilt $\ln \lambda(x)
@@ -417,7 +417,7 @@
     durch $\delta(X) = \1_{\{\widehat{\sigma}_0^2(X)/\widehat{\sigma}^2(X) > c\}}$
     definiert werden, wobei der kritische Wert $c$ so gewählt wird,
     dass das vorgegebene Niveau $\alpha$ eingehalten wird.
-    
+
     Zur Bestimmung der Verteilung von $\widehat{\sigma}_0^2/\widehat{\sigma}^2$
     berechnet man
     $\widehat{\sigma}_0^2/\widehat{\sigma}^2
@@ -428,7 +428,7 @@
     Damit ist $\delta$ äquivalent zu einem Test
     $\widetilde{\delta}(X) := \1_{\{|T(X)| > \widetilde{c}\}}$ mit
     $\widetilde{c} := t_{n-1,1-\alpha/2}$.
-    
+
     Die Gütefunktion berechnet sich zu
     $G_{\widetilde{\delta}}(\theta)
     = \EE_\theta(\widetilde{\delta}(X))
@@ -437,7 +437,7 @@
     \frac{\mu - \mu_0}{S(X)/\sqrt{n}}\right| > t_{n-1,1-\alpha/2}\right)$,
     denn $T(X)$ besitzt eine nicht-zentrale $t$-Verteilung mit Nichtzentralitätsparameter
     $\Delta = \Delta(\theta) = \frac{\mu - \mu_0}{\sigma/\sqrt{n}}$.
-    
+
     Der Annahmebereich $C(X)$ des Tests $\widetilde{\delta}$ ist ein
     $(1-\alpha)$-Konfidenzintervall für $\mu$,
     dabei gilt $C(X) = \{\mu \in \real \;|\; |T(X)| \le t_{n-1,1-\alpha/2}\}

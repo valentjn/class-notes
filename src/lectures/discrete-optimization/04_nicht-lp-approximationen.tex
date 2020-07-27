@@ -11,17 +11,17 @@
     \item
     Starte mit einer zulässigen Lösung
     (bei UFL öffne ein Lager und verbinde alle Kunden mit dem Lager).
-    
+
     \item
     Führe lokale Operationen solange aus, bis sich die Lösung nicht mehr verbessert.
     Bei UFL gibt es die folgenden Operationen:
     \begin{itemize}
-        \item 
+        \item
         ADD:
         Öffne ein neues Lager $i^\ast$ und
         verbinde alle Kunden mit $i^\ast$, für die $i^\ast$ am billigsten ist
         (nur, wenn die Ersparnisse die Öffnungskosten von $i^\ast$ überwiegen).
-        
+
         \item
         SWAP:
         Öffne ein neues Lager $i^\ast$ und
@@ -30,7 +30,7 @@
         (nur, wenn $\sum_{\text{$i$ zu schließen}}
         (f_i + \sum_{j \in D,\; \text{$j$ mit $i$ verbunden}} (c_{i,j} - c_{i^\ast,j})) >
         f_{i^\ast}$).
-        
+
         \item
         DELETE:
         Lösche ein Lager und verbinde die verwaisten Kunden mit den nächstgelegenen Lagern.
@@ -118,7 +118,7 @@ ohne eingehende Kanten, aber mit ausgehenden Kanten zu jedem anderen Knoten.
     Berechne für jedes $v \in V$ ein \begriff{Distanz-Label} $d(v)$ als
     die Länge des längsten Pfads von $s_0$ nach $v$ (geht, da $G$ azyklisch).
     Es muss $\phi(v) \ge d(v)$ gelten.
-    
+
     \item
     Sei $d_i := |\{v \in V \;|\; d(v) = i\}|$.
     Führe zunächst alle $v \in V$ mit $d(v) = 1$ aus
@@ -170,14 +170,14 @@ mit Graph $H = (W, D)$ und $m \in \natural$ konstruiert.
     Setze $W := V \cup E \cup F_1 \cup F_2 \cup F_3$ für die Knoten,
     wobei $F_1, F_2, F_3$ paarweise disjunkte \begriff{Füllmengen} mit noch zu bestimmenden
     Kardinalitäten sind.
-    
+
     \item
     Setze $D$ so, dass
     alle Jobs in $F_1$ vor denen in $F_2$ bearbeitet sein müssen,
     alle Jobs in $F_2$ vor denen in $F_3$ bearbeitet sein müssen und
     $(v, e), (w, e) \in D$ für $e = \{v, w\} \in E$
     (Knotenjobs vor zugehörigem Kantenjob).
-    
+
     \item
     Wähle $m, |F_1|, |F_2|, |F_3|$, sodass
     $m = k + |F_1|$, $m = \frac{k(k-1)}{2} + (|V| - k) + |F_2|$ und\\
@@ -208,7 +208,7 @@ $G = (V, E)$ enthält eine $k$-Clique $\iff$ $I$ kann in 3 Zeitschritten bearbei
     2. Bearbeite die restlichen $|V| - k$ Knotenjobs, $\frac{k(k-1)}{2}$ Kantenjobs der $k$-Clique
     und $F_2$.
     3. Bearbeite die restlichen $|E| - \frac{k(k-1)}{2}$ Kantenjobs und $F_3$.
-    
+
     "`$\impliedby$"':
     Angenommen, $I$ kann in 3 Zeitschritten bearbeitet werden.
     Dann kann kein Arbeiter zu irgendeiner Zeit "`arbeitslos"' sein
@@ -245,7 +245,7 @@ wenn $\text{P} \not= \text{NP}$.
         Daher muss $\phi$ die Länge $3$ haben
         (ein Schedule der Länge $\ge 4$ würde der $\alpha$-Approximation mit $\alpha < \frac{4}{3}$
         widersprechen).
-        
+
         \item
         \emph{$G$ enthält keine $k$-Clique}:
         In diesem Fall kann $I$ nach Lemma 1 in 4,
@@ -268,20 +268,20 @@ groß ist wie eine kleinstmögliche Knotenüberdeckung $C_\opt$.
 \begin{enumerate}
     \item
     Setze $C \leftarrow \emptyset$.
-    
+
     \item
     Solange $E \not= \emptyset$, wiederhole:
     \begin{enumerate}
         \item
         Wähle eine beliebige Kante $e = \{v, w\} \in E$.
-        
+
         \item
         Setze $C \leftarrow C \cup \{v, w\}$ und $M \leftarrow M \cup \{e\}$.
-        
+
         \item
         Entferne alle Kanten aus $E$, die inzident zu $v$ oder $w$ sind.
     \end{enumerate}
-    
+
     \item
     Gebe $C$ aus.
 \end{enumerate}
@@ -299,7 +299,7 @@ Der Algorithmus produziert eine $2$-Approximation.
     Daher sind die Kanten von $M$ paarweise nicht-adjazent,
     d.\,h. $M$ ist am Ende ein Matching und es gilt
     $|C_\opt| \ge |M| = \frac{|C|}{2} \iff |C| \le 2|C_\opt|$.
-    
+
     ($|M| \le |C_\opt|$ gilt, weil man eine injektive Abbildung
     $f\colon M \to C_\opt$ wie folgt konstruieren kann:
     Sei $e = \{v, w\} \in M$ beliebig.
@@ -315,21 +315,21 @@ Der Algorithmus produziert eine $2$-Approximation.
 \begin{itemize}
     \item
     Der Algorithmus läuft in Zeit $\O(m)$ mit $m := |E|$.
-    
+
     \item
     Es gibt keinen Polynomialzeit-Algorithmus, der eine $1.1666$-Approximation produziert,
     wenn $\text{P} \not= \text{NP}$.
-    
+
     \item
     Obwohl das VC-Problem NP-vollständig ist, ist die $\integer$-Version des dualen Problems
     in Polynomialzeit lösbar (bekannt als \begriff{maximum cardinality matching}).
-    
+
     \item
     Es gibt VC-Instanzen, bei denen der Algorithmen tatsächlich Knotenüberdeckungen $C$
     mit $|C| = 2|C_\opt|$ ausgibt
     (z.\,B. vollständige bipartite Graphen),
     d.\,h. die Approximationsschranke ist scharf.
-    
+
     \item
     Man kann keinen anderen Algorithmus entwerfen, der z.\,B. $C$ mit
     $|C| = \frac{3}{2} |M|$ zurückgibt (und daher besser ist):

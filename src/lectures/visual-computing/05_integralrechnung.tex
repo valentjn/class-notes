@@ -64,7 +64,7 @@ Eine Teilmenge $D \subset \real^2$ heißt
     \begriff{Normalgebiet vom Typ I},
     falls $D = \{(x, y) \in \real^2 \;|\; x \in [a, b],\; y \in [u(x), o(x)]\}$\\
     für zweifach stetig diffb. Randfunktionen $u$ und $o$, und
-    
+
     \item
     \begriff{Normalgebiet vom Typ II},
     falls $D = \{(x, y) \in \real^2 \;|\; y \in [c, d],\; x \in [l(y), r(y)]\}$\\
@@ -264,11 +264,11 @@ Dann lässt sich $\int_a^b f(x) \dx$ approximieren durch
     \item
     $F_N := \sum_{j=0}^{N-1} f(a + (j+1/2) \Delta x) \cdot \Delta x$
     (\begriff{\name{Riemann}-Summe}),
-    
+
     \item
     $F_N := \left(\frac{f(a) + f(b)}{2} + \sum_{j=1}^{N-1} f(x_j)\right) \cdot \Delta x$
     (\begriff{Trapezregel}) und
-    
+
     \item
     $F_N := \left(f(a) + f(b) + \sum_{j=1}^{N-1} (3 - (-1)^j) f(x_j)\right)
     \cdot \frac{\Delta x}{3}$
@@ -285,21 +285,21 @@ geschieht wie folgt:
     \item
     Wähle eine Funktion $g\colon [a, b] \to \real$ mit $f \le g$, deren Integral
     $A := \int_a^b g(x) \dx$ bekannt ist.
-    
+
     \item
     Wähle $n_{\text{trials}} \in \natural$ und setze $n_{\text{accept}} := 0$.
-    
+
     \item
     Wiederhole $n_{\text{trials}}$ Mal:
     \begin{enumerate}
         \item
         Wähle gleichverteilt Zufallszahlen $x \in [a, b]$ und $\xi \in [0, 1]$.
-        
+
         \item
         Wenn $\xi \cdot g(x) \le f(x)$ gilt,
         dann setze $n_{\text{accept}} \leftarrow n_{\text{accept}} + 1$.
     \end{enumerate}
-    
+
     \item
     $F := A \cdot \frac{n_{\text{accept}}}{n_{\text{trials}}}$ ist eine Schätzung für
     $\int_a^b f(x) \dx$.
@@ -350,13 +350,13 @@ Dann kann eine Realisierung $x$ von $X$ wie folgt bestimmt werden:
 \begin{enumerate}
     \item
     Berechne die Verteilungsfunktion $F_X(x) = \int_{-\infty}^x f_X(x') \dx'$.
-    
+
     \item
     Berechne die Inverse $F_X^{-1}\colon [0, 1] \to \real$.
-    
+
     \item
     Erzeuge eine gleichverteilte Zufallszahl $\xi \in [0, 1]$.
-    
+
     \item
     Berechne $x = F_X^{-1}(\xi)$.
 \end{enumerate}
@@ -393,17 +393,17 @@ Dann kann eine Realisierung $(x, y)$ von $(X, Y)$ wie folgt bestimmt werden:
     \item
     Sind $X$ und $Y$ unabhängig, dann gilt $f_{(X,Y)}(x, y) = f_X(x) \cdot f_Y(y)$
     und man kann die Realisierungen einzeln berechnen.
-    
+
     \item
     Falls $X$ und $Y$ nicht unabhängig sind:
     \begin{enumerate}
         \item
         Berechne die Randdichte $f_X(x) := \int_\real f_{(X,Y)}(x, y) \dy$.
-        
+
         \item
         Berechne die Dichte $f_Y(y\;|\;X=x) := \frac{f_{(X,Y)}(x, y)}{f_X(x)}$
         der bedingten Verteilung.
-        
+
         \item
         Berechne eine Realisierung mittels $f_X(x)$ und danach mittels $f_Y(y\;|\;X=x)$.
     \end{enumerate}

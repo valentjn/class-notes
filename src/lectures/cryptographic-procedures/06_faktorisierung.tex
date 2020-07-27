@@ -21,19 +21,19 @@ Die Laufzeiten werden in Abhängigkeit der Länge $\log n$ der Zahl $n$ angegebe
     \item
     \emph{Probedivison}:
     $\O(\sqrt{2^{\log n}}) = \O(\sqrt{n})$
-    
+
     \item
     \emph{\name{Pollard}s $(p-1)$-Methode}:
     $\O(\sqrt[3]{2^{\log n}}) = \O(\sqrt[3]{n})$
-    
+
     \item
     \emph{\name{Pollard}s $\varrho$-Methode}:
     $\weakO(\sqrt[4]{2^{\log n}}) = \weakO(\sqrt[4]{n})$
-    
+
     \item
     \emph{quadratisches Sieb}:
     $2^{\weakO(\sqrt{\log n})}$
-    
+
     \item
     \emph{Zahlkörpersieb}:
     $2^{\weakO(\sqrt[3]{\log n})}$
@@ -67,13 +67,13 @@ für den gilt, dass $p - 1$ nur Primteiler aus der Basis $B$ besitzt.
 \begin{enumerate}
     \item
     Wähle eine Basis $B \subset \PP$.
-    
+
     \item
     Berechne $k := \prod_{q \in B} q^{\lfloor \log_q n \rfloor}$.
-    
+
     \item
     Wähle $a \in (\ZnZ)^\ast$ zufällig und berechne $\ggT(a^k - 1, n)$.
-    
+
     \item
     Ist dies kein nicht-trivialer Teiler von $n$, dann versuche es erneut mit einem anderen
     $a$ oder einer größeren Basis $B$.
@@ -173,16 +173,16 @@ folgt.
     \item
     Wähle $x_0 \in \ZnZ$, $F\colon \ZnZ \rightarrow \ZnZ$
     und setze $i := 1$, $y_0 := x_0$.
-    
+
     \item
     Berechne $x_i := F(x_{i-1})$ und $y_i := F(F(y_{i-1}))$.
-    
+
     \item
     Berechne $d := \ggT(y_i - x_i, n)$ und überprüfe, ob $1 < d < n$.
     \begin{itemize}
         \item
         Falls ja, so ist $d$ ein nicht-trivialer Teiler von $n$.
-        
+
         \item
         Falls nein, erhöhe $i$ um $1$ und gehe zu \emph{(2)}.
     \end{itemize}
@@ -239,14 +239,14 @@ Das \begriff{quadratische Sieb} ist ein Faktorisierungsverfahren und verläuft w
 \begin{enumerate}
     \item
     Wähle eine Faktorbasis $B$.
-    
+
     \item
     Finde genügend viele Zahlen $z \in \integer$ mit $g(z) := z^2 \bmod n$ $B$-glatt.
-    
+
     \item
     Wähle eine Teilmenge der $z$, sodass das Produkt $r$ der $g(z)$ nur gerade Exponenten bzgl.
     Faktoren aus $B$ enthält.
-    
+
     \item
     Definiere $x$ als das Produkt der $z$ und
     $y$ als das Produkt der $g(z)$, nur jeweils mit halbierten Exponenten.
@@ -275,25 +275,25 @@ Die Ermittlung von Zahlen $x$ mit $f(x)$ $B$-glatt verläuft wie folgt:
 \begin{enumerate}
     \item
     Wähle ein \begriff{Sieb} $S := \{-c, \dotsc, c\}$ mit $c \in \natural$.
-    
+
     \item
     Berechne $f(s) := (s + m)^2 - n$ mit $m := \left\lfloor\sqrt{n}\right\rfloor$
     für alle $s \in S$.
-    
+
     \item
     Für jede Primzahl $p \in B \setminus \{-1\}$ wiederhole:
     \begin{enumerate}
         \item
         Berechne die (maximal zwei) Nullstellen $s_{1,p}, s_{2,p} \in \FF_p$ von
         $(X + m)^2 - n \in \FF_p[X]$.
-        
+
         \item
         Für $s \in S$ gilt $p \teilt f(s) \iff s \in \{s_{1,p}, s_{2,p}\} + p\integer$.
         Ermittle daher für jedes $s \in S \cap (\{s_{1,p}, s_{2,p}\} + p\integer)$ den maximalen
         Exponenten $e_p(f(s)) \in \natural$ von $f(s)$ bzgl. des Faktors $p$
         und teile ihn in einer anderen Variable heraus.
     \end{enumerate}
-    
+
     \item
     Die $s \in S$ mit $f(s)$ $B$-glatt sind genau die $s \in S$, bei denen $\pm 1$ in der
     anderen Variable übrig bleibt.
@@ -351,16 +351,16 @@ $n = 7429$, $m = 86$, $c = 3$, $B = \{-1, 2, 3, 5, 7\}$
     \toprule
     $s$ & $-3$ & $-2$ & $-1$ & $0$ & $1$ & $2$ & $3$\\
     $f(s)$ & $-540$ & $-373$ & $-204$ & $-33$ & $140$ & $315$ & $492$\\
-    
+
     \midrule
     \emph{$2$ sieben} & $-135$ & & $-51$ & & $35$ & & $123$\\
     \emph{$3$ sieben} & $-5$ & & $-17$ & $-11$ & & $35$ & $41$\\
     \emph{$5$ sieben} & $-1$ & & & & $7$ & $7$ &\\
     \emph{$7$ sieben} & & & & & $1$ & $1$ &\\
-    
+
     \midrule
     \emph{Ergebnis} & \textbf{$-1$} & $-373$ & $-17$ & $-11$ & \textbf{$1$} & \textbf{$1$} & $41$\\
-    
+
     \bottomrule
 \end{tabular}\end{center}
 

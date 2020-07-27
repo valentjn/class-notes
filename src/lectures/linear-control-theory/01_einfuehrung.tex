@@ -15,15 +15,15 @@ verbunden und beeinflussen sich gegenseitig.
 \begin{itemize}
     \item
     Knopf zur automatischen Geschwindigkeitsreglung in US-amerikanischen Autos
-    
+
     \item
     Biologie: z.\,B. die Regulierung des Glukosespiegels im Blut, damit dieser konstant bleibt
     (Leber und Pankreas messen bzw. schütten die Hormone Insulin und Glukagon aus und beeinflussen
     sich somit gegenseitig)
-    
+
     \item
     \begriff{Steuerproblem}: Flug einer Rakete zum Mond mit möglichst wenig Treibstoffaufwand
-    
+
     \item
     \begriff{Fliehkraftregler (centrifugal governor)}:
     Dieser hält die Rotationsgeschwindigkeit auf einem konstanten Wert,
@@ -45,11 +45,11 @@ verbunden und beeinflussen sich gegenseitig.
     \item
     Erhöhung der Unempfindlichkeit des Systems auf externe Einflüsse\\
     (mehr Glukose durch Essen, Änderung der Belastung beim Fliehkraftregler)
-    
+
     \item
     Erhöhung der Robustheit gegen Veränderungen in den Komponenten\\
     (Veränderung der Masse des Rades beim Fliehkraftregler)
-    
+
     \item
     lineares Verhalten bei nicht-linearen Systemen erzwingen\\
     (Autopilot bei Kampfjets, Leistungselektronik)
@@ -61,7 +61,7 @@ verbunden und beeinflussen sich gegenseitig.
     Erzeugung von dynamischen Instabilitäten, also Oszillationen oder bestimmte Divergenz\\
     (Reduktion der Reibung durch Optimierung der Maschine kann zu Oszillationen beim
     Fliehkraftregler führen)
-    
+
     \item
     Erhöhung der Empfindlichkeit auf externe Einflüsse und Veränderungen der Komponenten\\
     (Verstärkung des Rauschens bei einem Sensor)
@@ -126,7 +126,7 @@ Je nach Umständen kann sie auf zwei verschiedene Arten interpretiert werden:
     \item
     \begriff{Steuergröße (control input)}:
     falls $u(\cdot)$ frei verändert werden darf
-    
+
     \item
     \begriff{Störgröße (disturbance input)}:
     falls $u(\cdot)$ durch die Natur feststeht und nicht verändert werden darf
@@ -147,7 +147,7 @@ Auch $y$ kann auf zwei Arten interpretiert werden:
 \begin{itemize}
     \item
     $y$ ist eine Variable, die gemessen werden kann (mittels Sensoren).
-    
+
     \item
     $y$ ist eine Variable, die zur Analyse der Eigenschaften des Systems überwacht werden soll
     (in der Simulation).
@@ -181,7 +181,7 @@ $(q(\cdot), \dot{q}(\cdot))$ und $y(\cdot)$, die diese Gleichung erfüllen.
 
 \textbf{Trajektorien}:
 \begriff{Signale (signals)} oder \begriff{Traktorien (trajectories)}
-sind vektorwertige Funktionen der Zeit. 
+sind vektorwertige Funktionen der Zeit.
 Normalerweise wird stillschweigend angenommen, dass sie abschnittsweise stetig sind.
 
 Die Bedingungen, die erfüllt sein müssen, werden oft durch DGLs beschrieben.
@@ -200,14 +200,14 @@ einer mathematisch präzisen Weise entwickelt.
 \begin{itemize}
     \item
     Falls es keinen externen Einfluss gibt, wie verhalten sich die Zustands- und Ausgangsgröße?
-    
+
     \item
     Kann das System von einer Position in eine andere gebracht werden
     (\begriff{Steuerproblem, steering problem})?
-    
+
     \item
     Ist es möglich, die Eingangs- aus der Ausgangsgröße zu rekonstruieren?
-    
+
     \item
     Kann das System so modifiziert werden, sodass ein gewünschtes Verhalten erzielt wird?
 \end{itemize}
@@ -342,7 +342,7 @@ Außerdem gilt für $t_+ < \infty$ genau eine der folgenden beiden Eigenschaften
     \item
     Die Lösung divergiert bestimmt in der Norm:\\
     $\lim_{t \to t_+-0} \norm{x(t)} = \infty$.
-    
+
     \item
     Die Lösung nähert sich dem Rand von $D$ an:\\
     Für alle Folgen $(t_\nu)_{\nu \in \natural}$ in $I_{(\tau, \xi)}$ mit
@@ -520,14 +520,14 @@ Die \begriff{Verbindung} geschieht dabei durch Gleichsetzung von Signalen.
     \item
     Benutzung von Softwarebibliotheken mit Standard-Systemkomponenten und
     Schnittstellen zwischen verschiedenen physikalischen Bereichen
-    
+
     \item
     Benutzung von Modellierungspaketen (MATLAB, Modelica)
-    
+
     \item
     Übersichtlichkeit auch bei komplexen Modellen durch die hierarchische, verschachtelte
     Struktur
-    
+
     \item
     Veränderung von einzelnen Komponenten, ohne das Gesamtgefüge zu zerstören
 \end{itemize}
@@ -619,16 +619,16 @@ Die Verwendung erfolgt wie folgt:
 \begin{itemize}
     \item
     Definition: \code{sys = ss(A, B, C, D)}
-    
+
     \item
     Reihenschaltung: \code{sys = sys1 * sys2}
-    
+
     \item
     Parallelschaltung: \code{sys = sys1 + sys2}
-    
+
     \item
     Simulation: \code{y = lsim(sys, u, T, x0)}
-    
+
     \item
     Bestimmung der definierenden Matrizen: \code{[A, B, C, D] = ssdata(sys)}
 \end{itemize}
@@ -646,15 +646,15 @@ Solche Diagramme sollten bestimmten algebraischen Gleichungen entsprechen.
     \item
     \textbf{Reihenschaltung}:\\
     \includegraphics[scale=\modelscale]{schaltung_reihe.png}
-    
+
     \item
     \textbf{Parallelschaltung}:\\
     \includegraphics[scale=\modelscale]{schaltung_parallel.png}
-    
+
     \item
     \textbf{gedämpftes Federpendel}:\\
     \includegraphics[scale=\modelscale]{federpendel_gedaempft.png}
-    
+
     \item
     \textbf{allgemeines lineares System}:
     (in Simulink auch darstellbar durch einen \code{State-Space}- oder \code{LTI Systems}-Block,

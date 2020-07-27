@@ -24,7 +24,7 @@ Ein \begriff{Fluss} im Netzwerk $G$ ist eine Abbildung $f\colon E \to \natural_0
     \item
     $\forall_{e \in E}\; f(e) \le \Cap(e)$
     (\begriff{Kapazitätsbedingung}) und
-    
+
     \item
     $\forall_{v \in V \setminus \{s, t\}}\;
     \sum_{e = (\cdot, v)} f(e) = \sum_{e = (v, \cdot)} f(e)$
@@ -59,7 +59,7 @@ mit denselben Knoten, wobei die Kanten mit ihren Kapazitäten wie folgt definier
     \item
     Für jede Kante $e \in E$ mit $f(e) < \Cap(e)$ sei
     $e \in E_f$ mit $\Cap_f(e) := \Cap(e) - f(e)$.
-    
+
     \item
     Für jede Kante $e = (v, w) \in E$ mit $f(e) > 0$ sei
     $e' := (w, v) \in E_f$ mit $\Cap_f(e') := f(e)$.
@@ -73,10 +73,10 @@ $G$ wie folgt.
 \begin{enumerate}
     \item
     Starte mit $f$ als Nullfluss.
-    
+
     \item
     Konstruiere das Residualnetzwerk $G_f = G$.
-    
+
     \item
     Solange es einen \begriff{augmentierenden Pfad} $\pi$ in $G_f$ von $s$ nach $t$ gibt,
     wiederhole:
@@ -84,11 +84,11 @@ $G$ wie folgt.
         \item
         Sende den \begriff{Flaschenhals-Wert} von $\pi$ von $s$ nach $t$ über $\pi$,
         addiere den Fluss auf $f$.
-        
+
         \item
         Berechne $G_f$ neu.
     \end{enumerate}
-    
+
     \item
     Gebe $f$ zurück.
 \end{enumerate}
@@ -130,7 +130,7 @@ Der Algorithmus arbeitet korrekt.
     $\sum_{e \in \dcut(A, G)} \Cap(e) = \val(f)$.
     Weil die linke Seite eine obere Schranke für den Wert eines optimalen Flusses ist,
     muss $f$ dann maximal sein.
-    
+
     Sei dazu $A$ die Menge der Knoten, die im letzten Residualnetzwerk $G_f$ von $s$ aus
     erreichbar sind.
     Dann gilt $s \in A$ und $t \notin A$
@@ -142,7 +142,7 @@ Der Algorithmus arbeitet korrekt.
         gilt $f(e) = \Cap(e)$.\\
         Sonst würde aus $f(e) < \Cap(e)$ folgen, dass $e$ auch eine Kante in $G_f$ wäre.
         Dann wäre $w$ von $s$ aus in $G_f$ erreichbar, ein Widerspruch zu $w \notin A$.
-        
+
         \item
         Für jede in $A$ eingehende Kante $e = (v, w)$ (also $v \in V \setminus A$, $w \in A$)
         gilt $f(e) = 0$.\\
@@ -186,32 +186,32 @@ Der Ford-Fulkerson-Algorithmus mit \begriff{Capacity Scaling} sieht wie folgt au
 \begin{enumerate}
     \item
     Starte mit $f$ als Nullfluss.
-    
+
     \item
     Wähle $D$ als die größte Zweierpotenz kleiner als $C := \max_{e \in E} \Cap(e)$
     (d.\,h. $D := 2^{\lfloor \log_2 C \rfloor}$).
-    
+
     \item
     Wiederhole Folgendes, solange $D \ge 1$ ist:
     \begin{enumerate}
         \item
         Konstruiere das Residualnetzwerk $G_f(D)$ von $G$ bzgl. $f$,
         eingeschränkt auf die Kanten mit Kapazität $\ge D$.
-        
+
         \item
         Solange es einen Pfad $\pi$ in $G_f(D)$ von $s$ nach $t$ gibt, wiederhole:
         \begin{enumerate}
             \item
             Augmentiere $f$ um den maximalen Fluss entlang $\pi$.
-            
+
             \item
             Berechne $G_f(D)$ neu.
         \end{enumerate}
-        
+
         \item
         Halbiere $D$.
     \end{enumerate}
-    
+
     \item
     Gebe $f$ zurück.
 \end{enumerate}
@@ -297,7 +297,7 @@ Während des Verlaufs des Algorithmus verringert sich die Länge der augmentiere
     \begin{itemize}
         \item
         Kanten im Residualnetzwerk können verschwinden (wegen voller Kapazität) oder
-        
+
         \item
         Rückwärtskanten, die vorher noch nicht da waren, können erstellt werden.
     \end{itemize}
@@ -354,10 +354,10 @@ Gegeben ist ein \begriff{erweitertes Netzwerk} $G = (V, E, b, c, \Cap)$ mit
 \begin{itemize}
     \item
     \begriff{Überschussfunktion} $b\colon V \to \integer$,
-    
+
     \item
     \begriff{Kostenfunktion} $c\colon E \to \integer$ und
-    
+
     \item
     \begriff{Kapazitätsfunktion} $\Cap\colon E \to \natural$,
 \end{itemize}
@@ -368,7 +368,7 @@ d.\,h.
     \item
     $\forall_{e \in E}\; f(e) \le \Cap(e)$
     (\begriff{Kapazitätsbedingung}) und
-    
+
     \item
     $\forall_{v \in V}\;
     b(v) + \sum_{e = (\cdot, v)} f(e) = \sum_{e = (v, \cdot)} f(e)$
@@ -385,11 +385,11 @@ mit
     \item
     $V' := V \cup \{s, t\}$
     (wobei $s \notin V$ die \begriff{Superquelle} und $t \notin V$ die \begriff{Supersenke} ist),
-    
+
     \item
     $E' := E \cup \{(s, v) \;|\; v \in V,\; b(v) > 0\} \cup \{(w, t) \;|\; w \in V,\; b(w) < 0\}$
     sowie
-    
+
     \item
     $\Cap'(e) := e$ für $e \in E$, $\Cap'((s, v)) := b(v)$ und $\Cap'((w, t)) := -b(w)$.
 \end{itemize}
@@ -410,7 +410,7 @@ mit denselben Knoten, wobei die Kanten mit ihren Kapazitäten wie folgt definier
     \item
     Für jede Kante $e \in E$ mit $f(e) < \Cap(e)$ sei $e \in E_f$ mit\\
     $\Cap_f(e) := \Cap(e) - f(e)$ und $c_f(e) := c(e)$.
-    
+
     \item
     Für jede Kante $e = (v, w) \in E$ mit $f(e) > 0$ sei $e' := (w, v) \in E_f$ mit\\
     $\Cap_f(e') := f(e)$ und $c_f(e) := -c(e)$.
@@ -431,7 +431,7 @@ $v_0 = v_k$, $v_i \not= v_j$ für $i, j \ge 1$ und $\sum_{i=1}^k c((v_{i-1}, v_i
 %Während der FF-Algorithmus nach augmentierenden $s$-$t$-Pfaden im Residualnetzwerk gesucht hat,
 %wird nun nach \begriff{negativen Kreisen} gesucht, d.\,h. Pfaden $(v_0, \dotsc, v_k)$ mit
 %$v_0 = v_k$, $v_i \not= v_j$ für $i, j \ge 1$ und $\sum_{i=1}^k c((v_{i-1}, v_i)) < 0$.
-%Wird ein solcher negativer Kreis gefunden, dann wird 
+%Wird ein solcher negativer Kreis gefunden, dann wird
 
 \textbf{Cycle-Canceling-Algorithmus}:
 Der \begriff{Cycle-Canceling-Algorithmus}
@@ -439,20 +439,20 @@ bestimmt einen Fluss minimaler Kosten in einem Netzwerk $G$ wie folgt.
 \begin{enumerate}
     \item
     Berechne einen zulässigen Fluss $f$ wie oben.
-    
+
     \item
     Konstruiere das Residualnetzwerk $G_f$.
-    
+
     \item
     Solange es einen negativen Kreis $\pi$ in $G_f$ gibt, wiederhole:
     \begin{enumerate}
         \item
         Sende den Flaschenhals-Wert über $\pi$ und addiere den Fluss auf $f$.
-        
+
         \item
         Berechne $G_f$ neu.
     \end{enumerate}
-    
+
     \item
     Gebe $f$ zurück.
 \end{enumerate}
@@ -480,7 +480,7 @@ Dann ist $f$ ein Fluss minimaler Kosten genau dann, wenn $G_f$ keinen negativen 
     Angenommen, $f$ besitzt minimale Kosten, aber $G_f$ enthält einen negativen Kreis.
     Dann sende mindestens $1$ Fluss-Einheit entlang dieses Kreises, was die Kosten von $f$
     um mindestens $1$ reduziert, ein Widerspruch zur Minimalität von $f$.
-    
+
     "`$\impliedby$"':
     Angenommen, $G_f$ enthält keinen negativen Kreis, aber $f$ besitzt nicht minimale Kosten.
     Dann gibt es einen zulässigen Fluss $f^\ast$ mit $c(f^\ast) < c(f)$.
@@ -527,7 +527,7 @@ $C$ zurückgeben, der $\frac{c(C)}{|C|}$ minimiert (mit $|C|$ der Pfadlänge).
     Der Cycle-Canceling-Algorithmus startet mit einem zulässigen Fluss
     (nicht kostenoptimal) und verkleinert dann die Kosten, währenddessen die Zulässigkeit erhalten
     bleibt.
-    
+
     \item
     Der SSP-Algorithmus startet mit dem Nullfluss und erhöht schrittweise
     den Fluss, um Knoten-Überschuss/-Nachfrage zu decken,
@@ -543,7 +543,7 @@ Netzwerk $G$ ohne negative Kreise wie folgt.
     \item
     Starte mit $f$ als Nullfluss und
     konstruiere das Residualnetzwerk $G_f = G$.
-        
+
     \item
     Wiederhole Folgendes:
     \begin{enumerate}
@@ -552,11 +552,11 @@ Netzwerk $G$ ohne negative Kreise wie folgt.
         zwischen Knoten $v, w \in V$ mit $b(v) > 0$ und $b(w) < 0$.\\
         Gibt es keinen solchen Pfad, dann ist $\forall_{v \in V}\; b(v) = 0$
         und gebe $f$ zurück.
-        
+
         \item
         Sende so viel wie möglich von $v$ nach $w$
         (d.\,h. $\min\{\text{Flaschenhals}(\pi), b(v), -b(w)\}$).
-        
+
         \item
         Aktualisiere $b(v), b(w), f$ und berechne $G_f$ neu.
     \end{enumerate}
@@ -613,7 +613,7 @@ Jedes Residualnetzwerk ist frei von negativen Kreisen.
     Es gilt $c(C_1) + c(C_2) = c(C) < 0$ und $c(C_2) > 0$.
     $C_2$ liefert einen Pfad von $w$ nach $v$ mit Kosten $0 < c(C_2) < -c(C_1)$,
     was aber dem widerspricht, dass $\pi$ ein kürzester Pfad war.
-    
+
     Für die späteren Augmentierungen können Kanten mit negativen Kosten überall in $G_f$ verteilt
     sein.
     Daher wendet man das Johnson-Lemma nach jeder Augmentierung an.
@@ -631,7 +631,7 @@ Angenommen, $C_2$ geht von $v_6$ nach $v_0$.
     $v_0 \rightsquigarrow v_1 \rightsquigarrow v_5 \rightsquigarrow v_6$
     ersetzt werden (Kosten kleiner als $c(C_2) < 0$),
     wobei "`$v_1 \rightsquigarrow v_5$"' den Teil auf dem augm. Pfad meint.
-    
+
     \item
     Wenn $C_1$ in $v_1$ vor $v_0$ den augmentierenden Pfad verlässt, dann aber in $v_3$ vor $v_6$
     wieder betritt, in $v_4$ vor $v_3$ wieder verlässt, in $v_5$ nach $v_6$ wieder betritt und
@@ -654,7 +654,7 @@ Angenommen, $C_2$ geht von $v_6$ nach $v_0$.
     $+\; (-|c(v_0 \rightsquigarrow v_1)| + c(v_6 \rightsquigarrow v_0)) + c(v_1 \rightsquigarrow v_3)
     \ge c(v_1 \rightsquigarrow v_3) \ge 0$,
     ein Widerspruch zu $C$ negativer Kreis.
-    
+
     \item
     Die anderen Fälle gehen ähnlich.
 \end{itemize}

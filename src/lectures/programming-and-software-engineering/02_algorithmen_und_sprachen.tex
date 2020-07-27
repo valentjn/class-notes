@@ -19,35 +19,35 @@
     \begin{itemize}
         \item \begriff{Algorithmus} erhält einen Bezeichner und ist Folge von
         Anweisungen
-        
+
         \item \begriff{Variablen} werden in einem \pseudocode{declare}-Teil vor
         dem Algorithmus deklariert
-        
+
         \item \begriff{elementare Anweisungen}: \pseudocode{skip}, \quad
         \pseudocode{x := a}, \quad
         \pseudocode{read(x)}, \quad \pseudocode{write(x)}, \quad
         \pseudocode{halt}, \quad
         \pseudocode{exit}, \quad
         \pseudocode{Alg(a, b, c)}
-        
+
         \item \begriff{Ausdrücke}: arithmetische, logische oder
         Zeichenausdrücke
-        
+
         \item \begriff{Hintereinanderausführung}/Trennung von Anweisungen
         mittels \pseudocode{;}
-        
+
         \item \begriff{Fallunterscheidung}:
         \pseudocode{if foo then A [else B] fi}
-        
+
         \item \begriff{Schleifen}: \pseudocode{while foo do A od}, \quad
         \pseudocode{repeat A until foo}, \\
         \pseudocode{for i := a [by x] to b do C od} \quad
         (\pseudocode{i}, \pseudocode{a}, \pseudocode{b}, \pseudocode{x}
         dürfen nicht verändert werden)
-        
+
         \item \begriff{Kommentare} beginnen mit \pseudocode{{-}{-}}, ein
         Algorithmus hat die Form
-        
+
 \begin{lstlisting}[language=pseudosprache]
 program <Name> is
 declare
@@ -75,20 +75,20 @@ end
     \begin{itemize}
         \item Daten sind "`disket"' aufgebaut (mit endlich vielen
         digitalen Zeichen darstellbar)
-        
+
         \item Operationen sind "`diskret"' aufgebaut
-        
+
         \item Vorschrift ist eine endliche Folge von Operationen/wird
         schrittweise abgearbeitet
-        
+
         \item eine Operation ist als Startoperation ausgezeichnet
-        
+
         \item für jede Operation ist direkt nach der Ausführung bekannt,
         welches die möglichen (endlich vielen) Folgeoperationen sind oder ob
         der Algorithmus terminiert
-        
+
         \item Eingabe ist eine Folge von Daten (auch unendlich oder leer)
-        
+
         \item die bis zu jedem Zeitpunkt bearbeitete Menge an Daten
         und durchgeführten Operationen ist endlich
     \end{itemize}
@@ -117,13 +117,13 @@ end
     Es gibt keinen Algorithmus, der zu jedem beliebigen Algorithmus und jeder
     beliebigen Eingabe feststellen kann, ob dieser für diese Eingabe terminiert
     oder nicht (\begriff{Halteproblem}).
-    
+
     Gäbe es nämlich einen solchen Algorithmus $H$, so könnte man auch einen
     Algorithmus $J'$ konstruieren, der einen Algorithmus $A$ übergeben bekommt,
     mit:
     Wenn $A$ bei Eingabe von $A$ selbst terminiert, so gehe in eine
     Endlosschleife, andernfalls verlasse den Algorithmus.
-    
+
     Was passiert beim Aufruf von $J'$ mit $J'$? Würde $J'$ terminieren, so
     würde $J'$ in eine Endlosschleife gehen, also nicht terminieren.
     Würde $J'$  nicht terminieren, so würde $J'$ den Algorithmus verlassen,
@@ -145,10 +145,10 @@ end
         \item natürliche Zahlen: verschiedene \begriff{Stellenwertsysteme}
         möglich \\
         (Dezimal-/Binär-/Oktal-/Hexadezimalsystem usw.)
-        
+
         \item ganze Zahlen: \begriff{Zweierkomplementdarstellung}
         (erstes Bit Vorzeichen)
-        
+
         \item rationale/reelle Zahlen: \begriff{Festkommadarstellung}
         (die letzten $x$~Bit sind Nachkommastellen),
         \begriff{Gleitkommadarstellung}
@@ -227,16 +227,16 @@ end
     \begin{itemize}
         \item $V$ nicht-leere endliche Menge
         (\begriff{Nichtterminalzeichen}),
-        
+
         \item $\Sigma$ nicht-leere endliche Menge mit
         $V \cap \Sigma = \emptyset$ (\begriff{Terminalzeichen}),
-        
+
         \item $P \subset V \times (V \cup \Sigma)^\ast$ endliche Menge
         (\begriff{Regeln} oder \begriff{Produktionen}),
-        
+
         \item $S \in V$ (\begriff{Startsymbol}).
     \end{itemize}
-    
+
     Sei z.~B. $G_1 = (V_1, \Sigma_1, P_1, S_1)$ mit $V_1 = \{S_1\}$ und
     $\Sigma_1 = \{0, 1\}$. Man schreibt statt \\
     $P_1 = \{(S_1,\; 1), (S_1,\; S_{1}0), (S_1,\; S_{1}1)\}$ normalerweise
@@ -251,7 +251,7 @@ end
         \item $u \Rightarrow v \quad\Leftrightarrow\quad u = xAy, v = xwy$ mit
         $x, y \in (V \cup \Sigma)^\ast$ und $(A, w) \in P$ \\
         ($v$ ist aus $u$ \begriff{in einem Schritt ableitbar})
-        
+
         \item $u \Rightarrow^\ast v \quad\Leftrightarrow\quad$
         $u = v$ oder
         $u = z_0 \Rightarrow z_1 \Rightarrow \cdots \Rightarrow z_{k-1}
@@ -312,15 +312,15 @@ end
     \begin{itemize}
         \item $V$ nicht-leere endliche Menge der Form
         $<\!\!Zeichenkette\!\!>$ (\begriff{Nichtterminalzeichen}),
-        
+
         \item $\Sigma$ nicht-leere endliche Menge mit
         $V \cap \Sigma = \emptyset$ und $| \notin \Sigma$
         (\begriff{Terminalzeichen}),
-        
+
         \item $P \subset V \{::=\}
         (V \cup \Sigma)^\ast (\{|\} (V \cup \Sigma)^\ast)^\ast$
         endliche Menge (\begriff{Regeln} oder \begriff{Produktionen}),
-        
+
         \item $S \in V$ (\begriff{Startsymbol}).
     \end{itemize}
 \end{Def}
@@ -334,13 +334,13 @@ end
     werden. Dazu zeichnet man für jedes Nichtterminalzeichen ein Pfeildiagramm
     mit in Rechtecke eingerahmte Nichtterminal- und in Kreise eingerahmte
     Terminalzeichen.
-    
+
     Man kann ein Wort der BNF erzeugen, indem man das Diagramm des
     Startsymbols in Pfeilrichtung durchläuft. Trifft man auf ein
     Nichtterminalzeichen, so wird sein Diagramm an dieser Stelle
     "`eingeklebt"'. Trifft man auf ein Terminalzeichen, so fügt man es an die
     (anfangs leere) Ausgabe hinzu.
-    
+
     Alle möglichen, sich so ergebenden Ausgaben bilden die erzeugte Sprache.
 \end{Def}
 
@@ -351,12 +351,12 @@ end
 \begin{Def}{Metasprache}
     Eine \begriff{Metasprache} ist eine Sprache, mit der man andere Sprachen
     beschreiben kann.
-    
+
     Es gibt die Ebenen \begriff{Syntax} (korrekter Aufbau der Wörter),
     \begriff{Semantik} (Bedeutungszuordnung zu jedem Wort/Satz) und
     \begriff{Pragmatik} (Beziehungen zwischen der Sprache und den
     Anforderungen).
-    
+
     Fast alle natürliche Sprachen (Deutsch, Englisch usw.) besitzen wie viele
     formale Sprachen die Eigenschaft, sich selbst beschreiben zu können.
     Bspw. kann man mit EBNF den Aufbau einer EBNF beschreiben.

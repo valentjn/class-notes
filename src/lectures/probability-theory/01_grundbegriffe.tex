@@ -38,52 +38,52 @@
     eindeutig entschieden werden kann.
     Daher kann man Ereignisse als Teilmengen $\Omega$ interpretieren.
     Dabei sollen für $A, B \subset \Omega$ Ereignisse verschiedene Interpretationen möglich sein:
-    
+
     \begin{tabular}{p{60mm}p{100mm}}
         \toprule
         \emph{Ereignis} &
         \emph{Interpretation}\\
-        
+
         \midrule
-        
+
         $A^C = \Omega \setminus A$ &
         $A$ tritt nicht ein \\
-        
+
         $A \cup B$ &
         $A$ oder $B$ tritt ein \\
-        
+
         $A \cap B$ &
         $A$ und $B$ treten ein \\
-        
+
         $A \setminus B$ &
         $A$, aber nicht $B$ tritt ein \\
-        
+
         $A \vartriangle B = (A \cup B) \setminus (A \cap B)$ &
         entweder $A$ oder $B$ tritt ein \\
-        
+
         $\bigcup_{i \in I} A_i$ &
         mindestens eins der $A_i$ tritt ein \\
-        
+
         $\bigcap_{i \in I} A_i$ &
         alle $A_i$ treten ein \\
-        
+
         $\limsup_{n \in \natural} A_n :=
         \bigcap_{n=1}^\infty \left(\bigcup_{k=n}^\infty A_k\right)$ &
         unendlich viele der $A_n$ treten ein \\
-        
+
         $\liminf_{n \in \natural} A_n :=
         \bigcup_{n=1}^\infty \left(\bigcap_{k=n}^\infty A_k\right)$ &
         alle bis auf endlich viele der $A_n$ treten ein \\
-        
+
         $A \subset B$ &
         $A$ impliziert $B$ \\
-        
+
         $A \cap B = \emptyset$ &
         $A$ und $B$ schließen einander aus \\
-        
+
         \bottomrule
     \end{tabular}
-    
+
     Man fordert daher als Ereignismenge eine Teilmenge der Potenzmenge von $\Omega$ mit bestimmten
     Abschlusseigenschaften.
 \end{Bem}
@@ -94,10 +94,10 @@
     \begin{enumerate}
         \item
         $\emptyset \in \A$
-        
+
         \item
         $A \in \A \;\Rightarrow\; \Omega \setminus A \in \A$
-        
+
         \item
         $A_n \in \A$ für $n \in \natural$ $\Rightarrow\;$ $\bigcup_{n=1}^\infty A_n \in \A$
     \end{enumerate}
@@ -110,12 +110,12 @@
     \begin{enumerate}
         \item
         $\Omega \in \A$
-        
+
         \item
         $\bigcap_{n=1}^\infty A_n, \limsup_{n \in \natural} A_n,
         \liminf_{n \in \natural} A_n \in \A$
         für $A_n \in \A$ und $n \in \natural$
-        
+
         \item
         $A \cup B, A \cap B, A \setminus B, A \vartriangle B \in \A$ für $A, B \in \A$
     \end{enumerate}
@@ -138,7 +138,7 @@
         \item
         Wurf eines Würfels und "`gerade Augenzahl"':
         $\Omega = \{1, \dotsc, 6\}$, $A = \{2, 4, 6\}$
-        
+
         \item
         Wurf zweier Würfel und "`Pasch"':\\
         $\Omega_1 = \{(k, \ell) \;|\; k, \ell \in \{1, \dotsc, 6\}\}$
@@ -147,12 +147,12 @@
         ohne Beachtung der Reihenfolge, $A_2 = \{\{1\}, \dotsc, \{6\}\}$,\\
         $\Omega_3 = \{2, \dotsc, 12\}$ mit Summe der Augenzahlen,
         hier ist das Ereignis nicht modellierbar
-        
+
         \item
         Mischen eines Kartenblatts mit 52 Karten:
         $\Omega = \{\text{mögliche Anordnungen}\}$,\\
         $|\Omega| = 52! \approx 8 \cdot 10^{67}$
-        
+
         \item
         unendlicher Münzwurf mit Reihenfolge:
         $\Omega = \{(\omega_k)_{k \in \natural} \;|\; \omega_k \in \{0, 1\}\}$
@@ -162,17 +162,17 @@
         oder "`es wird unendlich oft Zahl geworfen"' durch
         $B = \{(\omega_k)_{k \in \natural} \;|\;
         \forall_{n \in \natural} \exists_{k \ge n}\; \omega_k = 1\}$
-        
+
         \item
         Brechen eines Stabs der Länge $L$ an einer zufälligen Stelle:
         $\Omega = [0, L]$ überabzählbar,\\
         z.\,B. "`Bruch ist ist linken Dritten"' durch $A = [0, \frac{1}{3} L]$\\
         oder "`Bruch ist genau in der Mitte"' durch $B = \{\frac{1}{2} L\}$
-        
+
         \item
         Schadenshöhe bei einem Autounfall:
         $\Omega = [0, \infty)$
-        
+
         \item
         zufällige Bewegung eines Teilchens in einer Flüssigkeit (\begriff{random walk}):\\
         $\Omega = \{\omega \in [0, \infty) \rightarrow \real^3 \;|\; \omega \text{ stetig}\}$
@@ -190,7 +190,7 @@
     \begin{enumerate}
         \item
         $\mu(\emptyset) = 0$ (\begriff{Nulltreue})
-        
+
         \item
         $\mu(\bigcup_{n=1}^\infty A_n) = \sum_{n=1}^\infty \mu(A_n)$ für
         $A_n \in \A$ paarweise disjunkt (\begriff{$\sigma$-Additivität})
@@ -205,10 +205,10 @@
     \begin{enumerate}
         \item
         $\Omega \not= \emptyset$ (Ergebnisraum)
-        
+
         \item
         $\A$ eine $\sigma$-Algebra über $\Omega$ ($\sigma$-Algebra der messbaren Ereignisse)
-        
+
         \item
         $P$ ein Wahrscheinlichkeitsmaß auf $(\Omega, \A)$
     \end{enumerate}
@@ -222,41 +222,41 @@
     \begin{enumerate}
         \item
         $P(B \setminus A) = P(B) - P(A \cap B)$
-        
+
         \item
         $A \subset B \;\Rightarrow\; P(A) \le P(B)$
         (\begriff{Monotonie})
-        
+
         \item
         $0 \le P(A) \le 1$, $P(\Omega \setminus A) = 1 - P(A)$
-        
+
         \item
         $P(A \cup B) = P(A) + P(B) - P(A \cap B) \le P(A) + P(B)$
-        
+
         \item
         $P(\bigcup_{k=1}^n A_k) = \sum_{k=1}^n (-1)^{k+1} \sum_{1 \le i_1 < \dotsb < i_k \le n}
         P(A_{i_1} \cap \dotsb \cap A_{i_k}) \le \sum_{k=1}^n P(A_k)$\\
         (\begriff{\name{Poincaré}-\name{Sylvester}-Formel},
         \begriff{Formel des Ein- und Ausschließens})
-        
+
         \item
         $A_1 \subset A_2 \subset \dotsb \;\Rightarrow\;
         P(\bigcup_{k=1}^\infty A_k) = \lim_{n \to \infty} P(A_n)$
         (\begriff{Stetigkeit von unten})
-        
+
         \item
         $A_1 \supset A_2 \supset \dotsb \;\Rightarrow\;
         P(\bigcap_{k=1}^\infty A_k) = \lim_{n \to \infty} P(A_n)$
         (\begriff{Stetigkeit von oben})
-        
+
         \item
         $P(\bigcup_{k=1}^\infty A_k) \le \sum_{k=1}^\infty P(A_k)$
         (\begriff{$\sigma$-Subadditivität})
-        
+
         \item
         $\sum_{k=1}^\infty P(A_k) < \infty \;\Rightarrow\; P(\limsup_{k \to \infty} A_k) = 0$
         (\begriff{Satz von \name{Borel}-\name{Cantelli}, 1. Teil})
-        
+
         \item
         $\lim_{k \to \infty} P(A_k) = 0,\; \sum_{k=1}^\infty P(A_k^c \cap A_{k+1}) < \infty
         \;\Rightarrow\; P(\limsup_{k \to \infty} A_k) = 0$\\
@@ -271,13 +271,13 @@
         Für $\Omega \not= \emptyset$ endlich ist $(\Omega, \P(\Omega), P)$ mit
         $P\colon \P(\Omega) \rightarrow [0, 1]$, $A \mapsto \frac{|A|}{n}$ ein W-Raum.\\
         $P$ heißt \begriff{Gleichverteilung}.
-        
+
         \item
         Für $\Omega \not= \emptyset$ beliebig ist $(\Omega, \P(\Omega), \mu)$
         mit dem \begriff{Zählmaß}
         $\mu\colon \P(\Omega) \rightarrow [0, \infty]$, $A \mapsto |A|$ für $A$ endlich und
         $A \mapsto \infty$ für $A$ unendlich ein W-Raum.
-        
+
         \item
         Für $\Omega \not= \emptyset$ beliebig und festes $\omega \in \Omega$ ist
         $(\Omega, \P(\Omega), P_{\{\omega\}})$ mit dem \begriff{\name{Dirac}maß}\\
@@ -314,7 +314,7 @@
         Dann ist $(\Omega, \P(\Omega), P)$ mit $P\colon \P(\Omega) \rightarrow [0, 1]$,\\
         $A \mapsto \sum_{\omega \in A} p_\omega$ ein diskreter W-Raum mit
         $P(\{\omega\}) = p_\omega$ für $\omega \in \Omega$.
-        
+
         \item
         Ist $(\Omega, \P(\Omega), P)$ ein diskreter W-Raum, so ist $(p_\omega)_{\omega \in \Omega}$
         mit $p_\omega := P(\{\omega\})$ eine Zähldichte
@@ -344,7 +344,7 @@
         $\Omega = \{1, \dotsc, 6\}$, Laplace-W-Raum $(\Omega, \P(\Omega), P)$.\\
         Für das Ereignis $A :=$ "`Augenzahl gerade"' $= \{2, 4, 6\}$ gilt
         $P(A) = \frac{|A|}{|\Omega|} = \frac{3}{6} = \frac{1}{2}$.
-        
+
         \item
         $n$-maliger Wurf einer fairen Münze:\\
         $\Omega = \{0, 1\}^n = \{(\omega_1, \dotsc, \omega_n) \;|\; \omega_k \in \{0, 1\}\}$,
@@ -353,7 +353,7 @@
         $\Omega \setminus A = \{0, 0, 0\}$, d.\,h.
         $P(A) = P(\Omega \setminus (\Omega \setminus A)) = 1 - P(\Omega \setminus A) =
         1 - \frac{|\Omega \setminus A|}{|\Omega|} = 1 - \frac{1}{8} = \frac{7}{8}$.
-        
+
         \item
         \begriff{Ziegenproblem}:
         In einer Spielshow gibt es drei Tore.
@@ -369,11 +369,11 @@
             Das Auto ist hinter Tor 1.
             Der Showmaster öffnet also Tor 2 oder Tor 3, aber in beiden Fällen sollte der Kandidat
             nicht wechseln.
-            
+
             \item
             Das Auto ist hinter Tor 2.
             Der Showmaster öffnet also Tor 3, in diesem Fall sollte der Kandidat wechseln.
-            
+
             \item
             Das Auto ist hinter Tor 3.
             Der Showmaster öffnet also Tor 2,
@@ -397,7 +397,7 @@
         \item
         Wurf einer unfairen Münze: $\Omega = \{0, 1\}$,
         Wahrscheinlichkeit für Zahl (1) sei $p \in [0, 1]$
-        
+
         \item
         $n$-maliger Wurf einer unfairen Münze: $\Omega = \{0, 1\}^n =
         \{\omega = (\omega_1, \dotsc, \omega_n) \;|\; \omega_k \in \{0, 1\}\}$.\\
@@ -410,7 +410,7 @@
         Diese Zähldichte definiert ein diskretes W-Maß auf $\Omega$.
         Wie groß ist die Wahrscheinlichkeit, genau $k$-mal Zahl zu werfen?
         Dazu sei\\
-        $A_k := \text{"`es wird genau } k\text{-mal Zahl geworfen"'} = 
+        $A_k := \text{"`es wird genau } k\text{-mal Zahl geworfen"'} =
         \{\omega \in \Omega \;|\; k(\omega) = k\}$.
         Für die Wahrscheinlichkeit gilt aufgrund der Diskretheit
         $P(A_k) = \sum_{p_\omega \in A_k} p_\omega = p^k (1 - p)^{n-k} \cdot |A_k|$.\\
@@ -500,7 +500,7 @@
     \begin{enumerate}
         \item
         Es gibt $n!$ viele Permutationen von $n$ verschiedenen Objekten.
-        
+
         \item
         Es gibt $\frac{n!}{n_1! \dotsm n_p!}$ viele Permutationen von $n$ Objekten,
         unter denen es $p \le n$ verschiedene Objekte gibt,
@@ -533,16 +533,16 @@
         \begriff{geordnete Stichprobe ohne Zurücklegen}:\\
         Stichprobe ist $k$-Tupel $(\omega_1, \dotsc, \omega_k)$ mit
         $\omega_1, \dotsc, \omega_k \in S$ paarweise verschieden
-        
+
         \item
         \begriff{geordnete Stichprobe mit Zurücklegen}:\\
         Stichprobe ist $k$-Tupel $(\omega_1, \dotsc, \omega_k)$ mit
         $\omega_1, \dotsc, \omega_k \in S$
-        
+
         \item
         \begriff{ungeordnete Stichprobe ohne Zurücklegen}:\\
         Stichprobe ist $k$-elementige Teilmenge $\{\omega_1, \dotsc, \omega_k\}$ von $S$
-        
+
         \item
         \begriff{ungeordnete Stichprobe mit Zurücklegen}:\\
         Stichprobe ist "`Sammlung"' $[\omega_1, \dotsc, \omega_k]$ von $k$ Elementen aus $S$,
@@ -559,16 +559,16 @@
         \item
         \begriff{geordnete Stichprobe ohne Zurücklegen}:
         $\frac{n!}{(n - k)!} = n \cdot (n - 1) \cdot \dotsm \cdot (n - k + 1)$
-        
+
         \item
         \begriff{geordnete Stichprobe mit Zurücklegen}:
         $n^k$
-        
+
         \item
         \begriff{ungeordnete Stichprobe ohne Zurücklegen}:
         $\binom{n}{k} = \frac{n!}{(n - k)! \cdot k!} =
         \frac{n \cdot (n - 1) \cdot \dotsm \cdot (n - k + 1)}{k!}$
-        
+
         \item
         \begriff{ungeordnete Stichprobe mit Zurücklegen}:
         $\binom{n + k - 1}{k}$
@@ -582,12 +582,12 @@
         ermittelt werden.
         Das entspricht einer geordneten Stichprobe ohne Zurücklegen mit $n = 20$ und $k = 3$.
         Es gibt daher $20 \cdot 19 \cdot 18 = 6840$ Möglichkeiten.
-        
+
         \item
         Die Verteilung von Geburtstagen von $k$ Schülern einer Klasse ist äquivalent zu
         einer geordneten Stichprobe mit Zurücklegen mit $n = 365$.
         Hier gibt es $365^k$ Möglichkeiten.
-        
+
         \item
         Beim Lotto (6 aus 49) ist das Ergebnis eine ungeordnete Stichprobe ohne Zurücklegen
         mit $n = 49$ und $k = 6$.
@@ -682,12 +682,12 @@
         \item
         $P(\cdot \,|\, A)\colon \A \rightarrow [0, 1]$, $B \mapsto P(B \,|\, A)$ ist ein W-Maß
         auf $\Omega$ mit $P(A \,|\, A) = 1$.
-        
+
         \item
         Für $B \in \A$ mit $P(B) > 0$ gilt
         $P(A \,|\, B) = P(B \,|\, A) \cdot \frac{P(A)}{P(B)}$
         (\begriff{erste Formel von \name{Bayes}}).
-        
+
         \item
         Für $B_1, \dotsc, B_m \in \A$ mit $P(B_1 \cap \dotsb \cap B_m) > 0$ gilt\\
         $P(B_1 \cap \dotsb \cap B_m) = P(B_1) \cdot P(B_2 \,|\, B_1) \cdot
@@ -706,7 +706,7 @@
         \item
         $P(B) = \sum_{i \in I} P(B \,|\, A_i) \cdot P(A_i)$
         (\begriff{Formel von der totalen Wahrscheinlichkeit})
-        
+
         \item
         $P(A_j \,|\, B) = \frac{P(B \,|\, A_j) \cdot P(A_j)}
         {\sum_{i \in I} P(B \,|\, A_i) \cdot P(A_i)}$ für $j \in I$
@@ -727,7 +727,7 @@
         mithilfe der ersten Formel von Bayes
         $P(B \,|\, A) = P(A \,|\, B) \cdot \frac{P(B)}{P(A)} = 1 \cdot \frac{1/4}{3/4} =
         \frac{1}{3}$, wieder ein unintuitives Ergebnis.
-        
+
         \item
         Ein Test auf eine Krankheit hat eine Zuverlässigkeit von $99{,}9\%$.
         Die Krankheit tritt für eine einzelne Person mit einer Wahrscheinlichkeit von
@@ -746,7 +746,7 @@
         zur Zuverlässigkeit des Tests zu selten auftritt.
         Ohne weitere Tests oder andere Anhaltspunkte lässt sich also nicht pauschal sagen, dass
         die Person krank ist.
-        
+
         \item
         Auch das Ziegenproblem lässt sich bedingten Wahrscheinlichkeiten erklären:\\
         Angenommen, der Kandidat wählt Tor 1.
@@ -914,7 +914,7 @@
         $\{X = 2\} = \{(1, 1)\}$, $\{X = 3\} = \{(1, 2), (2, 1)\}$ usw.\\
         Somit ist $P(X = 2) = P_X(\{2\}) = \frac{1}{36}$,
         $P(X = 3) = P_X(\{3\}) = \frac{2}{36}$ etc.
-        
+
         \item
         Angenommen, ein Kongress mit 500 Teilnehmern wird eröf"|fnet.
         Zur Überraschung der Gäste sollen diejenigen ein Geschenk bekommen, die am Tag der
@@ -960,16 +960,16 @@
     \begin{enumerate}
         \item
         $F_X$ ist monoton wachsend und rechtsseitig stetig.
-        
+
         \item
         $\lim_{x \to -\infty} F_X(x) = 0$,
         $\lim_{x \to +\infty} F_X(x) = 1$
-        
+
         \item
         Es gilt $F_X(x) - \lim_{y \to x - 0} F_X(y) = P(X = x)$,
         d.\,h. $P$ kann aus $P_X$ rekonstruiert werden und
         $F_X$ hat höchstens abzählbar viele Sprungstellen.
-        
+
         \item
         $F_X(x) = \sum_{y \le x} P(X = y)$
     \end{enumerate}
@@ -1015,7 +1015,7 @@
         Sei $X\colon \Omega \rightarrow \real$ die Zufallsvariable, die jedem $\omega \in \Omega$
         die Augenzahl zuordnet.
         Dann gilt $\EW(X) = 1 \cdot \frac{1}{6} + \dotsb + 6 \cdot \frac{1}{6} = \frac{7}{2}$.
-        
+
         \item
         Wurf zweier Würfel:
         Sei $X\colon \Omega \rightarrow \real$,
@@ -1038,7 +1038,7 @@
     \begin{enumerate}
         \item
         $X$ hat endlichen Erwartungswert.
-        
+
         \item
         $\sum_{x \in X(\Omega)} |x| \cdot P_X(\{x\}) < \infty$
     \end{enumerate}
@@ -1054,19 +1054,19 @@
     \begin{enumerate}
         \item
         $X + Y$ hat endlichen Erwartungswert $\EW(X + Y) = \EW(X) + \EW(Y)$.
-        
+
         \item
         Für $\alpha \in \real$ hat
         $\alpha \cdot X$ endlichen Erwartungswert $\EW(\alpha \cdot X) = \alpha \cdot \EW(X)$.
-        
+
         \item
         Für $A \in \P(\Omega)$ hat die \begriff{Indikatorfunktion} von $A$
         $\1_A\colon \Omega \rightarrow \real$ mit $\omega \mapsto 1$ für $\omega \in A$ und
         $\omega \mapsto 0$ für $\omega \notin A$ endlichen Erwartungswert $\EW(\1_A) = P(A)$.
-        
+
         \item
         Aus $X \le Y$ folgt $\EW(X) \le \EW(Y)$.
-        
+
         \item
         $|X|$ hat endlichen Erwartungswert mit $|\EW(X)| \le \EW(|X|)$.
     \end{enumerate}
@@ -1081,7 +1081,7 @@
         der beiden Zufallsvariablen $X_k\colon \Omega \rightarrow \real$,
         $(\omega_1, \omega_2) \mapsto \omega_k$ für $k = 1, 2$ schreiben.
         Somit gilt $\EW(X) = \EW(X_1) + \EW(X_2) = \frac{7}{2} + \frac{7}{2} = 7$.
-        
+
         \item
         Kongresseröf"|fnung:
         Es gilt $X = X_1 + \dotsb + X_{500}$, wobei
@@ -1103,20 +1103,20 @@
     \begin{enumerate}
         \item
         Für $X \equiv c$ hat $X$ endlichen Erwartungswert $\EW(X) = c$.
-        
+
         \item
         Ist $n := |X(\Omega)| < \infty$ und $P_X$ die Gleichverteilung auf X($\Omega)$
         (\begriff{$X$ ist diskret gleichverteilt}), dann hat $X$ endlichen Erwartungswert
         $\EW(X) = \frac{1}{n} \cdot \sum_{x \in X(\Omega)} x$.
-        
+
         \item
         Ist $P_X$ die Binomialverteilung auf $X(\Omega) = \natural_0$
         zu den Parametern $n$ und $p$, dann hat $X$ endlichen Erwartungswert $\EW(X) = np$.
-        
+
         \item
         Ist $P_X$ die Poissonverteilung auf $X(\Omega) = \natural_0$ zum Parameter $\lambda > 0$,
         dann hat $X$ endlichen Erwartungswert $\EW(X) = \lambda$.
-        
+
         \item
         Ist $P_X$ die hypergeometrische Verteilung auf $X(\Omega) = \natural_0$ zu den Parametern
         $k$, $n$ und $s$, dann hat $X$ endlichen Erwartungswert $\EW(X) = \frac{ks}{n}$.
@@ -1206,12 +1206,12 @@
         \item
         $\Var(\alpha X) = \alpha^2 \Var(X)$ und
         $\Var(X + c) = \Var(X)$ für $\alpha, c \in \real$
-        
+
         \item
         $\Var(X_1 + \dotsb + X_n) = \Var(X_1) + \dotsb + \Var(X_n)$,
         falls $X_1, \dotsc, X_n$ unabhängig sind\\
         (\begriff{Satz von \name{Bienaymé}})
-        
+
         \item
         $\Var(X) = 0 \;\Rightarrow\; P(X = \EW(X)) = 1$
     \end{enumerate}
@@ -1226,19 +1226,19 @@
     \begin{enumerate}
         \item
         Ist $X$ konstant, so gilt $\Var(X) = 0$.
-        
+
         \item
         Ist $n := |X(\Omega)| < \infty$ und $P_X$ die Gleichverteilung auf $X(\Omega)$, dann gilt\\
         $\Var(X) = \frac{1}{n} \cdot \sum_{x \in X(\Omega)} (x - \EW(X))^2$.
-        
+
         \item
         Ist $P_X$ die Binomialverteilung auf $X(\Omega) = \natural_0$
         zu den Parametern $n$ und $p$, dann gilt $\Var(X) = np(1 - p)$.
-        
+
         \item
         Ist $P_X$ die Poissonverteilung auf $X(\Omega) = \natural_0$ zum Parameter $\lambda > 0$,
         dann gilt $\Var(X) = \lambda$.
-        
+
         \item
         Ist $P_X$ die hypergeometrische Verteilung auf $X(\Omega) = \natural_0$ zu den Parametern
         $k$, $n$ und $s$, dann gilt

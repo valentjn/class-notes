@@ -25,13 +25,13 @@
     Alle $a$'s in den alten Regeln werden durch $A$ ersetzt.\\
     Nun gibt es nur Regeln der Form $A \rightarrow a$ (die sind okay) und
     $A_1 \dotsb A_m \rightarrow B_1 \dotsb B_n$ mit $1 \le m \le n$.
-    
+
     Für $m = 1$ kann man wie bei der Chomsky-Normalform
     $A_1 \rightarrow B_1 \dotsb B_n$ durch mehrere Ableitungsregeln ersetzen:
     Man führt eine Variable $C_1$ ein und ersetzt die alte Regel durch
     $A_1 \rightarrow B_1 C_2$ und $C_2 \rightarrow B_2 \dotsb B_n$.
     Induktiv verfährt man genauso, bis die rechte Seite Länge $\le 2$ hat.
-    
+
     Für $m \ge 2$ gilt $2 \le m \le n$, somit kann man
     $A_1 \dotsb A_m \rightarrow B_1 \dotsb B_n$ ersetzen durch die Regeln
     $A_1 A_2 \rightarrow B_1 C_2$ und
@@ -41,7 +41,7 @@
     Falls die entstehende letzte Regel eine rechte Seite der Länge $> 2$ hat
     kann man wie oben verfahren, andernfalls sind nun alle Regeln in
     Kuroda-Normalform.
-    
+
     Man erhält also eine Typ-1-Grammatik $G'$ in Kuroda-Normalform mit
     $L(G) = L(G')$.
 \end{Beweis}
@@ -78,30 +78,30 @@
         \item
         $Z$ eine endliche, nicht-leere Menge
         (die Menge der \begriff{Zustände}),
-        
+
         \item
         $\Sigma$ eine endliche, nicht-leere Menge
         mit $Z \cap \Sigma = \emptyset$
         (das \begriff{Eingabealphabet}),
-        
+
         \item
         $\Gamma \supset \Sigma$ eine endliche, nicht-leere Menge
         mit $Z \cap \Gamma = \emptyset$
         (das \begriff{Bandalphabet}),
-        
+
         \item
         $\delta\colon Z \times \Gamma \rightarrow
         Z \times \Gamma \times \{L, R, N\}$ für eine DTM und\\
         $\delta\colon Z \times \Gamma \rightarrow
         \P(Z \times \Gamma \times \{L, R, N\})$ für eine NTM
         (die \begriff{Überführungsfunktion}),
-        
+
         \item
         $z_0 \in Z$ (der \begriff{Startzustand}),
-        
+
         \item
         $\Box \in \Gamma \setminus \Sigma$ (das \begriff{Leerzeichen}) und
-        
+
         \item
         $E \subset Z$ (die \begriff{akzeptierenden Endzustände}) ist.
     \end{itemize}
@@ -242,18 +242,18 @@
         \item
         Wähle (nicht-deterministisch) eine Regel
         $\alpha \rightarrow \beta \in P$.
-        
+
         \item
         Wähle eine (nicht-deterministisch) Position auf dem Band.
-        
+
         \item
         Prüfe, ob ab der aktuellen Position $\beta$ auf dem Band steht.
-        
+
         \item
         Wenn ja: Ersetze $\beta$ durch $\alpha$,
         gegebenenfalls muss rechts von $\beta$ ein Bandteil nach links
         verschoben werden (dies ist durch LBAs möglich).
-        
+
         \item
         Wenn nur noch $S$ dasteht, akzeptiere, ansonst wiederhole mit 1.
     \end{enumerate}
@@ -262,7 +262,7 @@
     (und zwar bei allen endlich vielen, durch den
     Nicht-Deterministismus entstehenden Möglichkeiten).
     Für den konstruierten LBA $M$ gilt $L(G) = T(M)$.
-    
+
     Sei nun $L = T(M)$ für einen LBA $M$.
     Gesucht ist eine Typ-1-Grammatik $G$ mit $L(G) = T(M)$.
     Die Grammatik soll den Automaten "`simulieren"', indem die
@@ -281,7 +281,7 @@
     Man erhält also die Regel
     $\alpha (z, \beta) \rightarrow (z', \alpha) \gamma$
     für $(z', \gamma, L) \in \delta(z, \beta)$.
-    
+
     So konstruiert man die Grammatik $G = (V, \Sigma, P, S)$ mit
     $V = \{S, A\} \cup (\Delta \times \Sigma)$.
     Die Variablen sind speziell gewählt:

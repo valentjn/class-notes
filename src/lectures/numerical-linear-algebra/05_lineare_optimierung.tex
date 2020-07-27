@@ -99,7 +99,7 @@ sodass die Lösung nicht schlechter wird.
     und man wählt den kleinsten Eintrag von $d_K$.
     $k \in K$ ist dann der zugehörige Index. \\
     Für $d_K \ge 0$ ist $x$ eine optimale Lösung des linearen Programms.
-    
+
     \item
     \textbf{Bestimmung von $j$}:
     Sei $A_k = A(:, k)$.
@@ -109,7 +109,7 @@ sodass die Lösung nicht schlechter wird.
     \end{align*}
     Ist $z_I \le 0$, so ist die Zielfunktion nach unten unbeschränkt
     und daher das lineare Programm unlösbar.
-    Andernsfalls muss $j \in I$ so gewählt werden, sodass 
+    Andernsfalls muss $j \in I$ so gewählt werden, sodass
     \begin{align*}
         \frac{x_j}{z_j} \quad\text{ mit }\quad z_j > 0
     \end{align*}
@@ -150,10 +150,10 @@ verändert:
 \begin{enumerate}
     \item
     Man berechnet $z_I = A_I^{-1} A_k$.
-    
+
     \item
     Die Zeile mit Index $j$ von $T_I$ wird durch $z_j$ dividiert.
-    
+
     \item
     Für alle $i \in I \setminus J$ wird die modifizierte Zeile mit Index $j$
     mit $z_i$ multipliziert und von der Zeile mit Index $i$ subtrahiert.
@@ -178,13 +178,13 @@ der das Simplex-Tableau $T_I = (A_I^{-1}, x_I)$ verwendet, verläuft wie folgt:
     $K = \{1, \dotsc, n\} \setminus I$ und wählt $k$ kleinstmöglich,
     sodass $d_K$ sein Minimum annimmt.
     Für $d_k \ge 0$ ist die aktuelle Basislösung $x_I$ optimal.
-    
+
     \item
     Ist $z_I = A_I^{-1} A_k \le 0$, so ist $\inf_{x \in D} c^t x = -\infty$
     und das lineare Programm hat keine Lösung.
     Andernfalls wählt man $j$ kleinstmöglich, sodass
     $\frac{x_i}{z_i}$ mit $z_i > 0$ und $i \in I$ minimal wird.
-    
+
     \item
     Das Tableau $T_I$ wird aktualisiert mit
     $T_I = (A_I^{-1}, x_I) \rightarrow T_J = (A_J^{-1}, y_J)$, indem

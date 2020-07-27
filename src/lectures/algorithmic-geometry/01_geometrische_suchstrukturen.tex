@@ -36,7 +36,7 @@ Oftmals geht man davon aus, dass die Blätter doppelt verkettet sind.
 
 \textbf{Zeit-/Platzaufwand}:
 Ein 2-4-Baum mit $n$ Blättern besitzt die Höhe $\O(\log n)$.
-Das Suchen, Einfügen und Löschen eines Elements besitzt den Zeitaufwand $\O(\log n)$. 
+Das Suchen, Einfügen und Löschen eines Elements besitzt den Zeitaufwand $\O(\log n)$.
 Die Konstruktion eines 2-4-Baums für $n$ Elemente besitzt den Zeitaufwand $\O(n \log n)$
 (sind die Elemente sortiert, dann sogar nur $\O(n)$).
 Der Baum besitzt $\le n$ innere Knoten, damit ist der Platzaufwand $\O(n)$.
@@ -309,7 +309,7 @@ $\O(\sqrt{n} + k)$
     z.\,B. die rechte Kante.
     Wenn man zeigen kann, dass jede Vertikale $\O(\sqrt{n})$ Zellen schneidet, dann folgt die
     Behauptung, denn andere Arten von Zellen gibt es nicht.
-    
+
     Sei also $L(n)$ die Anzahl von Zellen
     (im Unterbaum eines die Vertikale schneidenden $X$-Knotens mit $n$ Blättern),
     die von der Vertikalen geschnitten werden.\\
@@ -489,11 +489,11 @@ Jeder Knoten speichert zwei Schlüssel, einen $X$- und einen $Y$-Schlüssel.
     \item
     Berechne das $y$-Minimum von $P$ und
     speichere den entsprechenden Punkt $p_1$ als $Y$-Schlüssel des Knotens.
-    
+
     \item
     Berechne den $x$-Median von $P \setminus \{p_1\}$ und
     speichere den entsprechenden $x$-Wert als $X$-Schlüssel des Knotens.
-    
+
     \item
     Teile $P \setminus \{p_1\}$ entsprechend des Medians in zwei Mengen mit kleinerer bzw.
     größerer $x$-Koordinate auf und wiederhole das Verfahren rekursiv.
@@ -508,7 +508,7 @@ und zum anderen ein Min-Heap über den $y$-Koordinaten.
 \begin{enumerate}
     \item
     Suche nach $l$ und $r$ (PST als eindim. Suchbaum über den $x$-Koordinaten).
-    
+
     \item
     Exploriere Teilbäume nach "`innen"' nach Punkten mit $y$-Koordinate $\le o$\\
     (PST als Min-Heap über den $y$-Koordinaten).
@@ -540,50 +540,50 @@ $\O(n)$
     \textbf{Intervall-Baum}&
     \textbf{Segment-Baum}&
     \textbf{PST (Treap)}\\
-    
+
     \midrule
     \emph{verarbeitete Eingabe}&
     Punktmenge\newline$P \subset \real$&
     Intervallmenge\newline$S \subset \P(\real)$&
     Intervallmenge\newline$S \subset \P(\real)$&
     Punktmenge\newline$P \subset \real^2$\\
-    
+
     \midrule
     \emph{Abfrageobjekt}&
     Intervall $[l, r]$&
     Punkt $q \in \real$&
     Punkt $q \in \real$&
     halboff. Rechteck\newline$R := [l, r] \times [-\infty, o]$\\
-    
+
     \midrule
     \emph{Abfrageergebnis}&
     $p \in P$ mit $p \in [l, r]$&
     $s \in S$ mit $s \ni q$&
     $s \in S$ mit $s \ni q$&
     $p \in P$ mit $p \in R$\\
-    
+
     \midrule
     \emph{Konstruktionszeit}&
     \multicolumn{4}{c}{$\O(n \log n)$}\\
-    
+
     \midrule
     \emph{Abfragezeit}&
     \multicolumn{4}{c}{$\O(\log n + k)$}\\
-    
+
     \midrule
     \emph{Platz}&
     $\O(n)$&
     $\O(n)$&
     $\O(n \log n)$&
     $\O(n)$\\
-    
+
     \midrule
     \emph{Ergebnis in Blöcken\newline(stöpselbar)}&
     ja&
     (nein)&
     ja&
     nein\\
-    
+
     \bottomrule
 \end{tabular}}
 

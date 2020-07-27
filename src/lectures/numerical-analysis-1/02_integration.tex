@@ -18,14 +18,14 @@ Approximationsformeln stellt:
     \item
     Die Formel sollte exakt für $f \equiv 1$ sein, d.\,h.
     $b - a= \sum_{k=1}^n w_k$.
-    
+
     \item
     Die Gewichte $w_k > 0$ sollten positiv sein, da man sonst Funktionen
     definieren könnte, die nur bei einem negativen Gewicht größer Null
     und sonst überall Null sind.
     Die Approximation würde einen negativen Wert ergeben, was of"|fensichtlich
     sinnlos ist.
-    
+
     \item
     Die Formel sollte exakt für Polynome $f$ von möglichst hohem Grad sein.
 \end{itemize}
@@ -114,28 +114,28 @@ klassischen Orthogonalpolynome:
 
 \begin{tabular}{llll}
     \toprule
-    
+
     \textbf{Typ} & \textbf{$[a, b]$} & \textbf{$w(t)$} & \textbf{$\gamma_n$} \\
-    
+
     \midrule
-    
+
     \name{Legendre} & $[-1, 1]$ & $1$ &
     $\frac{2^{2n + 1} (n!)^4}{(2n + 1)((2n)!)^3}$ \vspace{2mm}\\
-    
+
     \name{Tschebyscheff} & $[-1, 1]$ & $\sqrt{1 - t^2}$ &
     $\frac{\pi}{2^{2n - 1} (2n)!}$, $n > 0$ \vspace{2mm}\\
-    
+
     \name{Jacobi} & $[-1, 1]$ & $(1 + t)^r (1 - t)^s$ &
     $\frac{2^{2n + r + s + 1} n! \Gamma(n + r + 1) \Gamma(n + s + 1)
     \Gamma(n + r + s + 1)}{(2n + r + s + 1)
     \Gamma(2n + r + s + 1)^2 (2n)!}$ \vspace{2mm}\\
-    
+
     \name{Laguerre} & $[0, \infty)$ & $\exp(-t)$ &
     $\frac{(n!)^2}{(2n)!}$ \vspace{2mm}\\
-    
+
     \name{Hermite} & $(-\infty, \infty)$ & $\exp(-t^2)$ &
     $\frac{\sqrt{\pi} n!}{2^n (2n)!}$ \\
-    
+
     \bottomrule
 \end{tabular}
 
@@ -225,7 +225,7 @@ dif"|ferenzierbare $(b - a)$-periodische Funktionen sehr genau ist.
 Der Fehler strebt schneller als jede $h$-Potenz gegen Null.
 Für nicht-periodische Funktionen bildet die Entwicklung die Grundlage für
 Extrapolationsverfahren, mit denen ebenfalls beliebige
-Approximationsordnungen erzielt werden können. 
+Approximationsordnungen erzielt werden können.
 
 \subsubsection{%
     \name{Romberg}-Algorithmus%
@@ -558,7 +558,7 @@ Eine Folge, die für alle $m \in \natural$ $m$-verteilt ist, heißt
 \begin{align*}
     x_\ell := r^\ell \mod 1,\quad \ell = 0, 1, \dotsc
 \end{align*}
-für fast alle $r > 1$ $\infty$-verteilt in $[0, 1)$ ist. 
+für fast alle $r > 1$ $\infty$-verteilt in $[0, 1)$ ist.
 
 \subsubsection{%
     Konvergenz der Monte-Carlo-Integration%
@@ -585,13 +585,13 @@ Für $k = 0, 1, \dotsc$ ist
 \begin{itemize}
     \item
     $a + (b - a)x_k$ eine Folge in $[a, b)$,
-    
+
     \item
     $\lfloor m + (n - m)x_k \rfloor$ eine Folge in $\{m, \dotsc, n - 1\}$,
-    
+
     \item
     $U_k := (x_{mk}, \dotsc, x_{mk + m - 1})$ eine Folge in $[0, 1)^m$ und
-    
+
     \item
     $A U_k + b$ mit einer $m \times m$-Matrix $A$ und einem $m$-Vektor $b$
     eine Folge in $A[0,1)^m + b$.

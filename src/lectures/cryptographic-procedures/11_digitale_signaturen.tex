@@ -18,10 +18,10 @@ wird definiert durch endliche Mengen
 \begin{itemize}
     \item
     $P$ (\begriff{Klartexte}),
-    
+
     \item
     $U$ (\begriff{Unterschriften}) und
-    
+
     \item
     $K$ (\begriff{Schlüssel})
 \end{itemize}
@@ -29,7 +29,7 @@ sowie durch Funktionen für jeden Schlüssel $k \in K$ mit
 \begin{itemize}
     \item
     $u_k\colon P \to U$ (\begriff{Unterschriftenfunktion}) und
-    
+
     \item
     $v_k\colon P \times U \to \{\true, \false\}$ (\begriff{Verifikationsfunktion}) mit
     $v_k(x, y) = \true \iff y = u_k(x)$.
@@ -89,18 +89,18 @@ unterschreibenden Nachricht unabhängig.
 \begin{enumerate}
     \item
     Wähle $q \in \BB^{160}$ prim.
-    
+
     \item
     Wähle $p \in \BB^{512}$ prim mit $p \equiv_q 1$.
-    
+
     \item
     Wähle $g_0 \in \FF_p^\ast$ mit $g_0^{(p-1)/q} \not\equiv_p 1$ und setze
     $g := g_0^{(p-1)/q} \bmod p$.
-    
+
     \item
     Wähle $x \in \{1, \dotsc, q - 1\}$ zufällig und berechne $y := g^x \bmod p$.
-    
-    \item 
+
+    \item
     Veröf"|fentliche $(q, p, g, y)$ und $h'$ und halte $x$ geheim.
 \end{enumerate}
 
@@ -126,19 +126,19 @@ denn dies entspräche der Lösung eines DL-Problems.
 Sei $m \in \BB^\ast$ eine Nachricht.
 \begin{enumerate}
     \item
-    Berechne den Hashwert $h := h'(m)$ von $m$ mit $h \in \{1, \dotsc, q - 1\}$. 
-    
+    Berechne den Hashwert $h := h'(m)$ von $m$ mit $h \in \{1, \dotsc, q - 1\}$.
+
     \item
     Wähle $k \in \{1, \dotsc, q - 1\}$ zufällig und berechne
     $g^k \bmod p \in \{2, \dotsc, p - 1\}$.
-    
+
     \item
     Berechne $r := (g^k \bmod p) \bmod q \in \{0, \dotsc, q-1\}$.
-    
+
     \item
     Berechne $s \in \{0, \dotsc, q-1\}$ mit $sk \equiv_q h + xr$
     (geht, da $k \in \FF_q^\ast$).
-    
+
     \item
     Unterschreibe mit $(r, s)$.
 \end{enumerate}
@@ -148,7 +148,7 @@ Sei $(m, (r, s))$ eine unterschriebene Nachricht.
 \begin{enumerate}
     \item
     Berechne $u := s^{-1} h \bmod q$ und $v := s^{-1} r \bmod q$.
-    
+
     \item
     Akzeptiere die Unterschrift, falls $r \equiv_q (g^u y^v \bmod p)$.
 \end{enumerate}
@@ -167,7 +167,7 @@ Das DSA-Verfahren arbeitet korrekt.
     $g^k \equiv_p g^u g^{xv} \equiv_p g^u y^v$.
     Modulo $q$ gilt also $r = (g^k \bmod p) \bmod q = (g^u y^v \bmod p) \bmod q$,
     d.\,h. die Unterschrift wird akzeptiert.
-    
+
     Umgekehrt folgt aus der Akzeptanz der Unterschrift $(r, s)$, dass
     die Unterschrift korrekt ist.
 \end{Beweis}

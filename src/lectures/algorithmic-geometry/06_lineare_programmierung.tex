@@ -83,7 +83,7 @@ Sei dazu $p^\pm$ der oberste bzw. unterste Schnittpunkt von $\ell$ mit Hypereben
     (der Teil von $\ell$ zwischen $p^+$ und $p^-$ ist zulässig).
     Die Steigungen der Geraden durch $p^+$ entscheiden nun, ob das Optimum links oder
     rechts von $\ell$ (oder auf $\ell$) liegt.
-    
+
     \item
     Liegt $p^+$ oberhalb $p^-$, dann schneidet $\ell$ den Zielbereich nicht, dieser liegt dann
     vollständig auf einer Seite von $\ell$.
@@ -105,20 +105,20 @@ Die Laufzeit ist dann jedoch $\sum_{i=1}^n \O(i) = \O(n^2)$.
 \begin{enumerate}
     \item
     Unterteile $\H^+$ und $\H^-$ jeweils in Hyperebenen-Paare desselben Typs.
-    
+
     \item
     Berechne den Schnittpunkt von jedem Hyperebenen-Paar sowie den $x$-Median der Schnittpunkte.
-    
+
     \item
     Wende den Search-Schritt mit der vertikalen Geraden $\ell$ durch den $x$-Median an.
-    
+
     \item
     Entscheidet das Orakel, dass das Optimum auf einer Seite liegt (z.\,B. rechts),
     so gilt dies auch für alle Vertikalen durch die Schnittpunkte auf der anderen Seite von $\ell$
     (z.\,B. links).
     Daher kann man für alle Hyperebenen-Paare auf der anderen Seite den Prune-Schritt anwenden,
     d.\,h. es können $\approx \frac{1}{4}$ der NBen weggelassen werden.
-    
+
     \item
     Wiederhole.
 \end{enumerate}
@@ -160,7 +160,7 @@ dabei kommt ein zweidimensionales LP-Problem heraus, was mit obigem Algorithmus 
     gehören, welche die $\real^2$-Lösung definieren.
     Auf der Seite der vertikalen Ebene, auf der die Schnittgerade "`nach unten"' geht,
     liegt das $\real^3$-Optimum (falls es existiert).
-    
+
     \item
     Gibt es keine Lösung, dann liefert der $\real^2$-Algorithmus ein Zertifikat der Unzulässigkeit.
     Schneide die drei $\real^3$-Hyperebenen, die zu den drei Geraden des Zertifikats gehören.
@@ -181,28 +181,28 @@ Die Laufzeit ist dann jedoch $\sum_{i=1}^n \O(i) = \O(n^2)$.
     \item
     Teile jeweils $\H^+$ und $\H^-$ in Paare auf, schneide die Hyperebenen und erhalte
     $\frac{n}{2}$ Geraden im Raum.
-    
+
     \item
     Projiziere die Geraden in die $x$-$y$-Ebene.
-    
+
     \item
     Drehe die $x$-$y$-Ebene, sodass ungefähr $\frac{n}{4}$ Geraden Steigung $> 0$ haben und
     $\frac{n}{4}$ Geraden Steigung $< 0$.
-    
+
     \item
     Paare jeweils eine Gerade mit Steigung $> 0$ mit einer Geraden mit Steigung $< 0$
     und erhalte $\frac{n}{4}$ Kreuzchen
     (und berechne deren Schnittpunkte).
-    
+
     \item
     Befrage das Orakel mit der vertikalen Ebene im Raum durch den $y$-Median der
     Kreuzchen-Schnittpunkte.
-    
+
     \item
     Bilde von den Kreuzchen-Schnittpunkten auf der "`falschen"' Seite des Orakels den $x$-Median
     und befrage das Orakel mit der vertikalen Ebene durch diesen Schnittpunkt
     (aber mit allen Hyperebenen).
-    
+
     \item
     Ist das Optimum z.\,B. "`rechts unten"', so kann im Kästchen "`links oben"' bei jedem
     Kreuzchen von den vier beteiligten NBen jeweils eine NB weggelassen werden.
@@ -236,7 +236,7 @@ Der \begriff{SeidLP-Algorithmus} ist nach Raimund Seidel benannt und funktionier
     wobei $v_i := v(\{h_1, \dotsc, h_i\}) \in \real^2$ das Optimum der ersten $i$ NBen sei
     (d.\,h. erste beide NBen nach oben of"|fen und Steigung von $h_1$ positiv und die von
     $h_2$ negativ).
-    
+
     \item
     Füge $h_3, \dotsc, h_n$ nacheinander hinzu und stelle sicher, dass das Optimum der bislang
     betrachteten NBen aufrecht erhalten wird.
@@ -269,14 +269,14 @@ $\O(n)$
     = \O(n) + \sum_{i=3}^n \PP(v_{i-1} \notin h_i) \cdot \O(i)$,
     wobei $\PP(v_{i-1} \notin h_i)$ die Wahrscheinlichkeit ist, dass $v_{i-1}$ nicht die
     $i$-te NB erfüllt (d.\,h. dass der zweite Fall eintritt).
-    
+
     Das Optimum $v_{i-1}$ ist immer durch genau zwei bestimmte Hyperebenen definiert.
     Mit Rückwärtsanalyse ist die gesuchte Wahrscheinlichkeit gleich der, dass
     nach dem Einfügen der $i$-ten Hyperebene die letzte eingefügte Hyperebene eine von diesen
     zwei Hypereben war.
     Weil die Hyperebenen zufällig permutiert sind, folgt daher
     $\PP(v_{i-1} \notin h_i) = \frac{2}{i}$.
-    
+
     Man erhält damit $T(n) = \O(n) + \sum_{i=3}^n \frac{2}{i} \cdot \O(i) = \O(n)$.
 \end{Beweis}
 
@@ -300,26 +300,26 @@ Dazu sei $\delta$ die Zahl an Objekten, die die optimale Lösung bestimmen
     Gegeben sind $n$ Punkte in $\real^d$.\\
     Gesucht ist der kleinste $d$-dimensionale (abgeschlossene) Ball, der alle Punkte enthält.\\
     Es gilt $\delta \le d + 1$.
-    
+
     \item
     \emph{lineare Programmierung}:
     Gegeben sind $n$ Halbräume in $\real^d$.\\
     Gesucht ist der unterste Punkt im Schnitt aller Halbräume.\\
     Es gilt $\delta = d$.
-    
+
     \item
     \emph{kleinste einschließende Ellipse}:
     Gegeben sind $n$ Punkte in $\real^d$.\\
     Gesucht ist die kleinste $d$-dimensionale (abgeschlossene) Ellipse, die alle Punkte enthält.\\
     Es gilt $\delta = \frac{d(d+3)}{2}$.
-    
+
     \item
     \emph{kleinster einschließender Donut}:
     Gegeben sind $n$ Punkte in $\real^d$.\\
     Gesucht ist der kleinste $d$-dimensionale (abgeschlossene) Donut, die alle Punkte enthält
     (d.\,h. mengentheoretische Dif"|ferenz zweier konzentrische Bälle).\\
     Es gilt $\delta = d + 2$.
-    
+
     \item
     \emph{Polyederdistanz}:
     Gegeben sind zwei disjunkte Polyeder im $\real^d$ durch ihre Halbräume.\\
@@ -336,11 +336,11 @@ Die Probleme sind jedoch alle "`LP-artig"'.
     \emph{kleine Basis}:
     Die optimale Lösung wird nur durch wenige Eingabeobjekte bestimmt,
     deren Anzahl $\delta$ von der Gesamtzahl $n$ an Objekten unabhängig ist.
-    
+
     \item
     \emph{Monotonizität}:
     Die Lösung wird nicht besser, wenn Objekte hinzugefügt werden.
-    
+
     \item
     \emph{Lokalität}:
     Wenn sich die Lösung $\L$ durch Hinzufügung eines Objekts verschlechtert,
@@ -360,7 +360,7 @@ Ein \begriff{LP-artiges Problem} ist ein Paar $(H, w)$ mit
 \begin{itemize}
     \item
     $H$ einer endlichen Menge an \begriff{Nebenbedingungen} und
-    
+
     \item
     $w\colon \P(H) \to W \cup \{\pm\infty\}$ der \begriff{Zielfunktion} mit
     $W$ einer total geordneten Menge,
@@ -370,7 +370,7 @@ sodass für alle $F, G \subset H$ mit $F \subset G$ gilt, dass
     \item
     $w(F) \le w(G)$
     (\begriff{Monotonizität}) und
-    
+
     \item
     aus $w(F) = w(G) > -\infty$ und $w(G \cup \{h\}) > w(G)$ für ein $h \in H$ folgt,\\
     dass $w(F \cup \{h\}) > w(F)$
@@ -400,7 +400,7 @@ Gegeben sei eine Basis $B$ und eine NB $h \in H$.
     \item
     \emph{Test auf Verletzung}:
     Gilt $w(B \cup \{h\}) > w(B)$?
-    
+
     \item
     \emph{Basis-Berechnung}:
     Berechne die Basis von $B'$ von $B \cup \{h\}$.
@@ -415,21 +415,21 @@ einer Basis $C \subset G$ einer Teilmenge $G' \subset G$ eine Basis von $G$ und 
     \begin{itemize}
         \item
         Falls ja, so gebe $C$ zurück.
-        
+
         \item
         Falls nein, so mache Folgendes:
         \begin{enumerate}
             \item
             Wähle $h \in G \setminus C$ zufällig und
             berechne $C' := \code{lp\_type}(G \setminus \{h\}, C)$.
-            
+
             \item
             Prüfe, ob $w(C' \cup \{h\}) > w(C')$.
             \begin{itemize}
                 \item
                 Falls ja, so berechne eine Basis $C''$ von $C' \cup \{h\}$
                 und gebe $\code{lp\_type}(G, C'')$ zurück.
-                
+
                 \item
                 Falls nein, so gebe $C'$ zurück.
             \end{itemize}
@@ -448,7 +448,7 @@ Der Algorithmus terminiert stets und arbeitet korrekt.
     $w(C'') = w(C' \cup \{h\}) > w(C') = w(G \setminus \{h\}) \ge w(C)$.\\
     Weil das Bild von $\P(H)$ unter $w$ endlich ist, kann $w(G) - w(C)$ nur endlich viele Werte
     annehmen, womit dieser Aufruf induktiv ebenfalls terminiert.
-    
+
     Die Korrektheit des Algorithmus ist klar:
     Im ersten Fall wird korrekterweise $G = C$ zurückgegeben,
     im zweiten Fall $\code{lp\_type}(G, C'')$ (was induktiv korrekt ist) oder
@@ -472,7 +472,7 @@ Dann ist $h \in C''$ und $h$ taucht in allen Basen aller rekursiven Aufrufe auf.
     Angenommen, es gilt $h \notin C''$,
     dann wäre $C'' \subset C'$ und daher $w(C'') \le w(C')$,
     ein Widerspruch zu $w(C'') = w(C' \cup \{h\}) > w(C')$.
-    
+
     Seien $C_0 \subset G \setminus \{h\}$ eine Basis, die $h$ nicht enthält,
     und $C_1$ eine Basis, die während $\code{lp\_type}(G, C'')$ auftritt.
     Dann gilt $w(C_1) \ge w(C'') = w(C' \cup \{h\}) > w(C') = w(G \setminus \{h\}) \ge w(C_0)$,
@@ -508,10 +508,10 @@ Dann gilt
 \begin{enumerate}
     \item
     $t(\delta, 0) = 0$,
-    
+
     \item
     $t(n, 0) = n - \delta$ und
-    
+
     \item
     $t(n, k) \le t(n - 1, k) + 1 + \frac{k}{n - \delta} t(n, k - 1)$.
 \end{enumerate}

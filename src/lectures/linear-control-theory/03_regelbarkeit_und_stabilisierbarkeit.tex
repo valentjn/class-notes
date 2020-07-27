@@ -397,7 +397,7 @@ Dieser Ansatz besitzt einige Nachteile:
     Für verschiedene Anfangsbedingungen müssen verschiedene Steuergrößen gewählt werden,
     um die Aufgabenstellung zu erfüllen.
     Die Steuergrößen müssen "`manuell"' an den jeweiligen Anfangszustand angepasst werden.
-    
+
     \item
     Zukünftige, unvorhergesehene Ereignisse werden nicht berücksichtigt.
     Strategien mit of"|fenen Regelkreisen sind vorgeplant und passen sich nicht Situationen an,
@@ -599,12 +599,12 @@ $(\widetilde{A}, \widetilde{B})$ ist regelbar genau dann, wenn $(A, B)$ regelbar
     \emph{Zustandskoordinaten-Transformation} ($F = 0$, $U = I$):
     $\widetilde{A} = S^{-1} AS$ und $\widetilde{B} = S^{-1} B$\\
     (zugehöriges System $\dot{z} = S^{-1} ASz + S^{-1} Bu$)
-    
+
     \item
     \emph{Eingangskoordinaten-Transformation} ($S = I$, $F = 0$):
     $\widetilde{A} = A$ und $\widetilde{B} = BU$\\
     (zugehöriges System $\dot{x} = Ax + BUv$ mit $u = Uv$)
-    
+
     \item
     \emph{lineare Zustandsrückführung, neuer Eingang} ($S = I$, $U = I$):
     $\widetilde{A} = A - BF$ und $\widetilde{B} = B$\\
@@ -765,20 +765,20 @@ Diese Frage ist nicht leicht zu beantworten.
     Je kleiner die Verschiebung der Koef"|fizienten des charakteristischen Polynoms
     (und der Eigenwerte) ist, desto kleiner sind die Koef"|fizienten von $F$ --
     was wünschenswert ist, denn große Koef"|fizienten bedeuten einen großen Regelaufwand.
-    
+
     \item
     Die Rolle von dominanten Eigenwerten führt zum folgenden Design-Rezept:
     \begin{itemize}
         \item
         Wähle ein System zweiter Ordnung mit der gewünschten Dynamik.
-        
+
         \item
         Platziere zwei Eigenwerte an den zwei Polstellen des Systems.
-        
+
         \item
         Wähle alle anderen Eigenwerte schneller (damit sie weniger dominant sind),
         aber nicht zu schnell (um zu starken Regelaufwand zu vermeiden).
-        
+
         \item
         Platziere die Eigenwerte und überprüfe mittels dynamischer Simulation.
     \end{itemize}

@@ -28,19 +28,19 @@
         \item
         $Z$ eine endliche, nicht-leere Menge
         (die Menge der \begriff{Zustände}),
-        
+
         \item
         $\Sigma$ eine endliche, nicht-leere Menge
         mit $Z \cap \Sigma = \emptyset$
         (das \begriff{Alphabet}),
-        
+
         \item
         $\delta\colon Z \times \Sigma \rightarrow Z$
         (die \begriff{Überführungsfunktion}),
-        
+
         \item
         $z_0 \in Z$ (der \begriff{Startzustand}) und
-        
+
         \item
         $E \subset Z$ (die \begriff{akzeptierenden Endzustände}) ist.
     \end{itemize}
@@ -134,7 +134,7 @@
     Ist zusätzlich $q \in E$, so wird auch noch $p \rightarrow a$ in $P$
     aufgenommen.
     $G$ ist regulär.
-    
+
     Zu zeigen ist $T(M) = L(G)$.
     Sei $x = a_1 \dotsb a_n$. Dann gilt
     $x \in T(M)
@@ -165,19 +165,19 @@
         \item
         $Z$ eine endliche, nicht-leere Menge
         (die Menge der \begriff{Zustände}),
-        
+
         \item
         $\Sigma$ eine endliche, nicht-leere Menge
         mit $Z \cap \Sigma = \emptyset$
         (das \begriff{Alphabet}),
-        
+
         \item
         $\delta\colon Z \times \Sigma \rightarrow \P(Z)$
         (die \begriff{Überführungsfunktion}),
-        
+
         \item
         $Z_0 \subset Z$ (die \begriff{Startzustände}) und
-        
+
         \item
         $E \subset Z$ (die \begriff{akzeptierenden Endzustände}).
     \end{itemize}
@@ -228,7 +228,7 @@
     $\delta'(Q, a) := \widehat{\delta}(Q, a) =
     \bigcup_{q \in Q} \delta(q, a)$ und
     $E' := \{Q \in \P(Z) \;|\; Q \cap E \not= \emptyset\}$.
-    
+
     Zunächst beweist man folgendes Lemma:
     Für alle $Q \subset Z$ und $w \in \Sigma^\ast$ gilt
     $\widehat{\delta}(Q, w) = \widehat{\delta'}(Q, w)$.\\
@@ -247,7 +247,7 @@
     \widehat{\delta'}(\widehat{\delta}(P, a), x) =
     \widehat{\delta'}(\delta'(P, a), x) =
     \widehat{\delta'}(P, ax)$.
-    
+
     Zu zeigen ist $T(M) = T(M')$.
     Mit der Hilfsbehauptung ergibt sich\\
     $w \in T(M)
@@ -313,7 +313,7 @@
     $A \rightarrow a \notin P$ und\\
     $\delta(A, a) := \{B \in V \;|\; A \rightarrow aB \in P\} \cup \{X\}$ für
     $A \rightarrow a \in P$.
-    
+
     Man kann sich leicht überlegen, dass $T(M) = L(G)$.
 \end{Beweis}
 
@@ -334,10 +334,10 @@
     \begin{itemize}
         \item
         $\emptyset \in \RegExp$
-        
+
         \item
         $\varepsilon \in \RegExp$
-        
+
         \item
         $a \in \RegExp$ für alle $a \in \Sigma$
     \end{itemize}
@@ -346,10 +346,10 @@
     \begin{itemize}
         \item
         $\alpha\beta \in \RegExp$
-        
+
         \item
         $(\alpha|\beta) \in \RegExp$
-        
+
         \item
         $(\alpha)^\ast \in \RegExp$
     \end{itemize}
@@ -363,7 +363,7 @@
     \{(\alpha)^\ast \;|\; \alpha \in \RegExp_i\}$
     für $i \in \natural_0$ und schließlich
     $\RegExp := \bigcup_{i=0}^\infty \RegExp_i$.)
-    
+
     $\emptyset$, $\varepsilon$ und $a$ sind zunächst einmal nur Zeichen
     ohne Bedeutung (syntaktische Definition).
 \end{Def}
@@ -376,10 +376,10 @@
     \begin{itemize}
         \item
         $L(\emptyset) := \emptyset$
-        
+
         \item
         $L(\varepsilon) := \{\varepsilon\}$
-        
+
         \item
         $L(a) := \{a\}$ für alle $a \in \Sigma$
     \end{itemize}
@@ -388,10 +388,10 @@
         \item
         $L(\alpha \beta) := L(\alpha) L(\beta) =
         \{xy \;|\; x \in L(\alpha),\; y \in L(\beta)\}$
-        
+
         \item
         $L((\alpha|\beta)) := L(\alpha) \cup L(\beta)$
-        
+
         \item
         $L((\alpha)^\ast) := L(\alpha)^\ast =
         \{a_1 \dotsc a_n \;|\; n \in \natural_0,
@@ -437,7 +437,7 @@
     Für $(L(\alpha))^\ast$ verfährt man ähnlich wie für
     $L(\alpha)L(\beta)$, nur dass man hier den Automaten $L_1$ mit sich selbst
     zusammenschaltet.
-    
+
     Für die andere Richtung geht man von einem DEA
     $M = (Z, \Sigma, \delta, z_1, E)$ mit $Z = \{z_1, \dotsc, z_n\}$ aus
     und konstruiert einen regulären Ausdruck $\gamma \in \RegExp$ mit
@@ -483,10 +483,10 @@
     \begin{enumerate}
         \item
         $|v| \ge 1$
-        
+
         \item
         $|uv| \le n$
-        
+
         \item
         $\forall_{i \in \natural_0}\; u v^i w \in L$
     \end{enumerate}
@@ -505,16 +505,16 @@
     Wähle $j, k \in \natural_0$, sodass $0 \le j < k \le n$ und $q_j = q_k$.
     Setze $u := x_1 \dotsb x_j$, $v := x_{j+1} \dotsb x_k$ und
     $w := x_{k+1} \dotsb x_m$.
-    
+
     Es gilt $x = uvw$ und
     \begin{enumerate}
         \item
         $|v| \ge 1$, da $j < k$ und somit
         $x_{j+1} \dotsb x_k \not= \varepsilon$,
-        
+
         \item
         $|uv| \le n$, da $k \le n$, sowie
-        
+
         \item
         $\forall_{i \in \natural_0}\; u v^i w \in L$, da aus
         $\widehat{\delta}(z_0, u) = q_j = q_k = \widehat{\delta}(z_0, uv) =
@@ -649,7 +649,7 @@
     der Index von $R_L$ kleiner oder gleich dem Index von $R_M$.
     Dieser ist allerdings maximal $|Z|$ (aufgrund der Definition von $R_M$)
     und damit endlich.
-    
+
     "`$\Leftarrow$"':
     Sei $L \subset \Sigma^\ast$ eine Sprache, sodass $R_L$ endlichen Index $k$
     hat.
@@ -769,15 +769,15 @@
         \item
         Markiere alle Paare $(z, z')$ mit $z \in E \land z' \notin E$ oder
         $z \notin E \land z' \in E$.
-        
+
         \item
         Markiere jedes Zustandspaar $(p, q)$ mit $\delta(p, a) = z$,
         $\delta(q, a) = z'$ und $(z, z')$ bereits markiert für ein
         $a \in \Sigma$.
-        
+
         \item
         Wiederhole 2., bis sich nichts mehr ändert.
-        
+
         \item
         Die nun unmarkierten Paare von Zuständen können jeweils zu einem
         Zustand verschmolzen werden.
@@ -895,10 +895,10 @@
     \begin{enumerate}
         \item
         $L$ ist regulär.
-        
+
         \item
         $L$ ist erkennbar.
-        
+
         \item
         $\Synt(L)$ ist endlich.
     \end{enumerate}
@@ -933,7 +933,7 @@
     $L(\alpha_1) = L_1$ und $L(\alpha_2) = L_2$.
     Es gilt $L(\alpha_1 | \alpha_2) = L_1 \cup L_2$, d.\,h.
     $L_1 \cup L_2$ ist regulär.
-    
+
     Abschluss unter Komplement:
     Ist $L$ regulär, so gibt es ein endliches Monoid $M$, einen
     Homomorphismus $\varphi\colon \Sigma^\ast \rightarrow M$
@@ -945,7 +945,7 @@
     (Alternativ kann man in einem DEA $M$ mit $T(M) = L$ Endzustände und
     Nicht-Endzustände vertauschen, um einen DEA $M'$ mit
     $T(M') = \Sigma^\ast \setminus L$ zu erhalten.)
-    
+
     Somit folgt der Abschluss unter booleschen Operationen,
     denn alle booleschen Operationen (auch der Durchschnitt) sind mit
     Vereinigung und Komplement darstellbar.
@@ -956,14 +956,14 @@
     $M := (Z_1 \times Z_2, \Sigma, \delta, (z_{01}, z_{02}), E_1 \times E_2)$
     mit $\delta((z, z'), a) := (\delta_1(z, a), \delta_2(z', a))$
     betrachten, für den $T(M) = L_1 \cap L_2$ gilt.)
-    
+
     Abschluss unter Produkt:
     Sind $L_1$ und $L_2$ regulär,
     dann gibt es reguläre Ausdrücke $\alpha_1$ und $\alpha_2$ mit
     $L(\alpha_1) = L_1$ und $L(\alpha_2) = L_2$.
     Es gilt $L(\alpha_1 \alpha_2) = L_1 L_2$, d.\,h.
     $L_1 L_2$ ist regulär.
-    
+
     Abschluss unter Stern:
     Ist $L$ regulär, dann gibt es einen regulären Ausdruck $\alpha$ mit
     $L(\alpha) = L$.
@@ -1039,7 +1039,7 @@
     Dann gilt aufgrund des Pumping-Lemmas $x = uvw$, d.\,h.
     $uv^i w \in L$ für alle $i \in \natural_0$.
     Somit ist $L$ unendlich.
-    
+
     "`$\Rightarrow$"':
     Sei $|L| = \infty$ und entgegen der Behauptung habe das kürzeste Wort
     $x \in L$ mit $|x| \ge n$ eine Länge $\ge 2n$.

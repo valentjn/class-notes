@@ -44,10 +44,10 @@ falls $\forall_{T \in \T}\; \cc(T) \cap P = \emptyset$.
 \begin{itemize}
     \item
     Existiert eine eindeutige Delaunay-Triangulierung für jede Punktmenge $P \subset \real^2$?
-    
+
     \item
     Falls ja, wie berechnet man die Delaunay-Triangulierung?
-    
+
     \item
     Warum maximiert die Delaunay-Triangulierung den kleinsten Innenwinkel?
 \end{itemize}
@@ -122,7 +122,7 @@ Eine Kante $e = pq$ in $\T$ heißt \begriff{lokale \name{Delaunay}-Kante}, falls
     \item
     $e$ Kante nur eines einzigen Dreiecks ist
     (d.\,h. $e$ liegt auf dem Rand von $\CH(P)$) oder
-    
+
     \item
     $e$ Kante zweier Dreiecke $\triangle psq, \triangle pqr \in \T$ ist sowie
     $r \notin \cc(\triangle psq)$ und $s \notin \cc(\triangle pqr)$.
@@ -135,10 +135,10 @@ Folgendes ist äquivalent.
 \begin{enumerate}
     \item
     Jedes Dreieck in $\T$ ist ein Delaunay-Dreieck (d.\,h. $\T = \DT(P)$).
-    
+
     \item
     Jede Kante in $\T$ ist eine Delaunay-Kante.
-    
+
     \item
     Jede Kante in $\T$ ist eine lokale Delaunay-Kante.
 \end{enumerate}
@@ -148,7 +148,7 @@ Folgendes ist äquivalent.
     Sei $e = pq$ eine Kante in $\T$.
     Wähle ein Dreieck $T \in \T$, sodass $e$ eine Seite von $T$ ist.
     Dann gilt für $C := \cc(T)$, dass $p, q \in \partial C$ und $\interior(C) \cap P = \emptyset$.
-    
+
     "`\emph{(2)} $\implies$ \emph{(3)}"':
     Sei $e = pq$ eine Kante zweier Dreiecke $\triangle psq, \triangle pqr \in \T$
     und $C$ ein Kreis mit $p, q \in \partial C$ und $\interior(C) \cap P = \emptyset$.
@@ -159,7 +159,7 @@ Folgendes ist äquivalent.
     werden, sodass zusätzlich zu $p, q \in \partial C$ auch noch $r \in \partial C$ gilt
     (ohne dass $s \in C$), d.\,h. dann gilt $C = \cc(\triangle pqr)$ und $s \notin C$.
     Analog geht das mit $C = \cc(\triangle psq)$ und $r \notin C$.
-    
+
     "`\emph{(3)} $\implies$ \emph{(1)}"':
     Angenommen, alle Kanten sind lokale Delaunay-Kanten, aber es gibt ein Dreieck $\triangle pqr$
     und ein Punkt $s \in P$ mit $s \in \cc(\triangle pqr)$.
@@ -170,7 +170,7 @@ Folgendes ist äquivalent.
     Insbesondere liegt $s$ dann auch im Umkreis des "`vorletzten"' Dreiecks $\triangle tuv$
     (teilt mit einem Dreieck mit $s$ als Ecke eine gemeinsame Kante $vu$),
     d.\,h. $vu$ ist keine lokale Delaunay-Kante, ein Widerspruch.
-    
+
     Dazu "`verformt"' man den Umkreis von $\triangle pqr$, sodass $p$ und $r$ immer noch auf dem
     Kreis liegen, aber statt $q$ nun der Eckpunkt $t$ des nächsten Dreiecks auf dem Kreis liegt
     (man verschiebt den Mittelpunkt des Kreises auf der Mittelsenkrechten von $pr$ solange
@@ -205,7 +205,7 @@ für eine Punktmenge $P \subset \real^2$ mit $n := |P|$ wie folgt.
 \begin{enumerate}
     \item
     Berechne eine beliebige Triangulierung von $P$.
-    
+
     \item
     Wiederhole, solange es eine Kante $e = pr$ gibt, die keine lokale Delaunay-Kante ist:
     \begin{enumerate}
@@ -231,7 +231,7 @@ und die neu erstellte Kante $qs$ ist eine lokale Delaunay-Kante.
     (das würde nicht gehen, wenn $e$ eine lokale Delaunay-Kante wäre).
     Damit liegt die Diagonale $qs$ vollständig im Viereck und die Kante $e = pr$ kann geflippt
     werden.
-    
+
     Die neue Kante $qs$ ist eine lokale Delaunay-Kante, weil $\cc(\triangle pqr)$ zu
     $\cc(\triangle qrs)$ deformiert werden kann, indem $q, r$ auf dem Rand gehalten werden,
     während der Kreis schrumpft.
@@ -303,16 +303,16 @@ dann ändert ein Flip den minimalen Innenwinkel nicht.
     (oder konstruiere zunächst aus der Punktmenge wie im Graham-Scan-Algorith"-mus
     für konvexe Hüllen ein Polygon und trianguliere dieses dann, beides geht in Zeit
     $\O(n \log n)$).
-    
+
     \item
     Erstelle einen Stack und füge alle Kanten der Triangulierung hinzu.
-    
+
     \item
     Solange es eine Kante $e$ im Stack gibt, wiederhole:
     \begin{itemize}
         \item
         Ist $e$ eine lokale Delaunay-Kante, dann entferne $e$ vom Stack.
-        
+
         \item
         Ist $e$ keine lokale Delaunay-Kante, dann entferne $e$ vom Stack,
         ersetze $e$ durch die geflippte Kante $e'$ in der Triangulierung und
@@ -338,7 +338,7 @@ Die Anzahl der Flips ist $\O(n^2)$.
     (Vierecke in $\real^3$ mit hoher Diagonale)
     zu "`Tälern"' (Vierecke in $\real^3$ mit niedriger Diagonale)
     aufgrund des Lifting-Lemmas bzgl. Umkreisen.
-    
+
     Eine bereits geflippte Kante kann also niemals wieder auf dem Stack auftauchen
     und wieder die lokale Delaunay-Eigenschaft verletzen,
     d.\,h. es wurden insgesamt höchstens $\binom{n}{2}$ Kanten dem Stack hinzugefügt,
@@ -372,20 +372,20 @@ für eine Punktmenge $P \subset \real^2$ mit $n := |P|$ wie folgt.
 \begin{enumerate}
     \item
     Permutiere die Punktmenge $P$ zufällig zu $p_1, \dotsc, p_n$.
-    
+
     \item
     Konstruiere die Triangulierung $\DT_1$ durch Verbindung von $p_1$ mit den Ecken des
     großen Dreiecks.
-    
+
     \item
     Wiederhole für $i = 1, \dotsc, n - 1$:
     \begin{enumerate}
         \item
         Lokalisiere $p_{i+1}$ in $\DT_i$, d.\,h. finde $T \in \DT_i$ mit $p_{i+1} \in T$.
-        
+
         \item
         Verbinde $p_{i+1}$ mit den Ecken von $T$.
-        
+
         \item
         Wende den Delaunay-Flip-Algorithmus auf die entstehende Triangulierung an,
         um $\DT_{i+1}$ zu erhalten.
@@ -425,7 +425,7 @@ sind genau die, die $p_{i+1}$ als eine Ecke besitzen.
     Damit besitzen neue Dreiecke $p_{i+1}$ als eine Ecke.
     Umgekehrt sind Dreiecke mit Ecke $p_{i+1}$ neue Dreiecke, weil $p_{i+1}$ vorher nicht in der
     Punktmenge war.
-    
+
     Analog argumentiert man, dass genau die Facetten von $\CH(\{p_1', \dotsc, p_i'\})$
     zerstört werden, bei denen $p_{i+1}'$ unterhalb der Ebene durch die jeweilige Facette liegt.
     Damit werden im $i$-ten Schritt genau die Dreiecke zerstört, in deren Umkreis $p_{i+1}$
@@ -457,7 +457,7 @@ Knoten des Graphen entsprechen dabei Dreiecken wie folgt:
 \begin{itemize}
     \item
     Senken (Sinks, Knoten mit Ausgangsgrad $0$) entsprechen aktuell existierenden Dreiecken.
-    
+
     \item
     Innere Knoten entsprechen Dreiecken, die schon zerstört wurden.
 \end{itemize}
@@ -467,7 +467,7 @@ Während des RIC-Algorithmus wird der DAG wie folgt geändert:
     \begriff{Split}
     (Verbindung von $p_{i+1}$ mit den Ecken von $T \in \DT_i$ mit $p_{i+1} \in T$):\\
     Erstelle drei neue Kindknoten unter dem Knoten, der zu $T_i$ gehört.
-    
+
     \item
     \begriff{Flip}
     (Flip einer Kante während des Flip-Algorithmus):\\
@@ -501,7 +501,7 @@ Die erwartete Gesamt-Laufzeit der Punktlokalisierungen ist $\O(n \log n)$.
     $k(T) := |\cc(T) \cap P|$ die Anzahl der Punkte in seinem Umkreis.
     Nach dem Lemma ist der gesamte  Punktlokali"-sierungs-Aufwand beschränkt durch
     $\O(\sum_{T \in \bigcup_{i=1}^n \DT_i} k(T))$.
-    
+
     Zunächst analysiert man $\EE[\sum_{T \in \DT_i \setminus \DT_{i-1}} k(T)]$,
     d.\,h. man betrachtet nur die Delaunay-Drei"-ecke, die im $(i-1)$-ten Schritt entstanden sind.
     Die Dreiecke in $\DT_i \setminus \DT_{i-1}$ sind genau die Dreiecke
@@ -511,7 +511,7 @@ Die erwartete Gesamt-Laufzeit der Punktlokalisierungen ist $\O(n \log n)$.
     $\EE[\sum_{T \in \DT_i \setminus \DT_{i-1}} k(T)]
     = \EE[\sum_{T \in \DT_i,\; \text{$p_i$ Ecke von $T$}} k(T)]
     = \frac{3}{i} \EE[\sum_{T \in \DT_i} k(T)]$.
-    
+
     Auf der anderen Seite sind die Dreiecke in $\DT_i \setminus \DT_{i+1}$ genau die Dreiecke
     in $\DT_i$, die $p_{i+1}$ in ihrem Umkreis haben.
     Weil $p_{i+1}$ ein zufälliger Punkt von $P \setminus \{p_1, \dotsc, p_i\}$ ist, gilt\\
@@ -520,7 +520,7 @@ Die erwartete Gesamt-Laufzeit der Punktlokalisierungen ist $\O(n \log n)$.
     die Anzahl der erstellten Dreiecke, Letzteres ist erwartet $\O(1)$ (siehe oben).
     Damit gilt
     $\EE[\sum_{T \in \DT_i} k(T)] = (n-i) \cdot \EE[|\DT_i \setminus \DT_{i+1}|] = \O(n - i)$.
-    
+
     Man erhält also $\EE[\sum_{T \in \DT_i \setminus \DT_{i-1}} k(T)] = \O(\frac{n - i}{i})$ und
     somit als Gesamt-Laufzeit der Punktlokalisierungen
     $\sum_{i=2}^n \EE[\sum_{T \in \DT_i \setminus \DT_{i-1}} k(T)] =
@@ -545,17 +545,17 @@ Delaunay-Triangulierung $\DT(P)$ für eine Punktmenge $P \subset \real^2$ mit $n
     \item
     Enthält $P$ nur konstant viele Punkte, dann berechne die Delaunay-Triangulierung direkt
     und gebe diese zurück.
-    
+
     \item
     \emph{Divide-Schritt}:
     Sonst berechne den $x$-Median der Punkte und
     teile anhand diesem $P$ in zwei Hälften $P_L$ und $P_R$,
     d.\,h. $|P_L| \approx |P_R|$
     (z.\,B. anhand des $x$-Medians in zwei Hälften).
-    
+
     \item
     Berechne rekursiv $\DT(P_L)$ und $\DT(P_R)$.
-    
+
     \item
     \emph{Conquer-Schritt}:
     Vereine $\DT(P_L)$ und $\DT(P_R)$ durch Löschen und Hinzufügen einiger Kanten
@@ -572,7 +572,7 @@ Gesamtlaufzeit $\O(n \log n)$ besitzen soll.
 \begin{itemize}
     \item
     $\DT(P)$ enthält die obere und die untere Tangente an $\CH(P_L)$ und $\CH(P_R)$.
-    
+
     \item
     Alle neuen Delaunay-Kanten und -Dreiecke haben mindestens einen Punkt in $P_L$ und
     einen in $P_R$.
@@ -593,26 +593,26 @@ wie folgt:
     \item
     Nimm an, dass keine zwei Punkte dieselbe $x$-Koordinate haben
     (sonst Rotation).
-    
+
     \item
     Berechne die unterste neue Kante als die untere Kante der beiden Kanten auf dem Rand von
     $\CH(P)$, die die Teilungsgerade schneiden.
     Definiere einen Kreis durch die beiden Endpunkte $a \in P_L$ und $b \in P_R$ der Kante,
     der seinen Mittelpunkt sehr weit unten hat.
-    
+
     \item
     Verschiebe den Mittelpunkt des letzten berechneten Kreises
     so lange nach oben auf der Mittelsenkrechten von $ab$,
     bis ein neuer Punkt $c$ aus $P$ auf dem Rand des Kreises liegt,
     wobei $a, b$ immer auf dem Rand des Kreises liegen sollen.
-    
+
     \item
     $\triangle abc$ bildet ein Delaunay-Dreieck,
     verbinde also $c$ mit $a$ und mit $b$ und lösche Kanten, die $ac$ oder $ab$ schneiden.
-    
+
     \item
     Für $c \in P_L$ setze $a \leftarrow c$ und für $c \in P_R$ setze $b \leftarrow c$.
-    
+
     \item
     Wiederhole Schritte \emph{(3)} bis \emph{(5)} solange, bis $ab$ die obere Tangente ist
     (obere Kante der beiden Kanten auf dem Rand von $\CH(P)$, die die Teilungsgerade schneiden).
@@ -643,13 +643,13 @@ dann ist $an_j$ für $j = 1, \dotsc, i - 1$ keine Delaunay-Kante und es gilt $c_
     oder wenn $q$ auf der Seite von $n_{j+1}$, aber innerhalb von $\cc(\triangle a n_j n_{j+1})$
     liegt).
     Somit ist $an_j$ keine Delaunay-Kante.
-    
+
     Außerdem folgt, dass der Kreis mit dem sich verschiebenden Mittelpunkt auf der
     Mittelsenkrechten von $ab$ zuerst $n_{j+1}$ trifft und dann $n_j$,
     d.\,h. der Kreis trifft $n_i$ vor $n_j$ für $j < i$.
     Die Aussage $c_L = n_i$ ist damit äquivalent dazu, dass $n_i$ vor $n_j$ für $j > i$
     getrof"|fen wird.
-    
+
     Sei also $j > i$ beliebig.
     Angenommen, $n_j$ wird vor $n_i$ getrof"|fen.
     Dann gilt $n_j \in \cc(\triangle abn_i)$
@@ -673,19 +673,19 @@ dann ist $an_j$ für $j = 1, \dotsc, i - 1$ keine Delaunay-Kante und es gilt $c_
     trifft, und der zugehörige Index $i_L$.
     Die Kanten $an_j$ für $j < i_L$ können entfernt werden, weil sie nach obigem Lemma keine
     Delaunay-Kanten sind.
-    
+
     \item
     Dann führt der Algorithmus die Prozedur analog für $P_R$ durch, um $c_R$ und $i_R$ zu
     erhalten und bestimmte Kanten aus $\DT(P_R)$ zu entfernen.
-    
+
     \item
     Schließlich wird ein weiterer Umkreis-Test durchgeführt, um zu bestimmen, ob $c_L$ oder $c_R$
     zuerst getrof"|fen wird.
     Wenn $c_L$ zuerst getrof"|fen wird, wird die Kante $bc_L$ hinzugefügt,
     sonst $ac_R$.
-    
+
     \item
-    In jedem Fall macht der Algorithmus mit der hinzugefügten Kante $bc_L$ oder $ac_R$ 
+    In jedem Fall macht der Algorithmus mit der hinzugefügten Kante $bc_L$ oder $ac_R$
     anstelle von $ab$ weiter.
 \end{enumerate}
 
@@ -701,7 +701,7 @@ $\O(n \log n)$
     ist diese Zahl höchstens gleich der Anzahl $\O(n)$ an Kanten in beiden
     Delaunay-Triangulierungen,
     d.\,h. der Conquer-Schritt kostet $\O(n)$ Zeit.
-    
+
     Bezeichnet $T(n)$ die Zeit, die der Divide-and-Conquer-Algorithmus zur Berechnung der
     Delau"-nay-Triangulierung von $n$ Punkten benötigt, so gilt damit
     $T(n) = 2T(\frac{n}{2}) + \O(n)$ (der Median kann direkt in $\O(n)$ berechnet werden,
@@ -746,10 +746,10 @@ zusammenhängend und enthalten das zu ihnen assoziierte Postamt.
 \begin{enumerate}
     \item
     Konstruiere das Voronoi-Diagramm von $P$.
-    
+
     \item
     Trianguliere alle Zellen.
-    
+
     \item
     Konstruiere Suchstruktur über der entstehenden Triangulierung (Kirkpatrick-Hierarchie).
 \end{enumerate}
@@ -768,7 +768,7 @@ $\O(\log n)$
     und entsprechen Kreisen durch diese drei Postämter, die keine Postämter enthalten,
     d.\,h. Delaunay-Dreiecken.\\
     Ein Voronoi-Knoten ist der Umkreis-Mittelpunkt des zugehörigen Delaunay-Dreiecks.
-    
+
     \item
     \emph{\name{Voronoi}-Kanten}
     sind charakterisiert dadurch, dass für alle Punkte auf der Kante genau zwei bestimmte
@@ -797,12 +797,12 @@ Man geht daher zu approximativer Lokalisierung über.
     Abständen sind),
     weil man zeigen kann, dass die MST-Kanten eine Teilmenge der Delaunay-Triangulierung bilden
     (d.\,h. nur $\O(n)$ Konstruktionsaufwand)
-    
+
     \item
     \begriff{Meshing} von Gebieten:
     oft mit Delaunay-Dreiecken, außerdem wird oft mit Umkreis-Mittelpunkten
     verfeinert
-    
+
     \item
     \begriff{Kurvenrekonstruktion}:
     gegeben sind $n$ Punkte (Abtastung/Sampling)

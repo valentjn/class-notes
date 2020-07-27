@@ -43,13 +43,13 @@
     \begin{itemize}
         \item
         Wie ist $V_h$ geschickt zu konstruieren?
-        
+
         \item
         Existieren a-priori-Fehlerschranken $\norm{u - u_h} \le C(u) h^p$?
-        
+
         \item
         Existieren a-posterori-Fehlerschranken $\norm{u - u_h} \le C(u_h) h^p$?
-        
+
         \item
         Wie löst man numerisch das entsprechende LGS?
     \end{itemize}
@@ -72,7 +72,7 @@
     Damit ist für $a$ symmetrisch die diskrete Lösung $u_h$ genau das Bild der
     orth. Projektion der schwachen Lösung $u$ auf $V_h$ bzgl. $\sp{\cdot, \cdot}_a$
     und heißt daher \begriff{\name{Galerkin}-Projektion}.
-    
+
     Für $a(\cdot, \cdot)$ nicht-symmetrisch ist die Galerkin-Projektion i.\,A.
     keine orth. Projektion bzgl. irgendeines Skalarprodukts,
     aber das Lemma gilt weiterhin und man spricht immer noch von
@@ -121,34 +121,34 @@
 \begin{Bsp}
     Wählt man $V_h$ als Aufspann von Eigenfunktionen des Diff.operators,
     so erhält man eine optimale Basis bei unbekannter/variabler rechter Seite.
-    
+
     Eigenfunktionen und -werte erhält man dabei aus der
     \begriff{schwachen Form des EW-Problems} des Diff.operators:
     $w \in V$ heißt \begriff{Eigenfunktion} zum \begriff{Eigenwert} $\lambda$, falls
     $\forall_{v \in V}\; a(w, v) = \lambda \sp{w, v}_{L^2(\Omega)}$.
-    
+
     Unter gewissen Voraussetzungen ($a(\cdot, \cdot)$ symmetrisch und $\Omega$ zush.)
     kann man zeigen,
     \begin{itemize}
         \item
         dass alle EWe $\lambda_j \in (0, \infty)$ erfüllen (und insb. reell sind),
-        
+
         \item
         dass es abzählbar unendlich viele, unbeschränkte Eigenwerte gibt,
         also $0 < \lambda_1 \le \lambda_2 \le \dotsb$ und
         $\lim_{j \to \infty} \lambda_j = \infty$, und
-        
+
         \item
         dass es eine bzgl. $\sp{\cdot, \cdot}_{L^2(\Omega)}$ orthonormale Menge
         $\{w_j\}_{j\in\natural}$ von Eigenfunktionen zu den Eigenwerten $\lambda_j$ gibt.
     \end{itemize}
-    
+
     Wählt man nun $n \in \natural$, $h := \frac{1}{n}$,
     $V_h := \Span(\varphi_1, \dotsc, \varphi_n)$,
     $\varphi_j := w_j$, so folgt für $A_h$, dass
     $a_{ij} = a(\varphi_j, \varphi_i) = \lambda_j \sp{w_j, w_i}_{L^2(\Omega)}
     = \lambda_j \delta_{ij}$, also ist $A_h$ diagonal und $d_h = \frac{b_j}{\lambda_j}$.
-    
+
     Allerdings ist dieser Ansatz i.\,A. inpraktikabel, da $w_j$ und $\lambda_j$
     selten bekannt sind.
 \end{Bsp}
@@ -161,7 +161,7 @@
     $a(u, v) := \int_0^1 u'v' \dx$ auf $H^1_0(\Omega)$.
     Dann hat ein Polynom mit Nullrandwerten die Gestalt $p(x) = x(1-x)q(x)$ für $q \in \PP_m$
     mit $\PP_m$ den Polynomen vom Grad $\le m$.
-    
+
     Wählt man nun $n \in \natural$, $h := \frac{1}{n}$,
     $\varphi_j(x) := x(1-x) \cdot x^{j-1} = x^j (1-x)$, so folgt für $A_h$, dass i.\,A.
     $a_{ij} = a(\varphi_j, \varphi_i) = \int_0^1 \varphi_j' \varphi_i' \dx \not= 0$,
@@ -190,12 +190,12 @@
     der orth. Projektion $P\colon V \to V_h$ ist (unabhängig von $a$ und $\ell$).
     Weil der Galerkin-Projektionsfehler höchstens um einen konstanten Faktor schlechter als
     die Bestapproximation ist, spricht man von \begriff{Quasi-Optimalität} der Galerkin-Projektion.
-    
+
     $V_h$ sollte man daher so wählen,
     dass alle möglichen $u \in V$ möglichst gut approximiert werden können
     (weil $\lim_{h \to 0} \inf_{v \in V_h} \norm{u - v} = 0 \implies
     \lim_{h \to 0} \norm{u - u_h} = 0$).
-    
+
     Für $a(\cdot, \cdot)$ symmetrisch gilt das Céa-Lemma sogar mit Faktor
     $\sqrt{\frac{\gamma}{\alpha}}$.
     Es gilt dann nämlich Normäquivalenz zur Energienorm mit
@@ -288,7 +288,7 @@
     Es gilt $\supp\varphi_j = [x_{j-1}, x_{j+1}]$.
     Als Ansatzraum erhält man den Raum $V_h := \Span((\varphi_j)_{j=1}^n) \le H^1_0(\Omega)$
     der linearen Splines.
-    
+
     Für das Poisson-Problem $-u'' = f$ in $\Omega$ und $u(0) = 0 = u(1)$ wählt man
     $a(u, v) := \int_\Omega u'v'\dx$ und $\ell(v) := \int_\Omega fv\dx$.
     Mit der Ableitung $\varphi_j'(x) = 1/h$ für $x \in (x_{j-1}, x_j)$ und
@@ -297,7 +297,7 @@
     $a_{j+1,j} = \int_{x_j}^{x_{j+1}} \frac{1}{h} (-\frac{1}{h}) \dx = -\frac{1}{h} = a_{j-1,j}$
     und $a_{i,j} = 0$ für $|i - j| \ge 2$, weil dann
     $|\supp(\varphi_i) \cap \supp(\varphi_j)| = 0$.
-    
+
     Somit ist $A_h = \frac{1}{h}
     \smallpmatrix{2&-1&&\\-1&2&-1&\\&\ddots&\ddots&\ddots&\\&&-1&2&-1\\&&&-1&2}$
     tridiagonal und dünn besetzt,
@@ -395,15 +395,15 @@
         $F_T(\widehat{x}) := B\widehat{x} + t$,
         mit $B \in \real^{d \times d}$ regulär und $t \in \real^d$,
         sodass $F_T(e_j) = a_j$ für $j = 0, \dotsc, d$.
-        
+
         \item
         $\norm{B} \le \frac{h_T}{\varrho_{\widehat{T}}}$
         (mit $\norm{B} = \norm{B}_2 := \sup_{\widehat{x}\not=0}
         \frac{\norm{B\widehat{x}}}{\norm{\widehat{x}}}$) und
-        
+
         \item
         $\norm{B^{-1}} \le \frac{h_{\widehat{T}}}{\varrho_T}$
-        
+
         \item
         $|\det B| = \frac{|T|}{|\widehat{T}|}$ und
         $\exists_{c, C > 0}\; c\varrho_T^d \le |\det B| \le Ch_T^d$
@@ -425,15 +425,15 @@
     \begin{itemize}
         \item
         $\forall_{i \in I}\; [\text{$T_i \subset \real^d$ ist $d$-dim. Simplex}]$,
-        
+
         \item
         $\bigcup_{i \in I} T_i = \overline{\Omega}$
         (\emph{Überdeckung}),
-        
+
         \item
         $\forall_{i \not= j}\; \interior(T_i) \cap \interior(T_j) \not= \emptyset$
         (\emph{keine Überlappung}) und
-        
+
         \item
         für $i \not= j$ ist $S := T_i \cap T_j$
         leer oder $S$ ist Seitensimplex von $T_i$ und von $T_j$
@@ -488,7 +488,7 @@
         \beta \in \natural_0^{d+1}} d_\beta \lambda^\beta$, sodass
         $\forall_{x \in T}\; p(x) = \overline{p}(\lambda(x))$ mit
         $\lambda(x)$ den baryzentr. Koord.en von $x$ bzgl. $T$.
-        
+
         \item
         Für alle $\overline{p} \in \PP_k(\real^{d+1})$ gilt
         $\overline{p}(\lambda(x))|_T \in \PP_k(T)$.
@@ -605,7 +605,7 @@
     \begin{enumerate}
         \item
         $p_\beta(\lambda) \in \PP_k(\real^{d+1})$ und
-        
+
         \item
         $\forall_{\overline{\beta} \in \natural_0^{d+1},\; |\overline{\beta}| \le k}\;
         p_\beta(\frac{\overline{\beta}}{k}) = \delta_{\beta,\overline{\beta}}$
@@ -699,14 +699,14 @@
         $x_S := \frac{1}{d+1} (1, \dotsc, 1)^\tp \in \real^d$ von $\widehat{T}$
         die \begriff{Mittel"-punktsintegration} $\widetilde{I}(g) := |\widehat{T}| g(x_S)$
         (von Ordnung $0$).
-        
+
         \item
         Für $d = 2$ erhält man mit den \begriff{Kantenmittelpunkten}
         $m_{i,j} := \frac{1}{2} (e_i + e_j)$ für $i, j = 0, 1, 2$, $i \not= j$,
         die Formel
         $\widetilde{I}(g) := \frac{1}{3} |\widehat{T}| \sum_{i,j=0,\; i<j}^2 g(m_{i,j})$
         (von Ordnung $2$).
-        
+
         \item
         Für $d = 2$ erhält man die Formel\\
         $\widetilde{I}(g) := \frac{1}{60} |\widehat{T}|
@@ -794,7 +794,7 @@
     für $i,j = 1, \dotsc, m$ mit $m := m_{k,0}$ berechnen.
     Für $k = 1$ ist $|\T_h| = \O(m)$, d.\,h. der Gesamtaufwand für die Berechnung von $A_h$
     ist $\O(m^3)$ (inpraktikabel für $m$ groß).
-    
+
     Stattdessen nutzt man die Lokalität und die globale Indexabbildung:\\
     Für $S_{i,j} := \supp(\varphi_i) \cap \supp(\varphi_j)$ gilt
     $a_{i,j} = \int_{S_{i,j}} (\nabla\varphi_i)^\tp (\nabla\varphi_j) \dx$\\
@@ -805,7 +805,7 @@
     B_T^{-1} B_T^{-\tp} (\nabla\widehat{\varphi}_{\widehat{j}}) \d\widehat{x}$,\\
     mit $\widehat{i}, \widehat{j} \in \{1, \dotsc, n_k\}$, sodass
     $i = \widehat{g}(T, \widehat{i})$ und $j = \widehat{g}(T, \widehat{j})$.
-    
+
     Statt einer Schleife über $(i,j)$ kann man nun durch Addition der Beiträge
     der \begriff{lokalen Steifigkeits"-matrix}
     $A_{h,T} := (\widehat{a}_{\widehat{i},\widehat{j}})_{\widehat{i},\widehat{j}=1}^{n_k}$
@@ -813,13 +813,13 @@
     \begin{enumerate}
         \item
         Setze $A_h := 0$.
-        
+
         \item
         Wiederhole für alle $T \in \T_h$:
         \begin{enumerate}[label=\emph{(\roman*)}]
             \item
             Berechne $A_{h,T}$.
-            
+
             \item
             Wiederhole für alle $\widehat{i}, \widehat{j} = 1, \dotsc, n_k$:
             Setze $(A_h)_{g(T,\widehat{i}),g(T,\widehat{j})} \;+\!\!:=
@@ -828,7 +828,7 @@
     \end{enumerate}
     Die Gesamtkomplexität beträgt nun $\O(|\T_h| n_k^2) = \O(mn_k^2)$
     was wegen $n_k$ konstant und klein wesentlich besser als $\O(m^3)$ ist.
-    
+
     Ähnlich ist die Assemblierung von $b_h$ möglich.
     Das geht sogar simultan mit $A_h$ (ohne zusätzliche Schleifen),
     d.\,h. ein einziger Gitterdurchlauf reicht zur Assemblierung des gesamten Systems aus.
@@ -868,12 +868,12 @@
         \item
         $T \subset \real^d$ beschr. und abg. mit Lipschitz-Rand und $\interior(T) \not= \emptyset$
         (\begriff{Element-Geometrie}),
-        
+
         \item
         $\Phi := \{\varphi_1, \dotsc, \varphi_k\}$ l.\,u. Fkt.en auf $T$
         (\begriff{Formfaktoren/-fkt.en}, \begriff{shape functions}) mit\\
         $\P := \Span(\Phi)$ dem zugehörigen \begriff{diskreten Fkt.enraum} und
-        
+
         \item
         $\N := \{N_1, \dotsc, N_k\}$
         eine Basis von $\P'$ ist (\begriff{Menge der lokalen Freiheitsgrade}).

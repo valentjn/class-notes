@@ -31,7 +31,7 @@ Buchstaben einer Subsequenz, so sieht man, dass sich die Linien nicht
     \item
     Wenn beide Strings mit demselben Buchstaben beginnen, dann gibt es eine
     LCS, welche diese Buchstaben einander zuordnet.
-    
+
     \item
     Falls sich die ersten Buchstaben der beiden Strings unterscheiden,
     kann maximal einer von ihnen in einer bestimmten LCS sein.
@@ -46,7 +46,7 @@ rekLCS(A[1 ... m], B[1 ... n])                                    gibt die Läng
         return 0
     if A[m] = B[n]
         return 1 + rekLCS(A[1 ... m - 1], B[1 ... n - 1])
-    
+
     $l_1$ = rekLCS(A[1 ... m], B[1 ... n - 1])
     $l_2$ = rekLCS(A[1 ... m - 1], B[1 ... n])
     return max($l_1$, $l_2$)
@@ -148,12 +148,12 @@ Betrachte nun zwei Strings $A[1 ... m]$ und $B[1 ... n]$.
     so gibt das Kosten von $0$ (für $A[m] = B[n]$) oder Ersetzungskosten für
     $A[m] \rightarrow B[n]$
     plus Edit-Distanz von $A[1 ... m - 1]$ und $B[1 ... n - 1]$.
-    
+
     \item
     Wenn in der minimalen Edit-Sequenz $A[m]$ mit niemandem assoziiert ist,
     so gibt das Kosten für das Löschen von $A[m]$
     plus Edit-Distanz von $A[1 ... m - 1]$ und $B[1 ... n]$.
-    
+
     \item
     Wenn in der minimalen Edit-Sequenz $B[n]$ mit niemandem assoziiert ist,
     so gibt das Kosten für das Einfügen von $B[n]$

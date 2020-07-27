@@ -21,16 +21,16 @@ dass Faktorisierung auf die Berechnung des geheimen Schlüssels reduzierbar ist.
 \begin{enumerate}
     \item
     Wähle zwei große Primzahlen $p \not= q$ (zufällig und stochastisch unabhängig).
-    
+
     \item
     Berechne $n := pq$ (\begriff{RSA-Modul}) und $\varphi(n) = (p - 1)(q - 1)$.
-    
+
     \item
     Wähle $1 < e < \varphi(n)$ mit $\ggT(e, \varphi(n)) = 1$.
-    
+
     \item
     Berechne $s \in \integer/\varphi(n)\integer$ mit $es \equiv 1 \pmod{\varphi(n)}$.
-    
+
     \item
     Veröf"|fentliche $k_e := (n, e)$ und halte $k_s := (n, s)$ geheim.
 \end{enumerate}
@@ -102,16 +102,16 @@ Der Beweis ist konstruktiv und verwendet folgenden Algorithmus:
 \begin{enumerate}
     \item
     Schreibe $es - 1 = 2^\ell u$ mit $\ell \in \natural_0$ und $u$ ungerade.
-    
+
     \item
     Wähle $a \in \{2, \dotsc, n - 1\}$ zufällig und teste, ob $\ggT(a, n) = 1$.
     Falls ja, dann wurde ein Teiler gefunden.
     Falls nicht, so fahre fort.
-    
+
     \item
     Berechne $\ggT(a^{2^k u} - 1, n)$ für alle $k = 0, \dotsc, \ell - 1$ und brich ab,
     wenn ein nicht-trivialer Teiler gefunden wurde.
-    
+
     \item
     Falls kein nicht-trivialer Teiler gefunden wurde, dann gehe wieder zu Schritt \emph{(2)}.
 \end{enumerate}
@@ -158,12 +158,12 @@ ist mindestens $\frac{1}{2} (p-1)(q-1)$.
     Primitivwurzeln modulo $p$ bzw. $q$.
     Dann gibt es nach dem chin. Restsatz ein $g \in (\ZnZ)^\ast$,
     das Primitivwurzel modulo $p$ und modulo $q$ ist.
-    
+
     Fall 1: $\ord_p(g^u) \not= \ord_q(g^u)$\\
     OBdA sei $\ord_p(g^u) < \ord_q(g^u)$.
     Seien $x \in \{0, \dotsc, p - 2\}$, $y \in \{1, \dotsc, q - 1\}$ mit $y$ ungerade und
     $a \in (\ZnZ)^\ast$ mit $a \equiv_p g^x$ und $a \equiv_q g^y$.
-    
+
     Dann gilt $\ord_q(a^u) = \ord_q((g^u)^y) = \ord_q(g^u)$.
     Die letzte Gleichung gilt,
     weil $\ord_q(g^u)$ nach dem ersten Lemma und dem chin. Restsatz eine Zweierpotenz ist --
@@ -173,12 +173,12 @@ ist mindestens $\frac{1}{2} (p-1)(q-1)$.
     $\ord_q(g^u) \teilt y \ord_q((g^u)^y)$
     und wegen $\ord_q(g^u)$ einer Zweierpotenz, aber $y$ ungerade folgt
     $\ord_q(g^u) \teilt \ord_q((g^u)^y)$.
-    
+
     Für $\ord_p(a^u)$ gilt Ähnliches, allerdings kann $x$ auch gerade sein,
     d.\,h. es gilt nur\\
     $\ord_p((g^u)^x) \teilt \ord_p(g^u)$,
     woraus $\ord_p(a^u) = \ord_p((g^u)^x) \le \ord_p(g^u)$ folgt.
-    
+
     Insgesamt gilt damit $\ord_p(a^u) \le \ord_p(g^u) < \ord_q(g^u) = \ord_q(a^u)$
     (die mittlere, strikte Ungleichung gilt nach Fallunterscheidung),
     d.\,h. $a$ erfüllt die gewünschte Eigenschaft.
@@ -187,7 +187,7 @@ ist mindestens $\frac{1}{2} (p-1)(q-1)$.
     $a \in (\ZnZ)^\ast$ mit $a \equiv_p g^x$ und $a \equiv_q g^y$
     paarweise verschieden.
     Daher gibt es mindestens $(\frac{1}{2} (p-1)(q-1))$-viele solche $a$.
-    
+
     Fall 2: $\ord_p(g^u) = \ord_q(g^u)$\\
     Hier wählt man $x$ und $y$ ähnlich wie in Fall 1, nur dass entweder
     $x$ gerade und $y$ ungerade ist oder $x$ ungerade und $y$ gerade ist.
@@ -254,10 +254,10 @@ kaum Anwendung, weil die Entschlüsselung im Gegensatz zu RSA nicht eindeutig is
 \begin{enumerate}
     \item
     Wähle zwei große Primzahlen $p \not= q$ mit $p \equiv_4 q \equiv_4 3$
-    
+
     \item
     Berechne $n := pq$.
-    
+
     \item
     Veröf"|fentliche $k_e := n$ und halte $k_s := (p, q)$ geheim.
 \end{enumerate}
@@ -300,12 +300,12 @@ für $y \in (\ZpZ)^\ast$.
 
 \begin{Beweis}
     Zunächst wird die Äquivalenz gezeigt.
-    
+
     "`$\implies$"':
     Sei $y \equiv_p x^2$ für ein $x \in \ZpZ$.
     Dann gilt $y^{(p-1)/2} \equiv_p (x^2)^{(p-1)/2} = x^{p-1} \equiv_p 1$
     nach dem kleinen Satz von Fermat.
-    
+
     "`$\impliedby$"':
     Sei $y \in (\ZpZ)^\ast$ keine Quadratzahl und $g$ eine Primitivwurzel modulo $p$.
     Dann gibt es ein $k \in \natural$ mit $y \equiv_p g^{2k+1}$
@@ -320,7 +320,7 @@ für $y \in (\ZpZ)^\ast$.
     $y^{(p-1)/2} \equiv_p (g^{2k+1})^{(p-1)/2} = g^{k(p-1)} g^{(p-1)/2}
     \equiv_p (g^{p-1})^k \cdot (-1) \equiv_p -1$
     nach dem kleinen Satz von Fermat.
-    
+
     Damit wurde bereits die Wohldefiniertheit der Abbildung gezeigt
     (für $y$ Quadratzahl modulo $p$ ist $y^{(p-1)/2} \equiv_p 1$,
     sonst ist $y^{(p-1)/2} \equiv_p -1$).
@@ -346,7 +346,7 @@ Gruppenordnung $\frac{p-1}{2}$.
     Für $k$ gerade ist also $g^k$ eine Quadratzahl nach dem Lemma und sonst keine.
     Von den Gruppenelementen $g^1, \dotsc, g^{p-1}$ sind also genau die Quadratzahlen
     modulo $p$, die einen geraden Exponenten haben, d.\,h. genau $\frac{p-1}{2}$.
-    
+
     Dass die Quadratzahlen modulo $p$
     eine Untergruppe von $(\ZpZ)^\ast$ bilden, folgt elementar
     oder nach dem Lemma (als Urbild der trivialen Untergruppe $\{1\} \subset \{1, -1\}$).
@@ -365,7 +365,7 @@ Das Rabin-Verfahren arbeitet korrekt.
     $x_p := y^{(p+1)/4} \bmod p$.
     Zu zeigen ist, dass $x \equiv_p x_p$ oder $x \equiv_p -x_p$
     (analog gilt dann $x \equiv_q x_q$ oder $x \equiv_q -x_q$).
-    
+
     Es gilt $x_p^2 \equiv_p y^{(p+1)/2} = y^{(p-1)/2} \cdot y \equiv_p y \equiv_p x^2$
     nach dem Lemma, weil $y$ ein quadr. Rest modulo $n$ ist
     (d.\,h. nach dem chin. Restsatz auch modulo $p$ und modulo $q$).
@@ -398,7 +398,7 @@ Geheimtexte entschlüsseln kann, so kann $n$ ef"|fizient faktorisiert werden.
     Es gibt daher vier gleich wahrscheinliche Fälle
     (das liegt daran, dass $X^2 - y \in (\integer/n\integer)[X]$ vier Nullstellen hat,
     obwohl das Polynom nur quadratisch ist).
-    
+
     Für $x \equiv_p \widehat{x}, x \equiv_q -\widehat{x}$
     gilt $p \teilt (x - \widehat{x})$ und $q \notteilt (x - \widehat{x})$
     (wäre $q \teilt (x - \widehat{x})$, so wäre
@@ -410,7 +410,7 @@ Geheimtexte entschlüsseln kann, so kann $n$ ef"|fizient faktorisiert werden.
     Für $x \equiv_p \widehat{x}, x \equiv_q \widehat{x}$ oder
     $x \equiv_p -\widehat{x}, x \equiv_q -\widehat{x}$ lässt sich dagegen keine
     Aussage tref"|fen.
-    
+
     Insgesamt kann man bei zufälliger Wahl von $x$ die Zahl $n$ mit 50-prozentiger
     Wahrscheinlichkeit faktorisieren.
     Durch Iteration des Verfahrens lässt sich daher $n$ ef"|fizient faktorisieren.
@@ -459,13 +459,13 @@ Schlüsselaustausch und verläuft zwischen Alice und Bob wie folgt.
 \begin{enumerate}
     \item
     Wähle eine endliche Gruppe $G$ und $g \in G$ (öf"|fentlich) und berechne $m := \ord(g)$.
-    
+
     \item
     Alice wählt zufällig ein $a \in \{1, \dotsc, m - 1\}$ und schickt $A := g^a$ an Bob.
-    
+
     \item
     Bob wählt zufällig ein $b \in \{1, \dotsc, m - 1\}$ und schickt $B := g^b$ an Alice.
-    
+
     \item
     Alice berechnet $k_1 := B^a$ und Bob berechnet $k_2 := A^b$.
 \end{enumerate}
@@ -520,7 +520,7 @@ Schlüsselaustausch mit anschließender Multiplikation des Klartexts mit dem gem
     \item
     Bestimme eine endliche Gruppe $G$ mit $n := |G|$, $g \in G$, $a \in \{0, \dotsc, n - 1\}$
     und $A := g^a$.
-    
+
     \item
     Veröf"|fentliche $k_e := (G, g, A)$ und halte $k_s := a$ geheim.
 \end{enumerate}
@@ -613,11 +613,11 @@ indem man $s_n, \dotsc, s_1$ durchgeht (was wiederum heißt, dass jeder entschl�
     \item
     Wähle z.\,B. $n = 100$, $s_1, \dotsc, s_n \in \natural$ mit $s_i$ jeweils $n + i - 1$ Bit und
     $p$ prim mit $2n$ Bit.
-    
+
     \item
     Wähle $u, w \in (\ZmZ)^\ast$ mit $uw \equiv_p 1$ und eine Perm. $\pi \in \Sigma_n$
     und $a_{\pi(i)} := (s_i u \bmod p)$.
-    
+
     \item
     Veröf"|fentliche $a_1, \dotsc, a_n$ (jeweils etwa $2n$ Bit)
     und halte $u, w, \pi, s_1, \dotsc, s_n$ geheim.
@@ -688,11 +688,11 @@ Das zugehörige Entscheidungsproblem ist außerdem NP-vollständig.
     \item
     Wähle eine Generatormatrix $G \in F^{m \times n}$, für welche man $t$ Fehler ef"|fizient
     korrigieren kann (d.\,h. die Hamming-Distanz des Codes sollte $\ge 2t + 1$ sein).
-    
+
     \item
     Wähle eine zufällige Permutationsmatrix $M \in F^{m \times m}$ und eine
     zufällige invertierbare Matrix $N \in F^{n \times n}$.
-    
+
     \item
     Setze $G' := MGN$, veröf"|fentliche $G', t$ und halte $G, M, N$ geheim.
 \end{enumerate}

@@ -66,10 +66,10 @@ OBdA wird der unterste Punkt gesucht.
 \begin{enumerate}
     \item
     Starte mit einer beliebigen Ecke des Zielbereichs.
-    
+
     \item
     Wechsle zu einer benachbarten Ecke, wenn sie weiter unten ist.
-    
+
     \item
     Wiederhole, bis alle benachbarten Ecken nicht weiter unten als die aktuelle Ecke sind.
 \end{enumerate}
@@ -93,10 +93,10 @@ terminiert der Algorithmus und arbeitet korrekt.
 \begin{enumerate}
     \item
     Wie findet man eine Anfangsecke?
-    
+
     \item
     Wie berechnet man die Eckpunktkoordinaten, wenn eine Basis von $d$ NBen gegeben ist?
-    
+
     \item
     Gegeben sei ein Eckpunkt als Basis.
     Wie findet man eine benachbarte, bessere, zulässige Ecke (falls existent)?
@@ -167,7 +167,7 @@ $(a_{\ell,\cdot}) (x' - \lambda (A_B^{-1})_{\cdot,i}) \le b_\ell
     dann wird diese NB den Strahl nie blockieren\\
     (es gilt in jedem Fall $(a_{\ell,\cdot}) x' \le b_\ell$,
     weil $x'$ vorher bereits zulässig war).
-    
+
     \item
     Andernfalls gilt $(a_{\ell,\cdot}) (A_B^{-1})_{\cdot,i} < 0$ und erhält man die Schranke
     $\lambda \le \frac{(a_{\ell,\cdot}) x' - b_\ell}{(a_{\ell,\cdot}) (A_B^{-1})_{\cdot,i}}$,
@@ -195,12 +195,12 @@ Es gibt viele Strategien, um zu entscheiden, welchem Strahl man folgt
     \begriff{Regel des steilsten Anstiegs}:
     Wähle den Strahl, der die Zielfunktion am schnellsten vergrößert
     (d.\,h. zum größten positiven Koeff. von $-c^\tp A_B^{-1}$ gehörig).
-    
+
     \item
     \begriff{gieriger Ansatz}:
     Wähle den Strahl, bei dem der neue Eckpunkt den größten Zielfunktionswert besitzt
     (anders als steilster Anstieg).
-    
+
     \item
     \begriff{randomisiert}:
     Wähle einen zufälligen Strahl, der den Zielfunktionswert vergrößert.
@@ -317,11 +317,11 @@ Der \begriff{duale Simplex-Algorithmus} verläuft wie folgt.
 \begin{enumerate}
     \item
     Starte mit einer Ecke (V-Form), die optimal für eine Teilmenge der NBen ist.
-    
+
     \item
     Solange eine NB die aktuelle V-Form verletzt, benutze diese NB, um zu einer besseren V-Form
     zu gelangen.
-    
+
     \item
     Das Optimum ist erreicht, falls die aktuelle V-Form keine NB mehr verletzt
     (und daher zulässig ist).
@@ -345,7 +345,7 @@ wird.
 Außerdem sei eine Menge von $d$ linear unabhängigen NBen gegeben, die den Zielfunktionswert von
 unten beschränken, d.\,h. eine initiale V-Form.
 
-Eine V-Form ist eine Teilmenge $B$ von $d$ NBen, sodass der eindeutige Schnittpunkt $x_B$ zur 
+Eine V-Form ist eine Teilmenge $B$ von $d$ NBen, sodass der eindeutige Schnittpunkt $x_B$ zur
 selben Zeit die optimale Lösung für das Teil-LP ist, wenn man nur die NBen aus $B$ verwendet.
 Wenn $x_B$ zusätzlich noch zulässig für alle NBen nicht in $B$ ist, dann ist $x_B$ natürlich die
 optimale Lösung für das ganze LP.

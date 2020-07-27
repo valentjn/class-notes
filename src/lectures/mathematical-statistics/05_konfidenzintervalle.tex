@@ -71,7 +71,7 @@
     \begin{itemize}
         \item
         $\EE_\theta(\To(X) - \Tu(X))$ sollte so klein wie möglich sein.
-        
+
         \item
         $\PP_\theta(q(\theta) \in [\Tu(X), \To(X)])$ sollte unabhängig von $\theta$ sein.
     \end{itemize}
@@ -174,7 +174,7 @@
     Als Faustregel gilt, dass dieses KI brauchbar ist, wenn $n\theta \ge 5$ und
     $n(1-\theta) \ge 5$
     (denn dann ist die Approximation durch den zentralen GW-Satz brauchbar).
-    
+
     Ein alternatives approximatives $(1 - \alpha)$-Konfidenzintervall erhält man durch
     Schätzung von $\theta$ durch $\overline{X}_n$.
     Damit ist
@@ -223,7 +223,7 @@
         weil die $I_j(X)$ $(1 - \alpha_j)$-KIe für $q_j(\theta)$ sind.
         Dies ist größer oder gleich als $1 - \alpha$, wenn $1 - \alpha_j := (1 - \alpha)^{1/r}$
         gewählt wird.
-        
+
         \item
         Sind die $I_1(X), \dotsc I_r(X)$ nicht notwendigerweise stochastisch unabhängig,
         so gilt\\
@@ -249,7 +249,7 @@
     $m(x) := \sum_{\theta_i'} \pi(\theta_i') p(\theta_i'|x)$ bzw.
     $m(x) := \int \pi(\theta') p(\theta'|x) \d\theta'$
     (falls $\theta$ diskret bzw. stetig verteilt ist).
-    
+
     Ein bayesianischer Intervallschätzer (auch \begriff{credible interval}) für $\theta$
     basierend auf der Beobachtung $x$ ist dann jedes von $x$ abhängige Intervall, das den
     (beliebigen) Wert $\theta$ mindestens mit Wahrscheinlichkeit $(1 - \alpha)$ überdeckt.
@@ -357,7 +357,7 @@
 
 \begin{Bem}
     Folgende Tabelle stellt die möglichen Entscheidungen dar.
-    
+
     \begin{tabular}{p{40mm}p{30mm}p{30mm}}
         \toprule
         & $H_0$ wahr & $H_1$ wahr\\
@@ -366,7 +366,7 @@
         $H_1$ wird akzeptiert & Fehler 1. Art & kein Fehler\\
         \bottomrule
     \end{tabular}
-    
+
     Da die Ablehnung von $H_0$ das Ziel des Tests ist, wird eine fälschliche Ablehnung von
     $H_0$ als gravierender angesehen als eine fälschliche Beibehaltung von $H_0$.
     Man verfährt daher folgendermaßen:
@@ -558,7 +558,7 @@
         so ist $\delta(X, \theta_0) := \1_{\{\theta_0 \notin [\Tu(X), \To(X)]\}}$ für alle
         $\theta_0 \in \Theta$ ein (nicht-randomisierter) Hypothesentest zum Niveau $\alpha$
         für $H_0\colon \theta = \theta_0$ vs. $H_1\colon \theta \not= \theta_0$.
-        
+
         \item
         Ist $\delta(X, \theta_0)$ ein (nicht-randomisierter) Hypothesentest zum Niveau $\alpha$
         für $H_0\colon \theta = \theta_0$ vs. $H_1\colon \theta \not= \theta_0$
@@ -585,7 +585,7 @@
     $m(x) := \sum_{\theta_i'} \pi(\theta_i') p(\theta_i'|x)$ bzw.
     $m(x) := \int \pi(\theta') p(\theta'|x) \d\theta'$
     (falls $\theta$ diskret bzw. stetig verteilt ist).
-    
+
     $\theta$ nimmt nur Werte in $\Theta = \Theta_0 \mathbin{\dot{\cup}} \Theta_1$ an.
     Das Hypothesenpaar ist wie üblich $H_0\colon \theta \in \Theta_0$ vs.
     $H_1\colon \theta \in \Theta_1$.
@@ -615,14 +615,14 @@
     Man erhält so eine a-posteriori-Verteilung von
     $\theta|X=x \sim \N\!\left(\frac{n_0 \mu + n\overline{x}}{n_0 + n},
     \frac{\sigma^2}{n_0+n}\right)$.
-    
+
     Für das Hypothesenpaar $H_0\colon \theta \le \theta_0$ vs. $H_1\colon \theta > \theta_0$
     erhält man also eine a-priori-Wahrschein"-lichkeit für $H_0$ bzw. $H_1$ von
     $\PP(H_0) = \PP(\Theta_0) = \int_{\Theta_0} \pi(\theta)\d\theta
     = \int_{(-\infty, \theta_0]} \pi(\theta)\d\theta =
     \Phi\!\left(\frac{\theta_0 - \mu}{\sigma/\sqrt{n_0}}\right)$ bzw. von
     $\PP(H_1) = 1 - \Phi\!\left(\frac{\theta_0 - \mu}{\sigma/\sqrt{n_0}}\right)$.
-    
+
     Die a-posteriori-Wahrscheinlichkeit für $H_0$ beträgt
     $\PP(H_0|X=x) = \frac{\int_{\Theta_0} p(\theta|x)\d\theta}
     {\int_\Theta p(\theta|x)\pi(\theta)\d\theta}$\\
@@ -632,7 +632,7 @@
     \xrightarrow{n_0 \to 0} \Phi\!\left(\frac{\theta_0 - \overline{x}}{\sigma/\sqrt{n}}\right)$.
     Der Grenzwert stellt die a-posteriori-Wahr"-scheinlichkeit für $H_0$ bei einer uninformativen
     a-priori-Verteilung dar.
-    
+
     Berechnet man den frequentistischen $p$-Wert, so erhält man\\
     $\PP(\overline{X} \ge \overline{x}|H_0) =
     \PP_{\theta_0}\!\left(\frac{\overline{X} - \theta_0}{\sigma/\sqrt{n}} \ge
@@ -640,7 +640,7 @@
     = 1 - \Phi\!\left(\frac{\overline{x} - \theta_0}{\sigma/\sqrt{n}}\right)
     = \Phi\!\left(\frac{\theta_0 - \overline{x}}{\sigma/\sqrt{n}}\right)$,
     also denselben Wert.
-    
+
     Daher konvergiert hier die a-posteriori-Wahrscheinlichkeit für $H_0$ gegen den
     (frequentistischen) $p$-Wert, falls die a-priori-Verteilung für $\theta$ gegen die
     uninformative a-priori-Verteilung konvergiert.
@@ -654,7 +654,7 @@
     erfolgt mit der Formel $\frac{\pi_1}{\pi_0}
     = \frac{\int_{\Theta_1} \pi(\theta)\d\theta}{\int_{\Theta_0} \pi(\theta)\d\theta}$
     (wobei man im Falle einer Zähldichte $\pi(\theta)$ die Integrale durch Summen ersetzt).
-    
+
     Der Vergleich der \begriff{a-posteriori-Chancen} von $H_1$ vs. $H_0$ läuft analog mit\\
     $\frac{p_1}{p_0} = \frac{\PP(\theta \in \Theta_1|X=x)}{\PP(\theta \in \Theta_0|X=x)}
     = \frac{\int_{\Theta_1} p(\theta|X=x)\d\theta}
@@ -669,9 +669,9 @@
     Der Bayes-Faktor gibt dabei an, in welchem Maße die a-priori-Odds korrigiert werden müssen.
     Er spielt im bayesianischen Testen eine ähnliche Rolle wie der $p$-Wert im frequentistischen
     Testen.
-    
+
     Bewertung des Bayes-Faktors nach Jeffrey:
-    
+
     \begin{tabular}{cl}
         \toprule
         \textbf{$B$} & \textbf{Wie stark spricht $H_1$ gegen $H_0$?}\\
@@ -687,10 +687,10 @@
         $>$ 100 & entschieden\\
         \bottomrule
     \end{tabular}
-    
+
     Eine ähnliche Tabelle lässt sich für den $p$-Wert aufstellen
     (inklusive der z.\,B. in \textbf{R} gebräuchlichen Symbole):
-    
+
     \begin{tabular}{cl}
         \toprule
         \textbf{$p$-Wert} & \textbf{Wie stark spricht $H_1$ gegen $H_0$?}\\
@@ -733,7 +733,7 @@ $[\Tu(X), \To(X)]$ mit $X_1, \dotsc, X_n$ i.i.d.
     \emph{Parameter} &
     \emph{Herleitung: $1 - \alpha\; \cdots$} &
     \emph{(appr.) $(1-\alpha)$-KI $[\Tu(X), \To(X)]$}\\
-    
+
     \midrule
     $X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ &
     $\mu$ &
@@ -759,7 +759,7 @@ $[\Tu(X), \To(X)]$ mit $X_1, \dotsc, X_n$ i.i.d.
     \left[\chi_{n-1,\alpha/2}^2, \chi_{n-1,1-\alpha/2}^2\right]\right)$ &
     $\left[\frac{(n-1) S^2(X)}{\chi_{n-1,1-\alpha/2}^2},
     \frac{(n-1) S^2(X)}{\chi_{n-1,\alpha/2}^2}\right]$\\
-    
+
     \midrule
     $X_1, \dotsc, X_n \sim \Bin(1, p)$ &
     $p$ &
@@ -772,7 +772,7 @@ $[\Tu(X), \To(X)]$ mit $X_1, \dotsc, X_n$ i.i.d.
     &&& $\approx \PP_\theta\!\left(\left|\frac{\overline{X} - p}
     {\sqrt{\overline{X}(1-\overline{X})/n}}\right| \le z_{1-\alpha/2}\right)$ &
     $\overline{X} \pm \sqrt{\frac{\overline{X} (1 - \overline{X})}{n}} z_{1-\alpha/2}$\\
-    
+
     \bottomrule
 \end{tabular}}
 
@@ -787,7 +787,7 @@ $\delta(X) := \1_{\{T(X) \ge c\}}$ mit $X_1, \dotsc, X_n$ i.i.d.
     \emph{Hypothesen} &
     \emph{Teststatistik $T(X)$} &
     \emph{kritischer Wert $c$}\\
-    
+
     \midrule
     $X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ &
     $\theta = \mu$ unbek., $\sigma^2$ bek. &
@@ -817,7 +817,7 @@ $\delta(X) := \1_{\{T(X) \ge c\}}$ mit $X_1, \dotsc, X_n$ i.i.d.
     &&& $H_0\colon \mu = \mu_0$ vs. $H_1\colon \mu \not= \mu_0$ &
     $\left|\frac{\overline{X} - \mu_0}{S(X)/\sqrt{n}}\right|$ &
     $t_{n-1,1-\alpha/2}$\\
-    
+
     \bottomrule
 \end{tabular}}
 
@@ -834,7 +834,7 @@ $X_1, \dotsc, X_n, Y_1, \dotsc, Y_n$ unabhängig
     \emph{Parameter} &
     \emph{Herleitung: $1 - \alpha\; \cdots$} &
     \emph{(appr.) $(1-\alpha)$-KI $[\Tu(X, Y), \To(X, Y)]$}\\
-    
+
     \midrule
     $\mu_X - \mu_Y$ &
     $\theta = (\mu_X, \mu_Y)$ unbek., $\sigma_X^2, \sigma_Y^2$ bek. &
@@ -848,7 +848,7 @@ $X_1, \dotsc, X_n, Y_1, \dotsc, Y_n$ unabhängig
     {S(X - Y)/\sqrt{n}}\right| \le t_{n-1,1-\alpha/2}\right)$ &
     $(\overline{X} - \overline{Y}) \pm
     \frac{S(X - Y)}{\sqrt{n}} t_{n-1,1-\alpha/2}$\\
-    
+
     \midrule
     $\sigma_X^2/\sigma_Y^2$ &
     $\mu_X, \mu_Y$ bek., $\theta = (\sigma_X^2, \sigma_Y^2)$ unbek. &
@@ -862,7 +862,7 @@ $X_1, \dotsc, X_n, Y_1, \dotsc, Y_n$ unabhängig
     \left[f_{n-1,n-1,\alpha/2}, f_{n-1,n-1,1-\alpha/2}\right]\right)$ &
     $\left[\frac{S^2(X)/S^2(Y)}{f_{n-1,n-1,1-\alpha/2}},
     \frac{S^2(X)/S^2(Y)}{f_{n-1,n-1,\alpha/2}}\right]$\\
-    
+
     \bottomrule
 \end{tabular}}
 
@@ -876,7 +876,7 @@ $X_1, \dotsc, X_n, Y_1, \dotsc, Y_n$ unabhängig
     %\emph{Hypothesen} &
     %\emph{Teststatistik $T(X)$} &
     %\emph{kritischer Wert $c$}\\
-    
+
     %\midrule
     %$X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ &
     %$\theta = \mu$ unbek., $\sigma^2$ bek. &
@@ -892,7 +892,7 @@ $X_1, \dotsc, X_n, Y_1, \dotsc, Y_n$ unabhängig
     %&&& $H_0\colon \mu = \mu_0$ vs. $H_1\colon \mu \not= \mu_0$ &
     %$|\overline{X} - \mu_0|$ &
     %$\frac{\sigma}{\sqrt{n}} z_{1-\alpha/2}$\\
-    
+
     %\midrule
     %$X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ &
     %$\theta = (\mu, \sigma^2)$ unbek. &
@@ -908,7 +908,7 @@ $X_1, \dotsc, X_n, Y_1, \dotsc, Y_n$ unabhängig
     %&&& $H_0\colon \mu = \mu_0$ vs. $H_1\colon \mu \not= \mu_0$ &
     %$|\overline{X} - \mu_0|$ &
     %$\frac{S_n}{\sqrt{n}} t_{n-1,1-\alpha/2}$\\
-    
+
     %\bottomrule
 %\end{tabular}}
 \end{landscape}

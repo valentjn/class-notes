@@ -66,7 +66,7 @@
     $A_i \rightarrow A_j$ tritt nur für $i < j$ auf
     (d.\,h. $\forall_{i=1,\dots,n} \forall_{j=1,\dotsc,i}\;
     A_i \rightarrow A_j \notin P$).
-    
+
     Wieso geht das?
     Betrachte den gerichteten Graphen mit Knotenmenge
     $V = \{C_1, \dotsc, C_n\}$ und Regeln
@@ -83,7 +83,7 @@
     $i \ge j$ vor
     (die z.\,B. im ersten Schritt entfernten Kanten
     $A_i \rightarrow A_n$, $i = 1, \dotsc, n - 1$ sind ja erlaubt).
-    
+
     Nun kann man alle Regeln der Form $A_i \rightarrow A_j$ eliminieren:
     Jede Regel $A_n \rightarrow w$ mit $w \in (V \cup \Sigma)^+$ hat als
     rechte Seite $w \notin V$ keine Variable.
@@ -92,7 +92,7 @@
     $A_n \rightarrow w$.
     Anschließend gibt es keine Regeln $A_i \rightarrow A_n$ mit $i < n$ mehr.
     Man wiederholt dies mit $A_{n-1}$ usw. bis $A_2$.
-    
+
     Die Sprache wird dabei nicht verändert und die so entstandene
     Grammatik $G'$ enthält keine Regeln der Form $A \rightarrow B$ mit
     $A$ und $B$ Variablen.
@@ -132,7 +132,7 @@
     von entweder $A \rightarrow a$ oder $A \rightarrow w$ mit
     $w \in V^+$ und $|w| \ge 2$
     (oBdA nach obigem Lemma).
-    
+
     Die Regeln der Form $A \rightarrow a$ sind okay (kompatibel zur CNF).
     Die Regeln $A \rightarrow B_1 \dotsb B_k$ mit $k \ge 2$ sind
     für $k = 2$ ebenfalls okay, für $k > 2$ müssen diese umgeformt werden:
@@ -151,20 +151,20 @@
         \item
         Elimination von Ringableitungen durch Ersetzen aller in der
         Ringableitung vorkommenden Variablen durch eine einzige Variable
-        
+
         \item
         Sortierung der Variablen zu einer Menge $\{A_1, \dotsc, A_n\}$,
         sodass keine Regeln $A_i \rightarrow A_j$ mit $j \le i$ auftreten
-        
+
         \item
         Elimination der Regeln der Form $A \rightarrow B$
         durch Ersetzen von $A_i \rightarrow A_j$ für $i = n - 1, \dotsc, 1$
-        
+
         \item
         Pseudoterminale einführen und Ersetzen aller Terminale in den Regeln
-        
+
         \item
-        Elimination der 
+        Elimination der
         Regeln mit mehr als zwei Variablen auf der rechten Seite
     \end{enumerate}
 \end{Bem}
@@ -194,7 +194,7 @@
     Ist $A$ eine Variable, so werden im Folgenden alle Regeln der Form
     $A \rightarrow w$ mit einer beliebigen Satzform $w$ als
     \begriff{$A$-Regeln} bezeichnet.
-    
+
     Mithilfe folgender Vorüberlegung kann man alle
     \begriff{linksrekursiven Regeln} entfernen:\\
     Für jede Variable $A$ teilt man die $A$-Regeln in die linksrekursiven
@@ -215,14 +215,14 @@
     Dann sind also keine linksrekursiven $A$-Regeln mehr vorhanden\\
     ($\beta$ starten nicht mit $A$ und $\alpha$ starten nicht mit $B$, da $B$
     eine neue Variable ist).
-    
+
     \pagebreak
-    
+
     Ohne Einschränkung kann man nach obigem Satz von einer kontextfreien
     Grammatik in\\
     Chomsky-Normalform ausgehen, wobei die Variablen durchnummeriert sind\\
     ($V = \{A_1, \dotsc, A_m\}$).
-    
+
     Der erste Algorithmus formt die Grammatik so um, dass Regeln der Form
     $A_i \rightarrow A_j \beta$ nur mit $i < j$ vorkommen.
     Dabei müssen ggf. entsprechend der Überlegung wie eben neue Variablen
@@ -250,7 +250,7 @@
     $B \rightarrow \beta_k \;|\; \beta_k B$, wobei die
     $\alpha_k$ nicht mit einer Variable und die
     $\beta_k$ nicht mit $B$ anfangen.
-    
+
     Der zweite Algorithmus erreicht, dass die rechten Seiten aller $A_i$-Regeln
     mit Terminalen beginnen.
     Bei den $A_m$-Regeln ist dies schon der Fall
@@ -262,7 +262,7 @@
     Durch Einsetzen der rechten Seiten aller $A_m$-Regeln erhält man auch in
     allen $A_{m-1}$-Regeln rechte Seiten, die mit Terminalen beginnen.
     So verfährt man induktiv mit $A_{m-2}$ usw. bis zu $A_1$.
-    
+
     Nun haben sind alle $A_i$-Regeln GNF-konform
     (die Grammatik war zu Beginn in CNF, d.\,h. es kommen nur Variablen
     nach dem beginnenden Terminal).
@@ -328,10 +328,10 @@
     \begin{enumerate}
         \item
         $|vx| \ge 1$
-        
+
         \item
         $|vwx| \le n$
-        
+
         \item
         $\forall_{i \in \natural_0}\; u v^i w x^i y \in L$
     \end{enumerate}
@@ -340,7 +340,7 @@
 \begin{Beweis}
     Da die Sprache $L$ kontextfrei ist, kann man von einer Grammatik
     $G = (V, \Sigma, P, S)$ in Chomsky-Normalform ausgehen, wobei $L = L(G)$.
-    
+
     Wähle $n = 2^{|V|}$ und sei $z \in L$ mit $|z| \ge n$ beliebig.
     Ein Ableitungsbaum von $z$ hat folgende Form:
     Unter der Wurzel $S$ befindet sich ein Binärbaum
@@ -352,7 +352,7 @@
     der Baum hat $|z| \ge 2^{|V|}$ viele Kinder.
     Nach dem Lemma (siehe unten) hat der Ableitungsbaum also mindestens einen
     Pfad der Länge $\ge |V|$.
-    
+
     Nun fixiert man einen längsten Pfad im Ableitungsbaum
     (dieser hat eine Länge $\ge |V|$).
     In diesem Pfad kommen daher $> |V|$ Variablen vor,
@@ -365,7 +365,7 @@
     ohne den ersten Teil
     sowie der Teil unter $S$ (also der komplette Baum) ohne
     die ersten beiden Teile.
-    
+
     $w$ sei das Wort gebildet aus den Kindern des ersten Teils,
     $v$ und $x$ die Wörter gebildet aus den Kindern des zweiten Teils
     (durch den ersten Teil zerfallen die Kinder in zwei Abschnitte) sowie
@@ -381,7 +381,7 @@
     den Blättern $< |V|$ ist.
     Es kann also nach dem Lemma (siehe unten) höchstens
     $n = 2^{|V|}$ Blätter unter diesem $A$ geben.
-    
+
     Außerdem gilt anhand des Ableitungsbaums, dass
     $S \Rightarrow^\ast uAy$,
     $A \Rightarrow^\ast vAx$ und
@@ -420,10 +420,10 @@
 \begin{Beweis}
     Der Beweis erfolgt mittels vollständiger Induktion
     über $k \in \natural_0$.
-    
+
     Für $k = 0$ ist die Behauptung trivial, denn dann hat der Baum mindestens
     einen Knoten und somit auch einen Pfad der Länge $0$.
-    
+
     Für $k \to k + 1$ betrachtet man den linken und den rechten Teilbaum der
     Wurzel des Baums mit mindestens $2^{k+1}$ Blättern.
     Dann hat einer der beiden Teilbäume mindestens $\frac{2^{k+1}}{2} = 2^k$
@@ -479,7 +479,7 @@
         a^{t+r} b^{s_1 + 2(s - s_1) + s_2} c^{n+1} \notin L$, da\\
         $|uv^2 wx^2 y|_b = s_1 + 2(s - s_1) + s_2 = 2s - s_1 + s_2 =
         n + 8 + s - s_1 \not< n + 9 = |uv^2 wx^2 y|_a$.
-        
+
         \item
         $vwx$ enthält $c$'s.
         Dann enthält $vwx$ keine $a$'s und es gilt
@@ -489,7 +489,7 @@
         $|uv^9 wx^9 y|_a = |uvwxy|_a = n + 9$, aber
         $|uv^9 wx^9 y|_b \ge |uvwxy|_b + 8 = n + 16$ oder
         $|uv^9 wx^9 y|_c \ge |uvwxy|_c + 8 = n + 9$.
-        
+
         \item
         $vwx$ enthält weder $a$'s noch $c$'s.
         Dann besteht $vwx$ nur aus $b$'s und es gilt
@@ -530,11 +530,11 @@
     $k = k_1 + k_2 + k_3$ und $\ell = \ell_1 + \ell_2$.
     Dabei gilt $\ell > 0$ und $a^{k + i\ell} \in L$ für alle
     $i \in \natural_0$.
-    
+
     Man erhält also für jedes $z \in L$ mit $|z| \ge n$ eine Zahl
     $\ell \in \{1, \dotsc, n\}$, die \begriff{Periode} von $z$ genannt wird
     (die Periode von $z$ ist evtl. nicht eindeutig).
-    
+
     Sei $q := n!$, dann gilt $\ell \;|\; q$ für alle Perioden $\ell$.
     Für eine beliebige Zahl $q' > q$ wird die Sprache
     $L' := \{x \in L \;|\; |x| < q\} \cup \{a^{r + iq} \;|\;
@@ -550,7 +550,7 @@
     teilt.\\
     Falls $q'$ so gefunden kann, dass $L \subset L'$ gilt, so gilt
     $L = L'$ und der Beweis ist abgeschlossen, da $L'$ regulär ist.
-    
+
     Wähle zunächst $q' = q + 1$.
     Falls $L' = L$, so ist man fertig.\\
     Falls $L' \subsetneqq L$, so wähle ein kürzestes Wort
@@ -594,14 +594,14 @@
     diese Variablen können auch nur nach Variablen in $V_1$ abgeleitet werden
     usw.
     Daraus folgt dann $w \in L_1$.
-    
+
     Abschluss unter Produkt:
     Seien $G_1$ und $G_2$ wie eben.
     Dann gilt $L(G) = L_1 L_2$ mit der kontextfreien Grammatik
     $G = (V_1 \cup V_2 \cup \{S\}, \Sigma,
     P_1 \cup P_2 \cup \{S \rightarrow S_1 S_2\}, S)$.
     Der Beweis lässt sich analog durchführen.
-    
+
     Abschluss unter Stern:
     Sei $L_1 = L(G_1)$ eine kontextfreie Sprache mit
     $G_1 = (V_1, \Sigma, P_1, S_1)$, wobei $S \notin V_1$ und
@@ -645,7 +645,7 @@
     $A \rightarrow Aa \;|\; a$, $B \rightarrow bBc \;|\; bc$).
     Der Schnitt ist die Sprache $L = \{a^i b^i c^i \;|\; i \in \natural\}$.
     Weiter oben wurde gezeigt, dass $L$ nicht kontextfrei ist.
-    
+
     Nicht-Abgeschlossenheit unter Komplement:
     Angenommen, die Klasse der kontextfreien Sprachen wäre abgeschlossen
     unter Komplement.
@@ -690,7 +690,7 @@
     Diesen Vorgang kann man für $x$ und $y$ wiederholen usw.
     Bei Wörtern $x$ der Länge $|x| = 1$ gilt $A \Rightarrow^\ast x$ genau dann,
     wenn $A \rightarrow x \in P$.
-    
+
     Allgemein definiert man für ein Wort $w = w_1 \dotsb w_n \in \Sigma^\ast$
     Mengen $T_{i,j} \subset V$ mit $A \in T_{i,j}$ genau dann, wenn
     $A \Rightarrow_G^\ast w_i \dotsb w_{i+j-1}$ mit
@@ -710,7 +710,7 @@
     Allgemein gilt für $j \ge 2$, dass $T_{i,j} = \{A \in V \;|\;
     \exists_{k \in \{1, \dotsc, j - 1\}}
     \exists_{B \in T_{i,k},\; C \in T_{i+k,j-k}}\; A \rightarrow BC \in P\}$.
-    
+
     Für $j \ge 2$ kann man dies auch als Vereinigung\\
     $T_{i,j} = \bigcup_{k=1}^{j-1} \{A \in V \;|\;
     \exists_{B \in T_{i,k},\; C \in T_{i+k,j-k}}\; A \rightarrow BC \in P\}$
@@ -829,25 +829,25 @@
         \item
         $Z$ eine endliche, nicht-leere Menge
         (die Menge der \begriff{Zustände}),
-        
+
         \item
         $\Sigma$ eine endliche, nicht-leere Menge
         mit $Z \cap \Sigma = \emptyset$
         (das \begriff{Eingabealphabet}),
-        
+
         \item
         $\Gamma$ eine endliche, nicht-leere Menge
         mit $Z \cap \Gamma = \emptyset$
         (das \begriff{Kelleralphabet}),
-        
+
         \item
         $\delta\colon Z \times (\Sigma \cup \{\varepsilon\}) \times \Gamma
         \rightarrow \P_E(Z \times \Gamma^\ast)$
         (die \begriff{Überführungsfunktion}),
-        
+
         \item
         $z_0 \in Z$ (der \begriff{Startzustand}) und
-        
+
         \item
         $\# \in \Gamma$ (das \begriff{unterste Kellersymbol}) ist.
     \end{itemize}
@@ -973,7 +973,7 @@
     (also ganz am Anfang der Ableitung) liegen, einfach weggelesen.
     Der Kellerinhalt symbolisiert die momentane Ableitung von oben nach unten.
     Man kann zeigen, dass $N(M) = L(G)$ gilt.
-    
+
     Nun sei ein PDA $M = (Z, \Sigma, \Gamma, \delta, z_0, \#)$ gegeben.
     Gesucht ist eine Typ-2-Grammatik $G$ mit $N(M) = L(G)$.
     OBdA vergrößere $M$ den Keller bei jedem Übergang um maximal ein Symbol.
@@ -1087,11 +1087,11 @@
     denn man könnte noch durch $\varepsilon$-Übergänge in einen Endzustand
     wechseln.
     Das entstehende Problem ist nicht-trivial, kann aber bewiesen werden.
-    
+
     Die Sprachen $L_1$ und $L_2$ aus obigem Beispiel sind in $\DCFL$,
     aber der Schnitt $L_1 \cap L_2$ ist nicht einmal in $\CFL$, also auch
     nicht in $\DCFL$.
-    
+
     Die Nicht-Abgeschlossenheit unter Vereinigung ergibt sich aus den Regeln
     von de Morgan.
 \end{Beweis}
@@ -1132,7 +1132,7 @@
 \begin{Beweis}
     Das Wortproblem ist sogar \begriff{ef"|fizient entscheidbar}
     (durch CYK-Algorithmus bei Grammatik in CNF).
-    
+
     Das Leerheitsproblem ist z.\,B. mit dem Pumping-Lemma für kontextfreie
     Sprachen $L$ lösbar.
     Man wählt die Zahl $n$ aus dem Pumping-Lemma
@@ -1149,7 +1149,7 @@
     Menge der \begriff{produktiven Variablen}
     (die Variablen, die in ein Terminalwort abgeleitet werden können)
     findet (hier ist die Frage, ob $S$ produktiv ist).
-    
+
     Die Endlichkeit geht auch mit dem Pumping-Lemma und analog zu den regulären
     Sprachen (gibt es kein $w \in L$ mit $n \le |w| < 2n$?).
 \end{Beweis}

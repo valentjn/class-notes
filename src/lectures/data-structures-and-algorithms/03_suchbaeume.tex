@@ -12,14 +12,14 @@ Gesucht ist eine Organisation von $S$ in einem binären Baum, wobei
 \begin{itemize}
     \item
     der Baum $n$ Knoten und eine ausgezeichnete Wurzel besitzt,
-    
+
     \item
     jedes $a_i$ mit einem Knoten asoziiert ist,
-    
+
     \item
     jeder innere Knoten maximal einen linken und maximal einen rechten
     Kindknoten hat sowie
-    
+
     \item
     für jeden Knoten $a_v$ des Baums sind alle Knoten im Teilbaum eines
     linken/rechten Kindes von $a_v$ kleiner/größer als $a_v$.
@@ -61,13 +61,13 @@ Gegeben sei wieder eine linear geordnete Menge $S = \{a_1, \dotsc, a_n\}$.
     \item
     $S$ soll nur in den Blättern des Baums gespeichert werden. \\
     Die Blätter müssen sortiert sein.
-    
+
     \item
     Die Blätter des Baums sollen alle die gleiche Tiefe haben.
-    
+
     \item
     Jeder innere Knoten hat zwischen zwei und vier Kinder.
-    
+
     \item
     Jede innere Knoten mit $i$ Kindern enthält selbst $i - 1$ Schlüssel,
     dabei ist der $j$-te Schlüssel das größte Element des $j$-ten Teilbaums
@@ -107,7 +107,7 @@ $Schl"ussel(linkerNachbar) < k \le Schl"ussel(v)$ vorliegt
     \emph{Einfügen}:
     Füge $k$ links von $v$ als neues Blatt hinzu und füge $k$ als Schlüssel
     in den Vaterknoten vor den Schlüssel von $v$ ein.
-    
+
     \item
     \emph{Spalten}:
     Wenn der Vaterknoten nun fünf Knoten hat, muss er aufgespaltet werden,
@@ -137,7 +137,7 @@ Die Laufzeit ist $\O(1 + \text{Anzahl Spaltungen}) = \O(\log n)$.
     Liegt $k$ am weitesten rechts, so muss der zugehörige Schlüssel
     verändert werden, der allerdings nicht im Vaterknoten liegt, sondern
     in einem darüber liegenden indirekten Vaterknoten.
-    
+
     \item
     \emph{Verschmelzen}/\emph{Stehlen}:
     Hat der Vaterknoten von $k$ nach dem Löschen nur noch ein Kind, so
@@ -199,7 +199,7 @@ sortieren.
     Der Abstand von rechts zur eigentlich richtigen Position von $x_{i+1}$
     ist $f_{i+1} = |\{j \;|\; j < i + 1,\; x_j > x_{i+1}\}|$, wobei
     $\sum_i f_i = F$ ist.
-    
+
     $x_{i+1}$ kann nun in amortisierter Zeit
     $\O(1 + \max\{1, \log f_{i+1}\})$ eingefügt werden: \\
     Man läuft vom rechten Blatt (am weitesten rechts) bis ein Knoten
@@ -216,7 +216,7 @@ sortieren.
     $\O(1)$.
     Daher kann $x_{i+1}$ in $\O(1 + \max\{1, \log f_{i+1}\})$ eingefügt
     werden.
-    
+
     Damit ist die Gesamtlaufzeit
     $\O(\sum_i (1 + \max\{1, \log f_i\}))
     = \O(n + \sum_i \max\{1, \log f_i\}) \\
@@ -363,7 +363,7 @@ Verschmelzen $\le 5i$.
         das Potential um maximal $2$ bzw. $1$.
         Also ist $\phi$ weiterhin eine gültige untere Schranke
         ($5$ Euro wurden eingezahlt).
-        
+
         \item
         Beim Spalten eines Knotens mit $5$ Kindern erhöht sich das
         Potential des Vaterknotens um max. $2$, aus dem Kind mit Potential
@@ -371,7 +371,7 @@ Verschmelzen $\le 5i$.
         Also nimmt das Potential des Baums um mindestens $1$ ab.
         Mit diesem Euro kann die Operation bezahlt werden und $\phi$ bleibt
         untere Schranke für den Kontostand.
-        
+
         \item
         Beim Verschmelzen zweier Knoten mit $1$ Kind und $2$ Kindern
         erhöht sich das Potential des Vaterknotens um max. $1$, das Potential
@@ -380,7 +380,7 @@ Verschmelzen $\le 5i$.
         Also nimmt das Potential um mindestens $2$ ab.
         Die Operation kann bezahlt werden und $\phi$ bleibt
         untere Schranke für den Kontostand.
-        
+
         \item
         Beim Stehlen sind zwei Knoten mit $1$ bzw. $3$ oder $4$ Kinder
         vorhanden.

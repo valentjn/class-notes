@@ -99,25 +99,25 @@ wähle so viele paarweise nicht-adjazente Kanten wie möglich).
 \begin{enumerate}
     \item
     Setze $C \leftarrow \emptyset$.
-    
+
     \item
     Solange $C \not= \U$, wiederhole:
     \begin{enumerate}
         \item
         Setze $\alpha_i \leftarrow \frac{c_i}{|S_i \setminus C|}$
         für alle $S_i$ mit $x_i = 0$.
-        
+
         \item
         Wähle $S_j$, sodass $\alpha_j = \min_i \alpha_i$.
-        
+
         \item
         Setze $x_j \leftarrow 1$.
-        
+
         \item
         Für alle $u \in S_j \setminus C$ setze $C \leftarrow C \cup \{u\}$ und
         $y_u \leftarrow \alpha_j$.
     \end{enumerate}
-    
+
     \item
     Gebe die Mengen $S_i$ mit $x_i = 1$ aus.
 \end{enumerate}
@@ -158,7 +158,7 @@ die \begriff{$n$-te harmonische Zahl} ist.
     (denn in jedem Durchlauf werden sowohl der primale als der duale Zielfunktionswert um
     genau $c_j$ erhöht).
     Im Allgemeinen ist die duale Lösung aber nicht zulässig!
-    
+
     Eine der dualen NBen $\forall_{S \in \S}\; \sum_{u \in S} y_u \le c_S$
     ist also evtl. verletzt.
     Im Folgenden wird gezeigt, dass immerhin $\sum_{u \in S} y_u \le H_n c_S$ gilt.
@@ -171,7 +171,7 @@ die \begriff{$n$-te harmonische Zahl} ist.
     opt. primaler/dualer Zielfkt.wert fallen zusammen),
     erhält man daher
     $c(\S') = H_n \sum_{u \in \U} y_u' \le H_n \cdot c(\S_\opt')$.
-    
+
     Sei also $S \in \S$ fest.
     Sortiere $S := \{u_1, \dotsc, u_\ell\}$ in der Reihenfolge $u_1, \dotsc, u_\ell$,
     in der die Elemente vom Algorithmus zu $C$ hinzugefügt werden.
@@ -185,7 +185,7 @@ die \begriff{$n$-te harmonische Zahl} ist.
     (weil $u_i, u_{i+1}, \dotsc, u_\ell \in S \setminus C$ zu diesem Zeitpunkt aufgrund der
     Sortierung).
     Damit erhält man $y_{u_i} \le \frac{c_S}{\ell - i + 1}$.
-    
+
     Durch Summation kommt man dann auf
     $\sum_{u \in S} y_u \le
     \sum_{i=1}^\ell \frac{c_S}{\ell - i + 1} = H_\ell c_S \le H_n c_S$.
@@ -225,7 +225,7 @@ erfüllt $\forall_{v \in V}\; x_v \in \{0, \frac{1}{2}, 1\}$.
     Im Folgenden wird gezeigt, dass $x = \frac{1}{2} (y + z)$ mit
     zwei zulässigen Punkten $y, z \not= x$ gilt.
     Damit wäre $x$ wegen der Konvexität des Zielbereichs keine Ecke, ein Widerspruch.
-    
+
     Setze $V^+ := \{v \in V \;|\; x_v \in (1/2, 1)\}$ und
     $V^- := \{v \in V \;|\; x_v \in (0, 1/2)\}$.
     Wegen $x_v \notin \{0, \frac{1}{2}, 1\}$ für ein $v \in V$
@@ -235,7 +235,7 @@ erfüllt $\forall_{v \in V}\; x_v \in \{0, \frac{1}{2}, 1\}$.
     $z_v := x_v \mp \varepsilon$ für $v \in V^\pm$ und $z_v := x_v$ sonst.
     Wegen $V^+ \cup V^- \not= \emptyset$ gilt $y, z \not= x$ und man erhält
     $x = \frac{1}{2} (y + z)$.
-    
+
     Zu zeigen ist jetzt noch, dass $y, z$ für $\varepsilon > 0$ klein genug
     zulässige Lösungen sind.
     Betrachte dazu alle NBen $x_v + x_w \ge 1$
@@ -245,20 +245,20 @@ erfüllt $\forall_{v \in V}\; x_v \in \{0, \frac{1}{2}, 1\}$.
         \emph{Fall 1: $x_v + x_w > 1$}\\
         Wähle $\varepsilon < \frac{1}{2} (x_v + x_w - 1)$.
         Dann gilt nämlich $y_v + y_w \ge x_v + x_w - 2\varepsilon > 1$.
-        
+
         \item
         \emph{Fall 2: $x_v + x_w = 1$}
         \begin{itemize}
             \item
             $x_v = x_w = \frac{1}{2}$:
             In diesem Fall gilt $y_v = y_w = \frac{1}{2}$, d.\,h. $y_v + y_w = 1$.
-            
+
             \item
             $x_v = 0$, $x_w = 1$:
             Dann gilt $y_v = 0$, $y_w = 1$, d.\,h. $y_v + y_w = 1$
             (analog $x_v = 1$, $x_w = 0$).
-            
-            
+
+
             \item
             $v \in V^\pm$, $w \in V^\mp$:
             In diesem Fall gilt
@@ -276,7 +276,7 @@ mit $C_\opt$ einer optimalen Knotenüberdeckung.
 
 \begin{Beweis}
     Sei $(x_v)_{v \in V}$ die Lösung der LP-Relaxation des VC-Problems.
-    
+
     Es gilt $\sum_{v \in V} x_v \le |C_\opt|$,
     weil $|C_\opt|$ der Zielfunktionswert des Ganzzahl-LPs ist, sowie\\
     $C = \{v \in V \;|\; x_v' = 1\}$ mit
@@ -297,10 +297,10 @@ mit $C_\opt$ einer optimalen Knotenüberdeckung.
     \item
     Sei $f := \max_{u \in \U} |\{S_i \in \S \;|\; S_i \ni u\}|$
     (max. Mengenzahl, in der ein Element vorkommt).
-    
+
     \item
     Löse die LP-Relaxation des SC-Problems.
-    
+
     \item
     Wähle alle Mengen $S_i$ mit $x_i \ge \frac{1}{f}$.
 \end{enumerate}
@@ -319,7 +319,7 @@ $c(\S') \le f \cdot c(\S'_\opt)$, wobei $\S'_\opt$ eine optimale Mengenüberdeck
     (andernfalls wäre
     $\sum_{S_i \ni u} x_i < \frac{1}{f} \cdot |\{S_i \in \S \;|\; S_i \ni u\}| \le 1$),
     d.\,h. $S_j$ wird für $\S'$ ausgewählt und $u$ wird abgedeckt.
-    
+
     Außerdem gilt $x_i' \le f \cdot x_i$ mit $x_i' := 1$ für $x_i \ge \frac{1}{f}$ und
     $x_i' := 0$ sonst, d.\,h.\\
     $c(\S') = \sum_{S_i \in \S} c_i x_i' \le f \cdot \sum_{S_i \in \S} c_i x_i \le
@@ -413,7 +413,7 @@ Dann gilt:
 \begin{itemize}
     \item
     $x_i^\ast > 0 \iff$ entsprechende duale NB ist scharf
-    
+
     \item
     $y_j^\ast > 0 \iff$ entsprechende primale NB ist scharf
 \end{itemize}
@@ -435,16 +435,16 @@ Dann gilt:
     \item
     Starte mit primaler Lösung $x := 0$ (unzulässig) und
     dualer Lösung $y := 0$ (zulässig).
-    
+
     \item
     Solange es ein noch nicht abgedecktes Element $u \in \U$ gibt, wiederhole:
     \begin{enumerate}
         \item
         Wähle ein $u \in \U$, das noch nicht abgedeckt ist.
-        
+
         \item
         Vergrößere die duale Variable $y_u$ solange, bis duale NBen scharf werden.
-        
+
         \item
         Wähle alle Mengen $S_i \in \S$ ($x_i := 1$), die zu scharf gewordenen NBen gehören.
     \end{enumerate}
@@ -508,16 +508,16 @@ Beim \begriff{UFL-Problem} ist $(V, F, D, f, c)$ gegeben mit
 \begin{itemize}
     \item
     einer endlichen Menge $V$ von \begriff{Standorten},
-    
+
     \item
     einer Teilmenge $F \subset V$ von \begriff{möglichen Lagerstandorten},
-    
+
     \item
     einer Teilmenge $D := V \setminus F$ von \begriff{Kundenstandorten},
-    
+
     \item
     einer Abbildung $f\colon F \to \real$ (\begriff{Fixkosten}) und
-    
+
     \item
     einer Metrik $c$ auf $V$ (\begriff{Verbindungskosten}).
 \end{itemize}
@@ -584,22 +584,22 @@ $N^2(j) := \{k \in D \;|\; N(j) \cap N(k) \not= \emptyset\}$ die \begriff{Nachba
     \item
     Berechne optimale Lösungen $(x^\ast, y^\ast)$ und
     $(v^\ast, w^\ast)$ des primalen bzw. dualen Problems.
-    
+
     \item
     Setze $S \leftarrow D$.
-    
+
     \item
     Solange $S \not= \emptyset$, wiederhole:
     \begin{enumerate}
         \item
         Wähle $j \in S$ mit $v_j^\ast$ minimal.
-        
+
         \item
         Wähle $i \in N(j)$ mit $f_i$ minimal und öffne das Lager $i$.
-        
+
         \item
         Ordne $j$ und alle Kunden in $N^2(j)$, die bisher ohne Zuordnung sind, $i$ zu.
-        
+
         \item
         Setze $S \leftarrow S \setminus N^2(j)$.
     \end{enumerate}
@@ -622,7 +622,7 @@ vier Mal so groß sind wie die optimal möglichen Kosten.
     $f_i \le \sum_{\ell \in N(j)} y_\ell^\ast f_\ell$.
     Anders gesagt ist die Eröffnung des Lagers $i$ nicht teurer als die
     Summe der rationalen Eröffnungkosten der Nachbarschaft von $j$.
-    
+
     Wenn man diese Beziehung nun für alle Iterationen des Algorithmus summiert,
     so erhält man $\sum_{i \in F'} f_i \le \sum_{i \in F} y_i^\ast f_i$,
     weil die "`$N(j)$-Mengen"' von zwei verschiedenen Durchläufen disjunkt sind
@@ -631,14 +631,14 @@ vier Mal so groß sind wie die optimal möglichen Kosten.
     dann wäre $j_2 \in N^2(j_1)$, d.\,h. $j_2$ wäre in der Iteration 1 aus $S$ entfernt worden
     und hätte nicht in Iteration 2 gewählt werden können, ein Widerspruch).\\
     Damit gilt $\sum_{i \in F'} f_i \le \sum_{i \in F} y_i^\ast f_i \le \OPTprimal$.
-    
+
     Aufgrund des obigen Lemmas sind die Kosten, obiges $j$ mit obigem $i$ zu verbinden,
     gleich $c_{i,j} \le v_j^\ast$, da $i \in N(j)$.
     Die Kosten, die bisher nicht zugeordneten Kunden $k \in N^2(j)$ mit $i$ zu verbinden,
     sind gleich $c_{i,k} \le c_{\ell,k} + c_{\ell,j} + c_{i,j} \le 3v_k^\ast$
     mit $\ell \in N(j) \cap N(k)$, weil $c_{\ell,k} \le v_k^\ast$ und
     $c_{\ell,j}, c_{i,j} \le v_j^\ast \le v_k^\ast$ nach Wahl von $j$.
-    
+
     Damit sind die Gesamtkosten beschränkt durch\\
     $\sum_{i \in F'} f_i + \sum_{j \in D} 3v_j^\ast
     \le \OPTprimal + 3\OPTdual = 4\OPTprimal \le 4\OPTint$.
@@ -656,22 +656,22 @@ Sei $C_j^\ast := \sum_{i \in F} x_{i,j}^\ast c_{i,j}$.
     \item
     Berechne optimale Lösungen $(x^\ast, y^\ast)$ und
     $(v^\ast, w^\ast)$ des primalen bzw. dualen Problems.
-    
+
     \item
     Setze $S \leftarrow D$.
-    
+
     \item
     Solange $S \not= \emptyset$, wiederhole:
     \begin{enumerate}
         \item
         Wähle $j \in S$ mit $v_j^\ast + C_j^\ast$ minimal.
-        
+
         \item
         Wähle $i \in N(j)$ gemäß den Wahrscheinlichkeiten $x_{i,j}^\ast$ und öffne das Lager $i$.
-        
+
         \item
         Ordne $j$ und alle Kunden in $N^2(j)$, die bisher ohne Zuordnung sind, $i$ zu.
-        
+
         \item
         Setze $S \leftarrow S \setminus N^2(j)$.
     \end{enumerate}
@@ -690,13 +690,13 @@ drei Mal so groß sind wie die optimal möglichen Kosten.
     die Eröffnungskosten für diesen Durchlauf, so gilt
     $\EE[\widetilde{F}] = \sum_{i \in N(j)} x_{i,j}^\ast f_i \le \sum_{i \in N(j)} y_i^\ast f_i$
     (primale NB).
-    
+
     Sei $A_k$ die Zufallsvariable der Verbindungskosten des Kunden $k \in N^2(j)$ zu $i$.
     \begin{itemize}
         \item
         Dann gilt für die erwarteten Kosten für $j$, dass
         $\EE[A_j] = \sum_{i \in N(j)} x_{i,j}^\ast c_{i,j} = C_j^\ast$.
-        
+
         \item
         Für die erwarteten Kosten für $k \in N^2(j) \setminus \{j\}$
         sei $\ell \in N(j) \cap N(k)$.
@@ -705,7 +705,7 @@ drei Mal so groß sind wie die optimal möglichen Kosten.
         v_k^\ast + (v_j^\ast + C_j^\ast) \le 2v_k^\ast + C_k^\ast$
         nach Wahl von $j$ (und obiges Lemma).
     \end{itemize}
-    
+
     Die Gesamtkosten sind damit beschränkt durch
     $\sum_{i \in F} y_i^\ast f_i + \sum_{j \in D} (2v_j^\ast + C_j^\ast)$\\
     $= (\sum_{i \in F} y_i^\ast f_i + \sum_{j \in D} C_j^\ast) + 2\sum_{j \in D} v_j^\ast
@@ -745,17 +745,17 @@ Nachbarschaften sind analog wie vorher definiert.
     $A \leftarrow \emptyset$,
     $\ell \leftarrow 0$ und
     $S \leftarrow D$.
-    
+
     \item
     Solange $S \not= \emptyset$, wiederhole:
     \begin{enumerate}
         \item
         Setze $\ell \leftarrow \ell + 1$.
-        
+
         \item
         Vergrößere $v_j$ und $w_{i,j}$ für alle $j \in S$ und $i \in N(j)$ glm.,
         bis $\exists_{i_\ell \in F}\; \sum_{j \in D} w_{i_\ell,j} = f_{i_\ell}$.
-        
+
         \item
         Setze $A \leftarrow A \cup \{i_\ell\}$
         und $S \leftarrow S \setminus N(i_\ell)$.
@@ -788,7 +788,7 @@ sodass $A'$ diese Eigenschaft erfüllt, ohne dass die Verbindungskosten zu hoch 
 \begin{enumerate}[start=3]
     \item
     Setze $A' \leftarrow A$.
-    
+
     \item
     Für $k = 1, \dotsc, \ell$ wiederhole:
     \begin{enumerate}
@@ -820,7 +820,7 @@ wie die optimal möglichen Kosten.
     Für die Öffnungskosten gilt wie vorher
     $\sum_{i \in F'} f_i
     = \sum_{j \in D,\; |N(j) \cap F'| = 1} (v_j - c_{i(j),j})$.
-    
+
     Sei $j \in D$ mit $F' \cap N(j) = \emptyset$.
     Zeige nun $c_{i(j),j} \le 3v_j$,
     wobei $i(j)$ das Lager ist, mit dem $j$ verbunden wurde.
@@ -831,7 +831,7 @@ wie die optimal möglichen Kosten.
     $j \in N^3(i(j))$ erhält man
     $c_{i(j),j} \le c_{i',j} + c_{i',k} + c_{i(j),k} \le v_j + v_k + v_k \le 3v_j$
     mit $i' \in N(j) \cap N(k)$ und $i(j) \in N(k)$.
-    
+
     Damit gilt insgesamt
     $\sum_{i \in F'} f_i + \sum_{j \in D,\; |N(j) \cap F'| \le 1} c_{i(j),j}$\\
     $\le \sum_{j \in D,\; |N(j) \cap F'| = 1} v_j

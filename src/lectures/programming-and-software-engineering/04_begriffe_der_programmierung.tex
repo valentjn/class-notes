@@ -111,10 +111,10 @@
         Funktionsaufruf die Werte der aktuellen Parameter zugewiesen werden.
         Sie dürfen neue Werte erhalten, diese werden jedoch am Ende der
         Prozedur nicht wieder zurückgeschrieben.
-        
+
         \item \begriff{Call-By-Reference}: Die mit \pseudocode{access} versehenen
         formalen Parameter sind Zeiger auf die aktuellen Parameter.
-        
+
         \item \begriff{Call-By-Name}: Die mit \pseudocode{name} versehenen
         formalen Parameter werden beim Funktionsaufruf textuell durch die
         aktuellen Parameter ersetzt.
@@ -147,7 +147,7 @@
             nebenstehenden Block ersetzt.
         \end{minipage}
     \end{tabular}
-    
+
     Dabei sei $\mathtt{Typ_i = T_i}$ für $\mathtt{p"u_i = \mathbf{value}}$,
     $\mathtt{Typ_i = \mathbf{access}\; T_i}$ für
     $\mathtt{p"u_i = \mathbf{access}}$ und \\
@@ -160,19 +160,19 @@
         \item Jeder formale Parameter
         $\mathtt{X_i}$ mit $\mathtt{p"u_i = \mathbf{access}}$ wird durch
         $\mathtt{\mathbf{deref}\; X_i}$ ersetzt.
-        
+
         \item Jeder formale Parameter und jeder lokale Name in
         $\mathtt{PRUMPF}$, der gleich einem Namen ist, der in irgendeinem
         aktuellen Parameter $\mathtt{\alpha_i}$ mit
         $\mathtt{p"u_i = \mathbf{name}}$ vorkommt, wird durchgehend mit einem
         neuen Namen bezeichnet.
-        
+
         \item Alle $\mathtt{X_i}$ mit $\mathtt{p"u_i = \mathbf{name}}$ werden
         durch $\mathtt{\alpha_i}$ textuell ersetzt.
-        
+
         \item (Globale Variablen dürfen nicht "`lokaler"' werden.)
     \end{enumerate}
-    
+
     Dann wird dieser Block ausgeführt.
     Nach der Ausführung wird er wieder durch den Prozeduraufruf
     $P(\alpha_1, \ldots, \alpha_n)$ ersetzt und das Programm setzt

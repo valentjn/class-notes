@@ -26,7 +26,7 @@ Im Folgenden wird ein Isomorphismus zwischen den folgenden beiden Ringen gesucht
     \item
     $R^b$ mit der Multiplikation
     $(u_0, \dotsc, u_{b-1}) \cdot (v_0, \dotsc, v_{b-1}) := (u_i v_i)_{i=0,\dotsc,b-1}$
-    
+
     \item
     $R[X]/\erzeugnis{X^b - 1}$ mit der Multiplikation\\
     $(\sum_{i=0}^{b-1} u_i X^i) \ast (\sum_{i=0}^{b-1} v_i X^i)
@@ -234,21 +234,21 @@ mit der \begriff{schnellen \name{Fourier}transformation (FFT)} wie folgt berechn
     \item
     Definiere die Fouriertransformation $F'\colon R[X]/\erzeugnis{X^{b/2} - 1} \to R^{b/2}$
     mit der primitiven $\frac{b}{2}$-ten Einheitswurzel $\omega^2$.
-    
+
     \item
     Setze
     $f_0 := \sum_{i=0}^{b/2-1} u_{2i} X^i,\;
     f_1 := \sum_{i=0}^{b/2-1} u_{2i+1} X^i \in R[X]/\erzeugnis{X^{b/2} - 1}$.
-    
+
     \item
     Berechne $(a_0, \dotsc, a_{b/2-1}) := F'(f_0)$ und
     $(c_0, \dotsc, c_{b/2-1}) := F'(f_1)$ rekursiv.
-    
+
     \item
     Setze $a := (a_0, \dotsc, a_{b/2-1}, a_0, \dotsc, a_{b/2-1}),\;
     c := (c_0, \dotsc, c_{b/2-1}, c_0, \dotsc, c_{b/2-1}) \in R^b$ und berechne
     $w := (\omega^0, \dotsc, \omega^{b-1}) \in R^b$.
-    
+
     \item
     Gebe $F(f) := a + w \cdot c$ zurück ("`$+$"' und "`$\cdot$"' komponentenweise).
 \end{enumerate}
@@ -277,10 +277,10 @@ Der FFT-Algorithmus arbeitet korrekt, d.\,h. $F(f) = a + w \cdot c$.
 \begin{itemize}
     \item
     Addition
-    
+
     \item
     Multiplikation mit $\omega$
-    
+
     \item
     Multiplikation mit $b^{-1}$ und mit $2$
 \end{itemize}
@@ -351,21 +351,21 @@ Dann gelten in $R$:
 \begin{enumerate}
     \item
     $b^{-1} = -2^{m-r}$
-    
+
     \item
     $\psi^b = -1$
-    
+
     \item
     $\omega$ ist eine primitive $b$-te Einheitswurzel.
 \end{enumerate}
 
 \begin{Beweis}
     Alle Rechnungen werden im Folgenden in $R$ durchgeführt.
-    
+
     Es gilt $2^m = n - 1 = -1$.
     Daher ist $-2^{m-r} b = -2^m = 1$ und deswegen $b^{-1} = -2^{m-r}$.
     Außerdem folgt $\psi^b = (2^{m/b})^b = 2^m = -1$.
-    
+
     Wegen $\psi^b = -1$ gilt $\omega^b = \psi^{2b} = 1$.
     Sei $k = 1, \dotsc, b - 1$.
     Dann gilt\\
@@ -462,32 +462,32 @@ so groß, dass $u, v$ jeweils $< \frac{n}{2}$ viele Stellen besitzen.
 \begin{enumerate}
     \item
     kleiner Anteil aus den Blöcken
-    
+
     \item
     Multiplikation nach Karatsuba
-    
+
     \item
     Blöcke extrahieren
-    
+
     \item
     $\sqrt{n}$-Bit-Blöcke werden als Zahlen mod $(2^{2\sqrt{n}} + 1)$ und als Koeff.en
     von $f, g$ interpretiert
-    
+
     \item
     Fouriertransformation
-    
+
     \item
     punktweise Multiplikation: wende den Multiplikationsalg. rekursiv auf jeden Block an
-    
+
     \item
     inverse Fouriertransformation
-    
+
     \item
     Koef"|fizienten von $f \ast g$ werden als Blöcke interpretiert
-    
+
     \item
     kombiniere $w_i', w_i''$ zu $w_i$ mittels chinesischem Restsatz
-    
+
     \item
     setze $u \cdot v$ aus den $w_i$ zusammen
 \end{enumerate}
@@ -525,7 +525,7 @@ Dann folgt aus $y_i \not= 0$, dass $i \in \{0, \dotsc, 2b - 2\}$.
     (nämlich genau die für $j \in \{0, \dotsc, i\}$)
     und jeder Summand hat höchstens die Länge $2\ell$,
     d.\,h. es gilt dann $y_i < (i + 1) 2^{2\ell}$.
-    
+
     \item
     Für $i \in \{b, \dotsc, 2b - 2\}$ sind höchstens $(2b-i-1)$ Summanden in $y_i$ ungleich Null
     (aus $u_j v_{i-j} \not= 0$ folgt $j \in \{0, \dotsc, b - 1\}$ und
@@ -623,7 +623,7 @@ benötigt $\O(n \log n \cdot \log \log n)$ Bit-Operationen.
     auf, weil die Vektoren $F(f)$ und $F(g)$ jeweils $b$ Elemente haben.
     Jedes Element ist in $R$ enthalten und hat daher die Länge $2\ell$.
     Daher ist der Aufwand für die rekursiven Aufrufe gleich $b \cdot M(2\ell)$.
-    
+
     Die Berechnungen von $F(f)$, $F(g)$ und $F^{-1}(F(f) \cdot F(g))$ kosten
     $\O(b \log b)$ viele elementare arithmetische Operationen
     (siehe Abschnitt über Fouriertransformation).
@@ -633,7 +633,7 @@ benötigt $\O(n \log n \cdot \log \log n)$ Bit-Operationen.
     $\O(\ell \cdot b \log b) = \O(\sqrt{n} \cdot \sqrt{n} \log(\sqrt{n})) = \O(n \log n)$
     Bit-Operationen.
     Insgesamt gilt also $M(n) \in b \cdot M(2\ell) + \O(n \log n)$.
-    
+
     Mit $n = 2^s$ und $b, \ell \in \Theta(\sqrt{n}) = \Theta(\sqrt{2^s})$ erhält man
     $M(2^s) \in \sqrt{2^s} \cdot M(2\sqrt{2^s}) + \O(s 2^s)$.
     Teilt man diese Beziehung durch $2^s$, so bekommt man
@@ -659,27 +659,27 @@ wenn $u, v < 2^{64 \cdot 2^{40}}$.
     Spalte $u, v$ in Blöcke der Länge 64 Bit auf, d.\,h.
     $u =: \sum_j u_j 2^{64j}$ und $v =: \sum_j v_j 2^{64j}$ mit
     $0 \le u_j, v_j < 2^{64}$.
-    
+
     \item
     Wähle drei paarweise verschiedene Primzahlen $p_1, p_2, p_3 \in 2^{56}\integer + 1$
     mit $p_1, p_2, p_3 < 2^{64}$
     sowie für $i = 1, 2, 3$ jeweils
     eine primitive $2^{56}$-te Einheitswurzel $\omega_i$ in $K_i := \integer/p_i\integer$.
-    
+
     \item
     Definiere $U_i(X) := \sum_j (u_j \bmod p_i) X^j$ und
     $V_i(X) := \sum_j (v_j \bmod p_i) X^j$ für $i = 1, 2, 3$
     sowie $W_i(X) := \sum_j w_{i,j} X^j := U_i(X) \ast V_i(X)$.
-    
+
     \item
     Berechne $W_i = F_i^{-1}(F_i(U_i) \cdot F_i(V_i))$ mithilfe der
     Fouriertransformation $F_i$ in $K_i$ mit Einheitswurzel $\omega_i$.
-    
+
     \item
     Berechne $W(X) := \sum_j w_j X^j$ mit $0 \le w_j < p_1 p_2 p_3$, sodass
     $w_j \equiv w_{i,j} \pmod{p_i}$ für $i = 1, 2, 3$
     (Bestimmung der $w_j$ mittels des chinesischen Restsatzes).
-    
+
     \item
     Gebe $w := W(2^{64})$ aus.
 \end{enumerate}
@@ -698,19 +698,19 @@ Für $u, v < 2^{64 \cdot 2^{40}}$ gilt $w = u \cdot v$.
     Es gilt $w_j = z_j$ genau dann, wenn $z_j < p_1 p_2 p_3$ gilt
     und die Fouriertransformationen $F_i$
     keinen Überlauf haben.
-    
+
     Für die $z_j$ gilt nach ihrer Definition
     $z_j < m \cdot 2^{64} \cdot 2^{64} = m 2^{2 \cdot 64}$.
     Ist die Bedingung $m \le 2^{40}$ erfüllt, so gilt damit
     $z_j < 2^{40} 2^{2 \cdot 64} = 2^{3 \cdot 56} < p_1 p_2 p_3$
     (es gilt $p_i > 2^{56}$, da $p_i = 2^{56} k_i + 1$ für ein $k_i \in \natural$,
     für $k_i \le 1$ wäre $p_i = 1$ nicht prim oder negativ).
-    
+
     Die Fouriertransformation $F_i$ arbeitet im Körper $K_i = \integer/p_i\integer$.
     Im schlechtesten Fall hat $p_i$ nur $57$ Bit.
     Bei der punktweisen Multiplikation $F_i(U_i) \cdot F_i(V_i)$ werden zwei Vektoren
     mit Einträgen in $K_i$ multipliziert.
-    
+
     Bei der Multiplikation $U_i(X) \ast V_i(X)$ kommt ein Polynom vom Grad $\le 2m - 2$ heraus.
     Damit dies $F_i^{-1}(F_i(U_i) \cdot F_i(V_i))$ entspricht, darf der Grad nicht größer als
     $2^{56} - 1$ sein ($b - 1$ mit $b = 2^{56}$),
@@ -735,7 +735,7 @@ konstant ist.
     \item
     \emph{Vorteil}:
     leichter zu implementieren
-    
+
     \item
     \emph{Nachteil}:
     geht nur für Zahlen bis zur einer bestimmten Größe

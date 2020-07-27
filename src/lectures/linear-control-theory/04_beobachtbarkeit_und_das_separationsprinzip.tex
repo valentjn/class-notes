@@ -207,7 +207,7 @@ $\lim_{t \to \infty} x(t) = 0$.
     &
     \textbf{Regelbarkeit} &
     \textbf{Beobachtbarkeit}\\
-    
+
     \midrule
     \emph{Traj.-Definition} &
     für jedes $x_f \in \real^n$ existiert $u$ stetig, sodass $x(T) = x_f$\newline
@@ -216,41 +216,41 @@ $\lim_{t \to \infty} x(t) = 0$.
     %gesteuert werden &
     für jedes $T > 0$ ist die Rekonstruktion von $x(t)$ für $t \in [0, T]$\newline
     aus $u(t)$ und $y(t)$ für $t \in [0, T]$ möglich\\
-    
+
     \addlinespace[\tablelinespace]
     \emph{Dualität} &
     \multicolumn{2}{c}{$(A^T, C^T)$ regelbar $\iff$ $(A, C)$ beobachtbar}\\
-    
+
     \addlinespace[\tablelinespace]
     \emph{\name{Kalman}-Test} &
     $K = \smallpmatrix{B & AB & \cdots & A^{n-1}B}$ hat vollen Zeilenrang &
     $W = \smallpmatrix{C \\ CA \\ \vdots \\ CA^{n-1}}$ hat vollen Spaltenrang\\
-    
+
     \addlinespace[\tablelinespace]
     \emph{Unterraum} &
     $R(K)$ regelbarer Unterraum &
     $N(W)$ unbeobachtbarer Unterraum\\
-    
+
     \addlinespace[\tablelinespace]
     \emph{geom. Charakter.} &
     kleinster $A$-invarianter Unterraum, der $R(B)$ enthält &
     größter $A$-invarianter Unterraum, der in $N(C)$ enthalten ist\\
-    
+
     \addlinespace[\tablelinespace]
     \emph{\name{Hautus}-Test} &
     $\smallpmatrix{A - \lambda I & B}$ hat vollen Zeilenrang für alle $\lambda \in \complex$ &
     $\smallpmatrix{A - \lambda I \\ C}$ hat vollen Spaltenrang für alle $\lambda \in \complex$\\
-    
+
     \addlinespace[\tablelinespace]
     \emph{Eigenwerte} &
     $\lambda \in \complex$ mit Rangverlust unregelbare Eigenwerte &
     $\lambda \in \complex$ mit Rangverlust unbeobachtbare Eigenwerte\\
-    
+
     \addlinespace[\tablelinespace]
     \emph{Polvorgabe} &
     für regelbare Systeme für $A - BF$ möglich &
     für beobachtbare Systeme für $A - LC$ möglich\\
-    
+
     \addlinespace[\tablelinespace]
     \emph{kanonische Form\newline($m = 1$ bzw. $k = 1$)} &
     $\dot{z} = \smallpmatrix{-\alpha_1 & -\alpha_2 & \cdots & -\alpha_n \\
@@ -261,7 +261,7 @@ $\lim_{t \to \infty} x(t) = 0$.
     \vdots & & \ddots & \ddots & \\ -\alpha_{n-1} & & & 0 & 1 \\ -\alpha_n & & & & 0} z
     + \widetilde{B} u$,
     $y = \smallpmatrix{1 & 0 & 0 & \cdots & 0} z + Du$\\
-    
+
     \addlinespace[\tablelinespace]
     \emph{Normalform} &
     $\smallpmatrix{\widetilde{A} & \widetilde{B} \\ \widetilde{C} & \widetilde{D}}
@@ -270,40 +270,40 @@ $\lim_{t \to \infty} x(t) = 0$.
     $\smallpmatrix{\widetilde{A} & \widetilde{B} \\ \widetilde{C} & \widetilde{D}}
     = \smallpmatrix{A_{11} & 0 & B_1 \\ A_{21} & A_{22} & B_2 \\ C_1 & 0 & D}$,
     $(A_{11}, C_1)$ beobachtbar\\
-    
+
     \addlinespace[\tablelinespace]
     \midrule
     &
     \textbf{Stabilisierbarkeit} &
     \textbf{Entdeckbarkeit}\\
-    
+
     \midrule
     \emph{Traj.-Definition} &
     für jedes $\xi \in \real^n$ existiert $u$ stückweise stetig, sodass\newline
     $\lim_{t \to \infty} x(t) = 0$ für $x(0) = \xi$ &
     aus $u(t) \equiv 0$ und $y(t) \equiv 0$ für $t \ge 0$ folgt $\lim_{t \to \infty} x(t) = 0$\\
-    
+
     \addlinespace[\tablelinespace]
     \emph{Dualität} &
     \multicolumn{2}{c}{$(A^T, C^T)$ stabilisierbar $\iff$ $(A, C)$ entdeckbar}\\
-    
+
     \addlinespace[\tablelinespace]
     \emph{Verallgemeinerung} &
     regelbar impliziert stabilisierbar &
     beobachtbar impliziert entdeckbar\\
-    
+
     \addlinespace[\tablelinespace]
     \emph{\name{Hautus}-Test} &
     $\smallpmatrix{A - \lambda I & B}$ hat vollen Zeilenrang für alle
     $\lambda \in \complex$ mit $\Re(\lambda) \ge 0$ &
     $\smallpmatrix{A - \lambda I \\ C}$ hat vollen Spaltenrang für alle $\lambda \in \complex$
     mit $\Re(\lambda) \ge 0$\\
-    
+
     \addlinespace[\tablelinespace]
     \emph{alg. Charakter.} &
     es gibt eine Matrix $F$ mit $A - BF$ Hurwitz-Matrix &
     es gibt eine Matrix $L$ mit $A - LC$ Hurwitz-Matrix\\
-    
+
     \addlinespace[\tablelinespace]
     \bottomrule
 \end{tabular}
@@ -371,17 +371,17 @@ unter welchen Bedingungen $A - BKC$ Hurwitz ist.
     \item
     Überprüfe, ob $(A, B)$ stabilisierbar und $(A, C)$ entdeckbar ist.
     Falls nicht, so kann man zeigen, dass kein linearer, stabilisierender Regler existiert.
-    
+
     \item
     Falls ja, bestimme $F$ und $L$, sodass $A - BF$ und $A - LC$ Hurwitz-Matrizen sind.
-    
+
     \item
     Der beobachterbasierte Regler führt zu einem System mit Eigenwerten\\
     $\Eig(A - BF) \cup \Eig(A - LC)$.
-    
+
     \item
     Wenn $(A, B)$ sogar regelbar und $(A, C)$ beobachtbar ist, dann kann man alle Eigenwerte
-    des geschlossenen Regelkreises an beliebige (symmetrische) Stellen setzen. 
+    des geschlossenen Regelkreises an beliebige (symmetrische) Stellen setzen.
 \end{itemize}
 
 \textbf{Separationsprinzip}:

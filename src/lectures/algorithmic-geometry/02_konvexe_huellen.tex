@@ -31,11 +31,11 @@ dann ist die untere Laufzeit-Schranke $\Omega(n \log h)$.
 % \subsection{%
 %     \emph{Zusatz}: Planare Graphen%
 % }
-% 
+%
 % \textbf{Graph}:
 % Ein \begriff{(ungerichteter) Graph} $G$ ist ein Tupel $(V, E)$ mit $V$ der Knotenmenge und\\
 % $E \subset \{\{v_1, v_2\} \;|\; v_1, v_2 \in V\}$ der Kantenmenge.
-% 
+%
 % \textbf{Einbettung}:
 % Eine \begriff{Einbettung} eines Graphen $G$ ist eine Darstellung von $G$ in $\real^2$,
 % wobei Knoten jeweils einem Punkt und Kanten jeweils einem einfachen Bogen
@@ -43,7 +43,7 @@ dann ist die untere Laufzeit-Schranke $\Omega(n \log h)$.
 % sodass die Endpunkte des Bogens einer Kante $e$ genau die Punkte der Endknoten von $e$ sind,
 % kein Punkt eines anderen Knotens auf einem Bogen liegt und
 % keine zwei Bögen sich in einem Punkt schneiden, der im Inneren von einem der beiden Bögen liegt.
-% 
+%
 % \textbf{planar}:
 % Ein Graph $G$ heißt \begriff{planar}, falls eine Einbettung existiert,
 % d.\,h. falls der Graph in die Ebene zeichnen lässt, ohne dass sich Kanten schneiden.
@@ -57,31 +57,31 @@ Der \begriff{\name{Graham}-Scan-Algorithmus} findet die konvexe Hülle in $\real
 \begin{enumerate}
     \item
     Finde den Punkt $p_0 \in P$ mit minimaler $y$-Koordinate.
-    
+
     \item
     Sortiere die Punkte $p \in P \setminus \{p_0\}$ aufsteigend gemäß dem Winkel
     von $\overline{p_0 p}$ zur nach rechts zeigenden Horizontalen und erhalte
     $p_1, \dotsc, p_{n-1}$.
-    
+
     \item
     Konstruiere das Polygon $p_0 p_1 \dotsb p_{n-1} p_0$.
-    
+
     \item
     Gehe auf dem Rand des Polygons entlang und entferne Konkavitäten:
     \begin{enumerate}[label=\emph{(\roman*)}]
         \item
         Starte bei $i = 0$.
-        
+
         \item
         Prüfe, ob das Teilstück $p_i p_{i+1} p_{i+2}$ einen Links- oder Rechtsknick macht
         ($p_{i+1}$ und $p_{i+2}$ am Ende entsprechend definiert).
-        
+
         \item
         Bei einem Rechtsknick entferne den Punkt $p_{i+1}$ aus dem Polygon und
         nummeriere die nachfolgenden Punkte neu durch (d.\,h. $p_{i+2} \rightarrow p_{i+1}$ usw.).
         Anschließend ziehe von $i$ eins ab.
         (Dadurch werden keine Schnittpunkte erzeugt.)
-        
+
         \item
         Beende, wenn $p_0$ wieder der aktuelle Punkt ist.
     \end{enumerate}
@@ -117,7 +117,7 @@ Der \begriff{Gift-Wrapping-Algorithmus} findet die konvexe Hülle in $\real^2$ w
 \begin{enumerate}
     \item
     Finde den Punkt $p_0 \in P$ mit minimaler $y$-Koordinate.
-    
+
     \item
     Lege eine horizontale Gerade durch $p_0$ und rotiere sie gegen den Uhrzeigersinn um $p_0$,
     bis sie einen anderen Punkt $p_1 \in P$ trift.
@@ -164,24 +164,24 @@ Sei $h \in \natural$ gegeben.
 \begin{enumerate}
     \item
     Partitioniere $P$ in $\frac{n}{h}$ Gruppen $P_1, \dotsc, P_{n/h}$ zu je $h$ Punkten.
-    
+
     \item
     Berechne die Mini-CHs $\CH(P_i)$ für alle $i = 1, \dotsc, \frac{n}{h}$ mittels des
     Graham-Scan-Alg.
-    
+
     \item
     Führe Gift-Wrapping über die Mini-CHs durch, allerdings mit maximal $h$ Wickelschritten:
     \begin{enumerate}[label=\emph{(\roman*)}]
         \item
         Finde den Punkt $p_0 \in P$ mit minimaler $y$-Koordinate.
-        
+
         \item
         Bestimme die Rechtstangente durch $p_0$ an jede Mini-CH und die zugehörigen
         Berührpunkte ($\frac{n}{h}$ Stück).
-        
+
         \item
         Wähle den Berührpunkt mit dem kleinsten Winkel zu $p_0$ (wie bei Gift-Wrapping).
-        
+
         \item
         Wähle diesen Punkt als neuen Basispunkt und iteriere,
         allerdings $\le h$ mal.
@@ -202,7 +202,7 @@ $\O(n \log h)$
     Ein naives Berechnen der Rechtstangente würde bei jedem Wickelschritt $\O(n)$ kosten,
     indem man jeden der $n$ Eckpunkte der Mini-CHs anschaut
     (im schlechtesten Fall liegen alle Punkte auf den Rändern der Mini-CHs).
-    
+
     Es geht aber schneller:
     Wenn man nur eine einzelne Mini-CH $\CH(P_i)$ betrachtet, dann fällt auf,
     dass der berechnete Berührpunkt mit kleinstem Winkel zum aktuellen Punkt
@@ -256,24 +256,24 @@ Der \begriff{RIC-Algorithmus} findet die konvexe Hülle in $\real^2$ wie folgt.
 \begin{enumerate}
     \item
     Permutiere $P$ zufällig zu $p_1, \dotsc, p_n$.
-    
+
     \item
     Berechne $\CH_3 := \CH(p_1, p_2, p_3)$ als Dreieck $\Delta p_1 p_2 p_3$ und
     berechne den Schwerpunkt $m$.
-    
+
     \item
     Für $i = 4, \dotsc, n$ weise jedem Punkt $p_i$ die Kante des Dreiecks $\CH_3$ zu,
     die sich mit $\overline{mp_i}$ schneidet
     (gibt es keinen solchen Schnittpunkt, dann liegt $p_i$ in $\CH_3$ und braucht nicht weiter
     betrachtet zu werden).
     Außerdem weise jeder Kante von $\CH_3$ die Punkte zu, die auf die Kante verweisen.
-    
+
     \item
     Für $i = 4, \dotsc, n$ wiederhole:
     \begin{enumerate}[label=\emph{(\roman*)}]
         \item
         Starte bei der Kante, auf die der Punkt $p_i$ zeigt.
-        
+
         \item
         Gehe nun in beide Richtungen auf dem Rand von $\CH_{i-1}$ und bestimme so
         die beiden Tangenten an $\CH_{i-1}$ durch $p_i$.
@@ -312,7 +312,7 @@ $\O(n \log n)$
     geändert werden musste (dabei ist $j$ fest).
     Wenn man zeigen kann, dass $T_j = \O(\log n)$ gilt, dann folgt die Behauptung,
     da die Gesamtlaufzeit dann $\sum_{j=4}^n T_j = \O(n \log n)$ beträgt.
-    
+
     Dazu verwendet man die Technik der \begriff{Rückwärtsanalyse}:
     Sei $P_{i,j}$ für $i < j$ die Wahrscheinlichkeit, dass der Verweis von $p_j$ auf eine Kante
     bei der Einfügung von $p_i$ geändert werden musste.

@@ -17,10 +17,10 @@ eine der folgenden äquivalenten Bedingungen erfüllt ist:
 \begin{itemize}
     \item
     $\forall_{x \in \real^n}\; x^T Qx \ge 0$
-    
+
     \item
     alle Eigenwerte von $Q$ sind nicht-negativ
-    
+
     \item
     $Q = C^T C$ für eine Matrix $C$ (in diesem Fall hat $C$ oBdA vollen Zeilenrang)
 \end{itemize}
@@ -37,10 +37,10 @@ eine der folgenden äquivalenten Bedingungen erfüllt ist:
 \begin{itemize}
     \item
     $\forall_{x \in \real^n \setminus \{0\}}\; x^T Rx > 0$
-    
+
     \item
     alle Eigenwerte von $R$ sind positiv
-    
+
     \item
     $R = U^T U$ mit $U \in \real^{m \times m}$ invertierbar
 \end{itemize}
@@ -99,10 +99,10 @@ Sei $A \in \real^{n \times n}$ eine Hurwitz-Matrix.
     Für jede symmetrische Matrix $Q \in \real^{n \times n}$
     hat die \begriff{\name{Lyapunov}-Gleichung} $A^T P + PA = Q$
     eine eindeutige symmetrische Lösung $P \in \real^{n \times n}$.
-    
+
     \item
     Wenn $Q \nsd$ gilt, dann ist $P \psd$.
-    
+
     \item
     Wenn $Q \nsd$ gilt und $(A, Q)$ beobachtbar ist, dann ist $P \pd$.
 \end{enumerate}
@@ -203,7 +203,7 @@ Dies kann man wie folgt sicherstellen:
 \begin{enumerate}
     \item
     Löse zuerst das System $\dot{x} = [A - BR^{-1} B^T P]x$ mit $x(0) = \xi$.
-    
+
     \item
     Definiere dann die Steuergröße durch $u_\ast(t) := -R^{-1} B^T P x(t)$.
 \end{enumerate}
@@ -349,11 +349,11 @@ Die ARE hat höchstens eine stabilisierende Lösung.
     dann können die ersten $n$
     Spalten von $S$ als $n$ linear unabhängige Eigenvektoren von $H$
     zu Eigenwerten in $\complex^-$ gewählt werden.
-    
+
     \item
     Numerisch vorzuziehen ist die \begriff{geordnete \name{Schur}-Zerlegung}.
     Mit ihr lässt sich eine unitäre Matrix $S$ berechnen, die $H$ in Blockdreiecksform bringt.
-    
+
     \item
     Moderne Algorithmen für große Matrizen konstruieren $S$ mit symplektischen Transformationen
     auf $H$, die die Hamilton-Struktur erhalten.
@@ -420,10 +420,10 @@ wobei $(A, B)$ stabilisierbar und $(A, C)$ entdeckbar sei
 \begin{itemize}
     \item
     Die ARE hat genau eine stabilisierende Lösung.
-    
+
     \item
     Die stabilisierende Lösung ist die größte unter allen anderen Lösungen.
-    
+
     \item
     Eine Lösung $P$ ist stabilisierend genau dann, wenn $P \psd$.
 \end{itemize}
@@ -438,10 +438,10 @@ unbeobachtbaren Eigenwerte auf der imaginären Achse.
     Dann kann man die eindeutige Lösung $P \psd$ der ARE
     $A^T P + PA - PBR^{-1} B^T P + Q = 0$,
     für die $A - BR^{-1} B^T P$ eine Hurwitz-Matrix ist, berechnen.
-    
+
     \item
     Das LQ-Problem hat eine eindeutige Lösung.
-    
+
     \item
     Der optimale Wert ist $\xi^T P \xi$ und die optimale Regelung kann als statische
     Zustandsrückführung $u = -R^{-1} B^T Px$ implementiert werden.
@@ -534,7 +534,7 @@ und für die Nullstellen gilt für $\varrho \to 0$:
 \begin{itemize}
     \item
     $2m$ der Nullstellen gehen gegen $\pm z_1, \dotsc, \pm z_m$.
-    
+
     \item
     Die anderen $2(n - m)$ Nullstellen gehen gegen $\infty$.
     Die Divergenz erfolgt asymptotisch entlang Ursprungsgeraden mit den folgenden Winkeln
@@ -543,7 +543,7 @@ und für die Nullstellen gilt für $\varrho \to 0$:
         \item
         Für $n - m$ ungerade
         $\frac{k\pi}{n - m}$, $k = 0, \dotsc, 2n - 2m - 1$,
-        
+
         \item
         für $n - m$ gerade
         $\frac{(k + 1/2)\pi}{n - m}$, $k = 0, \dotsc, 2n - 2m - 1$.
@@ -656,7 +656,7 @@ für alle $z \in L_{2,\loc}^m$ und $\tau > 0$ gilt, dass
 \begin{enumerate}
     \item
     $\int_0^\tau \norm{\Delta(z)(t)}^2 \dt \le \gamma^2 \int_0^\tau \norm{z(t)}^2 \dt$ und
-    
+
     \item
     $\int_0^\tau \smallpmatrix{z(t) \\ \Delta(z)(t)}^T \smallpmatrix{-R & R \\ R & 0}
     \smallpmatrix{z(t) \\ \Delta(z)(t)} \dt \ge \varepsilon \int_0^\tau \norm{z(t)}^2 \dt$.

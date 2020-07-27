@@ -18,7 +18,7 @@ Gegeben sei $n \in \natural$.
     \item
     Wähle $a \in \{1, \dotsc, n - 1\}$ zufällig.
     Falls $\ggT(a, n) > 1$ gilt, dann gib "`$n$ nicht prim"' aus.
-    
+
     \item
     Wenn $a^{n-1} \equiv_n 1$, dann gib "`$n$ wahrscheinlich prim"' aus,
     ansonsten "`$n$ nicht prim"'.
@@ -46,18 +46,18 @@ Gegeben sei $n \in \natural$ ungerade mit $n \ge 3$.
 \begin{enumerate}
     \item
     Schreibe $n - 1 = 2^\ell u$ mit $u \in \natural$ ungerade und $\ell \in \natural$.
-    
+
     \item
     Wähle $a \in \{1, \dotsc, n - 1\}$ zufällig.
     Falls $\ggT(a, n) > 1$ gilt, dann gib "`$n$ nicht prim"' aus.\\
     Sonst berechne $b := a^u \bmod n$.
-    
+
     \item
     Wenn $b = 1$ ist, dann gib "`$n$ wahrscheinlich prim"' aus.
-    
+
     \item
     Sonst berechne die Folge $(b, b^2, b^{2^2}, \dotsc, b^{2^{\ell-1}})$ in $\ZnZ$.
-    
+
     \item
     Falls $-1$ in dieser Folge vorkommt, dann gib "`$n$ wahrscheinlich prim"' aus,
     ansonst gib "`$n$ nicht prim"' aus.
@@ -84,7 +84,7 @@ Wenn der MR-Test "`$n$ nicht prim"' ausgibt, dann ist $n$ nicht prim.
     in Schritt \emph{(2)} wird nichts ausgegeben.
     Sei also $a \in (\ZnZ)^\ast$ beliebig.
     Ist $b := a^u \bmod n = 1$, dann gibt der Test "`$n$ wahrscheinlich prim"' aus.
-    
+
     Sei also $b \not= 1$.
     Es gilt $a^{n-1} \equiv_n 1$ nach dem kleinen Satz von Fermat (weil $n$ prim),
     also $1 \equiv_n a^{2^\ell u} \equiv_n b^{2^\ell}$.
@@ -119,13 +119,13 @@ Dann gilt $(p^{d-1} + 1)^{p^d-1} \not\equiv \pm 1 \pmod{p^d}$.
 
 \begin{Beweis}
     Im Folgenden wird immer modulo $p^d$ gerechnet.
-    
+
     Nach dem Binomischen Lehrsatz gilt
     $(p^{d-1} + 1)^{p^d-1} = \sum_{k \in \natural_0} \binom{p^d - 1}{k} p^{(d-1)k}$.
     Für $k \ge 2$ ist $(d-1)k \ge d$, weil $k \ge 2 \ge \frac{d}{d-1}$ wegen $d \ge 2$.
     Damit gilt $p^d \teilt p^{(d-1)k}$ für $k \ge 2$, d.\,h. $p^{(d-1)k} \equiv 0$ und
     alle Summanden für $k \ge 2$ verschwinden modulo $p^d$.
-    
+
     Daher gilt
     $(p^{d-1} + 1)^{p^d-1} = 1 + (p^d - 1) p^{d-1} \equiv
     1 + (0 - 1)p^{d-1} = 1 - p^{d-1}$.\\
@@ -155,7 +155,7 @@ Dann gilt $H < G < (\ZnZ)^\ast$ mit $H \not= (\ZnZ)^\ast$.
     (wegen $u$ ungerade und $n \not= 2$).
     Außerdem ist $\ell' \le \ell$, weil $\forall_{a \in G}\; a^{2^k u} \equiv_n 1$ für $k = \ell$.
     (Damit ist $\ell' \in \{1, \dotsc, \ell\}$ tatsächlich endlich.)
-    
+
     Es gilt $G < (\ZnZ)^\ast$, weil $1 \in G$,
     $(ab)^{2^\ell u} = a^{2^\ell u} b^{2^\ell u} \equiv_n 1$ und
     $(a^{-1})^{2^\ell u} = (a^{2^\ell u})^{-1} \equiv_n 1$ für $a, b \in G$.
@@ -163,7 +163,7 @@ Dann gilt $H < G < (\ZnZ)^\ast$ mit $H \not= (\ZnZ)^\ast$.
     $(ab)^{2^{\ell'-1} u} = a^{2^{\ell'-1} u} b^{2^{\ell'-1} u} \equiv_n (\pm 1)^2 = 1$ und
     $(a^{-1})^{2^{\ell'-1} u} = (a^{2^{\ell'-1} u})^{-1} \equiv_n (\pm 1)^{-1} = \pm 1$ für
     $a, b \in G$.
-    
+
     Für $G \not= (\ZnZ)^\ast$ ist nichts zu zeigen.
     Sei also $G = (\ZnZ)^\ast$.
     Wegen der Minimalität von $\ell'$ existiert ein $a \in G$ mit
@@ -175,14 +175,14 @@ Dann gilt $H < G < (\ZnZ)^\ast$ mit $H \not= (\ZnZ)^\ast$.
     Wähle ein $c \in (\ZnZ)^\ast$ mit $c \equiv_r a$ und $c \equiv_s 1$
     (existiert nach dem chin. Restsatz).
     Dann gilt $c \in G = (\ZnZ)^\ast$, aber $c \notin H$:
-    
+
     Wäre $c^{2^{\ell'-1} u} \equiv_n 1$, dann
     $a^{2^{\ell'-1} u} \equiv_r c^{2^{\ell'-1} u} \equiv_r 1$ (wegen $c \equiv_r a$),
     Widerspruch zu $a^{2^{\ell'-1} u} \not\equiv_r 1$.\\
     Wäre $c^{2^{\ell'-1} u} \equiv_n -1$, dann
     $1 \equiv_s c^{2^{\ell'-1} u} \equiv_s -1$ (wegen $c \equiv_s 1$),
     was nur für $s = 2$ gehen würde.
-    
+
     Damit gilt $H \lneqq G = (\ZnZ)^\ast$.
 \end{Beweis}
 
@@ -200,7 +200,7 @@ Wenn $a \notin H$ gilt, dann gibt der MR-Test "`$n$ nicht prim"' aus.
     Wäre $b = 1$, dann wäre $a^{2^{\ell'-1} u} = b^{2^{\ell'-1}} = 1$,
     d.\,h. $a \in H$, ein Widerspruch zur Voraussetzung.
     Daher gilt $b \not= 1$ und in Schritt \emph{(3)} wird nichts ausgegeben.
-    
+
     Ist $1 \in \{b, b^2, b^{2^2}, \dotsc, b^{2^{\ell-1}}\}$ modulo $n$,
     dann gilt $a \in G$,
     da dann $a^{2^\ell u} = (a^u)^{2^\ell} \equiv_n b^{2^\ell} \equiv_n 1$.
@@ -210,14 +210,14 @@ Wenn $a \notin H$ gilt, dann gibt der MR-Test "`$n$ nicht prim"' aus.
     Nach Def. von $\ell' \le \ell$ gilt außerdem $b^{2^{\ell'}} \equiv_n 1$.
     Daraus folgt $b^{2^k} \equiv_n 1$ für alle $k \in \{\ell', \dotsc, \ell - 1\}$.
     In jedem Fall gilt $b^{2^k} \not\equiv_n -1$ für alle $k \in \{0, \dotsc, \ell - 1\}$.
-    
+
     Ist $1 \notin \{b, b^2, b^{2^2}, \dotsc, b^{2^{\ell-1}}\}$ modulo $n$,
     dann ist $b^{2^k} \not\equiv_n -1$ für $k \in \{0, \dotsc, \ell-2\}$.
     Zusätzlich gilt $b^{2^{\ell-1}} \not\equiv_n -1$,
     da sonst $a \in G$
     (wegen $a^{2^\ell u} \equiv_n (b^{2^{\ell-1}})^2 \equiv_n (-1)^2 = 1$)
     und man wie eben argumentieren kann.
-    
+
     Es gilt also immer, dass $-1$ nicht in der Folge $(b, b^2, b^{2^2}, \dotsc, b^{2^{\ell-1}})$
     in $\ZnZ$ vorkommt.
     Damit gibt der Algorithmus "`$n$ nicht prim"' aus.

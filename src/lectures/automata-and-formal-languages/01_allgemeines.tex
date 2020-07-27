@@ -59,17 +59,17 @@
         \item
         $V$ eine endliche, nicht-leere Menge
         (die Menge der \begriff{Variablen}),
-        
+
         \item
         $\Sigma$ eine endliche, nicht-leere Menge mit
         $V \cap \Sigma = \emptyset$
         (das \begriff{Terminalalphabet}),
-        
+
         \item
         $P$ eine endliche Teilmenge von
         $(V \cup \Sigma)^+ \times (V \cup \Sigma)^\ast$\\
         (die Menge der \begriff{Regeln} oder \begriff{Produktionen}) und
-        
+
         \item
         $S \in V$ (die \begriff{Startvariable}) ist.
     \end{itemize}
@@ -165,19 +165,19 @@
                       leftmargin=20mm,labelsep=5mm]
         \item
         Jede Grammatik ist vom \begriff{Typ 0}.
-        
+
         \item
         Eine Typ-0-Grammatik ist vom \begriff{Typ 1}
         (\begriff{kontextsensitiv}),\\
         falls für alle Regeln $w_1 \rightarrow w_2$ in $P$
         gilt, dass $|w_1| \le |w_2|$.
-        
+
         \item
         Eine Typ-1-Grammatik ist vom \begriff{Typ 2}
         (\begriff{kontextfrei}),\\
         falls für alle Regeln $w_1 \rightarrow w_2$ in $P$
         gilt, dass $w_1 \in V$.
-        
+
         \item
         Eine Typ-2-Grammatik ist vom \begriff{Typ 3}
         (\begriff{regulär}),\\
@@ -225,29 +225,29 @@
     ($i = 1, 2, 3$), d.\,h. man kann jede Grammatik bei zugelassener
     $\varepsilon$-Sonderregel so verändern, dass ihre Sprache nur um
     das leere Wort ergänzt wird.
-    
+
     Für Typ-1-Grammatiken verfährt man, indem man
     $G' = (V', \Sigma, P', S)$ setzt mit $V' = V \cup \{S'\}$
     und $S' \notin V$.
     $P'$ erhält man aus $P$, indem man in allen Regeln $S$ durch $S'$ ersetzt
     und die Regeln $S \rightarrow S'$, $S \rightarrow \varepsilon$
     hinzufügt.
-    
+
     Für Typ-2-Grammatiken kann man genauso verfahren, da
     die hinzugefügten Regeln (insbesondere $S \rightarrow S'$)
     Typ-2-konform sind.
-    
+
     Bei Typ-3-Grammatiken ergibt sich das Problem, dass $S \rightarrow S'$
     keine Typ-3-Regel ist.
     Man verfährt stattdessen folgendermaßen, um $P'$ aus $P$ zu erhalten:
     \begin{enumerate}
         \item
         ersetze in allen Regeln $S$ durch $S'$
-        
+
         \item
         für jede Regel mit $S'$ auf der linken Seite füge dieselbe Regel
         mit $S$ auf der linken Seite hinzu
-        
+
         \item
         füge $S \rightarrow \varepsilon$ hinzu
     \end{enumerate}
@@ -322,7 +322,7 @@
     $\Abl_n(X)$ definiert als\\
     $\Abl_n(X) := X \cup \{w \in (V \cup \Sigma)^\ast \;|\;
     (|w| \le n) \land (\exists_{w' \in X}\; w' \Rightarrow_G w)\}$.
-    
+
     Der Algorithmus terminiert stets
     (d.\,h. er bricht für jede Eingabe nach einer
     endlichen Anzahl von Schritten ab), denn:
@@ -334,7 +334,7 @@
     $|\Abl_n(T_1)|$ nach oben durch $\sum_{i=1}^n t^i$ mit
     $t = |V \cup \Sigma|$ beschränkt ist.
     Somit terminiert der Algorithmus nach endlich vielen Schritten.
-    
+
     Der Algorithmus ist korrekt
     (d.\,h. er gibt $1$ aus genau dann, wenn $x \in L(G)$), denn:\\
     Ist $x \in T$ im $r$-ten Schritt

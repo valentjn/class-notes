@@ -81,13 +81,13 @@
         Ein Beispiel ist $Bu = -u_{xx}$
         (\begriff{\name{Poisson}-Gleichung},
         ein stationäres Problem ist stets elliptisch).
-        
+
         \item
         Falls die Terme mit den höchsten Ableitungen umgekehrtes Vorzeichen
         haben, so heißt $B$ \begriff{hyperbolisch}.
         Ein Beispiel ist $Bu = u_{tt} - u_{xx}$
         (\begriff{Wellengleichung}).
-        
+
         \item
         Falls ein Term höchster Ableitung fehlt,
         so heißt $B$ \begriff{parabolisch}.\\
@@ -204,11 +204,11 @@
         \item
         \begriff{\name{Dirichlet}-Randbedingungen}:
         $u(a) = u_a$, $u(b) = u_b$
-        
+
         \item
         \begriff{\name{Neumann}-Randbedingungen}:
         $u'(a) = v_a$, $u'(b) = v_b$
-        
+
         \item
         \begriff{\name{Robin}sche Randbedingungen}:
         $u'(a) + \alpha u(a) = w_a$, $u'(b) + \beta u(b) = w_b$
@@ -330,7 +330,7 @@
 
 \begin{Bem}
     Wie hängen Konsistenz und Stabilität mit Konvergenz zusammen?
-    
+
     Die Frage wird im Folgenden für das (einfachere) Sturm-Liouville-Problem
     in der Form\\
     $-u''(x) + \alpha_1(x) u'(x) + \alpha_0(x) u(x) = g(x)$ für
@@ -339,7 +339,7 @@
     $-\frac{u_{i+1} - 2 u_i + u_{i-1}}{h^2} + \alpha_1(x_i)
     \frac{u_{i+1} - u_{i-1}}{2h} + \alpha_0(x_i) u_i = g(x_i)$
     für $i = 1, \dotsc, N - 1$.
-    
+
     Für $T_h$ ergibt sich dabei\\
     $(T_h w_h)(x_i) =
     -\frac{1}{h^2} (w_h(x_{i+1}) - 2 w_h(x_i) + w_h(x_{i-1})) -
@@ -358,11 +358,11 @@
     (-\frac{1}{h^2} - \frac{\alpha_1(x_{N-1})}{2h}) w_{N-2} +
     (\frac{2}{h^2} + \alpha_0(x_{N-1})) w_{N-1} -
     g(x_{N-1}) + (-\frac{1}{h^2} + \frac{\alpha_1(x_{N-1})}{2h}) w_N$.
-    
+
     Man betrachtet nun $\widetilde{X}_h :=
     \{w_h \in X_h \;|\; w_h(x_0) = u_a,\; w_h(x_N) = u_b\}$, d.\,h.\\
     $(T_h w_h)(x_i) = 0$ ist für $i \in \{0, N\}$ immer erfüllt.
-    
+
     Man erhält damit eine Matrixschreibweise für $T_h w_h = A_h w_h - r_h$ mit
     $w_h = (w_1, \dotsc, w_{N-1})^t$,\\
     $A_h :=$ \matrixsize{$\begin{pmatrix}
@@ -383,7 +383,7 @@
     g(x_2),\; \dotsc,\; g(x_{N-2}),\;
     \left(\frac{1}{h^2} - \frac{\alpha_1(x_{N-1})}{2h}\right) u_b +
     g(x_{N-1})\right)^t$.
-    
+
     Es gilt $T_h w_h = 0$ genau dann, wenn $w_h$ das LGS $A_h w_h = r_h$
     löst.\\
     Eine notwendige Voraussetzung dafür ist $\det A_h \not= 0$.
@@ -493,7 +493,7 @@
         \item
         Es gibt ein $h_0 > 0$, sodass die FDM $T_h u_h = 0$ für alle
         $0 < h < h_0$ eindeutig lösbar ist.
-        
+
         \item
         Für den Fehler gilt $\norm{u|_{I_h} - u_h}_\infty = \O(h^2)$,
         d.\,h. die FDM ist konvergent mit Ordnung $2$.
@@ -508,10 +508,10 @@
         \item
         "`eingebettete Verfahren"', d.\,h. zwei Rechnungen auf dem gleichen
         Gitter, aber mit verschiedener Ordnung
-        
+
         \item
         gleiches Verfahren, aber zwei Gitter (grob/fein)
-        
+
         \item
         Interpolation usw.
     \end{itemize}
@@ -563,7 +563,7 @@
     \begin{enumerate}
         \item
         Multiplikation der Gleichung mit einer \begriff{Testfunktion} $v$
-        
+
         \item
         partielle Integration:
         $-\int_a^b (pu')'v\dx + \int_a^b quv\dx = \int_a^b gv\dx$ mit\\
@@ -576,7 +576,7 @@
         Dabei sind $U, V$ \begriff{Funktionenräume},
         dies ist die \begriff{schwache Formulierung} und
         $u \in U$ heißt \begriff{schwache Lösung}.
-        
+
         \item
         näherungsweises Lösen der schwachen Formulierung durch Ersetzen
         der (unendlich-dimen\-sionalen) Räume $U$ und $V$ durch
@@ -587,7 +587,7 @@
         \begriff{\name{Galerkin}-\name{Bulimov}-Verfahren},\\
         für $U_h \not= V_h$ heißt das Verfahren
         \begriff{\name{Galerkin}-\name{Petrov}-Verfahren}.
-        
+
         \item
         Überführung in ein Gleichungssystem
     \end{enumerate}
@@ -600,22 +600,22 @@
     \begin{enumerate}
         \item
         Wie hängen "`klassische"' und "`schwache Lösung"' zusammen?
-        
+
         \item
         Wie baut man die Randbedingungen ein?
-        
+
         \item
         Was sind $U$ und $V$?
-        
+
         \item
         Wie wählt man $U_h$ und $V_h$?
         Welche Eigenschaften für Konsistenz, Stabilität und
         A-priori-Fehlerabschätzung ergeben sich dann?
-        
+
         \item
         Kann man den Fehler a posteriori schätzen und gibt es
         adaptive Verfahren?
-        
+
         \item
         Wie löst man das Gleichungssystem?
     \end{enumerate}
@@ -952,7 +952,7 @@
     \int_a^b q\varphi_i\varphi_j\dx$ und
     $g_j := \int_a^b g\varphi_j\dx$.\\
     Man erhält also ein LGS $A\widetilde{u} = g$.
-    
+
     Dabei ergeben sich jedoch zwei Probleme:
     $A$ ist voll besetzt, d.\,h. numerisches Lösen ist nicht so einfach.
     Außerdem ist die Lösung des LGS instabil, da die Kondition\\
@@ -972,7 +972,7 @@
     \varphi_h(a) = \varphi_h(b) = 0\} \subset \widetilde{W}^{2,1}(I)$.\\
     $k = 0$ ist nicht möglich, da dann aus der Stetigkeit der $\varphi_h$
     und den Randbedingungen folgt, dass $\varphi_h \equiv 0$ ist.
-    
+
     Der einfachste Fall ist $k = 1$.
     In diesem Fall sind die \begriff{Hütchenfunktionen}\\
     $(\varphi_1, \dotsc, \varphi_N)$ eine Basis von $V_{h,k}$, d.\,h.
@@ -983,21 +983,21 @@
     0 & \text{sonst}
     \end{cases}$} für $j = 1, \dotsc, N$
     und $(\varphi_1, \dotsc, \varphi_N)$ ist linear unabhängig.
-    
+
     Im Fall von Neumann-Randbedingungen kommen am Rand Basisfunktionen hinzu,
     z.\,B.\\
     $\varphi_{N+1}(x) =$ \matrixsize{$\begin{cases}
     (x - x_N)/h_N & x \in I_N \\
     0 & \text{sonst}
     \end{cases}$}.
-    
+
     Die Matrix $A = (a_{ij})_{i,j=1}^N$ mit
     $a_{ij} = \int_a^b p\varphi_i'\varphi_j'\dx +
     \int_a^b q\varphi_i\varphi_j\dx$ ist schwach besetzt, denn aus
     $\supp \varphi_j = I_{j-1} \cup I_j$ folgt
     $\supp (\varphi_j) \cap \supp(\varphi_i) = \emptyset$ für $|j - i| \ge 2$,
     d.\,h. $a_{ij} = 0$ für $|j - i| \ge 2$.
-    
+
     Führt man eine Koordinatentransformation
     $\xi = \frac{x - x_j}{h_j}$ bzw. $x = x_j + \xi h_j$ mit $dx = h_j d\xi$
     für $\xi \in (0, 1)$ (\begriff{Referenz-Element})
@@ -1381,7 +1381,7 @@
         \begriff{Fixpunkt-Iteration}:
         Umformung von $Au = g$ in
         $u_{k+1} = u_k + T(g - Au_k)$ mit $T \in \real^{N \times N}$
-        
+
         \item
         Verfahren, die auf einer Aufspaltung von $A$ beruhen\\
         (also $A = M_1 - M_2$ und $u_{k+1} = M_1^{-1} (M_2 u_k + g)$)
@@ -1389,12 +1389,12 @@
             \item
             \begriff{\name{Jacobi}-Verfahren}:
             $u_{k+1} = D^{-1} (L + R) u_k + g$
-            
+
             \item
             \begriff{\name{Gauß}-\name{Seidel}-Verfahren}:
             $u_{k+1} = (D - L)^{-1} (Ru_k + g)$
         \end{itemize}
-        
+
         \item
         Verfahren, die ein der Gleichung $Au = g$ äquivalentes Funktional
         verwenden
@@ -1426,7 +1426,7 @@
             $\cond_2(A)$ groß ist,
             d.\,h. die Fehlerschranke verkleinert sich für größer werdendes $k$
             nur sehr langsam.
-            
+
             \item
             \begriff{cg-Verfahren}:
             Wählt man die Suchrichtungen anders, sodass sie $A$-orthogonal
@@ -1445,7 +1445,7 @@
             $\norm{v_k - u}_A \le
             2 \left(\frac{\sqrt{\cond_2(A)} - 1}
             {\sqrt{\cond_2(A)} + 1}\right)^k \norm{v_0 - u}_A$.
-            
+
             \item
             \begriff{cg-Verfahren mit Vorkonditionierung}:
             Seien $g_0 := g - Av_0$, $h_0 := Cg_0$ und $d_0 := -h_0$.\\
@@ -1471,10 +1471,10 @@
         \item
         \begriff{Diagonalvorkonditionierung}:
         $c_{ij} = a_{ij}$ für $i = j$ und $c_{ij} = 0$ sonst
-        
+
         \item
         einige Schritte des Gauß-Seidel-Verfahrens mit \begriff{Relaxation}
-        
+
         \item
         \begriff{Incomplete-\name{Chomsky}-Zerlegung
         (IC-Vorkonditionierung)}:
@@ -1482,7 +1482,7 @@
         betrachtet man die Zerlegung $A = \widetilde{L}\widetilde{L}^t + R$
         mit $\widetilde{A} = \widetilde{L}\widetilde{L}^t$ und
         $\widetilde{A}^{-1} = (\widetilde{L}^t)^{-1} \widetilde{L}^{-1}$.
-        
+
         \item
         \begriff{Mehrgitterverfahren}:
         Aus der Beobachtung, dass "`klassische"' Verfahren den Fehler
@@ -1494,7 +1494,7 @@
         Bei den Mehrgitterverfahren wird diese Methode verschachtelt und
         iterativ angewandt.
         Diese Verfahren können zur Vorkonditionierung benutzt werden.
-        
+
         \item
         \begriff{Vorkonditionierung durch Lösen einfacherer, aber ähnlicher
         Probleme}:

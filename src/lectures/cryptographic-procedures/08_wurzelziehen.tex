@@ -45,10 +45,10 @@ Der \begriff{Algorithmus von \name{Cipolla}} bestimmt die Wurzel von $a$ in $\FF
 \begin{enumerate}
     \item
     Wähle $t \in \FF$ solange zufällig, bis $t^2 - 4a$ kein Quadrat ist.
-    
+
     \item
     Setze $f(X) := X^2 - tX + a \in \FF[X]$.
-    
+
     \item
     Gebe $X^{(q+1)/2} \bmod f(X)$ aus.
 \end{enumerate}
@@ -115,7 +115,7 @@ Dann ist die Wahrscheinlichkeit, dass $t^2 - 4a$ kein Quadrat ist, gleich $\frac
         Man erhält als Summe $\alpha + \beta = \pm 2\sqrt{a}$.
         Das sind zwei verschiedene Werte, denn sonst wäre (in $\FF$ gilt $4 \not= 0$)\\
         $4\sqrt{a} = 0 \iff \sqrt{a} = 0 \iff a = 0$, ein Widerspruch zu $a \in \FF^\ast$.
-        
+
         \item
         $\alpha \not= \beta$:
         Dieser Fall tritt ein genau dann, wenn
@@ -171,7 +171,7 @@ Für $h \in G_{\ell-i} \setminus G_{\ell-i-1}$ ist $g^{2^i} h \in G_{\ell-i-1}$.
     (da $(g^{2^i})^{2^{\ell-i} u} = g^{2^\ell u} = 1$),
     aber $g^{2^i} \notin G_{\ell-i-1}$,
     weil $(g^{2^i})^{2^{\ell-i-1} u} = g^{2^{\ell-1} u} = -1 \not= 1$.
-    
+
     Umgekehrt folgt aus $h \in G_{\ell-i} \setminus G_{\ell-i-1}$,
     dass $g^{2^i} h \in G_{\ell-i-1}$,
     weil $(g^{2^i} h)^{2^{\ell-i-1} u} = g^{2^{\ell-1} u} h^{2^{\ell-i-1} u}$
@@ -256,14 +256,14 @@ Der \begriff{Algorithmus von \name{Tonelli}} bestimmt die Wurzel von $a$ in $\FF
 \begin{enumerate}
     \item
     Wähle $g \in \FF^\ast$ zufällig mit $g$ keine Quadratzahl.
-    
+
     \item
     Bestimme sukzessive $k_0, \dotsc, k_{\ell-1}$ mit
     $ag^{-\sum_{j=0}^{i-1} k_j 2^j} \in G_{\ell-i}$.
-    
+
     \item
     Setze $k := \sum_{j=0}^{\ell-1} k_j 2^j$ und $h := ag^{-k}$.
-    
+
     \item
     Gebe $g^{k/2} h^{(u+1)/2}$ als Wurzel von $a$ aus.
 \end{enumerate}

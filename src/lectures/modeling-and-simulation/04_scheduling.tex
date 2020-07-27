@@ -66,7 +66,7 @@ $c_i' := s_i' + t_i$ die \begriff{Fertigstellungszeit} von $A_i$.
 \begin{enumerate}
     \item
     Setze $s_S' := c_S' := 0$.
-    
+
     \item
     Solange es noch unbearbeitete Knoten gibt, wiederhole Folgendes:
     \begin{enumerate}
@@ -74,7 +74,7 @@ $c_i' := s_i' + t_i$ die \begriff{Fertigstellungszeit} von $A_i$.
         Wähle einen unbearbeiteten Knoten $A_i$, bei dem alle $A_j$ mit $A_j \to A_i$
         bereits bearbeitet wurden
         (der Knoten existiert aufgrund der Zyklenfreiheit).
-        
+
         \item
         Setze $s_i' := \max\{c_j' \;|\; A_j \to A_i\}$ und $c_i' := s_i' + t_i$.
     \end{enumerate}
@@ -140,23 +140,23 @@ Die Optimierung von Aufträgen setzt üblicherweise beim kritischem Pfad an.
     \end{align*}
     \begin{tabular}{p{5mm}*{9}{p{2mm}}}
         \toprule
-        
+
         $i$ & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ \\
-        
+
         \midrule
-        
+
         $t_i$ & $0$ & $3$ & $3$ & $2$ & $3$ & $2$ & $4$ & $4$ & $0$\\
-        
+
         \midrule
-        
+
         $s_i'$ & $0$ & $0$ & $0$ & $3$ & $5$ & $5$ & $0$ & $4$ & $8$\\
         $c_i'$ & $0$ & $3$ & $2$ & $5$ & $8$ & $7$ & $4$ & $8$ & $8$\\
-        
+
         \midrule
-        
+
         $s_i''$ & $0$ & $0$ & $1$ & $3$ & $5$ & $6$ & $0$ & $4$ & $8$\\
         $c_i''$ & $0$ & $3$ & $3$ & $5$ & $8$ & $8$ & $4$ & $8$ & $8$\\
-        
+
         \bottomrule
     \end{tabular}
 \end{floatingfigure}
@@ -204,7 +204,7 @@ Der Zeitplan heißt \begriff{zulässig}, falls
 \begin{itemize}
     \item
     kein Teilauftrag $A_{i,j}$ gestartet wird, bevor der Vorgänger $A_{i,j-1}$ beendet ist, und
-    
+
     \item
     zu keinem Zeitpunkt mehrere Teilaufträge auf derselben Maschine angesetzt sind.
 \end{itemize}
@@ -246,8 +246,8 @@ Es gibt immer eine zulässige DKB, die folgendermaßen bestimmt werden kann:
 \begin{enumerate}
     \item
     Starte $A_{i,j}$, wenn $A_{i,j-1}$ beendet und $m_{i,j}$ frei ist.
-    
-    \item 
+
+    \item
     Kommen mehrere Teilaufträge für eine Maschine in Frage, wähle eine aus.
 \end{enumerate}
 
@@ -278,10 +278,10 @@ Mögliche Fragen sind nun z.\,B.:
 \begin{itemize}
     \item
     Welche Verteilung hat $C_E$?
-    
+
     \item
     In welcher Zeit ist der Prozess mit \SI{95}{\percent} Wahrscheinlichkeit abgeschlossen?
-    
+
     \item
     Wo ist der kritische Pfad?
 \end{itemize}

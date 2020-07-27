@@ -34,7 +34,7 @@ Jede Äquivalenzklasse ist als Schnitt von (konvexen) Halbräumen konvex.
 \begin{itemize}
     \item
     Wie kann man HE-Arrangements berechnen?
-    
+
     \item
     Was ist die Komplexität eines HE-Arrangements?
 \end{itemize}
@@ -50,11 +50,11 @@ d.\,h. der Schnitt von $k$ Hyperebenen ist stets $(d - k)$-dimensional
     \item
     \emph{$\binom{n}{2}$ Ecken}:
     Jedes Paar zweier Geraden schneidet sich.
-    
+
     \item
     \emph{$n^2$ Kanten}:
     Jede Gerade wird durch die anderen $n - 1$ Geraden in $n$ Stücke geteilt.
-    
+
     \item
     \emph{$1 + \frac{n(n+1)}{2}$ Zellen}:
     Induktiv teilt eine neue $n$-te Gerade $n$ Zellen in jeweils zwei Hälften auf.
@@ -69,7 +69,7 @@ d.\,h. der Schnitt von $k$ Hyperebenen ist stets $(d - k)$-dimensional
 \begin{itemize}
     \item
     \emph{$\binom{n}{3}$ Ecken}: Jedes Tripel dreier Ebenen schneidet sich.
-    
+
     \item
     \emph{$\binom{n}{2} (n - 1)$ Kanten}:
     Die Geraden, auf denen die Kanten liegen, korrespondieren zu allen möglichen Ebenenpaaren
@@ -82,13 +82,13 @@ d.\,h. der Schnitt von $k$ Hyperebenen ist stets $(d - k)$-dimensional
     %Nach der $\real^2$-Komplexität gibt es $(n-1)^2$ Kanten auf $E$.
     %Lässt man $E$ durch alle Ebenen laufen, so zählt man jede Kante doppelt, d.\,h.
     %man bekommt $(n-1)^2 \frac{n}{2} = \binom{n}{2} (n - 1)$ Kanten.
-    
+
     \item
     \emph{$n (\binom{n-1}{2} + n)$ Facetten}:
     Auf einer bestimmten Ebene $E$ gibt es nach dem $\real^2$-Fall genau $\binom{n-1}{2} + n$
     viele Zellen für $(n - 1)$ Geraden.
     Gehe für $E$ durch alle $n$ Ebenen durch.
-    
+
     \item
     \emph{$\binom{n}{3} + \binom{n}{2} + n + 1$ Zellen}:
     Es gibt $\binom{n}{3}$ unterste Punkte.
@@ -110,7 +110,7 @@ Die Berechnung von HE-Arrangements in $\real^2$ kann auf zwei bereits bekannte A
     \emph{naiver Sweepline-Algorithmus}:
     $\O(n^2 \log n)$ Zeit ($\O((n+k) \log n)$ und $k = \Theta(n^2)$ Ereignisse/Schnittpunkte
     müssen verarbeitet werden)
-    
+
     \item
     \emph{RIC-Algorithmus zur Bestimmung von Strecken-Schnittpunkten}:
     erwartet $\O(n^2)$ Zeit
@@ -131,17 +131,17 @@ Definiere $\A_i$ als das HE-Arrangement der Geraden $h_1, \dotsc, h_i$.
 \begin{enumerate}
     \item
     Konstruiere das leere Arrangement $\A_0$.
-    
+
     \item
     Für $i = 1, \dotsc, n$ konstruiere $\A_i$ aus $\A_{i-1}$ wie folgt:
     \begin{enumerate}
         \item
         Finde die Zelle ganz links, durch die $h_i$ geht
         (geht in $\O(i)$ Zeit, wenn die $h_i$ nach ihrer Steigung sortiert sind).
-        
+
         \item
         Bestimme, wo $h_i$ die Zelle verlässt bzw. welche neue Zelle von $h_i$ betreten wird.
-        
+
         \item
         Wiederhole, bis die neue Zelle nach rechts unbeschränkt ist.
     \end{enumerate}
@@ -168,7 +168,7 @@ Dann gilt $z(n) \le 6n$.
     Seien $\A$ ein beliebiges Arrangement von $n$ Geraden und $h$ eine zusätzliche Gerade.
     Gezählt werden nun die Kanten der Zellen in $\A$, die $h$ schneidet.
     Ist die Anzahl nach oben beschränkt durch $6n$, so gilt $z(n) \le 6n$.
-    
+
     Es werden zunächst nur die Linksadjazenzen gezählt.
     Betrachte die Geraden $h_1, \dotsc, h_n$ von $\A$ aufsteigend geordnet nach der $x$-Koordinate
     ihres Schnittpunkts mit $h$.
@@ -220,10 +220,10 @@ Für einen Punkt $p \in \real^2$ und eine Gerade $\ell$ gilt
 \begin{enumerate}
     \item
     $p \in \ell \iff \D(\ell) \in \D(p)$,
-    
+
     \item
     $p \in \ell^+ \iff \D(\ell) \in \D(p)^+$ und
-    
+
     \item
     $p \in \ell^- \iff \D(\ell) \in \D(p)^-$.
 \end{enumerate}
@@ -289,13 +289,13 @@ $\D(qr)$ und $\D(p)$ auf $\partial c$ liegen.
     Dann ist der vertikale Abstand von $(p_x, p_y)$ zu $y = kx - d$ ist $D := p_y - kp_x + d$.
     Der vertikale Abstand von $\D(y = kx - d) = (k, d)$ zu $\D(p_x, p_y) = (y = p_x x - p_y)$
     gleich $d - p_x k + p_y = D$, d.\,h. $\D$ lässt vertikale Abstände invariant.
-    
+
     $\Delta pqr$ ist flächenminimal genau dann, wenn $p$ den kleinsten Abstand aller Punkte zu
     $qr$ besitzt.
     Dies gilt genau dann, wenn $p$ den kleinsten vertikalen (d.\,h. vertikal gemessenen) Abstand
     zu $qr$ besitzt.
     Dies gilt genau dann, wenn $\D(qr)$ den kleinsten vertikalen Abstand zu $\D(p)$ besitzt.
-    
+
     Angenommen, $\D(p)$ und $\D(qr)$ würden an verschiedenen Zellen anliegen.
     Dann gäbe es einen Punkt $p' \in P$, sodass die Gerade $\D(p')$ zwischen $\D(p)$ und $\D(qr)$
     liegt, d.\,h. $\D(qr)$ hätte zu $\D(p')$ einen kleineren vertikalen Abstand,
@@ -394,7 +394,7 @@ allen dualen Halbräumen liegt.
     \item
     Gegeben ist $S \subset \real^d$ mit $|S| = n$.
     Berechne $\CH(S)$.
-    
+
     \item
     Gegeben ist eine Menge $\H$ von $n$ Halbräumen in $\real^d$.
     Berechne $\bigcap_{h \in \H} h$.
@@ -406,13 +406,13 @@ Um \emph{(1)} mithilfe von \emph{(2)} zu lösen, geht man wie folgt vor.
     \item
     Verschiebe zunächst $S$, sodass oBdA $0 \in \interior(\CH(S))$ gilt
     (z.\,B. um $-\frac{1}{n} \sum_{p \in S} p$).
-    
+
     \item
     Wende die Dualitätsabbildung an, d.\,h. berechne $\H(p)$ für $p \in S$.
-    
+
     \item
     Berechne $\bigcap_{p \in S} \H(p)$.
-    
+
     \item
     Wende die inverse Dualitätsabbildung an und mache evtl. die Verschiebung rückgängig.
 \end{enumerate}

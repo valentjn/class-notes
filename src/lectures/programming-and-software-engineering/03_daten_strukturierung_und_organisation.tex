@@ -36,23 +36,23 @@ overriding_indicator ::= [not] overriding
     Zu diesen gehören:
     \begin{itemize}
         \item \begriff{Bezeichner} zur Identifizierung von Programmobjekten
-        
+
         \item \begriff{Literale} zur Bezeichnung von festen Werten
         (Zahlen, Zeichen, Strings)
-        
+
         \item \begriff{Begrenzer} (delimiter), die eine spezielle Bedeutung
         besitzen und gleichzeitig lexikalische Einheiten voneinander trennen
         (z.~B. \adacode{\&}, \adacode{'}, \adacode{+}, \adacode{(},
         \adacode{)}, \adacode{:=}, \adacode{>=} usw.)
-        
+
         \item \begriff{Wortsymbole} (reservierte Wörter der Sprache) mit
         spezieller Bedeutung (\adacode{for}, \adacode{if}, \linebreak
         \adacode{procedure}, \dots),
         dürfen nicht als Bezeichner verwendet werden
-        
+
         \item \begriff{Trennzeichen} (separator) zur Trennung von lexikalischen
         Einheiten aus Lesbarkeitsgründen (Zwischenraum, Whitespace)
-        
+
         \item \begriff{Kommentare} dienen der Erläuterung und Lesbarkeit
         (in \Ada{} Zeichenfolgen ab \adacode{{-}{-}})
     \end{itemize}
@@ -80,7 +80,7 @@ overriding_indicator ::= [not] overriding
     Es gibt drei große Speicherbereiche: \begriff{Programmspeicher}
     (Programmcode), \begriff{Stack}/Keller (Speicher für deklarierte Variablen,
     Blockstruktur) und \begriff{Heap}/Haufen (Variablen ohne externen Namen).
-    
+
     Eine Zeigervariable wird bei Deklaration im Stack angelegt. Mittels
     \adacode{new} wird dann eine Variable im Heap allokiert, bei Wertzuweisung
     erhält der Zeiger die Adresse des erzeugten Objekts.
@@ -131,7 +131,7 @@ Put (Anker.Inhalt);
     verkettete Liste} (Zeiger für den Vorgänger) realisiert werden.
     Bei einer \begriff{zyklischen Liste} zeigt das letzte Element nicht auf
     \adacode{null}, sondern auf das erste Element der Liste.
-    
+
     Operationen der linearen Liste:
     \adacode{Empty} (gibt leere Liste zurück, Nullpointer),\\
     \adacode{Isempty(A)} (überprüft, ob \adacode{A} leer ist),
@@ -174,13 +174,13 @@ Put (Anker.Inhalt);
     referenzierte Variable mit \adacode{aliased} (Warnung für den Programmierer
     und Compiler optimiert nicht)
     deklariert wurde:
-    
+
 \begin{lstlisting}[language=ada]
 type Ptr_Integer is access all Integer;
 I      : aliased Integer;
 Zeiger : Ptr_Integer := I'Access;
 \end{lstlisting}
-    
+
     \begriff{Dangling pointers} sind Zeiger, deren referenzierte Variable
     irgendwann nicht mehr existiert. Daher sollte die Lebensdauer des
     referenzierten Objekts mindestens so groß sein wie die des Zeigers.
@@ -304,7 +304,7 @@ Postorder (b.R);
 --  hier Knoten b bearbeiten
 \end{lstlisting}
     \end{tabular}
-    
+
     Ist $n$ die Zahl der Knoten, so erfolgt der Durchlauf in $3n$ Schritten. \\
     Im ungünstigsten Fall benötigt man $n$ Speicherplätze, im günstigsten
     proportional zu $\log n$.

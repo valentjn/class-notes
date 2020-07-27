@@ -43,17 +43,17 @@ diskreten Logarithmus wie folgt.
     \item
     Berechne $m := \left\lceil\sqrt{n}\right\rceil$ oder, soweit $n$ nicht bekannt ist,
     eine obere Schranke $m \ge \sqrt{n}$.
-    
+
     \item
     Berechne $(r, yg^{-r}) \in \natural \times G$ für alle $r = 0, \dotsc, m - 1$ und
     speichere die Paare in einer \begriff{Hashtabelle}
     (Nachschlagen in Zeit $\O(1)$).
-    
+
     \item
     Berechne $h^s \in G$ mit $h := g^m$ für alle $s = 0, \dotsc, m - 1$
     und breche ab, sobald $(r, h^s)$ mit einem $r \in \{0, \dotsc, m - 1\}$
     in der Hashtabelle vorkommt.
-    
+
     \item
     $x = sm + r$ ist dann der diskrete Logarithmus, weil
     $g^x = g^{sm + r} = h^s g^r = y g^{-r} g^r = y$.
@@ -86,10 +86,10 @@ Definiere nun die Abbildung $f\colon \ZnZ \times \ZnZ \rightarrow \ZnZ \times \Z
 \begin{itemize}
     \item
     $f(r, s) := (r + 1, s)$, falls $g^r y^s \in P_1$,
-    
+
     \item
     $f(r, s) := (2r, 2s)$, falls $g^r y^s \in P_2$, und
-    
+
     \item
     $f(r, s) := (r, s + 1)$, falls $g^r y^s \in P_3$.
 \end{itemize}
@@ -98,10 +98,10 @@ Ist $(r', s') := f(r, s)$, $h := g^r y^s$ und $h' := g^{r'} y^{s'}$, so gilt
 \begin{itemize}
     \item
     $h' = gh$, falls $h \in P_1$,
-    
+
     \item
     $h' = h^2$, falls $h \in P_2$, und
-    
+
     \item
     $h' = hy$, falls $h \in P_3$
 \end{itemize}
@@ -129,7 +129,7 @@ diskreten Logarithmus wie folgt.
     \item
     Sei $\ell := 1$ und $h_1 := g^{r_1} y^{s_1}$ mit einem zufälligen Paar
     $(r_1, s_1) \in \ZnZ \times \ZnZ$.
-    
+
     \item
     Berechne sukzessive $h_k$ für $k = \ell + 1, \dotsc, 2\ell$,
     wobei sich $h_k$ aus $h_{k-1}$ wie oben ergibt
@@ -137,7 +137,7 @@ diskreten Logarithmus wie folgt.
     (damit gilt $h_k = g^{r_k} y^{s_k}$).
     Stimmt eines der Elemente $h_k$ mit $h_\ell$ überein, so breche ab.
     Ansonsten verdopple $\ell$ und wiederhole.
-    
+
     \item
     Definiere $(r, s) := (r_\ell, s_\ell)$ und $(r', s') := (r_k, s_k)$.
     Dann teste für jede Lösung $x$ der Kongruenz $x(s - s') \equiv_n r' - r$, ob $y = g^x$ gilt.
@@ -216,7 +216,7 @@ in einer zyklischen Gruppe (oBdA mit Primzahlpotenzordnung $p^e$) wie folgt.
     Schreibe $x = x_0 + x_1 p + \dotsb + x_{e-1} p^{e-1}$ mit
     $x_0, \dotsc, x_{e-1} \in \{0, \dotsc, p-1\}$
     (da $x < |G| = p^e$).
-    
+
     \item
     Zur Bestimmung der Koef"|fizienten $x_0, \dotsc, x_{e-1}$ wiederhole für
     $i = 0, \dotsc, e - 1$ Folgendes:
@@ -226,7 +226,7 @@ in einer zyklischen Gruppe (oBdA mit Primzahlpotenzordnung $p^e$) wie folgt.
         Dann gilt $g^{x_i p^i + \dotsb + x_{e-1} p^{e-1}} = z_i$.
         Potenzieren mit dem Exponenten $p^{e-i-1}$ auf beiden Seiten führt zu
         $g^{x_i p^{e-1}} = z_i^{p^{e-i-1}}$ wg. $\forall_{e' \ge e}\; g^{p^{e'}} = 1$.
-        
+
         \item
         Berechne den diskreten Logarithmus $x_i$ von $z_i^{p^{e-i-1}}$ zur Basis $g^{p^{e-1}}$
         in der Untergruppe $\{h^{p^{e-1}} \;|\; h \in G\}$ von $G$
@@ -262,15 +262,15 @@ in $(\ZpZ)^\ast$ für $p$ prim wie folgt bestimmen.
     \item
     Wähle eine Faktorbasis $B = \{q \in \PP \;|\; q \le B_0\}$ für eine Schranke
     $B_0 \in \natural$.
-    
+
     \item
     Für alle $q \in B$ bestimme $x_q \in \natural_0$ mit $g^{x_q} \equiv_p q$
     (diskreter Logarithmus von $q$).
-    
+
     \item
     Bestimme $b \in \natural_0$, sodass $(yg^b \bmod p)$ $B$-glatt ist,
     d.\,h. $yg^b \equiv_p \prod_{q \in B} q^{e_q}$.
-    
+
     \item
     Wähle $x := (-b + \sum_{q \in B} x_q e_q) \bmod (p-1)$.
 \end{enumerate}

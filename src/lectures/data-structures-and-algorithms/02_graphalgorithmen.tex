@@ -32,22 +32,22 @@ Dabei heißt $k$ die Länge des Pfades.
     $n \times n$-Matrix $(\lambda_{vw})$ mit $\lambda_{vw} = 1$,
     falls $(v, w) \in E$ und $\lambda_{vw} = 0$ sonst. \\
     Platzbedarf: $\sim n^2$
-    
+
     \item \textbf{Knoten-Kanten-Inzidenzmatrix}:
     $n \times m$-Matrix $(\lambda_{ve})$ mit $\lambda_{ve} = -1$ und
     $\lambda_{we} = +1$, falls $e = (v, w) \in E$.
     Platzbedarf: $\sim n \cdot m$
-    
+
     \item \textbf{Adjazenzlisten}:
     Jeder Graph lässt sich darstellen durch
     \begin{enumerate}
         \item[1)] Liste der Knoten,
-        
+
         \item[2)] Liste der Kanten,
-        
+
         \item[3)] für jeden Knoten $v$ eine Liste der Kanten $e$ mit
         $\source(e) = v$ (ausgehende Kanten) und
-        
+
         \item[4)] für jeden Knoten $v$ eine Liste der Kanten $e$ mit
         $\target(e) = v$ (eingehende Kanten).
     \end{enumerate}
@@ -59,7 +59,7 @@ Dabei heißt $k$ die Länge des Pfades.
         nächster Knoten in Liste 1), \\
         erste ausgehende Kante in Liste 3), \quad
         erste eingehende Kante in Liste 4) und
-        
+
         \item \textbf{\code{Kante}}:
         Nummer = $1, \dotsc, m$, \\
         \textbf{source}: Verweis auf Quellknoten, \quad
@@ -78,7 +78,7 @@ Dabei heißt $k$ die Länge des Pfades.
 \textbf{Problem (Bestimmung aller von einem Knoten erreichbaren Knoten)}: \\
 Gegeben sei ein gerichteter Graph $G = (V, E)$ sowie ein ausgezeichneter Knoten
 $s \in V$. \\
-Wie bestimmt man alle Knoten $v$, die von $s$ erreichbar sind 
+Wie bestimmt man alle Knoten $v$, die von $s$ erreichbar sind
 (d.\,h. es existiert ein Pfad von $s$ nach $v$)?
 Die von $s$ erreichbaren Knoten sind $s$ und alle Knoten, die von
 Knoten $u$ mit $(s, u) \in E$ erreichbar sind.
@@ -158,7 +158,7 @@ DFS(v)                                                      Globale Variablen:
             B := $B \cup \{e\}$
         else
             C := $C \cup \{e\}$
-    
+
     count2++
     compnum[v] := count2
 \end{lstlisting}
@@ -170,15 +170,15 @@ DFS(v)                                                      Globale Variablen:
 \begin{itemize}
     \item
     $E = T \;\dot{\cup}\; F \;\dot{\cup}\; B \;\dot{\cup}\; C$,
-    
+
     \item
     die Menge $T$ entspricht dem Aufrufwald der rekursiven Aufrufe,
-    
+
     \item
     $v \rightarrow^\ast_T w \;\Leftrightarrow\;$
     \code{dfsnum[}$v$\code{]} $\le$ \code{dfsnum[}$w$\code{]} $\;\land\;$
     \code{compnum[}$v$\code{]} $\ge$ \code{compnum[}$w$\code{]},
-    
+
     \item
     Seien $v, w, z \in V$ mit $v \rightarrow^\ast_T w$ und
     $(w, z) \in E$ mit $v \nrightarrow^\ast_T z$, dann gilt: \\
@@ -188,16 +188,16 @@ DFS(v)                                                      Globale Variablen:
     $\;\Leftrightarrow\; (w, z) \in B$, \\
     \code{compnum[}$z$\code{]} $<$ \code{compnum[}$v$\code{]}
     $\;\Leftrightarrow\; (w, z) \in C$.
-    
+
     \item
     $\forall_{(v, w) \in E}\; (v, w) \in T \cup F \;\Leftrightarrow\;$
     \code{dfsnum[}$v$\code{]} $<$ \code{dfsnum[}$w$\code{]},
-    
+
     \item
     $\forall_{(v, w) \in E}\; (v, w) \in B \;\Leftrightarrow\;$
     \code{dfsnum[}$v$\code{]} $>$ \code{dfsnum[}$w$\code{]} $\;\land\;$
     \code{compnum[}$v$\code{]} $<$ \code{compnum[}$w$\code{]},
-    
+
     \item
     $\forall_{(v, w) \in E}\; (v, w) \in C \;\Leftrightarrow\;$
     \code{dfsnum[}$v$\code{]} $>$ \code{dfsnum[}$w$\code{]} $\;\land\;$
@@ -350,14 +350,14 @@ DFS($v$)                                                                  forall
     dfsnum[$v$] :=  count1                                                     count1 := 0
     lownum[$v$] :=  dfsnum[$v$]                                                   DFS(v)
     unfertig.push(v)
-    
+
     forall $e = (v, w)$
         if besucht[$w$] = false
             DFS(w)
             lownum[$v$] :=  min(lownum[$v$], lownum[$w$])
         else if fertig[$w$] = false
             lownum[$v$] :=  min(lownum[$v$], dfsnum[$w$])
-    
+
     if lownum[$v$] = dfsnum[$v$]
         print "Komponente"
         do
@@ -519,7 +519,7 @@ $U$ aufgenommen.
         Die rechte Seite wird im Verlauf des Algorithmus nur kleiner
         und wenn $u$ aus $U$ entfernt wird, wird die Gültigkeit der
         Invariante sichergestellt.
-        
+
         \item
         Seien $v_0 v_1 \dotsc v_k$ ($v_0 = s$, $v_k = w$) ein kürzester Weg
         von $s$ nach $w$ und $i$ maximal mit
@@ -550,7 +550,7 @@ $U$ aufgenommen.
     \textbf{Behauptung}:
     Wenn $d(w) > -\infty$ für alle $w \in V$ gilt, dann wird jeder Knoten
     höchstens $n$-mal aus $U$ entfernt.
-    
+
     \begin{Beweis}
         Betrachte $U$, wenn $v$ zu $U$ hinzugefügt wird.
         $U$ enthält laut 2. (siehe oben) einen Knoten $z$ mit
@@ -558,25 +558,25 @@ $U$ aufgenommen.
         $z$ wird vor $v$ aus $U$ entfernt und zwar endgültig (siehe 3.).
         Also kommt $v$ maximal $n-1$-mal zu $U$ hinzu.
     \end{Beweis}
-    
+
     \textbf{Laufzeit}:
     Die Laufzeit ist $\O(m \cdot n)$, da jede Kante maximal $n$-mal anschaut
     wird (nämlich jedes Mal, wenn ihr Quellknoten aus $U$ entfernt wird).
-    
+
     \item
     \textbf{$G$ ist azyklisch}: \\
     Sortiere $G$ topologisch und gehe Knoten in aufsteigender
     Reihenfolge durch.
-    
+
     \item
     \textbf{nicht-negative Kantenkosten (Algorithmus von \textsc{Dijkstra})}:
     \\
     Entferne immer das Element aus $U$ mit dem kleinsten \code{dist}-Wert.
-    
+
     \textbf{Behauptung}:
     Sei $w \in U$ mit \code{dist[}$w$\code{]} minimal.
     Dann ist \code{dist[}$w$\code{]} $= d(w)$.
-    
+
     \begin{Beweis}
         Falls \code{dist[}$w$\code{]} $> d(w)$, existiert ein Knoten
         $v$ auf kürzestem Weg von $s$ nach $w$ mit $v \in U$
@@ -586,7 +586,7 @@ $U$ aufgenommen.
         Also ist \code{dist[}$v$\code{]} $<$ \code{dist[}$w$\code{]}, ein
         Widerspruch, da $w \in U$ mit \code{dist[}$w$\code{]} minimal.
     \end{Beweis}
-    
+
     \textbf{Laufzeit}: Jeder Knoten wird maximal 1 Mal aus $U$ entnommen.
     Jeder Knoten ändert maximal $\indeg(v)$ Mal seine Distanz.
     Also gibt es maximal $n$ Minimumsextraktionen und $m$ Distanzänderungen.
@@ -652,10 +652,10 @@ Dieses kann mit folgendem Algorithmus bestimmt werden:
     \item
     Jeder alleinstehende Mann macht oberster Frau auf seiner Liste einen
     Antrag.
-    
+
     \item Jede Frau sucht sich aus den Angeboten und dem aktuellen Partner
     den Besten aus und schickt die anderen weg.
-    
+
     \item Jeder abgewiesene Mann streicht oberste Frau von seiner Liste
     und wird (bzw. bleibt) alleinstehend.
     Das Verfahren wird so lange wiederholt, bis jeder Mann eine Frau hat.
@@ -675,7 +675,7 @@ optimal ist.
         Partnerin.
         $a$ hätte $b$ irgendwann einmal gefragt und $b$ wäre mit $a$ zusammen
         (oder mit einem besseren), ein Widerspruch.
-        
+
         \item
         \textbf{$M$ ist stabil}. \\
         Sei $(a, b') \in M$, $b \not= b'$ beliebige Frau.
@@ -684,7 +684,7 @@ optimal ist.
         vorzieht.
         Falls der Mann $a$ der Frau $b$ keinen Antrag gemacht hat,
         hat $a$ eine Partnerin, die er $b$ vorzieht.
-        
+
         \item
         \textbf{$M$ ist für alle Männer optimal}, d.\,h.
         falls $a$ von $b$ zurückgewiesen wurde, dann ist $b$ für $a$

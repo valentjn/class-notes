@@ -72,13 +72,13 @@ $g_i\colon \BB^{2n} \to \BB^n$ (mit $\BB^n \times \BB^n \cong \BB^{2n}$):
 \begin{itemize}
     \item
     $g_1(k, x) := c_k(x) \oplus x$
-    
+
     \item
     $g_2(k, x) := c_k(x) \oplus x \oplus k$
-    
+
     \item
     $g_3(k, x) := c_k(x \oplus k) \oplus x$
-    
+
     \item
     $g_4(k, x) := c_k(x \oplus k) \oplus x \oplus k$
 \end{itemize}
@@ -105,18 +105,18 @@ Das Verfahren berechnet $h(x)$ für $x \in \BB^{2^n-1}$ wie folgt:
     Definiere $x' := x 0^p$, wobei $p \in \natural_0$ kleinstmöglich so gewählt ist, dass
     $n \teilt |x'|$\\
     (d.\,h. $p := (n - (|x| \bmod n)) \bmod n$).
-    
+
     \item
     Definiere $\overline{x} = x' \ell_x$ mit $\ell_x \in \BB^n$
     der Codierung der Länge $|x|$ von $x$ in $n$ Bits.
-    
+
     \item
     Teile $\overline{x} =: x_1 \dotsb x_s$ in Blöcke $x_i \in \BB^n$ der Länge $n$ auf
     (insbesondere gilt $x_s = \ell_x$).
-    
+
     \item
     Berechne $H_i := g(H_{i-1} x_i) \in \BB^n$ für $i = 1, \dotsc, s$ mit $H_0 := 0^n \in \BB^n$.
-    
+
     \item
     Gebe $h(x) := H_s$ aus.
 \end{enumerate}
@@ -141,7 +141,7 @@ kollisionsresistent, wenn $g\colon \BB^{2n} \to \BB^n$ kollisionsresistent ist.
         so ist das Paar $(H_{s-i-1} x_{s-i}, G_{t-i-1} y_{t-i})$ eine Kollision von $g$, weil\\
         $H_{s-i-1} x_{s-i} \not= G_{t-i-1} y_{t-i}$ sowie
         $g(H_{s-i-1} x_{s-i}) = H_{s-i} = G_{t-i} = g(G_{t-i-1} y_{t-i})$.
-        
+
         \item
         Wegen $H_s = h(x) = h(y) = G_t$
         ist die andere Möglichkeit $\forall_{i=0,\dotsc,s}\; H_{s-i} = G_{t-i}$.

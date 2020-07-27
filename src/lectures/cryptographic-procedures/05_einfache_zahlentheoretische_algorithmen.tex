@@ -29,15 +29,15 @@ Gesucht ist das Produkt $r \cdot s$ der beiden Zahlen.
     \item
     \emph{Schulmethode (schriftliches Multiplizieren)}:
     $\O(n^2)$
-    
+
     \item
     \emph{\name{Karatsuba}-Algorithmus}:
     $\O(n^{1.58497})$ mit $1.58497 \approx \log_2 3$
-    
+
     \item
     \emph{\name{Schönhage}-\name{Strassen}-Algorithmus}:
     $O(n \log n \cdot \log \log n) \subset \weakO(n)$
-    
+
     \item
     \emph{\name{Fürer}-Algorithmus}:
     $\O(n \log n \cdot 2^{\log^\ast n}) \subset \weakO(n)$
@@ -53,10 +53,10 @@ Seien $r, s$ zwei Zahlen mit je $n = 2k$ Bit.
     \item
     Berechne zunächst $0 \le A, B, C, D < 2^k$ mit $r = A \cdot 2^k + B$ und
     $s = C \cdot 2^k + D$.
-    
+
     \item
     Berechne rekursiv $AC$, $BD$ und $(A + B)(C + D)$.
-    
+
     \item
     Berechne $r \cdot s = AC \cdot 2^{2k} + (A + B)(C + D) \cdot 2^k -
     (AC + BD) \cdot 2^k + BD$.
@@ -74,7 +74,7 @@ $\O(n^{\log_2 3})$
     (die Additionen benötigen $\O(k)$ Schritte).
     Mit dem Master-Theorem würde man auf $T \in \Theta(n^2)$ kommen, was keine Verbesserung
     gegenüber der Schulmethode wäre.
-    
+
     Weil allerdings nur drei Multiplikationen pro Rekursionsschritt durchgeführt werden, gilt\\
     $T(2k) = 3T(k) + \O(k)$ und mit dem Master-Theorem kommt man auf
     $T \in \Theta(n^{\log_2 3})$.
@@ -107,7 +107,7 @@ Gesucht ist $\frac{1}{m}$.
     Der Startwert ist $x_0 := 2^{-\lceil\log m \rceil}$,
     wobei $\lceil\log m \rceil$ ca. gleich der Anzahl der Stellen von $m$ und
     daher leicht bestimmbar ist.
-    
+
     \item
     Suche mit dem Newton-Verfahren die Nullstelle von $f(x) = \frac{1}{x} - m$, d.\,h.\\
     $x_{i+1} := x_i - \frac{f(x_i)}{f'(x_i)} = 2x_i - mx_i^2$.
@@ -142,7 +142,7 @@ Ist $k < 0$, so muss am Ende das Vorzeichen von $a$ verändert werden
 \begin{enumerate}
     \item
     Ist $k = 0$, so gebe $(0, 1, \ell)$ zurück.
-    
+
     \item
     Sonst berechne $(a, b, t) := \code{erw\_ggT}(\ell \bmod k, k)$
     und gebe $(b - a \cdot \lfloor \ell/k \rfloor, a, t)$ zurück.
@@ -160,10 +160,10 @@ $\weakO(n^2)$
     \begin{itemize}
         \item
         Ist $\ell \bmod k \le \frac{k}{2}$, so ist $k'' < \ell \bmod k \le \frac{k}{2}$.
-        
+
         \item
         Ist $\ell \bmod k > \frac{k}{2}$, so ist
-        $k'' = k \bmod (\ell \bmod k) = k - (\ell \bmod k) \le \frac{k}{2}$. 
+        $k'' = k \bmod (\ell \bmod k) = k - (\ell \bmod k) \le \frac{k}{2}$.
     \end{itemize}
     In jedem Fall gilt $k'' \le \frac{k}{2}$ und spätestens nach zwei rekursiven Aufrufen hat
     sich die kleinere Zahl halbiert.
@@ -178,10 +178,10 @@ Gesucht ist das multiplikative Inverse von $k$ modulo $m$.
 \begin{enumerate}
     \item
     Berechne zunächst $(a, b, t) := \code{erw\_ggT}(k, m)$.
-    
+
     \item
     Ist $t \not= 1$, dann ist $k$ nicht invertierbar modulo $m$.
-    
+
     \item
     Ist $t = 1$, dann gilt $ak + bm = 1 \iff ak \equiv_m 1$,
     d.\,h. $a \bmod m \in \ZmZ$ ist das gesuchte multiplikative Inverse von $k$ mod $m$.
@@ -206,13 +206,13 @@ Der Algorithmus zur \begriff{schnellen Exponentiation} berechnet $e = a^m$ wie f
 \begin{enumerate}
     \item
     Setze zunächst $e := 1$.
-    
+
     \item
     Solange $m > 0$ ist, wiederhole Folgendes:
     \begin{enumerate}
         \item
         Ist $m$ ungerade, so setze $e \leftarrow a \cdot e$.
-        
+
         \item
         Setze $a \leftarrow a^2$ und $m \leftarrow \lfloor m/2\rfloor$.
     \end{enumerate}

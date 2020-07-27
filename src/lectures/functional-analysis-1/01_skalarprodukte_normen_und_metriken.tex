@@ -23,11 +23,11 @@
         $\forall_{\alpha \in \KK} \forall_{x, y, z \in V}\;
         \sp{\alpha x + y, z} = \alpha \sp{x, z} + \sp{y, z}$
         (\begriff{Linearität im ersten Argument}),
-        
+
         \item
         $\forall_{x, y \in V}\; \sp{x, y} = \kk{\sp{y, x}}$
         (\begriff{Symmetrie} bzw. \begriff{\name{Hermite}sche Symmetrie}) und
-        
+
         \item
         $\forall_{x \in V}\; \sp{x, x} \ge 0 \;\land\; \left[\sp{x, x} = 0 \iff x = 0\right]$
         (\begriff{positive Definitheit}).
@@ -50,21 +50,21 @@
     \begin{enumerate}[label=\emph{(\alph*)}]
         \item
         $V := \real^n$, $\sp{x, y} := \sum_{i=1}^n x_i y_i$
-        
+
         \item
         $V := \complex^n$, $\sp{x, y} := \sum_{i=1}^n x_i \kk{y_i}$
-        
+
         \item
         $V := \left\{\left.x \in \real^\natural \;\right|\; \sp{x, x} < \infty\right\}$,
         $\sp{x, y} := \sum_{i=1}^\infty x_i y_i$
-        
+
         \item
         $V := \left\{\left.x \in \complex^\natural \;\right|\; \sp{x, x} < \infty\right\}$,
         $\sp{x, y} := \sum_{i=1}^\infty x_i \kk{y_i}$
-        
+
         \item
         $V := \C([a,b], \real)$ mit $a < b$ reell, $\sp{x, y} := \int_a^b x(t)y(t)\dt$
-        
+
         \item
         $V := \C([a,b], \complex)$ mit $a < b$ reell, $\sp{x, y} := \int_a^b x(t)\kk{y(t)}\dt$
     \end{enumerate}
@@ -91,11 +91,11 @@
         \item
         $\forall_{x \in X}\; \norm{x} \ge 0 \;\land\; \left[\norm{x} = 0 \iff x = 0\right]$
         (\begriff{Positivität} und \begriff{Definitheit}),
-        
+
         \item
         $\forall_{\alpha \in \KK} \forall_{x \in X}\; \norm{\alpha x} = |\alpha| \cdot \norm{x}$
         (\begriff{Homogenität}) und
-        
+
         \item
         $\forall_{x, y \in X}\; \norm{x + y} \le \norm{x} + \norm{y}$
         (\begriff{Dreiecksungleichung}).
@@ -162,7 +162,7 @@
     \begin{enumerate}
         \item
         $x, y \in X$ heißen \begriff{orthogonal zueinander} ($x \orth y$), falls $\sp{x, y} = 0$.
-        
+
         \item
         $X_1, X_2 \subset X$ mit $X_1, X_2 \not= \emptyset$ heißen \begriff{orthogonal zueinander}
         ($X_1 \orth X_2$), falls\\
@@ -184,7 +184,7 @@
     \begin{enumerate}[label=\emph{(\alph*)}]
         \item
         $\norm{x}_p := \left(\sum_{k=1}^n |x_k|^p\right)^{1/p}$ für $p \in [1, \infty)$
-        
+
         \item
         $\norm{x}_\infty := \max_{k=1,\dotsc,n} |x_k|$
     \end{enumerate}
@@ -197,20 +197,20 @@
         $\ell^p := \{x \in \KK^\natural \;|\;
         \norm{x}_{\ell^p} < \infty\}$, $\norm{x}_{\ell^p} :=
         \left(\sum_{k=1}^\infty |x_k|^p\right)^{1/p}$ für $p \in [1, \infty)$
-        
+
         \item
         $\ell^\infty := \{x \in \KK^\natural \;|\;
         \norm{x}_{\ell^\infty} < \infty\}$, $\norm{x}_{\ell^\infty} :=
         \sup_{k \in \natural} |x_k|$
-        
+
         \item
         $c_0 := \{x \in \KK^\natural \;|\; \lim_{k \to \infty} x_k = 0\}$,
         $\norm{\cdot}_{\ell^\infty}$
-        
+
         \item
         $c := \{x \in \KK^\natural \;|\; x \text{ konvergiert}\}$,
         $\norm{\cdot}_{\ell^\infty}$
-        
+
         \item
         $c_\ast := \{x \in \KK^\natural \;|\; x_k = 0 \text{ für fast alle }
         k \in \natural\}$, $\norm{\cdot}_{\ell^p}$ für $p \in [1, \infty]$
@@ -230,30 +230,30 @@
         $B(M, \KK) := \{f\colon M \rightarrow \KK \;|\; \norm{f}_\infty < \infty\}$,
         $\norm{f}_\infty := \sup_{x \in M} |f(x)|$,\\
         \begriff{Raum der beschränkten Funktionen auf $M$}
-        
+
         \item
         $\C^0(K, \KK) := \{f\colon K \rightarrow \KK \;|\; f \text{ stetig}\}$,
         $\norm{f}_{\C^0} := \sup_{x \in K} |f(x)|$,\\
         \begriff{Raum der stetigen Funktionen auf $K$}
-        
+
         \item
         $\C^0_b(\Omega, \KK) := \{f\colon \Omega \rightarrow \KK \;|\; f \text{ stetig},\;
         \norm{f}_{\C_0} < \infty\}$,
         $\norm{f}_{\C^0} := \sup_{x \in \Omega} |f(x)|$,\\
         \begriff{Raum der stetigen, beschränkten Funktionen auf $\Omega$}
-        
+
         \item
         $\C^0_c(\Omega, \KK) := \{f \in \C^0_b(\Omega, \KK) \;|\;
         \supp f \subset \Omega \text{ kompakt}\}$,
         $\norm{\cdot}_{\C^0}$,\\
         \begriff{Raum der stetigen, beschränkten Funktionen mit kompaktem Träger in $\Omega$}
-        
+
         \item
         $\C^0_\unif(\Omega, \KK) := \BUC(\Omega, \KK) := \{f \in \C^0_b(\Omega, \KK) \;|\;
         f \text{ gleichmäßig stetig auf } \Omega\}$,
         $\norm{\cdot}_{\C^0}$,\\
         \begriff{Raum der gleichmäßig stetigen, beschränkten Funktionen auf $\Omega$}
-        
+
         \item
         $\C^{0,\alpha}(\Omega, \KK) := \{f \in \C^0_b(\Omega, \KK) \;|\;
         \norm{f}_{\C^{0,\alpha}} < \infty\}$, $\alpha \in (0, 1]$,
@@ -264,7 +264,7 @@
         für $\alpha = 1$ ist
         $\C^{0,1}(\Omega, \KK) =: \Lip(\Omega, \KK)$
         der \begriff{Raum der \name{Lipschitz}-stetigen Funktionen auf $\Omega$}
-        
+
         \item
         $\C^m(K, \KK) := \{f\colon K \rightarrow \KK \;|\;
         \partial_x^j f \text{ stetig auf } \overset{\circ}{K} = \interior K,\;
@@ -275,27 +275,27 @@
         mit $|j| := j_1 + \dotsb + j_n$
         sowie $x = (x_1, \dotsc, x_n)$ und
         $\partial_x^j = \partial_{x_1}^{j_1} \dotsb \partial_{x_n}^{j_n}$)
-        
+
         \item
         $\C^m_b(\Omega, \KK) := \{f\colon \Omega \rightarrow \KK \;|\;
         \partial_x^j f \text{ stetig},\; \norm{\partial_x^j f}_{\C^0} < \infty,\; |j| \le m\}$,
         $\norm{\cdot}_{\C^m}$,\\
         \begriff{Raum der $m$-fach stetig diffb.,
         in allen Ableitungen beschränkten Funktionen auf $\Omega$}
-        
+
         \item
         $\C^m_c(\Omega, \KK) := \{f \in \C^m_b(\Omega, \KK) \;|\;
         \partial_x^j f \text{ stetig},\; \supp f \subset \Omega \text{ kompakt}\}$,
         $\norm{\cdot}_{\C^m}$,\\
         \begriff{Raum der $m$-fach stetig diffb. Funktionen mit kompaktem Träger in $\Omega$}
-        
+
         \item
         $\C^m_\unif(\Omega, \KK) := \{f \in \C^m_b(\Omega, \KK) \;|\;
         \partial_x^j f \in \C^0_\unif(\Omega, \KK),\; |j| \le m\}$,
         $\norm{\cdot}_{\C^m}$,\\
         \begriff{Raum der $m$-fach stetig diffb., in allen Ableitungen
         glm. stetigen Funktionen auf $\Omega$}
-        
+
         \item
         $\C^{m,\alpha}(\Omega, \KK) := \{f \in \C^m_b(\Omega, \KK) \;|\;
         \partial_x^j f \in \C^{0,\alpha}(\Omega, \KK) \text{ für } |j| = m\}$,\\
@@ -321,7 +321,7 @@
     \begin{enumerate}
         \item
         $\Kern([\cdot]) := \{x \in X \;|\; [x] = 0\}$ ist ein Unterraum von $X$.
-        
+
         \item
         $X/\Kern([\cdot])$ mit der kanonischen Quotientenvektorraum-Struktur und der Norm\\
         $\norm{x + \Kern([\cdot])} := [x]$ ist ein normierter Raum.
@@ -409,11 +409,11 @@
         \item
         $\forall_{x, y \in X}\; d(x, y) \ge 0 \;\land\; [d(x, y) = 0 \iff x = y]$
         (\begriff{Positivität} und \begriff{Definitheit}),
-        
+
         \item
         $\forall_{x, y \in X}\; d(x, y) = d(y, x)$
         (\begriff{Symmetrie}) und
-        
+
         \item
         $\forall_{x, y, z \in X}\; d(x, y) \le d(x, z) + d(z, y)$
         (\begriff{Dreiecksungleichung}).
@@ -444,13 +444,13 @@
             \item
             $\forall_{x, y, z \in X}\; d(x + z, y + z) = d(x, y)$
             (\begriff{Translationsinvarianz}) und
-            
+
             \item
             $\forall_{x, y \in X} \forall_{\alpha \in \KK}\;
             d(\alpha x, \alpha y) = |\alpha| \cdot d(x, y)$
             (\begriff{Homogenität}).
         \end{enumerate}
-        
+
         \item
         Sei $(X, d)$ ein metrischer Raum.
         Außerdem sei $X$ ein $\KK$-Vektorraum, sodass

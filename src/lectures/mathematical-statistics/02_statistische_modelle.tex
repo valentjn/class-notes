@@ -11,7 +11,7 @@
     gegeben.
     Welches $\PP \in \P$ oder welche Teilmenge $\P_0 \subset \P$ eigenet sich "`am Besten"'
     zur Erklärung der Realisierung/des Datensatzes $x_1, \dotsc, x_n$?
-    
+
     Die Wahrscheinlichkeitstheorie liefert eine axiomatiche Begründung des Phänomens "`Zufall"'
     und konstruiert und beschreibt Modelle für zufällige Prozesse.
     Die Statistik behandelt die zur WT "`inverse"' Fragestellung:
@@ -42,7 +42,7 @@
     ein W-Maß $\PP_X$ durch $\PP_X(B) := \PP(X \in B)$ =
     $\PP(X^{-1}(B)) = \PP(\{\omega \in \Omega \;|\; X(\omega) \in B\})$ für $B \in \B$,
     das \begriff{Verteilung} von $X$ genannt wird.
-    
+
     Typischerweise ist $X = (X_1, \dotsc, X_n)$ ein Zufallsvektor mit stochastisch unabhängigen
     Komponenten $X_1, \dotsc, X_n$.
     Falls die $X_i$ alle reellwertig sind, gilt $(\X, \B) = (\real^n, \B^n)$ mit
@@ -55,7 +55,7 @@
     Kann $\P$ mit einer Parametermenge $\Theta \subset \real^d$ parametrisiert werden,
     so spricht man von einem \begriff{parametrischem Modell}, andernfalls von einem
     \begriff{nicht-parametrischem Modell}.
-    
+
     Das Ziel ist, basierend auf einer Stichprobe $X$ ein $P_\theta \in \P$ zu finden,
     das der tatsächlichen Verteilung von $X$ "`möglichst ähnlich"' ist.
     Die Verteilung von $X$ muss nicht notwendigerweise in $\P$ enthalten sein.
@@ -123,13 +123,13 @@
         \item
         \begriff{Schätzproblem}: Finde zu gegebener Stichprobe $X\colon \Omega \rightarrow \X$
         einen Schätzwert für den wahren, aber unbekannten Parameter $\theta$.
-        
+
         \item
         \begriff{Bereichsschätzung}: Schätze basierend auf der Stichprobe $X$ ein Intervall $I$,
         sodass z.\,B.
         $\PP_\theta(\theta \in I) \ge 0{,}95$ (\begriff{$95\,\%$-Konfidenzintervall}).
         $I$ soll so klein wie möglich sein.
-        
+
         \item
         \begriff{Testproblem}: Entscheide basierend auf der Stichprobe $X$, ob z.\,B.
         $\theta > 0{,}5$ (mit hoher Sicherheit) angenommen werden kann.
@@ -164,7 +164,7 @@
         Alle $P \in \P$ besitzen eine Dichte $p\colon \X \rightarrow \real_0^+$
         (bzgl. dem L.-B.-Maß),\\
         d.\,h. $\forall_{B \in \B}\; \PP(X \in B) = P(B) = \int_B p(x)\dx$.
-        
+
         \item
         Alle $P \in \P$ besitzen eine Zähldichte $p\colon \X \rightarrow \real_0^+$
         (bzgl. dem Zählmaß),\\
@@ -200,7 +200,7 @@
     wobei $p_Y$ mit $p_Y(y) = \PP(Y = y) = \sum_{x'} p(x', y)$ die Randverteilung von $Y$
     bezeichnet.\\
     Sind $X$ und $Y$ zwei stetige Zufallsvariablen mit gemeinsamer L.-B.-Dichte $p(x, y)$,
-    so ist die \begriff{bedingte Verteilung von $X$ gegeben $Y$} (von $X|Y$) definiert durch 
+    so ist die \begriff{bedingte Verteilung von $X$ gegeben $Y$} (von $X|Y$) definiert durch
     die Dichte $p(x|y) = \frac{p(x, y)}{p_Y(y)}$ mit $p_Y(y) = \int p(x', y)\dx'$.
 \end{Def}
 
@@ -252,7 +252,7 @@
     \begin{enumerate}
         \item
         $T(X)$ ist suf"|fizient für $\theta$.
-        
+
         \item
         Es existieren Abbildungen $g\colon \Y \times \Theta \rightarrow \real$
         und $h\colon \real^n \rightarrow \real$, sodass
@@ -432,7 +432,7 @@
     \begin{enumerate}
         \item
         eine \begriff{a-priori-Verteilung} $\pi$, sodass $\theta \sim \pi$, und
-        
+
         \item
         eine reguläre Verteilung $\PP_\theta$, sodass $X|\theta \sim \PP_\theta$.
     \end{enumerate}
@@ -477,7 +477,7 @@
     wobei $B(a, b) = \int_0^1 t^{a-1} (1-t)^{b-1} \dt$ die Beta-Funktion ist.
     Die Beta-Verteilung verallgemeinert die Gleichverteilung auf dem Intervall $(0, 1)$
     (für $a = b = 1$ erhält man die Gleichverteilung).
-    
+
     Sei jetzt $s = \sum_{i=1}^n x_i$ die Summe der Werte von $X_1, \dotsc, X_n$.\\
     Dann ist $p(x|\theta) = \theta^s (1 - \theta)^{n-s} \cdot \1_{(0, 1)}(\theta)$
     die Zähldichte von $X$ ($x \in \{0, 1\}^n$) und die a-posteriori-Dichte von $\theta|X = x$
@@ -534,7 +534,7 @@
     ergibt sich $\widetilde{\pi}(\theta; a, b) \propto
     \vartheta^{a-1} (1 - \vartheta)^{b-1} \cdot \1_{(0,1)}(\theta)$, $a, b > 0$,
     als konjugierte a-priori-Verteilung (Beta-Verteilung).
-    
+
     Die a-posteriori-Verteilung folgt mit obigem Satz:
     $p(\theta|x) \propto \pi(\theta; t_1 + 1, t_2 + 1)
     = \theta^{t_1+x} (1 - \theta)^{t_2 + 1 - (t_1 + x)} = \theta^{a-1+x} (1 - \theta)^{b-x}$.
@@ -566,12 +566,12 @@
     Durch die Reparametrisierung $t_1 \mapsto \eta \frac{\sigma^2}{\tau^2}$ und
     $t_2 \mapsto \frac{\sigma^2}{\tau^2}$ mit $\eta \in \real$ und $\tau^2 > 0$ erhält man
     als a-priori-Verteilung eine $\N(\eta, \tau^2)$-Verteilung.
-    
+
     Nach dem Satz hat die a-posteriori-Verteilung die Dichte
     $p(\theta|x) \propto \pi(\theta, t_1 + \sum_{i=1}^n T_1(x_i), t_2 + n)$.
     Mit $s = \sum_{i=1}^n x_i$ und $T_1(x_i) = x_i$ erhält man also die Dichte von
     $\N\!\left(\frac{t_1 + s}{t_2 + n}, \frac{\sigma^2}{t_2 + n}\right)$.
-    
+
     Der Erwartungswert $\frac{t_1 + s}{t_2 + n} =
     \frac{n}{\sigma^2/\tau^2 + n} \overline{x} +
     \frac{\sigma^2/\tau^2}{\sigma^2/\tau^2+n} \eta$ geht für $n \to \infty$ gegen
