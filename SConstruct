@@ -71,7 +71,7 @@ env["ENV"]["half_error_line"] = "238"
 # use LuaLaTeX as compiler (successor of pdfLaTeX)
 Helper.checkProgramInstalled(env, "lualatex", fail=True)
 # filter the output of LuaLaTeX with custom script
-luaLatex = "python3 {} lualatex".format(File("#/tools/filterOutput.py").abspath)
+luaLatex = "python3 {} --ignore-texinputs lualatex".format(File("#/tools/filterOutput.py").abspath)
 env.Replace(PDFTEX=luaLatex, PDFLATEX=luaLatex)
 
 # show file and line number for errors

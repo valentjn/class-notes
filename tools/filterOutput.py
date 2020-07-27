@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+import os
 import re
 import subprocess
 import sys
@@ -43,8 +44,17 @@ FILTER_REGEXS = [
 
 
 
+arguments = sys.argv[1:]
+env = dict(os.environ)
+
+# `scons -j` messes up TEXINPUTS with multiple paths from different
+# parallel processes, leading to weirdly mixed PDFs
+if arguments[0] == "--ignore-texinputs":
+  del arguments[0]
+  env["TEXINPUTS"] = ".:"
+
 # run LaTeX command with supplied arguments
-process = subprocess.Popen(sys.argv[1:], stdout=subprocess.PIPE)
+process = subprocess.Popen(arguments, stdout=subprocess.PIPE, env=env)
 
 # while LaTeX is still running
 while process.poll() is None:
