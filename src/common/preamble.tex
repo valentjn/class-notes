@@ -135,13 +135,6 @@
 % table of contents for specific chapters
 \usepackage{etoc}
 
-% vierstellige Seitenzahlen
-%\usepackage[titles]{tocloft}
-%\makeatletter
-%\renewcommand*{\@pnumwidth}{2em}
-%\renewcommand*{\@tocrmarg}{3em}
-%\makeatother
-
 % page margins
 \usepackage[
   a4paper,
@@ -276,7 +269,6 @@
 ]{subsection}
 
 \makeatletter
-%\@addtoreset{chapter}{part}
 \AtBeginDocument{%
   %\renewcommand*{\theHchapter}{%
   %  \theHpart.\arabic{chapter}%
@@ -288,10 +280,8 @@
       \theHlstlisting
     \fi.\thelstnumber
   }%
-}%
+}
 \makeatother
-
-%\def\thechapter{\Roman{chapter}}
 
 \begin{document}
   \input{document}
