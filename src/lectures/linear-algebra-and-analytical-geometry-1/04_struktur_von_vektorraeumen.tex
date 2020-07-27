@@ -1,0 +1,533 @@
+\section{%
+    Struktur von Vektorräumen%
+}
+
+\subsection{%
+    Vektorräume und Unterräume%
+}
+
+\begin{Def}{Vektorraum}
+    Ein \xbegriff{$K$-Vektorraum}{K-Vektorraum}
+    (Vektorraum über $K$, $K$ Körper) ist eine
+    Menge $V$ mit einer binären Operation
+    $\boldsymbol{+}: V \times V \rightarrow V$
+    (\begriff{Vektoraddition}) und einer Operation
+    $\boldsymbol{\cdot}: K \times V \rightarrow V$
+    (\begriff{skalare Multiplikation})
+    mit den Eigenschaften ($u, v \in V$, $\lambda, \mu \in K$)
+    
+    \begin{tabular}{p{8cm}p{8cm}}
+        1) $u + v = v + u$ &
+        5) $1_K \cdot v = v$\\
+        2) $u + (v + w) = (u + v) + w$ &
+        6) $\lambda (\mu v) = (\lambda \mu) v$ \\
+        3) $\exists_{0_V \in V} \forall_{v \in V}\; v + 0_V = v$ &
+        7) $(\lambda + \mu) v = \lambda v + \mu v$ \\
+        4) $\forall_{v \in V} \exists_{-v \in V}\; v + (-v) = 0_V$ &
+        8) $\lambda (u + v) = \lambda u + \lambda v$.
+    \end{tabular}
+\end{Def}
+
+\begin{Lemma}{$K[x]$ als Vektorraum}
+    $K[x]$ wird zum $K$-Vektorraum mit
+    $(f + g)(x) = \sum_{i=0}^n (\alpha_i + \beta_i) x^i$ und
+    $(\lambda f)(x) = \sum_{i=0}^n (\lambda \alpha_i) x^i$, wobei
+    $f(x) = \sum_{i=0}^n \alpha_i x^i$ sowie
+    $g(x) = \sum_{i=0}^n \beta_i x^i$.
+\end{Lemma}
+
+\begin{Def}{Unterraum}
+    Sei $V$ ein $K$-Vektorraum.
+    Eine nicht-leere Teilmenge $U \subseteq V$ heißt \begriff{Unterraum} von
+    $V$, falls $U$ bzgl. der Addition und der skalaren Multiplikation von $V$
+    selbst wieder ein Vektorraum ist. Man schreibt dann $U \ur V$ bzw.
+    $U < V$ (\begriff{echter Unterraum}) für $U \not= V$.
+\end{Def}
+
+\begin{Satz}{Kriterium für Unterraum}
+    Sei $U \subseteq V$ nicht-leer.
+    $U$ ist genau dann ein Unterraum von $V$, wenn für
+    $u, v \in U$, $\lambda \in K$ gilt,
+    dass auch $u - v \in U$ sowie $\lambda v \in U$ ist.
+\end{Satz}
+
+\begin{Def}{linearer Aufspann}
+    Für eine nicht-leere Teilmenge $T \subseteq V$ ist der
+    \begriff{lineare Aufspann} \\
+    $\aufspann{T} = \left\{\left. \sum_{i=1}^k \lambda_i v_i \;\right|\;
+    \lambda_i \in K,\; v_i \in T \right\} =
+    \left\{\left. \sum_{t \in T} \lambda_t t \;\right|\;
+    \lambda_t \in K \text{ fast alle } 0\right\}$.
+    Es ist $\aufspann{\emptyset} = (0)$.
+\end{Def}
+
+\begin{Kor}
+    Sei $T \subseteq V$ nicht-leer.
+    Dann ist $\aufspann{T}$ ein Unterraum von $V$.
+\end{Kor}
+
+\begin{Lemma}{Durchschnitt/Vereinigung von Unterräumen}
+    Der Durchschnitt von beliebig vielen Unterräumen ist wieder ein Unterraum.
+    Die Vereinigung ist i.\,A. kein Unterraum.
+\end{Lemma}
+
+\subsection{%
+    Erzeugende%
+}
+
+\begin{Def}{Erzeugendensystem}
+    Eine nicht-leere Teilmenge $T \subseteq V$ eines $K$-Vektorraums $V$ heißt
+    \begriff{Erzeugendensystem} für $V$, falls $\aufspann{T} = V$.
+    Die Elemente von $T$ heißen \begriff{Erzeugende} von $V$.
+\end{Def}
+
+\begin{Satz}{kleinster Unterraum}
+    Sei $T \subseteq V$ nicht-leer.
+    Dann ist $\aufspann{T}$ der kleinste Unterraum von V, der $T$ als
+    Teilmenge enthält, d.\,h.
+    $\aufspann{T} = \bigcap_{U \ur V,\; T \subseteq U} U$.
+\end{Satz}
+
+\begin{Lemma}{Mengen und ihr Aufspann}
+    1. $T \subseteq \aufspann{T}$ \quad (für $T \subseteq V$) \\
+    2. $\aufspann{T} \ur \aufspann{S} \ur V$ \quad
+    (für $T \subseteq S \subseteq V$) \qquad
+    3. $\aufspann{\aufspann{T}} = \aufspann{T}$ \quad (für $T \subseteq V$) 
+\end{Lemma}
+
+\begin{Lemma}{Aufspann von Unterräumen}
+    Für $U \ur V$ ist $\aufspann{U} = U$.
+\end{Lemma}
+
+\subsection{%
+    Summen von Unterräumen%
+}
+
+\begin{Def}{Summe von Unterräumen}
+    Seien $U, W \ur V$. Dann ist die Summe von $U$ und $W$ die Menge
+    $U + W = \{x + y \;|\; x \in U,\, y \in W\} \subseteq V$.
+\end{Def}
+
+\begin{Satz}{Summe als Unterraum}
+    $U + W$ ist ein Unterraum von $V$.
+    Es gilt $U + W = \aufspann{U \cup W}$
+    und $U + W$ ist der kleinste Unterraum von $V$, der $U$ und $W$ enthält,
+    d.\,h. $U + W = \bigcap_{X \ur V,\;\; U, W \ur X} X$.
+\end{Satz}
+
+\begin{Kor}
+    Die Addition von Unterräumen ist eine binäre Operation auf der Menge
+    der Unterräume von $V$.
+\end{Kor}
+
+\pagebreak
+
+\begin{Lemma}{für den Modulsatz}
+    Seien $U, W, X \ur V$. \\
+    Dann ist $U \cap (W + (U \cap X)) = (U \cap W) + (U \cap X)$.
+\end{Lemma}
+
+\begin{Satz}{\name{Dedekind}scher Modulsatz}
+    Seien $U, W, X \ur V$. \\
+    Für $X \subseteq U$ gilt $U \cap (W + X) = (U \cap W) + X$.
+\end{Satz}
+
+\begin{Def}{Komplement}
+    $U, W \ur V$ sind \begriff{komplementär}, falls
+    $U \cap W = (0)$ und $U + W = V$.
+\end{Def}
+
+\begin{Def}{unendliche Durchschnitte und Summen}
+    Seien $U_i$ für $i \in I$ Unterräume von $V$. \\
+    Dann ist $\bigcap_{i \in I} =
+    \{v \in V \;|\; \forall_{i \in I}\; v \in U_i\}$
+    sowie $\sum_{i \in I} U_\nu =
+    \left\{\left. \sum_{i \in I} v_i \in V \;\right|\;
+    v_i \in U_i \text{ fast alle } 0 \right\}$.
+\end{Def}
+
+\begin{Lemma}{Durchschnitt und Summe von Unterräumen} \\
+    Durchschnitt und Summe beliebiger Unterräume $U_i$
+    ($i \in I$) von $V$ sind Unterräume.
+\end{Lemma}
+
+\begin{Kor}
+    Eine Teilmenge $T \subseteq V$ ist genau dann ein Erzeugendensystem von
+    $V$, wenn sie in keinem echten Unterraum von $V$ enthalten ist.
+    Jede in $V$ enthaltene Obermenge eines Erzeugendensystems ist ebenfalls
+    ein Erzeugendensystem.
+\end{Kor}
+
+\subsection{%
+    Minimale Erzeugendensysteme%
+}
+
+\begin{Def}{minimales Erzeugendensystem}
+    Ein Erzeugendensystem $T$ für $V$ heißt \begriff{minimal}, falls es minimal
+    bzgl. der Mengeninklusion ist, d.\,h. kein Vektor aus $T$ kann entfernt
+    werden, sodass die echte Teilmenge immer noch ein Erzeugendensystem ist.
+\end{Def}
+
+\begin{Beobachtung}
+    Für $T \subseteq V$ ist $0$ Linearkombination von $T$. \\
+    Ist $T$ ein Erzeugendensystem und $0 \in T$, so ist $T$ nicht minimal.
+\end{Beobachtung}
+
+\begin{Lemma}{Entfernen von linear abhängigen Vektoren} \\
+    Sei $T \subseteq V$ und $t \in T$ eine Linearkombination von
+    $T' = T \setminus \{t\}$. Dann ist $\aufspann{T} = \aufspann{T'}$.
+\end{Lemma}
+
+\begin{Lemma}{lineare Abhängigkeit}
+    Seien $T \subseteq V$ und $t_0 \in T$ mit
+    $t_0 = \sum_{i=1}^k \alpha_i t_i$ ($t_1, \ldots, t_k \in T$,
+    $\alpha_1, \ldots, \alpha_k \in K^\ast$).
+    Dann ist jedes $t_i$ ($i = 1, \ldots, k$) Linearkombination von
+    $T \setminus \{t_i\}$ und der Nullvektor ist eine nichttriviale
+    Linearkombination von $T$.
+\end{Lemma}
+
+\begin{Def}{lineare Abhängigkeit}
+    $T \subseteq V$ heißt \begriff{linear abhängig}, falls es eine nicht-triviale
+    Darstellung des Nullvektors mit Vektoren aus $T$ gibt.
+    Andernfalls heißt $T$ \begriff{linear unabhängig}.
+    $\emptyset$ ist lin. un.
+\end{Def}
+
+\begin{Satz}{linear abhängige Teilmengen}
+    Der Nullvektor ist von jeder Teilmenge von $V$ linear abhängig.
+    Ist $0 \in T \subseteq V$, so ist $T$ linear abhängig. \\
+    Jede Teilmenge einer linear unabhängigen Menge ist linear unabhängig. \\
+    Jede Obermenge eines Erzeugendensystems ist ein Erzeugendensystem.
+\end{Satz}
+
+\begin{Satz}{minimale Erzeugendensysteme}
+    Sei $T$ ein Erzeugendensystem von $V$. \\
+    Dann ist $T$ minimal genau dann, wenn $T$ linear unabhängig ist.
+\end{Satz}
+
+\begin{Def}{Basis}
+    Ein minimales Erzeugendensystem von $V$ heißt \begriff{Basis} von $V$.
+\end{Def}
+
+\begin{Satz}{maximale linear unabhängige Teilmengen}
+    Sei $T \subseteq V$. \\
+    $T$ ist Basis genau dann, wenn $T$ eine maximale, linear
+    unabhängige Teilmenge von $V$ ist.
+\end{Satz}
+
+\begin{Satz}{Erzeugendensysteme enthalten Basis} \\
+    Jedes endliche Erzeugendensystem enthält eine Basis.
+\end{Satz}
+
+\begin{Satz}{Eindeutigkeit}
+    Sei $T$ ein Erzeugendensystem von $V$.
+    Dann ist $T$ eine Basis genau dann, wenn es sich jeder Vektor aus $V$
+    eindeutig als Linearkombination von $T$ darstellen lässt.
+\end{Satz}
+
+\begin{Kor}
+    $K[x]$ hat die Basis $\basis{E} = \{x^i \;|\; i \in \natural_0\}$.
+    $K_n[x]$ hat die Basis $\basis{E}_n = \{x^i \;|\; i = 0, \ldots, n\}$.
+\end{Kor}
+
+\begin{Bem}
+    Sei $V$ ein $K$-Vektorraum mit Basis $\basis{B} = \{v_1, \ldots, v_n\}$.
+    Dann kann jeder Vektor $v \in V$ eindeutig als Linearkombination
+    $v = \sum_{i=1}^n \lambda_i v_i$ geschrieben werden.
+    Bei fester Basis gibt es also eine Bijektion zwischen $V$ und $K^n$ mit
+    $v \leftrightarrow (\lambda_1, \ldots, \lambda_n) \in K^n$
+    ($V$, $K^n$ sind isomorph).
+    Man schreibt dann $v =$
+    \matrixsize{$\begin{pmatrix}\lambda_1 \\ \vdots \\
+    \lambda_n\end{pmatrix}_\basis{B}$}.
+    Dabei kommt es auf die Reihenfolge der Basisvektoren an!
+\end{Bem}
+
+\begin{Def}{geordnete Basis}
+    Eine \begriff{geordnete Basis} von $V$ ist eine Basis $\basis{B}$
+    zusammen mit einer vollständigen Ordnung auf $\basis{B}$
+    (Existenz durch Wohlordnungssatz).
+    Man schreibt $\basis{B} = (v_1, \ldots, v_n)$.
+\end{Def}
+
+\subsection{%
+    Basen und Dimension%
+}
+
+\begin{Satz}{Existenz einer Basis}
+    Mit dem Auswahlaxiom besitzt jeder Vektorraum eine Basis. \\
+    Schärfere Aussage: Mit dem Auswahlaxiom enthält jedes Erzeugendensystem
+    eine Basis.
+\end{Satz}
+
+\begin{Satz}{Austauschsatz von \name{Steinitz}}
+    Seien $\basis{B}$ ein Erzeugendensystem und $T = \{x_1, \ldots, x_k\}$
+    eine linear unabhängige Teilmenge von $V$.
+    Dann gibt es eine $k$-elementige Teilmenge
+    $\basis{C} \subseteq \basis{B}$, sodass
+    $(\basis{B} \setminus \basis{C}) \cup T$ ein Erzeugendensystem ist.
+\end{Satz}
+
+\begin{Kor}
+    Sei $V$ von einer $n$-elementigen Menge erzeugt. \\
+    Dann hat jede linear unabhängige Teilmenge von $V$ höchstens $n$ Elemente.
+\end{Kor}
+
+\begin{Kor}
+    In einem endlich erzeugten Vektorraum sind alle Basen endlich und haben
+    gleich viele Elemente.
+\end{Kor}
+
+\begin{Satz}{Basisergänzungssatz}
+    Seien $\basis{C}$ eine $n$-elementige Basis und
+    $B = \{b_1, \ldots, b_k\}$ eine linear unabhängige Teilmenge von $V$.
+    Dann ist $k \le n$ und es gibt $c_1, \ldots, c_{n-k} \in \basis{C}$,
+    sodass \\
+    $\tilde{B} = \{b_1, \ldots, b_k, c_1, \ldots, c_{n-k}\}$ eine Basis von
+    $V$ ist.
+\end{Satz}
+
+\begin{Def}{Dimension}
+    Sei $V$ endlich erzeugt.
+    Dann hat jede Basis von $V$ $n \in \natural_0$ Elemente. \\
+    $n = \dim V = \dim_K V$ heißt \begriff{Dimension} von $V$.
+    ($n$ ist eindeutig!)
+\end{Def}
+
+\begin{Kor}
+    Sei $V$ Vektorraum der Dimension $n \in \natural_0$.
+    Dann ist jede Teilmenge von $V$ mit mehr als $n$ Elementen linear
+    abhängig und eine $n$-elementige Teilmenge ist Basis genau dann,
+    wenn sie linear unabhängig ist oder $V$ erzeugt.
+\end{Kor}
+
+\begin{Satz}{Basis von Unterräumen ergänzen}
+    Seien $V$ endlich erzeugt mit der Dimension $n \in \natural_0$ und
+    $U \ur V$.
+    Dann ist $U$ ebenfalls endlich-dimensional und $\dim U \le \dim V$.
+    Ist $B = (b_1, \ldots, b_k)$ eine Basis von $U$, so gibt es
+    $b_{k+1}, \ldots, b_n \in V$, sodass $\tilde{B} = (b_1, \ldots, b_n)$
+    eine Basis von $V$ ist.
+\end{Satz}
+
+\subsection{%
+    Unterräume, Komplemente und direkte Summen%
+}
+
+\begin{Satz}{Dimensionsformel}
+    Seien $V$ ein endlich erzeugter Vektorraum und $U, W \ur V$. \\
+    Dann gibt es drei disjunkte Teilmengen
+    $\basis{A}, \basis{B}, \basis{C}$ von $V$, sodass
+    $\basis{A}$ Basis von $U \cap W$,
+    $\basis{A} \cup \basis{B}$ Basis von $U$,
+    $\basis{A} \cup \basis{C}$ Basis von $W$ und
+    $\basis{A} \cup \basis{B} \cup \basis{C}$ Basis von $U + W$ ist. \\
+    Daraus folgt die \begriff{Dimensionsformel}:
+    $\dim(U + W) + \dim(U \cap W) = \dim U + \dim W$.
+\end{Satz}
+
+\begin{xDef}{(innere) direkte Summe}{direkte Summe!innere}
+    Sei $\{U_i \;|\; i \in I\}$ ein mit der Menge $I$ indiziertes System von
+    Unterräumen von $V$.
+    Dann ist $V$ die
+    \xbegriff{(innere/interne) direkte Summe}{direkte Summe!innere} der
+    $U_i$, falls $V = \sum_{i \in I} U_i$ sowie
+    $\forall_{j \in I}\; U_j \cap \sum_{i \in I,\; i \not= j} U_i = (0)$.
+    Man schreibt $V = \bigoplus_{i \in I} U_i$.
+\end{xDef}
+
+\begin{Satz}{direkte Summe $\Leftrightarrow$ jeder Vektor eindeutige Summe}
+    Seien $U_i$ ($i \in I$) Unterräume von $V$. \\
+    Dann ist $V = \bigoplus_{i \in I} U_i$
+    genau dann, wenn sich jeder Vektor $v \in V$ eindeutig als Summe \\
+    $v = \sum_{i \in I} v_i$
+    ($v_i \in U_i$ fast alle $0$) schreiben lässt.
+\end{Satz}
+
+\begin{Satz}{direkte Summe einer Basis}
+    Sei $\basis{A}$ Basis von $V$.
+    Dann ist $V = \bigoplus_{v \in \basis{A}} Kv$.
+\end{Satz}
+
+\begin{xDef}{(äußere) direkte Summe}{direkte Summe!äußere}
+    Seien $U, W$ $K$-Vektorräume.
+    Dann ist $U \oplus W = U \times W$ die
+    \xbegriff{(äußere) direkte Summe}{direkte Summe!äußere}
+    mit der Addition $(u_1, w_1) + (u_2, w_2) = (u_1 + u_2, w_1 + w_2)$ und
+    der skalaren Multiplikation
+    $\lambda (u_1, w_1) = (\lambda u_1, \lambda w_1)$
+    mit $u_1, u_2 \in U$, $w_1, w_2 \in W$, $\lambda \in K$.
+\end{xDef}
+
+\begin{Satz}{äußere direkte Summe als Vektorraum}
+    Die äußere direkte Summe $U \oplus W$ ist ein $K$-Vektorraum mit
+    Nullelement $(0_V, 0_W)$, das Inverse zu $(u, w)$ ist $(-u, -w)$.
+\end{Satz}
+
+\begin{Kor}
+    Seien $V$ die äußere direkte Summe $U \oplus W$ sowie
+    $\widetilde{U} = \{(u, 0_W) \;|\; u \in U\}$ und \\
+    $\widetilde{W} = \{(0_U, w) \;|\; w \in W\}$.
+    Dann ist $\widetilde{U}, \widetilde{W} \ur V$ und $V$ ist innere direkte
+    Summe $\widetilde{U} \oplus \widetilde{W}$.
+\end{Kor}
+
+\begin{Kor}
+    Sei $V = U \oplus W$, dann ist $\dim V = \dim U + \dim W$.
+\end{Kor}
+
+\begin{Def}{direkte Summe}
+    Sei $U_i$ ($i \in I$) ein System
+    von $K$-Vektorräumen. \\
+    Die \begriff{direkte Summe} der $U_i$ ist
+    $U = \bigoplus_{i \in I} U_i =
+    \{(u_i)_{i \in I} \;|\; u_i \in U_i \text{ fast alle } 0\}$ mit
+    komponentenweiser Addition und skalarer Multiplikation.
+\end{Def}
+
+\begin{Satz}{direkte Summe als Vektorraum}
+    Die direkte Summe $U = \bigoplus_{i \in I} U_i$
+    der $K$-Vektorräume $U_i$ ist ein $K$-Vektorraum
+    mit Nullelement $(0_i)_{i \in I} \in U$, das Inverse von
+    $(v_i)_{i \in I} \in U$ ist $(-v_i)_{i \in I}$.
+    Für $i \in I$ ist
+    $\widetilde{U_i} =
+    \{(v_j)_{j \in I} \in U \;|\; j \in I,\; v_j = 0 \text{ für } j \not= i\}$
+    ein Unterraum von $U$, der mit $U_i$ identifiziert werden kann.
+    $U$ ist die interne direkte Summe der $\widetilde{U_i}$ ($i \in I$). \\
+    Es gilt $\dim U = \sum_{i \in I} \dim U_i$.
+\end{Satz}
+
+\begin{Kor}
+    Die Vereinigung der Basen der $\widetilde{U_i}$ ist eine Basis
+    von $U = \bigoplus_{i \in I} U_i$.
+\end{Kor}
+
+\begin{Satz}{Existenz eines Komplements}
+    Sei $V$ ein $K$-Vektorraum.
+    Ist $V$ endlich erzeugt, so besitzt jeder Unterraum von $V$ ein Komplement.
+    Andernfalls besitzt jeder Unterraum von $V$ ein Komplement, wenn man
+    das Auswahlaxiom voraussetzt.
+\end{Satz}
+
+\subsection{%
+    Faktorräume%
+}
+
+\begin{Def}{Nebenklassen}
+    Sei $U \ur V$.
+    Dann wird durch $v \sim_U w \;\Leftrightarrow\; w - v \in U$ eine
+    Äquivalenzrelation auf $V$ definiert ($v, w \in V$).
+    Für $v \sim_U w$ schreibt man $v \equiv w \mod U$
+    ($v$ kongruent zu $w$ modulo $U$).
+    Die Äquivalenzklassen von $\sim_U$
+    ($\nk{v} = v + U = \{v + u \;|\; u \in U\}$) heißen
+    \begriff{Neben-/Restklassen}.
+    Die Menge aller Nebenklassen modulo $U$ ist
+    $\nk{V} = \{v + U \;|\; v \in V\}$ und wird mit $V/U$ bezeichnet. \\
+    Die Liste von Elementen $v + U$ ist redundant (enthält viele
+    Wiederholungen).
+\end{Def}
+
+\begin{Def}{Faktorraum}
+    Sei $U \ur V$.
+    Für die Nebenklassen $\nk{v} = v + U$ und $\nk{w} = w + U$
+    definiert man eine Addition mit
+    $\nk{v} + \nk{w} = \nk{v + w}$ und für $\lambda \in K$
+    eine skalare Multiplikation mit
+    $\lambda \nk{v} = \nk{\lambda v}$. \\
+    Diese Operationen sind wohldefiniert.
+    Mit ihnen wird $V/U$ zum $K$-Vektorraum. \\
+    Der Nullvektor in $V/U$ ist die Nebenklasse
+    $\nk{0_V} = 0_V + U = U$, das Inverse von $\nk{v}$ ist $\nk{-v}$. \\
+    Der $K$-Vektorraum $V/U$ mit diesen Operationen wird als
+    \begriff{Faktor-/Quotientenraum} bezeichnet.
+\end{Def}
+
+\begin{Satz}{Komplemente}
+    Sei $U \ur V$ und $W$ ein Komplement von $U$ in $V$ (also
+    $V = U \oplus W$). \\
+    Für $w, w' \in W$ ist $w \equiv w' \mod U$ genau dann, wenn $w = w'$ ist.
+    Jede Nebenklasse $\nk{v}$ enthält genau ein Element $w = w_v \in W$.
+    Für $x, y \in V$, $\lambda \in K$ gilt
+    $\nk{x} + \nk{y} = \nk{w_x + w_y}$ sowie
+    $\lambda \nk{x} = \nk{\lambda w_x}$.
+    Ist $\basis{B}$ eine Basis von $W$, dann ist
+    $\nk{\basis{B}} = \{b + U \;|\; b \in \basis{B}\}$ eine Basis
+    von $V/U$. \\
+    Für die Dimension von $V/U$ gilt
+    $\dim V = \dim U + \dim V/U$.
+\end{Satz}
+
+\begin{Def}{Repräsentantensystem}
+    Wählt man bei einer beliebigen Äquivalenzrelation zu jeder
+    Äquivalenzklasse einen Repräsentanten, so nennt man deren
+    Zusammenfassung ein \begriff{Repräsentanten\-system}.
+\end{Def}
+
+\subsection{%
+    \emph{Zusätzliches}: Projekt 3 (Polynome und Treppenfunktionen)%
+}
+
+\begin{Satz}{Zuordnung Polynom -- polynomiale Funktion}
+    Sei $K$ ein Körper.
+    Dann ist die Abbildung
+    $e: K[x] \rightarrow K^K: p(x) \mapsto
+    (f_p: K \rightarrow K: y \mapsto p(y))$
+    entweder injektiv oder surjektiv und zwar ist
+    $e$ injektiv, wenn $K$ unendlich ist, und surjektiv, wenn $K$ endlich ist.
+\end{Satz}
+
+\begin{Def}{Treppenfunktionen}
+    \begriff{Treppenfunktionen} auf dem Intervall $[0, 1] \subseteq \real$
+    sind abschnittsweise konstante Funktionen, d.\,h. Funktionen, die als 
+    $f(x) = \sum_{i=1}^n \left(\alpha_i \cdot \chi_{A_i}(x)\right)$ dargestellt
+    werden können, wobei die $A_i = [a_i, a_{i+1})$ eine Partition von
+    $[0, 1]$ bilden ($a_i \in \real$ für $1 \le i \le n + 1$). \\
+    Dabei ist $\chi_M$ die charakteristische Funktion mit $\chi_M(x) = 1$ für
+    $x \in M$ und $\chi_M(x) = 0$ sonst.
+\end{Def}
+
+\begin{Satz}{Treppenfunktionen als Unterraum}
+    Die Menge der Treppenfunktionen ist ein Unterraum von der Menge der
+    Funktionen $\real^\real$, d.\,h. Summe und skalares Produkt von
+    Treppenfunktionen sind wieder Treppenfunktionen. \\
+    Eine mögliche Basis ist
+    $\left\{ \chi_{[0, t]} \;|\; 0 < t \le 1,\; t \in \mathbb{R} \right\} \cup
+    \left\{ \chi_{\{t\}} \;|\; 0 \le t \le 1,\; t \in \mathbb{R} \right\}$,
+    je nachdem, ob Treppenfunktionen auch endlich viele nicht-abschnittsweise
+    Sprünge enthalten dürfen.
+\end{Satz}
+
+\subsection{%
+    \emph{Zusätzliches}: Projekt 4 (Faktorgruppen)%
+}
+
+\begin{Def}{Faktorgruppen}
+    Ähnlich wie bei Vektorräumen kann man auch bei Gruppen eine
+    Äquivalenzrelation $\sim_H$ einführen mit
+    $a \sim_H b \;\Leftrightarrow\; a^{-1} \ast b \in H$, wobei $H$ eine
+    Untergruppe der Gruppe $G$ und $a, b \in G$ ist.
+    Die Äquivalenzklasse von $a \in G$ ist dann
+    $aH = \{a \ast u \;|\; u \in H\}$ und wird
+    \begriff{Linksnebenklasse} genannt. \\
+    Allerdings kann man bei nicht-abelschen Gruppen auch analog die
+    Äquivalenzrelation definieren als
+    $a \sim_H b \;\Leftrightarrow\; a \ast b^{-1} \in H$.
+    Die Äquivalenzklasse $Ha = \{u \ast a \;|\; u \in H\}$ heißt dann
+    \begriff{Rechtsnebenklasse}. \\
+    Für gewöhnliche nicht-abelsche Gruppen $G$ ist $G/H$ nicht sinnvoll
+    definiert, falls $H$ eine beliebige Untergruppe ist, da Links- und
+    Rechtsnebenklasse eines Elements $a \in G$ nicht übereinstimmen müssen. \\
+    Für eine bestimmte Untergruppe $H$ kann es jedoch sein, dass $aH = Ha$
+    für alle $a \in G$.
+    Dann nennt man $H$ \begriff{Normalteiler} von $G$.
+    Man kann zeigen, dass dann die Menge aller Nebenklassen
+    $G/H = \{aH \;|\; a \in G\} = \{Ha \;|\; a \in G\}$ wieder eine Gruppe
+    bildet, die sog. \begriff{Faktorgruppe}. \\
+    In einer abelschen Gruppe $G$ ist jede Untergruppe $H$ Normalteiler und
+    daher ist $G/H$ auch immer eine Faktorgruppe.
+\end{Def}
+
+\pagebreak

@@ -1,0 +1,424 @@
+\section{%
+    Protokolle%
+}
+
+\subsection{%
+    Elektronische Verpflichtung%
+}
+
+\textbf{elektronische Verpflichtung}:
+In gewissen Situationen ist es nötig, dass Alice vorab eine Wahl trifft und dann nach
+einem gewissen Zeitpunkt die Wahl von Bob so überprüft wird, ohne dass die Entscheidung hinterher
+durch Alice beeinflusst werden könnte, siehe folgendes Beispiel.
+
+Die Anlageberaterin Alice möchte Bob Aktien empfehlen.
+Allerdings möchte Bob sich zunächst davon überzeugen, dass die empfohlenen Aktien tatsächlich
+auch steigen.
+Alice kann Bob nicht einfach
+im Voraus die Aktien nennen, sonst investiert Bob in die Aktien, ohne Alice als
+Vermittlerin zu bezahlen.
+Alice kann Bob aber auch nicht hinterher die Aktien nennen, denn Alice könnte ja genau die Aktien
+auswählen, die gestiegen sind (und gar nichts mit ihren ursprünglichen Empfehlungen zu tun haben).
+
+Mit analogen Mitteln würde man die Empfehlungen in einem Briefumschlag an einem sicheren Ort
+verwahren.
+Die digitale Version dieser Methode ist die \begriff{elektronische Verpflichtung}.
+
+\linie
+
+Im Folgenden wird angenommen, dass Alice sich auf ein einzelnes Bit $t \in \BB$ festlegt.
+
+\textbf{elektr. Verpfl. mit symm. Verschl.verf.}:
+Seien $(c_k)_{k \in K}$ und $(d_k)_{k \in K}$ die Ver- bzw. Entschlüsselungsfunktionen
+eines symmetrischen Kryptosystems mit Schlüsselmenge $K$.
+\begin{enumerate}
+    \item
+    Alice wählt einen zufälligen Schlüssel $k \in K$.
+    
+    \item
+    Bob erzeugt einen Zufallsstring $x$ und sendet ihn an Alice.
+    
+    \item
+    Alice berechnet $y := c_k(xt)$ und schickt $y$ an Bob.
+\end{enumerate}
+Später kann Bob die Wahl von Alice wie folgt überprüfen:
+\begin{enumerate}
+    \item
+    Alice schickt $k$ an Bob.
+    
+    \item
+    Bob berechnet $d_k(y)$ und testet, ob $d_k(y) = xt'$ für ein $t' \in \BB$.
+\end{enumerate}
+
+\textbf{Angriffsmöglichkeiten}:
+Alice könnte nach einem Schlüssel $k'$ suchen, sodass $y = c_{k'}(x\overline{t})$ gilt
+(mit $\overline{t} := 1 - t$).
+Das würde allerdings $d_{k'}(y) = x\overline{t}$ bedeuten,
+d.\,h. eine Known-Plaintext-Attacke, der ein gutes Verfahren widerstehen sollte.
+Bob hat eine noch schlechtere Position, denn er kennt nur den Geheimtext $y$ und
+ein Präfix $x$ des Klartextes.
+Um $k$ und damit $t$ herauszufinden, müsste er zwei Known-Plaintext-Attacken
+(eine für jede Möglichkeit für $t$) durchführen.
+
+\linie
+
+\textbf{elektr. Verpfl. mit Hashfunktion}:
+Sei $h$ eine öf"|fentliche, kollisionsresistente Hashfunktion.
+\begin{enumerate}
+    \item
+    Alice wählt zwei Zufallsstrings $x_1, x_2$.
+    
+    \item
+    Alice berechnet den Hashwert $h(x_1 x_2 t)$ und schickt den Hashwert und $x_1$ an Bob.
+\end{enumerate}
+Später kann Bob die Wahl von Alice wie folgt überprüfen:
+\begin{enumerate}
+    \item
+    Alice schickt $x_1 x_2 t$ an Bob.
+    
+    \item
+    Bob testet, ob $x_1 x_2 t$ mit dem vorher für $x_1$ erhaltenen Wert beginnt und ob
+    $h(x_1 x_2 t)$ gleich dem vorher erhaltenen Hashwert ist.
+\end{enumerate}
+
+\textbf{Angriffsmöglichkeiten}:
+Durch Of"|fenlegeung eines Teils der Zufallsinformation kann Bob prüfen,
+dass Alice keine speziellen Strings wählt, die es erleichtern würden, eine Kollision zu finden.
+Andererseits kann Bob $t$ nicht bestimmen, bevor er $x_1 x_2 t$ erhält
+($h$ ist schwierig zu invertieren).
+
+\textbf{Hauptvorteil}:
+Bob verschickt keine Nachrichten, d.\,h. Alice kann Radio oder Zeitung benutzen.
+
+\pagebreak
+
+\subsection{%
+    Teilen von Geheimnissen%
+}
+
+Angenommen, eine Person kennt ein Geheimnis $s$ und möchte dieses Geheimnis so auf
+$n$ Personen aufteilen, dass beliebige $t$ dieser Personen das Geheimnis rekonstruieren können
+(mit $n, t \in \natural$ und $t \le n$).
+Weniger als $t$ Personen sollen aber bei einem Zusammentref"|fen keine Informationen über $s$
+gewinnen können.
+
+\textbf{Teilen von Geheimnissen nach \name{Shamir}}:\\
+Für das \begriff{Teilen von Geheimnissen nach \name{Shamir}} nimmt man $s \in \natural$ an.
+\begin{enumerate}
+    \item
+    Wähle eine große Primzahl $p$ (mit $p \gg n, s$).
+    
+    \item
+    Wähle zufällige Koef"|fizienten $a_1, \dotsc, a_{t-1} \in \FF_p$.
+    
+    \item
+    Setze $a(X) := s + \sum_{i=1}^{t-1} a_i X^i \in \FF_p[X]$.
+    
+    \item
+    Teile der $j$-ten Person den Schlüssel $(j, a(j))$ mit (für $j = 1, \dotsc, n$).
+\end{enumerate}
+Wenn nun $t$ Personen zusammenkommen, verläuft die Rekonstruktion von $s$ wie folgt:
+\begin{enumerate}
+    \item
+    Löse das LGS $s + \sum_{i=1}^{t-1} a_i j^i = a(j)$ mit $t$ Gleichungen
+    (für jedes $j$ eine) und $t$ Unbekannten ($s, a_1, \dotsc, a_{t-1}$).
+    
+    \item
+    Gebe $s$ aus.
+\end{enumerate}
+
+\textbf{Vorteil}:
+Weitere Personen können leicht hinzugefügt werden, indem zusätzliche Schlüssel ausgegeben werden
+($t$ bleibt allerdings fest, weil sich sonst die Auswertungen $a(j)$ ändern würden).
+
+\textbf{Lemma ($t$ Personen können $s$ rekonstruieren)}:
+Das LGS ist eindeutig lösbar.
+
+\begin{Beweis}
+    Es gilt $\deg(a(X)) \le t - 1$ und die $t$ Stützstellen sind paarw. verschieden.
+    Wegen eindeutig möglicher Polynominterpolation im Körper $\FF_p$
+    (Existenz mit Lagrange-Polynomen, Eindeutigkeit, weil $a(X) \not= 0$
+    höchstens $t - 1$ Nullstellen hat) folgt die Behauptung.
+\end{Beweis}
+
+\linie
+
+Mit der Lagrange-Interpolation kann man nicht nur $a$ rekonstruieren,
+sondern auch zeigen, dass eine Gruppe von weniger als $t$ Personen keine
+Informationen über $s$ gewinnen kann.
+
+\textbf{\name{Lagrange}-Polynom}:
+Seien $x_1, \dotsc, x_t \in \FF_p$ paarweise verschiedene Stützstellen.
+Dann heißen die Polynome
+$\ell_i(X) := \prod_{j=1,\dotsc,t,\;j\not=i} \frac{X - x_j}{x_i - x_j} \in \FF_p[X]$
+für $i = 1, \dotsc, t$ \begriff{\name{Lagrange}-Polynome}.
+
+Es gilt $\deg(\ell_i) = t - 1$ und $\ell_i(x_j) = \delta_{ij}$ für $i, j = 1, \dotsc, n$.
+
+Sind $t$ Stützstellen $x_1, \dotsc, x_t$ mit Werten $a(x_j)$ gegeben, so gilt
+für $\widetilde{a}(X) := \sum_{i=1}^t a(x_i) \ell_i(X)$,
+dass $a(X) - \widetilde{a}(X)$ die $t$ Nullstellen $x_j$ besitzt und
+vom Grad $\le t - 1$ ist, d.\,h. $a(X) = \widetilde{a}(X)$.
+Somit können $t$ Personen mit paarweise verschiedenen Stützstellen $a(X)$ rekonstruieren.
+
+\textbf{Lemma (weniger als $t$ Personen)}:\\
+Eine Gruppe von weniger als $t$ Personen kann keine Informationen über $s$ gewinnen.
+
+\begin{Beweis}
+    Seien nur $t - 1$ Stützstellen $x_1, \dotsc, x_{t-1} \in \FF_p \setminus \{0\}$
+    mit Auswertungen $a(x_j)$ bekannt
+    ($x_j \not= 0$, sonst wäre $x_j = 0$ und $a(x_j) = s$ direkt bekannt).
+    \begin{enumerate}
+        \item
+        Dann gibt es genau $p$ verschiedene Polynome $\widetilde{a}(X)$ mit Grad $\le t - 1$ und
+        $\widetilde{a}(x_j) = a(x_j)$ für $j = 1, \dotsc, t - 1$:
+        Wähle $x_t \in \FF_p \setminus \{0\}$ fest mit $x_t \not= x_j$ für $j = 1, \dotsc, t-1$,
+        dann ist $\widetilde{a}(X) := \sum_{i=1}^{t-1} a(x_i) \ell_i(X) + b\ell_t(X)$
+        verschieden für alle $b \in \FF_p$
+        ($\ell_1(X), \dotsc, \ell_t(X)$ l.u.).
+        
+        \item
+        Jedes der $p$ möglichen $\widetilde{a}(X)$ liefert ein anderes $\widetilde{a}(0)$:
+        Wäre $\widetilde{a}(0) = \widetilde{a}'(0)$, dann hätte
+        $\widetilde{a}(X) - \widetilde{a}'(X)$
+        die $t$ Nullstellen $x_1, \dotsc, x_{t-1}, 0$, d.\,h.
+        $\widetilde{a}(X) - \widetilde{a}'(X) = 0$.
+    \end{enumerate}
+    Somit ist für die Gruppe jeder Wert in $\FF_p$ für $s$ gleichwahrscheinlich.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    Durchschnittsgehalt%
+}
+
+\textbf{Durchschnittsgehalt}:
+Gegeben seien mindestens drei Mitarbeiter einer Firma, die ihr Durchschnittsgehalt berechnen
+wollen, jedoch ohne ihr eigenes Gehalt preiszugeben
+(wobei man annimmt, dass jeder ehrlich ist und keine Personen sich zusammentun).
+
+Im Folgenden seien oBdA drei Personen 1, 2, 3 mit Gehältern $g_1, g_2, g_3$ gegeben.
+\begin{enumerate}
+    \item
+    Person 1 wählt eine Zufallszahl $z$ und schickt $z$ an Person 2.
+    
+    \item
+    Person 2 schickt $z + g_2$ an Person 3.
+    
+    \item
+    Person 3 schickt $z + g_2 + g_3$ an Person 1.
+    
+    \item
+    Person 1 schickt $\frac{1}{3} (g_1 + g_2 + g_3)$ an Person 2 und Person 3.
+\end{enumerate}
+
+\subsection{%
+    Wer verdient mehr?%
+}
+
+\textbf{wer verdient mehr}:
+Es seien zwei Mitarbeiter Alice und Bob einer Firma gegeben,
+die herausfinden wollen, wer von beiden mehr
+verdient, natürlich ohne ihr Gehalt preiszugeben
+(wieder angenommen, beide sind ehrlich).
+
+Im Folgenden seien $w_1 < \dotsb < w_n$ die möglichen (diskreten) Gehälter,
+$a$ und $b$ das Gehalt von Alice bzw. Bob,
+$c_B$ und $d_B$ Bobs öf"|fentliche Ver- bzw. geheime Entschlüsselungsfunktion
+und $f$ eine öf"|fentliche Einwegfunktion.
+\begin{enumerate}
+    \item
+    Alice wählt eine Zufallszahl $x$ und sendet $d := c_B(x) - a$ an Bob.
+    
+    \item
+    Bob berechnet $y_i := d_B(d + w_i)$ für $i = 1, \dotsc, n$.
+    
+    \item
+    Bob berechnet $z_i := f(y_i)$.
+    OBdA sei $z_i \not= z_j + 1$ und $z_i \not= z_j$
+    für $i, j = 1, \dotsc, n$ mit $i \not= j$
+    (andernfalls wähle ein neues $x$ oder eine andere Einwegfunktion $f$).
+    
+    \item
+    Sei $k \in \{1, \dotsc, n\}$ mit $w_k = b$.
+    Bob sendet $z_1, \dotsc, z_k, z_{k+1} + 1, \dotsc, z_n + 1$ an Alice.
+    
+    \item
+    Es gilt nun $a \le b$ genau dann, wenn $f(x)$ in der Folge vorkommt, die Alice erhält.
+\end{enumerate}
+
+\linie
+
+\textbf{Satz (Korrektheit)}:
+Der Algorithmus arbeitet korrekt.
+
+\begin{Beweis}
+    Sei $j \in \{1, \dotsc, n\}$ mit $w_j = a$.
+    Dann gilt $y_j = d_B(d + a) = d_B(c_B(x)) = x$.
+    
+    "`$\implies$"':
+    Sei $a \le b$.
+    Dann ist $j \le k$, d.\,h. $y_j = x$ kommt in der Folge $y_1, \dotsc, y_k$ vor.
+    Damit kommt auch $z_j = f(y_j) = f(x)$ in der Folge $z_1, \dotsc, z_k$ vor.
+    
+    "`$\impliedby$"':
+    Sei $a > b$.
+    Dann ist $j > k$, d.\,h. $z_j = f(x)$ kommt in der Folge $z_{k+1}, \dotsc, z_n$ vor.
+    Damit kann $f(x)$ nicht in der Folge $z_1, \dotsc, z_k$ vorkommen
+    (sonst $z_i = z_j$ für ein $i \le k$).
+    In der Folge $z_{k+1} + 1, \dotsc, z_n + 1$ kommt $f(x)$ ebenfalls nicht vor
+    (sonst $z_i + 1 = z_j$ für ein $i > k$).
+\end{Beweis}
+
+\linie
+
+\textbf{Nachteil}:
+Der Algorithmus benötigt evtl. einen großen Datenaustausch.
+Dies kann mit einem Divide-and-Conquer-Ansatz behoben werden.
+
+\pagebreak
+
+\subsection{%
+    Kaufen von Geheimnissen%
+}
+
+\textbf{Kaufen von Geheimnissen}:
+Bob und Carol wollen jeweils eines der Geheimnisse $g_1, \dotsc, g_k$ von Alice kaufen
+(z.\,B. ein Passwort),
+jedoch soll keiner der anderen, auch nicht Alice, erfahren, welche Geheimnisse von
+Bob bzw. Carol gekauft wurden.
+Alice, Bob und Carol verbünden sich nicht,
+aber jeder Einzelne ist gierig, d.\,h. es soll nicht möglich sein, dass Bob oder Carol mehr
+als "`ihr"' Geheimnis kaufen können.
+
+Im Folgenden haben $g_1, \dotsc, g_k$ jeweils $n$ Bit
+und $g_b$ und $g_c$ seien die Geheimnisse, die Bob bzw. Carol kaufen will.
+\begin{enumerate}
+    \item
+    Alice erzeugt Schlüssel $s_1, s_2$ für ein asymmetrisches Kryptosystem und schickt
+    die öf"|fentlichen Verschlüsselungsfunktionen $c_{s_1}$ und $c_{s_2}$ an Bob bzw. Carol.
+    
+    \item
+    Bob und Carol erzeugen jeweils $k$ Zufallszahlen $z_1, \dotsc, z_k$ bzw.
+    $z_1', \dotsc, z_k'$ mit je $n$ Bit.
+    Bob schickt $z_1, \dotsc, z_k$ an Carol und
+    Carol schickt $z_1', \dotsc, z_k'$ an Bob.
+    
+    \item
+    Bob schickt $y' := z_b' \xor c_{s_1}(z_b')$ an Carol und
+    Carol schickt $y := z_c \xor c_{s_2}(z_c)$ an Bob.
+    
+    \item
+    Bob und Carol schicken $x_1, \dotsc, x_k$ mit $x_i := y \xor z_i$ bzw.\\
+    $x_1', \dotsc, x_k'$ mit $x_i' := y' \xor z_i'$ an Alice.
+    
+    \item
+    Alice schickt $t_1, \dotsc, t_k$ mit $t_i := g_i \xor d_{s_1}(x_i')$ an Bob bzw.\\
+    $t_1', \dotsc, t_k'$ mit $t_i' := g_i \xor d_{s_2}(x_i)$ an Carol
+    ($d_{s_1}, d_{s_2}$ geheime Entschlüsselungsfunktionen).
+    
+    \item
+    Bob berechnet $g_b = z_b' \xor t_b$ und
+    Carol berechnet $g_c = z_c \xor t_c'$.
+\end{enumerate}
+
+\linie
+
+\textbf{Satz (Korrektheit)}:
+Es gilt $g_b = z_b' \xor t_b$ und $g_c = z_c \xor t_c'$.
+
+\begin{Beweis}
+    Es gilt $z_b' \xor t_b = z_b' \xor g_b \xor d_{s_1}(x_b')
+    = z_b' \xor g_b \xor d_{s_1}(y' \xor z_b') = z_b' \xor g_b \xor d_{s_1}(c_{s_1}(z_b')) = g_b$.
+    Analog gilt $z_c \xor t_c' = g_c$.
+\end{Beweis}
+
+\linie
+
+\textbf{Vorteile}:
+\begin{itemize}
+    \item
+    Bob und Carol erhalten jeweils ihr gewünschtes Geheimnis und keine anderen:
+    Würde Bob $g_j$ für ein $j \not= b$ ermitteln können, dann wüsste er
+    $d_{s_1}(x_j') = g_j \xor t_j$, d.\,h. er hätte $x_j'$ entschlüsselt.
+    Damit ist dies genau so schwierig wie das Brechen der Verschlüsselung
+    ($x_j'$ kann durch $z_j'$ zufällig gewählt werden).
+    
+    \item
+    Weil Carol weder $b$ noch den geheimen Schlüssel $s_1$ von Bob kennt,
+    ist $y'$ zufällig für Carol (durch Verknüpfung mit $z_b'$).
+    Analog ist $y$ zufällig für Bob.
+    
+    \item
+    Durch Verknüpfung mit $z_i$ bzw. $z_i'$ sind die $x_i$ und $x_i'$
+    sowie die $t_i$ und $t_i'$ zufällig für Alice,
+    d.\,h. Alice erfährt nicht, welche Geheimnisse Bob und Carol kaufen.
+\end{itemize}
+
+\textbf{Nachteile}:
+\begin{itemize}
+    \item 
+    Wenn Bob und Carol sind verbünden, dann erfahren sie alle Geheimnisse auf einmal,
+    indem zunächst Bob $s_1$ an Carol schickt und
+    anschließend Carol $x_i' := c_{s_1}(z_i)$ an Alice schickt.
+    
+    \item
+    Wenn Alice und Bob sich verbünden, dann erfahren sie, welches Geheimnis Carol gekauft hat,
+    indem Bob $z_1, \dotsc, z_n$ an Alice schickt
+    und Alice dann $z_i \xor t_i'$ für $i = 1, \dotsc, n$ berechnet.
+    Gilt $z_j \xor t_j' = g_j$ für genau ein $j$, dann ist $j = c$.
+    
+    \item
+    Alice hat als vertrauenswürdige Stelle zu viel Arbeit
+    (weil es so wenig vertrauenswürdige Stellen wie möglich geben soll,
+    müssen diese entlastet werden).
+\end{itemize}
+
+\pagebreak
+
+\subsection{%
+    Mentales Pokern%
+}
+
+\textbf{mentales Pokern}:
+Drei Spieler (ohne Einschränkung) Alice, Bob und Carol wollen eine Pokervariante spielen,
+bei der zunächst fünf Karten an jeden Spieler ausgeteilt werden.
+
+Dazu wählen sich die Spieler jeweils einen Schlüssel $s_1, s_2, s_3$
+für ein asymmetrisches Kryptosystem, sodass $d_{s_i}(c_{s_j}(x)) = c_{s_j}(d_{s_i}(x))$
+für alle Nachrichten $x$ und $i, j = 1, 2, 3$.
+\begin{enumerate}
+    \item
+    Alice erzeugt für jede Karte $i$ eine Nachricht $x_i$
+    (mit Zufallsbits zur Prävention von Known-Plaintext-Angrif"|fen)
+    und sendet die $y_i := c_{s_1}(x_i)$ in gemischter Reihenfolge an Bob.
+    
+    \item
+    Bob wählt fünf Karten aus, verschlüsselt sie und schickt $c_{s_2}(y_i)$ für jede
+    gewählte Karte an Alice.
+    
+    \item
+    Bob schickt die übrigen 47 Karten ohne erneute Verschlüsselung an Carol.
+    
+    \item
+    Carol wählt fünf Karten aus, verschlüsselt sie und schickt $c_{s_3}(y_i)$ für jede
+    gewählte Karte an Alice.
+    
+    \item
+    Carol wählt aus den übrigen 42 Karten fünf für Alice aus
+    und schickt sie ohne erneute Verschlüsselung an Alice.
+    
+    \item
+    Alice schickt $d_{s_1}(c_{s_2}(y_i)) = c_{s_2}(x_i)$ an Bob und
+    $d_{s_1}(c_{s_3}(y_i)) = c_{s_3}(x_i)$ an Carol (jeweils für jede gewählte Karte).
+    
+    \item
+    Bob und Carol berechnen $d_{s_2}(c_{s_2}(x_i)) = x_i$ bzw. $d_{s_3}(c_{s_3}(x_i)) = x_i$.
+    
+    \item
+    Jeder kennt nun seine Karten und keine anderen und es kann geboten werden.
+    Nach der Runde werden alle Schlüssel veröf"|fentlicht und jeder überprüft die Kommunikation.
+\end{enumerate}
+
+\pagebreak

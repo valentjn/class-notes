@@ -1,0 +1,471 @@
+\section{%
+    Allgemeines%
+}
+
+\subsection{%
+    Grammatiken%
+}
+
+\begin{Def}{Alphabet}
+    Eine endliche, nicht-leere Menge $\Sigma$ heißt \begriff{Alphabet}.\\
+    Die Elemente von $\Sigma$ heißen \begriff{Buchstaben},
+    \begriff{Zeichen} oder \begriff{Terminalsymbole}.
+\end{Def}
+
+\begin{Def}{Menge $\Sigma^\ast$ aller Wörter}
+    Sei $\Sigma$ ein Alphabet.
+    Dann ist $\Sigma^\ast$ die \begriff{Menge aller (endlichen) Wörter},
+    die über $\Sigma$ gebildet werden können
+    (dabei ist auch das \begriff{leere Wort} $\varepsilon$ zugelassen).\\
+    Ein \begriff{Wort} ist dabei eine endliche Folge von
+    Buchstaben aus $\Sigma$.
+    Außerdem sei $\Sigma^+ := \Sigma^\ast \setminus \{\varepsilon\}$.
+\end{Def}
+
+\begin{Bem}
+    Es gibt $1$ Wort der Länge $0$, $|\Sigma|$ Wörter der Länge $1$,
+    $|\Sigma|^2$ Wörter der Länge $2$ usw., d.\,h.
+    $|\Sigma|^k$ Wörter der Länge $k$.
+    $\Sigma^\ast$ ist somit immer abzählbar unendlich.\\
+    Ein \begriff{Monoid} ist eine Menge mit einer Verknüpfung $\circ$, sodass
+    $\forall_{a, b, c}\; (a \circ b) \circ c = a \circ (b \circ c)$
+    (Assoziativität) und $\exists_{e} \forall_{a}\; e \circ a = a \circ e = a$
+    (neutrales Element).
+    Man kann daher $\Sigma^\ast$ auch freies Monoid über $\Sigma$ nennen,
+    wobei die Grundmenge $\Sigma$ und die Verknüpfung die Konkatenation ist
+    ($e$ ist das leere Wort).
+    "`Frei"' deshalb, weil sich jedes Wort aus $\Sigma^\ast$ auf eindeutige
+    Weise als Verknüpfung von Buchstaben aus $\Sigma$ darstellen lässt.
+\end{Bem}
+
+\begin{Def}{formale Sprache}
+    Sei $\Sigma$ ein Alphabet.
+    Eine Teilmenge von $\Sigma^\ast$ heißt \begriff{formale Sprache}.
+\end{Def}
+
+\begin{Bem}
+    Aufgrund $|\Sigma^\ast| = \aleph_0$ ist die Kardinalität der Menge aller
+    formalen Sprachen gleich $\aleph_1$.
+    Da formale Sprachen selbst auch meistens unendlich sind,
+    benötigt man für sie endliche Beschreibungsmöglichkeiten.
+    Dafür dienen die Grammatiken und die Automaten.
+\end{Bem}
+
+\linie
+
+\begin{Def}{Grammatik}
+    Eine \begriff{Grammatik} ist ein $4$-Tupel $G = (V, \Sigma, P, S)$, wobei
+    \begin{itemize}
+        \item
+        $V$ eine endliche, nicht-leere Menge
+        (die Menge der \begriff{Variablen}),
+        
+        \item
+        $\Sigma$ eine endliche, nicht-leere Menge mit
+        $V \cap \Sigma = \emptyset$
+        (das \begriff{Terminalalphabet}),
+        
+        \item
+        $P$ eine endliche Teilmenge von
+        $(V \cup \Sigma)^+ \times (V \cup \Sigma)^\ast$\\
+        (die Menge der \begriff{Regeln} oder \begriff{Produktionen}) und
+        
+        \item
+        $S \in V$ (die \begriff{Startvariable}) ist.
+    \end{itemize}
+    Für $(u, v) \in P$ schreibt man auch $u \rightarrow v$.
+\end{Def}
+
+\begin{Def}{Satzform}
+    Ein Wort $w \in (V \cup \Sigma)^\ast$ heißt \begriff{Satzform}.
+\end{Def}
+
+\begin{Def}{Übergangsrelation}
+    Seien $G = (V, \Sigma, P, S)$ eine Grammatik und
+    $u, v \in (V \cup \Sigma)^\ast$.\\
+    Dann sei $u \Rightarrow_G v$, falls
+    $u = w_1 u_1 w_2$, $v = w_1 u_2 w_2$ mit
+    $w_1, w_2 \in (V \cup \Sigma)^\ast$ und $(u_1, u_2) \in P$.\\
+    Dies definiert eine Relation $\Rightarrow_G$
+    auf $(V \cup \Sigma)^\ast$, sie heißt \begriff{Übergangsrelation}.\\
+    $\Rightarrow_G^\ast$ ist die ref"|lexive und transitive Hülle von
+    $\Rightarrow_G$
+    (d.\,h. $u \Rightarrow_G^\ast v$ gilt genau dann, wenn es Wörter
+    $w_1, \dotsc, w_k \in (V \cup \Sigma)^\ast$, $k \in \natural_0$ gibt mit
+    $u \Rightarrow_G w_1 \Rightarrow_G \dotsb \Rightarrow_G w_k
+    \Rightarrow_G v$ oder wenn $u = v$).
+\end{Def}
+
+\begin{Def}{Ableitung}
+    Eine Folge von Wörtern $(S, w_1, \dotsc, w_k)$ mit
+    $w_k \in (V \cup \Sigma)^\ast$, $k \in \natural$ und\\
+    $S \Rightarrow_G w_1 \Rightarrow_G \dotsb \Rightarrow_G w_k$
+    heißt \begriff{Ableitung} von $w_k$.
+\end{Def}
+
+\begin{Def}{Linksableitung}
+    Eine \begriff{Linksableitung} ist eine Ableitung, bei der immer die am
+    weitesten links stehende Variable ersetzt wird.\\
+    (Dies ergibt nur für kontextfreie Grammatiken Sinn, d.\,h. falls
+    $P \subset V \times (V \cup \Sigma)^+$.)
+\end{Def}
+
+\begin{Def}{erzeugte Sprache}
+    Die von einer Grammatik $G = (V, \Sigma, P, S)$ \begriff{erzeugte Sprache}
+    ist\\
+    $L(G) := \{w \in \Sigma^\ast \;|\; S \Rightarrow_G^\ast w\}$.
+\end{Def}
+
+\linie
+\pagebreak
+
+\begin{Bsp}
+    $G = (\{S\}, \{a, b\}, P, S)$ mit $P = \{(S, ab), (S, aSb)\} =
+    \{S \rightarrow ab \;|\; aSb\}$ (BNF) ist eine Grammatik mit
+    $L(G) = \{a^n b^n \;|\; n \ge 1\}$
+    (dies ist eine Kurzschreibweise).
+\end{Bsp}
+
+\begin{Bsp}
+    Für ein beliebiges Alphabet $\Sigma$ erhält man mit
+    $G = (\{S\}, \Sigma, P, S\}$ und\\
+    $P = \{S \rightarrow a \;|\; a \in \Sigma\} \cup
+    \{S \rightarrow \varepsilon,\; S \rightarrow SS\}$ eine Grammatik
+    mit $L(G) = \Sigma^\ast$.\\
+    $L(G) = \emptyset$ erhält man mit $P = \emptyset$.
+\end{Bsp}
+
+\begin{Bsp}
+    Weitere (Anwendungs-)Beispiele für Grammatiken sind natürliche Sprachen
+    (hier nicht),
+    korrekte arithmetische Ausdrücke
+    (z.\,B. $(a + a) \cdot a$, aber nicht $(((a((a(($ oder $(\cdot + a))($),
+    Palindrome über dem Alphabet $\{a, b\}$
+    (mittels $S \rightarrow aSa \;|\; bSb \;|\; a \;|\; b \;|\; \varepsilon$)
+    und Wörter der Form $a^n b^n c^n$ (komplizierter, kontextsensitiv).
+\end{Bsp}
+
+\begin{Bem}
+    Bei Maschinen ist Nichtdeterminismus meist nur von "`akademischem"'
+    Belang, bei Grammatiken ist er jedoch essentiell
+    (eine Satzform kann verschieden abgeleitet werden).\\
+    Der einfache Pfeil $\rightarrow$ wird für Regeln,
+    $\Rightarrow_G$ wird für Ableitungsschritte verwendet.\\
+    $a^n$ ist eine Kurzform für $a \dotsb a$ ($n$-mal).\\
+    Variablen werden mit Groß- und
+    Terminalzeichen werden mit Kleinbuchstaben bezeichnet.
+\end{Bem}
+
+\subsection{%
+    \name{Chomsky}-Hierarchie%
+}
+
+\begin{Def}{\name{Chomsky}-Hierarchie}
+    \begin{enumerate}[label=\emph{Typ \arabic*}:,start=0,
+                      leftmargin=20mm,labelsep=5mm]
+        \item
+        Jede Grammatik ist vom \begriff{Typ 0}.
+        
+        \item
+        Eine Typ-0-Grammatik ist vom \begriff{Typ 1}
+        (\begriff{kontextsensitiv}),\\
+        falls für alle Regeln $w_1 \rightarrow w_2$ in $P$
+        gilt, dass $|w_1| \le |w_2|$.
+        
+        \item
+        Eine Typ-1-Grammatik ist vom \begriff{Typ 2}
+        (\begriff{kontextfrei}),\\
+        falls für alle Regeln $w_1 \rightarrow w_2$ in $P$
+        gilt, dass $w_1 \in V$.
+        
+        \item
+        Eine Typ-2-Grammatik ist vom \begriff{Typ 3}
+        (\begriff{regulär}),\\
+        falls für alle Regeln $w_1 \rightarrow w_2$ in $P$
+        gilt, dass $w_2 \in \Sigma \cup \Sigma V$.
+    \end{enumerate}
+    Eine Sprache $L \subset \Sigma^\ast$ heißt
+    vom Typ $i$, falls es eine Typ-$i$-Grammatik $G$ gibt mit $L(G) = L$
+    ($i = 0, \dotsc, 3$).
+\end{Def}
+
+\begin{Bem}
+    Die Ableitungen einer Typ-3-Grammatik haben die Form
+    $S \Rightarrow a_1 A_1 \Rightarrow a_1 a_2 A_2$\\
+    $\Rightarrow \dotsb \Rightarrow a_1 \dotsb a_n A_n$.
+    Weiter geht es mit $a_1 \dotsb a_n a_{n+1} A_{n+1}$,
+    terminiert wird mit $a_1 \dotsb a_n a_{n+1}$.\\
+    Bei Typ-0-Grammatiken kann die Satzform beim Ableiten länger und wieder
+    kürzer werden,
+    bei Typ-1-Grammatiken ist dagegen die Länge der Satzform monoton
+    steigend, daher heißen Typ-1-Grammatiken auch \begriff{nicht-verkürzend}.
+    Das leere Wort $\varepsilon$ kann von diesen Grammatiken nie erzeugt werden
+    (für alle $w_1 \rightarrow w_2$ in $P$ gilt, dass $1 \le |w_1| \le |w_2|$).
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Def}{$\varepsilon$-Sonderregel}
+    Für Typ-1-Grammatiken kann $S \rightarrow \varepsilon$ zugelassen werden.\\
+    In diesem Fall ist aber $S$ auf allen rechten Seiten verboten.
+\end{Def}
+
+\begin{Bem}
+    $S$ ist auf allen rechten Seiten verboten, weil sonst die Definition
+    der Typ-1-Grammatik sinnlos werden würde:
+    Man könnte z.\,B. eine Regel der Form $AB \rightarrow CSS$
+    basteln, die wegen $S \rightarrow \varepsilon$ als $AB \rightarrow C$
+    angewendet werden könnte.\\
+    Damit obige Definition sinnvoll ist, sollte man zeigen,
+    dass es zu jeder Typ-$i$-Grammatik\\
+    $G = (V, \Sigma, P, S)$ eine Typ-$i$-Grammatik $G'$ mit
+    $\varepsilon$-Sonderregel gibt, sodass
+    $L' = L \cup \{\varepsilon\}$ mit $L' := L(G')$ und $L := L(G)$
+    ($i = 1, 2, 3$), d.\,h. man kann jede Grammatik bei zugelassener
+    $\varepsilon$-Sonderregel so verändern, dass ihre Sprache nur um
+    das leere Wort ergänzt wird.
+    
+    Für Typ-1-Grammatiken verfährt man, indem man
+    $G' = (V', \Sigma, P', S)$ setzt mit $V' = V \cup \{S'\}$
+    und $S' \notin V$.
+    $P'$ erhält man aus $P$, indem man in allen Regeln $S$ durch $S'$ ersetzt
+    und die Regeln $S \rightarrow S'$, $S \rightarrow \varepsilon$
+    hinzufügt.
+    
+    Für Typ-2-Grammatiken kann man genauso verfahren, da
+    die hinzugefügten Regeln (insbesondere $S \rightarrow S'$)
+    Typ-2-konform sind.
+    
+    Bei Typ-3-Grammatiken ergibt sich das Problem, dass $S \rightarrow S'$
+    keine Typ-3-Regel ist.
+    Man verfährt stattdessen folgendermaßen, um $P'$ aus $P$ zu erhalten:
+    \begin{enumerate}
+        \item
+        ersetze in allen Regeln $S$ durch $S'$
+        
+        \item
+        für jede Regel mit $S'$ auf der linken Seite füge dieselbe Regel
+        mit $S$ auf der linken Seite hinzu
+        
+        \item
+        füge $S \rightarrow \varepsilon$ hinzu
+    \end{enumerate}
+    Es ergibt sich eine Grammatik $G'$ gleichen Typs
+    (bis auf $\varepsilon$-Sonderregel) mit
+    $L(G') = L(G) \cup \{\varepsilon\}$.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Eine Typ-1-Sprache, die durch eine Typ-1-Grammatik
+    (die keine Typ-3-Grammatik ist) erzeugt wird,
+    kann auch vom Typ 3 sein.
+\end{Bem}
+
+\begin{Bem}
+    Die Chomsky-Hierarchie hat ihren Namen von der Anordnung der
+    Sprachenmengen.
+    In der Menge aller Sprachen bilden die Typ-0-Sprachen eine echte Teilmenge,
+    die die entscheidbaren Sprachen wieder als echte Teilmenge beinhalten.
+    Diese enthalten in echter Inklusion die Typ-1-Sprachen
+    (kontextsensitive Sprachen),
+    die in echter Inklusion die Typ-2-Sprachen beinhalten
+    (kontextfreie Sprachen),
+    die in echter Inklusion die Typ-3-Sprachen beinhalten
+    (reguläre Sprachen).
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Wortproblem%
+}
+
+\begin{Def}{Wortproblem}
+    Gegeben seien eine Grammatik $G = (V, \Sigma, P, S)$ und ein Wort
+    $w \in \Sigma^\ast$.
+    Gesucht ist ein Algorithmus, der beliebige $G$ und $w$ als Eingabe hat
+    sowie $1$ ausgibt, falls $w \in L(G)$, und
+    $0$, falls $w \notin L(G)$
+    (d.\,h. der Algorithmus implementiert die charakteristische Funktion
+    von $L(G)$ auf $\Sigma^\ast$).
+    Dieses Problem heißt \begriff{Wortproblem}.
+\end{Def}
+
+\begin{Satz}{Wortproblem entscheidbar für Typ-1-Sprachen}
+    Das Wortproblem ist für Sprachen vom Typ 1 entscheidbar,
+    d.\,h. der gesuchte Algorithmus existiert
+    (falls die Sprache durch eine Typ-1-Grammatik gegeben ist).
+\end{Satz}
+
+\begin{Bem}
+    Sprachen vom Typ 2 und Typ 3 sind auch vom Typ 1, d.\,h.
+    das Wortproblem ist auch hier entscheidbar.
+    Für Typ-0-Sprachen ist das Wortproblem i.\,A. nicht entscheidbar.
+\end{Bem}
+
+\begin{Beweis}
+    Als Beweis wird ein Algorithmus angegeben.\\
+    Seien also $G = (V, \Sigma, P, S)$ eine Typ-1-Grammatik und
+    $x \in \Sigma^\ast$ mit $n := |x| \ge 1$.
+    \begin{align*}&
+        T := \{S\}\\&
+        \REPEAT T_1 := T;\; T := \Abl_n(T)\\&
+        \UNTIL (x \in T) \;\OR (T = T_1);\\&
+        \IF x \in T \;\THEN
+        \text{output}(1) \;\ELSE
+        \text{output}(0);
+    \end{align*}
+    Für eine Menge $X \subset (V \cup \Sigma)^\ast$ ist dabei
+    $\Abl_n(X)$ definiert als\\
+    $\Abl_n(X) := X \cup \{w \in (V \cup \Sigma)^\ast \;|\;
+    (|w| \le n) \land (\exists_{w' \in X}\; w' \Rightarrow_G w)\}$.
+    
+    Der Algorithmus terminiert stets
+    (d.\,h. er bricht für jede Eingabe nach einer
+    endlichen Anzahl von Schritten ab), denn:
+    Aufgrund $X \subset \Abl_n(X)$ gilt am Ende jedes Schleifendurchlaufs
+    entweder $T_1 = \Abl_n(T_1)$ (dann wird terminiert) oder es gilt
+    $T_1 \subsetneqq \Abl_n(T_1)$.\\
+    Der letzte Fall ist jedoch nur endlich oft möglich, da
+    dabei $|T_1| < |\Abl_n(T_1)|$ gilt, aber
+    $|\Abl_n(T_1)|$ nach oben durch $\sum_{i=1}^n t^i$ mit
+    $t = |V \cup \Sigma|$ beschränkt ist.
+    Somit terminiert der Algorithmus nach endlich vielen Schritten.
+    
+    Der Algorithmus ist korrekt
+    (d.\,h. er gibt $1$ aus genau dann, wenn $x \in L(G)$), denn:\\
+    Ist $x \in T$ im $r$-ten Schritt
+    (das soll bedeuten, dass $x \notin T$ für vorherige Schritte gilt),
+    so gibt es ein $w_1 \in (V \cup \Sigma)^+$ mit $w_1 \in T$
+    im $(r - 1)$-ten Schritt und $w_1 \Rightarrow_G x$.
+    Daraus folgt, dass es ein $w_2 \in (V \cup \Sigma)^+$ gibt mit $w_2 \in T$
+    im $(r - 2)$-ten Schritt und $w_2 \Rightarrow_G w_1$ usw.\\
+    Induktiv gibt es also ein $w_{r-1} \in (V \cup \Sigma)^+$ mit
+    $w_{r-1} \in T$ im ersten Schritt und $w_{r-1} \Rightarrow_G w_{r-2}$.
+    Daraus folgt wieder, dass es ein $w_r \in (V \cup \Sigma)^+$ mit
+    $w_r \in T$ im nullten Schritt und $w_r \Rightarrow_G w_{r-1}$.
+    Im nullten Schritt ist allerdings $T = \{S\}$, d.\,h. es gilt $w_r = S$.\\
+    Insgesamt gilt also $S = w_r \Rightarrow_G w_{r-1} \Rightarrow_G \dotsb
+    \Rightarrow_G w_2 \Rightarrow_G w_1 \Rightarrow_G x$, also
+    $x \in L(G)$.
+    Wenn der Algorithmus $1$ ausgibt, dann ist daher $x \in L(G)$.
+    Die andere Richtung überlegt man sich analog, es gilt also
+    $x \in T$ im $r$-ten Schritt genau dann, wenn $S \Rightarrow_G^\ast x$
+    in $r$ Schritten.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    Syntaxbäume%
+}
+
+\begin{Def}{Syntaxbaum}
+    Sei eine Typ-2-Grammatik $G = (V, \Sigma, P, S)$ gegeben.
+    Jeder Ableitung eines Wortes $x \in L(G)$ kann man einen
+    \begriff{Syntaxbaum} oder \begriff{Ableitungsbaum} zuordnen:\\
+    Sei dazu $S = x_0 \Rightarrow_G x_1 \Rightarrow_G \dotsb
+    \Rightarrow_G x_n = x$ eine Ableitung des Wortes $x \in L(G)$.
+    Man ordnet der Wurzel des (zu konstruierenden) Syntaxbaums die
+    Startvariable $S$ zu.
+    Für $i = 1, \dotsc, n$ führe man folgendes durch:
+    Falls im $i$-ten Ableitungsschritt $x_{i-1} \Rightarrow_G x_i$
+    die Variable $A$ mit der Regel $A \rightarrow z \in P$ durch ein Wort $z$
+    ersetzt wird, erstelle im Syntaxbaum $|z|$ Söhne von $A$ und beschrifte
+    diese mit den einzelnen Zeichen von $z$.
+    Auf diese Weise entsteht ein Baum, dess Blätter gerade mit den Zeichen in
+    $x$ beschriftet sind.
+\end{Def}
+
+\begin{Bem}
+    Syntaxbäume für Typ-3-Grammatiken sind immer entartet, d.\,h.
+    jeder Knoten hat höchstens zwei Söhne (davon immer ein Terminalzeichen und
+    evtl. eine Variable).\\
+    Syntaxbäume für Grammatiken, die nicht vom Typ 2 sind, sind nicht sinnvoll
+    definiert.
+\end{Bem}
+
+\begin{Bem}
+    Verschiedenen Ableitungen eines Wortes $x \in L(G)$ kann derselbe
+    Syntaxbaum zugeordnet sein
+    (beispielsweise indem man die Ableitungsreihenfolge variiert).
+    Ersetzt man immer die erste vorkommende (am weitesten links stehende)
+    Variable, so spricht man von einer \begriff{Linksableitung}.
+    Weil man jedem Syntaxbaum eindeutig eine Linksableitung zuordnen kann,
+    gibt es für jedes Wort $x \in L(G)$ eine Linksableitung.
+\end{Bem}
+
+\begin{Bem}
+    Verschiedenen Syntaxbäumen eines Wortes können verschiedene Bedeutungen
+    zugewiesen werden.
+    Man denke dabei an die Sprache der arithmetischen Ausdrücke, in der es
+    einen Sinn ergeben würde, implizit Klammern um den zuletzt abgeleiteten
+    Term zu setzen.
+    Man würde also den zuletzt abgeleiteten Term zuerst ausrechnen.
+    Solche Interpetationen sind z.\,B. im Compilerbau sinnvoll.
+    Hier wird dieser Aspekt nicht weiter verfolgt.
+\end{Bem}
+
+\linie
+
+\begin{Def}{eindeutig/mehrdeutig}
+    Eine Typ-2-Grammatik $G$ heißt \begriff{mehrdeutig}, falls es ein Wort\\
+    $x \in L(G)$ gibt, dass mindestens zwei Ableitungen besitzt, deren
+    Syntaxbäume verschieden sind.
+    Sonst heißt die Grammatik \begriff{eindeutig}
+    (jedes Wort $x \in L(G)$ besitzt genau einen Syntaxbaum).
+\end{Def}
+
+\begin{Bem}
+    Es kann sein, dass es für eine Sprache mehrere die Sprache erzeugende
+    Grammatiken gibt, von denen eine mehrdeutig und eine eindeutig ist.
+\end{Bem}
+
+\begin{Def}{inhärent mehrdeutig}
+    Eine Typ-2-Sprache $L$ heißt \begriff{inhärent mehrdeutig}, falls
+    jede Typ-2-Grammatik $G$ mit $L(G) = L$ mehrdeutig ist.
+\end{Def}
+
+\begin{Bem}
+    Im Allgemeinen ist es algorithmisch unmöglich festzustellen, ob eine
+    Typ-2-Gram\-matik mehrdeutig
+    (oder ob eine Typ-2-Sprache inhärent mehrdeutig) ist oder nicht.
+\end{Bem}
+
+\subsection{%
+    \name{Backus}-\name{Naur}-Form%
+}
+
+\begin{Def}{\name{Backus}-\name{Naur}-Form (BNF)}
+    Backus und Naur führten einen Formalismus zum kompakten Aufschreiben
+    von Typ-2-Grammatiken ein
+    (\begriff{\name{Backus}-\name{Naur}-Form (BNF)}).\\
+    In Grammatiken $G$ bedeutet die Regel
+    $A \rightarrow \beta_1 \;|\; \beta_2 \;|\; \dotsb \;|\; \beta_n$
+    den Satz von Regeln\\
+    $A \rightarrow \beta_1$,
+    $A \rightarrow \beta_2$, \dots,
+    $A \rightarrow \beta_n$.
+    (Man kann statt $\rightarrow$ auch $::=$ schreiben.)
+\end{Def}
+
+\begin{Def}{erweiterte \name{Backus}-\name{Naur}-Form (EBNF)}
+    Verwendet man zusätzliche Notationen, so spricht man von der
+    \begriff{erweiterten \name{Backus}-\name{Naur}-Form (EBNF)}.\\
+    In Grammatiken $G$ steht die Regel $A \rightarrow \alpha [\beta] \gamma$
+    für die Regeln $A \rightarrow \alpha \gamma$,
+    $A \rightarrow \alpha \beta \gamma$.\\
+    Die Regel $A \rightarrow \alpha \{\beta\} \gamma$ steht für die Regeln
+    $A \rightarrow \alpha \gamma$, $A \rightarrow \alpha B \gamma$,
+    $B \rightarrow \beta$, $B \rightarrow \beta B$.
+\end{Def}
+
+\begin{Bem}
+    Da (E)BNF und kontextfreie Grammatiken gleichwertig sind, können durch\\
+    (E)BNF genau die kontextfreien Sprachen dargestellt werden.
+\end{Bem}
+
+\pagebreak

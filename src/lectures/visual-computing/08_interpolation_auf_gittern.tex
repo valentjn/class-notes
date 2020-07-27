@@ -1,0 +1,213 @@
+\section{%
+    Interpolation auf Gittern%
+}
+
+\subsection{%
+    1D-Polynom-Interpolation%
+}
+
+\textbf{Satz (Polynom-Interpolation)}:
+Seien $(x_i, y_i) \in \real^2$ für $i = 0, \dotsc, n$ gegeben,
+wobei $x_i \not= x_j$ für $i \not= j$.
+Dann gibt es genau ein interpolierendes Polynom $P_n(x) = \sum_{j=0}^n a_j x^j$ vom Grad $\le n$.
+
+\textbf{\name{Vandermonde}-Matrix}:
+Die Koef"|fizienten $a_0, \dotsc, a_n$ lassen sich als Lösung des LGS\\
+$\smallpmatrix{1&x_0&\dots&x_0^n\\\vdots&\vdots&&\vdots\\1&x_n&\dots&x_n^n}
+\smallpmatrix{a_0\\\vdots\\a_n} =
+\smallpmatrix{y_0\\\vdots\\y_n} \iff V\vec{a} = \vec{y}$
+bestimmen.
+$V$ heißt \begriff{\name{Vandermonde}-Matrix}.
+Allerdings ist $V$ schwierig und teuer zu berechnen
+und weitere Interpolationspkt.e sind aufwendig.
+
+\linie
+
+\textbf{\name{Lagrange}-Interpolation}:
+Die \begriff{\name{Lagrange}-Interpolation} bestimmt $P_n$ durch den Ansatz
+$P_n(x) = \sum_{i=0}^n y_i L_i(x)$ mit
+den \begriff{\name{Lagrange}-Polynomen}
+$L_i(x) := \prod_{j\not=i} \frac{x - x_j}{x_i - x_j}$.
+$L_i$ ist ein Polynom vom Grad $n$ mit $L_i(x_k) = \delta_{i,k}$.
+
+\linie
+
+\textbf{\name{Newton}-Interpolation}:
+Die \begriff{\name{Newton}-Interpolation} bestimmt $P_n$ durch den Ansatz\\
+$P_n(x) = \sum_{i=0}^n a_i N_i(x)$ mit
+den \begriff{\name{Newton}-Polynomen}
+$N_0(x) := 1$ und $N_i(x) := \prod_{j=0}^{i-1} (x - x_j)$ für $i = 1, \dotsc, n$.
+Wegen der rekursiven Definition ($N_i(x) = (x - x_{i-1}) N_{i-1}(x)$)
+gilt $N_i(x_k) = 0$ für $i > k$.
+Damit ist das resultierende LGS für die $a_i$ in unterem Dreiecksformat
+und ein zusätzlicher Samplepunkt $x_{n+1}$ verändert $a_0, \dotsc, a_n$ nicht.
+Außerdem ist dieser Ansatz numerisch stabiler.
+
+\subsection{%
+    Kubische 1D-Interpolation%
+}
+
+\textbf{kubische 1D-Interpolation}:
+Seien $y_0, y_0', y_1, y_1' \in \real$ gegeben.
+Gesucht ist ein höchstens kubisches Polynom $f(x) = ax^3 + bx^2 + cx + d$
+mit $f(i) = y_i$ und $f'(i) = y_i'$ für $i = 0, 1$.
+Man erhält das reguläre LGS
+$A (a, b, c, d)^\tp = \vec{v}$ mit
+$A := \smallpmatrix{0&0&0&1\\0&0&1&0\\3&2&1&0\\1&1&1&1}$ und
+$\vec{v} := (y_0, y_0', y_1', y_1)^\tp$.
+Damit bekommt man
+$f(x) = (a, b, c, d) (x^3, x^2, x, 1)^\tp
+= \vec{v}^\tp A^{-\tp} (x^3, x^2, x, 1)^\tp$
+mit den\\
+\begriff{kubischen \name{Hermite}-Polynomen}
+$\smallpmatrix{H_0^3(x)\\H_1^3(x)\\H_2^3(x)\\H_3^3(x)}
+= A^{-\tp} (x^3, x^2, x, 1)^\tp
+= \smallpmatrix{(2x+1)(1-x)^2\\x(1-x)^2\\-x^2(1-x)\\(3-2x)x^2}$
+
+\subsection{%
+    Bikubische Interpolation%
+}
+
+\textbf{bikubische Interpolation}:
+Gegeben seien $\vec*{f}{i,j} = (x_i, y_j)^\tp$ für $x_i, y_j \in \{0, 1\}$
+und Werte $z_{i,j}, \partial_x z_{i,j}, \partial_y z_{i,j},
+\partial_x \partial_y z_{i,j} \in \real$.
+Gesucht ist bei der \begriff{bikubischen Interpolation} das bikubische Polynom
+$f(x, y) = \sum_{n=0}^3 \sum_{m=0}^3 a_{n,m} x^n y^m$ mit
+$f(\vec*{p}{i,j}) = z_{i,j}$,
+$\partial_x f(\vec*{p}{i,j}) = \partial_x z_{i,j}$,
+$\partial_y f(\vec*{p}{i,j}) = \partial_y z_{i,j}$ und
+$\partial_x \partial_y f(\vec*{p}{i,j}) = \partial_x \partial_y z_{i,j}$.
+Schreibt man $\vec{\alpha} := (a_{0,0}, a_{1,0}, a_{2,0}, a_{3,0}, a_{0,1}, \dotsc, a_{3,3})^\tp$
+und\\
+$\vec{z} = (z_{0,0}, z_{1,0}, z_{0,1}, z_{1,1}, \partial_x z_{0,0}, \dotsc,
+\partial_x \partial_y z_{1,1})^\tp$,
+dann erhält man ein LGS $B\vec{\alpha} = \vec{z}$
+mit einer $(16 \times 16)$-Matrix $B$.
+Es gilt dann $\vec{\alpha} = B^{-1} \vec{z}$.
+
+\textbf{bikubische Interpolation mit \name{Hermite}-Polynomen}:
+Man kann den Ansatz auch schreiben als
+$f(x, y) = \vec{y}^\tp A \vec{x}$
+mit $\vec{x} := (1, x, x^2, x^3)^\tp = C^\tp \vec*{h}{x}$,
+$\vec*{h}{x} := (H_0^3(x), \dotsc, H_3^3(x))^\tp$ und
+einer bestimmten Basiswechsel-Matrix $C = \smallpmatrix{1&0&0&0\\0&1&0&0\\0&1&2&3\\1&1&1&1}$,
+die man aus $C^{-1} = \smallpmatrix{1&0&0&0\\0&1&0&0\\-3&-2&-1&3\\2&1&1&-2}$ erhält
+(analog $\vec{y} = C^\tp \vec*{h}{y}$).
+Damit bekommt man $f(x, y) = \vec*{h}{y}^\tp C A C^\tp \vec*{h}{x}$.
+Man kann zeigen, dass\\
+$CAC^\tp = F := \smallpmatrix{f(0,0)&f_x(0,0)&f_x(1,0)&f(1,0)\\
+f_y(0,0)&f_{xy}(0,0)&f_{xy}(1,0)&f_y(1,0)\\
+f_y(0,1)&f_{xy}(0,1)&f_{xy}(1,1)&f_y(1,1)\\
+f(0,1)&f_x(0,1)&f_x(1,1)&f(1,1)}$
+bzw. $A = C^{-1} F C^{-\tp}$.
+
+\pagebreak
+
+\subsection{%
+    Interpolation auf Dreiecken%
+}
+
+\textbf{baryzentrische Koordinaten}:
+Seien $\vec{a}, \vec{b}, \vec{c} \in \real^2$ nicht kollinear.
+Dann gibt es für $\vec{p} \in \real^2$ \begriff{baryzentrische Koordinaten}
+$\alpha_1, \alpha_2, \alpha_3 \in \real$ mit
+$\vec{p} = \alpha_1 \vec{a} + \alpha_2 \vec{b} + \alpha_3 \vec{c}$
+und $\alpha_1 + \alpha_2 + \alpha_3 = 1$.\\
+Durch Umschreiben $\vec{p} - \vec{c} = \alpha_1 (\vec{a} - \vec{c}) + \alpha_2 (\vec{b} - \vec{c})$
+erhält man
+$(\alpha_1, \alpha_2)^\tp = T^{-1} (\vec{p} - \vec{c})$
+mit $T := \smallpmatrix{\vec{a} - \vec{c} & \vec{b} - \vec{c}}$.
+Durch Ausschreiben der Inverse und Multiplikation bekommt man\\
+$\alpha_1 = \frac{1}{D} \det(\smallpmatrix{\vec{p} - \vec{c} & \vec{b} - \vec{c}})$,
+$\alpha_2 = \frac{1}{D} \det(\smallpmatrix{\vec{a} - \vec{c} & \vec{p} - \vec{c}})$ und
+$\alpha_3 = \frac{1}{D} \det(\smallpmatrix{\vec{b} - \vec{a} & \vec{p} - \vec{a}})$
+mit der Determinate $D := \det(T)$ (doppelter Flächeninhalt des Dreiecks).
+
+\textbf{geometrische Interpretation}:
+$\alpha_1$ ist der Anteil der Fläche des Dreiecks mit der zu $\vec{a}$ gegenüber liegender
+Kante $\vec{b} - \vec{c}$ als Kante und Ecke $\vec{p}$ am gesamten Dreieck
+(falls $\vec{p}$ im Dreieck liegt).
+Ob $\vec{p}$ im Dreieck, auf einer Ecke/Kante oder außerhalb liegt, kann man leicht
+an den baryzentrischen Koordinaten ablesen.
+
+\textbf{Transformation zu Einheitsdreieck}:
+Mit der Transformation $x = a_x + (b_x - a_x) \xi + (c_x - a_x)\eta$ und
+$y = a_y + (b_y - a_y) \xi + (c_y - a_y)\eta$ transformiert man ein Dreieck mit den
+Ecken $\vec{a}, \vec{b}, \vec{c}$ auf das Einheitsdreieck.
+Im Einheitsdreieck gilt $\alpha_1 = 1 - \xi - \eta$, $\alpha_2 = \xi$ und $\alpha_3 = \eta$.
+
+\textbf{baryzentrische Interpolation}:
+Seien Werte $f_1, f_2, f_3 \in \real$ an den Ecken des Dreiecks gegeben.
+Dann erhält man \begriff{baryzentrische Interpolation} durch
+$f(\vec{p}) = \sum_{i=1}^3 \alpha_i(\vec{p}) f_i$.
+
+\linie
+
+\textbf{quadratische Interpolation}:
+Für quadr. Interpolation im Standarddreieck
+sei der Ansatz
+$\vec{f}(\xi, \eta) = \sum_{i=1}^6 f_i N_i(\xi, \eta)$ gegeben
+mit $N_i(\xi_j, \eta_j) = \delta_{i,j}$ für
+$(\xi_1, \eta_1) := (0, 0)$,
+$(\xi_2, \eta_2) := (1, 0)$,
+$(\xi_3, \eta_3) := (0, 1)$,
+$(\xi_4, \eta_4) := (1/2, 0)$,
+$(\xi_5, \eta_5) := (1/2, 1/2)$ und
+$(\xi_6, \eta_6) := (0, 1/2)$.\\
+Man erhält
+$N_1(\xi, \eta) = (1 - \xi - \eta) (1 - 2\xi - 2\eta)$,
+$N_2(\xi, \eta) = \xi (2\xi - 1)$,
+$N_3(\xi, \eta) = \eta (2\eta - 1)$,
+$N_4(\xi, \eta) = 4\xi (1 - \xi - \eta)$,
+$N_5(\xi, \eta) = 4\xi\eta$ und
+$N_6(\xi, \eta) = 4\eta (1 - \xi - \eta)$.
+
+\textbf{kubische Interpolation}:
+Man kann den Ansatz auch für höhere Ordnungen verallgemeinern.
+Zum Beispiel wäre der kubische Ansatz\\
+$u(\xi, \eta) = c_1 + c_2\xi + c_3\eta + c_4\xi^2 + c_5\xi\eta + c_6\eta^2 + c_7\xi^3 +
+c_8\xi^2\eta + c_9\xi\eta^2 + c_{10}\eta^3$.
+
+\subsection{%
+    Bikubische Interpolation auf krummlinigen Gittern%
+}
+
+\textbf{krummlinige Gitter}:
+Zur Interpolation auf krummlinigen Gittern muss man die Ableitungen, die im
+\begriff{physischen Raum (P-Raum)} mit Koord.en $(x, y)$ gegeben sind,
+umrechnen auf den \begriff{Berechnungsraum (C-Raum)} mit Koord.en $(\xi, \eta)$.
+Im C-Raum sollte das Gitter ein uniformes 2D-Rechtecksgitter mit Gitterabständen
+$\Delta\xi = 1 = \Delta\eta$ sein.
+
+\textbf{Umrechnung der Ableitungen}:
+Für $\vec*{\partial}{xy} := (\partial_x, \partial_y,
+\partial_x^2, \partial_x \partial_y, \partial_y^2)^\tp$ und\\
+$\vec*{\partial}{\xi\eta} := (\partial_\xi, \partial_\eta,
+\partial_\xi^2, \partial_\xi \partial_\eta, \partial_\eta^2)^\tp$
+erhält man $\vec*{\partial}{xy} = B\vec*{\partial}{\xi\eta}$ mit
+$B := \smallpmatrix{B_1&0\\B_2&B_3}$ und\\
+$B_1 := \smallpmatrix{\partial_x \xi&\partial_x \eta\\\partial_y \xi&\partial_y \eta}$,
+$B_2 := \smallpmatrix{\partial_x^2 \xi&\partial_x^2 \eta\\\partial_x \partial_y \xi&
+\partial_x \partial_y \eta\\\partial_y^2 \xi&\partial_y^2 \eta}$ sowie
+$B_3 := \smallpmatrix{(\partial_x \xi)^2&2\partial_x \xi \cdot \partial_x \eta&
+(\partial_x \eta)^2\\
+\partial_x \xi \cdot \partial_y \xi&
+\partial_x \xi \cdot \partial_y \eta + \partial_x \eta \cdot \partial_y \xi&
+\partial_x \eta \cdot \partial_y \eta\\
+(\partial_y \xi)^2&2\partial_y \xi \cdot \partial_y \eta&(\partial_y \eta)^2}$.\\
+Umgekehrt gilt $\vec*{\partial}{\xi\eta} = C\vec*{\partial}{xy}$ mit
+$C := B^{-1} = \smallpmatrix{C_1&0\\C_2&C_3}$ und\\
+$C_1 := B_1^{-1}
+= \smallpmatrix{\partial_\xi x&\partial_\xi y\\\partial_\eta x&\partial_\eta y}$,
+$C_2 := -B_3^{-1} B_2 B_1^{-1}
+= \smallpmatrix{\partial_x^2 x&\partial_\xi^2 y\\\partial_\xi \partial_\eta x&
+\partial_\xi \partial_\eta y\\\partial_\eta^2 x&\partial_\eta^2 y}$ sowie\\
+$C_3 := B_3^{-1} = \smallpmatrix{(\partial_\xi x)^2&2\partial_\xi x \cdot \partial_\xi y&
+(\partial_\xi y)^2\\
+\partial_\xi x \cdot \partial_\eta x&
+\partial_\xi x \cdot \partial_\eta y + \partial_\xi y \cdot \partial_\eta x&
+\partial_\xi y \cdot \partial_\eta y\\
+(\partial_\eta x)^2&2\partial_\eta x \cdot \partial_\eta y&(\partial_\eta y)^2}$.
+
+\pagebreak

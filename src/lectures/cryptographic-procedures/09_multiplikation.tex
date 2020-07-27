@@ -1,0 +1,744 @@
+\section{%
+    Multiplikation%
+}
+
+\textbf{Problem}:
+Gegeben sind zwei Zahlen $r, s \in \natural$ mit je $n$ Bit.\\
+Gesucht ist das Produkt $r \cdot s$ der beiden Zahlen.
+
+Weiter oben wurde bereits der Karatsuba-Algorithmus vorgestellt, der eine Laufzeit von
+$\O(n^{1.6})$ besitzt.
+Dieser ist allerdings für große $n$ zu langsam, insbesondere ist die Laufzeit nicht in $\weakO(n)$.
+Der Algorithmus von Schönhage-Strassen besitzt eine Laufzeit von
+$\O(n \log n \cdot \log \log n) \subset \weakO(n)$.
+Dieser baut auf der diskreten Fouriertransformation auf.
+
+\subsection{%
+    Primitive Einheitswurzeln%
+}
+
+Seien $R$ ein kommutativer Ring mit Eins und $b \in R$ invertierbar mit
+$\exists_{\widetilde{b} \in \natural}\; \widetilde{b} \cdot 1 = b$\\
+(nachfolgend wird $b \in \natural \cap R$ angenommen).
+
+Im Folgenden wird ein Isomorphismus zwischen den folgenden beiden Ringen gesucht:
+\begin{itemize}
+    \item
+    $R^b$ mit der Multiplikation
+    $(u_0, \dotsc, u_{b-1}) \cdot (v_0, \dotsc, v_{b-1}) := (u_i v_i)_{i=0,\dotsc,b-1}$
+    
+    \item
+    $R[X]/\erzeugnis{X^b - 1}$ mit der Multiplikation\\
+    $(\sum_{i=0}^{b-1} u_i X^i) \ast (\sum_{i=0}^{b-1} v_i X^i)
+    := \sum_{i=0}^{2b-2} (\sum_{j=0}^{b-1} u_j v_{i-j}) X^i
+    = \sum_{i=0}^{b-1} \sum_{j=0}^{b-1} (u_j v_{i-j} + u_j v_{b+i-j}) X^i$\\
+    (nachfolgend werden alle Polynome als Nebenklassen $+\, \erzeugnis{X^b - 1}$ betrachtet)
+\end{itemize}
+
+\linie
+
+\textbf{Einheitswurzel}:
+$\omega \in R$ heißt \begriff{$b$-te Einheitswurzel}, falls $\omega^b = 1$.
+
+\textbf{primitive Einheitswurzel}:\\
+$\omega \in R$ heißt \begriff{primitive $b$-te Einheitswurzel}, falls $\omega^b = 1$ und
+$\forall_{k=1,\dotsc,b-1}\; \sum_{i=0}^{b-1} \omega^{ki} = 0$.
+
+Sei $\omega \in R$ eine $b$-te Einheitswurzel.
+Ist $\omega$ primitiv, dann gilt
+$\forall_{k=1,\dotsc,b-1}\; \omega^k \not= 1$
+(d.\,h. $\omega$ ist keine Einheitswurzel niedrigerer Ordnung),
+denn $\omega^k = 1 \implies \sum_{i=0}^{b-1} \omega^{ki} = b \not= 0$.
+Für Körper sind diese Eigenschaften äquivalent
+(wegen $\sum_{i=0}^{b-1} \omega^{ki} = \frac{1 - (\omega^k)^b}{1 - \omega^k}
+= \frac{1 - 1^k}{1 - \omega^k} = 0$ für $\omega^k \not= 1$).\\
+Weiter unten wird allerdings die stärkere Eigenschaft der Primitivheit benötigt.
+
+\textbf{Beispiel}:
+Für $R = \complex$ ist $\omega = e^{2\pi\iu/b}$ eine primitive $b$-te Einheitswurzel.
+
+\textbf{Lemma (Einheitswurzel-Inverse)}:
+Ist $\omega \in R$ eine primitive $b$-te Einheitswurzel,
+dann ist $\omega$ invertierbar und $\omega^{-1}$ eine primitive $b$-te Einheitswurzel.
+
+\begin{Beweis}
+    Es gilt $\omega^{-1} = \omega^{b-1}$, da
+    $\omega \omega^{b-1} = \omega^b = 1$.
+    Es gilt $(\omega^{-1})^b = (\omega^b)^{b-1} = 1$ sowie für $k = 1, \dotsc, b-1$ gilt
+    $0 = \omega^{-k(b-1)} \sum_{i=0}^{b-1} \omega^{ki}
+    = \sum_{i=0}^{b-1} \omega^{-k(b-1-i)}
+    = \sum_{i=0}^{b-1} (\omega^{-1})^{ki}$.
+\end{Beweis}
+
+\textbf{Lemma (Einheitswurzel-Potenz)}:
+Ist $\omega \in R$ eine primitive $b$-te Einheitswurzel und $c \in \natural$ mit $c \teilt b$
+und $c$ invertierbar in $R$,
+dann ist $\omega^c$ eine primitive $\frac{b}{c}$-te Einheitswurzel.
+
+\begin{Beweis}
+    Es gilt $(\omega^c)^{b/c} = \omega^b = 1$.
+    Sei $k = 1, \dotsc, \frac{b}{c}-1$ beliebig.
+    Es gilt $\omega^{kci} = \omega^{kc(i+\ell\cdot b/c)}$ für alle $\ell = 0, \dotsc, c-1$
+    und $i = 0, \dotsc, \frac{b}{c} - 1$,
+    d.\,h. es gilt\\
+    $\sum_{i=0}^{b/c-1} (\omega^c)^{ki}
+    = c^{-1} \sum_{i=0}^{b/c-1} c \omega^{kci}
+    = c^{-1} \sum_{i=0}^{b/c-1} \sum_{\ell=0}^{c-1} \omega^{kc(i+\ell\cdot b/c)}
+    = c^{-1} \sum_{i'=0}^{b-1} \omega^{k'i'} = 0$\\
+    mit $k' := kc \in \{c, 2c, \dotsc, b - c\}$ und
+    $i' := i + \ell \cdot \frac{b}{c}$.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    Diskrete \name{Fourier}transformation%
+}
+
+\textbf{diskrete \name{Fourier}transformation}:
+Sei $\omega \in R$ eine primitive $b$-te Einheitswurzel.\\
+Dann heißt $R[X]/\erzeugnis{X^b - 1} \to R^b$,
+$f(X) \mapsto (f(\omega^i))_{i=0,\dotsc,b-1}$
+\begriff{diskrete \name{Fourier}transformation}.
+
+\textbf{Lemma}:
+Die diskrete Fouriertransformation ist ein Homomorphismus von Ringen mit Eins.
+
+\begin{Beweis}
+    $f(X)$ lässt sich in $\omega$ auswerten und $\omega^b = 1$,
+    d.\,h. $f(\omega^i) \in R$ ist wohldefiniert.\\
+    Es gilt $(f + g)(X) \mapsto ((f + g)(\omega^i))_{i=0,\dotsc,b-1}
+    = (f(\omega^i) + g(\omega^i))_i
+    = (f(\omega^i))_i + (g(\omega^i))_i$
+    sowie
+    $(f \ast g)(X) \mapsto
+    (\sum_{i=0}^{b-1} \sum_{j=0}^{b-1} (u_j v_{i-j} + u_j v_{b+i-j}) (\omega^k)^i)_k
+    = (\sum_{i=0}^{2b-1} \sum_{j=0}^{b-1} u_j v_{i-j} (\omega^k)^i)_k$\\
+    $= (\sum_{i=0}^{b-1} u_i (\omega^k)^i \cdot \sum_{i=0}^{b-1} v_i (\omega^k)^i)_k
+    = (f(\omega^k))_k \cdot (g(\omega^k))_k$.\\
+    Außerdem gilt $1_R \mapsto (1_R)_{i=0,\dotsc,b-1} = 1_{R^b}$.
+\end{Beweis}
+
+\linie
+
+Definiere die Vandermonde-Matrizen $F := (\omega^{ij})_{i,j=0,\dotsc,b-1},
+\overline{F} := (\omega^{-ij})_{i,j=0,\dotsc,b-1} \in R^{b \times b}$.
+
+\textbf{Lemma}:
+Für $f(X) = \sum_{i=0}^{b-1} u_i X^i \in R[X]/\erzeugnis{X^b - 1}$ gilt
+$f(X) \mapsto (u_i)_i \cdot F$.
+
+\begin{Beweis}
+    Es gilt $f(X) \mapsto (\sum_{i=0}^{b-1} u_i \omega^{ij})_{j=0,\dotsc,b-1}
+    = (u_0, \dotsc, u_{b-1}) \cdot F$.
+\end{Beweis}
+
+Daher kann man die diskrete Fouriertransformation mit
+$F\colon R[X]/\erzeugnis{X^b - 1} \to R^b$ bezeichnen.
+
+\linie
+
+\textbf{Lemma}:
+$F$ ist ein Ringisomorphismus von Ringen mit Eins mit
+Umkehrabbildung\\
+$F^{-1} := \overline{F}b^{-1}\colon R^b \to R[X]/\erzeugnis{X^b - 1}$,
+$(u_i)_{i} \mapsto (u_i)_i \cdot \overline{F} b^{-1}$,
+wobei Polynome mit den Koef"|fizientenfolgen identifiziert werden.
+
+\begin{Beweis}
+    Es gilt $F \cdot \overline{F} = (\omega^{ij})_{i,j} \cdot (\omega^{-ij})_{i,j}
+    = (\sum_{\ell=0}^{b-1} \omega^{i\ell} \omega^{-\ell j})_{i,j}
+    = (\sum_{\ell=0}^{b-1} \omega^{\ell(i-j)})_{i,j}$.
+    Setzt man $k := i - j$ in Definition der primitiven Einheitswurzel ein, so gilt
+    $\sum_{\ell=0}^{b-1} \omega^{\ell(i-j)} = 0$ für den Fall $k \not= 0 \iff i \not= j$
+    (für $k \in \{-(b-1), \dotsc, -1\}$ benutze man, dass $\omega^{-1}$ ebenfalls
+    eine primitive $b$-te Einheitswurzel ist)
+    und $\sum_{\ell=0}^{b-1} \omega^{\ell(i-j)} = b$ im Fall $i = j$.
+    Damit gilt $F \cdot \overline{F}  = b \cdot I_b$ bzw.
+    $F \cdot \overline{F} b^{-1} = I_b$ ($b$ ist invertierbar nach Voraussetzung).
+\end{Beweis}
+
+\linie
+
+\textbf{Berechnungsschema zu $f \ast g$}:\\
+Seien $f := \sum_{i=0}^{b-1} u_i X^i,\;
+g := \sum_{i=0}^{b-1} v_i X^i \in R[X]/\erzeugnis{X^b - 1}$.
+Dann kann man $f \ast g$ durch die Beziehung
+$f \ast g = F^{-1} (F(f) \cdot F(g))$ berechnen.
+Dies kann man wie folgt veranschaulichen:
+\begin{align*}
+    \xymatrix@R=3mm@C=5mm{
+        &
+        {\text{Koeff.en $(u_i)_i, (v_i)_i$}}\ar@{-}_%
+        {\begin{array}{r}\scriptstyle\text{\emph{Fourier-TF $F$}}\\%
+        [-2mm]\scriptstyle\text{\emph{(Auswertung)}}\end{array}}[dd]&
+        &
+        {\text{Koeff.en für $f \ast g$}}&
+        \\
+%
+        &
+        &
+        *++[F-:<5mm>]{\text{$R[X]/\erzeugnis{X^b - 1}$}}&
+        &
+        \\
+%
+        \ar@{--}[rrrr]&
+        *=0{}\ar[dd]&
+        &
+        *=0{}\ar_%
+        {\begin{array}{l}\scriptstyle\text{\emph{inv. Fourier-TF $\overline{F} b^{-1}$}}\\%
+        [-2mm]\scriptstyle\text{\emph{(Interpolation)}}\end{array}}[uu]&
+        \\
+%
+        &
+        &
+        *++[F-:<5mm>]{\text{$R^b$}}&
+        &
+        \\
+%
+        &
+        {\text{Folgen $(f(\omega^i))_i, (g(\omega^i))_i$ }}%
+        \ar_%
+        {\begin{array}{c}\scriptstyle\text{\emph{punktweise}}\\%
+        [-2mm]\scriptstyle\text{\emph{Multiplikation}}\end{array}}[rr]&
+        &
+        {\text{ Folge $(f(\omega^i)g(\omega^i))_i$}}\ar@{-}[uu]&
+    }
+\end{align*}
+
+\pagebreak
+
+\subsection{%
+    Schnelle \name{Fourier}transformation (FFT)%
+}
+
+Ohne Einschränkung sei nun $b = 2^r$ eine Zweierpotenz mit $r \in \natural$.
+Für ein beliebiges Polynom $f := \sum_{i=0}^{b-1} u_i X^i \in R[X]/\erzeugnis{X^b - 1}$ gilt
+$f(X) = f_0(X^2) + X \cdot f_1(X^2)$ mit den Polynomen
+$f_0, f_1 \in R[X]/\erzeugnis{X^{b/2} - 1}$,
+wobei $f_0 := \sum_{i=0}^{b/2-1} u_{2i} X^i$ und
+$f_1 := \sum_{i=0}^{b/2-1} u_{2i+1} X^i$.
+Insbesondere gilt $f(\omega^i) = f_0(\omega^{2i}) + \omega^i \cdot f_1(\omega^{2i})$
+für $i = 0, \dotsc, b - 1$,
+wobei $\omega \in R$ eine primitive $b$-te Einheitswurzel ist,
+d.\,h. $\omega^2$ ist eine primitive $\frac{b}{2}$-te Einheitswurzel.
+Diesen Umstand kann man zur rekursiven Berechnung der diskreten Fourier-Transformation ausnutzen
+(\emph{divide and conquer}).
+
+\textbf{schnelle \name{Fourier}transformation (FFT)}:\\
+Seien $b = 2^r$ mit $r \in \natural$ und $\omega \in R$ eine primitive $b$-te Einheitswurzel.\\
+Dann kann man die diskr. Fouriertransformation $F(f)$ von
+$f := \sum_{i=0}^{b-1} u_i X^i \in R[X]/\erzeugnis{X^b - 1}$
+mit der \begriff{schnellen \name{Fourier}transformation (FFT)} wie folgt berechnen:
+\begin{enumerate}
+    \item
+    Definiere die Fouriertransformation $F'\colon R[X]/\erzeugnis{X^{b/2} - 1} \to R^{b/2}$
+    mit der primitiven $\frac{b}{2}$-ten Einheitswurzel $\omega^2$.
+    
+    \item
+    Setze
+    $f_0 := \sum_{i=0}^{b/2-1} u_{2i} X^i,\;
+    f_1 := \sum_{i=0}^{b/2-1} u_{2i+1} X^i \in R[X]/\erzeugnis{X^{b/2} - 1}$.
+    
+    \item
+    Berechne $(a_0, \dotsc, a_{b/2-1}) := F'(f_0)$ und
+    $(c_0, \dotsc, c_{b/2-1}) := F'(f_1)$ rekursiv.
+    
+    \item
+    Setze $a := (a_0, \dotsc, a_{b/2-1}, a_0, \dotsc, a_{b/2-1}),\;
+    c := (c_0, \dotsc, c_{b/2-1}, c_0, \dotsc, c_{b/2-1}) \in R^b$ und berechne
+    $w := (\omega^0, \dotsc, \omega^{b-1}) \in R^b$.
+    
+    \item
+    Gebe $F(f) := a + w \cdot c$ zurück ("`$+$"' und "`$\cdot$"' komponentenweise).
+\end{enumerate}
+
+\textbf{Lemma (Korrektheit)}:
+Der FFT-Algorithmus arbeitet korrekt, d.\,h. $F(f) = a + w \cdot c$.
+
+\begin{Beweis}
+    Es gilt
+    $F(f)
+    = (f(\omega^i))_{i=0,\dotsc,b-1}
+    = (f_0(\omega^{2i}) + \omega^i \cdot f_1(\omega^{2i}))_i
+    = (f_0(\omega^{2i}))_i + w \cdot (f_1(\omega^{2i}))_i$.
+    Für $i = 0, \dotsc, b/2-1$ und $j = 0, 1$ gilt dabei
+    $f_j(\omega^{2(b/2+i)})
+    = f_j(\omega^{b+2i})
+    = f_j(\omega^{2i})$, d.\,h. die zweite Hälfte von $(f_j(\omega^{2i}))_i$ ist
+    jeweils gleich der ersten Hälfte.
+    Die erste Hälfte ist jeweils gleich $(f_j((\omega^2)^i))_{i=0,\dotsc,b/2-1} = F'(f_j)$.
+    Damit ist $(f_0(\omega^{2i}))_i = a$ und $(f_1(\omega^{2i}))_i = c$.
+\end{Beweis}
+
+\linie
+
+\textbf{verwendete Operationen (elementare arithmetische Operationen) in $R$}:
+\begin{itemize}
+    \item
+    Addition
+    
+    \item
+    Multiplikation mit $\omega$
+    
+    \item
+    Multiplikation mit $b^{-1}$ und mit $2$
+\end{itemize}
+
+\textbf{Zeitbedarf}:
+$\O(b \log b)$ elementare arithmetische Operationen
+
+\begin{Beweis}
+    Beschreibt $t(b)$ die Anzahl der benötigten elementaren arithmetischen Operationen für $b$,
+    dann gilt $t(b) = 2t(\frac{b}{2}) + \O(b)$,
+    denn es muss zweimal FFT für $\frac{b}{2}$ durchgeführt werden und es
+    fallen $\O(b)$ viele Operationen an (Aufteilung von $f$ in $f_0, f_1$ und
+    Berechnung von $a + w \cdot c$).
+    Mit dem Master-Theorem kann man diese Gleichung lösen und erhält
+    $t(b) \in \O(b \log b)$.
+\end{Beweis}
+
+Dadurch kann man zwei Zahlen mit $\O(b \log b)$-vielen elementaren arithmetischen Operationen
+multiplizieren.
+Der Vorteil der FFT gegenüber der direkten Multiplikation $\ast$ in $R[X]/\erzeugnis{X^b - 1}$ ist,
+dass $\ast$ einerseits beliebige Ringelemente miteinander multipliziert (d.\,h. langsamer)
+und andererseits eine Laufzeit von $\Theta(b^2)$ besitzt.
+
+\pagebreak
+
+\subsection{%
+    Wahl von geeigneten Ringen und primitiven Einheitswurzeln%
+}
+
+\textbf{Konstruktion von primitiven $b$-ten Einheitswurzeln in Körpern}:\\
+Sei $b \in \natural$ und $\FF$ ein Körper mit $\Char(\FF) = 0$ oder $\Char(\FF) = p$ prim
+mit $\ggT(p, b) = 1$ (d.\,h. $p \notteilt b$),
+insbesondere existiert $b^{-1} \in \FF$.
+Die Ableitung des Polynoms $X^b - 1 \in \FF[X]$ ist $bX^{b-1}$,
+es gibt also keine mehrfachen Nullstellen
+($bX^{b-1}$ hat nur $0$ als Nullstelle, $0$ ist aber keine Nullstelle von $X^b - 1$).
+Angenommen, $X^b - 1$ zerfällt in $\FF[X]$ in Linearfaktoren.
+Dann bilden die Nullstellen von $X^b - 1 \in \FF[X]$ eine Untergruppe von $\FF^\ast$
+der Ordnung $b$
+(da $(xy)^b - 1 = x^b y^b - 1 + y^b - y^b$\\
+$= y^b (x^b - 1) + (y^b - 1) = 0$,
+wenn $x, y \in \FF$ Nullstellen sind).
+Weil $\FF^\ast$ zyklisch ist, ist die Nullstellen-Untergruppe zyklisch der Ordnung $b$,
+d.\,h. es gibt einen Erzeuger $\omega \in R$ mit $\omega^b = 1$ und
+$\forall_{i=1,\dotsc,b-1}\; \omega^i \not= 1$.
+
+Für $k = 1, \dotsc, b - 1$ und $b > 1$ gilt
+$0 = 1 - \omega^{bk} = (1 - \omega^k) \sum_{i=0}^{b-1} \omega^{ki}$ mit
+$1 - \omega^k \not= 0$.
+Nach der Nullteilerfreiheit von $\FF$ muss daher $\sum_{i=0}^{b-1} \omega^{ki} = 0$ gelten,
+d.\,h. $\omega$ ist eine primitive $b$-te Einheitswurzel.
+(Das geht natürlich nur für Körper.)
+
+Obige Annahme, dass $X^b - 1$ in $\FF[X]$ in Linearfaktoren zerfällt, ist allerdings
+unrealistisch, denn wenn das nicht gilt, dann muss man zum Zerfällungskörper übergehen,
+was algorithmisch lange brauchen kann.
+
+\linie
+
+\textbf{Satz (Konstruktion von "`guten"' Ringen und Einheitswurzeln)}:\\
+Seien $b := 2^r$ mit $r \in \natural$,
+$m \in \natural$ mit $b \teilt m$,
+$n := 2^m + 1$,
+$\psi := 2^{m/b}$,
+$\omega := \psi^2$ und
+$R := \ZnZ$.\\
+Dann gelten in $R$:
+\begin{enumerate}
+    \item
+    $b^{-1} = -2^{m-r}$
+    
+    \item
+    $\psi^b = -1$
+    
+    \item
+    $\omega$ ist eine primitive $b$-te Einheitswurzel.
+\end{enumerate}
+
+\begin{Beweis}
+    Alle Rechnungen werden im Folgenden in $R$ durchgeführt.
+    
+    Es gilt $2^m = n - 1 = -1$.
+    Daher ist $-2^{m-r} b = -2^m = 1$ und deswegen $b^{-1} = -2^{m-r}$.
+    Außerdem folgt $\psi^b = (2^{m/b})^b = 2^m = -1$.
+    
+    Wegen $\psi^b = -1$ gilt $\omega^b = \psi^{2b} = 1$.
+    Sei $k = 1, \dotsc, b - 1$.
+    Dann gilt\\
+    $\sum_{i=0}^{b-1} \omega^{ki} = (1 + \omega^k) \sum_{i=0}^{b/2-1} (\omega^2)^{ki}
+    = (1 + \omega^k) (1 + (\omega^2)^k) \sum_{i=0}^{b/4-1} (\omega^4)^{ki}
+    = \dotsb
+    = \prod_{p=0}^{r-1} (1 + \omega^{2^p k})$.
+    Ist $k =: 2^\ell u$ mit $\ell \in \natural_0$ und $u$ ungerade,
+    so gilt wegen $k < b = 2^r$, dass $\ell \in \{0, \dotsc, r - 1\}$.
+    Definiert man $p := r - 1 - \ell$, dann ist $p \in \{0, \dotsc, r - 1\}$ und
+    es gilt $2^p k = 2^{r-1-\ell} 2^\ell u = 2^{r-1} u$,
+    d.\,h. der $(r-1-\ell)$-te Faktor hat die Form $(1 + \omega^{2^{r-1} u})$.
+    Es gilt allerdings $\omega^{2^{r-1} u} = (\psi^{2^r})^u$\\
+    $= (\psi^b)^u = (-1)^u = -1$,
+    d.\,h. der Faktor $(1 + \omega^{2^{r-1} u})$ verschwindet und
+    daher ist das Produkt und somit auch die Summe
+    $\sum_{i=0}^{b-1} \omega^{ki}$ gleich Null.
+\end{Beweis}
+
+Mit dieser Wahl von $R$, $b$ und $\omega$ sind alle elementaren arithmetischen Operationen
+aus dem FFT-Algorithmus "`leicht"', da Multiplikationen mit $\omega$, $b^{-1}$ und $2$ nur
+Bitshifts darstellen.
+
+\pagebreak
+
+\subsection{%
+    Algorithmus von \name{Schönhage}-\name{Strassen}%
+}
+
+\subsubsection{%
+    Überblick%
+}
+
+\textbf{Überblick über den Algorithmus von \name{Schönhage}-\name{Strassen}}:
+Der \begriff{Algorithmus von \name{Schönhage}-\name{Strassen}} multipliziert zwei Zahlen
+$u, v \in \integer/(2^n + 1)\integer$.
+Für den folgenden Überblick sei $n \in \natural$ eine Quadratzahl und
+so groß, dass $u, v$ jeweils $< \frac{n}{2}$ viele Stellen besitzen.
+\begin{align*}
+    \xymatrix@R=8mm@C=0mm{
+        &
+        \hbox to 0mm{\hss$u, v \in \integer/(2^n + 1)\integer$\hss}%
+        \ar@{-}[d]&
+        \\
+        %
+        *=0{}\ar_{\text{\textbf{\emph{(1)}}}}[d]&
+        *=0{}\ar@{-}[l]\ar@{-}[r]&
+        *=0{}\ar^{\text{\textbf{\emph{(4)}}}}[d]\\
+        %
+        u', v' \in \integer%
+        \ar_{\text{\textbf{\emph{(2)}}}}[d]&
+        &
+        f, g \in (\integer/(2^{2\sqrt{n}} + 1)\integer)[X]/\erzeugnis{X^{\sqrt{n}} - 1}%
+        \ar^{\text{\textbf{\emph{(5)}}}}[d]\\
+        %
+        u' \cdot v' \in \integer%
+        \ar_{\text{\textbf{\emph{(3)}}}}[d]&
+        &
+        F(f), F(g) \in (\integer/(2^{2\sqrt{n}} + 1)\integer)^{\sqrt{n}}%
+        \ar^{\text{\textbf{\emph{(6)}}}}[d]\\
+        %
+        (w_0', \dotsc, w_{\sqrt{n}-1}') \in (\integer/\sqrt{n}\integer)^{\sqrt{n}}%
+        \ar@{-}[ddd]&
+        &
+        F(f) \cdot F(g) \in (\integer/(2^{2\sqrt{n}} + 1)\integer)^{\sqrt{n}}%
+        \ar^{\text{\textbf{\emph{(7)}}}}[d]\\
+        %
+        {\hphantom{f(X) \ast g(X) \in
+        (\integer/(2^{2\sqrt{n}} + 1)\integer)[X]/\erzeugnis{X^{\sqrt{n}} - 1}}}&
+        &
+        f \ast g \in (\integer/(2^{2\sqrt{n}} + 1)\integer)[X]/\erzeugnis{X^{\sqrt{n}} - 1}%
+        \ar^{\text{\textbf{\emph{(8)}}}}[d]\\
+        %
+        &
+        &
+        (w_0'', \dotsc, w_{\sqrt{n}-1}'') \in (\integer/(2^{2\sqrt{n}} + 1)\integer)^{\sqrt{n}}%
+        \ar@{-}[d]\\
+        %
+        *=0{}\ar@{-}[r]&
+        *=0{}\ar_{\text{\textbf{\emph{(9)}}}}[d]&
+        *=0{}\ar@{-}[l]\\
+        %
+        &
+        \hbox to 0mm{\hss$(w_0, \dotsc, w_{\sqrt{n}-1}) \in
+        (\integer/\sqrt{n}(2^{2\sqrt{n}} + 1)\integer)^{\sqrt{n}}$\hss}%
+        \ar_{\text{\textbf{\emph{(10)}}}}[d]&
+        \\
+        %
+        &
+        \hbox to 0mm{\hss$u \cdot v \in \integer/(2^n + 1)\integer$\hss}&
+        %
+    }
+\end{align*}
+\begin{enumerate}
+    \item
+    kleiner Anteil aus den Blöcken
+    
+    \item
+    Multiplikation nach Karatsuba
+    
+    \item
+    Blöcke extrahieren
+    
+    \item
+    $\sqrt{n}$-Bit-Blöcke werden als Zahlen mod $(2^{2\sqrt{n}} + 1)$ und als Koeff.en
+    von $f, g$ interpretiert
+    
+    \item
+    Fouriertransformation
+    
+    \item
+    punktweise Multiplikation: wende den Multiplikationsalg. rekursiv auf jeden Block an
+    
+    \item
+    inverse Fouriertransformation
+    
+    \item
+    Koef"|fizienten von $f \ast g$ werden als Blöcke interpretiert
+    
+    \item
+    kombiniere $w_i', w_i''$ zu $w_i$ mittels chinesischem Restsatz
+    
+    \item
+    setze $u \cdot v$ aus den $w_i$ zusammen
+\end{enumerate}
+
+\pagebreak
+
+\subsubsection{%
+    Detaillierte Beschreibung%
+}
+
+Seien $u, v \in \natural$ zwei binär gegebene Zahlen,
+sodass $u \cdot v$ höchstens $n \in \natural$ Bits benötigt, wobei $n = 2^s$ für ein
+$s \in \natural$.
+Im Folgenden wird $u \cdot v \pmod{2^n + 1}$ berechnet, woraus sich $u \cdot v$ eindeutig ablesen
+lässt.
+
+\textbf{Zerlegung von $u, v$ in Blöcke $u_i, v_i$}:
+Definiere $b := 2^{\lceil s/2 \rceil}$ und $\ell := 2^{\lfloor s/2 \rfloor}$
+(d.\,h. $b \approx \sqrt{n} \approx \ell$).\\
+Dann gelten $n = b \cdot \ell$, $b \teilt 2\ell$, $b \teilt 2^{2\ell}$ sowie
+$\ell \le \sqrt{n} \le b \le 2\ell$.\\
+Zerlege nun $u$ und $v$ jeweils in $b$ Blöcke der Länge $\ell$,
+d.\,h. $u = \sum_i u_i 2^{\ell i}$ und $v = \sum_i v_i 2^{\ell i}$ mit\\
+$u_i, v_i \in \{0, \dotsc, 2^\ell - 1\}$ für $i \in \{0, \dotsc, b - 1\}$ und
+$u_i := 0 =: v_i$ sonst.
+
+\linie
+
+\textbf{Blöcke $w_i$ von $u \cdot v$}:
+Definiere $y_i := \sum_j u_j v_{i-j}$.
+Dann folgt aus $y_i \not= 0$, dass $i \in \{0, \dotsc, 2b - 2\}$.
+\begin{itemize}
+    \item
+    Für $i \in \{0, \dotsc, b - 1\}$ sind höchstens $(i + 1)$ Summanden in $y_i$ ungleich Null
+    (nämlich genau die für $j \in \{0, \dotsc, i\}$)
+    und jeder Summand hat höchstens die Länge $2\ell$,
+    d.\,h. es gilt dann $y_i < (i + 1) 2^{2\ell}$.
+    
+    \item
+    Für $i \in \{b, \dotsc, 2b - 2\}$ sind höchstens $(2b-i-1)$ Summanden in $y_i$ ungleich Null
+    (aus $u_j v_{i-j} \not= 0$ folgt $j \in \{0, \dotsc, b - 1\}$ und
+    $i - j \in \{0, \dotsc, b - 1\} \iff j \in \{i+1-b, \dotsc, i\}$,
+    diese Bedingungen sind äquivalent zu $j \in \{i+1-b, \dotsc, b-1\}$,
+    was $(2b-i-1)$ Summanden ergibt)
+    und jeder Summand hat höchstens die Länge $2\ell$,
+    d.\,h. es gilt dann $y_i < (2b-i-1) 2^{2\ell}$.
+\end{itemize}
+Damit gilt nun $u \cdot v = \sum_i (\sum_j u_j v_{i-j}) 2^{\ell i} = \sum_i y_i 2^{\ell i} =
+\sum_{i=0}^{b-1} (y_i - y_{b+i}) 2^{\ell i}$ in $\integer/(2^n + 1)\integer$ wegen
+$2^{b\ell} = -1$.
+Definiert man $w_i := y_i - y_{b+i}$, so folgt für das Produkt
+$u \cdot v = \sum_{i=0}^{b-1} w_i 2^{\ell i}$
+mit $-(b-i-1)2^{2\ell} < w_i < (i+1)2^{2\ell}$ für $i = 0, \dotsc, b - 1$.\\
+Ohne Vorzeichen ist die Bitlänge von $w_i$ höchstens $b$.
+Auch mit dem Vorzeichen verbraucht $w_i$ höchstens $b$ Bits, d.\,h. man kann
+$w_i \bmod b(2^{2\ell} + 1)$ berechnen, um $w_i$ zu bestimmen
+(verbraucht die "`Modulo-Zahl"' mehr als $(i + 1)$ Bit, dann ist sie eigentlich negativ und
+man muss sie von $b(2^{2\ell} + 1)$ abziehen).
+Es genügt also zur Berechnung von $u \cdot v$, die $w_i \bmod b(2^{2\ell} + 1)$ berechnen.
+
+\linie
+
+\textbf{kleine Blöcke $w_i'$ und große Blöcke $w_i''$}:
+Mit dem chinesischen Restsatz genügt es, $w_i \bmod b$ und $w_i \bmod (2^{2\ell} + 1)$ zu berechnen
+(da $b$ Zweierpotenz und $2^{2\ell}+1$ ungerade), um $w_i$ zu erhalten.\\
+Sei nämlich $w_i \equiv w_i' \pmod b$ und $w_i \equiv w_i'' \pmod{2^{2\ell} + 1}$,
+dann ergibt sich $w_i$ aus $w_i', w_i''$ durch
+$w_i \equiv w_i' (2^{2\ell}+1) - w_i'' 2^{2\ell} \pmod{b(2^{2\ell}+1)}$,
+denn wegen $2^{2\ell} \equiv 0 \pmod b$ folgt $w_i \equiv w_i' \pmod b$ und
+$w_i \equiv w_i'' \pmod{2^{2\ell} + 1}$.\\
+Man muss noch dazu bemerken, dass $w_i$ auf diese Weise in Linearzeit berechnet werden kann
+(1. Summand kleiner als $b(2^{2\ell}+1)$, d.\,h. die Modulo-Operation ist wirkungslos,
+und die Berechnung des 2. Summands modulo $b(2^{2\ell}+1)$ geht in Linearzeit,
+da $w_i'' 2^{2\ell}$ sehr viele Nullen enthält).
+
+\linie
+
+\textbf{Berechnung der $w_i'$}:
+Definiere $u_i' := u_i \bmod b$, $v_i' = v_i \bmod b$ und $y_i' := \sum_j u_j' v_{i-j}'$.
+Dann gilt $w_i' = (y_i' - y_{b+i}') \bmod b$, d.\,h. es reicht, die $y_i'$ auszurechnen,
+um die $w_i'$ zu erhalten
+(modulo $b$ ist einfach wg. $b$ Zweierpotenz).\\
+$y_i'$ besitzt $2b$ Summanden der Länge $b^2$, d.\,h. es gilt $0 \le y_i' < 2b^3$.
+Somit belegt jedes $y_i'$ höchstens $1 + 3 \log b < 4\log b$ viele Bits.
+Definiere $u' := \sum_i u_i' 2^{(4\log b)i}$ und $v' := \sum_i v_i' 2^{(4\log b)i}$,
+dann gilt $u' \cdot v' = \sum_i (\sum_j u_j' v_{i-j}') 2^{(4\log b)i}
+= \sum_i y_i' 2^{(4\log b) i}$.
+Weil die $y_i'$ eine kleinere Länge als $4\log b$ besitzen, überlappen sich die Summanden
+$y_i' 2^{(4\log b) i}$ nicht, d.\,h. aus $u' \cdot v'$ kann man die $y_i'$
+berechnen.\\
+Weil $u'$ und $v'$ jeweils höchstens $4b\log b$ viele Bits besitzen, kann mittels des
+Algorithmus von Karatsuba $u' \cdot v'$ in Zeit $\O((4b\log b)^{1.6}) \subset \O(b^2) = \O(n)$
+berechnet werden.\\\
+(Die Schulmethode wäre zu langsam, da
+$\Theta((4b\log b)^2) = \Theta(b^2 \log^2 b) \not\subset \O(b^2) = \O(n)$.)
+
+\linie
+\pagebreak
+
+\textbf{Berechnung der $w_i''$}:
+Definiere $N := 2^{2\ell}+1$ und $R := \integer/N\integer$.
+Dann ist $R$ ein "`guter"' Ring wie im letzten Abschnitt (wähle $m := 2\ell$,
+dann ist $b$ Zweierpotenz mit $b \teilt m$).
+Seien $\psi := 2^{2\ell/b}$ und $\omega := \psi^2$.
+$\omega$ ist eine primitive $b$-te Einheitswurzel nach dem Satz.\\
+Definiere $f(X) := \sum_i u_i \psi^i X^i,\;
+g(X) := \sum_i v_i \psi^i X^i \in R[X]/\erzeugnis{X^b - 1}$.
+Dann gilt für das Produkt
+$h(X) := f(X) \ast g(X) = \sum_i (\sum_j u_j v_{i-j}) \psi^i X^i
+= \sum_{i=0}^{b-1} (y_i - y_{b+i}) \psi^i X^i
+= \sum_{i=0}^{b-1} w_i \psi^i X^i$
+aufgrund von $X^b = 1$ in $R[X]/\erzeugnis{X^b - 1}$ und $\psi^b = -1$ nach dem Satz.\\
+Seien $z_i$ die Koeff.en von $h(X)$, d.\,h.
+$h(X) =: \sum_{i=0}^{b-1} z_i X^i$, dann gilt
+$w_i'' = z_i \psi^{-i} \bmod (2^{2\ell}+1)$
+($\psi$ ist invertierbar in $R$, da $\ggT(\psi, N) = 1$).
+Damit können aus $h(X) := f(X) \ast g(X)$ die $w_i''$ berechnet werden.
+Die Berechnung von $h(X)$ erfolgt mit FFT, wobei bei der punktweisen Multiplikation der
+Schönhage-Strassen-Algorithmus rekursiv aufgerufen wird.
+
+\linie
+
+\textbf{Satz (Laufzeit des Algorithmus von \name{Schönhage}-\name{Strassen})}:\\
+Der Schönhage-Strassen-Algorithmus zur Multiplikation zweier binär gegebener $n$-Bit-Zahlen
+benötigt $\O(n \log n \cdot \log \log n)$ Bit-Operationen.
+
+\begin{Beweis}
+    Sei $M(n)$ die Anzahl der vom Schönhage-Strassen-Algorithmus durchgeführten
+    Bit-Operationen zur Multiplikation zweier $n$-Bit-Zahlen.
+    Zur Berechnung von $h(X) = f(X) \ast g(X)$ verwendet der Algorithmus die Formel
+    $h = F^{-1}(F(f) \cdot F(g))$.
+    Bei der punktweisen Multiplikation $F(f) \cdot F(g)$ ruft der Algorithmus $b$-mal sich selbst
+    auf, weil die Vektoren $F(f)$ und $F(g)$ jeweils $b$ Elemente haben.
+    Jedes Element ist in $R$ enthalten und hat daher die Länge $2\ell$.
+    Daher ist der Aufwand für die rekursiven Aufrufe gleich $b \cdot M(2\ell)$.
+    
+    Die Berechnungen von $F(f)$, $F(g)$ und $F^{-1}(F(f) \cdot F(g))$ kosten
+    $\O(b \log b)$ viele elementare arithmetische Operationen
+    (siehe Abschnitt über Fouriertransformation).
+    Jede elementare arithmetische Operation kostet wiederum $\O(\ell)$ Bit-Operationen,
+    da die Zahlen alle Länge $2\ell$ haben.
+    Damit kosten diese Berechnungen
+    $\O(\ell \cdot b \log b) = \O(\sqrt{n} \cdot \sqrt{n} \log(\sqrt{n})) = \O(n \log n)$
+    Bit-Operationen.
+    Insgesamt gilt also $M(n) \in b \cdot M(2\ell) + \O(n \log n)$.
+    
+    Mit $n = 2^s$ und $b, \ell \in \Theta(\sqrt{n}) = \Theta(\sqrt{2^s})$ erhält man
+    $M(2^s) \in \sqrt{2^s} \cdot M(2\sqrt{2^s}) + \O(s 2^s)$.
+    Teilt man diese Beziehung durch $2^s$, so bekommt man
+    $\frac{M(2^s)}{2^s} \in \frac{M(2\sqrt{2^s})}{\sqrt{2^s}} + \O(s)
+    \iff t(s) \in 2t(\frac{s}{2} + 1) + \O(s)$
+    mit $t(s) := \frac{M(2^s)}{2^s}$.
+    Mit dem Master-Theorem gilt $t(s) \in \O(s \log s) \iff M(2^s) \in \O(2^s s \log s)$.
+    Mit $s = \log n$ erhält man $M(n) \in \O(n \log n \cdot \log \log n)$.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    Drei-Primzahlen-Multiplikationsalgorithmus%
+}
+
+\textbf{Drei-Primzahlen-Multiplikationsalgorithmus}:
+Mit dem \begriff{Drei-Primzahlen-Multiplikations"-algorithmus} kann das Produkt $w$ von zwei
+natürlichen Zahlen $u, v \in \natural$ wie folgt berechnet werden,
+wenn $u, v < 2^{64 \cdot 2^{40}}$.
+\begin{enumerate}
+    \item
+    Spalte $u, v$ in Blöcke der Länge 64 Bit auf, d.\,h.
+    $u =: \sum_j u_j 2^{64j}$ und $v =: \sum_j v_j 2^{64j}$ mit
+    $0 \le u_j, v_j < 2^{64}$.
+    
+    \item
+    Wähle drei paarweise verschiedene Primzahlen $p_1, p_2, p_3 \in 2^{56}\integer + 1$
+    mit $p_1, p_2, p_3 < 2^{64}$
+    sowie für $i = 1, 2, 3$ jeweils
+    eine primitive $2^{56}$-te Einheitswurzel $\omega_i$ in $K_i := \integer/p_i\integer$.
+    
+    \item
+    Definiere $U_i(X) := \sum_j (u_j \bmod p_i) X^j$ und
+    $V_i(X) := \sum_j (v_j \bmod p_i) X^j$ für $i = 1, 2, 3$
+    sowie $W_i(X) := \sum_j w_{i,j} X^j := U_i(X) \ast V_i(X)$.
+    
+    \item
+    Berechne $W_i = F_i^{-1}(F_i(U_i) \cdot F_i(V_i))$ mithilfe der
+    Fouriertransformation $F_i$ in $K_i$ mit Einheitswurzel $\omega_i$.
+    
+    \item
+    Berechne $W(X) := \sum_j w_j X^j$ mit $0 \le w_j < p_1 p_2 p_3$, sodass
+    $w_j \equiv w_{i,j} \pmod{p_i}$ für $i = 1, 2, 3$
+    (Bestimmung der $w_j$ mittels des chinesischen Restsatzes).
+    
+    \item
+    Gebe $w := W(2^{64})$ aus.
+\end{enumerate}
+
+\linie
+
+\textbf{Satz (Korrektheit)}:
+Für $u, v < 2^{64 \cdot 2^{40}}$ gilt $w = u \cdot v$.
+
+\begin{Beweis}
+    Sei $m$ die größere Anzahl der 64-Bit-Blöcke $u_j$ oder $v_j$ von $u$ bzw. $v$.
+    Definiert man $U(X) := \sum_j u_j X^j$ und $V(X) := \sum_j v_j X^j$, so ist
+    $U(X) \ast V(X) = \sum_j z_j X^j$ mit $z_j := \sum_k u_k v_{j-k}$.
+    Damit gilt $u \cdot v = (U \ast V)(2^{64})$.
+    Gilt nun $w_j = z_j$ für alle $j$, dann ist dies gleich $W(2^{64}) = w$.
+    Es gilt $w_j = z_j$ genau dann, wenn $z_j < p_1 p_2 p_3$ gilt
+    und die Fouriertransformationen $F_i$
+    keinen Überlauf haben.
+    
+    Für die $z_j$ gilt nach ihrer Definition
+    $z_j < m \cdot 2^{64} \cdot 2^{64} = m 2^{2 \cdot 64}$.
+    Ist die Bedingung $m \le 2^{40}$ erfüllt, so gilt damit
+    $z_j < 2^{40} 2^{2 \cdot 64} = 2^{3 \cdot 56} < p_1 p_2 p_3$
+    (es gilt $p_i > 2^{56}$, da $p_i = 2^{56} k_i + 1$ für ein $k_i \in \natural$,
+    für $k_i \le 1$ wäre $p_i = 1$ nicht prim oder negativ).
+    
+    Die Fouriertransformation $F_i$ arbeitet im Körper $K_i = \integer/p_i\integer$.
+    Im schlechtesten Fall hat $p_i$ nur $57$ Bit.
+    Bei der punktweisen Multiplikation $F_i(U_i) \cdot F_i(V_i)$ werden zwei Vektoren
+    mit Einträgen in $K_i$ multipliziert.
+    
+    Bei der Multiplikation $U_i(X) \ast V_i(X)$ kommt ein Polynom vom Grad $\le 2m - 2$ heraus.
+    Damit dies $F_i^{-1}(F_i(U_i) \cdot F_i(V_i))$ entspricht, darf der Grad nicht größer als
+    $2^{56} - 1$ sein ($b - 1$ mit $b = 2^{56}$),
+    d.\,h. $2m - 2 \le 2^{56} - 1 \iff 2m < 2^{56} + 1 \iff 2m \le 2^{56}$.
+    Diese Bedingung ist mit $m \le 2^{40}$ erfüllt.
+\end{Beweis}
+
+Damit dürfen die Zahlen bis zu $64 \cdot 2^{40}$ Bits (ca. $8$ Terabyte) lang sein.
+Der Algorithmus benötigt drei Primzahlen, weil sonst der Exponent bei der oberen Schranke für
+die Länge negativ wäre.
+
+\textbf{Zeitbedarf}:
+$\O(n \log n)$ viele 64-Bit-Operationen
+
+Der Algorithmus ist kaum schneller als Schönhage-Strassen, weil $\log \log n$ beinahe
+konstant ist.
+
+\linie
+
+\textbf{Vergleich mit \name{Schönhage}-\name{Strassen}}:
+\begin{itemize}
+    \item
+    \emph{Vorteil}:
+    leichter zu implementieren
+    
+    \item
+    \emph{Nachteil}:
+    geht nur für Zahlen bis zur einer bestimmten Größe
+\end{itemize}
+
+\pagebreak

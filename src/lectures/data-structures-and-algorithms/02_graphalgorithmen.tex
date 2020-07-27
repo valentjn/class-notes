@@ -1,0 +1,716 @@
+\section{%
+    Graphalgorithmen%
+}
+
+\subsection{%
+    Allgemeines zu Graphen%
+}
+
+\textbf{Graph}:
+Ein Graph $G = (V, E, c)$ besteht aus einer Knotenmenge $V$,
+einer Kantenmenge $E$ und einer Kostenfunktion $c: E \rightarrow \mathbb{R}$.
+Ist der Graph \textbf{ungerichtet} bzw. \textbf{gerichtet},
+so sind die Elemente von $E$ der Form $\{a, b\}$ bzw. $(a, b)$ mit
+$a, b \in V$.
+Man legt $n = |V|$ und $m = |E|$ fest.
+
+Graphen sind \emph{das} Modellierungswerkzeug für Algorithmen
+(z.\,B. Straßennetzwerke, soziale Netzwerke, Zuordnungsprobleme usw.).
+
+\textbf{Pfad}:
+Ein Pfad von $v$ nach $w$ in einem gerichteten Graph $G = (V, E)$
+ist eine Folge von Knoten $v_0 v_1 \dotsc v_{k-1} v_k$ mit
+$v_0 = v$, $v_k = w$ und $\forall_{i=0,\dotsc,k-1}\; (v_i, v_{i+1}) \in E$. \\
+Dabei heißt $k$ die Länge des Pfades.
+
+\subsection{%
+    Speicherung und Darstellung von Graphen im Speicher%
+}
+
+\begin{itemize}
+    \item \textbf{Adjazenzmatrix}:
+    $n \times n$-Matrix $(\lambda_{vw})$ mit $\lambda_{vw} = 1$,
+    falls $(v, w) \in E$ und $\lambda_{vw} = 0$ sonst. \\
+    Platzbedarf: $\sim n^2$
+    
+    \item \textbf{Knoten-Kanten-Inzidenzmatrix}:
+    $n \times m$-Matrix $(\lambda_{ve})$ mit $\lambda_{ve} = -1$ und
+    $\lambda_{we} = +1$, falls $e = (v, w) \in E$.
+    Platzbedarf: $\sim n \cdot m$
+    
+    \item \textbf{Adjazenzlisten}:
+    Jeder Graph lässt sich darstellen durch
+    \begin{enumerate}
+        \item[1)] Liste der Knoten,
+        
+        \item[2)] Liste der Kanten,
+        
+        \item[3)] für jeden Knoten $v$ eine Liste der Kanten $e$ mit
+        $\source(e) = v$ (ausgehende Kanten) und
+        
+        \item[4)] für jeden Knoten $v$ eine Liste der Kanten $e$ mit
+        $\target(e) = v$ (eingehende Kanten).
+    \end{enumerate}
+    Konkret erstellt man dann zwei Datenstrukturen \code{Knoten} und
+    \code{Kante} mit
+    \begin{itemize}
+        \item \textbf{\code{Knoten}}:
+        Nummer = $1, \dotsc, n$, \quad
+        nächster Knoten in Liste 1), \\
+        erste ausgehende Kante in Liste 3), \quad
+        erste eingehende Kante in Liste 4) und
+        
+        \item \textbf{\code{Kante}}:
+        Nummer = $1, \dotsc, m$, \\
+        \textbf{source}: Verweis auf Quellknoten, \quad
+        \textbf{target}: Verweis auf Zielknoten, \\
+        jeweils ein Verweis auf nächste Kante in Liste 2), 3) und 4).
+    \end{itemize}
+    Platzbedarf: $\sim n + m$
+\end{itemize}
+
+\pagebreak
+
+\subsection{%
+    Tiefensuche (DFS) und Klassifizierung von Kanten%
+}
+
+\textbf{Problem (Bestimmung aller von einem Knoten erreichbaren Knoten)}: \\
+Gegeben sei ein gerichteter Graph $G = (V, E)$ sowie ein ausgezeichneter Knoten
+$s \in V$. \\
+Wie bestimmt man alle Knoten $v$, die von $s$ erreichbar sind 
+(d.\,h. es existiert ein Pfad von $s$ nach $v$)?
+Die von $s$ erreichbaren Knoten sind $s$ und alle Knoten, die von
+Knoten $u$ mit $(s, u) \in E$ erreichbar sind.
+
+\begin{lstlisting}
+DFS(u)                                                    Annahme: Erreichbar[] ist Boolesches Array
+    Erreichbar[u] := true                                  mit $\forall_{v \in V}$ Erreichbar[$v$] = false (zu Beginn)
+    forall e = (u, w)
+        if Erreichbar[w] = false
+            DFS(w)
+\end{lstlisting}
+
+\textbf{Satz}: Nach Ausführung von \code{DFS(s)} gilt \\
+1. $\forall_{v \in V}$ \code{Erreichbar[}$v$\code{] = true}
+$\;\Leftrightarrow\;$ es gibt ein Pfad von $s$ nach $v$, \\
+2. Laufzeit ist $\O(n + m)$ unter der Annahme, dass auf die Liste der
+adjazenten Knoten eines Knotens in $\O(1)$ zugegriffen werden kann.
+
+\begin{Beweis}
+    1. "`$\Rightarrow$"':
+    Man konstruiert für einen Knoten $v$ mit
+    \code{Erreichbar[}$v$\code{] = true}
+    einen Pfad $\pi_v$ von $s$ nach $v$ induktiv:
+    $\pi_s = s$ sowie $\pi_v = \pi_w v$, wobei $v \not= s$ ein Knoten ist,
+    der besucht wurde, und $(w, v) \in E$ so gewählt ist, dass
+    \code{DFS(}$v$\code{)} ausgehend von \code{DFS(}$w$\code{)} aufgerufen
+    wurde. \\
+    "`$\Leftarrow$"':
+    Sei $v_0 \dotsc v_k$, $v_0 = s$, $v_k = v$ ein Pfad von $s$ nach $v$.
+    Induktiv kann man zeigen, dass \code{DFS(}$v_i$\code{)}, $i = 0, \dotsc, k$
+    aufgerufen wurde (somit wurden alle $v_i$ besucht).
+    $i = 0$ ist trivial, denn der erste Aufruf ist \code{DFS(}$s$\code{)}.
+    Angenommen, \code{DFS(}$v_i$\code{)} wurde aufgerufen.
+    Dann wird in diesem Aufruf die Kante $(v_i, v_{i+1})$ betrachtet.
+    Entweder wurde $v_{i+1}$ schon betrachtet (fertig) oder wird jetzt
+    aufgerufen (fertig). \\
+    2. Jeder Knoten und jede Kante wird maximal $1$ Mal angeschaut.
+\end{Beweis}
+
+\linie
+
+DFS heißt \textbf{Tiefensuche} und teilt die Kanten eines Graphen in
+vier disjunkte Klassen ein: \\
+$E = T \;\dot{\cup}\; F \;\dot{\cup}\; B \;\dot{\cup}\; C$, wobei der
+Zeitpunkt betrachtet wird, wenn DFS eine Kante $e = (v, w)$ betrachtet.
+Dabei wird vorausgesetzt, dass der Graph keine Schlingen enthält.
+\begin{itemize}
+    \item $e \in T$ (\emph{tree}, Baumkante), falls $w$ noch nicht besucht,
+    \item $e \in F$ (\emph{forward}, Vorwärtskante), falls $w$ schon besucht
+    und $v \rightarrow^\ast_T w$ auf Baumkanten,
+    \item $e \in B$ (\emph{backward}, Rückwärtskante), falls $w$ schon besucht
+    und $w \rightarrow^\ast_T v$ auf Baumkanten,
+    \item $e \in C$ (\emph{cross}, Querkante), falls $w$ schon besucht
+    und weder $v \rightarrow^\ast_T w$ noch $w \rightarrow^\ast_T v$.
+\end{itemize}
+
+\linie
+
+Man kann nun einen \textbf{erweiterten DFS} betrachten, der zusätzlich zu der
+Einordnung jeder Kante den Aufrufszeitpunkt von \code{DFS(v)} jedes Knotens
+$v$ in \code{dfsnum[v]} und den Zeitpunkt, wann \code{DFS(v)} abgeschlossen
+wurde, in \code{compnum[v]} speichert.
+
+\begin{lstlisting}
+DFS(v)                                                      Globale Variablen:
+    besucht[v] := true                                       besucht[], zu Beginn alles false
+    count1++                                                count1 := 0, count2 := 0
+    dfsnum[v] := count1
+                                                            Oberroutine:
+    forall e = (v, w)                                       forall $s \in V$
+        if besucht[w] = false                                   if besucht[s] = false
+            T := $T \cup \{e\}$                                                    DFS(s)
+            DFS(w)
+        else if v $\rightarrow^\ast_T$ w
+            F := $F \cup \{e\}$
+        else if w $\rightarrow^\ast_T$ v
+            B := $B \cup \{e\}$
+        else
+            C := $C \cup \{e\}$
+    
+    count2++
+    compnum[v] := count2
+\end{lstlisting}
+
+\linie
+\pagebreak
+
+\textbf{Lemma}:
+\begin{itemize}
+    \item
+    $E = T \;\dot{\cup}\; F \;\dot{\cup}\; B \;\dot{\cup}\; C$,
+    
+    \item
+    die Menge $T$ entspricht dem Aufrufwald der rekursiven Aufrufe,
+    
+    \item
+    $v \rightarrow^\ast_T w \;\Leftrightarrow\;$
+    \code{dfsnum[}$v$\code{]} $\le$ \code{dfsnum[}$w$\code{]} $\;\land\;$
+    \code{compnum[}$v$\code{]} $\ge$ \code{compnum[}$w$\code{]},
+    
+    \item
+    Seien $v, w, z \in V$ mit $v \rightarrow^\ast_T w$ und
+    $(w, z) \in E$ mit $v \nrightarrow^\ast_T z$, dann gilt: \\
+    \code{dfsnum[}$z$\code{]} $<$ \code{dfsnum[}$v$\code{]}, \qquad
+    $(w, z) \in B \cup C$, \\
+    \code{compnum[}$z$\code{]} $>$ \code{compnum[}$v$\code{]}
+    $\;\Leftrightarrow\; (w, z) \in B$, \\
+    \code{compnum[}$z$\code{]} $<$ \code{compnum[}$v$\code{]}
+    $\;\Leftrightarrow\; (w, z) \in C$.
+    
+    \item
+    $\forall_{(v, w) \in E}\; (v, w) \in T \cup F \;\Leftrightarrow\;$
+    \code{dfsnum[}$v$\code{]} $<$ \code{dfsnum[}$w$\code{]},
+    
+    \item
+    $\forall_{(v, w) \in E}\; (v, w) \in B \;\Leftrightarrow\;$
+    \code{dfsnum[}$v$\code{]} $>$ \code{dfsnum[}$w$\code{]} $\;\land\;$
+    \code{compnum[}$v$\code{]} $<$ \code{compnum[}$w$\code{]},
+    
+    \item
+    $\forall_{(v, w) \in E}\; (v, w) \in C \;\Leftrightarrow\;$
+    \code{dfsnum[}$v$\code{]} $>$ \code{dfsnum[}$w$\code{]} $\;\land\;$
+    \code{compnum[}$v$\code{]} $>$ \code{compnum[}$w$\code{]}.
+\end{itemize}
+
+\linie
+
+\textbf{Folgerungen}:
+Die Klassifizierung der Kanten aus $E$ in $T$-/$F$-/$B$-/$C$-Kanten kann
+mittels \code{dfsnum}/\code{compnum} ef"|fizient algorithmisch erfolgen. \\
+$G$ ist azyklisch
+(d.\,h. besitzt keine Zyklen, also Pfade mit demselben Anfangs- und Endpunkt)
+$\;\Leftrightarrow\; \forall_{(v,w) \in E}\;$
+\code{compnum[}$v$\code{]} $>$ \code{compnum[}$w$\code{]}
+$\;\Leftrightarrow\;$ es gibt keine $B$-Kanten. \\
+In diesem Fall ist $\num(v) = n + 1 \;-$ \code{compnum[}$v$\code{]}
+eine topologische Sortierung.
+
+\textbf{topologische Sortierung}:
+Ein gerichteter Graph hat eine \emph{topologische Sortierung}, falls die
+Knoten auf einer horizontalen Linie gemalt werden können, sodass
+alle Kanten nur von links nach rechts gehen.
+Formal ist eine Abbildung $\num: V \rightarrow \{1, \dotsc, n\}$ eine
+topologische Sortierung des gerichteten Graphen $G = (V, E)$ mit $|V| = n$,
+falls $\num(v) < \num(w)$ für alle $(v, w) \in E$. \\
+Ein gerichteter Graph $G$ hat eine topologische Sortierung genau dann,
+wenn $G$ azyklisch ist.
+
+\subsection{%
+    Zusammenhangskomponenten%
+}
+
+\textbf{Zusammenhangskomponenten (ZHK) eines ungerichteten Graphen}: \\
+maximale Teilmenge $V' \subseteq V$, sodass für alle $v, w \in V'$ ein
+Pfad von $v$ nach $w$ existiert.
+
+\linie
+
+\textbf{starke Zusammenhangskomponenten (SZHK) eines gerichteten Graphen}: \\
+maximale Teilmenge $V' \subseteq V$, welche stark zusammenhängend ist. \\
+Eine Knotenmenge $V' \subseteq V$ ist \emph{stark zusammenhängend}, wenn es
+für alle $v, w \in V'$ einen Pfad von $v$ nach $w$ gibt.
+$v$ \emph{liegt in derselben SZHK} wie $w$ genau dann, wenn es einen Pfad
+von $v$ nach $w$ und einen Pfad von $w$ nach $v$ gibt.
+
+\textbf{Satz}:
+Seien $(V_1, E_1), \dotsc, (V_k, E_k)$ die SZHKs von $G$.
+Dann gilt: \\
+1. $\bigcup_{i=1}^k V_i = V$, \qquad\qquad
+2. $\forall_{i, j = 1, \dotsc, k,\; i \not= j}\;
+V_i \cap V_j = \emptyset$, \\
+3. Der Graph $G' = (V', E')$ mit $V' = \{v_1, \dotsc, v_k\}$
+(wobei $v_i \in V_i$ für $i = 1, \dotsc, k$) und \\
+$E' = \{(v_i, v_j) \;|\;
+\exists_{v \in V_i,\; w \in V_j}\; (v, w) \in E,\; i \not= j\}$ ist
+azyklisch (\emph{component graph}).
+
+\linie
+
+\textbf{naive Berechnung der SZHK eines Knotens $v$}:
+Rufe zunächst \code{DFS(}$v$\code{)} auf und speichere alle von $v$
+erreichbaren Knoten in $R$.
+Rufe dann für alle $w \in R$ \code{DFS(}$w$\code{)} auf.
+Falls $v$ dabei erreicht wird, liegt $w$ in derselben SZHK wie $v$.
+
+\textbf{etwas ef"|fizientere Berechnung}:
+Rufe zunächst wie eben \code{DFS(}$v$\code{)} auf und speichere alle von $v$
+erreichbaren Knoten in $R$.
+Rufe dann \code{DFS(}$v$\code{)} auf $G^{-1}$ auf (wobei $G^{-1}$ dieselben
+Knoten und die gleichen, bloß umgedrehten Kanten wie $G$ hat),
+speichere somit alle Knoten, von denen $v$ erreichbar ist, in $R'$.
+Die SZHK von $v$ ist dann $R \cap R'$.
+
+\linie
+
+\textbf{Grundidee der ef"|fizienten Berechnung von SZHKs}: \\
+SZHKs bilden Teilbäume des von DFS (durch die $T$-Kanten) aufgespannten Baums
+$\mathcal{T}$.
+
+\textbf{Beobachtung (Lemma)}:
+Wenn $a \rightarrow^\ast b$ und $b \rightarrow^\ast a$ gilt, dann liegen
+alle Knoten $c$ "`in der Mitte"',
+d.\,h. $a \rightarrow^\ast c \rightarrow^\ast b$,
+in derselben SZHK wie $a$ und $b$.
+
+\begin{Beweis}
+    Angenommen, die SZHK $\Sigma$ eines Knotens $v$ liegt in zwei disjunkten
+    Teilbäumen $\Sigma_1, \Sigma_2$ von $\mathcal{T}$.
+    Entweder liegt ein Bereich "`unterhalb"' eines anderen oder die beiden
+    Bereiche liegen "`nebeneinander"'.
+    Im ersten Fall würden die Knoten dazwischen aufgrund des Lemmas auch zur
+    selben SZHK gehören wie die Knoten von $\Sigma_1$ und $\Sigma_2$
+    (Widerspruch).
+    Im zweiten Fall gibt es für jeden Knoten $v \in \Sigma_1$ einen Pfad
+    zu allen Knoten $w \in \Sigma_2$ und umgekehrt.
+    Ohne Einschränkung wurde $\Sigma_1$ vor $\Sigma_2$ von \code{DFS} besucht.
+    Dann hätte aber $\Sigma_2$ von $\Sigma_1$ aus besucht werden müssen, also
+    würde $\Sigma_2$ unterhalb von $\Sigma_1$ im Baum stehen (Widerspruch).
+\end{Beweis}
+
+\linie
+
+\textbf{Kopf einer SZHK}:
+Der Kopf einer SZHK ist der Knoten mit der kleinsten \code{dfsnum}.
+
+\textbf{Behauptung}:
+Ein Knoten $v$ ist Kopf seiner SZHK, wenn es aus dem Unterbaum unter $v$
+keine $B$-Kante zu einem Vorfahr von $v$ gibt und es keine $C$-Kante
+aus dem Unterbaum unter $v$
+zu einem Knoten $w$ gibt, dessen SZHK einen Kopf $z$ hat, der Vorfahr von
+$v$ ist.
+
+\begin{Beweis}
+    Angenommen, es gäbe eine $B$-Kante von einem Nachfolger von $v$ zu einem
+    Vorgänger von $v$.
+    Dann ist dieser Vorgänger in derselben SZHK und daher $v$ nicht Kopf. \\
+    Angenommen, es gäbe eine $C$-Kante von einem Nachfolger von $v$ zu $w$
+    mit Kopf $z$, wobei $z$ ein Vorfahr von $v$ ist.
+    Dann liegt $z$ in derselben SZHK wie $v$ und daher ist $v$ nicht Kopf.
+    Ist $z$ nicht Vorfahr von $v$, dann kann $z$ nicht in derselben SZHK
+    wie $v$ sein, denn sonst wäre die SZHK in zwei disjunkten Teilbäumen,
+    daher können solche Kanten ignoriert werden.
+\end{Beweis}
+
+\linie
+
+Es reicht also, für einen Knoten $v$ zu entscheiden, ob es keine $B$-Kante
+aus einem Teilbaum unter $v$ zu einem seiner Vorgänger und es keine $C$-Kante
+zu Knoten mit Köpfen, die Vorgänger von $v$ sind, gibt.
+In diesem Fall ist $v$ Kopf seiner SZHK. \\
+Ein Knoten $v$ heißt "`fertig"', falls seine SZHK $[v]$ vollständig von
+\code{DFS} besucht wurde (alle Knoten und alle Kanten). \\
+Man führt nun in \code{DFS} ein zusätzliches Feld \code{lownum[]} ein, welches
+die kleinste \code{dfsnum} eines aus dem Unterbaum von $v$ durch eine
+$B$- oder $C$-Kante erreichbaren, unfertigen Knotens $w$ speichert.
+Außerdem führt man einen Stack \code{unfertig[]} ein, welche die Knoten
+speichert, die nicht fertig sind.
+
+Falls nun \code{dfsnum[}$v$\code{]} $=$ \code{lownum[}$v$\code{]} gerade
+vor Abschluss der Bearbeitung von \code{DFS(}$v$\code{)} ist,
+so ist $v$ Kopf von $[v]$ und alle Elemente im Stack \code{unfertig[]} sind
+die Knoten in $[v]$.
+Somit können die SZHKs in $\O(n + m)$ berechnet werden.
+
+\begin{lstlisting}
+DFS($v$)                                                                  forall $v \in V$
+    besucht[$v$] :=  true                                                      besucht[v] := false
+    count1++                                                               fertig[v] := false
+    dfsnum[$v$] :=  count1                                                     count1 := 0
+    lownum[$v$] :=  dfsnum[$v$]                                                   DFS(v)
+    unfertig.push(v)
+    
+    forall $e = (v, w)$
+        if besucht[$w$] = false
+            DFS(w)
+            lownum[$v$] :=  min(lownum[$v$], lownum[$w$])
+        else if fertig[$w$] = false
+            lownum[$v$] :=  min(lownum[$v$], dfsnum[$w$])
+    
+    if lownum[$v$] = dfsnum[$v$]
+        print "Komponente"
+        do
+            $t$ :=  unfertig.pop()
+            print $t$
+            fertig[$t$] :=  true
+        while $t \not= v$
+\end{lstlisting}
+
+\subsection{%
+    Breitensuche (BFS)%
+}
+
+\textbf{Distanz zweier Knoten in gerichteten Graphen}:
+Wie kann man für einen gegebenen Startknoten $s$ für alle $v \in V$ die
+Distanz $d(v) := \min\{k \;|\; \exists\text{Pfad von } s \text{ nach } v
+\text{ mit } k \text{ Knoten}\}$ berechnen?
+
+\textbf{Idee}:
+Man bestimmt iterativ Mengen $V_i = \{v \in V \;|\; d(v) = i\}$ durch \\
+$V_i = \{v \in (V \setminus \bigcup_{k < i} V_k) \;|\;
+\exists_{(w,v) \in E}\; w \in V_{i-1}\}$ für $i \in \mathbb{N}$
+($V_0 = \{s\}$).
+
+\begin{Beweis}
+    1. $v \in V_i \;\Rightarrow\; d(v) \le i$ mit Induktion über $i$:
+    $i = 0$ ist trivial, denn $V_0 = \{s\}$ und $d(s) = 0 \le 0$.
+    Sei $v \in V_i$.
+    Dann gibt es ein $w \in V_{i-1}$ mit $(w, v) \in E$. \\
+    Dann ist allerdings $d(v) \le d(w) + 1 \le (i - 1) + 1 = i$. \\
+    2. $d(v) = i \;\Rightarrow\; v \in V_0 \cup \dotsb \cup V_i$ mit Induktion
+    über $i$:
+    $i = 0$ ist trivial, denn $d(v) = 0 \;\Rightarrow\; v = s$, $v \in V_0$.
+    Sei $d(v) = i$.
+    Dann gibt es ein $u$ mit $(u, v) \in E$ und $d(u) = i - 1$.
+    Nach IV gilt $u \in V_0 \cup \dotsb \cup V_{i-1}$, daher gilt
+    $v \in V_0 \cup \dotsb \cup V_{i-1} \cup V_i$. \\
+    3. $v \in V_i \;\Rightarrow\; d(v) = i$, denn nach 1. gilt
+    $d(v) \le i$. Falls $d(v) < i$ wäre, dann wäre nach 2.
+    $v \in V_0 \cup \dotsb \cup V_{i-1}$ und somit $v \notin V_i$,
+    da die $V_i$ disjunkt sind. \\
+    4. $d(v) = i \;\Rightarrow\; v \in V_i$ folgt direkt aus 2. wegen der
+    Disjunktheit der $V_i$.
+\end{Beweis}
+
+\linie
+
+BFS arbeitet in Phasen und benutzt zwei Schlangen/Queues.
+Zu Beginn von Phase $i$ gilt für die Knoten mit $d(v) \le i$, dass
+\code{dist[}$v$\code{]} $= d(v)$, für die Knoten mit $d(v) > i$ gilt \\
+\code{dist[}$v$\code{]} $= \infty$ und \code{current} enthält die Menge
+$V_i$ sowie \code{next} ist leer.
+
+\begin{lstlisting}
+current := {$s$}
+next := $\emptyset$
+dist[$s$] :=  0
+forall $v \in V \setminus \{s\}$
+    dist[$v$] :=  $\infty$
+
+while current $\not= \emptyset$ do
+    while current $\not= \emptyset$ do
+        v := current.pop()
+        forall $e = (v, w)$
+            if dist[$w$] = $\infty$
+                dist[$w$] :=  dist[$v$] + 1
+                next.push($w$)
+    od
+    current := next
+    next := $\emptyset$
+od
+\end{lstlisting}
+
+Die Laufzeit von BFS ist $\O(n + m)$, da jeder Knoten höchstens $1$ Mal
+entfernt wird und dann alle seine ausgehenden Kanten betrachtet werden.
+Man hätte oben auch Listen, Stacks usw. benutzen können.
+Außerdem kann man das Programm so modifizieren, sodass nur eine
+Queue benutzt wird.
+
+\pagebreak
+
+\subsection{%
+    Kürzeste Wege in gewichteten Graphen%
+}
+
+\textbf{Berechnung kürzester Wege in gewichteten Graphen}:
+Gegeben sei ein Graph \\
+$G = (V, E, c)$, wobei $c: E \rightarrow \mathbb{R}$
+die Kosten für jede Kante angibt, sowie ein Knoten $s \in V$. \\
+Zu bestimmen ist nun
+$d(v) := \inf\{c(\pi) \;|\; \pi \text{ ist Pfad von } s \text{ nach } v\}$
+für alle Knoten $v \in V$, wobei für einen Pfad
+$\pi = v_0 \dotsc v_k$ gilt, dass
+$c(\pi) := \sum_{i=0}^{k-1} c(v_i, v_{i+1})$.
+
+Durch einen \textbf{negativen Zyklus} kann es auch Knoten $v$ mit
+$d(v) = -\infty$ geben.
+
+Eine naive Berechnung würde einfach alle Pfade von $s$ nach $v$ betrachten.
+Dies können allerdings je nach Graph sehr viele oder sogar unendlich viele
+sein.
+
+\linie
+
+\textbf{Idee für einen Algorithmus}:
+Man berechnet "`vorläufige"' Distanzwerte \code{dist[]} und will erreichen,
+dass später \code{dist[}$v$\code{]} $= d(v)$ für alle $v \in V$ ist. \\
+Dazu setzt man zu Beginn \code{dist[}$s$\code{]} $= 0$ und
+\code{dist[}$v$\code{]} $= +\infty$ für alle $v \in V$ mit $v \not= s$. \\
+Solange es nun Kanten $e = (v, w) \in E$ mit
+\code{dist[}$w$\code{]} $>$ \code{dist[}$v$\code{]} $+\; c(v,w)$ gibt, setze \\
+\code{dist[}$w$\code{]} $=$ \code{dist[}$v$\code{]} $+\; c(v,w)$
+(\textbf{Kantenrelaxierung}).
+Man zielt darauf ab, dass es später keine solche Kanten mehr gibt
+und \code{dist[}$v$\code{]} $= d(v)$ für alle $v \in V$.
+
+Es kommt nun darauf an, in welcher Reihenfolge die Kanten betrachtet werden,
+damit möglichst wenig Kanten mehrfach betrachtet werden.
+
+\textbf{Invariante}:
+$U \subseteq V$ definiert durch $v \notin U \;\Leftrightarrow\;$
+$\forall_{(v,w) \in E}\;$
+\code{dist[}$v$\code{]} $+\; c(v,w) \ge$ \code{dist[}$w$\code{]} \\
+($U$ ist Menge der Knoten, die ausgehende Kanten haben, die noch
+betrachtet werden müssen).
+
+\begin{lstlisting}
+dist[$s$] = 0
+forall $v \in V$, $v \not= s$
+    dist[$v$] = $+\infty$
+$U$ = $\{s\}$
+
+while $U \not= \emptyset$
+    entferne $v \in U$ (beliebig)
+    forall $e = (v,w)$
+        $x$ = dist[$v$] + $c(v, w)$
+        if ($x$ < dist[$w$])
+            dist[$w$] = $x$
+            $U$ = $U \cup \{w\}$
+\end{lstlisting}
+
+\linie
+
+\textbf{Eigenschaften des Algorithmus}: \\
+1. Invariante ist erfüllt. \\
+2. Für den Fall \code{dist[}$w$\code{]} $> d(w) > -\infty$ gibt es einen
+Knoten $u$ auf dem kürzesten Weg von $s$ nach $w$ mit
+$u \in U$ und \code{dist[}$u$\code{]} $= d(u)$. \\
+3. Wird ein Knoten $u$ aus $U$ zu einem Zeitpunkt mit
+\code{dist[}$u$\code{]} $= d(u)$ entfernt, so wird $u$ nie mehr in
+$U$ aufgenommen.
+
+\begin{Beweis}
+    \begin{enumerate}
+        \item
+        Die Invariante gilt nach der Initialisierung.
+        Solange $u \notin U$ gilt, ändert sich \code{dist[}$u$\code{]}
+        nicht, d.\,h. der Wert der linken Seite ändert sich nicht.
+        Die rechte Seite wird im Verlauf des Algorithmus nur kleiner
+        und wenn $u$ aus $U$ entfernt wird, wird die Gültigkeit der
+        Invariante sichergestellt.
+        
+        \item
+        Seien $v_0 v_1 \dotsc v_k$ ($v_0 = s$, $v_k = w$) ein kürzester Weg
+        von $s$ nach $w$ und $i$ maximal mit
+        \code{dist[}$v_i$\code{]} $= d(v_i)$.
+        $i$ existiert, denn es gilt $d(s) =$ \code{dist[}$s$\code{]} $= 0$.
+        Angenommen, es gilt $v_i \notin U$.
+        Dann ist \code{dist[}$v_{i+1}$\code{]} $\le d(v_i) + c(v_i, v_{i+1})$
+        nach Definition von $U$.
+        Zusätzlich gilt n.\,V. \code{dist[}$v_i$\code{]} $= d(v_i)$, daher
+        ist \code{dist[}$v_{i+1}$\code{]} $= d(v_{i+1})$
+        ($v_0 \dotsc v_i v_{i+1} \dotsc w$ ist kürzester Weg, also ist auch
+        $v_0 \dotsc v_i v_{i+1}$ kürzester Weg).
+        Widerspruch, da dann $i$ nicht maximal.
+    \end{enumerate}
+\end{Beweis}
+
+\linie
+\pagebreak
+
+\textbf{Implementierung}:
+\begin{itemize}
+    \item
+    \textbf{allgemeine Kantenkosten (auch negativ)}: \\
+    Implementiere $U$ als Schlange, entferne immer erstes Element aus $U$. \\
+    Wenn $v$ zu $U$ hinzugefügt wird (und es ist noch nicht in $U$), füge es
+    hinten an.
+
+    \textbf{Behauptung}:
+    Wenn $d(w) > -\infty$ für alle $w \in V$ gilt, dann wird jeder Knoten
+    höchstens $n$-mal aus $U$ entfernt.
+    
+    \begin{Beweis}
+        Betrachte $U$, wenn $v$ zu $U$ hinzugefügt wird.
+        $U$ enthält laut 2. (siehe oben) einen Knoten $z$ mit
+        \code{dist[}$z$\code{]} $= d(z)$.
+        $z$ wird vor $v$ aus $U$ entfernt und zwar endgültig (siehe 3.).
+        Also kommt $v$ maximal $n-1$-mal zu $U$ hinzu.
+    \end{Beweis}
+    
+    \textbf{Laufzeit}:
+    Die Laufzeit ist $\O(m \cdot n)$, da jede Kante maximal $n$-mal anschaut
+    wird (nämlich jedes Mal, wenn ihr Quellknoten aus $U$ entfernt wird).
+    
+    \item
+    \textbf{$G$ ist azyklisch}: \\
+    Sortiere $G$ topologisch und gehe Knoten in aufsteigender
+    Reihenfolge durch.
+    
+    \item
+    \textbf{nicht-negative Kantenkosten (Algorithmus von \textsc{Dijkstra})}:
+    \\
+    Entferne immer das Element aus $U$ mit dem kleinsten \code{dist}-Wert.
+    
+    \textbf{Behauptung}:
+    Sei $w \in U$ mit \code{dist[}$w$\code{]} minimal.
+    Dann ist \code{dist[}$w$\code{]} $= d(w)$.
+    
+    \begin{Beweis}
+        Falls \code{dist[}$w$\code{]} $> d(w)$, existiert ein Knoten
+        $v$ auf kürzestem Weg von $s$ nach $w$ mit $v \in U$
+        und \code{dist[}$v$\code{]} $= d(v)$.
+        Weil die Kantenkosten nicht-negativ sind, gilt daher
+        $d(v) \le d(w) <$ \code{dist[}$w$\code{]}.
+        Also ist \code{dist[}$v$\code{]} $<$ \code{dist[}$w$\code{]}, ein
+        Widerspruch, da $w \in U$ mit \code{dist[}$w$\code{]} minimal.
+    \end{Beweis}
+    
+    \textbf{Laufzeit}: Jeder Knoten wird maximal 1 Mal aus $U$ entnommen.
+    Jeder Knoten ändert maximal $\indeg(v)$ Mal seine Distanz.
+    Also gibt es maximal $n$ Minimumsextraktionen und $m$ Distanzänderungen.
+    Wie findet man das Minimum der \code{dist}-Werte in $U$?
+    Eine naive Bestimmung würde jedes Mal durch $U$ laufen, dies kostet
+    jedoch dann $\O(n^2 + m)$.
+    Besser ist es, per Heap die Minima zu bestimmen, dann ist die Laufzeit
+    $\O(n \cdot \log n + m \cdot \log n)$.
+    Noch besser ist es, wenn man \textsc{Fibonacci}-Heaps oder R-Heaps nutzt.
+\end{itemize}
+
+\subsection{%
+    Weitere Graphprobleme mit polynomiellen Algorithmus%
+}
+
+Ein Beispiel für ein nicht-polynomielles Problem ist
+das \textbf{\emph{stable-set}/\emph{independent-set}-Pro\-blem}:
+Gegeben sei ein Graph $G = (V, E)$.
+Finde $S \subseteq V$, sodass es für alle $u, v \in S$ keine Kante
+$(u, v) \in E$ gibt und $S$ die größtmögliche Kardinalität hat.
+
+\linie
+
+\textbf{Netwerkfluss}:
+Gegeben seien $G = (V, E)$ gerichtet, $s, t \in V$ sowie
+$\mycap: E \rightarrow \mathbb{R}_0^+$. \\
+Gesucht ist $f: E \rightarrow \mathbb{R}_0^+$, sodass \\
+1. \quad für alle $e \in E$ gilt, dass $0 \le f(e) \le \mycap(e)$, \\
+2. \quad für alle $v \in V \setminus \{s, t\}$ gilt, dass
+$\sum_{e = (v, \cdot) \in E} f(e) = \sum_{e = (\cdot, v) \in E} f(e)$, sowie \\
+3. \quad $\sum_{e = (s, \cdot) \in E} f(e)$ ist maximal. \\
+Zusätzlich kann $\cost: E \rightarrow \mathbb{R}$ gegeben sein.
+Dann wird der maximale Fluss bei minimalen Kosten gesucht.
+
+\linie
+\pagebreak
+
+\textbf{Matching (Bipartit)}:
+Gegeben sei $G = (A \cup B, E)$ ungerichtet, wobei
+$A \cap B = \emptyset$ sowie $E \subseteq A \times B$.
+Gesucht ist eine Menge $M \subseteq E$ mit $|M|$ maximal sowie
+für alle $v \in A \cup B$ gibt es höchstens eine Kante inzident zu $v$.
+$M$ bezeichnet man als Matching.
+Zusätzlich kann es noch $\cost: E \rightarrow \mathbb{R}$ geben, wobei
+dann ein Matching mit maximalen/minimalen Kosten gesucht ist.
+
+Ein Matching-Problem lautet:
+$A$ sind Männer, $B$ sind Frauen und $|A| = |B| = n$.
+Jeder Mann $a \in A$ bzw. jede Frau $b \in B$ hat eine totale Ordnung
+$<_a$ der Frauen bzw. $<_b$ der Männer.
+Gesucht ist ein "`gutes"' Matching, d.\,h. Zuordnung Männer -- Frauen.
+
+$M$ heißt \textbf{instabil}, falls es ein $a \in A$ und ein $b \in B$ gibt
+mit \\
+1. \quad $(a, b) \notin M$, \\
+2. \quad $a$ zieht $b$ seiner Partnerin $M(a)$ vor, d.\,h. $b >_a M(a)$, und \\
+3. \quad $b$ zieht $a$ ihrem Partner $M(b)$ vor, d.\,h. $a >_b M(b)$. \\
+$M$ heißt \textbf{stabil}, falls $M$ nicht instabil ist.
+
+Es gibt immer ein stabiles Matching.
+Dieses kann mit folgendem Algorithmus bestimmt werden:
+\begin{enumerate}
+    \item
+    Jeder alleinstehende Mann macht oberster Frau auf seiner Liste einen
+    Antrag.
+    
+    \item Jede Frau sucht sich aus den Angeboten und dem aktuellen Partner
+    den Besten aus und schickt die anderen weg.
+    
+    \item Jeder abgewiesene Mann streicht oberste Frau von seiner Liste
+    und wird (bzw. bleibt) alleinstehend.
+    Das Verfahren wird so lange wiederholt, bis jeder Mann eine Frau hat.
+\end{enumerate}
+
+\textbf{Behauptung}: \\
+Der Algorithmus erzeugt ein stabiles Matching, welches für alle Männer
+optimal ist.
+
+\begin{Beweis}
+    \begin{enumerate}
+        \item
+        \textbf{$M$ ist vollständig} (jeder Mann/jede Frau bekommt einen
+        Partner). \\
+        Falls eine Frau einen Partner hat, hat sie ab da immer einen.
+        Falls am Ende Frau $b$ keinen Partner hat, hat ein Mann $a$ keine
+        Partnerin.
+        $a$ hätte $b$ irgendwann einmal gefragt und $b$ wäre mit $a$ zusammen
+        (oder mit einem besseren), ein Widerspruch.
+        
+        \item
+        \textbf{$M$ ist stabil}. \\
+        Sei $(a, b') \in M$, $b \not= b'$ beliebige Frau.
+        Falls der Mann $a$ der Frau $b$ einen Antrag gemacht hat und wg.
+        $a' \not= a$ abgewiesen wurde, hat $b$ einen Partner, den sie $a$
+        vorzieht.
+        Falls der Mann $a$ der Frau $b$ keinen Antrag gemacht hat,
+        hat $a$ eine Partnerin, die er $b$ vorzieht.
+        
+        \item
+        \textbf{$M$ ist für alle Männer optimal}, d.\,h.
+        falls $a$ von $b$ zurückgewiesen wurde, dann ist $b$ für $a$
+        unerreichbar, d.\,h. es gibt kein stabiles Matching $M^\ast$
+        mit $(a, b) \in M^\ast$. \\
+        Der Beweis erfolgt mit Induktion über die Anzahl der Runden
+        des Algorithmus. Die Induktionsbehauptung ist:
+        Falls $a$ von $b$ in Runde $\le i$ zurückgewiesen wurde, ist $b$
+        für $a$ unerreichbar. \\
+        IA: $i = 0$, klar, da niemand zurückgewiesen \\
+        IS: Angenommen, $a$ wird von $b$ in der $i$-ten Runde zurückgewiesen.
+        Dann hat $b$ am Ende der Runde einen "`besseren"' Partner $a'$.
+        Angenommen, es gäbe ein stabiles Matching $M^\ast$ mit
+        $(a, b) \in M^\ast$.
+        $a'$ kann in $M^\ast$ nicht mit $b$ zusammen sein. \\
+        Fall 1: $M^\ast(a')$ steht vor $b$ in der Reihenfolge von $a'$.
+        Da $a'$ der Frau $b$ schon einen Antrag gemacht hat, hat er
+        $M^\ast(a')$ auch schon einen Antrag gemacht
+        (in einer Runde davor) und wurde zurückgewiesen.
+        Nach IV ist $M^\ast(a')$ für $a'$ unerreichbar, ein Widerspruch,
+        denn $a'$ und $M^\ast(a')$ sind im stabilen Matching $M^\ast$
+        zusammen ($(a', M^\ast(a')) \in M^\ast$). \\
+        Fall 2: $M^\ast(a')$ steht nach $b$ in der Reihenfolge von $a'$.
+        Dann würde $a'$ $b$ bevorzugen und $b$ würde $a'$ bevorzugen,
+        ein Widerspruch zu $(a, b) \in M^\ast$.
+    \end{enumerate}
+\end{Beweis}
+
+\pagebreak

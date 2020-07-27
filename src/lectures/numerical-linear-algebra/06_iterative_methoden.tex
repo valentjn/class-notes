@@ -1,0 +1,156 @@
+\section{%
+    Iterative Methoden%
+}
+
+\subsection{%
+    Lineare Iterationsverfahren%
+}
+
+\textbf{Lineares Iterationsverfahren}:
+Um ein LGS $Ax = b$ zu lösen, kann man es mithilfe einer
+invertierbaren Matrix $C$ in der Form
+\begin{align*}
+    (A - C)x + Cx = b
+    \quad\Leftrightarrow\quad
+    x = (E - C^{-1}A)x + C^{-1}b = Qx + p
+\end{align*}
+schreiben.
+Die Rekursion
+\begin{align*}
+    x_{\ell+1} = Qx_\ell + p, \quad
+    Q = E - C^{-1}A, \quad
+    p = C^{-1}b
+\end{align*}
+definiert dann ein lineares Iterationsverfahren, das als Fixpunkt $x_\ast$
+die Lösung des LGS hat.
+Für eine schnelle Konvergenz sollte $C^{-1}$ die Inverse von $A$ möglichst
+gut approximieren.
+Gleichzeitig müssen für ein ef"|fizientes Verfahren Produkte mit $C^{-1}$
+einfach berechenbar sein.
+
+\linie
+
+\textbf{Näherungsfehler eines linearen Iterationsverfahrens}:
+Für den Fehler $\Delta x_\ell = x_\ell - x_\ast$ der $\ell$-ten Näherung
+eines linearen Iterationsverfahrens mit der Rekursion
+$x_{\ell+1} = Qx_\ell + p$ und dem Fixpunkt $x_\ast$ gilt
+\begin{align*}
+    \Delta x_\ell
+    = Q \Delta x_{\ell-1}
+    = \dotsb
+    = Q^\ell \Delta x_0.
+\end{align*}
+Die Iteration konvergiert für jeden Startwert $x_0$ gegen den Fixpunkt
+$x_\ast$ genau dann, wenn der \textbf{Spektralradius} von $Q$
+\begin{align*}
+    \varrho(Q) = \max\{|\lambda| \;\;|\;\; Qv = \lambda v,\; v \not= 0\}
+\end{align*}
+(also der Betrag des betragsmäßig größten Eigenwerts) kleiner als $1$ ist. \\
+Der Spektralradius ist außerdem auch ein Maß für die Konvergenzrate, also für
+die im Mittel zu erwartende Fehlerreduktion pro Iterationsschritt.
+Je kleiner $\varrho(Q)$ ist, desto schneller konvergiert das Verfahren.
+
+Für den Spektralradius gilt im Übrigen $\varrho(Q) \le \norm{Q}$ für jede
+induzierte Matrixnorm \\
+$\norm{Q} = \sup_{x \not= 0} \frac{\norm{Qx}}{\norm{x}}$
+(man setze einfach einen Eigenvektor zum Spektralradius ein).
+
+\subsection{%
+    \textsc{Jacobi}-Verfahren%
+}
+
+\textbf{\textsc{Jacobi}-Verfahren}:
+Ein elementares lineares Iterationsverfahren für ein LGS $Ax = b$ ist
+das \textsc{Jacobi}-Verfahren.
+Bei diesem wird die Diagonale $D$ von $A$ als Approximation von $A^{-1}$
+verwendet.
+Ein Schritt $x_\ell = y \rightarrow z = x_{\ell+1}$ des
+\textsc{Jacobi}-Verfahrens hat also die Form
+\begin{align*}
+    z = y - D^{-1}Ay + D^{-1}b = Qy + p \qquad\text{bzw.}\qquad
+    z_j = \left(b_j - \sum_{k\not=j} a_{jk}y_k\right) / a_{jj}, \quad
+    j = 1, \dotsc, n
+\end{align*}
+mit $Q = E - D^{-1}A$ und $p = D^{-1}b$.
+Ein hinreichendes Kriterium für die Konvergenz des \textsc{Jacobi}-Verfahrens
+ist, dass die Koef"|fizientenmatrix $A$ diagonal dominant ist, d.\,h.
+\begin{align*}
+    |a_{jj}| > \sum_{k\not=j} |a_{jk}| \quad \text{für} \quad j= 1, \dotsc, n.
+\end{align*}
+
+\subsection{%
+    \textsc{Gauß}-\textsc{Seidel}-Verfahren%
+}
+
+\textbf{\textsc{Gauß}-\textsc{Seidel}-Verfahren}:
+Das \textsc{Gauß}-\textsc{Seidel}-Verfahren für ein LGS $Ax = b$ entsteht
+aus dem \textsc{Jacobi}-Verfahren, indem man den Näherungsvektor elementweise
+neu bestimmt und für die Berechnung der $k$-ten Komponente der nächsten
+Näherung bereits die neuen Daten der ersten $k - 1$ Komponenten verwendet. \\
+Dies entspricht einer Auteilung der Matrix $A$ in eine Diagonalmatrix $D$,
+eine linke Dreiecksmatrix $L$ und eine rechte Dreiecksmatrix $R$. \\
+Ein Iterationsschritt $x_\ell = y \rightarrow z = x_{\ell+1}$ hat somit die
+Form
+\begin{align*}
+    z = -D^{-1}(Lz + Ry) + D^{-1}b \qquad\text{bzw. nach } z
+    \text{ aufgel"ost}\qquad
+    z = -(L + D)^{-1}Ry + (L + D)^{-1}b.
+\end{align*}
+Dabei muss die Iterationsmatrix $Q = -(L + D)^{-1}R$ nicht explizit neu
+berechnet werden.
+Für eine $n \times n$-Matrix $A$ ist nämlich
+\begin{align*}
+    z_j = \left(b_j - \sum_{k<j} a_{jk}z_k - \sum_{k>j} a_{jk}y_k\right)
+    / a_{jj}, \quad j= 1, \dotsc, n.
+\end{align*}
+Bei der sukzessiven Ausführung der Operationen kann auch $z = y$ gesetzt
+werden.
+Die Vektorelemente werden dann automatisch in der gewünschten Weise
+überschrieben.
+Wie das \textsc{Jacobi}-Verfahren konvergiert auch das
+\textsc{Gauß}-\textsc{Seidel}-Verfahren für diagonal dominante Matrizen $A$.
+Darüber hinaus konvergiert es auch für symmetrische, positiv definite
+Matrizen $A$.
+
+\subsection{%
+    (Über-)Relaxation%
+}
+
+\textbf{Relaxation}:
+Bei einem Iterationsverfahren kann man versuchen, die Konvergenz durch
+eine sogenannte Relaxation zu beschleunigen.
+Dazu wird in der Iterationsvorschrift $x_{\ell+1} = f(x_\ell)$ ein zusätzlicher
+Parameter $\omega$ eingeführt und das neue Folgenglied auf der durch
+$x_\ell$ und $f(x_\ell)$ verlaufenden Gerade gewählt:
+\begin{align*}
+    x_{\ell+1} = (1 - \omega)x_\ell + \omega f(x_\ell).
+\end{align*}
+Für $\omega = 1$ erhält man das ursprüngliche Iterationsverfahren. \\
+Für $\omega > 1$ spricht man von \textbf{Überrelaxation} und für $\omega < 1$
+von \textbf{Unterrelaxation}.
+
+\linie
+
+\textbf{sukzessive Überrelaxation (SOR)}:
+Berechnet man beim \textsc{Gauß}-\textsc{Seidel}-Verfahren die einzelnen
+Komponenten sukzessive, so kann man die Relaxation in jedem Teilschritt
+anwenden.
+Das so entstehende Verfahren heißt sukzessive Überrelaxation oder SOR
+(\emph{successive over-relaxation}).
+Die Iterationsvorschrift hat die Form
+\begin{align*}
+    x_{\ell+1}
+    = x_\ell + \omega D^{-1}(b - Lx_{\ell+1} - Dx_\ell - Rx_\ell),
+\end{align*}
+wobei $A = L + D + R$ die Aufteilung der Matrix in den linken, diagonalen
+und rechten Anteil ist.
+
+Führt man zwei SOR-Schritte durch, wobei beim ersten Schritt die Komponenten
+in der Reihenfolge $1, \dotsc, n$ und beim zweiten Schritt in der umgekehrten
+Reihenfolge berechnet werden, so erhält man das
+\textbf{SSOR-Verfahren} (\emph{symmetric SOR}).
+Dabei ist nur die Behandlung der Reihenfolge der Unbekannten symmetrisch,
+die Iterationsmatrix jedoch im Allgemeinen nicht.
+Auch die Konvergenzrate wird i.\,A. nicht besser.
+Die Symmetrisierung wird in erster Linie bei der Vorkonditionierung des
+Konjugierte-Gradienten-Verfahrens verwendet.

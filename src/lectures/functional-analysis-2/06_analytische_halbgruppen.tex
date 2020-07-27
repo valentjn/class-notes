@@ -1,0 +1,164 @@
+\section{%
+    Analytische Halbgruppen%
+}
+
+\subsection{%
+    Analytische Halbgruppen und Erzeuger%
+}
+
+\begin{Def}{analytische Halbgruppe}
+    Seien $\delta \in (0, \frac{\pi}{2}]$
+    und $\Sigma_\delta := \{\lambda \in \complex \setminus \{0\} \;|\;
+    |\arg \lambda| < \delta\}$.\\
+    Eine \begriff{analytische Halbgruppe (mit Winkel $\delta$)} ist eine
+    Familie $(T(z))_{z \in \Sigma_\delta \cup \{0\}}$ von Operatoren $T(z) \in \Lin(X)$
+    auf einem Banachraum $X$, sodass
+    \begin{enumerate}
+        \item
+        $T(0) = \id$,
+        
+        \item
+        $\forall_{z_1, z_2 \in \Sigma_\delta}\; T(z_1 + z_2) = T(z_1) T(z_2)$,
+        
+        \item
+        $\Sigma_\delta \to \Lin(X)$, $z \mapsto T(z)$ ist komplex analytisch und
+        
+        \item
+        $\forall_{\delta' \in (0, \delta)} \forall_{x \in X}\;
+        T(z)x \xrightarrow{z \to 0,\; z \in \Sigma_{\delta'}} x$.
+    \end{enumerate}
+    Gilt zusätzlich
+    \begin{enumerate}[resume]
+        \item
+        $\forall_{\delta' \in (0, \delta)}\;
+        \sup_{z \in \Sigma_{\delta'}} \norm{T(z)}_{\Lin(X)} < \infty$,
+    \end{enumerate}
+    dann spricht man von einer \begriff{beschränkten, analytischen Halbgruppe}.
+\end{Def}
+
+\linie
+
+\begin{Def}{Erzeuger}
+    Der Erzeuger $(A, D(A))$ einer analytischen Halbgruppe
+    $(T(z))_{z \in \Sigma_\delta \cup \{0\}}$ mit Winkel $\delta$ ist definiert als
+    der Erzeuger der $\C_0$-Halbgruppe $(T(t))_{t \ge 0}$.
+\end{Def}
+
+\begin{Bsp}
+    Seien $X$ ein Banachraum und $A \in \Lin(X)$.\\
+    Dann ist $(e^{zA})_{z \in \Sigma_{\pi/2} \cup \{0\}}$ eine analytische Halbgruppe
+    mit Erzeuger $A$.
+\end{Bsp}
+
+\subsection{%
+    Sektorielle Operatoren%
+}
+
+\begin{Def}{sektoriell}
+    Seien $X$ ein Banachraum und $(A, D(A))$ ein abgeschlossener, linearer Operator auf $X$.
+    Dann heißt $A$ \begriff{sektoriell (mit Winkel $\delta$)}, falls
+    es ein $\delta \in (0, \frac{\pi}{2}]$ gibt mit
+    \begin{enumerate}
+        \item
+        $\Sigma_{\pi/2+\delta} \subset \varrho(A)$ und
+        
+        \item
+        $\forall_{\varepsilon \in (0, \delta)} \exists_{M_\varepsilon \ge 1}
+        \forall_{\lambda \in \overline{\Sigma_{\pi/2+\delta-\varepsilon}} \setminus \{0\}}\;
+        \norm{\lambda (\lambda - A)^{-1}}_{\Lin(X)} \le M_\varepsilon$.
+    \end{enumerate}
+\end{Def}
+
+\begin{Satz}{dicht def., sekt. Operatoren sind Erzeuger beschr., analyt. HGen}\\
+    Sei $(A, D(A))$ ein dicht definierter, mit Winkel $\delta$ sektorieller Operator.\\
+    Definiere $(T(z))_{z \in \Sigma_\delta \cup \{0\}}$ durch $T(0) := \id$ und
+    $T(z) := \frac{1}{2\pi\iu} \int_\gamma e^{\mu z} R(\mu, A) d\mu$ für $z \in \Sigma_\delta$,
+    wobei $\gamma$ eine beliebige glatte Kurve in $\Sigma_{\pi/2+\delta}$ ist,
+    die von "`$\infty \cdot e^{-\iu(\pi/2+\delta')}$"' nach
+    "`$\infty \cdot e^{\iu(\pi/2+\delta')}$"' für ein $\delta' \in (|\arg z|, \delta)$ geht.\\
+    Dann ist $(T(z))_{z \in \Sigma_\delta \cup \{0\}}$ eine beschränkte, analytische Halbgruppe
+    mit Erzeuger $A$.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Charakterisierung von Erzeugern von beschränkten, analytischen Halbgruppen%
+}
+
+\begin{Satz}{Charakterisierung von Erzeugern von beschr., analyt. HGen}\\
+    Seien $X$ ein Banachraum und $(A, D(A))$ ein linearer Operator.
+    Dann sind äquivalent:
+    \begin{enumerate}
+        \item
+        $A$ erzeugt eine beschränkte, analytische Halbgruppe
+        $(T(z))_{z \in \Sigma_\delta \cup \{0\}}$ auf $X$.
+        
+        \item
+        Es gibt ein $\vartheta \in (0, \frac{\pi}{2})$, sodass
+        die Operatoren $e^{\pm\iu\vartheta} A$ beschränkte $\C_0$-Halbgruppen auf $X$ erzeugen.
+        
+        \item
+        $A$ erzeugt eine beschränkte $\C_0$-Halbgruppe $(T(t))_{t \ge 0}$ auf $X$ mit\\
+        $\forall_{t > 0}\; \Bild(T(t)) \subset D(A)$ und
+        $M := \sup_{t > 0} \norm{tAT(t)}_{\Lin(X)} < \infty$.
+        
+        \item
+        $A$ erzeugt eine beschränkte $\C_0$-Halbgruppe $(T(t))_{t \ge 0}$ auf $X$ mit\\
+        $\exists_{C > 0} \forall_{r > 0} \forall_{s \in \real \setminus \{0\}}\;
+        \norm{R(r + \iu s, A)}_{\Lin(X)} \le \frac{C}{|s|}$.
+        
+        \item
+        $A$ ist dicht definiert und sektoriell.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bem}
+    Der Beweis benutzt den vorherigen Satz und verläuft nach dem Muster\\
+    \emph{(1)} $\implies$ \emph{(2)} $\implies$ \emph{(4)} $\implies$
+    \emph{(5)} $\implies$ \emph{(3)} $\implies$ \emph{(1)}.\\
+    Aus dem Beweis kann man erkennen, dass für eine
+    beschränkte, analytische HG $(T(z))_{z \in \Sigma_\delta \cup \{0\}}$
+    auf $X$ und ihren Erzeuger $A$ gilt, dass
+    $\forall_{t > 0}\; \Bild(T(t)) \subset D(A^\infty) := \bigcap_{n=1}^\infty D(A^n)$
+    sowie $\forall_{n \in \natural} \forall_{t > 0}\;
+    \frac{1}{n!} \norm{\frac{d^n}{dt^n} T(t)}_{\Lin(X)} \le \left(\frac{eM}{t}\right)^n$
+    und daher $\forall_{n \in \natural}\;
+    \limsup_{t \to 0+0} \norm{t^n A^n T(t)}_{\Lin(X)} < \infty$
+    aufgrund $\frac{d^n}{dt^n} T(t) = A^n T(t)$.
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Seien $\Omega \subset \real^n$ ein beschränktes und glatt berandetes Gebiet,
+    $X := L^2(\Omega)$ und $A := \Delta$ mit
+    $D(A) := \{u \in X \;|\; \Delta u \in X,\; u|_{\partial\Omega} = 0\}$.
+    Aus der elliptischen Regularitätstheorie weiß man, dass $\Delta u = f$ mit
+    $u|_{\partial\Omega} = 0$ für $f \in L^2(\Omega)$ eine eindeutige Lösung
+    $u \in H^2(\Omega) \cap H^1_0(\Omega)$ besitzt,
+    wobei die Abschätzung $\norm{\Delta^{-1} f}_{H^2} \le C \norm{f}_{L^2}$ gilt.
+    Damit ist $\Delta\colon H^2(\Omega) \cap H^1_0(\Omega) \to L^2(\Omega)$ ein
+    Homöomorphismus ($\Delta$ bijektiv mit $\Delta$ und $\Delta^{-1}$ stetig),
+    wobei $D(A)$ dicht in $X$ ist.
+    Außerdem ist $\Delta$ ein abgeschlossener Operator.
+    
+    Die Abschätzung $\norm{R(r + \iu s, A)}_{\Lin(X)} \le \frac{C}{|s|}$
+    für $r > 0$, $s \in \real \setminus \{0\}$ und eine Konstante $C > 0$
+    lässt sich wie folgt zeigen:
+    Sei $f \in L^2(\Omega)$ und $u := -(\lambda - \Delta)^{-1} f$, d.\,h.
+    $\Delta u - \lambda u = f$ mit $\lambda := r + \iu s$.
+    Durch Bildung des Skalarprodukts mit $u$ erhält man daraus\\
+    $\int_\Omega u \overline{f} \dx
+    = \int_\Omega u \overline{\Delta u} \dx - \int_\Omega u \overline{\lambda u} \dx
+    = -\int_\Omega |\nabla u|^2 \dx - \overline{\lambda} \int_\Omega |u|^2 \dx$.\\
+    Wenn man nun den Imaginärteil betrachtet, so folgt
+    $s \norm{u}_{L^2}^2 = \Im \sp{u, f}_{L^2}$, d.\,h.\\
+    $\norm{u}_{L^2}^2 = \frac{1}{s} \Im \sp{u, f}_{L^2}
+    \le \frac{1}{|s|} |\sp{u, f}_{L^2}|
+    \le \frac{1}{|s|} \norm{u}_{L^2} \norm{f}_{L^2}$, also
+    $\norm{u}_{L^2} \le \frac{1}{|s|} \norm{f}_{L^2}$.\\
+    Somit gilt $\norm{(\lambda - \Delta)^{-1}}_{\Lin(X)} \le \frac{1}{|s|}$.
+\end{Bsp}
+
+\pagebreak

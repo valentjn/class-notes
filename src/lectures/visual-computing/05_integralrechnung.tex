@@ -1,0 +1,436 @@
+\section{%
+    Integralrechnung%
+}
+
+\subsection{%
+    Funktionen einer Variablen%
+}
+
+\textbf{Stammfunktion}:
+Sei $f\colon [a, b] \to \real$ eine Funktion.
+Dann heißt $F\colon [a, b] \to \real$ mit $F \in \C^1([a, b])$ \begriff{Stammfunktion},
+falls $F' = f$.
+
+\textbf{unbestimmtes Integral}:
+Das \begriff{unbestimmte Integral} $\int f(x) \dx$ bezeichnet die Gesamtheit aller
+Stammfunktionen von $f$.
+Es gilt $\int f(x) g'(x) \dx = f(x) g(x) - \int f'(x) g(x) \dx$ (partielle Integration) und
+$\int f(g(x)) g'(x) \dx = (\int f(y) \dy)|_{y = g(x)}$ (Substitution).
+
+\linie
+
+\textbf{\name{Riemann}-Integral}:
+Eine Funktion $f\colon [a, b] \to \real$ ist \begriff{\name{Riemann}-integrierbar},
+falls jede Rie"-mann-Summe unabhängig von der Zerlegung denselben Grenzwert
+$\int_a^b f(x) \dx$ besitzt.
+
+\linie
+
+\textbf{Summenfunktion}:
+$F\colon [a, b] \to \real$ mit $F(x) := \int_a^x f(t) \dt$ heißt \begriff{Summenfunktion} von $f$.
+
+\textbf{Hauptsatz der Dif"|ferential- und Integralrechnung}:\\
+Ist $G$ eine Stammfunktion von $f$, dann gilt $\int_a^b f(x) \dx = G(b) - G(a)$.\\
+Die Summenfunktion $F(x)$ ist eine Stammfunktion von $f(x)$,
+d.\,h. $\frac{\d}{\dx} (\int_a^x f(t) \dt) = f(x)$.
+
+\linie
+
+\textbf{Rotationsvolumen}:
+$V = \pi \int_a^b (f(x))^2 \dx$
+
+\textbf{Bogenlänge eines Funktionsgraphen}:
+$s = \int_a^b \sqrt{1 + (f'(x))^2} \dx$
+
+\subsection{%
+    Funktionen mehrerer Variablen%
+}
+
+\textbf{\name{Riemann}-Integral in zwei Variablen}:
+Eine beschr. Fkt. $f\colon D \to \real$ mit $D := [a, b] \times [c, d]$
+ist \begriff{\name{Riemann}-integrierbar}, falls
+jede Riemann-Summe unabhängig von der Zerlegung denselben Grenzwert
+$\iint_D f(x, y) \d(x,y)$ besitzt.\\
+Wenn $f$, $f(\cdot, y)$ und $f(x, \cdot)$ Riemann-integrierbar sind, dann gilt\\
+$\iint_D f(x, y) \d(x,y) = \int_a^b (\int_c^d f(x, y) \dy) \dx
+= \int_c^d (\int_a^b f(x, y) \dx) \dy$.
+
+\linie
+
+\textbf{Normalgebiet}:
+Eine Teilmenge $D \subset \real^2$ heißt
+\begin{itemize}
+    \item
+    \begriff{Normalgebiet vom Typ I},
+    falls $D = \{(x, y) \in \real^2 \;|\; x \in [a, b],\; y \in [u(x), o(x)]\}$\\
+    für zweifach stetig diffb. Randfunktionen $u$ und $o$, und
+    
+    \item
+    \begriff{Normalgebiet vom Typ II},
+    falls $D = \{(x, y) \in \real^2 \;|\; y \in [c, d],\; x \in [l(y), r(y)]\}$\\
+    für zweifach stetig diffb. Randfunktionen $l$ und $r$.
+\end{itemize}
+Es gilt $\iint_D f(x, y) \d(x,y) = \int_a^b (\int_{u(x)}^{o(x)} f(x, y) \dy) \dx$
+für Typ-I-Normalgebiete (analog Typ II).
+
+\linie
+
+\textbf{Dif"|feomorphismus}:
+Eine Abbildung $\vec{F}\colon D \to B$ mit $D, B \subset \real^2$ of"|fen
+heißt \begriff{Dif"|feomorphismus}, falls
+$\vec{F}$ bijektiv, diffb. und $\vec{F}^{-1}$ diffb. ist.
+
+\textbf{Transformationssatz}:
+Seien $D, B \subset \real^2$ beschränkt und of"|fen,
+$\vec{F}\colon D \to B$ ein Dif"|feomorpis"-mus und $f\colon B \to \real$ beschränkt.
+Wenn $f$ und $f(\vec{F}) |\det \D\vec{F}|$ Riemann-integrierbar sind,
+dann gilt $\iint_B f(x, y) \d(x, y) = \iint_D f(\vec{F}(u, v)) |\det \D\vec{F}(u, v)| \d(u,v)$.
+
+\textbf{Polarkoordinaten}:
+$r \ge 0$, $\varphi \in [0, 2\pi)$,
+$\smallpmatrix{x\\y} = \vec{F}(r, \varphi) = \smallpmatrix{r\cos\varphi\\r\sin\varphi}$,
+$|\det \D\vec{F}(r, \varphi)| = r$
+
+\textbf{Kugelkoordinaten}:
+$r \ge 0$, $\vartheta \in (0, \pi)$, $\varphi \in [0, 2\pi)$,\\
+$\smallpmatrix{x\\y\\z} = \vec{F}(r, \vartheta, \varphi) =
+\smallpmatrix{r\sin\vartheta\cos\varphi\\r\sin\vartheta\sin\varphi\\r\cos\vartheta}$,
+$|\det \D\vec{F}(r, \vartheta, \varphi)| = r^2 \sin\vartheta$
+
+\pagebreak
+
+\subsection{%
+    Kurven- und Arbeitsintegral%
+}
+
+\textbf{reguläre Parametrisierung}:
+Eine $\C^1$-Abbildung $\vec{\alpha}\colon I \to \real^n$ einer Kurve
+auf einem Intervall $I \subset \real$ heißt \begriff{regulär}, falls
+$\forall_{t \in I}\; |\vec{\alpha}'(t)| > 0$.
+Das Bild $\vec{\alpha}(I)$ heißt \begriff{Spur} von $\vec{\alpha}$.
+
+\textbf{Helix}:
+$\vec{\alpha}\colon \real \to \real^3$, $\vec{\alpha}(t) := (r \cos t, r \sin t, ht)^\tp$
+für $r, h \ge 0$ ist regulär, wenn $r > 0$ oder $h > 0$.
+
+\textbf{Zykloide}:
+$\vec{\alpha}\colon \real \to \real^2$, $\vec{\alpha}(t) := (t - \sin t, 1 - \cos t)^\tp$
+ist nicht regulär für $t \in 2\pi\integer$.
+
+\textbf{$\C^r$-Kurve}:
+Eine Menge $S \subset \real^n$ heißt \begriff{$\C^r$-Kurve}, falls $S$ die Spur
+einer injektiven, regulären $\C^r$-Abbildung $\vec{\alpha}\colon [a, b] \to \real^n$
+mit $r \in \natural$ und $a < b$ ist.
+In diesem Fall heißt $\vec{\alpha}$ \begriff{$\C^r$-Parametrisierung}.\\
+Gilt $|\vec{\alpha}'(t)| \equiv 1$, dann heißt $\vec{\alpha}$
+\begriff{Bogenlängen-Parametrisierung}.\\
+Für jede orientierte $\C^1$-Kurve gibt es eine eindeutige Bogenlängen-Parametrisierung
+(bis auf Verschiebung des Parameters).
+
+\linie
+
+\textbf{Kurvenintegral}:
+Sei $f\colon S \to \real$ eine Funktion auf einer $\C^1$-Kurve $S$.\\
+Dann ist das \begriff{Kurvenintegral} von $f$ entlang $S$ definiert durch
+$\int_S f(\vec{x}) ds := \int_a^b f(\vec{\alpha}(t)) \cdot |\vec{\alpha}'(t)| \dt$,
+wobei $\vec{\alpha}\colon [a, b] \to \real^n$ eine beliebige reguläre $\C^1$-Parametrisierung
+von $S$ und $f(\vec{\alpha}(\cdot))$ stetig ist.\\
+Das Kurvenintegral ist linear und unabhängig von der Parametrisierung
+(Richtung identisch).
+
+\textbf{Beispiel}:
+Vektorfelder kann man durch eine Kurvenintegral-Faltung darstellen durch\\
+$I(\vec*{x}{0}) = \int_{-L}^L k(s) T(\vec{\beta}(s)) \ds$ mit
+Integralkern $k$, Rauschtextur $T$ und $\beta$ der Bogenlängen-Parametrisierung.
+
+\linie
+
+\textbf{Bogenlänge}:
+Sei $\vec{\alpha}\colon [a, b] \to \real^n$ eine $\C^1$-Parametrisierung einer $\C^1$-Kurve $S$.\\
+Dann heißt $L(S) := \int_a^b |\vec{\alpha}'(t)| \dt$ \begriff{Bogenlänge} von $S$.\\
+Ist $\vec{\alpha}$ die Bogenlängen-Parametrisierung, so ist
+$t - a$ die Bogenlänge von $\vec{\alpha}([a, t])$.
+
+\textbf{Länge eines Funktionsgraphen}:
+Der Graph einer Funktion $f \in \C^1(I)$ auf einem Intervall $I \subset \real$
+kann parametrisiert werden durch $\vec{\alpha}(x) := (x, f(x))^\tp$.
+Somit erhält man als Länge des Funktionsgraphen $L(f) := \int_I \sqrt{1 + (f'(x))^2} \dx$
+(siehe weiter oben).
+
+\linie
+
+\textbf{Arbeitsintegral}:
+Sei $\vec{f}\colon \D \to \real^n$ ein Vektorfeld auf $D \subset \real^n$
+und $S \subset D$ eine $\C^1$-Kurve.\\
+Dann ist das \begriff{Arbeitsintegral} von $\vec{f}$ entlang $S$ definiert durch
+$\int_S \vec{f} \cdot \d\vec{x} := \int_a^b \vec{f}(\vec{\alpha}(t)) \cdot \vec{\alpha}'(t) \dt$,
+wobei $\vec{\alpha}\colon [a, b] \to \real^n$ eine beliebige reguläre $\C^1$-Parametrisierung von
+$S$ ist.\\
+Das Kurvenintegral ist linear und unabhängig von der Parametrisierung
+(Richtung identisch).\\
+Wegen $\int_a^b \vec{f}(\vec{\alpha}(t)) \cdot \vec{\alpha}'(t) \dt
+= \int_a^b g(\vec{\alpha}(t)) \cdot |\vec{\alpha}'(t)| \dt$
+für $g(\vec{\alpha}(t))
+:= \vec{f}(\vec{\alpha}(t)) \cdot \frac{\vec{\alpha}'(t)}{|\vec{\alpha}'(t)|}$
+ist das Arbeitsintegral gleich dem Kurvenintegral über die zu $S$ tangentiale Komponente von
+$\vec{f}$.
+
+\pagebreak
+
+\subsection{%
+    Oberflächen- und Flussintegral%
+}
+
+\textbf{Oberflächenparametrisierung}:
+Eine \begriff{Oberflächenparametr.} ist eine injektive $\C^r$-Abbildung
+$\vec{\phi}\colon U \to \real^3$ auf einem Gebiet $U \subset \real^2$,
+sodass $\partial_1 \vec{\phi}(\vec{u}), \partial_2 \vec{\phi}(\vec{u}) \in \real^3$
+linear unabhängig sind.
+
+\textbf{$\C^r$-Flächenstück}:
+Eine Menge $M \subset \real^3$ heißt \begriff{Flächenstück}, falls
+$M = \vec{\phi}(U)$ für eine $\C^r$-Oberflächenparametrisierung $\vec{\phi}\colon U \to \real^3$
+mit $\vec{\phi}^{-1}$ stetig.
+
+\linie
+
+\textbf{Oberflächenintegral}:
+Sei $f\colon M \to \real$ eine Funktion auf einem $\C^1$-Flächenstück $M \subset \real^3$.
+Dann ist das \begriff{Oberflächenintegral} von $f$ auf $M$ definiert durch\\
+$\iint_M f(\vec{x}) \d o := \iint_U f(\vec{\phi}(\vec{u})) \cdot \sqrt{g(\vec{u})} \du_1 \du_2$,
+wobei $\vec{\phi}\colon U \to \real^3$ eine beliebige Oberflächenparametrisierung von $M$ und
+$g := \left|\smallpmatrix{g_{11}&g_{12}\\g_{21}&g_{22}}\right|$ mit
+$g_{ik} := \partial_i \vec{\phi} \cdot \partial_k \vec{\phi}$ ist.
+Es gilt $\sqrt{g(\vec{u})} = |\partial_1 \vec{\phi} \times \partial_2 \vec{\phi}|$.
+
+\linie
+
+\textbf{Fläche}:
+Die Fläche eines $\C^1$-Flächenstücks $M \subset \real^3$ ist definiert durch\\
+$A(M) := \iint_U \sqrt{g(\vec{u})} \du_1 \du_2$,
+wobei $\vec{\phi}\colon U \to \real^3$ eine beliebige Oberflächenparametrisierung von $M$ ist.
+
+\linie
+
+\textbf{gleich orientiert}:
+Sei $M \subset \real^3$ ein Flächenstück.
+Dann heißen zwei Parametrisierungen $\vec{\phi}$ und $\vec{\psi}$ von $M$
+\begriff{gleich orientiert}, falls die Parametertransformation $\vec{h}$ mit
+$\vec{\phi} = \vec{\psi} \circ \vec{h}$ die Beziehung $\det \D\vec{h} > 0$ erfüllt.
+Andernfalls heißen $\vec{\phi}$ und $\vec{\psi}$ \begriff{verschieden orientiert}.
+
+\textbf{orientiertes Flächenstück}:
+Sei $M \subset \real^3$ ein Flächenstück.
+Dann heißt $M$ \begriff{orientiert}, falls man zwischen
+\begriff{positiven/negativen Parametrisierungen} unterscheidet.
+
+\textbf{Einheitsnormalenfeld}:
+Sei $M \subset \real^3$ ein $\C^1$-Flächenstück.
+Dann heißt $\vec{n}\colon M \to \real^3$,\\
+$\vec{n}(\vec{x}) := \pm\frac{\partial_1 \vec{\phi} \times \partial_2 \vec{\phi}}
+{|\partial_1 \vec{\phi} \times \partial_2 \vec{\phi}|}(\vec{u})$ für
+$\vec{x} = \vec{\phi}(\vec{u})$ \begriff{Einheitsnormalenfeld} von $M$,
+wobei das positive (negative) Vorzeichen für positive (negative) Parametrisierungen
+$\vec{\phi}$ verwendet wird.
+
+\textbf{Flussintegral}:
+Sei $\vec{f}\colon M \to \real$ ein Vektorfeld auf einem $\C^1$-Flächenstück $M \subset \real^3$.\\
+Dann ist das \begriff{Flussintegral} von $\vec{f}$ durch $M$ definiert durch\\
+$\iint_M \vec{f}(\vec{x}) \cdot \d\vec{o} := \pm\iint_U \vec{f}(\vec{\phi}(\vec{u})) \cdot
+(\partial_1 \vec{\phi}(\vec{u}) \times \partial_2 \vec{\phi}(\vec{u})) \du_1 \du_2$,\\
+wobei $\vec{\phi}\colon U \to \real^3$ eine beliebige Oberflächenparametrisierung von $M$ ist
+und das positive (negative) Vorzeichen für positive (negative) Parametrisierungen
+$\vec{\phi}$ verwendet wird.
+
+\linie
+
+\textbf{Satz von \name{Gauß}}:
+Seien $V \subset \real^3$ kompakt mit stückweise glattem Rand $\partial V$,
+der durch ein äußeres Einheitsnormalenfeld $\vec{n}$ orientiert ist, und
+$\vec{f}\colon U \to \real^3$ ein Vektorfeld $U \supset V$ of"|fen.\\
+Dann gilt $\iiint_V \div \vec{f} \d(x, y, z) = \iint_{\partial V} \vec{f} \cdot \vec{n} \d o$.
+
+\pagebreak
+
+\subsection{%
+    Numerische Integration und Monte Carlo%
+}
+
+\textbf{\name{Newton}-\name{Cotes}-Formeln}:
+Seien $f\colon [a, b] \to \real$ eine Funktion, $N \in \natural$,
+$\Delta x := \frac{b - a}{N}$ und $x_j := a + j \Delta x$ für $j = 0, \dotsc, N$.
+Dann lässt sich $\int_a^b f(x) \dx$ approximieren durch
+\begin{itemize}
+    \item
+    $F_N := \sum_{j=0}^{N-1} f(a + (j+1/2) \Delta x) \cdot \Delta x$
+    (\begriff{\name{Riemann}-Summe}),
+    
+    \item
+    $F_N := \left(\frac{f(a) + f(b)}{2} + \sum_{j=1}^{N-1} f(x_j)\right) \cdot \Delta x$
+    (\begriff{Trapezregel}) und
+    
+    \item
+    $F_N := \left(f(a) + f(b) + \sum_{j=1}^{N-1} (3 - (-1)^j) f(x_j)\right)
+    \cdot \frac{\Delta x}{3}$
+    (\begriff{\name{Simpson}-Regel}).
+\end{itemize}
+
+\linie
+
+\textbf{Tref"|fermethode (Monte Carlo)}:
+Sei $f\colon [a, b] \to \real$ eine Abbildung mit $f \ge 0$.
+Die Approximation von $\int_a^b f(x) \dx$ mithilfe der \begriff{Tref"|fermethode}
+geschieht wie folgt:
+\begin{enumerate}
+    \item
+    Wähle eine Funktion $g\colon [a, b] \to \real$ mit $f \le g$, deren Integral
+    $A := \int_a^b g(x) \dx$ bekannt ist.
+    
+    \item
+    Wähle $n_{\text{trials}} \in \natural$ und setze $n_{\text{accept}} := 0$.
+    
+    \item
+    Wiederhole $n_{\text{trials}}$ Mal:
+    \begin{enumerate}
+        \item
+        Wähle gleichverteilt Zufallszahlen $x \in [a, b]$ und $\xi \in [0, 1]$.
+        
+        \item
+        Wenn $\xi \cdot g(x) \le f(x)$ gilt,
+        dann setze $n_{\text{accept}} \leftarrow n_{\text{accept}} + 1$.
+    \end{enumerate}
+    
+    \item
+    $F := A \cdot \frac{n_{\text{accept}}}{n_{\text{trials}}}$ ist eine Schätzung für
+    $\int_a^b f(x) \dx$.
+\end{enumerate}
+Üblicherweise berechnet man $m \in \natural$ Approximationen $F_i$ und
+verwendet stattdessen den Durchschnitt $\frac{1}{m} (\sum_{i=1}^m F_i)$.
+Zur Fehlerabschätzung kann man die empirische Standardabweichung
+$\sqrt{\frac{1}{m} \sum_{i=1}^m F_i^2 - \frac{1}{m^2} (\sum_{i=1}^m F_i)^2}$ verwenden.
+
+\linie
+
+\textbf{Monte-Carlo-Schätzer für gleichverteilte ZVs}:\\
+Seien $N$ auf $[a, b]$ gleichverteilte Zufallsvariablen $X_1, \dotsc, X_N$ gegeben.\\
+Der \begriff{Monte-Carlo-Schätzer} für $\int_a^b f(x) \dx$ ist durch
+$F_N := \frac{b - a}{N} \sum_{i=1}^N f(X_i)$ definiert.\\
+Ist $f_X(x) := \frac{1}{b-a}$ die Dichtefunktion der $X_i$, dann folgt, dass\\
+$\EE[F_N] = \frac{b - a}{N} \sum_{i=1}^N \EE[f(X_i)]
+= (b-a) \cdot \EE[f(X_1)] = (b-a) \int_a^b f(x)f_{X_1}(x) \dx = \int_a^b f(x) \dx$\\
+(vergleiche mit dem Mittelwertsatz
+$\exists_{\xi \in [a, b]}\; \int_a^b f(x) \dx = (b-a) \cdot f(\xi)$).
+
+\textbf{Monte-Carlo-Schätzer für allgemeine ZVs}:\\
+Seien $N$ i.i.d. Zufallsvariablen $X_1, \dotsc, X_N$ mit Werten auf $[a, b]$ und
+Dichte $f_X$ gegeben.\\
+Der \begriff{Monte-Carlo-Schätzer} für $\int_a^b f(x) \dx$ ist durch
+$F_N := \frac{1}{N} \sum_{i=1}^N \frac{f(X_i)}{f_X(X_i)}$ definiert.\\
+Dann folgt
+$\EE[F_N] = \frac{1}{N} \sum_{i=1}^N \EE[\frac{f(X_i)}{f_X(X_i)}]
+= \EE[\frac{f(X_1)}{f_X(X_1)}] = \int_a^b \frac{f(x)}{f_X(x)} f_X(x) \dx = \int_a^b f(x) \dx$.
+
+\linie
+
+\textbf{Monte-Carlo-Schätzer für mehrere Dimensionen}:
+Zur Berechnung von dreidimensionalen Integralen
+$I = \int_{x_0}^{x_1} \int_{y_0}^{y_1} \int_{z_0}^{z_1} f(x, y, z) \dz\dy\dx$
+verfährt man analog, d.\,h.\\
+$I \approx \frac{(x_1 - x_0) (y_1 - y_0) (z_1 - z_0)}{N} \sum_{i=1}^N f(X_i, Y_i, Z_i)$.
+
+\pagebreak
+
+\subsection{%
+    Realisierungen von Zufallsvariablen%
+}
+
+\textbf{Realisierung einer Zufallsvariable}:
+Sei $X$ eine reelle Zufallsvariable mit Dichte $f_X$.\\
+Dann kann eine Realisierung $x$ von $X$ wie folgt bestimmt werden:
+\begin{enumerate}
+    \item
+    Berechne die Verteilungsfunktion $F_X(x) = \int_{-\infty}^x f_X(x') \dx'$.
+    
+    \item
+    Berechne die Inverse $F_X^{-1}\colon [0, 1] \to \real$.
+    
+    \item
+    Erzeuge eine gleichverteilte Zufallszahl $\xi \in [0, 1]$.
+    
+    \item
+    Berechne $x = F_X^{-1}(\xi)$.
+\end{enumerate}
+
+\linie
+
+\textbf{Transformation zwischen Zufallsvariablen}:
+Seien $X$ eine reelle Zufallsvariable mit Dichte $f_X$ und
+$T\colon \real \to \real$, $x \mapsto y = T(x)$, eine bijektive
+Funktion, deren Ableitung nur ein VZ hat.\\
+Dann lässt sich die Dichte von $Y := T(X)$ wie folgt bestimmen:
+Für die Verteilungsfunktionen gilt $F_Y(y) = F_Y(T(x)) = F_X(x)$
+(weil $F_Y(T(x)) = \PP(T(X) \le T(x)) = \PP(X \le x) = F_X(x)$) für $y = T(x)$.
+Durch Anwendung von $\frac{\d}{\dx}$ folgt $f_Y(y) |T'(x)| = f_X(x)$,
+also $f_Y(y) = \frac{f_X(x)}{|T'(x)|}$.
+
+\textbf{Transformation zwischen Zufallsvektoren}:
+Seien $X$ ein reeller $n$-Zufallsvektor mit Dichte $f_X$ und
+$T\colon \real^n \to \real^n$, $\vec{x} \mapsto \vec{y} = T(\vec{x})$, eine bijektive
+Abbildung, deren Funktionaldeterminante nur ein VZ hat.
+Dann ist die Dichte von $Y := T(X)$ durch $f_Y(\vec{y}) = \frac{f_X(\vec{x})}{|J_T(\vec{x})|}$
+für $\vec{y} = T(\vec{x})$ gegeben, wobei im Nenner der Betrag der Funktionaldeterminante steht.
+
+\textbf{Beispiel}:
+Für Polarkoordinaten gilt
+$f_{\text{cart}}(x, y) = f_{\text{polar}}(r, \varphi) / r$.
+
+\linie
+
+\textbf{Realisierungen eines $2$-Zufallsvektors}:
+Sei $(X, Y)$ ein reeller $2$-Zufallsvektor mit Dichte $f_{(X,Y)}$.
+Dann kann eine Realisierung $(x, y)$ von $(X, Y)$ wie folgt bestimmt werden:
+\begin{itemize}
+    \item
+    Sind $X$ und $Y$ unabhängig, dann gilt $f_{(X,Y)}(x, y) = f_X(x) \cdot f_Y(y)$
+    und man kann die Realisierungen einzeln berechnen.
+    
+    \item
+    Falls $X$ und $Y$ nicht unabhängig sind:
+    \begin{enumerate}
+        \item
+        Berechne die Randdichte $f_X(x) := \int_\real f_{(X,Y)}(x, y) \dy$.
+        
+        \item
+        Berechne die Dichte $f_Y(y\;|\;X=x) := \frac{f_{(X,Y)}(x, y)}{f_X(x)}$
+        der bedingten Verteilung.
+        
+        \item
+        Berechne eine Realisierung mittels $f_X(x)$ und danach mittels $f_Y(y\;|\;X=x)$.
+    \end{enumerate}
+\end{itemize}
+
+\textbf{Beispiel}:
+Es werden auf dem 2D-Einheitskreis gleichverteilte Punkte in Polarkoordinaten gesucht.
+Für die Dichte in kartesischen Koordinaten gilt also $f_{\text{cart}}(x, y) = \frac{1}{\pi}$.
+Durch Transformation erhält man in Polarkoordinaten $f_{(R,\Phi)}(r, \varphi) = \frac{r}{\pi}$.\\
+Die Randdichte von $R$ ist
+$f_R(r) = \int_0^{2\pi} f_{(R,\Phi)}(r, \varphi) \d\varphi = 2r$.\\
+Die Dichte der bedingten Verteilung ist
+$f_\Phi(\varphi\;|\;R = r) = \frac{f_{(R,\Phi)}(r, \varphi)}{f_R(r)} = \frac{1}{2\pi}$.\\
+Jetzt bestimmt man die Verteilungsfunktionen
+$F_R(r) = \int_0^r 2r' \dr' = r^2$ und\\
+$F_\Phi(\varphi\;|\;R = r) = \int_0^\varphi \frac{1}{2\pi} \d\varphi' = \frac{\varphi}{2\pi}$.\\
+Durch Invertierung erhält man $r = F_R^{-1}(\xi_1) = \sqrt{\xi_1}$ und
+$\varphi = F_\Phi^{-1}(\xi_2\;|\;R = r) = 2\pi\xi_2$.\\
+(Vergleiche mit dem naiven Ansatz $r = \xi_1$ und $\varphi = 2\pi\xi_2$ mit
+$\xi_1, \xi_2 \in [0, 1]$.)
+
+\linie
+
+\textbf{Anwendung von Monte-Carlo-Integration}:
+Lösung der \begriff{Rendering-Gleichung}\\
+$L_o(x, \vec*{\omega}{o}) = L_e(x, \vec{\omega}) +
+\int_\Omega f_r(x, \vec*{\omega}{i}, \vec*{\omega}{o}) L_i(x, \vec*{\omega}{i})
+(\vec*{\omega}{i} \cdot \vec{n}) d\vec*{\omega}{i}'$.
+
+\pagebreak

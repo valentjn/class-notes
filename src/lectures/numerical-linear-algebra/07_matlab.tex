@@ -1,0 +1,79 @@
+\section{%
+    \emph{Zusatz}: Programmieren in Matlab%
+}
+
+\textbf{Allgemeines}:
+Matlabs Programmiersprache arbeitet zeilenorientiert.
+Zeilen können mit \code{;} abgeschlossen werden, andernfalls wird das
+Ergebnis der Berechnung angezeigt.
+Zeilenkommentare werden mit \code{\%} eingeleitet.
+
+\textbf{Operatoren}:
+Der Zuweisungsoperator ist \code{=}, der Vergleichsoperator \code{==}.
+Außer den üblichen Operatoren \code{+}, \code{-}, \code{*}, \code{/} stehen
+\code{^} (Potenzieren) und \code{\\} (LGS lösen wie in \code{x = A \\ b})
+zur Verfügung.
+Bei manchen Operatoren wie \code{*} oder \code{^} gibt es eine entsprechende
+punktweise Operatoren \code{.*} und \code{.^}, die die ursprüngliche Operatoren
+auf Matrizen und Vektoren punktweise anwendet (z.\,B. \code{A * B} vs.
+\code{A .* B}).
+
+\textbf{Vektor- und Matrixrechnung}:
+\code{1:n} erzeugt einen Zeilenvektor mit Einträgen $1$ bis $n$. \\
+Wie in \code{5.3:0.1:6} kann die Schrittweite vorgegeben werden. \\
+Eine Matrix kann mit \code{[a1, a2, a3; a4, a5, a6]} zeilenweise eingegeben
+werden.
+Transponieren erfolgt durch angefügtes \code{'}.
+
+\textbf{Strings}:
+Strings werden durch einfache Hochkommata \code{'} begrenzt.
+Konkatenation erfolgt durch Einfügen in einen Zeilenvektor:
+\code{['Ich bin ', 'ein String.']}.
+
+\textbf{Inline-Funktionen}:
+Eine Inline-Funktion kann wie \code{rho = @(w) 2*w + 3} deklariert werden.
+Danach kann durch \code{rho(42)} auf die Funktion zugegriffen werden.
+
+\textbf{Kontrollfluss}:
+Blöcke durch den Kontrollfluss werden durch \code{end} in einer eigenen
+Zeile beendet.
+Eine \code{for}-Schleife beginnt mit \code{for i = 1:n},
+eine \code{while}-Schleife analog mit \\
+\code{while error > tol} und
+eine \code{if}-Abfrage mit \code{if k == 1}. \\
+Verzweigungen werden dabei mit \code{elseif k == n} und \code{else}
+realisiert. \\
+In Schleifen sind \code{break} und \code{continue} möglich.
+
+\textbf{Funktionen}:
+Programme können skriptähnlich einfach in programmname.m-Dateien geschrieben
+werden, sie werden dann durch \code{programmname} aufgerufen (falls Matlab im
+aktuellen Verzeichnis ist).
+Man kann auch Funktionen erstellen, die jedoch dann eine ganze Datei umfassen
+(es gibt also nur eine Funktion pro Datei) und von anderen Dateien aufgerufen
+werden müssen.
+Funktionen beginnen mit \code{function [rueckgabe1, rueckgabe2] =} \\
+\code{funktionsname(parameter1, parameter2)}, diese Zeile muss ganz am Anfang
+der Datei stehen.
+Ansonsten werden Funktionen wie Skripte als funktionsname.m
+(Dateiname = Funktionsname!) gespeichert und durch
+\code{[A, B] = funktionsname(42, [1, 2])} aufgerufen.
+
+\textbf{eingebaute Funktionen}:
+Zu den nützlichsten eingebauten Matlab-Funktionen gehören \\
+\code{size(A, n)} ($n$-te Dimension der Matrix $A$),
+\code{length(x)} (Größe des Vektors $x$), \\
+\code{zeros(m, n)} ($m \times n$-Nullmatrix),
+\code{eye(n)} ($n \times n$-Einheitsmatrix),
+\code{repmat(A, m, n)} (Blockmatrix mit $m \times n$ Blöcken von $A$),
+\code{norm(x, art)} (wobei \code{1}, \code{2}, \code{inf} und \code{'fro'}
+für \code{art} möglich sind),
+\code{inv(A)},
+\code{eig(A)} (Eigenwerte von $A$),
+\code{[P, D] = eig(A)} (Basiswechselmatrix $P$ und Diagonalmatrix $D$),
+\code{abs(x)},
+\code{max(x)}, \code{min(x)},
+\code{sum(x)},
+\code{disp(x)} (zeigt Zahl/String/Vektor/Matrix/\ldots{} $x$ an)
+
+\pagebreak

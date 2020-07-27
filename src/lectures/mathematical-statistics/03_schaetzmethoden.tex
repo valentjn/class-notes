@@ -1,0 +1,318 @@
+\section{%
+    Schätzmethoden%
+}
+
+\begin{Bem}
+    Gegeben sind wieder ein reguläres statistisches Modell
+    $\P = \{\PP_\theta \;|\; \theta \in \Theta\}$ und einen Vektor $x$ der Beobachtungen,
+    der als Realisierung eines Zufallsvektors $X$ mit unbekannter Verteilung $P_\theta$
+    interpretiert wird.
+    
+    Die Aufgabe ist nun, das unbekannte $\theta$ unter Verwendung der Beobachtung $x$ zu schätzen.
+    
+    Häufig ist man dabei nicht an $\theta$ selbst, sondern nur an $q(\theta)$ für eine
+    fest vorgegebene, messbare Funktion $q\colon \Theta \rightarrow \real$ interessiert.
+    
+    Das Ziel ist es, $q(\theta)$ mittels einer geeigneten Statistik $T$ zu schätzen.
+    $T(x)$ wird als \begriff{konkreter Schätzwert} für $q(\theta)$ verwendet.
+    $T(X)$ ist dagegen der \begriff{zufallsabhängige Schätzer} für $q(\theta)$.
+\end{Bem}
+
+\begin{Bsp}
+    Eine Anzahl von Messungen einer physikalischen Größe $\mu$ kann durch ein Messmodell
+    mit $n$ Zufallsvariablen $X_i = \mu + \varepsilon_i$, $i = 1, \dotsc, n$,
+    simuliert werden,
+    wobei die Messfehler $\varepsilon_1, \dotsc, \varepsilon_n \sim \N(0, \sigma^2)$ unabhängig
+    mit unbekannter Varianz $\sigma^2$ sein sollen.
+    Natürlich sind dann auch die $X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ unabhängig.
+    $\theta$ ist hier gleich $\theta = (\mu, \sigma^2)$, gesucht ist $\mu$.
+    Man schätzt $q(\theta) = \mu$ nun durch die Statistik
+    $T(X) := \frac{1}{n} \sum_{i=1}^n X_i$ mit $X = (X_1, \dotsc, X_n)$.
+\end{Bsp}
+
+\subsection{%
+    Substitutionsprinzip%
+}
+
+\begin{Bem}
+    Die Idee des \begriff{Substitutionsprinzips} ist es,
+    den unbekannten Parameter in Beziehung zu Größen zu setzen, die sich leicht schätzen lassen.
+    Beispielsweise lässt sich die (wahre, aber unbekannte) Verteilungsfunktion durch die
+    empirische Verteilungsfunktion oder Momente lassen sich durch empirische Momente schätzen.
+\end{Bem}
+
+\subsubsection{%
+    Häufigkeitssubstitution%
+}
+
+\begin{Bem}
+    Bei der Häufigkeitssubstitution werden bei diskreten Modellen die Wahrscheinlichkeiten
+    der Elementarereignisse durch relative Häufigkeiten geschätzt.
+    
+    Im Folgenden bezeichnet $\int_\real f(x) dF(x)$ das
+    \begriff{\name{Lebesgue}-\name{Stieltjes}-Integral}.
+    Man sagt, $f(x)$ sei \begriff{bzgl. $F$ integrierbar}, falls $F$ monoton und
+    $f$ bzgl. $\mu_F$ Lebesgue-integrierbar ist, in diesem Fall setzt man
+    $\int_\real f(x) dF(x) := \int_\real f(x) d\mu_F$.
+    Dabei ist $\mu_F$ ein Maß auf $\real$, das durch
+    $\mu_F([a, b)) = F(b-0) - F(a-0)$ und
+    $\mu_F((a, b]) = F(b+0) - F(a-0)$ eindeutig festgelegt ist.
+    
+    Ist $F$ stetig dif"|ferenzierbar, dann gilt $\int_a^b f(x) dF(x) = \int_a^b f(x)F'(x) \dx$.
+    Insbesondere gilt:
+    Wenn $F$ die Verteilungsfunktion einer Zufallsvariable $X$, die eine L.-B.-Dichte besitzt,
+    und $f$ eine messbare Funktion mit $\EE(|f(X)|) < \infty$ ist,
+    dann ist die Ableitung $F'$ die Dichte von $X$ und es gilt
+    $\EE(f(X)) = \int_\real f(x)F'(x) \dx = \int_\real f(x) dF(x)$.
+\end{Bem}
+
+\linie
+
+\begin{Def}{Häufigkeitssubstitution}
+    Seien $X_1, \dotsc, X_n$ i.i.d. mit unbekannter Verteilungsfunktion $F$
+    und $F_n$ die \begriff{empirische Verteilungsfunktion} mit
+    $F_n(x) := \frac{1}{n} \sum_{i=1}^n \1_{\{X_i \in (-\infty, x]\}}$ für $x \in \real$
+    (relative Häufigkeit der $X_1, \dotsc, X_n$ mit $X_i \le x$).\\
+    Dann heißt die Schätzung des Funktionals $q := \int_\real f(x) dF(x)$
+    mit einer bzgl. $F$ integrierbaren Funktion $f\colon \real \rightarrow \real$ durch
+    $\widehat{q} := \int_\real f(x) dF_n(x) = \frac{1}{n} \sum_{i=1}^n f(X_i)$
+    \begriff{Häufigkeitssubstitution}.
+\end{Def}
+
+\linie
+
+\begin{Bsp}
+    Im Fall $f(x) = x^2$ erhält man $q = \int_\real x^2 dF(x) = \EE(X_1^2)$ (zweites Moment).
+    Ist $X_1, \dotsc, X_n$ eine i.i.d. Stichprobe mit Verteilungsfunktion $F$, so ist\\
+    $\widehat{q} := \int_\real x^2 dF_n(x) = \frac{1}{n} \sum_{i=1}^n X_i^2$
+    ein sinnvoller Schätzer für $\EE(X_1^2)$ (Gesetz der großen Zahlen).
+\end{Bsp}
+
+\pagebreak
+
+\subsubsection{%
+    Momentenmethode%
+}
+
+\begin{Bem}
+    Die Momentenmethode ist ein Spezialfall der Häufigkeitssubstit. mit $f(x) = x^k$.
+\end{Bem}
+
+\begin{Def}{Momentenmethode}
+    Seien $X_1, \dotsc, X_n$ i.i.d. Zufallsvariablen mit unbekannter Verteilung $P_\theta$.
+    Dann heißt die Schätzung der $k$-ten Momente
+    $m_k(\theta) = \EE_\theta(X_i^k) = \int_\real x^k dP_\theta$ der $X_i$ durch
+    das \begriff{$k$-te Stichprobenmoment}
+    $\widehat{m}_k := \frac{1}{n} \sum_{i=1}^n X_i^k = \int_\real x^k dF_n(x)$
+    \begriff{Momentenmethode}.
+    
+    Allgemeiner:
+    Ist $q(\theta)$ eine Funktion der ersten $r$ Momente, d.\,h.
+    $q(\theta) = g(m_1(\theta), \dotsc, m_r(\theta))$ mit einer stetigen Funktion
+    $g\colon \real^r \rightarrow \real$,
+    so wird $q(\theta)$ nach der \begriff{Momentenmethode} durch\\
+    $T(X) := g(\widehat{m}_1, \dotsc, \widehat{m}_r)$ geschätzt.
+\end{Def}
+
+\linie
+
+\begin{Bsp}
+    Seien $X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ i.i.d. mit unbekanntem
+    $\theta = (\mu, \sigma^2)$.\\
+    Dann können $\mu = m_1$ und $\sigma^2 = m_2 - m_1^2$ durch
+    $\widehat{\mu} = \widehat{m}_1 = \frac{1}{n} \sum_{i=1}^n X_i$ und\\
+    $\widehat{\sigma}^2 = \widehat{m}_2 - \widehat{m}_1^2 =
+    \frac{1}{n} \sum_{i=1}^n X_i^2 - \left(\frac{1}{n} \sum_{i=1}^n X_i\right)^2
+    = \frac{1}{n} \sum_{i=1}^n (X_i - \overline{X})^2$ geschätzt werden.
+\end{Bsp}
+
+\begin{Bsp}
+    Beim \begriff{Taxiproblem} gibt es $\theta$-viele Taxis, die mit den Nummern
+    $1, \dotsc, \theta$ versehen sind, wobei $\theta$ unbekannt ist.
+    Von einem festen Punkt aus werden die Nummern $X_1, \dotsc, X_n$ von $n$ vorbeifahrenden
+    Taxis notiert (Ziehen mit Zurücklegen).
+    Es gilt $X_1, \dotsc, X_n \sim \U(\{1, \dotsc, \theta\})$ i.i.d.,
+    d.\,h. $\PP_\theta(X_i = r) = \frac{1}{\theta}$ für $r = 1, \dotsc, \theta$ und
+    $i = 1, \dotsc, n$ und somit\\
+    $m_1(\theta) = \EE_\theta(X_i) = \sum_{r=1}^\theta r \cdot \PP_\theta(X_i = r)
+    = \frac{1}{\theta} \sum_{r=1}^\theta r = \frac{\theta + 1}{2}$.\\
+    Also kann $\theta$ nach der Momentenmethode durch $\widehat{\theta} = 2\widehat{m}_1 - 1 =
+    2\overline{X} - 1$ geschätzt werden.
+    Dieser Schätzer liefert aber in bestimmten Situationen keine sinnvollen Ergebnisse, z.\,B.
+    wenn $\max\{x_1, \dotsc, x_n\} > \widehat{\theta} = 2\overline{x} - 1$,
+    dann gilt dennoch immer $\theta \ge \max\{x_1, \dotsc, x_n\}$.
+\end{Bsp}
+
+\subsection{%
+    Methode der kleinsten Quadrate%
+}
+
+\begin{Def}{allgemeine Regression}
+    Eine \begriff{allgemeine Regression} ist gegeben durch einen Parametervektor
+    $\theta \in \Theta \subset \real^r$ und bekannte parametrische Funktionen
+    $g_1, \dotsc, g_n\colon \Theta \rightarrow \real$.
+    Das dazugehörige Modell lautet $Y_i = g_i(\theta) + \varepsilon_i$, $i = 1, \dotsc, n$.
+    Für die Zufallsvariablen $\varepsilon_1, \dotsc, \varepsilon_n$ (\begriff{Beobachtungsfehler})
+    gelte dabei für alle $i, j = 1, \dotsc, n$ mit $i \not= j$, dass
+    \begin{enumerate}
+        \item
+        $\EE(\varepsilon_i) = 0$,
+        
+        \item
+        $\Var(\varepsilon_i) = \sigma^2 > 0$ mit $\sigma^2$ unbekannt und
+        
+        \item
+        $\Cov(\varepsilon_i, \varepsilon_j) = 0$.
+    \end{enumerate}
+\end{Def}
+
+\begin{Bem}
+    Man bezeichnet die Fehler $\varepsilon_i$ auch als \begriff{weißes Rauschen (white noise)}.
+    Die letzte Bedingung heißt \begriff{Unkorreliertheit}.
+    Stochastische Unabhängigkeit impliziert Unkorreliertheit (die Umkehrung gilt i.\,A. nicht).
+    Die Bedingungen sind z.\,B. (aber nicht nur) erfüllt, wenn
+    $\varepsilon_1, \dotsc, \varepsilon_n$ i.i.d. mit $\EE(\varepsilon_i) = 0$ und
+    $\Var(\varepsilon_i) = \sigma^2 > 0$.
+    Beispielsweise gilt dies für $\varepsilon_1, \dotsc, \varepsilon_n \sim \N(0, \sigma^2)$
+    i.i.d., in diesem Fall kann man zeigen, dass der KQS als MLS betrachtet werden kann.
+\end{Bem}
+
+\linie
+
+\begin{Def}{Kleinste-Quadrate-Schätzer}\\
+    Sei $Q\colon \Theta \times \real^n \rightarrow \real_0^+$ definiert durch
+    $Q(\theta, y) := \sum_{i=1}^n (y_i - g_i(\theta))^2$ für $y \in \real^n$.
+    Gibt es eine messbare Funktion $\widehat{\theta}\colon \real^n \rightarrow \Theta$,
+    sodass $Q(\widehat{\theta}(y), y) \le Q(\widetilde{\theta}, y)$ für alle
+    $\widetilde{\theta} \in \Theta$ und $y \in \real^n$,
+    so heißt $\widehat{\theta}(Y)$  \begriff{Kleinste-Quadrate-Schätzer (KQS)} für
+    $g(\theta) = (g_1(\theta), \dotsc, g_n(\theta))$.
+\end{Def}
+
+\begin{Bem}
+    $\widehat{\theta}$ ist wohldefiniert (d.\,h. eindeutig),
+    wenn das Bild von $g = (g_1, \dotsc, g_n)$ in $\real^n$ abgeschlossen ist.
+    Sind die $g_i$ nach $\theta_1, \dotsc, \theta_r$ dif"|ferenzierbar und $\Theta \subset \real^r$
+    of"|fen, so muss $\widehat{\theta}$ notwendigerweise die sog.
+    \begriff{Normalengleichungen} erfüllen:
+    $\frac{\partial}{\partial \theta_j} Q(\theta, y)|_{\theta=\widehat{\theta}(y)} = 0$ für
+    $j = 1, \dotsc, r$, d.\,h. für alle $j = 1, \dotsc, r$ gilt
+    $\sum_{i=1}^n (y_i - g_i(\theta)) \cdot
+    \left.\frac{\partial g_i(\theta)}{\partial \theta_j}\right|_{\theta=\widehat{\theta}(y)} = 0$.
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Bsp}
+    Bei der \begriff{linearen Regression} gilt $g_i(\theta) = \theta$ mit
+    $\theta \in \Theta \subset \real$ (also $r = 1$), d.\,h. das Messmodell lautet
+    $Y_i = \theta + \varepsilon_i$, $i = 1, \dotsc, n$.
+    Wegen $\frac{\partial g_i(\theta)}{\partial \theta} = 1$ lauten die Normalengleichungen
+    $\sum_{i=1}^n (y_i - \theta) = 0$.
+    Somit gilt $\widehat{y} = \frac{1}{n} \sum_{i=1}^n y_i = \overline{y}$.
+    Die Methode der kleinsten Quadrate liefert also denselben Schätzer wie die Momentenmethode.
+\end{Bsp}
+
+\begin{Bsp}
+    Angenommen, es liegen $n$ Beobachtungen $(x_1, y_1), \dotsc, (x_n, y_n)$ vor, wobei
+    die $x_1, \dotsc, x_n$ deterministisch und bekannt seien
+    (z.\,B. feste Parameter, an denen man eine physikalische Größe auswertet).
+    Im einfachen, linearen Fall erhält man als statistisches Modell
+    $Y_i = \theta_1 + \theta_2 x_i + \varepsilon_i = g_i(\theta) + \varepsilon_i$.
+    Dabei heißen die $Y_i$ \begriff{Zielvariablen} und die $\varepsilon_i$ \begriff{Kovariablen}.
+    Gesucht sind geeignete Schätzer $\widehat{\theta}_1, \widehat{\theta}_2$ für
+    $\theta_1, \theta_2$.\\
+    Wegen $\frac{\partial g_i(\theta)}{\partial \theta_1} = 1$ und
+    $\frac{\partial g_i(\theta)}{\partial \theta_2} = x_i$ lauten die Normalengleichungen
+    $\sum_{i=1}^n (y_i - \theta_1 - \theta_2 x_i) = 0$ und
+    $\sum_{i=1}^n (y_i - \theta_1 - \theta_2 x_i) x_i = 0$.
+    Wenn man dieses LGS löst, indem man die erste Gleichung schätzt mit
+    $\widehat{\theta}_1 = \overline{y} - \widehat{\theta}_2 \overline{x}$ und in die zweite
+    einsetzt, so erhält man
+    $\widehat{\theta}_2(y) = \frac{\sum_{i=1}^n (x_i - \overline{x}) (y_i - \overline{y})}
+    {\sum_{i=1}^n (x_i - \overline{x})^2}$.
+\end{Bsp}
+
+
+\subsection{%
+    Maximum-Likelihood-Schätzung%
+}
+
+\begin{Def}{Likelihood-Funktion}
+    Sei $\P = \{\PP_\theta \;|\; \theta \in \Theta\}$ ($\Theta \subset \real^k$) ein
+    reguläres statistisches Modell.
+    Dann heißt die Funktion $L\colon \Theta \times \real^n \rightarrow \real$ mit
+    $L(\theta, x) := p(x, \theta)$ \begriff{Likelihood-Funktion} des Parameters $\theta \in \Theta$
+    für die Beobachtung $x \in \real^n$.
+\end{Def}
+
+\begin{Bem}
+    Die Maximum-Likelihood-Methode sucht jetzt denjenigen Schätzwert
+    $\widehat{\theta} = \widehat{\theta}(x)$, unter welchem die Daten $x$ mit höchster
+    Wahrscheinlichkeit oder W-Dichte erscheinen.
+\end{Bem}
+
+\begin{Def}{Maximum-Likelihood-Schätzer}
+    Gibt es eine messbare Funktion $\widehat{\theta}\colon \real^n \rightarrow \Theta$ mit\\
+    $L(\widehat{\theta}(x), x) = \max_{\theta \in \Theta} L(\theta, x)$ für alle $x \in \real^n$,
+    dann heißt $\widehat{\theta}(X)$ \begriff{Maximum-Likelihood-Schätzer (MLS/MLE)}
+    für $\theta$.
+\end{Def}
+
+\begin{Bem}
+    Da der Logarithmus streng monoton wächst, liefert die in vielen Fällen einfachere
+    \begriff{Log-Likelihood-Funktion} $\ell\colon \Theta \times \real^n \rightarrow \real$ mit
+    $\ell(\theta, x) := \ln L(\theta, x)$ denselben ML-Schätzwert.\\
+    Ist $L$ in $\Theta$ dif"|ferenzierbar, so sind Lösungen von
+    $\frac{\partial}{\partial \theta_j} L(\theta, x) = 0$ bzw.
+    $\frac{\partial}{\partial \theta_j} \ell(\theta, x) = 0$,\\
+    $j = 1, \dotsc, k$, mögliche Kandidaten für den ML-Schätzwert.
+    Ist zusätzlich $\Theta \subset \real^k$ of"|fen, so ist die Bedingung
+    $\left.\frac{\partial}{\partial \theta_j}
+    L(\theta, x)\right|_{\theta=\widehat{\theta}(x)} = 0$,
+    $j = 1, \dotsc, k$, (\begriff{Likelihood-Gleichungen})
+    notwendig für den ML-Schätzwert.
+    Hinreichende Bedingungen können z.\,B. unter Verwendung von 2. Ableitungen oder
+    Konkavitätsargumenten gefunden werden.\\
+    Sind die Komponenten von $X = (X_1, \dotsc, X_n)$ stochastisch unabhängig mit Dichten
+    $p_i(\cdot, \theta)$ von $X_i$, so gilt $\ell(\theta, x) =
+    \ln\!\left(\prod_{i=1}^n p_i(x_i, \theta)\right) = \sum_{i=1}^n \ln p_i(x_i, \theta)$.
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Seien $X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ i.i.d. mit $\sigma^2$ bekannt und
+    $\theta = \mu$.
+    Dann gilt $L(\theta, x) \propto
+    \exp\!\left(-\sum_{i=1}^n \frac{(x_i - \theta)^2}{\sigma^2}\right)$, also
+    $\ell(\theta, x) = -\sum_{i=1}^n \frac{(x_i - \theta)^2}{\sigma^2}$.
+    Somit lautet die Log-Likelihood-Gleichung
+    $\frac{1}{\sigma^2} \sum_{i=1}^n (x_i - \theta) = 0$,
+    dies führt auf $\widehat{\theta}(x) = \frac{1}{n} \sum_{i=1}^n x_i = \overline{x}$.
+    Wegen $\frac{\partial^2}{\partial \theta^2} \ell(\theta, x) = -\frac{n}{\sigma^2} < 0$
+    ist $\widehat{\theta}(x) = \overline{x}$ ein globales Maximum der Likelihood-Funktion.
+    Der MLS stimmt also mit dem KQS und dem Schätzer nach der Momentenmethode überein.
+\end{Bsp}
+
+\begin{Bsp}
+    Beim Taxiproblem ist $X_1, \dotsc, X_n \sim \U(\{1, \dotsc, \theta\})$ i.i.d. mit
+    $\theta \in \natural$ unbekannt.
+    Es gilt $L(\theta, x) = \prod_{i=1}^n \frac{1}{\theta} \1_{\{1, \dotsc, \theta\}}(x_i) =
+    \frac{1}{\theta^n} \1_{\{1, \dotsc, \theta\}^n}(x)$.
+    Für $\theta < \max x_i$ ist also $L(\theta, x) = 0$ und für $\theta \ge \max x_i$ ist
+    $L(\theta, x) = \frac{1}{\theta^n}$.
+    Man erhält also den MLS $\widehat{\theta}(x) = \max_{i=1,\dotsc,n} x_i$.
+\end{Bsp}
+
+\begin{Bsp}
+    Seien $X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ i.i.d., wobei diesmal
+    $\theta = (\mu, \sigma^2)$ unbekannt ist.
+    Durch Nachrechnen lässt sich zeigen, dass
+    $\widehat{\theta}(x) = \left(\overline{x},
+    \frac{1}{n} \sum_{i=1}^n (x_i - \overline{x})^2\right)$ der ML-Schätzwert ist
+    (\begriff{Mit"-telwert} und \begriff{unkorrigierte empirische Varianz}).
+\end{Bsp}
+
+\pagebreak

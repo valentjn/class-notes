@@ -1,0 +1,421 @@
+\section{%
+    Elliptische Regularitätstheorie in \name{Hölder}räumen (\name{Schauder}theorie)%
+}
+
+\subsection{%
+    Abschätzung der \name{Hölder}-Halbnorm zweiter Ordnung%
+}
+
+\begin{Def}{lokale \name{Hölder}räume}
+    Seien $\Omega \subset \real^n$ of"|fen oder kompakt, $k \in \natural_0$ und
+    $\alpha \in (0, 1]$.\\
+    Dann heißt $\C^{k,\alpha}_\loc(\Omega) := \{f \in \C^k_b(\Omega) \;|\;
+    \forall_{K \subset \Omega \text{ kpkt.}}\; f \in \C^{k,\alpha}(K)\}$
+    \begriff{lokaler \name{Hölder}raum} der Ordnung $k$ mit Exponent $\alpha$.
+\end{Def}
+
+\begin{Satz}{Abschätzung der $\C^{2,\alpha}$-Halbnorm}\\
+    Sei $u \in \C^{2,\alpha}_\loc(\real^n)$ für $\alpha \in (0, 1)$ eine Lösung von
+    $\Delta u = f$ in $\real^n$ mit\\
+    $[u]_{\C^{2,\alpha}(\real^n)} :=
+    \sum_{|\alpha|=2} [\partial_x^\alpha u]_{\C^{0,\alpha}(\real^n)} < \infty$ und
+    $[f]_{\C^{0,\alpha}(\real^n)} < \infty$.\\
+    Dann gilt $[u]_{\C^{2,\alpha}(\real^n)} \le C [f]_{\C^{0,\alpha}(\real^n)}$
+    mit $C = C(n, \alpha)$.
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Für den Beweis des Satzes benötigt man die sog. Cauchy-Abschätzungen
+    (für deren Beweis man die Mittelwertseigenschaft harm. Funktionen
+    und Lemma von Weyl braucht).
+\end{Bem}
+
+\begin{Def}{harmonisch}
+    Seien $\Omega \subset \real^n$ of"|fen und $u \in \C^2(\Omega)$.\\
+    Dann heißt $u$ \begriff{harmonisch} in $\Omega$, falls $\Delta u = 0$.
+\end{Def}
+
+\begin{Def}{Mittelwert}
+    Sei $\Omega \subset \real^n$ of"|fen.
+    Dann heißen
+    $\fint_{\partial\Omega} udo := \frac{1}{|\partial\Omega|} \int_{\partial\Omega} udo$ und
+    $\fint_\Omega udx := \frac{1}{|\Omega|} \int_\Omega u\dx$ \begriff{Mittelwerte} von $u$ auf
+    $\partial\Omega$ bzw. $\Omega$.
+\end{Def}
+
+\begin{Satz}{Mittelwertseigenschaft}
+    Sei $u$ harmonisch in $B_R(x_0) \subset \real^n$ für ein $R > 0$.\\
+    Dann gilt $\forall_{r \in (0, R)}\; u(x_0) = \fint_{\partial B_r(x_0)} udo =
+    \fint_{B_r(x_0)} udx$.
+\end{Satz}
+
+\linie
+
+\begin{Def}{kompakt enthalten}
+    Seien $\Omega, \Omega' \subset \real^n$ of"|fen.\\
+    Dann ist $\Omega'$ in $\Omega$ \begriff{kompakt enthalten}
+    ($\Omega' \subset\subset \Omega$), falls $\overline{\Omega'} \subset \Omega$ und
+    $\overline{\Omega'}$ kompakt in $\Omega$ ist.
+\end{Def}
+
+
+\begin{Satz}{\name{Cauchy}-Abschätzungen}
+    Seien $\Omega \subset \real^n$ of"|fen und
+    $u \in \C^2(\Omega)$ harmonisch in $\Omega$.\\
+    Dann ist $u \in \C^\infty(\Omega)$ mit
+    $\forall_{\Omega' \subset\subset \Omega} \forall_{\alpha \in \natural_0^n}\;
+    \norm{\partial^\alpha_x u}_{\C^0(\Omega')} \le
+    \left(\frac{n|\alpha|}{\dist(\Omega', \partial\Omega)}\right)^{|\alpha|}
+    \norm{u}_{\C^0(\Omega)}$.
+\end{Satz}
+
+\begin{Lemma}{Lemma von \name{Weyl}}
+    Seien $\Omega \subset \real^n$ of"|fen und $u \in L^1_\loc(\Omega)$ mit
+    $\forall_{v \in \C^\infty_c(\Omega)}\; \int_\Omega u \Delta v\dx = 0$
+    (d.\,h. $u$ ist \begriff{schwach harmonisch} in $\Omega$).\\
+    Dann ist $u \in \C^\infty(\Omega)$ und $u$ ist harmonisch in $\Omega$.
+\end{Lemma}
+
+\pagebreak
+
+\subsection{%
+    Elliptischer \name{Hölder}-Regularitätssatz für den Ganzraum%
+}
+
+\begin{Satz}{elliptischer \name{Hölder}-Regularitätssatz für den Ganzraum}\\
+    Seien $\alpha \in (0, 1)$,
+    %$a, b, c \in \C^{0,\alpha}(\real^n)$
+    %($a$ $\real^{n \times n}$-wertig, $b$ $\real^n$-wertig),
+    $a \in \C^{0,\alpha}(\real^n, \real^{n \times n})$
+    gleichmäßig elliptisch auf $\real^n$,
+    $b \in \C^{0,\alpha}(\real^n, \real^n)$,\\
+    $c \in \C^{0,\alpha}(\real^n)$ \begriff{gleichmäßig positiv} auf $\real^n$
+    (d.\,h. $\inf_{x \in \real^n} c(x) > 0$),
+    $f \in \C^{0,\alpha}(\real^n)$ und\\
+    $u \in \C^\infty_c(\real^n)$ Lösung von
+    $-\sum_{i,j=1}^n a_{ij} \partial_{x_i} \partial_{x_j} u + b \nabla u + cu = f$.\\
+    Dann ist $u \in \C^{2,\alpha}(\real^n)$ mit
+    $\norm{u}_{\C^{2,\alpha}(\real^n)} \le C \norm{f}_{\C^{0,\alpha}(\real^n)}$ und
+    $C = C(n, \alpha, a, b, c)$.
+\end{Satz}
+
+\subsection{%
+    Existenz von Lösungen für \name{Hölder}-stetige rechte Seiten%
+}
+
+\begin{Satz}{Existenz von Lösungen}
+    Seien $\alpha, a, b, c, f$ wie eben.\\
+    Dann gibt es ein $u \in \C^{2,\alpha}(\real^n)$ mit
+    $-\sum_{i,j=1}^n a_{ij} \partial_{x_i} \partial_{x_j} u + b \nabla u + cu = f$\\
+    und $u$ erfüllt die Abschätzung von eben.
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Zum Beweis des letzten Satzes löst man ein einfacheres Problem (siehe folgendes Lemma)
+    mithilfe der Fouriertransformation und wendet dann die sog. \begriff{Kontinuitätsmethode} an.
+\end{Bem}
+
+\begin{Lemma}{Existenz von Lösungen für modifizierte \name{Poisson}-Gleichung}\\
+    Seien $\alpha \in (0, 1)$ und $f \in \C^{0,\alpha}(\real^n)$.
+    Dann gibt es ein $u \in \C^{2,\alpha}(\real^n)$ mit
+    $-\Delta u + u = f$.
+\end{Lemma}
+
+\begin{Satz}{Kontinuitätsmethode}
+    Seien $X, Y$ Banachräume und $L_t \in \Lin(X, Y)$ für $t \in [0, 1]$ mit
+    \begin{enumerate}
+        \item
+        $L\colon [0,1] \rightarrow \Lin(X, Y)$ stetig mit $t \mapsto L_t$,
+        
+        \item
+        $\exists_{C > 0} \forall_{t \in [0, 1]} \forall_{u \in X}\;
+        \norm{u}_X \le C \norm{L_t u}_Y$ und
+        
+        \item
+        $L_0$ surjektiv.
+    \end{enumerate}
+    Dann gilt $\forall_{t \in [0, 1]}\; [\text{$L_t$ surjektiv}]$.
+\end{Satz}
+
+\begin{Bem}
+    Aus der zweiten Eigenschaft folgt insbesondere, dass $L_t$ für alle $t \in [0, 1]$ injektiv
+    ist, d.\,h. sind die Voraussetzungen des Satzes erfüllt, so ist
+    $L_t$ für alle $t \in [0, 1]$ sogar bijektiv.
+\end{Bem}
+
+\subsection{%
+    Elliptischer \name{Hölder}-Regularitätssatz
+    (\texorpdfstring{$\C^{2,\alpha}$}{C² ᵅ}-berandete Gebiete)%
+}
+
+\begin{Bem}
+    Mit derselben Strategie wie im Ganzraum erhält man ein zu obiger Existenzaussage
+    analoges Resultat für den Halbraum.
+    Durch Partition der Eins und Rückführung auf den Ganz- und auf den Halbraum-Fall ähnlich wie
+    bei der elliptischen $L_2$-Regularitätstheorie bekommt man dann folgenden Satz.
+\end{Bem}
+
+\begin{Satz}{elliptischer \name{Hölder}-Regularitätssatz}\\
+    Seien $\alpha \in (0, 1)$,
+    $\Omega \subset \real^n$ of"|fen, beschränkt und $\C^{2,\alpha}$-berandet,
+    %$a, b, c \in \C^{0,\alpha}(\overline{\Omega})$
+    %($a$ $\real^{n \times n}$-wertig, $b$ $\real^n$-wertig),
+    $a \in \C^{0,\alpha}(\overline{\Omega}, \real^{n \times n})$
+    gleichmäßig elliptisch auf $\overline{\Omega}$,
+    $b \in \C^{0,\alpha}(\overline{\Omega}, \real^n)$,
+    $c \in \C^{0,\alpha}(\overline{\Omega})$ gleichmäßig positiv auf $\overline{\Omega}$ und
+    $f \in \C^{0,\alpha}(\overline{\Omega})$.\\
+    Dann gibt es genau ein $u \in \C^{2,\alpha}(\overline{\Omega})$ mit
+    $-\sum_{i,j=1}^n a_{ij} \partial_{x_i} \partial_{x_j} u + b \nabla u + cu = f$ in $\Omega$,
+    $u = 0$ auf $\partial\Omega$.\\
+    Es gilt
+    $\norm{u}_{\C^{2,\alpha}(\overline{\Omega})} \le C \norm{f}_{\C^{0,\alpha}(\overline{\Omega})}$
+    mit $C = C(\Omega, n, \alpha, a, b, c)$.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    \emph{Zusatz}: \name{Fourier}transformation und Anwendungen%
+}
+
+\begin{Def}{\name{Schwartz}raum}
+    $\S = \S(\real^n) :=
+    \{f \in \C^\infty(\real^n, \complex) \;|\;
+    \forall_{\alpha\in\natural_0^n} \forall_{\beta\in\natural_0^n}\;
+    \sup_{x \in \real^n} |x^\alpha \partial_x^\beta f(x)| < \infty\}$\\
+    $= \{f \in \C^\infty(\real^n, \complex) \;|\;
+    \forall_{m \in \natural_0} \forall_{\beta \in \natural_0^n}\;
+    \sup_{x \in \real^n} |(1 + |x|^m) \partial_x^\beta f(x)| < \infty\}$\\
+    heißt \begriff{\name{Schwartz}raum} oder
+    \begriff{Raum der schnellfallenden Funktionen} auf $\real^n$.
+\end{Def}
+
+\begin{Bem}
+    \begin{enumerate}
+        \item
+        Wenn $p\colon \real^n \rightarrow \complex$ ein
+        (multivariates komplexes) Polynom ist, dann ist $p \notin \S$,
+        aber $f \in \S$ mit $f\colon \real^n \rightarrow \complex$, $f(x) := p(x) e^{-|x|^2}$.
+        
+        \item
+        Es gilt $\C^\infty_c(\real^n, \complex) \subset \S(\real^n) \subset L^p(\real^n, \complex)$
+        für alle $p \in [1, \infty]$.\\
+        (Für $p \in [1, \infty)$ ist $\C^\infty_c(\real^n)$ dicht in $L^p(\real^n)$,
+        d.\,h. dann ist auch $\S(\real^n)$ dicht in $L^p(\real^n)$.)
+    \end{enumerate}
+\end{Bem}
+
+\linie
+
+\begin{Def}{\name{Fourier}transformation}
+    Für $f \in \S(\real^n)$ heißt $\widehat{f}\colon \real^n \rightarrow \complex$ mit\\
+    $\widehat{f}(k) := (2\pi)^{-n/2} \int_{\real^n} e^{-\iu\sp{k,x}} f(x)\dx$
+    \begriff{\name{Fourier}transformierte} von $f$.
+    Der Operator $\F$ von $\S(\real^n)$ in den Raum der Abbildungen $\real^n \rightarrow \complex$
+    mit $f \mapsto \widehat{f}$ heißt \begriff{\name{Fourier}transformation}.
+\end{Def}
+
+\begin{Bem}
+    Die Normierung von $\widehat{f}$ in der Literatur ist nicht einheitlich.
+    Häufige alternative Normierungen sind
+    $(2\pi)^{-n} \int_{\real^n} e^{-\iu\sp{k,x}} f(x)\dx$ und
+    $\int_{\real^n} e^{-2\pi\iu\sp{k,x}} f(x)\dx$.
+\end{Bem}
+
+\begin{Satz}{Eigenschaften der \name{Fourier}transformation}
+    $\F\colon \S \rightarrow \S$ ist linear und bijektiv.\\
+    Die inverse Abbildung ist gegeben durch $\F^{-1}\colon \S \rightarrow \S$ mit
+    $\F^{-1} f \in \S$ der \begriff{inversen \name{Fourier}"-transformierten} gegeben durch
+    $(\F^{-1} f)(x) := (2\pi)^{-n/2} \int_{\real^n} e^{\iu\sp{k,x}} \widehat{f}(k)dk$
+    für $x \in \real^n$.\\
+    Es gilt $(\F^2 f)(x) = f(-x)$ und $(\F^4 f)(x) = f(x)$ für $x \in \real^n$.
+\end{Satz}
+
+\begin{Bem}
+    Die Fouriertransformation ist das kontinuierliche Analog zu Fourierreihen.\\
+    Ist beispielsweise $f \in \C^1([-\pi,\pi], \complex)$ mit $f(-\pi) = f(\pi)$,
+    so gilt $f(x) = (2\pi)^{-1/2} \sum_{k \in \integer} c_k e^{\iu kx}$ gleichmäßig auf
+    $[-\pi, \pi]$, wobei $c_k := (2\pi)^{-1/2} \int_{-\pi}^\pi e^{-\iu kx} f(x)\dx$.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Zum Beweis des letzten Satzes benötigt man ein paar Rechenregeln.
+\end{Bem}
+
+\begin{Satz}{Rechenregeln}
+    Seien $f, g \in \S$.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $\int_{\real^n} \widehat{f}(y)g(y)\dy = \int_{\real^n} f(y)\widehat{g}(y)\dy$
+        
+        \item
+        $\forall_{j=1,\dotsc,n}\;
+        \F(\partial_{x_j} f) = \iu k_j \widehat{f}$
+        
+        \item
+        $\forall_{j=1,\dotsc,n}\;
+        \F(x_j f) = \iu \partial_{k_j} \widehat{f}$
+        
+        \item
+        Für $f_a \in \S$ mit $f_a(x) := f(x + a)$ gilt
+        $\widehat{f_a}(k) = e^{\iu\sp{k,a}} \widehat{f}(k)$.
+        
+        \item
+        Für $A\colon \real^n \rightarrow \real^n$ linear und bijektiv gilt
+        $\F(f \circ A) = |\det A|^{-1} (\widehat{f} \circ (A^{-1})^T)$.
+        
+        \item
+        $\varphi \in \S$ mit $\varphi(x) := e^{-|x|^2/2}$ ist ein Fixpunkt von $\F$
+        (mit $L^1$-Norm $(2\pi)^{n/2}$).
+    \end{enumerate}
+\end{Satz}
+
+\begin{Satz}{Faltung}
+    Seien $f, g \in \S$.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $\F(f \cdot g) = (2\pi)^{-n/2} (\widehat{f} \ast \widehat{g})$
+        
+        \item
+        $\widehat{f} \cdot \widehat{g} = (2\pi)^{-n/2} \F(f \ast g)$
+    \end{enumerate}
+\end{Satz}
+
+\linie
+
+\begin{Satz}{\name{Plancherel}, \name{Parseval}}
+    Für alle $f, g \in \S$ gilt $\sp{f, g}_{L^2} =
+    \langle\widehat{f}, \widehat{g}\rangle_{L^2}$.\\
+    Insbesondere gilt $\forall_{f \in \S}\; \norm{f}_{L^2} = \Vert\widehat{f}\Vert_{L^2}$ und\\
+    $\F\colon \S \rightarrow \S$ ist eine bijektive, lineare und stetige Isometrie
+    bzgl. $\norm{\cdot}_{L^2}$.
+\end{Satz}
+
+\begin{Kor}
+    $\F, \F^{-1}$ lassen sich eindeutig zu bijektiven, linearen und stetigen Isometrien\\
+    $\F, \F^{-1}\colon L^2 \rightarrow L^2$ fortsetzen.
+\end{Kor}
+
+\linie
+\pagebreak
+
+\begin{Satz}{\name{Fourier}transformation als Grenzwert}\\
+    Für $f \in L^2$ gilt
+    $\widehat{f}(k) = \lim_{m \to \infty} (2\pi)^{-n/2} \int_{B_m(0)} e^{-\iu\sp{k,x}}f(x)\dx$
+    f.ü. in $\real^n$, wobei der Grenzwert gleichmäßig in $k$ bzgl. $\norm{\cdot}_{L^2}$
+    angenommen wird.\\
+    Für $f \in L^1 \cap L^2$ gilt
+    $\widehat{f}(k) = (2\pi)^{-n/2} \int_{\real^n} e^{-\iu\sp{k,x}}f(x)\dx$ f.ü. in $\real^n$.
+\end{Satz}
+
+\begin{Satz}{Übertragbarkeit der Rechenregeln}
+    Die Rechenregeln von oben und der Satz von Plancherel gelten auch für alle Funktionen
+    $f, g \in L^2$, wenn man die Ableitungen durch schwache Ableitungen ersetzt.
+\end{Satz}
+
+\begin{Bem}
+    Ist $f \in L^1$, so gelten \emph{(2)} bis \emph{(5)} der Rechenregeln.\\
+    Für $u, v \in L^1$ mit $\widehat{u}, \widehat{v} \in L^1$ gilt $u \cdot v \in L^1$ und
+    \emph{(1)} des Faltungssatzes.\\
+    Aus $u \in L^1$ folgt i.\,A. nicht $\widehat{u} \in L^1$.
+    $\F$ ist aber eine Bijektion auf $L^1 \cap \F(L^1)$.
+    In diesem Fall (für $u \in L^1 \cap \F(L^1)$)
+    gilt die explizite Formel für $\F^{-1}$ aus dem ersten Satz.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Charakterisierung der \name{Sobolev}räume $H^m(\real^n)$}
+    Sei $f \in L^2(\real^n)$.\\
+    Dann gilt $f \in H^m(\real^n)
+    \iff \forall_{|\alpha| \le m}\; k^\alpha \widehat{f} \in L^2(\real^n)
+    \iff (1 + |k|)^m \widehat{f} \in L^2(\real^n)$\\
+    $\iff (1 + |k|^2)^{m/2} \widehat{f} \in L^2(\real^n)$.
+\end{Satz}
+
+\begin{Bem}
+    Mittels diesen Charakterisierungen kann man $H^m(\real^n)$ für beliebige reelle Zahlen
+    $m \in \real$ wie folgt definieren.
+\end{Bem}
+
+\begin{Def}{$H^m(\real^n)$ für $m \in \real$}
+    Seien $m \in \real$ und $\varrho\colon \real^n \rightarrow \real$, $\varrho(x) := 1 + |x|^2$.\\
+    Definiere $L^2_m(\real^n) := \{u \in L^2(\real^n) \;|\;
+    \norm{u}_{L^2_m(\real^n)} := \norm{\varrho^{m/2} u}_{L^2(\real^n)} < \infty\}$.\\
+    Dann ist $H^m(\real^n)$ für $m \in \real$ definiert durch
+    $H^m(\real^n) := \{u \in L^2(\real^n) \;|\; \widehat{u} \in L^2_m(\real^n)\}$.
+\end{Def}
+
+\begin{Bem}
+    Für $m \in \natural_0$ stimmt diese Definition mit der bisherigen überein.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Sei $T \in \D'$ eine Distribution
+    (d.\,h. ein lineares Funktional $T\colon \D \rightarrow \complex$ mit\\
+    $\forall_{K \subset \real^n \text{ kpkt.}} \exists_{m \in \natural_0}
+    \exists_{C > 0} \forall_{\varphi \in \D_K}\;
+    |T\varphi| \le C \sup_{|\beta| \le m} \norm{\partial_x^\beta \varphi}_{\C^0(\real^n)}$
+    und $\D := \C^\infty_c(\real^n)$, $\D_K := \C^\infty_c(K)$).\\
+    Um die Fouriertransformation von Funktionen auf Distributionen zu verallgemeinern,
+    würde man gerne die Fouriertransformation $\F T \in \D'$ von $T$ definieren durch
+    $(\F T)\varphi := T \widehat{\varphi}$ für alle $\varphi \in \D$.
+    Allerdings folgt aus $\supp \widehat{\varphi}$ kompakt
+    nach dem Satz von Paley-Wiener, dass $\varphi$ analytisch ist.
+    Daraus folgt nach dem Identitätssatz für Potenzreihen, dass $\varphi \equiv 0$ oder
+    $\supp \varphi$ nicht kompakt.
+    $\widehat{\varphi}$ kann also für $\varphi \in \D \setminus \{0\}$ keinen kompakten Träger
+    haben und $T\widehat{\varphi}$ ist dann sinnlos (da dann $\widehat{\varphi} \notin \D$).
+    Daher muss man zur Definition der Fouriertransformation für Distributionen den Raum
+    $\D'$ der Distributionen einschränken.
+\end{Bem}
+
+\begin{Def}{Raum der temperierten Distributionen}
+    Der \begriff{Raum der temperierten Distributionen} $\S' \subset \D'$ ist
+    definiert als der Dualraum von $\S$,
+    d.\,h. der Raum aller linearen, stetigen Funktionale $\S \rightarrow \complex$ mit
+    der lokal-konvexen Topologie auf $\S$, die von der Familie $(p_{\beta,m})$ der Halbnormen
+    $p_{\beta,m}(\varphi) := \sup_{x \in \real^n} |(1 + |x|^m) \partial_x^\beta \varphi(x)|$
+    erzeugt wird.
+\end{Def}
+
+\begin{Bem}
+    Eine Folge $(\varphi_k)_{k \in \natural}$ in $\S$ konvergiert gegen $\varphi \in \S$
+    bzgl. dieser Topologie genau dann, wenn
+    $\forall_{\alpha, \beta \in \natural_0^n}\; x^\alpha \partial_x^\beta \varphi_k(x)
+    \xrightarrow{k \to \infty} x^\alpha \partial_x^\beta \varphi(x)$
+    gleichmäßig auf $\real^n$.\\
+    Eine äquiv. Charakterisierung von $\S'$ ist
+    $T \in \S' \iff \exists_{\beta \in \natural_0^n} \exists_{m \in \natural_0}
+    \exists_{C > 0} \forall_{\varphi \in \S}\; |T\varphi| \le C p_{\beta,m}(\varphi)$.
+\end{Bem}
+
+\begin{Def}{\name{Fourier}transformation für Distributionen}
+    Die \begriff{\name{Fourier}transformation} $\F\colon \S' \rightarrow \S'$ ist definiert durch
+    $(\F T)\varphi := T \widehat{\varphi}$ für alle $T \in \S'$ und $\varphi \in \S$.
+\end{Def}
+
+\begin{Bem}
+    Für alle $u \in \S$ gibt es die \begriff{assoz. temp. Distr.} $T_u$
+    mit $(\F T_u) \varphi = \int_{\real^n} (\F u)(x) \varphi(x)\dx$.
+\end{Bem}
+
+\begin{Bsp}\\
+    Für $u(x) := (2\pi)^{-n/2} e^{\iu\sp{k,x}}$ mit $k \in \real^n$ fest ist
+    $(\F T_u)\varphi = \varphi(k)$ für alle $\varphi \in \S$, d.\,h. $\F T_u = \delta_k$.
+    Für $u(x) := x^\alpha$ ist
+    $\F T_u = (2\pi)^{n/2} \iu^{|\alpha|} \cdot \partial_k^\alpha \delta_0$.
+\end{Bsp}
+
+\pagebreak

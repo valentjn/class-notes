@@ -1,0 +1,701 @@
+\section{%
+    LQ-optimale Regelung%
+}
+
+\subsection{%
+    \emph{Wiederholung}: Positiv semidefinite und positiv definite Matrizen%
+}
+
+Seien $Q \in \real^{n \times n}$ und $R \in \real^{m \times m}$ symmetrisch
+(d.\,h. $Q^T = Q$, $R^T = R$).
+
+\linie
+
+\textbf{positiv semidefinit}:\\
+$Q$ ist \begriff{positiv semidefinit ($Q \psd$)}, falls
+eine der folgenden äquivalenten Bedingungen erfüllt ist:
+\begin{itemize}
+    \item
+    $\forall_{x \in \real^n}\; x^T Qx \ge 0$
+    
+    \item
+    alle Eigenwerte von $Q$ sind nicht-negativ
+    
+    \item
+    $Q = C^T C$ für eine Matrix $C$ (in diesem Fall hat $C$ oBdA vollen Zeilenrang)
+\end{itemize}
+In diesem Fall gilt:
+Wenn eine $Q$ auf der Diagonalen eine Null hat,
+dann sind die entsprechende Zeile und Spalte gleich Null.
+Es gilt $x \in N(Q) \iff x^T Qx = 0$.
+
+\linie
+
+\textbf{positiv definit}:\\
+$R$ ist \begriff{positiv definit ($R \pd$)}, falls
+eine der folgenden äquivalenten Bedingungen erfüllt ist:
+\begin{itemize}
+    \item
+    $\forall_{x \in \real^n \setminus \{0\}}\; x^T Rx > 0$
+    
+    \item
+    alle Eigenwerte von $R$ sind positiv
+    
+    \item
+    $R = U^T U$ mit $U \in \real^{m \times m}$ invertierbar
+\end{itemize}
+
+\subsection{%
+    Stabilität und \name{Lyapunov}-Gleichung%
+}
+
+Die asymptotische Stabilität des linearen Systems $\dot{x} = Ax =: f(x)$ mit
+$A \in \real^{n \times n}$ wurde schon analysiert, indem man $e^{At}$ betrachtet hat.
+Allerdings kann man auch die Lyapunov-Theorie benutzen.
+Weil das System linear ist, verwendet man eine homogene, quadratische Lyapunov-Funktion
+$V\colon \real^n \rightarrow \real$, $V(x) := x^T Px$ mit $P \in \real^{n \times n}$
+symmetrisch.
+($P$ symmetrisch ist keine Einschränkung, sonst geht man zur Symmetrisierung
+$\frac{1}{2} (P + P^T)$ über, was $V$ nicht verändert.)
+Die partielle Ableitung von $V(x)$ nach $x_k$ ist gleich
+$\frac{\partial}{\partial x_k} V(x)
+= \frac{\partial}{\partial x_k} (\sum_{i,j=1}^n x_i p_{ij} x_j)$\\
+$= \sum_{i=1,\,i\not=k}^n x_i p_{ik} + \sum_{j=1,\,j\not=k}^n p_{kj} x_j + 2 x_k p_{kk}
+= 2 \cdot (\sum_{i=1}^n x_i p_{ik})
+= (2 x^T P)_k$
+(oder auch $(2Px)_k$).
+%Die partielle Ableitung von $V(x)$ nach $x_j$ ist gleich
+%$\frac{\partial}{\partial x_j} V(x) = \frac{\partial}{\partial x_j} (x^T Px)$\\
+%$= \frac{\partial}{\partial x_j} ((x_1 p_1 + \dotsb + x_n p_n) x)
+%= \frac{\partial}{\partial x_j} \sum_{i=1}^n (x_1 p_{1,i} + \dotsb + x_n p_{n,i}) x_i$\\
+%$= \sum_{i=1,\,i\not=j}^n x_i p_{j,i} + \sum_{i=1,\,i\not=j}^n x_i p_{i,j} + 2 x_j p_{j,j}
+%= 2 \sum_{i=1}^n x_i p_{i,j}
+%= (2 x^T P)_j$.
+Somit muss man für die Lyapunov-Theorie
+$\partial V(x) f(x) = (2 x^T P) (Ax) = x^T [A^T P + PA] x$ betrachten
+(folgt aus $x^T P Ax = (x^T P Ax)^T = x^T A^T P x$,
+weil alle Terme skalar sind).
+
+\linie
+
+Die direkte Methode von Lyapunov erfordert, dass $x^T P x > 0$ und
+$x^T [A^T P + PA] x < 0$ für alle $x \not= 0$.
+Daraus folgt folgender Satz
+(man kann das aber auch direkt zeigen).
+
+\textbf{Satz (\name{Lyapunov}-Bedingung für asym. Stabilität)}:\\
+Falls ein $P \pd$ existiert mit $A^T P + PA \nd$, dann ist
+$\dot{x} = Ax$ global asymptotisch stabil.
+
+\textbf{Satz (Charakterisierung der \name{Lyapunov}-Gleichung)}:
+Für $Q = Q^T \nd$ (z.\,B. $Q = -I$) ist $A^T P + PA = Q$ eine lineare Gleichung in $P$.
+Dann besitzt die Gleichung eine eindeutige, positiv definite Lösung genau dann, wenn
+$A$ eine Hurwitz-Matrix ist.
+
+\textbf{Satz (\name{Lyapunov}-Gleichung)}:
+Sei $A \in \real^{n \times n}$ eine Hurwitz-Matrix.
+\begin{enumerate}
+    \item
+    Für jede symmetrische Matrix $Q \in \real^{n \times n}$
+    hat die \begriff{\name{Lyapunov}-Gleichung} $A^T P + PA = Q$
+    eine eindeutige symmetrische Lösung $P \in \real^{n \times n}$.
+    
+    \item
+    Wenn $Q \nsd$ gilt, dann ist $P \psd$.
+    
+    \item
+    Wenn $Q \nsd$ gilt und $(A, Q)$ beobachtbar ist, dann ist $P \pd$.
+\end{enumerate}
+
+\pagebreak
+
+\subsection{%
+    Das LQ-Problem%
+}
+
+Es gibt viele Wege, Steuergrößen $u(\cdot)$ zu finden, sodass der Zustand des Systems
+$\dot{x} = Ax + Bu$, $x(0) = \xi \in \real^n$ für $t \to \infty$ gegen Null konvergiert.
+Bei der Gestaltung von Verstärkungsmatrizen mittels Polvorgabe muss man zwischen der
+Konvergenzgeschwindigkeit und dem "`Aufwand"' der Steueraktion abwägen.
+
+Zur Quantifizierung des mittleren Abstands des Zustands zu $0$ und des Steueraufwands
+betrachtet man $\int_0^\infty x(t)^T Qx(t)\dt$ und $\int_0^\infty u(t)^T Ru(t)\dt$.
+Dabei sind $Q$ und $R$ symmetrische, positiv semidefinite bzw. symmetrische, positiv definite
+\begriff{Gewichtsmatrizen}, die es ermöglichen, einzelne Komponenten des Zustands bzw. der
+Steuergröße stärker zu gewichten.
+Um diese beiden Größen zu verbinden, könnte man das Maximum betrachten, mathematisch
+viel einfacher ist allerdings die Summe.
+
+\textbf{LQ-optimale Regelung}:
+Gesucht ist eine Steuergröße $u(\cdot)$, die die \begriff{Kostenfunktion}\\
+$\int_0^\infty (x(t)^T Qx(t) + u(t)^T Ru(t))\dt$ (C) minimiert,
+und zwar unter allen Steuergrößen $u(\cdot)$, sodass
+$\dot{x}(t) = Ax(t) + Bu(t)$, $x(0) = \xi$ und $\lim_{t \to \infty} x(t) = 0$ (S) gilt.\\
+Dies ist das Problem der
+\begriff{LQ-optimalen Regelung (mit Stabilität)\\
+(linear quadratic optimal control problem (with stability))}.
+
+Durch eine quadratische Kostenfunktion für das lineare System ergeben sich eine schöne Lösung des
+Problems und schnelle Lösungsalgorithmen.
+
+\linie
+
+\textbf{Wahl der Gewichtsmatrizen}:
+Oft wählt man $Q = \diag(q_1, \dotsc, q_n)$, $R = \diag(r_1, \dotsc, r_m)$ diagonal.
+Dann ist die Kostenfunktion gleich
+$\sum_{k=1}^n \int_0^\infty q_k x_k(t)^2\dt + \sum_{k=1}^m \int_0^\infty r_k u_k(t)^2\dt$.\\
+Die Skalare $q_k \ge 0$ und $r_k > 0$ ermöglichen es, die Komponenten des Zustands und der
+Steuergröße unterschiedlich zu gewichten.
+Große Werte von $q_k$ oder $r_k$ bestrafen große Einträge von $x_k(t)$ bzw. $r_k(t)$ mehr,
+daher sollte die LQ-optimale Regelung diese Einträge klein halten.
+Umgekehrt erlauben kleine Werte von $q_k$ oder $r_k$ größere Abweichungen von $x_k(t)$ von $0$
+bzw. einen größeren Steueraufwand von $u_k(t)$.
+Mit $q_k = 0$ wird $x_k(t)$ nicht betrachtet.
+Aus technischen Gründen ist $r_k = 0$ nicht erlaubt, d.\,h. alle Komponenten der Steuergröße
+müssen bestraft werden.
+
+\pagebreak
+
+\subsection{%
+    Algebraische \name{Riccati}-Gleichung%
+}
+
+\textbf{Herleitung mit quadratischer Ergänzung}:
+Für eine symmetrische Matrix $P$ und einen Zustand $x(t)$, der (S) erfüllt, gilt
+$\frac{d}{dt} [x(t)^T Px(t)]
+= \frac{d}{dt} [\sum_{i,j=1}^n x_i(t) p_{ij} x_j(t)]$\\
+$= \sum_{i,j=1}^n \dot{x}_i(t) p_{ij} x_j(t) + \sum_{i,j=1}^n x_i(t) p_{ij} \dot{x}_j(t)
+= \dot{x}(t)^T Px(t) + x(t)^T P\dot{x}(t)$\\
+$= [Ax(t) + Bu(t)]^T Px(t) + x(t)^T P [Ax(t) + Bu(t)]$\\
+$= x(t)^T [A^T P + PA] x(t) + x(t)^T PB u(t) + u(t)^T B^T Px(t)$.\\
+Daraus erhält man mit $R = U^T U$ ($U \in \real^{m \times m}$ invertierbar) und
+$U^{-T} := (U^T)^{-1}$:\\
+$\frac{d}{dt} [x(t)^T Px(t)] + x(t)^T Qx(t) + u(t)^T Ru(t)$\\
+$= x(t)^T [A^T P + PA] x(t) + x(t)^T PB u(t) + u(t)^T B^T Px(t) + x(t)^T Qx(t) +
+u(t)^T U^T Uu(t)$\\
+$+\; x(t)^T PB U^{-1} U^{-T} B^T P x(t) - x(t)^T PB U^{-1} U^{-T} B^T P x(t)$\\
+$= x(t)^T [A^T P + PA - PBR^{-1} B^T P + Q] x(t) + \norm{Uu(t) + U^{-T} B^T P x(t)}^2$,
+wobei der letzte Schritt \begriff{quadratische Ergänzung (completion of the squares)} genannt wird.
+
+\linie
+
+Insgesamt ist damit folgende Beziehung für jede Trajektorie $x(t)$, die (S) erfüllt, hergeleitet:\\
+$\frac{d}{dt} [x(t)^T Px(t)] + x(t)^T Qx(t) + u(t)^T Ru(t)$\\
+$= x(t)^T [A^T P + PA - PBR^{-1} B^T P + Q] x(t) + \norm{Uu(t) + U^{-T} B^T P x(t)}^2$.
+
+Ist $P = P^T$ so gewählt, sodass $A^T P + PA - PBR^{-1} B^T P + Q = 0$, dann gilt\\
+$\frac{d}{dt} [x(t)^T Px(t)] + x(t)^T Qx(t) + u(t)^T Ru(t) = \norm{Uu(t) + U^{-T} B^T P x(t)}^2$.\\
+Durch Integration über $[0, \tau]$ für $\tau > 0$ erhält man\\
+$x(\tau)^T Px(\tau) + \int_0^\tau (x(t)^T Qx(t) + u(t)^T Ru(t)) \dt
+= \xi^T P \xi + \int_0^\tau \norm{Uu(t) + U^{-T} B^T P x(t)}^2 \dt$.
+
+Weil das zweite Integral nicht-negativ ist und $x(\tau) \to 0$ für $\tau \to \infty$ gilt,
+bekommt man\\
+$\int_0^\infty (x(t)^T Qx(t) + u(t)^T Ru(t)) \dt \ge \xi^T P\xi$,
+d.\,h. die Kosten sind nie kleiner als $\xi^T P\xi$ (unabhänig von der Steuergröße).
+Man bekommt also für eine beliebige Lösung $P = P^T$ der ARE (s.\,u.) eine untere Schranke der
+Kostenfunktion für alle zulässigen Steuergrößen.
+
+Gleichheit gilt genau dann,
+wenn $Uu(t) + U^{-T} B^T P x(t) = 0$, d.\,h.
+$u(t) = -R^{-1} B^T Px(t)$ für alle $t \ge 0$.
+Dies kann man wie folgt sicherstellen:
+\begin{enumerate}
+    \item
+    Löse zuerst das System $\dot{x} = [A - BR^{-1} B^T P]x$ mit $x(0) = \xi$.
+    
+    \item
+    Definiere dann die Steuergröße durch $u_\ast(t) := -R^{-1} B^T P x(t)$.
+\end{enumerate}
+Allerdings muss auch $\lim_{t \to \infty} x(t) = 0$ gelten, d.\,h. $A - BR^{-1} B^T P$ muss
+eine Hurwitz-Matrix sein.
+Falls ein solches $P$ existiert, dann ist die so konstruierte Steuergröße $u_\ast(\cdot)$
+tatsächlich eine eindeutige Steuergröße für den of"|fenen Regelkreis.
+
+Zusätzlich kann man die optimale Steuergröße als Rückführung $u = -Fx$ mit Verstärkung
+$F = R^{-1} B^T P$ implementieren.
+
+\linie
+
+\textbf{algebraische \name{Riccati}-Gleichung}:
+Seien $A \in \real^{n \times n}$, $B \in \real^{n \times m}$,
+$Q \in \real^{n \times n}$ und $R \in \real^{m \times m}$,
+wobei $Q = Q^T$ und $R \pd$.
+Dann heißt die quadratische Matrix-Gleichung\\
+$A^T P + PA - PBR^{-1} B^T P + Q = 0$
+für $P \in \real^{n \times n}$ unbekannt \begriff{algebraische \name{Riccati}-Gleichung
+(algebraic \name{Riccati} equation, ARE)}
+für das lineare System $(A, B)$ und die quadratische Kostenfunktion definiert durch $(Q, R)$.
+
+\textbf{stabilisierende Lösung}:
+Eine Lösung $P$ der ARE mit $\Eig(A - BR^{-1} B^T P) \subset \complex^-$ heißt\\
+\begriff{stabilisierende Lösung (stabilizing solution)}.
+
+Normalerweise ist man nur an symmetrischen Lösungen $P$ der ARE interessiert.\\
+Dabei ist $\complex^- := \{\lambda \in \complex \;|\; \Re(\lambda) < 0\}$
+(analog $\complex^+ := -\complex^-$).
+
+\pagebreak
+
+\subsection{%
+    \name{Hamilton}-Matrix und \name{Riccati}-Theorie%
+}
+
+Im Folgenden soll die Existenz von (stabilisierenden) Lösungen der ARE charakterisiert werden.
+
+\textbf{\name{Hamilton}-Matrix}:
+Die \begriff{\name{Hamilton}-Matrix (\name{Hamilton}ian matrix)} der ARE ist definiert als
+$H := \smallpmatrix{A & -BR^{-1}B^T \\ -Q & -A^T} \in \real^{2n \times 2n}$.
+
+Wenn $P$ eine Lösung der ARE ist ($-Q - A^T P = P[A - BR^{-1}B^T P]$),
+dann kann $H$ durch $\smallpmatrix{I & 0 \\ P & I}$ in Blockdreiecksform gebracht werden,
+da $H \smallpmatrix{I & 0 \\ P & I}
+= \smallpmatrix{I & 0 \\ P & I}
+\smallpmatrix{A - BR^{-1}B^TP & -BR^{-1}B^T \\ 0 & -[A - BR^{-1}B^TP]^T}$,
+also $\Eig(H) = \Eig(A - BR^{-1}B^TP) \cup \Eig(-[A - BR^{-1}B^TP]^T)$.\\
+Wegen $\lambda \in \Eig(W) \iff -\overline{\lambda} \in \Eig(-W^T)$ treten
+sowohl die Eigenwerte von $A - BR^{-1}B^TP$ als auch
+diese symmetrisch gespiegelt an der imaginären Achse
+als Eigenwerte von $H$ auf.
+
+\textbf{Lemma (Symmetrie der Eigenwerte von $H$)}:
+Wenn $\lambda$ ein Eigenwert von $H$ ist,
+dann ist $-\overline{\lambda}$ ebenfalls ein Eigenwert von $H$ mit derselben
+algebraischen Vielfachheit.
+
+Die Eigenwerte von $H$ sind also stets symmetrisch bzgl. der reellen und bzgl. der imaginären Achse
+(auch wenn keine Lösung der ARE existiert).
+Dazu definiert man $J = \smallpmatrix{0 & -I \\ I & 0}$.
+Es gilt $JH = (JH)^T = H^T J^T = -H^T J$, also $JHJ^{-1} = -H^T$,
+was die Aussage beweist.
+
+\linie
+
+Ist $P$ eine stabilisierende Lösung, so gilt
+$\Eig(A - BR^{-1}B^TP) \subset \complex^-$, d.\,h. $H$ hat keine Eigenwerte auf der imaginären
+Achse.
+Außerdem stabilisiert die Matrix $R^{-1} B^T P$ in diesem Fall $(A, B)$,
+d.\,h. $(A, B)$ ist stabilisierbar.
+Das beweist eine Richtung des folgenden Satzes.
+Die andere Richtung kann konstruktiv bewiesen werden.
+
+\textbf{Satz (Existenz einer stabilisierenden Lösung)}:
+Die ARE besitzt eine stabilisierende Lösung $P$ genau dann, wenn
+$(A, B)$ stabilisierbar ist und $\Eig(H) \cap \complex^0 = \emptyset$
+mit $\complex^0 := \iu\real$.\\
+In diesem Fall ist $P$ symmetrisch.
+
+Der Beweis der Existenz der stabilisierenden Lösung der ARE,
+wenn $(A, B)$ stabilisierbar ist und $\Eig(H) \cap \complex^0 = \emptyset$ gilt,
+ist konstruktiv.
+Weil $H$ keine Eigenwerte auf $\complex^0$ und daher jeweils $n$ Eigenwerte in $\complex^-$ und
+$\complex^+$ besitzt,
+gibt es eine invertierbare Matrix $S \in \complex^{2n \times 2n}$, sodass
+$S^{-1}HS = \smallpmatrix{M & M_{12} \\ 0 & M_{22}}$ mit $M \in \complex^{n \times n}$
+einer Hurwitz-Matrix (z.\,B. mit JNF).
+Wenn man nun $S = \smallpmatrix{U & T_{12} \\ V & T_{22}}$ in vier ($n \times n$)-Blöcke zerlegt,
+dann ist $P := VU^{-1}$ die stabilisierende Lösung der ARE
+(wegen $(A, B)$ stabilisierbar ist $U$ invertierbar und $P$ ist reell),
+die sogar symmetrisch ist.
+
+\linie
+\pagebreak
+
+Die stabilisierende Lösung $P$ ist auch eindeutig (wenn sie existiert):
+Es gilt wie oben\\
+$\smallpmatrix{I & 0 \\ P & I}^{-1} H \smallpmatrix{I & 0 \\ P & I}
+= \smallpmatrix{A_- & \ast \\ 0 & A_+}$,
+also $\smallpmatrix{I & 0 \\ P & I}^{-1} (H - \lambda I)^{2n} \smallpmatrix{I & 0 \\ P & I}
+= \smallpmatrix{(A_- - \lambda I)^{2n} & \ast \\ 0 & (A_+ - \lambda I)^{2n}}$,\\
+wobei $A_- := A - BR^{-1} B^T P$ und $A_+ := -A_-^T$.
+Für $\lambda \in \complex^-$ gilt $N((A_+ - \lambda I)^{2n}) = \{0\}$,
+weil $A_+$ nur Eigenwerte in $\complex^+$ hat.
+Außerdem gilt $\sum_{\lambda \in \complex^-} N(A_- - \lambda I)^{2n} = \complex^n$,
+wobei die Summanden nur für die Eigenwerte von $A_-$ nicht gleich $\{0\}$ sind:
+Wenn $\lambda$ ein Eigenwert ist, dann ist $N(A_- - \lambda I)^{2n}$ der verallgemeinerte Eigenraum
+von $A_-$ zum Eigenwert $\lambda$.
+Die Summe ist gleich $\complex^n$, weil alle Haupträume zusammen eine direkte Zerlegung von
+$\complex^n$ bilden.
+Somit erhält man
+$\sum_{\lambda \in \complex^-}
+N\!\smallpmatrix{(A_- - \lambda I)^{2n} & \ast \\ 0 & (A_+ - \lambda I)^{2n}} =
+R\!\smallpmatrix{I \\ 0}$.
+Durch Rücktransformation bekommt man
+$\sum_{\lambda \in \complex^-} N(H - \lambda I)^{2n}
+= \smallpmatrix{I & 0 \\ P & I} R\!\smallpmatrix{I \\ 0} \smallpmatrix{I & 0 \\ P & I}^{-1}
+= R\!\smallpmatrix{I \\ P}$.
+Der verallgemeinerte Eigenraum $\sum_{\lambda \in \complex^-} N(H - \lambda I)^{2n}$
+von $H$ bzgl. der Eigenwerte in $\complex^-$
+heißt auch \begriff{stabiler Unterraum von $H$ über $\complex^-$
+(stable subspace of $H$ over $\complex^-$)}
+und hängt nicht mehr von $P$ ab.
+Für zwei stabilisierende Lösungen $P_1$ und $P_2$ gilt also
+$R\!\smallpmatrix{I \\ P_1} = R\!\smallpmatrix{I \\ P_2}$, also
+$\smallpmatrix{I \\ P_1} = \smallpmatrix{I \\ P_2} K$ für eine Matrix $K$.
+Aus der ersten Gleichung ergibt sich $K = I$, also $P_1 = P_2$.
+
+\textbf{Satz (Eindeutigkeit der stabilisierenden Lösung)}:\\
+Die ARE hat höchstens eine stabilisierende Lösung.
+
+\linie
+
+\textbf{Möglichkeiten, $H$ auf Blockdreiecksform zu bringen}:
+\begin{itemize}
+    \item
+    $S$ so wählen, dass $H$ sogar blockdiagonalisiert wird.
+    Zum Beispiel kann man $H$ in die entsprechend geordnete reelle oder komplexe JNF bringen
+    und die ersten $n$ Spalten der Transformationsmatrix verwenden.
+    In der Praxis ist $H$ oft diagonalisierbar,
+    dann können die ersten $n$
+    Spalten von $S$ als $n$ linear unabhängige Eigenvektoren von $H$
+    zu Eigenwerten in $\complex^-$ gewählt werden.
+    
+    \item
+    Numerisch vorzuziehen ist die \begriff{geordnete \name{Schur}-Zerlegung}.
+    Mit ihr lässt sich eine unitäre Matrix $S$ berechnen, die $H$ in Blockdreiecksform bringt.
+    
+    \item
+    Moderne Algorithmen für große Matrizen konstruieren $S$ mit symplektischen Transformationen
+    auf $H$, die die Hamilton-Struktur erhalten.
+\end{itemize}
+
+\linie
+
+Normalerweise hat die ARE unendlich viele Lösungen, allerdings hat die stabilisierende Lösung
+(falls sie existiert) eine besondere Eigenschaft.
+
+\textbf{Satz (stab. Lsg. am größten)}:
+Die stabilisierende Lösung $P$ der ARE ist die größte unter allen anderen Lösungen,
+d.\,h. $X - P \nsd$ für jede symmetrische Lösung $X$ der ARE.
+
+\pagebreak
+
+\subsection{%
+    Bedingungen für die Lösbarkeit der ARE%
+}
+
+Man schreibt $\Eig\!\smallpmatrix{A - sI & B} := \{\lambda \in \complex \;\left|\;
+\rg\!\smallpmatrix{A - \lambda I & B} < n\right\}$ für die
+unregelbaren Eigenwerte von $(A, B)$ und
+$\Eig\!\smallpmatrix{A - sI \\ Q} := \{\lambda \in \complex \;\left|\;
+\rg\!\smallpmatrix{A - \lambda I \\ Q} < n\right\}$ für die
+unbeobachtbaren Eigenwerte von $(A, Q)$.
+
+\textbf{Satz (Eigenwerte von $H$ auf $\complex^0$ für $Q \psd$)}:\\
+Für $Q \psd$ gilt
+$\Eig(H) \cap \complex^0 = \left(\Eig\!\smallpmatrix{A - sI & B} \cup
+\Eig\!\smallpmatrix{A - sI \\ Q}\right) \cap \complex^0$.
+
+\linie
+
+\textbf{Satz (Hauptresultat)}:
+Für $Q \psd$ hat die ARE eine stabilisierende Lösung genau dann,
+wenn $(A, B)$ stabilisierbar ist und
+$(A, Q)$ keine unbeobachtbaren Eigenwerte auf $\complex^0$ hat.
+
+Wenn $Q = C^T C$ gilt, dann sind die unbeobachtbaren Eigenwerte von $(A, Q)$ identisch mit denen
+von $(A, C)$.
+Daher ist es für die Existenz einer stabilisierenden Lösung hinreichend,
+wenn $(A, B)$ stabilisierbar und $(A, C)$ entdeckbar ist
+(diese Bedingung ist aber nicht notwendig).
+
+\linie
+
+\textbf{Satz (Definitheit der stab. Lösung)}:
+Für $Q \psd$ ist die stabilisierende Lösung $P$ der ARE (falls sie existiert) positiv semidefinit.
+Wenn zusätzlich $(A, Q)$ beobachtbar ist, dann ist sie sogar positiv definit.
+
+\linie
+
+\textbf{Satz (Definitheit hinreichend für stab.)}:
+Für $Q \psd$, $P \psd$ einer Lösung der ARE und $(A, Q)$ entdeckbar ist $P$ die
+stabilisierende Lösung.
+
+\linie
+
+\textbf{Zusammenfassung für die ARE}:
+Gegeben sei die ARE $A^T P + PA - PBR^{-1} B^T P + C^T C = 0$,
+wobei $(A, B)$ stabilisierbar und $(A, C)$ entdeckbar sei
+($C$ hat vollen Zeilenrang).
+\begin{itemize}
+    \item
+    Die ARE hat genau eine stabilisierende Lösung.
+    
+    \item
+    Die stabilisierende Lösung ist die größte unter allen anderen Lösungen.
+    
+    \item
+    Eine Lösung $P$ ist stabilisierend genau dann, wenn $P \psd$.
+\end{itemize}
+
+\linie
+
+\textbf{Zusammenfassung für das LQ-Problem}:
+Sei $(A, B)$ stabilisierbar und $(A, Q)$ mit $Q \psd$ hat keine
+unbeobachtbaren Eigenwerte auf der imaginären Achse.
+\begin{itemize}
+    \item
+    Dann kann man die eindeutige Lösung $P \psd$ der ARE
+    $A^T P + PA - PBR^{-1} B^T P + Q = 0$,
+    für die $A - BR^{-1} B^T P$ eine Hurwitz-Matrix ist, berechnen.
+    
+    \item
+    Das LQ-Problem hat eine eindeutige Lösung.
+    
+    \item
+    Der optimale Wert ist $\xi^T P \xi$ und die optimale Regelung kann als statische
+    Zustandsrückführung $u = -R^{-1} B^T Px$ implementiert werden.
+    Die Eigenwerte des geschlossenen Regelkreises sind identisch mit den Eigenwerten
+    der Hamilton-Matrix, die in $\complex^-$ liegen.
+\end{itemize}
+
+\pagebreak
+
+\subsection{%
+    Billige Regelung%
+}
+
+Ist $\smallpmatrix{A & B \\ C & D}$ eine Blockmatrix mit invertierbarem $D$,
+so gilt
+$\smallpmatrix{I & -BD^{-1} \\ 0 & I} \smallpmatrix{A & B \\ C & D} =
+\smallpmatrix{A - BD^{-1}C & 0 \\ C & D}$.
+Durch Bildung der Determinanten auf beiden Seiten gelangt man zur folgenden Formel.
+
+\textbf{\name{Schur}-Determinantenformel}:
+Für $D$ invertierbar gilt\\
+$\det\!\smallpmatrix{A & B \\ C & D} = \det(A - BD^{-1}C) \det(D)$.
+
+Ist $\smallpmatrix{A & B \\ B^T & D}$ eine symmetrische Blockmatrix mit invertierbarem $D$
+(also $A = A^T$ und $D = D^T$), so gilt
+$\smallpmatrix{I & -BD^{-1} \\ 0 & I} \smallpmatrix{A & B \\ B^T & D}
+\smallpmatrix{I & 0 \\ -D^{-1} B^T & I} = \smallpmatrix{A - BD^{-1}C & 0 \\ 0 & D}$.
+Das folgende Lemma folgt daraus, dass für symmetrische Matrizen $R$ und
+invertierbare Matrizen $V$ gilt, dass $R \pd \iff V^T RV \pd$.
+
+\textbf{\name{Schur}-Komplement-Lemma}:
+Für $D = D^T$ invertierbar und $A = A^T$ gilt\\
+$\smallpmatrix{A & B \\ B^T & D} \pd \iff (D \pd) \land (A - BD^{-1}C \pd)$
+mit $C := B^T$.
+
+\textbf{\name{Schur}-Komplement}:
+Für $D$ invb. heißt $A - BD^{-1}C$ heißt \begriff{\name{Schur}-Komplement} von
+$\smallpmatrix{A & B \\ C & D}$.
+
+\linie
+
+\textbf{Variation der Eingangsgewichtung}:
+Die Eigenwerte des geschlossenen Regelkreises mit der LQ-optimalen Verstärkung sind gleich denen
+der Hamilton-Matrix in $\complex^-$.\\
+Sei nun $R_0 \pd$ fest und $\varrho \in (0, \infty)$ ein Skalar.
+Für $R := \varrho R_0$ erhält man die Hamilton-Matrix
+$H = \smallpmatrix{A & -\frac{1}{\varrho} BR_0^{-1} B^T \\ -Q & -A^T}$.
+
+\textbf{teure Regelung}:
+Für großes $\varrho$ versucht der LQ-Regler, mit so wenig Regelaufwand wie möglich auszukommen.
+Weil der rechte obere Block für $\varrho \to \infty$ verschwindet, nähern sich die Eigenwerte
+des geschlossenen Regelkreises an die stabilen Eigenwerte von
+$\smallpmatrix{A & 0 \\ -Q & -A^T}$ an, also an die Eigenwerte von $A$ und die Eigenwerte von $A$
+gespiegelt an der imaginären Achse (in $\complex^-$).
+
+\textbf{billige Regelung}:
+Für kleines $\varrho$ erlaubt man einen großen Regelaufwand
+(\begriff{billige Regelung (cheap control)}).
+Mit $Q =: C^T C$, $R_0^{-1} =: U_0 U_0^T$ ($U_0$ invertierbar) und
+$G(s) := C(sI - A)^{-1} BU_0$ erhält man durch die Schur-Determinatenformel
+und $\det(I - UV) = \det\smallpmatrix{I & V \\ U & I} = \det(I - VU)$, dass
+$\det(sI - H)
+= \det(sI + A^T) \det(sI - A - \frac{1}{\varrho} BR_0^{-1}B^T (sI + A^T)^{-1} Q)$\\
+$= \det(sI + A^T) \det(sI - A)
+\det(I - \frac{1}{\varrho} (sI - A)^{-1} BU_0 U_0^T B^T (sI + A^T)^{-1} C^T C)$\\
+$= \det(sI + A^T) \det(sI - A)
+\det(I - \frac{1}{\varrho} C^T C (sI - A)^{-1} BU_0 U_0^T B^T (sI + A^T)^{-1})$\\
+$= \det(sI + A^T) \det(sI - A)
+\det(I - \frac{1}{\varrho} C^T G(s) U_0^T B^T (sI + A^T)^{-1})$\\
+$= \det(sI + A^T) \det(sI - A)
+\det(I - \frac{1}{\varrho} U_0^T B^T (sI + A^T)^{-1} C^T G(s))$\\
+$= \det(sI + A^T) \det(sI - A)
+\det(I + \frac{1}{\varrho} G(-s)^T G(s))$.
+Im Allgemeinen sind die Nullstellen dieses Polynoms für $\varrho \to 0$ nicht einfach zu
+analysieren.
+Man kann zeigen, dass einige Nullstellen zu $\infty$ gehen, während andere zu denen von
+$\det(G(-s)^T G(s))$ gehen, wenn dieses Polynom nicht verschwindet.
+
+\linie
+
+\textbf{Satz (\name{Butterworth}-Muster)}:
+Sei das System ein SISO-System, $d(s) := \det(sI - A)$ und
+$n(s) := d(s) G(s)$ mit Nullstellen $z_1, \dotsc, z_m$.
+Es gilt\\
+$\det(sI + A^T) \det(sI - A)
+\det(I + \frac{1}{\varrho} G(-s)^T G(s)) = 0
+\iff
+d(-s) d(s) + \frac{1}{\varrho} n(-s) n(s) = 0$\\
+und für die Nullstellen gilt für $\varrho \to 0$:
+\begin{itemize}
+    \item
+    $2m$ der Nullstellen gehen gegen $\pm z_1, \dotsc, \pm z_m$.
+    
+    \item
+    Die anderen $2(n - m)$ Nullstellen gehen gegen $\infty$.
+    Die Divergenz erfolgt asymptotisch entlang Ursprungsgeraden mit den folgenden Winkeln
+    bzgl. der positiven reellen Halbachse:
+    \begin{itemize}
+        \item
+        Für $n - m$ ungerade
+        $\frac{k\pi}{n - m}$, $k = 0, \dotsc, 2n - 2m - 1$,
+        
+        \item
+        für $n - m$ gerade
+        $\frac{(k + 1/2)\pi}{n - m}$, $k = 0, \dotsc, 2n - 2m - 1$.
+    \end{itemize}
+\end{itemize}
+Die Nullstellen in $\complex^-$ sind die Eigenwerte des geschlossenen Regelkreises.
+
+\pagebreak
+
+\subsection{%
+    Robustheit%
+}
+
+\textbf{Robustheit}:
+Die perfekte Implementierung eines Zustandsrückführungs-Reglers führt zu\\
+$\dot{x} = Ax + Bu$, $z = -Fx$, $x(0) = \xi$ mit $u = z$.
+Allerdings ist diese Modellierung eines unverzerrten und simultanen Reglers
+idealisisiert, da es z.\,B. bei der Signalübertragung zum
+System zu Störungen oder kleinen Verzögerungen führen kann.
+Dies kann man durch einen Filter $\Delta$ berücksichtigen, wobei nun $u = \Delta(z)$ gelten soll.
+Im einfachsten Fall ist $\Delta \in \real^{m \times m}$ eine statische Verstärkung
+mit $\norm{\Delta - I} \approx 0$.
+Für $\Delta = I_m$ gelangt man wieder zur obigen perfekten Implementierung, sonst erhält man
+das System $\dot{x} = (A - B\Delta F)x$, $x(0) = \xi$.
+Dieses System ist für $\norm{\Delta - I}$ klein wieder stabil, wenn $A - BF$ bereits eine
+Hurwitz-Matrix war.
+
+Die Frage ist nun, wie weit $\Delta$ von $I$ abweichen darf, ohne dass die Stabilität verloren
+geht, d.\,h. $\lim_{t \to \infty} x(t) = 0$ für $\xi \in \real^n$ beliebig.
+
+\linie
+
+Für die Analyse dieser Frage benötigt man ein paar Lemmas.
+Im Folgenden seien\\
+$L_2^n := L_2([0, \infty), \real^n)$ und
+$L_{2,\loc}^n := \{x\colon [0, \infty) \rightarrow \real^n \text{ messbar} \;|\;
+\forall_{T > 0}\; x(\cdot) \in L_2([0, T], \real^n)\}$.
+
+\textbf{lokal absolute Stetigkeit}:
+Eine Abbildung $f\colon [0, \infty) \rightarrow \real^n$ heißt
+\begriff{lokal absolut stetig}, falls\\
+$\forall_{[a, b] \subset [0, \infty)} \forall_{\varepsilon > 0} \exists_{\delta > 0}\;
+\big(([x_k, y_k])_{k \in \natural} \text{ Folge paarweise disjunkter Intervalle in }
+[a, b] \text{ mit}$\\
+$\sum_{k=1}^\infty (y_k - x_k) < \delta\big)
+\;\Rightarrow\; \sum_{k=1}^\infty \norm{f(y_k) - f(x_k)} < \varepsilon$
+(d.\,h. $f$ ist \begriff{absolut stetig} auf jedem Intervall $[a, b] \subset [0, \infty)$).
+Lokale absolute Stetigkeit ist eine Verallgemeinerung von lokal gleichmäßiger Stetigkeit,
+allerdings ist lokale Lipschitz-Stetigkeit hinreichend für lokal absolute Stetigkeit.
+
+\textbf{Lemma (\name{Barbalat}-Lemma)}:
+Seien $x(\cdot) \in L_2^n$ lokal absolut stetig und $\dot{x}(\cdot) \in L_2^n$.\\
+Dann gilt $\lim_{t \to \infty} x(t) = 0$.
+
+\textbf{Lemma (\name{Young}-Ungleichung für Faltungen)}:\\
+Seien $1 \le p \le q \le \infty$ mit $a \in [1, \infty]$, sodass
+$\frac{1}{p} + \frac{1}{a} = 1 + \frac{1}{q}$
+Für $u \in L_p([0, \infty), \real^m)$ und $M \in L_a([0, \infty), \real^{k \times m})$
+sei $y\colon [0, \infty) \rightarrow \real^k$,
+$y(t) := \int_0^t u(\tau)M(t - \tau) \d\tau = (u \ast M)(t)$.\\
+Dann gilt $y \in L_q([0, \infty), \real^k)$ und $\norm{y}_q \le \norm{u}_p \norm{M}_a$.
+
+Dabei wird auf $L_a([0, \infty), \real^{k \times m})$
+die Norm $\norm{M}_a := \left(\int_0^\infty \norm{M(t)}^a\dt\right)^{1/a}$ für $a < \infty$ bzw.\\
+$\norm{M}_\infty := \esssup_{t \in [0, \infty)} \norm{M(t)}$ verwendet,
+wobei $\norm{\cdot}$ die Spektralnorm für Matrizen in $\real^{k \times m}$ bezeichnet.
+
+\textbf{Lemma (Konvergenz der Trajektorie)}:
+Sei $\dot{x} = Ax + Bu$, $y = Cx$ entdeckbar.\\
+Wenn $(x(\cdot), u(\cdot), y(\cdot))$ eine Trajektorie mit $u \in L_2^m$ und $y \in L_2^k$ ist,
+dann gilt $\lim_{t \to \infty} x(t) = 0$.
+
+\linie
+
+\textbf{Herleitung der Robustheitseigenschaften}:\\
+Seien $P$ eine Lösung der ARE mit $Q \psd$ und $F := R^{-1} B^T P$.\\
+Dann gilt wegen $Q \psd$, dass
+$0 = \smallpmatrix{A^T P + PA - PBR^{-1} B^T P + Q & 0 \\ 0 & 0}
+= \smallpmatrix{A^T P + PA + Q - F^T RF & PB - F^T R \\ B^T P - RF & 0}$\\
+$= \smallpmatrix{A^T P + PA & PB \\ B^T P & 0} + \smallpmatrix{Q & 0 \\ 0 & 0} -
+\smallpmatrix{F^T R F & F^T R \\ RF & 0}
+\succcurlyeq \smallpmatrix{I & 0 \\ A & B}^T \smallpmatrix{0 & P \\ P & 0}
+\smallpmatrix{I & 0 \\ A & B} + \smallpmatrix{-F & 0 \\ 0 & I}^T \smallpmatrix{-R & R \\ R & 0}
+\smallpmatrix{-F & 0 \\ 0 & I}$.\\
+Für jede Trajektorie des Systems und alle $t \ge 0$ gilt daher\\
+$0 \ge \smallpmatrix{x(t) \\ u(t)}^T \smallpmatrix{I & 0 \\ A & B}^T \smallpmatrix{0 & P \\ P & 0}
+\smallpmatrix{I & 0 \\ A & B} \smallpmatrix{x(t) \\ u(t)} + \smallpmatrix{x(t) \\ u(t)}^T
+\smallpmatrix{-F & 0 \\ 0 & I}^T \smallpmatrix{-R & R \\ R & 0}
+\smallpmatrix{-F & 0 \\ 0 & I} \smallpmatrix{x(t) \\ u(t)}$\\
+$= \smallpmatrix{x(t) \\ \dot{x}(t)}^T \smallpmatrix{0 & P \\ P & 0}
+\smallpmatrix{x(t) \\ \dot{x}(t)} +
+\smallpmatrix{z(t) \\ u(t)}^T \smallpmatrix{-R & R \\ R & 0} \smallpmatrix{z(t) \\ u(t)}
+= \frac{d}{dt} x(t)^T P x(t) +
+\smallpmatrix{z(t) \\ u(t)}^T \smallpmatrix{-R & R \\ R & 0} \smallpmatrix{z(t) \\ u(t)}$.\\
+Für jede Trajektorie des Systems und $\tau > 0$ gilt also\\
+$x(\tau)^T P x(\tau) + \int_0^\tau
+\smallpmatrix{z(t) \\ u(t)}^T \smallpmatrix{-R & R \\ R & 0} \smallpmatrix{z(t) \\ u(t)} \dt
+\le \xi^T P \xi$.
+
+\linie
+\pagebreak
+
+\textbf{Satz (Robustheit des LQ-optimalen Reglers)}:\\
+Sei $F$ die LQ-optimale Verstärkung für $(A, B)$ mit der Kostenfunktion
+definiert durch $(Q, R)$, d.\,h.
+$F = R^{-1} B^T P$ mit $P$ der stabilisierenden Lösung der ARE für $Q \psd$ und $R \pd$.\\
+Seien außerdem $\Delta\colon L_{2,\loc}^m \rightarrow L_{2,\loc}^m$ und
+$\gamma, \varepsilon > 0$, sodass
+für alle $z \in L_{2,\loc}^m$ und $\tau > 0$ gilt, dass
+\begin{enumerate}
+    \item
+    $\int_0^\tau \norm{\Delta(z)(t)}^2 \dt \le \gamma^2 \int_0^\tau \norm{z(t)}^2 \dt$ und
+    
+    \item
+    $\int_0^\tau \smallpmatrix{z(t) \\ \Delta(z)(t)}^T \smallpmatrix{-R & R \\ R & 0}
+    \smallpmatrix{z(t) \\ \Delta(z)(t)} \dt \ge \varepsilon \int_0^\tau \norm{z(t)}^2 \dt$.
+\end{enumerate}
+Dann gilt für jede Lösung $x(\cdot) \in L_{2,\loc}^n$ des Systems
+$\dot{x} = Ax + Bu$, $z = -Fx$, $x(0) = \xi$, $u = \Delta(z)$, dass $\lim_{t \to \infty} x(t) = 0$.
+
+\linie
+
+\textbf{Beispiel}:
+Sei $D \in \real^{m \times m}$ eine
+\begriff{statische Verstärkungsmatrix (static gain-matrix)} mit\\
+$\smallpmatrix{I \\ D}^T \smallpmatrix{-R & R \\ R & 0} \smallpmatrix{I \\ D} \pd$.
+Dann erfüllt $\Delta$ mit $\Delta(z)(\cdot) := Dz(\cdot)$ alle Voraussetzungen des Satzes,\\
+da $\int_0^\tau \norm{\Delta(z)(t)}^2 \dt
+= \int_0^\tau \norm{Dz(t)}^2 \dt
+\le \gamma^2 \int_0^\tau \norm{z(t)}^2 \dt$ mit $\gamma := \norm{D}$.\\
+Außerdem gilt nach Voraussetzung, dass
+$\smallpmatrix{I \\ D}^T \smallpmatrix{-R & R \\ R & 0} \smallpmatrix{I \\ D} \succcurlyeq
+\varepsilon I$
+für ein $\varepsilon > 0$.
+Daraus folgt\\
+$\int_0^\tau \smallpmatrix{z(t) \\ \Delta(z)(t)}^T \smallpmatrix{-R & R \\ R & 0}
+\smallpmatrix{z(t) \\ \Delta(z)(t)} \dt
+= \int_0^\tau z(t)^T \smallpmatrix{I \\ D}^T \smallpmatrix{-R & R \\ R & 0}
+\smallpmatrix{I \\ D} z(t) \dt$\\
+$= \int_0^\tau z(t)^T \left[\smallpmatrix{I \\ D}^T \smallpmatrix{-R & R \\ R & 0}
+\smallpmatrix{I \\ D} - \varepsilon I\right] z(t) \dt + \int_0^\tau z(t)^T [\varepsilon I] z(t) \dt
+\ge \varepsilon \int_0^\tau \norm{z(t)}^2 \dt$.\\
+Daher erfüllt das System $\dot{x} = (A - BDF)x$, $x(0) = \xi$ für jede Anfangsbedingung\\
+$\lim_{t \to \infty} x(t) = 0$.
+
+Setzt man $D := dI$ für $d \in \real$, so gilt
+$\smallpmatrix{I \\ D}^T \smallpmatrix{-R & R \\ R & 0} \smallpmatrix{I \\ D} \pd
+\iff 2dR - R \pd$\\
+$\iff (2d - 1)R \pd$.
+Wegen $R \pd$ gilt dies genau dann, wenn $2d - 1 > 0 \iff d \in (\frac{1}{2}, \infty)$.
+Man spricht von einem \begriff{Amplitudenrand (gain-margin)} von $\frac{1}{2}$:
+Wenn $F$ die LQ-optimale Verstärkung ist, dann kann $F$ zu $dF$ für $d \in (\frac{1}{2}, \infty)$
+geändert werden, ohne die Stabilität des geschlossenen Regelkreises zu gefährden.
+
+\pagebreak

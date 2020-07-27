@@ -1,0 +1,264 @@
+\section{%
+    Anwendungen%
+}
+
+\subsection{%
+    Endlich erzeugte \name{abel}sche Gruppen%
+}
+
+\begin{Satz}{zyklische Gruppen sind genau die zyklischen $\integer$-Moduln} \\
+    Seien $G$ eine Gruppe und $x \in G$.
+    Dann ist $\aufspann{x} = \{x^i \;|\; i \in \integer\}$
+    eine abelsche Untergruppe von $G$, die \begriff{von $x$ erzeugte zyklische
+    Untergruppe von $G$}.
+    Die Abbildung $\rho: \integer \rightarrow \aufspann{x}$, $i \mapsto x^i$
+    ist ein Gruppenepimorphismus von $(\integer, +)$ auf
+    $(\aufspann{x}, \cdot)$.
+    Ist $\ker \rho = (0)$, so ist $\integer \cong \aufspann{x}$ und die Ordnung
+    $|\aufspann{x}|$ (d.\,h. die Anzahl der Elemente von $\aufspann{x}$) ist
+    abzählbar unendlich. \\
+    Ist $\ker \rho \not= (0)$ und $n \in \natural$ minimal mit $x^n = 1$, dann
+    ist $\aufspann{x} = \{1, x, \dotsc, x^{n-1}\}$ und $|\aufspann{x}| = n$.
+    Die Ordnung $|\aufspann{x}|$ von $\aufspann{x}$ heißt
+    \begriff{Ordnung $|x|$ von $x$}.
+    Ist $n = |x| \in \natural$, so ist
+    $\aufspann{x} \cong (\integer/n\integer, +)$. \\
+    Daher sind die zyklischen Gruppen genau die zyklischen $\integer$-Moduln
+    und $(\integer, +)$ ist die einzige unendliche zykliche Gruppe.
+\end{Satz}
+
+\begin{Satz}{Klassifikation der endlich erzeugten abelschen Gruppen} \\
+    Seien $q_1, \dotsc, q_k \in \natural$ (Elementarteiler) mit
+    $q_k \;|\; \dotsb \;|\; q_1 \in \natural$ und $\alpha \in \natural_0$. \\
+    Sei $M(q_1, \dotsc, q_k, \alpha) := C_{q_1} \times \dotsb \times C_{q_k}
+    \times C_\infty \times \overset{\alpha\text{-mal}}{\dotsb} \times
+    C_\infty$
+    mit $C_n := (\integer/n\integer, +)$ und $C_\infty := (\integer, +)$. \\
+    Dann ist $\{M(q_1, \dotsc, q_k, \alpha) \;|\;
+    k \in \natural_0,\;
+    q_1, \dotsc, q_k \in \natural,\;
+    q_k \;|\; \dotsb \;|\; q_1,\;
+    \alpha \in \natural_0\}$
+    eine vollständige Liste paarweise nicht-isomorpher, endlich erzeugter
+    abelscher Gruppen.
+    Für $\alpha = 0$ erhält man mit
+    $M(q_1, \dotsc, q_k) := M(q_1, \dotsc, q_k, \alpha)$ und
+    $\{M(q_1, \dotsc, q_k) \;|\;
+    k \in \natural_0,\;
+    q_1, \dotsc, q_k \in \natural,\;
+    q_k \;|\; \dotsb \;|\; q_1\}$
+    eine vollständige Liste paarweise nicht-isomorpher, endlicher
+    abelscher Gruppen. \\
+    Dabei ist $|M(q_1, \dotsc, q_k)| = q_1 \dotsb q_k \in \natural$. \\
+    Seien $p_1, \dotsc, p_k \in \natural$ Primzahlen,
+    $e_1^{(i)} \ge \dotsb \ge e_n^{(i)} \ge 0$ ganze Zahlen für
+    $i = 1, \dotsc, k$,
+    $\mi{e}_i = (e_1^{(i)}, \dotsc, e_n^{(i)})$ und $\alpha \in \natural_0$.
+    Dann erhält man durch \\
+    $M(p_1, \mi{e}_1, \dotsb, p_k, \mi{e}_k, \alpha) = C_{p_1^{e_1^{(1)}}}
+    \times \dotsb \times C_{p_1^{e_n^{(1)}}} \times \dotsb \times
+    C_{p_k^{e_1^{(k)}}} \times \dotsb \times C_{p_k^{e_n^{(k)}}} \times
+    C_\infty \times \overset{\alpha\text{-mal}}{\dotsb} \times C_\infty$
+    eine vollständige Liste paarweise nicht-isomorpher, endlich erzeugter
+    abelscher Gruppen.
+\end{Satz}
+
+\begin{Bem}
+    Beispielsweise gibt es bis auf Isomorphie sieben abelsche Gruppen $A$
+    mit $|A| = 32$ ($C_{32}$, $C_{16} \times C_2$, $C_8 \times C_4$,
+    $C_8 \times C_2 \times C_2$, $C_4 \times C_4 \times 2$,
+    $C_4 \times C_2 \times C_2 \times C_2$,
+    $C_2 \times C_2 \times C_2 \times C_2 \times C_2$), aber nur eine
+    mit $|A| = 15$ ($C_{15}$).
+\end{Bem}
+
+\begin{Bem}
+    Das Wiedererkennungsproblem für abelsche Gruppen ist schwierig zu lösen,
+    betrachtet man z.\,B. die $\integer$-Moduln
+    $M_1 = \integer/2\integer \oplus \integer$ und
+    $M_2 = \integer \oplus \integer$.
+    Es gilt $M_1 = \aufspann{(1 + 2\integer, 1), (0, 1)}$ und
+    $M_2 = \aufspann{(1, 0), (0, 1)}$, jedoch ist die Ordnungen aller
+    Elemente der beiden Erzeugendensysteme $\infty$.
+    Aus der Ordnung der Elemente von einem Erzeugendensystem kann man also
+    nicht auf die abelsche Gruppe schließen.
+\end{Bem}
+
+\begin{Satz}{$\rational \otimes_\integer A = (0)$}
+    Sei $A$ eine endliche abelsche Gruppe.
+    Dann ist $\rational \otimes_\integer A = (0)$.
+\end{Satz}
+
+\begin{Satz}{$\rational \otimes_\integer \mathcal{F}$ als Vektorraum}
+    Sei $\mathcal{F}$ ein freier $\integer$-Modul. \\
+    Dann ist $\rational \otimes_\integer \mathcal{F}$ ein $n$-dimensionaler
+    $\rational$-Vektorraum.
+\end{Satz}
+
+\begin{Satz}{Rangbestimmung des freien Anteils} \\
+    Seien $M$ eine endlich erzeugte abelsche Gruppe und
+    $n = \dim_\rational \rational \otimes_\integer M$. \\
+    Dann ist $M = T(M) \oplus \mathcal{F}$, wobei der freie Anteil
+    $\mathcal{F}$ von $M$ vom Rang $n$ ist.
+\end{Satz}
+
+\begin{Satz}{Anzahl abelscher Gruppen}
+    Sei $k \in \natural$.
+    Dann gibt es nur endlich viele paarweise nicht-isomorphe
+    abelsche Gruppen $A$ mit $|A| = k$.
+    Ist $k$ multiplizitätenfrei (in der Primfaktorzerlegung kommt jede
+    Primzahl nur mit Exponent $1$ vor), so gibt es bis auf
+    Isomorphie genau eine abelsche Gruppe $A$ mit $|A| = k$, nämlich die
+    zyklische Gruppe $\integer/k\integer$ der Ordnung $k$.
+\end{Satz}
+
+\begin{Satz}{Kriterium für abelsche Gruppe zyklisch}
+    Sei $A$ eine abelsche Gruppe.
+    Dann ist $A$ zyklisch genau dann, wenn $A$ für jeden Teiler $d$ von $|A|$
+    genau eine Untergruppe der Ordnung $d$ besitzt.
+\end{Satz}
+
+\subsection{%
+    Die kanonisch rationale Form%
+}
+
+\begin{Bem}
+    Seien $K$ ein Körper, $V$ ein endlich-dimensionaler $K$-Vektorraum und
+    $f \in \End_K(V)$.
+    Dann kann man den $K[t]$-Modul $V_f = V$ betrachtet, wobei die
+    $K[t]$-Operation gegeben ist durch $p(t) \cdot v = (p(f))(v)$.
+    Für das Verschwindungsideal $\mathcal{I}_f$ folgt sofort
+    $\mathcal{I}_f = \ann_{K[t]}(V_f)$ sowie $\ordnung(V_f) = \mu_f(t)$.
+\end{Bem}
+
+\begin{Lemma}{$V_f$ e.e. Torsionsmodul}
+    $V_f$ ist endlich-erzeugter Torsionsmodul.
+\end{Lemma}
+
+\begin{Lemma}{Unterraum von $V$ $f$-invariant $\Leftrightarrow$
+              Unterraum Untermodul von $V_f$}
+    Sei $U \ur V$ ein Untervektorraum.
+    Dann ist $U$ $f$-invariant genau dann, wenn $U$ ein $K[t]$-Untermodul
+    von $V_f$ ist.
+\end{Lemma}
+
+\begin{Satz}{$V_f$ und $V_g$ isomorph für $f, g$ konjugiert} \\
+    Seien $f, g \in \End_K(V)$ konjugiert, d.\,h. es gibt ein
+    $d \in \Aut_K(V)$ mit $f = d^{-1} g d$. \\
+    Dann ist $d: V_f \rightarrow V_g$ ein $K[t]$-Isomorphismus und daher ist
+    $V_f \cong V_g$ (als $K[t]$-Moduln).
+\end{Satz}
+
+\begin{Bem}
+    Also ist die Modulstruktur von $V$ als $K[t]$-Modul für konjugierte
+    Endomorphismen gleich, d.\,h. $V_f$ und $V_g$ sind zum selben Prototyp
+    aus der obigen Liste isomorph.
+    Weiter unten wird gezeigt:
+    Dieser Prototyp bestimmt eine kanonisch rationale
+    $K$-Basis von $V$, sodass konjugierte Endomorphismen dieselbe
+    kanonisch rationale Form haben.
+    Analog gilt dies für ähnliche Matrizen.
+    Weil jede Matrix bzw. jeder Endomorphismus zu ihrer kanonisch rationalen
+    ähnlich bzw. konjugiert ist, sind dann Matrizen/Endomorphismen mit der
+    gleichen kanonisch rationalen Form ähnlich/konjugiert.
+\end{Bem}
+
+\begin{Kor}
+    Seien $A, B \in M_n(K)$.
+    Dann sind $A$ und $B$ ähnlich genau dann, wenn $A$ und $B$ dieselbe
+    kanonisch rationale Form haben.
+\end{Kor}
+
+\begin{Bem}
+    Das Minimalpolynom $\mu_f(t)$ als normiertes Polynom als Produkt normierter
+    irreduzibler Polynome $\mu_f(t) = p_1(t)^{\nu_1} \dotsm p_k(t)^{\nu_k}$
+    ($p_1, \dotsc, p_k \in K[t]$ paarweise verschieden, irreduzibel, normiert)
+    dargestellt werden.
+    So erhält man die Primärkomponentenzerlegung von
+    $V_f = M_{p_1} \oplus \dotsb \oplus M_{p_k}$
+    wegen $\ordnung(V_f) = \mu_f(t)$.
+    Die Primärkomponenten kann man folgendermaßen ausrechnen:
+\end{Bem}
+
+\begin{Satz}{Primärkomponenten von $V_f$}
+    Sei $\mu_f(t) = p_1(t)^{\nu_1} \dotsm p_k(t)^{\nu_k}$ wie eben. \\
+    Dann ist $\ker(p_i(f)^{\nu_i-1}) \lneqq M_{p_i} =
+    \ker(p_i(f)^{\nu_i}) \ur V$ für $i = 1, \dotsc, k$.
+\end{Satz}
+
+\begin{Satz}{Bestimmung der $\nu_i$}
+    Die aufsteigende Kette
+    $\ker p_i(f) \subseteq \dotsb \subseteq \ker p_i(f)^j \subseteq \dotsb$
+    wird wegen $\dim_K V$ stationär.
+    Sei $m$ die kleinste natürliche Zahl, sodass
+    $\ker(p_i(f)^m) = \ker(p_i(f)^{m+1})$ ist.
+    Dann ist $m = \nu_i$.
+\end{Satz}
+
+\begin{Lemma}{Primärkomponente von $t - \lambda$ ist verallg. Eigenraum}\\
+    Seien $\mu_f(t) = p_1(t)^{\nu_1} \dotsm p_k(t)^{\nu_k}$ wie eben
+    und $\lambda \in K$. \\
+    Ist $p_i(t) = t - \lambda$ ein lineares Polynom,
+    so ist $M_{p_i} = \mathcal{V}_f(\lambda)$.
+\end{Lemma}
+
+\begin{Satz}{Basis des zyklischen $K[t]$-Moduls}
+    Seien $p \in K[t]$ ein Polynom mit $\deg p = n$ und \\
+    $C_p = K[t]/K[t]p$ der zyklische $K[t]$-Modul.
+    Dann ist $\dim_K(C_p) = n$ und $\{\nk{1}, \nk{t}, \dotsc, \nk{t}^{n-1}\}$
+    ist $K$-Basis von $C_p$ (als $K$-Vektorraum), wobei
+    $\nk{t}^i = t^i + K[t]p \in C_p$ ist.
+\end{Satz}
+
+\begin{Satz}{von $v$ erzeugter zyklischer Untermodul $K[t] \cdot v$}
+    Sei $v \in V_f$.
+    Dann ist der von $v$ erzeugte zyklische $K[t]$-Untermodul $K[t] \cdot v$
+    der von $v$ erzeugte $f$-zyklische Unterraum von $V$. \\
+    Dieser ist $f$-invariant und $f_{\aufspann{v}}$ sei die Einschränkung
+    $f|_{K[t]v}$ von $f$ auf $K[t]v$. \\
+    Sei $\mu_{f_{\aufspann{v}}}(t) = p(t) = \alpha_0 + \dotsb +
+    \alpha_{k-1} t^{k-1} + t^k$ das normierte Minimalpolynom von
+    $f_{\aufspann{v}}$. \\
+    Dann ist $\ordnung(v) = p(t)$ und
+    $\basis{B} = \{v, f(v), \dotsc, f^{k-1}(v)\}$ ist $K$-Basis von $K[t]v$. \\
+    Die Matrix $\hommatrix{f_{\aufspann{v}}}{B}{B}$ ist die
+    $k \times k$-Begleitmatrix von $p(t)$.
+\end{Satz}
+
+\pagebreak
+
+\begin{Satz}{kanonisch rationale Form I}
+    Seien $V$ ein $K$-Vektorraum mit $\dim_K V = n$, $f \in \End_K(V)$ und
+    $\mu_f(t) = p_1(t)^{\nu_1} \dotsm p_k(t)^{\nu_k}$ die Primfaktorzerlegung
+    von $\mu_f(t)$ in $K[t]$ mit paarweise verschiedenen, irreduziblen,
+    normierten Polynomen.
+    Sei außerdem $(p) \in M_{\deg p \times \deg p}(K)$ die Begleitmatrix von
+    $p \in K[t]$. \\
+    Dann gibt es eine Basis $\basis{B}$ von $V$ und natürliche Zahlen
+    $e_1^{(i)} \ge \dotsb \ge e_m^{(i)} \ge 0$, $i = 1, \dotsc, m$,
+    $m \in \natural$, sodass die $n \times n$-Matrix $\hommatrix{f}{B}{B}$
+    die Blockdiagonalform \\
+    $\diag\left\{\left(p_1^{e_1^{(1)}}\right), \dotsc,
+    \left(p_1^{e_m^{(1)}}\right), \dotsc,
+    \left(p_k^{e_1^{(k)}}\right), \dotsc,
+    \left(p_k^{e_m^{(k)}}\right)\right\}$ hat, wobei
+    $\sum_{i=1}^k \sum_{j=1}^m e_j^{(i)} \deg p_i = n$ ist. \\
+    Diese Form heißt \begriff{kanonisch rationale Form} oder auch
+    \begriff{\name{Frobenius}-Normalform} von $f$. \\
+    Für $n \times n$-Matrizen ist sie analog definiert.
+\end{Satz}
+
+\begin{Satz}{kanonisch rationale Form II}
+    $V$ hat eine $K$-Basis, sodass
+    $\hommatrix{f}{B}{B} = \diag\{(q_1), \dotsc, (q_s)\}$ ist mit
+    $q_i = p_1^{e_i^{(1)}} \dotsm p_k^{e_i^{(k)}}$, wobei
+    $\mu_f(t) = q_1 = p_1^{\nu_1} \dotsm p_k^{\nu_k}$ ist mit
+    $\nu_i = e_i^{(1)}$.
+    Zusätzlich ist dann
+    $\chi_f(t) = p_1^{e_1^{(1)} + \dotsb + e_m^{(1)}} \dotsm
+    p_k^{e_1^{(k)} + \dotsb + e_m^{(k)}}$.
+    Insbesondere ist $\mu_f(t) = \mu_f(t)$ genau dann, wenn $V_f$ nur einen
+    Elementarteiler hat, d.\,h. zyklischer $K[t]$-Modul ist.
+\end{Satz}
+
+\pagebreak

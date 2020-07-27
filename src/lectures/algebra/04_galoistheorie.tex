@@ -1,0 +1,572 @@
+\section{%
+    \name{Galois}theorie%
+}
+
+\subsection{%
+    Zerfällungskörper%
+}
+
+\begin{Bem}
+    In diesem Abschnitt sollen folgende Fragen geklärt werden:\\
+    Es gilt z.\,B. $(\rational(\sqrt{2}))(\sqrt{3}) =
+    \rational(\sqrt{2} + \sqrt{3})$.
+    Gilt dies für alle $a_1, a_2 \in \rational$, d.\,h. gibt es immer
+    ein $a_3 \in \rational$ mit $(\rational(a_1))(a_2) = \rational(a_3)$?\\
+    Der Satz von Kronecker konstruiert für ein irreduzibles Polynom $f$
+    einen Körper $K[x]/\erzeugnis{f(x)}$, sodass $f(x)$ mindestens eine Lösung
+    hat.
+    Gibt es einen Körper, der alle Nullstellen enthält?\\
+    Was sind die Körpererweiterungen endlicher Körper?
+    Dazu gehören z.\,B. die Körper $\integer/p\integer$ für
+    $p$ Primzahl
+    (wenn $n$ nicht prim ist, ist $\integer/n\integer$ kein Körper, da
+    Nullteiler vorhanden sind).
+\end{Bem}
+
+\linie
+
+\begin{Def}{Zerfällungskörper}
+    Seien $K$ ein Körper,
+    $f(x) \in K[x] \ K$ ein nicht-konstantes Polynom und
+    $L/K$ eine Körpererweiterung.\\
+    Dann heißt $L$ \begriff{Zerfällungskörper} von $f(x)$ über $K$, falls
+    es $a_1, \dotsc, a_n \in L$ und $c \in K$ gibt mit\\
+    $f(x) = c \cdot \prod_{i=1}^n (x - a_i)$ und
+    $L = K(a_1, \dotsc, a_n)$.
+\end{Def}
+
+\begin{Bem}
+    Das bedeutet, dass $L$ erzeugt ist über $K$ von den Nullstellen $a_i$ von
+    $f(x)$.
+    $L$ existiert, denn $K$ besitzt einen algebraischen Abschluss
+    $\overline{K}$, in dem alle Nullstellen $a_1, \dotsc, a_n$ existieren.\\
+    Der Satz von Kronecker liefert nicht immer einen Zerfällungskörper,
+    z.\,B. gilt für $f(x) = x^3 - 2$, dass
+    $\rational[x]/\erzeugnis{x^3 - 2} \simeq \rational(\sqrt[3]{2})$.
+    Dabei ist $[\rational(\sqrt[3]{2}) : \rational] = 3$
+    (Grad des Minimalpolynoms $f(x)$), allerdings
+    ist die $\rational$-Dimension des Zerfällungskörpers größer als $3$.
+\end{Bem}
+
+\begin{Bem}
+    Der Zerfällungskörper $L$ von $f(x)$ ist eindeutig, denn es existiert
+    ein Zerfällungskörper in $\overline{K}$, d.\,h.
+    $K \subset L \subset \overline{K} \subset \overline{L}$.
+    Weil $L/K$ algebraisch ist (jedes $a_i$ ist Nullstelle von $f(x)$), ist
+    in $K \subset L \subset \overline{L}$ auch $\overline{L}/K$ algebraisch.
+    Da $\overline{K}/K$ ebenfalls algebraisch ist, muss auch
+    $\overline{L}/\overline{K}$ algebraisch sein (siehe Übungsblatt).
+    Es gibt keine echte algebraische Körpererweiterung eines algebraisch
+    abgeschlossenen Körpers, d.\,h.
+    es muss $\overline{L} = \overline{K}$ gelten.
+    Der algebraische Abschluss $\overline{K} = \overline{L}$ ist eindeutig bis
+    auf Isomorphie, also auch $L$.
+\end{Bem}
+
+\begin{Bem}
+    $f(x)$ muss nicht eindeutig sein, d.\,h. es gibt evtl. eventuell
+    mehrere Polynome, sodass ein Körper Zerfällungskörper von jedem der
+    Polynome ist.
+\end{Bem}
+
+\begin{Bsp}
+    Ein Beispiel ist $f_1(x) = x^2 + 1 \in \real[x]$.
+    Der Zerfällungskörper von $f_1(x)$ ist $\real(\i) = \complex$.
+    Man kann allerdings auch $f_2(x) = (x^2 + 1)(x - 5)$ wählen
+    (das Polynom muss nicht irreduzibel sein).
+    Ein anderes Beispiel ist das irreduzible Polynom\\
+    $f_3(x) = (x - (1 + \i)) (x - (1 - \i)) = x^2 - 2x + 2 \in \real[x]$.
+\end{Bsp}
+
+\linie
+
+\begin{Def}{Zerfällungskörper von Polynommenge}
+    Sei $L/K$ eine Körpererweiterung und\\
+    $\Lambda \subset K[x] \setminus K$ eine Menge von
+    nicht-konstanten Polynomen.\\
+    Dann heißt $L$ \begriff{Zerfällungskörper} von $\Lambda$ über $K$, falls
+    über $L$ alle Polynome in $\Lambda$ in Produkte von Linearfaktoren
+    zerfallen und $L$ minimal mit dieser Eigenschaft ist,
+    d.\,h. $\forall_{L_0 \text{ Körper},\; K \subset L_0 \subset L}$\\
+    $((\text{über } L_0 \text{ zerfallen alle Polynome in } \Lambda
+    \text{ in Produkte von Linearfaktoren}) \Rightarrow L_0 = L)$.
+\end{Def}
+
+\begin{Def}{normal}
+    Eine Körpererweiterung $L/K$ heißt \begriff{normal}, falls
+    es eine Menge $\Lambda \subset K[x] \setminus K$ von nicht-konstanten
+    Polynomen gibt, sodass $L$ der Zerfällungskörper von $\Lambda$ ist.
+\end{Def}
+
+\begin{Prop}{Äquivalenzen zu normal}
+    Für $K \subset L \subset \overline{K}$ sind äquivalent:
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        $\forall_{f \in K[x]}\;
+        ((f \text{ irreduzibel, hat Nullstelle in } L) \Rightarrow
+        (f \text{ über } L \text{ Produkt von Linearfaktoren}))$.
+        
+        \item
+        $L/K$ ist normal.
+        
+        \item
+        Für jeden $K$-Homomorphismus $\varphi\colon L \rightarrow \overline{K}$
+        gilt $\varphi(L) = L$.
+    \end{enumerate}
+\end{Prop}
+
+\subsection{%
+    Separable Elemente%
+}
+
+\begin{Bem}
+    Ein Problem ist, dass irreduzible Polynome theoretisch mehrfache
+    Nullstellen haben können.
+    Dieses Problem wird wegdefiniert.
+\end{Bem}
+
+\begin{Def}{Separabilitätsgrad}
+    Sei $K \subset L \subset \overline{K}$.\\
+    Dann ist
+    $[L:K]_S := \#\{\varphi\colon L \rightarrow \overline{K} \;|\;
+    \varphi\; K\text{-Homom.}\}$
+    der \begriff{Separabilitätsgrad} von $L/K$.
+\end{Def}
+
+\begin{Def}{separabel}
+    Seien $K \subset L \subset \overline{K}$ und $L/K$ endlich.\\
+    Dann heißt $L/K$ \begriff{separabel}, falls $[L:K]_S = [L:K]$.
+\end{Def}
+
+\begin{Def}{separables Element}
+    Sei $K \subset L \subset \overline{K}$.\\
+    Ein Element $a \in L$ heißt \begriff{separabel} über $K$, falls
+    $m_{a,K}$ nur einfache Nullstellen in $\overline{K}$ hat.
+\end{Def}
+
+\begin{Bem}
+    Für $L/K$ normal ist $[L:K]_S = |\Aut_K(L)|$,
+    da für $\varphi\colon L \rightarrow \overline{K}$ $K$-Homom.
+    $\varphi(L) = L$ gilt und daher
+    $\varphi|_L\colon L \rightarrow L$ nach obiger Proposition
+    ein $K$-Automorphismus ist.\\
+    Für $K(a)/K$ algebraisch gilt $[K(a) : K]_S = \#\text{NS von } m_{a,K}$.\\
+    Ist $L/K$ eine endliche Körpererweiterung mit $L = K(a_1, \dotsc, a_n)$,
+    so kann man schrittweise die Elemente dazuadjungieren, d.\,h.
+    mit $L_0 = K$ und $L_i = L_{i-1}(a_i)$ gilt
+    $[L:K] = \prod_{i=1}^n [L_i : L_{i-1}]$ und ebenso
+    $[L:K]_S = \prod_{i=1}^n [L_i : L_{i-1}]_S$ nach dem letzten Theorem
+    im letzten Abschnitt (Teil (a)).
+    Da $L_i / L_{i-1}$ einfach ist, gilt
+    $L_i \simeq L_{i-1}[x]/\erzeugnis{m_{a_i,L_{i-1}}}$ mit
+    $[L_i : L_{i-1}] = \grad(m_{a_i,L_{i-1}}) \ge
+    \# \text{NS von } m_{a_i,L_{i-1}} = [L_i : L_{i-1}]_S$ nach Teil (b)
+    der Proposition davor, d.\,h.
+    $[L:K]_S \le [L:K]$.
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Für $f(x) \in \rational[x]$ und $a$ Nullstelle von $f(x)$ mit Vielfachheit
+    $\ell$ ist $f(x) = (x - a)^\ell g(x)$ mit $g(a) \not= 0$.
+    Nach Produktregel gilt $f'(x) = \ell (x - a)^{\ell-1} g(x) +
+    (x - a)^\ell g'(x)$.\\
+    Ist $\ell > 1$, so ist $f'(a) = 0$.
+    Ist $\ell = 1$, so ist $f'(a) = g(a) \not= 0$.\\
+    Daher hat $f(x)$ die Nullstelle $a$ mit Vielfachheit $\ell > 1$ genau dann,
+    wenn $f'(a) = 0$ ist.
+\end{Bsp}
+
+\begin{Def}{Ableitung von Polynomen}
+    Seien $K$ ein Körper und $f(x) \in K[x]$.
+    Das Polynom $f'(x)$ ist definiert durch $(x^n)' := n x^{n-1}$
+    (dabei ist $n := 1 + \dotsb + 1$) und Additivität von $'$.
+\end{Def}
+
+\begin{Bem}
+    Somit gelten Produkt-/Kettenregel auch allgemein und obiges
+    Argument lässt sich verallgemeinern.
+\end{Bem}
+
+\begin{Bsp}
+    Für $K = \F_p := \integer/p\integer$ und $f(x) = x^p$ gilt
+    $f'(x) = p x^{p-1} = 0$,
+    aber $f(x)$ nicht konstant.
+\end{Bsp}
+
+\begin{Lemma}{Separabilität und Ableitung}
+    Sei $a \in \overline{K}$.
+    Dann ist $a$ separabel über $K$ $\iff$ $m_{a,K}' \not= 0$.
+\end{Lemma}
+
+\begin{Def}{Charakteristik}
+    Sei $K$ ein Körper.
+    Die \begriff{Charakteristik} $\Char(K)$ ist die kleinste natürliche
+    Zahl $n \in \natural$ mit $1 + \dotsb + 1 = 0$.
+    Falls keine solche Zahl existiert, ist $\Char(K) := 0$.
+\end{Def}
+
+\begin{Bsp}
+    Es gilt $\Char(\F_p) = p$ für $p$ prim und
+    $\Char(\rational) = 0$.
+    $\Char(K)$ ist immer eine Primzahl, denn für $\Char(K) = n = ab$ mit
+    $a, b > 1$ gilt $0 = \overset{n\text{-mal}}{1 + \dotsb + 1} =
+    \overset{a\text{-mal}}{(1 + \dotsb + 1)} \cdot
+    \overset{b\text{-mal}}{(1 + \dotsb + 1)}$, d.\,h.
+    $\overset{a\text{-mal}}{(1 + \dotsb + 1)} = 0$ oder
+    $\overset{b\text{-mal}}{(1 + \dotsb + 1)} = 0$, ein Widerspruch zur
+    Minimalität von $n$.
+\end{Bsp}
+
+\begin{Prop}{Separabilität}
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        $L/K$ ist separabel genau dann, wenn
+        $\forall_{a \in L}$ ($a$ ist separabel über $K$).
+        
+        \item
+        $L/K$ ist separabel genau dann, wenn
+        $\exists_{a_1, \dotsc, a_n \in L \text{ separabel über } K}\;
+        L = K(a_1, \dotsc, a_n)$.
+        
+        \item
+        Für $\Char(K) = 0$ und $L/K$ endlich ist $L/K$ separabel.
+        
+        \item
+        Für $\Char(K) = p > 0$, $L/K$ endlich und $p \notteilt [L:K]$ ist
+        $L/K$ separabel.
+        
+        \item
+        Für $K \subset M \subset L$
+        ist $L/K$ separabel genau dann, wenn
+        $L/M$ und $M/K$ separabel sind.
+    \end{enumerate}
+\end{Prop}
+
+\begin{Theorem}{Satz vom primitiven Element}
+    Sei $L/K$ endlich und separabel.\\
+    Dann gibt es ein $a \in L$ mit $L = K(a)$
+    (d.\,h. $L/K$ ist einfach).
+\end{Theorem}
+
+\subsection{%
+    Endliche Körper%
+}
+
+\begin{Theorem}{Klassifikation der endlichen Körper}
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        Seien $n \in \natural$ und $p$ eine Primzahl.
+        Dann ist der Zerfällungskörper $L$ von $f(x) = x^{p^n} - x$
+        ein Erweiterungskörper von $\F_p = \integer/p\integer$ mit
+        $[L:\F_p] = n$.\\
+        Es gilt $|L| = p^n$ und $L = \{\text{NS von } f(x)\}$.
+        $L/\F_p$ ist algebraisch, separabel und normal.
+        Man bezeichnet $L =: \F_q$ für $q := p^n$
+        (es gilt i.\,A. $L \not= \integer/p^n\integer$ für $n > 1$!).
+        
+        \item
+        $\F_q$ ist bis auf Isomorphie der einzige Körper mit $q = p^n$
+        Elementen.\\
+        Jeder endliche Körper ist zu genau einem $\F_q$ isomorph.
+        
+        \item
+        Die Gruppe $\Aut_{\F_p}(\F_q)$ ist zyklisch von Ordnung $n$
+        erzeugt von $Fr\colon \F_q \rightarrow \F_q$, $x \mapsto x^p$\\
+        (\begriff{\name{Frobenius}-Automorphismus}).
+    \end{enumerate}
+\end{Theorem}
+
+\subsection{%
+    \name{Galois}erweiterungen und \name{Galois}gruppen%
+}
+
+\begin{Bem}
+    Gesucht wird ein Zusammenhang zwischen den Körpererweiterungen $L/K$
+    und den Automorphismengruppen $\Aut_K(L)$ ("`Symmetrien"').
+    Dabei sollen Aussagen über die eine Seite Aussagen über die andere
+    Seite ermöglichen.
+    Ein Beispiel, dass für sinnvolle Aussagen allerdings Voraussetzungen
+    notwendig sind,
+    ist $L/K$ mit $K = \rational$ und $L = \rational(\sqrt[3]{2})$.
+    $x^3 - 2$ hat nur eine reelle Wurzel, es gilt
+    $\rational(\sqrt[3]{2}) \subset \real$, d.\,h.
+    $\Aut_\rational(\rational(\sqrt[3]{2})) = \{\id_{\sqrt[3]{2}}\}$,
+    da $\rational$-Automorphismen $\rational$ punktweise festlassen und
+    Nullstellen von $x^3 - 2$ auf Nullstellen wieder abbilden
+    (hier gibt es allerdings nur eine Wahl).
+    Eine Voraussetzung muss also Normalität sein.
+\end{Bem}
+
+\begin{Def}{\name{Galois}erweiterung, \name{Galois}gruppe}
+    Eine Körpererweiterung $L/K$ heißt\\
+    \begriff{\name{Galois}erweiterung} oder
+    \begriff{\name{galois}sch}, falls $L/K$ normal und separabel ist.\\
+    Die Gruppe $\Aut_K(L) =: \Gal(L/K) = G(L/K)$
+    heißt dann \begriff{\name{Galois}gruppe} von $L/K$.
+\end{Def}
+
+\begin{Bem}
+    Für $L/K$ normal und separabel gilt\\
+    $|\Aut_K(L)| = [L:K] = [L:K]_S =
+    \{\varphi\colon L \rightarrow \overline{K} \;|\;
+    \varphi \;K\text{-Homomorphismus}\}$.
+\end{Bem}
+
+\begin{Bsp}
+    Gesucht ist der Zerfällungskörper $L$ von
+    $f(x) = x^3 - 2$ über $K = \rational$.
+    Die Nullstellen von $f(x)$ sind $\{\sqrt[3]{2}, \sqrt[3]{2} e^{2\pi\i/3},
+    \sqrt[3]{2} e^{4\pi\i/3}\}$.
+    Wählt man $L = \rational(\sqrt[3]{2}, e^{2\pi\i/3})$, so sind alle
+    Nullstellen von $f(x)$ in $L$ enthalten.
+    Es ist $[\rational(\sqrt[3]{2}) : \rational] = 3$, da das Minimalpolynom
+    von $\sqrt[3]{2}$ gleich $f(x)$ ist.
+    $e^{2\pi\i/3}$ ist eine Nullstelle von $x^3 - 1 = (x - 1)(x^2 + x + 1)$,
+    d.\,h. das Minimalpolynom von $\sqrt[3]{2}$ über $\rational(\sqrt[3]{2})$
+    ist $x^2 + x + 1$ (bei echt kleinerem Grad wäre $e^{2\pi\i/3}$ in
+    $\rational(\sqrt[3]{2})$).\\
+    Somit ist
+    $[\rational(\sqrt[3]{2}, e^{2\pi\i/3}) : \rational(\sqrt[3]{2})] = 2$ und
+    $[L : \rational] = 6$.
+    Weil $L/\rational$ galoissch ist, muss es
+    $|\Aut_\rational(L)| = [L:\rational] = 6$ Automorphismen geben.\\
+    Ein $\rational$-Automorphismus permutiert immer die Nullstellen von jedem
+    Polynom, d.\,h. für $f(x)$ gilt $\sqrt[3]{2} \mapsto \dotsb \in
+    \{\sqrt[3]{2}, \sqrt[3]{2} e^{2\pi\i/3}, \sqrt[3]{2} e^{4\pi\i/3}\}$
+    und für $x^2 + x + 1$ gilt $e^{2\pi\i/3} \mapsto \dotsb \in
+    \{e^{2\pi\i/3}, e^{4\pi\i/3}\}$.\\
+    Jeder $\rational$-Automorphismus $\sigma\colon L \rightarrow L$
+    ist durch die Bilder von $\sqrt[3]{2}$ und $e^{2\pi\i/3}$ festgelegt.
+    Somit gibt es für jede Wahl der Bilder einen Automorphismus und
+    $\Aut_K(L) \simeq \Sigma_3$.
+\end{Bsp}
+
+\linie
+
+\begin{Def}{Fixkörper}
+    Seien $L$ ein Körper und $G < \Aut(L)$ eine Untergruppe der
+    Automorphismengruppe von $L$.
+    Dann heißt $L^G := \{a \in L \;|\;
+    \forall_{\varphi \in G}\; \varphi(a) = a\}$
+    \begriff{Fixkörper} von $G$\\
+    ($L^G$ ist in der Tat ein Körper).
+\end{Def}
+
+\begin{Prop}{$L^{\Gal(L/K)} = K$}
+    Sei $L/K$ eine Galoiserweiterung mit Galoisgruppe $G = \Gal(L/K)$.\\
+    Dann gilt $L^G = K$, d.\,h. $K$ ist der Fixkörper der ganzen Galoisgruppe.
+\end{Prop}
+
+\linie
+
+\begin{Prop}{\name{Galois}erweiterung $L/L^H$}\\
+    Seien $L$ ein Körper und $H \subset \Aut(L)$ eine endliche Untergruppe.\\
+    Dann ist $L/L^H$ eine Galoiserweiterung mit Galoisgruppe $\Gal(L/L^H) = H$
+    und $[L : L^H] = |H|$.
+\end{Prop}
+
+\pagebreak
+
+\subsection{%
+    Der Hauptsatz der \name{Galois}theorie%
+}
+
+\begin{Theorem}{Hauptsatz der \name{Galois}theorie}\\
+    Seien $L/K$ eine endliche Galoiserweiterung,
+    $\U := \{H \text{ Gruppe} \;|\; H < \Gal(L/K)\}$ und\\
+    $\Z := \{M \text{ Körper} \;|\; K \subset M \subset L\}$.
+    Dann gilt:
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        Dann gibt es zwei zueinander inverse Bijektionen
+        $\alpha\colon \Z \rightarrow \U$, $M \mapsto \Gal(L/M)$ und
+        $\beta\colon \U \rightarrow \Z$, $H \mapsto L^H$
+        (dabei ist $L/M$ tatsächlich galoissch).
+        
+        \item
+        $\alpha$ und $\beta$ kehren Inklusionen um, d.\,h.
+        aus $M \subset M'$ folgt $\alpha(M) \supset \alpha(M')$ und
+        aus $H \subset H'$ folgt $\beta(H) \supset \beta(H')$.
+        
+        \item
+        Für $H \in \U$ und $\varphi \in \Gal(L/K)$ gilt
+        $\varphi(L^H) = L^{\varphi H \varphi^{-1}}$.
+        
+        \item
+        Für $M \in \Z$ ist $M/K$ normal genau dann, wenn
+        $\Gal(L/M) \nt \Gal(L/K)$.
+        
+        \item
+        In diesem Fall gibt es einen surjektiven Gruppenhomomorphismus\\
+        $\gamma\colon \Gal(L/K) \rightarrow \Gal(M/K)$ mit
+        $\Kern(\gamma) = \Gal(L/M)$ und es gilt\\
+        $\Gal(M/K) \simeq \Gal(L/K)/\Gal(L/M)$.
+    \end{enumerate}
+\end{Theorem}
+
+\linie
+
+\begin{Bsp}
+    Als Beispiel betrachtet man den Zerfällungskörper $L$ von
+    $f(x) = x^4 - 2$ über $\rational$.
+    $f(x)$ hat die vier Nullstellen
+    $\pm\sqrt[4]{2}$ und $\pm\i\sqrt[4]{2}$.
+    Es gilt $[\rational(\sqrt[4]{2}):\rational] = 4$, da
+    $f(x) = x^4 - 2$ das Minimalpolynom von $\sqrt[4]{2}$ ist (irreduzibel).
+    Es gilt $L = \rational(\sqrt[4]{2}, \i)$, wie man sich leicht überlegt.
+    Dabei ist $[\rational(\sqrt[4]{2}, \i):\rational(\sqrt[4]{2})] = 2$,
+    da $x^2 + 1$ das Minimalpolynom von $\i$ über $\rational(\sqrt[4]{2})$ ist.
+    Also gilt für den Grad der Körpererweiterung $L/\rational$, dass
+    $[L:\rational] = 8$.
+    $L/\rational$ ist eine Galoiserweiterung
+    (jede Erweiterung über $\rational$ ist wegen $\Char \rational = 0$
+    separabel) mit
+    $|\Gal(L/\rational)| = [L:\rational] = 8$.
+    
+    Wie sehen die acht Automorphismen aus?
+    Automorphismen $\sigma \in \Gal(L/\rational)$ sind durch
+    $\sigma(\sqrt[4]{2})$ und $\sigma(\i)$ eindeutig festgelegt, da
+    $\{1, \sqrt[4]{2}, \sqrt{2}, \sqrt[4]{8},
+    \i, \i\sqrt[4]{2}, \i\sqrt{2}, \i\sqrt[4]{8}\}$
+    eine $\rational$-Basis von $L$ ist.\\
+    Für $\sigma(\sqrt[4]{2})$ gibt es vier Möglichkeiten,
+    da Nullstellen von Polynomen (z.\,B. von $f(x)$) auf Nullstellen
+    abgebildet werden müssen.
+    Analog gibt es für $\sigma(\i)$ zwei Möglichkeiten.
+    
+    Man stellt fest, dass man alle Automorphismen in $\Gal(L/\rational)$
+    als Komposition von zwei Automorphismen $\sigma, \tau$ mit
+    $\sigma\colon \sqrt[4]{2} \mapsto \i\sqrt[4]{2}$ und
+    $\tau\colon \i \mapsto -\i$ schreiben kann:\\
+    Es gilt $\sigma^0 = \id$,\qquad
+    $\sigma^1\colon \sqrt[4]{2} \mapsto \i\sqrt[4]{2}$,\qquad
+    $\sigma^2\colon \sqrt[4]{2} \mapsto -\sqrt[4]{2}$,\qquad
+    $\sigma^3\colon \sqrt[4]{2} \mapsto -\i\sqrt[4]{2}$ sowie\\
+    $\tau\colon \i \mapsto -\i$,\qquad
+    $\tau \circ \sigma\colon \sqrt[4]{2} \mapsto -\i\sqrt[4]{2},\;
+    \i \mapsto -\i$,\qquad
+    $\tau \circ \sigma^2\colon \sqrt[4]{2} \mapsto -\sqrt[4]{2},\;
+    \i \mapsto -\i$,\\
+    $\tau \circ \sigma^3\colon \sqrt[4]{2} \mapsto \i\sqrt[4]{2},\;
+    \i \mapsto -\i$.
+    Das sind die gesuchten acht Automorphismen.\\
+    Die zyklische Untergruppe
+    $H_1 = \{\id = \sigma^0, \sigma^1, \sigma^2, \sigma^3\}$ von
+    $\Gal(L/\rational)$ ist ein Normalteiler, da sie Index $2$ hat.
+    Die Galoisgruppe $\Gal(L/\rational)$ ist isomorph zur
+    Symmetriegruppe eines Quadrats (Diedergruppe),
+    wobei $\sigma$ die Drehung und $\tau$ die Spiegelung ist.
+    
+    Was sind die Untergruppen von $\Gal(L/\rational)$?
+    Diese haben Ordnung $1$, $2$, $4$ oder $8$.\\
+    Gruppen $H = \{\id, g\}$ der Ordnung $2$ besitzen zwei selbstinverse
+    Elemente.
+    Von den oben aufgezählten Elementen besitzen $\id$ Ordnung $1$,
+    $\sigma$ und $\sigma^3$ Ordnung $4$ und alle anderen Ordnung $2$.
+    Also gibt es $5$ Untergruppen der Ordnung $2$.\\
+    Gruppen der Ordnung $4$ sind zum einen $H_1 = \erzeugnis{\sigma}$.
+    Alle anderen Gruppen sind aufgrund der Primzahlquadratordnung abelsch,
+    d.\,h. diese sind isomorph zu
+    $\integer/2\integer \times \integer/2\integer$,
+    erzeugt von kommutierenden Elementen der Ordnung $2$.\\
+    Dies sind z.\,B. $\sigma^2$ zusammen mit $\tau$ und
+    $\sigma^2$ zusammen mit $\sigma \circ \tau$, also gibt es
+    $3$ Untergruppen der Ordnung $H$.
+    \pagebreak
+    \begin{align*}
+        \begin{xy}
+            \xymatrix{
+                & & \Gal(L/\rational) \\
+                & H_2 \ar@{-}[ur] &
+                H_1 \ar@{-}[u] &
+                H_3 \ar@{-}[ul] \\
+                J_4 \ar@{-}[ur] &
+                J_2 \ar@{-}[u] &
+                J_1 \ar@{-}[ul] \ar@{-}[u] \ar@{-}[ur] &
+                J_3 \ar@{-}[u] &
+                J_5 \ar@{-}[ul] \\
+                & & \{\id\}
+                \ar@{-}[ull] \ar@{-}[ul] \ar@{-}[u] \ar@{-}[ur] \ar@{-}[urr]
+            }
+        \end{xy}
+    \end{align*}
+    
+    Dabei ist
+    $J_4 = \{\id, \sigma^2 \circ \tau\}$,
+    $J_2 = \{\id, \tau\}$,
+    $J_1 = \{\id, \sigma^2\}$,
+    $J_3 = \{\id, \sigma \circ \tau\}$ und
+    $J_5 = \{\id, \sigma^3 \circ \tau\}$
+    sowie $H_2 = \{\id, \sigma^2, \tau, \sigma^2 \circ \tau\}$,
+    $H_1 = \{\id, \sigma, \sigma^2, \sigma^3\}$ und
+    $H_3 = \{\id, \sigma^2, \sigma \circ \tau, \sigma^3 \circ \tau\}$.
+    
+    Nun müssen die nach dem Hauptsatz der Galoistheorie entsprechenden
+    Zwischenkörper zugeordnet werden.
+    Für $L^{H_1}$ gilt wegen $H_1 = \erzeugnis{\sigma}$,
+    $[L^{H_1}:\rational] = \frac{[L:\rational]}{[L:L^{H_1}]} =
+    \frac{[L:\rational]}{|H_1|} = \frac{8}{4} = 2$ und
+    $\sigma(\i) = \i$, d.\,h. $\i \in L^{H_1}$ und somit
+    $L^{H_1} = \rational(\i)$.\\
+    $L^{H_2}$ kann aus obiger Basis berechnet werden
+    (Koef"|fizientenvergleich):
+    Analog gilt ebenfalls $[L^{H_2}:\rational] = 2$ und
+    $\sqrt{2} \in L^{H_2}$, da $\sqrt{2}$ fest unter $\tau$ und $\sigma^2$
+    bleibt.
+    Also ist $L^{H_2} = \rational(\sqrt{2})$.\\
+    Auf analoge Weise ist $L^{H_3} = \rational(\i\sqrt{2})$,
+    da $H_3$ das Basiselement $\i\sqrt{2}$ festlässt.
+    
+    $L^{J_1}$ bestimmt man, indem man die Inklusionen betrachtet:
+    Wegen $L^{H_i} \subset L^{J_1}$ für $i = 1, 2, 3$ ist
+    $\i, \sqrt{2} \in L^{J_1}$, d.\,h.
+    $\rational(\i, \sqrt{2}) \subset L^{J_1}$.
+    Die Erweiterung $\rational(\i, \sqrt{2})/\rational$
+    hat allerdings schon Grad $4$ (und $[L^{J_1}:\rational] = 4$),
+    weswegen $L^{J_1} = \rational(\i, \sqrt{2})$ gilt.\\
+    Da $\rational(\sqrt[4]{2})$ ein echter Erweiterungskörper von
+    $L^{H_2} = \rational(\sqrt{2})$ ist
+    (und dieser Körper kein Erweiterungskörper von $L^{H_3}$ ist),
+    muss $L^{J_2}$ oder $L^{J_4}$ gleich $\rational(\sqrt[4]{2})$ sein.
+    Wegen $\tau(\sqrt[4]{2}) = \sqrt[4]{2}$ und $J_2 = \erzeugnis{\tau}$
+    gilt daher $\rational(\sqrt[4]{2}) = L^{J_2}$.\\
+    Der andere Körper $L^{J_4}$ ist dann gleich $\rational(\i\sqrt[4]{2})$
+    aus analogen Gründen.
+    
+    Wegen $J_3 = \{\id, \sigma \circ \tau\}$ und
+    $\sigma \circ \tau\colon \i \mapsto -\i$,
+    $\sqrt[4]{2} \mapsto \i\sqrt[4]{2}$ gilt
+    $\i\sqrt[4]{2} \mapsto \sqrt[4]{2}$, also\\
+    $\sqrt[4]{2} + \i\sqrt[4]{2} \mapsto \sqrt[4]{2} + \i\sqrt[4]{2}$.
+    Somit ist $(1 + \i)\sqrt[4]{2} \in L^{J_3}$.
+    Da die Erweiterung $\rational((1 + \i)\sqrt[4]{2})/\rational$ bereits Grad
+    $4$ besitzt (da $((1 + \i)\sqrt[4]{2})^2 = 2\i\sqrt{2}$ und
+    $(2\i\sqrt{2})^2 = -8 \in \rational$), muss
+    $L^{J_3} = \rational((1 + \i)\sqrt[4]{2})$ gelten.\\
+    Der andere Körper ist $L^{J_5} = \rational((1 - \i)\sqrt[4]{2})$
+    aus analogen Gründen.
+    
+    Somit sieht das vollständige Diagramm aller Zwischenkörper von
+    $L/\rational$ folgendermaßen aus:
+    \begin{align*}
+        \begin{xy}
+            \xymatrix{
+                & & \rational \\
+                & \rational(\sqrt{2}) \ar@{-}[ur] &
+                \rational(\i) \ar@{-}[u] &
+                \rational(\i\sqrt{2}) \ar@{-}[ul] \\
+                \rational(\i\sqrt[4]{2}) \ar@{-}[ur] &
+                \rational(\sqrt[4]{2}) \ar@{-}[u] &
+                \rational(\i, \sqrt{2}) \ar@{-}[ul] \ar@{-}[u] \ar@{-}[ur] &
+                \rational((1 + \i)\sqrt[4]{2}) \ar@{-}[u] &
+                \rational((1 - \i)\sqrt[4]{2}) \ar@{-}[ul] \\
+                & & L = \rational(\sqrt[4]{2}, \i)
+                \ar@{-}[ull] \ar@{-}[ul] \ar@{-}[u] \ar@{-}[ur] \ar@{-}[urr]
+            }
+        \end{xy}
+    \end{align*}
+\end{Bsp}
+
+\pagebreak

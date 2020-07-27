@@ -1,0 +1,186 @@
+\section{%
+    Digitale Signaturen%
+}
+
+
+\textbf{digitale Signatur}:
+\begriff{Digitale Signaturen} werden eingesetzt, damit eine Nachricht sowie ihr Absender gegenüber
+dem Empfänger authentisch sind.
+Außerdem kann der Absender nicht abstreiten, dass es seine Unterschrift ist.
+
+\subsection{%
+    Unterschriftensysteme%
+}
+
+\textbf{Unterschriftensystem}:\\
+Ein \begriff{Unterschriftensystem} $(P, U, K, (u_k)_{k \in K}, (v_k)_{k \in K})$
+wird definiert durch endliche Mengen
+\begin{itemize}
+    \item
+    $P$ (\begriff{Klartexte}),
+    
+    \item
+    $U$ (\begriff{Unterschriften}) und
+    
+    \item
+    $K$ (\begriff{Schlüssel})
+\end{itemize}
+sowie durch Funktionen für jeden Schlüssel $k \in K$ mit
+\begin{itemize}
+    \item
+    $u_k\colon P \to U$ (\begriff{Unterschriftenfunktion}) und
+    
+    \item
+    $v_k\colon P \times U \to \{\true, \false\}$ (\begriff{Verifikationsfunktion}) mit
+    $v_k(x, y) = \true \iff y = u_k(x)$.
+\end{itemize}
+
+Die Unterschriftenfunktionen $u_k$ sind geheim, d.\,h. sie sollten nur mit den nur dem Absender
+bekannten Teilen des Schlüssels berechenbar sein.
+Die Verifikationsfunktionen sind dagegen öf"|fentlich, d.\,h. jeder sollte sie nur mit den
+öf"|fentlichen Teilen des Schlüssels berechnen können.
+
+Eine unterschriebene Nachricht $x \in P$ wird durch $(x, u_k(x))$ übertragen.
+
+\subsection{%
+    Signaturen aus Public-Key-Verfahren%
+}
+
+\textbf{Signaturen aus Public-Key-Verfahren}:
+Seien $(c_e)_{k \in K}$ und $(d_s)_{k \in K}$ mit $k := (e, s)$
+die Ver- bzw. Entschlüsselungsfunktionen eines Public-Key-Verfahrens mit öf"|fentlichem Schlüssel $e$
+und geheimem Schlüssel $s$, wobei $c_e(d_s(x)) = x$ für alle $x \in P$ und $k = (e, s) \in K$.\\
+Sei außerdem $h$ eine öf"|fentliche und sichere Hashfunktion.\\
+Dann definiert $u_k(x) := d_s(h(x))$ und $v_k(x, y) := \true$, falls $c_e(y) = h(x)$,
+und $v_s(x, y) := \false$ sonst ein Unterschriftensystem.
+
+Es gilt nämlich $v_k(x, y) = \true \iff c_e(y) = h(x) \iff y = d_s(c_e(y)) = d_s(h(x)) = u_k(x)$,
+weil aus $c_e(d_s(x)) = x$ und $d_s(c_e(x)) = x$ (gilt immer) folgt, dass $c_e$ und $d_s$ bijektiv
+sind.
+
+Die Hashfunktion $h$ ist dazu da, damit die Unterschrift nicht genauso lang ist wie die Nachricht
+selbst.
+Dazu sollte die Hashfunktion allerdings "`sicher"' sein, d.\,h. kollisionsresistent.
+
+\linie
+
+\textbf{RSA-Signaturen}:
+Beim RSA-Verfahren ist $k := (k_e, k_s)$ mit $k_e := (n, e')$ und $k_s := (n, s')$,
+wobei $n := pq$ mit verschiedenen Primzahlen $p, q$ und $es \equiv 1 \pmod{\varphi(n)}$.\\
+Wendet man obiges Verfahren
+(RSA besitzt die nötige Eigenschaft $c_{k_e}(d_{k_s}(x)) = x$) auf RSA an,
+so erhält man die Unterschriftenfunktion $u_k(x) := (h(x)^s \bmod n)$ und
+die Verifikationsfunktion $v_k(x, y) := \true$, falls $h(x) \equiv_n y^e$.
+
+\pagebreak
+
+\subsection{%
+    DSA-Verfahren%
+}
+
+\textbf{DSA-Verfahren}:
+Das \begriff{DSA-Verfahren (digital signature algorithm)} ist ein Verfahren für
+digitale Signaturen.
+
+\textbf{Vorbereitung}:
+Sei $h'\colon \BB^\ast \to \BB^{160}$ eine sichere, öf"|fentliche Hashfunktion.\\
+Die folgenden Schritte werden vom Unterschreibenden durchgeführt und sind von der zu
+unterschreibenden Nachricht unabhängig.
+\begin{enumerate}
+    \item
+    Wähle $q \in \BB^{160}$ prim.
+    
+    \item
+    Wähle $p \in \BB^{512}$ prim mit $p \equiv_q 1$.
+    
+    \item
+    Wähle $g_0 \in \FF_p^\ast$ mit $g_0^{(p-1)/q} \not\equiv_p 1$ und setze
+    $g := g_0^{(p-1)/q} \bmod p$.
+    
+    \item
+    Wähle $x \in \{1, \dotsc, q - 1\}$ zufällig und berechne $y := g^x \bmod p$.
+    
+    \item 
+    Veröf"|fentliche $(q, p, g, y)$ und $h'$ und halte $x$ geheim.
+\end{enumerate}
+
+\linie
+
+$\FF_p^\ast$ ist zyklisch mit $q \teilt (p - 1) = |\FF_p^\ast|$.
+Damit hat $\FF_p^\ast$ genau eine Untergruppe $U$ der Ordnung $q$,
+wobei $h^{(p-1)/q} \in U$ für alle $h \in \FF_p^\ast$ gilt.
+Ein $h' \in U$ ist ein Erzeuger von $U$ genau dann, wenn $h' \not= 1$.
+Wegen $g \not\equiv_p 1$ ist das vom Algorithmus berechnete $g$ ein Erzeuger von $U$.
+Der Homomorphismus $\FF_p^\ast \to U$, $h \mapsto h^{(p-1)/q}$ ist surjektiv und
+alle Elemente in $U$ werden gleich oft getrof"|fen.
+Damit ist die Wahrscheinlichkeit, dass $g_0^{(p-1)/1} \equiv_p 1$ für ein zufälliges
+$g_0 \in \FF_p^\ast$ gilt, gleich $\frac{1}{q}$ bzw.
+die Wahrscheinlichkeit für ein "`gutes"' $g_0$ gleich $1 - \frac{1}{q}$.
+
+$x$ kann nicht auf einfache Weise aus $g, y, p$ berechnet werden,
+denn dies entspräche der Lösung eines DL-Problems.
+
+\linie
+
+\textbf{Unterschrift einer Nachricht}:
+Sei $m \in \BB^\ast$ eine Nachricht.
+\begin{enumerate}
+    \item
+    Berechne den Hashwert $h := h'(m)$ von $m$ mit $h \in \{1, \dotsc, q - 1\}$. 
+    
+    \item
+    Wähle $k \in \{1, \dotsc, q - 1\}$ zufällig und berechne
+    $g^k \bmod p \in \{2, \dotsc, p - 1\}$.
+    
+    \item
+    Berechne $r := (g^k \bmod p) \bmod q \in \{0, \dotsc, q-1\}$.
+    
+    \item
+    Berechne $s \in \{0, \dotsc, q-1\}$ mit $sk \equiv_q h + xr$
+    (geht, da $k \in \FF_q^\ast$).
+    
+    \item
+    Unterschreibe mit $(r, s)$.
+\end{enumerate}
+
+\textbf{Verifikation einer Unterschrift}:
+Sei $(m, (r, s))$ eine unterschriebene Nachricht.
+\begin{enumerate}
+    \item
+    Berechne $u := s^{-1} h \bmod q$ und $v := s^{-1} r \bmod q$.
+    
+    \item
+    Akzeptiere die Unterschrift, falls $r \equiv_q (g^u y^v \bmod p)$.
+\end{enumerate}
+
+\linie
+
+\textbf{Satz (Korrektheit)}:
+Das DSA-Verfahren arbeitet korrekt.
+
+\begin{Beweis}
+    Angenommen, $(r, s)$ ist die korrekte Unterschrift für die Nachricht $m$
+    mit Hashwert $h$.
+    Dann gilt $sk \equiv_q h + xr$.
+    Man erhält daher $k \equiv_q s^{-1} h + xs^{-1} r \equiv_q u + xv$.
+    Wegen $g^q \equiv_p 1$ gilt daher
+    $g^k \equiv_p g^u g^{xv} \equiv_p g^u y^v$.
+    Modulo $q$ gilt also $r = (g^k \bmod p) \bmod q = (g^u y^v \bmod p) \bmod q$,
+    d.\,h. die Unterschrift wird akzeptiert.
+    
+    Umgekehrt folgt aus der Akzeptanz der Unterschrift $(r, s)$, dass
+    die Unterschrift korrekt ist.
+\end{Beweis}
+
+\linie
+
+\textbf{Sicherheit}:
+Angenommen, Oskar will eine Unterschrift fälschen und kennt den richtigen Hashwert $h$ für
+die Nachricht $m$.
+Oskar hat nun das Problem, dass $k \bmod q$ berechenbar ist genau dann, wenn $x \bmod q$
+berechenbar ist.
+Hat er keine Information über $x$, so sind für ihn alle Elemente $g^k \in U$ gleich
+wahrscheinlich.
+
+\pagebreak
+\ifthenelse{\equal{\standalonedoc}{true}}{\addtocontents{toc}{\protect\newpage}}{}

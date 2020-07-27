@@ -1,0 +1,405 @@
+\section{%
+    Realisationstheorie und Modellreduktion%
+}
+
+\subsection{%
+    Konstruktion von Realisationen%
+}
+
+\textbf{Realisationsproblem}:
+Sei eine \begriff{Übertragungsmatrix (transfer matrix)} $G(s)$ gegeben, d.\,h.
+eine $(k \times m)$-Matrix von properen, reellen, rationalen Funkionen.\\
+Das \begriff{Realisationsproblem (realization problem)} besteht darin, Matrizen
+$A \in \real^{n \times n}$, $B \in \real^{n \times m}$, $C \in \real^{k \times n}$ und
+$D \in \real^{k \times m}$ zu finden, sodass $G(s) = C(sI - A)^{-1} B + D$.
+
+Die Bestimmung von $D$ ist trivial:
+Weil $(sI - A)^{-1}$ echt proper ist, gilt
+$\lim_{\omega \to \infty} C(\iu\omega - A)^{-1} B = 0$, d.\,h. man muss
+$D := \lim_{\omega \to \infty} G(\iu\omega)$ wählen.
+Durch das so bestimmte $D$ muss nur noch eine Realisierung der echt properen Übertragungsmatrix
+$G(s) - D$ als $C(sI - A)^{-1} B$ gefunden werden, d.\,h. ohne Einschränkung reicht es,
+nur Realisierungen für echt propere Übertragungsmatrizen $G(s)$ zu konstruieren.
+In der Praxis gilt sowieso oft $D = 0$.
+
+\linie
+
+\textbf{SISO-Übertragungsfunktionen}:
+Wenn $g(s)$ eine propere Übertragungsfunktion ist\\
+(also $k = m = 1$), dann gilt
+$g(s) = \frac{\beta_1 s^{n-1} + \dotsb + \beta_{n-1} s + \beta_n}
+{s^n + \alpha_1 s^{n-1} + \dotsb + \alpha_{n-1} s + \alpha_n} + d$.
+Man kann direkt nachrechnen, dass die folgenden beiden Formen tatsächlich Realisierungen sind.
+In der Praxis sollten sie jedoch nicht verwendet werden, da sie für große Systeme schlecht zu
+berechnen sind.
+
+\textbf{Satz (regelbar-kanonische Realisierung)}:\\
+$A := \smallpmatrix{-\alpha_1 & -\alpha_2 & \cdots & -\alpha_n \\
+1 & 0 & & & \\ & \ddots & \ddots & & \\ 0 & & 1 & 0}$,
+$B := \smallpmatrix{1 \\ 0 \\ \vdots \\ 0}$,
+$C := \smallpmatrix{\beta_1 & \beta_2 & \cdots & \beta_n}$,
+$D := d$\\
+ist eine Realisierung der Übertragungsfunktion $g(s)$ und heißt\\
+\begriff{regelbar-kanonische Realisierung (controllability canonical realization)}.
+
+\textbf{Satz (beobachtbar-kanonische Realisierung)}:\\
+$A := \smallpmatrix{-\alpha_1 & 1 & & & 0 \\ -\alpha_2 & 0 & 1 & & \\
+\vdots & & \ddots & \ddots & \\ -\alpha_{n-1} & & & 0 & 1 \\ -\alpha_n & & & & 0}$,
+$B := \smallpmatrix{\beta_1 \\ \beta_2 \\ \vdots \\ \beta_{n-1} \\ \beta_n}$,
+$C := \smallpmatrix{1 & 0 & \cdots & 0}$,
+$D := d$\\
+ist eine Realisierung der Übertragungsfunktion $g(s)$ und heißt\\
+\begriff{beobachtbar-kanonische Realisierung (observability canonical realization)}.
+
+\linie
+
+Im Folgenden bedeutet $G(s) \rightsquigarrow (A, B, C, D)$, dass
+$G(s) = C(sI - A)^{-1} B + D$, d.\,h.
+$(A, B, C, D)$ ist eine Realisierung von $G(s)$.
+
+\textbf{Reihen-/Parallelschaltung}:\\
+Wenn $G_1(s) \rightsquigarrow (A_1, B_1, C_1, D_1)$ und
+$G_2(s) \rightsquigarrow (A_2, B_2, C_2, D_2)$,
+dann gilt
+\begin{itemize}
+    \item
+    $G_2(s) G_1(s) \rightsquigarrow
+    \left(\smallpmatrix{A_1 & 0 \\ B_2 C_1 & A_2}, \smallpmatrix{B_1 \\ B_2 D_1},
+    \smallpmatrix{D_2 C_1 & C_2}, D_2 D_1\right)$
+    (\begriff{Reihenschaltung}),
+    
+    \item
+    $G_1(s) + G_2(s) \rightsquigarrow
+    \left(\smallpmatrix{A_1 & 0 \\ 0 & A_2}, \smallpmatrix{B_1 \\ B_2},
+    \smallpmatrix{C_1 & C_2}, D_1 + D_2\right)$
+    (\begriff{Parallelschaltung}),
+    
+    \item
+    $\smallpmatrix{G_1(s) \\ G_2(s)} \rightsquigarrow
+    \left(\smallpmatrix{A_1 & 0 \\ 0 & A_2}, \smallpmatrix{B_1 \\ B_2},
+    \smallpmatrix{C_1 & 0 \\ 0 & C_2}, \smallpmatrix{D_1 \\ D_2}\right)$
+    (\begriff{Stapelung}) und
+    
+    \item
+    $\smallpmatrix{G_1(s) & G_2(s)} \rightsquigarrow
+    \left(\smallpmatrix{A_1 & 0 \\ 0 & A_2}, \smallpmatrix{B_1 & 0 \\ 0 & B_2},
+    \smallpmatrix{C_1 & C_2}, \smallpmatrix{D_1 & D_2}\right)$
+    (\begriff{Konkatenation}).
+\end{itemize}
+
+\linie
+\pagebreak
+
+\textbf{MIMO-Übertragungsmatrizen}:
+Eine allgemeine Übertragungsmatrix $G(s)$ lässt sich schreiben als Matrix
+$G(s) = (g_{\nu\mu}(s))_{\nu=1,\dotsc,k,\;\mu=1,\dotsc,m}$ von Übertragungsfunktionen
+$g_{\nu\mu}(s)$.
+Dies lässt sich auch schreiben als
+$G(s) = \sum_\nu \sum_\mu e_\nu g_{\nu\mu}(s) e_\mu^T$ mit $e_i$ dem $i$-ten Einheitsvektor.
+Mit obigen Realisierungen bestimmt man
+$g_{\nu\mu}(s) \rightsquigarrow (A_{\nu\mu}, B_{\nu\mu}, C_{\nu\mu}, D_{\nu\mu})$.
+Dann bestimmt sich eine Realisierung von $e_\nu g_{\nu\mu}(s) e_\mu^T$ durch Reihenschaltung
+eines hohen, statischen SIMO-Systems,
+einer SISO-Transferfunktion und eines breiten, statischen MISO-Systems:
+$(A_{\nu\mu}, B_{\nu\mu} e_\mu^T, e_\nu C_{\nu\mu}, e_\nu D_{\nu\mu} e_\mu^T)$
+(damit gilt $e_\nu C_{\nu\mu} (sI - A_{\nu\mu})^{-1} B_{\nu\mu} e_\mu^T + e_\nu D_{\nu\mu} e_\mu^T
+= e_\nu g_{\nu\mu}(s) e_\mu^T$).
+Durch Parallelschaltung lässt sich dann eine Realisierung der Summe $G(s)$ bestimmen.
+Die resultierende Realisierung hat die Systemmatrix $A := \diag(A_{11}, \dotsc, A_{km})$
+mit Dimension
+$\dim(A) = \sum_{\nu,\mu} n_{\nu\mu}$ mit
+$n_{\nu\mu} := \dim(A_{\nu\mu})$ dem Nennergrad von $g_{\nu\mu}(s)$.
+
+\textbf{Variante}:
+Eine Variante mit kleinerer Systemmatrix ist folgende.
+Seien $d_1(s), \dotsc, d_k(s)$ die Hauptnenner der Zeilen von $G(s)$, d.\,h.
+$G(s) = (n_{\nu\mu}(s)/d_\nu(s))_{\nu=1,\dotsc,k,\;\mu=1,\dotsc,m}$.
+Falls man eine Re"-alisierung $\frac{n_{\nu\mu}(s)}{d_\nu(s)} \rightsquigarrow
+(A_\nu, B_{\nu\mu}, C_\nu, D_{\nu\mu})$ konstruiert
+($C_\nu$ unabhängig von $\mu$ mit der beobachtbar-kanonischen Form), dann gilt
+$G(s) \rightsquigarrow (\diag(A_1, \dotsc, A_k), (B_{\nu\mu})_{\nu,\mu},
+\diag(C_1, \dotsc, C_k), (D_{\nu\mu})_{\nu,\mu})$.\\
+Diese Realisierung hat die Dimension
+$\dim(A) = \sum_\nu n_\nu$ mit
+$n_\nu := \dim(A_\nu)$ dem Nennergrad der $\nu$-ten Zeile.
+Sie ist also i.\,A. kleiner wie obige Realisierung
+(nämlich genau dann, wenn in einer Zeile mehrere Polstellen in verschiedenen Einträgen
+auftauchen).
+
+\subsection{%
+    Minimale Realisierungen%
+}
+
+Es wurde schon gezeigt, dass es immer Realisierungen von properen Übertragungsmatrizen gibt.
+Allerdings sind die Realisierungen hochgradig uneindeutig, selbst die Dimension der Systemmatrix
+kann variieren.
+Jedoch existieren stets minimale Realisierungen von $G(s)$, da es für jede Übertragungsmatrix
+Realisierungen gibt.
+
+\textbf{minimale Realisierung}:
+Eine Realisierung $(A, B, C, D)$ einer Übertragungsmatrix $G(s)$ heißt \begriff{minimal}, falls
+$A$ die kleinstmögliche Dimension unter allen Realisierungen besitzt.
+
+\linie
+
+\textbf{Konstruktion einer minimalen Realisierung}:
+Sei $(A, B, C, D)$ eine Realisierung von $G(s)$.
+OBdA kann man nach einer Zustandskoordinaten-Transformation annehmen, dass $(A, B, C, D)$
+in RNF ist, d.\,h.
+$A = \smallpmatrix{A_1 & A_{12} \\ 0 & A_2}$, $B = \smallpmatrix{B_1 \\ 0}$,
+$C = \smallpmatrix{C_1 & C_2}$ mit $(A_1, B_1)$ regelbar
+($G(s)$ ändert sich nicht).
+Es gilt $G(s) = C_1 (sI - A_1)^{-1} B_1 + D$, d.\,h.
+die unregelbaren Eigenwerte fallen weg.
+
+Durch eine weitere Transformation ist oBdA $(A_1, B_1, C_1, D)$ in
+BNF, d.\,h.\\
+$A_1 = \smallpmatrix{A_{11} & 0 \\ A_{21} & A_{22}}$, $B_1 = \smallpmatrix{B_{11} \\ B_{21}}$,
+$C_1 = \smallpmatrix{C_{11} & 0}$ mit $(A_{11}, C_{11})$ beobachtbar.
+Wiederum gilt\\
+$G(s) = C_{11} (sI - A_{11})^{-1} B_{11} + D$, d.\,h.
+die unbeobachtbaren Eigenwerte fallen weg.
+
+Das System $(A_{11}, B_{11}, C_{11}, D)$ ist nicht nur beobachtbar, sondern auch regelbar, denn
+die Kalman-Matrix
+$\smallpmatrix{B_{11} & A_{11} B_{11} & \cdots & A_{11}^{\dim(A_1)-1} B_{11} \\
+\ast & \ast & \cdots & \ast}$
+von $(A_1, B_1)$ hat vollen Zeilenrang (weil $(A_1, B_1)$ regelbar ist).
+Daher muss insbesondere die erste Blockzeile vollen Zeilenrang haben, also auch die
+Kalman-Matrix $\smallpmatrix{B_{11} & A_{11} B_{11} & \cdots & A_{11}^{\dim(A_{11})-1} B_{11}}$
+von $(A_{11}, B_{11})$ (wegen $\dim(A_{11}) \le \dim(A_1)$).
+
+\linie
+\pagebreak
+
+\textbf{Satz (Konstruktion von minimalen Realisierungen)}:
+Sei $(A, B, C, D)$ eine Realisierung von $G(s)$, sodass $(A, B)$ nicht regelbar oder
+$(A, C)$ nicht beobachtbar ist.
+Dann kann man eine neue Realisierung
+$(A_r, B_r, C_r, D)$ mit $\dim(A_r) < \dim(A)$ konstruieren,
+sodass $(A_r, B_r)$ regelbar und $(A_r, C_r)$ beobachtbar ist.
+
+\textbf{Satz (minimale Realisierungen)}:
+Eine Realisierung $(A, B, C, D)$ von $G(s)$ ist minimal genau dann, wenn
+$(A, B)$ regelbar und $(A, C)$ beobachtbar ist.
+Wenn $(\widetilde{A}, \widetilde{B}, \widetilde{C}, \widetilde{D})$ eine weitere minimale
+Realisierung von $G(s)$ ist, dann gibt es genau ein $T$ invertierbar mit
+$\widetilde{A} = TAT^{-1}$, $\widetilde{B} = TB$ und $\widetilde{C} = CT^{-1}$.
+
+\linie
+
+\textbf{\name{McMillan}-Grad/Ordnung}:\\
+Sei $(A, B, C, D)$ eine minimale Realisierung der Übertragungsmatrix $G(s)$.\\
+Die Dimension von $A$ heißt \begriff{\name{McMillan}-Grad/Ordnung
+(\name{McMillan} degree/order)} von $G(s)$.
+
+\textbf{Satz (Pole gleich Eigenwerte einer minimalen Realisierung)}:\\
+Sei $(A, B, C, D)$ eine minimale Realisierung der Übertragungsmatrix $G(s)$.\\
+Dann ist $\Eig(A)$ gleich der Menge der Polstellen von $G(s)$.
+
+Für allgemeine Realisierungen $(A, B, C, D)$ gilt nur $\text{Polstellen}(G(s)) \subset \Eig(A)$.
+Weil nur unregelbare oder unbeobachtbare Eigenwerte wegfallen können, gilt folgendes Korollar.
+
+\textbf{Folgerung}:
+Sei $G(s) = C(sI - A)^{-1} B + D$.
+Wenn $A$ eine Hurwitz-Matrix ist, dann ist $G(s)$ stabil.
+Umgekehrt:
+Wenn $G(s)$ stabil ist und die Realisierung stabilisierbar und entdeckbar ist,
+dann ist $A$ eine Hurwitz-Matrix.
+
+\linie
+
+\textbf{Satz (\name{Kalman}-Zerlegung)}:
+Jedes System $\dot{x} = Ax + Bu$, $y = Cx$ kann durch einen Zustands"-koordinaten-Wechsel
+transformiert werden in\\
+$\dot{z} = \smallpmatrix{A_1 & 0 & 0 & A_{14} \\ A_{21} & A_2 & A_{23} & A_{24} \\
+0 & 0 & A_3 & A_{34} \\ 0 & 0 & 0 & A_4} z + \smallpmatrix{B_1 \\ B_2 \\ 0 \\ 0} u$,
+$y = \smallpmatrix{C_1 & 0 & 0 & C_4} z$,
+sodass\\
+$\left\{\left.\smallpmatrix{z_1 \\ z_2 \\ 0 \\ 0} \;\right|\; z_1, z_2 \in \real\right\}$
+der regelbare und
+$\left\{\left.\smallpmatrix{0 \\ z_2 \\ z_3 \\ 0} \;\right|\; z_2, z_3 \in \real\right\}$
+der unbeobachtbare Unterraum ist.
+Die Eigenwerte von $A_3$ sind sowohl unregelbar als auch unbeobachtbar.
+Eine minimale Realisierung der entsprechenden Übertragungsmatrix ist gegeben durch
+$(A_1, B_1, C_1)$.
+Diese Zerlegung heißt \begriff{\name{Kalman}-Zerlegung (\name{Kalman} decomposition)}.
+
+Genauer sind die EWe von $A_2, A_3$ unbeobachtbar und die EWe von
+$A_3, A_4$ unregelbar.
+
+Eine Transformationsmatrix $S$ mit $S^{-1} AS$, $S^{-1} B$ und $CS$ in der angegebenen Form lässt
+sich wie folgt konstruieren:
+Seien die Spalten von $S_2$ eine Basis von $N(W) \cap R(K)$.
+Diese wird mit $S_1$ zu einer Basis $\smallpmatrix{S_1 & S_2}$ von $R(K)$ und
+mit $S_3$ zu einer Basis $\smallpmatrix{S_2 & S_3}$ von $N(W)$ erweitert.
+Dann sind die Spalten von $\smallpmatrix{S_1 & S_2 & S_3}$ linear unabhängig
+(die Spalten sind aus Dimensionsgründen eine Basis von $N(W) + R(K)$) und können daher zu einer
+nicht-singulären Matrix $S := \smallpmatrix{S_1 & S_2 & S_3 & S_4}$ ergänzt werden.
+
+\pagebreak
+
+\subsection{%
+    \name{Gram}-Matrizen und \name{Hankel}-Singulärwerte%
+}
+
+Sei $\dot{x} = Ax + Bu$, $y = Cx$ ein asymptotisch stabiles System.
+Die Matrizen können so groß sein, dass man es selbst nicht einmal numerisch simulieren kann.
+Das Ziel ist es nun, die Dimension von $A$ zu verringern, ohne das System zu stark zu verändern.
+Wenn das reduzierte Modell durch\\$\dot{\xi} = A_r x + B_r u$, $y = C_r x$ beschrieben wird,
+dann soll $A_r$ eine Hurwitz-Matrix sein und die stationären Antworten für
+sinusförmige Eingänge sollen sich über die Frequenz kaum unterscheiden, d.\,h.
+$\exists_{\gamma > 0 \text{ klein}} \forall_{\omega \in \real}\;
+\norm{C (\iu \omega I - A)^{-1} B - C_r (\iu \omega I - A_r)^{-1} B_r} \le \gamma$,
+wobei $\norm{\cdot}$ die Spektralnorm ist.
+Das bedeutet, dass der Abstand von $G(s)$ und $G_r(s)$ in der $H_\infty$-Norm klein ist.
+
+\textbf{$RH_\infty^{k \times m}$}:
+Mit $RH_\infty^{k \times m}$ wird der Vektorraum aller reellen, rationalen, properen und stabilen
+Übertragungsmatrizen der Größe $k \times m$ bezeichnet.
+
+$RH_\infty^{m \times m}$ ist sogar eine Algebra.
+Allgemeiner gilt $(RH_\infty^{k \times \ell}) (RH_\infty^{\ell \times m}) \subset
+(RH_\infty^{k \times m})$.
+
+\textbf{$H_\infty$-Norm}:
+Die $H_\infty$-Norm auf $RH_\infty^{k \times m}$ ist definiert durch\\
+$\norm{G}_\infty := \sup_{\omega \in \real} \norm{G(\iu\omega)}
+= \sup_{\omega \in \real} \sqrt{\lambda_{\max}(G(\iu\omega)^\ast G(\iu\omega))}$.
+
+$RH_\infty^{m \times m}$ ist also eine normierte Algebra.
+Diese ist allerdings nicht vollständig.
+Zwei Matrizen $G, H \in RH_\infty^{k \times m}$ sind sich nahe in der $H_\infty$-Norm, falls
+$\norm{G - H}_\infty$ klein ist.
+Für $k = m = 1$ bedeutet das, dass die Bode-Plots für alle Frequenzen nahe beieinander sind.
+
+\linie
+
+Unregelbare oder unbeobachtbare Systeme können einfach reduziert werden.
+Dies kann man auch noch anders sehen, wenn man Gram-Matrizen mit unendlicher Grenze betrachtet.
+
+\textbf{Regelbarkeits-/Beobachtbarkeits-\name{Gram}-Matrix}:\\
+Sei $(A, B, C)$ ein System mit $A$ einer Hurwitz-Matrix.\\
+Dann ist die \begriff{Regelbarkeits-\name{Gram}-Matrix (controllability \name{Gram}ian)}
+$P$ von $(A, B)$ definiert durch die Lösung der CGE $AP + PA^T + BB^T = 0$ und\\
+die \begriff{Beobachtbarkeits-\name{Gram}-Matrix (observability \name{Gram}ian)}
+$Q$ von $(A, C)$ definiert durch die Lösung der OGE $A^T Q + QA + C^T C = 0$.
+
+$P, Q \in \real^{n \times n}$ sind symmetrisch.
+Nach dem Beweis des Satzes über die Lyapunov-Gleichung gilt\\
+$P = \int_0^\infty e^{At} BB^T e^{A^T t} \dt = \int_0^\infty (e^{At} B) (e^{At} B)^T \dt$
+sowie\\
+$Q = \int_0^\infty e^{A^T t} C^T C e^{At} \dt = \int_0^\infty (C e^{At})^T (C e^{At}) \dt$.
+Wegen $BB^T, C^T C \psd$ gilt $P, Q \psd$.
+
+\textbf{Satz (nicht-triviale Kerne von $P$ oder $Q$ ermöglichen eine Modellreduktion)}:\\
+$R(P)$ ist gleich dem regelbaren Unterraum von $(A, B)$ und\\
+$N(Q)$ ist gleich dem unbeobachtbaren Unterraum von $(A, C)$.
+
+\linie
+
+Im Folgenden nimmt man an, dass $(A, B, C)$ minimal ist.
+In diesem Fall gilt nach dem Satz $R(P) = \real^n$ und $N(Q) = \{0\}$
+(also $P$ und $Q$ invertierbar), d.\,h. $P, Q \pd$.
+
+\textbf{\name{Hankel}-Singulärwerte}:
+Sei $(A, B, C)$ eine minimale Realisierung von $G \in RH_\infty^{k \times m}$.\\
+Dann sind die \begriff{\name{Hankel}-Singulärwerte} von $G$ definiert durch
+$\{\sigma_1, \dotsc, \sigma_n\} := \sqrt{\Eig(PQ)}$.\\
+Die \begriff{\name{Hankel}-Norm} von $G$ ist definiert als
+$\max_{\ell=1,\dotsc,n} \sigma_\ell$.
+
+Die Hankel-Singulärwerte sind wohldefiniert, weil $\Eig(PQ)$ unter
+Zustandskoordinaten-Trans"-formation invariant bleibt:
+Seien $\widetilde{A} := TAT^{-1}$, $\widetilde{B} := TB$ und $\widetilde{C} := CT^{-1}$ für
+ein $T \in \GL_n(\real)$.
+Dann gilt $\widetilde{P} := \int_0^\infty (e^{\widetilde{A} t} \widetilde{B})
+(e^{\widetilde{A} t} \widetilde{B})^T \dt
+= TPT^T$ sowie $\widetilde{Q} = T^{-T} Q T^{-1}$,
+daher $\widetilde{P} \widetilde{Q} = T(PQ)T^{-1}$.
+
+Eine Matrix $P$ ist positiv semidefinit genau dann, wenn es
+eine positiv semidefinite Matrix $\sqrt{P}$ mit $\sqrt{P}^2 = P$ gibt.
+In obigem Fall ist sogar $P \pd$, d.\,h. auch $\sqrt{P} \pd$
+(aus $\sqrt{P}x = 0$ folgt $Px = 0$, also $x = 0$).
+Daraus folgt, dass die Eigenwerte von $PQ$ nicht negativ sind, weil $PQ = \sqrt{P} \sqrt{P} Q$
+und gilt, dass $\sqrt{P}^{-1} (\sqrt{P} \sqrt{P} Q) \sqrt{P} = \sqrt{P}^T Q \sqrt{P} \psd$ wegen
+$P = P^T$.
+
+\pagebreak
+
+\subsection{%
+    Balancierte Realisationen und Modellreduktion durch balanciertes Streichen%
+}
+
+Betrachtet wird weiterhin das System $\dot{x} = Ax + Bu$, $y = Cx$ mit $A$ einer Hurwitz-Matrix.
+
+\textbf{Lemma (dynamische Interpretation von $P$)}:
+$\xi^T P^{-1} \xi$ ist die minimale Regelungsenergie $\int_{-\infty}^0 \norm{u(t)}^2 \dt$,
+um von $x(-\infty) = 0$ zum Zustand $x(0) = \xi$ zu kommen.
+
+\textbf{Lemma (dynamische Interpretation von $Q$)}:
+$\xi^T Q \xi$ ist die Ausgangsenergie $\int_0^\infty \norm{y(t)}^2 \dt$
+für das ungeregelte System (d.\,h. $u \equiv 0$) mit Anfangszustand $x(0) = \xi$.
+
+Betrachtet man nur normierte Anfangszustände $\xi$,
+dann wird $\max_{\norm{\xi}=1} \xi^T P^{-1} \xi$ nach dem Lemma von den Anfangszuständen
+angenommen, die die meiste Energie benötigen, um erreicht zu werden,
+d.\,h. diese Zustände werden durch Regelungen in der Vergangenheit mit einer bestimmten Energie
+so wenig wie möglich beeinflusst.
+Andererseits wird $\min_{\norm{\xi}=1} \xi^T Q\xi$ von den Anfangszuständen
+erreicht, die den Ausgang des ungeregelten Systems in der Zukunft so wenig wie möglich
+beeinflussen.
+
+Für $P = Q$ sind die normierten Vektoren $\xi$, die $\xi^T P^{-1} \xi$ maximieren,
+dieselben wie die, die $\xi^T Q\xi$ minimieren
+(weil $\xi^T P^{-1} \xi$ genau von den normierten Eigenvektoren von $P^{-1}$ zum größten Eigenwert
+maximiert und $\xi^T Q\xi$ genau von den normierten Eigenvektoren von $Q$ zum kleinsten
+Eigenwert minimiert wird,
+für $P = Q$ ist $\lambda \in \Eig(Q) \iff \frac{1}{\lambda} \in \Eig(P^{-1})$).
+
+Daher sind die Zustände, die von einer Regelung in der Vergangenheit am wenigsten beeinflusst
+werden, identisch mit denen, die den Ausgang in der Zukunft am wenigsten beeinflussen.
+Das motiviert die Definition der balancierten Realisierung.
+Außerdem kann man erwarten, dass diese Zustände mit dem geringsten Einfluss auf das
+Ein-/Ausgangsverhalten weggelassen werden können.
+
+\linie
+
+\textbf{balanciert}:
+Eine minimale Realisierung $(A, B, C)$ einer stabilen Übertragungsmatrix $G$ heißt
+\begriff{balanciert}, falls $P = Q$.
+
+Etwas überraschend ist der folgende Satz:
+Es gibt stets eine balancierte Realisierung.
+Diese kann sogar so gewählt werden, dass die zugehörigen Gram-Matrizen $P$ und $Q$ diagonal sind.
+
+\textbf{Satz (Existenz von balancierten Realisierungen mit diagonalen \name{Gram}-Matrizen)}:\\
+Es gibt eine balancierte Realisierung von $G$ mit
+$P = Q = \Sigma = \diag(\sigma_1, \dotsc, \sigma_n)$, $\sigma_1 \ge \dotsb \ge \sigma_n$.
+
+\linie
+
+Wenn die Realisierung balanciert und $\sigma_{k+1}$ ein kleiner Hankel-Singulärwert ist,
+dann deutet obige Diskussion an, dass Einheitsvektoren in
+$\{(0, \dotsc, 0, \xi_{k+1}, \dotsc, \xi_n) \;|\; \xi_{k+1}, \dotsc, \xi_n \in \real\}$
+keinen großen Einfluss auf das Ein-/Ausgangsverhalten haben.
+
+\textbf{Modellreduktion durch balanciertes Streichen}:
+Seien $(A, B, C)$ eine balancierte Realisierung der stabilen Übertragungsmatrix $G$ und
+$\Sigma = \smallpmatrix{\Sigma_1 & 0 \\ 0 & \Sigma_2}$ eine Aufteilung von $\Sigma$ mit
+$\min(\Eig(\Sigma_1)) > \max(\Eig(\Sigma_2))$.
+Wenn man nun $A = \smallpmatrix{A_1 & A_{12} \\ A_{21} & A_2}$,
+$B = \smallpmatrix{B_1 \\ B_2}$ und $C = \smallpmatrix{C_1 & C_2}$ entsprechend aufteilt, dann
+erhält man die Übertragungsmatrix $G_1(s) := C_1 (sI - A_1)^{-1} B_1$ von reduziertem Grad durch
+\begriff{Modellreduktion durch balanciertes Streichen}.
+
+\textbf{Satz ($A_1$ \name{Hurwitz})}:
+$A_1$ beim balancierten Streichen ist eine Hurwitz-Matrix.
+
+\textbf{Satz (Fehlerschranke für $\norm{G - G_1}_\infty$)}:\\
+Seien $\lambda_1, \dotsc, \lambda_g$ die paarweise verschiedenen Eigenwerte von $\Sigma_2$.\\
+Dann gilt $\norm{G - G_1}_\infty = \sup_{\omega \in \real} \norm{G(\iu\omega) - G_1(\iu\omega)}
+\le 2(\lambda_1 + \dotsb + \lambda_g)$.
+
+\pagebreak

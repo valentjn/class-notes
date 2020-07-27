@@ -1,0 +1,181 @@
+\section{%
+    B-Splines%
+}
+
+\subsection{%
+    Das Spline-Konzept%
+}
+
+Polynome stellen zwar gute lokale Approximationen für glatte Funktionen dar,
+allerdings kann die Genauigkeit auf großen Intervallen sehr klein sein.
+Außerdem haben lokale Änderungen einen globalen Einfluss.
+Daher ist der Übergang zu stückweise Polynomen sozusagen "`natürlich"'.
+
+\textbf{Spline}:
+Ein \begriff{Spline} vom Grad $\le n$ mit Gitterweite $h$ ist $(n - 1)$-fach stetig
+dif"|ferenzierbar und stimmt auf jedem Gitterintervall $[i, i+1]h$ des Parameterintervalls $D$ mit
+einem Polynom vom Grad $\le n$ überein.
+
+Diese Definition eignet sich natürlich nicht für numerische Berechnungen,
+daher muss eine lokale Basis konstruiert werden.
+Die Basis, die hier verwendet wird, kann durch den linearen Fall (Hut-Funktionen) motiviert werden.
+
+\subsection{%
+    Definition und grundlegende Eigenschaften%
+}
+
+\textbf{B-Spline}:
+Der uniforme \begriff{B-Spline} vom Grad $n$ ist definiert durch die Rekursion
+\begin{align*}
+    b^n(x) := \int_{x-1}^x b^{n-1},
+\end{align*}
+beginnend mit der charakteristischen Funktion $b^0$ des Einheitsintervalls $[0, 1)$.
+Äquivalent ist die Rekursion
+\begin{align*}
+    \frac{d}{dx} b^n(x) := b^{n-1}(x) - b^{n-1}(x - 1)
+\end{align*}
+mit $b^n(0) = 0$.
+
+\linie
+
+\textbf{Eigenschaften von B-Splines}:
+B-Splines erfüllen die folgenden Eigenschaften:
+\begin{itemize}
+    \item
+    \emph{Positivität und lokaler Träger}:
+    $b^n$ ist positiv auf $(0, n + 1)$ und verschwindet außerhalb dieses Intervalls
+    (außer für $n = 0$, hier gilt $b^0(0) = 1$).
+
+    \item
+    \emph{Glattheit}:
+    $b^n$ ist $(n - 1)$-fach stetig dif"|ferenzierbar, wobei die $n$-te Ableitung in den
+    Knotenpunkten $0, \dotsc, n + 1$ unstetig ist.
+
+    \item
+    \emph{Struktur als stückweises Polynom}:
+    $b^n$ ist auf jedem Intervall $[k, k + 1)$, $k = 0, \dotsc, n$, ein Polynom vom Grad $n$.
+\end{itemize}
+
+\textbf{Symmetrie und Monotonie}:
+Der B-Spline vom Grad $n$ ist symmetrisch, d.\,h.
+\begin{align*}
+    b^n(x) = b^n(n + 1 - x),
+\end{align*}
+und auf $[0, (n + 1)/2]$ und $[(n + 1)/2, n + 1]$ strikt monoton.
+
+\pagebreak
+
+\subsection{%
+    Rekursionsformel%
+}
+
+\textbf{Rekursionsformel}:
+Der B-Spline $b^n$ ist eine gewichtete Summe von B-Splines vom Grad $n - 1$:
+\begin{align*}
+    b^n(x) = \frac{x}{n} b^{n-1}(x) + \frac{n + 1 - x}{n} b^{n-1}(x - 1).
+\end{align*}
+
+\textbf{\name{Taylor}-Koef"|fizienten}:
+Die $n + 1$ polynomialen Segmente
+\begin{align*}
+    a_{k,0}^n + a_{k,1}^n t + \dotsb + a_{k,n}^n t^n,\quad
+    t = x - k \in [0, 1),
+\end{align*}
+des B-Splines $b^n$ können mit der Rekursion
+\begin{align*}
+    a_{k,\ell}^n = \frac{k}{n} a_{k,\ell}^{n-1} + \frac{1}{n} a_{k,\ell-1}^{n-1} +
+    \frac{n + 1 - k}{n} a_{k-1,\ell}^{n-1} - \frac{1}{n} a_{k-1,\ell-1}^{n-1}
+\end{align*}
+berechnet werden, wobei $a_{0,0}^1 := 1$ und $a_{k,\ell}^n := 0$ für $k \notin \{0, \dotsc, n\}$
+oder $\ell \notin \{0, \dotsc, n\}$.
+
+\subsection{%
+    Darstellung von Polynomen%
+}
+
+\textbf{kardinale Splines}:
+Für $h > 0$ und $k \in \integer$ sind
+\begin{align*}
+    b_{k,h}^n(x) := b^n(x/h - k)
+\end{align*}
+\begriff{B-Splines auf dem Gitter $h\integer$}.
+Ihre Linearkombinationen $\sum_{k \in \integer} c_k b_{k,h}^n$ heißen
+\begriff{kardinale Splines} vom Grad $\le n$ mit Gitterweite $h$.
+
+\textbf{\name{Marsden}-Identität}:
+Für $x, t \in \real$ gilt
+\begin{align*}
+    (x - t)^n = \sum_{k \in \integer} \psi_{k,h}^n(t) b_{k,h}^n(x),
+\end{align*}
+wobei $\psi_{k,h}^n(t) := h^n (k + 1 - t/h) \dotsm (k + n - t/h)$.
+
+\textbf{lineare Unabhängigkeit}:
+Für jedes Gitterintervall $[\ell, \ell + 1)h$ sind die B-Splines $b_{k,h}$,\\
+$k = \ell - n, \dotsc, \ell$, die auf diesem Intervall nicht verschwinden,
+linear unabhängig.
+
+\subsection{%
+    Subdivision%
+}
+
+\textbf{Gitterverfeinerung}:
+Der B-Spline $b_{k,h}^n$ kann als Linearkombination von B-Splines mit Gitterweite $h/2$
+geschrieben werden:
+\begin{align*}
+    b_{k,h}^n = 2^{-n} \sum_{\ell=0}^{n+1} \binom{n+1}{\ell} b_{2k+\ell,h/2}^n.
+\end{align*}
+
+\textbf{Subdivisionsalgorithmus}:
+Die Koef"|fizienten $c_\ell'$ eines kardinalen Splines $\sum_k c_k b_{k,h}^n$ bzgl. der halben
+Gitterweite $h/2$ können wie folgt berechnet werden:
+\begin{enumerate}
+    \item
+    Zunächst setzt man $c_{2k}' := c_{2k+1}' := c_k$.
+
+    \item
+    Anschließend bildet man simultan Mittelwerte, d.\,h.
+    $c_\ell' \leftarrow \frac{1}{2} (c_\ell' + c_{\ell-1}')$, $\ell \in \integer$.\\
+    Dieser Schritt wird $n$-mal insgesamt wiederholt.
+\end{enumerate}
+
+\pagebreak
+
+\subsection{%
+    Skalarprodukte%
+}
+
+\textbf{Faltung}:
+Die Faltung zweier B-Splines ist ein B-Spline höheren Grades:
+\begin{align*}
+    b^{m+n+1}(x) = \int_\real b^m(x - y) b^n(y) \dy.
+\end{align*}
+
+\textbf{Skalarprodukte}:
+Die Skalarprodukte der B-Splines $b_{k,h}^n$ und $b_{\ell,h}^n$ und ihrer Ableitungen sind
+\begin{align*}
+    s_{k-\ell}^n &:= h b^{2n+1} (n + 1 + k - \ell),\\
+    d_{k-\ell}^n &:= h^{-2} (2s_{k-\ell}^{n-1} - s_{k-\ell-1}^{n-1} - s_{k-\ell+1}^{n-1}).
+\end{align*}
+
+\textbf{Tabelle}: Skalarprodukte der B-Splines und ihrer Ableitungen für $h = 1$:
+\renewcommand*{\arraystretch}{1.3}
+\begin{align*}
+    \begin{array}{c||cccc|cccc}
+        n & s_0^n & s_1^n & s_2^n & s_3^n & d_0^n & d_1^n & d_2^n & d_3^n\\\hline
+        1 & \frac{2}{3} & \frac{1}{6} & & & 2 & -1 & &\\
+        2 & \frac{11}{20} & \frac{13}{60} & \frac{1}{120} & & 1 & -\frac{1}{3} & -\frac{1}{6} &\\
+        3 & \frac{151}{315} & \frac{397}{1680} & \frac{1}{42} & \frac{1}{5040} & \frac{2}{3} &
+        -\frac{1}{8} & -\frac{1}{5} & -\frac{1}{120}
+    \end{array}
+\end{align*}
+Wegen Symmetrie gilt $s_i^n = s_{-i}^n$ und $d_i^n = d_{-i}^n$.
+
+\textbf{Skalarprodukte von Ableitungen höherer Ordnung}:
+Skalarprodukte mit höheren Ableitungen können durch die Dif"|ferentiationsformel
+\begin{align*}
+    \frac{d^\alpha}{dx^\alpha} b_{k,h}^n(x)
+    = h^{-\alpha} \sum_{\nu=0}^\alpha (-1)^\nu \binom{\alpha}{\nu} b_{k+\nu,h}^{n-\alpha}
+\end{align*}
+errechnet werden.
+
+\pagebreak

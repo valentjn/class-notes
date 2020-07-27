@@ -1,0 +1,620 @@
+\section{%
+    Euklidische und unitäre Vektorräume%
+}
+
+\begin{Bem}
+    Geometrie hat mit "`Messen"' zu tun.
+    Wichtige Hilfsmittel sind Längen- und Winkelmessung.
+    Die Länge eines Vektors kann man mit Hilfe einer Norm definieren.
+\end{Bem}
+
+\begin{Def}{Norm}
+    Sei $V$ ein $K$-Vektorraum, wobei $K = \real$ oder $K = \complex$.
+    Eine \begriff{Norm} $\norm{\cdot}$ auf $V$ ist eine Abbildung
+    $\norm{\cdot}: V \rightarrow \real$, falls für alle $v, v_1, v_2 \in V$
+    und $\alpha \in K$ gilt:
+    \begin{enumerate}
+        \item[(1)] $\norm{v} \ge 0$ \quad sowie \quad
+        $\norm{v} = 0 \;\Leftrightarrow\; v = 0$
+        
+        \item[(2)] $\norm{\alpha v} = |\alpha| \norm{v}$
+        
+        \item[(3)] $\norm{v_1 + v_2} \le \norm{v_1} + \norm{v_2}$
+    \end{enumerate}
+    V zusammen mit einer Norm $\norm{\cdot}$ heißt
+    \begriff{normierter Vektorraum}.
+    $V$ wird mit der von der Norm induzierten Metrik
+    $d(v_1, v_2) = \norm{v_1 - v_2}$ ($v_1, v_2 \in V$) zum
+    \begriff{metrischen Raum}.
+\end{Def}
+
+\subsection{%
+    Skalarprodukte%
+}
+
+\begin{Bem}
+    Zur Winkelmessung werden innere Produkte bzw. Skalarprodukte benötigt.
+\end{Bem}
+
+\begin{Def}{Bilinearform}
+    Sei $K$ ein Körper und $V$ ein $K$-Vektorraum.
+    Eine Abbildung $\sp{\cdot, \cdot}: V \times V \rightarrow K$ heißt
+    \begriff{bilinear}, falls für alle $x, y, z \in V$ und $\alpha \in K$ gilt:
+    \begin{enumerate}
+        \item[(1)] $\sp{x + y, z} = \sp{x, z} + \sp{y, z}$
+        
+        \item[(2)] $\sp{x, y + z} = \sp{x, y} + \sp{x, z}$
+        
+        \item[(3)] $\sp{\alpha x, y} = \sp{x, \alpha y} = \alpha \sp{x, y}$
+    \end{enumerate}
+\end{Def}
+
+\begin{Def}{Eigenschaften einer reellen Bilinearform}
+    Sei $\sp{\cdot, \cdot}$ eine Bilinearform auf dem reellen Vektorraum $V$.
+    Dann heißt $\sp{\cdot, \cdot}$ \begriff{symmetrisch},
+    falls $\sp{x, y} = \sp{y, x}$ für alle $x, y \in V$.
+    $\sp{\cdot, \cdot}$ heißt \begriff{positiv semidefinit} und
+    \begriff{positiv definit}, falls $\sp{x, y} \ge 0$ und
+    $\sp{x, x} = 0 \;\Leftrightarrow\; x = 0$ für alle $x \in V$.
+\end{Def}
+
+\begin{xDef}{reelles Skalarprodukt}{Skalarprodukt!reelles}
+    Eine positiv definite symmetrische Bilinearform auf einem reellen
+    Vektorraum $V$ heißt
+    \xbegriff{(reelles) Skalarprodukt}{Skalarprodukt!reelles} auf $V$. \\
+    $V$ zusammen mit einem reellen Skalarprodukt heißt
+    \begriff{euklidischer Vektorraum}.
+\end{xDef}
+
+\begin{Def}{hermitesche Form}
+    Sei $V$ ein komplexer Vektorraum.
+    Eine Abbildung $\sp{\cdot, \cdot}: V \times V \rightarrow \complex$
+    heißt \begriff{hermitesche Form}, falls für alle $x, y, z \in V$ und
+    $\lambda \in \complex$ gilt:
+    \begin{enumerate}
+        \item[(1)] $\sp{x + y, z} = \sp{x, z} + \sp{y, z}$
+        
+        \item[(2)] $\sp{\lambda x, y} = \lambda \sp{x, y}$
+        
+        \item[(3)] $\sp{x, y} = \kk{\sp{y, x}}$
+    \end{enumerate}
+\end{Def}
+
+\begin{Lemma}{Eigenschaften der hermiteschen Form}
+    Für eine hermitesche Form $\sp{\cdot, \cdot}$ gilt für alle
+    $x, y, z \in V$ und $\lambda \in \complex$, dass
+    $\sp{x, y + z} = \sp{x, y} + \sp{x, z}$,
+    $\sp{x, \lambda y} = \kk{\lambda} \sp{x, y}$ und
+    $\sp{x, x} \in \real$.
+\end{Lemma}
+
+\begin{Def}{Eigenschaften einer hermiteschen Form}
+    Eine hermitesche Form heißt \begriff{positiv semi"-definit}, falls
+    $\sp{x, x} \ge 0$ für alle $x \in V$, und \begriff{positiv definit}, falls
+    $\sp{x, x} > 0$ für $x \in V$, $x \not= 0$.
+\end{Def}
+
+\begin{xDef}{komplexes Skalarprodukt}{Skalarprodukt!komplexes}
+    Eine positiv definite hermitesche Form auf einem komplexen Vektorraum $V$
+    heißt \xbegriff{(komplexes) Skalarprodukt}{Skalarprodukt!komplexes}
+    auf $V$. \\
+    $V$ zusammen mit einem komplexen Skalarprodukt heißt
+    \begriff{unitärer Vektorraum}.
+\end{xDef}
+
+\begin{Bem}
+    Im Folgenden sei $K = \real$/$K= \complex$, $V$ ein $K$-Vektorraum
+    und $\sp{\cdot, \cdot}$ eine bilineare/hermitesche Form auf $V$,
+    sodass $V$ mit dieser Form einen euklidischen/unitären Raum bildet.
+\end{Bem}
+
+\begin{Def}{vom Skalarprodukt induzierte Norm}
+    Sei $x \in V$.
+    Die \begriff{Norm} oder \begriff{Länge} von $x$ ist die reelle Zahl
+    $\norm{x} = \sqrt{\sp{x, x}}$.
+    Insbesondere ist $\norm{x} = 0 \;\Leftrightarrow\; x = 0$.
+\end{Def}
+
+\begin{Def}{Einheitsvektoren}
+    Sei $x \in V$, $x \not= 0$.
+    Dann hat $\frac{x}{\norm{x}}$ die Länge 1. \\
+    Vektoren der Länge $1$ heißen \begriff{normiert} oder
+    \begriff{Einheitsvektoren}.
+\end{Def}
+
+\begin{Satz}{Ungleichung von \name{Cauchy}-\name{Schwarz}}
+    Seien $V$ ein euklidischer oder unitärer Vektorraum und $x, y \in V$.
+    Dann ist $|\sp{x, y}| \le \norm{x} \cdot \norm{y}$.
+\end{Satz}
+
+\begin{Kor}
+    Seien $V$ ein euklidischer oder unitärer Vektorraum und $\norm{\cdot}$
+    die vom Skalarprodukt induzierte Norm.
+    Dann ist $V$ zusammen mit $\norm{\cdot}$ ein normierter Vektorraum
+    im Sinne der Definition der Norm, d.\,h. insbesondere ist
+    die Dreiecksungleichung $\norm{x + y} \le \norm{x} + \norm{y}$ für
+    $x, y \in V$ erfüllt.
+\end{Kor}
+
+\begin{Kor}
+    Seien $V$ ein euklidischer Vektorraum und $\norm{\cdot}$ wie oben.
+    Dann ist der Betrag von
+    $\cos(x, y) =$ \fracsize{$\frac{\sp{x, y}}{\norm{x} \cdot \norm{y}}$}
+    eine reelle nicht-negative Zahl $\le 1$.
+    Insbesondere ist $\cos(x, y) \in [-1, 1]$.
+\end{Kor}
+
+\begin{Def}{Winkel}
+    Seien $V$ ein euklidischer Vektorraum und $x, y \in V$.
+    Dann ist der Winkel $\alpha$ zwischen $x$ und $y$ (nicht eindeutig) gegeben
+    durch $\cos \alpha = \cos(x, y) =$
+    \fracsize{$\frac{\sp{x, y}}{\norm{x} \cdot \norm{y}}$}.
+\end{Def}
+
+\begin{Bem}
+    Wie herum soll der Winkel orientiert werden, was macht man für unitäre
+    Vektorräume (dort kann $\cos(x, y)$ auch komplex sein)?
+    Für viele Anwendungen benötigt man keine echten Winkel, sondern nur das
+    Prinzip der Orthogonalität.
+\end{Bem}
+
+\begin{Def}{Orthogonalität}
+    Sei $V$ ein euklidischer/unitärer Vektorraum. \\
+    $x$ und $y$ sind \begriff{orthogonal} ($x \orth y$), falls
+    $\sp{x, y} = 0$ ist (wobei $x, y \in V$). \\
+    $M$ und $N$ sind \begriff{orthogonal} ($M \orth N$), falls $x \orth y$ für
+    alle $x \in M$, $y \in N$ (wobei $\emptyset \not= M, N \subseteq V$). \\
+    $M^\bot = \{v \in V \;|\; \forall_{m \in M}\; \sp{v, m} = 0\}$ ist die
+    \begriff{Menge der zu $M$ orthogonalen Vektoren}.
+\end{Def}
+
+\begin{Lemma}{$M^\bot$ als Unterraum}
+    $M^\bot$ ist ein Unterraum von $V$.
+\end{Lemma}
+
+\begin{Def}{orthogonales/orthonormales System}
+    Sei $M \subseteq V$ mit $M \not= \emptyset$.
+    Dann heißt $M$ \\
+    \begriff{orthogonales System} in $V$, falls
+    $M$ aus paarweise orthogonalen Elementen $\not=$ Nullvektor besteht. \\
+    $M$ heißt \begriff{orthonormales System}, falls zusätzlich alle Vektoren
+    normiert sind.
+\end{Def}
+
+\begin{Satz}{orthogonales System ist linear unabhängig} \\
+    Ein System orthogonaler Vektoren in $V$ ist linear unabhängig.
+\end{Satz}
+
+\begin{Def}{Orthonormalbasis (ONB)} \\
+    Ein orthonormales Erzeugendensystem von $V$ heißt
+    \begriff{Orthonormalbasis (ONB)} von $V$.
+\end{Def}
+
+\begin{Prozedur}{Orthonormalisierungsverfahren nach
+                 \name{Gram}-\name{Schmidt}} \\
+    Seien $V$ ein euklidischer/unitärer Vektorraum,
+    $\basis{B} = (v_1, v_2, \ldots)$ eine endliche oder abzählbar unendliche,
+    linear unabhängige Teilmenge von $V$.
+    Dann ist $\basis{E} = (e_1, e_2, \ldots)$ von derselben Mächtigkeit
+    folgendermaßen definiert: \\
+    1.\quad $e_1 =$ \fracsize{$\frac{v_1}{\norm{v_1}}$} \qquad\qquad
+    2.\quad $e_k =$ \fracsize{$\frac{x_k}{\norm{x_k}}$} mit
+    $x_k = v_k - \sum_{i=1}^{k-1} \sp{v_k, e_i}e_i$
+\end{Prozedur}
+
+\begin{Satz}{\name{Gram}-\name{Schmidt}}
+    Seien $\basis{E}$ definiert wie oben,
+    $\basis{B}_k = (v_1, \ldots, v_k)$, $U_k = \aufspann{\basis{B}_k}$
+    für ein $k \le |\basis{B}|$ und
+    $\basis{B}$ Basis von $V$.
+    Dann ist $\basis{E}_k = (e_1, \ldots, e_k)$ eine ONB von $U_k$ und
+    $\basis{E}$ ist eine ONB von $V$. \\
+    Die Basiswechselmatrix $M_k = \matrixm_{\id_V}(\basis{E}_k, \basis{B}_k)$
+    ist eine obere Dreiecksmatrix mit $\det(M_k) > 0$.
+\end{Satz}
+
+\begin{Satz}{Koef"|fizienten eines Vektors bzgl. ONB} \\
+    Seien $\basis{E} = (e_1, e_2, \ldots)$ eine ONB von $V$ und $x \in V$.
+    Dann ist $x = \sp{x, e_1}e_1 + \sp{x, e_2}e_2 + \cdots$.
+\end{Satz}
+
+\begin{Satz}{Skalarprodukt zweier Vektoren bzgl. ONB}
+    Seien $x, y \in V$ mit $x = \alpha_1 e_1 + \alpha_2 e_2 + \cdots$
+    und $y = \beta_1 e_1 + \beta_2 e_2 + \cdots$.
+    Dann ist
+    $\sp{x, y} = \alpha_1 \kk{\beta_1} + \alpha_2 \kk{\beta_2} + \cdots$.
+\end{Satz}
+
+\pagebreak
+
+\begin{Satz}{Orthogonalisierung} \\
+    Seien $V$ ein euklidischer/unitärer Vektorraum,
+    $\basis{B} = (v_1, v_2, \ldots)$ eine linear unabhängige Teilmenge von $V$.
+    Dann ist $\basis{E} = (x_1, x_2, \ldots)$ ein orthogonales System in $V$,
+    wobei: \\
+    1.\quad $x_1 = v_1$ \qquad\qquad
+    2.\quad $x_k = v_k - \sum_{i=1}^{k-1}$
+    \fracsize{$\frac{\sp{v_k, x_i}}{\norm{x_i}^2}$} $x_i$
+\end{Satz}
+
+\begin{xDef}{\name{Fourier}koef"|fizienten}%
+{Fourierkoeffizienten@\name{Fourier}koef"|fizienten}
+    Seien $V$ Vektorraum mit Skalarprodukt, $\basis{B}$ orthonormales
+    System und $x \in V$.
+    Dann heißen die Skalare $\sp{x, b}$ mit $b \in \basis{B}$
+    \xbegriff{\name{Fourier}koef"|fizienten}%
+    {Fourierkoeffizienten@\name{Fourier}koef"|fizienten}
+    von $x$ bzgl. $\basis{B}$.
+\end{xDef}
+
+\begin{xDef}{\name{Schauder}basis}{Schauderbasis@\name{Schauder}basis}
+    Ein abzählbares orthonormales System mit der Eigenschaft, dass sich jeder
+    Vektor als unendliche Linearkombination schreiben lässt, heißt
+    \xbegriff{Schauderbasis}{Schauderbasis@\name{Schauder}basis}.
+\end{xDef}
+
+\begin{Satz}{$M^\bot$ als Komplement}
+    Seien $V$ ein Vektorraum mit Skalarprodukt und $M, N \ur V$. \\
+    Ist $M \orth N$, dann ist $M \cap N = (0)$ und daher die Summe $M + N$
+    direkt (insbesondere ist $M + M^\bot$ direkt).
+    Ist $M$ endlich-dimensional, dann ist $V = M \oplus M^\bot$. \\
+    Der Unterraum $M^\bot$ ist das eindeutig bestimmte
+    \begriff{orthogonale Komplement} von $M$ in $V$. \\
+    Jeder zu $M$ orthogonale Unterraum von $V$ ist in $M^\bot$ enthalten.
+\end{Satz}
+
+\begin{Bem}
+    Ein Unterraum kann also viele Komplemente haben, aber nur ein orthogonales
+    Komplement.
+\end{Bem}
+
+\begin{Kor}
+    Seien $V$ ein euklidischer/unitärer Vektorraum,
+    $W \ur V$ endlich-dimensional mit ONB $(e_1, ..., e_k)$ und $y \in V$.
+    Dann gibt es genau ein $z \in W^\bot$ mit
+    $y = \sum_{i=1}^k \sp{y, e_i}e_i + z$. \\
+    Der Vektor $y_1 = y - z = \sum_{i=1}^k \sp{y, e_i}e_i$ ist der
+    eindeutig bestimmte Vektor von $W$, der $y$ am nächsten ist, d.\,h.
+    $\forall_{u \in W}\; \norm{y - y_1} \le \norm{y - u}$.
+\end{Kor}
+
+\begin{Kor}
+    Seien $V$ endlich-dimensional und $(e_1, \ldots, e_k)$ ein orthonormales
+    System in $V$. \\
+    Dann kann es zu einer ONB $(e_1, \ldots, e_k, e_{k+1}, \ldots, e_n)$
+    von $V$ ergänzt werden und $(e_{k+1}, \ldots, e_n)$ ist ONB vom
+    orthogonalen Komplement zu $W = \aufspann{e_1, \ldots, e_k}$.
+\end{Kor}
+
+\begin{Kor}
+    Es gilt $\dim_K(V) = \dim_K(W) + \dim_K(W^\bot)$ für alle Unterräume
+    $W$ von $V$.
+\end{Kor}
+
+\begin{Kor}
+    Es gilt $(M^\bot)^\bot = M$ für jeden Unterraum $M$ von $V$.
+\end{Kor}
+
+\subsection{%
+    Euklidische Vektorräume, orthogonale Abbildungen%
+}
+
+\begin{Def}{orthogonale Abbildung} \\
+    Seien $V, W$ euklidische Vektorräume und $f: V \rightarrow W$ eine
+    $\real$-lineare Abbildung. \\
+    Dann ist $f$ eine \begriff{orthogonale Abbildung}, falls
+    $\sp{f(x), f(y)} = \sp{x, y}$ für alle $x, y \in V$.
+\end{Def}
+
+\begin{Def}{Isometrie}
+    Ein orthogonaler Isomorphismus heißt auch \begriff{Isometrie}. \\
+    Euklidische Vektorräume heißen \begriff{isometrisch}, falls es eine
+    Isometrie zwischen ihnen gibt.
+\end{Def}
+
+\begin{Satz}{äquivalente Aussagen}
+    Seien $V$ ein euklidischer Vektorraum endlicher oder abzählbar unendlicher
+    Dimension, $W$ ein euklidischer Vektorraum und $f: V \rightarrow W$ ein
+    Homomorphismus.
+    Dann sind folgende Aussagen äquivalent: \\
+    1. $f$ ist orthogonale Abbildung. \qquad
+    2. Für $x \in V$ gilt
+    $\norm{x} = 1 \;\Rightarrow\; \norm{f(x)} = 1$. \\
+    3. Für $x \in V$ gilt $\norm{x} = \norm{f(x)}$. \qquad
+    4. Für jedes orthonormale System $\basis{E} = (e_1, e_2, \ldots)$ in $V$
+    ist $\basis{E}^f = (f(e_1), f(e_2), \ldots)$ ebenfalls eines in $W$. \\
+    5. Es gibt eine ONB $\basis{B}$ von $V$, sodass $\basis{B}^f$
+    Orthonormalsystem ist.
+\end{Satz}
+
+\begin{Satz}{orthogonale Abbildungen injektiv}
+    Eine orthogonale Abbildung ist injektiv. \\
+    Ist insbesondere $\dim_\real(V) = \dim_\real(W)$ und $f: V \rightarrow W$
+    orthogonal, so ist $f$ eine Isometrie.
+\end{Satz}
+
+\begin{Def}{orthogonale Gruppe}
+    Die Menge der Isometrien eines euklidischen Vektorraum in sich ist eine
+    Untergruppe der linearen Gruppe $\GL_\real(V)$ und wird
+    \begriff{orthogonale Gruppe} $O_\real(V)$ genannt. \\
+    Für $V = \real^n$ mit dem natürlichen Skalarprodukt ist $O_n(\real)$
+    die Menge der reellen, orthogonalen $n \times n$-Matrizen.
+\end{Def}
+
+\begin{Satz}{Abbildung auf den $\real^n$}
+    Seien $V$ ein euklidischer Vektorraum, $\basis{B} = (x_1, \ldots, x_n)$
+    eine ONB von $V$ und
+    $f: V \rightarrow \real^n$,
+    $\sum_{i=1}^n \alpha_i x_i \mapsto (\alpha_1, \ldots, \alpha_n)$. \\
+    Dann ist $f$ eine Isometrie sowie $V$ und $\real^n$ isometrisch.
+    $f(\basis{B})$ ist die natürliche Basis des $\real^n$.
+\end{Satz}
+
+\begin{Def}{orthogonale Matrix}
+    Eine invertierbare Matrix $A$ mit $A^{-1} = A^t$ nennt man
+    \begriff{orthogonal}.
+\end{Def}
+
+\begin{Lemma}{Matrizen und ONB von $\real^n$}
+    Die Spalten- bzw. Zeilenvektoren einer reellen Matrix $A \in M_n(\real)$
+    bilden genau dann eine ONB von $\real^n$, wenn
+    $A$ orthogonal ist.
+\end{Lemma}
+
+\begin{Kor}
+    Seien $A \in M_n(\real)$ und
+    $f_A: \real^n \rightarrow \real^n$, $f_A(x) = Ax$.
+    Dann ist die natürliche Basis von $\real^n$ orthonormal und
+    $f_A$ ist orthogonal genau dann, wenn $A$ orthogonal ist. \\
+    So ist $O_\real(V) \cong O_n(\real) =
+    \{A \in \GL_n(\real) \;|\; A^{-1} = A^t\}$.
+\end{Kor}
+
+\begin{Kor}
+    Seien $f$ ein Endomorphismus des euklidischen Vektorraums $V$,
+    $\basis{B}$ eine ONB von $V$ und $A = \hommatrix{f}{B}{B}$.
+    Dann ist $f$ orthogonal genau dann, wenn $A$ orthogonal ist.
+\end{Kor}
+
+\begin{Kor}
+    Sei $\basis{E}$ eine endliche ONB des euklidischen Vektorraums $V$.
+    Dann ist eine Basis $\basis{B}$ von $V$ orthonormal genau dann, wenn
+    $A = \hommatrix{\id_V}{E}{B}$ orthogonal ist.
+\end{Kor}
+
+\begin{Kor}
+    Die Determinante einer orthogonalen Abbildung $f_A$ ist $\pm 1$.
+\end{Kor}
+
+\subsection{%
+    Hauptachsentheorem%
+}
+
+\begin{Def}{symmetrische Matrix}
+    Eine Matrix $A$ mit $A^t = A$ nennt man \begriff{symmetrisch}.
+\end{Def}
+
+\begin{Def}{orthogonal-äquivalent}
+    Zwei Endomorphismen $f$ und $g$ eines euklidischen Vektorraums $V$
+    heißen \begriff{orthogonal-äquivalent}, falls es einen orthogonalen
+    Automorphismus $p$ von $V$ mit $g = p^{-1} \circ f \circ p$ gibt.
+    Analog sind orthogonal-äquivalente quadratische reelle Matrizen definiert.
+\end{Def}
+
+\begin{Satz}{Hauptachsentheorem 1}
+    Symmetrische reelle Matrizen sind diagonalisierbar.
+\end{Satz}
+
+\begin{Satz}{Hauptachsentheorem 2}
+    Jede reelle symmetrische Matrix ist orthogonal-äquivalent zu einer
+    Diagonalmatrix.
+\end{Satz}
+
+\begin{Satz}{$x^t y = 0$ bei symmetrischen Matrizen}
+    Seien $A \in M_n(K)$ eine symmetrische Matrix und $\lambda, \mu \in K$
+    verschiedene Eigenwerte ($\lambda \not= \mu$) mit Eigenvektoren
+    $x =$ \matrixsize{$\begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix}$} bzw.
+    $y =$ \matrixsize{$\begin{pmatrix}y_1 \\ \vdots \\ y_n\end{pmatrix}$}. \\
+    Dann ist $x^t y = \sum_{i=1}^n x_i y_i = 0$.
+\end{Satz}
+
+\begin{Kor}
+    Sei $A \in M_n(\real)$ eine symmetrische reelle Matrix.
+    Dann sind Eigenvektoren von $A$ zu verschiedenen Eigenwerten orthogonal
+    bzgl. des Standardskalarprodukts des $\real^n$. \\
+    Eigenräume zu verschiedenen Eigenwerten sind paarweise orthogonal.
+\end{Kor}
+
+\begin{Satz}{komplexes Konjugat als EV/EW}
+    Seien $A \in M_n(\real)$ und $\lambda \in \complex$ ein komplexer Eigenwert
+    mit Eigenvektor $x \in \complex^n$ von $A$.
+    Dann ist $\kk{x}$ Eigenvektor von $A$ zum Eigenwert $\kk{\lambda}$.
+\end{Satz}
+
+\begin{Satz}{symmetrische, reelle Matrizen haben nur reelle EW} \\
+    Die Eigenwerte symmetrischer reeller $n \times n$-Matrizen sind alle reell.
+\end{Satz}
+
+\begin{Kor}
+    Das charakteristische Polynom einer symmetrischen reellen
+    $n \times n$-Matrix zerfällt über den reellen Zahlen in Linearfaktoren.
+\end{Kor}
+
+\begin{Satz}{$\real^n$ besitzt eine Basis aus EV}
+    Sei $A$ eine symmetrische reelle $n \times n$-Matrix. \\
+    Dann besitzt $\real^n$ eine Basis aus Eigenvektoren.
+\end{Satz}
+
+\pagebreak
+
+\begin{Prozedur}%
+{Symmetrische reelle Matrix mit orthogonaler Matrix diagonalisieren} \\
+    Sei $A$ eine symmetrische reelle $n \times n$-Matrix.
+    \begin{enumerate}
+        \item Man berechnet das charakteristische Polynom $\chi_A(t)$ von $A$.
+        Es zerfällt in reelle Linearfaktoren
+        $\chi_A(t) = (t - \lambda_1)^{\nu_1} \cdots (t - \lambda_k)^{\nu_k}$,
+        wobei die $\lambda_i$ die paarweise verschiedenen Eigenwerte sind.
+        
+        \item Für jeden Eigenwert $\lambda_i$ berechnet man eine Basis
+        $\basis{B}_i$ des zugehörigen Eigenraums $V_{\lambda_i}$ durch Lösen
+        des LGS $(A - \lambda_i E_n)x = 0$.
+        Für die Dimension gilt dann $\dim V_{\lambda_i} = \nu_i$ und die
+        $V_{\lambda_i}$ sind paarweise orthogonal.
+        
+        \item Jede Basis $\basis{B}_i$ wird mithilfe des Verfahrens
+        von \name{Gram}-\name{Schmidt} zu einer ONB $\basis{C}_i$ von
+        $V_{\lambda_i}$ orthonormalisiert.
+        
+        \item $\basis{C} = \bigcup_{i=1}^k \basis{C}_i$ ist eine ONB von
+        $\real^n$, da die $\basis{C}_i$ paarweise orthogonal sind.
+        Die Basiswechselmatrix $P = \matrixm_{\id}(\basis{E}_n, \basis{C})$
+        ist eine orthogonale Matrix, daher ist
+        $P^{-1} = \matrixm_{\id}(\basis{C}, \basis{E}_n) = P^t$. \\
+        Es gilt $P^{-1} A P = D$, wobei in
+        $D = \diag\{\lambda_1, \ldots, \lambda_1, \lambda_2, \ldots,
+        \lambda_2, \ldots, \lambda_k, \ldots, \lambda_k\}$ die $\lambda_i$
+        jeweils $\nu_i$ oft vorkommen.
+    \end{enumerate}
+\end{Prozedur}
+
+\subsection{%
+    Unitäre Abb. und Hauptachsentheorem für normale Endom.%
+}
+
+\begin{Def}{unitäre Abbildung} \\
+    Seien $V, W$ unitäre Vektorräume und $f: V \rightarrow W$ eine
+    $\complex$-lineare Abbildung. \\
+    Dann ist $f$ eine \begriff{unitäre Abbildung}, falls
+    $\sp{f(x), f(y)} = \sp{x, y}$ für alle $x, y \in V$.
+\end{Def}
+
+\begin{Satz}{äquivalente Aussagen}
+    Folgende Aussagen sind äquivalent: \\
+    1. $f$ ist unitäre Abbildung. \qquad
+    2. Für $x \in V$ gilt
+    $\norm{x} = 1 \;\Rightarrow\; \norm{f(x)} = 1$. \\
+    3. Für $x \in V$ gilt $\norm{x} = \norm{f(x)}$. \qquad
+    4. Für jedes orthonormale System $\basis{E} = (e_1, e_2, \ldots)$ in $V$
+    ist $\basis{E}^f = (f(e_1), f(e_2), \ldots)$ ebenfalls eines in $W$. \\
+    5. Es gibt eine ONB $\basis{B}$ von $V$, sodass $\basis{B}^f$
+    Orthonormalsystem ist.
+\end{Satz}
+
+\begin{Satz}{Aussagen über unitäre Abbildungen}
+    Unitäre Abbildungen sind injektiv. \\
+    Jeder $n$-dimen\-sionale unitäre Raum ist durch Wahl einer ONB isometrisch
+    zum $\complex^n$ mit Standardskalarprodukt.
+    Die Menge der unitären Isometrien von $V$ in sich bildet eine Untergruppe
+    von $\Aut_\complex(V)$ und heißt \begriff{unitäre Gruppe}
+    $U_\complex(V)$. \\
+    Die \begriff{konjugiert komplexe Matrix} $\kk{A}$ einer Matrix
+    $A = (\alpha_{ij}) \in M_n(\complex)$ ist $\kk{A} = (\kk{\alpha_{ij}})$.
+\end{Satz}
+
+\begin{Def}{Adjungierte Matrix}
+    $A^\ast = \kk{A}^t$ ist die \begriff{adjungierte Matrix} von $A$.
+\end{Def}
+
+\begin{Lemma}{$^\ast$ als semilinearer $\complex$-Algebraantiautomorphismus}
+    Seien $A, B \in M_n(\complex)$ und $\lambda \in \complex$. \\
+    Dann gilt ${A^\ast}^\ast = A$, \qquad
+    $(A + B)^\ast = A^\ast + B^\ast$, \qquad
+    $(\lambda A)^\ast = \kk{\lambda} A^\ast$ \quad sowie \quad
+    $(AB)^\ast = B^\ast A^\ast$.
+\end{Lemma}
+
+\begin{Def}{unitäre, hermitesche und normale Matrizen}
+    Sei $A \in M_n(\complex)$. \\
+    $A$ ist \begriff{unitär}, falls $A^{-1} = A^\ast$ \qquad
+    ($\mathrel{\widehat{=}}$ orthogonale Matrix im Reellen). \\
+    $A$ ist \begriff{hermitesch} oder \begriff{selbstadjungiert}, falls
+    $A = A^\ast$ \qquad
+    ($\mathrel{\widehat{=}}$ symmetrische Matrix im Reellen). \\
+    $A$ ist \begriff{normal}, falls $A A^\ast = A^\ast A$.
+\end{Def}
+
+\begin{Lemma}{unitäre/hermitesche Matrizen normal}
+    Unitäre und hermitesche Matrizen sind normal.
+\end{Lemma}
+
+\begin{Satz}{Matrizen und ONB von $\complex^n$}
+    Die Spalten- bzw. Zeilenvektoren einer Matrix $A \in M_n(\complex)$ bilden
+    genau dann eine ONB von $\complex^n$, wenn $A$ unitär ist.
+\end{Satz}
+
+\begin{Satz}{$f$ unitär $\Leftrightarrow \hommatrix{f}{B}{B}$ unitär}
+    Seien $V$ endlich-dimensional, $\basis{B}$ eine ONB von $V$ und \\
+    $f \in \End_\complex(V)$.
+    Dann ist $f$ unitär genau dann, wenn $\hommatrix{f}{B}{B}$ unitär ist.
+\end{Satz}
+
+\begin{Def}{adjungierter Endomorphismus}
+    Seien $f \in \End_\complex(V)$, $\basis{B} = (v_1, \ldots, v_n)$ eine
+    ONB von $V$ und $A = (\alpha_{ij}) = \hommatrix{f}{B}{B}$.
+    Dann heißt $f^\ast: V \rightarrow V$ definiert durch
+    $f^\ast(v_j) = \sum_{i=1}^n \kk{\alpha_{ji}} v_i$ der
+    \begriff{zu $f$ adjungierte Endomorphismus}.
+    Es gilt $\hommatrix{f^\ast}{B}{B} = A^\ast =
+    \left(\hommatrix{f}{B}{B}\right)^\ast$.
+\end{Def}
+
+\begin{Kor}
+    Seien $f \in \End_\complex(V)$ und $x, y \in V$.
+    Dann ist $\sp{f(x), y} = \sp{x, f^\ast(y)}$.
+\end{Kor}
+
+\begin{Def}{hermitesche und normale Endomorphismen}
+    Sei $f \in \End_\complex(V)$.
+    Dann ist $f$ \begriff{hermitesch}, falls $f = f^\ast$,
+    und \begriff{normal}, falls $f \circ f^\ast = f^\ast \circ f$.
+    Hermitesche/normale Endomorphismen sind genau die Endomorphismen, deren
+    Matrizen bzgl. einer ONB hermitesch/normal sind.
+\end{Def}
+
+\begin{Kor}
+    Seien $f \in \End_\complex(V)$ hermitesch und $x, y \in V$.
+    Dann ist $\sp{f(x), y} = \sp{x, f(y)}$.
+\end{Kor}
+
+\begin{Satz}%
+{$f$ normal $\Leftrightarrow \sp{f(x), f(y)} = \sp{f^\ast(x), f^\ast(y)}$}
+    Sei $f \in \End_\complex(V)$. \\
+    Dann ist $f$ normal genau dann, wenn
+    $\sp{f(x), f(y)} = \sp{f^\ast(x), f^\ast(y)}$ für alle $x, y \in V$ gilt.
+\end{Satz}
+
+\begin{Kor}
+    Ist $f$ normal, dann gilt insbesondere $\norm{f(x)} = \norm{f^\ast(x)}$
+    und $\ker f = \ker f^\ast$ für alle $x \in V$.
+    Ist $x \in \ker f$, dann ist $\sp{f^\ast(x), f^\ast(x)} =
+    \sp{f(x), f(x)} = 0$ und daher $f^\ast(x) = 0$.
+\end{Kor}
+
+\begin{Satz}{Eigenvektoren des adjungierten Endomorphismus}
+    Seien $f \in \End_\complex(V)$ normal und \\
+    $x \in V$ ein EV von $f$ zum EW $\lambda \in \complex$.
+    Dann ist $f^\ast(x) = \kk{\lambda}x$, d.\,h. $x$ ist EV von $f^\ast$ zum
+    EW $\kk{\lambda}$.
+    Insbesondere ist $V_\lambda(f) = V_{\kk{\lambda}}(f^\ast)$.
+\end{Satz}
+
+\begin{Satz}{Hauptachsentheorem für normale Abbildungen}
+    Seien $V$ ein endlich-dimensionaler unitärer Raum und
+    $f \in \End_\complex(V)$.
+    Ist $f$ normal, so besitzt $V$ eine ONB aus Eigenvektoren von $f$.
+    Sind $\basis{B}$ irgendeine ONB von $V$ und $A = \hommatrix{f}{B}{B}$, so
+    ist $A$ \begriff{unitär-äquivalent} zu einer Diagonalmatrix,
+    d.\,h. es gibt eine
+    unitäre Matrix $P$, sodass $P^{-1} A P$ Diagonalmatrix ist.
+\end{Satz}
+
+\begin{Satz}{Spezialfall hermitesche Endomorphismen}
+    Sei $f \in \End_\complex(V)$ hermitesch.
+    Dann sind alle Eigenwerte von $f$ reell und $V$ hat eine ONB bestehend
+    aus Eigenvektoren von $f$. \\
+    Ist $A = \hommatrix{f}{B}{B}$ bzgl. einer ONB $\basis{B}$ von $V$, so ist
+    $A$ unitär-äquivalent zu einer reellen Diagonalmatrix.
+\end{Satz}
+
+\pagebreak

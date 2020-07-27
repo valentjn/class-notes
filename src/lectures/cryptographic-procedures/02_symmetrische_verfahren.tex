@@ -1,0 +1,1112 @@
+\section{%
+    Symmetrische Verschlüsselungsverfahren%
+}
+
+\subsection{%
+    Definitionen%
+}
+
+\textbf{kryptografisches Verschlüsselungsverfahren}:
+Ein \begriff{(kryptografisches) Verschlüsselungsver"-fahren}
+(auch \begriff{kryptografisches System} oder \begriff{Kryptosystem})
+$(P, C, K, (c_k)_{k \in K}, (d_k)_{k \in K})$ wird definiert durch endliche Mengen
+\begin{itemize}
+    \item
+    $P$ (\begriff{Klartexte}),
+    
+    \item
+    $C$ (\begriff{Geheimtexte}) und
+    
+    \item
+    $K$ (\begriff{Schlüssel})
+\end{itemize}
+sowie durch Funktionen für jeden Schlüssel $k \in K$ mit
+\begin{itemize}
+    \item
+    $c_k\colon P \rightarrow C$ (\begriff{Codierungs-/Verschlüsselungsfunktion}) und
+    
+    \item
+    $d_k\colon C \rightarrow P$ (\begriff{Decodierungs-/Entschlüsselungsfunktion}),
+\end{itemize}
+sodass $\forall_{k \in K} \exists_{\ell \in K} \forall_{x \in P}\; d_\ell(c_k(x)) = x$
+(\begriff{Korrektheit des Verfahrens}).
+
+Aus der Korrektheit folgt für alle $k \in K$, dass $c_k$ injektiv ist
+(für $x_1, x_2 \in P$ mit $c_k(x_1) = c_k(x_2)$ gilt
+$x_1 = d_\ell(c_k(x_1)) = d_\ell(c_k(x_2)) = x_2$).
+
+\textbf{symmetrisches Verfahren}:
+Das Verfahren heißt \begriff{symmetrisch} (oder \begriff{Private-Key-Verfahren}), falls
+in obiger Definition $\ell = k$ oder $\ell$ sich leicht aus $k$ berechnen lässt.
+
+In diesem Kapitel werden nur symmetrische Verfahren betrachtet.
+
+\linie
+
+\textbf{kryptografisches Szenario}:
+Das typische Szenario bei symmetrischen Verfahren ist wie folgt.
+Alice will Bob eine Nachricht schicken und Eve (\emph{eavesdropper}) will mithören.
+\begin{enumerate}
+    \item
+    Alice und Bob wählen einen gemeinsamen Schlüssel $k \in K$.
+    Dieser ist beiden vor der Übertragung schon bekannt oder wird über einen
+    sicheren Kanal übermittelt.
+    
+    \item
+    Alice verschlüsselt $x \in P$ durch $y = c_k(x)$ und sendet $y$ an Bob.
+    
+    \item
+    Bob empfängt $y$ und entschlüsselt $y$ durch $d_k(y) = d_k(c_k(x)) = x$.
+\end{enumerate}
+Eve, die mithören will, kann nur $y$ abfangen (nicht den Schlüssel $k$).
+Mit dieser Information startet sie ihre \begriff{Kryptanalyse}.
+
+\pagebreak
+
+\subsection{%
+    Kryptanalyse%
+}
+
+\textbf{\name{Kerckhoffs}' Prinzip}:
+Die Sicherheit eines Verfahrens darf nur auf der Geheimhaltung des Schlüssels basieren,
+nicht aber auf der Geheimhaltung des Verfahrens.
+Angreifer kennen also zumindest das verwendete kryptografische System.
+
+\linie
+
+\textbf{Kompromittierung von kryptografischer Kommunikation}:
+\begin{itemize}
+    \item
+    \begriff{Bruch des Schlüssels}:
+    Eve kann nicht nur Nachrichten entschlüsseln und lesen, sondern auch
+    Fehlnachrichten verschlüsseln und verschicken
+    
+    \item
+    \begriff{globale Lösung}:
+    funktionierendes Entschlüsselungsverfahren ohne Kenntnis des Schlüssels\\
+    (Eve kann keine Fehlnachrichten verschlüsseln)
+    
+    \item
+    \begriff{lokale Lösung}:
+    nur eine einzelne Nachricht entschlüsselt
+    
+    \item
+    \begriff{Informationsgewinn}:
+    partielle Informationen über Schlüssel oder Klartext
+\end{itemize}
+
+\linie
+
+\textbf{Angriffsszenarien}:
+\begin{itemize}
+    \item
+    \begriff{ausschließlich Geheimtext (ciphertext-only)}:
+    Eve kennt nur Geheimtexte
+    
+    \item
+    \begriff{bekannter Klartext (known-plaintext)}:
+    Eve kennt Klartexte und zugehörige Geheimtexte
+    
+    \item
+    \begriff{gewählter Klartext (chosen-plaintext)}:
+    Eve kann Klartexte verschlüsseln lassen
+    
+    \item
+    \begriff{gewählter Geheimtext (chosen-ciphertext)}:
+    Eve kann Geheimtexte entschlüsseln lassen
+\end{itemize}
+
+\linie
+
+\textbf{Sicherheitsstufen eines Verfahrens}:
+\begin{itemize}
+    \item
+    \begriff{perfekte/absolute Sicherheit}:
+    Entschlüsselung beweisbar unmöglich
+    
+    \item
+    \begriff{Berechnungssicherheit}:
+    Entschlüsselung beweisbar für die Praxis zu aufwändig
+    
+    \item
+    \begriff{relative Berechnungssicherheit}:
+    Entschlüsselung mindestens so schwer wie die Lösung eines als schwierig geltenden Problems
+    
+    \item
+    \begriff{pragmatische Sicherheit}:
+    trotz intensiver Suche keine ef"|fiziente Methode zur Entschlüsselung bekannt
+\end{itemize}
+In der Praxis tritt bei der klassischen Kryptografie die pragmatische Sicherheit am häufigsten auf.
+Allerdings können Verfahren schwieriger zu brechen scheinen, als sie es sind, und
+außerdem könnten geheime Hintertüren in Verfahren eingebaut sein.
+
+\pagebreak
+
+\subsection{%
+    Blockchif"|fren%
+}
+
+\textbf{Blockchif"|fre}:
+Seien $n \in \natural$ und $\Sigma$ ein Alphabet (eine endliche Menge).
+Eine \begriff{Blockchif"|fre} mit \begriff{Blocklänge} $n$
+ist ein symmetrisches Verschlüsselungsverfahren mit $P = C := \Sigma^n$.
+
+Bei einer Blockchif"|fre wird zur Verschlüsselung eines beliebigen Texts $w \in \Sigma^\ast$ der
+Text in Blöcke der Länge $n$ aufgeteilt.
+Anschließend wird jeder Block mit demselben Schlüssel verschlüsselt.
+
+\linie
+
+\textbf{Lemma (Blockchif"|fren sind Permutationen)}:
+Codierungsfunktionen einer Blockchif"|fre sind Permutationen von $\Sigma^n$
+und die Decodierungsfunktionen sind die inversen Permutationen.
+
+\begin{Beweis}
+    Für alle $k \in K$ ist $c_k\colon \Sigma^n \rightarrow \Sigma^n$
+    injektiv und damit bijektiv (\emph{pigeonhole principle}).
+    Weil das Verfahren symmetrisch ist, gilt die Korrektheit in der Form
+    $\forall_{k \in K} \forall_{x \in P}\; d_k(c_k(x)) = x$, für
+    alle $k \in K$ ist also $d_k = c_k^{-1}$ bijektiv.
+\end{Beweis}
+
+Es wäre unpraktikabel, als Codierungsfunktion $c_k$ einer Blockchif"|fre jede Permutation
+zuzulassen (d.\,h. $K$ gleich der Menge der Permutationen von $\Sigma^n$ und
+$c_\sigma := \sigma$ für $\sigma \in K$),
+denn um einen Schlüssel zu speichern, benötigt man Platz $\Omega(|\Sigma|^n)$.
+Daher schränkt man die Anzahl der möglichen Permutationen ein,
+wofür es im Wesentlichen drei Möglichkeiten gibt
+(mono- und polyalphabetische Substitution sowie Permutationschif"|fre).
+
+\subsection{%
+    Monoalphabetische Substitution%
+}
+
+\textbf{monoalphabetische Verschiebung}:
+Sei $P = C = K := \integer/26\integer$ (Alphabet $\Sigma := \{\code{a}, \dotsc, \code{z}\}$
+wird mit $\integer/26\integer$ identifiziert).
+Dann ist die \begriff{monoalphabetische Verschiebung} eine Blockchif"|fre mit Blocklänge $1$,
+die definiert ist durch $c_k(x) := x + k$ und $d_k(x) := x - k$ für $k \in K$.
+
+\textbf{\name{Caesar}-Verfahren}:
+monoalphabetische Verschiebung mit Schlüssel $k = 3$
+
+\textbf{ROT13}:
+monoalphabetische Verschiebung mit Schlüssel $k = 13$ (Spezialfall, da $c_k = d_k$)
+
+\textbf{Angriff}:
+\begriff{Brute-Force} (alle Möglichkeiten durchprobieren),
+da der Schlüsselraum nur aus $|\Sigma|$ vielen Schlüsseln besteht.
+
+\linie
+
+\textbf{monoalphabetische Substitution}:
+Seien $P = C := \Sigma$ und
+$K := \{\sigma \;|\; \sigma \text{ Permutation von } \Sigma\}$.\\
+Dann ist die \begriff{monoalphabetische Substitution} eine Blockchif"|fre mit Blocklänge $1$,
+die definiert ist durch
+$c_\sigma := \sigma$ und $d_\sigma := \sigma^{-1}$ für $\sigma \in K$.
+
+Die monoalphabetische Verschiebung ist eine monoalphabetische Substitution
+($\Sigma := \integer/26\integer$ und für $\sigma = k \in \integer/26\integer$ ist
+$c_\sigma = \smallpmatrix{0 & 1 & \cdots & 25 \\ k & k + 1 & \cdots & k - 1}$).
+
+\textbf{Angriff (Häufigkeitsanalyse)}:
+Die Größe des Schlüsselraums ist $|K| = |\Sigma|!$, für $n = 26$ gilt also
+$|K| = 26! \approx 10^{26}$.
+Brute-Force ist bei solchen Größenordnungen nicht praktikabel.
+Stattdessen führt man eine \begriff{Häufigkeitsanalyse} durch.
+Dazu nutzt man aus, dass bei Klartexten in natürlichen Sprachen bestimmte
+Zeichen aus $\Sigma$ häufiger vorkommen als andere.
+%In der deutschen Sprache kommt z.\,B. das \code{e} am häufigsten vor.
+Da die monoalphabetische Substitution diese Häufigkeiten invariant lässt, kann man dem
+häufigsten Geheimtext-Zeichen das \code{e} zuordnen und evtl. dem zweithäufigsten das \code{n}.
+Dies lässt sich auch für häufig auftretende Doppellaute durchführen (\code{en}, \code{er}, \dots).
+Weitere Zuordnungen können aus dem Kontext erschlossen werden
+(es gibt nur bestimmte Kombinationen von Klartext-Zeichen zu sinnvollen Wörtern).
+Eine Abhilfe gegen diese überflüssigen Kontextinformationen kann Datenkompression sein
+(um den Angriff zu erschweren).
+
+\pagebreak
+
+\subsection{%
+    Polyalphabetische Substitution%
+}
+
+\textbf{polyalphabetische Substitution}:
+Eine \begriff{polyalphabetische Substitution} ist ein Blockchif"|fre mit Blocklänge $n$,
+bei dem jeder Klartext-Buchstabe einzeln permutiert wird, d.\,h.\\
+$P = C := \Sigma^n$ und $K := \{\sigma \;|\; \sigma \text{ Permutation von } \Sigma\}^n$ sowie\\
+$c_\sigma(x) := \sigma_1(x_1) \dotsb \sigma_n(x_n)$ und
+$d_\sigma(x) := \sigma^{-1}_1(x_1) \dotsb \sigma^{-1}_n(x_n)$ für $\sigma \in K$.
+
+\textbf{\name{Vigenère}-Verfahren}:
+Seien $P = C := \Sigma^n$ und $K := \Sigma^d$ für ein festes $d \in \natural$.\\
+Dann ist das \begriff{\name{Vigenère}-Verfahren mit Schlüssellänge $d$} eine
+Blockchif"|fre mit Blocklänge $n$, die definiert ist durch
+$c_k(x) := \widetilde{c}(x_1, k_{0 \bmod d}) \widetilde{c}(x_2, k_{1 \bmod d}) \cdots
+\widetilde{c}(x_n, k_{(n-1) \bmod d})$ für $x =: x_1 \cdots x_n$ und
+$k =: k_0 \dotsb k_{d-1} \in K$, wobei
+$\widetilde{c}(a, k_i) := a + k_i$ für $a \in \Sigma$ und $i = 0, \dotsc, d - 1$\\
+(es wird angenommen, dass $\Sigma$ geordnet ist, d.\,h.
+$\widetilde{c}(\cdot, k_i)$ ist die Verschiebung um $k_i$).
+
+Vigenère-Verfahren sind polyalph. Subst.en
+(die Permutationen sind einfache Verschiebungen).
+Monoalph. Verschiebungen sind Vigenère-Verfahren mit Schlüssellänge $1$,
+allerdings sind monoalph. Subst.en i.\,A. keine Vigenère-Verfahren.
+Polyalph. Subst.en über $\Sigma$ können als monoalph. Subst.en über
+$\Sigma' := \Sigma^n$ angesehen werden.
+
+Vorteile des Vigenère-Verfahrens gegenüber der monoalphabetischen Substitution sind
+eine gleichmäßigere Verteilung der Geheimtext-Zeichen und Elimination von Doppellauten.
+
+\textbf{Angriff}:
+Gleiche Klartextstellen werden gleich verschlüsselt, wenn der Abstand zwischen ihnen ein Vielfaches
+der Schlüssellänge $d$ ist.
+Kennt man daher die Schlüssellänge $d$ (oder auch nur ein Vielfaches von ihr),
+dann kann man den Geheimtext $y$ in $d$ Spalten schreiben
+(die $i$-te Spalte enthält die Zeichen $y_j$ mit $j \equiv i \mod d$).
+Jede einzelne Spalte wurde durch eine eine monoalphabetische Verschiebung verschlüsselt und kann
+dementsprechend mit Brute-Force oder Häufigkeitsanalyse leicht geknackt werden.
+
+\linie
+
+Um die Schlüssellänge $d$ oder ein Vielfaches dieser herauszufinden, muss man etwas arbeiten.
+
+\textbf{Koinzidenz-Index}:
+Seien $\Sigma$ ein Alphabet, $n \in \natural$ und $x, x' \in \Sigma^n$.\\
+Dann heißt $\kappa(x, x') := \frac{1}{n} \sum_{i=1}^n \delta_{x_i,x_i'}$
+\begriff{Koinzidenz-Index} von $x$ und $x'$.
+
+Sind $x$ und $x'$ aus einem gleichverteilten Zufallsexperiment entstanden, dann gilt
+$\EE[\kappa] = \frac{1}{|\Sigma|}$.
+Für $|\Sigma| = 26$ gilt $\EE[\kappa] = \SI{3.8}{\percent}$.
+Allerdings erhält man experimentell $\EE[\kappa] \approx \SI{7}{\percent}$ für
+natürlich erzeugte Texte.
+Wenn man sich zunutze macht, dass der Koinzidenz-Index zweier Klartexte bei
+polyalphabetischer Substitution mit demselben Schlüssel
+nicht ändert, d.\,h. $\kappa(x, x') = \kappa(c_k(x), c_k(x'))$,
+dann lässt sich die Schlüssellänge einfach bestimmen.
+
+Seien $y \in \Sigma^n$ ein Geheimtext und $\kappa^k := \kappa(y, \sigma^k(y))$ für
+$k \in \natural$, wobei $\sigma^k(y)$ die zyklische Verschiebung von $y$ um $k$ Zeichen nach links
+ist.
+Für $k \in \natural$ mit $d \teilt k$ werden $x$ und $\sigma^k(x)$ mit demselben Schlüssel
+Vigenère-verschlüsselt (bis auf das Ende), d.\,h. $\kappa^k$ wird für diese $k$ bei
+ca. \SI{7}{\percent} liegen und für andere bei deutlich weniger.
+
+Der Angriff durch das Koinzidenz-Kriterium ist für allgemeine polyalphabetische Substitutionen
+durchführbar und damit sind diese Verfahren leicht angreifbar.
+Trotzdem sind sie heute noch relevant
+(z.\,B. kommerzielle Software, US-Mobiltelefone, oberflächlicher Schutz).
+
+\pagebreak
+
+\subsection{%
+    Perfekte Sicherheit%
+}
+
+\textbf{Wahrscheinlichkeiten}:
+Mit $\Pr(x)$ und $\Pr(y)$ werden die \begriff{Wahrscheinlichkeiten} bezeichnet,
+dass Eve den Klartext $x$ bzw. den Geheimtext $y = c_k(x)$ für ein $k \in K$ abfängt.
+Die Wahrscheinlichkeit, dass der Schlüssel $k \in K$ verwendet wird, wird mit $\Pr(k)$
+bezeichnet.\\
+$\Pr(y \;|\; x)$ und $\Pr(x \;|\; y)$ bezeichnen die Wahrscheinlichkeiten, dass $y$ abgefangen
+wird unter der Bedingung, dass der zugehörige Klartext $x$ ist, bzw. umgekehrt.
+
+$\Pr(y)$ wird durch $\Pr(x)$ und $\Pr(k)$ induziert.
+In der Praxis gilt meist, dass $x$ und $k$ unabhängig sind (d.\,h. $\Pr(x, k) = \Pr(x) \Pr(k)$
+für alle $x \in P$ und $k \in K$).
+OBdA kann man annehmen, dass $\Pr(x) > 0$ und $\Pr(y) > 0$ für alle
+$x \in P$ und $y \in C$ (sonst schränkt man $P$ und $C$ ein).
+
+\textbf{perfekte Sicherheit}:
+Ein Verschlüsselungsverfahren hat \begriff{perfekte Sicherheit}, falls\\
+$\Pr(x \;|\; y) = \Pr(x)$ für alle $x \in P$ und $y \in C$.
+
+Das heißt, dass die Kenntnis von $y$ keine Information über den Klartext $x$ bringt.
+
+\linie
+
+\textbf{Satz (notwendige Bedingung für perfekte Sicherheit)}:\\
+Ist ein Verschlüsselungsverfahren perfekt sicher, so gilt
+$|P| \le |C| \le |K|$.
+
+\begin{Beweis}
+    Für alle $k \in K$ ist $c_k\colon P \rightarrow C$ injektiv, d.\,h. $|P| \le |C|$.
+    
+    Sei $x \in P$ fest.
+    Dann gibt es für jedes $y \in C$ ein $k_y \in K$ mit $c_{k_y}(x) = y$.
+    Sonst gäbe es ein $y \in C$ mit $c_k(x) \not= y$ für alle $k \in K$,
+    also $\Pr(x \;|\; y) = 0 < \Pr(x)$, ein Widerspruch zur perfekten Sicherheit.
+    Aus $k_{y_1} = k_{y_2}$ folgt $y_1 = c_{k_{y_1}}(x) = c_{k_{y_2}}(x) = y_2$,
+    d.\,h. $|C| \le |K|$.
+\end{Beweis}
+
+\linie
+
+\textbf{Satz (Charakterisierung von perfekt sicheren Verfahren)}:
+Seien  $|P| = |C| = |K|$ und Schlüssel- und Klartext-Wahrscheinlichkeiten voneinander unabhängig.
+Dann ist das Verfahren perfekt sicher genau dann, wenn
+$\forall_{k \in K}\; \Pr(k) = \frac{1}{|K|}$ und
+$\forall_{x \in P} \forall_{y \in C} \exists!_{k_{x,y} \in K}\; c_{k_{xy}}(x) = y$ gilt.
+
+\begin{Beweis}
+    "`$\Rightarrow$"':
+    Sei das Verfahren perfekt sicher.
+    Wie im Beweis des vorherigen Satzes gibt es für alle $x \in P$ und $y \in C$ ein
+    $k_{x,y} \in K$ mit $c_{k_{x,y}}(x) = y$,
+    wobei $k_{x,y_1} \not= k_{x,y_2}$ für $y_1 \not= y_2$.
+    Die Abbildung $f_x\colon C \rightarrow K$, $y \mapsto k_{x,y}$ ist für alle $x \in P$
+    injektiv und wegen $|C| = |K|$ daher bijektiv, weswegen $k_{x,y} \in K$ eindeutig bestimmt ist.
+    
+    Sei nun $y \in C$ fest.
+    Mit dem Satz von Bayes gilt $\Pr(x) = \Pr(x \;|\; y) = \frac{\Pr(y \;|\; x) \Pr(x)}{\Pr(y)}$,
+    also $\Pr(y \;|\; x) = \Pr(y)$.
+    Allerdings ist $\Pr(y \;|\; x) = \Pr(k_{xy})$, d.\,h.
+    $\Pr(k_{xy}) = \Pr(y)$ für alle $x \in P$.
+    Wie eben ist $g_y\colon P \rightarrow K$, $x \mapsto k_{x,y}$ bijektiv, d.\,h.
+    $\Pr(k) = \Pr(y)$ ist für alle $k \in K$ gleich.
+    
+    "`$\Leftarrow$"':
+    Es gilt $\Pr(y) = \sum_{x \in P} \Pr(y \;|\; x) \Pr(x)$
+    (Gesetz der totalen Wahrscheinlichkeit).
+    Weil die Schlüssel $k_{xy}$ eindeutig sind, gilt
+    $\Pr(y \;|\; x) = \Pr(k_{xy}) = \frac{1}{|K|}$, also
+    $\Pr(y) = \sum_{x \in P} \frac{1}{|K|} \Pr(x) = \frac{1}{|K|}$ wegen $|P| = |K|$.
+    Damit gilt $\Pr(x \;|\; y) = \frac{\Pr(y \;|\; x) \Pr(x)}{\Pr(y)} = \Pr(x)$
+    (perfekte Sicherheit).
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    One-Time-Pad%
+}
+
+\textbf{One-Time-Pad}:
+Seien $P = C = K := \{0, 1\}^n$.
+Dann ist das \begriff{(\name{Vernam}-)One-Time-Pad} eine Blockchif"|fre mit Blocklänge $n$,
+die definiert ist durch $c_k(x) = x \xor k$ und $d_k(y) = y \xor k$ für $k \in \{0, 1\}^n$.
+
+Dabei ist "`$\xor$"' das bitweise XOR
+(Addition der Argumente, wenn man sie als Elemente von $(\integer/2\integer)^n$ auf"|fasst).
+One-Time-Pads sind also genau die Vigenère-Verfahren über dem Alphabet $\{0, 1\}$
+mit Schlüssellänge $n$.
+
+One-Time-Pads sind perfekt sichere Verfahren im obigen Sinne.
+Jeder Klartext ist möglich, wenn man den Schlüssel nicht kennt.
+Wenn Eve z.\,B. die Nachricht \code{xsvii} abfängt, kann der Klartext \code{sonne} lauten
+(mit dem Schlüssel \code{feive}) oder aber \code{regen} (mit dem Schlüssel \code{gopev}).
+Dies gilt aber nur, wenn derselbe Schlüssel nur einmal verwendet wird:
+Sind $y_1 = c_k(x_1)$ und $y_2 = c_k(x_2)$ zwei verschiedene abgefangene Nachrichten,
+die mit demselben Schlüssel verschlüsselt wurden, so gilt
+$y_1 \xor y_2 = (x_1 \xor k) \xor (x_2 \xor k) = x_1 \xor x_2$.
+Wenn $x_1$ und $x_2$ natürliche Texte sind, kommen verschiedene Zeichen in
+$x_1 \xor x_2$ stark unterschiedlich häufig vor und man kann eine Häufigkeitsanalyse starten.
+Außerdem sind One-Time-Pads anfällig gegenüber Known-Plaintext-Attacken:
+Die Kenntnis eines einzigen Klartext-Geheimtext-Paars $(x, c_k(x))$ reicht aus, um mit
+$x \xor c_k(x) = x \xor (x \xor k) = k$ den Schlüssel herauszufinden.
+
+One-Time-Pads sind aus verschiedenen Gründen unpraktikabel
+(langer Schlüssel, zufällige Erzeugung nicht-trivial).
+
+\subsection{%
+    Data Encryption Standard (DES)%
+}
+
+DES ist eine symmetrische binäre Blockchif"|fre
+(Blocklänge von 64 Bit und eff. Schlüssellänge von 56 Bit), wurde 1977 eingeführt und 2001 durch
+AES abgelöst, weil es als nicht mehr sicher genug galt.
+Allerdings wird DES immer noch verwendet, Triple-DES gilt nach wie vor als sicher.
+Im Wesentlichen sind zwar nur Brute-Force-Angrif"|fe bekannt,
+diese enden aber heutzutage innerhalb eines Tages erfolgreich.
+
+DES sollte gewisse Designziele erfüllen,
+wie hohe Sicherheit,
+vollständige Spezifikation,
+gute Verständlichkeit,
+Einhaltung von Kerkhoffs' Prinzip,
+Verfügbarkeit für alle Benutzer,
+Vielseitigkeit,
+Ef"|fizienz und
+Eignung für Hardware-Implementationen.
+
+\textbf{Data Encryption Standard (DES)}:
+Sei $\BB := \{0, 1\}$.\\
+Der \begriff{Data Encryption Standard (DES)} ist eine Blockchif"|fre mit Blocklänge 64,
+wobei $y := c_k(x)$ für $x \in \BB^{64}$ und $k \in \BB^{64}$ wie folgt definiert ist:
+\begin{enumerate}
+    \item
+    Wende eine Initialpermutation $\IP\colon \BB^{64} \rightarrow \BB^{64}$ auf $x$ an
+    (siehe unten) und teile das Ergebnis auf, d.\,h.
+    $L_0 R_0 := \IP(x)$ mit $L_0, R_0 \in \BB^{32}$.
+    
+    \item
+    Berechne sukzessive für $i = 1, \dotsc, 16$ die Wörter $L_i, R_i \in \BB^{32}$ durch\\
+    $L_i := R_{i-1}$ und $R_i := L_{i-1} \xor f(R_{i-1}, k_i)$,
+    wobei die Rundenfunktion $f\colon \BB^{32} \times \BB^{48} \rightarrow \BB^{32}$
+    und der Rundenschlüssel $k_i \in \BB^{48}$ weiter unten definiert sind.
+    
+    \item
+    Berechne $y := \IP^{-1}(R_{16} L_{16})$.
+\end{enumerate}
+
+\linie
+\pagebreak
+
+\textbf{Initialpermutation}:
+Die \begriff{Initialpermutation} $\IP\colon \BB^{64} \rightarrow \BB^{64}$ ist statisch
+definiert.\\
+Ein Ausschnitt lautet $\IP(x_1 \cdots x_{64}) := x_{58} x_{50} x_{42} \cdots x_{15} x_7$.\\
+Ein Ausschnitt der Inversen ist $\IP(x_1 \cdots x_{64}) := x_{40} x_8 x_{48} \cdots x_{57} x_{25}$.
+
+\textbf{Rundenfunktion}:
+Die \begriff{Rundenfunktion} (oder \begriff{interne Blockchif"|fre})
+$f\colon \BB^{32} \times \BB^{48} \rightarrow \BB^{32}$,\\
+$(A,J) \mapsto f(A,J)$
+ist wie folgt definiert:
+\begin{enumerate}
+    \item
+    Expandiere $A$ auf 48 Bit mittels der \begriff{Expandierungsfunktion}
+    $E\colon \BB^{32} \rightarrow \BB^{48}$,
+    wobei alle 32 Bit in $E(A)$ auftauchen und 16 der Bits an bestimmten Stellen wiederholt werden
+    (ebenfalls statisch).
+    
+    \item
+    Berechne $B := E(A) \xor J$ und zerlege das Ergebnis in $B =: B_1 \cdots B_8$ mit
+    $B_i \in \BB^6$.
+    
+    \item
+    Transformiere $B_i$ in $C_i := S_i(B_i) \in \BB^4$ mittels den sog. \begriff{S-Boxen}
+    $S_i\colon \BB^6 \rightarrow \BB^4$
+    (statisch).
+    
+    \item
+    Bilde $C := C_1 \cdots C_8 \in \BB^{32}$ und wende eine statische Bitpermutation an:
+    $f(A, J) := P(C)$.
+\end{enumerate}
+Die S-Boxen sind dabei als Tabellen der Größe $4 \times 16$ gegeben.
+Für die Berechnung von\\
+$C_i = S_i(B_i)$ sei $B_i =: b_{i,1} \cdots b_{i,6}$ mit
+$b_{i,j} \in \BB$.
+Dann wählt man die Zeile $(b_1 b_6)_2$ und die Spalte $(b_2 b_3 b_4 b_5)_2$ und die Zahl an dieser
+Stelle in Binärdarstellung ist $C_i$
+(die Nummerierung beginnt jeweils bei $0$).
+Die S-Boxen (engl. \emph{substitution box}) sind nicht-lineare Komponenten, die verhindern,
+dass die Verschlüsselung nur die Lösung eines LGS ist.
+
+\textbf{Rundenschlüssel}:\\
+Die \begriff{Rundenschlüssel} $k_1, \dotsc, k_{16} \in \BB^{48}$ werden aus
+$k \in \BB^{64}$ wie folgt berechnet:
+\begin{enumerate}
+    \item
+    Wähle bestimmte 56 Bit aus $k$ mittels der statischen Abbildung
+    $\PC_1\colon \BB^{64} \rightarrow \BB^{56}$.
+    
+    \item
+    Zerlege das Ergebnis in $C_0 D_0 := \PC_1(k)$ mit $C_0, D_0 \in \BB^{28}$.
+    
+    \item
+    Berechne für $i = 1, \dotsc, 16$ die Wörter $C_i, D_i \in \BB^{28}$ durch
+    $C_i := \sigma_i(C_{i-1})$ und\\
+    $D_i := \sigma_i(D_{i-1})$, wobei $\sigma_i$ die zyklische Linksverschiebung um ein Bit
+    für $i \in \{1, 2, 9, 16\}$ und um zwei Bit sonst ist.
+    
+    \item
+    Wähle bestimmte 48 Bit aus $C_i D_i$ mittels der statischen Abbildung
+    $\PC_2\colon \BB^{56} \rightarrow \BB^{48}$ und setze
+    $k_i := \PC_2(C_i D_i)$.
+\end{enumerate}
+
+\linie
+
+\textbf{DES-Entschlüsselung}:
+Ein Geheimtext $y \in \BB^{64}$ wird entschlüsselt,
+indem man den gleichen Algortihmus wie bei der Verschlüsselung anwendet,
+nur muss man dieses Mal die Rundenschlüssel in umgekehrter Reihenfolge $k_{16}, \dotsc, k_1$
+benutzen.
+
+Diese einfache Art der Entschlüsselung ist günstig für die Hardware-Implementierung
+(spart Schaltungsaufwand).
+
+\textbf{Satz (Korrektheit der Entschlüsselung)}:
+Für den so erhaltenen Text $z \in \BB^{64}$ gilt $z = x$.
+
+\begin{Beweis}
+    Bei der Entschlüsselung von $y \in \BB^{64}$ berechnet man zuerst
+    $L_0' R_0' := \IP(y)$\\
+    $= \IP(\IP^{-1}(R_{16} L_{16})) = R_{16} L_{16}$ mit
+    $L_0', R_0' \in \BB^{32}$.
+    Es gilt also $L_0' = R_{16}$ und $R_0' = L_{16}$.
+    Induktiv beweist man nun $L_i' = R_{16-i}$ und $R_i' = L_{16-i}$ für $i = 0, \dotsc, 16$.
+    Daraus folgt dann die Behauptung mit
+    $z = \IP^{-1}(R_{16}' L_{16}') = \IP^{-1}(L_0 R_0) = \IP^{-1}(\IP(x)) = x$.
+    
+    Angenommen, es gilt $L_{i-1}' = R_{17-i}$ und $R_{i-1}' = L_{17-i}$ für ein
+    $i \in \{1, \dotsc, 16\}$.\\
+    Dann ist $L_i' := R_{i-1}' = L_{17-i} = R_{16-i}$ und
+    $R_i' := L_{i-1}' \xor f(R_{i-1}', k_{17-i}) =
+    R_{17-i} \xor f(L_{17-i}, k_{17-i})$\\
+    $= (L_{16-i} \xor f(R_{16-i}, k_{17-i})) \xor f(L_{17-i}, k_{17-i})
+    = (L_{16-i} \xor f(L_{17-i}, k_{17-i})) \xor f(L_{17-i}, k_{17-i}) = L_{16-i}$,
+    weil die Rundenschlüssel in umgekehrter Reihenfolge benutzt werden.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    Mehrfachverschlüsselung%
+}
+
+DES gilt wegen der kurzen ef"|fektiven Schlüssellänge von 56 Bit als unsicher.
+Man kann das Problem beheben, in dem man DES mehrfach anwendet.
+
+\textbf{Triple-DES}:
+\begriff{Triple-DES} ist eine Blockchif"|fre mit Blocklänge 64, wobei man
+$y := c_k(x)$ für $k := k_1 k_2 \in \BB^{128}$ mit $k_1, k_2 \in \BB^{64}$ wie folgt berechnet:
+$y = \DES_{k_1}(\DES^{-1}_{k_2}(\DES_{k_1}(x)))$
+(dabei bezeichnet $\DES_{k_i}$ die Anwendung von DES mit dem Schlüssel $k_i$).
+
+Ef"|fektiv verwendet also nun eine Schlüssellänge von 112 Bit, was heutzutage als sicher gilt.
+DES ist nicht unter Komposition abgeschlossen, d.\,h.
+$\exists_{k_1, k_2 \in \BB^{64}} \forall_{k \in \BB^{64}}\;
+\DES_{k_2} \circ \DES_{k_1} \not= \DES_k$
+(es gibt zwei Schlüssel, sodass die zweifache Anwendung der Verschlüsselung nicht durch
+eine einfache Anwendung mit irgendeinem Schlüssel durchführbar ist).
+Man kann alternativ auch drei unabhängige Schlüssel $k_i \in \BB^{64}$ verwenden, womit man auf
+eine eff. Schlüssellänge von 168 Bit kommt.
+
+Diese Art von \begriff{Mehrfachverschlüsselung} ist auch bei anderen Verfahren und mehreren
+Stufen einsetzbar.
+
+\subsection{%
+    Betriebsmodi von Blockchif"|fren%
+}
+
+Bei der Definition von Blockchif"|fren wurde implizit der ECB-Modus verwendet,
+weil jeder Block mit demselben Schlüssel verschlüsselt wird.
+Allerdings kann man Blockchif"|fren auch anders anwenden, um andere Eigenschaften zu erhalten.
+
+Im Folgenden sei $P = C := \BB^n$, $K := \BB^m$ und
+$c_k, d_k$ für $k \in K$ die (De-)Codierungsfunktionen einer Blockchif"|fre mit Blocklänge $n$.
+
+\subsubsection{%
+    ECB-Modus%
+}
+
+\textbf{ECB-Modus}:
+Der \begriff{ECB-Modus} (engl. \emph{electronic codebook}) ist wie folgt definiert.
+\begin{itemize}
+    \item
+    Sei $x = x_1 x_2 \cdots$ mit $x_i \in \BB^n$ ein Klartext und $k \in K$ ein Schlüssel.\\
+    Dann ist der entsprechende Geheimtext $y := y_1 y_2 \cdots$ mit $y_i := c_k(x_i) \in \BB^n$.
+    
+    \item
+    Sei $y = y_1 y_2 \cdots$ mit $y_i \in \BB^n$ ein Geheimtext und $k \in K$ ein Schlüssel.\\
+    Dann ist der entsprechende Geheimtext $x := x_1 x_2 \cdots$ mit $x_i := d_k(y_i) \in \BB^n$.
+\end{itemize}
+\begin{align*}
+    \begin{array}{c}
+        \xymatrix@R=5mm@C=5mm{
+            &
+            x_1\ar[d]&
+            &
+            x_2\ar[d]\\
+            %
+            k\ar[r]&
+            *++[F-:<5mm>]{c_k}\ar[d]&
+            k\ar[r]&
+            *++[F-:<5mm>]{c_k}\ar[d]&
+            \cdots\\
+            %
+            &
+            y_1&
+            &
+            y_2
+        }\\
+        \\
+        \text{\emph{Verschlüsselung}}
+    \end{array}
+    &&
+    \begin{array}{c}
+        \xymatrix@R=5mm@C=5mm{
+            &
+            y_1\ar[d]&
+            &
+            y_2\ar[d]\\
+            %
+            k\ar[r]&
+            *++[F-:<5mm>]{d_k}\ar[d]&
+            k\ar[r]&
+            *++[F-:<5mm>]{d_k}\ar[d]&
+            \cdots\\
+            %
+            &
+            x_1&
+            &
+            x_2
+        }\\
+        \\
+        \text{\emph{Entschlüsselung}}
+    \end{array}
+\end{align*}
+
+\linie
+
+\textbf{Nachteile}:
+Gleiche Klartextblöcke $x_i = x_j$ für $i \not= j$ werden zu gleichen Geheimtextblöcken
+verschlüsselt.
+Damit übertragen sich Regelmäßigkeiten vom Klar- in den Geheimtext,
+was Angreifern Informationen über den Klartext liefert.
+Außerdem könnte der Angreifer einfach Geheimtext-Blöcke einfügen, die mit demselben
+Schlüssel codiert wurden (Chosen-Plaintext-Attacke),
+Geheimtext-Blöcke unbemerkt unterschlagen oder permutieren.
+Aus diesen Gründen ist der ECB-Modus nicht sicher und für lange Texte ungeeignet.
+
+\pagebreak
+
+\subsubsection{%
+    CBC-Modus%
+}
+
+\textbf{CBC-Modus}:
+Der \begriff{CBC-Modus} (engl. \emph{cipher-block chaining}) ist wie folgt definiert.\\
+Zunächst wählt man einen festen Initialisierungsblock $y_0 \in \BB^n$.
+\begin{itemize}
+    \item
+    Sei $x = x_1 x_2 \cdots$ mit $x_i \in \BB^n$ ein Klartext und $k \in K$ ein Schlüssel.\\
+    Dann ist der entsprechende Geheimtext $y := y_1 y_2 \cdots$ mit
+    $y_i := c_k(y_{i-1} \xor x_i) \in \BB^n$.
+    
+    \item
+    Sei $y = y_1 y_2 \cdots$ mit $y_i \in \BB^n$ ein Geheimtext und $k \in K$ ein Schlüssel.\\
+    Dann ist der entsprechende Geheimtext $x := x_1 x_2 \cdots$ mit
+    $x_i := y_{i-1} \xor d_k(y_i) \in \BB^n$.
+\end{itemize}
+\begin{align*}
+    \begin{array}{c}
+        \xymatrix@R=5mm@C=5mm{
+            &
+            x_1\ar[d]&
+            &
+            &
+            x_2\ar[d]\\
+            %
+            y_0\ar[r]&
+            \bigxor\ar[d]&
+            *=0{}\ar[rr]^{y_1}&
+            &
+            \bigxor\ar[d]&
+            *=0{}\ar[r]^{y_2}&
+            \cdots\\
+            %
+            k\ar[r]&
+            *++[F-:<5mm>]{c_k}\ar[dd]&
+            &
+            k\ar[r]&
+            *++[F-:<5mm>]{c_k}\ar[dd]\\
+            %
+            &
+            *=0{\smallbullet}\ar@{-}[r]&
+            *=0{}\ar@{-}[uu]&
+            &
+            *=0{\smallbullet}\ar@{-}[r]&
+            *=0{}\ar@{-}[uu]
+            \\
+            %
+            &
+            y_1&
+            &
+            &
+            y_2
+        }\\
+        \\
+        \text{\emph{Verschlüsselung}}
+    \end{array}
+    &&
+    \begin{array}{c}
+        \xymatrix@R=5mm@C=5mm{
+            &
+            y_1\ar[dd]&
+            &
+            &
+            y_2\ar[dd]\\
+            %
+            &
+            *=0{\smallbullet}\ar@{-}[r]&
+            *=0{}\ar@{-}[dd]&
+            &
+            *=0{\smallbullet}\ar@{-}[r]&
+            *=0{}\ar@{-}[dd]
+            \\
+            %
+            k\ar[r]&
+            *++[F-:<5mm>]{d_k}\ar[d]&
+            &
+            k\ar[r]&
+            *++[F-:<5mm>]{d_k}\ar[d]\\
+            %
+            y_0\ar[r]&
+            \bigxor\ar[d]&
+            *=0{}\ar[rr]^{y_1}&
+            &
+            \bigxor\ar[d]&
+            *=0{}\ar[r]^{y_2}&
+            \cdots\\
+            %
+            &
+            x_1&
+            &
+            &
+            x_2
+        }\\
+        \\
+        \text{\emph{Entschlüsselung}}
+    \end{array}
+\end{align*}
+
+\linie
+
+\textbf{Vorteile}:
+Gleiche Texte werden nicht gleich verschlüsselt, wenn man einen anderen Initialisierungsblock $y_0$
+verwendet (der aber beiden Kommunikationspartner bekannt sein muss, wenn $x_1$ decodiert werden
+soll).
+Im Gegensatz zum ECB-Modus werden gleiche Klartext-Blöcke $x_i = x_j$ mit $i \not= j$
+nicht gleich verschlüsselt.
+Daher kann Eve aus Mustern im Geheimtext keine Schlüsse über den Klartext ziehen,
+außerdem können Blöcke nicht mehr geändert, eingefügt, unterschlagen oder permutiert werden,
+ohne dass das Bob merken würde (die Entschlüsselung funktioniert dann nicht mehr).
+
+\textbf{Nachteile}:
+Zum Entschlüsseln eines Geheimtext-Blocks benötigt man den vorherigen Geheim"-text-Block,
+was beim unzuverlässigen Datenkanälen wie Funk problematisch sein kann.
+Allerdings wirkt sich ein fehlerhaft übertragener Geheimtext-Block nur auf den nächsten Block aus,
+weswegen Übertragungsfehler nicht die komplette Kommunikation unterbinden
+(daher muss Bob $y_0$ nur kennen, wenn er $y_1$ entschlüsseln will).
+Ein weiterer Nachteil ist die Ef"|fizienz, da für die Entschlüsselung von $x_i$ auf die
+vollständige Übertragung von $y_i$ und $y_{i-1}$ gewartet werden muss
+(schlecht bei großen Blockgrößen).
+
+\pagebreak
+
+\subsubsection{%
+    CFB-Modus%
+}
+
+\textbf{CFB-Modus}:
+Sei $r \in \natural$ mit $r \le n$.
+Der \begriff{CFB-Modus} (engl. \emph{cipher feedback}) ist wie folgt definiert:
+Zunächst wählt man einen festen Initialisierungsblock $I_1 \in \BB^n$.
+\begin{itemize}
+    \item
+    Sei $x \in \BB^\ast$ ein Klartext und $k \in K$ ein Schlüssel.\\
+    Unterteile $x$ in $x = x_1 x_2 \cdots$ mit $x_i \in \BB^r$.
+    Berechne nun sukzessive für $i \ge 1$ die Wörter $z_i, I_i \in \BB^n$ und $y_i \in \BB^r$
+    durch $z_i := c_k(I_i)$,
+    $y_i := x_i \xor \pi_r(z_i)$ und
+    $I_{i+1} := \sigma_r(I_i \leftarrow y_i)$.\\
+    Dann ist der entsprechende Geheimtext $y := y_1 y_2 \cdots$.
+    
+    \item
+    Sei $y \in \BB^\ast$ ein Geheimtext und $k \in K$ ein Schlüssel.\\
+    Unterteile $y$ in $y = y_1 y_2 \cdots$ mit $y_i \in \BB^r$.
+    Berechne nun sukzessive für $i \ge 1$ die Wörter $z_i, I_i \in \BB^n$ und $x_i \in \BB^r$
+    durch $z_i := c_k(I_i)$,
+    $x_i := y_i \xor \pi_r(z_i)$ und
+    $I_{i+1} := \sigma_r(I_i \leftarrow y_i)$.\\
+    Dann ist der entsprechende Klartext $x := x_1 x_2 \cdots$.
+\end{itemize}
+Dabei ist $\pi_r\colon \BB^n \rightarrow \BB^r$ die Projektion auf die oberen $r$ Bit und
+$\sigma_r(I_i \leftarrow y_i)$ eine Verschiebung um $r$ Bit ist,
+wobei zunächst die oberen $r$ Bit von $I_i$ gelöscht, $I_i$ um $r$ nach links
+verschoben und anschließend $y_i$ in die unteren $r$ Bit eingefügt wird.
+\begin{align*}
+    \begin{array}{ccc}
+        \xymatrix@R=4mm@C=4mm{
+            &
+            &
+            *=0{}\ar@{-}[rrr]&
+            &
+            &
+            *=0{}\ar[d]^{I_1}&
+            *=0{}\ar[rr]^{I_2}&
+            &
+            \cdots\\
+            %
+            &
+            I_1\ar[dd]_{I_1}
+            &
+            &
+            *=0{}\ar[rr]^{y_1}&
+            &
+            *++[F-:<5mm>]{\sigma_r}\ar[dd]_{I_2}&
+            &
+            *=0{}\ar[r]^{y_2}&
+            \cdots\\
+            %
+            &
+            *=0{\smallbullet}\ar@{-}[r]&
+            *=0{}\ar@{-}[uu]&
+            &
+            &
+            *=0{\smallbullet}\ar@{-}[r]&
+            *=0{}\ar@{-}[uu]\\
+            %
+            k\ar[r]&
+            *++[F-:<5mm>]{c_k}\ar[d]&
+            &
+            &
+            k\ar[r]&
+            *++[F-:<5mm>]{c_k}\ar[d]\\
+            %
+            &
+            *++[F-:<5mm>]{\pi_r}\ar[d]&
+            &
+            &
+            &
+            *++[F-:<5mm>]{\pi_r}\ar[d]\\
+            %
+            x_1\ar[r]&
+            \bigxor\ar[dd]&
+            &
+            &
+            x_2\ar[r]&
+            \bigxor\ar[dd]\\
+            %
+            &
+            *=0{\smallbullet}\ar@{-}[rr]&
+            &
+            *=0{}\ar@{-}[uuuuu]&
+            &
+            *=0{\smallbullet}\ar@{-}[rr]&
+            &
+            *=0{}\ar@{-}[uuuuu]\\
+            %
+            &
+            y_1&
+            &
+            &
+            &
+            y_2
+        }
+        &
+        &
+        \xymatrix@R=5mm@C=4mm{
+            &
+            &
+            *=0{}\ar@{-}[rr]&
+            &
+            *=0{}\ar[d]^{I_1}&
+            *=0{}\ar[rr]^{I_2}&
+            &
+            \cdots\\
+            %
+            &
+            I_1\ar[dd]_{I_1}
+            &
+            &
+            y_1\ar[r]&
+            *++[F-:<5mm>]{\sigma_r}\ar[dd]_{I_2}&
+            &
+            y_2\ar[r]&
+            \cdots\\
+            %
+            &
+            *=0{\smallbullet}\ar@{-}[r]&
+            *=0{}\ar@{-}[uu]&
+            &
+            *=0{\smallbullet}\ar@{-}[r]&
+            *=0{}\ar@{-}[uu]\\
+            %
+            k\ar[r]&
+            *++[F-:<5mm>]{c_k}\ar[d]&
+            &
+            k\ar[r]&
+            *++[F-:<5mm>]{c_k}\ar[d]\\
+            %
+            &
+            *++[F-:<5mm>]{\pi_r}\ar[d]&
+            &
+            &
+            *++[F-:<5mm>]{\pi_r}\ar[d]\\
+            %
+            y_1\ar[r]&
+            \bigxor\ar[d]&
+            &
+            y_2\ar[r]&
+            \bigxor\ar[d]\\
+            %
+            &
+            x_1&
+            &
+            &
+            x_2
+        }\\
+        &&\\
+        \text{\emph{Verschlüsselung}}
+        &&
+        \text{\emph{Entschlüsselung}}
+    \end{array}
+\end{align*}
+Es ist kein Fehler, dass jeweils nur $c_k$ verwendet wird, weil die Blockchif"|fre nur zum
+Ermitteln der Rundenschlüsseln $z_i$ eingesetzt werden.
+
+\linie
+
+\textbf{Vorteile}:
+%Im Gegensatz zum CBC-Modus reicht die Kenntnis von $y_i$ aus, um $x_i$ zu berechnen.
+Der Folge von $I_i$ und $z_i$ können von Bob simultan zu Alice errechnet werden,
+was ein klarer Ef"|fizienzvorteil ist, wenn $r \ll n$
+(nur $r$ Bit müssen übertragen werden).
+
+\textbf{Nachteile}:
+Übertragungsfehler wirken sich gravierender aus als beim CBC-Modus.
+Wenn $y_\ell$ fehlerhaft ist, können $x_\ell, \dotsc, x_{\ell+\lceil\frac{n}{r}\rceil}$ nicht
+entschlüsselt werden
+(bis der Übertragungsfehler aus dem Schieberegister "`herausgeschoben"' wurde).
+Außerdem können nur symmetrische Verfahren beim CFB-Modus angewendet werden.
+
+\pagebreak
+
+\subsubsection{%
+    OFB-Modus%
+}
+
+\textbf{OFB-Modus}:
+Sei $r \in \natural$ mit $r \le n$.
+Der \begriff{OFB-Modus} (engl. \emph{output feedback}) ist wie folgt definiert:
+Zunächst wählt man einen festen Initialisierungsblock $z_0 \in \BB^n$.
+\begin{itemize}
+    \item
+    Sei $x \in \BB^\ast$ ein Klartext und $k \in K$ ein Schlüssel.\\
+    Unterteile $x$ in $x = x_1 x_2 \cdots$ mit $x_i \in \BB^r$.
+    Berechne nun sukzessive für $i \ge 1$ die Wörter $z_i \in \BB^n$ und $y_i \in \BB^r$
+    durch $z_i := c_k(z_{i-1})$ und
+    $y_i := x_i \xor \pi_r(z_i)$.\\
+    Dann ist der entsprechende Geheimtext $y := y_1 y_2 \cdots$.
+    
+    \item
+    Sei $y \in \BB^\ast$ ein Geheimtext und $k \in K$ ein Schlüssel.\\
+    Unterteile $y$ in $y = y_1 y_2 \cdots$ mit $y_i \in \BB^r$.
+    Berechne nun sukzessive für $i \ge 1$ die Wörter $z_i \in \BB^n$ und $x_i \in \BB^r$
+    durch $z_i := c_k(z_{i-1})$ und
+    $x_i := y_i \xor \pi_r(z_i)$.\\
+    Dann ist der entsprechende Klartext $x := x_1 x_2 \cdots$.
+\end{itemize}
+Dabei ist $\pi_r\colon \BB^n \rightarrow \BB^r$ wie oben die Projektion auf die oberen $r$ Bit.
+\begin{align*}
+    \begin{array}{c}
+        \xymatrix@R=5mm@C=5mm{
+            &
+            z_0\ar[d]&
+            *=0{}\ar@{-}[rr]&
+            &
+            *=0{}\ar[d]_{z_1}&
+            *=0{}\ar[r]^{z_2}&
+            \cdots\\
+            %
+            k\ar[r]&
+            *++[F-:<5mm>]{c_k}\ar[dd]_{z_1}&
+            &
+            k\ar[r]&
+            *++[F-:<5mm>]{c_k}\ar[dd]_{z_2}\\
+            %
+            &
+            *=0{\smallbullet}\ar@{-}[r]&
+            *=0{}\ar@{-}[uu]&
+            &
+            *=0{\smallbullet}\ar@{-}[r]&
+            *=0{}\ar@{-}[uu]\\
+            %
+            &
+            *++[F-:<5mm>]{\pi_r}\ar[d]&
+            &
+            &
+            *++[F-:<5mm>]{\pi_r}\ar[d]\\
+            %
+            x_1\ar[r]&
+            \bigxor\ar[d]&
+            &
+            x_2\ar[r]&
+            \bigxor\ar[d]\\
+            %
+            &
+            y_1&
+            &
+            &
+            y_2
+        }\\
+        \\
+        \text{\emph{Verschlüsselung}}
+    \end{array}
+    &&
+    \begin{array}{c}
+        \xymatrix@R=5mm@C=5mm{
+            &
+            z_0\ar[d]&
+            *=0{}\ar@{-}[rr]&
+            &
+            *=0{}\ar[d]_{z_1}&
+            *=0{}\ar[r]^{z_2}&
+            \cdots\\
+            %
+            k\ar[r]&
+            *++[F-:<5mm>]{c_k}\ar[dd]_{z_1}&
+            &
+            k\ar[r]&
+            *++[F-:<5mm>]{c_k}\ar[dd]_{z_2}\\
+            %
+            &
+            *=0{\smallbullet}\ar@{-}[r]&
+            *=0{}\ar@{-}[uu]&
+            &
+            *=0{\smallbullet}\ar@{-}[r]&
+            *=0{}\ar@{-}[uu]\\
+            %
+            &
+            *++[F-:<5mm>]{\pi_r}\ar[d]&
+            &
+            &
+            *++[F-:<5mm>]{\pi_r}\ar[d]\\
+            %
+            y_1\ar[r]&
+            \bigxor\ar[d]&
+            &
+            y_2\ar[r]&
+            \bigxor\ar[d]\\
+            %
+            &
+            x_1&
+            &
+            &
+            x_2
+        }\\
+        \\
+        \text{\emph{Entschlüsselung}}
+    \end{array}
+\end{align*}
+Es handelt sich also um ein spezielles One-Time-Pad mit einem Schlüssel,
+der nur von $k$ und $z_0$ abhängt.
+
+\linie
+
+\textbf{Vorteile}:
+Die $z_i$ können schon vor der Kommunikation berechnen werden, wenn $z_0$ bekannt ist,
+weil sie nicht von $x_i$ oder $y_i$ abhängen.
+Die Geheimtexte $y_i$ hängen nur von der Position ab (also nur von $x_i$).
+Damit wirken sich Übertragungsfehler nur lokal aus, d.\,h. bei einem Fehler in $y_i$ kann nur
+$x_i$ nicht entschlüsselt werden.
+
+\textbf{Nachteile}:
+Texte sind wieder leichter manipulierbar als bei CFB oder CBC.
+Soll bei einer zweiten Kommunikation mit Klartext-Blöcken $x_i'$
+derselbe Schlüssel $k \in K$ verwendet werden,
+so muss $z_0$ geändert werden.
+Sonst ergibt sich die selbe Folge von $z_i$ und daher derselbe One-Time-Pad-Schlüssel,
+wie oben erläutert lässt sich damit z.\,B. $x_i \xor x_i'$ ermitteln und,
+wenn $x_i'$ bekannt ist, daher sogar $x_i$ selbst (Known-Plaintext-Attacke).
+Weitere Nachteile sind, dass $z_0$ auf jeden Fall vorher vereinbart sein muss und
+dass nur symmetrische Verfahren verwendet werden können.
+
+\pagebreak

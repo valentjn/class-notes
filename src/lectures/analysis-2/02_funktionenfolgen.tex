@@ -1,0 +1,653 @@
+\section{%
+    Funktionenfolgen, Funktionenreihen, parameterabhängige Integrale%
+}
+
+\subsection{%
+    Das Prinzip der Gleichmäßigkeit%
+}
+
+Eine Eigenschaft $A(p)$ gilt gleichmäßig bzgl. $p \in P$
+(\emph{Parameter} aus \emph{Parametermenge}), falls
+\begin{enumerate}
+    \item[(1)] $A(p)$ ist für alle $p \in P$ wahr
+    \item[(2)] die Konstanten in $A(p)$ sind von $p$ unabhängig wählbar.
+\end{enumerate}
+
+\linie
+
+\textbf{gleichmäßige Konvergenz einer Folge}:
+Sei $a: \natural \times P \rightarrow M$ eine parameterabhängige Folge
+$\{a_k(p)\}_{k \in \natural}$ ($P$ Parametermenge),
+wobei $(M,d)$ ein metrischer Raum ist.
+
+\textbf{punktweise Konvergenz}: $a_n \xrightarrow{(\cdot)} a(p)
+\quad\Leftrightarrow\quad \forall_{p \in P} \forall_{\varepsilon > 0}
+\exists_{N(\varepsilon, p)} \forall_{n \ge N(\varepsilon, p)}\;
+d(a_n(p), a(p)) < \varepsilon$
+
+\textbf{gleichmäßige Konvergenz}: $a_n \rightrightarrows a(p)
+\quad\Leftrightarrow\quad \forall_{\varepsilon > 0} \exists_{N(\varepsilon)}
+\forall_{p \in P} \forall_{n \ge N(\varepsilon)}\;
+d(a_n(p), a(p)) < \varepsilon$
+
+Zum Beispiel gilt bei der Folge $a_n(p) = \frac{n/p}{1 + (n / p)^2}$
+($n, p \in \natural$) für $n = p$, dass $a_n(p) = \frac{1}{2}$,
+jedoch gilt für jedes feste $p$, dass $\lim_{n \to \infty} a_n(p) = 0$,
+aber nicht gleichmäßig.
+
+Dagegen ist die Folge $a_n(p) = \frac{1}{1 + n + p} < \frac{1}{1 + n}$
+für $n, p \in \natural$ gleichmäßig konvergent bzgl. $p \in P = \natural$,
+da für $n \ge \frac{1}{\varepsilon}$ gilt, dass
+$|a_n(p) - 0| < \varepsilon$ für alle $p \in \natural$.
+
+\linie
+
+\textbf{gleichmäßige Konvergenz einer Reihe}:
+Sei $a: \natural \times P \rightarrow \field^n$ eine Folge,
+wobei $\field \in \{\real, \complex\}$. \\
+$\sum_{k=1}^\infty a_n(p)$ konvergiert gleichmäßig bzgl. $p \in P$,
+falls $S_m(p) = \sum_{n=1}^m a_n(p) \rightrightarrows S(p)$ gleichmäßig.
+
+\textbf{gleichmäßige Konvergenz uneigentlicher Integrale}: \\
+Sei $f: \left[0, +\infty\right[ \times P \rightarrow \field^d$ mit
+$\forall_{p \in P} \forall_{R > 0}\; f(x, p) \in \R[0,R]_x$.
+Dann konvergiert $\int_0^{+\infty} f(x, p)\dx$ gleichmäßig bzgl. $p \in P$,
+falls $\forall_{\varepsilon > 0} \exists_{R(\varepsilon)}
+\forall_{R', R'' \ge R(\varepsilon)} \forall_{p \in P}\;
+\big|\int_{R'}^{R''} f(x, p)\dx\big| < \varepsilon$.
+
+\linie
+
+\textbf{gleichmäßig stetige Funktionen}: \\
+Seien $(M_1, d_1)$, $(M_2, d_2)$ metrische Räume sowie
+$f: X \subset M_1 \rightarrow M_2$.
+
+\textbf{punktweise Stetigkeit}:
+$\forall_{x_0 \in X} \forall_{\varepsilon > 0}
+\exists_{\delta(x_0, \varepsilon) = \delta > 0}
+\forall_{x \in U_\delta(x_0) \cap X}\; f(x) \in U_\varepsilon(f(x_0))$
+
+\textbf{gleichmäßige Stetigkeit}:
+$\forall_{\varepsilon > 0}
+\exists_{\delta(\varepsilon) = \delta > 0} \forall_{x_0 \in X}
+\forall_{x \in U_\delta(x_0) \cap X}\; f(x) \in U_\varepsilon(f(x_0))$
+
+Gleichmäßige Stetigkeit/Konvergenz impliziert punktweise
+Stetigkeit/Konvergenz. \\
+\emph{Die Umkehrung gilt nicht!}
+
+\linie
+
+\textbf{Lemma}: Sei $a: \natural \times P \rightarrow M$.
+Dann ist $a_n(p) \rightrightarrows a(p) \;\Leftrightarrow\;
+\lim_{n \to \infty} \left(\sup_{p \in P} d(a_n(p), a(p))\right) = 0$.
+
+\subsection{%
+    Satz zum Vertauschen von Grenzwerten%
+}
+
+Man betrachtet Doppelfolgen mit $P = \natural$, d.\,h. $a_n(p) = a_{n,p}$.
+Angenommen, es gibt Grenzwerte $\lim_{n \to \infty} a_{n,p} = u(p)$
+und $\lim_{p \to \infty} a_{n,p} = v(n)$.
+Im Allgemeinen gilt dann \textbf{nicht} \\
+$\lim_{p \to \infty} (\lim_{n \to \infty} a_{n,p}) =
+\lim_{p \to \infty} u(p) = \lim_{n \to \infty} v(n) =
+\lim_{n \to \infty} (\lim_{p \to \infty} a_{n,p})$.
+
+\textbf{Satz}:
+Sei $a: \natural \times \natural \rightarrow M$ eine Doppelfolge
+mit $(M,d)$ vollständig.
+Außerdem existiere für alle $p \in \natural$ der Grenzwert
+$\lim_{n \to \infty} a_{n,p} = u(p)$ sowie
+für alle $n \in \natural$ existiere der Grenzwert
+$\lim_{p \to \infty} a_{n,p} = v(n)$.
+Einer dieser Grenzwerte sei gleichmäßig angenommen. \\
+Dann existieren die Grenzwerte
+$\lim_{p \to \infty} u(p) = \lim_{n \to \infty} v(n)$
+und sind gleich.
+
+Unter diesen Voraussetzungen gilt somit
+$\lim_{p \to \infty} (\lim_{n \to \infty} a_{n,p}) =
+\lim_{n \to \infty} (\lim_{p \to \infty} a_{n,p})$.
+
+\subsection{%
+    Zur Stetigkeit der Grenzfunktion und
+    zum Vertauschen von Grenzwerten vom Typ
+    \texorpdfstring
+    {$\lim_{n \to \infty}$ und $\lim_{x \to \xi}$}%
+    {n → ∞ und ξ → ∞}%
+}
+
+Seien $M_1, M_2$ metrische Räume, $M_2$ vollständig, $X \subset M_1$,
+$\xi \in \acc(X)$ sowie $f: \natural \times X \rightarrow M_2$
+eine Folge von Funktionen $f_n(x)$ mit $n \in \natural$, $x \in X$.
+
+\textbf{Vertauschen von $\lim_{n \to \infty}$ und $\lim_{x \to \xi}$}: \\
+Für alle $n \in \natural$ existiere der Grenzwert
+$\lim_{x \to \xi} f_n(x) = a_n$
+sowie der Grenzwert \\
+$\lim_{n \to \infty} f_n(x) = \varphi(x)$ existiere
+gleichmäßig bzgl. $x \in X$. \\
+Dann existieren die Grenzwerte
+$\lim_{n \to \infty} a_n = \lim_{x \to \xi} \varphi(x)$ und sind gleich.
+
+Unter diesen Voraussetzungen gilt somit
+$\lim_{n \to \infty} \left(\lim_{x \to \xi} f_n(x)\right) =
+\lim_{x \to \xi} \left(\lim_{n \to \infty} f_n(x)\right)$.
+
+\linie
+
+\textbf{Anwendung ($\varphi$ stetig in $\xi$)}: \\
+Gilt zudem $\xi \in X$ und $f_n$ ist stetig in $\xi$ für alle
+$n \in \natural$, dann ist auch $\varphi$ stetig in $\xi$.
+
+\textbf{Anmerkung}: Ist $f_n \in \C([a,b], \field^d)$ für alle
+$n \in \natural$ und $\lim_{n \to \infty} f_n(x) = \varphi(x)$ existiert
+gleichmäßig bzgl. $x \in [a,b]$, so ist auch
+$\varphi \in \C([a,b], \field^d)$ und
+$f_n \xrightarrow{\norm{\cdot}_\C} \varphi$.
+
+\emph{Die Voraussetzung "`gleichmäßig"' ist wesentlich!}
+
+\linie
+
+\textbf{Banachraum}: Ein Banachraum ist ein vollständiger, normierter
+Vektorraum (d.\,h. vollständig bzgl. der von der Norm induzierten Metrik).
+
+Seien nun $Y$ ein Banachraum, $M$ ein metrischer Raum, $X \subset M$,
+$\xi \in \acc(X)$ und $a: \natural \times X \rightarrow Y$ eine
+Funktionenfolge $a_n(x)$.
+
+\textbf{Vertauschen von $\sum_{n=1}^\infty$ und $\lim_{x \to \xi}$}: \\
+Sei $\lim_{x \to \xi} a_n(x) = b_n$ konvergent für alle $n \in \natural$ und
+$\sum_{n=1}^\infty a_n(x) = S(x)$ konvergiere gleichmäßig bzgl. $x \in X$. \\
+Dann existieren die Grenzwerte
+$\sum_{n=1}^\infty b_n = \lim_{x \to \xi} S(x)$ und sind gleich.
+
+Unter diesen Voraussetzungen gilt somit
+$\sum_{n=1}^\infty \left(\lim_{x \to \xi} a_n(x)\right) =
+\lim_{x \to \xi} \left(\sum_{n=1}^\infty a_n(x)\right)$.
+
+\textbf{Folgerung}: Ist zusätzlich $\xi \in X$ und sind alle $a_n(x)$
+stetig in $\xi$, dann ist auch \\
+$S(x) = \sum_{n=1}^\infty a_n(x)$ in $\xi$ stetig.
+
+\linie
+
+Wie zeigt man, dass $\sum_{n=1}^\infty a_n(x)$ gleichmäßig bzgl. $x \in X$
+konvergiert?
+
+\textbf{Majorantenkriterium von \textsc{Weierstraß}}:
+Für alle $n \in \natural$ und $x \in X$ sei $\norm{a_n(x)} \le C_n$
+(d.\,h. $C_n$ ist von $x$ unabhängig).
+Zudem sei $\sum_{n=1}^\infty C_n$ konvergent. \\
+Dann konvergiert $\sum_{n=1}^\infty a_n(x)$ gleichmäßig bzgl. $x \in X$.
+
+\textbf{Anwendung (\textsc{Fourier}-Reihen)}:
+Seien $a_n \in \complex$ eine komplexe Folge und $\sum_{n=1}^\infty |a_k|$
+sei konvergent.
+Dann konvergieren folgende Funktionenreihen ebenfalls (absolut) für alle
+$x \in \real$ und sind stetig:
+$S(x) = \sum_{n=1}^\infty a_n \sin(nx)$,
+$C(x) = a_0 \sum_{n=1}^\infty a_n \cos(nx)$,
+$E(x) = \sum_{n \in \integer} a_n e^{inx}$.
+
+\pagebreak
+
+\subsection{%
+    Zur Stetigkeit der Grenzfunktion zweier Variablen%
+}
+
+\textbf{Vertauschen von $\lim_{x \to x_0}$ und $\lim_{y \to y_0}$}:
+Seien $M_1, M_2, M_3$ metrische Räume mit $M_3$ vollständig,
+$X \subset M_1$, $Y \subset M_2$, $x_0 \in \acc(X)$ und $y_0 \in \acc(Y)$. \\
+Weiterhin sei $f: X \times Y \rightarrow M_3$ eine Funktion, wobei
+für alle $x \in X$ der Grenzwert \\
+$\lim_{y \to y_0} f(x, y) = \varphi(x)$
+und für alle $y \in Y$ der Grenzwert $\lim_{x \to x_0} f(x, y) = \psi(y)$
+existiert. \\
+Einer dieser beiden Grenzwerte werde gleichmäßig angenommen. \\
+Dann gibt es die Grenzwerte
+$\lim_{x \to x_0} \varphi(x) = \lim_{y \to y_0} \psi(y)$ und sind gleich.
+
+Unter diesen Voraussetzungen gilt somit
+$\lim_{x \to x_0} \left(\lim_{y \to y_0} f(x, y)\right) =
+\lim_{y \to y_0} \left(\lim_{x \to x_0} f(x, y)\right)$.
+
+\textbf{Folgerung}:
+Seien zusätzlich $x_0 \in X$, $f(x, y)$ stetig im Punkt
+$x = x_0$ (für jedes beliebige $y$) und der erste Grenzwert werde gleichmäßig
+erreicht. \\
+Dann ist auch $\varphi(x)$ stetig im Punkt $x = x_0$.
+
+\subsection{%
+    Zum Vertauschen von Grenzwert und \textsc{Riemann}-Integral%
+}
+
+\textbf{Vertauschen von $\lim_{n \to \infty}$ und $\int_a^b$}:
+Seien $f_n \in \C([a,b], \field^d)$ für $n \in \natural$, wobei \\
+$\lim_{n \to \infty} f_n(x) = f(x)$ gleichmäßig bzgl. $x \in [a,b]$. \\
+Dann gibt es die Grenzwerte
+$\lim_{n \to \infty} \left(\int_a^b f_n(x)\dx\right) = \int_a^b f(x)\dx$
+und sind gleich.
+
+\textbf{Vertauschen von $\sum_{n=1}^\infty$ und $\int_a^b$}:
+Seien $a_n \in \C([a,b], \field^d)$ für $n \in \natural$, wobei \\
+$\sum_{n=1}^\infty a_n(x) = S(x)$ gleichmäßig bzgl. $x \in [a,b]$. \\
+Dann gibt es die Grenzwerte
+$\sum_{n=1}^\infty \left(\int_a^b a_n(x)\dx\right) = \int_a^b S(x)\dx$
+und sind gleich.
+
+\textbf{Vertauschen von $\lim_{x \to x_0}$ und $\int_a^b$}:
+Seien $M$ ein metrischer Raum mit $X \subset M$ und \\
+$x_0 \in \acc(X)$.
+Außerdem sei $f: X \times [a,b] \rightarrow \field^d$ eine Funktion mit
+$\forall_{x \in X}\; f(x, \cdot) \in \C([a,b])$ und
+$\lim_{x \to x_0} f(x, y) = \varphi_{x_0}(y)$ werde gleichmäßig bzgl.
+$y \in [a,b]$ angenommen. \\
+Dann gibt es die Grenzwerte
+$\lim_{x \to x_0} \left(\int_a^b f(x, y)\dy\right) =
+\int_a^b \varphi_{x_0}(y)\dy$
+und sind gleich.
+
+\linie
+
+\textbf{kartesisches Produkt zweier metrischer Räume}:
+Seien $(M_1, d_1)$ und $(M_2, d_2)$ zwei metrische Räume und
+$M = M_1 \times M_2$.
+Definiere für $m' = (x', y') \in M$ und $m'' = (x'', y'') \in M$
+die Funktion $d(m', m'') = d_1(x', x'') + d_2(y', y'')$.
+Damit wird $(M, d)$ zum metrischen Raum,
+$d$ ist die von $M = M_1 \times M_2$ induzierte Metrik.
+Ist eine Folge von $m_k = (x_k, y_k) \in M$ und $m = (x, y)$ gegeben,
+so ist $m_k \xrightarrow{d} m \;\Leftrightarrow\;
+(x_k \xrightarrow{d_1} x) \land (y_k \xrightarrow{d_2} y)$.
+
+\textbf{Lemma für kompakte Mengen}:
+Seien $X \subset M_1$ kompakt und $Y \subset M_2$ kompakt. \\
+Dann ist $X \times Y \subset M$ ebenfalls kompakt.
+
+\linie
+
+\textbf{Satz (Stetigkeit von $J(x)$)}:
+Seien $M$ ein metrischer Raum, $X \subset M$ kompakt und \\
+$f: X \times [a,b] \rightarrow \field^d$ mit
+$f \in \C(X \times [a,b], \field^d)$. \\
+Dann ist $J(x) = \int_a^b f(x, y)\dy$ stetig in $x$.
+
+\pagebreak
+
+\subsection{%
+    Zum Vertauschen von Grenzwert und Ableitung%
+}
+
+
+\textbf{Vorsicht}:
+Seien $f_n \in \C([a,b])$ gegeben mit $f_n$ dif"|fb. in $\left]a,b\right[$
+sowie $f_n(x) \rightrightarrows f(x)$ gleichmäßig bzgl. $x \in [a,b]$.
+Dann gilt i.\,A. \emph{nicht}, dass $f$ in $\left]a,b\right[$ dif"|fb. ist
+und $f'(x) = \lim_{n \to \infty} f_n'(x)$!
+
+\textbf{Vertauschen von $\lim_{n \to \infty}$ und $\frac{d}{dx}$}:
+Seien $f_n \in \C^1([a,b], \field^d)$ für $n \in \natural$
+und für alle $x \in [a,b]$ existiere der Grenzwert
+$\lim_{n \to \infty} f_n(x) = f(x)$ sowie der Grenzwert
+$\lim_{n \to \infty} f_n'(x) = \varphi(x)$ werde gleichmäßig bzgl.
+$x \in [a,b]$ angenommen. \\
+Dann ist auch $f \in \C^1([a,b])$ und $f'(x) = \varphi(x)$.
+
+Unter diesen Voraussetzungen gilt somit
+$\lim_{n \to \infty} \left(\frac{d}{dx} f_n(x)\right) =
+\frac{d}{dx} \left(\lim_{n \to \infty} f_n(x)\right)$.
+
+\textbf{Vertauschen von $\sum_{n=1}^\infty$ und $\frac{d}{dx}$}:
+Seien $a_k \in \C^1([a,b], \field^d)$ für $k \in \natural$ und für alle \\
+$x \in [a,b]$ existiere die Reihe
+$\sum_{k=1}^\infty a_k(x) = S(x)$ sowie der Grenzwert
+$\sum_{k=1}^\infty a_k'(x) = T(x)$ werde gleichmäßig bzgl.
+$x \in [a,b]$ angenommen. \\
+Dann ist auch $S \in \C^1([a,b])$ und $S'(x) = T(x)$.
+
+\linie
+
+\textbf{partielle Ableitung}:
+Seien $f: \left]a,b\right[ \times Y \rightarrow \field^d$ eine Funktion
+mit $x_0 \in \left]a,b\right[$ und $y_0 \in Y$. \\
+Dann ist
+\fracsize{$\left.\frac{\partial f}{\partial x}\right|_{(x_0, y_0)} :=
+\lim_{h \to 0,\; h \in \field} \frac{f(x_0 + h, y_0) - f(x_0, y_0)}{h}$} \\
+die \emph{partielle Ableitung} von $f$ nach $x$ im Punkt $(x_0, y_0)$.
+
+\textbf{Vertauschen von $\lim_{y \to y_0}$ und $\frac{d}{dx}$}:
+Seien $M$ ein metrischer Raum, $Y \subset M$, $y_0 \in \acc(Y)$ und
+$f: \left]a,b\right[ \times Y \rightarrow \field^d$ eine Funktion, wobei
+$\forall_{y \in Y}\; f(\cdot, y) \in \C^1([a,b], \field^d)$,
+für alle $x \in [a,b]$ existiere der Grenzwert
+$\lim_{y \to y_0} f(x,y) = \varphi(x)$ sowie der Grenzwert
+$\lim_{y \to y_0}$ \fracsize{$\frac{\partial f(x,y)}{\partial x}$} $= \psi(x)$
+werde gleichmäßig bzgl. $x \in [a,b]$ angenommen. \\
+Dann ist auch $\varphi \in \C^1([a,b])$ und $\varphi'(x) = \psi(x)$.
+
+Unter diesen Voraussetzungen gilt somit
+$\frac{d}{dx} \left(\lim_{y \to y_0} f(x,y)\right) =
+\lim_{y \to y_0} \left(\frac{\partial}{\partial x} f(x,y)\right)$.
+
+%\textbf{Folgerung}: Ist $f(x,y)$ stetig in $y$ ??
+
+\subsection{%
+    Dif"|ferenzieren und Integrieren von parameterabhängigen Integralen%
+}
+
+\textbf{Satz}:
+Seien $\Omega = [a,b] \times [c,d]$
+und $f, \frac{\partial f}{\partial y} \in \C(\Omega, \field^d)$. \\
+Dann ist $J(y) = \int_a^b f(x,y)\dx \in \C^1([c,d])$
+und $J'(y) = \int_a^b \frac{\partial f(x,y)}{\partial y} \dx$.
+
+\textbf{Satz}: Seien $\Omega = [a,b] \times [c,d]$ und
+$f \in \C(\Omega, \field^d)$. \\
+Dann ist $\int_a^b \left(\int_c^d f(x,y)\dy\right)\dx
+= \int_c^d \left(\int_a^b f(x,y)\dx\right)\dy$.
+
+\subsection{%
+    Stetigkeit und Dif"|f.barkeit von Integralen mit parameterabh.
+    Grenzen%
+}
+
+Seien $\Omega = [a,b] \times [c,d]$, $f \in \C(\Omega, \field^d)$
+und $\alpha, \beta: [c,d] \rightarrow [a,b]$. \\
+Man betrachtet nun das Integral $J(y) = \int_{\alpha(y)}^{\beta(y)} f(x,y)\dx$.
+
+\textbf{Satz 1}: Seien $f \in \C(\Omega, \field^d)$ und
+$\alpha, \beta \in \C([c,d], [a,b])$. \\
+Dann ist $J(y) = \int_{\alpha(y)}^{\beta(y)} f(x,y)\dx \in \C([c,d])$.
+
+\textbf{Satz 2}: Seien $\Omega_\delta = [a,b] \times [c - \delta, c + \delta]$
+für $\delta > 0$, $f \in \C(\Omega_\delta)$,
+$\frac{\partial f}{\partial y} \in \C(\Omega_\delta)$
+und $\alpha, \beta$ in $\left]c,d\right[$ dif"|fb. \\
+Dann ist $J(y)$ ist dif"|fb. für $y \in \left]c,d\right[$ und \\
+$J'(y_0) = \int_{\alpha(y_0)}^{\beta(y_0)}
+\left.\frac{\partial f(x, y)}{\partial y}\right|_{y = y_0}\dx +
+\beta'(y_0) \cdot f(\beta(y_0), y_0) - \alpha'(y_0) \cdot f(\alpha(y_0), y_0)$.
+
+\subsection{%
+    Zum Vertauschen von Grenzwert und uneigentlichem Integral%
+}
+
+\textbf{Vertauschen von $\lim_{n \to \infty}$ und $\int_0^{+\infty}$}:
+Seien $f_n \in \C(\left[0,+\infty\right[, \real)$ für $n \in \natural$,
+wobei \\
+$\lim_{R \to \infty} \left(\int_0^R f_n(x)\dx\right) =
+\int_0^{+\infty} f_n(x)\dx$ gleichmäßig bzgl. $n \in \natural$ und \\
+$f(x) = \lim_{n \to \infty} f_n(x)$ gleichmäßig bzgl. $x \in [0,R]$
+für jedes fixierte $R > 0$ angenommen werden. \\
+Dann gibt es die Grenzwerte
+$\int_0^{+\infty} f(x)\dx =
+\lim_{n \to \infty} \left(\int_0^{+\infty} f_n(x)\dx\right)$
+und sind gleich.
+
+\textbf{Vertauschen von $\sum_{n=1}^\infty$ und $\int_0^{+\infty}$}:
+Seien $f_n \in \C(\left[0,+\infty\right[, \real)$ für $n \in \natural$,
+wobei \\
+$\lim_{R \to \infty} \left(\int_0^R f_n(x)\dx\right) =
+\int_0^{+\infty} f_n(x)\dx$ gleichmäßig bzgl. $n \in \natural$ und \\
+$f(x) = \sum_{n=1}^\infty f_n(x)$ gleichmäßig bzgl. $x \in [0,R]$
+für jedes fixierte $R > 0$ angenommen werden. \\
+Dann gibt es die Grenzwerte
+$\int_0^{+\infty} f(x)\dx =
+\sum_{n=1}^\infty \left(\int_0^{+\infty} f_n(x)\dx\right)$
+und sind gleich.
+
+\textbf{Vertauschen von $\lim_{y \to y_0}$ und $\int_0^{+\infty}$}:
+Seien $M$ ein metrischer Raum, $Y \subset M$, $y_0 \in \acc(Y)$ und
+$f \in \C(\left[0, +\infty\right[ \times Y, \real)$, wobei \\
+$\lim_{R \to \infty} \left(\int_0^R f(x,y)\dx\right) =
+\int_0^{+\infty} f(x,y)\dx$ gleichmäßig bzgl. $y \in Y$ und \\
+$\lim_{y \to y_0} f(x,y) = \varphi_{y_0}(x)$ gleichmäßig bzgl. $x \in [0,R]$
+angenommen werden. \\
+Dann existieren die Grenzwerte
+$\int_0^{+\infty} \varphi_{y_0}(x)\dx =
+\lim_{y \to y_0} \left(\int_0^{+\infty} f(x,y)\dx\right)$ und sind gleich.
+
+\linie
+
+\textbf{Vertauschen von $\frac{d}{dx}$ und $\int_0^{+\infty}$}:
+Seien $\Omega = \left[0, +\infty\right[ \times [c,d]$ und
+$f, \frac{\partial f}{\partial y} \in \C(\Omega, \real)$, \\
+wobei für alle $y \in [c,d]$ der Grenzwert
+$\lim_{R \to \infty} \left(\int_0^R f(x,y)\dx\right) =
+\int_0^{+\infty} f(x,y)\dx$ existiert und \\
+$\lim_{R \to \infty}
+\left(\int_0^R \frac{\partial f(x, y)}{\partial y}\dx\right) =
+\int_0^{+\infty} \frac{\partial f(x,y)}{\partial y}\dx$ gleichmäßig
+bzgl. $y \in [c,d]$ angenommen wird. \\
+Dann ist $\int_0^{+\infty} f(x,y)\dx$ dif"|ferenzierbar und
+$\frac{d}{dy} \left(\int_0^{+\infty} f(x,y)\dx\right) =
+\int_0^{+\infty} \frac{\partial f(x,y)}{\partial y}\dx$.
+
+\textbf{Vertauschen von $\int_c^d$ und $\int_0^{+\infty}$}:
+Seien $\Omega = \left[0, +\infty\right[ \times [c,d]$ und
+$f \in \C(\Omega, \real)$, wobei \\
+$\lim_{R \to \infty} \int_0^R f(x,y)\dx = \int_0^{+\infty} f(x,y)\dx$
+gleichmäßig bzgl. $y \in [c,d]$ angenommen wird. \\
+Dann ist $\int_c^d \left(\int_0^{+\infty} f(x,y)\dx\right)\dy =
+\int_0^{+\infty} \left(\int_c^d f(x,y)\dy\right)\dx$.
+
+\subsection{%
+    Potenzreihen%
+}
+
+\textbf{Potenzreihe}:
+Für $k \in \natural_0$ seien $a_k \in \complex$ sowie $z_0 \in \complex$
+gegeben. \\
+Man definiert $S_n(z) = a_0 + \sum_{k=1}^n a_k(z - z_0)^k$ für
+$z \in \complex$. \\
+Dann heißt $S(z) = \lim_{n \to \infty} S_n(z) =
+\sum_{k=0}^\infty a_k(z - z_0)^k$ \emph{Potenzreihe}.
+
+Man will untersuchen, für welche $z$ eine gegebene Potenzreihe konvergiert
+und für welche nicht.
+Im Weiteren betrachten wir durch $\widetilde{z} = z - z_0$, also
+$\sum_{k=0}^\infty a_k (z - z_0)^k = \sum_{k=0}^\infty a_k \widetilde{z}^k$,
+ohne Einschränkung nur noch Potenzreihen mit $z_0 = 0$.
+
+\textbf{Konvergenzkreis/-radius}:
+Sei eine Potenzreihe $\sum_{k=0}^\infty a_k z^k$ gegeben.
+$U_R = \{z \in \complex \;|\; |z| < R\}$ heißt \emph{Konvergenzkreis}
+der Potenzreihe mit dem \emph{Konvergenzradius} $R$, falls \\
+$\sum_{k=0}^\infty a_k z^k$ für alle $z \in U_R$ konvergent ist
+(d.\,h. $|z| < R$) und \\
+$\sum_{k=0}^\infty a_k z^k$ für alle $z \notin \overline{U_R}$ divergent ist
+(d.\,h. $|z| > R$). \\
+Für $|z| = R$ macht der Konvergenzkreis keine Aussage.
+Möglich sind für $R$ auch $R = 0$ (konvergent nur für $z = 0$)
+und $R = +\infty$ (konvergent für alle $z \in \complex$).
+
+\linie
+\pagebreak
+
+\textbf{Satz von \textsc{Cauchy}-\textsc{Hadamard}}:
+Jede Potenzreihe $\sum_{k=0}^\infty a_k z^k$ ($a_k, z \in \complex$)
+besitzt einen Konvergenzkreis mit dem Konvergenzradius
+\fracsize{$R = \frac{1}{\limsup_{k \to \infty} \sqrt[k]{|a_k|}}$}. \\
+Für $a_n \not= 0$, $n \ge N$ gilt
+$R = \lim_{n \to \infty} \Big|$\fracsize{$\frac{a_n}{a_{n+1}}$}$\Big|$, falls
+der Grenzwert existiert. \\
+(Alle Fälle $R \in \left]0, +\infty\right[ \cup \{0\} \cup \{+\infty\}$
+sind zugelassen.)
+
+\textbf{Satz}: Sei $R \le +\infty$ und $R > 0$.
+Wähle $R_1 < R$ mit $R_1 > 0$. \\
+Dann konvergiert $S(z) = \sum_{k=0}^\infty a_k z^k$ gleichmäßig
+bzgl $|z| < R_1$.
+
+\linie
+
+\textbf{Satz (Dif"|ferenzieren von Potenzreihen)}:
+Seien $S(z) = \sum_{k=0}^\infty c_k (z - a)^k$ eine Potenzreihe mit
+Konvergenzradius $R > 0$ und
+$S_1(z) = \sum_{k=1}^\infty k c_k (z - a)^{k-1}$. \\
+Dann ist $S(z)$ im Konvergenzkreis komplex dif"|ferenzierbar und die
+Ableitung erfolgt gliedweise, d.\,h. es gilt $S'(z) = S_1(z)$ für alle
+$z \in \complex$ mit $|z - a| < R$. \\
+Dabei ist die Ableitung eine Potenzreihe mit demselben Konvergenzradius.
+
+\textbf{Satz (Integrieren von Potenzreihen)}:
+Seien $S(z) = \sum_{k=0}^\infty c_k (z - a)^k$ eine Potenzreihe mit
+Konvergenzradius $R > 0$ und
+$S_{-1}(z) = C + \sum_{k=0}^\infty \frac{c_k}{k + 1} (z - a)^{k+1}$. \\
+Dann ist $S_{-1}(z)$ eine Potenzreihe mit demselben Konvergenzradius und
+gliedweise dif"|fb. mit $S_{-1}'(z) = S(z)$.
+Also ist $S_{-1}(z)$ eine Stammfunktion von $S(z)$.
+
+Potenzreihen sind also in ihrem Konvergenzkreis beliebig oft komplex
+dif"|ferenzierbar und aufleitbar.
+Die Ableitung kann durch gliedweise Dif"|ferenzieren bestimmt werden,
+analog wird die Stammfunktion durch gliedweise Integrieren bestimmt.
+
+\linie
+
+\textbf{Potenzreihen als \textsc{Taylor}-Reihen darstellen}:
+Sei $S(z) = \sum_{k=0}^\infty c_k (z - a)^k$ eine Potenzreihe mit
+Konvergenzradius $R > 0$.
+Dann ist $c_0 = S(a)$, $c_1 = S'(a)$, $c_2 = \frac{S''(a)}{2!}$, \ldots,
+$c_k = \frac{S^{(k)}(a)}{k!}$, d.\,h. die $c_k$ sind die Taylorkoef"|fizienten.
+Also ist jede Potenzreihe in ihrem Konvergenzkreis durch ihre Taylorreihe
+darstellbar:
+\fracsize{$S(z) = \sum_{k=0}^\infty \frac{S^{(k)}(a)}{k!} (z - a)^k$}.
+
+\textbf{\textsc{Taylor}-Reihe einer Funktion}:
+Sei $f: \left]-R,R\right[ \rightarrow \complex$ eine Funktion mit $R > 0$,
+wobei $f$ in $x_0 = 0$ beliebig oft reell dif"|ferenzierbar ist. \\
+Dann lässt sich bekannterweise $f$ durch $f(x) = T_n(x) + r_n(0, x)$
+mit \fracsize{$T_n(x) = \sum_{k=0}^n \frac{f^{(k)}(0)}{k!} x^k$} als
+\textbf{\textsc{Taylor}-Polynom} und $r_n(0, x) = r_n(x) = o(x^n)$ für
+$x \to 0$ darstellen.
+
+Im Allgemeinen muss $T_n(x)$ für $n \to \infty$ nicht unbedingt
+konvergieren. \\
+Besitzt jedoch \fracsize{$t(x) = \lim_{n \to \infty} T_n(x) =
+\sum_{k=0}^\infty \frac{f^{(k)}(0)}{k!} x^k$} einen Konvergenzradius $R > 0$,
+so bezeichnet man $t(x)$ als \textbf{\textsc{Taylor}-Reihe} von $f(x)$.
+Allerdings ist i.\,A. $t(x) \not= f(x)$ für alle $x$, d.\,h.
+der Rest $r_n(x)$ muss für $n \to \infty$ nicht gegen $0$ konvergieren!
+
+\textbf{als \textsc{Taylor}reihe darstellbar}:
+$f$ ist in einer Umgebung von $x_0 = 0$ als Taylor-Reihe darstellbar,
+falls $f(x) = t(x)$ ist für $|x| < \varepsilon$.
+
+\textbf{Satz (Kriterium für Darstellbarkeit)}:
+Seien $f: \left]-R,R\right[ \rightarrow \complex$ beliebig oft dif"|fb., \\
+$\forall_{k \in \natural} \exists_{C(k)} \forall_{|x| < R}\;
+|f^{(k)}(x)| \le C(k)$ sowie
+\fracsize{$\lim_{k \to \infty} \frac{C(k) R^k}{k!} = 0$}. \\
+Dann ist $f(x) = t(x)$ für $|x| < R$.
+
+\subsection{%
+    Der Satz von \textsc{Stone} und \textsc{Weierstraß}%
+}
+
+\textbf{Satz von \textsc{Stone} und \textsc{Weierstraß}}:
+Die Menge der Polynome ist in $C([a,b])$ dicht.
+
+\textbf{äquivalente Formulierung}:
+Gegeben sei eine stetige Funktion $f: [a,b] \rightarrow \complex$.
+Dann gibt es eine Folge von Polynomen $P_n(x)$, sodass
+$\lim_{n \to \infty} P_n(x) = f(x)$ gleichmäßig bzgl. $x \in [a,b]$.
+
+\subsection{%
+    Die \textsc{Euler}schen Integrale%
+}
+
+\textbf{Betafunktion}:
+$B(a, b) = \int_0^1 x^{a-1} (1 - x)^{b-1} \dx$, $a, b > 0$
+
+$B(a, b)$ ist konvergent für alle $a, b > 0$: \\
+$a \ge 1$, $b \ge 1$: Riemann-Integral, da Integrand beschränkt,
+sonst konvergentes uneigentliches Integral, denn
+$\int_0^1 x^{a-1} (1 - x)^{b-1} \dx =
+\int_0^{\frac{1}{2}} x^{a-1} (1 - x)^{b-1} \dx +
+\int_{\frac{1}{2}}^1 x^{a-1} (1 - x)^{b-1} \dx$, \\
+für das Integral $\int_0^{\frac{1}{2}} x^{a-1} (1 - x)^{b-1} \dx$
+gilt $(1 - x)^{b-1} \le \left(\frac{1}{2}\right)^{b-1}$ für
+$0 \le x \le \frac{1}{2}$ sowie \\
+$\int_0^{\frac{1}{2}} x^{a-1} \dx = \frac{2^{-a}}{a} < \infty$, \\
+für das Integral $\int_{\frac{1}{2}}^1 x^{a-1} (1 - x)^{b-1} \dx$
+gilt $x^{a-1} \le \left(\frac{1}{2}\right)^{a-1}$ für
+$\frac{1}{2} \le x \le 1$, sowie \\
+$\int_{\frac{1}{2}}^1 (1 - x)^{b-1} \dx =
+\frac{2^{-b}}{b} < \infty$, $0 < a < 1$, $0 < b < 1$
+
+\textbf{Eigenschaften der Betafunktion}:
+\begin{enumerate}
+    \item
+    $B(a, b) = B(b, a)$
+    
+    \item
+    $B(a, b) =$
+    \fracsize{$\frac{b - 1}{a + b - 1}$} $\cdot\; B(a, b - 1)$
+    für $a > 0$, $b > 1$ und \\
+    $B(a, b) =$
+    \fracsize{$\frac{a - 1}{a + b - 1}$} $\cdot\; B(a - 1, b)$
+    für $a > 1$, $b > 0$
+    
+    \item
+    $B(a, 1 - a) =$
+    \fracsize{$\frac{\pi}{\sin a\pi}$}
+\end{enumerate}
+
+\linie
+
+\textbf{Gammafunktion}:
+$\Gamma(a) = \int_0^\infty x^{a-1} e^{-x} \dx$, $a > 0$
+
+$\Gamma(a)$ ist konvergent für alle $a > 0$: \\
+$\int_0^\infty x^{a-1} e^{-x} \dx = \int_0^1 x^{a-1} e^{-x} \dx +
+\int_1^\infty x^{a-1} e^{-x} \dx$, \\
+das Integral $\int_0^1 x^{a-1} e^{-x} \dx$ ist für
+$a \ge 1$ ein Riemann-Integral, da Integrand beschränkt,
+sonst gilt $x^{a-1} e^{-x} \le x^{a-1}$ für $a < 1$, $x \in [0,1]$, \\
+das Integral $\int_1^\infty x^{a-1} e^{-x} \dx$ konvergiert, da
+$x^{a-1} e^{-x} \le x^{-2}$ für genügend große $x$
+
+\textbf{Eigenschaften der Gammafunktion}:
+\begin{enumerate}
+    \item
+    $\Gamma(a)$ stetig
+    
+    \item
+    $\Gamma(a)$ dif"|ferenzierbar und
+    $\Gamma'(a) = \int_0^\infty x^{a-1} \ln(x) e^{-x} \dx$
+    
+    \item
+    $\Gamma(a + 1) = a \cdot \Gamma(a)$, es gilt daher
+    $\Gamma(n + a) = (n + a - 1) (n + a - 2) \dotsm (a + 1) a \cdot \Gamma(a)$
+    und insbesondere $\Gamma(n + 1) = n!$
+    (da $\Gamma(1) = 1$)
+    
+    \item
+    $\lim_{a \to 0} \Gamma(a) = \lim_{a \to \infty} \Gamma(a) = +\infty$
+\end{enumerate}
+
+\linie
+
+\textbf{Zusammenhang zwischen Beta- und Gammafunktion}:
+$B(a, b) =$ \fracsize{$\frac{\Gamma(a) \Gamma(b)}{\Gamma(a + b)}$}
+
+\subsection{%
+    \emph{Zusatz}: Ein analytischer Beweis des Hauptsatzes der Algebra%
+}
+
+\textbf{Satz (Hauptsatz der Algebra)}: \\
+Jedes Polynom in $\complex$ vom Grad größer/gleich $1$ besitzt mindestens
+eine Nullstelle.
+
+\textbf{Lemma 1}:
+$\forall_{M > 0} \exists_{R > 0} \forall_{|z| \ge R}\; |p(z)| \ge M$
+
+\textbf{Lemma 2}:
+$\forall_{z^\ast \in \complex,\; p(z^\ast) \not= 0} \exists_{h \in \complex}\;
+|p(z^\ast + h)| < |p(z^\ast)|$
+
+\pagebreak

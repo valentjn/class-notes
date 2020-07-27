@@ -1,0 +1,743 @@
+\section{%
+    Lineare Transformationen%
+}
+
+\subsection{%
+    Grundlagen%
+}
+
+\begin{Def}{Homomorphismus}
+    Seien $V, W$ $K$-Vektorräume.
+    Eine Abbildung $f: V \rightarrow W$ heißt \\
+    \xbegriff{$K$-line\-ar}{K-linear|see{Homomorphismus}}/%
+    \xbegriff{lineare Transformation}%
+    {lineare Transformation|see{Homomorphismus}}/%
+    \xbegriff{Homomorphismus}{linear|see{Homomorphismus}}, falls für
+    alle $x, y \in V$, $\lambda \in K$ gilt, dass
+    $f(x + y) = f(x) + f(y)$ und $f(\lambda x) = \lambda f(x)$.
+\end{Def}
+
+\begin{Def}{Mono-/Epi-/Iso-/Endo-/Automorphismus}
+    Ein Homomorphismus $f: V \rightarrow W$ heißt
+    \begriff{Monomorphismus}, falls $f$ injektiv,
+    \begriff{Epimorphismus}, falls $f$ surjektiv, und
+    \begriff{Isomorphismus}, falls $f$ bijektiv ist.
+    Ein Homomorphismus $f: V \rightarrow V$ heißt \begriff{Endomorphismus}
+    von $V$ und \begriff{Automorphis\-mus} von $V$, falls $f$ bijektiv ist.
+\end{Def}
+
+\begin{Def}{isomorph}
+    Gibt es einen Isomorphismus zwischen den $K$-Vektorräumen $V$ und $W$,
+    so heißen $V$ und $W$ \begriff{isomorph}.
+    Man schreibt dann $V \cong W$.
+\end{Def}
+
+\begin{Satz}{Umkehrabbildung als Isomorphismus}
+    Sei $f: V \rightarrow W$ Isomorphismus. \\
+    Dann ist $f^{-1}: W \rightarrow V$ ebenfalls ein Isomorphismus.
+\end{Satz}
+
+\begin{Satz}{Komposition von Homomorphismen}
+    Die Komposition von Mono-/Epi-/Iso-/Homomor\-phismen ist ebenfalls ein
+    Mono-/Epi-/Iso-/Homomorphismus.
+\end{Satz}
+
+\begin{Satz}{Erzeugendensystem}
+    Ein Homomorphismus $f: V \rightarrow W$ ist vollständig durch die Werte
+    auf einem Erzeugendensystem bestimmt.
+    Es gilt also:
+    Seien $f, g: V \rightarrow W$ Homomorphismen und $T$
+    Erzeugendensystem von $V$.
+    Gilt $f(t) = g(t)$ für alle $t \in T$, dann ist $f = g$.
+\end{Satz}
+
+\begin{Satz}{Basis}
+    Seien $\basis{B} = (v_1, \ldots, v_n)$ eine Basis von $V$
+    und $w_1, \ldots, w_n$ (nicht notwendig verschiedene) Vektoren aus $W$.
+    Dann gibt es genau eine lineare Transformation $T: V \rightarrow W$
+    mit $T(v_i) = w_i$ für $i = 1, \ldots, n$.
+    Es gilt $T\left(\sum_{i=1}^n \lambda_i v_i\right) =
+    \sum_{i=1}^n \lambda_i w_i$ für alle
+    $\lambda_1, \ldots, \lambda_n \in K$. \\
+    (erweiterbar auf unendlich-dimensionale Vektorräume)
+\end{Satz}
+
+\begin{Satz}{$\im f$ Unterraum}
+    Sei $f: V \rightarrow W$ Homomorphismus.
+    Dann ist $\im f$ Unterraum von $W$.
+\end{Satz}
+
+\begin{Satz}{$f(\basis{B})$ erzeugt $\im f$}
+    Seien $f: V \rightarrow W$ Homomorphismus und $\basis{B}$ Basis von $V$.
+    Dann ist $\aufspann{f(\basis{B})} = \im f$, d.\,h. die Bilder
+    $f(\basis{B}) = \{f(b) \;|\; b \in \basis{B}\}$ der Elemente
+    einer beliebigen Basis von $V$ bilden ein Erzeugendensystem von $\im f$.
+\end{Satz}
+
+\begin{Satz}{Monomorphismus $\Leftrightarrow f(\basis{B})$ Basis von $\im f$}
+    Sei $\basis{B}$ eine Basis von $V$ und $f: V \rightarrow W$
+    Homomorphismus.
+    Dann ist $f$ Monomorphismus genau dann, wenn $f(\basis{B})$ Basis von
+    $\im f$ ist.
+\end{Satz}
+
+\begin{Kor}
+    Sei $f: V \rightarrow W$ Monomorphismus, dann wird $f$ durch Einschränkung
+    des Wertevorrats ein Isomorphismus ($f': V \rightarrow \im f$).
+\end{Kor}
+
+\begin{Kor}
+    Ist $f: V \rightarrow W$ ein Isomorphismus, so ist $f(\basis{B})$ eine
+    Basis von $W$.
+    Insbesondere haben isomorphe Vektorräume dieselbe Dimension.
+\end{Kor}
+
+\begin{Lemma}{Pigeon-Hole-Principle}
+    Seien $\mathfrak{M}, \mathfrak{N}$ endliche Mengen derselben Mächtigkeit
+    und \\
+    $f: \mathfrak{M} \rightarrow \mathfrak{N}$ Abbildung.
+    Dann ist $f$ injektiv genau dann, wenn $f$ surjektiv ist.
+\end{Lemma}
+
+\begin{Satz}{gleichdimensionale Vektorräume}
+    Seien $V, W$ endliche Vektorräume derselben Dimension
+    und $f: V \rightarrow W$ Homomorphismus.
+    Dann ist $f$ genau dann ein Isomorphismus, wenn $f$ ein Mono- oder
+    Epimorphismus ist.
+\end{Satz}
+
+\begin{Satz}{isomorphe Vektorräume} \\
+    Zwei $K$-Vektorräume sind isomorph genau dann, wenn sie dieselbe Dimension
+    haben.
+\end{Satz}
+
+\begin{Satz}{Faktorräume}
+    Seien $U \ur V$ und $W = V/U$. \\
+    Dann ist die Abbildung $T: V \rightarrow W: v \mapsto \overline{v} = v + U$
+    ein Epimorphismus.
+\end{Satz}
+
+\begin{Satz}{Isomorphismus bei Faktorräumen und Komplementen} \\
+    Sei $W$ ein Komplement von $U \ur V$.
+    Für $x \in V$ sei $w_x \in W$ das eindeutig bestimmte Element in
+    $\overline{x}$.
+    Dann ist $\varphi: V/U \rightarrow W: \overline{x} \mapsto w_x$ ein
+    Isomorphismus.
+\end{Satz}
+
+\begin{Def}{Kern}
+    Sei $f: V \rightarrow W$ Homomorphismus.
+    Dann ist der \begriff{Kern} von $f$ \\
+    $\ker f = f^{-1}(0) = \{v \in V \;|\; f(v) = 0_W\}$.
+    Der Kern von $f$ ist ein Unterraum von $V$.
+\end{Def}
+
+\begin{Satz}{$f$ injektiv $\Leftrightarrow \ker f = (0)$}
+    Sei $f: V \rightarrow W$ Homomorphismus. \\
+    Dann ist $f$ injektiv genau dann, wenn $\ker f = (0)$ ist.
+\end{Satz}
+
+\subsection{%
+    Matrizen%
+}
+
+\begin{xDef}{Matrix (eines Homomorphismus)}{Matrix!eines Homomorphismus}
+    Seien $f: V \rightarrow W$ $K$-linear und
+    $\basis{B} = (v_1, \ldots, v_n)$, \\
+    $\basis{C} = (w_1, \ldots, w_m)$ Basen von $V$ bzw. $W$.
+    Für $1 \le j \le n$ sei $f(v_j) = \sum_{i=1}^m \alpha_{ij} w_i$. \\
+    Das Rechteckschema
+    $\hommatrix{f}{C}{B} = (\alpha_{ij})_{ij} =$
+    \matrixsize{$\begin{pmatrix}
+        \alpha_{11} & \alpha_{12} & \cdots & \alpha_{1n} \\
+        \alpha_{21} & \alpha_{22} & \cdots & \alpha_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \alpha_{m1} & \alpha_{m2} & \cdots & \alpha_{mn}
+    \end{pmatrix}$} heißt \begriff{Matrix} der linearen Abbildung $f$
+    bzgl. der Basen $\basis{B}$ und $\basis{C}$.
+\end{xDef}
+
+\begin{Lemma}{Umrechnung von Koef"|fizienten}
+    Seien $f$ und $\hommatrix{f}{C}{B}$ wie oben und
+    $x = \sum_{j=1}^n \lambda_j v_j$.
+    Dann ist $f(x) = \sum_{i=1}^m \mu_i w_i$ mit
+    $\mu_i = \sum_{j=1}^n \alpha_{ij} \lambda_j$.
+\end{Lemma}
+
+\begin{Bem}
+    Man kann den $i$-ten Koef"|fizienten $\mu_i$ in
+    $f(x) = \sum_{i=1}^m \mu_i w_i$ berechnen, indem man die $i$-te Zeile
+    der Koef"|fizientenmatrix nimmt, auf
+    $(\lambda_1, \ldots, \lambda_n)$ legt und die Einträge komponentenweise
+    multipliziert und dann addiert.
+    Man schreibt
+    \matrixsize{$\begin{pmatrix}
+        \alpha_{11} & \alpha_{12} & \cdots & \alpha_{1n} \\
+        \alpha_{21} & \alpha_{22} & \cdots & \alpha_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \alpha_{m1} & \alpha_{m2} & \cdots & \alpha_{mn}
+    \end{pmatrix}
+    \begin{pmatrix}\lambda_1 \\ \vdots \\ \lambda_n\end{pmatrix} =
+    \begin{pmatrix}\mu_1 \\ \vdots \\ \mu_m\end{pmatrix}$}.
+\end{Bem}
+
+%\begin{Notation}
+%    Für $v = \sum_{j=1}^n \lambda_j v_j$ schreibt man
+%    \matrixsize{$\begin{pmatrix}\lambda_1 \\ \vdots \\ \lambda_n
+%    \end{pmatrix}_\basis{B}$}
+%    ($V$ $K$-VR mit Basis $\basis{B} = (v_1, \ldots, v_n)$).
+%\end{Notation}
+
+\begin{Kor}
+    Das "`Kochrezept"' kann man umschreiben:
+    Für $v \in K^n$ ist
+    $(\hommatrix{f}{C}{B}v)_\basis{C} = f(v_\basis{B})$.
+\end{Kor}
+
+\begin{Kor}
+    Für $v_j$ gilt $f(v_j) = {s_j}_\basis{C}$
+    ($s_j$ ist die $j$-te Spalte von $\hommatrix{f}{C}{B}$).
+\end{Kor}
+
+\begin{Def}{Basiswechsel}
+    Mit $f = \id_V$ ist ein \begriff{Basiswechsel} möglich.
+    So ist $(\hommatrix{\id_V}{C}{B}v)_\basis{C} = v_\basis{B}$. \\
+    $\hommatrix{\id_V}{C}{B}$ heißt dann \begriff{Basiswechselmatrix}.
+\end{Def}
+
+\begin{Def}{Menge der Homomorphismen}
+    Seien $V, W$ $K$-Vektorräume.
+    Dann wird die Menge aller $K$-linearen Abbildungen von $V$ nach $W$ mit
+    $\Hom_K(V, W)$ bezeichnet. \\
+    Für $V = W$ ist $\Hom_K(V, V) = \End_K(V)$ die Menge aller Endomorphismen.
+\end{Def}
+
+\begin{xDef}{Matrix (allgemein)}{Matrix!allgemein}
+    Eine \xbegriff{$m \times n$-Matrix}%
+    {mxn-Matrix@$m \times n$-Matrix|see{Matrix!allgemein}}
+    $A$ über dem Körper $K$ ist ein
+    rechteckiges Schema mit $m \cdot n$ Einträgen $\alpha_{ij} \in K$
+    ($1 \le i \le m$, $1 \le j \le n$). \\
+    Man schreibt $A = (\alpha_{ij})_{ij} = (\alpha_{ij}) =$
+    \matrixsize{$\begin{pmatrix}
+        \alpha_{11} & \alpha_{12} & \cdots & \alpha_{1n} \\
+        \alpha_{21} & \alpha_{22} & \cdots & \alpha_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \alpha_{m1} & \alpha_{m2} & \cdots & \alpha_{mn}
+    \end{pmatrix}$}.
+    Für $m = n$ heißt $A$ \begriff{quadratisch}.
+    $M_{m \times n}(K)$ ist die Menge aller $m \times n$-Matrizen über $K$.
+\end{xDef}
+
+\begin{Satz}{Aufspann der Spaltenvektoren}
+    Seien $f: V \rightarrow W$ Homomorphismus und $A = \hommatrix{f}{C}{B}$.
+    Sind $s_1, \ldots, s_n \in K^m$ die Spaltenvektoren von $A$, dann ist
+    $\aufspann{{s_1}_\basis{C}, \ldots, {s_n}_\basis{C}} = \im f$.
+\end{Satz}
+
+\begin{Satz}{Zuordnung Matrix -- Homomorphismus}
+    $\hommatrix{-}{C}{B}: \Hom_K(V, W) \rightarrow M_{m \times n}(K)$, \\
+    $f \mapsto \hommatrix{f}{C}{B}$ ist eine bijektive Abbildung mit
+    Umkehrabbildung \\
+    $f_-(\basis{C}, \basis{B}): M_{m \times n}(K) \rightarrow \Hom_K(V, W)$,
+    $A \mapsto f_A(\basis{C}, \basis{B})$, wobei
+    $f_A(\basis{C}, \basis{B})\Bigg($%
+    \matrixsize{$\begin{pmatrix}\lambda_1 \\ \vdots \\
+    \lambda_n\end{pmatrix}_\basis{B}$}%
+    $\Bigg) = \Bigg(A$%
+    \matrixsize{$\begin{pmatrix}\lambda_1 \\ \vdots \\
+    \lambda_n\end{pmatrix}$}%
+    $\Bigg)_\basis{C}$.
+\end{Satz}
+
+\subsection{%
+    Homomorphismen sind selbst Vektoren!%
+}
+
+\begin{Def}{Addition und skalare Multiplikation von Homomorphismen}
+    Seien $V, W$ $K$-VR'e, $f, g \in \Hom_K(V, W)$ und $\lambda \in K$.
+    Die Summe $f + g$ ist definiert als
+    $(f + g)(v) = f(v) + g(v)$ und das skalare Vielfache $\lambda f$ ist
+    definiert als $(\lambda f)(v) = \lambda \cdot f(v)$,
+    wobei $v \in V$.
+\end{Def}
+
+\begin{Satz}{Homomorphismen als Vektorraum}
+    Seien $f, g \in \Hom_K(V, W)$ und $\lambda \in K$.
+    Dann sind $f + g$ und $\lambda f$ ebenfalls Homomorphismen
+    von $V$ nach $W$.
+    Die Menge der Homomorphismen $\Hom_K(V, W)$ bildet mit diesen
+    Operationen ein $K$-Vektorraum.
+    Das Nullelement ist die Null\-abbildung
+    $0_{VW}: V \rightarrow W$, $v \mapsto 0_W$, für $f$ ist das additiv Inverse
+    $-f: V \rightarrow W$, $v \mapsto -f(v)$.
+\end{Satz}
+
+\begin{Def}{Addition und skalare Multiplikation von Matrizen}
+    Seien $A = (\alpha_{ij})_{ij}$ und $B = (\beta_{ij})_{ij}$ mit
+    $A, B \in M_{m \times n}(K)$ sowie $\lambda \in K$.
+    Die Summe $A + B$ ist definiert als \\
+    $(\alpha_{ij})_{ij} + (\beta_{ij})_{ij} = (\alpha_{ij} + \beta_{ij})_{ij}$
+    und das skalare Vielfache $\lambda A$ ist definiert als
+    $\lambda (\alpha_{ij})_{ij} = (\lambda \alpha_{ij})_{ij}$.
+\end{Def}
+
+\begin{Satz}{Matrizen als Vektorraum}
+    Der Menge der $m \times n$-Matrizen über $K$ $M_{m \times n}(K)$ wird mit
+    diesen beiden Operationen ein $K$-Vektorraum.
+    Das Nullelement ist die Nullmatrix $0 = (0)_{ij}$ und die zu
+    $A = (\alpha_{ij})_{ij}$ inverse Matrix ist
+    $-A = (-1) \cdot A = (-\alpha_{ij})_{ij}$.
+\end{Satz}
+
+\begin{Satz}{Isomorphismus zwischen Homomorphismen und Matrizen} \\
+    Sind $V$ und $W$ endlich erzeugt mit Basen $\basis{B} = (v_1, \ldots, v_n)$
+    und $\basis{C} = (w_1, \ldots, w_m)$, so ist \\
+    $\hommatrix{-}{C}{B}: \Hom_K(V, W) \rightarrow M_{m \times n}(K)$
+    ein Isomorphismus von $K$-Vektorräumen.
+\end{Satz}
+
+\begin{Def}{natürliche Basis von Matrizen}
+    $\basis{E}(m, n) = \{E_{ij} \in M_{m \times n}(K) \;|\;
+    1 \le i \le m,\; 1 \le j \le n\}$ ist eine Basis von $M_{m \times n}(K)$
+    und wird als \begriff{natürliche Basis} bezeichnet.
+    Dabei ist $E_{ij} = (\alpha_{kl})_{kl}$ mit $\alpha_{kl} = 1$
+    für $(k, l) = (i, j)$ und $\alpha_{kl} = 0$ sonst
+    (für $1 \le i \le m$ und $1 \le j \le n$). \\
+    $E_{ij}$ ist also die $m \times n$-Matrix, die nur Nullen hat, außer
+    beim $(i, j)$-ten Eintrag, dort ist $\alpha_{ij} = 1$.
+\end{Def}
+
+\begin{Satz}{zugehöriger Homomorphismus}
+    Sei für $1 \le i \le m$ und $1 \le j \le n$ mit
+    $\varepsilon_{ij}: V \rightarrow W$,
+    $\varepsilon_{ij}(v_k) =$
+    \matrixsize{$\begin{cases}w_i & \text{für } j = k \\
+    0_W & \text{für } j \not= k\end{cases}$}
+    ein Homomorphismus definiert.
+    Dann ist $\hommatrix{\varepsilon_{ij}}{C}{B} = E_{ij}$.
+\end{Satz}
+
+\begin{Kor}
+    Für $\dim V = n$ und $\dim W = m$ gilt
+    $\dim M_{m \times n}(K) = \dim \Hom_K(V, W) = m \cdot n$.
+\end{Kor}
+
+\begin{Def}{transponierte Matrix}
+    Sei $A = (\alpha_{ij})_{ij} \in M_{m \times n}(K)$.
+    Die \begriff{transponierte Matrix} \\
+    $A^t \in M_{n \times m}(K)$ ist
+    $A^t = (\alpha_{ji})_{ij}$, d.\,h. Zeilen und Spalten von $A$ werden
+    vertauscht. \\
+    Das Transponieren ist $K$-linear, d.\,h. $(A + B)^t = A^t + B^t$ und
+    $(\lambda A)^t = \lambda A^t$.
+\end{Def}
+
+\subsection{%
+    Komposition linearer Abbildungen%
+}
+
+\begin{Bem}
+    Seien $U, V, W$ $K$-Vektorräume sowie $f: U \rightarrow V$ und
+    $g: V \rightarrow W$ Homomorphismen.
+    Dann ist die Komposition $g \circ f: U \rightarrow W: u \mapsto g(f(u))$
+    ebenfalls ein Homomorphismus. \\
+    $\circ$ ist nicht kommutativ ($f \circ g$ ist nur definiert für $U = W$),
+    jedoch distributiv über $+$. \\
+    Wie müssen die Matrizen $A = \hommatrix{f}{B}{A}$ und
+    $B = \hommatrix{g}{C}{B}$ verrechnet werden, um die zugehörige Matrix
+    der Komposition $C = \hommatrix{g \circ f}{C}{A}$ zu bestimmen?
+\end{Bem}
+
+\begin{Def}{Matrizenmultiplikation}
+    Seien $B = (\beta_{rk})_{rk} \in M_{m \times p}(K)$ und 
+    $A = (\alpha_{kl})_{kl} \in M_{p \times n}(K)$ Matrizen.
+    Dann ist mithilfe der Formel
+    $\gamma_{rl} = \sum_{k=1}^p \beta_{rk} \alpha_{kl}$ eine Matrix
+    $C = (\gamma_{rl})_{rl} \in M_{m \times n}$ gegeben.
+    $C = B \cdot A = BA$ ist das \begriff{Produkt} der Matrizen $B$ und $A$.
+\end{Def}
+
+\begin{Bem}
+    Man erhält also den $(r, l)$-ten Eintrag von $C = BA$, indem
+    man die $r$-te Zeile von $B$ auf die $l$-te Spalte von $A$ legt,
+    paarweise multipliziert und addiert.
+    $B$ muss gleich viele Spalten wie $A$ Zeilen haben.
+    Die Multiplikation ist nicht kommutativ, aber assoziativ.
+\end{Bem}
+
+\begin{Satz}{Komposition/Matrizenmultipl.}
+    Seien $U, V, W$ $K$-Vektorräume mit endlichen Basen
+    $\basis{A}$, $\basis{B}$, $\basis{C}$ und $f: U \rightarrow V$,
+    $g: V \rightarrow W$ Homomorphismen.
+    Dann ist $\hommatrix{g \circ f}{C}{A} = \hommatrix{g}{C}{B} \cdot
+    \hommatrix{f}{B}{A}$.
+\end{Satz}
+
+\subsection{%
+    Endomorphismenringe%
+}
+
+\begin{Bem}
+    Zwei Endomorphismen von $V$ in sich können immer hintereinander ausgeführt
+    werden und ergeben wieder einen Endomorphismus von $V$.
+    Auf der Matrizenseite entspricht dies der Multiplikation von quadratischen
+    Matrizen, das Produkt ist wieder eine quadratische Matrix derselben Größe.
+\end{Bem}
+
+\begin{Satz}{Komposition als Operation}
+    Die Hintereinanderausführung von Endomorphismen eines Vektorraums $V$ ist
+    eine binäre Operation auf $\End_K(V)$.
+    Diese ist assoziativ und distributiv auf beiden Seiten über der Addition.
+    $\id_V \in \End_K(V)$ ist das neutrale Element bzgl. der Komposition.
+    Es gilt $\lambda (f \circ g) = (\lambda f) \circ g = f \circ (\lambda g)$
+    für $f, g \in \End_K(V)$ und $\lambda \in K$.
+\end{Satz}
+
+\begin{Satz}{Matrizenmultiplikation als Operation}
+    Sei $n \in \natural$.
+    Dann definiert die Matrizenmultiplikation eine binäre Operation auf der
+    Menge $M_n(K) = M_{n \times n}(K)$ der $n \times n$-Matrizen über $K$.
+    Diese ist assoziativ und distributiv auf beiden Seiten über der Addition
+    von Matrizen. \\
+    Die \begriff{Einheitsmatrix} $E_n =$%
+    \matrixsize{$\begin{pmatrix}1 & \cdots & 0 \\
+    \vdots & \ddots & \vdots \\ 0 & \cdots & 1\end{pmatrix}$}
+    ist das neutrale Element bzgl. der Addition
+    (Matrix von $\id_V \in \End_K(V)$).
+    Sind $A, B \in M_{n}(K)$ und $\lambda \in K$, so ist
+    $\lambda (AB) = (\lambda A) B = A (\lambda B)$.
+\end{Satz}
+
+%\begin{Def}{Ring}
+%    Ein \begriff{Ring} ist eine abelsche Gruppe $(R,+)$ mit einer binären
+%    Operation (Multiplikation) $R \times R: (r,s) \mapsto r \cdot s$,
+%    die assoziativ und distributiv auf beiden Seiten über der Addition ist.
+%    Hat $R$ ein neutrales Element (\begriff{Einselement}) bzgl. der
+%    Multiplikation, so ist $R$ ein \begriff{Ring mit Eins} und das Einselement
+%    wird mit $1_R$ oder $1$ bezeichnet.
+%    Ist die Multiplikation kommutativ, so heißt $R$
+%    \begriff{kommutativer Ring}.
+%\end{Def}
+
+\begin{xDef}{$K$-Algebra}{Algebra|see{$K$-Algebra}}
+    Eine \xbegriff{$K$-Algebra}{K-Algebra@$K$-Algebra} ist ein $K$-Vektorraum
+    $A$, der zugleich ein Ring mit Eins ist,
+    sodass für $a, b \in A$, $\lambda \in K$
+    gilt, dass $\lambda (ab) = (\lambda a) b = a (\lambda b)$.
+\end{xDef}
+
+\begin{Satz}{Endomorphismenringe}
+    Sei $V$ ein $K$-Vektorraum.
+    Dann ist $\End_K(V)$ eine $K$-Algebra, wobei die Multiplikation zweier
+    Endomorphismen von $V$ als Komposition definiert ist.
+\end{Satz}
+
+\begin{Satz}{Ringe von quadratischen Matrizen}
+    Sei $n \in \natural$.
+    Dann ist die Menge der $n \times n$-Matrizen $M_n(K)$ eine $K$-Algebra
+    der Dimension $n^2$ mit der Matrizenmultiplikation.
+\end{Satz}
+
+\begin{Satz}{$\hommatrix{-}{B}{B}$ $K$-Algebraisomorphismus}
+    Sei $V$ ein $K$-Vektorraum mit Basis $\basis{B}$. \\
+    Dann ist $\hommatrix{-}{B}{B}: \End_K(V) \rightarrow M_n(K)$
+    ein Isomorphismus von $K$-Algebren.
+\end{Satz}
+
+\subsection{%
+    Automorphismen und invertierbare Matrizen%
+}
+
+\begin{Def}{invertierbar}
+    Sei $A$ eine $K$-Algebra (Ring mit Eins) mit einem Einselement.
+    Dann heißt $a \in A$ \begriff{invertierbar}/\begriff{Einheit}, falls es
+    ein multiplikativ Inverses zu $a$ gibt, d.\,h. es gibt ein Element
+    $b \in A$, sodass $ab = ba = 1$.
+    Man schreibt $b = a^{-1}$.
+    Die Menge der invertierbaren Elemente von $A$ ist multiplikativ
+    abgeschlossen und bildet mit der Multiplikation eine Gruppe, die Gruppe
+    $U(A)$ der Einheiten oder \begriff{Einheitengruppe} in $A$.
+\end{Def}
+
+\begin{Def}{Einheitengruppe von quadratischen Matrizen}
+    Die Einheitengruppe $U(M_{n \times n}(K))$ der $K$-Algebra $M_{n \times n}(K)$
+    wird mit $\GL_n(K)$ bezeichnet.
+\end{Def}
+
+\begin{Satz}{Homomorphismen und Einheiten}
+    Seien $A$, $B$ $K$-Algebren (bzw. Ringe) sowie $f: A \rightarrow B$
+    ein $K$-Algebrahomomorphismus (Ringhomomorphismus),
+    dann ist $f(U(A)) \subseteq U(B)$ und $f|_{U(A)}$ von $A$ auf $U(A)$ ist
+    ein Gruppenhomomorphismus von $U(A)$ in die Einheitengruppe $U(B)$ von $B$.
+    Ist $f$ ein Isomorphismus, so auch $f|_{U(A)}$.
+\end{Satz}
+
+\begin{Def}{Antihomomorphismus}
+    Seien $A$, $B$ $K$-Algebren (bzw. Ringe).
+    Eine $K$-lineare Abbildung $f: A \rightarrow B$ heißt
+    \begriff{Antihomomorphismus},
+    falls $f(ab) = f(b)f(a)$ für alle $a, b \in A$.
+    Analog sind Antimono-/epi-/isomorphismen und Antimorphismen für Gruppen
+    definiert.
+\end{Def}
+
+\begin{Satz}{Transponieren}
+    Sei $n \in \natural$.
+    Dann ist das Transponieren
+    $\_^t: M_{n \times n}(K) \rightarrow M_{n \times n}(K)$, $A \mapsto A^t$
+    ein Antiautomorphismus.
+    Seine Einschränkung auf invertierbare Matrizen ist ein Antiautomorphismus
+    von $\GL_n(K)$ und es gilt $(A^t)^{-1} = (A^{-1})^t$ für alle
+    $A \in \GL_n(K)$.
+\end{Satz}
+
+\subsection{%
+    Der Rang einer Matrix%
+}
+
+\begin{Bem}
+    $V$ und $W$ seien endliche $K$-Vektorräume mit Basen $\basis{A}$ und
+    $\basis{B}$.
+    Oft will man Basen von $V$ und $W$ finden, sodass die Matrix eines
+    gegebenen Homomorphismus von $V$ nach $W$ bzgl. dieser Basen besonders
+    "`schön"' wird.
+    Welche Matrizen erhält man also, wenn man den Homomorphismus
+    $f: V \rightarrow W$ festhält und die Basen $\basis{A}, \basis{B}$
+    variiert?
+\end{Bem}
+
+\begin{Def}{Menge aller Matrizen mit beliebiger Basis}
+    Sei $f: V \rightarrow W$ ein Homomorphismus.
+    Dann ist $\hommatrix{f}{-}{A}$ die Menge aller $m \times n$-Matrizen
+    der Form $\hommatrix{f}{B}{A}$, wobei $\basis{B}$ alle Basen von $W$
+    durchläuft.
+    Analog sind $\hommatrix{f}{B}{-}$ und $\hommatrix{f}{-}{-}$ definiert.
+\end{Def}
+
+\begin{Def}{invertierbare Matrizen}
+    Eine $n \times n$-Matrix $A$ heißt \begriff{invertierbar}, falls es
+    eine $n \times n$-Matrix $B$ gibt, sodass $AB = BA = E_n$.
+    In diesem Fall ist $B$ (die \begriff{inverse Matrix} von $A$) durch $A$
+    eindeutig bestimmt, man schreibt $B = A^{-1}$. \\
+    $\GL_n(K)$ (\begriff{generelle lineare Gruppe}) ist die Menge aller
+    invertierbaren $n \times n$-Matrizen.
+\end{Def}
+
+\begin{Lemma}{Basiswechselmatrizen}
+    Basiswechselmatrizen aus $\hommatrix{\id_V}{-}{-}$ sind invertierbar
+    und invertierbare Matrizen sind Matrizen eines
+    Basiswechsels.
+    Also ist $\hommatrix{\id_V}{-}{-} = \GL_n(K)$.
+\end{Lemma}
+
+\begin{Satz}{Komposition mittels invertierbaren Matrizen} \\
+    Für zwei Teilmengen $A, B$ eines Rings $R$ definiert man
+    $AB = \{ab \;|\; a \in A,\; b \in B\}$ und für $r \in R$ ist
+    $rA = \{ra \;|\; a \in A\}$ bzw. $Ar = \{ar \;|\; a \in A\}$. \\
+    Seien $f \in \Hom_K(V, W)$ und $\basis{A}, \basis{B}$ beliebige Basen
+    von $V$ und $W$. \\
+    Dann ist $\hommatrix{f}{-}{-} = \GL_m(K) \hommatrix{f}{B}{A} \GL_n(K)$.
+\end{Satz}
+
+\begin{Satz}{äquivalente Matrizen}
+    Seien $f, g: V \rightarrow W$ Homomorphismen. \\
+    Dann ist entweder
+    $\hommatrix{f}{-}{-} \cap \hommatrix{g}{-}{-} = \emptyset$ oder
+    $\hommatrix{f}{-}{-} = \hommatrix{g}{-}{-}$.
+    So ist auf $M_{m \times n}(K)$ eine Äquivalenzrelation $\approx$ definiert
+    durch $A \approx B \;\Leftrightarrow\;
+    \exists_{f \in \Hom_K(V, W)}\; A, B \in \hommatrix{f}{-}{-}$.
+\end{Satz}
+
+\begin{xDef}{äquivalente Matrizen}{aquivalent@äquivalent!Matrizen}
+    Seien $A, B \in M_{m \times n}(K)$.
+    Dann ist $A \approx B$ genau dann, wenn es $X \in \GL_m(K)$ und
+    $Y \in \GL_n(K)$ gibt, sodass $B = XAY$.
+    $A$ und $B$ heißen dann
+    \xbegriff{äquivalent}{aquivalent@äquivalent!Matrizen}.
+\end{xDef}
+
+\begin{Def}{Spalten-/Zeilenrang}
+    Sei $A \in M_{m \times n}(K)$.
+    Dann ist der \begriff{Spaltenrang} von $A$ die Dimension des von den
+    Spaltenvektoren aufgespannten Unterraums des $K^m$.
+    Analog ist der \begriff{Zeilenrang} die Dimension des von den
+    Zeilenvektoren aufgespannten Unterraums des $K^n$.
+\end{Def}
+
+\begin{Lemma}{Spaltenrang gleich Dimension des Bildes}
+    Sei $f: V \rightarrow W$ ein Homomorphismus. \\
+    Dann ist der Spaltenrang von $\hommatrix{f}{B}{A}$ gleich $\dim_K(\im f)$.
+\end{Lemma}
+
+\begin{Kor}
+    Sei $f: V \rightarrow W$ ein Homomorphismus. \\
+    Dann haben alle Matrizen in $\hommatrix{f}{-}{-}$ denselben Spaltenrang
+    gegeben durch $\dim_K(\im f)$.
+\end{Kor}
+
+\begin{Satz}{schöne Matrizen} \\
+    \begin{tabular}{p{6.3cm}p{9.7cm}}
+    $E_{m \times n}(k) =$%
+    \matrixsize{$\begin{pmatrix}
+    1 & \cdots & 0 & 0 & \cdots & 0 \\
+    \vdots & \ddots & \vdots & \vdots & & \vdots \\
+    0 & \cdots & 1 & 0 & \cdots & 0 \\
+    0 & \cdots & 0 & 0 & \cdots & 0 \\
+    \vdots & & \vdots & \vdots & & \vdots \\
+    0 & \cdots & 0 & 0 & \cdots & 0 \end{pmatrix}$}
+    &
+    \begin{minipage}[c]{9.7cm}Sei $f: V \rightarrow W$ Homomorphismus und
+    $k = \dim(\im f)$.
+    Dann ist $E_{m \times n}(k) \in \hommatrix{f}{-}{-}$.
+    Diese Matrix hat $k$ viele Einsen und den Spalten-/Zeilenrang $k$. \\
+    Daher besteht $\hommatrix{f}{-}{-}$ genau aus allen\\$m \times n$-Matrizen
+    mit Spaltenrang $k$.\end{minipage}
+    \end{tabular}
+\end{Satz}
+
+\begin{Kor}
+    Sei $f: V \rightarrow W$ Homom.
+    Dann ist $\dim_K(\im f) + \dim_K(\ker f) = \dim_K(V)$.
+\end{Kor}
+
+\begin{Kor}
+    Spalten- und Zeilenrang von Matrizen stimmen überein.
+\end{Kor}
+
+\begin{Def}{Rang}
+    Der Spalten-/Zeilenrang $\rg(A)$ wird als \begriff{Rang} einer Matrix $A$
+    bezeichnet.
+\end{Def}
+
+\pagebreak
+
+\begin{Bem}
+    $M_{m \times n}(K)$ hat genau $k + 1$ Äquivalenzklassen $\matrixm_i$
+    bezüglich $\approx$, nämlich \\
+    $\matrixm_i = \{A \in M_{m \times n}(K) \;|\;
+    \rg(A) = i\}$ ($i = 0, \ldots, k$, $k = \min\{n, m\}$). \\
+    Um den Rang einer Matrix auszurechnen, verändert man die Basen
+    $\basis{A}, \basis{B}$, bis sie die Form $E_{m \times n}(k)$ hat.
+    Dabei bleibt der Rang konstant und die Matrix hat dann den Rang $k$. \\
+    d.\,h. man konstruiert Basen $\basis{A'}, \basis{B'}$, sodass
+    $\hommatrix{f}{B'}{A'} = E_{m \times n}(k)$.
+\end{Bem}
+
+\begin{Lemma}{Modifikation von Basen}
+    Seien $V$ ein $K$-Vektorraum und $\basis{A} = (v_1, \ldots, v_n)$ eine
+    Basis von $V$.
+    Dann ist $\basis{A'}$ ebenfalls eine Basis von $V$, wenn $\basis{A'}$
+    durch folgende Modifikationen entsteht: \\
+    a) Vertauschen zweier Vektoren, \qquad
+    b) Multiplikation eines $v_i$ mit einem Skalar $\lambda \in K$
+    ($\lambda \not= 0$), \\
+    c) Ersetzen von $v_i$ durch $v_i' = v_i + \lambda v_j$ mit
+    $1 \le j \le n$, $\lambda \in K$.
+\end{Lemma}
+
+\begin{Def}{elementare Operationen}
+    Sei $A \in M_{m \times n}(K)$.
+    Dann sind folgende Operationen \begriff{elementare Zeilenoperationen}:
+    a) Vertauschen zweier Zeilen, \qquad
+    b) Multiplikation einer Zeile mit einem Skalar $\lambda \not= 0$, \qquad
+    c) Addition des Vielfachen einer Zeile zu einer anderen. \\
+    Analog werden \begriff{elementare Spaltenoperationen} definiert. \\
+    \begriff{Elementare Operationen} sind elementare
+    Zeilen-/Spaltenoperationen.
+\end{Def}
+
+\begin{Def}{Elementarmatrizen}
+    Die Anwendung einer elementaren Operation auf eine Matrix $A$ entspricht
+    dem Produkt $AM$ bzw. $MA$ (für Spalten- bzw. Zeilenoperationen)
+    mit einer geeigneten invertierbaren Matrix $M$, die als Basiswechselmatrix
+    aufgefasst werden kann.
+    Diese Matrizen heißen \begriff{Elementarmatrizen}.
+\end{Def}
+
+\begin{Satz}{Rang bleibt erhalten}
+    Unter elementaren Operationen bleibt der Rang erhalten.
+\end{Satz}
+
+\begin{Satz}{Rang ausrechnen}
+    Sei $A \in M_{m \times n}(K)$.
+    Dann gibt es eine Reihe von elementaren Operationen, die auf $A$
+    angewendet die Matrix $E_{m \times n}(k)$ ergeben, sodass $k = \rg(A)$.
+\end{Satz}
+
+\begin{Prozedur}{Rang einer Matrix ausrechnen}
+    Der Rang einer Matrix kann ausgerechnet werden, indem man elementare
+    Zeilen-/Spaltenoperationen verwendet, um $E_{m \times n}(k)$ zu erreichen.
+    Dann ist $k$ der Rang der Matrix.
+\end{Prozedur}
+
+\begin{Kor}
+    Ist $A \in M_{n \times n}(K)$, so ist $A$ genau dann invertierbar,
+    wenn $\rg(A) = n$. \\
+    $E_{n \times n}(n) = E_n$ ist die \begriff{Einsmatrix}.
+    Jede invertierbare Matrix ist Produkt von Elementarmatrizen.
+    Sei $A \in M_{m \times n}(K)$, dann ist $\rg(A) = \rg(A^t)$.
+\end{Kor}
+
+\begin{Def}{augmentierte Matrix} \\
+    \begin{tabular}{p{5.8cm}p{10.2cm}}
+    \matrixsize{$\left(\begin{array}{ccc|ccc}
+    \alpha_{11} & \cdots & \alpha_{1n} & \beta_{11} & \cdots & \beta_{1p} \\
+    \vdots & & \vdots & \vdots & & \vdots \\
+    \alpha_{m1} & \cdots & \alpha_{mn} & \beta_{m1} & \cdots & \beta_{mp}
+    \end{array}\right)$}
+    &
+    \begin{minipage}[c]{10.2cm}Seien $A = (\alpha_{ij}) \in M_{m \times n}(K)$
+    und $B = (\beta_{ij}) \in M_{m \times p}(K)$.
+    Dann entsteht die \begriff{augmentierte Matrix} $(A|B)$ durch
+    Aneinanderfügen der Spalten von $A$ und $B$.\end{minipage}
+    \end{tabular}
+\end{Def}
+
+\begin{Prozedur}{Matrix invertieren}
+    Eine invertierbare $n \times n$-Matrix $A$ kann man invertieren, indem man
+    $(A | E_n)$ durch eine Folge elementarer \emph{Zeilenoperationen} in
+    $(E_n | A^{-1})$ umwandelt.
+\end{Prozedur}
+
+\subsection{%
+    \emph{Zusätzliches}: Projekt 5 (Nilpotenz und Homomorphismen)%
+}
+
+\begin{Def}{nilpotent}
+    Sei $A$ eine $K$-Algebra. \\
+    Ein Element $x \in A$ heißt \begriff{nilpotent}, falls
+    es ein $n \in \natural$ gibt, sodass $x^n = 0$.
+\end{Def}
+
+\begin{Satz}{nilpotente Elemente als Unterraum}
+    Sei $A$ eine $K$-Algebra.
+    Ist die Multiplikation in $A$ kommutativ, dann bilden die
+    nilpotenten Elementen einen Unterraum vom $K$-Vektorraum $A$. \\
+    Bei nicht-kommutativer Multiplikation stimmt dies i.\,A. nicht.
+\end{Satz}
+
+\begin{Satz}{nilpotentes Element zu Einheit}
+    Seien $A$ eine $K$-Algebra und $x \in A$ nilpotent. \\
+    Dann ist $1 + x$ eine Einheit (d.\,h. invertierbar).
+\end{Satz}
+
+\begin{Def}{Homomorphismen bei Gruppen, Ringen und
+            $K$-Algebren} \\
+    \emph{Gruppe}: $f: G \rightarrow H$ mit
+    $f(x \circ y) = f(x) \bullet f(y)$ für alle $x, y \in G$ für Gruppen
+    $(G, \circ)$ und $(H, \bullet)$ \\
+    \emph{Ring}: $f: R \rightarrow S$ mit
+    $f(x + y) = f(x) \boxplus f(y)$ und $f(x \cdot y) = f(x) \boxdot f(y)$
+    für alle $x, y \in R$ für Ringe
+    $(R, \boldsymbol{+}, \boldsymbol{\cdot})$ und $(S, \boxplus, \boxdot)$ \\
+    \emph{Ring mit Eins}: wie Ring, aber zusätzlich $f(1_R) = 1_S$, wobei
+    $1_R \in R$, $1_S \in S$ Einselemente sind \\
+    \emph{$K$-Algebra}: Vektorraumhomomorphismus $f: A \rightarrow B$, der
+    gleichzeitig Homomorphismus von Ringen mit Eins ist für $K$-Algebren $A$
+    und $B$ \\
+    \emph{Kerne} der Homomorphismen sind die Urbilder der Nullelemente.
+    $\ker f$ und $\im f$ sind Unterstrukturen, jedoch ist $\ker f$ bei
+    $K$-Algebren keine $K$-Algebra.
+\end{Def}

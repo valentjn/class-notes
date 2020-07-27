@@ -1,0 +1,809 @@
+\section{%
+    Schwache Lösungskonzepte und \name{Sobolev}-Räume%
+}
+
+\subsection{%
+    Motivation und Distributionslösung%
+}
+
+\begin{Bem}
+    Aus verschiedenen Gründen ist der klassische Lösungsbegriff nicht ausreichend.
+    \begin{itemize}
+        \item
+        Bei der nicht-linearen Konvektion versagt der Begriff der klassischen Lösung bei
+        großen Zeiten, wenn sich die Charakteristiken schneiden.
+        Es ist also ein Lösungsbegriff erforderlich, welcher Unstetigkeiten (Schocks) erlaubt.
+        
+        \item
+        Bei der Poisson-Gleichung könnte man auch einen unstetigen Quellterm verwenden.
+        Ist z.\,B. $-u''(x) = f(x)$ in $\Omega := (0, 1)$ mit $f$ unstetig
+        (z.\,B. Heizprozess in Teilgebiet), so ist nicht zu erwarten, dass $u \in \C^2(\Omega)$
+        existiert.
+        
+        \item
+        Bei der Dif"|fusionsgleichung könnte man auch unstetige Koef"|fizienten verwenden.
+        Ist z.\,B. $-\frac{\d}{\dx} (a(x) u'(x)) = 0$ in $\Omega := (0, 1)$ mit $a$ unstetig
+        (z.\,B. geschichtete Materialien),
+        dann kann $a(x) u'(x)$ stetig diffb. fortsetzbar sein, obwohl $u$ nicht-dif"|fb. ist:
+        Wähle $a(x) := 1$ für $x \le 1/2$ und $a(x) := 2$ sonst und
+        $u(x) := x$ für $x \le 1/2$ und $u(x) := 1/4 + x/2$ sonst,
+        dann ist $a(x) u'(x) = 1$ für $x \not= 1/2$, aber $u$ ist nicht dif"|ferenzierbar
+        (aber eine schw. Lsg.).
+        
+        \item
+        Bei der Wellengleichung ist die 1D-Lösungsformel auch für nicht nicht-dif"|fb. oder sogar
+        unstetige Anfangsdaten berechenbar, allerdings ist
+        $u(x, t) := \frac{1}{2} (u_0(x - ct) + u_0(x + ct))$ dann nicht-dif"|fb. oder unstetig,
+        also keine klassische Lösung (aber eine Distributionslösung).
+    \end{itemize}
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Die Distributionslösung dient als Beispiel eines verallg. Lösungsbegriffs
+    und wird nur kurz behandelt.
+    Distr.lsg.en können auch für nicht-lineare Diff.op.en definiert werden.
+\end{Bem}
+
+\begin{Def}{Distributionslösung}
+    Seien $\Omega \subset \real^d$ of"|fen, $f \in L^1_\loc(\Omega)$ und
+    $\L\colon \C^k(\Omega) \to \C^0(\Omega)$ ein linearer Dif"|ferentialoperator
+    mit $\L u := \sum_{|\beta| \le k} a_{\beta} \partial^\beta u$, wobei $a_\beta \in \real$.\\
+    Dann heißt $u \in L^1_\loc(\Omega)$ \begriff{Distributionslösung} von $\L u = f$, falls\\
+    $\forall_{\phi \in \C^\infty_0(\Omega)}\;
+    \sum_{|\beta| \le k} a_\beta (-1)^{|\beta|} \int_\Omega u (\partial^\beta \phi) \dx =
+    \int_\Omega f\phi \dx$.
+\end{Def}
+
+\begin{Bem}
+    Distributionslösungen tref"|fen keine Aussagen über Randwerte.\\
+    Bei nicht-linearen Problemen ergeben sich evtl. Mehrdeutigkeiten, weswegen man dann
+    Zusatzforderungen stellen muss.
+    Klassische Lösungen sind Distributionslösungen.
+\end{Bem}
+
+\begin{Satz}{Distr.lsg. als kl. Lsg.}
+    Sei $u$ eine Distributionslösung von $\L u = f$ mit $f \in \C^0(\Omega)$ und
+    $u \in \C^k(\Omega)$.
+    Dann ist $u$ eine klassische Lösung von $\L u = f$.
+\end{Satz}
+
+\begin{Satz}{Distr.lsg. der 1D-Wellengleichung}
+   Seien $\Omega_T := \real \times (0, T)$ und $u_0 \in L^1(\real) \cap L^\infty(\real)$.\\
+   Dann ist $u(x, t) := \frac{1}{2} (u_0(x - ct) + u_0(x + ct))$ eine
+   Distributionslsg. der Wellengleichung in $\Omega_T$. 
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Schwache Ableitungen und \name{Sobolev}-Räume%
+}
+
+\subsubsection{%
+    Schwache Ableitungen%
+}
+
+\begin{Def}{schwache Ableitung}
+    Seien $\beta \in \natural_0^d$ ein Multiindex, $\Omega \subset \real^d$ of"|fen und
+    $u \in L^1_\loc(\Omega)$.\\
+    Dann heißt $v^\beta \in L^1_\loc(\Omega)$ \begriff{schwache Ableitung} von $u$
+    der Ordnung $\beta$, falls\\
+    $\forall_{\phi \in \C^\infty_0(\Omega)}\; \int_\Omega u (\partial^\beta \phi) \dx
+    = (-1)^{|\beta|} \int_\Omega v^\beta \phi \dx$.
+\end{Def}
+
+\begin{Satz}{Eindeutigkeit}
+    Es gibt höchstens eine schwache Ableitung von $u$ der Ordnung $\beta$.
+\end{Satz}
+
+\begin{Satz}{kl. sind schw. Ableitungen}
+    Seien $m \in \natural$, $|\beta| \le m$ und $u \in \C^m(\Omega)$ mit
+    klassischer Ableitung $\partial^\beta u$.
+    Dann gibt es die schw. Ableitung $v^\beta$ von $u$
+    und es gilt $v^\beta = \partial^\beta u$ fast überall.
+\end{Satz}
+
+\begin{Bem}
+    Die Behauptung gilt auch auf Teilintervallen, d.\,h. ist $u$ stückweise klassisch
+    dif"|fb., so ist die schw. Ableitung (falls existent) stückweise gleich der
+    kl. Ableitung.\\
+    Wegen der Eindeutigkeit und der Verallgemeinerung von klassischen Ableitungen sei
+    im Folgenden $\partial^\beta u := v^\beta$ die schwache Ableitung von $u$
+    (falls existent).
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Seien $\Omega := (-1, 1)$ und $u(x) := |x|$.
+    Dann ist $\sgn(x)$ eine schwache Ableitung von $u$, weil für $\phi \in \C^\infty_0(\Omega)$
+    gilt, dass $\int_\Omega u(x) \phi'(x) \dx
+    = \int_{-1}^0 (-x) \phi'(x) \dx + \int_0^1 x \phi'(x) \dx$\\
+    $= -\int_{-1}^0 (-1) \phi(x) \dx + \cancel{[-x \phi(x)]_{-1}^0} -
+    \int_0^1 1 \cdot \phi(x) \dx + \cancel{[x \phi(x)]_0^1}
+    = -\int_\Omega u(x) \phi(x) \dx$.\\
+    Allerdings ist $v(x) := \sgn(x)$ nicht schwach dif"|fb.:
+    Angenommen $v$ wäre schwach dif"|fb., dann würde für die schw. Ableitung $\partial_x v$
+    gelten, dass $\partial_x v(x) = 0$ für $x \not= 0$,
+    also $-\int_\Omega (\partial_x v) \phi \dx = 0$.
+    Andererseits gilt für $\phi \in \C^\infty_0(\real)$ mit $\phi(0) \not= 0$, dass\\
+    $-\int_\Omega (\partial_x v) \phi \dx = \int_\Omega v \partial_x \phi \dx
+    = \int_0^1 \phi'(x) \dx - \int_{-1}^0 \phi'(x) \dx = -2\phi(0) \not= 0$, ein Widerspruch.
+\end{Bsp}
+
+\subsubsection{%
+    \name{Sobolev}-Räume%
+}
+
+\begin{Def}{\name{Sobolev}-Norm}
+    Seien $m \in \natural_0$, $p \in [1, \infty]$, $\Omega \subset \real^d$ of"|fen und
+    $u \in L^1_\loc(\Omega)$.
+    Falls alle schwachen Ableitungen $\partial^\beta u$ für $|\beta| \le m$ existieren, so ist
+    die \begriff{\name{Sobolev}-Norm} von $u$ definiert durch
+    $\norm{u}_{H^{m,p}(\Omega)} :=
+    \left(\sum_{|\beta| \le m} \norm{\partial^\beta u}_{L^p(\Omega)}^p\right)^{1/p}$
+    für $p \in [1, \infty)$ und
+    $\norm{u}_{H^{m,\infty}(\Omega)} :=
+    \max_{|\beta| \le m} \norm{\partial^\beta u}_{L^\infty(\Omega)}$.
+\end{Def}
+
+\begin{Def}{\name{Sobolev}-Raum}
+    Seien $m \in \natural_0$, $p \in [1, \infty]$ und $\Omega \subset \real^d$ of"|fen.\\
+    Dann ist der \begriff{\name{Sobolev}-Raum} ist definiert durch
+    $H^{m,p}(\Omega) := \{u \in L^1_\loc(\Omega) \;|\; \norm{u}_{H^{m,p}(\Omega)} < \infty\}$.\\
+    Für $p = 2$ definiert man
+    $H^m(\Omega) := H^{m,2}(\Omega)$.
+\end{Def}
+
+\linie
+
+\begin{Def}{\name{Sobolev}-Halbnorm}
+    Die \begriff{\name{Sobolev}-Halbnorm} ist definiert durch\\
+    $|u|_{H^{m,p}(\Omega)} :=
+    \left(\sum_{|\beta| = m} \norm{\partial^\beta u}_{L^p(\Omega)}^p\right)^{1/p}$
+    für $p \in [1, \infty)$ und
+    $|u|_{H^{m,\infty}(\Omega)} :=
+    \max_{|\beta| = m} \norm{\partial^\beta u}_{L^\infty(\Omega)}$.
+\end{Def}
+
+\begin{Bem}
+    In der Literatur schreibt man oft auch $W^{m,p}(\Omega)$ statt $H^{m,p}(\Omega)$.\\
+    Wegen des letzten Satzes gilt $\C^m_0(\Omega) \subset H^{m,p}(\Omega)$ und,
+    wenn $\Omega$ beschränkt ist, $\C^m(\overline{\Omega}) \subset H^{m,p}(\Omega)$.
+\end{Bem}
+
+\linie
+
+\begin{Def}{\name{Sobolev}-Dualräume}
+    Seien $p, q \in [1, \infty]$ mit $\frac{1}{p} + \frac{1}{q} = 1$.
+    Dann ist $H^{-m,q}(\Omega) := (H^{m,p}(\Omega))'$ der \begriff{Dualraum}
+    von $H^{m,p}(\Omega)$.
+    Für $p = q = 2$ schreibt man $H^{-m}(\Omega) := H^{-m,2}(\Omega) = (H^m(\Omega))'$.
+\end{Def}
+
+\begin{Bem}
+    Damit kann man PDEs betrachten, deren rechte Seiten Funktionale statt Funktionen sind.
+\end{Bem}
+
+\pagebreak
+
+\subsubsection{%
+    Eigenschaften der \name{Sobolev}-Räume%
+}
+
+\begin{Satz}{Vollständigkeit von $H^{m,p}$}
+    Seien $m \in \natural_0$ und $p \in [1, \infty]$.\\
+    Dann ist $H^{m,p}(\Omega)$ ein Banachraum und
+    $H^m(\Omega)$ ein Hilbertraum mit dem Skalarprodukt\\
+    $\sp{u, v}_{H^m(\Omega)} :=
+    \sum_{|\beta| \le m} \sp{\partial^\beta u, \partial^\beta v}_{L^2(\Omega)}$.
+\end{Satz}
+
+\begin{Bem}
+    Die Vollständigkeit ist ein praktischer Vorteil gegenüber klassischen Funktionenräumen,
+    denn $\C^m(\overline{\Omega})$ ist i.\,A. nicht vollständig:
+    Für $m = 0$ wähle z.\,B. $u_\varepsilon \in \C^0([-a, a])$ mit
+    $u_\varepsilon(x) := 0$ für $x \in [-a, 0)$,
+    $u_\varepsilon(x) := x/\varepsilon$ für $x \in [0, \varepsilon)$ und
+    $u_\varepsilon(x) := 1$ für $x \in [\varepsilon, a]$.
+    Dann geht $u_\varepsilon$ in $L^p([-a,a])$ für $\varepsilon \to 0$
+    gegen $u := \chi_{[0,a]} \in L^p(\Omega)$.
+    $u$ liegt aber nicht in $\C^0([-a,a])$, weswegen dort kein Grenzwert existiert
+    (obwohl $u_\varepsilon$ eine Cauchy-Folge ist).\\
+    Man kann Sobolev-Räume für $p \in [1, \infty)$ auch als Vervollständigung definieren:\\
+    Für $\Omega \subset \real^d$ Lipschitz-Gebiet und $p \in [1, \infty)$ gilt
+    $H^{m,p}(\Omega) = \overline{\C^m(\overline{\Omega})}^{\norm{\cdot}_{H^{m,p}(\Omega)}}$.\\
+    Für allgemeines $\Omega \subset \real^d$ of"|fen und $p \in [1, \infty)$ gilt
+    $H^{m,p}(\Omega) = \overline{H^{m,p}(\Omega) \cap \C^\infty(\Omega)}^
+    {\norm{\cdot}_{H^{m,p}(\Omega)}}$.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Approximierbarkeit durch $\C^\infty$-Funktionen}
+    Für $p \in [1, \infty)$ ist $H^{m,p}(\Omega) \cap \C^\infty(\Omega)$ dicht in
+    $H^{m,p}(\Omega)$, d.\,h.
+    $\forall_{f \in H^{m,p}(\Omega)}
+    \exists_{(f_j)_{j \in \natural} \subset H^{m,p}(\Omega) \cap \C^\infty(\Omega)}\;
+    \norm{f_j - f}_{H^{m,p}(\Omega)} \to 0$.
+\end{Satz}
+
+\begin{Bem}
+    Aufgrund der $\C^\infty$-Approximierbarkeit übertragen sich die Regeln für den
+    Umgang mit Ableitungen von klassisch auf schwach dif"|ferenzierbare Funktionen,
+    z.\,B. Linearität, partielle Integration, Gauß-Integralsatz und Produkt-/Kettenregel.
+\end{Bem}
+
+\linie
+
+\begin{floatingfigure}[r]{71mm}
+    \vspace{-8mm}
+    \footnotesize
+    \begin{gather*}
+        \arraycolsep=0.3mm
+        \begin{array}{ccccccccc}
+            L^p(\Omega)&=&H^{0,p}(\Omega)&\supset&H^{1,p}(\Omega)&
+            \supset&\dotsb&\supset&H^{m,p}(\Omega)\\
+            &&\cup&&\cup&&&&\cup\\
+            &&H^{0,p}_0(\Omega)&\supset&H^{1,p}_0(\Omega)&
+            \supset&\dotsb&\supset&H^{m,p}_0(\Omega)\\
+            &&\cup&&\cup&&&&\cup\\
+            &&\C^0_0(\Omega)&\supset&\C^1_0(\Omega)&
+            \supset&\dotsb&\supset&\C^m_0(\Omega)
+        \end{array}
+    \end{gather*}
+\end{floatingfigure}
+\begin{Bem}
+    Weil $L^p(\Omega)$-Funktionen auf Nullmengen nicht wohldefiniert sind und
+    beliebig abgeändert werden können, ist unklar, was man unter "`Randwerten"' einer
+    $H^{m,p}(\Omega)$-Funktion verstehen soll.
+    Für $m \ge 1$ hilft jedoch die zusätzliche Regularität, sog. \begriff{schwache Randwerte}
+    zu definieren, die durch einen Spuroperator extrahiert werden können.
+\end{Bem}
+
+\begin{Def}{\name{Sobolev}-Raum mit schwachen Nullrandwerten}
+    Seien $m \in \natural$ und $p \in [1, \infty)$.\\
+    Dann heißt $H^{m,p}_0(\Omega) :=
+    \overline{\C^\infty_0(\Omega)}^{\norm{\cdot}_{H^{m,p}(\Omega)}}$
+    \begriff{\name{Sobolev}-Raum mit schwachen Nullrandwerten}.
+\end{Def}
+
+\begin{Bem}
+    $\Omega$ kann auch unbeschränkt sein.
+    In der Literatur findet man auch $W^{m,p}_0(\Omega)$ usw.\\
+    Für $m = 1$, $p \in [1, \infty)$ und $\Omega \subset \real^d$ Lipschitz-Gebiet
+    gilt $H^{1,p}_0(\Omega) = \{f \in H^{1,p}(\Omega) \;|\; f|_{\partial\Omega} = 0\}$
+    (im Sinne des Spuroperators unten).
+\end{Bem}
+
+\begin{Satz}{Vollständigkeit von $H^{m,p}_0$}
+    Seien $m \in \natural$ und $p \in [1, \infty)$.
+    Dann ist $H^{m,p}_0(\Omega) \subset H^{m,p}(\Omega)$ abgeschlossen,
+    insb. ist $H^{m,p}_0(\Omega)$ ein Banachraum mit der Norm $\norm{\cdot}_{H^{m,p}(\Omega)}$.
+\end{Satz}
+
+\begin{Bem}
+    Man erhält damit obiges Diagramm.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Spursatz}
+    Seien $p \in [1, \infty)$ und $\Omega \subset \real^d$ ein Lipschitz-Gebiet.\\
+    Dann gibt es einen lin., st. \begriff{Spuroperator}
+    $\gamma\colon H^{1,p}(\Omega) \to L^p(\partial\Omega)$ mit
+    $\forall_{u \in H^{1,p}(\Omega) \cap \C^0(\overline{\Omega})}\;
+    \gamma(u) = u|_{\partial\Omega}$.\\
+    Insbesondere gilt $\forall_{u \in H^{1,p}_0(\Omega)}\; \gamma(u) = 0$ und
+    $\exists_{C > 0} \forall_{u \in H^{1,p}(\Omega)}\;
+    \norm{\gamma(u)}_{L^p(\partial\Omega)} \le C \norm{u}_{H^{1,p}(\Omega)}$.
+\end{Satz}
+
+\begin{Bem}
+    Auf Nicht-Lipschitz-Gebieten ist die Aussage i.\,A. falsch.
+\end{Bem}
+
+\pagebreak
+
+\subsubsection{%
+    \name{Sobolev}sche Einbettungssätze%
+}
+
+\begin{Bem}
+    Man kann die Räume $H_0^{m_1,p_1}(\Omega)$ stetig in $H_0^{m_2,p_2}(\Omega)$ einbetten,
+    wenn man die Parameter $m_1, m_2, p_1, p_2$ geeignet wählt.
+    Außerdem kann man diese Räume in Hölderräume $\C^{m,\alpha}$ für geeignetes $m, \alpha$
+    einbetten,
+    d.\,h. Funktionen aus $H^{m,p}(\Omega)$ sind unter gewissen Umständen klassisch
+    dif"|ferenzierbar und besitzen eine endliche Hölderkonstante.
+\end{Bem}
+
+\begin{Satz}{1. \name{sobolev}scher Einbettungssatz}
+    Seien $\Omega \subset \real^d$ of"|fen und beschränkt,
+    $m_1, m_2 \in \natural_0$ mit $m_1 \ge m_2$ und
+    $p_1, p_2 \in [1, \infty)$.
+    Wenn $m_1 - \frac{d}{p_1} \ge m_2 - \frac{d}{p_2}$ erfüllt ist,
+    so existiert die Einbettung $J\colon H_0^{m_1,p_1}(\Omega) \to H_0^{m_2,p_2}(\Omega)$
+    und ist stetig,
+    d.\,h. $\exists_{C > 0} \forall_{u \in H_0^{m_1,p_1}(\Omega)}\;
+    \norm{u}_{H^{m_2,p_2}(\Omega)} \le C \norm{u}_{H^{m_1,p_1}(\Omega)}$.\\
+    Ist $\Omega$ ein Lipschitz-Gebiet, dann gilt die Aussage sogar für
+    $H^{m_i,p_i}(\Omega)$ statt $H_0^{m_i,p_i}(\Omega)$.
+\end{Satz}
+
+\begin{Satz}{2. \name{sobolev}scher Einbettungssatz}
+    Seien $\Omega \subset \real^d$ of"|fen und beschränkt,
+    $m, k \in \natural_0$ mit $m \ge k$,
+    $p \in [1, \infty)$ und
+    $\alpha \in (0, 1)$.
+    Wenn $m - \frac{d}{p} \ge k + \alpha$ erfüllt ist,
+    so existiert die Einbettung $J\colon H_0^{m,p}(\Omega) \to \C^{k,\alpha}(\Omega)$
+    und ist stetig,
+    d.\,h. $\exists_{C > 0} \forall_{u \in H_0^{m,p}(\Omega)}\;
+    \norm{u}_{\C^{k,\alpha}(\Omega)} \le C \norm{u}_{H^{m,p}(\Omega)}$.\\
+    Ist $\Omega$ ein Lipschitz-Gebiet, dann gilt die Aussage sogar für
+    $H^{m,p}(\Omega)$ statt $H_0^{m,p}(\Omega)$.
+\end{Satz}
+
+\begin{Bem}
+    Weil $m - \frac{d}{p}$ eine wichtige Größe ist, die die Regularität der
+    Funktionen aus $H^{m,p}(\Omega)$ charakterisiert,
+    nennt man diese Zahl auch \begriff{\name{Sobolev}-Index} von $H^{m,p}(\Omega)$.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Stetigkeit für $H^1(\Omega)$ mit $d = 1$}
+    Seien $d = 1$ und $\Omega \subset \real$ of"|fen und beschränkt.\\
+    Dann ist $u \in H^1(\Omega)$ stetig
+    (d.\,h. es gibt einen stetigen Repr. in der Äquiv.klasse von $u$).
+\end{Satz}
+
+\begin{Bem}
+    Für $d > 1$ ist $m - \frac{d}{p} \le 0$ für $m := 1$ und $p := 2$,
+    d.\,h. $\forall_{\alpha \in (0, 1)}\; m - \frac{d}{p} \not\ge k + \alpha$.\\
+    Daher ist der 1. Sobolev-Einbettungssatz dann nicht anwendbar und der Satz von eben
+    gilt i.\,A. nicht.
+    Gegenbeispiele sind folgende Funktionen mit Punkt-Singularität im Ursprung:
+    \begin{itemize}
+        \item
+        $d = 2$:
+        $u \in H^1(B_1(0))$ mit
+        $u(x) := \ln(\ln(\frac{2}{\norm{x}})$ und
+        
+        \item
+        $d \ge 3$:
+        $u \in H^1(B_1(0))$ mit
+        $u(x) := \norm{x}^{-\beta}$ und $\beta \in (0, \frac{d-2}{2})$.
+    \end{itemize}
+\end{Bem}
+
+\subsubsection{%
+    \name{Poincaré}-\name{Friedrichs}-Ungleichung%
+}
+
+\begin{Satz}{\name{Poincaré}-\name{Friedrichs}-Ungleichung}\\
+    Seien $\Omega \subset \real^d$ of"|fen und beschränkt sowie $s := \diam(\Omega)$.\\
+    Dann gilt $\forall_{v \in H^1_0(\Omega)}\;
+    \norm{v}_{L^2(\Omega)} \le s \cdot |v|_{H^1(\Omega)}$.
+\end{Satz}
+
+\begin{Bem}
+    Für die kleinste Poincaré-Konstante $c_p$ gilt daher $\sqrt{c_p} \le s$.\\
+    Der Satz gilt auch, wenn die verallgemeinerten Nullrandwerte nur auf einem Teil des
+    Randes mit positivem $(d-1)$-dimensionalen Maß angenommen werden.
+\end{Bem}
+
+\begin{Satz}{Normäquivalenz auf $H^m_0$}
+    Sei $\Omega \subset \real^d$ of"|fen und beschränkt mit $\diam(\Omega) \le s$.\\
+    Dann sind auf $H_0^m(\Omega)$ die Norm $\norm{\cdot}_{H^m(\Omega)}$ und die Halbnorm
+    $|\cdot|_{H^m(\Omega)}$ äquivalent:\\
+    $\forall_{v \in H^m_0(\Omega)}\;
+    |v|_{H^m(\Omega)} \le \norm{v}_{H^m(\Omega)} \le (1 + s)^m \cdot |v|_{H^m(\Omega)}$.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Schwache Lösungen für elliptische Probleme%
+}
+
+\subsubsection{%
+    Motivation%
+}
+
+\begin{Bem}
+    Zur Motivation sei $u \in \C^2(\Omega) \cap \C^0(\overline{\Omega})$ eine klassische Lösung
+    des Poisson-Problems mit Nullrandwerten, d.\,h.
+    $-\Delta u = f$ in $\Omega$, $u = 0$ auf $\partial\Omega$
+    (\begriff{starke Form der PDE}).
+    Multipliziert man mit einer \begriff{Testfunktion} $v \in \C^1_0(\Omega)$ und integriert
+    partiell, so bekommt man\\
+    $\int_\Omega fv \dx = -\int_\Omega (\Delta u) v \dx
+    = \int_\Omega \nabla u \cdot \nabla v \dx -
+    \cancel{\int_{\partial\Omega} (\nabla u \cdot n) v \dsigma(x)}$,
+    weil $v = 0$ auf $\partial\Omega$.\\
+    Damit gilt für $u$, dass
+    $\forall_{v \in \C^1_0(\Omega)}\;
+    \int_\Omega \nabla u \cdot \nabla v \dx = \int_\Omega fv \dx$
+    (\begriff{schwache Form der PDE}).\\
+    Mit $V := \C^1_0(\Omega)$,
+    der Bilinearform $a(u, v) := \int_\Omega \nabla u \cdot \nabla v \dx$ und der
+    Linearform $\ell(v) := \int_\Omega fv \dx$ kann man dies umschreiben zu
+    $\forall_{v \in V}\; a(u, v) = \ell(v)$.
+    Man schreibt deshalb $V$, weil sowohl $v \in \C^1_0(\Omega)$ als auch
+    $v \in H^1_0(\Omega)$ sinnvoll eingesetzt werden kann.
+    Man kann also insbesondere \begriff{schwache Lösungen} $u \in H^1_0(\Omega)$ suchen.\\
+    Obige Rechnung zeigt, dass klassische Lösungen auch schwache Lösungen sind.
+    Allerdings kann es für allgemeines $f$ (z.\,B. unstetig) vorkommen, dass keine klassische,
+    sondern nur eine schwache Lösung existiert.
+    Wie verhält es sich mit Existenz, Eindeutigkeit und Regularität von schwachen Lösungen?
+\end{Bem}
+
+
+\subsubsection{%
+    Stetigkeit und Koerzivität%
+}
+
+\begin{Def}{Stetigkeit}
+    Sei $V$ ein Hilbertraum mit induzierter Norm $\norm{\cdot}$.
+    Dann heißt eine Bilinearform $a\colon V \times V \to \real$ \begriff{stetig} mit
+    \begriff{Stetigkeitskonstante} $\gamma_a$, falls
+    $\gamma_a := \sup_{u, v \in V \setminus \{0\}} \frac{|a(u, v)|}{\norm{u} \norm{v}} < \infty$.\\
+    Eine Linearform $\ell\colon V \to \real$ heißt \begriff{stetig}, falls
+    $\norm{\ell}_{V'} := \sup_{u \in V \setminus \{0\}} \frac{|\ell(u)|}{\norm{u}} < \infty$
+    (also $\ell \in V'$).
+\end{Def}
+
+\begin{Bsp}
+    Das Skalarprodukt $\sp{\cdot, \cdot}$ von $V$ ist stetig mit $\gamma_a = 1$, denn
+    $|a(u, v)| = |\sp{u, v}| \le \norm{u} \norm{v}$ nach Cauchy-Schwarz
+    (und $|a(u, u)| = |\sp{u, u}| = \norm{u}^2$ für $u = v$).
+\end{Bsp}
+
+\linie
+
+\begin{Def}{Koerzivität}
+    Eine Bilinearform $a\colon V \times V \to \real$ heißt \begriff{koerziv} mit
+    \begriff{Koerzivitätskonstante} $\alpha$, falls
+    $\alpha := \inf_{u \in V \setminus \{0\}} \frac{a(u, u)}{\norm{u}^2} > 0$.
+\end{Def}
+
+\begin{Bsp}
+    Das Skalarprodukt $\sp{\cdot, \cdot}$ von $V$ ist stetig mit $\alpha = 1$, denn
+    $\frac{a(u, u)}{\norm{u}^2} = \frac{\sp{u, u}}{\norm{u}^2} = 1$.
+\end{Bsp}
+
+\linie
+
+\begin{Bem}
+    Es gilt stets $\alpha \le \gamma_a$.
+    Man kann $\gamma_a$ und $\alpha$ durch EW-Probleme berechnen.\\
+    Eine Bilinearform ist koerziv genau dann, wenn ihr \begriff{symm. Anteil}
+    $a_S(u, v) := \frac{1}{2} (a(u, v) + a(v, u))$ koerziv ist.
+    In diesem Fall besitzen $a$ und $a_S$ dieselbe Koerzivitätskonstante.
+\end{Bem}
+
+\pagebreak
+
+\subsubsection{%
+    Schwache Formen elliptischer Probleme%
+}
+
+\begin{Def}{Bilinearform/Linearform für ell. PDE}
+    Seien $\Omega \subset \real^d$ of"|fen und beschränkt und die elliptische PDE
+    $-\div(A\nabla u) + \div(bu) + cu = f$ in $\Omega$ und
+    $u = 0$ auf $\partial\Omega$ mit\\
+    $A = (a_{ij})_{i,j=1}^d \in L^\infty(\Omega, \real^{d \times d})$,
+    $b = (b_i)_{i=1}^d \in L^\infty(\Omega, \real^d)$,
+    $c \in L^\infty(\Omega)$ und
+    $f \in L^2(\Omega)$ gegeben.\\
+    Dann ist die
+    \begriff{zugehörige Bilinearform} $a\colon H^1(\Omega) \times H^1(\Omega) \to \real$
+    definiert durch\\
+    $a(u, v) := \int_\Omega ((A\nabla u) \nabla v - (b \nabla v) u + cuv) \dx$ und\\
+    die \begriff{zugehörige Linearform} $\ell\colon H^1(\Omega) \to \real$ durch
+    $\ell(v) := \int_\Omega fv \dx$.
+\end{Def}
+
+\begin{Bem}
+    Die hier betrachtete PDE stellt eine nur unwesentliche Modifikation der
+    Dif"|ferentialoperatoren $-A \circ (\nabla \nabla^\tp u) + b \nabla u + cu$
+    aus dem letzten Kapitel dar.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Stetigkeit/Koerzivität für $b = 0$, $c = 0$}\\
+    Wenn $A$
+    \begriff{gleichmäßig elliptisch} ist
+    (d.\,h. $\exists_{\widetilde{\alpha} > 0} \forall_{x \in \Omega} \forall_{z \in \real^d}\;
+    z^\tp A(x) z \ge \widetilde{\alpha} \norm{z}^2$) und\\
+    \begriff{gleichmäßig beschränkt}
+    (d.\,h. $\exists_{C > 0} \forall_{x \in \Omega}\; \norm{A(x)} \le C$ für irgendeine
+    induzierte Matrixnorm),\\
+    dann $a$ von eben für $b = 0$ und $c = 0$
+    stetig auf $H^1(\Omega)$ und koerziv auf $H^1_0(\Omega)$.
+\end{Satz}
+
+\begin{Bem}
+    $a$ ist nicht koerziv auf $H^1(\Omega)$,
+    weil $a(u, u) = 0$ für $u \equiv \text{const}$.\\
+    $a$ ist natürlich auch stetig und koerziv auf Teilräumen von $H^1_0(\Omega)$
+    (z.\,B. $H^1_0(\Omega)$ selbst).\\
+    Ist $A$ symmetrisch, so auch $a$ (für $b = 0$ und $c = 0$).\\
+    Eine ähnliche Aussage wie der Satz von eben gilt für $b \not= 0$ und $c > 0$ genügend groß.\\
+    Die rechte Seite $\ell(v) = \int_\Omega fv \dx$ ist stetig auf $H^1(\Omega)$,
+    weil $|\ell(v)| \le \norm{f}_{L^2} \norm{v}_{L^2} \le \norm{f}_{L^2} \norm{v}_{H^1}$.
+    Für $v \in H^1_0(\Omega)$ sind sogar allgemeinere $f$ möglich
+    (manche $f \notin L^2$ erlaubt, solange $\ell \in (H^1_0)'$).
+\end{Bem}
+
+\linie
+
+\begin{Def}{Energie-Skalarprodukt}
+    Sei $a\colon V \times V \to \real$ eine koerzive Bilinearform.\\
+    Dann heißt der symm. Anteil $\sp{u, v}_a := \frac{1}{2} (a(u,v) + a(v,u))$
+    \begriff{Energie-Skalarprodukt} von $a$.
+\end{Def}
+
+\begin{Bem}
+    $\sp{\cdot, \cdot}_a$ ist ein Skalarprodukt mit induzierter
+    \begriff{Energienorm} $\norm{u}_a := \sqrt{\sp{u, u}_a}$.
+\end{Bem}
+
+\linie
+
+\begin{Def}{schwache Lösung}
+    Seien eine Bilinear- und eine Linearform für ell. PDE gegeben.
+    $u \in H^1_0(\Omega)$ heißt \begriff{schwache Lösung}
+    der PDE mit Dirichlet-Nullrandwerten, falls $\forall_{v \in H^1_0(\Omega)}\; a(u,v) = \ell(v)$.
+\end{Def}
+
+\begin{Satz}{kl. Lsg. als schw. Lsg.}
+    Sei $u \in \C^2(\Omega) \cap \C^0(\overline{\Omega})$ klassische Lösung der PDE mit
+    Dirichlet-Nullrandwerten und rechter Seite $f \in \C^0(\Omega)$.
+    Dann ist $u$ auch schwache Lösung.
+\end{Satz}
+
+\subsubsection{%
+    Orthogonale Projektion und \name{Riesz}scher Darstellungssatz%
+}
+
+\begin{Bem}
+    Für die Existenz und Eindeutigkeit von schwachen Lösungen benötigt man zwei Hilfssätze.
+\end{Bem}
+
+\begin{Satz}{orthogonale Projektion}\\
+    Seien $V$ ein Hilbertraum und $W \le V$ ein abgeschlossener Unterraum.\\
+    Dann gibt es genau eine Abb. $P\colon V \to W$ mit
+    $\forall_{v \in V} \forall_{w \in W}\; \sp{v - Pv, w} = 0$
+    (d.\,h. $v - Pv \in W^\bot$).\\
+    $P$ ist ein linearer, stetiger Operator und heißt \begriff{orthogonale Projektion} auf $W$.
+\end{Satz}
+
+\begin{Satz}{\name{Riesz}scher Darstellungssatz}\\
+    Seien $V$ ein Hilbertraum und $J\colon V \to V'$, $(Jv)(w) := \sp{v, w}$.\\
+    Dann ist $J$ eine lineare, stetige, bijektive Isometrie.
+    Insbesondere existiert zu jedem $\ell \in V'$ ein eindeutiger
+    \begriff{\name{Riesz}-Repräsentant} $v_\ell := J^{-1}(\ell) \in V$ mit
+    $\ell(\cdot) = \sp{v_\ell, \cdot}$.
+\end{Satz}
+
+\pagebreak
+
+\subsubsection{%
+    Existenz und Eindeutigkeit für das \name{Poisson}-Problem%
+}
+
+\begin{Satz}{Existenz und Eindeutigkeit für das \name{Poisson}-Problem}
+    Betrachte die schwache Form der Poisson-Gleichung $-\Delta u = f$ in $\Omega$
+    mit Dirichlet-Nullrandwerten $u = 0$ auf $\partial\Omega$, d.\,h.\\
+    $a(u, v) := \int_\Omega \nabla u \cdot \nabla v \dx$,
+    $\ell(v) := \int_\Omega fv \dx$ für $u, v \in H^1_0(\Omega)$
+    (setze $A(x) :\equiv I_d$, $b :\equiv 0$, $c :\equiv 0$).\\
+    Dann gibt es für alle $f \in L^2(\Omega)$ genau eine schw. Lsg. $u \in H^1_0(\Omega)$.
+    Es gilt $|u|_{H^1(\Omega)} = \norm{\ell}_{H^{-1}(\Omega)}$.
+\end{Satz}
+
+\begin{Bem}
+    Die Riesz-Inverse $J^{-1}$ ist nach dem Beweis
+    der \begriff{Lösungsoperator} für das Poisson-Problem
+    mit Dirichlet-Nullrandwerten, d.\,h.
+    $[\forall_{v \in H^1_0(\Omega)}\; a(u, v) = \ell(v)] \iff u = J^{-1}(\ell)$, und
+    $J^{-1}$ ist stetig mit Norm $1$ (da Isometrie).
+\end{Bem}
+
+\begin{Bem}
+    $|u|_{H^1(\Omega)} = \norm{\ell}_{H^{-1}(\Omega)}$ gilt nur, falls
+    $H^1_0(\Omega)$, $H^{-1}(\Omega)$ mit der Energienorm (hier $H^1$-Seminorm)
+    und der induzierten Norm versehen werden
+    (d.\,h. $\norm{v}_{H^1_0} := |v|_{H^1}$ und\\
+    $\norm{\ell}_{H^1} := \sup_{v \in H^1_0 \setminus \{0\}}
+    \frac{|\ell(v)|}{|v|_{H^1}}$).
+    Wenn man stattdessen $H^1_0(\Omega)$ und $H^{-1}(\Omega)$ mit den Standardnormen versieht
+    (d.\,h. $\norm{v}_{H^1_0} := \norm{v}_{H^1}$ und
+    $\norm{\ell}_{H^1} := \sup_{v \in H^1_0 \setminus \{0\}}
+    \frac{|\ell(v)|}{\norm{v}_{H^1}}$),
+    so gilt wegen Normäquivalenz
+    $\exists_{c, C > 0}\; c \norm{\ell}_{H^{-1}} \le \norm{u}_{H^1_0} \le C \norm{\ell}_{H^{-1}}$.
+\end{Bem}
+
+\subsubsection{%
+    Existenz und Eindeutigkeit für das allg. ell. Problem%
+}
+
+\begin{Bem}
+    Für die Existenz und Eindeutigkeit von schwachen Lösungen für allgemeine elliptische Probleme
+    benötigt man folgenden Satz.
+\end{Bem}
+
+\begin{Satz}{\name{Lax}-\name{Milgram}}
+    Seien $V$ ein Hilbertraum und
+    $a \colon V \times V \to \real$ eine stetige, koerzive Bilinearform mit
+    Koerzivitätskonstante $\alpha > 0$.\\
+    Dann gibt es genau eine Abbildung $\A\colon V \to V$ mit
+    $\forall_{u, v \in V}\; a(u, v) = \sp{\A u, v}$.\\
+    Dabei ist $\A$ linear, stetig und bijektiv sowie $\A^{-1}$ ebenfalls stetig mit
+    $\norm{\A^{-1}} \le \frac{1}{\alpha}$.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{Existenz und Eindeutigkeit für das allg. ell. Problem}\\
+    Betrachte die schwache Form einer allg. ell. PDE mit Dirichlet-Nullrandwerten, d.\,h.\\
+    $a(u, v) := \int_\Omega ((A\nabla v) \nabla u - (b \nabla v) u + cuv) \dx$
+    und $\ell(v) := \int_\Omega fv \dx$ für $u, v \in H^1_0(\Omega)$.\\
+    Seien $A$ glm. elliptisch, $A$, $b$, $c$ glm. beschränkt und
+    $c \ge 0$ so groß, dass $a(u, v)$ koerziv auf $H^1_0(\Omega)$ mit Koerzivitätskonstante
+    $\alpha > 0$ ist.\\
+    Dann gibt es für alle $f \in L^2(\Omega)$ genau eine schw. Lsg. $u \in H^1_0(\Omega)$.\\
+    Es gilt $\norm{u}_{H^1(\Omega)} \le \frac{1}{\alpha} \norm{\ell}_{H^{-1}(\Omega)}$.
+\end{Satz}
+
+\subsubsection{%
+    Eigenschaften der Lösung%
+}
+
+\begin{Satz}{stetige Abhängigkeit von der rechten Seite}\\
+    Seien $u, \overline{u} \in H^1_0(\Omega)$ schwache Lösungen derselben allg. ell. PDE
+    mit Dirichlet-Nullrandwerten zu rechten Seiten $\ell, \overline{\ell} \in H^{-1}(\Omega)$.
+    Dann gilt $\norm{u - \overline{u}}_{H^1(\Omega)} \le
+    \frac{1}{\alpha} \norm{\ell - \overline{\ell}}_{H^{-1}(\Omega)}$.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{schwache Form als Minimierungsproblem}
+    Seien $V$ ein Hilbertraum, $a\colon V \times V \to \real$ eine stetige, koerzive und
+    symmetrische Bilinearform, $\ell \in V'$ und $u \in V$.\\
+    Dann gilt $\forall_{v \in V}\; a(u, v) = \ell(v)$ genau dann, wenn
+    $u = \argmin_{v \in V} (\frac{1}{2} a(v, v) - \ell(v))$.
+\end{Satz}
+
+\begin{Bem}
+    Für $a$ nicht-symmetrisch gibt es i.\,A. keine solche Interpretation.\\
+    Aus dem Satz wird noch einmal klar, dass die Vollständigkeit von $V$ wesentlich für
+    die Existenz eines Minimierers ist --
+    über $\C^1_0(\overline{\Omega})$ wird i.\,A. kein Minimierer existieren.
+\end{Bem}
+
+\pagebreak
+
+\subsubsection{%
+    Verallgemeinerte Randbedingungen%
+}
+
+\begin{Bem}
+    Es kann auch Existenz und Eindeutigkeit für andere Randbedingungen bewiesen werden.
+    \begin{itemize}
+        \item
+        \begriff{inhomogene \name{Dirichlet}-Randbedingungen}:
+        $-\Delta u = f$ in $\Omega$, $u = g$ auf $\partial\Omega$
+        
+        Sei $g$ derart, dass ein $\overline{g} \in \C^2(\Omega) \cap \C^0(\overline{\Omega})$
+        existiert mit $\overline{g}|_{\partial\Omega} = g$.
+        Dann löst $u$ die PDE genau dann, wenn $\overline{u} := u - g$ die PDE
+        $-\Delta \overline{u} = f + \Delta\overline{g}$ in $\Omega$ und
+        $\overline{u} = 0$ auf $\partial\Omega$ löst.\\
+        Ein Lösungsansatz besteht nun darin, zunächst die schwache Lösung
+        $\overline{u}$ der homogenen PDE zu bestimmen und dann
+        $u := \overline{u} + g$ zu setzen.
+        
+        \item
+        \begriff{gemischte \name{Dirichlet}-/Neumann-Randbedingungen}:\\
+        $-\Delta u = f$ in $\Omega$, $u = 0$ auf $\Gamma_D$,
+        $\nabla u \cdot n = g_N$ auf $\Gamma_N$, wobei
+        $\partial\Omega = \Gamma_D \dcup \Gamma_N$ mit
+        nicht-verschwindendem $(d-1)$-dimensionalem Maß von
+        $\Gamma_D, \Gamma_N \subset \partial\Omega$
+        
+        Betrachte den Lösungs-/Testraum
+        $V := H^1_{\Gamma_D}(\Omega) := \{v \in H^1(\Omega) \;|\; v|_{\Gamma_D} = 0\}$,
+        d.\,h. $H^1_0(\Omega) \le V \le H^1(\Omega)$
+        (dabei ist "`$v|_{\Gamma_D} = 0$"' im Sinne des Spuroperators zu sehen).
+        Durch Multiplikation der PDE mit $v \in H^1_{\Gamma_D}(\Omega)$,
+        Integration und partieller Integration erhält man
+        $\int_\Omega fv \dx = \int_\Omega \nabla u \cdot \nabla v \dx -
+        \int_{\partial\Omega} (\nabla u \cdot n) v \dsigma(x) =
+        \int_\Omega \nabla u \cdot \nabla v \dx -
+        \int_{\Gamma_N} g_N v \dsigma(x)$.\\
+        Damit erhält man die schwache Form der PDE:
+        Finde $u \in H^1_{\Gamma_D}(\Omega)$ mit\\
+        $\forall_{v \in H^1_{\Gamma_D}(\Omega)}\;
+        \int_\Omega \nabla u \cdot \nabla v \dx
+        = \int_\Omega fv \dx + \int_{\Gamma_N} g_N v \dsigma(x)$.
+        
+        Die Dirichlet-RBen werden also in der Konstruktion von $V$ berücksichtigt und
+        heißen deswegen \begriff{wesentliche RBen}.
+        Die Neumann-RBen werden dagegen über Zusatzterme in der schwachen Form berücksichtigt und
+        heißen \begriff{natürliche RBen}.
+    \end{itemize}
+\end{Bem}
+
+\subsubsection{%
+    Regularität%
+}
+
+\begin{Bem}
+    Für allg. ell. PDEs existiert genau eine schwache Lösung $u \in H^1_0(\Omega)$ für
+    $a$ stetig und koerziv.
+    Unter welchen Bedingungen ist $u \in H^m(\Omega)$ für $m > 1$
+    (oder sogar $u \in \C^\infty(\overline{\Omega})$)?
+\end{Bem}
+
+\begin{Def}{$H^s$-Regularität}
+    Sei $H^1_0(\Omega) \le V \le H^1(\Omega)$.\\
+    Eine PDE in schwacher Form $\forall_{v \in V}\; a(u, v) = \sp{f, v}_{L^2(\Omega)}$ mit
+    $a$ koerziv auf $V$ heißt \begriff{$H^s$-regulär}, falls es ein $C_R > 0$ gibt, sodass
+    es für alle $f \in H^{s-2}(\Omega)$ eine schwache Lösung $u \in H^s(\Omega)$ gibt mit
+    $\norm{u}_{H^s(\Omega)} \le C_R \norm{f}_{H^{s-2}(\Omega)}$.
+\end{Def}
+
+\begin{Bem}
+    Aus dem Existenz-/Eindeutigkeitssatz folgt $H^1$-Regularität für allg. ell. PDEs.
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Für $d = 2$ und $\Omega := \{x \in \real^2 \;|\; 1 < \norm{x} < 2\}$
+    ist $u(x) := \ln \norm{x}$ eine klassische Lösung des inhomogenen RWPs
+    $-\Delta u = 0$ in $\Omega$,
+    $u = 0$ auf $\partial B_1(0)$ und
+    $u = \ln 2$ auf $\partial B_2(0)$, wobei $u \in \C^\infty(\overline{\Omega})$,
+    d.\,h. $u$ ist auch eine schwache Lsg. mit $u \in H^\infty(\Omega)$
+    (wegen Beschränktheit von $\Omega$)
+    und man erhält $H^\infty$-Regularität.
+\end{Bsp}
+
+\begin{Bsp}
+    Seien $\alpha \in (0, 2)$ und
+    $\Omega := \{(r\cos\varphi, r\sin\varphi) \;|\; r \in (0, 1),\; \varphi \in (0, \alpha\pi)\}$
+    mit Randsegmenten $\Gamma_1$, $\Gamma_2$ und $\Gamma_3$ ($\Gamma_2$ Kreisbogen).
+    Dann ist $u(x) := \norm{x}^{1/\alpha} \sin(\frac{\varphi(x)}{\alpha})$ mit
+    $\varphi(x) := \arctan(\frac{x_2}{x_1})$ eine klassische Lösung von
+    $-\Delta u = 0$ in $\Omega$,
+    $u(x) = \sin(\frac{\varphi(x)}{\alpha})$ auf $\Gamma_2$ und
+    $u(x) = 0$ auf $\Gamma_1 \cup \Gamma_3$,
+    also auch eine schwache Lösung.
+    Man kann aber zeigen, dass $u \in H^2(\Omega) \iff \alpha \le 1$,
+    die Regularität hängt also auch von der Geometrie ab.
+\end{Bsp}
+
+\linie
+
+\begin{Satz}{Satz von \name{Friedrichs}}
+    Seien $\Omega \subset \real^d$ of"|fen und beschränkt mit glattem Rand
+    (mindestens $\C^2$) oder ein konvexes Lipschitz-Gebiet.\\
+    Dann ist das Poisson-RWP mit Dirichlet-Nullrandwerten $H^2$-regulär.
+\end{Satz}
+
+\begin{Bem}
+    Eine Verallg. folgert für $\C^{s-2}$-berandete Gebiete und
+    $f \in H^{s-2}(\Omega)$, dass $u \in H^s(\Omega)$.
+\end{Bem}
+
+\pagebreak

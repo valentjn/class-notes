@@ -1,0 +1,856 @@
+\section{%
+    Nicht-lineare Gleichungen und Optimierung%
+}
+
+\subsection{%
+    Nullstellen von Funktionen%
+}
+
+\subsubsection{%
+    Bisektionsverfahren%
+}
+
+Sei $f\colon [a, b] \rightarrow \real$ eine stetige Funktion mit
+$f(a) f(b) \le 0$. \\
+Nach dem Zwischenwertsatz besitzt $f$ mindestens eine Nullstelle
+in $[a, b]$.
+
+Halbiert man das Intervall und wertet $f$ an der Intervallmitte
+$c = \frac{a + b}{2}$ aus, so kann man mithilfe des Vorzeichens entscheiden,
+in welchem Teilintervall eine Nullstelle liegen muss:
+\begin{align*}
+    f(a)f(c) \le 0 \quad\Rightarrow &
+    \quad\text{es gibt eine Nullstelle in } [a, c] \\
+    f(a)f(c) \ge 0 \quad\Rightarrow &
+    \quad\text{es gibt eine Nullstelle in } [c, b].
+\end{align*}
+Nun wählt man das entsprechende Teilintervall aus und iteriert das Verfahren,
+bis die Länge des Intervalls die gewünschte Genauigkeit erreicht hat.
+
+Dieses Verfahren zur Nullstellenbestimmung heißt \textbf{Bisektionsverfahren}
+(Zweiteilung). \\
+Die Schnelligkeit der Konvergenz eines Iterationsverfahrens kann mit
+der Konvergenzordnung $p \ge 1$ beurteilt werden.
+Ist der $\ell$-te Fehler $e_\ell := x_\ell - x_\ast$ mit der $\ell$-ten
+Näherung $x_\ell$ und der exakten Lösung $x_\ast$, so gilt
+$|e_{\ell+1}| \le c \cdot |e_\ell|^p$ mit $p \ge 1$ und
+$c < 1$ für $p = 1$ (lineare Konvergenz).
+Die Konvergenzordnung $p$ hat wesentlichen Einfluss auf die
+Konvergenzgeschwindigkeit, zum Beispiel bei $p = 3$ (kubische Konvergenz)
+und $e_0 = \frac{1}{10}$ ist schon $|e_3| \le 10^{-14}$.
+Im Falle des Bisektionsverfahrens ist $p = 1$ und $c = \frac{1}{2}$,
+die Bisektion ist also recht langsam
+(ungefähr drei Schritte für eine Dezimalstelle).
+
+\subsubsection{%
+    Sekanten-Verfahren%
+}
+
+Zwei hinreichend gute Näherungen $x_{\ell-1}$ und $x_\ell$ einer Nullstelle
+$x_\ast$ von $f$ können im Allgemeinen durch Bestimmung der Nullstelle
+der interpolierenden Gerade
+\begin{align*}
+    x_{\ell+1}
+    = \frac{x_{\ell-1} f(x_\ell) - x_\ell f(x_{\ell-1})}
+    {f(x_\ell) - f(x_{\ell-1})}
+    = x_\ell - \frac{(x_\ell - x_{\ell-1}) f(x_\ell)}
+    {f(x_\ell) - f(x_{\ell-1})}
+\end{align*}
+verbessert werden. \\
+Die wiederholte Anwendung dieser linearen Approximation heißt
+\textbf{Sekanten-Verfahren}.
+
+Ist die approximierte Nullstelle $x_\ast$ einfach
+(d.\,h. $f'(x_\ast) \not= 0$), so besitzt das Verfahren
+die Konvergenzordnung $r = \frac{1 + \sqrt{5}}{2}$ (Goldener Schnitt).
+Genauer gilt für den Fehler $e_\ell := |x_\ell - x_\ast|$
+\begin{align*}
+    \lim_{\ell \to \infty} \frac{e_{\ell+1}}{e_\ell^r}
+    = \left|\frac{f''(x_\ast)}{2 f'(x_\ast)}\right|^{1/r}.
+\end{align*}
+Da pro Iterationsschritt nur eine Funktionsauswertung erforderlich ist,
+ist das Sekanten-Verfah\-ren etwas ef"|fizienter als die Newton-Iteration
+($r^2 > 2$).
+
+\pagebreak
+
+\subsubsection{%
+    Inverse Interpolation%
+}
+
+Aus Näherungen $x_{\ell-n}, \dotsc, x_\ell$ für eine Nullstelle $x_\ast$
+einer Funktion $f$ kann man eine Approximation $x_{\ell+1} \approx x_\ast$
+durch \textbf{inverse Interpolation} der Funktionswerte $f_k = f(x_k)$
+mit einem Polynom $p$ vom Grad $\le n$ gewinnen.
+Sind die Werte $f_k$ paarweise verschieden, so ist
+\begin{align*}
+    x_{\ell+1} = p(0)
+    = \sum_{k=\ell-n}^\ell \left(x_k
+    \prod_{j\not=k} \frac{f_j}{f_j - f_k}\right).
+\end{align*}
+Die Iteration des Verfahrens ist für glatte Funktionen bei einfachen
+Nullstellen lokal konvergent und sehr ef"|fizient.
+Allerdings ist der Iterationsschritt nicht immer durchführbar:
+Die möglichen Ausnahmefälle müssen mithilfe eines anderen Verfahrens
+(z.\,B. Bisektion) überbrückt werden.
+
+\linie
+
+Häufig angewendet wird die
+\textbf{quadratische inverse Interpolation} ($n = 2$). \\
+Für die Daten $(x_0, f_0)$, $(x_1, f_1)$ und $(x_2, f_2)$ hat die
+Approximation dann die Form
+\begin{align*}
+    x_\ast \approx
+    x_0 \frac{f_1 f_2}{(f_1 - f_0)(f_2 - f_0)} +
+    x_1 \frac{f_0 f_2}{(f_0 - f_1)(f_2 - f_1)} +
+    x_2 \frac{f_0 f_1}{(f_0 - f_2)(f_1 - f_2)}.
+\end{align*}
+Beginnt man mit einem Intervall $[a, b]$, an dessen Endpunkten
+die Funktion $f$ ihr Vorzeichen wechselt, so kann man die inverse Interpolation
+sehr ef"|fektiv mit dem Bisektionsverfahren verbinden.
+Neben einer Folge von Approximationen $x_0, x_1, \dotsc$ werden Intervalle
+$I_\ell$ mit Vorzeichenwechsel von $f$ gespeichert, deren einer
+Eckpunkt $x_\ell$ ist. Ein Iterationsschritt $x_\ell \rightarrow x_{\ell+1}$
+verläuft wie folgt:
+\begin{enumerate}
+    \item
+    Ist die inverse quadratische Interpolation mit $x_{\ell-2}$, $x_{\ell-1}$
+    und $x_\ell$ durchführbar und liefert einen Punkt $x_{\ell+1}$ im Inneren
+    von $I_\ell$, so wird die Approximation akzeptiert.
+    
+    \item
+    Andernfalls (oder falls im letzten Schritt mit Interpolation keine
+    signifikante Verbesserung erzielt wurde) wird $x_{\ell+1}$ mit Bisektion
+    aus den Endpunkten von $I_\ell$ bestimmt.
+    
+    \item
+    Durch Einbeziehung des neuen Punktes wird das Intervall aktualisiert.
+    Bei einem Bisektionsschritt werden zusätzlich $x_{\ell-1}$ und $x_\ell$
+    durch die neuen Intervallendpunkte ersetzt.
+\end{enumerate}
+
+\pagebreak
+
+\subsubsection{%
+    \name{Newton}-Verfahren%
+}
+
+Mit dem \textbf{\name{Newton}-Verfahren} kann eine Nullstelle $x_\ast$ einer
+Funktion $f$ numerisch bestimmt werden.
+Die Folge $x_0, x_1, \dotsc$ der Approximationen wird durch Linearisierung
+gewonnen.
+Die Näherung $x_{\ell+1}$ ist der Schnittpunkt der Tangente im
+Punkt $(x_\ell, f(x_\ell))$ mit der $x$-Achse:
+\begin{align*}
+    x_{\ell+1} = x_\ell - \frac{f(x_\ell)}{f'(x_\ell)}.
+\end{align*}
+Für eine einfache Nullstelle $x_\ast$ konvergiert die Newton-Iteration
+lokal quadratisch, d.\,h. \\
+$|x_{\ell+1} - x_\ast| \le c |x_\ell - x_\ast|^2$
+für Startpunkte $x_0$ in einer hinreichend kleinen Umgebung von $x_\ast$.
+
+Die Voraussetzung, dass der Startwert $x_0$ in einer hinreichend kleinen
+Umgebung von $x_\ast$ liegt, ist notwendig, d.\,h. das Newton-Verfahren
+konvergiert i.\,A. nicht für Startwerte außerhalb der Umgebung.
+
+\linie
+
+Das \textbf{\name{Heron}-Verfahren} (auch babylonisches Wurzelziehen genannt)
+$x \leftarrow (x + a/x) / 2$ zur Berechnung der Wurzel einer positiven Zahl $a$
+stellt sich bei genauerer Betrachtung
+als das Newton-Verfahren für $f(x) = x^2 - a$ heraus:
+\begin{align*}
+    x \leftarrow \frac{1}{2} \left(x + \frac{a}{x}\right)
+    = x - \frac{x^2 - a}{2x}.
+\end{align*}
+Die Konvergenz ist z.\,B. für $a = 2$, $x_0 = 1$ äußerst schnell.
+Bei jedem Schritt verdoppelt sich die Anzahl der korrekten Stellen.
+
+\linie
+
+Färbt man bei der komplexen Newton-Iteration Bereiche der komplexen Zahlenebene
+je nach Konvergenzgeschwindigkeit unterschiedlich ein, so erhält man
+teilweise merkwürdig aussehende Fraktale (\textbf{\name{Newton}-Fraktale}).
+Ein solches ergibt sich bspw. für die Gleichung
+$z^3 - 1 = 0$, $z \in \complex$.
+
+\subsubsection{%
+    \name{Müller}s Verfahren%
+}
+
+Mit \textbf{\name{Müller}s Verfahren} können sowohl reelle als auch komplexe
+Nullstellen einer Funktion $f$ approximiert werden.
+Dabei wird eine Folge $z_0, z_1, \dotsc$ von Näherungen für eine Nullstelle
+$z_\ast$ mithilfe von quadratischer Interpolation generiert.
+Die Approximation $z_{\ell+1}$ ist die am nächsten bei $z_\ell$ gelegene
+Nullstelle der Parabel, die die Punkte $(z_\ell, f(z_\ell))$,
+$(z_{\ell-1}, f(z_{\ell-1}))$, $(z_{\ell-2}, f(z_{\ell-2}))$ interpoliert:
+\begin{align*}
+    z_{\ell+1} = z_\ell -
+    \frac{2 f(z_\ell)}{\beta_\ell \pm
+    \sqrt{\beta_\ell^2 - 4 f(z_\ell) \alpha_\ell}},
+\end{align*}
+\begin{align*}
+    \alpha_\ell = \Delta(z_\ell, z_{\ell-1}, z_{\ell-2}) f, \quad
+    \beta_\ell =
+    \Delta(z_\ell, z_{\ell-1}) f + \alpha_\ell(z_\ell - z_{\ell-1}).
+\end{align*}
+Dabei ist das Vorzeichen so gewählt, dass der Betrag des Nenners am größten
+wird.
+
+Im Fall von zusammenfallenden Punkten sind die Dividierten Dif"|ferenzen
+mithilfe entsprechender Ableitungen definiert.
+Allerdings steht dies nicht im Einklang mit dem ableitungsfreien Charakter
+des Verfahrens.
+In der Praxis treten jedoch solche und andere Ausnahmefälle
+($\alpha_\ell = 0$, $z_{\ell+1} = \infty$) sehr selten auf.
+
+Für glatte Funktionen konvergiert Müllers Verfahren lokal fast mit Ordnung $2$.
+
+\subsubsection{%
+    Schranken für Nullstellen von Polynonmen%
+}
+
+Die \textbf{Beträge der Nullstellen eines Polynoms}
+$p(x) = a_n x^n + \dotsb + a_1 x + a_0$ können abgeschätzt werden:
+\begin{align*}
+    |x| \le \max\left\{1, \sum_{i=0}^{n-1} \frac{|a_i|}{|a_n|}\right\}.
+\end{align*}
+
+\subsubsection{%
+    \name{Sturm}sche Kette%
+}
+
+Die Polynomfolge $p_n, p_{n-1}, \dotsc, p_m$ bildet eine
+\textbf{\name{Sturm}sche Kette}, falls
+\begin{itemize}
+    \item
+    alle reellen Nullstellen von $p_n$ einfach sind,
+    
+    \item
+    $p_m$ sein Vorzeichen nicht ändert,
+    
+    \item
+    $p_{n-1}$ an allen reellen Nullstellen von $p_n$ ein anderes Vorzeichen
+    als $p_n'$ hat und
+    
+    \item
+    $p_{k+1}(x) p_{k-1}(x) < 0$ für alle reellen Nullstellen $x$ von $p_k$,
+    $k = n - 1, \dotsc, m + 1$ ist.
+\end{itemize}
+
+Eine Sturmsche Kette kann zur Nullstellen-Bestimmung von Polynomen
+verwendet werden:
+Bezeichnet $s(x)$ die Anzahl der Vorzeichenwechsel der Folge
+$p_n(x), \dotsc, p_m(x)$, dann ist die Anzahl der reellen Nullstellen von $p_n$
+im Intervall $\left[a, b\right)$ gleich der Dif"|ferenz $s(b) - s(a)$.
+
+Diese Eigenschaft bildet die Grundlage für ein Bisektionsverfahren:
+Man beginnt mit einem Intervall, dass alle reelle Nullstellen von $p_n$
+enthält.
+Durch fortgesetzte Unterteilung, gemäß der Anzahl der Vorzeichenwechsel der
+Kette an den Teilintervall-Endpunkten, können so alle reellen Nullstellen
+von $p_n$ bestimmt werden.
+
+\linie
+
+Zu einem beliebigen Polynom $q_n$ kann man eine Sturmsche Kette
+$p_n, \dotsc, p_m$ mithilfe des Euklidischen Algorithmus konstruieren.
+Man bestimmt dazu zunächst den größten gemeinsamen Teiler $q_m$ von $q_n$
+und $q_{n-1} := -q_n'$ durch sukzessive Polynomdivision
+\begin{align*}
+    q_{k+1} = r_k q_k - q_{k-1}, \quad
+    k = n - 1, \dotsc, m
+\end{align*}
+mit $q_{m-1} = 0$ und setzt anschließend $p_k := q_k / q_m$.
+
+\linie
+
+Die charakteristischen Polynome der symmetrischen Tridiagonalmatrix
+\begin{align*}
+    \begin{pmatrix}
+        a_1 & b_1 & & & 0 \\
+        b_1 & a_2 & b_2 \\
+        & b_2 & \ddots & \ddots \\
+        & & \ddots \\
+        & & & & b_{n-1} \\
+        0 & & & b_{n-1} & a_n
+    \end{pmatrix}
+\end{align*}
+erfüllen die Rekursion
+\begin{align*}
+    p_{n+1}(\lambda) = (a_{n+1} - \lambda) p_n(\lambda) -
+    b_n^2 p_{n-1}(\lambda), \quad
+    n \in \natural
+\end{align*}
+mit $p_0(\lambda) = 1$ und $p_1(\lambda) = a_1 - \lambda$.
+Sind alle Nebendiagonalelemente $b_k$ ungleich Null, so sind die Nullstellen
+wie bei orthogonalen Polynomen geschachtelt und die Folge
+$p_n, \dotsc, p_0$ bildet eine Sturmsche Kette.
+Mithilfe Sturmscher Ketten können somit die Eigenwerte beliebiger
+symmetrischer tridiagonaler Matrizen bestimmt werden.
+
+\subsubsection{%
+    Nullstellenbestimmung mit \matlab{}%
+}
+
+Nullstellen einer reellen Funktion \code{f} können in \matlab{} mit dem Befehl
+\code{x = fzero(f, x0);} bestimmt werden.
+\code{f} ist dabei als Funktionshandle, Funktionsname und Inline-Funktion
+gegeben.
+\code{x0} ist ein Punkt, in dessen Umgebung eine Nullstelle gefunden werden
+soll.
+Statt eines Punktes kann auch ein Intervall \code{[a, b]} übergeben werden.
+Der verwendete Algorithmus basiert auf einer Kombination von Bisektion und
+inverser quadratischer Interpolation.
+Wird kein Intervall übergeben, so wird zunächst ein Intervall mit einem
+Vorzeichenwechsel der Funktion an den Endpunkten bestimmt.
+Kann kein solches Intervall bestimmt werden, wird ein Fehler ausgegeben
+und \code{NaN} zurückgegeben.
+
+Komplexe Nullstellen können nicht gefunden werden. \\
+Für Polynome \code{p} ($p(z) = p_1 z^n + \dotsb + p_n z + p_{n+1}$)
+schafft hier der Befehl \code{z = roots(c);} Abhilfe.
+Hier werden alle Nullstellen (reell wie komplex) bestimmt.
+
+\pagebreak
+
+\subsection{%
+    Nicht-lineare Systeme%
+}
+
+\subsubsection{%
+    Nicht-lineares Gleichungssystem%
+}
+
+Ein \textbf{nicht-lineares Gleichungssystem} hat die Form
+\begin{align*}
+    f(x) = 0 \quad\Leftrightarrow\quad
+    \left\{\begin{array}{rcl}
+        f_1(x_1, \dotsc, x_n) & = & 0 \\
+        & \vdots \\
+        f_m(x_1, \dotsc, x_n) & = & 0
+    \end{array}\right.
+\end{align*}
+mit Unbekannten $x_i$ und gegebenen Funktionen $f_j$ ($i = 1, \dotsc, n$,
+$j = 1, \dotsc, m$).
+
+Im Gegensatz zu linearen Gleichungssystemen (LGS) können keine generellen
+Aussagen über die Lösbarkeit eines nicht-linearen Gleichungssystems gemacht
+werden.
+Im Allgemeinen existieren jedoch für $m = n$ nur endlich viele Lösungen.
+Für $m > n$ ist das System normalerweise überbestimmt.
+Es existiert keine Lösung und man spricht von einem
+nicht-linearen Ausgleichsproblem.
+Für $m < n$ ist das System i.\,A. unterbestimmt,
+d.\,h. Unbekannte $x_j$ können frei gewählt werden.
+
+\subsubsection{%
+    \name{Banach}scher Fixpunktsatz%
+}
+
+Sei $g\colon D \rightarrow \real^n$ mit $D \subset \real^n$,
+$D \not= \emptyset$ gegeben.
+Ist $D$ abgeschlossen ($D = \overline{D}$),
+wird $D$ von $g$ in sich selbst abgebildet ($g(D) \subset D$)
+und ist $g$ eine Kontraktion ($\norm{g(x) - g(y)} \le c \norm{x - y}$
+für alle $x, y \in D$, wobei $0 \le c < 1$),
+so besitzt $g$ einen eindeutigen Fixpunkt $x_\ast = g(x_\ast) \in D$.
+
+Ausgehend von einem beliebigen Punkt $x_0 \in D$ kann $x_\ast$ durch die Folge
+\begin{align*}
+    x_0, \quad
+    x_1 = g(x_0), \quad
+    x_2 = g(x_1), \quad
+    \dotsc
+\end{align*}
+approximiert werden.
+Für den Fehler gilt dabei
+\begin{align*}
+    \norm{x_\ast - x_k} \le \frac{c^k}{1 - c} \norm{x_1 - x_0},
+\end{align*}
+d.\,h. die Iterationsfolge konvergiert für jeden Startwert linear.
+
+Der Fixpunktsatz gilt auch allgemein in vollständigen metrischen Räumen.
+Dabei wird die Norm $\norm{x - y}$ einfach durch die Abstandsfunktion
+$d(x, y)$ ersetzt.
+
+\linie
+
+Zum Nachweis der Kontraktionseigenschaft von dif"|ferenzierbaren
+Abbildungen $g$ benutzt man oft den
+\textbf{Mittelwertsatzes (Satz von \name{Lagrange})}.
+Für $n = 1$ lautet dieser
+\begin{align*}
+    g(y) - g(x) = g'(z) \cdot (y - x) \quad\text{für ein}\quad
+    z \in \overline{x,y}.
+\end{align*}
+Lässt sich nun die Ableitung nach oben abschätzen, d.\,h.
+$g'(z) \le \max_{z \in D} |g'(z)| = c$ mit $c < 1$, so ist die
+Kontraktionseigenschaft nachgewiesen.
+
+Für $n \ge 2$ bedient man sich des \textbf{verallgemeinerten Mittelwertsatzes}:
+\begin{align*}
+    g(y) - g(x) = \int_0^1 g'(x + t(y - x))(y - x) \dt.
+\end{align*}
+Hier muss die Norm der Jacobi-Matrix nach oben abgeschätzt werden: \\
+$\norm{g'(x + t(y - x))} \le \max_{z \in D} \norm{g'(z)} = c$.
+Für $c < 1$ liegt wieder eine Kontraktion vor.
+
+\linie
+\pagebreak
+
+Eine typische Anwendung ist ein leicht gestörtes System
+$Ax + \varepsilon f(x) = b$ mit einer quadratischen Matrix $A$.
+Die Funktion $f(x)$ stellt die Störung dar und besitzt eine komplizierte
+Abhängigkeit von $x$.
+Für hinreichend kleine $\varepsilon$ dominiert aber lineare Anteil und
+das System kann mit der Iteration
+$x \leftarrow g(x) := A^{-1} (b - \varepsilon f(x))$ gelöst werden.
+Man nimmt dabei an, dass $A$ invertierbar und $f$ Lipschitz-stetig mit
+Konstante $c_f$ ist.
+
+Zur Überprüfung der Voraussetzungen des Banachschen Fixpunktsatzes wählt man \\
+$D := \overline{U_r(p)} = \{y \in \real^n \;|\; \norm{y - p} \le r\}$
+mit $p = A^{-1} b$, denn für kleines $\varepsilon$ liegt die Lösung
+nahe bei der Lösung von $Ax = b$.
+Für $x \in D$ beliebig gilt dann
+$\norm{g(x) - p} = \varepsilon \norm{A^{-1} f(x)} \le
+\varepsilon \norm{A^{-1}} \max_{y \in D} \norm{f(y)}$.
+Wählt man also
+$\varepsilon \le \frac{r}{\norm{A^{-1}} \max_{y \in D} \norm{f(y)}}$,
+so gilt $g(x) \in D$, d.\,h. $g$ bildet $D$ in sich selbst ab.
+Für die Kontraktionskonstante gilt
+$\norm{g(x) - g(y)} = \varepsilon \norm{A^{-1} (f(x) - f(y))} \le
+\varepsilon \norm{A^{-1}} c_f \norm{x - y} = c \norm{x - y}$
+mit $c := \varepsilon \norm{A^{-1}} c_f$.
+Es gilt $c < 1$, falls $\varepsilon < \frac{1}{\norm{A^{-1}} c_f}$ gilt.
+Für ein hinreichend kleines $\varepsilon > 0$ sind beide Bedingungen
+erfüllt und der Fixpunktsatz von Banach lässt sich anwenden.
+
+\subsubsection{%
+    Multivariates \name{Newton}-Verfahren%
+}
+
+Ein Iterationsschritt $x \rightarrow y$ der Newton-Iteration zur Bestimmung
+einer Nullstelle $x_\ast$ eines nicht-linearen Gleichungssystems
+$f_k(x_1, \dotsc, x_n) = 0$ für $k = 1, \dotsc, n$ hat die Form
+\begin{align*}
+    \Delta := -f'(x)^{-1} f(x), \qquad
+    y := x + \Delta.
+\end{align*}
+Dabei wird die Jacobi-Matrix $f'(x)$ nicht invertiert, sondern das Inkrement
+$\Delta$ wird als Lösung des LGS $f'(x) \Delta = -f(x)$ bestimmt.
+
+Für $\det f'(x_\ast) \not= 0$ konvergiert die Newton-Iteration lokal
+quadratisch, d.\,h.
+\begin{align*}
+    \norm{y - x_\ast} \le c \norm{x - x_\ast}^2 \quad\text{für}\quad
+    x \approx x_\ast.
+\end{align*}
+
+\subsubsection{%
+    \name{Kantorovich}-Kriterium%
+}
+
+Das \textbf{\name{Kantorovich}-Kriterium} gibt eine hinreichende Bedingung
+für die Konvergenz des Newton-Verfahrens für ein System nicht-linearer
+Gleichungen $f_k(x_1, \dotsc, x_n) = 0$, $k = 1, \dotsc, n$. \\
+Gilt für einen Startvektor $y$
+\begin{align*}
+    \norm{f'(y)^{-1} f(y)} & \le \frac{r}{2} \\
+    \norm{f'(y)^{-1} (f'(x) - f'(\widetilde{x}))} &
+    \le \frac{1}{r} \norm{x - \widetilde{x}}
+\end{align*}
+für alle $x, \widetilde{x} \in U_r(y)$, dann existiert eine Lösung $x_\ast$
+des Systems in $\overline{U_r(y)}$ und das Newton-Verfahren mit Startvektor $y$
+konvergiert gegen $x_\ast$.
+
+\pagebreak
+
+\subsubsection{%
+    Fortsetzungsmethode%
+}
+
+Bei einem von einem Parameter $t$ abhängigen nicht-linearen Gleichungssystem \\
+$f_k(x_1, \dotsc, x_n, t) = 0$, $k = 1, \dotsc, n$
+kann eine Lösung $x(t)$ für kleines $\Delta t$ als Näherung für
+$x(t + \Delta t)$ verwendet werden.
+Ist die Jacobi-Matrix von $f$ bzgl. $x$ bei $x(t)$ invertierbar,
+so erhält man durch die lineare Taylor-Entwicklung
+\begin{align*}
+    x(t + \Delta t) \approx x(t) - f_x(x(t), t)^{-1} f_t(x(t), t) \Delta t
+\end{align*}
+eine verbesserte Approximation (\textbf{Fortsetzungsmethode}).
+
+Die Fortsetzungsmethode kann insbesondere in Kombination mit iterativen
+Verfahren benutzt werden, um das nicht-lineare Gleichungssystem für eine
+Parameterfolge $t_0 < t_1 < \dotsb$ zu lösen.
+Die Lösungen $x(t_k)$ dienen dabei jeweils als Startwerte zur Berechnung
+von $x(t_{k+1})$.
+
+\subsubsection{%
+    Gedämpftes \name{Newton}-Verfahren%
+}
+
+Mit dem Newton-Verfahren wird eine Lösung $x_\ast$ eines nicht-linearen
+Gleichungssystems \\
+$f_k(x_1, \dotsc, x_n) = 0$, $k = 1, \dotsc, n$
+ausgehend von einer hinreichend guten Startnäherung $x$ approximiert.
+Beim \textbf{gedämpften \name{Newton}-Verfahren} will man in jedem Fall eine
+Verkleinerung der Norm des Funktionswerts erreichen.
+Daher hat ein Iterationsschritt $x \rightarrow y$ die folgende Form:
+\begin{enumerate}
+    \item
+    Das Inkrement $\Delta x$ wird durch Lösung des LGS
+    $f'(x) \Delta x = f(x)$ berechnet.
+    
+    \item
+    Man bestimmt einen \textbf{Dämpfungsparameter}
+    $\lambda \in \{1, 1/2, 1/4, \dotsc\}$, sodass $\norm{f(y)}$
+    für $y = x - \lambda \Delta x$ signifikant kleiner als $\norm{f(x)}$ ist.
+\end{enumerate}
+
+Als Test zur Bestimmung von $\lambda$ dient der Vergleich
+\begin{align*}
+    \norm{\Delta y} \le (1 - \lambda/2) \norm{\Delta x}, \quad
+    f'(x) \Delta y = f(y)
+\end{align*}
+mit einer geeignet gewählten Norm $\norm{\cdot}$.
+Dabei kann eine bereits bestimmte LR- oder QR-Zerlegung der Jacobi-Matrix
+$f'(x)$ zur schnelleren Berechnung von $\Delta y$ benutzt werden.
+Durch die Multiplikation der Funktionswerte mit $f'(x)^{-1}$ wird der Vergleich
+af"|fin invariant.
+Insbesondere ist damit auch das gedämpfte Newton-Verfahren
+skalierungsunabhängig, was in einem Vergleich der Form
+$\norm{f(y)} \le (1 - \rho) \norm{f(x)}$ nicht gewährleistet wäre.
+
+Bei der Implementierung empfiehlt es sich, $\lambda$ nicht abrupt zu ändern.
+Man beginnt den Vergleich mit dem zuletzt gewählten Dämpfungsparameter.
+Entsprechend dem Result der Abfrage wird $\lambda$ halbiert oder verdoppelt,
+wobei eine Verdoppelung dann frühestens im nächsten Iterationsschritt
+umgesetzt wird.
+Ist die Jacobi-Matrix für die approximierte Lösung $x_\ast$ regulär,
+so ist $\lambda = 1$ für Approximationen nahe genug bei $x_\ast$.
+Die quadratische Konvergenz wird somit durch die Dämpfung nicht
+beeinträchtigt.
+
+\pagebreak
+
+\subsubsection{%
+    \name{Gauß}-\name{Newton}-Verfahren%
+}
+
+Die Lösung $x_\ast \in \real^n$ eines nicht-linearen Ausgleichsproblems
+\begin{align*}
+    \norm{f(x_1, \dotsc, x_n)}_2^2
+    = \sum_{k=1}^m |f_k(x)|^2 \rightarrow \min
+    \qquad (m > n)
+\end{align*}
+kann mit der durch
+\begin{align*}
+    & \norm{f(x) + f'(x) \Delta x}_2 \rightarrow \min \\
+    & x \leftarrow x + \Delta x
+\end{align*}
+definierten \textbf{Gauß-Newton-Iteration} bestimmt werden.
+In jedem Iterationsschritt wird dabei ein lineares Ausgleichsproblem mit der
+$m \times n$-Matrix $f'(x)$ gelöst.
+
+\pagebreak
+
+\subsection{%
+    Minimierung ohne Nebenbedingungen%
+}
+
+\subsubsection{%
+    Goldene Suche%
+}
+
+Ein lokales Minimum einer stetigen Funktion $f$ kann mithilfe eines
+Unterteilungsalgorithmus
+(\textbf{Goldene Suche}, analog der Bisektion bei Nullstellen) bestimmt werden.
+Man geht dazu von drei Punkten $a$, $b$ und $c$ mit
+\begin{align*}
+    f(a) \ge f(b) \le f(c)
+\end{align*}
+aus.
+Es muss mindestens ein lokales Minimum von $f$ im Intervall $(a, c)$ liegen.
+Zur Verkleinerung des Intervalls wird $f$ nun an einem weiterem Punkt $x$ im
+größeren der Teilintervalle $(a, b)$ und $(b, c)$ ausgewertet.
+Dann wird einer der Eckpunkte durch $x$ ersetzt, sodass für das neue Tripel
+$\{a', b', c'\}$ wiederum $f(a') \ge f(b') \le f(c')$ gilt.
+Die Prozedur wird solange wiederholt, bis eine vorgegebene Genauigkeit erreicht
+ist.
+
+\linie
+
+Die optimale Unterteilung der Intervalle erfolgt im Verhältnis
+(\textbf{Goldener Schnitt})
+\begin{align*}
+    r : (1 - r) \quad\text{mit}\quad
+    r := \frac{\sqrt{5} - 1}{2} \approx 0.61803.
+\end{align*}
+Der Parameter $r$ ist die positive Lösung der Gleichung $r^2 = 1 - r$.
+Gilt $(c' - a') = r(c - a)$, so wird durch dieses Teilverhältnis
+eine konstante Reduktion der Intervalllänge pro Schritt unabhängig von
+dem Vergleich zwischen $f(x)$ und $f(b)$ erreicht. \\
+Für beliebige Startpunkte $a \le b \le c$ ist die Intervalllänge nach
+$n$ Schritten $\le r^{n-1} (c - a)$.
+
+\subsubsection{%
+    Quadratische Suche%
+}
+
+Aus Approximationen $x_{\ell-2}$, $x_{\ell-1}$, $x_\ell$ für das
+Minimum $x_\ast$ einer Funktion $f$ mit \\
+$\Delta(x_\ell, x_{\ell-1}, x_{\ell-2}) f > 0$
+kann eine verbesserte Approximation durch Minimierung der interpolierenden
+Parabel bestimmt werden (\textbf{quadratische Suche}):
+\begin{align*}
+    x_{\ell+1} := \frac{1}{2} \left(x_\ell + x_{\ell-1} -
+    \frac{\Delta(x_\ell, x_{\ell-1}) f}
+    {\Delta(x_\ell, x_{\ell-1}, x_{\ell-2}) f}\right).
+\end{align*}
+Fallen Punkte $x_k$ zusammen, so sind die auftretenden Divideren Dif"|ferenzen
+mithilfe der entsprechenden Ableitungswerte zu berechnen.
+
+Ist $f''(x_\ast) > 0$, dann ist die quadratische Suche lokal konvergent.
+Insbesondere ist \\
+$\Delta(x_\ell, x_{\ell-1}, x_{\ell-2}) f > 0$ für $x_k$
+nahe bei $x_\ast$, sodass die Methode immer durchführbar ist.
+
+\pagebreak
+
+\subsubsection{%
+    Steilster Abstieg%
+}
+
+Die \textbf{Methode des steilsten Abstiegs} dient zur Minimierung multivariater
+Funktionen \\
+$f\colon \real^n \rightarrow \real$.
+Zur Durchführung eines Iterationsschrittes wird zunächst der negative Gradient
+\begin{align*}
+    d := -\grad f(x)
+\end{align*}
+als lokal beste Abstiegsrichtung berechnet.
+Dann wird $y$ als eine Minimalstelle von $f$ in Richtung von $d$ bestimmt:
+\begin{align*}
+    f(y) = \min_{t \ge 0} f(x + td).
+\end{align*}
+Die Suchrichtung ist dabei orthogonal zu der Niveaumenge durch $x$ und berührt
+eine Niveaumenge zu einem kleineren Funktionswert in $y$.
+
+\linie
+
+Die Konvergenz der durch die Methode des steilsten Abstiegs erzeugten Folge
+$x_0, x_1, \dotsc$ kann unter sehr allgemeinen Voraussetzungen gezeigt werden.
+Hinreichend ist, dass $f$ nach unten beschränkt ist und $\grad f$ in einer
+Umgebung $U$ der Menge $\{x \in \real^n \;|\; f(x) \le f(x_0)\}$
+Lipschitz-stetig ist, d.\,h.
+\begin{align*}
+    \norm{\grad f(x) - \grad f(\widetilde{x})} \le L \norm{x - \widetilde{x}},
+    \quad x, \widetilde{x} \in U.
+\end{align*}
+Dann gilt
+\begin{align*}
+    \sum_{\ell=0}^\infty \norm{\grad f(x_\ell)}^2 < \infty.
+\end{align*}
+Dies impliziert insbesondere, dass jeder Häufungspunkt der Folge
+$x_0, x_1, \dotsc$ ein kritischer Punkt von $f$ ist.
+Dass es sich um ein lokales Minimum handelt, ist statistisch gesehen fast
+sicher, kann jedoch nicht zwingend gefolgert werden.
+
+\linie
+
+Im Algorithmus braucht die eindimensionale Minimierung nur näherungsweise
+durchgeführt werden.
+Die Suchrichtung $d$ muss nicht als der negative Gradient gewählt und
+eine globale Minimalstelle $y$ nicht bestimmt werden.
+Entscheidend für Konvergenz ist lediglich, dass in jedem Iterationsschritt
+eine Reduktion des Funktionswerts proportional zu $\norm{\grad f(x)}^2$
+erreicht wird.
+
+\linie
+
+Für eine symmetrische Matrix $A$, einen Vektor $b$ und einen Skalar $c$
+wird durch
+\begin{align*}
+    q(x) = \frac{1}{2} x^t A x + b^t x + c
+\end{align*}
+eine \textbf{quadratische Funktion} definiert.
+
+Ist $A$ symmetrisch und positiv definit, so kann man für die quadratische
+Funktion \\
+$f(x) = \frac{1}{2} x^t A x - b^t x$ ein Iterationsschritt $x \rightarrow y$
+der Methode des steilsten Abstiegs explizit angeben.
+Es ist $y = x + td$ mit $d = -\grad f(x) = b - Ax$ und
+$t = \frac{d^t d}{d^t A d}$, denn das Minimum von
+$f(x + td) = \frac{1}{2} (x + td)^t A (x + td) - b^t (x + td)
+= \frac{1}{2} d^t A d t^2 + (x^t A d - b^t d) t + c$
+kann durch Nullsetzen der Ableitung nach $t$ bestimmt werden:
+$0 = d^t A d t - (b - Ax)^t d = d^t A d t - d^t d$.
+
+Es kann zu unerwünschten Oszillationen kommen, wenn $A$ Eigenwerte stark
+unterschiedlicher Größenordnung besitzt.
+Für
+\begin{align*}
+    A = \begin{pmatrix}1 & 0\\0 & 100\end{pmatrix}, \quad
+    b = \begin{pmatrix}0\\0\end{pmatrix}, \quad
+    x = \begin{pmatrix}100\\1\end{pmatrix}
+\end{align*}
+verringert sich zum Beispiel in jedem Iterationsschritt der Abstand zum Minimum
+im Ursprung nur um weniger als $1$ Prozent.
+
+\subsubsection{%
+    \name{Kantorovich}-Ungleichung%
+}
+
+Sei $x \rightarrow y$ ein Schritt bei der Minimierung der quadratischen
+Funktion
+\begin{align*}
+    f(x) = \frac{1}{2} x^t A x - b^t x
+\end{align*}
+mit symmetrischer, positiv definiter Matrix $A$ durch die Methode des steilsten
+Abstiegs. \\
+Dann gilt die \textbf{\name{Kantorovich}-Ungleichung}:
+\begin{align*}
+    \norm{y - x_\ast}_A \le \frac{\kappa - 1}{\kappa + 1} \norm{x - x_\ast}_A.
+\end{align*}
+Dabei bezeichnet $x_\ast := A^{-1} b$ die Lösung, die Kondition
+$\kappa := \lambda_{\max} / \lambda_{\min}$ den Quotienten der extremalen
+Eigenwerte von $A$ und $\norm{z}_A := \sqrt{z^t A z}$ die von $A$ induzierte
+Norm.
+
+\subsubsection{%
+    \emph{Einschub}: Konjugierte Gradienten (cg-Verfahren)%
+}
+
+\textbf{$A$-Skalarprodukt}:
+Zu einer symmetrischen, positiv definiten Matrix $A$ lässt sich durch
+\begin{align*}
+    \sp{x, y}_A := x^t A y
+\end{align*}
+ein Skalarprodukt definieren. \\
+Zwei Vektoren $x$ und $y$ heißen \textbf{$A$-orthogonal}, falls
+$\sp{x, y}_A = 0$ ist.
+
+\linie
+
+\textbf{konjugierte Gradienten}:
+Ausgehend von einem beliebigen Startvektor $x_0$ und \\
+$g_0 := -u_1 := Ax_0 - b$ erhält man mit der Iteration
+\begin{align*}
+    x_\ell & := x_{\ell-1} +
+    \frac{\sp{g_{\ell-1}, g_{\ell-1}}}{\sp{u_\ell, u_\ell}_A} u_\ell \\
+    g_\ell & := Ax_\ell - b \\
+    u_{\ell+1} & := -g_\ell +
+    \frac{\sp{g_\ell, g_\ell}}{\sp{g_{\ell-1}, g_{\ell-1}}} u_\ell
+\end{align*}
+die Lösung des linearen LGS $Ax = b$ mit symmetrischer, positiv definiter
+$n \times n$-Matrix $A$ und $\sp{\cdot, \cdot}_A$ dem $A$-Skalarprodukt
+in maximal $n$ Schritten. \\
+Bei exakter Rechnung ist $g_\ell = 0$ spätestens für $\ell = n$.
+Dieses Verfahren nennt man die
+\textbf{Methode der konjugierten Gradienten (cg-Verfahren)}.
+
+Mit $f(x) = \frac{1}{2} x^t A x - b^t x$ ist $f(x)$ minimal genau dann, wenn
+$Ax = b$ (es gilt $f'(x) = Ax - b$), d.\,h. man kann das Verfahren auch
+als Minimierung der quadratischen Funktion $f$ auf"|fassen.
+
+Für die Gradienten $g_\ell$ und die Suchrichtungen $u_\ell$ gilt
+\begin{align*}
+    g_\ell = g_{\ell-1} + \alpha_\ell A u_\ell \quad\text{mit}\quad
+    \alpha_\ell := \frac{\sp{g_{\ell-1}, g_{\ell-1}}}{\sp{u_\ell, u_\ell}_A},
+\end{align*}
+d.\,h. es ist möglich, bei der Implementierung eines Iterationsschritts \\
+$(x_{\ell-1}, g_{\ell-1}, u_\ell) \rightarrow (x_\ell, g_\ell, u_{\ell+1})$
+mit nur einer Matrix-Multiplikation ($Au_\ell$) auszukommen.
+
+\pagebreak
+
+\subsubsection{%
+    Konjugierte Gradienten von \name{Fletcher} und \name{Reeves}%
+}
+
+Das Verfahren der konjugierten Gradienten bestimmt das Minimum einer
+quadratischen Funktion $f(x) = \frac{1}{2} x^t A x - b^t x$ mit einer
+symmetrischen, positiv definiten $n \times n$-Matrix $A$ bei exakter Rechnung
+in höchstens $n$ Schritten.
+\textbf{\name{Fletcher} und \name{Reeves}} formulierten den Algorithmus um,
+sodass dieser auf beliebige, glatte Funktion $f$ angewendet werden kann.
+
+Ausgehend von Startwerten
+\begin{align*}
+    x_0, \qquad
+    g_0 := \grad f(x_0), \qquad
+    d_0 := -g_0
+\end{align*}
+erzeugt man eine Folge von Näherungen $x_\ell$ für eine Minimalstelle und
+Suchrichtungen $d_\ell$ durch folgende Rekursionen:
+\begin{align*}
+    x_{\ell+1} & := x_\ell + \alpha_\ell d_\ell \\
+    g_{\ell+1} & := \grad f(x_{\ell+1}) \\
+    d_{\ell+1} & := -g_{\ell+1} + \beta_\ell d_\ell, \qquad
+    \beta_\ell := \frac{\sp{g_{\ell+1}, g_{\ell+1}}}{\sp{g_\ell, g_\ell}},
+\end{align*}
+wobei $\alpha_\ell > 0$ bestimmt ist durch Minimierung von
+$f(x_\ell + \alpha d_\ell)$ für $\alpha > 0$.
+
+Der einzige Unterschied zum quadratischen Fall ist, dass $\alpha_\ell$ nicht
+explizit bestimmt werden kann.
+
+\linie
+
+Eine gute Performance kann besonders dann erzielt werden, wenn $f$ gut durch
+eine quadratische konvexe Funktion approximiert wird.
+Ist dies nicht der Fall, so sollte in geeigneten Abständen ein Neustart
+des Verfahrens erfolgen.
+Die Konvergenzgeschwindigkeit steigt in der Nähe des Minimums rapide an
+(in der Nähe des Minimums ähnelt jede Funktion stark einer quadratischen
+Funktion).
+
+\linie
+
+Die eindimensionale Minimierung wird i.\,A. nicht exakt durchgeführt.
+Dann ist jedoch darauf zu achten, dass
+\begin{align*}
+    \sp{g_{\ell+1}, d_{\ell+1}} < 0,
+\end{align*}
+d.\,h. die Suchrichtungen sind lokale Abstiegsrichtungen.
+Ist $x_{\ell+1}$ ein lokales Minimum von $f$ in Richtung $d_\ell$, so gilt
+$\sp{g_{\ell+1}, d_\ell} = 0$, sodass aufgrund der Definition von
+$d_{\ell+1}$ diese Bedingung automatisch erfüllt ist.
+
+\linie
+
+Es existieren einige Varianten bei der Parameterwahl, die ebenfalls mit dem
+quadratischen Fall konsistent sind.
+Beispielsweise definieren \name{Polak} und \name{Ribiere}
+\begin{align*}
+    \beta_\ell := \frac{\sp{g_{\ell+1} - g_\ell, d_\ell}}{\sp{g_\ell, d_\ell}}.
+\end{align*}
+Diese Wahl führt in der Praxis oft zu besseren Ergebnissen als die klassische
+Variante von Fletcher und Reeves.
+
+\pagebreak
+
+\subsubsection{%
+    Minimierung mit \matlab{}%
+}
+
+Ein lokales Minimum einer reellen Funktion auf einem Intervall $[a, b]$ kann
+in \matlab{} mit dem Befehl \code{[x, fx] = fminbnd(f, a, b);} bestimmt
+werden.
+Die Funktion \code{f} wird als Funktionshandle oder Inline-Funktion übergeben.
+Der Rückgabewert \code{x} enthält die gefundene Minimalstelle und der optionale
+Rückgabewert \code{fx} den entsprechenden Funktionswert.
+Es werden sowohl lokale Randminima als auch innere lokale Minima gefunden,
+jedoch nicht immer das globale Minimum.
+
+Zur Minimierung multivariater Funktionen steht
+\code{[x, fx] = fminsearch(f, x0);} zur Verfügung.
+Damit wird ein lokales Minimum in der Nähe eines Startvektors \code{x0}
+gefunden.
+
+\pagebreak

@@ -1,0 +1,1131 @@
+\section{%
+    Maß- und Integrationstheorie%
+}
+
+\subsection{%
+    Die erweiterte Zahlengerade\texorpdfstring{ $\extreal$}{}%
+}
+
+\begin{Def}{erweiterte Zahlengerade}
+    Die \begriff{erweiterte Zahlengerade} ist definiert als
+    $\extreal := \real \cup \{\pm \infty\}$.
+    Die Operationen $+$ und $\cdot$ werden auf $\extreal$ erweitert durch
+    $\infty + \infty := \infty$, $(-\infty) + (-\infty) := -\infty$,
+    $-\infty < a < +\infty$ für alle $a \in \real$ usw.
+    Für $c \in \real$ sei $c \cdot \infty := \infty$ für $c > 0$,
+    $c \cdot \infty := -\infty$ für $c < 0$ und $c \cdot \infty := 0$ für $c = 0$.
+    Damit ist das Produkt $a \cdot b$ für alle $a, b \in \extreal$ definiert.\\
+    Ausdrücke wie $\infty - \infty$ werden undefiniert gelassen.
+\end{Def}
+
+\begin{Def}{Intervalle und Umgebungen}
+    Intervalle $[-\infty, a)$, $[-\infty, a]$, $(a, \infty]$ und $[a, \infty]$ sind definiert
+    durch $[-\infty, a) := \{-\infty\} \cup (-\infty, a)$ usw. mit $a \in \extreal$.
+    Für $\varepsilon > 0$ sind $\varepsilon$-Umgebungen von $\pm \infty$ definiert durch
+    $U_\varepsilon(\infty) := (\frac{1}{\varepsilon}, \infty]$ und
+    $U_\varepsilon(-\infty) := [-\infty, -\frac{1}{\varepsilon})$.
+    Dadurch sind auch of"|fene und abgeschlossene Teilmengen von $\extreal$ definiert.
+\end{Def}
+
+\begin{Bem}
+    Eine Teilmenge von $\real$ ist of"|fen in $\extreal$ genau dann,
+    wenn sie of"|fen in $\real$ ist.
+    Mit "`abgeschlossen"' statt "`of"|fen"' stimmt die Aussage nicht mehr:
+    Es gibt Teilmengen von $\real$, die zwar abgeschlossen in $\real$, aber nicht in $\extreal$
+    abgeschlossen sind (z.\,B. $M = [0, \infty)$).
+\end{Bem}
+
+\subsection{%
+    Die \name{Borel}-\texorpdfstring{$\sigma$}{σ}-Algebra%
+}
+
+\begin{Def}{erzeugte $\sigma$-Algebra}
+    Seien $\Omega \not= \emptyset$ eine nicht-leere Menge und $\E \in \P(\Omega)$ ein
+    System von Teilmengen.
+    Dann gibt es eine kleinste $\sigma$-Algebra $\sigma(\E)$, die $\E$ enthält.
+    Sie heißt \begriff{die von $\E$ erzeugte $\sigma$-Algebra}.
+\end{Def}
+
+\begin{Bsp}
+    Sei $\Omega \not= \emptyset$ eine nicht-leere Menge.
+    \begin{enumerate}
+        \item
+        Für $A \subset \Omega$ ist $\sigma(\{A\}) = \{\emptyset, A, \Omega \setminus A, \Omega\}$.
+        
+        \item
+        Für eine Partition $(A_n)_{n \in \natural}$ von $\Omega$
+        (d.\,h. $A_n \subset \Omega$ paarweise disjunkt und
+        $\bigcup_{n \in \natural} A_n = \Omega$) gilt
+        $\sigma(\{A_1, A_2, \dotsc\}) = \left\{\bigcup_{k \in K} A_k \;|\;
+        K \subset \natural\right\}$.
+    \end{enumerate}
+\end{Bsp}
+
+\begin{Satz}{Abschluss der $\sigma$-Algebra}
+    Seien $\Omega \not= \emptyset$ eine nicht-leere Menge, $\E \in \P(\Omega)$ ein
+    System von Teilmengen und $A, A_1, A_2, \dotsc \in \E$.
+    Dann ist $\Omega \setminus A, \bigcup_{n=1}^\infty A_n,
+    \bigcap_{n=1}^\infty A_n \in \sigma(\E)$.
+\end{Satz}
+
+\linie
+
+\begin{Def}{\name{Borel}-$\sigma$-Algebra auf $\real$}
+    Sei $\E(\real) := \{(a, b] \;|\; -\infty < a \le b < \infty\}$.\\
+    Dann heißt $\B(\real) := \sigma(\E(\real))$ die
+    \begriff{\name{Borel}-$\sigma$-Algebra auf $\real$}.\\
+    Die Elemente von $\B(\real)$ heißen \begriff{\name{Borel}-Mengen}.
+\end{Def}
+
+\begin{Bsp}
+    Beispiele für Borel-Mengen von $\real$ sind
+    \begin{enumerate}
+        \item
+        die of"|fenen und abgeschlossenen Intervalle
+        $(a, b) = \bigcup_{n=1}^\infty (a, b - \frac{1}{n}]$ und
+        $[a, b] = \bigcap_{n=1}^\infty (a - \frac{1}{n}, b + \frac{1}{n})$,
+        
+        \item
+        die Elementarereignisse $\{a\} = [a, a]$ (d.\,h. jede abzählbare Teilmenge von $\real$),
+        
+        \item
+        alle of"|fenen und abgeschlossenen Teilmengen von $\real$
+        (jede of"|fene Menge ist eine höchstens abzählbare Vereinigung of"|fener Intervalle) und
+        
+        \item
+        alle höchstens abzählbaren Vereinigungen oder Schnitte von of"|fenen und/oder
+        abgeschlossenen Teilmengen von $\real$
+        (z.\,B. das \begriff{\name{Cantor}sche Diskontinuum}).
+    \end{enumerate}
+\end{Bsp}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    $\B(\real)$ hat auch andere Erzeugendensysteme:
+    \begin{enumerate}
+        \item
+        $\{[a, b) \;|\; -\infty < a \le b < \infty\}$
+        
+        \item
+        $\{(a, b) \;|\; -\infty < a \le b < \infty\}$
+        
+        \item
+        $\{[a, b] \;|\; -\infty < a \le b < \infty\}$
+        
+        \item
+        $\{(-\infty, b] \;|\; b \in \real\}$
+        
+        \item
+        $\{O \subset \real \;|\; O \text{ of"|fen}\}$
+        
+        \item
+        $\{A \subset \real \;|\; A \text{ abgeschlossen}\}$
+    \end{enumerate}
+\end{Bem}
+
+\linie
+
+\begin{Def}{\name{Borel}-$\sigma$-Algebra auf $\extreal$}
+    Sei $\E(\extreal) := \{(a, b] \;|\; -\infty \le a \le b \le \infty\}$.\\
+    Dann heißt $\B(\extreal) := \sigma(\E(\extreal))$ die
+    \begriff{\name{Borel}-$\sigma$-Algebra auf $\extreal$}
+\end{Def}
+
+\begin{Def}{\name{Borel}-$\sigma$-Algebra auf $\real^n$}
+    Sei $\E(\real^n) :=
+    \{I_1 \times \dotsb \times I_n \;|\; I_1, \dotsc, I_n \in \E(\real)\}$.\\
+    Dann heißt $\B(\real^n) := \sigma(\E(\real^n))$ die
+    \begriff{\name{Borel}-$\sigma$-Algebra auf $\real^n$}
+\end{Def}
+
+\begin{Def}{Spur-$\sigma$-Algebra}
+    Sei $(\Omega, \A)$ ein Messraum und $M \subset \Omega$ eine nicht-leere Teilmenge.\\
+    Dann ist $\A_M := \{A \cap M \;|\; A \in \A\}$ eine $\sigma$-Algebra auf $M$,
+    die sog. \begriff{Spur-$\sigma$-Algebra}.\\
+    Ist $M$ eine Teilmenge von $\real$, $\extreal$ oder $\real^n$,
+    dann heißt die Spur-$\sigma$-Algebra $\B(\real)_M$, $\B(\extreal)_M$ oder $\B(\real^n)_M$
+    die \begriff{Borel-$\sigma$-Algebra $\B(M)$ auf $M$}.
+\end{Def}
+
+\subsection{%
+    Fortsetzung von Maßen%
+}
+
+\begin{Def}{Halbring}
+    Sei $\Omega \not= \emptyset$.
+    Dann heißt $\H \subset \P(\Omega)$ \begriff{Halbring} über $\Omega$, falls
+    \begin{enumerate}
+        \item
+        $\emptyset \in \H$
+        
+        \item
+        $A, B \in \H \;\Rightarrow\; A \cap B \in \H$
+        
+        \item
+        Für alle $A, B \in \H$ mit $A \subset B$ existieren $C_1, \dotsc, C_n \in \H$
+        paarweise disjunkt mit\\
+        $B \setminus A = \bigcup_{k=1}^n C_k$.
+    \end{enumerate}
+\end{Def}
+
+\begin{Bsp}
+    \begin{enumerate}
+        \item
+        Jede $\sigma$-Algebra über $\Omega$ ist ein Halbring.
+        
+        \item
+        Für $\Omega \not= \emptyset$ ist $\H := \{A \subset \Omega \;|\; |A| \le 1\} =
+        \{\emptyset\} \cup \{\{x\} \;|\; x \in \Omega\}$ ein Halbring über $\Omega$.
+        
+        \item
+        $\E(\real^n)$ ist ein Halbring über $\real^n$.
+    \end{enumerate}
+\end{Bsp}
+
+\begin{Satz}{Vereinigung von zwei Mengen im Halbring}
+    Sei $\H$ ein Halbring über $\Omega$ und $A, B \in \H$.\\
+    Dann gibt es paarweise disjunkte Mengen $C_1, \dotsc, C_n \in \H$ mit
+    $A \cup B = \bigcup_{k=1}^n C_k$.
+\end{Satz}
+
+\linie
+
+\begin{Def}{Prämaß}
+    Sei $\H$ ein Halbring über $\Omega \not= \emptyset$.\\
+    Dann heißt eine Abbildung $\mu_0\colon \H \rightarrow [0, \infty]$ \begriff{Prämaß}
+    auf $\H$, falls
+    \begin{enumerate}
+        \item
+        $\mu_0(\emptyset) = 0$ (\begriff{Nulltreue})
+        
+        \item
+        $\mu_0(\bigcup_{n=1}^\infty A_n) = \sum_{n=1}^\infty \mu_0(A_n)$ für
+        $A_n \in \A$ paarweise disjunkt mit $\bigcup_{n=1}^\infty A_n \in \H$\\
+        (\begriff{$\sigma$-Additivität})
+    \end{enumerate}
+    Falls es zusätzlich Mengen $(A_n)_{n \in \natural}$ mit $\mu_0(A_n) < \infty$ für alle
+    $n \in \natural$ und $\bigcup_{n=1}^\infty A_n = \Omega$ gibt, so heißt $\mu_0$
+    \begriff{$\sigma$-endlich}.
+\end{Def}
+
+\linie
+\pagebreak
+
+\begin{Bsp}
+    \begin{enumerate}
+        \item
+        Jedes Maß ist auch ein Prämaß.
+        
+        \item
+        Für $\Omega \not= \emptyset$ und den Halbring $\H = \{A \subset \Omega \;|\; |A| \le 1\}$
+        ist $\mu_0\colon \H \rightarrow [0, \infty]$ mit $A \mapsto 0$ für $A = \emptyset$ und
+        $A \mapsto 1$ sonst ein Prämaß.
+        Es ist $\sigma$-endlich genau dann, wenn $\Omega$ höchstens abzählbar ist.
+        
+        \item
+        $\E(\real^n) = \{(a_1, b_1] \times \dotsb \times (a_n, b_n] \;|\; a_i \le b_i\}$
+        ist ein Halbring.
+        Die Abbildung $\lambda_0^n\colon \E(\real^n) \rightarrow [0, \infty]$ mit
+        $(a_1, b_1] \times \dotsb \times (a_n, b_n] \mapsto \prod_{i=1}^n (b_i - a_i)$
+        ist ein $\sigma$-endliches Prämaß und heißt \begriff{\name{Lebesgue}-Prämaß}.
+    \end{enumerate}
+\end{Bsp}
+
+\linie
+
+\begin{Satz}{Fortsetzungssatz von \upshape\,\!\name{Carathéodory}}\\
+    Seien $\H$ ein Halbring über $\Omega \not= \emptyset$ und
+    $\mu_0\colon \H \rightarrow [0, \infty]$ ein $\sigma$-endliches Prämaß.\\
+    Dann gibt es genau ein Maß $\mu\colon \sigma(\H) \rightarrow [0, \infty]$ mit
+    $\mu|_\H = \mu_0$.\\
+    Außerdem gilt für $A \in \sigma(\H)$ beliebig
+    $\mu(A) = \inf\{\sum_{n=1}^\infty \mu_0(B_n) \;|\;
+    B_n \in \H,\; A \subset \bigcup_{n=1}^\infty B_n\}$.
+\end{Satz}
+
+\begin{Kor}
+    Seien $\H$ ein Halbring über $\Omega \not= \emptyset$ und
+    $\mu, \nu\colon \sigma(\H) \rightarrow [0, \infty]$ zwei $\sigma$-endliche Maße
+    mit $\mu|_\H = \nu|_\H$.
+    Dann gilt $\mu = \nu$.
+\end{Kor}
+
+\begin{Bsp}
+    Seien wieder $\Omega \not= \emptyset$, $\H = \{A \subset \Omega \;|\; |A| \le 1\}$ und
+    $\mu_0\colon \H \rightarrow [0, \infty]$ wie oben.
+    Wenn $\Omega$ höchstens abzählbar ist, dann gibt es genau ein Maß auf
+    $\sigma(\H) = P(\Omega)$ mit $\mu|_\H = \mu_0$.\\
+    Weil das Zählmaß auch diese Eigenschaft hat, muss $\mu$ nach dem Fortsetzungssatz von
+    Carathéodory gleich dem Zählmaß sein
+    (d.\,h. $\mu(A) = |A| \in \natural_0 \cup \{\infty\}$).
+\end{Bsp}
+
+\linie
+
+\begin{Def}{\name{Lebesgue}-Maß}
+    Das Lebesgue-Prämaß $\lambda_0^n$ lässt sich nach Carathéodory eindeutig zu einem Maß
+    $\lambda^n\colon \B(\real^n) \rightarrow [0, \infty]$ fortsetzen.
+    $\lambda^n$ heißt \begriff{\name{Lebesgue}-Maß}.\\
+    Es gilt $\lambda^n((a_1, b_1] \times \dotsb \times (a_n, b_n]) = \prod_{i=1}^n (b_i - a_i)$
+    bzw. insbesondere gilt für\\
+    $\lambda := \lambda^1\colon \B(\real) \rightarrow [0, \infty]$,
+    dass $\lambda((a, b]) = b - a$.
+\end{Def}
+
+\begin{Bsp}
+    Für $\Omega \in \B(\real^n)$ mit $0 < \lambda^n(\Omega) < \infty$ definiert
+    $P\colon \B(\Omega) \rightarrow [0, 1]$ mit $A \mapsto \frac{\lambda^n(A)}{\lambda^n(\Omega)}$
+    ein W-Maß auf $(\Omega, \B(\Omega))$.
+    $P$ heißt \begriff{kontinuierliche Gleichverteilung}.
+\end{Bsp}
+
+\begin{Satz}{Aussagen über das \name{Lebesgue}-Maß}
+    \begin{enumerate}
+        \item
+        Für $A \subset \real^n$ höchstens abzählbar gilt $\lambda^n(A) = 0$,
+        d.\,h. $A$ ist eine \begriff{Nullmenge}.
+        
+        \item
+        Es gilt $\lambda^n([0, 1]^n) = 1$.
+        
+        \item
+        Für $O \subset \real^n$ of"|fen mit $O \not= \emptyset$ gilt $\lambda^n(O) > 0$.
+        
+        \item
+        Sei $A \in \B(\real^n)$ mit $\lambda^n(A) < \infty$.
+        Dann gilt $\lambda^n(A) = \sup\{\lambda^n(K) \;|\; K \subset A \text{ kompakt}\}$\\
+        (\begriff{Regularität von innen}).
+        
+        \item
+        Sei $A \in \B(\real^n)$.
+        Dann gilt $\lambda^n(A) = \inf\{\lambda^n(O) \;|\; O \supset A \text{ of"|fen}\}$\\
+        (\begriff{Regularität von außen}).
+        
+        \item
+        Für jede \begriff{Isometrie} $f\colon \real^n \rightarrow \real^n$
+        (d.\,h. $f(x) = Lx + b$ mit $L \in \real^{n \times n}$ orthogonal und $b \in \real^n$)
+        und alle Mengen $A \in \B(\real^n)$ gilt
+        $f(A) \in \B(\real^n)$ sowie $\lambda^n(f(A)) = \lambda^n(A)$\\
+        (\begriff{Bewegungsinvarianz des \name{Lebesgue}-Maßes}).
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bem}
+    Es gibt kein bewegungsinvariantes Maß $\mu\colon \P(\real) \rightarrow [0, \infty]$ mit
+    $\mu([0, 1]) = 1$\\
+    (\begriff{Unlösbarkeit des Maßproblems}).
+    Mithilfe des Auswahlaxioms kann man zeigen, dass es Mengen
+    (sog. \begriff{\name{Vitali}-Mengen}) gibt, die nicht messbar sind.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Konstruktion von Wahrscheinlichkeitsmaßen auf \texorpdfstring{$\real$}{ℝ}%
+}
+
+\begin{Def}{Verteilungsfunktion}
+    Eine \begriff{Verteilungsfunktion} auf $\real$ ist eine Funktion
+    $F\colon \real \rightarrow \real$ mit
+    \begin{enumerate}
+        \item
+        $F$ monoton wachsend und rechtsstetig (d.\,h. $\lim_{y \to x+0} F(y) = F(y)$)
+        
+        \item
+        $\lim_{x \to -\infty} F(x) = 0$ und $\lim_{x \to +\infty} F(x) = 1$
+    \end{enumerate}
+\end{Def}
+
+\begin{Bsp}
+    Die Funktion $F\colon \real \rightarrow \real$ mit
+    $F(x) = 0$ für $x < 0$, $F(x) = 1$ für $x > 1$ und
+    $F(x) = x$ für $x \in [0, 1]$ ist eine Verteilungsfunktion.
+\end{Bsp}
+
+\begin{Satz}{von Verteilungsfunktion zu W-Maß}
+    Sei $F\colon \real \rightarrow \real$.\\
+    Dann existiert genau ein W-Maß $P$ auf $(\real, \B(\real))$ mit $P((-\infty, x]) = F(x)$
+    für alle $x \in \real$.
+\end{Satz}
+
+\begin{Bsp}
+    Die Funktion $F$ von oben erzeugt ein W-Maß $P$ mit $P((-\infty, x]) = F(x)$.
+    Es gilt $P(A) = \lambda(A \cap [0, 1])$.
+\end{Bsp}
+
+\linie
+
+\begin{Def}{Dichte}
+    Eine \begriff{Dichte} ist eine nicht-negative, integrierbare Funktion
+    $f\colon \real \rightarrow [0, \infty)$ mit $\int_{-\infty}^{+\infty} f(u)\du = 1$.
+    Ein W-Maß $P$ auf $\real$ \begriff{besitzt die Dichte}
+    $f\colon \real \rightarrow [0, \infty)$,
+    falls $f$ eine Dichte ist und $P((-\infty, x]) = \int_{-\infty}^x f(u)\du$ gilt
+    (das ist äquivalent zu $P([a, b]) = \int_a^b f(u)\du$).
+\end{Def}
+
+\begin{Bem}
+    In den meisten praktischen Anwendungen ist $f$ stückweise stetig, sodass\\
+    $f$ Riemann-integrierbar ist.
+    Später wird ein weiterer Integrationsbegriff eingeführt\\
+    (das Lebesgue-Integral), sodass man die Integrierbarkeit auf diesen Begriff erweitern kann.
+\end{Bem}
+
+\subsection{%
+    Beispiele für Wahrscheinlichkeitsmaße mit Dichte%
+}
+
+\begin{Def}{Gleichverteilung}
+    Für $a < b$ ist $f(x) := \frac{1}{b - a} \cdot \1_{[a,b]}(x)$ eine Dichte.
+    Sie erzeugt ein W-Maß $\U([a, b])$,
+    die \begriff{Gleichverteilung auf $[a, b]$}.
+    Die Verteilungsfunktion ist $F(x) = \int_{-\infty}^x \frac{1}{b - a} \1_{[a, b]}(u) \du$,
+    d.\,h. $F(x) = 0$ für $x < a$, $F(x) = \frac{x - a}{b - a}$ für $a \le x \le b$
+    und $F(x) = 1$ für $x > b$.
+    Für die Gleichverteilung gilt $\U([a, b])(A) = \lambda(A \cap [a, b]) \cdot \frac{1}{b - a}$.
+\end{Def}
+
+\linie
+
+\begin{Def}{Exponentialverteilung}
+    Für $\lambda > 0$ ist $f(x) := \lambda \cdot e^{-\lambda x} \cdot \1_{[0, \infty)}(x)$
+    eine Dichte, denn $\int_{-\infty}^x f(u)\du = \int_0^x \lambda e^{-\lambda u} \du =
+    [-e^{-\lambda u}]_0^x = 1 - e^{-\lambda x} \xrightarrow{x \to +\infty} 1$ für $x \ge 0$.
+    Die zugehörige Verteilungsfunktion ist $F(x) = 1 - e^{-\lambda x}$.
+    Die Dichte erzeugt ein W-Maß $\Exp(\lambda)$,
+    die \begriff{Exponentialver\-teilung zum Parameter $\lambda$}.
+\end{Def}
+
+\begin{Bem}
+    Die Exponentialverteilung ist das kontinuierliche Pendant zur geometrischen Verteilung im
+    diskreten Fall.
+    Zum Beispiel kann durch die Exponentialverteilung atomarer Zerfall durch Radioaktivität
+    modelliert werden.
+    Die Exponentialverteilung ist wie die geometrische Verteilung \begriff{gedächtnislos}, d.\,h.
+    $P(\{x > s + t\} \;|\; \{x > t\}) = P(\{x > s\})$.
+\end{Bem}
+
+\linie
+
+\begin{Def}{Normalverteilung}
+    Für $\mu, \sigma \in \real$ mit $\sigma \not= 0$ ist
+    $\varphi_{\mu,\sigma^2}(x) := \frac{1}{\sqrt{2\pi\sigma^2}}
+    \exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right)$ eine Dichte,
+    denn $\int_{-\infty}^{+\infty} \varphi_{\mu,\sigma^2}(u)\du =
+    \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} exp\left(-\frac{x^2}{2}\right)\dx =
+    \frac{1}{\sqrt{2\pi}} \sqrt{2\pi} = 1$ für $\mu = 0$ und $\sigma = 1$
+    (sonst führt man eine Koordinatensubstitution durch).
+    Die Dichte $\varphi_{\mu,\sigma^2}$ definiert ein W-Maß $\N(\mu, \sigma^2)$,
+    die \begriff{Normalverteilung mit Erwartungswert $\mu$ und Varianz $\sigma^2$}.
+    $\Phi_{\mu,\sigma^2}(x) = \frac{1}{\sqrt{2\pi\sigma^2}}
+    \int_{-\infty}^x \exp\left(-\frac{(u - \mu)^2}{2\sigma^2}\right) \du$
+    ist die Verteilungsfunktion zu $\N(\mu, \sigma^2)$.
+\end{Def}
+
+\begin{Satz}{Aussagen zu Normalverteilung}
+    \begin{enumerate}
+        \item
+        $\Psi_{\mu,\sigma^2}(x) = \Psi_{0,1}\left(\frac{x - \mu}{\sigma}\right)$
+        
+        \item
+        $\Psi_{\mu,\sigma^2}(2\mu - x) = 1 - \psi_{\mu,\sigma^2}(x)$
+    \end{enumerate}
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Messbare Abbildungen%
+}
+
+\begin{Def}{messbare Abbildung}
+    Seien $(\Omega, \A)$ und $(\Omega', \A')$ zwei Messräume.
+    Dann heißt eine Abbildung $f\colon \Omega \rightarrow \Omega'$ \begriff{messbar},
+    falls $f^{-1}(A') \in \A$ für alle $A' \in \A'$.
+    Die Menge $\M(\Omega, \Omega')$ sei die Menge der messbaren Abbildungen von $\Omega$ nach
+    $\Omega'$.
+    Die Menge $\M(\Omega)$ sei definiert als $\M(\Omega, \extreal)$.
+\end{Def}
+
+\begin{Satz}{Erzeugendensystem überprüfen}
+    Seien $(\Omega, \A)$ und $(\Omega', \A')$ zwei Messräume,
+    $\E'$ ein Erzeugendensystem für $\A'$ und $f\colon \Omega \rightarrow \Omega'$.
+    Dann ist $f$ messbar genau dann, wenn $f^{-1}(A') \in \A$ für alle $A' \in \E'$.
+\end{Satz}
+
+\begin{Bsp}
+    \begin{enumerate}
+        \item
+        Ist $(\Omega, \P(\Omega))$ diskret, so ist jede Abbildung
+        $f\colon \Omega \rightarrow \Omega'$ messbar.
+        
+        \item
+        Für $f\colon \real \rightarrow \real$ stetig mit der Borel-$\sigma$-Algebra und
+        $g\colon \real^m \rightarrow \real^n$ stetig, so sind $f$ und $g$ messbar.
+        Für $h\colon \real \rightarrow \real$ monoton ist $h$ ebenfalls messbar.
+    \end{enumerate}
+\end{Bsp}
+
+\linie
+
+\begin{Satz}{messbare Funktionen}
+    \begin{enumerate}
+        \item
+        Für $f\colon (\Omega, \A) \rightarrow (\Omega', \A')$ messbar und
+        $g\colon (\Omega, \A') \rightarrow (\Omega'', \A'')$ messbar ist
+        $g \circ f$ auch messbar.
+        
+        \item
+        Für $X = (X_1, \dotsc, X_n)\colon \Omega \rightarrow \real^n$ mit
+        $X(\omega) = (X_1(\omega), \dotsc, X_n(\omega))$ und $X_k\colon \Omega \rightarrow \real$
+        gilt, dass $X$ messbar ist genau dann, wenn $X_1, \dotsc, X_n$ messbar sind.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Satz}{messbare Funktionen}\\
+    Seien $X_k\colon \Omega \rightarrow \extreal$ messbare Funktionen für $k \in \natural$.
+    Dann sind ebenfalls messbar:
+    \begin{enumerate}
+        \item
+        $c_1 X_1 + \dotsb + c_n X_n$ für $n \in \natural$ und $c_1, \dotsc, c_n \in \real$
+        
+        \item
+        $X_1 \cdot \dotsm \cdot X_n$ für $n \in \natural$
+        
+        \item
+        $\sup_{k \in \natural} X_k$
+        
+        \item
+        $\inf_{k \in \natural} X_k$
+        
+        \item
+        $\limsup_{k \to \infty} X_k$
+        
+        \item
+        $\liminf_{k \to \infty} X_k$
+        
+        \item
+        $\lim_{k \to \infty} X_k$ (wenn $X_k$ punktweise konvergiert)
+    \end{enumerate}
+\end{Satz}
+
+\linie
+
+\begin{Def}{Bildmaß}
+    Seien $(\Omega, \A)$ und $(\Omega', \A')$ zwei Messräume und
+    $f\colon \Omega \rightarrow \Omega'$ eine messbare Abbildung.
+    Ist $\mu$ ein Maß auf $(\Omega, \A)$, so ist $\mu_f\colon \A' \rightarrow [0, \infty]$,
+    $\mu_f(A') := \mu(f^{-1}(A'))$ ein Maß auf $(\Omega', \A')$.
+    $\mu_f$ heißt \begriff{Bildmaß} von $\mu$ unter $f$.\\
+    $\mu_f$ ist ein W-Maß genau dann, wenn $\mu$ ein W-Maß ist.
+\end{Def}
+
+\begin{Def}{$\mu$-maßerhaltend}
+    Sei $(\Omega, \A, \mu)$ ein Maßraum.
+    Eine messbare Abbildung $T\colon \Omega \rightarrow \Omega$ heißt \begriff{$\mu$-maßerhaltend},
+    falls $\mu_T = \mu$ mit $\mu_T$ dem Bildmaß von $\mu$ unter $T$ gilt.
+\end{Def}
+
+\pagebreak
+
+\subsection{%
+    Zufallsvariablen und ihre Verteilungen%
+}
+
+\begin{Def}{Zufallsvariable}
+    Seien $(\Omega, \A, P)$ ein W-Raum und $(E, \A')$ ein Messraum.
+    Dann heißt eine messbare Abbildung $X\colon \Omega \rightarrow E$
+    \begriff{Zufallsvariable} auf $\Omega$ mit Werten in $E$.
+\end{Def}
+
+\begin{Def}{Verteilung}
+    Sei $X\colon \Omega \rightarrow E$ eine Zufallsvariable.
+    Dann heißt $P_X\colon \A' \rightarrow [0, 1]$, $P_X(B) := P(X \in B) = P(X^{-1}(B))$
+    die \begriff{Verteilung} von $X$.
+\end{Def}
+
+\begin{Def}{Verteilungsfunktion}
+    Sei $X\colon \Omega \rightarrow \real$ eine reelle Zufallsvariable.
+    Dann heißt $F_X\colon \real \rightarrow [0, 1]$, $F_X(x) := P(X \le x) = P_X((-\infty, x])$
+    die \begriff{Verteilungsfunktion} von $X$.
+\end{Def}
+
+\begin{Bsp}
+    Beim "`gebrochenen Stab"' mit $\Omega = [0, L]$ kann man die Zufallsvariable betrachten,
+    die jedem Ergebnis die Länge der kürzeren Bruchstücks zuordnet, also
+    $X\colon \Omega \rightarrow \real$ mit $X(\omega) = \min\{\omega, L - \omega\}$.
+    Für die Verteilungsfunktion $F_X$ gilt $F_X(x) = P(X \le x) = P([0, x] \cup [L - x, L]) = 2x$
+    für $x \in [0, \frac{L}{2}]$,
+    $F_X(x) = P(\emptyset) = 0$ für $x < 0$ und $F_X(x) = P(\Omega) = 1$ für $x > \frac{L}{2}$.
+    Also ist $P_X$ die Gleichverteilung auf $[0, \frac{L}{2}]$.
+\end{Bsp}
+
+\linie
+
+\begin{Satz}{Aussagen über Verteilungsfunktionen}\\
+    Sei $X\colon \Omega \rightarrow \real$ eine reelle Zufallsvariable mit Verteilungsfunktion
+    $F_X$.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $F_X$ ist monoton wachsend und rechtsseitig stetig.
+        
+        \item
+        $\lim_{x \to -\infty} F_X(x) = 0$ und
+        $\lim_{x \to +\infty} F_X(x) = 1$
+        
+        \item
+        Für alle $x \in \real$ gilt $F_X(x) - \lim_{y \to x-0} F_X(y) = P(X = x)$,
+        wobei $F_X(x) = \lim_{y \to x+0} F_X(y)$ aufgrund der rechtsseitigen Stetigkeit.\\
+        Somit ist $F_X$ stetig genau dann, wenn für alle $x \in \real$ $P(X = x) = 0$ gilt.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bem}
+    Nach (a) und (b) stimmt also obige Definition der Verteilungsfunktion mit der
+    Definition im diskreten Fall überein.
+\end{Bem}
+
+\begin{Def}{diskret verteilt/mit Dichte verteilt}
+    Eine reelle Zufallsvariable $X\colon \Omega \rightarrow \real$ heißt
+    \begriff{diskret verteilt}, falls $P_X$ diskret verteilt ist.
+    $X$ heißt \begriff{mit Dichte verteilt} oder \begriff{absolutstetig verteilt},
+    falls $P_X$ eine Dichte besitzt.
+\end{Def}
+
+\pagebreak
+
+\subsection{%
+    Das \name{Lebesgue}-Integral%
+}
+
+\begin{Bem}
+    Im Folgenden sei $(\Omega, \A, \mu)$ ein Maßraum.
+\end{Bem}
+
+\begin{Def}{\name{Lebesgue}-Integral für Indikatorfunktionen}
+    Seien $A \in \A$ und $\1_A\colon \Omega \rightarrow \extreal$ mit\\
+    $\1_A(x) = 1$ für $x \in A$ und $\1_A(x) = 0$ für $x \notin A$
+    die zugehörige Indikatorfunktion.\\
+    Dann ist $\1_A \in \M(\Omega)$ messbar und
+    $\int_\Omega \1_A d\mu := \mu(A)$ das \begriff{\name{Lebesgue}-Integral von $\1_A$}.
+\end{Def}
+
+\begin{Def}{Elementarfunktion}
+    Seien $c_k \in \real \setminus \{0\}$ und $A_k \in \A$ paarweise disjunkt für $k \in \natural$.
+    Dann heißt $\varphi = \sum_{k=1}^n c_k \cdot \1_{A_k}$ \begriff{Elementarfunktion} über
+    $\Omega$.
+    $\E(\Omega)$ sei der Raum der Elementarfunktionen über $\Omega$
+    (ein $\real$-Vektorraum).
+    $\E_+(\Omega)$ sei der Raum aller nicht-negativen Elementarfunktionen.
+\end{Def}
+
+\begin{Def}{\name{Lebesgue}-Integral für Elementarfunktionen}\\
+    Sei $\varphi = \sum_{k=1}^n c_k \cdot \1_{A_k}$ eine Elementarfunktion.\\
+    Dann ist $\int_\Omega \varphi d\mu := \sum_{k=1}^n c_k \cdot \int_{\Omega} \1_{A_k} d\mu =
+    \sum_{k=1}^n c_k \cdot \mu(A_k)$ das \begriff{\name{Lebesgue}-Integral von $\varphi$}.
+\end{Def}
+
+\begin{Bem}
+    Man kann zeigen, dass dieses Integral wohldefiniert ist, d.\,h. der Wert des Integrals
+    hängt nicht von der Zerlegung in die $A_k$ ab.
+    Mit dieser Definition ist das Lebesgue-Integral für Elementarfunktionen linear
+    (d.\,h. $\int_\Omega (a\varphi + b\psi) d\mu = a \int_\Omega \varphi d\mu +
+    b \int_\Omega \psi d\mu$ für $\varphi, \psi \in \E(\Omega)$ mit $a, b \in \real$)
+    und monoton (d.\,h. $\int_\Omega \varphi d\mu \le \int_\Omega \psi d\mu$ für
+    $\varphi, \psi \in \E(\Omega)$ mit $\varphi \le \psi$).
+\end{Bem}
+
+\begin{Def}{\name{Lebesgue}-Integral für nicht-negative Funktionen}
+    Sei $f \in \M(\Omega)$ mit $f \ge 0$.
+    Dann ist $\int_\Omega f d\mu := \sup\left\{\left.\int_\Omega \varphi d\mu \;\right|\;
+    \varphi \in \E_+(\Omega),\; \varphi \le f\right\} \in [0, \infty]$
+    das \begriff{\name{Lebesgue}-Integral von $f \ge 0$}.\\
+    $f$ heißt \begriff{positiv \name{Lebesgue}-integrierbar} ($f \in \L^1_+(\mu)$), falls
+    $\int_\Omega f d\mu < \infty$.
+\end{Def}
+
+\begin{Bem}
+    Damit gilt eine gewisse "`Linearität"'
+    (nämlich $\int_\Omega (af + bg) d\mu = a \int_\Omega f d\mu + b \int_\Omega g d\mu$
+    für $f, g \in \L^1_+(\mu)$ und $a, b \ge 0$)
+    und Monotonie (genauer $f \in \L^1_+(\mu)$ und $\int_\Omega f d\mu \le \int_\Omega g d\mu$
+    für $f \in \M(\Omega)$ und $g \in \L^1_+(\mu)$ mit $0 \le f \le g$).
+\end{Bem}
+
+\linie
+
+\begin{Def}{punktweise Konvergenz von unten}
+    Seien $f_n, f\colon \Omega \rightarrow \extreal$ Funktionen.
+    $(f_n)_{n \in \natural}$ \begriff{konvergiert punktweise von unten gegen $f$}
+    ($f_n \nearrow f$), falls $\forall_{x \in \Omega}\; f_1(x) \le f_2(x) \le \dotsb \le f(x)$
+    und\\
+    $\lim_{n \to \infty} f_n(x) = f(x)$.
+\end{Def}
+
+\begin{Satz}{Existenz einer Folge von Treppenfunktionen und Grenzwertsatz}\\
+    Sei $f \in \M(\Omega)$ mit $f \ge 0$.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        Es gibt eine Folge $(\varphi_n)_{n \in \natural}$ mit $\varphi_n \in \E_+(\Omega)$ und
+        $\varphi_n \nearrow f$.
+        
+        \item
+        Ist $(\varphi_n)_{n \in \natural}$ eine Folge mit $\varphi_n \in \E_+(\Omega)$ und
+        $\varphi_n \nearrow f$, dann gilt\\
+        $\int_\Omega f d\mu = \lim_{n \to \infty} \left(\int_\Omega \varphi_n d\mu\right)$.
+    \end{enumerate}
+\end{Satz}
+
+\linie
+
+\begin{Def}{Nullmenge, $\mu$-fast überall}
+    \begin{enumerate}
+        \item
+        Eine Menge $N \in \A$ heißt \begriff{Nullmenge}, falls $\mu(N) = 0$.
+        
+        \item
+        Eine Aussage $A(x)$ mit $x \in \Omega$ gilt \begriff{$\mu$-fast überall}
+        (für \begriff{$\mu$-fast alle} $x \in \Omega$), falls es eine Nullmenge $N \in \A$ gibt
+        mit $\forall_{x \in \Omega \setminus N}\; \lnot A(x)$.
+        
+        \item
+        Für zwei Funktionen $f, g\colon \Omega \rightarrow \real$ mit
+        $f(x) = g(x)$ für $\mu$-fast alle $x \in \Omega$ schreibt man
+        $f \underset{\mu}{=} g$
+        (analog sind auch $f \underset{\mu}{\le} g$, $f \underset{\mu}{<} g$,
+        $f \underset{\mu}{\nearrow} g$ usw. definiert).
+    \end{enumerate}
+\end{Def}
+
+\begin{Satz}{\name{Lebesgue}-Integral invariant auf Nullmenge}
+    Seien $f \in \L^1_+(\mu)$ und $g \in \M(\Omega)$ mit $g \ge 0$,
+    sodass $N := \{x \in \Omega \;|\; f(x) \not= g(x)\} \in \A$ eine Nullmenge ist.\\
+    Dann gilt $g \in \L^1_+(\mu)$ und $\int_\Omega g d\mu = \int_\Omega f d\mu$.
+\end{Satz}
+
+\linie
+\pagebreak
+
+\begin{Def}{positiver/negativer Anteil}
+    Sei $f\colon \Omega \rightarrow \extreal$ eine Funktion.\\
+    Dann heißt $f_+ := \max(f, 0)$ \begriff{positiver Anteil} und
+    $f_- := \max(-f, 0)$ \begriff{negativer Anteil} von $f$.
+\end{Def}
+
+\begin{Bem}
+    Es gilt $f = f_+ - f_-$ und $|f| = f_+ + f_-$.
+\end{Bem}
+
+\begin{Def}{\name{Lebesgue}-Integral}
+    Sei $f \in \M(\Omega)$.\\
+    $f$ heißt \begriff{\name{Lebesgue}-integrierbar} ($f \in \L^1(\mu)$), falls
+    $f_+ \in \L^1_+(\mu)$ und $f_- \in L^1_+(\mu)$.\\
+    In diesem Fall ist $\int_\Omega f d\mu := \int_\Omega f_+ d\mu - \int_\Omega f_- d\mu$ das
+    \begriff{\name{Lebesgue}-Integral von $f$}.
+\end{Def}
+
+\begin{Satz}{Aussagen über das \name{Lebesgue}-Integral}
+    \begin{enumerate}
+        \item
+        $\L^1(\mu)$ ist ein $\real$-Vektorraum und es gilt
+        $\int_\Omega (af + bg) d\mu = a \int_\Omega f d\mu + b \int_\Omega g d\mu$
+        für alle $f, g \in \L^1(\mu)$ und $a, b \in \real$
+        (\begriff{Linearität}).
+        
+        \item
+        Für $f, g \in \L^1(\mu)$ mit $f \le g$ gilt
+        $\int_\Omega f d\mu \le \int_\Omega g d\mu$
+        (\begriff{Monotonie}).
+        
+        \item
+        Für $f \in \L^1(\mu)$ gilt $|f| \in \L^1(\mu)$ und
+        $\left|\int_\Omega f d\mu\right| \le \int_\Omega |f| d\mu$.
+        
+        \item
+        Für $h \in \M(\Omega)$ und $f \in \L^1(\mu)$ mit $|h| \le f$ gilt
+        $h \in \L^1(\mu)$.
+        
+        \item
+        Für $f \in \L^1(\mu)$ ist $A := \{x \in \Omega \;|\; |f(x)| = \infty\}$ eine Nullmenge.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Satz}{allgemeiner Transformationssatz}
+    Seien $(\Omega, \A, \mu)$ ein Maßraum, $(\Omega', \A')$ ein Messraum,
+    $T \in \M(\Omega, \Omega')$, $\mu_T$ das Bildmaß von $T$ auf $\Omega'$ und
+    $f \in \M(\Omega')$.\\
+    Dann gilt $f \in \L^1(\mu_T) \iff f \circ T \in \L^1(\mu)$.
+    In diesem Fall gilt $\int_{\Omega'} f d\mu_T = \int_\Omega (f \circ T) d\mu$.
+\end{Satz}
+
+\subsection{%
+    Grenzwertsätze für das \name{Lebesgue}-Integral%
+}
+
+\begin{Satz}{Satz von \name{Beppo}-\name{Levi} zur monotonen Konvergenz}\\
+    Sei $(f_n)_{n \in \natural}$ eine Folge mit $f_n \in \M(\Omega)$ und
+    $0 \le f_1 \le f_2 \le \dotsb$.\\
+    Dann gibt es ein $f \in \M(\Omega)$ mit $f \ge 0$ und $f_n \xrightarrow{(\cdot)} f$
+    und es gilt $\int_\Omega f d\mu = \lim_{n \to \infty} \left(\int_\Omega f_n d\mu\right)$.
+\end{Satz}
+
+\begin{Satz}{Satz von \name{Lebesgue} zur majorisierten Konvergenz}\\
+    Seien $(f_n)_{n \in \natural}$ eine Folge mit $f_n \in \M(\Omega)$,
+    $f \in \M(\Omega)$ mit $f_n \xrightarrow{(\cdot)} f$ und
+    $h \in \L^1(\mu)$ mit $|f_n| \le h$.\\
+    Dann gilt $f \in \L^1(\mu)$ und
+    $\int_\Omega f d\mu = \lim_{n \to \infty} \left(\int_\Omega f_n d\mu\right)$.
+\end{Satz}
+
+\begin{Lemma}{Lemma von \name{Fatou}}
+    Seien $(f_n)_{n \in \natural}$ eine Folge mit $f_n \in \M(\Omega)$ und $f_n \ge 0$.\\
+    Dann gilt $\int_\Omega (\liminf_{n \to \infty} f_n) d\mu \le
+    \liminf_{n \to \infty} \left(\int_\Omega f_n d\mu\right)$.
+\end{Lemma}
+
+\pagebreak
+
+\subsection{%
+    Integration in \texorpdfstring{$\real$}{ℝ} und \texorpdfstring{$\real^n$}{ℝⁿ}%
+}
+
+\begin{Satz}{\name{Riemann}-integrierbar $\Rightarrow$ \name{Lebesgue}integrierbar}\\
+    Sei $f\colon [a, b] \rightarrow \real$ messbar und Riemann-integrierbar.\\
+    Dann ist $f \in \L^1(\lambda)$ und $\int_{[a, b]} f d\lambda = \int_a^b f(x)\dx$.
+\end{Satz}
+
+\begin{Satz}{uneigentliche \name{Riemann}-Integrierbarkeit}
+    Seien $I \subset \real$ ein Intervall und $f\colon I \rightarrow \real$ messbar,
+    sodass $f|_K$ für jede kompaktes Intervall $K \subset I$ Riemann-integrierbar ist.\\
+    Dann gilt $f \in \L^1(\lambda) \iff
+    |f| \text{ ist über } I \text{ uneigentlich Riemann-integrierbar}$.\\
+    In diesem Fall gilt $\int_I f d\lambda = \int_a^b f(x)\dx$.
+\end{Satz}
+
+\begin{Satz}{Integration bzgl. W-Maßen mit Dichte}\\
+    Seien $(\real, \B(\real), P)$ ein W-Raum,
+    $P$ ein W-Maß mit Dichtefunktion $f\colon \real \rightarrow \real$ und $g \in \M(\real)$.\\
+    Dann gilt $g \in \L^1(P) \iff g \cdot f \in \L^1(\lambda)$.\\
+    In diesem Fall gilt $\int_\real g dP = \int_\real g \cdot f d\lambda$
+    (es gilt außerdem $\int_{[a, b]} g dP = \int_{[a, b]} g \cdot f d\lambda$).
+\end{Satz}
+
+\begin{Satz}{Satz von \upshape\name{Fubini}}\\
+    Seien $(\Omega_1, \A_1, \mu_1)$ und $(\Omega_2, \A_2, \mu_2)$ zwei $\sigma$-endliche Maßräume
+    und $f \in \M(\Omega_1 \times \Omega_2)$.\\
+    Zusätzlich gilt mindestens einer der beiden folgenden Fälle:
+    \begin{enumerate}[label=(\roman*)]
+        \item
+        $f \ge 0$
+        
+        \item
+        $f \in \L^1(\mu_1 \otimes \mu_2)$
+    \end{enumerate}
+    Dann gilt
+    $\int_{\Omega_1 \times \Omega_2} f d(\mu_1 \otimes \mu_2)
+    = \int_{\Omega_2} \left(\int_{\Omega_1} f(\omega_1, \omega_2)
+    d\mu_1(\omega_1)\right) d\mu_2(\omega_2)$\\
+    $= \int_{\Omega_1} \left(\int_{\Omega_2} f(\omega_1, \omega_2)
+    d\mu_2(\omega_2)\right) d\mu_1(\omega_1)$.
+\end{Satz}
+
+\subsection{%
+    Integration auf diskreten Maßräumen%
+}
+
+\begin{Bem}
+    Sei $(\Omega, \P(\Omega), \mu)$ ein diskreter Maßraum, d.\,h.
+    $\Omega = \{\omega_1, \omega_2, \dotsc\}$ ist abzählbar.
+    Jede Funktion $f\colon \Omega \rightarrow \extreal$ ist automatisch messbar.
+    Was ist das Lebesgue-Integral $\int_\Omega f d\mu$ einer solchen Funktion?
+    
+    $f$ lässt sich als Reihe $f = \sum_{k=1}^\infty f(\omega_k) \cdot \1_{\{\omega_k\}}$
+    darstellen.
+    Für $f \ge 0$ gilt für die Folge $(\varphi_n)_{n \in \natural}$ mit
+    $\varphi_n := \sum_{k=1}^n f(\omega_k) \cdot \1_{\{\omega_k\}}$,
+    dass $\varphi_n \in \E_+(\Omega)$ und $\varphi_n \nearrow f$.
+    Es gilt $\int_\Omega \varphi_n d\mu = \sum_{k=1}^n f(\omega_k) \cdot \mu(\{\omega_k\})$.
+    Somit ist $f \in \L^1_+(\omega) \iff
+    \int_\Omega f d\mu = \sum_{k=1}^\infty f(\omega_k) \cdot \mu(\{\omega_k\}) < \infty$.
+    
+    Für eine beliebige Funktion $f$ gilt wegen der Messbarkeit
+    $f \in \L^1(\mu) \iff |f| \in \L^1(\mu)$
+    $\iff \sum_{k=1}^\infty |f(\omega_k)| \cdot \mu(\{\omega_k\}) < \infty \iff
+    \sum_{k=1}^\infty f(\omega_k) \cdot \mu(\{\omega_k\}) \text{ konvergiert absolut}$.\\
+    In diesem Fall gilt
+    $\int_\Omega f d\mu = \sum_{k=1}^\infty f(\omega_k) \cdot \mu(\{\omega_k\})$.
+    
+    Mit diesen Beziehungen kann man die Theorie der diskreten W-Räume als Spezialfall der Theorie
+    der kontinuierlichen W-Räume sehen.
+    
+    Wählt man speziell $\Omega = \natural$ und $\mu = \sigma$ das Zählmaß auf $\natural$,
+    so sind Funktionen $a\colon \Omega \rightarrow \real$ eigentlich reelle Zahlenfolgen
+    $(a_n)_{n \in \natural}$ mit $a_n = a(n)$.
+    Nach eben Gesagtem ist $a$ bzgl. des Zählmaßes Lebesgue-integrierbar genau dann, wenn
+    die Reihe $\int_\natural a \d\sigma = \sum_{k=1}^\infty a_k$ absolut konvergiert.
+    Daher ist die Theorie der absolut konvergenten Reihen in der Theorie des
+    Lebesgue-Integrals enthalten.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Erwartungswerte von Zufallsvariablen%
+}
+
+\begin{Def}{Erwartungswert}\\
+    Seien $(\Omega, \A, P)$ ein W-Raum und $X\colon \Omega \rightarrow \real$ eine reelle
+    Zufallsvariable mit $X \in \L^1(P)$.\\
+    Dann heißt $\EW(X) := \int_\Omega X dP$ \begriff{Erwartungswert (EW)} von $X$.
+\end{Def}
+
+\begin{Satz}{Rechenregeln für den Erwartungswert}
+    Seien $X, Y \in \L^1(P)$ zwei reelle Zufallsvariablen.\\
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $X + Y \in \L^1(P)$ und $\EW(X + Y) = \EW(X) + \EW(Y)$
+        
+        \item
+        Für $\alpha \in \real$ gilt $\alpha X \in \L^1(P)$ und
+        $\EW(\alpha \cdot X) = \alpha \cdot \EW(X)$.
+        
+        \item
+        Für $A \in \A$ ist $\1_A \in \L^1(P)$ eine reelle Zufallsvariable und
+        $\EW(\1_A) = P(A)$.
+        
+        \item
+        Aus $X \le Y$ folgt $\EW(X) \le \EW(Y)$.
+        
+        \item
+        $|X| \in \L^1(P)$ ist eine reelle Zufallsvariable und $|\EW(X)| \le \EW(|X|)$.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Satz}{Transformationssatz für Erwartungswerte}
+    Seien $(\Omega, \A, P)$ ein W-Raum, $X\colon \Omega \rightarrow \real$ eine reelle
+    Zufallsvariable und $P_X$ ihre Verteilung.\\
+    Dann ist $X \in \L^1(P) \iff \id_\real \in \L^1(P_X)$.
+    In diesem Fall gilt
+    $\EW(X) = \int_\Omega X dP = \int_\Omega (\id_\real \circ X) dP =
+    \int_\real \id_\real dP_X$.\\
+    Hat $P_X$ die Dichtefunktion $f$, dann gilt außerdem
+    $\EW(X) = \int_\real x \cdot f(x) d\lambda$.
+\end{Satz}
+
+\begin{Satz}{Erwartungswert von elementaren Verteilungen}
+    Sei $X\colon \Omega \rightarrow \real$ eine reelle Zufallsvariable mit $X \in \L^1(P)$
+    und $P_X$ ihre Verteilung.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        Ist $P_X = \U([a, b])$ (d.\,h. \begriff{$X$ ist gleichverteilt}),
+        dann gilt $\EW(X) = \frac{a + b}{2}$.
+        
+        \item
+        Ist $P_X = \Exp(\lambda)$ mit $\lambda > 0$ (d.\,h. \begriff{$X$ ist exponentialverteilt}),
+        dann gilt $\EW(X) = \frac{1}{\lambda}$.
+        
+        \item
+        Ist $P_X = \N(\mu, \sigma^2)$ mit $\mu, \sigma \in \real$ und $\sigma^2 > 0$
+        (d.\,h. \begriff{$X$ ist normalverteilt}),
+        dann gilt $\EW(X) = \mu$.
+    \end{enumerate}
+\end{Satz}
+
+\linie
+
+\begin{Def}{(stochastisch) unabhängig}
+    Seien $(\Omega, \A, P)$ ein W-Raum, $(E_i, \A_i)$ Messräume und\\
+    $X_i\colon \Omega \rightarrow E_i$ Zufallsvariablen für $i \in I$.
+    Dann heißt die Folge $(X_i)_{i \in I}$ \begriff{(stochastisch) unabhängig}, falls
+    für jede Wahl von $B_i \in \A_i'$ ($i \in I$)
+    die Ereignisse $\{X_i \in B_i\} = X_i^{-1}$ stochastisch unabhängig sind.
+\end{Def}
+
+\begin{Lemma}{Kriterium für Unabhängigkeit von Zufallsvariablen}
+    Seien $X_1, X_2\colon \Omega \rightarrow \real$ zwei reelle Zufallsvariablen,
+    $X := (X_1, X_2)\colon \Omega \rightarrow \real^2$ und
+    $P_{X_1}, P_{X_2}, P_X$ die Verteilungen dieser Zufallsvariablen.\\
+    Dann sind $X_1$ und $X_2$ unabhängig genau dann, wenn $P_X = P_{X_1} \otimes P_{X_2}$.
+\end{Lemma}
+
+\begin{Satz}{EW von Produkt von unabhängigen ZV ist Produkt der EW}
+    Seien $(\Omega, \A, P)$ ein W-Raum und $X_1, \dotsc, X_n\colon \Omega \rightarrow \real$
+    reelle Zufallsvariablen mit $X_1, \dotsc, X_n \in \L^1(P)$, die unabhängig sind.
+    Dann ist auch $X_1 \dotsm X_n \in \L^1(P)$ und
+    $\EW(X_1 \dotsm X_n) = \EW(X_1) \dotsm \EW(X_n)$.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    \texorpdfstring{$k$}{k}-te Momente, Varianz und Streuung von Zufallsvariablen%
+}
+
+\begin{Def}{$p$-fach \name{Lebesgue}-integrierbar}
+    Seien $(\Omega, \A, \mu)$ ein Maßraum, $f \in \M(\Omega)$ und $p > 0$.\\
+    Dann heißt $f$ \begriff{$p$-fach \name{Lebesgue}-integrierbar} ($f \in \L^p(\mu)$),
+    falls $|f| \in \L^1(\mu)$.\\
+    In diesem Fall definiert man $\norm{f}_p := (\int_\Omega |f|^p d\mu)^{1/p}$.
+\end{Def}
+
+\begin{Bem}
+    $\L^p(\mu)$ ist ein reeller Vektorraum.\\
+    $\norm{\cdot}_p$ ist im Allgemeinen keine Norm auf $\L^p(\mu)$, sondern nur eine Halbnorm.
+    Es gilt also $\norm{f}_p \ge 0$, $\norm{c f}_p = |c| \norm{f}_p$ (Homogenität) und
+    $\norm{f + g}_p = \norm{f}_p + \norm{g}_p$ (Dreiecksungleichung, in diesem Fall als
+    \begriff{\name{Minkowski}-Ungleichung} bekannt), aber aus
+    $\norm{f}_p = 0$ folgt nicht unbedingt $f = 0$
+    (sondern nur $f \underset{\mu}{=} 0$).
+    In der Tat ist $\norm{\cdot}_p$ eine Norm genau dann, wenn $\emptyset$ die einzige
+    $\mu$-Nullmenge in $\A$ ist.
+\end{Bem}
+
+\begin{Satz}{\name{Hölder}sche Ungleichung}
+    Seien $p, q, r > 0$ mit $\frac{1}{p} + \frac{1}{q} = \frac{1}{r}$
+    sowie $f \in \L^p(\mu)$ und $g \in \L^q(\mu)$.
+    Dann ist $f \cdot g \in \L^r(\mu)$ und es gilt
+    $\norm{f \cdot g}_r \le \norm{f}_p \cdot \norm{g}_q$.
+\end{Satz}
+
+\begin{Kor}
+    Seien $(\Omega, \A, P)$ ein W-Raum und $0 < p < q < \infty$.\\
+    Dann gilt $\L^q(P) \subset \L^p(P)$
+    (es gilt sogar $\norm{f}_p \le p \cdot \norm{f}_q$ für $f \in \L^q(P)$).
+\end{Kor}
+
+\linie
+
+\begin{Def}{(zentriertes) $k$-tes Moment}
+    Seien $(\Omega, \A, P)$ ein W-Raum, $X\colon \Omega \rightarrow \extreal$ eine Zufallsvariable
+    und $k \in \natural$.
+    Für $X \in \L^k(P)$ oder $X^k \ge 0$ heißt
+    $\EW(X^k)$ \begriff{$k$-tes Moment} und
+    $\EW((X - \EW(X))^k)$ \begriff{zentriertes $k$-tes Moment} von $X$.
+\end{Def}
+
+\begin{Def}{Varianz}\\
+    Das zentrierte 2. Moment $\Var(X) := \EW((X - \EW(X))^2) = \EW(X^2) - \EW(X)^2$
+    heißt \begriff{Varianz} von $X$.
+\end{Def}
+
+\begin{Def}{Standardabweichung}\\
+    Die Wurzel $\sigma_X := \sqrt{\Var(X)}$ der Varianz heißt \begriff{Standardabweichung} von $X$.
+\end{Def}
+
+\linie
+
+\begin{Satz}{Transformationssatz für Momente}
+    Seien $(\Omega, \A, P)$ ein W-Raum, $X\colon \Omega \rightarrow \real$ eine reelle
+    Zufallsvariable, $P_X$ ihre Verteilung und $k \in \natural$.\\
+    Dann ist $X^k \in \L^1(P) \iff x^k \in \L^1(P_X)$ mit $x^k\colon \real \rightarrow \real$,
+    $x \mapsto x^k$.\\
+    In diesem Fall gilt $\EW(X^k) = \int_\real x^k dP_X$ und
+    $\EW((X - E(X))^k) = \int_\real (x - \EW(X))^k dP_X$.
+\end{Satz}
+
+\begin{Satz}{Varianz von elementaren Verteilungen}
+    Sei $X\colon \Omega \rightarrow \real$ eine reelle Zufallsvariable mit $X \in \L^1(P)$
+    und $P_X$ ihre Verteilung.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        Ist $P_X = \U([a, b])$ (d.\,h. \begriff{$X$ ist gleichverteilt}),
+        dann gilt $\Var(X) = \frac{1}{12} (b - a)^2$.
+        
+        \item
+        Ist $P_X = \Exp(\lambda)$ mit $\lambda > 0$ (d.\,h. \begriff{$X$ ist exponentialverteilt}),
+        dann gilt $\Var(X) = \frac{1}{\lambda^2}$.
+        
+        \item
+        Ist $P_X = \N(\mu, \sigma^2)$ mit $\mu, \sigma \in \real$ und $\sigma^2 > 0$
+        (d.\,h. \begriff{$X$ ist normalverteilt}),
+        dann gilt $\Var(X) = \sigma^2$.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Satz}{Rechenregeln für die Varianz}
+    Seien $(\Omega, \A, P)$ ein W-Raum und $X, X_1, \dotsc, X_n\colon \Omega \rightarrow \real$
+    reelle Zufallsvariablen mit $\Var(X), \Var(X_i) < \infty$ für $i = 1, \dotsc, n$.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        Für $\alpha, c \in \real$ ist $\Var(\alpha \cdot X) = \alpha^2 \cdot \Var(X)$ und
+        $\Var(X + c) = \Var(X)$.
+        
+        \item
+        Sind die Zufallsvariablen $X_1, \dotsc, X_n$ unabhängig, so gilt\\
+        $\Var(X_1 + \dotsb + X_n) = \Var(X_1) + \dotsb + \Var(X_n)$.
+        
+        \item
+        Für $\Var(X) = 0$ gilt $X \underset{P}{=} \EW(X)$.
+    \end{enumerate}
+\end{Satz}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    Aussage (b) gilt auch schon, wenn die Bildung der Erwartungswerte irgendwelcher der beteiligten
+    Zufallsvariablen mit der Multiplikation verträglich ist.
+    Daher kann man diese Aussage verallgemeinern.
+\end{Bem}
+
+\begin{Def}{unkorreliert}
+    Seien $(\Omega, \A, P)$ ein W-Raum und $(X_i)_{i \in I}$ eine Familie von
+    reellen Zufallsvariablen mit $X_i \in \L^1(P)$ mit $I \not= \emptyset$.
+    Dann heißt die Familie $(X_i)_{i \in I}$ \begriff{unkorreliert}, falls für jede
+    endliche Teilmenge $K \subset I$ mit $K \not= \emptyset$ gilt, dass
+    $\EW(\prod_{i \in K} X_i) = \prod_{i \in K} \EW(X_i)$.
+\end{Def}
+
+\begin{Bem}
+    Nach einem vorherigen Satz ist jede unabhängige Familie von Zufallsvariablen auch
+    unkorelliert.
+    Daher ist der folgende Satz eine Verallgemeinerung der Aussage (b) von eben.
+\end{Bem}
+
+\begin{Satz}{Satz von \upshape\,\!\name{Bienaymé}}
+    Seien $(\Omega, \A, P)$ ein W-Raum und $X_1, \dotsc, X_n\colon \Omega \rightarrow \real$
+    unkorrelierte, reelle Zufallsvariablen mit $\Var(X_k) < \infty$ für $k = 1, \dotsc, n$.
+    Dann gilt $\Var(X_1 + \dotsb + X_n) = \Var(X_1) + \dotsb + \Var(X_n)$.
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Für eine reelle Zufallsvariable $X \in \L^1(P)$ gilt\\
+    $P(|X| \ge t = P_X((-\infty, -t] \cup [t, \infty)) \xrightarrow{t \to \infty} 0$
+    wegen der Stetigkeit von oben.
+    Die folgende Ungliehcung ergibt eine Abschätzung der Konvergenzgeschwindigkeit in Abhängigkeit
+    vom Grad der Integrierbarkeit von $X$.
+\end{Bem}
+
+\begin{Satz}{\name{Markov}sche Ungleichung}
+    Seien $(\Omega, \A, P)$ ein W-Raum, $X\colon \Omega \rightarrow \extreal$ eine Zufallsvariable
+    und $q > 0$.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        Für $X \in \L^q(P)$ gilt $P(|X| \ge t) \le \frac{\EW(|X|^q)}{t^q}$ für jedes $t > 0$\\
+        (\begriff{\name{Markov}sche Ungleichung}, für $q = 2$
+        \begriff{\name{Tschebyscheff}-Ungleichung}).
+        
+        \item
+        Wenn es ein $c > 0$ gibt mit $P(|X| \ge t) \le \frac{c}{t^q}$ für jedes $t > 0$,
+        dann gilt $X \in \L^{q - \varepsilon}(P)$ für jedes $\varepsilon \in (0, q)$.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Kor}\\
+    Seien $(\Omega, \A, P)$ ein W-Raum, $X\colon \Omega \rightarrow \extreal$ eine Zufallsvariable
+    mit $X \in \L^2(P)$ und $\varepsilon > 0$.\\
+    Dann gilt $P(|X - \EW(X)| \ge \varepsilon) \le \frac{\Var(X)}{\varepsilon^2}$.
+\end{Kor}
+
+\pagebreak

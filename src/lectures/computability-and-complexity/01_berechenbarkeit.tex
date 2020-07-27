@@ -1,0 +1,1607 @@
+\section{%
+    Grundlagen%
+}
+
+\subsection{%
+    \name{Turing}maschinen%
+}
+
+\begin{Def}{Einband-\name{Turing}maschine}
+    Eine \begriff{(nicht-deterministische) Einband-\name{Turing}maschine\\
+    (TM)} ist ein $7$-Tupel
+    $M = (Q, \Sigma, \Gamma, \delta, q_0, F, \Box)$, wobei
+    \begin{itemize}
+        \item
+        $Q$ eine endliche, nicht-leere Menge
+        (die Menge der \begriff{Zustände}),
+        
+        \item
+        $\Sigma$ eine endliche, nicht-leere Menge
+        mit $Q \cap \Sigma = \emptyset$
+        (das \begriff{Eingabealphabet}),
+        
+        \item
+        $\Gamma \supset \Sigma$ eine endliche, nicht-leere Menge
+        mit $Q \cap \Gamma = \emptyset$
+        (das \begriff{Bandalphabet}),
+        
+        \item
+        $\delta \subset Q \times \Gamma \times Q \times \Gamma \times \{L, R, N\}$
+        (die \begriff{Übergangsrelation}),
+        
+        \item
+        $q_0 \in Q$ (der \begriff{Startzustand}),
+        
+        \item
+        $F \subset Q$ (die \begriff{akzeptierenden Endzustände}) und
+        
+        \item
+        $\Box \in \Gamma \setminus \Sigma$ (das \begriff{Blanksymbol}) ist.
+    \end{itemize}
+    Die TM heißt \begriff{deterministisch}, falls aus
+    $(p, a, q, b, D) \in \delta$ und $(p, a, q', b', D') \in \delta$ stets folgt, dass
+    $(q, b, D) = (q', b', D')$.
+    In diesem Fall ist
+    $\delta\colon Q \times \Gamma \rightarrow_p Q \times \Gamma \times \{L, R, N\}$
+    eine partiell definierte \begriff{Übergangsfunktion}.
+\end{Def}
+
+\begin{Def}{Mehrband-\name{Turing}maschine}
+    Eine \begriff{(nicht-deterministische) Mehrband-\name{Turing}maschine (TM)
+    mit $k$ Arbeitsbändern} ist ein $7$-Tupel
+    $M = (Q, \Sigma, \Gamma, \delta, q_0, F, \Box)$, wobei
+    $Q$, $\Sigma$, $\Gamma$, $q_0$, $F$ und $\Box$ wie bei einer Einband-TM definiert sind
+    und für die \begriff{Übergangsrelation}\\
+    $\delta \subset Q \times (\Sigma \cup \{\Box\}) \times \Gamma^k \times Q \times
+    \Gamma^k \times \{L, R, N\}^{k+1}$ gilt.\\
+    Die TM heißt \begriff{deterministisch}, falls aus
+    $(p, a, b, q, c, D) \in \delta$ und $(p, a, b, q', c', D') \in \delta$ stets folgt, dass
+    $(q, c, D) = (q', c', D')$.
+    In diesem Fall ist
+    $\delta\colon Q \times (\Sigma \cup \{\Box\}) \times \Gamma^k \rightarrow_p Q \times
+    \Gamma^k \times \{L, R, N\}^{k+1}$
+    eine partiell definierte \begriff{Übergangsfunktion}.\\
+    Soll $M$ eine Funktion berechnen, so hat $M$ zusätzlich ein Ausgabealphabet $\Sigma'$
+    und für $\delta$ gilt
+    $\delta \subset Q \times (\Sigma \cup \{\Box\}) \times \Gamma^k \times Q \times
+    \Gamma^k \times \{L, R, N\}^{k+1} \times (\Sigma' \cup \{\varepsilon\})$ bzw.\\
+    $\delta\colon Q \times (\Sigma \cup \{\Box\}) \times \Gamma^k \rightarrow_p Q \times
+    \Gamma^k \times \{L, R, N\}^{k+1} \times (\Sigma' \cup \{\varepsilon\})$.
+\end{Def}
+
+\linie
+
+\begin{Def}{Konfiguration einer Einband-TM}
+    Eine \begriff{Konfiguration} $\alpha$ einer Einband-TM\\
+    $M = (Q, \Sigma, \Gamma, \delta, q_0, F, \Box)$ ist
+    $\alpha = uqv \in \Gamma^\ast Q \Gamma^+$
+    ($q$ aktueller Zustand von $M$, $uv$ Bandinhalt und Lese-/Schreibkopf steht auf dem ersten
+    Buchstaben von $v$).\\
+    Die \begriff{Länge} von $\alpha$ ist $|\alpha| := |uv|$.
+\end{Def}
+
+\begin{Def}{Konfiguration einer Mehrband-TM}
+    Eine \begriff{Konfiguration} $\alpha$ einer\\
+    Mehrband-TM
+    $M = (Q, \Sigma, \Gamma, \delta, q_0, F, \Box)$ mit $k$ Arbeitsbändern ist ein Tupel\\
+    $\alpha = (q, u_0, v_0, u_1, v_1, \dotsc, u_k, v_k)$ mit
+    \begin{itemize}
+        \item
+        $q \in Q$ (dem aktuellen Zustand der TM),
+        
+        \item
+        $u_0 v_0 = w \Box$, $|v_0| \ge 1$ (der Lesekopf für das Eingabeband steht auf dem ersten
+        Buchstaben von $v_0$) und
+        
+        \item
+        $u_i \in \Gamma^\ast$, $v_i \in \Gamma^+$ für $i = 1, \dotsc, k$
+        (das $i$-te Arbeitsband hat den Inhalt $u_i v_i \Box \dotsb$ und der $i$-te
+        Schreib-/Lesekopf steht auf dem ersten Buchstaben von $v_i$).
+    \end{itemize}
+    Die \begriff{Länge} von $\alpha$ ist $|\alpha| := \max_{i = 1, \dotsc, k} |u_i v_i|$.
+\end{Def}
+
+\linie
+\pagebreak
+
+\begin{Def}{Startkonfiguration}
+    Für die Eingabe $w \in \Sigma^\ast$ ist $\Start(w) := q_0 w \Box$ für Einband- und
+    $\Start(w) := (q_0, \varepsilon, w\Box, \varepsilon, \Box, \dotsc, \varepsilon, \Box)$
+    für Mehrband-TM die zugehörige \begriff{Startkonfiguration}.
+\end{Def}
+
+\begin{Def}{akzeptierende Konfiguration}\\
+    $\Accept$ ist die Menge der \begriff{akzeptierenden Konfigurationen},
+    d.\,h. der aktuelle Zustand ist aus $F$.
+\end{Def}
+
+\begin{Def}{Übergang}
+    Seien $\alpha$ und $\beta$ Konfigurationen.
+    Man schreibt $\alpha \vdash \beta$, falls es einen Übergang $d \in \delta$ gibt,
+    sodass $\alpha$ in $\beta$ überführt werden kann.
+    Eine Sonderregel sorgt dafür, dass links und rechts auf den Bändern beliebig viele
+    Leerzeichen $\Box$ erzeugt werden können.
+    Mit $\vdash^\ast$ bezeichnet man den reflexiven und transitiven Abschluss von $\vdash$.
+\end{Def}
+
+\begin{Def}{Rechnung}
+    Eine \begriff{Rechnung} von $M$ bei Eingabe $w$ ist eine Folge von Konfigurationen\\
+    $(\alpha_0, \dotsc, \alpha_m)$ mit $\alpha_0 = \Start(w)$ und $\alpha_{i-1} \vdash \alpha_i$
+    für $i = 1, \dotsc, m$.
+    Die Berechnung ist \begriff{erfolgreich}, falls $\alpha_m \in \Accept$.
+\end{Def}
+
+\begin{Def}{Zeitbedarf}
+    Der \begriff{Zeitbedarf} der Berechnung $(\alpha_0, \dotsc, \alpha_m)$ ist $m$.
+\end{Def}
+
+\begin{Def}{Platzbedarf}
+    Der \begriff{Platzbedarf} der Berechnung $(\alpha_0, \dotsc, \alpha_m)$ ist
+    $\max_{i = 0, \dotsc, m} |\alpha_i|$.
+\end{Def}
+
+\begin{Def}{akzeptierte Sprache}
+    Die \begriff{akzeptierte Sprache} einer Einband-TM ist\\
+    $L(M) := \{w \in \Sigma^\ast \;|\;
+    \exists_{u \in \Gamma^\ast,\; q_f \in F,\; v \in \Gamma^+}\;
+    \Start(w) \vdash^\ast u q_f v\}$.\\
+    Allgemein ist $L(M) := \{w \in \Sigma^\ast \;|\; \exists\text{erfolgreiche Berechnung von } M
+    \text{ bei Eingabe } w\}$.
+\end{Def}
+
+\linie
+
+\begin{Satz}{Äquivalenz von Einband- und Mehrband-TM}\\
+    Jede Mehrband-TM kann durch eine Einband-TM simuliert werden.
+\end{Satz}
+
+\begin{Beweis}
+    Man benutzt Spurtechnik, d.\,h. man unterteilt das Arbeitsband der Einband-TM
+    in $2k$ Spuren (wenn die Mehrband-TM $k$ Bändern besitzt).
+    Auf den ungeraden Spuren stehen die Inhalte der verschiedenen Bänder.
+    Auf den geraden Spuren stehen an den entsprechenden Stellen spezielle Symbole
+    (z.\,B. Sterne), um die aktuelle Position des $k$-ten Schreib-/Lesekopfs zu speichern.
+    Durch eine genügend hohe Zahl von Zuständen kann sich die TM "`merken"', welcher
+    $\delta$-Übergang anzuwenden ist, nachdem sie alle Sterne von links nach rechts gelesen hat.
+\end{Beweis}
+
+\begin{Satz}{Äquivalenz von nicht-det. und det. TM}\\
+    Jede nicht-deterministische TM kann durch eine deterministische TM simuliert werden.
+\end{Satz}
+
+\begin{Beweis}
+    Die deterministische TM führt eine Breitensuche im Graphen der möglichen Konfigurationen
+    der nicht-deterministischen TM durch.
+    Die Wurzel ist $\Start(w)$, die Knotenmenge ist
+    $K = \{uqv \;|\; u \in \Gamma^\ast,\; q \in Q,\; v \in \Gamma^+\}$ (i.\,A. unendlich) und
+    die Kantenmenge $E = \{\alpha \vdash \beta \;|\; \alpha, \beta \in K\}$ entspricht den
+    Einschrittübergängen.
+    Es gilt $w \in L(M)$ genau dann, wenn es einen Weg von der Wurzel $\Start(w)$
+    zum einer akzeptierenden Konfiguration gibt, d.\,h. $\Start(w) \vdash^\ast \alpha \in \Accept$.
+    In diesem Fall akzeptiert die deterministische TM in endlicher Zeit, andernfalls terminiert
+    sie nicht.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    Berechenbarkeit und Entscheidbarkeit%
+}
+
+\begin{Def}{(intuitiv) berechenbar}
+    Sei $f\colon T \subset \natural^k \rightarrow \natural$ eine Funktion.\\
+    Ein Algorithmus $P$ \begriff{berechnet} die Funktion $f$, falls $P$ bei Eingabe von beliebigen
+    $(n_1, \dotsc, n_k) \in T$ nach einer endlichen Zahl von Schritten
+    den Wert $f(n_1, \dotsc, n_k)$ ausgibt und bei Eingabe von
+    $(n_1, \dotsc, n_k) \in \natural^k \setminus T$ nicht terminiert.\\
+    Die Funktion $f$ heißt \begriff{berechenbar}, falls es einen Algorithmus $P$ gibt, der $f$
+    berechnet.
+\end{Def}
+
+\begin{Bsp}
+    Ein Algorithmus, der unabhängig von der Eingabe sofort in eine Endlosschleife geht,
+    berechnet die total undefinierte Funktion.\\
+    Die Funktion $f(n) = 1$ für "`$n$ ist Beginn der Dezimalentwicklung von $\pi$"' und $f(n) = 0$
+    sonst ist berechenbar, da es Näherungsverfahren für die Zahl $\pi$ gibt, die $\pi$ beliebig
+    genau ausrechnen können
+    (geben beliebig, aber endlich viele Dezimalstellen von $\pi$ aus).\\
+    Die Funktion $g(n) = 1$ für "`$n$ kommt in der Dezimalentwicklung von $\pi$ vor"' und $g(n) = 0$
+    sonst ist evtl. nicht berechenbar, da man zu wenig über die Verteilung von Zif"|fern in $\pi$
+    weiß.\\
+    Die Funktion $h(n) = 1$ für "`$7 \dotsb 7$ ($n$-mal) kommt in der Dezimalentwicklung von $\pi$
+    vor"' und $g(n) = 0$ sonst ist dagegen berechenbar:
+    Entweder es gibt beliebig lange $7$-er-Folgen in der Dezimalentwicklung von $\pi$
+    (dann ist die Funktion konstant 1, also berechenbar)
+    oder es gibt $7$-er-Folgen bis zur Länge $n_0$, aber keine längeren
+    (dann ist $h(n) = 1$ für $n \le n_0$ und $h(n) = 0$ für $n > n_0$ berechenbar).
+    Die Definition von Berechenbarkeit verlangt nicht die explizite Angabe eines Algorithmus.
+\end{Bsp}
+
+\linie
+
+\begin{Def}{Kodierung}
+    Eine \begriff{(Binär-)Kodierung} einer Menge $T$ ist eine injektive Abbildung\\
+    $c\colon T \rightarrow \{0, 1\}^\ast$.
+    Für ein Element $x \in T$ schreibt man auch $\kod{x} := c(x)$.
+\end{Def}
+
+\begin{Def}{\name{Turing}-berechenbar}\\
+    Eine Funktion $f\colon \natural^k \rightarrow \natural$ heißt
+    \begriff{\name{Turing}-berechenbar}, falls es eine TM $M$ gibt, sodass\\
+    $f(n_1, \dotsc, n_k) = m \iff q_0 \kod{n_1} \# \kod{n_2} \# \dotsb \# \kod{n_k} \vdash^\ast
+    \Box \dotsb \Box q_f \kod{m} \Box \dotsb \Box$\\
+    mit $q_f \in F$ für alle $n_1, \dotsc, n_k, m \in \natural$.\\
+    Eine Funktion $f\colon \Sigma^\ast \rightarrow \Sigma^\ast$ heißt
+    \begriff{\name{Turing}-berechenbar}, falls es eine TM $M$ gibt, sodass\\
+    $f(x) = y \iff q_0 x \vdash^\ast \Box \dotsb \Box q_f y \Box \dotsb \Box$
+    mit $q_f \in F$ für alle $x, y \in \Sigma^\ast$.\\
+    Bei partiell definierten Funktionen soll die TM für undefinierte Werte in eine
+    Endlosschleife übergehen.
+\end{Def}
+
+\begin{Satz}{\name{Church}sche These}
+    Die Klasse der intuitiv berechenbaren Funktionen stimmt genau mit der Klasse der
+    Turing-berechenbaren Funktionen überein.
+\end{Satz}
+
+\begin{Bem}
+    Die Churchsche These lässt sich nicht beweisen, da nicht exakt bestimmt ist, was ein
+    Algorithmus oder intuitive Berechenbarkeit ist.
+    Vielmehr besagt sie, dass bisher niemand einen allgemeineren Berechenbarkeitsbegriff benötigt
+    hat.
+\end{Bem}
+
+\linie
+
+\begin{Def}{entscheidbar}
+    Eine Sprache $A \subset \Sigma^\ast$ heißt \begriff{entscheidbar},
+    falls die charakteristische Funktion von $A$, d.\,h.
+    $\chi_A\colon \Sigma^\ast \rightarrow \{0, 1\}$ mit $\chi_A(w) := [w \in A]$,
+    berechenbar ist.\\
+    Dabei gilt für eine Aussage $S$, dass $[S] := 1$ für $S$ wahr und $[S] := 0$ für $S$ falsch.\\
+    Man kann die Definition auf Mengen $A \subset \natural$ übertragen.
+\end{Def}
+
+\begin{Def}{semi-entscheidbar}
+    Eine Sprache $A \subset \Sigma^\ast$ heißt \begriff{semi-entscheidbar},
+    falls $\chi_A'\colon \Sigma^\ast \rightarrow_p \{0, 1\}$ mit $\chi_A'(w) := 1$ für $w \in A$
+    und $\chi_A'(w)$ undefiniert für $w \notin A$ berechenbar ist.\\
+    Man kann die Definition auf Mengen $A \subset \natural$ übertragen.
+\end{Def}
+
+\begin{Def}{rekursiv aufzählbar}
+    Eine Sprache $A \subset \Sigma^\ast$ heißt \begriff{rekursiv aufzählbar},
+    falls $A = \emptyset$ oder falls es eine überall definierte, berechenbare Funktion
+    $f\colon \natural \rightarrow \Sigma^\ast$ gibt mit $A = \{f(1), f(2), f(3), \dotsc\}$,
+    d.\,h. \begriff{$f$ zählt $A$ auf}.
+\end{Def}
+
+\linie
+
+\begin{Satz}{Äquivalenz für semi-entscheidbar}
+    Sei $A \subset \Sigma^\ast$ eine Sprache.\\
+    Dann sind die folgenden Bedingungen äquivalent:
+    \begin{enumerate}[label=(\arabic*)]
+        \item
+        $A$ ist semi-entscheidbar.
+        
+        \item
+        $A$ ist rekursiv aufzählbar.
+        
+        \item
+        Es gibt eine TM $M$ mit $T(M) = A$.
+        
+        \item
+        $A$ ist vom Typ 0.
+        
+        \item
+        Es gibt eine TM $M$ mit $A = \{w \in \Sigma^\ast \;|\; M \text{ hält auf } w\}$.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Beweis}
+    $(3) \iff (4)$ wurde bereits früher gezeigt.\\
+    $(3) \iff (5)$ ist klar, da man die TM $M$ mit $T(M) = A$ leicht so umprogrammieren kann,
+    dass sie in eine Endlosschleife geht, wenn $M$ auf $w$ hält, aber $w$ nicht akzeptiert.
+    In der anderen Richtung muss man bei Halt auf $w$ in einen Endzustand übergehen.\\
+    $(1) \iff (5)$ ist ebenfalls einfach, denn aus der Semi-Entscheidbarkeit von $A$ folgt
+    die Berechenbarkeit von $\chi_A'$, d.\,h. es gibt eine TM $M$, die terminiert genau dann, wenn
+    $w \in A$.
+    Andersherum muss eine TM $M$ mit $A = \{w \in \Sigma^\ast \;|\; M \text{ hält auf } w\}$
+    nur $1$ ausgeben, wenn $M$ auf $w$ hält, damit sie $\chi_A'$ entscheidet.\\
+    $(1) \iff (2)$ geht folgendermaßen:
+    Sei $A$ rekursiv aufzählbar mittels der berechenbaren Funktion $f$.
+    Konstruiere eine TM, die $A$ semi-entscheidet, wie folgt:
+    In einer Schleife von $n = 1, 2, \dotsc$ berechne $f(n)$.
+    Falls $f(n)$ gleich der Eingabe $w$ ist, so terminiere und gib $1$ aus.
+    Diese TM terminiert genau dann, wenn $w \in A$.\\
+    Sei nun $A \not= \emptyset$ semi-entscheidbar, etwa mittels einer TM $M$.
+    Man konstruiert eine berechenbare Funktion $f$, die $A$ aufzählt, wie folgt:
+    Sei $a_0 \in A$ fest.
+    Die Eingabe $n \in \natural$ wird interpretiert als Paar von natürlichen Zahlen
+    $(k, \ell) \in \natural \times \natural$
+    (geht durch eine Abzählung von $\natural \times \natural$).
+    $k$ wird wiederum interpretiert als Kodierung eines Wortes $x \in \Sigma^\ast$.
+    Gibt es kein $x \in \Sigma^\ast$ mit $\kod{x} = k$, so setzt man $x = \varepsilon$.
+    Die TM, die $f$ berechnet, führt nun die TM $M$ mit Eingabe $x$ aus, aber lässt sie nur
+    höchstens $\ell$ viele Schritte rechnen (um zu verhindern, dass nicht terminiert wird).
+    Hat $M$ die Eingabe $x$ erkannt (d.\,h. $1$ ausgegeben), so gebe $x$ aus,
+    ansonsten das feste Wort $a_0$.
+    So wird sichergestellt, dass einerseits jedes Wort $x \in A$ einmal ausgegeben wird,
+    andererseits, dass die TM stets terminiert und in diesem Fall ein Dummy-Wort aus $A$ ausgibt.
+\end{Beweis}
+
+\begin{Satz}{Äquivalenz für entscheidbar}
+    Eine Sprache $A \subset \Sigma^\ast$ ist entscheidbar genau dann,
+    wenn $A$ und $\Sigma^\ast \setminus A$ semi-entscheidbar sind.
+\end{Satz}
+
+\begin{Beweis}
+    Sei $A \subset \Sigma^\ast$ entscheidbar.
+    Dann ist $A$ auch semi-entscheidbar (falls eine $0$ ausgegeben wird, wechselt man in eine
+    Endlosschleife).
+    Analog ist $\Sigma^\ast \setminus A$ semi-entscheidbar (hier, falls $1$ ausgegeben wird,
+    andernfalls gibt man statt der $0$ eine $1$ aus).\\
+    Seien $A$ und $\Sigma^\ast \setminus A$ semi-entscheidbar.
+    Dann gibt es zwei TM $M_1$ und $M_2$ mit $L(M_1) = A$ und $L(M_2) = \Sigma^\ast \setminus A$.
+    Definiere $L(M, k) := \{w \in \Sigma^\ast \;|\;
+    |w| \le k,\; M \text{ akzeptiert } w \text { in} \le k \text{ Schritten}\}$
+    für eine TM $M$ und $k \in \natural$.
+    $L(M, k)$ ist endlich und ef"|fektiv berechenbar.
+    Konstruiere jetzt eine TM, die $A$ entscheidet, wie folgt:
+    Stelle in einer Schleife über $k = 1, 2, \dotsc$ fest,
+    ob $w \in L(M_1, k)$ oder $w \in L(M_2, k)$.
+    In diesem Fall gebe $1$ bzw. $0$ aus.
+\end{Beweis}
+
+\begin{Bsp}
+    Die Sprache $L_\pi = \{w \in \{0, \dotsc, 9\}^\ast \;|\; w \text{ erscheint in der
+    Dezimalentwicklung von } \pi\}$ ist semi-entscheidbar.
+    Ob $L_{\pi^\infty} = \{w \in \{0, \dotsc, 9\}^\ast \;|\; w \text{ erscheint in der
+    Dezimalentwicklung }$ $\text{von } \pi \text{ unendlich oft}\}$ semi-entscheidbar ist,
+    weiß man nicht\\
+    (man vermutet $L_\pi = L_{\pi^\infty} = \{0, \dotsc, 9\}^\ast$ regulär).
+\end{Bsp}
+
+\linie
+
+\begin{Satz}{universelle \name{Turing}maschine}
+    Sei $L_U := \{\kod{M, w} \;|\; M \text{ TM},\; w \in L(M)\} \subset \{0, 1\}^\ast$
+    mit $\kod{M, w}$ einer fest gewählten Standardkodierung von Paaren
+    $(M, w) \in \TM \times \Sigma^\ast$.\\
+    Dann gibt es eine TM $U$ mit $L(U) = L_U$.
+    $U$ heißt \begriff{universelle \name{Turing}maschine}.\\
+    Zusätzlich ist $L_U$ unentscheidbar und
+    $\{0, 1\}^\ast \setminus L_U$ ist nicht rekursiv aufzählbar.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Reduktionen%
+}
+
+\begin{Def}{Reduktion}
+    Seien $A \subset \Sigma^\ast$ und $B \subset \Sigma'^\ast$ Sprachen.
+    Dann heißt eine überall definierte, berechenbare Abbildung
+    $f\colon \Sigma^\ast \rightarrow \Sigma'^\ast$ \begriff{Reduktion} von $A$ auf $B$, falls
+    $x \in A \iff f(x) \in B$ für alle $x \in \Sigma^\ast$.
+    $A$ heißt auf $B$ \begriff{reduzierbar} ($A \le B$), falls es eine Reduktion von $A$ auf $B$
+    gibt.
+\end{Def}
+
+\begin{Satz}{Übertragbarkeit bei Reduktionen}
+    Seien $A \subset \Sigma^\ast$ und $B \subset \Sigma'^\ast$ Sprachen mit $A \le B$.\\
+    Wenn $B$ (semi-)entscheidbar ist, dann ist auch $A$ (semi-)entscheidbar.\\
+    Insbesondere gilt $B$ unentscheidbar, wenn $A$ unentscheidbar.
+\end{Satz}
+
+\begin{Beweis}
+    Sei $B$ (semi-)entscheidbar und $f$ eine Reduktion von $A$ auf $B$.
+    Konstruiere eine TM $M$, die $A$ (semi-)entscheidet, wie folgt:
+    Für ein $x \in \Sigma^\ast$ berechne durch $f$ (berechenbar) das Bild $f(x)$.
+    Da $B$ (semi-)entscheidbar ist, gibt es eine andere TM, die in endlicher Zeit entscheidet,
+    ob $f(x) \in B$ (bzw. für $B$ semi-entscheidbar in eine Endlosschleife geht,
+    wenn $f(x) \notin B$).
+    Da dies der Fall ist genau dann, wenn $x \in A$, ist die Frage $x \in A?$ (semi-)entschieden.
+\end{Beweis}
+
+\subsection{%
+    Die Sätze von \name{Rice}%
+}
+
+\begin{Def}{Eigenschaft}
+    Eine \begriff{Eigenschaft} ist eine Abbildung
+    $S\colon \PS(\Sigma^\ast) \rightarrow \{0, 1\}$.\\
+    Die Eigenschaft \begriff{gilt} für eine Sprache $L \subset \Sigma^\ast$, falls $S(L) = 1$.\\
+    Eine Eigenschaft heißt \begriff{nicht-trivial}, falls es $L_0, L_1 \subset \Sigma^\ast$ gibt
+    mit $S(L_0) = 0$ und $S(L_1) = 1$.\\
+    Eine \begriff{Eigenschaft einer bestimmten Sprachklasse} ist eine Eigenschaft
+    eingeschränkt auf diese Sprachklasse.
+\end{Def}
+
+\begin{Satz}{Satz von \upshape\,\!\name{Rice}}\\
+    Jede nicht-triviale Eigenschaft rekursiv aufzählbarer Sprachen ist unentscheidbar.
+\end{Satz}
+
+\begin{Beweis}
+    OBdA kann man annehmen, dass $S(\emptyset) = 0$
+    (andernfalls komplementiert man die Eigenschaft, dies hat keine Auswirkungen auf die
+    Entscheidbarkeit).
+    Da $S$ nicht-trivial ist, gibt es ein $L_1 = L(M_1)$ mit $S(L_1) = 1$.\\
+    Sei $M$ eine feste TM, sodass $L(M)$ nicht entscheidbar ist
+    (es gibt semi-entscheidbare, unentscheidbare Sprachen, z.\,B. das Halteproblem).\\
+    Für ein Wort $w$ konstruiere eine TM $f(w)$ wie folgt:
+    Bei einer Eingabe $v$ simuliert sie zunächst $M$ auf $w$.
+    Falls $w$ dabei akzeptiert wird, simuliert sie danach $M_1$ auf $v$,
+    andernfalls geht $f(w)$ in eine Endlosschleife.
+    Es gilt $w \in L(M) \iff S(L(f(w))) = 1$:\\
+    Für $w \in L(M)$ simuliert $f(w)$ bei jeder Eingabe $v$ die TM $M_1$ auf $v$.
+    Also gilt $L(f(w)) = L(M_1)$ und es gilt $S(L(f(w))) = S(L(M_1)) = 1$.\\
+    Für $w \notin L(M)$ ist $L(f(w)) = \emptyset$, da $f(w)$ in eine Endlosschleife geht,
+    wenn $M$ die Eingabe $w$ nicht erkennt.
+    Nach Voraussetzung gilt $S(L(f(w))) = 0$.\\
+    Man erhält also eine Reduktion von $L(M)$ auf
+    $\{w \in \Sigma^\ast \;|\; S(L(f(w))) = 1\}$.\\
+    $S(L(f(M, w))) = 1?$ ist entscheidbar,
+    wenn $S$ eine entscheidbare Eigenschaft wäre.
+    Damit wäre auch $w \in L(M)?$ entscheidbar, ein Widerspruch.
+\end{Beweis}
+
+\begin{Bsp}
+    Ein Beispiel für eine solche unentscheidbare Eigenschaft ist
+    $S(L) := [L \not= \emptyset]$.\\
+    Andere Beispiele sind $[L(M) \text{ regulär}]$, $[|L(M)| < \infty]$ und $[w_0 \in L(M)]$.
+\end{Bsp}
+
+\begin{Bem}
+    Anschaulich gesagt besagt der Satz, dass es nicht möglich ist, das Verhalten einer
+    Turingmaschine zu analysieren, ohne sie auszuführen (d.\,h. nur durch Betrachten des Aufbaus).
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Satz}{Satz von \name{Rice} für semi-entscheidbare Eigenschaften}
+    Sei $S$ eine Eigenschaft rekursiv aufzählbarer Sprachen.
+    Dann sind die folgenden Bedingungen äquivalent:
+    \begin{itemize}
+        \item
+        $S$ ist \begriff{semi-entscheidbar}, d.\,h.
+        $\{\kod{M} \;|\; S(L(M)) = 1\}$ ist semi-entscheidbar.
+        
+        \item
+        Es gelten die folgenden drei Bedingungen:
+        \begin{itemize}
+            \item
+            Für alle $L \subset \Sigma^\ast$ mit $S(L) = 1$ gibt es ein $K \subset L$ endlich mit
+            $S(K) = 1$.
+            
+            \item
+            Die Menge $\{K_1, K_2, \dotsc \;|\; K_i \text{ endlich},\; S(K_i) = 1\}$ ist
+            semi-entscheidbar.
+            
+            \item
+            Die Eigenschaft $S$ ist \begriff{monoton}, d.\,h. aus $L \subset L'$ folgt
+            $S(L) \le S(L')$.
+        \end{itemize}
+    \end{itemize}
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Der Satz von Rice für semi-entscheidbare Eigenschaften impliziert den Satz von Rice:
+    Sei $S$ eine entscheidbare Eigenschaft rekursiv aufzählbarer Sprachen.
+    Dann ist $S$ insbesondere semi-entscheidbar.
+    Aufgrund des Satzes von Rice für semi-entscheidbare Eigenschaften ist $S$ monoton.
+    Es gilt $S(\emptyset) = 0$ oder $S(\emptyset) = 1$.\\
+    Für $S(\emptyset) = 1$ gilt $S(L) \equiv 1$ für alle $L \subset \Sigma^\ast$
+    wegen der Monotonie, d.\,h. $S$ ist trivial.\\
+    Für $S(\emptyset) = 0$ betrachte die Komplementeigenschaft $\overline{S}(L) := 1 - S(L)$
+    ($\overline{S}$ ist ebenfalls entscheidbar, also wie eben monoton).
+    Dann gilt $\overline{S}(\emptyset) = 1$ und es folgt $S(L) \equiv 0$ für alle
+    $L \subset \Sigma^\ast$, d.\,h. $S$ ist trivial.\\
+    In beiden Fällen ist $S$ trivial, was die Aussage des Satzes von Rice ist.
+\end{Bem}
+
+\begin{Bsp}
+    Definiere $W_i := \{\kod{w, G} \;|\; G \text{ Typ } i,\; w \in L(G)\} \subset \{0, 1\}^\ast$
+    (\begriff{Wortproblem}).\\
+    $W_2$ ist polynomiell entscheidbar mithilfe des CYK-Algorithmus.\\
+    $W_1$ ist entscheidbar (kontextsensitive Regeln sind nicht-verkürzend),
+    aber es ist unbekannt, ob $W_1$ sogar polynomiell entscheidbar ist.\\
+    $W_0$ ist unentscheidbar (Halteproblem der TM), aber immerhin rekursiv aufzählbar --
+    daraus folgt nach obigem Satz, dass das Komplement $\{0, 1\}^\ast \setminus W_0$ nicht
+    rekursiv aufzählbar ist.
+\end{Bsp}
+
+\begin{Bsp}
+    Definiere $P_i := \{\kod{G} \;|\; G \text{ Typ } i,\; L(G) = \Sigma^\ast\} \subset
+    \{0, 1\}^\ast$ (\begriff{Totalitätsproblem}).\\
+    $P_0$ ist ein Beispiel für eine Sprache, die nicht rekursiv aufzählbar ist,
+    aber auch deren Komplement nicht.
+    Betrachtet man das \begriff{Leerheitsproblem}
+    $P_i' := \{\kod{G} \;|\; G \text{ Typ } i,\; L(G) = \emptyset\} \subset \{0, 1\}^\ast$,
+    dann kann man $P_3$ lösen durch Umformung von $G$ in ein NEA, anschließende
+    Potenzmengenkonstruktion, um einen DEA zu erhalten, Vertauschung von Start- und Endzustände
+    des DEA und schließlich Lösen von $P_3'$ bei der entstehenden komplementären Sprache.
+    Dieses Problem ist nämlich einfach entscheidbar (gibt es einen Pfad von einem Start- zu einem
+    Endzustand?).
+\end{Bsp}
+
+\pagebreak
+
+\subsection{%
+    Das Halteproblem%
+}
+
+\begin{Bem}
+    Im Folgenden sei eine binäre Kodierung von Turingmaschinen gegeben, d.\,h.
+    für jede Turingmaschine $M$ gibt es ein $w \in \{0, 1\}^\ast$
+    mit $\kod{M_w} = w$ und $M_w := M$.
+\end{Bem}
+
+\linie
+
+\begin{Def}{spezielles Halteproblem}
+    Das \begriff{spezielle Halteproblem} oder das \begriff{Selbstanwendungsproblem} ist
+    $K := \{w \in \{0, 1\}^\ast \;|\; M_w \text{ hält auf Eingabe } w\}$.
+\end{Def}
+
+\begin{Satz}{spez. Halteproblem unent.}
+    Das spezielle Halteproblem $K$ ist nicht entscheidbar.
+\end{Satz}
+
+\begin{Beweis}
+    Angenommen, $K$ sei entscheidbar.
+    Dann ist $\chi_K$ berechenbar mittels einer TM $M$.
+    Konstruiere eine TM $M'$, die zunächst $M$ auf der Eingabe von $M'$ ausführt.
+    Falls $M$ eine Eins zurückgibt, geht sie in eine Endlosschleife,
+    andernfalls terminiert $M'$.\\
+    Sei $M' = M_{w'}$ für ein Wort $w' \in \{0, 1\}^\ast$.
+    Dann gilt:\\
+    $M'$ hält auf Eingabe $w'$ $\iff$
+    $M$ gibt auf Eingabe $w'$ Null aus $\iff$
+    $\chi_K(w') = 0$ $\iff$
+    $w' \notin K$ $\iff$
+    $M' = M_{w'}$ hält nicht auf Eingabe $w'$,
+    ein Widerspruch.
+\end{Beweis}
+
+\linie
+
+\begin{Def}{Halteproblem}
+    Das \begriff{(allgemeine) Halteproblem} ist\\
+    $H := \{w\# x \in \{0, 1\}^\ast \# \{0, 1\}^\ast \;|\;
+    M_w \text{ hält auf Eingabe } x\}$.
+\end{Def}
+
+\begin{Satz}{Halteproblem unentscheidbar}
+    Das Halteproblem $H$ ist nicht entscheidbar.
+\end{Satz}
+
+\begin{Beweis}
+    Es wird eine Reduktion $K \le H$ konstruiert.\\
+    Sei $f\colon \{0, 1\}^\ast \rightarrow \{0, 1\}^\ast$ mit
+    $f(w) := w\# w$.\\
+    Dann gilt $w \in K$ $\iff$
+    $M_w$ hält auf Eingabe $w$ $\iff$
+    $w\# w = f(w) \in H$.\\
+    Weil $K$ nicht entscheidbar ist, ist auch $H$ nicht entscheidbar.
+\end{Beweis}
+
+\linie
+
+\begin{Def}{Halteproblem auf leerem Band}
+    Das \begriff{Halteproblem auf leerem Band} ist\\
+    $H_0 := \{w \in \{0, 1\}^\ast \;|\; M_w \text{ hält auf leerem Band}\}$.
+\end{Def}
+
+\begin{Satz}{Halteproblem auf leerem Band unentscheidbar}\\
+    Das Halteproblem auf leerem Band $H_0$ ist nicht entscheidbar.
+\end{Satz}
+
+\begin{Beweis}
+    Es wird eine Reduktion $H \le H_0$ konstruiert.
+    Sei ein Wort $w\# x \in \{0, 1\}^\ast \# \{0, 1\}^\ast$ gegeben.
+    Einem solchen Wort kann man eine TM $M$ zuordnen,
+    die bei leerer Eingabe $M_w$ auf $x$ ausführt.
+    Bei nicht-leerer Eingabe ist das Verhalten von $M$ egal.\\
+    Sei $f\colon \{0, 1\}^\ast \# \{0, 1\}^\ast \rightarrow \{0, 1\}^\ast$ mit
+    $f(w\# x) := \kod{M}$.
+    Dann gilt:\\
+    $w\# x \in H$ $\iff$
+    $M_w$ hält auf Eingabe $x$ $\iff$
+    $M$ hält auf leerem Band\\
+    $\iff$
+    $f(w\# x) = \kod{M} \in H_0$.
+    Weil $H$ nicht entscheidbar ist, ist auch $H_0$ nicht entscheidbar.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    Das \name{Post}sche Korrespondenzproblem%
+}
+
+\begin{Def}{\name{Post}sches Korrespondenzproblem}
+    Das \begriff{\name{Post}sche Korrespondenzproblem (PKP)} enthält die folgende Fragestellung:
+    Seien $\Sigma$ ein Alphabet und $k$ Wortpaare $(x_1, y_1), \dotsc, (x_k, y_k)$ mit
+    $x_i, y_i \in \Sigma^+$ gegeben.
+    Gesucht ist eine Folge von Indizes $i_1, \dotsc, i_n \in \{1, \dotsc, k\}$ mit
+    $n \in \natural$, sodass  $x_{i_1} \dotsb x_{i_n} = y_{i_1} \dotsb y_{i_n}$.
+    In diesem Fall heißt $i_1, \dotsc, i_n$ eine \begriff{Lösung} des Korrespondenzproblems
+    $(x_1, y_1), \dotsc, (x_k, y_k)$.
+\end{Def}
+
+\begin{Bsp}
+    Das PKP $((1, 101), (10, 00), (011, 11))$ besitzt die Lösung
+    $(1, 3, 2, 3)$, da $x_1 x_3 x_2 x_3 = 101110011 = y_1 y_3 y_2 y_3$.
+\end{Bsp}
+
+\begin{Satz}{Satz von \upshape\,\!\name{Post}}
+    $\{\kod{K} \;|\; K \text{ ist lösbares PKP}\}$ ist unentscheidbar.
+\end{Satz}
+
+\begin{Bem}
+    Das PKP ist semi-entscheidbar mittels Brute-Force,
+    d.\,h. die lösbaren PKP sind aufzählbar.
+    %Aus dem Satz von Post folgt beispielsweise, dass $P_2$ von oben
+    %unentscheidbar, aber $P_2'$ entscheidbar ist (man untersucht die Variablen auf ihre
+    %Produktivität).
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Alternativ kann man das PKP auch algebraisch formulieren.
+    Seien zwei Abbildungen $f, g\colon \{1, \dotsc, k\} \rightarrow \Sigma^\ast$
+    mit $f(j) = u_j$ und $g(j) = v_j$ gegeben.
+    Diese können eindeutig zu Homomorphismen
+    $f, g\colon \{1, \dotsc, k\}^\ast \rightarrow \Sigma^\ast$ fortgesetzt werden.\\
+    Gesucht ist ein $w \in \{1, \dotsc, k\}^\ast$ mit $f(w) = g(w)$ und $f(w) \in \Sigma^+$.
+    Äquivalent kann man sagen:\\
+    Gibt es $w \in \{1, \dotsc, k\}^\ast$, $z \in \Sigma^\ast$ und $a \in \Sigma$ mit
+    $f(w) = g(w) = az$?
+\end{Bem}
+
+\begin{Satz}{Totalitätsproblem für kf. Sprachen unentscheidbar}\\
+    Das Totalitätsproblem $L(G) = \Sigma^\ast?$ ist für kontextfreie Grammatiken $G$
+    unentscheidbar.
+\end{Satz}
+
+\begin{Beweis}
+    Sei ein beliebiges PKP gegeben.
+    Dann kann man kontextfreie Grammatiken $G_1$ und $G_2$ wie folgt definieren:
+    $L(G_1) = \{i_m \dotsb i_1 \dollar u_{i_1} \dotsb u_{i_m} \;|\;
+    m \in \natural,\; i_1, \dotsc, i_m \in \{1, \dotsc, k\}\}$ und\\
+    $L(G_2) = \{i_m \dotsb i_1 \dollar v_{i_1} \dotsb v_{i_m} \;|\;
+    m \in \natural,\; i_1, \dotsc, i_m \in \{1, \dotsc, k\}\}$.\\
+    Das PKP hat eine Lösung $\iff$ $L(G_1) \cap L(G_2) \not= \emptyset$
+    $\iff$ $\overline{L(G_1)} \cup \overline{L(G_2)} \not= \Sigma^\ast$.\\
+    Die Klasse der kontextfreien Sprachen ist zwar nicht unter Komplement abgeschlossen,
+    aber da man zeigen kann, dass $\overline{L(G_1)}$ und $\overline{L(G_2)}$ sogar
+    deterministisch kontextfrei sind (die det. kf. Sprachen sind unter Komplement abgeschlossen),
+    und weil die kontextfreien Sprachen unter Vereinigung abgeschlossen sind, ist
+    $\overline{L(G_1)} \cup \overline{L(G_2)}$ wieder kontextfrei.\\
+    Wäre nun das Totalitätsproblem für kontextfreie Sprachen entscheidbar, dann könnte man
+    $\overline{L(G_1)} \cup \overline{L(G_2)} \not= \Sigma^\ast?$ entscheiden und somit
+    wäre die Lösbarkeit von jedem PKP entscheidbar, was aber nicht stimmt.
+    Also ist das Totalitätsproblem für kf. Sprachen unentscheidbar.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    Fleißige Biber%
+}
+
+\begin{Def}{Biber}
+    Ein \begriff{Biber} ist eine deterministische TM
+    $B = (Q, \Sigma, \Gamma, \delta, q_0, \emptyset, \Box)$ mit
+    $\Sigma = \{|\}$ und $\Gamma = \{|, \Box\}$, wobei nur solche Zustandsübergänge zugelassen
+    sind, bei denen die TM den Lese-/\\Schreibkopf nach links oder nach rechts bewegt.
+\end{Def}
+
+\begin{Def}{Biber-Funktion}
+    Ein Biber $B$ berechnet eine partiell definierte \begriff{Biber-Funktion}
+    $f_B\colon \natural \rightarrow_p \natural$.
+    $f_B(n)$ ist definiert, falls $B$ für die Eingabe $|^n$ hält.
+    In diesem Fall sei $f_B(n)$ die Anzahl der $|$, die auf dem Band stehen.
+\end{Def}
+
+\begin{Def}{Fleißiger-Biber-Funktion}
+    Die \begriff{Fleißiger-Biber-Funktion} $\bb$ ist für $n \in \natural$ definiert durch
+    $\bb(n) := \text{BusyBeaver}(n) :=
+    \max\{f_B(0) \;|\; B \text{ Biber mit} \le n \text{ Zuständen},\;
+    f_B(0) \text{ definiert}\}$.\\
+    Ein Biber mit $\le n$ Zuständen, sodass $\bb(n) = f_B(0)$ gilt, heißt
+    \begriff{fleißiger Biber}.
+\end{Def}
+
+\begin{Bem}
+    Fleißige Biber sind spezielle TM, die mit einer vorgegebenen Anzahl an Zuständen ohne
+    Eingabe möglichst viel Zeichen auf das Ausgabeband schreiben, ohne in eine Endlosschleife
+    zu geraten.
+    Mittels der Fleißiger-Biber-Funktion lässt sich daher der maximale Komplexitätsgrad von
+    Turingmaschinen abschätzen.\\
+    Die Fleißiger-Biber-Funktion ist eine unglaublich schnell wachsende Funktion.
+    Sie wächst so schnell, dass nur vier Werte bekannt sind, für zwei weitere Abschätzungen
+    existieren und alle anderen Werte unbekannt sind:
+    
+    \begin{tabular}{p{15mm}p{5mm}p{5mm}p{5mm}p{5mm}p{15mm}p{25mm}p{20mm}}
+        \toprule
+        \textbf{$n$} &
+        $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $\ge 7$\\
+        
+        \textbf{$\bb(n)$} &
+        $1$ & $4$ & $6$ & $13$ & $\ge 4098$ & $\ge 3{,}5 \cdot 10^{18267}$ & unbekannt\\
+        \bottomrule
+    \end{tabular}
+    
+    Weil die Anzahl an Bibern mit $\le n$ Zuständen endlich ist, existiert $\bb(n)$ als
+    Maximum einer endlichen Teilmenge von $\natural$.
+    $\bb(n)$ ist of"|fensichtlich monoton wachsend.
+\end{Bem}
+
+\begin{Satz}{$\bb$ schneller wachsend als jede berechenbare Funktion}\\
+    Sei $f\colon \natural \rightarrow \natural$ berechenbar und überall definiert.\\
+    Dann ist $f(n) < \bb(n)$ für fast alle $n \in \natural$.
+    Insbesondere ist $\bb$ nicht berechenbar.
+\end{Satz}
+
+\begin{Beweis}
+    Sei $M$ eine Turingmaschine, die $f$ berechnet und nur $\{0, 1, \Box\}$ als
+    Bandalphabet benutzt.
+    $M$ kann durch einen Biber simuliert werden, d.\,h. es gibt einen Biber $B$, sodass\\
+    $f(n) = f_B(n)$ für alle $n \in \natural$.
+    Für jedes $n \in \natural$ gibt es einen Biber $B_n$ mit $f_{B_n}(0) = n$,
+    der höchstens $\O(\log n)$ viele Zustände hat.
+    Für jedes $n \in \natural$ gibt es wiederum einen Biber
+    $C_n = B \circ B_n$ mit $f_{C_n}(0) = f_B(f_{B_n}(0)) = f_B(n) = f(n)$.
+    Definiere nun $C_n' = \succ \circ C_n$ mit $f_{C_n'}(0) = f(n) + 1$.
+    $C_n'$ hat immer noch höchstens $\O(\log n)$ viele Zustände.\\
+    Damit gilt $f(n) < f(n) + 1 \le \bb(n)$ für fast alle $n \in \natural$,
+    denn es gibt Biber $C_n'$ mit $f_{C_n'}(0) = f(n) + 1$.
+    Für fast alle $n \in \natural$ hat $C_n'$ höchstens $n$ Zustände
+    (da $C_n'$ $\O(\log n)$ viele Zustände hat), d.\,h.
+    für diese $n$ gilt $f_{C_n'}(0) \le \bb(n)$.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    Primitive Biber und primitiv-rekursive Funktionen%
+}
+
+\begin{Bem}
+    Etwa zeitgleich zum Begriff der Turingmaschine und der Turing-Berechenbarkeit wurde der
+    Begriff der primitiv-rekursiven Funktionen entwickelt.
+    David Hilbert vermutete, dass jede berechenbare Funktion primitv-rekursiv ist,
+    was aber u.\,a. durch seinen Schüler Wilhelm Ackermann mit der Ackermann-Funktion widerlegt
+    werden konnte.\\
+    Alternativ kann man dies mit den sog. primitven Bibern zeigen.
+    Dafür sei in diesem Abschnitt die $0$ in $\natural$ enthalten.
+\end{Bem}
+
+\begin{Def}{primitiv-rekursive Funktion}
+    Die Klasse $\pr$ der \begriff{primitiv-rekursiven Funktionen} ist eine Teilmenge der Funktionen
+    $\natural^k \rightarrow \natural$ mit $k \in \natural$, die wie folgt definiert ist:
+    \begin{itemize}
+        \item
+        Die Nullfunktion
+        $0\colon \natural^0 \rightarrow \natural$, $() \mapsto 0$, ist primitiv-rekursiv.
+        
+        \item
+        Die Nachfolgerfunktion
+        $\succ\colon \natural^1 \rightarrow \natural$, $n \mapsto n + 1$, ist primitv-rekursiv.
+        
+        \item
+        Die Projektion
+        $\pi_{i,k}\colon \natural^k \rightarrow \natural$, $(n_1, \dotsc, n_k) \mapsto n_i$,
+        ist primitiv-rekursiv.
+        
+        \item
+        Die Komposition
+        $h(g_1, \dotsc, g_k)\colon \natural^\ell \rightarrow \natural$,
+        $n = (n_1, \dotsc, n_\ell) \mapsto h(g_1(n), \dotsc, g_k(n))$,\\
+        ist primitiv-rekursiv,
+        falls $(h\colon \natural^k \rightarrow \natural) \in \pr$ und
+        $(g_i\colon \natural^\ell \rightarrow \natural) \in \pr$ für $i = 1, \dotsc, k$.
+        
+        \item
+        $f = \rec(g, h)\colon \natural^{k+1} \rightarrow \natural$,
+        $(0, n_1, \dotsc, n_k) \mapsto g(n_1, \dotsc, n_k)$,\\
+        $(n + 1, n_1, \dotsc, n_k) \mapsto h(f(n, n_1, \dotsc, n_k), n, n_1, \dotsc, n_k)$,
+        ist primitiv-rekursiv,\\
+        falls $(g\colon \natural^k \rightarrow \natural) \in \pr$ und
+        $(h\colon \natural^{k+2} \rightarrow \natural) \in \pr$
+        (\begriff{Schema der primitiven Rekursion}).
+    \end{itemize}
+\end{Def}
+
+\begin{Def}{Komplexität von primitv-rekursiven Funktionen}
+    Setze $\norm{0} := 1$,
+    $\norm{\succ} := 1$,\\
+    $\norm{\pi_{i,k}} := k$,
+    $\norm{h(g_1, \dotsc, g_k)} := \norm{h} + \norm{g_1} + \dotsb + \norm{g_k}$ und
+    $\norm{\rec(g, h)} := \norm{g} + \norm{h}$.
+\end{Def}
+
+\begin{Def}{Primitiver-Biber-Funktion}
+    Sei $\pr_k := \{f \in \pr \;|\; \norm{f} \le k\}$.
+    Die \begriff{Primitive-Biber-Funktion} $\pb$ ist für $k, n \in \natural$ definiert durch
+    $\pb(k, n) := \max\{f(n) \;|\; f \in \pr_k\}$ bzw.
+    $\pb(n) := \pb(n, n)$.\\
+    Definiere zusätzlich $p_k\colon \natural \rightarrow \natural$, $p_k(n) := \pb(k, n)$.
+\end{Def}
+
+\begin{Bem}
+    $\pr_k$ ist endlich mit $|\pr_k| \in 2^{\O(k)}$.
+\end{Bem}
+
+\begin{Satz}{$\pb(k, n)$ für festes $k$ primitiv-rekursiv}
+    Es gilt $p_k \in \pr$ für alle $k \in \natural$.
+\end{Satz}
+
+\begin{Satz}{$\pb$ schneller wachsend als jede primitiv-rekursive Funktion}\\
+    Sei $f\colon \natural \rightarrow \natural$ primitiv-rekursiv und überall definiert.\\
+    Dann ist $f(n) < \pb(n)$ für fast alle $n \in \natural$.
+    Insbesondere ist $\pb$ nicht primitiv-rekursiv.
+\end{Satz}
+
+\linie
+
+\begin{Def}{\name{Ackermann}-Funktion}
+    Die \begriff{\name{Ackermann}-Funktion}
+    $a\colon \natural_0 \times \natural_0 \rightarrow \natural$ ist definiert durch\\
+    $a(0, y) := y + 1$, $a(x + 1, 0) := a(x, 1)$ und
+    $a(x + 1, y + 1) := a(x, a(x + 1, y))$
+\end{Def}
+
+\begin{Satz}{\name{Ackermann}-Funktion nicht primitiv-rekursiv}
+    $a(x, y)$ ist nicht primitiv-rekursiv, insbesondere ist die Klasse der
+    primitiv-rekursiven Funktionen nicht gleich der Klasse der Turing-berechenbaren Funktionen.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Die Sprachen IMP, WHILE und LOOP%
+}
+
+\begin{Bem}
+    Im Folgenden wird eine formale Programmiersprache IMP definiert
+    (imperative Sprache).
+\end{Bem}
+
+\begin{Def}{Grundbereiche}
+    Die in $\IMP$ verwendeten \begriff{Grundbereiche} sind $\natural_0$ für natürliche Zahlen,
+    $\B = \{\true, \false\} = \{1, 0\}$ für Wahrheitswerte,
+    $\V = \{X_1, X_2, \dotsc,\}$ für Variablen,
+    $\Loc \subset \V$ für die benutzten Variablen und
+    $\Sigma = \{\sigma\colon \Loc \rightarrow \natural_0\}$ für Speicherzustände.
+\end{Def}
+
+\begin{Bem}
+    Man kann $\Sigma$ für $\Loc = \{X_1, \dotsc, X_n\}$ mit $\natural_0^n$ identifizieren
+    (falls $\Loc$ implizit geordnet ist durch z.\,B. $X_1 < \dotsb < X_n$).
+    In diesem Fall bedeutet $(x_1, \dotsc, x_n) \in \Loc$ der Speicherzustand
+    $\sigma \in \Sigma$ mit $\sigma(X_k) = x_k$ für $k = 1, \dotsc, n$.
+\end{Bem}
+
+\begin{Def}{arithmetische Ausdrücke}
+    Die Menge $\Aexp$ der \begriff{arithmetischen Ausdrücke} ist definiert durch
+    $a ::= n \;|\; X \;|\; (a_1 + a_2) \;|\; (a_1 - a_2) \;|\; (a_1 \cdot a_2)$
+    mit $n \in \natural_0$ und $X \in \V$.
+    Die Klammern können weggelassen werden, wenn klar ist, was geklammert ist.\\
+    Arithmetische Ausdrücke können zusammen mit einem Speicherzustand zu einer natürlichen
+    Zahl ausgewertet werden, d.\,h. die Auswertung ist eine Funktion
+    $\Aexp \times \Sigma \rightarrow \natural_0$ mit\\
+    $(n, \sigma) \mapsto n$,
+    $(X, \sigma) \mapsto \sigma(X)$,
+    $((a_1 + a_2), \sigma) \mapsto n_1 + n_2$,
+    $((a_1 - a_2), \sigma) \mapsto \max\{n_1 - n_2, 0\}$ (\begriff{modifizierte Subtraktion}) und
+    $((a_1 \cdot a_2), \sigma) \mapsto n_1 \cdot n_2$,
+    wobei $n \in \natural_0$, $\sigma \in \Sigma$, $X \in \Loc$ und $a_i \in \Aexp$ mit
+    $(a_i, \sigma) \mapsto n_i$ für $i = 1, 2$.\\
+    Man kann die Auswertung auch als Funktion
+    $\mathcal{A}\colon \Aexp \rightarrow (\Sigma \rightarrow \natural_0)$ auf"|fassen,
+    d.\,h. jeder arithmetische Ausdruck $a \in \Aexp$ definiert eine Abbildung von den
+    Speicherzuständen in die natürlichen Zahlen.
+    Man kann $(a, \sigma) \mapsto n$ deswegen auch als $(\mathcal{A}(a))(\sigma) = n$ schreiben.
+\end{Def}
+
+\begin{Def}{\name{Boole}sche Ausdrücke}
+    Die Menge $\Bexp$ der \begriff{\name{Boole}schen Ausdrücke} ist definiert durch
+    $b ::= \true \;|\; \false \;|\; (a_1 = a_2) \;|\; (a_1 < a_2) \;|\; (a_1 > a_2) \;|\;
+    (a_1 \not= a_2) \;|\; (\lnot b) \;|\; (b_1 \land b_2) \;|\; (b_1 \lor b_2) \;|\;$\\
+    $(b_1 \Rightarrow b_2) \;|\; (b_1 \Leftrightarrow b_2)$
+    mit $a_1, a_2 \in \Aexp$ und $b, b_1, b_2 \in \Bexp$.
+    Die Klammern können weggelassen werden, wenn klar ist, was geklammert ist.\\
+    Boolesche Ausdrücke können ebenfalls zusammen mit einem Speicherzustand zu einem
+    Wahrheitswert $t \in \B$ ausgewertet werden, d.\,h. die Auswertung ist eine Funktion
+    $\Bexp \times \Sigma \rightarrow \B$, die wie üblich definiert ist.
+    Wiederum kann man die Auswertung als Funktion
+    $\mathcal{B}\colon \Bexp \rightarrow (\Sigma \rightarrow \B)$ auf"|fassen,
+    wobei man für $(b, \sigma) \mapsto t$ auch $(\mathcal{B}(b))(\sigma) = t$ schreiben kann
+    (mit $b \in \Bexp$, $\sigma \in \Sigma$ und $t \in \B$).
+\end{Def}
+
+\begin{Def}{$\IMP$-Programme}
+    Die Menge $\IMP = \Cmd$ der \begriff{IMP-Programme} ist definiert durch\\
+    $c ::= \text{skip} \;|\; X := a \;|\; c_1;\; c_2 \;|\;
+    \text{if } b \text{ then } c_1 \text{ else } c_2 \text{ fi} \;|\;
+    \text{while } b \text{ do } c \text{ od}$\\
+    mit $X \in \V$, $a \in \Aexp$, $b \in \Bexp$ und $c, c_1, c_2 \in \Cmd$.\\
+    Einem gegebenen Programm $c \in \Cmd$ und einem Speicherzustand $\sigma \in \Sigma$ wird
+    ein neuer Speicherzustand $\sigma' \in \Sigma$ zugeordnet durch eine intuitiv definierte
+    Abbildung $\Cmd \times \Sigma \rightarrow_p \Sigma$ bzw.
+    $\mathcal{C}\colon \Cmd \rightarrow (\Sigma \rightarrow_p \Sigma)$.
+    Dabei ist $(\mathcal{C}(c))(\sigma)$ definiert genau dann,
+    wenn das Programm $c$ bei Eingabe von $\sigma$
+    nach einer endlichen Zahl an Schritten terminiert.
+\end{Def}
+
+\linie
+
+\begin{Def}{WHILE-Programme}
+    Die Menge WHILE der \begriff{WHILE-Programme} ist definiert durch\\
+    $c ::= X := a \;|\; c_1; c_2 \;|\; \text{while } X \not= 0 \text{ do } c \text{ od}$
+    für $X \in \V$ und $c, c_1, c_2 \in \text{WHILE}$.
+\end{Def}
+
+\begin{Def}{LOOP-Programme}
+    Die Menge LOOP der \begriff{LOOP-Programme} ist definiert durch\\
+    $c ::= X := a \;|\; c_1; c_2 \;|\; \text{loop } X \text{ do } c \text{ od}$
+    für $X \in \V$ und $c, c_1, c_2 \in \text{LOOP}$.\\
+    Eine LOOP-Schleife wird dabei solange ausgeführt, wie der Wert von $X$ zu Beginn angibt
+    (Änderungen werden nicht berücksichtigt).
+\end{Def}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    WHILE- und LOOP-Programme sind nach Definition IMP-Programme.\\
+    Jedes IMP-Programm kann als WHILE-Programm geschrieben werden.\\
+    %Dazu müssen die If-Abfragen zu While-Schleifen von IMP umgeschrieben werden
+    %(aus "`$\text{if } b \text{ then } c_1 \text{ else } c_2 \text{ fi}$"' wird
+    %"`$X := 1;\; \text{while } (b \land (X = 1)) \text{ do } c; X := 0 \text{ od};\;
+    %X := 1;\; \text{while } ((\lnot b) \land (X = 1)) \text{ do } c; X := 0 \text{ od}$"').
+    %Danach muss man diese IMP-While-Schleifen in WHILE-While-Schleifen der Form\\
+    %"`$\text{while } X \not= 0 \text{ do } c \text{ od}$"' umwandeln.
+    %Die elementaren Boolesche Ausdrücke $\true$, $\false$, $(a_1 = a_2)$, \dots, $(a_1 \not= a_2)$
+    %kann man noch durch Einführung einer zusätzlichen Variablen abdecken.\\
+    %$\lnot$ behandelt man durch die Regel von de Morgan.
+    %Für $\land$ und $\lor$ muss man zwei verschachtelte While-Schleifen bzw.
+    %zwei hintereinander geschachtelte While-Schleifen verwenden.
+    Damit sind WHILE- und IMP-Programme gleichmächtig.
+\end{Bem}
+
+\begin{Satz}{IMP-Programme Turing-berechenbar}
+    IMP-Programme sind Turing-berechenbar.
+\end{Satz}
+
+\begin{Kor}
+    Jedes WHILE-Programm (C, C++, Ada usw.) ist Turing-berechenbar.
+\end{Kor}
+
+\begin{Satz}{TM WHILE-berechenbar}
+    Jede Turingmaschine ist \begriff{WHILE-berechenbar}, d.\,h. es gibt ein WHILE-Programm, das die
+    von der TM berechnete Funktion berechnet.
+\end{Satz}
+
+\begin{Beweis}
+    Sei $M = (Q, \Sigma, \Gamma, \delta, q_0, \{q_f\}, \Box)$ eine deterministische Einband-TM mit
+    $\Sigma = \{1\}$, $\Gamma = \{0, 1\}$ und $\Box = 0$.
+    Zu zeigen ist, dass die von $M$ berechnete, partiell definierte Funktion
+    $f_M\colon \natural \rightarrow_p \natural$ WHILE-berechenbar ist.
+    OBdA sei $Q = \{0, 1, \dotsc, n\}$ mit $q_f = 0$ und $q_0 = 1$.\\
+    Konfigurationen sind Wörter $uqv$ mit $u \in 0\{0, 1\}^\ast$ und $v \in \{0, 1\}^\ast 0$.
+    Für $a_1 \dotsb a_n \in \Sigma$ definiere
+    $\overleftarrow{a_1 \dotsb a_n} := a_n \dotsb a_1$.
+    Lies nun für einen Zustandsübergang $u \in \natural$ richtig herum, aber
+    $\overleftarrow{v} \in \natural$ falsch herum ein.
+    Die Übergangstabelle von
+    $\delta \subset Q \times \Gamma \times Q \times \Gamma \times \{L, R, N\}$ ist eine Tabelle
+    mit $|\delta|$ vielen Zeilen.
+    Eine Zeile könnte z.\,B. so aussehen: $(i, 1, j, 0, L)$.\\
+    Dies entspricht $\dotsb c i 1 \dotsb \vdash \dotsb j c 0 \dotsb$.
+    In IMP könnte man das durch\\
+    $\text{if } ((q = i) \land \text{odd}(v)) \text{ then } v := 2 \cdot (v - 1) + c;\;
+    u := u \text{ div } 2;\; q := j \text{ fi}$ darstellen ($\Loc = \{q, u, v\}$).
+    Genauso behandelt man die anderen Fälle.
+    Das IMP-Programm hat dann am Ende folgende Form:
+    $q = 1;\; \text{while } q \ge 1 \text{ do } \dotsb
+    \text{ if } \dotsb \text{ then } \dotsb \text{ fi} \dotsb \text{ od}$.
+\end{Beweis}
+
+\begin{Satz}{\name{Kleene}sche Normalform für WHILE-Programme}
+    Jedes WHILE-Programm kann in ein gleichwertiges IMP-Programm umgeschrieben werden,
+    das mit nur einer einzigen äußeren WHILE-Schleife auskommt und innerhalb der Schleife nur
+    IF-Abfragen verwendet.
+\end{Satz}
+
+\begin{Beweis}
+    Man forme das WHILE-Programm in eine TM um und diese anschließend in ein WHILE-Programm nach
+    dem konstruktiven Beweis von eben.
+\end{Beweis}
+
+\linie
+
+\begin{Bem}
+    LOOP-Programme sind WHILE-berechenbar.
+\end{Bem}
+
+\begin{Satz}{LOOP-berechenbar $\iff$ primitiv-rekursiv}
+    Sei $f\colon \natural^k \rightarrow \natural$.\\
+    Dann ist $f$ \begriff{LOOP-berechenbar} (es gibt ein LOOP-Programm, das $f$ berechnet)
+    genau dann, wenn $f$ primitv-rekursiv ist.
+\end{Satz}
+
+\begin{Bem}
+    Damit sind nicht alle Turing-berechenbaren Funktionen LOOP-berechenbar.
+\end{Bem}
+
+\subsection{%
+    \texorpdfstring{$\mu$}{µ}-rekursive Funktionen%
+}
+
+\begin{Def}{$\mu$-Operator}
+    Sei $f\colon \natural^{k+1} \rightarrow_p \natural$ eine partiell definierte Funktion.\\
+    Dann ist der \begriff{$\mu$-Operator} definiert durch
+    $\mu f\colon \natural^k \rightarrow_p \natural$ mit\\
+    $(\mu f)(n_1, \dotsc, n_k) := \min\{m \in \natural \;|\; f(m, n_1, \dotsc, n_k) = 0,\;
+    \forall_{i = 0, \dotsc, m}\; f(i, n_1, \dotsc, n_k) \text{ definiert}\}$\\
+    (für $\{\dotsb\} = \emptyset$ sei $(\mu f)(n_1, \dotsc, n_k)$ nicht definiert).
+\end{Def}
+
+\begin{Def}{$\mu$-rekursive Funktion}
+    Die Klasse der \begriff{$\mu$-rekursiven Funktionen} ist eine Teilmenge der partiell
+    definierten Funktionen $\natural^k \rightarrow_p \natural$ mit $k \in \natural$,
+    die wie folgt definiert ist:
+    \begin{itemize}
+        \item
+        Jede primitv-rekursive Funktion ist $\mu$-rekursiv.
+        
+        \item
+        $\mu f\colon \natural^k \rightarrow_p \natural$ ist $\mu$-rekursiv,
+        falls $f\colon \natural^{k+1} \rightarrow_p \natural$ $\mu$-rekursiv ist.
+    \end{itemize}
+\end{Def}
+
+\begin{Satz}{WHILE-berechenbar $\iff$ $\mu$-rekursiv}
+    Sei $f\colon \natural^k \rightarrow \natural$.\\
+    Dann ist $f$ WHILE-berechenbar genau dann, wenn $f$ $\mu$-rekursiv ist.
+\end{Satz}
+
+\begin{Bem}
+    Also sind die Turing-/WHILE-berechenbaren Funktionen und die $\mu$-rekursiven Funktionen
+    identisch.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    \emph{Zusatz}:
+    Prädikatenlogik erster Stufe%
+}
+
+\begin{Def}{mögliche Symbole}
+    Die in der Prädikatenlogik erster Stufe \begriff{möglichen Symbole} sind:
+    \begin{itemize}
+        \item
+        \begriff{logische Symbole}: $\forall$, $\exists$, $\land$, $\lor$, $\lnot$, $\Rightarrow$,
+        $\Leftrightarrow$, $($, $)$, $=$ und $,$
+        
+        \item
+        \begriff{Variablensymbole}: $A_1, A_2, A_3, \dotsc$
+        
+        \item
+        Menge $\C$ von \begriff{Konstantensymbole}
+        
+        \item
+        Menge $\F$ von \begriff{Funktionssymbole}
+        mit einer bestimmten natürlichen Zahl als Stelligkeit
+        
+        \item
+        Menge $\R$ von \begriff{Relationssymbole}
+        mit einer bestimmten natürlichen Zahl als Stelligkeit
+    \end{itemize}
+\end{Def}
+
+\linie
+
+\begin{Def}{Term}
+    Ein \begriff{Term} ist induktiv wie folgt definiert:
+    \begin{itemize}
+        \item
+        Jedes Variablensymbol $x$ ist ein Term.
+        
+        \item
+        Jedes Konstantensymbol $c$ ist ein Term.
+        
+        \item
+        Ist $f$ ein $n$-stelliges Funktionssymbol und sind $t_1, \dotsc, t_n$
+        Terme, so ist $f(t_1, \dotsc, t_n)$ ein Term.
+    \end{itemize}
+\end{Def}
+
+\begin{Def}{Variablen, die in einem Term vorkommen}\\
+    Die \begriff{Variablen $\var(t)$}, die in einem Term $t$ vorkommen, sind induktiv
+    wie folgt definiert:
+    \begin{itemize}
+        \item
+        $\var(x) := \{x\}$ für ein Variablensymbol $x$
+        
+        \item
+        $\var(c) := \emptyset$ für ein Konstantensymbol $c$
+        
+        \item
+        $\var(f(t_1, \dotsc, t_n)) := \var(t_1) \cup \dotsb \cup \var(t_n)$
+        für ein $n$-stelliges Funktionssymbol $f$ und $t_1, \dotsc, t_n$ Terme
+    \end{itemize}
+\end{Def}
+
+\linie
+
+\begin{Def}{Ausdruck}
+    Ein \begriff{Ausdruck} oder eine \begriff{Formel} ist induktiv wie folgt definiert:
+    \begin{itemize}
+        \item
+        Für $t_1$ und $t_2$ Terme ist $(t_1 = t_2)$ ein Ausdruck.
+        
+        \item
+        Ist $R$ ein $n$-stelliges Relationssymbol und sind $t_1, \dotsc, t_n$
+        Terme, so ist $R(t_1, \dotsc, t_n)$ ein Ausdruck.
+        
+        \item
+        Ist $\varphi$ ein Ausdruck, so auch $(\lnot\varphi)$.
+        
+        \item
+        Sind $\varphi$ und $\psi$ Ausdrücke, so auch $(\varphi \land \psi)$,
+        $(\varphi \lor \psi)$, $(\varphi \Rightarrow \psi)$ und $(\varphi \Leftrightarrow \psi)$.
+        
+        \item
+        Ist $\varphi$ ein Ausdruck und $x$ ein Variablensymbol, dann sind auch
+        $\forall_x \varphi$ und $\exists_x \varphi$ Ausdrücke.
+    \end{itemize}
+    Die nach den ersten beiden Regeln erstellten Ausdrücke heißen \begriff{atomar}.\\
+    Klammern können ggf. auch weggelassen werden.
+\end{Def}
+
+\begin{Def}{Sprache erster Stufe}
+    Man fasst $\C$, $\F$ und $\R$ zur \begriff{Signatur} oder \begriff{Symbolmenge} $S$ zusammen.
+    Die \begriff{Sprache erster Stufe} $L_I^S$
+    ist die Menge aller über $S$ gültigen Ausdrücke.
+\end{Def}
+
+\linie
+\pagebreak
+
+\begin{Def}{freie Variablen}\\
+    Die \begriff{freien Variablen $\frei(\varphi)$} eines Ausdrucks $\varphi$ sind
+    induktiv wie folgt definiert:
+    \begin{itemize}
+        \item
+        $\frei(t_1 = t_2) := \var(t_1) \cup \var(t_2)$ für Terme $t_1$ und $t_2$
+        
+        \item
+        $\frei(R(t_1, \dotsc, t_n)) := \var(t_1) \cup \dotsb \cup \var(t_n)$ für
+        $R$ ein $n$-stelliges Relationssymbol und $t_1, \dotsc, t_n$ Terme
+        
+        \item
+        $\frei(\lnot \varphi) := \frei(\varphi)$ für einen Ausdruck $\varphi$
+        
+        \item
+        $\frei(\varphi \ast \psi) := \frei(\varphi) \cup \frei(\psi)$ für Ausdrücke $\varphi$ und
+        $\psi$ und $\ast \in \{\land, \lor, \Rightarrow, \Leftrightarrow\}$
+        
+        \item
+        $\frei(\forall_x \varphi), \frei(\exists_x \varphi) := \frei(\varphi) \setminus \{x\}$
+        für einen Ausdruck $\varphi$ und ein Variablensymbol $x$
+    \end{itemize}
+    Nicht-freie Variablen heißen \begriff{gebunden}.
+\end{Def}
+
+\begin{Def}{geschlossene Formel}
+    Eine \begriff{geschlossene Formel} oder ein \begriff{Satz} ist eine Formel $F$
+    ohne freie Variable, d.\,h. $\frei(F) = \emptyset$.
+\end{Def}
+
+\linie
+
+\begin{Def}{passende Struktur}
+    Eine \begriff{passende Struktur} $\A$ für eine Signatur $S$
+    ist eine nicht-leere Menge $A$ zusammen mit:
+    \begin{itemize}
+        \item
+        einem Element $c^\A \in A$ für jedes Konstantensymbol $c$
+        
+        \item
+        einer Funktion $f^\A\colon A^n \rightarrow A$ für jedes $n$-stellige Funktionssymbol $f$
+        
+        \item
+        einer Relation $R^\A \subset A^n$ für jedes $n$-stellige Relationssymbol $R$
+    \end{itemize}
+\end{Def}
+
+\begin{Def}{Belegung}\\
+    Eine Belegung $\beta$ einer passenden Struktur $\A$ ist eine Abbildung
+    $\beta\colon \{A_i \;|\; i \in \natural\} \rightarrow A$.
+\end{Def}
+
+\begin{Def}{Interpretation}
+    Eine \begriff{Interpretation} einer Sprache $L_I^S$ ist ein Paar $\I = (\A, \beta)$
+    mit einer passenden Struktur $\A$ und einer Belegung $\beta$.
+    Ein Term $t$ kann wie folgt induktiv interpretiert werden:
+    \begin{itemize}
+        \item
+        $\I(x) := \beta(x)$ für eine Variable $x$
+        
+        \item
+        $\I(c) := c^\A$ für ein Konstantensymbol $c$
+        
+        \item
+        $\I(f(t_1, \dotsc, t_n)) := f^\A(\I(t_1), \dotsc, \I(t_n))$
+        für ein $n$-stelliges Funktionssymbol $f$ und Terme $t_1, \dotsc, t_n$
+    \end{itemize}
+\end{Def}
+
+\begin{Def}{geänderte Belegung}
+    Ist eine Interpretation $\I = (\A, \beta)$ gegeben,
+    dann sei $\beta \frac{a}{x}$ für $a \in A$ und $x$ Variablensymbol die
+    \begriff{geänderte Belegung},
+    die $x$ auf $a$ abbildet und sonst alles wie $\beta$.
+    $\I \frac{a}{x} := (\A, \beta \frac{a}{x})$ ist die \begriff{geänderte Interpretation}.
+\end{Def}
+
+\linie
+
+\begin{Def}{Modell}
+    Eine Interpretation $\I = (\A, \beta)$ heißt \begriff{Modell} für einen Ausdruck $\varphi$
+    ($\I \models \varphi$), falls induktiv:
+    \begin{itemize}
+        \item
+        $\I \models (t_1 = t_2)$, falls $\I(t_1) = \I(t_2)$
+        (für Terme $t_1$ und $t_2$)
+        
+        \item
+        $\I \models R(t_1, \dotsc, t_n)$, falls $R^\A(\I(t_1), \dotsc, \I(t_n))$
+        (für ein $n$-stelliges Relationssymbol $R$ und Terme $t_1, \dotsc, t_n$)
+        
+        \item
+        $\I \models (\lnot\varphi)$, falls $\lnot(\I \models \varphi)$
+        (für einen Ausdruck $\varphi$)
+        
+        \item
+        $\I \models (\varphi \ast \psi)$, falls $(\I \models \varphi) \ast (\I \models \psi)$
+        (für Ausdrücke $\varphi$ und $\psi$ und
+        $\ast \in \{\land, \lor, \Rightarrow, \Leftrightarrow\}$)
+        
+        \item
+        $\I \models \forall_x \varphi$, falls
+        $\forall_{a \in A}\; (\I\frac{a}{x} \models \varphi)$, bzw.
+        $\I \models \exists_x \varphi$, falls
+        $\exists_{a \in A}\; (\I\frac{a}{x} \models \varphi)$\\
+        (für einen Ausdruck $\varphi$ und ein Variablensymbol $x$)
+    \end{itemize}
+\end{Def}
+
+\linie
+\pagebreak
+
+\begin{Def}{Tautologie}\\
+    Eine Tautologie ist eine Formel $F$, sodass alle passenden Strukturen Modelle für $F$ sind.
+\end{Def}
+
+\begin{Satz}{Satz von \upshape\,\!\name{Gödel}}\\
+    $\TAUT(1) = \{F \;|\; F \text{ ist Tautologie in der Prädikatenlogik erster Stufe}\}$
+    ist unentscheidbar.
+\end{Satz}
+
+\begin{Beweis}
+    Sei ein beliebiges PKP gegeben.
+    Dies kann nach obiger Bemerkung auch folgendermaßen formuliert werden:
+    Gegeben sind Homomorphismen $f, g\colon \{1, \dotsc, k\}^\ast \rightarrow \Sigma^\ast$.\\
+    Gibt es $w \in \{1, \dotsc, k\}^\ast$, $z \in \Sigma^\ast$ und $a \in \Sigma$ mit
+    $f(w) = g(w) = az$?\\
+    Man kann für beliebige $a \in \Sigma$ ein einstelliges Funktionssymbol
+    $a\colon \Sigma^\ast \rightarrow \Sigma^\ast$ definieren durch $a(w) = aw$.
+    Dadurch kann man für $u = u_1 \dotsb u_n$, $u_i \in \Sigma$
+    ein einstelliges Funktionssymbol $u\colon \Sigma^\ast \rightarrow \Sigma^\ast$ mit
+    $u(w) = uw = u_1(u_2(\dotsb u_n(w) \dotsb))$ definieren.\\
+    Für ein zweistelliges Relationssymbol $P$ kann man nun in Abhängigkeit von $f$ und $g$ eine
+    Formel $A(f, g) := (P(\varepsilon, \varepsilon) \land
+    \bigwedge_{j=1}^k \forall_x \forall_y\; (P(x, y) \Rightarrow P(u_j(x), v_j(y))))$ definieren.
+    Interpretiere nun $P$ über $\Sigma^\ast$ durch die Relation
+    $R := \{(f(w), g(w)) \;|\; w \in \{1, \dotsc, k\}^\ast\}$.\\
+    Damit wird $\Sigma^\ast$ zu einem Modell von $A(f, g)$:
+    Es gilt $(\varepsilon, \varepsilon) \in R$ (für $w = \varepsilon \in \{1, \dotsc, k\}^\ast$)
+    und für $u = f(w)$ und $v = g(w)$ mit $w \in \{1, \dotsc, k\}^\ast$ beliebig
+    (d.\,h. $(u, v) \in R$)
+    gilt stets auch $(u_j u, v_j v) \in R$, weil $u_j u = f(j w)$ und $v_j v = f(j w)$
+    (wähle also $\widetilde{w} = jw$ in der Definition von $R$)
+    für beliebige $j = 1, \dotsc, k$.\\
+    Definiere nun die Formel $F(f, g) := (A(f, g) \Rightarrow \exists_z\; P(a(z), a(z)))$.
+    Damit gilt: $F(f, g)$ ist eine Tautologie genau dann, wenn das PKP lösbar ist, denn:\\
+    "`$\Rightarrow$"':
+    Sei das PKP unlösbar.
+    Dann wähle als passende Struktur $\Sigma^\ast$ wie eben.
+    Es gibt kein $z \in \Sigma^\ast$ mit $(az, az) \in R$, denn sonst wäre
+    $az = f(w) = g(w)$ und das PKP wäre lösbar.
+    Also ist $F(f, g)$ keine Tautologie, weil die linke Seite der Implikation wahr ist
+    ($\Sigma^\ast$ ist ein Modell von $A(f, g)$) und die rechte nicht.\\
+    "`$\Leftarrow$"':
+    Sei das PKP lösbar mit Lösung
+    $az = f(i_1 \dotsb i_m) = u_{i_1} \dotsb u_{i_m} = v_{i_1} \dotsb v_{i_m} = g(i_1 \dotsb i_m)$.
+    Dann gilt $u_{i_1}(u_{i_2}(\dotsb u_{i_m}(\varepsilon) \dotsb)) = a(z(\varepsilon)) =
+    v_{i_1}(v_{i_2}(\dotsb v_{i_m}(\varepsilon) \dotsb))$.
+    Mit Induktion nach $m$ folgt die Behauptung.\\
+    Weil (PKP lösbar?) im Allgemeinen nicht entscheidbar ist, ist auch nicht entscheidbar, ob
+    $F(f, g)$ eine Tautologie ist.
+\end{Beweis}
+
+\subsection{%
+    Der \name{Gödel}sche Unvollständigkeitssatz%
+}
+
+\begin{Def}{arithmetischer Term}
+    Ein \begriff{arithmetischer Term} ist definiert durch\\
+    $a ::= n \;|\; x \;|\; (a_1 + a_2) \;|\; (a_1 - a_2) \;|\; (a_1 \cdot a_2)$
+    für $n \in \natural_0$, $x \in \V$ und arithmetische Terme $a_1, a_2$.
+\end{Def}
+
+\begin{Def}{arithmetische Formel}
+    Eine \begriff{arithmetische Formel} ist definiert durch\\
+    $b ::= \text{true} \;|\; (a_1 < a_2) \;|\; (F_1 \land F_2) \;|\;
+    (F_1 \lor F_2) \;|\; (\lnot F) \;|\; \forall_x F \;|\; \exists_x F$
+    für $x \in \V$ und arithmetische Formeln $F, F_1, F_2$.\\
+    Arithmetische Formeln können intuitiv zu Wahrheitswerten ausgewertet werden, falls eine
+    Belegung der Variablen aus $\V$ gegeben ist.
+\end{Def}
+
+\begin{Def}{arithmetische Darstellung}
+    Eine partielle Funktion $f\colon \natural_0^k \rightarrow_p \natural_0^\ell$
+    \begriff{hat eine arithmetische Darstellung}, falls es eine arithmetische Formel $F$ gibt,
+    sodass $\forall_{x_1, \dotsc, x_k, y_1, \dotsc, y_\ell \in \natural_0}$\\
+    $F(x_1, \dotsc, x_k, y_1, \dotsc, y_\ell) \text{ wahr} \iff
+    (f(x_1, \dotsc, x_k) \text{ definiert } \land
+    f(x_1, \dotsc, x_k) = (y_1, \dotsc, y_\ell))$.\\
+    $F$ heißt in diesem Fall \begriff{arithmetische Darstellung} von $f$.
+\end{Def}
+
+\begin{Bsp}
+    Die Addition $\add\colon \natural_0 \times \natural_0 \rightarrow \natural_0$ hat die
+    arithmetische Darstellung\\
+    $F(x, y, z) = (\lnot(z < (x + y)) \land \lnot((x + y) < z))$.
+    Die Restabbildung $\mod\colon \natural_0 \times \natural_0 \rightarrow_p \natural_0$ hat
+    die arithmetische Darstellung
+    $F(a, n, r) = (\exists_k\; a = k \cdot n + r \land r < n)$.\\
+    Genauso haben $\text{div}$, $\text{sq}$ und $\text{exp}$ arithmetische Darstellungen usw.
+\end{Bsp}
+
+\linie
+\pagebreak
+
+\begin{Def}{\name{Gödel}sches $\beta$-Prädikat}
+    Sei $f\colon \natural_0^3 \rightarrow \natural_0$,
+    $f(a, b, i) := a \mod (1 + (i + 1)b)$.\\
+    Dann ist
+    $\beta(a, b, i, n) := ((n < 1 + (i + 1)b) \land (\exists_k\; a = n + k(1 + (i + 1)b)))$
+    eine arithmetische Darstellung von $f$ und heißt \begriff{\name{Gödel}sches $\beta$-Prädikat}.
+\end{Def}
+
+\begin{Bem}
+    Das folgende Lemma besagt, dass man zwei Zahlen $a$ und $b$ finden kann, sodass
+    ein $k$-Tupel $(n_0, \dotsc, n_k) \in \natural_0^{k+1}$ in $f(a, b, i)$
+    "`gespeichert"' werden kann.
+\end{Bem}
+
+\begin{Lemma}{\name{Gödel}sches $\beta$-Lemma}
+    Seien $k \in \natural_0$ und $(n_0, \dotsc, n_k) \in \natural_0^{k+1}$.\\
+    Dann gibt es $a, b \in \natural$ mit $n_i = f(a, b, i)$ für $i = 0, \dotsc, k$.
+\end{Lemma}
+
+\begin{Beweis}
+    Definiere $b := (\max\{k, n_0, \dotsc, n_k\})!$ und $b_i := 1 + (i + 1)b$.
+    
+    Dann gilt für $i \not= j$, dass $\text{ggT}(b_i, b_j) = 1$, denn:
+    OBdA sei $i < j$ und $p$ prim mit $p \;|\; b_i$ und $p \;|\; b_j$.
+    Dann teilt $p$ auch $b_j - b_i = (j - i)b$.
+    Nach Konstruktion von $b$ gilt $(j - i) \;|\; b$ wegen $j - i \le k$.
+    Somit muss $p \;|\; b$ gelten ($p$ teilt $j - i$ oder $b$ und $j - i$ teilt $b$).
+    Allerdings teilt $p$ nach Voraussetzung $b_i = 1 + (i + 1)b$.
+    Weil $p$ den zweiten Summanden teilt, muss $p$ auch den ersten Summanden $1$ teilen,
+    ein Widerspruch.
+    
+    Nun wird behauptet, dass für alle $n_1, n_2 \in \natural_0$ es eine natürliche Zahl
+    $a \in \natural_0$ gibt mit $a \equiv n_1 \mod b_1$ und $a \equiv n_2 \mod b_2$.
+    Eine solche Lösung ist äquivalent zur Existenz von
+    $k, \ell \in \integer$ mit $a = n_1 + kb_1 = n_2 + \ell b_2$,
+    d.\,h. $n_2 - n_1 = kb_1 - \ell b_2$.
+    Nach dem erweiterten euklidischen Algorithmus gibt es $\alpha, \beta \in \integer$ mit
+    $1 = \text{ggT}(b_1, b_2) = \alpha b_1 + \beta b_2$.
+    Also muss $(n_2 - n_1)(\alpha b_1 + \beta b_2) = kb_1 - \ell b_2$ gelten.
+    Dies ist allerdings erfüllt, wenn man $k := (n_2 - n_1)\alpha$ und $\ell := (n_1 - n_2)\beta$
+    wählt, d.\,h. die obige Lösung existiert.
+    Sie ist in den natürlichen Zahlen, wenn man oft genug $b_1 \cdot b_2$ addiert.
+    
+    Induktiv gibt es also eine natürliche Zahl $a \in \natural$ mit
+    $a \equiv n_i \mod b_i$ für $i = 0, \dotsc, k$.
+    Wegen $n_i \le b < b_i$ gilt $f(a, b, i) = a \mod b_i = n_i \mod b_i = n_i$.
+\end{Beweis}
+
+\linie
+
+\begin{Satz}{IMP-Programme arithmetisch darstellbar}
+    Sei $c \in \Cmd$ ein IMP-Programm.\\
+    Dann existiert ef"|fektiv (d.\,h. berechenbar) eine arithmetische Darstellung $F_c$ der
+    Funktion $\C(c)\colon \natural_0^k \rightarrow_p \natural_0^k$.
+    Diese hat die Form $F_c(\underline{X}, \underline{Y}) =
+    (\exists_T\; G_c(T, \underline{X}, \underline{Y}))$, wobei $G_c$ nur beschränkte Quantoren
+    der Form $\exists_{x \le T}$ und $\forall_{x \le T}$ enthält und
+    $G_c(T, \underline{X}, \underline{Y}) \Rightarrow
+    G_c(\widehat{T}, \underline{X}, \underline{Y})$
+    für alle $\widehat{T} \ge T$ und $\underline{X} = (x_1, \dotsc, x_k)$
+    und $\underline{Y} = (y_1, \dotsc, y_k)$.
+\end{Satz}
+
+\begin{Beweis}
+    Der Beweis erfolgt strukturell induktiv über den Aufbau von $c \in \Cmd$.
+    
+    Sei $F_\text{skip}(\underline{X}, \underline{Y}) := (\underline{X} = \underline{Y}) =
+    ((x_1 = y_1) \land \dotsb \land (x_k = y_k))$.
+    Für die gewünschte Form kann man dies ohne Probleme umschreiben zu
+    $(\exists_T\; \underline{X} = \underline{Y})$.
+    
+    Sei $F_{x_j := a}(\underline{X}, \underline{Y}) := ((x_j = a(\underline{X})) \land
+    (x_1 = y_1) \land \dotsb \land (x_{j-1} = y_{j-1}) \land (x_{j+1} = y_{j+1}) \land \dotsb \land
+    (x_k = y_k))$.\\
+    Auch hier kann man ohne Probleme $(\exists_T\; \cdots)$ schreiben, da keine
+    Quantoren vorkommen.
+    
+    Sei $F_{c_1; c_2}(\underline{X}, \underline{Y}) := (\exists_{\underline{Z}}\;
+    F_{c_1}(\underline{X}, \underline{Z}) \land F_{c_2}(\underline{Z}, \underline{Y}))$.
+    Hier muss man das umschreiben zu\\
+    $(\exists_T \exists_{\underline{Z} \le T}\; G_{c_1}(T, \underline{X}, \underline{Z}) \land
+    G_{c_2}(T, \underline{Z}, \underline{Y}))$, wobei $\underline{Z} \le T$ komponentenweise zu
+    lesen ist.
+    
+    Sei $F_{\text{if } b \text{ then } c_1 \text{ else } c_2 \text{ fi}}(\underline{X},
+    \underline{Y}) := ((b(\underline{X}) \Rightarrow F_{c_1}(\underline{X}, \underline{Y})) \land
+    (\lnot b(\underline{X}) \Rightarrow F_{c_2}(\underline{X}, \underline{Y})))$.
+    Hier muss man das ebenfalls umschreiben zu
+    $(\exists_T\; ((b(\underline{X}) \Rightarrow G_{c_1}(T, \underline{X}, \underline{Y})) \land
+    (\lnot b(\underline{X}) \Rightarrow G_{c_2}(T, \underline{X}, \underline{Y}))))$.
+    
+    Sei $\widetilde{F}_{\text{while } b \text{ do } c \text{ od}}(\underline{X}, \underline{Y}) :=
+    (\exists_t \exists_{\underline{n_0}} \dotsb \exists_{\underline{n_t}}
+    (\underline{n_0} = \underline{X}) \land (\lnot b(\underline{Y})) \land
+    (\forall_{i \le t - 1}\; F_c(\underline{n_i}, \underline{n_{i+1}}) \land b(\underline{n_i})))$.
+    Dies ist allerdings keine arithmetische Formel, da die Zahl der Quantoren variieren kann.
+    Um das zu beheben, bedient man sich des Gödelschen $\beta$-Prädikats, das zunächst durch
+    $\beta(\underline{a}, \underline{b}, i, \underline{n}) :=
+    \bigwedge_{j=1}^n \beta(a_j, b_j, i, n_j)$ auf Vektoren ausgeweitet wird.
+    Damit kann man das umschreiben zu\\
+    $F_{\text{while } b \text{ do } c \text{ od}}(\underline{X}, \underline{Y}) :=
+    (\exists_t \exists_{\underline{a}, \underline{b}}\;
+    \beta(\underline{a}, \underline{b}, 0, \underline{X}) \land
+    \beta(\underline{a}, \underline{b}, t, \underline{Y}) \land (\lnot b(\underline{Y})) \;\land$\\
+    $(\forall_{i \le t - 1} \exists_{\underline{m}, \underline{n}}\;
+    \beta(\underline{a}, \underline{b}, i, \underline{m}) \land
+    \beta(\underline{a}, \underline{b}, i + 1, \underline{n}) \land
+    F_c(\underline{m}, \underline{n}) \land b(\underline{m})))$.
+    Für die gewünschte Form muss man das umformen zu
+    $(\exists_T \exists_{t \le T} \exists_{\underline{a}, \underline{b} \le T}\;
+    \beta(\underline{a}, \underline{b}, 0, \underline{x}) \land
+    \beta(\underline{a}, \underline{b}, t, \underline{Y}) \land (\lnot b(\underline{Y})) \;\land$\\
+    $(\forall_{i \le T} \exists_{\underline{m}, \underline{n} \le T}\;
+    \beta(\underline{a}, \underline{b}, i, \underline{m}) \land
+    \beta(\underline{a}, \underline{b}, i + 1, \underline{n}) \land
+    G_c(\underline{m}, \underline{n}) \land b(\underline{m})))$.
+\end{Beweis}
+
+\linie
+\pagebreak
+
+\begin{Kor}
+    Eine Funktion $f\colon \natural_0^k \rightarrow_p \natural_0^\ell$ ist berechenbar genau dann,
+    wenn $f$ eine arithmetische Darstellung der Form
+    $\exists_T\; G(T, \underline{X}, \underline{Y})$ besitzt, wobei $G$ nur $T$-beschränkte
+    Quantoren benutzt.
+\end{Kor}
+
+\begin{Beweis}
+    Die eine Richtung des Beweises ist der obige Satz.
+    Für die andere Richtung kann man bei gegebenen $T$, $\underline{X}$ und $\underline{Y}$
+    den Wert $G(T, \underline{X}, \underline{Y})$ bestimmen.
+    Also berechnet folgendes Programm $f$:
+    $\text{for } (T, \underline{Y}) \in \natural_0^{k+1} \text{ do}
+    \text{ if } G(T, \underline{X}, \underline{Y}) \text{ then} \text{ return } \underline{Y}
+    \text{ fi} \text{ od}$.
+\end{Beweis}
+
+\linie
+
+\begin{Def}{formales Beweissystem}
+    Seien $\Sigma$ und $\Gamma$ zwei Alphabete.\\
+    Ein \begriff{formales Beweissystem} $(B, F)$ ist eine Menge $B \subset \Sigma^\ast$ zusammen
+    mit einer Abbildung $F\colon B \rightarrow \Gamma^\ast$, sodass $B$ entscheidbar und
+    $F$ berechenbar ist.\\
+    Für $a \in \Gamma^\ast$ schreibt man $\vdash a$, falls $\exists_{b \in B}\; F(b) = a$
+    (d.\,h. $a$ ist \begriff{herleitbar}).
+\end{Def}
+
+\begin{Bem}
+    Die Menge $B$ ist die Menge aller Beweise (über dem "`Beweisalphabet"' $\Sigma$).
+    Die "`Interpretationsfunktion"' $F$ weist jedem Beweis $b \in B$ die Formel
+    $F(b) \in \Gamma^\ast$ (über dem "`Formelalphabet"' $\Gamma$) zu, die $b$ beweist.
+    $F(B)$ sind sozusagen die "`beweisbaren Formeln"'.\\
+    Die Menge $A$ ist die "`Wahrheit"', d.\,h. die Menge aller wahren Formeln.\\
+    $\vdash a$ bedeutet, dass die Formel $a \in \Gamma^\ast$ beweisbar ist
+    (also $a \in F(B)$).
+\end{Bem}
+
+\begin{Def}{korrekt}
+    Ein formales Beweissystem $(B, F)$ heißt \begriff{korrekt} für $A \subset \Gamma^\ast$,
+    falls\\
+    $\forall_{b \in B}\; F(b) \in A$ (d.\,h. falls $F(B) \subset A$ gilt).
+\end{Def}
+
+\begin{Def}{vollständig}
+    Ein formales Beweissystem $(B, F)$ heißt \begriff{vollständig} für $A \subset \Gamma^\ast$,
+    falls\\
+    $\forall_{a \in A}\; \vdash a$ (d.\,h. falls $F(B) \supset A$ gilt).
+\end{Def}
+
+\begin{Satz}{\name{Gödel}scher Unvollständigkeitssatz}
+    Jedes formale Beweissystem ist inkorrekt oder unvollständig für
+    $\TAUT_\natural := \{F \;|\; F \text{ ist Tautologie der Arithmetik über } \natural
+    \text{ mit } +,\; -,\; \cdot\}$.
+\end{Satz}
+
+\begin{Beweis}
+    Sei $(B, F)$ ein formales Beweissystem, das korrekt und vollständig für $\TAUT_\natural$ ist.
+    Dann gilt $F(B) = \TAUT_\natural$.
+    Weil jedoch $F$ berechenbar und $B$ entscheidbar ist,
+    ist dann $\TAUT_\natural$ rekursiv aufzählbar, indem man alle $b \in B$ durchläuft und
+    $F(b)$ ausgibt.
+    Das geht allerdings nicht, wie wie folgt gezeigt wird.
+    
+    Wenn $\TAUT_\natural$ rekursiv aufzählbar wäre, wäre sie auch entscheidbar,
+    da für jede Formel $F$ entweder $F$ oder $\lnot F$ gilt
+    (Entscheidungsverfahren: zähle bei Eingabe $F$ die Menge
+    $\TAUT_\natural = \{F_0, F_1, \dotsc\}$ auf, bis für ein $i \in \natural_0$
+    $F = F_i$ oder $F = \lnot F_i$ gilt).\\
+    Sei $A$ eine rekursiv aufzählbare, aber unentscheidbare Sprache (z.\,B. $A = K, H, \dotsc$).
+    Da $A$ rekursiv-aufzählbar ist, ist die partielle Funktion $\chi_A'$ mit
+    $\chi_A'(n) = 1$ für $n \in A$ und $\chi_A'(n)$ undefiniert für $n \notin A$ berechenbar.
+    Turing-Berechenbarkeit stimmt mit IMP-Berechenbarkeit überein, sodass nach dem
+    vorherigen Satz eine arithmetische Darstellung $F(x, y)$ von $\chi_A'$ existiert.
+    Nun gilt $n \in A \iff \chi_A'(n) = 1 \iff F(n, 1) \text{ wahr} \iff
+    F(n, 1) \in \TAUT_\natural$, d.\,h. die berechenbare Abbildung $n \mapsto F(n, 1)$
+    ist eine Reduktion von $A$ auf $\TAUT_\natural$.
+    Wenn $\TAUT_\natural$ entscheidbar wäre, wäre damit auch $A$ entscheidbar, ein Widerspruch.
+    
+    Damit ist $\TAUT_\natural$ nicht entscheidbar und nach obiger Bemerkung auch nicht rekursiv
+    aufzählbar.
+\end{Beweis}
+
+\linie
+
+\begin{Kor}
+    Sowohl $\TAUT_\natural$ als auch $\overline{\TAUT_\natural}$ sind nicht rekursiv aufzählbar.
+\end{Kor}
+
+\begin{Bem}
+    Die Menge der Tautologien der Aussagenlogik ist entscheidbar ($\NP$-vollständig).\\
+    Die Menge der Tautologien der Prädikatenlogik 1. Stufe ist unentscheidbar, aber
+    rekursiv aufzählbar.\\
+    Die Menge der arithmetischen Tautologien (Fragment der Prädikatenlogik 2. Stufe)
+    ist weder rekursiv aufzählbar, noch ist ihr Komplement rekursiv aufzählbar.
+\end{Bem}
+
+\pagebreak

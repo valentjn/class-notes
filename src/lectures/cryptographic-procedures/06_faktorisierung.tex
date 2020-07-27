@@ -1,0 +1,375 @@
+\section{%
+    Faktorisierung%
+}
+
+\textbf{Faktorisierungsproblem}:
+Gegeben sei eine zusammengesetzte Zahl $n \in \natural$.\\
+Gesucht ist ein nicht-trivialer Teiler von $n$.
+
+Faktorisierung ist ein wichtiges Problem für die Kryptografie,
+weil z.\,B. das Knacken eines öf"|fentlichen RSA-Schlüssels genauso schwierig ist wie
+Faktorisierung.
+Ist ein nicht-trivialer Teiler von $n$ gefunden, so kann dieser herausgeteilt werden und so
+die komplette Primfaktorzerlegung von $n$ bestimmt werden.
+
+\textbf{naive Methode}:
+Bei der \begriff{Probedivision} probiert man alle Teiler bis $\sqrt{n}$ durch.
+
+\textbf{Laufzeiten}:
+Die Laufzeiten werden in Abhängigkeit der Länge $\log n$ der Zahl $n$ angegeben.
+\begin{itemize}
+    \item
+    \emph{Probedivison}:
+    $\O(\sqrt{2^{\log n}}) = \O(\sqrt{n})$
+    
+    \item
+    \emph{\name{Pollard}s $(p-1)$-Methode}:
+    $\O(\sqrt[3]{2^{\log n}}) = \O(\sqrt[3]{n})$
+    
+    \item
+    \emph{\name{Pollard}s $\varrho$-Methode}:
+    $\weakO(\sqrt[4]{2^{\log n}}) = \weakO(\sqrt[4]{n})$
+    
+    \item
+    \emph{quadratisches Sieb}:
+    $2^{\weakO(\sqrt{\log n})}$
+    
+    \item
+    \emph{Zahlkörpersieb}:
+    $2^{\weakO(\sqrt[3]{\log n})}$
+    (aber mit größerer Konstante als beim quadratischen Sieb)
+\end{itemize}
+Dabei sind die letzten beiden Methoden subexponentiell in der Länge $\log n$.
+
+\subsection{%
+    \name{Pollard}s \texorpdfstring{$(p-1)$}{(p-1)}-Methode%
+}
+
+\textbf{Motivation}:
+Angenommen, $n$ besitzt einen Primteiler $p \in \natural$, sodass $p - 1$ nur "`kleine"'
+Primteiler besitzt, d.\,h. alle Primteiler sind aus einer \begriff{Basis} $B \subset \PP$.
+Nach dem kleinen Satz von Fermat gilt $a^k \equiv_p 1$ für alle $a \in (\ZpZ)^\ast$ und
+$k \in \natural$ mit $(p - 1) \teilt k$.
+Somit teilt $p$ nicht nur $n$, sondern auch $a^k - 1$ und damit $\ggT(a^k - 1, n)$.
+Ist $\ggT(a^k - 1, n) < n$, so hat man einen nicht-trivialen Teiler von $n$ gefunden.
+
+\textbf{Problem}:
+$p$ ist nicht bekannt, daher kann kein Vielfaches $k$ von $p - 1$ bestimmt werden.
+
+\textbf{Lösung}:
+Wähle $k$, sodass $(p - 1) \teilt k$ für jeden Primteiler $p$ von $n$,
+für den gilt, dass $p - 1$ nur Primteiler aus der Basis $B$ besitzt.
+
+\linie
+
+\textbf{\name{Pollard}s $(p-1)$-Methode}:\\
+\begriff{\name{Pollard}s $(p-1)$-Methode} ist ein Faktorisierungsverfahren und verläuft wie folgt.
+\begin{enumerate}
+    \item
+    Wähle eine Basis $B \subset \PP$.
+    
+    \item
+    Berechne $k := \prod_{q \in B} q^{\lfloor \log_q n \rfloor}$.
+    
+    \item
+    Wähle $a \in (\ZnZ)^\ast$ zufällig und berechne $\ggT(a^k - 1, n)$.
+    
+    \item
+    Ist dies kein nicht-trivialer Teiler von $n$, dann versuche es erneut mit einem anderen
+    $a$ oder einer größeren Basis $B$.
+\end{enumerate}
+
+\linie
+
+\textbf{Problem}:
+Wenn kein Primteiler $p$ von $n$ die Eigenschaft hat, dass $p - 1$ nur kleine Primteiler besitzt,
+dann funktioniert das Verfahren nicht -- dafür ist das $B$ zu klein.
+Wird aber $B$ zu stark vergrößert, dann wird $k$ sehr groß und die Berechnung von
+$\ggT(a^k - 1, n)$ dauert zu lange.
+
+\textbf{Lösung}:
+Mit elliptischen Kurven gibt es für jedes $n$ viele Kurven
+(die Struktur von $(\ZnZ)^\ast$ ist fest).
+
+\pagebreak
+
+\subsection{%
+    \name{Pollard}s \texorpdfstring{$\varrho$}{ρ}-Methode%
+}
+
+\textbf{Geburtstagsparadoxon}:
+Sei $M$ eine endliche Menge mit $|M| =: n \in \natural$ und $k \in \natural$.
+Wählt man nun zufällig (gleichverteilt) eine Folge aus $M^k$,
+wie groß ist die Wahrscheinlichkeit, dass zwei
+gleiche Einträge in der Folge vorkommen?
+Dazu sei $E$ das Ereignis "`in der Folge kommen nur verschiedene Elemente vor"'.
+Dann gilt
+$|E| = n \cdot (n - 1) \cdot \dotsb \cdot (n - k + 1) = \prod_{i=0}^{k-1} (n-i) =:
+n^{\underline{k}}$
+(\begriff{fallende Faktorielle}).
+Für $x \in \real$ gilt $1 + x \le e^x$.
+Daher erhält man\\
+$\Pr(E) = \frac{n^{\underline{k}}}{n^k} = \prod_{i=1}^{k-1} (1 - \frac{i}{n})
+\le \prod_{i=1}^{k-1} \exp(-\frac{i}{n}) = \exp(-\sum_{i=1}^{k-1} \frac{i}{n})
+= \exp(-\frac{k(k-1)}{2n})$.
+Ist $k \ge \sqrt{2n} + 1$, so gilt
+$\Pr(E) \le \exp(-\frac{(k-1)^2}{2n}) \le \frac{1}{e} < \frac{1}{2}$.
+Wählt man also $k$ in der Größenordnung von $\sqrt{n}$, dann gilt
+$\Pr(\lnot E) \ge \frac{1}{2}$ und es ist wahrscheinlicher, dass die Folge zwei gleiche
+Elemente enthält als dass sie nur verschiedene Elemente enthält.
+
+\linie
+
+\textbf{Motivation}:
+Angenommen, $n$ besitzt einen Primteiler $p$.
+Die Idee von Pollards $\varrho$-Methode ist, dass jede Zufallssequenz in $\ZpZ$ im Durchschnitt
+nach $\sqrt{p}$-vielen Folgengliedern zwei gleiche Elemente enthält
+(wie beim Geburtstagsparadoxon).
+Zur Erstellung einer solchen Folge wählt man eine Abb. $f\colon \ZpZ \rightarrow \ZpZ$
+und berechnet die Pseudozufallsfolge
+$x_0, f(x_0), f^2(x_0), \dotsc$ für einen Startwert $x_0 \in \ZpZ$
+(\begriff{$f$-Folge}).
+Üblicherweise verwendet man $f\colon \ZpZ \rightarrow \ZpZ$,
+$f(x) := (x^2 + a) \bmod p$ mit $a \in \ZpZ$, wobei $a \not\equiv_p 0$, $a \not\equiv_p -1$,
+$a \not\equiv_p -2$
+(z.\,B. $a = 1$).
+
+Weil man allerdings $p$ nicht kennt, verwendet man Abbildungen $F\colon \ZnZ \rightarrow \ZnZ$
+und berechnet $x_0, F(x_0), F^2(x_0), \dotsc$ (\begriff{$F$-Folge}),
+wobei $f(x) := F(x) \bmod p$.
+Üblicherweise benutzt man $F(x) := (x^2 + a) \bmod n$ wie eben, z.\,B. mit $a = 1$.
+
+Gesucht sind zwei Indizes $i \not= j$, sodass die Folgenglieder in der $f$-Folge übereinstimmen,
+in der $F$-Folge jedoch nicht,
+d.\,h. $x_i \equiv_p x_j$ und $x_i \not\equiv_n x_j$ mit $x_i := F^i(x_0)$.
+In diesem Fall gilt $p \teilt (x_i - x_j)$, aber $n \notteilt (x_i - x_j)$,
+d.\,h. $\ggT(x_i - x_j, n)$ ist ein nicht-trivialer Teiler von $n$.
+
+%Allerdings ist $p$ ja unbekannt (man weiß nicht, ob $x_i \equiv_p x_j$ gilt).
+%Daher wird diese Bedingung nicht überprüft, sondern direkt $\ggT(x_i - x_j, n)$
+%berechnet.
+%Nach der Argumentation von eben ist $\ggT(x_i - x_j, n)$ ist ein nicht-trivialer Teiler von $n$,
+%falls $x_i \equiv_p x_j$ für irgendeinen Primteiler $p$ von $n$.
+
+Das Problem dabei ist, dass alle $x_i$ gespeichert werden müssen.
+Dafür nutzt man aus, dass aus
+$\exists_{k \in \natural} \exists_{i \in \natural}\; x_i \equiv_p x_{i+k}$ folgt,
+dass $\exists_{j \in \natural}\; x_j \equiv_p x_{2j}$.\\
+(Aus $x_i \equiv_p x_{i+k}$ folgt $x_{i'} \equiv_p x_{i'+k}$ für alle $i' \ge i$,
+da $x_{i'+k} \equiv_p F^{i'-i}(x_{i+k}) \equiv_p F^{i'-i}(x_i) \equiv_p x_{i'}$.\\
+Für $j := ik$ ist damit
+$x_{2j} = x_{2ik} = x_{(2i-1)k} \equiv_p \dotsb \equiv_p x_{ik} = x_j$.)\\
+Daher berechnet man zusätzlich zu $x_i$ die Folge $y_i := F^{2i}(x_0) \bmod n$
+und überprüft bloß Kollisionen zwischen der $x_i$- und der $y_i$-Folge,
+d.\,h. man berechnet $\ggT(y_i - x_i, n)$ und überprüft, ob dies ein nicht-trivialer Teiler von $n$
+ist.
+
+\linie
+
+\textbf{\name{Pollard}s $\varrho$-Methode}:\\
+\begriff{\name{Pollard}s $\varrho$-Methode} ist ein Faktorisierungsverfahren und verläuft wie
+folgt.
+\begin{enumerate}
+    \item
+    Wähle $x_0 \in \ZnZ$, $F\colon \ZnZ \rightarrow \ZnZ$
+    und setze $i := 1$, $y_0 := x_0$.
+    
+    \item
+    Berechne $x_i := F(x_{i-1})$ und $y_i := F(F(y_{i-1}))$.
+    
+    \item
+    Berechne $d := \ggT(y_i - x_i, n)$ und überprüfe, ob $1 < d < n$.
+    \begin{itemize}
+        \item
+        Falls ja, so ist $d$ ein nicht-trivialer Teiler von $n$.
+        
+        \item
+        Falls nein, erhöhe $i$ um $1$ und gehe zu \emph{(2)}.
+    \end{itemize}
+\end{enumerate}
+
+\linie
+
+\textbf{Laufzeit}:
+Nach obiger Motivation ist $d = \ggT(y_i - x_i, n)$ ein nicht-trivialer Teiler von $n$, wenn
+$x_i \equiv_p y_i = x_{2i}$, aber $x_i \not\equiv_n y_i = x_{2i}$ mit einem Primteiler $p$ von $n$.
+Weil ein solcher Zyklus im Mittel nach $\sqrt{p}$ Schritten auftaucht,
+ist die erwartete Laufzeit $\O(\sqrt{p})$ mit $p$ dem größten Primteiler von $n$.
+Allerdings kann $p \in \Theta(\sqrt{n})$ sein (z.\,B. $143 = 11 \cdot 13$), d.\,h.
+die erwartete Laufzeit ist $\O(\sqrt[4]{n})$.
+
+Pollards $\varrho$-Methode arbeitet besonders schnell, wenn $n$ nur kleine Primteiler besitzt
+(diese aber durchaus in hohen Potenzen).
+
+\pagebreak
+
+\subsection{%
+    Quadratisches Sieb%
+}
+
+\textbf{Lemma}:
+Sei $n \in \natural$ und $x, y \in \integer$ mit $x^2 \equiv_n y^2$, aber $x \not\equiv_n \pm y$.
+Dann gilt $1 < \ggT(x \pm y, n) < n$.
+
+\begin{Beweis}
+    Es gilt $x^2 - y^2 = (x + y)(x - y) \equiv_n 0$, d.\,h. $n \teilt (x + y)(x - y)$.\\
+    Wäre $\ggT(x \pm y, n) = n$, dann wäre $x \pm y \equiv_n 0$,
+    ein Widerspruch zu $x \not\equiv_n \mp y$.\\
+    Wäre $\ggT(x \pm y, n) = 1$, dann wäre $n \teilt (x \mp y)$
+    (da $n \teilt (x + y)(x - y)$), d.\,h. $x \mp y \equiv_n 0$,
+    ein Widerspruch wie eben.
+\end{Beweis}
+
+\textbf{Idee}:
+Die Idee des quadratischen Siebs ist es daher, Zahlen $x, y \in \integer$ mit
+$x \not\equiv_n \pm y$ zu finden, sodass $x^2 \equiv_n y^2$
+(d.\,h. $x^2 - y^2$ ist ein Vielfaches von $n$).
+
+\textbf{Faktorbasis}:\\
+Eine Menge $B \subset \natural \cup \{-1\}$ heißt \begriff{Faktorbasis}, falls
+$\exists_{B_0 \in \natural}\; B = \{-1\} \cup \{p \in \PP \;|\; p \le B_0\}$.
+
+\textbf{$B$-glatt}:
+Seien $B$ eine Faktorbasis und $s \in \integer$.\\
+Dann heißt $s$ \begriff{$B$-glatt}, falls $\forall_{p \in B} \exists_{e_p(s) \in \natural_0}\;
+s = \prod_{p \in B} p^{e_p(s)}$.
+
+\textbf{Schema}:
+Das \begriff{quadratische Sieb} ist ein Faktorisierungsverfahren und verläuft wie folgt.
+\begin{enumerate}
+    \item
+    Wähle eine Faktorbasis $B$.
+    
+    \item
+    Finde genügend viele Zahlen $z \in \integer$ mit $g(z) := z^2 \bmod n$ $B$-glatt.
+    
+    \item
+    Wähle eine Teilmenge der $z$, sodass das Produkt $r$ der $g(z)$ nur gerade Exponenten bzgl.
+    Faktoren aus $B$ enthält.
+    
+    \item
+    Definiere $x$ als das Produkt der $z$ und
+    $y$ als das Produkt der $g(z)$, nur jeweils mit halbierten Exponenten.
+    Dann gilt $x^2 \equiv_n r = y^2$ und man erhält eine Faktorisierung von $n$
+    (falls $x \not\equiv_n \pm y$).
+\end{enumerate}
+
+\linie
+
+\textbf{zu Schritt \emph{(1)}}:
+\emph{"`wüste"' Zahlentheorie}
+
+\linie
+
+\textbf{zu Schritt \emph{(2)}}:
+\emph{Sieben}
+
+Das Verfahren des quadratischen Siebs beschleunigt die Suche nach den Zahlen $z \in \integer$ mit
+$g(z) = z^2 \bmod n$ $B$-glatt, indem $z$ in der Nähe von $\sqrt{n}$ gesucht wird.
+Man definiert daher $f(x) := (x + m)^2 - n$ mit $m := \left\lfloor\sqrt{n}\right\rfloor$.
+Damit erhält man für betragsmäßig kleine $x$ Werte von $z$ in der Nähe von $\sqrt{n}$,
+außerdem bleibt $f(x)$ dann betragsmäßig klein
+(d.\,h. die $B$-Glattheit von $f(x)$ ist leichter zu untersuchen).
+
+Die Ermittlung von Zahlen $x$ mit $f(x)$ $B$-glatt verläuft wie folgt:
+\begin{enumerate}
+    \item
+    Wähle ein \begriff{Sieb} $S := \{-c, \dotsc, c\}$ mit $c \in \natural$.
+    
+    \item
+    Berechne $f(s) := (s + m)^2 - n$ mit $m := \left\lfloor\sqrt{n}\right\rfloor$
+    für alle $s \in S$.
+    
+    \item
+    Für jede Primzahl $p \in B \setminus \{-1\}$ wiederhole:
+    \begin{enumerate}
+        \item
+        Berechne die (maximal zwei) Nullstellen $s_{1,p}, s_{2,p} \in \FF_p$ von
+        $(X + m)^2 - n \in \FF_p[X]$.
+        
+        \item
+        Für $s \in S$ gilt $p \teilt f(s) \iff s \in \{s_{1,p}, s_{2,p}\} + p\integer$.
+        Ermittle daher für jedes $s \in S \cap (\{s_{1,p}, s_{2,p}\} + p\integer)$ den maximalen
+        Exponenten $e_p(f(s)) \in \natural$ von $f(s)$ bzgl. des Faktors $p$
+        und teile ihn in einer anderen Variable heraus.
+    \end{enumerate}
+    
+    \item
+    Die $s \in S$ mit $f(s)$ $B$-glatt sind genau die $s \in S$, bei denen $\pm 1$ in der
+    anderen Variable übrig bleibt.
+\end{enumerate}
+(Es gilt $p \teilt f(s) \iff f(s) \equiv_p 0 \iff (s \equiv_p s_{1,p}) \lor (s \equiv_p s_{2,p})
+\iff s \in \{s_{1,p}, s_{2,p}\} + p\integer$.)
+
+\linie
+\pagebreak
+
+\textbf{zu Schritt \emph{(3)}}:
+\emph{Lösung eines LGS}
+
+Sei $S = \{-c, \dotsc, c\}$ das eben benutzte Sieb und
+$S' := \{s \in S \;|\; f(s) \text{ $B$-glatt}\}$.
+Um eine nicht-leere Teilmenge $I \subset S'$ mit
+$\forall_{p \in B}\; [\sum_{s \in I} e_p(f(s)) \text{ gerade}]$
+zu erhalten, betrachtet man ein LGS über $\FF_2$.
+Für jedes $p \in B$ erhält man eine Gleichung
+$\sum_{s \in S'} e_p(f(s)) \cdot \lambda_s \equiv_2 0$ des LGS
+mit $\lambda_s \in \FF_2 = \{0, 1\}$.
+Hat man eine nicht-triviale Lösung $(\lambda_s)_{s \in S'}$ berechnet, so erfüllt
+$I := \{s \in S' \;|\; \lambda_s \equiv_2 1\}$ die gewünschte Eigenschaft.
+
+Das LGS hat $|B|$ Gleichungen und $|S'|$ Unbekannte.
+Es muss also $|B| < |S'|$ gelten, damit eine nicht-triviale Lösung auf jeden Fall existiert,
+d.\,h. man benötigt auf jeden Fall mehr als $|B|$-viele $B$-glatte Zahlen.
+(Normalerweise ist $|B| \ll |S|$.)
+
+Ist $|B|$ klein, so benötigt man also nur wenige $B$-glatte Zahlen.
+Dann braucht man allerdings ein großes Sieb, da sich nur wenige Zahlen mit kleinen Primfaktoren
+faktorisieren lassen.
+Wenn $|B|$ dagegen groß ist, findet man zwar leichte $B$-glatte Zahlen
+(d.\,h. mit kleineren Sieben), aber wegen der unteren
+Schranke im LGS braucht man viele davon.
+
+\linie
+
+\textbf{zu Schritt \emph{(4)}}:
+\emph{Wahl von $x$ und $y$}
+
+Wähle nun $x := (\prod_{s \in I} (s + m)) \bmod n$,
+$y := \prod_{p \in B} p^{(\sum_{s \in I} e_p(f(s)))/2}$ und
+$r := \prod_{s \in I} f(s)$.\\
+Dann gilt $x^2 \equiv_n r = y^2$ und im Fall $x \not\equiv_n \pm y$
+sind nicht-triviale Teiler von $n$ gefunden.
+
+\linie
+
+
+\textbf{Beispiel}:
+$n = 7429$, $m = 86$, $c = 3$, $B = \{-1, 2, 3, 5, 7\}$
+
+\begin{center}\begin{tabular}{p{20mm}*{7}{>{\centering\arraybackslash}m{10mm}}}
+    \toprule
+    $s$ & $-3$ & $-2$ & $-1$ & $0$ & $1$ & $2$ & $3$\\
+    $f(s)$ & $-540$ & $-373$ & $-204$ & $-33$ & $140$ & $315$ & $492$\\
+    
+    \midrule
+    \emph{$2$ sieben} & $-135$ & & $-51$ & & $35$ & & $123$\\
+    \emph{$3$ sieben} & $-5$ & & $-17$ & $-11$ & & $35$ & $41$\\
+    \emph{$5$ sieben} & $-1$ & & & & $7$ & $7$ &\\
+    \emph{$7$ sieben} & & & & & $1$ & $1$ &\\
+    
+    \midrule
+    \emph{Ergebnis} & \textbf{$-1$} & $-373$ & $-17$ & $-11$ & \textbf{$1$} & \textbf{$1$} & $41$\\
+    
+    \bottomrule
+\end{tabular}\end{center}
+
+Es gilt daher $S' = \{-3, 1, 2\}$.
+Wählt man $I = \{1, 2\}$, dann gilt wegen $f(1) = 140 = 2^2 \cdot 5 \cdot 7$ und
+$f(2) = 315 = 3^2 \cdot 5 \cdot 7$, dass
+$x := (1 + 86)(2 + 86) \equiv 227 \pmod{7429}$ und
+$y := 2 \cdot 3 \cdot 5 \cdot 7 = 210$,
+d.\,h. $x^2 \equiv 2^2 \cdot 3^2 \cdot 5^2 \cdot 7^2 = y^2 \pmod{7429}$ und
+$\ggT(227 - 210, 7429) = 17$.
+
+\pagebreak

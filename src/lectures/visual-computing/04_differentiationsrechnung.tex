@@ -1,0 +1,386 @@
+\section{%
+    Dif"|ferentiationsrechnung%
+}
+
+\subsection{%
+    Funktionen einer Variablen%
+}
+
+\textbf{univariate Ableitung}:
+Sei $f\colon I \to \real$ mit $I \subset \real$ of"|fen.
+Dann heißt $f$ \begriff{dif"|ferenzierbar} in $x_0 \in I$, falls
+$f'(x_0) := \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} =
+\lim_{h \to 0} \frac{f(x_0 + h) - f(x)}{h}$ 
+existiert.\\
+Ist $f$ in allen $x_0 \in I$ dif"|ferenzierbar und $f'\colon I \to \real$ stetig, dann schreibt
+man $f \in \C^1(I)$.
+
+\textbf{Ableitungsregeln}:
+Für $f, g \in \C^1(I)$ und $\alpha, \beta \in \real$ gilt
+$(\alpha f + \beta g)' = \alpha f' + \beta g'$,
+$(fg)' = f'g + fg'$,
+$(\frac{f}{g})' = \frac{f'g - fg'}{g^2}$,
+$\frac{\d}{\dt} f(x(t)) = \frac{\d}{\dx} f(x(t)) x'(t)$,
+$\lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)}$
+für\\
+$\lim_{x \to a} f(x) = 0 = \lim_{x \to a} g(x)$ und $g'(x) \not= 0$ sowie
+$(f^{-1})'(y) = \frac{1}{f'(x)}$ mit $x := f^{-1}(y)$.
+
+\subsection{%
+    Funktionen mehrerer Variablen%
+}
+
+\textbf{Stetigkeit in mehreren Variablen}:
+Sei $f\colon D \to \real$ mit $D \subset \real^2$ of"|fen.
+$f$ heißt \begriff{stetig}, falls $f(\vec*{a}{n}) \to f(\vec{a})$
+für alle Folgen $(\vec*{a}{n})_{n \in \natural}$ mit $\vec*{a}{n} \to \vec{a}$.
+
+\textbf{partielle Ableitung}:
+$f$ ist \begriff{partiell in $x$-Richtung dif"|ferenzierbar} in
+$\vec{a} = (a, b) \in D$, falls
+$\partial_x f(a, b) := \lim_{x \to a} \frac{f(x, b) - f(a, b)}{x - a}$ existiert
+(analog $y$-Richtung).
+$f$ ist \begriff{partiell dif"|ferenzierbar}, falls $f$ partiell diffb.
+in $x$- und $y$-Richtung ist.
+Die Vektoren $\vec{v} := (1, 0, \partial_x f(a, b))^\tp$ und\\
+$\vec{w} := (0, 1, \partial_y f(a, b))^\tp$ spannen die Tangentialebene an $z = f(x, y)$ in
+$(a, b)$ auf.
+Nicht jede partiell diffb. Funktion ist stetig
+(z.\,B. $f(x, y) = \frac{xy}{x^2 + y^2}$ für $(x, y) \not= (0, 0)$ und $f(0, 0) := 0$).\\
+Man schreibt $f \in \C^k(D)$, falls $f$ $k$-fach stetig partiell diffb. ist.
+Die Reihenfolge der partiellen Ableitungen der Ordnung $\le k$ ist dann unerheblich
+(\begriff{Satz von \name{Schwarz}}).
+
+\linie
+
+\textbf{totale Ableitung}:
+$f$ ist \begriff{total dif"|ferenzierbar} in $(a, b) \in D$, falls eine lineare Abb.
+$A\colon \real^2 \to \real$ und ein Restterm $R(x, y; a, b)$ existiert mit
+$f(x, y) = f(a, b) + A (x - a, y - b)^\tp + R(x, y; a, b)$, wobei
+$\lim_{(x, y) \to (a, b)} \frac{R(x, y; a, b)}{\sqrt{(x - a)^2 + (y - b)^2}} = 0$.
+Man schreibt $\D f(a, b) := f'(a, b) := A$.\\
+Wenn $f$ total diffb. ist, dann auch partiell.\\
+Wenn alle partiellen Ableitungen existieren und stetig sind, dann ist $f$ total diffb.\\
+Die zu $\D f(x, y)$ entsprechende Matrix $(\partial_x f(x, y), \partial_y f(x, y))$
+heißt auch \begriff{\name{Jacobi}-Matrix}.\\
+Ist $f$ total diffb. und $\phi, \psi\colon I \to \real$ diffb., dann
+ist $F\colon I \to \real$ mit $F(t) := f(\phi(t), \psi(t))$ ebenfalls diffb. mit
+$F'(t) = \partial_x f(\phi(t), \psi(t)) \phi'(t) + \partial_y f(\phi(t), \psi(t)) \psi'(t)$.
+
+\linie
+
+\textbf{Richtungsableitung}:
+$f$ ist \begriff{dif"|ferenzierbar in Richtung $u$} für $\vec{u} \in \real^2$ mit $|\vec{u}| = 1$,
+falls
+$\partial_{\vec{u}} f(\vec{x}) := \lim_{h \to 0} \frac{f(\vec{x} + h\vec{u}) - f(\vec{x})}{h}$
+existiert.
+Es gilt $\partial_{\vec{u}} f(\vec{x})
+= \left.\frac{\d}{\dt} f(\vec{x} + t\vec{u})\right|_{t=0}$\\
+$= \partial_x f(\vec{x}) u_x + \partial_y f(\vec{x}) u_y
+= (\vec{\nabla} f(\vec{x}))^\tp \cdot \vec{u}$
+mit $\vec{\nabla} := (\partial_x, \partial_y)^\tp$.\\
+Partielle Ableitungen sind spezielle Richtungsableitungen.
+
+\linie
+
+\textbf{Isolinie}:
+Sei $f$ stetig diffb. und $f'(\vec{x}) \not= \vec{0}$.
+Dann heißt $N_c := f^{-1}(c)$ \begriff{Isolinie} von $f$ zum Wert $c \in \real$.
+Ist $\vec*{\gamma}{c}(t)$ eine Parametrisierung von $N_c$, so gilt
+$0 = \left.\frac{\d}{\dt} f(\vec*{\gamma}{c}(t))\right|_{t=0}
+= \D f(\vec*{\gamma}{c}(0)) \cdot \vec*{\gamma}{c}'(0)$\\
+$= \partial_{\vec{u}} f(\vec{x})$
+mit $\vec{u} := \vec*{\gamma}{c}'(0)$ und $\vec{x} := \vec*{\gamma}{c}(0)$,
+d.\,h. $\vec{\nabla} f$ steht senkrecht auf Isolinien.
+
+\linie
+
+\textbf{\name{Taylor}-Entwicklung}:
+Sei $f \in \C^2(D)$ mit $D \subset \real^2$ of"|fen.\\
+Dann ist $f(x + h, y + k) = f(x, y) + \vec{\nabla} f(x, y) \smallpmatrix{h\\k} +
+\frac{1}{2} \smallpmatrix{h\\k}^\tp H_f(x, y) \smallpmatrix{h\\k} +
+\O(\norm{\smallpmatrix{h\\k}}^3)$ mit\\
+$H_f(x, y) := \smallpmatrix{\partial_x^2 f(x, y) & \partial_y \partial_x f(x, y) \\
+\partial_x \partial_y f(x, y) & \partial_y^2 f(x, y)}$ der \begriff{\name{Hesse}-Matrix}
+(symmetrisch für $f \in \C^2(D)$).
+
+\pagebreak
+
+\subsection{%
+    Kritische Punkte und lokale Extrema%
+}
+
+\textbf{lokales Maximum/Minimum}:
+Sei $f\colon D \to \real$ glatt mit $D \subset \real^2$.\\
+$f$ hat ein \begriff{lokales Maximum bzw. Minimum} in $\vec{a} \in D$, falls
+$f(\vec{x}) \le f(\vec{a})$ bzw. $f(\vec{x}) \ge f(\vec{a})$ für alle $\vec{x}$ in einer
+kleinen Umgebung um $\vec{a}$.\\
+Eine notwendige Bedingung für lokale Extrempunkte ist $\vec{\nabla} f(\vec{a}) = \vec{0}$.
+
+\textbf{kritischer Punkt}:
+$\vec{a} \in D$ heißt \begriff{kritischer Punkt} (oder \begriff{stationär}), falls
+$\vec{\nabla} f(\vec{a}) = \vec{0}$.
+
+\textbf{hinreichende Bedingungen}:
+Sei $\vec{a} \in D$ ein kritischer Punkt von $f$.\\
+$f$ hat ein isoliertes lokales Minimum in $\vec{a}$, wenn $\det H_f(\vec{a}) > 0$ und
+$\partial_x^2 f(\vec{a}) > 0$ ($H_f(\vec{a})$ p.d.).\\
+$f$ hat ein isoliertes lokales Maximum in $\vec{a}$, wenn $\det H_f(\vec{a}) > 0$ und
+$\partial_x^2 f(\vec{a}) < 0$ ($H_f(\vec{a})$ n.d.).\\
+$f$ hat einen Sattelpunkt in $\vec{a}$, wenn $\det H_f(\vec{a}) < 0$ ($H_f(\vec{a})$ indefinit).\\
+Wenn $\det H_f(\vec{a}) = 0$ gilt, dann gibt die Hesse-Matrix keine Aussage über Extrempunkte,
+stattdessen muss man $f$ auf Geraden betrachten, also $g(\lambda) := f(\vec{a} + \lambda \vec{v})$
+für ein $\vec{v} \in \real^2$.
+
+\linie
+
+\textbf{Näherung durch quadratische Fläche in kritischem Punkt}:
+Sei $\vec{a} \in D$ ein kritischer Punkt von $f$.
+Verschiebt man den Graphen von $f$ um $-\vec{a}$ und $-f(\vec{a})$
+(d.\,h. man betrachtet $\widetilde{f}(\vec{x}) := f(\vec{x} + \vec{a}) - f(\vec{a})$),
+so kann der Graph in einer Umgebung des Ursprungs durch die quadratische Fläche
+$g(x, y) := \smallpmatrix{x\\y}^\tp H_f(\vec{a}) \smallpmatrix{x\\y}
+= \alpha x^2 + 2\beta xy + \gamma y^2$
+approximiert werden.
+Ihr Typ hängt von den Eigenwerten von $H_f(\vec{a})$ ab:
+$\vec{a}$ heißt
+\begin{itemize}
+    \item
+    \begriff{elliptisch}, falls $H_f(\vec{a})$ positiv oder negativ definit ist,
+    
+    \item
+    \begriff{hyperbolisch}, falls $H_f(\vec{a})$ indefinit ist,
+    
+    \item
+    \begriff{parabolisch}, falls $H_f(\vec{a})$ Rang $1$ besitzt,
+    
+    \item
+    \begriff{Nabelpunkt}, falls $\exists_{\lambda \in \real}\; H_f(\vec{a}) = \lambda I$,
+    
+    \item
+    \begriff{echter Nabelpunkt}, falls
+    $\exists_{\lambda \in \real \setminus \{0\}}\; H_f(\vec{a}) = \lambda I$, und
+    
+    \item
+    \begriff{flacher Punkt}, falls $H_f(\vec{a}) = 0$.
+\end{itemize}
+
+\subsection{%
+    Numerische Ableitungen%
+}
+
+\textbf{numerische Ableitung}:
+Die \begriff{numerische Ableitung} einer Funktion $f\colon \real \to \real$ ist für $h > 0$ durch
+$\widetilde{f}'(x) := \frac{f(x + h) - f(x)}{h}$ gegeben.
+Es gilt $f'(x) = \widetilde{f}'(x) + \O(h)$.\\
+Die beste Approximation erreicht man, wenn der Methodenfehler dieselbe Größe wie der Rundungsfehler
+hat, d.\,h. wenn $h \approx \frac{\eps}{h}$, für $\eps = 10^{-16}$ also bei $h \approx 10^{-8}$.
+
+\textbf{zentraler Dif"|ferenzenquotient}:
+Durch Abzug der Taylor-Entwicklungen für $f(x + h)$ und $f(x - h)$ in $x$
+bis zur Ordnung $2$ (mit $h > 0$) bekommt man mit dem \begriff{zentralen Dif"|ferenzenquo"-tienten}
+$f'(x) = \frac{f(x + h) - f(x - h)}{2h} + \O(h^2)$
+eine bessere Approximation für größeres $h$,
+da\\ $h^2 \approx \frac{\eps}{h} \iff h \approx 10^{-5}$.
+
+\linie
+
+\textbf{numerische Ableitungen höherer Ordnung}:
+Mit höheren Taylor-Entwicklungen erhält man
+$f''(x) = \frac{f(x + h) - 2f(x) + f(x - h)}{h^2} + \O(h^2)$
+(zähle $f(x + h)$ und $f(x - h)$ bis zur Ordnung $2$ zusammen) sowie
+$f'''(x) = \frac{f(x + 2h) - f(x - 2h) - 2f(x + h) + 2f(x - h)}{2h^3} + \O(h^2)$\\
+(Herleitung mit $(f(x+2h)-f(x-2h))-2(f(x+h)-f(x-h))$ bis zur Ordnung $4$).\\
+Ist $f$ multivariat, so gilt
+$\frac{\partial^2}{\partial x^2} f(a, b) \approx \frac{f(a+h, b) - 2f(a, b) + f(a-h, b)}{h^2}$
+sowie\\
+$\frac{\partial^2}{\partial x \partial y} f(a, b) \approx
+\frac{f(a+h_1, b+h_2) - f(a+h_1, b-h_2) - f(a-h_1, b+h_2) + f(a-h_1, b-h_2)}{4h_1h_2}$.
+
+\pagebreak
+
+\subsection{%
+    Kantenerkennung%
+}
+
+\textbf{Graustufenbild}:
+Ein \begriff{Graustufenbild} ist eine Abbildung $f\colon \Omega \to [0, 1]$ mit
+einem regelmäßigen Gitter $\Omega \subset \real^2$.
+
+\textbf{Farb- zu Graustufenbild}:
+Ein Farbbild kann in Graustufen mittels der \begriff{Luminanz-Gleichung}
+$L := 0.299R + 0.587G + 0.114B$ umgewandelt werden,
+wobei $R, G, B \in [0, 1]$.
+
+\linie
+
+\textbf{Kantenerkennung}:
+Seien $w, h$ die Breite/Höhe des Graustufenbilds $(L_{i,j})_{i,j=1}^{w,h}$.
+Berechne die numerischen partiellen Ableitungen
+$(\Delta L/\Delta x)_{i,j} := \frac{L_{i+1,j} - L_{i-1,j}}{2}$ und
+$(\Delta L/\Delta y)_{i,j} := \frac{L_{i,j+1} - L_{i,j-1}}{2}$
+für $i = 2, \dotsc, w - 1$ und $j = 2, \dotsc, h - 1$.
+(Durch komponentenweise Addition von $0.5$ lassen sich $\Delta L/\Delta x$ und $\Delta L/\Delta y$
+als Graustufenbilder visualisieren.)\\
+Indem man die Norm
+$G_{i,j} := \sqrt{(\Delta L/\Delta x)_{i,j}^2 + (\Delta L/\Delta y)_{i,j}^2}$
+des Gradienten in jedem Punkt berechnet, kann man die Kanten visualisieren.
+Durch Betrachtung des Winkels\\
+$\varphi_{i,j} := \mathrm{atan2}(\Delta L/\Delta y, \Delta L/\Delta x)$
+sieht man, in welche Richtung die Kanten verlaufen.
+
+\subsection{%
+    Geländeschattierung%
+}
+
+\textbf{Geländeschattierung}:
+Gegeben sei ein Höhenfeld $h\colon \Omega \to \real$ auf einem regelmäßigen Gitter
+$\Omega \subset \real^2$.
+Durch Darstellung des Höhenfelds mit $h(x, y)$ im Punkt $(x, y)$ als Grauwert
+(entsprechend in $[0, 1]$ normiert) erkennt man kaum feine Strukturen.
+Als Abhilfe berechnet man das Normalenfeld
+$\vec{n}(x, y) := (1, 0, \partial_x h)^\tp \times (0, 1, \partial_y h)^\tp$
+und geht von einer \begriff{\name{Lambert}-Fläche} aus,
+d.\,h. man nimmt an, dass die Fläche gleich hell erscheint, egal, von welchem Winkel aus
+man sie betrachtet.
+Die Helligkeit hängt damit nur noch vom Einfallswinkel $\theta$ ab
+und wird für die Lichtrichtung $-\vec{l}$ auf
+$\cos\theta := \frac{\vec{n}^\tp \vec{l}}{|\vec{n}| |\vec{l}|}$ gesetzt.
+
+\subsection{%
+    Volumendarstellung mit Isoflächen%
+}
+
+\textbf{Volumendarstellung mit Isoflächen}:
+Gegeben sei ein Skalarfeld $f\colon \Omega \to \real$ auf einem regelmäßigen Gitter
+$\Omega \subset \real^3$.
+Eine Möglichkeit, $f$ zu visualisieren, besteht darin,
+die Isoflächen $N_c := f^{-1}(c)$ für $c \in \real$ zu plotten.
+Dazu geht man wie folgt vor:
+\begin{enumerate}
+    \item
+    Erstelle einen Lichtstrahl für jedes Bildpixel einer künstlichen Bildebene,
+    der vom Beobachter durch den Bildpixel läuft.
+    
+    \item
+    Folge dem Lichtstrahl, bis sich in einem Punkt $\vec{p} \in \real^3$
+    das Vorzeichen von $f(x, y, z) - c$ ändert.
+    
+    \item
+    Bestimme den normierten Gradienten
+    $\vec{n} := \frac{\vec{\nabla} f(\vec{p})}{|\vec{\nabla} f(\vec{p})|}$.
+    
+    \item
+    Setze die Helligkeit in $\vec{p}$
+    auf $\cos \theta := \frac{\vec{n}^\tp \vec{l}}{|\vec{n}| |\vec{l}|}$
+    für die Lichtrichtung $-\vec{l}$.
+\end{enumerate}
+
+\pagebreak
+
+\subsection{%
+    Vektorfelder%
+}
+
+\textbf{Vektorfeld}:
+Ein \begriff{Vektorfeld} ist eine Abbildung $\vec{f}\colon D \to \real^m$ mit
+$D \subset \real^n$ of"|fen.
+Die Definitionen von Stetigkeit sowie partieller und totaler Dif"|ferenzierbarkeit
+übertragen sich komponentenweise von den $f_i$ auf $\vec{f}$.
+Durch Linearisierung erhält man
+$\vec{f}(\vec{x}) = \vec{f}(\vec{a}) + \D\vec{f}(\vec{a}) \cdot (\vec{x} - \vec{a}) +
+\vec{R}(\vec{x}; \vec{a})$
+mit der \begriff{\name{Jacobi}-Matrix} $\D\vec{f}(\vec{a}) := (\partial_{x_j} f_i)_{i,j=1}^{m,n}$
+und $\lim_{\vec{x} \to \vec{a}} \frac{|\vec{R}(\vec{x}; \vec{a})|}{|\vec{x} - \vec{a}|} = 0$.
+
+\linie
+
+\textbf{Transformation}:
+Ein Vektorfeld $\vec{f}\colon D \to \real^m$ auf einem Gebiet $D \subset \real^n$ heißt
+\begriff{Transformation}, falls
+$\vec{f} \in \C^1(D)$,
+$\vec{f}$ injektiv,
+$\vec{f}^{-1}\colon \vec{f}(D) \to D$ stetig diffb. und
+$\forall_{\vec{x} \in D}\; \det \D\vec{f}(\vec{x}) > 0$.
+
+\textbf{Transformation von Dif"|ferentialoperatoren}:
+Sei $\vec{f}\colon D \to \real^n$, $\vec{f}(\vec{x}) = \vec{y}$, eine Transformation und
+$\psi\colon \real^n \to \real$ ein Skalarfeld.
+Dann gilt wegen der Kettenregel\\
+$\frac{\partial}{\partial(x_1, \dotsc, x_n)} \psi(\vec{f}(\vec{x}))
+= \frac{\partial}{\partial(y_1, \dotsc, y_n)} \psi(\vec{f}(\vec{x})) \cdot J$
+mit der Jacobi-Matrix $J$ von $\vec{f}$
+(dabei ist der erste Faktor ein Zeilenvektor).
+Mit $\vec{\nabla}_{\vec{x}} := \left(\frac{\partial}{\partial(x_1, \dotsc, x_n)}\right)^\tp$
+erhält man
+$(\vec{\nabla}_{\vec{x}} (\psi \circ f))^\tp = (\vec{\nabla}_{\vec{y}} (\psi \circ f))^\tp J$
+oder $\vec{\nabla}_{\vec{x}} = J^T \vec{\nabla}_{\vec{y}}$, ausgeschrieben also
+$\partial_{x_i} = \sum_{j=1}^n J_{j,i} \partial_{y_j}$.
+
+\linie
+
+\textbf{Polarkoordinaten}:
+Ein Beispiel ist $\vec{f}\colon D \to \real^2 \setminus \{0\}$ bijektiv mit
+$D := (0, \infty) \times [0, 2\pi)$ und
+$\vec{f}(r, \varphi) := (r\cos\varphi, r\sin\varphi)^\tp$.
+Für die \begriff{Funktionaldeterminante} gilt
+$\det \D\vec{f}(r, \varphi) = r > 0$.\\
+Mit obiger Formel erhält man
+$\partial_r = \cos\varphi \cdot \partial_x + \sin\varphi \cdot \partial_y
+= \frac{x}{\sqrt{x^2 + y^2}} \partial_x + \frac{y}{\sqrt{x^2 + y^2}} \partial_y$ und\\
+$\partial_\varphi = -r \sin\varphi \cdot \partial_x + r \cos\varphi \cdot \partial_y
+= -y \partial_x + x \partial_y$.\\
+Für die Umkehrung gilt
+$\partial_x = \cos\varphi \cdot \partial_r - \frac{\sin\varphi}{r} \partial_\varphi$ und
+$\partial_y = \sin\varphi \cdot \partial_r + \frac{\cos\varphi}{r} \partial_\varphi$.
+
+\linie
+
+\textbf{Divergenz und Rotation}:
+Sei $\vec{f}\colon D \to \real^3$ ein Vektorfeld mit $D \subset \real^3$ of"|fen und
+$\vec{f} \in \C^1(D)$.
+Dann heißt $\div \vec{f} := \vec{\nabla} \cdot \vec{f} =
+\partial_{x_1} f_1 + \partial_{x_2} f_2 + \partial_{x_3} f_3$
+\begriff{Divergenz} von $\vec{f}$ und\\
+$\rot \vec{f} := \vec{\nabla} \times \vec{f} =
+(\partial_{x_2} f_3 - \partial_{x_3} f_2,
+\partial_{x_3} f_1 - \partial_{x_1} f_3,
+\partial_{x_1} f_2 - \partial_{x_2} f_1)^\tp$
+\begriff{Rotation} von $\vec{f}$.
+
+\linie
+
+\textbf{\name{Levi}-\name{Civita}-Symbol}:
+Das \begriff{\name{Levi}-\name{Civita}-Symbol} ist in drei Dimensionen
+für $i, j, k \in \integer$ definiert durch
+\begin{itemize}
+    \item
+    $\varepsilon_{ijk} := +1$, falls $(i, j, k)$ eine gerade Permutation von $(1,2,3)$ ist,
+    
+    \item
+    $\varepsilon_{ijk} := -1$, falls $(i, j, k)$ eine ungerade Permutation von $(1,2,3)$ ist, und
+    
+    \item
+    $\varepsilon_{ijk} := 0$, falls $(i, j, k)$ keine Permutation von $(1,2,3)$ ist.
+\end{itemize}
+
+\textbf{Identitäten}:
+Mit der Einstein-Summenkonvention (über mehrfach auftretende Indizes wird summiert)
+ist $\varepsilon_{ijk} \varepsilon_{\ell mn} =
+\left|\smallpmatrix{\delta_{i\ell}&\delta_{im}&\delta_{in}\\
+\delta_{j\ell}&\delta_{jm}&\delta_{jn}\\
+\delta_{k\ell}&\delta_{km}&\delta_{kn}}\right|$,
+$\varepsilon_{ijk}\varepsilon_{imn} =
+\left|\smallpmatrix{\delta_{jm}&\delta_{jn}\\\delta_{km}&\delta_{kn}}\right|$,
+$\varepsilon_{ijk}\varepsilon_{ijn} = 2\delta_{kn}$ und
+$\varepsilon_{ijk}\varepsilon_{ijk} = 6$.\\
+Das Kreuzprodukt zweier Vektoren kann dargestellt werden als
+$\vec{a} \times \vec{b} = \varepsilon_{ijk} a_j b_k \vec*{e}{i}$
+und das Spatprodukt als $\sp{\vec{a} \times \vec{b}, \vec{c}} = \varepsilon_{ijk} a_i b_j c_k$.
+
+Mit dem Levi-Civita-Symbol lassen sich andere Identitäten wie
+$\div(\rot(\vec{a})) = 0$ und\\
+$\div(\vec{a} \times \vec{b}) = \sp{\vec{b}, \rot(\vec{a})} - \sp{\vec{a}, \rot(\vec{b})}$
+recht schnell beweisen.
+
+\pagebreak

@@ -1,0 +1,1084 @@
+\section{%
+    \name{Fourier}analysis und trigonometrische Reihen%
+}
+
+\subsection{%
+    Motivation%
+}
+
+Sei $E$ ein euklidischer oder hermitescher Vektorraum der Dimension
+$\dim E = n$, d.\,h. ein $\real$- oder $\complex$-Vektorraum, auf dem
+ein Skalarprodukt $\sp{\cdot, \cdot}$ gegeben ist
+(hier linear im ersten Argument).
+
+In diesem Fall existiert eine \textbf{Orthonormalbasis (ONB)}
+$\{e_1, \dotsc, e_n\}$, d.\,h. eine Basis, sodass
+$\sp{e_j, e_k} = \delta_{jk}$ für $j, k = 1, \dotsc, n$ ist.
+Ist $x \in E$ ein Vektor, so kann man $x$ eindeutig als Linearkombination
+der Basis darstellen, also $x = \xi_1 e_1 + \dotsb + \xi_n e_n$
+mit Skalaren $\xi_k$.\\
+Es gilt $\xi_k = \sp{x, e_k}$ für $k = 1, \dotsc, n$.
+Die $\sp{x, e_k}$ heißen \textbf{\name{Fourier}koef"|fizienten} von $x$.
+
+Dies gilt ohne Weiteres jedoch nicht mehr für unendlich-dimensionale
+Vektorräume $E$, z.\,B. ist auf $E = \C([a, b], \complex)$ die Norm
+$\norm{f}_\C = \max_{x \in [a, b]} |f(x)|$ definiert, jedoch gibt es kein
+Skalarprodukt, das diese Norm induziert.
+
+\linie
+
+Im Folgenden wird das Skalarprodukt
+$\sp{f, g}_{L^2} = \int_{[a, b]} f(t) \overline{g(t)} \dt$ und die davon
+induzierte Norm $\norm{f}_{L^2}^2 = \int_{[a, b]} |f(t)|^2 \dt$ verwendet.\\
+Der Einfachheit halber beschränkt man sich auf $[a, b] = [-\pi, \pi]$.
+
+Betrachtet man die Funktionen $1, \sin x, \cos x, \sin(2x), \cos(2x), \dotsc$,
+so stellt man fest:
+\begin{itemize}
+    \item
+    $\int_{-\pi}^\pi 1\sin(nx)\dx = \int_{-\pi}^\pi 1\cos(mx)\dx = 0$
+    für $n, m \in \natural$ und\\
+    $\int_{-\pi}^\pi \cos(nx)\cos(mx)\dx = \int_{-\pi}^\pi \sin(nx)\sin(mx)\dx =
+    0$
+    für $n, m \in \natural$, $n \not= m$
+    
+    \item
+    $\int_{-\pi}^\pi \sin(nx)\cos(mx)\dx = 0$ für $n, m \in \natural$
+    
+    \item
+    $\int_{-\pi}^\pi \sin^2(nx)\dx = \int_{-\pi}^\pi \cos^2(mx)\dx = \pi$
+    für $n, m \in \natural$ und
+    $\int_{-\pi}^\pi 1^2 \dx = 2\pi$
+\end{itemize}
+Daher bildet $\frac{1}{\sqrt{2\pi}}, \frac{1}{\sqrt{\pi}} \sin x,
+\frac{1}{\sqrt{\pi}} \cos x, \frac{1}{\sqrt{\pi}} \sin(2x),
+\frac{1}{\sqrt{\pi}} \cos(2x), \dotsc$ ein
+Orthonormalsystem.\\
+Insbesondere ist dieses System linear unabhängig
+(d.\,h. jede endliche Linearkombination der $0$ mit Vektoren aus diesem System
+ist trivial).
+
+\linie
+
+Für eine gegebene Funktion $f \in \C([-\pi, \pi], \complex)$ kann man nun
+die Fourierkoef"|fizienten\\
+$\alpha_n := \sp{f, \frac{1}{\sqrt{\pi}} \sin(nx)}_{L^2} =
+\frac{1}{\sqrt{\pi}} \int_{-\pi}^\pi f(x)\sin(nx)\dx$,\\
+$\beta_m := \sp{f, \frac{1}{\sqrt{\pi}} \cos(mx)}_{L^2} =
+\frac{1}{\sqrt{\pi}} \int_{-\pi}^\pi f(x)\cos(mx)\dx$ und\\
+$\gamma := \sp{f, \frac{1}{\sqrt{2\pi}}}_{L^2} =
+\frac{1}{\sqrt{2\pi}} \int_{-\pi}^\pi f(x)\dx$
+für $n, m \in \natural$ berechnen.
+
+Man kann $f$ diese Fourierkoef"|fizienten
+$(\{\alpha_n\}_{n \in \natural}, \{\beta_m\}_{m \in \natural}, \gamma)$
+zuweisen und sich fragen, was $f$ mit der zunächst formalen
+\textbf{\name{Fourier}-Reihe}
+$\frac{\gamma}{\sqrt{2\pi}} +
+\sum_{n=1}^\infty \left(\frac{\alpha_n}{\sqrt{\pi}} \sin(nx) +
+\frac{\beta_n}{\sqrt{\pi}} \cos(nx)\right)$ zu tun hat.
+Konvergiert diese Reihe (in welchem Sinn)?
+Was hat der Wert der Reihe mit $f$ zu tun?
+Welche Eigenschaften von $f$ korrespondieren in welcher Art mit welchen
+Eigenschaften von $\{\alpha_n\}$, $\{\beta_m\}$ und $\gamma$?
+
+\textbf{alternative Schreibweise}:
+Man kann auch die "`unschönen"' Wurzeln vollständig in die Koef"|fizienten
+ziehen.
+Dafür schreibt man lateinische Buchstaben, d.\,h.
+$f \mapsto (\{a_n\}_{n \in \natural}, \{b_m\}_{m \in \natural}, c)$,\\
+$a_n := \frac{1}{\pi} \int_{-\pi}^\pi f(x)\sin(nx)\dx$,\\
+$b_m := \frac{1}{\pi} \int_{-\pi}^\pi f(x)\cos(mx)\dx$ und\\
+$c := \frac{1}{2\pi} \int_{-\pi}^\pi f(x)\dx$ für $n, m \in \natural$.\\
+Die Fourier-Reihe vereinfacht sich dann zu
+$c + \sum_{n=1}^\infty (a_n \sin(nx) + b_n \cos(nx))$.
+
+\linie
+\pagebreak
+
+Ersetzt man $\sin(nx) = \frac{e^{\i nx} - e^{-\i nx}}{2\i}$ und
+$\cos(mx) = \frac{e^{\i mx} + e^{-\i mx}}{2}$, so gilt wegen\\
+$\sp{e^{\i nx}, e^{\i mx}}_{L^2} = \int_{-\pi}^\pi e^{\i nx} e^{-\i mx}\dx =
+\int_{-\pi}^\pi e^{\i (n - m)x}\dx =$
+\matrixsize{$\begin{cases}0 & n \not= m\\2\pi & n = m\end{cases}$}
+für $n, m \in \integer$,\\
+dass $\left\{\frac{1}{\sqrt{2\pi}} e^{\i nx}\right\}_{n \in \integer}$
+ein Orthonormalsystem ist.
+
+Definiert man
+$\gamma_n := \sp{f, \frac{1}{\sqrt{2\pi}} e^{\i nx}}_{L^2} =
+\frac{1}{\sqrt{2\pi}} \int_{-\pi}^\pi f(x) e^{-\i nx}\dx$, so kann man wieder
+die formale Fourier-Reihe
+$\sum_{n \in \integer} \frac{\gamma_n}{\sqrt{2\pi}} e^{\i nx}$ definieren.\\
+Analog wie eben schreibt man auch oft
+$c_n := \frac{1}{2\pi} \int_{-\pi}^\pi f(x) e^{-\i nx} \dx$ bzw.
+$\sum_{n \in \integer} c_n e^{\i nx}$.
+
+\linie
+
+Diese Reihe ist eine Laurent-Reihe
+$\widetilde{f}(z) = \sum_{n=-\infty}^{+\infty} c_n z^n$ um $z_0 = 0$.
+Falls $0 \le r < 1 < R \le \infty$, so gilt für $z = e^{\i x}$ und
+$x \in [-\pi, \pi]$, dass
+$\widetilde{f}(e^{\i x}) = \sum_{n=-\infty}^{+\infty} c_n e^{\i nx}$.\\
+In diesem Fall lässt sich die Formel
+$c_n = \frac{1}{2\pi\i} \oint_{|z| = 1} \frac{\widetilde{f}(z)}{z^{n+1}}\dz$
+anwenden.\\
+Man erhält dadurch wieder die Definition der
+$c_n = \frac{1}{2\pi} \int_{-\pi}^\pi f(x) e^{-\i nx} \dx$.
+
+\subsection{%
+    Das Kriterium von \name{Dini}%
+}
+
+Im Folgenden betrachtet man die Partialsummen
+$S_N(t) = c + \sum_{k=1}^N (a_k \sin(kt) + b_k \cos(kt))$ für $N \in \natural$.
+Es gilt
+$S_N(t) = \sum_{k=-N}^N c_k e^{\i kt}$,
+denn\\
+$c_k e^{\i kt} + c_{-k} e^{-\i kt} =
+(c_k + c_{-k}) \cos(kt) + \i (c_k - c_{-k}) \sin(kt) =
+\frac{1}{2\pi} \int_{-\pi}^\pi f(x) (e^{-\i kx} + e^{\i kx}) \dx \cos(kt) +
+\frac{\i}{2\pi} \int_{-\pi}^\pi f(x) (e^{-\i kx} - e^{\i kx}) \dx \sin(kt) =
+b_k \cos(kt) + a_k \sin(kt)$.
+
+Daraus folgt dann\\
+$S_N(t) = \sum_{k=-N}^N \left(\frac{1}{2\pi}
+\int_{-\pi}^{\pi} f(\tau) e^{-\i k\tau}\d\tau\right) e^{ikt}
+= \int_{-\pi}^{\pi} f(\tau)
+\left(\frac{1}{2\pi} \sum_{k=-N}^N e^{\i k(t - \tau)}\right)\d\tau$.\\
+Dabei ist
+$\sum_{k=-N}^N e^{\i ks} =
+e^{-\i Ns} \sum_{k=0}^{2N} e^{\i ks} =
+e^{-\i Ns} \cdot
+\frac{1 - e^{\i (2N + 1)s}}{1 - e^{\i s}}$\\
+$= e^{-\i Ns} \cdot
+\frac{e^{\i (N + 1/2)s} \cdot
+(e^{-\i (N + 1/2)s} - e^{\i (N + 1/2)s})}
+{e^{\i s/2} \cdot (e^{-\i s/2} - e^{\i s/2})} =
+\frac{\sin((N + 1/2) s)}{\sin(s/2)}$.
+
+Daher ist $S_N(t) = \int_{-\pi}^\pi f(\tau) \D_N(t - \tau)\d\tau$ mit
+dem \textbf{\name{Dirchlet}-Kern}\\
+$\D_N(s) = \frac{1}{2\pi} \cdot \frac{\sin((N + 1/2)s)}{\sin(s/2)} =
+\frac{1}{2\pi} \sum_{k=-N}^N e^{\i ks}$.
+
+\linie
+
+Es gilt $\int_{-\pi}^\pi \D_N(s)\ds = 1$
+(dies sieht man schnell mit der Summenformel).\\
+Außerdem ist $\D_N$ $2\pi$-periodisch, d.\,h. $\D_N(s) = \D_N(s + 2k\pi)$ für
+alle $s \in \real$ und $k \in \integer$.
+
+Außerdem setzt man $f\colon [-\pi, \pi] \rightarrow \complex$
+$2\pi$-periodisch zu $f\colon \real \rightarrow \complex$ fort, d.\,h.
+$f(t + 2k\pi) = f(t)$ für alle $t \in [-\pi, \pi]$ und $k \in \integer$.
+
+Damit sind $\D_N$ und $f$ $2\pi$-periodisch und
+$S_N(t) = \int_{-\pi}^\pi f(\tau) \D_N(t - \tau) \d\tau =
+\int_{-\pi}^\pi \D_N(s) f(s + t) \ds$
+(aufgrund der Symmetrie von $\D_N(s)$).
+
+Um die Konvergenz von $S_N(t)$ gegen $f(t)$ zu verifizieren, nutzt man
+$f(t) = \int_{-\pi}^\pi \D_N(s) f(t) \ds$ aus und berechnet
+$S_N(t) - f(t) = \int_{-\pi}^\pi \D_N(s) (f(s + t) - f(t)) \ds =
+\int_{-\pi}^\pi \frac{f(s + t) - f(t)}{2\pi \cdot \sin(s/2)} \cdot
+\sin((N + \frac{1}{2})s) \ds$.\\
+Der erste Faktor ist eine Funktion $F(s, t)$, die unabhängig von $N$ ist.
+Der zweite Faktor ist eine Sinus-Funktion $\sin(\omega s)$ mit für
+$N \to \infty$ immer schneller werdender Frequenz $\omega$.\\
+Die übliche betragsmäßige Abschätzung kann hier nicht verwendet werden, da der
+Sinus nur mit $1$ abgeschätzt werden kann.
+Stattdessen kann man sich die Konvergenz bildhaft mit der in der
+Signalübertragung verwendeten Amplitudenmodulation überlegen, bei der
+eine Information (hier $F(s, t)$) in der Amplitude eines Trägersignals
+mit konstanter Frequenz (hier $\sin(\omega s)$) kodiert wird.
+Für eine genügend hohe Frequenz $\omega$ löschen sich positive und negative
+Anteile annäherend aus, sodass Konvergenz (unter gewissen Bedingungen)
+vorliegt.
+
+\linie
+\pagebreak
+
+\textbf{Lemma}:
+Sei $F \in \C^1([-\pi, \pi], \complex)$.
+Dann gilt $\lim_{\omega \to \infty}
+\left(\int_{-\pi}^\pi F(s) \sin(\omega s) \ds\right) = 0$.
+
+\textbf{Lemma}:
+Die Menge $\C_0^\infty([-\pi, \pi], \complex)$ der unendlich oft
+dif"|ferenzierbaren Funktionen, die auf dem Rand von $[-\pi, \pi]$
+verschwinden, liegt dicht in $L^1([-\pi, \pi], dx)$ mit dem Lebesgue-Maß $dx$,
+d.\,h. $\forall_{F \in L^1}
+\exists_{\{F_n\}_{n \in \natural},\; F_n \in \C_0^\infty}\;
+\norm{F_n - F}_{L^1} \xrightarrow{n \to \infty} 0$.
+
+\textbf{\name{Riemann}-Lemma}:
+Sei $F \in L^1([-\pi, \pi], dx)$.
+Dann gilt $\lim_{\omega \to \infty}
+\left(\int_{[-\pi, \pi]} F(s) \sin(\omega s) \ds\right) = 0$.
+
+\linie
+
+\textbf{Kriterium von \name{Dini} zur punktweisen Konvergenz der
+\name{Fourier}-Reihe}:\\
+Seien $f \in L^1([-\pi, \pi], dx)$ und $t_0 \in [-\pi, \pi]$.\\
+Es existiere ein $\delta = \delta(t_0) > 0$ mit
+$\int_{[-\delta, \delta]}
+\left|\frac{f(t_0 + \tau) - f(t_0)}{\tau}\right| \d\tau < \infty$.\\
+Dann gilt $\lim_{N \to \infty} S_N(t_0) = f(t_0)$.
+
+\textbf{Bemerkung}:
+Die zweite Bedingung ist erfüllt, wenn $f$ in $t_0$ dif"|ferenzierbar ist.\\
+Die zweite Bedingung ist erfüllt, wenn
+$|f(t_0 + \tau) - f(\tau)| \le M |\tau|^\alpha$ für ein
+$\alpha > 0$ und $|\tau| < \delta$.
+
+Die Stetigkeit von $f$ in $t_0$ reicht im Allgemeinen nicht!
+
+\linie
+
+Was passiert, wenn $f$ in $t_0$ einen Sprung besitzt?
+In diesem Fall kann $f$ als Summe einer stetigen Funktion und einer
+charakteristischen Funktion dargestellt werden.
+Falls die Fourier-Reihe der stetigen Funktion konvergiert, reicht es, die
+Konvergenz der Fourier-Reihe für die charakteristische Funktion zu prüfen.
+Es zeigt sich, dass dabei Konvergenz gilt.
+Der Grenzwert befindet sich genau in der "`Mitte"' des Sprungs.
+
+\textbf{modifiziertes Kriterium von \name{Dini} für Sprungstellen}:\\
+Seien $f \in L^1([-\pi, \pi], dx)$ und $t_0 \in [-\pi, \pi]$.
+Es existieren $f(t_0 - 0)$, $f(t_0 + 0)$ und\\
+ein $\delta = \delta(t_0) > 0$ mit
+$\int_{[-\delta, 0]}
+\left|\frac{f(t_0 + \tau) - f(t_0 - 0)}{\tau}\right| \d\tau < \infty$ und
+$\int_{[0, \delta]}
+\left|\frac{f(t_0 + \tau) - f(t_0 + 0)}{\tau}\right| \d\tau < \infty$.\\
+Dann gilt $\lim_{N \to \infty} S_N(t_0) = \frac{f(t_0 - 0) + f(t_0 + 0)}{2}$.
+
+\textbf{Bemerkung}:
+Die Bedingung $f \in L^1([-\pi, \pi], dx)$ ist so zu verstehen, dass
+ein Repräsentant aus der Äquivalenzklasse von $f$ gewählt wird,
+der diese Bedingung erfüllt.
+Die Existenz des Sprunges und seine Höhe ist dann invariant für alle
+äquivalenten Funktionen.
+
+\linie
+
+\textbf{Satz}:
+Sei $f\colon \real \rightarrow \complex$ auf $[-\pi, \pi]$
+$\ell$-fach dif"|ferenzierbar mit
+$f^{(j)}(-\pi) = f^{(j)}(\pi)$ für $j = 0, \dotsc, \ell - 1$.\\
+Außerdem sei $f^{(\ell)}$ Riemann-integrierbar auf $[-\pi, \pi]$.\\
+Dann gilt $a_n = o(n^{-\ell})$,
+$b_n = o(n^{-\ell})$ und
+$c_n = o(n^{-\ell})$ für $n \to \infty$.
+
+\textbf{Bemerkung}:
+Für solche Funktionen fallen die Fourierkoef"|fizienten also schnell ab.
+Dies ist wichtig, damit z.\,B. ein Tiefpass
+(Weglassen der hohen Frequenzen) bei periodischen Signalen keine
+allzu großen Störungen mit sich bringt.
+
+\linie
+
+Gilt auch die Umkehrung, d.\,h. folgt aus dem schnellen Abfallen der
+Koef"|fizienten, dass $f$ glatt ist?
+Dazu sei $\{c_k\}_{k \in \integer} \in \ell_1$
+(also $\sum_{k=1}^\infty |c_k| < \infty$).
+Die Summanden der Reihe $S(t) = \sum_{k \in \integer} c_k e^{\i kt}$,
+$t \in [-\pi, \pi]$ können durch
+$|c_k e^{\i k t}| = |c_k|$ gleichmäßig abgeschätzt werden.
+Da $\{c_k\}_{k \in \integer} \in \ell_1$, konvergiert $S(t)$ absolut und
+gleichmäßig.
+Jeder der Summanden ist stetig,
+also ist $S(t)$ stetig.
+
+Falls sogar $\{k^\ell c_k\}_{k \in \integer} \in \ell_1$ gilt,
+folgt nach $\ell$-maligem Dif"|ferenzieren, dass
+$S(t)$ $\ell$-fach dif"|ferenzierbar ist.
+
+\pagebreak
+
+\subsection{%
+    \name{Fourier}-Integral und \name{Fourier}-Transformation%
+}
+
+\textbf{\name{Fourier}-Transformation}:
+Sei $f\colon \real \rightarrow \complex$ mit $f \in L^1(\real, dx)$.\\
+Dann ist $\widehat{f}(\lambda) = \F[f](\lambda) :=
+\frac{1}{\sqrt{2\pi}} \int_\real f(\tau) e^{-\i \lambda\tau} \d\tau$
+für $\lambda \in \real$ die \emph{\name{Fourier}transformierte} von $f$.
+
+\textbf{Eigenschaften von $\F[f]$}:
+\begin{enumerate}
+    \item
+    Für $f \in L^1(\real, dx)$ existiert $\widehat{f}(\lambda)$ für alle
+    $\lambda \in \real$, denn
+    $|\widehat{f}(\lambda)| \le
+    \frac{1}{\sqrt{2\pi}} \int_\real |f(\tau)| \d\tau =
+    \frac{\norm{f}_{L^1}}{\sqrt{2\pi}}$.\\
+    Daraus folgt insbesondere, dass
+    $\widehat{f}$ eine beschränkte Funktion ist.
+    
+    \item
+    $\widehat{f}$ ist stetig, denn für eine Folge
+    $\{\lambda_n\}$ mit $\lambda_n \to \lambda$ gilt
+    $f(\tau) e^{-i \lambda_n \tau} \to f(\tau) e^{-i \lambda \tau}$.
+    Wegen $|f(\tau) e^{-\i \lambda_n \tau}| = |f(\tau)|$ ist
+    $f(\tau)$ eine integrierbare Majorante für alle $\tau \in \real$ und
+    $n \in \natural$.
+    Aus dem Satz von Lebesgue zur majorisierten Konvergenz folgt daher
+    $\widehat{f}(\lambda_n) \to \widehat{f}(\lambda)$.
+    
+    \item
+    Es gilt $\lim_{\lambda \to \infty} \widehat{f}(\lambda) = 0$, denn
+    aus der $\sigma$-Additivität des Lebesgue-Integrals folgt\\
+    $\int_\real f \dx =
+    \sum_{j \in \integer} (\int_{\left]j, j + 1\right]} f\dx) =
+    \lim_{R \to \infty} (\int_{[-R, R]} f\dx)$, also gibt es für alle
+    $\varepsilon > 0$ ein $R(\varepsilon) > 0$ mit
+    $\int_{|x| > R(\varepsilon)} |f|\dx < \varepsilon$.
+    Man teilt nun $\int_\real f(\tau) e^{-\i \lambda\tau} \d\tau =
+    (\int_{|x| > R(\varepsilon)} + \int_{|x| \le R(\varepsilon)})
+    f(\tau) e^{-\i \lambda\tau} \d\tau$ auf.
+    Der erste Summand ist vom Betrag her nach eben Gesagtem
+    $\le \int_{|x| > R(\varepsilon)} |f(\tau)| \d\tau < \varepsilon$,
+    der zweite Summand geht für $\lambda \to \infty$ nach dem Lemma von
+    Riemann gegen $0$, ist also $< \varepsilon$ für $\lambda$ groß genug.
+    
+    \item
+    Die Fourier-Transformation $\F$ ist linear, d.\,h. für
+    $f, g \in L^1(\real, dx)$ und $\alpha, \beta \in \complex$ gilt
+    $\F[\alpha f + \beta g] = \alpha \F[f] + \beta \F[g]$.
+    $\F$ ist zusätzlich stetig, d.\,h. $\F \in \L(L^1, L^\infty)$.
+\end{enumerate}
+
+\linie
+
+Unter welchen Umständen existiert die inverse Fouriertransformierte, d.\,h.
+wann ist\\
+$f(t) = \frac{1}{\sqrt{2\pi}}
+\int \F[f](\lambda) e^{\i \lambda t} d\lambda$?
+
+\textbf{Kriterium von \name{Dini} für die Konvergenz der inversen
+\name{Fourier}transformierten}:\\
+Seien $f \in L^1(\real, dx)$ und $t_0 \in \real$.\\
+Es existiere ein $\delta = \delta(t_0) > 0$ mit
+$\int_{[-\delta, \delta]}
+\left|\frac{f(t_0 + x) - f(t_0)}{x}\right| \dx < \infty$.\\
+Dann konvergiert das uneigentliche Riemann-Integral
+$\frac{1}{\sqrt{2\pi}}
+\int_{-\infty}^{+\infty} \F[f](\lambda) e^{\i \lambda t_0} d\lambda = f(t_0)$.
+
+\pagebreak
+
+\subsection{%
+    \name{Hilbert}räume und \name{Fourier}reihen%
+}
+
+Sei $H$ ein \emph{$K$-Vektorraum} mit $K = \complex$.
+
+Sei $\sp{\cdot, \cdot}\colon H \times H \rightarrow \complex$
+ein \emph{Skalarprodukt}, d.\,h.
+$\sp{x, x} \ge 0$,
+$\sp{x, x} = 0 \iff x = 0$,
+$\sp{x, y} = \overline{\sp{y, x}}$ und
+$\sp{\alpha_1 x_1 + \alpha_2 x_2, y} =
+\alpha_1 \sp{x_1, y} + \alpha_2 \sp{x_2, y}$
+(also $\sp{x, \beta_1 y_1 + \beta_2 y_2} =
+\overline{\beta_1} \sp{x, y_1} + \overline{\beta_2} \sp{x, y_2}$).
+
+Das Skalarprodukt definiert eine Norm $\norm{\cdot}\colon H \rightarrow \real$
+mit $\norm{x} = \sqrt{\sp{x, x}} \ge 0$.\\
+Es gilt die \emph{\name{Cauchy}-\name{Schwarz}sche Ungleichung}, d.\,h.
+$|\sp{x, y}| \le \norm{x} \cdot \norm{y}$.
+
+\textbf{\name{Hilbert}raum}:
+Sei $H$ ein $K$-Vektorraum mit Skalarprodukt $\sp{\cdot, \cdot}$.\\
+Dann heißt $(H, \sp{\cdot, \cdot})$ \emph{\name{Hilbert}raum}, falls
+$(H, \norm{\cdot})$ vollständig ist.
+
+Die \emph{Parallelogramgleichung}
+$\norm{x + y}^2 + \norm{x - y}^2 = 2 \norm{x}^2 + 2 \norm{y}^2$ ist
+erfüllt genau dann, wenn eine gegebene Norm ein Skalarprodukt induziert
+(in diesem Fall gilt z.\,B. für $K = \real$, dass
+$4 \sp{x, y} = \norm{x + y}^2 - \norm{x - y}^2$).
+
+\linie
+
+\emph{Beispiel}:
+Ein Beispiel für einen Hilbertraum ist
+$\ell^2(\natural)$ (oder auch $\ell^2(\integer)$).
+Es gilt\\
+$\ell^2(\natural) = \{\{a_n\}_{n \in \natural} \;|\;
+\sum_{n \in \natural} |a_n|^2 < \infty\}$,
+das Skalarprodukt ist
+$\sp{\{a_n\}, \{b_n\}}_{\ell^2(\natural)} =
+\sum_{n \in \natural} a_n \overline{b_n}$.\\
+$\ell^2(\natural)$ und $\ell^2(\integer)$ sind \emph{separabel}, d.\,h.
+es gibt eine abzählbare dichte Teilmenge.
+
+\emph{Beispiel}:
+Die Verallgemeinerung ist $L^2(X, \mu) =
+\{f\colon X \rightarrow \complex \;|\;
+\norm{f}_{L^2}^2 = \int_X |f|^2 d\mu < \infty\}$ mit dem Skalarprodukt
+$\sp{f, g}_{L^2} = \int_X f \overline{g} d\mu$.
+Falls $(X, \mu)$ ein separabler Maßraum ist, so ist auch
+$L^2(X, \mu)$ separabel (z.\,B. Lebesgue-Maß).
+
+\linie
+
+\textbf{Orthogonalität}:
+Sei $(H, \sp{\cdot, \cdot})$ ein Hilbertraum.
+Man definiert eine Relation $\bot$ auf $H$ mit
+$f \orth g$, falls $\sp{f, g} = 0$
+($f$ und $g$ sind zueinander \emph{orthogonal}).
+
+Für $f \orth g$ gilt der \emph{Satz des Pythagoras}, d.\,h.
+$\norm{f + g}^2 = \sp{f + g, f + g} = \norm{f}^2 + \norm{g}^2$.
+
+Für $f_n \xrightarrow{\norm{\cdot}} f$ und $g_n \xrightarrow{\norm{\cdot}} g$
+gilt $\sp{f_n, g_n} \to \sp{f, g}$, da
+$|\sp{f_n, g_n} - \sp{f, g}|$\\
+$= |\sp{f_n, g_n - g} + \sp{f_n - f, g}| \le
+\norm{f_n} \cdot \norm{g_n - g} + \norm{f_n - f} \cdot \norm{g}
+\le C \cdot \norm{g_n - g} + \norm{f_n - f} \cdot C \to 0$.
+
+\linie
+
+\textbf{orthonormiertes System (ONS)}:
+Sei $(H, \sp{\cdot, \cdot})$ ein Hilbertraum.\\
+Ein System $\{\varphi_n\}_n \subset H$ heißt
+\emph{orthonormiertes System (ONS)}, falls
+$\sp{\varphi_n, \varphi_k} = \delta_{nk}$.
+
+\textbf{linear unabhängig}:
+Sei $(H, \sp{\cdot, \cdot})$ ein Hilbertraum.\\
+Ein System $\{\varphi_n\}_n \subset H$ heißt
+\emph{linear unabhängig}, falls jedes endliche Teilsystem lin.\,unabh. ist.
+
+Jedes ONS ist linear unabhängig
+(aus $\alpha_1 \varphi_1 + \dotsb + \alpha_n \varphi_n = 0$ folgt\\
+$\sp{\alpha_1 \varphi_1 + \dotsb + \alpha_n \varphi_n, \varphi_k}
+= \alpha_k = \sp{0, \varphi_k} = 0$ für alle $k = 1, \dotsc, n$).
+
+\textbf{vollständig}:
+Sei $(H, \sp{\cdot, \cdot})$ ein Hilbertraum.\\
+Ein System $\{\varphi_n\}_{n \in \natural} \subset H$ heißt
+\emph{vollständig}, falls\\
+$\forall_{x \in H} \forall_{\varepsilon > 0}
+\exists_{N(\varepsilon, x) \in \natural}
+\exists_{\{\alpha_k(\varepsilon, x)\}_{k=1,\dotsc,N(\varepsilon,x)}}\;
+\norm{x - \sum_{k=1}^{N(\varepsilon,x)} \alpha_k(\varepsilon, x) \varphi_k}
+< \varepsilon$.
+
+\textbf{Basis, Orthonormalbasis (ONB)}:
+Sei $(H, \sp{\cdot, \cdot})$ ein Hilbertraum.\\
+Ein System $\{\varphi_n\}_{n \in \natural} \subset H$ heißt
+\emph{Basis}, falls es vollständig und linear unabhängig ist.\\
+Ein ONS heißt \emph{Orthonormalbasis (ONB)}, falls es vollständig ist.
+
+\linie
+
+\emph{Beispiel}:
+Für $H = \ell^2(\natural)$ ist $\{\varphi_k\}_{k \in \natural}$ mit
+$\varphi_k = (0, \dotsc, 0, 1, 0, \dotsc)$ eine Basis (sogar eine ONB).
+
+\emph{Beispiel}:
+Für $H = L^2([-\pi, \pi], dx)$ ist $\{\varphi_k\}_{k \in \integer}$ mit
+$\varphi_k(x) = \frac{1}{\sqrt{2\pi}} e^{\i kx}$ ein ONS.\\
+Frage: Ist dies auch eine Basis?
+
+\linie
+\pagebreak
+
+Dafür erweitert man die Orthogonalität $\bot$ auf Mengen, d.\,h.
+für $f \in H$ und $M \subset H$ soll $f \orth M$ gelten, falls
+$\forall_{g \in M}\; f \orth g$.
+Außerdem bezeichnet im Folgenden $\bigvee M$ die Menge aller endlichen
+Linearkombinationen von $M$.
+Aus $f \orth M$ folgt $f \orth \bigvee M$.
+
+\textbf{Projektion auf Unterraum}:\\
+Seien $(H, \sp{\cdot, \cdot})$ ein Hilbertraum,
+$\{\varphi_n\}_{n \in \natural}$ ein ONS und
+$L = \bigvee \{\varphi_1, \dotsc, \varphi_N\}$ mit $N \in \natural$.\\
+Dann ist $P_L\colon H \rightarrow H$,
+$P_L x := \sum_{k=1}^N \sp{x, \varphi_k} \varphi_k$
+die \emph{Projektion auf den Unterraum $L$}.
+
+\textbf{Eigenschaf"|ten}:
+\begin{enumerate}
+    \item
+    $P_L$ ist ein linearer Operator (d.\,h. ein Endomorphismus)
+    
+    \item
+    $P_L(H) = L$ (d.\,h. $P_L\colon H \rightarrow L$)
+    
+    \item
+    $x - P_L x =: h \orth L$,
+    denn für $f = \beta_1 \varphi_1 + \dotsb + \beta_N \varphi_N \in L$ gilt\\
+    $\sp{h, f} = \sp{x, f} - \sp{P_L x, f} =
+    \sum_{k=1}^N \sp{x, \varphi_k} \overline{\beta_k} -
+    \sum_{k=1}^N \sum_{j=1}^N \sp{\sp{x, \varphi_j} \varphi_j, \varphi_k}
+    \overline{\beta_k} = 0$
+    
+    \item
+    $\norm{x}^2 = \norm{P_L x}^2 + \norm{h}^2 \ge \norm{P_L x}^2$
+    (da $P_L x \in L$ und $h \orth L$), d.\,h.
+    $P_L$ ist beschränkt
+    
+    \item
+    $\norm{P_L x} = \norm{x} \iff \norm{h} = 0 \iff P_L x = x \iff x \in L$\\
+    (für $\norm{h} = 0$ gilt $h = x - P_L x = 0$, also $x = P_L x \in L$,\\
+    für $x \in L$ ist $h \in L$, da $P_L x$ in $L$,
+    aus $h \orth L$ folgt $h \orth h$, also $\norm{h}^2 = 0$)
+    
+    \item
+    $P_L (P_L x) = P_L x$
+    (da $P_L x \in L$ und $P_L y = y$ für $y = P_L x \in L$)
+\end{enumerate}
+
+\linie
+
+\textbf{Folgerung}:
+Für $x \in H$ und $f \in L$ gilt $\norm{x - f} \ge \norm{x - P_L x}$.
+
+Anschaulich besagt die Folgerung, dass der Abstand von $x$ zur
+senkrechten Projektion von $x$ auf $L$ am kürzesten ist.
+
+Also besitzt das Problem $\{f \in L \;|\;
+\norm{x - f} = \min_{y \in L} \norm{x - y}\}$ genau eine Lösung
+$f = P_L x$.
+
+\textbf{Satz (\name{Bessel}sche Ungleichung)}:
+Seien $(H, \sp{\cdot, \cdot})$ ein Hilbertraum,
+$\{\varphi_k\}_{k \in \natural}$ ein ONS,
+$x \in H$ und $c_k := \sp{x, \varphi_k}$ die Fourierkoef"|fizienten.\\
+Dann gilt $\sum_{k=1}^\infty |c_k|^2 \le \norm{x}^2$.
+
+\textbf{Satz}:
+Es gilt $\sum_{k=1}^\infty |c_k|^2 = \norm{x}^2$ genau dann, wenn
+$\sum_{k=1}^N c_k \varphi_k \xrightarrow{\norm{\cdot}} x$.
+
+\textbf{abgeschlossen}:
+Seien $(H, \sp{\cdot, \cdot})$ ein Hilbertraum.
+Ein ONS $\{\varphi_k\}_{k \in \natural}$ heißt \emph{abgeschlossen}, falls
+für alle $x \in H$ die \emph{Gleichung von \name{Parseval}} gilt, d.\,h.
+$\forall_{x \in H}\; \sum_{k=1}^\infty |c_k|^2 = \norm{x}^2$\\
+(das ist nach dem vorherigen Satz äquivalent zu
+$\forall_{x \in H}\; \sum_{k=1}^\infty c_k \varphi_k = x$).
+
+Die Gleichung von Parseval ist eine unendliche Verallgemeinerung des
+Satzes des Pythagoras.
+
+\textbf{total}:
+Seien $(H, \sp{\cdot, \cdot})$ ein Hilbertraum.
+Ein ONS $\{\varphi_k\}_{k \in \natural}$ heißt \emph{total}, falls\\
+$\forall_{x \in H}\; (\forall_{k \in \natural}\;
+c_k = \sp{x, \varphi_k} = 0) \;\Rightarrow\; (x = 0)$.
+
+\textbf{Satz}:
+Seien $(H, \sp{\cdot, \cdot})$ ein Hilbertraum und
+$\{\varphi_k\}_{k \in \natural}$ ein ONS.\\
+Dann ist das ONS abgeschlossen $\iff$ vollständig $\iff$ total.
+
+\linie
+\pagebreak
+
+\textbf{Zuordnung von Vektoren und Folgen}:\\
+Seien $(H, \sp{\cdot, \cdot})$ ein Hilbertraum und
+$\{\varphi_n\}_{n \in \natural}$ ein ONS.\\
+Definiere eine Abbildung $\phi\colon H \rightarrow \ell^2(\natural)$,
+$x \mapsto \{c_k\}_{k \in \natural}$ mit $c_k = \sp{x, \varphi_k}$.
+
+\textbf{Eigenschaf"|ten}:
+\begin{enumerate}
+    \item
+    $\phi\colon H \rightarrow \ell^2(\natural)$ ist linear
+    
+    \item
+    $\norm{\phi x}_{\ell^2(\natural)}^2 =
+    \sum_{k=1}^\infty |c_k|^2 \le \norm{x}^2$,
+    d.\,h. $\norm{\phi}_{\L(H, \ell^2(\natural))} \le 1$.\\
+    Es gilt sogar $\norm{\phi}_{\L(H, \ell^2(\natural))} = 1$
+    (wähle $x = \varphi_k$ für ein $k \in \natural$).
+    
+    \item
+    $\phi\colon H \rightarrow \ell^2(\natural)$ ist surjektiv, denn:\\
+    Sei $\{c_k\}_{k \in \natural} \in \ell^2(\natural)$ gegeben.
+    Für $S_N = \sum_{k=1}^N c_k \varphi_k$ ergibt sich dann\\
+    $\norm{S_M - S_N}^2 = \norm{\sum_{k=N+1}^M c_k \varphi_k}^2 \le
+    \sum_{k=N+1}^M |c_k|^2 < \varepsilon$
+    (da die Reihe $\sum_{k=1}^\infty |c_k|^2$ konvergiert, d.\,h. die
+    Partialsummen bilden eine Cauchy-Folge).
+    Also ist $\{S_N\}_{N \in \natural}$ eine Cauchy-Folge und wegen der
+    Vollständigkeit von $(H, \sp{\cdot, \cdot})$ existiert ein $x \in H$ mit
+    $\sum_{k=1}^\infty c_k \varphi_k = x$.\\
+    Es gilt $\sp{x, \varphi_k} =
+    \lim_{N \to \infty} \sp{S_N, \varphi_k} = c_k$, also
+    $\phi x = \{c_k\}_{k \in \natural}$.
+    
+    \item
+    Falls $\{\varphi_n\}_{n \in \natural}$ eine ONB ist, so ist
+    $\phi\colon H \rightarrow \ell^2(\natural)$ injektiv, denn dann gilt\\
+    $\norm{x}^2 = \sum_{k=1}^\infty |c_k|^2$, d.\,h.
+    $\Kern \phi = \{0\}$.
+\end{enumerate}
+
+Für einen Hilbertraum und eine Orthonormalbasis erhält man also eine
+1:1-Beziehung (Bijektion) zwischen den Vektoren und den Folgen der
+Fourierkoef"|fizienten.
+
+\subsection{%
+    Delta-Folgen%
+}
+
+Seien $a < 0 < b$ und $g_n \in L^1([a, b], dx)$ für $n \in \natural$.
+
+\textbf{Delta-Folge}:
+$\{g_n\}_{n \in \natural}$ heißt \emph{Delta-Folge}, falls
+\begin{enumerate}
+    \item
+    $\forall_{n \in \natural}\; g_n \ge 0$,
+    
+    \item
+    $\int_{[a, b]} g_n(t)\dt \xrightarrow{n \to \infty} 1$ und
+    
+    \item
+    $\forall_{\delta > 0} \forall_{\varepsilon > 0}
+    \exists_{N(\varepsilon, \delta) \in \natural}
+    \forall_{n \ge N(\varepsilon, \delta)}\;
+    \left(\int_{[a, -\delta]} + \int_{[\delta, b]}\right)
+    g_n(t) \dt < \varepsilon$.
+\end{enumerate}
+
+\linie
+
+\textbf{Satz}:
+Seien $f \in \C([a, b], \complex)$ und $\{g_n\}_{n \in \natural}$
+eine Delta-Folge.\\
+Dann gilt $\int_{[a, b]} f(t)g_n(t) \dt \xrightarrow{n \to \infty} f(0)$.
+
+\linie
+
+\emph{Beispiel}:
+Seien $[a, b] = [-\pi, \pi]$ und $\phi_n(x) :=
+\frac{1}{2\pi n} \left(\frac{\sin(nx/2)}{\sin(x/2)}\right)^2$.
+Dann ist $\{\phi_n\}_{n \in \natural}$ eine Delta-Folge:
+\begin{enumerate}
+    \item
+    $\phi_n \ge 0$
+    
+    \item
+    Mit $\D_k(x) = \frac{1}{2\pi} \frac{\sin((k + 1/2)x)}{\sin(x/2)}$
+    gilt $\int_{-\pi}^\pi \D_k(x) \dx = 1$ und
+    $\phi_n(x) = \frac{1}{n} \sum_{k=0}^{n-1} \D_k(x)$ (s.\,u.).\\
+    Daraus folgt $\int_{-\pi}^\pi \phi_n(x)\dx =
+    \frac{1}{n} \sum_{k=0}^{n-1} \int_{-\pi}^\pi \D_k(x) \dx = 1$
+    für alle $n \in \natural$.
+    
+    \item
+    Für $\delta > 0$ und $\varepsilon > 0$ beliebig gilt
+    $\left(\int_{-\pi}^{-\delta} + \int_\delta^\pi\right) \phi_n(x)\dx \le
+    \left(\int_{-\pi}^{-\delta} + \int_\delta^\pi\right)
+    \frac{1}{2\pi n} \frac{1}{\sin^2(|\delta|/2)} \dx$\\
+    $\le 2\pi \cdot \frac{1}{2\pi n} \frac{1}{\sin^2(|\delta|/2)} =
+    \frac{1}{n \sin^2(\delta/2)} < \varepsilon$
+    für $n \ge N(\varepsilon, \delta) :=
+    \frac{1}{\varepsilon \sin^2(\delta/2)}$.
+\end{enumerate}
+
+\linie
+
+Begründung für $\phi_n(x) = \frac{1}{n} \sum_{k=0}^{n-1} \D_k(x)$:
+$\phi_n(x) = \frac{1}{2\pi n} \left(\frac{\sin(nx/2)}{\sin(x/2)}\right)^2 =
+\frac{\sin(nx/2)}{2\pi n \sin^2(x/2)} \Im(e^{\i nx/2})$\\
+$= \frac{1}{2\pi n \sin(x/2)}
+\Im\left(\frac{\sin(nx/2)}{\sin(x/2)} e^{\i nx/2}\right) =
+\frac{1}{2\pi n \sin(x/2)}
+\Im\left(\frac{e^{\i nx} - 1}{e^{\i x/2} - e^{-\i x/2}}\right) =
+\frac{1}{2\pi n \sin(x/2)} \Im(e^{\i x/2} \cdot \sum_{k=0}^{n-1} e^{\i kx})$\\
+$= \frac{1}{2\pi n \sin(x/2)} \Im(\sum_{k=0}^{n-1} e^{\i (k + 1/2)x}) =
+\frac{1}{n} \sum_{k=0}^{n-1} \frac{1}{2\pi}
+\frac{\sin((k + 1/2)x)}{\sin(x/2)} =
+\frac{1}{n} \sum_{k=0}^{n-1} \D_k(x)$.
+
+\pagebreak
+
+\subsection{%
+    Der Satz von \name{Fejer}%
+}
+
+Im Folgenden bezeichnet
+$\C_p([-\pi, \pi], \complex) :=
+\{f \in \C([-\pi, \pi], \complex) \;|\; f(-\pi) = f(\pi)\}$
+den Raum der stetigen Funktionen auf $[-\pi, \pi]$, die $2\pi$-periodisch sind.
+
+\textbf{Satz von \name{Fejer}}:
+Sei $f \in \C_p([-\pi, \pi], \complex)$.\\
+Dann gilt $\sigma_N(x) \xrightarrow{N \to \infty} f(x)$ gleichmäßig,
+wobei $\sigma_N(x) := \frac{1}{N} \sum_{n=0}^{N-1} S_n(x)$ das arithmetische
+Mittel der ersten $N$ Fourier-Partialsummen
+$S_n(x) = \sum_{k=-n}^n c_k e^{\i kx}$,
+$c_k = \frac{1}{2\pi} \int_{-\pi}^\pi f(x) e^{-\i kx} \dx$ ist.
+
+\linie
+
+\textbf{Folgerung}:
+\begin{enumerate}
+    \item
+    $f \in \C_p([-\pi, \pi], \complex)$ ist durch die Fourierkoef"|fizienten
+    eindeutig bestimmt, denn falls\\
+    $f, \widetilde{f} \in \C_p([-\pi, \pi], \complex)$
+    die gleichen Fourierkoef"|fizienten
+    $\{c_k\}_{k \in \integer}$ besitzen, konvergiert jeweils
+    $\sigma_N(x)$ bzw. $\widetilde{\sigma}_N(x)$ gegen $f(x)$ bzw. $g(x)$.
+    Aufgrund der gleichen Fourierkoef"|fizienten gilt jedoch
+    $\sigma_N(x) = \widetilde{\sigma}_N(x)$ für alle $N \in \natural$,
+    aus der Eindeutigkeit des Grenzwerts folgt dann $f(x) \equiv g(x)$
+    für $x \in [-\pi, \pi]$.
+    
+    \item
+    $\{e^{\i nx}\}_{n \in \integer}$ ist ein vollständiges System in
+    $L^2([-\pi, \pi], dx)$.
+    Dies lässt sich aus der Dichtheit von $\C_p([-\pi, \pi], \complex)$ in
+    $L^2([-\pi, \pi], dx)$ folgern (Funktionalanalysis):
+    Für eine gegebene Funktion $f \in L^2([-\pi, \pi], dx)$
+    gibt es eine Funktion $f_\varepsilon \in \C_p([-\pi, \pi], \complex)$
+    mit $\norm{f - f_\varepsilon}_{L^2} < \varepsilon$.\\
+    Nach dem Satz von Fejer gibt es ein $N(\varepsilon)$ mit
+    $|f_\varepsilon(t) - \sigma_{N(\varepsilon)}(t)| < \varepsilon$ für alle
+    $t \in [-\pi, \pi]$.\\
+    Daraus folgt
+    $\norm{f_\varepsilon - \sigma_{N(\varepsilon)}}_{L^2}^2 =
+    \int_{-\pi}^\pi |f_\varepsilon(t) - \sigma_{N(\varepsilon)}(t)|^2 \dt \le
+    \varepsilon^2 \cdot 2\pi$ bzw.\\
+    $\norm{f - \sigma_{N(\varepsilon)}}_{L^2} \le
+    \norm{f - f_\varepsilon}_{L^2} +
+    \norm{f_\varepsilon - \sigma_{N(\varepsilon)}}_{L^2} \le
+    \varepsilon + \varepsilon \sqrt{2\pi} < \widetilde{\varepsilon}$.\\
+    Dabei ist $\sigma_{N(\varepsilon)}(t) =
+    \frac{1}{N(\varepsilon)} \sum_{\ell=0}^{N(\varepsilon)-1}
+    \left(\sum_{k=-\ell}^\ell c_k(f_\varepsilon) e^{\i kt}\right)$
+    eine Linearkombination von\\
+    $\{e^{\i kt} \;|\; k = -(N-1),\; \dotsc,\; (N-1)\}$, d.\,h.
+    $\{e^{\i nx}\}_{n \in \integer}$ ist vollständig.
+\end{enumerate}
+
+\linie
+
+\textbf{\name{Gibbs}-Ef"|fekt}:
+Dieser tritt bei der punktweisen Approximation eines Signals mit
+Sprungstellen durch die Fouriersumme $S_N(t)$ auf.
+Auch wenn $N$ groß gewählt wird, verbleibt immer ein Überschwinger von ca.
+$9\,\%$ der Sprunghöhe vor und nach dem Sprung.
+Dieser Ef"|fekt heißt \emph{\name{Gibbs}-Ef"|fekt} und kann durch die
+Approximation durch die Mittelwerte $\sigma_N(t)$ vermieden werden.
+Diese ist zwar schlechter in der $L^2$-Norm, aber dafür konvergiert sie
+gleichmäßig, d.\,h. solche Überschwinger können nicht auf"|treten.
+Dies liegt daran, dass in $\sigma_N(t) = \sum_{k=-N}^N \alpha_k(N) e^{\i kt}$
+die Gewichte $\alpha_k(N)$ für jedes $N$ unterschiedlich sind.
+
+\linie
+
+\textbf{Zusammenfassung zur Konvergenz von \name{Fourier}-Reihen}:
+\begin{enumerate}
+    \item
+    Für $f \in L^2([-\pi, \pi], dx)$ ist $\{\varphi_n\}_{n \in \integer}$
+    mit $\varphi_n(t) = \frac{1}{\sqrt{2\pi}} e^{\i nt}$ eine ONB.
+    Für die Fourierkoeff. $\gamma_k = \sp{f, \varphi_k}_{L^2} =
+    \frac{1}{\sqrt{2\pi}} \int_{[-\pi, \pi]} f(t) e^{-\i kt}\dt$ gilt
+    $\sum_{k \in \integer} |\gamma_k|^2 = \norm{f}_{L^2}^2 =
+    \int_{[-\pi, \pi]} |f(t)|^2 \dt$.\\
+    Außerdem konvergiert $f(x) = \sum_{k \in \integer}
+    \frac{\gamma_k}{\sqrt{2\pi}} e^{\i kx}$ absolut im $L^2$.
+    Es gilt:
+    Für $f \in L^2([-\pi, \pi], dx)$ konvergiert
+    $S_N(t) \xrightarrow{(\cdot)} f(t)$ punktweise Lebesgue-fast-überall
+    (\textbf{Satz von \name{Carleson}}).
+    
+    \item
+    Für $f \in \C_p([-\pi, \pi], \complex)$ lassen sich wegen
+    $\C_p \subset L^2$ die gleichen Schlussfolgerungen ziehen.
+    Im Allgemeinen weiß man zwar nicht, wo die Lebesgue-Nullmenge liegt,
+    auf der die Fourier-Reihe nicht konvergiert.
+    Allerdings lässt sich hier der Satz von Fejer anwenden, der eine
+    gleichmäßige Konvergenz von $\sigma_N$ gibt
+    (d.\,h. $\sigma_N \xrightarrow{\norm{\cdot}_{\C_p}} f$).
+    Wichtig ist, dass für den Satz gebraucht wurde, dass $\phi_n$ eine
+    Delta-Folge ist -- mit $\D_k$ geht das nicht ($\not\ge 0$).
+    Konvergenz von $S_N(t)$ lässt sich somit nur über die Dini-Bedingung mit
+    zusätzlichen Voraussetzungen beweisen (Stetigkeit reicht nicht aus).
+    
+    \item
+    Für $f \in L^1([-\pi, \pi], dx)$ existieren zwar die
+    Fourier-Koef"|f.
+    $c_k = \frac{1}{2\pi} \int_{[-\pi, \pi]} f(t) e^{-\i kt} \dt$,\\
+    aber wegen $L^1 \not\subset L^2$ lässt sich die $L^2$-Theorie nicht
+    verallgemeinern.\\
+    Es gibt aber einen \textbf{$L^1$-Satz von \name{Fejer}}
+    (für $f \in L^1([-\pi, \pi], dx)$ gilt
+    $\sigma_N \xrightarrow{\norm{\cdot}_{L^1}} f$).
+\end{enumerate}
+
+\subsection{%
+    Wichtige Eigenschaften der \name{Fourier}-Transformation%
+}
+
+Für $f \in L^1(\real, dx)$ und $\lambda \in \real$ ist die
+\emph{\name{Fourier}transformierte} definiert als\\
+$\widehat{f}(\lambda) = \F[f](\lambda) =
+\frac{1}{\sqrt{2\pi}} \int_\real f(x) e^{-\i\lambda x}\dx$.\\
+$\F[f]$ ist stetig auf $\real$ und es gilt $\F[f](\lambda) \to 0$ für
+$\lambda \to \pm\infty$.
+Falls $f$ in $t = t_0$ die Dini-Bedingung erfüllt, dann gilt
+$f(t_0) = \frac{1}{\sqrt{2\pi}}
+\int_{-\infty}^{+\infty} \F[f](\lambda) e^{\i\lambda t_0} d\lambda$.
+Man schreibt auch $f(t_0) = \F^{-1}[\F[f]](t_0)$.\\
+Wegen $|\F[f](\lambda)| \le \frac{1}{\sqrt{2\pi}} \cdot \norm{f}_{L^1}$ ist
+$\F\colon L^1(\real, dx) \rightarrow \C(\real, \complex)$ ein linearer und
+stetiger Operator.
+
+\linie
+
+\textbf{Lemma}:
+Sei $f(t), t f(t), \dotsc, t^n f(t) \in L^1(\real, dx)$.\\
+Dann ist $\widehat{f} = \F[f]$ $n$-mal stetig dif"|ferenzierbar und es gilt
+$\F^{(k)}[f](\lambda) = \F[(-\i t)^k f(t)](\lambda)$,\\
+insbesondere gilt $\F^{(k)}[f](\lambda) \to 0$ für $\lambda \to \pm\infty$ und
+$k = 0, \dotsc, n$.
+
+\textbf{Lemma}:
+Seien $f$ $n$-fach stetig dif"|ferenzierbar und
+$f, f', \dotsc, f^{(n)} \in L^1(\real, dx)$.\\
+Dann gilt $\F[f^{(k)}](\lambda) = (\i\lambda)^k \F[f](\lambda)$,
+insbesondere gilt $\F[f](\lambda) = o(|\lambda|^{-n})$ für
+$\lambda \to \pm\infty$.
+
+\linie
+
+\textbf{\name{Schwartz}sche Funktionenklasse $\S(\real)$}:
+Für $f \colon \real \rightarrow \complex$ beliebig oft dif"|ferenzierbar sei\\
+$f \in \S(\real)$, falls
+$\forall_{p, q \in \natural_0} \exists_{C(p, q) < \infty}
+\forall_{x \in \real}\; |x^p f^{(q)}(x)| \le C(p, q)$.\\
+$\S(\real)$ heißt \emph{\name{Schwartz}sche Funktionenklasse} und wird zur
+Betonung der Variablen auch manchmal als $\S_t(\real)$ geschrieben.
+
+\textbf{\name{Fourier}-Transformation als Bijektion zwischen
+$\S(\real)$-Räumen}:\\
+Für $f \in \S_t(\real)$ gilt
+$\F[f] \in \S_\lambda(\real)$ und
+$\F\colon \S_t(\real) \rightarrow \S_\lambda(\real)$ ist eine Bijektion.
+
+\linie
+
+\textbf{Faltung}:
+Seien $f, g \in L^1(\real, dx)$.\\
+Dann ist die Faltung $f \ast g\colon \real \rightarrow \complex$ definiert als
+$(f \ast g)(t) := \int_\real f(\tau) g(t - \tau) \d\tau$.
+
+\textbf{In welchem Sinn existiert $f \ast g$?}\\
+Der \emph{Satz von \name{Fubini}} lässt aus
+$h(t, \tau) \in L^1(\real^2, d(t, \tau))$ folgern, dass\\
+$\int_{\real^2} h(t, \tau) d(t, \tau) =
+\int_\real \left(\int_\real h(t, \tau) \dt\right) \d\tau =
+\int_\real \left(\int_\real h(t, \tau) \d\tau\right) \dt$.\\
+Die Funktionen in Klammern existieren jeweils fast überall und sind
+Lebesgue-integrierbar.\\
+Für $h(t, \tau) = f(\tau) g(t - \tau)$ folgt, dass
+$\norm{f \ast g}_{L^1} =
+\int_\real |(f \ast g)(t)| \dt =
+\int_\real |\int_\real f(\tau) g(t - \tau) \d\tau| \dt$\\
+$\le \int_\real \left(\int_\real |f(\tau)| |g(t - \tau)| \d\tau\right) \dt =
+\int_\real |f(\tau)| \left(\int_\real |g(t - \tau)| \dt\right) \d\tau =
+\int_\real |f(\tau)| \d\tau \cdot \norm{g}_{L^1}$\\
+$= \norm{f}_{L^1} \cdot \norm{g}_{L^1}$,
+daraus folgt die \textbf{Ungleichung von \name{Hausdorff}-\name{Young}}\\
+$\norm{f \ast g}_{L^1} \le \norm{f}_{L^1} \cdot \norm{g}_{L^1}$
+und die Faltung ist eine Lebesgue-integrierbare Funktion, die in $t$ bis auf
+eine Lebesgue-Nullmenge existiert.
+
+\textbf{Lemma}:
+Für $f, g \in L^1(\real, dx)$ gilt
+$\frac{1}{\sqrt{2\pi}} \F[f \ast g](\lambda) =
+\F[f](\lambda) \cdot \F[g](\lambda)$.
+
+\linie
+\pagebreak
+
+\textbf{\name{Fourier}-Transformation im $L^2(\real, dx)$}:\\
+Für beschränkte Intervalle ist $L^2 \subset L^1$, da zum Beispiel\\
+$\norm{f}_{L^1} = \int_{[-\pi, \pi]} |f| \cdot 1 \dx \le
+\left(\int_{[-\pi, \pi]} |f|^2 \dx\right)^{1/2} \cdot
+\left(\int_{[-\pi, \pi]} 1^2 \dx\right)^{1/2} =
+\sqrt{2\pi} \norm{f}_{L^2} < \infty$\\
+aufgrund der \emph{\name{Hölder}schen Ungleichung},\\
+es gilt also $f \in L^2([-\pi, \pi], dx) \;\Rightarrow\;
+f \in L^1([-\pi, \pi], dx)$.
+
+Allerdings gilt im Allgemeinen $f \in L^2(\real, dx) \;\not\Rightarrow\;
+f \in L^1(\real, dx)$!
+Somit kann das Fourier-Integral evtl. nicht definiert sein.
+
+Im Folgenden nutzt man aus, dass man zeigen kann, dass
+$\S(\real)$ dicht in $L^2(\real, dx)$ ist.\\
+Für $f, g \in \S(\real)$ ist
+$\F[f], \F[g] \in \S(\real) \subset L^2(\real, dx)$.
+
+\textbf{Satz von \name{Plancherel} für $\S(\real)$}:
+Für $f, g \in \S(\real)$ gilt
+$\sp{\F[f], \F[g]}_{L^2} = \sp{f, g}_{L^2}$,\\
+d.\,h. $\F\colon \S_t(\real) \rightarrow \S_\lambda(\real)$ ist ein
+\emph{unitärer Operator}.
+Insbesondere gilt $\norm{\F[f]}_{L^2} = \norm{f}_{L^2}$.
+
+\linie
+
+\textbf{Herleitung, Existenz}:
+Um nun die Fourier-Transformation für eine Funktion $f \in L^2(\real, dx)$ zu
+bestimmen, nutzt man die Existenz einer Folge $\{f_n\}_{n \in \natural}$,
+$f_n \in \S(\real)$ mit $f_n \xrightarrow{L^2} f$
+aus.
+Für die Fourier-Transformationen der Folgenglieder
+$g_n := \F[f_n]$ gilt aufgrund des Satzes von Plancherel
+$\norm{g_n - g_m}_{L^2} = \norm{\F[f_n] - \F[F_m]}_{L^2} =
+\norm{\F[f_n - f_m]}_{L^2} = \norm{f_n - f_m}_{L^2} < \varepsilon$,
+da $\{f_n\}_{n \in \natural}$ eine Cauchy-Folge im $L^2$ ist.
+Also ist auch $\{\F[f_n]\}_{n \in \natural}$ eine Cauchy-Folge im $L^2$ und
+aufgrund der Vollständigkeit von $L^2(\real, dx)$ gibt es ein
+$g \in L^2(\real, dx)$ mit $g_n \xrightarrow{L^2} g$.
+Dieses $g$ wird als Fourier-Transformation von $f$ definiert.
+
+\textbf{\name{Fourier}-Transformation für $f \in L^2(\real, dx)$}:
+Sei $f \in L^2(\real, dx)$.\\
+Dann ist $\F[f]$ definiert als
+$\F[f] \overset{L^2}{:=} \lim_{n \to \infty} \F[f_n]$
+für $f_n \in \S(\real)$ mit $f_n \xrightarrow{L^2} f$.
+
+\textbf{Eindeutigkeit}:
+Die Definition könnte evtl. nicht eindeutig sein, da die $f_n$ nicht eindeutig
+sein müssen.
+Für $f_n, \widetilde{f}_n \in \S(\real)$ mit
+$f_n, \widetilde{f}_n \xrightarrow{L^2} f$ gilt
+mit $g_n = \F[f_n]$ und $\widetilde{g}_n = \F[\widetilde{f}_n]$, dass
+$\norm{g_n - \widetilde{g}_n}_{L^2} = \norm{\F[f_n - \widetilde{f}_n]}_{L^2} =
+\norm{f_n - \widetilde{f}_n}_{L^2} < \varepsilon$.
+Somit müssen die $g_n$ und $\widetilde{g}_n$ gegen den gleichen Grenzwert
+konvergieren.
+Daraus folgt die Eindeutigkeit von $\F[f]$.
+
+\textbf{Abschluss eines Operators}:
+Diese Vorgehensweise der Verallgemeinerung eines Operators und anschließender
+Verifikation der gewünschten Eigenschaften wird öfters angewandt und heißt
+\emph{Abschluss eines Operators}.
+Allgemein gibt es für einen Hilbertraum $H$, eine dichte Teilmenge
+$D \subset H$ und einen linearen und beschränkten Operator
+$T\colon D \rightarrow H$ eine lineare und beschränkte Fortsetzung
+$\widetilde{T}\colon H \rightarrow H$ mit $\widetilde{T}|_D = T$.
+
+\linie
+
+Für zwei Funktionen $f, g \in L^2(\real, dx)$ lässt sich der Satz
+von Plancherel verallgemeinern:
+Ist $f_n, g_n \in \S(\real)$ mit $f_n \xrightarrow{L^2} f$ und
+$g_n \xrightarrow{L^2} g$,
+so gilt einerseits $\sp{\F[f_n], \F[g_n]}_{L^2} = \sp{f_n, g_n}_{L^2} \to
+\sp{f, g}_{L^2}$
+aufgrund des Satzes von Plancherel für $\S(\real)$ und der Stetigkeit des
+Skalarprodukts, andererseits gilt aber
+$\sp{\F[f_n], \F[g_n]}_{L^2} \to \sp{\F[f], \F[g]}_{L^2}$
+aufgrund der Stetigkeit des Skalarprodukts und der Defintion von $\F[f]$ bzw.
+$\F[g]$.
+Also gilt $\sp{\F[f], \F[g]}_{L^2} = \sp{f, g}_{L^2}$.
+
+\textbf{Satz von \name{Plancherel} für $L^2(\real, dx)$}:
+Für $f, g \in L^2(\real, dx)$ gilt
+$\sp{\F[f], \F[g]}_{L^2} = \sp{f, g}_{L^2}$,\\
+d.\,h. $\F\colon L^2(\real, dx) \rightarrow L^2(\real, dx)$ ist ein
+\emph{unitärer Operator}.
+Insbesondere gilt $\norm{\F[f]}_{L^2} = \norm{f}_{L^2}$.
+
+\linie
+
+\textbf{\name{Fourier}-Transformation als Bijektion zwischen
+$L^2(\real, dx)$-Räumen}:\\
+$\F\colon L^2(\real, dx) \rightarrow L^2(\real, dx)$ ist eine Bijektion.
+
+\linie
+\pagebreak
+
+\textbf{\name{Fourier}-Transformation im $\real^d$}:
+Sei $d \in \natural$.
+
+\textbf{Multiindex}:
+Man bezeichnet Elemente
+$\alpha = (\alpha_1, \dotsc, \alpha_d) \in \natural_0^d$
+als \emph{Multiindex}.\\
+$|\alpha| := \sum_{j=1}^d \alpha_j$ heißt die \emph{Ordnung} von $\alpha$.\\
+Für einen Vektor $\xi = (\xi_1, \dotsc, \xi_d)$ und einen Multiindex
+$\alpha$ schreibt man $\xi^\alpha := \xi_1^{\alpha_1} \dotsm \xi_d^{\alpha_d}$.
+
+\textbf{mehrfache partielle Ableitungen}:\\
+Falls die Ableitungen vertauscht werden können, schreibt man
+$\frac{\partial^{|\alpha|}}{\partial x^\alpha} = \partial^\alpha :=
+\frac{\partial^{|\alpha|}}{\partial x_1^{\alpha_1} \dotsm
+\partial x_d^{\alpha_d}}$.
+
+\textbf{\name{Schwartz}sche Funktionenklasse $\S(\real^d)$}:
+Für $f \colon \real^d \rightarrow \complex$ beliebig oft dif"|ferenzierbar
+sei\\
+$f \in \S(\real^d)$, falls
+$\forall_{m, n \in \natural_0} \exists_{C(m, n) < \infty}
+\forall_{\alpha, \beta \in \natural_0^d,\; |\alpha| \le n,\; |\beta| \le m}
+\forall_{x \in \real}\; |x^\alpha \partial^\beta f(x)| \le C(n, m)$.\\
+$\S(\real^d)$ heißt \emph{\name{Schwartz}sche Funktionenklasse}.
+
+\linie
+
+\textbf{\name{Fourier}-Transformation im $\real^d$}:\\
+Für $f \in \S(\real^d)$ sei $\F[f](\xi) := \frac{1}{(2\pi)^{d/2}}
+\int_{\real^d} f(x) e^{-\i\sp{x, \xi}} \dx$ für $\xi \in \real^d$.
+
+Wegen $\sp{x, \xi}_{\real^d} = x_1 \xi_1 + \dotsb + x_d \xi_d$ gilt
+$e^{-\i\sp{x, \xi}} = e^{-\i x_1 \xi_1} \dotsm e^{-i x_d \xi_d}$.
+Nach dem Satz von Fubini gilt daher
+$\F[f](\xi) = \frac{1}{\sqrt{2\pi}} \int_\real e^{-\i x_d \xi_d}
+\Big(\frac{1}{\sqrt{2\pi}} \int_\real e^{-\i x_{d-1} \xi_{d-1}}
+\Big(\dotsb$\\
+$\Big(\frac{1}{\sqrt{2\pi}} \int_\real e^{-\i x_1 \xi_1}
+f(x_1, \dotsc, x_d) \dx_1\Big)\dotsb\Big)\dx_{d-1}\Big)\dx_d$, d.\,h.\\
+$\F_{x \to \xi}[f] = \F_{x_d \to \xi_d}[\F_{x_{d-1} \to \xi_{d-1}}[\dotsb[
+\F_{x_1 \to \xi_1}[f]]\dotsb]]$
+gilt für $f \in L^1(\real^d, dx)$.
+
+\textbf{Satz}:
+Für $f \in \S(\real^d)$ ist $\F[f] \in \S(\real^d)$.
+
+\textbf{wichtige Formeln}:
+Für $f \in \S(\real^d)$ gilt
+$\frac{\partial^{|\alpha|}}{\partial \xi^\alpha} \F[f](\xi) =
+(-\i)^{|\alpha|} \F[x^\alpha f(x)](\xi)$ sowie\\
+$\F[\frac{\partial^{|\beta|}}{\partial x^\beta} f(x)](\xi) =
+\i^{|\beta|} \xi^\beta \F[f](\xi)$.
+Außerdem gilt
+$\norm{\F[f]}_\C \le \frac{1}{(2\pi)^{d/2}} \norm{f}_{L^1}$,
+also $\F\colon L^1(\real^d, dx) \rightarrow \C$.
+
+\textbf{Satz}:
+$\F\colon \S(\real^d) \rightarrow \S(\real^d)$ ist eine Bijektion.
+
+\textbf{Satz}:
+Für $f, g \in \S(\real^d)$ gilt
+$\sp{\F[f], \F[g]}_{L^2(\real^d, dx)} = \sp{f, g}_{L^2(\real^d, dx)}$.
+
+Man kann analog wie eben $\F$ zu
+$\F\colon L^2(\real^d, dx) \rightarrow L^2(\real^d, dx)$ erweitern.
+Die Formel von Plancherel gilt dann für alle $f, g \in L^2(\real^d, dx)$.
+
+\textbf{Satz}:
+$\F\colon L^2(\real^d, dx) \rightarrow L^2(\real^d, dx)$ ist eine Bijektion.
+
+\pagebreak

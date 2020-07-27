@@ -1,0 +1,228 @@
+\section{%
+    Populationsdynamik%
+}
+
+\subsection{%
+    \name{Fibonacci}-Zahlen%
+}
+
+\textbf{Kaninchenpopulation}:
+Angenommen, Kaninchenpaare bringen jeden Monat ein neues Paar zur Welt.
+Die neuen Kaninchenpaare sind jedoch jeweils erst nach einem Monat geschlechtsreif.
+Startet man mit einem neugeborenen Kaninchenpaar, so ist die Anzahl der im $n$-ten Monat
+vorhandenen Paare $f_n$ gegeben durch $f_0 := 1$, $f_1 := 1$ und $f_n := f_{n-1} + f_{n-2}$
+(\begriff{\name{Fibonacci}-Zahlen}).
+
+\textbf{dahinter stehende Modellannahmen}:
+\begin{itemize}
+    \item
+    diskrete Kaninchen werden gezählt
+    
+    \item
+    zum Start ein neugeborenes Kaninchenpaar
+    
+    \item
+    Vermehrung genau einmal pro Monat
+    
+    \item
+    erst nach einem Monat zeugungsfähig
+    
+    \item
+    Geburten immer paarweise
+    
+    \item
+    keine negativen Einflüsse: Kaninchen sterben nicht, unendliche Ressourcen (Futter, Platz)
+\end{itemize}
+
+\textbf{\name{Fibonacci}-Zahlen}:
+Es gilt $f_n = \frac{1}{\sqrt{5}} (\Phi^n - (1 - \Phi)^n)$
+mit $\Phi := \frac{1 + \sqrt{5}}{2} \approx 1.618$ dem \begriff{Goldenen Schnitt}.
+Somit wächst $f_n$ exponentiell, da $\lim_{n \to \infty} \frac{f_{n+1}}{f_n}
+= \lim_{n \to \infty} \frac{\Phi^{n+1}}{\Phi^n} = \Phi$.
+Ein anderer Zusammenhang besteht mit der linearen Algebra durch
+$A^n = \smallpmatrix{f_{n+1}&f_n\\f_n&f_{n-1}}$ für $A := \smallpmatrix{1&1\\1&0}$.
+Dabei sind die Eigenwerte von $A$ gegeben durch $\Phi$ und $1 - \Phi$.
+
+\pagebreak
+
+\subsection{%
+    Modelle mit einer Spezies%
+}
+
+Zur besseren Handbarkeit geht man von diskreten zu kontinuierlichen Modellen über.
+Für große Populationen ist dies eigentlich keine Einschränkung.
+Zunächst wird nur eine Spezies betrachtet.
+
+\textbf{Modell von \name{Malthus}}:
+$p(t)$ sei die Population zur Zeit $t \ge 0$.
+Pro Zeiteinheit und Individium gibt es die Geburtenrate $\gamma > 0$ und die Sterberate
+$\delta > 0$ (jeweils konstant), d.\,h. man erhält die konstante Wachstumsrate
+$\lambda := \gamma - \delta$.
+Man kommt so auf die ODE $p'(t) = \lambda p(t)$ bzw. diskret
+$p(t + \Delta t) = p(t) + \lambda p(t) \Delta t$
+mit dem diskreten Zeitschritt $\Delta t$.\\
+Die Lösung der ODE ist gegeben duch $p(t) = p_0 e^{\lambda t}$ mit dem Anfangswert $p(0) = p_0$.
+Man erhält \begriff{exponentielles Wachstum}, dafür sind jedoch unbegrenzte Ressourcen nötig.\\
+Die Herleitung geht auch diskret:
+Ist $\lambda$ konstant, so verdoppelt/halbiert sich $p(t)$ alle $\tau$ Zeiteinheiten.
+Wenn man mit $p_0$ zur Zeit $t = 0$ startet, so erhält man nach $k\tau$ Zeiteinheiten
+für $k \in \natural$, dass $p(k\tau) = 2^k p_0 = p_0 e^{(\ln 2)/\tau \cdot k\tau}
+= p_0 e^{\lambda \cdot k\tau}$ mit $\lambda := \ln 2/\tau$.
+Lässt man nun auch $k \in \real$ zu, so erhält man das kontinuierliche Modell.
+
+\linie
+
+\textbf{Modell von \name{Verhulst} (beschränkt)}:
+Exponentielles Wachstum ist nur bedingt möglich (z.\,B. Weltbevölkerung 1700 -- 1960).
+Bei großen Populationen werden beschränkte Ressourcen wichtig.
+Daher betrachtet man nun das lineare Modell $p'(t) = \lambda_0 - \lambda_1 p(t)$
+mit $\lambda_0, \lambda_1 > 0$.
+Für $p(t) = \overline{p} := \frac{\lambda_0}{\lambda_1}$ gilt, dass $p'(t) = 0$.
+$\overline{p}$ heißt deshalb \begriff{Gleichgewichtspunkt}.
+$\overline{p}$ ist attraktiv, weil $\lambda_0 - \lambda_1 p$ positiv/negativ ist,
+wenn $p - \overline{p}$ negativ/positiv ist.
+Das Richtungsfeld der ODE ($t$-$p$-Koordinaten) zeigt deshalb zu $\overline{p}$ hin.
+Die Lösung ist gegeben durch $p(t) = \overline{p} + (p_0 - \overline{p}) e^{-\lambda_1 t}$.
+Diese Art von Wachstum nennt man \begriff{beschränktes Wachstum}.
+
+\linie
+
+\textbf{Modell von \name{Verhulst} (logistisch)}:
+Das lineare Modell hat eine Nachteile.
+Zum einen entsteht aus dem Nichts ($p(0) = 0$) Population,
+zum anderen ist das Wachstum für kleine $p$ linear und nicht exponentiell.
+Das Ziel ist es, für kleine $p$ wie Malthus und für große $p$ wie Verhulst (beschränkt) zu wachsen.
+Dazu setzt man $\lambda(p) := a - bp$ für $ab > 0$, d.\,h. die Wachstumsrate soll linear zur
+Population schrumpfen.\\
+Man erhält $p'(t) = \lambda(p(t)) \cdot p(t) = (a - bp(t)) p(t) = -bp(t)^2 + ap(t)$.
+Die Lösung ist explizit angebbar und lautet $p(t) = \frac{ap_0}{bp_0 + (a-bp_0) e^{-at}}$.\\
+Für $t \to \infty$ gilt $p(t) \to \frac{a}{b}$, falls $p_0 > 0$.
+Für $p \approx 0$ ergibt sich $p' \approx ap$, d.\,h. man erhält exponentielles Wachstum.
+Für größere $p$ ist das Modell ähnlich wie das Sättigungsmodell.
+Diese Art von Wachstum nennt man \begriff{logistisches Wachstum}.
+
+\textbf{Gleichgewichtspunkte}:
+$\overline{p}$ heißt \begriff{kritischer Punkt/GG-Punkt}, falls $p'(t) = 0$ für
+$p(t) = \overline{p}$.\\
+Es gibt drei Arten von GG-Punkten:
+\begin{itemize}
+    \item
+    \begriff{attraktives GG}:
+    $p' < 0$ für $p \in (\overline{p}, \overline{p} + \varepsilon)$ und
+    $p' > 0$ für $p \in (\overline{p} - \varepsilon, \overline{p})$
+    
+    \item
+    \begriff{instabiles GG}:
+    $p' > 0$ für $p \in (\overline{p}, \overline{p} + \varepsilon)$ und
+    $p' < 0$ für $p \in (\overline{p} - \varepsilon, \overline{p})$
+    
+    \item
+    \begriff{Sattelpunkt}:
+    sonst
+\end{itemize}
+
+\textbf{kritische Punkte beim logistischen Wachstum}:
+Es gibt zwei GG-Punkte $p = 0$ (instabil) und $p = \overline{p} := \frac{a}{b}$ (attraktiv).
+Für $0 < p < \frac{\overline{p}}{2}$ steigt das Wachstum streng monoton.
+In $p = \frac{\overline{p}}{2}$ befindet sich der Wendepunkt, d.\,h. dort ist $p'$ maximal.
+Für $\frac{\overline{p}}{2} < p < \overline{p}$ schrumpft das Wachstum streng monoton
+und für $p > \overline{p}$ fällt die Population streng monoton gegen $\overline{p}$.
+
+\linie
+
+\textbf{logistisches Wachstum mit kritischer Grenze}:
+Reale Populationen sterben meistens aus, wenn eine bestimmte (positive) kritische Grenze
+unterschritten wird, denn dann tref"|fen sich Artgenossen zu selten.
+Daher kann man das logistische Modell erweitern zu\\
+$p'(t) = \alpha (1 - \frac{p(t)}{\beta}) (1 - \frac{p(t)}{\delta}) p(t)$,
+d.\,h. $p'$ ist ein kubisches Polynom in $p$ mit Nullstellen $0$, $\beta$, $\gamma$.
+
+\pagebreak
+
+\subsection{%
+    Lineare Zweispeziesmodelle%
+}
+
+Nun betrachtet man zwei Spezies $P$ und $Q$ mit Populationsgrößen $p(t)$ und $q(t)$,
+zwischen denen es Wechselwirkungen gibt (Kooperation, Konkurrenz usw.).
+
+\textbf{lineares Modell}:
+Analog zum Sättigungsmodell von Verhulst kann man ein System zweier ODEs definieren als
+$p'(t) = a_1 + b_1 p(t) + c_1 q(t)$ und $q'(t) = a_2 + c_2 p(t) + b_2 q(t)$.
+Dabei sollte $a_1, a_2 > 0$ und $b_1, b_2 < 0$ sein, damit Wachstum und Sättigung sichergestellt
+werden.
+
+\linie
+
+\textbf{Wettrüsten}:
+Sind $p(t)$ und $q(t)$ die Rüstungsausgaben zweier Großmächte $P$ und $Q$, so definieren
+$b_1, b_2 < 0$ die Abrüstraten und $c_1, c_2 > 0$ die Aufrüstraten.
+$a_1, a_2$ sind die konstanten Aufrüstbeiträge (Abrüstbeiträge falls negativ).
+
+\textbf{GG-Punkt}:
+Man kann das System als
+$\smallpmatrix{p'\\q'} = \smallpmatrix{b_1&c_1\\c_2&b_2} \smallpmatrix{p\\q} +
+\smallpmatrix{a_1\\a_2}$
+darstellen.
+Gilt $b_1 b_2 \not= c_1 c_2$ (d.\,h. ist $A := \smallpmatrix{b_1&c_1\\c_2&b_2}$ regulär),
+dann gibt es einen eindeutigen GG-Punkt
+$\smallpmatrix{\overline{p}\\\overline{q}} := -A^{-1} \smallpmatrix{a_1\\a_2}$,
+sodass $p' = q' = 0$.
+Der GG-Punkt ist stabil genau dann, wenn alle Eigenwerte einen negativen Realteil besitzen:
+Seien $\lambda_1, \lambda_2 \in \complex$ die Eigenwerte und $v_1, v_2 \in \real^2$
+zugehörige Eigenvektoren.
+Weil die Lösung durch $\smallpmatrix{p(t)\\q(t)} = e^{At} \smallpmatrix{p_0\\q_0}$ gegeben ist
+und $\smallpmatrix{p_0\\q_0} = \mu_1 v_1 + \mu_2 v_2$ für bestimmte $\mu_1, \mu_2 \in \real$,
+folgt $\smallpmatrix{p(t)\\q(t)} = \sum_{i=1}^2 \mu_i e^{At} v_i
+= \sum_{i=1}^2 \mu_i e^{\lambda_i t} v_i$.
+Besitzen nun die $\lambda_i$ nur negative Realteile, so konvergiert
+$|e^{\lambda_i t}| = e^{\Re(\lambda_i)t}$ für $t \to \infty$ gegen $0$.
+Die Umkehrung gilt ebenfalls.
+
+\textbf{Richtungsfeld}:
+Weil $t$ irrelevant für das Richtungsfeld ist, zeichnet man die Richtungen $(p', q')$ in
+Abhängigkeit von $(p, q)$ in einem $p$-$q$-Koordinatensystem.
+Existiert ein GG-Punkt $(\overline{p}, \overline{q})^\tp$,
+so können die Pfeile auf den beiden Geraden durch den GG-Punkt in Richtung der Eigenvektoren $v_i$
+leicht gezeichnet werden:
+Gilt nämlich $(p, q)^\tp - (\overline{p}, \overline{q})^\tp = \mu v_i$ für ein $\mu \in \real$,
+so erhält man
+$(p', q')^\tp = A(p, q)^\tp + (a_1, a_2)^\tp = A(p, q)^\tp - A(\overline{p}, \overline{q})^\tp
+= \mu Av_i = \mu \lambda_i v_i$.
+Für $\lambda_i \in \real$ zeigen also die Pfeile zum GG-Punkt hin/weg, wenn $\lambda_i < 0$ bzw.
+$\lambda_i > 0$.
+
+\linie
+
+\textbf{attraktives Gleichgewicht}:
+$\smallpmatrix{p'(t)\\q'(t)} =
+\smallpmatrix{-1/10&1/20\\1/20&-1/10} \smallpmatrix{p(t)\\q(t)} + \smallpmatrix{3/40\\0}$\\
+Der GG-Punkt ist $(\overline{p}, \overline{q})^\tp = (1, 1/2)$.
+Die Eigenwerte sind $\lambda_1 = -1/20$ und $\lambda_2 = -3/20$ mit Eigenvektoren
+$v_1 = (1, 1)^\tp$ und $v_2 = (-1, 1)^\tp$.
+
+\textbf{labiles Gleichgewicht}:
+$\smallpmatrix{p'(t)\\q'(t)} =
+\smallpmatrix{-1/20&1/10\\1/10&-1/20} \smallpmatrix{p(t)\\q(t)} + \smallpmatrix{3/40\\0}$\\
+Der GG-Punkt ist $(\overline{p}, \overline{q})^\tp = (1, 1/2)$.
+Die Eigenwerte sind $\lambda_1 = 1/20$ und $\lambda_2 = -3/20$ mit Eigenvektoren
+$v_1 = (1, 1)^\tp$ und $v_2 = (-1, 1)^\tp$.
+
+\textbf{friedlicher Nachbar}:
+$\smallpmatrix{p'(t)\\q'(t)} =
+\smallpmatrix{-3/4&1\\-1&-3/4} \smallpmatrix{p(t)\\q(t)} + \smallpmatrix{0\\5/2}$\\
+Beim friedlichen Nachbar ist $c_2 < 0$ (rüstet ab, je mehr der andere aufrüstet).
+Der GG-Punkt ist $(\overline{p}, \overline{q})^\tp = (8/5, 6/5)$.
+Die Eigenwerte sind $\lambda_{1,2} = -3/4 \pm \iu$.
+Hier "`rotiert"' das Richtungsfeld spiralförmig um den GG-Punkt,
+die Lösung $(p, q)^\tp$ "`schneckert"' sich zum GG-Punkt.
+
+\linie
+
+\textbf{Realismus}:
+Das Modell ist nicht sonderlich realistisch, denn bei zu großen Dif"|ferenzen von $p(t)$ und $q(t)$
+würde $P$ oder $Q$ den Gegner angreifen.
+Es sollte also so verbessert werden, dass $p(t) \gg q(t)$ zu einem Aufrüsten von $Q$ führt
+und $q(t) \gg p(t)$ zu einem Aufrüsten von $P$.
+
+\pagebreak

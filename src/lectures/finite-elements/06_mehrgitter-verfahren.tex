@@ -1,0 +1,359 @@
+\section{%
+    Mehrgitter-Verfahren%
+}
+
+Für uniforme B-Spline-Basen liegt es nahe, Mehrgitter-Verfahren zur Lösung der
+Ritz-Galerkin-Systeme zu verwenden.
+Solche Algorithmen stellen die ef"|fizientesten iterativen Löser für große
+Ritz-Galerkin-Systeme dar.
+Die Zeit, die zur Lösung benötigt wird, ist proportional zur Anzahl der Unbekannten,
+daher asymptotisch optimal.
+Während bei klassischen Iterationsverfahren wie SSOR oder CG die Konvergenzrate
+für kleinere Gitterweiten immer schlechter wird,
+reduzieren Mehrgitter-Verfahren den Fehler in jedem Schritt um einen vom Gitter unabhängigen
+Faktor.
+
+\subsection{%
+    Idee der Mehrgitter-Verfahren%
+}
+
+Um die Mehrgitter-Idee zu erklären, betrachtet man Beispiel das univariate Modellproblem
+\begin{align*}
+    -u'' = f \text{ in } [0, 1],\quad
+    u(0) = u(1) = 0.
+\end{align*}
+Mehrgitter-Verfahren berechnen zunächst eine Näherung $V_h \approx U_\ast$ der exakten Lösung
+$U_\ast$.
+Anschließend wird $R := GV_h - F_h = GW_h$ mit $W_h = V_h - U_\ast$ und  nach $W_h$ gelöst
+und eine sog. \begriff{Grobgitter-Korrektur} $U_h := V_h - W_h$ durchgeführt.
+
+\linie
+
+\textbf{\name{Ritz}-\name{Galerkin}-Diskretisierung}:
+Die Standard-FE-Approximation
+\begin{align*}
+    u \approx u_h = \sum_i u_i b_i
+\end{align*}
+mit Hut-Funktionen $b_i := b^1(\cdot/h - i)$ berechnet sich durch das tridiagonale
+Ritz-Galerkin-System
+\begin{align*}
+    GU_\ast = h^{-1} \begin{pmatrix}2 & -1 & &\\-1 & 2 & -1 & \\ & \ddots & \ddots & \ddots
+    \end{pmatrix} U_\ast = F.
+\end{align*}
+
+\linie
+
+\textbf{\name{Richardson}-Iteration}:
+Die \begriff{\name{Richardson}-Iteration} verbessert eine Approximation $U \approx U_\ast$
+des Koef"|fizientenvektors durch Subtraktion eines Vielfachen des Residuums:
+\begin{align*}
+    U \leftarrow U - \gamma^{-1} (GU - F).
+\end{align*}
+Der Parameter $\gamma$ wird gewählt als $4/h = \norm{G}_\infty$,
+sodass die tridiagonale Iterationsmatrix
+\begin{align*}
+    E - \gamma^{-1} G =
+    \begin{pmatrix}1/2 & 1/4 & &\\1/4 & 1/2 & 1/4 & \\ & \ddots & \ddots & \ddots\end{pmatrix}
+\end{align*}
+Eigenwerte in $(0, 1)$ besitzt.
+(Lineare Iterationsverfahren konvergieren genau dann, wenn der Spektralradius,
+d.\,h. der Betrag des betragsmäßig größten Eigenwerts, kleiner als $1$ ist,
+außerdem ist jede Matrixnorm größer oder gleich wie der größte Eigenwert.)
+
+Die Richardson-Iteration dämpft hoch-oszillierende Fehlerkomponenten sehr stark.
+
+\linie
+\pagebreak
+
+\textbf{Subdivision}:
+Für die B-Splines $\widetilde{b}_i := b^1(\cdot/(2h) - i)$ und $b_i$ auf den Gitter mit
+Gitterweiten $\widetilde{h} := 2h$ und $h$ gilt
+\begin{align*}
+    \widetilde{b}_i = \sum_\ell p_{\ell,i} b_\ell,\quad
+    P^t := \begin{pmatrix}1/2 & 1 & 1/2 & & & &\\&&1/2 & 1 & 1/2 & &\\&&&&
+    \dotsb&\dotsb&\dotsb\end{pmatrix},
+\end{align*}
+also $\widetilde{b}_i = \frac{1}{2} b_{2i} + b_{2i+1} + \frac{1}{2} b_{2i+2}$ bzw.
+$p_{2i+1,i} = 1$ und $p_{2i,i} = p_{2i+2,i} = 1/2$.
+
+\linie
+
+\textbf{Einschränkung}:
+Der geglättete Fehler $e_v$ einer Approximation $V$ zur exakten Lösung $U_\ast$
+kann relativ genau auf einem gröberen Gitter dargestellt werden.
+Daher kann die Residuumsgleichung
+\begin{align*}
+    GW_\ast = R,\quad
+    R = GV - F,
+\end{align*}
+für die Dif"|ferenz $W_\ast = V - U_\ast$ zur exakten Lösung $U_\ast$ durch die doppelte
+Gitterweite $\widetilde{h} = 2h$ approximiert werden durch
+\begin{align*}
+    \widetilde{G} \widetilde{W} = \widetilde{R},\quad
+    \widetilde{g}_{k,i} := \int_0^1 \widetilde{b}_i' \widetilde{b}_k',\quad
+    \widetilde{R} := P^t R.
+\end{align*}
+
+\linie
+
+\textbf{Erweiterung}:
+Die Grobgitter-Korrektur $\widetilde{W}$ kann anschließend wieder durch
+\begin{align*}
+    \widetilde{w}
+    = \sum_i \widetilde{w}_i \widetilde{b}_i
+    = \sum_i \sum_\ell p_{\ell,i} \widetilde{w}_i b_\ell
+    = \sum_\ell (P\widetilde{W})_\ell b_\ell
+\end{align*}
+zurück auf das feinere Gitter erweitert werden.
+
+\linie
+
+\textbf{Zwei-Gitter-Algorithmus}:\\
+Eine Iteration des \begriff{Zwei-Gitter-Algorithmus} besteht aus den folgenden Schritten:
+\begin{enumerate}
+    \item
+    Durchführung von $\alpha$-vielen Richardson-Iterationen
+    $U \leftarrow U - \gamma^{-1} (GU - F)$,
+    um eine Approximation $V$ mit glattem Fehler zu erhalten
+    
+    \item
+    Berechnung des Residuums $R = GV - F$
+    
+    \item
+    Einschränkung $\widetilde{R} = P^t R$ auf das gröbere Gitter
+    
+    \item
+    Lösung des Grobgitter-Systems $\widetilde{G} \widetilde{W} = \widetilde{R}$
+    
+    \item
+    Erweiterung $W = P \widetilde{W}$ auf das feinere Gitter
+    
+    \item
+    Korrektur $U = V - W$ der Feingitter-Approximation
+\end{enumerate}
+
+\linie
+
+\textbf{Mehrgitter-Algorithmus}:
+Beim Mehrgitter-Algorithmus wird in Schritt 4 wieder der Algorithmus angewandt.
+Wenn man einen Iterationsschritt als
+\begin{align*}
+    W = \mathcal{M}(U, F, h)
+\end{align*}
+bezeichnet ($U$ Startvektor, $F$ rechte Seite, Gitterweite $h$),
+dann ersetzt man das Lösen des Grobgitter-Systems $\widetilde{G} \widetilde{W} = \widetilde{R}$
+durch
+\begin{align*}
+    \widetilde{W} = \mathcal{M}(0, \widetilde{R}, 2h)
+\end{align*}
+(Nullvektor als Startvektor, da Residuen meistens klein).
+Nur wenn die Gitterweite $h$ zu groß ist, bricht man ab und berechnet die exakte Lösung
+$\widetilde{W} = \widetilde{G}^{-1} \widetilde{R}$.
+
+\pagebreak
+
+\subsection{%
+    Gittertransfer%
+}
+
+\textbf{multivariate Subdivision}:\\
+Die relevanten B-Splines $\widetilde{b}_\ell$ mit Gitterweite $2h$ können als Linearkombinationen
+\begin{align*}
+    \widetilde{b}_\ell = \sum_{k \in K} s_{k-2\ell} b_k,\quad
+    s_\alpha := 2^{-nm} \prod_{\nu=1}^m \binom{n+1}{\alpha_\nu}
+\end{align*}
+von $b_k = b_{k,h}^n$ dargestellt werden,
+wobei $\binom{n+1}{\mu} := 0$ für $\mu < 0$ oder $\mu > n + 1$.
+
+Eine Linearkombination von Grobgitter-B-Splines $\widetilde{b}_\ell$ wird auf dem feinen Gitter
+dargestellt durch
+\begin{align*}
+    \sum_{\ell \in \widetilde{K}} \widetilde{u}_\ell \widetilde{b}_\ell
+    = \sum_{\ell \in \widetilde{K}} \sum_{k \in K} s_{k-2\ell} \widetilde{u}_\ell b_k
+    = \sum_{k \in K} u_k b_k,
+\end{align*}
+d.\,h. die Koef"|fizienten hängen zusammen durch die Beziehung
+\begin{align*}
+    U = P \widetilde{U},\quad
+    p_{k,\ell} := s_{k-2\ell}.
+\end{align*}
+Der Transfer eines Residuums erfolgt durch
+\begin{align*}
+    \widetilde{r}_\ell
+    = \lambda(\widetilde{b}_\ell)
+    = \sum_{k \in K} s_{k-2\ell} \lambda(b_k)
+    \iff
+    \widetilde{R} = P^t R.
+\end{align*}
+Diese Formeln verändern sich nicht bei Multiplikation mit einer Gewichtsfunktion $w$ und sind
+daher auch für den gewichteten Spline-Raum $w\BB$ gültig.
+
+\linie
+
+\textbf{Gittertransfer für WEB-Splines}:
+Die Projektion eines Grobgitter-WEB-Splines ist
+\begin{align*}
+    P_h \widetilde{B}_\ell
+    := \sum_{i \in I} p_{i,\ell} B_i,\quad
+    p_{i,\ell} := \frac{w(x_i)}{w(\widetilde{x}_\ell)}
+    \left(s_{i-2\ell} + \sum_{j \in \widetilde{J}(\ell)} \widetilde{e}_{\ell,j} s_{i-2j}\right).
+\end{align*}
+Daher gilt
+\begin{align*}
+    P_h \sum_{\ell \in \widetilde{I}} \widetilde{u}_\ell \widetilde{B}_\ell
+    = \sum_{i \in I} u_i B_i,\quad
+    U = P \widetilde{U},
+\end{align*}
+und $\widetilde{R} = P^t R$ ist die Approximation eines Residuums auf dem groben Gitter.
+
+\subsection{%
+    Grundlegender Algorithmus%
+}
+
+\textbf{Mehrgitter-Algorithmus}:
+Ein Schritt
+$U \rightarrow W = \mathcal{M}(U, F, h)$
+des Mehrgitter-Algorithmus, der eine Approximation $U \approx U_\ast := G^{-1} F$ verbessert,
+ist definiert durch das Programm
+\begin{align*}
+    &V = S^\alpha(U, F)\\
+    &R = GV - F\\
+    &\widetilde{R} = P^t R\\
+    &\mathbf{if}\; 2h = h_{\text{max}}\\
+    &\qquad\widetilde{W} = \widetilde{G}^{-1} \widetilde{R}\\
+    &\mathbf{else}\\
+    &\qquad\widetilde{W} = \mathcal{M}^\beta(0, \widetilde{R}, 2h)\\
+    &\mathbf{end}\\
+    &W = V - P\widetilde{W},
+\end{align*}
+wobei $\alpha$ und $\beta$ die Anzahl an Glättungs- bzw. groben Mehrgitter-Iterationen bezeichnet.
+
+\linie
+\pagebreak
+
+\textbf{Mehrgitter-Heuristik}:
+Der Fehler nach $\alpha$-vielen Richardson-Schritten ist
+\begin{align*}
+    V - U_\ast = (E - \gamma^{-1} G)^\alpha (U - U_\ast).
+\end{align*}
+Die langsam oszillierenden dominieren
+gegenüber den hochfrequenten Komponenten, daher kann die
+Residuumsgleichung $G(V - U_\ast) = R$ mit $R := GV - F$
+gut auf dem groben Gitter approximiert werden, d.\,h. man betrachtet approximative Lösungen
+der Form $P\widetilde{W} \approx V - U_\ast$, die man als Projektionen vom groben Gitter erhält.
+Wegen $P_h \widetilde{B}_i = \sum_\alpha p_{\alpha,i} B_\alpha = \widetilde{B}_i$
+(im Falle von WEB-Splines müsste das letzte Gleichheitszeichen durch $\approx$ ersetzt werden)
+gilt
+\begin{align*}
+    \widetilde{g}_{k,i}
+    = a(\widetilde{B}_i, \widetilde{B}_k)
+    = \sum_{\alpha,\beta \in I} p_{\alpha,i} a(B_\alpha, B_\beta) p_{\beta,k}
+\end{align*}
+mit $a(B_\alpha, B_\beta) = g_{\beta,\alpha}$.
+Daher ist $\widetilde{G} = P^t G P$, sodass
+$\widetilde{G} \widetilde{W} = \widetilde{R}$ mit $\widetilde{R} = P^t R$
+die angemessene Approximation der obigen Resiuumsgleichung ist
+(wegen $GP\widetilde{W} \approx R$).
+Durch Lösung dieses Grobgitter-Systems
+(direkt oder approximativ mit $\beta$-vielen Schritten einer Mehrgitter-Iteration)
+folgt aus $\widetilde{W} \approx \widetilde{G}^{-1} \widetilde{R}$,
+dass $P\widetilde{W} \approx G^{-1} R$.
+Deswegen sollte die Grobgitter-Korrektur $V \rightarrow W = V - P\widetilde{W}$ zu einer
+substanziellen Verbesserung führen.
+
+\linie
+
+\textbf{Wahl von $\alpha$ und $\beta$}:
+Die Fälle $\beta = 1$ und $\beta = 2$ werden \begriff{v- bzw. w-Zyklus} genannt.
+Eine feste Wahl von $\alpha$ und $\beta$ ist für theoretische Zwecke praktisch,
+jedoch ist für die Implementierung die dynamische Kontrolle des Gittertransfers viel ef"|fizienter.
+Man hört bei den Glättungsschritten auf, wenn die Konvergenz langsam wird, und
+transferiert die Korrektur zurück auf das feine Gitter, wenn der Fehler ausreichend
+reduziert wurde.
+
+\linie
+
+\textbf{Anzahl der Operationen}:
+Die Anzahl der vom Mehrgitter-Algorithmus durchgeführten Iterationen ist gleich
+$\sigma(h) \preceq h^{-m}$, wenn $\beta < 2^m$.
+Daher ist der rechnerische Aufwand für einen Mehrgitter-Schritt äquivalent zu dem einer festen
+Anzahl an Richardson-Iterationen.
+Wegen der Reduktion der Gittergröße verursachen die rekursiven Aufrufe nur einen moderaten
+Zuwachs der Komplexität.
+
+\subsection{%
+    Glättung und Grobgitter-Approximation%
+}
+
+Im Folgenden wird der Glättungsef"|fekt der Richardson-Iteration und die Genauigkeit der
+Grob"-gitter-Korrektur analytisch erklärt.
+Die beiden Lemmas werden für den Beweis der Konvergenz im nächsten Abschnitt benötigt.
+$D$ sei dazu ein glattes Gebiet und die Approximation erfolgt durch WEB-Splines mit einer
+Standard-Gewichtsfunktion.
+Außerdem betrachtet man wieder das Poisson-Problem $-\Delta u = f$ in $D$,
+$u = 0$ auf $\partial D$ als typisches Modellproblem.
+
+Für den Richardson-Iterationsfehler gilt
+$V = U - \gamma^{-1} (GU - F)$ sowie $U_\ast = U_\ast - \gamma^{-1} (GU - F)$.
+Die Dif"|ferenz der Gleichungen ist $V - U_\ast = S(U - U_\ast)$ mit
+der Iterationsmatrix $S = E - \gamma^{-1} G$.
+Nach $\alpha$-vielen Iterationen erhält man den Fehler
+$V - U_\ast = S^\alpha (U - U_\ast)$
+(wie bei jeder linearen Iteration).
+Man kann zeigen, dass $\norm{GS^\alpha} \le \const \cdot \frac{h^{m-2}}{\alpha+1}$,
+dabei entspricht die Multiplikation mit $G$ die "`Bildung der 2. Ableitung"',
+d.\,h. wie stark der Fehler variiert.
+Man erhält daher einen Faktor $h^{-2}$,
+der Faktor $h^m$ kommt von der Normalisierung der WEB-Splines.
+Das Wichtige ist die Division durch $\alpha + 1$, was den Glättungsef"|fekt der Iteration
+quantifiziert.
+
+\textbf{Glättung der Richardson-Iteration}:\\
+Der Fehler nach $\alpha$-vielen Richardson-Schritten $U \rightarrow V$ erfüllt
+\begin{align*}
+    \norm{G (V - U_\ast)} \le \const(D, w, n) \frac{h^{m-2}}{\alpha+1} \norm{U - U_\ast},
+\end{align*}
+wobei $U, V$ Approximationen von $U_\ast = G^{-1} F$ sind.
+
+\linie
+\pagebreak
+
+Der folgende Satz zeigt, dass es nur einen kleinen Unterschied zwischen den Lösungen
+auf aufeinanderfolgenden Gittern gibt.
+
+\textbf{Fehler der Grobgitter-Korrektur}:
+Wenn
+\begin{align*}
+    \widetilde{G} \widetilde{U}_\ast = \widetilde{R},\quad
+    R := G(V - U_\ast),
+\end{align*}
+mit $\widetilde{R} := P^t R$,
+dann gilt
+\begin{align*}
+    \norm{(v - u_\ast) - \widetilde{u}_\ast}_0 \le \const(D, w, n) h^{2-m} \norm{r}_0,
+\end{align*}
+wobei $v, u_\ast, \widetilde{u}_\ast, r$ die WEB-Splines sind, die zu den Koef"|fizientenvektoren
+$V, U_\ast, \widetilde{U}_\ast, R$ gehören.
+
+\subsection{%
+    Konvergenz%
+}
+
+\textbf{Mehrgitter-Konvergenz}:
+Für $\beta = 2$ Grobgitter-Iterationen gilt
+\begin{align*}
+    \norm{W - U_\ast} \le \frac{\const(D, w, n)}{\alpha + 1} \norm{U - U_\ast}
+\end{align*}
+für einen Mehrgitter-Schritt $U \rightarrow W$.
+Daher ist die Konvergenzrate $\varrho$ des w-Zyklus kleiner als $1$
+(gleichmäßig bzgl. der Gitterweite $h$), falls die Anzahl $\alpha$ an Glättungsschritten
+genügend groß ist.
+
+Für diesen Satz benötigt man u.\,a. die Stabilität der WEB-Basis
+und die Beschränktheit des Standard-Projektors, d.\,h.
+\begin{align*}
+    \norm{q}_0 \asymp h^{m/2} \norm{Q},\quad
+    \norm{P_h \varphi}_0 \preceq \norm{\varphi}_0.
+\end{align*}
+
+\pagebreak

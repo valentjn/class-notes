@@ -1,0 +1,1249 @@
+\section{%
+    Oberflächen- und Volumenintegrale, Elemente der Vektoranalysis%
+}
+
+\subsection{%
+    Produktmaß, Satz von \name{Fubini}%
+}
+
+Im Folgenden seien $(X, \mathcal{A}_X, \mu)$ und $(Y, \mathcal{A}_Y, \nu)$
+Maßräume, wobei $\mathcal{A}_X$ bzw. $\mathcal{A}_Y$ $\sigma$-Algebren auf
+$X$ bzw. $Y$ sein sollen.
+Dabei ist $a_X$ eine Menge $a_X \in \mathcal{A}_X$ und
+$a_Y$ eine Menge $a_Y \in \mathcal{A}_Y$. \\
+Man will nun ein Maß $\mu \otimes \nu$ auf $X \times Y$ konstruieren.
+Dabei sollen die Rechtecke $a_X \times a_Y$ mit $a_X \in \mathcal{A}_X$ und
+$a_Y \in \mathcal{A}_Y$ messbar sein, wobei
+$(\mu \otimes \nu)(a_X \times a_Y) = \mu(a_X) \cdot \nu(a_Y)$.
+
+\textbf{Algebra $\mathcal{A}_{X \times Y}$ auf $X \times Y$}: \\
+Sind $(X, \mathcal{A}_X, \mu)$ und $(Y, \mathcal{A}_Y, \nu)$ Maßräume,
+so definiert man die $\sigma$-Algebra $\mathcal{A}_{X \times Y}$ auf
+$X \times Y$ als die kleinste $\sigma$-Algebra,
+die alle Rechtecke $a_X \times a_Y$ mit
+$a_X \in \mathcal{A}_X$, $a_Y \in \mathcal{A}_Y$ enthält.
+
+\linie
+
+\textbf{Satz}:
+Sei $E \in \mathcal{A}_{X \times Y}$ mit
+$E_x := \{y \in Y \;|\; (x, y) \in E\}$ für $x \in X$ und
+$E_y := \{x \in X \;|\; (x, y) \in E\}$ für $y \in Y$.
+Dann ist $\forall_{x \in X}\; E_x \in \mathcal{A}_Y$ und
+$\forall_{y \in Y}\; E_y \in \mathcal{A}_X$.
+
+Für $E \in \mathcal{A}_{X \times Y}$ sind also
+$f(x) := \nu(E_x) \ge 0$ für $x \in X$ und
+$g(y) := \mu(E_y) \ge 0$ für $y \in Y$ wohldefiniert,
+da $E_x \in \mathcal{A}_Y$ und $E_y \in \mathcal{A}_X$.
+
+\linie
+
+Für alle Rechtecke $E = a_X \times a_Y$, $a_X \in \mathcal{A}_X$,
+$a_Y \in \mathcal{A}_Y$ gilt $f(x) = \nu(a_Y)$ für $x \in a_X$ und
+$f(x) = 0$ für $x \notin a_X$, analog $g(y) = \mu(a_X)$ für $y \in a_Y$ und
+$g(y) = 0$ für $y \notin a_Y$. \\
+Daher gilt $\int_X f(x) d\mu = \int_{a_X} \nu(a_Y) d\mu =
+\mu(a_X) \cdot \nu(a_Y) = \int_{a_Y} \mu(a_X) d\nu = \int_Y g(y) d\nu$,
+also $\int_X f(x) d\mu = \int_Y g(y) d\nu$.
+Die Frage ist, ob dies für alle $E \in \mathcal{A}_{X \times Y}$ gilt.
+
+\textbf{$\sigma$-finit}:
+Ein Maßraum heißt $\sigma$-finit, falls die Grundmenge sich durch
+höchstens abzählbar viele Mengen von endlichem Maß überdecken lässt.
+
+\emph{Lemma}: Enthält ein monotones Mengensystem $\mathcal{D}$
+(d.\,h. aus $E_n \in \mathcal{D}$, $E_1 \subset E_2 \subset \dotsb$ folgt
+$E = \bigcup_{n=1}^\infty E_n \in \mathcal{D}$ und aus
+$E_n' \in \mathcal{D}$, $E_1' \supset E_2' \supset \dotsb$ folgt
+$E' = \bigcap_{n=1}^\infty E_n' \in \mathcal{D}$)
+einen Ring $\mathcal{F}$, so enthält $\mathcal{D}$ auch den minimalen
+$\sigma$-Ring $\mathcal{F}^\ast$, der von $\mathcal{F}$ erzeugt wird.
+
+\linie
+
+\textbf{Satz}:
+Seien $\mu$ und $\nu$ $\sigma$-finite Maße.
+Dann gilt $\int_X \nu(E_x) d\mu = \int_Y \mu(E_y) d\nu$
+für alle $E \in \mathcal{A}_{X \times Y}$.
+
+\textbf{Satz}:
+Seien $(X, \mathcal{A}_X, \mu)$ und $(Y, \mathcal{A}_Y, \nu)$ $\sigma$-finite
+Maßräume.
+Dann ist
+$\mu \otimes \nu\colon \mathcal{A}_{X \times Y} \rightarrow [0, +\infty]$
+mit $(\mu \otimes \nu)(E) := \int_X \nu(E_x) d\mu = \int_Y \mu(E_y) d\nu$
+ein Maß auf $\mathcal{A}_{X \times Y}$ (\textbf{Produktmaß}).
+
+\linie
+
+\textbf{Satz}:
+Sei $h\colon X \times Y \rightarrow \real$ bzgl. $\mathcal{A}_{X \times Y}$
+messbar. \\
+Dann sind auch die Funktionen $h(x, \cdot)\colon Y \rightarrow \real$ bzgl.
+$\mathcal{A}_Y$ und $h(\cdot, y)\colon X \rightarrow \real$ bzgl.
+$\mathcal{A}_X$ messbar.
+
+Für eine messbare Funktion $h\colon X \times Y \rightarrow \real$
+kann man das \textbf{Doppelintegral}
+$\int_{X \times Y} h(x, y) d(\mu \otimes \nu)$
+und die \textbf{iterierten Integrale}
+$\int_Y (\int_X h(x, y) d\mu) d\nu$ bzw. $\int_X (\int_Y h(x, y) d\nu) d\mu$
+betrachten.
+
+\textbf{Satz von \name{Fubini}}: \\
+Sei $h\colon X \times Y \rightarrow \real$ messbar mit $h(x, y) \ge 0$
+bzw. $h \in L^1(X \times Y, \mu \otimes \nu)$. \\
+Dann sind für fast alle $x \in X$ die Funktion
+$h(x, \cdot)$ und für fast alle $y \in Y$ die Funktion
+$h(\cdot, y)$ messbar und
+nicht-negativ bzw. integrierbar und es gilt \\
+$\int_X (\int_Y h(x, y) d\nu) d\mu =
+\int_{X \times Y} h(x, y) d(\mu \otimes \nu) =
+\int_Y (\int_X h(x, y) d\mu) d\nu$.
+
+\textbf{Satz von \name{Fubini-Tonelli}}: \\
+Sei $h\colon X \times Y \rightarrow \real$ messbar mit
+$\int_X (\int_Y |h(x, y)|d\nu) d\mu < \infty$ oder
+$\int_Y (\int_X |h(x, y)|d\mu) d\nu < \infty$. \\
+Dann gilt $h \in L^1(X \times Y, \mu \otimes \nu)$
+und der Satz von Fubini lässt sich anwenden.
+
+\linie
+\pagebreak
+
+\textbf{Folgerung}:
+Seien $h(x, y) \ge 0$ mit $\int_{X \times Y} h(x, y)
+d(\mu \otimes \nu) < \infty$, $f(x) := \int_Y h(x, y) d\nu$ und \\
+$g(y) := \int_X h(x, y) d\mu$.
+Für $h(x, y) \ge 0$ bzw. $h \in L^1(X \times Y, \mu \otimes \nu)$
+gilt nach dem Satz von Fubini $f \in L^1(X, \mu)$ und $g \in L^1(Y, \nu)$,
+d.\,h. $f(x) < \infty$ $\mu$-f.-ü. und $g(y) < \infty$ $\nu$-f.-ü. sowie
+$\int_Y h(x, y) d\nu < \infty$ $\mu$-f.-ü. und
+$\int_X h(x, y) d\mu < \infty$ $\nu$-f.-ü.
+
+\linie
+
+\emph{Falsch ist dagegen folgende Aussage}:
+Aus $|\int_X (\int_Y h(x, y) d\nu) d\mu| < \infty$ und \\
+$|\int_Y (\int_X h(x, y) d\mu) d\nu| < \infty$ folgt, dass die
+Integrale gleich sind. \\
+Ein Gegenbeispiel ist $X = Y = [0, 1]$ mit $\mu = \nu$ dem Lebesgue-Maß
+und $h(x, y) = \frac{x^2 - y^2}{(x^2 + y^2)^2}$. \\
+Es gilt $\int_0^1 \left(\int_0^1 h(x, y) \dx\right) \dy =
+\int_0^1 \left(-\frac{1}{1 + y^2}\right) \dx =
+-\frac{\pi}{2} \not= \frac{\pi}{2} =
+\int_0^1 \frac{1}{1 + x^2} \dx = \int_0^1 \left(\int_0^1 h(x, y) \dy\right) \dx$.
+
+\subsection{%
+    Zur Substitution der Integrationsvariablen%
+}
+
+Seien $(X, \mathcal{A}_X, \mu)$ ein Maßraum und $f\colon D_X \rightarrow \real$
+eine messbare Funktion mit $D_X \subset X$. \\
+Außerdem seien eine Menge $Y$ und eine bijektive Abbildung
+$\varphi\colon D_Y \rightarrow D_X$ mit $D_Y \subset Y$ gegeben.
+Gesucht ist nun ein Maßraum $(Y, \mathcal{A}_Y, \nu)$, sodass
+$\int_{D_Y} (f \circ \varphi)(y) d\nu = \int_{D_X} f(x) d\mu$ gilt.
+
+Für die Teilmengen $F \subset Y$ von $Y$ soll dabei gelten, dass
+$F \in \mathcal{A}_Y$ gilt
+genau dann, wenn $E := \varphi(F) \in \mathcal{A}_X$ ist.
+
+Da $f$ nur auf $D_X$ definiert ist, reduziert man
+die Maßräume auf $(D_X, \widetilde{\mathcal{A}}_X, \mu)$ und
+$(D_Y, \widetilde{\mathcal{A}}_Y, \nu)$,
+wobei für $\widetilde{E} \subset D_X$ gilt, dass
+$\widetilde{E} \in \widetilde{\mathcal{A}}_X$ genau dann, wenn
+$\widetilde{E} = E \cap D_X$ für ein $E \in \mathcal{A}_X$, \\
+d.\,h. $\widetilde{\mathcal{A}}_X := \{E \cap D_X \;|\; E \in \mathcal{A}_X\}$.
+
+Daraus leitet man folgende Konstruktion für den Maßraum
+$(D_Y, \widetilde{\mathcal{A}}_Y, \nu)$ ab:
+\begin{enumerate}
+    \item
+    $\widetilde{\mathcal{A}}_Y :=
+    \{F \subset D_Y \;|\; \varphi(F) \in \widetilde{\mathcal{A}}_X\}$
+    
+    \item
+    $\nu(F) := \mu(\varphi(F))$
+\end{enumerate}
+
+\linie
+
+\emph{Beispiel}:
+Seien $f\colon [a, b] \rightarrow \real$ eine Funktion und
+$\varphi\colon [\alpha, \beta] \rightarrow [a, b]$ bijektiv
+mit $\varphi \in \C^1$. \\
+Beim Riemann-Integral gilt der Transformationssatz
+$\int_\alpha^\beta (f \circ \varphi)(y) \varphi'(y) \dy = \int_a^b f(x)\dx$. \\
+Seine Entsprechung für das Lebesgue-Integral lautet
+$\int_{[\alpha, \beta]} (f \circ \varphi)(y) |\varphi'(y)| \dy =
+\int_{[a, b]} f(x)\dx$.
+Dabei ist $dx = d\mu$ als das "`alte Maß"' (Lebesgue-Maß)
+und $|\varphi'(y)| dy = d\nu$ als das "`neue"',
+substituierte Maß zu betrachten. \\
+Der Absolutbetrag beim Lebesgue-Integral kommt daher, dass das
+Lebesgue-Integral ungerichtet ist und für $\varphi$ monoton fallend
+(bijektiv, stetig) ändert sich das Integrationsgebiet nicht
+(von der Orientierung her). \\
+Beim Riemann-Integral werden bei der Integration mit monoton fallendem
+$\varphi$ die Grenzen vertauscht (d.\,h. aus $\alpha < \beta$ folgt
+$a > b$), also ist ein zusätzliches Vorzeichen nötig, um die Vertauschung
+rückgängig zu machen.
+
+\linie
+
+\pagebreak
+
+Ein wichtiger Spezialfall des Transformationssatzes
+ist $\varphi\colon \real^n \rightarrow \real^n$
+mit $x = \varphi(y) = Ay$, wobei $x, y \in \real^n$ und
+$A$ eine lineare Abbildung ist.
+Gesucht ist ein Maß $\nu$ auf $\real^n$, sodass
+$\nu(F) = \mu(E)$ für $E = \varphi(F)$.
+Das Volumen von $E$ ist $\vol(E) = |\det A| \cdot \vol(F)$.
+Daraus folgt mit
+$d\nu = \left|\frac{D(x_1, \dotsc, x_n)}{D(y_1, \dotsc, y_n)}\right| d^n y$
+für das Maß von $F$
+$\nu(F) = \int_F 1 d\nu =
+\int_F 1 \left|\frac{D(x_1, \dotsc, x_n)}{D(y_1, \dotsc, y_n)}\right| d^n y$
+bzw. als Transformationssatz
+$\int_{D_y} (f \circ \varphi)(y)
+\left|\frac{D(x_1, \dotsc, x_n)}{D(y_1, \dotsc, y_n)}\right| d^n y =
+\int_{D_x} f(x) d^n x$, wobei $d^n x = d\mu$ das Lebesgue-Maß
+und $\frac{D(x_1, \dotsc, x_n)}{D(y_1, \dotsc, y_n)}$ die Jacobi-Matrix
+von $\varphi$ ist.
+
+Bei der multiplen Substitution mit $\psi\colon \real^n \rightarrow \real^n$
+und $\varphi\colon \real^n \rightarrow \real^n$ bijektiv mit
+$\psi, \varphi \in \C^1$ sowie $f\colon \real^n \rightarrow \real$ gilt
+$\int_{D_T} (f \circ \varphi \circ \psi)(t)
+\left|\frac{D(x_1, \dotsc, x_n)}{D(t_1, \dotsc, t_n)}\right| d^n t =
+\int_{D_Y} (f \circ \varphi)(y)
+\left|\frac{D(x_1, \dotsc, x_n)}{D(y_1, \dotsc, y_n)}\right| d^n y =
+\int_{D_X} f(x) d^n x$ aufgrund
+$\left|\frac{D(x_1, \dotsc, x_n)}{D(t_1, \dotsc, t_n)}\right| =
+\left|\frac{D(x_1, \dotsc, x_n)}{D(y_1, \dotsc, y_n)}\right| \cdot
+\left|\frac{D(y_1, \dotsc, y_n)}{D(t_1, \dotsc, t_n)}\right|$.
+
+\linie
+
+\textbf{Transformationssatz für $\real^n$}:
+Seien $U, V \subset \real^n$ of"|fen und $\varphi\colon U \rightarrow V$
+bijektiv mit $\varphi$ und $\varphi^{-1}$ stetig dif"|ferenzierbar
+(d.\,h. $\varphi$ ist Dif"|feomorphismus). \\
+Dann ist eine Funktion $f\colon V \rightarrow \real$ auf
+$V$ integrierbar genau dann, wenn $(f \circ \varphi) \cdot |\det \varphi'|$
+auf $U$ integrierbar ist, und es gilt
+$\int_U f(\varphi(x)) \cdot |\det \varphi'(x)| \dx = \int_V f(y) \dy$.
+
+\linie
+
+\emph{Beispiel}:
+Im $\real^2$ sei der Kreisauschnitt $D_X$ mit Radius $r$ und Winkel
+$\frac{2\pi}{3} = 120^\circ$ gegeben.
+Wenn z.\,B. der Schwerpunkt von $D_X$ berechnet werden soll, müssen Integrale
+wie $\int_{D_X} x_1 d^2 x$ berechnet werden.
+Dies geht einfacher mit Koordinatentransformation in Polarkoordinaten,
+d.\,h. mit der Transformation $\varphi(r, \theta) =
+\begin{pmatrix}r \cos \theta \\ r \sin \theta\end{pmatrix} =
+\begin{pmatrix}x_1 \\ x_2\end{pmatrix}$. \\
+Die Jacobi-Matrix ist $\frac{D(x_1, x_2)}{D(r, \theta)} =
+\begin{pmatrix}\cos \theta & -r \sin \theta \\
+\sin \theta & r \cos \theta\end{pmatrix}$, ihre Determinate ist
+$\left|\frac{D(x_1, x_2)}{D(r, \theta)}\right| = r$. \\
+Das Integrationsgebiet wird dabei auf
+$D_Y := \left]0, 1\right] \times [0, 2\pi/3]$ transformiert.
+Die Gerade $r = 0$ fehlt dabei, weil sonst die Abbildung nicht
+bijektiv wäre. \\
+Nach dem Transformationssatz gilt $\int_{D_X} x_1 d^2 x =
+\int_{D_y} (f \circ \varphi)(r, \theta) r d(r, \theta)$ mit
+$d\nu = r d(r, \theta)$, d.\,h.
+$\int_{D_X} x_1 d^2 x = \int_{[0, 2\pi/3]}
+\left(\int_{\left]0, 1\right]} (f \circ \varphi)(r, \theta) r\dr\right) \d\phi =
+\int_0^{2\pi/3} \left(\int_0^1 (r \cos \theta) r\dr\right) d\theta$
+(Fubini) usw.
+
+\linie
+
+\textbf{Übersicht über verschiedene Koordinatentransformationen}:
+
+\begin{tabular}{p{40mm}p{66mm}p{50mm}}
+    \toprule
+    
+    \textbf{Name} & \textbf{Definition} & \textbf{Funktionaldeterminante} \\
+    
+    \midrule
+    
+    Polarkoordinaten &
+    $\varphi\colon \left[0, +\infty\right[ \times \left[0, 2\pi\right[
+    \rightarrow \real^2$, \newline
+    $\varphi(r, \theta) = \begin{pmatrix}r \cos \theta \\
+    r \sin \theta\end{pmatrix}$ &
+    $r$ \\
+    
+    \midrule
+    
+    Zylinderkoordinaten &
+    $\varphi\colon \left[0, +\infty\right[ \times
+    \left[0, 2\pi\right[ \times \real \rightarrow \real^3$, \newline
+    $\varphi(r, \theta, z) = \begin{pmatrix}r \cos \theta \\
+    r \sin \theta \\ z\end{pmatrix}$ &
+    $r$ \\
+    
+    \midrule
+    
+    Kugelkoordinaten &
+    $\varphi\colon \left[0, +\infty\right[ \times
+    \left[0, 2\pi\right[ \times [0, \pi] \rightarrow \real^3$, \newline
+    $\varphi(r, \phi, \theta) = \begin{pmatrix}r \sin \theta \cos \phi \\
+    r \sin \theta \sin \phi \\ r \cos \theta\end{pmatrix}$ &
+    $r^2 \sin \theta$ \\
+    
+    \bottomrule
+\end{tabular}
+
+\pagebreak
+
+\subsection{%
+    \texorpdfstring{Mannigfaltigkeiten im $\real^n$}%
+    {Mannigfaltigkeiten im ℝⁿ}%
+}
+
+Im Folgenden werden Teilmengen $S \subset \real^n$ des $\real^n$ betrachtet.
+Für $x \in S$ und $\varepsilon > 0$ ist $U_\varepsilon(x)$ die
+$\varepsilon$-Umgebung um $x$, dabei soll
+$U_\varepsilon^S(x) := S \cap U_\varepsilon(x)$ der Schnitt
+der $\varepsilon$-Umgebung um $x$ mit $S$ sein.
+Außerdem sei $V_k := U_1(0) \subset \real^k$ die of"|fene Einheitskugel
+im $\real^k$.
+
+\textbf{Mannigfaltigkeit (ohne Rand)}:
+$S \subset \real^n$ heißt \emph{$k$-dimensionale Mannigfaltigkeit}, \\
+falls es für alle Punkte $x \in S$ ein $\varepsilon(x) > 0$ und einen
+Homöomorphismus $\varphi_x\colon V_k \rightarrow U_{\varepsilon(x)}^S(x)$ gibt
+(d.\,h. $\varphi_x$ bijektiv mit $\varphi_x$ und $\varphi_x^{-1}$ stetig). \\
+Für $x \in S$ heißt das Paar $(\varphi_x, U_{\varepsilon(x)}^S(x))$
+\emph{Karte} und eine Menge von Karten
+$\{(\varphi_x, U_{\varepsilon(x)}^S(x)\}$ heißt \emph{Atlas}.
+Es gilt $S = \bigcup_{x \in S} U_{\varepsilon(x)}^S(x)$, d.\,h. falls
+$S$ kompakt ist, reichen endlich viele Karten zur Beschreibung von $S$ aus.
+
+\linie
+
+\textbf{Orientierung}:
+Im $\real^k$ kann man eine (geordnete)
+Basis betrachten, z.\,B. die Einheitsbasis.
+Mit dem Vorzeichen der Determinante der Matrix,
+die die Basisvektoren als Spalten enthält,
+kann eine Art "`Orientierung"' der Basis bestimmt werden.
+Im Spezialfall $k = 3$ geht dies z.\,B. mit der Drei-Finger-Regel:
+Je nachdem, ob die rechte oder die linke Hand zur Darstellung der Basisvektoren
+benutzt werden kann, wird die Basis \emph{Rechts- oder Linkssystem} genannt.
+
+Ist nun eine $k$-dimensionale Mannigfaltigkeit $S$ und ein Punkt $x \in S$
+gegeben, so kann man die Basis mittels des Homöomorphismus $\varphi_x$
+in den $\real^n$ transformieren.
+Wird die Orientierung der Basis dabei vertauscht, d.\,h.
+ist das Vorzeichen der Determinante der Matrix, die die Basis des $\real^k$
+auf den $\real^n$ abbildet, negativ, so bezeichnet man den Homöomorphismus
+als \emph{orientierungsumkehrend}.
+Ist das Vorzeichen positiv, so heißt er \emph{orientierungserhaltend}.
+
+Da $\varphi_x$ stetig ist, kann die Orientierung im Punkt $x$ auf die
+ganze Umgebung $U_{\varepsilon(x)}^S(x)$ ausgedehnt werden.
+Betrachtet man jedoch einen weiteren Punkt $\widetilde{x} \in S$, so kann es
+passieren, dass der Schnitt $U_{\varepsilon(x)}^S(x) \cap
+U_{\varepsilon(\widetilde{x})}^S(\widetilde{x})$ der Umgebungen nicht-leer ist.
+Wenn die Orientierung in beiden Punkten dieselbe ist, so heißen die Karten
+$(\varphi_x, U_{\varepsilon(x)}^S(x))$ und
+$(\varphi_{\widetilde{x}}, U_{\varepsilon(\widetilde{x})}^S(\widetilde{x}))$
+\emph{kompatibel}.
+
+Eine \emph{orientierbare Mannigfaltigkeit} ist eine Mannigfaltigkeit, zu der
+es einen Atlas gibt, bei dem die Orientierung überall auf der Mannigfaltigkeit
+erhalten bleibt, d.\,h. alle Karten sind miteinander kompatibel.
+
+Beispielsweise ist die Kugel eine orientierbare Mannigfaltigkeit,
+das \name{Möbius}-Band ist eine nicht-orientierbare Mannigfaltigkeit.
+
+\linie
+
+\textbf{Mannigfaltigkeiten mit Rand}:
+Eine \emph{Mannigfaltigkeit mit Rand} ist eine Mannigfaltigkeit, bei der für
+jeden Punkt $x \in S$ es nicht einen Homöomorphismus
+$\varphi$ auf $V_k$ geben muss, sondern stattdessen (alternativ) es einen
+Homöomorphismus
+$\varphi_x^+\colon V_k^+ \rightarrow U_{\varepsilon(x)}^S(x)$ mit
+$V_k^+ := \{t \in V_k \;|\; t_1 \ge 0\}$ geben kann.
+Falls es für $x \in S$ den Homöomorphismus $\varphi_x$ gibt, so heißt
+$x$ \emph{innerer Punkt} von $S$ ($x \in \Int S$), falls es $\varphi_x^+$ gibt,
+heißt $x$ \emph{Randpunkt} von $S$ ($x \in \partial S$).
+
+Es gilt $\Int S \cap \partial S = \emptyset$.
+Der Rand von $S$ ist selbst eine $k - 1$-dimensionale Mannigfaltigkeit
+mit leerem Rand, d.\,h. $\partial (\partial S) = \emptyset$.
+Bei der Bestimmung der Orientierung in einem Randpunkt $x \in \partial S$ wird
+ein zusätzlicher Basisvektor am Rand eingefügt, der von der Mannigfaltigkeit
+wegzeigt, sodass die Orientierung mit den inneren Punkten übereinstimmt.
+
+\pagebreak
+
+\subsection{%
+    \texorpdfstring{Oberflächeninhalt und Volumen im $\real^n$}%
+    {Oberflächeninhalt und Volumen im ℝⁿ}%
+}
+
+\textbf{Parallelepiped}:
+Ein \emph{$k$-dimensionales Parallelepiped} $P$ im $\real^n$ ist der Aufspann
+von $k$ linear unabhängigen Vektoren $\xi_1, \dotsc, \xi_k \in \real^n$,
+wobei die Koef"|fizienten zwischen $0$ und $1$ liegen müssen, d.\,h.
+$P = \left\{\sum_{i=1}^k \alpha_i \xi_i \;|\; 0 \le \alpha_i \le 1\right\}$. \\
+Für $k = 2$ bzw. $k = 3$ nennt man $P$ auch Parallelogramm bzw. Spat.
+
+\linie
+
+\textbf{Wie groß ist das $k$-dimensionale Volumen von $P$?}
+
+Für $k = n$ gilt für das Volumen $\vol_n(P) = |\det J|$ mit
+$J := (\xi_1, \dotsc, \xi_n)$
+(die Matrix, in der die aufspannenden Vektoren $\xi_1, \dotsc, \xi_n$ als
+Spalten stehen).
+
+Für $k < n$ ist $J = (\xi_1, \dotsc, \xi_k)$ nicht quadratisch. \\
+Man definiert die \textbf{\name{Gram}sche Matrix}
+$G := J^t J = (g_{ij})_{i,j=1}^n$ mit
+$g_{ij} = \sp{\xi_i, \xi_j}$ und das Volumen beträgt
+$\vol_k(P) := \sqrt{\det J^t J} \ge 0$.
+Im Spezialfall $k = n$ ist $\vol_n(P) = |\det J|$ wie oben.
+
+\linie
+
+Für $k$-dimensionale Mannigfaltigkeiten $S \subset \real^n$
+und Abbildungen
+$\varphi\colon D \rightarrow \varphi(D)$ mit $D \subset \real^k$,
+$\varphi(D) \subset S$ sowie $\varphi \in \C^1$ ergibt sich die Formel
+$\vol_k(\varphi(D)) := \int_D \sqrt{\det\left(\sp{\frac{\partial
+\varphi}{\partial t_i}, \frac{\partial
+\varphi}{\partial t_j}}\right)_{i,j=1}^k} d^k t$. \\
+Für $k = n$ entspricht die innere Matrix $G$ mit $G = J^t J$
+und der Jacobi-Matrix
+$J = \left(\frac{\partial \varphi_i}{\partial t_j}\right)_{i,j=1}^n$. \\
+Daher ist $\sqrt{\det G} = |\det J|$ und die Formel stimmt mit dem
+Transformationssatz überein.
+
+\linie
+
+\emph{Beispiel}:
+Für $k = 1$ sei $\varphi\colon D \rightarrow \varphi(D)$ mit
+$\varphi \in \C^1$ bijektiv und $D \subset \real$,
+$\varphi(D) \subset \real^n$.
+Dann gilt $G = \left(\frac{d \varphi_1}{dt}\right)^2 + \dotsb +
+\left(\frac{d \varphi_n}{dt}\right)^2$, d.\,h.
+$\sqrt{G} = \norm{\dot{\varphi}}$ und es ergibt sich die korrekte Formel für
+den Weg $\int_D \norm{\dot{\varphi}} \dt$
+($1$-dimensionales Volumen im $\real^n$).
+
+\linie
+
+\emph{Beispiel}:
+Gegeben sei eine Funktion $f\colon \real^2 \rightarrow \real$ mit $f \in \C^1$.
+Man betrachte die Fläche, die entsteht, wenn man $f(x, y) \in \real$ über
+$(x, y) \in \real^2$ aufträgt ($2$-dim. Mannigfaltigkeit).
+Gesucht ist für eine Menge $D \subset \real^2$ der zweidimensionale
+Flächeninhalt von $\varphi(D)$ mit
+$\varphi(u, v) = (u, v, f(u, v))^t$.
+Aufgrund $\frac{\partial \varphi}{\partial u} = (1, 0, f_u')^t$ und
+$\frac{\partial \varphi}{\partial v} = (0, 1, f_v')^t$ gilt
+$G =$ \matrixsize{$\begin{pmatrix}1 + (f_u')^2 & f_u' f_v' \\
+f_u' f_v' & 1 + (f_v')^2\end{pmatrix}$}, d.\,h. \\
+$\det G = 1 + (f_u')^2 + (f_v')^2$ bzw.
+$\vol_2(\varphi(D)) = \int_D \sqrt{1 + (f_u')^2 + (f_v')^2} \du\dv$.
+
+\pagebreak
+
+\subsection{%
+    Dif"|ferentialformen%
+}
+
+Seien $X$ ein $\real$-Vektorraum mit $\dim X =: n$.
+$X^k$ bezeichne das $k$-fache kartesische Produkt von $X$ mit sich selbst.
+Man definiert den \textbf{Raum der $k$-fachen Multilinearformen} \\
+$\L_k(X, \real) := \{F\colon X^k \rightarrow \real \;|\;
+F \text{ in jeder Komponente linear}\}$.
+Zum Beispiel ist $\L_1(X, \real) =: X'$ der Dualraum und
+$\L_2(X, \real)$ enthält alle bilinearen Abbildungen.
+
+\textbf{Tensorprodukt}:
+Für $p$- bzw. $q$-fache Multilinearformen $F' \in \L_p(X, \real)$ 
+bzw. $F'' \in \L_q(X, \real)$ ist der \emph{Tensor}
+$F' \otimes F'' \in \L_{p+q}(X, \real)$ eine $p + q$-fache Multilinearform,
+wobei \\
+$(F' \otimes F'')(\xi_1, \dotsc, \xi_p, \xi_{p+1}, \dotsc, \xi_{p+q}) :=
+F'(\xi_1, \dotsc, \xi_p) \cdot F''(\xi_{p+1}, \dotsc, \xi_{p+q})$. \\
+Die Abbildung $\otimes\colon \L_p(X, \real) \times \L_q(X, \real)
+\rightarrow \L_{p+q}(X, \real)$ heißt \emph{Tensorprodukt}.
+
+Das Tensorprodukt erfüllt Assoziativität
+($F' \otimes (F'' \otimes F''') = (F' \otimes F'') \otimes F'''$),
+Distributivität ($(F_1' + F_2') \otimes F'' =
+(F_1' \otimes F'') + (F_2' \otimes F'')$ und
+$F' \otimes (F_1'' + F_2'') =
+(F' \otimes F_1'') + (F' \otimes F_2'')$) sowie
+Assoziativität mit der skalaren Multiplikation
+($(\lambda F') \otimes F'' = F' \otimes (\lambda F'') =
+\lambda (F' \otimes F'')$).
+
+\linie
+
+Ist $e_1, \dotsc, e_n$ eine Basis von $X$, so kann man Vektoren
+$\xi_\ell \in X$, $\ell = 1, \dotsc, k$ eindeutig als Linearkombination
+$\xi_\ell = \sum_{j_\ell=1}^n \xi_\ell^{j_\ell} e_{j_\ell} =:
+\xi_\ell^{j_\ell} e_{j_\ell}$ schreiben.
+Die letzte Schreibweise entspricht der
+\textbf{\name{Einstein}schen Summenkonvention}.
+Sie besagt, dass bei Termen, in denen Indizes doppelt auftauchen,
+über diese Indizes summiert werden muss.
+Diese Notation wird im Folgenden exzessiv angewandt.
+
+\textbf{Koordinatentransformation in $X$}: \\
+Ist $\widetilde{e}_1, \dotsc, \widetilde{e}_n$ eine zweite Basis von $X$,
+so kann die Basis $e_1, \dotsc, e_n$ in
+$\widetilde{e}_1, \dotsc, \widetilde{e}_n$ mittels einer Basiswechselmatrix
+$C = (c_j^i)_{i,j=1}^n$ überführt werden,
+d.\,h. $\widetilde{e}_j = c_j^i e_i$.
+Für $\xi \in X$ gibt es eindeutige Darstellungen als Linearkombination der
+Basen $\xi = \xi^j e_j = \widetilde{\xi}^j \widetilde{e}_j =
+\widetilde{\xi}^\ell c_\ell^j e_j$, d.\,h. es muss aufgrund der Eindeutigkeit
+$\xi^j = \widetilde{\xi}^\ell c_\ell^j$ gelten.
+
+\textbf{Koordinatentransformation in $\L_1(X, \real) = X'$}: \\
+Für $F \in X'$ gilt $F[\xi] = F[\xi^j e_j] = \xi^j F[e_j] = \xi^j a_j$
+mit $a_j := F[e_j]$. 
+Es gilt $F = a_j e^j$, wobei $e^1, \dotsc, e^n \in X'$ mit
+$e^j[e_k] := \delta_{kj}$ eine Basis von $X'$ ist
+(es gilt $e^j[\xi] = e^j[\xi^k e_k] = \xi^k \delta_{kj} = \xi^j$, d.\,h.
+$e^j$ ist die Projektion auf die $j$-te Komponente).
+Für die zweite Basis gilt nun $F = \widetilde{a}_\ell \widetilde{e}^j$ mit
+$\widetilde{a}_\ell := F[\widetilde{e}_\ell] = F[c_\ell^j e_j] =
+c_\ell^j F[e_j] = c_\ell^j a_j$, d.\,h.
+$\widetilde{a}_\ell = c_\ell^j a_j$.
+
+\textbf{Koordinatentransformation in $\L_k(X, \real)$}: \\
+Wendet man eine $k$-fache Multilinearform $F \in \L_k(X, \real)$ auf
+$\xi_1, \dotsc, \xi_k \in X$ an, so erhält man
+$F[\xi_1, \dotsc, \xi_k] =
+F[\xi_1^{i_1} e_{i_1}, \dotsc, \xi_k^{i_k} e_{i_k}] =
+\xi_1^{i_1} \dotsm \xi_k^{i_k} F[e_{i_1}, \dotsc, e_{i_k}] =
+\xi_1^{i_1} \dotsm \xi_k^{i_k} a_{i_1, \dotsc, i_k}$ \\
+mit $a_{i_1, \dotsc, i_k} := F[e_{i_1}, \dotsc, e_{i_k}]$, d.\,h.
+$F = a_{j_1, \dotsc, j_k} (e^{j_1} \otimes \dotsb \otimes e^{j_k})$ mit \\
+$(e^{j_1} \otimes \dotsb \otimes e^{j_k})[\xi_1, \dotsc, \xi_k] =
+e^{j_1}[\xi_1] \dotsm e^{j_k}[\xi_k] =
+\xi_1^{j_1} \dotsm \xi_k^{j_k}$. \\
+Für die zweite Basis gilt nun
+$F = \widetilde{a}_{j_1, \dotsc, j_k}
+(\widetilde{e}^{j_1} \otimes \dotsb \otimes \widetilde{e}^{j_k})$ mit \\
+$\widetilde{a}_{i_1, \dotsc, i_k} :=
+F[\widetilde{e}_{i_1}, \dotsc, \widetilde{e}_{i_k}] =
+F[c_{i_1}^{j_1} e_{j_1}, \dotsc, c_{i_k}^{j_k} e_{j_k}] =
+c_{i_1}^{j_1} \dotsm c_{i_k}^{j_k} a_{j_1, \dotsc, j_k}$.
+
+\linie
+
+\textbf{antisymmetrisch}:
+Eine $k$-fache Multilinearform $F \in \L_k(X, \real)$ heißt
+\emph{antisymmetrisch} oder \emph{alternierend}, falls
+$F[\xi_1, \dotsc, \xi_i, \dotsc, \xi_j, \dotsc, \xi_k] =
+-F[\xi_1, \dotsc, \xi_j, \dotsc, \xi_i, \dotsc, \xi_k]$ \\
+für alle $\xi_1, \dotsc, \xi_k \in X$, $i \not= j$. \\
+Die Menge $\Omega_k(X, \real) :=
+\{F \in \L_k(X, \real) \;|\; F \text{ antisymmetrisch}\}
+\subset \L_k(X, \real)$ ist ein Vektorraum.
+
+\emph{Beispiel}:
+$F[\xi_1, \dotsc, \xi_n] := \det(\xi_k^\ell)_{k,\ell=1}^n$ ist eine $n$-fache
+antisymmetrische Multilinearform.
+
+\linie
+\pagebreak
+
+\textbf{Antisymmetrisierungsabbildung}:
+Für $k \in \natural$ ist die \emph{Antisymmetrisierungsabbildung} \\
+$\A\colon \L_k \rightarrow \Omega_k$ definiert durch
+$(\A F)[\xi_1, \dotsc, \xi_k] :=
+\frac{1}{k!} F[\xi_{i_1}, \dotsc, \xi_{i_k}]
+\sigma_{1,\dotsc,k}^{i_1,\dotsc,i_k}$ \\
+mit dem \emph{\name{Levi}-\name{Civita}-Symbol}
+$\sigma_{1,\dotsc,k}^{i_1,\dotsc,i_k} :=$ \matrixsize{$\begin{cases}
+0 & i_1, \dotsc, i_k \text{ keine Permutation von } 1, \dotsc, k \\
+1 & \text{gerade Permutation} \\
+-1 & \text{ungerade Permutation}.
+\end{cases}$} \\
+Sie weist jeder $k$-fachen Multilinearform $F \in \L_k(X, \real)$ auf
+kanonische Weise eine $k$-fache antisymmetrische Multilinearform
+$\A F \in \Omega_k(X, \real)$ zu.
+
+Man kann auch
+$(\A F)[\xi_1, \dotsc, \xi_k] =
+\frac{1}{k!} \sum_{\pi \in \mathfrak{S}_k}
+\sign(\pi) \cdot F[\xi_{\pi(1)}, \dotsc, \xi_{\pi(k)}]$
+schreiben, wobei $\mathfrak{S}_k$ die symmetrische Gruppe ist.
+
+$\A$ ist linear, d.\,h. $\A(F' + F'') = \A F' + \A F''$ und
+$\A (\lambda F) = \lambda (\A F)$. \\
+Es gilt $\A(e^{j_1} \otimes \dotsb \otimes e^{j_k})[\xi_1, \dotsc, \xi_k]
+= \frac{1}{k!} e^{j_1}[\xi_{i_1}] \dotsm e^{j_k}[\xi_{i_k}]
+\sigma_{1,\dotsc,k}^{i_1,\dotsc,i_k} =
+\frac{1}{k!} \xi_{i_1}^{j_1} \dotsm \xi_{i_k}^{j_k}
+\sigma_{1,\dotsc,k}^{i_1,\dotsc,i_k}$, d.\,h. \\
+$\A(e^{j_1} \otimes \dotsb \otimes e^{j_k})[\xi_1, \dotsc, \xi_k] =
+\frac{1}{k!} \cdot
+\det$\matrixsize{$\begin{pmatrix}\xi_1^{j_1} & \dots & \xi_k^{j_1} \\
+\vdots & & \vdots \\
+\xi_1^{j_k} & \dots & \xi_k^{j_k}\end{pmatrix}$}.
+
+\vspace{3mm}
+\linie
+
+\textbf{äußeres Produkt}:
+Für $p$- bzw. $q$-fache antisymmetrische Multilinearformen
+$\omega' \in \Omega_p$ bzw. $\omega'' \in \Omega_q$ ist das
+\emph{äußere Produkt} $\omega' \land \omega'' \in \Omega_{p+q}$ eine
+$p + q$-fache antisymmetrische Multilinearform, wobei
+$\omega' \land \omega'' :=
+\frac{(p + q)!}{p! \cdot q!} \A(\omega' \otimes \omega'')$.
+Dies definiert eine Abbildung
+$\land\colon \Omega_p \times \Omega_q \rightarrow \Omega_{p+q}$.
+
+Man kann auch $(\omega' \land \omega'')[\xi_1, \dotsc, \xi_p,
+\xi_{p+1}, \dotsc, \xi_{p+q}]$ \\
+$= \frac{1}{p! \cdot q!} \sum_{\pi \in \mathfrak{S}_{p+q}} \sign(\pi) \cdot
+\omega'[\xi_{\pi(1)}, \dotsc, \xi_{\pi(p)}] \cdot
+\omega''[\xi_{\pi(p+1)}, \dotsc, \xi_{\pi(p+q)}]$ schreiben.
+
+Das äußere Produkt erfüllt Distributivität
+($(\omega_1' + \omega_2') \land \omega'' =
+\omega_1' \land \omega'' + \omega_2' \land \omega''$), Assoziativität,
+Assoziativität mit der skalaren Multiplikation
+($(\lambda \omega') \land \omega'' = \lambda (\omega' \land \omega'') =
+\omega' \land (\lambda \omega'')$) und \\
+Antikommutativität
+($\omega' \land \omega'' = (-1)^{pq} \omega'' \land \omega'$).
+Daraus folgt dann für $\omega \in \Omega_{p}$ und $p$ ungerade, dass
+$\omega \land \omega = 0$
+(im Falle von $p$ gerade ist i.\,A. $\omega \land \omega \not= 0$).
+
+\emph{Beispiel}:
+Für $p = q = 1$ und $e^{i_1}, e^{i_2} \in \Omega_1 = \L_1 = X'$ ist
+$(e^{i_1} \land e^{i_2})[\xi_1, \xi_2] =
+\frac{2!}{1! \cdot 1!} \cdot \frac{1}{2!}
+\det$\matrixsize{$\begin{pmatrix}\xi_1^{i_1} & \xi_2^{i_1} \\
+\xi_1^{i_2} & \xi_2^{i_2}\end{pmatrix}$} \\
+$= \det$\matrixsize{$\begin{pmatrix}\xi_1^{i_1} & \xi_2^{i_1} \\
+\xi_1^{i_2} & \xi_2^{i_2}\end{pmatrix}$}.
+Im Allgemeinen ist
+$(e^{i_1} \land \dotsb \land e^{i_k})[\xi_1, \dotsc, \xi_k] =
+\det$\matrixsize{$\begin{pmatrix}\xi_1^{i_1} & \dots & \xi_k^{i_1} \\
+\vdots & & \vdots \\
+\xi_1^{i_k} & \dots & \xi_k^{i_k}\end{pmatrix}$}.
+
+\vspace{3mm}
+\linie
+
+\textbf{Was ist $\dim \Omega_k$?} \\
+Durch Überlegung (LAAG 2) kommt man auf $\dim \L_k = n^k$ und
+$\dim \Omega_k = \binom{n}{k}$. \\
+$\L_k$ hat die Basis $e^{j_1} \otimes \dotsb \otimes e^{j_k}$ mit
+$j_1, \dotsc, j_k = 1, \dotsc, n$, d.\,h. $n^k$ Möglichkeiten.
+Um eine Basis von $\Omega_k$ zu erhalten, müssen alle Basisvektoren entfernt
+werden, sodass pro Permutation genau ein Vektor vorkommt.
+Eine Basis von $\Omega_k$ ist $e^{i_1} \land \dotsb \land e^{i_k}$ mit
+$1 \le i_1 < \dotsb < i_k \le n$, falls $k \le n$. \\
+Für $k = n$ gilt $\dim \Omega_n = 1$ und für $k > n$ gilt
+$\dim \Omega_k = 0$. \\
+Es gilt $\Omega_0 = \L_0 = \{F\colon X^0 \rightarrow \real\} \cong \real$,
+d.\,h. $\dim \Omega_0 = 1$.
+
+\textbf{äußere Algebra}:
+Die \emph{äußere Algebra} ist definiert als
+$\Omega := \bigoplus_{k=0}^n \Omega_k = (\Omega_0, \dotsc, \Omega_n)$. \\
+Es gilt $\dim \Omega = \sum_{k=0}^n \dim \Omega_k = 2^n$.
+
+\linie
+
+\textbf{Tangentialraum}:
+Seien $S \subset \real^n$ eine $k$-dimensionale Mannigfaltigkeit und $x \in S$
+mit lokaler Karte $\varphi \in \C^1(V_k, U_{\varepsilon(x)}^S(x))$
+und $\varphi(0) = x$.
+Sei $\gamma\colon \left]-\varepsilon, \varepsilon\right[ \rightarrow V_k$
+ein Weg mit $\gamma \in \C^1$, $\gamma(0) = 0 \in V_k$.
+In diesem Fall ist $\varphi \circ \gamma \in \C^1$ mit
+$\varphi \circ \gamma\colon \left]-\varepsilon, \varepsilon\right[
+\rightarrow U_{\varepsilon(x)}^S(x)$. \\
+$\overrightarrow{t_\gamma} :=
+\left.\frac{d(\varphi \circ \gamma)}{d\tau}\right|_{\tau=0}$
+bezeichnet einen \emph{Tangentialvektor}. \\
+$T_x S := \{\overrightarrow{t_\gamma} \;|\;
+\gamma\colon \left]-\varepsilon, \varepsilon\right[ \rightarrow V_k,\;
+\gamma \in \C^1,\; \gamma(0) = 0 \in V_k\}$ heißt
+\emph{Tangentialraum} der Mannigfaltigkeit im Punkt $x \in S$.
+Im Falle einer $2$-dimensionaler Mannigfaltigkeit spricht man auch von einer
+\emph{Tangentialebene}.
+Anschaulich gesagt berührt diese die Mannigfaltigkeit im Punkt $x$.
+Jedoch geht die eigentliche Tangentialebene durch den Ursprung.
+
+\linie
+\pagebreak
+
+Sei nun $f\colon D \subset \real^n \rightarrow \real$
+Frechet-dif"|ferenzierbar mit $D \subset \real^n$ of"|fen.
+In diesem Fall gilt für die Ableitung $\d f|_x = f'(x)$ mit dem Satz von Taylor
+$f(x + h) = f(x) + \d f|_x[h] + o(\norm{h})$.
+Dabei gilt $\d f[h] = \sp{F, h}$, $F := \nabla f|_x$, d.\,h.
+$\d f$ wirkt auf $h \in \real^n = T_x \real^n$.
+$\d f$ ist eine $1$-Form auf $T_x \real^n$, also
+$\d f \in \Omega_1(T_x \real^n)$.
+
+Jedoch ändert sich i.\,A. $F = F(x) = \nabla f|_x$, falls sich $x$ ändert.
+Daher ist es besser, von einer Abbildung
+$\d f\colon
+D \subset \real^n \rightarrow \Omega_1(T_x \real^n)$, $x \mapsto \d f(x)$
+zu sprechen.
+
+Da die Projektion $\pi^j$ stetig und linear ist, gilt $\d \pi^j = \pi^j = e^j$
+(hier ist $F = e_j$).
+Daher ist $\d f(x)[h] = \frac{\partial f(x)}{\partial x^1} \xi^1 + \dotsb +
+\frac{\partial f(x)}{\partial x^n} \xi^n =
+\frac{\partial f(x)}{\partial x^1} \d \pi^1[h] + \dotsb +
+\frac{\partial f(x)}{\partial x^n} \d \pi^n[h]$ für
+$h = (\xi^1, \dotsc, \xi^n)^t$. \\
+Mit der Schreibweise $\d x^j := \d \pi^j = e^j$ ergibt sich
+$\d f(x) = \frac{\partial f(x)}{\partial x^1} \d x^1 + \dotsb +
+\frac{\partial f(x)}{\partial x^n} \d x^n$.
+
+Man definiert nun $1$-Formen als in der Form
+$\d f(x) = a_j(x) \d x^j$ darstellbare Abbildungen. \\
+Analog verfährt man für $k$-Formen, d.\,h.
+$\omega(x) = a_{j_1,\dotsc,j_k}(x) \d x^{j_1} \land \dotsb \land \d x^{j_k}$.
+
+\linie
+
+\textbf{Dif"|ferentialform}:
+Eine \emph{$k$-fache Dif"|ferentialform} oder \emph{$k$-Form} auf
+$D \subset \real^n$ of"|fen ist eine Abbildung
+$\omega\colon D \rightarrow \Omega_k(T_x D, \real)$,
+$x \mapsto \omega(x)$. \\
+Den Raum aller $k$-fachen Dif"|ferentialformen auf $D \subset \real^n$
+bezeichnet man mit $\Omega_k(D)$.
+
+\emph{Beispiel: $0$-Form} \\
+Da $\Omega_0(T_x D, \real) \cong \real$,
+definiert man sinnvollerweise als $0$-Formen alle Funktionen
+$f\colon D \rightarrow \real$.
+
+\emph{Beispiel: $1$-Form} \\
+$1$-Formen heißen auch \emph{Energieformen}, denn sie sind von der Form
+$\omega_F(x) = \sp{F(x), \cdot}$ mit
+$F\colon D \rightarrow \real^n$ einer Abbildung, d.\,h.
+$\omega_F(x)[h] = \sp{F(x), h}$.
+(Interpretiert man $F$ als Kraft und $h$ als Strecke, so gibt $\omega_F$
+die Energie an.)
+
+\emph{Beispiel: $n - 1$-Form} \\
+Für eine Abbildung $v\colon D \subset \real^n \rightarrow \real^n$ mit
+$D \subset \real^n$ of"|fen definiert man
+$\omega_v^{(n-1)}(x)[\xi_1, \dotsc, \xi_{n-1}] :=
+\det(v(x), \xi_1, \dotsc, \xi_{n-1})$.
+Es gilt $\omega_v^{(n-1)}(x) \in \Omega_{n-1}(T_x D)$.
+Da $\omega_v^{(n-1)}(x)[\xi_1, \dotsc, \xi_{n-1}]$ das Volumen des durch
+$\xi_1, \dotsc, \xi_{n-1}$ und $v(x)$ aufgespannten Parallelepipeds angibt,
+lässt sich dies für $v(x)$ Fließgeschwindigkeit einer Flüssigkeit
+als pro Zeiteinheit durchfließende Menge an Flüssigkeit durch das
+Parallelepiped aufgespannt von $\xi_1, \dotsc, \xi_{n-1} \in \real^n$
+interpretieren.
+Man spricht daher auch von einer \emph{Flussform}.
+
+Mithilfe der Schreibweise $\d x^j$ können Dif"|ferentialformen in eine
+Koordinatendarstellung gebracht werden.
+Für die Energieform $\omega_F$ gilt bspw. $\omega_F(x) = F_j(x) \d x^j$,
+für die Flussform mit $n = 3$ und $v(x) = (v^1(x), v^2(x), v^3(x))^t$ gilt 
+$\omega^2_v(x)[\xi_1, \xi_2] = \det(v(x), \xi_1, \xi_2)$ \\
+$=
+v^1(x) \det\begin{pmatrix}\xi_1^2 & \xi_2^2 \\ \xi_1^3 & \xi_2^3\end{pmatrix} -
+v^2(x) \det\begin{pmatrix}\xi_1^1 & \xi_2^1 \\ \xi_1^3 & \xi_2^3\end{pmatrix} +
+v^3(x) \det\begin{pmatrix}\xi_1^1 & \xi_2^1 \\ \xi_1^2 & \xi_2^2\end{pmatrix}$
+\\
+$= v^1(x) (\d x^2 \land \d x^3)[\xi_1, \xi_2] -
+v^2(x) (\d x^1 \land \d x^3)[\xi_1, \xi_2] +
+v^3(x) (\d x^1 \land \d x^2)[\xi_1, \xi_2]$. \\
+Allgemein gilt
+$\omega_v^{(n-1)}(x) = \sum_{i=1}^n (-1)^{i+1} v^i(x)
+\d x^1 \land \dotsb \land \d x^{i-1} \land \d x^{i+1}
+\land \dotsb \land \d x^n$.
+
+\linie
+
+Sei $f\colon D \subset \real^n \rightarrow \real^n$ mit $D \subset \real^n$
+of"|fen und $f \in \C^1$.
+Dies ist eine $0$-Form. \\
+$\d f = \frac{\partial f(x)}{\partial x^1} \d x^1 + \dotsb +
+\frac{\partial f(x)}{\partial x^n} \d x^n$ ist eine $1$-Form.
+Analog lässt sich jede $k$-Form \\
+$\omega\colon D \subset \real^n \rightarrow \Omega_k(T_x D)$ schreiben als
+$\omega(x) = a_{j_1,\dotsc,j_k}(x) \cdot \d x^{j_1} \land \dotsb \land
+\d x^{j_k}$.
+
+\textbf{äußeres Dif"|ferential}:
+Das \emph{äußere Dif"|ferential} ist eine Abbildung $\d$,
+die jeder $k$-Form $\omega$ eine $k + 1$-Form $\d \omega$ zuweist, wobei
+für $\omega(x) = a_{j_1,\dotsc,j_k}(x) \cdot \d x^{j_1} \land \dotsb \land
+\d x^{j_k}$ gilt, dass \\
+$\d \omega(x) := (\d a_{j_1,\dotsc,j_k}(x)) \land \d x^{j_1} \land
+\dotsb \land \d x^{j_k} =
+\frac{\partial a_{j_1,\dotsc,j_k}(x)}{\partial x^\ell} \d x^\ell \land
+\d x^{j_1} \land \dotsb \land \d x^{j_k}$.
+
+Das äußere Dif"|ferential ist linear
+($\d(\omega_1 + \omega_2) = \d\omega_1 + \d\omega_2$),
+für jede dif"|ferenzierbare Funktion
+$f\colon D \subset \real^n \rightarrow \real$ ist $\d f$ wie
+oben (also $\d f(x) = \aufspann{F(x), \cdot}$ mit $F(x) = \nabla f|_x$),
+es erfüllt die Produktregel $\d(\omega_1 \land \omega_2) =
+\d \omega_1 \land \omega_2 + (-1)^k \omega_1 \land \d \omega_2$ für
+$\omega_1 \in \Omega_k$, $\omega_2 \in \Omega_\ell$ und
+es gilt $\d(\d \omega) = 0$ für $a_{j_1,\dotsc,j_k}(x) \in \C^2$.
+
+\linie
+\pagebreak
+
+\emph{Beispiel}:
+Das äußere Dif"|ferential einer $0$-Form
+$\omega_f^{(0)} := f\colon D \subset \real^3 \rightarrow \real$ ist \\
+$\d f = \frac{\partial f}{\partial x^1} \d x^1 +
+\frac{\partial f}{\partial x^2} \d x^2 +
+\frac{\partial f}{\partial x^3} \d x^3 = \sp{\nabla f, \cdot}$, \\
+d.\,h. $\d \omega_f^{(0)} = \omega_F^{(1)} \in \Omega_1(D)$ mit
+$\omega_F^{(1)}(x) := F_1(x) \d x^1 + F_2(x) \d x^2 + F_3(x) \d x^3$ und
+dem \textbf{Gradienten} $F(x) := \nabla f(x)$.
+
+Für eine $1$-Form $\omega_F^{(1)}$ mit
+$\omega_F^{(1)}(x) = F_1(x) \d x^1 + F_2(x) \d x^2 + F_3(x) \d x^3$ und
+$F\colon D \subset \real^3 \rightarrow \real^3$ gilt
+$\d \omega_F^{(1)} = \left(\frac{\partial F_1}{\partial x^1} \d x^1 +
+\frac{\partial F_1}{\partial x^2} \d x^2 +
+\frac{\partial F_1}{\partial x^3} \d x^3\right) \land \d x^1 +
+\left(\frac{\partial F_2}{\partial x^1} \d x^1 +
+\frac{\partial F_2}{\partial x^2} \d x^2 +
+\frac{\partial F_2}{\partial x^3} \d x^3\right) \land \d x^2 \;+$ \\
+$\left(\frac{\partial F_3}{\partial x^1} \d x^1 +
+\frac{\partial F_3}{\partial x^2} \d x^2 +
+\frac{\partial F_3}{\partial x^3} \d x^3\right) \land \d x^3$ \\
+$= \frac{\partial F_1}{\partial x^2} \d x^2 \land \d x^1 +
+\frac{\partial F_1}{\partial x^3} \d x^3 \land \d x^1 +
+\frac{\partial F_2}{\partial x^1} \d x^1 \land \d x^2 +
+\frac{\partial F_2}{\partial x^3} \d x^3 \land \d x^2 +
+\frac{\partial F_3}{\partial x^1} \d x^1 \land \d x^3 +
+\frac{\partial F_3}{\partial x^2} \d x^2 \land \d x^3$ \\
+$= \left(\frac{\partial F_2}{\partial x^1} -
+\frac{\partial F_1}{\partial x^2}\right) \d x^1 \land \d x^2 +
+\left(\frac{\partial F_3}{\partial x^1} -
+\frac{\partial F_1}{\partial x^3}\right) \d x^1 \land \d x^3 +
+\left(\frac{\partial F_3}{\partial x^2} -
+\frac{\partial F_2}{\partial x^3}\right) \d x^2 \land \d x^3$, \\
+d.\,h. $\d \omega_F^{(1)} = \omega_v^{(2)} \in \Omega_2(D)$ mit
+$\omega_v^{(2)}(x) = v_1(x) \d x^2 \land \d x^3 - v_2(x) \d x^1 \land
+\d x^3 + v_3(x) \d x^1 \land \d x^2$ und
+dem \textbf{Rotor} $v(x) = \rot F(x) := \nabla \times F(x) =
+\left(\frac{\partial F_3}{\partial x^2} - \frac{\partial F_2}{\partial x^3},
+\frac{\partial F_1}{\partial x^3} - \frac{\partial F_3}{\partial x^1},
+\frac{\partial F_2}{\partial x^1} -
+\frac{\partial F_1}{\partial x^2}\right)^t$.
+
+Für eine durch $v$ gegebene $2$-Form $\omega_v^{(2)}$ gilt
+$\d \omega_v^{(2)} = \left(\frac{\partial v_1}{\partial x^1} +
+\frac{\partial v_2}{\partial x^2} + \frac{\partial v_3}{\partial x^3}\right)
+\d x^1 \land \d x^2 \land \d x^3$, d.\,h.
+$\d \omega_v^{(2)} = \omega_\varrho^{(3)} \in \Omega_3(D)$ mit
+$\omega_\varrho^{(3)} = \varrho(x) \d x^1 \land \d x^2 \land \d x^3$ und
+der \textbf{Divergenz} \\
+$\varrho(x) = \div v(x) := \sp{\nabla, v(x)} =
+\frac{\partial v_1(x)}{\partial x^1} +
+\frac{\partial v_2(x)}{\partial x^2} + \frac{\partial v_3(x)}{\partial x^3}$.
+
+$\nabla \cdot = \grad$ wandelt ein Skalarfeld in ein Vektorfeld,
+$\nabla \times \cdot = \rot$ wandelt ein Vektorfeld in ein Vektorfeld und
+$\sp{\nabla, \cdot} = \div$ wandelt ein Vektorfeld in ein Skalarfeld um.
+
+Für $F = \nabla f$, d.\,h. $\omega_F^{(1)} = \d \omega_f^{(0)}$, ist
+$\omega_v^{(2)} = \d \omega_F^{(1)} = \d (\d \omega_f^{(0)}) = 0$, d.\,h.
+\textbf{$\rot \grad = 0$}. \\
+Für $F$ bel. und $v = \rot F$, d.\,h. $\omega_v^{(2)} = \d \omega_F^{(1)}$,
+ist $\omega_\varrho^{(3)} = \d \omega_v^{(2)} = \d (\d \omega_F^{(1)}) = 0$,
+d.\,h. \textbf{$\div \rot = 0$}.
+
+\linie
+
+\textbf{Pullback}:
+Für eine dif"|ferenzierbare Abbildung $\varphi\colon U \rightarrow V$ mit
+$U \subset \real^n$, $V \subset \real^m$ und \\
+$k \in \natural$
+ist das \emph{Pullback} (die zurückgezogene Abbildung) definiert durch \\
+$\varphi^\ast\colon \Omega_k(V) \rightarrow \Omega_k(U)$ mit
+$(\varphi^\ast \omega)(t)[\tau_1, \dotsc, \tau_k] :=
+\omega(\varphi(t))\left[\frac{D\varphi}{Dt} \tau_1, \dotsc,
+\frac{D\varphi}{Dt} \tau_k\right]$.
+
+Das Pullback ist linear ($\varphi^\ast(\omega' + \omega'') =
+\varphi^\ast \omega' + \varphi^\ast \omega''$,
+$\varphi^\ast (\lambda \omega) = \lambda (\varphi^\ast \omega)$,
+$\lambda \in \real$). \\
+Es gilt $(\psi \circ \varphi)^\ast = \varphi^\ast \circ \psi^\ast$
+sowie $\d (\varphi^\ast \omega) = \varphi^\ast (\d \omega)$. \\
+Für $m < k \le n$ gilt $\varphi^\ast \omega = 0$
+(da $k$-Form auf $\real^m$ mit $m < k$). \\
+Ist $\varphi\colon U \rightarrow V$ bijektiv und glatt (d.\,h. $m = n$),
+so ist $\varphi^\ast$ ebenfalls bijektiv und
+$(\varphi^\ast)^{-1} = (\varphi^{-1})^\ast$. \\
+Außerdem gilt $\varphi^\ast(\omega' \land \omega'') =
+(\varphi^\ast \omega') \land (\varphi^\ast \omega'')$.
+
+\textbf{Koordinatendarstellung des Pullbacks einer $2$-Form}:
+Sei $\omega = \d x^{j_1} \land \d x^{j_2}$.
+Dann gilt mit $\xi_1 = \frac{D\varphi}{Dt} \tau_1$ und
+$\xi_2 = \frac{D\varphi}{Dt} \tau_2$, dass
+$(\varphi^\ast \omega)(t)[\tau_1, \tau_2] = \omega(x) [\xi_1, \xi_2] =
+(\d x^{j_1} \land \d x^{j_2}) [\xi_1, \xi_2]$ \\
+$= \det$%
+\matrixsize{$\begin{pmatrix}\xi_1^{j_1} & \xi_1^{j_2} \\
+\xi_2^{j_1} & \xi_2^{j_2}\end{pmatrix}$}
+$= \det$%
+\matrixsize{$\begin{pmatrix}
+\frac{\partial x^{j_1}}{\partial t^{\ell_1}} \tau_1^{\ell_1} &
+\frac{\partial x^{j_2}}{\partial t^{\ell_2}} \tau_1^{\ell_2} \\
+\frac{\partial x^{j_1}}{\partial t^{\ell_1}} \tau_2^{\ell_1} &
+\frac{\partial x^{j_2}}{\partial t^{\ell_2}} \tau_2^{\ell_2}\end{pmatrix}$}
+$= \sum_{\ell_1,\ell_2=1}^m \det$%
+\matrixsize{$\begin{pmatrix}\tau_1^{\ell_1} & \tau_1^{\ell_2} \\
+\tau_2^{\ell_1} & \tau_2^{\ell_2}\end{pmatrix}$}
+$\frac{\partial x^{j_1}}{\partial t^{\ell_1}}
+\frac{\partial x^{j_2}}{\partial t^{\ell_2}}$ \\
+$= \sum_{\ell_1,\ell_2=1}^m (\d t^{\ell_1} \land \d t^{\ell_2})[\tau_1, \tau_2]
+\frac{\partial x^{j_1}}{\partial t^{\ell_1}}
+\frac{\partial x^{j_2}}{\partial t^{\ell_2}}
+= \sum_{1 \le \ell_1 < \ell_2 \le m} \left(
+\frac{\partial x^{j_1}}{\partial t^{\ell_1}}
+\frac{\partial x^{j_2}}{\partial t^{\ell_2}} -
+\frac{\partial x^{j_2}}{\partial t^{\ell_1}}
+\frac{\partial x^{j_1}}{\partial t^{\ell_2}}\right)
+\d t^{\ell_1} \land \d t^{\ell_2} [\tau_1, \tau_2]$ \\
+$= \sum_{1 \le \ell_1 < \ell_2 \le m}
+\det\left(\frac{D(x^{j_1}, x^{j_2})}{D(t^{\ell_1}, t^{\ell_2})}\right)
+\d t^{\ell_1} \land \d t^{\ell_2} [\tau_1, \tau_2]$. \\
+Im Allgemeinen gilt
+$\varphi^\ast\left(\sum_{1 \le i_1 < \dotsb < i_p \le n}
+a_{i_1, \dotsc, i_p}(x) \d x^{i_1} \land \dotsb \d x^{i_p}\right)$ \\
+$= \sum_{1 \le i_1 < \dotsb < i_p \le n} a_{i_1, \dotsc, i_p}(\varphi(t))
+\sum_{1 \le \ell_1 < \dotsb < \ell_p \le m}
+\det\left(\frac{D(x^{i_1}, \dotsc, x^{i_p})}
+{D(t^{\ell_1}, \dotsc, t^{\ell_p})}\right)
+\d t^{\ell_1} \land \dotsb \land \d t^{\ell_p}$.
+
+\pagebreak
+
+\subsection{%
+    Integration auf Mannigfaltigkeiten%
+}
+
+Gegeben sei eine Kurve im $\real^n$, d.\,h.
+$\varphi\colon I = [a, b] \rightarrow \real^n$.
+Die Kurve stellt eine eindimensionale Mannigfaltigkeit $S = \varphi([a, b])$
+im $\real^n$ dar.
+Für jeden Zeitpunkt $t \in I$ entspricht ein Tangentialvektor
+$\tau \in T_t \real$ einem Tangentialvektor $\xi = \varphi'(t) \tau \in T_x S$.
+Außerdem sei im $\real^n$ ein Kraftfeld
+$F\colon \real^n \rightarrow \real^n$ gegeben.
+Unterteilt man das Intervall $I$ in einzelne Zeitpunkte $t_i$,
+entsprechend die Kurve in Punkte $x_i = \varphi(t_i)$ und
+berechnet man dazu die Tangentialvektoren $\xi_i = \varphi'(t_i) \tau_i$,
+so kann man die entlang des Weges verrichtete Arbeit approximieren durch
+$\Delta A_i \approx \sp{F(x_i), \xi_i}$.
+Dabei geht man von konstanter Kurvenrichtung $\xi_i$ und auf dieser Richtung
+von konstanter Kraft Kraft $F(x_i)$ aus.
+Mithilfe des Pullbacks kann man dies schreiben als
+$\Delta A_i \approx \sp{F(\varphi(t_i)), \varphi'(\tau)\tau_i} =
+\omega_F^{(1)}(x_i)[\xi_i] = (\varphi^\ast \omega_F^{(1)})(t_i)[\tau_i]$.
+
+Für die Gesamtarbeit gilt $A \approx \sum_i \Delta A_i =
+\sum_i (\varphi^\ast \omega)(t_i)[\tau_i] = \sum_i \omega(x_i)[\xi_i]$ mit
+$\omega = \omega_F^{(1)}$. \\
+Dies kann als eine Art Riemann-Summe gedeutet werden.
+Lässt man den Rang der Zerlegung gegen $0$ laufen, so erhält man den exakten
+Wert $A = \int_{I = [a,b]} \varphi^\ast \omega = \int_{S = \varphi(I)} \omega$.
+Die letzten beiden Terme sind nur Schreibweise, werden aber weiter unten
+zur Definition erhoben.
+$A$ berechnet sich als \textbf{Wegintegral}
+$A = \int_a^b \sp{F(\varphi(t)), \varphi'(t)} \dt =
+\int_a^b \left(F_1(\varphi(t)) \frac{d \varphi_1}{\dt} \dt + \dotsb +
+F_n(\varphi(t)) \frac{d \varphi_n}{\dt} \dt\right) =
+\int_{S = \varphi(I)} (F_1(x) \d x^1 + \dotsb + F_n(x) \d x^n)$.
+
+Auf 2-Mannigfaltigkeiten (z.\,B. im $\real^3$) geschieht dies ähnlich.
+Dabei fällt auf, dass in beiden Fällen die Ordnung der Dif"|ferentialform
+und die Dimension der Mannigfaltigkeit übereinstimmen.
+
+\linie
+
+\textbf{Integral über Mannigfaltigkeiten}:
+Sei $S$ eine $m$-Mannigfaltigkeit, $V \subset \real^m$ eine Teilmenge und
+$t = (t^1, \dotsc, t^m)$ die Koordinaten bzgl. der kanonischen Basis,
+die positiv orientiert ist.
+$S$ besitze einen Atlas, der nur aus einer Karte besteht, d.\,h.
+es gibt eine Kartenabbildung $\varphi\colon V \rightarrow S$
+mit $S = \varphi(V)$.
+Außerdem sei $f\colon V \rightarrow \real$ eine Funktion mit $f \in L^1$. \\
+Definiere $\int_V f(t) \dt^1 \land \dotsb \land \dt^m :=
+\int_V f(t) d\mu$ (dabei ist die Orientierung von
+$dt^1 \land \dotsb \land dt^m$ wichtig).
+Nun definiere für eine $m$-Form $\omega$ auf der $m$-Mannigfaltigkeit $S$ das
+Integral \\
+$\int_S \omega = \int_{\varphi(V)} \omega := \int_V \varphi^\ast \omega =
+\int_V f(t) \dt^1 \land \dotsb \land \dt^m$.
+
+Beachte: Die Definition ist unabhängig von der konkreten Parametrisierung
+der Karte. \\
+Besitzt $S$ nur Atlanten mit mehreren Karten
+$\varphi_i\colon V \rightarrow U_i$, so konstruiert man Funktionen
+$\chi_i\colon S \rightarrow [0, 1]$ mit $\varphi_i(x) = 0$ für $x \notin U_i$
+und $\sum_i \chi_i(x) \equiv 1$ (\emph{Zerlegung der Eins}). \\
+Eine Frage, die dabei im Vorhinein beantwortet werden muss, ist, ob solche
+Zerlegungen immer existieren (unter welchen Voraussetzungen). \\
+Dann definiert man $\int_S \omega := \sum_i \int_{U_i} \chi_i \omega =
+\sum_i \int_V \varphi^\ast(\chi_i \omega)$.
+Dies geht jedoch nur bei orientierten Mannigfaltigkeiten, sonst ist das
+Integral nicht wohldefiniert.
+
+\linie
+
+\textbf{Volumenform}:
+Sei $e_1, \dotsc, e_k$ ein orthonomiertes System in $\real^n$ und
+$S \subset \real^n$ eine $k$-Mannigfal\-tigkeit, wobei
+$e_1, \dotsc, e_k \in T_x S$ positiv orientiert ist.
+Die \emph{Volumenform} $\Omega$ soll eine $k$-Form sein, wobei
+$\Omega(x)[e_1, \dotsc, e_k] = 1$ sein soll.
+
+\pagebreak
+
+\subsection{%
+    Die Integralformeln der Analysis%
+}
+
+\textbf{Formel von \name{Green}}:
+Sei $D \subset \real^2$ of"|fen mit den kartesischen Koordinaten $(x, y)$
+im $\real^2$.
+$\partial D$ setze sich aus stückweise glatten Kurven zusammen und
+$P, Q\colon \overline{D} \rightarrow \real$ seien glatte Funktionen. \\
+Dann gilt $\iint_{\overline{D}} \left(\frac{\partial Q}{\partial x} -
+\frac{\partial P}{\partial y}\right) dxdy = \oint_{\partial D} (P\dx + Q\dy)$.
+
+\emph{Beispiel}:
+Für $P(x, y) = -y$ und $Q(x, y) = x$ gilt
+$\left(\frac{\partial Q}{\partial x} -
+\frac{\partial P}{\partial y}\right) = 2$, d.\,h. \\
+$\vol(D) =  \iint_D dx \land dy =
+\frac{1}{2} \oint_{\partial D} (-y\dx + x\dy)$.
+
+\emph{Beispiel}:
+Für den abgeschlossenen Einheitsball
+$D = B = \{(x, y) \in \real^2 \;|\; x^2 + y^2 \le 1\}$ und
+$f\colon B \rightarrow B$ glatt gilt
+$f(p) = p$ für ein $p \in B$
+(Fixpunktsatz von Schauder/Brouwer).
+
+\linie
+
+\textbf{Formel von \name{Gauß}-\name{Ostrogradskij}}:
+Sei $D \subset \real^3$ of"|fen mit $\overline{D}$ kompakt.
+$\partial D$ sei eine stückweise glatte $2$-Mannigfaltigkeit und
+$P, Q, R\colon \overline{D} \rightarrow \real$ seien glatte Funktionen. \\
+Dann gilt $\iiint_{\overline{D}} \left(\frac{\partial P}{\partial x} +
+\frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}\right) dxdydz =
+\iint_{\partial D} (Pdy \land dz + Qdz \land dx + Rdx \land dy)$.
+
+\textbf{verallgemeinerter Satz von \name{Gauß}}:
+Sei $V \subset \real^n$ kompakt mit
+abschnittsweise glattem Rand $S = \partial V$
+und $F\colon \real^n \rightarrow \real^n$ ein stetig dif"|ferenzierbares
+Vektorfeld. \\
+Dann gilt $\iiint_V (\nabla \cdot F) dV =
+\iint_S\!\!\!\!\!\!\!\!\!\!\!\subset\!\supset (F \cdot n) dS$
+mit $n$ dem nach außen gerichteten Einheitsnormalenfeld auf dem Rand $S$.
+Man schreibt auch $\int_V \sp{\nabla, F} d\vec{x} =
+\int_{\partial V} \sp{F, \vec{n}} \d\sigma$.
+
+\linie
+
+\textbf{Formel von \name{Stokes}}:
+Sei $S \subset \real^3$ eine stückweise glatte $2$-Mannigfaltigkeit mit Rand
+$\partial S$ und $P, Q, R\colon S \rightarrow \real$ seien glatte Funktionen.
+Dann gilt \\
+$\iint_S \left(\frac{\partial R}{\partial y} -
+\frac{\partial Q}{\partial z}\right) dy \land dz + 
+\Big(\frac{\partial P}{\partial z} -
+\frac{\partial R}{\partial x}\Big) dz \land dx + 
+\left(\frac{\partial Q}{\partial x} -
+\frac{\partial P}{\partial y}\right) dx \land dy =
+\int_{\partial S} (P\dx + Q\dy + R\dz)$.
+
+\textbf{verallgemeinerte Formel von \name{Stokes}}:
+Sei $S$ eine glatte, orientierbare $k$-Mannigfaltigkeit mit Rand $\partial S$.
+Außerdem sei $\omega$ eine glatte $k - 1$-Form auf $S$. \\
+Dann gilt $\int_{\partial S} \omega = \int_S \d \omega$.
+
+\subsection{%
+    Elemente der Vektoranalysis%
+}
+
+Im Folgenden seien $A\colon D \subset \real^3 \rightarrow \real^3$ ein
+Vektorfeld und $\alpha\colon D \subset \real^3 \rightarrow \real$ ein
+Skalarfeld im $\real^3$.
+Zu Vektorfeldern $A$ und $B$ gehören die Energieform $\omega_A^{(1)}$ mit
+$\omega_A^{(1)}(x)[\xi] = \sp{A(x), \xi}_{\real^3}$ sowie
+die Flussform $\omega_B^{(2)}$ mit
+$\omega_B^{(2)}(x)[\xi_1, \xi_2] = \det(B(x), \xi_1, \xi_2)$.
+Außerdem bezeichnen $\cdot$ bzw. $\times$ Skalar- bzw. Kreuzprodukt.
+
+\textbf{Lemma}:
+$\omega_{A'}^{(1)} \land \omega_{A''}^{(1)} = \omega_{A' \times A''}^{(2)}$,
+$\omega_{A'}^{(1)} \land \omega_{A''}^{(2)} = \omega_{A' \cdot A''}^{(3)}$ \\
+(dabei ist $\omega_\alpha^{(3)}(x)[\xi_1, \xi_2, \xi_3] = \alpha(x)
+\det(\xi_1, \xi_2, \xi_3)$)
+
+Für $f\colon D \subset \real^3 \rightarrow \real$ gilt
+für $\omega_f^{(0)}(x) = f(x)$, dass
+$\omega_F^{(1)} = \d \omega_f^{(0)}$ mit $F = \grad f = \nabla f$. \\
+Für $A\colon D \subset \real^3 \rightarrow \real^3$ gilt
+für $\omega_A^{(1)}(x) = \sp{A(x), \cdot}$, dass
+$\omega_B^{(2)} = \d \omega_A^{(1)}$ mit $B = \rot A = \nabla \times A$. \\
+Für $H\colon D \subset \real^3 \rightarrow \real^3$ gilt
+für $\omega_H^{(2)}(x) = \det(H(x), \cdot, \cdot)$, dass \\
+$\omega_\rho^{(3)} = \d \omega_H^{(2)}$ mit $\rho = \div H = \sp{\nabla, H}$.
+
+Bekanntermaßen ist $\rot F = 0$ für $F = \nabla f$ und
+$\div H = 0$ für $H = \rot A$.
+
+\textbf{weitere Rechenregeln}:
+$\rot(f \cdot A) = (\grad f) \times A + f \cdot \rot A$, \\
+$\div(f \cdot A) = (\grad f) \cdot A + f \cdot \div A$, \qquad
+$\div(A \times B) = B \cdot \rot A - A \cdot \rot B$
+
+\linie
+\pagebreak
+
+\textbf{Formel von \name{Newton}-\name{Leibniz}}:
+Seien ein stetig dif"|ferenzierbarer Weg
+$\gamma\colon [a, b] \rightarrow \real^n$ mit $\Gamma = \gamma([a, b])$
+und eine Energieform $\omega_F^{(1)}$ mit $F = \nabla f$ für eine Funktion
+$f\colon \real^n \rightarrow \real$ gegeben. \\
+Dann gilt $\int_\Gamma \omega_F^{(1)} =
+\int_a^b \sp{F \circ \gamma, \dot{\gamma}} \dt =
+(f \circ \gamma)(b) - (f \circ \gamma)(a)$. \\
+Insbesondere gilt $\int_{\Gamma_1} \omega_F^{(1)} =
+\int_{\Gamma_2} \omega_F^{(1)}$, falls $F = \nabla f$.
+
+\linie
+
+\textbf{Formel von \name{Stokes}}:
+Sei $A\colon \real^3 \rightarrow \real^3$ ein glattes Vektorfeld und
+$S \subset \real^3$ eine $2$-dimensionale Mannigfaltigkeit.
+Dann gilt $\iint_S \rot \vec{A} \cdot d\vec{\sigma} =
+\oint_{\partial S} \vec{A} d\vec{s}$.
+
+Weitere Varianten sind
+$\int_S d\vec{\sigma} (\nabla \times A) =
+\int_{\partial S} d\vec{s} \cdot \vec{A}$, \\
+$\int_S d\vec{\sigma} \times (\nabla \times A) =
+\int_{\partial S} d\vec{s} \times \overline{A}$ \quad und \quad
+$\int_S d\vec{\sigma} \times \nabla f =
+\int_{\partial S} d\vec{s} f$. \\
+Die letzten beiden Formeln kann man sich mit der Schreibweise
+$\int_S d\vec{\sigma} \times \nabla = \int_{\partial S} d\vec{s}$
+merken.
+
+\linie
+
+\textbf{Formel von \name{Gauß}-\name{Ostrogradskij}}:
+Seien $B\colon \real^3 \rightarrow \real^3$ ein Vektorfeld und
+$V \subset \real^3$ of"|fen mit stückweise glattem Rand $\partial V$.
+Dann gilt $\iiint_V \div \vec{B} dV =
+\iint_{\partial V} \vec{B} \cdot d\vec{s}$.
+
+Weitere Varianten sind
+$\int_V dV \nabla \cdot \vec{B} =
+\int_{\partial V} d\vec{\sigma} \cdot \vec{B}$, \\
+$\int_V dV (\nabla \times \vec{B}) =
+\int_{\partial V} d\vec{\sigma} \cdot \vec{B}$ \quad und \quad
+$\int_V dV \nabla f = \int_{\partial V} d\vec{\sigma} \cdot f$. \\
+Alle drei Formeln kann man sich mit der Schreibweise
+$\int_V dV \nabla = \int_{\partial V} d\vec{\sigma}$ merken.
+
+\linie
+
+\textbf{Formel von \name{Green}}:
+Seien $V \subset \real^n$ mit stückweise glattem Rand $\partial V$ und
+$f, g\colon \real^n \rightarrow \real$ Funktionen.
+Dann gilt $\int_V (\nabla f) \cdot (\nabla g) dV =
+\int_{\partial V} g \nabla f d\vec{\sigma} - \int_V g \Delta f dV$ sowie \\
+$\int_V (g \Delta f - f \Delta g) dV =
+\int_{\partial V} (g \nabla f - f \nabla g) d\vec{\sigma}$.
+
+\subsection{%
+    Zur Theorie der Potentialfelder%
+}
+
+Im Folgenden sei $D \subset \real^n$ of"|fen mit stückweise glattem Rand,
+$A\colon D \rightarrow \real^n$ ein Vektorfeld und
+$U\colon D \rightarrow \real$ ein Skalarfeld.
+
+\textbf{Potential}:
+Ein Skalarfeld $U$ ist das \emph{Potential} vom Vektorfeld $A$ in $D$,
+falls $A = \nabla U$. \\
+$A$ heißt in diesem Fall \emph{konservatives Feld} oder \emph{Gradientenfeld}.
+
+Es gibt nicht zu jedem Vektorfeld $\vec{A}$ ein Potential $U$.
+Eine notwendige Bedingung ist \\
+$\rot \vec{A} = \rot \grad U = 0$.
+Allerdings ist diese Bedingung nicht hinreichend.
+
+\textbf{Satz}:
+$\vec{A}$ ist konservativ genau dann, wenn $\oint_\Gamma \vec{A} d\vec{s} = 0$
+für jeden geschlossenen Pfad $\Gamma$ gilt.
+
+\linie
+
+\textbf{exakt}: \\
+Eine $k$-Form $\omega \in \Omega_k(D)$ heißt \emph{exakt}, falls
+es eine $k - 1$-Form $\widetilde{\omega} \in \Omega_{k-1}(D)$ gibt mit
+$\omega = \d\widetilde{\omega}$.
+
+\textbf{abgeschlossen}:
+Eine $k$-Form $\omega \in \Omega_k(D)$ heißt \emph{abgeschlossen}, falls
+$\d\omega = 0$.
+
+Jede exakte Form ist auch abgeschlossen.
+Die Umkehrung gilt i.\,A. nicht.
+
+\textbf{Lemma von Poincaré}:
+Ist $D$ homotop zur Kugel (d.\,h. $D$ hat keine "`Löcher"'),
+dann ist jede abgeschlossene Form auch exakt.
+
+\linie
+
+Eine notwendige Bedingung, dass es zu
+$\vec{B}\colon D \subset \real^3 \rightarrow \real^3$ ein Vektorpotential
+$\vec{A}$ mit $\vec{B} = \rot \vec{A}$ gibt, ist, dass $\div \vec{B} = 0$
+erfüllt ist.
+Enthält $D$ keine "`Löcher"', dann ist diese Bedingung sogar hinreichend.
+
+\pagebreak

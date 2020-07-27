@@ -1,0 +1,630 @@
+\section{%
+    Planare Unterteilungen%
+}
+
+Planare Unterteilungen finden viele Anwendungen bei Geoinformationssystemen (GIS).
+Dabei wird ein Teil der Ebene $\real^2$ in Zellen unterteilt
+(Postleitzahlen, Telefonvorwahlen, Landkreise usw.).
+Typische Operationen auf Unterteilungen sind zum einen die Lokalisierung
+(in welcher Zelle befindet sich ein gegebener Punkt),
+zum anderen die Überlagerung zweier Unterteilungen
+(z.\,B. Gebiete gleicher Vorwahl und gleicher Postleitzahl).
+Für das letzte Problem bestimmt man im Wesentlichen die Schnittpunkte der Zellenränder
+und berechnet so die Zellen der verfeinerten Überlagerung.
+
+\subsection{%
+    Schnitt von Strecken%
+}
+
+\textbf{Problem}:
+Gegeben sei eine Menge $S$ von Strecken,
+jede angegeben durch ihre beiden Endpunkte in $\real^2$.
+Gesucht ist die Menge aller Paare sich schneidender Strecken.
+
+Für $|S| = n$ und $k$ der Anzahl der Schnittpunkte
+ist das Ziel, einen Algorithmus mit Laufzeit $\O(n \log n + k)$ zu finden.
+$\O(n \log n)$ ist nicht möglich, da $k \in \omega(n \log n)$ sein kann
+(z.\,B. lauter horizontale und lauter vertikale Linien führen zu $k \in \Theta(n^2)$).
+
+\subsubsection{%
+    Sweep-Line-Algorithmus%
+}
+
+Beim \begriff{Sweep-Line-Paradigma} lässt man im Prinzip eine vertikale Gerade von links nach
+rechts über die Ebene laufen, wobei die Invariante gelten soll, dass
+alles links der Gerade schon berechnet wurde (hier die Schnittpunkte links der Sweep-Line)
+und alles rechts der Gerade noch erkundet werden muss.
+
+Im Folgenden geht man davon aus, dass es keine vertikalen Strecken gibt
+(oBdA durch Rotation möglich).
+
+\textbf{Sweep-Line-Datenstrukturen}:
+Der Sweep-Line-Algorithmus verwaltet 2 Datenstrukturen.
+\begin{itemize}
+    \item
+    \begriff{$X$-Struktur} (Min-Heap über $x$-Koordinaten):
+    enthält alle Strecken-Endpunkte rechts der SL und die Schnittpunkte rechts der SL,
+    die zu Strecken gehören, die die SL momentan schneiden und auf ihr benachbart sind
+    
+    \item
+    \begriff{$Y$-Struktur} (2-4-Baum):
+    enthält alle Strecken, die die SL momentan schneiden, geordnet gemäß der $y$-Koordinate
+    des Schnittpunkts zwischen Segment und SL
+\end{itemize}
+
+\textbf{Sweep-Line-Algorithmus}:
+Der \begriff{Sweep-Line-Algorithmus (SL-Algorithmus)} arbeitet wie folgt.
+\begin{enumerate}
+    \item
+    Füge alle Endpunkte gemäß ihrer $x$-Koordinate in die $X$-Struktur ein.
+    
+    \item
+    Die $Y$-Struktur enthält anfangs keine Elemente.
+    
+    \item
+    Wiederhole Folgendes, während die $X$-Struktur nicht-leer ist:
+    \begin{enumerate}
+        \item
+        Bestimme den Punkt $p$ aus der $X$-Struktur mit der kleinsten $x$-Koordinate und
+        entferne ihn aus der $X$-Struktur.
+        
+        \item
+        Rufe $\code{process}(p)$ auf.
+    \end{enumerate}
+\end{enumerate}
+
+\linie
+\pagebreak
+
+\textbf{Prozedur $\code{process}(p)$}:
+\begin{enumerate}
+    \item
+    Ist $p$ der linke Endpunkt einer Strecke $s$, dann füge $s$ in die $Y$-Struktur ein,
+    teste auf Schnittpunkte rechts der SL und füge sie ggf. in die $X$-Struktur ein.
+    
+    \item
+    Ist $p$ der rechte Endpunkt einer Strecke $s$, dann entferne $s$ aus der $Y$-Struktur,
+    teste ggf.
+    die beiden neu benachbarten Strecken in der $Y$-Struktur auf einen Schnittpunkt rechts der SL
+    und füge ihn ggf. in die $X$-Struktur ein.
+    
+    \item
+    Ist $p$ der Schnittpunkt zweier Strecken $s_1$ und $s_2$, dann tausche $s_1$ und $s_2$ in
+    der $Y$-Struktur, teste zwei neue Nachbarschaften auf Schnittpunkte rechts der SL und
+    füge sie ggf. in die $X$-Struktur ein.
+\end{enumerate}
+
+\linie
+
+\textbf{Korrektheit}:
+Der Algorithmus arbeitet korrekt.
+
+\begin{Beweis}
+    Zwei Strecken müssen auf der SL benachbart sein,
+    bevor die SL ihren Schnittpunkt erreicht.
+    Allerdings wird jedes Mal, wenn zwei Strecken benachbart werden können, ein Test auf
+    Schnittpunkte durchgeführt, d.\,h. alle Schnittpunkte werden erfasst.
+\end{Beweis}
+
+\linie
+
+\textbf{Problem}:
+Ein Problem ist, dann Schnittpunkte mehrfach in die $X$-Struktur eingefügt werden können.
+Man stelle sich zwei große, sich schneidende Strecken $s_1, s_2$
+und sehr viele kurze Strecken zwischen den beiden linken Endpunkten von $s_1, s_2$ und
+ihrem Schnittpunkt $S$ vor, wobei sich die kurzen Strecken vertikal nicht überlagern.
+In diesem Fall wird jedes Mal, wenn die SL auf einen rechten Endpunkt einer der kurzen Strecken
+stößt, der Schnittpunkt $S$ in die $X$-Struktur aufgenommen, d.\,h. $\Theta(n)$-mal.
+
+\textbf{Lösung}:
+Man kann zwar zeigen, dass das nicht sonderlich problematisch ist.
+Eine einfache Lösung besteht aber darin, dass Schnittpunkte wieder entfernt werden,
+wenn zwei Strecken auf der SL auf einmal nicht mehr benachbart sind
+(was man ohnehin eigentlich tun muss, weil obiger Algorithmus die
+oben definierte Eigenschaft der $X$-Struktur nicht erfüllt).
+
+\linie
+
+\textbf{Zeitbedarf}:
+$\O((n + k) \log n)$
+
+\begin{Beweis}
+    In die $X$-Struktur werden insgesamt $2n + k$ viele Punkte aufgenommen, nämlich genau alle
+    Strecken-Endpunkte und alle Schnittpunkte.
+    Bei jedem "`Ereignis"' wird $\code{process}(p)$ aufgerufen.
+    Implementiert man die $X$-Struktur als Min-Heap und die $Y$-Struktur als 2-4-Baum,
+    dann kostet jeder Aufruf $\O(\log n)$ Zeit,
+    denn $X$- und $Y$-Struktur enthalten jeweils stets $\O(n)$ Elemente.
+    Dies ergibt eine Laufzeit von $\O((2n + k) \log n) = \O((n + k) \log n)$.
+\end{Beweis}
+
+Ist $k \in \Theta(n^2)$, dann ist der Sweep-Line-Algorithmus sogar schlechter als die naive
+Methode, alle möglichen Paare zu überprüfen (was $\O(n^2)$ Zeit braucht).
+Daher folgt ein besserer Algorithmus zur Bestimmung von Schnittpunkten.
+
+\pagebreak
+
+\subsubsection{%
+    RIC-Algorithmus%
+}
+
+Seien wieder alle Strecken nicht-senkrecht und keine drei Strecken schneiden sich in einem Punkt.
+
+\textbf{Trapezierung}:
+Eine \begriff{Trapezierung} einer Menge $S$ von Strecken in $\real^2$ wird gebildet durch die Menge
+selbst sowie alle vertikalen Strahlen, die von Endpunkten und Schnittpunkten aus nach oben oder
+unten laufen, bis sie auf eine Strecke tref"|fen (oder bis $\pm\infty$).
+
+\textbf{Pseudoecke}:
+Eine \begriff{Pseudoecke} ist der Endpunkt eines Strahls,
+der in diesem Punkt auf eine Strecke trif"|ft.
+
+\textbf{Komplexität}:
+Für $|S| = n$ und $k$ der Anzahl der Schnittpunkte gibt es $\le 2(2n + k) = 4n + 2k$ Pseudoecken
+(von jedem Endpunkt und Schnittpunkt gehen zwei Strahlen aus).
+Betrachtet man die Trapezierung als Graph mit den Endpunkten, Schnittpunkten und
+Pseudoecken als Ecken, so hat dieser als planarer Graph $\O(n + k)$ Kanten und Facetten.
+Damit hat die Trapezierung den Platzbedarf $\O(n + k)$.
+
+\linie
+
+Wenn eine Trapezierung von $S$ berechnet wird, werden die Schnittpunkte automatisch mitberechnet.
+Der Sweep-Line-Algorithmus könnte auch die Trapezierung berechnen, allerdings in
+$\O((n + k)\log n)$ Zeit.
+
+\textbf{Berechnung einer Trapezierung}:
+\begin{enumerate}
+    \item
+    Berechne die Trapezierung der Endpunkte
+    (also nur die vertikalen Strahlen der Endpunkte).
+    
+    \item
+    Füge die Strecken zufällig nacheinander in die Trapezierung ein
+    (evtl. müssen vertikale Strahlen gekürzt werden oder bei Schnittpunkten
+    entstehen neue).
+\end{enumerate}
+Der erste Schritt kostet die Zeit $\O(n \log n)$ (Zeit zum Sortieren der Endpunkte).
+Beim zweiten Schritt fügt man ein Segment ein, indem man in einem Endpunkt startet und dann
+das Trapez berechnet, in das die Strecke als "`nächstes"' eintreten wird.
+Ist $\tau$ das aktuelle Trapez, so kostet die Bestimmung des nächsten Trapezes
+$\deg(\tau)$-viele Schritte, wobei $\deg(\tau)$ die Anzahl der Endpunkte, Schnittpunkte und
+Pseudoecken ist, die auf dem Rand von $\tau$ liegen.
+
+\textbf{Probleme}:
+\begin{itemize}
+    \item
+    Es kann Trapeze $\tau$ geben mit $\deg(\tau) = \Theta(n)$.
+    
+    \item
+    Es kann sein, dass bei jeder Einfügung einer Strecke viele Trapeze durchquert werden müssen.
+    Wählt man z.\,B. lauter horizontale, übereinander liegende Strecken, die symmetrisch um einen
+    Punkt nach oben hin immer kleiner werden, und fügt diese Strecken von unten nach oben ein,
+    dann werden bei der $i$-ten Einfügung $2(n - i)$ Trapeze durchlaufen, d.\,h.
+    insgesamt $\Omega(n^2)$
+    (dabei haben diese Strecken nicht einmal einen Schnittpunkt).
+\end{itemize}
+
+Die Probleme werden allerdings durch die Randomisierung beseitigt.
+
+\linie
+\pagebreak
+
+\textbf{erwartete Laufzeit}:
+$\O(n \log n + k)$
+
+\begin{Beweis}
+    Sei $s \in S$ eine Strecke, die in die Trapezierung $\T(R')$ der bisherigen Strecken
+    $R'$ eingefügt werden soll.
+    Die Kosten für die Einfügung von $s$ in $\T(R')$ sind
+    $\sum_{\tau \in \T(R'),\; s \cap \tau \not= \emptyset} \deg(\tau)$.
+    Diese Kosten können in Abhängigkeit der Trapezierung $\T(R)$, nachdem $s$ eingefügt wurde,
+    mit $R := R' \cup \{s\}$ ausgedrückt werden:
+    $\sum_{\tau \in \T(R),\; s \text{ begrenzt } \tau} \deg(\tau)$
+    (Rückwärtsanalyse).
+    
+    Ist nur die Trapezierung $\T(R)$ gegeben, so hätte jede Strecke $s \in R$ mit gleicher
+    Wahrscheinlichkeit als letzte eingefügt werden können.
+    Mit $r := |R|$ sind die erw. Kosten für das Einfügen des $r$-ten Segments gleich
+    $\frac{1}{r} \sum_{s \in R} \sum_{\tau \in \T(R),\; s \text{ begrenzt } \tau} \deg(\tau)
+    = \frac{1}{r} \sum_{\tau \in \T(R)} \deg(\tau) \sum_{s \in R,\; s \text{ begrenzt } \tau} 1$.
+    Weil es höchstens zwei Segmente $s \in R$ gibt, die ein Trapez begrenzen können, ist
+    die innere Summe höchstens $2$.
+    Damit sind die erw. Kosten für das $r$-te Segment
+    $\le \frac{2}{r} \sum_{\tau \in \T(R)} \deg(\tau)$\\
+    $= \frac{2}{r} \cdot \O(n + k_R)$ mit $k_R$ der Anzahl an Schnittpunkten in $R$,
+    denn die Trapezierung $\T(R)$ hat als planarer Graph $\O(n + k_R)$ viele Ecken, Schnittpunkte
+    und Pseudoecken
+    (bei der Summerierung werden gleiche Ecken, Schnittpunkte oder Pseudoecken nur $\O(1)$-mal
+    mehrfach gezählt).
+    
+    Es gilt $\EE[k_R] = \frac{r(r-1)}{n(n-1)} k$
+    (ein Schnittpunkt ist in $R$ genau dann, wenn beide Strecken in $R$ sind).
+    Damit erhält man $\frac{2}{r} \cdot \O(n + k_R)
+    = \O(\frac{n}{r} + k \cdot \frac{r - 1}{n(n-1)})$
+    und die erwarteten Gesamtkosten betragen
+    $\sum_{r=1}^n \O(\frac{n}{r} + k \cdot \frac{r - 1}{n(n-1)})
+    = \O(n \log n + k \cdot \sum_{r=1}^n \frac{r}{n^2}) = \O(n \log n + k)$.
+\end{Beweis}
+
+\subsection{%
+    Lokalisierung in planaren Unterteilungen%
+}
+
+\textbf{Problem}:
+Gegeben sei eine planare Unterteilung $\P$ mit $n$ Ecken
+(als planare Einbettung mit geraden Linien eines planaren Graphs).
+Gesucht ist für einen Punkt $q \in \real^2$ die Facette $f$ von $\P$ mit $q \in f$.
+
+Eine naive Lösung kostet $\O(n)$ Zeit
+(ob $q$ in einem Polygon $f$ ist, kann in $\O(1)$ Zeit geprüft werden, indem ein
+Strahl in eine beliebige Richtung konstruiert und die Anzahl der Schnittpunkte mit dem Polygon
+gezählt wird).
+
+Das Ziel ist die Lokalisierung in $\O(\log n)$ Zeit mit $\O(n)$ Speicher.
+
+Im Folgenden ist ein Polygon immer ein einfaches Polygon ohne Löcher
+(keine Selbstüberschneidungen).
+
+\subsubsection{%
+    Triangulierung eines Polygons%
+}
+
+\textbf{Triangulierung eines Polygons}:
+Aus einer Trapezierung eines Polygons mit $n$ Ecken kann man in $\O(n)$ Zeit
+eine Triangulierung des Polygons berechnen.
+\begin{enumerate}
+    \item
+    Konstruiere die Trapezierung der Kanten.
+    
+    \item
+    Für jedes Trapez, das Polygonecken auf gegenüberliegenden vertikalen Strahlen besitzt,
+    verbinde diese Ecken, falls sie noch nicht verbunden sind.
+    Das zerlegt das Polygon in \begriff{$x$-monotone Polygone}
+    (Polygone, deren Kanten in zwei Teile aufgeteilt werden können,
+    sodass die $x$-Koordinaten jedes Teils monoton steigen oder fallen),
+    deren eine Seite eine einzelne Kante ist
+    (\begriff{$x$-Kammpolygon}).
+    
+    \item
+    Trianguliere jedes $x$-monotone Polygon.
+\end{enumerate}
+Damit können Polygone mit $n$ Ecken in $\O(n \log n)$ Zeit trianguliert werden.
+
+\pagebreak
+
+\subsubsection{%
+    \name{Kirkpatrick}-Hierarchie%
+}
+
+\textbf{Annahmen}:
+\begin{itemize}
+    \item
+    Durch obigen Algorithmus kann man annehmen, dass jede Facette von $\P$ ein Dreieck ist.
+    
+    \item
+    Man kann außerdem annehmen, dass die \begriff{äußere Fläche} (d.\,h. die Umrandung von $\P$)
+    ebenfalls ein Dreieck ist.
+    Falls das nicht der Fall ist, fügt man einfach drei Ecken um $\P$ weit entfernt von den
+    anderen Ecken hinzu und trianguliert neu.
+\end{itemize}
+Der resultierende Graph ist immer noch planar, d.\,h. es gibt $\O(n)$ Kanten und $\O(n)$ Facetten
+($n$ Anzahl der Ecken).
+
+\linie
+
+\textbf{unabhängige Menge}:
+Sei $G = (V, E)$ ein ungerichteter Graph.\\
+Eine Teilmenge $I \subset V$ heißt \begriff{unabhängig} (oder \begriff{stabil}), falls
+$\forall_{x, y \in I}\; \{x, y\} \notin E$.
+
+\textbf{Lemma}:
+In einem planaren Graph $G = (V, E)$ existiert eine unabhängige Menge $I \subset V$ mit
+$|I| \ge \frac{|V|}{24}$ und $\forall_{x \in I}\; \deg(x) \le 11$.
+
+\begin{Beweis}
+    Seien $n := |V|$, $m := |E|$ und $k$ die Anzahl der Facetten von $G$.
+    Für eine gegebene Kantenzahl $m$ bekommt man die maximale Facettenzahl $k$,
+    wenn der Graph nur aus Dreiecken besteht und voll trianguliert ist
+    (bei größeren $n$-Ecken verschwendet man Kanten).
+    Nutzt man je zwei Kanten zur Bildung eines Dreiecks,
+    so bekommt man $3k \le 2m$.
+    Aus dem eulerschen Polyedersatz $n - m + k = 2$ erhält man
+    $m = n + k - 2 \le n + \frac{2m}{3} - 2$, d.\,h. $m \le 3n - 6$.
+    
+    Damit gilt $\sum_{x \in V} \deg(x) = 2m \le 6n - 12$, denn jede Kante ist genau zu zwei Knoten
+    inzident.
+    
+    Es gibt daher $\ge \frac{n}{2}$ Knoten, die Grad $\le 11$ haben:
+    Sei $S := \{x \in V \;|\; \deg(x) \le 11\}$, dann wäre andernfalls $|S| < \frac{n}{2}$, also
+    $|V \setminus S| > n - \frac{n}{2} = \frac{n}{2}$.
+    Daraus folgt
+    $6n - 12 \ge \sum_{x \in V} \deg(x)$\\
+    $\ge \sum_{x \in V \setminus S} \deg(x)
+    \ge \sum_{x \in V \setminus S} 12 = 6n$, ein Widerspruch.
+    
+    Indem man nacheinander Ecken aus $S$ wählt, wobei man darauf achtet, keine Ecke zu wählen,
+    der zu einer der bereits gewählten Ecken benachbart ist,
+    erhält man eine unabhängige Menge $I$ mit $I \subset S$.
+    Man wählt dabei mindestens jede zwölfte Ecke, da zu einer Ecke höchstens $11$ Ecken benachbart
+    sind.
+    Daher gilt $|I| \ge \frac{|S|}{12} \ge \frac{n}{24}$.
+\end{Beweis}
+
+\linie
+
+\textbf{Konstruktion der \name{Kirkpatrick}-Hierarchie}:
+Die \begriff{\name{Kirkpatrick}-Hierarchie} ist eine Folge $T_0, \dotsc, T_h$
+von Triangulierungen mit $h \in \natural_0$ und wird wie folgt konstruiert.
+\begin{enumerate}
+    \item
+    Sei $T_0 := T$ mit $T$ der ursprünglichen Triangulierung von $\P$.
+    
+    \item
+    $T_{i+1}$ erhält man aus $T_i$, indem man gemäß dem Lemma eine unabhängige Menge
+    $I$ von Knoten aus $T_i$ findet mit
+    $|I| \ge \frac{n_i}{24}$ und $\forall_{x \in I}\; \deg(x) \le 11$
+    (mit $n_i$ der Knotenzahl von $T_i$).
+    Anschließend entferne die Knoten von $I$ aus $T_i$ und trianguliere die
+    so entstandenen "`Löcher"' neu, um $T_{i+1}$ zu erhalten.
+    
+    \item
+    Höre auf, sobald $n_i$ eine konstante Größe erreicht hat.
+\end{enumerate}
+
+\linie\
+\pagebreak
+
+
+\textbf{Beantwortung einer Anfrage $q \in \real^2$}:
+\begin{enumerate}
+    \item
+    Lokalisiere $q$ in $T_h$.
+    
+    \item
+    Bestimmung der Position in $T_i$ aus der Position in $T_{i+1}$, indem die $\O(1)$
+    (hier höchstens elf) Dreiecke untersucht werden, die zu dem Loch gehören, in dem sich
+    $q$ in $T_{i+1}$ befindet.
+\end{enumerate}
+
+\textbf{Zeitaufwand für Abfrage}:
+$\O(\log n)$
+
+\begin{Beweis}
+    Es gilt $h = \O(\log n)$, da $n_i \le n (\frac{23}{24})^i$.
+    Hört man auf, wenn $n_i < c$ gilt, dann hört man spätestens im $j$-ten Schritt auf mit
+    $n (\frac{23}{24})^j < c$, d.\,h.
+    $h \le j < \log_{23/24} \frac{c}{n}
+    = \frac{\log(c/n)}{\log(23/24)}$\\
+    $= \frac{1}{\log(23/24)} (\log c - \log n) = \O(\log n)$.
+    
+    Jeder Lokalisierungsschritt in obigem Algorithmus kostet $\O(1)$ Zeit,
+    da immer nur $\O(1)$ Dreiecke untersucht werden müssen.
+    Damit ist der Gesamt-Zeitaufwand $\O(\log h)$.
+\end{Beweis}
+
+\textbf{Platzaufwand}:
+$\O(n)$
+
+\begin{Beweis}
+    Aus $n_i \le n (\frac{23}{24})^i$ folgt für den Platzbedarf
+    $\sum_{i=0}^{h} n_i
+    \le n \frac{1 - (23/24)^{h+1}}{1 - 23/24}
+    = \O(n (\frac{23}{24})^h)$.
+    Wegen $(\frac{23}{24})^h \le 1$
+    erhält man einen Platzbedarf von $\O(n (\frac{23}{24})^h) = \O(n)$.
+\end{Beweis}
+
+\subsubsection{%
+    Anwendung von Polygontriangulierung: Sichtbarkeitsprobleme%
+}
+
+\textbf{Museumswächterproblem}:
+Gegeben sei ein Museum als ein einfaches Polygon mit $n$ Ecken.
+Gesucht ist die minimale Anzahl von omnidirektionalen Wächtern, sodass das Museum vollständig
+überwacht wird.
+
+\textbf{Lemma}:
+Jedes einfache Polygon mit $n$ Ecken kann mit
+$\left\lfloor \frac{n}{3} \right\rfloor$ Wächtern überwacht werden.
+
+\begin{Beweis}
+    Zuerst konstruiere man eine Triangulierung des Polygons.
+    Dann ist der \begriff{duale Graph}
+    (Dreiecke als Knoten, Kanten zwischen benachbarten Dreiecken) ein Baum,
+    da er zusammenhängend und kreisfrei ist
+    (gäbe es einen Kreis, hätte das Polygon ein Loch).
+    
+    Anschließend berechne eine $3$-Färbung der Ecken der Triangulierung,
+    d.\,h. jede Ecke bekommt eine Farbe $\text{r}, \text{g}, \text{b}$ zugewiesen,
+    wobei zwei benachbarte Ecken jeweils verschiedene Farben haben müssen.
+    Das geht wie folgt:
+    \begin{enumerate}
+        \item
+        Wähle ein beliebiges Dreieck und färbe die Ecken in den drei Farben.
+        
+        \item
+        Wähle ein Dreieck, von dem zwei Ecken bereits gefärbt sind, und färbe die dritte Ecke
+        entsprechend.
+        
+        \item
+        Wiederhole \emph{(2)}, bis alle Dreiecke gefärbt sind.
+    \end{enumerate}
+    Das ist möglich, weil der duale Graph ein Baum ist:
+    Gäbe es zwei benachbarte Ecken mit derselben Farbe, dann gäbe es einen Kreis im Baum,
+    ein Widerspruch.
+    
+    Schließlich platziert man Wächter an den Ecken mit der Farbe, die am seltensten vorkommt.
+    Das sind $\le \left\lfloor \frac{n}{3} \right\rfloor$-viele und die Wächter überwachen
+    jedes Dreieck, damit auch das gesamte Polygon.
+\end{Beweis}
+
+\textbf{Lemma}:
+Es gibt einfache Polygone mit $n$ Ecken,
+die $\left\lfloor \frac{n}{3} \right\rfloor$ Wächter benötigen.
+
+\begin{Beweis}
+    Stellt man sich einen Kamm vor, der einen schmalen Gang und $k$ lange Zacken besitzt,
+    so benötigt jede Zacke einen eigenen Wächter.
+    Das zugehörige Polygon hat $n = 3k$ Ecken, für $n \equiv_3 1$ bzw. $n \equiv_3 2$
+    fügt man noch 1 bzw. 2 Ecken hinzu, ohne die Struktur zu verändern.
+\end{Beweis}
+
+\pagebreak
+
+\subsubsection{%
+    \emph{Zusatz}: Polygontriangulierung in erwartet
+    \texorpdfstring{$\O(n\log^\ast n)$}{O(n log* n)}%
+}
+
+Im Folgenden wird gezeigt, wie man ein einfaches Polygon mit $n$ Ecken in Zeit
+$\O(n \log^\ast n)$ trapezieren kann.
+Daraus folgt dann automatisch, dass ein solches Polygon in Zeit $\O(n \log^\ast n)$
+trianguliert werden kann.
+
+\textbf{Idee}:
+Man kann nicht einfach so wie vorher trapezieren, da dies die Endpunkte nebenbei sortiert und
+Sortierung $\Omega(n \log n)$ Zeit kostet.
+Die Idee ist nun, die Trapezierung zu berechnen und nebenbei eine Datenstruktur zur
+Punktlokalisierung (für die Endpunkte der noch einzufügenden Strecken)
+in der aktuellen Trapezierung aufzubauen.
+
+\textbf{Datenstruktur}:
+Die Datenstruktur zur Punktlokalisierung ist in jedem Schritt ein gerichteter Graph ohne Zykeln.
+Sie sieht baumähnlich aus und besteht aus Knoten der folgenden Arten:
+\begin{itemize}
+    \item
+    \emph{Trapeze}:
+    stellen die Blätter dar (Knoten mit Ausgangsgrad $0$)
+    
+    \item
+    \emph{$X$-Knoten}:
+    enthalten einen Punkt,
+    stellen eine Unterteilung in zwei Hälften
+    (mit geraden Rändern) dar, gemäß der $x$-Koordinate des Knotenpunkts
+    
+    \item
+    \emph{$Y$-Knoten}:
+    enthalten eine Strecke
+    stellen eine Unterteilung in zwei Hälften
+    (mit schiefem Rand) dar, gemäß der Knotenstrecke
+\end{itemize}
+Der Graph ist i.\,A. kein Baum, da es Knoten mit Eingangsgrad $> 1$ geben kann.
+
+\linie
+
+\textbf{Lemma}:
+Seien $\tau_i, Q_i$ die Trapezierungen bzw. Suchstrukturen, die durch die Einfügung von
+$s_i$ in $\tau_{i-1}, Q_{i-1}$ entstehen.
+Ist $q$ in $\tau_{i-1}, Q_{i-1}$ lokalisiert worden,
+dann ist $\O(\frac{1}{i})$ der erwartete Aufwand,
+$q$ in $\tau_i, Q_i$ zu lokalisieren.
+
+\begin{Beweis}
+    Es gibt zwei verschiedene Fälle.
+    \begin{enumerate}
+        \item
+        Ist das Trapez, das $q$ enthält, identisch in $\tau_i$ und $\tau_{i-1}$,
+        dann ist der Aufwand, $q$ in $\tau_i$ zu lokalisieren, gleich $0$.
+        
+        \item
+        Ansonsten ist der Aufwand $\O(1)$.
+        Dieser Fall tritt mit Wahrscheinlichkeit $\O(\frac{1}{i})$ ein, da $s_i$
+        einer der Grenzen des Trapezes in $\tau_i$ definieren muss.
+    \end{enumerate}
+    Daraus ergibt sich ein erwarteter Aufwand von
+    $\O(\frac{1}{i}) \cdot \O(1) + \O(1 - \frac{1}{i}) \cdot 0 = \O(\frac{1}{i})$.
+\end{Beweis}
+
+\textbf{Korollar}:
+Ein Punkt $q$ kann in $\tau_i$ in erwartet $\O(\log i)$ lokalisiert werden
+(von der Wurzel aus).
+
+\begin{Beweis}
+    Zunächst lokalisiert man $q$ in $\tau_0$,
+    anschließend induktiv in $\tau_j$ (ausgehend von $\tau_{j-1}$).
+    Das kostet nach dem Lemma insgesamt erwartet $\sum_{j=1}^i \O(\frac{1}{j}) = \O(\log i)$.
+\end{Beweis}
+
+\textbf{Theorem}:
+Seien $S$ eine Menge von $n$ sich nicht schneidenden Strecken
+(außer ggf. in den Endpunkten) und $\T(S), Q(S)$ die
+zu $S$ gehörige Trapezierung bzw. Suchstruktur.
+Dann können $\T(S), Q(S)$ in erwartet $\O(n \log n)$ konstruiert werden.
+$Q(S)$ hat dabei die Größe $\O(n)$.
+Die erwartete Zeit zur Lokalisierung von $q \in \real^2$ in $\T(S), Q(S)$ beträgt $\O(\log n)$.
+
+\begin{Beweis}
+    Der Aufwand zur Konstruktion von $\T(S), Q(s)$ ist der Aufwand für die Aktualisierung der
+    Trapezierung und der Suchstruktur und der Aufwand zur Punktlokalisierung.
+    Weil der erste Aufwand bei Einfügung eines Segments erwartet $\O(1)$ beträgt und
+    die Punktlokalisierung in $\O(\log i)$ durchgeführt werden kann,
+    ist der Gesamtaufwand $\sum_{i=1}^n \O(\log i) = \O(n \log n)$.
+\end{Beweis}
+
+\linie
+\pagebreak
+
+\textbf{Algorithmus zur Polygontriangulierung in erwartet $\O(n \log^\ast n)$}:
+\begin{enumerate}
+    \item
+    Bringe die Strecken in eine zufällige Reihenfolge.
+    
+    \item
+    Füge die ersten $\frac{n}{\log n}$ Strecken ein.
+    
+    \item
+    Verfolge das gesamte Polygon durch $\T_{n/\log n}$ und bestimme dabei die Positionen
+    aller noch nicht eingefügten Strecken.
+    
+    \item
+    Füge die nächsten $\frac{n}{\log \log n}$ Strecken ein usw.
+    
+    \item
+    Wiederhole, bis $\log \dotsb \log n$ konstant ist
+    (d.\,h. bis Lokalisierung in konstanter Zeit möglich ist).
+\end{enumerate}
+
+\linie
+
+\textbf{Lemma}:
+Sei $R \subset S$ eine zufällige Teilmenge der Strecken mit $r := |R|$.
+Dann ist die erwartete Anzahl an Schnitten zwischen Segmenten aus $S \setminus R$ und
+Vertikalen von $\T(R)$ höchstens $4(n-r)$.
+
+\begin{Beweis}
+    Für $T \subset S$ und $s \in T$ sei $\deg(s, \T(T))$
+    gleich der Anzahl der Vertikalen, die in $\T(T)$ an $s$ anstoßen.
+    Es gilt $\sum_{s \in T} \deg(s, \T(T)) \le 4|T|$, weil
+    jedes Segment zwei Endpunkte hat und von jedem Endpunkt zwei Vertikalen ausgehen
+    (die nicht zwangsläufig in $\T(T)$ anstoßen müssen).
+    Für $R \subset S$ und $s \notin R$ ist die Anzahl der von $s$ geschnittenen
+    Vertikalen von $\T(R)$ gleich $\deg(s, \T(R \cup \{s\}))$.
+    Damit ist die erwartete Anzahl an Schnitten zwischen Segmenten aus $S \setminus R$ und
+    Vertikalen von $\T(R)$ gleich
+    $\frac{1}{\binom{n}{r}} \sum_{R \subset S,\; |R| = r}
+    \sum_{s \in S \setminus R} \deg(s, \T(R \cup \{s\}))$
+    (die erste Summe berücksichtigt die Wahl einer zufälligen Teilmenge $R \subset S$
+    mit $|R| = r$).
+    Man kann dies umschreiben zu
+    $\frac{1}{\binom{n}{r}} \sum_{R' \subset S,\; |R'| = r+1} \sum_{s \in R'} \deg(s, \T(R'))
+    \le \frac{1}{\binom{n}{r}} \sum_{R' \subset S;\; |R'| = r+1} 4|R'|$\\
+    $= \frac{1}{\binom{n}{r}} \cdot \binom{n}{r+1} 4(r+1)
+    = \frac{r!(n-r)!}{(r+1)!(n-r-1)!} \cdot 4(r+1)
+    = 4(n-r)$.
+\end{Beweis}
+
+\linie
+
+\textbf{Zeitbedarf}:
+$\O(n \log^\ast n)$
+
+\begin{Beweis}
+    Schritt \emph{(2)} kostet erwartet $n \log n \cdot \O(\log n) = \O(n)$ Zeit.
+    Nach dem Lemma von eben kostet Schritt \emph{(3)} erwartet $\O(n)$.
+    Für $i \ge \frac{n}{\log n}$ ist danach die Lokalisierung in $\T_i$ in erwartet
+    $\O(\sum_{j=n/\log n}^i \frac{1}{j})
+    = \O(\log i - \log(\frac{n}{\log n}))
+    = \O(\log(\log n))$ möglich.
+\end{Beweis}
+
+\pagebreak

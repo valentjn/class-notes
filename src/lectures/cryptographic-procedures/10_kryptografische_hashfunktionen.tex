@@ -1,0 +1,162 @@
+\section{%
+    Kryptografische Hashfunktionen%
+}
+
+\subsection{%
+    Hash-, Kompressions- und Einwegfunktionen, Kollisionen%
+}
+
+Im Folgenden ist $\BB := \{0, 1\}$.
+
+\textbf{Hashfunktion}:
+Eine Abb. $h\colon \BB^\ast \to \BB^n$ heißt \begriff{Hashfunktion}.
+
+\textbf{Kompressionsfunktion}:
+Eine Abb. $g\colon \BB^m \to \BB^n$ mit $m > n$ heißt \begriff{Kompressionsfunktion}.
+
+Hash- und Kompressionsfunktionen sind niemals injektiv.
+
+\linie
+
+\textbf{Einwegfunktion}:
+Sei $f$ eine Abbildung, die sich ef"|fizient berechnen lässt
+(d.\,h. für alle $x$ ist $f(x)$ ef"|fizient berechenbar).
+Dann heißt $f$ \begriff{Einwegfunktion}, falls für beliebiges $s$ sich $x$ mit $f(x) = s$
+nicht ef"|fizient berechnen lässt.
+
+"`Ef"|fizient berechenbar"' heißt hier und im Folgenden "`in Polynomialzeit berechenbar"'.
+
+Es ist ein ungelöstes Problem, ob Einwegfunktionen tatsächlich existieren.
+Existieren solche, dann würde $\text{P} \not= \text{NP}$ gelten,
+die Umkehrung stimmt allerdings nicht.
+
+Es gibt allerdings Funktionen, zu denen bislang kein ef"|fizienter Algorithmus zur Berechnung der
+Umkehrfunktion bekannt ist und von denen man deshalb ausgeht, dass sie Einwegfunktionen sind.
+Dazu gehört beispielsweise $f\colon \natural \to G$, $f(n) := g^n$ mit einer Gruppe $G$
+und $g \in G$ mit großer Ordnung (die Umkehrfunktion ist der diskrete Logarithmus).
+
+\linie
+
+\textbf{Kollision}:
+Sei $h$ eine Abbildung.\\
+Dann heißt ein Paar $(x, x')$ mit $h(x) = h(x')$ und $x \not= x'$
+\begriff{Kollision} von $h$.
+
+\textbf{kollisionsresistent}:\\
+Eine Abbildung $h$ heißt \begriff{kollisionsresistent}, falls sich Kollisionen nicht ef"|fizient
+berechnen lassen.
+
+\textbf{Lemma}:
+Sei $h$ eine ef"|fizient berechenbare Abbildung.\\
+Dann gilt: Ist $h$ kollisionsresistent, dann ist $h$ eine Einwegfunktion.
+
+\begin{Beweis}
+    Sei $h$ ef"|fizient berechenbar, aber keine Einwegfunktion.
+    Dann kann man Kollisionen $(x, x')$ ef"|fizient wie folgt berechnen:
+    Wähle $x'$ zufällig und berechne $s = h(x')$.
+    Nach Voraussetzung ist ein $x$ mit $h(x) = s$ ef"|fizient berechenbar.
+    Dann gilt mit hoher Wahrscheinlichkeit $x \not= x'$,
+    d.\,h. $(x, x')$ ist eine Kollision.
+    Damit ist $h$ nicht kollisionsresistent.
+\end{Beweis}
+
+\subsection{%
+    Kompressionsfunktionen aus Verschlüsselungsfunktionen%
+}
+
+\textbf{Kompressionsfunktionen aus Verschlüsselungsfunktionen}:\\
+Sei $(c_k)_{k \in \BB^n}$ eine Menge von Verschlüsselungsfunktionen $c_k\colon \BB^n \to \BB^n$
+mit Klartext-, Geheim"-text- und Schlüsselmenge $P = C = K := \BB^n$.
+Dann definiert $(c_k)_{k \in \BB^n}$ auf folgende kanonische Arten Kompressionsfunktionen
+$g_i\colon \BB^{2n} \to \BB^n$ (mit $\BB^n \times \BB^n \cong \BB^{2n}$):
+\begin{itemize}
+    \item
+    $g_1(k, x) := c_k(x) \oplus x$
+    
+    \item
+    $g_2(k, x) := c_k(x) \oplus x \oplus k$
+    
+    \item
+    $g_3(k, x) := c_k(x \oplus k) \oplus x$
+    
+    \item
+    $g_4(k, x) := c_k(x \oplus k) \oplus x \oplus k$
+\end{itemize}
+Die Güte der $g_i$ hängt vom verwendeten Kryptosystem ab,
+aber auch vom Verhältnis von $c$ zu $\oplus$, z.\,B. liefert das One-Time-Pad
+(also $c_k(x) := x \oplus k$) keine kollisionsresistente Kompressionsfkt.
+
+\pagebreak
+
+\subsection{%
+    \name{Merkle}-\name{Damgård}-Konstruktion%
+}
+
+\textbf{\name{Merkle}-\name{Damgård}-Verfahren}:
+Mit dem \begriff{\name{Merkle}-\name{Damgård}-Verfahren} kann man
+aus einer kollisionsresistenten Kompressionsfunktion $g\colon \BB^{2n} \to \BB^n$
+eine kollisionsresistente Hashfunktion $h\colon \BB^\ast \to \BB^n$ konstruieren.
+Im Folgenden wird der Einfachheit halber eine Kompressionsfunktion $h\colon \BB^{2^n-1} \to \BB^n$
+konstruiert (für $n = 128$ kann man die Hashfunktion auf Wörter bis zur Länge $10^{38}$ Bit
+anwenden, was für die Praxis ausreicht).\\
+Das Verfahren berechnet $h(x)$ für $x \in \BB^{2^n-1}$ wie folgt:
+\begin{enumerate}
+    \item
+    Definiere $x' := x 0^p$, wobei $p \in \natural_0$ kleinstmöglich so gewählt ist, dass
+    $n \teilt |x'|$\\
+    (d.\,h. $p := (n - (|x| \bmod n)) \bmod n$).
+    
+    \item
+    Definiere $\overline{x} = x' \ell_x$ mit $\ell_x \in \BB^n$
+    der Codierung der Länge $|x|$ von $x$ in $n$ Bits.
+    
+    \item
+    Teile $\overline{x} =: x_1 \dotsb x_s$ in Blöcke $x_i \in \BB^n$ der Länge $n$ auf
+    (insbesondere gilt $x_s = \ell_x$).
+    
+    \item
+    Berechne $H_i := g(H_{i-1} x_i) \in \BB^n$ für $i = 1, \dotsc, s$ mit $H_0 := 0^n \in \BB^n$.
+    
+    \item
+    Gebe $h(x) := H_s$ aus.
+\end{enumerate}
+
+\linie
+
+\textbf{Satz (Korrektheit)}:
+Das Merkle-Damgård-Verfahren arbeitet korrekt, d.\,h. $h\colon \BB^{2^n-1} \to \BB^n$ ist
+kollisionsresistent, wenn $g\colon \BB^{2n} \to \BB^n$ kollisionsresistent ist.
+
+\begin{Beweis}
+    Sei $h$ nicht kollisionsresistent,
+    d.\,h. es lässt sich $x, y \in \BB^{2^n-1}$ mit
+    $x \not= y$ und $h(x) = h(y)$ ef"|fizient berechnen.
+    Zu $x$ definiere $\overline{x} = x_1 \dotsb x_s$ und berechne $H_0, \dotsc, H_s$,
+    definiere analog $\overline{y} = y_1 \dotsb y_t$ zu $y$ und berechne $G_0, \dotsc, G_t$.
+    OBdA sei $s \le t$.
+    \begin{itemize}
+        \item
+        Gilt $H_{s-i-1} \not= G_{t-i-1}$ und $H_{s-i} = G_{t-i}$ für ein
+        $i \in \{0, \dotsc, s-1\}$,
+        so ist das Paar $(H_{s-i-1} x_{s-i}, G_{t-i-1} y_{t-i})$ eine Kollision von $g$, weil\\
+        $H_{s-i-1} x_{s-i} \not= G_{t-i-1} y_{t-i}$ sowie
+        $g(H_{s-i-1} x_{s-i}) = H_{s-i} = G_{t-i} = g(G_{t-i-1} y_{t-i})$.
+        
+        \item
+        Wegen $H_s = h(x) = h(y) = G_t$
+        ist die andere Möglichkeit $\forall_{i=0,\dotsc,s}\; H_{s-i} = G_{t-i}$.
+        Angenommen, es gilt $\forall_{i=0,\dotsc,s-1}\; x_{s-i} = y_{t-i}$.
+        Dann gilt insbesondere $\ell_x = x_s = y_t = \ell_y$, d.\,h.
+        $|x| = |y|$ bzw. $s = t$.
+        Damit würde aber $x = x_1 \dotsb x_s = y_1 \dotsb y_s = y$ gelten,
+        ein Widerspruch zu $x \not= y$.
+        Es gibt also ein $i \in \{0, \dotsc, s-1\}$ mit $x_{s-i} \not= y_{t-i}$.
+        Dann ist $(H_{s-i-1} x_{s-i}, G_{t-i-1} y_{t-i})$ eine Kollision von $g$, weil
+        $H_{s-i-1} x_{s-i} \not= G_{t-i-1} y_{t-i}$ sowie
+        $g(H_{s-i-1} x_{s-i}) = H_{s-i} = G_{t-i} = g(G_{t-i-1} y_{t-i})$.
+    \end{itemize}
+    In jedem Fall wurde ef"|fizient eine Koll. von $g$ berechnet, d.\,h. $g$ ist nicht
+    kollisionsresistent.
+\end{Beweis}
+
+\pagebreak

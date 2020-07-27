@@ -1,0 +1,208 @@
+\section{%
+    Dynamisches Programmieren%
+}
+
+\subsection{%
+    \emph{Longest Common Subsequence}%
+}
+
+Gegeben seien zwei Strings $A$ und $B$.
+Eine \textbf{Subsequenz} von $A$ und $B$ ist eine Teilfolge der Buchstaben, die
+in beiden Strings enthalten ist (Reihenfolge muss also beachtet werden).
+Gesucht ist nun die längste gemeinsame Subsequenz
+(\textbf{\emph{longest common subsequence}, LCS}).
+
+\textbf{Anwendungen}:
+Beispielsweise bei Korrektur und Erkennung einer eingegebenen Sequenz,
+in der Biologie bei neu entdeckten DNA-Sequenzen (um schon bekannte ähnliche
+Gene zu finden) und bei \emph{UNIX patch/diff}
+(Unterschiede zwischen Software-Quellcode finden).
+
+\linie
+
+\textbf{Beobachtung}:
+Schreibt man die beiden Strings übereinander und verbindet die zugehörigen
+Buchstaben einer Subsequenz, so sieht man, dass sich die Linien nicht
+überschneiden können.
+
+\textbf{Folgerungen}:
+(analog für letzte Buchstaben)
+\begin{itemize}
+    \item
+    Wenn beide Strings mit demselben Buchstaben beginnen, dann gibt es eine
+    LCS, welche diese Buchstaben einander zuordnet.
+    
+    \item
+    Falls sich die ersten Buchstaben der beiden Strings unterscheiden,
+    kann maximal einer von ihnen in einer bestimmten LCS sein.
+\end{itemize}
+
+\linie
+
+\textbf{rekursive Lösung von LCS}:
+\begin{lstlisting}
+rekLCS(A[1 ... m], B[1 ... n])                                    gibt die Länge der LCS von
+    if m = 0 or n = 0                                             A[1 ... m] und B[1 ... n] zurück
+        return 0
+    if A[m] = B[n]
+        return 1 + rekLCS(A[1 ... m - 1], B[1 ... n - 1])
+    
+    $l_1$ = rekLCS(A[1 ... m], B[1 ... n - 1])
+    $l_2$ = rekLCS(A[1 ... m - 1], B[1 ... n])
+    return max($l_1$, $l_2$)
+\end{lstlisting}
+
+\textbf{Laufzeit}: Ist $|A| = |B| = n$, so ist die Laufzeit von
+\code{rekLCS} mindestens $\Omega(2^n)$.
+
+\begin{Beweis}
+    Anfangs wird rekLCS mit $(n, n)$ aufgerufen.
+    Dies ruft im schlimmsten Fall (Buchstaben sind unterschiedlich)
+    $(n - 1, n)$ und $(n, n - 1)$ auf.
+    Diese rufen wiederum im schlimmsten Fall
+    $(n - 2, n)$, $(n - 1, n - 1)$ sowie $(n - 1, n - 1)$, $(n, n - 2)$ auf.
+    Man sieht, dass $(n - i, n - i)$ im schlimmsten Fall $2^i$ mal aufgerufen
+    wird, also wird $(1, 1)$ $2^{n-1}$ aufgerufen.
+\end{Beweis}
+
+\linie
+
+\textbf{bessere Version}:
+Man sieht, dass es eigentlich nur $m \cdot n$ ($|A| = m$, $|B| = n$)
+verschiedene Argumente gibt, mit denen \code{rekLCS} aufgerufen werden kann.
+Als Verbesserung speichert man sich jedes Ergebnis
+$(i, j)$ (d.\,h. $|$\code{rekLCS(A[1 ... i], B[1 ... j])}$|$)
+in einer Matrix und kann es bei Bedarf nachschlagen.
+Insgesamt werden $m \cdot n$ Ergebnisse gespeichert, daher ist die Laufzeit
+$\O(m \cdot n)$.
+
+Man erhält eine $(m + 1) \times (n + 1)$-Matrix, wobei der $(i, j)$-te
+Eintrag ($i = 0, \dotsc, m$, $j = 0, \dotsc, n$)
+$|$\code{LCS(A[1 ... i], B[1 ... j])}$|$ enthält.
+Die Matrix wird von links oben aufgefüllt:
+
+\begin{tabular}{p{6.0cm}p{10.1cm}}
+    \begin{minipage}[c]{6.0cm}
+\matrixsize{\begin{tabular}{l|cccc}
+    & $0$ & $1$ & \dots & $n$ \\ \hline
+    $0$ & $0$ & $0$ & \dots & $0$ \\
+    $1$ & $0$ & & & \\
+    \vdots & \vdots & & & \\
+    $m$ & $0$ & & &
+\end{tabular}}
+    \end{minipage} &
+    \begin{minipage}[c]{10.1cm}
+\begin{lstlisting}
+for i = 1 to m
+    for j = 1 to n
+        if A[i] = B[j]
+            L[i][j] = 1 + L[i - 1][j - 1}
+        else
+            L[i][j] = max(L[i - 1][j], L[i][j - 1])
+\end{lstlisting}
+    \end{minipage}
+\end{tabular}
+
+\linie
+
+Die Länge der LCS lässt sich im $(m, n)$-ten Eintrag ablesen.
+Um auch eine tatsächliche LCS zu ermitteln, geht man die Matrix von rechts
+unten nach links oben folgendermaßen durch:
+Man schaut, wo der Eintrag in der aktuellen Zelle herkommt.
+Sind die Buchstaben links und über der Zelle gleich, so kommt der Eintrag
+von links oben, andernfalls von links oder oben.
+Dann "`besucht"' man die entsprechende Zelle (bei Ungleichheit ist es
+unerheblich welche).
+Falls die Buchstaben gleich sind, hängt man den Buchstaben ganz vorne
+an die aktuelle LCS an (anfangs leerer String).
+
+\subsection{%
+    Edit-/\textsc{Levenshtein}-Distanz%
+}
+
+Eine etwas komplexere Art, zwei Strings $A$ und $B$ zu vergleichen, erfolgt
+durch die Betrachtung, wie viele Änderungen (Einfügen, Löschen, Änderungen)
+nötig sind, um $A$ in $B$ umzuwandeln.
+Verschiedene Änderungen können dabei je nach Art verschieden gewichtet werden.
+
+Die folgenden Änderungsoperationen sind zugelassen:
+Einfügen (füge Buchstabe in String ein),
+Löschen (lösche Buchstabe aus String),
+Ändern (ersetze Buchstabe durch anderen).
+
+Gegeben seien nun Kosten für Einfügen, Löschen und Änderung sowie
+zwei Strings $A$ und $B$.
+Gesucht ist die billigste Sequenz
+(\textbf{minimale Edit-Sequenz}) an Operationen, die aus $A$ $B$ macht.
+
+\linie
+
+Liegt eine minimale Edit-Sequenz vor, so sagt man, zwei Buchstaben in $A$
+und $B$ sind assoziiert, falls der Buchstabe aus $A$ in den aus $B$ geändert
+oder falls er überhaupt nicht geändert wurde.
+
+Betrachte nun zwei Strings $A[1 ... m]$ und $B[1 ... n]$.
+\begin{itemize}
+    \item
+    Wenn in der minimalen Edit-Sequenz $A[m]$ und $B[n]$ assoziiert sind,
+    so gibt das Kosten von $0$ (für $A[m] = B[n]$) oder Ersetzungskosten für
+    $A[m] \rightarrow B[n]$
+    plus Edit-Distanz von $A[1 ... m - 1]$ und $B[1 ... n - 1]$.
+    
+    \item
+    Wenn in der minimalen Edit-Sequenz $A[m]$ mit niemandem assoziiert ist,
+    so gibt das Kosten für das Löschen von $A[m]$
+    plus Edit-Distanz von $A[1 ... m - 1]$ und $B[1 ... n]$.
+    
+    \item
+    Wenn in der minimalen Edit-Sequenz $B[n]$ mit niemandem assoziiert ist,
+    so gibt das Kosten für das Einfügen von $B[n]$
+    plus Edit-Distanz von $A[1 ... m]$ und $B[1 ... n - 1]$.
+\end{itemize}
+
+Seien $ccost(A[i], B[j])$ die Ersetzungskosten für $A[i] \rightarrow B[j]$,
+$\dcost(A[i])$ die Löschkosten von $A[i]$ und
+$\icost(B[j])$ die Einfügekosten von $B[j]$, dann definiert \\
+$E[i][j] = \min\{\ccost(A[i], B[j]) + E[i - 1][j - 1],
+\dcost(A[i]) + E[i - 1][j],
+\icost(B[j]) + E[i][j - 1]\}$ \\
+eine Matrix, wobei der $(i, j)$-te Eintrag die minimale Edit-Distanz
+von $A[1 ... i]$ und $B[1 ... j]$ enthält.
+Die Edit-Sequenz kann wieder durch Rückverfolgung der Minima ermittelt werden.
+
+\subsection{%
+    Rucksackproblem%
+}
+
+Gegeben seien ein Rucksack mit einer bestimmten Kapazität $G$ (Gewicht) und
+$n$ Gegenständen, jeweils mit Gewicht $g_i$ und Wert $w_i$.
+Gesucht ist nun eine Teilmenge $I \subseteq \{1, \dotsc, n\}$, sodass
+$\sum_{i \in I} g_i \le G$ sowie $\sum_{i \in I} w_i$ maximal wird.
+
+\linie
+
+\textbf{Lösung mit dynamischer Programmierung}: \\
+\begin{tabular}{p{6.0cm}p{10.1cm}}
+    \begin{minipage}[c]{6.0cm}
+\matrixsize{\begin{tabular}{l|cccc}
+    & $0$ & $1$ & \dots & $n$ \\ \hline
+    $0$ & $0$ & $0$ & \dots & $0$ \\
+    $1$ & $\infty$ & & & \\
+    \vdots & \vdots & & & \\
+    $\sum w_i$ & $\infty$ & & &
+\end{tabular}}
+    \end{minipage} &
+    \begin{minipage}[c]{10.1cm}
+        Der $(j, i)$-te Eintrag $A(j, i)$ enthält das minimale Gewicht
+        eines Rucksacks, der nur Gegenstände aus $\{1, \dotsc, i\}$ enthält
+        sowie Wert genau $j$ hat. \\
+        Es gilt
+        $A(j, i) = \min\{A(j, i - 1),\; g_i + A(j - w_i, i - 1)\}$.
+    \end{minipage}
+\end{tabular}
+
+Man kann abbrechen, falls in den letzten $\max_i w_i$ Zeilen jeweils
+$g_i$ addiert nur Werte größer $G$ vorkommen.
+Den Rucksack kann man analog durch Rückverfolgung bestimmen.
+
+\pagebreak

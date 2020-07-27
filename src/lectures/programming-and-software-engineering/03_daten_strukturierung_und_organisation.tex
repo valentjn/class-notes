@@ -1,0 +1,519 @@
+\section{%
+    Daten, ihre Strukturierung und Organisation%
+}
+
+\subsection{%
+    Programmaufbau%
+}
+
+\begin{lstlisting}[language=ebnf,
+emph={procedure,function,is,begin,end,not,overriding},
+emphstyle=\underbar]
+subprogram_declaration ::= [overriding_indicator] subprogram_specification ;
+subprogram_specification ::= procedure_specification | function_specification
+procedure_specification ::= procedure defining_program_unit_name parameter_profile
+function_specification ::= function defining_designator parameter_and_result_profile
+
+subprogram_body ::= [overriding_indicator] subprogram_specification is declarative_part
+  begin handled_sequence_of_statements end [designator] ;
+overriding_indicator ::= [not] overriding
+\end{lstlisting}
+
+\subsection{%
+    Lexikalische Einheiten%
+}
+
+\begin{Def}{Zeichensatz}
+    Früher wurden \Ada{}-Programme in Latin-1 (ISO 8859-1) geschrieben, der den
+    ASCII-Code enthält.
+    Ab \Ada{ 2005} wird ISO/IEC 10646:2003 verwendet, der
+    äquivalent zu Unicode ist.
+\end{Def}
+
+\begin{Def}{Lexikalische Einheit}
+    Ein Programm ist eine Folge von Zeichen aus dem Zeichensatz. \\
+    Die Zeichen bilden eine Folge von sog. \begriff{lexikalischen Einheiten}.
+    Zu diesen gehören:
+    \begin{itemize}
+        \item \begriff{Bezeichner} zur Identifizierung von Programmobjekten
+        
+        \item \begriff{Literale} zur Bezeichnung von festen Werten
+        (Zahlen, Zeichen, Strings)
+        
+        \item \begriff{Begrenzer} (delimiter), die eine spezielle Bedeutung
+        besitzen und gleichzeitig lexikalische Einheiten voneinander trennen
+        (z.~B. \adacode{\&}, \adacode{'}, \adacode{+}, \adacode{(},
+        \adacode{)}, \adacode{:=}, \adacode{>=} usw.)
+        
+        \item \begriff{Wortsymbole} (reservierte Wörter der Sprache) mit
+        spezieller Bedeutung (\adacode{for}, \adacode{if}, \linebreak
+        \adacode{procedure}, \dots),
+        dürfen nicht als Bezeichner verwendet werden
+        
+        \item \begriff{Trennzeichen} (separator) zur Trennung von lexikalischen
+        Einheiten aus Lesbarkeitsgründen (Zwischenraum, Whitespace)
+        
+        \item \begriff{Kommentare} dienen der Erläuterung und Lesbarkeit
+        (in \Ada{} Zeichenfolgen ab \adacode{{-}{-}})
+    \end{itemize}
+\end{Def}
+
+\addtocounter{subsection}{1}
+
+\subsection{%
+    Zeigertypen%
+}
+
+\begin{Def}{Zeiger}
+    Zeiger auf Variablen enthalten nicht einen bestimmten Wert, sondern die
+    Speicheradresse der Variable im Arbeitsspeicher.
+\end{Def}
+
+\begin{Def}{Interne/externe Namen}
+    Jede Variable hat einen internen (Speicheradresse) und einen externen
+    Namen (symbolische Bezeichnung für die Speicheradresse). \\
+    In \Ada{} dürfen "`normale"' Zeigervariablen nur auf Variablen zeigen, die
+    ausschließlich über Zeiger ansprechbar sind (sich also im Heap befinden).
+\end{Def}
+
+\begin{Def}{Speicherbereiche}
+    Es gibt drei große Speicherbereiche: \begriff{Programmspeicher}
+    (Programmcode), \begriff{Stack}/Keller (Speicher für deklarierte Variablen,
+    Blockstruktur) und \begriff{Heap}/Haufen (Variablen ohne externen Namen).
+    
+    Eine Zeigervariable wird bei Deklaration im Stack angelegt. Mittels
+    \adacode{new} wird dann eine Variable im Heap allokiert, bei Wertzuweisung
+    erhält der Zeiger die Adresse des erzeugten Objekts.
+\end{Def}
+
+\begin{Def}{Dynamische Datenstrukturen in \Ada{}}
+    \begriff{Dynamische Datenstrukturen} sind durch Zeiger
+    "`zusammengehaltene"' Daten.
+    Mit Zeiger können sich ständig verändernde Daten gut beschrieben werden.
+    In \Ada{} geht dies z.~B. so:
+\begin{lstlisting}[language=ada]
+type Zelle;                               --  Vorwaertsdeklaration
+type Ptr_Zelle is access Zelle;           --  Zeigertyp
+type Zelle is record                      --  Datentyp
+   Inhalt    : Character;
+   Naechster : Ptr_Zelle;
+end record;
+...
+Anker : Ptr_Zelle;                        --  Zeigervariable
+Test  : constant Ptr_Zelle := new Zelle;  --  konstante Zeigervariable
+...
+Anker := new Zelle'('a', null);           --  Allokation eines neues Objekts, Nullpointer
+Put (Anker.Inhalt);
+--  oder Anker.all.Inhalt (automatische Dereferenzierung bei Records!)
+\end{lstlisting}
+\end{Def}
+
+\begin{Def}{Wertzuweisung bei Zeigern}
+    Bei einer Zuweisung zwischen Zeigern müssen linke und rechte Seite den
+    gleichen Datentyp (Zeigertyp) besitzen.
+    Prinzipiell muss in \Ada{} jede Dereferenzierung mittels \adacode{.all}
+    angegeben werden.
+    Bei Records darf dies jedoch weggelassen werden.
+\end{Def}
+
+\begin{Def}{Gleichheit bei Zeigern}
+    Zwei Zeiger sind gleich, wenn sie auf dieselbe Variable zeigen.
+\end{Def}
+
+\subsection{%
+    Listen%
+}
+
+\begin{Def}{Lineare Liste}
+    In einer \begriff{linearen Liste} sind die Elemente linear angeordnet, es
+    gibt keine Verzweigungen. Lineare Listen können als \begriff{einfach}
+    (jedes Element zeigt auf seinen Nachfolger) oder \begriff{doppelt
+    verkettete Liste} (Zeiger für den Vorgänger) realisiert werden.
+    Bei einer \begriff{zyklischen Liste} zeigt das letzte Element nicht auf
+    \adacode{null}, sondern auf das erste Element der Liste.
+    
+    Operationen der linearen Liste:
+    \adacode{Empty} (gibt leere Liste zurück, Nullpointer),\\
+    \adacode{Isempty(A)} (überprüft, ob \adacode{A} leer ist),
+    \adacode{First(A)} (gibt das erste Element der Liste zurück),
+    \adacode{In\_Front(E, A)} (fügt am Anfang ein Element hinzu),
+    \adacode{Append(E, A)} (fügt am Ende ein Element hinzu),
+    \adacode{Delete(E, A)} (löscht alle Elemente mit dem Inhalt aus der Liste).
+\end{Def}
+
+\begin{Def}{Stack (Stapel)}
+    Ein \begriff{Stack} ist eine lineare Liste mit genau den Operationen
+    \adacode{Empty(A)} (leert eine Liste durch Setzen auf Nullpointer),
+    \adacode{Isempty(A)} (überprüft, ob \adacode{A} leer ist),
+    \adacode{Top(A)} (gibt das letzte Element zurück),
+    \adacode{Push(A, E)} (fügt ein Element ans Ende an),
+    \adacode{Pop(A)} (löscht das letzte Element der Liste). \\
+    Ein Stack ist eine Liste, die nach dem \begriff{LIFO-Prinzip}
+    (last in first out) arbeitet.
+\end{Def}
+
+\begin{Def}{Queue (Schlange)}
+    Eine \begriff{Queue} ist eine lineare Liste mit genau den Operationen
+    \adacode{Empty(A)} (leert eine Liste durch Setzen auf Nullpointer),
+    \adacode{Isempty(A)} (überprüft, ob \adacode{A} leer ist),
+    \adacode{First(A)} (gibt das erste Element zurück),
+    \adacode{Enter(A, E)} (fügt ein Element ans Ende an),
+    \adacode{Remove(A)} (löscht das erste Element der Liste). \\
+    Eine Queue ist eine Liste, die nach dem \begriff{FIFO-Prinzip}
+    (first in first out) arbeitet.
+\end{Def}
+
+\begin{Def}{Graphen (Geflechte)}
+    Ein Graph ist ein beliebig vernetztes Gebilde (also i.~A. keine lineare
+    Liste). Dieses besteht aus \begriff{Knoten} (Elemente des Datentyps) und
+    \begriff{Kanten} (Verweise zwischen ihnen).
+\end{Def}
+
+\begin{Def}{Zeiger auf Stackvariablen}
+    Dies ist in \Ada{} möglich, falls der Zeigertyp mit \adacode{all} und die
+    referenzierte Variable mit \adacode{aliased} (Warnung für den Programmierer
+    und Compiler optimiert nicht)
+    deklariert wurde:
+    
+\begin{lstlisting}[language=ada]
+type Ptr_Integer is access all Integer;
+I      : aliased Integer;
+Zeiger : Ptr_Integer := I'Access;
+\end{lstlisting}
+    
+    \begriff{Dangling pointers} sind Zeiger, deren referenzierte Variable
+    irgendwann nicht mehr existiert. Daher sollte die Lebensdauer des
+    referenzierten Objekts mindestens so groß sein wie die des Zeigers.
+\end{Def}
+
+\subsection{%
+    Referenzkonzept%
+}
+
+\begin{Def}{Interne Namen}
+    Jedes Objekt erhält in der Programmierung einen Namen, auch wenn dies nicht
+    im Programmtext geschieht (z.~B. implizite Typdeklaration bei
+    Variablendeklaration).
+    Im Programm ist es wichtig, dass alle Namen unterschieden werden können,
+    da man sonst die Objekte nicht auseinander halten kann.
+\end{Def}
+
+\begin{Def}{Konstanten im Speicher}
+    Bisher wurden Konstanten als Inhalte der Variablen aufgefasst.
+    Diese Vorstellung kann modifizieren, indem man die normalen Variablen als
+    "`Zeiger auf Konstanten"' ansieht.
+    Man nimmt dabei an, dass sich alle Konstanten im Speicher befinden und die
+    Variablen nur noch Adressen enthalten, wo sich die Konstanten befinden.
+    Eine Wertzuweisung bewirkt dann nur noch eine Änderung des Zeigers.
+\end{Def}
+
+\begin{Def}{Referenzkonzept}
+    Jedes Objekt erhält eine \begriff{Referenzstufe}.
+    Konstanten erhalten hierbei die Referenzstufe $0$, Variablen $1$ usw.
+    Allgemein erhält ein Objekt, das auf Objekte der Referenzstufe $k$
+    verweist, die Referenzstufe $k + 1$.
+\end{Def}
+
+\subsection{%
+    Bäume%
+}
+
+\begin{Def}{Gerichteter Graph, Weg}
+    $G = (V, E)$ heißt \begriff{gerichteter Graph}/\begriff{Digraph}, falls
+    $V$ eine nicht-leere endliche Menge ist (\begriff{Knoten}) und
+    $E \subseteq V \times V$ (\begriff{Kanten}). \\
+    Eine Folge von Knoten $(u_1, \ldots, u_r)$ (mit $r \in \mathbb{N}$) heißt
+    \begriff{(gerichteter) Weg} im Graphen $G$, falls $(u_i, u_{i+1}) \in E$
+    für $i = 1, \ldots, r - 1$ gilt.
+    $r - 1$ ist die \begriff{Länge des Weges}.
+\end{Def}
+
+\begin{Def}{Wurzel, Baum}
+    Ein Knoten $w$ heißt \begriff{Wurzel} eines Graphen $G$, falls es von $w$
+    zu jedem Knoten des Graphen einen Weg gibt und $w$ keinen direkten
+    Vorgänger besitzt (s.~u.). \\
+    Ein gerichteter Graph heißt \begriff{Baum}, falls er eine Wurzel $w$
+    besitzt und jeder Knoten außer der Wurzel genau einen direkten Vorgänger
+    hat, d.~h. für $x \in V$, $x \not= w$ gibt es genau ein $y \in V$ mit
+    $(y, x) \in E$.
+    $y$ heißt \begriff{Vater}/\begriff{direkter Vorgänger}.
+    $x$ ist dann das \begriff{Kind}/\begriff{direkter Nachfolger}. \\
+    Ein Knoten ohne direkten Nachfolger heißt \begriff{Blatt}. \\
+    Ein Graph heißt \begriff{Wald}, wenn er sich als disjunkte Vereinigung
+    von Bäumen schreiben lässt. \\
+    Ein Baum mit $n$ Knoten besitzt $n - 1$ Kanten.
+    Knoten mit gleichem Vater heißen \begriff{Geschwister}.
+    Knoten, die auf dem Weg von der Wurzel $w$ zu einem Knoten $v$
+    liegen, heißen \begriff{Vorgänger} von $v$.
+    Die Länge des längsten Wegs von der Wurzel $w$ zu einem Blatt ist die
+    \begriff{Tiefe}/\begriff{Höhe} des Baums. \\
+    Jedem Knoten ist ebenfalls eindeutig ein \begriff{Level}/\begriff{Niveau}
+    zugeordnet: $w$ hat den Level $0$, die direkten Nachfolger eines Knoten
+    mit Level $k$ haben den Level $k + 1$.
+\end{Def}
+
+\begin{Def}{Rekursive Definition für Bäume}
+    Die leere Menge ist ein Baum. Wenn $w$ ein Knoten und $U$ eine endliche
+    Menge von Bäumen sind, dann ist auch $w(U)$ ein Baum. \\
+    $w$ heißt \begriff{Wurzel} von $w(U)$, die Elemente von $U$ heißen
+    \begriff{Unterbäume}. Sind die Unterbäume geordnet, so spricht man von
+    einem \begriff{geordneten Baum}.
+\end{Def}
+
+\begin{Def}{Binäre Bäume}
+    Die leere Menge ist ein \begriff{binärer Baum}.
+    Wenn $w$ ein Knoten und $B_L$ sowie
+    $B_R$ binäre Bäume sind, dann ist auch $w(B_L, B_R)$ ein binärer Baum. \\
+    $B_L$/$B_R$ heißen linker/rechter Unterbaum des Knotens $w$.
+    Ein binärer Baum ist ein geordneter Baum, in dem jeder Knoten
+    genau zwei (evtl. leere) Unterbäume hat.
+\end{Def}
+
+\begin{Def}{Suchbaum}
+    Ein binärer Baum mit Knoten, die Werte eines geordneten Datentyps
+    beinhalten, heißt \begriff{Suchbaum}, falls für jeden Knoten $u$ gilt:
+    Alle Inhalte von Knoten im linken Unterbaum von $u$ sind echt kleiner als
+    der Inhalt von $u$ und alle Inhalte von Knoten im rechten Unterbaum von $u$
+    sind größer/gleich dem Inhalt von $u$.
+\end{Def}
+
+\pagebreak
+
+\begin{Def}{Durchlauf von binären Bäumen}
+
+    \begin{tabular}{lll}
+        \begriff{Inorder} & \begriff{Preorder} & \begriff{Postorder} \\
+\begin{lstlisting}[language=ada]
+procedure Inorder (b : Ref_BinBaum)
+is begin
+   if b /= null then
+      Inorder (b.L);
+      --  hier Knoten b bearbeiten
+      Inorder (b.R);
+   end if;
+end Inorder;
+\end{lstlisting} &
+\begin{lstlisting}[language=ada]
+--  hier Knoten b bearbeiten
+Preorder (b.L);
+Preorder (b.R);
+\end{lstlisting} &
+\begin{lstlisting}[language=ada]
+Postorder (b.L);
+Postorder (b.R);
+--  hier Knoten b bearbeiten
+\end{lstlisting}
+    \end{tabular}
+    
+    Ist $n$ die Zahl der Knoten, so erfolgt der Durchlauf in $3n$ Schritten. \\
+    Im ungünstigsten Fall benötigt man $n$ Speicherplätze, im günstigsten
+    proportional zu $\log n$.
+\end{Def}
+
+\subsection{%
+    Relationen und Graphen%
+}
+
+\begin{Def}{Relation}
+    Seien $M, M_1 \ldots, M_n$ Mengen.
+    Eine Teilmenge $R \subseteq M_1 \times \cdots \times M_n$ heißt
+    \begriff{$n$-stellige Korrespondenz}.
+    Eine Teilmenge $R \subseteq M^n$ heißt
+    \begriff{$n$-stellige Relation über $M$}.
+    Eine Teilmenge $R \subseteq M^2$ heißt
+    \begriff{(binäre) Relation über $M$}.
+    Für $(x,y) \in R$ schreibt man $xRy$.
+\end{Def}
+
+\begin{Def}{Eigenschaften}
+    Sei $R \subseteq M \times M$ eine Relation.
+    $R$ heißt \begriff{reflexiv}, falls $\forall_{x \in M}\; xRx$.
+    $R$ heißt \begriff{irreflexiv}, falls $\forall_{x \in M}\; \lnot(xRx)$.
+    $R$ heißt \begriff{symmetrisch}, falls
+    $\forall_{x, y \in M}\; (xRy \Leftrightarrow yRx)$.
+    $R$ heißt \begriff{antisymmetrisch}, falls
+    $\forall_{x, y \in M}\; (xRy \land yRx \Rightarrow x = y)$.
+    $R$ heißt \begriff{transitiv}, falls \\
+    $\forall_{x, y, z \in M}\; (xRy \land yRz \Rightarrow xRz)$.
+    $R$ heißt \begriff{alternativ}, falls
+    $\forall_{x, y \in M}\; (xRy \lor yRx)$.
+\end{Def}
+
+\begin{Def}{Relationsarten}
+    Eine reflexive, symmetrische und transitive Relation heißt
+    \begriff{Äquivalenzrela\-tion}.
+    Eine reflexive, antisymmetrische und transitive Relation heißt
+    \begriff{Ordnung}.
+    Eine irreflexive, antisymmetrische und transitive Relation heißt
+    \begriff{echte Ordnung}.
+    Eine Ordnung heißt \begriff{totale/line\-are Ordnung}, falls sie alternativ
+    ist.
+\end{Def}
+
+\begin{Def}{Gerichteter Graph}
+    $G = (V, E)$ heißt \begriff{gerichteter Graph}/\begriff{Digraph}, falls
+    $V$ eine nicht-leere endliche Menge ist (\begriff{Knoten}) und
+    $E \subseteq V \times V$ (\begriff{Kanten}).
+\end{Def}
+
+\begin{Def}{Ungerichteter Graph}
+    $G = (V, E)$ heißt \begriff{ungerichteter Graph}, falls
+    $V$ eine nicht-leere endliche Menge ist (\begriff{Knoten}) und
+    $E \subseteq \big\{\{x, y\} \;|\; x, y \in V, x \not= v\big\} \cup
+    \big\{\{x\} \;|\; x \in V\big\}$ (\begriff{Kanten}).
+\end{Def}
+
+\begin{Def}{Umwandeln von Graphen}
+    Ist $G = (V, E)$ ein ungerichteter Graph, so ist der gerichtete
+    Graph $G_{ger} = (V, E_{ger})$ mit
+    $E_{ger} = \big\{(x, y), (y, x) \;|\; \{x, y\} \in E\big\} \cup
+    \big\{(x, x) \;|\; \{x\} \in E\big\}$
+    die \begriff{gerichtete Version} des Graphen $G$. \\
+    Ist $G = (V, E)$ ein gerichteter Graph, so ist der ungerichtete
+    Graph $G_{ung} = (V, E_{ung})$ mit
+    $E_{ung} = \big\{\{x, y\} \;|\; (x, y) \in E \lor (y, x) \in E\big\} \cup
+    \big\{\{x\} \;|\; (x, x) \in E\big\}$
+    die \begriff{ungerichtete Version} des Graphen $G$. \qquad
+    Ein gerichteter Graph $H$ heißt
+    \begriff{Orientierung}/\begriff{Ausrichtung} des ungerichteten Graphen $G$,
+    falls $G$ die ungerichtete Version von $H$ ist.
+\end{Def}
+
+\begin{Def}{Teilgraph}
+    Ist $G = (V, E)$ ein Graph, so heißt ein Graph
+    $G' = (V', E')$ \begriff{Teilgraph} von $G$, falls $V' \subseteq V$ und
+    $E' \subseteq E$. \qquad
+    $G' = (V', E')$ heißt \begriff{der von $V'$ induzierte Teilgraph}, falls
+    im \\
+    ungerichteten Fall
+    $E' = \big\{\{x, y\} \in E \;|\; x, y \in V'\big\}$ bzw.
+    im gerichteten Fall \\
+    $E' = \big\{(x, y) \in E \;|\; x, y \in V'\big\}$.
+\end{Def}
+
+\begin{Def}{Nachbarn}
+    Jede Kante $\{x, y\}$ bzw. $(x, y)$ heißt \begriff{inzident} zu ihren
+    Knoten $x$ und $y$.
+    Zwei Knoten $x, y$ mit $\{x, y\} \in E$ bzw. $(x, y) \in E$
+    (oder $(y, x) \in E$) heißen \begriff{adjazent}/\begriff{benachbart}. \\
+    Die Menge $N(x) = \big\{y \in V \;|\; \{x, y\} \in E\big\}$ bzw.
+    $N(x) = \big\{y \in V \;|\; (x, y) \in E \lor (y, x) \in E\big\}$
+    heißt die Menge der (direkten) \begriff{Nachbarn} von $x$.
+    Ist $G$ gerichtet, so heißt
+    $S(x) = \big\{y \in V \;|\; (x, y) \in E\big\}$ bzw.
+    $P(x) = \big\{y \in V \;|\; (y, x) \in E\big\}$ die Menge der
+    (direkten) \begriff{Nachfolger} bzw. \begriff{Vorgänger} von $x$.
+    Eine Kante $\{x\}$ bzw. $(x, x)$ heißt \begriff{Schlinge}.
+\end{Def}
+
+\begin{Def}{Grad}
+    Ist $G$ ungerichtet, so heißt
+    $d(x) = |N(x) \setminus \{x\}|$
+    ($+2$ für $\{x\} \in E$) der \begriff{(Knoten-)Grad} von $x$.
+    Der maximale Knotengrad heißt \begriff{Grad} $d(G)$ des Graphen $G$. \\
+    Ist $G$ gerichtet, so heißen
+    $d^{\boldsymbol{+}}(x) = |S(x)|$ \begriff{Ausgangs-} und
+    $d^{\boldsymbol{-}}(x) = |P(x)|$ \begriff{Eingangsgrad} von $x$.
+    $d(x) = d^{\boldsymbol{+}}(x) + d^{\boldsymbol{-}}(x)$ heißt
+    \begriff{(Knoten-)Grad} von $x$. \\
+    Ein Graph heißt \begriff{geordnet}, falls für jeden Knoten $x$
+    die Menge der Nachbarn $N(x)$ (ungerichteter Fall) bzw.
+    die Menge der Nachfolger $S(x)$ (gerichteter Fall)
+    linear geordnet ist.
+\end{Def}
+
+\begin{Def}{Adjazenzmatrix}
+    Sei $G = (V, E)$ mit $V = \{x_1, \ldots, x_n\}$ ein Graph.
+    Die \begriff{Adjazenzmatrix} $A = (a_{ij})$ ist definiert durch
+    $a_{ij} = 1$ (ggf. Kantengewicht) falls $\{x_i, x_j\} \in E$ (ungerichtet)
+    bzw. $(x_i, x_j) \in E$ (gerichtet) und $a_{ij} = 0$ sonst
+    ($1 \le i,j \le n$). \\
+    Die \begriff{erweiterte Adjazenzmatrix}
+    $A' = (a_{ij}')$ ist
+    $a_{ij}' = a_{ij}$ für $i \not= j$ und $a_{ij} = 1$ für $i = j$. \\
+    ($A^k$ gibt die Anzahl der verschiedenen Wege der Länge $k$ zwischen zwei
+    Knoten an.)
+\end{Def}
+
+\begin{Def}{Adjazenzliste}
+    Man erstellt eine Liste der Knoten (mit Inhalt und ID-Nummer).
+    Jeder Knoten enthält wieder eine Liste der inzidenten Kanten,
+    deren Einträge das Gewicht und einen Verweis auf den Endknoten enthalten.
+\end{Def}
+
+\begin{Def}{Inzidenzliste}
+    Man erstellt jeweils eine (lineare) Liste der Knoten und eine Liste der
+    Kanten. \\
+    Die Einträge der Kanten entalten zwei Verweise auf die zugehörigen Knoten.
+\end{Def}
+
+\begin{Def}{Graphendurchlauf}
+    Ein \begriff{Graphendurchlauf} lässt sich durch Adjazenzlisten realisieren.
+    Man kann alle Knoten nacheinander durchgehen und bei jedem Knoten
+    die entsprechenden Kanten ablaufen, um den Algorithmus mit dem Zielknoten
+    rekursiv aufzurufen.
+\end{Def}
+
+\begin{Def}{Ungerichtete Wege und Pfade}
+    Eine Folge von Knoten $(u_1, \ldots, u_r)$ ($r \ge 1$) heißt \begriff{Weg}
+    in $G$, falls $\{u_i, u_{i+1}\} \in E$ für $i = 1, \ldots, r-1$.
+    $r-1$ heißt die \begriff{Länge des Weges}.
+    $u$ und $v$ heißen \begriff{verbunden}, falls es einen Weg von $u$ nach
+    $v$ gibt.
+    Der zugehörige \begriff{Pfad} des Wegs ist
+    $(\{u_1, u_2\}, \ldots, \{u_{r-1}, u_r\})$.
+\end{Def}
+
+\begin{Def}{Zusammenhang für ungerichtete Graphen}
+    Ein Weg heißt \begriff{doppelpunktfrei}/\begriff{einfach}, falls
+    $u_i \not= u_j$ für $i \not= j$.
+    Ein Weg heißt \begriff{geschlossen}, falls $u_r = u_1$.
+    Ein Weg heißt \begriff{Kreis}/\begriff{Zyklus}, falls
+    $r \ge 4$, der Weg geschlossen ist und $(u_1, \ldots, u_{r-1})$ einfach.
+    Ein Graph heißt \begriff{zyklenfrei}/\begriff{azyklisch}, falls er keine
+    Zyklen besitzt. \\
+    Ein Graph heißt \begriff{zusammenhängend}, falls jeder Knoten mit jedem
+    Knoten verbunden ist. \\
+    $Z(u) = \{v \in V \;|\; u, v \text{ sind verbunden}\}$ heißt
+    \begriff{Zusammenhangskomponente} des Knotens $u$.
+\end{Def}
+
+\begin{Def}{Gerichtete Wege und Pfade}
+    Eine Folge von Knoten $(u_1, \ldots, u_r)$ ($r \ge 1$) heißt\\
+    \begriff{(gerichteter) Weg} in $G$, falls $(u_i, u_{i+1}) \in E$ für
+    $i = 1, \ldots, r-1$.
+    $r-1$ heißt die \begriff{Länge des Weges}.
+    $u$ und $v$ heißen \begriff{verbunden}, falls es einen Weg von $u$ nach
+    $v$ \emph{und} von $v$ nach $u$ gibt.
+    Der zugehörige \begriff{Pfad} des Wegs ist
+    $((u_1, u_2), \ldots, (u_{r-1}, u_r))$.
+\end{Def}
+
+\begin{Def}{Zusammenhang für gerichtete Graphen}
+    Ein Weg heißt \begriff{doppelpunktfrei}/\begriff{einfach}, falls
+    $u_i \not= u_j$ für $i \not= j$.
+    Ein Weg heißt \begriff{geschlossen}, falls $u_r = u_1$.
+    Ein Weg heißt \begriff{Kreis}/\begriff{Zyklus}, falls
+    $r \ge 4$, der Weg geschlossen ist und $(u_1, \ldots, u_{r-1})$ einfach.
+    Ein Graph heißt \begriff{zyklenfrei}/\begriff{azyklisch}, falls er keine
+    Zyklen besitzt. \\
+    Ein Graph heißt \begriff{stark zusammenhängend}, falls jeder Knoten mit
+    jedem Knoten verbunden ist.
+    $Z(u) = \{v \in V \;|\; u, v \text{ sind verbunden}\}$ heißt
+    \begriff{starke Zusammenhangskomponente} des Knotens $u$.
+    $SwZ(u) = Z(u) \text{ in } G_{ung}$ heißt
+    \begriff{schwache Zusammenhangskomponente}.
+\end{Def}
+
+\begin{Def}{Transitive Hülle}
+    Zu einem gerichteten bzw. ungerichteten Graphen $G = (V, E)$ heißt der
+    gerichtete bzw. ungerichtete Graph $G_{tH} = (V, E_{tH})$ mit \\
+    $E_{tH} = \big\{(x, y) \;|\; \text{es gibt einen Weg von } x
+    \text{ nach } y\big\}$ bzw. \\
+    $E_{tH} = \big\{\{x, y\} \;|\; \text{es gibt einen Weg von } x
+    \text{ nach } y\big\}$
+    die \begriff{transitive Hülle} des Graphen $G$. \\
+    Ein \begriff{vollständiger Graph} ist ein Graph, in dem zwei verschiedene
+    Knoten durch nur eine Kante miteinander verbunden sind.
+    Ein Graph, bei dem $n$ Knoten einen Ring bilden, heißt \begriff{Kreis}.
+\end{Def}

@@ -1,0 +1,328 @@
+\section{%
+    Einführung und Wiederholung%
+}
+
+\subsection{%
+    Was ist Kryptografie?%
+}
+
+\textbf{Ziele der Kryptografie}:
+Informationsschutz/-sicherheit
+\begin{itemize}
+    \item
+    \emph{Vertraulichkeit}
+    (Schutz vor Zugriff)
+    
+    \item
+    \emph{Integrität}
+    (Schutz vor Veränderung)
+    
+    \item
+    \emph{Authentizität}
+    (Schutz vor Fälschung)
+    
+    \item
+    \emph{Verbindlichkeit/Nichtabstreitbarkeit}
+\end{itemize}
+
+\textbf{sehr alte Wissenschaft}:
+bis ca. 3000 v.\,Chr.,
+enger Zusammenhang zu verschiedenen, eher neueren Wissenschaften wie
+Zahlentheorie,
+Algorithmentechnik,
+Statistik,
+Informationstheorie,
+Algebra
+usw.
+
+\textbf{auch Zusammenhang zu}:
+Komplexitätstheorie (Geschwindigkeit von Algorithmen),
+Elektrotechnik (kryptografische Verfahren in Chips "`gießen"'),
+Quantenphysik (schnelle Faktorisierung von Zahlen) usw.
+
+\subsection{%
+    Informationstheoretisches Schema der Kryptografie%
+}
+
+\begin{align*}
+    \xymatrix@R=5mm@C=5mm{
+        &{\text{Nachricht}}\ar[d]&&
+        {\text{Nachricht}}\\
+        %
+        &*++[F]{\txt{\textbf{Quellencodierung}\\(Datenkompression)}}\ar[d]&&
+        *++[F]{\text{\textbf{Quellendecodierung}}}\ar[u]\\
+        %
+        {\text{Schlüssel } k_e}\ar[r]&
+        *++[F]{\text{\textbf{Verschlüsselung} } c}="a"\ar[d]&&
+        *++[F]{\text{\textbf{Entschlüsselung} } d}="b"\ar[u]&
+        {\text{Schlüssel } k_s}\ar[l]\\
+        %
+        &*++[F]{\txt{\textbf{Kanalcodierung}\\(fehlerkorrigierende/\\-erkennende Codes)}}\ar[r]&
+        *++[F-:<5mm>]{\text{\textbf{Kanal}}}\ar[r]&
+        *++[F]{\text{\textbf{Kanaldecodierung}}}\ar[u]&
+    }
+\end{align*}
+$k_e$ steht für \emph{encryption key} und $k_s$ steht für \emph{secret key}.
+Der Kanal kann z.\,B. eine DVD oder eine Telefonleitung sein.
+Einen Kanal zusammen mit einer Kanalcodierung und -decodierung heißt \begriff{fehlerfreier Kanal}
+(die übertragenen Daten enthalten keinen Fehler).
+Ein fehlerfreier Kanal zusammen mit einer Ver- und einer Entschlüsselung heißt
+\begriff{sicherer Kanal}
+(die übertragenen Daten wurden nicht abgehört oder verändert).
+
+%\input{test}
+
+\pagebreak
+
+\subsection{%
+    \emph{Wiederholung}: Algebra und Modulo-Arithmetik%
+}
+
+\subsubsection{%
+    Restklassenringe%
+}
+
+\textbf{Teiler/Vielfaches}:
+Seien $k, \ell \in \integer$.\\
+Dann ist $k$ ein \begriff{Teiler} von $\ell$ und
+$\ell$ ein \begriff{Vielfaches} von $k$ ($k \teilt \ell$), falls
+$\exists_{m \in \integer}\; km = \ell$.
+
+\textbf{Restklassenring}:
+Sei $n \in \natural$.
+Dann heißt $\ZnZ := \{0 \bmod n, \dotsc, (n - 1) \bmod n\}$ mit\\
+$a \bmod n := \big\{b \in \integer \;\big|\; n \teilt (a - b)\big\}$ für $a \in \integer$
+\begriff{Restklassenring} modulo $n$.\\
+$\ZnZ$ ist ein Ring mit den (wohldefinierten) Operationen\\
+$(a \bmod n) + (b \bmod n) := (a + b) \bmod n$ und
+$(a \bmod n)(b \bmod n) := (ab) \bmod n$.\\
+Zur Vereinfachung lässt man die Nebenklassen weg:
+Aus jeder Nebenklasse wählt man stets den Repräsentanten, der in $\{0, \dotsc, n - 1\}$ liegt.
+Man schreibt also $\ZnZ = \{0, \dotsc, n - 1\}$ und definiert
+$a \bmod n$ als diesen Repräsentanten
+(d.\,h. $a \bmod n := a - \lfloor\frac{a}{n}\rfloor n$).\\
+Man schreibt $a \equiv b \pmod n$ oder $a \equiv_n b$, falls $n \teilt (a - b)$,
+d.\,h. falls $a \bmod n = b \bmod n$.
+
+\textbf{chinesischer Restsatz}:
+Seien $m, n \in \natural$ teilerfremd.\\
+Dann ist
+$\integer/mn\integer \rightarrow \integer/m\integer \times \integer/n\integer$,
+$x \bmod mn \mapsto (x \bmod m, x \bmod n)$
+ein Ringisomorphismus.\\
+Insbesondere ist die Abbildung wohldefiniert und für $x, y \in \integer/mn\integer$ gilt
+$x \equiv_{mn} y$ genau dann, wenn $x \equiv_m y$ und $x \equiv_n y$.\\
+Außerdem hat für vorgegebene $y_1, y_2 \in \integer$ das Kongruenzsystem
+$x \equiv_m y_1$ und $x \equiv_n y_2$ genau eine Lösung $x \in \integer/mn\integer$.
+Diese Lösung ist gegeben durch $x = y_1 a n + y_2 b m$,
+wobei $a \in \integer/m\integer$ mit $an \equiv_m 1$ und
+$b \in \integer/n\integer$ mit $bm \equiv_n 1$.\\
+Diese Aussagen können auf $k$ Restklassenringe verallgemeinert werden.
+
+\subsubsection{%
+    Größter gemeinsamer Teiler%
+}
+
+\textbf{größter gemeinsamer Teiler}:
+Seien $a, b \in \integer$ mit $(a, b) \not= (0, 0)$.\\
+Dann heißt $k \in \natural$ mit $k \teilt a$, $k \teilt b$ und
+$\forall_{\ell \in \natural,\; \ell \teilt a,\; \ell \teilt b}\; \ell \teilt k$
+\begriff{größter gemeinsamer Teiler} $\ggT(a, b)$ von $a$ und $b$.
+Für $a = b = 0$ definiert man $\ggT(0, 0) := 0$.
+
+\textbf{teilerfremd}:
+$a, b \in \integer$ heißen \begriff{teilerfremd}, falls $\ggT(a, b) = 1$.
+
+\textbf{Lemma von \name{Bézout}}:
+Seien $a, b \in \integer$.
+Dann gibt es $s, t \in \integer$ mit
+$\ggT(a, b) = sa + tb$.
+
+\textbf{erweiterter euklidischer Algorithmus}:
+Mit dem \begriff{erweiterten euklidischen Algorithmus} kann man $\ggT(a, b)$ in Zeit
+$\O(\log \min\{a, b\})$ für $a, b \in \integer \setminus \{0\}$ berechnen.\\
+Anfangs sei $u = t := 1$ und $v = s := 0$.
+\begin{enumerate}
+    \item
+    Ist $b = 0$, so ist $\ggT(a, b) = |a|$ (analog bei $a = 0$).
+    
+    \item
+    Berechne $q, r$ mit $a = qb + r$ und $0 \le r < b$ durch Division mit Rest.
+    
+    \item
+    Setze $a^\ast := b$, $b^\ast := r$, $u^\ast := s$ und $v^\ast := t$.
+    
+    \item
+    Berechne $s^\ast := u - qs$ und $t^\ast := v - qt$.
+    
+    \item
+    Wiederhole mit $a^\ast, b^\ast, u^\ast, v^\ast, s^\ast, t^\ast$,
+    bis $a = 0$ oder $b = 0$.
+\end{enumerate}
+In jedem Schritt gilt $a = ua_0 + vb_0$ und $b = sa_0 + tb_0$
+(mit den Eingabewerten $a_0, b_0$).
+Daher gilt $\ggT(a_0, b_0) = sa_0 + tb_0$ mit $s, t$ den Werten aus dem vorletzten Schritt
+(bevor $r = 0$ ist).
+
+% TODO: Berechnung von b^e mod n?
+
+\pagebreak
+
+\subsubsection{%
+    Prime Restklassengruppen%
+}
+
+\textbf{Primzahl}:
+$p \in \natural$ heißt \begriff{Primzahl} oder \begriff{prim}, falls es genau zwei verschiedene
+natürliche Zahlen gibt, die Teiler von $p$ sind (nämlich $1$ und $p$ selbst).
+$\PP \subset \natural$ ist die \begriff{Menge der Primzahlen}.
+
+\textbf{zusammengesetzte Zahl}:
+Eine nicht-prime Zahl $n \in \natural$ mit $n > 1$ heißt \begriff{zusammengesetzt}.
+
+\textbf{prime Restklassengruppe}:
+Sei $n \in \natural$ mit $n > 1$.\\
+Dann heißt $(\ZnZ)^\ast := \{a \in \ZnZ \;|\; \exists_{b \in \ZnZ}\; ab \equiv_n 1\}$
+\begriff{prime Restklassengruppe} modulo $n$
+(sie ist eine Gruppe bzgl. der Multiplikation in $\ZnZ$).\\
+Für $a \in \ZnZ$ gilt $a \in (\ZnZ)^{\ast} \iff \ggT(a, n) = 1$.\\
+Für $p \in \natural$ prim ist $(\ZpZ)^\ast = \{1, \dotsc, p-1\}$ ein Körper.
+
+\textbf{multiplikative Inverse}:
+Für $a \in (\ZnZ)^\ast$ lässt sich
+das eindeutige $b \in (\ZnZ)^\ast$ mit $ab \equiv_n 1$ mit dem
+erweiterten euklidischen Algorithmus berechnen.
+Wegen $\ggT(a, n) = 1$ gilt mit dem Lemma von Bézout $\exists_{s, t \in \integer}\; 1 = sn + ta$.
+Modulo $n$ gilt daher $1 = sn + ta \equiv_n ta$, d.\,h. $b := t \bmod n$.
+
+\textbf{\name{Euler}sche $\varphi$-Funktion}:
+Die Abb. $\varphi\colon \natural \rightarrow \natural$,
+$\varphi(n) := \left|\{a \in \{1, \dotsc, n\} \;|\; \ggT(a, n) = 1\}\right|$
+heißt \begriff{\name{Euler}sche $\varphi$-Funktion}.
+Es gilt $\varphi(n) = |(\ZnZ)^\ast|$.\\
+Für $p \in \natural$ prim gilt $\varphi(p) = p - 1$.
+Für $p, q \in \natural$ teilerfremd gilt $\varphi(p \cdot q) = \varphi(p) \cdot \varphi(q)$.\\
+Insbesondere gilt $\varphi(pq) = (p-1)(q-1)$ für verschiedene Primzahlen $p, q$.
+
+\textbf{Satz von \name{Euler}}:
+Seien $a \in \integer$ und $n \in \natural$ mit $\ggT(a, n) = 1$.\\
+Dann gilt $a^{\varphi(n)} \equiv_n 1$.
+
+\textbf{kleiner Satz von \name{Fermat}}:
+Seien $a \in \integer$ und $p$ eine Primzahl mit $\ggT(a, p) = 1$.\\
+Dann gilt $a^{p-1} \equiv_p 1$.
+
+\subsubsection{%
+    Gruppen%
+}
+
+\textbf{Gruppe}:
+Eine \begriff{Gruppe} $(G, \ast)$ ist eine Menge $G$ mit einer Abbildung
+$\ast\colon G \times G \rightarrow G$, sodass
+$\ast$ assoziativ ist,
+ein neutrales Element $e$ existiert und
+inverse Elemente $g^{-1}$ existieren.
+
+\textbf{Untergruppe}:
+Eine Teilmenge $H \subset G$ einer Gruppe $G$ heißt \begriff{Untergruppe} von $G$
+($H < G$),
+falls $e \in H$ sowie $\forall_{x, y \in H}\; x \ast y \in H,\; x^{-1} \in H$.
+$(H, \ast)$ ist selbst eine Gruppe.
+
+\textbf{zyklisch}:
+Eine Gruppe $G$ heißt \begriff{zyklisch}, falls
+$\exists_{g \in G}\; G = \{g^n \;|\; n \in \integer\}$.\\
+In diesem Fall heißt jedes Element $g \in G$ mit dieser Eigenschaft \begriff{Erzeuger} von $G$.\\
+$\{g^n \;|\; n \in \integer\}$ ist eine Untergruppe von $G$, die von $g$
+\begriff{erzeugte zyklische Untergruppe} $\erzeugnis{g}$ von $G$.\\
+Ist $G$ zyklisch und endlich, so ist $G$ isomorph zu $(\ZnZ, +)$ mit $n := |G|$.\\
+Ist $G$ zyklisch und unendlich, so ist $G$ isomorph zu $(\integer, +)$.\\
+$(\ZnZ, +)$ ist zyklisch, die Erzeuger sind genau die Restklassen, die teilerfremd zu $n$ sind.\\
+$((\ZnZ)^\ast, \cdot)$ ist zyklisch genau dann, wenn
+$\exists_{p > 2 \text{ prim}} \exists_{k \in \natural}\; n \in \{2, 4, p^k, 2p^k\}$
+(insbesondere ist $(\ZpZ)^\ast$ zyklisch für $p \in \natural$ prim).
+
+\textbf{Primitivwurzel}:\\
+Ist $((\ZnZ)^\ast, \cdot)$ zyklisch, dann heißen Erzeuger von $(\ZnZ)^\ast$
+\begriff{Primitivwurzeln} modulo $n$.
+
+\pagebreak
+
+\subsubsection{%
+    Ordnung%
+}
+
+\textbf{Gruppenordnung}:
+Sei $G$ eine Gruppe.
+Dann heißt $\ord(G) := |G|$ \begriff{Gruppenordnung} von $G$.
+
+\textbf{Ordnung}:
+Seien $G$ eine Gruppe und $g \in G$.\\
+Dann heißt $\ord(g) = \ord_G(g) := \min\{k \in \natural \;|\; g^k = e\}$
+\begriff{Ordnung} von $g$ in $G$.
+Für $G := (\integer/n\integer)^\ast$ und $a \in (\integer/n\integer)^\ast$
+heißt $\ord_n(a) := \min\{k \in \natural \;|\; a^k \equiv_n 1\}$
+\begriff{Ordnung} von $a$ modulo $n$.\\
+Es gilt $\ord(g) = \ord(\erzeugnis{g})$.
+$g$ ist ein Erzeuger von $G$ genau dann, wenn $\ord(g) = \ord(G)$.\\
+Für $\ell \in \natural$ gilt $g^\ell = e$ genau dann, wenn $\ord(g) \teilt \ell$.
+
+\textbf{Satz von \name{Lagrange}}:
+Seien $G$ eine endliche Gruppe und $H < G$.
+Dann gilt $|H| \teilt |G|$.
+
+\textbf{Index}:
+Seien $G$ eine endliche Gruppe und $H < G$.\\
+Dann heißt $[G : H] := \frac{|G|}{|H|} \in \natural$ \begriff{Index} von $H$ in $G$.
+
+\subsubsection{%
+    Ringe und Körper%
+}
+
+\textbf{Ring}:
+Ein \begriff{Ring} $(R, +, \cdot)$ ist eine Menge zusammen mit Abbildungen
+$+, \cdot\colon K \times K \rightarrow K$,
+sodass $(K, +)$ eine abelsche Gruppe mit neutralem Element $0$ ist,
+$\cdot$ assoziativ ist und
+das Distributivitätsgesetz gilt.
+
+\textbf{Körper}:
+Ein \begriff{Körper} $(K, +, \cdot)$ ist eine Menge zusammen mit Abbildungen
+$+, \cdot\colon K \times K \rightarrow K$,
+sodass $(K, +)$ eine abelsche Gruppe mit neutralem Element $0$ ist,
+$(K \setminus \{0\}, \cdot)$ eine abelsche Gruppe mit neutralem Element $1$ ist und
+das Distributivitätsgesetz gilt.\\
+Ein Körper ist ein kommutativer Ring mit Eins mit allen $a \in K \setminus \{0\}$
+multiplikativ invertierbar.\\
+Ein Körper ist nullteilerfrei, d.\,h. aus $ab = 0$ für $a, b \in K$ folgt
+$a = 0$ oder $b = 0$.\\
+Jedes Polynom vom Grad $n \ge 1$ in $K[x]$ hat höchstens $n$ Nullstellen.
+
+\textbf{endlicher Körper}:
+Für jeden endlichen Körper $\FF$ mit $q := |\FF|$ gilt $q = p^n$ für eine Primzahl
+$p \in \natural$ und $n \in \natural$.
+Bis auf Isomorphie gibt es genau einen Körper mit $q$ Elementen,
+der mit $\FF_q$ bezeichnet wird.
+Für $q = p$ prim gilt $\FF_p \cong \ZpZ$.
+Für jeden endlichen Körper $\FF_q$ ist $\FF_q^\ast$ zyklisch.
+
+\textbf{Konstruktion von endlichen Körpern}:
+Seien $p$ prim, $\FF_p := \ZpZ$ und $f(X) \in \FF_p[X]$ irre"-duzibel
+(nicht darstellbar als Produkt zweier nicht-konstanter Polynome) mit $n := \deg f \ge 1$.\\
+Dann ist $\KK := \FF_p[X]/\erzeugnis{f(X)}$ ein Körper mit $|\KK| = p^n$, d.\,h. $\KK \cong \FF_q$
+mit $q = p^n$.
+Man kann $f$ auch als Polynom in $\KK[Y]$ betrachten:
+$\overline{X} := X + \erzeugnis{f(X)}$ ist eine Nullstelle von $f(Y) \in \KK[Y]$,
+insbesondere ist $f(Y) \in \KK[Y]$ reduzibel für $\deg f \ge 2$.
+
+\textbf{Charakteristik}:
+Sei $\FF$ ein Körper.
+Dann heißt die kleinste Zahl $p \in \natural$ mit $p \cdot 1_\FF = 0_\FF$
+($p$-fache Summe von $1_\FF$) \begriff{Charakteristik} von $\FF$.
+Gilt $\forall_{p \in \natural}\; p \cdot 1_\FF \not= 0_\FF$, dann hat $\FF$
+die Charakteristik $0$.
+Die Charakteristik ist entweder $0$ oder eine Primzahl $p$.
+Der endliche Körper $\FF_q$ mit $q = p^n$ hat die Charakteristik $p$.
+(Körper mit Charakteristik $0$ sind unendlich, die Umkehrung gilt i.\,A. nicht.)
+
+\pagebreak

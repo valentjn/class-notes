@@ -1,0 +1,493 @@
+\section{%
+    Grundlagen%
+}
+
+\subsection{%
+    Mengen und Relationen%
+}
+
+\begin{Def}{Menge (\name{Cantor})}
+    Eine \begriff{Menge} ist eine Zusammenfassung von wohlunterschiedenen
+    Objekten der (mathematischen) Anschauung und des (mathematischen) Denkens.
+    Die Objekte von $M$ werden \begriff{Elemente} genannt.
+    Ist $a$ ein Element der Menge $M$, so schreibt man $a \in M$, sonst
+    $a \notin M$.
+    Die \begriff{leere Menge} $\emptyset$ (oder $\{\}$) ist die Menge, die
+    kein Element enthält.
+\end{Def}
+
+\begin{Def}{Teilmenge}
+    Seien $A$ und $B$ Mengen.
+    $A$ ist eine \begriff{Teilmenge} von $B$, wenn jedes Element von $A$ auch
+    Element von $B$ ist, d.\,h. $x \in A \;\Rightarrow\; x \in B$.
+    Man schreibt dann $A \subseteq B$.
+\end{Def}
+
+\begin{Def}{Aussagen}
+    \begriff{Aussagen} sind entweder wahr oder falsch.
+    Eine Aussage kann \begriff{negiert} ($\lnot$), zwei Aussagen können durch
+    \begriff{Konjunktion} ($\land$), \begriff{Alternative} ($\lor$),
+    \begriff{Implikation} ($\Rightarrow$) oder
+    \xbegriff{Äquivalenz}{Aquivalenz@Äquivalenz} ($\Leftrightarrow$)
+    miteinander verknüpft werden: \\
+    \matrixsize{\begin{tabular}{c|c}
+        $A$ & $\lnot A$ \\ \hline
+        \wahr & \falsch \\
+        \falsch & \wahr
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{c|c|c|c|c|c}
+        $A$ & $B$ & $A \land B$ & $A \lor B$ & $A \Rightarrow B$ &
+        $A \Leftrightarrow B$ \\ \hline
+        \falsch & \falsch & \falsch & \falsch & \wahr & \wahr \\
+        \falsch & \wahr & \falsch & \wahr & \wahr & \falsch \\
+        \wahr & \falsch & \falsch & \wahr & \falsch & \falsch \\
+        \wahr & \wahr & \wahr & \wahr & \wahr & \wahr
+    \end{tabular}}
+\end{Def}
+
+\begin{Def}{Kontraposition}
+    Es gilt $(A \Rightarrow B) \Leftrightarrow (\lnot B \Rightarrow \lnot A)
+    \Leftrightarrow \lnot(\lnot B \land A)$, d.\,h. ist $A \Rightarrow B$ zu
+    zeigen, kann man auch $\lnot B \Rightarrow \lnot A$ zeigen
+    (\begriff{Kontraposition}).
+    Bei einem \begriff{Widerspruchsbeweis} zeigt nimmt man an, dass $A$ und
+    $\lnot B$ gelten.
+    Ergibt sich ein Widerspruch, dann ist $\lnot B \land A$ falsch, d.\,h.
+    es gilt $A \Rightarrow B$.
+\end{Def}
+
+\begin{Notation}
+    Mengen kann man als Liste von Elementen $M = \{a, b, c\}$
+    (auch unendlich: $\natural = \{1, 2, 3, \ldots\}$) schreiben oder sie
+    können durch \begriff{Aussageformen} beschrieben werden.
+    Eine Aussageform $A(x)$ wird zu einer Aussage, wenn man Variablen in $x$
+    einsetzt.
+    Man schreibt dann $M = \{x \;|\; A(x)\}$.
+    Die \begriff{Quantoren} $\exists$ und $\forall$ sind Abkürzungen für
+    "`es gibt"' und "`für alle"'.
+\end{Notation}
+
+\begin{Def}{Operationen mit Mengen}
+    $A \subseteq B \;\Leftrightarrow\; a \in A \Rightarrow a \in B$
+    \begriff{Teilmenge}, \\
+    $A \subset B \;\Leftrightarrow\; A \subseteq B \land A \not= B$
+    \begriff{echte Teilmenge}, \\
+    $A \cap B = \{x \;|\; x \in A \land x \in B\}$ \begriff{Durchschnitt},
+    $A \cup B = \{x \;|\; x \in A \lor x \in B\}$ \begriff{Vereinigung},
+    $A \setminus B = \{x \in A \;|\; x \notin B\}$ \begriff{Differenz},
+    $P(A) = \{B \;|\; B \subseteq A\}$ \begriff{Potenzmenge}
+\end{Def}
+
+\begin{Bem}
+    Es gilt $A = B \;\Leftrightarrow\; A \subseteq B \land B \subseteq A$
+    sowie $A \subseteq A$ für alle Mengen $A$, $B$. \\
+    Außerdem gilt $\lnot(\forall_{x \in M}\; A(x)) \;\Leftrightarrow\;
+    \exists_{x \in M}\; \lnot A(x)$ sowie
+    $\lnot(\exists_{x \in M}\; A(x)) \;\Leftrightarrow\;
+    \forall_{x \in M}\; \lnot A(x)$.
+\end{Bem}
+
+\begin{Def}{kartesisches Produkt}
+    Das \begriff{kartesische Produkt} zweier Mengen $M$ und $N$ ist die Menge
+    aller geordneten Paare $(m, n)$ und wird mit $M \times N$ bezeichnet: \\
+    $M \times N = \{(m, n) \;|\; m \in M,\; n \in N\}$.
+    Dabei wird das geordnete Paar $(m, n)$ mengentheoretisch als
+    $(m, n) = \{m, \{m, n\}\}$ definiert.
+    Im Allgemeinen gilt $A \times B \not= B \times A$
+    sowie $(a, b) \not= (b, a)$.
+\end{Def}
+
+\begin{Def}{Indizes}
+    Man kann Elemente, Mengen usw. mit \begriff{Indizes} versehen, um sie zu
+    unterscheiden.
+    Sei $I$ eine Indexmenge und für jedes $i \in I$ sei $A_i$ Menge.
+    Dann ist $\prod_{i \in I} A_i = \{(a_i)_{i \in I} \;|\;
+    \forall_{i \in I}\; a_i \in A_i\}$, \\
+    $\bigcap_{i \in I} A_i = \{x \;|\; \forall_{i \in I}\; x \in A_i\}$ und
+    $\bigcup_{i \in I} A_i = \{x \;|\; \exists_{i \in I}\; x \in A_i\}$.
+\end{Def}
+
+\begin{Def}{zweistellige Relation}
+    Sei $A$ eine Menge.
+    Eine Teilmenge $R \subseteq A \times A$ heißt
+    \begriff{zweistellige Relation} auf $A$.
+    Statt $(a,b) \in R$ schreibt man oft $aRb$ oder $a \sim_R b$.
+\end{Def}
+
+\begin{xDef}{Äquivalenzrelation}{Aquivalenzrelation@Äquivalenzrelation}
+    Eine Relation $R \subseteq A \times A$ heißt
+    \xbegriff{Äquivalenzrelation}{Aquivalenzrelation@Äquivalenzrelation},
+    falls sie reflexiv, symmetrisch und transitiv ist.
+    $R$ ist \begriff{reflexiv}, falls $\forall_{a \in A}\; aRa$.
+    $R$ ist \begriff{symmetrisch}, falls
+    $\forall_{a, b \in A}\; aRb \Rightarrow bRa$.
+    $R$ ist \begriff{transitiv}, falls
+    $\forall_{a, b, c \in A}\; aRb \land bRc \Rightarrow aRc$. \\
+    Beispiele für Äquivalenzrelationen sind Gleichheit und
+    "`Restrelation"' (gleicher Rest bei Division durch feste Zahl).
+\end{xDef}
+
+\begin{xDef}{Äquivalenzklasse}{Aquivalenzklasse@Äquivalenzklasse}
+    Seien $\sim$ eine Äquivalenzrelation auf der Menge $A$ und $a \in A$.
+    Dann ist die \xbegriff{Äquivalenzklasse}{Aquivalenzklasse@Äquivalenzklasse}
+    $[a]$ definiert als $[a] = \{b \in A \;|\; b \sim a\}$.
+\end{xDef}
+
+\begin{Lemma}{Äquivalenzklassen}
+    Seien $A$ eine Menge, $\sim$ Äquivalenzrelation auf $A$ und $a, b \in A$.
+    Dann ist $[a] \cap [b] \not= \emptyset \;\Leftrightarrow\; a \sim b$
+    und im Falle $a \sim b$ gilt $[a] = [b]$.
+\end{Lemma}
+
+\begin{Def}{Partition}
+    Seien $I$ eine Indexmenge, $A$ eine Menge und $A_i \subseteq A$ mit
+    $A_i \not= \emptyset$ für jedes $i \in I$.
+    $A$ heißt \begriff{disjunkte Vereinigung} der $A_i$ bzw. das System
+    $\{A_i \;|\; i \in I\}$ heißt \begriff{Partition} von $A$, falls
+    $A = \bigcup_{i \in I} A_i$ und
+    $A_i \cap \left(\bigcup_{j \in I,\; j \not= i} A_j\right) = \emptyset$.
+\end{Def}
+
+\begin{Satz}{Äquivalenzklassen als Partition}
+    Seien $\sim$ eine Äquivalenzrelation auf der Menge $A$ und
+    $\{[a] \;|\; a \in A\}$ die Menge aller Äquivalenzklassen auf $A$.
+    Dann bilden diese eine Partition von $A$. \\
+    \emph{Vorsicht:} Die "`Liste"' $\{[a] \;|\; a \in A\}$ ist redundant, eine
+    Äquivalenzklasse kann auch für $a \not= b$ mehrfach vorkommen.
+    Diese wird jedoch auch nur einmal "`gezählt"'.
+\end{Satz}
+
+\begin{Satz}{Äquivalenzrelation aus Partition}
+    Sei $A = \bigcup_{i \in I} A_i$ eine Partition von $A$.
+    Definiere $a \sim b$ für $a, b \in A$ durch
+    $a \sim b \;\Leftrightarrow\; \exists_{i \in I}\; a, b \in A_i$.
+    Dann ist $\sim$ eine Äquivalenzrelation und die Äquivalenzklassen sind
+    genau die $A_i$.
+\end{Satz}
+
+\begin{Def}{Ordnungsrelation}
+    Sei $A \not= \emptyset$ eine Menge.
+    Eine Relation $R \subseteq A \times A$ heißt
+    \xbegriff{(teilweise) Ordnung}{teilweise Ordnung@Ordnungsrelation},
+    falls sie reflexiv, antisymmetrisch und transitiv ist.
+    $R$ ist \begriff{antisymmetrisch}, falls
+    $\forall_{a, b \in A}\; aRb \land bRa \Rightarrow a = b$.
+    Beispiele für Ordnungsrelationen sind $\le$, die Teilbarkeitsrelation $|$
+    und Mengeninklusion $\subseteq$ auf der Potenzmenge einer Menge.
+\end{Def}
+
+\begin{Def}{lineare Ordnung}
+    Sei $\le$ eine teilweise Ordnung auf $A$.
+    $\le$ heißt \begriff{lineare/totale Ordnung}, falls
+    $\forall_{a, b \in A}\; (a \le b) \lor (b \le a)$.
+\end{Def}
+
+\begin{Def}{minimale/kleinste Elemente}
+    Seien $\le$ eine teilweise Ordnung auf $A$ sowie $B \subseteq A$. \\
+    Dann heißt $b \in B$ \begriff{minimales Element} von $B$, falls
+    $\forall_{c \in B}\; c \le b \Rightarrow c = b$. \\
+    $b \in B$ heißt \begriff{kleinstes Element} von $B$, falls
+    $\forall_{c \in B}\; b \le c$
+    (analog: \begriff{maximales/größtes Element}).
+\end{Def}
+
+\begin{Def}{untere Schranke}
+    Seien $\le$ eine teilweise Ordnung auf $A$ sowie $B \subseteq A$.
+    Ein Element $a \in A$ heißt \begriff{untere Schranke} von $B$,
+    falls $\forall_{b \in B}\; a \le b$
+    (analog: \begriff{obere Schranke}).
+\end{Def}
+
+\begin{Def}{Wohlordnung}
+    Sei $\le$ eine teilweise Ordnung auf $A$.
+    $\le$ heißt \begriff{Wohlordnung} (und $A$ heißt wohlgeordnet), falls jede
+    nicht-leere Teilmenge von $A$ ein kleinstes Element besitzt.
+\end{Def}
+
+\begin{Def}{endliche/unendliche Mengen}
+    Eine Menge heißt \begriff{endlich}, falls sie nur endlich viele Elemente
+    besitzt, sonst \begriff{unendlich}.
+\end{Def}
+
+\begin{Satz}{Wohlordnungssatz}
+    Jede Menge lässt sich wohlordnen.
+\end{Satz}
+
+\begin{Satz}{Auswahlaxiom}
+    Seien $I$ eine Indexmenge und $\{A_\alpha \;|\; \alpha \in I\}$ ein System
+    von nicht-leeren Mengen $A_\alpha$.
+    Dann gibt es eine Auswahlfunktion von $I$ in
+    $\bigcup_{\alpha \in I} A_\alpha$, die jedem $\alpha \in I$ ein
+    $x_\alpha \in A_\alpha$ zuordnet.
+\end{Satz}
+
+\begin{Satz}{\name{Zorn}sches Lemma}
+    Sei $\le$ eine teilweise Ordnung auf $A$.
+    Eine Kette in $A$ ist eine Teilmenge $K \subseteq A$ so, dass $\le$
+    eingeschränkt auf $K$ die Menge $K$ zur linear geordneten Teilmenge macht.
+    Ist $A$ nicht-leer und besitzt jede Kette $K$ in $A$ eine obere Schranke
+    in $A$, so hat $A$ selbst maximale Elemente.
+\end{Satz}
+
+\begin{Bem}
+    Wohlordnungssatz, Auswahlaxiom und \name{Zorn}sches Lemma sind echte
+    Axiome, d.\,h. ihre Aussage oder ihre Negation erzeugen keinen Widerspruch
+    zu den Axiomen der Mengenlehre.
+    Die drei Sätze sind äquivalent, d.\,h. sie gelten entweder alle gleichzeitig
+    oder keines von ihnen gilt.
+    Man sollte jedoch besser die Richtigkeit voraussetzen, da manche Beweise
+    auf ihrer Gültigkeit beruhen.
+    Speziell das Auswahlaxiom gibt keine explizite Auswahlfunktion an, sonst
+    besagt nur, dass es eine gibt.
+\end{Bem}
+
+\subsection{%
+    Vollständige Induktion%
+}
+
+\begin{Satz}{vollständige Induktion}
+    Sei $A(n)$ eine Aussageform mit $n \in \natural$.
+    Wenn $A(1)$ (\begriff{Induktionsan\-fang}) und
+    $A(n) \;\Rightarrow\; A(n + 1)$ (\begriff{Induktionsschritt}) gilt,
+    dann ist $\{m \in \natural \;|\; A(m) \text{ wahr}\} = \natural$. \\
+    Dieses Beweisverfahren heißt \begriff{vollständige Induktion}.
+\end{Satz}
+
+\begin{Bem}
+    Oft benutzt man als Induktionsvoraussetzung nicht nur $A(n)$, sondern
+    mehrere der $A(m)$ mit $m \le n$.
+    Der Induktionsanfang kann auch eine andere natürliche oder negative ganze
+    Zahl $n_0$ sein.
+    Die Aussage gilt dann entsprechend für alle $k \in \integer$ mit
+    $k \ge n_0$.
+\end{Bem}
+
+\subsection{%
+    Abbildungen%
+}
+
+\begin{Def}{Abbildung}
+    Seien $A$ und $B$ Mengen.
+    Eine \begriff{Abbildung} $f$ (auch Funktion) von $A$ nach $B$ ist eine
+    Relation $f \subseteq A \times B$ mit den Eigenschaften
+    $\forall_{a \in A} \exists_{b \in B}\; (a, b) \in f$ (Vorbereich ist $A$)
+    und $\forall_{a \in A} \forall_{b_1, b_2 \in B}\;
+    (a, b_1) \in f \land (a, b_2) \in f \Rightarrow b_1 = b_2$
+    (Nacheindeutigkeit). \\
+    Man schreibt dann $f: A \rightarrow B$ und anstatt $(a, b) \in f$ schreibt
+    man $a \mapsto b$ oder $b = f(a)$. \\
+    Die Teilmenge $f = \{(a, f(a)) \in A \times B\}$ von $A \times B$ heißt
+    \begriff{Graph} der Abbildung $f$.
+\end{Def}
+
+\begin{Bem}
+    Abbildungen können durch Graphen und durch Pfeildiagramme visualisiert
+    werden.
+    Entsprechend können Abbildungen als Teilmengen des kartesischen Produkts
+    $A \times B$ z.\,B. als Mengenlisten (bei endlicher Menge $A$) oder als
+    definierende Aussageform wie \\
+    $f = \{(a, b) \in A \times B \;|\; \text{Aussageform f"ur } f(a)\}$
+    festgelegt werden.
+\end{Bem}
+
+\begin{Bem}
+    Seien $f, g: A \rightarrow B$ Abbildungen.
+    Dann ist $f = g$ genau dann, wenn $f$ und $g$ als Teilmengen von
+    $A \times B$ gleich sind, d.\,h. $f(a) = g(a)$ für alle $a \in A$ ist.
+\end{Bem}
+
+\begin{Def}{Definitions-/Bildbereich}
+    Sei $f: A \rightarrow B$ eine Abbildung.
+    Dann ist $A$ der \begriff{Definitionsbereich} von $f$
+    und die Teilmenge $\im f = \{b \in B \;|\; \exists_{a \in A}\; f(a) = b\}$
+    heißt \begriff{Bild} von $f$. \\
+    Für $X \subseteq A$ ist die \begriff{Einschränkung} $f|_X$ von $f$ auf $X$
+    definiert als $f|_X = \{(a, b) \in f \;|\; a \in X\}$. \\
+    $f(X)$ (Bild der Teilmenge $X$ von $A$ unter $f$) ist definiert als
+    $f(X) = \im f|_X$.
+\end{Def}
+
+\begin{Def}{Komposition}
+    Seien $f: A \rightarrow B$, $g: B \rightarrow C$ Abbildungen.
+    Die \begriff{Hintereinanderausführung}/
+    \begriff{Komposition} $g \circ f = gf$ ist definiert durch
+    $g \circ f: A \rightarrow C$, $a \mapsto g(f(a))$.
+\end{Def}
+
+\begin{Def}{injektiv/surjektiv/bijektiv}
+    Sei $f: A \rightarrow B$ eine Abbildung. \\
+    $f$ ist \begriff{injektiv}, falls
+    $\forall_{a, b \in A}\; f(a) = f(b) \Rightarrow a = b$. \qquad
+    $f$ ist \begriff{surjektiv}, falls $\im f = B$
+    (bzw. $\forall_{b \in B} \exists_{a \in A}\; b = f(a)$). \qquad
+    $f$ ist \begriff{bijektiv}, falls $f$ injektiv und surjektiv ist. \\
+    Eine bijektive Abbildung $f: A \rightarrow A$ einer Menge $A$ in sich
+    selbst heißt \begriff{Permutation} von $A$.
+\end{Def}
+
+\begin{Def}{Umkehrrelation}
+    Sei $f: A \rightarrow B$ eine Abbildung.
+    Die \begriff{Umkehrrelation} $f^{-1}$ ist gegeben durch
+    $f^{-1} = \{(b, a) \in B \times A \;|\; f(a) = b\}$.
+    Für $U \subseteq B$ ist $f^{-1}(U) = \{a \in A \;|\; f(a) \in U\}$
+    das \begriff{Urbild} von $U$ unter $f$.
+    Für $U = \{b\}$ ($b \in B$) schreibt man $f^{-1}(b) = f^{-1}(\{b\})$. \\
+    $f^{-1}$ ist genau dann eine Abbildung, wenn $f$ bijektiv ist.
+\end{Def}
+
+\begin{Def}{Identität}
+    Sei $A$ eine Menge.
+    Die Abbildung $\id_A: A \rightarrow A$, $a \mapsto a$ heißt
+    \begriff{Identität}.
+\end{Def}
+
+\begin{Lemma}{Identität als neutrales Element}
+    Sei $f: A \rightarrow B$ eine Abbildung. \\
+    Dann ist $\id_B \circ f = f \circ \id_A = f$, d.\,h. die Identität ist
+    neutrales Element bzgl. der Komposition.
+\end{Lemma}
+
+\begin{Satz}{$f$ bijektiv $\Leftrightarrow$ es gibt eine Umkehrabbildung}
+    Sei $f: A \rightarrow B$ eine Abbildung.
+    Dann ist $f$ bijektiv genau dann, wenn es eine Abbildung
+    $g: B \rightarrow A$ gibt mit $f \circ g = \id_B$ und
+    $g \circ f = \id_A$. \\
+    Die Abbildung $g$ ist dann eindeutig bestimmt und identisch mit der
+    Umkehrrelation $f^{-1}$. \\
+    $g$ heißt Umkehrabbildung und wird mit $f^{-1}$ bezeichnet.
+    $f^{-1}$ ist ebenfalls bijektiv.
+\end{Satz}
+
+\begin{Satz}{Komposition}
+    Die Komposition von injektiven, surjektiven bzw. bijektiven Abbildungen
+    ist injektiv, surjektiv bzw. bijektiv.
+\end{Satz}
+
+\begin{Satz}{Kürzen von injektiven Abbildungen}
+    Seien $f, g: A \rightarrow B$, $h: B \rightarrow C$ Abbildungen
+    mit $h$ injektiv.
+    Ist $h \circ f = h \circ g$, dann ist $f = g$ (injektive Abbildungen kann
+    man links kürzen).
+\end{Satz}
+
+\begin{Satz}{Kürzen von surjektiven Abbildungen}
+    Seien $f, g: A \rightarrow B$, $h: C \rightarrow A$ Abbildungen
+    mit $h$ surjektiv.
+    Ist $f \circ h = g \circ h$, dann ist $f = g$ (surjektive Abbildungen kann
+    man rechts kürzen).
+\end{Satz}
+
+\begin{xDef}{Mächtigkeit}{Machtigkeit@Mächtigkeit}
+    Sei $M$ eine Menge.
+    Dann ist $|M|$ die \xbegriff{Mächtigkeit}{Machtigkeit@Mächtigkeit}
+    von $M$ und wie folgt definiert: \\
+    Gibt es eine Bijektion zwischen $M$ und
+    $\{1, \ldots, n\}$, dann ist $|M| = n$ und $M$ ist
+    \begriff{endliche Menge}. \\
+    Gibt es eine Bijektion zwischen $M$ und $\natural$, dann ist
+    $|M| = \aleph_0$ und $M$ ist
+    \xbegriff{abzählbar unendlich}{abzahlbar unendlich@abzählbar unendlich}. \\
+    Ist $M$ weder endliche noch abzählbar unendliche Menge, so ist
+    $M$ \xbegriff{überabzählbar}{uberabzahlbar@überabzählbar}.
+\end{xDef}
+
+\begin{Bem}
+    Die Elemente einer abzählbaren Menge lassen sich auflisten. \\
+    Auf der "`Klasse"' aller Mengen kann man eine Äquivalenzrelation $\sim$
+    definieren durch $A \sim B \;\Leftrightarrow\;
+    \exists f: A \rightarrow B \text{ bijektiv}$.
+    Die Äquivalenzklassen bilden die \begriff{Kardinalitäten} oder
+    \begriff{Mächtigkeiten}.
+\end{Bem}
+
+\begin{Satz}{Mächtigkeiten}
+    $\integer$ und $\rational$ sind abzählbar.
+    $\real$ und $\complex$ sind überabzählbar.
+    Die Vereinigung abzählbar vieler abzählbarer Mengen ist abzählbar.
+    Für eine Menge $M$ gilt $|M| \not= |P(M)|$.
+\end{Satz}
+
+\subsection{%
+    \emph{Zusätzliches}: Gruppen, Körper, Ringe%
+}
+
+\begin{Def}{binäre Operation}
+    Eine \begriff{binäre Operation} $B$ auf einer Menge $M$ ist eine
+    Abbildung  \\
+    $B: M \times M \rightarrow M$.
+    Sie wird gewöhnlich mit einem Symbol (z.\,B. $+$) bezeichnet
+    und man schreibt $B(m_1, m_2) = m_1 + m_2$ mit $m_1, m_2 \in M$.
+\end{Def}
+
+\begin{Def}{Gruppe}
+    Eine \begriff{Gruppe} besteht aus einer Menge $G$ und einer binären
+    Operation $\circ: G \times G \rightarrow G$, sodass
+    $\forall_{a, b, c \in G}\; (a \circ b) \circ c = a \circ (b \circ c)$
+    (\begriff{Assoziativität}) und es ein Element $e \in G$ gibt, sodass
+    $\forall_{a \in G}\; e \circ a = a$ (\begriff{neutrales Element}) und
+    $\forall_{a \in G} \exists_{a' \in G}\; a' \circ a = e$
+    (\begriff{inverses Element}). \\
+    Gilt zusätzlich $\forall_{a, b \in G}\; a \circ b = b \circ a$
+    (\begriff{Kommutativität}), so heißt die Gruppe eine
+    \begriff{abelsche Gruppe}.
+\end{Def}
+
+\begin{Bem}
+    In einer Gruppe $G$ gibt es genau ein neutrales Element und zu jedem
+    $a \in G$ genau ein Inverses $a' \in G$.
+    Außerdem ist $(a')' = a$.
+\end{Bem}
+
+\begin{Def}{Körper}
+    Ein \begriff{Körper} besteht aus einer Menge $K$ und zwei binären
+    Operationen $\boldsymbol{+}$ und $\boldsymbol{\cdot}$, sodass
+    $K$ bzgl. $\boldsymbol{+}$ eine abelsche Gruppe mit Nullelement $0$ ist,
+    $K^\ast = K \setminus \{0\}$ bzgl. $\boldsymbol{\cdot}$ eine abelsche
+    Gruppe ist
+    und $\forall_{a, b, c \in K}\; a \cdot (b + c) = a \cdot b + a \cdot c$
+    sowie $\forall_{a, b, c \in K}\; (b + c) \cdot a = b \cdot a + c \cdot a$
+    (\begriff{Distributivität} von $\boldsymbol{\cdot}$ über $\boldsymbol{+}$
+    auf beiden Seiten).
+\end{Def}
+
+\begin{Def}{Ring}
+    Ein \begriff{Ring} besteht aus einer Menge $R$ und zwei binären Operationen
+    $\boldsymbol{+}$ und $\boldsymbol{\cdot}$, sodass
+    $K$ bzgl. $\boldsymbol{+}$ eine abelsche Gruppe ist
+    sowie $\boldsymbol{\cdot}$ assoziativ und auf beiden Seiten distributiv
+    über $\boldsymbol{+}$ ist. \\
+    Hat $R$ ein neutrales Element $1$ bzgl. $\boldsymbol{\cdot}$, dann
+    ist $R$ ein \begriff{Ring mit Eins} ($1$ heißt \begriff{Einselement}). \\
+    Ist $\boldsymbol{\cdot}$ kommutativ, so heißt $R$
+    \begriff{kommutativer Ring}.
+\end{Def}
+
+\begin{Bem}
+    In einem Ring $R$ gilt $0 \cdot a = a \cdot 0 = 0$ für jedes Element
+    $a \in R$.
+\end{Bem}
+
+\subsection{%
+    \emph{Zusätzliches}: Projekt 1 (Mengen und Abbildungen)%
+}
+
+\begin{Satz}{Menge aller Mengen}
+    Es gibt keine Menge aller Mengen.
+\end{Satz}
+
+\begin{Bem}
+    Ansonsten gäbe es eine surjektive Abbildung $f: M \rightarrow P(M)$,
+    da jedes Element $T \in P(M)$ eine Teilmenge von $M$ ist, also eine Menge
+    und daher auch ein Element von $M$ ($T \in M$).
+    Definiere $f(T) = T$ für alle $T \in P(M)$ und $f(T) = \emptyset$ sonst.
+\end{Bem}
+
+\begin{Satz}{\name{Schröder}-\name{Bernstein}}
+    Seien $A$ und $B$ Mengen und $f: A \rightarrow B$, $g: B \rightarrow A$
+    injektive Abbildungen.
+    Dann sind $A$, $B$ gleichmächtig (d.\,h. es gibt eine Bijektion zwischen
+    $A$ und $B$).
+\end{Satz}
+
+\pagebreak

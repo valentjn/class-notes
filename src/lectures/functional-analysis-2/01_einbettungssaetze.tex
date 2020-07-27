@@ -1,0 +1,477 @@
+\optpart{%
+    Regularitätstheorie%
+}
+
+\section{%
+    Einbettungssätze für \name{Sobolev}- und \name{Hölder}räume%
+}
+
+\subsection{%
+    Wiederholung und Motivation%
+}
+
+\begin{Bem}
+    Zur Wiederholung werden die Definitionen von Sobolev- und Hölderräumen wiedergegeben.
+\end{Bem}
+
+\begin{Def}{\name{Sobolev}raum}
+    Seien $\Omega \subset \real^n$ of"|fen, $m \in \natural_0$ und $p \in [1, \infty]$.\\
+    Dann heißt der Vektorraum
+    $W^{m,p}(\Omega) := \{f \in L^p(\Omega) \;|\; \forall_{s \in \natural_0^n,\, |s| \le m}
+    \exists_{f^{(s)} \in L^p(\Omega)}\; f^{(0)} = f,$\\
+    $\forall_{\varphi \in \C^\infty_c(\Omega)}\;
+    \int_\Omega (\partial_x^s \varphi) f \dx = (-1)^{|s|} \int_\Omega \varphi f^{(s)} \dx\}$
+    \begriff{\name{Sobolev}raum} der Ordnung $m$ mit Exponent $p$.\\
+    $W^{m,p}(\Omega)$ wird mit der Norm
+    $\norm{f}_{W^{m,p}(\Omega)} := \sum_{|s| \le m} \norm{f^{(s)}}_{L^p(\Omega)}$ versehen.
+    Für $p = 2$ schreibt man auch $H^m(\Omega) := W^{m,2}(\Omega)$ bzw.
+    $\norm{\cdot}_{H^m(\Omega)} := \norm{\cdot}_{W^{m,2}(\Omega)}$.
+    Die Funktionen $f^{(s)}$ für $|s| \ge 1$ heißen \begriff{schwache Ableitungen} von $f$
+    und werden mit $\partial_x^s f := f^{(s)}$ bezeichnet.
+\end{Def}
+
+\begin{Bem}
+    Es gilt $W^{m,p}(\Omega) =
+    \overline{W^{m,p}(\Omega) \cap \C^\infty(\Omega)}^{\norm{\cdot}_{W^{m,p}(\Omega)}}$
+    für $p < \infty$.\\
+    $W^{m,p}_0(\Omega) := \overline{\C^\infty_c(\Omega)}^{\norm{\cdot}_{W^{m,p}(\Omega)}}$
+    ist der \begriff{\name{Sobolev}raum mit (verallg.) Nullrandwerten}.
+\end{Bem}
+
+\begin{Def}{\name{Hölder}raum}
+    Seien $\Omega \subset \real^n$ of"|fen oder kompakt,
+    $k \in \natural_0$ und $\alpha \in (0, 1]$.\\
+    $\C^{k,\alpha}(\Omega) := \{f \in \C^k_b(\Omega) \;|\;
+    \partial_x^j f \in \C^{0,\alpha}(\Omega) \text{ für } |j| = k\}$
+    heißt \begriff{\name{Hölder}raum} der Ordnung $k$ mit Exponent $\alpha$.
+    $\C^{k,\alpha}(\Omega)$ wird mit der Norm
+    $\norm{f}_{\C^{k,\alpha}(\Omega)} := \norm{f}_{\C^k(\Omega)} +
+    \sum_{|j|=k} [\partial_x^j f]_{\C^{0,\alpha}(\Omega)}$ versehen, wobei
+    $[f]_{\C^{0,\alpha}(\Omega)} := \sup_{x_1, x_2 \in \Omega,\; x_1 \not= x_2}
+    \frac{|f(x_1) - f(x_2)|}{|x_1 - x_2|^\alpha}$.
+    (Für $\alpha = 0$ definiert man $\C^{k,0}(\Omega) := \C^k(\Omega)$.)
+\end{Def}
+
+\linie
+
+\begin{Bem}
+    Gesucht sind Bedingungen an $n, m, p, k, \alpha$, sodass
+    $W^{m,p}(\real^n) \subset \C^{k,\alpha}(\real^n)$\\
+    (oder sodass $W^{m,p}(\Omega) \subset \C^{k,\alpha}(\overline{\Omega})$
+    mit $\Omega \subset \real^n$ of"|fen, beschränkt, Lipschitz-berandet).
+    
+    Für $u \in W^{1,\infty}(\real^n)$ gilt
+    $\sup_{x_1, x_2 \in \real^n,\; x_1 \not= x_2} \frac{|u(x_1) - u(x_2)|}{|x_1 - x_2|}
+    \le \sup_{x \in \real^n} |\nabla u(x)|$
+    nach dem Mittelwertsatz (auch Hauptsatz der Dif"|ferentialrechnung).
+    Für $u \in W^{1,\infty}(\real^n)$ gilt also $u \in \C^{0,1}(\real^n)$,
+    d.\,h. für den Fall $(m, p, k, \alpha) = (1, \infty, 0, 1)$ gilt
+    $W^{m,p}(\real^n) \subset \C^{k,\alpha}(\real^n)$.
+    
+    Man kann zeigen:
+    Allgemeiner existieren für bestimmte $\alpha \in (0, 1)$ und $p \in [1, \infty)$
+    auch Ungleichungen der Form
+    $[u]_{\C^{0,\alpha}(\real^n)} \le C(n,p) \norm{\nabla u}_{L^p(\real^n)}$
+    (Fall $m = 1$, $k = 0$).
+    
+    Um an die Beziehung zwischen $\alpha, n, p$ zu gelangen, bedient man sich eines
+    Skalierungsarguments.
+    Angenommen, eine solche Ungleichung existiert für $u \in W^{1,p}(\real^n)$.
+    Dann ist für $\lambda > 0$ auch $u_\lambda \in W^{1,p}(\real^n)$ mit
+    $u_\lambda(x) := u(\frac{x}{\lambda})$.
+    Es gilt $[u_\lambda]_{\C^{0,\alpha}(\real^n)}
+    = \sup_{x_1 \not= x_2} \frac{|u_\lambda(x_1) - u_\lambda(x_2)|}{|x_1 - x_2|^\alpha}$\\
+    $= \lambda^{-\alpha} \cdot \sup_{x_1 \not= x_2}
+    \frac{|u(x_1/\lambda) - u(x_2/\lambda)|}{|x_1/\lambda - x_2/\lambda|^\alpha}
+    = \lambda^{-\alpha} \cdot [u]_{\C^{0,\alpha}(\real^n)}$
+    sowie\\
+    $\norm{\nabla u_\lambda}_{L^p(\real^n)}
+    = \left(\int_{\real^n} |\nabla u_\lambda(x)|^p \dx\right)^{1/p}
+    = \left(\int_{\real^n} \lambda^{-p} |\nabla u(\frac{x}{\lambda})|^p \dx\right)^{1/p}
+    = \left(\int_{\real^n} \lambda^{n-p} |\nabla u(y)|^p \dy\right)^{1/p}$\\
+    $= \lambda^{n/p-1} \cdot \norm{\nabla u}_{L^p(\real^n)}$.
+    Unter der Annahme der Existenz der obigen Ungleichung gilt damit\\
+    $\lambda^{-\alpha} \cdot [u]_{\C^{0,\alpha}(\real^n)}
+    = [u_\lambda]_{\C^{0,\alpha}(\real^n)}
+    \le C(n,p) \cdot \norm{\nabla u_\lambda}_{L^p(\real^n)}
+    = C(n,p) \lambda^{n/p-1} \cdot \norm{\nabla u}_{L^p(\real^n)}$ bzw.\\
+    $[u]_{\C^{0,\alpha}(\real^n)} \le \lambda^{n/p-1+\alpha}
+    \cdot C(n,p) \norm{\nabla u}_{L^p(\real^n)}$.
+    Diese Ungleichung kann nur für alle $\lambda > 0$ gelten, wenn
+    $\frac{n}{p} - 1 + \alpha = 0$ ist,
+    also $1 - \frac{n}{p} = \alpha$.
+    Insbesondere muss wegen $\alpha > 0$ auch $p > n$ gelten.\\
+    Für höhere Ableitungen ($m > 1$ oder $k > 0$) verfährt man ähnlich.
+    
+    Man vermutet daher, dass
+    $W^{m,p}(\real^n) \subset \C^{k,\alpha}(\real^n)$
+    für $m \in \natural$, $p \in [1, \infty)$, $k \in \natural_0$ und $\alpha \in (0, 1)$
+    mit $m - \frac{n}{p} = k + \alpha$.
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    Gesucht sind Bedingungen an $n, m_1, p_1, m_2, p_2$, sodass
+    $W^{m_1,p_1}(\real^n) \subset W^{m_2,p_2}(\real^n)$
+    (oder sodass $W^{m_1,p_1}(\Omega) \subset W^{m_2,p_2}(\Omega)$
+    mit $\Omega \subset \real^n$ of"|fen, beschränkt, Lipschitz-berandet).
+    
+    Für $1 \le p < n$ kann man zeigen, dass es ein $p^\ast > p$ gibt mit
+    $\norm{u}_{L^{p^\ast}(\real^n)} \le C(n,p) \norm{\nabla u}_{L^p(\real^n)}$
+    für alle $u \in W^{1,p}(\real^n)$.
+    Daraus folgt dann direkt $W^{1,p}(\real^n) \subset L^{p^\ast}(\real^n)$
+    (Fall $m_1 = 1$, $m_2 = 0$).
+    
+    Zur Bestimmung von $p^\ast$ benutzt man wieder obiges Reskalierungsargument:\\
+    $\norm{u_\lambda}_{L^{p^\ast}(\real^n)} =
+    \lambda^{n/p^\ast} \cdot \norm{u}_{L^{p^\ast}(\real^n)}$
+    und $\norm{\nabla u_\lambda}_{L^p(\real^n)} =
+    \lambda^{n/p-1} \cdot \norm{\nabla u}_{L^p(\real^n)}$ wie oben.\\
+    Damit gilt $\lambda^{n/p^\ast} \cdot \norm{u}_{L^{p^\ast}(\real^n)} =
+    \norm{u_\lambda}_{L^{p^\ast}(\real^n)}
+    \le C(n,p) \norm{\nabla u_\lambda}_{L^p(\real^n)} =
+    \lambda^{n/p-1} \cdot C(n,p) \norm{\nabla u}_{L^p(\real^n)}$,
+    also $\norm{u}_{L^{p^\ast}(\real^n)} \le
+    \lambda^{n/p-1-n/p^\ast} \cdot C(n,p) \norm{\nabla u}_{L^p(\real^n)}$
+    für alle $\lambda > 0$.
+    Daraus folgt $\frac{n}{p} - 1 - \frac{n}{p^\ast} = 0$ bzw.
+    $1 - \frac{n}{p} = -\frac{n}{p^\ast} \iff p^\ast = \frac{np}{n - p}$.
+    
+    Als Verallgemeinerung vermutet man $W^{m_1,p_1}(\real^n) \subset W^{m_2,p_2}(\real^n)$ für
+    bestimmte $m_1, m_2 \in \natural_0$ mit $m_1 \ge m_2$ und $p_1, p_2 \in [1, \infty)$
+    (genauer: für $m_1 - \frac{n}{p_1} = m_2 - \frac{n}{p_2}$ und $m_1 \ge m_2$).
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Wie hoch muss $m \in \natural$ sein, damit $H^m(\real^3) \subset \C^2(\real^3)$?
+    (Zunächst sollen nur die Einbettungen $W^{1,p}(\real^n) \subset \C^{0,\alpha}(\real^n)$ und
+    $W^{1,p}(\real^n) \subset L^{p^\ast}(\real^n)$ benutzt werden.)
+    
+    Sei $u \in H^m(\real^3)$.
+    Dann existieren die schwachen Ableitungen $\partial_x^j u \in L^2(\real^3)$ in den Ordnungen
+    $|j| \le m$.
+    Für $H^m(\real^3)$ ist $p = 2$ und damit kleiner als $n = 3$.
+    Daher kann die erste Einbettung aus den Bemerkungen oben nicht verwendet werden.
+    Stattdessen kann man die zweite Einbettung $W^{1,p}(\real^n) \subset L^{p^\ast}(\real^n)$
+    verwenden.
+    Es gilt $p^\ast = \frac{np}{n - p} = \frac{3 \cdot 2}{3 - 2} = 6$,
+    also $H^1(\real^3) \subset L^6(\real^3)$.
+    Wegen $\forall_{|j| \le m-1}\; \partial_x^j u \in H^1(\real^3)$ gilt daher
+    $\partial_x^j u \in L^6(\real^3)$ für alle $|j| \le m - 1$,
+    also $u \in W^{m-1,6}(\real^3)$.
+    
+    Nun gilt $p^\ast > n$, daher kann man jetzt die erste Einbettung verwenden
+    (für $m' := m - 1$).
+    Aus der Gleichung $(m-1) - \frac{n}{p^\ast} = k + \alpha$ errechnet man
+    $\alpha = (m-1) - \frac{n}{p^\ast} - k = (m-1) - \frac{3}{6} - 2 \in (0, 1)$
+    zum Beispiel für $(m-1) = 3$ (mit dem gewünschten $k = 2$).
+    Damit gilt $W^{3,6}(\real^3) \subset \C^{2,1/2}(\real^3)$.
+    
+    Insgesamt gilt also
+    $H^m(\real^3) \subset H^4(\real^3) \subset W^{3,6}(\real^3) \subset \C^{2,1/2}(\real^3)
+    \subset \C^2(\real^3)$ für $m \ge 4$.
+    
+    Wenn man $W^{m,p}(\real^n) \subset \C^{k,\alpha}(\real^n)$ mit $m - \frac{n}{p} = k + \alpha$
+    verwendet, so erhält man das Resultat direkt
+    (mit $(n, m, p, k, \alpha) = (3, 4, 2, 2, \frac{1}{2})$).
+\end{Bsp}
+
+\linie
+
+\begin{Bem}
+    Was kann man für beschränkte Gebiete erwarten?
+    
+    Sei $f_\varrho\colon \overline{B_1(0)} \subset \real^n \to \real$ mit
+    $f_\varrho(x) := |x|^\varrho$ für $x \not= 0$ und $f_\varrho(0) := 0$,
+    wobei $\varrho \in \real \setminus \natural_0$.\\
+    Man kann direkt nachrechnen, dass dann gilt:
+    \begin{enumerate}
+        \item
+        Für $k \in \natural_0$ und $\alpha \in (0, 1]$ gilt
+        $f_\varrho \in \C^{k,\alpha}(\overline{B_1(0)}) \iff \varrho \ge k + \alpha$.
+        
+        \item
+        Für $m \in \natural_0$ und $p \in [1, \infty)$ gilt
+        $f_\varrho \in W^{m,p}(B_1(0)) \iff \varrho \ge m - \frac{n}{p}$.
+    \end{enumerate}
+    Dies motiviert die Vermutungen
+    \begin{enumerate}
+        \item
+        $W^{m_1,p_1}(B_1(0)) \subset W^{m_2,p_2}(B_1(0))$ für
+        $m_1 - \frac{n}{p_1} \ge m_2 - \frac{n}{p_2}$, $m_1 \ge m_2$ und
+        $p_1, p_2 \in [1, \infty)$ sowie
+        
+        \item
+        $W^{m,p}(B_1(0)) \subset \C^{k,\alpha}(\overline{B_1(0)})$ für
+        $m - \frac{n}{p} \ge k + \alpha$, $p \in [1, \infty)$ und $\alpha \in (0, 1)$.
+    \end{enumerate}
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    \name{Gagliardo}-\name{Nirenberg}-\name{Sobolev}-Ungleichung%
+}
+
+\begin{Bem}
+    Die Gagliardo-Nirenberg-Sobolev-Ungleichung beweist durch das anschließende Korollar
+    die Einbettung $W^{m_1,p_1}(\real^n) \subset W^{m_2,p_2}(\real^n)$ für den Fall
+    $m_1 = 1$, $m_2 = 0$.
+\end{Bem}
+
+\begin{Satz}{\name{Gagliardo}-\name{Nirenberg}-\name{Sobolev}-Ungleichung}\\
+    Seien $p \in [1, n)$, $p^\ast := \frac{np}{n - p}$ und $u \in \C^1_c(\real^n)$.\\
+    Dann ist $u \in L^{p^\ast}(\real^n)$ mit
+    $\norm{u}_{L^{p^\ast}(\real^n)} \le C(n,p) \norm{\nabla u}_{L^p(\real^n)}$.
+\end{Satz}
+
+\begin{Kor}
+    Seien $p \in [1, n)$, $p^\ast := \frac{np}{n - p}$ und $u \in W^{1,p}(\real^n)$.\\
+    Dann ist $u \in L^{p^\ast}(\real^n)$ mit
+    $\norm{u}_{L^{p^\ast}(\real^n)} \le C(n,p) \norm{\nabla u}_{L^p(\real^n)}$.
+\end{Kor}
+
+\linie
+
+\begin{Bem}
+    Für den Beweis des Korollars muss man Glättung durch Faltung
+    (wenn $u$ kompakten Träger besitzt) und Abschneiden durch Multiplikation
+    (wenn $u$ keinen kompakten Träger besitzt) durchführen.
+\end{Bem}
+
+\begin{Lemma}{Approximation durch Faltung}
+    Seien $\varphi \in \C^\infty_c(\real^n)$ mit\\
+    $\forall_{y \in \real^n}\; \varphi(y) \ge 0,\; \varphi(-y) = \varphi(y)$ und
+    $\int_{\real^n} \varphi(y)\dy = 1$ sowie
+    $\varphi_\varepsilon(x) := \varepsilon^{-n} \varphi(\frac{x}{\varepsilon})$
+    für $\varepsilon > 0$.\\
+    Außerdem seien $u \in L^p(\real^n)$ und $u_\varepsilon := \varphi_\varepsilon \ast u$.
+    Dann gilt
+    \begin{enumerate}
+        \item
+        $\supp(\varphi \ast u) \subset \overline{\supp(\varphi) + \supp(u)}$,
+        
+        \item
+        $u_\varepsilon \in \C^\infty(\real^n)$ mit
+        $\partial_x^s u_\varepsilon = (\partial_x^s \varphi_\varepsilon) \ast u$,
+        
+        \item
+        für $u \in W^{1,p}(\real^n)$ gilt
+        $\nabla u_\varepsilon = (\nabla u)_\varepsilon := \varphi_\varepsilon \ast \nabla u$,
+        
+        \item
+        \begin{itemize}
+            \item
+            $\norm{u_\varepsilon}_{L^p(\real^n)} \le \norm{u}_{L^p(\real^n)}$
+            (wegen $\norm{\varphi \ast u}_{L^p(\real^n)} \le
+            \norm{\varphi}_{L^1(\real^n)} \norm{u}_{L^p(\real^n)}$) und
+            
+            \item
+            für $u \in W^{1,p}(\real^n)$ gilt
+            $\norm{(\nabla u)_\varepsilon}_{L^p(\real^n)} \le \norm{\nabla u}_{L^p(\real^n)}$
+        \end{itemize}
+        und
+        
+        \item
+        \begin{itemize}
+            \item
+            $\lim_{\varepsilon \to 0} \norm{u_\varepsilon - u}_{L^p(\real^n)} = 0$,
+            
+            \item
+            damit gilt für $u \in W^{1,p}(\real^n)$, dass
+            $\lim_{\varepsilon \to 0} \norm{u_\varepsilon - u}_{W^{1,p}(\real^n)} = 0$,
+            
+            \item
+            außerdem $\forall_{R > 0}\; \lim_{\varepsilon \to 0}
+            \norm{u_\varepsilon - u}_{L^1(B_R(0))} = 0$ und
+            
+            \item
+            damit $u_\varepsilon \to u$ f.ü. in $\real^n$.
+        \end{itemize}
+    \end{enumerate}
+\end{Lemma}
+
+\begin{Lemma}{Approximation durch Abschneidefunktionen}\\
+    Seien $\eta \in \C^\infty(\real^n)$ mit
+    $\forall_{z \in \real^n}\; \eta(z) \in [0, 1]$,
+    $\eta(z) = 1$ für alle $|z| \le 1$ und
+    $\eta(z) = 0$ für alle $|z| \ge 2$
+    sowie $\eta_R(z) := \eta(\frac{z}{R})$ für $R > 0$.
+    Außerdem seien $u \in W^{1,p}(\real^n)$ und $u_R := \eta_R \cdot u$.\\
+    Dann gilt $u_R \in W^{1,p}(\real^n)$, wobei
+    \begin{enumerate}
+        \item
+        $\norm{u_R}_{L^p(\real^n)} \le \norm{u}_{L^p(\real^n)}$,
+        
+        \item
+        $\norm{\nabla u_R}_{L^p(\real^n)} \le \norm{\nabla u}_{L^p(\real^n)} +
+        \frac{1}{R} \norm{\nabla\eta}_{L^\infty(\real^n)} \norm{u}_{L^p(\real^n)}$
+        (wegen $\nabla u_R = \eta_R \nabla u + u \nabla \eta_R$).
+    \end{enumerate}
+\end{Lemma}
+
+\pagebreak
+
+\subsection{%
+    Teil 1 des \name{Sobolev}schen Einbettungssatzes%
+}
+
+\begin{Lemma}{Fortsetzungsoperator}
+    Seien $\Omega \subset \real^n$ of"|fen, beschränkt und Lipschitz-berandet,\\
+    $p \in [1, \infty]$ und $\delta > 0$.
+    Dann gibt es einen linearen und stetigen \begriff{Fortsetzungsoperator}\\
+    $E\colon W^{1,p}(\Omega) \to W_0^{1,p}(B_\delta(\Omega))$ mit
+    $\forall_{u \in W^{1,p}(\Omega)}\; (Eu)|_\Omega = u$.
+\end{Lemma}
+
+\begin{Satz}{Teil 1 des \name{Sobolev}schen Einbettungssatzes}\\
+    Seien $m_1, m_2 \in \natural_0$ und $p_1, p_2 \in [1, \infty)$.
+    \begin{enumerate}
+        \item
+        Ist $m_1 - \frac{n}{p_1} = m_2 - \frac{n}{p_2}$ und $m_1 \ge m_2$, dann existiert die
+        Einbettung\\
+        $\id\colon W^{m_1,p_1}(\real^n) \to W^{m_2,p_2}(\real^n)$ und ist stetig, d.\,h.\\
+        $\exists_{C > 0} \forall_{u \in W^{m_1,p_1}(\real^n)}\;
+        \norm{u}_{W^{m_2,p_2}(\real^n)} \le C \norm{u}_{W^{m_1,p_1}(\real^n)}$ mit
+        $C = C(n, m_1, p_1, m_2, p_2)$.
+        
+        \item
+        Sei $\Omega \subset \real^n$ of"|fen, beschränkt und Lipschitz-berandet.\\
+        Ist $m_1 - \frac{n}{p_1} \ge m_2 - \frac{n}{p_2}$ und $m_1 \ge m_2$, dann existiert die
+        Einbettung\\
+        $\id\colon W^{m_1,p_1}(\Omega) \to W^{m_2,p_2}(\Omega)$ und ist stetig, d.\,h.\\
+        $\exists_{C > 0} \forall_{u \in W^{m_1,p_1}(\Omega)}\;
+        \norm{u}_{W^{m_2,p_2}(\Omega)} \le C \norm{u}_{W^{m_1,p_1}(\Omega)}$ mit
+        $C = C(\Omega, n, m_1, p_1, m_2, p_2)$.
+        
+        \item
+        Ist $m_1 - \frac{n}{p_1} > m_2 - \frac{n}{p_2}$ und $m_1 > m_2$, dann ist die Einbettung
+        $\id\colon W^{m_1,p_1}(\Omega) \to W^{m_2,p_2}(\Omega)$ sogar kompakt.
+        
+        \item
+        Für $\widetilde{\Omega} \subset \real^n$ nur of"|fen und beschränkt gelten die Aussagen
+        \emph{(2)} und \emph{(3)} für die Räume $W^{m_i,p_i}_0(\widetilde{\Omega})$ anstatt
+        $W^{m_i,p_i}(\Omega)$, wobei $W^{0,p}_0(\widetilde{\Omega}) := L^p(\widetilde{\Omega})$.
+    \end{enumerate}
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    \name{Morrey}sche Ungleichung%
+}
+
+\begin{Bem}
+    Die Morreysche Ungleichung beweist durch den zweiten Teil des anschließenden Korollars
+    die Einbettung $W^{m,p}(\real^n) \subset \C^{k,\alpha}(\real^n)$ für den Fall
+    $m = 1$, $k = 0$.
+\end{Bem}
+
+\begin{Satz}{\name{Morrey}sche Ungleichung}
+    Seien $p \in (n, \infty]$, $\alpha := 1 - \frac{n}{p}$ und $u \in \C^1(\real^n)$.\\
+    Dann ist $u \in \C^{0,\alpha}(\real^n)$ mit
+    $[u]_{\C^{0,\alpha}(\real^n)} \le C(n,p) \norm{\nabla u}_{L^p(\real^n)}$.
+\end{Satz}
+
+\begin{Bem}
+    Die Bedingung $p > n$ ist nötig, damit keine Singularitäten auftreten
+    (sonst $\alpha \le 0$).
+\end{Bem}
+
+\linie
+
+\begin{Def}{\name{Hölder}-stetig für $L^p$-Funktionen}
+    Seien $u \in L^p(\real^n)$ und $\alpha \in [0, 1]$.\\
+    Dann heißt $u$ \begriff{\name{Hölder}-stetig} mit Exponent $\alpha$
+    ($u \in \C^{0,\alpha}(\real^n)$), falls
+    $\exists_{\widetilde{u} \in \C^{0,\alpha}(\real^n)}\;
+    u = \widetilde{u} \text{ f.ü. auf } \real^n$.
+    Außerdem sei $\norm{u}_{\C^{0,\alpha}(\real^n)} :=
+    \norm{\widetilde{u}}_{\C^{0,\alpha}(\real^n)}$.
+    Analog sind $u \in \C^{k,\alpha}(\real^n)$ und $\norm{u}_{\C^{k,\alpha}(\real^n)}$
+    für $k \in \natural_0$ definiert.
+    $\real^n$ kann durch $\Omega$ für $\Omega \subset \real^n$ of"|fen ersetzt werden.
+\end{Def}
+
+\begin{Kor}
+    Seien $p \in (n, \infty)$ und $\alpha := 1 - \frac{n}{p}$.
+    \begin{enumerate}
+        \item
+        Sei $u \in L^1_\loc(\real^n)$ mit $\nabla u \in L^p(\real^n)$.\\
+        Dann ist $u \in \C^{0,\alpha}(\real^n)$ mit
+        $[u]_{\C^{0,\alpha}(\real^n)} \le C(n,p) \norm{\nabla u}_{L^p(\real^n)}$.
+        
+        \item
+        Sei $u \in W^{1,p}(\real^n)$.\\
+        Dann ist $u \in \C^{0,\alpha}(\real^n)$ mit
+        $\norm{u}_{\C^{0,\alpha}(\real^n)} \le C(n,p) \norm{u}_{W^{1,p}(\real^n)}$.
+    \end{enumerate}
+\end{Kor}
+
+\subsection{%
+    Teil 2 des \name{Sobolev}schen Einbettungssatzes%
+}
+
+\begin{Lemma}{Einbettungssätze für \name{Hölder}-Räume}\\
+    Sei $\Omega \subset \real^n$ of"|fen, beschränkt und Lipschitz-berandet.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        Für $k \in \natural_0$ ist die Einbettung
+        $\id\colon \C^{k+1}(\overline{\Omega}) \to \C^{k,1}(\overline{\Omega})$ stetig.
+        
+        \item
+        Seien $k_1, k_2 \in \natural_0$ und $\alpha_1, \alpha_2 \in [0, 1]$ mit
+        $k_1 + \alpha_1 > k_2 + \alpha_2$
+        (im Fall $k_1 = 0$ kann sogar auf die Lipschitz-Berandung verzichtet werden).\\
+        Dann ist die Einbettung $\id\colon \C^{k_1,\alpha_1}(\overline{\Omega}) \to
+        \C^{k_2,\alpha_2}(\overline{\Omega})$ kompakt,
+        wobei $\C^{k,0}(\overline{\Omega}) := \C^k(\overline{\Omega})$.
+    \end{enumerate}
+\end{Lemma}
+
+\begin{Satz}{Teil 2 des \name{Sobolev}schen Einbettungssatzes}\\
+    Seien $m \in \natural$, $p \in [1, \infty)$, $k \in \natural_0$ und $\alpha \in [0, 1]$.
+    \begin{enumerate}
+        \item
+        Ist $m - \frac{n}{p} = k + \alpha$ und $\alpha \in (0, 1)$, dann existiert die
+        Einbettung
+        $\id\colon W^{m,p}(\real^n) \to \C^{k,\alpha}(\real^n)$ und ist stetig, d.\,h.
+        $\exists_{C > 0} \forall_{u \in W^{m,p}(\real^n)}\;
+        \norm{u}_{\C^{k,\alpha}(\real^n)} \le C \norm{u}_{W^{m,p}(\real^n)}$ mit
+        $C = C(n, m, p, k, \alpha)$.
+        
+        \item
+        Sei $\Omega \subset \real^n$ of"|fen, beschränkt und Lipschitz-berandet.\\
+        Ist $m - \frac{n}{p} \ge k + \alpha$ und $\alpha \in (0, 1)$, dann existiert die
+        Einbettung
+        $\id\colon W^{m,p}(\Omega) \to \C^{k,\alpha}(\overline{\Omega})$
+        und ist stetig, d.\,h.
+        $\exists_{C > 0} \forall_{u \in W^{m,p}(\Omega)}\;
+        \norm{u}_{\C^{k,\alpha}(\overline{\Omega})} \le C \norm{u}_{W^{m,p}(\Omega)}$ mit
+        $C = C(\Omega, n, m, p, k, \alpha)$.
+        
+        \item
+        Ist $m - \frac{n}{p} > k + \alpha$ und $\alpha \in [0, 1]$, dann existiert die Einbettung
+        $\id\colon W^{m,p}(\Omega) \to \C^{k,\alpha}(\overline{\Omega})$ und ist stetig und
+        kompakt.
+        
+        \item
+        Für $\widetilde{\Omega} \subset \real^n$ nur of"|fen und beschränkt gelten die Aussagen
+        \emph{(2)} und \emph{(3)} für die Räume $W^{m,p}_0(\widetilde{\Omega})$ anstatt
+        $W^{m,p}(\Omega)$.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Satz}{Einbettung für $p = \infty$, $\alpha = 1$ ist Isomorphismus}\\
+    Seien $k \in \natural_0$ sowie
+    $\Omega \subset \real^n$ of"|fen, beschränkt und Lipschitz-berandet.\\
+    Dann ist die Einbettung
+    $\id\colon \C^{k,1}(\overline{\Omega}) \to W^{k+1,\infty}(\Omega)$ ein Isomorphismus.
+\end{Satz}
+
+\pagebreak

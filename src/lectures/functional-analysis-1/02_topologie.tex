@@ -1,0 +1,556 @@
+\section{%
+    Topologie in Skalarprodukt-, normierten und metrischen Räumen%
+}
+
+\subsection{%
+    Topologische Definitionen%
+}
+
+\begin{Bem}
+    Im Folgenden ist $(X, d)$ ein metrischer Raum.
+\end{Bem}
+
+\begin{Def}{$\varepsilon$-Kugel}
+    Für $x_0 \in X$ und $\varepsilon > 0$ heißt
+    $B_\varepsilon(x_0) := \{x \in X \;|\; d(x, x_0) < \varepsilon\}$
+    \begriff{$\varepsilon$-Kugel um $x_0$}.
+\end{Def}
+
+\begin{Def}{of"|fen}
+    $O \subset X$ heißt \begriff{of"|fen}, falls
+    $\forall_{x \in O} \exists_{\varepsilon > 0}\; B_\varepsilon(x) \subset O$.
+\end{Def}
+
+\begin{Def}{abgeschlossen}
+    $A \subset X$ heißt \begriff{abgeschlossen}, falls $X \setminus A$ of"|fen ist.
+\end{Def}
+
+\vspace{-2mm}
+
+\begin{Def}{Inneres}
+    Für $M \subset X$ heißt $\overset{\circ}{M} = \interior{M} :=
+    \{x \in M \;|\; \exists_{\varepsilon > 0}\; B_\varepsilon(x) \subset M\}$
+    \begriff{Inneres von $M$}.
+\end{Def}
+
+\begin{Def}{Abschluss}
+    Für $M \subset X$ heißt $\overline{M} := X \setminus \interior{X \setminus M}$
+    \begriff{Abschluss von $M$}.
+\end{Def}
+
+\begin{Def}{Rand}
+    Für $M \subset X$ heißt $\partial M := \overline{M} \setminus \interior{M}$
+    \begriff{Rand von $M$}.
+\end{Def}
+
+\begin{Def}{dicht}
+    $B \subset X$ \begriff{liegt dicht} in $A \subset X$, falls $\overline{B} = A$.
+\end{Def}
+
+\begin{Def}{beschränkt}
+    $C \subset X$ heißt \begriff{beschränkt}, falls
+    $\exists_{x \in X} \exists_{R > 0}\; C \subset B_R(x)$.
+\end{Def}
+
+\begin{Def}{zusammenhängend}
+    $Z \subset X$ heißt \begriff{zusammenhängend}, falls
+    es keine Zerlegung von $Z$ in zwei disjunkte, of"|fene und nicht-leere Mengen
+    $Z_1, Z_2 \subset X$ gibt.
+\end{Def}
+
+\begin{Bem}
+    Die Mengen $Z_1, Z_2 \subset X$ bei der Definition von Zusammenhang müssen of"|fen
+    bzgl. der Teilraumtopologie auf $Z$ sein, d.\,h. Schnitte von of"|fenen Mengen in $X$
+    mit $Z$.
+\end{Bem}
+
+\begin{Bsp}
+    \begin{enumerate}[label=\emph{(\alph*)}]
+        \item
+        Sei $(X, d) = (\real^2, \norm{\cdot}_2)$.
+        Dann ist $B_1(0) = \interior{B_1(0)}$ of"|fen und zusammenhängend und
+        $\overline{B_1(0)} = \{x \in \real^2 \;|\; \norm{x}_2 \le 1\}$ ist  abgeschlossen und
+        zusammenhängend.
+        Außerdem ist $\partial B_1(0) = \{x \in \real^2 \;|\; \norm{x}_2 = 1\}$.
+        
+        \item
+        Sei $(X, d) = (\real, |\cdot|)$.
+        Dann ist $M = \bigcup_{n \in \natural} \left[\frac{1}{2n}, \frac{1}{2n-1}\right]$
+        nicht zusammenhängend und weder of"|fen noch abgeschlossen.
+        Es gilt $\partial M = \{\frac{1}{m} \;|\; m \in \natural\} \cup \{0\}$.
+    \end{enumerate}
+\end{Bsp}
+
+\begin{Bem}
+    Für normierte Räume $X$ gilt
+    $\overline{B_\varepsilon(x_0)} = \{x \in X \;|\; \norm{x - x_0} \le \varepsilon\}$.
+\end{Bem}
+
+\subsection{%
+    Konvergenz%
+}
+
+\begin{Def}{Konvergenz}
+    Eine Folge $(x_n)_{n \in \natural}$ in einem metrischen Raum $(X, d)$
+    heißt \begriff{konvergent} gegen den \begriff{Grenzwert} $x \in X$ für $n \to \infty$
+    ($x_n \xrightarrow{n \to \infty} x$, $\lim_{n \to \infty} x_n = x$), falls
+    $\lim_{n \to \infty} d(x_n, x) = 0$,
+    also $\forall_{\varepsilon > 0} \exists_{n_\varepsilon \in \natural}
+    \forall_{n \ge n_\varepsilon}\; d(x_n, x) < \varepsilon$.
+\end{Def}
+
+\begin{Bem}
+    Der Grenzwert einer Folge $(x_n)_{n \in \natural}$ ist eindeutig bestimmt, wenn er existiert.
+    Sind nämlich $x$ und $y$ Grenzwerte der Folge, dann gilt\\
+    $0 \le d(x, y) \le d(x, x_n) + d(x_n, y) = d(x_n, x) + d(x_n, y) \xrightarrow{n \to \infty} 0$,
+    also $d(x, y) = 0$ und $x = y$.
+\end{Bem}
+
+\begin{Satz}{Linearität des Grenzwerts}
+    Seien $(X, \norm{\cdot})$ ein normierter Raum,
+    $(x_n)_{n \in \natural}$ und $(y_n)_{n \in \natural}$ Folgen in $X$
+    sowie $(\alpha_n)_{n \in \natural}$ eine Folge in $\KK$,
+    wobei $x_n \xrightarrow{n \to \infty} x$, $y_n \xrightarrow{n \to \infty} y$ und
+    $\alpha_n \xrightarrow{n \to \infty} \alpha$.\\
+    Dann gilt $\alpha_n x_n + y_n \xrightarrow{n \to \infty} \alpha x + y$.
+\end{Satz}
+
+\begin{Satz}{Abschluss ist Menge aller Grenzwerte}
+    Seien $(X, d)$ ein metrischer Raum und $M \subset X$.\\
+    Dann gilt $\overline{M} = \{x \in X \;|\;
+    \exists_{(x_n)_{n \in \natural} \text{ Folge in } M}\; x_n \xrightarrow{n \to \infty} x\}$.
+\end{Satz}
+
+\linie
+\pagebreak
+
+\begin{Bsp}
+    \begin{enumerate}[label=\emph{(\alph*)}]
+        \item
+        Sei $(X, d) = (\real^m, \norm{\cdot}_2)$.
+        Dann gilt $x_n \xrightarrow{n \to \infty} x$ genau dann, wenn\\
+        $\sqrt{\sum_{i=1}^m ((x_n)_i - (x)_i)^2} \xrightarrow{n \to \infty} 0$.
+        Dies ist äquivalent zu $\forall_{i=1,\dotsc,m}\; (x_n)_i \xrightarrow{n \to \infty} (x)_i$.
+        
+        \item
+        Sei $(X, d) = (\C^0([0, 1]), d)$ mit $d(x, y) = \max_{t \in [0, 1]} |x(t) - y(t)|$.\\
+        Dann gilt $x_n \xrightarrow{n \to \infty} x$ genau dann, wenn
+        $\max_{t \in [0, 1]} |x_n(t) - x(t)| \xrightarrow{n \to \infty} 0$\\
+        $\iff \forall_{\varepsilon > 0} \exists_{n_\varepsilon \in \natural}
+        \forall_{n \ge n_\varepsilon}\; \max_{t \in [0, 1]} |x_n(t) - x(t)| < \varepsilon$\\
+        $\iff \forall_{\varepsilon > 0} \exists_{n_\varepsilon \in \natural}
+        \forall_{n \ge n_\varepsilon} \forall_{t \in [0, 1]}\; |x_n(t) - x(t)| < \varepsilon$
+        ($x_n$ \begriff{konvergiert gleichmäßig} gegen $x$).
+        
+        \item 
+        Sei $(X, d) = (\C^0([0, 1]), d)$ mit
+        $d(x, y) = \left(\int_0^1 |x(t) - y(t)|^p \dt\right)^{1/p}$ für $p \in [1, \infty)$.\\
+        Dann gilt $x_n \xrightarrow{n \to \infty} x$ genau dann, wenn
+        $\left(\int_0^1 |x_n(t) - x(t)|^p \dt\right)^{1/p} \xrightarrow{n \to \infty} 0$\\
+        $\iff \forall_{\varepsilon > 0} \exists_{n_\varepsilon \in \natural}
+        \forall_{n \ge n_\varepsilon}\; \int_0^1 |x_n(t) - x(t)|^p\dt < \varepsilon$
+        ($x_n$ \begriff{konvergiert im $p$-ten Mittel} gegen $x$).
+    \end{enumerate}
+\end{Bsp}
+
+\subsection{%
+    Stetigkeit%
+}
+
+\begin{Bem}\\
+    Im Folgenden sind $(X, d_X)$ und $(Y, d_Y)$ metrische Räume und
+    $T\colon X \rightarrow Y$ eine Abbildung.
+\end{Bem}
+
+\begin{Def}{stetig in einem Punkt}
+    $T$ heißt \begriff{stetig in $x_0 \in X$}, falls\\
+    $\forall_{\varepsilon > 0} \exists_{\delta = \delta(x_0, \varepsilon) > 0}
+    \forall_{x \in X,\; d_X(x, x_0) < \delta}\; d_Y(T(x), T(x_0)) < \varepsilon$.
+\end{Def}
+
+\begin{Def}{stetig}
+    $T$ heißt \begriff{stetig (in $X$)}, falls $T$ in jedem Punkt $x_0 \in X$ stetig ist.
+\end{Def}
+
+\begin{Def}{Homöomorphismus}\\
+    $T$ heißt \begriff{Homöomorphismus}, falls $T$ bijektiv ist sowie $T$ und $T^{-1}$ stetig sind.
+\end{Def}
+
+\begin{Def}{Isomorphismus}\\
+    $T$ heißt \begriff{Isomorphismus}, falls $T$ bijektiv und linear ist sowie
+    $T$ und $T^{-1}$ stetig sind.
+\end{Def}
+
+\begin{Def}{Isometrie}\\
+    $T$ heißt \begriff{Isometrie}, falls $T$ bijektiv und stetig ist und
+    $\forall_{x_1, x_2 \in X}\; d_Y(T(x_1), T(x_2)) = d_X(x_1, x_2)$.
+\end{Def}
+
+\begin{Bem}
+    Isometrien werden oft ohne Voraussetzung der Bijektivität definiert.
+    Bijektive Isometrien heißen in diesem Fall isometrische Isomorphismen.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{äquivalente Beschreibungen von Stetigkeit}
+    Folgende Aussagen sind äquivalent:
+    \begin{enumerate}
+        \item
+        $T$ ist stetig.
+        
+        \item
+        $T$ ist \begriff{folgenstetig},
+        d.\,h. $\forall_{x \in X}
+        \forall_{(x_n)_{n \in \natural} \text{ Folge in } X,\; x_n \to x}\;
+        T(x_n) \xrightarrow{n \to \infty} T(x)$.
+        
+        \item
+        Für alle of"|fenen Teilmengen $O \subset Y$ ist $T^{-1}(O) \subset X$ of"|fen.
+        
+        \item
+        Für alle abgeschlossenen Teilmengen $A \subset Y$ ist $T^{-1}(A) \subset X$ abgeschlossen.
+    \end{enumerate}
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Vollständige Räume%
+}
+
+\begin{Def}{\name{Cauchy}-Folge}
+    Eine Folge $(x_n)_{n \in \natural}$ in einem metrischen Raum $(X, d)$ heißt
+    \begriff{\name{Cauchy}-Folge}, falls
+    $\forall_{\varepsilon > 0} \exists_{n_\varepsilon \in \natural}
+    \forall_{n, m \ge n_\varepsilon}\; d(x_n, x_m) < \varepsilon$.
+\end{Def}
+
+\begin{Lemma}{konvergente Folgen sind \name{Cauchy}-Folgen}\\
+    Jede konvergente Folge in einem metrischen Raum ist eine Cauchy-Folge.
+\end{Lemma}
+
+\begin{Def}{vollständig}
+    Ein metrischer Raum $(X, d)$ heißt \begriff{vollständig}, falls jede Cauchy-Folge
+    $(x_n)_{n \in \natural}$ in $X$ gegen einen Punkt $x \in X$ konvergiert.
+\end{Def}
+
+\begin{Def}{\name{Fréchet}-, \name{Banach}-, \name{Hilbertraum}}
+    Ein vollständiger metrischer Raum, normierter Raum oder Skalarproduktraum heißt
+    \begriff{\name{Fréchet}-, \name{Banach}- bzw. \name{Hilbert}raum}.
+\end{Def}
+
+\begin{Bsp}
+    \begin{enumerate}[label=\emph{(\alph*)}]
+        \item
+        $(\real, |\cdot|)$ und $(\complex, |\cdot|)$ sind Banachräume.
+        
+        \item
+        $(\rational, d)$ mit $d(x, y) = |x - y|$ ist nicht vollständig.
+        Wählt man z.\,B. die Folge $(x_n)_{n \in \natural}$ in $\rational$ mit
+        $x_n$ gleich der Dezimaldarstellung von $\sqrt{2}$ bis zur $n$-ten Nachkommastelle,
+        so konvergiert zwar $x_n \to \sqrt{2}$ in $\real$.
+        Die Folge hat aber keinen Grenzwert in $\rational$ (obwohl sie eine Cauchy-Folge ist).
+    \end{enumerate}
+\end{Bsp}
+
+\linie
+
+\begin{Def}{äquivalent}
+    Zwei Normen $\norm{\cdot}_a$ und $\norm{\cdot}_b$ auf $X$ heißen äquivalent, falls
+    jede Folge, die bzgl. $\norm{\cdot}_a$ konvergiert, auch bzgl. $\norm{\cdot}_b$ konvergiert
+    und umgekehrt.\\
+    Äquivalent ist
+    $\exists_{c_1, c_2 > 0} \forall_{x \in X}\; c_1 \norm{x}_b \le \norm{x}_a \le c_2 \norm{x}_b$.
+\end{Def}
+
+\begin{Satz}{äquivalente Normen in endlich-dimensionalen Räumen}\\
+    In einem endlich-dimensionalen $\KK$-Vektorraum $X$ sind alle Normen äquivalent.
+\end{Satz}
+
+\begin{Kor}
+    Jeder endlich-dimensionale normierte Raum ist ein Banachraum.
+\end{Kor}
+
+\begin{Bem}
+    Jeder endlich-dimensionale Unterraum $U$ eines normierten Raums $X$ ist abgeschlossen.
+    Ist nämlich $(x_n)_{n \in \natural}$ eine Folge in $U$ und $x \in X$ mit
+    $x = \lim_{n \to \infty} x_n$, dann ist $(x_n)_{n \in \natural}$ eine Cauchy-Folge in $U$.
+    Weil $U$ vollständig ist, existiert ein Grenzwert in $U$, d.\,h. auch in $X$.
+    Wegen der Eindeutigkeit von Grenzwerten muss dieser mit $x$ übereinstimmen, also $x \in U$.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{vollständige Funktionenräume}
+    Alle oben definierten, normierten Funktionenräume außer $C^m_c(\Omega, \KK)$ sind
+    vollständig,
+    also die Räume
+    $B(M, \KK)$,
+    $\C^m(K, \KK)$,
+    $\C^m_b(\Omega, \KK)$,
+    $\C^m_\unif(\Omega, \KK)$ und
+    $\C^{0,\alpha}(\Omega, \KK)$
+    für $M, K, \Omega \subset \real^n$ nicht-leer mit $K$ kompakt, $\Omega$ of"|fen und
+    $m \in \natural_0$, $\alpha \in (0, 1]$.
+\end{Satz}
+
+\begin{Bem}
+    Die $\C^m_c$-Räume sind nicht vollständig, da es Folgen gibt, bei denen der Träger immer
+    breiter wird (die Grenzfunktion hätte keinen kompakten Träger mehr).
+\end{Bem}
+
+\begin{Satz}{$\ell^p_\KK$ vollständig}
+    Die Räume $(\ell^p_\KK, \norm{\cdot}_p)$ mit $p \in [1, \infty]$
+    sind vollständig, insbesondere handelt es sich bei $p = 2$ um einen Hilbertraum.
+\end{Satz}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    $\C^0([0, 1])$ mit $\norm{f} := \left(\int_0^1 |f(x)|^p \dx\right)^{1/p}$ für $p \in [1, \infty)$
+    ist nicht vollständig.\\
+    Für $p = 2$ ist zum Beispiel $(f_n)_{n \in \natural}$ mit $f_n(x) := n^\alpha$ für
+    $x \in [0, 1/n]$ und $f_n(x) := x^{-\alpha}$ für $x \in (1/n, 1]$ und $\alpha \in (0, 1/2)$
+    eine nicht-konvergente Cauchy-Folge.
+\end{Bem}
+
+\begin{Satz}{$L^p$ vollständig}
+    Die Räume $(L^p(\Omega), \norm{\cdot}_{L^p})$ mit $p \in [1, \infty]$
+    sind vollständig, insbesondere handelt es sich bei $p = 2$ um einen Hilbertraum.
+\end{Satz}
+
+\begin{Satz}{Satz von \name{Beppo}-\name{Levi} zur monotonen Konvergenz}\\
+    Seien $D$ messbar und $(f_n)_{n \in \natural}$ eine Folge messbarer Funktionen
+    $f_n\colon D \rightarrow \real_0^+ \cup \{\infty\}$ mit $f_n \uparrow f$ für $n \to \infty$
+    ($f_n$ \begriff{konvergiert monoton} gegen $f$, also
+    $\forall_{x \in D}\; \lim_{n \to \infty} f_n(x) = f(x),\; f_n(x) \le f_{n+1}(x)$).\\
+    Dann ist $f$ messbar und
+    $\int_D f d\lambda = \lim_{n \to \infty} \left(\int_D f_n d\lambda\right)$.
+\end{Satz}
+
+\begin{Satz}{Satz von \name{Lebesgue} zur majorisierten Konvergenz}\\
+    Seien $D$ messbar und $(f_n)_{n \in \natural}$ eine Folge messbarer Funktionen
+    $f_n\colon D \rightarrow \real \cup \{\pm\infty\}$, sodass
+    $\lim_{n \to \infty} f_n(x) =: f(x)$ $\lambda$-f.ü. existiert, sowie
+    $g$ $\lambda$-integrierbar mit $\forall_{n \in \natural}\; |f_n| \le g$.\\
+    Dann ist $f$ messbar und
+    $\int_D f d\lambda = \lim_{n \to \infty} \left(\int_D f_n d\lambda\right)$ sowie
+    $\lim_{n \to \infty} \left(\int_D |f - f_n| d\lambda\right) = 0$.
+\end{Satz}
+
+\begin{Lemma}{Äquivalenz für Banachraum}
+    Sei $(X, \norm{\cdot})$ ein normierter Raum.\\
+    Dann sind äquivalent:
+    \begin{enumerate}
+        \item
+        $(X, \norm{\cdot})$ ist ein Banachraum.
+        
+        \item
+        Jede \begriff{absolut konvergente} Reihe $\sum_{i=1}^\infty a_i$
+        (d.\,h. $\sum_{i=1}^\infty \norm{a_i} < \infty$) ist konvergent.
+    \end{enumerate}
+\end{Lemma}
+
+\linie
+
+\begin{Bsp}
+    $(C^\infty_b(\Omega), d)$ mit $d(f, g) := \sum_{n=1}^\infty 2^{-n} \cdot
+    \frac{\norm{f^{(n)} - g^{(n)}}_{\C^0}}{1 + \norm{f^{(n)} - g^{(n)}}_{\C^0}}$
+    ist ein Fréchetraum.
+\end{Bsp}
+
+\begin{Satz}{Vervollständigung}
+    Jeder normierte Raum $(X, \norm{\cdot})$ ist \begriff{isometrisch isomorph} zu einem
+    normierten Raum $(X_\ast, \norm{\cdot}_\ast)$
+    (d.\,h. es gibt einen Isomorphismus $T\colon X \rightarrow X_\ast$, der gleichzeitig
+    eine Isometrie ist),
+    wobei $(X_\ast, \norm{\cdot}_\ast)$ ein dichter Unterraum eines Banachraums
+    $(\widetilde{X}, \norm{\cdot}_{\widetilde{X}})$ und
+    bis auf isometrische Isomorphie eindeutig bestimmt ist.
+    $(\widetilde{X}, \norm{\cdot}_{\widetilde{X}})$
+    heißt \begriff{Vervollständigung} von $(X, \norm{\cdot}_X)$.
+\end{Satz}
+
+\begin{Satz}{$\C^m_c$ dicht in $L^p$}
+    Für $m \in \natural_0 \cup \{\infty\}$ und $p \in [1, \infty)$ ist
+    $\C^m_c(\Omega)$ dicht in $(L^p(\Omega), \norm{\cdot}_{L^p})$.\\
+    $(L^p(\Omega), \norm{\cdot}_{L^p})$ kann somit mit der Vervollständigung von $\C^m_c(\Omega)$
+    bzgl. der $\norm{\cdot}_{L^p}$-Norm identifiziert werden.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{\name{Banach}scher Fixpunktsatz}
+    Seien $(X, d)$ ein vollständiger metrischer Raum und\\
+    $F\colon X \rightarrow X$ eine \begriff{Kontraktion}, d.\,h.
+    $\exists_{\lambda \in (0, 1)} \forall_{x, y \in X}\;
+    d(F(x), F(y)) \le \lambda \cdot d(x, y)$.\\
+    Dann besitzt $F$ genau einen \begriff{Fixpunkt},
+    d.\,h. $\exists!_{x^\ast \in X}\; F(x^\ast) = x^\ast$.
+\end{Satz}
+
+\subsection{%
+    Kompaktheit%
+}
+
+\begin{Def}{kompakt}
+    Seien $(X, d)$ ein metrischer Raum und $K \subset X$.\\
+    Dann heißt $K$ \begriff{kompakt}, falls
+    $\forall_{I \text{ Indexmenge}} \forall_{O_i \subset X \text{ of"|fen},\;
+    K \subset \bigcup_{i \in I} O_i} \exists_{i_1, \dotsc, i_n \in I}\;
+    K \subset \bigcup_{j=1}^n O_{i_j}$.
+\end{Def}
+
+
+\begin{Satz}{Äquivalenz zu Kompaktheit}
+    Seien $(X, d)$ ein metrischer Raum und $K \subset X$.\\
+    Dann sind äquivalent:
+    \begin{enumerate}
+        \item
+        $K$ ist kompakt.
+        
+        \item
+        $K$ ist \begriff{folgenkompakt}, d.\,h.
+        $\forall_{(x_n)_{n \in \natural} \text{ Folge in} K}
+        \exists_{(x_{n_k})_{k \in \natural} \text{ Teilfolge}} \exists_{x \in K}\;
+        x = \lim_{k \to \infty} x_{n_k}$.
+        
+        \item
+        $(K, d)$ ist vollständig und \begriff{präkompakt}, d.\,h.
+        $\forall_{\varepsilon > 0} \exists_{H \subset X \text{ endlich}}\;
+        K \subset \bigcup_{x \in H} B_\varepsilon(x)$.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bem}
+    $\overline{K} \subset X$ ist kompakt $\iff
+    \forall_{(x_n)_{n \in \natural} \text{ Folge in} K}
+    \exists_{(x_{n_k})_{k \in \natural} \text{ Teilfolge}} \exists_{x \in X}\;
+    x = \lim_{k \to \infty} x_{n_k}$.
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Satz}{kompakt $\Rightarrow$ beschränkt und abgeschlossen}\\
+    Jede kompakte Teilmenge eines metrischen Raumes ist beschränkt und abgeschlossen.
+\end{Satz}
+
+\begin{Satz}{Äquivalenz für Umkehrung}
+    Sei $(X, \norm{\cdot})$ ein normierter Raum.\\
+    Dann sind äquivalent:
+    \begin{enumerate}
+        \item
+        Jede beschränkte und abgeschlossene Teilmenge ist kompakt.
+        
+        \item
+        $X$ ist endlich-dimensional.
+        
+        \item
+        $\overline{B_1(0)}$ ist kompakt.
+    \end{enumerate}
+\end{Satz}
+
+%\begin{Bem}
+%    Für den Beweis von \emph{(3)} nach \emph{(2)} wird folgendes Lemma benötigt.
+%\end{Bem}
+
+\begin{Lemma}{Lemma von \name{Riesz}}
+    Seien $(X, \norm{\cdot})$ ein normierter Raum und
+    $Y \subsetneqq X$ ein abgeschlossener Unterraum.
+    Dann gilt $\forall_{r \in (0,1)} \exists_{x_r \in X \setminus Y}\;
+    \norm{x_r} = 1,\; \dist(x_r, Y) := \inf_{y \in Y} \norm{x_r - y} \ge r$.
+\end{Lemma}
+
+\linie
+
+\begin{Satz}{beste Approximation}\\
+    Seien $(X, d)$ ein metrischer Raum und $K \subset X$ eine nicht-leere, kompakte Teilmenge.\\
+    Dann gilt $\forall_{x_0 \in X} \exists_{y_0 \in K}\; d(x_0, y_0) = \dist(x_0, K)
+    := \inf_{y \in K} d(x_0, y)$.\\
+    %Dann gibt es zu jedem Punkt $y \in X$ einen Punkt $x_0 \in K$, der von $y$
+    %den kleinsten Abstand hat.
+    In diesem Fall heißt $y_0$ \begriff{beste Approximation} oder
+    \begriff{bestapproximierendes Element} von $x_0$ in $K$.
+\end{Satz}
+
+\begin{Bem}
+    In nicht-kompakten Mengen gibt es i.\,A. kein bestapproximierendes Element,
+    z.\,B. geht dies nicht für $x_0 = -1$ und $M_1 = (0, 1]$ oder
+    $x_0 = -1$ und $M_2 = \bigcup_{n \in \natural} \left[\frac{1}{2n}, \frac{1}{2n-1}\right]$.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Satz von \name{Arzelà}-\name{Ascoli}}\\
+    Seien $(K, d)$ ein kompakter metrischer Raum und $A \subset \C^0(K, \KK)$.
+    Dann sind äquivalent:
+    \begin{enumerate}
+        \item
+        $A$ ist \begriff{relativ kompakt} in $\C^0(K, \KK)$, d.\,h.
+        $\overline{A}$ ist kompakt in $\C^0(K, \KK)$.
+        
+        \item
+        $A$ ist beschränkt (d.\,h. $\sup_{f \in A} \norm{f}_{\C^0} < \infty$)
+        und \begriff{gleichgradig stetig}, d.\,h.
+        \\$\forall_{x \in K} \forall_{\varepsilon > 0}
+        \exists_{\delta = \delta(x, \varepsilon) > 0}
+        \forall_{y \in B_\delta(x)} \forall_{f \in A}\; |f(x) - f(y)| < \varepsilon$.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bem}
+    Da $K$ kompakt ist, gilt $\C^0(K, \KK) = \C^0_\unif(K, \KK)$,
+    d.\,h. das $\delta(x)$ kann unabhängig von $x$ gewählt werden.
+    Diesen als Satz von Heine-Cantor bekannten Sachverhalt kann man so beweisen:
+    Sei $\varepsilon > 0$ beliebig.
+    Zu $x \in K$ sei $\delta(x) := \delta(x, \varepsilon)$ wie in der Definition der Stetigkeit.
+    Weil $K$ kompakt ist, gibt es $x_1, \dotsc, x_n \in K$ mit
+    $K \subset \bigcup_{k=1}^n B_{\delta(x_k)/2}(x_k)$.
+    Wähle $\delta := \min_{k=1,\dotsc,n} \frac{\delta(x_k)}{2}$.
+    Seien $x \in K$ und $y \in B_\delta(x)$ beliebig.
+    Dann gibt es ein $\ell \in \{1, \dotsc, n\}$, sodass
+    $x \in B_{\delta(x_\ell)/2}(x_\ell)$.
+    Aus $y \in B_\delta(x)$ folgt, dass $y \in B_{\delta(x_\ell)/2}(x)$.
+    Insgesamt gilt also $y \in B_{\delta(x_\ell)}(x_\ell)$.
+    Damit erhält man
+    $|f(x) - f(y)| \le |f(x) - f(x_\ell)| + |f(x_\ell) - f(y)| < 2\varepsilon$,
+    wobei man jeweils die Stetigkeit von $f$ in $x_\ell$ anwendet
+    ($d(x, x_\ell) < \frac{\delta(x_\ell)}{2} < \delta(x_\ell)$ und
+    $d(x_\ell, y) < \delta(x_\ell)$).
+\end{Bem}
+
+\begin{Bsp}
+    Die Menge $A := B_1(0)$ in $(\C^1([-1, 1]), \norm{\cdot}_{\C^1})$
+    ist beschränkt in $(\C^0([-1, 1]), \norm{\cdot}_{\C^0})$
+    (da $\norm{f}_{\C^0} \le \norm{f}_{\C^1} < 1$ für alle $f \in A$)
+    und gleichgradig stetig, da\\
+    $\forall_{x \in [-1, 1]} \forall_{\varepsilon > 0}
+    \exists_{\delta = \delta(x, \varepsilon) > 0} \forall_{y \in B_\delta(x)}
+    \forall_{f \in A}\; |f(x) - f(y)| \le |x - y| \cdot
+    \sup_{\xi \in [-1, 1]} |f'(\xi)| < \varepsilon$
+    für $\delta(x, \varepsilon) := \varepsilon$,
+    weil $\sup_{\xi \in [-1, 1]} |f'(\xi)| \le 1$ für alle $f \in A$.\\
+    Nach dem Satz von Arzelà-Ascoli ist $A$ relativ kompakt in
+    $(\C^0([-1, 1]), \norm{\cdot}_{\C^0})$.
+\end{Bsp}
+
+\begin{Satz}{Satz von \name{Fréchet}-\name{Kolmogorov}, \name{Riesz}}\\
+    Für $p \in [1, \infty)$ ist $A \subset L^p(\real^m, \KK)$ relativ kompakt genau dann, wenn
+    \begin{enumerate}
+        \item
+        $\sup_{f \in A} \norm{f}_{L^p} < \infty$,
+        
+        \item
+        $\sup_{f \in A} \norm{f(\cdot + h) - f(\cdot)}_{L^p}
+        \xrightarrow{h \in \real^m,\; \norm{h} \to 0} 0$ und
+        
+        \item
+        $\sup_{f \in A} \norm{f}_{L^p(\real^m \setminus B_R(0))}
+        \xrightarrow{R \to \infty} 0$.
+    \end{enumerate}
+\end{Satz}
+
+\pagebreak

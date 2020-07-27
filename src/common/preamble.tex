@@ -1,0 +1,247 @@
+\RequirePackage{luatex85}
+\input{documentclass}
+\documentclass[
+  % font size
+  12pt,
+  % spacing between paragraphs
+  parskip=half-,
+]{\documentClassName}
+
+\def\standalonedoc{false}
+\setparsizes{0em}{0.45\baselineskip plus .45\baselineskip}{0em plus 1fil}
+
+% set German as language
+\usepackage[ngerman]{babel}
+
+% set UTF-8 as encoding
+\usepackage[utf8]{luainputenc}
+
+% amsmath with improvements
+\usepackage{mathtools}
+
+% other symbols
+\usepackage{latexsym}
+
+% use GoMono as typewriter font
+\usepackage[
+  % otherwise, bold is not available ("undefined font shape" warnings)
+  type1,
+  % scale to match main font size
+  scale=0.88,
+]{GoMono}
+
+% use TeX Gyre Heros as sans-serif font
+\usepackage{tgheros}
+
+% need T1 font encoding for Charter,
+% otherwise there will be "undefined font shape" warnings
+\usepackage[T1]{fontenc}
+
+% use Bitstream Charter as main font
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage{XCharter}
+
+% micro-typographic adjustments
+\usepackage[
+  % don't deactivate extensions due to document class draft option
+  final,
+  % font expansion: don't stretch/shrink lines by more than 1%,
+  % default of 2% looks a bit weird
+  stretch=10,
+  shrink=10,
+]{microtype}
+
+% Durchschnittsintegral
+\usepackage{esint}
+
+% fließende Grafiken
+\usepackage{graphicx}
+\usepackage{floatflt}
+
+% own headers/footers, have different \leftmark/\rightmark despite one-sided document
+\usepackage[autooneside=false]{scrlayer-scrpage}
+\usepackage{lastpage}
+
+% Farbe (Kopf-/Fußzeile)
+\usepackage{color}
+
+% relative imports
+\usepackage{import}
+
+% Unterstreichungen
+\usepackage[normalem]{ulem}
+
+% gestrichelte Linien
+\usepackage{dashrule}
+
+% umrandete Boxen
+\usepackage{framed}
+
+% verbesserte Tabellen
+\usepackage{booktabs}
+
+% mehrere Zeilen für eine Zelle
+\usepackage{multirow}
+
+% SI units
+\usepackage[locale=DE,range-phrase=\;bis\;,detect-weight]{siunitx}
+\DeclareSIUnit{\year}{a}
+\DeclareSIUnit{\ppm}{ppm}
+
+% Chemie
+\usepackage[version=3]{mhchem}
+
+% erweiterte Vektorpfeile (gestrichene Vektoren)
+\usepackage[e]{esvect}
+
+% angepasste Listen und Aufzählungen
+\usepackage{enumitem}
+\setlist[enumerate]{label=\emph{(\arabic*)}}
+\renewlist{enumerate}{enumerate}{5}
+
+% Diagramme
+\usepackage[all]{xy}
+
+% Blackboard-Fonts (auch für Kleinbuchstaben)
+\usepackage{bbm}
+
+% Querformat
+\usepackage{lscape}
+
+% Kürzen
+\usepackage{cancel}
+
+% größere Schrift, Hintergrundbilder, Fallunterscheidungen
+\usepackage{fix-cm}
+\usepackage{eso-pic}
+\usepackage{xifthen}
+
+% Quelltext
+\usepackage{listings}
+\usepackage{scrhack}
+
+% mehrere Inhaltsverzeichnisse
+\usepackage[tight]{shorttoc}
+\usepackage{etoolbox}
+
+% table of contents for specific chapters
+\usepackage{etoc}
+
+% vierstellige Seitenzahlen
+%\usepackage[titles]{tocloft}
+%\makeatletter
+%\renewcommand*{\@pnumwidth}{2em}
+%\renewcommand*{\@tocrmarg}{3em}
+%\makeatother
+
+% page margins
+\usepackage[
+  a4paper,
+  left=20mm,
+  right=20mm,
+  top=17.5mm,
+  bottom=17.5mm,
+  headsep=5mm,
+  footskip=10mm
+]{geometry}
+
+% hyperref für PDF-Metainformationen und Hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+  pdfkeywords={},
+  pdfauthor={Julian Valentin},
+  pdfcreator={LaTeX, KOMA-Script, hyperref},
+  pdfborder={0 0 0},
+  unicode,
+  linkbordercolor={0.6 0.8 1.0}
+}
+
+% eigene Operatoren
+\newcommand*{\name}[1]{\textsc{#1}}
+\newcommand*{\smallpmatrix}[1]{\left(\begin{smallmatrix}#1\end{smallmatrix}\right)}
+
+\renewcommand*{\sp}[1]{\left\langle{#1}\right\rangle}
+\newcommand*{\norm}[1]{\left\Vert{#1}\right\Vert}
+
+\renewcommand*{\natural}{\mathbb{N}}
+\newcommand*{\integer}{\mathbb{Z}}
+\newcommand*{\rational}{\mathbb{Q}}
+\newcommand*{\real}{\mathbb{R}}
+\newcommand*{\complex}{\mathbb{C}}
+
+\renewcommand*{\d}{\mathop{}\!\mathrm{d}}
+\newcommand*{\dr}{\d{}r}
+\newcommand*{\ds}{\d{}s}
+\newcommand*{\dt}{\d{}t}
+\newcommand*{\du}{\d{}u}
+\newcommand*{\dv}{\d{}v}
+\newcommand*{\dw}{\d{}w}
+\newcommand*{\dx}{\d{}x}
+\newcommand*{\dy}{\d{}y}
+\newcommand*{\dz}{\d{}z}
+\newcommand*{\dsigma}{\d{}\sigma}
+\newcommand*{\dphi}{\d{}\phi}
+\newcommand*{\dvarphi}{\d{}\varphi}
+\newcommand*{\dtau}{\d{}\tau}
+\newcommand*{\dxi}{\d{}\xi}
+\newcommand*{\dtheta}{\d{}\theta}
+
+\newcommand*{\tp}{\mathrm{T}}
+
+\newcommand*{\begriff}[1]{\emph{\dashuline{#1}}}
+
+\newenvironment*{Def}[1]{\boldmath\textbf{#1}\unboldmath:\quad}{}
+\newenvironment*{Lemma}[1]{\emph{Lemma} (\textsl{#1}):}{}
+\newenvironment*{Satz}[1]{\uline{\emph{Satz} (\textsl{#1}):}}{}
+\newenvironment*{Prop}[1]{\uline{\emph{Proposition} (\textsl{#1}):}}{}
+\newenvironment*{Theorem}[1]{\uline{\emph{Theorem} (\textsl{#1}):}}{}
+\newenvironment*{Kor}{\textbf{Folgerung}:}{}
+\newenvironment*{Bsp}{\emph{Beispiel}:}{}
+\newenvironment*{Bem}{\emph{Bemerkung}:}{}
+
+\newcommand*{\linie}{%
+  \vspace{-12pt}\textcolor{mygray}{\hdashrule{0.975\textwidth}{0.8pt}{5pt}}\vspace{-6pt}%
+}
+
+% Formeln in \textbf{...} fett schreiben
+\renewcommand*{\textbf}[1]{{\bfseries\boldmath{}#1}}
+
+% graue Farbe für Header
+\definecolor{mygray}{gray}{0.5}
+
+% Bitstream Charter für Überschriften
+\setkomafont{disposition}{\boldmath\fontfamily{bch}\selectfont\bfseries}
+
+% scrpage2 page style
+\setkomafont{pageheadfoot}{\boldmath\fontfamily{bch}\selectfont\color{mygray}\bfseries}
+\setkomafont{pagenumber}{\usekomafont{pagehead}}
+\KOMAoptions{headsepline=1pt}
+\KOMAoptions{footsepline=1pt}
+
+% header and footer
+\pagenumbering{arabic}
+\pagestyle{scrheadings}
+\clearscrheadings
+\ofoot{\vspace{-1.5mm}-- \pagemark \;--}
+
+\makeatletter
+%\@addtoreset{chapter}{part}
+\AtBeginDocument{%
+  %\renewcommand*{\theHchapter}{%
+  %  \theHpart.\arabic{chapter}%
+  %}%
+  \renewcommand*{\theHlstnumber}{%
+    \ifx\lst@@caption\@empty
+      \lst@neglisting
+    \else
+      \theHlstlisting
+    \fi.\thelstnumber
+  }%
+}%
+\makeatother
+
+%\def\thechapter{\Roman{chapter}}
+
+\begin{document}
+  \input{document}
+\end{document}

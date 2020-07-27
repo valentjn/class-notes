@@ -1,0 +1,834 @@
+\section{%
+    Ringe und Moduln%
+}
+
+\subsection{%
+    Kommutative Ringe und \texorpdfstring{$K$}{K}-Algebren: \emph{Setting the Stage}%
+}
+
+\begin{Bem}
+    Mit der Jordanschen Normalform kann man zu einer Matrix eine ähnliche
+    Matrix (Jordansche Normalform) bzw. zu einem Endomorphismus eines
+    endlich-dimensionalen Vektorraums eine Basis finden, die sich besonders
+    "`gutartig"' verhalten.
+    Damit dies jedoch für alle Matrizen/Endomorphismen gilt, muss der
+    Grundkörper algebraisch abgeschlossen sein, damit das charakteristische
+    Polynom immer in Linearfaktoren zerfällt.
+    Man sucht nun nach Alternativen, wenn der Körper nicht algebraisch
+    abgeschlossen ist.
+    Dafür muss man etwas weiter ausholen und die endlich-erzeugten Moduln
+    über Hauptidealringen klassifizieren. \\
+    Da $\integer$ ein Hauptidealring ist und die $\integer$-Moduln
+    genau die abelsche Gruppen sind, bekommt man dabei als Nebenprodukt
+    eine Klassifikation aller endlichen abelschen Gruppen.
+\end{Bem}
+
+\begin{Bem}
+    Beim \begriff{Klassifikationsproblem} ist eine Struktur durch Axiome
+    gegeben (z.\,B. Vektorräume, Moduln, Gruppen usw.).
+    Außerdem gibt es strukturerhaltende Abbildungen\\
+    (\begriff{Morphismen}),
+    mit denen man die Objekte vergleichen kann. \\
+    Bei der Klassifizierung aller Objekte der Kategorie muss man dann eine
+    Liste von Objekten (\begriff{Prototypen}) angeben, sodass \qquad
+    1. die Prototypen paarweise nicht isomorph sind und \\
+    2. jedes Objekt der Kategorie isomorph zu einem Prototyp ist. \\
+    Beim \begriff{Wiedererkennungsproblem} geht es darum, dass eine Kategorie
+    durch eine Liste von Prototypen klassifiziert wurde und nun
+    ein Objekt der Kategorie gegeben ist.
+    Zu welchem Prototyp aus der Liste ist das Objekt dann isomorph?
+\end{Bem}
+
+\begin{Bem}
+    Im Folgenden seien $K$ ein Körper und $R$ ein kommutativer Ring
+    bzw. eine $K$-Algebra mit Einselement $1 = 1_R$.
+\end{Bem}
+
+\begin{Def}{Unterring}
+    Sei $S \subseteq R$ mit $S \not= \emptyset$ nicht-leere Teilmenge von $R$.
+    Dann ist $S$ ein \begriff{Unterring} von $R$, falls
+    $r - s \in S$ und $rs \in S$ für alle $r, s \in S$ gilt.
+\end{Def}
+
+\begin{Bem}
+    Die erste Bedingung sagt aus, dass $(S, +)$ eine abelsche
+    Untergruppe von $(R, +)$ ist. \\
+    Ist $1_R \in S$, so ist $1_R = 1_S$ das Einselement von $S$.
+    Unterringe müssen jedoch nicht notwendigerweise dasselbe Einselement
+    wie $R$ haben, sie müssen nicht einmal ein Einselement besitzen.
+    Bspw. ist $2 \integer$ ein Unterring von $\integer$, der kein
+    Einselement besitzt.
+\end{Bem}
+
+\begin{Def}{Ringhomomorphismus}
+    Seien $R$ und $S$ Ringe sowie $f: R \rightarrow S$ eine Abbildung.
+    $f$ heißt \begriff{Ringhomomorphismus}, falls
+    $f(a + b) = f(a) + f(b)$ und $f(ab) = f(a) f(b)$ für alle $a, b \in R$. \\
+    Ist $f(1_R) = 1_S$, so \begriff{erhält $f$ das Einselement}.
+    $\ker f = \{r \in R \;|\; f(r) = 0_S\}$ heißt \begriff{Kern}
+    und $\im f = \{f(r) \;|\; r \in R\}$ heißt \begriff{Bild} von $f$. \\
+    Mono-, Epi- und Isomorphismen sind analog zu Vektorräumen definiert.
+\end{Def}
+
+\begin{Lemma}{Kern und Bild}
+    Sei $f: R \rightarrow S$ Ringhomomorphismus.
+    Dann ist $\ker f$ ein Unterring von $R$ und $\im f$ ein Unterring von $S$.
+    Ist $r \in \ker f$ sowie $x \in R$, dann ist $rx = xr \in \ker f$.
+\end{Lemma}
+
+\begin{Def}{Ideal}
+    Ein Unterring $S$ von $R$ heißt \begriff{Ideal} von R, falls
+    $rs \in S$ für alle $s \in S, r \in R$.
+\end{Def}
+
+\begin{Def}{Faktorring}
+    Sei $I \trianglelefteq R$.
+    Dann ist die Menge $R/I = \{a + I \;|\; a \in R\}$ der Restklassen modulo
+    $I$ eine abelsche Gruppe bzgl. der Addition
+    $(a + I) + (b + I) = (a + b) + I$ mit Nullelement $0 + I$.
+    Durch $(a + I)(b + I) = ab + I$ für $a, b \in R$ ist eine Multiplikation
+    auf $R/I$ definiert, die $R/I$ zum Ring macht
+    (Einselement $1 + I$).
+    $R/I$ heißt daher \begriff{Faktorring} von $R$ modulo $I$.
+\end{Def}
+
+\begin{Lemma}{kanonische Projektion}
+    Sei $I \trianglelefteq R$.
+    Dann ist die Abbildung $\pi: R \rightarrow R/I$, $\pi(a) = a + I$
+    ein Ringepimorphismus, die sog. \begriff{kanonische Projektion}
+    von $R$ auf $R/I$.
+    Es gilt $\ker \pi = I$, d.\,h. jedes Ideal von $R$ kommt als Kern
+    eines Ringhomomorphismus vor.
+\end{Lemma}
+
+\begin{Bem}
+    $(0)$ und $R$ sind Ideale von $R$.
+    Alle anderen Ideale heißen \begriff{nicht-trivial/echt}. \\
+    Sei $f: R \rightarrow S$ Ringhomomorphismus, dann ist $f$ surjektiv
+    genau dann, wenn $\im f = S$, und injektiv genau dann,
+    wenn $\ker f = (0)$ ist. \\
+    Sei $A \subseteq R$, $A \not= \emptyset$ eine nicht-leere Teilmenge
+    von $R$.
+    Dann ist das von $A$ \begriff{erzeugte Ideal}
+    $\aufspann{A} = \bigcap_{I \trianglelefteq R,\; A \subseteq I} I$ das
+    kleinste Ideal von $R$, das $A$ als Teilmenge enthält. \\
+    Es gilt: $\aufspann{A} = \{\sum_{a \in A} r_a a \;|\;
+    r_a \in R \text{ fast alle } 0\}$. \\
+    Der Durchschnitt von Idealen von $R$ ist ein Ideal von $R$. \\
+    Seien $I, J \trianglelefteq R$ Ideale von $R$.
+    Dann ist $I + J = \{a + b \;|\; a \in I,\; b \in J\}$ ein Ideal
+    von $R$ (die Summe der Ideale $I$ und $J$), wobei
+    $I + J = \aufspann{I \cup J}$ gilt. \\
+    Die drei Isomorphiesätze gelten wie oben.
+\end{Bem}
+
+\begin{Satz}{Ideal ist maximal $\;\Leftrightarrow\;$ Faktorring ist Körper}
+    Sei $I \trianglelefteq R$ ein Ideal von $R$.
+    Dann ist $I$ maximal genau dann
+    (d.\,h. $I \not= R$ und aus
+    $I \subsetneqq J \trianglelefteq R$ folgt $J = R$),
+    wenn $R/I$ ein Körper ist.
+\end{Satz}
+
+\begin{Def}{endlich erzeugt, Hauptideal, noethersch}
+    Ein Ideal $I \trianglelefteq R$ heißt \begriff{endlich erzeugt},
+    falls $I = \aufspann{S}$ für eine endliche Teilmenge $S \subseteq R$ ist.
+    $S$ heißt dann \begriff{endliches Erzeugendensystem von I}.
+    Besteht $S$ aus genau aus einem Element $s$, so heißt $I$ Hauptideal.
+    In diesem Fall ist $I = sR = \{sr \;|\; r \in R\}$.
+    Ein Ring, in dem alle Ideale endlich erzeugt sind, heißt
+    \begriff{noethersch}.
+\end{Def}
+
+\begin{Satz}{äquivalente Bedinungen für noethersch} \\
+    Sei $R$ ein Ring.
+    Dann sind folgende Bedingungen äquivalent: \\
+    1. $R$ ist noethersch. \\
+    2. Jede aufsteigende Kette $I_1 \subseteq I_2 \subseteq \dotsb$ von Idealen
+    von $R$ wird stationär, d.\,h. es gibt ein $n \in \natural$ mit $I_k = I_n$
+    für alle $k \ge n$. \\
+    3. Jede nicht-leere Menge von Idealen von $R$ besitzt maximale
+    Elemente bzgl. der Inklusion.
+\end{Satz}
+
+\begin{Def}{Produkt zweier Ideale}
+    Seien $I, J \trianglelefteq R$ zwei Ideale.
+    Das Produkt $I \cdot J$ ist das Ideal, das von der Menge
+    $\{i \cdot j \;|\; i \in I,\; j \in J\}$ erzeugt wird.
+    Es gilt $I \cdot J \subseteq I \cap J$.
+\end{Def}
+
+\begin{Def}{invertierbar, Einheit}
+    Ein Element $a \in R$ heißt \begriff{invertierbar} oder \begriff{Einheit},
+    falls es ein $b \in R$ mit $ab = 1$ gibt.
+    Das Inverse $b = a^{-1} \in R$ ist dann eindeutig bestimmt und selbst
+    invertierbar.
+    Die Menge $U(R)$ der invertierbaren Elemente von $R$ bildet unter
+    Multiplikation eine Gruppe, die \begriff{Einheitengruppe} von $R$.
+\end{Def}
+
+\begin{Def}{Polynomring}
+    Sei $R$ ein kommutativer Ring mit Eins.
+    Dann besteht der \begriff{Polynomring $R[x]$} aus formalen Summen
+    $\sum_{i=0}^n \alpha_i x^i$ mit $n \in \natural_0$, $\alpha_i \in R$ und
+    $x$ Unbekannte.
+    Ist $p(x) = \sum_{i=0}^n \alpha_i x^i$ und $\alpha_k \not= 0$,
+    aber $\alpha_m = 0$ für alle $m > k$, so heißt $k = \deg p(x)$ der
+    \begriff{Grad} von $p(x)$. \\
+    Die Addition und Multiplikation von zwei Polynomen ist wie
+    die Multiplikation von Polynomen mit einem Skalar $\lambda \in R$
+    wie üblich definiert
+    (es gilt nicht mehr notwendigerweise
+    $\deg(p(x)q(x)) = \deg p(x) + \deg q(x)$). \\
+    Der \begriff{Polynomring $R[x_1, \dotsc, x_n]$} in den Unbestimmten
+    $x_1, \dotsc, x_n$ ist induktiv durch \\
+    $R[x_1, \dotsc, x_n] = (R[x_1, \dotsc, x_{n-1}])[x_n]$ definiert. \\
+    Er besteht aus formalen Summen
+    $\sum_{\mi{i} = (i_1, \dotsc, i_n) \in \natural^n}
+    \alpha_{\mi{i}} x_1^{i_1} \dotsm x_n^{i_n}$
+    mit $\alpha_{\mi{i}} \in R$ gleich $0$ für fast alle
+    $\mi{i} \in \natural^n$.
+    Terme der Form $x^{\mi{i}} = x_1^{i_1} \dotsm x_n^{i_n}$
+    mit $\mi{i} = (i_1, \dotsc, i_n) \in \natural^n$ heißen
+    \begriff{Monome}.
+\end{Def}
+
+\begin{Satz}{universelle Eigenschaft von $K[x_1, \dotsc, x_n]$}
+    Seien $K$ ein Körper und
+    $K[x_1, \dotsc, x_n]$ der Polynomring über $K$.
+    Dann hat $K[x_1, \dotsc, x_n]$ folgende universelle Eigenschaft: \\
+    Es gibt eine Abbildung
+    $\iota: \{1, \dotsc, n\} \rightarrow K[x_1, \dotsc, x_n]$,
+    nämlich die Abbildung gegeben durch $\iota(i) = x_i$. \\
+    Sei $R$ eine kommutative $K$-Algebra mit Einselement und
+    $f: \{1, \dotsc, n\} \rightarrow R$ eine Abbildung.
+    Dann gibt es genau einen $K$-Algebrahomomorphismus
+    $\widehat{f}: K[x_1, \dotsc, x_n] \rightarrow R$ mit
+    $\widehat{f}(x_i) = f(i)$ für $i = 1, \dotsc, n$,
+    d.\,h. $\widehat{f} \circ \iota = f$.
+\end{Satz}
+
+\begin{Bem}
+    Sind also $s_1, \dotsc, s_n \in R$ beliebig, so kann man
+    die Abbildung $x_i \mapsto s_i$ zu einem $K$-Algebrahomo\-morphismus
+    $\sum_{\mi{i}} \alpha_{\mi{i}} x^{\mi{i}} \mapsto
+    \sum_{\mi{i}} \alpha_{\mi{i}} s^{\mi{i}}$ fortsetzen.
+\end{Bem}
+
+\subsection{%
+    Hauptidealringe (HIR)%
+}
+
+\begin{Bem}
+    Im Folgenden sei $R$ ein kommutativer Ring oder $K$-Algebra mit Eins.
+\end{Bem}
+
+\begin{Def}{Nullteiler, Integritätsbereich}
+    Ein Element $a \in R$ heißt \begriff{Nullteiler}, falls
+    es ein $b \in R$, $b \not= 0$ gibt, sodass $ab = 0$ ist. \\
+    Besitzt $R$ außer $0$ keinen Nullteiler, so heißt
+    $R$ \begriff{Integritätsbereich} oder \begriff{nullteilerfrei}.
+\end{Def}
+
+\begin{Def}{Quotientenkörper}
+    Sei $R$ ein Integritätsbereich. \\
+    Auf der Menge $\{(a, b) \in R \times R \;|\; b \not= 0\}$ definiert
+    man eine Äquivalenzrelation durch \\
+    $(a, b) \sim (c, d) \;\Leftrightarrow\; ad = bc$.
+    Die Äquivalenzklasse von $(a, b)$ wird mit $\frac{a}{b}$
+    bezeichnet. \\
+    Auf der obigen Menge kann man mit $a, b, c, d \in R$, $b, d \not= 0$
+    eine Addition und Multiplikation definieren durch
+    $\frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd}$ und
+    $\frac{a}{b} \cdot \frac{c}{d} = \frac{ac}{bd}$. \\
+    Damit wird $K = \{\frac{a}{b} \;|\; a, b \in R,\; b \not= 0\}$ ein
+    Körper, der sog. \begriff{Quotientenkörper} $Q(R)$ von $R$. \\
+    Die Abbildung $R \rightarrow K$, $r \mapsto \frac{r}{1}$ ist ein
+    injektiver Ringhomomorphismus, sodass man $R$ als Unterring des Körpers
+    $K = Q(R)$ betrachten kann.
+\end{Def}
+
+\begin{Def}{Hauptidealring}
+    Ein Integritätsbereich $R$ heißt \begriff{Hauptidealring (HIR)}, falls
+    jedes Ideal von $R$ ein Hauptideal ist.
+\end{Def}
+
+\begin{Def}{\textsc{Euklid}ische Ringe}
+    Ein Integritätsbereich $R$ heißt \begriff{\textsc{Euklid}ischer Ring},
+    falls es eine Abbildung (Gradfunktion)
+    $\deg: R \rightarrow \natural_0 \cup \{-1\}$ gibt, sodass \\
+    1. für alle $r \in R$ mit $r \not= 0$ gilt, dass $\deg 0 < \deg r$, und \\
+    2. für alle $f, g \in R$ mit $g \not= 0$ es $q, r \in R$ mit
+    $\deg r < \deg g$ gibt, sodass $f = q \cdot g + r$ ist.
+\end{Def}
+
+\begin{Bem}
+    Beispiele für Euklidische Ringe sind $\integer$ mit $\deg z = |z|$
+    sowie $K[x]$.
+\end{Bem}
+
+\begin{Satz}{ERs sind HIRs}
+    Euklidische Ringe sind Hauptidealringe.
+\end{Satz}
+
+\begin{Kor}
+    Also sind auch $\integer$ und $K[x]$ Hauptidealringe.
+\end{Kor}
+
+\begin{Def}{Teilbarkeit}
+    Seien $R$ ein Integritätsbereich und $a, b \in R$. \\
+    Dann \begriff{teilt} $a$ $b$, d.\,h. $a|b$, falls es ein $c \in R$ mit
+    $b = ca$ gibt.
+    Es gilt $a|b \;\Leftrightarrow bR \subseteq aR$.
+\end{Def}
+
+\begin{Def}{assoziiert}
+    Seien $R$ ein Integritätsbereich und $a, b \in R$. \\
+    Dann heißen $a$ und $b$ \begriff{assoziiert}, falls es eine Einheit
+    $u \in U(R)$ gibt mit $a = bu$.
+\end{Def}
+
+\begin{Lemma}{assoziiert}
+    Sei $R$ ein Integritätsbereich.
+    Dann ist "`assoziiert sein"' eine Äquivalenzrelation
+    und $a, b \in R$ sind assoziiert $\;\Leftrightarrow\; aR = bR
+    \;\Leftrightarrow\; a|b \;\land\; b|a$.
+\end{Lemma}
+
+\begin{Def}{ggT und kgV}
+    Seien $R$ ein Integritätsbereich und $a, b \in R$. \\
+    $c \in R$ heißt \begriff{größter gemeinsamer Teiler} von $a$ und $b$,
+    falls $c|a$ und $c|b$ sowie
+    für $d \in R$ mit $d|a$ und $d|b$ auch $d|c$ gilt.
+    Der größte gemeinsame Teiler $\ggT(a, b)$ von $a$ und $b$ ist,
+    falls er existiert, bis auf Assoziiertheit eindeutig bestimmt. \\
+    $c \in R$ heißt \begriff{kleinstes gemeinsames Vielfaches} von $a$ und $b$,
+    falls $a|c$ und $b|c$ sowie
+    für $d \in R$ mit $a|d$ und $b|d$ auch $c|d$ gilt.
+    Das kleinste gemeinsame Vielfache $\kgV(a, b)$ von $a$ und $b$ ist,
+    falls es existiert, bis auf Assoziiertheit eindeutig bestimmt. \\
+    Ist $R$ ein HIR, dann existieren $\ggT(a, b)$ und $\kgV(a, b)$ und es
+    gilt \\
+    $aR + bR = \ggT(a, b)R$, \qquad
+    $aR \cap bR = \kgV(a, b)R$ \quad sowie \quad
+    $(aR) \cdot (bR) = abR$.
+\end{Def}
+
+\begin{Bem}
+    Teilbarkeit ist eine Ordnungsrelation auf der Menge der Assoziiertenklassen
+    von $R$, nicht auf $R$ selbst.
+\end{Bem}
+
+\pagebreak
+
+\begin{Def}{Primideal}
+    Seien $R$ ein kommutativer Ring mit Eins und $P \trianglelefteq R$. \\
+    Dann heißt $P$ \begriff{Primideal}, falls
+    für alle $x, y \in R$ mit $xy \in P$ gilt, dass $x \in P$ oder $y \in P$
+    ist.
+\end{Def}
+
+\begin{Satz}{Primideale}
+    $R$ ist ein Integritätsbereich genau dann, wenn $(0)$ ein Primideal ist. \\
+    Sei $P \trianglelefteq R$.
+    Dann ist $P$ ein Primideal genau dann, wenn $R/P$ ein Integritätsbereich
+    ist.
+\end{Satz}
+
+\begin{Kor}
+    Sei $M$ ein maximales Ideal von $R$.
+    Dann ist $M$ ein Primideal.
+\end{Kor}
+
+\begin{Def}{irreduzibel, Primelement}
+    Seien $R$ ein kommutativer Ring mit Eins und $a \in R$ mit $a \not= 0$. \\
+    $a \not= 0$ heißt \begriff{irreduzibel}, falls $a$ eine Nicht-Einheit und
+    nicht als Produkt zweier Nicht-Einheiten darstellbar ist,
+    d.\,h. $a \notin U(R)$ sowie für alle $x, y \in R$ mit
+    $a = xy$ gilt $x \in U(R)$ oder $y \in U(R)$. \\
+    $a \not= 0$ heißt \begriff{Primelement}, falls $aR$ ein Primideal ist,
+    d.\,h. aus $a|xy$ folgt $a|x$ oder $a|y$.
+\end{Def}
+
+\begin{Satz}{in Integritätsbereichen sind Primelemente irreduzibel} \\
+    Seien $R$ ein Integritätsbereich und $p \in R$ Primelement.
+    Dann ist $p$ irreduzibel.
+\end{Satz}
+
+\begin{Def}{Zerlegung in irreduzible Faktoren}
+    Seien $R$ ein kommutativer Ring mit Eins und $a \in R$ mit $a \not= 0$. \\
+    Dann besitzt $a \not= 0$ eine \begriff{Zerlegung in irreduzible Faktoren},
+    falls $a = \varepsilon \pi_1 \dotsm \pi_r$ mit $\varepsilon \in U(R)$,
+    $\pi_i \in R$ irreduzible Elemente und
+    $r \in \natural_0$. \\
+    $a \not= 0$ besitzt eine
+    \begriff{eindeutige Zerlegung in irreduzible Faktoren},
+    falls zusätzlich gilt: \\
+    Ist $a = \varepsilon' \pi_1' \dotsm \pi_s'$
+    mit $\varepsilon' \in U(R)$, $\pi_i' \in R$ irreduzibel und
+    $s \in \natural_0$ eine weitere solche Zerlegung, dann ist
+    $s = r$ und nach Umnummerierung sind die $\pi_i$ und $\pi_i'$ assoziiert
+    ($i = 1, \dotsc, r$), d.\,h. es gibt
+    $\varepsilon_1, \dotsc, \varepsilon_r \in U(R)$ mit
+    $\pi_i' = \varepsilon_i \pi_i$ für $i = 1, \dotsc, r$.
+\end{Def}
+
+\begin{Def}{faktoriell}
+    Ein Integritätsbereich heißt \begriff{faktoriell (UFD,
+    \emph{unique factorisation domain})}, falls jedes Element von $R$ ungleich
+    $0$ eine eindeutige Zerlegung in irreduzible Faktoren besitzt.
+\end{Def}
+
+\begin{Satz}{in UFDs stimmen irreduzible und Primelemente überein} \\
+    Sei $R$ faktoriell und $p \in R$ irreduzibel. \\
+    Dann ist $p$ ein Primelement, d.\,h. für UFDs stimmen irreduzible und
+    Primelemente überein.
+\end{Satz}
+
+\begin{Satz}{Kriterium für UFD}
+    Sei $R$ ein Integritätsbereich.
+    Dann ist $R$ UFD genau dann, wenn \\
+    1. jede aufsteigende Kette von Hauptidealen stationär wird und \\
+    2. jedes irreduzible Element von $R$ Primelement ist.
+\end{Satz}
+
+\begin{Satz}{in HIRs sind irreduzible Elemente Primelemente}
+    Sei $R$ ein Hauptidealring. \\
+    Dann ist jedes irreduzible Element von $R$ ein Primelement.
+\end{Satz}
+
+\begin{Satz}{HIRs sind UFDs}
+    Hauptidealringe sind UFDs.
+\end{Satz}
+
+\begin{Satz}{Primideale von HIRs sind maximal}
+    Sei $R$ ein Hauptidealring.
+    Dann ist jedes Primideal $P \not= (0)$ von $R$ maximal und daher ist
+    $R/P$ ein Körper.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Moduln%
+}
+
+\begin{Def}{Modul}
+    Sei $A$ ein Ring mit Einselement oder eine $K$-Algebra mit einem Körper
+    $K$.
+    Ein \begriff{$A$-Linksmodul} ist eine abelsche Gruppe $(M, +)$ zusammen mit
+    einer äußeren binären Operation $A \times M \rightarrow M$,
+    $(a, m) \mapsto am$, sodass \\
+    M1) $1_A m = m$ \qquad\qquad\qquad\;\;
+    M2) $a(bm) = (ab)m$ \\
+    M3) $(a + b)m = am + bm$ \qquad
+    M4) $a(m_1 + m_2) = am_1 + am_2$ \\
+    für alle $a, b \in A$ und $m, m_1, m_2 \in M$ gilt. \\
+    Analog wird ein \begriff{$A$-Rechtsmodul} definiert
+    (Operation $M \times A \rightarrow M$, $(m, a) \mapsto ma$). \\
+    Man kann auch Moduln für Ringe ohne Einselement betrachten oder
+    Moduln, bei denen $1_A$ nicht notwendigerweise wie die Eins operiert,
+    d.\,h. M1) entfällt.
+    Will man betonen, dass M1) immer gilt, so spricht man von
+    einem \begriff{unitalen Modul}. \\
+    Im Folgenden ist ein $A$-Modul immer ein unitaler $A$-Linksmodul.
+\end{Def}
+
+\begin{Satz}{Linksmodul als Rechtsmodul und Vektorraum}
+    Ist $R$ kommutativer Ring mit Eins und $M$ ein $R$-Linksmodul,
+    so wird $M$ zum $R$-Rechtsmodul, indem man $M \times A \rightarrow M$,
+    $(m, a) \mapsto am$ definiert.
+    Bei nicht-kommutativen Ringen gilt dies i.\,A. nicht, da 
+    dann M2) verletzt ist. \\
+    Ist $A$ eine $K$-Algebra und $M$ ein $A$-Linksmodul,
+    so wird $M$ zum $K$-Vektorraum mit \\
+    $\lambda m = (\lambda \cdot 1_A) m$ für $\lambda \in K$, $m \in M$.
+\end{Satz}
+
+\begin{Satz}{abelsche Gruppe sind $\integer$-Moduln}
+    Sei $(M, +)$ eine abelsche Gruppe. \\
+    Dann wird $M$ zum $\integer$-Modul mit
+    $z \cdot m = m + \dotsb + m$ ($z$-mal) für $z > 0$,
+    $z \cdot m = -(m + \dotsb + m)$ ($-z$-mal) für $z < 0$
+    und $z \cdot m = 0$ für $z = 0$.
+    Umgekehrt ist jeder $\integer$-Modul eine abelsche Gruppe nach Definition.
+    Macht man diese zu einem $\integer$-Modul, so erhält man die
+    ursprüngliche $\integer$-Modulstruktur zurück.
+    Daher sind die $\integer$-Moduln genau die abelschen Gruppen.
+\end{Satz}
+
+\begin{Def}{Darstellung}
+    Homomorphismen $f: A \rightarrow \End(M,+)$ für Ringe
+    und $f: A \rightarrow \End_K(M)$ für $K$-Algebren $A$ heißen
+    \begriff{(lineare) Darstellungen} von $A$. \\
+    Seien $A$ ein Ring mit Eins und $M$ ein $A$-Modul.
+    Für $a \in A$ definiert man $f_a: M \rightarrow M$, $m \mapsto am$.
+    Dann ist $f_a \in \End(M,+)$ und $F: A \rightarrow \End(M,+)$,
+    $a \mapsto f_a$ ist ein Ringhomomorphismus, der die Eins enthält. 
+    Ist $A$ eine $K$-Algebra, so ist $f_a \in \End_K(M)$ und $F$ ist
+    $K$-Algebrahomomorphismus.
+    $F$ heißt \begriff{die zum $A$-Modul $M$ gehörende Darstellung} von $A$. \\
+    Darstellungen und Moduln sind völlig äquivalente Konzepte.
+\end{Def}
+
+\begin{Def}{trivialer Modul}
+    Der Nullmodul $(0)$ ist ein $A$-Modul mit $A$-Operation
+    $a \cdot 0 = 0$ für alle $a \in A$.
+    Er heißt \begriff{trivialer Modul}.
+\end{Def}
+
+\begin{Def}{regulärer Modul}
+    $A$ wird zum $A$-Modul ${}_A A$, wobei $a \in A$ auf $A$ durch
+    die normale Linksmultiplikation operiert.
+    Er heißt \begriff{regulärer Modul}.
+\end{Def}
+
+\begin{Kor}
+    Jedes Linksideal und daher auch jedes Ideal von $A$ ist $A$-Modul.
+\end{Kor}
+
+\begin{Def}{Modulhomomorphismus}
+    Seien $A$ ein Ring mit Eins und $M, N$ $A$-Moduln. \\
+    Eine Abbildung $f: M \rightarrow N$ heißt
+    \begriff{($A$-Modul-)Homomorphismus}, falls $f$ ein
+    Homomorphismus der abelschen Gruppen $(M,+)$ und $(N,+)$ ist,
+    der zusätzlich die $A$-Operation respektiert, d.\,h.
+    $f(am) = af(m)$ für alle $a \in A$, $m \in M$. \\
+    $\ker f = \{m \in M \;|\; f(m) = 0_N\}$ heißt \begriff{Kern},
+    $\im f = \{f(m) \;|\; m \in M\}$ heißt \begriff{Bild} von $f$. \\
+    Injektive/surjektive/bijektive Homomorphismen heißen
+    Mono-/Epi-/Isomorphismen. \\
+    $M$ und $N$ heißen \begriff{isomorph}
+    ($M \cong N$), falls es einen Isomorphismus $f: M \rightarrow N$ gibt.
+\end{Def}
+
+\pagebreak
+
+\begin{Bem}
+    Seien $A$ ein Ring mit Eins und $M, N$ $A$-Moduln. \\
+    \textbf{Untermodul}:
+    Eine nicht-leere Teilmenge $U \subseteq M$, $U \not= \emptyset$
+    heißt \begriff{Untermodul} von $M$, falls $(U,+)$ abelsche Untergruppe
+    von $(M,+)$ ist und $a \cdot u \in U$ für alle $a \in A$, $u \in U$ ist.
+    Man schreibt dann $U \ur M$. \\
+    Die $A$-Untermoduln von ${}_A A$ sind genau die Linksideale von $A$. \\
+    \textbf{Durchschnitt von Untermoduln}:
+    Der Durchschnitt von Untermoduln von $M$ ist wieder ein Untermodul von $M$.
+    Dabei handelt es sich um den größten Untermodul von $M$, der in allen
+    geschnittenen Untermoduln enthalten ist. \\
+    \textbf{Aufspann einer Teilmenge}:
+    Sei $S \subseteq M$.
+    Der von $S$ \begriff{erzeugte Untermodul} $U = \aufspann{S}$ ist definiert
+    als $\bigcap_{U \ur M,\; U \supseteq S} U$, der eindeutig bestimmte,
+    kleinste Untermodul von $M$, der $S$ als Teilmenge enthält.
+    $S$ heißt \begriff{Erzeugendensystem} von $U$.
+    $M$ heißt \begriff{endlich erzeugt}, falls es eine endliche Menge
+    $S \subseteq M$ gibt mit $\aufspann{S} = M$.
+    Es gilt $\aufspann{S} =
+    \left.\left\{\sum_{s \in S} a_s s \;\right|\; a_s \in A
+    \text{ fast alle } 0_A\right\}$. \\
+    \textbf{Summe von Untermoduln}:
+    Sei $U_i \ur M$ für $i \in I$. \\
+    Die \begriff{Summe} $U = \sum_{i \in I} U_i$ ist definiert
+    als $\aufspann{\bigcup_{i \in I} U_i}$.
+    Es gilt $U = \left.\left\{\sum_{i \in I} u_i \;\right|\;
+    u_i \in U_i \text{ fast alle } 0_A\right\}$. \\
+    \textbf{Faktormodul}:
+    Sei $U \ur M$.
+    Man definiert eine Äquivalenzrelation auf $M$ mit
+    $x \equiv y \mod U \;\Leftrightarrow\; x - y \in U$ für $x, y \in M$.
+    Die Äquivalenzklasse von $x \in M$ ist dann die \begriff{Nebenklasse} \\
+    $x + U = \{x + u \;|\; u \in U\}$.
+    Auf der Menge der Äquivalenzklassen $M/U = \{x + U \;|\; x \in M\}$
+    wird eine Addition $(x + U) + (y + U) = (x + y) + U$ sowie eine
+    $A$-Operation durch $a(x + U) = ax + U$ definiert.
+    Diese sind wohldefiniert und machen $M/U$ zu einem $A$-Modul,
+    dem \begriff{Faktormodul}.
+    Die Abbildung $\pi: M \rightarrow M/U$, $\pi(m) = m + U$ ist ein
+    Epimorphismus (\begriff{Projektion} von $M$ auf $M/U$). \\
+    \textbf{Modulhomomorphismus}:
+    Sei $f: M \rightarrow N$ ein $A$-Homomorphismus.
+    Dann ist $\ker f \ur M$ und $\im f \ur N$. \\
+    Sei $f: M \rightarrow N$ ein Isomorphismus.
+    Dann ist $f^{-1}: N \rightarrow M$ ebenfalls einer.
+    Die Relation "`isomorph sein"' ist Äquivalenzrelation auf der Klasse
+    der $A$-Moduln. \\
+    \textbf{1. Isomorphiesatz}:
+    Sei $f: M \rightarrow N$ eine $A$-lineare Abbildung und $U \ur M$ mit
+    $U \subseteq \ker f$.
+    Dann gibt es genau eine $A$-lineare Abbildung
+    $\widetilde{f}: M/U \rightarrow N$ mit $\widetilde{f} \circ \pi = f$.
+    Es gilt $\im \widetilde{f} = \im f$ und
+    $\ker \widetilde{f} = (\ker f)/U$.
+    $\widetilde{f}$ ist gegeben durch $\widetilde{f}(m + U) = f(m)$.
+    Ist insbesondere $\ker f = U$, so ist $\widetilde{f}$ ein
+    $A$-Modulisomorphismus von $M/(\ker f)$ auf $\im f$ und
+    $M/(\ker f) \cong \im f$. \\
+    \textbf{2. Isomorphiesatz}:
+    Seien $U, V \ur M$.
+    Dann ist $(U + V)/V \cong U/(U \cap V)$. \\
+    \textbf{3. Isomorphiesatz}:
+    Seien $U \ur V \ur M$.
+    Dann ist $V/U \ur M/U$ und $(M/U)/(V/U) \cong (M/V)$. \\
+    \textbf{Modul über $K$-Algebra als Vektorraum}:
+    Ist $A$ eine $K$-Algebra, so ist $M$ ein $K$-Vektorraum mit
+    $\lambda m = (\lambda \cdot 1_A) m$ für $\lambda \in K$, $m \in M$.
+    Dabei sind Untermoduln von $M$ auch $K$-Unterräume und $A$-lineare
+    Abbildungen zwischen $A$-Moduln sind auch $K$-linear. \\
+    \textbf{direkte Summe}:
+    Seien $M_i \ur M$ für $i \in I$.
+    Die Summe $U = \sum_{i \in I} M_i$ heißt
+    \begriff{(interne) direkte Summe} der $M_i$, falls
+    $M_i \cap \sum_{j \in I,\; j \not= i} M_j = (0)$ für alle $i \in I$ ist.
+    Dies gilt genau dann, wenn jedes $u \in U$ eindeutig
+    als $u = \sum_{i \in I} x_i$ mit $x_i \in M_i$ fast alle $0$ dargestellt
+    werden kann. \\
+    Sind $M_i$ für $i \in I$ eine Menge von $A$-Moduln,
+    so ist die \begriff{(äußere) direkte Summe} \\
+    $\bigoplus_{i \in I} M_i = \{(x_i)_{i \in I} \;|\; x_i \in M_i
+    \text{ fast alle } 0\}$
+    mit Addition und $A$-Operation definiert durch
+    $(x_i)_{i \in I} + (y_i)_{i \in I} = (x_i + y_i)_{i \in I}$ und
+    $a (x_i)_{i \in I} = (ax_i)_{i \in I}$.
+    Damit ist $\bigoplus_{i \in I} M_i$ ein $A$-Modul.
+\end{Bem}
+
+\begin{Def}{freier Modul}
+    Ein $A$-Modul $M$ heißt \begriff{frei},
+    falls er isomorph zu einer direkten Summe von Kopien des
+    regulären $A$-Moduls ${}_A A$ ist.
+\end{Def}
+
+\begin{Def}{Basis}
+    Sei $M$ ein $A$-Modul.
+    Dann heißt eine Teilmenge $S \subseteq N$ \begriff{linear unabhängig},
+    falls es nur die triviale Darstellung der $0$ gibt, d.\,h.
+    aus $\sum_{s \in S} a_s s = 0$, $a_s \in A$ fast alle $0$ folgt,
+    dass $a_s = 0$ für alle $s \in S$. \\
+    Eine linear unabhängiges Erzeugendensystem von $N$ heißt
+    \begriff{Basis} von $N$. \\
+    $S$ ist eine Basis von $N$ genau dann, wenn
+    sich jedes Element von $N$ eindeutig als Linearkombination
+    $\sum_{s \in S} a_s s$, $a_s \in A$ fast alle $0$ darstellen
+    lässt. \\
+    In diesem Fall gilt dann $N = \bigoplus_{s \in S} A s$
+    mit $A s = \{as \;|\; a \in A\}$.
+\end{Def}
+
+\pagebreak
+
+\begin{Satz}{Modul ist frei $\;\Leftrightarrow\;$ Modul hat eine Basis}
+    Sei $M$ ein $A$-Modul. \\
+    Dann ist $M$ frei genau dann, wenn
+    $M$ eine $A$-Basis besitzt.
+\end{Satz}
+
+\begin{Bem}
+    Der Basissatz für Vektorräume sagt, dass alle $K$-Vektorräume
+    für einen Körper $K$ frei sind.
+    I.\,A. haben jedoch $A$-Moduln keine $A$-Basis.
+    Ist $A$ eine $K$-Algebra, so ist ein $A$-Modul zugleich ein
+    $K$-Vektorraum und muss daher eine $K$-Basis besitzen.
+\end{Bem}
+
+\begin{Def}{(kurze) exakte Folge}
+    Seien $M_1, M_2, \dotsc, M_i, \dotsc$ $A$-Moduln und
+    $\alpha_i: M_i \rightarrow M_{i+1}$ $A$-linear. \\
+    $M_1 \xrightarrow{\alpha_1} M_2 \xrightarrow{\alpha_2} \dotsb
+    \xrightarrow{\alpha_{i-1}} M_i \xrightarrow{\alpha_i} \dotsb$
+    heißt \begriff{exakte Folge}, falls $\ker \alpha_{i+1} = \im \alpha_i$
+    für alle $i \in \natural$ ist. \\
+    Eine exakte Folge der Form $(0) \rightarrow N \xrightarrow{\alpha} M
+    \xrightarrow{\beta} E \rightarrow (0)$
+    heißt \begriff{kurze exakte Folge (keF)}.
+\end{Def}
+
+\begin{Bem}
+    Es gibt genau einen $A$-Modulhomomorphismus $(0) \rightarrow N$
+    und $E \rightarrow (0)$ (Nullabbildung). \\
+    Die Folge $(0) \rightarrow N \xrightarrow{\alpha} M
+    \xrightarrow{\beta} E \rightarrow (0)$
+    ist exakt genau dann, wenn $\alpha$ injektiv, $\beta$ surjektiv
+    sowie $\ker \beta = \im \alpha$ ist.
+    In diesem Fall gilt nach dem 1. Isomorphiesatz $N/\im \alpha \cong E$. \\
+    Ist $M$ ein $A$-Modul, $U \ur M$, so gibt es immer eine keF
+    $(0) \rightarrow U \xrightarrow{\alpha} M
+    \xrightarrow{\beta} M/U \rightarrow (0)$, wobei
+    $\alpha$ die natürliche Einbettung von $U$ in $M$ und
+    $\beta$ die natürliche Projektion von $M$ auf $M/U$ ist.
+\end{Bem}
+
+\begin{Satz}{Erzeugendensystem von epimorphen Bildern}
+    Seien $M, N$ $A$-Moduln, $f: M \rightarrow N$ ein $A$-Epimorphismus und
+    $S \subseteq M$ ein Erzeugendensystem für $M$.
+    Dann wird $N$ von $f(S)$ erzeugt, d.\,h. insbesondere sind
+    epimorphe Bilder von endlich erzeugten $A$-Moduln endlich erzeugt.
+\end{Satz}
+
+\begin{Satz}{$N, E$ endlich erzeugt $\Rightarrow M$ ebenfalls} \\
+    Sei $(0) \rightarrow N \xrightarrow{\alpha} M
+    \xrightarrow{\beta} E \rightarrow (0)$ keF von $A$-Moduln.
+    Sind $N$ und $E$ endlich erzeugt, so auch $M$.
+\end{Satz}
+
+\begin{Satz}{$M$ als direkte Summe} \\
+    Seien $(0) \rightarrow N \xrightarrow{\alpha} M
+    \xrightarrow{\beta} E \rightarrow (0)$ keF von $A$-Moduln
+    und $E$ freier $A$-Modul. \\
+    Dann gibt es ein $U \ur M$ mit $U \cong E$ und $M = \im \alpha \oplus U$.
+\end{Satz}
+
+\begin{Satz}{Rang freier Moduln über noethersche Ringe ist wohldefiniert} \\
+    Seien $R$ ein kommutativer, noetherscher Ring mit Eins und $M$ ein
+    freier $R$-Modul. \\
+    Sind $\{m_\alpha \;|\; \alpha \in \mathcal{A}\}$ und
+    $\{v_\beta \;|\; \beta \in \mathcal{B}\}$ Basen von $M$ mit
+    Indexmengen $\mathcal{A}$ und $\mathcal{B}$, so ist
+    $|\mathcal{A}| = |\mathcal{B}|$.
+\end{Satz}
+
+\begin{Bem}
+    Der Beweis des vorherigen Satzes funktioniert auch für Ringe $R$, die
+    nicht kommutativ sind und kein Einselement haben, solange $R$ maximale
+    Ideale besitzt. \\
+    Hat $R$ ein Einselement, so kann man aus dem Zornschen Lemma die Existenz
+    von maximalen Idealen folgern, d.\,h. auch hier ist der Rang eines freien
+    $R$-Moduls wohldefiniert. \\
+    Da Hauptidealringe noethersch sind, gilt der Satz insbesondere für HIRs
+    (sogar ohne Zornsches Lemma).
+\end{Bem}
+
+\begin{Def}{Rang}
+    Seien $R$ ein kommutativer noetherscher Ring mit Eins und $M$ ein
+    freier $R$-Modul. \\
+    Dann ist der \begriff{Rang} $\rg M$ definiert als Kardinalität einer
+    Basis von $M$ (unabhängig von der Wahl der Basis).
+\end{Def}
+
+\begin{Lemma}{Annullator}
+    Seien $A$ ein beliebiger Ring, $I \trianglelefteq A$ und $M$ ein
+    $A$-Modul. \\
+    Dann ist $I M$ ein $A$-Untermodul von $M$.
+    Die Menge $\ann_A(M) = \{a \in A \;|\; \forall_{m \in M}\; am = 0\}$
+    ist ein Ideal von $A$ und heißt \begriff{Annullator} von $M$ in $A$.
+    Es gilt $I \subseteq \ann_A(M/IM)$.
+    Ist $L \trianglelefteq A$ und $L \subseteq \ann_A(M)$, so ist
+    $M$ ein $A/L$-Modul durch $(a + L)m = am$ für $a \in A$, $m \in M$. \\
+    $M/IM$ ist $A/I$-Modul mit $A/I$-Operation
+    $(a + I)(m + IM) = am + IM$.
+\end{Lemma}
+
+\begin{Satz}{freie Moduln über noethersche Ringe gleichen Rangs sind
+             isomorph} \\
+    Sei $R$ ein kommutativer, noetherscher Ring und seien $M$ und $N$
+    freie $R$-Moduln mit $\rg M = \rg N$.
+    Dann sind $M$ und $N$ isomorph.
+    Für jede Kardinalität $\alpha$ gibt es daher einen bis auf Isomorphie
+    eindeutigen freien $R$-Modul $\mathcal{F}_\alpha$ vom Rang $\alpha$,
+    nämlich die direkte Summe von $\alpha$ vielen Kopien von ${}_R R$.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    \emph{Zusatz}: Projekt 12 (\texorpdfstring{$e$}{ℯ} hoch Matrix und
+    lineare Dif"|ferentialgleichungen)%
+}
+
+\begin{Satz}{endlich-dim. normierte Vektorräume}
+    Jeder endlich-dimensionale normierte Vektorraum ist vollständig.
+    Zwei Normen auf einem endlich-dimensionalen Vektorraum sind äquivalent.
+\end{Satz}
+
+\begin{Def}{Algebranorm}
+    Sei $\mathfrak{A}$ eine $K$-Algebra mit $K = \real$ oder $K = \complex$.
+    Eine Vektorraum-Norm $\norm{\cdot}$ auf $\mathfrak{A}$ heißt Algebranorm,
+    falls $\norm{AB} \le \norm{A} \cdot \norm{B}$ für alle
+    $A, B \in \mathfrak{A}$ ist.
+\end{Def}
+
+\begin{Def}{$p$-Norm}
+    Auf $M_n(K)$ ist mit $1 \le p \le \infty$ eine Norm definiert durch
+    $\norm{A}_p = \left(\sum_{i,j=1}^n |\alpha_{ij}|^p\right)^{1/p}$
+    für $A = (\alpha_{ij})_{ij} \in M_n(K)$.
+    Für $1 \le p \le 2$ ist dies eine Algebranorm.
+\end{Def}
+
+\begin{Def}{$e$ hoch Matrix}
+    Sei $S_k = \sum_{i=0}^k \frac{A^i}{i!}$ mit $A \in M_n(\complex)$.
+    Dann existiert der Grenzwert der Folge $\{S_k\}_{k \in \natural}$ sowohl
+    komponentenweise als auch bzgl. jeder Algebranorm auf $M_n(\complex)$. \\
+    Der Grenzwert wird mit $e^A = \sum_{i=0}^\infty \frac{A^i}{i!}$
+    bezeichnet.
+\end{Def}
+
+\begin{Satz}{Aussagen über $e$ hoch Matrix}
+    Seien $A, B \in M_n(\complex)$ und $P \in \GL_n(\complex)$. \\
+    Dann ist $P^{-1} e^A P = e^{P^{-1} A P}$, \qquad
+    $e^A e^B = e^{A + B} = e^B e^A$ für $AB = BA$, \qquad
+    $(e^A)^{-1} = e^{-A}$, \\
+    $\det e^A = e^{\tr A}$ \quad und \quad
+    $e^{\diag\{B_1, \dotsc, B_S\}} = \diag\{e^{B_1}, \dotsc, e^{B_s}\}$. \\
+    Sind $\lambda_1, \dotsc, \lambda_n$ die Eigenwerte von $A$, so sind 
+    $e^{\lambda_1}, \dotsc, e^{\lambda_n}$ die Eigenwerte von $e^A$.
+\end{Satz}
+
+\begin{Prozedur}{Berechnung von $e^A$}
+    \begin{enumerate}
+        \item
+        Man bringt $A$ auf Jordanform, d.\,h. man bestimmt eine Matrix
+        $P \in \GL_n(\complex)$ mit \\
+        $P^{-1} A P = \diag\{J_1, \dotsc, J_s\}$,
+        wobei $J_i$ ein Jordanblock ist.
+        
+        \item
+        Es gilt nun $e^A = e^{P \diag\{J_1, \dotsc, J_s\} P^{-1}} =
+        P e^{\diag\{J_1, \dotsc, J_s\}} P^{-1}$.
+        
+        \item
+        Es ist $e^{\diag\{J_1, \dotsc, J_s\}} =
+        \diag\{e^{J_1}, \dotsc, e^{J_s}\}$.
+        
+        \item
+        Um $e^{J_i}$ zu berechnen, sei $J_i = J_\lambda(k)$ ein Jordanblock
+        sowie $N = J_0(k)$. \\
+        Dann ist $J_\lambda(k) = \lambda E + N$ sowie
+        $\lambda E \cdot N = N \cdot \lambda E$. \\
+        Es ist $e^{J_i} = e^{\lambda E + N} = e^{\lambda E} e^N$,
+        da $\lambda E$ und $N$ kommutieren. \\
+        Es gilt $e^{\lambda E} e^N = e^\lambda e^N$ sowie
+        $e^N =$ \matrixsize{$\begin{pmatrix}
+        1 & \frac{1}{1!} & \frac{1}{2!} & \frac{1}{3!} & \cdots &
+        \frac{1}{(k - 1)!} \\
+        0 & 1 & \frac{1}{1!} & \frac{1}{2!} & \cdots & \frac{1}{(k - 2)!} \\
+        \vdots & \ddots & \ddots & \ddots & \ddots & \vdots \\
+        0 & \cdots & 0 & 1 & \frac{1}{1!} & \frac{1}{2!} \\
+        0 & \cdots & 0 & 0 & 1 & \frac{1}{1!} \\
+        0 & \cdots & 0 & 0 & 0 & 1
+        \end{pmatrix}$}.
+        
+        \item
+        Also ist $e^A = P \diag\{e^{\lambda_1} e^{N_1}, \dotsc,
+        e^{\lambda_s} e^{N_s}\} P^{-1}$.
+    \end{enumerate}
+\end{Prozedur}
+
+\subsection{%
+    \emph{Zusatz}: Projekt 13 (Beispiele von Ringen)%
+}
+
+\begin{Lemma}{Lemma von \name{Gauß}}
+    Sei $R$ ein faktorieller Ring und $Q$ der Quotientenkörper von $R$.
+    Außerdem sei $p \in R[x]$ ein Polynom, sodass die Koef"|fizienten in $R$
+    den größten gemeinsamen Teiler $1$ haben. \\
+    Ist $p = g \cdot h$ mit $g, h \in Q[x]$, so gibt es $g', h' \in R[x]$ mit
+    $p = g'h'$ und $g'$ bzw. $h'$ unterscheiden sich von $g$ bzw. $h$ nur um
+    ein Element aus $Q$.
+\end{Lemma}
+
+\begin{Satz}{Satz von \name{Gauß}}
+    Sei $R$ ein faktorieller Ring.
+    Dann ist $R[x]$ auch ein faktorieller Ring.
+\end{Satz}
+
+\pagebreak

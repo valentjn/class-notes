@@ -1,0 +1,323 @@
+\section{%
+    Rationale \name{Bézier}-Kurven%
+}
+
+\subsection{%
+    Kontrollpolygon und Gewichte%
+}
+
+\textbf{rationale \name{Bézier}-Kurve}:
+Eine \begriff{rationale \name{Bézier}-Kurve} $r$ vom Grad $\le n$ in $\real^d$ hat eine
+rationale Parametrisierung durch Bernstein-Polynome:
+\begin{align*}
+    r(t) := \frac{\sum_{k=0}^n (c_k w_k) b_k^n(t)}{\sum_{k=0}^n w_k b_k^n(t)}
+    =\sum_{k=0}^n c_k \beta_k^n(t),\quad
+    \beta_k^n(t) := \frac{w_k b_k^n(t)}{\sum_{\ell=0}^n w_\ell b_\ell^n(t)},\quad t \in [0, 1],
+\end{align*}
+mit positiven Gewichten $w_k$ und Kontrollpunkten $c_k = (c_{k,1}, \dotsc, c_{k,d}) \in \real^d$.
+
+Wie bei polynomialen Bézier-Kurven modelliert das \begriff{Kontrollpolygon} $c$ qualitativ
+die Form von $r$.
+Die Gewichte ermöglichen eine zusätzliche Gestaltungsflexibilität durch
+Kontrolle der Signifikanz der zugehörigen Kontrollpunkte.
+
+\linie
+
+\textbf{Skalierung der Gewichte}:
+Eine Skalierung der Gewichte $w_k \rightarrow \lambda w_k$ mit einem gemeinsamen Faktor $\lambda$
+ändert die Parametrisierung einer rationalen Bézier-Kurve nicht.
+Dieser zusätzliche Freiheitsgrad kann durch bloße Angabe der Verhältnisse $w_k : w_{k-1}$
+eliminiert werden.
+Diese Verhältnisse können durch Angabe der sogenannten \begriff{Gewichtspunkte}
+visualisiert werden:
+\begin{align*}
+    d_k := \frac{w_{k-1}}{w_{k-1} + w_k} c_{k-1} + \frac{w_k}{w_{k-1} + w_k} c_k,\quad
+    k = 1, \dotsc, n.
+\end{align*}
+Die Position von $d_k$ in der Kante $[c_{k-1}, c_k]$ bestimmt eindeutig
+$w_k : w_{k-1} \in (0, \infty)$.
+
+\linie
+
+\textbf{af"|fine Invarianz}:
+Die Parametrisierung
+$r(t) = \sum_{k=0}^n c_k \beta_k^n(t)$,
+$\beta_k^n = \frac{w_k b_k^n}{\sum_{\ell=0}^n w_\ell b_\ell^n}$,
+einer rationalen Bézier-Kurve ist \begriff{af"|fin invariant}, d.\,h. wenn eine af"|fine
+Transformation
+$x \mapsto Ax + a$
+auf $r$ angewendet wird, dann resultiert dieselbe Kurve wie nach einer Transformation der
+Kontrollpunkte:
+\begin{align*}
+    Ar + a = \sum_{k=0}^n (Ac_k + a) \beta_k^n.
+\end{align*}
+
+\subsection{%
+    Eigenschaften von rationalen \name{Bézier}-Kurven%
+}
+
+\textbf{Eigenschaften von rationalen \name{Bézier}-Kurven}:
+Eine rationale Bézier-Kurve, die durch
+$r(t) = \frac{\sum_{k=0}^n (c_k w_k) b_k^n(t)}{\sum_{k=0}^n w_k b_k^n(t)}$, $t \in [0, 1]$,
+parametrisiert wird, besitzt folgende Eigenschaften:
+\begin{itemize}
+    \item
+    $r(t)$ liegt in der konvexen Hülle von $c_0, \dotsc, c_n$
+    
+    \item
+    $\lim_{w_k \to \infty} r(t) = c_k$ für $t \in (0, 1)$
+    
+    \item
+    $r(0) = c_0$ und $r(1) = c_n$
+    
+    \item
+    $r'(0) = n \frac{w_1}{w_0} (c_1 - c_0)$ und $r'(1) = n \frac{w_{n-1}}{w_n} (c_n - c_{n-1})$
+\end{itemize}
+Die letzten beiden Eigenschaften werden wieder als \begriff{Endpunktinterpolation} bezeichnet.
+
+\linie
+\pagebreak
+
+\textbf{Parametertransformation und Skalierung}:
+Eine rationale Bézier-Kurve, die durch\\
+$r(t) = \frac{\sum_{k=0}^n (c_k w_k) b_k^n(t)}{\sum_{k=0}^n w_k b_k^n(t)}$, $t \in [0, 1]$,
+parametrisiert wird, wird durch eine Skalierung $w \rightarrow \lambda w$
+der Gewichte mit einem gemeinsamen Faktor $\lambda$ und durch eine lineare rationale
+Parametertransformation der Form
+\begin{align*}
+    t = \frac{s}{\varrho s + 1 - \varrho},\quad \varrho < 1
+\end{align*}
+nicht verändert.
+Die zwei Freiheitsgrade können dazu benutzt werden, das erste und das letzte Gewicht auf $1$
+zu setzen, d.\,h.
+\begin{align*}
+    w_k \rightarrow \widetilde{w}_k := w_0^{k/n-1} w_n^{-k/n} w_k.
+\end{align*}
+Die entstehende Parametrisierung wird als \begriff{Standard-Parametrisierung} einer rationalen
+Bézier-Kurve bezeichnet.
+
+\subsection{%
+    Algorithmen für rationale \name{Bézier}-Kurven%
+}
+
+\textbf{homogene Koordinaten}:
+Die Parametrisierung
+$r(t) = \frac{\sum_{k=0}^n (c_k w_k) b_k^n(t)}{\sum_{k=0}^n w_k b_k^n(t)}$, $t \in [0, 1]$,
+einer rationalen Bézier-Kurve kann mit einer polynomialen Parametrisierung
+\begin{align*}
+    \widetilde{r} = (p, q) := \sum_{k=0}^n (c_k w_k, w_k) b_k^n
+\end{align*}
+in homogenen Koordinaten identifiziert werden, d.\,h. $r = (p_1, \dotsc, p_d)/q$.
+Diese Interpretation ist bei der Implementierung von Algorithmen wie Auswertung, Dif"|ferentiation
+und Subdivision nützlich.
+Die Algorithmen für polynomiale Bézier-Kurven werden auf $\widetilde{r}$ angewendet und das
+Ergebnis in $\real^{d+1}$ wird durch Division durch die letzte Koordinate auf $\real^d$ projiziert.
+
+\linie
+
+\textbf{Ableitung einer rationalen \name{Bézier}-Kurve}:
+Die Parametrisierung
+$r(t) = \frac{\sum_{k=0}^n (c_k w_k) b_k^n(t)}{\sum_{k=0}^n w_k b_k^n(t)}$, $t \in [0, 1]$,
+einer rationalen Bézier-Kurve mit Zähler $p(t) := \sum_{k=0}^n (c_k w_k) b_k^n(t)$ und Nenner\\
+$q(t) := \sum_{k=0}^n w_k b_k^n(t)$ kann mithilfe der
+\begriff{\name{Leibniz}-Regel} dif"|ferenziert werden:
+\begin{align*}
+    \left(\frac{d}{dt}\right)^m (r(t)q(t)) =
+    \sum_{\ell=0}^m \binom{m}{\ell} r^{(m-\ell)}(t) q^{(\ell)}(t) = p^{(m)}(t).
+\end{align*}
+Diese Identität liefert eine Rekursion für $r^{(m)}$ bestehend aus Ableitungen niedrigerer Ordnung:
+\begin{align*}
+    r' &= (p' - rq') / q \\
+    r'' &= (p'' - 2r'q' - rq'') / q\\
+    r''' &= (p''' - 3r''q' - 3r'q'' - rq''') / q\\
+    &\;\;\vdots\;\;.
+\end{align*}
+Für die Auswertung von Ableitungen kann man daher die Formeln und Algorithmen für\\
+Standard-Bézier-Kurven benutzen.
+Dabei errechnet man simultan die Ableitungen von $p$ und $q$ und setzt die Ergebnisse in die
+Rekursion ein.
+
+\linie
+\pagebreak
+
+\textbf{Beispiel (erste und zweite Ableitung einer rationalen \name{Bézier}-Kurve)}:
+Mit diesen Formeln werden nun die ersten beiden Ableitungen von $r(t)$ in $t = 0$ berechnet.
+Dabei werden die Formeln $\widetilde{r}'(0) = n(a_1 - a_0)$ und
+$\widetilde{r}''(0) = n(n - 1)(a_2 - 2a_1 + a_0)$ für die polynomiale Bézier-Kurve $(p, q)$
+mit Kontrollpunkten $a_k = (c_k w_k, w_k)$ benutzt.\\
+Für die erste Ableitung erhält man mit der Formel $r' = (p' - rq')/q$ für $t = 0$
+\begin{align*}
+    r'(0) = (n(c_1 w_1 - c_0 w_0) - c_0 n (w_1 - w_0)) / w_0
+    = n \frac{w_1}{w_0} (c_1 - c_0)
+\end{align*}
+wie oben erwähnt.\\
+Ähnlich verläuft die Auswertung der zweiten Ableitung
+$r'' = (p'' - 2r'q' - rq'')/q$ in $t = 0$:
+\begin{align*}
+    r''(0) &= (\alpha (c_2 w_2 - 2 c_1 w_1 + c_0 w_0) - \beta (c_1 - c_0) (w_1 - w_0) -
+    \alpha c_0 (w_2 - 2 w_1 + w_0)) / w_0\\
+    &= n (n - 1) \frac{w_2}{w_0} (c_2 - c_1) - n \frac{2nw_1^2 - 2w_0w_1 - (n - 1)w_0w_2}{w_0^2}
+    (c_1 - c_0)
+\end{align*}
+mit $\alpha = n (n - 1)$ und $\beta = 2n^2 w_1/w_0$.
+Man kann die Gültigkeit von solchen Formeln mit ein paar Überprüfungen nachvollziehen:
+Wenn die Formel stimmt, muss für $w_0 = w_1 = w_2 = 1$ der polynomiale Fall herauskommen
+(was hier der Fall ist).
+Außerdem dürfen Gewichte immer nur als Quotienten auftreten, weil sonst die Homogenität verletzt
+ist -- eine Multiplikation der Gewichte mit einem gemeinsamen Faktor darf keinen Einfluss haben.
+
+\linie
+
+\textbf{Beispiel (Krümmung von rationalen \name{Bézier}-Kurven)}:
+Mit den Formeln zur Dif"|ferentia"|tion kann man auch die Krümmung von rationalen Bézier-Kurven
+an den Endpunkten bestimmen.
+Dazu verwendet man die Definition $\kappa = |r' \times r''|/|r'|^3$ mit
+$|f \times g|$ dem Flächeninhalt des von den Vektoren $f$ und $g$ aufgespannten Parallelogramms.
+Mit obigen Formeln und der Identität
+$|(\gamma_2 (c_2 - c_1) - \gamma_3 (c_1 - c_0)) \times \gamma_1 (c_1 - c_0)| =
+|\gamma_1 \gamma_2| |(c_2 - c_1) \times (c_1 - c_0)|$ ergibt sich nach ein paar Vereinfachungen
+\begin{align*}
+    \kappa(0) = \frac{2(n - 1)}{n} \frac{w_0 w_2}{w_1^2} \frac{\area[c_0, c_1, c_2]}{|c_1 - c_0|^3}
+\end{align*}
+mit $[c_0, c_1, c_2]$ dem Dreieck mit den Eckpunkten $c_k$.
+Diese Formel und die analoge Identität für den anderen Endpunkt unterscheiden sich von den
+Ausdrücken für polynomiale Bézier-Kurven nur um einen Faktor mit den relevanten Gewichten.
+
+\pagebreak
+
+\subsection{%
+    Kegelschnitte%
+}
+
+\textbf{homogene Koordinaten für Kegelschnitte}:
+\begriff{Kegelschnitte} sind Kurven, deren Koordinaten Nullstellen einer quadratischen Gleichung
+sind, d.\,h.
+\begin{align*}
+    x^t A x + 2 b^t x + c = \sum_{i,j=1}^n a_{i,j} x_i x_j + 2 \sum_{i=1}^n b_i x_i + c = 0
+\end{align*}
+mit einer symmetrischen Matrix $A$.
+Die Kreisgleichung $x_1^2 + x_2^2 - 1 = 0$ ist beispielsweise in dieser Darstellung.
+Nun identifiziert man $(x_1, x_2) = x \sim z = (z_1, z_2, z_3)$ mit
+$x_1 = z_1/z_3$ und $x_2 = z_2/z_3$ und multipliziert die Gleichung mit $z_3^2$ durch.
+Dann erhält man $z_1^2 + z_2^2 - z_3^2 = 0$ bzw. allgemein
+\begin{align*}
+    z^t \widetilde{A} z = \sum_{i,j=1}^{n+1} \widetilde{a}_{i,j} z_i z_j = 0
+\end{align*}
+mit einer symmetrischen Matrix $\widetilde{A}$.
+Der resultierende Term enthält nur noch (reine oder gemischte) Quadrate
+und ist nützlich bei der Kegelschnitt-Bestimmung von rationalen Bézier-Kurven.
+Umgekehrt kann man natürlich aus jeder Gleichung in homogenen Koordinaten die parametrische
+Darstellung durch Teilen durch $z_{n+1}^2$ wieder bestimmen.
+
+\linie
+
+\textbf{\name{Bézier}-Form von Kegelschnitten}:
+Jede quadratische rationale Bézier-Kurve, die durch
+\begin{align*}
+    r = \frac{(c_0 w_0) b_0^2 + (c_1 w_1) b_1^2 + (c_2 w_2) b_2^2}
+    {w_0 b_0^2 + w_1 b_1^2 + w_2 b_2^2}
+\end{align*}
+parametrisiert wird, stellt ein Segment eines Kegelschnitts dar.
+
+Umgekehrt kann jeder nicht-entartete Kegelschnitt durch eine \begriff{erweiterte Parametrisierung}
+$r(t)$, $t \in \real \cup \{\infty\}$, dargestellt werden.
+Wenn die Kontrollpunkte nicht auf einer Geraden liegen, lässt sich am Vorzeichen von
+$d := w_0 w_2 - w_1^2$ der Typ der quadratischen rationalen Bézier-Kurve feststellen:
+\begin{itemize}
+    \item
+    $d > 0$: Ellipse
+    
+    \item
+    $d = 0$: Parabel
+    
+    \item
+    $d < 0$: Hyperbel
+\end{itemize}
+
+\linie
+
+\textbf{Beispiel (Parametrisierungen für Standard-Kegelschnitte)}:\\
+Parametrisierungen für die Standard-Kegelschnitte mit den Normalformen
+\begin{align*}
+    x_1^2 + x_2^2 = 1,\quad
+    x_1^2 = x_2,\quad
+    x_1 x_2 = 1
+\end{align*}
+sind im Folgenden angegeben.
+\begin{align*}
+    r(t) = \frac{(1 - t^2, 2t)}{1 + t^2},&\quad
+    (C, w) = \begin{pmatrix}1 & 0 & 1\\1 & 1 & 1\\0 & 1 & 2\end{pmatrix}
+    &&\text{(Standard-Kreis)}\\
+    r(t) = \frac{(t, t^2)}{1},&\quad
+    (C, w) = \begin{pmatrix}0 & 0 & 1\\1/2 & 0 & 1\\1 & 1 & 1\end{pmatrix}
+    &&\text{(Standard-Parabel)}\\
+    r(t) = \frac{((2 - t)^2, (2 + t)^2)}{4 - t^2},&\quad
+    (C, w) = \begin{pmatrix}1 & 1 & 4\\1/2 & 3/2 & 4\\1/3 & 3 & 3\end{pmatrix}
+    &&\text{(Standard-Hyperbel)}
+\end{align*}
+
+\linie
+\pagebreak
+
+\textbf{Beispiel (implizite Darstellung aus Parametrisierung)}:
+Für die quadratische rationale Bézier-Kurve parametrisiert durch $r = (p_1, p_2)/q$ mit
+Kontrollpunkten $c_0 = (0, 1)$, $c_1 = (0, 0)$ und $c_2 = (2, 0)$ und Gewichten
+$w_0 = 1$, $w_1 = 1/2$ und $w_2 = 1$ wird eine implizite Darstellung
+\begin{align*}
+    (p_1, p_2, q) \begin{pmatrix}a_{1,1} & a_{1,2} & a_{1,3}\\a_{2,1} & a_{2,2} & a_{2,3}\\
+    a_{3,1} & a_{3,2} & a_{3,3}\end{pmatrix} (p_1, p_2, q)^t = 0
+\end{align*}
+gesucht.
+Wegen $d = w_0 w_2 - w_1^2 = 1 - (1/2)^2 > 0$ stellt $r$ eine Ellipse dar.\\
+Mit den Kontrollpunkten und den Gewichten kann man die Koordinaten vom Zähler und den Nenner
+von $r$ bestimmen:
+$p_1(t) = 2t^2$, $p_2(t) = (1 - t)^2$ und
+$q(t) = (1 - t)^2 + (1 - t) t + t^2$.\\
+Diese Gleichungen substituiert man in die implizite Gleichung und erhält
+$(a_{2,2} + 2a_{2,3} + a_{3,3}) - (4a_{2,2} + 6a_{2,3} + 2a_{3,3}) t +
+(4a_{1,2} + 4a_{1,3} + 6a_{2,2} + 8a_{2,3} + 3a_{3,3}) t^2 -
+(8a_{1,2} + 4a_{1,2} + 4a_{2,2} + 6a_{2,3} + 2a_{3,3}) t^3 +
+(4a_{1,1} + 4a_{1,2} + 4a_{1,3} + a_{2,2} + 2a_{2,3} + a_{3,3}) t^4 = 0$.\\
+Per Koef"|fizientenvergleich erhält man die Lösung\\
+$a_{1,1} = 1$, $a_{1,2} = 1$, $a_{1,3} = -2$, $a_{2,2} = 4$, $a_{2,3} = -4$, $a_{3,3} = 4$
+des homogenen LGS.\\
+Damit bekommt man die implizite Gleichung in homogenen Koordinaten
+\begin{align*}
+    p_1^2 + 2p_1p_2 - 4p_1q + 4p_2^2 - 8p_2q + 4q^2 = 0.
+\end{align*}
+Nach Division durch $q^2$ hat man die Gleichung in kartesischen Koordinaten
+\begin{align*}
+    x_1^2 + 2x_1x_2 - 4x_1 + 4x_2^2 - 8x_2 + 4 = 0.
+\end{align*}
+mit $x_k = p_k/q$.
+
+\linie
+
+\textbf{Beispiel (Parametrisierung aus impliziter Darstellung)}:
+Die umgekehrte Richtung, die Bestimmung einer quadratischen rationalen Bézier-Parametrisierung
+$r = p/q$ für einen gegebenen Kegelschnitt, ist ähnlich einfach.
+Zunächst wählt man zwei beliebige Punkte auf der Kurve als Kontrollpunkte $c_0$ und $c_2$.
+Wegen Endpunktinterpolation ist der mittlere Kontrollpunkt $c_1$ der Schnittpunkt der Tangenten
+an $c_0$ und $c_2$ (die Tangenten seien nicht parallel).
+Für eine Parametrisierung in Standardform gilt $w_0 = 1 = w_2$ und das mittlere Gewicht kann
+durch Einsetzen eines Punktes der Parametrisierung ausgerechnet werden.
+
+Als Beispiel wird diese Prozedur für die Hyperbel $Q\colon f(x) = 3x_1^2 - x_2^2 + 1 = 0$
+durchgeführt.
+Als Endpunkte für die quadratische rationale Bézier-Parametrisierung wird
+$c_0 = (0, 1)$ und $c_2 = (1, 2)$ gewählt.
+Die Gleichung der Tangente im Punkt $(1, 2)$ ist mit
+$\nabla f(1, 2) = (6, -4)$ gleich
+$(1, 2) + t \cdot (4, 6) = (1 + 4t, 2 + 6t)$.
+Weil die Hyperbel in $(0, 1)$ eine horizontale Tangente hat, ist der Schnittpunkt
+$c_1 = (1/3, 1)$.
+Für die Bestimmung von $w_1$ wertet man
+$r = (p_1, p_2)/q$ mit $p_1 = 1/3 w_1 b_1^2 + b_2^2$, $p_2 = b_0^2 + w_1 b_1^2 + 2 b_2^2$ und
+$q = b_0^2 + w_1 b_1^2 + b_2^2$ in $t = 1/2$ aus.\\
+Substituiert man $(x_1, x_2) = (p_1(1/2), p_2(1/2))/q(1/2)$ mit
+$p_1(1/2) = w_1/6 + 1/4$, $p_2(1/2) = 1/4 + w_1/2 + 1/2$ und $q(1/2) = 1/4 + w_1/2 + 1/4$
+in die Gleichung der Hyperbel $Q$ und multipliziert mit $q(1/2)^2$, so erhält man die quadratische
+Gleichung $\frac{1}{8} - \frac{1}{12} w_1^2 = 0$ mit der positiven Lösung
+$w_1 = \sqrt{3/2}$.
+
+\pagebreak

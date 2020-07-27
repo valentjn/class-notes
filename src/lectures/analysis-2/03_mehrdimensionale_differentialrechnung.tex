@@ -1,0 +1,1068 @@
+\section{%
+    Dif"|ferentialrechnung von Funktionen mehrerer Veränderlicher%
+}
+
+\subsection{%
+    Endlich und unendlich-dimensionale Vektorräume%
+}
+
+Sei $\field = \real$ oder $\field = \complex$.
+Dann ist $E$ ein \textbf{linearer $\field$-Vektorraum}, falls
+es Operationen $+: E \times E \rightarrow E$ ($x + y$) und
+$\cdot: \field \times E \rightarrow E$ ($\alpha \cdot x$) gibt, die
+die Vektorraum-Axiome erfüllen.
+
+Eine Abbildung $\norm{\cdot}: E \rightarrow \real$ heißt \textbf{Norm auf $E$},
+falls $\norm{x} \ge 0$, $\norm{x} = 0 \;\Leftrightarrow\; x = 0$,
+$\norm{\alpha x} = |\alpha| \cdot \norm{x}$ sowie
+$\norm{x + y} \le \norm{x} + \norm{y}$ für alle $x, y \in E$ gilt.
+
+\textbf{Konvergenz im Vektorraum}:
+Die Norm induziert eine Metrik mit $d(x, y) = \norm{x - y}$. \\
+Damit ist auch Konvergenz definiert:
+$x_n \xrightarrow{\norm{\cdot}} x \;\Leftrightarrow\; d(x_n, x) \to 0
+\;\Leftrightarrow\; \norm{x_n - y} \to 0$. \\
+Es gelten die Grenzwertsätze $x_n + y_n \xrightarrow{\norm{\cdot}} x + y$
+und $\alpha_n x_n \xrightarrow{\norm{\cdot}} \alpha x$, falls
+$x_n, y_n, x, y \in E$, $\alpha_n, \alpha \in \field$ mit
+$x_n \xrightarrow{\norm{\cdot}} x$,
+$y_n \xrightarrow{\norm{\cdot}} y$ und $\alpha_n \to \alpha$.
+
+Aufgrund der Dreiecksungleichung $|\norm{x} - \norm{y}| \le \norm{x - y}$
+ist $\norm{\cdot}: E \rightarrow \real$ stetig, d.\,h. \\
+$x_n \xrightarrow{\norm{\cdot}} x \;\Rightarrow\;
+\norm{x_n} \xrightarrow{\real} \norm{x}$.
+Die Umkehrung gilt i.\,A. nicht.
+
+\linie
+
+$x_i \in E$ ($i = 1, \dotsc, m$) heißen \textbf{linear unabhängig}, falls
+$\alpha_1 x_1 + \dotsb + \alpha_m x_m = 0$ ausschließlich für
+$\alpha_1 = \dotsb = \alpha_m = 0$ gilt. \\
+Die \textbf{Dimension} $\dim E$ ist dabei die größte Anzahl linear unabhängiger
+Vektoren in $E$. \\
+Bspw. sind $\real^n$ und $\complex^n$ $n$-dimensional.
+
+$x_\alpha \in E$ ($\alpha \in A$) heißen \textbf{linear unabhängig}, falls
+jede endliche Teilsystem linear unabhängig ist.
+Es ist $\dim E = \infty$, falls es beliebig große linear unabhängige
+Teilsysteme aus $E$ gibt.
+
+Wählt man z.\,B. auf $E = \C([0,1])$ die Funktionen $u_n \in E$, die
+zwischen $\frac{1}{n + 1}$ und $\frac{1}{n}$ in der Mitte eine Spitze haben,
+wobei die Funktion dort $1$ ist und sonst $0$, so sieht man
+$\dim \C([0,1]) = \infty$.
+
+\linie
+
+Auf dem endlich-dimensionalen Raum $\real^n$ kann man für $x \in \real^n$
+die Normen \\
+$\norm{x}_2 = (\sum_{i=1}^n |x_i|^2)^{1/2}$, \quad
+$\norm{x}_1 = \sum_{i=1}^n |x_i|$ \; und \;
+$\norm{x}_\infty = \max_{i = 1, \dotsc, n} |x_i|$ definieren.
+
+\textbf{Satz}:
+Seien $\norm{\cdot}_A$ und $\norm{\cdot}_B$ zwei Normen auf dem
+endlich-dimensionalen Raum $\field^n$. \\
+Dann sind diese Normen äquivalent, d.\,h. es gibt $c, C > 0$, sodass
+$c \norm{x}_A \le \norm{x}_B \le C \norm{x}_A$ für alle $x \in \field^n$ gilt.
+
+\emph{Folgerung}:
+Sind die Normen $\norm{\cdot}_A$ und $\norm{\cdot}_B$ äquivalent, so gilt
+$x_n \xrightarrow{\norm{\cdot}_A} x \;\Leftrightarrow\;
+x_n \xrightarrow{\norm{\cdot}_B} x$ für $x_n, x \in \field^n$,
+$n \in \natural$.
+
+Dieser Satz gilt i.\,A. nicht in unendlich-dimensionalen Räumen.
+Außerdem gilt das Kompaktheitskriterium in unendlich-dimensionalen
+Räumen i.\,A. nicht.
+
+\pagebreak
+
+\subsection{%
+    Der Raum der stetigen linearen Operatoren%
+}
+
+\textbf{linearer Operator}:
+Seien $(E, \norm{\cdot}_E)$, $(F, \norm{\cdot}_F)$ lineare
+$\field$-Vektorräume.
+Außerdem sei $D_T \subset E$ eine \emph{lineare Teilmenge}
+(d.\,h. linear abgeschlossen, also ein Unterraum).
+Dann heißt $T: D_T \rightarrow F$ \emph{linear}, falls
+$T(\alpha x + \beta y) = \alpha T(x) + \beta T(y)$ für alle
+$x, y \in D_T$, $\alpha, \beta \in \field$ gilt. \\
+Für einen linearen Operator gilt stets $T(0_E) = 0_F$.
+
+\linie
+
+\textbf{Stetigkeit} von linearen Operatoren ist wie üblich über die
+$\varepsilon$-$\delta$-Definition oder über die Folgendefinition
+$\forall_{\{y_k\},\; y_k \in D_T,\;
+y_k \xrightarrow{\norm{\cdot}_E} y \in D_T}\;
+T(y_k) \xrightarrow{\norm{\cdot}_F} T(y)$ definiert.
+
+\textbf{Satz}: Sei $T: D_T \subset E \rightarrow F$ linear. \\
+Dann ist $T$ in einem bestimmten $y_0 \in D_T$ stetig genau dann,
+wenn $T$ in allen $y \in D_T$ stetig ist.
+
+\textbf{beschränkter linearer Operator}:
+$T: D_T \subset E \rightarrow F$ heißt \emph{beschränkt},
+falls es ein $C < \infty$ gibt, sodass
+$\norm{T(x)}_F \le C \norm{x}_E$ für alle $x \in D_T$.
+
+\textbf{Satz}:
+Sei $T: D_T \subset E \rightarrow F$ linear.
+Dann ist $T$ stetig genau dann, wenn $T$ beschränkt ist.
+
+\linie
+
+\textbf{Raum der stetigen linearen Operatoren}: \\
+Seien $(E, \norm{\cdot}_E)$ und $(F, \norm{\cdot}_F)$ normierte Räume
+und $T: E \rightarrow F$ linear und beschränkt. \\
+Dann wird $\L(E,F) =
+\{T: E \rightarrow F \;|\; T \text{ linear und beschränkt}\}$
+zum Vektorraum mit \\
+$(T_1 + T_2)(x) = T_1(x) + T_2(x)$ und
+$(\alpha T)(x) = \alpha T(x)$ (beide lineare Operatoren sind beschränkt).
+
+$\norm{T}_{\L(E,F)} = \sup_{x \in E,\; x \not= 0}$
+\fracsize{$\frac{\norm{T(x)}_F}{\norm{x}_E}$}
+$= \sup_{x \in E,\; \norm{x}_E = 1} \norm{T(x)}_F$
+ist die bestmögliche Konstante in der Definition der Beschränktheit,
+d.\,h. $\norm{T(x)}_F \le \norm{T}_{\L(E,F)} \norm{x}_E$
+
+\textbf{Satz}:
+$(\L(E,F), \norm{\cdot}_{\L(E,F)})$ ist ein normierter Raum.
+
+\textbf{Satz}:
+Ist $(F, \norm{\cdot}_F)$ vollständig, dann ist auch
+$(\L(E,F), \norm{\cdot}_{\L(E,F)})$ vollständig.
+
+\linie
+
+\textbf{Komposition linearer Operatoren}:
+Sind $T \in \L(E,F)$ und $S \in \L(F,G)$, dann ist
+auch $ST \in \L(E,G)$.
+Es gilt $\norm{ST}_{\L(E,G)} \le \norm{S}_{\L(F,G)} \norm{T}_{\L(E,F)}$.
+
+\subsection{%
+    Die \textsc{Frechet}-Ableitung%
+}
+
+Seien $(E, \norm{\cdot}_E)$ und $(F, \norm{\cdot}_F)$ normierte Vektorräume,
+$U \subset E$ of"|fen, $x_0 \in U$ und $f: U \subset E \rightarrow F$
+eine Funktion.
+Wegen $x_0 \in U$ ist $x_0 + h \in U$ für alle $\norm{h}_E < \delta$ mit
+einem bestimmten $\delta > 0$.
+
+$T_{x_0} \in \L(E, F)$ heißt \textbf{\textsc{Frechet}-Ableitung} von $f$
+in $x_0$, falls \\
+$f(x_0 + h) = f(x_0) + T_{x_0}(h) + o(\norm{h}_E)$ für $h \to 0$.
+
+Die Frechet-Ableitung ist, falls sie existiert, eindeutig gegeben. \\
+Man schreibt auch $f'|_{x=x_0} = f'(x_0) = T_{x_0} \in \L(E,F)$.
+
+\linie
+
+\textbf{Linearität}:
+Seien $f, g: U \subset E \rightarrow F$ in $x_0$ Frechet-dif"|fb.
+und $\alpha, \beta \in \field$. \\
+Dann ist
+$(\alpha f + \beta g)'|_{x=x_0} = \alpha f'|_{x=x_0} + \beta g'|_{x=x_0}$.
+
+\textbf{Stetigkeit}:
+Ist $f$ in $x_0$ Frechet-dif"|ferenzierbar, so ist $f$ in $x_0$ auch stetig.
+
+\textbf{Produktregel}:
+Seien $f: U \subset E \rightarrow F$ sowie
+$\alpha: U \subset E \rightarrow \field$ in $x_0 \in U$
+Frechet-dif"|ferenzierbar. \\
+Dann ist $(\alpha f)'(x_0) = \alpha(x_0) f'(x_0) + f(x_0) \alpha'(x_0)$.
+
+\textbf{Kettenregel}:
+Seien $E, F, G$ normierte Räume, $U \subset E$ of"|fen, $V \subset F$ of"|fen,
+$x_0 \in U$, $y_0 \in V$ und $f: U \subset E \rightarrow V$,
+$g: V \subset F \rightarrow G$, wobei $f$ in $x_0$ und $g$ in
+$y_0 = f(x_0)$ Frechet-dif"|fb. sein soll. \\
+Dann ist $(g \circ f)'(x_0) = g'(y_0) f'(x_0)$.
+
+\pagebreak
+
+\subsection{%
+    Die \textsc{Gateaux}-Ableitung%
+}
+
+Seien $E$ und $F$ normierte Räume $U \subset E$ of"|fen, $x_0 \in U$
+und $f: U \subset E \rightarrow F$.
+Für jedes $h \in E$, $h \not= 0$, $t \in \field$ ist
+$\varphi_h(t) = f(x_0 + th)$ für $|t| < \delta(h)$ definiert.
+
+$Df(x_0)[h] = \left.\frac{d}{dt} \varphi_h(t)\right|_{t=0} =
+\lim_{t \to 0} \frac{f(x_0 + th) - f(x_0)}{t}$
+heißt \textbf{Richtungsableitung}.
+
+\linie
+
+\textbf{Homogenität}:
+Für $\alpha \in \field$ gilt $Df(x_0)[\alpha h] = \alpha \cdot Df(x_0)[h]$.
+
+\textbf{Zusammenhang mit \textsc{Frechet}-Dif"|ferenzierbarkeit}: \\
+Ist $f: U \subset E \rightarrow F$ in $x_0 \in U$ Frechet-dif"|fb.,
+dann existiert für alle $h \in E$, $h \not= 0$ die Richtungsableitung
+$Df(x_0)[h] = (f')_{x=x_0}h$.
+
+Die Umkehrung gilt i.\,A. \emph{nicht}, selbst wenn $Df(x_0)[h]$ in allen
+Richtungen $h \in E$, $h \not= 0$ existiert,
+da $Df(x_0)[h]$ nicht additiv in $h$ sein muss.
+
+\linie
+
+Falls $Df(x_0)[h]$ für alle $h \in E$ existiert und falls
+$Df(x_0)[\cdot] \in \L(E,F)$ ist, \\
+dann heißt $f_s'(x_0)h = Df(x_0)[h]$
+\textbf{\textsc{Gateaux}-Ableitung} oder \textbf{schwache Ableitung}.
+
+\textbf{Folgerung}:
+Existiert die Frechet-Ableitung $f'(x_0)$, so existiert auch
+die schwache Ableitung $f_s'(x_0) = f'(x_0)$ und ist mit der
+Frechet-Ableitung gleich.
+
+Die Umkehrung gilt i.\,A. \emph{nicht}.
+
+\linie
+
+\textbf{Satz}:
+Sei $f: U \subset E \rightarrow F$ mit $U$ of"|fen und $x_0 \in U$.
+Zusätzlich sei $f$ in allen Punkten $x \in U_\varepsilon(x_0)$
+Gateaux-dif"|ferenzierbar und
+$f_s'(\cdot): U_\varepsilon(x_0) \subset E \rightarrow \L(E,F)$ sei
+stetig in $x_0$. \\
+Dann ist $f$ in $x_0$ Frechet-dif"|ferenzierbar und $f'(x_0) = f_s'(x_0)$.
+
+Damit also aus der Existenz der schwachen Ableitung die Existenz der
+Frechet-Ableitung folgt, muss die schwache Ableitung
+$f_s'(x) = Df(x)[\cdot]$ in einer Umgebung von $x = x_0$ existieren
+und in $x_0$ stetig sein.
+
+\subsection{%
+    Der Hauptsatz der Dif"|ferentialrechnung%
+}
+
+Seien $E, F$ normierte Räume und $U \subset E$ of"|fen, wobei
+$a, b \in U$, $\overline{ab} \subset U$ mit \\
+$\overline{ab} = \{x = ta + (1 - t)b \;|\; t \in [0,1]\}$.
+Weiter sei $f: U \subset E \rightarrow F$ eine Funktion.
+
+\textbf{Hauptsatz der Dif"|ferentialrechnung}: \\
+Sei $f$ stetig auf $\overline{ab}$,
+$f_s'(x)$ existiert für alle $x \in \overline{ab}$ und
+$f_s'(\cdot): \overline{ab} \subset U \rightarrow \L(E,F)$ stetig. \\
+Dann ist
+$\norm{f(b) - f(a)}_F \le \sup_{x \in \overline{ab}}
+\norm{f_s'(x)}_{\L(E,F)} \cdot \norm{b - a}_E$ und \\
+$\norm{f(b) - f(a) - f_s'(a)(b - a)}_F \le \sup_{x \in \overline{ab}}
+\norm{f_s'(x) - f_s'(a)}_{\L(E,F)} \cdot \norm{b - a}_E$.
+
+\linie
+
+\textbf{Stetige, lineare Funktionale auf $E$} sind Elemente aus
+$\L(E, \field)$.
+
+\textbf{Lemma von \textsc{Hahn} und \textsc{Banach}}:
+Sei $E$ ein Banachraum. \\
+Dann gibt es für alle $y_0 \in E$, $y_0 \not= 0$
+ein Funktional $\ell = \ell_{y_0} \in \L(E, \field)$, sodass \\
+$\norm{\ell}_{\L(E, \field)} = 1$ und
+$|\ell[y_0]| = \norm{y_0}_E$.
+
+\pagebreak
+
+\subsection{%
+    \textsc{Gateaux}- und \textsc{Frechet}-Ableitungen zwischen
+    \texorpdfstring{$\real^n$ und $\real^m$}{ℝ\^{}n und ℝ\^{}m}
+}
+
+Sei $f: U \subset \real^n \rightarrow \real^m$ mit $U \subset \real^n$ of"|fen
+eine Funktion, wobei $f(x) =$
+\matrixsize{$\begin{pmatrix}f_1(x_1, \dotsc, x_n) \\
+\vdots \\ f_m(x_1, \dotsc, x_n)\end{pmatrix}$}.
+
+Man sagt, $f$ ist in $x_0 \in U$ \textbf{dif"|ferenzierbar},
+falls $f$ in $x_0 \in U$ Frechet-dif"|ferenzierbar ist.
+
+\linie
+
+Ist $f$ in $x_0 \in U$ Frechet-dif"|ferenzierbar, so ist
+$f(x_0 + h) = f(x_0) + f'(x_0)h + o(\norm{h})$ für \\
+$f'(x_0) \in \L(\real^n, \real^m)$.
+
+Man betrachtet nun die kanonische Basen $\{e_j \;|\; j = 1, \dotsc, n\}$ und
+$\{e_k' \;|\; k = 1, \dotsc, m\}$ des $\real^n$ und des $\real^m$.
+Dann lässt sich der $(k, j)$-te Eintrag von der Abbildungsmatrix bzgl. dieser
+beiden Basen berechnen durch
+$[f'(x_0)]_{kj} = \sp{f'(x_0)e_j, e_k'}_{\real^m}$.
+
+\fracsize{$\left.\frac{\partial f}{\partial x_j}\right|_{x=x_0}$} $=
+\lim_{t \to 0}$ \fracsize{$\frac{f(x_0 + te_j) - f(x_0)}{t}$} $=
+\lim_{t \to 0} \frac{f(x_1^{(0)}, \dotsc, x_j^{(0)} + t, \dotsc, x_n^{(0)}) -
+f(x_1^{(0)}, \dotsc, x_j^{(0)}, \dotsc, x_n^{(0)})}{t} =
+Df(x_0)[e_j]$
+heißt \textbf{partielle Ableitung}.
+
+Partielle Ableitungen sind also spezielle Richtungsableitungen und es gilt \\
+$\sp{f_s'(x_0)e_j, e_k'} = \pi_k'(Df(x_0)[e_j]) = Df_k(x_0)[e_j] =$
+\fracsize{$\frac{\partial f_k}{\partial x_j}$}$\Big|_{x=x_0}$.
+
+\linie
+
+\textbf{Satz}:
+Ist $f$ im Punkt $x_0 \in U$ Frechet-dif"|ferenzierbar, so existieren
+alle partiellen Ableitungen
+\fracsize{$\frac{\partial f_k}{\partial x_j}$}$\Big|_{x=x_0}$
+mit $j = 1, \dotsc, n$ und $k = 1, \dotsc, m$
+und $f'(x_0)$ lässt sich durch die \textbf{\textsc{Jacobi}-Matrix} $J$
+darstellen:
+
+$f'(x_0) = J(x_0) = \begin{pmatrix}
+\left.\frac{\partial f_1}{\partial x_1}\right|_{x=x_0} &
+\cdots &
+\left.\frac{\partial f_1}{\partial x_m}\right|_{x=x_0} \\
+\vdots & & \vdots \\
+\left.\frac{\partial f_n}{\partial x_1}\right|_{x=x_0} &
+\cdots &
+\left.\frac{\partial f_n}{\partial x_m}\right|_{x=x_0}
+\end{pmatrix}$
+
+Für die Anwendung dieses Satzes muss allerdings $f$ Frechet-dif"|ferenzierbar
+sein.
+Aus der Existenz aller partiellen Ableitungen folgt i.\,A. nicht
+die Frechet-Dif"|ferenzierbarkeit.
+
+\linie
+
+\textbf{Satz}:
+Seien alle partiellen Ableitungen $\frac{\partial f_k}{\partial x_j}$
+existent in allen $x \in U$ und in $x_0 \in U$ stetig. \\
+Dann ist $f$ in $x_0 \in U$ schwach dif"|ferenzierbar
+und $f_s'(x_0) = J(x_0)$.
+
+\textbf{Satz}:
+Seien alle partiellen Ableitungen $\frac{\partial f_k}{\partial x_j}$
+existent in allen $x \in U$ und in einer $\varepsilon$-Umgebung von
+$x_0 \in U$ stetig. \\
+Dann ist $f$ im Punkt $x_0$ Frechet-dif"|ferenzierbar,
+d.\,h. es gibt $f'(x_0)$.
+
+\linie
+
+\textbf{Spezialfall}:
+Sei $f: U \subset \real^n \rightarrow \real$ in $x_0$
+Frechet-dif"|ferenzierbar. \\
+Dann ist $f'(x_0) = J(x_0) = (\frac{\partial f}{\partial x_1}, \dotsc,
+\frac{\partial f}{\partial x_n}) = (\nabla f)^t$ mit dem Gradienten
+$\nabla f = \grad f = \begin{pmatrix}\frac{\partial f}{\partial x_1} \\
+\vdots \\ \frac{\partial f}{\partial x_n}\end{pmatrix}$.
+
+Ist $h = (h_1, \dotsc, h_n)^t \in \real^n$, so schreibt man
+$f'(x_0)h = f_s'(x_0)h = Df(x_0)[h] =
+(\nabla f)^t$ \matrixsize{$\begin{pmatrix}h_1 \\ \vdots \\ h_n\end{pmatrix}$}
+$= \sp{\nabla f, h}_{\real^n} = \sp{h, \nabla} f =
+h_1 \frac{\partial f}{\partial x_1} + \dotsb +
+h_n \frac{\partial f}{\partial x_n} =
+\left(h_1 \frac{\partial}{\partial x_1} + \dotsb +
+h_n \frac{\partial}{\partial x_n}\right) f$.
+
+Somit gilt $f(x_0 + h) - f(x_0) = \sp{\nabla f, h} + o(\norm{h})$, $h \to 0$,
+wobei $\sp{\nabla f, h} =
+\norm{\nabla f} \norm{h} \cos \sphericalangle(\nabla f, h)$ maximal für
+$h \parallel \nabla f$ wird.
+Also zeigt der Gradient von $f$ in die Richtung des stärksten Anstiegs.
+
+Daraus kann man eine Gleichung für die Tangentialebene $\widetilde{f}$
+herleiten: \\
+$\widetilde{f}(x_0 + h) - \widetilde{f}(x_0) = \sp{\nabla f(x_0), h}$,
+$h = x - x_0$ bzw.
+$y - y_0 = \sp{\nabla f(x_0), x - x_0}$.
+
+\subsection{%
+    Ableitungen höherer Ordnung%
+}
+
+Seien $E, F$ normierte Räume mit $U \subset E$ of"|fen und
+$f: U \subset E \rightarrow F$ in $U$ Frechet-dif"|ferenzierbar.
+Dann ist $f'(\cdot): U \subset E \rightarrow \L(E, F) = F_1$ eine Funktion,
+die jedem Punkt $x_0 \in U$ eine Ableitung $f'(x_0) \in L(E, F)$
+(also stetige lineare Abbildung) in $F_1$ zuweist.
+
+Falls $f'(\cdot): U \subset E \rightarrow \L(E, F) = F_1$ selbst im
+Punkt $x_0 \in U$ Frechet-dif"|ferenzierbar ist, so ist
+$f''(x_0) = \left.(f'(\cdot))'\right|_{x=x_0} \in \L(E, F_1) = \L(E, \L(E, F))$
+die \textbf{zweite Ableitung} von $f$ im Punkt $x_0$.
+
+\linie
+
+\textbf{Satz}:
+Ist $f$ zweimal im Punkt $x_0 \in U$ Frechet-dif"|ferenzierbar, so ist
+$[f''(x_0)h]k = D[Df(x_0)k]h$ für $h, k \in E$.
+
+$[f''(x_0)h]k = D[Df(x_0)k]h$ und $[f''(x_0)k]h = D[Df(x_0)h]k$
+sind linear in jedem einzelnen Argument $h$ und $k$, also ist
+$f''(x_0)$ eine bilineare Funktion.
+
+\textbf{Satz}:
+Sei $f: U \subset E \rightarrow F$ in $U$ zweifach Frechet-dif"|fb.
+und $f''(\cdot): U \rightarrow \L(E, \L(E, F))$ stetig. \\
+Dann ist $[f''(x_0)h]k = [f''(x_0)k]h$ für alle $h, k \in E$, d.\,h.
+$f''(x_0)$ ist bilinear und symmetrisch.
+
+Ist $T: E_1 \times E_2 \rightarrow F$ eine bilineare Funktion, so kann
+man analog zu $\L(E, F)$ eine Norm definieren mit
+$\norm{T}_{\L(E_1, E_2, F)} =
+\sup_{x_1 \in E_1,\; x_2 \in E_2,\; x_1 \not= 0,\; x_2 \not= 0}
+\frac{\norm{T(x_1, x_2)}_F}{\norm{x_1}_{E_1} \norm{x_2}_{E_2}}$.
+Ebenfalls analog ist $\L(E_1, E_2, F)$ vollständig, wenn $F$ vollständig ist.
+Ist $E_1 = E_2 = E$, so schreibt man $\L(E, E, F) = \L_2(E, F)$.
+
+Es gilt $\norm{[f''(x_0)h]k}_F \le \norm{f''(x_0)h}_{\L(E, F)} \norm{k}_E \le
+\norm{f''(x_0)}_{\L(E, F_1)} \norm{h}_E \norm{k}_E$, also ist
+$f''(x_0)$ eine stetige bilineare Abbildung,
+unter obigen Voraussetzungen zudem symmetrisch.
+
+\linie
+
+\textbf{Spezialfall}:
+Ist $f: U \subset \real^n \rightarrow \real$, so ist
+$D(Df(x)[e_j])[e_k] = D(\frac{\partial f}{\partial x_j})[e_k] =
+\frac{\partial}{\partial x_k} \left(\frac{\partial f}{\partial x_j}\right) =
+\frac{\partial^2 f}{\partial x_k \partial x_j}$, dies ist i.\,A.
+verschieden von $D(Df(x)[e_k])[e_j] =
+\frac{\partial}{\partial x_j} \left(\frac{\partial f}{\partial x_k}\right) =
+\frac{\partial^2 f}{\partial x_j \partial x_k}$.
+
+\textbf{Satz}:
+Sei $f: U \subset \real^n \rightarrow \real$ (oder $\real^m$),
+wobei alle zweiten partiellen Ableitungen existieren und auf $U$ stetig
+sind.
+Dann ist $\frac{\partial^2 f}{\partial x_j \partial x_k} =
+\frac{\partial^2 f}{\partial x_k \partial x_j}$.
+
+\textbf{Anmerkung}:
+Für $f: U \subset \real^n \rightarrow \real$ zweifach Frechet-dif"|fb. gilt
+$[f''(x_0)h]k =: f''(x_0)[h, k] = \sp{H(x_0)h, k}_{\real^n}$ mit
+der \textbf{\textsc{Hesse}-Matrix} $H$:
+
+$H(x_0) = \begin{pmatrix}
+\left.\frac{\partial^2 f}{\partial x_1^2}\right|_{x=x_0} &
+\cdots &
+\left.\frac{\partial^2 f}{\partial x_1 \partial x_n}\right|_{x=x_0} \\
+\vdots & & \vdots \\
+\left.\frac{\partial^2 f}{\partial x_n \partial x_1}\right|_{x=x_0} &
+\cdots &
+\left.\frac{\partial^2 f}{\partial x_n^2}\right|_{x=x_0}
+\end{pmatrix}$
+
+\vspace{10pt}
+\linie
+
+Ist $f: U \subset E \rightarrow F$ in allen $x \in U$ zweifach
+Frechet-dif"|ferenzierbar, so kann $f''(\cdot)$
+als Funktion $f''(\cdot): U \subset E \rightarrow
+F_2 = \L_2(E, F) = \L(E, \L(E, F))$ aufgefasst werden. \\
+Ist $f''$ wiederum in $U$ Frechet-dif"|ferenzierbar, so ist \\
+$f^{(3)}(\cdot) = (f''(\cdot))': U \subset E \rightarrow \L_3(E, F)
+= \L(E, \L(E, \L(E, F))) = \L(E, E, E, F)$ die
+\textbf{dritte Ableitung} von $f$, wobei
+$f^{(3)}(x_0)[h, k, l]$ multilinear für $h, k, l \in E$ ist.
+
+Dies kann iterativ fortgesetzt werden: Die \textbf{$n$-te Ableitung}
+von $f$ ist \\
+$f^{(n)}(x) = (f^{(n-1)}(x))' \in \L_n(E, F)$
+mit $\L_n(E, F) = \L(E, \L_{n-1}(E, F))$. \\
+Für $h^{(k)} \in E$, $k = 1, \dotsc, n$ schreibt man dann analog
+$f^{(n)}[h^{(1)}, \dotsc, h^{(n)}]$. \\
+Ist $h^{(1)} = \dotsb = h^{(n)} = h \in E$, so schreibt man
+auch $f^{(n)}(x)[h, \dotsc, h] = f^{(n)}(x)h^n$.
+
+\pagebreak
+
+\subsection{%
+    Die \textsc{Taylor}sche Formel%
+}
+
+\textbf{Satz von \textsc{Taylor}}:
+Sei $f: U \subset E \rightarrow F$ eine Funktion mit $U$ of"|fen,
+$\overline{x_0, x_0 + h} \subset U$, wobei $f$ auf $U$ $n + 1$-fach
+stetig dif"|ferenzierbar ist. \\
+Dann ist $f(x_0 + h) = f(x_0) + \sum_{k=1}^n \frac{1}{k!} f^{(k)}(x_0) h^k +
+r_n(x_0, h)$ mit \\
+$r_n(x_0, h) =
+\frac{1}{n!} \int_0^1 f^{(n+1)}(x + th)h^{n+1} (1 - t)^n \dt =
+\mathcal{O}(\norm{h}_E^{n+1})$ (bzw. $r_n(x_0, h) = o(\norm{h}_E^n)$) für
+$h \to 0$.
+
+\linie
+
+\textbf{Spezialfall}:
+Sei $f: U \subset \real^n \rightarrow \real$ und $h = (h_1, \dotsc, h_k)$. \\
+Dann ist $f'(x_0)h = Df(x_0)[h] =
+\sum_{k=1}^n \left.\frac{\partial f}{\partial x_k}\right|_{x=x_0}h_k =
+\sp{\nabla f(x_0), h} = \left.\sp{h, \nabla}\right|_{x=x_0}$ sowie \\
+$f''(x_0)h^2 = \sum_{k,l=1}^n \left.
+\frac{\partial^2 f}{\partial x_k \partial x_l}\right|_{x=x_0} h_k h_l =
+\sp{H(x_0)h, h} =
+\left.\left(\sum_{k=1}^n h_k \frac{\partial}{\partial x_k} \cdot
+\sum_{l=1}^n h_l \frac{\partial}{\partial x_l}\right) f\right|_{x=x_0} =$ \\
+$\left.\sp{h, \nabla}\sp{h, \nabla}f\right|_{x=x_0}$ usw., falls
+die partiellen Ableitungen alle stetig sind. \\
+Es ergibt sich induktiv
+$f^{(k)}(x_0)h^k = \left.\sp{h, \nabla}^k f\right|_{x=x_0}$.
+
+Damit kann man die Formel von Taylor schreiben als \\
+$f(x_0 + h) = f(x_0) + \sum_{k=1}^n
+\left.\frac{\sp{h, \nabla}^k}{k!} f\right|_{x=x_0} + r_n(x_0, h)$.
+
+Falls $r_n(x_0, h) \xrightarrow{n \to \infty} 0$, so sagt man,
+$f$ ist \textbf{durch die Taylorreihe darstellbar}, und man schreibt
+$f(x_0 + h) = \left.\left(\sum_{k=0}^\infty
+\frac{\sp{h, \nabla}^k}{k!}\right) f\right|_{x=x_0} =
+\left.e^{\sp{h, \nabla}} f\right|_{x=x_0}$.
+
+Speziell für $n = 2$ ist
+$f(x_0 + h) - f(x_0) =
+\sp{\nabla f(x_0), h} + \frac{1}{2} \sp{H_f(x_0) h, h} + o(\norm{h}_E^2)$.
+
+\subsection{%
+    Der Fixpunktsatz von \textsc{Banach}%
+}
+
+Seien $(M, d)$ ein metrischer Raum mit $M \not= \emptyset$
+und $T: M \rightarrow M$ eine Funktion. \\
+$T$ heißt \textbf{Kontraktion}, falls es ein $0 < \alpha < 1$ gibt, sodass
+$d(Tx, Ty) \le \alpha \cdot d(x, y)$ für alle $x, y \in M$ gilt.
+
+\textbf{Fixpunktsatz von \textsc{Banach}}: \\
+Seien $(M, d)$ ein vollständiger metrischer Raum und $T: M \rightarrow M$
+eine Kontraktion. \\
+Dann gibt es genau ein $x^\ast \in M$ mit $Tx^\ast = x^\ast$
+(d.\,h. $x^\ast$ ist ein \textbf{Fixpunkt} von $T$).
+
+\subsection{%
+    Der Satz über implizite Funktionen%
+}
+
+Gegeben sei eine implizite Funktion, d.\,h. zum Beispiel
+$\phi(x, y) = 0$, $x, y \in \real$ mit \\
+$\phi(x, y) = x^2 + y^2 - r^2 = 0$.
+Kann man eine solche Funktion nach $x$ auflösen, d.\,h. gibt es eine
+Funktion $y(x)$ mit $y = y(x) \;\Leftrightarrow\; \varphi(x, y(x)) = 0$?
+Global gibt es keine solche Funktion, lokal unter gewissen Voraussetzungen.
+
+\linie
+
+\textbf{Allgemein}:
+Seien $\phi: \real^{m+n} \rightarrow \real^n$
+sowie $x = (x_1, \dotsc, x_m) \in \real^m$,
+$y = (y_1, \dotsc, y_n) \in \real^n$.
+Dann ist $\phi(x, y) = 0 \;\Leftrightarrow\;
+\phi_i(x_1, \dotsc, x_m, y_1, \dotsc, y_n) = 0$ für alle $i = 1, \dotsc, n$.
+Ziel ist es, die $y_i$ durch die $x_i$ darzustellen, daher gibt es
+so viele Gleichungen wie Unbekannte. \\
+Die Jacobi-Matrix hat die Form
+$J = \left(\begin{array}{ccc|ccc}
+\frac{\partial \phi_1}{\partial x_1} & \cdots &
+\frac{\partial \phi_1}{\partial x_m} &
+\frac{\partial \phi_1}{\partial y_1} & \cdots &
+\frac{\partial \phi_1}{\partial y_n} \\
+\vdots & & \vdots & \vdots & & \vdots \\
+\frac{\partial \phi_n}{\partial x_1} & \cdots &
+\frac{\partial \phi_n}{\partial x_m} &
+\frac{\partial \phi_n}{\partial y_1} & \cdots &
+\frac{\partial \phi_n}{\partial y_n}
+\end{array}\right)$. \\
+Man bezeichnet nun den linken Block mit $\frac{\partial \phi}{\partial x}$
+und rechten Block mit $\frac{\partial \phi}{\partial y}$, dies sind also
+$n \times m$- bzw. $n \times n$-Matrizen.
+
+Seien nun $h = \begin{pmatrix}x - x_0\\y - y_0\end{pmatrix} \in \real^{m+n}$,
+wobei $\phi(x, y) = \phi(x_0, y_0) = 0$, d.\,h. $(x, y)$ und $(x_0, y_0)$
+erfüllen die Gleichung.
+
+Dann gilt mit der Frechet-Ableitung
+$0 = \phi(x, y) = \phi(x_0, y_0) + \phi'|_{(x_0,y_0)}h + r(x, y)$ \\
+$\Leftrightarrow\; 0 = \left.\frac{\partial \phi}{\partial
+x}\right|_{(x_0,y_0)}(x - x_0) + \left.\frac{\partial \phi}{\partial
+y}\right|_{(x_0,y_0)}(y - y_0) + r(x, y)$ \\
+$\Leftrightarrow\;
+-\left.\frac{\partial \phi}{\partial y}\right|_{(x_0,y_0)}(y - y_0) =
+\left.\frac{\partial \phi}{\partial x}\right|_{(x_0,y_0)} (x - x_0) +
+r(x, y)$. \\
+Ist nun $\left.\frac{\partial \phi}{\partial y}\right|_{(x_0,y_0)}$
+invertierbar, so gilt
+$y - y_0 = - \left(\left.\frac{\partial \phi}{\partial
+y}\right|_{(x_0,y_0)}^{-1}\right) \left[\left.\frac{\partial \phi}{\partial
+x}\right|_{(x_0,y_0)} (x - x_0) +  r(x, y)\right]$, d.\,h. man hat eine
+nach $y$ aufgelöste Darstellung gefunden.
+
+\linie
+
+\textbf{Kreuzprodukt zweier normierter Räume}:
+Seien $E, F$ normierte $\field$-Vektorräume. \\
+Dann wird $E \times F$ zum normierten Raum durch die Norm
+$\norm{(x, y)}_{E \times F} = \norm{x}_E + \norm{y}_F$. \\
+$E \times F$ ist vollständig, falls $E$ und $F$ vollständig sind.
+
+\textbf{lokale Auf"|lösbarkeit}:
+Seien $E, F, G$ Banachräume, $V \subset E \times F$ of"|fen
+sowie $\phi: V \subset E \times F \rightarrow G$, wobei
+$(x_0, y_0) \in V$ mit $\phi(x_0, y_0) = 0$ ist. \\
+$\phi(x, y)$ ist \emph{in einer Umgebung von $(x_0, y_0)$ lokal nach $y$
+auf"|lösbar}, falls \\
+$\exists_{\varepsilon > 0} \exists_{\delta > 0}
+\exists_{f: U_\varepsilon(x_0) \rightarrow U_\delta(y_0)}$ mit \qquad
+1. $\phi(x, f(x)) = 0$ für alle $x \in U_\varepsilon(x_0)$ und \\
+2. $y = f(x)$ für alle $(x, y) \in U_\varepsilon(x_0) \times U_\delta(y_0)$
+mit $\phi(x, y) = 0$.
+
+\textbf{partielle Frechet-Ableitung nach Unterräumen}: \\
+Sei wieder $\phi: V \subset E \times F \rightarrow G$,
+$V$ of"|fen und $(x_0, y_0) \in V$.
+Dann ist \\
+$\phi_E'(x_0, y_0) =
+\left.\frac{\partial \phi}{\partial x}\right|_{(x_0,y_0)} \in \L(E,G)$
+die partielle Frechet-Ableitung nach $E$, falls \\
+$\phi(x_0 + h, y_0) = \phi(x_0, y_0) + \phi_E'(x_0, y_0)h + o(\norm{h}_E)$
+für $h \to 0$ und \\
+$\phi_F'(x_0, y_0) =
+\left.\frac{\partial \phi}{\partial y}\right|_{(x_0,y_0)} \in \L(F,G)$
+die partielle Frechet-Ableitung nach $F$, falls \\
+$\phi(x_0, y_0 + h) = \phi(x_0, y_0) + \phi_F'(x_0, y_0)h + o(\norm{h}_F)$
+für $h \to 0$.
+
+\linie
+
+\textbf{Satz (lokale Auf"|lösung impliziter Funktionen)}:
+Seien $E, F, G$ Banachräume, $V \subset E \times F$ of"|fen
+sowie $\phi: V \subset E \times F \rightarrow G$, wobei
+$(x_0, y_0) \in V$ mit $\phi(x_0, y_0) = 0$ ist.
+Sei zusätzlich \\
+1. $\phi$ in $(x_0, y_0)$ stetig, \\
+2. $\phi_F' = \frac{\partial \phi}{\partial y}$ existent auf $V$ und
+$\frac{\partial \phi}{\partial y}(\cdot): V \subset E \times F \rightarrow
+\L(F,G)$ in $(x_0, y_0)$ stetig und \\
+3. $\frac{\partial \phi}{\partial y}(x_0, y_0)$ ist auf $G$ invertierbar mit
+$\left(\frac{\partial \phi}{\partial y}(x_0, y_0)\right)^{-1} \in \L(G,F)$. \\
+Dann ist $\phi(x, y)$ in einer Umgebung von $(x_0, y_0)$ lokal auf"|lösbar.
+
+\textbf{Anmerkung}:
+Die so gefundene Funktion $y = y(x)$ ist stetig in $x_0$.
+
+\textbf{Satz (Dif"|ferenzierbarkeit)}:
+Sei zusätzlich zu den Voraussetzungen des Satzes \\
+$\phi_E' = \frac{\partial \phi}{\partial x}$ existent auf $V$ und
+$\frac{\partial \phi}{\partial x}(\cdot): V \subset E \times F \rightarrow
+\L(E, G)$ in $(x_0, y_0)$ stetig. \\
+Dann ist $y = y(x)$ in $x = x_0$ Frechet-dif"|ferenzierbar und
+$y'(x_0) = -\left(\phi_y'(x_0, y_0)\right)^{-1} \phi_x'(x_0, y_0)$.
+
+\linie
+
+\textbf{Beispiel}:
+Seien $E = F = G = \real$ und $\phi(x, y(x)) = 0$.
+Dif"|ferentiation nach $x$ ergibt \\
+$0 = (\phi_x', \phi_y')\begin{pmatrix}1 \\ y_x'\end{pmatrix}
+= \phi_x'1 + \phi_y' y_x'$, d.\,h. wie erwartet
+$y_x' = y'(x) = -\frac{\phi_x'}{\phi_y'}$.
+
+$y''(x)$ lässt sich durch Dif"|ferentiation von
+$0 = \phi_x'(x, y(x)) + \phi_y'(x, y(x)) \cdot \frac{dy}{dx}$ herleiten: \\
+$y''(x) = -\frac{\phi_{xx}'' (\phi_y')^2 - 2 \phi_{xy}'' \phi_x' \phi_y' +
+\phi_{yy}' (\phi_x')^2}{(\phi_y')^3}$, falls
+alle zweiten partiellen Ableitungen stetig sind.
+
+\linie
+\pagebreak
+
+\textbf{$\C^p$-Dif"|feomorphismus}:
+Sei $f: U \subset \real^n \rightarrow V \subset \real^n$ mit
+$U, V \subset \real^n$ of"|fen.
+$f$ heißt Dif"|feomorphismus der Klasse $\C^p$, falls
+$f$ bijektiv und $f, f^{-1} \in \C^p$, d.\,h. $p$-mal stetig dif"|fb., ist.
+
+\textbf{Satz}:
+Sei $f: G \subset \real^n \rightarrow \real^n$ mit $G$ of"|fen,
+$f \in \C^p(G, \real^n)$, $x_0 \in G$, $y_0 = f(x_0)$, wobei \\
+$J(x_0) = f'(x_0) = \left(\frac{\partial f_k}{\partial
+x_\ell}(x_0)\right)_{k, \ell = 1}^n$ als Matrix invertierbar ist. \\
+Dann gibt es of"|fene Mengen $U_{x_0} \ni x_0$ und $V_{y_0} \ni y_0$, sodass \\
+$f: U_{x_0} \rightarrow V_{y_0}$ ein $\C^p$-Dif"|feomorphismus ist.
+
+\linie
+
+\textbf{Beispiel}:
+Sei $f(r, \theta) = \begin{pmatrix}x(r, \theta) \\ y(r, \theta)\end{pmatrix} =
+\begin{pmatrix}r \cos \theta \\ r \sin \theta\end{pmatrix}$, $r > 0$.
+Dann ist $f'(r, \theta) = \begin{pmatrix}\cos \theta & -r \sin \theta \\
+\sin \theta & r \cos \theta\end{pmatrix}$. \\
+Wegen $\det f'(r, \theta) = r \not= 0$ ist $f$ ein $\C^p$-Dif"|feomorphismus.
+
+Man versucht nun, partielle Ableitungen eines Koordinatensystems
+(z.\,B. das kartesische) in einem anderen Koordinatensystem
+(z.\,B. das Polar-) darzustellen.
+Dafür wandelt man eine Funktion $g$ mit
+$g(x, y) = g(x(r, \theta), y(r, \theta)) = (g \circ f)(r, \theta) =
+\widetilde{g}(r, \theta)$ um. \\
+Nun ist einerseits
+$\widetilde{g}' = \left(\frac{\partial \widetilde{g}}{\partial r},
+\frac{\partial \widetilde{g}}{\partial \theta}\right) =
+(\nabla_{(r, \theta)} \widetilde{g})^t$ und andererseits mit Kettenregel \\
+$\widetilde{g}' = \left(\frac{\partial g}{\partial x},
+\frac{\partial g}{\partial y}\right)
+\begin{pmatrix}\frac{\partial x}{\partial r} &
+\frac{\partial x}{\partial \theta} \\
+\frac{\partial y}{\partial r} &
+\frac{\partial y}{\partial \theta}\end{pmatrix} =
+(\nabla_{(x,y)} g)^t \frac{D(x, y)}{D(r, \theta)}$.
+Daher gilt $\nabla_{(r,\theta)} \widetilde{g} =
+\left(\frac{D(x, y)}{D(r, \theta)}\right)^t \nabla_{(x,y)} g$. \\
+Man schreibt auch
+$\nabla_{(r,\theta)} \cdot =
+\left(\frac{D(x, y)}{D(r, \theta)}\right)^t \nabla_{(x,y)} \cdot$,
+wobei $g \circ f$ und $g$ eingesetzt werden sollen. \\
+Es gilt somit $\nabla_{(x,y)} =
+\left[\left(\frac{D(x, y)}{D(r, \theta)}\right)^t\right]^{-1}
+\nabla_{(r,\theta)} = G(r, \theta) \nabla_{(r,\theta)}$ \\
+mit $G(r, \theta) =
+\left[\left(\frac{D(x, y)}{D(r, \theta)}\right)^t\right]^{-1} =
+\frac{1}{r} \begin{pmatrix}r \cos \theta & -\sin \theta \\
+r \sin \theta & \cos \theta\end{pmatrix}$.
+
+\linie
+
+\textbf{Allgemein}:
+Dies kann man analog auch für Funktionen $f: \real^n \rightarrow \real^n$,
+$x = f(u)$, $x, u \in \real^n$ durchführen.
+Ist $x_1 = x_1(u_1, \dotsc, u_n)$, \dots, $x_n = x_n(u_1, \dotsc, u_n)$
+sowie $\det \frac{D(x_1, \dotsc, x_n)}{D(u_1, \dotsc, u_n)} \not= 0$, so
+gilt $\nabla_u = \left(\frac{D(x_1, \dotsc, x_n)}{D(u_1, \dotsc, u_n)}\right)^t
+\nabla_x$ bzw.
+$\nabla_x = G(u) \nabla_x$ mit
+$G(u) = \left[\left(\frac{D(x_1, \dotsc, x_n)}
+{D(u_1, \dotsc, u_n)}\right)^t\right]^{-1}$.
+So erhält man einen Dif"|ferentialausdruck, der nur noch von $u$ abhängt.
+Damit kann man $\nabla_x$ durch $\nabla_u$ darstellen.
+
+\linie
+
+\textbf{Beispiel \textsc{Laplace}-Operator}:
+Der Laplace-Operator kommt in vielen physikalischen Bereichen vor.
+Für $x = (x_1, \dotsc, x_n) \in \real^n$ ist er definiert durch \\
+$\Delta g(x) = \frac{\partial^2 g}{\partial x_1^2} + \dotsb +
+\frac{\partial^2 g}{\partial x_n^2} =
+\left(\frac{\partial^2}{\partial x_1^2} + \dotsb +
+\frac{\partial^2}{\partial x_n^2}\right) g = \nabla_x^t \nabla_x g =
+\div(\grad g)$.
+
+Mit $\nabla_x g(x) = G(u) \nabla_u \widetilde{g}(u)$
+($(\widetilde{g} \circ f)(u) = g(x)$) gilt \\
+$\nabla_x^t \nabla_x g = (G(u) \nabla_u)^t (G(u) \nabla_u) \widetilde{g} =
+\nabla_u^t G^t(u) G(u) \nabla_u \widetilde{g} -
+[\nabla_u^t G^t(u)] G(u) \nabla_u \widetilde{g}$. \\
+Für $n = 2$ und die Umwandlung in Polarkoordinaten gilt
+$G^t(r, \theta) G(r, \theta) = \begin{pmatrix}1 & 0 \\
+0 & \frac{1}{r^2}\end{pmatrix}$, \\
+$[\nabla_{(r,\theta)}^t G^t(r, \theta)] G(r, \theta) =
+\begin{pmatrix}-\frac{1}{r} \cos \theta &
+-\frac{1}{r} \sin \theta\end{pmatrix} \begin{pmatrix}
+\cos \theta & -\frac{1}{r} \sin \theta \\
+\sin \theta & \frac{1}{r} \cos \theta\end{pmatrix} =
+\begin{pmatrix}-\frac{1}{r} & 0\end{pmatrix}$. \\
+Somit ist
+$\Delta = \nabla_{(r,\theta)}^t G^t(r, \theta) G(r, \theta) \nabla_{(r,\theta)}
+- [\nabla_{(r,\theta)}^t G^t(r, \theta)] G(r, \theta) \nabla_{(r,\theta)} =
+\left(\frac{\partial^2}{\partial r^2} + \frac{\partial}{\partial \theta}
+\frac{1}{r^2} \frac{\partial}{\partial \theta}\right) + \frac{1}{r}
+\frac{\partial}{\partial r}$.
+In der Literatur liest man auch manchmal
+$\Delta = \frac{\partial^2}{\partial r^2} +
+\frac{1}{r} \frac{\partial}{\partial r} +
+\frac{1}{r^2} \frac{\partial^2}{\partial \theta^2} =
+\frac{1}{r} \frac{\partial}{\partial r} r \frac{\partial}{\partial r} + 
+\frac{1}{r^2} \frac{\partial^2}{\partial \theta^2}$.
+
+\pagebreak
+
+\subsection{%
+    Extremwerte von Funktionen mehrerer Variablen%
+}
+
+Sei $f: U \subset E \rightarrow \real$ eine Funktion von einem normierten
+Raum $E$ in $\real$ mit $U \subset E$ of"|fen. \\
+$f$ besitzt in $x^\ast \in U$ ein \textbf{lokales Maximum bzw. Minimum},
+falls \\
+$\exists_{\varepsilon > 0} \forall_{x \in U_\varepsilon(x^\ast) \cap U}\;
+f(x^\ast) \ge f(x)$ bzw. $f(x^\ast) \le f(x)$. \\
+$f$ besitzt in $x^\ast \in U$ ein
+\textbf{echtes (strenges) lokales Maximum bzw. Minimum}, falls \\
+$\exists_{\varepsilon > 0} \forall_{x \in
+(U_\varepsilon(x^\ast) \cap U) \setminus \{x^\ast\}}\;
+f(x^\ast) > f(x)$ bzw. $f(x^\ast) < f(x)$.
+
+\linie
+
+\textbf{Satz}:
+$f$ nehme in $x^\ast \in U$ ein lokales Extremum an. \\
+Existiert in der Richtung $h \in E$ eine Richtungsableitung
+$Df(x^\ast)[h]$, so ist $Df(x^\ast)[h] = 0$.
+
+\textbf{Spezialfall}:
+$E = \real^n$, $x = (x_1, \dotsc, x_n)$.
+Falls $f: U \subset \real^n \rightarrow \real$ in $x^\ast \in U$ einen
+lokalen Extremwert besitzt und
+$\left.\frac{\partial f}{\partial x_k}\right|_{x=x^\ast} = Df(x^\ast)[e_k]$
+existiert, so ist
+$\left.\frac{\partial f}{\partial x_k}\right|_{x=x^\ast} = 0$.
+
+\textbf{Folgerung}:
+Ist $f$ in $x^\ast$ Frechet-dif"|ferenzierbar, so ist
+$f'(x^\ast) = 0$.
+Es gilt $f'(x^\ast) = (\nabla f(x^\ast))^t$, d.\,h.
+falls $f$ in $x^\ast$ Frechet-dif"|fb. ist, so ist $\nabla f(x^\ast) = 0$
+eine notwendige Voraussetzung für die Existenz eines lokalen Extremwerts.
+Solche Punkte $x^\ast$ heißen \emph{kritische Punkte}.
+
+\linie
+
+Die Taylor-Entwicklung
+$f(x^\ast + h) = f(x^\ast) + \sp{\nabla f(x^\ast), h}_{\real^n} +
+\frac{1}{2} \sp{H(f)h, h}_{\real^n} + o(\norm{h}^2)$, $h \to 0$
+gibt mit $H(f) = \left.H(f)\right|_{x=x^\ast}$
+\textbf{hinreichende Bedingungen} für Extremwerte:
+\begin{itemize}
+    \item[a)]
+    $\sp{H(f)h, h} \ge \varepsilon \norm{h}^2$ für ein $\varepsilon > 0$
+    (für alle $h \in U_\delta(x_0)$), d.\,h. $H(f)$ ist
+    \textbf{positiv definit} \\
+    $\Rightarrow\;$ in $x^\ast$ ist \textbf{lokales Minimum}
+    
+    \item[b)]
+    $\sp{H(f)h, h} \le -\varepsilon \norm{h}^2$ für ein $\varepsilon > 0$
+    (für alle $h \in U_\delta(x_0)$), d.\,h. $H(f)$ ist
+    \textbf{negativ definit} \\
+    $\Rightarrow\;$ in $x^\ast$ ist \textbf{lokales Maximum}
+    
+    \item[c)]
+    es gibt $h_+, h_- \in \real^n$ mit
+    $\sp{H(f)h_-, h_-} \le -\varepsilon \norm{h_-}^2$ und
+    $\sp{H(f)h_+, h_+} \ge \varepsilon \norm{h_+}^2$ \\
+    $\Rightarrow\;$ in $x^\ast$ ist \textbf{kein lokaler Extremwert}
+\end{itemize}
+
+\linie
+
+\textbf{Wie lassen sich die hinreichende Bedingungen überprüfen?}
+
+$H(f) = \left.H(f)\right|_{x=x^\ast} = \begin{pmatrix}
+\left.\frac{\partial^2 f}{\partial x_1^2}\right|_{x=x^\ast} &
+\cdots &
+\left.\frac{\partial^2 f}{\partial x_1 \partial x_n}\right|_{x=x^\ast} \\
+\vdots & & \vdots \\
+\left.\frac{\partial^2 f}{\partial x_n \partial x_1}\right|_{x=x^\ast} &
+\cdots &
+\left.\frac{\partial^2 f}{\partial x_n^2}\right|_{x=x^\ast}
+\end{pmatrix}$,
+$\lambda_1 \le \dotsb \le \lambda_n$ Eigenwerte
+
+Es gilt $\lambda_1 \norm{h}^2 \le \sp{H(f)h, h} \le \lambda_n \norm{h}^2$
+und eine symmetrische Matrix ist genau dann positiv/negativ definit, wenn
+sie nur positive/negative Eigenwerte hat.
+Daher gilt
+\begin{itemize}
+    \item[a)]
+    $0 < \varepsilon = \lambda_1 \le \dotsb \le \lambda_n
+    \quad\Leftrightarrow\quad \varepsilon \norm{h}^2 \le \sp{H(f)h, h}$
+    
+    \item[b)]
+    $\lambda_1 \le \dotsb \le \lambda_n = -\varepsilon < 0
+    \quad\Leftrightarrow\quad -\varepsilon \norm{h}^2 \ge \sp{H(f)h, h}$
+    
+    \item[c)]
+    $\lambda_1 < 0$, $\lambda_n > 0
+    \quad\Rightarrow\quad \sp{H(f)h_1, h_1} = \lambda_1 \norm{h_1}^2 < 0,\;
+    \sp{H(f)h_n, h_n} = \lambda_n \norm{h_n}^2 > 0$
+\end{itemize}
+
+\linie
+
+\textbf{Spezialfall}:
+
+$n = 2$, $H(f) = \left.H(f)\right|_{x=x^\ast} = \begin{pmatrix}
+\left.\frac{\partial^2 f}{\partial x_1^2}\right|_{x=x^\ast} &
+\left.\frac{\partial^2 f}{\partial x_1 \partial x_2}\right|_{x=x^\ast} \\
+\left.\frac{\partial^2 f}{\partial x_2 \partial x_1}\right|_{x=x^\ast} &
+\left.\frac{\partial^2 f}{\partial x_2^2}\right|_{x=x^\ast}
+\end{pmatrix}$,
+$\lambda_1, \lambda_2$ Eigenwerte
+
+Dann ist $\det H(f) = \lambda_1 \lambda_2$ und
+$\tr H(f) = \lambda_1 + \lambda_2$.
+
+Ist nun $\det H(f) > 0$, so haben $\lambda_1, \lambda_2 \not= 0$
+gleiche Vorzeichen. \\
+Gilt zusätzlich $\tr H(f) > 0$, so ist $\lambda_1, \lambda_2 > 0$ und damit
+gilt Fall a). \\
+Gilt stattdessen $\tr H(f) < 0$, so ist $\lambda_1, \lambda_2 < 0$ und damit
+gilt Fall b). \\
+Ist aber $\det H(f) < 0$, so haben $\lambda_1, \lambda_2 \not= 0$
+unterschiedliche Vorzeichen und es gilt Fall c).
+
+\subsection{%
+    Funktionen von konstantem Rang, Mannigfaltigkeiten%
+}
+
+Gegeben seien of"|fene Teilmengen $U \subset \real^n$ und $V \subset \real^m$
+sowie eine Funktion $\varphi: U \rightarrow V$ bijektiv mit
+$\varphi, \varphi^{-1} \in \C^p$ für ein $p \in \natural$.
+Also ist $\varphi$ ein $\C^p$-Dif"|feomorphismus.
+
+Es gilt $y = \varphi(x) \;\Leftrightarrow\; 0 = y - \varphi(x)
+= y - (\varphi \circ \varphi^{-1})(y)$.
+Dif"|ferentiation nach $y$ ergibt \\
+$0_m = 1_m \;-$ \fracsize{$\frac{D \varphi}{Dx} \frac{D \varphi^{-1}}{Dy}$}.
+Für den Rang der $m \times n$-Jacobimatrix $\frac{D \varphi}{Dx}$ und
+der $n \times m$-Jacobimatrix $\frac{D \varphi^{-1}}{Dy}$ gilt
+$\rg \frac{D \varphi}{Dx} \le \min\{n, m\}$ und
+$\rg \frac{D \varphi^{-1}}{Dy} \le \min\{n, m\}$. \\
+Also gilt für das Produkt
+$\rg \frac{D \varphi}{Dx} \frac{D \varphi^{-1}}{Dy} \le \min\{n, m\}$
+und mit $\rg 1_m = m$ folgt aus \\
+$\rg 1_m = \rg \frac{D \varphi}{Dx} \frac{D \varphi^{-1}}{Dy}$, dass
+$m \le \min\{n, m\}$ gilt.
+Analog kann man $n \le \min\{n, m\}$ folgern. \\
+Daher ist $n = m$ und
+$\rg \frac{D \varphi}{Dx} = \rg \frac{D \varphi^{-1}}{Dy} = n$.
+
+Ein $\C^p$-Dif"|feomorphismus zwischen $\real^n$ und $\real^m$ kann also
+nur existieren, wenn $n = m$ ist.
+
+\linie
+
+\textbf{Abbildungen von konstantem Rang}: \\
+Seien $\widetilde{U} \subset \real^n$ eine of"|fene Menge,
+$x_0 \in \widetilde{U}$ und
+$f: \widetilde{U} \subset \real^n \rightarrow \real^m$ mit $f \in \C^p$.
+
+Als \textbf{Rang} $\rg f(x_0)$ von $f$ im Punkt $x_0$ bezeichnet man
+$\rg f'(x_0) \le \min\{n, m\}$, wobei $f'(x_0)$ die Jacobi-Matrix von $f$
+im Punkt $x_0$ ist.
+
+\textbf{Satz}:
+Sei $f: \widetilde{U} \subset \real^n \rightarrow \real^m$ mit
+$f \in \C^p$, $\widetilde{U} \subset \real^n$ of"|fen,
+$x_0 \in \widetilde{U}$, $y_0 = f(x_0)$ wie eben. \\
+Zusätzlich sei $\rg f(x) = k \le \min\{n, m\}$ konstant für
+$x \in \widetilde{U}$. \\
+Dann gibt es of"|fene Mengen $O_{x_0}, U \subset \real^n$ und
+$O_{y_0}, V \subset \real^m$ mit $x_0 \in O_{x_0}$, $y_0 \in O_{y_0}$ sowie
+$\varphi, \psi$ $\C^p$-Dif"|feomorphismen mit
+$\varphi: O_{x_0} \rightarrow U$,
+$\psi: O_{y_0} \rightarrow V$ und
+$\varphi(x_0) = \psi(y_0) = 0$, sodass
+$v = (\psi \circ f \circ \varphi^{-1})(u) =
+(u_1, \dotsc, u_k, 0, \dotsc, 0) \in \real^m$
+für alle $u \in U$.
+
+\linie
+
+$S \subset \real^n$ ist eine
+\textbf{$k$-dimensionale Mannigfaltigkeit der Klasse $\C^p$}, falls \\
+es für alle $x^\ast \in S$ of"|fene Teilmengen $V_{x^\ast}, U \subset \real^n$
+mit $x^\ast \in V_{x^\ast}$, $0 \in U$ und einen $\C^p$-Dif"|feomorphismus
+$\psi: V_{x^\ast} \rightarrow U$ gibt, sodass
+$\psi(S \cap V_{x^\ast}) = \{t \in U \;|\; t_{k+1} = \dotsb = t_n = 0\}$.
+
+$\psi = \psi_{x^\ast}$ heißt \textbf{lokale Parametrisierung}.
+Das Paar $(V_{x^\ast}, \psi_{x^\ast})$ heißt \textbf{Karte}, eine Menge von
+Karten heißt \textbf{Atlas}.
+
+\linie
+
+\textbf{Tangentialebene}:
+Sei $S \subset \real^n$ eine Mannigfaltigkeit mit \\
+$x = x(t_1, \dotsc, t_k) = \varphi(t_1, \dotsc, t_k, 0, \dotsc, 0)$, wobei
+$\varphi = \psi^{-1}$ und $x^\ast \in S$. \\
+Dann heißt $T_{x^\ast} S = \{x \in \real^n \;|\; x =
+\frac{D(x_1, \dotsc, x_n)}{D(t_1, \dotsc, t_k)} \widetilde{t},\;
+\widetilde{t} \in \real^k\}$
+die Tangentialebene in $x^\ast \in S$.
+
+Die Tangentialebene ist der Menge aller Tangentialvektoren an Kurven
+auf der Menge $S$ durch den Punkt $x^\ast$.
+
+%Sei also $\varphi$ mit $t \in \real^n \mapsto x = \varphi(t) \in \real^n$.
+%Dann ist 
+
+\pagebreak
+
+\subsection{%
+    Extremwerte unter Nebenbedingungen%
+}
+
+Gegeben sei ein Rechteck mit Umfang $U$.
+Gesucht sind die Seitenlängen $x_1$ und $x_2$, sodass der Inhalt maximal wird.
+Dieses Problem lässt sich in die Zielfunktion $f(x_1, x_2) = x_1 x_2$ und
+in die Nebenbedingung $F(x_1, x_2) = 2x_1 + 2x_2 - U = 0$ aufspalten.
+
+\linie
+
+\textbf{allgemein}: \\
+Gegeben sei eine \emph{Zielfunktion} $f: O \subset \real^n \rightarrow \real$
+mit den \emph{Nebenbedingungen (NB)} \\
+$F_1(x_1, \dotsc, x_n) = \dotsb = F_k(x_1, \dotsc, x_n) = 0$
+(also $F: O \subset \real^n \rightarrow \real^k$, $F(x) = 0$)
+und $f, F \in \C^p$. \\
+Gesucht ist $(x_1, \dotsc, x_n)$, sodass $f(x_1, \dotsc, x_n)$ maximal wird
+und \\
+$F_1(x_1, \dotsc, x_n) = \dotsb = F_k(x_1, \dotsc, x_n) = 0$ ist.
+
+\textbf{Satz}:
+Seien $f \in \C^1(O, \real)$ mit $O \subset \real^n$ of"|fen,
+$x^\ast \in O$, $\nabla f|_{x=x^\ast} \not= 0$ und $F \in \C^1(O, \real)$.
+Nimmt $f$ in $x^\ast$ einen lokalen Extremwert unter Nebenbedingungen an,
+so gilt $T_{x^\ast} S \subset T_{x^\ast} N_f(c)$, wobei
+$N_f(c) = \{x \in O \;|\; f(x) = c\}$ ist.
+
+\linie
+
+\textbf{Methode der \textsc{Lagrange}-Multiplikatoren}: \\
+Gegeben sei wie eben eine Zielfunktion $f: O \subset \real^n \rightarrow \real$
+mit NB $F_1(x) = \dotsb = F_k(x) = 0$. \\
+Man führt nun $k$ neue Variablen $\lambda = (\lambda_1, \dotsc, \lambda_k)$ ein
+(\emph{\textsc{Lagrange}-Multiplikatoren}) und betrachtet die Funktion
+$L(x, \lambda) = f(x) - \sum_{j=1}^k \lambda_j F_j(x)$. \\
+Man sucht die lokalen Extremwerte von $L(x, \lambda)$:
+\begin{enumerate}
+    \item
+    Für beliebige $\lambda = (\lambda_1, \dotsc, \lambda_k)$
+    löse die Gleichung $\nabla_x L(x, \lambda) = 0$, d.\,h. \\
+    $\nabla f(x) - \sum_{j=1}^k \lambda_j \nabla F_j(x) = 0$
+    nach $x^\ast = x^\ast(\lambda)$
+    ($n$ Gleichungen).
+    
+    \item
+    Setze $x^\ast = x^\ast(\lambda)$ in die Nebenbedingungen ein, d.\,h.
+    $F_1(x^\ast(\lambda)) = \dotsb = F_k(x^\ast(\lambda)) = 0$.
+    Wenn man dies nach
+    $\lambda^\ast = (\lambda_1^\ast, \dotsc, \lambda_k^\ast)$ auf"|löst, so
+    erhält man den kritischen Punkt \\
+    $x^\ast = x^\ast(\lambda^\ast)$.
+    
+    \item
+    Nun lässt sich mittels Überprüfung der Hesse-Matrix von $L$ feststellen,
+    ob in $x^\ast$ tatsächlich ein Extrempunkt vorliegt.
+    Diese enthält allerdings nur die zweiten Ableitungen nach $x$:
+    $H_L(x^\ast) = \Big($%
+    \fracsize{$\left.\frac{\partial^2 L}{\partial x_i x_j}\right|_{x=x^\ast}$}%
+    $\Big)_{i,j=1}^n$.
+\end{enumerate}
+
+\pagebreak

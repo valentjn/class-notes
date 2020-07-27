@@ -1,0 +1,1831 @@
+\section{%
+    Zur Theorie der gewöhnlichen Dif"|ferentialgleichungen%
+}
+
+\subsection{%
+    Motivation%
+}
+
+\textbf{Gewöhnliche Dif"|ferentialgleichungen}
+(\emph{ordinary dif"|ferential equations, ODEs})
+beschreiben Probleme, die folgende Eigenschaften besitzen:
+\begin{itemize}
+    \item
+    \textbf{deterministisch}:
+    Ist der Zustand eines Systems zum Zeitpunkt $t = t_0$ (Gegenwart) bekannt,
+    so kann er für alle Zeitpunkte $t$ bestimmt werden.
+    
+    \item
+    \textbf{endlich-dimensional}:
+    Der Zustand des Systems wird durch endlich viele Größen bestimmt.
+    
+    \item
+    \textbf{dif"|ferenzierbar}
+\end{itemize}
+
+Die Menge aller möglichen Zustände eines Systems heißt \textbf{Phasenraum $M$}.
+
+\linie
+
+\emph{Beispiel}: \textbf{radioaktiver Zerfall} \\
+Die Zahl an pro Zeiteinheit zerfallenden Atomen ist proportional
+zu deren aktueller Anzahl.
+Mathematisch bedeutet dies $\dot{g}(t) = -\kappa g(t)$ mit $\kappa > 0$.
+Die Lösung dieser DGL ist $g(t) = g_0 \cdot e^{-\kappa t}$ für $t \in \real$
+mit $g_0 = g(0) \ge 0$.
+Der Zustand des Systems wird allein durch $g(0)$ bestimmt.
+Der Phasenraum ist hier $M = \left[0, +\infty\right[$.
+
+\emph{Beispiel}: \textbf{Auslenkung einer Feder} \\
+Sei eine Feder in horizontaler Lage gegeben.
+Für die an ihr ziehende Kraft $F$, die Auslenkung $q$ und die Masse $m$ gilt
+$F = -k q$ sowie $F = m \ddot{q}$, also $m \cdot \ddot{q}(t) = -k q(t)$
+($k, m > 0$).
+Eine Lösung ist $q(t) = A \cdot \sin(\mu t) + B \cdot \cos(\mu t)$ mit
+$\mu = \sqrt{\frac{k}{m}}$.
+Hier bestimmt nicht $g(0) = B$ alleine den Zustand des Systems, sondern nur
+zusammen mit $\dot{q}(0) = \mu A$.
+Der aktuelle Zustand des Systems wird durch
+$\mathbbm{y}(t) = \begin{pmatrix}q(t) \\ p(t)\end{pmatrix}$ mit dem Impuls
+$p(t) = \dot{q}(t) \cdot m$ respräsentiert.
+Die Ableitung ist $\dot{\mathbbm{y}}(t)
+= \begin{pmatrix}1/m \cdot p(t) \\ -k \cdot q(t)\end{pmatrix} =
+A \mathbbm{y}(t)$ mit $A = \begin{pmatrix}0 & 1/m \\ -k & 0\end{pmatrix}$.
+Damit ist die DGL auf eine Form wie oben gebracht.
+Der Phasenraum ist hier $M = \real^2$.
+
+\linie
+
+\textbf{mathematische Beschreibung von "`deterministisch"'}: \\
+Ist der Startzustand $x = y(0) \in M$ eines Systems bekannt, so kann
+$y(t) \in M$ für alle $t \in \real$ eindeutig bestimmt werden (Determinismus).
+$g^t\colon M \rightarrow M$, $g^t x = y(t)$ sei die Abbildung, die einem
+Startzustand $x$ den Zustand $g^t x$ zum Zeitpunkt $t$ zuweist.
+Die Kurve in $M$, die entsteht, wenn man für einen fixen Startzustand $x$
+die angenommenen Zustände $g^t x$, $t \in \real$ einzeichnet, heißt
+\textbf{Trajektorie} oder \textbf{Orbit}.
+Man fordert, dass $g$ die folgenden Bedingungen erfüllt: \\
+1. $g^0 = \id$, \qquad
+2. $g^{t+s} = g^t g^s = g^{s+t} = g^s g^t$, \qquad
+3. $g^{-t} = (g^t)^{-1}$. \\
+Damit wird $\{g^t\}$ zur abelschen Gruppe.
+$(M, \{g^t\})$ heißt dann \textbf{Phasenfluss}.
+
+\linie
+\pagebreak
+
+\textbf{zum Begriff der Dif"|ferenzierbarkeit}: \\
+Für den Fall $M \subset \real^n$ kann man
+$g\colon \real \times M \rightarrow M$, $g(t, x) = g^t x$ als Funktion
+auf"|fassen.
+Sie sei in $t$ dif"|ferenzierbar.
+Man definiert nun $v\colon M \rightarrow M$,
+$v(x) = \frac{d}{d\tau}\left.(g^\tau x)\right|_{\tau=0}$ als das
+\textbf{Geschwindigkeitsfeld}.
+Einsetzen von $y(t)$ ergibt $v(y(t)) =
+\frac{d}{d\tau}\left.(g^\tau y(t))\right|_{\tau=0} =
+\frac{d}{d\tau}\left.(g^\tau g^t x)\right|_{\tau=0} =
+\frac{d}{d\tau}\left.(g^{\tau+t} x)\right|_{\tau=0} =
+\frac{d}{d\tau}\left.(g^s x)\right|_{s=t} = \dot{y}(t)$, d.\,h.
+\textbf{$\dot{y}(t) = v(y(t))$}.
+
+Hier ist $v = v(x)$ zeitunabhängig, d.\,h. das Geschwindigkeitsfeld hängt nicht
+von $t$ ab. \\
+Solche DGLs nennt man \textbf{autonom}.
+
+\linie
+
+Bei \textbf{nicht-autononomen DGLs} ist $\dot{y}(t) = v(t, y(t))$,
+d.\,h. die rechte Seite hängt von $t$ ab.
+Ein nicht-autonomes System kann in ein autonomes überführt werden, indem
+man eine zusätzliche Gleichung einführt: \\
+Ist $y$ Lösung der nicht-autonomen DGL, so definiert man
+$\mathbbm{y}(t) := \begin{pmatrix}t \\ y(t)\end{pmatrix}$.
+Die Ableitung ist $\dot{\mathbbm{y}}(t) =
+\begin{pmatrix}1 \\ v(t, y(t))\end{pmatrix} =
+\begin{pmatrix}1 \\ v(\mathbbm{y}(t))\end{pmatrix} =:
+\mathbbm{v}(\mathbbm{y}(t))$.
+Man erhält also ein autonomes System.
+
+Genauso können \textbf{nicht-autonome DGLs $n$-ter Ordnung}
+auf eine autonome DGL reduziert werden:
+Für $y^{(n)}(t) = v(t, y(t), \dotsc, y^{(n-1)}(t))$ und eine Lösung $y$ setzt
+man \\
+$\mathbbm{y}(t) :=
+\begin{pmatrix}t \\ y(t) \\ \vdots \\ y^{(n-2)}(t) \\
+y^{(n-1)}(t)\end{pmatrix}$.
+Die Ableitung ist $\dot{\mathbbm{y}}(t) =
+\begin{pmatrix}1 \\ \dot{y}(t) \\ \vdots \\ y^{(n-1)}(t) \\
+v(t, \dotsc, y^{(n-1)}(t))\end{pmatrix} =
+\begin{pmatrix}1 \\ \dot{y}(t) \\ \vdots \\ y^{(n-1)}(t) \\
+v(\mathbbm{y}(t))\end{pmatrix} =: \mathbbm{v}(\mathbbm{y}(t))$.
+Man erhält wieder eine autonome DGL
+$\dot{\mathbbm{y}}(t) = \mathbbm{v}(\mathbbm{y}(t))$.
+
+\linie
+
+Der \textbf{erweiterte Phasenraum} ist $\real \times M$.
+Man erweitert also $M$ um eine zusätzliche Zeitachse.
+Das Analogon zur Trajektorie ist die \textbf{Integralkurve}.
+Sie ermöglicht nicht nur zu sehen, welche Zustände erreicht werden,
+sondern auch zu welchem Zeitpunkt.
+Im Falle des radioaktiven Zerfalls bzw. der Feder ergibt sich eine
+Kurve im $\real^2$ bzw. eine Schraubenlinie im $\real^3$.
+
+\subsection{%
+    Die Methode von \name{Euler}%
+}
+
+Im Folgenden sei der Phasenraum eine Teilmenge $M \subset \real^n$.
+Die betrachteten Zeitpunkte sollen dabei in $I := [a,b]$ liegen, wobei
+$t_0 \in I$ der Anfangszeitpunkt sei.
+Man kann sich eine Skizze des erweiterten Phasenraums machen,
+in der man die Zeitachse über den Phasenraum aufträgt.
+Der erweiterte Phasenraum ist dabei ein Zylinder $\Omega := I \times M$
+über dem Phasenraum, die Integralkurve ist eine Kurve in $\Omega$, wobei
+dessen Projektion auf $M$ genau die Trajektorie ist.
+
+Man geht von einer nicht-autonomen DGL aus, d.\,h.
+$\mathbbm{v}\colon I \times M \rightarrow \real^n$
+ist das Geschwindigkeitsfeld.
+$\mathbbm{v}$ soll dabei folgende Bedingungen erfüllen:
+\begin{enumerate}
+    \item
+    $\mathbbm{v}\colon \Omega \rightarrow \real^n$ ist stetig
+    
+    \item
+    $\norm{\mathbbm{v}(t, \mathbbm{x})} \le C$ für
+    $t \in I$, $\mathbbm{x} \in M$ \\
+    ($\mathbbm{v}$ ist auf $I \times M$ beschränkt)
+    
+    \item
+    $\norm{\mathbbm{v}(t, \mathbbm{x}') - \mathbbm{v}(t, \mathbbm{x}'')} \le
+    L \norm{\mathbbm{x'} - \mathbbm{x''}}$ für
+    $t \in I$, $\mathbbm{x}', \mathbbm{x}'' \in M$ \\
+    ($\mathbbm{v}$ ist im zweiten Argument \textbf{\name{Lipschitz}-stetig})
+\end{enumerate}
+Gesucht ist eine Funktion $\mathbbm{y}\colon I \rightarrow M$
+mit $\dot{\mathbbm{y}}(t) = \mathbbm{v}(t, \mathbbm{y}(t))$
+und $\mathbbm{y}(t_0) = \mathbbm{y}_0 \in M$. \\
+Dieses Problem bezeichnet man als \textbf{\name{Cauchy}-/Anfangswertproblem}.
+
+\linie
+\pagebreak
+
+Integration von $\dot{\mathbbm{y}}(t) = \mathbbm{v}(t, \mathbbm{y}(t))$
+von $t_0$ bis $s$ ergibt
+$\mathbbm{y}(s) = \mathbbm{y}(t_0) +
+\int_{t_0}^s \mathbbm{v}(t, \mathbbm{y}(t))\dt$.
+Da im Integral allerdings immer noch $\mathbbm{y}(t)$ steckt, kann es ohne
+Weiteres nicht berechnet werden.
+
+Man unterteilt nun das zu untersuchende Intervall $[t_0, b]$ in $N$ Intervalle
+$[t_{k-1}, t_k]$, $k = 1, \dotsc, N$ mit $t_0 < t_1 < \dotsb < t_N$
+(analog kann das mit $[a, t_0]$ durchgeführt werden).
+
+\textbf{1. Schritt}:
+Für $s \in [t_0, t_1]$ approximiert man das Integral, indem man
+$\mathbbm{y}(t) \approx \mathbbm{y}_0$ für $t \approx t_0$ verwendet, also
+$\widetilde{\mathbbm{y}}(s) := \mathbbm{y}_0 +
+\int_{t_0}^s \mathbbm{v}(t, \mathbbm{y}_0)\dt$.
+Setze nun $\mathbbm{y}_1 := \widetilde{\mathbbm{y}}(t_1)$.
+
+\textbf{$k$-ter Schritt}: \\
+Für $s \in [t_{k-1}, t_k]$ setzt man
+$\widetilde{\mathbbm{y}}(s) := \mathbbm{y}_{k-1} +
+\int_{t_{k-1}}^s \mathbbm{v}(t, \mathbbm{y}_{k-1})\dt$
+und berechnet $\mathbbm{y}_k := \widetilde{\mathbbm{y}}(t_k)$.
+
+\textbf{weitere Vereinfachung (vereinfachte \name{Euler}sche Methode)}: \\
+Statt $\mathbbm{v}(t, \mathbbm{y}_{k-1})$ verwendet man
+$\mathbbm{v}(t_{k-1}, \mathbbm{y}_{k-1})$, d.\,h. man benutzt
+$t \approx t_{k-1}$ für $t \in [t_{k-1}, t_k]$. \\
+Dann lässt sich das Integral einfach berechnen:
+$\widehat{\mathbbm{y}}(s) =
+\mathbbm{y}_{k-1} + (s - t_{k-1}) \cdot
+\mathbbm{v}(t_{k-1}, \mathbbm{y}_{k-1})$.
+
+\linie
+
+\textbf{Unter welchen Bedingungen bleibt $\widetilde{\mathbbm{y}}$ bzw.
+$\widehat{\mathbbm{y}}$ in $M$?}
+
+Aus der Beschränktheit von $\mathbbm{v}$ und obiger Integral-Gleichung
+folgt $\norm{\mathbbm{y}(s) - \mathbbm{y}_0} \le |s - t_0| C$.
+Dies soll kleiner/gleich $\dist(\mathbbm{y}_0, \partial M)$ sein. \\
+Dabei ist für einen metrischen Raum $(M, d)$, $x \in M$ und $A, B \subset M$ \\
+$\dist(x, A) := \inf_{y \in A} d(x, y)$ sowie
+$\dist(A, B) := \inf_{x \in A,\; y \in B} d(x, y)$. \\
+Also stellt man die zusätzliche Forderung
+\textbf{$|s - t_0| \le \frac{1}{C} \dist(\mathbbm{y}_0, \partial M)$}
+an $I$. \\
+($\widetilde{\mathbbm{y}}$ und $\widehat{\mathbbm{y}}$ erfüllen dann die
+gleiche Abschätzung.)
+
+\linie
+
+\textbf{Wie gut ist diese Approximation?}
+
+Im Folgenden werden äquidistante Punkte angenommen, also
+$b = t_N$ und $t_k - t_{k-1} = \frac{b}{N}$ \\
+(d.\,h. $t_0 = 0$ und $|b - 0| \le \frac{1}{C} \dist(y_0, \partial M)$).
+
+Zunächst schätzt man den Fehler für $s \in [t_0, t_1]$ ab: \\
+$\norm{\mathbbm{y}(s) - \widetilde{\mathbbm{y}}(s)} =
+\norm{\int_{t_0}^s (\mathbbm{v}(t, \mathbbm{y}(t)) -
+\mathbbm{v}(t, \mathbbm{y}_0)) \dt} \le
+L \cdot \int_{t_0}^s \norm{\mathbbm{y}(t) - \mathbbm{y}_0} \dt \le
+L \cdot \int_{t_0}^s (t - t_0) C \dt$ \\
+$= \frac{LC}{2} (s - t_0)^2$, d.\,h.
+insbesondere
+$\Delta_1 := \norm{\mathbbm{y}(t_1) - \widetilde{\mathbbm{y}}(t_1)} \le
+\frac{LC}{2} \left(\frac{b}{N}\right)^2$.
+
+Dann schätzt man den Fehler
+$\Delta_{k} := \norm{\mathbbm{y}(t_k) - \widetilde{\mathbbm{y}}(t_k)}$
+im $k$-ten Schritt (also für $s \in [t_{k-1}, t_k]$) ab:
+$\norm{\mathbbm{y}(s) - \widetilde{\mathbbm{y}}(s)} =
+\norm{\mathbbm{y}(t_{k-1}) - \mathbbm{y}_{k-1} +
+\int_{t_{k-1}}^s \left(\mathbbm{v}(t, \mathbbm{y}(t)) -
+\mathbbm{v}(t, \mathbbm{y}_{k-1})\right) \dt}$ \\
+$\le \Delta_{k-1} +
+\int_{t_{k-1}}^s \norm{\mathbbm{v}(t, \mathbbm{y}(t)) -
+\mathbbm{v}(t, \mathbbm{y}(t_{k-1}))} \dt +
+\int_{t_{k-1}}^s \norm{\mathbbm{v}(t, \mathbbm{y}(t_{k-1})) -
+\mathbbm{v}(t, \mathbbm{y}_{k-1})} \dt$ \\
+$\le \Delta_{k-1} +
+L \cdot \int_{t_{k-1}}^s \norm{\mathbbm{y}(t) - \mathbbm{y}(t_{k-1})} \dt +
+L \cdot \int_{t_{k-1}}^s \norm{\mathbbm{y}(t_{k-1}) -
+\mathbbm{y}_{k-1}} \dt$ \\
+$\le \Delta_{k-1} + \frac{LC}{2} (s - t_{k-1})^2 +
+L (s - t_{k-1}) \Delta_{k-1}$.
+Für $s = t_k$ ergibt sich \\
+$\Delta_k = \norm{\mathbbm{y}(t_k) - \widetilde{\mathbbm{y}}(t_k)} \le
+\Delta_{k-1} \left(1 + L \frac{b}{N}\right) +
+\frac{LC}{2} \left(\frac{b}{N}\right)^2$.
+
+\textbf{Entwicklung des Fehlers}:
+Es gilt \\
+$\Delta_1 \le \frac{LC}{2} \left(\frac{b}{N}\right)^2 \cdot 1$, \\
+$\Delta_2 \le \frac{LC}{2} \left(\frac{b}{N}\right)^2 \cdot
+\left(1 + L \frac{b}{N}\right) + \frac{LC}{2} \left(\frac{b}{N}\right)^2 \le
+\frac{LC}{2} \left(\frac{b}{N}\right)^2 \cdot
+\left(1 + \left(1 + L \frac{b}{N}\right)\right)$, \\
+$\Delta_3 \le \frac{LC}{2} \left(\frac{b}{N}\right)^2 \cdot
+\left(1 + \left(1 + L \frac{b}{N}\right) +
+\left(1 + L \frac{b}{N}\right)^2\right)$ usw. \\
+Daher ist $\Delta_k \le \frac{LC}{2} \left(\frac{b}{N}\right)^2 \cdot
+\sum_{\ell=0}^{k-1} \left(1 + L \frac{b}{N}\right)^\ell =
+\frac{LC}{2} \left(\frac{b}{N}\right)^2 \cdot
+\frac{\left(1 + L \frac{b}{N}\right)^k - 1}
+{\left(1 + L \frac{b}{N}\right) - 1} =
+\frac{C}{2} \left(\frac{b}{N}\right)
+\left(\left(1 + L \frac{b}{N}\right)^k - 1\right)$.
+
+Setzt man $k = N$, so gilt \\
+$\Delta_N = \norm{\mathbbm{y}(b) - \widetilde{\mathbbm{y}}(b)} \le
+\frac{1}{N} \frac{Cb}{2}
+\left(\left(1 + \frac{Lb}{N}\right)^N - 1\right) \le
+\frac{1}{N} \frac{Cb}{2} \left(e^{Lb} - 1\right) \xrightarrow{N \to \infty} 0$.
+
+Das Euler-Verfahren konvergiert also.
+
+\subsection{%
+    Lokale Existenz und Eindeutigkeit der Lösung des \name{Cauchy}-Problems%
+}
+
+Wie eben sei das Cauchy-Problem (CP) gegeben mit
+$\dot{\mathbbm{y}}(t) = \mathbbm{v}(t, \mathbbm{y}(t))$ und
+$\mathbbm{y}(t_0) = \mathbbm{y}_0$. \\
+Dabei seien wieder $I = [a, b]$, $t_0 \in I$, $\Omega = I \times M$ und
+$M \subset \real^n$.
+
+\textbf{Satz von \name{Picard}-\name{Lindelöf}}: \\
+$\mathbbm{v}\colon \Omega \rightarrow \real^n$ erfülle folgende
+Voraussetzungen:
+\begin{enumerate}
+    \item
+    $\mathbbm{v}\colon \Omega \rightarrow \real^n$ ist stetig
+    
+    \item
+    $\norm{\mathbbm{v}(t, \mathbbm{x})} \le C$ für
+    $t \in I$, $\mathbbm{x} \in M$
+    
+    \item
+    $\norm{\mathbbm{v}(t, \mathbbm{x}') - \mathbbm{v}(t, \mathbbm{x}'')} \le
+    L \norm{\mathbbm{x'} - \mathbbm{x''}}$ für
+    $t \in I$, $\mathbbm{x}', \mathbbm{x}'' \in M$
+\end{enumerate}
+Dann besitzt das Problem (CP) für $t \in I_\varepsilon(t_0)$
+genau eine Lösung mit \\
+$I_\varepsilon(t_0) := \{t \in I \;|\;
+|t - t_0| \le (1 - \varepsilon) \alpha\}$, wobei $\varepsilon > 0$ und
+$\alpha := \min\left\{\frac{1}{C} \dist(\mathbbm{y}_0, \partial M),
+\frac{1}{L}\right\}$.
+
+Im Beweis zeigt man:
+$(F, d_\C)$ ist ein vollständiger metrischer Raum, wobei \\
+$F := \overline{U_{r_\varepsilon}(\mathbbm{y}_0)} =
+\{f \in \C(I_\varepsilon(t_0), \real^n) \;|\;
+\forall_{t \in I_\varepsilon(t_0)}\;
+\norm{f(t) - \mathbbm{y}_0} \le r_\varepsilon\}$ mit $r_\varepsilon > 0$.
+
+\linie
+
+Durch wiederholtes Anwenden des Satzes von Picard-Lindelöf kann man die Lösung
+eindeutig fortsetzen (auch rückwärts), bis man entweder das ganze Zeitintervall
+gelöst hat oder die Lösung an den Rand des Phasenraums stößt.
+
+Ist $M = \overline{M}$ abgeschlossen und konvex (d.\,h. für $x, y \in M$
+ist immer auch $\overline{xy} \subset M$),
+$\mathbbm{v}$ auf $\inneres(M)$ Frechet-dif"|ferenzierbar und
+$\mathbbm{v}'$ stetig auf $\overline{M}$ fortsetzbar, so gilt nach dem
+Hauptsatz der Dif"|ferentialrechnung
+$\norm{\mathbbm{v}(t, \mathbbm{x}) - \mathbbm{v}(t, \mathbbm{y})} \le
+\sup_{\widetilde{\mathbbm{x}} \in \overline{\mathbbm{x}\mathbbm{y}}}
+\norm{D_\mathbbm{x} \mathbbm{v}(t, \widetilde{\mathbbm{x}})} \cdot
+\norm{\mathbbm{x} - \mathbbm{y}}$. \\
+Als stetige Funktion ist die Ableitung beschränkt, d.\,h.
+$\mathbbm{v}$ erfüllt obige Lipschitz-Bedingung
+$\norm{\mathbbm{v}(t, \mathbbm{x}) - \mathbbm{v}(t, \mathbbm{y})} \le
+L \norm{\mathbbm{x} - \mathbbm{y}}$
+für $L \ge \sup_{\widetilde{\mathbbm{x}} \in \overline{\mathbbm{x}\mathbbm{y}}}
+\norm{D_\mathbbm{x} \mathbbm{v}(t, \widetilde{\mathbbm{x}})}$.
+
+\linie
+
+Der Fixpunktsatz von Banach, der zum Beweis des Satzes verwendet wird,
+gibt auch eine Lösungsmethode:
+Wähle zunächst $\mathbbm{h}_0 \in \C(I_\varepsilon(t_0), \real^n)$ mit
+$\mathbbm{h}_0(t) \equiv \mathbbm{y}_0$ konstant.
+Dann definiere für $j \in \natural$ die Funktion
+$\mathbbm{h}_j(t) = (T \mathbbm{h}_{j-1})(t) :=
+\mathbbm{y}_0 + \int_{t_0}^t
+\mathbbm{v}(\tau, \mathbbm{h}_{j-1}(\tau))\d\tau$. \\
+Nach dem Beweis des Satzes gilt $\mathbbm{h}_j \xrightarrow{d_\C} \mathbbm{y}$,
+d.\,h. $\mathbbm{h}_j \rightrightarrows \mathbbm{y}$, da
+$T\colon F \rightarrow F$ eine Kontraktion ist.
+
+Eine Fehlerabschätzung kann mit der Fehlerformel des Banachschen
+Fixpunktsatzes erfolgen.
+
+Die Schnelligkeit der Konvergenz kann auch direkt abgeschätzt werden:
+Dazu betrachtet man
+$\norm{\mathbbm{y}(t) - \mathbbm{h}_0(t)} \le
+\norm{\int_{t_0}^t \mathbbm{v}(\tau, \mathbbm{y}(\tau))\d\tau} \le
+C |t - t_0|$, \\
+$\norm{\mathbbm{y}(t) - \mathbbm{h}_1(t)} \le
+\norm{\int_{t_0}^t \left(\mathbbm{v}(\tau, \mathbbm{y}(\tau)) -
+\mathbbm{v}(\tau, \mathbbm{h}_0(\tau))\right)\d\tau} \le
+\left|\int_{t_0}^t L \norm{\mathbbm{y}(\tau) -
+\mathbbm{h}_0(\tau)}\d\tau\right|$ \\
+$\le CL \cdot \left|\int_{t_0}^t |\tau - t_0| \d\tau\right| \le
+\frac{CL}{2} |t - t_0|^2$, usw., also \\
+$\norm{\mathbbm{y}(t) - \mathbbm{h}_j(t)} \le
+\frac{CL^j}{(j + 1)!} |t - t_0|^{j+1}$ für $t \in I_\varepsilon(t_0)$.
+
+\pagebreak
+
+\subsection{%
+    Der Satz von \name{Peano}%
+}
+
+Eine wichtige Voraussetzung beim Satz von Picard-Lindelöf ist die
+Lipschitz-Stetigkeit in der zweiten Komponente, also
+$\norm{\mathbbm{v}(t, \mathbbm{x}') - \mathbbm{v}(t, \mathbbm{x}'')} \le
+L\norm{\mathbbm{x}' - \mathbbm{x}''}$.
+
+Es gibt aber viele Funktionen, die nicht Lipschitz-stetig sind.
+Ein Beispiel dafür ist $v(t, y) = y^{2/3}$
+(z.\,B. mit zugehörigem Cauchy-Problem
+$\dot{y}(t) = \sqrt[3]{y^2(t)}$ für $t \in \real$ und $y(0) = 0$). \
+$y^{2/3}$ ist in $0$ nicht Lipschitz-stetig, da
+$\frac{|h^{2/3}|}{|h|} \to \infty$ für $h \to 0$. \\
+Eine of"|fensichtliche Lösung ist $y(t) \equiv 0$ für $t \in \real$. \\
+Eine zweite Lösung erhält man durch Separation:
+Integriert man $\frac{\dot{y}(t)}{\sqrt[3]{y^2(t)}} = 1$, so erhält man
+$\int_{t_0}^t \frac{\dot{y}(\tau)}{\sqrt[3]{y^2(\tau)}} \d\tau =
+\int_{y(t_0)}^{y(t)} \frac{1}{y^{2/3}} \dy =
+\left.3y^{1/3}\right|_{y(t_0)}^{y(t)} = t - t_0$,
+also $3(y^{1/3}(t) - y^{1/3}(t_0)) = t - t_0$.
+Mit $t_0 = 0$ und $y(t_0) = 0$ folgt, dass
+$y(t) = \left(\frac{t}{3}\right)^3$ die Gleichung und die Anfangsbedingung
+erfüllt. \\
+Es kann also zwei verschiedene Lösungen geben, wenn man die Forderung der
+Lipschitz-Stetig\-keit weglässt.
+
+\linie
+
+\textbf{Satz von \name{Peano}}:
+Seien $I \subset \real$, $M \subset \real^n$, $\Omega = I \times M$
+und $(t_0, \mathbbm{y}_0) \in \Omega$. \\
+$\mathbbm{v}\colon \Omega \rightarrow \real^n$ erfülle folgende
+Voraussetzungen:
+\begin{enumerate}
+    \item
+    $\mathbbm{v}\colon \Omega \rightarrow \real^n$ ist stetig
+    
+    \item
+    $\norm{\mathbbm{v}(t, \mathbbm{x})} \le C$ für
+    $t \in I$, $\mathbbm{x} \in M$
+\end{enumerate}
+Dann besitzt das Cauchy-Problem (CP) für $t \in \widetilde{I}_\varepsilon(t_0)$
+mindestens eine Lösung mit \\
+$\widetilde{I}_\varepsilon(t_0) := \{t \in I \;|\; |t - t_0| \le
+(1 - \varepsilon) \frac{1}{C} \dist(\mathbbm{y}_0, \partial M)\}$
+für $\varepsilon > 0$.
+
+\linie
+
+\textbf{Strategie des Beweises}:
+Sei $(F, d)$ ein vollständiger metrischer Raum.
+
+\textbf{relativ kompakt}:
+$G \subset F$ heißt \emph{relativ kompakt}, falls $\overline{G}$ kompakt ist
+(im Sinne von folgen-kompakt).
+
+\emph{Beispiel}:
+$G \subset \real^n$ ist relativ kompakt genau dann, wenn $G$ beschränkt ist
+(Bolzano). \\
+Dies gilt aber nicht in unendlich-dimensionalen Räumen! \\
+Allgemein gesagt ist $G \subset F$ relativ kompakt genau dann, wenn für jede
+Folge $\{f_n\}_{n \in \natural}$, $f_n \in G$ eine Teilfolge
+$\{f_{n_k}\}_{k \in \natural}$ existiert mit $f_{n_k} \to f \in \overline{G}$.
+
+\textbf{kompakte Abbildung}:
+Seien $D \subset F$ und $T\colon D \rightarrow F$ eine Abbildung. \\
+$T$ heißt \emph{kompakt auf $D$}, falls
+$TD = \{y \in F \;|\; \exists_{x \in D}\; Tx = y\}$ relativ kompakt ist.
+
+\textbf{approximative Lösung des Fixpunktproblems}:
+Das \emph{Fixpunktproblem ist für $T$ auf $D$ approximativ lösbar},
+falls es eine Folge $\{x_n\}_{n \in \natural}$, $x_n \in D$ gibt mit
+$d(Tx_n, x_n) \xrightarrow{n \to \infty} 0$.
+
+\textbf{Fixpunktsatz}: \\
+Seien $(F, d)$ ein vollständiger metrischer Raum,
+$D \subset F$ abgeschlossen und $T\colon D \rightarrow F$ mit
+\begin{enumerate}
+    \item
+    $T$ ist stetig,
+    
+    \item
+    $T$ ist auf $D$ kompakt und
+    
+    \item
+    das Fixpunktproblem für $T$ auf $D$ lässt sich approximativ lösen.
+\end{enumerate}
+Dann hat $T$ mindestens einen Fixpunkt, d.\,h. es gibt ein $y \in D$ mit
+$Ty = y$.
+
+\linie
+\pagebreak
+
+\textbf{Wie wird diese Idee zum Beweis
+des Satzes von \name{Peano} verwendet?}
+
+$\C(\widetilde{I}_\varepsilon(t_0), \real^n)$ ist ein Banachraum.
+Beim Beweis vom Satz von Picard-Lindelöf wurde gezeigt, dass $(F, d_\C)$ mit
+$F := \overline{U_{r_\varepsilon}(\mathbbm{y}_0)}$ ein vollständiger
+metrischer Raum ist, da folgen-abgeschlossen.
+Dabei ist $\overline{U_{r_\varepsilon}(\mathbbm{y}_0)} =
+\{f \in \C(\widetilde{I}_\varepsilon(t_0), \real^n) \;|\;
+\forall_{t \in \widetilde{I}_\varepsilon(t_0)}\;
+\norm{f(t) - \mathbbm{y}_0} \le r_\varepsilon\}$ mit \\
+$r_\varepsilon := (1 - \varepsilon) \dist(\mathbbm{y}_0, \partial M)$.
+
+Definiert man die Abbildung $T\colon D \rightarrow F$ mit
+$D := F = \overline{D}$ gleich wie im Beweis vom Satz von Picard-Lindelöf,
+d.\,h. $(Tf)(t) := \mathbbm{y}_0 +
+\int_{t_0}^t \mathbbm{v}(\tau, f(\tau))\d\tau$,
+$t \in \widetilde{I}_\varepsilon(t_0)$, dann lässt sich der Fixpunktsatz
+anwenden, wenn man die Bedingungen 1., 2. und 3. gezeigt hat.
+Wie im Beweis vom Satz von Picard-Lindelöf folgt aus $Ty = y$ für ein
+$y \in D = F$, dass $\dot{\mathbbm{y}}(t) = \mathbbm{v}(t, \mathbbm{y}(t))$
+mit $\mathbbm{y}(t_0) = \mathbbm{y}_0$.
+
+\linie
+
+Die erste Bedingung der Stetigkeit zeigt man, indem man $\mathbbm{v}$ auf
+$\widetilde{I}_\varepsilon(t_0) \times
+\overline{U_{r_\varepsilon}(\mathbbm{y}_0)}$ einschränkt. \\
+Die eingeschränkte Abbildung $\mathbbm{v}$ ist gleichmäßig stetig, da
+$\widetilde{I}_\varepsilon(t_0) \times
+\overline{U_{r_\varepsilon}(\mathbbm{y}_0)}$ kompakt ist. \\
+Aus der gleichmäßigen Stetigkeit in der zweiten Komponente folgt dann die
+Aussage.
+
+Die dritte Bedingung der approximativen Lösbarkeit beweist man konstruktiv:
+Man definiert eine Folge $\{x_n\}_{n \in \natural}$ von Funktionen $x_n \in D$
+mit $x_n(t) := \mathbbm{y}_0$ für $t \in [t_0, t_0 + \frac{1}{n}]$ und \\
+$x_n(t) := \mathbbm{y}_0 +
+\int_{t_0+1/n}^t \mathbbm{v}(\tau, x_n(\tau - \frac{1}{n}))\d\tau$
+für $t > t_0 + \frac{1}{n}$.
+Die Zeitverschiebung $\tau - \frac{1}{n}$ sorgt dafür, dass $x_n$
+intervallweise in Intervallen der Länge $\frac{1}{n}$ berechnet werden kann. \\
+Man zeigt anschließend $d_\C(Tx_n, x_n) \to 0$, d.\,h.
+$\norm{(Tx_n)(t) - x_n(t)} \to 0$ für $n \to \infty$.
+
+\linie
+
+Die zweite Bedingung, dass $TD$ relativ kompakt ist, wird für die Existenz
+einer konvergenten Teilfolge
+$\{x_{n_k}\}_{k \in \natural}$ mit $x_{n_k} \to y$ benötigt. \\
+In diesem Fall gilt dann mit $Tx_{n_k} - x_{n_k} =: s_{n_k}$ für $k \to \infty$
+im Grenzwertübergang $Ty - y = 0$.
+
+Für die zweite Bedingung benötigt man ein Kompaktheitskriterium
+in $\C(\widetilde{I}_\varepsilon(t_0), \real^n)$.
+Das Kompaktheitskriterium von Bolanzo gilt nicht:
+Betrachtet man die abgeschlossene (und beschränkte) Einheitskugel
+$\{f \in \C(\widetilde{I}, \real^n) \;|\; \norm{f}_\C \le 1\}$ mit
+$\widetilde{I} := \widetilde{I}_\varepsilon(t_0)$, so kann man Funktionen $f_n$
+aus dieser Einheitskugel definieren, wobei $f_n(t)$ auf dem vorderen
+$\frac{1}{2^n}$-tel und dem hinteren $\frac{2^{n-1} - 1}{2^{n-1}}$-tel Teil
+verschwindet und dazwischen linear bis zu $1$ ansteigt und abfällt (stetig).
+Es gilt $\norm{f_n - f_m} = 1$ für $n \not= m$, d.\,h. $f_n$ ist keine
+Cauchy-Folge, damit gibt es keine konvergente Teilfolge.
+
+\textbf{gleichgradig stetig}:
+Eine Menge $G$ von Funktionen $G \subset \C(\widetilde{I}, \real^n)$ heißt
+\emph{gleichgradig stetig}, falls
+$\forall_{\varepsilon > 0} \exists_{\delta_\varepsilon > 0}
+\forall_{t', t'' \in \widetilde{I},\; |t' - t''| < \delta_\varepsilon}
+\forall_{f \in G}\; \norm{f(t') - f(t'')} < \varepsilon$.
+
+\textbf{Lemma}:
+Seien $J \subset \widetilde{I}$ eine in $\widetilde{I}$ dichte Teilmenge,
+$G$ gleichgradig stetig,
+$\{f_n\}_{n \in \natural}$, $f_n \in G$ eine Folge in $G$ und
+$f_n$ konvergiere punktweise auf $J$, d.\,h.
+$\forall_{t \in J}\; f_n(t) \to f(t)$. \\
+Dann gibt es eine stetige Funktion $f \in \C(\widetilde{I}, \real^n)$, sodass
+$f_n$ gleichmäßig gegen $f$ auf $\widetilde{I}$ konvergiert, d.\,h.
+$\exists_{f \in \C(\widetilde{I}, \real^n)}\;
+f_n \xrightarrow{\norm{\cdot}_\C} f$.
+
+\textbf{Lemma von \name{Arzelà}-\name{Ascoli}}:
+$G \subset \C(\widetilde{I}, \real^n)$ ist relativ kompakt genau dann, \\
+wenn $G$ beschränkt (also $\exists_{C} \forall_{f \in G}
+\forall_{t \in \widetilde{I}}\; \norm{f(t)} \le C$) und
+gleichgradig stetig ist.
+
+Nun lässt sich die relative Kompaktheit von $TD$ leicht zeigen:
+$TD$ ist beschränkt, da \\
+$\norm{Tf} = \max_t
+\norm{\mathbbm{y}_0 + \int_{t_0}^t \mathbbm{v}(\tau, f(\tau))\d\tau} \le
+\norm{\mathbbm{y}_0} + |\widetilde{I}| \cdot C$.
+Außerdem ist $TD$ gleichgradig stetig, da
+$\norm{(Tf)(t') - (Tf)(t'')} =
+\norm{\int_{t'}^{t''} \mathbbm{v}(\tau, f(\tau))\d\tau} \le
+|t' - t''| \cdot C < \varepsilon$ für
+$|t' - t''| < \delta_\varepsilon = \frac{\varepsilon}{C}$.
+
+Damit ist der Beweis vom Satz von Peano abgeschlossen.
+
+\linie
+\pagebreak
+
+Der Beweis ist nicht konstruktiv, da die Kompaktheit nicht aussagt, welche
+Teilfolge man auswählen kann, sondern nur, dass es überhaupt eine solche gibt.
+Das wird am Ende des Beweises verwendet, somit kann man nicht genau sagen,
+welche der Teilfolgen nun tatsächlich konvergiert.
+
+Am Beweis zeigt sich auch die Wichtigkeit von Fixpunktsätzen.
+Alternativ hätte man den Satz von Peano auch aus folgendem Fixpunktsatz
+ableiten können:
+
+\textbf{Fixpunktsatz von \name{Schauder}}: \\
+Seien $B$ ein Banachraum, $D \subset B$ nicht-leer, konvex, kompakt und
+$T\colon D \rightarrow D$ stetig. \\
+Dann gibt es einen Fixpunkt $y \in D$ von $T$, d.\,h.
+$\exists_{y \in D}\; Ty = y$.
+
+Im Spezialfall für $B = \real^n$ und
+$D = \overline{U_1(0)} = \{x \in \real^n \;|\; \norm{x} \le 1\}$
+und $T\colon \overline{U_1(0)} \rightarrow \overline{U_1(0)}$ stetig
+erhält man den \textbf{Fixpunktsatz von \name{Brouwer}}.
+
+\linie
+
+Um die Rückrichtung des Lemmas von Arzelà-Ascoli zu beweisen, benötigt man
+folgende Definition und folgendes Lemma:
+
+\textbf{$\varepsilon$-Netz}:
+Seien $(B, d)$ ein metrischer Raum und $G \subset B$. \\
+$G_\varepsilon \subset G$ heißt \emph{$\varepsilon$-Netz} von $G$, falls
+$\forall_{x \in G} \exists_{y = y(\varepsilon, x) \in G_\varepsilon}\;
+d(x, y) < \varepsilon$.
+
+\textbf{Lemma}:
+Seien $(B, d)$ ein vollständiger metrischer Raum und $G \subset B$
+relativ kompakt. \\
+Dann gibt es für alle $\varepsilon > 0$ ein endliches $\varepsilon$-Netz
+$G_\varepsilon$ von $G$.
+
+\pagebreak
+
+\subsection{%
+    Stetigkeit der Lösung des \name{Cauchy}-Problems bzgl. den Anfangsdaten%
+}
+
+Gegeben sei wieder das Cauchy-Problem (CP) mit
+$\dot{\mathbbm{y}}(t) = \mathbbm{v}(t, \mathbbm{y}(t))$,
+$\mathbbm{y}(t_0) = \mathbbm{y}_0$. \\
+Im Folgenden sei nun $(t_0, \mathbbm{y}_0) \in \inneres(I) \times \inneres(M)$
+und es gelten die drei Voraussetzungen des Satzes von Picard-Lindelöf.
+Derselbe Satz garantiert dann die Existenz von einer Lösung \\
+$\mathbbm{y}(t) = \mathbbm{y}(t, t_0, \mathbbm{y}_0)$ auf $I_\varepsilon$
+sowie deren Eindeutigkeit.
+
+\textbf{Satz}:
+$\mathbbm{y}(t, t_0, \mathbbm{y}_0)$ ist stetig in allen drei Argumenten.
+
+\subsection{%
+    Dif"|ferenzierbarkeit der Lösung nach den Anfangsbedingungen%
+}
+
+Im Folgenden sei wieder das Cauchy-Problem (CP)
+$\dot{\mathbbm{y}}(t) = \mathbbm{v}(t, \mathbbm{y}(t), \lambda)$,
+$\mathbbm{y}(t_0) = \eta$
+gegeben (nun hänge das Geschwindigkeitsfeld von einem zusätzlichen Parameter
+$\lambda$ ab).
+Gelten die Voraussetzungen von Picard-Lindelöf gleichmäßig in
+$\lambda \in \real$, so ist $\mathbbm{y}(t, t_0, \eta, \lambda)$ stetig
+in $t_0, \eta, \lambda$.
+
+Allgemeiner folgt aus
+$\mathbbm{v} \in \C(I \times M \times D, \real^n)$,
+$\forall_{(t, \mathbbm{x}, \lambda) \in I \times M \times D}\;
+\norm{\mathbbm{v}(t, \mathbbm{x}, \lambda)} \le C$ und \\
+$\forall_{(t, \mathbbm{x}, \lambda) \in I \times M \times D}\;
+\norm{\mathbbm{v}(t, \mathbbm{x}', \lambda) -
+\mathbbm{v}(t, \mathbbm{x}'', \lambda)} \le
+L \norm{\mathbbm{x}' - \mathbbm{x}''}$
+die Stetigkeit von $\mathbbm{y}$ in $(t_0, \eta, \lambda)$.
+
+\linie
+
+Sei nun $\mathbbm{v}$ dif"|ferenzierbar und die Ableitung sei mit dem
+Integral \\
+$\mathbbm{y}(t, t_0, \eta, \lambda) =
+\eta + \int_{t_0}^t
+\mathbbm{v}(\tau, \mathbbm{y}(\tau, t_0, \eta, \lambda), \lambda) \d\tau$
+vertauschbar.
+Formale Dif"|ferentiation ergibt \\
+$\frac{\partial \mathbbm{y}}{\partial t_0} = 0 +
+\int_{t_0}^t \left(\frac{D \mathbbm{v}}{D \mathbbm{y}} \cdot
+\frac{\partial \mathbbm{y}}{\partial t_0}\right) \d\tau -
+\mathbbm{v}(t_0, \mathbbm{y}(t_0, t_0, \eta, \lambda), \lambda)$ (4), \\
+$\frac{D \mathbbm{y}}{D \eta} = \mathbbm{1} +
+\int_{t_0}^t \left(\frac{D \mathbbm{v}}{D \mathbbm{y}} \cdot
+\frac{D \mathbbm{y}}{D \eta}\right) \d\tau$ (5) sowie \\
+$\frac{\partial \mathbbm{y}}{\partial \lambda} = 0 +
+\int_{t_0}^t \left(\frac{D \mathbbm{v}}{D \mathbbm{y}} \cdot
+\frac{\partial \mathbbm{y}}{\partial \lambda} +
+\frac{\partial \mathbbm{v}}{\partial \lambda} \right) \d\tau$ (6).
+
+\textbf{Satz}:
+Seien die Voraussetzungen des Satzes von Picard-Lindelöf gleichmäßig
+erfüllt und $\frac{\partial v_k}{\partial y_\ell}$ stetig in
+$I \times M \times D$. \\
+Dann ist $\mathbbm{y}(t, t_0, \eta, \lambda)$ im Existenzbereich
+(nach Picard-Lindelöf) bzgl. $t_0, \eta, \lambda$ dif"|ferenzierbar.
+Diese (partiellen) Ableitungen sind stetig und erfüllen (4) bzw. (5). \\
+Ist zusätzlich $\frac{\partial v_k}{\partial \lambda}$ stetig, so ist auch
+$\frac{\partial y}{\partial \lambda}$ stetig und es gilt (6).
+
+\textbf{Satz}:
+Ist zudem $\mathbbm{v}$ \emph{analytisch} in $\lambda \in D \subset \complex$
+(d.\,h. durch eine Potenzreihe darstellbar), \\
+so ist auch $\mathbbm{y}$ im Existenzbereich analytisch in $\lambda$.
+
+\pagebreak
+
+\subsection{%
+    Bewegungsintegrale und Erhaltungsgrößen%
+}
+
+Sei $\mathbbm{y}(t, t_0, y_0)$ die nach Picard-Lindelöf existente und
+eindeutige Lösung des Cauchy-Problems (CP) mit $\mathbbm{y}(t_0) = y_0$.
+Für ein vorgegebenes $t_1 \in I$ betrachtet man
+$y_1 := \mathbbm{y}(t_1, t_0, y_0)$.
+Weil die Lösung eindeutig ist, gilt
+$\mathbbm{y}(t, t_0, y_0) = \mathbbm{y}(t, t_1, y_1)$ für alle $t \in I$.
+Insbesondere gilt für $t = t_0$, dass
+$y_0 = \mathbbm{y}(t_0, t_0, y_0) =
+\mathbbm{y}(t_0, t_1, \mathbbm{y}(t_1, t_0, y_0))$
+nicht von $t_1 \in I$ abhängt.
+
+Definiert man nun für fixes $t_0 \in I$
+eine Funktion $\psi\colon I \times M \rightarrow \real^n$
+mit $\psi(t, z) := \mathbbm{y}(t_0, t, z)$, so ist
+$\left.\psi(t, z)\right|_{z = \mathbbm{y}(t, t_0, y_0)} =
+\mathbbm{y}(t_0, t, \mathbbm{y}(t, t_0, y_0)) = y_0$ konstant
+auf Lösungen des Cauchy-Problems (CP) für beliebige $t \in I$.
+
+\textbf{(allgemeines) Integral}:
+Ein \emph{(allgemeines) Integral} einer DGL
+$\dot{\mathbbm{y}}(t) = \mathbbm{v}(t, \mathbbm{y}(t))$ ist eine
+Abbildung $\psi\colon I \times M \rightarrow \real^n$ mit $M \subset \real^n$,
+welche auf allen Integralkurven einen konstanten Wert annimmt, d.\,h.
+$\psi(t, z)$ ist für $z = \mathbbm{y}(t, t_0, y_0)$ und beliebige
+$t \in I$ konstant. \\
+Für $\psi \not\equiv \const$ heißt $\psi$ \emph{nicht-trivial}.
+
+\textbf{erstes Bewegungsintegral}:
+Ein \emph{erstes Integral (der Bewegung)} einer DGL
+$\dot{\mathbbm{y}}(t) = \mathbbm{v}(t, \mathbbm{y}(t))$ ist eine
+Abbildung $\psi_k\colon I \times M \rightarrow \real$ mit $M \subset \real^n$,
+welche auf allen Integralkurven einen konstanten Wert annimmt.
+
+\textbf{abhängig}:
+Zwei erste Integrale $\psi_k$ und $\psi_\ell$ heißen \emph{abhängig},
+falls es eine Funktion $g\colon \real \rightarrow \real$ gibt mit
+$\psi_\ell = g \circ \psi_k$.
+
+\emph{Beispiel}:
+Betrachtet man wieder die Auslenkung $q(t)$ einer Feder mit
+Massepunkt der Masse $m$, dessen Impuls $p(t) = m \dot{q}(t)$, Zustand
+$\mathbbm{y}(t) = \begin{pmatrix}q(t) \\ p(t)\end{pmatrix}$ und DGL
+$\dot{\mathbbm{y}}(t)
+= \begin{pmatrix}1/m \cdot p(t) \\ -k \cdot q(t)\end{pmatrix} =
+A \mathbbm{y}(t)$ mit $A = \begin{pmatrix}0 & 1/m \\ -k & 0\end{pmatrix}$,
+so ist $E(t) = \frac{p^2(t)}{2m} + \frac{kq^2(t)}{2} = W_\kin + W_\pot$
+ein erstes Integral, d.\,h.
+eine Erhaltungsgröße (eine Größe, die sich im Zeitverlauf nicht ändert).
+Dies kann man einerseits durch Einsetzen der allgemeinen Lösung der DGL
+zeigen (untypisch, da erste Integrale oft als Hilfsmittel zur Lösungsbestimmung
+verwendet werden), andererseits durch Ableitung (diese ist dann $0$, also
+ist die Erhaltungsgröße konstant).
+
+Allgemeiner sei die DGL
+$\dot{y}_1(t) = v_1(t, y_1(t), \dotsc, y_n(t))$, \dots,
+$\dot{y}_n(t) = v_n(t, y_1(t), \dotsc, y_n(t))$
+$\;\Leftrightarrow\; \dot{\mathbbm{y}}(t) = \mathbbm{v}(t, \mathbbm{y}(t))$
+gegeben.
+Dabei sei $\mathbbm{y}(t)$ eine Lösung der DGL und
+$\psi(t, \mathbbm{y}(t)) = \const$. \\
+Wegen $\frac{d}{dt} \psi(t, \mathbbm{y}(t)) = 0$
+gilt mit Kettenregel
+$\frac{\partial \psi}{\partial t} +
+\frac{\partial \psi}{\partial y_1} \cdot v_1 +
+\dotsb + \frac{\partial \psi}{\partial y_n} \cdot v_n = 0$.
+
+Diese partielle DGL muss jede Erhaltungsgröße $\psi$ erfüllen.
+Umgekehrt ist jede Lösung dieser Gleichung eine Erhaltungsgröße.
+
+Ist eine Erhaltungsgröße gefunden, d.\,h.
+$\psi_1(t, y_1(t), \dotsc, y_n(t)) = c_1$, \dots, \\
+$\psi_n(t, y_1(t), \dotsc, y_n(t)) = c_n$,
+und ist der Satz über implizite Funktionen anwendbar
+(insbesondere ist $\det \frac{D \psi}{D y} \not= 0$), so ist
+$\mathbbm{y} = \mathbbm{y}(t)$ lokal auflösbar.
+
+\pagebreak
+
+\subsection{%
+    Trennbare Veränderliche und lineare DGLs niedriger Ordnung%
+}
+
+\subsubsection{%
+    Trennung der Veränderlichen%
+}
+
+$y'(x) = f(x, y)$ besitzt \textbf{trennbare Veränderliche}, falls
+$f(x, y) = h(y) g(x)$ mit $h(y) \not\equiv 0$. \\
+In diesem Fall erhält man mithilfe der Schreibweise
+$\frac{dy}{dx} = h(y)g(x)$, also $\int \frac{1}{h(y)}\dy = \int g(x)\dx + c$,
+einen allgemeinen Lösungsansatz (\emph{Trennung der Veränderlichen}).
+Alternativ kann man diese Formel auch durch Integration nach $x$ und
+die Substitution $u = y(x)$ erreichen. \\
+Die DGL wird gelöst, indem integriert und nach $y = y(x)$ aufgelöst wird.
+Erst dann wird die Anfangsbedingung eingesetzt, um $c$ zu ermitteln.
+Geschieht dies vorher, können Lösungen eventuell wegfallen!
+
+%\emph{Beispiele}:
+%\begin{enumerate}
+%    \item
+%    $(x^2 - 1)y' = -2xy^2$, $y(0) = 1$. \\
+%    Mit $g(x) = -\frac{2x}{x^2 - 1}$, $h(y) = y^2$ ist hier
+%    $\int \frac{1}{y^2}\dy = - \int \frac{2x}{x^2 - 1}\dx + c$. \\
+%    Integration ergibt $-\frac{1}{y} = -\ln|x^2 - 1| + c$, also
+%    $y(x) = \frac{1}{\ln|x^2 - 1| - c}$. \\
+%    $c$ lässt bestimmen, indem man die Anfangsbedingung einsetzt:
+%    $1 = \frac{1}{\ln|0 - 1| + c}$, also $c = -1$, daher
+%    ist die allgemeine Lösung $y(x) = \frac{1}{\ln|x^2 - 1| + 1}$.
+%    
+%    \item
+%    $y' = 2\sqrt{y}$, $y(0) = 1$. \\
+%    Mit $g(x) = 2$, $h(y) = \sqrt{y}$ ist hier
+%    $\int \frac{1}{\sqrt{y}}\dy = \int 2\dx + c$. \\
+%    Integration ergibt $2\sqrt{y} = 2x + c$, also
+%    $y(x) = \left(x + \frac{c}{2}\right)^2$. \\
+%    $c$ lässt bestimmen, indem man die Anfangsbedingung einsetzt:
+%    $1 = \left(0 + \frac{c}{2}\right)^2$, also $c = \pm 2$, daher
+%    ist die allgemeine Lösung $y_{1,2}(x) = (x \pm 1)^2$. \\
+%    Es gibt allerdings hier zwei weitere Lösungen:
+%    $y_{3,4}(x) = \begin{cases}(x \pm 1)^2 & x > -1 \text{ bzw. } x < 1 \\
+%    0 & \text{sonst.}\end{cases}$
+%    
+%    \item
+%    $xy' + y = y^2$, $y(1) = \frac{1}{2}$, $x \ge 1$. \\
+%    Mit $g(x) = \frac{1}{x}$, $h(y) = y^2 - y$ ist hier
+%    $\int \frac{1}{y^2 - y}\dy = \int \frac{1}{x}\dx + \widetilde{c}$. \\
+%    Integration ergibt $\ln|y - 1| - \ln|y| = \ln|x| + \widetilde{c}$, also
+%    $\frac{|y - 1|}{|y|} = c |x| = cx$ wegen $x \ge 1$. \\
+%    Wegen der Anfangsbedingung gilt $0 \le y \le 1$, d.\,h.
+%    $y(x) = \frac{1}{1 + cx}$. \\
+%    $c$ lässt bestimmen, indem man die Anfangsbedingung einsetzt:
+%    $\frac{1}{2} = \frac{1}{1 + c}$, also $c = 1$, \\
+%    daher ist die allgemeine Lösung $y(x) = \frac{1}{1 + x}$. \\
+%\end{enumerate}
+
+\subsubsection{%
+    Lineare DGLs erster Ordnung%
+}
+
+Lineare DGL 1. Ordnung sind von der allgemeinen Form
+$a_1(x) y'(x) + a_0(x) y(x) = g(x)$
+mit $a_1(x) \not\equiv 0$ und $x \in D$, $D$ gemeinsamer Definitionsbereich
+von $a_1$, $a_0$ und $g$. \\
+Die DGL heißt \emph{linear in $y$},
+\emph{homogen} für $g(x) \equiv 0$ und \emph{inhomogen}
+für $g(x) \not\equiv 0$.
+
+\textbf{Satz}:
+Seien $y_h(x)$ die \emph{allgemeine Lösung} der zugehörigen homogenen DGL
+(erfüllt mittels geeigneten Parametern alle Anfangsbedingungen)
+und $y_p(x)$ eine \emph{partikuläre Lösung} der inhomogenen DGL
+(erfüllt nur eine Anfangsbedingung).
+Dann löst $y(x) = y_h(x) + y_p(x)$ die inhomogene DGL und
+jede weitere Lösung $y(x)$ der DGL ist durch $y(x) = y_h(x) + y_p(x)$
+gegeben.
+
+\textbf{homogene DGL ($g(x) \equiv 0$)}: \\
+$a_1(x) y'(x) + a_0(x) y(x) = 0$ besitzt trennbare Veränderliche, d.\,h.
+$y'(x) = -\frac{a_0(x)}{a_1(x)} y(x)$ bzw. \\
+$\int \frac{1}{y} \dy = -\int \frac{a_0(x)}{a_1(x)}\dx + \widetilde{c}$ bzw.
+$y_h(x) = c \cdot \exp\left(-\int \frac{a_0(x)}{a_1(x)}\dx\right) =:
+c \cdot \widetilde{y}_h(x)$. \\
+Dies ist die allgemeine Lösung der homogenen DGL.
+
+\textbf{inhomogene DGL (Variation der Konstanten)}: \\
+Setze $y_p(x) := c(x) \cdot \widetilde{y}_h(x)$, dabei soll
+$a_1(x) y_p'(x) + a_0(x) y_p(x) = g(x)$ gelten.
+Durch Einsetzen von $y_p$ erhält man $a_1(x) c'(x) \widetilde{y}_h(x) = g(x)$.
+Auf"|lösen nach $c'(x)$ ergibt
+$c'(x) = \frac{g(x)}{a_1(x) \widetilde{y}_h(x)}$,
+also $c(x) = \int \frac{g(x)}{a_1(x) \widetilde{y}_h(x)}\dx$.
+Die allgemeine Lösung lautet also $y(x) = c \cdot \widetilde{y}_h(x) + y_p(x)$
+mit \\
+$\widetilde{y}_h(x) = \exp\left(-\int \frac{a_0(x)}{a_1(x)}\dx\right)$ und
+$y_p(x) = \int \frac{g(x)}{a_1(x) \widetilde{y}_h(x)}\dx
+\cdot \widetilde{y}_h(x)$.
+
+\subsubsection{%
+    Nicht-lineare DGLs erster Ordnung%
+}
+
+Zu den nicht-linearen DGL 1. Ordnung
+gehören die sog. \textbf{\name{Bernoulli}-DGL}, deren
+allgemeine Form
+$y'(x) + a(x) y(x) = b(x) y^n(x)$, $n \in \natural_0$ lautet. \\
+Für $n = 0$ bzw. $n = 1$ erhält man
+$y'(x) + a(x) y(x) = b(x)$ bzw.
+$y'(x) + a(x) y(x) = b(x) y(x)$,
+dies sind lineare DGL und lassen sich wie oben beschrieben lösen. \\
+Für $n \ge 2$ muss man in
+$\frac{y'(x)}{y^n(x)} + a(x) y^{1-n}(x) = b(x)$ die Substitution
+$z(x) := y^{1-n}(x)$ durchführen.
+Mit $z'(x) = (1 - n) y^{-n}(x) y'(x)$ ergibt sich
+die äquivalente DGL $\frac{z'(x)}{1 - n} + a(x) z(x) = b(x)$. \\
+Dies ist wiederum eine lineare DGL 1. Ordnung
+und lässt sich auf bekannte Weise lösen.
+
+\pagebreak
+
+\subsubsection{%
+    Lineare DGLs zweiter Ordnung mit konst. Koef"|fizienten%
+}
+
+Lineare DGL 2. Ordnung mit konstanten Koef"|fizienten sind von der
+allgemeinen Form \\
+$y''(x) + a_1 y'(x) + a_0 y(x) = g(x)$, $a_1, a_0 \in \real$.
+
+\linie
+
+\textbf{homogene DGL ($g(x) \equiv 0$)}:
+$y''(x) + a_1 y'(x) + a_0 y(x) = 0$, $a_1, a_0 \in \real$ \qquad (1)
+
+\textbf{Fundamentalsystem}:
+Seien $y_1(x)$ und $y_2(x)$ Lösungen von (1), wobei $y_1$ und $y_2$ linear
+unabhängig sind, d.\,h. für $c_1 y_1(x) + c_2 y_2(x) \equiv 0$ gilt
+$c_1 = c_2 = 0$. \\
+Dann heißt $\{y_1(x), y_2(x)\}$ \emph{Fundamentalsystem} von (1).
+In diesem Fall ist \\
+$y(x) := c_1 y_1(x) + c_2 y_2(x)$ für $c_1, c_2 \in \real$
+die allgemeine Lösung von (1).
+
+Zur Bestimmung von $y_1$ und $y_2$ berechnet man die beiden Nullstellen
+$\lambda_1, \lambda_2$ des \emph{charakteristischen Polynoms}
+$P(\lambda) := \lambda^2 + a_1 \lambda + a_0$.
+Für $\lambda_1 \not= \lambda_2$ ist $y_1(x) := e^{\lambda_1 x}$
+und $y_2(x) := e^{\lambda_2 x}$. \\
+Für $\lambda_1 = \lambda_2 =: \lambda$ ist
+$y_1(x) := e^{\lambda x}$ und $y_2(x) := x e^{\lambda x}$.
+
+Sind ausschließlich reelle Lösungen $y(x) \in \real$, $x \in \real$ verlangt
+und $\lambda_1, \lambda_2 \in \complex \setminus \real$
+(also $\lambda_1 \not= \lambda_2$), so kann man die Tatsache
+ausnutzen, dass $y_1(x) = \overline{y_2(x)}$.
+In diesem Fall kann man $y_1(x)$ und $y_2(x)$ durch
+$\Re y_1(x)$ und $\Im y_1(x)$ ersetzen und erhält ein reelles
+Fundamentalsystem. \\
+Für $\lambda_{1,2} = a \pm bi$ ergibt sich nämlich
+$y_1(x) := e^{ax} \sin(bx)$ und $y_2(x) := e^{ax} \cos(bx)$.
+
+\linie
+
+\textbf{inhomogene DGL ($g(x) \not\equiv 0$)}:
+$y''(x) + a_1 y'(x) + a_0 y(x) = g(x)$, $a_1, a_0 \in \real$ \qquad (2)
+
+Die inhomogene DGL besitzt die allgemeine Lösung
+$y(x) := y_h(x) + y_p(x)$, wobei $y_h(x)$ die allgemeine Lösung der zugehörigen
+homogenen DGL und $y_p(x)$ eine partikuläre Lösung der inhomogenen DGL ist.
+$y_h(x)$ kann wie oben bestimmt werden, für $y_p(x)$ gibt es zwei
+Möglichkeiten.
+
+\textbf{Satz (Variation der Konstanten)}:
+Seien $\{y_1(x), y_2(x)\}$ ein Fundamentalsystem von (1) und $c_1(x), c_2(x)$,
+sodass $c_1'(x) y_1(x) + c_2'(x) y_2(x) = 0$ sowie
+$c_1'(x) y_1'(x) + c_2'(x) y_2'(x) = g(x)$. \\
+Dann ist $y_p(x) := c_1(x) y_1(x) + c_2(x) y_2(x)$ eine partikuläre
+Lösung von (2).
+
+In der Praxis verwendet man diese Methode, indem man zunächst $y_1(x)$ und
+$y_2(x)$ wie oben berechnet, $c_1(x)$ und $c_2(x)$ allgemein ansetzt und
+schließlich versucht, diese durch Integration aus den obigen beiden Gleichungen
+zu bestimmen.
+
+\textbf{Ansatzmethode}:
+Diese Methode funktioniert nur für Dif"|ferentialgleichungen der Form \\
+$y''(x) + a_1 y'(x) + a_0 y(x) = g(x)$
+mit $g(x) = e^{qx} \cdot (\alpha_m x^m + \dotsb + \alpha_1 x + \alpha_0)$. \\
+In diesem Fall ist nämlich
+$y_p(x) = x^\ell e^{qx} \cdot (\beta_m x^m + \dotsb + \beta_1 x + \beta_0)$
+eine partikuläre Lösung der DGL, wobei
+$\ell = 0$, falls $q$ keine Nullstelle des char. Polynoms ist, und \\
+$\ell = n$, falls $q$ eine Nullstelle des char. Polynoms mit
+Vielfachheit $n$ ist. \\
+Um die $\beta_0, \dotsc, \beta_m$ zu bestimmen, muss man
+den allgemeinen Ansatz von $y_p(x)$ in die DGL einsetzen und durch
+Koef"|fizientenvergleich die Koef"|fizienten ermitteln.
+
+\pagebreak
+
+\subsection{%
+    Existenz und Eindeutigkeit der Lösung linearer DGLs%
+}
+
+Für endlich-dimensionale Vektorräume ($\dim E = n$, z.\,B. $E = \real^n$)
+ist die Menge $\L(E, E)$ der linearen, stetigen Operatoren auf $E$ definiert.
+$(\L(E, E), \norm{\cdot}_\L)$ ist ein normierter Vektorraum. \\
+Für $I := [a, b] \subset \real$ sei $A(\cdot)\colon [a, b] \rightarrow \L(E, E)$
+stetig, d.\,h. $A(t) \in \L(E, E)$ für $t \in I$. \\
+Des Weiteren sei $f\colon [a, b] \rightarrow E$ eine stetige Funktion.
+
+\linie
+
+Für den Fall $E := \real^n$ ist $\{e_j \;|\; j = 1, \dotsc, n\}$ mit
+$e_j = (0, \dotsc, 0, 1, 0, \dotsc, 0)$ eine Basis von $\real^n$.
+Die Abbildung $A(t)$ lässt sich dann als Matrix
+$A(t) =$ \matrixsize{$\begin{pmatrix}
+    \alpha_{11}(t) & \dots & \alpha_{1n}(t) \\
+    \vdots & & \vdots \\
+    \alpha_{n1}(t) & \dots & \alpha_{nn}(t)
+\end{pmatrix}$} schreiben, wobei $A(t)$ stetig in $t$ ist genau dann, wenn
+$\alpha_{kl}(\cdot)\colon I \rightarrow \real$ stetig ist für alle
+$k, l = 1, \dotsc, n$. \\
+Außerdem ist $f(t) = (f_1(t), \dotsc, f_n(t))$ stetig in $t$ genau dann,
+wenn $f_k(\cdot)\colon I \rightarrow \real$ stetig ist für
+alle $k = 1, \dotsc, n$.
+
+Seien nun $\mathbbm{y}(t) = (y_1(t), \dotsc, y_n(t))$
+und $f(t) \not\equiv 0$.
+Man bezeichnet $\dot{\mathbbm{y}}(t) = A(t) \mathbbm{y}(t) + f(t)$, d.\,h. \\
+$\left\{\begin{array}{ccccccccc}
+\dot{y}_1(t) & = & \alpha_{11}(t) y_1(t) & + & \dotsb & + &
+\alpha_{1n}(t) y_n(t) & + & f_1(t) \\
+\vdots & & \vdots & & & & \vdots & & \vdots \\
+\dot{y}_n(t) & = & \alpha_{n1}(t) y_1(t) & + & \dotsb & + &
+\alpha_{nn}(t) y_n(t) & + & f_n(t),
+\end{array}\right.$ \\
+als eine \textbf{lineare, nicht-autonome, inhomogene DGL} \\
+(nicht-autonom wegen $A = A(t)$, $f = f(t)$,
+inhomogen wegen $f(t) \not\equiv 0$). \\
+Im Gegensatz dazu heißt $\dot{\mathbbm{y}}(t) = A(t) \mathbbm{y}(t)$
+\textbf{lineare, nicht-autonome, homogene DGL}.
+
+Alternativ kann man auch $\dot{\mathbbm{y}}(t) =
+\mathbbm{v}(t, \mathbbm{y}(t))$
+mit $\mathbbm{v}(t, \mathbbm{x}) = A(t) \mathbbm{x} + f(t)$ schreiben.
+
+\linie
+
+Die Voraussetzungen von Picard-Lindelöf sind erfüllt, denn:
+\begin{itemize}
+    \item
+    $\mathbbm{v}(t, \mathbbm{x})$ ist stetig in $(t, \mathbbm{x})$
+    
+    \item
+    $\norm{\mathbbm{v}(t, \mathbbm{x})}_E \le
+    \norm{A(t) \mathbbm{x}}_E + \norm{f(t)}_E \le
+    \norm{A(t)}_\L \norm{\mathbbm{x}}_E + \norm{f(t)}_E \le
+    C_1 R + C_2$ \\
+    für $(t, \mathbbm{x}) \in I \times U_R(0)$
+    
+    \item
+    $\norm{\mathbbm{v}(t, \mathbbm{x}') - \mathbbm{v}(t, \mathbbm{x}'')} \le
+    \norm{A(t) (\mathbbm{x}' - \mathbbm{x}'')} \le
+    C_1 \norm{\mathbbm{x}' - \mathbbm{x}''}$
+\end{itemize}
+Daher kann man nach dem Satz von Picard-Lindelöf die lokale Existenz und
+Eindeutigkeit der Lösung folgern.
+Die Lösung ist global fortsetzbar bis an den Rand des Phasenraums
+$M = \real^n$.
+
+\textbf{Satz}:
+Sei (CP) das Cauchy-Problem der homogenen linearen DGL, d.\,h.
+$\dot{\mathbbm{y}}(t) = A(t) \mathbbm{y}(t)$ mit
+$\mathbbm{y}(t_0) = \mathbbm{y}_0$ für ein $t_0 \in [a, b]$.
+Dann besitzt (CP) eine eindeutige Lösung für alle $t \in [a, b]$.
+
+\pagebreak
+
+\subsection{%
+    Struktur der Lösungen der homogenen Gleichung%
+}
+
+Sind $\mathbbm{y}_1(t)$ und $\mathbbm{y}_2(t)$ Lösungen der homogenen
+linearen DGL $\dot{\mathbbm{y}}(t) = A(t) \mathbbm{y}(t)$
+(ohne Festlegung der Anfangsbedingung), so ist
+$\mathbbm{y}(t) := \beta_1 \mathbbm{y}_1(t) + \beta_2 \mathbbm{y}_2(t)$
+ebenfalls eine Lösung der DGL $\dot{\mathbbm{y}}(t) = A(t) \mathbbm{y}(t)$.
+Die Menge $\mathcal{N}$ der Lösungen von
+$\dot{\mathbbm{y}}(t) = A(t) \mathbbm{y}(t)$ ist daher linear, d.\,h.
+$\mathcal{N} \subset \C^1(I, \real^n)$ ist ein Untervektorraum.
+
+\textbf{Satz}:
+Sei $\mathcal{B} = \{\mathbbm{b}_1, \dotsc, \mathbbm{b}_n\}$ eine Basis von $E$
+und $Y_\mathcal{B} = \{\mathbbm{y}_{\mathbbm{b}_1}, \dotsc,
+\mathbbm{y}_{\mathbbm{b}_n}\}$ eine Menge von Lösungen der
+homogenen linearen DGL
+$\dot{\mathbbm{y}}_{\mathbbm{b}_j}(t) = A(t) \mathbbm{y}_{\mathbbm{b}_j}(t)$
+mit $\mathbbm{y}_{\mathbbm{b}_j}(t_0) = \mathbbm{b}_j$, $t_0 \in I$. \\
+Ist $A(\cdot) \in \C(I, \L(E, E))$, so ist
+$Y_\mathcal{B}$ eine Basis von $\mathcal{N}$, d.\,h.
+$\dim \mathcal{N} = n = \dim E$. \\
+Zusätzlich gilt für jede Linearkombination $\mathbbm{y}_0$
+von $\mathcal{B}$, dass die
+Linearkombination von $Y_\mathcal{B}$ mit den gleichen Koef"|fizienten die DGL
+mit Startwert $\mathbbm{y}_0$ löst.
+
+Das homogene, nicht-autonome Problem besitzt also einen $n$-dimensionalen
+Lösungsraum \\
+($n := \dim E$).
+
+\textbf{Lemma}: \\
+Das System von Vektoren
+$\mathcal{B}^{(t_1)} = \{\mathbbm{y}_{\mathbbm{b}_1}(t_1), \dotsc,
+\mathbbm{y}_{\mathbbm{b}_n}(t_1)\} \subset E$ bildet für jedes $t_1 \in I$
+eine Basis.
+
+\textbf{Fundamentalsystem}:
+Ein vollständiges, linear unabhängiges System von Lösungen der homogenen
+Gleichung $\dot{\mathbbm{y}}(t) = A(t) \mathbbm{y}(t)$
+(also eine Basis von $\mathcal{N}$) nennt man \emph{Fundamentalsystem}.
+
+\textbf{Folgerung}:
+Seien $Y = \{\mathbbm{y}_1, \dotsc, \mathbbm{y}_n\} \subset \mathcal{N}$
+Lösungen der homogenen linearen DGL. \\
+Dann ist $Y$ ein Fundamentalsystem (d.\,h. linear unabhängig)
+genau dann, wenn \\
+$Y_{\widetilde{t}} = \{\mathbbm{y}_1(\widetilde{t}), \dotsc,
+\mathbbm{y}_n(\widetilde{t})\}$
+linear unabhängig ist für ein $\widetilde{t} \in I$.
+Dies ist der Fall genau dann, wenn
+$Y_t = \{\mathbbm{y}_1(t), \dotsc, \mathbbm{y}_n(t)\}$
+für alle $t \in I$ linear unabhängig ist.
+
+\subsection{%
+    Die \name{Wronski}-Determinante und die Formel von \name{Liouville}%
+}
+
+\textbf{\name{Wronski}-Determinante}: \\
+Seien $n$ Funktionen
+$\varphi_1, \dotsc, \varphi_n\colon I \rightarrow \real^n$ mit
+$\varphi_j(\tau) :=$
+\matrixsize{$\begin{pmatrix}
+    \varphi_j^1(\tau) \\
+    \vdots \\
+    \varphi_j^n(\tau)
+\end{pmatrix}$}
+gegeben. \\
+Dann heißt
+$W(\varphi_1, \dotsc, \varphi_n)(\cdot)\colon I \rightarrow \real$,
+$W(\varphi_1, \dotsc, \varphi_n)(\tau) := \det$
+\matrixsize{$\begin{pmatrix}
+    \varphi_1^1(\tau) & \dots & \varphi_n^1(\tau) \\
+    \vdots & & \vdots \\
+    \varphi_1^n(\tau) & \dots & \varphi_n^n(\tau)
+\end{pmatrix}$} \\
+$ = \det(\varphi_1(\tau), \dotsc, \varphi_n(\tau))$
+\emph{\name{Wronski}-Determinante} oder \emph{Wronskian}.
+
+\linie
+
+\textbf{Lemma}:
+$Y = \{\mathbbm{y}_1, \dotsc, \mathbbm{y}_n\} \subset \mathcal{N}$
+ist ein Fundamentalsystem der homogenen linearen DGL  genau
+dann, wenn $W(\mathbbm{y}_1, \dotsc, \mathbbm{y}_n)(t) \not= 0$ für alle
+$t \in I$, was der Fall ist genau dann, wenn
+$W(\mathbbm{y}_1, \dotsc, \mathbbm{y}_n)(\widetilde{t}) \not= 0$ für ein
+$\widetilde{t} \in I$.
+
+Sei eine $n \times n$-Matrix $A = (\alpha_{kl})_{k,l=1}^n$ gegeben.
+$\Sp(A) := \sum_{k=1}^n \alpha_{kk}$ bezeichnet die Spur von $A$.
+Wegen $\Sp(BAC) = \Sp(ACB) = \Sp(CBA)$ gilt insbesondere für $B$ invertierbar,
+dass $\Sp(B^{-1} A B) = \Sp(A B B^{-1}) = \Sp(A)$, also ist die Spur invariant
+bei Ähnlichkeitstransformationen (Basiswechsel).
+Daraus folgt unter anderem, dass die Spur einer Matrix die Summe ihrer
+Eigenwerte ist.
+
+\textbf{Satz (Formel von \name{Liouville})}: \\
+Sei $Y = \{\mathbbm{y}_1, \dotsc, \mathbbm{y}_n\} \subset \mathcal{N}$
+ein System von Lösungen von $\dot{\mathbbm{y}}(t) = A(t) \mathbbm{y}(t)$. \\
+Dann gilt $\frac{d}{dt} W(\mathbbm{y}_1, \dotsc, \mathbbm{y}_n)(t) =
+\Sp(A(t)) \cdot W(\mathbbm{y}_1, \dotsc, \mathbbm{y}_n)(t)$, \\
+d.\,h. $W(\mathbbm{y}_1, \dotsc, \mathbbm{y}_n)(t) =
+W(\mathbbm{y}_1, \dotsc, \mathbbm{y}_n)(t_0) \cdot
+\exp\left(\int_{t_0}^t \Sp(A(\tau))\d\tau\right)$.
+
+\pagebreak
+
+\subsection{%
+    Der Evolutionsoperator%
+}
+
+\textbf{Evolutionsoperator}:
+Gegeben sei die homogene lineare DGL
+$\dot{\mathbbm{y}}(t) = A(t) \mathbbm{y}(t)$ mit \\
+$A(\cdot)\colon I \rightarrow \L(E, E)$ stetig (z.\,B. $E = \real^n$).
+Dann ist für $t_0, t_1 \in I$ der \emph{Evolutionsoperator}
+$U(t_1, t_0)\colon E \rightarrow E$ definiert durch
+$U(t_1, t_0) \mathbbm{y}_0 := \mathbbm{y}(t_1)$, wobei $\mathbbm{y}(t)$ die DGL
+$\dot{\mathbbm{y}}(t) = A(t) \mathbbm{y}(t)$ mit
+$\mathbbm{y}(t_0) = \mathbbm{y}_0$ löst.
+
+Da die Lösung existiert und eindeutig ist (Picard-Lindelöf),
+ist die Abbildung wohldefiniert.
+
+$U(t_1, t_0)\colon E \rightarrow E$ ist eine lineare Abbildung, d.\,h. \\
+es gilt $U(t_1, t_0)(\beta^{(1)} \mathbbm{y}_0^{(1)} +
+\beta^{(2)} \mathbbm{y}_0^{(2)}) =
+\beta^{(1)} U(t_1, t_0) \mathbbm{y}_0^{(1)} +
+\beta^{(2)} U(t_1, t_0) \mathbbm{y}_0^{(2)}$.
+
+\linie
+
+Ist $E = \real^n$, $e_k$ der $k$-te Vektor der natürlichen Basis und
+$\mathbbm{y}_0 = (y_0^1, \dotsc, y_0^n)^t =
+\sum_{k=1}^n \sp{\mathbbm{y}_0, e_k} e_k$
+(Orthonormalentwicklung), so ist
+$\mathbbm{y}(t) := \sum_{k=1}^n \sp{\mathbbm{y}_0, e_k} \mathbbm{y}_k(t)$
+mit $\dot{\mathbbm{y}}_k(t) = A(t) \mathbbm{y}_k(t)$,
+$\mathbbm{y}_k(t_0) = e_k$ eine Lösung von
+$\dot{\mathbbm{y}}(t) = A(t) \mathbbm{y}(t)$ mit
+$\mathbbm{y}(t_0) = \mathbbm{y}_0$. \\
+Wegen $\mathbbm{y}(t_1) =
+\sum_{k=1}^n \sp{\mathbbm{y}_0, e_k} \mathbbm{y}_k(t_1)$ gilt
+$U(t_1, t_0) =$
+\matrixsize{$\begin{pmatrix}
+    y_1^1(t_1) & \dots & y_n^1(t_1) \\
+    \vdots & & \vdots \\
+    y_1^n(t_1) & \dots & y_n^n(t_1)
+\end{pmatrix}$} $= (\mathbbm{y}_1(t_1), \dotsc, \mathbbm{y}_n(t_1))$. \\
+Beachte, dass dieser Ausdruck immer noch von $t_0$ abhängig ist, denn
+die $\mathbbm{y}_k(t)$ haben als $t_0$ Zeitpunkt der Anfangsbedingung.
+Für die Determinante gilt
+$\det(U(t_1, t_0)) = W(\mathbbm{y}_1, \dotsc, \mathbbm{y}_n)(t_1)$.
+
+\linie
+
+\textbf{Eigenschaften des Evolutionsoperators}:
+\begin{enumerate}
+    \item
+    $U(t, t) = \mathbbm{1}$
+    
+    \item
+    $U(t_1, t_0) = U(t_1, t) U(t, t_0)$
+    
+    \item
+    $\frac{d}{dt} U(t, t_0) =
+    (\dot{\mathbbm{y}}_1(t), \dotsc, \dot{\mathbbm{y}}_n(t)) =
+    (A(t) \mathbbm{y}_1(t), \dotsc, A(t) \mathbbm{y}_n(t)) =
+    A(t) U(t, t_0)$
+    
+    \item
+    $U(t, t_0) \mathbbm{y}_0 = 0$ genau dann, wenn $\mathbbm{y}_0 = 0$, da
+    $\det U(t, t_0) =
+    W(\mathbbm{y}_1, \dotsc, \mathbbm{y}_n)(t) \not= 0$
+    
+    \item
+    $U(t, t_0) E = E$
+    
+    \item
+    $U(t_0, t) U(t, t_0) = U(t_0, t_0) = \mathbbm{1}$
+\end{enumerate}
+
+\linie
+
+\textbf{Satz}: Seien $A(t)$, $f(t)$ stetig für alle $t \in I$. \\
+Dann besitzt die inhomogene DGL $\mathbbm{y}(t) = A(t) \mathbbm{y}(t) + f(t)$,
+$\mathbbm{y}(t_0) = \mathbbm{y}_0$ für alle $ t \in I$
+die eindeutige Lösung $\mathbbm{y}(t) = U(t, t_0) \mathbbm{y}_0 +
+\int_{t_0}^t U(t, \tau) f(\tau) \d\tau$.
+
+\emph{Anmerkung}: \\
+Die Eindeutigkeit der Lösung folgt aus aus der Eindeutigkeit des homogenen
+Problems (s.\,o.). \\
+Nimmt man an, es gäbe zwei Lösungen
+$\mathbbm{y}^{(I)}(t), \mathbbm{y}^{(II)}(t)$ der DGL mit
+$\mathbbm{y}^{(I)}(t_0) = \mathbbm{y}^{(I)}(t_0) = \mathbbm{y}_0$,
+so würde $\mathbbm{y}(t) := \mathbbm{y}^{(I)}(t) - \mathbbm{y}^{(II)}(t)$
+die DGL $\dot{\mathbbm{y}}(t) = A(t) \mathbbm{y}(t)$ mit
+$\mathbbm{y}(t_0) = 0$ lösen.
+Allerdings ist die Nullfunktion eine ebensolche Lösung, aufgrund der
+Eindeutigkeit der Lösung für das homogene Problem
+gilt demnach $\mathbbm{y}(t) \equiv 0$, d.\,h.
+die beiden Lösungen sind identisch.
+
+\textbf{Satz}:
+Seien $A(t)$, $f(t)$ stetig für alle $t \in I$. \\
+Die allgemeine Lösung der DGL
+$\dot{\mathbbm{y}}(t) = A(t) \mathbbm{y}(t) + f(t)$ ist die Summe
+der allgemeinen Lösung $\mathbbm{y}_h$ der homogenen DGL
+und einer Partikulärlösung $\mathbbm{y}_p$ der inhomogenen DGL.
+
+\linie
+
+\textbf{Lösungsweg für nicht-autonome inhomogene Systeme}: \\
+$\dot{\mathbbm{y}}(t) = A(t) \mathbbm{y}(t) + f(t)$,
+$A(\cdot) \in \C(I, \L)$, $f(\cdot) \in \C(I, E)$
+\begin{enumerate}
+    \item
+    Lösung $\mathbbm{y}_h \in \mathcal{N}$ des homogenen Systems bestimmen
+    
+    \item
+    $U(t, t_0)$ bestimmen mit $\mathbbm{y}_k(t_0) = e_k$
+    
+    \item
+    $\mathbbm{y}_p(t) := U(t, t_0) \mathbbm{y}_0 +
+    \int_{t_0}^t U(t, \tau) f(\tau) \d\tau$
+    ist eine Partikulärlösung
+\end{enumerate}
+
+\subsection{%
+    Lineare autonome Systeme%
+}
+
+Ein lineares autonomes System ist gegeben, falls $A(t) \equiv A \in \L(E, E)$
+unabhängig von $t$ ist.
+
+Im Spezialfall $A = \alpha \cdot \mathbbm{1}$ für $\alpha \in \complex$ ist
+die Lösung des Systems $\dot{\mathbbm{y}}(t) = A \mathbbm{y}(t)$ gegeben durch
+$\mathbbm{y}(t) = e^{\alpha (t - t_0)} \mathbbm{y}_0$.
+Im allgemeinen Fall $A \in \L(E, E)$ möchte man eine analoge Schreibweise
+für die Lösung einführen:
+$\mathbbm{y}(t) = e^{(t - t_0) A} \mathbbm{y}_0$ mit
+$e^A = \exp(A) := \sum_{k=0}^\infty \frac{A^k}{k!}$
+
+\textbf{Eigenschaften von $\exp(A)$}:
+\begin{enumerate}
+    \item
+    Diese Reihe konvergiert im Raum $(\L(E, E), \norm{\cdot}_\L)$ absolut.
+    %$\sum_{k=0}^\infty \norm{\frac{A^k}{k!}}_\L \le
+    %\sum_{k=0}^\infty \frac{\norm{A}_\L^k}{k!} = e^{\norm{A}_\L} < \infty$,
+    %da $\norm{AB}_\L \le \norm{A}_\L \norm{B}_\L$.
+    
+    \item
+    Multiplikationseigenschaft:
+    $e^{A + B} = e^A e^B$ für $AB = BA$ (i.\,A. ist dies falsch).
+    %$e^A e^B = \left(\sum_{k=0}^\infty \frac{A^k}{k!}\right)
+    %\left(\sum_{n=0}^\infty \frac{B^n}{n!}\right)
+    %= \sum_{k=0}^\infty \sum_{n=0}^\infty \frac{A^k B^n}{k! n!}
+    %= \sum_{p=0}^\infty \frac{1}{p!} \sum_{k=0}^p
+    %\frac{p!}{k! (p - k)!} A^k B^{p-k}
+    %= \sum_{p=0}^\infty \frac{(A + B)^p}{p!} = e^{A + B}$, da man
+    %wegen $AB = BA$ den binomischen Lehrsatz anwenden kann (i.\,A. falsch).
+    
+    \item
+    Für $\exp(t \cdot A) = e^{t \cdot A}$, $t \in \real$ als
+    Abbildung von $\real$ nach $\L(E, E)$ gilt
+    $\frac{d}{dt} e^{tA} = A e^{tA}$.
+    
+    \item
+    Für $B \in \L(E, E)$ invertierbar gilt
+    $e^A = B e^{B^{-1}AB} B^{-1}$.
+\end{enumerate}
+
+Sei nun $\mathbbm{y}(t) = e^{(t - t_0) A} \mathbbm{y}_0$.
+$\mathbbm{y}(t)$ löst das System $\dot{\mathbbm{y}}(t) = A \mathbbm{y}(t)$,
+$\mathbbm{y}(t_0) = \mathbbm{y}_0$, da \\
+$\dot{\mathbbm{y}}(t) = \frac{d}{dt} (e^{(t - t_0) A}) \mathbbm{y}_0 =
+A e^{(t - t_0) A} \mathbbm{y}_0 = A \mathbbm{y}(t)$.
+
+\linie
+
+\textbf{Wie berechnet man $e^{(t - t_0) A}$?}
+
+Im Spezialfall $A$ diagonalisierbar gilt
+$B^{-1} A B = \diag\{\lambda_1, \dotsc, \lambda_n\}$
+für ein $B \in \L(E, E)$ invb.
+Dann ist
+$e^{\diag\{\lambda_1, \dotsc, \lambda_n\}} =
+\sum_{k=0}^\infty \frac{\diag\{\lambda_1, \dotsc, \lambda_n\}^k}{k!} =
+\sum_{k=0}^\infty \frac{\diag\{\lambda_1^k, \dotsc, \lambda_n^k\}}{k!} =$ \\
+$\diag\left\{\sum_{k=0}^\infty \frac{\lambda_1^k}{k!}, \dotsc,
+\sum_{k=0}^\infty \frac{\lambda_n^k}{k!}\right\} =
+\diag\{e^{\lambda_1}, \dotsc, e^{\lambda_n}\}$ \\
+und daher gilt
+$e^{(t - t_0) A} =
+B \cdot \diag\{e^{(t - t_0) \lambda_1}, \dotsc,
+e^{(t - t_0) \lambda_n}\} \cdot B^{-1}$.
+
+Im allgemeinen Fall kann man $A$ auf eine Matrix in Jordanform
+$B^{-1} A B = J$ bringen, d.\,h.
+$J = \diag\{J_{\nu_1}(\lambda_1), \dotsc, J_{\nu_k}(\lambda_k)\}$,
+wobei $\lambda_1, \dotsc, \lambda_k$ die Eigenwerte von $A$ sind
+und $\nu_1 + \dotsb + \nu_k = n$.
+Dabei ist $J_\nu(\lambda) := $ \matrixsize{$\begin{pmatrix}
+    \lambda & 1 & & 0 \\
+    & \ddots & \ddots & \\
+    & & \lambda & 1 \\
+    0 & & & \lambda
+\end{pmatrix}$} $ = \lambda \cdot \mathbbm{1}_\nu + T_\nu$ mit
+$T_\nu := J_\nu(0)$. \\
+Wegen $\lambda \mathbbm{1} \cdot T_\nu = T_\nu \cdot \lambda \mathbbm{1}$
+gilt $e^{\lambda \mathbbm{1}_\nu + T_\nu} = e^\lambda e^{T_\nu}$.
+
+Es gilt $T_\nu^2 = $ \matrixsize{$\begin{pmatrix}
+    0 & 0 & 1 & & 0 \\
+    & \ddots & \ddots & \ddots & \\
+    & & 0 & 0 & 1 \\
+    & & & 0 & 0 \\
+    0 & & & & 0 \\
+\end{pmatrix}$}, \dots,
+$T_\nu^{\nu-1} = $ \matrixsize{$\begin{pmatrix}
+    0 & \dots & 0 & 1 \\
+    & & & 0 \\
+    & & \ddots & \vdots \\
+    0 & & & 0\\
+\end{pmatrix}$}
+und $T_\nu^m = 0$ für $m \ge \nu$, daher ist
+$e^{T_\nu} = \sum_{k=0}^\infty \frac{T_\nu^k}{k!}
+= \sum_{k=0}^{\nu-1} \frac{T_\nu^k}{k!} = $ \matrixsize{$\begin{pmatrix}
+    1 & 1/1! & 1/2! & \dots & 1/(\nu - 1)! \\
+    & \ddots & \ddots & \ddots & \vdots \\
+    & & 1 & 1/1! & 1/2! \\
+    & & & 1 & 1/1! \\
+    0 & & & & 1
+\end{pmatrix}$}. \\
+Im Allgemeinen gilt also
+$e^{(t - t_0) J_\nu(\lambda)} = e^{(t - t_0) \lambda} e^{(t - t_0) T_\nu} =
+e^{(t - t_0) \lambda} \cdot $ \matrixsize{$\begin{pmatrix}
+    1 & (t - t_0)/1! & \dots & (t - t_0)/(\nu - 1)! \\
+    & \ddots & \ddots & \vdots \\
+    & & 1 & (t - t_0)/1! \\
+    0 & & & 1
+\end{pmatrix}$}.
+
+Für eine Jordanmatrix $J$ gilt
+$e^{(t - t_0) J} = \diag\{e^{(t - t_0) J_{\nu_1}(\lambda_1)}, \dotsc,
+e^{(t - t_0) J_{\nu_k}(\lambda_k)}\}$
+und nach Rücktransformation ist
+$e^{(t - t_0) A} = B e^{(t - t_0) J} B^{-1}$.
+
+\linie
+
+Betrachtet man erneut die Lösung der DGL mittels des Evolutionsoperators,
+also \\
+$\mathbbm{y}(t) = U(t, t_0) \mathbbm{y}_0 +
+\int_{t_0}^t U(t, \tau) f(\tau) \d\tau$,
+so erkennt man, dass sich diese aus der Lösung \\
+$\widetilde{\mathbbm{y}}(t) = U(t, t_0) \mathbbm{y}_0$
+des homogenen Problems mit Anfangsbedingung
+$\widetilde{\mathbbm{y}}(t_0) = \mathbbm{y}_0$ und der Lösung \\
+$\widehat{\mathbbm{y}}(t) = \int_{t_0}^t U(t, \tau) f(\tau) \d\tau$
+des inhomogenen Problems mit
+Anfangsbedingung $\widehat{\mathbbm{y}}(t_0) = 0$ zusammensetzt.
+Für $A(t) \equiv A$ gilt $U(t, t_0) = e^{(t - t_0) A}$, d.\,h.
+$\mathbbm{y}(t) = e^{(t - t_0) A} \mathbbm{y}_0 +
+\int_{t_0}^t e^{(t - \tau) A} f(\tau) \d\tau$
+löst die DGL $\dot{\mathbbm{y}}(t) = A \mathbbm{y}(t) + f(t)$
+mit $\mathbbm{y}(t_0) = \mathbbm{y}_0$.
+
+\subsection{%
+    Lineare DGLs höherer Ordnung%
+}
+
+Für $f, a_j \in \C([a, b], \real)$, $j = 0, \dotsc, n - 1$ ist
+$y^{(n)}(t) + a_{n-1}(t) y^{(n-1)}(t) + \dotsb + a_0(t) y(t) = f(t)$ ($\ast$)
+eine \textbf{lineare, inhomogene DGL der Ordnung $n$}.
+
+Fasst man die Ableitungen $y^{(j)}$ als Vektor auf, so erhält man \\
+$\mathbbm{y}(t) = (y^1(t), \dotsc, y^n(t)) =
+(y(t), \dot{y}(t), \dotsc, y^{(n-1)}(t))$
+und obige DGL ($\ast$) ist dann äquivalent zur DGL
+$\dot{\mathbbm{y}}(t) = A(t) \mathbbm{y}(t) + \mathbbm{f}(t)$ ($\ast\ast$),
+wobei $A(t) := $ \matrixsize{$\begin{pmatrix}
+    0 & 1 & & 0 \\
+    & & \ddots & \\
+    & & & 1 \\
+    -a_0(t) & -a_1(t) & \dotsb & -a_{n-1}(t)
+\end{pmatrix}$} und \\
+$\mathbbm{f}(t) := (0, \dotsc, 0, f(t))$.
+
+Das äquivalente Cauchy-Problem von ($\ast$) für ein Cauchy-Problem \\
+$\dot{\mathbbm{y}}(t) = A(t) \mathbbm{y}(t) + \mathbbm{f}(t)$,
+$\mathbbm{y}(t_0) = \mathbbm{c}$ von ($\ast\ast$) ist \\
+$y^{(n)}(t) + a_{n-1}(t) y^{(n-1)}(t) + \dotsb + a_0(t) y(t) = f(t)$,
+$y(t_0) = c_1, \dotsc, y^{(n-1)}(t_0) = c_n$. \\
+Aus der Existenz und Eindeutigkeit der Lösung für ($\ast\ast$) folgt,
+dass ($\ast$) für alle $t \in I = [a, b]$ eine eindeutige Lösung besitzt.
+Die Lösung ist wieder gegeben als Summe
+$y(t) = y_h(t) + y_p(t)$
+der allgemeinen Lösung und einer Partikulärlösung.
+
+\linie
+
+\textbf{DGL höherer Ordnung mit konstanten Koef"|fizienten}: \\
+Hier bleibt $f(t)$ zeitabhängig, aber $a_j(t) \equiv a_j$ zeitunabhängig
+für alle $j = 0, \dotsc, n - 1$, d.\,h. \\
+$y^{(n)}(t) + a_{n-1} y^{(n-1)}(t) + \dotsc + a_0 y(t) = f(t)$.
+
+Das \textbf{charakteristische Polynom} der DGL ist
+$P(\lambda) := \lambda^n + a_{n-1} \lambda^{n-1} + \dotsc + a_1 \lambda + a_0$.
+
+Auch eine autonome DGL lässt sich (als Spezialfall mit $A(t) \equiv A$
+zeitunabhängig) mit obiger Matrix umschreiben als
+$\dot{\mathbbm{y}}(t) = A \mathbbm{y}(t) + \mathbbm{f}(t)$.
+Dann kann man auch das charakteristische Polynom von $A$ betrachten:
+$d_A(\lambda) := \det(A - \lambda \mathbbm{1})$.
+
+\textbf{Satz}:
+Es gilt $d_A(\lambda) = (-1)^n P(\lambda)$.
+
+Man berechnet die Nullstellen $\lambda_1, \dotsc, \lambda_k$
+von $P(\lambda)$ (das sind genau die Nullstellen
+von $d_A(\lambda)$, d.\,h. die Eigenwerte von $A$)
+mit deren Vielfachheiten $\nu_1, \dotsc, \nu_k$.
+
+\textbf{Satz}:
+Sei $\lambda_j$ eine Nullstelle von $P(\lambda)$ der Ordnung $\nu_j$,
+dann löst jede Linearkombination von
+$Y_j := \{e^{\lambda_j t}, t e^{\lambda_j t}, \dotsc,
+t^{\nu_j - 1} e^{\lambda_j t}\}$ die homogene lineare DGL \\
+$y^{(n)}(t) + a_{n-1} y^{(n-1)}(t) + \dotsb + a_0 y(t) = 0$.
+Die allgemeine Lösung des homogenen Problems ist der Raum aufgespannt von
+den Mengen $Y_j$ mit $j = 1, \dotsc, k$.
+
+Zur Lösung des inhomogenen Problems benötigt man i.\,A.
+die Laplace-Transformation.
+
+\pagebreak
+
+\subsection{%
+    Die \name{Laplace}-Transformation%
+}
+
+\textbf{\name{Laplace}-Transformation}:
+Für eine gegebene Funktion
+$f\colon \left[0, +\infty\right[ \rightarrow \complex$ heißt \\
+$\L[f](p) := \widetilde{f}(p) = \int_0^{+\infty} f(t) e^{-tp} \dt$,
+$p \in \complex$ die \emph{\name{Laplace}-Transformierte}.
+
+\emph{Beispiele}: \\
+\begin{tabular}{l|ll}
+    $f$ & $\widetilde{f}$ & \\\hline
+    $f(t) = 1$ & $\widetilde{f}(p) = \frac{1}{p}$ & $\Re(p) > 0$ \\
+    $f(t) = t^n$ & $\widetilde{f}(p) = \frac{n!}{p^{n+1}}$ &
+    $\Re(p) > 0$, $n \in \natural$ \\
+    $f(t) = e^{-ta}$ & $\widetilde{f}(p) = \frac{1}{p+a}$ & $\Re(p + a) > 0$ \\
+    $f(t) = \cos(\omega t)$ &
+    $\widetilde{f}(p) = \frac{p}{p^2 + \omega^2}$ &
+    $\Re(p) > |\Im(\omega)|$ \\
+    $f(t) = \sin(\omega t)$ &
+    $\widetilde{f}(p) = \frac{\omega}{p^2 + \omega^2}$ &
+    $\Re(p) > |\Im(\omega)|$ \\
+\end{tabular}
+
+Es gelten
+$\L[\alpha f + \beta g](p) = \alpha \L[f](p) + \beta \L[g](p)$
+(Linearität) sowie die Substitutionsregeln
+$\L\left[f(\frac{t}{a})\right](p) = a \L[f](p \cdot a)$ für $a > 0$
+und $\L[e^{-at}f(t)](p) = \L[f](p + a)$ für $a \in \complex$.
+
+Mithilfe der \textbf{\name{Heaviside}-Funktion}
+$H(t) := \chi_{\left[0, +\infty\right[}(t)$
+kann man die Laplace-Transformierte von um $a \ge 0$ nach rechts verschobenen
+Funktionen umformen: \\
+$\L[f(t - a) H(t - a)](p) = e^{-ap} \L[f](p)$.
+
+\linie
+
+\textbf{Satz}:
+Sei $f \in \C^n(\left[0, +\infty\right[, \complex)$,
+$\L[f^{(k)}](p)$ existiere für ein $p \in \complex$ und
+alle $k = 0, \dotsc, n$ und
+$f^{(k)}(t) e^{-tp} \to 0$ für $t \to \infty$
+für alle $k = 0, \dotsc, n - 1$. \\
+Dann ist $\L[f^{(n)}](p) = p^n \L[f](p) - p^{n-1} f(0) - p^{n-2} f'(0) -
+\dotsb - f^{(n-1)}(0)$.
+
+\textbf{Satz}:
+Sei $\L[f](p)$ existent für $\Re(p) > c$.
+Dann ist $\L[f](p)$ analytisch in allen Punkten $p \in \complex$ mit
+$\Re(p) > c$ (insbesondere ist $\L[f](p)$ in allen solchen Punkten
+unendlich oft dif"|ferenzierbar) und es gilt
+$\L[t^n f(t)](p) = (-1)^n \frac{d^n}{dp^n} \L[f](p)$.
+
+\linie
+
+\textbf{Faltung}:
+Seien $f, g\colon \real \rightarrow \complex$ Funktionen. \\
+Dann ist $(f \ast g)(t) := \int_\real f(\tau) g(t - \tau) \d\tau$
+die \emph{Faltung} von $f$ und $g$.
+
+Sind wie hier bei der Laplace-Transformation Funktionen
+$f, g\colon \left[0, +\infty\right[ \rightarrow \complex$ gegeben,
+so setzt man $f$ und $g$ auf $\real$ mit $0$ fort.
+Dann ist $(f \ast g)(t) = \int_0^t f(\tau) g(t - \tau) \d\tau$.
+
+Die Faltung erfüllt Kommutativität ($f \ast g = g \ast f$),
+Assoziativität ($f \ast (g \ast h) = (f \ast g) \ast h$),
+Distributivität ($f \ast (g + h) = (f \ast g) + (f \ast h)$) sowie
+Assoziativität mit der skalaren Multiplikation
+($a(f \ast g) = (af) \ast g = f \ast (ag)$ mit $a \in \complex$). \\
+Außerdem gilt für die Ableitung
+$D(f \ast g) = (Df) \ast g = f \ast (Dg)$.
+
+\textbf{Satz}:
+Seien $\L[f](p)$ und $\L[g](p)$ existent für alle $p \in \complex$ mit
+$\Re(p) > c$. \\
+Dann ist $\widetilde{h}(p) := \widetilde{f}(p) \cdot \widetilde{g}(p)$ die
+Laplace-Transformierte von $h := f \ast g$, \\
+d.\,h. $\L[f](p) \cdot \L[g](p) = \L[f \ast g](p)$.
+
+\linie
+\pagebreak
+
+\textbf{\name{Laplace}-Transformation und lineare DGLs}: \\
+Sei nun die inhomogene, autonome DGL
+$y^{(n)}(t) + a_{n-1} y^{(n-1)}(t) + \dotsb + a_0 y(t) = f(t)$ \\
+mit partikulärer Anfangsbedingung
+$y(0) = 0$, \dots, $y^{(n-1)}(0) = 0$ gegeben.
+
+Dann gilt
+$\L[f](p) = \L[y^{(n)} + a_{n-1} y^{(n-1)} + \dotsb + a_0 y](p)
+= P(p) \cdot \L[y](p)$ aufgrund den konstanten Koef"|fizienten und der speziell
+gewählten Startbedingung, wobei
+$P(p) = p^n + a_{n-1} p^{n-1} + \dotsb + a_0$ das charakteristische Polynom
+der DGL ist.
+
+Daher gilt $\L[y](p) = \frac{\L[f](p)}{P(p)}$ und $y$ kann als inverse
+Laplace-Transformierte berechnet werden, wobei auf Polstellen (Nullstellen
+des charakteristischen Polynoms) geachtet werden muss.
+
+Besser ist es, wenn $y$ in der Form
+$y = Q \ast f$ mit $\L[Q](p) = \frac{1}{P(p)}$ gegeben ist. \\
+In diesem Fall ist nämlich
+$\L[y](p) = \L[Q](p) \cdot \L[f](p) = \frac{\L[f](p)}{P(p)}$.
+
+\linie
+
+\textbf{Wie bestimmt man $Q$?}
+
+Für $P(p) = (p - \lambda_1)^{\nu_1} \dotsm (p - \lambda_k)^{\nu_k}$
+ist $\frac{1}{P(p)} = (p - \lambda_1)^{-\nu_1} \dotsm
+(p - \lambda_k)^{-\nu_k}$. \\
+Für $\ell = 1, \dotsc, k$ gilt
+$(p - \lambda_\ell)^{-\nu_\ell} = \L[j_{\nu_\ell}(\lambda_\ell, t)](p)$ mit
+$j_\nu(\lambda, t) := \frac{e^{\lambda t} t^{\nu-1}}{(\nu - 1)!} H(t)$.
+
+Somit ist $Q(t) = j_{\nu_1}(\lambda_1, t) \ast \dotsm
+\ast j_{\nu_k}(\lambda_k, t)$, d.\,h. \\
+$y(t) = (Q \ast f)(t) =
+(j_{\nu_1}(\lambda_1, \cdot) \ast \dotsb
+\ast j_{\nu_k}(\lambda_k, \cdot) \ast f)(t)$.
+
+\emph{Beispiel}:
+$\ddot{y}(t) - y(t) = f(t)$ \\
+Hier ist $P(p) = (p - 1)(p + 1)$,
+d.\,h. $\L^{-1}\left[\frac{1}{p+1}\right] = e^{-t} H(t)$ bzw.
+$\L^{-1}\left[\frac{1}{p-1}\right] = e^t H(t)$. \\
+Daraus folgt $Q(t) = (e^{-t} H(t)) \ast (e^t H(t)) =
+\int_0^t e^{-\tau} e^{t - \tau} \d\tau = \sinh t$ für $t \ge 0$. \\
+Also ist $y(t) = \int_0^t \sinh(t - \tau) f(\tau) \d\tau$.
+
+\subsection{%
+    Zum Langzeitverhalten autonomer Systeme%
+}
+
+Gegeben sei ein autonomes System
+$\dot{\mathbbm{y}} = \mathbbm{v}(\mathbbm{y})$.
+Man kann sich nun fragen, ob es konstante Lösungen gibt, d.\,h.
+Lösungen $\mathbbm{y}(t) \equiv \const$.
+In diesem Fall gilt $\dot{\mathbbm{y}} = 0 = \mathbbm{v}(\mathbbm{y})$.
+Solche Punkte $\mathbbm{y}$ heißen \textbf{kritische Punkte}.
+
+Es gibt dabei mehrere Möglichkeiten:
+Das Geschwindigkeitsfeld kann so gebaut sein, dass die Lösung schon bei
+kleinster Änderung aus dem kritischen Punkt divergiert (instabile Lösung).
+Der umgekehrte Fall tritt ein, falls die Lösung in jedem Fall gegen den
+kritischen Punkt konvergiert (stabile Lösung).
+Natürlich gibt es auch Zwischenfälle, in denen das asymptotische Verhalten
+vom Ausgangspunkt abhängt.
+
+\emph{Beispiel}:
+$\dot{\mathbbm{y}} = \begin{pmatrix}\dot{y}_1 \\ \dot{y}_2\end{pmatrix} =
+A\mathbbm{y} = \begin{pmatrix}a_{11} & a_{12} \\ a_{21} & a_{22}\end{pmatrix}
+\begin{pmatrix}y_1 \\ y_2\end{pmatrix}$ mit $\det A \not= 0$ \\
+Hier gibt es zwei Eigenwerte $\lambda_1, \lambda_2 \not= 0$ mit zugehörigen
+Eigenvektoren $\mathbbm{b}_1, \mathbbm{b}_2$.
+Da die Matrix invertierbar ist, gibt es genau einen kritischen Punkt
+$\mathbbm{y} = 0$.
+Die allgemeine Lösung des Systems ist
+$\mathbbm{y}(t) = \alpha_1 \mathbbm{b}_1 e^{\lambda_1 t} +
+\alpha_2 \mathbbm{b}_2 e^{\lambda_2 t}$.
+Nun entscheiden $\Re(\lambda_1)$ und $\Re(\lambda_2)$, welcher der obigen
+Fälle eintrifft:
+Für $\Re(\lambda_1), \Re(\lambda_2) > 0$ erhält man eine instabile,
+für $\Re(\lambda_1), \Re(\lambda_2) < 0$ eine stabile Lösung.
+Keine pauschale Aussage lässt sich bei verschiedenen Vorzeichen der Realteile
+tref"|fen.
+
+Allgemein geht man meistens so vor:
+Man bestimmt zunächst die kritischen Punkte und verwendet dann in einer
+Umgebung der Punkte lineare Approximationen (also lineare DGL), um etwas
+über das asymptotische Verhalten auszusagen.
+
+\pagebreak
+
+\begin{landscape}
+    \subsection{%
+        \emph{Zusatz}:
+        Übersicht über die behandelten Arten von DGLs%
+    }
+    
+    \footnotesize
+    \begin{tabular}{p{50mm}p{50mm}p{148mm}}
+        \toprule
+        
+        \textbf{DGL} & \textbf{Typ} & \textbf{Lösungsweg} \\
+        
+        \midrule
+        
+        $y'(x) = h(y)g(x)$ &
+        trennbare Veränderliche &
+        $\int \frac{1}{h(y)} \dy = \int g(x) \dx + c$ \\
+        
+        \midrule
+        
+        $y'(x) = f(\frac{y}{x})$ &
+        homogene DGL &
+        Transformation $w = \frac{y}{x}$,
+        $\int \frac{1}{f(w) - w} \dw = \ln |x| + c$ \\
+        
+        \midrule
+        
+        $a_1(x) y'(x) + a_0(x) y(x) = g(x)$ &
+        lineare DGL 1. Ordnung &
+        \underline{homogen}: $y_h(x)$ durch Trennung der Veränderlichen,
+        \newline
+        \underline{inhomogen}: $y_p(x)$ durch Variation der Konstanten,
+        $y(x) := y_h(x) + y_p(x)$ \\
+        
+        \midrule
+        
+        $y'(x) + a(x)y(x) = b(x)y^n(x)$ &
+        \name{Bernoulli}-DGL &
+        für \underline{$n = 0, 1$} lineare DGL lösen, \newline
+        für \underline{$n \ge 2$} Substitution $z(x) := y^{1-n}(x)$
+        durchführen und lineare DGL lösen \\
+        
+        \midrule
+        
+        $y''(x) + a_1 y'(x) + a_0 y(x) = g(x)$ &
+        lineare autonome DGL \newline
+        2. Ordnung &
+        \underline{homogen}:
+        NS von $\lambda^2 + a_1 \lambda + a_0 = 0$ bestimmen,
+        $y_h(x) := c_1 y_1(x) + c_2 y_2(x)$ mit
+        $y_1(x) := e^{\lambda_1 x}$, $y_2(x) := e^{\lambda_2 x}$
+        für $\lambda_1 \not= \lambda_2$ und
+        $y_1(x) := e^{\lambda x}$, $y_2(x) := x e^{\lambda x}$
+        für $\lambda_1 = \lambda_2 =: \lambda$,
+        für reelle Lösungen und $\lambda_{1,2} = a \pm bi$ ist
+        $y_1(x) := e^{ax} \sin(bx)$ und $y_2(x) := e^{ax} \cos(bx)$
+        ein reelles Fundamentalsystem, \newline
+        \underline{inhomogen}:
+        Variation der Konstanten,
+        $y_p(x) := c_1(x) y_1(x) + c_2(x) y_2(x)$ mit \newline
+        $c_1'(x) y_1(x) + c_2'(x) y_2(x) = 0$ und
+        $c_1'(x) y_1'(x) + c_2'(x) y_2'(x) = g(x)$ \\
+        
+        \midrule
+        
+        $y''(x) + a_1 y'(x) + a_0 y(x) =$ \newline
+        $e^{qx} \cdot (\alpha_m x^m + \dotsb + \alpha_1 x + \alpha_0)$ &
+        lineare autonome DGL \newline
+        2. Ordnung mit Ansatzmethode &
+        $y_p(x) := x^\ell e^{qx} \cdot
+        (\beta_m x^m + \dotsb + \beta_1 x + \beta_0)$
+        mit $\ell := 0$ für $q$ keine NS des char. Polynoms und
+        $\ell := n$ für $q$ NS des char. Polynoms mit Vielfachheit $n$,
+        danach in DGL einsetzen und Koef"|fizientenvergleich durchführen,
+        um $\beta_0, \dotsc, \beta_m$ zu bestimmen \\
+        
+        \midrule
+        
+        $y^{(n)}(t) + a_{n-1} y^{(n-1)} + \dotsb +$ \newline
+        $a_0 y(t) = f(t)$ &
+        lineare autonome DGL \newline
+        $n$-ter Ordnung &
+        \underline{homogen}:
+        Bestimmung der Nullstellen $\lambda_j$ mit Vielfachheiten $\nu_j$,
+        $j = 1, \dotsc, k$ des char. Polynoms \newline
+        $P(\lambda) := \lambda^n + a_{n-1} \lambda^{n-1} + \dotsb +
+        a_1 \lambda + a_0$,
+        $Y_j := \{e^{\lambda_j t}, t e^{\lambda_j t}, \dotsc,
+        t^{\nu_j-1} e^{\lambda_j t}\}$, \newline
+        allgemeine Lösung $y_h$ ist der Raum aufgespannt durch alle $Y_j$,
+        $j = 1, \dotsc, k$, \newline
+        \underline{inhomogen}:
+        \name{Laplace}-Transformation, d.\,h.
+        $\L[f](p) = \L[y^{(n)} + a_{n-1} y^{(n-1)} + \dotsb + a_0 y](p)
+        = P(p) \cdot \L[y](p)$ mit dem char. Polynom
+        $P(p) = p^n + a_{n-1} p^{n-1} + \dotsb + a_0$, also
+        $\L[y](p) = \frac{\L[f](p)}{P(p)}$ \\
+        
+        \midrule
+        
+        $y^{(n)}(t) + a_{n-1}(t) y^{(n-1)} + \dotsb +$ \newline
+        $a_0(t) y(t) = f(t)$ &
+        lineare DGL \newline
+        $n$-ter Ordnung &
+        äquivalent zu
+        $\dot{\mathbbm{y}}(t) = A(t) \mathbbm{y}(t) + \mathbbm{f}(t)$,
+        $\mathbbm{y}(t_0) = \mathbbm{c}$ mit
+        $\mathbbm{y}(t) := (y(t), \dot{y}(t), \dotsc, y^{(n-1)}(t))$, \newline
+        $\mathbbm{f}(t) := (0, \dotsc, 0, f(t))$,
+        $c_1 = y(t_0)$, \dots, $c_n = y^{(n-1)}(t_0)$ \\
+        
+        \midrule
+        
+        $\dot{\mathbbm{y}}(t) = A \mathbbm{y}(t)$ &
+        lineares autonomes DGS \newline
+        (homogen) &
+        $\mathbbm{y}(t) := e^{(t - t_0)A} \mathbbm{y}_0$, \newline
+        \underline{$A$ diagonalisierbar}:
+        $B^{-1} A B = \diag\{\lambda_1, \dotsc, \lambda_n\}$,
+        $e^{(t - t_0)A} = B \cdot \diag\{e^{(t - t_0)\lambda_1}, \dotsc,
+        e^{(t - t_0)\lambda_n}\} \cdot B^{-1}$, \newline
+        \underline{allg. mit Jordanform}:
+        $B^{-1} A B = J = \diag\{J_{\nu_1}(\lambda_1), \dotsc,
+        J_{\nu_k}(\lambda_k)\}$,
+        $e^{(t - t_0)A} =$ \newline
+        $B \cdot \diag\{e^{(t - t_0)J_{\nu_1}(\lambda_1)},
+        \dotsc, e^{(t - t_0)J_{\nu_k}(\lambda_k)}\} \cdot B^{-1}$,
+        $e^{(t - t_0)J_\nu(\lambda)} =
+        e^{(t - t_0)\lambda} \cdot e^{(t - t_0)T_\nu}$,
+        $T_\nu := J_\nu(0)$ \\
+        
+        \midrule
+        
+        $\dot{\mathbbm{y}}(t) = A(t) \mathbbm{y}(t) + f(t)$ &
+        lineares DGS &
+        allgemeine Lösung $\mathbbm{y}_h$ des homogenen Systems bestimmen,
+        $U(t, t_0) = (\mathbbm{y}_1(t), \dots, \mathbbm{y}_n(t))$
+        bestimmen mit $\dot{\mathbbm{y}}_k(t) = A(t) \mathbbm{y}_k(t)$,
+        $\mathbbm{y}_k(t_0) = e_k$
+        (im Fall $A(t) \equiv A$ gilt $U(t, t_0) = e^{(t - t_0)A}$), \newline
+        partikuläre Lösung $\mathbbm{y}_p(t) := U(t, t_0)\mathbbm{y}_0, +
+        \int_{t_0}^t U(t, \tau)f(\tau) \d\tau$ bestimmen \\
+        
+        \bottomrule
+    \end{tabular}
+\end{landscape}
+
+\pagebreak

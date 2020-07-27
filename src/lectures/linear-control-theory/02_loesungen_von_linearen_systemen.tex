@@ -1,0 +1,818 @@
+\section{%
+    Lösungen von linearen Systemen%
+}
+
+\subsection{%
+    Diagonalisierbare Matrizen%
+}
+
+Die Zustandsraum-Darstellung eines dynamischen Systems ohne Ein- und Ausgang ist
+$\dot{x} = f(x)$ mit $f\colon X \rightarrow \real^n$, $X \subset \real^n$.
+Das System ist linear, falls $f$ eine lineare Abbildung ist.
+Daher wird ein lineares, autonomes System beschrieben durch $\dot{x} = Ax$ mit
+$A \in \real^{n \times n}$.
+Lösungen solcher Systeme sind durch Methoden der linearen Algebra vollständig bekannt.
+
+\linie
+
+\textbf{diagonale Matrix}:
+Für $A = \diag(\lambda_1, \dotsc, \lambda_n)$ mit $\lambda_k \in \real$, $k = 1, \dotsc, n$,
+ist das System äquivalent zu $\dot{x}_1 = \lambda_1 x_1$, \dots, $\dot{x}_n = \lambda_n x_n$.
+Jede Gleichung dieses vollkommen entkoppelten Systems kann separat gelöst werden.
+Als Lösungen erhält man $x_k(t) = e^{\lambda_k t} \xi_k$, $\xi_k \in \real$, für
+$k = 1, \dotsc, n$.
+Kompakter lässt sich das schreiben als
+$x(t) = \smallpmatrix{e^{\lambda_1 t} & & 0 \\ & \ddots & \\ 0 & & e^{\lambda_n t}} \xi$ mit
+$\xi = \smallpmatrix{\xi_1 \\ \vdots \\ \xi_n}$, wobei $x(0) = \xi$ gilt.
+
+\linie
+
+Für $A$ nicht diagonal muss man eine Koordinatentransformation durchführen.
+
+\textbf{Zustandskoordinaten-Transformation}:
+Jede invertierbare Matrix $T \in \real^{n \times n}$ definiert eine
+\begriff{Zustandskoordinaten-Transformation (state-coordinate transformation)} $z = Tx$.
+
+Wenn $x(t)$ die Gleichung $\dot{x}(t) = Ax(t)$ erfüllt, dann gilt mit $z(t) := Tx(t)$, dass\\
+$\dot{z}(t) = T\dot{x}(t) = TAx(t) = TAT^{-1} Tx(t) = \widetilde{A} z(t)$,
+wobei in den neuen Koordinaten das System durch $\widetilde{A} := TAT^{-1}$ beschrieben wird.
+Umgekehrt erfüllt $x(t) := T^{-1} z(t)$ die DGL $\dot{x}(t) = Ax(t)$, falls
+$z(t)$ die DGL $\widetilde{z}(t) = \widetilde{A} z(t)$ erfüllt.
+
+Die Lösungsmenge von $\dot{z} = \widetilde{A} z$ transformiert sich also linear durch $T^{-1}$
+in die Lösungsmenge von $\dot{x} = Ax$.
+
+\linie
+
+Oft ist $A$ zwar nicht diagonal, dafür aber diagonalisierbar.
+
+\textbf{Satz (Lösung von $\dot{x} = Ax$ für $A$ diagonalisierbar)}:\\
+Sei $T \in \real^{n \times n}$, sodass
+$TAT^{-1} = \diag(\lambda_1, \dotsc, \lambda_n)$
+mit $\lambda_1, \dotsc, \lambda_n \in \real$.
+Dann ist die eindeutige Lösung von $\dot{x} = Ax$, $x(0) = \xi$, gegeben durch
+$x(t) := \left[T^{-1} \diag(e^{\lambda_1 t}, \dotsc, e^{\lambda_n t}) T\right] \xi$.
+
+Jede Komponente einer Lösung $x$ von $\dot{x} = Ax$ ist eine
+Linearkombination von $e^{\lambda_k t}$, $k = 1, \dotsc, n$.
+Genauer: Wenn $\xi$ gleich einer der Spalten $c_k$ von $S := T^{-1}$ ist,
+dann ist $x(t) = c_k e^{\lambda_k t}$,
+da
+$Se_k = c_k$ und
+$S \diag(e^{\lambda_1 t}, \dotsc, e^{\lambda_n t}) (S^{-1} c_k) =
+S (\diag(e^{\lambda_1 t}, \dotsc, e^{\lambda_n t}) e_k) = S (e^{\lambda_k t} e_k) =
+c_k e^{\lambda_k t}$.\\
+Alle anderen Lösungen sind wegen Linearität Linearkombinationen dieser $n$ Lösungen:\\
+$[S \diag(e^{\lambda_1 t}, \dotsc, e^{\lambda_n t}) S^{-1}] (\sum_{k=1}^n \mu_k c_k)
+= \sum_{k=1}^n \mu_k c_k e^{\lambda_k t}$.
+
+\textbf{Beispiel}:
+Beim linearisierten inversen Federpendel bekommt man im oberen Gleichgewicht die Matrix
+$A = \smallpmatrix{0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\
+0 & 3.92 & -2 & -0.32 \\ 0 & 22.1 & -3.23 & -1.82}$.
+Man erhält Matrizen
+$S = \smallpmatrix{1 & -0.03 & -0.04 & 0.58 \\ 0 & -0.26 & -0.16 & -0.11 \\
+0 & -0.12 & 0.22 & -0.79 \\ 0 & -0.96 & 0.96 & 0.16}$ und
+$\Lambda = \diag(0, 3.72, -6.16, -1.38)$ mit $\Lambda = S^{-1} AS$.
+Die Lösung divergiert nicht bestimmt genau dann, wenn
+$\xi \in \left\{S \left.\smallpmatrix{\widetilde{\xi}_1 \\ 0 \\
+\widetilde{\xi}_3 \\ \widetilde{\xi}_4} \;\right|\;
+\widetilde{\xi}_1, \widetilde{\xi}_3, \widetilde{\xi}_4 \in \real\right\}$.
+
+\vspace{3mm}
+\linie
+\pagebreak
+
+\textbf{komplexe Transformationen und Diagonalmatrizen}:
+Für die Linearisierung im unteren Gleichgewicht sind die Matrizen
+$T = \smallpmatrix{r_1 \\ r_2 \\ r_3 \\ r_4}$,
+$S = \smallpmatrix{c_1 & c_2 & c_3 & c_4}$ und
+$\Lambda = \diag(\lambda_1, \lambda_2, \lambda_3, \lambda_4)$ komplex.
+Dennoch stimmt obiger Satz, denn Eigenwerte von reellen Matrizen treten immer komplex konjugiert
+auf.
+Hier ist z.\,B. $\lambda_2 = \overline{\lambda_3}$, $c_2 = \overline{c_3}$ und
+$r_2 = \overline{r_3}$.
+Daher ist\\
+$\left[T^{-1} \diag(e^{\lambda_1 t}, e^{\lambda_2 t}, e^{\lambda_3 t}, e^{\lambda_4 t}) T\right]
+= \smallpmatrix{c_1 e^{\lambda_1 t} & c_2 e^{\lambda_2 t} &
+\overline{c_2} e^{\overline{\lambda_2} t} & c_4 e^{\lambda_4 t}}
+\smallpmatrix{r_1 \\ r_2 \\ \overline{r_2} \\ r_4}$\\
+$= e^{\lambda_1 t} c_1 r_1 + e^{\lambda_2 t} c_2 r_2 +
+e^{\overline{\lambda_2} t} \overline{c_2} \overline{r_2} + e^{\lambda_4 t} c_4 r_4
+= e^{\lambda_1 t} c_1 r_1 + 2 \Re\!\left[e^{\lambda_2 t} c_2 r_2\right] + e^{\lambda_4 t} c_4 r_4$
+immer eine reelle Matrix.
+Dementsprechend ist die Lösung für den Anfangswert $\xi \in \real^4$ gleich\\
+$e^{\lambda_1 t} c_1 (r_1 \xi) + 2 \Re\!\left[e^{\lambda_2 t} c_2 (r_2 \xi)\right] +
+e^{\lambda_4 t} c_4 (r_4 \xi)$.
+
+Das lässt sich noch etwas vereinfachen:
+Für $\lambda = \sigma + \iu \omega \in \complex$ ($\sigma, \omega \in \real$) gilt\\
+$e^{\lambda t} = e^{\sigma t}[\cos(\omega t) + \iu \sin(\omega t)]$.
+Wenn also $c$ und $r$ komplexe Spalten- bzw. Zeilenvektoren sind, dann ist
+$cr = [\Re(c) + \iu \Im(c)] [\Re(r) + \iu \Im(r)] = M + \iu N$ mit
+$M := [\Re(c) \Re(r) - \Im(c) \Im(r)]$ und $N := [\Re(c) \Im(r) + \Im(c) \Re(r)]$.\\
+Das führt zur expliziten Formel
+$\Re\!\left[e^{\lambda t} c r\right] = e^{\sigma t} [\cos(\omega t) M - \sin(\omega t) N]$.\\
+Die Komponenten von $\Re\!\left[e^{\lambda t} c r\right] \xi$ sind also
+gleichbleibende ($\sigma = 0$),
+wachsende ($\sigma > 0$) oder
+kleiner werdende ($\sigma < 0$) Oszillationen.
+
+\linie
+
+Bei der Diagonalisierung einer Matrix $A \in \real^{n \times n}$ bestimmt man für jeden
+Eigenwert $\lambda$ eine Basis des zugehörigen Eigenraums $\Kern(A - \lambda I)$.
+Die Basen aller Eigenräume fasst man zu $v_1, \dotsc, v_g$ zusammen,
+diese Menge ist automatisch linear unabhängig und daher $g \le n$.
+
+\textbf{Satz (Diagonalisierbarkeitskriterium)}:
+Seien $v_1, \dotsc, v_g$ linear unabhängige Eigenvektoren zu Eigenwerten
+$\lambda_1, \dotsc, \lambda_g$ der Matrix $A \in \real^{n \times n}$,
+sodass keine größere Liste linear unabhängiger Eigenvektoren existiert.
+Dann ist $A$ diagonalisierbar genau dann, wenn $g = n$.
+In diesem Fall ist $S^{-1} A S = \diag(\lambda_1, \dotsc, \lambda_n)$ mit
+$S = \smallpmatrix{v_1 & \dots & v_n}$.
+
+\textbf{Modi, Modusformen}:
+Die Eigenwerte von $A$ heißen \begriff{Modi (modes)} des Systems $\dot{x} = Ax$.
+Die zugehörigen Eigenvektoren heißen \begriff{Modusformen (mode-shapes)}.
+
+\subsection{%
+    Nicht-diagonalisierbare Matrizen%
+}
+
+\textbf{Matrixexponential}:
+Seien $A \in \real^{n \times n}$ und $t \in \real$.\\
+Dann ist $e^{At} := \sum_{k=0}^\infty \frac{1}{k!} (At)^k$ das \begriff{Matrixexponential}
+von $At$.
+
+\textbf{Satz (Matrixexponential)}:
+\begin{enumerate}
+    \item
+    Die Reihe $e^{At}$ konvergiert gleichmäßig auf $[-T, T]$ für jedes $T > 0$.\\
+    Daher ist $t \mapsto e^{At}$ eine wohldefinierte, analytische Funktion auf $\real$.
+    
+    \item
+    Es gilt $e^{A0} = I$, $e^{A(t + \tau)} = e^{At} e^{A\tau}$ und daher $e^{-At} = [e^{At}]^{-1}$.
+    
+    \item
+    Es gilt $\frac{d}{dt} e^{At} = A e^{At} = e^{At} A$.
+    
+    \item
+    Es gilt $e^{S^{-1} (At) S} = S^{-1} e^{At} S$.
+\end{enumerate}
+
+\textbf{diagonalisierbare Matrizen}:
+Gilt $A = T^{-1} \Lambda T$, so ist
+$e^{At} = T^{-1} \diag(e^{\lambda_1 t}, \dotsc, e^{\lambda_n t}) T$.
+
+\textbf{Satz (Lösung von $\dot{x} = Ax$)}:
+Für $A \in \real^{n \times n}$ ist die eindeutige Lösung von $\dot{x} = Ax$, $x(0) = \xi$
+gegeben durch $x(t) = e^{At} \xi$
+(für $x(\tau) = \xi$ durch $x(t) = e^{A(t - \tau)} \xi$).
+
+\textbf{Beispiel}:
+Den \begriff{Doppelintegrator (double integrator)} $\ddot{q} = u$ kann man durch
+$\dot{x} = Ax + Bu$ mit Matrizen $A = \smallpmatrix{0 & 1 \\ 0 & 0}$ und
+$B = \smallpmatrix{0 \\ 1}$ in die Zustandsraum-Darstellung bringen.
+Es gilt $(At)^2 = 0$, somit also $e^{At} = I + (At) = \smallpmatrix{1 & t \\ 0 & 1}$.
+Die Lösungen von $\dot{x} = Ax$ sind daher
+$x(t) = e^{At} \xi = \smallpmatrix{\xi_1 + t \xi_2 \\ \xi_2}$.
+
+\linie
+\pagebreak
+
+\textbf{Satz (\name{Jordan}-Normalform)}:
+Sei $A \in \complex^{n \times n}$.
+\begin{enumerate}
+    \item
+    Es gibt eine invertierbare Matrix $S \in \complex^{n \times n}$ mit
+    $S^{-1} A S = J$
+    mit der \begriff{\name{Jordan}-Normalform}
+    $J := \smallpmatrix{J_1 & & 0 \\ & \ddots & \\ 0 & & J_g}$, wobei
+    $J_\ell := \smallpmatrix{\lambda_\ell & 1 & & 0 \\ & \ddots & \ddots & \\
+    & & \lambda_\ell & 1 \\ 0 & & & \lambda_\ell}$ die
+    \begriff{\name{Jordan}-Blöcke} sind.
+    
+    \item
+    Bis auf Permutation der Jordan-Blöcke ist die Jordan-Normalform eindeutig bestimmt.
+    
+    \item
+    $\lambda_1, \dotsc, \lambda_g$ sind die nicht notwendigerweise verschiedenen
+    Eigenwerte von $A$.
+    
+    \item
+    Es gibt genau $g$ linear unabhängige Eigenvektoren von $A$.
+    
+    \item
+    $A$ ist diagonalisierbar genau dann, wenn alle Jordan-Blöcke Dimension $1$ haben.
+\end{enumerate}
+
+\textbf{Beispiel}:
+Für $A = \smallpmatrix{1 & 7 & 7 & -8 & 6 \\ 1 & 5 & 5 & -5 & 5 \\ 1 & 0 & 2 & -1 & 1 \\
+0 & 3 & 3 & -3 & 2 \\ -1 & -4 & -5 & 5 & -4}$ ist
+$J = \smallpmatrix{-1 & 1 & & & 0 \\ 0 & -1 & & & \\ & & 1 & 1 & \\ & & 0 & 1 & \\ 0 & & & & 1}$
+mit einer bestimmten Matrix $S$.
+Die erste, dritte und fünfte Spalte von $S$ sind linear unabhängige Eigenvektoren von $A$
+für die Eigenwerte $-1$, $1$ und $1$.
+Die anderen Spalten sind \begriff{verallgemeinerte Eigenvektoren},
+d.\,h. in $\Kern((A - \lambda I)^\nu)$ für $\lambda \in \Eig(A)$ und $\nu \ge 2$.
+
+\textbf{JNF in MATLAB}:
+In MATLAB kann man die Jordan-Normalform mit \code{[S, J] = jordan(A)} berechnen.
+Allerdings wird dies nicht für numerische Berechnungen empfohlen, da die Funktion
+numerisch unzuverlässig ist.
+Stattdessen soll die \begriff{\name{Schur}-Zerlegung} verwendet werden
+(unitäre Ähnlichkeitstransformation auf obere Dreiecksmatrix, wenn das charakteristische Polynom
+in Linearfaktoren zerfällt).
+
+\linie
+
+\textbf{Satz (Berechnung von $e^{At}$ mit der JNF)}:
+Sei $A = SJS^{-1}$ mit $J$ der JNF von $A$.\\
+Dann gilt $e^{At} = S e^{Jt} S^{-1} = S \diag(e^{J_1 t}, \dotsc, e^{J_g t}) S^{-1}$, wobei
+\begin{align*}
+    e^{J_\ell t} = e^{\lambda_\ell t}
+    \begin{pmatrix}
+        1 & t & \frac{t^2}{2!} & \dots & \frac{t^{d-2}}{(d-2)!} & \frac{t^{d-1}}{(d-1)!} \\
+        & 1 & t & \dotsb & \frac{t^{d-3}}{(d-3)!} & \frac{t^{d-2}}{(d-2)!} \\
+        & & \ddots & \ddots & \vdots & \vdots \\
+        & & & 1 & t & \frac{t^2}{2!} \\
+        & & & & 1 & t \\
+        0 & & & & & 1
+    \end{pmatrix},\quad
+    \ell = 1, \dotsc, g,
+\end{align*}
+wenn $J_\ell$ die Dimension $d$ besitzt.
+
+\textbf{komplexe Eigenwerte}:
+Für $S = \smallpmatrix{C_1 & \dots & C_g}$ und $T = \smallpmatrix{R_1 \\ \vdots \\ R_g}$
+(Aufteilung wie bei $J$)
+gilt $e^{At} = C_1 e^{J_1 t} R_1 + \dotsb + C_g e^{J_g t} R_g$.
+Wenn $\lambda_k$ reell ist, dann sind $C_k$ und $R_k$ auch reell.
+Wenn $\lambda_k$ dagegen komplex ist, dann gibt es ein $\ell$ mit
+$\lambda_k = \overline{\lambda_\ell}$ sowie $C_k = \overline{C_\ell}$ und
+$R_k = \overline{R_\ell}$.
+Für $\lambda_1 = \overline{\lambda_2}$
+addieren sich beispielsweise
+$C_1 e^{J_1 t} R_1$ und $\overline{C_1} e^{\overline{J_1} t} \overline{R_1}$
+in der Formel von eben zu $2\Re[C_1 e^{J_1 t} R_1]$.
+
+\pagebreak
+
+\subsection{%
+    Stabilität linearer Systeme%
+}
+
+Die folgenden beiden Stabilitätsbegrif"|fe sind global, weil die Bedingung
+jeweils für alle Anfangswerte gelten muss.
+
+\textbf{asymptotische Stabilität}:
+Das lineare System $\dot{x} = Ax$ bzw. das Gleichgewicht $0$ heißt
+\begriff{(global) asymptotisch stabil}, falls
+alle Lösungen $\lim_{t \to \infty} x(t) = 0$ erfüllen.
+
+Asymptotische Stabilität heißt anders ausgedrückt,
+dass $\lim_{t \to \infty} e^{At} = 0$.
+
+\textbf{\name{Hurwitz}-Matrix}:\\
+Eine \begriff{\name{Hurwitz}-Matrix} ist eine Matrix, deren Eigenwerte alle negative Realteile
+besitzen.
+
+\textbf{Satz (asymptotische Stabilität)}:\\
+Das System $\dot{x} = Ax$ ist asymptotisch stabil genau dann,
+wenn $A$ eine Hurwitz-Matrix ist.
+
+\textbf{Lemma}:
+$A \in \real^{2 \times 2}$ ist eine Hurwitz-Matrix genau dann, wenn $\det(A) > 0$ und
+$\trace(A) < 0$.
+
+\linie
+
+\textbf{\name{Lyapunov}-Stabilität}:
+Das lineare System $\dot{x} = Ax$ heißt \begriff{(global) \name{Lyapunov}-stabil},
+falls jede Lösung $x(t)$ für $t \to \infty$ beschränkt bleibt.
+
+Lyapunov-Stabilität heißt anders ausgedrückt,
+dass $e^{At}$ für $t \to \infty$ beschränkt bleibt.
+
+\textbf{Satz (\name{Lyapunov}-Stabilität)}:
+Das System $\dot{x} = Ax$ ist Lyapunov-stabil genau dann, wenn
+alle Eigenwerte von $A$ einen nicht-positiven Realteil und
+alle Jordan-Blöcke zu Eigenwerten mit Realteil $0$ die Dimension $1$ besitzen.
+
+\pagebreak
+
+\subsection{%
+    Stabilität nicht-linearer Systeme (\name{Lyapunov}-Funktionen)%
+}
+
+Im Folgenden betrachtet man das System $\dot{x} = f(x)$ mit $f \in \C^1(G, \real^n)$
+für eine of"|fene Menge $G \subset \real^n$.
+$\varphi(\cdot, \xi)$ sei die Lösung des Anfangswertproblems mit $x(0) = \xi \in G$.
+Man nennt $\varphi$ auch den \begriff{Fluss (flow)} der DGL.
+
+\textbf{Stabilität nicht-linearer Systeme}:
+Ein Gleichgewicht $x_e \in G$ von $\dot{x} = f(x)$ heißt
+\begin{enumerate}
+    \item
+    \begriff{stabil}, falls
+    $\forall_{\varepsilon > 0} \exists_{\delta > 0}
+    \forall_{\xi \in G,\; \norm{\xi - x_e} \le \delta} \forall_ {t \ge 0}\;
+    \norm{\varphi(t, \xi) - x_e} \le \varepsilon$,
+    
+    \item
+    \begriff{instabil}, falls es nicht stabil ist,
+    
+    \item
+    \begriff{attraktiv}, falls
+    $\exists_{\delta > 0} \forall_{\xi \in G,\; \norm{\xi - x_e} \le \delta}\;
+    \lim_{t \to \infty} \varphi(t, \xi) = x_e$, und
+    
+    \item
+    \begriff{asymptotisch stabil}, falls es stabil und attraktiv ist.
+\end{enumerate}
+
+Alle Begrif"|fe sind lokal, d.\,h. die Kriterien gelten nur für bestimmte Anfangsbedingungen.
+Stabilität und Attraktivität sind voneinander unabhängige Eigenschaften.
+
+\linie
+
+\textbf{\name{Lyapunov}-Funktion}:
+Eine Funktion $V \in \C^1(G, \real)$ heißt
+\begriff{\name{Lyapunov}-Funktion} für die nicht-lineare DGL $\dot{x} = f(x)$, falls
+$\forall_{x \in G}\; \dot{V}(x) := \partial_x V(x) \cdot f(x) \le 0$.
+
+Ist $x(\cdot)$ eine Trajektorie der nicht-linearen DGL in $G$, so gilt für alle $t$\\
+$\frac{d}{dt} V(x(t)) = \partial_x V(x(t)) \cdot \dot{x}(t)
+= \partial_x V(x(t)) \cdot f(x(t)) = \dot{V}(x(t)) \le 0$.
+Daher ist $t \mapsto V(x(t))$ für jede Lösung $x(\cdot)$ der DGL monoton fallend.
+Deswegen kann man $V$ als ein Potential betrachten,
+sodass Trajektorien zu den Punkten konvergieren, in denen $V$ minimal ist.
+
+\linie
+
+\textbf{Satz (direkte Methode von \name{Lyapunov})}:\\
+Sei $V$ eine Lyapunov-Funktion für $\dot{x} = f(x)$ und $x_e \in G$ ein Gleichgewicht.
+\begin{enumerate}
+    \item
+    Wenn $\forall_{x \in G \setminus \{x_e\}}\; V(x) > V(x_e)$,
+    dann ist $x_e$ stabil.
+    
+    \item
+    Wenn $\forall_{x \in G \setminus \{x_e\}}\; V(x) > V(x_e) \;\land\; \dot{V}(x) < 0$,
+    dann ist $x_e$ asymptotisch stabil.
+\end{enumerate}
+
+Man kann ohne Einschränkung annehmen, dass $V(x_e) = 0$ (durch Verschiebung von $V$).
+In der Praxis wird oft eine Lyapunov-Funktion gesucht, um die Stabilität eines Gleichgewichts
+zu sichern.
+Allerdings ist dies schwierig und die Stabilitätseigenschaften gelten dann auch nur lokal.
+Zur Vereinfachung wird $G$ meist als eine of"|fene Kugel um $x_e$ gewählt.
+
+\textbf{Beispiel}:
+Beim gedämpften Federpendel ohne Eingang ist
+$\smallpmatrix{\dot{x}_1 \\ \dot{x}_2} =
+\smallpmatrix{x_2 \\ -\frac{k}{m} x_1 - \frac{1}{m} c(x_2)}
+=: f(x_1, x_2)$ mit $c(\cdot) \in \C^1(\real, \real)$.
+Sei $c$ so gewählt, dass $c(x_2) = 0 \iff x_2 = 0$,
+d.\,h. $x_e = (0, 0)$ ist das eindeutige Gleichgewicht.
+Definiere $V(x_1, x_2) := \frac{1}{2} kx_1^2 + \frac{1}{2} mx_2^2$
+(Gesamtenergie bestehend aus der Federenergie und der kinetischen Energie).
+Es gilt $\dot{V}(x) = \partial_x V(x) \cdot f(x) = -x_2 c(x_2)$.
+$V$ ist also eine Lyapunov-Funktion,
+wenn man annimmt, dass $x_2 c(x_2) \ge 0$ für alle $x_2 \in \real$.
+Außerdem gilt $V(x) > V(0) = 0$ für alle $x \not= 0$.
+Somit ist $x_e = 0$ nach dem ersten Teil des Satzes stabil.\\
+Den zweiten Teil des Satzes kann man nicht anwenden, da $\dot{V}(x) = 0 \iff x_2 = 0$.
+
+\linie
+
+\textbf{Satz (Invarianzprinzip von \name{LaSalle})}:\\
+Sei $V$ eine Lyapunov-Funktion für $\dot{x} = f(x)$ und $x_e \in G$ ein Gleichgewicht.
+Außerdem gelte
+\begin{enumerate}
+    \item
+    $\forall_{x \in G \setminus \{x_e\}}\; V(x) > V(x_e)$ und
+    
+    \item
+    $\forall_{\xi \in G}\;
+    ([\forall_{t \in (t_-, t_+)}\; \dot{V}(\varphi(t, \xi)) = 0] \;\Rightarrow\;
+    \xi = x_e)$.
+\end{enumerate}
+Dann ist $x_e$ asymptotisch stabil.
+
+Gilt $\forall_{x \in G \setminus \{x_e\}}\; \dot{V}(x) < 0$ wie im obigen Satz,
+so gilt Bedingung \emph{(2)} des Invarianzprinzips, da für $\xi \in G$ mit
+$\dot{V}(\varphi(t, \xi)) = 0$ für alle $t \in (t_-, t_+)$ gilt, dass
+$\dot{V}(\varphi(0, \xi)) = \dot{V}(\xi) = 0$, also $\xi = x_e$.
+
+\linie
+\pagebreak
+
+\textbf{Beispiel}:
+Im obigen Beispiel gilt für $\xi \in \real^2$ mit
+$\forall_{t \in (t_-, t_+)}\; \dot{V}(\varphi(t, \xi)) = 0$ und $x(t) := \varphi(t, \xi)$, dass
+$-x_2(t) c(x_2(t)) \equiv 0$, also $x_2(t) \equiv 0$.
+Insbesondere gilt $\dot{x}_2(t) \equiv 0$.
+Aus der DGL ergibt sich damit $x_1(t) \equiv 0$.
+Man erhält also $\varphi(t, \xi) \equiv 0$, d.\,h. $\xi = x_e = 0$.
+Daher ist $x_e$ asymptotisch stabil.
+
+\linie
+
+\textbf{Satz (Abschätzung des Attraktivitätsgebiets)}:\\
+Sei $V$ eine Lyapunov-Funktion für $\dot{x} = f(x)$ und $x_e \in G$ ein Gleichgewicht.
+Außerdem gelte
+\begin{enumerate}
+    \item
+    $M := \{x \in G \;|\; V(x) \le \alpha\}$ kompakt in $\real^n$ für ein $\alpha \in \real$ und
+    
+    \item
+    $\forall_{\xi \in M}\;
+    ([\forall_{t \in (t_-, t_+)}\; \dot{V}(\varphi(t, \xi)) = 0] \;\Rightarrow\;
+    \xi = x_e)$.
+\end{enumerate}
+Dann gilt $\forall_{\xi \in M}\; \lim_{t \to \infty} \varphi(t, \xi) = x_e$.
+
+Die \begriff{Unterniveaumenge (sublevel-set)} $M$ enthält Punkte, die durch $x_e$ angezogen werden.
+Mit anderen Worten ist $M$ eine Teilmenge des Attraktivitätsgebiets, d.\,h. von\\
+$\{\xi \in G \;|\; \lim_{t \to \infty} \varphi(t, \xi) = x_e\}$.
+$M$ kann groß sein und die Stabilität von $x_e$ wird nicht vorausgesetzt oder behauptet.
+
+\linie
+
+\textbf{Satz (globale Attraktivität)}:\\
+Sei $V$ eine Lyapunov-Funktion für $\dot{x} = f(x)$ und $x_e \in G$ ein Gleichgewicht.
+Außerdem gelte
+\begin{enumerate}
+    \item
+    $\forall_{(x_\nu)_{\nu \in \natural},\; x_\nu \in G}\;
+    \left(\left[x_\nu \to x \in \partial G \;\lor\; \norm{x_\nu} \to \infty\right] \;\Rightarrow\;
+    V(x_\nu) \xrightarrow{\nu \to \infty} \infty\right)$ und
+    
+    \item
+    $\forall_{\xi \in G}\;
+    ([\forall_{t \in (t_-, t_+)}\; \dot{V}(\varphi(t, \xi)) = 0] \;\Rightarrow\;
+    \xi = x_e)$.
+\end{enumerate}
+Dann gilt $\forall_{\xi \in G}\; \lim_{t \to \infty} \varphi(t, \xi) = x_e$.
+
+Wenn $G = \real^n$ ist, dann ist die erste Bedingung äquivalent zu $V(x) \to \infty$
+für $\norm{x} \to \infty$.
+Solche Lyapunov-Funktionen heißen \begriff{radial unbeschränkt}.
+
+\linie
+
+Die Linearisierung von $\dot{x} = f(x)$ um $x_e$ ist gegeben durch
+$\dot{x}_\Delta = Ax_\Delta$ mit $A = \partial_x f(x_e)$.
+Man hofft, dass $x(t) = x_e + x_\Delta(t)$, d.\,h. eine Lösung des linearen Systems führt
+zu einer guten Approximation der Lösung des nicht-linearen Systems.
+
+\textbf{Satz (indirekte Methode von \name{Lyapunov})}:
+Sei $\partial_x f(x_e)$ eine Hurwitz-Matrix.\\
+Dann ist $x_e$ ein asymptotisch stabiles Gleichgewicht von $\dot{x} = f(x)$.
+
+(Globale) asymptotische Stabilität der Linearisierung führt also zu (lokaler) asymptotischer
+Stabilität des nicht-linearen Systems um den Punkt der Linearisierung.
+Die Umkehrung gilt nicht
+(nur bei exponentiell-asymptotischer Stabilität).
+
+\textbf{Beispiel}:
+Im obigen Beispiel ist $\dot{x} = f(x) :=
+\smallpmatrix{x_2 \\ -\frac{k}{m} x_1 - \frac{1}{m} c(x_2)}$.
+Es gilt
+$\partial_x f(x) = \smallpmatrix{0 & 1 \\ -\frac{k}{m} & -\frac{1}{m} c'(x_2)}$,
+also ist $\dot{x}_\Delta = Ax_\Delta$ mit
+$A := \smallpmatrix{0 & 1 \\ -\frac{k}{m} & -\frac{1}{m} c'(0)}$
+die Linearisierung um $x_e = 0$.
+Diese Matrix ist eine Hurwitz-Matrix genau dann, wenn $c'(0) > 0$
+(nämlich $\det(A) > 0$ und $\trace(A) < 0$).
+Somit ist $x_e = 0$ ein (lokal) asymptotisch stabiles Gleichgewicht von $\dot{x} = f(x)$,
+wenn $c'(0) > 0$.
+Allerdings wurde vorhin mit dem Invarianzprinzip von LaSalle
+schon asymptotische Stabilität auch für $c'(0) = 0$ gezeigt (wenn $x_2 c(x_2) \ge 0$ gilt).
+Man erkennt also, dass die Linearisierung auch nicht asymptotisch stabil sein kann,
+obwohl die nicht-lineare DGL asymptotisch stabil ist.
+
+\pagebreak
+
+\subsection{%
+    Verhalten linearer Systeme%
+}
+
+Im Folgenden werden wieder lineare Systeme $\dot{x} = Ax + Bu$, $y = Cx + Du$ betrachtet
+mit $A \in \real^{n \times n}$, $B \in \real^{n \times m}$, $C \in \real^{k \times n}$ und
+$D \in \real^{k \times m}$.
+
+\textbf{Satz (explizite Lösung linearer Systeme)}:
+Für den Eingang $u \in \C([a, b], \real^m)$ und die Anfangsbedingung $x(\tau) = \xi \in \real^n$,
+$\tau \in [a, b]$, ist die eindeutige Lösung gegeben durch\\
+$x(t) = e^{A(t - \tau)} \xi + \int_\tau^t e^{A(t - s)} Bu(s) \ds$
+und der Ausgang daher durch\\
+$y(t) = Ce^{A(t - \tau)} \xi + \int_\tau^t [Ce^{A(t - s)} B]u(s) \ds + Du(t)$.
+
+Die Lösung kann man durch \begriff{Variation der Konstanten} herleiten:
+Mit dem Ansatz $x(t) = e^{At} z(t)$ mit geeignetem $z(t)$
+erhält man $\dot{x}(t) = A e^{At} z(t) + e^{At} \dot{z}(t) = Ax(t) + e^{At} \dot{z}(t)$.
+Dies ist gleich $Ax(t) + Bu(t)$ genau dann, wenn $e^{At} \dot{z}(t) = Bu(t) \iff
+\dot{z}(s) = e^{-As} Bu(s)$.
+Integration führt zu $z(t) = c + \int_\tau^t e^{-As} Bu(s) \ds$ mit einem konstanten Vektor $c$,
+der durch $\xi = x(\tau) = e^{A\tau} z(\tau) = e^{A\tau} c$ bestimmt ist als
+$c = e^{-A\tau} \xi$.
+Einsetzen von $c$ in $z(t)$ und Berechnung von $x(t) = e^{At} z(t)$ ergibt die Formel.
+
+\linie
+
+Im Folgenden wird oBdA $\tau = 0$ angenommen.
+
+\textbf{Herleitung der Antwort auf konstanten Eingang}:\\
+Für einen konstanten Eingang $u(t) \equiv u_e$ gilt\\
+$x(t) = e^{At} \xi + \int_0^t e^{A(t - s)} B u_e \ds =
+e^{At} \xi + \left(\int_0^t e^{A\varrho} d\varrho\right) B u_e$ mit $\varrho = t - s$.
+Ist $A$ eine Hurwitz-Matrix, so ist $A$ invertierbar und es gilt
+$\int_0^t e^{A\varrho} d\varrho = \int_0^t \frac{d}{d\varrho} e^{A\varrho} A^{-1} d\varrho
+= e^{At} A^{-1} - A^{-1}$.
+Damit kann man die Zustandsgröße schreiben als
+$x(t) = e^{At} [\xi + A^{-1} B u_e] - A^{-1} B u_e$.
+Für $t \to \infty$ gilt $e^{At} \to 0$ und somit
+$x(t) \to x_e := -A^{-1} B u_e$
+(wenn $A$ eine Hurwitz-Matrix ist).
+Der Zustand konvergiert also in diesem Fall zum eindeutigen Gleichgewicht
+(d.\,h. zur Lösung von $Ax_e + Bu_e = 0$).
+
+\textbf{Antwort auf konstanten Eingang}:
+Die \begriff{Antwort auf einen konstanten Eingang} $u(t) \equiv u_e$ ist\\
+$y(t) = Ce^{At} [\xi + A^{-1} B u_e] + [D - CA^{-1}B] u_e$.
+Dabei bezeichnet
+\begin{itemize}
+    \item
+    $Ce^{At} [\xi + A^{-1} B u_e]$ die \begriff{Einschwingant"-wort (transient response)} und
+    
+    \item
+    $[D - CA^{-1} B] u_e$ die \begriff{stationäre Antwort (steady-state response)}.\\
+    Die Matrix $D - CA^{-1}B$ heißt
+    \begriff{stationäre Verstärkung (steady-state gain)}.
+\end{itemize}
+
+\linie
+
+\textbf{Superpositionsprinzip}:
+Der Zustand sowie der Ausgang hängen jeweils linear von $\xi$ und von $u(\cdot)$ ab
+(wenn $u(\cdot)$ bzw. $\xi$ auf Null gesetzt wird).
+Dies nennt man das \begriff{Superpositionsprinzip}.
+
+Nach dem Superpositionsprinzip kann man zum Beispiel für $m > 1$ den Ausgang als Summe
+von Ausgängen für einen skalaren Eingang $u(\cdot)$ darstellen:
+Ist $u(t) = \smallpmatrix{u_1(t) \\ \vdots \\ u_m(t)}$ und sind $B_k$ und $D_k$ die Spalten
+von $B$ bzw. $D$, so gilt
+$y(t) = C e^{At} \xi + \sum_{k=1}^m \left(\int_0^t Ce^{A(t-s)} B_k u_k(s)\ds + D_k u_k(t)\right)$.
+Jeden dieser Beiträge kann man also separat analysieren.
+
+\linie
+\pagebreak
+
+Sprünge und Impulse sind Testeingänge, mit denen man Informationen
+über das dynamische Verhalten eines Systems gewinnen kann.
+Beispielsweise kann man mit dem Impulsausgang $H(t) := Ce^{At}B + D\delta(t)$
+durch $\int_0^t H(t - s) u(s) \ds$ den Ausgang für jeden anderen Eingang
+$u(\cdot)$ bestimmen (Anfangsbedingung $x(0) = 0$).
+
+\textbf{Herleitung der Sprungantwort}:
+Ist $u_k(\cdot)$ gleich der Sprungfunktion $\Theta(t) := 0$ für $t < 0$ und
+$\Theta(t) := 1$ für $t \ge 0$
+(\begriff{\name{Heaviside}-Funktion}), so erhält man\\
+$\int_0^t Ce^{A(t-s)} B_k u_k(s)\ds + D_k u_k(t) = \int_0^t Ce^{A\varrho} B_k d\varrho + D_k$
+als Ausgang für den $k$-ten Eingang.
+
+\textbf{Herleitung der Impulsantwort}:
+Ist $u_k(\cdot)$ gleich dem Impuls $\delta(\cdot)$ bei $t = 0$
+(\begriff{\name{Dirac}sche Delta-Distribution}), so erhält man\\
+$\int_0^t Ce^{A(t-s)} B_k u_k(s)\ds + D_k u_k(t) = Ce^{At}B_k + D_k \delta(t)$
+als Ausgang für den $k$-ten Eingang.\\
+Die Delta-Distribution ist gleich der Ableitung der Heaviside-Funktion,
+daher ist die Impulsantwort die Ableitung der Sprungantwort.
+
+\textbf{Sprung- und Impulsantwort}:
+Man nennt
+\begin{itemize}
+    \item
+    $\int_0^t Ce^{A\varrho}B d\varrho + D$ die \begriff{Sprungantwort (step response)} und
+    
+    \item
+    $C e^{At} B + D \delta(t)$ die \begriff{Impulsantwort (impulse response)}.
+\end{itemize}
+Die Antworten erhält man durch Anwendung von $m$ Sprüngen/Impulsen (für jeden Eingang).
+
+\linie
+
+\textbf{Herleitung der Antwort für sinusförmigen Eingang}:\\
+Für $\lambda = \sigma + \iu\omega \in \complex$ und $u_e \in \real^m$ betrachtet man den \begriff{sinusförmigen Eingang (sinusoidal input)}\\
+$u(t) := u_e e^{\lambda t} = u_e e^{\sigma t} [\cos(\omega t) + \iu \sin(\omega t)]$.\\
+Wenn $A - \lambda I$ invertierbar ist (d.\,h. $\lambda$ ist kein Eigenwert von $A$), so gilt
+mit $\varrho = t - s$, dass\\
+$y(t) = Ce^{At} \xi + \int_0^t [Ce^{A(t - s)} B]u(s) \ds + Du(t)$\\
+$= C \left(e^{At} \xi +
+\left[\int_0^t e^{A\varrho} e^{\lambda (t - \varrho)} d\varrho\right] Bu_e\right) +
+D (u_e e^{\lambda t})$\\
+$= C \left(e^{At} \xi + e^{\lambda t}
+\left[\int_0^t e^{(A - \lambda I) \varrho} d\varrho\right] Bu_e\right) + D (u_e e^{\lambda t})$\\
+$= C \left(e^{At} \xi +
+e^{\lambda t} \left[e^{(A - \lambda I)t} - I\right] (A - \lambda I)^{-1} B u_e\right) +
+D (u_e e^{\lambda t})$.
+
+Durch Umordnung erhält man
+$y(t) = Ce^{At} [\xi - (\lambda I - A)^{-1} Bu_e] +
+[C (\lambda I - A)^{-1} B + D] (u_e e^{\lambda t})$,
+wobei man die Summanden wieder als \begriff{Einschwingantwort} und \begriff{stationäre Antwort}
+bezeichnet
+(für $A$ Hurwitz-Matrix ergibt die Namensgebung einen Sinn, in diesem Fall geht die
+Einschwingantwort gegen Null für $t \to \infty$).
+
+\textbf{Antwort auf sinusförmigen Eingang}:
+Für exponentiell gewichtete, sinusförmige, komplexe Eingänge
+$u(t) = u_e e^{\lambda t} = u_e e^{\sigma t} [\cos(\omega t) + \iu \sin(\omega t)]$
+($\lambda = \sigma + \iu \omega \in \complex$) mit $\lambda I - A$ invertierbar erhält man den
+Zustand $x(t) = e^{At} [\xi - (\lambda I - A)^{-1} Bu_e] +
+(\lambda I - A)^{-1} B (u_e e^{\lambda t})$ und den Ausgang
+$y(t) = C e^{At} [\xi - (\lambda I - A)^{-1} Bu_e] +
+[C (\lambda I - A)^{-1} B + D] (u_e e^{\lambda t})$.
+
+Weil $A, B, C, D$ und $\xi$ reell sind, erhält man die Zustände und Ausgänge für
+die Eingänge\\
+$v(t) = u_e e^{\sigma t} \cos(\omega t)$ und $w(t) = u_e e^{\sigma t} \sin(\omega t)$,
+indem man einfach den Real- bzw. den Imaginärteil betrachtet.
+
+\pagebreak
+
+\subsection{%
+    \name{Laplace}-Transformation und Übertragungsmatrizen%
+}
+
+\textbf{\name{Laplace}-Transformation}:
+Sei $f\colon \real \rightarrow \complex$ messbar und von
+\begriff{exponentieller Ordnung (expo"-nential type)}, d.\,h.
+$\exists_{\sigma, c > 0} \forall_{t \ge 0}\; |e^{-\sigma t} f(t)| \le c$.
+Dann ist die \begriff{(einseitige) \name{Laplace}-Transformation} von $f$ für alle
+$s \in \complex$ mit $\Re(s) > \sigma$ definiert durch
+$\widehat{f}(s) = \L(f)(s) := \int_0^\infty e^{-st} f(t) \dt$.
+
+Die Laplace-Transformierte $\widehat{f} = \L(f)$ ist auf
+$\{s \in \complex \;|\; \Re(s) > \sigma\}$ analytisch.
+Oft kann man die Laplace-Transformierte aber auf viel größere Bereiche von $\complex$
+analytisch fortsetzen.
+
+Die Abbildung $\L\colon f \mapsto \widehat{f} = \L(f)$ ist linear und injektiv
+(d.\,h. aus $\L(f) = \L(g)$ folgt $f = g$).
+
+\textbf{Eigenschaften der \name{Laplace}-Transformation}:
+Sei $\widehat{f} = \L(f)$.
+Dann gilt
+\begin{itemize}
+    \item
+    $\L(f')(s) = s \widehat{f}(s) - f(0)$,
+    
+    \item
+    $\L(\int_0^t f(\tau)\d\tau)(s) = \frac{1}{s} \widehat{f}(s)$ und
+    
+    \item
+    $\L(e^{-pt} f(t))(s) = \widehat{f}(s + p)$.
+\end{itemize}
+
+\textbf{Beispiel}:
+Durch iterative Anwendung erhält man bspw.
+$\L(\frac{1}{(m-1)!} t^{m-1} e^{-pt})(s) = \frac{1}{(s + p)^m}$.
+
+\linie
+
+\textbf{Berechnung von Ausgängen mit der \name{Laplace}-Transformation}:
+Wenn man die Laplace-Transformation auf beiden Seiten von $\dot{x} = Ax + Bu$, $y = Cx + Du$
+anwendet, erhält man
+$s \widehat{x}(s) - x(0) = A\widehat{x}(s) + B\widehat{u}(s)$,
+$\widehat{y}(s) = C\widehat{x}(s) + D\widehat{u}(s)$.
+Es treten keine Ableitungen mehr auf, sodass man algebraisch nach $\widehat{x}(s)$ auf"|lösen kann:
+$\widehat{x}(s) = (sI - A)^{-1} \xi + (sI - A)^{-1} B \widehat{u}(s)$,
+$\widehat{y}(s) = C (sI - A)^{-1} \xi + [C (sI - A)^{-1} B + D] \widehat{u}(s)$.
+
+Man nennt diese Formel die sog. \begriff{frequenzbasierte Darstellung (frequency-domain analogue)}
+der zeitbasierten Lösungsformeln für $x(t)$ und $y(t)$.
+Das Faltungsintegral in der zeitbasierten Darstellung ist durch eine simple Multiplikation
+in der frequenzbasierten Darstellung ersetzt worden.
+Mit der inversen Laplace-Transformation kann man oft $x(t)$ und $y(t)$ berechnen.
+
+\linie
+
+\textbf{Übertragungsmatrix}:
+Die Matrix $G(s) := C(sI - A)^{-1} B + D$ mit $s \in \complex$ heißt
+\begriff{Übertragungs"-matrix (transfer matrix)} des Systems $\dot{x} = Ax + Bu$, $y = Cx + Du$.
+
+Wenn $s \in \complex$ kein Eigenwert von $A$ ist, so kann man $G(s)$ berechnen.
+
+Die Einträge von $(sI - A)^{-1}$ sind rationale Funktionen, da
+$(sI - A)^{-1} = \frac{1}{\det(sI - A)} \operatorname{adj}(sI - A)$
+nach der Cramerschen Regel mit der Adjunkten $\operatorname{adj}(sI - A)$.
+Die Einträge von $(sI - A)^{-1}$ können daher als $\frac{n_{ij}(s)}{\chi_A(s)}$ geschrieben werden,
+wobei $n_{ij}(s)$ Polynome vom Grad $< n$ sind und $\chi_A(s) = \det(sI - A)$
+ein Polynom vom Grad $n$ ist,
+denn bei Bildung der Adjunkten sind die Einträge bis auf das Vorzeichen gleich
+Determinaten von Komatrizen, die entstehen, wenn man aus $sI - A$ jeweils eine Zeile und
+eine Spalte entfernt.
+
+\textbf{(echt) proper}:
+Eine rationale Funktion heißt \begriff{(echt) proper ((strictly) proper)},\\
+falls der Zählergrad echt kleiner als der bzw. kleiner/gleich dem Nennergrad ist.
+
+Die Elemente von $(sI - A)^{-1}$ und von $C(sI - A)^{-1} B$ sind echt propere rationale Funktionen.
+Die Einträge von $G(s)$ sind Linearkombinationen von denen von $(sI - A)^{-1}$ plus eine
+konstante Matrix $D$, d.\,h. im Allgemeinen nur noch propere Funktionen.
+
+\textbf{Polstellen}:
+Jeder Eintrag von $G(s)$ wird in der Form $\frac{n_{ij}(s)}{d_{ij}(s)}$ geschrieben,
+wobei die Zähler- und Nennerpolynome keine gemeinsamen Nullstellen besitzen.
+Die \begriff{Polstellen} von $G(s)$ sind dann definiert als $\{s \in \complex \;|\;
+\exists_{i, j}\; d_{ij}(s) = 0\}$.
+
+\textbf{stabil}:
+$G(s)$ heißt \begriff{stabil}, wenn jede Polstelle von $G(s)$ einen negativen Realteil besitzt.
+
+\linie
+\pagebreak
+
+Die Übertragungsmatrix bringt den meisten Nutzen, wenn der Anfangswert $\xi$ gleich Null ist.
+In diesem Fall ist mit $\widehat{y}(s) = G(s) \widehat{u}(s)$ der Ausgang durch den Eingang
+$u(\cdot)$ bestimmt.
+
+Sind zwei Systeme $\dot{x}_1 = A_1 x_1 + B_1 u_1$, $y_1 = C_1 x_1 + D_1 u_1$, $x_1(0) = 0$,
+und\\
+$\dot{x}_2 = A_2 x_2 + B_2 u_2$, $y_2 = C_2 x_2 + D_2 u_2$, $x_2(0) = 0$,
+gegeben, so lauten die Übertragungsmatrizen $G_1(s) = C_1 (sI - A_1)^{-1} B_1 + D_1$ bzw.
+$G_2(s) = C_2 (sI - A_2)^{-1} B_2 + D_2$\\
+(damit gilt $\widehat{y}_1(s) = G_1(s) \widehat{u}_1(s)$ bzw.
+$\widehat{y}_2(s) = G_2(s) \widehat{u}_2(s)$).
+
+\textbf{Reihenschaltung}:
+Bei einer Reihenschaltung erhält man als Übertragungsmatrix das Produkt der
+Übertragungsmatrizen durch
+$\widehat{y}(s) = (G_2(s) G_1(s)) \cdot \widehat{u}(s)$
+(zuerst System $1$, dann System $2$).
+
+\textbf{Parallelschaltung}:
+Bei einer Parallelschaltung erhält man als Übertragungsmatrix die Summe der
+Übertragungsmatrizen durch
+$\widehat{y}(s) = (G_1(s) + G_2(s)) \cdot \widehat{u}(s)$.
+
+\textbf{stationäre Antworten}:
+Wenn $A$ eine Hurwitz-Matrix und $\lambda = \sigma + \iu \omega \in \complex$
+kein Eigenwert von $A$ ist, dann sind die stationären Antworten gegeben durch
+\begin{itemize}
+    \item
+    $G(0) u_e$ für den konstanten Eingang $u(t) \equiv u_e$,
+    
+    \item
+    $G(\iu\omega) u_e e^{\iu\omega t}$ für den sinusförmigen Eingang
+    $u(t) = u_e e^{\iu\omega t}$ und
+    
+    \item
+    $G(\lambda) u_e e^{\lambda t}$ für den exponentiell gewichteten, sinusförmigen Eingang
+    $u(t) = u_e e^{\lambda t}$.
+\end{itemize}
+Der erste und der zweite Fall sind im dritten als Spezialfall enthalten
+(für $\lambda = 0$ bzw. $\lambda = \iu\omega$).
+
+\linie
+
+Ein System in Zustandsraum-Darstellung bestimmt seine Übertragungsmatrix durch direktes Ausrechnen.
+Man kann sich jedoch auch eine umgekehrte Fragestellung überlegen.
+
+\textbf{Realisierungsproblem}:
+Für $s \in \complex$ sei eine Matrix $G(s) \in \real^{k \times m}$ gegeben,
+deren Einträge proper-rationale Funktionen in $s$ sind.
+Gibt es Matrizen $A \in \real^{n \times n}$, $B \in \real^{n \times m}$,
+$C \in \real^{k \times n}$ und $D \in \real^{k \times m}$, sodass
+$G(s) = C(sI - A)^{-1} B + D$
+(\begriff{Realisierungsproblem (realization problem)})?
+
+\textbf{Realisierung}:
+Falls für die gegebene Funktion $G(s)$ gilt,
+dass $G(s) = C(sI - A)^{-1} B + D$, dann heißt $(A, B, C, D)$
+\begriff{(Zustandsraum-)Realisierung ((state-space) realization)} von $G(s)$.
+
+\textbf{Invarianz der Übertragungsmatrix unter Koordinatentransformation}:\\
+Eine Realisierung von $G(s)$ ist nie eindeutig.
+Ein Grund unter vielen ist, dass ein Zustandsraum-Koordinatenwechsel zwar die
+beschreibenden Matrizen eines Zustandsraum-Systems verändert, aber nicht die Übertragungsmatrix:\\
+Seien $\dot{x} = Ax + Bu$, $y = Cx + Du$ das System und $z = Tx$ mit $T$ invertierbar
+der Koordinatenwechsel.
+Es gilt $\dot{z} = T\dot{x} = TAx + TBu = (TAT^{-1})z + TBu = \widetilde{A}z + \widetilde{B}u$
+mit $\widetilde{A} := TAT^{-1}$ und $\widetilde{B} := TB$.
+Analog ist $y = CT^{-1}z + Du = \widetilde{C}z + \widetilde{D}u$
+mit $\widetilde{C} := CT^{-1}$ und $\widetilde{D} := D$.
+Die Übertragungsmatrix berechnet sich durch
+$\widetilde{G}(s)
+= \widetilde{C} (sI - \widetilde{A})^{-1} \widetilde{B} + \widetilde{D}
+= CT^{-1} (sI - TAT^{-1})^{-1} TB + D$\\
+$= C (T^{-1} (sI - TAT^{-1}) T)^{-1} B + D
+= C (sI - A) B + D
+= G(s)$, d.\,h. sie bleibt invariant unter dem Koordinatenwechsel.
+
+\pagebreak

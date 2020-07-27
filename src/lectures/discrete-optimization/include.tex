@@ -1,0 +1,31 @@
+\def\withproofs{true}
+
+\definecolor{mydarkgray}{gray}{0.4}
+
+\newenvironment{Beweis}[1][Beweis]{\ifthenelse{\equal{\withproofs}{false}}{\comment}{}%
+    \color{mydarkgray}\textbf{#1}: }{\hfill $\Box$%
+    \ifthenelse{\equal{\withproofs}{false}}{\endcomment}{}}
+
+\newcommand*{\EE}{\mathbb{E}}
+\newcommand*{\PP}{\mathbb{P}}
+\renewcommand*{\C}{\mathcal{C}}
+\renewcommand*{\O}{\mathcal{O}}
+\renewcommand*{\P}{\mathcal{P}}
+\renewcommand*{\S}{\mathcal{S}}
+\renewcommand*{\U}{\mathcal{U}}
+\renewcommand*{\Cap}{\operatorname{cap}}
+\newcommand*{\val}{\operatorname{val}}
+\newcommand*{\dcut}{\operatorname{dcut}}
+\newcommand*{\opt}{\text{opt}}
+\newcommand*{\OPT}{\text{OPT}}
+\newcommand*{\OPTLP}{\text{OPT}_\text{LP}}
+\newcommand*{\OPTint}{\text{OPT}_\text{int}}
+\newcommand*{\OPTprimal}{\text{OPT}_\text{primal}}
+\newcommand*{\OPTdual}{\text{OPT}_\text{dual}}
+
+\newcommand*{\code}[1]{\texttt{#1}}
+
+\input{01_netzwerkfluss-probleme}
+\input{02_lineare_programmierung}
+\input{03_lp-approximationen}
+\input{04_nicht-lp-approximationen}

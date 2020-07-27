@@ -1,0 +1,399 @@
+\section{%
+    Suchbäume und (2, 4)-Bäume%
+}
+
+\subsection{%
+    Allgemeines zu Suchbäumen%
+}
+
+Gegeben sei eine Teilmenge $S = \{a_1, \dotsc, a_n\}$ eines geordneten
+Universums $U$. \\
+Gesucht ist eine Organisation von $S$ in einem binären Baum, wobei
+\begin{itemize}
+    \item
+    der Baum $n$ Knoten und eine ausgezeichnete Wurzel besitzt,
+    
+    \item
+    jedes $a_i$ mit einem Knoten asoziiert ist,
+    
+    \item
+    jeder innere Knoten maximal einen linken und maximal einen rechten
+    Kindknoten hat sowie
+    
+    \item
+    für jeden Knoten $a_v$ des Baums sind alle Knoten im Teilbaum eines
+    linken/rechten Kindes von $a_v$ kleiner/größer als $a_v$.
+\end{itemize}
+
+\linie
+
+Die Suche nach einem Schlüssel $x$ im Suchbaum verläuft wie folgt: \\
+\code{search(}$x, a_{root}$\code{)} gibt das größte $a_\ell$ mit
+$a_\ell \le x$ im Baum zurück, sonst $-\infty$.
+
+\begin{lstlisting}
+search($x, \emptyset$) = $-\infty$
+
+search($x$, $a$)
+    if $x < a$
+        return search($x$, $a_L$)
+    else if $x = a$
+        return $a$
+    else
+        return max($a$, search($a$, $a_R$))
+\end{lstlisting}
+
+Suchbäume können, falls der Baum ausbalanciert ist, dabei helfen, sehr
+"`billig"' nach einem Knoten zu suchen.
+In diesem Fall ist die Suchzeit für ein Knoten $\O(\log n)$.
+Das Problem ist, dass das Löschen und Einfügen von Elementen den Baum
+wieder unbalanciert machen kann -- der Extremfall ist ein
+"`ausgearteter Baum"', bei dem in jeder Ebene nur ein Knoten ist.
+Daher nutzt man spezielle Datenstrukturen, die den Baum automatisch
+ausbalancieren.
+
+\subsection{%
+    (2, 4)-Bäume
+}
+
+Gegeben sei wieder eine linear geordnete Menge $S = \{a_1, \dotsc, a_n\}$.
+\begin{itemize}
+    \item
+    $S$ soll nur in den Blättern des Baums gespeichert werden. \\
+    Die Blätter müssen sortiert sein.
+    
+    \item
+    Die Blätter des Baums sollen alle die gleiche Tiefe haben.
+    
+    \item
+    Jeder innere Knoten hat zwischen zwei und vier Kinder.
+    
+    \item
+    Jede innere Knoten mit $i$ Kindern enthält selbst $i - 1$ Schlüssel,
+    dabei ist der $j$-te Schlüssel das größte Element des $j$-ten Teilbaums
+    des Knotens ($j = 1, \dotsc, i - 1$).
+\end{itemize}
+
+\linie
+
+\textbf{Suche nach einem Schlüssel $k$}:
+\begin{lstlisting}
+$v$ :=  wurzel
+while $v$ kein Blatt do
+    bestimme $\ell$ mit $k_{\ell-1}(v) < k \le k_\ell(v)$                              (wobei $k_0(v) = -\infty$ und $k_{grad}(v) = +\infty$ gesetzt wird)
+    $v$ :=  $\ell$-tes Kind von $v$
+od
+\end{lstlisting}
+
+Die Suche in einem Blatt $v$, wobei
+$Schl"ussel(linkerNachbar) < k \le Schl"ussel(v)$ ist.
+Ist $k > \max S$, dann endet die Suche in dem Blatt, das am weitesten rechts
+liegt.
+Die Laufzeit ist $\O(h)$, wenn $h$ die Tiefe des Baums ist.
+
+\pagebreak
+
+\textbf{Lemma}: Sei $T$ ein (2, 4)-Baum der Höhe $h$ mit $n$ Blättern. \\
+Dann gilt $2^h \le n \le 4^h$ und daher $\frac{1}{2} \log n \le h \le \log n$.
+
+\linie
+
+\textbf{Einfügen eines Elements $k$}: \\
+Angenommen wird, dass ein Verweis auf das Blatt $v$ mit
+$Schl"ussel(linkerNachbar) < k \le Schl"ussel(v)$ vorliegt
+(kann durch Suchen nach $k$ erreicht werden).
+\begin{enumerate}
+    \item
+    \emph{Einfügen}:
+    Füge $k$ links von $v$ als neues Blatt hinzu und füge $k$ als Schlüssel
+    in den Vaterknoten vor den Schlüssel von $v$ ein.
+    
+    \item
+    \emph{Spalten}:
+    Wenn der Vaterknoten nun fünf Knoten hat, muss er aufgespaltet werden,
+    d.\,h. er wird in zwei Knoten aufgeteilt, wobei der linke
+    Knoten die ersten zwei und der rechte Knoten die letzten drei
+    Kinder enthält.
+    Wenn die Wurzel gespalten werden muss, muss eine neue Wurzel erzeugt
+    werden, sodass die Tiefe um $1$ steigt.
+    \begin{lstlisting}
+$v$ :=  vater($v$)
+while $v$ hat fünf Kinder do
+    spalte($v$)
+    $v$ :=  vater($v$)
+od
+    \end{lstlisting}
+\end{enumerate}
+Die Laufzeit ist $\O(1 + \text{Anzahl Spaltungen}) = \O(\log n)$.
+
+\linie
+
+\textbf{Löschen eines Elements $k$}:
+\begin{enumerate}
+    \item
+    \emph{Löschen}:
+    Ist $k$ kein am weitesten rechts liegendes Kind, so kann es einfach
+    mit dem zugehörigen Schlüssel in seinem Vaterknoten gelöscht werden.
+    Liegt $k$ am weitesten rechts, so muss der zugehörige Schlüssel
+    verändert werden, der allerdings nicht im Vaterknoten liegt, sondern
+    in einem darüber liegenden indirekten Vaterknoten.
+    
+    \item
+    \emph{Verschmelzen}/\emph{Stehlen}:
+    Hat der Vaterknoten von $k$ nach dem Löschen nur noch ein Kind, so
+    muss entweder der Knoten mit einem Nachbarn verschmolzen werden oder
+    er muss einen Knoten von einem Nachbarknoten stehlen.
+    Verschmolzen wird, falls der Nachbarknoten $2$ Knoten hat, hat er
+    $3$ oder $4$ Knoten, so wird gestohlen.
+\end{enumerate}
+Dies kann bis zur Wurzel fortgesetzt werden, daher beträgt die Laufzeit
+$\O(\log n)$.
+
+\linie
+
+\textbf{Warum benutzt man nicht (2, 3)-Bäume?} \\
+Hat ein Knoten drei Kinder, so würde dieser nach einer Einfügeoperation
+gespalten werden.
+Ist jedoch der Baum "`voll"', d.\,h. jeder Knoten hat drei Kinder,
+so müsste jeder gespalten werden, sodass nun alle Knoten zwei Kinder haben.
+Wird nun wieder ein Knoten gelöscht, so müssten wieder alle Kinder verschmolzen
+werden und die Ausgangssituation wäre wiederhergestellt.
+Der Zeitaufwand von (2, 3)-Bäumen ist also größer
+(analog zum Binärzähler).
+
+\textbf{Laufzeit}:
+Jede beliebige Sequenz aus Einfügen und Löschen benötigt in einem
+(2, 4)-Baum amortisiert $\O(1)$ Operationen.
+
+\begin{Beweis}
+    ?
+\end{Beweis}
+
+\textbf{Potential}:
+Das Potential eines (2, 4)-Baums $T$ mit maximal einem Knoten vom Grad 1 oder 5
+ist $\pot(T) = (2 \cdot \#1) + (1 \cdot \#2) + (0 \cdot \#3) + (2 \cdot \#4) +
+(4 \cdot \#5)$, wobei
+$\#i$ die Anzahl der Knoten vom Grad $i$ bedeutet.
+
+\pagebreak
+
+\subsection{%
+    Anwendungen von (2, 4)-Bäumen%
+}
+
+\textbf{Sortieren "`leicht"' vorsortierter Folgen}: \\
+Gegeben sei eine Folge $x_1, \dotsc, x_n$.
+Die Anzahl der Inversionen (Fehlstände) ist dann \\
+$F = \Big|\big\{(i, j) \;|\; i < j,\; x_i > x_j\big\}\Big|$,
+es gilt $0 \le F \le \binom{n}{2}$.
+
+\textbf{Behauptung}: Man kann mit (2, 4)-Bäumen in
+Zeit $\O(n \max\{1, \log \frac{F}{n}\})$ sortieren. \\
+Ist $F = n$ bzw. $F = n^2$, so kann man in $\O(n)$ bzw. $\O(n \log n)$
+sortieren.
+
+\begin{Beweis}
+    Man sortiert durch Einfügen in einen (2, 4)-Baum.
+    Angenommen, $x_1, \dotsc, x_i$ sind schon sortiert eingefügt
+    und $x_{i+1}$ soll nun eingefügt werden.
+    Der Abstand von rechts zur eigentlich richtigen Position von $x_{i+1}$
+    ist $f_{i+1} = |\{j \;|\; j < i + 1,\; x_j > x_{i+1}\}|$, wobei
+    $\sum_i f_i = F$ ist.
+    
+    $x_{i+1}$ kann nun in amortisierter Zeit
+    $\O(1 + \max\{1, \log f_{i+1}\})$ eingefügt werden: \\
+    Man läuft vom rechten Blatt (am weitesten rechts) bis ein Knoten
+    $v$ erreicht wird mit $x_{i+1} >$ größter Schlüssel $k$ in $v$.
+    Dafür wird $\O(1 + h)$ Zeit benötigt, wenn $h$ die Höhe von $v$
+    von unten gesehen ist.
+    Ist $v'$ das rechte Kind von $v$ und $k'$ der größte Schlüssel von
+    $v'$, so ist $k < x_{i+1} < k'$ und $x_{i+1}$ wird in einem Kind
+    von $v'$ eingefügt, aber nicht im rechten Knoten $v''$ von $v'$. \\
+    Daher gilt $f_{i+1} \ge \text{Anzahl Bl"atter unterhalb von } v''
+    \ge 2^{h-2}$, weil $v''$ Höhe $h - 2$ hat (Blätter Höhe $0$).
+    Es folgt $h \le 2 + \log f_{i+1}$.
+    Die Einfügung selbst (ohne Lokalisation) hat amortisierte Kosten
+    $\O(1)$.
+    Daher kann $x_{i+1}$ in $\O(1 + \max\{1, \log f_{i+1}\})$ eingefügt
+    werden.
+    
+    Damit ist die Gesamtlaufzeit
+    $\O(\sum_i (1 + \max\{1, \log f_i\}))
+    = \O(n + \sum_i \max\{1, \log f_i\}) \\
+    = \O(n + \sum_i (1 + \log f_i))
+    = \O(n + \sum_i \log f_i)
+    = \O(n + n \log \frac{F}{n})
+    = \O(n \max\{1, \log \frac{F}{n}\})$. \\
+    Die vorletzte Gleichheit erhält man mit
+    $(\prod_i f_i)^{1/n} \le \frac{\sum_i f_i}{n} \quad |\log$ \\
+    (geometrisches Mittel ist kleiner/gleich arithmetisches Mittel).
+\end{Beweis}
+
+\linie
+
+\textbf{Fingersuche}
+(ein Finger ist ein Zeiger auf ein Blatt):
+
+\textbf{Lemma}:
+In niveau-verbundenen (2, 4)-Bäumen kann man Fingersuche in
+$\O(\log \min\{d, n - d\})$ durchführen, wobei $d$ der Abstand des
+Fingers zum Ziel der Suche ist. \\
+Niveau-verbunden heißt, dass die Kanten jeder Ebene in einer zirkulären
+Liste stehen, d.\,h. zu jedem Knoten ist der linke und rechte Nachbar bekannt
+(auch wenn Vaterknoten anders ist) und zu einem Knoten ganz
+rechts ist der rechte Nachbar der Knoten der Ebene ganz links.
+
+Suche von $x$ von einem Finger aus:
+Laufe von dem Finger in Richtung Wurzel, bis ein Knoten $v$ erreicht wird,
+sodass $x$ unterhalb dem $v$, dem linken Nachbar oder dem rechten Nachbar
+von $v$ liegt.
+Dann dreht man um und sucht ganz normal. \\
+Die Laufzeit ist $\O(\text{H"ohe des erreichten Knotens})$,
+diese ist $\log(\min\{1 + d, n - d + 1\})$.
+
+\linie
+
+\textbf{schnelles Mischen und Sortieren durch Mischen}: \\
+Gegeben seien sortierte Folgen $S_1, S_2, \dotsc$ als (2, 4)-Bäume. \\
+Ziel: Mische $S_1$ und $S_2$ zu $S$ in einen (2, 4)-Baum,
+wobei $|S_1| = n$ und $|S_2| = m$ mit $m \le n$ ist.
+
+\textbf{naiv}:
+Füge $S_2$ nacheinander in $S_1$ ein.
+Die Laufzeit dafür ist $\O(m \cdot \log(m + n))$, dies ist schlecht für
+$m \approx n$ (gut für $m \ll n$).
+
+\textbf{Satz}:
+Man kann $S_1$ und $S_2$ in Zeit
+$\O(m \cdot \log \frac{m + n}{m}) = \O(\log \binom{m + n}{m})$ zu einem
+(2, 4)-Baum mischen, der $S_1$ und $S_2$ enthält.
+
+\begin{lstlisting}
+finger := "linkestes" Blatt in $S_1$
+$i$ := 1
+while $i \le m$ do
+    suche nach $x_i$ von finger aus
+    füge $x_i$ ein
+    finger := Zeiger auf neues Blatt
+    i++
+od
+\end{lstlisting}
+
+\pagebreak
+
+\subsection{%
+    Alternativen für (2, 4)-Bäume%
+}
+
+\textbf{Rot-Schwarz-Bäume}, \textbf{AVL-Bäume} und \textbf{Skip Lists}
+können immer dann benutzt werden, wenn Elemente mit einer Ordnung verwaltet
+werden sollen.
+Sie ermöglichen das Suchen, Einfügen und Löschen in logarithmischer Zeit.
+
+Manchmal kann \textbf{Hashing} jedoch ef"|fizienter sein, denn so ist
+Suchen, Einfügen und Löschen in $\O(1)$ möglich.
+Dies geht aber nur, wenn die zuverwaltende Menge aus ganzen Zahlen besteht.
+Außerdem können keine Anfragen der Art "`größtes Element kleiner $10$"'
+beantwortet werden.
+
+\subsection{%
+    \emph{Einschub}: Amortisierte Analyse%
+}
+
+\textbf{Sinn und Zweck}:
+Man möchte zeigen, dass nicht alle Operationen auf einer bestimmten
+Datenstruktur teuer sind, d.\,h. im Durchschnitt sind die Operationen billig,
+auch wenn eine einzelne Operation teuer sein kann.
+
+\textbf{Intuition}:
+Mit jeder Operation auf der Datenstruktur wird eine konstante Zahl von Euros
+einbezahlt, die für den tatsächlichen Aufwand einer Operation bezahlt werden
+müssen, dessen Rest aber bei billigen Operationen angespart werden kann, um
+teurere Operationen zu bezahlen.
+
+\linie
+
+\textbf{Beispiel 1: Inkrementierung im Binärregister} \\
+Hier entspricht der Aufwand der Anzahl der Überträge.
+Im schlimmsten Fall müssen $\log_2 n$ Überträge gemacht werden
+($n$ größte speicherbare Zahl). \\
+Man kann zeigen: Wenn man bei Null anfängt und bei jeder Inkrementierung immer
+$1$ Euro einbezahlen, so hat die Datenstruktur immer genügend Geld, um
+die Überträge zu bezahlen (ein Übertrag kostet $1$ Euro).
+
+Hier kommt die \textbf{Potentialfunktion} ins Spiel:
+Sie ist eine untere Schranke für den Kontostand und entspricht hier der
+Anzahl Einsen in der aktuellen Zahl
+(dies müsste man zeigen).
+
+Nach $i$ Inkrementierungen hat man $i$ Euro eingezahlt, der Kontostand
+ist nicht-negativ, d.\,h. man hat nicht mehr als $i$ Euro für Überträge
+ausgegeben.
+Im Durchschnitt/amortisiert wurden also $\le 1$ Überträge gemacht.
+
+\linie
+
+\textbf{Beispiel 2: Konstruktion eines Heaps in $\O(n)$ Zeit}
+
+\linie
+
+\textbf{Beispiel 3: Spalten und Vertauschen in (2, 4)-Bäumen} \\
+(Stehlen ist uninteressant, da nicht propagierend.)
+
+Die Potentialfunktion (untere Schranke für Kontostand) ist hier \\
+$\phi = 2 \cdot \#1 + 1 \cdot \#2 + 0 \cdot \#3 + 2 \cdot \#4 + 4 \cdot \#5$.
+
+Pro Einfügen und Löschen werden $5$ Euro auf das Konto des (2, 4)-Baums
+bezahlt, die gespart werden können, aber auch für Spalt-/Verschmelzoperationen
+ausgegeben werden müssen.
+Behauptung: Der (2, 4)-Baum hat immer genügend Geld, um Spalten/Verschmelzen
+zu bezahlen.
+
+Hat man dies gezeigt, so hat man, wenn man mit einem leeren Baum anfängt,
+nach $i$ Operationen einen Kontostand von höchstens $5i$ Euro.
+Weil der Kontostand nicht-negativ ist, ist der Aufwand für Spalten und
+Verschmelzen $\le 5i$.
+
+\pagebreak
+
+\begin{Beweis}
+    \begin{itemize}
+        \item
+        Durch das bloße Einfügen bzw. Löschen eines Blattes erhöht sich
+        das Potential um maximal $2$ bzw. $1$.
+        Also ist $\phi$ weiterhin eine gültige untere Schranke
+        ($5$ Euro wurden eingezahlt).
+        
+        \item
+        Beim Spalten eines Knotens mit $5$ Kindern erhöht sich das
+        Potential des Vaterknotens um max. $2$, aus dem Kind mit Potential
+        $4$ entstehen zwei Kinder mit Potential $1$ und $0$.
+        Also nimmt das Potential des Baums um mindestens $1$ ab.
+        Mit diesem Euro kann die Operation bezahlt werden und $\phi$ bleibt
+        untere Schranke für den Kontostand.
+        
+        \item
+        Beim Verschmelzen zweier Knoten mit $1$ Kind und $2$ Kindern
+        erhöht sich das Potential des Vaterknotens um max. $1$, das Potential
+        der Kinder $2$ und $1$ ändert sich zu $0$, da ein Knoten mit
+        drei Kindern entsteht.
+        Also nimmt das Potential um mindestens $2$ ab.
+        Die Operation kann bezahlt werden und $\phi$ bleibt
+        untere Schranke für den Kontostand.
+        
+        \item
+        Beim Stehlen sind zwei Knoten mit $1$ bzw. $3$ oder $4$ Kinder
+        vorhanden.
+        Deren Potential ändert sich von $2$ bzw. $0$ oder $2$ zu
+        $1$ bzw. $1$ oder $0$.
+        Sonst verändert sich kein Knoten, daher auch nicht das Potential.
+        Also nimmt bleibt das Potential gleich oder sinkt um $3$.
+        $\phi$ ist weiterhin untere Schranke für Kontostand, denn
+        es muss beim Stehlen nichts bezahlt werden.
+    \end{itemize}
+    Also bleibt $\phi$ durchgängig untere Schranke für den Kontostand. \\
+    Beim Verschmelzen/Spalten ist immer Geld vorhanden, um die Operation
+    zu bezahlen.
+\end{Beweis}
+
+\pagebreak

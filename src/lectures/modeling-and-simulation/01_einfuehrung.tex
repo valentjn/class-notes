@@ -1,0 +1,435 @@
+\section{%
+    Einführung%
+}
+
+\subsection{%
+    Modelle und Simulationen%
+}
+
+\textbf{wissenschaftlicher Erkenntniserwerb}:
+Die zwei klassischen Säulen des Erkenntniserwerbs sind
+Theorie (analytische Berechnungen, Gedankenexperimente) und
+Experiment (zur Verfikation der Theorie/wo keine Theorie vorhanden).
+Allerdings versagen beide Methoden oft, denn die Theorie löst meist nur einfache
+Szenarien explizit und Experimente können unmöglich, gefährlich, unerwünscht oder zu teuer sein.
+Daher hat sich als dritte Säule die Simulation etabliert.
+
+\linie
+
+\textbf{Modell}:
+Ein \begriff{Modell} ist ein vereinfachendes Abbild einer partiellen Realität.\\
+Man unterscheidet zwischen \begriff{konkreten} (Modellbau, Windkanal usw.) und
+\begriff{abstrakten} (formale, mathematische Beschreibung) Modellen.
+
+\textbf{mathematische Modellierung}:
+Die Herleitung/Analyse eines math. Modells ist eine
+Formalisierung/Mathematisierung des Problems durch zur besseren Lösbarkeit.
+\begin{enumerate}
+    \item
+    informale Bescheibung des Problems in Prosaform
+    
+    \item
+    semiformale Beschreibung mit dem Instrumentarium der Anwendungswissenschaft
+    
+    \item
+    streng formale, konsistente Beschreibung
+\end{enumerate}
+
+\linie
+
+\textbf{Simulation}:
+Eine \begriff{Simulation} ist ein virtuelles (i.\,A. rechnergestütztes) Experiment am Modell.
+Die Simulation ist das eigentliche Ziel der Modellierung.
+
+\textbf{Modellbildung in versch. Wissenschaften}:
+\begin{itemize}
+    \item
+    \emph{exakte Naturwissenschaften}:
+    lange Tradition, z.\,B. Physik, Modellbildung i.\,A. anerkannt
+    
+    \item
+    \emph{staatliche Wirtschaftspolitik}:
+    stark umstritten, verschiedene Lager erstellen "`ihre"' Modelle
+    
+    \item
+    \emph{Klimapolitik}:
+    stark voneinander abweichende Theorien zu Ozonloch/globaler Erwärmung
+    
+    \item
+    \emph{Spieltheorie}:
+    von Neumanns Min-Max-Prinzip kaum realistisch für Zocker
+\end{itemize}
+
+\textbf{Ziele von Simulation}:
+\begin{itemize}
+    \item
+    \emph{besseres Verständnis}
+    (Erdbeben, Einsturz des WTC an 9/11)
+    
+    \item
+    \emph{Optimierung}
+    (Flugeinsatzplan, Wärmeabtransport, Rechensystem-Durchsatz)
+    
+    \item
+    \emph{Vorhersage}
+    (Klimaveränderungen, Wetter, Bevölkerungswachstum)
+\end{itemize}
+
+\linie
+
+\textbf{Simulationspipeline}:
+\begin{itemize}
+    \item
+    \emph{Modellierung}:
+    vereinfachende formale Beschreibung eines geeigneten Ausschnitts
+    
+    \item
+    \emph{Berechnung/Simulation im engeren Sinn}:
+    geeignete Aufbereitung des Modells
+    
+    \item
+    \emph{Implementierung}:
+    ef"|fiziente Umsetzung der Berechnungsalgorithmen
+    
+    \item
+    \emph{Visualierung/Datenexploration}:
+    Interpretation der Ergebnisse eines Simulationslaufs
+    
+    \item
+    \emph{Validierung}:
+    Abgleich von Simulationergebnissen z.\,B. mit Experimenten
+    
+    \item
+    \emph{Einbettung}:
+    Integration in Simulationskontext
+\end{itemize}
+
+\linie
+
+\textbf{Anwendungen}:
+Physik,
+Chemie,
+Biologie,
+Materialwissenschaften,
+Klima/Wetter,
+Automobilindustrie,
+Nationalökonomie,
+Finanzwirtschaft,
+Halbleiterindustrie,
+Computergrafik,
+Logistik/Ablaufplanung,
+Verkehrstheorie,
+Strategie,
+Wahl-/Meinungsforschung,
+Codierungstheorie
+
+\pagebreak
+
+\subsection{%
+    Herleitung von Modellen%
+}
+
+\textbf{Fragen}:
+\begin{itemize}
+    \item
+    \emph{Was genau soll modelliert werden?}
+    (Wirkungsgrad eines Katalysators oder die detaillierten Reaktionsvorgänge,
+    Bevölkerungswachstum in Afrika oder nur in Kairo,
+    Durchsatz durch ein Rechnernetz oder die mittlere Durchlaufzeit eines Pakets)
+    
+    \item
+    \emph{Welche Größen spielen eine Rolle (qualitativ)
+    und wie groß ist ihr Einfluss (quantitativ)?}
+    (Raumschiff-Flugbahn: Gravitation von Mond, Pluto,
+    Dow Jones morgen: Äußerungen von Bernanke, uns)
+    
+    \item
+    \emph{In welcher Beziehung stehen die Größen zueinander?}
+    (qualitativ, quantitativ)
+    
+    \item
+    \emph{Mit welchem Instrumentarium lassen sich die Abhängigkeiten beschreiben?}
+\end{itemize}
+Frühe Festlegungen bestimmen dabei spätere Simulationsergebnisse!
+
+\linie
+
+\textbf{Instrumentarien zur Beschreibung von Beziehungen}:
+\begin{itemize}
+    \item
+    \emph{algebraische Gleichungen und Ungleichungen}:
+    $E = mc^2$, $w^\tp x \le 10$
+    
+    \item
+    \emph{Systeme gewöhnlicher Di"|ferentialgleichungen}:
+    $\ddot{y} + y = 0$ (Oszillation eines linearen Pendels),
+    $\dot{y} = y$ (exponentielles Wachstum),
+    $\dot{x} = -mx + ay + c$, $\dot{y} = bx - ny + d$ mit $a, b, c, d, m, n \ge 0$
+    (Wettrüsten zweier Großmächte)
+    
+    \item
+    \emph{Systeme partieller Di"|ferentialgleichungen}:
+    $u_xx + u_yy = f$ für $(x, y) \in \Omega$, $u = 0$ für $(x, y) \in \partial \Omega$
+    (Verformung einer am Rand eingespanntne Membran unter Last $f$)
+    
+    \item
+    \emph{Automaten/Zustandsübergangsdiagramme}:\\
+    Warteschlangen,
+    Texterkennung,
+    Wachstumsprozesse mit zellulären Automaten
+    
+    \item
+    \emph{Graphen}:
+    Rundreisen (TSP),
+    Reihenfolgeprobleme,
+    Rechensysteme,
+    Abläufe
+    
+    \item
+    \emph{Wahrscheinlichkeitsverteilungen}:
+    Ankunft in Warteschlange,
+    Zustimmung zur Politik in Abh. von Arbeitslosenquote,
+    Kontrolltheorie (Störungen),
+    randomisierte Heuristiken
+    
+    \item
+    \emph{Fuzzy Logic}:
+    Regelungen von Wasch-/Spülmaschinen,
+    Fotoapparate
+    
+    \item
+    \emph{neuronale Netze}
+    
+    \item
+    \emph{Sprachkonzepte}:
+    UML
+    
+    \item
+    \emph{algebraische Strukturen}:
+    Gruppen in der Quantenmechanik,
+    endliche Körper (Kryptologie)
+\end{itemize}
+
+\linie
+
+\textbf{Simulationsaufgabe}:
+Welche Gestalt hat die resultierende Aufgabenstellung?
+\begin{itemize}
+    \item
+    \emph{Finde eine Lösung des LGS}
+    (gültige Startlösung für lineare Optimierung).
+    
+    \item
+    \emph{Finde die Lösung des LGS}
+    (eindeutig lösbare PDE).
+    
+    \item
+    \emph{Gibt es eine Lösung}
+    (Hamilton-Weg im Graphen)?
+    
+    \item
+    \emph{Löse eine unbeschränkte Extremalaufgabe}
+    (kürzester Weg Quelle -- Senke).
+    
+    \item
+    \emph{Löse eine beschränkte Extramalaufgabe}
+    (Rucksackproblem, lineare Optimierung).
+    
+    \item
+    \emph{Ermittle den Störenfried bzw. den Flaschenhals}
+    (Komponente maximaler Auslastung).
+\end{itemize}
+
+\pagebreak
+
+\subsection{%
+    Analyse%
+}
+
+\textbf{Beispiele zu Aussagen zur Handhab- und Lösbarkeit}:
+\begin{itemize}
+    \item
+    \emph{Existenz von Lösungen}:
+    Populationsdynamik (Gibt es einen stationären Grenzzustand, wenn ja, wird dieser erreicht?),
+    Reihenfolgeproblem (Ist der Präzedenzgraph zyklenfrei?),
+    Minimierung (Gibt es Minima oder nur Sattelpunkte?)
+    
+    \item
+    \emph{Eindeutigkeit von Lösungen}:
+    Minimierung (Lokales oder globales Minimierung?),
+    Molekulardynamik (Stabile Zustände oder Oszillationen zwischen verschiedenen Lösungen?),
+    alle Lösungen gleichwertig?
+    
+    \item
+    \emph{stetige Abhängigkeit der Resultate von den Eingabedaten}
+    (Eingabe enthält Anfangs- und Randwerte, Startzustände usw.,
+    entspricht Kondition/Sensitivität)
+\end{itemize}
+
+\linie
+
+\textbf{sachgemäß gestellt}:
+Ein Problem heißt \begriff{sachgemäß gestellt}, wenn es stets eine eindeutige Lösung gibt und
+diese stetig von den Eingabedaten abhängt.
+Die meisten Probleme sind allerdings unsachgemäß gestellt.
+
+\textbf{inverses Problem}:
+Bei einem \begriff{inversen Problem} ist ein Ergebnis vorgegeben, gesucht ist die
+Anfangseinstellung
+(z.\,B. Wirtschaftspolitik, Technik, Rechnernetz).
+Strategien zur Lösung umfassen sinnvolles Ausprobieren und Anpassen (Folge von Vorwärtsproblemen)
+und die Lösung eines verwandten, regularisierten Problems, das sachgemäß gestellt ist.
+
+\linie
+
+\textbf{Eignung für weitere Verarbeitung}:
+Ist das Modell für automatisierte Lösung geeignet?
+\begin{itemize}
+    \item
+    \emph{Verfügbarkeit/Genauigkeit der Eingabedaten}
+    
+    \item
+    \emph{Implementierungsaufwand}:
+    Verfügbarkeit notwendiger Software
+    
+    \item
+    \emph{erforderlicher Rechen-/Speicheraufwand absolut}:
+    NP-vollständige Probleme, Wetter
+    
+    \item
+    \emph{erforderlicher Rechen-/Speicheraufwand relativ}:
+    Ist das Modell kompetitiv?
+    
+    \item
+    \emph{Empfindlichkeit}
+\end{itemize}
+
+\subsection{%
+    Lösungsmöglichkeiten%
+}
+
+\textbf{analytisch}:
+Bei einer \begriff{analytischen Lösung} erfolgen
+Existenz- und Eindeutigkeitsbeweis sowie Konstruktion direkt.
+Dies ist das Bestmögliche, denn es muss nichts vereinfacht/approximiert werden,
+allerdings geht das allermeistens nur in einfachen Spezialfällen.
+
+\textbf{heuristisch}:
+Bei einer \begriff{heuristischen Lösung} führt man Versuch-und-Irrtum gemäß einer bestimmen
+Strategie durch, um die optimale Lösung durch eine gute Lösung anzunähern.
+Das ist vor allem bei Problem der diskreten Optimierung nützlich.
+Die Frage ist jedoch, ob die heuristisch gefundene Lösung gegen die Optimallösung konvergiert
+und wenn ja, wie schnell.
+
+\textbf{direkt-numerisch}:
+Bei einer \begriff{direkt-numerischen Lösung} liefert ein numerischer Algorithmus eine exakte
+Lösung (mit Rundungsfehler).
+Der Vorteil gegenüber Heuristiken ist, dass die Lösung in jedem Fall erreicht wird
+(z.\,B. Simplex-Algorithmus).
+
+\textbf{approximativ-numerisch}:
+Bei einer \begriff{approximativ-numerischen Lösung} führt man ein iteratives Näherungsverfahren
+für genäherte Gleichungen durch.
+Hier ist das Erreichen einer beliebig genauen Approximation sichergestellt.
+Allerdings ist die Frage, wie schnell das Verfahren konvergiert
+(z.\,B. CG-Verfahren für LGS-Lösungen und Newton-Verfahren für Nullstellen).
+
+\pagebreak
+
+\subsection{%
+    Bewertung%
+}
+
+\textbf{Validierung}:
+Stimmt das Modell?
+\begin{itemize}
+    \item
+    \emph{Vergleich mit Experimenten}:
+    Windkanal,
+    Laborexperimente an verkleinerten Prototypen
+    
+    \item
+    \emph{A-posteriori-Beobachtungen}:
+    Realitätstest (Wetter, Börse),
+    Zufriedenheitstest (Verkehr)
+    
+    \item
+    \emph{Plausibilitätstest}:
+    Test der Ergebnisse auf Konsistenz zu bestehenden Theorien
+    
+    \item
+    \emph{Modellvergleich}:
+    Vergleich mit auf anderen Modellen basierenden Simulationen
+\end{itemize}
+
+\textbf{Genauigkeit}:
+Wie präzise ist das Modell?
+\begin{itemize}
+    \item
+    \emph{bzgl. der Qualität der Eingabedaten}
+    
+    \item
+    \emph{bzgl. der Fragestellung}
+    (z.\,B. Bundestagswahl und 5-\%-Hürde)
+    
+    \item
+    \emph{Sicherheit}
+    (Aussagen zu Worst-Case oder Average-Case?)
+\end{itemize}
+
+\subsection{%
+    Klassifikation von Modellen%
+}
+
+\textbf{diskret vs. kontinuierlich}:
+\begin{itemize}
+    \item
+    \emph{diskret}:
+    diskrete/kombinatorische Beschreibung
+    (binäre/ganzzahlige Größen, Graphen)
+    
+    \item
+    \emph{kontinuierlich}:
+    kontinuerliche/reellwertige Beschreibung
+    (reelle Zahlen, physikalische Größen, algebraische Gleichungen, DGLs)
+\end{itemize}
+Dasselbe Phänomen kann aber sowohl diskret als auch kontinuierlich modelliert werden
+(z.\,B. Verkehrsfluss in der Stadt).
+
+\linie
+
+\textbf{deterministisch vs. stochastisch}:
+\begin{itemize}
+    \item
+    \emph{deterministisch}
+    (z.\,B. Crash-Test)
+    
+    \item
+    \emph{stochastisch}
+    (z.\,B. Würfeln)
+\end{itemize}
+Auch hier kann das Phänomen sowohl deterministisch als auch stochastisch modelliert werden.
+Beispiele sind die Wettervorhersage und die Internet-Paketankunft an einer Bedieneinheit.
+
+\linie
+
+\textbf{Betrachtungsebene/Hierarchie}:
+Selten gibt es "`ein korrektes Modell"'.
+Meistens gibt es eine Modellhierarchie (Wechselspiel aus Aufwand und Genauigkeit),
+die man durch schrittweise Verfeinerung des Modells durchläuft.
+Welche Auf"|lösung gewählt werden soll, hängt vom gewünschten Resultat und dem erforderlichen
+Lösungsaufwand ab.
+Beispiele beinhalten die Strömung durch einen Zylinder (1D/2D/3D?) und
+die Populationsdynamik
+(in den USA rein zeitabhängig als $p(t)$ oder Ost-West-Siederstrom als $p(x, t)$?).
+
+\textbf{Multiskaleneigenschaft}:
+Die auftretenden Skalen können meist nicht ohne einen inakzeptablen Genauigkeitsverlust getrennt
+werden.
+Ein Beispiel sind turbulente Strömungen:
+Hier müssten (abhängig von der Viskosität des Fluids) auch in einem großen Gebiet kleinste Wirbel
+mitberechnet werden, weil die sich zu größeren Verwirbelungen beitragen können.
+Abhilfe schaf"|fen Turbulenzmodelle, die feinskalige Einflüsse in grobe Parameter packen und
+eine Mittelung bzgl. Raum und Zeit durchführen.
+
+\pagebreak

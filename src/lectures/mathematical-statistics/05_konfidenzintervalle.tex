@@ -1,0 +1,916 @@
+\section{%
+    Konfidenzintervalle und Hypothesenthests%
+}
+
+\subsection{%
+    Konfidenzintervalle%
+}
+
+\begin{Bem}
+    Die Angabe eines Schätzwertes für einen unbekannten Parameter allein ist häufig noch nicht
+    befriedigend.
+    Konfidenzintervalle liefern zusätzlich noch ein Maß für die Präzision des Schätzers.
+    Im Folgenden sei $T(X)$ ein Schätzer für $q(\theta)$.
+\end{Bem}
+
+\begin{Def}{Konfidenzintervall}
+    Zwei Statistiken $\Tu = \Tu(X)$ und $\To = \To(X)$ mit $\Tu \le \To$ definieren
+    ein \begriff{$(1 - \alpha)$-Konfidenzintervall (KI)} für $q(\theta)$ zum
+    \begriff{Konfidenzniveau} $(1 - \alpha) \in (0, 1)$, falls\\
+    $\forall_{\theta \in \Theta}\; \PP_\theta(q(\theta) \in [\Tu(X), \To(X)]) \ge 1 - \alpha$.
+\end{Def}
+
+\begin{Bem}
+    Ist $x$ eine Realisierung von $X$, so ist $[\Tu(x), \To(x)]$ ein sog.
+    \begriff{konkretes $(1 - \alpha)$-Konfi"-denzintervall} für $q(\theta)$.
+    Eine typische Fehlvorstellung ist,
+    dass mit Wahrscheinlichkeit $(1 - \alpha)$ gelten würde, dass $q(\theta) \in [\Tu(x), \To(x)]$.
+    Dies ist unsinnig, da die Aussage "`$q(\theta) \in [\Tu(x), \To(x)]$"'
+    für eine konkrete Beobachtung $x$ entweder wahr oder falsch ist.
+    Die richtige Interpretation ist folgende:
+    Sind $x_1, \dotsc, x_n$ $n$ Beobachtungen von $n$ i.i.d. Zufallsvariablen mit derselben
+    Verteilung wie $X$, so erwartet man, dass $q(\theta) \in [\Tu(x_i), \To(x_i)]$ für
+    mindestens ca. $(1 - \alpha)n$ der $i \in \{1, \dotsc, n\}$ wahr ist.
+\end{Bem}
+
+\begin{Def}{Quantil}
+    Ist $X$ eine reelle Zufallsvariable und $F_X$ ihre Verteilungsfunktion, so heißt\\
+    $F_X^{-1}\colon (0, 1) \rightarrow \real$ mit
+    $F_X^{-1}(p) := \inf\{x \in \real \;|\; F_X(x) \ge p\}$
+    \begriff{Quantilfunktion} von $X$.\\
+    Das Bild $F_X^{-1}(p)$ einer Zahl $p \in (0, 1)$ heißt \begriff{$p$-Quantil} von $X$.
+\end{Def}
+
+\begin{Bsp}
+    Seien $X_1, \dotsc, X_n \sim \N(\theta, \sigma^2)$ i.i.d. mit bekannter Varianz $\sigma^2$.
+    Dann gilt mit dem $(1 - \alpha/2)$-Quantil $z_{1-\alpha/2}$
+    der Standard-Normalverteilung, dass
+    $1 - \alpha =
+    \PP_\theta\!\left(\left|\frac{\overline{X} - \theta}{\sigma/\sqrt{n}}\right| \le
+    z_{1-\alpha/2}\right)$,
+    denn die Zufallsvariable zwischen den Betragsstrichen ist $\N(0, 1)$-verteilt.
+    Das entspricht\\
+    $\PP_\theta\!\left(\overline{X} - \frac{\sigma}{\sqrt{n}} z_{1-\alpha/2} \le \theta \le
+    \overline{X} + \frac{\sigma}{\sqrt{n}} z_{1-\alpha/2}\right)
+    = \PP_\theta(\theta \in [\Tu(X), \To(X)])$ mit
+    $\Tu(X) := \overline{X} - \frac{\sigma}{\sqrt{n}} z_{1-\alpha/2}$ und
+    $\To(X) := \overline{X} + \frac{\sigma}{\sqrt{n}} z_{1-\alpha/2}$.
+    Man schreibt kurz, dass $\overline{X} \pm \frac{\sigma}{\sqrt{n}} z_{1-\alpha/2}$ ein
+    $(1 - \alpha)$-Konfidenzintervall für den unbekannten Parameter $\theta$ ist.\\
+    Für $n = 9$, $\sigma^2 = 4$, $\alpha = \num{0.05}$ mit $\overline{x} = \num{1.5}$ ist
+    $z_{1-\alpha/2} = z_{0.975} \approx \num{1.96}$, d.\,h.\\
+    $\num{1.5} \pm \frac{2}{3} \cdot \num{1.96} \approx [\num{0.19}, \num{2.81}]$ ist ein
+    konkretes $\SI{95}{\percent}$-KI für den Erwartungswert $\theta$.
+\end{Bsp}
+
+\linie
+
+\begin{Bem}\\
+    Ein Konfidenzintervall $[\Tu(X), \To(X)]$ für $q(\theta)$ sollte sinnvollerweise
+    einige Kriterien erfüllen:
+    \begin{itemize}
+        \item
+        $\EE_\theta(\To(X) - \Tu(X))$ sollte so klein wie möglich sein.
+        
+        \item
+        $\PP_\theta(q(\theta) \in [\Tu(X), \To(X)])$ sollte unabhängig von $\theta$ sein.
+    \end{itemize}
+\end{Bem}
+
+\begin{Def}{Pivot-Statistik}
+    Eine Statistik $G = G(X, \theta)$ heißt \begriff{Pivot} (oder \begriff{Pivot-Statistik}),
+    falls deren Verteilung unabhängig von $\theta$ ist.
+\end{Def}
+
+\begin{Bsp}
+    Die Verteilung von $G(X, \theta) := \frac{\overline{X} - \theta}{\sigma/\sqrt{n}} \sim
+    \N(0, 1)$ in obigem Beispiel ist unabhängig von $\theta$,
+    damit ist $G$ eine Pivot-Statistik.
+\end{Bsp}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    Ähnlich wie bei der Frage nach der Existenz von gleichmäßig optimalen Schätzern existieren
+    im Allgemeinen keine (gleichmäßig) kleinsten Konfidenzintervalle.
+    Deshalb schränkt man sich auf unverzerrte Konfidenzintervalle ein.
+\end{Bem}
+
+\begin{Def}{unverzerrtes Konfidenzintervall}
+    Ein $(1 - \alpha)$-Konfidenzintervall $[\Tu, \To]$ für $q(\theta)$ heißt
+    \begriff{unverzerrt}, falls
+    $\forall_{\theta, \theta' \in \Theta}\; \PP_\theta(q(\theta) \in [\Tu(X), \To(X)]) \ge
+    \PP_\theta(q(\theta') \in [\Tu(X), \To(X)])$,
+    d.\,h. die Wahrscheinlichkeit, dass ein unverzerrtes KI den wahren Wert $q(\theta)$ einfängt,
+    darf nicht kleiner sein als die Wahrscheinlichkeit, dass dieses KI einen anderen Wert
+    $q(\theta')$ einfängt.
+\end{Def}
+
+\begin{Bsp}
+    Setzt man obiges Beispiel fort,
+    so gilt\\
+    $\PP_\theta\!\left(\theta' \in \overline{X} \pm \frac{\sigma}{\sqrt{n}} z_{1-\alpha/2}\right)
+    = \PP_\theta\!\left(\frac{\overline{X} - \theta}{\sigma/\sqrt{n}} \in
+    \frac{\theta' - \theta}{\sigma/\sqrt{n}} \pm z_{1-\alpha/2}\right)
+    = \Phi(x + c) - \Phi(x - c)$ mit $x := \frac{\theta' - \theta}{\sigma/\sqrt{n}}$ und
+    $c := z_{1-\alpha/2}$,
+    da $\frac{\overline{X} - \theta}{\sigma/\sqrt{n}} \sim \N(0, 1)$.
+    Für festgehaltenes $c > 0$ ist $f(x) := \Phi(x + c) - \Phi(x - c)$ maximal für $x = 0$,
+    denn $f'(x) = \frac{1}{\sqrt{2\pi}} \left(\exp\!\left(-\frac{(x+c)^2}{2}\right) -
+    \exp\!\left(-\frac{(x-c)^2}{2}\right)\right) = 0$ gilt genau dann, wenn $x = 0$.
+    Wegen $f''(0) = \frac{1}{\sqrt{2\pi}} \left(-c \exp\!\left(-\frac{c^2}{2}\right) -
+    c \exp\!\left(-\frac{c^2}{2}\right)\right) = -2c \varphi(c) < 0$
+    (da $c > 0$ und $\varphi(c) > 0$) ist $f(x)$ maximal für $x = 0$.
+    Daher ist das Konfidenzintervall $\overline{X} \pm \frac{\sigma}{\sqrt{n}} z_{1-\alpha/2}$
+    unverzerrt.
+\end{Bsp}
+
+\linie
+
+\begin{Bsp}
+    Seien nun $X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ i.i.d.
+    mit $\mu$ und $\sigma^2$ unbekannt, also $\theta = (\mu, \sigma^2)$.
+    Gesucht ist wieder ein Konfidenzintervall für den Erwartungswert $\mu$.
+    Definiert man $S_n^2 := \frac{1}{n-1} \sum_{i=1}^n (X_i - \overline{X})^2$ als
+    Stichprobenvarianz, dann kann man zeigen,
+    dass $\overline{X}_n$ und $S_n^2$ unabhängige Zufallsvariablen sind.
+    Damit sind Zähler und Nenner in $T(X) := \frac{\sqrt{n} (\overline{X}_n - \mu)}{S_n} =
+    \frac{\sqrt{n} (\overline{X}_n - \mu)/\sigma}{\sqrt{1/(n-1) \cdot (n-1) S_n^2/\sigma^2}}$
+    auch stochastisch unabhängig,
+    wobei der Zähler standard-normalverteilt und
+    $\frac{(n-1)S_n^2}{\sigma^2} \sim \chi_{n-1}^2$
+    (Verteilung von $Z_1^2 + \dotsb + Z_n^2$ mit $Z_1, \dotsc, Z_n \sim \N(0,1)$ i.i.d.).
+    Daher genügt der Quotient $T(X)$ einer speziellen Verteilung, der sog.
+    \begriff{\name{student}schen $t$-Verteilung} $t_{n-1}$.
+    $T(X)$ ist unabhängig von $\theta$ und damit eine Pivot-Statistik.
+    Mit dem $(1 - \alpha/2)$-Quantil $t_{n-1,1-\alpha/2}$ der $t_{n-1}$-Verteilung
+    gilt damit $1 - \alpha
+    = \PP_\theta\!\left(\left|\frac{\overline{X} - \mu}{S_n/\sqrt{n}}\right| \le
+    t_{n-1,1-\alpha/2}\right)
+    = \PP_\theta(\mu \in [\Tu(X), \To(X)])$
+    (durch Auf"|lösen nach $\mu$) mit
+    $[\Tu(X), \To(X)] := \overline{X} \pm \frac{S_n}{\sqrt{n}} t_{n-1,1-\alpha/2}$,
+    d.\,h. dieses Zufallsintervall ist ein $(1 - \alpha)$-Konfidenzintervall für $\mu$.
+\end{Bsp}
+
+\linie
+
+\begin{Bsp}
+    Seien nun $X_1, \dotsc, X_n \sim \Bin(1, \theta)$ i.i.d.
+    Gesucht ist ein (approximatives) $(1 - \alpha)$-Konfidenzintervall für $\theta$.
+    Der zentrale Grenzwertsatz besagt\\
+    $\frac{\overline{X}_n - \theta}{\sqrt{\theta (1 - \theta)}/\sqrt{n}} \xrightarrow{\text{(d)}}
+    \N(0, 1)\text{-verteilte ZV}$,
+    d.\,h. $1 - \alpha \approx \PP_\theta\!\left(\left|\frac{\overline{X}_n - \theta}
+    {\sqrt{\theta (1 - \theta)}/\sqrt{n}}\right| \le z_{1-\alpha/2}\right)$\\
+    $= \PP_\theta(n (\overline{X}_n - \theta)^2 \le (z_{1-\alpha/2})^2 \theta (1 - \theta))$\\
+    $= \PP_\theta(n (\overline{X}_n)^2 - \theta (2n \overline{X}_n + (z_{1-\alpha/2})^2) +
+    \theta^2 (n + (z_{1-\alpha/2})^2) \le 0) = \PP_\theta(\theta \in [\Tu(X), \To(X)])$\\
+    für bestimmte $\Tu(X), \To(X)$
+    (der Ausdruck ist eine nach oben geöffnete Parabel, d.\,h. $\Tu(X)$ und $\To(X)$ sind die
+    Nullstellen der Parabel).
+    Damit erhält man ein approximatives $(1 - \alpha)$-Konfidenzintervall für $\theta$.
+    Als Faustregel gilt, dass dieses KI brauchbar ist, wenn $n\theta \ge 5$ und
+    $n(1-\theta) \ge 5$
+    (denn dann ist die Approximation durch den zentralen GW-Satz brauchbar).
+    
+    Ein alternatives approximatives $(1 - \alpha)$-Konfidenzintervall erhält man durch
+    Schätzung von $\theta$ durch $\overline{X}_n$.
+    Damit ist
+    $(1 - \alpha) \approx \PP_\theta\!\left(\left|\frac{\overline{X}_n - \theta}
+    {\sqrt{\theta (1 - \theta)}/\sqrt{n}}\right| \le z_{1-\alpha/2}\right)
+    \approx \PP_\theta\!\left(\left|\frac{\overline{X}_n - \theta}
+    {\sqrt{\overline{X}_n (1 - \overline{X}_n)}/\sqrt{n}}\right| \le z_{1-\alpha/2}\right)$\\
+    $\PP_\theta\!\left(\theta \in \overline{X}_n \pm
+    \frac{\sqrt{\overline{X}_n (1 - \overline{X}_n)}}{\sqrt{n}} z_{1 - \alpha/2}\right)$.
+    Damit ist $\overline{X}_n \pm
+    \frac{\sqrt{\overline{X}_n (1 - \overline{X}_n)}}{\sqrt{n}} z_{1 - \alpha/2}$ ein
+    approximatives $(1 - \alpha)$-Konfidenzintervall für $\theta$.
+\end{Bsp}
+
+\begin{Bem}
+    Unter Verwendung von Statistik-Software kann auch ein exaktes
+    $(1 - \alpha)$-Konfidenz"-intervall für $\theta$ berechnet werden.
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Def}{rechteckiger Konfidenzbereich}\\
+    Ist $q(\theta) = (q_1(\theta), \dotsc, q_r(\theta))$ vektorwertig, so ist das Zufallsrechteck\\
+    $I(X) := \{t \in \real^r \;|\; \forall_{j=1,\dotsc, r}\; t_j \in [\Tu_j(X), \To_j(X)]\}
+    = [\Tu_1(X), \To_1(X)] \times \dotsb \times [\Tu_r(X), \To_r(X)]$
+    basierend auf den Statistiken $\Tu_j$ und $\To_j$ ($j = 1, \dotsc, r$) ein
+    \begriff{rechteckiger $(1 - \alpha)$-Konfidenzbereich} für $q(\theta)$, falls
+    $\forall_{\theta \in \Theta}\; \PP_\theta(q(\theta) \in I(X)) \ge 1 - \alpha$.
+\end{Def}
+
+\begin{Bem}
+    Gegeben seien $(1 - \alpha_j)$-Konfidenzintervalle $I_j(X) := [\Tu_j(X), \To_j(X)]$
+    für $q_j(\theta)$ ($j = 1, \dotsc, r$), wobei die Konfidenzniveaus $1 - \alpha_j$ noch
+    allgemein und beliebig sein sollen.
+    Definiert man $I(X) := I_1(X) \times \dotsb \times I_r(X)$, so kann man Bedingungen an die
+    $\alpha_j$ stellen, damit das Zufallsrechteck $I(X)$ für ein gegebenes $\alpha$
+    ein rechteckiger $(1 - \alpha)$-Konfidenzbereich für $q(\theta)$ ist:
+    \begin{itemize}
+        \item
+        Seien $I_1(X), \dotsc, I_r(X)$ stochastisch unabhängig,
+        so gilt\\
+        $\PP_\theta(q(\theta) \in I(X)) = \PP_\theta(q_1(\theta) \in I_1(X), \dotsc,
+        q_r(\theta) \in I_r(X)) = \prod_{j=1}^r \PP_\theta(q_j(\theta) \in I_j(X))$\\
+        $\ge \prod_{j=1}^r (1 - \alpha_j)$,
+        weil die $I_j(X)$ $(1 - \alpha_j)$-KIe für $q_j(\theta)$ sind.
+        Dies ist größer oder gleich als $1 - \alpha$, wenn $1 - \alpha_j := (1 - \alpha)^{1/r}$
+        gewählt wird.
+        
+        \item
+        Sind die $I_1(X), \dotsc I_r(X)$ nicht notwendigerweise stochastisch unabhängig,
+        so gilt\\
+        $\PP_\theta(q(\theta) \in I(X)) = 1 -
+        \PP_\theta(q_1(\theta) \notin I_1(X) \lor \dotsb \lor q_r(\theta) \notin I_r(X))$\\
+        $\ge 1 - \sum_{j=1}^r \PP_\theta(q_j(\theta) \notin I_j(X))
+        \ge 1 - \sum_{j=1}^r \alpha_j$,
+        da $\PP_\theta(q_j(\theta) \notin I_j(X)) \le \alpha_j$.
+        Dies ist größer oder gleich als $1 - \alpha$, falls $\alpha_j := \frac{\alpha}{r}$
+        gewählt wird.
+    \end{itemize}
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Beim bayesianischen Ansatz ist $\theta$ eine Zufallsvariable,
+    wobei $\theta \sim \pi$ mit der \begriff{a-priori-Dichte} $\pi$ (Zähl-/L.-B.-Dichte).
+    $X|\theta \sim p(\cdot|\theta)$ ist die sogenannte \begriff{Likelihood} von $X$ und
+    $\theta|X=x \sim p(\cdot,x)$ der \begriff{a-posteriori-Dichte}.
+    Die a-posteriori-Dichte berechnet sich nach der Formel von Bayes
+    $p(\cdot|x) = \frac{\pi(\theta) p(x|\theta)}{m(x)}$ mit
+    $m(x) := \sum_{\theta_i'} \pi(\theta_i') p(\theta_i'|x)$ bzw.
+    $m(x) := \int \pi(\theta') p(\theta'|x) \d\theta'$
+    (falls $\theta$ diskret bzw. stetig verteilt ist).
+    
+    Ein bayesianischer Intervallschätzer (auch \begriff{credible interval}) für $\theta$
+    basierend auf der Beobachtung $x$ ist dann jedes von $x$ abhängige Intervall, das den
+    (beliebigen) Wert $\theta$ mindestens mit Wahrscheinlichkeit $(1 - \alpha)$ überdeckt.
+\end{Bem}
+
+\begin{Def}{\name{bayes}ianischer Intervallschätzer}
+    Ein \begriff{\name{bayes}ianischer Intervallschätzer} für $\theta$ zum Niveau $(1 - \alpha)$
+    ist ein (zufallsabhängiges) Intervall $[\Tu, \To]$ mit
+    $\PP(\theta \in [\Tu(X), \To(X)]|X=x) \ge 1 - \alpha$.
+\end{Def}
+
+\begin{Bem}
+    Dabei sind $\theta$ und $X$ zufallsabhängig.
+    Im klassischen Ansatz eines (frequentistischen) Konfidenzintervalls ist diese
+    Wahrscheinlichkeit sinnlos, da entweder $= 0$ oder $= 1$.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Das Testen von Hypothesen%
+}
+
+\begin{Bem}
+    Mit einem Schätzverfahren kann z.\,B. die Erfolgswahrscheinlichkeit
+    einer Therapie geschätzt werden.
+    Häufig ist man aber eher an der Frage interessiert, ob eine neue Therapie besser ist als
+    eine Standard-Therapie.
+    Diese Frage kann jedoch meist nicht absolut beantwortet werden, die Wahrscheinlichkeit für eine
+    Fehlentscheidung muss akzeptiert werden.
+\end{Bem}
+
+\begin{Def}{Null-/Alternativhypothese}
+    Sei $\P = \{\PP_\theta \;|\; \theta \in \Theta\}$ ein statistisches Modell
+    mit einer Zerlegung $\Theta := \Theta_0 \mathbin{\dot{\cup}} \Theta_1$
+    des Parameterraums, wobei $\Theta_0, \Theta_1 \not= \emptyset$.
+    Dann heißt die Aussage $H_0\colon \theta \in \Theta_0$ \begriff{Nullhypothese} und
+    $H_1\colon \theta \in \Theta_1$ \begriff{Alternativhypothese}.
+\end{Def}
+
+\begin{Bem}
+    Die zu widerlegende Hypothese wird normalerweise als Nullhypothese formuliert
+    (wegen engl. \emph{to nullify} = widerlegen).
+\end{Bem}
+
+\begin{Def}{einfache/zusammengesetzte Hypothese}
+    Besteht $\Theta_0$ nur aus einem Element $\theta_0$, so heißt
+    $H_0$ \begriff{einfache Hypothese},
+    andernfalls heißt $H_0$ \begriff{zusammengesetzte Hypothese}.
+\end{Def}
+
+\begin{Def}{einseitige/zweiseitige Hypothese}\\
+    Ist $\Theta \subset \real$ und $\Theta_1 = \{\theta \in \Theta \;|\; \theta \not= \theta_0\}$,
+    so heißt $H_1$ \begriff{zweiseitige Hypothese}.\\
+    Im Fall $\Theta_1 = \{\theta \in \Theta \;|\; \theta > \theta_0\}$ bzw.
+    $\Theta_1 = \{\theta \in \Theta \;|\; \theta < \theta_0\}$
+    heißt $H_1$ \begriff{einseitige Hypothese}
+    (genauer \begriff{rechts- bzw. linksseitig}).
+\end{Def}
+
+\linie
+
+\begin{Def}{Hypothesentest}
+    Ein \begriff{(statistischer) Hypothesentest (oder Test)} $\delta$ ist eine messbare Funktion
+    $\delta\colon \X \rightarrow [0, 1]$.
+    Dabei bedeutet
+    $\delta(X) = 0$, dass die \begriff{Nullhypothese akzeptiert} wird, und
+    $\delta(X) = 1$, dass die \begriff{Nullhypothese verworfen} wird.
+\end{Def}
+
+\begin{Def}{kritischer Bereich}\\
+    Die Menge $\{x \in \X \;|\; \delta(x) = 1\}$ heißt
+    \begriff{kritischer Bereich (Verwerfungsbereich)} von $\delta$.
+\end{Def}
+
+\begin{Def}{kritischer Wert}\\
+    Ist $T(X)$ eine Statistik mit $\delta(X) = \1_{\{T(X) \ge c\}}$, so heißt
+    $c$ \begriff{kritischer Wert} des Tests $\delta$.
+\end{Def}
+
+\begin{Bem}
+    Gemäß obiger Definition ist auch $\delta(X) = p \in (0, 1)$ zulässig.
+    In diesem Fall wählt man $Y \sim \Bin(1, p)$ unabhängig von $X$ und entscheidet
+    für $H_0$, falls $Y = 0$, und für $H_1$ sonst.
+    Dies nennt man \begriff{randomisierten Test}, da er nicht nur von den Daten,
+    sondern auch vom Ausgang eines weiteren Zufallsexperiments abhängt.
+    Die Untersuchung randomisierter Tests hat vorwiegend theoretische Gründe und wird im
+    nächsten Kapitel diskutiert.
+\end{Bem}
+
+\begin{Bsp}
+    Um die Wirksamkeit eines neuen Medikaments zu testen, sei bekannt,
+    dass $\SI{20}{\percent}$ ohne Medikament gesund werden,
+    d.\,h. $X_1, \dotsc, X_n \sim \Bin(1, \theta)$ i.i.d.
+    Die Hypothesen lauten $H_0\colon \theta = \theta_0$ vs.
+    $H_1\colon \theta > \theta_0$ mit $\theta_0 := \num{0.2}$.
+    Ist $\overline{X}$
+    (relative Häufigkeit einer Heilung) "`deutlich"' größer als $\num{0.2}$,
+    so spricht dies eher für $H_1$.
+    Man betrachtet also den Hypothesentest
+    $\delta_k(X) := 1$, falls $n\overline{X} = \sum_{i=1}^n X_i \ge k$, und
+    $\delta_k(X) := 0$ sonst.
+    Die Frage ist, welches $k$ man wählen soll.
+\end{Bsp}
+
+\begin{Bem}
+    Folgende Tabelle stellt die möglichen Entscheidungen dar.
+    
+    \begin{tabular}{p{40mm}p{30mm}p{30mm}}
+        \toprule
+        & $H_0$ wahr & $H_1$ wahr\\
+        \midrule
+        $H_0$ wird akzeptiert & kein Fehler & Fehler 2. Art\\
+        $H_1$ wird akzeptiert & Fehler 1. Art & kein Fehler\\
+        \bottomrule
+    \end{tabular}
+    
+    Da die Ablehnung von $H_0$ das Ziel des Tests ist, wird eine fälschliche Ablehnung von
+    $H_0$ als gravierender angesehen als eine fälschliche Beibehaltung von $H_0$.
+    Man verfährt daher folgendermaßen:
+    Zunächst betrachtet man nur die Hypothesentests,
+    deren Wahrscheinlichkeit für einen Fehler 1. Art ein Niveau $\alpha$ nicht überschreitet.
+    Unter diesen Tests sucht man dann denjenigen, sodass die Wahrscheinlichkeit für einen
+    Fehler 2. Art minimal ist.
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Def}{Gütefunktion}\\
+    Die \begriff{Gütefunktion} $G_\delta\colon \Theta \rightarrow [0, 1]$ des Tests $\delta$
+    ist definiert durch $G_\delta(\theta) := \EE_\theta(\delta(X))$.
+\end{Def}
+
+\begin{Bem}
+    Ist $\delta$ ein \begriff{nicht-randomisierter Test} (d.\,h. $\delta \in \{0, 1\}$),
+    so gilt für einen gegebenen Parameter $\theta \in \Theta$,
+    dass $G_\delta(\theta) = \text{(W.keit für Fehler 1. Art)}$, falls $\theta \in \Theta_0$, und\\
+    $G_\delta(\theta) = 1 - \text{(W.keit für Fehler 2. Art)}$, falls $\theta \in \Theta_1$.
+\end{Bem}
+
+\begin{Def}{Test zum Niveau $\alpha$/Level-$\alpha$-Test}\\
+    Gilt für einen Test $\delta$, dass
+    $\sup_{\theta \in \Theta_0} G_\delta(\theta) \le \alpha$,
+    so heißt $\delta$ \begriff{Test zum Niveau $\alpha$}.\\
+    Gilt sogar $\sup_{\theta \in \Theta_0} G_\delta(\theta) = \alpha$,
+    so heißt $\delta$ \begriff{Level-$\alpha$-Test}.
+\end{Def}
+
+\linie
+
+\begin{Bsp}
+    Bei obigem Beispiel ist die Wahrscheinlichkeit für einen Fehler 1. Art
+    gleich\\
+    $\PP_{\theta_0}(\delta_k(X) = 1) = \PP_{\theta_0}(\sum_{i=1}^n X_i \ge k)
+    = \sum_{j=k}^n \binom{n}{j} \theta_0^j (1-\theta_0)^{n-j}$.
+    Die Wahrscheinlichkeit für einen Fehler 2. Art ist gleich
+    $\PP_\theta(\delta_k(X) = 0) = \PP_\theta(\sum_{i=1}^n X_i < k)
+    = \sum_{j=0}^{k-1} \binom{n}{j} \theta^j (1-\theta)^{n-j}$
+    (abhängig von $\theta$).
+    Die Gütefunktion ist gleich $G_{\delta_k}(\theta) = \PP_\theta(\delta_k(X) = 1)
+    = \sum_{j=k}^n \binom{n}{j} \theta^j (1-\theta)^{n-j}$ für $\theta \in \Theta := (0, 1)$.
+    Bei gegebenen Signifikanzniveau $\alpha$ wählt man nun $k$ als das kleinste $k_0$,
+    sodass für die Fehlerwahrscheinlichkeit 1. Art
+    $\PP_{\theta_0}(\delta_{k_0}(X) = 1) \le \alpha$ gilt.
+    Dies ist äquivalent zu\\
+    $\PP_{\theta_0}(\overline{X} \ge k_0/n) \le \alpha$.
+    Durch die Normierung $\sqrt{\frac{n}{\theta(1-\theta_0)}} (\overline{X} - \theta_0)$
+    mit $\EE_{\theta_0}(X_i) = \theta$ und $\Var_{\theta_0}(X_i) = \theta_0(1-\theta_0)$ kann man
+    den zentralen Grenzwertsatz anwenden, der besagt, dass diese Zufallsvariable in Verteilung
+    gegen eine $\N(0,1)$-verteilte Zufallsvariable konvergiert.
+    Daher ist\\
+    $\PP_{\theta_0}(\overline{X} \ge k/n)
+    = \PP_{\theta_0}\!\left(\sqrt{\frac{n}{\theta_0(1-\theta_0)}} (\overline{X} - \theta_0) \ge
+    \sqrt{\frac{n}{\theta(1-\theta_0)}} (k_0/n - \theta_0)\right)$\\
+    $\approx 1 - \Phi\!\left(\sqrt{\frac{n}{\theta_0(1-\theta_0)}} (k_0/n - \theta_0)\right)
+    = 1 - \Phi\!\left(\frac{k_0 - n \theta_0}{\sqrt{n \theta_0(1-\theta_0)}}\right)$.
+    Eine bessere Approximation für kleine $n$ erhält man, indem man im Zähler
+    die sog. \begriff{Stetigkeitskorrektur} $- \num{0.5}$ anfügt.
+    Faustregel: Die Approximation ist brauchbar, wenn $n\theta_0 \ge 5$ und
+    $n(1 - \theta_0) \ge 5$.
+    Es gilt nun\\
+    $1 - \Phi\!\left(\frac{k_0 - n \theta_0 - \num{0.5}}
+    {\sqrt{n \theta_0(1-\theta_0)}}\right) \le \alpha
+    \iff \frac{k_0 - n \theta_0 - \num{0.5}}{\sqrt{n \theta_0(1-\theta_0)}} \ge z_{1-\alpha}
+    \iff k_0 \ge n\theta_0 + \num{0,5} + z_{1-\alpha} \sqrt{n \theta_0(1-\theta_0)}$.\\
+    Damit ist $\delta_{k_0}(X) = \1_{\{\sum_{i=1}^n X_i > k_0\}}$ ein Test zum approximativen
+    Niveau $\alpha$ für $H_0\colon \theta \le \theta_0$ vs. $H_1\colon \theta > \theta_0$.
+    Mit \textbf{R} kann auch ein exakter Binomialtest zum Niveau $\alpha$ durchgeführt werden.
+\end{Bsp}
+
+\linie
+
+\begin{Bsp}
+    Beim \begriff{einseitigen \name{Gauß}-Test für $\mu$} liegen
+    $X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ i.i.d. mit $\sigma^2$ bekannt vor.
+    Das Hypothesenpaar lautet $H_0\colon \mu \le \mu_0$ vs. $H_1\colon \mu > \mu_0$.
+    Wenn $\overline{X}$ "`groß"' ist, so spricht dies eher für $H_1$.
+    Daher wählt man $\delta_c(X) := \1_{\{\overline{X} \ge c\}}$.
+    Die Gütefunktion dieses Tests ist\\
+    $G_{\delta_c}(\mu) = \PP_\mu(\delta_c(X) = 1)
+    = \PP_\mu\!\left(\frac{\overline{X} - \mu}{\sigma/\sqrt{n}} \ge
+    \frac{c - \mu}{\sigma/\sqrt{n}}\right)
+    = 1 - \Phi\!\left(\frac{c - \mu}{\sigma/\sqrt{n}}\right)$.\\
+    Damit ist $\sup_{\mu \in \Theta_0} G_{\delta_c}(\mu) =
+    1 - \Phi\!\left(\frac{c - \mu_0}{\sigma/\sqrt{n}}\right) \overset{!}{=} \alpha$
+    für einen Level-$\alpha$-Test,
+    was äquivalent ist zu $c = \mu_0 + \frac{\sigma}{\sqrt{n}} z_{1-\alpha}$.
+    Mit diesem Wert ist also $\delta_c$ ein Level-$\alpha$-Test für $H_0$ vs. $H_1$.\\
+    Der Verlauf der Gütefunktion $G_{\delta_c}(\mu)$ ist eine Kurve ähnlich der der
+    Verteilungsfunktion, die in $\mu = \mu_0$ durch $G_{\delta_c}(\mu_0)$ läuft.
+    Für größeren Stichprobenumfang (oder alternativ kleinere Varianz) ist der Verlauf wesentlich
+    steiler.
+\end{Bsp}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    Um die Wahl eines konkreten Signifikanzniveaus nicht vorwegzunehmen, wurde der sog.
+    $p$-Wert (Überschreitungswert) eingeführt als das kleinste Niveau $\alpha$,
+    zu dem die Nullhypothese gerade noch abgelehnt werden kann.
+\end{Bem}
+
+\begin{Def}{$p$-Wert}
+    Ist $\delta = \delta^\alpha$ ein Test zum Niveau $\alpha \in (0, 1)$ mit
+    \begriff{kritischem Bereich}\\
+    $K^\alpha := \{x \in \X \;|\; \delta^\alpha(x) = 1\}$,
+    wobei $K^\alpha \subset K^{\alpha'}$ für $\alpha < \alpha'$ gelten soll, dann heißt\\
+    $p(X) := \inf\{\alpha \in (0,1) \;|\; X \in K^\alpha\}$ \begriff{$p$-Wert} des Tests $\delta$.
+\end{Def}
+
+\begin{Bem}
+    Der $p$-Wert $p(X)$ ist also selbst eine Zufallsvariable.
+    Er wird häufig auch als Maß für die Evidenz gegen die Nullhypothese interpretiert.
+    Allerdings kann man zeigen, dass $p(X) \sim \U((0, 1))$, falls $H_0$ gilt.\\
+    Für Tests der Form $\delta(X) := \1_{\{T(X) \ge c\}}$ lautet eine alternative Definition
+    wie folgt:\\
+    $p(x) := \sup_{\theta \in \Theta_0} \PP_\theta(T(X) \ge T(x))$
+    (wobei $\sup_{\theta \in \Theta_0} \PP_\theta(T(X) \ge c)$ die größte
+    Fehlerwahrscheinlichkeit 1. Art ist, die bei einem bestimmten $c$ auftreten kann).
+\end{Bem}
+
+\begin{Bsp}
+    Beim einseitigen Gauß-Test gilt
+    $\delta(x) = 1 \iff \overline{x} - \mu_0 \ge \frac{\sigma}{\sqrt{n}} z_{1-\alpha}
+    = \frac{\sigma}{\sqrt{n}} \Phi^{-1}(1-\alpha)$\\
+    $\iff 1 - \alpha \ge \Phi\!\left(\frac{\overline{x} - \mu_0}{\sigma/\sqrt{n}}\right)$.
+    Damit ist $p(x) = 1 - \Phi\!\left(\frac{\overline{x} - \mu_0}{\sigma/\sqrt{n}}\right)$
+    der $p$-Wert des Tests.
+\end{Bsp}
+
+\linie
+
+\begin{Bsp}
+    Der einseitige Gauß-Test hat für $\mu_0 = 0$ die Gütefunktion\\
+    $G_\delta(\mu)
+    = 1 - \Phi\!\left(\frac{c - \mu}{\sigma/\sqrt{n}}\right)
+    = 1 - \Phi\!\left(z_{1-\alpha} - \frac{\mu}{\sigma/\sqrt{n}}\right)$,
+    d.\,h. für $\mu > 0$ die Fehlerwahrscheinlichkeit 2. Art
+    $\Phi\!\left(z_{1-\alpha} - \frac{\mu}{\sigma/\sqrt{n}}\right)$.
+    Ist $\mu$ nur unwesentlich größer $0$, dann ist dies ungefähr gleich
+    $1 - \alpha$, d.\,h. fast gleich $1$.
+    Eine Lösung dieses Problems ist, auf die Kontrolle des Fehlers 2. Art in der sog.
+    \begriff{Indif"|ferenzzone} $\mu \in (0, \Delta)$ zu verzichten,
+    wobei $\Delta$ die minimale relevante Abweichung von $\mu = 0$ darstellt.
+    Damit kann man die Fehlerwahrscheinlichkeit 2. Art (auch \begriff{$\beta$-Fehler})
+    im modifzierten Test
+    $H_0\colon \mu \le 0$ vs. $H_\Delta\colon \mu \ge \Delta$ kontrollieren.
+    Für einen vorgebenenen maximalen Fehler $\beta$ ist
+    $\beta = \Phi\!\left(z_{1-\alpha} - \frac{\Delta}{\sigma/\sqrt{n}}\right)
+    \iff \Delta = \frac{\sigma}{\sqrt{n}} (z_{1-\alpha} - z_\beta)$.
+    Bei vorgegebenem $\beta$ und $\Delta$ beträgt der minimale Stichprobenumfang
+    $n \ge \frac{\sigma^2(z_{1-\alpha} - z_\beta)^2}{\Delta^2}$.
+\end{Bsp}
+
+\subsection{%
+    Dualität zwischen Konfidenzintervallen und Hypothesentests%
+}
+
+\begin{Bsp}
+    Seien $X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ mit $\theta = \mu \in \Theta := \real$
+    unbekannt und $\sigma^2$ bekannt.
+    Den \begriff{zweiseitigen \name{Gauß}-Test} für den Erwartungswert $\mu$ kann man
+    aus dem $(1 - \alpha)$-KI $\overline{X} \pm z_{1-\alpha/2}
+    \frac{\sigma}{\sqrt{n}}$ für $\mu$ herleiten:
+    Es gilt nach der Definition eines Konfidenzintervalls, dass\\
+    $\forall_{\theta \in \Theta}\; \PP_\theta(\theta \in [\Tu(X), \To(X)]) \ge 1 - \alpha
+    \iff \forall_{\theta \in \Theta}\; \PP_\theta(\theta \notin [\Tu(X), \To(X)]) \le \alpha$.
+    Dabei gilt $\theta \notin \overline{X} \pm z_{1-\alpha/2} \frac{\sigma}{\sqrt{n}}$
+    genau dann, wenn $\left|\frac{\overline{X} - \theta}{\sigma/\sqrt{n}}\right| \ge
+    z_{1-\alpha/2}$ gilt.
+    Daher ist die KI-Definition äquivalent zu
+    $\forall_{\theta_0 \in \Theta}\; \PP_{\theta_0}(\delta(X) = 1) \le \alpha$
+    mit $\delta(X) := \1_{\{|T(X)| \ge z_{1-\alpha/2}\}}$ und
+    $T(X) := \frac{\overline{X} - \theta}{\sigma/\sqrt{n}}$.
+    Man erhält also einen zweiseitigen Hypothesentest $\delta(X)$ zum Niveau $\alpha$.
+    Die Rechnung kann man auch umgekehrt führen (ausgehend von einem Test zum Niveau $\alpha)$.
+    Allgemeiner gilt folgender Satz.
+\end{Bsp}
+
+\begin{Satz}{Dualitätssatz}
+    \begin{enumerate}[label=\emph{\alph*)}]
+        \item
+        Ist $[\Tu(X), \To(X)]$ ein $(1-\alpha)$-Konfidenzintervall für $\theta$,
+        so ist $\delta(X, \theta_0) := \1_{\{\theta_0 \notin [\Tu(X), \To(X)]\}}$ für alle
+        $\theta_0 \in \Theta$ ein (nicht-randomisierter) Hypothesentest zum Niveau $\alpha$
+        für $H_0\colon \theta = \theta_0$ vs. $H_1\colon \theta \not= \theta_0$.
+        
+        \item
+        Ist $\delta(X, \theta_0)$ ein (nicht-randomisierter) Hypothesentest zum Niveau $\alpha$
+        für $H_0\colon \theta = \theta_0$ vs. $H_1\colon \theta \not= \theta_0$
+        und existieren Statistiken $\Tu(X), \To(X)$ mit
+        $\forall_{x \in \X}\; \{\theta_0 \in \Theta \;|\; \delta(x, \theta_0) = 0\} =
+        [\Tu(x), \To(x)]$,
+        so ist $[\Tu(X), \To(X)]$ ein $(1-\alpha)$-Konfidenzintervall für $\theta$.
+    \end{enumerate}
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    \name{Bayes}ianisches Testen%
+}
+
+\begin{Bem}
+    Beim bayesianischen Ansatz ist $\theta$ eine Zufallsvariable,
+    wobei $\theta \sim \pi$ mit der \begriff{a-priori-Dichte} $\pi$ (Zähl-/L.-B.-Dichte).
+    $X|\theta \sim p(\cdot|\theta)$ ist die sogenannte \begriff{Likelihood} von $X$ und
+    $\theta|X=x \sim p(\cdot,x)$ der \begriff{a-posteriori-Dichte}.
+    Die a-posteriori-Dichte berechnet sich nach der Formel von Bayes
+    $p(\cdot|x) = \frac{\pi(\theta) p(x|\theta)}{m(x)}$ mit
+    $m(x) := \sum_{\theta_i'} \pi(\theta_i') p(\theta_i'|x)$ bzw.
+    $m(x) := \int \pi(\theta') p(\theta'|x) \d\theta'$
+    (falls $\theta$ diskret bzw. stetig verteilt ist).
+    
+    $\theta$ nimmt nur Werte in $\Theta = \Theta_0 \mathbin{\dot{\cup}} \Theta_1$ an.
+    Das Hypothesenpaar ist wie üblich $H_0\colon \theta \in \Theta_0$ vs.
+    $H_1\colon \theta \in \Theta_1$.
+    Die a-priori-Wahrscheinlichkeit für $H_0$ beträgt
+    $\pi_0 := \int_{\theta \in \Theta_0} \pi(\theta)\d\theta$,
+    die für $H_1$ beträgt $\pi_1 := \int_{\theta \in \Theta_1} \pi(\theta)\d\theta$.
+    Die a-posteriori-Wahrscheinlichkeiten berechnen sich nach der Formel von Bayes:
+    $\PP(H_0|X=x) = \int_{\Theta_0} p(\theta|x)\d\theta$ bzw.
+    $\PP(H_1|X=x) = \int_{\Theta_1} p(\theta|x)\d\theta$
+    mit $p(\theta|x)$ wie oben.
+    (Zum Beispiel ist $\PP(H_0|X=x) = \frac{\int_{\Theta_0} p(x|\theta)\pi(\theta)\d\theta}
+    {\int_\Theta p(x|\theta)\pi(\theta)\d\theta}$.)
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Seien wieder $X_1, \dotsc, X_n \sim \N(\theta, \sigma^2)$ mit
+    $\theta \in \Theta = \Theta_0 \mathbin{\dot{\cup}} \Theta_1 = \real$ unbekannt und
+    $\sigma^2 > 0$ bekannt.
+    Dann gilt $\overline{X} \sim \N\!\left(\theta, \frac{\sigma^2}{n}\right)$.
+    Geht man von der a-priori-Verteilung $\theta \sim \N(\mu, \tau^2)$ aus, so ist es
+    (rechnerisch und interpretatorisch) sinnvoll,
+    die Varianz $\tau^2$ als $\sigma^2/n_0$ zu schreiben mit
+    $n_0 := \sigma^2/\tau^2$
+    dem sog. \begriff{impliziten Stichprobenumfang}, also $\theta \sim \N(\mu, \sigma^2/n_0)$.
+    Man erhält so eine a-posteriori-Verteilung von
+    $\theta|X=x \sim \N\!\left(\frac{n_0 \mu + n\overline{x}}{n_0 + n},
+    \frac{\sigma^2}{n_0+n}\right)$.
+    
+    Für das Hypothesenpaar $H_0\colon \theta \le \theta_0$ vs. $H_1\colon \theta > \theta_0$
+    erhält man also eine a-priori-Wahrschein"-lichkeit für $H_0$ bzw. $H_1$ von
+    $\PP(H_0) = \PP(\Theta_0) = \int_{\Theta_0} \pi(\theta)\d\theta
+    = \int_{(-\infty, \theta_0]} \pi(\theta)\d\theta =
+    \Phi\!\left(\frac{\theta_0 - \mu}{\sigma/\sqrt{n_0}}\right)$ bzw. von
+    $\PP(H_1) = 1 - \Phi\!\left(\frac{\theta_0 - \mu}{\sigma/\sqrt{n_0}}\right)$.
+    
+    Die a-posteriori-Wahrscheinlichkeit für $H_0$ beträgt
+    $\PP(H_0|X=x) = \frac{\int_{\Theta_0} p(\theta|x)\d\theta}
+    {\int_\Theta p(\theta|x)\pi(\theta)\d\theta}$\\
+    $= \int_{\Theta_0} p(\theta|x)\d\theta
+    = \Phi\!\left(\frac{\theta_0 - \frac{n_0 \mu + n\overline{x}}{n_0 + n}}
+    {\sigma/\sqrt{n_0+n}}\right)
+    \xrightarrow{n_0 \to 0} \Phi\!\left(\frac{\theta_0 - \overline{x}}{\sigma/\sqrt{n}}\right)$.
+    Der Grenzwert stellt die a-posteriori-Wahr"-scheinlichkeit für $H_0$ bei einer uninformativen
+    a-priori-Verteilung dar.
+    
+    Berechnet man den frequentistischen $p$-Wert, so erhält man\\
+    $\PP(\overline{X} \ge \overline{x}|H_0) =
+    \PP_{\theta_0}\!\left(\frac{\overline{X} - \theta_0}{\sigma/\sqrt{n}} \ge
+    \frac{\overline{x} - \theta_0}{\sigma/\sqrt{n}}\right)
+    = 1 - \Phi\!\left(\frac{\overline{x} - \theta_0}{\sigma/\sqrt{n}}\right)
+    = \Phi\!\left(\frac{\theta_0 - \overline{x}}{\sigma/\sqrt{n}}\right)$,
+    also denselben Wert.
+    
+    Daher konvergiert hier die a-posteriori-Wahrscheinlichkeit für $H_0$ gegen den
+    (frequentistischen) $p$-Wert, falls die a-priori-Verteilung für $\theta$ gegen die
+    uninformative a-priori-Verteilung konvergiert.
+\end{Bsp}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    Der Vergleich der \begriff{a-priori-Chancen} (oder \begriff{Odds}) von $H_1$ vs. $H_0$
+    erfolgt mit der Formel $\frac{\pi_1}{\pi_0}
+    = \frac{\int_{\Theta_1} \pi(\theta)\d\theta}{\int_{\Theta_0} \pi(\theta)\d\theta}$
+    (wobei man im Falle einer Zähldichte $\pi(\theta)$ die Integrale durch Summen ersetzt).
+    
+    Der Vergleich der \begriff{a-posteriori-Chancen} von $H_1$ vs. $H_0$ läuft analog mit\\
+    $\frac{p_1}{p_0} = \frac{\PP(\theta \in \Theta_1|X=x)}{\PP(\theta \in \Theta_0|X=x)}
+    = \frac{\int_{\Theta_1} p(\theta|X=x)\d\theta}
+    {\int_{\Theta_0} p(\theta|X=x)\d\theta}
+    = \frac{\int_{\Theta_1} \pi(\theta)p(x|\theta)\d\theta}
+    {\int_{\Theta_0} \pi(\theta)p(x|\theta)\d\theta} = B \cdot \frac{\pi_1}{\pi_0}$,\\
+    wobei $B := \frac{\int_{\Theta_1} \pi(\theta)p(x|\theta)/\pi_1\d\theta}
+    {\int_{\Theta_0} \pi(\theta)p(x|\theta)/\pi_0\d\theta}$ der sog. \begriff{\name{Bayes}-Faktor}
+    darstellt.
+    Die a-posteriori-Odds ergeben sich also als Produkt des Bayes-Faktors
+    (der alle Informationen über die Daten enthält) mit den a-priori-Odds.
+    Der Bayes-Faktor gibt dabei an, in welchem Maße die a-priori-Odds korrigiert werden müssen.
+    Er spielt im bayesianischen Testen eine ähnliche Rolle wie der $p$-Wert im frequentistischen
+    Testen.
+    
+    Bewertung des Bayes-Faktors nach Jeffrey:
+    
+    \begin{tabular}{cl}
+        \toprule
+        \textbf{$B$} & \textbf{Wie stark spricht $H_1$ gegen $H_0$?}\\
+        \midrule
+        1 -- 3 & kaum der Rede wert\\
+        \midrule
+        3 -- 10 & substanziell\\
+        \midrule
+        10 -- 30 & stark\\
+        \midrule
+        30 -- 100 & sehr stark\\
+        \midrule
+        $>$ 100 & entschieden\\
+        \bottomrule
+    \end{tabular}
+    
+    Eine ähnliche Tabelle lässt sich für den $p$-Wert aufstellen
+    (inklusive der z.\,B. in \textbf{R} gebräuchlichen Symbole):
+    
+    \begin{tabular}{cl}
+        \toprule
+        \textbf{$p$-Wert} & \textbf{Wie stark spricht $H_1$ gegen $H_0$?}\\
+        \midrule
+        $\num{0.05}$ -- $\num{0.1}$ & schwach signifikant ($\cdot$)\\
+        \midrule
+        $\num{0.01}$ -- $\num{0.05}$ & signifikant ($\ast$)\\
+        \midrule
+        $\num{0.001}$ -- $\num{0.01}$ & stark signifikant ($\ast\ast$)\\
+        \midrule
+        $< \num{0.001}$ & sehr stark signifikant ($\ast{\ast}\ast$)\\
+        \bottomrule
+    \end{tabular}
+\end{Bem}
+
+\vspace{5mm}
+\linie
+
+\begin{Bem}
+    Für einfache Hypothesen $\Theta = \{\theta_0, \theta_1\}$ mit $H_0\colon \theta = \theta_0$
+    und $H_1\colon \theta = \theta_1$ gilt
+    $B = \frac{p(x, \theta_1)}{p(x, \theta_0)}$
+    (\begriff{Likelihood-Quotient}, siehe nächstes Kapitel).
+\end{Bem}
+
+\pagebreak
+
+\begin{landscape}
+\subsection{%
+    \emph{Zusatz}: Gängige Konfidenzintervalle und -Hypothesentests%
+}
+
+\textbf{Einstichproben-Konfidenzintervalle}:
+$[\Tu(X), \To(X)]$ mit $X_1, \dotsc, X_n$ i.i.d.
+
+{\small\begin{tabular}{lllll}
+    \toprule
+    \emph{Zufallsstichprobe} &
+    \emph{Zielgröße} &
+    \emph{Parameter} &
+    \emph{Herleitung: $1 - \alpha\; \cdots$} &
+    \emph{(appr.) $(1-\alpha)$-KI $[\Tu(X), \To(X)]$}\\
+    
+    \midrule
+    $X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ &
+    $\mu$ &
+    $\theta = \mu$ unbek., $\sigma^2$ bek. &
+    $= \PP_\theta\!\left(\left|\frac{\overline{X} - \mu}
+    {\sigma/\sqrt{n}}\right| \le z_{1-\alpha/2}\right)$ &
+    $\overline{X} \pm \frac{\sigma}{\sqrt{n}} z_{1-\alpha/2}$\\
+    \cmidrule(r){3-5}
+    && $\theta = (\mu, \sigma^2)$ unbek. &
+    $= \PP_\theta\!\left(\left|\frac{\overline{X} - \mu}
+    {S(X)/\sqrt{n}}\right| \le t_{n-1,1-\alpha/2}\right)$ &
+    $\overline{X} \pm \frac{S(X)}{\sqrt{n}} t_{n-1,1-\alpha/2}$\\
+    \cmidrule(r){2-5}
+    & $\sigma^2$ &
+    $\mu$ bek., $\theta = \sigma^2$ unbek. &
+    $= \PP_\theta\!\left(\frac{{S^\ast}^2(X)}{\sigma^2/n} \in
+    \left[\chi_{n,\alpha/2}^2, \chi_{n,1-\alpha/2}^2\right]\right)$ &
+    $\left[\frac{n {S^\ast}^2(X)}{\chi_{n,1-\alpha/2}^2},
+    \frac{n {S^\ast}^2(X)}{\chi_{n,\alpha/2}^2}\right]$\\
+    \cmidrule(r){3-5}
+    && $\theta = (\mu, \sigma^2)$ unbek. &
+    $= \PP_\theta\!\left(\frac{S^2(X)}{\sigma^2/(n-1)} \in
+    \left[\chi_{n-1,\alpha/2}^2, \chi_{n-1,1-\alpha/2}^2\right]\right)$ &
+    $\left[\frac{(n-1) S^2(X)}{\chi_{n-1,1-\alpha/2}^2},
+    \frac{(n-1) S^2(X)}{\chi_{n-1,\alpha/2}^2}\right]$\\
+    
+    \midrule
+    $X_1, \dotsc, X_n \sim \Bin(1, p)$ &
+    $p$ &
+    $\theta = p$ &
+    $\approx \PP_\theta\!\left(\left|\frac{\overline{X} - p}
+    {\sqrt{p(1-p)/n}}\right| \le z_{1-\alpha/2}\right)$ &
+    $\left\{p \in [0, 1] \;\left|\;
+    n (\overline{X} - p)^2 \le (z_{1-\alpha/2})^2 p (1-p)\right.\right\}$\\
+    \cmidrule(r){4-5}
+    &&& $\approx \PP_\theta\!\left(\left|\frac{\overline{X} - p}
+    {\sqrt{\overline{X}(1-\overline{X})/n}}\right| \le z_{1-\alpha/2}\right)$ &
+    $\overline{X} \pm \sqrt{\frac{\overline{X} (1 - \overline{X})}{n}} z_{1-\alpha/2}$\\
+    
+    \bottomrule
+\end{tabular}}
+
+\textbf{Einstichproben-Hypothesentests}:
+$\delta(X) := \1_{\{T(X) \ge c\}}$ mit $X_1, \dotsc, X_n$ i.i.d.
+
+{\small\begin{tabular}{llllll}
+    \toprule
+    \emph{Zufallsstichprobe} &
+    \emph{Parameter} &
+    \emph{Testname} &
+    \emph{Hypothesen} &
+    \emph{Teststatistik $T(X)$} &
+    \emph{kritischer Wert $c$}\\
+    
+    \midrule
+    $X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ &
+    $\theta = \mu$ unbek., $\sigma^2$ bek. &
+    Gauß-Test &
+    $H_0\colon \mu \le \mu_0$ vs. $H_1\colon \mu > \mu_0$ &
+    $\frac{\overline{X} - \mu_0}{\sigma/\sqrt{n}}$ &
+    $z_{1-\alpha}$\\
+    \cmidrule(r){4-6}
+    &&& $H_0\colon \mu \ge \mu_0$ vs. $H_1\colon \mu < \mu_0$ &
+    $\frac{\mu_0 - \overline{X}}{\sigma/\sqrt{n}}$ &
+    $z_{1-\alpha}$\\
+    \cmidrule(r){4-6}
+    &&& $H_0\colon \mu = \mu_0$ vs. $H_1\colon \mu \not= \mu_0$ &
+    $\left|\frac{\overline{X} - \mu_0}{\sigma/\sqrt{n}}\right|$ &
+    $z_{1-\alpha/2}$\\
+    \cmidrule(r){2-6}
+    & $\theta = (\mu, \sigma^2)$ unbek. &
+    $t$-Test &
+    $H_0\colon \mu \le \mu_0$ vs. $H_1\colon \mu > \mu_0$ &
+    $\frac{\overline{X} - \mu_0}{S(X)/\sqrt{n}}$ &
+    $t_{n-1,1-\alpha}$\\
+    \cmidrule(r){4-6}
+    &&& $H_0\colon \mu \ge \mu_0$ vs. $H_1\colon \mu < \mu_0$ &
+    $\frac{\mu_0 - \overline{X}}{S(X)/\sqrt{n}}$ &
+    $t_{n-1,1-\alpha}$\\
+    \cmidrule(r){4-6}
+    &&& $H_0\colon \mu = \mu_0$ vs. $H_1\colon \mu \not= \mu_0$ &
+    $\left|\frac{\overline{X} - \mu_0}{S(X)/\sqrt{n}}\right|$ &
+    $t_{n-1,1-\alpha/2}$\\
+    
+    \bottomrule
+\end{tabular}}
+
+\pagebreak
+
+\textbf{Zweistichproben-Konfidenzintervalle}:\\
+$[\Tu(X, Y), \To(X, Y)]$ mit $X_1, \dotsc, X_n  \sim \N(\mu_X, \sigma_X^2)$ i.i.d.,
+$Y_1, \dotsc, Y_n \sim \N(\mu_Y, \sigma_Y^2)$ i.i.d. und
+$X_1, \dotsc, X_n, Y_1, \dotsc, Y_n$ unabhängig
+
+{\small\begin{tabular}{llll}
+    \toprule
+    \emph{Zielgröße} &
+    \emph{Parameter} &
+    \emph{Herleitung: $1 - \alpha\; \cdots$} &
+    \emph{(appr.) $(1-\alpha)$-KI $[\Tu(X, Y), \To(X, Y)]$}\\
+    
+    \midrule
+    $\mu_X - \mu_Y$ &
+    $\theta = (\mu_X, \mu_Y)$ unbek., $\sigma_X^2, \sigma_Y^2$ bek. &
+    $= \PP_\theta\!\left(\left|\frac{(\overline{X} - \overline{Y}) - (\mu_X - \mu_Y)}
+    {\sqrt{(\sigma_X^2 + \sigma_Y^2)/n}}\right| \le z_{1-\alpha/2}\right)$ &
+    $(\overline{X} - \overline{Y}) \pm
+    \sqrt{\frac{\sigma_X^2 + \sigma_Y^2}{n}} z_{1-\alpha/2}$\\
+    \cmidrule(r){2-4}
+    & $\theta = (\mu_X, \mu_Y, \sigma_X^2, \sigma_Y^2)$ unbek. &
+    $= \PP_\theta\!\left(\left|\frac{(\overline{X} - \overline{Y}) - (\mu_X - \mu_Y)}
+    {S(X - Y)/\sqrt{n}}\right| \le t_{n-1,1-\alpha/2}\right)$ &
+    $(\overline{X} - \overline{Y}) \pm
+    \frac{S(X - Y)}{\sqrt{n}} t_{n-1,1-\alpha/2}$\\
+    
+    \midrule
+    $\sigma_X^2/\sigma_Y^2$ &
+    $\mu_X, \mu_Y$ bek., $\theta = (\sigma_X^2, \sigma_Y^2)$ unbek. &
+    $= \PP_\theta\!\left(\frac{{S^\ast}^2(X)/\sigma_X^2}{{S^\ast}^2(Y)/\sigma_Y^2} \in
+    \left[f_{n,n,\alpha/2}, f_{n,n,1-\alpha/2}\right]\right)$ &
+    $\left[\frac{{S^\ast}^2(X)/{S^\ast}^2(Y)}{f_{n,n,1-\alpha/2}},
+    \frac{{S^\ast}^2(X)/{S^\ast}^2(Y)}{f_{n,n,\alpha/2}}\right]$\\
+    \cmidrule(r){2-4}
+    & $\theta = (\mu_X, \mu_Y, \sigma_X^2, \sigma_Y^2)$ unbek. &
+    $= \PP_\theta\!\left(\frac{S^2(X)/\sigma_X^2}{S^2(Y)/\sigma_Y^2} \in
+    \left[f_{n-1,n-1,\alpha/2}, f_{n-1,n-1,1-\alpha/2}\right]\right)$ &
+    $\left[\frac{S^2(X)/S^2(Y)}{f_{n-1,n-1,1-\alpha/2}},
+    \frac{S^2(X)/S^2(Y)}{f_{n-1,n-1,\alpha/2}}\right]$\\
+    
+    \bottomrule
+\end{tabular}}
+
+%\textbf{Zweistichproben-Hypothesentests}: $\delta(X) := \1_{\{T(X) \le c\}}$
+
+%{\small\begin{tabular}{llllll}
+    %\toprule
+    %\emph{Zufallsstichprobe} &
+    %\emph{Parameter} &
+    %\emph{Testname} &
+    %\emph{Hypothesen} &
+    %\emph{Teststatistik $T(X)$} &
+    %\emph{kritischer Wert $c$}\\
+    
+    %\midrule
+    %$X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ &
+    %$\theta = \mu$ unbek., $\sigma^2$ bek. &
+    %Gauß-Test &
+    %$H_0\colon \mu \le \mu_0$ vs. $H_1\colon \mu > \mu_0$ &
+    %$\overline{X} - \mu_0$ &
+    %$\frac{\sigma}{\sqrt{n}} z_{1-\alpha}$\\
+    %\cmidrule(r){4-6}
+    %&&& $H_0\colon \mu \ge \mu_0$ vs. $H_1\colon \mu < \mu_0$ &
+    %$\mu_0 - \overline{X}$ &
+    %$\frac{\sigma}{\sqrt{n}} z_{1-\alpha}$\\
+    %\cmidrule(r){4-6}
+    %&&& $H_0\colon \mu = \mu_0$ vs. $H_1\colon \mu \not= \mu_0$ &
+    %$|\overline{X} - \mu_0|$ &
+    %$\frac{\sigma}{\sqrt{n}} z_{1-\alpha/2}$\\
+    
+    %\midrule
+    %$X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ &
+    %$\theta = (\mu, \sigma^2)$ unbek. &
+    %$t$-Test &
+    %$H_0\colon \mu \le \mu_0$ vs. $H_1\colon \mu > \mu_0$ &
+    %$\overline{X} - \mu_0$ &
+    %$\frac{S_n}{\sqrt{n}} t_{n-1,1-\alpha}$\\
+    %\cmidrule(r){4-6}
+    %&&& $H_0\colon \mu \ge \mu_0$ vs. $H_1\colon \mu < \mu_0$ &
+    %$\mu_0 - \overline{X}$ &
+    %$\frac{S_n}{\sqrt{n}} t_{n-1,1-\alpha}$\\
+    %\cmidrule(r){4-6}
+    %&&& $H_0\colon \mu = \mu_0$ vs. $H_1\colon \mu \not= \mu_0$ &
+    %$|\overline{X} - \mu_0|$ &
+    %$\frac{S_n}{\sqrt{n}} t_{n-1,1-\alpha/2}$\\
+    
+    %\bottomrule
+%\end{tabular}}
+\end{landscape}
+
+\pagebreak

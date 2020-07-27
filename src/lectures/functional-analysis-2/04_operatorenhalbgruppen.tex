@@ -1,0 +1,300 @@
+\optpart{%
+    Operatorentheorie%
+}
+
+\section{%
+    Operatorhalbgruppen%
+}
+
+\subsection{%
+    Operatoren%
+}
+
+\begin{Def}{linearer Operator}
+    Seien $X$ ein Banachraum und $D(T) \le X$ ein Unterraum.\\
+    Eine lineare Abbildung $T\colon D(T) \rightarrow X$ heißt
+    \begriff{linearer Operator} auf $X$.
+    Man schreibt $(T, D(T))$.
+\end{Def}
+
+\begin{Def}{dicht definiert}
+    Ein linearer Operator $T\colon D(T) \rightarrow X$ heißt
+    \begriff{dicht definiert}, falls $\overline{D(T)} = X$.
+\end{Def}
+
+\begin{Def}{abgeschlossen}
+    Ein linearer Operator $T\colon D(T) \rightarrow X$ heißt \begriff{abgeschlossen}, falls\\
+    $\graph(T) := \{(x, Tx) \;|\; x \in D(T)\} \subset X^2$
+    abgeschlossen ist, d.\,h. falls für alle Folgen $x_n \in D(T)$ mit
+    $x_n \xrightarrow{n \to \infty} x \in X$ und $Tx_n \xrightarrow{n \to \infty} y \in X$ gilt,
+    dass $x \in D(T)$ und $Tx = y$.
+\end{Def}
+
+\begin{Satz}{Charakterisierung der Stetigkeit von abg., dicht def., lin. Operatoren}\\
+    Sei $(T, D(T))$ ein abgeschlossener, dicht definierter, linearer Operator.\\
+    Dann gilt $D(T) = X$ $\iff$ $T$ stetig.
+\end{Satz}
+
+\begin{Satz}{Vertauschung von Integral und Operator}
+    Seien $u \in \C^0([a, b], X)$ und
+    $(T, D(T))$ ein abgeschlossener, linearer Operator mit $\Bild(u) \subset D(T)$ und
+    $T \circ u \in \C^0([a, b], X)$.\\
+    Dann gilt $T(\int_a^b u(s)\ds) = \int_a^b T(u(s))\ds$.
+    (Insbesondere gilt dies, falls $T \in \Lin(X)$.)
+\end{Satz}
+
+\begin{Satz}{Hauptsatz der Diff.- und Int.rechnung}
+    Sei $u \in \C^0([a, b], X)$ dif"|ferenzierbar in $t \in (a, b)$.\\
+    Dann gilt $\lim_{h \to 0} \frac{1}{h} \int_t^{t+h} u(s)\ds = u(t)$.
+\end{Satz}
+
+\subsection{%
+    Operatorhalbgruppen%
+}
+
+\begin{Bem}
+    Man betrachtet die gewöhnliche DGL $u'(t) = Au(t)$, $u(0) = u_0$
+    mit einer konstanten $(n \times n)$-Matrix $A$.
+    Diese DGL besitzt für alle $t \in \real$ eine eindeutige Lösung $u(t)$.
+    Bezeichnet man mit $T(t)$ den \begriff{Lösungsoperator} ausgewertet zur Zeit $t$,
+    d.\,h. $T(t)u_0 := u(t)$ mit $u(t)$ der Lösung zur Anfangsbedingung $u(0) = u_0$,
+    dann kann man diesen mit dem Matrixexponential explizit angeben:
+    Es gilt $T(t) = e^{tA} := \sum_{n=0}^\infty \frac{1}{n!} t^n A^n$.
+    
+    Im Folgenden soll dieses Konzept auf unendlich-dimensionale Räume verallgemeinert werden.
+\end{Bem}
+
+\linie
+
+\begin{Def}{Operatorhalbgruppe}
+    Eine \begriff{stark stetige (Operator-)Halbgruppe} (oder \begriff{$\C_0$-Halbgruppe}) ist eine
+    Familie $(T(t))_{t \ge 0}$ von Operatoren $T(t) \in \Lin(X)$ auf einem Banachraum $X$, sodass
+    \begin{enumerate}
+        \item
+        $T(0) = \id$,
+        
+        \item
+        $\forall_{s, t \ge 0}\; T(s+t) = T(s) T(t)$
+        (\begriff{Halbgruppen-Eigenschaft}) und
+        
+        \item
+        $\forall_{x \in X}\; T(t) x \xrightarrow{t \to 0} x$.
+    \end{enumerate}
+    Gilt statt \emph{(3)} sogar die stärkere Forderung
+    \begin{enumerate}[label=\emph{(\arabic*')},start=3]
+        \item
+        $\norm{T(t) - \id}_{\Lin(X)} \xrightarrow{t \to 0} 0$,
+    \end{enumerate}
+    dann spricht man von einer \begriff{normstetigen (Operator-)Halbgruppe}.
+\end{Def}
+
+\begin{Def}{Operatorgruppe}
+    Eine \begriff{stark stetige (Operator)-Gruppe} (oder \begriff{$\C_0$-Gruppe}) ist
+    eine Familie $(T(t))_{t \in \real}$ von Operatoren wie eben,
+    sodass \emph{(1)}, \emph{(2)}, \emph{(3)} von eben sinngemäß gelten.\\
+    Analog sind \begriff{normstetige (Operator-)Gruppen} definiert.
+\end{Def}
+
+\pagebreak
+
+\subsection{%
+    Beispiele%
+}
+
+\begin{Bsp}
+    \begin{enumerate}[label=\emph{(\alph*)}]
+        \item
+        Seien $X$ ein Banachraum und $A \in \Lin(X)$.\\
+        Dann ist $(T(t))_{t \ge 0}$ eine normstetige Halbgruppe
+        mit $T(t) := e^{tA}$ und $e^{tA} := \sum_{n=0}^\infty \frac{1}{n!} t^n A^n$.\\
+        Lässt man $t \in \real$ zu, dann erhält man eine normstetige Gruppe.
+        
+        \item
+        Seien $X \in \{\C^0_\unif([0, \infty)), \C^0_0([0, \infty)), L^p([0,\infty)) \;|\;
+        p \in [1, \infty)\}$ mit\\
+        $\C^0_0([0, \infty)) := \{f \in \C^0_b([0, \infty)) \;|\; \forall_{\varepsilon>0}
+        \exists_{K \subset [0, \infty) \text{ kpkt.}} \forall_{x \in [0, \infty) \setminus K}\;
+        |f(x)| < \varepsilon\}$\\
+        (es gilt $\C^0_0 = \{f \in \C^0 \;|\; \lim_{|x| \to \infty} f(x) = 0\}$,
+        außerdem gilt $\C^0_0 \le \C^0_\unif$).\\
+        Dann ist $(T(t))_{t \ge 0}$ mit $(T(t) f)(x) := f(x + t)$
+        für $t \ge 0$, $f \in X$ und $x \in [0, \infty)$
+        eine $\C_0$-Halbgruppe, aber keine normstetige Halbgruppe,
+        die sog. \begriff{Translationshalbgruppe}.\\
+        Für $\C^0_b$ oder $L^\infty$ als $X$ würde man keine $\C_0$-Halbgruppe erhalten.\\
+        Ersetzt man $[0, \infty)$ durch $\real$ und lässt $t \in \real$ zu,
+        so erhält man eine $\C_0$-Gruppe.
+        
+        \item
+        Sei $X \in \{\C^0_\unif(\real^n), \C^0_0(\real^n), L^p(\real^n) \;|\; p \in [1, \infty)\}$.
+        Dann ist $(T(t))_{t \ge 0}$ mit\\
+        $(T(t) f)(x) := \frac{1}{(4\pi t)^{n/2}} \int_{\real^n} e^{-|x-y|^2/(4t)} f(y)\dy$
+        für $t > 0$, $f \in X$ und $x \in \real^n$ sowie $T(0) := \id$
+        eine $\C_0$-Halbgruppe, die sog. \begriff{Wärmeleitungshalbgruppe} oder
+        \begriff{\name{Brown}sche Halbgruppe}.
+    \end{enumerate}
+\end{Bsp}
+
+\subsection{%
+    Wachstumsschranken und Stetigkeit%
+}
+
+\begin{Lemma}{Wachstumslemma}
+    Sei $(T(t))_{t \ge 0}$ eine $\C_0$-Halbgruppe.\\
+    Dann gilt $\exists_{M \ge 1} \exists_{\omega \in \real} \forall_{t \ge 0}\;
+    \norm{T(t)}_{\Lin(X)} \le Me^{\omega t}$.
+\end{Lemma}
+
+\begin{Def}{exponentielle Wachstumsschranke}
+    $\omega_0 := \inf\{\omega \in \real \;|\; \exists_{M \ge 1} \forall_{t \ge 0}\;
+    \norm{T(t)}_{\Lin(X)} \le Me^{\omega t}\}$ heißt \begriff{(exponentielle) Wachstumsschranke}
+    der $\C_0$-Halbgruppe $(T(t))_{t \ge 0}$.
+\end{Def}
+
+\begin{Bem}
+    Nach dem Lemma ist die Menge, von der das Infimum gebildet wird, nicht-leer,
+    d.\,h. $\omega_0 < +\infty$.
+    Allerdings kann $\omega_0 = -\infty$ sein und $\omega_0$ muss nicht angenommen werden.
+\end{Bem}
+
+\begin{Def}{Kontraktionshalbgruppe}
+    Ist im Wachstumslemma $M = 1$, $\omega = 0$ möglich,
+    d.\,h. gilt $\forall_{t \ge 0}\; \norm{T(t)}_{\Lin(X)} \le 1$,
+    dann heißt die $\C_0$-Halbgruppe $(T(t))_{t \ge 0}$ \begriff{Kontraktionshalbgruppe}.
+\end{Def}
+
+\linie
+
+\begin{Lemma}{Stetigkeit}
+    Sei $(T(t))_{t \ge 0}$ eine $\C_0$-Halbgruppe auf einem Banachraum $X$.\\
+    Dann ist die Abbildung $[0, \infty) \times X \to X$, $(t, x) \mapsto T(t) x$
+    stetig, genauer gleichmäßig stetig in $t$ auf kompakten Teilmengen von $[0, \infty)$.\\
+    Insbesondere ist für jedes $x \in X$ die Abbildung
+    $u\colon [0, \infty) \to X$, $t \mapsto T(t) x$ stetig,\\
+    d.\,h. $u \in \C^0([0, \infty), X)$.
+\end{Lemma}
+
+\pagebreak
+
+\subsection{%
+    Erzeuger%
+}
+
+\begin{Bem}
+    In diesem Abschnitt ist $(T(t))_{t \ge 0}$ eine $\C_0$-Halbgruppe auf dem Banachraum $X$.
+\end{Bem}
+
+\begin{Def}{Erzeuger}
+    Der \begriff{(infinitesimale) Erzeuger} (oder \begriff{Generator}) von $(T(t))_{t \ge 0}$ ist
+    der Operator $(A, D(A))$ mit $Ax := \lim_{h \to 0+0} \frac{T(h) x - x}{h}$ und
+    $D(A) := \{x \in X \;|\;
+    \text{$\lim_{h \to 0+0} \frac{T(h) x - x}{h}$ existiert in $X$}\}$.
+\end{Def}
+
+\begin{Bem}
+    Der Erzeuger ist linear, aber i.\,A. nicht überall definiert und nicht stetig.
+\end{Bem}
+
+\linie
+
+\begin{Def}{absolutstetig}
+    $f\colon [a, b] \to \real$ heißt \begriff{absolutstetig}, falls\\
+    $\forall_{\varepsilon > 0} \exists_{\delta > 0}
+    \forall_{a \le x_0 < \dotsb < x_n \le b}\;
+    \big[\sum_{k=1}^n (x_k - x_{k-1}) < \delta \implies
+    \sum_{k=1}^n |f(x_k) - f(x_{k-1})| < \varepsilon\big]$.
+\end{Def}
+
+\begin{Bem}
+    Es gilt $f$ Lipschitz-stetig $\implies$ $f$ absolutstetig $\implies$ $f$ gleichmäßig stetig.\\
+    Es gilt $f$ absolutstetig $\iff$
+    $\exists_{g \in L^1([a, b])} \forall_{x \in [a, b]}\; f(x) = f(a) + \int_a^x g(t)\dt$.
+    In diesem Fall ist $f$ fast überall dif"|ferenzierbar, es gilt $f' \in L^1([a, b])$
+    und $g = f'$ fast überall.
+\end{Bem}
+
+\begin{Bsp}
+    \begin{enumerate}[label=\emph{(\alph*)}]
+        \item
+        Der Erzeuger von $(e^{tA})_{t \ge 0}$ ist $A$.
+        
+        \item
+        Sei $(T(t))_{t \ge 0}$ bzw. $(T(t))_{t \in \real}$ die Translationshalbgruppe bzw. -gruppe
+        und $A$ der Erzeuger.\\
+        Ist $X = \C^0_0([0, \infty))$ bzw. $X = \C^0_0(\real)$, dann ist
+        $A = \frac{d}{dx}$ mit\\
+        $D(A) = \{f \in \C^0_0 \;|\; \text{$f'$ existiert und $f' \in \C^0_0$}\}$.\\
+        Ist $X = L^p([0, \infty))$ bzw. $X = L^p(\real)$ mit $p \in [1, \infty)$, dann ist
+        $A = \frac{d}{dx}$ mit\\
+        $D(A) = \{f \in L^p \;|\; \text{$f$ ist absolutstetig und $f' \in L^p$}\}$.
+        
+        \item
+        Sei $(T(t))_{t \ge 0}$ die Wärmeleitungshalbgruppe und $A$ der Erzeuger.\\
+        Ist $X = L^p(\real^n)$, dann ist $A = \Delta$ mit
+        $D(A) = W^{2,p}(\real^n)$\\
+        (d.\,h. $D(A) = H^2(\real^n)$ für $p = 2$).
+    \end{enumerate}
+\end{Bsp}
+
+\linie
+
+\begin{Lemma}{Erzeuger}
+    Seien $A$ der Erzeuger von $(T(t))_{t \ge 0}$ und $t \ge 0$.
+    Dann gilt
+    \begin{enumerate}
+        \item
+        $\int_0^t T(s) x\ds \in D(A)$ und
+        $A(\int_0^t T(s) x\ds) = T(t) x - x$ für alle $x \in X$,
+        
+        \item
+        $T(t) x \in D(A)$ und $A T(t) x = T(t) A x$ für alle $x \in D(A)$ sowie
+        
+        \item
+        $T(t) x - x = \int_0^t T(s) Ax\ds$ für alle $x \in D(A)$.
+    \end{enumerate}
+\end{Lemma}
+
+\begin{Satz}{Erzeuger dicht def. und abg.}
+    Sei $A$ der Erzeuger von $(T(t))_{t \ge 0}$.\\
+    Dann ist $A$ dicht definiert und abgeschlossen.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{Erzeuger als rechte Seite einer DGL}
+    Seien $A$ der Erzeuger von $(T(t))_{t \ge 0}$ und $x_0 \in D(A)$.\\
+    Dann ist $u\colon [0, \infty) \rightarrow X$, $u(t) := T(t) x_0$,
+    stetig dif"|ferenzierbar, $D(A)$-wertig und die eindeutige Lösung des AWPs der
+    abstrakten banachraumwertigen gewöhnlichen DGL (\begriff{abstraktes \name{Cauchy}-Problem})
+    $u' = Au$, $u(0) = x_0$.
+    Außerdem hängt $u(t)$ für alle $t \ge 0$ stetig von $x_0$ ab.
+\end{Satz}
+
+\begin{Kor}
+    Zwei $\C_0$-Halbgruppen auf $X$ mit demselben Erzeuger stimmen überein.
+\end{Kor}
+
+\linie
+
+\begin{Satz}{Äquivalenz zur Normstetigkeit}
+    Sei $A$ der Erzeuger von $(T(t))_{t \ge 0}$.
+    Dann sind äquivalent:
+    \begin{enumerate}
+        \item
+        $(T(t))_{t \ge 0}$ ist normstetig.
+        
+        \item
+        $A$ ist stetig.
+        
+        \item
+        $D(A) = X$
+    \end{enumerate}
+    In diesem Fall gilt $\forall_{t \ge 0}\; T(t) = e^{tA}$.
+\end{Satz}
+
+\begin{Bem}
+    Die Äquivalenz $\text{\emph{(2)}} \iff \text{\emph{(3)}}$ gilt auch für jeden anderen
+    dicht definierten, abgeschlossenen linearen Operator auf einem Banachraum, siehe oben.
+\end{Bem}
+
+\pagebreak

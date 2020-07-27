@@ -1,0 +1,48 @@
+% Listing-Optionen
+\lstset{
+    numbers=none,
+    basicstyle=\ttfamily\scriptsize
+}
+
+\lstdefinelanguage{pseudosprache}{
+    morekeywords={program,is,declare,begin,end,skip,read,write,halt,exit,if,%
+                  then,else,fi,while,do,od,repeat,until,for,by,to,value,%
+                  access,name,module,with,use,specification,implementation},
+    sensitive=true,
+    morecomment=[l]{--}
+}
+
+\lstdefinelanguage{ebnf}{
+}
+
+\lstdefinelanguage{ebnf}{
+}
+
+\lstdefinelanguage{assembler}{
+    morekeywords={load,read,succ,sub,comp,jump,stop,copy,write,add,shift},
+    sensitive=true
+}
+
+\renewcommand*{\ttdefault}{pcr}
+
+\newcommand*{\code}[1]{%
+    \lstinline[basicstyle=\ttfamily\small]{#1}}
+%\newcommand*{\pseudocode}[1]{%
+%    \lstinline[language=pseudosprache,basicstyle=\ttfamily\small]{#1}}
+\newcommand*{\pseudocode}[1]{\texttt{\small{}#1}}
+%\newcommand*{\adacode}[1]{%
+%    \lstinline[language=ada,basicstyle=\ttfamily\small]{#1}}
+\newcommand*{\adacode}[1]{\texttt{\small{}#1}}
+\newcommand*{\ebnfcode}[1]{%
+    \lstinline[language=ebnf,basicstyle=\ttfamily\small]{#1}}
+%\newcommand*{\assembler}[1]{%
+%    \lstinline[language=assembler,basicstyle=\ttfamily\small]{#1}}
+\newcommand*{\assembler}[1]{\texttt{\small{}#1}}
+\newcommand*{\Ada}[1]{\texttt{Ada#1}}
+
+\input{01_kurze_einfuehrung_in_die_sprache_ada}
+\input{02_algorithmen_und_sprachen}
+\input{03_daten_strukturierung_und_organisation}
+\input{04_begriffe_der_programmierung}
+\addtocounter{section}{1}
+\input{06_komplexitaet}

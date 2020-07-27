@@ -1,0 +1,294 @@
+\section{%
+    Finite-Elemente-Basen%
+}
+
+\subsection{%
+    Multivariate B-Splines%
+}
+
+\textbf{Tensorprodukt-B-Splines}:
+Der $m$-variate B-Spline $b_{k,h}^n$ mit Grad $n_\nu$ in der $\nu$-ten Variable,
+Index $k = (k_1, \dotsc, k_m)$ und Gitterweite $h$ ist definiert durch
+\begin{align*}
+    b_{k,h}^n(x) := \prod_{\nu=1}^m b_{k_\nu,h}^{n_\nu}(x_\nu)
+\end{align*}
+mit der Konvention, dass $n_1 = \dotsb = n_m$, wenn nicht anders angegeben.
+Für diese Standardwahl ist der hochgestellte Index $n$ eine Zahl (und kein Vektor).
+
+\linie
+
+\textbf{Eigenschaften von multivariaten B-Splines}:\\
+Multivariate B-Splines erfüllen die folgenden Eigenschaften:
+\begin{itemize}
+    \item
+    \emph{Positivität und lokaler Träger}:
+    $b_{k,h}^n$ ist positiv auf $kh + (0, n + 1)^m h$ und verschwindet außerhalb dieses
+    $m$-dimensionalen Hyperwürfels.
+    
+    \item
+    \emph{Glattheit}:
+    $b_{k,h}^n$ ist in jeder Variablen $(n - 1)$-fach stetig dif"|ferenzierbar.
+    
+    \item
+    \emph{Struktur als stückweises Polynom}:
+    $b_{k,h}^n$ ist auf jeder Gitterzelle $\ell h + [0, 1)^m h$,\\
+    $\ell = (\ell_1, \dotsc, \ell_m) \in \{0, \dotsc, n\}^m$,
+    ein Polynom vom Grad $n$ in jeder Variable, d.\,h. der B-Spline ist gleich
+    $\sum_{\alpha_\nu \le n} c_\alpha x^\alpha$ mit $c_{(n, \dotsc, n)} \not= 0$
+    und $x^\alpha = x_1^{\alpha_1} \dotsm x_m^{\alpha_m}$.
+\end{itemize}
+
+\textbf{partielle Ableitungen}:
+Die partiellen Ableitungen erster Ordnung eines multivariaten B-Splines $b_{k,h}^n$ vom
+Grad $n = (n_1, \dotsc, n_m)$ sind Dif"|ferenzen von B-Splines niedrigerem Grad:
+\begin{align*}
+    \partial^\alpha b_{k,h}^n = h^{-1} (b_{k,h}^{n-\alpha} - b_{k+\alpha,h}^{n-\alpha})
+\end{align*}
+für die Einheitsvektoren $\alpha = (1, 0, \dotsc, 0), (0, 1, \dotsc, 0), \dotsc,
+(0, 0, \dotsc, 1)$.
+
+\subsection{%
+    Splines auf beschränkten Gebieten%
+}
+
+\textbf{Spline}:
+Die \begriff{Splines} $\BB_h^n(D)$ auf einem beschränkten Gebiet $D \subset \real^m$ bestehen aus
+allen Linearkombinationen
+\begin{align*}
+    \sum_{k \in K} c_k b_{k,h}^n
+\end{align*}
+von relevanten B-Splines ($K$ ist die Menge der relevanten Indizes $k \sim D$, die alle
+Indizes $k$ mit
+$b_{k,h}^n(x) \not= 0$ für ein $x \in D$ enthält).
+
+\textbf{Darstellung von Polynomen}:
+Jedes multivariate Polynom $p(x) = \sum_{\alpha_\nu \le n} c_\alpha x^\alpha$ kann auf dem Gebiet
+$D$ als Linearkombination
+\begin{align*}
+    \sum_{k \in K} q(k) b_k(x),\quad
+    x \in D,
+\end{align*}
+geschrieben werden, wobei $q$ ein multivariates Polynom vom Grad $\le n$ in jeder Variable $k_\nu$
+ist.
+
+\textbf{lokale lineare Unabhängigkeit}:
+Für jede of"|fene Teilmenge $D' \subset D$ sind die B-Splines
+\begin{align*}
+    b_k,\quad
+    D' \cap \supp b_k \not= \emptyset,
+\end{align*}
+linear unabhängig.
+
+\pagebreak
+
+\subsection{%
+    Gewichtsfunktionen%
+}
+
+\textbf{Gewichtsfunktion}:
+Eine \begriff{Gewichtsfunktion} $w$
+der Ordnung $\gamma \in \natural_0$ ist stetig auf $\overline{D}$ und erfüllt
+\begin{align*}
+    w(x) \asymp \dist(x, \Gamma)^\gamma,\quad
+    x \in D,
+\end{align*}
+für eine Teilmenge $\Gamma \subset \partial D$.
+Es wird angenommen, dass $\Gamma$ positives $(m - 1)$-dimensionales Maß besitzt und genügend
+regulär ist, sodass der Gradient der Abstandsfunktion beschränkt ist.
+Falls $w$ glatt und auf dem ganzen Rand linear verschwindet (also $\gamma = 1$),
+dann heißt $w$ \begriff{Standard-Gewichtsfunktion}.
+
+Um eine Gewichtsfunktion für einen Dreiviertelskreis zu erhalten (Pacman), kann man nicht einfach
+$1 - x^2 - y^2$ mit $x$ und $y$ multiplizieren, denn dann erhält man im Inneren des Gebiets
+Nullstellen der Gewichtsfunktion, was einen Genauigkeitsverlust bedeuten wurde.
+Jede Approximation als Linearkombination der gewichteten Basis wäre ja in diesen Punkten null.
+Wenn die tatsächliche Lösung nicht auch zufällig diese Eigenschaft hat, könnte in diesen Punkten
+ein sehr großer Fehler entstehen.
+Es gibt aber eine systematische Methode zur Definition von Gewichtsfunktionen mit booleschen
+Operationen.
+
+\linie
+
+\textbf{Methode der R-Funktionen}:
+Eine \begriff{vorzeichenbehaftete Gewichtsfunktion} ist eine global definierte Funktion,
+die in $D$ positiv und im Komplement von $\overline{D}$ negativ ist.
+Solche Gewichtsfunktionen können mit den zu booleschen Mengenoperationen (Komplement, Schnitt usw.)
+gehörigen \begriff{R-Funktionen} $r$ konstruiert werden.
+Wenn $w_1$ und $w_2$ vorzeichenbehaftete Gewichtsfunktionen für $D_1$ und $D_2$ sind, dann sind
+\begin{align*}
+    w = r_c(w_1),\quad
+    w = r_\cap(w_1, w_2),\quad
+    w = r_\cup(w_1, w_2)
+\end{align*}
+vorzeichenbehaftete Gewichtsfunktionen für $D_1^c, D_1 \cap D_2, D_1 \cup D_2$.\\
+Die R-Funktionen für die Booleschen Operationen lauten:
+\begin{align*}
+    r_c(w) &:= -w\\
+    r_\cap(w_1, w_2) &:= w_1 + w_2 - \sqrt{w_1^2 + w_2^2}\\
+    r_\cup(w_1, w_2) &:= w_1 + w_2 + \sqrt{w_1^2 + w_2^2}
+\end{align*}
+
+\linie
+
+\textbf{numerische Gewichtsfunktionen}:
+Für allgemeine Gebiete, die durch Freihandkurven begrenzt sind,
+müssen Gewichtsfunktionen numerisch konstruiert werden.
+Dabei gibt es eine einfache Prozedur, die auf glatte Ränder angewendet werden kann.
+Durch die Formel
+\begin{align*}
+    w(x) = 1 - \max(0, 1 - \dist(x, \partial D)/\delta)^\gamma
+\end{align*}
+wird die Abstandfunktion in einem kleinen Streifen $D \setminus D_\delta$ der Breite $\delta$
+verwendet, wo sie frei von Singularitäten ist.
+Im Inneren des Gebiets wird sie mit einem Plateau der Höhe $1$ übergeblendet.
+$\gamma$ beeinflusst die Glattheit (Ordnung der Nullstelle beim Abstand $\delta$).
+Für zweidimensionale Gebiete muss $\delta$ kleiner als der minimale Krümmungsradius $1/\kappa$
+und kleiner als die Hälfte der Breite von kleinen Kanälen gewählt werden.
+Allerdings sollte der Streifen $D \setminus D_\delta$ nicht zu schmal sein,
+damit die Ableitungen der Gewichtsfunktionen klein bleiben.
+
+\pagebreak
+
+\subsection{%
+    WEB-Splines%
+}
+
+Die Räume $\BB$ und $w\BB$ bieten zwar optimale Approximationsordnung,
+aber die B-Spline-Basis ist nicht gleichmäßig stabil in Bezug zur Gitterweite $h$.
+Diese Instabilität, die aufgrund von B-Splines auftritt, die nur einen kleinen Teil des Trägers
+im Gebiet $D$ haben, verursacht für $h \to 0$ massive numerische Probleme.
+Beispielsweise werden die Ritz-Galerkin-Systeme sehr schlecht konditioniert,
+was die Konvergenz von iterativen Schemata und die Genauigkeit von numerischen Lösungen
+beeinflusst.
+Dieses Problem wird gelöst, indem B-Splines mit kleinem Träger zu einer stabilen Teilmenge der
+Basis von $\BB$ zusammengefügt werden.
+
+\textbf{innere und äußere B-Splines}:\\
+Die Gitterzellen $Q = \ell h + [0, 1]^m h$ werden in folgende Typen unterteilt:
+\begin{itemize}
+    \item
+    \begriff{innere Gitterzelle}, falls $Q \subset \overline{D}$,
+    
+    \item
+    \begriff{äußere Gitterzelle}, falls $Q \cap D = \emptyset$,
+    
+    \item
+    \begriff{Rand-Gitterzelle} sonst
+    (falls das Innere von $Q$ den Rand $\partial D$ schneidet).
+\end{itemize}
+Die relevanten B-Splines $b_k$, $k \in K$, werden ebenfalls unterteilt:
+\begin{itemize}
+    \item
+    \begriff{innerer B-Spline} $b_i$, $i \in I$,
+    falls der Träger mindestens eine innere Zelle $Q_i$ enthält,
+    
+    \item
+    \begriff{äußerer B-Spline} $b_j$, $j \in J = K \setminus I$,
+    falls der Träger nur aus äußeren Gitterzellen und Rand-Gitterzellen besteht.
+\end{itemize}
+
+\linie
+
+\textbf{gewichtete erweiterte B-Splines (WEB-Splines)}:
+Für einen äußeren Index $j \in J$ sei $I(j) := \ell + \{0, \dotsc, n\}^m \subset I$ ein
+$m$-dimensionales Array von inneren Indizes, die $j$ am nächsten liegen,
+wobei angenommen wird, dass $h$ so klein ist, dass solch ein Array existiert.\\
+Außerdem seien
+\begin{align*}
+    e_{i,j} := \prod_{\nu=1}^m \prod_{\genfrac{}{}{0pt}{}{\mu=0,}{\ell_\nu+\mu\not=i_\nu}}^n
+    \frac{j_\nu - \ell_\nu - \mu}{i_\nu-\ell_\nu-\mu}
+\end{align*}
+die Werte der mit $I(j)$ assoziierten Lagrange-Polynome
+(Polynom, das gleich null ist in $\ell_\nu + \mu$ und gleich eins in $i_\nu$,
+ausgewertet in $j_\nu$) und
+\begin{align*}
+    J(i) := \{j \;|\; i \in I(j)\}.
+\end{align*}
+Dann formen die \begriff{gewichteten erweiterten B-Splines (WEB-Splines)}
+\begin{align*}
+    B_i := \frac{w}{w(x_i)} \left[b_i + \sum_{j \in J(i)} e_{i,j} b_j\right],\quad i \in I,
+\end{align*}
+eine Basis des \begriff{WEB-Raums} $w^\e\BB_h^n(D)$
+(wobei $x_i$ der Mittelpunkt der inneren Gitterzelle\\
+$Q_i \subset \overline{D} \cap \supp b_i$ ist).
+
+\linie
+\pagebreak
+
+\textbf{Eigenschaften von WEB-Splines}:
+WEB-Splines erben (außer Positivität) alle wesentlichen Eigenschaften von B-Splines.
+Die folgenden Eigenschaften sind für FE-Approximationen besonders wichtig:
+\begin{itemize}
+    \item
+    \begriff{Erweiterungskoef"|fizienten}:
+    Es gilt $|e_{i,j}| \preceq 1$ und
+    \begin{align*}
+        e_{i,j} = 0,\quad
+        \norm{i - j} \succeq 1.
+    \end{align*}
+    Außerdem müssen nur $\preceq h^{1-m}$ B-Splines am Rand verändert werden.
+    Für die überwiegende
+    Mehrheit der inneren Indizes $i$ gilt $B_i = w/w(x_i) b_i$, wenn $h$ klein wird.
+    
+    \item
+    \begriff{Stabilität}:
+    Die WEB-Splines sind linear unabhängig und
+    \begin{align*}
+        \norm{\sum_i c_i B_i}_0 \asymp h^{m/2} \norm{C}.
+    \end{align*}
+    Insbesondere gilt $\norm{B_i}_0 \asymp h^{m/2}$.
+    
+    \item
+    \begriff{Approximationsordnung}:
+    Der WEB-Raum $w^\e\BB_h^n$ enthält gewichtete Polynome vom Koordinatengrad $\le n$.
+    Außerdem gilt
+    \begin{align*}
+        \inf_{u_h \in w^\e\BB_h^n} \norm{u - u_h}_0 \preceq h^{n+1},
+    \end{align*}
+    wenn $w$ und $u/w$ glatt sind.
+\end{itemize}
+In den Abschätzungen hängen die Konstanten vom Grad $n$, vom Gebiet $D$ und von der
+Gewichtsfunktion $w$ ab (in der letzten Abschätzung auch von der approximierten
+Funktion $u$).
+
+\subsection{%
+    Hierarchische Basen%
+}
+
+\textbf{hierarchische B-Splines}:
+Der \begriff{hierarchische Spline-Raum} $\BB_h^n(\DD)$,
+der zu einer verschachtelten Folge von Gebieten
+\begin{align*}
+    \DD\colon D = D_0 \supset D_1 \supset D_2 \supset \dotsb \supset D_\ell = \emptyset
+\end{align*}
+gehört, wird von den B-Splines
+\begin{align*}
+    b_{k,h_\nu},\quad
+    k \in K_\nu, h_\nu = 2^{-\nu} h,\quad
+    0 \le \nu < \ell,
+\end{align*}
+aufgespannt, wobei $K_\nu := \{k \;|\; \overline{D_\nu} \supset
+\overline{D} \cap \supp b_{k,h_\nu} \not\subset \overline{D_{\nu+1}}\}$.
+Durch Multiplikation mit einer Gewichtsfunktion $w$ erhält man den
+\begriff{gewichteten hierarchischen Spline-Raum} $w\BB_h^n(\DD)$.
+Zusätzlich ist es möglich, äußere B-Splines mit der Erweiterungsmethode zu eliminieren.
+
+\textbf{adaptive Konstruktion}:
+Zunächst wählt man eine Teilmenge der relevanten B-Splines für $D$ mit Gitterweite $h$
+(die B-Splines mit $\overline{D} \cap \supp b_{k,h_0} \subset \overline{D_1}$, also
+$k \in K \setminus K_0$)
+und ersetzt diese mittels Subdivision durch B-Splines der Gitterweite $h/2$.
+Von den relevanten B-Splines $b_{k,h_1}$ auf dem feineren Gitter mit
+$\overline{D} \cap \supp b_{k,h_1} \subset \overline{D_1}$
+(da sind insbesondere die B-Splines aus der Subdivision dabei) wird wieder eine Teilmenge
+gewählt und verfeinert.
+Dieses Verfahren wird entsprechend der Folge von Gebieten $D_\nu$ wiederholt.
+
+\textbf{lineare Unabhängigkeit und lokale Struktur}:\\
+Die B-Splines, die den Raum $\BB_h(\DD)$ aufspannen, sind linear unabhängig und es gilt
+\begin{align*}
+    \overline{D} \cap \supp b_{k,h_\nu} \subset \overline{D_\nu}
+    \;\Rightarrow\; b_{k,h_\nu} \in \BB_h(\DD).
+\end{align*}
+
+\pagebreak

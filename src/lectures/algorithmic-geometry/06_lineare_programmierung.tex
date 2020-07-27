@@ -1,0 +1,525 @@
+\section{%
+    Lineare Programmierung%
+}
+
+\subsection{%
+    Motivation%
+}
+
+\textbf{Diätproblem}:
+Beim Diätproblem benötigt ein Mensch am Tag 10/15/5 Einheiten Kohlenhydrate/Proteine/Fett.
+Um diesen Bedarf zu decken, stehen drei Lebensmittel zur Auswahl:
+Eine Pizza kostet 3 Euro und liefert 4/1/3 Einheiten.
+Ein Sandwich kostet 4 Euro und liefert 5/1/2 Einheiten.
+Ein Proteinshake kostet 6 Euro und liefert 2/10/0 Einheiten.
+Die Aufgabe ist es nun, solche Anzahlen $x_p, x_s, x_o$ von Pizzen, Sandwiches und Proteinshakes
+zu finden, die unter den Anzahlen, die den Tagesbedarf abdecken, die Kosten minimieren.
+
+Das Problem kann man in eine lineare Kostenfunktion (Zielfunktion) mit einem linearen
+Ungleichungssystem (Nebenbedingungen) übersetzen,
+d.\,h. einem Halbraumschnitt.
+Für $d$ groß kann man diesen wie oben erklärt nicht vollständig ausrechnen.
+
+\linie
+
+\textbf{Problem der linearen Programmierung}:
+Gegeben seien $c \in \real^d$, $A \in \real^{n \times d}$ und $b \in \real^n$.\\
+Gesucht ist $x \in \real^d$ mit $c^T x \to \min$, wobei $Ax \le b$
+(\begriff{Problem der linearen Programmierung}).
+
+$c^T x$ heißt \begriff{Zielfunktion}, die $n$ Ungleichungen $Ax \le b$ heißen
+\begriff{Nebenbedingungen (NBen)}
+und alle Punkte $x \in \real^d$ mit $Ax \le b$ heißen \begriff{zulässig} bzw.
+der Bereich heißt \begriff{Zielbereich}.
+
+Es gibt Algorithmen, die das Problem sowohl linear in $n$ als auch linear in $d$ lösen.
+Im Folgenden geht es aber nur um Algorithmen, die das Problem linear in $n$ lösen,
+aber mindestens exponentiell in $d$ arbeiten.
+
+Die optimale Lösung des Problems muss nicht eindeutig sein.
+Es gibt jedoch immer eine optimale Lösung, die eine Ecke des Zielbereichs ist
+(d.\,h. Schnitt von $d$ zu den NBen gehörigen Hyperebenen
+mit linear unabhängigen Normalenvektoren).
+Eine optimale Lösung wird durch höchstens $d$ Bedingungen bestimmt.
+
+Im Folgenden wird nur $c := (0, \dotsc, 0, 1)$ betrachtet,
+d.\,h. man sucht den untersten Punkt des Zielbereichs (oBdA durch Rotation möglich).
+Außerdem soll die optimale Lösung immer eindeutig sein
+(oBdA durch kleine Rotation von $c$ möglich).
+
+\pagebreak
+
+\subsection{%
+    Prune-and-Search-Algorithmus%
+}
+
+\subsubsection{%
+    Zweidimensionaler Fall%
+}
+
+\textbf{Prune-and-Search-Algorithmus}:
+Seien $\H$ die $n$ zu den NBen gehörigen Hyperebenen in $\real^2$.\\
+Der \begriff{Prune-and-Search-Algorithmus} unterteilt die NBen in
+\begriff{Oben-NBen} $\H^+$ (($\smallpmatrix{0 & 1} a_i < 0$) und
+\begriff{Unten-NBen} $\H^-$ ($\smallpmatrix{0 & 1} a_i > 0$).
+
+\textbf{Prune-Schritt}:
+Beim \begriff{Prune-Schritt} werden zwei NBen vom gleichen Typ betrachtet,
+also z.\,B. $h_1, h_2 \in \H^+$.
+Sei $\ell$ die vertikale Gerade durch den Schnittpunkt von $h_1$ und $h_2$.
+Angenommen, es gäbe ein Orakel, welches mit Sicherheit entscheiden könnte, auf welcher Seite
+von $\ell$ das Optimum liegt, dann kann man eine Nebenbedingung weglassen
+(für $h_1, h_2 \in \H^+$ kann man die Hyperebene weglassen, die auf der Optimum-Seite von $\ell$
+unterhalb der anderen liegt).
+
+\textbf{Search-Schritt}:
+Der \begriff{Search-Schritt} implementiert das Orakel,
+d.\,h. in diesem Schritt wird für eine vertikale Gerade $\ell$ entschieden,
+auf welcher Seite von $\ell$ das Optimum liegt.\\
+Sei dazu $p^\pm$ der oberste bzw. unterste Schnittpunkt von $\ell$ mit Hyperebenen $h \in \H^\pm$.
+\begin{itemize}
+    \item
+    Liegt $p^+$ unterhalb $p^-$, dann schneidet $\ell$ den Zielbereich
+    (der Teil von $\ell$ zwischen $p^+$ und $p^-$ ist zulässig).
+    Die Steigungen der Geraden durch $p^+$ entscheiden nun, ob das Optimum links oder
+    rechts von $\ell$ (oder auf $\ell$) liegt.
+    
+    \item
+    Liegt $p^+$ oberhalb $p^-$, dann schneidet $\ell$ den Zielbereich nicht, dieser liegt dann
+    vollständig auf einer Seite von $\ell$.
+    Das Optimum liegt nun auf der Seite von $\ell$, auf der der Schnittpunkt der Geraden durch
+    $p^\pm$ liegt
+    (sind diese parallel, so ist der Zielbereich leer).
+\end{itemize}
+
+\textbf{Zeitbedarf eines Search-Schritts}:
+$\O(n)$ mit $n$ der aktuellen Anzahl an NBen
+
+\linie
+
+\textbf{naive Vorgehensweise}:
+Wähle ein Paar von Hyperebenen, wende den Prune-Schritt an, um eine NB wegzulassen, und wiederhole.
+Die Laufzeit ist dann jedoch $\sum_{i=1}^n \O(i) = \O(n^2)$.
+
+\textbf{besser}:
+\begin{enumerate}
+    \item
+    Unterteile $\H^+$ und $\H^-$ jeweils in Hyperebenen-Paare desselben Typs.
+    
+    \item
+    Berechne den Schnittpunkt von jedem Hyperebenen-Paar sowie den $x$-Median der Schnittpunkte.
+    
+    \item
+    Wende den Search-Schritt mit der vertikalen Geraden $\ell$ durch den $x$-Median an.
+    
+    \item
+    Entscheidet das Orakel, dass das Optimum auf einer Seite liegt (z.\,B. rechts),
+    so gilt dies auch für alle Vertikalen durch die Schnittpunkte auf der anderen Seite von $\ell$
+    (z.\,B. links).
+    Daher kann man für alle Hyperebenen-Paare auf der anderen Seite den Prune-Schritt anwenden,
+    d.\,h. es können $\approx \frac{1}{4}$ der NBen weggelassen werden.
+    
+    \item
+    Wiederhole.
+\end{enumerate}
+
+\textbf{Zeitbedarf}:
+$\O(n)$
+
+\begin{Beweis}
+    Die Berechnung des $x$-Medians und das Befragen des Orakels sind linear in der Anzahl an NBen.
+    In jedem Schritt reduziert sich die Anzahl an NBen ungefähr um den Faktor $\frac{1}{4}$.
+    Damit ist der Zeitbedarf $\O(\sum_{i=0}^\infty n (\frac{3}{4})^i) = \O(n)$.
+\end{Beweis}
+
+\linie
+
+Der Algorithmus funktioniert auch, wenn der Zielbereich leer ist oder nach unten
+unbeschränkt ist (dazu speichert man ein Intervall $[L, R]$, sodass das Optimum in $[L, R]$ ist,
+falls es existiert, anfangs $[L, R] = [-\infty, \infty]$, dann immer weiter verkleinern).
+Im ersten Fall liefert der Algorithmus ein \begriff{Zertifikat} der Unzulässigkeit
+(d.\,h. drei Halbräume mit leerem Schnitt).
+
+\pagebreak
+
+\subsubsection{%
+    Dreidimensionaler Fall%
+}
+
+\textbf{dreidimensionaler Fall}:
+Unterteile $\H$ wie im $\real^2$-Fall in $\H^+$ und $\H^-$.
+
+\textbf{Search-Schritt}:
+Es werden wieder zwei Hyperebenen vom gleichen Typ betrachtet (z.\,B. $h_1, h_2 \in \H^+$).
+Berechne die Schnittgerade der beiden Ebenen und bilde die vertikale Ebene durch die Schnittgerade.
+Schneide nun alle Hyperebenen mit der vertikalen Ebene,
+dabei kommt ein zweidimensionales LP-Problem heraus, was mit obigem Algorithmus gelöst werden kann.
+\begin{itemize}
+    \item
+    Gibt es eine Lösung, so schneide die beiden $\real^3$-Hyperebenen, die zu den beiden Geraden
+    gehören, welche die $\real^2$-Lösung definieren.
+    Auf der Seite der vertikalen Ebene, auf der die Schnittgerade "`nach unten"' geht,
+    liegt das $\real^3$-Optimum (falls es existiert).
+    
+    \item
+    Gibt es keine Lösung, dann liefert der $\real^2$-Algorithmus ein Zertifikat der Unzulässigkeit.
+    Schneide die drei $\real^3$-Hyperebenen, die zu den drei Geraden des Zertifikats gehören.
+    Auf der Seite der vertikalen Ebene, auf der der Schnittpunkt liegt, liegt das $\real^3$-Optimum
+    (falls es existiert), denn der Zielbereich liegt vollständig auf dieser Seite der vertikalen
+    Ebene.
+\end{itemize}
+
+\linie
+
+\textbf{naive Vorgehensweise}:
+Wähle ein Paar von Hyperebenen, wende einen Prune-Schritt analog zum $\real^2$-Fall an,
+um eine NB wegzulassen, und wiederhole.
+Die Laufzeit ist dann jedoch $\sum_{i=1}^n \O(i) = \O(n^2)$.
+
+\textbf{besser}:
+\begin{enumerate}
+    \item
+    Teile jeweils $\H^+$ und $\H^-$ in Paare auf, schneide die Hyperebenen und erhalte
+    $\frac{n}{2}$ Geraden im Raum.
+    
+    \item
+    Projiziere die Geraden in die $x$-$y$-Ebene.
+    
+    \item
+    Drehe die $x$-$y$-Ebene, sodass ungefähr $\frac{n}{4}$ Geraden Steigung $> 0$ haben und
+    $\frac{n}{4}$ Geraden Steigung $< 0$.
+    
+    \item
+    Paare jeweils eine Gerade mit Steigung $> 0$ mit einer Geraden mit Steigung $< 0$
+    und erhalte $\frac{n}{4}$ Kreuzchen
+    (und berechne deren Schnittpunkte).
+    
+    \item
+    Befrage das Orakel mit der vertikalen Ebene im Raum durch den $y$-Median der
+    Kreuzchen-Schnittpunkte.
+    
+    \item
+    Bilde von den Kreuzchen-Schnittpunkten auf der "`falschen"' Seite des Orakels den $x$-Median
+    und befrage das Orakel mit der vertikalen Ebene durch diesen Schnittpunkt
+    (aber mit allen Hyperebenen).
+    
+    \item
+    Ist das Optimum z.\,B. "`rechts unten"', so kann im Kästchen "`links oben"' bei jedem
+    Kreuzchen von den vier beteiligten NBen jeweils eine NB weggelassen werden.
+\end{enumerate}
+
+\textbf{Zeitbedarf}:
+$\O(n)$
+
+\begin{Beweis}
+    In jedem Schritt reduziert sich die Anzahl an NBen um den Faktor $\frac{1}{16}$,
+    d.\,h. es bleiben nur $\frac{15}{16}$ der NBen übrig.
+    Damit ist der Zeitbedarf $\O(\sum_{i=0}^\infty n(\frac{15}{16})^i) = \O(n)$.
+\end{Beweis}
+
+\textbf{Zeitbedarf in $d$ Dimensionen}:
+$\O(2^{\O(2^d)} n)$
+
+\pagebreak
+
+\subsection{%
+    RIC-Algorithmus (SeidLP)%
+}
+
+\textbf{RIC-Algorithmus für LP (SeidLP)}:
+Der Einfachheit halber wird hier nur der $\real^2$-Fall betrachtet.
+Der \begriff{SeidLP-Algorithmus} ist nach Raimund Seidel benannt und funktioniert wie folgt:
+\begin{enumerate}
+    \item
+    Permutiere die Halbräume zufällig zu $h_1, \dotsc, h_n$.
+    Nimm an, dass die $y$-Koordinate von $v_2$ endlich ist,
+    wobei $v_i := v(\{h_1, \dotsc, h_i\}) \in \real^2$ das Optimum der ersten $i$ NBen sei
+    (d.\,h. erste beide NBen nach oben of"|fen und Steigung von $h_1$ positiv und die von
+    $h_2$ negativ).
+    
+    \item
+    Füge $h_3, \dotsc, h_n$ nacheinander hinzu und stelle sicher, dass das Optimum der bislang
+    betrachteten NBen aufrecht erhalten wird.
+\end{enumerate}
+
+\textbf{Beobachtung}:
+Gilt $v_i \in h_{i+1}$, dann gilt $v_{i+1} = v_i$.\\
+Gilt $v_i \notin h_{i+1}$, dann gilt $v_{i+1} \in \partial h_{i+1}$,
+d.\,h. $v_{i+1}$ ist der Punkt auf $\partial h_{i+1}$ mit minimaler $y$-Koordinate,
+der die NBen $h_1, \dotsc, h_i$ erfüllt.
+In diesem Fall löst man daher ein eindimensionales LP-Problem durch den Schnitt von
+$\{h_1, \dotsc, h_i\}$ mit $h_{i+1}$ in der Zeit $\O(i)$.
+
+\linie
+
+\textbf{Worst-Case-Laufzeit}:
+$\O(n^2)$
+(wenn in jedem Schritt der zweite Fall eintritt)
+
+Durch die Randomisierung tritt dieser Fall jedoch sehr selten ein.
+
+\textbf{Zeitbedarf}:
+$\O(n)$
+
+\begin{Beweis}
+    Sei $T(n)$ die Zeit, die der Algorithmus für $n$ Hyperebenen benötigt.
+    Dann gilt\\
+    $T(n) = \O(1) +
+    \sum_{i=3}^n (\PP(v_{i-1} \in h_i) \cdot \O(1) + \PP(v_{i-1} \notin h_i) \cdot \O(i))
+    = \O(n) + \sum_{i=3}^n \PP(v_{i-1} \notin h_i) \cdot \O(i)$,
+    wobei $\PP(v_{i-1} \notin h_i)$ die Wahrscheinlichkeit ist, dass $v_{i-1}$ nicht die
+    $i$-te NB erfüllt (d.\,h. dass der zweite Fall eintritt).
+    
+    Das Optimum $v_{i-1}$ ist immer durch genau zwei bestimmte Hyperebenen definiert.
+    Mit Rückwärtsanalyse ist die gesuchte Wahrscheinlichkeit gleich der, dass
+    nach dem Einfügen der $i$-ten Hyperebene die letzte eingefügte Hyperebene eine von diesen
+    zwei Hypereben war.
+    Weil die Hyperebenen zufällig permutiert sind, folgt daher
+    $\PP(v_{i-1} \notin h_i) = \frac{2}{i}$.
+    
+    Man erhält damit $T(n) = \O(n) + \sum_{i=3}^n \frac{2}{i} \cdot \O(i) = \O(n)$.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    LP-artige Probleme%
+}
+
+\subsubsection{%
+    Beispiele%
+}
+
+\textbf{Beispiele für LP-artige Probleme}:
+Folgende Probleme haben viele Gemeinsamkeiten.
+Dazu sei $\delta$ die Zahl an Objekten, die die optimale Lösung bestimmen
+(d.\,h. wenn man eines von den Objekten weglässt, verbessert sich die Lösung).
+\begin{itemize}
+    \item
+    \emph{kleinster einschließender Ball}:
+    Gegeben sind $n$ Punkte in $\real^d$.\\
+    Gesucht ist der kleinste $d$-dimensionale (abgeschlossene) Ball, der alle Punkte enthält.\\
+    Es gilt $\delta \le d + 1$.
+    
+    \item
+    \emph{lineare Programmierung}:
+    Gegeben sind $n$ Halbräume in $\real^d$.\\
+    Gesucht ist der unterste Punkt im Schnitt aller Halbräume.\\
+    Es gilt $\delta = d$.
+    
+    \item
+    \emph{kleinste einschließende Ellipse}:
+    Gegeben sind $n$ Punkte in $\real^d$.\\
+    Gesucht ist die kleinste $d$-dimensionale (abgeschlossene) Ellipse, die alle Punkte enthält.\\
+    Es gilt $\delta = \frac{d(d+3)}{2}$.
+    
+    \item
+    \emph{kleinster einschließender Donut}:
+    Gegeben sind $n$ Punkte in $\real^d$.\\
+    Gesucht ist der kleinste $d$-dimensionale (abgeschlossene) Donut, die alle Punkte enthält
+    (d.\,h. mengentheoretische Dif"|ferenz zweier konzentrische Bälle).\\
+    Es gilt $\delta = d + 2$.
+    
+    \item
+    \emph{Polyederdistanz}:
+    Gegeben sind zwei disjunkte Polyeder im $\real^d$ durch ihre Halbräume.\\
+    Gesucht ist die Distanz der beiden Polyeder zueinander.\\
+    Es gilt $\delta = d + 1$.
+\end{itemize}
+Manche Probleme, wie den kleinsten einschließenden Donut, kann man als LP-Problem darstellen,
+andere jedoch nicht, wie den kleinsten einschließenden Ball.
+Die Probleme sind jedoch alle "`LP-artig"'.
+
+\textbf{Gemeinsamkeiten}:
+\begin{itemize}
+    \item
+    \emph{kleine Basis}:
+    Die optimale Lösung wird nur durch wenige Eingabeobjekte bestimmt,
+    deren Anzahl $\delta$ von der Gesamtzahl $n$ an Objekten unabhängig ist.
+    
+    \item
+    \emph{Monotonizität}:
+    Die Lösung wird nicht besser, wenn Objekte hinzugefügt werden.
+    
+    \item
+    \emph{Lokalität}:
+    Wenn sich die Lösung $\L$ durch Hinzufügung eines Objekts verschlechtert,
+    verschlechtert sich auch die Lösung, wenn man das Objekt zu den $\delta$ Objekten
+    hinzufügt, die $\L$ definieren
+    (die beiden "`neuen"' Lösungen stimmen i.\,A. nicht überein!).
+\end{itemize}
+
+\pagebreak
+
+\subsubsection{%
+    Definition%
+}
+
+\textbf{LP-artiges Problem}:
+Ein \begriff{LP-artiges Problem} ist ein Paar $(H, w)$ mit
+\begin{itemize}
+    \item
+    $H$ einer endlichen Menge an \begriff{Nebenbedingungen} und
+    
+    \item
+    $w\colon \P(H) \to W \cup \{\pm\infty\}$ der \begriff{Zielfunktion} mit
+    $W$ einer total geordneten Menge,
+\end{itemize}
+sodass für alle $F, G \subset H$ mit $F \subset G$ gilt, dass
+\begin{itemize}
+    \item
+    $w(F) \le w(G)$
+    (\begriff{Monotonizität}) und
+    
+    \item
+    aus $w(F) = w(G) > -\infty$ und $w(G \cup \{h\}) > w(G)$ für ein $h \in H$ folgt,\\
+    dass $w(F \cup \{h\}) > w(F)$
+    (\begriff{Lokalität}).
+\end{itemize}
+
+\linie
+
+\textbf{Basis}:
+Sei $G \subset H$.
+Dann heißt die kleinste Teilmenge $B$ von $G$ mit $w(B) = w(G)$ \begriff{Basis} von $G$.
+
+\textbf{kombinatorische Dimension}:
+Die \begriff{komb. Dimension} von $(H, w)$ ist $\delta := \max_{\text{Basis $B$}} |B|$.
+
+\textbf{basisregulär}:
+$(H, w)$ heißt \begriff{basisregulär}, falls $|B| = \delta$ für jede Basis $B$.
+
+\subsubsection{%
+    \code{lp\_type}-Algorithmus%
+}
+
+\textbf{Grundoperationen auf LP-artigen Problemen}:
+Es wird angenommen, dass folgende Grundoperationen in $\O(1)$ Zeit zur Verfügung stehen.
+Gegeben sei eine Basis $B$ und eine NB $h \in H$.
+\begin{itemize}
+    \item
+    \emph{Test auf Verletzung}:
+    Gilt $w(B \cup \{h\}) > w(B)$?
+    
+    \item
+    \emph{Basis-Berechnung}:
+    Berechne die Basis von $B'$ von $B \cup \{h\}$.
+\end{itemize}
+
+\textbf{\code{lp\_type}-Algorithmus}:
+Der \begriff{\code{lp\_type}-Algorithmus} berechnet aus einer Teilmenge $G \subset H$ und
+einer Basis $C \subset G$ einer Teilmenge $G' \subset G$ eine Basis von $G$ und gibt sie zurück.
+\begin{enumerate}
+    \item
+    Prüfe, ob $G = C$.
+    \begin{itemize}
+        \item
+        Falls ja, so gebe $C$ zurück.
+        
+        \item
+        Falls nein, so mache Folgendes:
+        \begin{enumerate}
+            \item
+            Wähle $h \in G \setminus C$ zufällig und
+            berechne $C' := \code{lp\_type}(G \setminus \{h\}, C)$.
+            
+            \item
+            Prüfe, ob $w(C' \cup \{h\}) > w(C')$.
+            \begin{itemize}
+                \item
+                Falls ja, so berechne eine Basis $C''$ von $C' \cup \{h\}$
+                und gebe $\code{lp\_type}(G, C'')$ zurück.
+                
+                \item
+                Falls nein, so gebe $C'$ zurück.
+            \end{itemize}
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Satz (Korrektheit)}:
+Der Algorithmus terminiert stets und arbeitet korrekt.
+
+\begin{Beweis}
+    Beim ersten rekursiven Aufruf von \code{lp\_type} verkleinert sich $|G|$ und $C$ bleibt gleich.
+    Induktiv terminiert dieser Aufruf.
+    Beim zweiten rekursiven Aufruf bleibt zwar $G$ gleich, aber die "`Lücke"' $w(G) - w(C)$
+    zum Optimum verkleinert sich, da\\
+    $w(C'') = w(C' \cup \{h\}) > w(C') = w(G \setminus \{h\}) \ge w(C)$.\\
+    Weil das Bild von $\P(H)$ unter $w$ endlich ist, kann $w(G) - w(C)$ nur endlich viele Werte
+    annehmen, womit dieser Aufruf induktiv ebenfalls terminiert.
+    
+    Die Korrektheit des Algorithmus ist klar:
+    Im ersten Fall wird korrekterweise $G = C$ zurückgegeben,
+    im zweiten Fall $\code{lp\_type}(G, C'')$ (was induktiv korrekt ist) oder
+    $C'$, was ebenfalls korrekt ist, da in diesem Fall $w(C' \cup \{h\}) = w(C')$ gilt und nach
+    der Lokalität\\
+    $w(G) = w((G \setminus \{h\}) \cup \{h\}) = w(G \setminus \{h\})$ folgt
+    (d.\,h. $C'$ ist auch eine Basis von $G$).
+\end{Beweis}
+
+\pagebreak
+
+\subsubsection{%
+    Laufzeit des \code{lp\_type}-Algorithmus%
+}
+
+\textbf{Lemma}:
+Sei $w(C' \cup \{h\}) > w(C')$ im \code{lp\_type}-Algorithmus.\\
+Dann ist $h \in C''$ und $h$ taucht in allen Basen aller rekursiven Aufrufe auf.
+
+\begin{Beweis}
+    Angenommen, es gilt $h \notin C''$,
+    dann wäre $C'' \subset C'$ und daher $w(C'') \le w(C')$,
+    ein Widerspruch zu $w(C'') = w(C' \cup \{h\}) > w(C')$.
+    
+    Seien $C_0 \subset G \setminus \{h\}$ eine Basis, die $h$ nicht enthält,
+    und $C_1$ eine Basis, die während $\code{lp\_type}(G, C'')$ auftritt.
+    Dann gilt $w(C_1) \ge w(C'') = w(C' \cup \{h\}) > w(C') = w(G \setminus \{h\}) \ge w(C_0)$,
+    d.\,h. $C_0$ und $C_1$ können nicht gleich sein.
+\end{Beweis}
+
+\linie
+
+\textbf{erzwungen}:
+Seien $C \subset G \subset H$ und $h \in G$.\\
+Dann heißt $h$ in $(G, C)$ \begriff{erzwungen}, falls $w(C) > w(G \setminus \{h\})$.
+
+Wenn $h$ in $(G, C)$ erzwungen ist, dann gilt zwangsläufig $h \in C$.
+Die erzwungenen Elemente von $C$ sind die Elemente, von denen man bereits weiß, dass sie zur
+Basis von $G$ gehören.
+
+\textbf{versteckte Dimension}:
+Seien $C \subset G \subset H$ und $h \in G$.
+Dann heißt\\
+$\delta(G, C) := \delta - |\{h \in G \;|\; \text{$h$ erzwungen in $(G, C)$}\}$
+die \begriff{versteckte Dimension} von $(G, C)$.
+
+Nach obigem Lemma reduziert sich die versteckte Dimension bei jedem rekursiven Aufruf um
+mindestens $1$.
+Man kann zeigen, dass sich die versteckte Dimension erwartet sogar halbiert.
+
+\linie
+
+\textbf{Lemma}:
+Sei $t(k, n)$ die erwartete Anzahl an Verletzungstests bei Aufruf von $\code{lp\_type}(G, C)$ mit
+$|G| = n$ und $\delta(G, C) = k$.
+Dann gilt
+\begin{enumerate}
+    \item
+    $t(\delta, 0) = 0$,
+    
+    \item
+    $t(n, 0) = n - \delta$ und
+    
+    \item
+    $t(n, k) \le t(n - 1, k) + 1 + \frac{k}{n - \delta} t(n, k - 1)$.
+\end{enumerate}
+
+\textbf{Folgerung}:
+Es gilt $t(n, k) \le \sum_{j=1}^k \frac{1}{j!} k! (n - \delta) \le e k! (n - \delta) = \O(n)$.
+
+Als Konsequenz daraus ergibt sich, dass jedes lineare Programm in $d$ Variablen mit $n$
+Nebenbedingungen erwartet in der Zeit $\O(d! d^3 n)$ gelöst werden kann.
+
+\pagebreak

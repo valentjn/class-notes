@@ -1,0 +1,577 @@
+\section{%
+    Reihen und uneigentliche Integrale%
+}
+
+\subsection{%
+    Definitionen%
+}
+
+\textbf{Reihe}:
+Sei $\{a_k\}_{k \in \natural}$ eine Folge mit $a_k \in \field^p$, wobei
+$\field \in \{\real, \complex\}$.
+$S_n = a_1 + \dotsb + a_n = \sum_{k=1}^n a_k$ ist die
+\textbf{$n$-te Partialsumme}.
+Dann konvergiert die \emph{Reihe} $\sum_{k=1}^\infty a_k$ genau dann, wenn
+der Grenzwert $\sum_{k=1}^\infty a_k := \lim_{n \to \infty} S_n$ existiert.
+
+\textbf{uneigentliches Integral}:
+Sei $f: \left[0, +\infty\right[ \rightarrow \field^p$ auf $[0, r]$
+für alle $r > 0$ Riemann-integrierbar. \\
+Dann konvergiert das \emph{uneigentliche Integral} $\int_0^{+\infty} f(x)\dx$
+genau dann, wenn der Grenzwert
+$\int_0^{+\infty} f(x)\dx := \lim_{r \to +\infty} \int_0^r f(x)\dx$ existiert.
+
+Analog definiert man $\sum_{k=k_0}^\infty a_k$, $\sum_{k=-\infty}^{k_0} a_k$,
+$\int_{y_0}^{+\infty} f(x)\dx$ und $\int_{-\infty}^{y_0} f(x)\dx$
+für $k_0 \in \integer$, $y_0 \in \real$.
+
+\linie
+
+\textbf{Reihe vom Typ $\sum_{k=-\infty}^{+\infty}$}:
+$\sum_{k=-\infty}^{+\infty} a_k$ konvergiert genau dann, wenn sowohl
+$\sum_{k=k_0}^{+\infty} a_k$ als auch $\sum_{k=-\infty}^{k_0-1} a_k$
+(unabhängig voneinander) konvergieren. \\
+Dann ist $\sum_{k=-\infty}^{+\infty} a_k := \sum_{k=-\infty}^{k_0-1} a_k +
+\sum_{k=k_0}^{+\infty} a_k$. \\
+(\emph{Diese Definition ist unabhängig von der konkreten Wahl von
+$k_0 \in \integer$.})
+
+\textbf{uneig. Integral vom Typ $\int_{-\infty}^{+\infty}$}:
+Sei $f: \real \rightarrow \field^p$ mit $f \in \R[-R_1, R_2]$ für
+alle $R_1, R_2 > 0$. \\
+$\int_{-\infty}^{+\infty} f(x)\dx$ konvergiert
+genau dann, wenn sowohl $\int_{y_0}^{+\infty} f(x)\dx$ als auch
+$\int_{-\infty}^{y_0} f(x)\dx$ konvergieren.
+Dann ist $\int_{-\infty}^{+\infty} f(x)\dx :=
+\int_{-\infty}^{y_0} f(x)\dx + \int_{y_0}^{+\infty} f(x)\dx$. \\
+(\emph{Diese Definition ist unabhängig von der konkreten Wahl von
+$y_0 \in \real$.})
+
+\linie
+
+\textbf{uneigentliches Integral mit Definitionslücke}: \\
+Sei $f: \left[a,b\right[ \cup \left]b,c\right] \rightarrow \field^p$,
+$a < b < c$, wobei $f \in \R[a, b - \varepsilon_1]$ und
+$f \in \R[b + \varepsilon_2, c]$ $\forall_{\varepsilon > 0}$. \\
+Dann ist $\int_a^b f(x)\dx :=
+\lim_{\varepsilon_1 \to 0+0} \int_a^{b-\varepsilon_1} f(x)\dx$ sowie
+$\int_b^c f(x)\dx :=
+\lim_{\varepsilon_2 \to 0+0} \int_{b+\varepsilon_2}^c f(x)\dx$. \\
+Das uneigentliche Integral $\int_a^c f(x)\dx$ konvergiert genau dann, wenn
+sowohl $\int_a^b f(x)\dx$ als auch $\int_b^c f(x)\dx$
+konvergieren.
+Dann ist $\int_a^c f(x)\dx := \int_a^b f(x)\dx + \int_b^c f(x)\dx$.
+
+\linie
+
+\textbf{Hauptwert von \textsc{Cauchy}}: \\
+Sei $f: \left[a,b\right[ \cup \left]b,c\right] \rightarrow \field^p$,
+$a < b < c$, wobei $f \in \R[a, b - \varepsilon]$ und
+$f \in \R[b + \varepsilon, c]$ $\forall_{\varepsilon > 0}$. \\
+Dann ist $\vp\int_a^c f(x)\dx = \intstrich\int_a^c f(x)\dx :=
+\lim_{\varepsilon \to 0+0} \left(\int_a^{b-\varepsilon} f(x)\dx +
+\int_{b+\varepsilon}^c f(x)\dx\right)$.
+
+\textbf{Hauptwert bei $\int_{-\infty}^{+\infty}$}:
+Sei $f: \real \rightarrow \field^p$ mit $f \in \R[-R, R]$ für alle
+$R > 0$. \\
+Dann ist $\vp\int_{-\infty}^{+\infty} f(x)\dx :=
+\lim_{R \to +\infty} \int_{-R}^R f(x)\dx$.
+
+\textbf{Hauptwert bei $\sum_{k=-\infty}^{+\infty}$}:
+$\vp\sum_{k=\infty}^{+\infty} a_k := \lim_{N \to +\infty} \sum_{k=-N}^{+N} a_k$
+
+Falls $\sum_{k=-\infty}^{+\infty} a_k$ (im üblichen Sinn) konvergiert,
+so konvergiert auch
+$\vp\sum_{k=-\infty}^{+\infty} a_k = \sum_{k=-\infty}^{+\infty} a_k$. \\
+Analog:
+Falls $\int_{-\infty}^{+\infty} f(x)\dx$ konvergiert,
+so konvergiert auch
+$\vp\int_{-\infty}^{+\infty} f(x)\dx = \int_{-\infty}^{+\infty} f(x)\dx$.
+
+\subsection{%
+    Einfache Aussagen zu Reihen und uneigentlichen Integralen%
+}
+
+\textbf{Satz (Konvergenz-Kriterium von \textsc{Cauchy} bei Reihe)}:
+Sei $a_k \in \field^p$ für $k \in \natural$. \\
+Dann gilt:
+$\sum_{k=1}^{+\infty} a_k$ konvergiert $\;\Leftrightarrow\;$
+$\forall_{\varepsilon > 0} \exists_{N_\varepsilon}
+\forall_{m \ge n \ge N_\varepsilon}\;
+\big\Vert \sum_{k=n+1}^m a_k \big\Vert < \varepsilon$.
+
+\textbf{Satz (Konvergenz-Kriterium von \textsc{Cauchy} bei uneig. Integral)}:
+\\
+Sei $f: \left[0,+\infty\right[ \rightarrow \field^p$,
+$f \in \R[0, R]$ für alle $R > 0$. \\
+Dann gilt:
+$\int_0^{+\infty} f(x)\dx$ konvergiert $\;\Leftrightarrow\;$
+$\forall_{\varepsilon > 0} \exists_{R_\varepsilon}
+\forall_{R'' \ge R' \ge R_\varepsilon}\;
+\big\Vert \int_{R'}^{R''} f(x)\dx \big\Vert < \varepsilon$.
+
+\linie
+
+\textbf{Folgerung}:
+Konvergiert $\sum_{k=1}^\infty a_k$, so ist $\lim_{k \to \infty} a_k = 0$.
+\qquad
+Die Umkehrung gilt i.\,A. \textbf{nicht}. \\
+Außerdem kann man aus $\int_0^{+\infty} f(x)\dx$ konvergiert i.\,A.
+\textbf{nicht} folgern, dass $\lim_{x \to +\infty} f(x) = 0$.
+
+\textbf{Anmerkung}:
+$\sum_{k=1}^{+\infty} a_k$ konvergent
+$\;\Leftrightarrow\; \sum_{k=k_0}^{+\infty} a_k$ konvergent, \\
+$\int_0^{+\infty} f(x)\dx$ konvergent
+$\;\Leftrightarrow\; \int_C^{+\infty} f(x)\dx$ konvergent.
+
+\linie
+
+\textbf{Satz (Linearität bei Integral)}:
+Seien $f_1, f_2: \left[0,+\infty\right[ \rightarrow \field^p$
+mit $\forall_{R > 0}\; f_1, f_2 \in \R[0,R]$. \\
+Falls $\int_0^{+\infty} f_1(x)\dx$ und $\int_0^{+\infty} f_2(x)\dx$ konvergieren,
+so konvergiert auch \\
+$\int_0^{+\infty} (\alpha_1 f_1(x) + \alpha_2 f_2(x))\dx
+= \alpha_1 \cdot \int_0^{+\infty} f_1(x)\dx +
+\alpha_2 \cdot \int_0^{+\infty} f_2(x)\dx$.
+
+\textbf{Satz (Linearität bei Reihe)}:
+Falls $\sum_{k=1}^{+\infty} a^{(1)}_k$ und $\sum_{k=1}^{+\infty} a^{(2)}_k$
+konvergieren, so konvergiert auch
+$\sum_{k=1}^{+\infty} (\alpha_1 a^{(1)}_k + \alpha_2 a^{(2)}_k)
+= \alpha_1 \cdot \sum_{k=1}^{+\infty} a^{(1)}_k +
+\alpha_2 \cdot \sum_{k=1}^{+\infty} a^{(2)}_k$.
+
+\subsection{%
+    Reihen mit nicht-negativen Summanden, Umordnungssatz%
+}
+
+Sei $a_k \in \real$, $a_k \ge 0$ für alle $k \in \natural$.
+Dann ist $S_n = \sum_{k=1}^n a_k$ monoton steigend. \\
+Entweder ist nun $\{S_n\}$ beschränkt, d.\,h. konvergent,
+oder $\{S_n\}$ divergiert bestimmt gegen $+\infty$. \\
+Konvergiert $\{S_n\}$, so ist $S := \sum_{k=1}^{+\infty} a_k
+= \lim_{n \to \infty} S_n = \sup_{n \in \natural} S_n$.
+
+\textbf{Vergleichssatz}:
+Seien $0 \le b_k \le a_k$ für alle $k \in \natural$.
+Dann ist $0 \le \sum_{k=1}^\infty b_k \le \sum_{k=1}^\infty a_k$, \\
+d.~h. konvergiert $\sum_{k=1}^\infty a_k$, so konvergiert auch
+$\sum_{k=1}^\infty b_k$.
+
+\textbf{Umordnungssatz}:
+Seien $a_k \ge 0$ für $k \in \natural$ sowie $b_k = a_{\varphi(k)}$, wobei
+$\varphi: \natural \rightarrow \natural$ bijektiv ist. \\
+Dann ist $\sum_{k=1}^\infty b_k = \sum_{k=1}^\infty a_k$.
+
+\textbf{Umordnungssatz von \textsc{Riemann}}:
+Seien $a_k \in \real$ mit $\lim_{k \to \infty} a_k = 0$ und
+beide Reihen $\sum_{k=1}^\infty a_k^+$ sowie $\sum_{k=1}^\infty a_k^-$
+divergent, wobei
+$a_k^+ = \max\{0, a_k\}$ und $a_k^- = \min\{0, a_k\}$. \\
+Dann gilt
+$\forall_{r \in \real \cup \{+\infty\} \cup \{-\infty\}}
+\exists_{\varphi_r: \natural \rightarrow \natural \text{ bijektiv}}\;
+\sum_{k=1}^\infty a_{\varphi_r(k)} = r$.
+
+Anschaulich kann eine Reihe einer Folge $\{a_k\}$ mit diesen Voraussetzungen
+durch Umordnung der Folgenglieder jeden Grenzwert annehmen
+(auch bestimmt divergieren).
+
+\linie
+
+\textbf{Reihen über abzählbar unendliche Mengen}:
+Seien $A$ abzählbar unendlich (d.~h. es gibt eine Bijektion
+$\varphi: A \rightarrow \natural$) sowie für jedes $\alpha \in A$ ein
+$a_\alpha \in \real$ mit $a_\alpha \ge 0$ gegeben. \\
+Dann ist $\sum_{\alpha \in A} a_\alpha :=
+\sum_{k=1}^\infty a_{\varphi^{-1}(k)}$ wegen des Umordnungssatzes
+unabhängig von $\varphi$ definiert.
+
+Typische Anwendungen: Sind $A$ und $B$ abzählbar, so sind auch
+$A \cup B$, $A \times B$ und $A^n$ abzählbar und
+$\sum_{(\alpha,\beta) \in A \times B} a_{\alpha,\beta}$ mit
+$a_{\alpha,\beta} \ge 0$ ist wohldefiniert.
+
+\textbf{Satz}: Sei $A$ abzählbar.
+\begin{enumerate}
+    \item $\forall_{\alpha \in A}\; 0 \le a_\alpha \le b_\alpha
+    \quad\Rightarrow\quad
+    0 \le \sum_{\alpha \in A} a_\alpha \le \sum_{\alpha \in A} b_\alpha$
+    
+    \item $0 \le a_\alpha, b_\alpha, c_1, c_2
+    \quad\Rightarrow\quad
+    \sum_{\alpha \in A} (c_1 a_\alpha + c_2 b_\alpha) =
+    c_1 \sum_{\alpha \in A} a_\alpha + c_2 \sum_{\alpha \in A} b_\alpha$
+    
+    \item $A' \subset A$, \quad $a_\alpha \ge 0$, \quad
+    $a'_\alpha = a_\alpha$ für $\alpha \in A'$,
+    sonst $a'_\alpha = 0$ \\
+    $\Rightarrow\quad \sum_{\alpha \in A'} a_\alpha
+    = \sum_{\alpha \in A'} a'_\alpha
+    = \sum_{\alpha \in A} a'_\alpha
+    \le \sum_{\alpha \in A} a_\alpha$
+    
+    \item $A_1, A_2 \subset A$ (d.\,h. $A_1, A_2$ ebenfalls abzählbar), \quad
+    $A = A_1 \cup A_2$ mit $A_1 \cap A_2 = \emptyset$, \quad
+    $a_\alpha \ge 0$ \\
+    $\Rightarrow\quad \sum_{\alpha \in A} a_\alpha =
+    \sum_{\alpha \in A_1} a_\alpha + \sum_{\alpha \in A_2} a_\alpha$
+    
+    \item $a_\alpha \ge 0
+    \quad\Rightarrow\quad \sum_{\alpha \in A} a_\alpha =
+    \sup_{\widetilde{A} \subset A,\; \widetilde{A} \text{ endlich}}
+    \sum_{a \in \widetilde{A}} a_\alpha$
+\end{enumerate}
+
+\linie
+
+\textbf{Satz (Doppelreihen)}:
+Seien $A, B$ abzählbar und $a_{\alpha,\beta} \ge 0$ für
+$(\alpha,\beta) \in A \times B$. \\
+Dann ist $\sum_{(\alpha,\beta) \in A \times B} a_{\alpha,\beta} =
+\sum_{\alpha \in A} \Big(\sum_{\beta \in B} a_{\alpha,\beta}\Big) =
+\sum_{\beta \in B} \Big(\sum_{\alpha \in A} a_{\alpha,\beta}\Big)$.
+
+\textbf{Satz}:
+Seien $a_k, b_k \ge 0$.
+Dann ist $\sum_{(m,n) \in \natural \times \natural} a_m b_n =
+\left(\sum_{m=1}^\infty a_m\right) \left(\sum_{n=1}^\infty b_n\right)$.
+
+\subsection{%
+    Konvergenzkriterien für Reihen mit nicht-negativen (positiven)
+    Summanden%
+}
+
+\textbf{Satz 1}:
+Seien $c > 0$ sowie $0 \le a_k \le c \cdot b_k$ für $k \in \natural$.
+Dann folgt aus $\sum_{k=1}^\infty b_k$ konvergent, dass
+$\sum_{k=1}^\infty a_k$ konvergent ist sowie aus
+$\sum_{k=1}^\infty a_k$ divergent, dass
+$\sum_{k=1}^\infty b_k$ divergent ist.
+
+\textbf{Satz 2}:
+Seien $a_k, b_k > 0$ sowie
+\fracsize{$\frac{a_{k+1}}{a_k} \le \frac{b_{k+1}}{b_k}$} für alle
+$k \in \natural$. \quad
+Dann lässt sich Satz 1 anwenden. \\
+(\emph{Es genügt schon $k \ge k_0$.})
+
+\linie
+
+\textbf{Wurzelkriterium von \textsc{Cauchy}}:
+Sei $a_k \ge 0$ für $k \ge k_0$.
+\begin{enumerate}
+    \item $\sqrt[k]{a_k} \le q < 1$ für $k \ge k_0$
+    $\quad\Rightarrow\quad \sum_{k=1}^\infty a_k$ konvergent
+    
+    \item $\sqrt[k]{a_k} \ge 1$ für $k \ge k_0$
+    $\quad\Rightarrow\quad \sum_{k=1}^\infty a_k$ divergent
+\end{enumerate}
+
+\textbf{Quotientenkriterium von \textsc{d'Alembert}}:
+Sei $a_k > 0$ für $k \ge k_0$.
+\begin{enumerate}
+    \item \fracsize{$\frac{a_{k+1}}{a_k}$} $\le q < 1$ für $k \ge k_0$
+    $\quad\Rightarrow\quad \sum_{k=1}^\infty a_k$ konvergent
+    
+    \item \fracsize{$\frac{a_{k+1}}{a_k}$} $\ge 1$ für $k \ge k_0$
+    $\quad\Rightarrow\quad \sum_{k=1}^\infty a_k$ divergent
+\end{enumerate}
+
+\linie
+
+\textbf{Reihen als uneigentliche Integrale}:
+Seien $a_k \in \real$ für $k \in \natural$.
+Definiere $f: \left[0,+\infty\right[$, $f(x) = a_k$ für
+$x \in \left]k-1,k\right]$ sowie $f(0) = 0$.
+Dann ist $\sum_{k=1}^n a_k = \int_0^n f(x)\dx$ sowie
+$\int_0^{n+r} f(x)\dx$ liegt zwischen $S_n$ und $S_{n+1}$ mit
+$n \in \natural$, $r \in \left]0,1\right[$.
+Daher ist $\sum_{k=1}^\infty a_k = \int_0^\infty f(x)\dx$.
+
+\textbf{Vergleichssatz bei uneig. Integralen}:
+Seien $f, g: [0,+\infty] \rightarrow \real$ mit $f, g \in \R[0, R]$ für
+alle $R > 0$ sowie $0 \le f(x) \le g(x)$ für alle $x > 0$.
+Dann folgt aus $\int_0^{+\infty} g(x)\dx$ konvergent, dass
+$\int_0^{+\infty} f(x)\dx$ konvergent ist, sowie aus
+$\int_0^{+\infty} f(x)\dx$ divergent, dass
+$\int_0^{+\infty} g(x)\dx$ divergent ist.
+
+\textbf{Integralkriterium von \textsc{Maclaurin} und \textsc{Cauchy}}:
+Seien $a_k \ge 0$ für $k \in \natural$, \\
+$f: \left[1,+\infty\right[ \rightarrow \real$, wobei $f(x) \ge 0$
+und $\forall_{R > 1}\; f \in \R[1,R]$, $f\mf$ und $f(k) = a_k$
+für $k \in \natural$. \\
+Dann konvergiert $\int_1^{+\infty} f(x)\dx$ genau dann, wenn
+$\sum_{k=1}^\infty a_k$ konvergiert. \\
+Außerdem gilt dann $\sum_{k=2}^\infty a_k \le \int_1^{+\infty} f(x)\dx \le
+\sum_{k=1}^\infty a_k$.
+
+Bspw. konvergiert die \textbf{harmonische Reihe}
+$\sum_{k=1}^\infty \frac{1}{k^\alpha}$, $\alpha > 0$ genau dann, wenn
+$\alpha > 1$ ist.
+
+\linie
+
+\textbf{Satz (es gibt keine universelle Vergleichsfunktion):} \\
+Seien $0 < p_k \le s_k$ für $k \in \natural$ mit $s_k \to 0$
+sowie $\sum_{k=1}^\infty p_k$ konvergent und $\sum_{k=1}^\infty s_k$
+divergent. \\
+Dann gibt es $0 < p_k'$ mit
+$\sum_{k=1}^\infty p_k'$ konvergent, aber
+$\lim_{k \to \infty}$ \fracsize{$\frac{p_k}{p_k'}$} $= 0$, sowie \\
+$0 < s_k'$ mit
+$\sum_{k=1}^\infty s_k'$ divergent, aber
+$\lim_{k \to \infty}$ \fracsize{$\frac{s_k'}{s_k}$} $= 0$.
+
+\linie
+
+\textbf{Kriterium von \textsc{Raabe}}:
+Seien $a_n > 0$ sowie $R_n = n \cdot \Big($%
+\fracsize{$\frac{a_n}{a_{n+1}}$} $-\; 1\Big)$
+für $n \in \natural$.
+\begin{enumerate}
+    \item $R_n \ge r > 1$ für $n \ge N$
+    $\quad\Rightarrow\quad \sum_{k=1}^\infty a_k$ konvergent
+    
+    \item $R_n \le 1$ für $n \ge N$
+    $\quad\Rightarrow\quad \sum_{k=1}^\infty a_k$ divergent
+\end{enumerate}
+
+\textbf{Kriterium von \textsc{Kummer}}:
+Seien $a_k > 0$, $c_k > 0$ mit $K_n = c_n \;\cdot$
+\fracsize{$\frac{a_n}{a_{n+1}}$} $-\; c_{n+1}$ für $k \in \natural$,
+wobei $\sum_{k=1}^\infty$ \fracsize{$\frac{1}{c_k}$} divergiert.
+\begin{enumerate}
+    \item $K_n \ge \delta > 0$
+    $\quad\Rightarrow\quad \sum_{k=1}^\infty a_k$ konvergent
+    
+    \item $K_n \le 0$
+    $\quad\Rightarrow\quad \sum_{k=1}^\infty a_k$ divergent
+\end{enumerate}
+
+\pagebreak
+
+\subsection{%
+    Konvergenzkriterien in Limesform%
+}
+
+\textbf{oberer/unterer Grenzwert}:
+Sei $\{x_n\}_{n \in \natural}$ eine reelle Folge ($x_k \in \real$).
+Es gilt $\{y_n\}\mf$, $\{z_n\}\ms$, wobei
+$y_n := \sup_{k \ge n} x_k$, $z_n := \inf_{k \ge n} x_k$.
+Der Grenzwert $\limsup_{k \to \infty} x_k = \varlimsup_{k \to \infty} x_k
+:= \lim_{n \to \infty} y_n$ bzw.
+$\liminf_{k \to \infty} x_k = \varliminf_{k \to \infty} x_k
+:= \lim_{n \to \infty} z_n$ heißt \emph{oberer bzw. unterer Grenzwert}.
+
+\textbf{Satz}:
+$\{a_k\}$ konvergiert $\;\Leftrightarrow\;$
+$\liminf_{k \to \infty} a_k = \limsup_{k \to \infty} a_k =: A$ (dann ist
+$\lim_{k \to \infty} a_k = A$). \\
+Es gilt stets $\liminf_{k \to \infty} a_k \le \limsup_{k \to \infty} a_k$.
+
+\linie
+
+\textbf{Vergleichssatz in Limesform}: \\
+Seien $a_k \ge 0$ und $b_k > 0$ für $k \in \natural$ sowie
+$\limsup_{k \to \infty}$ \fracsize{$\frac{a_k}{b_k}$} $< +\infty$. \\
+Dann folgt aus $\sum_{k=1}^\infty b_k$ konvergent, dass
+$\sum_{k=1}^\infty a_k$ konvergent ist, sowie aus
+$\sum_{k=1}^\infty a_k$ divergent folgt, dass
+$\sum_{k=1}^\infty b_k$ divergent ist.
+
+\textbf{Wurzelkriterium von \textsc{Cauchy} in Limesform}: \\
+Sei $a_k \ge 0$ für $k \in \natural$.
+Dann folgt aus $\limsup_{k \to \infty} \sqrt[k]{a_k} < 1$,
+dass $\sum_{k=1}^\infty a_k$ konvergent ist, sowie aus
+$\liminf_{k \to \infty} \sqrt[k]{a_k} > 1$ folgt,
+dass $\sum_{k=1}^\infty a_k$ divergent ist.
+
+\textbf{Quotientenkriterium von \textsc{d'Alembert} in Limesform}: \\
+Sei $a_k > 0$ für $k \in \natural$.
+Dann folgt aus $\limsup_{k \to \infty}$ \fracsize{$\frac{a_{k+1}}{a_k}$} $< 1$,
+dass $\sum_{k=1}^\infty a_k$ konvergent ist, sowie aus
+$\liminf_{k \to \infty}$ \fracsize{$\frac{a_{k+1}}{a_k}$} $> 1$ folgt,
+dass $\sum_{k=1}^\infty a_k$ divergent ist.
+
+%\textbf{Wurzelkriterium von \textsc{Cauchy} in Limesform}: \\
+%Seien $a_n \in \real$ und
+%$\alpha = \limsup_{n \to \infty} \sqrt[n]{|a_n|}$.
+%Dann folgt aus $\alpha > 1$, dass $\sum_{n=1}^\infty a_n$ absolut konvergiert,
+%und aus $\alpha < 1$ folgt, dass $\sum_{n=1}^\infty a_n$ divergiert \\
+%(für $\alpha = 1$ gibt es sowohl absolut konvergente als auch divergente
+%Reihen).
+
+\subsection{%
+    Absolute und bedingte Konvergenz%
+}
+
+\textbf{bedingte Konvergenz}: Seien $a_n \in \field^p$ mit
+$\field \in \{\real, \complex\}$. \\
+Dann heißt Konvergenz von
+$\sum_{k=1}^\infty a_k = \lim_{n \to \infty} \sum_{k=1}^n a_k$
+\emph{bedingte Konvergenz}.
+
+\textbf{absolute Konvergenz (Reihe)}:
+$\sum_{k=1}^\infty a_k$ konvergiert \emph{absolut}, falls
+$\sum_{k=1}^\infty \Vert a_k \Vert$ konvergiert.
+
+Manchmal bedeutet "`absolute Konvergenz"' die Konvergenz von
+$\sum_{k=1}^\infty |a_k|$ für $a_k \in \field$
+und "`normale Konvergenz"' die Konvergenz von
+$\sum_{k=1}^\infty \Vert a_k \Vert$ für $a_k \in \field^n$.
+
+\textbf{absolute Konvergenz (Integral)}:
+Sei $f: \left[0,+\infty\right[ \rightarrow \field^p$ mit $f \in \R[0,R]$
+für alle $R > 0$. \\
+$\int_0^{+\infty} f(x)\dx$ \emph{konvergent absolut}, falls
+$\int_0^{+\infty} \Vert f(x) \Vert \dx$ konvergiert.
+
+Analog lässt sich absolute Konvergenz von uneig. Integralen mit
+Definitionslücke definieren.
+
+\linie
+
+\textbf{Satz}: Konvergiert $\sum_{k=1}^\infty a_k$ bzw.
+$\int_0^{+\infty} f(x)\dx$ absolut, so konvergiert die Reihe bzw.
+das uneigentliche Integral auch bedingt.
+
+\textbf{Anmerkung}:
+$\sum_{k=1}^\infty a_k$ konvergiert absolut, falls
+$\sum_{k=1}^\infty \Re(a_k)$ und $\sum_{k=1}^\infty \Im(a_k)$ absolut
+konvergieren (falls $a_k \in \complex$).
+$\sum_{k=1}^\infty a_k$ konvergiert absolut, falls
+$\sum_{k=1}^\infty \pi_\ell(a_k)$ für alle $\ell = 1, \dotsc, p$ absolut
+konvergiert (falls $a_k \in \field^p$).
+
+\linie
+
+\textbf{Satz}:
+Seien $a_k \in \real$, $a_k^+ = \max\{0, a_k\} \ge 0$ und
+$a_k^- = \min\{0, a_k\} \le 0$. \\
+Dann konvergiert $\sum_{k=1}^\infty a_k$ absolut genau dann, wenn
+$\sum_{k=1}^\infty a_k^+$ und $\sum_{k=1}^\infty a_k^-$ konvergieren.
+
+\textbf{Umordnungssatz für absolut konvergente Reihen}:
+Seien $a_k \in \field^p$ und $\sum_{k=1}^\infty a_k$ konvergiert absolut.
+Dann ist $\sum_{k=1}^\infty a_k = \sum_{k=1}^\infty a_{\varphi(k)}$
+für jede Bijektion $\varphi: \natural \rightarrow \natural$.
+
+\emph{Beispiel}: $\zeta(s) = \sum_{k=1}^\infty \frac{1}{k^s}$ für
+$s = \sigma + it \in \complex$ ($\sigma, t \in \real$)
+konvergiert absolut für $\sigma > 1$ und
+divergiert für $\sigma \le 1$.
+Bis heute ist es ein ungelöstes Problem, ob alle Nullstellen dieser
+\textbf{\textsc{Riemann}schen Zetafunktion} den Realteil $\frac{1}{2}$ besitzen
+(\textbf{\textsc{Riemann}sche Vermutung}).
+
+\pagebreak
+
+\subsection{%
+    Nicht absolut konvergente Reihen%
+}
+
+\textbf{\textsc{Abel}sche Summation}:
+Seien $\alpha_m, \beta_m \in \real$ und $B_n = \sum_{k=1}^n \beta_k$.
+Dann ist $\beta_n = B_n - B_{n-1}$. \\
+Dann gilt $S_m = \sum_{k=1}^m \alpha_k \beta_k =
+\alpha_m B_m + \sum_{k=1}^{m-1} (\alpha_{k+1} - \alpha_k) B_k$
+(\textbf{partielle Summation}).
+
+\textbf{\textsc{Abel}sches Kriterium}:
+Seien $a_k, b_k \in \real$, $\sum_{k=1}^\infty b_k$ konvergiere bedingt
+und $\{a_k\}$ sei monoton und beschränkt.
+Dann konvergiert auch $\sum_{k=1}^\infty a_k b_k$ bedingt.
+
+\textbf{Kritierium von \textsc{Dirichlet}}:
+Sei $\{a_k\}$ monoton, $\lim_{n \to \infty} a_n = 0$ sowie
+$\{B_n\}$ beschränkt mit $B_n = \sum_{k=1}^n b_k$.
+Dann konvergiert $\sum_{k=1}^\infty a_k b_k$.
+
+\textbf{Satz von \textsc{Leibniz}}:
+$a_k > 0$, $\{a_k\}$ monoton und $\lim_{k \to \infty} a_k = 0$
+$\;\Rightarrow\; \sum_{k=1}^\infty (-1)^k a_k$ konvergent.
+
+\textbf{Kritierium von \textsc{Dirichlet} für uneigentliche Integrale}:
+Sei $a: \left[0, +\infty\right[ \rightarrow \left[0, +\infty\right[$ eine
+stetige und dif"|ferenzierbare Funktion sowie $a\mf$ und
+$\lim_{x \to +\infty} a(x) = 0$. \\
+Außerdem sei $b: \left[0, +\infty\right[ \rightarrow \real$
+auf jedem endlichen Intervall Riemann-integrierbar, wobei
+$|\int_{x_1}^{x_2} b(x)\dx| \le C$ für alle $x_2 \ge x_1 \ge 0$. \qquad
+Dann ist $\int_0^{+\infty} a(x)b(x)\dx$ konvergent.
+
+\subsection{%
+    Unendliche Produkte%
+}
+
+Seien $a_k \in \complex$ mit $a_k \not= 0$.
+Dann heißt $P_n = \prod_{k=1}^n a_k$ das \textbf{$n$-te Partialprodukt}.
+
+\textbf{unendliches Produkt}:
+$\prod_{k=1}^\infty a_k$ \emph{konvergiert}, falls es einen Grenzwert gibt mit
+$\lim_{n \to \infty} P_n \not= 0$. \\
+Gibt es keinen Grenzwert $\lim_{n \to \infty} P_n$, dann \emph{divergiert}
+$\prod_{k=1}^\infty a_k$. \\
+Gibt es einen Grenzwert $\lim_{n \to \infty} P_n = 0$, dann \emph{divergiert
+$\prod_{k=1}^\infty a_k$ bestimmt gegen $0$}.
+
+\textbf{Satz}: Wenn $\prod_{k=1}^\infty a_k$ konvergiert, dann ist
+$\lim_{k \to \infty} a_k = 1$.
+
+\textbf{Satz}: $\prod_{k=1}^\infty a_k$ konvergiert genau dann, wenn
+$\sum_{k=1}^\infty \Ln a_k$ konvergiert.
+
+\subsection{%
+    Die Summierung divergenter Reihen%
+}
+
+Man will den Begriff der Konvergenz einer Reihe so verallgemeinern, sodass
+\textbf{Linearität} (Reihe lässt sich auseinander ziehen) und
+\textbf{Regularität} (eine im üblichen Sinne konvergente Reihe muss auch im
+neuen Sinn konvergieren und die Werte sind gleich) gilt.
+
+\linie
+
+\textbf{Potenzreihenmethode nach \textsc{Poisson}-\textsc{Abel}}:
+Sei $a_k \in \complex$ gegeben.
+Für $0 < x < 1$ definiert man $f(x) = \sum_{k=1}^\infty a_k x^k$.
+Sei $f(x)$ konvergent für alle $x \in \left]0,1\right[$ und es existiere
+der Grenzwert $S_{PA} = \lim_{x \to 1-0} f(x)$.
+Der Grenzwert $S_{PA}$ heißt
+\textbf{Summe nach \textsc{Poisson}-\textsc{Abel}}.
+
+\textbf{Satz von \textsc{Abel}}:
+Die Potenzreihenmethode ist regulär, d.\,h. wenn $\sum_{k=1}^\infty a_k$
+konvergiert, dann konvergiert auch $S_{PA}$ sowie
+$S_{PA} = \lim_{x \to 1-0} \sum_{k=1}^\infty a_k x^k = \sum_{k=1}^\infty a_k$.
+
+\textbf{Satz von \textsc{Tauber}}:
+Sei $S_{PA} = \lim_{x \to 1-0} f(x)$ konvergent und
+$\lim_{n \to \infty}$ \fracsize{$\frac{a_1 + 2a_2 + \dotsb + na_n}{n}$}
+$= 0$. \\
+Dann ist auch $\sum_{k=1}^\infty a_k$ konvergent (gegen $S_{PA}$).
+
+\linie
+
+\textbf{Methode der arithmetischen Mittel nach \textsc{Cesaro}}: \\
+Ist $S_n = \sum_{k=1}^n a_k$, dann definiert man
+$S_C := \lim_{m \to \infty}$ \fracsize{$\frac{S_1 + \dotsb + S_m}{m}$}.
+
+\textbf{Lemma (Regularität)}: Sei $\{b_k\}$ mit
+$b = \lim_{k \to \infty} b_k$. \qquad
+Dann ist $\lim_{n \to \infty}$ \fracsize{$\frac{b_1 + \dotsb + b_n}{n}$} $= b$.
+
+\textbf{Satz von \textsc{Frobenius}}:
+Konvergiert $S_C$, dann konvergiert auch $S_{PA}$ und $S_{PA} = S_C$.
+
+\textbf{Satz von \textsc{Hardy}}:
+Seien $S_C$ konvergent sowie $|a_k| \cdot k \le C$ für alle
+$k \in \natural$. \\
+Dann ist $\sum_{k=1}^\infty a_k$ konvergent (gegen $S_C$).
+
+\pagebreak

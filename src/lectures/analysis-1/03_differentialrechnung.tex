@@ -1,0 +1,568 @@
+\section{%
+    Zur Dif"|ferentialrechnung von Funktionen einer Variablen%
+}
+
+\subsection{%
+    Die Definition der Ableitung%
+}
+
+Sei $f: X \subset \mathbb{K} \rightarrow \mathbb{K}^n$ eine Funktion
+mit $X$ of"|fen, d.\,h. für einen Punkt $x_0 \in X$ ist \\
+$\exists_{\varepsilon > 0}\; U_\varepsilon(x_0) \subset X$.
+Daraus folgt $x_0 + h \in X$ für $|h| < \varepsilon$. \\
+$\varphi(h, x_0) =$ {\large $\frac{f(x_0 + h) - f(x_0)}{h}$} heißt
+\textbf{Dif"|ferenzenquotient} ($|h| < \varepsilon$, $h \not= 0$).
+
+$f$ heißt im Punkt $x_0 \in X$ \textbf{dif"|ferenzierbar}, falls der Grenzwert \\
+$\lim_{h \to 0} \varphi(h, x_0) =: f'(x_0) = f'|_{x=x_0} =$
+{\large $\frac{df}{dx}$}$\big|_{x=x_0}$ existiert. \\
+$f$ heißt dif"|ferenzierbar in $X$, falls $f$ in allen Punkten $x_0 \in X$
+dif"|ferenzierbar ist.
+
+\linie
+
+Für Funktionen $f: X \subset \mathbb{C} \rightarrow \mathbb{C}$ kann
+man für $x_0 \in X \cap \mathbb{R}$ die \textbf{komplexe bzw. reelle Ableitung}
+$(\mathbb{C}) - f'(x_0) = \lim_{h \to 0,\; h \in \mathbb{C}}
+\frac{f(x_0 + h) - f(x_0)}{h}$ bzw.
+$(\mathbb{R}) - f'(x_0) = \lim_{h \to 0,\; h \in \mathbb{R}}
+\frac{f|_{\mathbb{R}}(x_0 + h) - f|_{\mathbb{R}}(x_0)}{h}$
+betrachten.
+Existieren die Grenzwerte, so heißt $f$ \textbf{komplex bzw. reell
+dif"|ferenzierbar}.
+
+\textbf{Satz}: Ist $f: X \subset \mathbb{C} \rightarrow \mathbb{C}$ in
+$x_0 \in \mathbb{R} \cap X$ $(\mathbb{C})$-dif"|ferenzierbar, so ist sie auch
+$(\mathbb{R})$-dif"|ferenzierbar und
+$(\mathbb{C}) - f'(x_0) = (\mathbb{R}) - f'(x_0)$.
+\emph{Die Umkehrung gilt nicht!}
+
+\textbf{Satz}: Eine komplexwertige Funktion
+$f: X \subset \mathbb{R} \rightarrow \mathbb{C}$, $f = g + ik$
+($g,k: X \subset \mathbb{R} \rightarrow \mathbb{R}$) ist genau dann
+reell dif"|ferenzierbar, wenn Real- und Imaginärteil reell dif"|ferenzierbar sind.
+
+\textbf{Satz}: Ist $f: X \subset \mathbb{C} \rightarrow \mathbb{R}$
+in $z_0 \in X$ komplex dif"|ferenzierbar, so ist
+$(\mathbb{C}) - f'(z_0) = 0$.
+
+\subsection{%
+    Die \textsc{Landau}-Symbole%
+}
+
+Seien $M$ ein metrischer Raum,
+$f, g: X \subset M \rightarrow \mathbb{K}^n$
+sowie $x_0 \in \acc(X)$.
+
+\textbf{\textsc{Landau}-Symbole}:
+$f \overset{x \to x_0}{=} \mathcal{O}(g) \;\Leftrightarrow\;
+\exists_{C \in \mathbb{R}} \exists_{\delta > 0}
+\forall_{x \in X \cap U_\delta(x_0)}\;
+\Vert f(x) \Vert \le C \Vert g(x) \Vert$, \\
+$f \overset{x \to x_0}{=} o(g) \;\Leftrightarrow\;
+\forall_{\varepsilon > 0} \exists_{\delta = \delta(\varepsilon)}
+\forall_{x \in X \cap U_\delta(x_0)}\;
+\Vert f(x) \Vert \le \varepsilon \Vert g(x) \Vert$
+\qquad (in $\mathbb{K}$ ist die Norm der Betrag)
+
+\linie
+
+\textbf{Satz}: Sei $x \to x_0 \in \acc(X)$. \qquad
+Dann gilt $f = o(g) \;\Rightarrow\; f = \mathcal{O}(g)$, \\
+$f_1 = \mathcal{O}(g) \land f_2 = \mathcal{O}(g) \;\Rightarrow\;
+f_1 \pm f_2 = \mathcal{O}(g)$, \qquad
+$f_1 = o(g) \land f_2 = o(g) \;\Rightarrow\; f_1 \pm f_2 = o(g)$ sowie
+$f_1 = o(g) \land f_2 = \mathcal{O}(g) \;\Rightarrow\;
+f_1 \pm f_2 = \mathcal{O}(g)$.
+
+\textbf{Satz}: Seien $f, g: X \subset M \rightarrow \mathbb{K}^n$,
+$\gamma, \psi: X \subset M \rightarrow \mathbb{K}$.
+Dann gilt \\
+$\psi = \mathcal{O}(\gamma) \land f = \mathcal{O}(g) \;\Rightarrow\;
+\psi f = \mathcal{O}(\gamma g)$, \qquad
+$\psi = o(\gamma) \land f = \mathcal{O}(g) \;\Rightarrow\;
+\psi f = o(\gamma g)$ sowie \\
+$\psi = \mathcal{O}(\gamma) \land f = o(g) \;\Rightarrow\;
+\psi f = o(\gamma g)$.
+
+\textbf{Schreibweise}:
+$f_1 - f_2 = \mathcal{O}(g) \;\Leftrightarrow\; f_1 = f_2 + \mathcal{O}(g)$,
+\qquad $f_1 - f_2 = o(g) \;\Leftrightarrow\; f_1 = f_2 + o(g)$
+
+\textbf{Anmerkung}:
+Ist $f: X \subset \mathbb{K} \rightarrow \mathbb{K}^n$ und $x \to x_0 = 0$,
+dann ist $f(x) = o(x) \;\Leftrightarrow\; f(x) = x \tilde{f}(x)$
+mit $\tilde{f}(x) = o(1)$ \quad
+(bzw. $f(x) = \mathcal{O}(x) \;\Leftrightarrow\; f(x) = x \tilde{f}(x)$
+mit $\tilde{f}(x) = \mathcal{O}(1)$).
+
+\linie
+
+\textbf{Anwendungen}:
+\begin{itemize}
+    \item $f \overset{x \to x_0}{=} \mathcal{O}(1)$
+    $\;\Leftrightarrow\;$ $f$ ist in einer geeigneten $\delta$-Umgebung
+    von $x_0$ beschränkt
+    
+    \item $f \overset{x \to x_0}{=} o(1)$
+    $\;\Leftrightarrow\;$ $(\lim_{x \to x_0} f(x) = 0) \land
+    (x_0 \in X \Rightarrow f(x_0) = 0)$
+    
+    \item $f(x_0 + h) \overset{h \to 0}{=} f(x_0) + o(1)$
+    $\;\Leftrightarrow\;$ $f$ ist stetig in $x_0$
+    
+    \item $f(x_0 + h) - f(x_0) \overset{h \to 0}{=} hF + o(h)$
+    $\;\Leftrightarrow\;$ $f$ ist in $x_0$ dif"|ferenzierbar und $f'(x_0) = F$
+\end{itemize}
+
+\textbf{Folgerung}:
+Ist $f$ im Punkt $x_0$ dif"|ferenzierbar, so ist $f$ im Punkt $x_0$ stetig. \\
+Die Umkehrung gilt nicht!
+
+\subsection{%
+    Das Rechnen mit Ableitungen%
+}
+
+Seien $\mathbb{K} \in \{\mathbb{R}, \mathbb{C}\}$, $X \subset \mathbb{K}$
+of"|fen, $x_0 \in X$, \quad
+$f, f_1, f_2: X \subset \mathbb{K} \rightarrow \mathbb{K}^n$,
+$g: X \subset \mathbb{K} \rightarrow \mathbb{K}$, \\
+$f, f_1, f_2, g$ im Punkt $x_0 \in X$ dif"|ferenzierbar, \\
+$\psi: Y \subset \mathbb{K} \rightarrow \mathbb{K}$, $Y$ of"|fen, $y_0 \in Y$
+mit $\psi(y_0) = x_0$, $\psi$ im Punkt $y_0 \in Y$ dif"|ferenzierbar.
+
+Dann ist $(f_1 + f_2)'|_{x=x_0} = f_1'|_{x=x_0} + f_2'|_{x=x_0}$, \quad
+$(\alpha f)'|_{x=x_0} = \alpha (f'|_{x=x_0})$, \\
+$(gf)'|_{x=x_0} = g'|_{x=x_0} f(x_0) + g(x_0) f'|_{x=x_0}$ \quad sowie \quad
+$(f \circ \psi)'|_{y=y_0} = f'|_{x=x_0=\psi(y_0)} \cdot \psi'|_{y=y_0}$.
+
+\textbf{Folgerung}: Seien $X \subset \mathbb{K}$ of"|fen, $x_0 \in X$,
+$f, g: X \subset \mathbb{K} \rightarrow \mathbb{K}$, $g(x) \not= 0$ für
+alle $x \in X$, \\
+$f, g$ dif"|ferenzierbar in $x_0 \in X$. \quad
+Dann ist {\large $\left(\frac{f}{g}\right)'\Big|_{x=x_0} =
+\frac{f'(x_0) g(x_0) - f(x_0) g'(x_0)}{(g(x_0))^2}$}.
+
+\textbf{Satz}:
+Seien $X, Y \subset \mathbb{K}$ of"|fen, $x_0 \in X$, $y_0 \in Y$,
+$f: X \rightarrow Y$ bijektiv mit $y_0 = f(x_0)$, \\
+$f^{-1}$ stetig im Punkt $y_0$ sowie $f$ dif"|ferenzierbar in $x_0$ mit
+$f'(x_0) \not= 0$. \\
+Dann ist $f^{-1}$ in $y_0$ dif"|ferenzierbar mit
+$(f^{-1})'(y_0) =$ {\large $\frac{1}{f'(x_0)}$}.
+
+\subsection{%
+    Ableitungen wichtiger Funktionen%
+}
+
+\begin{tabular}{lllll}
+    $(\text{const.})' = 0$ &
+    $(z)' = 1$ &
+    $(z^\alpha)' = \alpha z^{\alpha - 1}$ \\
+    $(e^z)' = e^z$ &
+    $(\Ln z)' =$ {\large $\frac{1}{z}$}  \\ \hline
+    $(\sin z)' = \cos z$ &
+    $(\cos z)' = -\sin z$ &
+    $(\tan z)' =$ {\large $\frac{1}{\cos^2 z}$} &
+    $(\cot z)' =$ {\large $-\frac{1}{\sin^2 z}$} \\
+    $(\sinh z)' = \cosh z$ &
+    $(\cosh z)' = \sinh z$ &
+    $(\tanh z)' =$ {\large $\frac{1}{\cosh^2 z}$} &
+    $(\coth z)' =$ {\large $-\frac{1}{\sinh^2 z}$} \\ \hline
+    $(\arcsin z)' =$ {\large $\frac{1}{\sqrt{1 - z^2}}$} &
+    $(\arccos z)' =$ {\large $-\frac{1}{\sqrt{1 - z^2}}$} &
+    $(\arctan z)' =$ {\large $\frac{1}{1 + z^2}$} &
+    $(\arccot z)' =$ {\large $-\frac{1}{1 + z^2}$} \\
+    $(\arsinh z)' =$ {\large $\frac{1}{\sqrt{z^2 + 1}}$} &
+    $(\arcosh z)' =$ {\large $\frac{1}{\sqrt{z^2 - 1}}$} &
+    $(\artanh z)' =$ {\large $\frac{1}{1 - z^2}$} &
+    $(\arcoth z)' =$ {\large $\frac{1}{1 - z^2}$}
+\end{tabular}
+
+\subsection{%
+    Die Sätze von \textsc{Fermat}, \textsc{Rolle}, \textsc{Cauchy} und
+    \textsc{Lagrange}%
+}
+
+Wir betrachten nun reelle Ableitungen: $f: [a,b] \rightarrow \mathbb{R}$,
+$a < b$.
+
+\textbf{Satz von \textsc{Fermat}}:
+Sei $f \in C([a,b])$,
+$c \in \left]a,b\right[$ mit $f$ in $c$ dif"|fb. sowie \\
+$f(c) = \max_{x \in [a,b]} f(x)$ bzw. $f(c) = \min_{x \in [a,b]} f(x)$. \qquad
+Dann ist $f'(c) = 0$.
+
+\textbf{Satz von \textsc{Rolle}}:
+Sei $f \in C([a,b])$, $f$ in $\left]a,b\right[$ dif"|fb. sowie
+$f(a) = f(b)$. \\
+Dann gibt es ein $c \in \left]a,b\right[$, sodass $f'(c) = 0$.
+
+\textbf{Satz von \textsc{Cauchy}}:
+Seien $f,g \in C([a,b])$, $f,g$ in $\left]a,b\right[$ dif"|fb. sowie
+$g'(x) \not= 0$ für alle $x \in \left]a,b\right[$. \\
+Dann gibt es ein $c \in \left]a,b\right[$, sodass
+{\large $\frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(c)}{g'(c)}$}.
+
+\textbf{Satz von \textsc{Lagrange}}:
+Sei $f \in C([a,b])$ in $\left]a,b\right[$ dif"|fb. \\
+Dann gibt es ein $c \in \left]a,b\right[$, sodass
+$f(b) - f(a) = (b - a) \cdot f'(c)$.
+
+\subsection{%
+    Hauptsatz der Dif"|ferentialrechnung%
+}
+
+Sei $f: X \subset \mathbb{K} \rightarrow \mathbb{K}^n$, mit $X$ of"|fen und
+$\overline{ab} \subset X$, wobei $\overline{ab}$ für $a, b \in X$ definiert ist
+als $\overline{ab} = \{x \in \mathbb{K} \;|\;
+x = a +$ {\large $\frac{b - a}{|b - a|}$} $t,\; t \in [0, |b - a|]\}$ und
+{\scriptsize $\overset{\circ}{\overline{ab}}$}
+$= \overline{ab} \setminus \{a, b\}$.
+
+\textbf{Hauptsatz der Dif"|ferentialrechnung}:
+Sei $f \circ \psi$ stetig auf $[0, |b - a|]$ und dif"|ferenzierbar für
+$t \in \left]0, |b - a|\right[$ (d.\,h. $f$ stetig auf $\overline{ab}$ und
+dif"|ferenzierbar auf {\scriptsize $\overset{\circ}{\overline{ab}}$}), wobei
+$\psi(t) = a +$ {\large $\frac{b - a}{|b - a|}$} $t$. \\
+Dann ist $\Vert f(b) - f(a) \Vert \le
+\sup_{x \in \overset{\circ}{\overline{ab}}} \Vert f'(x) \Vert \cdot |b - a|$.
+
+\subsection{%
+    Ableitungen höherer Ordnung%
+}
+
+Sei $f: X \subset \mathbb{K} \rightarrow \mathbb{K}^n$ mit $X$ of"|fen.
+Ist diese Funktion in einer $\varepsilon$-Umgebung von $x_0 \in X$
+mit $U_\varepsilon(x_0) \subset X$ dif"|fb., so kann die Ableitung
+als Funktion $f': U_\varepsilon(x_0) \rightarrow \mathbb{K}^n$ dargestellt
+werden.
+
+\textbf{höhere Ableitungen}:
+Ist $f': U_\varepsilon(x_0) \rightarrow \mathbb{K}^n$ im Punkt $x_0$
+dif"|ferenzierbar, so nennt man
+$(f')'(x_0) =:$ {\large $\frac{d^2 f}{dx^2}$}$\big|_{x=x_0} = f''(x_0) =
+f^{(2)}(x_0)$ die \textbf{zweite Ableitung von $f$}. \\
+Die Definition kann iterativ fortgesetzt werden:
+Ist $f^{(m-1)}: U_\varepsilon(x_0) \rightarrow \mathbb{K}^n$ in $x_0$
+dif"|ferenzierbar, so ist analog
+$(f^{(m-1)})'(x_0) =:$ {\large $\frac{d^m f}{dx^m}$}$\big|_{x=x_0} =
+f^{(m)}(x_0)$ die \textbf{$m$-te Ableitung von $f$}.
+
+\textbf{Schreibweise}: \\
+$C^m(X, \mathbb{K}^n) = \{f: X \subset \mathbb{K} \rightarrow \mathbb{K}^n
+\;|\; f \text{ auf } X \text{ } m \text{-fach dif"|ferenzierbar},\;
+f^{(m)} \text{ auf } X \text{ stetig}\}$, \\
+$C^\infty(X, \mathbb{K}^n) = \{f: X \subset \mathbb{K} \rightarrow \mathbb{K}^n
+\;|\; f \text{ beliebig oft auf } X \text{ dif"|ferenzierbar}\}$
+
+\textbf{Satz von \textsc{Leibniz}}:
+Seien $f: X \subset \mathbb{K} \rightarrow \mathbb{K}^n$ und
+$g: X \subset \mathbb{K} \rightarrow \mathbb{K}$ ($X$ of"|fen)
+$m$-fach dif"|fb. in $X$. \\
+Dann ist auch $(g \cdot f)$ $m$-fach dif"|ferenzierbar und
+$(gf)^{(m)}(x_0) = \sum_{k=0}^m \binom{m}{k} g^{(k)}(x_0) f^{(m-k)}(x_0)$
+(dabei sei $g^{(0)} = g$ und $f^{(0)} = f$).
+
+\subsection{%
+    Der Satz von \textsc{Taylor}%
+}
+
+Sei $f: X \subset \mathbb{K} \rightarrow \mathbb{K}^n$ ($X$ of"|fen)
+in $x_0 \in X$ $m$-fach dif"|ferenzierbar. \\
+Dann ist $f(x_0 + h) = f(x_0) + \sum_{k=1}^m \frac{1}{k!} f^{(k)}(x_0) h^k +
+r_m(h)$ mit $r_m(h) = o(h^m)$ für $h \to 0$.
+
+\addtocounter{subsection}{1}
+\subsection{%
+    Monotonie und Extremwerte von Funktionen%
+}
+
+\textbf{Satz}:
+Sei $f: [a,b] \rightarrow \mathbb{R}^n$ stetig auf $[a,b]$ und dif"|ferenzierbar
+in $\left]a,b\right[$. \\
+Dann ist $f$ konstant auf $[a,b]$ genau dann, wenn $f'(x) = 0$ für alle
+$x \in \left]a,b\right[$ ist.
+
+\textbf{Folgerung}:
+Seien $f, g: [a,b] \rightarrow \mathbb{R}^n$ stetig auf $[a,b]$
+und dif"|ferenzierbar in $\left]a,b\right[$. \\
+Dann folgt aus $f'(x) = g'(x)$ für alle $x \in \left]a,b\right[$, dass
+$f(x) = g(x) + \text{const.}$ ist.
+
+\textbf{Monotonie von Funktionen}:
+Sei $f: [a,b] \rightarrow \mathbb{R}$. \\
+$f\!\!\uparrow \quad\Leftrightarrow\quad
+(x_1 < x_2 \;\Rightarrow\; f(x_1) \le f(x_2))$, \qquad
+$f\!\!\upuparrows \quad\Leftrightarrow\quad
+(x_1 < x_2 \;\Rightarrow\; f(x_1) < f(x_2))$
+
+\textbf{Satz}:
+Sei $f: [a,b] \rightarrow \mathbb{R}$ stetig auf $[a,b]$ sowie
+dif"|ferenzierbar in $\left]a,b\right[$. \\
+Dann ist $f\!\!\uparrow \quad\Leftrightarrow\quad
+\forall_{x \in \left]a,b\right[}\; f'(x) \ge 0$ \quad sowie \\
+$f\!\!\upuparrows \quad\Leftrightarrow\quad
+(\forall_{x \in \left]a,b\right[}\; f'(x) \ge 0) \land
+\lnot(\exists_{\alpha, \beta \in \left]a,b\right[,\; \alpha < \beta}
+\forall_{x \in [\alpha, \beta]}\; f'(x) = 0)$.
+
+\linie
+
+\textbf{globale Extremwerte}:
+$f: X \subset \mathbb{R} \rightarrow \mathbb{R}$ nimmt im Punkt $c \in X$
+ein globales Maximum (bzw. Minimum) an, falls
+$f(c) \ge f(x)$ (bzw. $f(c) \le f(x)$) für alle $x \in X$.
+
+\textbf{notwendige Bedingung (globale Extrema)} (Satz von \textsc{Fermat}):
+Seien $f: [a,b] \rightarrow \mathbb{R}$ stetig, in $\left]a,b\right[$ dif"|fb.
+und $c \in \left]a,b\right[$ mit $f(c) = \max_{x \in [a,b]} f(x)$. \qquad
+Dann ist $f'(c) = 0$.
+
+\textbf{hinreichende Bedingung (globale Extrema)}:
+Seien $f: [a,b] \rightarrow \mathbb{R}$ stetig, in $\left]a,b\right[$ dif"|fb.
+und $c \in \left]a,b\right[$ mit $f'(c) = 0$, wobei
+$f'(x) \ge 0$ für $x < c$ und $f'(x) \le 0$ für $x > c$
+($x \in \left]a,b\right[$). \\
+Dann ist $f(c) = \max_{x \in [a,b]} f(x)$.
+
+\textbf{Folgerung (doppelte Ableitung)}:
+Seien $f: [a,b] \rightarrow \mathbb{R}$ stetig, in $\left]a,b\right[$ 2-fach
+dif"|fb. und $c \in \left]a,b\right[$ mit $f'(c) = 0$ sowie $f''(x) \le 0$ für
+alle $x \in \left]a,b\right[$. \qquad
+Dann ist $f(c) = \max_{x \in [a,b]} f(x)$.
+
+\linie
+
+\pagebreak
+
+\textbf{lokale Extremwerte}:
+$f: X \subset \mathbb{R} \rightarrow \mathbb{R}$ nimmt im Punkt $c \in X$
+ein lokales Maximum (bzw. Minimum) an, falls
+$\exists_{\varepsilon > 0} \forall_{x \in X \cap U_\varepsilon(c)}\;
+f(c) \ge f(x)$ (bzw. $f(c) \le f(x)$).
+
+\textbf{notwendige Bedingung (lokale Extrema)}:
+Sei $f: [a,b] \rightarrow \mathbb{R}$ stetig, in $\left]a,b\right[$ dif"|fb.
+und $c \in \left]a,b\right[$, wobei $f$ in $c$ einen lokalen Extremwert
+annimmt. \qquad
+Dann ist $f'(c) = 0$.
+
+\textbf{hinreichende Bedingung (lokale Extrema)}:
+Sei $f: [a,b] \rightarrow \mathbb{R}$ stetig, in $\left]a,b\right[$ dif"|fb.
+sowie in $c \in \left]a,b\right[$ 2-fach dif"|fb., wobei
+$f'(c) = 0$ und $f''(c) < 0$. \\
+Dann nimmt $f$ in $c$ ein lokales Maximum an.
+
+\textbf{$n$-fache Ableitung (Extrema)}:
+Sei $f: [a,b] \rightarrow \mathbb{R}$ in $\left]a,b\right[$ $n-1$-fach dif"|fb.
+sowie in $c \in \left]a,b\right[$ $n$-fach dif"|fb., wobei
+$f'(c) = \cdots = f^{(n-1)}(c) = 0$ und $f^{(n)} \not= 0$. \\
+Dann ist, falls $n$ gerade ist, $c$ ein lokales Maximum falls $f^{(n)}(c) < 0$
+bzw. ein lokales Minimum falls $f^{(n)}(c) > 0$. \qquad
+Ist $n$ ungerade, so ist $c$ kein lokaler Extremwert.
+
+\subsection{%
+    Konvexe und konkave Funktionen%
+}
+
+Sei $f: [a,b] \rightarrow \mathbb{R}$.
+
+\textbf{konvexe und konkave Funktionen}:
+$f$ heißt konvex \\
+$\;\Leftrightarrow\; \forall_{x_1, x_2 \in [a,b],\; x_1 < x_2}
+\forall_{t \in [0,1]}\; f(tx_1 + (1 - t)x_2) \le t f(x_1) + (1 - t) f(x_2)$. \\
+$f$ heißt konkav $\;\Leftrightarrow\;$ $-f$ ist konvex.
+
+\textbf{Äquivalente Definition (Ableitung)}:
+Sei $f$ stetig auf $[a,b]$ und dif"|ferenzierbar in $\left]a,b\right[$. \\
+Dann ist $f$ konvex $\;\Leftrightarrow\; f'\!\!\uparrow$ \qquad und \qquad
+$f$ konkav $\;\Leftrightarrow\; f'\!\!\downarrow$.
+
+\textbf{doppelte Ableitung}:
+Sei $f$ stetig auf $[a,b]$, 2-fach dif"|fb. in $\left]a,b\right[$ sowie
+$f''(x) \ge 0$ für alle $x \in \left]a,b\right[$. \qquad
+Dann ist $f$ konvex.
+
+\linie
+
+\textbf{Wendepunkt}:
+Sei $f$ in $\left]a,b\right[$ dif"|ferenzierbar. \\
+$c \in \left]a,b\right[$ heißt Wendepunkt, falls $f'(c)$ ein lokales Extremum
+ist.
+
+\textbf{notwendige Bedingung (Wendepunkte)}:
+Seien $f$ in $\left]a,b\right[$ 2-fach dif"|fb. und $c \in \left]a,b\right[$
+ein Wendepunkt. \qquad
+Dann ist $f''(c) = 0$.
+
+\textbf{$n$-fache Ableitung (Wendepunkte)}:
+Sei $f$ in $\left]a,b\right[$ $n$-fach dif"|fb. sowie in
+$c \in \left]a,b\right[$ $n+1$-fach dif"|fb., wobei
+$f^{(2)}(c) = \cdots = f^{(n)}(c) = 0$ und $f^{(n+1)}(c) \not= 0$. \\
+Dann ist $c$ ein Wendepunkt, falls $n$ gerade, und kein Wendepunkt, falls
+$c$ ungerade ist.
+
+\pagebreak
+
+\subsection{%
+    \texorpdfstring
+    {Das Auf"|lösen von Unbestimmtheiten vom Typ $0/0$ und $\infty/\infty$}%
+    {Das Auf"|lösen von Unbestimmtheiten vom Typ 0/0 und ∞/∞}%
+}
+
+\textbf{Typ $0/0$}:
+Seien $f, g: [a,b] \rightarrow \mathbb{R}$ ($\mathbb{C}$, $\mathbb{R}^n$,
+$\mathbb{C}^n$) und $x_0 \in \left]a,b\right[$ mit $f, g$ in $x_0$ dif"|fb., \\
+$f(x_0) = g(x_0) = 0$
+sowie $g'(x_0) \not= 0$. \qquad
+Dann existiert der Grenzwert $\lim_{x \to x_0}$
+{\large $\frac{f(x)}{g(x)} = \frac{f'(x_0)}{g'(x_0)}$}.
+
+\textbf{Verallgemeinerung}:
+Seien $f, g: [a,b] \rightarrow \mathbb{R}$ ($\mathbb{C}$) und
+$x_0 \in \left]a,b\right[$ mit $f(x_0) = g(x_0) = 0$,
+$f'(x_0) = g'(x_0) = 0$, \dots, $f^{(n-1)}(x) = g^{(n-1)}(x) = 0$,
+$\exists f^{(n)}(x_0)$, $\exists g^{(n)}(x_0)$, wobei $g^{(n)}(x_0) \not= 0$.
+Dann existiert der Grenzwert $\lim_{x \to x_0}$
+{\large $\frac{f(x)}{g(x)} = \frac{f^{(n)}(x_0)}{g^{(n)}(x_0)}$}.
+
+\linie
+
+\textbf{Regel von \textsc{Bernoulli} und \textsc{l'Hôspital}}:
+Seien $f, g: \left]a,b\right[ \rightarrow \mathbb{R}$ in $\left]a,b\right[$
+dif"|fb., \\
+$\lim_{x \to a} f(x) = \lim_{x \to a} g(x) = 0$ und $g'(x) \not= 0$
+für $x \in \left]a,b\right[$.
+Außerdem existiere der Grenzwert $\lim_{x \to a}$%
+{\large $\frac{f'(x)}{g'(x)}$} $=: A$. \qquad
+Dann existiert der Grenzwert $\lim_{x \to a}$%
+{\large $\frac{f(x)}{g(x)}$} $= A$.
+
+Dieser Satz gilt nur für reellwertige (nicht für komplexwertige) Funktionen!
+
+Anwendung: bei Funktionen
+$f, g: \left[b,+\infty\right[ \rightarrow \mathbb{R}$, $b > 0$,
+wobei \\
+$\lim_{x \to +\infty} f(x) = \lim_{x \to +\infty} g(x) = 0$ und
+$A = \lim_{x \to +\infty} \frac{f'(x)}{g'(x)}$.
+Dann ist $\lim_{x \to +\infty} \frac{f(x)}{g(x)} = A$. \\
+(\emph{Variablentransformation} mit $x = \frac{1}{t}$)
+
+\linie
+
+\textbf{Typ $\infty/\infty$}:
+Seien $f, g: \left]a,b\right[ \rightarrow \mathbb{R}$ in $\left]a,b\right[$
+dif"|fb., $\lim_{x \to a} f(x) = \infty$, $\lim_{x \to a} g(x) = \infty$
+und es existiere der Grenzwert $\lim_{x \to a}$%
+{\large $\frac{f'(x)}{g'(x)}$} $=: A$. \qquad
+Dann existiert der Grenzwert $\lim_{x \to a}$%
+{\large $\frac{f(x)}{g(x)}$} $= A$.
+
+Grenzwerte $f(x) \cdot g(x)$ vom Typ $\mathrel{\widehat{=}} 0 \cdot \infty
+\mathrel{\widehat{=}}$ {\large $\frac{f(x)}{\frac{1}{g(x)}}$} kann man auf
+$0/0$ zurückführen.
+Grenzwerte $f(x)^{g(x)}$ mit $1^\infty$, $0^0$ oder $\infty^0$ kann man
+mit $f(x)^{g(x)} = e^{g(x) \cdot \ln f(x)}$ auf $0 \cdot \infty$ zurückführen.
+
+\subsection{%
+    Weitere Anwendungen der Dif"|ferentialrechnung%
+}
+
+\textbf{Tangente}: $y = f'(x_0) \cdot (x - x_0) + y_0$, \qquad
+\textbf{Normale}: $y = -${\large $\frac{1}{f'(x_0)}$} $\cdot\; (x - x_0) + y_0$
+
+\textbf{Dif"|ferentiation parametrisch gegebener Kurven}:
+Gegeben seien die dif"|ferenzierbaren Funktionen
+$\psi: \left]\alpha,\beta\right[ \rightarrow \left]a,b\right[$ sowie
+$f: \left]a,b\right[ \rightarrow \mathbb{R}$.
+Durch $x(t) = \psi(t)$ und $y(t) = f(\psi(t))$ sei für
+$t \in \left]\alpha, \beta\right[$ eine Kurve gegeben.
+Dann ist $f'(x_0) =$ {\large $\frac{\dot{y}(t_0)}{\dot{x}(t_0)}$}
+für $x_0 = x(t_0)$.
+
+\textbf{geradlinige Asymptote}:
+$g(x) = ax + b$ ist eine (lokale) \emph{geradlinige Asymptote} von $f(x)$ für
+$x \to +\infty$ (bzw. $x \to -\infty$), falls
+$\lim_{x \to +\infty\; (\text{bzw. }-\infty)} (f(x) - g(x)) = 0$. \\
+Dann ist $a = \lim_{x \to \pm\infty} \frac{f(x)}{x}$ und
+$b = \lim_{x \to \pm\infty} (f(x) - ax)$.
+
+\subsection{%
+    Der Satz von \textsc{Darboux}%
+}
+
+\textbf{Satz}:
+Seien $f: \left]a,b\right[ \rightarrow \mathbb{R}$ dif"|fb. und
+$x_1, x_2 \in \left]a,b\right[$ mit $x_1 < x_2$, wobei
+$f'(x_1) \cdot f'(x_2) < 0$ ist. \\
+Dann gibt es ein $x_0 \in \left]x_1,x_2\right[$, sodass $f'(x_0) = 0$.
+
+\textbf{Satz von \textsc{Darboux}}:
+Seien $f: \left]a,b\right[ \rightarrow \mathbb{R}$ dif"|fb. und
+$x_1, x_2 \in \left]a,b\right[$ mit $x_1 < x_2$, wobei $f'(x_1) \not= f'(x_2)$.
+Sei außerdem $\lambda \in \mathbb{R}$ mit $f'(x_1) < \lambda < f'(x_2)$ bzw.
+$f'(x_2) < \lambda < f'(x_1)$. \\
+Dann gibt es ein $x_0 \in \left]x_1,x_2\right[$, sodass $f'(x_0) = \lambda$.
+
+\textbf{Satz}:
+Sei $f: \left]a,b\right[ \rightarrow \mathbb{R}$ dif"|ferenzierbar. \quad
+Dann besitzt $f'$ keine Unstetigkeit der ersten Art.
+
+\subsection{%
+    Nullstellenberechnung%
+}
+
+Gegeben sei eine Funktion $f: [a,b] \rightarrow \mathbb{R}$ stetig mit
+$f(a) f(b) < 0$, $f$ zweimal stetig dif"|fb. und $f'(x) \not= 0$,
+$f''(x) \not= 0$ für alle $x \in \left]a,b\right[$ (d.\,h. $f', f''$ haben
+konstantes Vorzeichen).
+
+\textbf{Satz}: $\exists!_{\xi \in \left]a,b\right[}\; f(\xi) = 0$
+
+\linie
+
+\textbf{Regula falsi (Sehnenmethode)}:
+Bei der \emph{Sehnenmethode} versucht man, $f$ durch die Sehne durch
+$(a, f(a))$ und $(b, f(b))$ anzunähern.
+Deren Gleichung lautet $g(x) = f(a) +$ {\large $\frac{f(b) - f(a)}{b - a}$}
+$(x - a)$. \\
+Für die Nullstelle $x_1 = a \;-$ {\large $\frac{b - a}{f(b) - f(a)}$}
+$f(a) \in \left]a,b\right[$ gilt, dass $\xi \in \left]x_1,b\right[$
+bzw. $\xi \in \left]a,x_1\right[$
+(wenn $f', f''$ die gleichen bzw. unterschiedliche Vorzeichen haben).
+Nun muss man nur noch in dem Intervall $[x_1,b]$
+bzw. $[a,x_1]$ nach der Nullstelle $\xi$ suchen.
+
+\textbf{Fehlerabschätzung}:
+Sei $x_0 = a$, $x_n = x_{n-1} \;-$
+{\large $\frac{b - x_{n-1}}{f(b) - f(x_{n-1})}$} $f(x_{n-1})$ bzw. \\
+$x_0 = b$,
+$x_n = x_{n-1} \;-$
+{\large $\frac{x_{n-1} - a}{f(x_{n-1}) - f(a)}$} $f(x_{n-1})$. \\
+Dann ist $\lim_{n \to \infty} x_n = \xi$, wobei
+$|x_n - \xi| \le$ {\large $\frac{|f(x_n)|}{\min_{x \in [a,b]} |f'(x)|}$}.
+
+\linie
+
+\textbf{\textsc{Newton}-Verfahren (Tangentenmethode)}:
+Beim \emph{Newton-Verfahren} versucht man, die Nullstelle $\xi$
+durch Nullstellen der Ableitung zu bestimmen.
+Für den Fall $\sgn(f') = \sgn(f'')$ gilt für die Tangentengleichung in
+$x_0 = b$, dass $g(x) = f(b) + f'(b) \cdot (x - b)$, deren Nullstelle ist
+$x_1 = b \;-$ {\large $\frac{f(b)}{f'(b)}$}.
+Es gilt $x_1 \in [a,b]$.
+Analog ist $x_1 = a \;-$ {\large $\frac{f(a)}{f'(a)}$} $\in [a,b]$ für
+$\sgn(f') \not= \sgn(f'')$ (dann muss die Tangente in $x_0 = a$ bestimmt
+werden).
+Wiederum muss nun nur noch im Intervall $[a,x_1]$ bzw.
+$[x_1,b]$ nach der Nullstelle $\xi$ gesucht werden.
+
+\textbf{Fehlerabschätzung}:
+Sei $x_0 = b$ bzw. $x_0 = a$ und
+$x_n = x_{n-1} \;-$ {\large $\frac{f(x_{n-1})}{f'(x_{n-1})}$}. \\
+Dann ist $\lim_{n \to \infty} x_n = \xi$, wobei
+$\exists_{M > 0} \forall_{n \in \mathbb{N}}\;
+|x_{n+1} - \xi| \le M |x_n - \xi|^2$.
+
+\pagebreak

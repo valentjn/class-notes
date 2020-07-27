@@ -1,0 +1,354 @@
+\section{%
+    Approximation%
+}
+
+\subsection{%
+    \name{Schoenberg}-Schema%
+}
+
+\textbf{\name{Schoenberg}-Schema}:
+Das \begriff{\name{Schoenberg}-Schema} benutzt Funktionswerte an den Knotenmitteln
+$\xi_k^n = (\xi_{k+1} + \dotsb + \xi_{k+n})/n$ als Koef"|fizienten einer Spline-Approximation
+an eine glatte Funktion $f$:
+\begin{align*}
+    f \mapsto Qf := \sum_{k=0}^{m-1} f(\xi_k^n) b_k \in S_\xi^n.
+\end{align*}
+Die Methode hat die Fehlerordnung $2$, d.\,h. für
+$x \in [\xi_\ell, \xi_{\ell+1}] \subset D = [\xi_n, \xi_m]$
+\begin{align*}
+    |f(x) - (Qf)(x)| \le \frac{1}{2} \norm{f''}_{\infty,D_x} h(x)^2
+\end{align*}
+mit $D_x := [\xi_{\ell-n}^n, \xi_\ell^n]$.
+$\norm{f''}_{\infty,D_x}$ bezeichnet dabei die Maximumsnorm von $f''$ auf $D_x$,\\
+$h(x) := \max\{\xi_\ell^n - x, x - \xi_{\ell-n}^n\}$ und $k \sim x$, falls
+der B-Spline $b_k$ relevant für $x$ ist ($b_k(x) \not= 0$).
+
+Die Schoenberg-Operator erhält Positivität, Monotonie und Konvexität.
+Das heißt
+\begin{align*}
+    f^{(k)} \ge 0 \quad\Rightarrow\quad (Qf)^{(k)} \ge 0
+\end{align*}
+für $k \le 2$, wenn beide Ableitungen stetig sind.
+Für eine äquidistante Knotenfolge bleiben die Vorzeichen
+aller Ableitungen bis Ordnung $n$ erhalten.
+
+\subsection{%
+    Quasi-Interpolation%
+}
+
+\textbf{Quasi-Interpolation}:
+Ein lineares Spline-Approximations-Schema
+\begin{align*}
+    f \mapsto Qf := \sum_{k \sim D} (Q_k f) b_k \in S_\xi^n(D)
+\end{align*}
+für stetige Funktionen heißt \begriff{Quasi-Interpolant}, falls
+\begin{enumerate}
+    \item
+    die $Q_k$ lokal beschränkte Funktionale sind, d.\,h.
+    \begin{align*}
+        |Q_k f| \le \norm{Q} \norm{f}_{\infty, [\xi_k, \xi_{k+n+1})}
+    \end{align*}
+    mit $\norm{f}_{\infty, U} := \sup_{x \in U} |f(x)|$, und
+    
+    \item
+    $Q$ Polynome vom Grad $\le n$ exakt abbildet, d.\,h. $Qp = p$ auf $D$.\\
+    Äquivalent dazu ist für $y \in \real$
+    \begin{align*}
+        Q_k p = \psi_k(y),\quad
+        p(x) := (x - y)^n,
+    \end{align*}
+    mit $\psi_k(y) := (\xi_{k+1} - y) \dotsm (\xi_{k+n} - y)$.
+\end{enumerate}
+
+\linie
+\pagebreak
+
+\textbf{Beispiel (Quasi-Interpolant für $h\integer$)}:
+Im Folgenden wird ein Quasi-Interpolant für $\xi = h\integer$ konstruiert.
+Eine natürliche Wahl der Funktionale ist
+\begin{align*}
+    Q_k f := \sum_{\nu=0}^n w_\nu f((k + 1/2 + \nu)h),
+\end{align*}
+also eine gewichtete Summe von Funktionswerten an den Mittelpunkten der Knotenintervalle.
+Ein solches Schema ist besonders ef"|fizient, da benachbarte Funktionale viele Funktionswerte
+gemeinsam haben.
+Die Koef"|fizienten $w_\nu$ bestimmen sich aus der Bedingung für die Reproduktion von Polynomen:
+\begin{align*}
+    \sum_{\nu=0}^n w_\nu ((k + 1/2 + \nu)h - y)^n = \prod_{\alpha=1}^n ((k + \alpha)h - y).
+\end{align*}
+Man muss die Polynome nicht ausmultiplizieren, um das Gleichungssystem zu lösen.
+Stattdessen nutzt man mit polynomialer Interpolation die Tatsache aus, das zwei Polynome vom
+Grad $\le n$ gleich sind, wenn sie in $n + 1$ verschiedenen Stützstellen gleich sind.
+Wählt man die Stützstellen $y = (k + 1/2 + \mu)h$, so erhält man nach Kürzen von $h^n$ das LGS
+\begin{align*}
+    \sum_{\nu=0}^n w_\nu (\nu - \mu)^n = \prod_{\alpha=1}^n (\alpha - 1/2 - \mu),\quad
+    \mu = 0, \dotsc, n.
+\end{align*}
+Die Koef"|fizienten, die $Q_k$ definieren, hängen also weder von $k$ noch von $h$ ab und
+so sind die Funktionale gleichmäßig beschränkt durch $\norm{Q} := \sum_{\nu=0}^n |w_\nu|$,
+was die andere Bedingung für einen Quasi-Interpolanten erfüllt.
+
+\linie
+
+\textbf{Standard-Projektor}:
+Ein Quasi-Interpolant $f \mapsto Qf = \sum_k (Q_k f) b_k \in S_\xi^n(D)$,
+bei dem jedes lineare Funktional $Q_k$ nur von Werten von $f$ in einem einzigen Knotenintervall in
+$D$ abhängt, ist eine Projektion, d.\,h.
+\begin{align*}
+    \forall_{p \in S_\xi^n(D)}\; Qp = p.
+\end{align*}
+Solche Quasi-Interpolanten heißen \begriff{Standard-Projektoren}, falls die Normen
+der linearen Funktionale durch eine Konstante $\norm{Q}$ begrenzt sind, die nur vom Grad $n$
+abhängt.
+Standard-Projektoren existieren, falls alle B-Splines das größte Knotenintervall ihres
+Trägers in $D$ haben.
+
+\linie
+
+\textbf{Beispiel (Standard-Projektor für quadratische Splines)}:
+Wählt man für quadratische Splines $[\xi_\ell, \xi_{\ell+1})$ als das mittlere Intervall
+des Trägers von $b_k$, d.\,h.
+\begin{align*}
+    Q_k f := w_0 f(\xi_{k+1}) + w_1 f(\eta_k) + w_2 f(\xi_{k+2}),\quad
+    \eta_k := (\xi_{k+1} + \xi_{k+2})/2,
+\end{align*}
+so erhält man durch die Marsden-Identität das LGS
+\begin{align*}
+    \begin{array}{rcrcrcc}
+        0w_0 & + & w_1 & + & 4w_2 & = & 0\\
+        w_0 & + & 0w_1 & + & w_2 & = & -1\\
+        4w_0 & + & w_1 & + & 0w_2 & = & 0.
+    \end{array}
+\end{align*}
+Die Lösung $w_0 = w_2 = -1/2$ und $w_1 = 2$ ist unabhängig von der Knotenfolge, insbesondere gilt
+\begin{align*}
+    |Q_k f| \le \left(\frac{1}{2} + 2 + \frac{1}{2}\right) \cdot
+    \max_{x \in [\xi_{k+1}, \xi_{k+2}]} |f(x)|,
+\end{align*}
+also $\norm{Q} = 3$.
+
+\pagebreak
+
+\subsection{%
+    Genauigkeit der Quasi-Interpolation%
+}
+
+\textbf{Genauigkeit der Quasi-Interpolation}:\\
+Der Fehler eines Quasi-Interpolanten
+$f \mapsto Qf = \sum_{k \sim D} (Q_k f) b_k \in S_\xi^n(D)$
+erfüllt
+\begin{align*}
+    |f(x) - (Qf)(x)| \le \frac{\norm{Q}}{(n + 1)!} \norm{f^{(n+1)}}_{\infty,D_x} h(x)^{n+1},\quad
+    x \in D,
+\end{align*}
+wobei $D_x$ die Vereinigung der Träger aller relevanten B-Splines $b_k$ mit $k \sim x$ und\\
+$h(x) := \max_{y \in D_x} |y - x|$ ist.
+
+Wenn das \begriff{lokale Gitterverhältnis} beschränkt ist, d.\,h. wenn die Quotienten der Längen
+von benachbarten Knotenintervallen $\le r_\xi$ sind, dann kann der Fehler der Ableitungen auf den
+Knotenintervallen $[\xi_\ell, \xi_{\ell+1})$ abgeschätzt werden durch
+\begin{align*}
+    |f^{(j)}(x) - (Qf)^{(j)}(x)| \le \text{const}(n, r_\xi) \norm{Q}
+    \norm{f^{(n+1)}}_{\infty,D_x} h(x)^{n+1-j}
+\end{align*}
+für alle $j \le n$.
+
+Durch Wahl von $Q$ als Standard-Projektor folgt insbesondere, dass Splines glatte Funktionen mit
+optimaler Fehlerordnung approximieren.
+
+\subsection{%
+    Stabilität%
+}
+
+\textbf{Stabilität}:
+Die Größe eines Splines $p = \sum_{k \sim D} c_k b_k \in S_\xi^n(D)$
+lässt sich durch die Größe der Koef"|fizienten abschätzen, d.\,h.
+\begin{align*}
+    c(n) \sup_k |c_k| \le \max_{x \in D} |p(x)| \le \sup_k |c_k|.
+\end{align*}
+Die Konstante $c(n)$ hängt vom Grad $n$ ab.
+Sie hängt nicht von der Knotenfolge $\xi$ ab, wenn $D$ das größte Intervall des Trägers von jedem
+B-Spline enthält.
+
+\linie
+
+\textbf{Beispiel (Gegenbeispiel für die Beschränkung)}:
+Die Beschränkung für die äußeren Knoten ist tatsächlich notwendig.
+Dafür betrachtet man den Standard-Spline-Raum $S_\xi^2$ mit
+\begin{align*}
+    \xi\colon\quad
+    \xi_0 = \xi_1 = -h,\;
+    \xi_2 = 0,\;
+    \xi_3 = 1,\;
+    \xi_4 = \xi_5 = 2.
+\end{align*}
+Dann gilt für $x \in D = [0, 1]$, dass $b_{0,\xi}^2(x) = \frac{(x - 1)^2}{1 + h}$.
+Deswegen gilt für $p = c_0 b_{0,\xi}^2$ mit $c_0 = 1$, dass
+$\norm{p}_{\infty,D} = \frac{1}{1 + h} \to 0$ für $h \to \infty$,
+währenddessen $\max_k |c_k| = 1$ für jedes $h$.
+
+\pagebreak
+
+\subsection{%
+    Interpolation%
+}
+
+\textbf{\name{Schoenberg}-\name{Whitney}-Bedingungen}:
+Die Koef"|fizienten eines Splines $p = \sum_{k=0}^{m-1} c_k b_k$
+vom Grad $\le n$ mit Knotenfolge $\xi$,
+der Daten $f_i$ an einer Folge von Punkten $x_0 < \dotsb < x_{m-1}$ interpoliert,
+sind bestimmt durch das lineare Gleichungssystem
+\begin{align*}
+    Ac = f,\quad
+    a_{i,k} := b_k(x_i).
+\end{align*}
+Eine eindeutige Lösung $c$ existiert für beliebige Daten $f$ genau dann, wenn
+\begin{align*}
+    b_k(x_k) > 0,\quad
+    k = 0, \dotsc, m - 1.
+\end{align*}
+Wenn alle B-Splines stetig sind, bedeutet die Bedingung, dass
+\begin{align*}
+    \xi_k < x_k < \xi_{k+n+1},\quad
+    k = 0, \dotsc, m - 1.
+\end{align*}
+Wegen der kleinen Träger der B-Splines ist die Koef"|fizientenmatrix eine Bandmatrix.
+Jede Zeile der Matrix $A$ hat höchstens $n + 1$ Einträge, die nicht Null sind.
+
+\linie
+
+\textbf{Beispiel (Not-a-Knot-Bedingung)}:
+Interpolation mit kubischen Splines an einfachen Knoten im Parameterintervall $D = [\xi_3, \xi_m]$
+des Standard-Spline-Raums $S_\xi^3$ kommt in der Praxis öfters vor.
+Allerdings gibt es nur $m - 2$ Interpolationspunkte in $D$, und wegen $\dim S_\xi^3 = m$
+werden zwei zusätzliche Bedingungen benötigt.
+Eine Möglichkeit ist die \begriff{Not-a-Knot-Bedingung}, die verlangt,
+dass die dritte Ableitung des interpolierenden Splines am ersten und am letzten inneren Knoten
+stetig ist.
+Dazu nutzt das Interpolationsschema die B-Splines $\widetilde{b}_k$ bzgl. einer
+reduzierten Knotenfolge $\widetilde{\xi}$, die aus $\xi$ durch Löschen von $\xi_4$ und $\xi_{m-1}$
+hervorgeht.
+Die Not-a-Knot-Bedingung ist daher im Spline-Raum mit eingebaut und die
+Interpolationsmatrix hat die Größe $(m - 2) \times (m - 2)$.
+Mit dieser Formulierung ist das entstehende LGS eindeutig lösbar, was unmittelbar
+aus den Schoenberg-Whitney-Bedingungen
+\begin{align*}
+    \widetilde{\xi}_k < x_k = \xi_{k+3} < \widetilde{\xi}_{k+4},\quad
+    k = 0, \dotsc, m - 3,
+\end{align*}
+folgt, die of"|fensichtlich erfüllt sind.
+
+\linie
+\pagebreak
+
+\textbf{Beispiel (uniforme Splines)}:
+Für uniforme Knoten $\xi_k = kh$ sind die Mittelpunkte der Träger der B-Splines
+$b_k = b^n(\cdot/h - k)$ eine natürliche Wahl für die Interpolationspunkte:
+\begin{align*}
+    x_i := ih + (n + 1)h/2.
+\end{align*}
+Für ungeraden bzw. geraden Grad fallen diese Punkte mit den Knoten bzw. den Mittelpunkten der
+Knotenintervalle zusammen.
+Die entsprechenden Nicht-Null-Einträge
+\begin{align*}
+    a_{i,k} = b^n(x_i/h - k) = b^n(i - k + (n + 1)/2)
+\end{align*}
+der Interpolationsmatrix $A$ sind im Folgenden aufgeführt.
+\begin{align*}
+    \begin{array}{c|ccc}
+        n & a_{k,k} & a_{k \pm 1,k} & a_{k \pm 2,k} \\\hline
+        2 & 3/4 & 1/8 &\\
+        3 & 2/3 & 1/6 &\\
+        4 & 115/192 & 19/96 & 1/384\\
+        5 & 11/20 & 13/60 & 1/120
+    \end{array}
+\end{align*}
+Für Splines auf der reellen Achse ist $A$ eine \begriff{\name{Toeplitz}-Matrix},
+d.\,h. $a_{i,k}$ hängt nur von der Dif"|ferenz $i - k$ ab.
+Analog gilt für periodische Splines mit Periode $T = Mh$, dass $a_{i,k} = \alpha_{i - k \mod M}$.
+
+Für einen Standard-Spline-Raum $S_\xi^n$ mit Parameterintervall $D = [nh, mh]$ müssen ein
+paar Veränderungen vorgenommen werden, weil $2 \lfloor n/2 \rfloor$ der Interpolationspunkte
+auf den Mittelpunkten der Träger der B-Splines außerhalb von $D$ liegen.
+Wenn der Grad ungerade bzw. gerade ist, können diese Punkte auf den ersten und auf den letzten
+$\lfloor n/2 \rfloor$ Mittelpunkten der Knotenintervalle bzw. Knoten in $D$ platziert werden.
+Durch diese Modifikation verändern sich die ersten und letzten Zeilen der Interpolationsmatrix
+$A$.
+Zum Beispiel ist für $n = 3$
+\begin{align*}
+    A = \frac{1}{48} \begin{pmatrix}
+        8 & 32 & 8 & & &\\
+        1 & 23 & 23 & 1 & &\\
+        & 8 & 32 & 8 & &\\
+        & & 8 & 32 & 8 &\\
+        & & & \ddots & \ddots & \ddots
+    \end{pmatrix}.
+\end{align*}
+Die Einträge hängen nicht von der Gitterweite $h$ ab.
+Das gilt auch im Allgemeinen und daher kann man zur Erstellung der
+Interpolationsmatrizen tabulierte Werte benutzen.
+
+\linie
+
+\textbf{Fehler der Spline-Interpolation}:
+Der Fehler eines Spline-Interpolanten $p = \sum_{k=0}^{m-1} c_k b_k \in S_\xi^n$ für eine glatte
+Funktion $f$ kann durch
+\begin{align*}
+    |f(x) - p(x)| \le c\!\left(n, \norm{A^{-1}}_\infty\right)
+    \norm{f^{(n+1)}}_{\infty,D} h^{n+1},\quad
+    x \in D,
+\end{align*}
+abgeschätzt werden, wobei die Konstante vom Grad und der Maximumsnorm der Inversen der
+Interpolationsmatrix $A$ abhängt mit $a_{i,k} = b_k(x_i)$.
+$h$ ist die maximale Länge der Knotenintervalle und es wird angenommen, dass das
+Standard-Parameterintervall $D = [\xi_n, \xi_m]$ alle Interpolationspunkte und auch für jeden
+B-Spline das größte Intervall des Trägers enthält.
+
+\pagebreak
+
+\subsection{%
+    Glättung%
+}
+
+\textbf{natürlicher Spline-Interpolant}:
+Der \begriff{natürliche Spline-Interpolant} der Daten $(x_i, f_i)$,\\
+$x_0 < \dotsb < x_M$ ist ein kubischer Spline $p$ mit einfachen Knoten an $x_\ell$,
+der die Randbedingungen
+\begin{align*}
+    p''(x_0) = p''(x_M) = 0
+\end{align*}
+erfüllt.
+
+Unter allen zweifach stetig dif"|ferenzierbaren Interpolanten minimiert $p$ das Integral
+\begin{align*}
+    \int_a^b |p''(x)|^2 \dx,
+\end{align*}
+das als Maß für die Stärke der Oszillationen von $p$ angesehen werden kann.
+
+Alternativ sind die Randbedingungen
+\begin{align*}
+    p'(x_0) = d_0,\quad
+    p'(x_M) = d_M
+\end{align*}
+möglich.
+Der resultierende \begriff{eingespannte natürliche Spline} minimiert dann ebenfalls obiges
+Integral.
+
+\linie
+
+\textbf{Glättungsspline}:
+Der \begriff{Glättungsspline} $p_\sigma$ für die Daten $(x_i, f_i)$,
+$x_0 < \dotsb < x_M$ und die Gewichte $w_i > 0$ ist der eindeutige kubische Spline mit
+einfachen Knoten an $x_i$, der
+\begin{align*}
+    E(p, \sigma) := (1 - \sigma) \sum_{i=0}^M w_i |f_i - p(x_i)|^2 +
+    \sigma \int_{x_0}^{x_M} |p''|^2
+\end{align*}
+unter allen zweifach stetig dif"|ferenzierbaren Funktionen $p$ minimiert.
+
+Der Parameter $\sigma \in (0, 1)$ beeinflusst die Signifikanz der Daten und der Glättung.
+Für $\sigma \to 0$ konvergiert $p_\sigma$ gegen den natürlichen kubischen Spline-Interpolanten,
+währenddessen für $\sigma \to 1$ $p_\sigma$ gegen die Regressionsgerade
+(kleinste Quadrate) konvergiert.
+
+\pagebreak

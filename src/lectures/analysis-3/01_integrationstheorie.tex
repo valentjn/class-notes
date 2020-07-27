@@ -1,0 +1,782 @@
+\section{%
+    Elemente der Integrationstheorie%
+}
+
+\subsection{%
+    Ring, Algebra und Maß%
+}
+
+Im Folgenden sei $X$ die Grundmenge und $2^X = P(X)$ bezeichne die Potenzmenge.
+
+\textbf{Ring}:
+$\emptyset \not= \mathcal{R} \subset 2^X$ heißt \emph{Ring}, falls für alle
+$A, B \in \mathcal{R}$ gilt, dass $A \cup B \in \mathcal{R}$ sowie
+$A \setminus B \in \mathcal{R}$.
+
+\emph{Folgerung}:
+Für $A, B \in \mathcal{R}$ ist auch
+$A \setminus A = \emptyset \in \mathcal{R}$ sowie
+$A \setminus (A \setminus B) = A \cap B \in \mathcal{R}$.
+
+\textbf{$\sigma$-Ring}:
+$\mathcal{R} \subset 2^X$ heißt \emph{$\sigma$-Ring}, falls $\mathcal{R}$
+ein Ring ist sowie für jedes abzählbare System von Mengen
+$\{A_k\}_{k \in \natural}$, $A_k \in \mathcal{R}$ gilt,
+dass $\bigcup_{k \in \natural} A_k \in \mathcal{R}$.
+
+\textbf{Algebra}:
+$\mathcal{R} \subset 2^X$ heißt \emph{Algebra}, falls $\mathcal{R}$ ein Ring
+ist sowie $X \in \mathcal{R}$.
+
+\textbf{$\sigma$-Algebra}:
+$\mathcal{R} \subset 2^X$ heißt \emph{$\sigma$-Algebra}, falls
+$\mathcal{R}$ ein $\sigma$-Ring ist sowie $X \in \mathcal{R}$.
+
+\emph{Folgerung}:
+Es gilt $\bigcap_{k \in \natural} A_k =
+A_1 \setminus \left(\bigcup_{k \in \natural} (A_1 \setminus A_k)\right)$,
+d.\,h. für einen $\sigma$-Ring $\mathcal{R}$ und einem abzählbaren System
+von Mengen $\{A_k\}_{k \in \natural}$, $A_k \in \mathcal{R}$ gilt, dass
+$\bigcap_{k \in \natural} A_k \in \mathcal{R}$.
+
+\linie
+
+Nun seien $\mathcal{R}$ ein Ring und
+$\varphi\colon \mathcal{R} \rightarrow \real^\ast :=
+\{-\infty\} \cup \real \cup \{+\infty\}$ eine Funktion,
+sodass höchstens einer der Werte $\pm \infty$ angenommen wird.
+Eine solche Funktion heißt auch \textbf{Mengenfunktion}.
+
+\textbf{additiv}:
+$\varphi\colon \mathcal{R} \rightarrow \real^\ast$ heißt \emph{additiv}, falls
+$\mathcal{R}$ ein Ring ist und
+für alle $A, B \in \mathcal{R}$ mit $A \cap B = \emptyset$ gilt,
+dass $\varphi(A \cup B) = \varphi(A) + \varphi(B)$.
+
+\textbf{$\sigma$-additiv}:
+$\varphi\colon \mathcal{R} \rightarrow \real^\ast$ heißt
+\emph{$\sigma$-additiv}, falls $\mathcal{R}$ ein $\sigma$-Ring ist sowie für
+jedes abzählbare System von Mengen $\{A_k\}_{k \in \natural}$,
+$A_k \in \mathcal{R}$ mit $A_k \cap A_j = \emptyset$
+für alle $k \not= j$ gilt, \\
+dass $\varphi\left(\bigcup_{k \in \natural} A_k\right) =
+\sum_{k=1}^\infty \varphi(A_k)$.
+
+$A = \bigcup_{k \in \natural} A_k$ hängt nicht von der Reihenfolge der $A_k$
+ab, d.\,h. $\sum_{k=1}^\infty \varphi(A_k)$ ist unabhängig von der Reihenfolge
+der Summanden.
+Damit konvergiert die Reihe nach dem Umordnungssatz von Riemann absolut,
+wenn sie überhaupt konvergiert (ansonsten divergiert sie für
+$\varphi \ge 0$ bestimmt).
+
+\textbf{Eigenschaften additiver Funktionen}:
+\begin{enumerate}
+    \item
+    $\varphi(\emptyset) = 0$, denn mit $A \in \mathcal{R}$ gilt
+    $A \cap \emptyset = \emptyset$, also
+    $\varphi(A) = \varphi(A \cup \emptyset) =
+    \varphi(A) + \varphi(\emptyset)$ \\
+    (wenn $\varphi(A)$ für mindestens ein $A \in \mathcal{R}$ endlich ist).
+    
+    \item
+    Aus $A_1, \dotsc, A_n \in \mathcal{R}$, $A_j \cap A_k = \emptyset$ für alle
+    $j \not= k$ folgt induktiv 
+    $\varphi\left(\bigcup_{k=1}^n A_k\right) = \sum_{k=1}^n \varphi(A_k)$.
+    
+    \item
+    Es gilt $\varphi(A_1 \cap A_2) + \varphi(A_1 \cup A_2) =
+    \varphi(A_1) + \varphi(A_2)$ für $A_1, A_2 \in \mathcal{R}$.
+\end{enumerate}
+
+\textbf{Eigenschaften nicht-negativer additiver Funktionen}:
+\begin{enumerate}[resume]
+    \item
+    $\varphi(A_1 \cup A_2) \le \varphi(A_1) + \varphi(A_2)$, d.\,h.
+    $\varphi\left(\bigcup_{k=1}^n A_k\right) \le \sum_{k=1}^n \varphi(A_k)$.
+    
+    \item
+    Ist $A_1 \subset A_2$, so ist $\varphi(A_1) \le \varphi(A_2)$, denn \\
+    $\varphi(A_2) = \varphi((A_2 \setminus A_1) \cup A_1) =
+    \varphi(A_2 \setminus A_1) + \varphi(A_1) \ge \varphi(A_1)$.
+\end{enumerate}
+
+\textbf{Satz}:
+Seien $\mathcal{R} \subset 2^X$ ein $\sigma$-Ring,
+$\varphi\colon \mathcal{R} \rightarrow \real^\ast$ $\sigma$-additiv sowie
+$A_k \in \mathcal{R}$ für $k \in \natural$ mit \\
+$A_1 \subset A_2 \subset \dotsb \subset A_k \subset A_{k+1} \subset \dotsb$
+und $A = \bigcup_{k \in \natural} A_k$. \\
+Dann ist $\lim_{k \to \infty} \varphi(A_k) = \varphi(A)$.
+
+\linie
+
+\textbf{Maß}:
+Ein \emph{Maß} ist eine auf einem $\sigma$-Ring $\mathcal{R}$ gegebene
+nicht-negative, $\sigma$-additive Funktion
+$\varphi\colon \mathcal{R} \rightarrow \real^\ast$.
+Das Tripel $(X, \mathcal{R}, \varphi)$ heißt \emph{Maßraum}.
+$A \subset X$ heißt \emph{messbar}, falls $A \in \mathcal{R}$.
+
+Ein Beispiel für eine $\sigma$-Algebra auf $X \not= \emptyset$ ist
+$\mathcal{R} = \{\emptyset, X\}$ oder auch $\mathcal{R} = 2^X$.
+Im letzten Fall ist mit $\varphi(A) = \#\{x \in A\}$ (Anzahl der Elemente für
+$A \subset X$ endlich, $+\infty$ für $A$ unendlich) ein Maß gegeben, das sog.
+\textbf{Zählmaß}.
+
+\subsection{%
+    Zur Konstruktion des \name{Lebesgue}-Maßes%
+}
+
+Im Folgenden betrachtet man die Grundmenge $X = \real^d$.
+Im $\real^d$ definiert man (abgeschlossene) \textbf{Quader}
+$Q := \{x \in \real^d \;|\; a_j \le x_j \le b_j,\; j = 1, \dotsc, d\}$.
+Analog kann man of"|fene bzw. halb\-of"|fene Quader definieren, falls man alle
+bzw. manche Ungleichheitszeichen zu "`echt kleiner"' verstärkt.
+Dies sind nicht alle Quader des $\real^d$, sondern genau solche, deren Kanten
+und Flächen parallel zu den Koordinatenachsen sind.
+Als "`Quader"' sollen nun alle of"|fenen, halbof"|fenen und abgeschlossenen
+Quader $Q$ der obigen Form bezeichnet werden.
+
+Falls $Q \not= \emptyset$, d.\,h. $a_j \le b_j$ für $j = 1, \dotsc, d$, so
+definiert man $m(Q) := \prod_{j=1}^d (b_j - a_j)$
+als \textbf{Volumen des Quaders}.
+Man kann sehen, dass diese Definition absichtlich nicht berücksichtigt, ob
+ein Quader of"|fen, halbof"|fen oder abgeschlossen ist
+(diese Quader sollen dasselbe Volumen besitzen).
+
+Eine \textbf{elementare Menge} ist nun eine Teilmenge $E \subset \real^d$,
+die als endliche disjunkte Vereinigung von solchen Quadern dargestellt werden
+kann.
+$\mathcal{E}$ sei die Menge aller elementaren Mengen des $\real^d$, d.\,h.
+$\mathcal{E} = \{E \subset \real^d \;|\; E \text{ ist elementare Menge}\}$.
+
+\textbf{Eigenschaften von $\mathcal{E}$}:
+$\mathcal{E}$ ist ein Ring. \\
+$m$ ist wohldefiniert auf $\mathcal{E}$ durch
+$m(E) = \sum_{i=1}^n m(Q_i)$ für $E \in \mathcal{E}$,
+d.\,h. $E = \bigcup_{i=1}^n Q_i$ mit $Q_i$ paarweise disjunkt
+(die Zerlegung ist nicht eindeutig, trotzdem ist $m$ wohldefiniert, also
+unabhängig von der konkreten Darstellung von $E$ als
+endliche disjunkte Vereinigung von Quadern). \\
+Damit ist $m$ additiv auf $\mathcal{E}$.
+
+\linie
+
+\textbf{regulär}:
+Eine erweiterte nicht-negative additive Funktion
+$\varphi\colon \mathcal{E} \rightarrow \real^\ast$ heißt \emph{regulär}, falls
+für alle $A \in \mathcal{E}$ und $\delta > 0$ Mengen $F = F_{\delta,A}$ und
+$G = G_{\delta,A}$ existieren mit \\
+$F, G \in \mathcal{E}$, \qquad
+$F$ abgeschlossen, $G$ of"|fen, \qquad
+$F \subset A \subset G$ \quad und \quad
+$\varphi(G) - \delta \le \varphi(A) \le \varphi(F) + \delta$.
+
+Es stellt sich heraus, dass $m$ eine reguläre Funktion ist.
+
+Ein weiteres Beispiel ist für $d = 1$ und
+eine beliebige, monoton steigende Funktion
+$\alpha\colon \real \to \real$, $\alpha\ms$ die Funktion
+$\mu\colon \mathcal{E} \rightarrow \real$ mit
+$\mu(\left[a,b\right]) = \alpha(b + 0) - \alpha(a - 0)$,
+$\mu(\left]a,b\right]) = \alpha(b + 0) - \alpha(a + 0)$,
+$\mu(\left[a,b\right[) = \alpha(b - 0) - \alpha(a - 0)$ und
+$\mu(\left]a,b\right[) = \alpha(b - 0) - \alpha(a + 0)$.
+$\mu$ ist regulär auf $\mathcal{E}$ (über $\real$).
+Die Grenzwerte existieren alle, da monotone Funktionen Unstetigkeiten höchstens
+in Form von Sprungstellen haben.
+
+Ist eine Menge $\{\mathcal{R}_\tau\}_{\tau \in T}$ von $\sigma$-Ringen
+$\mathcal{R}_\tau \subset 2^X$ gegeben, so ist
+$\mathcal{R} = \bigcap_{\tau \in T} \mathcal{R}_\tau$ ebenfalls ein
+$\sigma$-Ring.
+Insbesondere gibt es einen minimalen $\sigma$-Ring $\mathcal{R}$, der
+$\mathcal{E}$ enthält.
+
+\linie
+
+\textbf{äußeres Maß $\mu^\ast$}:
+Seien $\mu\colon \mathcal{E} \rightarrow \real^\ast$ regulär
+sowie $E \subset \real^d$ beliebig. \\
+Außerdem seien $\bigcup_{n=1}^\infty A_n \supset E$
+($A_n \in \mathcal{E}$ of"|fen) abzählbare of"|fene Überdeckungen von $E$. \\
+Dann ist mit $\mu^\ast(E) := \inf_{\bigcup_{n=1}^\infty A_n \supset E}
+\left\{\sum_{n=1}^\infty \mu(A_n)\right\}$ das \emph{äußere Maß} von
+$E$ definiert.
+
+\textbf{Eigenschaften von $\mu^\ast$}:
+$\mu^\ast$ ist monoton, d.\,h. für $E_1 \subset E_2$ gilt
+$\mu^\ast(E_1) \le \mu^\ast(E_2)$. \\
+Außerdem ist $\mu^\ast \ge 0$ nicht-negativ.
+
+\textbf{Satz}:
+Für $E \in \mathcal{E}$ ist $\mu^\ast(E) = \mu(E)$. \\
+Ist $E = \bigcup_{n=1}^\infty E_n$ abzählbare Vereinigung von Mengen
+$E_n \subset \real^d$, so ist
+$\mu^\ast(E) \le \sum_{n=1}^\infty \mu^\ast(E_n)$, \\
+d.\,h. $\mu^\ast$ ist \textbf{$\sigma$-subadditiv}.
+
+Man sagt auch, $\mu^\ast$ ist eine
+\textbf{$\sigma$-subadditive Fortsetzung} von
+$\mu\colon \mathcal{E} \rightarrow \real^\ast$ auf $2^{\real^d}$.
+
+\textbf{Lemma von \name{Heine}-\name{Borel}}:
+Sei $(M, d)$ ein metrischer Raum. 
+Dann ist eine Teilmenge $F \subset M$ kompakt genau dann, wenn aus jeder
+abzählbaren Überdeckung $F \subset \bigcup_{n=1}^\infty A_n$ von $F$
+mit of"|fenen Mengen $A_n$ eine endliche Überdeckung
+$F \subset \bigcup_{j=1}^m A_{n_j}$ ausgewählt werden kann.
+
+\linie
+\pagebreak
+
+Sind $A$ und $B$ Mengen, so ist die symmetrische Dif"|ferenz
+$A \symmdiff B := (A \setminus B) \cup (B \setminus A) =
+(A \cup B) \setminus (A \cap B)$ definiert.
+Ist also $\mathcal{R}$ ein Ring, so gilt für $A, B \in \mathcal{R}$ auch
+$A \symmdiff B \in \mathcal{R}$.
+
+Für $A, B \subset \real^d$ sei $d^\ast(A, B) := \mu^\ast(A \symmdiff B)$.
+Außerdem führt man einen Konvergenzbegriff ein: \\
+Für $A_n \subset \real^d$, $n \in \natural$ und $A \subset \real^d$ konvergiert
+$A_n$ gegen $A$ ($A_n \xrightarrow{d^\ast} A$), falls $d^\ast(A_n, A) \to 0$.
+
+\textbf{Eigenschaften von $d^\ast$}: 
+$d^\ast(A, B) = d^\ast(B, A)$ wegen $A \symmdiff B = B \symmdiff A$. \\
+$d^\ast(A, A) = 0$ wegen $A \symmdiff A = \emptyset$ sowie
+$d^\ast(A, B) \ge 0$. \\
+$d^\ast(A, B) = \mu^\ast(A \symmdiff B) \le
+\mu^\ast((A \symmdiff C) \cup (B \symmdiff C)) \le$ \\
+$\mu^\ast(A \symmdiff C) + \mu^\ast(B \symmdiff C) =
+d^\ast(A, C) + d^\ast(C, B)$
+wegen $A \symmdiff B \subset (A \symmdiff C) \cup (B \symmdiff C)$.
+
+Jedoch ist $d^\ast$ keine Metrik, da
+$d^\ast(A, B) = 0 \;\not\Rightarrow\; A = B$! \qquad
+Zum Beispiel für $B = A \cup \{x\}$ mit $A$ beliebige Menge, $x \notin A$ ist
+$A \symmdiff B = \{x\}$, aber $d^\ast(A, B) = \mu^\ast(\{x\}) = 0$.
+
+Also ist der obige Konvergenzbegriff nicht eindeutig, denn zwei Grenzwerte
+einer Folge können sich um etwas unterscheiden, dessen äußeres Maß $0$ ist.
+
+\linie
+
+\textbf{Lemma}:
+Für $\circ \in \{\cup, \cap, \setminus\}$ gilt aufgrund
+$(A_1 \circ A_2) \symmdiff (B_1 \circ B_2) \subset
+(A_1 \symmdiff B_1) \cup (A_2 \symmdiff B_2)$, dass
+$d^\ast(A_1 \circ A_2, B_1 \circ B_2) \le
+d^\ast(A_1, B_1) + d^\ast(A_2, B_2)$. \\
+Außerdem gilt für $A, B \subset \real^d$, $\mu^\ast(A) < \infty$
+die Ungleichung $|\mu^\ast(A) - \mu^\ast(B)| \le d^\ast(A, B)$.
+
+\textbf{(endlich) $\mu$-messbar}:\\
+$A \subset \real^d$ heißt \emph{endlich $\mu$-messbar}
+($A \in \mathcal{M}_F(\mu)$), falls $A_n \xrightarrow{d^\ast} A$ mit einer Folge von
+$A_n \in \mathcal{E}$. \\
+$A \subset \real^d$ heißt \emph{$\mu$-messbar}
+($A \in \mathcal{M}(\mu)$), falls $A = \bigcup_{n=1}^\infty A_n$ mit
+$A_n \in \mathcal{M}_F(\mu)$.
+
+\textbf{Satz}:
+$\mathcal{M}(\mu)$ ist eine $\sigma$-Algebra.
+$\mu^\ast$ ist $\sigma$-additiv auf $\mathcal{M}(\mu)$.
+
+Im Beweis dieses Satzes wird zusätzlich
+$A \in \mathcal{M}_F(\mu) \;\Leftrightarrow\;
+A \in \mathcal{M}(\mu) \land \mu^\ast(A) < \infty$
+gezeigt.
+
+\linie
+
+Nimmt man eine beliebige of"|fene, nicht-leere Menge $A \subset \real^d$,
+$A \not= \emptyset$, so kann man für einen Punkt $x \in A$ eine
+$\varepsilon$-Umgebung $U_\varepsilon(x) \subset A$ finden mit
+$\varepsilon > 0$.
+In diese $\varepsilon$-Umgebung kann man immer einen Würfel der Seitenlänge
+$\varepsilon_1 > 0$ einbeschreiben.
+Da $\rational^d$ in $\real^d$ dicht liegt, gibt es ein $r \in \rational^d$
+mit $\norm{x - r} < \frac{\varepsilon_1}{4}$.
+Im Würfel um $r$ mit Seitenlänge $\varepsilon_2 = \frac{\varepsilon_1}{2} > 0$
+ist $x$ enthalten. \\
+Also ist jede of"|fene Menge $A \subset \real^d$ darstellbar als
+abzählbare Vereinigung von Würfeln. \\
+Da Würfel elementare Mengen und somit (finit) messbar sind, sind
+of"|fene als auch abgeschlossene Mengen $A \subset \real^d$ $\mu$-messbar,
+d.\,h. $A \in \mathcal{M}(\mu)$.
+
+\textbf{\name{Borel}-Algebra}:
+Die \emph{\name{Borel}-Algebra} $\mathcal{B}$
+ist die kleinste $\sigma$-Algebra, welche alle of"|fenen Mengen enthält.
+Diese existiert, da z.\,B. $\mathcal{M}(\mu)$ eine $\sigma$-Algebra ist,
+die alle of"|fenen Mengen enthält (s.\,o.). \\
+Die Borel-Algebra enthält genau die \emph{\name{Borel}-Mengen}, das sind
+die Mengen, die sich aus of"|fenen Mengen durch die Operationen
+"`abzählbare Vereinigung"', "`abzählbarer Durchschnitt"' sowie "`Komplement"'
+bilden lassen.
+Sind z.\,B. $G_n$ of"|fen, $F_n$ abgeschlossen für $n \in \natural$, dann sind
+$G^\sigma = \bigcap_{n=1}^\infty G_n$ und $F^\sigma = \bigcup_{n=1}^\infty F_n$
+Borelmengen 1. Typs usw. \\
+Die Borel-Algebra auf $X$ bezeichnet man auch mit $\mathcal{B}(X)$.
+
+Es gilt $\mathcal{B} \subset \mathcal{M}(\mu)$, da ja $\mathcal{M}(\mu)$ eine
+$\sigma$-Algebra ist, die alle of"|fenen Mengen enthält. \\
+Allerdings gilt $\mathcal{B} \not= \mathcal{M}(\mu)$, d.\,h. es gibt
+messbare Mengen, die keine Borel-Mengen sind.
+
+\pagebreak
+
+\subsection{%
+    Messbare Funktionen%
+}
+
+Seien $(X, \mathcal{R}, \mu)$ ein Maßraum mit $\mathcal{R}$ $\sigma$-Algebra
+und $f\colon X \rightarrow \real^\ast$ eine erweiterte Funktion. \\
+Eine Menge $A \subset X$ heißt \emph{messbar}, falls $A \in \mathcal{R}$ ist.
+
+\textbf{messbare Funktion}:
+$f$ heißt \emph{messbar}, falls
+$\forall_{a \in \real}\; E_a(f) := \{x \in X \;|\; f(x) > a\}$ messbar ist.
+
+\textbf{Satz}:
+$\forall_{a \in \real}\; \{x \in X \;|\; f(x) > a\}$ messbar \\
+$\;\Leftrightarrow\;$
+$\forall_{a \in \real}\; \{x \in X \;|\; f(x) \ge a\}$ messbar \\
+$\;\Leftrightarrow\;$
+$\forall_{a \in \real}\; \{x \in X \;|\; f(x) < a\}$ messbar \\
+$\;\Leftrightarrow\;$
+$\forall_{a \in \real}\; \{x \in X \;|\; f(x) \le a\}$ messbar
+
+\textbf{Folgerung}:
+Ist $f$ messbar und $I \subset \real$ ein Intervall,
+so ist $f^{-1}(I)$ messbar.
+
+Jede of"|fene Menge $A \subset \real$ ist eine disjunkte Vereinigung von
+höchstens abzählbar vielen of"|fenen Intervallen $I_k$.
+Also ist $f^{-1}(A) = \bigcup_{k=1}^\infty f^{-1}(I_k)$
+messbar, falls $A$ of"|fen und $f$ messbar ist. \\
+Daher ist $f^{-1}(A)$ messbar für Borel-Mengen $A \subset \real$.
+
+\textbf{\name{Borel}-messbar}:
+Eine Funktion $f\colon X \rightarrow \real^\ast$ heißt
+\emph{\name{Borel}-messbar}, falls \\
+$\forall_{a \in \real}\; E_a(f) = \{x \in X \;|\; f(x) > a\}
+\in \mathcal{B}(X)$ ist. \\
+Dies ist der Fall genau dann, wenn $f^{-1}(B) \in \mathcal{B}(X)$ für alle
+$B \in \mathcal{B}(\real^\ast)$.
+
+\linie
+
+\textbf{Satz}:
+Ist $f$ messbar, so ist auch $|f|$ messbar.
+
+\textbf{Satz}:
+Ist $\{f_n\}_{n \in \natural}$ eine Folge messbarer Funktionen, dann sind
+$g$ und $h$ messbar mit \\
+$g(x) = \sup_{n \in \natural} f_n(x)$ (auch $\inf$) und
+$h(x) = \limsup_{n \to \infty} f_n(x)$ (auch $\liminf$).
+
+\textbf{Folgerung}:
+Ist $\{f_n\}_{n \in \natural}$ eine Folge messbarer Funktionen sowie
+für alle $x \in X$ gibt es einen Grenzwert $f(x) = \lim_{n \to \infty} f_n(x)$,
+dann ist $f$ messbar. \\
+Ist $f$ messbar, dann sind $f^+$, $f^-$ und $-f$ messbar mit \\
+$f^+(x) := \max\{0, f(x)\}$, $f^- := -\min\{0, f(x)\}$,
+$f = f^+ - f^-$, $f^\pm \ge 0$.
+
+\textbf{Satz}:
+Sind $f$ und $g$ messbar mit $c \in \real$, so sind auch
+$f + g$, $f - g$, $f \cdot g$ und $c \cdot f$ messbar. \\
+Außerdem ist $\{x \in X \;|\; f(x) < g(x)\}$ messbar.
+
+\textbf{Folgerung}:
+Ist $p$ ein Polynom mit reellen Koef"|fizienten und $f$ messbar,
+so ist auch $p(f(x))$ messbar.
+
+\linie
+
+\textbf{Treppenfunktion}:
+Eine \emph{Treppenfunktion} (eigentlich \emph{einfache Funktion})
+ist eine Funktion $t\colon X \rightarrow \real$
+mit endlichem Wertevorrat, d.\,h. $t(X) = \{c_1, \dotsc, c_N\}$ mit
+$c_j \not= c_k$ für $j \not= k$. \\
+Für $E \subset X$ ist $\chi_E\colon X \rightarrow \real$ mit
+$\chi_E(x) = 1$ für $x \in E$ und $\chi_E(x) = 0$
+für $x \notin E$ die \emph{charakteristische Funktion} von $E$.
+$E$ ist messbar genau dann, wenn $\chi_E$ messbar ist. \\
+Eine Treppenfunktion $t$ kann als Linearkombination von charakteristischen
+Funktionen \\
+$t(x) = \sum_{k=1}^N c_i \chi_{E_i}(x)$ mit $E_i \subset X$
+paarweise disjunkt dargestellt werden, nämlich \\
+$E_i = \{x \in X \;|\; t(x) = c_i\} = t^{-1}(\{c_i\})$.
+$t$ ist messbar genau dann, wenn alle $E_i$ messbar sind.
+
+\textbf{Satz}:
+Sei $f\colon X \rightarrow \real^\ast$ messbar. \\
+Dann gibt es eine Folge von Treppenfunktionen $t_n$, sodass
+$\forall_{x \in X}\; \lim_{n \to \infty} t_n(x) = f(x)$. \\
+Für $f \ge 0$ kann man $t_n$ monoton wählen, d.\,h. für fixes $x \in X$
+ist $t_n(x)$ monoton steigend für wachsendes $n$.
+
+\pagebreak
+
+\subsection{%
+    Das \name{Lebesgue}-Integral%
+}
+
+Sei $(X, \mathcal{R}, \mu)$ ein Maßraum.
+Ist $t(x) = \sum_{i=1}^n c_i \chi_{E_i}(x)$ eine messbare Treppenfunktion
+und \\
+$E \in \mathcal{R}$, so sei $I_E(t) := \sum_{i=1}^n c_i \mu(E_i \cap E)$
+das Integral von $t$ über $E$ mit Maß $\mu$.
+
+\textbf{\name{Lebesgue}-Integral}:
+Sei $f\colon X \rightarrow \real^\ast$, $f \ge 0$ messbar. \\
+Dann ist
+$\int_E f d\mu := \sup_{t \text{ Treppenfkt.},\; 0 \le t \le f} I_E(t)$
+das \emph{\name{Lebesgue}-Integral} von $f$ über $E$ mit Maß $\mu$. \\
+Für $f\colon X \rightarrow \real^\ast$ messbar ist
+$\int_E f d\mu := \int_E f^+ d\mu - \int_E f^- d\mu$, falls mindestens eines
+der Integrale $\int_E f^\pm d\mu$ endlich ist.
+
+\emph{Beispiel}: Für eine Treppenfunktion $f = t$ gilt
+$\int_E f d\mu = I_E(f)$.
+
+\textbf{\name{Lebesgue}-integrierbar}:
+Sei $f\colon X \rightarrow \real^\ast$ messbar. \\
+$f$ heißt \emph{\name{Lebesgue}-integrierbar} ($f \in \L(E, \mu)$), falls
+$\int_E f^+ d\mu < \infty$ und $\int_E f^- d\mu < \infty$.
+
+\linie
+
+\textbf{\name{Lebesgue}-Maß}:
+Für Quader $Q \subset \real^d$ ist das Volumen definiert als
+$m(Q) = \prod_{j=1}^d (b_j - a_j)$. \\
+$m$ lässt sich auf $\mathcal{E} \subset P(\real^d)$ ausweiten
+(unabhängig von der konkreten Zerlegung). \\
+Wegen $m \ge 0$ additiv und regulär ist das äußere Maß
+$m^\ast: P(\real^d) \rightarrow \real^\ast$ auf
+beliebigen Teil\-mengen $E \subset \real^d$ wohldefiniert.
+$\mathcal{M}(m)$ ist eine $\sigma$-Algebra, auf der $m^\ast$ $\sigma$-additiv
+ist. \\
+Daher bildet $(\real^d, \mathcal{M}(m), m^\ast)$ einen Maßraum.
+$m^\ast$ heißt \emph{\name{Lebesgue}-Maß} und die Mengen aus
+der \emph{\name{Lebesgue}-Algebra} $\mathcal{M}(m)$
+heißen \emph{\name{Lebesgue}-messbar}.
+
+\linie
+
+\textbf{Eigenschaften}:\vspace{-2mm}
+\begin{tabbing}
+    \hspace{9cm}\=\kill
+    
+    1. $f$ messbar, beschränkt, $\mu(E) < \infty$ \>
+    $\Rightarrow\; f \in \L(E, \mu)$ \\[2mm]
+    
+    2. $f$ messbar, $\mu(E) < \infty$,
+    $\forall_{x \in X}\; a \le f(x) \le b$ \>
+    $\Rightarrow\; a \cdot \mu(E) \le \int_E f d\mu \le b \cdot \mu(E)$ \\[2mm]
+    
+    3. $f, g \in \L(E, \mu)$, $\forall_{x \in X}\; f(x) \le g(x)$ \>
+    $\Rightarrow\; \int_E f d\mu \le \int_E g d\mu$ \\[2mm]
+    
+    4. $f \in \L(E, \mu)$, $c \in \real$ \>
+    $\Rightarrow\; c \cdot f \in \L(E, \mu)$,
+    $\int_E (c \cdot f) d\mu = c \cdot \int_E f d\mu$ \\[2mm]
+    
+    5. $f$ messbar, $\mu(E) = 0$ \>
+    $\Rightarrow\; \int_E f d\mu = 0$ \\[2mm]
+    
+    6. $f \in \L(E, \mu)$, $A \in \mathcal{R}$, $A \subset E$ \>
+    $\Rightarrow\; f \in \L(A, \mu)$
+\end{tabbing}
+
+\linie
+
+\textbf{Satz ($\sigma$-Additivität des Integrals bzgl. des
+Integrationsbereichs)}: \\
+Seien $f\colon X \rightarrow \real^\ast$ messbar, $f \ge 0$
+sowie $\varphi(A) := \int_A f d\mu$ für $A \in \mathcal{R}$. \\
+Dann ist $\varphi\colon \mathcal{R} \rightarrow \real^\ast$
+$\sigma$-additiv. \\
+Für $f \in \L(X, \mu)$ ist $\varphi$ ebenfalls
+$\sigma$-additiv.
+
+\textbf{Folgerungen}:
+Ist $f$ messbar, $f \ge 0$ und $A, B \in \mathcal{R}$ mit $B \subset A$,
+so ist $\int_B f d\mu \le \int_A f d\mu$. \\
+Ist $f$ messbar und $A, B \in \mathcal{R}$ mit $B \subset A$,
+$\mu(A \setminus B) = 0$, so ist $\int_A f d\mu = \int_B f d\mu$.
+
+\linie
+
+\textbf{$\mu$-fast-überall}:
+Sei $H(\cdot)$ eine Aussageform. \\
+$H$ gilt \emph{$\mu$-fast-überall ($\mu$-f.ü.)},
+falls es ein $E \in \mathcal{R}$, $\mu(E) = 0$
+gibt, sodass $\{x \in X \;|\; \lnot H(x)\} \subset E$.
+
+\emph{Beispiel}:
+Sei $f\colon \real \rightarrow \real$ mit $f(x) = 1$ für $x \in \rational$
+und $f(x) = 0$ für $x \notin \rational$, wobei
+$\mu$ das Lebesgue-Maß ist
+($f = \chi_\rational$ heißt \emph{\name{Dirichlet}-Funktion}).
+Dann ist $\mu(\rational) = \sum_{n=1}^\infty \mu(\{q_n\}) = 0$, wobei
+$\{q_n\}_{n \in \natural}$ eine Abzählung von $\rational$ ist.
+Daher ist $\int_\real f d\mu = \int_{\real \setminus \rational} f d\mu = 0$.
+$f$ ist $\mu$-fast-überall gleich $0$.
+
+\textbf{Satz}:
+Sei $f \in \L(X, \mu)$.
+Dann ist auch $|f| \in \L(X, \mu)$ und
+$\left|\int_X f d\mu\right| \le \int_X |f| d\mu$.
+
+\textbf{Folgerungen}: \\
+Ist $g \in \L(E, \mu)$, $f$ messbar mit $|f(x)| \le g(x)$ $\mu$-fast-überall,
+so ist $f \in \L(E, \mu)$. \\
+Ist $f \in \L(X, \mu)$, dann ist $f$ endlich $\mu$-fast-überall.
+
+\pagebreak
+
+\subsection{%
+    Das \name{Lebesgue}-Integral und Konvergenz%
+}
+
+Im Folgenden sei $(X, \mathcal{R}, \mu)$ ein Maßraum.
+
+\textbf{Satz von \name{Lebesgue} zur monotonen Konvergenz}:
+Seien $f_n\colon X \rightarrow \real^\ast$ ($n \in \natural$)
+messbare Funktionen mit
+$f(x) := \lim_{n \to \infty} f_n(x)$
+(bei bestimmter Divergenz $+\infty$) und \\
+$0 \le f_1(x) \le f_2(x) \le \dotsb$ für alle $x \in X$.
+Dann ist $\int_X f d\mu = \lim_{n \to \infty} \left(\int_X f_n d\mu\right)$.
+
+\textbf{Satz (Additivität bzgl. des Integranden)}:
+Seien $f_1, f_2 \in \L(X, \mu)$. \\
+Dann ist auch $f_1 + f_2 \in \L(X, \mu)$ und
+$\int_X (f_1 + f_2) d\mu = \int_X f_1 d\mu + \int_X f_2 d\mu$.
+
+\textbf{Folgerung}:
+Seien $f_k \ge 0$ messbar ($k \in \natural$)
+und $f(x) = \sum_{k=1}^\infty f_k(x)$. \\
+Dann ist $\int_X f d\mu = \sum_{k=1}^\infty \left(\int_X f_k d\mu\right)$.
+
+\textbf{Lemma von \name{Fatou}}:
+Seien $f_n \ge 0$ messbar ($n \in \natural$) und
+$f(x) = \liminf_{n \to \infty} f_n(x)$. \\
+Dann ist $\int_X f d\mu \le
+\liminf_{n \to \infty} \left(\int_X f_n d\mu\right)$.
+
+\textbf{Satz von \name{Lebesgue} zur majorisierten Konvergenz}:
+Seien $f_n\colon X \rightarrow \real^\ast$ ($n \in \natural$),
+messbare Funktionen mit
+$f(x) := \lim_{n \to \infty} f_n(x)$ und
+$|f_n(x)| \le g(x)$ für alle $x \in X$, $n \in \natural$
+mit $g \in \L(X, \mu)$. \\
+Dann ist $f \in \L(X, \mu)$ und
+$\int_X f d\mu = \lim_{n \to \infty} \left(\int_X f_n d\mu\right)$.
+
+\subsection{%
+    Das \name{Lebesgue}- und das \name{Riemann}-Integral%
+}
+
+Sei nun $X = [a, b] \subset \real$ mit dem Lebesgue-Maß $\mu$ auf $\real$.
+Im Folgenden bezeichnen $\int_a^b f(x)\dx$ das Riemann-Integral und
+$\int_{[a,b]} f d\mu$ das Lebesgue-Integral.
+
+\textbf{Satz von \name{Lebesgue}}: \\
+a) Sei $f \in \R[a, b]$ Riemann-integrierbar.
+Dann ist $f \in \L([a,b], \mu)$ sowie
+$\int_{[a,b]} f d\mu = \int_a^b f(x)\dx$. \\
+b) Sei $f$ messbar.
+Dann ist $f \in \R[a, b]$ genau dann, wenn $f$ auf $[a, b]$ $\mu$-f.ü.
+stetig ist. \\
+Für $f \ge 0$ und $\int_X f d\mu = 0$ gilt $f(x) = 0$ $\mu$-f.ü.
+
+\textbf{Anmerkung}:
+Ist $f \in \L([a, b], \mu)$ mit $F(x) := \int_{[a, x]} f d\mu$, so ist
+$F'(x) = f(x)$ $\mu$-f.ü. \\
+\emph{Die Umkehrung gilt mit $\mu$-f.ü. nicht!}
+
+\linie
+
+\textbf{Vergleich von \name{Riemann}- und \name{Lebesgue}-Integral}:
+
+\begin{tabular}{p{8cm}p{8cm}}
+    \textbf{\name{Riemann}-Integral} &
+    \textbf{\name{Lebesgue}-Integral} \\ \hline
+    
+    gerichtet, d.\,h. $\int_a^b \dx = -\int_b^a \dx$ &
+    nicht gerichtet, $\int_{[a,b]} d\mu$ \vspace{2mm}\\
+    
+    Ist $f \in \R[a, b]$, so ist $f$ beschränkt. &
+    Ist $f \in \L([a, b], \mu)$, so ist $|f|$ endlich $\mu$-f.ü. \vspace{2mm}\\
+    
+    nur auf $X = [a, b]$ definiert &
+    auch $\mu(X) = \infty$ möglich, für $f \in \L(X, \mu)$ gilt dabei, dass
+    $\{x \in X \;|\; f(x) \not= 0\}$ \textbf{$\sigma$-finit} ist, d.\,h.
+    abzählbare Vereinigung von Mengen mit endlichem Maß \vspace{2mm}\\
+    
+    $\int_{-\infty}^{+\infty} = \lim_{R_1 \to \infty} \int_0^{R_1} +
+    \lim_{R_2 \to \infty} \int_{-R_2}^0$, z.\,B.
+    $\frac{\sin x}{x}$ ist uneigentlich Riemann-integrierbar, da sich Bereiche
+    unterschiedlichen Vorzeichens auslöschen können &
+    $\frac{\sin x}{x} \notin \L(\real, \mu)$, denn das Lebesgue-Integral
+    kennt keine Auslöschungsef"|fekte ($f^\pm$ werden getrennt betrachtet)
+\end{tabular}
+
+Beim Lebesgue-Integral lässt sich mit den drei Konvergenzsätzen
+(monotone/majorisierte Konvergenz, Lemma von Fatou) aus der punktweisen
+Konvergenz und zusätzlichen Bedingungen ein Zusammenhang zwischen
+$\lim_{n \to \infty} \left(\int f_n d\mu\right)$ und $\int f d\mu$ herstellen.
+Weil sich die $\int f_n d\mu$ und damit auch $\int f d\mu$ bei einer
+Änderung von $f_n$ auf einer Nullmenge nicht verändern, müssen die
+Voraussetzungen nur für $x \in X \setminus E$, $\mu(E) = 0$ erfüllt sein,
+d.\,h. nur $\mu$-fast-überall.
+
+\subsection{%
+    Die Funktionenräume \texorpdfstring{$L^p(X, \mu)$}{Lp(X, µ)}%
+}
+
+Wie immer sei $(X, \mathcal{R}, \mu)$ ein Maßraum.
+Man kann eine Äquivalenzrelation $\sim$ auf der Menge der messbaren Funktionen
+von $X$ nach $\real^\ast$ definieren mit
+$f \sim g \;\Leftrightarrow\; f(x) = g(x)$ $\mu$-f.ü.
+mit $f, g\colon X \rightarrow \real^\ast$ messbar.
+Die Äquivalenzklasse von $f$ sei $\widehat{f}$.
+
+\textbf{$L^p$-Raum}:
+$\widehat{f} \in L^p(X, \mu) \;\Leftrightarrow\; |f|^p \in \L(X, \mu)$ für
+$f \in \widehat{f}$, \\
+$\widehat{f} \in L^\infty(X, \mu) \;\Leftrightarrow\;
+\exists_{c \in \real}\; |f(x)| \le c$ $\mu$-f.ü. für $f \in \widehat{f}$.
+
+Man schreibt auch $f \in L^p = L_p$ und $f \in L^\infty$.
+
+\linie
+
+\textbf{Norm im $L^p$-Raum}:
+$\norm{f}_p := \left(\int_X |f|^p d\mu\right)^{1/p}$ und
+$\norm{f}_\infty := \inf \{c \in \real \;|\; |f(x)| \le c\; \mu\text{-f.ü.}\}$.
+
+\textbf{Satz (\name{Hölder}sche Ungleichung)}:
+Seien $1 \le p, q \le \infty$ mit $\frac{1}{p} + \frac{1}{q} = 1$
+und $f \in L^p$, $g \in L^q$. \\
+Dann ist $f \cdot g \in L^1$ und
+$\norm{f \cdot g}_1 \le \norm{f}_p \norm{g}_q$, d.\,h.
+$\int_X |fg| d\mu \le \left(\int_X |f|^p d\mu\right)^{1/p} \cdot
+\left(\int_X |g|^q d\mu\right)^{1/q}$.
+
+\textbf{Satz (\name{Minkowski}sche Ungleichung)}:
+Seien $1 \le p \le \infty$ und $f, g \in L^p$. \\
+Dann ist $f + g \in L^p$ und
+$\norm{f + g}_p \le \norm{f}_p + \norm{g}_p$.
+
+Also ist $\norm{f}_p$ bzw. $\norm{f}_\infty$ eine Norm auf $L^p(X, \mu)$ bzw.
+$L^\infty(X, \mu)$.
+
+\linie
+
+\textbf{Satz}:
+$L^p(X, \mu)$ ist mit der Norm $\norm{\cdot}_p$ vollständig, d.\,h. \\
+für $1 \le p \le \infty$ ist $L^p(X, \mu)$ ein Banachraum.
+
+\linie
+
+\textbf{wichtige Spezialfälle}:
+\begin{itemize}
+    \item
+    \textbf{$L^1(X, \mu)$} enthält genau die integrierbaren Funktionen, d.\,h.
+    "`$L^1(X, \mu) = \L(X, \mu)$"', wobei $\mu$-f.ü. identische Funktionen
+    miteinander identifiziert werden.
+    
+    \item
+    Auf \textbf{$L^2(X, \mu)$} kann man ein Skalarprodukt
+    $\langle f, g \rangle:= \int_X f \overline{g} d\mu$ definieren mit \\
+    $f, g \in L^2(X, \mu)$.
+    (Alles bisher Genannte für Lebesgue-Integrale lässt sich auch
+    komponentenweise auf komplex- und vektorwertige Funktionen in den
+    $\field^n$ übertragen.) \\
+    Damit wird $L^2(X, \mu)$ zu einem Hilbertraum.
+    
+    \item
+    Wählt man $X = \natural$ als Grundmenge, $\R = 2^\natural$ als
+    $\sigma$-Algebra und das Zählmaß $\mu$ auf $\R$
+    (d.\,h. $\mu(M) = \#\{m \in M\} = \card(M)$ für $M \subset \natural$),
+    so ist jede Funktion $f: X = \natural \rightarrow \real$ eine Folge
+    $f_n = f(n)$ und für die $p$-Norm ergibt sich dann
+    $\norm{f}_p = \left(\int_\natural |f|^p d\mu\right)^{1/p} =
+    \left(\sum_{n=1}^\infty |f_n|^p\right)^{1/p}$.
+    Den entstehenden Raum $L^p(\natural, \mu)$ bezeichnet man
+    als \textbf{$\ell^p$-Raum}.
+    
+    \item
+    Für $X = [a,b]$ und dem Lebesgue-Maß $\mu$ ist \textbf{$\C_0^\infty[a,b]$}
+    die Menge der glatten Funktionen mit kompaktem Träger.
+    Diese liegen dicht in $L^p([a,b], \mu)$ für $1 \le p < \infty$.
+\end{itemize}
+
+\pagebreak
+
+\subsection{%
+    Weitere Konvergenzaussagen%
+}
+
+Sei $(X, \R, \mu)$ ein Maßraum mit $\mu(X) < \infty$. \\
+Eine Funktionenfolge $\{f_n\}_{n \in \natural}$
+\textbf{konvergiert gleichmäßig gegen
+eine Funktion $f$} ($f_n \rightrightarrows f$), falls
+$\forall_{\varepsilon > 0} \exists_{N_\varepsilon \in \natural}
+\forall_{n \ge N_\varepsilon} \forall_{x \in X}\;
+|f_n(x) - f(x)| < \varepsilon$.
+$\{f_n\}_{n \in \natural}$
+\textbf{konvergiert punktweise gegen $f$ $\mu$-fast-überall},
+($f_n \xrightarrow[\mu\text{-f.ü.}]{(\cdot)} f$), falls
+$\mu(\{x \in X \;|\; f_n(x) \not\to f(x)\}) = 0$.
+
+\textbf{Satz von \name{Egorov}}:
+Seien $\mu(X) < \infty$ sowie $f_n \xrightarrow[\mu\text{-f.ü.}]{(\cdot)} f$
+messbare Funktionen. \\
+Dann gilt $\forall_{\delta > 0} \exists_{E_\delta \in \R}$
+$\mu(X \setminus E_\delta) < \delta$,
+$f_n|_{E_\delta} \rightrightarrows f|_{E_\delta}$.
+
+\linie
+
+\textbf{Konvergenz im Maß}:
+$f_n$ \emph{konvergiert im Maß} gegen $f$, d.\,h.
+$f_n \xrightarrow{\mu} f$, falls \\
+$\forall_{\delta > 0}\;
+\lim_{n \to \infty} \mu(\{x \in X \;|\; |f_n(x) - f(x)| \ge \delta\}) = 0$.
+
+\textbf{Satz}:
+Aus $f_n \xrightarrow[\mu\text{-f.ü.}]{(\cdot)} f$ folgt
+$f_n \xrightarrow{\mu} f$.
+\emph{Die Umkehrung gilt nicht!}
+
+\textbf{Satz}:
+Aus $f_n \xrightarrow{\mu} f$ folgt, dass es eine Teilfolge $f_{n_k}$ gibt
+mit $f_{n_k} \xrightarrow[\mu\text{-f.ü.}]{(\cdot)} f$.
+
+Für $\mu(X) < \infty$ ergibt sich also folgendes \textbf{Diagramm}:
+\begin{align*}
+    \begin{xy}
+        %\xymatrix{
+        %    & & f_n \rightrightarrows f \ar[dll] \ar[drr] & & \\
+        %    f_n \xrightarrow{L^2} f & & & &
+        %    f_n \xrightarrow[\mu\text{-f.ü.}]{(\cdot)} f \\
+        %    & f_n \xrightarrow{L^1} f & & f_n \xrightarrow{\mu} f &
+        %}
+        \xymatrix{
+            & f_n \rightrightarrows f \ar@{=>}[dl] \ar@{=>}[dr] & \\
+            f_n \xrightarrow{L^2} \ar@{=>}[d] f & &
+            f_n \xrightarrow[\mu\text{-f.ü.}]{(\cdot)} f \ar@{=>}[d]
+            \ar@/_ 10mm/[ul]_{\text{auf } E_\delta \text{ (Egorov})} \\
+            f_n \xrightarrow{L^1} f \ar@{=>}[rr] & &
+            f_n \xrightarrow{\mu} f \ar@/_ 10mm/[u]_{\text{auf TF}}
+        }
+    \end{xy}
+\end{align*}
+
+\pagebreak

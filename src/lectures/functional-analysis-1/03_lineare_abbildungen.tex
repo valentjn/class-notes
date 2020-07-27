@@ -1,0 +1,165 @@
+\section{%
+    Lineare Abbildungen in normierten Räumen%
+}
+
+\subsection{%
+    Stetigkeit und Beispiele%
+}
+
+\begin{Satz}{Äquivalenz für Stetigkeit bei linearen Operatoren}\\
+    Seien $(E, \norm{\cdot}_E)$ und $(F, \norm{\cdot}_F)$ normierte Räume
+    sowie $T\colon E \rightarrow F$ eine lineare Abbildung.\\
+    Dann sind äquivalent:
+    \begin{enumerate}
+        \item
+        $T$ ist stetig.
+        
+        \item
+        $T$ ist stetig in $0$.
+        
+        \item
+        Aus $(x_n)_{n \in \natural}$ Folge in $E$ mit $x_n \to 0$ folgt $Tx_n \to 0$.
+        
+        \item
+        $\exists_{\alpha \ge 0}\; TB_E \subset \alpha B_F$, wobei
+        $B_E := \{x \in E \;|\; \norm{x} \le 1\}$ und
+        $\alpha B_F := \{y \in F \;|\; \norm{y} \le \alpha\}$.
+        
+        \item
+        $T$ ist \begriff{beschränkt},
+        d.\,h. $\exists_{\beta \ge 0} \forall_{x \in E}\; \norm{Tx}_F \le \beta \norm{x}_E$.
+    \end{enumerate}
+\end{Satz}
+
+\linie
+
+\begin{Def}{Dualraum}
+    Sei $(E, \norm{\cdot}_E)$ ein normierter Raum.\\
+    Dann heißt $E' := \{T\colon E \rightarrow \KK \;|\; T \text{ linear und stetig}\}$
+    \begriff{Dualraum} von $E$.
+\end{Def}
+
+\begin{Bsp}
+    \begin{enumerate}[label=\emph{(\alph*)}]
+        \item
+        Seien $E := (\real^n, \norm{\cdot}_2)$ und $F := (\real^m, \norm{\cdot}_2)$.
+        Dann ist jede lineare Abbildung $T\colon E \rightarrow F$ stetig und kann
+        durch eine Matrix dargestellt werden.
+        Dasselbe gilt auch für alle anderen Normen (wegen der Normäquivalenz).
+        
+        \item
+        Seien $E := (\C^0([a, b]), \norm{\cdot}_{\C^0})$ und $T\colon E \rightarrow \KK$
+        mit $Tf := \int_a^b f(s)\ds$ (wobei $a, b \in \real$ mit $a \le b$).
+        $T$ ist linear und stetig und damit $T \in E'$.
+        Außerdem ist $V\colon E \rightarrow E$, $f \mapsto Vf$ mit
+        $(Vf)(t) := \int_a^t f(s)\ds$ linear und stetig, denn
+        $\norm{Vf}_{\C^0} \le (b - a) \norm{f}_{\C^0}$.
+        $V$ ist auch stetig als Abbildung von
+        $(\C^0([a, b]), \norm{\cdot}_{\C^0})$ nach
+        $(\C^1([a, b]), \norm{\cdot}_{\C^1})$.
+    \end{enumerate}
+\end{Bsp}
+
+\pagebreak
+
+\subsection{%
+    Lineare, stetige Abbildungen%
+}
+
+\begin{Def}{Raum der linearen, stetigen Abbildungen}
+    Seien $(E, \norm{\cdot}_E)$ und $(F, \norm{\cdot}_F)$ normierte Räume.
+    Dann heißt
+    $\Lin(E, F) := \{T\colon E \rightarrow F \;|\; T \text{ linear und stetig}\}$
+    der \begriff{Raum der linearen, stetigen Abbildungen} von $E$ nach $F$.
+    Man schreibt $\Lin(E) := \Lin(E, E)$.
+\end{Def}
+
+\begin{Satz}{Operatornorm}
+    Für $T \in \Lin(E, F)$ sei\\
+    $\norm{T} := \sup_{x \in B_E} \norm{Tx}_F =
+    \sup_{x \in \interior{B_E}} \norm{Tx}_F = \sup_{x \in \partial B_E} \norm{Tx}_F =
+    \sup_{x \in E \setminus \{0\}} \frac{\norm{Tx}_F}{\norm{x}_E}$.\\
+    Dann ist $\norm{\cdot}$ eine Norm auf $\Lin(E, F)$, die sog. \begriff{Operatornorm}.
+    Ist $F$ vollständig, dann ist auch $(\Lin(E, F), \norm{\cdot})$ vollständig.
+    Insbesondere ist der Dualraum $E'$ vollständig.
+\end{Satz}
+
+\begin{Bem}
+    Das Supremum der Operatornorm muss auf dem Rand angenommen werden,
+    denn würde es in $x \in E$ mit $\norm{x}_E < 1$ angenommen,
+    dann wäre $\norm{Tx'}_F = \frac{\norm{Tx}_F}{\norm{x}_E} > \norm{Tx}_F$ mit
+    $x' := \frac{x}{\norm{x}_E} \in \partial B_E$,
+    d.\,h. wegen der Stetigkeit von $T$ gäbe es einen Punkt im Inneren von $B_E$,
+    bei dem das Supremum überschritten wäre
+    (zumindest, wenn $\norm{Tx}_F > 0$ -- falls das Supremum verschwindet, ist der
+    Operator gleich dem Nulloperator).
+\end{Bem}
+
+\begin{Bsp}
+    Sei $\psi \in \C^0([0, 1]^2)$.
+    Dann ist $T\colon (\C^0([0, 1]), \norm{\cdot}_{\C^0}) \rightarrow
+    (\C^0([0, 1]), \norm{\cdot}_{\C^0})$, $f \mapsto Tf$ mit\\
+    $(Tf)(x) := \int_0^1 \psi(x, y) f(y)\dy$ linear und stetig und es gilt
+    $\norm{T} = \sup_{x \in [0, 1]} \int_0^1 |\psi(x, y)| \dy$.
+\end{Bsp}
+
+\linie
+
+\begin{Lemma}{Komposition von linearen, stetigen Abbildungen}\\
+    Seien $(E, \norm{\cdot}_E)$, $(F, \norm{\cdot}_F)$ und $(G, \norm{\cdot}_G)$
+    normierte Räume,
+    $B \in \Lin(E, F)$ und $A \in \Lin(F, G)$.\\
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $A \circ B \in \Lin(E, G)$ und
+        $\norm{A \circ B} \le \norm{A} \cdot \norm{B}$
+        
+        \item
+        $M_r\colon \Lin(E, F) \rightarrow \Lin(E, G)$, $T \mapsto A \circ T$ und
+        $M_\ell\colon \Lin(F, G) \rightarrow \Lin(E, G)$, $S \mapsto S \circ B$
+        sind linear und stetig, wobei
+        $\norm{M_r} \le \norm{A}$ und $\norm{M_\ell} \le \norm{B}$.
+    \end{enumerate}
+\end{Lemma}
+
+\begin{Satz}{\name{Neumann}sche Reihe}
+    Seien $(E, \norm{\cdot}_E)$ ein Banachraum und $T \in \Lin(E)$ mit\\
+    $\limsup_{n \to \infty} \norm{T^n}^{1/n} < 1$
+    (z.\,B. erfüllt, wenn $\norm{T} < 1$).\\
+    Dann ist $\id - T$ bijektiv und es gilt
+    $(\id - T)^{-1} = \sum_{n=0}^\infty T^n \in \Lin(E)$
+    (die Reihe konvergiert bzgl. der Operatornorm).
+    Die Reihe $\sum_{n=0}^\infty T^n$ heißt \begriff{\name{Neumann}sche Reihe}.
+\end{Satz}
+
+\subsection{%
+    Operatornormen in \texorpdfstring{$\real^n$}{ℝⁿ}%
+}
+
+\begin{Satz}{Operatornormen in $\real^n$}
+    \begin{enumerate}
+        \item
+        Seien $E := (\real^n, \norm{\cdot}_\infty)$ und $A \in \Lin(E)$
+        beschrieben durch die $n \times n$-Matrix $(a_{ij})_{i,j=1,\dotsc,n}$.
+        Dann kann die zugehörige Operatornorm berechnet werden durch\\
+        $\norm{A} = \max_{i=1,\dotsc,n} \sum_{j=1}^n |a_{ij}|$,
+        sie heißt \begriff{Zeilensummennorm} $\norm{A}_\infty$.
+        
+        \item
+        Seien $E := (\real^n, \norm{\cdot}_1)$ und $A \in \Lin(E)$
+        beschrieben durch die $n \times n$-Matrix $(a_{ij})_{i,j=1,\dotsc,n}$.
+        Dann kann die zugehörige Operatornorm berechnet werden durch\\
+        $\norm{A} = \max_{j=1,\dotsc,n} \sum_{i=1}^n |a_{ij}|$,
+        sie heißt \begriff{Spaltensummennorm} $\norm{A}_1$.
+        
+        \item
+        Seien $E := (\real^n, \norm{\cdot}_2)$ und $A \in \Lin(E)$
+        beschrieben durch die $n \times n$-Matrix $(a_{ij})_{i,j=1,\dotsc,n}$.
+        Dann ist die zugehörige Operatornorm gleich der Wurzel des größten Eigenwerts
+        der symmetrischen, positiv definiten Matrix $A^T A$,
+        sie heißt \begriff{Spektralnorm} $\norm{A}_2$.
+    \end{enumerate}
+\end{Satz}
+
+\pagebreak

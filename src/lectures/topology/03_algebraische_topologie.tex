@@ -1,0 +1,1071 @@
+\section{%
+    Algebraische Topologie%
+}
+
+\subsection{%
+    Gruppen%
+}
+
+\subsubsection{%
+    Gruppen und Untergruppen%
+}
+
+\begin{Def}{Gruppe}
+    Eine \begriff{Gruppe} ist ein Paar $(G, \ast)$ mit einer Menge $G$ und
+    einer Abbildung \\
+    $\ast\colon G \times G \rightarrow G$, sodass
+    \begin{enumerate}
+        \item
+        für alle $a, b, c \in G$ die Gleichung
+        $(a \ast b) \ast c = a \ast (b \ast c)$ gilt
+        (\begriff{Assoziativität}),
+        
+        \item
+        es ein $e \in G$ gibt mit $e \ast a = a \ast e = a$ für alle
+        $a \in A$ (\begriff{neutrales Element}) sowie
+        
+        \item
+        es für alle $a \in G$ ein $b \in G$ gibt mit
+        $a \ast b = b \ast a = e$ (\begriff{inverses Element}).
+    \end{enumerate}
+    Die Gruppe heißt \begriff{kommutativ} oder \begriff{abelsch}, falls
+    \begin{enumerate}[resume]
+        \item
+        für alle $a, b \in G$ die Gleichung $a \ast b = b \ast a$ gilt
+        (\begriff{Kommutativität}).
+    \end{enumerate}
+\end{Def}
+
+\begin{Bem}\\
+    Das neutrale Element $e$ und das zu $a \in G$ inverse Element $b$
+    sind eindeutig bestimmt.
+\end{Bem}
+
+\begin{Bsp}
+    $(\integer, +)$, $(\GL_n(\real), \cdot)$, $(\mathfrak{S}_n, \circ)$ \\
+    Sind $(G_1, \ast_1), \dotsc, (G_n, \ast_n)$ Gruppen, so ist
+    $(G, \ast)$ eine Gruppe, wobei $G := G_1 \times \dotsb \times G_n$ und
+    $\ast\colon G \times G \rightarrow G$,
+    $(a_1, \dotsc, a_n) \ast (b_1, \dotsc, b_n) :=
+    (a_1 \ast_1 b_1, \dotsc, a_n \ast_n b_n)$.
+\end{Bsp}
+
+\begin{Bem}
+    Man schreibt Gruppen meistens multiplikativ (oder additiv), d.\,h. statt
+    $\ast$ benutzt man oft das Symbol $\cdot$.
+    Man spricht dann von der \begriff{Multiplikation}
+    $\cdot\colon G \times G \rightarrow G$ und $ab = a \cdot b$ heißt das
+    \begriff{Produkt} von $a$ und $b$.
+    Dabei bezeichnet $1 = 1_G$ das neutrale Element und $a^{-1}$ das zu
+    $a$ inverse Element.
+\end{Bem}
+
+\linie
+
+\begin{Def}{Operationen mit Mengen}
+    Sind $(G, \cdot)$ eine Gruppe, $a, b \in G$ und $S, T \subset G$, so ist \\
+    $a \cdot T := \{a \cdot t \;|\; t \in T\}$, \qquad
+    $T \cdot a := \{t \cdot a \;|\; t \in T\}$, \qquad
+    $S \cdot T := \{s \cdot t \;|\; s \in S,\; t \in T\}$ und \\
+    $S^{-1} := \{s^{-1} \;|\; s \in S\}$.
+\end{Def}
+
+\begin{Def}{Untergruppe}
+    $U \subset G$ heißt \begriff{Untergruppe} ($U < G$), falls
+    $1 \in U$, $U \cdot U \subset U$ und $U^{-1} \subset U$.
+\end{Def}
+
+\begin{Satz}{Untergruppen von $(\integer, +)$}
+    $(\integer, +)$ hat nur Untergruppen der Form $n \cdot \integer$,
+    $n \in \natural$.
+\end{Satz}
+
+\linie
+
+\begin{Def}{erzeugte Untergruppe}
+    Sei $S \subset G$.
+    Dann ist die von $S$ \begriff{erzeugte Untergruppe} \\
+    $\aufspann{S} := \{s_1^{e_1} \dotsm s_n^{e_n} \;|\; n \in \natural,\;
+    s_1, \dotsc, s_n \in S,\; e_1, \dotsc, e_n \in \integer\}$
+    die kleinste Untergruppe von $G$, die $S$ enthält.
+\end{Def}
+
+\begin{Bsp}
+    In $(\integer, +)$ gilt $\aufspann{3} = 3\integer$ und
+    $\aufspann{3, 5} = \integer$.
+\end{Bsp}
+
+\begin{Def}{zyklisch}
+    $G$ heißt zyklisch, falls $G = \aufspann{a}$ für ein $a \in G$.
+\end{Def}
+
+\begin{Bsp}
+    Die Gruppen $(\integer, +)$ und $(\integer/n\integer, +)$ sind zyklisch.
+\end{Bsp}
+
+\pagebreak
+
+\subsubsection{%
+    Nebenklassen und Quotientenmenge%
+}
+
+\begin{Def}{Äquivalenzrelation auf $G$}
+    Sei $H < G$.
+    Dann kann man auf $G$ eine Äquivalenzrelation definieren durch
+    $a \sim b$, falls $a^{-1} b \in H$.
+    Für $a \in G$ ist die Äquivalenzklasse $aH$ (\begriff{Linksnebenklasse})
+    und die Menge aller Äquivalenzklassen ist
+    $G/H := \{a \cdot H \;|\; a \in G\}$ mit der
+    Projektion $\pi\colon G \rightarrow G/H$, $\pi(a) := aH$.
+    $|G : H| := |G/H|$ heißt \begriff{Index} der Untergruppe $H$ in $G$.
+\end{Def}
+
+\begin{Bem}
+    Im Allgemeinen ist $G/H$ keine Gruppe.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{\name{Lagrange}}
+    Für $H < G$ gilt $|G| = |H| \cdot |G/H|$
+    (d.\,h. insbesondere $|H| \;|\; |G|$).
+\end{Satz}
+
+\begin{Kor}
+    Ist $|G| = p$ eine Primzahl, so ist $G$ zyklisch, d.\,h.
+    besitzt keine echte nicht-triviale Untergruppe.
+\end{Kor}
+
+\subsubsection{%
+    Gruppenhomomorphismen, Bild und Kern%
+}
+
+\begin{Def}{Gruppenhomomorphismus}
+    Seien $(G, \ast)$ und $(H, \circ)$ Gruppen.
+    Eine Abbildung $h\colon G \rightarrow H$ heißt \begriff{Homomorphismus},
+    falls $h(a \ast b) = h(a) \circ h(b)$ für alle $a, b \in G$.
+    Injektive, surjektive bzw. bijektive Homomorphismen heißen
+    \begriff{Monomorphismen}, \begriff{Epimorphismen} bzw.
+    \begriff{Isomorphismen}.
+    Homomorphismen einer Gruppe in sich heißen \begriff{Endomorphismen},
+    im bijektiven Fall \begriff{Auto\-morphismen}.
+\end{Def}
+
+\begin{Bem}
+    Für einen Gruppenhomomorphismus $h$ gilt $h(1_G) = 1_H$ und
+    $h(a^{-1}) = (h(a))^{-1}$.
+\end{Bem}
+
+\begin{Bsp}
+    Sind $V$ und $W$ $K$-Vektorräume und $h\colon V \rightarrow W$ linear,
+    so ist $h\colon (V, +) \rightarrow (W, +)$ ein Homomorphismus.
+    Andere Beispiele sind
+    $\det\colon \GL_n(\real) \rightarrow (\real \setminus \{0\}, \cdot)$ und
+    $\exp\colon (\real, +) \rightarrow (\real, \cdot)$.
+\end{Bsp}
+
+\begin{Def}{Kategorie der Gruppen}
+    Gruppen und ihre Homomorphismen bilden die Kategorie der Gruppen
+    $\cat{Grp}$:
+    Objekte sind die Gruppen, Morphismen sind die Homomorphismen und
+    die Verknüpfung ist die übliche Verknüpfung (die Komposition zweier
+    Homomorphismen ist wieder ein Homomorphismus).
+\end{Def}
+
+\linie
+
+\begin{Def}{Bild und Kern}
+    Sei $f\colon G \rightarrow H$ ein Homomorphismus. \\
+    Dann heißen $\im f := f(G)$ \begriff{Bild} von $f$ und
+    $\ker f := f^{-1}(\{1_H\})$ \begriff{Kern} von $f$.
+\end{Def}
+
+\subsubsection{%
+    Normale Untergruppen und Quotientengruppen%
+}
+
+\begin{Def}{normale Untergruppe}\\
+    $K < G$ heißt \begriff{normal} ($K \vartriangleleft G$), falls
+    für alle $g \in G$ gilt, dass $gKg^{-1} = K$.
+\end{Def}
+
+\begin{Bem}
+    Diese Bedingung ist äquivalent zu $gK = Kg$ für alle $g \in G$, d.\,h.
+    $K < G$ ist normal genau dann, wenn für jedes $g \in G$ die
+    Linksnebenklasse $gK$ mit der Rechtsnebenklasse $Kg$ übereinstimmt.
+\end{Bem}
+
+\begin{Satz}{Kern ist normale Untergruppe}
+    Ist $f\colon G \rightarrow H$ ein Homomorphismus, so ist
+    $\ker f \vartriangleleft G$.
+\end{Satz}
+
+\linie
+
+\begin{Lemma}{$\sim$ für Untergruppen verträglich mit Multiplikation}\\
+    Ist $K \vartriangleleft G$ eine normale Untergruppe, so folgt aus
+    $a \sim b$ und $a' \sim b'$, dass $aa' \sim bb'$.
+\end{Lemma}
+
+\begin{Satz}{Faktorgruppe}
+    Ist $K \vartriangleleft G$ eine normale Untergruppe, so gibt es genau
+    eine Gruppenstruktur auf $G/K$, die $\pi$ zu einem Homomorphismus macht,
+    nämlich $(a \cdot K) \cdot (b \cdot K) := (a \cdot b) \cdot K$.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{Homomorphiesatz}
+    Seien $K \vartriangleleft G$ eine normale Untergruppe und
+    $f\colon G \rightarrow H$ ein Homomorphismus.
+    Dann gibt es einen Homomorphismus $\overline{f}\colon G/K \rightarrow H$
+    mit $f = \overline{f} \circ \pi$ genau dann, wenn $K < \ker f$.
+    $\overline{f}$ ist eindeutig und es gilt $\im(\overline{f}) = \im(f)$
+    sowie $\ker(\overline{f}) = \ker(f) / K$.
+\end{Satz}
+
+\pagebreak
+
+\subsubsection{%
+    Isomorphiesätze%
+}
+
+\begin{Satz}{erster Isomorphiesatz}
+    Jeder Homomorphismus $f\colon G \rightarrow H$ faktorisiert zu \\
+    $G \xrightarrow{\pi} G/\ker(f) \xrightarrow{\overline{f}} \im(f)
+    \xrightarrow{\iota} H$
+    mit $\pi$ Epi-, $\overline{f}$ Iso- und $\iota$ Monomorphismus:
+    \begin{align*}
+        \begin{xy}
+            \xymatrix{
+                G \ar[r]^f \ar @{>>} [d]_\pi &
+                H \\
+                G/\ker(f) \ar[r]^\sim_{\overline{f}} &
+                \im(f) \ar @{^{(}->} [u]_\iota
+            }
+        \end{xy}
+    \end{align*}
+\end{Satz}
+
+\begin{Kor}
+    Jede zyklische Gruppe ist isomorph zu $\integer/n\integer$.
+\end{Kor}
+
+\linie
+
+\begin{Def}{Kommutator}
+    Seien $G$ eine Gruppe und $a, b \in G$.
+    Dann heißt $[a, b] := aba^{-1}b^{-1}$ \begriff{Kommutator} von $a$ und $b$.
+    Die \begriff{Kommutatoruntergruppe} von $G$ ist
+    $[G, G] := \aufspann{[a, b] \;|\; a, b \in G}$.
+\end{Def}
+
+\begin{Satz}{\name{Abel}schmachung}\\
+    Es gilt $[G, G] \vartriangleleft G$ und
+    die \begriff{\name{Abel}schmachung} $G_{\ab} := G/[G, G]$ ist eine
+    abelsche Gruppe. \\
+    Jeder Homomorphismus $f\colon G \rightarrow A$ in eine
+    abelsche Gruppe $A$ induziert einen Homomorphismus
+    $\overline{f}\colon G_{\ab} \rightarrow A$ mit
+    $f = \overline{f} \circ \alpha_G$, wobei
+    $\alpha_G\colon G \rightarrow G_{\ab}$ die Quotientenabbildung ist.
+\end{Satz}
+
+\subsubsection{%
+    Freie Gruppen%
+}
+
+\begin{Def}{freie Gruppe}
+    Eine Gruppe $G$ heißt \begriff{frei} über einer Teilmenge $S \subset G$,
+    falls sich jedes $a \in G$ eindeutig schreiben lässt als
+    $a = s_1^{e_1} \dotsm s_n^{e_n}$, $n \in \integer$,
+    $s_1, \dotsc, s_n \in S$, $e_1, \dotsc, e_n \in \integer$. \\
+    In diesem Fall heißt $S$ \begriff{Basis} von $G$.
+\end{Def}
+
+\begin{Bsp}
+    $(\integer, +)$ ist frei über $S = \{1\}$.
+    $(\integer/n\integer, +)$ ist nicht frei.
+\end{Bsp}
+
+\begin{Satz}{Existenz einer freien Gruppe}
+    Zu jeder Menge $S$ existiert eine freie Gruppe $F(S)$.
+\end{Satz}
+
+\begin{Bem}
+    Konstruktion:
+    Definiere $A := S \times \{\pm 1\}$ mit
+    $(s, \varepsilon)^{-1} = (s, -\varepsilon)$ für $(s, \varepsilon) \in A$.
+    Sei $A^\ast := \{\text{endl. Wörter in A}\}$ und
+    $\cdot\colon A^\ast \times A^\ast \rightarrow A^\ast$ die Verknüpfung
+    von Wörtern.
+    Auf $A^\ast$ wird die Äquivalenzrelation $\equiv$ erzeugt durch
+    $uaa^{-1}v \equiv uv$ mit $u, v \in A^\ast$, $a \in A$, d.\,h. zwei
+    Wörter aus $A^\ast$ sind äquivalent genau dann, wenn sie durch eine
+    endliche Folge von Einfügen oder Entfernen von Unterwörtern der Form
+    $aa^{-1}$ mit $a \in A$ ineinander übergehen.
+    $(F(S), \cdot)$ mit $F(S) := A^\ast/\equiv$ und
+    $\cdot\colon F(S) \times F(S) \rightarrow F(S)$
+    der durch $\cdot$ auf $A^\ast$ induzierten Multiplikation ist dann
+    nach Konstruktion eine freie Gruppe.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{universelle Eigenschaft}
+    Eine Gruppe $F$ ist frei über $S \subset F$ genau dann, wenn es für alle
+    Abbildungen $f\colon S \rightarrow G$ genau einen Homomorphismus
+    $h\colon F \rightarrow G$ gibt mit $h|_S = f$.
+\end{Satz}
+
+\begin{Kor}
+    Ist $S \subset G$, dann induziert die Inklusion
+    $\iota\colon S \rightarrow G$ einen Homomorphismus
+    $\phi\colon F(S) \rightarrow G$.
+\end{Kor}
+
+\begin{Kor}
+    Jede Gruppe ist isomorph zu einem Quotienten einer freien Gruppe.
+\end{Kor}
+
+\pagebreak
+
+\subsection{%
+    Fundamentalgruppe und Überlagerungen%
+}
+
+\subsubsection{%
+    Fundamentalgruppe%
+}
+
+\begin{Def}{homotop bei festem $A$}
+    Seien $X$ und $Y$ topologische Räume sowie $A \subset X$.
+    Zwei stetige Abbildungen $f, g\colon X \rightarrow Y$ heißen
+    \begriff{homotop bei festem $A$} ($f \simeq g \text{ fix } A$ oder
+    $f \simeq_A g$), falls es eine Homotopie
+    $H\colon [0, 1] \times X \rightarrow Y$ von $H_0 = f$ nach $H_1 = g$ gibt
+    mit $H_s|_A = f|_A$ für alle $s \in [0, 1]$.
+\end{Def}
+
+\begin{Lemma}{Äquivalenzrelation}
+    Homotopie bei festem $A$ ist eine Äquivalenzrelation.
+\end{Lemma}
+
+\linie
+
+\begin{Def}{äquivalente Wege}
+    Zwei Wege $\alpha, \beta\colon [0, 1] \rightarrow X$ heißen
+    \begriff{äquivalent} ($\alpha \sim \beta$), falls es eine Homotopie
+    $H\colon [0, 1] \times [0, 1] \rightarrow X$ von $H_0 = \alpha$ und
+    $H_1 = \beta$ gibt mit $H(s, 0) = \alpha(0)$ und $H(s, 1) = \alpha(1)$
+    für alle $s \in [0, 1]$.
+\end{Def}
+
+\begin{Lemma}{Äquivalenzrelation}
+    Die Äquivalenz von Wegen ist eine Äquivalenzrelation. \\
+    Die Quotientenmenge sei $\Pi X(a, b) := PX(a, b) / \sim$. \\
+    Aus $\alpha \sim \beta$ folgt $\overline{\alpha} \sim \overline{\beta}$,
+    d.\,h. man erhält $-\colon \Pi X(a, b) \rightarrow \Pi X(b, a)$,
+    $[\gamma] \mapsto \overline{[\gamma]} := [\overline{\gamma}]$. \\
+    Aus $\alpha \sim \alpha'$ in $PX(a, b)$ und $\beta \sim \beta'$ in
+    $PX(b, c)$ folgt $\alpha \ast \beta \sim \alpha' \ast \beta'$ in
+    $PX(a, c)$, d.\,h. man erhält
+    $\ast\colon \Pi X(a, b) \times \Pi X(b, c) \rightarrow \Pi X(a, c)$,
+    $([\alpha], [\beta]) \mapsto [\alpha] \ast [\beta] := [\alpha \ast \beta]$.
+\end{Lemma}
+
+\linie
+
+\begin{Def}{Wegekategorie}\\
+    Jeder topologische Raum $X$ definiert eine Kategorie,
+    die \begriff{Wegekategorie} $\cat{\Pi X}$:
+    \begin{itemize}
+        \item
+        Objekte sind die Punkte $a \in X$,
+        
+        \item
+        Morphismen zu $a, b \in X$ sind die Klassen $[\gamma] \in \Pi X(a, b)$
+        und
+        
+        \item
+        die Verknüpfung ist die Komposition $\ast$ wie oben.
+    \end{itemize}
+    In $\cat{\Pi X}$ ist jeder Morphismus ein Isomorphismus
+    (invertierbar durch $[\gamma] \mapsto [\overline{\gamma}]$).
+\end{Def}
+
+\linie
+
+\begin{Def}{$f_\sharp$}
+    Ist $f\colon X \rightarrow Y$ eine stetige Abbildung, dann kann
+    man jedem Weg $\gamma$ von $a$ nach $b$ in $X$
+    den Weg $f \circ \gamma$ von $f(a)$ nach $f(b)$ in $Y$ zuordnen. \\
+    Dies definiert eine Abbildung
+    $f_\sharp\colon PX(a, b) \rightarrow PY(f(a), f(b))$,
+    $\gamma \mapsto f \circ \gamma$.
+    Sie ist auch wohldefiniert auf Homotopieklassen, d.\,h.
+    $f_\sharp\colon \Pi X(a, b) \rightarrow \Pi Y(f(a), f(b))$,
+    $[\gamma] \mapsto [f \circ \gamma]$.
+\end{Def}
+
+\begin{Satz}{$f_\sharp$ als Funktor}\\
+    Jede stetige Abbildung $f\colon X \rightarrow Y$ induziert einen Funktor
+    $f_\sharp\colon \cat{\Pi X} \rightarrow \Pi Y$:
+    \begin{itemize}
+        \item
+        Jedem Punkt $a \in X$ wird der Punkt $f(a) \in Y$ zugeordnet.
+        
+        \item
+        Jeder Homotopieklasse $[\gamma] \in \Pi X(a, b)$ wird die
+        Homotopieklasse \\
+        $f_\sharp([\gamma]) := [f \circ \gamma] \in \Pi Y(f(a), f(b))$
+        zugeordnet. 
+        
+        \item
+        Es gilt $f_\sharp([1_a]) = [1_{f(a)}]$ und
+        $f_\sharp([\alpha] \ast [\beta]) =
+        f_\sharp([\alpha]) \ast f_\sharp([\beta])$.
+    \end{itemize}
+\end{Satz}
+
+\linie
+
+\begin{Def}{Fundamentalgruppe}
+    Seien $X$ ein topologischer Raum und $x_0 \in X$. \\
+    Dann heißt $\pi_1(X, x_0) := \Pi X(x_0, x_0)$
+    die \begriff{Fundamentalgruppe} von $X$ in $x_0$.
+    Dies ist eine Gruppe.
+\end{Def}
+
+\begin{Satz}{induzierter Isomorphismus}
+    Jeder Weg $\gamma\colon [0, 1] \rightarrow X$ von $x_0$ nach $x_1$
+    induziert einen Isomorphismus
+    $h_\gamma\colon \pi_1(X, x_0) \rightarrow \pi_1(X, x_1)$,
+    $h_\gamma([\alpha]) := [\overline{\gamma} \ast \alpha \ast \gamma]$
+    mit $h_\gamma^{-1} = h_{\overline{\gamma}}$.
+\end{Satz}
+
+\linie
+\pagebreak
+
+\begin{Def}{einfach zusammenhängend}
+    Sei $X$ ein topologischer Raum.
+    $X$ heißt \begriff{einfach zusammen\-hängend}, falls $X$ wegzusammenhängend
+    und $\pi_1(X, x_0)$ für ein $x_0 \in X$ trivial ist.
+\end{Def}
+
+\begin{Bem}
+    In diesem Fall ist $\pi_1(X, x_0)$ automatisch
+    für alle $x_0 \in X$ trivial. \\
+    $X$ ist wegzusammenhängend genau dann, wenn für alle $x, y \in X$
+    $\Pi X(x, y)$ genau aus einem Element besteht.
+\end{Bem}
+
+\begin{Bsp}
+    $\real^n$ ist einfach zusammenhängend.
+\end{Bsp}
+
+\begin{Satz}{$\sphere^n$, $n \ge 2$ einfach zush.}
+    Für $n \ge 2$ ist $\sphere^n$ einfach zusammenhängend.
+\end{Satz}
+
+\begin{Bem}
+    $\sphere^1$ ist nicht einfach zusammenhängend, da
+    $\pi_1(\sphere^1, 1) \cong \integer$ (siehe unten).
+\end{Bem}
+
+\linie
+
+\begin{Def}{punktierter Raum}
+    Ein \begriff{punktierter Raum} ist ein Paar $(X, x_0)$ mit
+    einem topologischen Raum $X$ und einem Punkt $x_0 \in X$.
+    Analog zu $\cat{Top}$ ist die Kategorie $\cat{Top}_\ast$ der punktierten
+    Räume definiert.
+    Eine Abbildung $f\colon (X, x_0) \rightarrow (Y, y_0)$ zwischen
+    punktierten Räumen ist eine Abbildung $f\colon X \rightarrow Y$ mit
+    $f(x_0) = y_0$.
+\end{Def}
+
+\begin{Satz}{Fundamentalgruppe als Funktor}
+    Die Fundamentalgruppe ist ein Funktor
+    $\cat{Top}_\ast \rightarrow \cat{Grp}$:
+    \begin{itemize}
+        \item
+        Jedem punktierten Raum $(X, x_0)$ wird die Gruppe $\pi_1(X, x_0)$
+        zugeordnet.
+        
+        \item
+        Jeder stetigen Abbildung $f\colon (X, x_0) \rightarrow (Y, y_0)$ wird
+        der Gruppenhomomorphismus \\
+        $f_\sharp =: \pi_1(f)\colon \pi_1(X, x_0) \rightarrow \pi_1(Y, y_0)$,
+        $f_\sharp([\alpha]) = [f \circ \alpha]$ zugeordnet.
+        
+        \item
+        Es gilt $\pi_1(\id_{(X, x_0)}) = \id_{\pi_1(X, x_0)}$ und
+        $\pi_1(f \circ g) = \pi_1(f) \circ \pi_1(g)$.
+    \end{itemize}
+\end{Satz}
+
+\begin{Kor}\\
+    Aus $f\colon (X, x_0) \homoe (Y, y_0)$ folgt, dass
+    $f_\sharp\colon \pi_1(X, x_0) \bij \pi_1(Y, y_0)$ ein
+    Gruppenisomorphismus ist.
+\end{Kor}
+
+\begin{Satz}{$f \sim g \;\Rightarrow\; f_\sharp = g_\sharp$}\\
+    Sind $f, g\colon (X, x_0) \rightarrow (Y, y_0)$ homotop bei festem $x_0$,
+    dann gilt $f_\sharp = g_\sharp$.
+\end{Satz}
+
+\subsubsection{%
+    Überlagerungen%
+}
+
+\begin{Def}{triviale Überlagerung}\\
+    Seien $X$ und $\widetilde{X}$ topologische Räume sowie
+    $p\colon \widetilde{X} \rightarrow X$ stetig und surjektiv. \\
+    Ein Teilraum $U \subset X$ heißt \begriff{von $p$ trivial überlagert},
+    falls $p^{-1}(U) = \bigsqcup_{i \in I} \widetilde{U}_i$
+    mit of"|fenen Mengen $\widetilde{U}_i \subset \widetilde{X}$, wobei
+    $p_i := p|_{U_i}\colon \widetilde{U}_i \rightarrow U$ für alle $i \in I$
+    ein Homöomorphismus ist.
+\end{Def}
+
+\begin{Def}{Überlagerung}
+    $p\colon \widetilde{X} \rightarrow X$ heißt \begriff{Überlagerung}, falls
+    jeder Punkt $x \in X$ eine of"|fene Umgebung $U \subset X$ besitzt,
+    die von $p$ trivial überlagert wird. \\
+    In diesem Fall heißt $\widetilde{X}$ der \begriff{Überlagerungsraum} und
+    $X$ der \begriff{überlagerte Raum}.
+\end{Def}
+
+\begin{Bsp}
+    $\id\colon X \rightarrow X$ ist eine Überlagerung. \\
+    Jeder Homöomorphismus $p\colon \widetilde{X} \rightarrow X$
+    ist eine Überlagerung. \\
+    Ist $F$ ein diskreter Raum, dann ist $\pr\colon X \times F \rightarrow X$,
+    $\pr(x, y) = x$ eine (triviale) Überlagerung. \\
+    Sind $p_i\colon \widetilde{X}_i \rightarrow X_i$ Überlagerungen, dann auch
+    $\bigsqcup_{i \in I} p_i\colon \bigsqcup_{i \in I} \widetilde{X}_i
+    \rightarrow \bigsqcup_{i \in I} X_i$.
+\end{Bsp}
+
+\begin{Def}{Faser, Blätter}
+    Für $x \in X$ heißt $p^{-1}(x) := p^{-1}(\{x\}) \subset \widetilde{X}$ die
+    \begriff{Faser} über $x$. \\
+    Jede Faser $p^{-1}(x)$ ist diskret in $\widetilde{X}$.
+    Die Kardinalität $|p^{-1}(x)|$ heißt
+    \begriff{Anzahl der Blätter} über $x$. \\
+    Gilt $|p^{-1}(x)| = k \in \natural$ für alle $x \in X$, so heißt $p$ eine
+    \begriff{$k$-blättrige Überlagerung}.
+\end{Def}
+
+\begin{Satz}{$p(t) = e^{2\pi\i t}$ ist Überlagerung}\\
+    Die Abbildung $p\colon \real \rightarrow \sphere^1$, $p(t) := e^{2\pi\i t}$
+    ist eine Überlagerung.
+\end{Satz}
+
+\linie
+\pagebreak
+
+\begin{Def}{Hochhebung}
+    Seien $p\colon (\widetilde{X}, \widetilde{x}_0) \rightarrow (X, x_0)$
+    und $f\colon (W, w_0) \rightarrow (X, x_0)$ stetige Abbildungen mit
+    gleichem Zielraum.
+    Dann heißt eine stetige Abbildung
+    $\widetilde{f}\colon (W, w_0) \rightarrow (\widetilde{X}, \widetilde{x}_0)$
+    \begriff{Hochhebung} von $f$ bzgl. $p$, falls $p \circ \widetilde{f} = f$.
+    \begin{align*}
+        \begin{xy}
+            \xymatrix{
+                &
+                (\widetilde{X}, \widetilde{x}_0) \ar[d]^p \\
+                (W, w_0) \ar[r]_f \ar@{-->}[ru]^{\widetilde{f}} &
+                (X, x_0)
+            }
+        \end{xy}
+    \end{align*}
+\end{Def}
+
+\begin{Satz}{Fundamentalsatz der Überlagerungstheorie}
+    Sei $p\colon (\widetilde{X}, \widetilde{x}_0) \rightarrow (X, x_0)$
+    eine Überlagerung. \\
+    Dann existiert zu jeder stetigen Abbildung
+    $f\colon ([0, 1]^n, 0) \rightarrow (X, x_0)$
+    genau eine Hochhebung $\widetilde{f}\colon ([0, 1]^n, 0)
+    \rightarrow (\widetilde{X}, \widetilde{x}_0)$.
+\end{Satz}
+
+\begin{Bem}
+    Für $n = 1$ besagt der Satz, dass zu jedem Weg
+    $\gamma\colon ([0, 1], 0) \rightarrow (X, x_0)$ genau eine Hochhebung
+    $\widetilde{\gamma}\colon ([0, 1], 0) \rightarrow
+    (\widetilde{X}, \widetilde{x}_0)$ existiert. \\
+    Für $n = 2$ besagt der Satz, dass zu jeder Homotopie
+    $H\colon ([0, 1]^2, 0) \rightarrow (X, x_0)$ von
+    $H_0 = \gamma$ nach $H_1 = \gamma'$ eine Homotopie
+    $\widetilde{H}\colon ([0, 1]^2, 0) \rightarrow
+    (\widetilde{X}, \widetilde{x}_0)$ von
+    $\widetilde{H}_0 = \widetilde{\gamma}$ nach
+    $\widetilde{H}_1 = \widetilde{\gamma}'$ existiert \\
+    (dabei sind $\gamma, \gamma'\colon ([0, 1], 0) \rightarrow (X, x_0)$ Wege).
+\end{Bem}
+
+\begin{Def}{Menge aller Wege, die in einem Punkt beginnen}
+    Für einen topologischen Raum $X$ sei
+    $P(X, x_0) := \bigcup_{x \in X} PX(x_0, x)$ die Menge aller Wege in $X$,
+    die in $x_0$ beginnen. \\
+    Entsprechend ist $\Pi(X, x_0) := \bigcup_{x \in X} \Pi X(x_0, x) =
+    P(X, x_0)/\sim$ die Menge aller Äquivalenzklassen von Wegen in $X$,
+    die in $x_0$ beginnen.
+\end{Def}
+
+\begin{Satz}{induzierte Bijektionen $p_\sharp$}
+    Jede Überlagerung
+    $p\colon (\widetilde{X}, \widetilde{x}_0) \rightarrow (X, x_0)$
+    induziert Bijektionen
+    $p_\sharp\colon P(\widetilde{X}, \widetilde{x}_0) \bij P(X, x_0)$,
+    $\alpha \mapsto p \circ \alpha$ und
+    $p_\sharp\colon \Pi(\widetilde{X}, \widetilde{x}_0) \bij \Pi(X, x_0)$,
+    $[\alpha] \mapsto [p \circ \alpha]$.
+\end{Satz}
+
+\begin{Kor}
+    $p_\sharp\colon \pi_1(\widetilde{X}, \widetilde{x}_0) \rightarrow
+    \pi_1(X, x_0)$ ist injektiv.
+\end{Kor}
+
+\linie
+
+\begin{Def}{Fasertransport}
+    Sei $p\colon \widetilde{X} \rightarrow X$ eine Überlagerung.
+    Für $x \in X$ ist $F_x := p^{-1}(x)$ die Faser über dem Punkt $x$.
+    Zu jedem Startwert $\widetilde{x} \in F_x$ und jedem Weg
+    $\gamma \in PX(x, y)$ existiert genau eine Hochhebung
+    $\widetilde{\gamma}\colon ([0, 1], 0) \rightarrow
+    (\widetilde{X}, \widetilde{x})$.
+    Der Endpunkt $\widetilde{y} = \widetilde{\gamma}(1)$ ergibt sich aus
+    dem Startwert $\widetilde{x}$ und dem Verlauf von $\gamma$.
+    Man setzt $\widetilde{x} \cdot \gamma := \widetilde{y}$.
+    Dies ist wohldefiniert auf $[\gamma]$, d.\,h. man kann
+    $\widetilde{x} \cdot [\gamma] := \widetilde{y}$ schreiben.
+\end{Def}
+
+\begin{Satz}{Fasertransport als Funktor}\\
+    Jede Überlagerung $p\colon \widetilde{X} \rightarrow X$ definiert einen
+    Funktor $F\colon \cat{\Pi X} \rightarrow \cat{Set}$:
+    \begin{itemize}
+        \item
+        Jedem Punkt $x \in X$ wird seine Faser $F_x = p^{-1}(x)$ zugeordnet.
+        
+        \item
+        Jedem Morphismus $[\gamma] \in \Pi X(x, y)$ wird die Abbildung
+        $F_{[\gamma]}\colon F_x \rightarrow F_y$,
+        $\widetilde{x} \mapsto \widetilde{x} \cdot [\gamma]$ zugeordnet.
+        
+        \item
+        Es gilt $\widetilde{x} \cdot [1_x] = \widetilde{x}$ und
+        $(\widetilde{x} \cdot [\alpha]) \cdot [\beta] =
+        \widetilde{x} \cdot ([\alpha] \ast [\beta])$.
+    \end{itemize}
+    Da jeder Morphismus $[\gamma] \in \Pi X(x, y)$ in der Kategorie
+    $\cat{\Pi X}$ invertierbar ist, ist die Abbildung
+    $F_{[\gamma]}\colon F_x \rightarrow F_y$
+    eine Bijektion zwischen den Fasern.
+\end{Satz}
+
+\begin{Kor}
+    Sei $p\colon \widetilde{X} \rightarrow X$ eine Überlagerung.
+    Dann operiert die Fundamentalgruppe \\
+    $G := \pi_1(X, x_0)$ auf der
+    Faser $F := p^{-1}(x_0)$ gemäß $F \times G \rightarrow F$,
+    $(\widetilde{x}, [\gamma]) \mapsto \widetilde{x} \cdot [\gamma]$.
+\end{Kor}
+
+\linie
+
+\begin{Satz}{Fundamentalgruppe der Kreislinie}
+    Die Überlagerung $p\colon (\real, 0) \rightarrow (\sphere^1, 1)$ mit
+    $p(t) = e^{2\pi\i t}$ induziert einen Gruppenisomorphismus
+    $h\colon \pi_1(\sphere^1, 1) \rightarrow \integer$ mit
+    $h([\gamma]) := 0 \cdot [\gamma]$.
+\end{Satz}
+
+\pagebreak
+
+\subsubsection{%
+    Quotienten%
+}
+
+\begin{Def}{Operation einer Gruppe}
+    Seien $X$ ein topologischer Raum und $G$ eine Gruppe
+    Eine \begriff{(Links-)Operation} von $G$ auf $X$ ist eine Abbildung
+    $\varphi\colon G \times X \rightarrow X$, $(g, x) \mapsto g \cdot x = gx$,
+    sodass $1x = x$ und $(gh)x = g(hx)$ für alle $g, h \in G$ und $x \in X$
+    gilt. \\
+    Analog sind \begriff{Rechts-Operationen}
+    $\varphi\colon X \times G \rightarrow X$ definiert. \\
+    Eine Operation heißt \begriff{stetig}, falls
+    $\varphi_g\colon X \rightarrow X$, $x \mapsto xg$ stetig ist
+    für alle $g \in G$.
+\end{Def}
+
+\begin{Def}{Bahn}
+    Für $x \in X$ heißt $Gx := \{gx \;|\; g \in G\}$ die \begriff{Bahn} von $x$
+    unter der Operation von $G$.
+    Zwei Bahnen sind entweder gleich oder disjunkt.
+    Die \begriff{Quotientenmenge} ist $X/G := \{Gx \;|\; x \in X\}$ mit
+    der \begriff{Quotientenabbildung} $q\colon X \rightarrow X/G$,
+    $x \mapsto Gx$.
+    Die Quotiententopologie macht $X/G$ zu einem topologischen Raum und
+    $q$ zu einer stetigen Abbildung.
+\end{Def}
+
+\begin{Def}{freie (diskontinuierliche) Operation}
+    Sei $\varphi\colon G \times X \rightarrow X$ eine Operation. \\
+    $\varphi$ heißt \begriff{frei}, falls $gx \not= x$ für jeden Punkt
+    $x \in X$ und alle $g \in G$ mit $g \not= 1$. \\
+    $\varphi$ heißt \begriff{frei diskontinuierlich}, falls jeder Punkt
+    $x \in X$ eine of"|fene Umgebung $U \subset X$ besitzt, sodass
+    $U \cap gU = \emptyset$ für alle $g \in G$ mit $g \not= 1$.
+\end{Def}
+
+\begin{Bsp}
+    $(\integer, +)$ operiert auf $\real$ durch
+    $\integer \times \real \rightarrow \real$, $(k, x) \mapsto k + x$
+    (Translation).
+    Diese Operation ist frei diskontinuierlich.
+    Analog operiert $(\integer^n, +)$ auf $\real^n$ durch
+    $\integer^n \times \real^n \rightarrow \real^n$, $(k, x) \mapsto k + x$. \\
+    Der Quotient
+    $q\colon \sphere^n \rightarrow \real\projective^n = \sphere^n/\{\pm 1\}$
+    entsteht durch die Operation
+    ${\pm 1} \times \sphere^n \rightarrow \sphere^n$, $(g, x) \mapsto gx$
+    (Punktspiegelung am Ursprung im $\real^{n+1}$).
+    Die Operation ist frei diskontinuierlich. \\
+    Die nicht-orientierbaren Flächen $F_g^- = F_g^+/\{\pm 1\}$ entstehen
+    ebenso als Quotienten aus den orientierbaren Flächen $F_g^+$. \\
+    Sei $a \in \real \setminus \rational$ und $\xi := e^{2\pi\i a}$.
+    Dann ist $\integer \times \sphere^1 \rightarrow \sphere^1$,
+    $(k, x) \mapsto \xi^k x$ eine freie Operation, aber nicht
+    frei diskontinuierlich.
+\end{Bsp}
+
+\linie
+
+\begin{Satz}{Homomorphismus durch Fasertransport}
+    Sei $G \times \widetilde{X} \rightarrow \widetilde{X}$ eine stetige, freie
+    diskontinuierliche Operation einer Gruppe $G$ auf einem topologischen Raum
+    $\widetilde{X}$. Dann gilt:
+    \begin{enumerate}
+        \item
+        Die Quotientenabbildung
+        $q\colon \widetilde{X} \rightarrow X := \widetilde{X}/G$
+        ist eine Überlagerung.
+        
+        \item
+        Die Operation von $G$ kommutiert mit dem Fasertransport durch
+        $\cat{\Pi X}$, d.\,h. \\
+        $(g \cdot \widetilde{x}) \cdot [\gamma] =
+        g \cdot (\widetilde{x} \cdot [\gamma])$
+        für alle $g \in G$, $[\gamma] \in \Pi(X, x)$ und
+        $\widetilde{x} \in q^{-1}(x)$.
+        
+        \item
+        Für jeden Basispunkt $\widetilde{x}_0 \in \widetilde{X}$ und
+        $x_0 := q(\widetilde{x}_0)$ existiert der Gruppenhomomorphismus
+        $h\colon \pi_1(X, x_0) \rightarrow G$ mit
+        $h([\alpha]) \cdot \widetilde{x}_0 = \widetilde{x}_0 \cdot [\alpha]$.
+        
+        \item
+        Ist $\widetilde{X}$ wegzusammenhängend, dann ist $h$ surjektiv. \\
+        Allgemein gilt $\im(h) = \{g \in G \;|\; \widetilde{x}_0 \text{ und }
+        g \cdot \widetilde{x}_0 \text{ sind in } \widetilde{X}
+        \text{ verbindbar}\}$.
+        
+        \item
+        Ist $\widetilde{X}$ einfach zusammenhängend, dann ist $h$ bijektiv. \\
+        Allgemein gilt
+        $\ker(h) = q_\sharp(\pi_1(\widetilde{X}, \widetilde{x}_0))$.
+    \end{enumerate}
+\end{Satz}
+
+\pagebreak
+
+\subsubsection{%
+    Hochhebungen%
+}
+
+\begin{Satz}{Eindeutigkeit von Hochhebungen auf wegzush. Räumen}\\
+    Sei $p\colon (\widetilde{X}, \widetilde{x}_0) \rightarrow (X, x_0)$
+    eine Überlagerung.
+    Ist $(W, w_0)$ wegzusammenhängend, dann existiert zu jeder stetigen
+    Abbildung $f\colon (W, w_0) \rightarrow (X, x_0)$
+    höchstens eine Hochhebung \\
+    $\widetilde{f}\colon (W, w_0) \rightarrow
+    (\widetilde{X}, \widetilde{x}_0)$.
+\end{Satz}
+
+\begin{Satz}{Existenz von Hochhebungen auf wegzush.
+             und lokal wegzush. Räumen}\\
+    Seien $p\colon (\widetilde{X}, \widetilde{x}_0) \rightarrow (X, x_0)$
+    eine Überlagerung und $(W, w_0)$ ein wegzusammenhängender und lokal
+    wegzusammenhängender Raum.
+    Dann erlaubt eine stetige Abbildung $f\colon (W, w_0) \rightarrow (X, x_0)$
+    eine Hochhebung $\widetilde{f}\colon (W, w_0) \rightarrow
+    (\widetilde{X}, \widetilde{x}_0)$ genau dann, wenn
+    $f_\sharp(\pi_1(W, w_0)) \subset
+    p_\sharp(\pi_1(\widetilde{X}, \widetilde{x}_0))$. \\
+    (In diesem Fall ist die Hochhebung gemäß obigem Satz eindeutig.)
+\end{Satz}
+
+\subsubsection{%
+    Decktransformationen und normale Überlagerungen%
+}
+
+\begin{Def}{Automorphismus}
+    Sei $p\colon \widetilde{X} \rightarrow X$ eine Überlagerung.
+    Ein Homöomorphismus $f\colon \widetilde{X} \homoe \widetilde{X}$ mit
+    $p \circ f = p$ heißt \begriff{Automorphismus} oder
+    \begriff{Decktransformation} der Überlagerung $p$.
+    Die Menge $\Aut(p) := \{g\colon \widetilde{X} \homoe \widetilde{X} \;|\;
+    p \circ g = p\}$ heißt \begriff{Automorphismengruppe} der Überlagerung $p$.
+\end{Def}
+
+\begin{Bsp}
+    Für die Überlagerung $p\colon \real \rightarrow \sphere^1$ mit
+    $p(t) = e^{2\pi\i t}$ ist die Translation
+    $\tau\colon \real \rightarrow \real$ mit
+    $\tau(x) = x + 1$ eine Decktransformation.
+    Es gilt $\Aut(p) = \aufspann{\tau} \cong \integer$. \\
+    Für die Überlagerung $p\colon \sphere^1 \rightarrow \sphere^1$ mit
+    $p(z) = z^k$ ist die Rotation
+    $\rho\colon \sphere^1 \rightarrow \sphere^1$ mit
+    $\rho(z) = e^{2\pi\i/k} z$ eine Decktransformation.
+    Es gilt $\Aut(p) = \aufspann{\rho} \cong \integer/k$.
+\end{Bsp}
+
+\begin{Satz}{Automorphismengruppe}
+    Sei $\widetilde{X}$ wegzusammenhängend und $G < \Homeo(\widetilde{X})$
+    operiere frei diskontinuierlich auf $\widetilde{X}$.
+    Für die Überlagerung
+    $q\colon \widetilde{X} \rightarrow X := \widetilde{X}/G$ gilt dann
+    $\Aut(q) = G$.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{Transitivität der Decktransformationsgruppe}
+    Sei $p\colon \widetilde{X} \rightarrow X$ eine
+    wegzusammenhängende Überlagerung (d.\,h. $\widetilde{X}$ und $X$ sind
+    wegzusammenhängend). Dann gilt:
+    \begin{enumerate}
+        \item
+        Die Automorphismengruppe $\Aut(p)$ operiert frei diskontinuierlich auf
+        $\widetilde{X}$.
+        
+        \item
+        Operiert $\Aut(p)$ transitiv auf einer Faser, dann operiert
+        $\Aut(p)$ transitiv auf jeder Faser und $p$ ist homöomorph zum
+        Quotienten $q\colon \widetilde{X} \rightarrow \widetilde{X}/\Aut(p)$.
+    \end{enumerate}
+\end{Satz}
+
+\linie
+
+\begin{Def}{normale Überlagerung}
+    Eine Überlagerung $p\colon \widetilde{X} \rightarrow X$ heißt
+    \begriff{normal} oder \begriff{galoisch}, falls $\widetilde{X}$
+    wegzusammenhängend ist und $\Aut(p)$ transitiv auf jeder Faser operiert.
+\end{Def}
+
+\begin{Bsp}
+    $p\colon \real \rightarrow \sphere^1$ mit $p(t) = e^{2\pi\i t}$ ist eine
+    normale Überlagerung. \\
+    Jede zweiblättrige, wegzusammenhängende Überlagerung
+    $p\colon \widetilde{X} \rightarrow X$ ist normal.
+\end{Bsp}
+
+\begin{Satz}{Kriterium für Normalität}
+    Sei $p\colon (\widetilde{X}, \widetilde{x}_0) \rightarrow (X, x_0)$ eine
+    Überlagerung wegzusammenhängender und lokal wegzusammenhängender Räume
+    $\widetilde{X}$ und $X$. \\
+    Dann ist $p$ normal genau dann, wenn die Untergruppe
+    $p_\sharp(\pi_1(\widetilde{X}, \widetilde{x}_0))$ in $\pi_1(X, x_0)$
+    normal ist.
+\end{Satz}
+
+\pagebreak
+
+\subsubsection{%
+    \name{Galois}-Korrespondenz%
+}
+
+\begin{Def}{Kategorie der wegzush. Überlagerungen}\\
+    Sei $(X, x_0)$ wegzusammenhängend und lokal wegzusammenhängend. \\
+    Die wegzusammenhängenden Überlagerungen bilden eine Kategorie
+    $\cat{Cor(X, x_0)}$:
+    \begin{itemize}
+        \item
+        Die Objekte sind die wegzusammenhängenden Überlagerungen
+        $p\colon (Y, y_0) \rightarrow (X, x_0)$.
+        
+        \item
+        Die Morphismen zwischen wegzusammenhängenden Überlagerungen
+        $p\colon (Y, y_0) \rightarrow (X, x_0)$ und
+        $q\colon (Z, z_0) \rightarrow (X, x_0)$ sind die stetigen
+        Abbildungen $f\colon (Y, y_0) \rightarrow (Z, z_0)$ mit
+        $q \circ f = p$.
+        
+        \item
+        Die Komposition ist die für stetige Abbildungen übliche.
+    \end{itemize}
+\end{Def}
+
+\begin{Bem}
+    Aufgrund der Eindeutigkeit von Hochhebungen enthält jede Morphismenmenge
+    $\Mor(p, q)$ höchstens ein Element.
+    Im Falle $\Mor(p, q) \not= \emptyset$ schreibt man kurz
+    $f\colon p \rightarrow q$ oder $p \rightarrow q$.
+    Dies definiert eine Ordnung auf $\cat{Cor(X, x_0)}$,
+    denn es gilt $p \rightarrow p$ (durch die Identität),
+    aus $p \rightarrow q$ und $q \rightarrow r$ folgt $p \rightarrow r$
+    (durch die Komposition) und
+    aus $p \rightarrow q$ und $q \rightarrow p$ folgt $p \cong q$.
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Über der Kreislinie $(\sphere^1, 1)$ gibt es die Überlagerungen
+    $p_0\colon (\real, 0) \rightarrow (\sphere^1, 1)$ mit \\
+    $p_0(t) = e^{2\pi\i t}$ und
+    $p_k\colon (\sphere^1, 1) \rightarrow (\sphere^1, 1)$
+    mit $p_k(z) = z^k$ für $k \in \integer$, $k \not= 0$. \\
+    Es gilt $p_0 \rightarrow p_k$ für alle $k \in \integer$, $k \not= 0$. \\
+    Für $k, \ell \in \integer$ gilt $p_k \rightarrow p_\ell$ genau dann,
+    wenn $\ell \;|\; k$.
+    Genauer: Aus $k = m\ell$ folgt $z^k = z^{m\ell} = (z^m)^{\ell}$.
+\end{Bsp}
+
+\begin{Satz}{Faktorisierung von Überlagerungen}
+    Seien $X$ lokal wegzusammenhängend, $r\colon Y \rightarrow Z$ und
+    $q\colon Z \rightarrow X$ stetige, surjektive Abbildungen sowie
+    $p := q \circ r\colon Y \rightarrow X$ ihre Komposition. 
+    \begin{enumerate}
+        \item
+        Sind $p$ und $q$ Überlagerungen, dann auch $r$.
+        
+        \item
+        Sind $p$ und $r$ Überlagerungen, dann auch $q$.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bem}
+    Im Allgemeinen ist $p = q \circ r$ keine Überlagerung, wenn
+    $q$ und $r$ Überlagerungen sind.
+\end{Bem}
+
+\begin{Kor}
+    Sei $X$ wegzusammenhängend und lokal wegzusammenhängend,\\
+    $p\colon (Y, y_0) \rightarrow (X, x_0)$ und
+    $q\colon (Z, z_0) \rightarrow (X, x_0)$ wegzusammenhängende Überlagerungen
+    sowie $K := p_\sharp(\pi_1(Y, y_0))$ und $H := q_\sharp(\pi_1(Z, z_0))$
+    die zugehörigen Untergruppen in $\pi_1(X, x_0)$.
+    \begin{enumerate}
+        \item
+        Ein Morphismus $f\colon p \rightarrow q$ existiert genau dann, wenn
+        $K < H$ gilt. \\
+        In diesem Fall ist $f$ eine Überlagerung mit Blätterzahl gleich dem
+        Index von $K$ in $H$.
+        
+        \item
+        Die Überlagerugn $f\colon p \rightarrow q$ ist normal genau dann, wenn
+        $K \vartriangleleft H$ gilt. \\
+        In diesem Fall gibt es einen Gruppenisomorphismus, sodass
+        $\Aut(f) \cong H/K$.
+    \end{enumerate}
+\end{Kor}
+
+\linie
+
+\begin{Satz}{\name{Galois}-Korrespondenz}
+    Sei $X$ wegzusammenhängend und lokal wegzusammenhängend,
+    $p\colon (Y, y_0) \rightarrow (X, x_0)$ eine normale Überlagerung und
+    $K := p_\sharp(\pi_1(Y, y_0))$ die zugehörige normale Untergruppe in der
+    Fundamentalgruppe $G := \pi_1(X, x_0)$.
+    Dann gibt es folgende Korrespondenz von wegzusammenhängenden Überlagerungen
+    und Untergruppen:
+    \begin{enumerate}
+        \item
+        Zu jeder \begriff{Zwischenüberlagerung}
+        $q\colon (Z, z_0) \rightarrow (X, x_0)$ mit
+        $p \rightarrow q$ gehört die \begriff{Zwischengruppe}
+        $H := q_\sharp(\pi_1(Z, z_0))$ mit $K < H < G$.
+        
+        \item
+        Zu jeder Zwischengruppe $H$ mit $K < H < G$ gehört eine
+        (bis auf Homöomorphie eindeutige) Zwischenüberlagerung
+        $q\colon (Z, z_0) \rightarrow (X, x_0)$ mit
+        $q_\sharp(\pi_1(Z, z_0)) = H$.
+    \end{enumerate}
+\end{Satz}
+
+\pagebreak
+
+\subsubsection{%
+    Universelle Überlagerung%
+}
+
+\begin{Def}{universelle Überlagerung}
+    Sei $X$ wegzusammenhängend und lokal wegzusammenhängend.
+    Eine Überlagerung
+    $p\colon (\widetilde{X}, \widetilde{x}_0) \rightarrow (X, x_0)$ heißt
+    \begriff{universell}, falls $\widetilde{X}$ einfach zusammenhängend ist.
+\end{Def}
+
+\begin{Bem}
+    In diesem Fall ist auch
+    $p\colon (\widetilde{X}, \widetilde{x}) \rightarrow (X, x)$ für alle
+    $\widetilde{x} \in \widetilde{X}$ und $x := p(\widetilde{x})$ eine
+    universelle Überlagerung.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{notwendige Bedingung}
+    Ist $p\colon \widetilde{X} \rightarrow X$ eine universelle Überlagerung,
+    dann existiert zu jedem $x \in X$ eine of"|fene Umgebung $U \subset X$,
+    sodass $\iota\colon (U, x) \rightarrow (X, x)$ den trivialen Homomorphismus
+    $\iota_\sharp\colon \pi_1(U, x) \rightarrow \pi_1(X, x)$ induziert.
+\end{Satz}
+
+\begin{Def}{semilokal einfach zusammenhängend}
+    Ein topologischer Raum $X$ heißt
+    \begriff{semilokal einfach zusammenhängend} in $x \in X$, falls eine
+    Umgebung $U \subset X$ von $x$ in $X$ existiert, sodass jede Schleife in
+    $(U, x)$ in $(X, x)$ zusammenziehbar ist.
+    Äquivalent dazu ist, dass die Inklusion
+    $\iota\colon (U, x) \rightarrow (X, x)$ den trivialen Homomorphismus
+    $\iota_\sharp\colon \pi_1(U, x) \rightarrow \pi_1(X, x)$ induziert.
+\end{Def}
+
+\begin{Bsp}
+    Der \begriff{Hawaiianische Ohrring}
+    $W := \bigcup_{n \in \natural} \frac{1}{n} (\sphere^1 - 1)$ ist
+    wegzusammenhängend und lokal wegzusammenhängend, aber nicht
+    semilokal einfach zusammenhängend. \\
+    Der \begriff{Hawaiianische Kegel} $CW$ ist semilokal einfach
+    zusammenhängend, aber nicht lokal einfach zusammenhängend.
+\end{Bsp}
+
+\linie
+
+\begin{Satz}{Konstruktion der universellen Überlagerung}
+    Sei $X$ wegzusammenhängend und lokal wegzusammenhängend.
+    Eine universelle Überlagerung
+    $p\colon (\widetilde{X}, \widetilde{x}_0) \rightarrow (X, x_0)$
+    existiert genau dann, wenn $X$ semilokal einfach zusammenhängend ist.
+\end{Satz}
+
+\pagebreak

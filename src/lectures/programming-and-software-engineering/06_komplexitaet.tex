@@ -1,0 +1,210 @@
+\section{%
+    Komplexität von Algorithmen und Programmen%
+}
+
+\subsection{%
+    Aufwandsfunktionen%
+}
+
+\begin{Def}{Zeitaufwand}
+    Die \begriff{Zeitkomplexität} behandelt die Zeitspanne, innerhalb derer
+    die Ergebnisse ausgegeben werden.
+    Diese "`Rechendauer"' ist abhängig von der Eingabe:
+    Man definiert in der Regel den Zeitaufwand als Funktion
+    $t_\pi: \mathbb{N}_0 \rightarrow \mathbb{N}_0$ mit $t_\pi(n) =$ maximale
+    Zeit/Anzahl der Schritte, die das Programm $\pi$ für irgendeine Eingabe der
+    Länge $n$ bis zum Anhalten benötigt.
+    Meist verlangt man, dass $\pi$ stets terminiert, damit $t_\pi$ überall
+    definiert ist.
+    Die \begriff{uniforme Zeitkomplexität} geht davon aus, dass für jeden
+    Befehl (Zuweisung, Ausdruck usw.) gleich viel Zeit in Anspruch genommen
+    wird (in der Realität ist dies oft nicht so).
+\end{Def}
+
+\begin{Def}{Größenordnung}
+    Bei der Zeitkomplexität interessiert man sich meist nur für eine
+    Abschätzung, bei der multiplikative und additive Konstanten ignoriert
+    werden.
+    Zur Beschreibung der \begriff{Größenordnung} einer
+    reellwertigen Funktion werden die \textsc{Landau}-Symbole verwendet.
+\end{Def}
+
+\begin{Def}{\textsc{Landau}-Symbole}
+    Sei $f: \mathbb{R}^+ \rightarrow \mathbb{R}^+$.
+    Dann sind die \textsc{Landau}-Symbole wie folgt definiert:
+    \begin{itemize}
+        \item $\mathcal{O}(f) =
+        \{g: \mathbb{R}^+ \rightarrow \mathbb{R}^+ \;|\;
+        \exists_{C > 0} \exists_{n_0 \in \mathbb{N}}
+        \forall_{n \ge n_0}\; g(n) \le C \cdot f(n)\}$
+        
+        \item $o(f) =
+        \{g: \mathbb{R}^+ \rightarrow \mathbb{R}^+ \;|\;
+        \forall_{\varepsilon > 0} \exists_{n_0 \in \mathbb{N}}
+        \forall_{n \ge n_0}\; g(n) \le \varepsilon \cdot f(n)\}$
+        
+        \item $\Omega(f) =
+        \{g: \mathbb{R}^+ \rightarrow \mathbb{R}^+ \;|\;
+        \exists_{C > 0} \exists_{n_0 \in \mathbb{N}}
+        \forall_{n \ge n_0}\; f(n) \le C \cdot g(n)\}$
+        
+        \item $\omega(f) =
+        \{g: \mathbb{R}^+ \rightarrow \mathbb{R}^+ \;|\;
+        \forall_{\varepsilon > 0} \exists_{n_0 \in \mathbb{N}}
+        \forall_{n \ge n_0}\; f(n) \le \varepsilon \cdot g(n)\}$
+        
+        \item $\Theta(f) =
+        \{g: \mathbb{R}^+ \rightarrow \mathbb{R}^+ \;|\;
+        \exists_{C_1, C_2 > 0} \exists_{n_0 \in \mathbb{N}}
+        \forall_{n \ge n_0}\; C_1 \cdot f(n) \le g(n) \le C_2 \cdot f(n)\}$
+    \end{itemize}
+    Es gilt $g \in \Omega(f) \;\Leftrightarrow\; f \in \mathcal{O}(g)$
+    sowie $g \in \omega(f) \;\Leftrightarrow\; f \in o(g)$. \\
+    Außerdem ist $\Theta(f) = \mathcal{O}(f) \cap \Omega(f)$.
+\end{Def}
+
+\begin{Def}{Komplexitätsklassen}
+    In der Praxis betrachtet man meistens nur die Funktionsklassen
+    $\mathcal{O}(1)$ (konstante Fkt.),
+    $\mathcal{O}(\log n)$ (höchstens logarithmisch wachsende Fkt.),
+    $\mathcal{O}(\sqrt[k]{n})$ (höchstens mit einer $k$-ten Wurzel wachsende
+    Fkt.),
+    $\mathcal{O}(n)$ (lineare Fkt.),
+    $\mathcal{O}(n \cdot \log n)$ ("`ein wenig"' stärker als linear wachsende
+    Fkt.),
+    $\mathcal{O}(n^2)$ (höchstens quadratisch wachsende Fkt.),
+    $\mathcal{O}(n^k)$ (höchstens polynomiell vom Grad $k$ wachsende Fkt.) und
+    $\mathcal{O}(2^n)$ (höchstens exponentiell zur Basis 2 wachsende Fkt.).
+\end{Def}
+
+\addtocounter{subsection}{4}
+
+\subsection{%
+    Registermaschinen und andere Rechenmodelle%
+}
+
+\begin{Def}{Registermaschine}
+    Eine \begriff{Registermaschine} ist wie ein kleiner Mikroprozessor
+    aufgebaut und besteht aus
+    \begin{itemize}
+        \item einer \begriff{Zentraleinheit} mit sechs \begriff{Registern}
+        (\assembler{X}, \assembler{Y} und \assembler{Z} für
+        arithmetische/logische Operationen,
+        Adressregister \assembler{A}, Befehlsregister \assembler{B}
+        und Flagregister \assembler{F}),
+        
+        \item einem endlichen \begriff{Programmspeicher}, in dem nacheinander
+        die Befehle
+        des abzuarbeitenden (endlichen) Programms stehen
+        
+        \item sowie einem unendlich langen \begriff{Rechenspeicher} mit
+        durchnummerierten Speicherzellen, die jeweils eine beliebig große ganze
+        Zahl aufnehmen können.
+    \end{itemize}
+\end{Def}
+
+\begin{Def}{Programmieren mit der Registermaschine}
+    \emph{Jedes} \Ada{}-Programm lässt sich ein Registermaschinenprogramm
+    übersetzen.
+    Dieser Prozess lässt sich automatisieren (\begriff{Compiler}).
+    Alle Kontrollstukturen lassen sich mit dem bedingten Sprung
+    \assembler{jump b} realisieren (vgl. \adacode{goto} und Marken in \Ada{}).
+\end{Def}
+
+\pagebreak
+
+\begin{Def}{Befehle der Registermaschine} \\
+    \begin{tabular}{p{11.5cm}p{4.5cm}}
+        \begin{minipage}[c]{11.5cm}
+    \begin{tabular}{lp{3cm}|ll|lll}
+\assembler{load V,c} & \pseudocode{V := c} &
+\assembler{copy V,V'} & \pseudocode{V := V'} \\
+\assembler{read V} & \pseudocode{V := R<A>} &
+\assembler{write V} & \pseudocode{R<A> := V} \\
+\assembler{add} & \pseudocode{X := Y + Z} &
+\assembler{sub} & \pseudocode{X := Y - Z} \\
+\assembler{succ} & \pseudocode{X := X + 1} &
+\assembler{shift} & \pseudocode{X := X div 2} \\ \hline
+\assembler{comp (v)} &
+\multicolumn{3}{l|}{\pseudocode{if XvY then F := 1 else F := 0 fi}} \\
+\assembler{jump b} &
+\multicolumn{3}{l|}{\pseudocode{if F=1 then B := b else B := B + 1 fi}} \\ \hline
+\assembler{stop} & Anhalten
+    \end{tabular}
+        \end{minipage}
+        &
+        \begin{minipage}[c]{4.5cm}
+            $V, V'$ Register, \\
+            $c \in \mathbb{Z}$, \quad
+            $b \in \mathbb{N}_0$, \\
+            $Rk$ $k$-te Speicherzelle, \\
+            $v \in \{>, \ge, <, \le, =, \not=\}$, \\
+            außer bei \assembler{jump} wird nach jedem Befehl \assembler{B}
+            um eins erhöht.
+        \end{minipage}
+    \end{tabular}
+    
+    Diese Befehle finden sich bei allen Mikroprozessoren (bei diesen kommen
+    Befehle hinzu). \\
+    Die Befehle eines Programms werden bei 0 beginnend durchnummeriert.
+\end{Def}
+
+\begin{Def}{Kellerautomat}
+    \begriff{Keller/Pushdown-Automaten} besitzen ein Eingabe- und ein
+    Ausgabeband, sowie einen Keller, auf den Daten abgelegt werden können.
+    Lässt man das Kellerband weg, so erhält man einen endlichen Automaten
+    (also eine Maschine, die eine Eingabe von links nach rechts liest,
+    synchron dazu ein Ausgabeband beschreibt und nur endlich viel Information
+    in ihrer Zustandsmenge speichern kann).
+\end{Def}
+
+\begin{Def}{Endlicher Automat}
+    $A = (Q, \Sigma, \Omega, \delta, Q_0, F)$ heißt
+    \begriff{endlicher Automat}, falls
+    \begin{itemize}
+        \item $Q$ nicht-leere endliche Menge (\begriff{Zustandsmenge}),
+        \item $\Sigma$ nicht-leere endliche Menge (\begriff{Eingabealphabet}),
+        \item $\Omega$ nicht-leere endliche Menge (\begriff{Ausgabealphabet}),
+        \item $\delta \subseteq Q \times \Sigma \times Q \times \Omega^\ast$
+        endliche Menge (\begriff{Überführungsrelation}),
+        \item $Q_0 \subseteq Q$ (\begriff{Menge der Anfangszustände}),
+        \item $F \subseteq Q$ (\begriff{Menge der Endzustände}).
+    \end{itemize}
+    $A$ heißt \begriff{deterministisch}, falls es zu jedem Paar
+    $(q,a) \in Q \times \Sigma$ höchstens ein Paar
+    $(q',w) \in Q \times \Omega^\ast$ gibt, sodass
+    $(q,a,q',w) \in \delta$ ist.
+    $A$ heißt \begriff{endlicher Akzeptor}, falls $\Omega$ entfällt,
+    $\delta \subset Q \times \Sigma \times Q$ ist und es genau einen
+    Anfangszustand $Q_0 \in Q$ gibt.
+\end{Def}
+
+\begin{Def}{Grafische Darstellung}
+    Die Zustände werden durch Kreise dargestellt, die Übergänge durch Kanten
+    (Pfeile), an die Eingabe/Ausgabe getrennt durch "`/"' geschrieben werden.
+    Beim Akzeptor entfällt die Ausgabe, dann steht nur die Eingabe über dem
+    Pfeil.
+    Anfangszustände erhalten einen Pfeil ("`aus dem Nichts"') und
+    Endzustände werden doppelt umkringelt.
+\end{Def}
+
+\begin{Def}{Interpretation als Automat}
+    $L(A) = \{(u,v) \in \Sigma^\ast \times \Omega^\ast \;|\;$
+    es gibt eine Folge von Übergängen, die einen Anfangszustand aus
+    $Q_0$ bei der Eingabe von $u$ in einen Endzustand aus $F$
+    überführen und hierbei die Ausgabe $v$ erzeugen $\}$ heißt die
+    von $A$ \begriff{realisierte Relation}. \\
+    Falls $A$ deterministisch ist, wird $L(A)$ zu einer (partiellen)
+    Abbildung $\operatorname{Res}_A: \Sigma^\ast \rightarrow \Omega^\ast$.
+    Diese heißt dann die von $A$ \begriff{realisierte Abbildung} oder die
+    \begriff{Resultatsfunktion} von $A$.
+\end{Def}
+
+\begin{Def}{Interpretation als Akzeptor}
+    $L(A) = \{u \in \Sigma^\ast \;|\;$
+    es gibt eine Folge von Übergängen, die den Anfangszustand
+    $Q_0$ bei der Eingabe von $u$ in einen Endzustand aus $F$
+    überführen $\}$ heißt die von $A$ \begriff{erkannte Sprache}.
+\end{Def}
+
+\pagebreak

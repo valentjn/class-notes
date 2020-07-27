@@ -1,0 +1,142 @@
+\section{%
+    Computerarithmetik%
+}
+
+\subsection{%
+    Gleitpunktdarstellung%
+}
+
+\textbf{Zahldarstellung}:
+Eine $p$-stellige normalisierte Gleitpunktzahl $x$ zur Basis $\beta$
+besteht aus einem Vorzeichen $\sigma = \pm 1$,
+einer Mantisse $m = m_1 \dotsc m_p$, wobei
+$m_i \in \{0, \ldots, \beta - 1\}$, $m_1 \not= 0$,
+sowie einem Exponenten $n$ mit $n_{min} \le n \le n_{max}$:
+\begin{align*}
+    x = \sigma \left(\sum_{i=1}^p m_i \beta^{1-i}\right) \beta^n.
+\end{align*}
+Die kleinste bzw. größte positive Gleitpunktzahl ist
+$x_{min} = \beta^{n_{min}}$ ($+1.000 \E n_{min}$) bzw. \\
+$x_{max} = \beta^{n_{max}+1} (1 - \beta^{-p})$
+($+n.nn \dotsc n \E n_{max}$, $n = \beta - 1$).
+
+Man schreibt auch $x = (\pm m_1 . m_2 m_3 \ldots m_p \E n)_\beta$,
+also z.\,B. $(+3.042 \E 2)_{10}$ oder $(-1.101 \E -10)_2$.
+
+\linie
+
+\textbf{Gleitpunktzahl mit doppelter Genauigkeit}:
+Eine solche wird als Gleitpunktzahl zur Basis $2$ mit verändertem Exponenten
+abgespeichert: $x = \pm 1 . m_2 m_3 \ldots m_p \cdot 2^{n-1023}$. \\
+Im IEEE-Standard 754 ($p = 53$ Zif"|fern) belegt die Zahl $8$ Byte = $64$ Bit:
+$1$ Bit für das Vorzeichen ($0$ positiv, $1$ negativ),
+$11$ Bit für den Exponenten und $52$ Bit für die Mantisse.
+
+\begin{center}
+    \begin{tabular}{l|l|l}
+        0 & 00000000000 & 0000 \dots \dots \dots 0000 \\
+        VZ & Exponent $n$ & Mantisse $m_2 m_3 \dotsc m_{53}$
+    \end{tabular}
+\end{center}
+
+\textbf{Sonderfälle}: \qquad
+\emph{Null}: $n = 0$, $m_1 = \ldots = 0$; \qquad
+\emph{underflow}: $n = 0$, $m_1 = 0$; \\
+\emph{overflow (Inf)}: $n = 2047$, $m_1 = \ldots = 0$; \qquad
+\emph{NaN}: $n = 2047$, $m_1 \not= 0$ oder $m_2 \not= 0$ oder \ldots
+
+Die größte bzw. kleinste positive Zahl ist
+$0\;\;11111111110\;\;1 \ldots 1 \approx 1.8 \cdot 10^{308}$ bzw. \\
+$0\;\;00000000001\;\;0 \ldots 0 \approx 2.2 \cdot 10^{-308}$
+(normalisiert ohne underflow).
+
+Will man eine
+\textbf{Dezimalzahl in eine Gleitpunktzahl nach IEEE-Standard}
+umwandeln, so muss sie zunächst als Dualzahl darstellen
+(Summe von Zweierpotenzen), dann sie normalisieren
+($1.m_2 m_3\ldots \cdot 2^x$), die Mantissenbits aufschreiben (vordere Eins
+nicht beachten), den Exponenten ausrechnen ($n = x + 1023$)
+und ihn im Dualsystem hinschreiben.
+Zuletzt muss das erste Bit dem Vorzeichen entsprechend angepasst werden.
+
+\pagebreak
+
+\subsection{%
+    Runden, Gleitpunktoperationen und Fehlerfortpflanzung%
+}
+
+\textbf{Runden}:
+Durch Runden wird eine reelle Zahl $x$ mit der am nächsten liegenden
+Gleitpunktzahl $Rx$ approximiert.
+Der Rundungsfehler kann dargestellt werden als
+\begin{align*}
+    Rx - x = \delta x, \qquad
+    |\delta| \le \eps = \frac{\beta^{1-p}}{2},
+\end{align*}
+wobei $\beta$ die Basis und $p$ die Anzahl der Zif"|fern ist.
+Die Konstante $\eps$ ist die \textbf{Maschinengenauigkeit} und ist
+$\eps = 2^{-53}$ bei doppelter Genauigkeit.
+Sie entspricht dem maximalen relativen Fehler bei der Rundung.
+
+\textbf{Gleitpunktoperationen}:
+Das Ergebnis einer Gleitpunktoperation ist das gerundete Ergebnis
+der exakten Operation, d.\,h.
+$(R \varphi)(x, y, \ldots) = R(\varphi(x, y, \ldots))$. \\
+Dabei muss zur Bestimmung von $R \varphi$ der Wert von $\varphi$ nur so genau
+berechnet werden, dass das Ergebnis der Rundung bestimmt werden kann.
+
+Soll bspw. $(x + y) z$ numerisch berechnet werden, so rechnet man
+$R(R(Rx + Ry) \cdot Rz)$.
+
+\linie
+
+Der \textbf{relative Fehler bei der Gleitpunktaddition} zweier Zahlen
+$x, y$ kann durch
+\begin{align*}
+    \frac{|R(Rx + Ry) - (x + y)|}{|x + y|}
+    \le \left[1 + \frac{|x| + |y|}{|x + y|}\right] \eps + \O(\eps^2)
+\end{align*}
+abgeschätzt werden. \\
+Für Summanden mit demselben Vorzeichen ist dies $\le 2\eps + \O(\eps^2)$
+(kleiner Fehler). \\
+Für $y \approx -x$ ist allerdings
+\fracsize{$\left[1 + \frac{|x| + |y|}{|x + y|}\right] \ge 2\beta^{s-1}$}, falls
+die ersten $s$ Zif"|fern in der Basis $\beta$ übereinstimmen.
+Diese Zif"|fern verschwinden bei der Addition.
+Die sog. \textbf{Auslöschung} verursacht daher einen großen Fehler.
+
+\linie
+
+\textbf{Fehlerfortpflanzung}:
+Ist $\Delta x = \widetilde{x} - x$ der absolute Fehler eines Messwerts
+(oder einer Nährung $\widetilde{x} \approx x$), so gilt für eine
+stetig dif"|ferenzierbare Funktion $f$ und
+$|\Delta y| = f(\widetilde{x}) - f(x)$, dass
+\begin{align*}
+    |\Delta y|
+    = |f'(x)| |\Delta x| + o(\Delta x).
+\end{align*}
+Für den relativen Fehler und $x, y \not= 0$ gilt entsprechend
+\begin{align*}
+    \frac{|\Delta y|}{|y|}
+    = \left(|f'(x)| \frac{|x|}{|y|}\right) \cdot
+    \frac{|\Delta x|}{|x|} + o(\Delta x).
+\end{align*}
+Dabei bezeichnet \fracsize{$c_r = |f'(x)|\frac{|x|}{|y|}$} die
+\textbf{Konditionszahl} von $f$ an der Stelle $x$.
+Vernachlässigt man den Term $o(\Delta x)$, kann man die Verstärkung des
+absoluten Fehlers abschätzen mit \\
+$|\Delta y| \le c_a |\Delta x|$, wobei
+$c_a \ge \max_{|t - x| \le |\Delta x|} |f'(t)|$
+(entsprechend $c_r = c_a \frac{|x|}{|y|}$ beim relativen Fehler).
+
+\linie
+
+\textbf{implizites Dif"|ferenzieren}:
+Ist eine Funktion nicht explizit ($f(x) = \dotsb$), sondern implizit
+(z.\,B. $x^2 + 3y^2 = 7$) gegeben, so kann man beide Seiten unmittelbar
+nach $x$ dif"|ferenzieren.
+Dabei ist zu beachten, dass $y = y(x)$ von $x$ abhängt und daher
+die Kettenregel angewendet werden muss.
+
+\pagebreak

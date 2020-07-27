@@ -1,0 +1,1078 @@
+\section{%
+    Reguläre Sprachen%
+}
+
+\subsection{%
+    Deterministische Automaten%
+}
+
+\begin{Bem}
+    Während Grammatiken mit vordefinierten Regeln Wörter einer Sprache
+    \emph{erzeugen} können, tun Automaten in gewisser Weise das Gegenteil.
+    Automaten \emph{erkennen} Wörter, d.\,h. man gibt ein Wort ein und der
+    Automat gibt zurück, ob das Wort erkannt wurde
+    (zu einer bestimmten Sprache gehört) oder nicht.\\
+    Das Ziel der folgenden Abschnitte wird es sein zu zeigen, dass
+    DEAs dasselbe "`können"' wie Typ-3-Grammatiken.
+    Dafür wird das Hilfsmittel des NEAs eingeführt, der ebenfalls genau so viel
+    kann wie DEAs.
+\end{Bem}
+
+\linie
+
+\begin{Def}{deterministischer endlicher Automat (DEA)}
+    Ein \begriff{deterministischer endlicher Automat (DEA)}
+    oder \begriff{DFA} ist ein $5$-Tupel $M = (Z, \Sigma, \delta, z_0, E)$,
+    wobei
+    \begin{itemize}
+        \item
+        $Z$ eine endliche, nicht-leere Menge
+        (die Menge der \begriff{Zustände}),
+        
+        \item
+        $\Sigma$ eine endliche, nicht-leere Menge
+        mit $Z \cap \Sigma = \emptyset$
+        (das \begriff{Alphabet}),
+        
+        \item
+        $\delta\colon Z \times \Sigma \rightarrow Z$
+        (die \begriff{Überführungsfunktion}),
+        
+        \item
+        $z_0 \in Z$ (der \begriff{Startzustand}) und
+        
+        \item
+        $E \subset Z$ (die \begriff{akzeptierenden Endzustände}) ist.
+    \end{itemize}
+\end{Def}
+
+\begin{Bem}
+    Bildhaft kann man sich einen Automat vorstellen als eine Maschine,
+    die von einem endlichen Eingabeband Zeichen für Zeichen einliest.
+    Die Maschine hat einen Lesekopf, der sich zu Beginn am Anfang des
+    Eingabebands befindet, und speichert sich den aktuellen Zustand $q$,
+    der anfangs $z_0$ ist.
+    Die Maschine liest ein Zeichen $y$ und ermittelt durch $\delta(q, y)$
+    den Zustand, der als nächstes angenommen wird.
+    Diesen speichert sie sich als neuen Zustand und setzt den Lesekopf um ein
+    Zeichen weiter.
+    Ist das Ende das Bands erreicht, so zeigt die Maschine an,
+    ob der erreichte Zustand $q$ ein Endzustand ist
+    (d.\,h. $q \in E$).
+\end{Bem}
+
+\begin{Bem}
+    Automaten kann man durch gerichtete, beschriftete Graphen
+    (den \begriff{Zustandsgra\-phen}) darstellen.
+    Die Zustände entsprechen den Knoten.
+    Der dem Startzustand entsprechende Knoten wird durch einen eingehenden
+    Pfeil ("`aus dem Nichts"') besonders markiert.
+    Endzustände werden durch doppelte Kreise gekennzeichnet.
+    Die Kanten veranschaulichen $\delta$:\\
+    Für alle $z_1 \in Z$ und $a \in \Sigma$ geht eine mit $a$ beschriftete
+    Kante von $z_1$ nach $z_2 = \delta(z_1, a)$.
+\end{Bem}
+
+\linie
+
+\begin{Def}{akzeptierte Sprache}
+    Sei $M = (Z, \Sigma, \delta, z_0, E)$ ein DEA.\\
+    Man definiert induktiv die Abbildung
+    $\widehat{\delta}\colon Z \times \Sigma^\ast \rightarrow Z$ durch
+    $\widehat{\delta}(z, \varepsilon) := z$ für alle $z \in Z$\\
+    und $\widehat{\delta}(z, ax) := \widehat{\delta}(\delta(z, a), x)$ für alle
+    $z \in Z$, $a \in \Sigma$ und $x \in \Sigma^\ast$.\\
+    Die von $M$ \begriff{akzeptierte Sprache} ist
+    $T(M) := \{x \in \Sigma^\ast \;|\; \widehat{\delta}(z_0, x) \in E\}$.
+\end{Def}
+
+\begin{Bem}
+    Die Abbildung $\widehat{\delta}$ gibt an, in welchen Zustand man gelangt,
+    wenn man von einem bestimmten Zustand startet und ein Wort aus
+    $\Sigma^\ast$ eingelesen wird.
+    In der Tat gilt\\
+    $\widehat{\delta}(z, a_1 \dotsb a_n) = z'
+    \;\Leftrightarrow\; \exists_{q_1, \dotsc, q_n \in Z}\;
+    \delta(z, a_1) = q_1,\; \delta(q_i, a_{i+1}) = q_{i+1},
+    i = 1, \dotsc, n - 1, q_n = z'$.\\
+    Außerdem folgt aus $x, y \in \Sigma^\ast$, dass
+    $\widehat{\delta}(z, xy) = \widehat{\delta}(\widehat{\delta}(z, x), y)$
+    für alle $z \in Z$.\\
+    Diese Aussagen folgen direkt aus
+    $\widehat{\delta}(z, a_1 \dotsb a_n) =
+    \delta(\delta(\dotsb\delta(\delta(z,
+    a_1), a_2)\dotsb, a_{n-1}), a_n)$,
+    was man induktiv beweisen kann.
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Def}{$\DEA$}
+    Die Menge $\DEA := \{L \subset \Sigma^\ast \;|\;
+    \exists_{\text{det. endl. Automat } M}\; T(M) = L\}$
+    ist die Menge aller Sprachen, die von DEAs akzeptiert werden.
+\end{Def}
+
+\begin{Def}{$\REG$}
+    Die Menge $\REG := \{L \subset \Sigma^\ast \;|\;
+    \exists_{\text{Typ-3-Grammatik } G}\; L(G) = L\}$
+    ist die Menge aller Typ-3-Sprachen.
+\end{Def}
+
+\begin{Satz}{obere Schranke für DEA}
+    Es gilt $\DEA \subset \REG$\\
+    (d.\,h. für jeden DEA $M$ gibt es eine Typ-3-Grammatik
+    $G$ mit $L(G) = T(M)$).
+\end{Satz}
+
+\begin{Beweis}
+    Sei $M = (Z, \Sigma, \delta, z_0, E)$ ein DEA.
+    Definiere $G = (V, \Sigma, P, S)$ mit $V = Z$, $S = z_0$ und $P$ wie folgt:
+    Für alle $p, q \in Z$ und $a \in \Sigma$ mit $q = \delta(p, a)$ wird
+    die Regel $p \rightarrow aq$ in $P$ aufgenommen.
+    Ist zusätzlich $q \in E$, so wird auch noch $p \rightarrow a$ in $P$
+    aufgenommen.
+    $G$ ist regulär.
+    
+    Zu zeigen ist $T(M) = L(G)$.
+    Sei $x = a_1 \dotsb a_n$. Dann gilt
+    $x \in T(M)
+    \iff \widehat{\delta}(z_0, x) \in E$\\
+    $\iff \exists_{q_1, \dotsc, q_n \in Z}\; \delta(z_0, a_1) = q_1,\;
+    \delta(q_i, a_{i+1}) = q_{i+1}\; (i = 1, \dotsc, n - 1),\;
+    q_n \in E$\\
+    $\iff \exists_{q_1, \dotsc, q_n \in V}\; z_0 \rightarrow a_1 q_1 \in P,\;
+    q_i \rightarrow a_{i+1} q_{i+1} \in P\; (i = 1, \dotsc, n - 1),\;
+    q_{n-1} \rightarrow a_n \in P$\\
+    $\iff \exists_{q_1, \dotsc, q_n \in V}\;
+    z_0 \Rightarrow_G a_1 q_1 \Rightarrow_G a_1 a_2 q_2 \Rightarrow_G
+    \dotsb \Rightarrow_G a_1 a_2 \dotsb a_{n-1} q_{n-1} \Rightarrow_G
+    a_1 a_2 \dotsb a_{n-1} a_n = x$\\
+    $\iff x \in L(G)$.
+\end{Beweis}
+
+\subsection{%
+    Nichtdeterministische Automaten%
+}
+
+\begin{Def}{nichtdeterministischer endlicher Automat (NEA)}
+    Ein \begriff{nichtdeterministischer\\
+    endlicher Automat (NEA)}
+    oder \begriff{NFA} ist ein $5$-Tupel $M = (Z, \Sigma, \delta, Z_0, E)$,
+    wobei
+    \begin{itemize}
+        \item
+        $Z$ eine endliche, nicht-leere Menge
+        (die Menge der \begriff{Zustände}),
+        
+        \item
+        $\Sigma$ eine endliche, nicht-leere Menge
+        mit $Z \cap \Sigma = \emptyset$
+        (das \begriff{Alphabet}),
+        
+        \item
+        $\delta\colon Z \times \Sigma \rightarrow \P(Z)$
+        (die \begriff{Überführungsfunktion}),
+        
+        \item
+        $Z_0 \subset Z$ (die \begriff{Startzustände}) und
+        
+        \item
+        $E \subset Z$ (die \begriff{akzeptierenden Endzustände}).
+    \end{itemize}
+\end{Def}
+
+\begin{Bem}
+    Auch NEAs können durch Zustandsgraphen dargestellt werden.
+    Es gibt nun jedoch evtl. mehrere Startzustände und von jedem Knoten
+    können mehrere mit demselben Buchstaben beschriftete Kanten ausgehen
+    (oder auch keine).
+\end{Bem}
+
+\begin{Def}{akzeptierte Sprache}
+    Sei $M = (Z, \Sigma, \delta, z_0, E)$ ein NEA.\\
+    Man definiert induktiv die Abbildung
+    $\widehat{\delta}\colon \P(Z) \times \Sigma^\ast \rightarrow \P(Z)$ durch
+    $\widehat{\delta}(Q, \varepsilon) := Q$ für alle $Q \subset Z$ und
+    $\widehat{\delta}(Q, ax) := \bigcup_{q \in Q}
+    \widehat{\delta}(\delta(q, a), x)$ für alle
+    $Q \subset Z$, $a \in \Sigma$ und $x \in \Sigma^\ast$.\\
+    Die von $M$ \begriff{akzeptierte Sprache} ist
+    $T(M) := \{x \in \Sigma^\ast \;|\;
+    \widehat{\delta}(Z_0, x) \cap E \not= \emptyset\}$.
+\end{Def}
+
+\linie
+
+\pagebreak
+
+\begin{Def}{$\NEA$}
+    Die Menge $\NEA := \{L \subset \Sigma^\ast \;|\;
+    \exists_{\text{nichtdet. endl. Automat } M}\; T(M) = L\}$
+    ist die Menge aller Sprachen, die von NEAs akzeptiert werden.
+\end{Def}
+
+\begin{Bem}
+    Es ist klar, dass $\DEA \subset \NEA$ gilt.
+\end{Bem}
+
+\begin{Satz}{Satz von \name{Rabin} und \name{Scott}}
+    Es gilt $\NEA \subset \DEA$\\
+    (d.\,h. für jeden NEA $M$ gibt es einen DEA $M'$ mit $T(M') = T(M)$).
+\end{Satz}
+
+\begin{Beweis}
+    Sei $M = (Z, \Sigma, \delta, Z_0, E)$ ein NEA.
+    Definiere den DEA $M' = (\P(Z), \Sigma, \delta', Z_0, E')$ wie folgt:
+    $\delta'(Q, a) := \widehat{\delta}(Q, a) =
+    \bigcup_{q \in Q} \delta(q, a)$ und
+    $E' := \{Q \in \P(Z) \;|\; Q \cap E \not= \emptyset\}$.
+    
+    Zunächst beweist man folgendes Lemma:
+    Für alle $Q \subset Z$ und $w \in \Sigma^\ast$ gilt
+    $\widehat{\delta}(Q, w) = \widehat{\delta'}(Q, w)$.\\
+    Der Beweis erfolgt über Induktion über $n = |w| \in \natural_0$.\\
+    Der Induktionsanfang ist klar
+    ($Q = \widehat{\delta}(Q, \varepsilon) =
+    \widehat{\delta'}(Q, \varepsilon) = Q$).\\
+    Beim Induktionsschritt $n \rightarrow n + 1$ ist die
+    Induktionsvoraussetzung, dass
+    $\widehat{\delta}(Q, x) = \widehat{\delta'}(Q, x)$
+    für alle $Q \subset Z$ und $x \in \Sigma^\ast$ mit $|x| \le n$.
+    Für beliebige $P \subset Z$ und $a \in \Sigma$ gilt somit\\
+    $\widehat{\delta}(P, ax) =
+    \widehat{\delta}(\delta(P, a), x) =
+    \widehat{\delta'}(\delta(P, a), x) =
+    \widehat{\delta'}(\widehat{\delta}(P, a), x) =
+    \widehat{\delta'}(\delta'(P, a), x) =
+    \widehat{\delta'}(P, ax)$.
+    
+    Zu zeigen ist $T(M) = T(M')$.
+    Mit der Hilfsbehauptung ergibt sich\\
+    $w \in T(M)
+    \iff \widehat{\delta}(Z_0, w) \cap E \not= \emptyset
+    \iff \widehat{\delta'}(Z_0, w) \cap E \not= \emptyset
+    \iff \widehat{\delta'}(Z_0, w) \in E'$\\
+    $\iff w \in T(M')$.
+\end{Beweis}
+
+\begin{Bem}
+    Somit ist $\DEA = \NEA$, d.\,h. DEAs und NEAs "`können"' dasselbe.
+\end{Bem}
+
+\linie
+
+\begin{Def}{Potenzmengenkonstruktion}
+    Die Konstruktion eines DEA $M'$ aus einem NEA $M$ mit $L(M') = L(M)$
+    wie im Beweis vom Satz von Rabin und Scott bezeichnet man als\\
+    \begriff{Potenzmengenkonstruktion}.
+\end{Def}
+
+\begin{Bem}
+    Für $M = (Z, \Sigma, \delta, Z_0, E)$ hat
+    $M'$ dann $|\P(Z)| = 2^{|Z|}$ viele Zustände.\\
+    Im Allgemeinen geht es nicht viel besser, d.\,h. selbst minimale DEAs
+    haben $\O(2^{|Z|})$ viele Zustände (\begriff{Blow-Up}).
+    Betrachte dafür die Sprache $L_k = \{x0y \in \{0, 1\}^\ast \;|\;
+    |y| = k - 1\}$ für $k \in \natural$ fest.
+    Ein NEA lässt sich mit $k + 1$ Zuständen konstruieren.\\
+    Nach der Potenzmengenkonstruktion gibt es
+    einen DEA mit $2^{k+1}$ Zuständen, allerdings kann es keinen DEA geben,
+    der weniger als $2^k$ Zustände besitzt,
+    da dieser sich die letzten $k$ Buchstaben "`merken"' muss
+    (um zu entscheiden, ob der momentan $k$-letzte Buchstabe eine $0$ ist).\\
+    Um dies zu beweisen, zeigt man
+    $\widehat{\delta}(z_0, w_1) \not= \widehat{\delta}(z_0, w_2)$ für
+    $w_1 \not= w_2$ mit $|w_1| = |w_2| = k$
+    (somit muss es mindestens so viele Zustände geben wie
+    Wörter der Länge $k$).
+    Wegen $w_1 \not= w_2$ gilt $w_1 = x0y_1$ und $w_2 = x1y_2$ für
+    bestimmte $x, y_1, y_2 \in \Sigma^\ast$.
+    Wäre $\widehat{\delta}(z_0, w_1) = \widehat{\delta}(z_0, w_2)$, dann
+    wäre $\widehat{\delta}(z_0, w_1 x) = \widehat{\delta}(z_0, w_2 x)$.
+    Der $k$-letzte Buchstabe von $w_1 x$ ist $0$
+    (da $|0y_1 x| = |x0y_1| = k$), der von $w_2 x$ ist $1$,
+    d.\,h. $\widehat{\delta}(z_0, w_1 x) \in E$ und
+    $\widehat{\delta}(z_0, w_2 x) \notin E$, ein Widerspruch.
+\end{Bem}
+
+\begin{Satz}{obere Schranke für $\REG$}
+    Es gilt $\REG \subset \NEA$\\
+    (d.\,h. für jede Typ-3-Grammatik $G$ existiert ein NEA $M$ mit
+    $T(M) = L(G)$).
+\end{Satz}
+
+\begin{Beweis}
+    Sei $G = (V, \Sigma, P, S)$ eine Typ-3-Grammatik.
+    Definiere den NEA\\
+    $M = (V \cup \{X\}, \Sigma, \delta, \{S\}, E)$ mit $X \notin V$ durch\\
+    $E := \{X\}$ für $\varepsilon \notin L(G)$ und
+    $E := \{S, X\}$ für $\varepsilon \in L(G)$ sowie\\
+    $\delta(A, a) := \{B \in V \;|\; A \rightarrow aB \in P\}$ für
+    $A \rightarrow a \notin P$ und\\
+    $\delta(A, a) := \{B \in V \;|\; A \rightarrow aB \in P\} \cup \{X\}$ für
+    $A \rightarrow a \in P$.
+    
+    Man kann sich leicht überlegen, dass $T(M) = L(G)$.
+\end{Beweis}
+
+\begin{Bem}
+    Damit gilt $\REG = \DEA = \NEA$.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Reguläre Ausdrücke%
+}
+
+\begin{Def}{reguläre Ausdrücke}
+    Sei $\Sigma$ ein Alphabet.\\
+    Die Menge $\RegExp$ aller \begriff{regulären Ausdrücke} über $\Sigma$ ist
+    wie folgt definiert:
+    \begin{itemize}
+        \item
+        $\emptyset \in \RegExp$
+        
+        \item
+        $\varepsilon \in \RegExp$
+        
+        \item
+        $a \in \RegExp$ für alle $a \in \Sigma$
+    \end{itemize}
+    Diese regulären Ausdrücke heißen \begriff{atomar}.
+    Für $\alpha, \beta \in \RegExp$ sei:
+    \begin{itemize}
+        \item
+        $\alpha\beta \in \RegExp$
+        
+        \item
+        $(\alpha|\beta) \in \RegExp$
+        
+        \item
+        $(\alpha)^\ast \in \RegExp$
+    \end{itemize}
+    Klammern dürfern ggf. weggelassen werden.\\
+    (Rein formal definiert man
+    $\RegExp_0 := \{\emptyset, \varepsilon\} \cup \{a \;|\; a \in \Sigma\}$
+    und $\RegExp_{i+1} :=$\\
+    $\RegExp_i \cup
+    \{\alpha\beta \;|\; \alpha, \beta \in \RegExp_i\} \cup
+    \{(\alpha|\beta) \;|\; \alpha, \beta \in \RegExp_i\} \cup
+    \{(\alpha)^\ast \;|\; \alpha \in \RegExp_i\}$
+    für $i \in \natural_0$ und schließlich
+    $\RegExp := \bigcup_{i=0}^\infty \RegExp_i$.)
+    
+    $\emptyset$, $\varepsilon$ und $a$ sind zunächst einmal nur Zeichen
+    ohne Bedeutung (syntaktische Definition).
+\end{Def}
+
+\linie
+
+\begin{Def}{Semantik regulärer Ausdrücke}\\
+    Jedem regulären Ausdruck $\alpha \in \RegExp$ über $\Sigma$ ordnet man eine
+    Sprache $L(\alpha) \subset \Sigma^\ast$ zu:
+    \begin{itemize}
+        \item
+        $L(\emptyset) := \emptyset$
+        
+        \item
+        $L(\varepsilon) := \{\varepsilon\}$
+        
+        \item
+        $L(a) := \{a\}$ für alle $a \in \Sigma$
+    \end{itemize}
+    Außerdem sei für $\alpha, \beta \in \RegExp$:
+    \begin{itemize}
+        \item
+        $L(\alpha \beta) := L(\alpha) L(\beta) =
+        \{xy \;|\; x \in L(\alpha),\; y \in L(\beta)\}$
+        
+        \item
+        $L((\alpha|\beta)) := L(\alpha) \cup L(\beta)$
+        
+        \item
+        $L((\alpha)^\ast) := L(\alpha)^\ast =
+        \{a_1 \dotsc a_n \;|\; n \in \natural_0,
+        a_1, \dotsc, a_n \in L(\alpha)\}$
+    \end{itemize}
+\end{Def}
+
+\begin{Bem}
+    Es gilt $\varepsilon \in L(\alpha)^\ast$ für alle $\alpha \in \RegExp$,
+    d.\,h. insbesondere $\varepsilon \in L(\emptyset)^\ast$.\\
+    Beispiele für korrekte reguläre Ausdrücke über $\{0, 1\}$ sind
+    $0111010$, $11|0^\ast$ und $(11|0)^\ast$ (man beachte die Klammerung).
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Satz}{Satz von \upshape\,\!\name{Kleene}}\\
+    Die Menge der durch reguläre Ausdrücke beschreibbaren Sprachen ist gleich
+    $\REG$.
+\end{Satz}
+
+\begin{Beweis}
+    Sei $\gamma \in \RegExp$.
+    Man zeigt induktiv, dass es einen NEA $M$ gibt mit $T(M) = L(\gamma)$.\\
+    NEAs für $L(\emptyset) = \emptyset$,
+    $L(\varepsilon) = \{\varepsilon\}$ und $L(a) = \{a\}$ sind klar
+    (kein Endzustand, Anfangs- gleich Endzustand bzw.
+    einfacher Automat mit zwei Zuständen).\\
+    Seien also $M_1$ ein NEA für $L(\alpha)$ und $M_2$ ein NEA für $L(\beta)$.
+    Konstruiere einen NEA für $L(\alpha)L(\beta)$ durch
+    Zusammenschalten der zwei NEAs:
+    Für $\varepsilon \notin L(\alpha)$ wird jeder Übergang
+    $p \xrightarrow{a} e$ mit $e$ Endzustand in $M_1$ ergänzt durch
+    $p \xrightarrow{a} q$ für alle Startzustände $q$ von $M_2$.
+    Startzustände des neuen Automaten sind die von $M_1$,
+    Endzustände sind die von $M_2$.
+    Für $\varepsilon \in L(M_1)$ fügt man einen zusätzlichen (isolierten)
+    Zustand ein, der gleichzeitig Start- und Endzustand ist.\\
+    Für $L(\alpha) \cup L(\beta)$ "`vereinigt"' man die beiden Automaten
+    (Zustände, Startzustände, Endzustände usw.,
+    Annahme: Automaten sind disjunkt).\\
+    Für $(L(\alpha))^\ast$ verfährt man ähnlich wie für
+    $L(\alpha)L(\beta)$, nur dass man hier den Automaten $L_1$ mit sich selbst
+    zusammenschaltet.
+    
+    Für die andere Richtung geht man von einem DEA
+    $M = (Z, \Sigma, \delta, z_1, E)$ mit $Z = \{z_1, \dotsc, z_n\}$ aus
+    und konstruiert einen regulären Ausdruck $\gamma \in \RegExp$ mit
+    $L(\gamma) = T(M)$.\\
+    Definiere $R_{i,j}^k := \{x \in \Sigma^\ast \;|\;
+    \widehat{\delta}(z_i, x) = z_j \text{ über Zwischenzustände mit Index}
+    \le k\}$.\\
+    Man zeigt nun durch Induktion über $k \in \natural_0$,
+    dass es für alle $R_{i,j}^k$
+    reguläre Ausdrücke gibt, die diese Sprachen beschreiben.
+    Klar ist, dass für alle $R_{i,j}^0$ solche regulären Ausdrücke existieren,
+    da
+    $R_{i,j}^0 = \{a \in \Sigma \;|\; \delta(z_i, a) = z_j\}$ endlich
+    und somit durch reguläre Ausdrücke beschreibbar ist.\\
+    Wenn für alle $R_{i,j}^k$ die Behauptung gezeigt ist,
+    dann gilt sie auch für $R_{i,j}^{k+1}$, denn:\\
+    Für $w \in R_{i,j}^{k+1}$ ist $\widehat{\delta}(z_i, w) = z_j$ über
+    Zwischenzustände mit Index $\le k + 1$.
+    Für den Fall, dass die Zwischenzustände sogar alle Index $\le k$ besitzen,
+    lässt sich die Induktionsvoraussetzung direkt anwenden.
+    Andernfalls lässt sich $w$ zerlegen zu $w = w_1 x_1 \dotsb x_r w_2$
+    mit $w_1 \in R_{i,k+1}^k$, $w_2 \in R_{k+1,j}^k$ und
+    $x_i \in R_{k+1,k+1}^k$ für $i = 1, \dotsc, r$.
+    Also gilt $R_{i,j}^{k+1} = R_{i,j}^k \cup
+    R_{i,k+1}^k (R_{k+1,k+1}^k)^\ast R_{k+1,j}^k$
+    und die Induktionsvoraussetzung lässt sich anwenden.\\
+    Da $T(M) = \bigcup_{z_j \in E} R_{1,j}^n$ gilt, ist somit auch
+    $T(M)$ durch einen regulären Ausdruck $\gamma \in \RegExp$ beschreibbar
+    (mittels $(\dotsb|\dotsb)$).
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    Das Pumping-Lemma%
+}
+
+\begin{Satz}{Pumping-Lemma}
+    Sei $L \subset \Sigma^\ast$ eine reguläre Sprache.\\
+    Dann gilt
+    $\exists_{n \in \natural} \forall_{x \in L,\; |x| \ge n}
+    \exists_{u, v, w \in \Sigma^\ast,\; uvw = x}\; (1. \land 2. \land 3.)$ mit
+    \begin{enumerate}
+        \item
+        $|v| \ge 1$
+        
+        \item
+        $|uv| \le n$
+        
+        \item
+        $\forall_{i \in \natural_0}\; u v^i w \in L$
+    \end{enumerate}
+\end{Satz}
+
+\begin{Beweis}
+    Sei $L$ eine reguläre Sprache.
+    Dann gibt es wegen $\REG = \DEA$ einen DEA\\
+    $M = (Z, \Sigma, \delta, z_0, E)$ mit $L(M) = L$.
+    Setze $n := |Z|$.\\
+    Sei $x \in L$ mit $|x| \ge n$, z.\,B. $x = x_1 \dotsb x_m$ mit $m \ge n$.
+    Setze $q_j := \widehat{\delta}(z_0, x_1 \dotsb x_j)$ für
+    $j = 0, \dotsc, m$.
+    Unter den $n + 1$ Zuständen $q_0, \dotsc, q_n$ müssen zwei gleiche sein,
+    da $|Z| = n$.
+    Wähle $j, k \in \natural_0$, sodass $0 \le j < k \le n$ und $q_j = q_k$.
+    Setze $u := x_1 \dotsb x_j$, $v := x_{j+1} \dotsb x_k$ und
+    $w := x_{k+1} \dotsb x_m$.
+    
+    Es gilt $x = uvw$ und
+    \begin{enumerate}
+        \item
+        $|v| \ge 1$, da $j < k$ und somit
+        $x_{j+1} \dotsb x_k \not= \varepsilon$,
+        
+        \item
+        $|uv| \le n$, da $k \le n$, sowie
+        
+        \item
+        $\forall_{i \in \natural_0}\; u v^i w \in L$, da aus
+        $\widehat{\delta}(z_0, u) = q_j = q_k = \widehat{\delta}(z_0, uv) =
+        \widehat{\delta}(\widehat{\delta}(z_0, u), v)$
+        mit $p := \widehat{\delta}(z_0, u)$ folgt, dass
+        $\widehat{\delta}(p, v) = p$,
+        also $\widehat{\delta}(p, v^i) = p$ für alle $i \in \natural_0$.
+        Wegen $\widehat{\delta}(p, w) = \widehat{\delta}(z_0, uvw) \in E$
+        gilt somit $\widehat{\delta}(z_0, u v^i w) =
+        \widehat{\delta}(\widehat{\delta}(p, v^i), w) =
+        \widehat{\delta}(p, w) \in E$ für alle $i \in \natural_0$.
+    \end{enumerate}
+\end{Beweis}
+
+\begin{Bem}
+    Das Pumping-Lemma ist keine Charakterisierung von regulären Sprachen,
+    d.\,h. es gibt nicht-reguläre Sprachen, die trotzdem die Eigenschaft des
+    Pumping-Lemmas erfüllen.\\
+    Das Pumping-Lemma kann benutzt werden, um über einen Widerspruch die
+    Nicht-Regulärität von Sprachen zu beweisen.
+    (Auch dies geht nicht für alle nicht-regulären Sprachen.)
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    $L = \{a^m b^m \;|\; m \ge 1\}$ ist nicht regulär, denn andernfalls
+    gäbe es nach dem Pumping-Lemma ein $n \in \natural$, sodass für alle
+    Wörter $x \in L$ mit $|x| \ge n$ es Wörter $u, v, w \in \Sigma^\ast$
+    mit $uvw = x$ und 1., 2. und 3. geben würde.
+    Wählt man $x = a^n b^n \in L$ (es gilt $|a^n b^n| = 2n \ge n$),
+    dann gilt $a^n b^n = uvw$ mit $|v| \ge 1$ und $|uv| \le n$.
+    $v$ kann also nur aus $a$'s bestehen (mindestens jedoch aus einem $a$).
+    Es gilt allerdings $uv^2 w = a^{n + |v|} b^n \notin L$, da
+    $n + |v| > n$, somit gilt 3. nicht.
+\end{Bsp}
+
+\begin{Bsp}
+    $L = \{0^{m^2} \;|\; m \ge 1\}$ ist nicht regulär, denn andernfalls
+    gilt Ähnliches wie eben.
+    Wählt man $x = 0^{n^2} \in L$ (es gilt $|0^{n^2}| = n^2 \ge n$),
+    dann gilt $0^{n^2} = uvw$ mit $u = 0^a$, $v = 0^b$ und $w = 0^c$,
+    sodass $b \ge 1$ und $a + b \le n$,
+    insbesondere gilt $1 \le b \le n$.
+    Es gilt allerdings $uv^2 w = 0^{n^2 + b} \notin L$, da aufgrund
+    $n^2 < n^2 + b < n^2 + n + 1 < (n + 1)^2$ die Zahl $n^2 + b$ keine
+    Quadratzahl ist.
+\end{Bsp}
+
+\begin{Bsp}
+    $L = \{0^p \;|\; p \text{ prim}\}$ ist nicht regulär, denn andernfalls
+    gilt Ähnliches wie eben.
+    Wählt man $x = 0^p \in L$, wobei $p$ eine Primzahl mit $p > n + 2$ ist
+    (es gilt $|0^p| = p \ge n$),
+    dann gilt $0^p = uvw$ mit $u = 0^a$, $v = 0^b$ und $w = 0^c$,
+    sodass $b \ge 1$ und $a + b \le n$,
+    insbesondere gilt $1 \le b \le n$.
+    Für $i = a + c$ gilt allerdings $uv^i w = 0^{a + b(a + c) + c} \notin L$,
+    da $a + b(a + c) + c = (b + 1)(a + c)$ keine Primzahl ist.
+\end{Bsp}
+
+\pagebreak
+
+\subsection{%
+    Äquivalenzrelation und Minimalautomat%
+}
+
+\begin{Def}{Äquivalenzrelation $R_L$}
+    Für eine gegebene Sprache $L \subset \Sigma^\ast$ definiert man eine
+    \begriff{Relation $R_L$} auf $\Sigma^\ast$ durch
+    $x R_L y$ für $x, y \in \Sigma^\ast$, falls
+    $\forall_{z \in \Sigma^\ast}\; (xz \in L \iff yz \in L)$.\\
+    Diese Relation ist eine Äquivalenzrelation.
+\end{Def}
+
+\begin{Bem}
+    Die Äquivalenzklassen von $R_L$ teilen nicht die "`Grenze"' zwischen $L$
+    und $\Sigma^\ast \setminus L$, d.\,h.
+    $\lnot (\exists_{x, y \in \Sigma^\ast,\; [x] = [y]}\; x \in L,\;
+    y \notin L)$,
+    denn für $x R_L y$ folgt mit $z = \varepsilon$,
+    dass $x \in L \iff y \in L$.
+\end{Bem}
+
+\begin{Lemma}{Verfeinerung von $R_L$}
+    Für jede reguläre Sprache $L = L(M)$ mit dem DEA\\
+    $M = (Z, \Sigma, \delta, z_0, E)$ gilt
+    $\forall_{x, y \in \Sigma^\ast}\;
+    (\widehat{\delta}(z_0, x) = \widehat{\delta}(z_0, y)
+    \;\Rightarrow\; x R_L y)$.
+\end{Lemma}
+
+\begin{Beweis}
+    Seien $x, y \in \Sigma^\ast$ mit
+    $\widehat{\delta}(z_0, x) = \widehat{\delta}(z_0, y)$ und
+    $z \in \Sigma^\ast$ beliebig.\\
+    Dann gilt $xz \in L
+    \iff \widehat{\delta}(z_0, xz) \in E
+    \iff \widehat{\delta}(\widehat{\delta}(z_0, x), z) \in E
+    \iff \widehat{\delta}(\widehat{\delta}(z_0, y), z) \in E$\\
+    $\iff \widehat{\delta}(z_0, yz) \in E
+    \iff yz \in L$.
+\end{Beweis}
+
+\begin{Def}{Äquivalenzrelation $R_M$}
+    Für einen DEA $M = (Z, \Sigma, \delta, z_0, E)$ definiert man eine
+    \begriff{Relation $R_M$} auf $\Sigma^\ast$ durch
+    $x R_M y$ für $x, y \in \Sigma^\ast$, falls
+    $\widehat{\delta}(z_0, x) = \widehat{\delta}(z_0, y)$.\\
+    Diese Relation ist eine Äquivalenzrelation und es gilt $R_M \subset R_L$,
+    d.\,h. $R_M$ ist eine Verfeinerung von $R_L$.
+    (die Äquivalenzklassen von $R_L$ werden durch $R_M$ "`verfeinert"').
+\end{Def}
+
+\linie
+
+\begin{Def}{Index}
+    Seien $M$ eine Menge und $R \subset M \times M$ eine Äquivalenzrelation.
+    Dann heißt die Anzahl $|\{[m]_R \;|\; m \in M\}|$ der
+    Äquivalenzklassen \begriff{Index} der Äquivalenzrelation $R$.
+\end{Def}
+
+\begin{Satz}{Satz von \name{Myhill} und \name{Nerode}}\\
+    Eine Sprache $L$ ist regulär genau dann, wenn
+    die zugehörige Relation $R_L$ endlichen Index hat.
+\end{Satz}
+
+\begin{Beweis}
+    "`$\Rightarrow$"':
+    Sei $L = L(M)$ mit dem DEA $M = (Z, \Sigma, \delta, z_0, E)$.
+    Dann gilt nach obigem Lemma $R_M \subset R_L$, also ist
+    der Index von $R_L$ kleiner oder gleich dem Index von $R_M$.
+    Dieser ist allerdings maximal $|Z|$ (aufgrund der Definition von $R_M$)
+    und damit endlich.
+    
+    "`$\Leftarrow$"':
+    Sei $L \subset \Sigma^\ast$ eine Sprache, sodass $R_L$ endlichen Index $k$
+    hat.
+    Man wählt $k$ Repräsentanten $x_1, \dotsc, x_k \in \Sigma^\ast$ der
+    Äquivalenzklassen
+    (d.\,h. es gilt $\Sigma^\ast = [x_1] \cup \dotsb \cup [x_k]$)
+    und setzt oBdA $\varepsilon \in [x_1]$.
+    Nun konstruiert man einen DEA $M = (Z, \Sigma, \delta, z_0, E)$ mit
+    $T(M) = L$ wie folgt:\\
+    $Z := \{[x_1], \dotsc, [x_k]\}$, $z_0 := [x_1] = [\varepsilon]$,
+    $E := \{[x_i] \;|\; x_i \in L\}$ und
+    $\delta([x_i], a) := [x_i a]$.\\
+    $E$ ist wohldefiniert, da $[x] = [y]$ impliziert,
+    dass $x \in L \iff y \in L$ (siehe oben).\\
+    $\delta$ ist wohldefiniert, denn aus $[x] = [y]$ folgt
+    $[xa] = [ya]$ für alle $a \in \Sigma$
+    (für $z \in \Sigma^\ast$ beliebig ist
+    $xaz \in L \iff yaz \in L$ aufgrund
+    $xz' \in L \iff yz' \in L$ für alle $z' \in \Sigma^\ast$,
+    also auch für $z' = az$).\\
+    Es gilt $x \in T(M)
+    \iff \widehat{\delta}(z_0, x) =
+    \widehat{\delta}([\varepsilon], x) =
+    [x] \in E \iff x \in L$, also ist $L$ regulär.
+\end{Beweis}
+
+\linie
+
+\begin{Bsp}
+    Sei $L = \{0^{m^2} \;|\; m \ge 1\}$.
+    $R_L$ muss unendlich viele Äquivalenzklassen besitzen, denn $L$ ist nicht
+    regulär (siehe oben).
+    Dies kann man auch direkt nachweisen:
+    Für $m < n$ gilt $[0^{m^2}] \not= [0^{n^2}]$, denn
+    wählt man $z = 0^{2m + 1}$, so gilt
+    $0^{m^2} z = 0^{(m+1)^2} \in L$, aber $0^{n^2} z \notin L$.
+\end{Bsp}
+
+\begin{Bsp}
+    Betrachtet man $L = \{x \in \{a, b\}^\ast \;|\; x \text{ enthält } abb\}$,
+    so sind die paarweise disjunkten Äquivalenzklassen
+    $\Sigma^\ast = [abb] \cup [\varepsilon] \cup [a] \cup [ab]$, denn:
+    $[abb] = L$ und
+    $\lnot (\varepsilon R_L a)$ (mit $z = ab$),
+    $\lnot (\varepsilon R_L ab)$ und
+    $\lnot (a R_L ab)$ (jeweils mit $z = b$).
+    Wegen $\varepsilon, a, ab \notin L = [abb]$ sind die Äquivalenzklassen
+    disjunkt.
+    Es gibt keine weiteren, da für jedes Wort
+    $x \in \Sigma^\ast \setminus L$ gilt,
+    dass $x \in [ab]$, falls $x$ mit $ab$ endet,
+    dass $x \in [a]$, falls $x$ mit $a$ endet, und
+    dass $x \in [\varepsilon]$, falls $x$ mit $b$ endet, aber nicht mit $ab$
+    (in diesem Fall kann $x$ nur aus $b$'s bestehen oder leer sein).
+    Somit ist $L$ regulär.
+\end{Bsp}
+
+\begin{Bsp}
+    Für $L = \{x \in \{a, b, c\}^\ast \;|\; |x|_a - |x|_b \equiv 3 \mod 5\}$
+    sind die disjunkten Äquivalenzklassen
+    $\Sigma^\ast = [aaa] \cup [\varepsilon] \cup [a] \cup [aa] \cup [aaaa]$,
+    d.\,h. auch diese Sprache ist regulär
+    (auch siehe oben).
+\end{Bsp}
+
+\linie
+\pagebreak
+
+\begin{Def}{minimaler Automat}
+    Sei $L \subset \Sigma^\ast$ eine reguläre Sprache.\\
+    Ein DEA bzw. NEA $M$ heißt \begriff{minimal}, falls
+    $T(M) = L$ und es keinen DEA bzw. NEA gibt, der dieselbe Sprache erkennt
+    und weniger Zustände besitzt.
+\end{Def}
+
+\begin{Satz}{Minimalität des Äquivalenzklassen-DEA}
+    Der im Beweis des Satzes von Myhill und Nerode konstruierte
+    Äquivalenzklassenautomat ist ein
+    minimaler DEA für jede reguläre Sprache.\\
+    Der Minimalautomat ist bis auf Isomorphie (Umbenennen der Zustände)
+    eindeutig bestimmt.
+\end{Satz}
+
+\begin{Beweis}
+    Sei $M_0$ der Äquivalenzklassen-DEA und $M$ ein weiterer DEA mit
+    $T(M) = L$.\\
+    Dann gilt $R_M \subset R_L = R_{M_0}$
+    ($R_{M_0} \subset R_L$ klar,
+    $R_L \subset R_{M_0}$ gilt, da aus $x R_L y$ folgt, dass\\
+    $\widehat{\delta}(z_0, x) =
+    [x] = [y] = \widehat{\delta}(z_0, y)$).
+    Also ist $R_M$ eine Verfeinerung von $R_{M_0}$, die Zahl der Zustände
+    von $M$ kann also nicht kleiner als die von $M_0$ sein
+    (Anzahl der Zustände von $M_0$
+    $=$ Anzahl der vom Startzustand erreichbaren Zustände von $M_0$
+    $=$ Index von $R_{M_0}$ $\le$ Index von $R_M$
+    $=$ Anzahl der vom Startzustand erreichbaren Zustände von $M$
+    $\le$ Anzahl der Zustände von $M$).\\
+    Falls $M$ die minimale Zustandszahl besitzt, gilt $R_M = R_L$.
+\end{Beweis}
+
+\begin{Bem}\\
+    Der minimale NEA für eine gegebene reguläre Sprache ist \emph{nicht}
+    eindeutig bestimmt.
+\end{Bem}
+
+\linie
+
+\begin{Def}{Algorithmus zur Bestimmung des Minimalautomaten}
+    Der \begriff{Algorithmus zur Bestim\-mung des minimalen DEA} bekommt
+    als Eingabe einen DEA, in dem alle Zustände erreichbar sind, und
+    gibt Teilmengen von der Zustandsmenge $Z$ aus, die verschmolzen werden
+    können.\\
+    Dazu legt sich der Algorithmus eine Matrix $Z \times Z$ an und
+    verfährt folgendermaßen:
+    \begin{enumerate}
+        \item
+        Markiere alle Paare $(z, z')$ mit $z \in E \land z' \notin E$ oder
+        $z \notin E \land z' \in E$.
+        
+        \item
+        Markiere jedes Zustandspaar $(p, q)$ mit $\delta(p, a) = z$,
+        $\delta(q, a) = z'$ und $(z, z')$ bereits markiert für ein
+        $a \in \Sigma$.
+        
+        \item
+        Wiederhole 2., bis sich nichts mehr ändert.
+        
+        \item
+        Die nun unmarkierten Paare von Zuständen können jeweils zu einem
+        Zustand verschmolzen werden.
+    \end{enumerate}
+\end{Def}
+
+\begin{Bem}
+    Man kann sich den Algorithmus herleiten, indem man sich überlegt, dass
+    ein Automat dann nicht minimal ist, wenn es zwei verschiedene Zustände
+    $z, z'$ gibt mit $\widehat{\delta}(z, x) \in E \iff
+    \widehat{\delta}(z', x) \in E$ für alle $x \in \Sigma^\ast$
+    (es reicht dabei, nur Wörter mit $|x| \le |Z|$ zu betrachten).
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    \emph{Einschub}: Erkennung durch Monoide%
+}
+
+\begin{Def}{Monoid}
+    Das Paar $(M, \ast)$ heißt \begriff{Monoid}, falls
+    $M$ eine Menge und
+    $\ast\colon M \times M \rightarrow M$ eine Abbildung ist mit
+    $\forall_{a, b, c \in M}\;
+    a \ast (b \ast c) = (a \ast b) \ast c$ und
+    $\exists_{e \in M} \forall_{a \in M}\; e \ast a = a = a \ast e$.
+\end{Def}
+
+\begin{Def}{Monoidhomomorphismus}
+    Seien $(M_1, \ast_1)$ und $(M_2, \ast_2)$ Monoide.\\
+    Eine Abbildung $\varphi\colon M_1 \rightarrow M_2$ heißt
+    \begriff{Monoidhomomorphismus}, falls
+    $\varphi(m \ast_1 n) = \varphi(m) \ast_2 \varphi(n)$ für alle
+    $m, n \in M_1$ und $\varphi(e_1) = e_2$.
+\end{Def}
+
+\begin{Def}{Erkennung durch Monoide}
+    Seien $L \subset \Sigma^\ast$ eine Sprache und $M$ ein Monoid.\\
+    $M$ \begriff{erkennt} $L$, falls es eine Teilmenge $A \subset M$ und
+    einen Homomorphismus $\varphi\colon \Sigma^\ast \rightarrow M$
+    gibt mit $L = \varphi^{-1}(A)$
+    (d.\,h. $w \in L \iff \varphi(w) \in A$).
+\end{Def}
+
+\begin{Bem}
+    Alternativ kann man definieren, dass
+    ein Homomorphismus $\varphi\colon \Sigma^\ast \rightarrow M$ existieren
+    soll mit $L = \varphi^{-1}(\varphi(L))$
+    (hier ist $A = \varphi(L)$).
+\end{Bem}
+
+\begin{Def}{erkennbar}\\
+    Eine Sprache heißt \begriff{erkennbar}, falls sie von einem endlichen
+    Monoid erkannt wird.
+\end{Def}
+
+\linie
+
+\begin{Def}{syntaktische Kongruenz}
+    Sei $L \subset \Sigma^\ast$ eine Sprache.
+    Zwei Wörter $w_1, w_2 \in \Sigma^\ast$ heißen \begriff{äquivalent},
+    falls $\forall_{x, y \in \Sigma^\ast}\;
+    x w_1 y \in L \iff x w_2 y \in L$.
+    Man schreibt dafür auch $w_1 \equiv_L w_2$ oder $w_1 \equiv w_2$.
+    $\equiv_L$ ist eine Äquivalenzrelation und sogar eine \begriff{Kongruenz},
+    d.\,h.\\
+    $w_1 \equiv_L w_2 \iff
+    \forall_{x, y \in \Sigma^\ast}\; x w_1 y \equiv_L x w_2 y$.
+    Man nennt $\equiv_L$ daher auch \begriff{syntaktische Kongruenz}.
+\end{Def}
+
+\begin{Bem}
+    $\equiv_L$ ist eine Verfeinerung von $R_L$, d.\,h.
+    $w_1 \equiv_L w_2 \;\Rightarrow\; w_1 R_L w_2$.
+\end{Bem}
+
+\begin{Def}{syntaktisches Monoid}
+    Das Quotientenmonoid $\Synt(L) := \Sigma^\ast/\!\!\equiv_L \;=
+    \{[w]_{\equiv_L} \;|\; w \in \Sigma^\ast\}$ heißt
+    \begriff{syntaktisches Monoid} von $L$.
+\end{Def}
+
+\begin{Bem}
+    Um zu zeigen, dass dies auch tatsächlich wieder ein Monoid ist,
+    muss man zunächst die Wohldefiniertheit der Monoidoperation zeigen.
+    Für $[a] = [a']$ und $[b] = [b']$ ist
+    $a \equiv_L a'$ und $b \equiv_L b'$, d.\,h.
+    für $x, y \in \Sigma^\ast$ beliebig gilt
+    $x ab y \in L \iff x a'b y \in L \iff x a'b' y \in L$,
+    also $[ab] = [a'b']$.
+    Die Assoziativität gilt wegen der Assoziativität in $\Sigma^\ast$,
+    außerdem ist $[\varepsilon]$ neutral.
+    Damit ist $\Synt(L)$ ein Monoid.
+\end{Bem}
+
+\begin{Bem}
+    $\Synt(L)$ erkennt $L$, denn
+    wähle als Homomorphismus die Quotientenabbildung
+    $\varphi\colon \Sigma^\ast \rightarrow \Synt(L)$,
+    $\varphi(a) = [a]$ und als Menge $A = \{[a] \;|\; a \in L\}$.\\
+    Dann gilt $L = \varphi^{-1}(A)$, denn
+    $a \in L \iff \varphi(a) = [a] \in A$
+    ("`$\Leftarrow$"':
+    $[a] = [b]$ für ein $b \in L$,
+    also $a \equiv_L b$, daraus folgt wegen $b \in L$, dass auch $a \in L$
+    gilt).
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Zusammenhang des syntaktischen Monoids mit regulären Sprachen}\\
+    Sei $L \subset \Sigma^\ast$ eine Sprache.
+    Dann sind folgende Aussagen äquivalent:
+    \begin{enumerate}
+        \item
+        $L$ ist regulär.
+        
+        \item
+        $L$ ist erkennbar.
+        
+        \item
+        $\Synt(L)$ ist endlich.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Beweis}
+    3. $\Rightarrow$ 2. klar, da $\Synt(L)$ die Sprache $L$ erkennt.\\
+    3. $\Rightarrow$ 1. gilt, weil
+    $\equiv_L$ einen endlichen Index hat, wenn $\Synt(L)$ endlich ist.
+    Da aber $\equiv_L$ eine Verfeinerung von $R_L$ ist, ist der Index von
+    $R_L$ höchstens so groß wie der von $\equiv_L$, d.\,h.
+    $R_L$ hat endlichen Index und somit ist $L$ regulär.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    Abschlusseigenschaften%
+}
+
+\begin{Satz}{Abschluss von $\REG$}\\
+    Die Klasse $\REG$ der regulären Sprachen ist abgeschlossen unter
+    Vereinigung, Schnitt und Komplement
+    (\begriff{\name{boole}sche Operationen}) sowie unter
+    Produkt (Konkatenation) und Stern.
+\end{Satz}
+
+\begin{Beweis}
+    Abschluss unter Vereinigung:
+    Sind $L_1$ und $L_2$ regulär,
+    dann gibt es reguläre Ausdrücke $\alpha_1$ und $\alpha_2$ mit
+    $L(\alpha_1) = L_1$ und $L(\alpha_2) = L_2$.
+    Es gilt $L(\alpha_1 | \alpha_2) = L_1 \cup L_2$, d.\,h.
+    $L_1 \cup L_2$ ist regulär.
+    
+    Abschluss unter Komplement:
+    Ist $L$ regulär, so gibt es ein endliches Monoid $M$, einen
+    Homomorphismus $\varphi\colon \Sigma^\ast \rightarrow M$
+    und eine Teilmenge $A \subset M$ mit $L = \varphi^{-1}(A)$.
+    Dann gilt aber auch
+    $\Sigma^\ast \setminus L = \varphi^{-1}(M \setminus A)$,
+    d.\,h. $\Sigma^\ast \setminus L$ wird von demselben endlichen Monoid
+    erkannt und ist somit regulär.
+    (Alternativ kann man in einem DEA $M$ mit $T(M) = L$ Endzustände und
+    Nicht-Endzustände vertauschen, um einen DEA $M'$ mit
+    $T(M') = \Sigma^\ast \setminus L$ zu erhalten.)
+    
+    Somit folgt der Abschluss unter booleschen Operationen,
+    denn alle booleschen Operationen (auch der Durchschnitt) sind mit
+    Vereinigung und Komplement darstellbar.
+    (Alternativ kann man zu zwei Automaten
+    $M_1 = (Z_1, \Sigma, \delta_1, z_{01}, E_1)$ und
+    $M_2 = (Z_2, \Sigma, \delta_2, z_{02}, E_2)$ mit
+    $T(M_1) = L_1$ und $T(M_2) = L_2$ den \begriff{Kreuzproduktautomaten}
+    $M := (Z_1 \times Z_2, \Sigma, \delta, (z_{01}, z_{02}), E_1 \times E_2)$
+    mit $\delta((z, z'), a) := (\delta_1(z, a), \delta_2(z', a))$
+    betrachten, für den $T(M) = L_1 \cap L_2$ gilt.)
+    
+    Abschluss unter Produkt:
+    Sind $L_1$ und $L_2$ regulär,
+    dann gibt es reguläre Ausdrücke $\alpha_1$ und $\alpha_2$ mit
+    $L(\alpha_1) = L_1$ und $L(\alpha_2) = L_2$.
+    Es gilt $L(\alpha_1 \alpha_2) = L_1 L_2$, d.\,h.
+    $L_1 L_2$ ist regulär.
+    
+    Abschluss unter Stern:
+    Ist $L$ regulär, dann gibt es einen regulären Ausdruck $\alpha$ mit
+    $L(\alpha) = L$.
+    Es gilt $L(\alpha^\ast) = L^\ast$, d.\,h. $L^\ast$ ist regulär.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    Entscheidbarkeit%
+}
+
+\begin{Bem}
+    In diesem Abschnitt wird untersucht, welche Probleme in Bezug auf
+    reguläre Sprachen entscheidbar sind.
+\end{Bem}
+
+\begin{Bem}
+    Das \begriff{Wortproblem} besteht darin, bei gegebener Sprache $L$
+    und einem Wort $x$ zu entscheiden, ob $x \in L$ gilt.
+    Das Wortproblem ist für reguläre Sprachen entscheidbar
+    (sogar schon für Typ-1-Sprachen).\\
+    Ist ein DEA $M$ mit $T(M) = L$ gegeben, dann ist die Entscheidung in
+    Linearzeit möglich:
+    Zeichen für Zeichen kann man die Zustandsübergänge im Automaten verfolgen,
+    die durch die Eingabe eines Wortes $x \in \Sigma^\ast$ hervorgerufen
+    werden.
+    Falls ein Endzustand erreicht wird, ist $x \in L$.
+    Man spricht von \begriff{Echtzeit}, da man vorhersehen kann, wie lange
+    die Lösung des Wortproblems mit einem DEA dauern wird.\\
+    Dies geht nicht so ef"|fizient, wenn $L$ durch einen NEA gegeben ist
+    (mehrere Möglichkeiten).
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Das \begriff{Leerheitsproblem} besteht darin, bei gegebener Sprache $L$
+    zu entscheiden, ob $L = \emptyset$ gilt.
+    Das Leerheitsproblem ist für reguläre Sprachen entscheidbar.\\
+    In einem DEA kann man z.\,B. prüfen, ob es einen Weg vom Startzustand zu
+    einem Endzustand gibt.
+    Dies gilt genau dann, wenn $L \not= \emptyset$.\\
+    Alternativ kann man (bei algorithmisch nicht akzeptablem Zeitaufwand)
+    das Pumping-Lemma anwenden.
+    Es gilt $L \not= \emptyset \iff \exists_{w \in L}\; |w| < n$, wobei
+    $n$ das $n$ aus dem Pumping-Lemma ist.
+    Man prüft also alle Wörter der Länge $< n$ auf Mitgliedschaft
+    in $L$ (Wortproblem).
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Das \begriff{Endlichkeitsproblem} besteht darin, bei gegebener Sprache $L$
+    zu entscheiden, ob $|L| < \infty$ gilt.
+    Das Endlichkeitsproblem ist für reguläre Sprachen entscheidbar.\\
+    In einem DEA kann man z.\,B. prüfen, ob es einen Zyklus gibt, der
+    vom Startzustand erreichbar ist und von dem aus ein Endzustand erreichbar
+    ist.
+    Dies gilt genau dann, wenn $|L| = \infty$.\\
+    Alternativ kann man (bei algorithmisch nicht akzeptablem Zeitaufwand)
+    das Pumping-Lemma anwenden.
+    Es gilt $|L| = \infty \iff \exists_{w \in L}\; n \le |w| < 2n$, wobei
+    $n$ das $n$ aus dem Pumping-Lemma ist.
+    Man prüft also alle Wörter der Länge $\ge n$ und $< 2n$ auf Mitgliedschaft
+    in $L$ (Wortproblem).
+\end{Bem}
+
+\begin{Beweis}
+    "`$\Leftarrow$"':
+    Sei $x \in L$ mit $n \le |x| < 2n$.
+    Dann gilt aufgrund des Pumping-Lemmas $x = uvw$, d.\,h.
+    $uv^i w \in L$ für alle $i \in \natural_0$.
+    Somit ist $L$ unendlich.
+    
+    "`$\Rightarrow$"':
+    Sei $|L| = \infty$ und entgegen der Behauptung habe das kürzeste Wort
+    $x \in L$ mit $|x| \ge n$ eine Länge $\ge 2n$.
+    Aufgrund des Pumping-Lemmas gilt $x = uvw$ mit $uv^0 w = uw \in L$.
+    Wegen $|v| \le |uv| \le n$ gilt $|uw| \ge n$.
+    Damit ist aber $x$ nicht minimal gewesen, ein Widerspruch.
+\end{Beweis}
+
+\linie
+
+\begin{Bem}
+    Das \begriff{Äquivalenzproblem} besteht darin, bei gegebenen Sprachen $L_1$
+    und $L_2$ zu entscheiden, ob $L_1 = L_2$ gilt.
+    Das Äquivalenzproblem ist für reguläre Sprachen entscheidbar.\\
+    Die Klasse $\REG$ der regulären Sprachen ist ef"|fektiv abgeschlossen
+    unter booleschen Operationen.
+    Man kann also $L_1 \vartriangle L_2$ bilden und auf Leerheit prüfen
+    (Lösung des Leerheitsproblems).\\
+    Alternativ kann man die Minimalautomaten bilden und vergleichen.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Das \begriff{Schnittproblem} besteht darin, bei gegebenen Sprachen $L_1$
+    und $L_2$ zu entscheiden, ob $L_1 \cap L_2 = \emptyset$ gilt.
+    Das Schnittproblem ist für reguläre Sprachen entscheidbar.\\
+    Die Klasse $\REG$ der regulären Sprachen ist ef"|fektiv abgeschlossen
+    unter booleschen Operationen
+    (d.\,h. die Ergebnisse dieser Operationen können algorithmisch in
+    endlicher Zeit bestimmt werden).
+    Man kann also $L_1 \cap L_2$ bilden und auf Leerheit prüfen
+    (Lösung des Leerheitsproblems).
+\end{Bem}
+
+\pagebreak

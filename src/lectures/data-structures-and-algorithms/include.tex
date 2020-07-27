@@ -1,0 +1,48 @@
+\def\withproofs{true}
+
+\definecolor{mydarkgray}{gray}{0.4}
+
+% Listing-Optionen
+\lstset{
+    numbers=none,
+    basicstyle=\ttfamily\scriptsize
+}
+
+\lstdefinelanguage{pseudo}{
+    morekeywords={while,do,od,if,else,forall,for,to,true,false,return,or,and},
+    sensitive=true,
+    mathescape=true,
+    morecomment=[l]{--},
+    literate={:=}{{$\gets$}}1 {ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+    {Ä}{{\"A}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1 {ß}{\ss}1
+}
+
+\lstset{language=pseudo}
+
+\renewcommand*{\ttdefault}{pcr}
+
+% eigene Operatoren
+\newcommand*{\code}[1]{\lstinline[basicstyle=\ttfamily]{#1}}
+\renewcommand*{\O}{\ensuremath{\mathcal{O}}}
+\newcommand*{\source}{\ensuremath{\operatorname{source}}}
+\newcommand*{\target}{\ensuremath{\operatorname{target}}}
+\renewcommand*{\num}{\ensuremath{\operatorname{num}}}
+\newcommand*{\indeg}{\ensuremath{\operatorname{indeg}}}
+\newcommand*{\mycap}{\ensuremath{\operatorname{cap}}}
+\newcommand*{\cost}{\ensuremath{\operatorname{cost}}}
+\newcommand*{\pot}{\ensuremath{\operatorname{pot}}}
+\newcommand*{\ccost}{\ensuremath{\operatorname{ccost}}}
+\newcommand*{\dcost}{\ensuremath{\operatorname{dcost}}}
+\newcommand*{\icost}{\ensuremath{\operatorname{icost}}}
+\newenvironment{Beweis}{\ifthenelse{\equal{\withproofs}{false}}{\comment}{}%
+    \color{mydarkgray}\textbf{Beweis}:}{\hfill $\Box$%
+    \ifthenelse{\equal{\withproofs}{false}}{\endcomment}{}}
+\newcommand*{\qed}{\hfill $\Box$}
+\newcommand*{\fracsize}[1]{{\large #1}}
+\newcommand*{\matrixsize}[1]{{\scriptsize #1}}
+
+\input{01_sortieren}
+\input{02_graphalgorithmen}
+\input{03_suchbaeume}
+\input{04_dynamisches_programmieren}
+\input{05_minimale_spannbaeume}

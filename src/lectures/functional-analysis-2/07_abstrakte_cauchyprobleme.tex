@@ -1,0 +1,300 @@
+\section{%
+    Abstrakte \name{Cauchy}probleme%
+}
+
+\subsection{%
+    Klassische und milde Lösung%
+}
+
+\begin{Def}{abstraktes \name{Cauchy}problem}\\
+    Seien $X$ ein Banachraum, $(A, D(A))$ ein linearer Operator auf $X$ und $x \in X$.\\
+    Dann heißt (ACP) mit $u'(t) = Au(t)$ für $t \ge 0$ und $u(0) = x$
+    mit $u\colon [0, \infty) \to X$ \begriff{abstraktes \name{Cauchy}problem}
+    mit Operator $A$ und Anfangswert $x$.
+\end{Def}
+
+\begin{Def}{klassische Lösung}
+    Eine Funktion $u \in \C^1([0, \infty), X)$ heißt \begriff{klassische Lösung} von (ACP),
+    falls $u$ (ACP) für alle $t \ge 0$ löst.
+\end{Def}
+
+\begin{Def}{milde Lösung}
+    Eine Funktion $u \in \C^0([0, \infty), X)$ heißt \begriff{milde Lösung} von (ACP),
+    falls $\forall_{t \ge 0}\; \int_0^t u(s)\ds \in D(A)$ und $u(t) = x + A\int_0^t u(s)\ds$.
+\end{Def}
+
+\begin{Bem}
+    Ist $u$ eine klassische Lösung, so gilt notwendigerweise $\forall_{t \ge 0}\; u(t) \in D(A)$,
+    d.\,h. insbesondere gilt $x \in D(A)$.
+    Jede klassische Lösung ist für $A$ abg. auch eine milde Lösung.
+    %(erhält man durch Integration der Gleichung $u'(t) = Au(t)$).
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Lösung für $A$ Erzeuger einer $\C_0$-HG}\\
+    Seien $(A, D(A))$ der Erzeuger einer $\C_0$-Halbgruppe $(T(t))_{t \ge 0}$
+    und $x \in X$.\\
+    Dann ist $u\colon [0, \infty) \to X$, $u(t) := T(t) x$ die eind. milde Lsg. von (ACP)
+    mit Op. $A$ und AW $x$.\\
+    $u$ ist die eindeutige klassische Lösung von (ACP) genau dann, wenn $x \in D(A)$.
+\end{Satz}
+
+\subsection{%
+    Wohlgestellte \name{Cauchy}probleme%
+}
+
+\begin{Def}{wohlgestellt}
+    Sei $(A, D(A))$ ein abgeschlossener, linearer Operator.\\
+    Dann heißt (ACP) \begriff{wohlgestellt}, falls
+    \begin{itemize}
+        \item
+        $A$ dicht definiert ist,
+        
+        \item
+        (ACP) die Existenz- und Eindeutigkeitsbedingung (EU) erfüllt, d.\,h.
+        für alle $x \in D(A)$ gibt es eine eindeutige klassische Lösung
+        $u(\cdot, x)$ von (ACP) zum Anfwangswert $x$, sowie
+        
+        \item
+        die Lösung von (ACP) stetig von den Anfangsdaten abhängt, d.\,h.\\
+        $\forall_{\text{$(x_n)_{n \in \natural}$ Folge in $D(A)$ mit $x_n \to 0$}}\;
+        [\text{$u(t, x_n) \xrightarrow{n \to \infty} 0$ glm. auf kompakten $t$-Intervallen}]$.
+    \end{itemize}
+\end{Def}
+
+\begin{Satz}{Charakterisierung von Erzeugern von $\C_0$-HG}\\
+    Sei $(A, D(A))$ ein abgeschlossener, linearer Operator.
+    Dann sind äquivalent:
+    \begin{enumerate}
+        \item
+        (ACP) ist wohlgestellt.
+        
+        \item
+        (ACP) erfüllt (EU) und es gilt $\varrho(A) \not= \emptyset$.
+        
+        \item
+        $A$ erzeugt eine $\C_0$-Halbgruppe.
+    \end{enumerate}
+\end{Satz}
+
+\linie
+
+\begin{Def}{$A$-Norm}
+    Sei $A\colon D(A) \to X$ ein linearer Operator.\\
+    Dann ist $\norm{\cdot}_A$ mit $\norm{x}_A := \norm{x}_X + \norm{Ax}_X$ für $x \in D(A)$
+    die \begriff{$A$-Norm} auf $D(A)$.
+\end{Def}
+
+\begin{Lemma}{Gen}
+    Seien $(T(t))_{t \ge 0}$ eine $\C_0$-Halbgruppe auf $X$ mit Erzeuger $(A, D(A))$ und
+    \\$Y \subset D(A)$ ein Unterraum mit
+    $\overline{Y}^{\norm{\cdot}_X} = X$ und $\forall_{t \ge 0}\; T(t)Y \subset Y$.\\
+    Dann gilt $\overline{Y}^{\norm{\cdot}_A} = D(A)$.
+    In diesem Fall heißt $Y$ \begriff{Gen} von $(A, D(A))$.
+\end{Lemma}
+
+\begin{Lemma}{Fortsetzung abg. Operatoren}
+    Seien $(A, D(A))$ und $(B, D(B))$ abgeschlossene, lineare Operatoren
+    mit $B$ Fortsetzung von $A$ auf $D(B)$ (d.\,h. $D(A) \subset D(B)$ und $B|_{D(A)} = A$),
+    wobei $\overline{D(A)}^{\norm{\cdot}_B} = D(B)$.
+    Dann gilt $D(A) = D(B)$ und $A = B$.
+\end{Lemma}
+
+\pagebreak
+
+\subsection{%
+    Inhomogene abstrakte \name{Cauchy}probleme%
+}
+
+\begin{Def}{inhomogenes abstraktes \name{Cauchy}problem}\\
+    Seien $X$ ein Banachraum, $(A, D(A))$ ein linearer Operator auf $X$ und $x \in X$.\\
+    Außerdem seien $T \in \real^+ \cup \{\infty\}$ und $f\colon [0, T) \to X$ eine Funktion.\\
+    Dann heißt $\text{(ACP)}_f$ mit $u'(t) = Au(t) + f(t)$ für $t \in [0, T)$ und $u(0) = x$
+    mit $u\colon [0, T) \to X$ \begriff{inhomogenes abstraktes \name{Cauchy}problem}
+    mit Operator $A$, rechter Seite $f$ und Anfangswert $x$.
+\end{Def}
+
+\begin{Def}{klassische Lösung}
+    Eine Funktion $u \in \C^1([0, T), X)$ heißt \begriff{klassische Lösung} von $\text{(ACP)}_f$,
+    falls $u$ $\text{(ACP)}_f$ für alle $t \in [0, T)$ löst.
+\end{Def}
+
+\begin{Def}{milde Lösung}
+    Sei $(A, D(A))$ der Erzeuger einer $\C_0$-Halbgruppe $(T(t))_{t \ge 0}$ auf $X$.\\
+    Eine Funktion $u \in \C^0([0, T), X)$ heißt \begriff{milde Lösung} von $\text{(ACP)}_f$
+    mit Operator $A$, falls\\
+    $\forall_{t \in [0, T)}\; u(t) = T(t)x + \int_0^t T(t-s) f(s)\ds$.
+\end{Def}
+
+\begin{Bem}
+    Ist $u$ eine klassische Lösung, so gilt notwendigerweise
+    $\forall_{t \in [0, T)}\; u(t) \in D(A)$, d.\,h. insbesondere gilt $x \in D(A)$.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Die Formel für die milde Lösung heißt auch \begriff{Variation-der-Konstanten-Formel}.
+    Formal kann man sie folgendermaßen herleiten:
+    Setze $u(t) := T(t) v(t)$.\\
+    Dann ist $u'(t) = AT(t)v(t) + T(t)v'(t) \overset{!}{=} AT(t)v(t) + f(t)$.
+    Unter der Annahme, dass $T(s)^{-1}$ existiert, ist obige Gleichung äquivalent zu
+    $v(t) = v(0) + \int_0^t T(s)^{-1} f(s)\ds$, d.\,h.\\
+    $u(t) = T(t) v(0) + \int_0^t T(t - s) f(s)\ds$.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Inhomogenes Problem für stetige rechte Seiten
+}
+
+\begin{Bem}
+    Seien $f \in \C^0([0, T), X)$, $u$ eine klassische Lösung von $\text{(ACP)}_f$
+    und $t \in [0, T)$.\\
+    Setze $v(s) := T(t - s) u(s)$ für $s \in [0, t)$.\\
+    Dann gilt $\frac{d}{ds} v(s) = -AT(t - s) u(s) + T(t - s) Au(s) + T(t - s) f(s) =
+    T(t - s) f(s)$.\\
+    Da $f$ stetig ist, ist auch $s \mapsto T(t - s) f(s)$ stetig und somit erhält man\\
+    $\int_0^t T(t - s) f(s) \ds = v(t) - v(0)$ und wegen $v(0) = T(t)u(0) = T(t)x$ und $v(t) = u(t)$
+    somit\\
+    $T(t)x + \int_0^t T(t - s) f(s) \ds = u(t)$.
+    
+    Daher gilt für $f \in \C^0([0, T), X)$:
+    \begin{itemize}
+        \item
+        Jede klassische Lösung von $\text{(ACP)}_f$ ist eine milde Lösung.
+        
+        \item
+        $\text{(ACP)}_f$ besitzt für jedes $x \in X$ eine eindeutige milde Lösung
+        (nach Definition).
+    \end{itemize}
+\end{Bem}
+
+\linie
+
+\begin{Lemma}{milde Lsg. als klassische Lsg.}
+    Seien $(A, D(A))$ der Erzeuger einer $\C_0$-Halbgruppe $(T(t))_{t \ge 0}$,
+    $f \in \C^0([0, T), X)$ und $u$ eine milde Lösung von $\text{(ACP)}_f$ mit\\
+    $u \in \C^0([0, T), D(A)) \cap \C^1([0, T), X)$.\\
+    Dann ist $u$ eine klassische Lösung von $\text{(ACP)}_f$.
+\end{Lemma}
+
+\linie
+
+\begin{Satz}{Charakterisierung der eind. klassischen Lösbarkeit}
+    Seien $(A, D(A))$ der Erzeuger einer $\C_0$-Halbgruppe $(T(t))_{t \ge 0}$,
+    $f \in \C^0([0, T), X)$ und $g(t) := \int_0^t T(t-s)f(s)\ds$ für $t \in [0, T)$.\\
+    Dann sind äquivalent:
+    \begin{enumerate}
+        \item
+        Für alle $x \in D(A)$ gibt es eine eindeutige klassische Lösung von $\text{(ACP)}_f$
+        zum AW $x$.
+        
+        \item
+        $g \in \C^1([0, T), X)$
+        
+        \item
+        $g \in \C^0([0, T), (D(A), \norm{\cdot}_A))$
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bem}
+    \emph{(3)} ist äquivalent zu $\Bild(g) \subset D(A)$ und $Ag \in \C^0([0, T), X)$.
+\end{Bem}
+
+\begin{Kor}
+    Sei $A$ wie eben.
+    Ist $f \in \C^1([0, T), X)$ oder $f \in \C^0([0, T), (D(A), \norm{\cdot}_A))$,
+    dann besitzt $\text{(ACP)}_f$ für alle $x \in D(A)$ eine eindeutige klassische Lösung.
+\end{Kor}
+
+\begin{Bem}
+    Gilt nur $f \in \C^0([0, T), X)$, dann besitzt $\text{(ACP)}_f$ i.\,A. nicht für alle
+    $x \in D(A)$ eine klassische Lösung.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{\name{Hölder}-stetige rechte Seiten}
+    Seien $(A, D(A))$ der Erzeuger einer analytischen Halbgruppe,
+    $f \in \C^{0,\alpha}([0, T], X)$ mit $\alpha \in (0, 1]$
+    und $u$ die milde Lösung von $\text{(ACP)}_f$.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        Für alle $x \in D(A)$ ist $u$ die eindeutige klassische Lösung von $\text{(ACP)}_f$
+        zum AW $x$.
+        
+        \item
+        Für alle $\delta > 0$ ist $Au, \frac{d}{dt} u \in \C^{0,\alpha}([\delta, T], X)$.
+        
+        \item
+        Es gilt $Au, \frac{d}{dt} u \in \C^0([0, T), X)$.
+    \end{enumerate}
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Viskose \name{Burgers}gleichung%
+}
+
+\begin{Bem}
+    Im Folgenden wird die Theorie der abstrakten Cauchyprobleme zur Lösung nicht-linearer
+    Anfangswertprobleme angewendet.
+    Als Beispiel wird dafür die sog. viskose Burgersgleichung betrachtet.
+    Diese Gleichung ähnelt der Wärmeleitungsgleichung (bis auf den quadratischen Term) und
+    kann z.\,B. zur Modellierung von Verkehrsflüssen verwendet werden.
+\end{Bem}
+
+\begin{Def}{viskose \name{Burgers}gleichung}
+    Die \begriff{viskose \name{Burgers}gleichung} ist gegeben durch\\
+    $\partial_t u = \partial_x^2 u - \frac{1}{2} \partial_x (u^2)$ für $x \in \real$ und $t \ge 0$
+    sowie $u(x, 0) = u_0(x)$ für $x \in \real$.
+\end{Def}
+
+\begin{Def}{milde Lösung}
+    Sei $X := \C^0_\unif(\real)$.
+    Eine Funktion $u \in \C^0([0, T_0], X)$ heißt
+    \begriff{milde Lösung} der viskosen Burgersgleichung in $X$ zum AW $u_0 \in X$,
+    falls
+    $u(t) = T(t)u_0 + \int_0^t T(t - \tau) N(u)(\tau) \d\tau$,
+    wobei $(T(t)u_0)(x) := (4\pi t)^{-1/2} \int_\real e^{-(x-y)^2/(4t)} u_0(y)\dy$ und
+    $N(u) := -\frac{1}{2} \partial_x (u^2)$.
+\end{Def}
+
+\begin{Bem}
+    $T(t)$ ist der Lösungsoperator der Wärmeleitungsgleichung auf $\real$ bzw.
+    die eindimensionale Wärmeleitungshalbgruppe.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{eindeutige Existenz der milden Lösung}
+    Sei $C_0 > 0$.\\
+    Dann gibt es ein $T_0 > 0$, sodass für alle $u_0 \in X$ mit $\norm{u_0}_{\C^0} \le C_0$
+    eine eindeutige milde Lösung $u \in \C^0([0, T_0], X)$ der viskosen
+    Burgersgleichung zum AW $u_0$ existiert.
+\end{Satz}
+
+\begin{Bem}
+    Da $T(t)$ für alle $t > 0$ glättend ist und $N(u)$ keine höheren Ableitungen als $\partial_x$
+    enthält, kann man zeigen, dass die milde Lösung, deren Existenz eben behauptet wurde,
+    auch eine klassische Lösung ist, wenn $u_0 \in \C^2_\unif$.
+    Da jede klassische Lösung auch eine milde Lösung ist, folgt die lokale Existenz und
+    Eindeutigkeit von klassischen Lösungen der viskosen Burgersgleichung.
+    
+    Mithilfe von Maximumsprinzip-Argumenten kann man auch die globale Existenz zeigen
+    (d.\,h. für alle Zeiten).
+    Dabei wird das im Beweis verwendete Fixpunktargument iterativ angewendet, ohne dass sich
+    die Länge des zulässigen Zeitintervalls ändert.
+    
+    Die Beweisstrategie funktioniert allgemeiner für Gleichungen der Form
+    $\partial_t u = \partial_x^2 u + f(u, \partial_x u)$ mit $f$ glatt, nicht aber für Gleichungen
+    der Form $\partial_t u = \partial_x^2 u + f(u, \partial_x u, \partial_x^2 u)$, weil dann im
+    Integral ein Faktor $(1 + (t - \tau)^{-1})$ vorkommt.
+\end{Bem}
+
+\pagebreak

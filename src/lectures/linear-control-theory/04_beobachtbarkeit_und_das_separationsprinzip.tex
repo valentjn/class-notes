@@ -1,0 +1,468 @@
+\section{%
+    Beobachtbarkeit und das Separationsprinzip%
+}
+
+\subsection{%
+    Beobachtbarkeit und Dualität%
+}
+
+\textbf{Rekonstruktion des Zustands}:
+Bei linearen System $\dot{x} = Ax + Bu$ kann in der Praxis eigentlich nie davon ausgegangen werden,
+dass alle Komponenten des Zustands messbar sind und zur Verfügung stehen.
+Daher kennt man normalerweise nur den Ausgang $y = Cx + Du$
+als dem Regler verfügbare Information.
+Ist es möglich, nur aus dem Wissen von $u$ und $y$ den Zustand $x$ zu rekonstruieren?
+Kann mit dem rekonstruierten Zustand ein Regler implementiert werden?
+
+\textbf{beobachtbar}:
+Das lineare System $\dot{x} = Ax + Bu$, $y = Cx + Du$ heißt \begriff{beobachtbar (observable)},
+falls es für jedes $T > 0$ möglich ist, $x(t)$ für $t \in [0, T]$ aus
+$u(t)$ und $y(t)$ für $t \in [0, T]$ zu rekonstruieren.
+
+\linie
+
+$y$ hat normalerweise viel weniger Komponenten als $x$.
+Daher ist die Rekonstruktion direkt aus $y$ unmöglich.
+Allerdings kann man $y$ ableiten, um $y(t), \dot{y}(t), \dotsc, y^{(n-1)}(t)$ zu erhalten
+(zumindest in der Theorie, in der Praxis ist das kaum möglich).
+Es gilt $Y(t) = W x(t) + \D U(t)$ mit\\
+$Y(t) := \smallpmatrix{y(t) \\ \dot{y}(t) \\ \vdots \\ y^{(n-1)}(t)}$,
+$W := \smallpmatrix{C \\ CA \\ \vdots \\ CA^{n-1}}$,
+$\D := \smallpmatrix{D & & & 0 \\ CB & D & & \\ \vdots & \ddots & \ddots & \\
+C A^{n-2} B & \cdots & CB & D}$ und
+$U(t) := \smallpmatrix{u(t) \\ \dot{u}(t) \\ \vdots \\ u^{(n-1)}(t)}$.
+
+\textbf{Beobachtbarkeitsmatrix}:
+$W$ heißt \begriff{Beobachtbarkeitsmatrix (observability matrix)} des Systems
+$\dot{x} = Ax + Bu$, $y = Cx + Du$
+oder des Paars $(A, C)$.
+
+\linie
+
+Wenn $W$ vollen Spaltenrang hat, dann gibt es eine Matrix $W^+$ mit $W^+ W = I$,
+d.\,h.\\
+$W^+ Y(t) = x(t) + W^+ \D U(t) \iff x(t) = W^+ Y(t) - W^+ \D U(t)$,
+also kann man $x(t)$ aus $Y(t)$ und $U(t)$ rekonstruieren.
+Es gilt aber auch die Umkehrung.
+
+\textbf{Satz (\name{Kalman}-Test zur Beobachtbarkeit)}:
+Das lineare System $\dot{x} = Ax + Bu$, $y = Cx + Du$ ist beobachtbar genau dann,
+wenn die Beobachtbarkeitsmatrix $W$ vollen Spaltenrang hat.
+
+$W^T = \smallpmatrix{C^T & A^T C^T & \cdots & (A^T)^{n-1} C^T}$ ist die Kalman-Matrix
+von $(A^T, C^T)$.
+Daher gilt $(A, C)$ beobachtbar $\iff$ $W$ hat vollen Spaltenrang $\iff$ $W^T$ hat vollen
+Zeilenrang $\iff$ $(A^T, C^T)$ ist regelbar.
+Man kann also alle Sätze und Eigenschaften über die Regelbarkeit von $(A^T, C^T)$ auf
+die Beobachtbarkeit von $(A, C)$ übertragen.
+
+\textbf{Dualitätsprinzip}:
+Das \begriff{Dualitätsprinzip (duality principle)}
+der linearen Kontrolltheorie ist die Übersetzung von Fragen
+der Beobachtbarkeit von $(A, B, C, D)$ in Fragen der Regelbarkeit von $(A^T, C^T, B^T, D^T)$
+(oder umgekehrt).
+
+\textbf{Satz (\name{Hautus}-Test zur Beobachtbarkeit)}:
+$(A, C)$ ist beobachtbar genau dann, wenn für jeden Eigenvektor $e$ von $A$ gilt,
+dass $Ce \not= 0$.
+Äquivalent dazu ist, dass die Matrix $\smallpmatrix{A - \lambda I \\ C}$
+vollen Spaltenrang für alle $\lambda \in \complex$ besitzt.
+
+\pagebreak
+
+\subsection{%
+    Unbeobachtbarer Unterraum und Eigenwert%
+}
+
+Wenn $W$ nicht vollen Spaltenrang hat, dann ist $N(W) \not= \{0\}$.
+Nicht-verschwindende Trajektorien in diesem Raum werden von $W$ "`verschluckt"'
+und können daher im Ausgang nicht beobachtet werden.
+
+\textbf{unbeobachtbarer Unterraum}:\\
+$N(W)$ heißt \begriff{unbeobachtbarer Unterraum (unobservable subspace)} von $(A, C)$.
+
+\textbf{unbeobachtbarer Eigenwert}:
+Ein \begriff{unbeobachtbarer Eigenwert (unobservable mode)} von $(A, C)$ ist
+$\lambda \in \complex$, sodass $\smallpmatrix{A - \lambda I \\ C}$ nicht vollen Spaltenrang hat.
+
+\linie
+
+\textbf{Satz (geometrische Charakterisierung von $N(W)$)}:
+Der unbeobachtbare Unterraum von $(A, C)$ ist der größte $A$-invariante Unterraum,
+der in $N(C)$ enthalten ist.
+
+\textbf{Satz (Beobachtbarkeits-Normalform)}:
+Es gibt eine Zustandskoordinaten-Transformation $z = Tx$ mit $T$ invertierbar,
+die $\dot{x} = Ax + Bu$, $y = Cx + Du$ in
+$\smallpmatrix{\dot{z}_1 \\ \dot{z}_2} = \smallpmatrix{A_{11} & 0 \\ A_{21} & A_{22}}
+\smallpmatrix{z_1 \\ z_2} + \smallpmatrix{B_1 \\ B_2} u =: \widetilde{A}z + \widetilde{B}u$,
+$y = \smallpmatrix{C_1 & 0} \smallpmatrix{z_1 \\ z_2} + Du =: \widetilde{C} z + Du$ transformiert,
+wobei $(A_{11}, C_1)$ beobachtbar ist.
+Diese Form heißt \begriff{Beobachtbarkeits-Normalform (observability normal form)}
+oder \begriff{BNF}.
+
+Ausgeschrieben bedeutet das $\dot{z}_1 = A_{11} z_1 + B_1 u$,
+$\dot{z}_2 = A_{21} z_1 + A_{22} z_2 + B_2 u$, $y = C_1 z_1 + Du$,
+d.\,h. $z_1$ und daher auch $y$ werden von $z_2$ nicht beeinflusst.
+Beispielsweise lässt sich eine Veränderung der Anfangsbedingung $z_2(0)$ nicht in $y$ beobachten.
+
+\textbf{Folgerung}:
+Der unbeobachtbare Unterraum von $(\widetilde{A}, \widetilde{C})$ ist
+$\{(0, z_2) \;|\; z_2 \in \real^{\dim(z_2)}\}$ und die unbeobachtbaren Eigenwerte sind
+die Eigenwerte von $A_{22}$.
+
+Es gibt viele Gründe für Unbeobachtbarkeit.
+Wenn man z.\,B. zwei identische, beobachtbare Systeme $(A_S, B_S, C_S, D_S)$ durch
+Parallelschaltung (mit unterschiedlichen Eingängen) verknüpft,
+erhält man $\dot{x} = Ax + Bu$, $y = Cx + Du$ mit
+$A := \smallpmatrix{A_S & 0 \\ 0 & A_S}$,
+$B := \smallpmatrix{B_S & 0 \\ 0 & B_S}$,
+$C := \smallpmatrix{C_S & C_S}$ und
+$D := \smallpmatrix{D_S & D_S}$.
+Die Beobachtbarkeitsmatrix von $(A, C)$ hat
+zwei identische Blockspalten und kann daher keinen vollen Spaltenrang haben.
+Wenn $A_S$ die Dimension $n$ hat, dann ist der unbeobachtbare Unterraum von $(A, C)$ gleich
+$\left\{\left.\smallpmatrix{x \\ -x} \;\right| x \in \real^n\right\}$.
+
+\linie
+
+\textbf{Satz (beobachtbar-kanonische Form)}:
+Wenn $\dot{x} = Ax + Bu$, $y = Cx + Du$ nur einen Ausgang hat (d.\,h. $y$ ist skalar)
+und beobachtbar ist, dann gibt es einen Koordinatenwechsel $z = Tx$ mit $T$ invertierbar,
+der das System in
+$\dot{z} = \smallpmatrix{-\alpha_1 & 1 & & & 0 \\ -\alpha_2 & 0 & 1 & & \\
+\vdots & & \ddots & \ddots & \\ -\alpha_{n-1} & & & 0 & 1 \\ -\alpha_n & & & & 0} z
++ \widetilde{B} u := \widetilde{A} z + \widetilde{B} u$,
+%+ \smallpmatrix{b_1 \\ b_2 \\ \vdots \\ b_{n-1} \\ b_n} u := \widetilde{A} z + \widetilde{B} u$,
+$y = \smallpmatrix{1 & 0 & 0 & \cdots & 0} z + Du = \widetilde{C} z + Du$ transformiert.\\
+Diese Form heißt \begriff{beobachtbar-kanonische Form (observability canonical form)}
+oder \begriff{BKF}.
+
+\pagebreak
+
+\subsection{%
+    Beobachter und Entdeckbarkeit%
+}
+
+Die sofortige Rekonstruktion des Zustands ist praktisch nicht möglich, da Rauschen durch die
+Dif"|ferentiation verstärkt wird.
+Außerdem kann die Beobachtbarkeitsmatrix schlecht konditioniert sein.
+Daher versucht man, den Zustand asymptotisch zu rekonstruieren.
+
+\textbf{Beobachter}:
+Ein \begriff{Beobachter (observer)} für das lineare System $\dot{x} = Ax + Bu$, $y = Cx + Du$
+ist das dynamische System
+$\dot{\widehat{x}} = A\widehat{x} + Bu + L(y - \widehat{y})$, $\widehat{y} = C\widehat{x} + Du$.
+
+Ein Beobachter ist eine Kopie des Originalsystems mit einem Korrekturterm $L(y - \widehat{y})$,
+der dazu dient, dass der geschätzte Zustand $\widehat{x}$ in Richtung $x$ geregelt wird
+(für den Fall, dass sich der gemessene Ausgang $y$ vom geschätzten Ausgang $\widehat{y}$
+unterscheidet).
+
+\textbf{Bestimmung von $L$}:
+Natürlich sollte der \begriff{Schätzfehler} $\widetilde{x} := x - \widehat{x}$ schnell gegen
+Null konvergieren.
+Für seine Dynamik gilt
+$\dot{\widetilde{x}} = \dot{x} - \dot{\widehat{x}} =
+Ax + Bu - A\widehat{x} - Bu - L(y - \widehat{y})$\\
+$= A\widetilde{x} - L(Cx + Du - C\widehat{x} - Du)
+= (A - LC) \widetilde{x}$ (\begriff{Fehlerdynamik}).
+Daher sollte $L$ so gewählt werden, dass $A - LC$ eine Hurwitz-Matrix ist, damit
+$\lim_{t \to \infty} \widetilde{x}(t) = 0$.
+Die Konvergenzgeschwindigkeit und die Art der Antwort (z.\,B. das Überschwingen)
+hängt von den Eigenwerten von $A - LC$ ab und von $e^{(A - LC)t}$.
+
+\textbf{Satz (Polvorgabe für Beobachter)}:\\
+Seien $(A, C)$ beobachtbar und $\alpha$ ein reelles, normiertes
+Polynom vom Grad $n$.\\
+Dann gibt es eine reelle Matrix $L$ mit $\chi_{A - LC} = \alpha$.
+
+\linie
+
+\textbf{entdeckbar}:
+Das System $\dot{x} = Ax + Bu$, $y = Cx + Du$ (oder das Paar $(A, C$) heißt
+\begriff{entdeckbar (detectable)},
+falls es eine Matrix $L$ gibt, sodass $A - LC$ eine Hurwitz-Matrix ist.
+
+\textbf{Satz (\name{Hautus}-Test zur Entdeckbarkeit)}:
+$(A, C)$ ist entdeckbar genau dann, wenn
+die unbeobachtbaren Eigenwerte alle negative Realteile besitzen.
+Äquivalent dazu ist, dass $\smallpmatrix{A - \lambda I \\ C}$ vollen Spaltenrang für alle
+$\lambda \in \complex$ mit $\Re(\lambda) \ge 0$ besitzt.
+
+\textbf{Satz (Trajektorien-basierte Charakterisierung)}:
+Das System $\dot{x} = Ax + Bu$, $y = Cx + Du$ ist entdeckbar genau dann, wenn
+$u(t) \equiv 0$ und $y(t) \equiv 0$ für $t \ge 0$ implizieren, dass\\
+$\lim_{t \to \infty} x(t) = 0$.
+
+\begin{landscape}
+\subsection{%
+    \emph{Zusatz}: Zusammenfassung der Dualität%
+}
+
+\newcommand*{\tablelinespace}{2mm}
+\small
+\begin{tabular}{p{35mm}p{105mm}p{105mm}}
+    \toprule
+    &
+    \textbf{Regelbarkeit} &
+    \textbf{Beobachtbarkeit}\\
+    
+    \midrule
+    \emph{Traj.-Definition} &
+    für jedes $x_f \in \real^n$ existiert $u$ stetig, sodass $x(T) = x_f$\newline
+    für $x(0) = 0$ und $T > 0$ fest &
+    %von jedem $\xi \in \real^n$ für $t = 0$ kann in jedes $x_f \in \real^n$ für $t = T > 0$\newline
+    %gesteuert werden &
+    für jedes $T > 0$ ist die Rekonstruktion von $x(t)$ für $t \in [0, T]$\newline
+    aus $u(t)$ und $y(t)$ für $t \in [0, T]$ möglich\\
+    
+    \addlinespace[\tablelinespace]
+    \emph{Dualität} &
+    \multicolumn{2}{c}{$(A^T, C^T)$ regelbar $\iff$ $(A, C)$ beobachtbar}\\
+    
+    \addlinespace[\tablelinespace]
+    \emph{\name{Kalman}-Test} &
+    $K = \smallpmatrix{B & AB & \cdots & A^{n-1}B}$ hat vollen Zeilenrang &
+    $W = \smallpmatrix{C \\ CA \\ \vdots \\ CA^{n-1}}$ hat vollen Spaltenrang\\
+    
+    \addlinespace[\tablelinespace]
+    \emph{Unterraum} &
+    $R(K)$ regelbarer Unterraum &
+    $N(W)$ unbeobachtbarer Unterraum\\
+    
+    \addlinespace[\tablelinespace]
+    \emph{geom. Charakter.} &
+    kleinster $A$-invarianter Unterraum, der $R(B)$ enthält &
+    größter $A$-invarianter Unterraum, der in $N(C)$ enthalten ist\\
+    
+    \addlinespace[\tablelinespace]
+    \emph{\name{Hautus}-Test} &
+    $\smallpmatrix{A - \lambda I & B}$ hat vollen Zeilenrang für alle $\lambda \in \complex$ &
+    $\smallpmatrix{A - \lambda I \\ C}$ hat vollen Spaltenrang für alle $\lambda \in \complex$\\
+    
+    \addlinespace[\tablelinespace]
+    \emph{Eigenwerte} &
+    $\lambda \in \complex$ mit Rangverlust unregelbare Eigenwerte &
+    $\lambda \in \complex$ mit Rangverlust unbeobachtbare Eigenwerte\\
+    
+    \addlinespace[\tablelinespace]
+    \emph{Polvorgabe} &
+    für regelbare Systeme für $A - BF$ möglich &
+    für beobachtbare Systeme für $A - LC$ möglich\\
+    
+    \addlinespace[\tablelinespace]
+    \emph{kanonische Form\newline($m = 1$ bzw. $k = 1$)} &
+    $\dot{z} = \smallpmatrix{-\alpha_1 & -\alpha_2 & \cdots & -\alpha_n \\
+    1 & 0 & & & \\ & \ddots & \ddots & & \\ 0 & & 1 & 0} z +
+    \smallpmatrix{1 \\ 0 \\ \vdots \\ 0} u$
+    &
+    $\dot{z} = \smallpmatrix{-\alpha_1 & 1 & & & 0 \\ -\alpha_2 & 0 & 1 & & \\
+    \vdots & & \ddots & \ddots & \\ -\alpha_{n-1} & & & 0 & 1 \\ -\alpha_n & & & & 0} z
+    + \widetilde{B} u$,
+    $y = \smallpmatrix{1 & 0 & 0 & \cdots & 0} z + Du$\\
+    
+    \addlinespace[\tablelinespace]
+    \emph{Normalform} &
+    $\smallpmatrix{\widetilde{A} & \widetilde{B} \\ \widetilde{C} & \widetilde{D}}
+    = \smallpmatrix{A_{11} & A_{12} & B_1 \\ 0 & A_{22} & 0 \\ C_1 & C_2 & D}$,
+    $(A_{11}, B_1)$ regelbar &
+    $\smallpmatrix{\widetilde{A} & \widetilde{B} \\ \widetilde{C} & \widetilde{D}}
+    = \smallpmatrix{A_{11} & 0 & B_1 \\ A_{21} & A_{22} & B_2 \\ C_1 & 0 & D}$,
+    $(A_{11}, C_1)$ beobachtbar\\
+    
+    \addlinespace[\tablelinespace]
+    \midrule
+    &
+    \textbf{Stabilisierbarkeit} &
+    \textbf{Entdeckbarkeit}\\
+    
+    \midrule
+    \emph{Traj.-Definition} &
+    für jedes $\xi \in \real^n$ existiert $u$ stückweise stetig, sodass\newline
+    $\lim_{t \to \infty} x(t) = 0$ für $x(0) = \xi$ &
+    aus $u(t) \equiv 0$ und $y(t) \equiv 0$ für $t \ge 0$ folgt $\lim_{t \to \infty} x(t) = 0$\\
+    
+    \addlinespace[\tablelinespace]
+    \emph{Dualität} &
+    \multicolumn{2}{c}{$(A^T, C^T)$ stabilisierbar $\iff$ $(A, C)$ entdeckbar}\\
+    
+    \addlinespace[\tablelinespace]
+    \emph{Verallgemeinerung} &
+    regelbar impliziert stabilisierbar &
+    beobachtbar impliziert entdeckbar\\
+    
+    \addlinespace[\tablelinespace]
+    \emph{\name{Hautus}-Test} &
+    $\smallpmatrix{A - \lambda I & B}$ hat vollen Zeilenrang für alle
+    $\lambda \in \complex$ mit $\Re(\lambda) \ge 0$ &
+    $\smallpmatrix{A - \lambda I \\ C}$ hat vollen Spaltenrang für alle $\lambda \in \complex$
+    mit $\Re(\lambda) \ge 0$\\
+    
+    \addlinespace[\tablelinespace]
+    \emph{alg. Charakter.} &
+    es gibt eine Matrix $F$ mit $A - BF$ Hurwitz-Matrix &
+    es gibt eine Matrix $L$ mit $A - LC$ Hurwitz-Matrix\\
+    
+    \addlinespace[\tablelinespace]
+    \bottomrule
+\end{tabular}
+\end{landscape}
+
+\subsection{%
+    Das Separationsprinzip%
+}
+
+Es wurde schon gezeigt, wie man ein System durch lineare Zustandsrückführung stabilisieren kann.
+Allerdings benötigt diese Regelung den kompletten Zustand zu jeder Zeit.
+Es wurde ebenfalls schon gezeigt, wie man den Zustand durch den gemessenen Ausgang
+asymptotisch rekonstruieren kann.
+Diese Techniken lassen sich enorm ef"|fizient miteinander verbinden:
+
+Für ein stabilisierbares und entdeckbares LTI-System $\dot{x} = Ax + Bu$, $y = Cx + Du$
+seien $F$ und $L$, sodass $A - BF$ und $A - LC$ Hurwitz-Matrizen sind.
+Dann stabilisiert $u = -Fx$ das System und der Beobachter mit Verstärkung $L$ erzeugt eine
+Zustandsschätzung $\widehat{x}$, die $x$ asymptotisch rekonstruiert.
+Die Schlüsselidee ist es nun, das nicht verfügbare $x$ durch die verfügbare Schätzung
+$\widehat{x}$ zu ersetzen, d.\,h. $u = -F\widehat{x}$.
+
+\linie
+
+\textbf{beobachterbasierter Ausgangsrückführungs-Regler}:
+Für die Design-Parameter $F$ und $L$ ist das lineare System
+$\dot{\widehat{x}} = A\widehat{x} + Bu + L(y - \widehat{y})$,
+$\widehat{y} = C\widehat{x} + Du$, $u = -F\widehat{x}$
+ein\\
+\begriff{beobachterbasierter Ausgangsrückführungs-Regler
+(observer-based output-feedback controller)}.
+
+Äquivalente Implementierungen sind
+$\dot{\widehat{x}} = (A - LC) \widehat{x} + (B - LD)u + Ly$, $u = -F\widehat{x}$ und
+$\dot{\widehat{x}} = (A - LC - BF + LDF) \widehat{x} + Ly$, $u = -F\widehat{x}$.
+
+\textbf{Satz (geschlossener Regelkreis)}:
+Die Verbindung des beobachterbasierten Ausgangsrück"-führungs-Regler mit dem ursprünglichen
+System führt zum geschlossenen Regelkreis\\
+$\dot{x}  = Ax - BF\widehat{x}$,
+$\dot{\widehat{x}} = (A - LC - BF) \widehat{x} + LCx$.
+Dieses System ist asymptotisch stabil genau dann, wenn $A - BF$ und $A - LC$ Hurwitz-Matrizen sind.
+
+Den Satz sieht man sehr schnell durch die Transformation
+$\smallpmatrix{x \\ \widetilde{x}} = T \smallpmatrix{x \\ \widehat{x}}$ mit
+$T := \smallpmatrix{I & 0 \\ I & -I} = T^{-1}$.
+Damit ergibt sich $T \smallpmatrix{A & -BF \\ LC & A - LC - BF} T^{-1} = \A
+:= \smallpmatrix{A - BF & BF \\ 0 & A - LC}$, d.\,h. die Eigenwerte des Systems
+$\smallpmatrix{\dot{x} \\ \dot{\widetilde{x}}} = \A \smallpmatrix{x \\ \widetilde{x}}$
+sind gleich denen von $A - BF$ vereinigt mit denen von $A - LC$.
+
+\linie
+
+\textbf{statische Ausgangsrückführung}:\\
+Bei der \begriff{statischen Ausgangsrückführung (static output-feedback)} des Systems
+$\dot{x} = Ax + Bu$, $y = Cx$ setzt man $u = -Ky$.
+Man erhält also $\dot{x} = (A - BKC)x$ als geschlossenen Regelkreis.
+Bis heute existiert kein einfacher Test,
+unter welchen Bedingungen $A - BKC$ Hurwitz ist.
+
+\linie
+
+\textbf{Zusammenfassung}:
+\begin{itemize}
+    \item
+    Überprüfe, ob $(A, B)$ stabilisierbar und $(A, C)$ entdeckbar ist.
+    Falls nicht, so kann man zeigen, dass kein linearer, stabilisierender Regler existiert.
+    
+    \item
+    Falls ja, bestimme $F$ und $L$, sodass $A - BF$ und $A - LC$ Hurwitz-Matrizen sind.
+    
+    \item
+    Der beobachterbasierte Regler führt zu einem System mit Eigenwerten\\
+    $\Eig(A - BF) \cup \Eig(A - LC)$.
+    
+    \item
+    Wenn $(A, B)$ sogar regelbar und $(A, C)$ beobachtbar ist, dann kann man alle Eigenwerte
+    des geschlossenen Regelkreises an beliebige (symmetrische) Stellen setzen. 
+\end{itemize}
+
+\textbf{Separationsprinzip}:
+Weil man $F$ und $L$ unabhängig voneinander konstruieren
+(und somit die Zustandsrückführung und den Beobachter getrennt gestalten) kann,
+spricht man davon, dass der entstehende Regler auf dem
+\begriff{Separationsprinzip (separation principle)} basiert.
+
+Allerdings sind die Eigenwerte von $A$ (System), $A - LC - BF + LDF$ (Regler) und $\A$ i.\,A.
+verschieden, d.\,h. der Regler selbst ist evtl. instabil.
+In diesem Fall muss man in der Praxis bei der Implementation eines solchen Reglers vorsichtig
+sein.
+
+Es ist naiv, die Eigenwerte von $L$ sehr "`schnell"' zu wählen:
+Zum einen verstärkt sich dann Messrauschen, zum anderen verringern hohe Beobachter-Verstärkungen
+die Robustheit.
+
+\pagebreak
+
+\subsection{%
+    Rauschen und \name{Bode}-Plots%
+}
+
+Schnellere Eigenwerte von $L$ führen zu einer schnelleren Konvergenz des Fehlers durch den
+Beobachter gegen Null.
+Allerdings vergrößern zu große Einträge von $L$ die Empfindlichkeit gegenüber Rauschen,
+was man mithilfe der Übertragungsmatrix erkennt.
+
+\textbf{Einfluss von Rauschen}:
+Sei $v$ ein Rauschsignal und $\dot{x} = Ax + Bu$, $y = Cx + Du + v$ das durch das Rauschen
+gestörte System.
+Der beobachterbasierte Ausgangsrückführungs-Regler soll aber gleich bleiben, weil er keinen
+Zugriff auf $v$ hat, d.\,h.
+$\dot{\widehat{x}} = A_c \widehat{x} + Ly$, $u = -F\widehat{x}$
+mit $A_c := A - LC - BF + LDF$.
+Mit der Übertragungsmatrix $G(s) = C (sI - A)^{-1} B + D$ des Systems und
+$K(s) = -F(sI - A_c)^{-1} L$ der Übertragungsmatrix des Reglers erhält man
+$\widehat{y}(s) = G(s) \widehat{u}(s) + \widehat{v}(s)$ und
+$\widehat{u}(s) = K(s) \widehat{y}(s)$
+(wenn man Null-Anfangsbedingungen annimmt).
+
+Man kann die 2. Gleichung in die 1. einsetzen,
+man bekommt dann $\widehat{y}(s) = G(s)K(s) \widehat{y}(s) + \widehat{v}(s)$.
+Nach $\widehat{y}(s)$ aufgelöst ergibt dies
+$\widehat{y}(s) = (I - G(s)K(s))^{-1} \widehat{v}(s)$.
+Setzt man das in die 2. Gleichung ein, so erhält man
+$\widehat{u}(s) = K(s) (I - G(s)K(s))^{-1} \widehat{v}(s)$.
+
+Mit dieser Gleichung kann man den Einfluss des Messrauschens auf die Steuergröße im geschlossenen
+Regelkreis analysieren, wenn das System ein SISO-System ist
+(z.\,B. mit dem sog. Bode-Amplitudengang des Bode-Plots, siehe unten).
+
+\textbf{Invertierbarkeit von $I - G(s)K(s)$}:
+$G(s) = C(sI - A)^{-1} B + D$ ist ($|s|$ hinreichend groß) beschränkt und
+$K(s) = -F(sI - A_c)^{-1} L \to 0$ für $|s| \to \infty$,
+damit auch $G(s)K(s) \to 0$ bzw. $I - G(s)K(s) \to I$ für $|s| \to \infty$.
+Weil $\det(I - G(s)K(s))$ eine rationale Funktion ist, ist sie entweder konstant gleich Null
+oder sie hat sie nur endlich viele Nullstellen.
+Allerdings ist wegen $\det(I - G(s)K(s)) \to \det(I) = 1$ der erste Fall nicht möglich, d.\,h.
+$(I - G(s)K(s))^{-1}$ existiert für fast alle $s \in \complex$.
+
+\linie
+
+\textbf{\name{Bode}-Plot}:
+Sei $H\colon D \subset \real \rightarrow \real$ eine reellwertige, rationale Funktion.
+Dann heißt der Plot von $|H(\iu\omega)|$ über die Frequenz $\omega \ge 0$
+\begriff{\name{Bode}-Amplitudengang (\name{Bode} magnitude plot)} von $H(s)$.
+Der Plot von $\arg(H(\iu\omega))$ über die Frequenz $\omega \ge 0$ heißt
+\begriff{\name{Bode}-Phasengang (\name{Bode} phase plot)} von $H(s)$.
+Beide Plots zusammen werden \begriff{\name{Bode}-Plot} genannt,
+mit ihnen wird $\omega \mapsto H(\iu\omega)$ für $\omega \ge 0$ vollständig dargestellt.
+
+Es ist üblich, beim Bode-Plot die Frequenzachsen logarithmisch darzustellen
+(Einteilung in 10er-Logarithmen).
+Zusätzlich wird die Amplitude auch logarithmisch dargestellt.
+Manchmal erfolgt eine Umrechnung in Dezibel (dB) durch die Formel
+$|H|_{\text{dB}} := 20 \log_{10} |H|$,
+in diesem Fall erfolgt die Darstellung der Amplitude in Dezibel natürlich linear.
+
+Mithilfe des Bode-Amplitudengangs von $K(s) (I - G(s)K(s))^{-1}$
+kann man erkennen, dass schnellere Eigenwerte zu einer größeren Verstärkung von Rauschen führen.
+
+\pagebreak
+\ifthenelse{\equal{\standalonedoc}{true}}{\addtocontents{toc}{\protect\newpage}}{}

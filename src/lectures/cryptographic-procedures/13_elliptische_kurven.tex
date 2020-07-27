@@ -1,0 +1,628 @@
+\section{%
+    Elliptische Kurven%
+}
+
+Im Folgenden ist $K$ ein Körper und $k$ der algebraische Abschluss von $K$.
+Insbesondere ist $k$ unendlich und jedes Polynom in $K[X]$ hat in $k$ eine Nullstelle
+(für $K = \real$ ist $k = \complex$).
+Dabei sei $\Char(K) \not= 2$, d.\,h. $2 \not= 0$ in $K$.
+
+Seien $A, B \in K$, sodass $s(X) := X^3 + AX + B \in K[X]$ drei verschiedene Nullstellen in $k$
+besitzt, d.\,h. $s(X) = (X - a_1)(X - a_2)(X - a_3)$, wobei $a_1, a_2, a_3 \in k$
+mit $a_i \not= a_j$ für $i \not= j$ (gilt genau dann, wenn $4A^3 + 27B^2 \not= 0$).
+
+\textbf{elliptische Kurve}:
+Eine \begriff{elliptische Kurve} über $K$ ist
+$E(K) := \{(a, b) \in K^2 \;|\; b^2 = s(a)\}$,
+wobei $s(X) := X^3 + AX + B \in K[X]$ mit $A, B \in K$, sodass $4A^3 + 27B^2 \not= 0$.
+
+$E(k)$ enthält stets unendlich viele Punkte
+(für jedes $a \in k$ kann man die Wurzel aus $a^3 + Aa + B$ ziehen).
+Ist $K = \FF_q$ ein endlicher Körper, dann gilt $|E(\FF_q)| \le 2q$
+(für jedes $a \in K$ gibt es höchstens zwei Wurzeln $b \in K$ aus $a^3 + Aa + B$).
+Nach dem Satz von Hasse gilt für $q$ ungerade sogar
+$q - 2\sqrt{q} \le |E(\FF_q)| \le q + 2\sqrt{q}$
+("`Erwartungswert $\pm$ Standardabweichung"').
+
+\subsection{%
+    Schnitte von elliptischen Kurven mit Geraden%
+}
+
+Im Folgenden sei $E := E(k) \cup \{\O\}$ für einen zusätzlichen Punkt $\O$,
+dem \begriff{Fernpunkt}.
+Gesucht wird eine Möglichkeit, $E$ zur Gruppe zu machen.
+
+Für $P = (a, b) \in k^2$ sei $\overline{P} := (a, -b)$ und es sei $\overline{\O} := \O$.
+
+\textbf{Gerade}:
+Eine \begriff{Gerade} $L$ in $k^2 \cup \{\O\}$ ist gegeben durch
+$L := \{(x, y) \in k^2 \;|\; x = a\} \cup \{\O\}$ für ein $a \in k$ (\begriff{Senkrechte}) oder
+$L := \{(x, y) \in k^2 \;|\; y = \alpha x + \beta\}$ (\begriff{Nicht-Senkrechte}).
+
+\linie
+
+\textbf{$L \cap E$ für $L$ Senkrechte}:
+Ist $L$ durch $x = a$ gegeben, dann sei $b \in k$ mit $b^2 = a^3 + Aa + B$.
+Damit gilt $P, \overline{P}, \O \in L \cap E$ für $P := (a, b)$.
+Für $b = 0$ gilt $P = \overline{P}$ und dieser Punkt erscheint doppelt im Schnitt $L \cap E$.
+(Sonst gibt es keine Punkte im Schnitt.)
+
+\textbf{$L \cap E$ für $L$ Nicht-Senkrechte}:
+Ist $L$ durch $x = \alpha x + \beta$ gegeben, dann gilt für jeden Punkt $P = (a, b) \in L \cap E$
+im Schnitt, dass $a$ eine Nullstelle von $t(X) := s(X) - (\alpha X + \beta)^2$ ist.
+Dieses Polynom hat Grad 3, d.\,h. es gibt drei Nullstellen $x_1, x_2, x_3 \in k$ von $t(X)$ in $k$
+(nicht notwendigerweise verschieden).
+Mit $y_i := \alpha x_i + \beta$ gilt dann $L \cap E = \{(x_i, y_i) \;|\; i = 1, 2, 3\}$.
+Damit besteht $L \cap E$ auch in diesem Fall aus genau drei Punkten (mit Vielfachheiten).
+
+\linie
+
+\textbf{Berechnung des dritten Punkts auf einer Geraden}:\\
+Angenommen, es sind zwei Punkte $P_1, P_2 \in E$ gegeben.
+Dann lässt sich auf eindeutige Weise ein dritter Punkt $P_3 \in E$ bestimmen,
+sodass alle drei Punkte kollinear sind.
+
+Ist $P_1 = \O$ oder $P_2 = \O$, dann ist $P_3 := \overline{P_2}$ bzw. $P_3 := \overline{P_1}$.
+Seien also $P_1, P_2 \not= \O$.
+Liegen $P_1, P_2$ auf einer Senkrechten (d.\,h. $P_2 = \overline{P_1}$)
+und gilt $P_1 \not= P_2$, dann ist $P_3 := \O$.
+Im Folgenden liegen also $P_1, P_2$ auf keiner Senkrechten
+(außer für $P_1 = P_2$) und $P_3 \not= \O$.
+
+Seien $P_i =: (x_i, y_i)$ für $i = 1, 2, 3$ und $L\colon y = \alpha x + \beta$ die Gerade
+mit $P_1, P_2 \in L \cap E$.
+Dann ist $s(X) - (\alpha X + \beta)^2 = t(X) = (X - x_1) (X - x_2) (X - x_3)$.
+Koef"|fizientenvergleich für $X^2$ liefert $\alpha^2 = x_1 + x_2 + x_3$.
+Damit liefert $x_3 := \alpha^2 - x_1 - x_2$ und $y_3 := \alpha x_3 + \beta$ den dritten Punkt auf
+$L \cap E$.
+Allerdings ist $L$ unbekannt.
+$\beta$ kann man mit $\alpha$ bestimmen durch $\beta := y_1 - \alpha x_1$.
+\begin{itemize}
+    \item
+    Für $x_1 \not= x_2$ lässt sich $\alpha$ bestimmen durch
+    $\alpha := \frac{y_2 - y_1}{x_2 - x_1}$.
+    
+    \item
+    Für $x_1 = x_2$ ist $x_1$ eine doppelte Nullstelle von $t(X)$,
+    d.\,h. $0 = t'(x_1) = 3x_1^2 + A - 2\alpha y_1$.
+    Es gilt $y_1 \not= 0$ (sonst $x_1$ doppelte Nullstelle von $s(X)$) und $2 \not= 0$,
+    daher folgt $\alpha := \frac{3x_1^2 + A}{2y_1}$.
+\end{itemize}
+
+\pagebreak
+
+\subsection{%
+    Gruppenstruktur%
+}
+
+Obige Rechnungen kann man auch für $K$ statt $k$ und $E(K) \cup \{\O\}$ statt $E$ durchführen.
+Dann gilt nicht notwendigerweise $x_1, x_2, x_3 \in K$ für die Nullstellen von $t(X)$, d.\,h.
+Geraden können jetzt auch (mit Vielfachheiten) weniger als drei Schnittpunkte mit
+$E(K) \cup \{\O\}$ haben.
+Es gilt aber, dass der oben berechnete dritte Punkt $P_3$ in $E(K) \cup \{\O\}$ liegt,
+wenn $P_1$ und $P_2$ bereits in $E(K) \cup \{\O\}$ liegen.
+Damit kann man eine Addition auf dieser Menge definieren.
+Die Idee dabei ist, dass $P + Q + R = \O$ für drei kollineare Punkte $P, Q, R \in E(K) \cup \{\O\}$
+gelten soll.
+
+\textbf{Gruppenstruktur auf $E(K) \cup \{\O\}$}:
+Für $P_1, P_2 \in E(K) \cup \{\O\}$ sei $P_1 + P_2 := \overline{P_3}$ mit\\
+$P_3 \in E(K) \cup \{\O\}$ dem oben bestimmten dritten Punkt, sodass $P_1, P_2, P_3$ kollinear
+sind.
+
+\textbf{Eigenschaften}:
+$E(K) \cup \{\O\}$ ist eine abelsche Gruppe, d.\,h. es gelten folgende Eigenschaften.
+\begin{enumerate}
+    \item
+    $P + Q = Q + P$
+    (\begriff{Kommutativität})
+    
+    \item
+    $P + \O = P$
+    (\begriff{neutrales Element})
+    
+    \item
+    $-P = \overline{P}$
+    (\begriff{inverse Elemente})
+    
+    \item
+    $(P + Q) + R = P + (Q + R)$
+    (\begriff{Assoziativität})
+\end{enumerate}
+Die letzte Eigenschaft ist schwierig zu beweisen,
+hier wird sie mithilfe von Polynomen über elliptischen Kurven gezeigt.
+
+\pagebreak
+
+\subsection{%
+    Polynome über elliptischen Kurven%
+}
+
+\textbf{Polynomring über $E(k)$}:
+$k[x, y] := k[X, Y]/\erzeugnis{Y^2 = s(X)}$ heißt \begriff{Polynomring über $E(k)$}.
+
+Wertet man Polynome in $k[x, y]$ und $K[X, Y]$ nur in Punkten auf $E(k)$ aus, so verhalten
+sich diese beiden Ringe gleich.
+Für $(a, b) \in E$ und $f \in k[x, y]$ ist $f(a, b) \in k$ wohldefiniert.
+
+Es ist nicht einfach, einen Gradbegriff für $k[x, y]$ zu definieren
+($y^2 = s(x)$ hätte in $k[x, y]$ sowohl Grad 2 als auch Grad 3).
+Außerdem sind Nullstellen von Polynomen in $k[x, y]$ unklar
+($x + y - a$ hat $(a, 0)$ als Nullstelle,
+aber weder $x - a$ noch $y$ lassen sich herausfaktorisieren).
+
+\linie
+
+Sei $k[x]$ das Bild von $k[X]$ unter dem kanonischen Homomorphismus
+$\pi\colon k[X, Y] \to k[x, y]$.
+(Beachte: Es gilt $(y^3 - y^2)(y + 1) \in k[x]$, was man dem Polynom nicht sofort ansieht.)
+
+Für $f \in k[x, y]$ existieren $v(x), w(x) \in k[x]$ mit $f(x, y) = v(x) + y \cdot w(x)$
+(sukzessives Ersetzen von $y^2$ durch $s(x)$).
+Nun wird gezeigt, dass diese Darstellung eindeutig ist.
+
+\textbf{Lemma}:
+Sei $f(x, y) \in k[x, y] \setminus \{0\}$.
+Dann hat $f$ nur endlich viele Nullstellen auf $E(k)$.
+
+\begin{Beweis}
+    Wähle $v(x), w(x) \in k[x]$ mit $f(x, y) = v(x) + y \cdot w(x)$
+    und definiere das Polynom $g(x, y) := f(x, y) \cdot (v(x) - y \cdot w(x)) \in k[x, y]$.
+    Dann gilt $g(x, y) = v^2(x) - s(x) w^2(x) \in k[x]$.
+    Angenommen, es gilt $f(a, b) = 0$ für unendlich viele $(a, b) \in E(k)$.
+    Dann haben diese Punkte unendlich viele verschiedene $x$-Koordinaten $a$, d.\,h.
+    $g$ hat unendlich viele Nullstellen in $k$, also $g = 0$.
+    Wegen $\deg(v^2), \deg(w^2)$ gerade und $\deg(s) = 3$ ungerade folgt $v = w = 0$.
+\end{Beweis}
+
+\textbf{Lemma}:
+Die Darstellung $f(x, y) = v(x) + y \cdot w(x)$ ist eindeutig.
+
+\begin{Beweis}
+    Sei $f(x, y) = v(x) + y \cdot w(x) = \widetilde{v}(x) + y \cdot \widetilde{w}(x)$.
+    Dann gilt $g(a, b) = 0$ für alle $(a, b) \in E(k)$
+    mit $g(x, y) := (v(x) - \widetilde{v}(x)) + y \cdot (w(x) - \widetilde{w}(x))$,
+    d.\,h. $g$ hat unendlich viele Nullstellen auf $E(k)$.
+    Nach dem Lemma von eben folgt $g = 0$ und damit $v = \widetilde{v}$ sowie $w = \widetilde{w}$.
+\end{Beweis}
+
+\linie
+
+\textbf{Konjugat}:
+Sei $f(x, y) \in k[x, y]$ mit $f(x, y) = v(x) + y \cdot w(x)$.\\
+Dann ist $\overline{f}(x, y) := v(x) - y \cdot w(x) \in k[x, y]$ \begriff{Konjugat} von $f$.
+
+\textbf{Norm}:
+Sei $f(x, y) \in k[x, y]$.
+Dann heißt $N(f) := f \cdot \overline{f} \in k[x]$ \begriff{Norm} von $f$.
+
+Beispielsweise gelten $N(x) = x^2$ und $N(y) = -y^2 = -s(x)$.
+
+\textbf{Eigenschaften der Norm}:
+\begin{enumerate}
+    \item
+    $N(f) = v^2(x) - s(x) w^2(x)$ für $f(x, y) = v(x) + y \cdot w(x)$
+    
+    \item
+    $N(f \cdot g) = N(f) \cdot N(g)$
+    
+    \item
+    $N(f) = 0 \iff f = 0$
+    
+    \item
+    $\deg_x(N(f)) = \max\{2\deg_x(v(x)), 3 + 2\deg_x(w(x))\}$
+\end{enumerate}
+
+\linie
+
+\textbf{Grad}:
+Sei $f(x, y) \in k[x, y]$.
+Dann heißt $\deg(f) := \deg_x(N(f))$ \begriff{Grad} von $f$
+(mit $\deg(0) := -\infty$).
+
+\textbf{Eigenschaften des Grades}:
+\begin{enumerate}
+    \item
+    $\deg(f) \in \{-\infty, 0, 2, 3, 4, \dotsc\}$
+    
+    \item
+    $\deg\colon k[x, y] \xrightarrow{N} k[x] \xrightarrow{\deg_x} \{-\infty\} \cup \natural$
+    mit $N$ und $\deg_x$ Monoidhomomorphismen\\
+    ($k[x, y]$ und $k[x]$ multiplikativ, $\{-\infty\} \cup \natural$ additiv)
+    
+    \item
+    $\deg(f \cdot g) = \deg(f) + \deg(g)$
+\end{enumerate}
+
+$k[x, y]$ ist nullteilerfrei
+(für $f \cdot g = 0$ folgt $N(f) \cdot N(g) = 0$, d.\,h. $N(f) = 0$ oder $N(g) = 0$ bzw.
+$f = 0$ oder $g = 0$), d.\,h. der Quotientenkörper $k(x, y)$ von $k[x, y]$ existiert.
+
+\pagebreak
+
+\subsection{%
+    Ordnung von Nullstellen%
+}
+
+Ist $P = (a, b) \in E(k)$, dann gilt $a \in \{a_1, a_2, a_3\}$ genau dann, wenn $b = 0$\\
+(weil $a \in \{a_1, a_2, a_3\} \iff b^2 = s(a) = 0 \iff b = 0$).
+
+\textbf{Satz}:
+Seien $f \in k[x, y] \setminus \{0\}$ und $P = (a, b) \in E(k)$.\\
+Dann gibt es genau ein $d \in \natural_0$, sodass $g, h \in k[x, y]$ existieren mit
+$g(P) \not= 0 \not= h(P)$ sowie
+\begin{itemize}
+    \item
+    $fg = (x - a)^d h$ für $a \notin \{a_1, a_2, a_3\}$ und
+    
+    \item
+    $fg = y^d h$ für $a \in \{a_1, a_2, a_3\}$.
+\end{itemize}
+
+\begin{Beweis}
+    Zunächst wird die Eindeutigkeit bewiesen.
+    \begin{itemize}
+        \item
+        Sei $a \notin \{a_1, a_2, a_3\}$.
+        Angenommen, es gilt $fg = (x - a)^d h$ und $f\widetilde{g} = (x - a)^e \widetilde{h}$
+        mit $d > e \ge 0$.
+        Dann ist $(x - a)^d \widetilde{g} h = fg\widetilde{g} = (x - a)^e \widetilde{h} g \iff
+        (x - a)^e ((x - a)^{d-e} \widetilde{g} h - \widetilde{h} g) = 0$.
+        $k[x, y]$ ist nullteilerfrei, also folgt
+        $(x - a)^{d-e} \widetilde{g} h = \widetilde{h} g$.
+        Setzt man $(x, y) = P$ ein, so erhält man wegen $d - e > 0$ die Gleichung
+        $\widetilde{h}(P) g(P) = 0$, ein Widerspruch zu
+        $g(P) \not= 0 \not= \widetilde{h}(P)$.
+        
+        \item
+        Sei $a \in \{a_1, a_2, a_3\}$, d.\,h. $b = 0$.
+        Angenommen, es gilt $fg = y^d h$ und $f\widetilde{g} = y^e \widetilde{h}$
+        mit $d > e \ge 0$.
+        Dann ist $y^d \widetilde{g} h = fg\widetilde{g} = y^e \widetilde{h} g \iff
+        y^e (y^{d-e} \widetilde{g} h - \widetilde{h} g) = 0$.
+        $k[x, y]$ ist nullteilerfrei, also folgt
+        $y^{d-e} \widetilde{g} h = \widetilde{h} g$.
+        Setzt man $(x, y) = (a, 0)$ ein, so erhält man wegen $d - e > 0$ die Gleichung
+        $\widetilde{h}(P) g(P) = 0$, ein Widerspruch zu
+        $g(P) \not= 0 \not= \widetilde{h}(P)$.
+    \end{itemize}
+    
+    Nun wird die Existenz bewiesen.
+    Durch sukzessives Ausklammern von $(x - a)$
+    gibt es $e \in \natural_0$ und $v, w \in k[x]$, sodass
+    $f = (x - a)^e (v(x) + y w(x))$ mit $v(a) \not= 0$ oder $w(a) \not= 0$.
+    \begin{itemize}
+        \item
+        Sei $a \notin \{a_1, a_2, a_3\}$, d.\,h. $b \not= 0$.
+        Gilt $v(a) + bw(a) \not= 0$, dann setze $d := e$, $g := 1$ und $h := v(x) + yw(x)$.
+        Sei also $v(a) + bw(a) = 0$.
+        Dann gilt $v(a) - bw(a) \not= 0$
+        (weil $w(a) \not= 0$, sonst wäre $v(a) + bw(a) = v(a) \not= 0$) und
+        daher $g(P) \not= 0$ mit $g := v(x) - yw(x)$.
+        Man erhält damit
+        $fg = (x - a)^e N(g) = (x - a)^{e+e'} h(x)$ mit $h(P) = h(a) \not= 0$ für ein
+        $e' \in \natural_0$
+        ($(x - a)$ so oft wie möglich aus $N(g) \in k[x]$ ausklammern),
+        d.\,h. setze $d := e + e'$.
+        
+        \item
+        Sei $a \in \{a_1, a_2, a_3\}$, d.\,h. $b = 0$ und oBdA $a = a_1$.\\
+        Es gilt $f \cdot (x - a_2)^e (x - a_3)^e = s(x)^e (v(x) + yw(x)) = y^{2e} (v(x) + yw(x))$.
+        Gilt $v(a) \not= 0$, dann setze $d := 2e$, $g := (x - a_2)^e (x - a_3)^e$ und
+        $h := v(x) + yw(x)$ ($a$ ist keine NS von $g$).\\
+        Sei also $v(a) = 0$.
+        Dann gibt es $c \in \natural$ und $\widetilde{v} \in k[x]$ mit
+        $v(x) = (x - a)^c \widetilde{v}(x)$.
+        Es folgt $f \cdot (x - a_2)^{c+e} (x - a_3)^{c+e} =
+        y^{2e} (s(x)^c \widetilde{v}(x) + y\widetilde{w}(x))$ mit
+        $\widetilde{w}(x) := (x - a_2)^c (x - a_3)^c w(x)$.
+        Wegen $v(a) = 0$ folgt nach Voraussetzung $w(a) \not= 0$ und daher
+        $\widetilde{w}(a) \not= 0$.
+        Setzt man $h := \widetilde{w}(x) + ys(x)^{c-1}\widetilde{v}(x)$, so folgt
+        $h(P) = \widetilde{w}(P) = \widetilde{w}(a) \not= 0$ und damit\\
+        $f \cdot (x - a_2)^{c+e} (x - a_3)^{c+e} = y^{2e+1} h$, d.\,h. setze $d := 2e + 1$.
+        \vspace{-7mm}
+    \end{itemize}
+\end{Beweis}
+
+\linie
+
+\textbf{Ordnung einer Nullstelle}:
+Seien $f \in k[x, y] \setminus \{0\}$ und $P \in E(k)$.\\
+Dann heißt $d$ aus dem vorherigen Satz \begriff{Ordnung} $\ord_P(f) \in \natural_0$
+von $P$ als Nullstelle von $f$.
+
+Es gilt $f(P) = 0 \iff \ord_P(f) \ge 1$.
+
+Aus der Eindeutigkeit von $d$ im Satz folgt $\ord_P(fg) = \ord_P(f) + \ord_P(g)$:
+Seien $a \notin \{a_1, a_2, a_3\}$ und $f_1 g_1 = (x - a)^{d_1} h_1$ sowie
+$f_2 g_2 = (x - a)^{d_2} h_2$.
+Dann gilt $(f_1 f_2) (g_1 g_2) = (x - a)^{d_1 + d_2} (h_1 h_2)$
+mit $(g_1 g_2)(P) \not= 0 \not= (h_1 h_2)(P) \not= 0$,
+d.\,h. wegen der Eindeutigkeit\\
+$\ord_P(f_1 f_2) = d_1 + d_2 = \ord_P(f_1) + \ord_P(f_2)$.
+
+\linie
+\pagebreak
+
+\textbf{Lemma}:
+Seien $f, h \in k[x, y] \setminus \{0\}$ mit $\forall_{P \in E(k)}\; \ord_P(f) \le \ord_P(h)$.\\
+Dann gibt es ein $g \in k[x, y]$ mit $fg = h$.
+
+\begin{Beweis}
+    Es reicht, $f\overline{f} \cdot g = h\overline{f}$ zu zeigen
+    (daraus folgt nämlich $\overline{f} (fg - h) = 0$, d.\,h. wegen der Nullteilerfreiheit
+    $fg = h$).
+    Wegen $f\overline{f} \in k[x]$ und $\ord_P(f\overline{f}) \le \ord_P(h \overline{f})$
+    reicht es daher, $fg = h$ für $f \in k[x]$ zu zeigen.
+    Der Beweis erfolgt mit Induktion über $\deg_x(f)$.
+    \begin{itemize}
+        \item
+        Sei $\deg_x(f) = 0$.
+        Dann ist $f \in k \setminus \{0\}$ und man kann $g := f^{-1} h$ setzen.
+        
+        \item
+        Sei $\deg_x(f) = 1$, oBdA $f(x) =: x - a$.
+        Schreibe $h =: v(x) + yw(x)$ und sei $P = (a, b) \in E(k)$ ein Punkt auf $E(k)$ mit
+        $x$-Koordinate $a$.
+        Wegen $\ord_P(h) \ge \ord_P(f) = \ord_P(x - a) \ge 1$ und analog
+        $\ord_{\overline{P}}(h) \ge 1$ folgt $v(a) + bw(a) = 0 = v(a) - bw(a)$.
+        Ist $b \not= 0$, dann folgt aus $2bw(a) = 0$, dass $w(a) = 0$ und damit $v(a) = 0$,
+        d.\,h. $x - a$ lässt sich aus $h$ herausteilen.\\
+        Sei also $b = 0$.
+        Dann ist $v(a) = 0$ und $a \in \{a_1, a_2, a_3\}$, oBdA $a = a_1$.
+        Sei $w(a) \not= 0$ (sonst lässt sich $x - a$ aus $h$ herausteilen).\\
+        Wegen $(x - a) \cdot (x - a_2)(x - a_3) = s(x) = y^2 \cdot 1$ ist $\ord_P(x - a) = 2$.\\
+        Andererseits gilt $\ord_P(h) = 1$,
+        weil $h \cdot (x - a_2)(x - a_3) = s(x) \widetilde{v}(x) + y \widetilde{w}(x)
+        = y \cdot (y \widetilde{v}(x) + \widetilde{w}(x))$
+        mit $v(x) =: (x - a) \widetilde{v}(x)$ und $\widetilde{w}(x) := (x - a_2) (x - a_3) w(x)$
+        (mit $0 \cdot \widetilde{v}(a) + \widetilde{w}(a) \not= 0$),
+        ein Widerspruch zu $\ord_P(f) \le \ord_P(h)$.
+        Damit tritt der Fall $b = 0$ und $w(a) \not= 0$ nicht auf.
+        
+        \item
+        Sei $\deg_x(f) \ge 2$.
+        Dann gibt es $f_1, f_2 \in k[x]$ mit $f = f_1 f_2$ und $\deg_x(f_i) < \deg_x(f)$.
+        Wegen $\ord_P(f_1) \le \ord_P(f) \le \ord_P(h)$ lässt sich die IV
+        für $f_1$ und $h$ anwenden und man erhält $f_1 g_1 = h$ für ein $g_1 \in k[x, y]$.
+        Es gilt
+        $\ord_P(h) + \ord_P(f_2) = \ord_P(f_1) + \ord_P(f_2) + \ord_P(g_1)$\\
+        $= \ord_P(f) + \ord_P(g_1) \le \ord_P(h) + \ord_P(g_1)$,
+        d.\,h. $\ord_P(f_2) \le \ord_P(g_1)$.
+        Damit lässt sich die IV für $f_2$
+        und $g_1$ anwenden und man erhält $f_2 g_2 = g_1$ für ein $g_2 \in k[x, y]$,
+        d.\,h. $fg_2 = f_1 f_2 g_2 = h$.
+        \vspace{-7mm}
+    \end{itemize}
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    Divisoren%
+}
+
+\textbf{Divisor}:
+Ein \begriff{Divisor} ist eine formale Summe $D := \sum_{P \in E(k)} n_P P$ mit Koef"|fizienten
+$n_P \in \natural_0$ und $n_P = 0$ für fast alle $P \in E(k)$.
+
+Man kann Divisoren auch als Folgen $(n_P)_{P \in E(k)}$ mit Einträgen $n_P$ in $\natural_0$
+fast alle $0$ auf"|fassen.
+Die Addition von Divisoren ist definiert durch\\
+$(\sum_{P \in E(k)} m_P P) + (\sum_{P \in E(k)} n_P P) := \sum_{P \in E(k)} (m_P + n_P) P$.
+
+\linie
+
+\textbf{Grad eines Divisors}:
+Der \begriff{Grad} von $D$ ist definiert durch $\deg(D) := \sum_{P \in E(k)} n_P \in \natural_0$.
+
+Es gilt $\deg(D_1 + D_2) = \deg(D_1) + \deg(D_2)$ für zwei Divisoren $D_1, D_2$.
+
+\linie
+
+\textbf{Divisor eines Polynoms}:
+Sei $f \in k[x, y]$.\\
+Dann ist $\div(f) := \sum_{P \in E(k)} \ord_P(f) P$ der \begriff{Divisor} von $f$
+(für $f = 0$ sei $\div(f) := \sum_{P \in E(k)} 0P$).
+
+Es gilt $\div(f \cdot g) = \div(f) + \div(g)$, weil
+$\ord_P(f \cdot g) = \ord_P(f) + \ord_P(g)$.
+
+\linie
+
+\textbf{Hauptdivisor}:
+Ein Divisor $D$ heißt \begriff{Hauptdivisor}, falls $D = \div(f)$ für ein $f \in k[x, y]$.
+
+\textbf{Hauptdivisor von $f(x) = x - a$}:
+Seien $f(x) := x - a$ und $P = (a, b) \in E(k)$.\\
+Dann ist $\div(f) = P + \overline{P}$
+(im Fall $a \in \{a_1, a_2, a_3\} \iff b = 0$ ist $\div(f) = 2P = P + \overline{P}$).
+
+\textbf{Hauptdivisor von $f \in k[x]$}:
+Sei $f \in k[x]$.
+Dann zerfällt $f$ in Linearfaktoren, d.\,h.\\
+$f = \prod_{i=1}^n (x - x_i)^{d_i}$.
+Wähle zu jedem $x_i$ ein $y_i \in k$ mit $P_i := (x_i, y_i) \in E(k)$.\\
+Dann gilt $\div(f) = \sum_{i=1}^n d_i \div(x - x_i) = \sum_{i=1}^n d_i (P_i + \overline{P_i})$
+und\\
+$\deg(\div(f)) = \sum_{i=1}^n 2d_i = 2\deg_x(f) = \deg(f)$.
+
+\linie
+
+\textbf{Konjugat}:
+Das \begriff{Konjugat} von $D$ ist definiert durch
+$\overline{D} := \sum_{P \in E(k)} n_P \overline{P}$.
+
+Es gilt $\deg(\overline{D}) = \deg(D)$.
+
+Sei $f \in k[x, y]$.
+Dann folgt aus $f(\overline{P}) = \overline{f}(P)$, dass
+$\ord_{\overline{P}}(f) = \ord_P(\overline{f})$ und
+$\div(\overline{f}) = \overline{\div(f)}$.
+Daraus folgt $\deg(\div(\overline{f})) = \deg(\div(f))$ und daher
+$2\deg(f) = 2\deg_x(N(f)) = \deg(N(f))$\\
+$= \deg(\div(N(f))) = \deg(\div(f)) + \deg(\div(\overline{f})) = 2\deg(\div(f))$.\\
+Es gilt also $\deg(\div(f)) = \deg(f)$, d.\,h. Hauptdivisoren haben niemals den Grad $1$.
+
+Für jeden Divisor $D$ ist $D + \overline{D}$ ein Hauptdivisor,
+weil $P + \overline{P} = \div(x - a)$ für $P = (a, b) \in E(k)$ ein Hauptdivisor ist.
+
+\pagebreak
+
+\subsection{%
+    \name{Picard}-Gruppe%
+}
+
+\textbf{Äquivalenzrelation}:
+Auf der Menge aller Divisoren wird eine Äquivalenzrelation $\sim$ definiert,
+wobei $D \sim D'$ gelten soll, falls $\exists_{f, f' \in k[x, y]}\; D + \div(f) = D' + \div(f')$.
+
+$\sim$ ist eine Kongruenzrelation, d.\,h. aus
+$D_1 \sim D_1'$ und $D_2 \sim D_2'$ folgt $D_1 + D_2 \sim D_1' + D_2'$
+(wähle $f := f_1 f_2$ und $f' := f_1' f_2'$).
+
+Sei $[D]$ die Äquivalenzklasse von $D$.
+Definiert man $[D_1] + [D_2] := [D_1 + D_2]$, so bildet die Menge aller Äquivalenzklassen
+ein kommutatives Monoid mit Nullelement $[0]$,
+wobei alle Hauptdivisoren in $[0]$ enthalten sind.
+Weil $D + \overline{D}$ stets ein Hauptdivisor ist, gilt
+$[D] + [\overline{D}] = [D + \overline{D}] = [0]$, d.\,h. es existieren additive Inverse
+$-[D] = [\overline{D}]$.
+Damit ist die Menge aller Divisoren modulo $\sim$ eine abelsche Gruppe.
+
+\textbf{\name{Picard}-Gruppe}:
+Die Menge aller Divisoren modulo $\sim$ heißt \begriff{\name{Picard}-Gruppe} $\Pic^0(E(k))$.
+
+\linie
+
+\textbf{Äquivalenzklasse $[0]$}:
+Die Hauptdivisoren sind in $[0]$ enthalten,
+und keine anderen Divisoren sind in $[0]$ enthalten:
+Sei $D$ ein Divisor mit $D \sim 0$, d.\,h. $D + \div(f) = \div(h)$ mit $f, h \in k[x, y]$.\\
+Ist $f = 0$, dann ist $D = \div(h)$ ein Hauptdivisor.\\
+Ist $h = 0$, dann ist $D = \div(h) - \div(f) = \div(0 \cdot f) - \div(f) = \div(0)$ ein
+Hauptdivisor.\\
+Seien daher $f, h \not= 0$.
+Es gilt $\sum_{P \in E(k)} (n_P + \ord_P(f)) P = \sum_{P \in E(k)} \ord_P(h) P$.
+Somit gilt $\forall_{P \in E(k)}\; \ord_P(f) \le \ord_P(h)$ und obiges Lemma lässt sich
+anwenden, d.\,h. $\exists_{g \in k[x, y]}\; fg = h$.
+Damit ist $D = \div(h) - \div(f) = \div(f) + \div(g) - \div(f) = \div(g)$ ein Hauptdivisor.
+
+Insbesondere enthält $[0]$ keinen Divisor vom Grad $1$.
+Daraus folgt, dass für $P \in E(k)$ gilt, dass $[P] \not= [0]$,
+wenn man $P$ als Divisor $P = \sum_{Q \in E(k)} \delta_{PQ} Q$ auf"|fasst ($P$ hat Grad $1$).\\
+Die Picard-Gruppe ist damit nicht-trivial.
+
+\linie
+
+Definiere im Folgenden $[\O] := [0]$.
+
+\textbf{Satz}:
+$[\cdot]\colon E(k) \cup \{\O\} \to \Pic^0(E(k))$, $P \mapsto [P]$
+ist ein Gruppenisomorphismus.
+
+\begin{Beweis}
+    Zunächst zeigt man die Injektivität.
+    Es gilt $[P] \not= [\O]$ für alle $P \in E(k)$.
+    Seien daher $P, Q \in E(k)$ mit $P \not= Q$.
+    \begin{itemize}
+        \item
+        Sei $P \not= \overline{Q}$.
+        Weil auf jeder Vertikalen mit Vielfachheit genau zwei Punkte von $E(k)$ liegen,
+        haben die Punkte $P$ und $Q$ verschiedene $x$-Koordinaten
+        ($Q$ und $\overline{Q}$ liegen schon auf einer Vertikalen).
+        Damit ist $R := P + \overline{Q} \not= \O$
+        (d.\,h. $\overline{P}, Q, R$ liegen auf einer Geraden),
+        also $[P + \overline{Q}] = [R] \not= [0]$, woraus $[P] \not= [Q]$ folgt.
+        
+        \item
+        Sei $P = \overline{Q}$.
+        Dann ist $R := P + \overline{Q} \not= \O$
+        (wegen $Q \not= \overline{Q}$ ist die Tangente an $E(k)$ in $P$ nicht-senkrecht),
+        also $[P + \overline{Q}] = [R] \not= [0]$, woraus $[P] \not= [Q]$ folgt.
+    \end{itemize}
+    Die Abbildung ist surjektiv:
+    Für $[D] \in \Pic^0(E(k))$ ersetzt man zunächst alle Summanden $[P + \overline{P}]$ für
+    $P \in E(k)$ durch $[0]$ (da $P + \overline{P}$ Hauptdivisor).
+    Es bleiben nur noch Summanden $[P + Q]$ mit $Q \not= \overline{P}$ übrig,
+    die man durch $[\overline{R}]$ ersetzen kann (wenn $R \in E(k) \cup \{\O\}$ der eindeutige
+    dritte Punkt auf einer Geraden ist).
+    Sukzessive wendet man eine der beiden Ersetzungen an und reduziert den Grad von $D$,
+    bis $D = [P]$ für ein $P \in E(k) \cup \{\O\}$.
+    
+    Die Homomorphie ($P + Q \mapsto [P + Q] = [P] + [Q]$) ist klar nach Definition.
+    
+    Aus diesen Eigenschaften folgt die Assoziativität von $E(k) \cup \{\O\}$, d.\,h.
+    $E(k) \cup \{\O\}$ ist eine abelsche Gruppe und damit ist $[\cdot]$ ein Gruppenisomorphismus.
+\end{Beweis}
+
+\linie
+
+$E(K) \cup \{\O\}$ ist eine Untergruppe von $E(k) \cup \{\O\}$ und damit ebenfalls eine
+abelsche Gruppe.
+
+\pagebreak
+
+\subsection{%
+    Anwendungen%
+}
+
+Seien $K$ ein Körper mit $\Char(K) \not= 2$ und $A, B \in K$ mit $4A^3 + 27B^2 \not= 0$.
+Die durch $A, B$ definierte elliptische Kurve ist gegeben durch
+$\widetilde{E}(K) := \{(a, b) \in K^2 \;|\; b^2 = a^3 + Aa + B\} \cup \{\O\}$
+mit dem Fernpunkt $\O$.
+$\widetilde{E}(K)$ wird mit der oben definierten
+Addition $+$ zu einer abelschen Gruppe mit Nullelement $\O$.
+
+\textbf{Übergang von zyklischen Gruppen zu elliptischen Kurven}:
+Viele kryptografische Protokolle basieren auf dem Rechnen in zyklischen Gruppen,
+z.\,B. in $\erzeugnis{g} \le (\ZpZ)^\ast$ mit $g \in (\ZpZ)^\ast$.
+Die Analogie hierzu ist das Rechnen in $\erzeugnis{P} \le \widetilde{E}(K)$ mit
+$P \in \widetilde{E}(K)$.
+Dabei sollte $|\erzeugnis{P}|$ nicht zu klein sein und einen großen Primteiler besitzen.
+Elliptische Kurven besitzen den Vorteil, dass man die gleiche Sicherheit wie mit $(\ZpZ)^\ast$
+schon mit kleineren Schlüssellängen bekommt.
+
+\linie
+
+\textbf{\name{Diffie}-\name{Hellman}-Schlüsselaustausch mit elliptischen Kurven}:
+\begin{enumerate}
+    \item
+    Alice wählt eine elliptische Kurve $E := \widetilde{E}(\ZpZ)$ und einen Pkt.
+    $P = (x, y) \in E$ wie folgt:
+    Wähle $A, x, y \in \ZpZ$ zufällig, berechne $B := y^2 - x^3 - Ax$ und überprüfe
+    $4A^3 + 27B^2 \not= 0$.
+    Alice schickt $p, A, B, x, y$ an Bob.
+    
+    \item
+    Alice wählt $a \in \natural$ und schickt $a \cdot P$ an Bob.
+    
+    \item
+    Bob wählt $b \in \natural$ und schickt $b \cdot P$ an Alice.
+    
+    \item
+    Alice und Bob berechnen $Q = ab \cdot P \in E$.
+\end{enumerate}
+Weil es schwierig ist, aus $P$ und $a \cdot P$ die Zahl $a$ zu bestimmen, kann ein Angreifer
+$Q$ nicht ef"|fizient berechnen.
+
+\linie
+
+\textbf{Pseudokurven}:
+Man kann elliptische Kurven $E\colon y^2 = x^3 + Ax + B$
+auch über allgemeine Restklassenringe $\ZnZ$ für $n$ nicht prim definieren.
+In diesem Fall sollte $n$ weder durch $2$ noch durch $3$ teilbar sein und
+es sollte $\ggT(4A^3 + 27B^2, n) = 1$ gelten.
+Die Addition ist dann nur partiell definiert und nicht assoziativ.
+
+\linie
+
+\textbf{Faktorisierung}:
+Mittels Pseudokurven kann eine zusammengesetzte Zahl $n \in \natural$ faktorisiert werden,
+indem man $\widetilde{E}(\ZnZ)$ und $P \in \widetilde{E}(\ZnZ)$ zufällig wählt und
+versucht, $k \cdot P$ zu berechnen.
+Wenn das Ergebnis dieser Verknüpfung nicht definiert ist, dann erhält man einen nicht-trivialen
+Teiler von $n$.
+
+\pagebreak

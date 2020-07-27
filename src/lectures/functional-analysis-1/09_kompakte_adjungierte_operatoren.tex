@@ -1,0 +1,251 @@
+\section{%
+    Kompakte Operatoren und adjungierte Operatoren auf Banachräumen%
+}
+
+\subsection{%
+    \name{Jordan}sche Normalform für kompakte Operatoren%
+}
+
+\begin{Satz}{\name{Jordan}sche Normalform für kompakte Operatoren}\\
+    Seien $X$ ein Banachraum und $T \in \K(X)$.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        Die Aussagen aus dem Satz über das Spektrum kompakter Operatoren gelten, d.\,h.\\
+        $\sigma(T) \setminus \{0\} = \sigma_p(T) \setminus \{0\}$
+        besteht aus höchstens abzählbar vielen Eigenwerten
+        mit $0$ als einzigem Häufungspunkt (falls $|\sigma(T)| = \infty$),
+        die Vielfachheit von $\lambda \in \sigma(T) \setminus \{0\}$ ist endlich und
+        für $\dim X = \infty$ ist $0 \in \sigma(T)$.
+        
+        \item
+        Für $\lambda \in \sigma(T) \setminus \{0\}$ und
+        $n_\lambda := \max\{n \in \natural \;|\; \Kern((\lambda\id - T)^{n-1}) \not=
+        \Kern((\lambda\id - T)^n)\}$ der \begriff{Ordnung} von $\lambda$ gilt
+        $1 \le n_\lambda < \infty$.
+        
+        \item
+        Für $\lambda \in \sigma(T) \setminus \{0\}$ gilt
+        $X = \Kern((\lambda\id - T)^{n_\lambda}) \oplus \Bild((\lambda\id - T)^{n_\lambda})$
+        (\begriff{\name{Riesz}-Zerlegung}).
+        Beide Unterräume sind abgeschlossen und $T$-invariant.
+        Der \begriff{charakteristische Unterraum} $\Kern((\lambda\id - T)^{n_\lambda})$
+        von $T$ zum Eigenwert $\lambda$ ist endlich-dimensional.
+        
+        \item
+        Für $\lambda \in \sigma(T) \setminus \{0\}$ gilt:
+        Für $n = 1, \dotsc, n_\lambda$ gibt es Unterräume
+        $E_n \subset \Kern((\lambda\id - T)^n)$ mit
+        $E_n \cap \Kern((\lambda\id - T)^{n-1}) = \{0\}$, sodass
+        $\Kern((\lambda\id - T)^{n_\lambda}) = \bigoplus_{k=1}^{n_\lambda} N_k$ mit\\
+        $N_k := \bigoplus_{\ell=0}^{k-1} (\lambda\id - T)^\ell (E_k)$.
+        
+        \item
+        $N_k$, $k = 1, \dotsc, n_\lambda$, ist $T$-invariant und die Dimensionen
+        $d_k := \dim((\lambda\id - T)^{\ell} (E_k))$ sind unabhängig von
+        $\ell \in \{0, \dotsc, k - 1\}$.
+        
+        \item
+        Ist $\{e_{k,j} \;|\; j = 1, \dotsc, d_k\}$ eine Basis von $E_k$ für
+        $k = 1, \dotsc, n_\lambda$, dann ist\\
+        $\{(\lambda\id - T)^\ell e_k \;|\; 0 \le \ell < k \le n_\lambda,\; 1 \le j \le d_k\}$
+        eine Basis von $\Kern((\lambda\id - T)^{n_\lambda})$.\\
+        Mit $x = \sum_{k,j,\ell} \alpha_{k,j,\ell} (\lambda\id - T)^\ell e_{k,j}$
+        und $y = \sum_{k,j,\ell} \beta_{k,j,\ell} (\lambda\id - T)^\ell e_{k,j}$ gilt\\
+        $Tx = y \iff \smallpmatrix{\lambda & -1 & & \\ & \ddots & \ddots & \\
+        & & \lambda & -1 \\ & & & \lambda}
+        \smallpmatrix{\alpha_{k,j,0} \\ \vdots \\ \alpha_{k,j,k-1}} =
+        \smallpmatrix{\beta_{k,j,0} \\ \vdots \\ \beta_{k,j,k-1}}$.
+    \end{enumerate}
+\end{Satz}
+
+\vspace{3mm}
+\linie
+
+\begin{Kor}
+    Seien $X$ ein Banachraum und $T \in \K(X)$.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        Für $\lambda \in \sigma(T) \setminus \{0\}$ gilt
+        $\sigma(T|_{\Bild((\lambda\id - T)^{n_\lambda})}) = \sigma(T) \setminus \{\lambda\}$.
+        
+        \item
+        Ist $P_\lambda$ für $\lambda \in \sigma(T) \setminus \{0\}$ die stetige Projektion
+        auf $\Kern((\lambda\id - T)^{n_\lambda})$ gemäß der Riesz-Zerlegung,
+        dann gilt $\forall_{\lambda, \mu \in \sigma(T) \setminus \{0\}}\;
+        P_\lambda P_\mu = \delta_{\lambda\mu} P_\lambda$.
+    \end{enumerate}
+\end{Kor}
+
+\linie
+
+\begin{Kor}
+    Seien $X$ ein Banachraum, $T \in \K(X)$ und $\lambda \in \sigma(T) \setminus \{0\}$.
+    Dann hat die Resolventenfunktion $R(\cdot, T)$ in $\lambda$ einen isolierten Pol
+    der Ordnung $n_\lambda$, d.\,h.
+    $\mu \mapsto (\mu - \lambda)^{n_\lambda} R(\mu, T)$ kann in $\lambda$ holomorph fortgesetzt
+    werden und der fortgesetzte Wert in $\lambda$ ist ungleich Null.
+\end{Kor}
+
+\pagebreak
+
+\subsection{%
+    Adjungierter Operator%
+}
+
+\begin{Def}{Adjungierte}
+    Seien $X, Y$ normierte Räume und $T \in \Lin(X, Y)$.\\
+    Dann heißt der Operator $T' \in \Lin(Y', X')$ definiert durch
+    $(T'y')(x) := y'(Tx)$ für $y' \in Y'$ und $x \in X$ der zu $T$ \begriff{adjungierte Operator}.
+\end{Def}
+
+\begin{Satz}{Eigenschaften der Adjungierten}
+    \begin{enumerate}
+        \item
+        $T \mapsto T'$ ist eine lineare, isometrische Einbettung
+        von $\Lin(X, Y)$ nach $\Lin(Y', X')$.
+        
+        \item
+        Seien $X, Y, Z$ normierte Räume, $T_1 \in \Lin(X, Y)$ und $T_2 \in \Lin(Y, Z)$.\\
+        Dann ist $(T_2 T_1)' = T_1' T_2'$.
+        
+        \item
+        Seien $J_X\colon X \rightarrow X''$, $x_0 \mapsto J_{x_0}$ mit
+        $J_{x_0}(x') := x'(x_0)$ für $x' \in X'$ und analog $J_Y\colon Y \rightarrow Y''$.\\
+        Dann gilt $T'' J_X = J_Y T$.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bsp}
+    \begin{enumerate}[label=\emph{(\alph*)}]
+        \item
+        Für $X = Y = \real^n$ mit der euklidischen Norm und
+        $T = (a_{ij})_{i,j=1,\dotsc,n}$ ist\\
+        $T' = (a_{ji})_{i,j=1,\dotsc,n} = T^\ast$,
+        wobei $T^\ast$ die Hilbertraum-Adjungierte ist.
+        
+        \item
+        Für $X = Y = \complex^n$ mit der euklidischen Norm und
+        $T = (a_{ij})_{i,j=1,\dotsc,n}$ ist\\
+        $T' = (a_{ji})_{i,j=1,\dotsc,n} \not= (\overline{a_{ji}})_{i,j=1,\dotsc,n} = T^\ast$.
+        
+        \item
+        Für $X = Y = L^2([0,1], \complex)$ und
+        $T\colon X \rightarrow X$,
+        $(Tf)(y) := \int_0^1 K(x, y)f(x)\dx$ ist\\
+        $(T'g)(x) := \int_0^1 K(x, y)g(y)\dy$
+        (nicht gleich
+        $(T^\ast g)(x) = \int_0^1 \overline{K(x, y)} g(y) \dy$).
+        
+        \item
+        Sind $X, Y$ Hilberträume und $\R_X\colon X \rightarrow X'$ und
+        $\R_Y\colon Y \rightarrow Y'$ die Isometrien aus dem Rieszschen Darstellungssatz
+        (z.\,B. $(\R_X x_1)(x_2) := \sp{x_2, x_1}_X$),
+        dann gilt $T^\ast = \R_X^{-1} T' \R_Y$.\\
+        Für $x \in X$ und $y \in Y$ gilt nämlich
+        $((T' \R_Y)(y))(x)
+        = (T'(\R_Y y))(x)
+        = (\R_Y y)(Tx)$\\
+        $= \sp{Tx, y}_Y
+        = \sp{x, T^\ast y}_X
+        = (\R_X (T^\ast y))(x)
+        = ((\R_X T^\ast)(y))(x)$.
+    \end{enumerate}
+\end{Bsp}
+
+\pagebreak
+
+\subsection{%
+    \name{Fredholm}sche Alternative%
+}
+
+\begin{Satz}{Satz von \scshape\,\!\name{Schauder}}
+    Seien $X, Y$ Banachräume und $T \in \Lin(X, Y)$.\\
+    Dann gilt $T \in \K(X, Y)$ genau dann, wenn $T' \in \K(Y', X')$.
+\end{Satz}
+
+\linie
+
+\begin{Def}{Annihilator}
+    Seien $X$ ein Banachraum und $Z \subset X$ ein Unterraum.\\
+    Dann heißt $Z^\circ := \{x' \in X' \;|\; x'|_Z = 0\}$
+    \begriff{Annihilator} von $Z$.
+\end{Def}
+
+\begin{Def}{Kodimension}
+    Seien $X$ ein $\KK$-Vektorraum und $Z \subset X$ ein Unterraum.\\
+    Dann ist $\codim Z := \dim X/Z$ die \begriff{Kodimension} von $Z$ in $X$.
+\end{Def}
+
+\begin{Bem}
+    Ist $Y$ ein Komplement von $Z$ in $X$ (d.\,h. $X = Y \oplus Z$), dann gilt
+    $\codim Z = \dim Y$.
+    %Komplemente existieren immer, allerdings sind sie i.\,A. nicht eindeutig.
+\end{Bem}
+
+\begin{Satz}{Eigenschaften des Annihilators}
+    Seien $X, Y$ Banachräume und $Z \subset X$ ein Unterraum.
+    \begin{enumerate}
+        \item
+        Ist $X$ ein Hilbertraum, dann ist $Z^\circ = \R_X(Z^\orth)$.
+        
+        \item
+        Für $T \in \Lin(X, Y)$ gilt $\Kern(T') = \Bild(T)^\circ$.
+        
+        \item
+        Ist $Z$ abgeschlossen und $\codim Z < \infty$, dann ist $\dim Z^\circ = \codim Z$.
+    \end{enumerate}
+\end{Satz}
+
+\linie
+
+\begin{Satz}{Inverse der Adjungierten}
+    Seien $X, Y$ Banachräume und $T \in \Lin(X, Y)$.\\
+    Dann existiert $T^{-1} \in \Lin(Y, X)$ genau dann,
+    wenn $(T')^{-1} \in \Lin(X', Y')$ existiert.\\
+    In diesem Fall gilt $(T^{-1})' = (T')^{-1}$.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{\name{Fredholm}sche Alternative}
+    Seien $X$ ein Banachraum, $T \in \K(X)$ und
+    $\lambda \in \KK \setminus \{0\}$.\\
+    Dann gilt:
+    Zu $y \in X$ besitzt die Gleichung $Tx - \lambda x = y$ eine Lösung $x \in X$ genau dann,
+    wenn $x'(y) = 0$ für alle Lösungen $x' \in X'$ der
+    \begriff{homogenen adjungierten Gleichung} $T'x' - \lambda x' = 0$ gilt.
+    Die dadurch gegebene endliche Anzahl der Nebenbedingungen an $y$ ist gleich der Anzahl
+    linear unabhängiger Lösungen $z$ der \begriff{homogenen Gleichung} $Tz - \lambda z = 0$.
+\end{Satz}
+
+\begin{Bem}
+    Der Satz lässt sich auch wie folgt formulieren:
+    Entweder
+    \begin{itemize}
+        \item
+        $Tz - \lambda z = 0$ besitzt nur die triviale Lösung,
+        
+        \item
+        $T'x' - \lambda x' = 0$ besitzt nur die triviale Lösung und
+        
+        \item
+        $Tx - \lambda x = y$ ist für alle $y \in Y$ eindeutig lösbar
+    \end{itemize}
+    oder
+    \begin{itemize}
+        \item
+        $Tz - \lambda z = 0$ besitzt $n := \dim(\Kern(\lambda\id - T))$
+        ($1 \le n < \infty$) linear unabhängige Lösungen,
+        
+        \item
+        $T'x' - \lambda x' = 0$ besitzt $n$ linear unabhängige Lösungen und
+        
+        \item
+        $Tx - \lambda x = y$ ist für $y \in Y$ genau dann lösbar, wenn
+        $x'(y) = 0$ für alle $x' \in \Kern(\lambda\id' - T')$.
+    \end{itemize}
+\end{Bem}
+
+\pagebreak

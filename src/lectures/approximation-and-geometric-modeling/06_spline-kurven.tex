@@ -1,0 +1,449 @@
+\section{%
+    Spline-Kurven%
+}
+
+\subsection{%
+    Kontrollpolygon%
+}
+
+\textbf{Spline-Kurve}:
+Seien
+\begin{align*}
+    \tau\colon \tau_0 \le \dotsb \le \tau_n < \tau_{n+1} \le \dotsb \le \tau_{m-1} < \tau_m \le
+    \dotsb \le \tau_{m+n}
+\end{align*}
+eine Knotenfolge mit Vielfachheiten $\le n$ und $D = [\tau_n, \tau_m]$ das
+Standard-Parameterintervall.
+Eine \begriff{Spline-Kurve} vom Grad $\le n$ in $\real^d$ hat eine Parametrisierung
+\begin{align*}
+    t \mapsto (p_1(t), \dotsb, p_d(t)) = \sum_{k=0}^{m-1} c_k b_k(t),\quad
+    t \in D,
+\end{align*}
+wobei die Komponenten $p_\nu$ sich im Standard-Spline-Raum $S_\tau^n$ befinden.
+
+Die Koef"|fizienten $c_k = (c_{k,1}, \dotsc, c_{k,d})$ können in einer $(m \times d)$-Matrix
+zusammengefasst werden.
+Sie heißen \begriff{Kontrollpunkte} und bilden das \begriff{Kontrollpolygon} $c$ von $p$.
+
+\linie
+
+\textbf{Beispiel (gebräuchliche Knotenfolgen)}:
+Es gibt zwei häufige Möglichkeiten für Knotenfolgen, wie Knoten außerhalb von $D$ platziert werden:
+\begin{itemize}
+    \item
+    $\tau_n$ und $\tau_m$ haben Vielfachheit $1$ und
+    $\tau_0, \dotsc, \tau_{n+1}$ bzw. $\tau_{m-1}, \dotsc, \tau_{m+n}$ sind äquidistant.
+    In diesem Fall hat die Kurve zwar maximale Glattheit, aber sie interpoliert nicht die
+    Endpunkte.
+    
+    \item
+    $\tau_1 = \dotsb = \tau_n$ und $\tau_m = \dotsb = \tau_{m+n-1}$ haben
+    die maximale Vielfachheit $n$ sowie $\tau_0 < \tau_1$ und $\tau_{m+n-1} < \tau_{m+n}$.
+    In diesem Fall ist zwar Endpunktinterpolation vorhanden, aber die Kurve ist i.\,A.
+    am Endpunkt nicht dif"|ferenzierbar (nur einseitig).
+\end{itemize}
+
+\linie
+
+\textbf{geschlossene Spline-Kurve}:
+Eine \begriff{geschlossene Spline-Kurve} vom Grad $\le n$ in $\real^d$ hat eine Parametrisierung
+\begin{align*}
+    t \mapsto (p_1(t), \dotsc, p_d(t)) = \sum_{k \in \integer} c_k b_k(t),\quad
+    t \in \real,
+\end{align*}
+wobei die Komponenten $p_\nu$ stetige $T$-periodische Splines sind, d.\,h.
+$p_\nu \in S_{\tau,T}^n$ mit\\
+$\tau = (\tau_0, \dotsc, \tau_{M-1})$.
+Die B-Splines $b_k$ entsprechen der periodisch erweiterten Knotenfolge\\
+$(\dotsc, \tau - T, \tau, \tau + T, \dotsc)$.
+
+Wegen der Periodizitätsbedingungen ist $p$ bestimmt durch $M$ aufeinanderfolgende Kontrollpunkte
+\begin{align*}
+    C = \begin{pmatrix}c_0\\\vdots\\c_{M-1}\end{pmatrix},
+\end{align*}
+die das \begriff{geschlossene Kontrollpolygon} $c$ von $p$ bestimmen.
+
+\linie
+
+\textbf{Beispiel (nicht-periodische Darstellung)}:
+Eine geschlossene Spline-Kurve kann auch nicht-periodisch parametrisiert werden.
+Dazu fügt man links von $\tau = (\tau_0, \dotsc, \tau_{M-1})$ die $n$ Knoten
+$\tau_{M-n} - T, \dotsc, \tau_{m-1} - T$ und rechts von $\tau$ die $n + 1$ Knoten
+$\tau_0 + T, \dotsc, \tau_n + T$ an.
+Mit den entsprechenden Kontrollpunkten $c_{M-n}, \dotsc, c_{M-1}, c_0, \dotsc, c_{M-1}$
+erhält man eine Parametrisierung mit Komponenten im Standard-Spline-Raum.
+
+\linie
+\pagebreak
+
+\textbf{rationale Parametrisierungen (NURBS)}:
+Eine \begriff{nicht-uniforme rationale B-Spline-Para\-metrisierung (NURBS)} $r = p/q$ ist der
+Quotient einer Spline-Parametrisierung $t \mapsto p(t)$ mit gewichteten Kontrollpunkten
+\begin{align*}
+    c_k w_k \in \real^d,\quad w_k > 0
+\end{align*}
+und einer Spline-Funktion $t \mapsto q(t)$ mit Koef"|fizienten $w_k \in \real$.
+
+Die Gewichte $w_k$ ermöglichen zusätzliche Gestaltungsfreiheit.
+Das Erhöhen eines Gewichts "`zieht"' die Kurve zum entsprechenden Kontrollpunkt.
+Man kann $r$ mit einer Spline-Kurve in homogenenen Koordinaten identifizieren,
+parametrisiert durch
+\begin{align*}
+    t \mapsto (p(t), q(t)) = \sum_k (c_k w_k, w_k) b_k(t) \in \real^{d+1}.
+\end{align*}
+Diese Interpretation ist vor allem für die Implementierung von Algorithmen nützlich,
+z.\,B. Knoteneinfügung, Auswertung und Dif"|ferentiation.
+
+\linie
+
+\textbf{Beispiel (Kreis als NURBS-Parametrisierung)}:
+Kegelschnitte können durch quadratische NURBS dargestellt werden.
+Beispielsweise hat der Viertelkreis im 1. Quadranten die Kontrollpunkte und Gewichte
+\begin{align*}
+    (c_k, w_k)\colon\quad
+    (1, 0, 1), (1, 1, 1/\sqrt{2}), (0, 1, 1).
+\end{align*}
+Entsprechend kann ein ganzer Kreis durch eine geschlossene rationale Spline-Kurve $r$ in
+Bézier-Form mit doppelten Knoten
+\begin{align*}
+    t_0 = 0, 0, 1, 1, 2, 2, 3, 3 = \tau_7,\quad
+    \tau_{k+8} = \tau_k + 4
+\end{align*}
+dargestellt werden, wenn man die Kontrollpunkte und Gewichte analog zum Viertelkreis wählt.
+
+Man kann zeigen, dass der Kreis durch eine geschlossene, rationale, quadratische
+Spline-Kurve mit einfachen, uniformen Knoten nicht dargestellt werden kann.
+
+\subsection{%
+    Eigenschaften von Spline-Kurven%
+}
+
+\textbf{Eigenschaften von Spline-Kurven}:
+Die Form einer Spline-Kurve, parametrisiert durch\\
+$p = \sum_{k=0}^{m-1} c_k b_k$, $p_\nu \in S_\tau^n$,
+wird qualitativ durch ihr Kontrollpolygon $c$ modelliert.
+Genauer gilt:
+\begin{itemize}
+    \item
+    $p(t)$ liegt in der konvexen Hülle von $c_{\ell-n}, \dotsc, c_\ell$, falls
+    $t \in [\tau_\ell, \tau_{\ell+1})$.
+\end{itemize}
+Zusätzlich gilt, falls beide Endpunkte des Standard-Parameterintervalls $D = [\tau_n, \tau_m]$
+Knoten mit Vielfachheit $n$ sind, dass
+\begin{itemize}
+    \item
+    $p(\tau_n) = c_0$ und $p(\tau_m) = c_{m-1}$ sowie
+    
+    \item
+    $p'(\tau_n^+) = \alpha_{1,\tau}^n (c_1 - c_0)$ und
+    $p'(\tau_m^-) = \alpha_{m-1,\tau}^n (c_{m-1} - c_{m-2})$
+\end{itemize}
+mit $\alpha_{k,\tau}^n := n/(\tau_{k+n} - \tau_k)$.
+Die letzten beiden Eigenschaften werden auch \begriff{Endpunktinterpolation} bezeichnet,
+da das Kontrollpolygon tangential zur Spline-Kurve ist, was sehr nützlich für Design-Zwecke ist.
+
+Die Parametrisierung einer Spline-Kurve ist stetig, die Ableitung kann jedoch Sprünge enthalten.
+Daher werden in der Formel für $p'$ die hochgestellten Indizes $+$ und $-$ verwendet,
+um rechts- bzw. linksseitige Ableitung zu bezeichnen.
+
+\linie
+\pagebreak
+
+\textbf{Abstand zum Kontrollpolygon}:
+Seien eine Spline-Kurve gegeben, die durch $p = \sum_{k=0}^{m-1} c_k b_k$, $p_\nu \in S_\tau^n$,
+mit $n > 1$ parametrisiert wird,
+und $c$ eine stückweise lineare Parametrisierung des Kontrollpolygons,
+die die $c_k$ an den Knotenmitteln $\tau_k^n = (\tau_{k+1} + \dotsb + \tau_{k+n})/n$
+interpoliert.
+
+Dann kann der Abstand von $p$ zum Kontrollpolygon durch zweite gewichtete Dif"|ferenzen
+der Kontrollpunkte abgeschätzt werden.
+Genauer gilt für $t \in [\tau_\ell, \tau_{\ell+1})$
+\begin{align*}
+    \norm{p(t) - c(t)}_\infty \le \frac{1}{2n} \max_{\ell-n \le k \le \ell} \sigma_k^2
+    \max_{\ell-n+2 \le k \le \ell} \norm{\nabla_\tau^2 c_k}_\infty,
+\end{align*}
+wobei
+\begin{align*}
+    \sigma_k^2 := \frac{1}{n - 1} \sum_{i=1}^n (\tau_{k+i} - \tau_k^n)^2
+\end{align*}
+und $\nabla_\tau^2 c_k$ den Kontrollpunkten der zweiten Ableitung $p''$, in expliziter Form
+\begin{align*}
+    \nabla_\tau^2 c_k := \frac{n - 1}{\tau_{k+n-1} - \tau_k}
+    \left(\frac{c_k - c_{k-1}}{\tau_k^n - \tau_{k-1}^n} -
+    \frac{c_{k-1} - c_{k-2}}{\tau_{k-1}^n - \tau_{k-2}^n}\right).
+\end{align*}
+Keiner der Nenner verschwindet, da die Dif"|ferenzen mindestens so groß sind wie
+$\tau_{\ell+1} - \tau_\ell$.
+
+Die lokale Abschätzung impliziert eine globale Abschätzung, indem man auf der rechten Seite
+das Maximum über alle für das Parameterintervall $D = [\tau_n, \tau_m]$ der Spline-Kurve
+relevanten $k$ nimmt.
+In diesem Fall wird $\nabla_\tau^2 c_k$ auf Null gesetzt, wenn $\tau_k = \dotsb = \tau_{k+n-1}$.
+
+Die Distanzabschätzung ist scharf, d.\,h. es gibt Fälle, in denen in der Ungleichung Gleichheit
+gilt.
+Dadurch ist die Abstandsabschätzung in den meisten Fällen (besonders bei höherem Grad)
+besser möglich als mit der konvexen Hülle.
+Die $\sigma_k^2$ stellen eine Art "`geometrische Varianz"' dar,
+nämlich bis auf einen Faktor die Abstandsquadratsumme der relevanten Knoten zu ihrem Knotenmittel.
+Das kann man sich auch im Fall $\tau_{k+1} = \dotsb = \tau_{k+n} = \tau_k^n$ verdeutlichen.
+Dann gilt $\sigma_k^2 = 0$ und die rechte Seite der Abschätzung wird $0$,
+weil die Spline-Kurve in diesem Fall den Punkt $c_k$ interpoliert.
+
+\linie
+
+\textbf{Beispiel (äquidistante Knoten)}:
+Für uniforme Knoten $\tau_k = kh$ und ungeraden Grad $n = 2m + 1$
+gilt $\tau_k^n = k + m + 1$ und $\sigma_k^2 =  \frac{1}{n - 1} \sum_{i=-m}^m (ih)^2$.
+Dadurch erhält man für das Produkt der ersten beiden Faktoren in der Abstandsabschätzung
+$\frac{1}{2n} \frac{2h^2}{n - 1} \sum_{i=1}^m i^2 = \frac{n + 1}{24} h^2$.
+Daher erhält man wegen $\nabla_\tau^2 c_k = h^{-2} \Delta^2 c_{k-2}$ mit
+$\Delta^2 c_{k-2} = c_k - 2c_{k-1} + c_{k-2}$
+als Abschätzung für äquidistante Knoten
+\begin{align*}
+    \norm{p(t) - c(t)}_\infty \le \frac{n + 1}{24} \max_{\ell-n \le k \le \ell-2}
+    \norm{\Delta^2 c_k}_\infty
+\end{align*}
+für $\ell h \le t < (\ell + 1)h$.
+
+Es stellt sich durch analoge Berechnung heraus, dass die Formel auch für geraden Grad $n = 2m$
+gilt.
+Die Tatsache, dass in diesem Fall die Knotenmittel nicht mit den Knoten zusammenfallen, aber
+stattdessen Mittelpunkte der Knotenintervalle sind, macht keinen Unterschied.
+
+\pagebreak
+
+\subsection{%
+    Verfeinerung%
+}
+
+\textbf{Knoten einfügen}:
+Sei $p = \sum_{k=0}^{m-1} c_k b_k$, $p_\nu \in S_\tau^n$, die Parametrisierung einer Spline-Kurve.
+Wenn ein neuer Knoten $s$ im Parameterintervall $D$ mit $s \in [\tau_\ell, \tau_{\ell+1})$
+eingefügt wird, dann werden die Kontrollpunkte $\widetilde{c}_k$ von $p$ bzgl. der
+verfeinerten Knotenfolge
+\begin{align*}
+    \widetilde{\tau}\colon \dotsc, \widetilde{\tau}_\ell := \tau_\ell,
+    \widetilde{\tau}_{\ell+1} := s, \widetilde{\tau}_{\ell+2} := \tau_{\ell+1}, \dotsc
+\end{align*}
+wie folgt berechnet.
+
+Auf den Segmenten $[c_{k-1}, c_k]$ mit $\tau_k < s < \tau_{k+n}$ werden neue Kontrollpunkte
+erzeugt:
+\begin{align*}
+    \widetilde{c}_k := \gamma_{k,\tau}^n c_k + (1 - \gamma_{k,\tau}^n) c_{k-1},\quad
+    \gamma_{k,\tau}^n := \frac{s - \tau_k}{\tau_{k+n} - \tau_k}.
+\end{align*}
+Die anderen Strecken des Kontrollpolygons bleiben unverändert, d.\,h.
+\begin{align*}
+    \widetilde{c}_k := c_k \text{ für } \tau_{k+n} \le s,\quad
+    \widetilde{c}_k := c_{k-1} \text{ für } s \le \tau_k.
+\end{align*}
+Neue Kontrollpunkte $\widetilde{c}_k$ teilen das Segment $[c_{k-1}, c_k]$ im selben Verhältnis
+$\gamma_{k,\tau}^n : (1 - \gamma_{k,\tau}^n)$
+wie der Parameter $s$ das Intervall $[\tau_k, \tau_{k+n}]$,
+welches der Schnitt der Träger der entsprechenden B-Splines darstellt.
+
+Wenn $s$ mit einem Knoten zusammenfällt, also $s = \tau_\ell$ gilt,
+dann müssen weniger Kontrollpunkte berechnet werden.
+Genauer müssen nur $n + 1 - j$ Konvexkombinationen gebildet werden,
+wenn $s$ die Vielfachheit $j$ in $\widetilde{\tau}$ hat.
+
+Mehrere neue Knoten können durch Wiederholung der Prozedur eingefügt werden.
+Insbesondere kann man durch Erhöhen der Vielfachheit eines Knotens zu $n$ erreichen,
+dass die Spline-Kurve einen Kontrollpunkt interpoliert:
+\begin{align*}
+    \tau_{\ell-n} < \tau_{\ell-n+1} = \dotsb = \tau_\ell < \tau_{\ell+1}
+    \quad\Rightarrow\quad p(\tau_\ell) = c_{\ell-n}.
+\end{align*}
+Daher kann das Schema zur Auswertung von Splines als $n$-fache Knoteneinfügung betrachtet werden.
+
+\linie
+
+\textbf{uniforme Subdivision}:
+Sei
+\begin{align*}
+    p(t) = \sum_{k \sim D} c_k b^n(t/h - k),\quad t \in D,
+\end{align*}
+die Parametrisierung einer Spline-Kurve vom Grad $\le n$ mit uniformen Knoten $\tau_k = hk$.
+Wenn an allen Knotenintervall-Mittelpunkten gleichzeitig neue Knoten eingefügt werden sollen,
+dann können die Kontrollpunkte $\widetilde{c}_k$ der verfeinerten Knotenfolge
+$\widetilde{\tau}\colon \widetilde{\tau}_k = kh/2$ wie folgt berechnet werden:
+\begin{enumerate}
+    \item
+    Die relevanten Kontrollpunkte für das Parameterintervall $D$ werden verdoppelt:
+    \begin{align*}
+        \widetilde{c}_{2k} := \widetilde{c}_{2k+1} = c_k.
+    \end{align*}
+    
+    \item
+    Gleichzeitige Mittelwertbildung von benachbarten Kontrollpunkten:
+    \begin{align*}
+        \widetilde{c}_k \leftarrow (\widetilde{c}_k + \widetilde{c}_{k-1})/2.
+    \end{align*}
+    Dieser Schritt wird $n$ Mal durchgeführt.
+\end{enumerate}
+Die explizite Darstellung der neuen Kontrollpunkte ist
+\begin{align*}
+    \widetilde{c}_k = \sum_i s_{k-2i} c_i,\quad
+    s_j := 2^{-n} \binom{n + 1}{j},
+\end{align*}
+wobei $s_j := 0$ für $j < 0$ oder $j > n + 1$ nach der Konvention für Binomialkoef"|fizienten.
+
+\linie
+\pagebreak
+
+\textbf{Variationsverringerung}:
+Die \begriff{Variation} einer Spline-Kurve, die durch $p = \sum_{k=0}^{m-1} c_k b_k$
+parametrisiert wird, bzgl. einer Hyperebene $H$ ist nicht größer als die Variation
+ihres Kontrollpolygons $c$:
+\begin{align*}
+    V(p, H) \le V(c, H),
+\end{align*}
+wobei $V$ die maximale Anzahl von Paaren von aufeinanderfolgenden Punkten auf gegenüberliegenden
+Seiten $H$ bezeichnet.
+
+Insbesondere liegt die ganze Spline-Kurve auf einer Seite von $H$, wenn das
+ganze Kontrollpolygon auf einer Seite von $H$ liegt.
+
+\subsection{%
+    Algorithmen%
+}
+
+\textbf{Auswertung und Dif"|ferentiation}:
+Ein Punkt $p(s) = \sum_{k=0}^{m-1} c_k b_k(s)$ einer Spline-Kurve mit Knotenfolge $\tau$ kann
+durch wiederholtes Einsetzen von $s$ als neuen Knoten bis Vielfachheit $n$ berrechnet werden:
+\begin{align*}
+    \widetilde{\tau}_\ell < \widetilde{\tau}_{\ell+1} = \dotsb = \widetilde{\tau}_{\ell+n} = s <
+    \widetilde{\tau}_{\ell+n+1} \quad\Rightarrow\quad p(s) = \widetilde{c}_\ell,
+\end{align*}
+wobei $\widetilde{\tau}_\ell$ und $\widetilde{c}_k$ die modifizierten Knoten bzw. Kontrollpunkte
+bezeichnen.
+
+Das verfeinerte Kontrollpolygon $\widetilde{c}$ ist tangential zur Spline-Kurve:
+\begin{align*}
+    p'(s^-) = \frac{n (\widetilde{c}_\ell - \widetilde{c}_{\ell-1})}
+    {s - \widetilde{\tau}_\ell},\quad
+    p'(s^+) = \frac{n (\widetilde{c}_{\ell+1} - \widetilde{c}_\ell)}
+    {\widetilde{\tau}_{\ell+n+1} - s},
+\end{align*}
+wobei die einseitigen Ableitungen zusammenfallen, wenn $s$ nicht ein Knoten mit Vielfachheit $n$
+in der ursprünglichen Knotenfolge $\tau$ ist (d.\,h. wenn mindestens ein Knoten eingefügt wird).
+In diesem Fall ist
+\begin{align*}
+    p'(s) = \frac{n}{\widetilde{\tau}_{\ell+n+1} - \widetilde{\tau}_\ell}
+    (\widetilde{c}_{\ell+1} - \widetilde{c}_{\ell-1})
+\end{align*}
+eine alternative Formel für den Tangentenvektor.
+
+\linie
+
+\textbf{\name{Bézier}-Form}:
+Die \begriff{\name{Bézier}-Form} einer Spline-Kurve, die durch
+$p = \sum_{k=0}^{m-1} c_k b_k$ mit B-Splines vom Grad $n$ parametrisiert wird,
+erhält man durch Erhöhung der Vielfachheit jedes Knotens $\tau_k$ im Parameterintervall
+$D = [\tau_n, \tau_m]$ auf $n$.
+Dann gilt für $t$ in einem nicht-leeren Parameterintervall
+$[\widetilde{\tau}_\ell, \widetilde{\tau}_{\ell+1}] \subset D$
+der verfeinerten Knotenfolge $\widetilde{\tau}$, dass
+\begin{align*}
+    p(t) = \sum_{k=0}^n \widetilde{c}_{\ell-n+k} b_k^n(s),\quad
+    s := \frac{t - \widetilde{\tau}_\ell}
+    {\widetilde{\tau}_{\ell+1} - \widetilde{\tau}_\ell} \in [0, 1],
+\end{align*}
+wobei $b_k^n$ die Bernstein-Polynome und $\widetilde{c}_k$ die Kontrollpunkte bzgl.
+$\widetilde{\tau}$ sind.
+Daher haben die Spline-Segmente bis auf eine lineare Reparametrisierung
+(welche die Form der Kurve nicht beeinflusst) Bézier-Form.
+
+In Bézier-Form liegt jeder $(n + 1)$te Kontrollpunkt auf der Kurve und trennt die Bézier-Segmente.
+Daher kann man nach Umwandlung in Bézier-Form polynomiale Algorithmen simultan auf den
+verschiedenen Knotenintervallen durchführen.
+
+\linie
+\pagebreak
+
+\textbf{Beispiel (\name{Bézier}-Form bei äquidistanten Knoten)}:
+Für Spline-Kurven $p = \sum_k c_k b_k$ mit äquidistanten Knoten $\tau_k = kh$ gibt es
+für die Umwandlung in Bézier-Form eine schöne geometrische Interpretation.
+Zunächst werden die Kontrollpunkte mit den Tupeln beschriftet, die die Indizes der inneren Knoten
+der entsprechenden B-Splines enthalten (z.\,B. hat für $n = 4$ der Kontrollpunkt
+$c_3$ die Beschriftung $(4, 5, 6, 7)$, weil $b_3$ den Träger $[3, 8]h$ hat).
+Dann werden die Paare von Punkten verbunden, deren Beschriftungen $(a, b, c, d)$ und
+$(b, c, d, e)$ $n - 1$ Indizes gemeinsam haben.
+Auf der entstehenden Verbindungsstrecke werden $e - a - 1$ Punkte mit gleichem Abstand platziert,
+die mit $(a + 1, b, c, d), \dotsc, (e - 1, b, c, d)$ beschriftet werden.
+Dabei müssen ggf. die Indizes jeweils aufsteigend neu geordnet werden.
+Dieser Prozess wird solange wiederholt, bis alle möglichen Verbindungen erstellt wurden.
+Am Ende bestehen die Bézier-Segmente aus allen Punkten mit Beschriftungen, die höchstens
+zwei unterschiedliche Indizes haben.
+Insbesondere haben die Bézier-Endpunkte Beschriftungen mit nur einem Index der Vielfachheit $n$.
+
+\subsection{%
+    Interpolation%
+}
+
+\textbf{Interpolation}:
+Punkte $p_k$ und Tangentenvektoren $d_k$ (wenn nötig) können durch eine
+Spline-Kurve an Parameterwerten $t_k$ interpoliert werden, indem man eine der
+Interpolationsmethoden für Splinefunktionen benutzt.
+Die univariaten Methoden können für jede Komponente getrennt angewandt werden,
+um die Komponenten der Parametrisierung $p = \sum_k c_k b_k$ zu erhalten.
+Standard-Methoden sind die kubische Hermite-Interpolation und die kubische Spline-Interpolation
+mit Not-a-Knot, natürlichen oder eingespannten Randbedingungen.
+
+Wenn nur Knoten gegeben sind, können Knoten $\tau_j$, Parameterwerte $t_k$ und
+Tangentenvektoren $d_k$ (wenn nötig) durch die verfügbare Information bestimmt werden.
+Einfache Möglichkeiten sind
+\begin{itemize}
+    \item
+    $t_k - t_{k-1} = \norm{p_k - p_{k-1}}_2$,
+    
+    \item
+    $t_k = \tau_{k+\ell}$, wobei der Shift $\ell$ von der Benennung der Knoten abhängt, und
+    
+    \item
+    $d_k = (p_{k+1} - p_{k-1}) / (t_{k+1} - t_{k-1})$.
+\end{itemize}
+Genauere Approximationen der Ableitung verwenden lokale quadratische Interpolation.
+Die entstehenen Formeln können insbesondere an den Endpunkten des Parameterintervalls benutzt
+werden, wo einseitige Approximationen benötigt werden.
+
+\linie
+\pagebreak
+
+\textbf{Beispiel (Interpolation mit natürlicher Spline-Kurve)}:
+Um Punkte $p_0, \dotsc, p_M$ durch eine natürliche Spline-Kurve zu interpolieren,
+führt man zunächst eine Standardwahl der Parameterwerte durch.
+Man wählt $t_k$, sodass
+\begin{align*}
+    t_{k+1} - t_k = \norm{p_{k+1} - p_k}_2,\quad
+    k = 0, \dotsc, M - 1.
+\end{align*}
+Die Parameter $t_k$ fallen mit den Knoten $\tau_3, \dotsc, \tau_m$, $m = M + 3$,
+im Parameterintervall $D = [t_0, t_M]$ zusammen.
+Außerhalb von $D$ wählt man äquidistante Knoten, die den Abstand des ersten bzw. letzten
+Knotenintervalls erhalten.
+Nun kann man das univariate Schema mit den Randbedingungen $p''(t_0) = p''(t_M) = 0$ anwenden.
+
+Eine genauere Approximation erhält man entweder durch eingespannte oder
+Not-a-Knot-Rand\-bedingungen.
+Im ersten Fall sind Ableitungen an den Endpunkten vorgegeben:
+\begin{align*}
+    p'(t_0) = d_0,\quad p'(t_M) = d_M.
+\end{align*}
+Die Not-a-Knot-Randbedingungen bedeuten, dass die Knoten $\tau_4 = t_1$ und die
+$\tau_{m-1} = t_{M-1}$ entfernt werden.
+Daher interpoliert man nun mit den B-Splines $\widetilde{b}_0, \dotsc, \widetilde{b}_M$,
+die zur reduzierten Knotenfolge
+\begin{align*}
+    \widetilde{\tau}\colon
+    \tau_0 < \dotsb < \tau_3 = t_0 < \tau_5 < \tau_6 < \dotsb < \tau_{m-3} < \tau_{m-2} <
+    t_M = \tau_m < \dotsb < \dotsb \tau_{m+3}.
+\end{align*}
+Daher stimmt die Dimension den Standard-Spline-Raums $S_{\widetilde{\tau}}^3$ mit der
+Anzahl an Interpolationsbedingungen überein und das Interpolationsproblem ist nach
+den Schoenberg-Whitney-Bedingungen korrekt gestellt.
+
+\pagebreak

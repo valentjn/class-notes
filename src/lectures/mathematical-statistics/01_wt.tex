@@ -1,0 +1,701 @@
+\section{%
+    \emph{Zusatz}: Wahrscheinlichkeitstheorie%
+}
+
+\subsection{%
+    Wahrscheinlichkeitsräume%
+}
+
+\begin{Def}{W-Raum}
+    $(\Omega, \A, P)$ heißt \begriff{Wahrscheinlichkeitsraum}, falls
+    $\Omega \not= \emptyset$,
+    $\A$ eine $\sigma$-Algebra über $\Omega$ und
+    $P$ ein W-Maß auf $(\Omega, \A)$ ist.
+\end{Def}
+
+\begin{Def}{bedingte W.keit}
+    Seien $A, B \in \A$ mit $P(A) > 0$.
+    Dann heißt $P(B|A) := \frac{P(B \cap A)}{P(A)}$ \begriff{bedingte Wahrscheinlichkeit} von
+    $B$ gegeben $A$.
+    Es gilt $P(A|B) = P(B|A) \cdot \frac{P(A)}{P(B)}$, wenn $P(B) > 0$
+    (\begriff{Formel von \name{Bayes}}).
+    Außerdem gilt $P(B) = \sum_{i \in I} P(B|A_i) P(A_i)$, wenn die $A_i \in \A$ ($i \in I$) mit
+    $I$ höchstens abzählbar eine Zerlegung von $\Omega$ bilden und $P(A_i) > 0$ gilt
+    (\begriff{Formel von der totalen Wahrscheinlichkeit}).
+\end{Def}
+
+\begin{Def}{stochastisch unabhängig für Ereignisse}
+    Die Ereignisse $A_i \in \A$ ($i \in I$) heißen\\
+    \begriff{(stochastisch) unabhängig},
+    falls $P(\bigcap_{i \in K} A_i) = \prod_{i \in K} P(A_i)$ für alle $K \subset I$ endlich.
+\end{Def}
+
+\subsection{%
+    Kombinatorik%
+}
+
+\begin{Def}{Urnenmodell}
+    Aus einer Urne mit $n$ Kugeln werden $k$ Kugeln gezogen.\\
+    Dann gibt es je nach Ziehungsverfahren unterschiedlich viele mögliche Stichproben:
+    \begin{itemize}
+        \item
+        \begriff{geordnete Stichprobe ohne Zurücklegen}:
+        $\frac{n!}{(n - k)!}$
+
+        \item
+        \begriff{geordnete Stichprobe mit Zurücklegen}:
+        $n^k$
+
+        \item
+        \begriff{ungeordnete Stichprobe ohne Zurücklegen}:
+        $\binom{n}{k}$
+
+        \item
+        \begriff{ungeordnete Stichprobe mit Zurücklegen}:
+        $\binom{n + k - 1}{k}$
+    \end{itemize}
+\end{Def}
+
+\subsection{%
+    Diskrete Zufallsvariablen%
+}
+
+\begin{Def}{diskreter W-Raum}
+    Ein W-Raum $(\Omega, \A, P)$ heißt \begriff{diskret}, falls $\Omega$ höchstens abzählbar und
+    $\A = \pot(\Omega)$ ist.
+    In diesem Fall heißt
+    $(p_\omega)_{\omega \in \Omega}$ \begriff{Zähldichte}, wobei $p_\omega := P(\{\omega\})$.
+\end{Def}
+
+\begin{Def}{diskrete Zufallsvariable}
+    Sei $E$ eine Menge.
+    Dann heißt eine Abbildung $X\colon \Omega \rightarrow E$ \begriff{Zufallsvariable}.
+    Das W-Maß $P_X\colon \pot(E) \rightarrow [0, 1]$ mit $P_X(B) := P(X \in B)$ heißt
+    \begriff{Verteilung} von $X$.
+    Die Funktion $F_X\colon \real \rightarrow [0, 1]$ mit $F_X(x) := P(X \le x)$ heißt
+    \begriff{Verteilungsfunktion} von $X$
+    (falls $E = \real$).
+    Sie ist monoton wachsend, r.s. stetig und
+    hat den GW $1$ bzw. $0$ für $x \to \pm\infty$.
+\end{Def}
+
+\begin{Def}{stochastisch unabhängig für diskrete ZV}
+    Die Zufallsvariablen $X_i\colon \Omega \rightarrow E_i$ ($i \in I$)
+    heißen \begriff{(stochastisch) unabhängig}, falls für alle $B_i \subset E_i$ ($i \in I$)
+    $(\{X_i \in B_i\})_{i \in I}$ als Familie von Ereignissen unabhängig ist.
+\end{Def}
+
+\begin{Def}{diskreter Erwartungswert}
+    Die Zahl $\EE(X) := \sum_{\omega \in \Omega} X(\omega) p_\omega$ heißt
+    \begriff{Erwartungswert} von $X$
+    (falls $X$ reell und $\sum_{\omega \in \Omega} |X(\omega)| p_\omega < \infty$).
+    In diesem Fall gilt $\EE(X) = \sum_{x \in X(\Omega)} x P_X(\{x\})$
+    (\begriff{Transformations"-satz}).
+    Es gilt
+    $\EE(X + Y) = \EE(X) + \EE(Y)$, $\EE(\alpha X) = \alpha \EE(X)$ (\begriff{Linearität}),\\
+    $\EE(c) = c$,
+    $X \le Y \;\Rightarrow\; \EE(X) \le \EE(Y)$ und
+    $|\EE(X)| \le \EE(|X|)$.\\
+    Sind $X_1, \dotsc, X_n$ unabhängig, so gilt $\EE(X_1 \dotsm X_n) = \EE(X_1) \dotsm \EE(X_n)$.
+\end{Def}
+
+\begin{Def}{diskrete Varianz}
+    Die Zahl $\Var(X) := \EE((X - \EE(X))^2) = \EE(X^2) - \EE(X)^2$ heißt \begriff{Varianz}
+    von $X$ (falls $\EE(X^2) < \infty$).
+    Es gilt $\Var(\alpha X) = \alpha^2 \Var(X)$, $\Var(X + c) = \Var(X)$ und\\
+    $\Var(X_1 + \dotsb + X_n) = \Var(X_1) + \dotsb + \Var(X_n)$,
+    wenn $X_1, \dotsc, X_n$ unabhängig (\begriff{Satz von \name{Bienaymé}}).
+\end{Def}
+
+\pagebreak
+
+\begin{landscape}
+\subsection{%
+    Diskrete Verteilungen%
+}
+
+\begin{tabular}{p{85mm}p{40mm}p{65mm}p{20mm}p{27mm}}
+    \toprule
+    \emph{Name} & \emph{Parameter} & \emph{Zähldichte} & \emph{EW} & \emph{Varianz}\\
+
+    \addlinespace[5mm]
+    \midrule
+    \textbf{Gleichverteilung} &
+    $x_1, \dotsc, x_n$ &
+    $p_{x_i} := \frac{1}{n}$ &
+    $\frac{1}{n} \sum_{i=1}^n x_i$ &
+    $\frac{n^2 - 1}{12}$\\
+    \multicolumn{5}{l}{\emph{Beispiel}:
+    W.keit für eine markierte Seite beim Wurf eines fairen Würfels mit $n$ Seiten und
+    Werten $x_1, \dotsc, x_n$}\\
+    \multicolumn{5}{l}{}\\
+
+    \addlinespace[5mm]
+    \midrule
+    \textbf{Bernoulli-Verteilung $\Bin(1, p)$} &
+    $p \in [0, 1]$ &
+    $p_0 := 1-p$, $p_1 := p$ &
+    $p$ &
+    $p(1-p)$\\
+    \multicolumn{5}{l}{\emph{Beispiel}:
+    W.keit für Erfolg beim Wurf einer unfairen Münze ($p$ Erfolgswahrscheinlichkeit)}\\
+    \multicolumn{5}{l}{}\\
+
+    \addlinespace[5mm]
+    \midrule
+    \textbf{Binomialverteilung $\Bin(n, p)$} &
+    $n \in \natural_0$, $p \in [0, 1]$ &
+    $p_k := \binom{n}{k} p^k (1-p)^{n-k}$, $k = 0, \dotsc, n$ &
+    $np$ &
+    $np(1-p)$\\
+    \multicolumn{5}{l}{\emph{Beispiel}:
+    W.keit für $k$ Erfolge bei $n$-fachem Wurf einer unfairen Münze}\\
+    \multicolumn{5}{l}{}\\
+
+    \addlinespace[5mm]
+    \midrule
+    \textbf{Poissonverteilung $\Pois(\lambda)$} &
+    $\lambda \in \real^+$ &
+    $p_k := \frac{\lambda^k}{k!} e^{-\lambda}$, $k \in \natural_0$ &
+    $\lambda$ &
+    $\lambda$\\
+    \multicolumn{5}{l}{\emph{Beispiel}:
+    W.keit für $k$ Erfolge bei großer Anzahl an Durchführungen eines
+    Bernoulli-Experiments mit sehr niedriger Erfolgswahrscheinlichkeit,}\\
+    \multicolumn{5}{l}{$\lim_{n \to \infty}
+    \binom{n}{k} (\lambda/n)^k (1-(\lambda/n))^{n-k} = \frac{\lambda^k}{k!} e^{-\lambda}$}
+    \\
+
+    \addlinespace[5mm]
+    \midrule
+    \textbf{geometrische Verteilung $G(p)$} &
+    $p \in (0, 1]$ &
+    $p_k := p (1 - p)^{k-1}$, $k \in \natural$ &
+    $\frac{1}{p}$ &
+    $\frac{1-p}{p^2}$\\
+    \multicolumn{5}{l}{\emph{Beispiel}:
+    W.keit, dass bei einem wiederholten Bernoulli-Experiment erst im $k$-ten Experiment ein Erfolg
+    auftritt}\\
+    \multicolumn{5}{l}{(z.\,B. $p = 1/4$ für Würfe auf eine geviertelte Dartscheibe mit
+    einem markierten Viertel)}
+    \\
+
+    \addlinespace[5mm]
+    \midrule
+    \textbf{hypergeometrische Verteilung $H(n, s, k)$} &
+    $n, k, s \in \natural_0$, $s, k \le n$ &
+    $p_\ell := \binom{s}{\ell} \binom{n-s}{k-\ell} \left/\binom{n}{k}\right.$ &
+    $\frac{ks}{n}$ &
+    $\frac{ks(n-k)}{n(n-1)}(1-\frac{s}{n})$\\
+    \multicolumn{5}{l}{\emph{Beispiel}: W.keit, dass bei einer ungeordneten Ziehung von $k$
+    Kugeln ohne Zurücklegen aus einer Urne mit}\\
+    \multicolumn{5}{l}{$s$ schwarzen und $n - s$ weißen Kugeln genau
+    $\ell$ schwarze Kugeln gezogen werden}\\
+
+    \addlinespace[5mm]
+    \bottomrule
+\end{tabular}
+\end{landscape}
+
+\subsection{%
+    Maß- und Integrationstheorie%
+}
+
+\begin{Def}{Dichte}
+    Eine \begriff{Dichte} ist eine Funktion
+    $f\colon \real \rightarrow [0, \infty)$ mit $\int_\real f(u)\du = 1$.\\
+    Ein W-Maß $P$ auf $\real$ \begriff{besitzt die Dichte} $f$, falls
+    $P((-\infty, x]) = \int_{-\infty}^x f(u)\du$ für alle $x \in \real$.
+\end{Def}
+
+\begin{Def}{messbare Abbildung}
+    Eine Abbildung $f\colon (\Omega, \A) \rightarrow (\Omega', \A')$ zwischen zwei Messräumen
+    $(\Omega, \A)$ und $(\Omega', \A')$ heißt \begriff{messbar}, falls
+    $f^{-1}(A') \in \A$ für alle $A' \in \A'$.
+\end{Def}
+
+\begin{Def}{Bildmaß}
+    Ist $f\colon (\Omega, \A) \rightarrow (\Omega', \A')$ messbar und $\mu$ ein Maß auf
+    $(\Omega, \A)$, so ist $\mu_f\colon \A' \rightarrow [0, \infty]$ mit
+    $\mu_f(A') := \mu(f^{-1}(A'))$ das \begriff{Bildmaß} von $\mu$ unter $f$.
+    Es ist ein W-Maß genau dann, wenn $\mu$ ein W-Maß ist.
+\end{Def}
+
+\begin{Def}{allgemeiner Transformationssatz}
+    Seien $(\Omega, \A, \mu)$ ein Maßraum, $(\Omega', \A')$ ein Messraum,
+    $f\colon \Omega' \rightarrow \real$ messbar und $T\colon \Omega \rightarrow \Omega'$ messbar.
+    Dann ist $f \in L^1(\mu_T) \iff f \circ T \in L^1(\mu)$.\\\
+    In diesem Fall gilt $\int_{\Omega'} f d\mu_T = \int_\Omega (f \circ T)d\mu$.
+\end{Def}
+
+\subsection{%
+    Kontinuierliche Zufallsvariablen%
+}
+
+\begin{Def}{Zufallsvariable}
+    Seien $(\Omega, \A, P)$ ein W-Raum und $(E, \A')$ ein Messraum.
+    Dann heißt eine messbare Abbildung $X\colon \Omega \rightarrow E$ \begriff{Zufallsvariable}.
+    Das W-Maß $P_X\colon \A' \rightarrow [0, 1]$ mit $P_X(A') := P(X \in A')$
+    heißt \begriff{Verteilung} von $X$.
+    $P_X$ ist das Bildmaß von $P$ unter $X$.\\
+    Die Funktion $F_X\colon \real \rightarrow [0, 1]$ mit $F_X(x) := P(X \le x)$ heißt
+    \begriff{Verteilungsfunktion} von $X$, falls $X$ reell ist.
+    Sie ist monoton wachsend, rechtsseitig stetig und hat den Grenzwert $1$ bzw. $0$ für
+    $x \to \pm\infty$.
+    Wenn $F_X$ absolutstetig ist, dann ist $f_X(x) = F_X'(x)$ die Dichte von $X$.\\
+    $X$ heißt \begriff{stetig/kontinuierlich}, falls $P_X$ eine Dichte besitzt.
+\end{Def}
+
+\begin{Def}{stochastisch unabhängig für ZV}
+    Die Zufallsvariablen $X_i\colon \Omega \rightarrow (E_i, \A_i')$ ($i \in I$)
+    heißen \begriff{(stochastisch) unabhängig}, falls für alle $B_i \in \A_i'$ ($i \in I$)
+    $(\{X_i \in B_i\})_{i \in I}$ als Familie von Ereignissen unabhängig ist.
+    Die Dichte von $X = (X_1, \dotsc, X_n)\colon \Omega \rightarrow \real^n$ ist
+    $f(x) = f_1(x) \dotsm f_n(x)$, wenn $X_1, \dotsc, X_n$ unabhängig sind und
+    $f_i$ die Dichte von $X_i$ ist.
+\end{Def}
+
+\begin{Def}{Erwartungswert}
+    Die Zahl $\EE(X) := \int_\Omega X dP$ heißt \begriff{Erwartungswert} von $X$
+    (falls $X$ reell und $X \in L^1(P)$).
+    In diesem Fall gilt $\EE(X) = \int_\real x dP_X = \int_\real xf(x)\dx$,
+    wenn $X$ die Dichte $f$ besitzt
+    (\begriff{Transformationssatz}).
+    Es gilt $\EE(X + Y) = \EE(X) + \EE(Y)$,
+    $\EE(\alpha X) = \alpha\EE(X)$ (\begriff{Linearität}),
+    $\EE(c) = c$,
+    $X \le Y \;\Rightarrow\; \EE(X) \le \EE(Y)$ und $|\EE(X)| \le \EE(|X|)$.\\
+    Sind $X_1, \dotsc, X_n$ unabhängig, so gilt $\EE(X_1 \dotsm X_n) = \EE(X_1) \dotsm \EE(X_n)$.\\
+    Ist $g\colon \real \rightarrow \real$ messbar und besitzt $X$ die Dichte $f$, so gilt\\
+    $\EE(g(X)) = \int_\real g(x) dP_X = \int_\real g(x)f(x)\dx$,
+    falls $g(X) \in L^1(P)$
+    (\begriff{Transformationssatz}).
+\end{Def}
+
+\begin{Def}{$k$-tes Moment}
+    Die Zahl $\EE(X^k)$ heißt \begriff{$k$-tes Moment} von $X$
+    (falls $X \in L^k(P)$).
+    Es gilt $\EE(X^k) = \int_\real x^k dP_X = \int_\real x^k f(x)\dx$,
+    wenn $X$ die Dichte $f$ besitzt
+    (\begriff{Transformationssatz}).
+\end{Def}
+
+\begin{Def}{Varianz}
+    Die Zahl $\Var(X) := \EE((X - \EE(X))^2) = \EE(X^2) - \EE(X)^2$ heißt \begriff{Varianz}
+    von $X$ (falls $X \in L^2(P)$).
+    Es gilt $\Var(\alpha X) = \alpha^2 \Var(X)$, $\Var(X + c) = \Var(X)$ und
+    $\Var(X_1 + \dotsb + X_n) = \Var(X_1) + \dotsb + \Var(X_n)$,
+    wenn $X_1, \dotsc, X_n$ unabhängig (\begriff{Satz von \name{Bienaymé}}).
+\end{Def}
+
+\begin{Def}{Kovarianz}
+    Für zwei reelle ZV $X, Y$ heißt $\Cov(X, Y) := \EE(XY) - \EE(X)\EE(Y)$
+    \begriff{Kovarianz}.\\
+    Für $\Cov(X, Y) = 0$ heißen $X, Y$ \begriff{unkorreliert}.
+    Unabhängige ZV sind unkorreliert.
+\end{Def}
+
+\begin{Def}{Transformationssatz}
+    Seien $X$ eine reelle, stetige ZV mit Dichte $f$
+    und $h\colon \real \rightarrow \real$ sei bijektiv auf einer of"|fenen Menge $B$ mit
+    $\PP(X \in B) = 1$ und diffb. mit $h'(x) \not= 0$ für alle $x \in B$.\\
+    Dann ist $Y := h(X)$ eine stetige ZV mit Dichte
+    $g(y) := \frac{f(h^{-1}(y))}{|h'(h^{-1}(y))|} \1_B(h^{-1}(y))$
+    für $y \in \real$.
+\end{Def}
+
+\begin{landscape}
+\subsection{%
+    Kontinuierliche Verteilungen%
+}
+
+\begin{tabular}{p{85mm}p{40mm}p{65mm}p{20mm}p{27mm}}
+    \toprule
+    \emph{Name} & \emph{Parameter} & \emph{Dichte} & \emph{EW} & \emph{Varianz}\\
+
+    \addlinespace[5mm]
+    \midrule
+    \textbf{Gleichverteilung $\U([a, b])$} &
+    $a, b \in \real$, $a < b$ &
+    $f(x) := \frac{1}{b-a} \cdot \1_{[a,b]}(x)$ &
+    $\frac{a+b}{2}$ &
+    $\frac{(b-a)^2}{12}$\\
+    \multicolumn{5}{l}{\emph{Beispiel}:
+    Bruch eines Stabes der Länge $b - a$ an einer zufälligen Stelle}\\
+    \multicolumn{5}{l}{}\\
+
+    \addlinespace[5mm]
+    \midrule
+    \textbf{Exponentialverteilung $\Exp(\lambda)$} &
+    $\lambda > 0$ &
+    $f(x) := \lambda e^{-\lambda x} \cdot \1_{(0,\infty)}(x)$ &
+    $\frac{1}{\lambda}$ &
+    $\frac{1}{\lambda^2}$\\
+    \multicolumn{5}{l}{\emph{Beispiel}:
+    Zeit zwischen zwei Anrufen, Lebensdauer von Atomen beim radioaktiven Zerfall}\\
+    \multicolumn{5}{l}{}\\
+
+    \addlinespace[5mm]
+    \midrule
+    \textbf{Normalverteilung $\N(\mu, \sigma^2)$} &
+    $\mu \in \real$, $\sigma^2 > 0$ &
+    $f(x) := \frac{1}{\sqrt{2\pi\sigma^2}} \exp(-\frac{(x-\mu)^2}{2\sigma^2})$ &
+    $\mu$ &
+    $\sigma^2$\\
+    \multicolumn{5}{l}{\emph{Beispiel}:
+    physikalische Messwerte mit Messfehler, Brownsche Molekularbewegung,
+    zentraler Grenzwertsatz:}\\
+    \multicolumn{5}{l}{$X_1, X_2, \dotsc$ i.i.d. mit endlichem EW und
+    endlicher Varianz, dann gilt
+    $Z_n \to Z$ in Verteilung mit
+    $Z_n := \frac{1}{\sqrt{n\sigma^2}} \sum_{k=1}^n (X_k - \mu)$ und
+    $Z \sim \N(0, 1)$}\\
+
+    %\addlinespace[5mm]
+    %\midrule
+    %\textbf{Chi-Quadrat-Verteilung $\chi_n^2$} &
+    %$n \in \natural$ &
+    %$f(x) := \frac{x^{n/2-1} e^{-x/2}}{2^{n/2} \Gamma(n/2)} \cdot \1_{(0,\infty)}(x)$ &
+    %$n$ &
+    %$2n$\\
+    %\multicolumn{5}{l}{\emph{Beispiel}:
+    %Schätzung bei der Varianz einer Stichprobe, Chi-Quadrat-Tests,}\\
+    %\multicolumn{5}{l}{für $Z_1, \dotsc, Z_n \sim \N(0, 1)$ i.i.d. gilt
+    %$Z_1^2 + \dotsb + Z_n^2 \sim \chi_n^2$}\\
+
+    \addlinespace[5mm]
+    \midrule
+    \textbf{Beta-Verteilung $\BetaV(a, b)$} &
+    $a, b > 0$ &
+    $f(x) := \frac{x^{a-1} (1-x)^{b-1}}{B(a, b)} \cdot \1_{[0,1]}(x)$ &
+    $\frac{a}{a+b}$ &
+    $\frac{ab}{(a+b+1)(a+b)^2}$\\
+    \multicolumn{5}{l}{\emph{Beispiel}:
+    konjugierte Familie von a-Priori-Verteilungen für Binomial- und Bernoulli-Verteilung
+    (und geometrische Verteilung),}\\
+    \multicolumn{5}{l}{$B(a, b) := \int_0^1 t^{a-1} (1-t)^{b-1} \dt$}\\
+
+    \addlinespace[5mm]
+    \midrule
+    \textbf{Gamma-Verteilung $\GammaV(a, \lambda)$} &
+    $a, \lambda > 0$ &
+    $f(x) := \frac{\lambda^a x^{a-1} e^{-\lambda x}}{\Gamma(a)} \cdot \1_{(0,\infty)}(x)$ &
+    $\frac{a}{\lambda}$ &
+    $\frac{a}{\lambda^2}$\\
+    \multicolumn{5}{l}{\emph{Beispiel}:
+    Bedienzeiten und Reparaturzeiten, Modellierung von kleinen bis mittleren Schäden in der
+    Versicherungsmathematik,}\\
+    \multicolumn{5}{l}{$\Gamma(a) := \int_0^\infty t^{a-1} e^{-t}\dt$}\\
+
+    \addlinespace[5mm]
+    \bottomrule
+\end{tabular}
+\end{landscape}
+
+\subsection{%
+    Schätzer für Erwartungswert und Varianz%
+}
+
+\begin{Def}{arithmetischer Mittelwert}\\
+    Der \begriff{(arithmetische) Mittelwert} von $X = (X_1, \dotsc, X_n)$ ist
+    $\overline{X} := \frac{1}{n} \sum_{i=1}^n X_i$.
+\end{Def}
+
+\begin{Def}{korrigierte Stichprobenvarianz}\\
+    Die \begriff{(korrigierte) Stichprobenvarianz} von $X = (X_1, \dotsc, X_n)$ ist
+    $S^2(X) := \frac{1}{n-1} \sum_{i=1}^n (X_i - \overline{X})^2$.\\
+    Es gilt $S^2(X) = \frac{1}{n-1} \sum_{i=1}^n X_i^2 - \frac{n}{n-1} (\overline{X})^2$.\\
+    Sind $X_1, \dotsc, X_n$ i.i.d. und $\mu = \EE(X_1)$ bekannt,
+    dann verwendet man normalerweise stattdessen
+    ${S^\ast}^2(X) := \frac{1}{n} \sum_{i=1}^n (X_i - \mu)^2$.
+\end{Def}
+
+\subsection{%
+    Weitere kontinuierliche Verteilungen%
+}
+
+\begin{Def}{Chi-Quadrat-Verteilung $\chi_n^2$}
+    Für $X_1, \dotsc, X_n \sim \N(0, 1)$ i.i.d. heißt die\\
+    Verteilung von
+    $Y := \sum_{i=1}^n X_i^2$ \begriff{Chi-Quadrat-Verteilung $\chi_n^2$}
+    mit $n$ Freiheitsgraden.\\
+    Für $X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ i.i.d. gilt
+    $\frac{(n-1)S^2}{\sigma^2} \sim \chi_{n-1}^2$.
+\end{Def}
+
+\begin{Def}{\name{student}sche $t$-Verteilung $t_n$}
+    Für $X \sim \N(0, 1)$ und $Y \sim \chi_n^2$ unabhängig heißt die\\
+    Verteilung von
+    $Z := \frac{X}{\sqrt{Y/n}}$ \begriff{\name{student}sche $t$-Verteilung $t_n$}
+    mit $n$ Freiheitsgraden.
+\end{Def}
+
+\begin{Def}{$F$-Verteilung $F_{(n,m)}$}
+    Für $X \sim \chi_n^2$ und $Y \sim \chi_m^2$ unabhängig heißt die\\
+    Verteilung von
+    $Z := \frac{X/n}{Y/m}$ \begriff{$F$-Verteilung $F_{(n,m)}$}
+    mit $(n, m)$ Freiheitsgraden.
+\end{Def}
+
+\subsection{%
+    Mehrdimensionale Zufallsvariablen%
+}
+
+\begin{Def}{Zufallsvektor}
+    Ein \begriff{Zufallsvektor (mehrdimensionale Zufallsvariable)} ist eine messbare Abbildung
+    $X\colon \Omega \rightarrow \real^n$, d.\,h. ein Vektor $X = (X_1, \dotsc, X_n)$ von
+    Zufallsvariablen $X_i\colon \Omega \rightarrow \real$.\\
+    Die Verteilung $P_X$ von $X$ heißt \begriff{mehrdimensionale Verteilung},
+    die Verteilungen der $X_i$ heißen \begriff{Randverteilungen}.\\
+    Die Funktion $F_X\colon \real^n \rightarrow [0, 1]$ mit
+    $F_X(x) := P(X \le x) = P(X_1 \le x_1, \dotsc, X_n \le x_n)$ heißt
+    \begriff{Verteilungsfunktion} von $X$.
+\end{Def}
+
+\begin{Def}{diskreter Zufallsvektor}
+    Ist das Bild $X(\Omega)$ höchstens abzählbar, so heißt $X$ \begriff{diskret}.\\
+    In diesem Fall ist $p_x := P(X = x) = P(X_1 = x_1, \dotsc, X_n = x_n)$ die
+    Zähldichte von $P_X$ (gemeinsame Zähldichte der $X_1, \dotsc, X_n$) und
+    die Zähldichten der Randverteilungen berechnen sich durch
+    $P(X_i = x_i') = \sum_{x \in X(\Omega)} P(X = (x_1, \dotsc, x_i', \dotsc, x_n))$.\\
+    Die $X_1, \dotsc, X_n$ sind unabhängig genau dann, wenn
+    $P(X = x) = P(X_1 = x_1) \dotsm P(X_n = x_n)$.
+\end{Def}
+
+\begin{Def}{stetiger Zufallsvektor}
+    Besitzt $X$ eine Dichte
+    (\begriff{gemeinsame Dichte} der $X_1, \dotsc, X_n$),
+    d.\,h. eine Funktion $f_X\colon \real^n \rightarrow \real$ mit\\
+    $P((-\infty, x_1] \times \dotsb \times (-\infty, x_n]) =
+    \int_{-\infty}^{x_1} \dotsb \int_{-\infty}^{x_n} f_X(u)\du$,
+    so heißt $X$ \begriff{stetig/kontinuierlich}.\\
+    In diesem Fall berechnen sich die Dichten der Randverteilungen (\begriff{Randdichten}) durch\\
+    $f_{X_i}(x_i') = \int_\real \dotsb \int_\real
+    f(x_1, \dotsc, x_i', \dotsc, x_n) \dx_1 \dotsb \dx_{i-1} \dx_{i+1} \dotsb \dx_n$.\\
+    Die $X_1, \dotsc, X_n$ sind unabhängig genau dann, wenn
+    $f_X(x) = f_{X_1}(x_1) \dotsm f_{X_n}(x_n)$ für alle $x \in \real^n$\\
+    (was gilt genau dann, wenn $F_X(x) = F_{X_1}(x_1) \dotsm F_{X_n}(x_n)$
+    für alle $x \in \real^n$).
+\end{Def}
+
+\pagebreak
+
+\subsection{%
+    Bedingte Verteilungen%
+}
+
+\begin{Def}{bedingte Verteilung}
+    Seien $X$ und $Y$ zwei Zufallsvariablen.\\
+    Dann ist die \begriff{bedingte Verteilung $X|Y$} von $X$ gegeben $Y$ wie folgt definiert:
+    \begin{itemize}
+        \item
+        Sind $X$ und $Y$ diskret mit gemeinsamer Zähldichte $p(x, y)$, so hat
+        die bedingte Verteilung\\
+        $X|Y$ die Zähldichte
+        $p(x|Y=y) := \frac{p(x,y)}{p_Y(y)} = P(X=x|Y=y)$ mit der Randdichte\\
+        $p_Y(y) := P(Y=y) = \sum_{x' \in X(\Omega)} p(x', y)$ von $Y$
+        (falls $p_Y(y) > 0$).
+
+        \item
+        Sind $X$ und $Y$ stetig mit gemeinsamer Dichte $f_{X,Y}(x, y)$, so hat
+        die bedingte Verteilung\\
+        $X|Y$ die Dichte
+        $f_X(x|Y=y) := \frac{f_{X,Y}(x,y)}{f_Y(y)}$ mit der Randdichte\\
+        $f_Y(y) := \int_{X(\Omega)} f_{X,Y}(x', y) \dx'$ von $Y$
+        (falls $f_Y(y) > 0$).
+    \end{itemize}
+    Im stetigen Fall ist
+    $f_X(x) = \int_{Y(\Omega)} f_Y(y) f_X(x|Y=y)\dy$
+    (\begriff{Gesetz der totalen Wahrscheinlichkeit}).
+\end{Def}
+
+\begin{Def}{bedingter Erwartungswert}
+    Seien $X$ und $Y$ zwei Zufallsvariablen mit $\EE(|X|) < \infty$.\\
+    Sind $X$ und $Y$ diskret mit gemeinsamer Zähldichte $p(x,y)$,
+    dann ist der \begriff{bedingte Erwartungswert von $X$ gegeben $Y=y$} gleich
+    $\EE(X|Y=y) := \sum_{x \in X(\omega)} x \cdot p(x|y) =
+    \sum_{x \in X(\Omega)} x \cdot P(X=x|Y=y)$.\\
+    Sind $X$ und $Y$ stetig mit gemeinsamer Dichte $f_{X,Y}(x,y)$,
+    dann ist der \begriff{bedingte Erwartungswert von $X$ gegeben $Y=y$} gleich
+    $\EE(X|Y=y) := \int_\real x \cdot f_X(x|Y=y) \dx$.\\
+    Für $X = (X_1, \dotsc, X_n)$ und $Y = (Y_1, \dotsc, Y_m)$ ist der
+    \begriff{bedingte Erwartungswert von $X$ gegeben $Y=y$} gleich
+    $\EE(X|Y=y) := (\EE(X_1|Y=y), \dotsc, \EE(X_n|Y=y))$.\\
+    Der \begriff{bedingte Erwartungswert von $X$ gegeben $Y$} ist definiert als die
+    Zufallsvariable\\
+    $\EE(X|Y) := g(Y)$ mit $g(y) := \EE(X|Y=y)$.\\
+    Es gilt $\EE(\EE(X|Y)) = \EE(X)$
+    (\begriff{Satz vom iterierten Erwartungswert}).
+\end{Def}
+
+\subsection{%
+    Ungleichungen%
+}
+
+\begin{Def}{\name{Jensen}-Ungleichung}\\
+    Sei $g\colon \real \rightarrow \real$ konvex
+    (d.\,h. $g(\lambda x + (1-\lambda) y) \le \lambda g(x) + (1-\lambda) g(y)$
+    für alle $\lambda \in (0, 1)$ und $x, y \in \real$) und
+    $X$ eine reelle Zufallsvariable mit $\EE(|X|) < \infty$.
+    Dann gilt $\EE(g(X)) \ge g(\EE(X))$.
+\end{Def}
+
+\begin{Def}{\name{Markov}-Ungleichung}\\
+    Seien $X$ eine reelle Zufallsvariable, $h\colon \real^+ \rightarrow \real^+$
+    monoton wachsend und $\varepsilon > 0$.\\
+    Dann gilt $P(|X| \ge \varepsilon) \le \frac{\EE(h(|X|))}{h(\varepsilon)}$.
+\end{Def}
+
+\begin{Def}{\name{Tschebyscheff}-Ungleichung}\\
+    Seien $X$ eine reelle Zufallsvariable mit $\Var(X) < \infty$
+    und $\varepsilon > 0$.\\
+    Dann gilt $P(|X - \EE(X)| \ge \varepsilon) \le \frac{\Var(X)}{\varepsilon^2}$ oder alternativ
+    $P(|X - \EE(X)| < \varepsilon) \ge 1 - \frac{\Var(X)}{\varepsilon^2}$.
+\end{Def}
+
+\subsection{%
+    Grenzwertbegrif"|fe%
+}
+
+\begin{Def}{$P$-fast-sichere Konvergenz}
+    Seien $(X_n)_{n \in \natural}$ und $X$ Zufallsvariablen.
+    Dann konvergiert\\
+    $(X_n)_{n \in \natural}$ \begriff{$P$-fast-sicher} gegen $X$
+    ($X_n \xrightarrow{P\text{-f.s.}} X$),
+    falls $P(\lim_{n \to \infty} X_n = X) = 1$.
+\end{Def}
+
+\begin{Def}{stochastische Konvergenz}
+    $(X_n)_{n \in \natural}$ konvergiert \begriff{stochastisch} gegen $X$
+    ($X_n \xrightarrow{P} X$), falls\\
+    für jedes $\varepsilon > 0$ gilt, dass
+    $P(|X_n - X| \ge \varepsilon) \xrightarrow{n \to \infty} 0$.
+    Aus $P$-f.s. folgt stochastische Konvergenz.
+\end{Def}
+
+\begin{Def}{Konvergenz in Verteilung}
+    $(X_n)_{n \in \natural}$ konvergiert \begriff{in Verteilung} gegen $X$
+    ($X_n \xrightarrow{\text{(d)}} X$), falls\\
+    für alle Punkte $x$, an denen $F_X$ stetig ist, gilt, dass
+    $F_{X_n}(x) \xrightarrow{n \to \infty} F_X(x)$.\\
+    Aus stochastischer Konvergenz folgt Konvergenz in Verteilung.
+\end{Def}
+
+\pagebreak
+
+\subsection{%
+    Grenzwertsätze%
+}
+
+\begin{Def}{Null-Eins-Gesetz von \name{Kolmogorov}}
+    Seien $(\A_n)_{n \in \natural}$ eine unabhängige Folge von $\sigma$-Algebren $\A_n \subset \A$
+    und $\T_\infty$ die terminale $\sigma$-Algebra von $(\A_n)_{n \in \natural}$.\\
+    Dann gilt $P(A) \in \{0, 1\}$ für alle $A \in \T_\infty$.\\
+    Insbesondere gilt $P(A) \in \{0, 1\}$ für folgende Ereignisse $A \in \A$,
+    wenn $(X_n)_{n \in \natural}$ eine Folge unabhängiger, reeller Zufallsvariablen ist:
+    \begin{itemize}
+        \item
+        $\{\omega \in \Omega \;|\; (X_n(\omega))_{n \in \natural} \text{ konvergiert in } \real\}$
+
+        \item
+        $\{\omega \in \Omega \;|\; \sum_{n=1}^\infty X_n(\omega) \text{ konvergiert in } \real\}$
+
+        \item
+        $\{\omega \in \Omega \;|\; \limsup_{n \to \infty} X_n(\omega) \le \alpha\}$
+        für $\alpha \in \real$
+    \end{itemize}
+\end{Def}
+
+\begin{Def}{starkes Gesetz der großen Zahlen}
+    Seien $X_1, X_2, \dotsc$ i.i.d. mit $\EE(|X_1|) < \infty$.\\
+    Dann gilt $\frac{1}{n} \sum_{i=1}^n X_i \xrightarrow{P\text{-f.s.}} \EE(X_1)$.
+\end{Def}
+
+\begin{Def}{schwaches Gesetz der großen Zahlen}\\
+    Seien $X_1, X_2, \dotsc$ paarweise unkorreliert mit
+    $\exists_{M \in \real} \forall_{i \in \natural}\;
+    \EE(X_i) = \EE(X_1),\, \Var(X_i) < M$.\\
+    Dann gilt $\frac{1}{n} \sum_{i=1}^n X_i \xrightarrow{P} \EE(X_1)$.
+\end{Def}
+
+\begin{Def}{zentraler Grenzwertsatz}\\
+    Seien $X_1, X_2, \dotsc$ i.i.d. mit $\sigma^2 > 0$,
+    wobei $\mu := \EE(X_1)$ und $\sigma^2 := \Var(X_1) < \infty$.\\
+    Dann gilt $Z_n := \frac{\overline{X}_n - \mu}{\sigma/\sqrt{n}}
+    \xrightarrow{\text{(d)}} Z$ mit $Z \sim \N(0, 1)$.
+\end{Def}
+
+\begin{Def}{Satz von \name{Slutsky}}
+    Für $X_n \xrightarrow{\text{(d)}} X$ sowie $A_n \xrightarrow{P} a$ und
+    $B_n \xrightarrow{P} b$ gilt $A_n + B_n X_n \xrightarrow{\text{(d)}} a + bX$.
+\end{Def}
+
+\subsection{%
+    Charakteristische Funktionen%
+}
+
+\begin{Def}{charakteristische Funktion}
+    Sei $X$ eine reelle Zufallsvariable.
+    Dann heißt die Funktion $\varphi_X\colon \real \rightarrow \complex$ mit
+    $\varphi_X(t) := \int_\real e^{\i tx} dP_X = \EE(e^{\i tX})$
+    \begriff{charakteristische Funktion} von $X$.\\
+    Es gilt $|\varphi(t)| \le 1$, $\varphi(-t) = \overline{\varphi(t)}$ und $\varphi$ ist
+    gleichmäßig stetig.\\
+    Außerdem ist $\varphi_{aX+b}(t) = e^{\i tb} \varphi_X(at)$ für $a, b \in \real$
+    (\begriff{lineare Transformation}).\\
+    Gilt $\varphi_X = \varphi_Y$ für zwei Zufallsvariablen $X$ und $Y$, so gilt $P_X = P_Y$
+    (\begriff{Eindeutigkeitssatz}).\\
+    Die charakteristischen Funktionen bekannter Verteilungen lauten wie folgt:
+
+    {\small
+    \begin{tabular}{p{25mm}p{46mm}p{35mm}p{45mm}}
+        \toprule
+        \emph{Verteilung} & \emph{char. Funktion} &
+        \emph{Verteilung} & \emph{char. Funktion}\\
+
+        \midrule
+        diskr. Gleichv. &
+        $\varphi_X(t) = \frac{1}{n} \sum_{i=1}^n e^{\i tx_i}$ &
+        $X \sim \U([a, b])$ &
+        $\varphi_X(t) = -\frac{\i}{t(b-a)} (e^{\i tb} - e^{\i ta})$ für $t \not= 0$,
+        $\varphi_X(0) = 1$\\
+
+        \midrule
+        $X \sim \Bin(1, p)$ &
+        $\varphi_X(t) = e^{\i t} p + 1 - p$ &
+        $X \sim \Exp(\lambda)$ &
+        $\varphi_X(t) = \frac{\lambda}{\lambda - \i t}$\\
+
+        \midrule
+        $X \sim \Bin(n, p)$ &
+        $\varphi_X(t) = (e^{\i t} p + 1 - p)^n$ &
+        $X \sim \N(\mu, \sigma^2)$ &
+        $\varphi_X(t) = e^{\i \mu t} \cdot \exp\!\left(-\frac{\sigma^2 t^2}{2}\right)$\\
+
+        \midrule
+        $X \sim \Pois(\lambda)$ &
+        $\varphi_X(t) = \exp(\lambda(e^{\i t} - 1))$ &
+        $X \sim \chi_n^2$ &
+        $\varphi_X(t) = \frac{1}{(1 - 2\i t)^{n/2}}$\\
+
+        \midrule
+        $X \sim G(p)$  &
+        $\varphi_X(t) = \frac{p e^{\i t}}{1 - (1 - p)e^{\i t}}$ &
+        $X \sim \GammaV(a, \lambda)$ &
+        $\varphi_X(t) = \left(\frac{\lambda}{\lambda - \i t}\right)^a$\\
+
+        \bottomrule
+    \end{tabular}}
+\end{Def}
+
+\begin{Def}{Summe von Zufallsvariablen}
+    Seien $X_1, \dotsc, X_n$ unabhängig und $Y := X_1 + \dotsb + X_n$.\\
+    Dann gilt $\varphi_Y(t) = \varphi_{X_1}(t) \dotsm \varphi_{X_n}(t)$.
+    Mit dem Eindeutigkeitssatz kann also die Verteilung von $Y$ berechnet werden,
+    wenn $\varphi_{X_1}(t) \dotsm \varphi_{X_n}(t)$ einer bekannten charakteristischen Funktion
+    entspricht.
+    Zum Beispiel gilt für $X_i \sim \N(\mu_i, \sigma_i^2)$, dass
+    $Y \sim \N(\mu_1 + \dotsb + \mu_n, \sigma_1^2 + \dotsb + \sigma_n^2)$.
+\end{Def}
+
+\pagebreak

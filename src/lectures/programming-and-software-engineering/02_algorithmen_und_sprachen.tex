@@ -1,0 +1,367 @@
+\section{%
+    Algorithmen und Sprachen%
+}
+
+\subsection{%
+    Darstellung von Algorithmen%
+}
+
+\begin{Def}{Algorithmus}
+    ein Verfahren, das prinzipiell von einer mechanisch arbeitenden
+    Maschine durchgeführt werden kann; \\
+    exakt beschriebenes Verfahren inkl. genauer Festlegung von
+    Eingabe/Ausgabe/Zwischen\-spei\-cherung von Daten usw., das Verfahren
+    muss so genau ausformuliert sein, dass jeder ohne Rücksprache mit dem
+    Autor den Algorithmus nachvollziehen kann
+\end{Def}
+
+\begin{Def}{Pseudosprache}
+    \begin{itemize}
+        \item \begriff{Algorithmus} erhält einen Bezeichner und ist Folge von
+        Anweisungen
+        
+        \item \begriff{Variablen} werden in einem \pseudocode{declare}-Teil vor
+        dem Algorithmus deklariert
+        
+        \item \begriff{elementare Anweisungen}: \pseudocode{skip}, \quad
+        \pseudocode{x := a}, \quad
+        \pseudocode{read(x)}, \quad \pseudocode{write(x)}, \quad
+        \pseudocode{halt}, \quad
+        \pseudocode{exit}, \quad
+        \pseudocode{Alg(a, b, c)}
+        
+        \item \begriff{Ausdrücke}: arithmetische, logische oder
+        Zeichenausdrücke
+        
+        \item \begriff{Hintereinanderausführung}/Trennung von Anweisungen
+        mittels \pseudocode{;}
+        
+        \item \begriff{Fallunterscheidung}:
+        \pseudocode{if foo then A [else B] fi}
+        
+        \item \begriff{Schleifen}: \pseudocode{while foo do A od}, \quad
+        \pseudocode{repeat A until foo}, \\
+        \pseudocode{for i := a [by x] to b do C od} \quad
+        (\pseudocode{i}, \pseudocode{a}, \pseudocode{b}, \pseudocode{x}
+        dürfen nicht verändert werden)
+        
+        \item \begriff{Kommentare} beginnen mit \pseudocode{{-}{-}}, ein
+        Algorithmus hat die Form
+        
+\begin{lstlisting}[language=pseudosprache]
+program <Name> is
+declare
+    <Deklarationen>;
+begin
+    <Anweisungen>
+end
+\end{lstlisting}
+    \end{itemize}
+\end{Def}
+
+\begin{Def}{Ablaufprotokoll}
+    Tabelle, die Spalten für Schrittnummer, ausgeführte Anweisung sowie
+    alle Variablen nach Ausführung der Anweisung enthält (Ein-/Ausgabe werden
+    gesondert notiert)
+\end{Def}
+
+\subsection{%
+    Charakteristika von Algorithmen%
+}
+
+\begin{Def}{Eigenschaften}
+    Algorithmus ist Vorschrift, die die Reihenfolge von Handlungen auf Daten
+    beschreibt. Es muss gelten:
+    \begin{itemize}
+        \item Daten sind "`disket"' aufgebaut (mit endlich vielen
+        digitalen Zeichen darstellbar)
+        
+        \item Operationen sind "`diskret"' aufgebaut
+        
+        \item Vorschrift ist eine endliche Folge von Operationen/wird
+        schrittweise abgearbeitet
+        
+        \item eine Operation ist als Startoperation ausgezeichnet
+        
+        \item für jede Operation ist direkt nach der Ausführung bekannt,
+        welches die möglichen (endlich vielen) Folgeoperationen sind oder ob
+        der Algorithmus terminiert
+        
+        \item Eingabe ist eine Folge von Daten (auch unendlich oder leer)
+        
+        \item die bis zu jedem Zeitpunkt bearbeitete Menge an Daten
+        und durchgeführten Operationen ist endlich
+    \end{itemize}
+\end{Def}
+
+\begin{Def}{Determinismus}
+    Ein Verfahren, bei dem nach Abarbeitung jeder Operation feststeht, welche
+    Operation als nächste ausgeführt wird, heißt \begriff{deterministisch}. \\
+    Sonst (falls mehrere Operationen alternativ zugelassen sind) heißt es
+    \begriff{nicht-deterministisch}.
+\end{Def}
+
+\begin{Def}{Terminierung}
+    Ein Algorithmus/Programm \begriff{terminiert für eine Eingabe $u$},
+    wenn der Algorithmus bei Eingabe von $u$ nach endlich vielen Schritten
+    anhält. \\
+    Ein Algorithmus \begriff{terminiert stets}, wenn er für alle möglichen
+    Eingaben terminiert.
+\end{Def}
+
+\subsection{%
+    Unentscheidbare Probleme%
+}
+
+\begin{Satz}{Unlösbarkeit des Halteproblems}
+    Es gibt keinen Algorithmus, der zu jedem beliebigen Algorithmus und jeder
+    beliebigen Eingabe feststellen kann, ob dieser für diese Eingabe terminiert
+    oder nicht (\begriff{Halteproblem}).
+    
+    Gäbe es nämlich einen solchen Algorithmus $H$, so könnte man auch einen
+    Algorithmus $J'$ konstruieren, der einen Algorithmus $A$ übergeben bekommt,
+    mit:
+    Wenn $A$ bei Eingabe von $A$ selbst terminiert, so gehe in eine
+    Endlosschleife, andernfalls verlasse den Algorithmus.
+    
+    Was passiert beim Aufruf von $J'$ mit $J'$? Würde $J'$ terminieren, so
+    würde $J'$ in eine Endlosschleife gehen, also nicht terminieren.
+    Würde $J'$  nicht terminieren, so würde $J'$ den Algorithmus verlassen,
+    also terminieren.
+    Widerspruch!
+\end{Satz}
+
+\subsection{%
+    Grundlegende Datenbereiche%
+}
+
+\begin{Def}{Elementare Datentypen}
+    Dazu gehören Boolean ($\mathbb{B}$), Natural ($\mathbb{N}_0$),
+    Integer ($\mathbb{Z}$), Real ($\mathbb{R}$) und Character ($\mathbb{A}$).
+\end{Def}
+
+\begin{Def}{Darstellungen}
+    \begin{itemize}
+        \item natürliche Zahlen: verschiedene \begriff{Stellenwertsysteme}
+        möglich \\
+        (Dezimal-/Binär-/Oktal-/Hexadezimalsystem usw.)
+        
+        \item ganze Zahlen: \begriff{Zweierkomplementdarstellung}
+        (erstes Bit Vorzeichen)
+        
+        \item rationale/reelle Zahlen: \begriff{Festkommadarstellung}
+        (die letzten $x$~Bit sind Nachkommastellen),
+        \begriff{Gleitkommadarstellung}
+        ($z = m \cdot b^e$, $m$ Mantisse, $e$ Exponent bzgl. Basis $b$),
+        Rundungsfehler
+    \end{itemize}
+\end{Def}
+
+\subsection{%
+    Realisierte Abbildung%
+}
+
+\begin{Def}{Realisierte Abbildung} $f_\pi: E \rightarrow A$ von der
+    Eingabemenge $E$ in die Ausgabemenge $A$, \\
+    $f_\pi(e) =
+    \begin{cases}
+        a & \text{falls } \pi \text{ bei Eingabe von } e
+        \text{ mit der Ausgabe } a \text{ terminiert} \\
+        \bot & \text{falls } \pi \text{ bei Eingabe von } e
+        \text{ nicht terminiert}
+    \end{cases}$
+\end{Def}
+
+\begin{Def}{Menge der berechenbaren Funktionen}\\
+    $\mathcal{P}_{E,A} = \{f: E \rightarrow A \;|\; \text{es gibt ein
+    Programm } \pi \text{ mit } f_\pi = f\}$
+\end{Def}
+
+\begin{Def}{freies Monoid über $\boldsymbol{M}$}
+    $M^\ast = \{a_1 a_2 \ldots a_n \;|\;
+    n \in \mathbb{N}_0,\; a_i \in M\}$ (\begriff{Menge der Wörter}), \\
+    $\varepsilon$ leeres Wort (Wort der Länge $n=0$)
+\end{Def}
+
+\begin{Def}{Menge der von Programmen berechenbaren Funktionen}\\
+    $\mathcal{P} = \{f \;|\; \text{es gibt ein Programm } \pi \text{ mit }
+    f = f_\pi: D^\ast \rightarrow D^\ast\}$, wobei
+    $D$ die Menge aller darstellbaren Boolean-, Zeichen-, Ganzzahl- und
+    Gleitkommazahl-Werte ist.
+\end{Def}
+
+\subsection{%
+    (Künstliche) Sprachen%
+}
+
+\begin{Def}{Alphabet}
+    Eine endliche, linear geordnete Menge $A = \{a_1, \ldots, a_n\}$ \quad
+    ($a_1 < \cdots < a_n$) heißt \begriff{(endliches) Alphabet}.
+\end{Def}
+
+\begin{Def}{Sprache}
+    Jede Menge von Zeichenfolgen $L$ über $A$ heißt
+    \begriff{Sprache über dem Alphabet $A$}, d.~h. $L$ ist Sprache über $A$
+    genau dann, wenn $L \subseteq A^\ast$.
+\end{Def}
+
+\begin{Def}{Wort}
+    Ein Element $w \in L \subseteq A^\ast$ einer Sprache heißt \begriff{Wort}.
+\end{Def}
+
+\begin{Def}{Operationen mit Sprachen}
+    Vereinigung $L_1 \cup L_2$, Durchschnitt $L_1 \cap L_2$, \\
+    Komplement $A^\ast \setminus L$,
+    Konkatenation $L_1 \circ L_2 = \{uv \;|\;u \in L_1, v \in L_2\}$,
+    Iteration $L^\ast = \bigcup_{i \in \mathbb{N}_0} L^i$, \\
+    $L^+ = \bigcup_{i \in \mathbb{N}} L^i$ ($L^i = L \circ \cdots \circ L$),
+    Ergebnis ist wieder eine Sprache
+\end{Def}
+
+\subsection{%
+    Grammatiken%
+}
+
+\begin{Def}{Kontextfreie Grammatik}
+    Viertupel $G = (V, \Sigma, P, S)$ mit
+    \begin{itemize}
+        \item $V$ nicht-leere endliche Menge
+        (\begriff{Nichtterminalzeichen}),
+        
+        \item $\Sigma$ nicht-leere endliche Menge mit
+        $V \cap \Sigma = \emptyset$ (\begriff{Terminalzeichen}),
+        
+        \item $P \subset V \times (V \cup \Sigma)^\ast$ endliche Menge
+        (\begriff{Regeln} oder \begriff{Produktionen}),
+        
+        \item $S \in V$ (\begriff{Startsymbol}).
+    \end{itemize}
+    
+    Sei z.~B. $G_1 = (V_1, \Sigma_1, P_1, S_1)$ mit $V_1 = \{S_1\}$ und
+    $\Sigma_1 = \{0, 1\}$. Man schreibt statt \\
+    $P_1 = \{(S_1,\; 1), (S_1,\; S_{1}0), (S_1,\; S_{1}1)\}$ normalerweise
+    $P_1 = \{S_1 \rightarrow 1,\; S_1 \rightarrow S_{1}0,\;
+    S_1 \rightarrow S_{1}1\}$.
+\end{Def}
+
+\begin{Def}{Ableitungen}
+    Sei $G = (V, \Sigma, P, S)$ (kontextfreie) Grammatik. Auf
+    $(V \cup \Sigma)^\ast$ werden definiert:
+    \begin{itemize}
+        \item $u \Rightarrow v \quad\Leftrightarrow\quad u = xAy, v = xwy$ mit
+        $x, y \in (V \cup \Sigma)^\ast$ und $(A, w) \in P$ \\
+        ($v$ ist aus $u$ \begriff{in einem Schritt ableitbar})
+        
+        \item $u \Rightarrow^\ast v \quad\Leftrightarrow\quad$
+        $u = v$ oder
+        $u = z_0 \Rightarrow z_1 \Rightarrow \cdots \Rightarrow z_{k-1}
+        \Rightarrow z_k = v$, $z_i \in (V \cup \Sigma)^\ast$, $k \ge 1$ \\
+        ($v$ ist aus $u$ \begriff{ableitbar}),
+        "`$\Rightarrow^\ast$"' ist der reflexive und transitive Abschluss
+        von "`$\Rightarrow$"'
+    \end{itemize}
+\end{Def}
+
+\begin{Def}{Erzeugte Sprache}
+    Die von einer (kontextfreien) Grammatik $G = (V, \Sigma, P, S)$ \\
+    \begriff{erzeugte Sprache} ist die Menge
+    $L(G) = \{w \in \Sigma^\ast \;|\; S \Rightarrow^\ast w\}$.
+    Eine Sprache $L \subseteq \Sigma^\ast$ heißt
+    \begriff{kontextfreie Sprache}, falls es eine kontextfreie Grammatik $G$
+    mit $L(G) = L$ gibt.
+\end{Def}
+
+\begin{Def}{Bäume}
+    Man kann alle möglichen Ableitungen aus dem Startsymbol einer kontextfreien
+    Grammatik als Baum darstellen.
+    Dieser besteht aus \begriff{Wurzel}, \begriff{Knoten}, \begriff{Blätter}
+    und \begriff{Kanten}.
+    Jede Ableitung entspricht einem Pfad in dem Baum, alle Blätter bilden
+    die erzeugte Sprache $L(G)$. \\
+    Es kann auch die Ableitung eines bestimmten Worts als sog.
+    \begriff{Ableitungsbaum} dargestellt werden, das dem Baum zugehörige Wort
+    heißt dann das \begriff{abgeleitete Wort} des Ableitungsbaums. \\
+    Ableitungen eines bestimmten Worts mit gleichem Ableitungsbaum werden als
+    gleich angesehen.
+    Sie unterscheiden sich nur in der Reihenfolge, in der die Regeln auf die
+    Nichtterminalzeichen angewendet werden.
+\end{Def}
+
+\begin{Def}{Eindeutigkeit}
+    Sei $w \in L(G)$ ein Wort der erzeugten Sprache.
+    $w$ heißt \begriff{eindeutig}, wenn es genau einen Ableitungsbaum gibt,
+    dessen abgeleitetes Wort $w$ ist.
+    Sonst heißt $w$ \begriff{mehrdeutig}. \\
+    $G$ heißt \begriff{eindeutig}, wenn alle Wörter $w \in L(G)$ eindeutig
+    sind.
+    Sonst heißt $G$ \begriff{mehrdeutig}.
+\end{Def}
+
+\begin{Def}{(Kontextsensitive) Grammatik}
+    $G = (V, \Sigma, P, S)$ heißt \begriff{(Chomsky-)Grammatik}, wenn \\
+    $P \subset V^+ \times (V \cup \Sigma)^\ast$ endliche Menge ist
+    (ansonsten wie bei kontextfreier Grammatik). \\
+    Ableitungsrelationen und erzeugte Sprache sind analog wie bei
+    kontextfreien Grammatiken definiert.
+    Allerdings kann man einzelne Ableitungen nun nicht mehr als Baum
+    darstellen, man muss dazu zu einer Netzstruktur greifen.
+\end{Def}
+
+\begin{Def}{\name{Backus}-\name{Naur}-Form}
+    Eine BNF ist ein Viertupel $(V, \Sigma, P, S)$ mit
+    \begin{itemize}
+        \item $V$ nicht-leere endliche Menge der Form
+        $<\!\!Zeichenkette\!\!>$ (\begriff{Nichtterminalzeichen}),
+        
+        \item $\Sigma$ nicht-leere endliche Menge mit
+        $V \cap \Sigma = \emptyset$ und $| \notin \Sigma$
+        (\begriff{Terminalzeichen}),
+        
+        \item $P \subset V \{::=\}
+        (V \cup \Sigma)^\ast (\{|\} (V \cup \Sigma)^\ast)^\ast$
+        endliche Menge (\begriff{Regeln} oder \begriff{Produktionen}),
+        
+        \item $S \in V$ (\begriff{Startsymbol}).
+    \end{itemize}
+\end{Def}
+
+\subsection{%
+    Syntaxdiagramme%
+}
+
+\begin{Def}{Syntaxdiagramm}
+    Jede BNF kann als sog. \begriff{Syntaxdiagramm} grafisch dargestellt
+    werden. Dazu zeichnet man für jedes Nichtterminalzeichen ein Pfeildiagramm
+    mit in Rechtecke eingerahmte Nichtterminal- und in Kreise eingerahmte
+    Terminalzeichen.
+    
+    Man kann ein Wort der BNF erzeugen, indem man das Diagramm des
+    Startsymbols in Pfeilrichtung durchläuft. Trifft man auf ein
+    Nichtterminalzeichen, so wird sein Diagramm an dieser Stelle
+    "`eingeklebt"'. Trifft man auf ein Terminalzeichen, so fügt man es an die
+    (anfangs leere) Ausgabe hinzu.
+    
+    Alle möglichen, sich so ergebenden Ausgaben bilden die erzeugte Sprache.
+\end{Def}
+
+\subsection{%
+    Sprachen zur Beschreibung von Sprachen%
+}
+
+\begin{Def}{Metasprache}
+    Eine \begriff{Metasprache} ist eine Sprache, mit der man andere Sprachen
+    beschreiben kann.
+    
+    Es gibt die Ebenen \begriff{Syntax} (korrekter Aufbau der Wörter),
+    \begriff{Semantik} (Bedeutungszuordnung zu jedem Wort/Satz) und
+    \begriff{Pragmatik} (Beziehungen zwischen der Sprache und den
+    Anforderungen).
+    
+    Fast alle natürliche Sprachen (Deutsch, Englisch usw.) besitzen wie viele
+    formale Sprachen die Eigenschaft, sich selbst beschreiben zu können.
+    Bspw. kann man mit EBNF den Aufbau einer EBNF beschreiben.
+    Allerdings kann nicht alles in EBNF beschrieben werden
+    (Terminalzeichen müssen paarweise verschieden sein usw.).
+\end{Def}
+
+\pagebreak

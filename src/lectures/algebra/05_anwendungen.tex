@@ -1,0 +1,555 @@
+\section{%
+    Anwendungen%
+}
+
+\subsection{%
+    Konstruktionen mit Zirkel und Lineal%
+}
+
+\begin{Bem}
+    Die Aufgabe in diesem Abschnitt ist es,
+    geometrische Konstruktionen durch Körpererweiterungen zu modellieren.
+    Gegeben ist dabei eine Menge von "`Startpunkten"'
+    $M \subset \real^2 = \complex$, ein Lineal (ohne Markierungen) und
+    ein Zirkel.\\
+    Das Ziel ist der Beweis der Unlösbarkeit von klassischen Problemen
+    wie der Würfelverdopplung und der Winkeldreiteilung.
+    Die Würfelverdopplung findet zwar im Dreidimensionalen statt, auf dort
+    lassen sich die hier vorgestellten Aussagen jedoch leicht übertragen
+    (beispielsweise ist es im Zweidimensionalen nicht möglich, die Kante
+    eines verdoppelten Würfels zu konstruieren).
+\end{Bem}
+
+\linie
+
+\begin{Def}{Gerade}
+    Seien $M \subset \real^2$ und $p, q \in M$ mit $p \not= q$.\\
+    Dann bezeichnet $p \lor q$ die \begriff{Gerade} durch $p$ und $q$.
+\end{Def}
+
+\begin{Def}{Kreis}
+    Seien $M \subset \real^2$ und $p, q_1, q_2 \in M$ mit $q_1 \not= q_2$.\\
+    Dann bezeichnet $K(p, \varrho)$ mit $\varrho := |q_1 - q_2|$
+    den \begriff{Kreis} um $p$ mit Radius $\varrho$.
+\end{Def}
+
+\begin{Def}{elementare Konstruktion}
+    Sei $M \subset \real^2$.\\
+    Eine \begriff{elementare Konstruktion} aus $M$ ist eine der folgenden
+    Konstruktionen:
+    \begin{enumerate}[label=\Roman*.]
+        \item
+        \begriff{Schnitt von zwei Geraden}:\\
+        Seien $p_1, p_2, q_1, q_2 \in M$,
+        mit $p_1 \not= p_2$, $q_1 \not= q_2$ und
+        $(p_1 \lor p_2) \not= (q_1 \lor q_2)$.\\
+        Dann ist der Schnittpunkt
+        $\widehat{p} := (p_1 \lor p_2) \cap (q_1 \lor q_2)$
+        konstruiert (falls er existiert).
+        
+        \item
+        \begriff{Schnitt einer Geraden mit einem Kreis}:\\
+        Seien $p_1, p_2, q, q_1, q_2 \in M$,
+        mit $p_1 \not= p_2$ und $q_1 \not= q_2$.\\
+        Dann sind die Schnittpunkte
+        $\{\widehat{r}, \widehat{s}\} := (p_1 \lor p_2) \cap K(q, |q_1 - q_2|)$
+        konstruiert.
+        
+        \item
+        \begriff{Schnitt von zwei Kreisen}:\\
+        Seien $p, p_1, p_2, q, q_1, q_2 \in M$,
+        mit $p_1 \not= p_2$ und $q_1 \not= q_2$.\\
+        Dann sind die Schnittpunkte
+        $\{\widehat{r}, \widehat{s}\} :=
+        K(p, |p_1 - p_2|) \cap K(q, |q_1 - q_2|)$
+        konstruiert.
+    \end{enumerate}
+\end{Def}
+
+\begin{Def}{konstruierbare Punkte}
+    Sei $M \subset \real^2 = \complex$.
+    Ein Punkt $p = (x, y) \in \complex$ heißt
+    \begriff{aus $M$ (mit Zirkel und Lineal) konstruierbar}, falls
+    es ein $n \in \natural$ und
+    $M = M_0 \subset M_1 \subset \dotsb \subset M_n$
+    gibt mit $p \in M_n$, sodass jedes $M_i$ aus $M_{i-1}$ durch eine
+    elementare Konstruktion entsteht.\\
+    Die Menge $\Kon(M) := \{p \in \real^2 \;|\;
+    p \text{ aus } M \text{ konstruierbar}\}$ ist die Menge aller aus $M$\\
+    \begriff{konstruierbaren Punkte}.
+\end{Def}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    Im Folgenden wird angenommen, dass $M$ stets zwei Punkte enthält,\\
+    nämlich $0 := (0, 0)$ und $1 := (1, 0)$.
+\end{Bem}
+
+\begin{Theorem}{$\Kon(M)$ als Erweiterungskörper}
+    Seien $M \subset \complex$ mit $0, 1 \in M$. Dann gilt:
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        $\Kon(M)$ ist ein Teilkörper von $\complex$.
+        
+        \item
+        $\Kon(M) = \overline{\Kon(M)} := \{\overline{z} \;|\; z \in \Kon(M)\}$
+        
+        \item
+        $\rational(M \cup \overline{M})$ ist ein Teilkörper von $\Kon(M)$.
+        
+        \item
+        Für $b \in \complex$ gilt:
+        Falls $b^2 \in \Kon(M)$ ist, so ist auch $b \in \Kon(M)$\\
+        (d.\,h. $\Kon(M)$ ist \begriff{quadratisch abgeschlossen}).
+    \end{enumerate}
+\end{Theorem}
+
+\begin{Bem}
+    Man kann also mit Zirkel und Lineal addieren, subtrahieren, multiplizieren,
+    dividieren und Quadratwurzeln ziehen.
+    $\Kon(\rational)$ ist echt kleiner als $\complex$, hat
+    aber unendlichen Grad über $\rational$,
+    da $\sqrt{2}, \sqrt[4]{2}, \sqrt[8]{2}, \dotsc \in \Kon(\rational)$
+    linear unabhängig sind.
+\end{Bem}
+
+\linie
+
+\begin{Theorem}{Körpererweiterung $\Kon(M)/\rational(M \cup \overline{M})$}
+    Seien $M \subset \complex$ und $0, 1 \in M$. Dann gilt:
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        $\Kon(M)/\rational(M \cup \overline{M})$ ist algebraisch.
+        
+        \item
+        Für $z \in \complex$ gilt $z \in \Kon(M)$ genau dann, wenn
+        es eine Kette von Körperweiterungen
+        $\rational(M \cup \overline{M}) = L_0 \subset L_1 \subset \dotsb
+        \subset L_r$ gibt mit $z \in L_r$ und
+        $\forall_{j=1,\dotsc,r}\; [L_j:L_{j-1}] \le 2$.\\
+        Für $z \in \Kon(M)$ ist also
+        $[L_0(z):L_0]$ eine Potenz von $2$.
+    \end{enumerate}
+\end{Theorem}
+
+\begin{Bem}
+    Ist also $[L_0(z):L_0]$ keine Potenz von $2$, so ist $z$ nicht
+    konstruierbar\\
+    (z.\,B. für $M = \{0, 1\}$ ist $L_0 = \rational$).
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Unmöglichkeit bestimmter geometrischer Konstruktionen%
+}
+
+\begin{Bem}
+    Die bisher entwickelte Theorie lässt sich nun für
+    Unmöglichkeitsbeweise von geometrischen Konstruktionen verwenden:
+    \begin{enumerate}
+        \item
+        \begriff{Würfelverdopplung (Delisches Problem)}:
+        Konstruiere die Seitenlänge eines Würfels vom Volumen $2$.
+        Aufgrund $[\rational(\sqrt[3]{2}):\rational] = 3$ ist
+        $\sqrt[3]{2}$ nicht aus $0, 1$ konstruierbar, d.\,h.
+        die Aufgabe ist unlösbar.
+        
+        \item
+        \begriff{Dreiteilung eines Winkels}:
+        Gegeben ist $z = e^{\i\alpha}$, konstruiere $e^{\i\alpha/3}$.\\
+        Wähle $\alpha = 120^\circ = \frac{2\pi}{3}$.
+        In diesem Fall ist
+        $z = e^{2\pi\i/3} = -\frac{1}{2} + \frac{\i}{2} \sqrt{3}$ gegeben,
+        gesucht ist $\xi = e^{2\pi\i/9}$.
+        Es gilt $[\rational(z):\rational] = 2$
+        ($x^2 + x + 1$ Minimalpolynom von $x$ über $\rational$).
+        
+        Wenn man zeigt, dass $[\rational(\xi):\rational] = 6$,
+        dann folgt aufgrund
+        $\rational(z) \subset \rational(z, \xi) = \rational(\xi)$ und\\
+        $[\rational(\xi):\rational] =
+        [\rational(\xi):\rational(z)] \cdot [\rational(z):\rational]$,
+        dass $[\rational(\xi):\rational(z)] = 3$,
+        d.\,h. $\xi$ ist nicht aus $z$ konstruierbar.
+        Es gilt $[\rational(\xi):\rational] \le 6$, da
+        das Minimalpolynom von $\xi$ über $\rational$
+        das Polynom $\frac{x^9 - 1}{x^3 - 1} = x^6 + x^3 + 1$ teilen muss.
+        Außerdem gilt $2 < [\rational(\xi):\rational]$
+        und $2 \teilt [\rational(\xi):\rational]$.\\
+        Es bleiben also nur die Möglichkeiten
+        $[\rational(\xi):\rational] = 4$ und
+        $[\rational(\xi):\rational] = 6$.
+        
+        Nun wird gezeigt, dass $[\rational(\xi):\rational] = 6$.
+        Ein $\rational$-Automorphismus von $\rational(\xi)$ bildet
+        jede Nullstelle von $x^6 + x^3 + 1$ wieder auf eine Nullstelle
+        ab, d.\,h. $e^{2\pi\i/9}$ wird abgebildet
+        $e^{2\pi\i\ell/9}$ mit $\ell \in \{1, 2, 4, 5, 7, 8\}$.
+        Jeder Automorphismus
+        $\sigma\colon \rational(\xi) \rightarrow \rational(\xi)$ ist bestimmt
+        durch $\sigma(\xi) = e^{2\pi\i\ell/9}$, d.\,h.
+        $\ell \in (\integer/9\integer)^\ast$.
+        Die Zuordnung $\sigma \mapsto \ell \in (\integer/9\integer)^\ast$
+        definiert einen Gruppenhomomorphismus
+        $\Aut_\rational(\rational(\xi)) \rightarrow (\integer/9\integer)^\ast$,
+        dieser ist injektiv.
+        Somit ist $\Aut_\rational(\rational(\xi))$ isomorph zu einer
+        Untergruppe von $(\integer/9\integer)^\ast$,
+        daraus folgt $|\Aut_\rational(\rational(\xi))| \teilt 6$.
+        $\rational(\xi)/\rational$ ist eine Galoiserweiterung
+        (separabel und normal), also
+        $|\Aut_\rational(\rational(\xi))| =
+        [\rational(\xi):\rational] \teilt 6$.
+        
+        Somit muss $[\rational(\xi):\rational] = 6$ gelten und
+        die Winkeldreiteilung ist nicht möglich.
+        
+        \item
+        \begriff{Quadratur des Kreises}:
+        Gegeben ist der Einheitskreis,
+        gesucht ist ein Quadrat mit derselben Fläche, d.\,h.
+        man muss $\sqrt{\pi}$ oder $\pi$ konstruieren.
+        Die Zahlentheorie besagt allerdings, dass $\pi$ transzendent ist,
+        also nicht konstruierbar.
+        Somit ist die Quadratur des Kreises unmöglich.
+        
+        \item
+        \begriff{Konstruktion von regelmäßigen $n$-Ecken}:
+        Es müssen die $n$-ten Einheitswurzeln $\xi = e^{2\pi\i/n}$
+        konstruiert werden.
+        Das Minimalpolynom von $\xi$ über $\rational$ ist ein Teiler von
+        $x^n - 1$, sein Grad ist $\varphi(n) := |(\integer/n\integer)^\ast| =
+        \{j \in \{1, \dotsc, n\} \;|\; \ggT(j, n) = 1\}$
+        (\begriff{\name{Euler}sche $\varphi$-Funktion}).
+        Es gilt nun $\xi$ konstruierbar $\iff$
+        $\varphi(n)$ ist eine Potenz von $2$ $\iff$
+        $n = 2^\ell \cdot p_1 \dotsm p_r$ mit
+        paarweise verschiedenen \begriff{\name{Fermat}schen Primzahlen}
+        $p_1, \dotsc, p_r$
+        (d.\,h. eine Primzahl der Form $p_i = 2^{2^a} + 1$).
+        Für $a = 0, 1, 2, 3, 4$ ist das prim
+        (man erhält $3$, $5$, $17$, $257$, $65537$),
+        für $a = 5$ gilt allerdings $641 \teilt 4294967297$.
+        Es ist ein ungelöstes Problem, ob weitere Fermatsche Primzahlen
+        existieren
+        (man vermutet, dass dies nicht zutrifft).
+        Somit ist auch die Konstruktion von regelmäßigen $n$-Ecken
+        für allgemeine $n$ ein ungelöstes Problem.
+    \end{enumerate}
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Polynomiale Gleichungen%
+}
+
+\begin{Bem}
+    Sei $K$ ein Körper und $f(x) \in K[x]$ ein Polynom vom Grad $n$.
+    Gesucht ist eine Formel, die die Nullstellen von $f(x)$ berechnet.
+    Beispielsweise geht dies für $n = 2$ und\\
+    $f(x) = ax^2 + bx + c$
+    mit der Mitternachtsformel $\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$
+    für $\Char K \not= 2$.
+    Für $n = 3$ und $f(x) = x^3 + ax^2 + bx + c$ ergeben sich schon
+    kompliziertere Formeln, man formt zunächst um zu $x^3 + px + q$ und
+    erhält Lösungen wie
+    $\sqrt[3]{-\frac{q}{2} + \sqrt{\left(\frac{p}{3}\right)^3 +
+    \left(\frac{q}{2}\right)^2}} +
+    \sqrt[3]{-\frac{q}{2} - \sqrt{\left(\frac{p}{3}\right)^3 +
+    \left(\frac{q}{2}\right)^2}}$
+    für $\Char K \not= 2, 3$ -- hier werden schon verschiedene Wurzeln
+    benötigt.\\
+    Im Folgenden wird gezeigt, dass es für $n \ge 5$ keine solche allgemeine
+    Formel gibt, die Lösungen aus den Koef"|fizienten berechnet
+    (erlaubt sind $+, -, \cdot, /$ und beliebige Wurzeln).
+    Dabei reicht es, ein Polynom anzugeben, das eine Nullstelle besitzt,
+    die nicht mit diesen Operationen berechnet werden kann.\\
+    Die Strategie ist, Körpererweiterungen $K(\sqrt[n]{a})/K$ zu
+    Galoiserweiterungen zu vergrößern,
+    sodass die Galoisgruppen spezielle Eigenschaften haben.
+    Dann wird ein $f(x)$ angegeben, dessen Zerfällungskörper diese
+    Eigenschaften nicht hat.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Im Folgenden ist $\Char K = 0$ (oder sogar $K = \rational$),
+    d.\,h. Körpererweiterungen sind automatisch separabel.
+\end{Bem}
+
+\begin{Def}{Radikal}
+    Seien $K$ ein Körper, $n \in \natural$, $a \in K$ und
+    $E/K$ eine Körpererweiterung, sodass $b^n = a$ für ein $b \in E$.
+    Dann heißt $b$ \begriff{Radikal} von $a$ über $K$
+    (Schreibweise $b = \sqrt[n]{a}$).\\
+    $b$ ist eindeutig bis auf Multiplikation mit \begriff{Einheitswurzeln}
+    ($\sqrt[n]{1}$).
+\end{Def}
+
+\begin{Def}{Körpererw. durch Radikale auf"|lösbar}
+    Eine Körpererweiterung $L/K$ heißt
+    \begriff{(durch\\
+    Radikale) auf"|lösbar}, falls
+    es eine Kette von Körpererweiterungen
+    $K = K_0 = K_1 \subset \dotsb \subset K_\ell$ gibt mit
+    $\ell \in \natural$, $L \subset K_\ell$ und
+    $K_{j+1} = K_j(b_j)$ mit $b_j = \sqrt[n_j]{a_j}$ für ein $a_j \in K_j$
+    für alle $j = 0, \dotsc, \ell - 1$.
+\end{Def}
+
+\begin{Def}{Polynom durch Radikale auf"|lösbar}
+    Ein Polynom $f(x) \in K[x]$ heißt
+    \begriff{(durch Radikale) auf"|lösbar}, falls
+    es sein Zerfällungskörper $L$ über $K$ durch Radikale auf"|lösbar ist.
+\end{Def}
+
+\linie
+
+\begin{Bem}
+    Im Folgenden sei $K$ ein Körper mit $\rational \subset K$
+    und $K_n$ der Zerfällungskörper von $x^n - 1$ über $K$.
+    Wegen $\rational \subset K$ haben daher die Einheitswurzeln
+    $\sqrt[n]{1}$ die Werte $e^{2\pi\i j/n}$ für $j = 0, \dotsc, n - 1$.
+\end{Bem}
+
+\begin{Lemma}{$\Gal(K_n/K)$ abelsch}
+    Es gibt einen injektiven Grp.homom.
+    $\Gal(K_n/K) \rightarrow (\integer/n\integer)^\ast$,
+    d.\,h. $\Gal(K_n/K)$ ist isomorph zu einer Untergruppe von
+    $(\integer/n\integer)^\ast$ und daher abelsch.
+\end{Lemma}
+
+\begin{Lemma}{$\Gal(K(\sqrt[n]{a})/K)$ abelsch}
+    Seien $e^{2\pi\i/n} \in K$ und $L := K(\sqrt[n]{a})$ für ein $a \in K$.\\
+    Dann ist $L/K$ eine Galoiserweiterung und $\Gal(L/K)$ ist zyklisch mit
+    $|\Gal(L/K)| \teilt n$.
+\end{Lemma}
+
+\begin{Bem}
+    Es gilt auch die Umkehrung:
+    Ist $L/K$ eine endliche Galoiserw. mit $\Gal(L/K)$ zyklisch und
+    $n := [L:K]$, dann ist $L$ der Zerfällungskörper von $x^n - a$ für ein
+    $a \in K$.
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    Man erhält also in beiden Erweiterungen
+    $K \subset K(\sqrt[n]{1}) \subset K(\sqrt[n]{a})$ abelsche Gruppen.
+    Allerdings geht die Eigenschaft "`abelsch"' beim Iterieren verloren,
+    wie folgendes Gegenbeispiel zeigt:
+    Sei $K = \rational$, $n = 3$ und $a = 2$.
+    Dann ist $\Gal(K(\sqrt[n]{1})/K) =
+    \Gal(\rational(e^{2\pi\i/3})/\rational) \simeq \integer/2\integer$ und
+    $\Gal(K(\sqrt[n]{a})/K) =
+    \Gal(\rational(\sqrt[3]{2}, e^{2\pi\i/3})/\rational) \simeq \Sigma_3$.
+    $\Sigma_3$ ist jedoch nicht abelsch.
+\end{Bem}
+
+\begin{Def}{Normalreihe}
+    Sei $G$ eine Gruppe.
+    Eine endliche Kette $\{1\} = G_0 \nt G_1 \nt \dotsb \nt G_n = G$
+    von Untergruppen mit $G_j \nt G_{j+1}$ für $j = 0, \dotsc, n - 1$
+    heißt \begriff{Normalreihe}.\\
+    Die Normalreihe heißt \begriff{abelsch}, falls
+    $G_{j+1}/G_j$ für $j = 0, \dotsc, n - 1$ abelsch ist.
+\end{Def}
+
+\begin{Def}{Gruppe auf"|lösbar}\\
+    Eine Gruppe $G$ heißt \begriff{auf"|lösbar}, falls
+    $G$ eine abelsche Normalreihe besitzt.
+\end{Def}
+
+\begin{Bem}
+    Das Ziel ist zu zeigen, dass ein Polynom durch Radikale auf"|lösbar ist
+    genau dann, wenn sein Zerfällungskörper eine auf"|lösbare Galoisgruppe
+    besitzt.
+    Dann muss man noch zeigen, dass es Galoisgruppen gibt, die nicht
+    auf"|lösbar sind.
+\end{Bem}
+
+\begin{Bsp}
+    Auf"|lösbare Gruppen sind z.\,B.
+    abelsche Gruppen ($\{1\} \nt G$),\\
+    $\Sigma_3$ ($\{1\} \nt \erzeugnis{(123)} \nt \Sigma_3$, da
+    $[\Sigma_3:\erzeugnis{(123)}] = 2$, und
+    $\Sigma_3/\erzeugnis{(123)}$ ist zyklisch, da
+    $|\Sigma_3/\erzeugnis{(123)}| = 2$)\\
+    und $G$ mit $|G| = p^n$ mit $p$ prim und $n \in \natural_0$
+    (für $n \not= 0$ gilt $Z(G) \not= \{e\}$,
+    $Z(G) \nt G$ mit $|G/Z(G)| = p^\ell$ für ein $\ell < n$,
+    induktiv ist also $G$ auf"|lösbar).
+\end{Bsp}
+
+\linie
+
+\begin{Def}{Kommutator}
+    Seien $G$ eine Gruppe und $a, b \in G$.\\
+    Dann heißt $[a, b] := aba^{-1}b^{-1}$ der \begriff{Kommutator}
+    von $a$ und $b$.\\
+    Die von allen Kommutatoren erzeugte Untergruppe
+    $D(G) := \erzeugnis{[a, b] \;|\; a, b \in G}$ heißt\\
+    \begriff{Kommutatoruntergruppe} (oder \begriff{derivierte Gruppe})
+    von $G$.\\
+    Mit $D^n(G) := D(\dotsb(D(G))\dotsb)$ bezeichnet man die
+    \begriff{iterierte Kommutatoruntergruppe}.
+\end{Def}
+
+\begin{Bem}
+    Es gilt $[a, b] = 1$ genau dann, wenn $ab = ba$.
+    $\{[a, b] \;|\; a, b \in G\}$ ist i.\,A. keine Gruppe.
+    Es gilt $D(G) \nt G$, da
+    $g [a,b] g^{-1} = gaba^{-1}b^{-1}g^{-1} =
+    (gag^{-1})(gbg^{-1})(ga^{-1}g^{-1})(gb^{-1}g^{-1})$ ein Kommutator ist.
+    $G$ ist abelsch genau dann, wenn $D(G) = \{1\}$.
+\end{Bem}
+
+\begin{Bem}
+    Durch iterierte Anwendung der Kommutatoruntergruppe kann man
+    eine Normalreihe $G > D(G) > D^2(G) > \dotsb$ herstellen
+    (die Untergruppen sind alle normal).\\
+    $G/D(G)$ ist abelsch, denn für $a, b \in G$ ist
+    $\overline{a} \overline{b} = \overline{b} \overline{a}$,
+    da $\overline{1} = \overline{[a,b]} =
+    \overline{a}\overline{b}\overline{a}^{-1}\overline{b}^{-1}$.\\
+    Also ist $G \vartriangleright D(G) \vartriangleright
+    D^2(G) \vartriangleright \dotsb$ eine abelsche Normalreihe, falls
+    $D^n(G) = \{1\}$ für ein $n \in \natural$.
+    Allerdings muss diese Bedingung nicht immer erfüllt sein:
+    Ist $G$ einfach, aber nicht abelsch, dann besitzt $G$ keine Normalteiler
+    außer $\{1\}$ und $G$.
+    Wegen $D(G) \not= \{1\}$ ($G$ nicht abelsch) und $D(G) \nt G$ gilt
+    also $G = D(G)$ (und $D(G) = D^2(G) = \dotsb$).\\
+    Es kann also passieren, dass diese Reihe stehen bleibt.
+    Im Folgenden wird das ausgenutzt, indem die Aussage getrof"|fen wird,
+    dass dann $G$ nicht auf"|lösbar ist
+    (man muss nur diese "`Testreihe"' prüfen).
+\end{Bem}
+
+\begin{Prop}{Testreihe der Kommutatoruntergruppen}\\
+    Eine Gruppe $G$ ist auf"|lösbar genau dann, wenn
+    $D^n(G) = \{1\}$ für ein $n \in \natural$.
+\end{Prop}
+
+\begin{Prop}{$\Sigma_n$ für $n \ge 5$ nicht auf\,\!lösbar}
+    Sei $n \ge 5$.
+    Dann ist $D(\Sigma_n) = D(A_n) = A_n$.\\
+    Insbesondere sind $\Sigma_n$ und $A_n$ für $n \ge 5$
+    nicht auf"|lösbar.\\
+    ($A_n < \Sigma_n$ ist die Untergruppe der geraden Permutationen.)
+\end{Prop}
+
+\begin{Bem}
+    Man kann zeigen, dass $A_n$ sogar einfach für $n \ge 5$ ist.
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Theorem}{Körpererw. auf\,\!lösbar $\Rightarrow$
+                Galoisgrp. auf\,\!lösbar}\\
+    Sei $L/K$ eine endliche Körpererweiterung mit $\Char K = 0$.
+    Dann gilt (a) $\Rightarrow$ (b), wobei:
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        $L/K$ ist durch Radikale auf"|lösbar.
+        
+        \item
+        Es gibt eine endliche Galoiserweiterung $M/K$ mit $M \supset L$,
+        sodass $\Gal(M/K)$ auf"|lösbar ist.
+    \end{enumerate}
+\end{Theorem}
+
+\begin{Bem}
+    Es gilt auch die Umkehrung (b) $\Rightarrow$ (a), wobei aber die
+    erwähnte Umkehrung des obigen Lemmas benötigt wird.
+\end{Bem}
+
+\begin{Bem}
+    Wie wendet man dieses Theorem bei unbekanntem $M$ an?\\
+    Gegeben seien $f(x) \in K[x]$ und
+    $L$ der Zerfällungskörper von $f(x)$ über $K$.
+    Aufgrund $\Char K = 0$ ist $L/K$ separabel, also galoissch.\\
+    Angenommen, $L/K$ ist durch Radikale auf"|lösbar.
+    Dann folgt aus dem Hauptsatz der Galoistheorie und obigem Satz, dass
+    $\Gal(L/K) \simeq \Gal(M/K)/\Gal(M/L)$.\\
+    Ist $\Gal(M/K)$ auf"|lösbar, so ist auch $\Gal(L/K)$ auf"|lösbar
+    (allgemein gilt:
+    gibt es einen surjektiven Gruppenhomomorphismus
+    $G \rightarrow \overline{G}$ mit $G$ auf"|lösbar, so ist auch
+    $\overline{G}$ auf"|lösbar,
+    da aus $D^n(G) = \{e\}$ folgt, dass
+    $D^n(\overline{G}) = \{\overline{e}\}$, weil
+    $[\overline{g}, \overline{h}] = \overline{[g, h]}$).\\
+    Ist also $L/K$ durch Radikale auf"|lösbar, so muss
+    $\Gal(L/K)$ auf"|lösbar sein.
+    Im Umkehrschluss kann eine Gleichung mit nicht auf"|lösbarer Galoisgruppe
+    nicht durch Radikale auf"|lösbar sein.
+\end{Bem}
+
+\linie
+
+\begin{Prop}{bestimmte Polynome in $\rational[x]$ sind nicht auf\,\!lösbar}
+    Sei $f(x) \in \rational[x]$ irreduzibel vom Grad $5$, sodass
+    $f(x)$ in $\complex$ genau drei reelle Nullstellen besitzt.\\
+    Dann ist die Galoisgruppe von $f(x)$
+    (d.\,h. die Galoisgruppe des Zerfällungskörpers von $f(x)$ über
+    $\rational$)
+    nicht auf"|lösbar,
+    insbesondere ist $f(x)$ nicht durch Radikale auf"|lösbar.
+\end{Prop}
+
+\begin{Bem}
+    Ein Beispiel für ein solches Polynom ist
+    $f(x) = x^5 - 4x + 2 \in \rational[x]$
+    (irreduzibel nach Eisenstein).
+    Das Polynom $f(x) - 2 = x^5 - 4x = x(x^2 - 2)(x^2 + 2)$ hat
+    drei reelle Nullstellen (nämlich $0$ und $\pm\sqrt{2}$) und
+    zwei komplexe.
+    Um die Frage zu beantworten, ob dies für $f(x)$ auch gilt, können die
+    Extrempunkte bestimmt werden.
+    $\frac{d}{dx}(f(x) - 2) = f'(x) = 5x^4 - 4 = 0$ gilt für
+    $x = \pm\sqrt[4]{\frac{4}{5}}$.
+    Der Wert von $f(x) - 2$ für diese $x$ ist größer bzw. kleiner als
+    $\pm 2$,
+    d.\,h. auch $f(x)$ hat $3$ reelle und zwei komplexe Nullstellen
+    (der Abstand der Extrempunkte zur $x$-Achse ist größer als die
+    Verschiebung).
+    Somit ist $f(x)$ nach der Proposition nicht auf"|lösbar und
+    es gibt keine allgemeine Formel für Lösungen polynomialer Gleichungen.
+\end{Bem}
+
+\subsection{%
+    Der Fundamentalsatz der Algebra%
+}
+
+\begin{Bem}
+    Man kann den Fundamentalsatz der Algebra tatsächlich algebraisch beweisen
+    (zusätzlich z.\,B. zum naiv-analytischen, zum
+    komplex-analytischen und zum topologischen Beweis).
+    Dazu verwendet man nur ein wenig elementare Analysis:
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        Jedes Polynom $f(x) \in \real[x]$ mit ungeradem Grad besitzt
+        eine reelle Nullstelle.
+        
+        \item
+        Jede positive reelle Zahl besitzt eine Quadratwurzel
+        (d.\,h. $f(x) = x^2$ hat das Bild $\real_{\ge 0}$).
+    \end{enumerate}
+    Die Aussagen folgen beide aus dem Zwischenwertsatz
+    (Vollständigkeit von $\real$).
+\end{Bem}
+
+\begin{Theorem}{Fundamentalsatz der Algebra}\\
+    Der Körper $\complex$ der komplexen Zahlen ist algebraisch abgeschlossen.
+\end{Theorem}
+
+\pagebreak

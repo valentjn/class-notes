@@ -1,0 +1,132 @@
+\section{%
+    Lineare Modelle%
+}
+
+\begin{Bem}
+    Lineare Modelle dienen zur Untersuchung des Zusammenhangs zwischen einer Zielgröße $Y$
+    (mit Werten in $\real$) und einer unabhängigen Größe $x$ (mit Werten in $\real^k$).
+\end{Bem}
+
+\subsection{%
+    Das allgemeine lineare Modell%
+}
+
+\begin{Def}{Kovarianz-Matrix}
+    Sind $X_1, \dotsc, X_n$ Zufallsvariablen mit $X := (X_1, \dotsc, X_n)$,
+    so heißt die Matrix $\Cov(X) := (\Cov(X_i, X_j))_{i,j=1,\dotsc,n}$
+    \begriff{Kovarianz-Matrix} von $X$.
+\end{Def}
+
+\begin{Def}{lineares Modell}
+    Seien $X \in \real^{n \times p}$, $\beta \in \real^p$, $\sigma^2 > 0$ und
+    $\varepsilon := (\varepsilon_1, \dotsc, \varepsilon_n)$ ein
+    Zufallsvektor mit $\EE(\varepsilon) = 0$ sowie
+    $\Cov(\varepsilon) = \sigma^2 E_n$.
+    Dann heißt der statistische Raum $(\real^n, \B^n, \P)$ mit\\
+    $\P := \{\PP_Y \;|\; Y = X\beta + \varepsilon,\; \beta \in \real^p,\; \sigma^2 > 0\}$
+    \begriff{lineares Modell}.
+\end{Def}
+
+\begin{Bem}
+    Später wird noch gefordert, dass $\varepsilon \sim \N(0, \sigma^2 E_n)$.\\
+    Man nennt
+    $X$ \begriff{Einflussgröße (unabhängige Größe, Regressor)},\\
+    $Y$ \begriff{Zielgröße (abhängige Größe, Regressant)},
+    $\beta$ \begriff{Regressionsparameter} und
+    $\varepsilon$ \begriff{zufällige Fehler}.\\
+    $X$ als Matrix heißt auch \begriff{Design-Matrix}.
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Bei der \begriff{einfachen linearen Regression}
+    liegt das Modell $Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i$ für $i = 1, \dotsc, n$ vor.
+    Mit $Y := (Y_1, \dotsc, Y_n)^T$,
+    $X := \begin{pmatrix}1 & \cdots & 1\\x_1 & \cdots & x_n\end{pmatrix}^T$,
+    $\beta = (\beta_0, \beta_1)^T$ und
+    $\varepsilon := (\varepsilon_1, \dotsc, \varepsilon_n)^T$
+    kann das Modell als lineares Modell $Y = X\beta + \varepsilon$ geschrieben werden.
+    
+    Typische Fragen sind beispielsweise:
+    \begin{itemize}
+        \item
+        \begriff{Schätzproblem}: Wie kann aufgrund einer Stichprobe
+        $(x_1, y_1), \dotsc, (x_n, y_n)$ ein geeigneter Parametervektor
+        $\beta = (\beta_0, \beta_1)^T$ geschätzt werden?
+        
+        \item
+        \begriff{Testproblem}: Entscheide zum Beispiel
+        $H_0\colon \beta_1 = 0$ vs. $H_1\colon \beta_1 \not= 0$.
+    \end{itemize}
+\end{Bsp}
+
+\linie
+
+\begin{Bsp}
+    Bei der \begriff{bivariaten Regression} liegt das Modell
+    $Y_i = \beta_0 + \beta_1 x_{1,i} + \beta_2 x_{2,i} + \varepsilon_i$
+    für $i = 1, \dotsc, n$ vor.
+    Mit $X := \begin{pmatrix}1 & \cdots & 1\\x_{1,1} & \cdots & x_{1,n}\\x_{2,1} & \cdots & x_{2,n}
+    \end{pmatrix}^T$
+    kann das Modell als lineares Modell $Y = X\beta + \varepsilon$ geschrieben werden.
+\end{Bsp}
+
+\linie
+
+\begin{Bsp}
+    Beim \begriff{Zweistichproben-Problem} liegt das Modell
+    $Y_{1,i} = \mu_1 + \varepsilon_{1,i}$ ($i = 1, \dotsc, n_1$)
+    $Y_{2,i} = \mu_2 + \varepsilon_{2,i}$ ($i = 1, \dotsc, n_2$) vor.
+    Wenn man $Y = (Y_1, \dotsc, Y_{n_1+n_2})^T := (Y_{1,1}, \dotsc, Y_{1,n_1},
+    Y_{2,1}, \dotsc, Y_{2,n_2})^T$ setzt und die \begriff{Dummy-Variablen}
+    $x_i := \1_{\{1, \dotsc, n_1\}}(i)$ erstellt, dann
+    kann das Modell als lineares Modell $Y = X\beta + \varepsilon$ geschrieben werden,
+    wenn man $\beta := (\beta_0, \beta_1)^T$ mit $\beta_0 := \mu_2$ und $\beta_1 := \mu_1 - \mu_2$
+    sowie $X = \begin{pmatrix}1 & \cdots & 1 & 1 & \cdots & 1\\1 & \cdots & 1 & 0 & \cdots & 0
+    \end{pmatrix}^T$ setzt
+    (in der zweiten Spalte zunächst $n_1$-viele Einsen, dann $n_2$-viele Nullen).
+\end{Bsp}
+
+\linie
+
+\begin{Bsp}
+    Bei der \begriff{polynomialen Regression} liegt das Modell
+    $Y_i = \beta_0 + \beta_1 x_i + \dotsb + \beta_p x^p + \varepsilon_i$
+    für $i = 1, \dotsc, n$ vor.
+    Mit $X := \begin{pmatrix}1 & \cdots & 1\\x_1 & \cdots & x_n\\\vdots && \vdots\\
+    x_1^p & \dotsb & x_n^p\end{pmatrix}^T$
+    sowie $\beta := (\beta_0, \dotsc, \beta_p)^T$
+    kann das Modell als lineares Modell $Y = X\beta + \varepsilon$ geschrieben werden
+    (die Linearität in "`lineares Modell"' bezieht sich auf Linearität bzgl. $\beta$).
+\end{Bsp}
+
+\linie
+\pagebreak
+
+\begin{Bsp}
+    Beim \begriff{$p$-Stichprobenproblem} liegt das Modell
+    $Y_{k,\ell} = \beta_k + \varepsilon_{k,\ell}$ für $k = 1, \dotsc, p$ und
+    $\ell = 1, \dotsc, n_k$ vor.
+    Mit $Y := (Y_{1,1}, \dotsc, Y_{1,n_1}, \dotsc, Y_{p,1}, \dotsc, Y_{p,n_p})$ und\\
+    $X := \begin{pmatrix}1 & \cdots & 1 &&&&&&&\\&&& 1 & \cdots & 1
+    &&&&\\&&&&&& \ddots &&&\\&&&&&&& 1 & \cdots & 1\end{pmatrix}^T$
+    (in der $k$-ten Spalte $n_k$-viele Einsen)
+    kann das Modell als lineares Modell $Y = X\beta + \varepsilon$ geschrieben werden.
+\end{Bsp}
+
+\subsection{%
+    Schätzen in linearen Modellen%
+}
+
+\begin{Satz}{Kleinste-Quadrate-Schätzer}
+    Sei $Y = X\beta + \varepsilon$ ein lineares Modell.
+    Hat die Design-Matrix $X$ vollen Rang $p$, so ist
+    $\widehat{\beta} := (X^T X)^{-1} X^T Y$
+    ein erwartungstreuer Schätzer für $\beta$ mit
+    $\norm{Y - X\widehat{\beta}}_2^2 = \min_{\widetilde{\beta} \in \real^p}
+    \norm{Y - X\widetilde{\beta}}_2^2$.
+    $\widehat{\beta}$ heißt \begriff{Kleinste-Quadrate-Schätzer (KQS)} für $\beta$.
+\end{Satz}
+
+\pagebreak

@@ -1,0 +1,633 @@
+\section{%
+    Projektive Geometrie%
+}
+
+\subsection{%
+    Klassfikation von Projektionen%
+}
+
+\textbf{planare geometrische Projektionen}:\\
+\begriff{Planare geometrische Projektionen} lassen sich unterteilen in:
+\begin{itemize}
+    \item
+    \begriff{parallele Projektionen} (Projektionsstrahlen sind parallel):
+    \begin{itemize}
+        \item
+        \begriff{Orthogonalprojektionen} (Projektionsrichtung normal zur Zeichenebene):
+        \begin{itemize}
+            \item
+            \begriff{Normalprojektionen} (Projektionsrichtung achsenparallel):\\
+            Aufsicht, Grundriss usw.
+                        
+            \item
+            \begriff{axonometrische Projektionen}
+            (Projektionsrichtung nicht achsenparallel):\\
+            \begriff{isometrische/dimetrische/trimetrische Axonometrie}\\
+            (Skalierung aller Achsen/von zwei Achsen gleich/aller Achsen unterschiedlich)
+        \end{itemize}
+        
+        \item
+        \begriff{Schrägrisse} (Projektionsrichtung nicht normal zur Zeichenebene):\\
+        \begriff{Kabinettriss}, \begriff{Kavalierriss}
+    \end{itemize}
+    
+    \item
+    \begriff{perspektivische Projektionen} (Projektionsstrahlen sind nicht parallel):\\
+    \begriff{Einpunkt-/Zweipunkt-/Dreipunkt-Perspektive}
+\end{itemize}
+
+\subsection{%
+    Projektive Räume%
+}
+
+\textbf{projektiver Raum}:
+Sei $\vec{V}$ ein Vektorraum.
+Dann heißt die Menge $\PP(\vec{V})$ aller eindimensionalen Unterräume von $\vec{V}$
+\begriff{projektiver Raum} mit \begriff{zugrunde liegendem Vektorraum} $\vec{V}$.
+
+\textbf{Dimension}:
+Ist $\dim \vv{V} < \infty$, dann ist $\dim \PP(\vec{V}) := \dim \vv{V} - 1$ die
+\begriff{Dimension} von $\PP(\vec{V})$.
+
+\textbf{projektiver Raum über $\real$}:\\
+$\PP^n(\real) := \PP(\vv{\real}^{n+1})$ heißt
+\begriff{$n$-dimensionaler projektiver Raum über $\real$}.
+
+\textbf{kanonische Abbildung}:
+$\pi\colon \vec{V} \setminus \{\vec{0}\} \to \PP(\vec{V})$, $\pi(\vec{v}) = \real\vec{v}$
+heißt \begriff{kanonische Abbildung}.\\
+Für zwei Vektoren $\vec{v}, \vec{w} \in \vec{V} \setminus \{\vec{0}\}$ gilt
+$\pi(\vec{v}) = \pi(\vec{w}) \iff$ $\vec{v}, \vec{w}$ sind linear abhängig.
+
+\textbf{projektiver Unterraum}:
+Eine Teilmenge $\XX \subset \PP(\vec{V})$ heißt \begriff{projektiver Unterraum},
+falls es einen Unterraum $\vec{U} \le \vec{V}$ gibt mit $\XX = \PP(\vec{U})$.
+
+\subsection{%
+    Homogene Koordinaten%
+}
+
+\textbf{homogene Koordinaten}:
+Sei $\vec{v} = (v_1, \dotsc, v_n, v_{n+1}) \in \vec{\real}^{n+1} \setminus \{\vec{0}\}$.\\
+Dann heißt $(v_1 : \dotsc : v_n : v_{n+1}) := \real\vec{v} \in \PP^n(\real)$
+\begriff{homogene Koordinaten} von $\vec{v}$.
+
+Homogene Koordinaten sind nicht eindeutig.
+Sie werden eindeutig, wenn man sie normiert,
+überlicherweise in der letzten Komponente.
+
+\textbf{Fernhyperebene}:
+$\H := \{(x_1 : \dotsc : x_n : 0) \;|\; x_1, \dotsc, x_n \in \real\} \subset \PP^n(\real)$
+heißt \begriff{Fernhyperebene}.
+
+\textbf{af"|finer Teil}:
+$\PP^n(\real) \setminus \H$ heißt \begriff{af"|finer Teil des projektiven Raums $\PP^n(\real)$}.
+
+\textbf{Einbettung von $\real^n$ in $\PP^n(\real)$}:\\
+Die Abbildung
+$\vec{\real}^n \to \PP^n(\real) \setminus \H$,
+$(x_1, \dotsc, x_n) \mapsto (x_1 : \dotsc : x_n : 1)$
+ist eine Bijektion\\
+mit Umkehrabbildung
+$\PP^n(\real) \setminus \H \to \vec{\real}^n$,
+$(y_1 : \dotsc : y_n : y_{n+1}) \mapsto (\frac{y_1}{y_{n+1}}, \dotsc, \frac{y_n}{y_{n+1}})$.
+
+\pagebreak
+
+\subsection{%
+    Projektive Geraden in der projektiven Ebene%
+}
+
+\textbf{projektive Gerade}:
+$\PP^1(\real)$ ist eine \begriff{projektive Gerade}.\\
+Der af"|fine Teil ist $\H = \{(x_1 : x_2) \in \PP^1(\real) \;|\; x_2 \not= 0\}$
+und $(1 : 0)$ ist der Fernpunkt.
+
+\textbf{projektive Ebene}:
+$\PP^2(\real)$ ist eine \begriff{projektive Ebene}.\\
+Der af"|fine Teil ist $\H = \{(x_1 : x_2 : x_3) \in \PP^2(\real) \;|\; x_3 \not= 0\}$,
+wogegen die Fernpunkte durch $\{(x_1 : x_2 : 0) \in \PP^2(\real) \;|\;
+(x_1, x_2) \in \vec{\real}^2\}$ gegeben sind.
+
+\linie
+
+\textbf{projektive Geraden in der projektiven Ebene}:
+Eine Gerade in der af"|finen Ebene $\vec{\real}^2$ kann implizit durch
+$n_1x_1 + n_2x_2 + n_3 = 0$ dargestellt werden.
+Indem man $x_1 = \xi_1/\xi_3$ und $x_2 = \xi_2/\xi_3$ mit $\xi_3 \not= 0$ setzt,
+erhält man die Gleichung $n_1 \xi_1 + n_2 \xi_2 + n_3 \xi_3 = 0 \iff \vec{n} \cdot \vec{\xi} = 0$.
+Die Gerade ist also gegeben durch Projektion von
+$\vec{U} = \{\vec{\xi} \in \real^3 \;|\; \vec{n} \cdot \vec{\xi} = 0\}$
+auf die af"|fine Ebene $\xi_3 = 1$.
+$\vec{U}$ ist ein zweidimensionaler Unterraum von $\vec{\real}^3$, d.\,h.
+$\PP(\vec{U})$ ist ein projektiver Unterraum der Dimension $1$
+der projektiven Ebene $\PP^2(\real)$, also eine projektive Gerade.
+
+\linie
+
+\textbf{projektive Gerade durch zwei Punkte}:
+Seien $p, q \in \PP^2(\real)$.
+Gesucht ist eine projektive Gerade $L := \{\xi \in \real^3 \;|\; \vec{n} \cdot \vec{\xi} = 0\}$
+mit $\vec{p}, \vec{q} \in L \iff \vec{n} \cdot \vec{p} = 0 = \vec{n} \cdot \vec{q}$.\\
+Der gesuchte Vektor $\vec{n}$ ist also durch $\vec{n} := \vec{p} \times \vec{q}$ gegeben.
+
+\textbf{Schnitt zwischen zwei projektiven Geraden}:
+Seien $L_1, L_2 \subset \PP^2(\real)$ zwei projektive Geraden
+$L_1\colon \vec{n} \cdot \vec{\xi} = 0$ und $L_2\colon \vec{m} \cdot \vec{\xi} = 0$ mit
+$\vec{n}, \vec{m} \in \vec{\real}^3$.
+Gesucht ist ein projektiver Punkt $p = \real\vec{p} \in \PP^2(\real)$ mit $\vec{p} \in L_1 \cap L_2
+\iff \vec{n} \cdot \vec{p} = 0 = \vec{m} \cdot \vec{p}$.\\
+Der gesuchte Punkt $p$ ist also durch $\vec{p} := \vec{n} \times \vec{m}$ gegeben.
+
+\subsection{%
+    Projektive Basen%
+}
+
+\textbf{projektiv unabhängig}:
+$r+1$ Punkte $p_1, \dotsc, p_{r+1} \in \PP^n(\real)$ heißen \begriff{projektiv unabhängig}, falls 
+$\vec*{p}{1}, \dotsc, \vec*{p}{r+1} \in \vec{\real}^{n+1} \setminus \{\vec{0}\}$ linear unabhängig
+sind, wobei $p_i = \real\vec*{p}{i}$.
+
+\textbf{projektive Basis}:
+$n+2$ Punkte $p_1, \dotsc, p_{n+2} \in \PP^n(\real)$ heißen
+\begriff{projektive Basis/projektives Koordinatensystem}
+von $\PP^n(\real)$, falls je $n+1$ Punkte projektiv unabhängig sind.
+
+\textbf{Beispiel}:
+Die vier Punkte $(1:0:0), (0:1:0), (0:0:1), (1:1:1) \in \PP^2(\real)$ bilden die
+\begriff{projektive Standardbasis} von $\PP^2(\real)$.
+
+\pagebreak
+
+\subsection{%
+    Projektive Abbildungen%
+}
+
+\textbf{projektive Abbildung}:
+Eine Abbildung $F\colon \PP(\vec{V}) \to \PP(\vec{W})$ zwischen zwei projektiven Räumen heißt
+\begriff{projektive Abbildung/Projektivität}, falls es eine injektive lineare Abbildung
+$f\colon \vec{V} \to \vec{W}$ gibt mit
+$\forall_{v \in \vec{V} \setminus \{\vec{0}\}}\; F(\real\vec{v}) = \real f(\vec{v})$.
+
+\textbf{Lemma}:
+Zwei injektive lineare Abbildungen $f_1, f_2\colon \vec{V} \to \vec{W}$ definieren dieselbe
+projektive Abbildung genau dann, wenn $\exists_{\lambda\not=0}\; f_2 = \lambda f_1$.
+
+\textbf{Satz (eindeutige projektive Abbildung für projektive Basen)}:\\
+Seien $\dim \vec{V} = n + 1 = \dim \vec{W}$ sowie $p_1, \dotsc, p_{n+2} \in \PP(\vec{V})$ und
+$q_1, \dotsc, q_{n+2} \in \PP(\vec{W})$ projektive Basen von $\PP(\vec{V})$ bzw. $\PP(\vec{W})$.\\
+Dann gibt es genau eine projektive Abbildung $F\colon \PP(\vec{V}) \to \PP(\vec{W})$ mit
+$\forall_{i = 1, \dotsc, n+2}\; F(p_i) = q_i$.
+
+\linie
+
+\textbf{projektive Abb. als af"|fine Abb.}:
+Sei $F\colon \PP^n(\real) \to \PP^n(\real)$ eine projektive Abbildung.\\
+Dann heißt $F$ \begriff{af"|fine Abbildung}, falls $F(\H) = \H$,
+wobei $\H$ die Fernhyperebene von $\PP^n(\real)$ ist\\
+(oder äquivalent $p \in \H \iff F(p) \in \H$).
+
+\textbf{Bedingung für af"|fine Abb.}:
+Sei $F\colon \PP^n(\real) \to \PP^n(\real)$ eine projektive Abbildung mit zugehöriger
+linearer Abbildung $f\colon \vec{\real}^{n+1} \to \vec{\real}^{n+1}$.
+Dann gibt es eine invertierbare Matrix $A \in \GL_{n+1}(\real)$ mit
+$f(\vec{v}) = A\vec{v}$ für alle $\vec{v} \in \vec{\real}^{n+1}$.
+Ist $p = (x_1 : \dotsc : x_{n+1}) \in \PP^n(\real)$ ein projektiver Punkt,
+dann ist $F(p) = q := (y_1 : \dotsc : y_{n+1})$ mit
+$y_i := (A\vec{x})_i = a_{i,1} x_1 + \dotsb + a_{i,n+1} x_{n+1}$.
+Wenn $F$ af"|fin ist, dann muss
+$0 \overset{!}{=} y_{n+1} = a_{n+1,1} x_1 + \dotsb + a_{n+1,n} x_n + a_{n+1,n+1} 0$ für alle
+$p = (x_1 : \dotsc : x_n : 0) \in \H$ gelten.
+Das geht aber nur für $a_{n+1,1} = \dotsb = a_{n+1,n} = 0$.
+Damit gilt dann $F(\H) \subset \H$.\\
+($p \notin \H \implies F(p) \notin \H$ gilt deshalb, weil
+$a_{n+1,n+1} \not= 0$ aufgrund $A$ invertierbar gelten muss und daher
+$y_{n+1} = a_{n+1,n+1} x_{n+1} \not= 0$ für
+$p = (x_1 : \dotsc : x_n : x_{n+1}) \notin \H \iff x_{n+1} \not= 0$.)\\
+Somit ist $F$ af"|fin genau dann, wenn $a_{n+1,1} = \dotsb = a_{n+1,n} = 0$.
+
+\linie
+
+\textbf{Beispiele}:
+\begin{itemize}
+    \item
+    \emph{af"|fine Verschiebung in $\PP^3(\real)$}:
+    Ist $\vec{t} := (t_x, t_y, t_z)^\tp$ der Verschiebungsvektor, so definieren
+    $T := \smallpmatrix{1&0&0&t_x\\0&1&0&t_y\\0&0&1&t_z\\0&0&0&1}$ bzw.
+    $\widetilde{T} := \smallpmatrix{t_w&0&0&t_x\\0&t_w&0&t_y\\0&0&t_w&t_z\\0&0&0&t_w}$
+    eine Verschiebung in homogenen Koordinaten.\\
+    Will man einen projektiven Punkt $p = (p_x:p_y:p_z:1)$ um $t = (t_x:t_y:t_z:1)$ verschieben,
+    so erhält man $Tp = (p_x + t_x, p_y + t_y, p_z + t_z, 1)^\tp$.\\
+    Will man einen projektiven Punkt $p = (p_x:p_y:p_z:p_w)$ um $t = (t_x:t_y:t_z:t_w)$
+    verschieben, so erhält man $\widetilde{T}p
+    = (t_w p_x + t_x p_w, t_w p_y + t_y p_w, t_w p_z + t_z p_w, t_w p_w)^\tp$ mit\\
+    $\real(\widetilde{T}p) = (\frac{p_x}{p_w} + \frac{t_x}{t_w} :
+    \frac{p_y}{p_w} + \frac{t_y}{t_w} : \frac{p_z}{p_w} + \frac{t_z}{t_w} : 1)$.
+    
+    \item
+    \emph{af"|fine Drehungen in $\PP^3(\real$)}:
+    Af"|fine Drehungen mit Winkel $\alpha$ werden definiert durch\\
+    $R_x(\alpha) := \smallpmatrix{1&0&0&0\\0&\cos\varphi&-\sin\varphi&0\\
+    0&\sin\varphi&\cos\varphi&0\\0&0&0&1}$,
+    $R_y(\alpha) := \smallpmatrix{\cos\varphi&0&\sin\varphi&0\\
+    0&1&0&0\\-\sin\varphi&0&\cos\varphi&0\\0&0&0&1}$,
+    $R_z(\alpha) := \smallpmatrix{\cos\varphi&-\sin\varphi&0&0\\
+    \sin\varphi&\cos\varphi&0&0\\0&0&1&0\\0&0&0&1}$.
+\end{itemize}
+
+\pagebreak
+
+\subsection{%
+    Parallele Orthogonalprojektionen%
+}
+
+\subsubsection{%
+    Normalprojektion%
+}
+
+\textbf{Normalprojektion}:
+Bei der \begriff{Normalprojektion} ist die Projektionsebene achsenparallel.
+Zum Beispiel ist die Normalprojektion eines Punkts $p = (x:y:z:1)$ auf die Ebene $z = z_0$
+gegeben durch
+$\smallpmatrix{1&0&0&0\\0&1&0&0\\0&0&0&z_0\\0&0&0&1} \smallpmatrix{x\\y\\z\\1} =
+\smallpmatrix{x\\y\\z_0\\1}$.
+
+\subsubsection{%
+    Axonometrische Projektion%
+}
+
+\textbf{axonometrische Projektion}:
+Bei \begriff{axonometrischen Projektionen} ist die Projektionsrichtung $\vec{p}$ orthogonal
+zur Zeichenebene (die durch den Ursprung geht).
+Sie lassen sich aufspalten in eine Koordinatentransformation und eine anschließende
+Normalprojektion auf die Ebene $z' = 0$,
+wobei die Koordinatentransformation die Zeichenebene auf die Ebene $z' = 0$ abbildet.
+
+\textbf{Herleitung der Projektionsmatrix}:
+Seien $\vec{p} \in \real^3$ die Projektionsrichtung (Normale der Zeichenebene) mit $|\vec{p}| = 1$,
+$\vec{u} \in \real^3$ ein beliebiger Vektor mit $|\vec{u}| = 1$, der sog. \begriff{Hochvektor},
+und $\vec*{e}{x}, \vec*{e}{y}, \vec*{e}{z} \in \vec{\real}^3$ die Standardbasis von
+$\vec{\real}^3$.
+Dann ist $\vec*{e}{x}', \vec*{e}{y}', \vec*{e}{z}' \in \vec{\real}^3$
+mit $\vec*{e}{z}' := -\vec{p}$,
+$\vec*{e}{x}' := \frac{\vec{u} \times \vec*{e}{z}'}{|\vec{u} \times \vec*{e}{z}'|}$ und
+$\vec*{e}{y}' := \vec*{e}{z}' \times \vec*{e}{x}'$
+ein rechtshändiges Koordinatensystem, dessen $x'$-$y'$-Ebene in der Projektionsebene liegt.
+Die Koordinatentransformation erhält man durch
+$S := \smallpmatrix{\vec*{e}{x}' & \vec*{e}{y}' & \vec*{e}{z}'}$,
+wobei sich die Koordinaten mit $S^{-1} = S^\tp$ transformieren ($S$ ist orthogonal),
+in homogenen Koordinaten also $A := \smallpmatrix{S^{-1} & \vec{0} \\ \vec{0}^\tp & 1}$.
+Mit der Projektion auf die Ebene $z' = 0$ bekommt man
+$P := P_z A = \smallpmatrix{1&0&0&0\\0&1&0&0\\0&0&0&0\\0&0&0&1} \cdot A
+= \smallpmatrix{e_{x1}'&e_{x2}'&e_{x3}'&0\\
+e_{y1}'&e_{y2}'&e_{y3}'&0\\0&0&0&0\\0&0&0&1}$.
+
+\vspace{3mm}
+\linie
+
+\textbf{Beispiel}:
+Mit $\vec{p} := \frac{1}{\sqrt{3}} (-1, -1, -1)^\tp$ und $\vec{u} := (0, 0, 1)^\tp$
+bekommt man die Projektionsmatrix
+$P = \smallpmatrix{-\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}&0&0\\
+-\frac{1}{\sqrt{6}}&-\frac{1}{\sqrt{6}}&\frac{2}{\sqrt{6}}&0\\0&0&0&0\\0&0&0&1}$.
+Man kann berechnen, dass zwischen den Bildpunkten $\widetilde{x_i} = Px_i$ von
+$x_1 := (1:0:0:1)$, $x_2 := (0:1:0:1)$ und $x_3 := (0:0:1:1)$ und der $x'$-Achse der
+Projektionsebene die Winkel \SI{150}{\degree} bzw. \SI{30}{\degree} liegen.
+Außerdem bleibt das Seitenverhältnis erhalten, es handelt sich um eine Isometrie.
+
+\textbf{andere parallele Projektionen}:
+Man zählt außerdem noch dimetrische (nur zwei Achsen werden nicht skaliert)
+und trimetrische (nur eine Achse wird nicht skaliert) Projektionen zu den parallelen
+Orthogonalprojektionen.
+Ist die Projektionsrichtung nicht mehr normal zur Projektionsebene, so spricht man von
+Schrägrissen (dazu gehören Kavlierriss und Kabinettriss).
+
+\pagebreak
+
+\subsection{%
+    Perspektivische Projektionen%
+}
+
+\subsubsection{%
+    Einpunkt-Perspektive%
+}
+
+\textbf{Herleitung der Einpunkt-Perspektive in $\PP^2(\real)$}:
+Seien $p, o \in \PP^2(\real)$ zwei af"|fine Punkte mit $p = (x:y:1)$ und $o := (-x_0:0:1)$,
+wobei $x_0 > 0$.
+Der Beobachter befindet sich im \begriff{Augpunkt} $o$ und die Projektionsgerade sei die $y$-Achse.
+Um $p$ auf die $y$-Achse zu projizieren, benutzt man den Strahlensatz und erhält
+$y_0 = \frac{x_0}{x + x_0} y$ als $y$-Achsenabschnitt, d.\,h.\\
+$(x:y:1) \mapsto (0:y_0:1) = (0:\frac{x_0}{x + x_0} y:1) = (0:y:1+\frac{x}{x_0})$.
+In Matrixschreibweise erhält man\\
+$\smallpmatrix{0&0&0\\0&1&0\\\frac{1}{x_0}&0&1} \smallpmatrix{x\\y\\1} =
+\smallpmatrix{0\\y\\1+\frac{x}{x_0}}$.
+Definiert man $P_x := \smallpmatrix{0&0&0\\0&1&0\\0&0&1}$ und
+$T_1 := \smallpmatrix{1&0&0\\0&1&0\\\frac{1}{x_0}&0&1}$,
+soll lässt sich die Matrix aufteilen in $P_x T_1$ mit
+$P_x$ der Projektion auf die $y$-Achse und
+$T_1$ der \begriff{perspektivischen Transformation der Einpunkt-Perspektive}.
+Es gilt $T_1 p = (x : y : \frac{x}{x_0} + w)$ mit $p := (x:y:w)$.
+
+\linie
+
+\textbf{Eigenschaften der perspektivischen Transformation $T_1$}:
+\begin{itemize}
+    \item
+    \emph{Grenze $x = -x_0$ des Sichtfelds wird auf $\H$ abgebildet}:
+    Für Punkte $(-x_0:y:1)$ auf der Grenze $x = -x_0$ des Sichtfelds $x > -x_0$ gilt
+    $T_1 (-x_0:y:1) = (-x_0:y:0)$.
+    
+    \item
+    \emph{Punkte auf Projektionsgerade sind Fixpunkte}:
+    Für Punkte $(0:y:1)$ auf der Projektionsgeraden (hier die $y$-Achse) gilt
+    $T_1 (0:y:1) = (0:y:1)$, d.\,h. die Projektionsgerade ist eine Fixpunktgerade.
+    
+    \item
+    \emph{Parallelen zur Projektionsgeraden bleiben parallel}:
+    Alle Parallelen zur Projektionsgeraden schneiden sich im Fernpunkt $(0:1:0)$,
+    der ein Fixpunkt ist ($T_1 (0:1:0) = (0:1:0)$).
+    Damit bleiben Parallelen zur Projektionsgeraden nach der Projektion auch parallel.
+    
+    \item
+    \emph{Bild von Geraden durch $o$}:
+    Sei $g_1$ die projektive Gerade durch $o$ und $p := (0:y_p:1)$.
+    Dann geht das Bild $T_1 g_1$ der Geraden durch $o' := (1:0:0)$ und $p$ ($p$ ist ein Fixpunkt).
+    Man erhält $\vec{n} = \vec{o}' \times \vec{p} = (0, -1, y_p)^\tp$
+    (Formel für die Gerade durch zwei Punkte).
+    Somit ist die Gerade $T_1 g_1$ gegeben durch $-\xi_2 + y_p \xi_3 = 0 \iff y = y_p$.
+    Das Bild von Geraden durch $o$ ist also nach der perspektivischen Transformation orthogonal
+    zur Projektionsgeraden.
+    
+    \item
+    \emph{die Bilder von Parallelen schneiden sich in einem af"|finen Punkt}:\\
+    Sei wieder $p := (0:y_p:1)$.
+    Dann schneiden sich alle Geraden, die parallel zu der durch $o$ und $p$ sind,
+    im Fernpunkt $s := (x_0:y_p:0)$.
+    Damit müssen sich die Bilder dieser Geraden alle im Punkt $s' := T_1 s = (x_0:y_p:1)$ schneiden.
+    Unabhängig von $y_p$ liegt dieser gemeinsame Schnittpunkt (\begriff{Fluchtpunkt})
+    auf der Geraden $x = x_0$, der sog. \begriff{Fluchtgeraden}.
+    Alle Geraden enden in diesem Punkt.
+    Wählt man $y_0 = 0$ (also die Parallelen zur $x$-Achse), dann erhält man den
+    \begriff{Hauptfluchtpunkt} $(x_0:0:1)$.
+\end{itemize}
+
+\pagebreak
+
+\subsubsection{%
+    Zweipunkt-Perspektive%
+}
+
+\textbf{Zweipunkt-Perspektive in $\PP^2(\real)$}:
+Die \begriff{perspektivische Transformation der Zweipunkt-Per"-spektive} ist gegeben durch
+$T_2 p := \smallpmatrix{1&0&0\\0&1&0\\\frac{1}{x_0}&\frac{1}{y_0}&1} \smallpmatrix{x\\y\\w}
+= \smallpmatrix{x\\y\\\frac{x}{x_0} + \frac{y}{y_0} + w}$ mit $x_0, y_0 > 0$.
+
+\vspace{2mm}
+\linie
+
+\textbf{Grenze des Sichtfelds}:
+Punkte der af"|finen Gerade $\frac{x}{x_0} + \frac{y}{y_0} = -1$ durch $o_1 := (-x_0:0:1)$ und
+$o_2 := (0:-y_0:1)$ werden auf Fernpunkte abgebildet, d.\,h. $(x:y:1) \mapsto (x:y:0)$.
+Diese Gerade definiert daher die \begriff{Grenze des Sichtfelds}.
+
+\textbf{Projektionsgerade}:
+Die Gerade $\frac{x}{x_0} + \frac{y}{y_0} = 0$ ist eine Fixpunktgerade, die
+\begriff{Projektionsgerade}.
+
+% \textbf{Herleitung des Augpunkts $o$}:
+% Der Augpunkt $o = (o_x:o_y:1)$ liegt auf der \begriff{optischen Achse} $g$,
+% die auf sich selbst abgebildet werden und orthogonal zur Projektionsgeraden sein sollte.
+% Angenommen, $g$ geht durch $o$ und einen Punkt $q$ auf der Projektionsgeraden, d.\,h.\\
+% $q = (q_x : -\frac{y_0}{x_0} q_x : 1)$.
+% Um $q_x$ zu bestimmen, betrachtet man die Bildgerade von $g$, die durch
+% $\vec{n}' := (o_x, o_y, 0)^\tp \times (q_x, -\frac{y_0}{x_0} q_x, 1)^\tp
+% = (o_y, -o_x, -q_x(\frac{y_0}{x_0} o_x + o_y))^\tp$ definiert ist.
+% Weil sie invariant unter $T_2$ sein soll, muss $o$ darauf liegen,
+% also $0 = \vec{n}' \cdot (o_x, o_y, 1)^\tp = -q_x(\frac{y_0}{x_0} o_x + o_y)$.
+% Weil $o$ nicht auf der Projektionsgeraden liegt, gilt $\frac{y_0}{x_0} o_x + o_y \not= 0$,
+% also $q_x = 0$ und es ist $q = (0:0:1)$.\\
+% Mit der zweiten Bedingung ($g$ orthogonal zur Projektionsgeraden)
+% folgert man, dass $o$ außerdem auf der Geraden $y = m_h x$ durch $q$ und senkrecht zur
+% Projektionsgerade $y = m_g x$ mit $m_g := -\frac{y_0}{x_0}$ sein sollte.
+% Es folgt $m_h = -\frac{1}{m_g} = \frac{x_0}{y_0}$.
+% Durch Schnitt von $y = m_g x$ mit $y = m_h x$ erhält man schließlich
+% $o = \left(-\frac{x_0 y_0^2}{x_0^2 + y_0^2} : -\frac{x_0^2 y_0}{x_0^2 + y_0^2} : 1\right)$
+% und $T_2 o = \left(-\frac{x_0 y_0^2}{x_0^2 + y_0^2} : -\frac{x_0^2 y_0}{x_0^2 + y_0^2} : 0\right)
+% = (y_0 : x_0 : 0)$.
+
+\textbf{Augpunkt}:
+$o = \left(-\frac{x_0 y_0^2}{x_0^2 + y_0^2} : -\frac{x_0^2 y_0}{x_0^2 + y_0^2} : 1\right)$
+mit $T_2 o = (y_0 : x_0 : 0)$
+
+\linie
+
+\textbf{Bild von Geraden durch $o$}:
+Geraden durch $o$ werden auf Geraden abgebildet, die zur Projektionsgeraden senkrecht sind.
+
+\textbf{Bild von Parallelen zu Koordinatenachsen}:
+Parallelen zu den Koordinatenachsen werden auf Geraden abgebildet, die in einem der
+zwei \begriff{Hauptfluchtpunkte} $(x_0:0:1)$, $(0:y_0:1)$ enden.
+Die Gerade $\frac{x}{x_0} + \frac{y}{y_0} = 1$,
+die die beiden Hauptfluchtpunkte verbindet, heißt \begriff{Fluchtgerade}:
+Die Bilder aller anderen Geraden enden in einem Punkt auf der Fluchtgeraden.
+Außerdem werden Fernpunkte $(s:t:0)$ auf af"|fine Punkte der Fluchtgeraden abgebildet.
+
+\textbf{Zweipunkt-Perspektive durch Drehung der Einpunkt-Perspektive}:\\
+Es gilt $T_2 = R(\mu) T_1 R(-\mu)$ mit
+$R(\mu) = \smallpmatrix{\cos\mu&-\sin\mu&0\\\sin\mu&\cos\mu&0\\0&0&1}$
+(Eintrag von $T_1$ links unten ist $\frac{1}{d}$).\\
+Sind $x_0, y_0$ bekannt, so ist $\mu = \arctan \frac{x_0}{y_0}$ und
+$d = \frac{x_0y_0}{\sqrt{x_0^2+y_0^2}}$.
+
+\subsubsection{%
+    Dreipunkt-Perspektive%
+}
+
+\textbf{Dreipunkt-Perspektive in $\PP^3(\real)$}:
+Die \begriff{perspektivische Transformation der Dreipunkt-Per"-spektive} ist gegeben durch
+$T_3 p := \smallpmatrix{1&0&0&0\\0&1&0&0\\0&0&1&0\\\frac{1}{x_0}&\frac{1}{y_0}&\frac{1}{z_0}&1}
+\smallpmatrix{x\\y\\z\\w}
+= \smallpmatrix{x\\y\\z\\\frac{x}{x_0} + \frac{y}{y_0} + \frac{z}{z_0} + w}$ mit
+$x_0, y_0, z_0 > 0$.
+
+\textbf{Eigenschaften}:
+Die Grenzebene $\frac{x}{x_0} + \frac{y}{y_0} + \frac{z}{z_0} = -1$ des Sichtfelds wird
+auf $\H$ abgebildet.
+Die Projektionsebene $\frac{x}{x_0} + \frac{y}{y_0} + \frac{z}{z_0} = 0$ ist eine Fixpunktebene.
+Der Augpunkt $o$ liegt auf der Grenzebene und alle Geraden durch $o$ werden auf af"|fine Geraden
+abgebildet, die senkrecht zur Projektionsebene liegen.
+Daraus folgt $o = \left(-\frac{x_0 y_0^2 z_0^2}{x_0^2 + y_0^2 + z_0^2} :
+-\frac{x_0^2 y_0 z_0^2}{x_0^2 + y_0^2 + z_0^2} : -\frac{x_0^2 y_0^2 z_0}{x_0^2 + y_0^2 + z_0^2} :
+1\right)$.
+Fernpunkte $(s:t:u:0)$ auf $\H$ werden auf $(s:t:u:\frac{s}{x_0}+\frac{t}{y_0}+\frac{u}{z_0})$
+abgebildet, d.\,h. landen auf der
+\begriff{Fluchtebene} $\frac{x}{x_0} + \frac{y}{y_0} + \frac{z}{z_0} = 1$.
+Die Hauptfluchtpunkte sind $(x_0:0:0:1)$, $(0:y_0:0:1)$ und $(0:0:z_0:1)$.
+
+\pagebreak
+
+\subsubsection{%
+    Rekonstruktion von perspektivischen Transformationen%
+}
+
+\textbf{Rekonstruktion}:
+Bei dem Problem der \begriff{Rekonstruktion von perspektivischen Transformationen}
+in $\PP^3(\real)$ sind fünf Paare $(P_i, P_i')$ von Punkten in $\PP^3(\real)$ gegeben.
+Gesucht ist die perspektivische Transformation $T$ mit $TP_i = P_i'$ für $i = 1, \dotsc, 5$.
+Die Rekonstruktion verläuft wie folgt:
+\begin{enumerate}
+    \item
+    Wähle die projektive Standardbasis $p_1 := (1:0:0:0)$, $p_2 := (0:1:0:0)$,\\
+    $p_3 := (0:0:1:0)$, $p_4 := (0:0:0:1)$, $p_5 := (1:1:1:1)$ von $\PP^3(\real)$.
+    
+    \item
+    Bestimme homogene Matrizen $A$ und $B$, sodass $Ap_i = P_i$ und $Bp_i = P_i'$ für
+    $i = 1, \dotsc, 4$.
+    Weil sie homogen sind, sind sie nur bis auf skalare Faktoren $\lambda$ bzw. $\lambda'$
+    eindeutig bestimmt
+    (jede Spalte mit einem eigenem Faktor $\lambda_i$ bzw. $\lambda_i'$ durchmultiplizieren).
+    
+    \item
+    Indem $Ap_5 = P_5$ und $Bp_5 = P_5'$ eingesetzt wird, kann man $\lambda_1, \dotsc, \lambda_4$
+    bzw. $\lambda_1', \dotsc, \lambda_4'$ in Abhängigkeit von $\lambda_5$ bzw. $\lambda_5'$
+    darstellen (nach Lösung von jeweils einem LGS).
+    
+    \item
+    Aus $P_i' = TP_i$ folgt $Bp_i = TAp_i$, was äquivalent zu $B = TA$ ist.
+    Nun lässt sich $T$ (wiederum nur bis auf einen skalaren Faktor)
+    durch $T = BA^{-1}$ bestimmen.
+\end{enumerate}
+
+\subsection{%
+    OpenGL-Vertex-Pipeline%
+}
+
+\begin{floatingfigure}[r]{54mm}
+    \vspace{-7mm}
+    \begin{align*}
+        \xymatrix@R=10mm@C=20mm{
+            *=<47mm,8mm>[F]{\text{Objektkoord. $p_\text{obj}$}}\ar[d]^{M_\text{model}}\\
+            *=<47mm,8mm>[F]{\text{Weltkoord. $p_\text{world}$}}\ar[d]^{M_\text{view}}\\
+            *=<47mm,8mm>[F]{\text{Kamerakoord. $p_\text{cam}$}}\ar[d]^{M_\text{proj}}\\
+            *=<47mm,8mm>[F]{\text{Clipkoord. $p_\text{clip}$}}\ar[d]^{\text{proj. Divison}}\\
+            *=<47mm,8mm>[F]{\text{norm. Gerätekoord. $p_\text{ndc}$}}\ar[d]^{\text{Sichtbereich}}\\
+            *=<47mm,8mm>[F]{\text{Fensterkoord. $p_\text{win}$}}
+        }
+    \end{align*}
+\end{floatingfigure}
+\textbf{OpenGL-Vertex-Pipeline}:
+Rechts dargestellt ist die \begriff{Open"-GL-Vertex-Pipeline}, also die verschiedenen Wechsel von
+Koordinatensystemen, die OpenGL durchführt, um letztendlich zu bestimmen, wo auf dem Bildschirm
+was angezeigt wird.
+
+\textbf{Objektkoordinaten}:
+Jedes Objekt "`lebt"' in seinem eigenen Koordinatensystem und hat eigene
+\begriff{Objektkoordinaten} $p_\text{obj}$.
+
+\textbf{Weltkoordinaten}:
+Wenn man alle darzustellenden Objekte in ein Koordinatensystem legt, erhält man die
+\begriff{Weltkoordinaten} $p_\text{world}$.
+Von den Objekt- zu den Weltkoordinaten gelangt man durch eine Transformation $M_\text{model}$,
+die Rotationen, Scherungen, Skalierungen und Translationen enthalten kann.
+
+\textbf{Kamerakoordinaten}:
+Die Welt aus der Sicht der Kamera wird mithilfe der  \begriff{Kamerakoordinaten} $p_{\text{cam}}$
+ausgedrückt.
+Die Kamera befindet sich dann im Ursprung und schaut in negative $z$-Richtung,
+wobei der Hochvektor der positiven $y$-Richtung entspricht.
+Von den Welt- zu den Kamerakoordinaten gelangt man durch die Transformation
+$M_\text{view} :=
+\smallpmatrix{\vec*{e}{x}'^\tp&-c_x\\\vec*{e}{y}'^\tp&-c_y\\\vec*{e}{z}'^\tp&-c_z\\\vec{0}^\tp&1}$,
+wobei $\vec*{e}{x}', \vec*{e}{y}', \vec*{e}{z}'$ die Basisvektoren des Kamerasystems sind und
+$\vec{c}$ die Kameraposition ist (jeweils bzgl. Weltkoordinaten).
+
+\linie
+\pagebreak
+
+\textbf{Clipkoordinaten}:
+Die \begriff{Clipkoordinaten} $p_\text{clip}$ geben an, was die Kamera sehen kann und was nicht.
+Dieser Bereich heißt \begriff{Sichtvolumen}.
+Es gibt zwei Arten von Sichtvolumen: orthografisches Sichtvolumen und perspektivischer Sichtstumpf.
+Zur Vereinheitlichung transformiert man am Ende den sichtbaren Bereich auf den Würfel
+$[-1, 1]^3$, das sog. \begriff{kanonische Sichtvolumen}.
+Nahe Objekte sind dabei bei $z = -1$ und ferne Objekte sind bei $z = 1$.
+
+\textbf{orthografisches Sichtvolumen}:
+Beim \begriff{orthografischen Sichtvolumen} seien Werte $l < r$, $b < t$ und $0 < n < f$
+vorgegeben.
+Das Sichtvolumen umfasst dann den Quader $[l, r] \times [b, t] \times [-f, -n]$\\
+(die Kamera befindet sich dabei im Ursprung und blickt in negative $z$-Richtung).
+Zur Transformation in das kanonische Sichtvolumen benutzt man die Transformation\\
+$M_\text{proj}^\text{orth}
+:= \smallpmatrix{\frac{2}{r-l}&0&0&0\\0&\frac{2}{t-b}&0&0\\0&0&\frac{-2}{f-n}&0\\0&0&0&1} \cdot
+\smallpmatrix{1&0&0&-\frac{r+l}{2}\\0&1&0&-\frac{t+b}{2}\\0&0&1&\frac{f+n}{2}\\0&0&0&1}
+= \smallpmatrix{\frac{2}{r-l}&0&0&-\frac{r+l}{r-l}\\0&\frac{2}{t-b}&0&-\frac{t+b}{t-b}\\
+0&0&\frac{-2}{f-n}&-\frac{f+n}{f-n}\\0&0&0&1}$\\
+(Komposition von Translation des Mittelpunkts in $\vec{0}$ und anschließender Skalierung).
+
+\textbf{Sichtstumpf}:
+Beim \begriff{Sichtstumpf} legt man fest, dass das Sichtvolumen einem Pyramidenstumpf entspricht.
+Ist wieder $l < r$, $b < t$ und $0 < n < f$, dann hat die Pyramide ihre Grundfläche in der Ebene
+$z = -f$ und ihre Spitze im Ursprung (Kameraposition).
+Sie wird in der Ebene $z = -n$ abgeschnitten, die Deckfläche ist gegeben durch
+$[l, r] \times [b, t] \times \{-n\}$.
+Die Transformation
+$M_\text{proj}^\text{persp}
+:= nI \cdot M_\text{proj}^\text{orth} \cdot T_z(-n) \cdot S_z(f/n) \cdot P_z(-n) \cdot T_z(n)$
+transformiert den Sichtstumpf in das Volumen $[-n, n]^3$,
+d.\,h. $\frac{1}{n} M_\text{proj}^\text{persp}$ transformiert den Sichtstumpf in das
+kanonische Sichtvolumen ($nI$ ist nur kosmetisch).
+Dabei sind
+$T_z(n) := \smallpmatrix{1&0&0&0\\0&1&0&0\\0&0&1&n\\0&0&0&1}$,
+$S_z(n) := \smallpmatrix{1&0&0&0\\0&1&0&0\\0&0&s&0\\0&0&0&1}$,
+$P_z(-n) := \smallpmatrix{1&0&0&0\\0&1&0&0\\0&0&1&0\\0&0&-\frac{1}{n}&1}$
+jeweils Translation um $n$ in $z$-Richtung,
+Skalierung um $n$ in $z$-Richtung und
+perspektivische Transformation auf die Ebene $z = 0$.
+Insgesamt ergibt sich\\
+$M_\text{proj}^\text{persp}
+= \smallpmatrix{\frac{2n}{r-l}&0&\frac{r+l}{r-l}&0\\0&\frac{2n}{t-b}&\frac{t+b}{t-b}&0\\
+0&0&-\frac{f+n}{f-n}&-\frac{2fn}{f-n}\\0&0&-1&0}
+= \smallpmatrix{\frac{\cot(\text{fovY}/2)}{\text{aspect}}&0&0&0\\
+0&\cot(\text{fovY}/2)&0&0\\0&0&-\frac{f+n}{f-n}&-\frac{2fn}{f-n}\\0&0&-1&0}$.\\
+Die letzte Formel gilt für den Fall, dass $l = -r$, $b = -t$, $r = \text{aspect} \cdot t$
+und $t = n \cdot \tan(\text{fovY}/2)$ gelten.
+Dabei ist $\text{aspect}$ das Seitenverhältnis (Breite durch Höhe) und
+$\text{fovY}$ der vertikale Öffnungswinkel der Kamera.
+
+\linie
+
+\textbf{normierte Gerätekoordinaten}:
+Die \begriff{normierten Gerätekoordinaten} $p_\text{ndc}$ erhält aus den Clipkoordinaten
+durch komponentenweise Division durch die homogene Koordinate.
+
+\textbf{Fensterkoordinaten}:
+Die \begriff{Fensterkoordinaten} $p_\text{win}$ geben die Position bzgl. des Fensters an,
+das auf dem Bildschirm angezeigt wird.
+Der Ursprung befindet sich unten links und es wird nach rechts bzw. oben positiv gezählt.
+Wenn sich die linke untere Ecke des Fensters sich im Punkt $(o_x, o_y)$ befindet und die
+Fenstergröße $(\text{width}, \text{height})$ ist, so erhält man die Fenster- aus den
+NDC-Koordinaten durch
+$\smallpmatrix{x_\text{win}\\y_\text{win}\\z_\text{win}}
+= \smallpmatrix{\frac{\text{width}}{2} (x_\text{ndc} + 1) + o_x\\
+\frac{\text{height}}{2} (y_\text{ndc} + 1) + o_y\\
+\frac{f-n}{2} (z_\text{ndc} + 1) + n}$,
+wobei $(x_\text{ndc}, y_\text{ndc}, z_\text{ndc}) \in [-1, 1]^3$.
+
+\vspace{3mm}
+\linie
+
+\textbf{Tiefengenauigkeit}:
+Weil beim Übergang von normierten Gerätekoordinaten zu Clipkoordinaten durch die homogene
+Komponente geteilt wird, sollte die Dif"|ferenz zwischen $n$ und $f$ nicht zu groß gewählt werden
+(für $f = 1000$ ist $n = 500$ besser als $n = 10$),
+sonst wirken sich Rechenungenauigkeiten bei entfernten Objekten zu stark aus.
+
+\textbf{Clipping}:
+In 2D ist Clipping mit einem Rechteck einfach durchführbar.
+In 3D geht das ebenfalls noch einfach bei der orthografischen Projektion.
+Bei der perspektivischen Projektion gibt es Probleme, wenn man erst nach der Projektion clippt,
+weil sonst Objekte, die hinter der Kamera liegen, nach vorne auf die Sichtfläche gelangen können.
+
+\pagebreak

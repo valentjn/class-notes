@@ -1,0 +1,266 @@
+\section{%
+    \name{Bézier}-Kurven%
+}
+
+\subsection{%
+    Kontrollpolygon%
+}
+
+\textbf{\name{Bézier}-Kurve}:
+Eine \begriff{\name{Bézier}-Kurve} $p$ vom Grad $\le n$ in $\real^d$ besitzt eine Parametrisierung
+mit Bernstein-Polynomen
+\begin{align*}
+    p(t) := \sum_{k=0}^n c_k b_k^n(t),\quad
+    t \in [0, 1].
+\end{align*}
+Die Koef"|fizienten $c_k = (c_{k,1}, \dotsc, c_{k,d})$ können in einer $((n + 1) \times d)$-Matrix
+$C$ kombiniert werden.
+Sie heißen \begriff{Kontrollpunkte} und formen das \begriff{Kontrollpolygon} $c$ für $p$.
+
+\linie
+
+\textbf{Beispiel (lineare und quadratische \name{Bézier}-Parametrisierung)}:
+Eine lineare Bézier-Parametrisierung $p(t) = c_0 b_0^1(t) + c_1 b_1^1(t) = c_0 (1 - t) + c_1 t$
+stellt die Strecke $[c_0, c_1]$ dar.
+Der Punkt $p(t)$ teilt dabei die Strecke im Verhältnis $t : (1 - t)$.\\
+Wenn die Kontrollpunkte nicht auf einer Gerade liegen, dann beschreibt eine quadratische
+Bézier-Parametrisierung $p = \sum_{k=0}^2 c_k b_k^2$ ein Parabelstück.
+Das sieht man am einfachsten, wenn man zur Monom-Darstellung übergeht:
+$p(t) = (c_0 - 2c_1 + c_2)t^2 + (-2c_0 + 2c_1)t + c_0$.
+Für eine quadratische Kurve ist der Koef"|fizient von $t^2$ nicht Null und parallel zur
+Symmetrieachse der Parabel.
+
+\subsection{%
+    Eigenschaften von \name{Bézier}-Kurven%
+}
+
+\textbf{Eigenschaften von \name{Bézier}-Kurven}:
+Die Form einer Bézier-Kurve, parametrisiert durch\\
+$p = \sum_{k=0}^n c_k b_k^n$, wird qualitativ durch ihr Kontrollpolygon $c$ modelliert.
+Genauer gilt:
+\begin{itemize}
+    \item
+    $p(t)$ liegt in der konvexen Hülle von $c_0, \dotsc, c_n$
+    
+    \item
+    $p(0) = c_0$ und $p(1) = c_n$
+    
+    \item
+    $p'(0) = n(c_1 - c_0)$ und $p'(1) = n(c_n - c_{n-1})$
+\end{itemize}
+Die letzten beiden Eigenschaften werden auch \begriff{Endpunktinterpolation} bezeichnet,
+da das Kontrollpolygon tangential zur Bézier-Kurve ist, was sehr nützlich für Design-Zwecke ist.
+
+\linie
+
+\textbf{Beispiel (Bounding-Boxes)}:
+Eine wichtige Anwendung der Konvexhüllen-Eigenschaft ist die Konstruktion von
+\begriff{Bounding-Boxes}.
+Die konvexe Hülle der Kontrollpunkte $c_0, \dotsc, c_n \in \real^d$ ist in der Box
+$[c_1^-, c_1^+] \times \dotsb \times [c_d^-, c_d^+]$ enthalten, wobei
+$c_\nu^- := \min_{k=0,\dotsc,n} c_{k,\nu}$ und
+$c_\nu^+ := \max_{k=0,\dotsc,n} c_{k,\nu}$.\\
+Bounding-Boxes werden öfters in numerischen Algorithmen gebraucht.
+Ein typisches Beispiel ist die Bestimmung von Kurvenschnittpunkten.
+Bounding-Boxes zu schneiden ist ein schneller Test, ob Bézier-Kurven Schnittpunkte haben können.
+
+\pagebreak
+
+\subsection{%
+    Algorithmus von \name{de Casteljau}%
+}
+
+\textbf{Algorithmus von \name{de Casteljau}}:
+Ein Punkt $p(t) = \sum_{k=0}^n c_k b_k^n(t)$, $t \in [0, 1]$,
+auf einer Bézier-Kurve kann durch aufeinanderfolgendes Teilen der Kanten des Kontrollpolygons
+im Verhältnis $t : (1 - t)$ bestimmt werden.
+
+Die Berechnungen können in einem dreieckigen Schema angeordnet werden.
+Der Punkt $p(t)$ wird in $n$ Schritten bestimmt.
+In jedem Schritt werden Konvexkombinationen von benachbarten Kontrollpunkten berechnet:
+\begin{align*}
+    p_k^m := (1 - t) p_k^{m-1} + t p_{k+1}^{m-1}
+\end{align*}
+mit $p_k^0 := c_k$ und $p_0^n = p(t)$.
+\begin{align*}
+    \begin{array}{ccccccccccccc}
+        p_0^0 & & & & p_1^0 & & \dots & & p_{n-1}^0 & & & & p_n^0\\
+        & \searrow & & \swarrow & & \searrow & & \swarrow & & \searrow & & \swarrow\\
+        & & p_0^1 & & & & \dots & & & & p_{n-1}^1\\
+        & & & \searrow & & & & & & \swarrow\\
+        & & & & & & \vdots & & \\
+        & & & & & {}_{1-t}\searrow & & \swarrow_{t\hspace{4mm}}\\
+        & & & & & & p_0^n
+    \end{array}
+\end{align*}
+
+\subsection{%
+    Dif"|ferentiation von \name{Bézier}-Kurven%
+}
+
+\textbf{Ableitung einer \name{Bézier}-Kurve}:
+Die Parametrisierung $p = \sum_{k=0}^n c_k b_k^n$ einer Bézier-Kurve wird abgeleitet, indem
+Dif"|ferenzen zwischen benachbarten Kontrollpunkten gebildet werden:
+\begin{align*}
+    p' = n \sum_{k=0}^{n-1} (\Delta c_k) b_k^{n-1}\quad\text{mit}\quad
+    \Delta c_k := c_{k+1} - c_k.
+\end{align*}
+Die $m$-te Ableitung parametrisiert eine Bézier-Kurve vom Grad $\le n - m$ mit Kontrollpunkten
+\begin{align*}
+    \frac{n!}{(n - m)!} \Delta^m c_k,\quad
+    k = 0, \dotsc, n - m.
+\end{align*}
+Insbesondere sind
+\begin{align*}
+    \binom{n}{m} \Delta^m c_0,\quad
+    \binom{n}{m} \Delta^m c_{n-m},\quad
+    m = 0, \dotsc, n,
+\end{align*}
+die Taylor-Koef"|fizienten von $p$ an den Endpunkten, d.\,h.
+$p(t) = \sum_{m=0}^n \binom{n}{m} (\Delta^m c_0) t^m$ und\\
+$p(t) = \sum_{m=0}^n \binom{n}{m} (\Delta^m c_{n-m}) (1 - t)^m$
+
+\linie
+
+\textbf{Beispiel (Entfernung eines Punktes zu einer \name{Bézier}-Kurve)}:
+Ein zu einem Punkt $q$ nächster Punkt $p(t) = \sum_{k=0}^n c_k b_k^n(t)$ einer Bézier-Kurve ist
+einer der Endpunkte ($t = 0$ oder $t = 1$) oder erfüllt die Orthogonalitätsbedingung
+$\varphi(t) = \sp{q - p(t), p'(t)} = 0$.
+Darum müssen für eine numerische Lösung nur die Nullstellen des Polynoms $\varphi$
+bestimmt werden.
+Das Polynom $\varphi$ hat Grad $\le 2n - 1$.
+Weil eine direkte, allgemeine Bestimmung von $\varphi(t)$ zu aufwändig wäre,
+benutzt man polynomiale Interpolation.
+Zuerst errechnet man die Kontrollpunkte $n \Delta c_k$ von $p'$.
+Dann wertet man $p(t)$ und $p'(t)$ an $2n$ Stellen aus, z.\,B. an $t_\ell = \ell/(2n - 1)$,
+$\ell = 0, \dotsc, 2n - 1$.
+Die Werte $\varphi(t_\ell) = \sum_{\nu=1}^d (q_\nu - p_\nu(t_\ell)) p_\nu'(t_\ell)$
+lassen sich leicht bestimmen.
+Durch sie kann man die Koef"|fizienten von $\varphi$ durch Interpolation errechnen.
+
+\subsection{%
+    Krümmung von \name{Bézier}-Kurven%
+}
+
+\textbf{Krümmung}:
+Der \begriff{Krümmungsvektor} einer Kurve ist die Ableitung des normierten Tangentialvektors.
+Die Länge des Krümmungsvektors beschreibt die \begriff{Krümmung} $\kappa$.
+Im dreidimensionalen Raum gilt für eine durch $r(t)$ regulär parametrisierte Kurve
+\begin{align*}
+    \kappa(t) = \frac{\norm{r'(t) \times r''(t)}}{\norm{r'(t)}^3}.
+\end{align*}
+
+\linie
+
+\textbf{Krümmung einer \name{Bézier}-Kurve}:
+Die Krümmungen $\kappa$ an den Endpunkten einer Bézier-Kurve, die durch
+$p = \sum_{k=0}^n c_k b_k^n$ parametrisiert wird,
+hat die folgende geometrische Interpretation.
+Wenn $p'(0) \not= 0$ und $p'(1) \not= 0$ gilt, dann ist
+\begin{align*}
+    \kappa(0) = \frac{2(n - 1)}{n} \frac{\area[c_0, c_1, c_2]}{|c_1 - c_0|^3},\quad
+    \kappa(1) = \frac{2(n - 1)}{n} \frac{\area[c_n, c_{n-1}, c_{n-2}]}{|c_{n-1} - c_n|^3},
+\end{align*}
+wobei $[a_0, a_1, a_2]$ das durch $a_0, a_1, a_2$ bestimmte Dreieck bezeichnet und
+$|v|$ die Länge des Vektors $v$ ist.
+
+\linie
+
+\textbf{Beispiel (glattes Anfügen von \name{Bézier}-Kurven)}:
+Bézier-Kurven gehen glatt ineinander über, wenn die Kontrollpunkte richtig gewählt werden.
+Seien dazu $p^\pm$ zwei reguläre Parametrisierungen mit einem gemeinsamen Endpunkt
+$c_n^- = p^-(1) = p^+(0) = c_0^+$ gegeben.
+Stetige Dif"|ferenzierbarkeit ist äquivalent zu Stetigkeit des Einheits-Tangentenvektors
+$p'/|p'|$.
+Aufgrund der Ableitungsformel ist dies der Fall, wenn
+\begin{align*}
+    c_1^+ - c_0^+ = \delta (c_n^- - c_{n-1}^-)
+\end{align*}
+für ein $\delta > 0$.
+
+Für zweifache stetige Dif"|ferenzierbarkeit müssen zusätzlich die Krümmungen
+mit dem Kehrwert des Krümmungsradius $r$ übereinstimmen, also $\kappa^-(1) = 1/r = \kappa^+(0)$.
+Mit der Formel für Krümmung von Bézier-Kurven ist diese Bedingung äquivalent zu
+\begin{align*}
+    \delta^3 \area[c_{n-2}^-, c_{n-1}^-, c_n^-] = \area[c_0^+, c_1^+, c_2^+],
+\end{align*}
+wobei $\delta$ obiges Verhältnis der Längen der Tangentenvektoren ist.
+
+\subsection{%
+    Subdivision von \name{Bézier}-Kurven%
+}
+
+\textbf{Subdivision einer \name{Bézier}-Kurve}:
+Eine Bézier-Kurve, die durch $p(t) = \sum_{k=0}^n c_k b_k^n(t)$,\\
+$t \in [0, 1]$, parametrisiert
+wird, kann mithilfe des Algorithmus von de Casteljau in zwei Bézier-Kurven aufgespalten werden,
+die zu den Teilintervallen $[0, s]$ und $[s, 1]$ gehören.
+Die ersten und letzten Kontrollpunkte $p_0^m$ und $p_{n-m}^m$, die beim $m$-ten
+de-Casteljau-Schritt erzeugt werden, ergeben die Kontrollpunkte des
+linken bzw. rechten Kurvensegments:
+\begin{align*}
+    p^{\text{left}}(t) := p(st) &= \sum_{m=0}^n p_0^m b_m^n(t),\\
+    p^{\text{right}}(t) := p(s + (1 - s)t) &= \sum_{m=0}^n p_m^{n-m} b_m^n(t).
+\end{align*}
+Daher gehören die linken und rechten Kontrollpunkte zur linken bzw. rechten Diagonale des
+Schemas von de Casteljau.
+
+\linie
+\pagebreak
+
+\textbf{Beispiel (Subdivision am Mittelpunkt)}:
+Die Subdivision am Mittelpunkt $s = 1/2$ ist am gebräulichsten und findet ihre Anwendungen
+z.\,B. in der Computergrafik.
+Im quadratischen Fall ergibt sich $c_1^{\text{left}} = \frac{1}{2} c_0 + \frac{1}{2} c_1$ und
+$c_2^{\text{left}} = \frac{1}{4} c_0 + \frac{1}{2} c_1 + \frac{1}{4} c_2$
+für die Kontrollpunkte $c_k^{\text{left}}$ des linken Segments.
+In der Praxis verwendet man Matrixoperationen:
+Punkte werden liegend in einer Matrix gespeichert und Operationen werden als Matrix von links
+multipliziert.
+Somit ist
+\begin{align*}
+    C^{\text{left}} = \begin{pmatrix}1 & 0 & 0\\1/2& 1/2 & 0\\1/4 & 2/4 & 1/4\end{pmatrix}
+    \underbrace{\begin{pmatrix}c_{0,1} & c_{0,2} & \dots\\c_{1,1} & c_{1,2} & \dots\\
+    c_{2,1} & c_{2,2} & \dots\end{pmatrix}}_C.
+\end{align*}
+Im kubischen Fall ist die Matrix-Form des Subdivisionsschrittes
+\begin{align*}
+    C^{\text{left}} = \begin{pmatrix}1 & 0 & 0 & 0\\1/2& 1/2 & 0 & 0\\1/4 & 2/4 & 1/4 & 0\\
+    1/8 & 3/8 & 3/8 & 1/8\end{pmatrix} C.
+\end{align*}
+Man erkennt schnell das allgemeine Muster
+\begin{align*}
+    c_m^{\text{left}} = 2^{-m} \sum_{k=0}^m \binom{m}{k} c_k,
+\end{align*}
+das für alle Bézier-Kurven unabhängig vom Grad gilt.
+
+\subsection{%
+    Geometrische \name{Hermite}-Interpolation%
+}
+
+\textbf{vorzeichenbehaftete Krümmung}:
+Die \begriff{vorzeichenbehaftete Krümmung} ist die Krümmung versehen mit einem Vorzeichen,
+und zwar mit einem Minus genau dann, wenn die Kurve eine Rechtskurve beschreibt.
+
+\linie
+
+\textbf{geometrische \name{Hermite}-Interpolation}:
+Die Kontrollpunkte $c_0, \dotsc, c_3$ einer ebenen kubischen Bézier-Kurve, die die Punkte $p_j$
+interpoliert, die normierten Tangentenrichtungen $d_j$ und die vorzeichenbehafteten Krümmungen
+$\kappa_j$ ($j = 0, 1$) an den Endpunkten $t = 0, 1$ des Parameterintervalls erfüllen
+\begin{align*}
+    c_0 = p_0,\; c_3 = p_1,\quad
+    c_1 = p_0 + \alpha_0 d_0 / 3,\; c_2 = p_1 - \alpha_1 d_1 / 3.
+\end{align*}
+Die Längen $\alpha_j$ der Tangentenvektoren sind die positiven Lösungen des nicht-linearen Systems
+\begin{align*}
+    \kappa_0 \alpha_0^2 &= d_0 \times (6(p_1 - p_0) - 2 \alpha_1 d_1)\\
+    \kappa_1 \alpha_1^2 &= d_1 \times (2 \alpha_0 d_0 - 6(p_1 - p_0))
+\end{align*}
+mit $f \times g$ dem Kreuzprodukt der zwei Vektoren $f$ und $g$.
+
+Wenn die Daten zu einer glatten Kurve mit nicht-verschwindender Krümmung gehören,
+dann hat das nicht-lineare System für einen hinreichend kleinen Abstand $|p_1 - p_0|$ eine Lösung
+und der Fehler der kubischen Bézier-Approximation ist von Ordnung $\O(|p_1 - p_0|^6)$.
+
+\pagebreak

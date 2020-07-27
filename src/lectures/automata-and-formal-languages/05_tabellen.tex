@@ -1,0 +1,103 @@
+\section{%
+    Tabellen%
+}
+
+\textbf{Beschreibungsarten für Sprachklassen}
+
+\begin{tabular}{llll}
+    \toprule
+    
+    \emph{Sprachklasse} & \emph{Grammatik} & \emph{Maschinentyp} &
+    \emph{Sonstiges} \\
+    
+    \midrule
+    
+    \textbf{Typ-3} & reguläre Grammatik & DEA, NEA & reguläre Ausdrücke \\
+    \textbf{det. kont.frei} & $LR(k)$-Grammatik & DPDA &  \\
+    \textbf{Typ-2} & kontextfreie Grammatik & PDA & \\
+    \textbf{Typ-1} & kontextsensitive Grammatik & LBA & \\
+    \textbf{Typ-0} & beliebige Grammatik & TM & \\
+    
+    \bottomrule
+\end{tabular}
+
+\vspace{5mm}
+\textbf{Determinismus und Nicht-Determinismus}
+
+\begin{tabular}{llll}
+    \toprule
+    
+    \emph{Sprachklasse} & \emph{nicht-det. Automat} &
+    \emph{det. Automat} & \emph{äquivalent} \\
+    
+    \midrule
+    
+    \textbf{Typ-3} & NEA & DEA & ja \\
+    \textbf{Typ-2/det. kont.frei} & PDA & DPDA & nein \\
+    \textbf{Typ-1/?} & LBA & DLBA & ? \\
+    \textbf{Typ-0} & (N)TM & DTM & ja \\
+    
+    \bottomrule
+\end{tabular}
+
+\vspace{5mm}
+\textbf{Abschlusseigenschaften}
+
+\begin{tabular}{llllll}
+    \toprule
+    
+    \emph{Sprachklasse} & \emph{Schnitt} & \emph{Vereinigung} &
+    \emph{Komplement} & \emph{Produkt} & \emph{Stern} \\
+    
+    \midrule
+    
+    \textbf{Typ-3} & ja & ja & ja & ja & ja \\
+    \textbf{det. kont.frei} & nein & nein & ja & nein & nein \\
+    \textbf{Typ-2} & nein & ja & nein & ja & ja \\
+    \textbf{Typ-1} & ja & ja & ja & ja & ja \\
+    \textbf{Typ-0} & ja & ja & nein & ja & ja \\
+    
+    \bottomrule
+\end{tabular}
+
+\vspace{5mm}
+\textbf{Entscheidbarkeiten}
+
+\begin{tabular}{lllll}
+    \toprule
+    
+    \emph{Sprachklasse} & \emph{Wortproblem} & \emph{Leerheit} &
+    \emph{Äquivalenz} & \emph{Schnittproblem} \\
+    
+    \midrule
+    
+    \textbf{Typ-3} & ja & ja & ja & ja \\
+    \textbf{det. kont.frei} & ja & ja & ja & nein \\
+    \textbf{Typ-2} & ja & ja & nein & nein \\
+    \textbf{Typ-1} & ja & nein & nein & nein \\
+    \textbf{Typ-0} & nein & nein & nein & nein \\
+    
+    \bottomrule
+\end{tabular}
+
+\vspace{5mm}
+\textbf{Wortproblem}
+
+\begin{tabular}{lll}
+    \toprule
+    
+    \emph{Sprachklasse} & \emph{Komplexität} & \emph{Sonstiges} \\
+    
+    \midrule
+    
+    \textbf{Typ-3} & linear &
+    falls durch DEA gegeben (sogar in "`Echtzeit"') \\
+    \textbf{det. kont.frei} & linear & \\
+    \textbf{Typ-2} & $\O(n^3)$ & falls in CNF gegeben (mit CYK-Algorithmus) \\
+    \textbf{Typ-1} & exponentiell (?) & NP-hart \\
+    \textbf{Typ-0} & unlösbar & \\
+    
+    \bottomrule
+\end{tabular}
+
+\pagebreak

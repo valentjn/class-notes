@@ -1,0 +1,282 @@
+\section{%
+    Polynome%
+}
+
+\subsection{%
+    Monomdarstellung%
+}
+
+\textbf{Polynom in Monomdarstellung}:
+Ein (reelles) \begriff{Polynom} $p$ vom Grad $n$ ist eine Linearkombination
+\begin{align*}
+    p(x) = c_0 + c_1 x + \dotsb + c_n x^n
+\end{align*}
+der Monome $x \mapsto x^k$ mit \begriff{Koef"|fizienten} $c_k \in \real$ und $c_n \not= 0$
+(\begriff{Monomdarstellung}).
+
+Die Koef"|fizienten hängen durch $k! c_k = p^{(k)}(0)$ für $k = 0, \dotsc, n$ mit den Ableitungen
+an $x = 0$ zusammmen.
+Die Polynome vom Grad $\le n$ formen einen Vektorraum $\P^n$ der Dimension $n + 1$.
+Man schreibt $\P^n(D)$, falls die Variable $x$ auf ein bestimmtes Intervall $D$ beschränkt ist.
+
+\linie
+
+\textbf{geschachtelte Multiplikation (\name{Horner}-Schema)}:
+Beim Auswerten eines Polynoms\\
+$p(x) = c_0 + c_1 x + \dotsb + c_n x^n$ kann man zu häufiges Potenzieren von $x$
+vermeiden, indem man $p$ in \begriff{geschachtelter Form (\name{Horner}-Schema)} schreibt, d.\,h.
+\begin{align*}
+    p(x) = c_0 + (c_1 + \dotsb (c_{n-2} + (c_{n-1} + c_n x)x) \dotsb)x.
+\end{align*}
+Mit $p_n := c_n$ ergibt die Rekursion $p_k := c_k + p_{k+1} x$, $k = n - 1, \dotsc, 0$,
+den Wert $p(x) = p_0$ in $n$ Schritten mit $2n$ Operationen.
+
+Die Rekursion kann auch zur Auswertung der Ableitung $p$ benutzt werden.
+Dazu leitet man die Rekursion nach $x$ ab und erhält mit der Produktregel
+$p_n' := 0$ und $p_k' := p_{k+1}' x + p_{k+1}$, $k = n - 1, \dotsc, 0$,
+mit $p'(x) = p_0'$.
+
+\subsection{%
+    \name{Taylor}-Approximation%
+}
+
+\textbf{\name{Taylor}-Polynom}:
+Das \begriff{\name{Taylor}-Polynom} $p_n$ vom Grad $\le n$ einer Funktion $f$ im Punkt $x_0$
+stimmt in den Ableitungen bis zum Grad $n$ mit $f$ in $x_0$ überein:
+\begin{align*}
+    p_n(x) := \sum_{k=0}^n \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k.
+\end{align*}
+Der Approximationsfehler bzw. das Restglied kann in der Form
+\begin{align*}
+    f(x) - p_n(x) = \frac{f^{(n+1)}(\xi)}{(n + 1)!} (x - x_0)^{n+1}
+\end{align*}
+dargestellt werden, wobei $\xi$ ein Punkt zwischen $x$ und $x_0$ ist.
+Als Folgerung approximieren Taylor-Polynome vom Grad $\le n$ glatte Funktionen auf einem
+Intervall $[x_0 - h, x_0 + h]$ mit der Ordnung $\O(h^{n+1})$.
+
+\linie
+
+\textbf{Beispiel (Auswertung einer Funktion mit tabulierten Werten)}:
+Als Anwendung des Taylor-Polynoms kann man eine Tabelle mit eingespeicherten
+Funktionswerten einer bestimmten Funktion betrachten (z.\,B. Sinusfunktion).
+Um den Wert der Funktion an einer Zwischenstelle zu errechnen, kann man das Taylor-Polynom
+errechnen und in der Zwischenstelle auswerten.
+Die Fehlerformel kann benutzt werden, um auszurechnen, wie nah die gegebenen Funktionswerte
+beieinander sein müssen, damit eine gewisse Genauigkeit erreicht wird.
+
+\pagebreak
+
+\subsection{%
+    Interpolation%
+}
+
+\textbf{Interpolation}:
+Funktionswerte $f_0, \dotsc, f_n$ an $n + 1$ paarweise verschiedenen Stellen $x_0, \dotsc, x_n$
+können eindeutig durch ein Polynom $p$ vom Grad $\le n$ interpoliert werden,
+d.\,h. $p(x_k) = f_k$ für $k = 0, \dotsc, n$.
+Das Polynom kann explizit in der \begriff{\name{Lagrange}-Form} angegeben werden:
+\begin{align*}
+    p(x) := \sum_{k=0}^n f_k q_k(x),\quad
+    q_k(x) := \prod_{\ell\not=k} \frac{x - x_\ell}{x_k - x_\ell}.
+\end{align*}
+Dabei sind die \begriff{\name{Lagrange}-Polynome} $q_k$ in $x_k$ gleich 1 und verschwinden an
+allen anderen Interpolationspunkten.
+
+\linie
+
+\textbf{4-Punkt-Formel}:
+Polynomiale Interpolation mit niedrigen Polynomgraden wird oft benutzt, um Funktionswerte
+an Zwischenstellen zu generieren.
+Ein Beispiel ist die \begriff{4-Punkt-Formel}
+\begin{align*}
+    f_{k+1/2} \approx (-f_{k-1} + 9f_k + 9f_{k+1} - f_{k+2})/16,
+\end{align*}
+die $f(kh + h/2)$ durch benachbarte Funktionswerte $f(\ell h)$ an äquidistanten Stellen
+$x_\ell = \ell h$ schätzt.
+Die Formel basiert dabei auf kubischer Interpolation,
+d.\,h. die Gewichte $-1/16$, $9/16$, $9/16$ und $-1/16$ sind die Lagrange-Polynome 
+der vier Punkte $x_{k-1}$, $x_k$, $x_{k+1}$ und $x_{k+2}$ ausgewertet in $(k + 1/2)h$.
+
+\linie
+
+\textbf{\name{Aitken}-\name{Neville}-Schema}:
+Wenn ein Polynom $p_k^{m-1}$ eine Funktion $f$ an paarweise verschiedenen Punkten
+$x_k, \dotsc, x_{k+m-1}$ interpoliert, dann interpoliert
+\begin{align*}
+    p_k^m := (1 - w_k^m) p_k^{m-1} + w_k^m p_{k+1}^{m-1},\quad
+    w_k^m(x) := \frac{x - x_k}{x_{k+m} - x_k}
+\end{align*}
+an $x_k, \dotsc, x_{k+m}$.
+
+Der Wert $p(x)$ des Interpolationspolynoms
+von $n + 1$ Datenpunkten $(x_k, f(x_k))$, $k = 0, \dotsc, n$, mit $x_0 < \dotsb < x_n$
+an einer Stelle $x \in \real$ lässt sich somit mithilfe eines Dreiecksschemas berechnen,
+startend mit $p_k^0 := f(x_k)$:
+\begin{align*}
+    \begin{array}{ccccccc}
+        f(x_0) = p_0^0 & \rightarrow & p_0^1 & \cdots & p_0^{n-1} & \rightarrow & p_0^n = p(x)\\
+        & \nearrow & & & & \nearrow\\
+        f(x_1) = p_1^0 & & p_1^1 & & p_1^{n-1}\\
+        \vdots & & \vdots &\\
+        f(x_{n-1}) = p_{n-1}^0 & \rightarrow & p_{n-1}^1\\
+        & \nearrow\\
+        f(x_n) = p_n^0
+    \end{array}
+\end{align*}
+Die Pfeile $\rightarrow$ bzw. $\nearrow$, die zu $p_k^m$ zeigen,
+deuten Multiplikation mit $(1 - w_k^m)$ bzw. $w_k^m$ an.
+Das letzte Polynom $p_0^n$ hat Grad $\le n$ und interpoliert $x_0, \dotsc, x_n$.
+
+Der Vorteil dieses Dreiecksschemas ist, dass zur Verbesserung der Genauigkeit
+weitere Datenpunkte sehr einfach als neue Zeile am unteren Rand hinzugefügt
+werden können, ohne alle Werte neu zu berechnen
+(anders als z.\,B. mit Lagrange-Polynomen).
+
+\linie
+
+\textbf{\name{Runge}s Phänomen}:
+Äquidistante polynomiale Interpolation der rationalen Funktion $f(x) = 1/(1 + x^2)$
+(\begriff{\name{Runge}-Funktion}) im Intervall $[-5, 5]$ führt
+im Grenzwert zu keiner gleichmäßigen Konvergenz.
+Der Fehler der Interpolation, der absolut bei Grad 10 schon bei circa 2 liegt, kommt durch die
+Singularitäten von $f$ an $\pm \i$ nahe der reellen Achse zustande.
+Der Konvergenzradius der Taylor-Reihe beträgt daher nur 1.
+
+\subsection{%
+    \name{Bernstein}-Polynome%
+}
+
+\textbf{\name{Bernstein}-Polynome}:
+Die \begriff{\name{Bernstein}-Polynome} vom Grad $n$ sind definiert durch
+\begin{align*}
+    b_k^n(x) := \binom{n}{k} (1 - x)^{n-k} x^k,\quad
+    k = 0, \dotsc, n.
+\end{align*}
+Sie bilden eine Basis des Raums $\P^n$ der Polynome vom Grad $\le n$.
+Die Basis ist symmetrisch bzgl. des Standardintervalls $[0, 1]$.
+Genauer gilt für $j = 0, \dotsc, n$ bzw. für $k = 0, \dotsc, n$
+\begin{align*}
+    x^j = \sum_{k=j}^n \left.\binom{k}{j}\right/\binom{n}{j} b_k^n(x),\quad
+    b_k^n(x) = \sum_{j=0}^{n-k} (-1)^j \binom{n}{k} \binom{n-k}{j} x^{j+k}.
+\end{align*}
+Die beiden Gleichungen beschreiben die Umrechnung zwischen der Monom- und der
+Bernstein-Darstellung eines Polynoms.
+In Gleichungen und Rekursionen mit Bernstein-Polynomen ist es oft üblich, allgemeine
+Indizes $k \in \integer$ zu benutzen.
+Für $k \notin \{0, \dotsc, n\}$ sei dabei $b_k^n(x) :\equiv 0$.
+
+\subsection{%
+    Eigenschaften der \name{Bernstein}-Polynome%
+}
+
+\textbf{Eigenschaften der \name{Bernstein}-Polynome}:
+Die Bernstein-Polynome vom Grad $n$ sind auf dem Standardintervall $[0, 1]$ nicht-negativ und
+summieren zu Eins:
+\begin{align*}
+    \sum_{k=0}^n b_k^n(x) = 1.
+\end{align*}
+Außerdem hat $b_k^n$ auf $[0, 1]$ ein eindeutiges Maximum bei
+\begin{align*}
+    x = \frac{k}{n}.
+\end{align*}
+In den Intervallendpunkten $0$ und $1$ ist nur das erste und das letzte Bernstein-Polynom
+nicht Null, genauer:
+\begin{align*}
+    &b_0^n(0) = 1,\quad
+    b_1^n(0) = \dotsb = b_n^n(0) = 0,\\
+    &b_0^n(1) = \dotsb = b_{n-1}^n(1) = 0,\quad
+    b_n^n(1) = 1.
+\end{align*}
+Als Folgerung ist ein Polynom $p = \sum_{k=0}^n c_k b_k^n$ in Bernstein-Darstellung
+gleich $c_0$ in $x = 0$ und gleich $c_n$ in $x = 1$.
+Man nennt diese Eigenschaft \begriff{Endpunktinterpolation}.
+
+Außerdem kann man ein Polynom in Bernstein-Darstellung durch das betragsmäßige Maximum der
+Koef"|fizienten abschätzen:
+$|p(x)| \le \sum_{k=0}^n |c_k| \cdot b_k^n(x) \le \max_{k=0,\dotsc,n} |c_k|$.
+
+\linie
+
+\textbf{\name{Bernstein}-Approximation}:
+Man kann eine Funktion $f$ durch Verwendung ihrer Werte an den Stellen, in denen die
+Bernstein-Polynome $b_k^n$ maximal werden, als Bernstein-Koef"|fizienten approximieren:
+\begin{align*}
+    f \approx p = \sum_{k=0}^n f(k/n) b_k^n.
+\end{align*}
+Die sogenannte \begriff{\name{Bernstein}-Approximation} modelliert
+die Form des Graphen von $f$ auf $[0, 1]$ recht genau.
+Aufgrund der Eigenschaften der Bernstein-Polynome interpoliert $p$ die Funktion $f$ in $0$ und $1$.
+Außerdem ist $p$ nicht-negativ, wenn $f$ nicht-negativ ist.
+Die Approximation ist für lineare Polynome exakt.
+
+\linie
+\pagebreak
+
+\textbf{Identitäten für \name{Bernstein}-Polynome}:\\
+Die Bernstein-Polynome $b_k^n$, $k = 0, \dots, n$ erfüllen folgende Identitäten:
+\begin{align*}
+    \begin{array}{cl}
+        b_k^n(1 - x) = b_{n-k}^n(x) & \text{(Symmetrie)}\\[2mm]
+        b_k^n(x) = x b_{k-1}^{n-1}(x) + (1 - x) b_k^{n-1}(x) & \text{(Rekursion)}\\[2mm]
+        (b_k^n)' = n (b_{k-1}^{n-1} - b_k^{n-1}) & \text{(Dif"|ferentiation)}\\[2mm]
+        \int_0^1 b_k^n = \frac{1}{n+1} & \text{(Integration)}
+    \end{array}
+\end{align*}
+Dabei ist $b_{-1}^{n-1} \equiv b_n^{n-1} \equiv 0$ in der zweiten und dritten Identität
+aufgrund der Konvention.
+
+\linie
+
+\textbf{Auswertung von Polynomen in \name{Bernstein}-Darstellung mit vorgenerierten Werten}:
+Wenn viele Polynome in Bernstein-Darstellung an denselben Punkten $x_\ell$ ausgewertet
+werden müssen, sollten die Werte $a_{\ell,k}^n := b_k^n(x_\ell)$ vorher berechnet werden.
+Wegen der Identitäten für Bernstein-Polynome können die Matrizen $A^n$ durch die Rekursion
+$a_{\ell,k}^{n+1} := x_\ell a_{\ell,k-1}^n + (1 - x_\ell) a_{\ell,k}^n$
+mit $a_{\ell,-1}^n := a_{\ell,n+1}^n := 0$ bestimmt werden.
+Die Werte $p(x_\ell) = \sum_{k=0}^n c_k b_k^n(x_\ell)$ können dann durch eine einzige
+Matrixmultiplikation $A^n c$ errechnet werden.
+
+\subsection{%
+    \name{Hermite}-Interpolation%
+}
+
+\textbf{\name{Hermite}-Interpolation}:
+Werte $f_0, f_1$ und Ableitungen $d_0, d_1$ an zwei Punkten $x_0 < x_1$ können durch ein
+kubisches Polynom $p$ interpoliert werden.
+Dieser \begriff{\name{Hermite}-Interpolant} kann als Linearkombination der auf das Intervall
+$[x_0, x_1]$ transformierten Bernstein-Polynome dargestellt werden:
+\begin{align*}
+    p(x) := f_0 b_0^3(y) + (f_0 + d_0 h/3) b_1^3(y) + (f_1 - d_1 h/3) b_2^3(y) + f_1 b_3^3(y)
+\end{align*}
+mit $h := x_1 - x_0$ und $y := (x - x_0)/h$.
+
+Die Bernstein-Koef"|fizienten des Interpolanten $p$ können auch zeichnerisch ermittelt werden:
+Teilt man das Intervall $[x_0, x_1]$ äquidistant in Drittel auf, so ist der zweite
+Bernstein-Koef"|fizient gleich der Ordinate des Schnittpunkts von der Tangente an $p$ in $x_0$
+mit der Geraden $x = x_0 + h/3$.
+Der dritte Koef"|fizient ist zum zweiten symmetrisch.
+
+\linie
+
+\textbf{\name{Hermite}-Spline}:
+Falls Hermite-Daten an mehr als zwei Punkten gegeben sind, formen die kubischen Interpolanten
+einen sogenannten \begriff{\name{Hermite}-Spline} $q$.
+Nach Konstruktion ist $q$ durch seine Werte und Ableitungen an den
+Interpolationspunkten eindeutig bestimmt und an diesen stetig dif"|ferenzierbar.
+
+\subsection{%
+    Approximation von stetigen Funktionen%
+}
+
+\textbf{Approximationssatz von \name{Weierstraß}}:
+Jede stetige Funktion $f$ kann auf einem beschränkten, abgeschlossenen Intervall $[a, b]$
+durch Polynome mit beliebiger Genauigkeit approximiert werden.
+Genauer existiert für jedes $\varepsilon > 0$ ein Polynom $p$ mit
+\begin{align*}
+    \max_{x \in [a, b]} |f(x) - p(x)| < \varepsilon.
+\end{align*}
+Als Beweis kann man z.\,B. zeigen,
+dass die Bernstein-Approximationen\\
+$f \approx p_n = \sum_{k=0}^n f(k/n) b_k^n$ für $n \to \infty$ gegen $f$ gehen.
+
+\pagebreak

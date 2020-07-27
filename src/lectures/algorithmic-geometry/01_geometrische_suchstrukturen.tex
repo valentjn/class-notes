@@ -1,0 +1,590 @@
+\section{%
+    Geometrische Suchstrukturen%
+}
+
+\subsection{%
+    \emph{Wiederholung}: Suchbäume%
+}
+
+\textbf{Baum}:
+Ein \begriff{Baum} ist ein kreisfreier, gerichteter Graph, der genau einen Knoten mit Eingangsgrad
+$0$ besitzt.
+Dieser wird \begriff{Wurzel} genannt.
+Zeigt eine Kante von einem Knoten $v_1$ zu einem Knoten $v_2$, so heißt
+$v_1$ \begriff{Vater} $\parent(v_1)$ von $v_2$ und
+$v_2$ \begriff{Kind} von $v_1$.
+Knoten ohne Kinder heißen \begriff{Blätter},
+die anderen Knoten heißen \begriff{innere Knoten}.
+Der \begriff{Teilbaum} eines inneren Knotens $v$ ist der Baum besteht aus den Kindern von $v$,
+deren Kindern usw. mit $v$ als Wurzel.
+Die \begriff{Tiefe} eines Knotens ist die Länge des kürzesten Pfads von der Wurzel zu diesem
+Knoten.
+Die \begriff{Höhe} des Baums ist die Tiefe des tiefsten Knotens.
+
+\linie
+
+\textbf{2-4-Baum}:
+Sei $P = \{a_1, \dotsc, a_n\}$ eine total geordnete Menge.
+Ein \begriff{2-4-Baum} ist ein Baum, in dem $P$ strukturiert gespeichert wird.
+$P$ wird nur in den Blättern des Baums gespeichert, diese müssen sortiert sein.
+Die Blätter müssen alle die gleiche Tiefe haben.
+Für jeden inneren Knoten $v$ mit $i$ Kindern muss gelten, dass
+$2 \le i \le 4$, und $v$ muss $i - 1$ Schlüssel enthalten, wobei
+der $j$-te Schlüssel das größte Element des $j$-ten Teilbaums von $v$ ist
+(für $j = 1, \dotsc, i - 1$).
+Oftmals geht man davon aus, dass die Blätter doppelt verkettet sind.
+
+\textbf{Zeit-/Platzaufwand}:
+Ein 2-4-Baum mit $n$ Blättern besitzt die Höhe $\O(\log n)$.
+Das Suchen, Einfügen und Löschen eines Elements besitzt den Zeitaufwand $\O(\log n)$. 
+Die Konstruktion eines 2-4-Baums für $n$ Elemente besitzt den Zeitaufwand $\O(n \log n)$
+(sind die Elemente sortiert, dann sogar nur $\O(n)$).
+Der Baum besitzt $\le n$ innere Knoten, damit ist der Platzaufwand $\O(n)$.
+
+\linie
+
+\textbf{Binärbaum}:
+Ein \begriff{Binärbaum} ist ein Baum, bei dem jeder Knoten höchstens zwei Blätter besitzt
+und jedes Blatt entweder ein \begriff{linkes Kind} oder ein \begriff{rechtes Kind} ist.
+Er heißt \begriff{voll}, falls jeder innere Knoten genau zwei Kinder besitzt.
+Ein voller Binärbaum heißt \begriff{vollständig balanciert},
+falls alle Kinder dieselbe Tiefe haben.
+Ein Binärbaum heißt \begriff{balanciert}, falls er "`fast"' vollständig balanciert ist.
+
+\textbf{Zeit-/Platzaufwand}:
+Ein vollständig balancierter Binärbaum besitzt die Höhe $\O(\log n)$
+und $\le n$ innere Knoten, damit ist der Platzaufwand $\O(n)$.
+
+\linie
+
+\textbf{Suchbaum}:
+"`\begriff{Suchbaum}"' ist ein allgemeiner Begriff für einen Baum, bei dem das Suchen von Elementen
+ef"|fizient möglich ist.
+Beispiele sind AVL-, Rot-Schwarz- und 2-4-Bäume sowie binäre Suchbäume.
+Ihnen allen ist gemeinsam, dass obiger Satz über die Zeit-/Platzkomplexität von 2-4-Bäumen
+auch für sie gilt.
+
+\subsection{%
+    \emph{Wiederholung}: Heaps%
+}
+
+\textbf{Heap}:
+"`\begriff{Heap}"' ist ein allgemeiner Begriff für eine Datenstruktur, die eine bestimmte,
+total geordnete Menge verwaltet.
+Ein Heap unterstützt zumindest das Einfügen von Elementen sowie
+die Rückgabe und das Entfernen des kleinsten Elementes.
+
+\textbf{(binärer) Min-Heap}:
+Ein \begriff{(binärer) Min-Heap} ist ein Binärbaum, in dessen Knoten Elemente aus einer
+total geordneten Menge gespeichert sind, sodass
+$\text{key}(v) \ge \text{key}(\parent(v))$ für alle Knoten $v$ außer der Wurzel gilt
+(\begriff{Heap-Eigenschaft}).
+Der Baum ist balanciert
+(alle Ebenen voll besetzt, letzte Ebene linksbündig aufgefüllt).
+
+\textbf{Zeit-/Platzaufwand}:
+Ein Min-Heap besitzt die Höhe $\O(\log n)$ und verbraucht den Platz $\O(n)$.
+Er kann in $\O(n)$ konstruiert werden.
+Das Finden des Minimums kostet $\O(1)$ Zeit,
+die anderen Operationen (Löschen des Minimums, Einfügen eines Elements) kosten $\O(\log n)$.
+
+\pagebreak
+
+\subsection{%
+    Range-Bäume%
+}
+
+\textbf{Problem}:
+Gegeben sind $n$ Punkte $P = \{a_1, \dotsc, a_n\} \subset \real^d$ sowie ein
+achsenparalleles "`Rechteck"' ($[l, r]$ für $d = 1$, $[l, r] \times [u, o]$ für $d = 2$ usw.).\\
+Gesucht sind alle Punkte, die in diesem Rechteck liegen
+(\begriff{Bereichsabfrage (range query)}).
+
+Anwendungen des Problems finden sich nicht nur in der Geometrie, sondern z.\,B. bei
+Datenbank"-abfragen:
+Wenn die Mitarbeiter einer Firma gesucht sind, deren Geburtstage zwischen zwei bestimmten Daten und
+deren Gehälter zwischen zwei bestimmten Zahlen liegen, dann können diese Daten auf Zahlen
+abgebildet und das Problem mit Range-Bäumen gelöst werden.
+
+\subsubsection{%
+    Eindimensionaler Fall%
+}
+
+\textbf{naive Lösung}:
+Gehe alle Elemente durch und gebe die passenden Elemente aus.
+
+\textbf{Zeitaufwand für Abfrage}:
+$\O(n)$
+
+\linie
+
+\textbf{bessere Lösung}:
+Ordne die Elemente zunächst in einem Suchbaum.
+Suche anschließend die linke Grenze $l$ im Suchbaum.
+Laufe anschließend durch so viele Blätter, bis die Elemente größer als $r$ sind.
+
+\textbf{Zeitaufwand für Konstruktion}:
+$\O(n \log n)$
+
+\textbf{Zeitaufwand für Abfrage}:
+$\O(\log n + k)$ mit $k$ der Anzahl der zurückgegebenen Elemente
+
+\subsubsection{%
+    Mehrdimensionaler Fall%
+}
+
+Im Folgenden sei $P \subset \real^2$.
+Die gezeigten Strukturen/Algorithmen lassen sich verallgemeinern.
+
+\textbf{erste Idee}:
+Erstelle für jede Dimension einen Suchbaum, sodass die Elemente bzgl. dieser Dimension
+strukturiert sind.
+Für eine Bereichsabfrage $[l, r] \times [u, o]$ berechne die Mengen $E_1$ und $E_2$,
+sodass die $x$- bzw. $y$-Koordinate der Punkte aus den Mengen in $[l, r]$ bzw. $[u, o]$ liegt.
+Anschließend schneide $E_1$ und $E_2$.
+
+\textbf{Zeitaufwand für Konstruktion}:
+$\O(n \log n)$
+
+\textbf{Zeitaufwand für Abfrage}:
+$\O(\log n + k_1 + k_2)$,
+wenn $k_1 := |E_1|$ und $k_2 := |E_2|$
+(mit Mengen-Implementationen mit Kosten $\O(1)$ für "`$\in$"' geht der Durchschnitt in
+Zeit $\O(k_1 + k_2)$)
+
+Es gibt allerdings Punktmengen, bei denen jeweils $n/2$ der Punkte über dem Rechteck bzw.
+rechts vom Rechteck liegen,
+d.\,h. $k_1 + k_2 = n$, allerdings ist die endgültige Ausgabe leer.
+Gesucht ist ein \begriff{ausgabesensitiver (output sensitive)} Algorithmus,
+d.\,h. ein Algorithmus, dessen Laufzeit von der Ausgabegröße $k$ abhängt.
+
+\linie
+
+Zunächst muss man den eindimensionalen Algorithmus für die Bereichsabfrage modifizieren.
+
+\textbf{eindimensionale Modifizierung}:
+Suche die linke Grenze $l$ und die rechte Grenze $r$ im Suchbaum.
+Für eine Weile werden die Suchpfade für beide Grenzen gleich sein.
+Wenn sie sich trennen, dann wähle ab diesem Punkt beim linken Suchpfad alle Kinder, die
+rechts von den Suchpfad-Knoten liegen.
+Analog wähle beim rechte Suchpfad alle Kinder, die links von den Suchpfad-Knoten liegen.
+Die gesuchte Punktmenge ist nun genau die (disjunkte) Vereinigung der Blätter der Teilbäume
+unter den gewählten Kindern.
+Es gibt $\O(\log n)$ viele von diesen Teilbäumen, weil in jeder Ebene des Baums nur $\O(1)$ viele
+gewählte Kinder sind.
+%(d.\,h. Wurzeln von den Teilbäumen).
+
+\textbf{Zeitaufwand für Abfrage}:
+$\O(\log n + k)$ (unverändert)
+
+\linie
+\pagebreak
+
+\textbf{mehrdimensionale Verbesserung}:
+Baue einen Suchbaum über den $x$-Koordinaten auf.
+Speichere in jeden inneren Knoten die Punkte an den Blättern seines Teilbaums
+in einem Suchbaum über den $y$-Koordinaten.
+Für eine Bereichsabfrage $[l, r] \times [u, o]$ bestimme Suchpfade wie eben für $l$ und $r$
+in der Primärstruktur.
+Anschließend befrage die Sekundärstrukturen der Knoten, die nach "`innen"' von den Suchpfaden
+hängen.
+
+\textbf{Zeitaufwand für Abfrage}:
+$\O(\log^2 n + k)$
+mit $k$ der Größe der Ausgabe
+
+\begin{Beweis}
+    Es gibt $\O(\log n)$-viele nach innen hängende Knoten.
+    Das Befragen des $i$-ten Knotens kostet Zeit $\O(\log n + k_i)$.
+    Weil die Blätter der Teilbäume disjunkt sind, gilt $\sum_i k_i = k$,
+    d.\,h. der Zeitaufwand ist $\O(\log^2 n + k)$.
+\end{Beweis}
+
+\textbf{Platzaufwand}:
+$\O(n \log n)$:
+
+\begin{Beweis}
+    Der Suchbaum über den $x$-Koordinaten (ohne Sekundärstrukturen) benötigt zwar nur
+    $\O(n)$ Platz.
+    Allerdings wird jedes der $n$ Blätter in den Sekundärstrukturen vom Vater, vom Großvater usw.
+    gespeichert, d.\,h. jeweils $\O(\log n)$-mal.
+    Insgesamt benötigt man damit $\O(n \log n)$ Platz.
+\end{Beweis}
+
+\linie
+
+\textbf{mehr Dimensionen}:\\
+Für $d$ Dimensionen benötigt man Zeit $\O(\log^d n + k)$ und Platz
+$\O(n \log^{d-1} n)$.
+
+\subsubsection{%
+    Fractional Cascading%
+}
+
+\textbf{Fractional Cascading}:
+Die $y$-Suchvorgänge in den $\O(\log n)$-vielen nach innen hängenden Knoten hängen miteinander
+zusammen.
+Dies kann man ausnutzen, um den Abfrage-Zeitaufwand für $\real^2$
+von $\O(\log^2 n + k)$ auf $\O(\log n + k)$ zu verringern.
+Die zugehörige Technik nennt man \begriff{Fractional Cascading}.
+
+Sei $P = P_1 \dcup P_2$ eine Punktmenge, für die ein eindimensionaler Range-Baum für
+die $y$-Koordinaten konstruiert wurde.
+Wenn man einen Abfragepunkt $q$ bzgl. der $y$-Koordinate in $P$ lokalisiert hat,
+so kann man $q$ in $P_1$ und $P_2$ in Zeit $\O(1)$ lokalisieren,
+indem man Zeiger von jedem $p \in P$ zu seinem Vorgänger und Nachfolger in $P_1$ und $P_2$
+speichert.
+So muss nur eine Suche (nur in der Wurzel) in den $y$-Koordinaten in der Sekundärstruktur
+durchgeführt werden.
+Dies kostet $\O(\log n)$ Zeit, kann aber jeweils in $\O(1)$ Zeit nach unten in die relevanten
+Kindknoten propagiert werden.
+
+Daher reicht es aus, nur in der Wurzel die Sekundärstruktur als Suchbaum zu speichern und
+in allen anderen inneren Knoten als sortiertes Array.
+Die Gesamt-Laufzeit verringert sich zu $\O(\log n + k)$, weil nur eine Suche in den $y$-Koordinaten
+durchgeführt werden muss
+(der Platzaufwand ändert sich nicht).
+
+\pagebreak
+
+\subsection{%
+    kd-Bäume%
+}
+
+Es gibt auch einen anderen Weg, das mehrdimensionale Problem der Bereichsabfrage zu lösen.
+Dazu erstellt man zunächst einen kd-Baum.
+
+\textbf{kd-Baum}:
+Ein \begriff{kd-Baum} für die Punktmenge $P \subset \real^2$ ist ein vollständiger binärer Baum,
+bei dem jeder innere Knoten entweder ein $X$- oder ein $Y$-Knoten ist.
+$X$-Knoten enthalten einen $x$-Wert, sodass alle Blätter des linken/rechten Teilbaums
+kleinere/größere $x$-Koordinaten haben (analog für $Y$-Knoten).
+In den Blättern stehen die Punkte aus $P$ (nicht in den Knoten).
+Der Baum wird wie folgt konstruiert:
+Zunächst wählt man den Median $m_x$ der $x$-Koordinaten aller Punkte aus $P$.
+Die Wurzel ist ein $X$-Knoten mit dem $x$-Schlüssel $m_x$.
+Die Gerade $x = m_x$ teilt $P$ in zwei Hälften $P_1$ und $P_2$ auf.
+Nun berechnet man den Median $m_{y,1}$ der $y$-Koordinaten der Punkte aus $P_1$.
+Das linke Kind der Wurzel ist ein $Y$-Knoten mit dem $y$-Schlüssel $m_{y,1}$.
+Analog verfährt man mit dem rechten Kind.
+So wechseln sich in jeder Ebene $X$- und $Y$-Knoten ab.
+
+\textbf{Zeitaufwand für Konstruktion}:
+$\O(n \log n)$
+(Lösung von $T(n) = n + 2 \cdot T(n/2)$ mit dem Master-Theorem, der erste Summand
+wird für die Medianberechnung benötigt)
+
+\textbf{Platzaufwand}:
+$\O(n)$
+(Baum hat Höhe $\O(\log n)$)
+
+\linie
+
+Man kann zusätzlich jedem inneren Knoten eine Bounding-Box zuordnen,
+die alle Punkte der Blätter des Teilbaums des inneren Knotens umgibt.
+
+\textbf{Bereichsabfrage}:
+Für eine Bereichsabfrage $[l, r] \times [u, o]$ traversiert man den Baum von oben nach unten.
+Wenn die Bounding-Box komplett im Abfragerechteck enthalten ist, gibt man einfach alle Punkte
+im Teilbaum aus.
+Wenn die Bounding-Box disjunkt zum Abfragerechteck ist, dann kann man mit der Traversierung
+von diesem Teilbaum aufhören.
+Wenn die Bounding-Box das Abfragerechteck überlappt, dann untersucht man rekursiv beide Kindknoten.
+
+Der Zeitaufwand ist allerdings i.\,A. wesentlich höher wie bei Range-Bäumen:
+Man kann sich Beispiele ausdenken, bei denen das Abfragerechteck keinen Punkt enthält,
+aber $\Theta(\sqrt{n})$ viele "`Zellen"' (Bounding-Boxes) schneidet.
+Man kann jedoch zeigen, dass dies der "`worst case"' ist.
+
+\linie
+
+\textbf{Zeitaufwand für Abfrage}:
+$\O(\sqrt{n} + k)$
+
+\begin{Beweis}
+    Zellen, die disjunkt zum Abfragerechteck sind, können ignoriert werden.
+    Der Zeitaufwand für die Ausgabe der Blätter der vollständig im Abfragerechteck liegenden Zellen
+    ist $\O(k)$ nach Konstruktion.
+    Man interessiert sich also nur für die Zellen, die eine Kante des Rechtecks schneiden,
+    z.\,B. die rechte Kante.
+    Wenn man zeigen kann, dass jede Vertikale $\O(\sqrt{n})$ Zellen schneidet, dann folgt die
+    Behauptung, denn andere Arten von Zellen gibt es nicht.
+    
+    Sei also $L(n)$ die Anzahl von Zellen
+    (im Unterbaum eines die Vertikale schneidenden $X$-Knotens mit $n$ Blättern),
+    die von der Vertikalen geschnitten werden.\\
+    Es gilt $L(n) = 2 + 2 \cdot L(n/4)$,
+    denn einmal schneidet die Zelle des $X$-Knotens selbst die Vertikale und noch einmal oBdA
+    die rechte Teilzelle der Zelle.
+    Nun müssen noch die Unterzellen der zwei Hälften
+    (oben und unten, enthalten jeweils $\frac{n}{4}$ Zellen)
+    der rechten Teilzelle gezählt werden.
+    %Außerdem gilt $L(1) = 1$.
+    Diese Rekursion kann man dem Master-Theorem nach $L(n) = \O(\sqrt{n})$ aufgelöst werden.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    Intervall-Bäume%
+}
+
+\textbf{Problem}:
+Gegeben ist eine Menge $S \subset \P(\real)$ von Intervallen sowie ein Punkt $q \in \real$.
+Gesucht sind alle Intervalle $s \in S$, sodass $q \in s$ gilt.
+
+%Eine zweidimensionale Anwendung wäre beispielsweise, alle Kanten eines eingebetteten Graphen
+%zu ermitteln, die in einem bestimmten Rechtecksausschnitt zu sehen sind.
+%Mit obigen Algorithmen können die Knoten im Rechteck bestimmt werden,
+%allerdings kann es Kanten geben, die durch das Rechteck laufen, deren Knoten aber außerhalb des
+%Rechtecks sind.
+
+\textbf{Intervall-Baum}:
+Ein \begriff{Intervall-Baum} ist ein balancierter Binärbaum und ist wie folgt rekursiv definiert.
+Für $n$ Intervalle in der Menge $S$ bestimme den Median $m$ der $2n$ Endpunkte.
+Anschließend unterteile $S$ auf in $S = S_L \dcup S_M \dcup S_R$,
+wobei $S_L$ und $S_R$ die Intervalle enthalten, die komplett links bzw. rechts von $m$ liegen,
+und $S_M$ die Intervalle enthält, die $m$ enthalten.
+Erstelle einen Baumknoten und speichere darin $m$ und die Intervalle aus $S_M$.
+Der linke und rechte Teilbaum werden rekursiv mit $S_L$ und $S_R$ erstellt.
+
+Dieser Baum ist tatsächlich balanciert, weil $S_L$ und $S_R$ jeweils höchstens $n/2$
+Intervalle enthalten
+(es liegen höchstens $2n/2 = n$ Endpunkte links von $m$ und
+weil jedes Intervall zwei Endpunkte hat,
+können höchstens $n/2$ Intervalle komplett links von $m$ sein).
+
+\linie
+
+\textbf{Abfrage}:
+Die Abfrage für ein $q \in \real$ erfolgt rekursiv in einem Pfad von oben nach unten.
+Wenn für den aktuellen Knoten $q < m$ gilt, dann wird rekursiv in $S_L$ nachgeschaut
+($S_R$ ist irrelevant) und einige Intervalle in $S_M$ müssen ausgegeben werden.
+Um dies ef"|fizient erledigen zu können, speichere bei der Konstruktion
+zwei Kopien von $S_M$ in den Knoten:
+einmal sortiert nach linkem und einmal sortiert nach rechtem Endpunkt.
+Weil $q < m$ ist, gilt nämlich $q \in s$ für $s \in S_M$ genau dann, wenn der linke Endpunkt
+links von $q$ liegt.
+Gehe nun die Intervalle aufsteigend nach linkem Endpunkt durch und gebe sie aus.
+Gestoppt wird, wenn der linke Endpunkt rechts von $q$ liegt.
+Analog verfährt man, wenn $q > m$ gilt.
+
+\linie
+
+\textbf{Zeitaufwand für Konstruktion}:
+$\O(n \log n)$
+
+\begin{Beweis}
+    Die Medianbildung und Aufteilung der Intervalle kostet $\O(n)$ für jede Ebene des Baums
+    (weil in jeder Ebene höchstens $n$ Intervalle sind), also $\O(n \log n)$ insgesamt.
+    Die Sortierung benötigt $\O(|S_M| \log |S_M|)$.
+    Weil jedes Intervall in genau einem $S_M$ vorkommt, ist die Gesamtzeit für alle sortierten
+    Arrays $\O(n \log n)$.
+\end{Beweis}
+
+\textbf{Zeitaufwand für Abfrage}:
+$\O(\log n + k)$
+
+\begin{Beweis}
+    Der Abstieg im Baum kostet Zeit $\O(\log n)$
+    (der Baum ist balanciert),
+    die ef"|fiziente Ausgabe der Intervalle aus
+    $S_M$ kostet Zeit $\O(k)$, weil die Arrays sortiert sind.
+\end{Beweis}
+
+\textbf{Platzaufwand}:
+$\O(n)$
+
+\begin{Beweis}
+    In jedem Knoten wird $m$ und $S_M$ (zweimal) gespeichert.
+    Weil die $S_M$ paarweise disjunkt sind, ist der gesamte Platzaufwand für die $S_M$
+    gleich $\O(n)$.
+    Der Baum an sich ist ein balancierter Binärbaum mit $\O(\log n)$ Höhe und
+    $\O(n)$-vielen Knoten, wobei außer $S_M$ pro Knoten nur $\O(1)$ Platz benötigt wird.
+    Damit ist der Gesamt-Platzaufwand $\O(n)$.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    Segment-Bäume%
+}
+
+Es ist nicht klar, wie man Intervallbäume auf mehrere Dimensionen verallgemeinert,
+denn die $S_M$ sind durch die Sortierung schon strukturiert.
+Dazu wird im Folgenden das eindimensionale Problem durch sog. Segment-Bäume gelöst.
+Diese können wie bei Range-Bäumen einfach verschachtelt werden.
+
+\textbf{Segment-Baum}:
+Ein \begriff{Segment-Baum} ist ein balancierter binärer Suchbaum und ist wie folgt definiert.
+Betrachte die gegebene Menge $S \subset \P(\real)$ von $n$ Intervallen.
+Die Endpunkte der Intervalle unterteilen die reelle Achse in $\le 2n + 1$ Abschnitte,
+die sog. \begriff{elementaren Intervalle}.
+Erstelle nun einen binären Suchbaum über die elementaren Intervalle,
+wobei die elementaren Intervalle in den Blättern stehen und in jedem Knoten $v$
+ein \begriff{natürliches Intervall} $I(v)$ gespeichert ist,
+das als Vereinigung der elementaren Intervalle des Teilbaums unter $v$ definiert ist.
+Außerdem speichert jeder Knoten $v$ eine Liste $S(v)$ von bestimmten Intervallen $s \in S$.
+Ein Intervall $s \in S$ wird in $S(v)$ gespeichert, falls
+$I(v) \subset s$, aber $I(\parent(v)) \not\subset s$.
+
+Jede Ebene des Baums definiert eine Partition der reellen Achse, die zur Wurzel hin immer gröber
+wird.
+
+\linie
+
+\textbf{Abfrage}:
+Für eine Abfrage suche zunächst $q \in \real$ im Suchbaum
+(einfacher Pfad von der Wurzel nach unten),
+wobei man jeweils zu dem Kind $v$ wechselt, dessen natürliches Intervall $I(v)$ den Punkt $q$
+enthält.
+Die Ausgabe ist die Menge von Intervallen $I(v)$ der Knoten auf dem Suchpfad
+(Ausgabe erfolgt in $\O(\log n)$-vielen Paketen).
+
+\linie
+
+\textbf{Zeitaufwand für Konstruktion}:
+$\O(n \log n)$
+
+\textbf{Zeitaufwand für Abfrage}:
+$\O(\log n + k)$
+
+\textbf{Platzaufwand}:
+$\O(n \log n)$
+
+\begin{Beweis}
+    Sei $s \in S$ fest.
+    Dann wird auf jeder Ebene $s$ jeweils in höchstens zwei Knoten gespeichert.
+    Würde es in drei Knoten $v_1, v_2, v_3$ gespeichert werden, dann müssten zwei der Knoten
+    einen gemeinsamen Vater haben, also z.\,B. $v := \parent(v_1) = \parent(v_2)$.
+    Dann wäre aber $I(v_1), I(v_2) \subset s$, d.\,h.
+    $I(v) = I(v_1) \cup I(v_2) \subset s$,
+    ein Widerspruch zu $I(v) = I(\parent(v_1)) \not\subset s$.
+    Daher wird jedes Intervall $\O(\log n)$ Mal gespeichert und der Platzverbrauch ist
+    $\O(n \log n)$.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    Priority Search Trees (Treaps)%
+}
+
+Bei kd-Bäumen wurden die $x$- und $y$-Dimensionen miteinander verwoben,
+was zwar zur einer Datenstruktur mit Platzverbrauch $\O(n)$ geführt hat,
+aber zu einem schlechten Abfrage-Zeitaufwand.
+PSTs folgen demselben Prinzip mit einem besseren Abfrage-Zeitaufwand von $\O(\log n + k$).
+Allerdings können sie nur etwas speziellere Anfragen beantworten.
+
+\textbf{Problem}:
+Gegeben sind $n$ Pkt.e $P = \{a_1, \dotsc, a_n\} \subset \real^2$ sowie ein
+Rechteck $[l, r] \times [-\infty, o]$, das in einer Dimension halbof"|fen ist.
+Gesucht sind alle Punkte, die in diesem Rechteck liegen.
+
+\textbf{Priority Search Tree (PST)}:
+Ein \begriff{Priority Search Tree (PST)} ist ein \begriff{Treap}, eine Mischung von
+binärem Suchbaum (engl. \emph{tree}) und Heap, der wie folgt konstruiert wird.
+Jeder Knoten speichert zwei Schlüssel, einen $X$- und einen $Y$-Schlüssel.
+\begin{enumerate}
+    \item
+    Berechne das $y$-Minimum von $P$ und
+    speichere den entsprechenden Punkt $p_1$ als $Y$-Schlüssel des Knotens.
+    
+    \item
+    Berechne den $x$-Median von $P \setminus \{p_1\}$ und
+    speichere den entsprechenden $x$-Wert als $X$-Schlüssel des Knotens.
+    
+    \item
+    Teile $P \setminus \{p_1\}$ entsprechend des Medians in zwei Mengen mit kleinerer bzw.
+    größerer $x$-Koordinate auf und wiederhole das Verfahren rekursiv.
+\end{enumerate}
+
+Der Baum ist zum einen ein binärer Suchbaum über den $x$-Koordinaten mit Tiefe $\O(\log n)$
+und zum anderen ein Min-Heap über den $y$-Koordinaten.
+
+\linie
+
+\textbf{Abfrage}:
+\begin{enumerate}
+    \item
+    Suche nach $l$ und $r$ (PST als eindim. Suchbaum über den $x$-Koordinaten).
+    
+    \item
+    Exploriere Teilbäume nach "`innen"' nach Punkten mit $y$-Koordinate $\le o$\\
+    (PST als Min-Heap über den $y$-Koordinaten).
+\end{enumerate}
+
+Bei einem Min-Heap ist es möglich, alle Elemente $\le o$ in der Zeit $\O(k)$ auszugeben,
+wenn $k$ die Ausgabegröße ist.
+
+\linie
+
+\textbf{Zeitaufwand für Konstruktion}:
+$\O(n \log n)$
+
+\textbf{Zeitaufwand für Abfrage}:
+$\O(\log n + k)$
+
+\textbf{Platzaufwand}:
+$\O(n)$
+
+\subsection{%
+    Zusammenfassung der Suchstrukturen%
+}
+
+{\footnotesize
+\begin{tabular}{p{32mm}p{29mm}p{29mm}p{29mm}p{29mm}}
+    \toprule
+    &
+    \textbf{Range-Baum}&
+    \textbf{Intervall-Baum}&
+    \textbf{Segment-Baum}&
+    \textbf{PST (Treap)}\\
+    
+    \midrule
+    \emph{verarbeitete Eingabe}&
+    Punktmenge\newline$P \subset \real$&
+    Intervallmenge\newline$S \subset \P(\real)$&
+    Intervallmenge\newline$S \subset \P(\real)$&
+    Punktmenge\newline$P \subset \real^2$\\
+    
+    \midrule
+    \emph{Abfrageobjekt}&
+    Intervall $[l, r]$&
+    Punkt $q \in \real$&
+    Punkt $q \in \real$&
+    halboff. Rechteck\newline$R := [l, r] \times [-\infty, o]$\\
+    
+    \midrule
+    \emph{Abfrageergebnis}&
+    $p \in P$ mit $p \in [l, r]$&
+    $s \in S$ mit $s \ni q$&
+    $s \in S$ mit $s \ni q$&
+    $p \in P$ mit $p \in R$\\
+    
+    \midrule
+    \emph{Konstruktionszeit}&
+    \multicolumn{4}{c}{$\O(n \log n)$}\\
+    
+    \midrule
+    \emph{Abfragezeit}&
+    \multicolumn{4}{c}{$\O(\log n + k)$}\\
+    
+    \midrule
+    \emph{Platz}&
+    $\O(n)$&
+    $\O(n)$&
+    $\O(n \log n)$&
+    $\O(n)$\\
+    
+    \midrule
+    \emph{Ergebnis in Blöcken\newline(stöpselbar)}&
+    ja&
+    (nein)&
+    ja&
+    nein\\
+    
+    \bottomrule
+\end{tabular}}
+
+\pagebreak

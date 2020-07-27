@@ -1,0 +1,279 @@
+\section{%
+    Einfache zahlentheoretische Algorithmen%
+}
+
+\textbf{iterierter Logarithmus}:
+Sei $n \in \natural$.
+Dann ist der \begriff{iterierte Logarithmus} definiert durch
+$\log^\ast n := 1 + \log^\ast(\log n)$ für $n > 1$ und $\log^\ast n := 0$ für $n < 1$.
+Der iterierte Logarithmus ist die Anzahl, wie oft man den Logarithmus auf eine Zahl anwenden kann,
+bis sie negativ wird.
+$\log^\ast$ wächst sehr langsam (allerdings schneller als die inverse Ackermann-Funktion),
+für $n < 2^{65536}$ gilt $\log_2^\ast n \le 5$.
+
+\textbf{$\weakO$-Notation}:
+Seien $f, g\colon \natural \rightarrow \real$ zwei Funktionen.\\
+Dann ist $f \in \weakO(g(n))$ (\begriff{Weak-$\O$}, \begriff{$\O$-Tilde}),
+falls $\exists_{k \in \natural}\; f \in \O(g(n) \cdot \log^k g(n))$.
+
+\subsection{%
+    Multiplikation%
+}
+
+\textbf{Problem}:
+Gegeben sind zwei Zahlen $r, s \in \natural$ mit je $n$ Bit.\\
+Gesucht ist das Produkt $r \cdot s$ der beiden Zahlen.
+
+\textbf{Algorithmen und ihr Zeitbedarf}:
+\begin{itemize}
+    \item
+    \emph{Schulmethode (schriftliches Multiplizieren)}:
+    $\O(n^2)$
+    
+    \item
+    \emph{\name{Karatsuba}-Algorithmus}:
+    $\O(n^{1.58497})$ mit $1.58497 \approx \log_2 3$
+    
+    \item
+    \emph{\name{Schönhage}-\name{Strassen}-Algorithmus}:
+    $O(n \log n \cdot \log \log n) \subset \weakO(n)$
+    
+    \item
+    \emph{\name{Fürer}-Algorithmus}:
+    $\O(n \log n \cdot 2^{\log^\ast n}) \subset \weakO(n)$
+\end{itemize}
+
+\linie
+
+\textbf{\name{Karatsuba}-Algorithmus}:
+Der \begriff{\name{Karatsuba}-Algorithmus} ist ein rekursiver Algorithmus zur Multiplikation
+zweier Ganzzahlen.
+Seien $r, s$ zwei Zahlen mit je $n = 2k$ Bit.
+\begin{enumerate}
+    \item
+    Berechne zunächst $0 \le A, B, C, D < 2^k$ mit $r = A \cdot 2^k + B$ und
+    $s = C \cdot 2^k + D$.
+    
+    \item
+    Berechne rekursiv $AC$, $BD$ und $(A + B)(C + D)$.
+    
+    \item
+    Berechne $r \cdot s = AC \cdot 2^{2k} + (A + B)(C + D) \cdot 2^k -
+    (AC + BD) \cdot 2^k + BD$.
+\end{enumerate}
+
+\textbf{Laufzeit}:
+$\O(n^{\log_2 3})$
+
+\begin{Beweis}
+    Würde man $r \cdot s = AC \cdot 2^{2k} + (AD + BC) \cdot 2^k + BD$ schreiben,
+    so müsste man vier Multiplikationen durchführen.
+    Ist $T(2k)$ die Anzahl der Schritte, die der Algorithmus für die Multiplikation zweier
+    Zahlen der Länge $n = 2k$ benötigt, so gilt dann
+    $T(2k) = 4T(k) + \O(k)$
+    (die Additionen benötigen $\O(k)$ Schritte).
+    Mit dem Master-Theorem würde man auf $T \in \Theta(n^2)$ kommen, was keine Verbesserung
+    gegenüber der Schulmethode wäre.
+    
+    Weil allerdings nur drei Multiplikationen pro Rekursionsschritt durchgeführt werden, gilt\\
+    $T(2k) = 3T(k) + \O(k)$ und mit dem Master-Theorem kommt man auf
+    $T \in \Theta(n^{\log_2 3})$.
+\end{Beweis}
+
+\subsection{%
+    Modulo-Operation%
+}
+
+\textbf{Modulo-Operation}:
+Es gilt $a \bmod m = a - m \left\lfloor\frac{a}{m}\right\rfloor$,
+d.\,h. wenn man schnell Dividieren und Multiplizieren kann, kann man auch schnell Modulo rechnen.
+
+\textbf{Laufzeit}:
+$\weakO(n)$ mit $n$ der Anzahl der Bit von $\max(a, m)$
+
+\pagebreak
+
+\subsection{%
+    Division%
+}
+
+\textbf{Problem}:
+Gegeben ist $m \in \natural$ mit $n$ Bit.
+Gesucht ist $\frac{1}{m}$.
+
+\textbf{\name{Newton}-Verfahren zur Berechnung von $\frac{1}{m}$}:
+\begin{enumerate}
+    \item
+    Der Startwert ist $x_0 := 2^{-\lceil\log m \rceil}$,
+    wobei $\lceil\log m \rceil$ ca. gleich der Anzahl der Stellen von $m$ und
+    daher leicht bestimmbar ist.
+    
+    \item
+    Suche mit dem Newton-Verfahren die Nullstelle von $f(x) = \frac{1}{x} - m$, d.\,h.\\
+    $x_{i+1} := x_i - \frac{f(x_i)}{f'(x_i)} = 2x_i - mx_i^2$.
+\end{enumerate}
+
+\textbf{Laufzeit}:
+$\weakO(n)$
+
+\linie
+
+\textbf{Reduktion von Multiplikation auf Quadrieren}:
+Multiplizieren ist im Wesentlichen genauso schwer wie Quadrieren,
+da $r \cdot s = \frac{1}{4} ((r + s)^2 - (r - s)^2)$.
+Mit dieser Formel kann man mit zweimal Quadrieren einmal Multiplizieren,
+d.\,h. Quadrieren geht höchstens doppelt so schnell wie Multiplikation.
+
+\subsection{%
+    Erweiterter \name{euklid}ischer Algorithmus%
+}
+
+\textbf{Problem}:
+Gegeben seien $k, \ell \in \integer$, wobei die kleinere Zahl $n$ Bit lang ist.\\
+Gesucht sind $a, b \in \integer$ und $t \in \natural_0$ mit
+$ak + b\ell = t = \ggT(k, \ell)$.
+
+\textbf{erweiterter \name{euklid}ischer Algorithmus}:
+Der \begriff{erweiterte \name{euklid}ische Algorithmus}\\
+$\code{erw\_ggT}(k, \ell)$
+berechnet $(a, b, t)$ für $k, \ell \ge 0$.
+Ist $k < 0$, so muss am Ende das Vorzeichen von $a$ verändert werden
+(analog für $\ell < 0$).
+\begin{enumerate}
+    \item
+    Ist $k = 0$, so gebe $(0, 1, \ell)$ zurück.
+    
+    \item
+    Sonst berechne $(a, b, t) := \code{erw\_ggT}(\ell \bmod k, k)$
+    und gebe $(b - a \cdot \lfloor \ell/k \rfloor, a, t)$ zurück.
+\end{enumerate}
+
+\textbf{Laufzeit}:
+$\weakO(n^2)$
+
+\begin{Beweis}
+    Ist $k > \ell$, dann vertauscht der Algorithmus im ersten Rekursionsschritt $k$ und $\ell$.
+    Sei also oBdA $k \le \ell$.
+    Der Algorithmus ruft sich mit $k' := \ell \bmod k$ und $\ell' := k$ auf.
+    Im nächsten Schritt ruft er sich mit $k'' := \ell' \bmod k' = k \bmod (\ell \bmod k)$ und
+    $\ell'' := k' = \ell \bmod k$ auf.
+    \begin{itemize}
+        \item
+        Ist $\ell \bmod k \le \frac{k}{2}$, so ist $k'' < \ell \bmod k \le \frac{k}{2}$.
+        
+        \item
+        Ist $\ell \bmod k > \frac{k}{2}$, so ist
+        $k'' = k \bmod (\ell \bmod k) = k - (\ell \bmod k) \le \frac{k}{2}$. 
+    \end{itemize}
+    In jedem Fall gilt $k'' \le \frac{k}{2}$ und spätestens nach zwei rekursiven Aufrufen hat
+    sich die kleinere Zahl halbiert.
+    Die Rekursionstiefe ist daher $\O(\log k) = \O(n)$ und die Laufzeit $\weakO(n^2)$.
+\end{Beweis}
+
+\linie
+
+\textbf{Invertieren modulo $m$}:
+Gegeben seien $m, k \in \natural$ mit $m \ge 2$ (mit $n$ der Bitlänge der kleineren Zahl).
+Gesucht ist das multiplikative Inverse von $k$ modulo $m$.
+\begin{enumerate}
+    \item
+    Berechne zunächst $(a, b, t) := \code{erw\_ggT}(k, m)$.
+    
+    \item
+    Ist $t \not= 1$, dann ist $k$ nicht invertierbar modulo $m$.
+    
+    \item
+    Ist $t = 1$, dann gilt $ak + bm = 1 \iff ak \equiv_m 1$,
+    d.\,h. $a \bmod m \in \ZmZ$ ist das gesuchte multiplikative Inverse von $k$ mod $m$.
+\end{enumerate}
+
+\textbf{Laufzeit}:
+$\weakO(n^2)$
+
+\pagebreak
+
+\subsection{%
+    Exponentiation%
+}
+
+\textbf{Problem}:
+Gegeben sei ein Monoid $M$ (Gruppe bis auf Existenz von Inversen), ein Element $a \in M$ und
+$m \in \natural$.
+Gesucht ist $a^m \in M$.
+
+\textbf{schnelle Exponentiation}:\\
+Der Algorithmus zur \begriff{schnellen Exponentiation} berechnet $e = a^m$ wie folgt.
+\begin{enumerate}
+    \item
+    Setze zunächst $e := 1$.
+    
+    \item
+    Solange $m > 0$ ist, wiederhole Folgendes:
+    \begin{enumerate}
+        \item
+        Ist $m$ ungerade, so setze $e \leftarrow a \cdot e$.
+        
+        \item
+        Setze $a \leftarrow a^2$ und $m \leftarrow \lfloor m/2\rfloor$.
+    \end{enumerate}
+\end{enumerate}
+Es werden $\O(\log m)$ Monoid-Operationen durchgeführt,
+weil $m$ in jedem Durchlauf mindestens halbiert wird.
+
+\textbf{schnelle modulare Exponentiation}:
+Ist $M = (\ZkZ, \cdot)$, dann wird bei jeder Operation modulo $k$ gerechnet.
+Sei $n$ die größere der Bitlängen von $k$ und $m$.
+Dann kostet Multiplizieren und Modulo-Operationen jeweils $\weakO(n)$,
+d.\,h. die Laufzeit des obigen Algorithmus ist $\weakO(n^2)$.
+
+\linie
+
+\textbf{Optimierung mittels Additionsketten}:
+Am Beispiel $a^{15}$ erkennt man, dass man auch mit weniger Operationen auskommen kann.
+Obiger Algorithmus berechnet $a, a^2, a^3, a^4, a^7, a^8, a^{15}$, d.\,h. er benötigt
+sechs Multiplikationen.
+Wenn man allerdings $a, a^2, a^3, a^6, a^{12}, a^{15}$ berechnet, so benötigt man bloß fünf
+Multiplikationen.
+
+\textbf{Additionskette}:
+Eine \begriff{Additionskette} $(m_0, \dotsc, m_\ell)$ ist eine Kette mit
+$m_0, \dotsc, m_\ell \in \natural$, $m_0 := 1$ und $m_i$ ist eine Summe von zwei beliebigen
+Werten mit Index kleiner als $i$
+($i = 1, \dotsc, \ell$).
+
+Die zu obigen Multiplikationsfolgen entsprechenden Additionsketten sind
+$(1, 2, 3, 4, 7, 8, 15)$ und $(1, 2, 3, 6, 12, 15)$.
+Am wenigsten Monoid-Operationen benötigt man, wenn man eine kürzeste Additionskette verwendet.
+Das Berechnen einer Additionskette an sich kostet zwar keine Monoid-Operationen, allerdings
+müssen bei der Exponentiation mit eine optimalen Additionskette i.\,A. alle bisher aufgetretenen
+Potenzen im Speicher gehalten werden.
+Bei den zum obigem Algorithmus gehörigen Additionsketten werden hingegen immer nur die letzten
+zwei Potenzen benötigt.
+Außerdem kann man mit der optimalen Additionskette nicht mehr als die Hälfte an Operationen
+gegenüber obigem Algorithmus einsparen.
+Am meisten spart man bei Zweierpotenzen minus $1$,
+während bei Zweierpotenzen obiger Algorithmus optimal ist.
+
+\linie
+
+\textbf{Invertieren durch Exponentiation}:
+Ist $G$ eine endliche Gruppe und $g \in G$,
+so kann man $g^{-1}$ durch $g^{-1} = g^{|G| - 1}$ berechnen.
+Für $G = ((\ZnZ)^\ast, \cdot)$ ist z.\,B. $a^{-1} \equiv_n a^{\varphi(n) - 1}$.
+Damit kann man ebenfalls in Zeit $\weakO(n^2)$ invertieren, allerdings muss $\varphi(n)$ bekannt
+sein.
+
+\linie
+
+\textbf{Laufzeit von \name{Miller}-\name{Rabin}}:
+Ist $n$ die zu testende Zahl (mit $\log n$ Stellen), so ist die Laufzeit des MR-Tests
+$\weakO(\log^2 n)$ pro Durchlauf.
+
+\textbf{Laufzeit von RSA}:
+Ist $n$ das RSA-Modul, so ist die Laufzeit einer Ver-/Entschlüsselung von RSA
+$\weakO(\log^2 n)$
+($\weakO(\log n)$ bei Verschlüsselung mit kleinem $e$).
+Durch Speicherung der Primfaktoren $p$ und $q$ kann die Entschlüsselung doppelt so schnell
+erfolgen.
+
+\pagebreak

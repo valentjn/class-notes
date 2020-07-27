@@ -1,0 +1,173 @@
+\section{%
+    Wavelets%
+}
+
+\subsection{%
+    \name{Haar}-Wavelets%
+}
+
+\textbf{Level-1-\name{Haar}-Transformation}:
+Sei $N \in \natural$ gerade.\\
+Dann ist die \begriff{Level-1-\name{Haar}-Transformation}
+definiert als $\H_1\colon \real^N \to \real^N$,
+$\vec{f} \mapsto (\vec{a^{(1)}} \;|\; \vec{d^{(1)}})$
+mit dem \begriff{ersten Trend} $\vec{a^{(1)}} := (a_m)_{m=1}^{N/2}$
+mit $a_m := \frac{1}{\sqrt{2}} (f_{2m-1} + f_{2m})$ und\\
+der \begriff{ersten Fluktuation} $\vec{d^{(1)}} := (d_m)_{m=1}^{N/2}$
+mit $d_m := \frac{1}{\sqrt{2}} (f_{2m-1} - f_{2m})$.\\
+$\H_1$ ist invertierbar mit $(\H_1)^{-1}\colon \real^N \to \real^N$,\\
+$(\vec{a^{(1)}} \;|\; \vec{d^{(1)}}) = \vec{f} =
+\frac{1}{\sqrt{2}} (a_1 + d_1, a_1 - d_1, \dotsc, a_{N/2} + d_{N/2}, a_{N/2} - d_{N/2})$.
+
+\textbf{Eigenschaften}:
+\begin{itemize}
+    \item
+    \emph{kleine Fluktuation}:
+    Die Fluktuationswerte sind größenordnungsmäßig oft deutlich kleiner als die Originalwerte.
+    
+    \item
+    \emph{Energieerhaltung}:
+    $E_{(\vec{a^{(1)}} \;|\; \vec{d^{(1)}})} = E_{\vec{f}}$
+    für alle $\vec{f} \in \real^N$ mit $E_{\vec{f}} := \sum_{n=1}^N f_n^2$
+    
+    \item
+    \emph{Energieverdichtung}:
+    Der Großteil der Energie von $(\vec{a^{(1)}} \;|\; \vec{d^{(1)}})$ ist in
+    $\vec{a^{(1)}}$ enthalten.
+\end{itemize}
+
+\linie
+
+\textbf{\name{Haar}-Transformation höherer Levels}:
+Sei $2^n \;|\; N$.
+Die \begriff{Level-$n$-\name{Haar}-Transformation} ist rekursiv definiert durch
+$\H_n\colon \real^N \to \real^N$,
+$\vec{f} \mapsto (\vec{a^{(n)}} \;|\; \vec{d^{(n)}} \;|\; \dotsb \;|\; \vec{d^{(1)}})$ mit\\
+$(\vec{a^{(n-1)}} \;|\; \vec{d^{(n-1)}} \;|\; \dotsb \;|\; \vec{d^{(1)}}) := \H_{n-1}(\vec{f})$
+und $(\vec{a^{(n)}} \;|\; \vec{d^{(n)}}) := \H_1(\vec{a^{(n-1)}})$
+(mit einem anderen $N$).
+
+\linie
+
+\textbf{Level-1-\name{Haar}-Wavelets}:
+Die \begriff{Level-1-\name{Haar}-Wavelets} sind für ein Signal der Länge $N$ definiert durch
+$\vec{W_1^{(1)}} := \frac{1}{\sqrt{2}} (1, -1, 0, \dotsc, 0)$,
+$\vec{W_2^{(1)}} := \frac{1}{\sqrt{2}} (0, 0, 1, -1, 0, \dotsc, 0)$,
+\dots,\\
+$\vec{W_{N/2}^{(1)}} := \frac{1}{\sqrt{2}} (0, \dotsc, 0, 1, -1)$.
+Es gilt $d_m = \vec{f} \cdot \vec{W_m^{(1)}}$ für $m = 1, \dotsc, N/2$.
+
+\textbf{Level-1-Skalierungssignale}:
+Die \begriff{Level-1-Skalierungssignale} sind für ein Signal der Länge $N$ definiert durch
+$\vec{V_1^{(1)}} := \frac{1}{\sqrt{2}} (1, 1, 0, \dotsc, 0)$,
+$\vec{V_2^{(1)}} := \frac{1}{\sqrt{2}} (0, 0, 1, 1, 0, \dotsc, 0)$,
+\dots,\\
+$\vec{V_{N/2}^{(1)}} := \frac{1}{\sqrt{2}} (0, \dotsc, 0, 1, 1)$.
+Es gilt $a_m = \vec{f} \cdot \vec{V_m^{(1)}}$ für $m = 1, \dotsc, N/2$.
+
+\textbf{Rekonstruktion von $\vec{f}$}:
+Es gilt $\vec{f} = \vec{A^{(1)}} + \vec{D^{(1)}}$ mit\\
+$\vec{A^{(1)}} = \sum_{m=1}^{N/2} a_m \vec{V_m^{(1)}}
+= \sum_{m=1}^{N/2} (\vec{f} \cdot \vec{V_m^{(1)}}) \vec{V_m^{(1)}}$ und
+$\vec{D^{(1)}} = \sum_{m=1}^{N/2} d_m \vec{W_m^{(1)}}
+= \sum_{m=1}^{N/2} (\vec{f} \cdot \vec{W_m^{(1)}}) \vec{W_m^{(1)}}$.
+
+\linie
+
+\textbf{\name{Haar}-Wavelets/Skalierungssignale höherer Levels}:
+Seien $\alpha_1 := \alpha_2 := \beta_1 := -\beta_2 := \frac{1}{\sqrt{2}}$.
+Mit $\vec{V_m}^{(0)} := (0, \dotsc, 0, 1, 0, \dotsc, 0)$ gilt
+$\vec{V_m^{(1)}} = \alpha_1 \vec{V_{2m-1}^{(0)}} + \alpha_2 \vec{V_{2m}^{(0)}}$ und
+$\vec{W_m^{(1)}} = \beta_1 \vec{V_{2m-1}^{(0)}} + \beta_2 \vec{V_{2m}^{(0)}}$.
+Definiert man
+$\vec{V_m^{(n)}} := \alpha_1 \vec{V_{2m-1}^{(n-1)}} + \alpha_2 \vec{V_{2m}^{(n-1)}}$ und
+$\vec{W_m^{(n)}} := \beta_1 \vec{V_{2m-1}^{(n-1)}} + \beta_2 \vec{V_{2m}^{(n-1)}}$,
+so erhält man die \begriff{Level-$n$-\name{Haar}-Wavelets/-Skalierungssignale}.
+Es gilt $d_m^{(n)} = \vec{f} \cdot \vec{W_m^{(n)}}$ und
+$a_m^{(n)} = \vec{f} \cdot \vec{V_m^{(n)}}$.
+
+\pagebreak
+
+\subsection{%
+    2D-Wavelet-Transformation%
+}
+
+\textbf{2D-Wavelet-Transformation}:
+Gegeben sei ein Bild $G \in \real^{M \times N}$ mit $M, N$ gerade.
+Dann berechnet sich die \begriff{2D-Wavelet-Transformation} für den ersten Level wie folgt:
+\begin{enumerate}
+    \item
+    Führe die Level-1-1D-Wavelet-Transformation für jede Zeile von $G$ durch,
+    um so ein neues Bild zu erhalten.
+    
+    \item
+    Führe auf dem neuen Bild die Level-1-1D-Wavelet-Transformation für jede Spalte durch.
+\end{enumerate}
+Man erhält so $G \mapsto \smallpmatrix{A^{(1)}&V^{(1)}\\H^{(1)}&D^{(1)}}$,
+wobei $H^{(1)}, D^{(1)}, A^{(1)}, V^{(1)} \in \real^{N/2 \times M/2}$ und
+\begin{itemize}
+    \item
+    $A^{(1)}$ Trends entlang Zeilen und Spalten,
+    
+    \item
+    $H^{(1)}$ Trends entlang Zeilen und Fluktuationen entlang Spalten,
+    
+    \item
+    $V^{(1)}$ Fluktuationen entlang Zeilen und Trends entlang Spalten und
+    
+    \item
+    $D^{(1)}$ Fluktuationen entlang Zeilen und Spalten enthält.
+\end{itemize}
+Für höhere 2D-Wavelet-Transformationen höherer Levels führe diese Prozedur für $A^{(1)}$ durch.
+
+\subsection{%
+    \name{Daubechies}-Wavelets%
+}
+
+\textbf{\name{Daubechies}-Wavelets}:
+Die \begriff{\name{Daubechies}-Wavelet-Transformation} Daub4 ist für den Level 1 definiert durch
+$D_1\colon \real^N \to \real^N$, $\vec{f} \mapsto (\vec{a^{(1)}} \;|\; \vec{d^{(1)}})$,
+wobei $a_m^{(1)} := \vec{f} \cdot \vec{V_m^{(1)}}$ und $d_m^{(1)} := \vec{f} \cdot \vec{W_m^{(1)}}$
+für $m = 1, \dotsc, N/2$ und
+$\vec{V_1^{(1)}} := (\alpha_1, \dotsc, \alpha_4, 0, \dotsc, 0)$,
+$\vec{V_2^{(1)}} := (0, 0, \alpha_1, \dotsc, \alpha_4, 0, \dotsc, 0)$,
+\dots,
+$\vec{V_{N/2-1}^{(1)}} := (0, \dotsc, 0, \alpha_1, \dotsc, \alpha_4)$
+$\vec{V_{N/2}^{(1)}} := (\alpha_3, \alpha_4, 0, \dotsc, 0, \alpha_1, \alpha_2)$
+mit
+$\alpha_1 := \frac{1 + \sqrt{3}}{4\sqrt{2}}$,
+$\alpha_2 := \frac{3 + \sqrt{3}}{4\sqrt{2}}$,
+$\alpha_3 := \frac{3 - \sqrt{3}}{4\sqrt{2}}$,
+$\alpha_4 := \frac{1 - \sqrt{3}}{4\sqrt{2}}$.
+Dabei sei außerdem
+$\vec{V_m^{(n)}} := \sum_{i=1}^{4} \alpha_i \vec{V_{2m-2+i}^{(n-1)}}$ und\\
+$\vec{W_m^{(n)}} := \sum_{i=1}^{4} \beta_i \vec{V_{2m-2+i}^{(n-1)}}$
+mit
+$\beta_1 := \alpha_4$,
+$\beta_2 := -\alpha_3$,
+$\beta_3 := \alpha_2$,
+$\beta_4 := -\alpha_1$
+für $n \in \natural$.
+
+\linie
+
+\textbf{Eigenschaften}:
+\begin{itemize}
+    \item 
+    \emph{konstante Energie}:
+    $\sum_{i=1}^4 \alpha_i^2 = 1$,
+    $\sum_{i=1}^4 \beta_i^2 = 1$
+    
+    \item
+    \emph{Mittelwert/Dif"|ferenz}:
+    $\sum_{i=1}^4 \alpha_i = \sqrt{2}$,
+    $\sum_{i=1}^4 \beta_i = 0$
+    
+    \item
+    \emph{Rekonstruktion}:
+    $\vec{f} = \vec{A^{(k)}} + \sum_{n=1}^k \vec{D^{(n)}}$
+    mit $\vec{A^{(n)}} := \sum_{m=1}^{N/2^n} (\vec{f} \cdot \vec{V_m^{(n)}}) \vec{V_m^{(n)}}$\\
+    und $\vec{D^{(n)}} := \sum_{m=1}^{N/2^n} (\vec{f} \cdot \vec{W_m^{(n)}}) \vec{W_m^{(n)}}$
+\end{itemize}
+
+\pagebreak

@@ -1,0 +1,1349 @@
+\section{%
+    Approximation%
+}
+
+\subsection{%
+    Interpolation mit Polynomen%
+}
+
+\subsubsection{%
+    \name{Lagrange}-Form und 4-Punkt-Formel%
+}
+
+Gegeben seien $n + 1$ paarweise verschiedene Stützstellen $x_0, \dotsc, x_n$
+mit Funktionswerten \\
+$f_0, \dotsc, f_n$.
+Dann können diese eindeutig durch ein Polynom $p$ mit Grad $\le n$ interpoliert
+werden
+(\textbf{polynomiale Interpolation}):
+\begin{align*}
+    p(x_k) = f_k \quad\text{ für }\quad k = 0, \dotsc, n.
+\end{align*}
+Das Interpolationspolynom $p$ lässt sich in der \textbf{\name{Lagrange}-Form}
+darstellen:
+\begin{align*}
+    p(x) = \sum_{k=0}^n f_k q_k(x), \quad
+    q_k(x) = \prod_{j \not= k} \frac{x - x_j}{x_k - x_j}.
+\end{align*}
+Die $q_k$ heißen dabei \textbf{\name{Lagrange}-Polynome}.
+Sie haben in $x_k$ den Wert $1$ und verschwinden in allen anderen Punkten
+$x_j$, d.\,h. $q_k(x_j) = \delta_{kj}$.
+
+\linie
+
+\textbf{Generation von Zwischenwerten mittels kubischer Interpolation
+(4-Punkt-Formel)}: \\
+Sind die $f_k$ an äquidistanten Stützstellen gegeben, d.\,h.
+$x_k = kh$ mit $h$ Gitterweite, $k = 0, \dotsc, n$, so kann man
+Zwischenwerte an den Stützstellen $x_{k + 1/2} = (k + 1/2)h$ durch kubische
+Interpolation approximieren.
+Zur Interpolation verwendet man dazu die vier benachbarten Stützstellen
+$x_{k-1}, x_k, x_{k+1}, x_{k+2}$.
+Dabei ergibt sich die Formel
+\begin{align*}
+    f_{k + 1/2} = (-f_{k-1} + 9f_k + 9f_{k+1} - f_{k+2}) / 16.
+\end{align*}
+Den Prozess kann man solange wiederholen, bis genügend Daten erzeugt wurden.
+Die Gewichte $-\frac{1}{16}, \frac{9}{16}, \frac{9}{16}, -\frac{1}{16}$ sind
+die Werte der Lagrange-Polynome an der neuen Stützstelle $x_{k + 1/2}$.
+Um $x_{1/2}$ bzw. $x_{n - 1/2}$ zu approximieren, verwendet man die
+Stützstellen $x_0, x_1, x_2, x_3$ bzw. $x_{n-3}, x_{n-2}, x_{n-1}, x_n$
+(für $x_{1/2}$ ergibt sich z.\,B. $f_{1/2} = (5f_0 + 15f_1- 5f_2 + f_3) / 16$).
+
+\linie
+
+\textbf{Schätzformel für zweite Ableitung}: \\
+Für die erste Ableitung $f'$ einer Funktion $f$ gilt
+$f'(x) \approx \frac{f(x) - f(x - h)}{h}$.
+Daraus folgt für die zweite Ableitung durch Taylorentwicklung
+($f(x + h) = f(x) + f'(x)h + \frac{1}{2} f''(x) h^2 + o(h^2)$, $h \to 0$)
+\begin{align*}
+    f''(x) \approx \frac{f(x + h) - f(x) - f'(x)h}{h^2}
+    \approx \frac{f(x + h) - 2f(x) + f(x - h)}{h^2}.
+\end{align*}
+
+\subsubsection{%
+    Schema von \name{Aitken}-\name{Neville}%
+}
+
+Gegeben seien wieder $n + 1$ Datenpunkte $(x_i, f_i)$, $i = 0, \dotsc, n$
+mit $x_0 < \dotsb < x_n$. \\
+Dann lässt sich der Wert $p(x)$ des Interpolationspolynoms an der Stelle
+$x \in [x_0, x_n]$ mithilfe eines Dreiecksschemas
+(\textbf{Schema von \name{Aitken}-\name{Neville}}) berechnen:
+\begin{align*}
+    \begin{array}{ccccccc}
+        f_0 = p_0^0 \\
+        & \searrow \\
+        f_1 = p_1^0 & \rightarrow & p_0^1 \\
+        \vdots & & & \ddots \\
+        f_{n-1} = p_{n-1}^0 & & \cdots & & p_0^{n-1} \\
+        & \searrow & & & & \searrow \\
+        f_n = p_n^0 & \rightarrow & p_{n-1}^1 & \cdots & p_1^{n-1} &
+        \rightarrow & p_0^n = p(x)
+    \end{array}\qquad
+    \begin{array}{l}
+        \text{mit} \\
+        p_i^j := \dfrac{x_{i+j} - x}{x_{i+j} - x_i} p_i^{j-1} +
+        \dfrac{x - x_i}{x_{i+j} - x_i} p_{i+1}^{j-1}, \\
+        p_i^0 := f_i, \\[3mm]
+        j = 1, \dotsc, n,\quad i = 0, \dotsc, n - j.
+    \end{array}
+\end{align*}
+
+Dabei ist $p_i^j = p_i^j(x)$ ein Polynom vom Grad $\le j$, das an den Punkten
+$x_i, \dotsc, x_{i+j}$ interpoliert.
+Der Vorteil dieses Dreiecksschemas ist, dass zur Verbesserung der Genauigkeit
+weitere Datenpunkte sehr einfach als neue Zeile am unteren Rand hinzugefügt
+werden können, ohne alle Werte neu zu berechnen
+(anders als z.\,B. mit Lagrange-Polynomen).
+
+Das Aitken-Neville-Schema kann auch dazu benutzt werden, algorithmisch
+die Koef"|fizienten des Interpolationspolynoms zu berechnen.
+Dazu berechnet man das Schema spaltenweise und speichert in einer Matrix
+die Koef"|fizienten der Polynome der vorherigen Spalte.
+Die neuen Koef"|fizienten können dann mithilfe der Definition von $p_i^j$
+berechnet werden.
+
+\subsubsection{%
+    Polynome in \name{Newton}-Form, \name{Horner}-Schema%
+}
+
+Seien ein Polynom $p$ vom Grad $\le n$ und $n$ Punkte $x_0, \dotsc, x_{n-1}$
+gegeben. \\
+Dann ist die \textbf{\name{Newton}-Form} von $p$ bezüglich der Punktfolge
+$x_0, \dotsc, x_{n-1}$
+\begin{align*}
+    p(x) = a_0 + a_1 (x - x_0) + \dotsb + a_n (x - x_0) \dotsm (x - x_{n-1}).
+\end{align*}
+Dies kann als verallgemeinerte Taylor-Darstellung aufgefasst werden, denn
+für $x_0 = \dotsb = x_{n-1}$ erhält man insbesondere die Taylor-Entwicklung
+von $p$ im Punkt $x_0$.
+
+\linie
+
+Die Auswertung eines Polynoms in Newton-Form kann mittels
+\textbf{\name{Horner}-Schema} erfolgen:
+\begin{align*}
+    p(x) = (\dotsb(a_n y_{n-1} + a_{n-1}) y_{n-2} + \dotsb) y_0 + a_0
+\end{align*}
+mit $y_k = x - x_k$, $k = 0, \dotsc, n - 1$. \\
+Durch die geschachtelte Multiplikation benötigt man nur $3n$ Operationen: \\
+Anfangs setzt man $p := a_n$ und dann berechnet man
+$p \leftarrow p y_k + a_k$ für $k = n - 1, \dotsc, 0$.
+
+\linie
+
+\textbf{Umwandlung eines Polynoms von Normalform $\sum_{k=0}^n c_k x^k$ in
+\name{Newton}-Form}: \\
+Der Koef"|fizient $a_n$ der Newton-Form ist der Koef"|fizient von $x^n$,
+denn $p(x) = a_n x^n + \O(x^{n-1})$.
+So kann man die Newton-Form rekursiv berechnen:
+$a_n$ ist der höchste Koef"|fizient von $p(x)$, dann subtrahiert man
+den letzten Summanden $q(x) = p(x) - a_n (x - x_0) \dotsm (x - x_{n-1})$.
+$a_{n-1}$ ist wiederum der höchste Koef"|fizient dieses Restterms $q(x)$ usw.
+
+\subsubsection{%
+    \name{Hermite}-Interpolation%
+}
+
+Seien eine glatte Funktion $f$ und $n + 1$ Punkte $x_0, \dotsc, x_n$
+(nicht notwendig verschieden) gegeben. \\
+Dann gibt es genau ein Polynom $p$ vom Grad $\le n$ mit
+\begin{align*}
+    p^{(j)}(x_k) = f^{(j)}(x_k), \quad
+    0 \le j < m_k,
+\end{align*}
+wobei $m_k$ die Vielfachheit des Punktes $x_k$ ist ($k = 0, \dotsc, n$).
+Tritt also ein Punkt mehrfach auf, so werden nicht nur Funktionswerte, sondern
+auch Ableitungen interpoliert.
+Dieses Interpolationsverfahren heißt \textbf{\name{Hermite}-Interpolation}.
+
+Im Schaubild werden Vielfachheiten durch eng nebeneinander liegende
+Markierungen auf der $x$-Achse oder zusätzliche Kreise um die
+Interpolationspunkte angedeutet.
+
+\linie
+
+Sind Daten in der Form $(x_k, f_k)$ gegeben, so verwendet man
+meistens die Konvention, dass $f_k = p^{(j)}(x_k)$, wobei $j$ die Anzahl der
+Punkte $x_i$ mit $x_i = x_k$ und $i < k$ ist.
+
+Im Beispiel $(1, 3), (2, 1), (2, 0), (2, 2), (4, 2), (4, 1)$ interpoliert
+das Polynom der Hermite-Inter\-polation
+$f(1), f(2), f'(2), f''(2), f(4), f'(4)$.
+
+\pagebreak
+
+\subsubsection{%
+    Dividierte Dif"|ferenzen%
+}
+
+Die \textbf{Dividierte Dif"|ferenz} ist eine Verallgemeinerung des
+Dif"|ferenzenquotienten
+\begin{align*}
+    \Delta(a, b)f = \frac{f(a) - f(b)}{a - b}.
+\end{align*}
+Sie ist rekursiv definiert:
+\begin{align*}
+    \Delta(x_0, \dotsc, x_n)f
+    := \frac{\Delta(x_1, \dotsc, x_n)f -
+    \Delta(x_0, \dotsc, x_{n-1})f}{x_n - x_0}
+    \quad\text{ für } x_0 \not= x_n \quad\text{ sowie }
+\end{align*}
+\begin{align*}
+    \Delta(\underbrace{x, \dotsc, x}_{n + 1 \text{-mal}})f
+    := \frac{1}{n!} f^{(n)}(x).
+\end{align*}
+Insbesondere ist $\Delta(x)f = f(x)$.
+
+\linie
+
+Die Dividierten Dif"|ferenzen
+\begin{align*}
+    \Delta_i^j := \Delta(x_i, \dotsc, x_{i+j})
+    = \frac{\Delta_{i+1}^{j-1} - \Delta_i^{j-1}}{x_{i+j} - x_i}
+\end{align*}
+können in einem \textbf{Dreiecksschema} berechnet werden:
+\begin{align*}
+    \begin{array}{c||cccc}
+        x_0 & \Delta_0^0 & \Delta_0^1 & \Delta_0^2 & \Delta_0^3 \\
+        x_1 & \Delta_1^0 & \Delta_1^1 & \Delta_1^2 \\
+        x_2 & \Delta_2^0 & \Delta_2^1 \\
+        x_3 & \Delta_3^0
+    \end{array}
+\end{align*}
+Dabei hängt der Eintrag $\Delta_i^j$ vom Eintrag links ($\Delta_i^{j-1}$) und
+links unten ($\Delta_{i+1}^{j-1}$) ab. \\
+Die Daten müssen vorgegeben sein, falls es keine zwei verschiedene Stellen
+in $\Delta_i^j$ gibt.
+Startwerte sind dabei Funktionswerte oder bei Vielfachheiten Ableitungswerte
+von $f$ an den Punkten $x_k$.
+Dabei schreibt man in die $j$-te Spalte $\frac{1}{j!} f^{(j)}(x_k)$
+(nach Definition der Dividierten Dif"|ferenz). \\
+Ansonsten, falls es zwei verschiedene Stellen in $\Delta_i^j$ gibt, kann man
+den Eintrag mittels der Definition der Dividierten Dif"|ferenz berechnen.
+
+\subsubsection{%
+    Integraldarstellung Dividierter Dif"|ferenzen%
+}
+
+Die Dividierte Dif"|ferenz $\Delta(x_0, \dotsc, x_n)f$ lässt sich als
+Integral über den von den Einheitsvektoren aufgespannten Simplex
+darstellen (\textbf{Formel von \name{Hermite}-\name{Genocchi}}):
+\begin{align*}
+    \Delta(x_0, \dotsc, x_n)f
+    = \int_{s_0 + \dotsb + s_n = 1} f^{(n)}(s_0 x_0 + \dotsb + s_n x_n)\ds.
+\end{align*}
+Daraus folgt insbesondere, dass Dividierte Dif"|ferenzen für glatte Funktionen
+$f$ stetig von den Punkten $x_k$ abhängen und
+\begin{align*}
+    \Delta(x_0, \dotsc, x_n)f = \frac{f^{(n)}(\xi)}{n!} \quad\text{mit}\quad
+    \xi \in [\min x_k, \max x_k].
+\end{align*}
+
+\linie
+
+Ein $n$-dimensionaler \textbf{Simplex} ist dabei die konvexe Hülle $S$ von
+$n + 1$ Punkten $p_0, \dotsc, p_n$, die nicht alle in einem
+$n - 1$-dimensionalen Unterraum liegen:
+\begin{align*}
+    S = \left\{\left.\sum_{j=0}^n \alpha_j p_j \;\right|\;
+    \sum_{j=0}^n \alpha_j = 1,\; \alpha_j \ge 0\right\}.
+\end{align*}
+Das Volumen eines Simplex lässt sich durch die Vektoren $p_i - p_0$,
+$i = 1, \dotsc, n$ ausdrücken:
+\begin{align*}
+    \vol S = \frac{1}{n!} \cdot |\det(p_1 - p_0, \dotsc, p_n - p_0)|.
+\end{align*}
+
+\subsubsection{%
+    \name{Newton}-Form und Dividerte Dif"|ferenzen%
+}
+
+Die \textbf{Newton-Form} des Polynoms $p$ vom Grad $\le n$, das eine Funktion
+$f$ an den Punkten $x_0, \dotsc, x_n$ interpoliert, lässt sich
+\textbf{mithilfe Dividerter Dif"|ferenzen} angeben:
+\begin{align*}
+    p(x) = a_0 + a_1 (x - x_0) + \dotsb + a_n (x - x_0) \dotsm (x - x_{n-1}),
+    \quad\; a_k = \Delta(x_0, \dotsc, x_k)f,\;\; k = 0, \dotsc, n.
+\end{align*}
+Dabei werden an einem Punkt mit Vielfachheit $m$ zusätzlich auch alle
+Ableitungen der Ordnung $< m$ interpoliert.
+
+Die Newton-Form ist insbesondere geeignet, wenn man weitere
+Interpolationspunkte hinzufügen will.
+Die Darstellung braucht dann jeweils um nur einen weiteren Term ergänzt zu
+werden, die vorherigen Terme bleiben inklusive Koef"|fizienten gleich.
+Das Schema zur Berechnung des neuen höchsten Koef"|fizienten als
+Dividerte Dif"|ferenz wird um eine neue Diagonale ergänzt. \\
+Außerdem können Ableitungen mit der Newton-Form einfach interpoliert werden.
+
+\subsubsection{%
+    Fehler bei der Interpolation glatter Funktionen%
+}
+
+Der \textbf{Fehler des Polynoms} $p$ vom Grad $\le n$,
+das eine glatte Funktion an den
+Punkten $x_0, \dotsc, x_n$ interpoliert, lässt sich darstellen in der Form
+\begin{align*}
+    f(x) - p(x) = \frac{f^{(n+1)}(\xi)}{(n + 1)!} (x - x_0) \dotsm (x - x_n)
+    \quad\text{mit}\quad \xi \in \left[\min\{x, x_k\},
+    \max\{x, x_k\}\right].
+\end{align*}
+Insbesondere gilt für äquidistante Punkte $x_k = x_0 + kh$, $k = 0, \dotsc, n$
+\begin{align*}
+    |f(x) - p(x)| = \O(h^{n+1}),\quad h \to 0, \quad x_0 \le x \le x_n.
+\end{align*}
+Für $x_0 = \dotsb = x_n$ erhält man die Formel für das Taylor-Restglied.
+
+\linie
+
+Wie man in der Fehlerformel sieht, hängt der Fehler stark davon ab, welche
+Stützpunkte man für eine gegebene zu approximierende Funktion wählt.
+Setzt man die Punkte äquidistant, so weicht die Approximation zu den
+Rändern hin stark von der Funktion ab und "`pendelt"' hin und her.
+Dies kann man vermeiden, indem man am Rand mehr Punkte (also dichter) wählt,
+da dort Informationen im Vergleich zur Mitte "`fehlen"'.
+
+Mit den \textbf{\name{Tschebyscheff}-Polynomen}
+\begin{align*}
+    T_n(x) = \cos(n \arccos x),\quad x \in [-1, 1]
+\end{align*}
+lässt sich besser approxmieren, indem man die Nullstellen von $T_n$
+\begin{align*}
+    \xi_i^{(n)} = \cos\left(\frac{2i + 1}{2n} \pi\right),\quad
+    i = 0, \dotsc, n - 1
+\end{align*}
+als Stützpunkte verwendet.
+Diese heißen \textbf{Tschebyscheff-Knoten} und basieren auf einer äquidistanten
+Winkelunterteilung im Halbkreis.
+Sie sind daher am Rand dichter verteilt wie in der Mitte.
+Verwendet man die Tschebyscheff-Knoten als Stützstellen bei der Interpolation,
+so verringert sich der Fehler an den Rändern deutlich.
+
+\subsubsection{%
+    Polynominterpolation mit \matlab{}%
+}
+
+Die Koef"|fizienten eines Polynoms $p(x) = a_1 x^n + \dotsb + a_n x + a_{n+1}$
+vom Grad $\le n$, das die Daten $(x_k, y_k)$ interpoliert, können in \matlab{}
+mit \code{a = polyfit(x, y, n);} ermittelt werden.
+Wenn $n$ kleiner ist als die Anzahl der Datenpunkte minus $1$, so wird das
+Polynom, das die Fehlerquadratsumme minimiert, bestimmt.
+Mit \code{p = polyval(a, x);} kann das Polynom in den Punkten $x_k$ ausgewertet
+werden (d.\,h. $p_k = p(x_k)$).
+
+\subsection{%
+    Orthogonale Polynome%
+}
+
+\subsubsection{%
+    Allgemeines%
+}
+
+Zu jeder auf einem Intervall $(a, b)$ positiven Gewichtsfunktion $w$
+existiert eine bzgl. des Skalarprodukts $\sp{f, g} := \int_a^b f g w$
+orthogonale Folge von Polynomen
+\begin{align*}
+    p_n(x) = \alpha_n x^n + \O(x^{n-1}),\quad
+    \alpha_n \not= 0.
+\end{align*}
+Bis auf die Normierungsfaktoren $\alpha_n$ sind die
+\textbf{orthogonalen Polynome} durch die Orthogonalitätsbedingungen
+$\sp{p_m, p_n} = 0$ für $m \not= n$ eindeutig bestimmt und können
+mit dem Orthongalisierungsverfahren von \name{Gram}-\name{Schmidt} bestimmt
+werden.
+
+\linie
+
+\textbf{Orthogonalisierungsverfahren von \name{Gram}-\name{Schmidt}}:
+Sei $b_1, \dotsc, b_n$ Basis eines Vektorraums $V$.
+Dann kann man eine orthogonale Basis $u_1, \dotsc, u_n$ durch
+\begin{align*}
+    u_j := b_j - \sum_{k=1}^{j-1} \frac{\sp{b_j, u_k}}{\sp{u_k, u_k}} u_k,
+    \quad j = 1, \dotsc, n
+\end{align*}
+konstruieren.
+
+Beim analogen
+\textbf{Orthonormalisierungsverfahren von \name{Gram}-\name{Schmidt}}
+vereinfacht sich die Rekursion, da man die Basisvektoren nach jedem Schritt
+normiert:
+\begin{align*}
+    u_j := b_j - \sum_{k=1}^{j-1} \sp{b_j, u_k} u_k, \quad
+    u_j \leftarrow \frac{u_j}{\norm{u_j}}, \quad
+    j = 1, \dotsc, n.
+\end{align*}
+
+Im Falle der orthogonalen Polynome geht man von der Monom-Basis
+$\alpha_0 x^0, \dotsc, \alpha_n x^n$ aus.
+
+\linie
+
+Zur Bestimmung der orthogonalen Polynome für $(a, b) = (0, 1)$, $w(x) \equiv 1$
+kann man auch anders vorgehen:
+Die eine Methode berechnet iterativ das Polynom $p_n$ aus den vorhergehenden,
+schon bekannten Polynomen $p_k$, $k = 0, \dotsc, n - 1$. \\
+Dabei wird $p_n(x) = \alpha_n x^n + c_{n-1} x^{n-1} + \dotsb + c_1 x + c_0$
+allgemein angesetzt ($\alpha_n$ bekannter Normierungsfaktor).
+Aus den Orthogonalitätsbedingungen \\
+$0 = \sp{p_n, p_k}
+= \int_0^1 \left(\alpha_n x^n + \sum_{i=0}^{n-1} c_i x^i\right) p_k(x) \dx$ für
+$k = 0, \dotsc, n - 1$ folgen dann $n$ Gleichungen für die $n$ Unbekannten
+$c_0, \dotsc, c_{n-1}$.
+Das Lösen des LGS liefert die gesuchten Koef"|fizienten.
+
+Mit der anderen Art kann das Polynom $p_n$ auch direkt bestimmt werden,
+ohne die vorherigen $p_k$, $k = 0, \dotsc, n - 1$ zu kennen.
+Da man weiß, dass $p_n(x) = \alpha_n x^n + \sum_{k=0}^{n-1} c_k x^k$
+zu allen Polynomen vom Grad $< n$ und damit auch zu den Monomen $x^j$,
+$j = 0, \dotsc, n - 1$ orthogonal ist,
+setzt man
+\begin{align*}
+    \int_0^1 \left(\alpha_n x^n + \sum_{k=0}^{n-1} c_k x^k\right) x^j \dx
+    = 0 \quad\Leftrightarrow\quad
+    \sum_{k=0}^{n-1} \frac{1}{j + k + 1} c_k = - \frac{\alpha_n}{n + j + 1}
+\end{align*}
+und erhält die Koef"|fizienten durch Lösen des LGS mit der sog.
+\textbf{\name{Hilbert}-Matrix}
+\begin{align*}
+    \left(\frac{1}{i + j - 1}\right)_{i,j=1}^n =
+    \begin{pmatrix}
+        \frac{1}{1} & \frac{1}{2} & \dots & \frac{1}{n} \\
+        \frac{1}{2} & \frac{1}{3} & \dots & \frac{1}{n + 1} \\
+        \vdots & \vdots & & \vdots \\
+        \frac{1}{n} & \frac{1}{n + 1} & \dots & \frac{1}{2n - 1}
+    \end{pmatrix}.
+\end{align*}
+
+\pagebreak
+
+\subsubsection{%
+    Dreigliedrige Rekursion für orthogonale Polynome%
+}
+
+Die orthogonalen Polynome $q_n = x^n + \O(x^{n-1})$ mit Nomierungsfaktor $1$
+zu einer Gewichtsfunktion $w$ auf einem Intervall $(a, b)$ können rekursiv
+berechnet werden:
+\begin{align*}
+    q_{n+1} = (\xi - \beta_n) q_n - \gamma_n q_{n-1},\quad
+    n \ge 2
+\end{align*}
+mit $\xi(x) := x$
+(\textbf{dreigliedrige Rekursion}).
+Die Koef"|fizienten $\beta_n$ und $\gamma_n$ lassen sich mithilfe des
+Skalarprodukts
+$\sp{f, g} = \int_a^b f g w$ ausdrücken:
+\begin{align*}
+    \beta_n := \frac{\sp{\xi q_n, q_n}}{\varrho_n},\quad
+    \gamma_n := \frac{\varrho_n}{\varrho_{n-1}}
+    \quad\text{mit}\quad \varrho_n := \sp{q_n, q_n}.
+\end{align*}
+
+Für orthogonale Polynome $p_n(x) = \alpha_n x^n + \O(x^{n-1})$ mit
+allgemeinem Normierungsfaktor $\alpha_n$ gilt die Rekursion
+\begin{align*}
+    p_{n+1} = \frac{\alpha_{n+1}}{\alpha_n} (\xi - \beta'_n) p_n -
+    \frac{\alpha_{n-1} \alpha_{n+1}}{\alpha_n^2} \gamma'_n p_{n-1},
+\end{align*}
+wobei die Formeln für $\beta'_n, \gamma'_n$ aus denen von $\beta_n, \gamma_n$
+entstehen, wenn man $q_n$ durch $p_n$ ersetzt.
+
+\subsubsection{%
+    Nullstellen orthogonaler Polynome%
+}
+
+Das orthogonale Polynom $p_n$ vom Grad $n$ zu einer Gewichtsfunktion $w$
+auf $(a, b)$ hat $n$ einfache Nullstellen in $(a, b)$.
+(Diese liegen zwischen denen von $p_{n+1}$.)
+
+\subsubsection{%
+    \name{Legendre}-Polynome%
+}
+
+Die \textbf{\name{Legendre}-Polynome}
+\begin{align*}
+    p_n(x) := \frac{1}{2^n n!} \frac{d^n}{dx^n} (x^2 - 1)^n
+    = \frac{(2n)!}{2^n (n!)^2} x^n + \O(x^{n-1})
+\end{align*}
+sind bzgl. des Skalarprodukts $\sp{f, g} = \int_{-1}^1 f g$
+orthogonal. \\
+Sie sind Lösungen der Dif"|ferentialgleichung
+\begin{align*}
+    ((1 - \xi^2) p'_n)' = -n (n + 1) p_n
+\end{align*}
+mit $\xi(x) = x$ und erfüllen die dreigliedrige Rekursion
+\begin{align*}
+    (n + 1) p_{n+1} = (2n + 1) \xi p_n - n p_{n-1}.
+\end{align*}
+
+\pagebreak
+
+\subsubsection{%
+    \name{Tschebyscheff}-Polynome%
+}
+
+Die \textbf{\name{Tschbyscheff}-Polynome} entstehen durch Transformation
+der Kosinus-Funktionen:
+\begin{align*}
+    p_n(x) := \cos(nt), \quad
+    x = \cos(t).
+\end{align*}
+Einem Argument $x \in [-1, 1]$ entspricht der Winkel
+$t = \arccos(x) \in [0,\pi]$, der den Wert des Polynoms als $\cos(nt)$
+bestimmt.
+Das Polynom $p_n$ hat in $[0,1]$ $n$ Nullstellen $\xi_k$ ($k = 1, \dotsc, n$)
+und $n + 1$ Extrema $\eta_k$ ($k = 0, \dotsc, n$), nämlich
+\begin{align*}
+    \xi_k := \cos\left(\frac{(2k - 1)\pi}{2n}\right), \quad
+    \eta_k := \cos\left(\frac{k\pi}{n}\right), \text{ wobei }
+    p_n(\eta_k) = (-1)^k.
+\end{align*}
+Die Tschebyscheff-Polynome erfüllen die Orthogonalitätsrelation
+\begin{align*}
+    \int_{-1}^1 p_m(x) p_n(x) \frac{\dx}{\sqrt{1 - x^2}} =
+    \begin{cases}\pi & m = n = 0 \\ \pi/2 & m = n > 0 \\ 0 & \text{sonst},
+    \end{cases}
+\end{align*}
+d.\,h. $[a,b] = [-1, 1]$ und $w(x) = \frac{1}{\sqrt{1 - x^2}}$.
+Dies impliziert die dreigliedrige Rekursion
+\begin{align*}
+    p_{n+1} = 2 \xi p_n - p_{n-1}, \quad n \ge 1 \quad \text{ mit } \quad
+    \xi(x) = x.
+\end{align*}
+
+\linie
+
+Die \textbf{Tschebyscheff-Entwicklung einer Funktion} $f$
+\begin{align*}
+    f(x) \sim \sum_{n=0}^\infty \frac{\sp{f, p_n}}{\varrho_n} p_n(x),
+    \quad \varrho_n = \sp{p_n, p_n}
+\end{align*}
+entspricht der Fourier-Reihe der transformierten Funktion $g(t) = f(x)$,
+$x = \cos(t)$, d.\,h.
+\begin{align*}
+    g(t) \sim \sum_{n=0}^\infty \frac{1}{\varrho_n}
+    \left(\int_0^\pi f(\cos t) \cos(nt) \dt\right) \cos(nt).
+\end{align*}
+Damit kann die schnelle Fourier-Transformation zur näherungsweisen Berechnung
+der \\
+Entwicklungs-Koef"|fizienten herangezogen werden.
+
+\subsubsection{%
+    Minimalität der \name{Tschebyscheff}-Polynome%
+}
+
+Das Tschebyscheff-Polynom $p_n(x) = \cos(n \arccos(x))$ \textbf{minimiert}
+\begin{align*}
+    \max_{x \in [-1,1]} |q(x)|
+\end{align*}
+(eindeutig) unter allen Polynomen $q$ vom Grad $n$ mit gleichem höchsten
+Koef"|fizienten.
+Anders formuliert ist die Maxiumum-Norm des Produkts
+\begin{align*}
+    \prod_{k=1}^n (x - \xi_k)
+\end{align*}
+auf dem Intervall $[-1,1]$ für die Nullstellen $\xi_k$ von $p_n$ minimal.
+
+\pagebreak
+
+\subsection{%
+    Diskrete \name{Fourier}-Transformation%
+}
+
+\setcounter{subsubsection}{-1}
+
+\subsubsection{%
+    \emph{Einschub}: \name{Fourier}-Reihen%
+}
+
+Sei $f$ eine $2\pi$-periodische Funktion, d.\,h.
+$\forall_{x \in \real}\; f(x + 2\pi) = f(x)$.
+Dann ist die \textbf{komplexe \name{Fourier}-Reihe} von $f$ die Entwicklung
+nach dem Orthonormalsystem $e_k(x) = e^{\i kx}$, $k \in \integer$:
+\begin{align*}
+    f(x) \sim \sum_{k \in \integer} c_k e_k(x), \quad
+    c_k = \sp{f, e_k}_{2\pi} :=
+    \frac{1}{2\pi} \int_0^{2\pi} f(t) \overline{e_k(t)} \dt.
+\end{align*}
+Die Art der Konvergenz der Reihe hängt dabei von der Glattheit von $f$ bzw.
+dem Abfallverhalten \textbf{\name{Fourier}-Koef"|fizienten} $c_k$ ab.
+Hinreichend für gleichmäßige Konvergenz ist
+$\sum_{k \in \integer} |c_k| < \infty$.
+
+\linie
+
+Ist $f$ eine reellwertige $2\pi$-periodische Funktion, so ist die
+\textbf{reelle \name{Fourier-Reihe}} von $f$ die Entwicklung nach dem
+Orthogonalsystem der Kosinus- und Sinusfunktionen:
+\begin{align*}
+    f(x) \sim \frac{a_0}{2} + \sum_{k=1}^\infty (a_k \cos(kx) + b_k \sin(kx)),
+\end{align*}
+\begin{align*}
+    a_k := \frac{1}{\pi} \int_{-\pi}^\pi f(t) \cos(kt) \dt, \quad
+    b_k := \frac{1}{\pi} \int_{-\pi}^\pi f(t) \sin(kt) \dt.
+\end{align*}
+Wiederum hängt die Art der Konvergenz der Reihe von der Glattheit von $f$ ab.
+Hinreichend für absolute Konvergenz ist, dass die
+\text{\name{Fourier}-Koef"|fizienten} $a_k$ und $b_k$ absolut konvergente
+Reihen bilden.
+
+\linie
+
+Auch eine konvergente Fourier-Reihe muss i.\,A. nicht an allen Stellen den
+Funktionswert als Grenzwert annehmen.
+An Unstetigkeitsstellen konvergiert die Reihe meist gegen den Mittelwert
+aus links- und rechtsseitigem Grenzwert. \\
+Daher schreibt man oft $f(x) \sim \sum \dotsb$ statt
+$f(x) = \sum \dotsb$.
+
+\subsubsection{%
+    Komplexe Einheitswurzeln%
+}
+
+Die Gleichung $z^n = 1$, $z \in \complex$ hat genau $n$ Lösungen
+\begin{align*}
+    z_k = w_n^k, \quad
+    w_n := \exp(2 \pi \i / n), \quad
+    k = 0, \dotsc, n - 1,
+\end{align*}
+die als \textbf{Einheitswurzeln} bezeichnet werden, wobei $w_n^n = 1$ und
+$w_n^{k + nm} = w_n^k$ für $m \in \integer$.
+Die Einheitswurzeln $w_n^k$ bilden ein dem Einheitskreis einbeschriebenes
+regelmäßiges $n$-Eck.
+
+\subsubsection{%
+    \name{Fourier}-Matrix%
+}
+
+Durch Bilden von Potenzen der Einheitswurzel $w_n = \exp(2 \pi \i / n)$
+erhält man die \textbf{\name{Fourier}-Matrix}
+\begin{align*}
+    W_n :=
+    \begin{pmatrix}
+        w_n^{0 \cdot 0} & \dots & w_n^{0 \cdot (n - 1)} \\
+        \vdots & & \vdots \\
+        w_n^{(n - 1) \cdot 0} & \dots & w_n^{(n - 1) \cdot (n - 1)}
+    \end{pmatrix} =
+    (w_n^{k\ell})_{k,\ell=0}^{n-1}.
+\end{align*}
+Dabei ist $W_n/\sqrt{n}$ unitär, d.\,h. $W_n^\ast W_n/n$ ist die
+Einheitsmatrix.
+
+\subsubsection{%
+    Diskrete \name{Fourier}-Transformation%
+}
+
+Die Multiplikation eines Vektors $c = (c_0, \dotsc, c_{n-1})^t$ mit der
+Fourier-Matrix $W_n$ wird als \\
+\textbf{diskrete \name{Fourier}-Transformation}
+bezeichnet:
+\begin{align*}
+    f = W_n c \quad\Leftrightarrow\quad
+    c = \frac{1}{n} W_n^\ast f.
+\end{align*}
+Komponentenweise gilt also
+\begin{align*}
+    f_j = \sum_{k=0}^{n-1} c_k w_n^{jk} \quad\Leftrightarrow\quad
+    c_k = \frac{1}{n} \sum_{j=0}^{n-1} f_j w_n^{-kj}
+\end{align*}
+mit $k, j = 0, \dotsc, n - 1$, $w_n = \exp(2 \pi \i / n)$ und
+$f = (f_0, \dotsc, f_{n-1})^t$.
+
+\linie
+
+Die diskrete Fourier-Transformation entspricht der \\
+\textbf{Auswertung des trigonometrischen Polynoms}
+\begin{align*}
+    p(x) = \sum_{k=0}^{n-1} c_k e^{\i k x}
+\end{align*}
+an den Punkten $x_j = 2 \pi j / n$, d.\,h. $f_j = p(x_j)$ für
+$j = 0, \dotsc, n - 1$.
+
+\linie
+
+Die inverse Transformation kann als
+\textbf{Riemann-Summe für die Fourier-Koef"|fizienten} \\
+interpretiert werden:
+\begin{align*}
+    \sp{f, e_k}_{2\pi} = \frac{1}{2\pi} \int_0^{2\pi} f(x) e^{-\i k x} \dx
+    \approx \frac{1}{n} \sum_{j=0}^{n-1} f(x_j) e^{-\i k x_j}, \quad
+    x_j = 2 \pi j / n.
+\end{align*}
+Diese Approximation ist für glatte Funktionen und $n \gg |k|$ sehr genau.
+
+\subsubsection{%
+    Schnelle \name{Fourier}-Transformation%
+}
+
+Die diskrete Fourier-Transformation $f_j = \sum_{k=0}^{n-1} c_k w_n^{jk}$
+eines Vektors $c = (c_0, \dotsc, c_{n-1})$ mit $w_n = e^{2\pi\i/n}$
+kann für $n = 2^\ell$ mit der
+\textbf{schnellen \name{Fourier}-Transformation (FFT)} in \\
+$2n\ell = 2 n \log_2 n$ Operationen berechnet werden.
+
+In der rekursiven Version hat der Algorithmus die folgende Form:
+\begin{lstlisting}[mathescape]
+function $f$ = FFT($c$)
+    $n$ = length($c$);
+    if $n$ = $1$;
+        $f$ = $c$;
+    else;
+        $g$ = FFT($c_0, c_2, \dotsc, c_{n-2}$);
+        $h$ = FFT($c_1, c_3, \dotsc, c_{n-1}$);
+        $p$ = $\left(1, w_n, w_n^2, \dotsc, w_n^{n/2-1}\right)$;
+        $f$ = $(g + p \;.\!\ast h,\; g - p \;.\!\ast h)$;
+    end;
+\end{lstlisting}
+
+\linie
+\pagebreak
+
+Die inverse Fourier-Transformation
+$c_k = \frac{1}{n} \sum_{j=0}^{n-1} f_j w_n^{-jk}$
+eines Vektors $f = (f_0, \dotsc, f_{n-1})$
+kann vollkommen analog berechnet werden.
+Man bezeichnet den entsprechenden Algorithmus als
+\textbf{inverse schnelle \name{Fourier}-Transformation (IFFT)}.
+
+\linie
+
+Das \textbf{Produkt $r$ zweier Polynome}
+\begin{align*}
+    p(x) = \sum_{k=0}^{m_p} p_k x^k, \quad
+    q(x) = \sum_{k=0}^{m_q} q_k x^k
+\end{align*}
+kann mithilfe der FFT berechnet werden werden.
+Man wertet die Polynome an den komplexen Einheitswurzeln aus,
+multipliziert diese Werte und erhält die Koef"|fizienten $r_k$ von $r$
+durch Rücktransformation. \\
+Genauer wählt man zunächst $n = 2^\ell > m_p + m_q$ und ergänzt die
+Koef"|fizienten der Polynome mit Nullen zu Vektoren $\widetilde{p}$ und
+$\widetilde{q}$ der Länge $n$.
+Dann wird die diskrete Fourier-Transformation der Koef"|fizientenvektoren
+gebildet, d.\,h. $\widehat{p} = \FFT(\widetilde{p})$,
+$\widehat{q} = \FFT(\widetilde{q})$.
+Schließlich wird der Vektor der Produkte
+$\widehat{r}_j = \widehat{p}_j \widehat{q}_j$, $j = 0, \dotsc, n - 1$
+berechnet und zurücktransformiert, d.\,h.
+$\widetilde{r} = \IFFT(\widehat{r})$ ist der Koef"|fizientenvektor des
+Produktpolynoms $r$. \\
+Insgesamt werden $\O(n \log n)$ Operationen benötigt, während die
+direkte Berechnung der Koef"|fizienten $\O(n^2)$ Operationen erfordert.
+
+\subsubsection{%
+    Trigonometrische Interpolation%
+}
+
+Für $n = 2^\ell$ können die Koef"|fizienten des
+\textbf{trigonometrischen Polynoms}
+\begin{align*}
+    p(x) = c_m \cos(mx) + \sum_{|k| < m} c_k e^{\i k x}, \quad
+    m = n/2,
+\end{align*}
+das die Daten
+\begin{align*}
+    f_j = f(x_j), \quad
+    x_j = \frac{2\pi j}{n}, \quad
+    j = 0, \dotsc, n - 1
+\end{align*}
+interpoliert, mit der inversen schnellen Fourier-Transformation berechnet
+werden:
+\begin{align*}
+    (c_0, \dotsc, c_m, c_{-m+1}, \dotsc, c_{-1}) = \IFFT(f).
+\end{align*}
+
+\linie
+
+Die trigonometrische Interpolation in Verbindung mit der diskreten
+Fourier-Transformation kann zum
+\textbf{Ausblenden hochfrequenter Störungen in Signalen} verwendet werden.
+Man bildet zu den Daten $f_j \approx f(x_j)$, $x_j = \frac{2\pi j}{n}$,
+$j = 0, \dotsc, n - 1$, $n = 2^\ell$ zunächst mithilfe der IFFT das
+trigonometrische Interpolationspolynom
+$p(x) = c_m \cos(mx) + \sum_{|j| < m} c_j e^{\i j x}$, $m = n/2$. \\
+Dann wählt man eine Bandbreite $k$ und setzt alle Koef"|fizienten $c_j$
+mit $|j| > k$ null. \\
+Mit diesem Tiefpass werden für hinreichend kleines $k$ im Allgemeinen
+Störungen unterdrückt. \\
+Eine zu kleine Bandbreite führt dabei zu einem unerwünschten
+Genauigkeitsverlust.
+
+\pagebreak
+
+\subsubsection{%
+    \name{Fourier}-Transformation zyklischer Gleichungssysteme%
+}
+
+Eine \textbf{zyklische Matrix}
+\begin{align*}
+    A =
+    \begin{pmatrix}
+        a_0 & a_{n-1} & \dots & a_1 \\
+        a_1 & a_0 & \dots & a_2 \\
+        \vdots & \vdots & & \vdots \\
+        a_{n-1} & a_{n-2} & \dots & a_0
+    \end{pmatrix}
+\end{align*}
+besitzt die Eigenwerte
+\begin{align*}
+    \lambda_j = \sum_{k=0}^{n-1} a_k w_n^{-kj}, \quad
+    w_n = \exp(2 \pi i / n)
+\end{align*}
+und kann durch die Fourier-Matrix diagonalisiert werden:
+\begin{align*}
+    \frac{1}{n} W_n^\ast A W_n = \diag(\lambda), \quad
+    \lambda = W_n^\ast a.
+\end{align*}
+Folglich lässt sich die Lösung eines zyklischen Gleichungssystems $Ax = b$
+berechnen in der Form
+\begin{align*}
+    x = W_n \diag(\lambda)^{-1} (W_n^\ast b / n).
+\end{align*}
+Für $n = 2^\ell$ ist die FFT anwendbar, und man erhält den folgenden
+Lösungsalgorithmus:
+\begin{lstlisting}[mathescape]
+$c$ = IFFT($b$);
+$\lambda$ = $n \;\cdot$ IFFT($a$);
+$y_j$ = $c_j / \lambda_j$, $\quad j = 0, \dotsc, n - 1$;
+$x$ = FFT($y$);
+\end{lstlisting}
+
+\linie
+
+Das \textbf{Produkt $C = AB$ zweier zyklischer Matrizen} der Dimension
+$n = 2^\ell$ lässt sich mithilfe der FFT berechnen.
+Zunächst bestimmt man dazu mit der mit $n$ multiplizierten IFFT die
+Eigenwerte von $A$ und $B$:
+\begin{align*}
+    \lambda_j^A = \sum_{k=0}^{n-1} a_k w_n^{-jk}, \quad
+    \lambda_j^B = \sum_{k=0}^{n-1} b_k w_n^{-jk},
+\end{align*}
+wobei $a$ bzw. $b$ die erste Spalte von $A$ bzw. $B$ ist.
+Dann sind
+\begin{align*}
+    \lambda_j^C = \lambda_j^A \lambda_j^B
+\end{align*}
+die Eigenwerte von $C$, und man erhält durch die mit $1/n$ multiplizierte FFT
+von $\lambda^C$
+\begin{align*}
+    c_k = \frac{1}{n} \sum_{j=0}^{n-1} \lambda_j^C w_n^{jk}
+\end{align*}
+die Elemente der ersten Spalte von $C$.
+Damit ist $C$ berechnet, denn $C$ ist als Produkt zyklischer Matrizen
+wieder zyklisch.
+
+\pagebreak
+
+\subsection{%
+    Splines%
+}
+
+\subsubsection{%
+    Kubische \name{Hermite}-Interpolation%
+}
+
+Funktionswerte und Ableitungen an zwei Punkten können durch ein kubisches
+Polynom interpoliert werden.
+Der Interpolant (\textbf{\name{Hermite}-Spline}) besitzt die Darstellung
+\begin{align*}
+    p = f(a) u_a + f(b) u_b + (b - a)(f'(a) v_a + f'(b) v_b)
+\end{align*}
+mit den Lagrange-Funktionen
+\begin{align*}
+    u_a(x) = (1 + 2s)(1 - s)^2, \quad
+    u_b(x) = (3 - 2s)s^2, \quad
+    v_a(x) = s(1 - s)^2, \quad
+    v_b(x) = -s^2 (1 - s)
+\end{align*}
+und $s = (x - a) / (b - a)$.
+
+Sind Funktionswerte und Ableitungen an mehreren Punkten $x_0 < \dotsb < x_n$
+gegeben, so bilden die kubischen Hermite-Interpolaten einen stetig
+dif"|ferenzierbaren \textbf{kubischen \name{Hermite}-Spline} $q$.
+Nach Konstruktion ist $q$ dabei eindeutig durch die Daten $f(x_j), f'(x_j)$,
+$j = 0, \dotsc, n$ bestimmt.
+
+\subsubsection{%
+    Kubische Splines%
+}
+
+Ein \textbf{kubischer Spline} $p$ zu einer Partition
+$a = x_0 < \dotsb < x_n = b$ eines Intervalls $[a, b]$ kann
+(alternativ zur sog. B-Spline-Darstellung) durch seine Werte $f_{k-1}$, $f_k$
+und Ableitungen $d_{k-1}^+$, $d_k^-$ an den Endpunkten der Teilintervalle
+$[x_{k-1}, x_k]$ festgelegt werden.
+Aus diesen Daten können die kubischen Polynome $p_k$ auf den Intervallen
+$[x_{k-1}, x_k]$ mit kubischer Hermite-Interpolation berechnet werden.
+
+Soll $p$ an den Stützstellen glatt, d.\,h. dif"|ferenzierbar sein, so
+werden Bedingungen an $f_k$ und $d_k^\pm$ gestellt.
+Stetige Dif"|ferenzierbarkeit bei $x_k$ ist äquivalent zu
+\begin{align*}
+    d_k^{-} = d_k = d_k^{+}.
+\end{align*}
+Soll auch die zweite Ableitung bei $x_k$ stetig sein, so ist die Bedingung
+$p_k''(x_k^-) = p_{k+1}''(x_k^+)$ äquivalent zu einer linearen Gleichung
+zwischen $f_{k-1}, f_k, f_{k+1}$ und $d_{k-1}^+, d_k, d_{k+1}^-$:
+\begin{align*}
+    \frac{1}{\Delta_k} d_{k-1}^+ +
+    \left(\frac{2}{\Delta_k} + \frac{2}{\Delta_{k+1}}\right) d_k +
+    \frac{1}{\Delta_{k+1}} d_{k+1}^- =
+    \frac{3}{\Delta_k^2} (f_k - f_{k-1}) +
+    \frac{3}{\Delta_{k+1}^2} (f_{k+1} - f_k)
+\end{align*}
+mit $\Delta_k := x_k - x_{k-1}$.
+
+\subsubsection{%
+    Natürliche Spline-Interpolation%
+}
+
+Der \textbf{natürliche Spline-Interpolant} der Daten $(x_i, f_i)$,
+$a = x_0 < \dotsb < x_n = b$ ist ein kubischer Spline $p$, der an den
+Stützstellen $x_i$ zweifach stetig dif"|ferenzierbar ist und die
+Randbedingungen $p''(x_0) = p''(x_n) = 0$ erfüllt.
+
+Er minimiert unter allen glatten Interpolanten $f$ das Integral
+\begin{align*}
+    \int_a^b |f''(x)|^2 \dx,
+\end{align*}
+das als Maß für die Stärke der Oszillation angesehen werden kann.
+
+\linie
+
+Die Ableitungen $d_i = p'(x_i)$, die den Spline zusammen mit den Daten $f_i$
+festlegen, berechnen sich aus den Glattheitsbedingungen für
+$i = 1, \dotsc, n - 1$, nämlich $p_i''(x_i) = p_{i+1}''(x_i)$ bzw.
+\begin{align*}
+    \frac{1}{\Delta_i} d_{i-1} +
+    \left(\frac{2}{\Delta_i} + \frac{2}{\Delta_{i+1}}\right) d_i +
+    \frac{1}{\Delta_{i+1}} d_{i+1} =
+    \frac{3}{\Delta_i^2} (f_i - f_{i-1}) +
+    \frac{3}{\Delta_{i+1}^2} (f_{i+1} - f_i),
+\end{align*}
+und den Randbedingungen $p''(x_0) = p''(x_n) = 0$ bzw.
+\begin{align*}
+    2d_0 + d_1 =
+    \frac{3}{\Delta_1} (f_1 - f_0), \quad
+    d_{n-1} + 2d_n =
+    \frac{3}{\Delta_n} (f_n - f_{n-1})
+\end{align*}
+mit $\Delta_i = x_i - x_{i-1}$.
+
+Alternativ kann man auch die Randbedingungen $p'(a) = \alpha$,
+$p'(b) = \beta$ stellen.
+Der resultierende eingespannte natürliche Spline minimiert dann ebenfalls
+obiges Integral.
+
+\linie
+
+Betrachtet man Splines $p$, die die Lagrange-Daten $(x_k, \delta_{kj})$,
+$k = 0, \dotsc, n$, $j \in \{0, \dotsc, n\}$ interpolieren, so stellt man fest,
+dass $p(x)$ schnell mit zunehmender Entfernung von $x_j$ abklingt.
+Dieses numerisch günstige Verhalten ist typisch für Splines.
+
+Außerdem können mit Splines auch gut Daten mit nicht-äquidistanten
+Stützstellen interpoliert werden.
+Nicht-äquidistante Stützstellen sind bspw. sinnvoll, falls die Daten Bereiche
+aufweisen, in denen sie unterschiedlich schnell schwanken.
+
+\subsubsection{%
+    Splineinterpolation mit \matlab{}%
+}
+
+Ein kubischer Spline-Interpolant zu den Daten $(x_k, y_k)$ kann in \matlab{}
+mit dem Befehl \\
+\code{p = spline(x, y);} berechnet
+und mit \code{pt = ppval(p, t);} an den Punkten $t_j$ ausgewertet werden.
+Der Spline wird als Struktur gespeichert, die unter anderem in dem Feld
+\code{coefs} die Koef"|fizienten der einzelnen Polynomsegmente enthält:
+Die Polynome werden dabei zeilenweise mit dem höchsten Koef"|fizienten zuerst
+gespeichert, wobei statt $x$ der Term $x - x_k$ mit $x_k$ der unteren
+$x$-Stelle eingesetzt wird.
+Beispielsweise entspricht die Zeile $(1, -2, 0, 1)$ für das Intervall $[2, 3]$
+dem Polynom $p(x) = (x - 2)^3 - 2(x - 2)^2 + 1$. \\
+Das Feld \code{breaks} enthält die Stützstellen.
+
+\matlab{} verwendet dabei nicht die Randbedingungen $p''(x_0) = p''(x_n) = 0$,
+sondern fordert stattdessen die Stetigkeit der dritten Ableitung an den Punkten
+$x_1$ und $x_{n-1}$ (\textbf{Not-A-Knot-Bedingung}).
+Dadurch ergibt sich ein genauerer Interpolant, jedoch geht dabei die oben
+erwähnte Minimal-Eigenschaft verloren.
+Der Unterschied zwischen den beiden verschiedenen Methoden ist für
+größere $n$ allerdings fast zu vernachlässigen.
+
+Alternativ dazu kann man den Datenvektor $y$ um zwei Werte erweitern.
+Hat $y$ genau zwei Einträge mehr als $x$, so werden der erste und letzte Wert
+von $y$ als Randbedingung für die Steigungen an den Enden der Kurve verwendet. 
+
+Die Auswertung kann auch unmittelbar mit dem Befehl \code{spline} erfolgen.
+Darüber hinaus ist die simultane Interpolation vektorwertiger Daten möglich. \\
+In \code{curve = spline(t, y, t_plt);} stehen dabei in $y$ spaltenweise die
+Funktionswerte in den Stützstellen $x$, und in $t_\text{plt}$ wird der Spline
+ausgewertet.
+
+\pagebreak
+
+\subsection{%
+    B-Splines%
+}
+
+\subsubsection{%
+    Knotenfolge
+}
+
+Eine \textbf{Knotenfolge}
+\begin{align*}
+    \tau\colon \dotsb \le \tau_{-1} \le \tau_0 \le \tau_1 \le \dotsb
+\end{align*}
+ist eine bi-infinite monoton wachsende Folge $\{\tau_k\}_{k \in \integer}$
+reeller Zahlen mit $\lim_{k \to \pm\infty} \tau_k = \pm\infty$.
+Endliche Teilfolgen von $\tau$ heißen \textbf{Knotenvektoren}.
+Die \textbf{Vielfachheit} $\#\tau_k$ eines Knotens $\tau_k$ ist die
+maximale Anzahl der Wiederholungen von $\tau_k$ in der Folge bzw.
+Vektor $\tau$.
+Man spricht dann von einfachen oder doppelten Knoten usw.
+
+\subsubsection{%
+    Rekursion für B-Splines%
+}
+
+Zu einer Knotenfolge $\tau$ definiert man die \textbf{B-Splines} $b_k^n$
+vom Grad $n$ durch die Rekursion
+\begin{align*}
+    b_k^n := \gamma_k^n b_k^{n-1} + (1 - \gamma_{k+1}^n)b_{k+1}^{n-1}, \qquad
+    \gamma_k^n(t) = \frac{t - \tau_k}{\tau_{k+n} - \tau_k},
+\end{align*}
+ausgehend von den charakteristischen Funktionen
+$b_0^k := \chi_{\left[\tau_k, \tau_{k+1}\right)}$ der Knotenintervalle
+$\left[\tau_k, \tau_{k+1}\right)$, d.\,h.
+\begin{align*}
+    b_0^k(t) := \begin{cases}1 & \tau_k \le t < \tau_{k+1} \\
+    0 & \text{sonst}.\end{cases}
+\end{align*}
+Terme, für die der Nenner verschwindet, werden dabei nicht berücksichtigt.
+
+\linie
+
+Jeder B-Spline $b_k^n$ wird durch seinen Knotenvektor
+$(\tau_k, \dotsc, \tau_{k+n+1})$ eindeutig festgelegt und verschwindet
+außerhalb von $\left[\tau_k, \tau_{k+n+1}\right)$.
+Auf jeden nicht-leeren Knotenintervall $\left[\tau_i, \tau_{i+1}\right)$, \\
+$k \le i \le k + n$ ist er ein nicht-negatives Polynom vom Grad $n$.
+
+\subsubsection{%
+    Stetige Abhängigkeit vom Knotenvektor%
+}
+
+Ist der Knotenvektor $\tau = (\tau_k, \dotsc, \tau_{k+n+1})$ eines B-Splines
+$b_k^n$ der Grenzwert einer Folge von Knotenvektoren $\tau_\ell$,
+$\ell \in \natural$ und bezeichnet $b_{k,\ell}^n$ die zugehörigen B-Splines,
+so gilt
+\begin{align*}
+    \lim_{t \to \infty} b_{k,\ell}^n(t) = b_k^n(t)
+\end{align*}
+für alle $t$, die nicht gleich einem der Knoten $\tau_i$ sind.
+Die Konvergenz ist gleichmäßig auf jedem Intervall $[\alpha, \beta]$,
+das keinen der Knoten von $b_k^n$ enthält.
+
+\linie
+
+Die stetige Abhängigkeit von den Knoten ist nützlich für das Beweisen von
+Identitäten für Linearkombinationen von B-Splines.
+Gilt eine Gleichung $\sum_k c_k(\tau) b_k^n(t) = f(t, \tau)$
+für einfache Knoten, so lässt sie sich durch ein Approximationsargument auf
+beliebige Knoten verallgemeinern.
+Dabei kann der Summationsbereich unendlich sein, da für jedes beschränkte
+Intervall nur endlich viele B-Splines nicht null sind.
+
+\pagebreak
+
+\subsubsection{%
+    Ableitung von B-Splines%
+}
+
+Die Ableitung eines B-Splines vom Grad $n$ zu einer Knotenfolge $\tau$ ist
+eine gewichtete Dif"|ferenz von zwei B-Splines vom Grad $n - 1$.
+Auf jedem Knotenintervall $[\tau_i, \tau_{i+1})$ gilt
+\begin{align*}
+    (b_k^n)' = \alpha_k^n b_k^{n-1} - \alpha_{k+1}^n b_{k+1}^{n-1}, \qquad
+    \alpha_k^n := \frac{n}{\tau_{k+n} - \tau_k},
+\end{align*}
+wobei Terme, die B-Splines mit leerem Träger enthalten, weggelassen werden.
+
+Aus der Rekursion folgt, dass $b_k^n$ an einem Knoten $\tau_i$ $n - m$-mal
+stetig dif"|ferenzierbar ist, falls $\tau_i$ in der Folge
+$\tau_k, \dotsc, \tau_{k+n+1}$ Vielfachheit $m \le n$ hat.
+Insbesondere ist $b_k^n$ stetig auf $\real$, wenn keiner seiner Knoten
+Vielfachheit $n + 1$ hat.
+
+\subsubsection{%
+    Uniforme B-Splines%
+}
+
+Der \textbf{uniforme B-Spline} $b^n$ vom Grad $n > 0$ kann ausgehend von der
+charakteristischen Funktion $b^0 := \chi_{[0,1)}$ des Intervalls $[0, 1]$
+durch die Rekursion
+\begin{align*}
+    b^n(x) := \int_0^1 b^{n-1} (x - y) \dy
+\end{align*}
+definiert werden.
+Diese Identität ist äquivalent zu der Ableitungsformel
+\begin{align*}
+    \frac{d}{dx} b^n(x) = b^{n-1}(x) - b^{n-1}(x - 1)
+\end{align*}
+mit $b^n(0) = 0$.
+
+\linie
+
+Als Spezialfall des allgemeinen B-Splines mit dem Knotenvektor
+$\xi = (0, 1, \dotsc, n + 1)$ ist $b^n$
+\begin{itemize}
+    \item
+    positiv auf $(0, n + 1)$ und null außerhalb des Intervalls,
+    
+    \item
+    ein Polynom vom Grad $n$ auf jedem Knotenintervall $[k, k + 1]$ und
+    
+    \item
+    $n - 1$-stetig dif"|ferenzierbar.
+\end{itemize}
+Darüber hinaus gilt die Rekursionsformel
+\begin{align*}
+    n b^n(x) = x b^{n-1}(x) + (n + 1 - x) b^{n-1}(x - 1).
+\end{align*}
+Die B-Splines zu einer allgemeinen Knotenfolge
+$\xi\colon \dotsc, -h, 0, h, \dotsc$
+sind skalierte Translate von $b^n$, d.\,h. $b_k^n(x) = b^n(x/h - k)$,
+$k \in \integer$.
+
+\subsubsection{%
+    \name{Marsden}-Identität%
+}
+
+Für eine beliebige Knotenfolge $\tau$ kann jedes Polynom vom Grad $\le n$
+als Linearkombination von B-Splines dargestellt werden.
+Insbesondere gilt für alle $s \in \real$ die \textbf{\name{Marsden}-Identität}
+\begin{align*}
+    (t - s)^n = \sum_{k \in \integer} \psi_k^n(s) b_k^n(t), \qquad
+    \psi_k^n(s) := (\tau_{k+1} - s) \dotsm (\tau_{k+n} - s).
+\end{align*}
+
+Durch Ableiten der Identität nach $s$ und Nullsetzen von $s$ erhält man
+explizite Formeln für die Monome $t^m$.
+Beispielsweise ist
+\begin{align*}
+    1 = \sum_k b_k^n(t), \qquad
+    t = \sum_k \tau_k^n b_k^n(t)
+\end{align*}
+mit $\tau_k^n := (\tau_{k+1} + \dotsb + \tau_{k+n}) / n$ den sogenannten
+Knotenmitteln.
+
+\subsubsection{%
+    Splines%
+}
+
+Die \textbf{Splines} $S_\tau^n$ vom Grad $\le n$ zu einer Knotenfolge $\tau$
+sind Linearkombinationen von B-Splines:
+\begin{align*}
+    S_\tau^n \ni p := \sum_{k \in \integer} c_k b_k^n.
+\end{align*}
+Anders ausgedrückt besteht $S_\tau^n$ aus allen Funktionen $t \mapsto p(t)$,
+$t \in \real$, die auf jedem Intervall $[\tau_k, \tau_{k+1})$ Polynome
+vom Grad $\le n$ sind und an einem Knoten mit Vielfachheit $m \le n$
+mindestens $n - m$-mal stetig dif"|ferenzierbar sind.
+
+Splines $S_\tau^n(D)$ auf beschränkten Intervallen $D$ erhält man, indem die
+Variable $t$ auf $D$ eingeschränkt wird.
+Es sind nur die B-Splines $b_k^n$, die auf einem Teilintervall von $D$ nicht
+null sind, und ihre Knotenvektoren $(\tau_k, \dotsc, \tau_{k+n+1})$ relevant.
+Die entsprechenden Indizes werden mit $k \sim D$ bezeichnet:
+\begin{align*}
+    p(t) = \sum_{k \sim D} c_k b_k^n(t), \quad t \in D.
+\end{align*}
+Insbesondere sind $k = \ell - n, \dotsc, \ell$ die relevanten Indizes für ein
+nicht-leeres Knotenintervall $D = [\tau_\ell, \tau_{\ell+1})$.
+
+\subsubsection{%
+    Auswertung von Splines (\name{de-Boor}-Algorithmus)%
+}
+
+Ein Spline
+\begin{align*}
+    p = \sum_k c_k b_k^n \in S_\tau^n
+\end{align*}
+kann in $t \in [\tau_\ell, \tau_{\ell+1})$ durch Bilden von Konvexkombinationen
+der Koef"|fizienten der relevanten B-Splines $b_k^n$, $k \sim t$,
+ausgewertet werden
+(\textbf{\name{de-Boor}-Algorithmus}).
+
+Beginnend mit
+\begin{align*}
+    p_k^0 := c_k, \quad
+    k = \ell - n, \dotsc, \ell
+\end{align*}
+berechnet man sukzessive für $m = 0, \dotsc, n - 1$
+\begin{align*}
+    p_k^{m+1} := \gamma_k^{n-m} p_k^m + (1 - \gamma_k^{n-m}) p_{k-1}^m, \quad
+    k = \ell - n + m + 1, \dotsc, \ell
+\end{align*}
+mit
+\begin{align*}
+    \gamma_k^{n-m} := \frac{t - \tau_k}{\tau_{k+n-m} - \tau_k}
+\end{align*}
+und erhält $p(t)$ als den letzten Wert $p_\ell^n$.
+
+\linie
+
+Die $p_k^m$ können in einem Dreiecksschema berechnet werden.
+Für $t = \tau_\ell$ vereinfacht es sich etwas:
+Hat $\tau_\ell$ Vielfachheit $r$, dann ist $p(t) = p_{\ell-r}^{n-r}$, d.\,h.
+nur $n - r$ Schritte der Rekurstion werden benötigt.
+
+\pagebreak
+
+\subsubsection{%
+    Ableitung von Splines%
+}
+
+Sei $\tau$ eine Knotenfolge mit Vielfachheiten $\le n$.
+Die Ableitung eines Splines in $S_\tau^n$ ist ein Spline vom Grad $\le n - 1$
+zur gleichen Knotenfolge:
+\begin{align*}
+    \left(\sum_{k \in \integer} c_k b_k^n\right)' =
+    \sum_{k \in \integer} \alpha_k^n \nabla c_k b_k^{n-1} \in S_\tau^{n-1}
+    \quad\text{mit}\quad
+    \alpha_k^n := \frac{n}{\tau_{k+n} - \tau_k}, \quad
+    \nabla c_k := c_k - c_{k-1}.
+\end{align*}
+Enthält $\tau$ Knoten mit Vielfachheiten $> n$, an denen die Splines in
+$S_\tau^n$ Sprünge haben können, so behält die Gleichung auf jedem Intervall,
+auf dem der Spline stetig ist, ihre Gültigkeit.
+In diesem Fall werden Ausdrücke mit verschwindenen Nennern, die B-Splines mit
+leerem Träger entsprechen, weggelassen.
+
+\linie
+
+Für Splines auf einem beschränkten Parameterintervall $[\alpha, \beta]$
+beschränkt man die Summation auf die relevanten B-Splines.
+Genauer sind für eine Knotenfolge mit
+\begin{align*}
+    \tau_0 \le \tau_1 < \alpha = \tau_n < \tau_{n+1} \le \dotsb \le
+    \tau_{m-1} < \tau_m = \beta < \tau_{m+n-1} \le \tau_{m+n}
+\end{align*}
+die B-Splines
+\begin{align*}
+    b_k^n \quad\text{mit}\quad
+    k = 0, \dotsc, m - 1 \qquad\text{und}\qquad
+    b_k^{n-1} \quad\text{mit}\quad k = 1, \dotsc, m - 1
+\end{align*}
+relevant.
+Dies ist konsistent zur Dif"|ferenzbildung bei den Koef"|fizienten, die den
+Bereich der Indizes um Eins reduziert.
+
+\subsubsection{%
+    \name{Schoenberg}-Schema%
+}
+
+\textbf{\name{Schoenberg}s Schema} benutzt Funktionswerte an den
+Knotenmitteln \\
+$\tau_k^n := (\tau_{k+1} + \dotsb + \tau_{k+n})/n$ als Koef"|fizienten \\
+einer Spline-Approximation einer glatten Funktion $f$:
+\begin{align*}
+    f \mapsto Qf := \sum_{k \in \integer} f(\tau_k^n) b_k^n \in S_\tau^n.
+\end{align*}
+Es hat die Fehlerordnung zwei, d.\,h.
+\begin{align*}
+    |f(t) - Qf(t)| \le \frac{1}{2} \norm{f''}_{\infty,\; D_t} h(t)^2
+\end{align*}
+mit $\tau_\ell \le t < \tau_{\ell+1}$ und
+\begin{align*}
+    D_t := [\tau_{\ell-n}^n, \tau_\ell^n], \qquad
+    h(t) := \max_{k=\ell-n,\dotsc,\ell} |\tau_k^n - t|.
+\end{align*}
+
+Der Schoenberg-Operator erhält Positivität, Monotonie und Konvexität, d.\,h.
+\begin{align*}
+    f^{(m)} \ge 0 \quad\Rightarrow\quad
+    (Qf)^{(m)} \ge 0
+\end{align*}
+für $m \le 2$, falls beide Ableitungen existieren.
+Für eine äquidistante Knotenfolge bleibt das Vorzeichen aller Ableitungen
+bis zur Ordnung $n$ erhalten.
+
+\subsubsection{%
+    Quasi-Interpolant%
+}
+
+Ein lineares Approximationsschema
+\begin{align*}
+    f \mapsto Qf := \sum_{k \in \integer} (Q_k f) b_k^n \in S_\tau^n
+\end{align*}
+für stetige Funktionen $f$ bezeichnet man als \textbf{Quasi-Interpolant}, falls
+\begin{itemize}
+    \item
+    $Q_k$ lokale beschränkte lineare Funktionale sind, d.\,h.
+    \begin{align*}
+        |Q_k f| \le \norm{Q} \cdot \norm{f}_{\infty,\; D_k}
+    \end{align*}
+    mit $\norm{f}_{\infty,\; D_k} :=
+    \sup_{\tau \in [\tau_k, \tau_{k+n+1})} |f(t)|$, und
+    
+    \item
+    $Q$ für Polynome $p$ vom Grad $\le n$ exakt ist, d.\,h. $Qp = p$.
+\end{itemize}
+Äquivalent zur zweiten Bedingung ist, dass $Q_k p = \psi_k(s)$ für alle
+$s \in \real$ mit $p(t) := (t - s)^n$ und
+$\psi_k(s) := (\xi_{k+1} - s) \dotsm (\xi_{k+n} - s)$.
+Diese Identität für Polynome vom Grad $\le n$ kann man durch
+Koef"|fizientenvergleich oder durch Auswertung an $n + 1$ Punkten prüfen.
+
+\subsubsection{%
+    Fehler der Quasi-Interpolation%
+}
+
+Für den Fehler eines Quasi-Interpolanten
+\begin{align*}
+    f \mapsto Qf = \sum_k (Q_k f) b_k^n \in S_\tau^n
+\end{align*}
+gilt
+\begin{align*}
+    |f(t) - (Qf)(t)| \le \frac{\norm{Q}}{(n + 1)!}
+    \norm{f^{(n+1)}}_{\infty,\; D_t} h(t)^{n+1}
+\end{align*}
+mit $D_t$ der Vereinigung der Träger aller für $t$ relevanten B-Splines
+und $h(t) := \max_{s \in D_t} |s - t|$.
+
+Ist das lokale Gitterverhältnis
+\begin{align*}
+    r_\tau := \sup_{\tau_{j-1} < \tau_j = \tau_k < \tau_{k+1}} \max\left(
+    \frac{\tau_{k+1} - \tau_k}{\tau_j - \tau_{j-1}},
+    \frac{\tau_j - \tau_{j-1}}{\tau_{k+1} - \tau_k}\right)
+\end{align*}
+beschränkt, so lässt sich ebenfalls der Fehler der Ableitungen abschätzen:
+\begin{align*}
+    |f^{(j)}(t) - (Qf)^{(j)}(t)| \le \const(n, r)
+    \norm{Q} \norm{f^{(n+1)}}_{\infty,\; D_t} h(t)^{n+1-j}
+\end{align*}
+für alle $j \le n$, für die die Ableitungen existieren.
+
+\subsubsection{%
+    Lösbarkeit von Interpolationsproblemen mit B-Splines%
+}
+
+Die Koef"|fizienten eines Splines $p = \sum_{k=1}^m c_k b_k^n$, der die Daten
+$f_i$ an einer monoton wachsenden Folge von Punkten $t_i$ interpoliert, werden
+durch das LGS
+\begin{align*}
+    Ac = f, \quad
+    a_{i,k} := b_k^n(t_i)
+\end{align*}
+bestimmt.
+Eine eindeutige Lösung existiert für alle Daten $f$ genau dann, wenn
+\begin{align*}
+    b_k^n(t_k) > 0, \quad
+    k = 1, \dotsc, m.
+\end{align*}
+
+\pagebreak

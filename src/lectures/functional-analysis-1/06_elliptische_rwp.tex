@@ -1,0 +1,534 @@
+\section{%
+    Anwendungen bei elliptischen RWP und \name{Sobolev}räume%
+}
+
+\subsection{%
+    \name{Poisson}-Gleichung mit \name{Dirichlet}-Randbedingungen%
+}
+
+\begin{Bem}
+    Sei $\Omega \subset \real^n$ ein beschränktes \begriff{Normalgebiet},
+    d.\,h. eine beschränkte, of"|fene, nicht-leere und zusammenhängende Teilmenge von $\real^n$,
+    sodass der Gaußsche Integralsatz anwendbar ist.
+    Für $f \in \C^0(\overline{\Omega})$ sei außerdem
+    $E(w) := \int_\Omega (\frac{1}{2} |\nabla w|^2 - fw) \dx$.\\
+    Zusätzlich sei $\A_g := \C^1_g(\overline{\Omega}) \cap \C^2(\Omega)$,
+    wobei $g \in \C^0(\partial\Omega)$ und
+    $\C^1_g(\overline{\Omega}) := \{w \in \C^1(\overline{\Omega}) \;|\;
+    w|_{\partial \Omega} = g\}$.
+    
+    Das \begriff{Minimumproblem} lautet nun:
+    Nimmt $E$ auf $\A_g$ ein Minimum an?
+    
+    Beispiele aus der Physik beinhalten
+    eingespannte Membranen im Schwerefeld der Erde,
+    elektrische Potentiale oder
+    stationäre Temperaturverteilungen.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Die Lösung (falls existent) lässt sich wie folgt charakterisieren.
+\end{Bem}
+
+\begin{Satz}{Charakterisierung der Lösung des Minimumproblems}
+    Sei $u \in \A_g$.
+    Dann sind äquivalent:
+    \begin{enumerate}
+        \item
+        $E(u) = \min_{w \in \A_g} E(w)$
+        
+        \item
+        $\forall_{\varphi \in \C^\infty_c(\Omega)}\;
+        \int_\Omega (\nabla u \nabla \varphi - f \varphi)\dx = 0$
+        
+        \item
+        $-\Delta u = f$ in $\Omega$, $u = g$ auf $\partial \Omega$
+    \end{enumerate}
+\end{Satz}
+
+\begin{Lemma}{Fundamentallemma der Variationsrechnung}
+    Sei $f \in \C^0(\Omega)$.\\
+    Dann gilt $\forall_{\varphi \in \C^\infty_c(\Omega)}\; \int_\Omega f\varphi \dx = 0$
+    genau dann, wenn $f \equiv 0$.
+\end{Lemma}
+
+\begin{Lemma}{\name{Green}sche Formel}
+    Für alle $u, w \in \C^2(\overline{\Omega})$ gilt\\
+    $\int_\Omega \nabla u \nabla w \dx = -\int_\Omega (\Delta u) w \dx
+    + \int_{\partial \Omega} \frac{\partial u}{\partial \nu} w do$,
+    wobei $\frac{\partial u}{\partial \nu}$ die Ableitung von $u$ in Richtung des äußeren
+    Einheitsnormalenvektors ist.
+\end{Lemma}
+
+\linie
+
+\begin{Bem}
+    "`\emph{(1)} $\Rightarrow$ \emph{(2)}"' kann man wie folgt beweisen:
+    Für $\varphi \in \C^\infty_c(\Omega)$ und $h > 0$ gilt\\
+    $E(u) \le E(u \pm h\varphi)
+    = \int_\Omega (\frac{1}{2} |\nabla (u \pm h\varphi)|^2 - f(u \pm h\varphi)) \dx$\\
+    $= \int_\Omega (\frac{1}{2} |\nabla u|^2 + \frac{h^2}{2} |\nabla \varphi|^2 \pm
+    h \nabla u \nabla \varphi - fu \mp h f\varphi) \dx
+    = E(u) \pm h \int_\Omega (\nabla u \nabla \varphi - f\varphi) \dx +
+    \frac{h^2}{2} \int_\Omega |\nabla \varphi|^2 \dx$,
+    also $0 \le \pm\int_\Omega (\nabla u \nabla \varphi - f\varphi) \dx +
+    \frac{h}{2} \int_\Omega |\nabla \varphi|^2 \dx$.
+    Für $h \to 0$ fällt der zweite Summand weg und man erhält
+    $0 \le \pm\int_\Omega (\nabla u \nabla \varphi - f\varphi) \dx$.
+    
+    "`\emph{(2)} $\iff$ \emph{(3)}"' sieht man wie folgt:
+    Mit der Greenschen Formel ist (2) äquivalent zu\\
+    $\forall_{\varphi \in \C^\infty_c(\Omega)}\;
+    0 = \int_\Omega (\nabla u \nabla \varphi - f\varphi) \dx
+    = \int_\Omega (-\Delta u - f) \varphi \dx$, weil das Integral über $\partial \Omega$
+    wegfällt (da $\varphi = 0$ auf $\partial \Omega$).
+    Nach dem Fundamentallemma der Variationsrechnung ist dies äquivalent zu $-\Delta u = f$
+    in $\Omega$.
+    $u = g$ auf $\partial G$ gilt immer, da $u \in \A_g$ nach Voraussetzung.
+    
+    "`\emph{(3)} $\Rightarrow$ \emph{(1)}"' zeigt man folgendermaßen:
+    Für $w \in \A_g$ beliebig gilt nach der Greenschen Formel
+    $\int_\Omega (\nabla u \nabla (u - w) - f(u - w))\dx
+    = \int_\Omega ((-\Delta u)(u - w) - f(u - w)) \dx +
+    \int_{\partial\Omega} \frac{\partial u}{\partial \nu} (u - w) do = 0$,
+    weil $-\Delta u = f$ in $\Omega$ und $u|_{\partial\Omega} = w|_{\partial\Omega} = g$.
+    Daraus folgt\\
+    $\int_\Omega (|\nabla u|^2 - fu) \dx
+    = \int_\Omega (\nabla u \nabla w - fw) \dx
+    \le \frac{1}{2} \int_\Omega |\nabla u|^2 \dx + \frac{1}{2} \int_\Omega |\nabla w|^2 \dx -
+    \int_\Omega fw \dx$ wegen der Ungleichung
+    $0 \le |\nabla u - \nabla w|^2 = |\nabla u|^2 + |\nabla w|^2 - 2 \nabla u \nabla w$.\\
+    Damit gilt
+    $E(u) = \int_\Omega (\frac{1}{2} |\nabla u|^2 - fu) \dx \le
+    \int_\Omega (\frac{1}{2} |\nabla w|^2 - fw) \dx = E(w)$.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Notwendige Bedingung für die Existenz einer Lösung von \emph{(3)}
+    (\begriff{\name{Poisson}-Gleichung mit inhomogenen \name{Dirichlet}-Randbedingungen})
+    ist die Existenz einer Funktion $u_g \in \A_g$
+    (d.\,h. $\A_g = \C^1_g(\overline{\Omega}) \cap \C^2(\Omega) \not= \emptyset$).
+    Existiert eine solche Funktion,
+    dann ist \emph{(3)} äquivalent zu
+    $-\Delta \widetilde{u} = \widetilde{f}$ in $\Omega$, $\widetilde{u} = 0$ auf $\partial \Omega$
+    mit $\widetilde{u} := u - u_g$, $\widetilde{f} := f + \Delta u_g$.
+    Daher genügt es, wenn im Folgenden nur homogene Dirichlet-Randbedingungen (also $g \equiv 0$)
+    betrachtet werden.
+    (Achtung: $\C^1_g = \C^1_0$ darf nicht mit $\C^1_c$ verwechselt werden!)
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    Nun zeigt man, dass das Minimum überhaupt existiert.
+\end{Bem}
+
+\begin{Satz}{\name{Poincaré}-Ungleichung}
+    Sei $\Omega \subset \real^n$ ein Gebiet, das zwischen zwei parallelen Hyperebenen
+    mit Abstand $C$ liegt.
+    Dann gilt $\forall_{u \in \C^1_0(\overline{\Omega})}\;
+    \norm{u}_{L^2} \le \frac{C}{\sqrt{2}} \norm{\nabla u}_{L^2}$.
+\end{Satz}
+
+\begin{Bem}
+    Dabei gilt $\norm{\nabla u}_{L^2}^2
+    = \sum_{i=1}^n \int_\Omega |\partial_{x_i} u|^2 \dx
+    = \sum_{i=1}^n \norm{\partial_{x_i} u}_{L^2}^2$.
+\end{Bem}
+
+\begin{Lemma}{$\varepsilon$-Ungleichung}
+    Für $a, b \in \real$ und $\varepsilon > 0$ gilt
+    $ab \le \varepsilon a^2 + \frac{b^2}{4\varepsilon}$.
+\end{Lemma}
+
+\begin{Satz}{Beschränktheit nach unten}
+    $E$ ist auf $\A_0$ nach unten beschränkt.
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Da $E$ auf $\A_0$ nach unten beschränkt ist, existiert eine Minimalfolge
+    $(u_n)_{n \in \natural}$ in $\A_0$.
+    Weil $\A_0$ konvex ist, kann man wie im Beweis des Projektionssatzes mithilfe der
+    Parallelogrammgleichung zeigen, dass $(\partial_{x_i} u_n)_{n \in \natural}$ für alle
+    $i = 1, \dotsc, n$ eine Cauchy-Folge bzgl. $\norm{\cdot}_{L^2}$ ist.
+    Aufgrund der Poincaré-Ungleichung folgt, dass auch $(u_n)_{n \in \natural}$ eine
+    Cauchy-Folge bzgl. $\norm{\cdot}_{L^2}$ ist.
+    
+    ($(u_n)_{n \in \natural}$ ist auch eine Cauchy-Folge bzgl. der Norm $\norm{\cdot}_{H^1}$
+    mit $\norm{f}_{H^1} := \norm{f}_{L^2} + \norm{\nabla f}_{L^2}$
+    sowie bzgl. der (in diesem Fall zur $H_1$-Norm äquivalenten) Norm $\norm{\cdot}_{H^1_0}$
+    mit $\norm{f}_{H^1_0} := \norm{\nabla f}_{L^2}$.
+    Allerdings ist $\A_0$ bzgl. dieser Normen nicht vollständig.)
+    
+    $L^2$ ist vollständig,
+    daher existieren $u \in L^2$ mit $u_n \xrightarrow{\norm{\cdot}_{L^2}} u$ und
+    "`$\partial_{x_i} u$"' mit $\partial_{x_i} u_n \xrightarrow{\norm{\cdot}_{L^2}}
+    \partial_{x_i} u$.
+    "`$\partial_{x_i} u$"' ist aber nur eine Schreibweise, i.\,A. besitzt $u$ keine partiellen
+    Ableitungen.
+    Zwischen $u$ und den Funktionen "`$\partial_{x_i} u$"' besteht folgende Beziehung:
+    $\forall_{\varphi \in \C^\infty_c(\Omega)}\;
+    \int_\Omega (\partial_{x_i} u) \varphi \dx = -\int_\Omega u \partial_{x_i} \varphi \dx$
+    (weil $\int_\Omega (\partial_{x_i} u) \varphi \dx
+    = \lim_{n \to \infty} \int_\Omega (\partial_{x_i} u_n) \varphi \dx
+    = -\lim_{n \to \infty} \int_\Omega u_n (\partial_{x_i} \varphi) \dx
+    = -\int_\Omega u \partial_{x_i} \varphi \dx$).
+    Dies motiviert die Definition der Sobolevräume.
+\end{Bem}
+
+\subsection{%
+    \name{Sobolev}räume und schwache Ableitungen%
+}
+
+\begin{Def}{\name{Sobolev}raum}
+    Seien $\Omega \subset \real^n$ of"|fen, $m \in \natural$ und $p \in [1, \infty]$.\\
+    Dann heißt der Vektorraum
+    $W^{m,p}(\Omega) := \{f \in L^p(\Omega) \;|\; \forall_{s \in \natural_0^n,\, |s| \le m}
+    \exists_{f^{(s)} \in L^p(\Omega)}\; f^{(0)} = f,$\\
+    $\forall_{\varphi \in \C^\infty_c(\Omega)}\;
+    \int_\Omega (\partial_x^s \varphi) f \dx = (-1)^{|s|} \int_\Omega \varphi f^{(s)} \dx\}$
+    \begriff{\name{Sobolev}raum} der Ordnung $m$ mit Exponent $p$.\\
+    $W^{m,p}(\Omega)$ wird mit der Norm
+    $\norm{f}_{W^{m,p}(\Omega)} := \sum_{|s| \le m} \norm{f^{(s)}}_{L^p(\Omega)}$ versehen.
+    Für $p = 2$ schreibt man auch $H^m(\Omega) := W^{m,2}(\Omega)$ bzw.
+    $\norm{\cdot}_{H^m(\Omega)} := \norm{\cdot}_{W^{m,2}(\Omega)}$.
+\end{Def}
+
+\begin{Def}{schwache Ableitung}
+    Die Funktionen $f^{(s)}$ für $|s| \ge 1$ heißen \begriff{schwache Ableitungen} von $f$
+    und werden mit $\partial_x^s f := f^{(s)}$ bezeichnet.
+\end{Def}
+
+\begin{Bem}
+    Eine alternative Definition der Norm lautet
+    $\norm{f}_{W^{m,p}(\Omega)}' :=
+    \left(\sum_{|s| \le m} \norm{\partial_x^s f}_{L^p(\Omega)}^p\right)^{1/p}$
+    (bzw. für $p = \infty$ das Maximum
+    $\norm{f}_{W^{m,\infty}(\Omega)}' :=
+    \max_{|s| \le m} \norm{\partial_x^s f}_{L^\infty(\Omega)}$).
+    Allerdings kann man zeigen, dass
+    $\norm{\cdot}_{W^{m,p}(\Omega)}$ und $\norm{\cdot}_{W^{m,p}(\Omega)}'$ äquivalent sind.
+    %Der Sobolevraum $W^{m,p}(\Omega)$ ist gerade die Vervollständigung bzgl.
+    %$\norm{\cdot}_{W^{m,p}(\Omega)}$ derer Funktionen in $\C^\infty(\Omega)$,
+    %deren partielle Ableitungen bis zur Ordnung $m$ in $L^p(\Omega)$ sind.
+\end{Bem}
+
+\begin{Def}{\name{Sobolev}raum mit Nullrandwerten}
+    Der Raum $W_0^{m,p}(\Omega) := \overline{\C^\infty_c(\Omega)}^{\norm{\cdot}_{W^{m,p}(\Omega)}}$
+    für\\
+    $p \in [1, \infty)$ heißt
+    \begriff{\name{Sobolev}raum mit (verallgemeinerten) Nullrandwerten}
+    der Ordnung $m$ mit Exponent $p$.
+    Für $p = 2$ schreibt man auch $H_0^m(\Omega) := W_0^{m,2}(\Omega)$.
+\end{Def}
+
+\begin{Bem}
+    Für $m = 1$ gilt $W_0^{1,p}(\Omega) =
+    \{f \in W^{1,p}(\Omega) \;|\; f|_{\partial\Omega} = 0\}$.\\
+    Für $p = 2$ ist $\sp{f, g}_{H^m(\Omega)}
+    := \sum_{|s| \le m} \sp{\partial_x^s f, \partial_x^s g}_{L^2(\Omega)}
+    = \sum_{|s| \le m} \int_\Omega (\partial_x^s f) (\partial_x^s g) \dx$
+    ein Skalarprodukt auf $H^m(\Omega)$.
+    Für $m = 1$ und $p = 2$ ist
+    $\sp{f, g}_{H^1_0(\Omega)}
+    := \sp{\nabla f, \nabla g}_{L^2(\Omega)}
+    := \sum_{i=1}^n \int_\Omega (\partial_x^{e_i} f) (\partial_x^{e_i} g) \dx$
+    mit $e_i := (0, \dotsc, 0, 1, 0, \dotsc, 0) \in \natural_0^n$
+    ein Skalarprodukt auf $H^1_0(\Omega)$.\\
+    Es gilt
+    $\sp{f, g}_{H^1(\Omega)}
+    = \sp{f, g}_{L^2(\Omega)} + \sp{\nabla f, \nabla g}_{L^2(\Omega)}$.
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Satz}{schwache Ableitungen}
+    \begin{enumerate}
+        \item
+        Alle schwachen Ableitungen sind eindeutig bestimmt (wenn sie existieren).
+        
+        \item
+        Besitzt $f \in W^{m,p}(\Omega)$ eine partielle Ableitung $\partial_x^s f$ mit $|s| \le m$,
+        dann stimmt $\partial_x^s f$ fast überall mit der schwachen Ableitung $f^{(s)}$ überein.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Lemma}{verallgemeinertes Fundamentallemma der Variationsrechnung}\\
+    Seien $\Omega \subset \real^n$ of"|fen und $f \in L^1(\Omega)$.\\
+    Dann gilt $\forall_{\varphi \in \C^\infty_c(\Omega)}\; \int_\Omega f\varphi \dx = 0$
+    genau dann, wenn $f = 0$ f.ü.
+\end{Lemma}
+
+\begin{Satz}{Eigenschaften der \name{Sobolev}räume}
+    \begin{enumerate}
+        \item
+        $(W^{m,p}(\Omega), \norm{\cdot}_{W^{m,p}(\Omega)})$ ist ein Banachraum.
+        $(H^m(\Omega), \norm{\cdot}_{H^m(\Omega)})$ ist ein Hilbertraum.
+        
+        \item
+        Für $p \in [1, \infty)$ ist $W^{m,p}(\Omega)$ separabel.
+        
+        \item
+        $(W^{m,p}(\Omega), \norm{\cdot}_{W^{m,p}(\Omega)})$ ist
+        (bis auf isometrische Isomorphie) die Vervollständigung der Räume
+        $W^{m,p}(\Omega) \cap \C^\infty(\Omega) =
+        \{f \in \C^\infty(\Omega) \;|\; \norm{f}_{W^{m,p}(\Omega)} < \infty\}$.
+        
+        \item
+        Für $p \in [1, \infty)$ und alle $f \in W^{m,p}(\Omega)$ gibt es eine Folge
+        $(f_n)_{n \in \natural}$ in $W^{m,p}(\Omega) \cap \C^\infty(\Omega)$ mit
+        $f_n \xrightarrow{\norm{\cdot}_{W^{m,p}(\Omega)}} f$,
+        es gilt also $W^{m,p}(\Omega) =
+        \overline{W^{m,p}(\Omega) \cap \C^\infty(\Omega)}^{\norm{\cdot}_{W^{m,p}(\Omega)}}$
+        für $p \in [1, \infty)$.
+    \end{enumerate}
+\end{Satz}
+
+\subsection{%
+    Schwache Lösung der \name{Poisson}-Gleichung mit \name{Dirichlet}-RB%
+}
+
+\begin{Satz}{verallgemeinerte \name{Poincaré}-Ungleichung}
+    Sei $\Omega \subset \real^n$ ein Gebiet, das zwischen zwei parallelen Hyperebenen
+    mit Abstand $C$ liegt.
+    Dann gilt $\forall_{u \in H^1_0(\Omega)}\;
+    \norm{u}_{L^2} \le \frac{C}{\sqrt{2}} \norm{\nabla u}_{L^2}$,\\
+    wobei $\norm{\nabla u}_{L^2} :=
+    \left(\sum_{i=1}^n \norm{\partial_{x_i} u}_{L^2}^2\right)^{1/2}$.
+\end{Satz}
+
+\begin{Kor}
+    Die Normen $\norm{\cdot}_{H^1(\Omega)}$ und $\norm{\cdot}_{H_0^1(\Omega)}$ auf $H_0^1(\Omega)$
+    sind äquivalent, wenn $\Omega$ ein Gebiet wie im vorherigen Satz ist.
+\end{Kor}
+
+\linie
+
+\begin{Satz}{schwache Lösung}\\
+    Seien $\Omega \subset \real^n$ ein beschränktes Normalgebiet, $f \in L^2(\Omega)$ und
+    $E(w) := \int_\Omega (\frac{1}{2} |\nabla w|^2 - fw)\dx$.\\
+    Dann besitzt $E$ auf $H_0^1(\Omega)$ eine eindeutige Minimalstelle $u$ und $u$ ist die
+    eindeutige schwache Lösung des Dirichlet-Problems für die Poisson-Gleichung
+    $-\Delta u = f$ in $\Omega$, $u = 0$ auf $\partial\Omega$, d.\,h. es gilt
+    $\forall_{\varphi \in H_0^1(\Omega)}\; \int_\Omega (\nabla u \nabla \varphi - f\varphi)\dx = 0$.
+\end{Satz}
+
+\begin{Bem}
+    Es gibt eine nur von $\Omega$ abhängige Konstante $C > 0$ mit
+    $\norm{u}_{H^1} \le C \norm{f}_{L^2}$.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    \emph{Zusatz}: \name{Poisson}-Gleichung mit \name{Neumann}-Randbedingungen%
+}
+
+\begin{Bem}
+    Sei $\Omega \subset \real^n$ ein beschränktes Normalgebiet.\\
+    Für $f \in \C^0(\overline{\Omega})$ und $g \in \C^0(\partial\Omega)$ sei außerdem
+    $E_g(w) := \int_\Omega (\frac{1}{2} |\nabla w|^2 - fw) \dx - \int_{\partial\Omega} gw do$.\\
+    Zusätzlich sei $\A := \C^1(\overline{\Omega}) \cap \C^2(\Omega)$.
+    
+    Das \begriff{Minimumproblem} lautet nun:
+    Nimmt $E_g$ auf $\A$ ein Minimum an?
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Charakterisierung der Lösung des Minimumproblems}
+    Sei $u \in \A$.
+    Dann sind äquivalent:
+    \begin{enumerate}
+        \item
+        $E_g(u) = \min_{w \in \A} E_g(w)$
+        
+        \item
+        $\forall_{\varphi \in \C^\infty(\Omega)}\;
+        \int_\Omega (\nabla u \nabla \varphi - f \varphi)\dx -
+        \int_{\partial\Omega} g\varphi do = 0$
+        
+        \item
+        $-\Delta u = f$ in $\Omega$, $\frac{\partial u}{\partial\nu} = g$ auf $\partial\Omega$
+    \end{enumerate}
+    In diesem Fall gilt notwendigerweise $\int_\Omega f\dx + \int_{\partial\Omega} g do = 0$.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{\name{Poincaré}-Ungleichung mit Mittelwert}
+    Sei $\Omega \subset \real^n$ ein beschränktes und konvexes Gebiet mit Durchmesser $h$.
+    Dann gibt es ein $C > 0$ mit $\forall_{u \in \C^1(\overline{\Omega})}\;
+    \norm{u - Mu}_{L^2} \le Ch \norm{\nabla u}_{L^2}$,
+    wobei $Mu := \frac{\int_\Omega u\dx}{\int_\Omega 1\dx}$
+    der \begriff{Mittelwert} von $u$ auf $\Omega$ ist.
+\end{Satz}
+
+\begin{Satz}{Beschränktheit nach unten}
+    Seien $\Omega \subset \real^n$ ein beschränktes und konvexes Normalgebiet
+    und $\int_\Omega f\dx + \int_{\partial\Omega} g do = 0$.
+    Dann ist $E_g$ auf $\A$ nach unten beschränkt.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{schwache Lösung}
+    Seien $\Omega \subset \real^n$ ein beschränktes und konvexes Normalgebiet,\\
+    $f \in L^2(\Omega)$ mit $\int_\Omega f\dx = 0$ und
+    $E_0(w) := \int_\Omega (\frac{1}{2} |\nabla w|^2 - fw)\dx$.\\
+    Dann besitzt $E_0$ auf $H^1(\Omega)$ eine eindeutige Minimalstelle $u$ und $u$ ist die
+    eindeutige schwache Lösung des Neumann-Problems für die Poisson-Gleichung
+    $-\Delta u = f$ in $\Omega$,
+    $\frac{\partial f}{\partial\nu} = 0$ auf $\partial\Omega$, d.\,h. es gilt
+    $\forall_{\varphi \in H^1(\Omega)}\; \int_\Omega (\nabla u \nabla \varphi - f\varphi)\dx = 0$.
+\end{Satz}
+
+\subsection{%
+    Verallgemeinerung auf elliptische Randwertprobleme%
+}
+
+\begin{Def}{elliptische DGL}
+    Sei $\Omega \subset \real^n$ ein beschränktes Normalgebiet.\\
+    Gesucht sind Funktionen $u \in \C^2(\Omega)$, die die \begriff{elliptische DGL}
+    $-\div(A \nabla u + h) + bu + f = 0$\\
+    (d.\,h. $-\sum_{i=1}^n \partial_{x_i}
+    \!\left(\sum_{j=1}^n a_{ij} \partial_{x_j} u + h_i\right) + bu + f = 0$)
+    erfüllen.\\
+    Dabei ist $a_{ij}, h_i \in \C^1(\Omega)$ für $i, j = 1, \dotsc, n$,
+    $f, b \in \C^0(\Omega)$ und $(a_{ij}(x))_{i,j=1,\dotsc,n}$ sei
+    \begriff{gleichmäßig elliptisch in $x$}, d.\,h.
+    $\exists_{c_0 > 0} \forall_{x \in \Omega} \forall_{\xi \in \real^n}\;
+    \xi^T A(x) \xi = \sum_{i,j=1}^n a_{ij}(x) \xi_i \xi_j \ge c_0 |\xi|^2$.
+    (Für jedes $c > 0$ und $x \in \Omega$ beschreibt die Menge
+    $\left\{\xi \in \real^n \;\left|\; \xi^T A(x) \xi = c\right.\right\}$
+    eine Ellipse.)\\
+    Die Matrix $(a_{ij}(x))_{i,j=1,\dotsc,n}$ kann auch unsymmetrisch sein.
+\end{Def}
+
+\begin{Bem}
+    Ohne zusätzliche Bedingungen sind elliptische DGL nicht eindeutig lösbar.
+    Meist bekommt man die eindeutige Lösbarkeit durch Einführung von Randbedingungen.
+    Es folgen die beiden Randbedingungen, die in der mathematischen Physik am häufigsten
+    vorkommen.
+\end{Bem}
+
+\begin{Def}{\name{Dirichlet}-Randbedingungen}\\
+    $u$ löst die elliptische DGL in $\Omega$ und erfüllt
+    $u = g$ auf $\partial\Omega$ mit $g \in \C^0(\partial\Omega)$.
+\end{Def}
+
+\begin{Def}{\name{Neumann}-Randbedingungen}\\
+    $u$ löst die elliptische DGL in $\Omega$ und erfüllt
+    $-\nu (A \nabla u + h) =
+    -\sum_{i=1}^n \nu_i \left(\sum_{j=1}^n a_{ij} \partial_{x_j} u + h_i\right) = g$ auf
+    $\partial\Omega$ mit $g \in \C^0(\partial\Omega)$, wobei $\nu$ der äußere
+    Einheitsnormalenvektor an $\partial\Omega$ ist.
+\end{Def}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    Wie bei der Poisson-Gleichung führt man den Begriff einer schwachen Lösung ein.
+    Seien dafür nun $a_{ij} \in L^\infty(\Omega)$ und $(a_{ij}(x))_{i,j=1,\dotsc,n}$
+    erfülle die Bedingung der gleichmäßigen Elliptizität fast überall auf $\Omega$,
+    $b \in L^\infty(\Omega)$ und $h_i, f \in L^2(\Omega)$.
+    Aus denselben Gründen wie bei der Poisson-Gleichung genügt es, wenn man nur den Fall $g = 0$
+    betrachtet.
+\end{Bem}
+
+\begin{Def}{schwache Lösung des \name{Dirichlet}-Problems}
+    $u \in H_0^1(\Omega)$ heißt \begriff{schwache Lösung des \name{Dirichlet}-Problems},
+    falls
+    $\forall_{\varphi \in H_0^1(\Omega)}\;
+    \int_\Omega (\nabla \varphi (A \nabla u + h) + \varphi(bu + f))\dx = 0$.
+\end{Def}
+
+\begin{Def}{schwache Lösung des \name{Neumann}-Problems}
+    $u \in H^1(\Omega)$ heißt \begriff{schwache Lösung des \name{Neumann}-Problems},
+    falls
+    $\forall_{\varphi \in H^1(\Omega)}\;
+    \int_\Omega (\nabla \varphi (A \nabla u + h) + \varphi(bu + f))\dx = 0$.
+\end{Def}
+
+\begin{Bem}
+    Zusätzlich sei vorausgesetzt, dass $b \ge 0$ für das Dirichlet-Problem und
+    $b \ge b_0 > 0$ für das Neumann-Problem gilt.
+    Dann gilt folgender Satz.
+\end{Bem}
+
+\begin{Satz}{eindeutige Lösung von elliptischen DGL}
+    Unter obigen Voraussetzungen existiert genau eine schwache Lösung des Dirichlet-
+    bzw. des Neumann-Problems.
+\end{Satz}
+
+\begin{Bem}
+    Unter zusätzlichen Regularitätsannahmen an die Daten $a_{ij}$, $h_i$, $b$, $f$ und
+    $\partial\Omega$ kann man zeigen, dass die schwache Lösung so regulär ist,
+    dass sie auch eine klassische Lösung ist.
+    Beispielsweise folgt aus $a_{ij} \in \C^{m,1}(\Omega)$, $h_i \in H^{m+1}(\Omega)$,
+    $f \in H^m(\Omega)$ und $\partial\Omega$ lokal als Graph von $\C^{m+1,1}$-Funktionen
+    darstellbar, dass $u \in H^{m+2}(\Omega)$,
+    und damit für hinreichend großes $m = m(n)$, dass $u \in \C^2(\Omega)$.
+    Details siehe elliptische Regularitätstheorie ($L^2$-, $L^p$- und $\C^{0,\alpha}$-Theorie)
+    mithilfe der Sobolevschen Einbettungssätze (siehe Funktionalanalysis 2).
+\end{Bem}
+
+\subsection{%
+    \name{Ritz}-\name{Galerkin}-Approximation für elliptische RWP%
+}
+
+\begin{Satz}{\name{Ritz}-\name{Galerkin}-Approximation}
+    Sei $u \in H^1_0(\Omega)$ bzw. $u \in H^1(\Omega)$ die schwache Lösung des
+    Dirichlet- bzw. Neumann-Problems.
+    Für $N \in \natural$ sei $X_N$ ein $N$-dimensionaler
+    Unterraum von $H_0^1(\Omega)$ bzw. von $H^1(\Omega)$
+    mit der Basis $\{\varphi_k^{(N)} \;|\; k = 1, \dotsc, N\}$.\\
+    Dann existiert genau ein $u_N \in X_N$
+    (\begriff{\name{Ritz}-\name{Galerkin}-Approximation}), sodass\\
+    $\forall_{\varphi \in X_n}\;
+    \int_\Omega (\nabla \varphi (A \nabla u + h) + \varphi(bu_N + f))\dx = 0$.\\
+    Es gilt $u_N = \sum_{k=1}^N u_{N,k} \varphi_k^{(N)}$,
+    wobei sich die Koef"|fizienten $u_{N,k} \in \real$ als eindeutige Lösung des LGS
+    $\sum_{\ell=1}^N a_{k\ell}^{(N)} u_{N,\ell} + c_k^{(N)} = 0$, $k = 1, \dotsc, N$ mit
+    $c_k^{(N)} := \int_\Omega (\nabla \varphi_k^{(N)} h + \varphi_k^{(N)} f)\dx$ und
+    $a_{k\ell}^{(N)} := \int_\Omega (A \nabla \varphi_k^{(N)} \nabla \varphi_\ell^{(N)} + b\varphi_k^{(N)} \varphi_\ell^{(N)}) \dx$
+    bestimmen lassen.
+\end{Satz}
+
+\begin{Bem}
+    Die Nachweis der Struktur des LGS erfolgt durch direktes Nachrechnen.
+    Der Beweis der eindeutigen Existenz von $u_N$ kann man mit Lax-Milgram
+    (angewendet im Hilbertraum $X_N$) durchführen
+    oder man zeigt, dass die Voraussetzungen an $a_{ij}$,
+    insbesondere die gleichmäßige Elliptizitätsbedingung,
+    die Invertierbarkeit der Matrix des LGS implizieren.
+\end{Bem}
+
+\linie
+
+\begin{Lemma}{\name{Céa}-Lemma}
+    Es gilt $\norm{u - u_N}_{H^1} \le C \cdot \inf_{v \in X_N} \norm{u - v}_{H^1}$,
+    wobei die Konstante $C > 0$ nur von den Konstanten im Satz von Lax-Milgram abhängt.
+\end{Lemma}
+
+\begin{Bem}
+    Das Céa-Lemma ist die zentrale Fehlerabschätzung für Ritz-Galerkin-Approxi"-mationen.
+    Es besagt, dass die Ritz-Galerkin-Approximation bis auf eine multiplikative Konstante
+    die beste Approximation ist.
+    Weil $H^1$ separabel ist, können die $X_N$ so gewählt werden, dass
+    $\inf_{v \in X_N} \norm{u - v}_{H^1} \xrightarrow{N \to \infty} 0$.\\
+    Für weitere Fehlerabschätzungen bzgl. numerischer Verfahren, die bei der numerischen Berechnung
+    der Ritz-Galerkin-Approximation eingesetzt werden
+    (Interpolation, numerische Integra\-tion, iterative LGS-Löser) siehe Numerik-Veranstaltungen.
+\end{Bem}
+
+\pagebreak

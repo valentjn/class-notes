@@ -1,0 +1,566 @@
+\section{%
+    \texorpdfstring{$H_2$-optimale}{H₂-optimale} Regelung%
+}
+
+\subsection{%
+    Die \texorpdfstring{$H_2$-Norm}{H₂-Norm} und ihre deterministische Interpretation%
+}
+
+Gegeben sei das LTI-System $\dot{x} = Ax + Bw$, $z = Cx$ mit
+der Übertragungsmatrix\\
+$T(s) = C(sI - A)^{-1}B$ der Dimension $p \times q$.
+Hier ist $w$ ein Störeingang und $z$ ein Ausgang, der möglichst klein sein soll.
+Eine Quantifizierung des Einflusses des Eingangs $w$ auf den Ausgang $z$ kann mithilfe der sog.
+$H_2$-Norm der Übertragungsmatrix erfolgen.
+
+\textbf{$H_2$-Norm}:
+Sei $T$ eine stabile Übertragungsmatrix.\\
+Dann ist
+$\norm{T}_2 := \sqrt{\frac{1}{2\pi} \int_{-\infty}^\infty \norm{T(\iu\omega)}_F^2 d\omega}$
+die \begriff{$H_2$-Norm} von $T$.
+
+Dabei ist $\norm{\cdot}_F$ die \begriff{\name{Frobenius}-Matrixnorm}, d.\,h.
+$\norm{A}_F := \sqrt{\sum_{i,j} |a_{ij}|^2}$ für $A := (a_{ij})_{i,j}$.\\
+Es gilt $\Spur(A^\ast A)
+= \sum_j (A^\ast A)_{j,j}
+= \sum_j (\sum_i \overline{a_{ij}} a_{ij})
+= \norm{A}_F^2$.
+
+\linie
+
+\textbf{\name{Hardy}-Raum $H_2^{p \times q}$}:
+Der \begriff{\name{Hardy}-Raum} $H_2^{p \times q}$ besteht aus
+allen Matrizen $S$ der Dimension $p \times q$,
+deren Elemente analytische Funktionen auf $\complex^+$ sind, sodass\\
+$\norm{S}_2^2 := \sup_{r > 0} \frac{1}{2\pi} \int_{-\infty}^\infty \norm{S(r + \iu\omega)}_F^2
+d\omega < \infty$.
+
+Für solche Funktionen kann man zeigen, dass
+$\widehat{T}(\iu\omega) := \lim_{r \to 0+0} S(r + \iu\omega)$
+für fast alle $\omega \in \real$ existiert,
+dass $\omega \mapsto \widehat{T}(\iu\omega)$ über $\real$ quadrat-integrierbar ist und
+dass $\norm{S}_2$ gleich der $H_2$-Norm $\lVert\widehat{T}\rVert_2$ von $\widehat{T}$ ist.
+
+\textbf{$RH_2^{p \times q}$}:
+Mit $RH_2^{p \times q}$ wird der Vektorraum aller reellen, rationalen, echt properen und stabilen
+Übertragungsmatrizen der Größe $p \times q$ bezeichnet.
+$RH_2^{p \times q}$ ist ein dichter Unterraum von $H_2^{p \times q}$.
+
+Für alle $F \in L_2^{p \times q}[0, \infty) := L_2([0, \infty), \real^{p \times q})$ ist die
+Fourier-Transformation definiert durch\\
+$\widehat{F}(\iu\omega) := \int_0^\infty e^{-\iu\omega t} F(t)\dt$.
+Man kann zeigen, dass $\widehat{F} \in H_2^{p \times q}$.
+Nach dem Satz von Plancherel gilt\\
+$\int_0^\infty \norm{F(t)}_F^2 \dt =
+\frac{1}{2\pi} \int_{-\infty}^\infty \lVert\widehat{F}(\iu\omega)\rVert_F^2 d\omega$.
+Mit anderen Worten ist die Fouriertransformation eine lineare Isometrie
+$L_2^{p \times q}[0, \infty) \rightarrow H_2^{p \times q}$.
+Eine Version des Satzes von Paley-Wiener besagt, dass diese Abbildung sogar surjektiv ist.
+Daher ist die Fourier-Transformation eine isometrische Isomorphie zwischen
+$L_2^{p \times q}[0, \infty)$ und $H_2^{p \times q}$.
+
+\linie
+
+Man kann die $H_2$-Norm einer stabilen Übertragungsmatrix algebraisch anhand einer
+Zustands"-raum-Realisierung berechnen.
+
+\textbf{Satz (algebraische Berechnung der $H_2$-Norm)}:\\
+Seien $A$ eine Hurwitz-Matrix und $T(s) = C(sI - A)^{-1}B$.
+Dann gilt:
+\begin{enumerate}
+    \item
+    $\norm{T}_2^2 = \Spur(C P_c C^T)$, wobei
+    $P_c$ die Regelbarkeits-Gram-Matrix ist\\
+    (d.\,h. die Lösung von $AP_c + P_c A^T + BB^T = 0$
+    bzw. $P_c = \int_0^\infty e^{At} B B^T e^{A^T t} \dt$)
+    
+    \item
+    $\norm{T}_2^2 = \Spur(B^T P_o B)$, wobei
+    $P_c$ die Beobachtbarkeits-Gram-Matrix ist\\
+    (d.\,h. die Lösung von $A^T P_o + P_o A + C^T C = 0$
+    bzw. $P_o = \int_0^\infty e^{A^T t} C^T C e^{At} \dt$)
+\end{enumerate}
+
+\textbf{Satz (Ungleichungs-Charakterisierung)}:
+$A$ ist eine Hurwitz-Matrix und $\norm{T}_2^2 < \gamma$ genau dann, wenn
+$\exists_{X \pd}\; A^T X + XA + C^T C \nd,\; \Spur(B^T X B) \prec \gamma$.
+
+\linie
+
+\textbf{deterministische Interpretation}:
+%Sei $e_k = (0, \dotsc, 1, \dotsc, 0) \in \real^q$ und $z_k(\cdot)$ die Antwort von
+%$\dot{x} = Ax$, $z = Cx$, $x(0) = Be_k$
+%(also $z_k(t) = Ce^{At} Be_k$, da kein Eingang vorhanden ist).
+Seien $B_1, \dotsc, B_q$ die Spalten von $B$ und $z_k(t) = Ce^{At} B_k$ die Antworten
+von $\dot{x} = Ax + Bw$, $z = Cx$ auf einen Impuls im $k$-ten Eingang.
+Es gilt
+$\sum_{k=1}^q \int_0^\infty \norm{z_k(t)}^2 \dt
+= \sum_{k=1}^q B_k^T \left[\int_0^\infty e^{A^T t} C^T C e^{At} \dt\right] B_k
+= \sum_{k=1}^q B_k^T P_o B_k
+= \Spur(B^T P_o B)$.\\
+Daher ist $\sum_{k=1}^q \int_0^\infty \norm{z_k(t)}^2 \dt = \norm{T}_2^2$ nach dem obigen Satz,
+also ist das Quadrat der
+$H_2$-Norm die Summe der Energien der Einschwinganteile der Impulsantworten.
+
+\pagebreak
+
+\subsection{%
+    \emph{Wiederholung}: Grundbegrif"|fe der Statistik%
+}
+
+\textbf{Zufallsvektor}:
+Ergebnisse von Zufallsexperimenten werden durch \begriff{Zufallsvektoren (random vectors)}
+$x = \smallpmatrix{x_1 & \cdots & x_n}^T$ modelliert, die Vektoren von Zufallsvariablen
+$x_1, \dotsc, x_n$ sind.
+
+\textbf{Verteilungsfunktion}:
+Die \begriff{Verteilungsfunktion (distribution function)} $F_x\colon \real^n \rightarrow \real$
+eines Zufallsvektors $x$ bestimmt diesen vollständig.
+Dabei gilt für alle $\smallpmatrix{\xi_1 & \cdots & \xi_n}^T \in \real^n$, dass die
+Wahrscheinlichkeit für das Ereignis $x_1 \le \xi_1, \dotsc, x_n \le \xi_n$ gleich
+$F_x(\xi_1, \dotsc, \xi_n)$ ist.
+
+\textbf{Dichte}:
+Eine Verteilungsfunktion $F_x(\xi_1, \dotsc, \xi_n)$ besitzt die \begriff{Dichte (density)}
+$f_x\colon \real^n \rightarrow \real$, falls
+$F_x(\xi_1, \dotsc, \xi_n) = \int_{-\infty}^{\xi_1} \!\!\!\dotsb \int_{-\infty}^{\xi_n}
+f_x(\tau_1, \dotsc, \tau_n) \d\tau_n \dotsb \d\tau_1$ für alle $\xi \in \real^n$.
+
+\textbf{normalverteilt}:
+Ein Zufallsvektor $x$ heißt \begriff{normalverteilt/\name{Gauß}-verteilt (\name{Gauß}ian)},
+falls seine Verteilungsfunktion die Dichte
+$f_x(\tau) = \frac{1}{\sqrt{(2\pi)^n \det(R)}}
+\exp\!\left(\frac{1}{2} (\tau - m)^T R^{-1} (\tau - m)\right)$
+besitzt, wobei $m \in \real^n$ und $R \in \real^{n \times n}$ symmetrisch und positiv definit.
+
+\linie
+
+\textbf{Erwartungswert}:
+Sei $g\colon \real^n \rightarrow \real^{k \times \ell}$ Borel-messbar.
+Wenn $x = \smallpmatrix{x_1 & \cdots & x_n}^T$ die Dichte\\
+$f_x(\tau_1, \dotsc, \tau_n)$ besitzt,
+dann ist der \begriff{Erwartungswert (expectation)} von $g(x_1, \dotsc, x_n)$ definiert als\\
+$\EE[g(x_1, \dotsc, x_n)] := \int_{-\infty}^{+\infty} \!\!\!\dotsb \int_{-\infty}^{+\infty}
+g(\tau_1, \dotsc, \tau_n) f_x(\tau_1, \dotsc, \tau_n) \d\tau_n \dotsb \d\tau_1 \in
+\real^{k \times \ell}$.
+
+Für $g(\tau) = \tau$ erhält man den Erwartungswert $\EE[x]$ von $x$.
+Für $g(\tau, \sigma) = (\tau - \EE[x]) (\sigma - \EE[y])^T$ erhält man die Kovarianz-Matrix.
+
+\textbf{Kovarianz-Matrix}:
+$\cov(x, y) := \EE[(x - \EE[x]) (y - \EE[y])^T]$ heißt
+\begriff{Kovarianz-Matrix (covariance matrix)} der Zufallsvektoren $x$ und $y$.
+
+\textbf{Autokovarianz-Matrix}:
+$\cov(x, x) = \EE[(x - \EE[x]) (x - \EE[x])^T] = \EE[xx^T] - \EE[x]\EE[x]^T \psd$
+heißt \begriff{Autokovarianz-Matrix (auto-covariance matrix)} von $x$.
+
+\textbf{Varianz}:
+$\Spur(\cov(x, x)) = \EE[x^T x] - \EE[x]^T \EE[x] \ge 0$
+heißt \begriff{Varianz (variance)} von $x$.
+%Der Summand $\EE[xx^T]$ heißt \begriff{Momentenmatrix 2. Ordnung (second order moment matrix)}
+%und seine Spur $\EE[x^T x]$ heißt \begriff{Moment 2. Ordnung (second order moment)}.
+
+\subsection{%
+    \name{Wiener}-Prozesse%
+}
+
+\textbf{\name{Wiener}-Prozess}:
+Ein \begriff{\name{Wiener}-Prozess (\name{Wiener} process)}
+$W(\cdot)$ mit Intensität $1$ ist eine Abbildung $t \mapsto W(t)$,
+sodass für alle $t \ge 0$ das Bild $W(t)$ eine Zufallsvariable ist und gilt:
+\begin{itemize}
+    \item
+    \emph{Initialisierung bei $0$}:
+    $W(0) = 0$ fast sicher
+    
+    \item
+    \emph{unabhängige Zuwächse}:
+    Für alle $0 \le t_1 \le t_2 \le t_3 \le t_4$ sind die Zufallsvariablen\\
+    $W(t_2) - W(t_1)$ und $W(t_4) - W(t_3)$ unabhängig.
+    
+    \item
+    \emph{normalverteilte Zuwächse}:
+    Für alle $0 \le t_1 \le t_2$ ist der Zuwachs $W(t_2) - W(t_1)$ normalverteilt
+    mit Erwartungswert $0$ und Varianz $1 \cdot (t_2 - t_1)$.
+\end{itemize}
+
+\textbf{Eigenschaften eines \name{Wiener}-Prozesses}:
+\begin{itemize}
+    \item
+    Die Pfade sind stetig mit Wahrscheinlichkeit $1$.
+    
+    \item
+    $W(t)$ ist für $t > 0$ normalverteilt mit Dichte
+    $f_{W(t)}(\tau) = \frac{1}{\sqrt{2\pi t}} e^{-\frac{\tau^2}{2t}}$
+    (EW $0$, Varianz $t$).
+    
+    \item
+    Der Prozess $W$ ist ebenfalls normalverteilt, d.\,h.
+    für alle $k \in \natural$ und $t_1, \dotsc, t_k > 0$ paarweise verschieden ist
+    der Zufallsvektor $\smallpmatrix{W(t_1) & \cdots & W(t_k)}^T$ normalverteilt.
+\end{itemize}
+
+\linie
+\pagebreak
+
+\textbf{Integral mit \name{Wiener}-Prozessen}:
+Für $f \in L_2([a, b], \real)$ mit $0 \le a \le b$ ist
+$\int_a^b f(t) dW(t)$ analog zum Lebesgue-Stieltjes-Integral wie folgt definiert:
+\begin{itemize}
+    \item
+    Für Treppenfunktionen $s(\cdot)$ mit Werten $s_1, \dotsc, s_N$ auf den Intervallen
+    $[t_k, t_{k+1})$,\\
+    $k = 1, \dotsc, N$ (mit $a = t_1 < \dotsb < t_{N+1} = b$) sei
+    $\int_a^b s(t) dW(t) := \sum_{k=1}^N s_k [W(t_{k+1}) - W(t_k)]$.
+    
+    \item
+    Für $s_\nu \to f$ in $L_2([a, b], \real)$ sei
+    $I := \int_a^b f(t) dW(t) := \lim_{n \to \infty} I_\nu$ mit $I_\nu := \int_a^b s_\nu(t) dW(t)$
+    in dem Sinne, dass $\EE[(I - I_\nu)^2] \to 0$ für $\nu \to \infty$.
+\end{itemize}
+
+\textbf{Eigenschaften des Integrals}:
+Das Integral ist eine normalverteilte Zufallsvariable.\\
+Für $x, y \in L_2([a, b], \real)$ gilt
+$\EE[\int_a^b x(t) dW(t)] = 0$ und\\
+$\EE[(\int_a^b x(t) dW(t)) (\int_a^b y(t) dW(t))] = \int_a^b x(t) y(t) \dt$.
+Wenn $\widehat{W}$ ein von $W$ unabhängiger Wiener-Prozess ist, dann gilt
+$\EE[(\int_a^b x(t) d\widehat{W}(t)) (\int_a^b y(t) dW(t))] = 0$.
+
+\linie
+
+\textbf{mehrdimensionaler \name{Wiener}-Prozess}:
+Ein \begriff{$q$-dimensionaler \name{Wiener}-Prozess}\\
+$W = \smallpmatrix{W_1 & \cdots & W_q}^T$
+ist ein Vektor von $q$ Wiener-Prozessen $W_1, \dotsc, W_q$, die paarweise unabhängig sind.
+
+\textbf{mehrdimensionale Integrale}:
+Wenn $X$ und $Y$ matrixwertige Abbildungen von Dimension $p \times q$ sind,
+die quadratintegrierbare Elemente auf $[a, b]$ haben ($0 \le a \le b$), dann sind die
+Zufallsvektoren $x = \int_a^b X(t) dW(t)$ und $y = \int_a^b Y(t) dW(t)$ der Dimension $p$
+elementweise definiert.
+Es gilt $\EE[x] = \EE[y] = 0$ und $\EE[xy^T] = \int_a^b X(t) Y(t)^T \dt$.
+
+\subsection{%
+    Weißes Rauschen und die stochastische Interpretation der \texorpdfstring{$H_2$-Norm}{H₂-Norm}%
+}
+
+\textbf{weißes Rauschen}:
+Sei wieder $\dot{x} = Ax + Bw$, $z = Cx$ gegeben.
+Man betrachtet die Störung $w$ oft als \begriff{weißes Rauschen}, d.\,h. als ein nicht-reguläres
+Signal mit einem flachem Spektrum (alle Frequenzen kommen gleich oft vor).
+$w$ kann man dann als Ableitung $\dot{W}$ eines Wiener-Prozesses verstehen.
+In diesem Sinne kann man $W$ durch Integration von weißem Rauschen erhalten, d.\,h.
+$W(t) = \text{"`}\int_0^t \dot{W}(\tau) \d\tau\text{"'} = \int_0^t dW(\tau)$ für $t \ge 0$.
+Der mittlere Ausdruck ist mathematisch sinnlos, allerdings kann man nun definieren, was
+die Zustandsantwort eines linearen Systems zu einem Weißen-Rauschen-Eingang und einer
+Zufalls-Anfangsbedingung $\xi$ ist.
+
+\textbf{Antwort auf weißes Rauschen}:
+Sei $\xi$ normalverteilt und unabhängig von $W(t)$ für alle $t \ge 0$.
+Dann ist die \begriff{Antwort (response)} des linearen Systems $\dot{x} = Ax + B\dot{W}$,
+$x(0) = \xi$ definiert durch
+$x(t) := e^{At}\xi + \int_0^t e^{A(t-\tau)}B dW(\tau)$ für $t \ge 0$.
+
+$x(\cdot)$ ist nach obigen Bemerkungen ein normalverteilter Prozess.
+
+\textbf{Satz (Antwort auf weißes Rauschen)}:
+Sei $x(\cdot)$ die Antwort von $\dot{x} = Ax + B\dot{W}$, $x(0) = \xi$.
+Dann gilt $\EE[x(t)] = e^{At}\EE[\xi]$ für $t \ge 0$ und\\
+$\cov(x(t_1), x(t_2)) = e^{At_1} \cov(\xi, \xi) e^{A^T t_2} +
+\int_0^{t_1} e^{A(t_1 - \tau)} BB^T e^{A^T (t_2 - \tau)} \d\tau$ für $0 \le t_1 \le t_2$.
+
+Für $A = 0$ und $\xi = 0$ erhält man $x(t) = BW(t)$ und daher
+$\EE[BW(t)] = 0$ sowie\\
+$\EE[BW(t) W(t)^T B^T] = tBB^T$.
+
+\linie
+
+\textbf{Folgerung (stochastische Interpretation der $H_2$-Norm)}:
+Seien $A$ eine Hurwitz-Matrix und $x(\cdot), z(\cdot)$ die Zustands- und Ausgangsantworten
+von $\dot{x} = Ax + B\dot{W}$, $z = Cx$, $x(0) = \xi$.\\
+Dann gilt $\EE[x(t)] \to 0$ und $\EE[z(t)] \to 0$ für $t \to \infty$.
+Außerdem gilt\\
+$\lim_{t \to \infty} \cov(x(t), x(t)) = P_c$ (asym. Autokovarianz-Matrix des Zustands) sowie\\
+$\lim_{t \to \infty} \Spur(\cov(z(t), z(t))) = \norm{T}_2^2$ (asym. Varianz des Ausgangs).
+
+Somit ist $\norm{T}_2^2$ die asymptotische Varianz
+$\lim_{t \to \infty} (\EE[z(t)^T z(t)] - \EE[z(t)]^T \EE[z(t)])$
+des Ausgangs eines stabilen linearen Systems, das durch weißes Rauschen angetrieben wird.
+
+\pagebreak
+
+\subsection{%
+    Farbiges Rauschen und Spektralfaktorisierung%
+}
+
+\textbf{farbiges Rauschen}:
+$\widetilde{w}$ heißt \begriff{farbiges Rauschen (colored noise)}, falls es
+$(\widetilde{A}, \widetilde{B}, \widetilde{C})$ gibt
+mit $\widetilde{A}$ einer Hurwitz-Matrix, sodass
+$\widetilde{w}$ der Ausgang von
+$\dot{\widetilde{x}} = \widetilde{A} \widetilde{x} + \widetilde{B} \dot{W}$,
+$\widetilde{w} = \widetilde{C} \widetilde{x}$, $\widetilde{x}(0) = 0$ ist.
+
+Man spricht auch davon, dass man $\widetilde{w}$ durch
+\begriff{Filterung (filtering)} von weißem Rauschen mit dem \begriff{Farbfilter (coloring filter)}
+$\widetilde{T}(s) = \widetilde{C} (sI - \widetilde{A})^{-1} \widetilde{B}$ erhält.\\
+Weil $\widetilde{w}(t) = \int_0^t \widetilde{C} e^{\widetilde{A}(t - \tau)} \widetilde{B} dW(\tau)$
+unabhängig von der Realisierung ist, kann man annehmen, dass
+$(\widetilde{A}, \widetilde{B}, \widetilde{C})$ minimal ist,
+d.\,h. $\widetilde{T}$ legt die Eigenschaften von $\widetilde{w}$ fest
+(und nicht die Realisierung).
+
+\linie
+
+Für $t \ge 0$ gilt $\EE[\widetilde{w}(t)] = 0$.
+Wenn $\tau \in \real$ fest ist, dann betrachtet man die asymptotische Kovarianz-Matrix von
+$\widetilde{w}(t)$ und $\widetilde{w}(t + \tau)$, d.\,h.
+$R(\tau) := \lim_{t \to \infty} \EE[\widetilde{w}(t + \tau) \widetilde{w}(t)^T]$.
+
+\textbf{Satz (algebraische Berechnung von $R(\tau)$)}:
+Seien $\widetilde{A}$ eine Hurwitz-Matrix und $\widetilde{P}$ die Regelbarkeits-Gram-Matrix
+von $(\widetilde{A}, \widetilde{B})$
+(d.\,h. die eindeutige Lösung von
+$\widetilde{A} \widetilde{P} +
+\widetilde{P} \widetilde{A}^T + \widetilde{B} \widetilde{B}^T = 0$).\\
+Dann gilt
+$R(\tau) = \widetilde{C} e^{\widetilde{A}\tau} \widetilde{P} \widetilde{C}^T$ für $\tau \ge 0$ und
+$R(\tau) = \widetilde{C} \widetilde{P} e^{-\widetilde{A}^T\tau} \widetilde{C}^T$ für $\tau < 0$.
+
+Insbesondere gilt $R(-\tau)^T = R(\tau)$.
+Weil $\widetilde{A}$ eine Hurwitz-Matrix ist, fällt $R(\tau)$ für $\tau \rightarrow \pm\infty$
+exponentiell ab und hat daher eine wohldefinierte Fourier-Transformierte.
+
+\textbf{Spektraldichte}:\\
+Die Fourier-Transformierte $\widehat{R}$ von $R$ heißt \begriff{Spektraldichte (spectral density)}
+des Prozesses $\widetilde{w}$.
+
+\textbf{Satz (Spektraldichte)}:
+Die Spektraldichte von $\widetilde{w}$ ist gegeben durch
+$\widehat{R}(\iu\omega) = \widetilde{T}(\iu\omega) \widetilde{T}(\iu\omega)^\ast$.\\
+Insbesondere ist $\widehat{R}(\iu\omega)$ hermitesch und positiv semidefinit für alle
+$\omega \in \real$.
+
+\linie
+
+\textbf{Bestimmung von Farbfiltern}:
+Die Bestimmung von Farbfiltern in der Praxis läuft folgendermaßen ab.
+Zunächst schätzt man durch Messungen statistisch die Spektraldichte $\widehat{R}(\iu\omega)$
+des Prozesses.
+Anschließend approximiert man die experimentell ermittelte Spektraldichte durch
+$G(\iu\omega)$, wobei $G(s)$ eine reell-rationale, echt propere Funktion ohne Pole auf
+$\complex^0$ ist, sodass $G(\iu\omega) = G(\iu\omega)^\ast$ und $G(\iu\omega) \psd$ für alle
+$\omega \in \real$.
+Schließlich erhält man den Farbfilter durch
+\begriff{Spektralfaktorisierung (spectral factorization)}.
+
+\textbf{Satz (Spektralfaktorisierung)}:
+Sei $G(s)$ eine reell-rationale, echt propere Funktion ohne Pole auf
+$\complex^0$, sodass $G(\iu\omega) = G(\iu\omega)^\ast$ und $G(\iu\omega) \psd$ für alle
+$\omega \in \real$.\\
+Dann gibt es eine echt propere und stabile Übertragungsmatrix $T$ mit
+$G(s) = T(s) T(-s)^T$.
+
+Insbesondere gilt also $G(\iu\omega) = T(\iu\omega) T(\iu\omega)^\ast$, d.\,h.
+$T$ ist ein Farbfilter zur Modellierung von Rauschen mit der Spektraldichte $G$, wie gewünscht.
+Man nennt $T$ einen \begriff{Spektralfaktor (spectral factor)} von $G$.
+
+\linie
+
+\textbf{Antwort auf farbiges Rauschen}:
+Die Antwort des linearen Systems\\
+$\dot{x} = Ax + B\widetilde{w}$, $z = Cx + D\widetilde{w}$,
+$x(0) = \xi$, das durch farbiges Rauschen betrieben wird, ist definiert durch den Ausgang von
+$\smallpmatrix{\dot{x} \\ \dot{\widetilde{x}}} =
+\smallpmatrix{A & B\widetilde{C} \\ 0 & \widetilde{A}} \smallpmatrix{x \\ \widetilde{x}} +
+\smallpmatrix{0 \\ \widetilde{B}} \dot{W}$,
+$z = \smallpmatrix{C & D\widetilde{C}} \smallpmatrix{x \\ \widetilde{x}}$,
+$\smallpmatrix{x(0) \\ \widetilde{x}(0)} = \smallpmatrix{\xi \\ 0}$.
+
+Die Antwort eines linearen Systems auf farbiges Rauschen wird also auf die Antwort auf weißes
+Rauschen und auf die Reihenschaltung des Systems und des Farbfilters reduziert.
+
+\pagebreak
+
+\subsection{%
+    Das \texorpdfstring{$H_2$-Regelungsproblem}{H₂-Regelungsproblem} und
+    LQG-Regelung%
+}
+
+Gegeben sei wieder die verallgemeinerte Anlage $\dot{x} = Ax + B_w w + Bu$,
+$z = C_z x + D_{zw} w + D_z u$, $y = Cx + D_w w + Du$
+mit einem Störeingang $w$ (der nicht beeinflusst werden kann),
+einem Steuereingang $u$,
+einem Leistungsausgang $z$ (der gegen Null gehen soll) und
+einem Messausgang $y$.
+Das Ziel ist es, einen Rückführungsregler zu finden, der das System stabilisiert und
+die $H_2$-Norm der Übertragungsmatrix des geschlossenen Regelkreises minimiert.
+Der Einfachheit halber nimmt man $D_{zw} = 0$ und $D = 0$ an.
+
+\textbf{$H_2$-Regelungsproblem}:
+Seien ein System durch $\dot{x} = Ax + B_w w + Bu$, $z = C_z x + D_z u$, $y = Cx + D_w w$
+und ein Regler durch $\dot{x}_K = A_K x_K + B_K y$, $u = C_K x_K$ gegeben.
+Das geregelte System $\dot{\xi} = \A\xi + \B w$, $z = \C\xi$ lässt sich mit
+$\A := \smallpmatrix{A & BC_K \\ B_K C & A_K}$,
+$B := \smallpmatrix{B_w \\ B_K D_w}$ und
+$C := \smallpmatrix{C_z & D_z C_K}$ beschreiben.
+Die Aufgabe ist es, $A_K, B_K, C_K$ so zu finden, dass
+$\A$ eine Hurwitz-Matrix ist und
+$\norm{\C (sI - \A)^{-1} \B}_2$ minimal ist.
+Dieses Problem heißt \begriff{$H_2$-Regelungsproblem ($H_2$-control problem)}.
+
+\linie
+
+\textbf{Herleitung der LQG-Regelung}:
+Sei das System $\dot{x} = Ax + B_1 \dot{W}_1 + Bu$ mit Steuereingang $u$ und
+Prozessrauschen $B_1 \dot{W}_1$ gegeben, außerdem seien die Messungen $Cx$ durch
+weißes Rauschen $\dot{W}_2$ gestört, d.\,h.
+$y = Cx + D_2 \dot{W}_2$ (mit unabhängigen Wiener-Prozessen $W_1, W_2$).
+Wie bei der LQ-Regelung will man Linearkombinationen $C_1 x$ und $D_1 u$ der Zustände bzw. der
+Steuerung klein halten, d.\,h. man wählt
+$z = \smallpmatrix{C_1 x \\ D_1 u}$ als Leistungsausgang.
+Das Ziel der LQG-Regelung ist es, einen stabilisierenden Regler zu finden, der die
+asymptotische Varianz\\
+$\lim_{t \to \infty} \Spur(\cov(z(t), z(t)))$ des Leistungsausgangs minimiert.
+
+\textbf{LQG-Regelung}:\\
+Sei das System $\dot{x} = Ax + \smallpmatrix{B_1 & 0} w + Bu$,
+$z = \smallpmatrix{C_1 \\ 0} x + \smallpmatrix{0 \\ D_1} u$,
+$y = Cx + \smallpmatrix{0 & D_2} w$ gegeben.\\
+Die Aufgabe ist es, einen stabilisierenden Ausgangsrückführungs-Regler zu finden, der die
+asymptotische Varianz von $z$ für weißes Rauschen $w$ minimiert.\\
+Dieses Problem heißt \begriff{LQG-optimales Regelungsproblem (linear-quadratic-\name{Gauß}ian)}.
+
+Nach obiger Folgerung gilt
+$\lim_{t \to \infty} \Spur(\cov(z(t), z(t))) = \norm{T}_2^2$ mit $T$ der Übertragungsmatrix des
+geschlossenen Regelkreises,
+d.\,h. LQG-Regelung ist im $H_2$-Regelungsproblem enthalten.
+
+Wenn $\dot{W}_1$ kein weißes, sondern farbiges Rauschen $\widetilde{w}_1$ ist, dann muss man den
+Farbfilter\\
+$T(s) = \widetilde{C} (sI - \widetilde{A})^{-1} \widetilde{B}$ in die verallgemeinerte
+Anlage einbauen und dann das $H_2$-Problem für die entstehende gewichtete verallgemeinerte Anlage
+lösen.
+
+\linie
+
+\textbf{Herleitung eines Zustandsrückführungs-Reglers}:
+Sei zunächst $y = x$, d.\,h.\\
+$\dot{x} = Ax + B_w w + Bu$, $z = C_z x + D_z u$.
+Der Regler $u = -Fx$ führt zum geschlossenen Regelkreis
+$\dot{x} = (A - BF)x + B_w w$, $z = (C_z - D_z F)x$.
+Das Ziel ist die Minimierung von\\
+$\norm{(C_z - D_z F)(sI - A + BF)^{-1} B_w}_2$
+über alle $F$, sodass $\Eig(A - BF) \subset \complex^-$.
+
+\textbf{Satz ($H_2$-optimale Regelung durch Zustandsrückführung)}:
+Seien
+\begin{itemize}
+    \item
+    $(A, B)$ stabilisierbar,
+    
+    \item
+    $(A, C_z)$ habe keine unbeobachtbaren Eigenwerte in $\complex^0$ und
+    
+    \item
+    $D_z^T \smallpmatrix{C_z & D_z} = \smallpmatrix{0 & I}$.
+\end{itemize}
+Außerdem sei $P$ die stabilisierende Lösung der ARE $A^T P + PA - PBB^T P + C_z^T C_z = 0$.\\
+Dann gilt für
+$\gamma_\opt := \min_{F,\;\Eig(A-BF)\subset\complex^-}
+\norm{(C_z - D_z F)(sI - A + BF)^{-1} B_w}_2^2$, dass\\
+$\gamma_\opt = \Spur(B_w^T P B_w)$, wobei der optimale Wert für $F = B^T P$ angenommen wird.
+
+\pagebreak
+
+\subsection{%
+    \name{Kalman}-Filter und \texorpdfstring{$H_2$-optimale}{H₂-optimale} Beobachter%
+}
+
+Gegeben sei wieder $\dot{x} = Ax + B_w w + Bu$,
+$z = C_z x + D_z u$, $y = Cx + D_w w$.
+Wenn $w = 0$ gilt, dann ist
+$\dot{\widehat{x}} = A\widehat{x} + Bu + L(y - \widehat{y})$,
+$\widehat{z} = C_z \widehat{x} + D_z u$,
+$\widehat{y} = C\widehat{x}$
+ein Beobachter für dieses System, wobei $L$ so gewählt ist, dass $A - LC$ eine Hurwitz-Matrix ist
+(dann rekonstruiert der Beobachter den Zustand des Systems asymptotisch).
+
+\textbf{\name{Kalman}-Filter}:
+Wenn $w$ nicht verschwindet und stattdessen weißes Rauschen ist, dann ist
+$\text{(err)} := \lim_{t \to \infty} \EE[(z(t) - \widehat{z}(t))^T (z(t) - \widehat{z}(t))]$
+ein Maß dafür, wie gut $\widehat{z}$ den Leistungsausgang $z(t)$ für $t \to \infty$ approximiert.
+Ein Beobachter, der (err) minimiert, heißt \begriff{\name{Kalman}-Filter} für die
+verallgemeinerte Anlage.
+
+Indem man den Zustandsfehler $\xi = x - \widehat{x}$ betrachtet, kann man leicht die Beschreibung\\
+$\dot{\xi} = (A - LC)\xi + (B_w - LD_w) w$,
+$z - \widehat{z} = C_z \xi$
+für die Übertragungsmatrix von $w$ nach $z - \widehat{z}$ herleiten.
+
+\textbf{$H_2$-Beobachterproblem}:
+Die Aufgabe ist es, $L$ so zu finden, dass
+$A - LC$ eine Hurwitz-Matrix ist und die $H_2$-Norm der Übertragungsmatrix von $w$ nach
+$z - \widehat{z}$ minimal ist.\\
+Dieses Problem heißt \begriff{$H_2$-Beobachterproblem ($H_2$-optimal observer synthesis problem)}.
+
+\linie
+
+\textbf{Satz ($H_2$-optimaler Beobachter)}:
+Seien
+\begin{itemize}
+    \item
+    $(A, C)$ entdeckbar,
+    
+    \item
+    $(A, B_w)$ habe keine unregelbaren Eigenwerte in $\complex^0$ und
+    
+    \item
+    $D_w \smallpmatrix{B_w^T & D_w^T} = \smallpmatrix{0 & I}$.
+\end{itemize}
+Außerdem sei $Q$ die stabilisierende Lösung der ARE $AQ + QA^T - QC^T CQ + B_w B_w^T = 0$.\\
+Dann gilt für
+$\gamma_\opt := \min_{L,\;\Eig(A-LC)\subset\complex^-}
+\norm{C_z (sI - A + LC)^{-1} (B_w - LD_w)}_2^2$, dass\\
+$\gamma_\opt = \Spur(C_z Q C_z^T)$, wobei der optimale Wert für $L = QC^T$ angenommen wird.
+
+Wegen der stochastischen Interpretation der $H_2$-Norm minimieren
+$H_2$-optimale Beobachter die asymptotische Varianz von $z - \widehat{z}$,
+wenn $w$ weißes Rauschen ist.
+Damit ist der optimale Beobachter der Kalman-Filter.
+
+\subsection{%
+    \texorpdfstring{$H_2$-optimale}{H₂-optimale} Regelung mit Ausgangsrückführung%
+}
+
+\textbf{Satz (Lösung des $H_2$-Regelungsproblems)}:
+Seien
+\begin{itemize}
+    \item
+    $(A, B)$ stabilisierbar und $(A, C)$ entdeckbar,
+    
+    \item
+    $(A, C_z)$ habe keine unbeobachtbaren Eigenwerte in $\complex^0$ und\\
+    $(A, B_w)$ habe keine unregelbaren Eigenwerte in $\complex^0$ und
+    
+    \item
+    $D_z^T \smallpmatrix{C_z & D_z} = \smallpmatrix{0 & I}$ und
+    $D_w \smallpmatrix{B_w^T & D_w^T} = \smallpmatrix{0 & I}$.
+\end{itemize}
+Außerdem sei $P$ die stabilisierende Lösung der ARE $A^T P + PA - PBB^T P + C_z^T C_z = 0$
+sowie $Q$ die stabilisierende Lösung der ARE $AQ + QA^T - QC^T CQ + B_w B_w^T = 0$\\
+Dann löst der Regler
+$\dot{x}_K = (A - BB^T P - QC^T C) x_K + QC^T y$, $u = -B^T P x_K$
+das $H_2$-Regelungsproblem und die zugehörige optimale $H_2$-Norm des geschlossenen Regelkreises
+ist gleich
+$\sqrt{\Spur(B_w^T P B_w) + \Spur(B^T PQPB)}$.
+
+Die erste Voraussetzung ist notwendig für die Existenz eines stabilisierenden Reglers.
+Die zweite Voraussetzung ist notwendig für die Existenz der stabilisierenden Lösungen $P$ und $Q$
+der AREs.
+Bei der dritten Voraussetzung ist nur wichtig, dass $D_z$ und $D_w$ vollen Spalten- bzw.
+Zeilenrang besitzen (die anderen Eigenschaften vereinfachen nur die Formeln).
+
+\pagebreak

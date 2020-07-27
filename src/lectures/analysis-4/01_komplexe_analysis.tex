@@ -1,0 +1,1579 @@
+\section{%
+    Funktionen in einer komplexen Variablen%
+}
+
+\subsection{%
+    Die Topologie der erw. kompl. Zahlenebene und die
+    \name{Möbius}-Transf.%
+}
+
+Komplexe Zahlen lassen sich mittels $z = (x, y) = x + \i y \in \complex$,
+$x, y \in \real$
+als Element der komplexen Zahlenebene schreiben.
+Dabei ist $\i = (0, 1)$ mit $\i^2 = -1 = (-1, 0)$.
+Die zu $z$ komplex konjugierte Zahl ist $\overline{z} = x - \i y$ und
+der Betrag von $z$ ist $|z| = \sqrt{x^2 + y^2} = \sqrt{z \overline{z}} \ge 0$.
+Dieser definiert die Abstandsfunktion $d(z_1, z_2) = |z_1 - z_2|$.
+Damit ist Konvergenz in $\complex$ definiert, da die Abstandsfunktion
+$\varepsilon$-Umgebungen definiert durch
+$U_\varepsilon(z) = \{w \in \complex \;|\; |w - z| < \varepsilon\}$.
+
+\linie
+
+\textbf{Wie versteht man "`$\infty$"' im komplexen Fall?}
+
+Im Reellen sagt man, eine Folge $z_n \in \real$ läuft gegen $+\infty$,
+falls $z_n > R$ für $n \ge N_R$ und jedes beliebige $R> 0$, d.\,h.
+$z_n \in U_R(+\infty) := \left]R, +\infty\right[$.
+Analog gilt $z_n \to -\infty$,
+falls $z_n < -R$ für $n \ge N_R$ und jedes beliebige $R > 0$, d.\,h.
+$z_n \in U_R(-\infty) := \left]-\infty, -R\right[$.\\
+Allgemein schreibt man $z_n \to \infty$,
+falls $|z_n| > R$ für $n \ge N_R$ und jedes beliebige $R > 0$, d.\,h.
+$z_n \in U_R(\infty) := U_R(+\infty) \cup U_R(-\infty)$.
+Geometrisch kann man $U_R(\infty)$ durch die \emph{stereographische Projektion}
+als "`Umgebung von $\infty$"' interpretieren:\\
+Zeichnet man einen Kreis auf die reelle Achse, der diese in $0$ berührt, so
+kann man jeder reellen Zahl einen Punkt auf dem Kreis zuweisen,
+indem man die reelle Zahl mit dem "`Nordpol"'
+(der der $0$ gegenüber liegende Punkt) verbindet und der reellen Zahl
+den Schnittpunkt der Verbindungsstrecke mit dem Kreis zuweist.
+Auf diese Weise entsprechen Umgebungen einer reellen Zahl $z \in \real$
+wieder Umgebungen des Bildes von $z$ auf dem Kreis.
+Den "`Nordpol"' kann man als
+"`$\infty$"' bezeichnen, da das Bild von $U_R(\infty)$ eine Umgebung von
+$\infty$ darstellt (nur ohne $\infty$).
+
+Im Komplexen ist dies nicht ganz so einfach, da es dort viele verschiedene
+Richtungen gibt.
+
+\linie
+
+\textbf{\name{Riemann}sche Zahlenkugel}:
+Auf die komplexe Zahlenebene wird eine Kugel mit Radius $\frac{1}{2}$ gelegt,
+die die Ebene in $(0, 0)$ berührt.
+Mithilfe der stereographischen Projektion entspricht jeder Punkt $z = (x, y)$
+der komplexen Zahlenebene ein Punkt $(\xi, \eta, \zeta)$ der Kugel
+$\mathbb{S}^2$
+(man verbinde den Nordpol $\infty := (0, 0, 1)$ mit $(x, y)$ und
+$(\xi, \eta, \zeta)$ ist dann der Schnittpunkt der Verbindungsgeraden mit der
+Kugel).
+Umgebungen auf der Kugel werden (umgekehrt) auf Umgebungen auf der Ebene
+abgebildet.
+Man schreibt für eine Folge $z_n \in \complex$, dass $z_n \to \infty$,
+falls $|z_n| > R$ für alle $n \ge N_R$ und jedes beliebige $R > 0$, d.\,h.
+$z_n \in U_R(\infty) := \{z \in \complex \;|\; |z| > R\}$.
+Das Bild von $U_R(\infty)$ ist wieder eine Umgebung von $\infty$ (nur ohne
+$\infty$).
+
+$\mathbb{S}^2 \setminus \{(0, 0, 1)\}$ und $\complex$ lassen sich stetig und
+bijektiv durch die stereographische Projektion aufeinander abbilden,
+wenn man nun kanonischerweise wie eben $(0, 0, 1)$ mit $\infty$ identifiziert,
+erhält man eine stetige Bijektion zwischen $\mathbb{S}^2$ und
+$\complex^\ast := \complex \cup \{\infty\}$.
+
+Insbesondere gilt $z_n \to \infty$ genau dann, wenn $\frac{1}{z_n} \to 0$,
+sowie $\xi^2 + \eta^2 + (\zeta - \frac{1}{2})^2 = \frac{1}{4}$\\
+$\iff\; \xi^2 + \eta^2 = \zeta (1 - \zeta)$.
+Aus der Geradengleichung $\frac{\xi - 0}{x - 0} = \frac{\eta - 0}{y - 0} =
+\frac{\zeta - 1}{0 - 1}$ für $(0, 0, 1)$, $(\xi, \eta, \zeta)$ und
+$(x, y, 0)$ folgt, dass $x = \frac{\xi}{1 - \zeta}$ und
+$y = \frac{\eta}{1 - \zeta}$.
+Umgekehrt gilt $x^2 + y^2 = \frac{\xi^2 + \eta^2}{(1 - \zeta)^2} =
+\frac{\xi}{1 - \zeta}$, daraus folgt dann
+$\zeta = \frac{x^2 + y^2}{1 + x^2 + y^2}$,
+$\xi = \frac{x}{1 + x^2 + y^2}$ und $\eta = \frac{y}{1 + x^2 + y^2}$.
+
+\linie
+
+\textbf{Kreis in $\complex^\ast$}:
+Ein Kreis in $\complex^\ast$ ist definiert als ein Kreis in $\complex$ oder
+eine Gerade in $\complex$, die zusätzlich $\infty$ enthält.
+
+\textbf{Eigenschaft}:
+Die stereographische Projektion erhält Kreise und Winkel.
+
+\linie
+\pagebreak
+
+\textbf{lineare Abbildung}:
+Eine \emph{lineare Abbildung} $f\colon \complex \rightarrow \complex$
+(oder $f\colon \complex^\ast \rightarrow \complex^\ast$) hat die Form
+$z \mapsto w = az + b$ mit $a, b \in \complex$ und $a \not= 0$.
+
+\textbf{Spezialfall}:
+$a = 1$, d.\,h. $z \mapsto w = z + b$
+ist eine Verschiebung, erhält Kreise und Winkel
+
+\textbf{Spezialfall}:
+$b = 0$, $a = e^{\i \beta}$ mit $\beta \in \left[0, 2\pi\right[$,
+d.\,h. Drehung um den Winkel $\beta$, erhält Kreise und Winkel
+
+\textbf{Spezialfall}:
+$b = 0$, $a \in \real$ mit $a = r > 0$,
+d.\,h. Streckung/Stauchung um den Faktor $r$, erhält Kreise und Winkel
+
+Die Abbildungen dieser drei Spezialfälle nennen sich \textbf{elementar}.
+Jede lineare Abbildung\\
+$z \mapsto az + b$ ist also Komposition von elementaren Abbildungen
+und erhält Kreise und Winkel.
+
+Es gibt auch die Abbildung $f\colon \complex^\ast \rightarrow \complex^\ast$,
+$z \mapsto w = \frac{1}{z}$.
+Diese ist eine Inversion ("`Spiegelung"') am Einheitskreis:
+Der neue Betrag ist
+der Kehrwert des alten Betrags, anschließend wird an der reellen
+Achse gespiegelt (das neue Argument ist die Negation des alten Arguments).
+Auch diese nicht-lineare Abbildung erhält Kreise und Winkel.
+
+\linie
+
+\textbf{\name{Möbius}-Transformation}:
+Eine \emph{\name{Möbius}-Transformation} ist eine Abbildung
+$f\colon \complex^\ast \rightarrow \complex^\ast$,\\
+$z \mapsto w = \frac{az + b}{cz + d}$ mit $a, b, c, d \in \complex$ und
+$ad - bc \not= 0$.
+Aus der letzten Bedingung folgt, dass die Möbius-Transformation bijektiv
+ist (außerdem ist sie stetig).
+Sie erhält Kreise und Winkel, denn
+$w = \frac{a}{c} + \frac{bc - ad}{c (cz + d)}$ ist eine Komposition von
+linearen Abbildungen und $\frac{1}{z}$.
+
+Die Umkehrabbildung einer MT ist
+$z = \frac{dw + (-b)}{(-c)w + a}$, d.\,h. wieder eine MT.
+
+Die Komposition von MTs ist wieder eine MT.
+
+\linie
+
+Es gibt keine 1:1-Beziehung zwischen den MTs $w = \frac{az + b}{cz + d}$ und
+den komplexen Matrizen
+\matrixsize{$\begin{pmatrix}a & b\\c & d\end{pmatrix}$},
+denn eine MT wird schon durch drei komplexe Parameter
+bestimmt, d.\,h. drei Gleichungen sind notwendig.
+Genauer:
+Seien $z_j, w_j \in \complex$ für $j = 1, 2, 3$ gegeben, dabei seien
+$z_j \not= z_k$ und $w_j \not= w_k$ für $j \not= k$.
+Dann gibt es genau eine Möbius-Transformation $\MT$, sodass
+$w_j = \MT(z_j)$ für $j = 1, 2, 3$.
+
+Dies beweist man, indem man $z_1, z_2, z_3$ durch den eindeutig bestimmten
+Kreis verbindet, analog $w_1, w_2, w_3$.
+Für einen beliebigen Punkt $z$, für den $\MT(z)$
+bestimmt werden soll, lässt man den eindeutig bestimmten Kreis durch
+$z, z_1, z_2$ mittels $\MT$ abbilden.
+Da die MT kreistreu ist, wird der Kreis auf einen Kreis
+abgebildet, der durch $w_1$ und $w_2$ geht.
+Aufgrund der Winkeltreue bleibt der Schnittwinkel der beiden Kreise bei
+$z_1$ und $z_2$ erhalten, d.\,h. der Kreis durch $w_1$ und $w_2$ kann eindeutig
+bestimmt werden.
+In der gleichen Weise verfährt man mit $z, z_1, z_3$.
+Auf dem Schnittpunkt der beiden Kreise liegt das gesuchte Bild
+$w = \MT(z)$.
+
+$w$ kann auch rechnerisch bestimmt werden:
+Ist $w = \frac{az + b}{cz + d}$ und $w_j = \frac{a z_j + b}{c z_j + d}$, so
+gilt\\
+$w_k - w_j = \frac{(ad - bc)(z_k - z_j)}{(c z_k + d)(c z_j + d)}$ für
+$k, j = 1, 2, 3$.\\
+Daraus folgt, dass
+$(w_1, w_2, w, w_3) := \frac{(w - w_1)/(w - w_2)}{(w_3 - w_1)/(w_3 - w_2)} =
+\frac{(z - z_1)/(z - z_2)}{(z_3 - z_1)/(z_3 - z_2)} =: (z_1, z_2, z, z_3)$
+eine Invariante ist, aus der $w$ berechnet werden kann.
+
+\linie
+
+Eine Möbius-Transformation bildet im nicht-entarteten Fall entweder das Innere
+eines Kreises auf das Innere oder auf das Äußere des Bilds ab.
+Würde die Transformation einen Teil auf das Innere und einen Teil auf das
+Äußere abbilden, so könnte man (MT stetig) einen Pfad definieren, der
+vollständig im Inneren des Urbilds liegt, dessen Bild aber Endpunkte besitzt,
+von denen einer im Inneren und einer im Äußeren liegt.
+Dann würde das Bildes des Pfads aber den Bild-Kreis schneiden, was aufgrund
+der Bijektivität und der Kreistreue nicht möglich ist.
+Im entarteten Fall können Kreisinnere auf Halbebenen und Halbebenen auf Inneres
+bzw. Äußeres von Kreisen abgebildet werden.
+
+\subsection{%
+    Mehrwertige Abbildungen und \name{Riemann}sche Flächen%
+}
+
+Es gibt Zuordnungen wie $\complex \rightarrow \complex$,
+$z \mapsto w = \sqrt[n]{z}$, $n \in \natural$,
+die an sich keine Abbildungen sind, da es mehrere Werte geben kann.
+Im Beispiel gilt für $z = r e^{\i\varphi}$, dass die $n$ Werte\\
+$w_k = r^{1/n} e^{\i(\varphi/n + 2\pi k/n)}$, $k = 0, \dotsc, n - 1$
+die Gleichung $w_k^n = z$ erfüllen.\\
+Hier hat man es also mit einer sog. \textbf{mehrwertigen Abbildung} zu tun.\\
+Welchen Wert soll man auswählen, um eine möglichst sinnvolle Abbildung
+zu definieren?
+
+Wenn man z.\,B. immer die Lösung für $k = 0$ auswählt, so ergibt sich das
+Problem, dass die Abbildung nicht stetig ist:
+Nimmt man als Beispiel $n = 3$ an und "`läuft"' von $1$ aus
+einmal gegen den Uhrzeigersinn um den Ursprung, so läuft das Bild nur bis
+zum Argument $\frac{2\pi}{3}$;
+überquert man die reelle Achse, so "`springt"' die Lösung wieder zurück
+zum Argument $0$.
+Man kann also keinen stetigen Zweig der Wurzeldefinition definieren.
+
+Die Lösung besteht darin, für jeden Zweig (im Beispiel für jedes mögliche $k$)
+eine Kopie von $\complex$ einzuführen.
+Für $n = 3$ gibt es dann im Beispiel drei (nummerierte) Kopien der
+komplexen Ebene;
+wenn man die Abbildungen auf sie anwendet, verwendet man den der Nummer der
+Kopie entsprechenden Zweig der mehrwertigen Abbildung.
+Nun muss man die Zweige noch sinnvoll "`verkleben"', damit ein Zusammenhang
+zwischen den Kopien hergestellt ist.
+
+Bei der Wurzelfunktion geschieht dies z.\,B. darin, dass man in jeder Kopie
+die positive reelle Halbachse als Schnitt wählt und die beiden Seiten
+so nummeriert, dass man beim Durchlauf gegen den Uhrzeigersinn eine "`Ebene"'
+höher kommt.
+Wenn man ganz "`oben"' noch eine Ebene weiter geht, gelangt man wieder zurück
+auf die "`unterste"'.
+Der Schnitt kann auch anders gewählt werden, die geeignete Wahl ist vom Zweck
+abhängig.
+Die resultierende Fläche (eine eindimensionale komplexe Mannigfaltigkeit)
+nennt man \textbf{\name{Riemann}-Fläche}, die "`Ebenen"' heißen
+\textbf{\name{Riemann}-Blätter}.
+
+\linie
+
+Ein weiteres Beispiel ist $f(z) = \sqrt{z(1 - z)}$.
+Obwohl $f(z) = \sqrt{z} \sqrt{1 - z}$ ist, gibt es nur zwei Zweige statt vier,
+da sich die anderen beiden wegkürzen
+(wählt man z.\,B. bei beiden Wurzeln $k = 1$, so ist die Summe der
+resultierenden Phasensprünge in den Argumenten $2\pi$).
+"`Erlaubte"' Wege in der komplexen Ebene sind die Wege, die entweder keinen
+oder beide der Punkte $0$ und $1$ umlaufen.
+"`Nicht erlaubt"' ist ein Umlaufen nur von $0$ oder $1$, da
+so wieder ein Sprung auftritt (wie oben).
+
+Eine mögliche Lösung besteht darin, zwischen $0$ und $1$ einen Schnitt zu
+machen und die beiden Riemann-Blätter an gegenüberliegenden Seiten zu
+verkleben.
+
+\linie
+
+Für $w = \Ln(z)$ gilt $e^w = z$, d.\,h. mit $z = r e^{\i\varphi}$ ist
+$w = u + \i v$ ($u, v \in \real$) mit $u = \ln(r)$ und
+$v = \arg(z) = \varphi + 2k\pi$, $k \in \integer$.
+Es gibt also abzählbar unendlich viele Lösungen.
+Dementsprechend gibt es auch unendlich viele Riemann-Blätter, die analog wie
+bei der Wurzelfunktion verklebt werden müssen.
+
+\pagebreak
+
+\subsection{%
+    Dif"|ferenzierbarkeit%
+}
+
+Ist $U \subset \complex$ of"|fen, $z_0 \in U$ und
+$f\colon U \rightarrow \complex$, so ist die komplexe Ableitung von $f$ in
+$z_0$ definiert als
+$f'(z_0) := \lim_{h \to 0,\; h \in \complex} \frac{f(z_0 + h) - f(z_0)}{h}$.
+$f$ kann als Funktion $f(z) = (u(x, y), v(x, y))$\\
+$= u(x, y) + \i v(x, y)$
+aufgefasst werden, wobei $u, v\colon \real^2 \rightarrow \real$ reelle
+Funktionen sind.
+
+\linie
+
+\textbf{Spezialfall}:
+Für $h = x \to 0$ ($x \in \real$) und
+$f'$ in $z_0$ komplex dif"|ferenzierbar gilt\\
+$f'(z_0)
+= \lim_{x \to 0} \frac{u(z_0 + x) + \i v(z_0 + x) - u(z_0) - \i v(z_0)}{x}
+= \lim_{x \to 0} \left(\frac{u(z_0 + x) - u(z_0)}{x} +
+\i \frac{v(z_0 + x) - v(z_0)}{x}\right)$,\\
+d.\,h. $f'(z_0) = \frac{\partial u}{\partial x}(z_0) +
+\i \frac{\partial v}{\partial x}(z_0)$.
+
+\textbf{Spezialfall}:
+Für $h = \i y \to 0$ ($y \in \real$) und
+$f'$ in $z_0$ komplex dif"|ferenzierbar gilt\\
+$f'(z_0)
+= \lim_{y \to 0} \frac{u(z_0 + \i y) + \i v(z_0 + \i y) -
+u(z_0) - \i v(z_0)}{\i y}
+= \lim_{y \to 0} \left(\frac{v(z_0 + \i y) - v(z_0)}{y} -
+\i \frac{u(z_0 + \i y) - u(z_0)}{y}\right)$,\\
+d.\,h. $f'(z_0) = \frac{\partial v}{\partial y}(z_0) -
+\i \frac{\partial u}{\partial y}(z_0)$.
+
+\linie
+
+Also gilt:
+Falls $f$ in $z_0$ komplex dif"|ferenzierbar ist, so sind $u$ und $v$ partiell
+dif"|ferenzierbar und es gilt
+$\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}$ sowie
+$\frac{\partial v}{\partial x} = -\frac{\partial u}{\partial y}$
+(\textbf{\name{Cauchy}-\name{Riemann}-Gleichungen}).
+
+In diesem Falle gilt $\left.\frac{df}{dz}\right|_{z=z_0} = u_x' + \i v_x' =
+v_y' - \i u_y' = u_x' - \i u_y' = v_y' + \i v_x'$, d.\,h. $f$ kann
+dif"|ferenziert werden, ohne den Real- oder Imaginärteil zu kennen.
+
+\linie
+
+Sei $f$ in $z_0$ komplex dif"|fb.\\
+Dann gilt $f(z) = f(z_0) + w_0 h + o(|h|)$ mit $w_0 := f'(z_0)$
+und $z - z_0 =: h = h_x + \i h_y$.\\
+Setzt man $u_0 := u(x_0, y_0) = \Re(f(z_0))$,
+$v_0 := v(x_0, y_0) = \Im(f(z_0))$,
+$f = u + \i v$,
+$f(z_0) = u_0 + \i v_0$ und
+$|h|_\complex =$
+\matrixsize{$\norm{\begin{pmatrix}h_x\\h_y\end{pmatrix}}_{\real^2}$},
+so ergibt sich bei Betrachtung der Real- und Imaginärteile\\
+$u = u_0 + (w_{0,r} h_x - w_{0,i} h_y) + o\Big($\matrixsize{$\norm{
+\begin{pmatrix}h_x\\h_y\end{pmatrix}}$}$\Big)$ sowie
+$v = v_0 + (w_{0,i} h_x + w_{0,r} h_y) + o\Big($\matrixsize{$\norm{
+\begin{pmatrix}h_x\\h_y\end{pmatrix}}$}$\Big)$
+mit $w_{0,r} := \Re(w_0)$ und $w_{0,i} := \Im(w_0)$,
+also
+$\begin{pmatrix}u\\v\end{pmatrix} = \begin{pmatrix}u_0\\v_0\end{pmatrix} +
+\begin{pmatrix}w_{0,r} & -w_{0,i}\\w_{0,i} & w_{0,r}\end{pmatrix}
+\begin{pmatrix}h_x\\h_y\end{pmatrix} + o(\norm{h})$.\\
+Wegen den CR-Gleichungen gilt $w_{0,r} = u_x' = v_y'$ und
+$w_{0,i} = -u_y' = v_x'$, d.\,h.\\
+$\begin{pmatrix}u\\v\end{pmatrix} = \begin{pmatrix}u_0\\v_0\end{pmatrix} +
+\begin{pmatrix}u_x' & u_y'\\v_x' & v_y'\end{pmatrix}
+\begin{pmatrix}h_x\\h_y\end{pmatrix} + o(\norm{h})$.
+Somit ist \matrixsize{$\begin{pmatrix}u\\v\end{pmatrix}$}
+Frechet-dif"|ferenzierbar.
+
+Es gilt $\frac{D(u, v)}{D(x, y)} =
+\begin{pmatrix}w_{0,r} & -w_{0,i}\\w_{0,i} & w_{0,r}\end{pmatrix} =
+\sqrt{w_{0,r}^2 + w_{0,i}^2}
+\begin{pmatrix}\cos \theta & -\sin \theta\\
+\sin \theta & \cos \theta\end{pmatrix}$,
+da $\left(\frac{w_{0,r}}{|w|}\right)^2 +
+\left(\frac{w_{0,i}}{|w|}\right)^2 = 1$.
+Also ist die Jacobi-Matrix eine Drehung mit anschließender Streckung.
+Man nennt Transformationen, deren Jacobi-Matrix gleich einer Rotationsmatrix
+multipliziert mit einem Skalar ist, \textbf{konform}.
+
+Es gilt also:
+Eine Funktion $f\colon \complex \rightarrow \complex$ ist in
+$z_0 \in \complex$ komplex dif"|ferenzierbar genau dann, wenn die
+Cauchy-Riemann-Gleichungen erfüllt sind und
+\matrixsize{$\begin{pmatrix}u\\v\end{pmatrix}$} Frechet-dif"|ferenzierbar ist
+(die Umkehrung beweist man wie eben, nur umgekehrt).
+
+Anders gesagt ist $f$ komplex dif"|ferenzierbar genau dann, wenn alle
+partiellen Ableitungen existieren und stetig sind sowie die
+Cauchy-Riemann-Gleichungen erfüllt sind.
+
+\linie
+
+Angenommen, es existieren alle partiellen Ableitungen zweiter Ordnung und
+diese sind stetig.
+Dann folgt aus den CR-Gleichungen
+$\frac{\partial}{\partial x} \left(\frac{\partial u}{\partial x}\right) =
+\frac{\partial}{\partial x} \left(\frac{\partial v}{\partial y}\right) =
+\frac{\partial}{\partial y} \left(\frac{\partial v}{\partial x}\right) =
+\frac{\partial^2 v}{\partial x \partial y}$ und analog\\
+$\frac{\partial}{\partial y} \left(\frac{\partial u}{\partial y}\right) =
+-\frac{\partial}{\partial y} \left(\frac{\partial v}{\partial x}\right) =
+-\frac{\partial^2 v}{\partial x \partial y}$, d.\,h.
+$\Delta u = \left(\frac{\partial^2}{\partial x^2} +
+\frac{\partial^2}{\partial y^2}\right)u = 0$ und
+$\Delta v = \left(\frac{\partial^2}{\partial x^2} +
+\frac{\partial^2}{\partial y^2}\right)v = 0$.\\
+Solche Funktionen (zweifach stetig dif"|fb. mit $\Delta u = 0$)
+nennt man \textbf{harmonisch}.
+
+\linie
+\pagebreak
+
+\textbf{"`partielle Ableitungen"' $\frac{\partial}{\partial z}$ und
+$\frac{\partial}{\partial \overline{z}}$}:
+
+Für $f(z) = f(x + \i y) = u(x, y) + \i v(x, y)$ ist
+$z = x + \i y$ und $\overline{z} = x - \i y$, d.\,h.\\
+$x = \frac{z + \overline{z}}{2}$ und $y = \frac{z - \overline{z}}{2 \i}$.
+Damit kann $f(z) = f(x, y) =
+f(\frac{z + \overline{z}}{2}, \frac{z - \overline{z}}{2 \i}) =:
+\widetilde{f}(z, \overline{z})$ als eine Funktion von zwei voneinander
+abhängigen Variablen $z$ und $\overline{z}$ betrachtet werden.
+Tut man so, als wären $z$ und $\overline{z}$ voneinander unabhängig, dann ist
+$\frac{D(z, \overline{z})}{D(x, y)} =$
+\matrixsize{$\begin{pmatrix}1 & \i\\1 & -\i\end{pmatrix}$} und\\
+\matrixsize{$\begin{pmatrix}\partial/\partial z\\
+\partial/\partial \overline{z}\end{pmatrix}$} $=
+\left(\frac{D(x, y)}{D(z, \overline{z})}\right)^t$
+\matrixsize{$\begin{pmatrix}\partial/\partial x\\
+\partial/\partial y\end{pmatrix}$}.
+Damit gilt $\frac{\partial}{\partial z} :=
+\frac{1}{2} \left(\frac{\partial}{\partial x} -
+\i \frac{\partial}{\partial y}\right)$ und
+$\frac{\partial}{\partial \overline{z}} :=
+\frac{1}{2} \left(\frac{\partial}{\partial x} +
+\i \frac{\partial}{\partial y}\right)$, d.\,h. zum Beispiel
+$\frac{\partial}{\partial z} \widetilde{f}(z, \overline{z}) :=
+\frac{1}{2} \left(\frac{\partial}{\partial x} -
+\i \frac{\partial}{\partial y}\right) f(x, y)$ und
+$\frac{\partial}{\partial \overline{z}} \widetilde{f}(z, \overline{z}) :=
+\frac{1}{2} \left(\frac{\partial}{\partial x} +
+\i \frac{\partial}{\partial y}\right) f(x, y)$.
+
+Im Beispiel $f(z) = z$ gilt
+$\frac{\partial}{\partial z} f = \frac{1}{2} + \frac{1}{2} = 1$ und
+$\frac{\partial}{\partial \overline{z}} f = \frac{1}{2} - \frac{1}{2} = 0$.
+
+Existieren die part. Ableitungen, dann gilt
+$\frac{\partial}{\partial \overline{z}} (u(x, y) + \i v(x, y)) =
+\frac{1}{2} \left(\frac{\partial u}{\partial x} -
+\frac{\partial v}{\partial y}\right) +
+\frac{\i}{2} \left(\frac{\partial u}{\partial y} +
+\frac{\partial v}{\partial x}\right)$.\\
+Die beiden Ausdrücke in den Klammern sind $0$ genau dann, wenn
+die CR-Gl. erfüllt sind.
+
+Damit gilt:
+$u + \i v$ erfüllt die Cauchy-Riemann-Gleichungen genau dann, wenn
+$\frac{\partial}{\partial \overline{z}} f = 0$.
+
+Man schreibt auch kurz
+$\partial = \frac{\partial}{\partial z}$ und
+$\overline{\partial} = \frac{\partial}{\partial \overline{z}}$.
+$\overline{\partial}$ heißt
+\textbf{\name{Cauchy}-\name{Riemann}-Operator}.
+
+\linie
+
+\textbf{Beispiele}:
+$f(z) = z^n$ ist komplex dif"|fb.,
+dagegen ist $f(z) = |z|^2 = z \overline{z}$ nicht komplex dif"|fb.\\
+Die Potenzreihe $f(z) = \sum_{k=0}^\infty a_k z^k$ konvergiert für
+$|z| < R$ und divergiert für $|z| > R$, wobei
+$R = \frac{1}{\limsup_{k \to \infty} \sqrt[k]{|a_k|}}$.
+Für $|z| < R$ konvergiert die Reihe absolut, ist $|z| \le R' < R$,
+so konvergiert die Reihe sogar gleichmäßig.
+Die Reihe ist in jedem Kreis $|z| \le R' < R$ gliedweise komplex dif"|fb.,
+d.\,h. sie ist für $|z| < R$ komplex dif"|fb. und
+$f'(z) = \sum_{k=1}^\infty k a_k z^{k-1}$.
+
+\linie
+
+\textbf{holomorph}:
+Seien $U \subset \complex$ of"|fen und $f\colon U \rightarrow \complex$
+eine Funktion.
+$f$ heißt \emph{holomorph in $z_0 \in U$}, falls es ein $\varepsilon > 0$ gibt,
+sodass $f$ in allen $z$ mit $|z - z_0| < \varepsilon$ komplex dif"|ferenzierbar
+ist.\\
+$f$ heißt \emph{holomorph in $U$} ($f \in \A(U)$), falls
+$f$ in allen $z_0 \in U$ holomorph ist.
+
+\subsection{%
+    Gebiete%
+}
+
+\textbf{zusammenhängend}:
+Sei $G \subset \complex$ of"|fen mit $G \not= \emptyset$.
+Dann heißt $G$ \emph{zusammenhängend}, falls\\
+$\lnot(\exists_{G_1, G_2 \subset \complex \text{ of"|fen}}\quad
+G_1 \not= \emptyset, G_2 \not= \emptyset,\quad
+G_1 \cup G_2 = G,\quad
+G_1 \cap G_2 = \emptyset)$.
+
+\linie
+
+\textbf{Polygonzug in $G$}:
+Sei $G \subset \complex$ of"|fen mit $a, b \in G$.
+Sei außerdem $z_j \in G$ für $j = 0, \dotsc, n$,
+wobei $z_0 := a$ und $z_n := b$.
+Die $k$-te \emph{Teilstrecke} ist $\overline{z_k z_{k+1}} :=
+\{z_k + t(z_{k+1} - z_k) \;|\; t \in [0,1]\}$ mit $k = 0, \dotsc, n - 1$.
+Der \emph{Polygonzug} in $G$ von $a$ nach $b$ über $\delta = \{z_k\}_{k=0}^n$
+ist $\Gamma_{ab}^\delta := \bigcup_{k=0}^{n-1} \overline{z_k z_{k+1}}$.
+
+\textbf{polygonial zusammenhängend}:
+Sei $G \subset \complex$ of"|fen mit $G \not= \emptyset$.
+Dann heißt $G$ \emph{polygonial zusammenhängend}, falls
+$\forall_{a, b \in G} \exists_{\delta = \{z_k\}_{k=0}^n}\;
+\Gamma_{ab}^\delta \subset G$.
+
+$G$ ist zusammenhängend genau dann, wenn $G$ polygonial zusammenhängend ist.
+
+\linie
+
+\textbf{Gebiet}:
+Eine nicht-leere, of"|fene, zusammenhängende Menge $G \subset \complex$ heißt
+\emph{Gebiet}.
+
+\linie
+
+\textbf{Satz}:
+Seien $G \subset \complex$ ein Gebiet und $f \in \A(G)$.
+Dann sind äquivalent:
+\begin{enumerate}
+    \item
+    $f'(z) \equiv 0$
+    
+    \item
+    $\Re f(z) \equiv \const$
+    
+    \item
+    $\Im f(z) \equiv \const$
+    
+    \item
+    $|f(z)| \equiv \const$
+    
+    \item
+    
+    $f(z) \equiv \const$
+\end{enumerate}
+
+\subsection{%
+    Kurvenintegrale%
+}
+
+\textbf{\name{Jordan}-Kurve}:
+Sei $\gamma\colon [0, T] \rightarrow \complex$ stetig und injektiv
+(bis auf ggf. $\gamma(0) = \gamma(T)$).\\
+Für $\gamma \in \C^1$ und $\dot{\gamma}(t) \not= 0$ für alle $t \in [0, T]$
+heißt $\Gamma_\gamma := \{z = \gamma(t) \;|\; t \in [0, T]\}$
+\emph{\name{Jordan}-Kurve}.
+
+\textbf{Zerlegung und Stützstellen}:
+$\delta = \{t_k\}_{k=0}^n$ heißt \emph{Zerlegung} von $[0, T]$, falls\\
+$0 = t_0 < t_1 < \dotsb < t_n = T$.
+$\xi = \{\tau_k\}_{k=0}^{n-1}$ heißt \emph{Satz von Stützstellen}, falls
+$\tau_k \in [t_k, t_{k+1}]$ für $k = 0, \dotsc, n - 1$.
+Man definiert $z_k := \gamma(t_k)$ für $k = 0, \dotsc, n$ und
+$w_j = \gamma(\tau_j)$ für $j = 0, \dotsc, n - 1$.
+
+\textbf{\name{Riemann}-Summe}:
+Sei $f\colon \Gamma_\gamma \subset \complex \rightarrow \complex$ stetig.
+Dann gilt für die \emph{\name{Riemann}-Summe}\\
+$\sum_{k=0}^{n-1} f(w_k) (z_{k+1} - z_k)
+= \sum_{k=0}^{n-1} f(\gamma(\tau_k)) (\gamma(t_{k+1}) - \gamma(t_k))
+\frac{t_{k+1} - t_k}{t_{k+1} - t_k}
+= \sum_{k=0}^{n-1} \widetilde{f}(\tau_k)
+\frac{\gamma(t_{k+1}) - \gamma(t_k)}{t_{k+1} - t_k} \Delta t_k$\\
+mit $\widetilde{f} := f \circ \gamma$ und $\Delta t_k := t_{k+1} - t_k$.
+Lässt man den Rang der Zerlegung $\lambda(\delta)$ gegen $0$ laufen, so sieht
+man, dass folgende Definition Sinn ergibt.
+
+\textbf{Kurvenintegral}:
+Für eine Jordan-Kurve $\Gamma_\gamma$ und eine stetige Funktion
+$f\colon \Gamma_\gamma \subset \complex \rightarrow \complex$ ist das
+\emph{Kurvenintegral} definiert als $\int_{\Gamma_\gamma} f(z)\dz
+:= \int_0^T (f \circ \gamma)(t) \dot{\gamma}(t) \dt$.
+
+Diese Definition ist unabhängig von der konkreten Parametrisierung $\gamma$\\
+(bei Erhalt der Richtung).
+
+\linie
+
+\textbf{Eigenschaften}:
+\begin{enumerate}
+    \item
+    $\int_{\Gamma_{ab}} f(z)\dz = -\int_{\Gamma_{ba}} f(z)\dz$
+    
+    \item
+    $\int_{\Gamma_{ab}} (\alpha f(z) + \beta g(z))\dz =
+    \alpha \int_{\Gamma_{ab}} f(z)\dz + \beta \int_{\Gamma_{ab}} g(z)\dz$
+    
+    \item
+    Man kann Jordan-Kurven
+    $\overrightarrow{\Gamma_1}, \dotsc, \overrightarrow{\Gamma_n}$
+    aneinanderhängen.
+    Es ergibt sich ein sog. \emph{gerichteter Pfad} $\overrightarrow{\Gamma}$,
+    der jedoch nur rein symbolisch als
+    "`$\overrightarrow{\Gamma} =
+    \overrightarrow{\Gamma_1} \cup \dotsb \cup \overrightarrow{\Gamma_n}$"'
+    geschrieben werden kann, da dieser sich z.\,B. selbst überschneiden darf
+    (in verschiedenen Jordan-Kurven).\\
+    Es sei dann $\int_{\overrightarrow{\Gamma}} f(z)\dz :=
+    \sum_{k=1}^n \int_{\overrightarrow{\Gamma_k}} f(z)\dz$.
+\end{enumerate}
+
+\textbf{Beispiele}:
+Für $f(z) \equiv 1$ gilt $\int_{\Gamma_{ab}} f(z)\dz = b - a \in \complex$.\\
+Für $f(z) = z^n$, $n \in \integer$ und
+$\Gamma = \{z \in \complex \;|\; |z| = 1\}$ mit einfach mathematisch positivem
+Umlauf (gegen den Uhrzeigersinn) kann man $\Gamma$ durch
+$\gamma\colon [0, 2\pi] \rightarrow \complex$, $\gamma(t) = e^{\i t}$
+parametrisieren.
+Das entstehende Integral bezeichnet man auch als \emph{Ringintegral}
+und man schreibt $\oint$ dafür, dass über einen geschlossenen Pfad
+mit einfach mathematisch positivem Umlauf integriert wird.\\
+Es gilt $\oint_\Gamma z^n \dz = \int_0^{2\pi} e^{\i tn} \i e^{\i t} \dt
+= \i \cdot \int_0^{2\pi} e^{\i t(n+1)} \dt
+= \i \cdot \int_0^{2\pi} (\cos((n+1)t) + \i \sin((n+1)t)) \dt$.
+Daraus ergibt sich die wichtige Formel
+$\oint_\Gamma z^n \dz =$
+\matrixsize{$\begin{cases} 2\pi\i & n = -1\\0 & n \not= -1\end{cases}$}.
+
+\textbf{Anmerkung zur Abschätzung von Kurvenintegralen}:
+Im Allgemeinen gilt die Formel
+$|\int_{\Gamma_{ab}} f(z)\dz| \le \sup_{z \in \Gamma_{ab}} |f(z)| \cdot |b - a|$
+nicht
+(ein Gegenbeispiel ist das Beispiel mit $z^n$ von eben).
+Dies liegt daran, dass sich in
+$|\sum_{k=0}^{n-1} f(w_k) (z_{k+1} - z_k)|
+\le \sum_{k=0}^{n-1} |f(w_k)| |z_{k+1} - z_k|$\\
+$\le \sup_{z \in \Gamma_{ab}} |f(z)| \cdot \sum_{k=0}^{n-1} |z_{k+1} - z_k|$
+die letzte Summe aufgrund der Beträge keine Teleskopsumme ist
+(im Gegensatz dazu, wie es im Reellen der Fall wäre).
+Jedoch erhält man im Grenzübergang $\lambda(\delta) \to 0$ die richtige Formel
+$|\int_\Gamma f(z)\dz| \le \sup_{z \in \Gamma} |f(z)| \cdot \ell(\Gamma)$
+mit $\ell(\Gamma)$ der Länge von $\Gamma$.
+
+\linie
+
+\textbf{Satz (Formel von \name{Newton}-\name{Leibniz})}:\\
+Seien $G \subset \complex$ ein Gebiet,
+$a, b \in G$, $\Gamma_{ab} \subset G$ eine (stückweise) $\C^1$-Jordan-Kurve,
+$f\colon G \rightarrow \complex$ eine Funktion, wobei
+$f$ für alle $z \in \Gamma_{ab}$ komplex dif"|ferenzierbar und
+$f'|_{\Gamma_{ab}}$ stetig ist.\\
+Dann gilt $\int_{\Gamma_{ab}} f'(z) \dz = f(b) - f(a)$.
+
+\textbf{Anmerkung}:
+Ist $a = b$, d.\,h. $\Gamma$ ein geschlossener Pfad, so gilt
+$\oint_\Gamma f'(z)\dz = 0$\\
+(wenn die Stammfunktion existiert).
+
+\linie
+\pagebreak
+
+\textbf{Warum gilt dann $\int_\Gamma \frac{1}{z} \dz = 2\pi\i$?}\\
+(dabei ist $\Gamma$ der mathematisch positive einfache Umlauf von $|z| = 1$)
+
+Dann müsste man eine Stammfunktion von $f'(z) = \frac{1}{z}$ finden.
+Versucht man $f(z) = \Ln z$, so muss man einen Zweig auswählen.
+Allerdings ist es nicht möglich, einen auf ganz $\Gamma$ dif"|ferenzierbaren
+Zweig von $\Ln z$ anzugeben
+(irgendwo muss der "`Schnitt"' sein).
+
+\linie
+
+\emph{Beispiel}:
+Für das Polynom $p(z) = c_0 + c_1 z + \dotsb + c_n z^n$ und
+$q(z) = c_0 z + \frac{c_1}{2} z^2 + \dotsb + \frac{c_n}{n + 1} z^{n+1}$ gilt
+$p(z) = q'(z)$, d.\,h. $\int_{\Gamma_{ab}} p(z)\dz = q(b) - q(a)$, insbesondere
+gilt für $a = b$ $\oint_\Gamma p(z)\dz = 0$.
+
+\emph{Beispiel}:
+Für die Potenzreihe $p(z) = c_0 + \sum_{k=1}^\infty c_k z^k$ mit
+Konvergenzradius $R > 0$ und\\
+$q(z) = \sum_{k=1}^\infty \frac{c_{k-1}}{k} z^k$ gilt $p(z) = q'(z)$
+(dabei hat $q(z)$ den gleichen Konvergenzradius).\\
+Insbesondere gelten also für
+$\Gamma_{ab}, \Gamma \subset U_R(0) = \{z \in \complex \;|\; |z| < R\}$
+obige Formeln.
+
+\subsection{%
+    Der Integralsatz von \name{Cauchy}%
+}
+
+\textbf{Satz (Integralsatz von \name{Cauchy} für Dreiecke)}:\\
+Seien $G \subset \complex$ ein Gebiet und $\Delta \subset G$ ein Dreieck
+(d.\,h. Rand und Inneres liegen in $G$).\\
+Außerdem seien $f \in \A(G)$ und $\Gamma = \partial \Delta$.\\
+Dann gilt $\oint_\Gamma f(z)\dz = 0$.
+
+\textbf{Anmerkung}:
+Man weiß hier i.\,A. nicht, ob $f$ eine Stammfunktion besitzt.
+
+\linie
+
+\textbf{sternförmiges Gebiet}:
+Ein Gebiet $G \subset \complex$ heißt \emph{sternförmig}, falls es ein
+$a \in G$ gibt, sodass
+$\forall_{z \in G}\; \overline{az} \subset G$.
+$a$ heißt in diesem Fall \emph{zentraler Punkt}.
+
+\textbf{Satz (Integralsatz von \name{Cauchy} für sternförmige Gebiete)}:\\
+Seien $G \subset \complex$ ein sternförmiges Gebiet und $f \in \A(G)$.\\
+Dann gilt $F \in \A(G)$ mit $F(z) := \int_{\overline{az}} f(w)\dw$ und
+$F'(z) = F(z)$.
+
+Holomorphe Funktionen auf sternförmigen Gebieten haben also Stammfunktionen.
+
+\linie
+
+\textbf{Zusammenfassung}:
+\begin{enumerate}
+    \item
+    Seien $G \subset \complex$, $f \in \A(G)$ und
+    $\exists_{F \in \A(G)}\; F' = f$.
+    Dann gilt $\int_{\Gamma_{ab}} f(z)\dz =
+    \int_{\widetilde{\Gamma}_{ab}} f(z)\dz$ ($\ast$).\\
+    Für $\Gamma \subset G$ geschlossen gilt außerdem $\oint_\Gamma f(z)\dz = 0$
+    ($\ast\ast$).\\
+    Die Formeln ($\ast$) und ($\ast\ast$) sind äquivalent, d.\,h.
+    ($\ast$) gilt für alle Pfade
+    $\Gamma_{ab}, \widetilde{\Gamma}_{ab} \subset G$
+    genau dann, wenn ($\ast\ast$) für alle geschlossenen Pfade
+    $\Gamma \subset G$ gilt.
+    
+    \item
+    Seien $G \subset \complex$ sternförmig und $f \in \A(G)$.
+    Dann gilt $\exists_{F \in \A(G)}\; F' = f$.
+    Also gelten ($\ast$), ($\ast\ast$).
+\end{enumerate}
+
+Ist $G \subset \complex$ nicht sternförmig, so muss $f$ i.\,A. keine
+Stammfunktion besitzen.\\
+Ein Gegenbeispiel ist $\int_\Gamma \frac{1}{z} \dz = 2\pi\i$
+(hier fehlt die $0$ in dem Gebiet).
+
+Ist das Gebiet $G$ nicht sternförmig, aber der geschlossene Pfad $\Gamma$
+zusammenziehbar (z.\,B. wenn das Gebiet keine "`Löcher"' hat --
+weiter unten wird dies genauer erklärt), so kann man folgendermaßen vorgehen:
+Wähle ein sternförmiges Gebiet $G' \subset G$, das einen Teil vom Pfad enthält.
+Trenne nun einen Teil des Pfades ab (dabei beachte man die Umlaufrichtung),
+wobei man den Schnitt als $\gamma$ bezeichnet.
+Dann ist $\oint_\Gamma = \oint_\Gamma +
+\int_{\overrightarrow{\gamma}} + \int_{\overleftarrow{\gamma}} =
+\oint_{\Gamma'} + \oint_{\Gamma''}$, wobei $\Gamma'$, $\Gamma''$ die zwei
+geschlossenen Teilpfade sein sollen ($\Gamma'' \subset G'$ soll der Teil sein,
+der ganz in $G'$ liegt).
+Es gilt $\oint_{\Gamma''} = 0$, da $G'$ sternförmig ist.
+Also ist $\oint_\Gamma = \oint_{\Gamma'}$, man hat also den Pfad
+"`verkleinert"'.
+In Gebieten ohne Löcher kann man dies iterativ durchführen, so dass
+schließlich der Pfad vollständig in einem sternförmigen Gebiet liegt
+und das Integral somit $0$ ist.
+
+\linie
+\pagebreak
+
+\textbf{elementare Deformation eines Pfades in $G$}:\\
+Seien $G \subset \complex$ ein Gebiet und $G' \subset G$ sternförmig.
+Die Ersetzung eines Teils eines geschlossenen Pfads $\Gamma \subset G$
+im sternförmigen Gebiet $G'$ heißt \emph{elementare Deformation}
+von $\Gamma$.\\
+Für nicht-geschlossene Pfade $\Gamma_{ab} \subset G$ ist dies analog definiert,
+nur müssen hier die Anfangs- und Endpunkte $a, b \in G$ erhalten bleiben.
+
+\textbf{wichtig}:
+Das Pfadintegral bleibt für $f \in \A(G)$ bei el. Deformationen des
+Pfads erhalten.
+
+\textbf{homotop}:
+Zwei Pfade $\Gamma, \Gamma' \subset G$ sind in $G$ \emph{homotop}, falls
+$\Gamma'$ aus $\Gamma$ durch eine endliche Anzahl von elementaren Deformationen
+hervorgeht.
+
+\textbf{Satz (Deformationssatz)}:\\
+Seien $G \subset \complex$ ein Gebiet, $f \in \A(G)$ und
+$\Gamma, \Gamma' \subset G$ in $G$ homotope Pfade.\\
+Dann gilt $\int_\Gamma f(z)\dz = \int_{\Gamma'} f(z)\dz$.
+
+Betrachtet man einen einzelnen Punkt als Pfad (sog. \textbf{Nullpfad}),
+so gilt $\int_\Gamma f(z)\dz = 0$, falls $\Gamma$ ein geschlossener Pfad in $G$
+homotop zum Nullpfad ist.
+
+\linie
+
+\textbf{einfach zusammenhängend}:
+Ein Gebiet $G \subset \complex$ heißt \emph{einfach zusammenhängend}, falls
+jeder geschlossene Pfad $\Gamma \subset G$ in $G$ homotop zum Nullpfad ist.
+
+\textbf{Satz (Integralsatz von \name{Cauchy}
+für einfach zusammenhängende Gebiete)}:\\
+Seien $G \subset \complex$ ein einfach zusammenhängendes Gebiet und
+$f \in \A(G)$.\\
+Dann gilt $\oint_\Gamma f(z)\dz = 0$ für jeden
+geschlossenen Pfad $\Gamma \subset G$.\\
+Zudem gilt für $a \in G$, dass $F' = f$ mit
+$F(z) := \int_{\Gamma_{az}} f(w)\dw$, d.\,h.
+$f$ hat eine Stammfunktion.
+
+Die Umkehrung gilt ebenfalls:
+Wenn jede holomorphe Funktion $f \in \A(G)$ eine Stammfunktion besitzt,
+dann ist $G$ einfach zusammenhängend.
+
+\linie
+
+\textbf{weitere Modifikationen}:\\
+In einem Gebiet, das ein "`Loch"' hat, kann man einen
+Pfad homotop zum Nullpfad so elementar deformieren, dass er sehr nahe an
+den Rand des Gebiets kommt.
+Vom äußeren Rand zum Loch läuft dabei der Pfad einmal
+hin und einmal wieder zurück (auf derselben Linie).
+Weil die Umlaufrichtungen auf dieser Linie gegenläufig sind, heben sich die
+Integrale auf und man erhält
+$\oint_{\Gamma_+} f(z)\dz + \oint_{\Gamma_-} f(z)\dz = 0$,
+falls $\Gamma_+$ bzw. $\Gamma_-$ den Pfad um den äußeren bzw. inneren Rand
+bezeichnet.
+(Beachte: $\Gamma_-$ wird im mathematisch negativem Sinne umlaufen!)
+
+Allgemeiner gilt für ein Gebiet $G$ mit $k$ "`Löchern"'
+$\oint_{\Gamma_+} f(z)\dz +
+\sum_{j=1}^k \left(\oint_{\Gamma_{-,j}} f(z)\dz\right) = 0$\\
+für alle $f \in \A(G)$.
+Dabei bezeichnet $\Gamma_+$ den Pfad um den äußeren Rand (positiv umlaufen)
+und $\Gamma_{-,j}$ den Pfad um das $j$-te Loch (negativ umlaufen).
+
+\linie
+
+\textbf{Windungszahl}:
+Für $w \in \complex$ und einen geschlossenen Pfad $\Gamma \subset \complex$,
+der $w$ nicht enthält, bezeichnet man
+$n(\Gamma, w) := \frac{1}{2\pi\i} \cdot \oint_\Gamma \frac{1}{z - w} \dz$ als
+die \emph{Windungszahl} von $\Gamma$ um $w$.
+
+Parametrisiert man einen nicht-geschlossenen Pfad
+$\Gamma_T$ durch $\gamma\colon [0, T] \rightarrow \complex$, so gilt\\
+$\Re(\frac{1}{2\pi\i} \oint_{\Gamma_T} \frac{1}{z - w} \dz) =
+\frac{1}{2\pi} \Im(\oint_{\Gamma_T} \frac{1}{z - w} \dz) =
+\frac{1}{2\pi} (\arg(\gamma(T) - w) - \arg(\gamma(0) - w))$.
+
+\textbf{Satz (äquivalente Beschreibungen)}:
+Sei $G \subset \complex$ ein Gebiet.
+Dann sind äquivalent:
+\begin{enumerate}
+    \item
+    $G$ ist einfach zusammenhängend.
+    
+    \item
+    $\forall_{\Gamma \subset G \text{ geschlossen}} \forall_{w \notin G}\;
+    n(\Gamma, w) = 0$
+    
+    \item
+    $\forall_{\Gamma \subset G \text{ geschlossen}} \forall_{f \in \A(G)}\;
+    \oint_\Gamma f(z)\dz = 0$
+    
+    \item
+    $\forall_{f \in \A(G)} \exists_{F \in \A(G)}\; F' = f$
+    
+    \item
+    $\forall_{f \in \A(G),\; \forall_{z \in G}\; f(z) \not= 0\;}
+    \exists_{g \in \A(G)}\; e^g = f$
+\end{enumerate}
+
+\subsection{%
+    Die Integralformel von \name{Cauchy}%
+}
+
+\textbf{Satz (Integralformel von \name{Cauchy})}:
+Seien $G \subset \complex$ ein Gebiet, $a \in G$ und $\varepsilon > 0$
+mit $\overline{U_\varepsilon(a)} \subset G$.
+Sei außerdem $f \in \A(G)$ und $\Gamma$ homotop in
+$G \setminus \{a\}$ zum einfachen, mathematisch positiven Umlauf von
+$\partial U_\varepsilon(a)$.\\
+Dann gilt $\frac{1}{2\pi\i} \oint_\Gamma \frac{f(z)}{z - a} \dz = f(a)$.
+
+\emph{Beispiel}:
+$\oint_\Gamma \frac{\cos z}{z} \dz = 2\pi\i$ für jeden geschlossenen Pfad
+$\Gamma \in \complex \setminus \{0\}$, der homotop zum einfachen,
+math. positiven Umlauf des Einheitskreises ist.
+
+\textbf{Spezialfall (Mittelwertsatz)}:
+Seien $G \subset \complex$ ein Gebiet und $f \in \A(G)$.\\
+Dann gilt $\frac{1}{2\pi} \int_0^{2\pi} f(a + Re^{i\theta}) d\theta = f(a)$.
+
+\linie
+
+\textbf{analytisch}:
+$f$ heißt \emph{analytisch} im Punkt $a \in \complex$, falls\\
+$\exists_{\varepsilon > 0} \forall_{z \in U_\varepsilon(a)}\;
+f(z) = \sum_{k=0}^\infty c_k (z - a)^k$ konvergiert
+(mit bestimmten $c_k \in \complex$).
+
+\textbf{Folgerung}:
+Ist $f$ analytisch im Punkt $a$, so hat die Potenzreihe einen Konvergenzradius
+$R$ mit $0 < \varepsilon \le R$.
+Für $|z - a| < \varepsilon$ kann man gliedweise dif"|ferenzieren und erhält
+$c_k = \frac{f^{(k)}(a)}{k!}$.
+
+\textbf{Satz}:
+Seien $G \subset \complex$ ein Gebiet.
+Definiere für $a \in G$ den Abstand\\
+$R_a := \dist(a, \partial G)
+= \inf_{u \in \partial G} |a - u|$ von $a$ zum Rand von $G$.\\
+Dann gilt $f \in \A(G)$ genau dann, wenn $f$ analytisch in allen $a \in G$ ist.
+Die Potenzreihe hat in diesem Fall einen Konvergenzradius $\ge R_a$
+und es gilt $c_k = c_k(a) = \frac{1}{2\pi\i}
+\oint_{\partial U_r(a)} \frac{f(z)}{(z - a)^{k+1}} \dz$ mit $0 < r < R_a$.
+Mit obiger Formel ergibt sich damit
+$\frac{1}{2\pi\i} \oint_{\partial U_r(a)} \frac{f(z)}{(z - a)^{k+1}} \dz =
+\frac{f^{(k)}(a)}{k!}$.
+
+\textbf{Folgerung}:
+Ist $f \in \A(G)$, so ist $f$ beliebig oft dif"|ferenzierbar.
+
+Die $c_k$ erfüllen die Abschätzung $|c_k| \le M r^{-k}$ mit
+$M := \sup_{z \in U_r(a)} |f(z)|$.
+
+\linie
+
+\textbf{Satz von \name{Liouville}}:
+Sei $f \in \A(\complex)$ beschränkt, d.\,h.
+$\exists_{M > 0} \forall_{z \in \complex}\; |f(z)| \le M$.\\
+Dann ist $f(z) \equiv \const$.
+
+\textbf{Modifikation}:
+Sei $f \in \A(\complex)$ mit
+$\exists_{M > 0} \exists_{N \in \natural} \forall_{z \in \complex}\;
+|f(z)| \le M (|z|^N + 1)$.\\
+Dann ist $f$ ein Polynom vom Grad $\le N$.
+
+Mit dieser Modifikation kann man relativ einfach den Hauptsatz der Algebra
+beweisen.
+
+\textbf{Satz (Multiplikation von Potenzreihen)}:\\
+Seien $p(z) = \sum_{k=0}^\infty c_k' z^k$ und
+$q(z) = \sum_{k=0}^\infty c_k'' z^k$ Potenzreihen
+mit Konvergenzradius $R', R'' > 0$.\\
+Dann ist $p(z) q(z) = \sum_{n=0}^\infty d_n z^n$ eine Potenzreihe
+mit Konvergenzradius
+$R \ge \min\{R', R''\}$, wobei
+$d_n = \sum_{k=0}^n c_k' c_{n-k}''$.
+
+\linie
+
+\textbf{Satz von \name{Morera}}:
+Seien $G \subset \complex$ ein Gebiet und $f\colon G \rightarrow \complex$
+stetig.
+$\Delta$ bezeichne ein Dreieck (mit Rand und Innerem).
+Für alle $\Delta \subset G$ gelte $\oint_{\partial\Delta} f(z)\dz = 0$.\\
+Dann ist $f \in \A(G)$.
+
+\textbf{komplexe Halbebenen}:
+$\complex_+ := \{z \in \complex \;|\; \Im z > 0\}$,
+$\complex_- := \{z \in \complex \;|\; \Im z < 0\}$,\\
+$\overline{\complex_+} := \{z \in \complex \;|\; \Im z \ge 0\}$,
+$\overline{\complex_-} := \{z \in \complex \;|\; \Im z \le 0\}$
+
+\textbf{Teilraumtopologie}:
+$G \subset \overline{\complex_+}$ heißt
+\emph{of"|fen in der induzierten Topologie}, falls\\
+$\exists_{\widetilde{G} \subset \complex \text{ of"|fen}}\;
+G = \overline{\complex_+} \cap \widetilde{G}$.
+
+\textbf{Satz (\name{Schwarz}sches Spiegelungsprinzip)}:\\
+Seien $G \subset \overline{\complex_+}$ of"|fen in der induzierten Topologie,
+$f \colon G \rightarrow \complex$ stetig und
+$f|_{G \cap \complex_+} \in \A(G \cap \complex_+)$.
+Seien außerdem $\overline{G} := \{\overline{z} \;|\; z \in G\}$
+und $\widetilde{G} := G \cup \overline{G}$.\\
+Falls $\forall_{z \in \real \cap G}\; f(z) \in \real$ gilt, dann gibt es
+$\widetilde{f}\colon \widetilde{G} \rightarrow \complex$ mit
+$\widetilde{f} \in \A(\widetilde{G})$, wobei
+$\widetilde{f}(z) =$ \matrixsize{$\begin{cases}f(z) & z \in G\\
+\overline{f(\overline{z})} & z \in \overline{G}\end{cases}$}.
+
+\subsection{%
+    Nullstellen analytischer Funktionen%
+}
+
+\textbf{Nullstellenmenge}:
+Seien $G \subset \complex$ ein Gebiet und $f \in \A(G)$.\\
+Dann heißt $Z(f) := \{z \in G \;|\; f(z) = 0\}$
+\emph{Nullstellenmenge} von $f$.
+
+\textbf{Ordnung von Nullstellen}:
+Die Nullstelle $a \in Z(f)$ besitzt die
+\emph{(endliche) Ordnung $m \in \natural$}, falls
+$f(a) = f'(a) = \dotsb = f^{(m-1)}(a) = 0$ und
+$f^{(m)}(a) \not= 0$.
+
+\linie
+
+\textbf{Lemma}:
+Seien $a \in \complex$, $f \in \A(U_r(a))$ für ein $r > 0$ mit
+$f(z) = \sum_{k=0}^\infty c_k (z - a)^k$ für $z \in U_r(a)$.\\
+Dann sind äquivalent:
+\begin{enumerate}
+    \item
+    $a$ ist eine Nullstelle der Ordnung $m$.
+    
+    \item
+    $f(z) = \sum_{k=m}^\infty c_k (z - a)^k$ mit $c_m \not= 0$
+    
+    \item
+    $f(z) = (z - a)^m g(z)$ mit $g \in \A(U_r(a))$ und $g(a) \not= 0$
+    
+    \item
+    $\exists \lim_{z \to a} (z - a)^{-m} f(z) \not= 0$
+\end{enumerate}
+
+\textbf{Folgerung}:
+Seien $f \in \A(U_r(a))$ und $a \in Z(f)$.\\
+Dann ist entweder $a$ eine Nullstelle endlicher Ordnung oder
+$f(z) \equiv 0$ für $z \in U_r(a)$.
+
+\textbf{Folgerung}:
+Seien $f \in \A(U_r(a))$ und $a \in Z(f)$.\\
+Dann ist $a$ eine isolierte Nullstelle
+(d.\,h. $\exists_{\varepsilon > 0} \forall_{z \in U_r(a),\, z \not= a}\;
+f(z) \not= 0$) genau dann, wenn $a$ eine Nullstelle endlicher Ordnung ist.
+
+\linie
+
+\textbf{Identitätssatz}:
+Seien $G \subset \complex$ ein Gebiet und $f \in \A(G)$ mit
+$\acc(Z(f)) \cap G \not= \emptyset$.\\
+Dann gilt $f(z) \equiv 0$ für $z \in G$.
+
+\textbf{Folgerung}:\\
+Seien $G \subset \complex$ ein Gebiet und $f, g \in \A(G)$ mit
+$\exists_{M \subset G}\; f|_M = g|_M$ und $\acc(M) \cap G \not= \emptyset$.\\
+Dann gilt $f(z) \equiv g(z)$ für $z \in G$.
+
+\textbf{analytische Fortsetzung}:
+Seien $G, \widetilde{G} \subset \complex$ Gebiete mit $G \subset \widetilde{G}$,
+$f \in \A(G)$ und $\widetilde{f} \in \A(\widetilde{G})$.\\
+Dann heißt $\widetilde{f}$ \emph{analytische Fortsetzung} von $f$,
+falls $\widetilde{f}|_G = f|_G$.
+
+Falls zu gegebenen Gebieten $G, \widetilde{G} \subset \complex$ und
+$f \in \A(G)$ eine analytische Fortsetzung
+$\widetilde{f} \in \A(\widetilde{G})$ von $f$
+auf $\widetilde{G}$ existiert, so ist diese eindeutig bestimmt.
+
+\linie
+
+\emph{Beispiel}:
+Die \emph{\name{Riemann}sche Zeta-Funktion}
+$\zeta(z) = \sum_{n=1}^\infty \frac{1}{n^z}$ für $\Re(z) > 1$ kann
+analytisch auf $\complex$ fortgesetzt werden.
+Die berühmte \emph{\name{Riemann}sche Vermutung} besagt, dass alle
+nicht-trivialen Nullstellen
+der Fortsetzung auf der Geraden mit $\Re(z) = \frac{1}{2}$ liegen.
+
+\emph{Beispiel}:
+Die Funktion $f(z) = \sum_{k=0}^\infty z^k$ für $|z| < 1$ bzw.
+$G = \{z \in \complex \;|\; |z| < 1\}$ kann mittels
+$\widetilde{f}(z) = \frac{1}{1 - z}$ auf
+$\widetilde{G} = \complex \setminus \{1\}$ analytisch fortgesetzt werden.
+
+\subsection{%
+    Das Maximumsprinzip%
+}
+
+\textbf{Maximumsprinzip für Kreise}:
+Seien $a \in \complex$, $R > 0$ und $f \in \A(U_R(a))$ mit\\
+$\forall_{z \in U_R(a)}\; |f(a)| \ge |f(z)|$.
+Dann gilt $f(z) \equiv f(a)$ für $z \in U_R(a)$.
+
+\textbf{Maximumsprinzip für allgemeine Gebiete}:\\
+Seien $G \subset \complex$ ein beschränktes Gebiet und
+$f\colon \overline{G} \rightarrow \complex$ stetig mit $f|_G \in \A(G)$.\\
+Dann nimmt $|f(z)|$ ein globales Maximum auf dem Rand $\partial G$ an.
+
+\textbf{Folgerung}:
+Für $f \in \A(U_R(0))$ mit $f(0) = 0$ und $|f(z)| \le M$ für alle
+$z \in U_R(0)$ gilt die Abschätzung $|f(z)| \le \frac{M}{R} |z|$
+für alle $z \in U_R(0)$.
+
+\subsection{%
+    Singularitäten%
+}
+
+\textbf{Menge der isolierten Singularitäten}:
+Seien $G \subset \complex$ ein Gebiet und $f \in \A(G)$.\\
+Dann heißt $J = \iso(\complex \setminus G)$ die
+\emph{Menge der isolierten Singularitäten} von $f$.
+
+Es gilt $a \in J$ genau dann, wenn
+$a \notin G$ und
+$\exists_{\varepsilon > 0}\; U_\varepsilon(a) \setminus \{a\} \subset G$.
+
+\textbf{Arten der Singularität}:
+\begin{itemize}
+    \item
+    $a \in J$ heißt \emph{hebbar}, falls
+    $\exists_{w \in \complex}\; \widetilde{f} \in \A(G \cup \{a\})$ mit
+    $\widetilde{f}(a) := w$ und $\widetilde{f}(z) := f(z)$ für $z \not= a$.
+    
+    \item
+    $a \in J$ heißt \emph{Polstelle der Ordnung $m \in \natural$}, falls
+    $a$ hebbare Singularität von $(z - a)^m f(z)$ und $m$ kleinstmöglich ist.
+    
+    \item
+    $a \in J$ heißt \emph{wesentlich}, falls $a$ weder hebbar noch
+    Polstelle endlicher Ordnung ist.
+\end{itemize}
+
+\textbf{meromorph}:
+Besitzt $f \in \A(G)$ nur isolierte Singularitäten, welche hebbar bzw.
+Polstellen endlicher Ordnung sind, so nennt man $f$ \emph{meromorph} auf
+$G \cup J$.
+
+\emph{Beispiel}:
+$f(z) = \frac{p(z)}{q(z)}$ ist meromorph auf $\complex$, wenn
+$p$ und $q$ Polynome mit $q(z) \not\equiv 0$ sind.
+
+\emph{Beispiel}:
+Ist $f(z) = \frac{g(z)}{h(z)}$, wobei
+$g, h \in \A(U_r(a))$, $r > 0$ mit
+$a$ Nullstelle der Ordnung $m$ für $h$ und
+$a$ Nullstelle der Ordnung $n$ für $g$ ist, so gilt für
+\begin{itemize}
+    \item
+    $m > n$, dass $a$ Polstelle der Ordnung $m - n$ für $f$ ist,
+    
+    \item
+    $m = n$, dass $f$ eine hebbare Singularität in $a$ besitzt und
+    $\widetilde{f}(a) \not= 0$, und
+    
+    \item
+    $m < n$, dass $f$ eine hebbare Singularität in $a$ und
+    $\widetilde{f}$ in $a$ eine Nullstelle der Ordnung\\
+    $n - m$ besitzt.
+\end{itemize}
+
+\linie
+
+\textbf{\name{Laurent}-Reihe}:
+Eine \emph{\name{Laurent}-Reihe} ist eine Reihe der Form
+$f(z) = \sum_{k=-\infty}^{+\infty} c_k (z - a)^k$.\\
+Sie kann geschrieben werden als
+$f(z) = \sum_{k=-\infty}^{-1} c_k (z - a)^k +
+\sum_{k=0}^{+\infty} c_k (z - a)^k$, wobei
+der erste Summand als \emph{Hauptteil} und der zweite Summand als
+\emph{Nebenteil} bezeichnet wird.
+
+Die Laurent-Reihe konvergiert genau dann, wenn Haupt- und Nebenteil jeweils
+für sich konvergieren.
+
+Der Nebenteil ist eine gewöhnliche Potenzreihe mit Konvergenzradius
+$R = \frac{1}{\limsup_{k \to \infty} \sqrt[k]{|c_k|}}$.\\
+Der Hauptteil ist ebenfalls eine Potenzreihe in $w = \frac{1}{z - a}$
+mit Konvergenzradius $\frac{1}{r}$, wobei\\
+$r = \limsup_{k \to \infty} \sqrt[|k|]{|c_k|}$.
+
+In $z$ konvergiert somit der Nebenteil für $|z - a| < R$ und der Hauptteil
+für $|z - a| > r$.
+Im Falle $r < R$ bildet sich somit ein Kreisring
+$K_{rR}(a) := \{z \in \complex \;|\; r < |z - a| < R\}$,
+in dem die Laurent-Reihe konvergiert
+(außerhalb divergiert sie, unbestimmtes Verhalten auf dem Rand).
+Für $r > R$ divergiert die Laurent-Reihe überall.
+
+Zusätzlich gilt $f \in \A(K_{rR})$
+(da Haupt- und Nebenteil dort holomorph sind) und
+die Laurent-Reihe ist gliedweise dif"|ferenzierbar mit
+$f'(z) = \sum_{k=-\infty,\;k\not=0}^{+\infty} k c_k (z - a)^{k-1}$.
+
+\textbf{Stammfunktion von \name{Laurent}-Reihen}:
+Eine Laurent-Reihe $f(z) = \sum_{k=-\infty}^{+\infty} c_k (z - a)^k$
+besitzt eine Stammfunktion $F(z)$ in $K_{rR}$ genau dann, wenn
+$c_{-1} = 0$ ist.
+Durch gliedweises Auf"|leiten erhält man für diesen Fall
+$F(z) = \sum_{k=-\infty,\;k\not=-1}^{+\infty} \frac{c_k}{k + 1} (z - a)^{k+1}$.
+
+\linie
+\pagebreak
+
+\textbf{Berechnung der Koef"|fizienten $c_k$ aus $f$}:
+Für $a = 0$ und $0 \le r < R$ lässt sich die Laurent-Reihe schreiben als
+$f(z) = \sum_{k=-\infty}^{+\infty} c_k z^k =
+\sum_{k=-\infty}^{-2} c_k z^k + \frac{c_{-1}}{z} +
+\sum_{k=0}^{+\infty} c_k z^k$.
+Ist $\Gamma$ ein Pfad in $K_{rR}(0)$, der homotop zum einfachen, mathematisch
+positiven Umlauf von $0$ in $K_{rR}(0)$ ist, so gilt aufgrund der
+gleichmäßigen Konvergenz der Laurent-Reihe\\
+$\oint_\Gamma f(z)\dz =
+\oint_\Gamma (\sum_{k=-\infty}^{-2} c_k z^k)\dz +
+\oint_\Gamma (\sum_{k=0}^{+\infty} c_k z^k)\dz +
+\oint_\Gamma \frac{c_{-1}}{z}\dz$\\
+$= \sum_{k=-\infty,\;k\not=-1}^{+\infty} c_k \oint_\Gamma z^k \dz +
+\oint_\Gamma \frac{c_{-1}}{z}\dz =
+c_{-1} \cdot 2\pi\i$,
+da $\oint_\Gamma z^k \dz = 0$ für $k \not= -1$
+und $\oint_\Gamma \frac{1}{z}\dz = 2\pi\i$.
+
+\textbf{Residuum}:
+Man bezeichnet
+$c_{-1} = \frac{1}{2\pi\i} \cdot \oint_\Gamma f(z) \dz =: \Res(f)$ als
+das \emph{Residuum} von $f$.
+
+Analog kann man durch Indexverschiebung die Formel
+$c_k = \frac{1}{2\pi\i} \cdot \oint_\Gamma f(z)(z - a)^{-1-k}\dz$ herleiten.\\
+Für $r < \varrho < R$ ergibt sich daraus direkt die Abschätzung\\
+$|c_k| \le \frac{1}{2\pi}
+\left|\oint_{\partial U_\varrho(a)} f(z)(z - a)^{-1-k}\dz\right| \le
+M \varrho^{-k}$ mit $M : = \sup_{z \in \partial U_\varrho(a)} |f(z)|$.
+
+\textbf{Satz}:
+Sei $f \in \A(K_{rR}(a))$ mit $a \in \complex$ und $0 \le r < R$.\\
+Dann ist $f$ in $K_{rR}(a)$ als Laurent-Reihe darstellbar.
+
+\linie
+
+\textbf{Zusammenfassung}:
+\begin{itemize}
+    \item
+    \textbf{Potenzreihen}:
+    Es ist $f \in \A(U_R(a))$ genau dann, wenn
+    $f(z) = \sum_{k=0}^\infty c_k (z - a)^k$ als Potenzreihe darstellbar ist.
+    Diese konvergiert mindestens in $U_r(a)$ und ist gliedweise
+    dif"|ferenzierbar.
+    Es existiert immer eine Stammfunktion (durch gliedweises Auf"|leiten).
+    
+    \item
+    \textbf{\name{Laurent}-Reihen}:
+    Es ist $f \in \A(K_{rR}(a))$ genau dann, wenn
+    $f(z) = \sum_{k=-\infty}^\infty c_k (z - a)^k$ als
+    Laurent-Reihe darstellbar ist.
+    Diese konvergiert mindestens in $K_{rR}(a)$ und ist gliedweise
+    dif"|ferenzierbar.
+    Es existiert eine Stammfunktion genau dann, wenn $c_{-1} = 0$.
+\end{itemize}
+
+\linie
+
+\textbf{Spezialfall $r = 0$}:
+In diesem Fall ist $K_{0R} = U_R(a) \setminus \{a\}$
+und für $f \in \A(U_R(a) \setminus \{a\})$ ist $f$ als Laurent-Reihe
+$f(z) = \sum_{k=-\infty}^{+\infty} c_k (z - a)^k$ für $z \not= a$ darstellbar.
+\begin{itemize}
+    \item
+    \emph{hebbare Singularität in $a$}:
+    Falls die Singularität von $f$ in $a$ hebbar ist,
+    gilt $\widetilde{f} \in \A(U_R(a))$ mit
+    $\widetilde{f}(z) = f(z)$ für $z \not= a$ und $\widetilde{f}(a) = B$.
+    $\widetilde{f}$ ist eine analytische Fortsetzung von $f$, daher stimmen
+    die Potenzreihen überein, also
+    $f(z) = \widetilde{f}(z) = \sum_{k=0}^\infty c_k (z - a)^k$.\\
+    Daher hat $f$ eine hebbare Singularität in $a$ genau dann, wenn der
+    Hauptteil verschwindet.
+    
+    \item
+    \emph{Polstelle der Ordnung $m$ in $a$}:
+    In diesem Fall hat $(z - a)^m f(z)$ eine hebbare Singularität in $a$,
+    d.\,h. $(z - a)^m f(z) = \sum_{k=0}^\infty \widetilde{c}_k (z - a)^k$
+    ist als Potenzreihe darstellbar.
+    Daher gilt $f(z) = \sum_{k=-m}^\infty c_k (z - a)^k$ mit
+    $c_k = \widetilde{c}_{k+m}$.\\
+    Daher hat $f$ eine Polstelle der Ordnung $m$ in $a$ genau dann, wenn der
+    Hauptteil nur endlich viele Summanden besitzt und der Term bei
+    $(z - a)^{-m}$ nicht verschwindet.
+    Für $z \to a$ geht $|f(z)| \to \infty$ (und zwar wie $(z - a)^{-m}$).
+    
+    \item
+    \emph{wesentliche Singularität in $a$}:
+    Dieser Fall tritt ein genau dann, wenn die anderen beiden Fälle nicht
+    gelten, d.\,h. genau dann, wenn
+    der Hauptteil unendlich viele Summanden besitzt.\\
+    Man kann zeigen:
+    Besitzt $f$ in $a$ eine wesentliche Singularität, dann liegt das Bild\\
+    $f(U_\varepsilon(a) \setminus \{a\})$ jeder beliebig kleinen
+    $\varepsilon$-Umgebung um $a$ dicht in der komplexen Ebene $\complex$.
+\end{itemize}
+
+\pagebreak
+
+\subsection{%
+    Residuensatz und Residuenkalkül%
+}
+
+Seien $G \subset \complex$ ein Gebiet, $f \in \A(G \setminus \{a\})$
+und $\Gamma \subset G \setminus \{a\}$ homotop in $G \setminus \{a\}$ zum
+einfachen, mathematisch positiven Umlauf von $a$.
+$f$ lässt sich als Laurent-Reihe
+$f(z) = \sum_{k=-\infty}^{+\infty} c_k (z - a)^k$
+darstellen.
+Dabei gilt $c_{-1} = \frac{1}{2\pi\i} \oint_\Gamma f(z)\dz$.
+
+\textbf{Residuum}:
+Man bezeichnet $c_{-1} =: \Res_a(f)$ als
+das \emph{Residuum} von $f$ im Punkt $a$.
+
+Man kann die Integralformel auch umkehren und bei bekanntem Residuum das
+Integral berechnen durch
+$\oint_\Gamma f(z)\dt = 2\pi\i \cdot \Res_a(f)$.
+
+Falls $\Gamma$ mehrere isolierte Singularitäten umläuft, kann man den
+Pfad auf"|teilen und die entstehenden Integrale summieren.
+Falls Singularitäten mehrfach umlaufen werden, müssen diese natürlich auch
+entsprechend der Windungszahl (Umlaufrichtung beachten!) gezählt werden.
+Somit gelangt man zum folgenden Satz.
+
+\textbf{Residuensatz}:
+Seien $G \subset \complex$ ein Gebiet, $J = \{a_1, \dotsc, a_N\} \subset G$,
+$f \in \A(G \setminus J)$ und\\
+$\Gamma \subset G \setminus J$ in $G$ homotop zum Nullpfad.\\
+Dann gilt $\oint_\Gamma f(z)\dz =
+\sum_{k=1}^N (2\pi\i) \cdot n(\Gamma, a_k) \cdot \Res_{a_k}(f)$.
+
+\linie
+
+\textbf{Residuenkalkül (Bestimmung des Residuums)}:
+\begin{itemize}
+    \item
+    Falls $f$ in $a_k$ eine hebbare Singularität hat, gilt
+    $\Res_{a_k}(f) = c_{-1}(a_k) = 0$ (siehe oben).
+    
+    \item
+    Falls $f$ in $a_k$ eine Polstelle der Ordnung $m$ hat, gilt\\
+    $(z - a_k)^m f(z) =
+    c_{-m} + (z - a_k) c_{-m+1} + \dotsb + (z - a_k)^{m-1} c_{-1} + \dotsb$.\\
+    Man erhält also $c_{-1}$ durch $(m - 1)$-fache Dif"|ferentiation
+    und Grenzwertbildung:\\
+    $\lim_{z \to a_k} \frac{d^{m-1}}{dz^{m-1}} (z - a_k)^m f(z) =
+    (m - 1)! \cdot c_{-1}$.
+    Man erhält die wichtige Formel\\
+    $\Res_{a_k}(f) = \frac{1}{(m - 1)!} \cdot
+    \lim_{z \to a_k} \frac{d^{m-1}}{dz^{m-1}} (z - a_k)^m f(z)$.
+    
+    \item
+    Für wesentliche Singularitäten gibt es keine einheitliche Vorgehensweise.
+\end{itemize}
+
+\linie
+
+\emph{Beispiel}:
+Seien $p(z)$ und $q(z)$ Polynome mit $\deg q(z) \ge \deg p(z) + 2$.
+$J$ seien die Nullstellen von $q$, wobei $J \cap \real = \emptyset$ gelten
+soll, d.\,h. keine Nullstelle ist reell.
+Man betrachtet nun die Funktion $f(z) = \frac{p(z)}{q(z)}$ und möchte
+das Integral $I = \int_{-\infty}^{+\infty} \frac{p(x)}{q(x)} \dx$ berechnen.
+Das uneigentliche Integral existiert, da $f$ auf $\real$ stetig ist
+($J \cap \real = \emptyset$) und $|f(z)| = \O(|x|^{-2})$ für $|x| \to \infty$.
+Dabei ist $I = \lim_{R \to +\infty} I_R$ mit
+$I_R = \int_{-R}^{+R} \frac{p(x)}{q(x)} \dx$.
+
+Man definiert nun $\Gamma_R^{(1)}$ als die Kurve in $\complex$
+von $-R$ bis $+R$ und $\Gamma_R^{(2)}$ als den Halbkreis mit Mittelpunkt $0$
+und Radius $R$ von $+R$ bis $-R$.
+Dann ist $\Gamma_R = \Gamma_R^{(1)} \cup \Gamma_R^{(2)}$ ein
+geschlossener Pfad.
+Man stellt nun drei Beobachtungen an:
+\begin{itemize}
+    \item
+    Für alle $R > R_1$ mit $R_1$ groß genug gilt
+    $J \cap \Gamma_R^{(2)} = \emptyset$, da $J$ endlich ist.
+    
+    \item
+    Es gilt $\int_{\Gamma_R^{(1)}} f(z)\dz + \int_{\Gamma_R^{(2)}} f(z)\dz =
+    \oint_{\Gamma_R} f(z)\dz = 2\pi\i \cdot \sum_{\Im a_k > 0} \Res_{a_k}(f)$
+    für $R > R_1$.
+    
+    \item
+    Für alle $R = |z| > R_2$ mit $R_2$ groß genug gilt
+    $|f(z)| \le C |z|^{n-m}$, denn\\
+    $f(z) = \frac{c_n z^n + \dotsb + c_1 z + c_0}
+    {\widetilde{c}_m z^m + \dotsb \widetilde{c}_1 z + \widetilde{c}_0} =
+    \frac{c_n}{\widetilde{c}_m} z^{n-m} \cdot \frac{1 + \O(1/z)}{1 + \O(1/z)}$
+    für $|z| \to \infty$.
+    Daraus folgt mit $n - m \le -2$, dass
+    $\left|\int_{\Gamma_R^{(2)}} f(z)\dz\right| \le \pi R \cdot CR^{-2} \to 0$
+    für $R \to \infty$.
+\end{itemize}
+
+Damit gilt für $I_R + \int_{\Gamma_R^{(2)}} f(z)\dz =
+2\pi\i \cdot \sum_{\Im a_k > 0} \Res_{a_k}(f)$ im Grenzwertübergang für
+$R \to \infty$, dass
+$I = \int_{-\infty}^{+\infty} \frac{p(x)}{q(x)} \dx =
+2\pi\i \cdot \sum_{\Im a_k > 0} \Res_{a_k}(f)$.
+
+\linie
+
+\textbf{Hinweis}:
+Ist $a_k$ NS von $q$ mit Ordnung $1$, so gilt
+$\Res_{a_k}(f) = \lim_{z \to a_k} (z - a_k) \frac{p(z)}{q(z) - q(a_k)} =
+\frac{p(a_k)}{q'(a_k)}$.
+
+\emph{Beispiel}:
+Mit eben Gesagtem gilt $\int_{-\infty}^{+\infty} \frac{1}{1 + x^2} \dx =
+2\pi\i \cdot \frac{1}{2\i} = \pi$.
+
+\pagebreak
+
+\subsection{%
+    Das Zählen von Pol- und Nullstellen%
+}
+
+"`Verschiebt"' man eine reelle Funktion ein wenig, dann ändert sich die
+Zahl der Nullstellen meistens nicht (wenn sie nicht mehrfach sind).
+Das Beispiel $z^2 + c$ zeigt allerdings, dass bei größeren Störungen
+die Zahl der reellen Nullstellen zwischen $2$, $1$ und $0$ variieren kann.
+Nicht so in der komplexen Ebene:
+Hier gibt es immer zwei Nullstellen, die sich zunächst auf der reellen Achse
+befinden, zum Ursprung wandern, sich dort vereinigen und dann wieder auf
+der imaginären Achse trennen.
+
+\linie
+
+\textbf{Residuen der logarithmischen Ableitung}:
+Für $\varepsilon > 0$ betrachtet man $f \in \A(U_\varepsilon(a))$, wobei
+$a$ eine Nullstelle von $f$ der Ordnung $m$ sein soll.
+Man will nun die sog. \textbf{logarithmische Ableitung} $\frac{f'(z)}{f(z)}$
+betrachten (der Name kommt daher, weil dies die Ableitung von $\ln(f(z))$ ist).
+Die Potenzreihe von $f$ hat die Form
+$f(z) = c_m (z - a)^m + c_{m+1} (z - a)^{m+1} + \dotsb$,
+die von $f'$ ist dann
+$f'(z) = m c_m (z - a)^{m-1} + (m + 1) c_{m+1} (z - a)^m + \dotsb$.
+Daraus folgt\\
+$\frac{f'(z)}{f(z)} =
+\frac{m c_m (z - a)^{m-1} + (m + 1) c_{m+1} (z - a)^m + \dotsb}
+{c_m (z - a)^m + c_{m+1} (z - a)^{m+1} + \dotsb} =
+\frac{m c_m (z - a)^{m-1}}{c_m (z - a)^m} \cdot
+\frac{1 + \frac{m + 1}{m} \frac{c_{m+1}}{c_m} (z - a) + \dotsb}
+{1 + \frac{c_{m+1}}{c_m} (z - a) + \dotsb} =
+\frac{m}{z - a} (1 + r(z))$ mit $r \in \A(U_\varepsilon(a))$, $r(a) = 0$ und
+$\varepsilon$ klein genug.
+
+Daher ist $\Res_a(\frac{f'}{f}) = m$ die Ordnung der Nullstelle von $f$.\\
+Ist $a$ dagegen eine Polstelle von $f$ der Ordnung $n$, so erhält man analog
+$\Res_a(\frac{f'}{f}) = -n$.
+
+\linie
+
+\textbf{Lemma}:
+Sei $G \subset \complex$ ein einfach zusammenhängendes Gebiet und
+$\Omega \subset G$ ebenfalls\\
+ein einfach zusammenhängendes Gebiet mit
+$\C^1$-Rand $\Gamma = \partial \Omega$.\\
+Seien außerdem $f \in \A(G \setminus J)$ mit
+$J = \{a_1, \dotsc, a_k\} \subset G$ die
+Polstellen von $f$ der Ordnung $n_1, \dotsc, n_k$ und
+$\{b_1, \dotsc, b_r\} \subset G$ die Nullstellen von $f$
+der Ordnung $m_1, \dotsc, m_r$.\\
+Dann gilt $\frac{1}{2\pi\i} \oint_\Gamma \frac{f'(z)}{f(z)} \dz =
+\sum_{b_\ell \in \Omega} m_\ell - \sum_{a_\ell \in \Omega} n_\ell$.
+
+\textbf{Satz von \name{Rouché}}:
+Sei $G \subset \complex$ ein einfach zusammenhängendes Gebiet und
+$\Omega \subset G$ ebenfalls\\
+ein einfach zusammenhängendes Gebiet mit
+$\C^1$-Rand $\Gamma = \partial \Omega$.\\
+Seien außerdem $f, g \in \A(G)$ mit
+$\forall_{z \in \Gamma}\; |g(z)| < |f(z)|$.\\
+Dann gilt $\sum_{b_\ell(f) \in \Omega} m_\ell(f) =
+\sum_{b_\ell(f + g) \in \Omega} m_\ell(f + g)$, wenn
+$b_\ell(h)$ die Nullstellen einer Funktion $h$ und $m_\ell(h)$ deren Ordnungen
+bezeichnen.
+
+\subsection{%
+    Harmonische Funktionen%
+}
+
+Seien $G \subset \complex$ ein Gebiet und $f \in \A(G)$.
+$f$ lässt sich darstellen als\\
+$f(z) = f(x, y) = u(x, y) + \i v(x, y)$ mit
+reellwertigen Funktionen $u = \Re f$ und $v = \Im f$.\\
+Aufgrund der komplexen Dif"|ferenzierbarkeit gelten die
+Cauchy-Riemann-Gleichungen $u'_x = v'_y$ und $u'_y = -v'_x$.
+Wegen der zweifachen stetigen Dif"|ferenzierbarkeit von $u$ und $v$
+($f$ ist beliebig oft komplex dif"|fb.) gilt daher
+$(u'_x)'_x = (v'_y)'_x = (v_x')'_y = (-u'_y)'_y$, also
+$u'_{xx} = -u'_{yy}$ und $\Delta u = 0$
+(mit dem Laplace-Operator $\Delta u := u'_{xx} + u'_{yy}$).
+Analog zeigt man $\Delta v = 0$.
+
+\textbf{harmonische Funktion}:
+Eine Funktion $u$ heißt \emph{harmonisch},
+falls alle zweiten partiellen Ableitungen
+existieren und stetig sind sowie $\Delta u = 0$.\\
+Die Menge der harmonischen Funktionen auf einem Gebiet $G$ bezeichnet man
+mit $\H(G)$.
+
+\emph{Beispiel}:
+Ist $f = u + \i v \in \A(G)$, so ist $u, v \in \H(G)$ mit $u = \Re f$ und
+$v = \Im f$.
+
+Aus $u, v \in \H(G)$ folgt i.\,A. aber nicht $f = u + \i v \in \A(G)$.
+Ein Gegenbeispiel ist\\
+$f(x, y) = (x^2 - y^2) (1 + \i)$, d.\,h.
+$u(x, y) = v(x, y) = x^2 - y^2$ sowie
+$u'_x = v'_x = 2x$ und $u'_y = v'_y = 2y$.\\
+Damit die CR-Gleichungen erfüllt sind, muss $2x = 2y$ und
+$2x = -2y$ gelten, also $x = y = 0$.
+Somit ist $f$ in keinem Punkt komplex dif"|ferenzierbar
+(keine Umgebung vorhanden).
+
+\linie
+
+\textbf{harmonisch konjugiert}:
+Sei $u \in \H(G)$.\\
+Dann heißt eine Funktion $v \in \H(G)$ \emph{harmonisch konjugiert} zu $u$,
+falls $f = u + \i v \in \A(G)$.
+
+Das harmonische Konjugat von $u \in \H(G)$ ist bis auf Konstanten eindeutig:
+Falls $v_1$ und $v_2$ harmonisch konjugiert zu $u$ sind, gilt
+$f_1 = u + \i v_1 \in \A(G)$ und $f_2 = u + \i v_2 \in \A(G)$, also
+$f = f_1 - f_2 = \i (v_1 - v_2) \in \A(G)$.
+Wegen $\Re f \equiv 0$ ist $f \equiv \const$, also $v_1 - v_2 \equiv c$.\\
+Man kann also aus Kenntnis des Realteils einer Funktion (falls existent) den
+Imaginärteil bis auf Konstanten rekonstruieren.
+
+\textbf{Satz}:
+Sei $G \subset \complex$ ein einfach zusammenhängendes Gebiet.
+Dann existiert zu jedem $u \in \H(G)$ eine harmonisch konjugierte Funktion
+$v \in \H(G)$ (d.\,h. $f = u + \i v \in \A(G)$).
+
+Der Beweis gibt eine Methode zur Rekonstruktion des Imaginärteils
+(analog geht das natürlich mit dem Realteil).
+Als Beispiel wird $G = \real^2$ und $u(x, y) = xy - x$ verwendet.
+
+\begin{enumerate}
+    \item
+    verifizieren, dass die gegebene Funktion harmonisch ist:\\
+    $u'_{xx} = 0 = u'_{yy}$
+    
+    \item
+    Funktion $g = w_r + \i w_i$ mit $w_r = u'_x$ und $w_i = -u'_y$
+    konstruieren:\\
+    $w_r = y - 1$, $w_i = -x$, also
+    $g(x, y) = y - 1 - \i x$
+    
+    \item
+    $g$ in Abhängigkeit von $z = x + \i y$ schreiben:\\
+    $g(z) = -\i z - 1$
+    
+    \item
+    $g$ auf"|leiten:\\
+    $f(z) = -z - \frac{\i}{2} z^2$ (plus Konstante), also
+    $f(z) = -(x + \i y) - \frac{\i}{2} (x + \i y)^2$\\
+    $= x(y - 1) + \i (-y - \frac{1}{2} x^2 + \frac{1}{2} y^2)$,
+    dies ist eine holomorphe Funktion mit $u$ als Realteil
+\end{enumerate}
+
+\linie
+
+\textbf{Integralformel von \name{Poisson}}:\\
+Seien $G \subset \complex$ ein Gebiet, $u \in \H(G)$,
+$\overline{U_R(0)} \subset G$, $0 \le r < R$ und $0 \le \theta < 2\pi$.\\
+Dann gilt $u(r e^{\i\theta}) = \frac{1}{2\pi}
+\int_0^{2\pi} \frac{(R^2 - r^2) u(R e^{\i t})}
+{R^2 - 2rR \cos(\theta - t) + r^2} \dt$.
+
+\textbf{Spezialfall (Mittelwertsatz für harmonische Funktionen)}:
+$u(0) = \frac{1}{2\pi} \int_0^{2\pi} u(R e^{\i t}) \dt$
+
+Insbesondere gilt, dass auf $u \in \H(G)$ und $u|_{\partial U_R} = 0$ folgt,
+dass $u \equiv 0$ in $U_R$ ist, denn aus dem Mittelwertsatz kann
+man das Maximumsprinzip für harmonische Funktionen folgern
+(analog dem für holomorphe Funktionen).
+
+\linie
+
+\textbf{Transfer-Lemma}:
+Seien $G, \widetilde{G} \subset \complex$ einfach zusammenhängende
+Gebiete, $\psi\colon G \rightarrow \widetilde{G}$ bijektiv mit $\psi \in \A(G)$
+und $\widetilde{u} \in \H(\widetilde{G})$.
+Dann ist $u := \widetilde{u} \circ \psi \in \H(G)$.
+
+\textbf{\name{Riemann}scher Abbildungssatz}:
+Jedes einfach zusammenhängende Gebiet $G \subsetneqq \complex$ lässt sich
+bijektiv mit einer holomorphen Funktion auf den Einheitskreis $U_1(0)$
+abbilden.
+
+\textbf{\name{Dirichlet}-Problem im Einheitskreis}:
+Gesucht ist eine harmonische Funktion $u \in \H(G)$,
+d.\,h. $\Delta u = 0$, wobei $u \in \C(\overline{G})$ und
+$u$ auf dem Rand gegeben ist durch $u|_{\partial G} = u_0$.\\
+Hat man zwei Lösungen des Problems, so ist die Dif"|ferenz harmonisch und
+verschwindet auf dem Rand.
+Nach dem Maximumsprinzip verschwindet sie auch im Inneren, d.\,h. die Lösung
+ist eindeutig.\\
+Für $G = U_1(0)$, also $u_0 = u_0(e^{\i t})$, ist die Lösung
+$u(r e^{\i \theta}) = u_0(e^{i \theta})$ für $r = 1$ und\\
+$u(r e^{\i \theta}) = \frac{1}{2\pi}
+\int_0^{2\pi} P_{r,\theta}(t) u_0(e^{\i t}) \dt$ für $0 \le r < 1$ mit
+dem \emph{\name{Poisson}-Kern}
+$P_{r,\theta}(t) = \frac{1 - r^2}{1 - 2r\cos(\theta - t) + r^2}$.
+
+\pagebreak

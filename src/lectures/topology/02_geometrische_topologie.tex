@@ -1,0 +1,1240 @@
+\section{%
+    Geometrische Topologie%
+}
+
+\subsection{%
+    Homotopie und Abbildungsgrad%
+}
+
+\begin{Bem}
+    Im Folgenden sollen Methoden entwickelt werden, mit denen gezeigt werden
+    können, dass $\real^2 \not\cong \real^3$.
+    Im Allgemeinen gilt sogar $\real^n \not\cong \real^m$ für $n \not= m$.
+\end{Bem}
+
+\subsubsection{%
+    Homotope Abbildungen%
+}
+
+\begin{Def}{Homotopie}
+    Seien $X$ und $Y$ topologische Räume. \\
+    Eine \begriff{Homotopie} ist eine stetige Abbildung
+    $H\colon [0, 1] \times X \rightarrow Y$. \\
+    Für $t \in [0, 1]$ definiert man die stetige Abbildung
+    $H_t\colon X \rightarrow Y$, $H_t(x) = H(t, x)$.
+\end{Def}
+
+\begin{Def}{homotop}
+    Zwei stetige Abbildungen $f, g\colon X \rightarrow Y$ heißen
+    \begriff{homotop} in $Y$ ($f \simeq g$), falls es eine Homotopie
+    $H\colon [0, 1] \times X \rightarrow Y$
+    mit $H_0 = f$ und $H_1 = g$ gibt. \\
+    Eine stetige Abbildung $f\colon X \rightarrow Y$ heißt
+    \begriff{nullhomotop}/\begriff{zusammenziehbar} ($f \simeq \ast$),
+    falls $f$ zu einer konstanten Abbildung
+    $\const_X^\ast\colon X \rightarrow \{\ast\}$
+    mit $\ast \in Y$ homotop ist. \\
+    Der Raum $X$ heißt \begriff{zusammenziehbar} ($X \simeq \ast$),
+    falls $\id_X \simeq \ast$.
+\end{Def}
+
+\begin{Bsp}
+    Sei $X \subset \real^n$ sternförmig bzgl. $a \in \real^n$,
+    z.\,B. $X = \real^n$ und $a = 0$. \\
+    Dann ist $X$ zusammenziehbar durch $H(t, x) = (1 - t)x + ta$. \\
+    Jede stetige Abbildung $f\colon X \rightarrow Y$ ist nullhomotop
+    durch $H(t, x) = f((1 - t)x + ta)$. \\
+    Jede stetige Abbildung $f\colon Y \rightarrow X$ ist nullhomotop
+    durch $H(t, y) = (1 - t)f(y) + ta$.
+\end{Bsp}
+
+\begin{Satz}{homotope Abbildungen auf Einheitssphäre}
+    Seien $X$ ein topologischer Raum und \\
+    $f, g\colon X \rightarrow \sphere^n$ stetige Abbildungen, die
+    nirgends \begriff{antipodal} sind, d.\,h.
+    $\forall_{x \in X}\; f(x) \not= -g(x)$. \\
+    Dann gilt $f \simeq g$.
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Man kann jede Homotopie $H\colon [0, 1] \times X \rightarrow Y$ als einen
+    Weg $h\colon [0, 1] \rightarrow \C(X, Y)$ mit $(h(t))(x) := H(t, x)$
+    betrachten.
+    Ist $H$ stetig, dann ist auch $h$ stetig. \\
+    Ist $h$ stetig und $X$ lokal-kompakt, dann ist auch $H$ stetig.
+\end{Bem}
+
+\begin{Satz}{Homotopie als Äquivalenzrelation}
+    Homotopie ist eine Äquivalenzrelation auf $\C(X, Y)$.
+\end{Satz}
+
+\begin{Def}{Homotopieklassen}
+    Seien $X$ und $Y$ topologische Räume.
+    Der Quotientenraum der \\
+    \begriff{Homotopieklassen} (Äquivalenzklassen bzgl. der Homotopie) heißt
+    $[X, Y] := \C(X, Y) /\! \simeq$.
+\end{Def}
+
+\begin{Bsp}
+    Für $X$ lokal-kompakt gilt $[X, Y] = \pi_0(\C(X, Y))$. \\
+    Für jeden topologischen Raum $X$ gilt $[\{\ast\}, X] = \pi_0(X)$.
+\end{Bsp}
+
+\begin{Satz}{Homotopie bei Kompositionen}
+    Seien $f_0, f_1\colon X \rightarrow Y$ und $g_0, g_1\colon Y \rightarrow Z$
+    stetige Abbildungen.
+    Gilt $f_0 \simeq f_1$ und $g_0 \simeq g_1$, dann gilt auch
+    $g_0 \circ f_0 \simeq g_1 \circ f_1$.
+\end{Satz}
+
+\begin{Def}{Kategorie $\cat{hTop}$}
+    Man kann eine Kategorie $\cat{hTop}$ definieren.
+    Die Objekte sind die topologischen Räume,
+    die Morphismen $[X, Y]$ sind die Homotopieklassen $[f]$ stetiger
+    Abbildungen $f\colon X \rightarrow Y$ und
+    die Komposition ist $[g] \circ [f] := [g \circ f]$
+    (wohldefiniert nach obigem Satz).
+\end{Def}
+
+\linie
+\pagebreak
+
+\begin{Def}{homotopie-äquivalent}
+    $X$ und $Y$ heißen \begriff{homotopie-äquivalent} ($X \simeq Y$),
+    falls es stetige Abbildungen $f\colon X \rightarrow Y$ und
+    $g\colon Y \rightarrow X$ gibt mit $g \circ f \simeq \id_X$ und
+    $f \circ g \simeq \id_Y$.
+\end{Def}
+
+\begin{Bem}
+    So wie Homöomorphie die Isomorphie in $\cat{Top}$ ist, so ist
+    Homotopie-Äquivalenz die Isomorphie in $\cat{hTop}$
+    (insbesondere ist Homotopie-Äquivalenz eine Äquivalenzrelation).
+\end{Bem}
+
+\begin{Bsp}
+    Aus $X \cong Y$ folgt $X \simeq Y$, die Umkehrung gilt nicht: \\
+    Zum Beispiel sind $\real$ und $\real^2$ nicht homöomorph, aber
+    homotopie-äquivalent. \\
+    Ein Raum $X$ ist zusammenziehbar genau dann, wenn $X$ zu $\{\ast\}$
+    homotopie-äquivalent ist.
+\end{Bsp}
+
+\begin{Satz}{$\sphere^n \simeq \real^{n+1} \setminus \{0\}$}
+    $\sphere^n$ und $\real^{n+1} \setminus \{0\}$
+    sind homotopie-äquivalent.
+\end{Satz}
+
+\begin{Satz}{Funktoren durch Homotopieklassen}
+    Seien $X, Y, Z$ topologische Räume.
+    \begin{enumerate}
+        \item
+        Jede stetige Abbildung $f\colon X \rightarrow Y$ induziert
+        $f_\ast\colon [Z, X] \rightarrow [Z, Y]$,
+        $f_\ast([h]) := [f \circ h]$. \\
+        Dies definiert einen kovarianten Funktor
+        $[Z, -]\colon \cat{Top} \rightarrow \cat{Set}$.
+        
+        \item
+        Jede stetige Abbildung $f\colon Y \rightarrow X$ induziert
+        $f^\ast\colon [Y, Z] \rightarrow [X, Z]$,
+        $f^\ast([h]) := [h \circ f]$. \\
+        Dies definiert einen kontravarianten Funktor
+        $[-, Z]\colon \cat{Top} \rightarrow \cat{Set}$.
+        
+        \item
+        Aus $f \simeq g$ folgt $f_\ast = g_\ast$ und $f^\ast = g^\ast$.
+    \end{enumerate}
+\end{Satz}
+
+\linie
+
+\begin{Def}{Retraktion}
+    Seien $X$ ein topologischer Raum und $A \subset X$ eine Teilmenge. \\
+    Eine \begriff{Retraktion} von $X$ auf $A \subset X$ ist eine stetige
+    Abbildung $r\colon X \rightarrow A$ mit $r|_A = \id_A$. \\
+    $A \subset X$ heißt \begriff{Retrakt} von $X$, falls es eine Retraktion
+    von $X$ auf $A$ gibt.
+\end{Def}
+
+\begin{Def}{Deformationsretraktion}
+    Eine \begriff{Deformationsretraktion} von $X$ auf $A \subset X$
+    ist eine Homotopie
+    $H\colon [0, 1] \times X \rightarrow X$ mit $H_0 = \id_X$ und
+    $H_1$ eine Retraktion von $X$ auf $A$. \\
+    $A \subset X$ heißt \begriff{Deformationsretrakt} von $X$, falls es eine
+    Deformationsretraktion von $X$ auf $A$ gibt.
+\end{Def}
+
+\begin{Def}{starke Deformationsretraktion}
+    Eine \begriff{starke Deformationsretraktion} von $X$ auf $A \subset X$
+    ist eine
+    Deformationsretraktion $H$ mit $H_t|_A = \id_A$ für alle $t \in [0, 1]$. \\
+    $A \subset X$ heißt \begriff{starker Deformationsretrakt} von $X$, falls es
+    eine starke Deformationsretraktion von $X$ auf $A$ gibt.
+\end{Def}
+
+\begin{Bsp}
+    $\sphere^n \subset \real^{n+1} \setminus \{0\}$ ist ein
+    starker Def.retrakt. \\
+    Für $a \in X$ ist $\{a\} \subset X$ ein Retrakt,
+    und ein Def.retrakt genau dann, wenn $X$ zusz.bar ist. \\
+    Ist $X$ nicht wegzsh. (z.\,B. $X = \real \setminus \{0\}$), dann ist
+    $\{a\} \subset X$ ein Retrakt, aber kein Def.retrakt. \\
+    Es gibt keine Retraktion $[0, 1] \rightarrow \{0, 1\}$.
+\end{Bsp}
+
+\pagebreak
+
+\subsubsection{%
+    Der Abbildungsgrad%
+}
+
+\begin{Bem}\\
+    Für $k \in \integer$ kann man
+    $\varphi_k\colon \sphere^1 \rightarrow \sphere^1$, $z \mapsto z^k$
+    definieren, also
+    $\varphi_k(\cos(t), \sin(t)) := (\cos(kt), \sin(kt))$. \\
+    Anschaulich gesagt wickelt diese Abbildung die Kreislinie $k$-mal
+    um den Nullpunkt. \\
+    Dabei ist $\varphi_0$ konstant, $\varphi_1$ die Identität und
+    $\varphi_{-1}$ die Spiegelung an der $x$-Achse. \\
+    Allgemeiner ist $\phi_k\colon \real^{n+1} \rightarrow \real^{n+1}$
+    definiert durch \\
+    $\phi_k(r \cos(t), r \sin(t), x_3, \dotsc, x_{n+1}) :=
+    (r \cos(kt), r \sin(kt), x_3, \dotsc, x_{n+1})$. \\
+    Es gilt $|\phi_k(x)| = |x|$, d.\,h. man erhält die Einschränkung
+    $\varphi_k := \phi_k|_{\sphere^n}\colon \sphere^n \rightarrow \sphere^n$.
+\end{Bem}
+
+\begin{Satz}{\name{Brouwer}-\name{Hopf}}
+    Für $k \in \integer$ ist die Abbildung
+    $\integer \rightarrow [\sphere^n, \sphere^n]$,
+    $k \mapsto [\varphi_k]$ eine Bijektion, d.\,h. jede stetige Abbildung
+    $f\colon \sphere^n \rightarrow \sphere^n$ ist zu genau einer
+    Abbildung $\varphi_k$ homotop.
+\end{Satz}
+
+\begin{Def}{Umlaufzahl}\\
+    Die Umkehrabbildung ist der \begriff{Abbildungsgrad}/die
+    \begriff{Umlaufzahl}
+    $\deg\colon [\sphere^n, \sphere^n] \bij \integer$,
+    $[\varphi_k] \mapsto k$.
+\end{Def}
+
+\begin{Kor}
+    Der Abbildungsgrad ist multiplikativ, d.\,h.
+    $\deg(f \circ g) = \deg(f) \cdot \deg(g)$.
+\end{Kor}
+
+\linie
+
+\begin{Kor}
+    $\sphere^n$ ist nicht zusammenziehbar
+    ($\sphere^n \not\simeq \{\ast\}$).
+\end{Kor}
+
+\begin{Kor}
+    $\sphere^n \subset \dball^{n+1}$ ist kein Retrakt.
+\end{Kor}
+
+\begin{Bem}
+    $\sphere^n \subset \dball^{n+1} \setminus \{0\}$ ist ein Retrakt.
+\end{Bem}
+
+\begin{Satz}{\name{Brouwer}scher Fixpunktsatz}\\
+    Jede stetige Abbildung $f\colon \dball^n \rightarrow \dball^n$
+    besitzt mindestens einen Fixpunkt, d.\,h.
+    $\exists_{a \in \dball^n}\; f(a) = a$.
+\end{Satz}
+
+\linie
+
+\begin{Def}{tangentiales Vektorfeld}
+    Ein \begriff{tangentiales Vektorfeld} auf $\sphere^n$ ist eine
+    stetige Abbildung $v\colon \sphere^n \rightarrow \real^{n+1}$
+    mit $\sp{v(x), x} = 0$ für alle $x \in \sphere^n$.
+\end{Def}
+
+\begin{Bsp}
+    Sei $n = 2m - 1$, $m \in \natural$ ungerade.
+    Dann ist $v(x_1, x_2, \dots, x_{2m-1}, x_{2m}) =$ \\
+    $(x_2, -x_1, \dotsc, x_{2m}, -x_{2m-1})$ ein tangentiales Vektorfeld auf
+    $\sphere^{2m-1}$, das nirgends verschwindet.
+\end{Bsp}
+
+\begin{Bem}
+    Sind solche Vektorfelder auch für $n = 2m$ möglich?
+\end{Bem}
+
+\begin{Satz}{Satz vom gekämmten Igel}\\
+    Jedes tangentiale Vektorfeld
+    $v\colon \sphere^{2m} \rightarrow \real^{2m+1}$
+    besitzt mindestens eine Nullstelle.
+\end{Satz}
+
+\begin{Lemma}{Grad linearer Abbildungen}
+    Für $A \in \GL_{n+1}(\real)$ besitzt
+    $f_A\colon \sphere^n \rightarrow \sphere^n$,
+    $x \mapsto \frac{Ax}{\norm{Ax}}$ den Abbildungsgrad
+    $\deg(f_A) = \sign(\det A) \in \{\pm 1\}$.
+\end{Lemma}
+
+\linie
+
+\begin{Satz}{stetige Abbildungen von $\sphere^m$ nach
+             $\sphere^n$ mit $m < n$ sind nullhomotop}\\
+    Für $m < n$ ist jede stetige Abbildung
+    $f\colon \sphere^m \rightarrow \sphere^n$ nullhomotop.
+\end{Satz}
+
+\begin{Kor}
+    Für $m \not= n$ ist $\sphere^m \not\simeq \sphere^n$, d.\,h.
+    insbesondere $\sphere^m \not\cong \sphere^n$.
+\end{Kor}
+
+\begin{Kor}
+    Für $m \not= n$ ist $\real^m \not\cong \real^n$.
+\end{Kor}
+
+\begin{Satz}{Invarianz der Dimension}
+    Seien $U \subset \real^m$ of"|fen, $V \subset \real^n$ of"|fen und
+    $U, V \not= \emptyset$. \\
+    Gilt $U \cong V$, so ist $m = n$.
+\end{Satz}
+
+\begin{Lemma}{Umgebungen der $0$}
+    Ist $V \subset \real^n$ eine Umgebung der $0$ mit $V \cong \dball^m$,
+    so gilt $n = m$.
+\end{Lemma}
+
+\pagebreak
+
+\subsection{%
+    Simpliziale Komplexe%
+}
+
+\subsubsection{%
+    Simpliziale Komplexe%
+}
+
+\begin{Def}{Standard-Simplex}
+    $\Delta^n := \{(t_0, \dotsc, t_n) \in \real^{n+1} \;|\;
+    t_0, \dotsc, t_n \ge 0,\; t_0 + \dotsb + t_n = 1\}$ heißt
+    \begriff{Standard-Simplex} der Dimension $n$ ($n \in \natural$).
+\end{Def}
+
+\begin{Bem}
+    $\Delta^n$ ist die konvexe Hülle von $e_0, \dotsc, e_n \in \real^{n+1}$,
+    wobei $(e_0, \dotsc, e_n)$ die kanonische Basis des $\real^{n+1}$ ist,
+    d.\,h. $\Delta^0$ ist ein Punkt, $\Delta^1$ eine Strecke,
+    $\Delta^2$ ein Dreieck, $\Delta^3$ ein Tetraeder usw.
+    Da $\Delta^n$ kompakt und sternförmig bzgl. der $\varepsilon$-Umgebung
+    einer ihrer Punkte ist, gilt $\Delta^n \cong \dball^n$.
+\end{Bem}
+
+\begin{Def}{af"|fin unabhängig}
+    Sei $V$ ein $\real$-Vektorraum.
+    Eine Familie $(v_0, v_1, \dotsc, v_n)$ in $V$ heißt
+    \begriff{af"|fin unabhängig}, falls $v_1 - v_0, \dotsc, v_n - v_0$
+    linear unabhängig sind.
+\end{Def}
+
+\begin{Def}{Simplex}
+    Seien $V$ ein $\real$-Vektorraum und $(v_0, v_1, \dotsc, v_n)$
+    af"|fin unabhängig. \\
+    $\Delta = [v_0, v_1, \dotsc, v_n] :=
+    \{t_0 v_0 + t_1 v_1 + \dotsb + t_n v_n \;|\; t \in \Delta^n\}$ heißt
+    der von $(v_0, v_1, \dotsc, v_n)$ aufgespannte af"|fine
+    \begriff{$n$-Simplex}.
+    Die Punkte $v_0, v_1, \dotsc, v_n$ heißen \begriff{Ecken} des Simplex
+    $\Delta$. \\
+    Für die kanonische Basisvektoren vom $\real^{n+1}$ gilt
+    $\Delta^n = [e_0, e_1, \dotsc, e_n]$.
+\end{Def}
+
+\begin{Def}{baryzentrische Koordinaten}
+    Für jeden Punkt $x = t_0 v_0 + t_1 v_1 + \dotsb + t_n v_n$
+    heißen die Koordinaten
+    $(t_0, t_1, \dotsc, t_n)$ \begriff{baryzentrische Koordinaten}
+    von $x$ bzgl. $(v_0, v_1, \dotsc, v_n)$. \\
+    Die Abbildung
+    $h\colon \Delta^n \rightarrow \Delta$, $t \mapsto \sum_{i=0}^n t_i v_i$
+    ist eine Bijektion, \\
+    d.\,h. die Koordinaten sind eindeutig.
+\end{Def}
+
+\begin{Satz}{Ecken, Dim. eindeutig}
+    $v\colon [v_0, v_1, \dotsc, v_n] \mapsto \{v_0, v_1, \dotsc, v_n\}$,
+    $\dim\colon [v_0, v_1, \dotsc, v_n] \mapsto n$ sind wohldefinierte
+    Zuordnungen auf der Menge aller af"|finen Simplizes in
+    einem Vektoraum $V$, d.\,h.
+    jeder af"|fine Simplex $\Delta = [v_0, v_1, \dotsc, v_n]$ in $V$
+    bestimmt eindeutig seine Eckenmenge.
+\end{Satz}
+
+\linie
+
+\begin{Def}{Seite}
+    Sei $\Delta = [v_0, v_1, \dotsc, v_n]$ ein $n$-Simplex.
+    Für jede nicht-leere Teilmenge \\
+    $F \subset \{v_0, v_1, \dotsc, v_n\}$ mit
+    $d + 1$ Elementen heißt der $d$-Simplex
+    $[F]$ \begriff{Seite} von $\Delta$ der
+    \begriff{Dimension} $d$ und der \begriff{Kodimension} $n - d$.
+    Eine Seite der Kodimension $\ge 1$ heißt \begriff{echt}.
+\end{Def}
+
+\begin{Def}{Rand, Inneres}
+    Der \begriff{Rand} eines Simplex $\Delta$ ist
+    die Vereinigung all seiner echten Seiten, d.\,h. $\partial \Delta :=
+    \bigcup_{\emptyset \not= F \subsetneqq \{v_0, v_1, \dotsc, v_n\}} [F]$.
+    Das \begriff{Innere} ist $\Int \Delta := \Delta \setminus \partial \Delta$.
+\end{Def}
+
+\begin{Bem}
+    Das Innere des Simplex $\Delta = [v_0, v_1, \dotsc, v_n]$ besteht aus
+    allen Punkten \\
+    $x = t_0 v_0 + t_1 v_1 + \dotsb + t_n v_n$ mit
+    $t_0 + t_1 + \dotsb + t_n = 1$ sowie $t_0, t_1, \dotsc, t_n > 0$.
+    Der Rand besteht aus allen Punkten, für die mindestens eine baryzentrische
+    Koordinate $t_k$ verschwindet.
+\end{Bem}
+
+\linie
+
+\begin{Def}{af"|finer simplizialer Komplex}
+    Sei $V$ ein $\real$-Vektorraum.
+    Ein \begriff{(af"|finer) simplizialer Komplex} in $V$ ist eine Menge
+    $\K$ von Simplizes in $V$, sodass
+    \begin{enumerate}
+        \item
+        für alle Simplizes $\Delta \in \K$
+        auch alle Seiten von $\Delta$ ein Element von $\K$ sind und
+        
+        \item
+        für alle Simplizes $\Delta_1, \Delta_2$ mit Durchschnitt
+        $\Delta := \Delta_1 \cap \Delta_2 \not= \emptyset$
+        gilt, dass $\Delta$ eine gemeinsame Seite ist
+        (d.\,h. eine Seite sowohl von $\Delta_1$ als auch $\Delta_2$).
+    \end{enumerate}
+    Die Vereinigung $|\K| := \bigcup_{\Delta \in \K} \Delta$ heißt
+    \begriff{Träger} von $\K$. \\
+    Die \begriff{(af"|fine) Dimension} von $\K$ ist
+    $\dim \K := \sup\{\dim \Delta \;|\; \Delta \in \K\}$.
+\end{Def}
+
+\begin{Bsp}
+    Ist $\Delta$ ein af"|finer $n$-Simplex, dann bildet die Menge $\K$ aller
+    Seiten von $\Delta$ einen simplizialen Komplex der Dimension $n$
+    mit Träger $|\K| = \Delta$.
+    Die Menge $\L$ aller echten Seiten von $\Delta$ bildet einen simplizialen
+    Komplex der Dimension $n - 1$ mit Träger $|\L| = \partial \Delta$.
+\end{Bsp}
+
+\pagebreak
+
+\begin{Def}{simpliziale Topologie}
+    Sei $\K$ ein simplizialer Komplex in $V$.
+    Jeder Simplex $\Delta \in \K$ wird mit seiner euklidischen Topologie
+    ausgestattet, sodass $h\colon \Delta^n \rightarrow \Delta$
+    ein Homöomorphismus ist.
+    $|\K|$ wird mit der finalen Topologie ausgestattet, d.\,h.
+    $U \subset |\K|$ ist of"|fen in $|\K|$ genau dann, wenn $U \cap \Delta$
+    of"|fen in $\Delta$ ist für alle $\Delta \in \K$.
+    Dies heißt \begriff{simpliziale Topologie} auf $|\K|$.
+\end{Def}
+
+\begin{Bem}
+    Für $\K$ (lokal-)endlich in einem topologischen Vektorraum $V$ stimmen
+    simpliziale Topologie und Teilraumtopologie überein.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Ein af"|finer Simplex $\Delta = [v_0, \dotsc, v_n]$ in einem Vektorraum $V$
+    ist durch seine Eckenmenge $v(\Delta) = \{v_0, \dotsc, v_n\}$ festgelegt.
+    Ein af"|finer simplizialer Komplex $\K$ in $V$ ist durch seine Simplizes
+    $\Delta \in \K$ festgelegt.
+    Zu seiner Beschreibung reicht es also aus, die Familie
+    $K = v(\K) := \{v(\Delta) \;|\; \Delta \in \K\}$
+    aller Eckenmengen anzugeben.
+\end{Bem}
+
+\begin{Def}{kombinatorischer simplizialer Komplex}\\
+    Eine Familie $K$ endlicher nicht-leerer Mengen heißt
+    \begriff{kombinatorischer simplizialer Komplex},
+    falls für alle $S \in K$ und $\emptyset \not= S' \subset S$ auch
+    $S' \in K$ gilt. \\
+    In diesem Fall heißt $S = \{s_0, \dotsc, s_n\}$
+    \begriff{kombinatorischer Simplex}
+    der \begriff{Dimension} $\dim S := n$. \\
+    $\Omega(K) := \bigcup_{S \in K} S$ heißt die \begriff{Eckenmenge} von $K$,
+    ihre Elemente heißen \begriff{Ecken}.
+\end{Def}
+
+\linie
+
+\begin{Def}{Darstellung}\\
+    Eine \begriff{Darstellung} von $K$ in einem Vektorraum $V$ ist
+    eine Abbildung $f\colon \Omega(K) \rightarrow V$, sodass
+    \begin{enumerate}
+        \item
+        für alle $S \in K$ das Bild $f(S)$ af"|fin unabhängig in $V$ ist und
+        
+        \item
+        für alle $S, T \in K$ gilt $[f(S)] \cap [f(T)] = [f(S \cap T)]$.
+    \end{enumerate}
+    In diesem Fall ist $\K = \{[f(S)] \;|\; S \in K\}$
+    ein af"|finer simplizialer Komplex in $V$. \\
+    $|K|_f := |\K|$ heißt die \begriff{topologische Realisierung} von $K$
+    mittels $f$.
+\end{Def}
+
+\begin{Bem}
+    Diese Bedingungen gelten insbesondere dann, wenn die Vektoren
+    $(f(s))_{s \in \Omega}$ linear unabhängig sind.
+\end{Bem}
+
+\begin{Def}{kanonische Realisierung}\\
+    Sei $K$ ein kombinatorischer simplizialer Komplex mit
+    Eckenmenge $\Omega$.
+    In der Menge $\real^{(\Omega)}$ aller Abbildungen
+    $g\colon \Omega \rightarrow \real$ mit endlichem Träger
+    (d.\,h. $\supp(g) = \{x \in \Omega \;|\; g(x) \not= 0\}$ ist endlich)
+    definiert man die \begriff{kanonische Basis}
+    $(\delta_s)_{s \in \Omega}$ mit $\delta_s\colon \Omega \rightarrow \real$,
+    $\delta_s(t) := \delta_{st}$ (Kronecker-Delta). \\
+    Die Abbildung $f\colon \Omega \rightarrow \real^{(\Omega)}$,
+    $f(s) = \delta_s$ ist eine Darstellung von $K$, die
+    \begriff{kanonische Darstellung}. \\
+    Der so definierte Komplex $\K := \{[f(S)] \;|\; S \in K\}$ heißt
+    \begriff{kanonischer af"|finer Komplex} von $K$. \\
+    Der Raum $|K| := |\K|$ mit der simplizialen Topologie heißt
+    \begriff{kanonische Realisierung} von $K$.
+\end{Def}
+
+\begin{Bem}
+    Eine andere Schreibweise ist
+    $|K| = \{x\colon \Omega \rightarrow [0, 1] \;|\;
+    \supp(x) \in K,\; \sum_{s \in \Omega} x(s) = 1\}$. \\
+    Jedem kombinatorischen Simplex $S \in K$ entspricht der af"|fine Simplex \\
+    $|S| = \{x \in |K| \;|\; \supp(x) \subset S\}$, d.\,h.
+    $\K = \{|S| \;|\; S \in K\}$.
+\end{Bem}
+
+\begin{Satz}{jede Real. ist zur kanon. Real. homöomorph}
+    Seien $K$ ein kombinatorischer simplizialer Komplex mit Eckenmenge $\Omega$
+    und $f\colon \Omega \rightarrow V$ eine Darstellung in einen Vektorraum
+    $V$. \\
+    Dann ist die Abbildung $h\colon |K| \homoe |K|_f$,
+    $h(x) = \sum_{s \in \Omega} x(s) f(s)$ ein Homöomorphismus.
+\end{Satz}
+
+\linie
+\pagebreak
+
+\begin{Def}{kombinatorische simpliziale Abbildung}
+    Seien $K$ und $L$ kombinatorische simpliziale Komplexe.
+    Eine \begriff{kombinatorische simpliziale Abbildung}
+    $f\colon K \rightarrow L$ ist eine Abbildung \\
+    $f\colon \Omega(K) \rightarrow \Omega(L)$ der Eckenmengen, sodass
+    für jeden Simplex $S \in K$ auch $f(S) \in L$ gilt.
+\end{Def}
+
+\begin{Def}{af"|fine simpliziale Abbildung}
+    Seien $\K$ und $\L$ af"|fine simpliziale Komplexe.
+    Eine \begriff{af"|fine simpliziale Abbildung}
+    $g\colon \K \rightarrow \L$ ist eine Abbildung
+    $g\colon \Omega(\K) \rightarrow \Omega(\L)$ der Eckenmengen,
+    af"|fin fortgesetzt auf jeden Simplex, sodass
+    für jeden Simplex $\Delta \in \K$ auch $g(\Delta) \in \L$ gilt.
+\end{Def}
+
+\begin{Bem}
+    Seien $\K$ und $\L$ af"|fine simpliziale Komplexe sowie
+    $K = v(\K)$ und $L = v(\L)$ die zugehörigen kombinatorischen simplizialen
+    Komplexe. \\
+    Jede kombinatorische simpliziale Abbildung $f\colon K \rightarrow L$
+    definiert eine af"|fine simpliziale Abbildung $g\colon \K \rightarrow \L$
+    durch $g(\sum_{s \in \Omega(K)} x(s) \cdot s) =
+    \sum_{s \in \Omega(K)} x(s) \cdot f(s)$. \\
+    Jede af"|fine simpliziale Abbildung $g\colon \K \rightarrow \L$ definiert
+    eine kombinatorische simpliziale Abbildung $f\colon K \rightarrow L$
+    durch Einschränkung auf die Eckenmengen.
+\end{Bem}
+
+\linie
+
+\begin{Def}{kombinatorischer Teilkomplex}
+    Sei $K$ ein kombinatorischer simplizialer Komplex.
+    Ein \begriff{Teilkomplex} von $K$ ist eine Teilmenge $L \subset K$,
+    die selbst ein komb. simplizialer Komplex ist.
+\end{Def}
+
+\begin{Def}{af"|finer Teilkomplex}
+    Sei $\K$ ein af"|finer simplizialer Komplex.
+    Ein \begriff{Teilkomplex} von $\K$ ist eine Teilmenge $\L \subset \K$,
+    die selbst ein af"|finer simplizialer Komplex ist.
+\end{Def}
+
+\begin{Def}{$n$-Skelett}
+    Sei $K$ ein simplizialer Komplex.
+    Für $n \in \natural$ heißt
+    $K_{\le n} := \{S \in K \;|\; \dim S \le n\}$ \\
+    \begriff{$n$-Skelett} von $K$
+    (Teilkomplex von $K$ der Dimension $\le n$).
+\end{Def}
+
+\subsubsection{%
+    Triangulierung topologischer Räume%
+}
+
+\begin{Def}{Triangulierung}
+    Sei $X$ ein topologischer Raum.
+    Eine \begriff{Triangulierung} von $X$ ist ein Paar $(K, h)$, wobei
+    $K$ ein simplizialer Komplex und $h\colon |K| \homoe X$ ein
+    Homöomorphismus ist. \\
+    $X$ heißt \begriff{triangulierbar},
+    falls es eine Triangulierung von $X$ gibt.
+\end{Def}
+
+\begin{Bsp}
+    Jede diskrete Menge $X$ kann trianguliert werden durch
+    $K = \{\{x\} \;|\; x \in X\}$ (Komplex der Dimension $0$). \\
+    Komplexe der Dimension $1$ heißen \begriff{kombinatorische Graphen},
+    dazu homöomorphe topologische Räume heißen \begriff{topologische Graphen}.
+\end{Bsp}
+
+\begin{Satz}{$\dball^n$ und $\sphere^{n-1}$ triangulierbar}
+    $\dball^n$ und $\sphere^{n-1}$ sind triangulierbar.
+\end{Satz}
+
+\begin{Bem}
+    Die top. Realisierung $|K|$ jedes simplizialen Komples $K$ ist
+    lokal zusammenziehbar, d.\,h. topologische Räume, die nicht
+    lokal zusammenziehbar sind, sind nicht triangulierbar.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Invarianz der Dimension}\\
+    Für simpliziale Komplexe $K$ und $L$ mit $|K| \cong |L|$ gilt
+    $\dim K = \dim L$.
+\end{Satz}
+
+\begin{Def}{Dimension}
+    Sei $X$ ein durch $|K| \cong X$ triangulierbarer topologischer Raum. \\
+    Dann heißt $\dim X := \dim K$ seine \begriff{(simpliziale) Dimension}.
+\end{Def}
+
+\begin{Bsp}
+    Es gilt $\dim \dball^n = n$ und $\dim \sphere^n = n$.
+\end{Bsp}
+
+\pagebreak
+
+\subsubsection{%
+    Simpliziale Approximation%
+}
+
+\begin{Def}{simpliziale Metrik}
+    Sei $K$ ein kombinatorischer simplizialer Komplex mit Eckenmenge $\Omega$.
+    Auf der kanonischen Realisierung $|K| \subset \real^{(\Omega)}$
+    ist die \begriff{simpliziale Metrik} definiert durch \\
+    $d(x, y) := \max\{|x(s) - y(s)| \;|\; s \in \Omega\}$.
+\end{Def}
+
+\begin{Satz}{Vergleich mit metrischer Topologie}
+    Die metrische Topologie auf $|K|$ ist gröber als die simpliziale Topologie.
+    Ist $K$ (lokal-)endlich, so stimmen beide Topologien überein.
+\end{Satz}
+
+\begin{Kor}
+    Für jeden simplizialen Komplex $K$ ist die Realisierung $|K|$ hausdorffsch.
+\end{Kor}
+
+\linie
+
+\begin{Def}{Stern}
+    Seien $K$ ein simplizialer Komplex und $|K|$ seine kanonische
+    Realisierung. \\
+    Für jede Ecke $a \in \Omega$ ist $\st(a) := \{x \in |K| \;|\; x(a) > 0\}$
+    der \begriff{Stern} um $a$.
+\end{Def}
+
+\begin{Bem}
+    Es gilt $\st(a) = B(a, 1) = \bigcup_{S \in K,\; a \in S} (\Int |S|)
+    = |K| \setminus \{|T| \;|\; T \in K,\; a \notin T\}$.
+\end{Bem}
+
+\begin{Satz}{Stern of\!\! fen und zusammenziehbar}\\
+    Für jede Ecke $a \in \Omega$ und jeden Radius $r$ mit $0 < r \le 1$ ist
+    $B(a, r) = \{x \in |K| \;|\; x(a) > 1 - r\}$
+    eine zusammenziehbare of"|fene Umgebung von $a$ in $|K|$,
+    d.\,h. insbesondere auch $\st(a) = B(a, 1)$.
+\end{Satz}
+
+\linie
+
+\begin{Def}{baryzentrische Unterteilung}
+    Sei $K$ ein kombinatorischer Simplex.
+    Dann heißt \\
+    $\beta K := \{\{S_0, S_1, \dotsc, S_n\} \subset K \;|\;
+    S_0 \subsetneqq S_1 \subsetneqq \dotsb \subsetneqq S_n\}$
+    \begriff{baryzentrische Unterteilung} von $K$.
+\end{Def}
+
+\begin{Bem}\\
+    $\beta K$ ist ein kombinatorischer Komplex, dessen Ecken genau die
+    Simplizes von $K$ sind. \\
+    Man kann $\beta K$ auf $|\K|$ wie folgt realisieren:
+    Für $S \in K$ wähle man $\mu(S) \in \Int |S|$
+    (z.\,B. für $S = \{s_0, \dotsc, s_n\}$ den Mittelpunkt
+    $\mu(S) = \frac{1}{n + 1} s_0 + \dotsb + \frac{1}{n + 1} s_n$).
+    Die Abbildung $\mu\colon \Omega(\beta K) = K \rightarrow |K|$ ist
+    eine Darstellung von $\beta K$ und induziert einen Homöomorphismus
+    $h\colon |\beta K| \homoe |K|$.
+\end{Bem}
+
+\begin{Kor}
+    In $|K|$ ist jeder Punkt $a$ starker Deformationsretrakt einer of"|fenen
+    Umgebung.
+\end{Kor}
+
+\begin{Kor}
+    Sei $K$ ein simplizialer Komplex.
+    Die topologische Realisierung $|K|$ ist kompakt genau dann, wenn
+    $K$ endlich ist.
+\end{Kor}
+
+\linie
+
+\begin{Lemma}{simpliziale Approximation}
+    Seien $f\colon |K| \rightarrow |L|$ eine stetige Abbildung und \\
+    $\varphi\colon \Omega(K) \rightarrow \Omega(L)$ eine Abbildung,
+    sodass $f(\st(a)) \subset \st(\varphi(a))$ für alle $a \in \Omega(K)$ ist.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        Die Abbildung $\varphi$ ist simplizial, d.\,h.
+        für alle $S \in K$ gilt $\varphi(S) \in L$.
+        
+        \item
+        Die topologische Realisierung $g\colon |K| \rightarrow |L|$ von
+        $\varphi\colon K \rightarrow L$ erfüllt: \\
+        Für jedes $x \in |K|$ liegen $g(x)$ und $f(x)$ in einem gemeinsamen
+        Simplex in $|L|$.
+        
+        \item
+        Es gilt $g \simeq f$ durch
+        $H(t, x) = (1 - t) \cdot g(x) + t \cdot f(x)$.
+    \end{enumerate}
+\end{Lemma}
+
+\begin{Satz}{simpliziale Approximation}
+    Seien $K$ und $L$ simpliziale Komplexe, wobei $K$ endlich ist. \\
+    Dann ist jede Abbildung $f\colon |K| \rightarrow |L|$ homotop zu einer
+    simplizialen Abbildung \\
+    $g\colon |K| = |\beta^n K| \rightarrow |L|$ für $n$ genügend groß.
+\end{Satz}
+
+\begin{Kor}
+    Jede stetige Abbildung $f\colon \sphere^m \rightarrow \sphere^n$
+    mit $m < n$ ist nullhomotop.
+\end{Kor}
+
+\pagebreak
+
+\subsubsection{%
+    \name{Euler}-Charakteristik%
+}
+
+\begin{Bem}
+    Gegeben sei ein endlicher simplizialer Komplex $K$.
+    Gesucht wird eine topologische Invariante $I(K)$, z.\,B. eine ganze Zahl,
+    sodass aus $|K| \cong |L|$ stets $I(K) = I(L)$ folgt.
+    Die Anzahl $a_i$ der $i$-Simplizes eignet sich dafür nicht, da bspw. die
+    baryzentrischen Unterteilungen die Zahlen $a_0, a_1 \dotsc$ verändern.
+\end{Bem}
+
+\begin{Def}{\name{Euler}-Charakteristik}
+    Sei $K$ ein kombinatorischer simplizialer Komplex, der endlich ist. \\
+    Dann heißt $\chi(K) := \sum_{S \in K} (-1)^{\dim S}$
+    \begriff{\name{Euler}-Charakteristik}, d.\,h. \\
+    $\chi(K) = +\; \text{Anzahl 0-Simplizes (Ecken)}
+    \;-\; \text{Anzahl 1-Simplizes (Kanten)}$ \\
+    $\;+\; \text{Anzahl 2-Simplizes (Dreiecke)}
+    \;-\; \text{Anzahl 3-Simplizes (Tetraeder)} + \dotsb$.
+\end{Def}
+
+\begin{Satz}{\name{Euler}-Charakteristik von $D^n$, $S^n$}
+    Es gilt $\dball^n \cong |D^n|$ und $\sphere^n \cong |S^n|$ mit \\
+    $D^n := P(\{0, \dotsc, n\}) \setminus \{\emptyset\}$ und
+    $S^n := D^{n+1} \setminus \{\{0, \dotsc, n, n + 1\}\}$. \\
+    Dabei ist $\chi(D^n) = 1$ und $\chi(S^n) = 1 + (-1)^n$ für alle
+    $n \in \natural$.
+\end{Satz}
+
+\begin{Satz}{Teilkomplexe}
+    Seien $K$ ein endlicher simplizialer Komplex und $A, B$
+    Teilkomplexe von $K$.
+    Dann sind auch $A \cap B$ und $A \cup B$ Teilkomplexe und es gilt
+    $\chi(A \cup B) = \chi(A) + \chi(B) - \chi(A \cap B)$.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{\name{Euler}scher Polyedersatz}\\
+    Jede Triangulierung der Sphäre $\sphere^2$ hat Euler-Charakteristik $2$.
+\end{Satz}
+
+\begin{Bsp}
+    Bspw. haben die Triangulierungen regelmäßiger Oktaeder und
+    regelmäßiger Ikosaeder die Euler-Charakteristiken
+    $\chi(\text{Oktaeder}) = 6 - 12 + 8 = 2$ und
+    $\chi(\text{Ikosaeder}) = 12 - 30 + 20 = 2$.
+\end{Bsp}
+
+\linie
+
+\begin{Satz}{\name{Euler}-Charakteristik Homöomorphie-invariant}\\
+    Seien $K$ und $L$ endliche simpliziale Komplexe.
+    Aus $|K| \cong |L|$ folgt $\chi(K) = \chi(L)$.
+\end{Satz}
+
+\begin{Satz}{\name{Euler}-Charakteristik Homotopie-invariant}\\
+    Seien $K$ und $L$ endliche simpliziale Komplexe.
+    Aus $|K| \simeq |L|$ folgt $\chi(K) = \chi(L)$.
+\end{Satz}
+
+\begin{Def}{\name{Euler}-Charakteristik von top. Räumen}
+    Sei $X$ ein topologischer Raum. \\
+    Ist $X$ homöomorph (oder auch nur homotopie-äquivalent) zur Realisierung
+    $|K|$ eines endlichen simplizialen Komplexes $K$, dann heißt
+    $\chi(X) := \chi(K)$ \begriff{\name{Euler}-Charakteristik} von $X$.
+\end{Def}
+
+\begin{Bsp}
+    Es gilt $\chi(\dball^n) = 1$ und $\chi(\sphere^n) = 1 + (-1)^n$.
+\end{Bsp}
+
+\pagebreak
+
+\subsection{%
+    Flächen%
+}
+
+\subsubsection{%
+    Topologische Mannigfaltigkeiten%
+}
+
+\begin{Def}{lokal euklidisch}
+    Ein topologischer Raum $M$ heißt \begriff{lokal euklidisch} der
+    Dimension $n$, falls es zu jedem Punkt $x \in M$ eine of"|fene Umgebung
+    $U \subset M$ und einen Homöomorphismus $h\colon U \rightarrow V$
+    mit $V \subset \real^n$ of"|fen gibt.
+\end{Def}
+
+\begin{Bsp}
+    $M$ ist diskret genau dann, wenn $M$ lokal euklidisch der Dimension $0$
+    ist. \\
+    Jede of"|fene Menge $M \subset \real^n$ ist lokal euklidisch der
+    Dimension $n$. \\
+    $\sphere^n \subset \real^{n+1}$ ist lokal euklidisch der Dimension $n$
+    (mithilfe der stereographischen Projektion). \\
+    $\dball^n \subset \real^n$ ist nicht lokal euklidisch.
+\end{Bsp}
+
+\begin{Bem}
+    Aus lokal euklidisch folgt nicht hausdorffsch.
+    Ein Gegenbeispiel ist die Gerade mit doppeltem Ursprung
+    (lokal euklidisch der Dimension $1$, aber nicht hausdorffsch).
+\end{Bem}
+
+\linie
+
+\begin{Def}{Mannigfaltigkeit}
+    Für $n \in \natural$ sei
+    $\real^n_+ := \{(x_1, \dotsc, x_n) \in \real^n \;|\; x_1 \ge 0\}$, \\
+    $\partial \real^n_+ := \{(x_1, \dotsc, x_n) \in \real^n \;|\; x_1 = 0\}$
+    und $\Int \real^n_+ := \{(x_1, \dotsc, x_n) \in \real^n
+    \;|\; x_1 > 0\}$. \\
+    Ein topologischer Raum $M$ heißt \begriff{$n$-Mannigfaltigkeit}, falls
+    \begin{enumerate}
+        \item
+        $M$ hausdorffsch ist und eine abzählbare Basis besitzt und
+        
+        \item
+        es zu jedem Punkt $x \in M$ eine of"|fene Umgebung $U \subset M$ und
+        einen Homöomorphismus $h\colon U \rightarrow V$ gibt mit
+        $V \subset \real^n_+$ of"|fen
+        ($h$ heißt dann \begriff{lokale Karte} von $M$).
+    \end{enumerate}
+    Gilt dabei $h(x) \in \Int \real^n_+$,
+    dann heißt $x$ \begriff{innerer Punkt von $M$} ($x \in \Int M$),
+    gilt stattdessen $h(x) \in \partial \real^n_+$,
+    dann heißt $x$ \begriff{Randpunkt von $M$} ($x \in \partial M$).
+\end{Def}
+
+\begin{Def}{of"|fene/geschlossene Mannigfaltigkeit}\\
+    Eine $n$-Mannigfaltigkeit mit $\partial M = \emptyset$ heißt
+    \begriff{$n$-Mannigfaltigkeit ohne Rand}.
+    Eine $n$-Mannigfaltig\-keit ohne Rand heißt \begriff{geschlossen},
+    falls $M$ kompakt ist, und \begriff{of"|fen}, falls $M$ nicht kompakt ist.
+\end{Def}
+
+\begin{Bsp}
+    $M$ ist diskret und abzählbar genau dann, wenn $M$ eine
+    $0$-Mannigfaltigkeit ist. \\
+    $\ball^n \subset \real^n$
+    ($\Int \ball^n = \ball^n$, $\partial \ball^n = \emptyset$), \qquad
+    $\dball^n \subset \real^n$
+    ($\Int \dball^n = \ball^n$, $\partial \dball^n = \sphere^{n-1}$) und \\
+    $\sphere^n \subset \real^{n+1}$
+    ($\Int \sphere^n = \sphere^n$, $\partial \sphere^n = \emptyset$)
+    sind $n$-Mannigfaltigkeiten. \\
+    $\emptyset$ ist eine $n$-Mannigfaltigkeit für alle $n \in \natural$.
+\end{Bsp}
+
+\linie
+
+\begin{Satz}{Eindeutigkeit der Dimension}\\
+    Ist $M \not= \emptyset$ sowohl $m$- als auch $n$-Mannigfaltigkeit,
+    dann gilt $m = n$.
+\end{Satz}
+
+\begin{Def}{Dimension}
+    Sei $M \not= \emptyset$ eine $n$-Mannigfaltigkeit. \\
+    Dann heißt $\dim M := n$ die \begriff{Dimension} von $M$.
+\end{Def}
+
+\linie
+
+\begin{Satz}{Disjunktheit von Innerem und Rand}\\
+    Ist $M$ eine $n$-Mannigfaltigkeit, dann gilt
+    $\Int M \cap \partial M = \emptyset$.
+\end{Satz}
+
+\begin{Satz}{Inneres/Rand als Mannigfaltigkeit}
+    Für jede $n$-Mannigfaltigkeit $M \not= \emptyset$ gilt: \\
+    $\Int M \not= \emptyset$ und $\Int M$ ist eine $n$-Mfkt. ohne Rand.
+    $\partial M$ ist eine $n - 1$-Mfkt. ohne Rand. \\
+    $\Int M \subset M$ ist of"|fen und
+    $\partial M \subset M$ ist abgeschlossen.
+    Aus $M$ kompakt folgt $\partial M$ kompakt.
+\end{Satz}
+
+\begin{Satz}{Produktmannigfaltigkeit}
+    Sind $M$ bzw. $N$ $m$- bzw. $n$-Mannigfaltigkeiten, so ist
+    $M \times N$ eine $m + n$-Mannigfaltigkeit mit
+    $\partial (M \times N) = (\partial M \times N) \cup (M \times \partial N)$.
+\end{Satz}
+
+%\linie
+%\pagebreak
+
+%\begin{Def}{Atlas}
+    %Ein \begriff{Atlas} einer $n$-Mannigfaltigkeit $M$ ist eine Familie
+    %$\A = (h_i\colon U_i \homoe V_i)_{i \in I}$ von Karten, die $M$ überdecken
+    %(d.\,h. $U_i \subset M$ of"|fen, $V_i \subset \real^n_+$ of"|fen,
+    %$M = \bigcup_{i \in I} U_i$).
+%\end{Def}
+
+%\begin{Def}{Kartenwechsel-Homöomorphismus}\\
+    %Zu je zwei Karten $h_i$, $h_j$ ($i, j \in I$) sei
+    %$U_{ij} := U_i \cap U_j$ sowie
+    %$V_{ij} = h_i(U_{ij})$ und $V_{ji} = h_j(U_{ij})$. \\
+    %Die Abbildungen $h_{ij}\colon V_{ij} \homoe V_{ji}$,
+    %$h_{ij} := h_j \circ h_i^{-1}|_{V_{ij}}$ und $h_{ji}$ (analog)
+    %heißen \begriff{Kartenwechsel-Ho\-möomorphismen}.
+    %Der Fall $U_{ij} = \emptyset$ ist dabei nicht ausgeschlossen.
+%\end{Def}
+
+%\begin{Def}{orientierbar}
+    %Ein Atlas $\A$ einer $n$-Mannigfaltigkeit $M$ heißt \begriff{orientiert},
+    %falls alle Kartenwechsel zwischen ?????????????????
+    %$M$ heißt \begriff{orientierbar}, falls ein orientierter Atlas $\A$ auf
+    %$M$ existiert.
+    %Ist $\A$ orientiert, dann kann man zu einem maximalen orientierten Atlas
+    %übergehen.
+    %Eine Orientierung von $M$ ist ein maximaler orientierter Atlas $\A$ von
+    %$M$.
+%\end{Def}
+
+%\begin{Bsp}
+    %Die Kreislinie $\sphere^1$ ist eine orientierbare $1$-Mannigfaltigkeit. \\
+    %Der Zylinder $\sphere^1 \times [0, 1]$ ist eine orientierbare
+    %$2$-Mannigfaltigkeit. \\
+    %Das Möbius-Band ist eine nicht-orientierbare $2$-Mannigfaltigkeit.
+%\end{Bsp}
+
+\pagebreak
+
+\subsubsection{%
+    Beispiele und Klassifikationssätze%
+}
+
+\begin{tabular}{l|cc}
+    & ohne Rand & mit Rand \\ \hline
+    kompakt & $\sphere^1$ & $[0, 1]$ \\
+    nicht kompakt & $\real$ & $\left[0, 1\right[$
+\end{tabular}
+
+\begin{Satz}{Klassifikation der $1$-Mannigfaltigkeiten}
+    Jede zusammenhängende $1$-Mannigfaltigkeit ist homöomorph zu genau einer
+    dieser Repräsentanten.
+\end{Satz}
+
+\linie
+
+\begin{Def}{Fläche}
+    Eine \begriff{Fläche} ist eine $2$-Mannigfaltigkeit.
+\end{Def}
+
+\begin{Def}{geschlossene Fläche}
+    Man startet mit der $2$-Sphäre $F_0 := \sphere^2$ und dem Einheitstorus \\
+    $F_1 := \sphere^1 \times \sphere^1$.
+    Anschließend verklebt man für $g \ge 1$ die Flächen $F_g$ und $F_1$ zu
+    einer neuen Fläche $F_{g+1}$ mit $g + 1$ Löchern.
+    $F_g$ heißt \begriff{orientierbare geschlossene Fläche vom
+    Geschlecht $g$}. \\
+    Identifiziert man in $F_g$ gegenüberliegende Punkte paarweise miteinander,
+    so erhält man die \begriff{nicht-orientierbare geschlossene Fläche
+    $N_g := F_g/\pm 1$ vom Geschlecht $g$}. \\
+    Für $g = 1$ erhält man den projektiven Raum
+    $\real\projective^2 = F_0/\pm 1$.
+    $F_1/\pm 1$ ist die \begriff{\name{Klein}sche Flasche}.
+\end{Def}
+
+\begin{Satz}{Klassifikation der $2$-Mannigfaltigkeiten}
+    Jede zusammenhängende geschlossene Fläche $F$
+    ist homöomorph zu genau einer dieser
+    Repräsentanten ($F_g$ oder $N_g$ für ein $g \in \natural$).
+\end{Satz}
+
+\pagebreak
+
+\subsubsection{%
+    Klassifikation geschlossener Flächen%
+}
+
+\begin{Def}{Modellflächen}
+    Mit $Q_0 := [-2, 2] \times [-2, 2]$,
+    $Q_1 := Q_0 \setminus ([-1, 1] \times [-1, 1])$ und \\
+    $Q_g := \bigcup_{k=1}^g (Q_1 - 2 - 2g + 4k)$, $g \ge 2$
+    werden kompakte Flächen mit Rand definiert
+    ($Q_g$ ist ein Rechteck mit $g$ Löchern).
+    Der Produktraum $H_g := Q_g \times [-1, 1]$ heißt
+    \begriff{Henkelkörper vom Geschlecht $g$}
+    ($3$-Mannigfaltigkeit mit Rand).
+    $H_g \subset \real^3$ ist punktsymmetrisch, d.\,h. $-H_g = H_g$.
+\end{Def}
+
+\begin{Def}{Orientierbarkeit im triangulierten Fall}
+    Eine Mannigfaltigkeit heißt orientierbar, falls es eine Triangulierung
+    gibt, sodass man jedem Dreieck eine Orientierung zuordnen kann, wobei
+    jede Kante von den benachbarten Dreiecken gegenläufige Orientierungen erbt.
+\end{Def}
+
+\begin{Satz}{Rand der Modellflächen}
+    Der Rand $F_g^+ := \partial H_g$ ist eine zusammenhängende
+    geschlossene Fläche.
+    Sie ist orientierbar und hat Euler-Charakteristik
+    $\chi(F_g^+) = 2 - 2g$. \\
+    Der Quotientenraum $F_g^- := F_g^+ / \{\pm\}$ ist ebenfalls eine
+    zusammenhängende geschlossene Fläche.
+    Sie ist nicht-orientierbar und hat Euler-Charakteristik
+    $\chi(F_g^-) = 1 - g$.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{Klassifikationssatz}
+    Jede zusammenhängende geschlossene Fläche $F$ ist homöomorph zu genau einer
+    der Modellflächen $F_g^\pm$.
+    Genauer gilt:
+    \begin{itemize}
+        \item
+        Ist $F$ orientierbar ($\varepsilon := +$),
+        dann ist $\chi(F) = 2 - 2g$ für ein $g \in \natural$.
+        
+        \item
+        Ist $F$ nicht-orientierbar ($\varepsilon := -$),
+        dann ist $\chi(F) = 1 - g$ für ein $g \in \natural$.
+    \end{itemize}
+    Allein aus diesen beiden Informationen folgt bereits die Homöomorphie
+    $F \cong F_g^\varepsilon$.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{Triangulierbarkeit topologischer Flächen}\\
+    Jede topologische Mannigfaltigkeit der Dimension $\le 3$ lässt sich
+    triangulieren.
+\end{Satz}
+
+\begin{Satz}{triangulierte Flächen}\\
+    Sei $K$ ein endlicher simplizialer Komplex.
+    $|K|$ ist eine Fläche genau dann, wenn
+    \begin{enumerate}
+        \item
+        jeder Simplex in einem $2$-Simplex enthalten ist,
+        
+        \item
+        jeder $1$-Simplex in höchstens zwei $2$-Simplizes enthalten ist und
+        
+        \item
+        für jede Ecke $a$ die $2$-Simplizes $\Delta_1, \dotsc, \Delta_k$,
+        die $a$ enthalten, sich so anordnen lassen, dass jeweils
+        $\Delta_i$ und $\Delta_{i+1}$ eine gemeinsame Kante haben.
+    \end{enumerate}
+\end{Satz}
+
+\linie
+
+\begin{Def}{Polygonmodell}
+    Sei $n \in \natural$ mit $n \ge 2$.
+    Die Kreislinie $\sphere^1 = \rand{\dball^2}$ wird in $n$ gleichlange
+    Segmente $\gamma_k\colon [0,1] \rightarrow \sphere^1$ mit
+    $\gamma_k(t) = \exp(\frac{2\pi\i}{n} (k - 1 + t))$, $k = 1, \dotsc, n$
+    unterteilt. \\
+    Sei $w = w_1 \dotsb w_n$ ein Wort über dem Alphabet
+    $a^{\pm 1}, b^{\pm 1}, \dotsc$.
+    Für $w_k = w_\ell$ wird $\gamma_k(t) \sim \gamma_\ell(t)$ für alle
+    $t \in [0, 1]$ identifiziert,
+    für $w_k = w_\ell^{-1}$ wird $\gamma_k(t) \sim \gamma_\ell(1 - t)$ für alle
+    $t \in [0, 1]$ identifiziert. \\
+    Dies erzeugt eine Äquivalenzrelation $\sim$.
+    Der Quotientenraum ist
+    $\dball^2 / \aufspann{w} := \dball^2 / \sim$.
+\end{Def}
+
+\begin{Bem}
+    Ist $n \ge 3$, so kann man das Polygonmodell auch durch ein regelmäßiges
+    $n$-Eck realisieren, an dessen Kanten die Buchstaben des Worts stehen.
+\end{Bem}
+
+\begin{Satz}{Polygonmodell geschlossener Flächen}
+    Der Raum $\dball^2 / \aufspann{w}$ ist eine geschlossene Fläche genau dann,
+    wenn jeder Buchstabe in $w$ genau zweimal vorkommt.
+    In diesem Fall heißt $w$ \begriff{Flächenwort}.
+    Tritt ein Buchstabe in $w$ zweimal mit gleichem Exponenten auf,
+    dann ist $\dball^2 / \aufspann{w}$ nicht-orientierbar,
+    andernfalls ist $\dball^2 / \aufspann{w}$ orientierbar.
+\end{Satz}
+
+\begin{Bsp}
+    Der Raum $\dball^2 / \aufspann{a_1 b_1 a_1^{-1} b_1^{-1}
+    \dotsb a_g b_g a_g^{-1} b_g^{-1}}$ ist eine zusammenhängende,
+    orientierbare, geschlossene Fläche mit Euler-Charakteristik $2 - 2g$.
+    Der Raum $\dball^2 / \aufspann{c_0 c_0 \dotsb c_g c_g}$
+    ist eine zusammenhängende,
+    nicht-orientierbare, geschlossene Fläche mit
+    Euler-Charakteristik $1 - g$. \\
+    Es gilt $\dball^2 / \aufspann{a a^{-1}} \cong \sphere^2$, \qquad
+    $\dball^2 / \aufspann{a a} \cong \real\projective^2 =
+    \sphere^2 / \{\pm 1\}$, \qquad
+    $\dball^2 / \aufspann{a b a^{-1} b^{-1}} \cong \sphere^1 \times \sphere^1$
+    und \\
+    $\dball^2 / \aufspann{a b a b^{-1}} \cong
+    (\sphere^1 \times \sphere^1) / \{\pm 1\}$
+\end{Bsp}
+
+\linie
+
+\begin{Lemma}{zusammenhängende, geschlossene Fläche homöomorph
+              zu einem Polygonmodell}\\
+    Jede zusammenhängende, geschlossene Fläche ist homöomorph zu einem Raum
+    $\dball^2 / \aufspann{w}$ für ein geeignetes Flächenwort $w$.
+\end{Lemma}
+
+\begin{Lemma}{Umformungen}
+    Folgende Umformungen sind möglich ($\varepsilon, \delta \in \{\pm 1\}$):
+    \begin{itemize}
+        \item
+        $\dball^2 / \aufspann{w_1 w_2 \dotsb w_n} \cong
+        \dball^2 / \aufspann{w_2 \dotsb w_n w_1}$
+        (zyklische Umordnung)
+        
+        \item
+        $\dball^2 / \aufspann{\dotsb a^\varepsilon \dotsb
+        a^\delta \dotsb} \cong
+        \dball^2 / \aufspann{\dotsb b^\varepsilon \dotsb
+        b^\delta \dotsb}$
+        (wobei $a$ und $b$ sonst nicht vorkommen)
+        
+        \item
+        $\dball^2 / \aufspann{\dotsb a^\varepsilon \dotsb
+        a^\delta \dotsb} \cong
+        \dball^2 / \aufspann{\dotsb a^{-\varepsilon} \dotsb
+        a^{-\delta} \dotsb}$
+        
+        \item
+        $\dball^2 / \aufspann{\dotsb a b b^{-1} c \dotsb} \cong
+        \dball^2 / \aufspann{\dotsb a c \dotsb}$
+        (Einklappen)
+        
+        \item
+        $\dball^2 / \aufspann{\dotsb c \dotsb c \dotsb} \cong
+        \dball^2 / \aufspann{\dotsb c c \dotsb}$
+        (Zusammenfassen von \begriff{Kreuzhauben})
+        
+        \item
+        $\dball^2 / \aufspann{\dotsb c c x \dotsb} \cong
+        \dball^2 / \aufspann{\dotsb x c c \dotsb}$
+        (Verschieben von Kreuzhauben)
+        
+        \item
+        $\dball^2 / \aufspann{\dotsb a \dotsb b \dotsb a^{-1}
+        \dotsb b^{-1} \dotsb} \cong
+        \dball^2 / \aufspann{\dotsb a b a^{-1} b^{-1} \dotsb}$
+        (Zusammenfassen von \begriff{Henkeln})
+        
+        \item
+        $\dball^2 / \aufspann{\dotsb a b a^{-1} b^{-1} x \dotsb} \cong
+        \dball^2 / \aufspann{\dotsb x a b a^{-1} b^{-1} \dotsb}$
+        (Verschieben von Henkeln)
+    \end{itemize}
+\end{Lemma}
+
+\begin{Satz}{Umformung in normalisierte Form}
+    Mit obigen Umformungen kann jedes Flächenwort überführt werden in
+    $w = c_1 c_1 \dotsb c_k c_k a_1 b_1 a_1^{-1} b_1^{-1} \dotsb
+    a_\ell b_\ell a_\ell^{-1} b_\ell^{-1}$. \\
+    Jede zusammenhängende geschlossene Fläche $F$ erfüllt demnach \\
+    $F \cong \dball^2 /
+    \aufspann{c_1 c_1 \dotsb c_k c_k a_1 b_1 a_1^{-1} b_1^{-1} \dotsb
+    a_\ell b_\ell a_\ell^{-1} b_\ell^{-1}}$ für geeignete
+    $k, \ell \in \natural$. \\
+    Im Falle $k \ge 1$ kann man dies weiter vereinfachen zu
+    $F \cong \dball^2 / \aufspann{c_1 c_1 \dotsb c_{k'} c_{k'}}$
+    mit $k' = k + 2\ell$. \\
+    Für den Fall $k = 0$ erhält man
+    $F \cong \dball^2 / \aufspann{a_1 b_1 a_1^{-1} b_1^{-1} \dotsb
+    a_\ell b_\ell a_\ell^{-1} b_\ell^{-1}}$.
+\end{Satz}
+
+\subsubsection{%
+    Klassifikation kompakter Flächen mit Rand%
+}
+
+\begin{Def}{Modellflächen}
+    Als Modell betrachtet man die Flächen $F_{g,r}^\pm$ mit $g \ge 0$ und
+    $r \ge 1$, wobei
+    $F_{g,r}^+$ ein Band mit $g$ angeklebten Paaren von ineinander
+    verschränkten Bändern und $r - 1$ zusätzliche angeklebte Bänder sowie
+    $F_{g,r}^-$ ein Band mit $g + 1$ angeklebten einmal verdrehten Bändern
+    und $r - 1$ zusätzliche angeklebte Bänder.
+\end{Def}
+
+\begin{Satz}{Klassifikation kompakter Flächen mit Rand}
+    Jede zusammenhängende, kompakte Fläche $M$ mit Rand
+    $\partial M \not= \emptyset$ ist homöomorph zu genau einem der Modelle
+    $F_{g,r}^\pm$.
+\end{Satz}
+
+\pagebreak

@@ -1,0 +1,306 @@
+\section{%
+    Eigenwerte und -vektoren%
+}
+
+\subsection{%
+    Schöne Matrizen%
+}
+
+\begin{xDef}{$f$-invariant}{f-invariant@$f$-invariant}
+    Sei $f \in \End_K(V)$ sowie $U$ ein Unterraum von $V$. \\
+    Dann heißt $U$
+    \xbegriff{invariant unter $f$}%
+    {invariant unter f@invariant unter $f$|see{$f$-invariant}} oder
+    \xbegriff{$f$-invariant}{f-invariant@$f$-invariant},
+    falls $f(u) \in U$ ist für alle $u \in U$.
+\end{xDef}
+
+\subsection{%
+    Die charakteristische Gleichung%
+}
+
+\begin{Def}{Eigenvektor und Eigenwert}
+    Sei $f \in \End_K(V)$.
+    Ein Skalar $\lambda \in K$ heißt \begriff{Eigenwert} (EW) von $f$, falls
+    es einen Vektor $v \in V$ ($v \not= 0$) gibt, sodass $f(v) = \lambda v$
+    ist. \\
+    Ein Vektor $v \in V$ ($v \not= 0$) heißt \begriff{Eigenvektor} (EV) zum
+    Eigenwert $\lambda \in K$, falls $f(v) = \lambda v$. \\
+    Eigenvektoren/-werte einer Matrix $A \in M_n(K)$ sind Eigenvektoren/-werte
+    von $f_A: K^n \rightarrow K^n$.
+\end{Def}
+
+\begin{Def}{Diagonalmatrix}
+    Seien $\lambda_1, \ldots, \lambda_n \in K$. \\
+    Die \begriff{Diagonalmatrix}
+    \matrixsize{$\begin{pmatrix}\lambda_1 & \cdots & 0 \\
+    \vdots & \ddots & \vdots \\ 0 & \cdots & \lambda_n\end{pmatrix}$}
+    wird mit $\diag\{\lambda_1, \ldots, \lambda_n\}$ bezeichnet.
+\end{Def}
+
+\begin{Lemma}{Diagonalmatrix und Eigenvektor}
+    Sei $\basis{B} = (v_1, \ldots, v_n)$ eine geordnete Basis von $V$.
+    Dann ist $\hommatrix{f}{B}{B} = \diag\{\lambda_1, \ldots, \lambda_n\}$
+    genau dann, wenn $v_i$ EV zum EW $\lambda_i$ ist ($1 \le i \le n$).
+\end{Lemma}
+
+\begin{xDef}{$\ell_\lambda$}{l@$\ell_\lambda$}
+    Seien $\lambda \in K$ und $\basis{B}$ eine beliebige Basis von $V$ mit
+    $\dim V = n$.
+    Durch $\ell_\lambda: V \rightarrow V$, $v \mapsto \lambda v$ wird ein
+    Endomorphismus $\ell_\lambda$ von $V$ definiert.
+    Es gilt $\hommatrix{\ell_\lambda}{B}{B} =
+    \diag\{\lambda, \ldots, \lambda\} = \lambda \cdot E_n$.
+\end{xDef}
+
+\begin{Satz}{Eigenwerte eines Endomorphismus} \\
+    $\lambda \in K$ ist Eigenwert von $f$ genau dann, wenn
+    $\det(f - \ell_\lambda) = 0$.
+\end{Satz}
+
+\begin{Satz}{Eigenwerte einer Matrix} \\
+    $\lambda \in K$ ist Eigenwert von $A \in M_n(K)$
+    genau dann, wenn $\det(A - \lambda E_n) = 0$.
+\end{Satz}
+
+\begin{Def}{charakteristische Gleichung}
+    $\det(A - \lambda E) = 0$ bzw. $\det(f - \ell_\lambda) = 0$ ist
+    eine \begriff{Bestimmungs\-gleichung für $\lambda$}, die sog.
+    \begriff{charakteristische Gleichung} von $A$ bzw. $f$,
+    wenn man $\lambda \in K$ als Unbestimmte auf"|fasst.
+    Diese Gleichung muss von $\lambda$ erfüllt werden, damit
+    $\lambda$ ein Eigenwert von $A$ bzw. $f$ ist.
+\end{Def}
+
+\begin{Satz}{Polynom}
+    Seien $f \in \End_K(V)$ ($\dim_K V = n$) und $t \in K$
+    eine Unbestimmte. \\
+    Dann ist $(-1)^n \det(f - \ell_t) = \det(\ell_t - f)$ ein Polynom
+    $\chi_f(t) \in K[t]$ der Form \\
+    $\chi_f(t) = t^n + \beta_{n-1} t^{n-1} + \cdots + \beta_1 t + \beta_0$
+    für bestimmte Koef"|fizienten $\beta_i \in K$ ($0 \le i \le n - 1$). \\
+    Insbesondere ist $\deg \chi_f(t) = n$.
+\end{Satz}
+
+\begin{Def}{charakteristisches Polynom}
+    Das Polynom $\chi_f(t)$ heißt \begriff{charakteristisches Polynom} von $f$.
+    Ähnlich wird das charakteristische Polynom $\chi_A(t)$ einer
+    quadratischen Matrix $A$ definiert.
+\end{Def}
+
+\begin{Kor}
+    Ähnliche Matrizen besitzen dasselbe charakteristische Polynom.
+\end{Kor}
+
+\begin{Def}{Spur}
+    Sei $A = (\alpha_{ij}) \in M_{n \times n}(K)$.
+    Dann heißt $\tr(A) = \sum_{i=1}^n \alpha_{ii}$ die
+    \begriff{Spur} von $A$. \\
+    Für $f \in \End_K(V)$ ($\dim_K V = n$) definiert man die Spur als
+    $\tr(f) = -\beta_{n-1}$ als den negierten Koef"|fizienten von $t^{n-1}$ des
+    charakteristischen Polynoms $\chi_f(t)$.
+\end{Def}
+
+\begin{Satz}{niedrigster Koef"|fizient}
+    Für den konstanten Term $\beta_0$ von $\chi_f(t)$ gilt
+    $\beta_0 = (-1)^n \det f$.
+\end{Satz}
+
+\begin{Satz}{höchster Koef"|fizient}
+    Für $\beta_{n-1}$ von $\chi_A(t)$ gilt $\beta_{n-1} = -\tr(A)$.
+\end{Satz}
+
+\begin{Satz}{Spur als Homomorphismus}
+    Die Abbildung $\tr: \End_K(V) \rightarrow K$, $f \mapsto \tr(f)$ ist
+    $K$-linear und für $f, g \in \End_K(V)$ ist
+    $\tr(f \circ g) = \tr(g \circ f)$.
+\end{Satz}
+
+\begin{Satz}{Eigenwerte = Nullstellen}
+    Die Eigenwerte von $f$ sind genau die Nullstellen von $\chi_f(t)$.
+\end{Satz}
+
+\begin{Def}{Eigenraum}
+    Die Gesamtheit der Eigenvektoren von $f$ zum Eigenwert $\lambda$
+    besteht aus allen Vektoren in $\ker(f - \ell_\lambda) \setminus \{0\}$.
+    Der Unterraum $\ker(f - \ell_\lambda)$ von $V$ wird \begriff{Eigenraum}
+    zum Eigenwert~$\lambda$ genannt und mit $V_\lambda(f)$ oder $V_\lambda$
+    bezeichnet.
+\end{Def}
+
+\begin{Prozedur}{Eigenräume eines Homomorphismus ausrechnen}
+    \begin{enumerate}
+        \item Man wählt eine Basis von $V$ und schreibt $f$ als Matrix $A$.
+        Dann berechnet man das Polynom $\det(A - tE)$ (bzw. von
+        $\chi_f(t) = \chi_A(t) = \det(tE - A) \in K[t]$).
+        
+        \item Man bestimmt die Nullstellen $\lambda_1, \ldots, \lambda_k$ von
+        $\chi_f(t)$ (Eigenwerte).
+        
+        \item Für jede Nullstelle $\lambda_i$ löst man das homogene LGS
+        $(A - \lambda_i E) x = 0$. \\
+        Der Kern $\ker (A - \lambda_i E) = V_{\lambda_i}(f)$ ist der Eigenraum
+        zum Eigenwert $\lambda_i$, die Menge der Eigenvektoren zum Eigenwert
+        $\lambda_i$ ist dann $V_{\lambda_i}(f) \setminus \{0\}$.
+    \end{enumerate}    
+\end{Prozedur}
+
+\begin{Satz}{Dimension des Eigenraums}
+    Die Dimension des Eigenraums von $f$ zum Eigenwert $\lambda \in K$ ist
+    kleiner gleich der Vielfachheit von $\lambda$ als Nullstelle von
+    $\chi_f(t)$, \\
+    d.\,h. $\dim(\ker(f - \ell_\lambda)) \le m_\lambda(\chi_f(t))$.
+\end{Satz}
+
+\begin{Def}{Dreiecksmatrix}
+    Eine \xbegriff{(obere/untere) Dreiecksmatrix}{Dreiecksmatrix} ist eine
+    quadratische Matrix,
+    in der alle Einträge unterhalb/oberhalb der Hauptdiagonalen $0$ sind.
+\end{Def}
+
+\begin{Satz}{Dreiecksmatrix $\Leftrightarrow$ Zerfall in Linearfaktoren}
+    Eine quadratische Matrix ist genau dann zu einer Dreiecksmatrix ähnlich,
+    wenn ihr charakteristisches Polynom in Linearfaktoren zerfällt.
+\end{Satz}
+
+\begin{Kor}
+    Sei $K$ algebraisch abgeschlossen und $A$ eine quadratische Matrix über
+    $K$. \\
+    Dann ist $A$ zu einer Dreiecksmatrix ähnlich.
+\end{Kor}
+
+\begin{Satz}{Eigenvektoren linear unabhängig}
+    Eigenvektoren $v_1, \ldots, v_k \in V$ zu paarweise verschiedenen
+    Eigenwerten $\lambda_1, \ldots, \lambda_k \in K$ eines Endomorphismus $f$
+    von $V$ sind linear unabhängig.
+\end{Satz}
+
+\begin{Satz}{Summe der Eigenräume direkt}
+    Seien $f \in \End_K(V)$, $\lambda_1, \ldots, \lambda_k \in K$
+    paarweise verschiedene Eigenwerte von $f$ und
+    $V_{\lambda_i}$ der $i$-te Eigenraum
+    ($1 \le i \le k$).
+    Dann ist die Summe der Eigenräume direkt, d.\,h.
+    $\sum_{i=1}^k V_{\lambda_i} = \bigoplus_{i=1}^k V_{\lambda_i}$.
+    Insbesondere ist
+    $\dim \left(\sum_{i=1}^k V_{\lambda_i}\right) =
+    \sum_{i=1}^k \dim(V_{\lambda_i})$.
+\end{Satz}
+
+\begin{Def}{diagonalisierbar (Matrix)}
+    Eine quadratische Matrix heißt \begriff{diagonalisierbar},
+    falls sie zu einer Diagonalmatrix ähnlich ist.
+\end{Def}
+
+\begin{Satz}{diagonalisierbar $\Leftrightarrow$ Basis aus Eigenvektoren}
+    Eine quadratische Matrix $A \in M_n(K)$ ist genau dann
+    diagonalisierbar, wenn $K^n$ eine aus Eigenvektoren von $A$ bestehende
+    Basis besitzt.
+\end{Satz}
+
+\begin{Def}{diagonalisierbar (Endomorphismus)}
+    Ein Endomorphismus $f$ von $V$ ist \begriff{diagonalisierbar}, falls
+    $V$ eine Basis aus Eigenvektoren von $f$ hat.
+\end{Def}
+
+\begin{Satz}{Summe der Dimension der Eigenräume}
+    Seien $\lambda_1, \ldots, \lambda_k$ die verschiedenen Eigenwerte von
+    $f \in \End_K(V)$.
+    Dann ist $f$ diagonalisierbar genau dann, wenn \\
+    $\sum_{i=1}^k \dim(V_{\lambda_i}(f)) = n = \dim V$ ist.
+    (Dann zerfällt $\chi_f$ automatisch in Linearfaktoren.)
+\end{Satz}
+
+\pagebreak
+
+\begin{Prozedur}{quadratische Matrix diagonalisieren}
+    \begin{enumerate}
+        \item Man berechnet das charakteristische Polynom $\chi_A(t)$.
+        
+        \item Man bestimmt die Nullstellen (also die Eigenwerte).
+        Wenn $A$ diagonalisierbar ist, dann zerfällt $\chi_A(t)$ in
+        Linearfaktoren, d.\,h.
+        $\chi_A(t) = \prod_{i=1}^k (t - \lambda_i)^{\nu_i}$,
+        wobei die $\lambda_i \in K$ die paarweise verschiedenen Eigenwerte
+        mit $\nu_i = m_{\lambda_i}(\chi_A(t))$ sind.
+        
+        \item Man bestimmt eine Basis $\basis{B}_i$ von
+        $\ker(A - \lambda_i E) = V_{\lambda_i}$ durch
+        Lösen des zugehörigen homogenen LGS $(A - \lambda_i E)x = 0$.
+        
+        \item Sei $\basis{B} = \basis{B}_1 \cup \cdots \cup \basis{B}_k$.
+        Wenn $A$ diagonalisierbar ist, dann ist $|B| = n$ und $B$ ist daher
+        Basis von $K^n$.
+        Sei $P = \hommatrix{\id}{\stdbasis{n}}{B}$.
+        Dann ist $P^{-1}AP = \diag\{\lambda_1, \ldots, \lambda_1, \lambda_2,
+        \ldots, \lambda_k, \ldots, \lambda_k\}$, wobei
+        $\lambda_i$ genau $m_{\lambda_i}(\chi_A(t)) = \dim(V_{\lambda_i})$
+        oft als Eintrag in der Diagonalmatrix vorkommt.
+    \end{enumerate}
+\end{Prozedur}
+
+\subsection{%
+    Direkte Summen und Blockdiagonalform%
+}
+
+\begin{Def}{direkte Summe von Endomorphismen}
+    Seien $V_1, \ldots, V_k$ $K$-Vektorräume und $f_i: V_i \rightarrow V_i$
+    Endomorphismen für $i = 1, \ldots, k$. \\
+    Dann wird durch $f: \bigoplus_{i=1}^k V_i \rightarrow
+    \bigoplus_{i=1}^k V_i$, $f(v_1, \ldots, v_k) \mapsto
+    (f_1(v_1), \ldots, f_k(v_k))$ ein Endomorphismus $f$ definiert.
+    $f = \bigoplus_{i=1}^k f_i$ heißt
+    \begriff{direkte Summe der Endomorphismen} $f_i$.
+\end{Def}
+
+\begin{Lemma}{Blockdiagonalmatrix}
+    Seien $\basis{B}_i$ eine Basis für $V_i$, $n_i = \dim_K V_i$,
+    $A_i = \matrixm_{f_i}(\basis{B}_i, \basis{B}_i)$, \\
+    $f$ die direkte Summe der $f_i$ und
+    $\basis{B} = \basis{B}_1 \cup \cdots \cup \basis{B}_k$
+    in der natürlichen Ordnung. \\
+    Dann ist $\hommatrix{f}{B}{B} =$
+    \matrixsize{$\begin{pmatrix}A_1 & \cdots & 0 \\
+    \vdots & \ddots & \vdots \\ 0 & \cdots & A_k\end{pmatrix}$}, wobei
+    $A_i \in M_{n_i}(K)$ für $i = 1, \ldots, k$.
+\end{Lemma}
+
+\begin{Def}{Blockdiagonalmatrix}
+    Diese Matrix $\hommatrix{f}{B}{B}$ heißt \begriff{Blockdiagonalmatrix}
+    und wird auch mit $\diag\{A_1, \ldots, A_k\}$ bezeichnet.
+\end{Def}
+
+\begin{Satz}{Det. einer Blockdiagonalmatrix}
+    Es gilt $\det f = \det(A_1) \cdots \det(A_k) = \prod_{i=1}^k \det f_i$.
+\end{Satz}
+
+\begin{Kor}
+    Es gilt $\chi_f(t) = \chi_{f_1}(t) \cdots \chi_{f_k}(t)$.
+\end{Kor}
+
+\begin{Kor}
+    Seien $f \in \End_K(V)$ (wobei $V$ endlich-dimensional ist),
+    $V = V_1 \oplus \cdots \oplus V_k$ direkte Summe der $f$-invarianten
+    Unterräume $V_i$ und $f_i = f|_{V_i}$. \\
+    Dann ist $\det f = \prod_{i=1}^k \det f_i$ sowie
+    $\chi_f(t) = \prod_{i=1}^k \chi_{f_i}(t)$.
+\end{Kor}
+
+\begin{Def}{Blockmatrix}
+    Eine quadratische Matrix $A = (\alpha_{ij}) \in M_n(K)$ heißt
+    \xbegriff{(obere) Blockmatrix}{Blockmatrix!obere}, falls sie die Form
+    $A =$ \matrixsize{$\begin{pmatrix}B & C \\ 0 & D\end{pmatrix}$} hat, wobei
+    $B \in M_r(K)$, $C \in M_{r \times (n - r)}(K)$ und
+    $D \in M_{n - r}(K)$. \\
+    Analog werden \xbegriff{untere Blockmatrizen}{Blockmatrix!untere}
+    definiert.
+\end{Def}
+
+\begin{Satz}{Determinante von Blockmatrizen}
+    Sei $A =$ \matrixsize{$\begin{pmatrix}B & C \\ 0 & D\end{pmatrix}$} eine
+    Blockmatrix. \\
+    Dann ist $\det A = \det B \cdot \det D$ sowie
+    $\chi_A(t) = \chi_B(t) \cdot \chi_D(t)$.
+\end{Satz}
+
+\pagebreak

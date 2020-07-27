@@ -1,0 +1,745 @@
+\section{%
+    Nachführung und Störunterdrückung%
+}
+
+\subsection{%
+    Einführung: Nachführung eines Wasserkochers%
+}
+
+Bisher wurde versucht, den Zustands eines Systems zu einem Gleichgewicht (asymptotisch) zu steuern,
+sogar in optimaler Weise bzgl. eines quadratischen Kostenkriteriums.
+In der Praxis ist es aber oft notwendig, den Ausgang eines Systems zu einem bestimmten Punkt zu
+steuern, der vom Benutzer vorgegeben wird.
+Einige Beispiele sind:
+\begin{itemize}
+    \item
+    \emph{Pilot}:
+    Wie muss der Joystick nach vorne bewegt werden, damit sich das Flugzeug nach vorne um
+    einen vorgegebenen Winkel neigt?
+    
+    \item
+    \emph{Autofahrer}:
+    Wie muss das Gaspedal nach unten gedrückt werden, damit das Auto mit einer vorgegebenen
+    Geschwindigkeit fährt?
+    
+    \item
+    \emph{Industrie}:
+    Wie muss ein Schweißroboter gesteuert werden, damit er einem bestimmten Pfad auf einer
+    Karosserie folgt?
+\end{itemize}
+
+\textbf{Nachführung}:
+Gestalte einen Regler,
+sodass ein vorgegebener Systemausgang $z$ einem \begriff{externen Referenzsignal} $r$
+so gut wie möglich folgt.
+Diese Aufgabe bezeichnet man als \begriff{Nachführung (tracking)}.
+
+\linie
+
+\textbf{klassischer Aufbau bei der Nachführung}:
+Sei $G$ ein System mit Eingang $u$ und Ausgang $z$.
+$z$ soll nun dem externen Referenzsignal $r$ folgen.
+Berechne zunächst das \begriff{Fehlersignal (error signal)} $e = r - z$.
+Wenn $e = 0$ ist, dann ist kein Handeln erforderlich.
+Andernfalls erzeuge ein Steuersignal $u$, um $e$ wieder auf Null zu bringen.
+Dies geschieht mit einem \begriff{Fehlerrückführungs\-Regler
+(error feedback controller)} $u = Ke$.
+Das Fehlersignal $e$ ist die einzige Information, die dem Regler zur Verfügung steht.
+
+\linie
+
+\textbf{Beispiel}:
+Ein Wasserkocher kann durch $C\dot{T} + \frac{1}{R} (T - S) = \alpha u$ mit
+der angelegten Spannung $u$,
+der Wassertemperatur $T$,
+der Umgebungstemperatur $S$,
+der Wärmekapazität $C > 0$ von Wasser und
+dem Wärmewiderstand $R > 0$ der Wand modelliert werden.
+Für eine Nenntemperatur $S_0$ von $S$ (wie \SI{20}{\celsius}) sei $x = T - S_0$ und $d = S - S_0$.
+Dies führt zum System $\dot{x} = -ax + bu + b_d d$ mit Konstanten $a, b, b_d > 0$.
+Weil $x$ geregelt werden soll, führt man den Ausgang $z = cx$ mit $c = 1$ ein.
+In diesen Bezeichnungen ist
+$u$ der Steuereingang, der durch den Regler manipuliert wird,
+$d$ ein Störeingang, der durch den Regler nicht beeinflusst werden kann, und
+$z$ das zu regelnde Signal.
+
+\textbf{konstante Verstärkung}:
+Sei zunächst $d \equiv 0$ (die Umgebungstemperatur also konstant gleich $S_0$).
+Das System lautet in diesem Fall $\dot{x} = -ax + bu$, $z = cx$.
+Der einfachste Fehlerrückführungs-Regler ist $u = k(r - z)$
+(\begriff{konstante Verstärkung (constant gain)}).\\
+Man erhält $\dot{x} = -(a + bkc)x + bkr$, $z = cx$ als das geregelte System.
+$k$ stabilisiert das System genau dann, wenn $k > -\frac{a}{bc}$.
+Wenn $r \equiv r_0$ ein konstanter Referenzwert ist, dann konvergiert der Ausgang zu
+$z_0 = \frac{cbk}{a + bkc} r_0$.
+Es gilt $z_0 = r_0$ genau dann, wenn $\frac{cbk}{a + bkc} = 1$, was aber für kein $k$ möglich ist!
+
+\pagebreak
+
+\subsection{%
+    Verschiedene Möglichkeiten zur Nachführung%
+}
+
+\textbf{Rückführung mit hoher Verstärkung}:
+Wenn $k$ groß gemacht wird, dann wird der stationäre Fehler
+$|r_0 - z_0| = \left|\frac{a}{a + bkc}\right| |r_0|$ beliebig klein
+(die Stabilität wird dadurch nicht zerstört).
+Man nennt dies auch \begriff{Rückführung mit hoher Verstärkung (high-gain feedback)}.
+$z$ erreicht zwar $r_0$ nicht (auch nicht asymptotisch), allerdings gelten folgende Vorteile:
+\begin{itemize}
+    \item
+    Stabilisierung und approximative Nachführung
+    
+    \item
+    Robustheit dieser beiden Eigenschaften, da im Wesentlichen unabhängig von den Werten von
+    $a, b, c$
+\end{itemize}
+Man erhält aber auch folgende Nachteile:
+\begin{itemize}
+    \item
+    große Fehler führen zu großem Regelaufwand
+    
+    \item
+    kleine Nachführungsfehler erfordern eine hohe Verstärkung
+    
+    \item
+    hohe Verstärkungen destabilisieren oft kompliziertere Systeme
+\end{itemize}
+
+\linie
+
+\textbf{PI-Regler}:
+Ein \begriff{PI-Regler (proportional integral controller)}
+mit den Verstärkungen $k_p$ und $k_i$ ist gegeben durch
+$u(t) = k_p e(t) + k_i \int_0^t e(\tau)\d\tau$ mit $e(t) = r(t) - z(t)$.
+
+Eine Zustandsraum-Darstellung ist $\dot{x}_K = 0x_K + 1(r - z)$,
+$u = k_i x_K + k_p(r - z)$, $x_K(0) = 0$.
+Das geregelte System kann beschrieben werden durch
+$\smallpmatrix{\dot{x} \\ \dot{x}_K} = \smallpmatrix{-a - bk_pc & bk_i \\ -c & 0}
+\smallpmatrix{x \\ x_K} + \smallpmatrix{b k_p \\ 1} r$,
+$z = \smallpmatrix{c & 0} \smallpmatrix{x \\ x_K}$.
+
+Wenn $k_p$ und $k_i$ das geregelte System asymptotisch stabil machen, dann erfüllt der
+PI-Regler exakte Nachführung für konstante Referenzwerte $r_0$:
+Die stationäre Antwort ist in diesem Fall nämlich
+$z_0 = -\smallpmatrix{c & 0} \smallpmatrix{-a - bk_pc & bk_i \\ -c & 0}^{-1}
+\smallpmatrix{b k_p \\ 1} r_0 = r_0$.
+
+\linie
+
+\textbf{Regler mit zwei Freiheitsgraden ($2$-DOF-Regler)}:
+Wenn $z$ und $r$ beide dem Regler zur Verfügung stehen (kann in der Praxis auch anders sein),
+dann ist ein \begriff{Regler mit zwei Freiheitsgraden ($2$-DOF controller)} mit einer
+\begriff{statischen Rückführungsverstärkung (static feed"-back gain)} $k_p$ und einer
+\begriff{statischen Vorsteuerungsverstärkung (static feedforward gain)} $k_f$ definiert durch
+$u = k_p (r - z) + k_f r$.
+
+Die Vorgehensweise bei der Gestaltung eines solchen Reglers ist:
+\begin{enumerate}
+    \item
+    Wähle $k_p$, sodass $u = k_p (r - z)$ das System stabilisiert.
+    
+    \item
+    Passe $k_f$ so an, dass die stationäre Verstärkung des Systems gleich $1$ ist.
+\end{enumerate}
+Allerdings ist unklar, unter welchen Bedingungen an das System diese Strategie anwendbar ist und
+wie sie zu multivariaten System höherer Ordnung verallgemeinert werden kann.
+
+Man erhält das geregelte System $\dot{x} = -(a + bk_p c)x + b (k_p + k_f) r$, $z = cx$.
+Zunächst wählt man $k_p$ mit $a + bk_p c > 0$.
+Man erhält nun für die stationäre Antwort $z_0 = \frac{cb (k_p + k_f)}{a + bk_p c} r_0$,
+wenn $r_0$ ein konstanter Referenzwert ist.
+Wegen $cb \not= 0$ kann man $k_f$ so wählen, sodass der Bruch gleich $1$ ist.
+
+Die Wahl von $k_f$ hängt stark von den Systemparametern ab.
+Wenn der Regler auf einem System mit anderen Werten von $a, b, c$ implementiert wird, dann wird
+$k_f$ höchstwahrscheinlich nicht die richtige Vorsteuerungsverstärkung sein, um Nachführung zu
+erzielen.
+
+\pagebreak
+
+\subsection{%
+    Das Nachführungsproblem%
+}
+
+\textbf{System beim Nachführungsproblem}:\\
+Sei ein System $\dot{x} = Ax + Bu$, $y = Cx + Du$, $z = C_z x + D_z u$ gegeben.
+Dabei ist $y$ ein Messausgang, der zur Regelung zur Verfügung steht, und $z$ ein zu regelnder
+Ausgang, der der Referenz nachgeführt werden soll
+($z$ kann auch gleich $y$ sein, muss aber nicht).
+
+\textbf{Nachführungsproblem}:
+Die Aufgabe ist es, einen Regler zu gestalten, der das System stabilisiert und für den
+$z$ asymptotisch alle konstanten Referenzsignale $r$ nachführt, d.\,h.\\
+$\lim_{t \to \infty} [r - z(t)] = 0$
+(für alle Anfangsbedingungen).
+Dieses Problem heißt \begriff{Nachführungsproblem (tracking problem)}.
+
+Um das System stabilisieren zu können, wird von nun an angenommen, dass $(A, B)$ stabilisierbar
+und $(A, C)$ entdeckbar ist.
+
+Zunächst muss die Struktur des Reglers festgelegt werden, mit dem das Ziel erreicht werden soll.
+Dabei wird ein Regler mit zwei Freiheitsgraden gewählt, d.\,h.
+der Regler kennt sowohl das nachzuführende Signal $r$ als auch den Ausgang $y$ des Systems.
+
+\linie
+
+\textbf{Regler mit vollständiger Information}:\\
+Zunächst wird angenommen, dass $y = x$ ist (d.\,h. $C = I$ und $D = 0$).
+Ein linearer, statischer \begriff{Regler mit vollständiger Information
+(full-information controller)} ist gegeben durch\\
+$u = -Fx + Gr = \smallpmatrix{-F & G} \smallpmatrix{x \\ r}$,
+wobei die Verstärkungsmatrizen $F$ und $G$ noch gewählt werden müssen.
+Der geschlossene Regelkreis ist
+$\dot{x} = (A - BF)x + BGr$, $z = (C_z - D_z F)x + D_z Gr$.
+Weil das System stabilisiert werden soll, wird $F$ so gewählt, dass $A - BF$ eine Hurwitz-Matrix
+ist.
+Dann ergibt sich die stationäre Antwort für konstantes $r$ durch\\
+$z = [D_z - (C_z - D_z F)(A - BF)^{-1} B] Gr$.
+Für asymptotische Nachführung muss $z = r$ für alle möglichen konstanten Referenzeingänge $r$
+gelten, d.\,h. man wählt $G$, sodass\\
+$[D_z - (C_z - D_z F)(A - BF)^{-1} B] G = I$.
+
+\linie
+
+\textbf{Nachführung durch Ausgangsrückführung}:
+Wenn $x$ nicht messbar ist, also $y \not= x$ gilt, dann wählt man $L$, sodass $A - LC$ eine
+Hurwitz-Matrix ist, und verwendet den Beobachter
+$\dot{\widehat{x}} = A\widehat{x} + Bu + L(y - \widehat{y})$, $\widehat{y} = C\widehat{y} + Du$,
+um den Zustand asymptotisch rekonstruieren zu können.
+Das Separationsprinzip motiviert dann die Regelung des Systems durch
+$u = -F\widehat{x} + Gr$, wobei $F$ und $G$ die Verstärkungsmatrizen vom Regler mit
+vollständiger Information sind.
+
+\textbf{Satz (Nachführung durch das Separationsprinzip)}:
+Der so konstruierte Ausgangsrück"-führungs-Regler stabilisiert das System und
+erzielt asymptotische Nachführung.
+
+% Tatsächlich stabilisiert der so konstruierte Ausgangsrückführungs-Regler das System und
+% erzielt Nachführung:
+% Wenn man den Fehler $\widetilde{x} = x - \widehat{x}$ definiert, so gilt
+% $\dot{\widetilde{x}} = (A - LC) \widetilde{x}$ unabhängig von $r$, d.\,h.
+% der geschlossene Regelkreis ist $\smallpmatrix{\dot{x} \\ \dot{\widetilde{x}}} =
+% \smallpmatrix{A - BF & BF \\ 0 & A - LC} \smallpmatrix{x \\ \widetilde{x}} +
+% \smallpmatrix{BG \\ 0} r$,\\
+% $z = \smallpmatrix{C_z - D_z F & D_z F} \smallpmatrix{x \\ \widetilde{x}} + D_z Gr$.
+% Dieses System ist stabil und die stationäre Verstärkung ist für konstante $r$ gleich
+% $D_z G - (C_z - D_z F) (A - BF)^{-1} (BG) = I$.
+
+\linie
+
+\textbf{Existenz von $G$}:
+Allerdings kann man diesen Regler nur konstruieren, falls ein $G$ existiert, sodass
+$[D_z - (C_z - D_z F)(A - BF)^{-1} B] G = I$.
+Diese Gleichung ist äquivalent zu\\
+$(C_z - D_z F) \Pi + D_z G = I$ mit $\Pi := -(A - BF)^{-1} BG$.
+Diese beiden Gleichungen sind wiederum äquivalent zu
+$(A - BF)\Pi + BG = 0$ und $(C_z - D_z F) \Pi + D_z G = I$.
+Durch Umordnung erhält man
+$A\Pi + B(G - F\Pi) = 0$ und $C_z \Pi + D_z (G - F\Pi) - I = 0$.
+Mit $\Gamma := G - F\Pi$ erhält man die sog. \begriff{Regulatorgleichung (regulator equation)}
+$\smallpmatrix{A & B \\ C_z & D_z} \smallpmatrix{\Pi \\ \Gamma} + \smallpmatrix{0 \\ -I} = 0$.
+
+Wenn ein $G$ existiert, das obige Gleichung $[\dotsb]G = I$ erfüllt,
+dann gibt es eine Lösung $(\Pi, \Gamma)$ der Regulatorgleichung.
+Wenn umgekehrt $(\Pi, \Gamma)$ eine Lösung der Regulatorgleichung und $F$ die Matrix
+$A - BF$ zu einer Hurwitz-Matrix macht, dann setze $G := \Gamma + F\Pi$.
+Durch Umkehrung der obigen Argumente erkennt man, dass $G$ die Gleichung $[\dotsb]G = I$ erfüllt.
+Daher gibt es genau dann obigen Nachführungsregler, wenn die Regulatorgleichung erfüllt ist.
+
+\pagebreak
+
+\subsection{%
+    Das Regulationsproblem%
+}
+
+\textbf{verallgemeinerte Anlage}:\\
+Das System $\dot{x} = Ax + Bu + B_d d$, $y = Cx + Du + D_d d$, $e = C_e x + D_e u + D_{ed} d$
+heißt \begriff{verallgemeinerte Anlage (generalized plant)} mit
+\begin{itemize}
+    \item
+    $u$ dem \begriff{Steuereingang (control input)},
+    
+    \item
+    $d$ der \begriff{verallgemeinerten Störung (generalized disturbance)},
+    
+    \item
+    $y$ dem \begriff{Messausgang (measurement output)} und
+    
+    \item
+    $e$ dem \begriff{Leistungsausgang (performance output)}.
+\end{itemize}
+
+\textbf{Regulationsproblem}:\\
+Die Aufgabe ist es, einen Regler $\dot{x}_K = A_K x_K + B_K y$, $u = C_K x_K$
+zu gestalten, der
+\begin{itemize}
+    \item
+    das System stabilisiert\\
+    (d.\,h. $\lim_{t \to \infty} x(t) = 0$ für $d = 0$ und alle $x(0)$) und
+    
+    \item
+    \begriff{Regulation}
+    für alle konstanten verallgemeinerten Störungen $d$ erzielt\\
+    (d.\,h. $\lim_{t \to \infty} e(t) = 0$ für alle $d \equiv \const$ und $x(0)$).
+\end{itemize}
+Dieses Problem heißt \begriff{Regulationsproblem (regulation problem)}.
+Man sagt auch, dass $d$ von $e$
+\begriff{asymptotisch unterdrückt (asymptotically rejected)} wird.
+
+\linie
+
+\textbf{Spezialfall 1 (Nachführung)}:
+Das Nachführungsproblem von oben für das System\\
+$\dot{x} = Ax + Bu$, $\widetilde{y} = \widetilde{C}x + \widetilde{D}u$,
+$z = C_z x + D_z u$ ist ein Spezialfall des Regulationsproblems für die verallgemeinerte Anlage
+$\dot{x} = Ax + Bu + 0d$,
+$y = \smallpmatrix{\widetilde{C} \\ 0} x + \smallpmatrix{\widetilde{D} \\ 0} u +
+\smallpmatrix{0 \\ I} d$,
+$e = C_z x + D_z u + (-I)d$.
+Man interpretiert also $d$ als Referenzsignal und packt den Ausgang $\widetilde{y}$ des
+ursprünglichen Systems und das Referenzsignal $r$ in den Messausgang $y$ hinein.
+Damit ist dann $e = C_z x + D_z u - r$ der Nachführungsfehler, der gegen Null geht genau dann,
+wenn das $r$ asymptotisch nachgeführt wird.
+
+\linie
+
+\textbf{Spezialfall 2 (Störunterdrückung)}:
+$d$ heißt verallgemeinerte Störung, weil $d$
+sowohl aus bekannten Komponenten (wie Referenzsignalen)
+als auch aus echten, unbekannten Störungen (wie Messrauschen) bestehen kann.
+Im letzten Fall bestimmen die Matrizen $B_d, D_d, D_{ed}$ jeweils, wie die Störung den Zustand,
+den Messausgang und den Leistungsausgang beeinflussen.
+Man spricht bei $B_d d$ von der \begriff{Prozessstörung (process disturbance)},
+bei $D_d d$ vom \begriff{Messrauschen (measurement noise)} und
+bei $D_{ed} d$ von der \begriff{Laststörung (load disturbance)}.
+Wenn man diese Matrizen verschieden wählt, kann man verschiedene Situationen modellieren.
+Zum Beispiel würde man $B_d = 0$, $D_{ed} = 0$ wählen, wenn man nur Messrauschen modellieren
+wollte.
+%(die Komponenten von $D_d \not= 0$ sind dann Gewichte, die angeben, wie jeder Eintrag von
+%$y$ durch das Rauschen $y$ beeinflusst wird).
+
+\linie
+
+\textbf{Spezialfall 3 (Nachführung und Störunterdrückung)}:
+Wenn man beim ersten Spezialfall
+$\widetilde{y} = \widetilde{C} x + \widetilde{D} u + d_{\widetilde{y}}$ setzt, so erhält man
+die verallgemeinerte Anlage\\
+$\dot{x} = Ax + Bu$,
+$y = \smallpmatrix{\widetilde{C} \\ 0} x + \smallpmatrix{\widetilde{D} \\ 0} u +
+\smallpmatrix{I & 0 \\ 0 & I} \smallpmatrix{d_{\widetilde{y}} \\ r}$,
+$e = C_z x + D_z u + \smallpmatrix{0 & -I} \smallpmatrix{d_{\widetilde{y}} \\ r}$.\\
+Der Messausgang hat also die Komponenten $\widetilde{C} x + \widetilde{D} u + d_{\widetilde{y}}$
+und $r$,
+während die verallgemeinerte Störung die Komponenten $d_{\widetilde{y}}$ und $r$ hat.
+
+\pagebreak
+
+\subsection{%
+    Lösungen des Regulationsproblems%
+}
+
+Obwohl das neue Modell substanziell allgemeiner ist, ist der vorherige Lösungsansatz ohne viel
+Aufwand ebenfalls anwendbar.
+
+\textbf{Satz (nominale Regulation bei vollständiger Information)}:\\
+Seien $(A, B)$ stabilisierbar und die Regulatorgleichung (R0)
+$\smallpmatrix{A & B \\ C_e & D_e} \smallpmatrix{\Pi \\ \Gamma} +
+\smallpmatrix{B_d \\ D_{ed}} = 0$
+lösbar.\\
+Dann gibt es Matrizen $F$ und $G$, sodass der Regler mit vollständiger
+Information gegeben durch $u = -Fx + Gd$ das Regulationsproblem löst.
+
+Lösbarkeit der Regulatorgleichung ist auch notwendig, d.\,h. wenn sie unlösbar ist,
+dann gibt es solche Matrizen $F$ und $G$ nicht.
+
+$F$ und $G$ wählt man wie folgt:
+\begin{enumerate}
+    \item
+    Wähle ein beliebiges $F$, sodass $A - BF$ eine Hurwitz-Matrix ist.
+    
+    \item
+    Wenn $(\Pi, \Gamma)$ eine Lösung der Regulatorgleichung ist,
+    dann setze $G := \Gamma + F\Pi$.
+\end{enumerate}
+
+\linie
+
+\textbf{Satz (Lösbarkeit durch Ausgangsrückführung)}:
+Seien $(A, B)$ stabilisierbar und $(A, C)$ entdeckbar.
+Außerdem sei (R0) lösbar und es gelte (D): $\smallpmatrix{A & B_d \\ C & D_d}$ habe vollen
+Spaltenrang.\\
+Dann ist das Regulationsproblem durch Ausgangsrückführung lösbar.
+
+Die Stabilisierbarkeit von $(A, B)$ und Entdeckbarkeit von $(A, C)$ sind notwendige Voraussetzungen
+für die Konstruktion von stabilisierenden Reglern.
+Man beachte, dass für vollständige Information und für Ausgangsrückführung dieselbe
+Regulatorgleichung zu lösen ist.
+Die Bedingung (D) impliziert, dass die Matrix $\smallpmatrix{A & B_d \\ C & D_d}$ höher wie
+breit ist, d.\,h. also auch $D_d$.
+Insbesondere muss $\dim(y) \ge \dim(d)$ gelten, was anschaulich klar ist:
+Man braucht mindestens so viele Messungen, wie die Störung Komponenten besitzt.
+
+Weil nur $y$ verfügbar ist, versucht man, das Separationsprinzip für den Entwurf eines
+Ausgangs"-rückführungs-Reglers anzuwenden.
+Dazu erstellt man einen Beobachter, der sowohl $x$ als auch $d$ aus $y$ asymptotisch rekonstruiert.
+Man bemerkt, dass konstante Störungen $d$ durch die DGL $\dot{d} = 0$ beschrieben werden.\\
+Wenn man $e$ weglässt, erhält man so das \begriff{erweiterte System (extended system)}\\
+$\smallpmatrix{\dot{x} \\ \dot{d}} = A_E \smallpmatrix{x \\ d} + B_E u$,
+$y = C_E \smallpmatrix{x \\ d} + Du$ mit
+$A_E := \smallpmatrix{A & B_d \\ 0 & 0}$,
+$B_E := \smallpmatrix{B \\ 0}$ und
+$C_E := \smallpmatrix{C & D_d}$.\\
+Der gesuchte Beobachter existiert, wenn $(A_E, C_E)$ entdeckbar ist.
+
+\textbf{Lemma (Entdeckbarkeit von $(A_E, C_E)$)}:\\
+$(A_E, C_E)$ ist entdeckbar genau dann, wenn
+$(A, C)$ entdeckbar ist und (D) gilt.
+
+\textbf{Lemma (asymptotisch verschwindende Störungen)}:
+Seien $A$ eine Hurwitz-Matrix und $\lim_{t \to \infty} v(t) = 0$.
+Dann gilt für jede Lösung von $\dot{x} = Ax + v$, dass $\lim_{t \to \infty} x(t) = 0$.
+
+\linie
+
+\textbf{Lösung des Regulationsproblems}:\\
+Wie eben motiviert, entwirft man einen Regulator wie folgt.
+Man prüft zunächst, ob
+\begin{itemize}
+    \item
+    $(A, B)$ stabilisierbar und
+    $\left(\smallpmatrix{A & B_d \\ 0 & 0}, \smallpmatrix{C & D_d}\right)$ entdeckbar und
+    
+    \item
+    die Regulatorgleichung (R0)
+    $\smallpmatrix{A & B \\ C_e & D_e} \smallpmatrix{\Pi \\ \Gamma} +
+    \smallpmatrix{B_d \\ D_{ed}} = 0$
+    lösbar ist.
+\end{itemize}
+In diesem Fall wählt man
+\begin{enumerate}
+    \item
+    $F$ und $L$, sodass $A - BF$ und $\smallpmatrix{A & B_d \\ 0 & 0} - L\smallpmatrix{C & D_d}$
+    Hurwitz-Matrizen sind, und
+    
+    \item
+    $G := \Gamma + F\Pi$ mit $(\Pi, \Gamma)$ einer Lösung der Regulatorgleichung (R0).
+\end{enumerate}
+Dann löst der folgende Regler das Regulationsproblem:\\
+$\smallpmatrix{\dot{\widehat{x}} \\ \dot{\widehat{d}}}
+= \smallpmatrix{A & B_d \\ 0 & 0} \smallpmatrix{\widehat{x} \\ \widehat{d}} +
+\smallpmatrix{B \\ 0} u + L(y - \widehat{y})$,\quad
+$u = \smallpmatrix{-F & G} \smallpmatrix{\widehat{x} \\ \widehat{d}}$,\quad
+$\widehat{y} = \smallpmatrix{C & D_d} \smallpmatrix{\widehat{x} \\ \widehat{d}} + Du$.
+
+\pagebreak
+
+\subsection{%
+    Signalmodelle und nicht-konstante Störungen%
+}
+
+\textbf{Signalmodell}:
+Bisher wurden nur konstante verallgemeinerte Störungen betrachtet.
+Solche Störungen sind genau die Lösungen der DGL $\dot{d} = 0$.
+Man nennt solche Systeme \begriff{Signalmodelle (signal models)} oder
+\begriff{Signalgeneratoren (signal generators)}.
+
+Dies lässt sich relativ einfach verallgemeinern.
+Zum Beispiel erhält man sinusförmige Signale der Frequenz $\omega$ durch
+$\dot{d} = Sd$ mit
+$S = \smallpmatrix{0 & \omega \\ -\omega & 0}$,
+denn damit gilt $e^{St} =
+\smallpmatrix{\cos(\omega t) & \sin(\omega t) \\ -\sin(\omega t) & \cos(\omega t)}$.\\
+Noch allgemeiner kann man $S$ als Blockdiagonalmatrix
+$S = \diag\left(\smallpmatrix{0 & 1 \\ 0 & 0}, \smallpmatrix{0 & \omega_1 \\ -\omega_1 & 0},
+\dotsc, \smallpmatrix{0 & \omega_s \\ -\omega_s & 0}\right)$ wählen, um Konstanten,
+\begriff{Rampen (ramps)}, d.\,h. Ursprungsgeraden, und sinusförmige Signale der Frequenzen
+$\omega_1, \dotsc, \omega_s$ zu erzeugen.
+Sinusförmige Signale sind deshalb wichtig, weil sich andere Signale mittels der Fourier-Synthese
+durch sinusförmige Signale approximieren lassen.
+
+\linie
+
+\textbf{Lösung des Regulationsproblems für Störungen $d$ mit $\dot{d} = Sd$}:\\
+In der Herleitung des Ausgangsrückführungs-Reglers, der das Regulationsproblem löst,
+kann man $\dot{d} = 0$ konsequent durch $\dot{d} = Sd$ ersetzen.
+Es reicht, nur $S$ mit $\Eig(S) \subset \complex^0 \cup \complex^+$ zu betrachten,
+da alle asymptotischen verschwindenden Störungen wegen obigem Lemma sowieso keine
+Auswirkungen haben.
+Daher kann man stabilisierende Regler, die Regulation für alle Signale
+$d(t) = e^{St} d_0$ mit beliebigem, unbekanntem $d_0 \in \real^{\dim(S)}$ erzielen,
+unter folgenden Bedingungen erstellen:
+\begin{itemize}
+    \item
+    \begriff{andauernde Störung (persistent disturbance)}:\\
+    $S$ hat keine Eigenwerte in $\complex^-$.
+    
+    \item
+    Existenz einer stabilisierender Zustandsrückführungs-Verstärkung:\\
+    $(A, B)$ ist stabilisierbar.
+    
+    \item
+    Existenz eines Zustands- und Störungsschätzers:\\
+    $(A_E, C_E) := \left(\smallpmatrix{A & B_d \\ 0 & S}, \smallpmatrix{C & D_d}\right)$
+    ist entdeckbar.
+    
+    \item
+    Lösbarkeit der Regulatorgleichung (R):\\
+    Es gibt $\Gamma$ und $\Pi$ mit
+    $\smallpmatrix{A & B \\ C_e & D_e} \smallpmatrix{\Pi \\ \Gamma} -
+    \smallpmatrix{\Pi \\ 0} S + \smallpmatrix{B_d \\ D_{ed}} = 0$.
+\end{itemize}
+In diesem Fall wählt man
+\begin{enumerate}
+    \item
+    $F$ und $L$, sodass $A - BF$ und $\smallpmatrix{A & B_d \\ 0 & S} - L\smallpmatrix{C & D_d}$
+    Hurwitz-Matrizen sind, und
+    
+    \item
+    $G := \Gamma + F\Pi$ mit $(\Gamma, \Pi)$ einer Lösung der Regulatorgleichung (R).
+\end{enumerate}
+Der Regler
+$\smallpmatrix{\dot{\widehat{x}} \\ \dot{\widehat{d}}}
+= \smallpmatrix{A & B_d \\ 0 & S} \smallpmatrix{\widehat{x} \\ \widehat{d}} +
+\smallpmatrix{B \\ 0} u + L(y - \widehat{y})$,\quad
+$u = \smallpmatrix{-F & G} \smallpmatrix{\widehat{x} \\ \widehat{d}}$,\quad
+$\widehat{y} = \smallpmatrix{C & D_d} \smallpmatrix{\widehat{x} \\ \widehat{d}} + Du$\\
+stabilisiert dann das System und erfüllt Regulation ($\lim_{t \to \infty} e(t) = 0$) für alle
+verallgemeinerten Störungen $d$, die $\dot{d} = Sd$ erfüllen.
+
+Der Beweis geht analog wie beim Fall $S = 0$.
+
+\pagebreak
+
+\subsection{%
+    Verallgemeinerte Eigenräume und unentdeckbarer Unterraum%
+}
+
+\textbf{verallgemeinerte Eigenräume}:\\
+Sei $A \in \real^{n \times n}$.
+Wenn man $\chi_A = \alpha \beta$ faktorisiert, sodass $\alpha$ und $\beta$ nur Nullstellen
+in $\complex^-$ bzw. in $\complex^0 \cup \complex^+$ haben, dann
+sind $\E_-(A) := N(\alpha(A))$ und $\E_{0+}(A) := N(\beta(A))$
+die verallgemeinerten Eigenräume von $A$ bzgl. $\complex^-$ bzw. $\complex^0 \cup \complex^+$:
+Gilt nämlich $\alpha(A) = (A - \lambda_1 I)^{n_1} \dotsm (A - \lambda_k I)^{n_k}$,
+so gilt $\E_-(A) = N((A - \lambda_1 I)^{n_1}) \oplus \dotsb \oplus N((A - \lambda_k I)^{n_k})$
+nach dem Lemma von Bézout.
+
+Man kann zeigen: $\E_-(A)$ (bzw. $\E_{0+}(A)$)
+ist der größte $A$-invariante Unterraum $V \subset \real^n$,
+sodass $\Eig(A|_V) \subset \complex^-$ (bzw. $\Eig(A|_V) \subset \complex^0 \cup \complex^+$).
+
+$\E_-(A)$ heißt auch \begriff{stabiler Unterraum (stable subspace)} von $A$.
+Wenn $S_1$ eine Basismatrix von $\E_-(A)$ ist und mit $S_2$ zu einer invertierbaren Matrix
+$S = \smallpmatrix{S_1 & S_2}$ ergänzt wird, dann gilt
+$S^{-1} AS = \smallpmatrix{A_{11} & A_{12} \\ 0 & A_{22}}$ mit
+$\Eig(A_{11}) \subset \complex^-$ und $\Eig(A_{22}) \subset \complex^0 \cup \complex^+$.
+Eine orthogonale Ähnlichkeits"-transformation $S$ kann man ef"|fektiv mit der
+reellen geordneten Schur-Zerlegung berechnen.
+
+$\E_-(A)$ erlaubt auch eine dynamische Interpretation,
+wenn man Trajektorien $\varphi(\cdot, \xi)$ des Systems $\dot{x} = Ax$, $x(0) = \xi$ betrachtet:
+Es gilt $\E_-(A) = \{\xi \in \real^n \;|\;
+\varphi(t, \xi) = e^{At}\xi \xrightarrow{t \to \infty} 0\}$.
+
+\linie
+
+\textbf{Blockdiagonalisierung}:
+Seien nun $\Eig(A_{11}) \subset \complex^-$ und
+$\Eig(A_{22}) \subset \complex^0 \cup \complex^+$.\\
+Dann gilt $\E_-\!\left(\smallpmatrix{A_{11} & A_{12} \\ 0 & A_{22}}\right)
+= R\!\left(\smallpmatrix{I \\ 0}\right)$.
+Wegen $\Eig(A_{11}) \cap \Eig(A_{22}) = \emptyset$ existiert eine eindeutige Lösung $X$
+der \begriff{\name{Sylvester}-Gleichung} $A_{11} X - X A_{22} + A_{12} = 0$.
+Damit gilt dann\\
+$\E_{0+}\!\left(\smallpmatrix{A_{11} & A_{12} \\ 0 & A_{22}}\right)
+= R\!\left(\smallpmatrix{X \\ I}\right)
+= \left\{\left. \smallpmatrix{x_1 \\ x_2} \in \real^n \;\right|\; x_1 - Xx_2 = 0\right\}$.
+Außerdem überführt die Transformationsmatrix $S = \smallpmatrix{I & X \\ 0 & I}$
+die Blockdreiecksmatrix in Blockdiagonalform:\\
+$S^{-1} \smallpmatrix{A_{11} & A_{12} \\ 0 & A_{22}} S
+= \smallpmatrix{A_{11} & A_{11} X - X A_{22} + A_{12} \\ 0 & A_{22}}
+= \smallpmatrix{A_{11} & 0 \\ 0 & A_{22}}$.
+
+\textbf{Ausgangsstabilität}:
+Weiterhin ist $\Eig(A_{11}) \subset \complex^-$ und
+$\Eig(A_{22}) \subset \complex^0 \cup \complex^+$.\\
+Man betrachtet das System $\dot{x} = \smallpmatrix{A_{11} & A_{12} \\ 0 & A_{22}} x$,
+$y = \smallpmatrix{C_1 & C_2} x$.
+Wenn $X$ eine Lösung der Sylvester-Gleichung $A_{11} X - X A_{22} + A_{12} = 0$ ist,
+dann kann man das System transformieren in\\
+$\dot{z} = \smallpmatrix{A_{11} & 0 \\ 0 & A_{22}} z$,
+$y = \smallpmatrix{C_1 & C_1 X + C_2} z$.
+Für $z(0) = \smallpmatrix{\xi_1 \\ \xi_2}$ ist der Ausgang des Systems gleich\\
+$y(t) = C_1e^{A_{11} t} \xi_1 + (C_1 X + C_2) e^{A_{22} t} \xi_2$.
+Der erste Summand geht gegen $0$, da $\Eig(A_{11}) \subset \complex^-$.
+Außerdem geht der zweite Summand gegen $0$ genau dann, wenn $C_1 X + C_2 = 0$ ist.\\
+Daher gilt $\lim_{t \to \infty} y(t) = 0$ für alle Trajektorien genau dann, wenn $C_1 X + C_2 = 0$.
+
+\textbf{Lemma (Ausgangsstabilität)}:
+Alle Trajektorien des Systems $\dot{x} = Ax$, $y = Cx$ erfüllen
+$\lim_{t \to \infty} y(t) = 0$ genau dann, wenn $\E_{0+}(A) \subset N(C)$.
+
+\linie
+
+\textbf{unentdeckbarer Unterraum}:
+Der \begriff{unentdeckbare Unterraum (undetectable subspace)} von $(A, C)$ ist der größte
+$A$-invariante Unterraum $V \subset \real^n$ in $N(C)$, sodass
+$\Eig(A|_V) \subset \complex^0 \cup \complex^+$.
+
+\textbf{Lemma (geometrische Charakterisierung des unentdeckbaren Unterraums)}:\\
+Seien $\U$ der unbeobachtbare Unterraum von $(A, C)$ und $\E_{0+}$ der verallgemeinerte
+Eigenraum von $A$ bzgl. $\complex^0 \cup \complex^+$.
+Dann ist der unentdeckbare Unterraum von $(A, C)$ gleich $\U \cap \E_{0+}$.
+
+Jedes System $\dot{x} = Ax + Bu$, $y = Cx + Du$ kann in Beobachtbarkeits-Normalform geschrieben
+werden mit Matrizen $\left(\smallpmatrix{A_{11} & 0 \\ \widetilde{A}_{21} & \widetilde{A}_{22}},
+\smallpmatrix{B_1 \\ \widetilde{B}_2}, \smallpmatrix{C_1 & 0}, D\right)$
+und $(A_{11}, C_1)$ beobachtbar.
+Mit obiger Methode kann $\widetilde{A}_{22}$ blockdiagonalisiert werden mit Blöcken
+$A_{22}$ und $A_{33}$, wobei $\Eig(A_{22}) \subset \complex^-$ und
+$\Eig(A_{33}) \subset \complex^0 \cup \complex^+$.
+Daher kann man das System transformieren zu\\
+$\smallpmatrix{\dot{z}_1 \\ \dot{z}_2 \\ \dot{z}_3} =
+\smallpmatrix{A_{11} & 0 & 0 \\ A_{21} & A_{22} & 0 \\ A_{31} & 0 & A_{33}}
+\smallpmatrix{z_1 \\ z_2 \\ z_3} + \smallpmatrix{B_1 \\ B_2 \\ B_3} u$,
+$y = \smallpmatrix{C_1 & 0 & 0} \smallpmatrix{z_1 \\ z_2 \\ z_3} + Du$.
+
+\textbf{Lemma (explizite Darstellung des unentdeckbaren Unterraums)}:\\
+Für dieses System ist der unentdeckbare Unterraum gleich
+$R\!\left(\smallpmatrix{0 \\ 0 \\ I}\right)$.
+
+\subsection{%
+    Notwendige Bedingungen%
+}
+
+Sei (P) die verallgemeinerte Anlage mit Signalgenerator\\
+$\smallpmatrix{\dot{x} \\ e \\ y} = \smallpmatrix{A & B_d & B \\ C_e & D_{ed} & D_e \\ C & D_d & D}
+\smallpmatrix{x \\ d \\ u}$, $\dot{d} = Sd$.
+Die Anlage
+$\smallpmatrix{\dot{x} \\ \dot{d} \\ e \\ y} =
+\smallpmatrix{A & B_d & B \\ 0 & S & 0 \\ C_e & D_{ed} & D_e \\ C & D_d & D}
+\smallpmatrix{x \\ d \\ u}$
+ist die \begriff{erweiterte verallgemeinerte Anlage}.
+
+Es wird angenommen, dass $(A, B)$ stabilisierbar und $(A, C)$ entdeckbar ist.
+Außerdem soll $\Eig(S) \subset \complex^0 \cup \complex^+$ gelten, d.\,h. es werden nur
+andauernde Störungen betrachtet.
+Gesucht sind notwendige Bedingungen für die Lösbarkeit des Regulationsproblems mit einem
+Regler (C)\\
+$\smallpmatrix{\dot{x}_K \\ u} = \smallpmatrix{A_K & B_K \\ C_K & 0} \smallpmatrix{x_K \\ y}$.
+
+Wenn die verallgemeinerte Anlage mit dem Regler verbunden wird,
+erhält man das geregelte System
+mit Signalgenerator (CL)\\
+$\smallpmatrix{\dot{\xi} \\ e} = \smallpmatrix{\A & \B \\ \C & \D} \smallpmatrix{\xi \\ d}$,
+$\dot{d} = Sd$
+und das erweiterte geregelte System
+$\smallpmatrix{\dot{\xi} \\ \dot{d} \\ e} = \smallpmatrix{\A & \B \\ 0 & S \\ \C & \D}
+\smallpmatrix{\xi \\ d}$,\\
+wobei $\xi = \smallpmatrix{x \\ x_K}$ und
+$\A = \smallpmatrix{A & BC_K \\ B_K C & A_K + B_K D C_K}$,
+$\B = \smallpmatrix{B_d \\ B_K D_d}$,
+$\C = \smallpmatrix{C_e & D_e C_K}$,
+$\D = D_{ed}$.
+
+\textbf{Regulationsproblem (mit Signalgenerator)}:\\
+Für die verallgemeinerte Anlage (P) ist ein Regler (C) gesucht, sodass die geregelte
+verallgemeinerte Anlage (CL) die folgenden Eigenschaften hat:
+\begin{itemize}
+    \item
+    Für $d(t) \equiv 0$ für $t \ge 0$ erfüllen alle Trajektorien von (CL)
+    $\lim_{t \to \infty} x(t) = 0$ und\\
+    $\lim_{t \to \infty} x_K(t) = 0$
+    (äquivalent dazu: $\A$ ist eine Hurwitz-Matrix).
+    
+    \item
+    Für alle Trajektorien von (CL) gilt $\lim_{t \to \infty} e(t) = 0$.
+\end{itemize}
+
+\linie
+
+Sei $(A_E, C_E) := \left(\smallpmatrix{A & B_d \\ 0 & S}, \smallpmatrix{C & D_d}\right)$
+nicht entdeckbar.
+In diesem Fall gilt folgende notwendige Bedingung für die Lösbarkeit des Regulationsproblems.
+
+\textbf{Lemma (notwendige Bedingung)}:
+Wenn das Regulationsproblem lösbar ist, dann ist der unentdeckbare Unterraum von
+$(A_E, C_E)$ in $N(\smallpmatrix{C_e & D_{ed}})$ enthalten.
+
+Wenn diese notwendige Bedingung erfüllt ist, dann wird im Beweis gezeigt, dass es möglich ist,
+den Signalgenerator oBdA so zu reduzieren, dass obige Entdeckbarkeits-Bedingung für das
+resultierende erweiterte System erfüllt ist.
+Daher kann man ohne Einschränkung annehmen, dass $(A_E, C_E)$ entdeckbar ist
+(wenn der unentdeckbare Unterraum von
+$(A_E, C_E)$ in $N(\smallpmatrix{C_e & D_{ed}})$ enthalten ist,
+sonst ist das Problem ja ohnehin nicht lösbar).
+
+\linie
+
+\textbf{Satz (Hauptresultat)}:\\
+Seien $(A, B)$ stabilisierbar und
+$\left(\smallpmatrix{A & B_d \\ 0 & S}, \smallpmatrix{C & D_d}\right)$ entdeckbar,
+wobei $\Eig(S) \subset \complex^0 \cup \complex^+$.\\
+Dann ist das Regulatorproblem lösbar genau dann, wenn die Regulatorgleichung (R) lösbar ist.
+
+Die Regulatorgleichung (R) ist gegeben durch
+$\smallpmatrix{A & B \\ C_e & D_e} \smallpmatrix{\Pi \\ \Gamma} -
+\smallpmatrix{\Pi \\ 0} S + \smallpmatrix{B_d \\ D_{ed}} = 0$.
+
+\pagebreak
+
+\subsection{%
+    Prinzip des internen Modells%
+}
+
+Sei nun eine verallgemeinerte Anlage mit Signalgenerator mit $e = y$ gegeben, d.\,h.\\
+$\smallpmatrix{\dot{x} \\ e \\ y} = \smallpmatrix{A & B_d & B \\ C & D_d & D \\ C & D_d & D}
+\smallpmatrix{x \\ d \\ u}$, $\dot{d} = Sd$.
+
+\textbf{Satz (Prinzip des internen Modells)}:\\
+Seien $(A, B)$ stabilisierbar und
+$\left(\smallpmatrix{A & B_d \\ 0 & S}, \smallpmatrix{C & D_d}\right)$ entdeckbar,
+wobei $\Eig(S) \subset \complex^0 \cup \complex^+$.\\
+Außerdem sei (C) ein Regler, der das Regulationsproblem löst.\\
+Dann gibt es eine Zustandskoordina"-ten-Transformation von (C) in\\
+$\dot{\widetilde{x}}_K = \smallpmatrix{S & \widetilde{C}_K \\ 0 & \widetilde{A}_K} \widetilde{x}_K
++ \smallpmatrix{\widetilde{D}_K \\ \widetilde{B}_K} y$,
+$u = \smallpmatrix{\Gamma & \widehat{C}_K} \widetilde{x}_K$.
+
+In diesem Sinne muss $A_K$ also das Modell $S$ der zu regulierenden Signale
+notwendigerweise beinhalten
+(\begriff{Prinzip des internen Modells (internal model principle)}).
+Insbesondere muss $\dim(A_K) \ge \dim(S)$ gelten, eine untere Schranke für die erforderliche
+Dimension jedes Regulators.
+
+\linie
+
+Den Regler aus dem obigen Satz kann man als Reihenschaltung von\\
+$\smallpmatrix{\dot{\xi}_1 \\ u} = \smallpmatrix{S & I & 0 \\ \Gamma & 0 & I}
+\smallpmatrix{\xi_1 \\ u_1 \\ u_2}$ und
+$\smallpmatrix{\dot{\xi}_2 \\ u_1 \\ u_2} = \smallpmatrix{\widetilde{A}_K & \widetilde{B}_K \\
+\widetilde{C}_K & \widetilde{D}_K \\ \widehat{C}_K & 0} \smallpmatrix{\xi_2 \\ y}$ schreiben
+(das zweite System zuerst).
+Wenn man nun den Regler (C) konstruieren will, so sind zwar $S$ und $\Gamma$ bekannt, nicht
+allerdings die Matrizen $\widetilde{A}_K, \widetilde{B}_K, \widetilde{C}_K, \widetilde{D}_K$ und
+$\widehat{C}_K$.
+Man kann aber unter obigen Voraussetzungen sogar für verallgemeinerte Anlage vom Typ (P)
+wie folgt vorgehen:
+\begin{enumerate}
+    \item
+    Löse die Regulatorgleichung und erhalte $\Gamma$.
+    
+    \item
+    Vorkompensiere die verallgemeinerte Anlage (P), indem
+    $\smallpmatrix{\dot{\xi}_1 \\ u} = \smallpmatrix{S & I & 0 \\ \Gamma & 0 & I}
+    \smallpmatrix{\xi_1 \\ u_1 \\ u_2}$
+    der Anlage vorgeschaltet wird.
+    
+    \item
+    Entwerfe einen stabilisierenden Regler für die vorkompensierte Anlage.
+\end{enumerate}
+Dann löst der resultierende Regler für (P) das Regulationsproblem.
+
+\pagebreak

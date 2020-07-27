@@ -1,0 +1,279 @@
+\section{%
+    Lineare Gleichungssysteme%
+}
+
+\subsection{%
+    Allgemeines, \textsc{Gauß}-\textsc{Jordan}-Algorithmus und
+    Fehlerabschätzung%
+}
+
+Ein \textbf{LGS} besteht aus $m$ Gleichungen in $n$ Unbestimmten.
+Es kann durch die Koef"|fizientenmatrix $A$, den Unbekannten $x_j$ und einer
+rechten Seite $b$ dargestellt werden.
+Für $b = 0$ heißt das LGS \textbf{homogen}, sonst \textbf{inhomogen}.
+Ein LGS ohne Lösung heißt \textbf{überbestimmt}, ein LGS mit mehreren
+Lösungen heißt \textbf{unterbestimmt}.
+
+\linie
+
+\textbf{\textsc{Gauß}-\textsc{Jordan}-Algorithmus}: \\
+\begin{tabular}{p{6.5cm}p{9.65cm}}
+\matrixsize{$\left(\begin{array}{cccccc|c}
+1 & \cdots & 0 &
+w_{1, \ell} & \cdots & w_{1, n} & w_{1, n + 1} \\
+\vdots & \ddots & \vdots & \vdots & & \vdots & \vdots \\
+0 & \cdots & 1 & & & & \\
+0 & \cdots & 0 & w_{\ell, \ell} & \cdots & w_{\ell, n} & w_{\ell, n + 1} \\
+\vdots & & \vdots & \vdots & & \vdots & \vdots \\
+0 & \cdots & 0 & w_{n, \ell} & \cdots & w_{n, n} & w_{n, n + 1}
+\end{array}\right)$}
+&
+\begin{minipage}[c]{9.65cm}
+Durch Umformen wird die Matrix eines LGS $Ax = b$ in die Einheitsmatrix
+überführt.
+Vor dem $\ell$-ten Eliminationsschritt sieht die Matrix wie links angegeben
+aus, dieser verläuft wie folgt:
+\end{minipage}\end{tabular}
+
+\begin{enumerate}
+    \item Bestimmung des Maximums $|w_{i,\ell}|$ der Beträge von
+    $w_{\ell,\ell}, \ldots, w_{n,\ell}$ und Vertauschen der Zeilen $\ell$ und
+    $i$,
+    
+    \item Division der Zeile $\ell$ durch $w_{\ell,\ell}$ und
+    
+    \item Subtraktion des $w_{j, \ell}$-fachen der Zeile $\ell$ von allen
+    Zeilen $j$ mit $j \not= l$, d.\,h. \\
+    $w_{j,k} \leftarrow w_{j,k} - w_{j,\ell} \cdot w_{\ell,k}$
+    für $k = \ell, \ldots, n + 1$.
+\end{enumerate}
+
+\linie
+
+\textbf{Vektor- und Matrixnormen}:
+Für zwei Matrizen oder Vektoren gilt stets
+$\norm{A \cdot B} \le \norm{A} \cdot \norm{B}$.
+\begin{align*}
+    \norm{x}_2 = \sqrt{\sum_k |x_k|^2},
+    \quad
+    \norm{x}_\infty = \max_k |x_k|,
+    \qquad\qquad
+    \norm{A}_\infty = \max_j \sum_k |a_{jk}|,
+    \quad
+    \norm{A}_F = \sqrt{\sum_{i,j} |a_{jk}|^2}
+\end{align*}
+\begin{align*}
+    \norm{A}_2 = \max_{\norm{x}_2 = 1} \norm{Ax}_2
+    = \max\{\sqrt{\lambda} \;|\; \lambda \text{ EW von } A^\ast A\}
+\end{align*}
+
+\linie
+
+\textbf{Fehler bei LGS}:
+Ist $\widetilde{x}$ die numerische berechnete Lösung eines regulären linearen
+LGS $Ax = b$ sowie $A\widetilde{x} = \widetilde{b}$, dann gilt für den
+Fehler $\Delta x = \widetilde{x} - x$, dass
+\begin{align*}
+    \cond(A)^{-1} \cdot\frac{\Vert \Delta b \Vert}{\Vert b \Vert}
+    \le \frac{\Vert \Delta x \Vert}{\Vert x \Vert}
+    \le \cond(A) \cdot \frac{\Vert \Delta b \Vert}{\Vert b \Vert},
+\end{align*}
+wobei $\cond(A) = \Vert A \Vert \cdot \Vert A^{-1} \Vert$ die
+\textbf{Kondition} der Matrix $A$ ist.
+Beide Ungleichungen sind bestmöglich, d.\,h. Gleichheit kann durch
+konkrete Beispiele erreicht werden.
+
+\linie
+
+\textbf{Rückwärtseinsetzen}:
+Bei einem LGS $R = (r_{i,j})_{ij}$ in oberer Dreiecksform mit
+$r_{1,1}, \dotsc, r_{n,n} \not= 0$ können die Unbekannten $x_n, \dotsc, x_1$
+nacheinander bestimmt werden durch
+\begin{align*}
+    x_n = b_n / r_{n,n} \quad\text{ sowie }\quad
+    x_\ell = (b_\ell - r_{\ell,\ell+1} x_{\ell+1} - \dotsb -
+    r_{\ell,n} x_n) / r_{\ell,\ell},
+\end{align*}
+wobei die schon berechneten Werte
+$x_{\ell+1}, \dotsc, x_n$ verwendet werden ($\ell = n - 1, \dotsc, 1$).
+
+\linie
+
+\textbf{\textsc{Cramer}sche Regel}:
+Sei $A$ eine $n \times n$-Matrix und $b$ ein $n$-zeiliger Spaltenvektor.
+Dann lässt sich die Lösung des LGS $Ax = b$ berechnen durch
+\begin{align*}
+    x_i = \frac{\det A_i}{\det A}, \qquad
+    x = \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix}, \qquad
+    i = 1, \dotsc, n,
+\end{align*}
+wobei $A_i$ die Matrix ist, die aus $A$ entsteht, wenn man die $i$-te
+Spalte durch $b$ ersetzt.
+
+\pagebreak
+
+\subsection{%
+    \textsc{Householder}-Transformation und QR-Zerlegung%
+}
+
+\textbf{Spiegelung eines Vektors an einer Hyperebene}:
+Sei $d$ ein zu einer Hyperebene orthogonaler Vektor, dann ist
+\fracsize{$Q = E - \frac{2}{\norm{d}_2^2} d d^t$} die Transformationsmatrix
+der Spiegelung eines Vektors $x$ an der Hyperebene,
+da \fracsize{$Qx = x - \frac{2}{\norm{d}_2^2} d d^t x =
+x - 2 \frac{d}{\norm{d}_2} \cdot \sp{\frac{d}{\norm{d}_2}, x}$},
+wobei \fracsize{$\sp{\frac{d}{\norm{d}_2}, x}$} der Abstand von $x$ zur
+Hyperebene ist.
+
+\linie
+
+\textbf{\textsc{Householder}-Transformation}: Die Transformation
+\begin{align*}
+    x \mapsto Qx = x - \frac{1}{r} \left(d^t x\right) \cdot d, \qquad
+    d = \begin{pmatrix}c_1 + \sigma \norm{c}_2 \\ c_2 \\ \vdots \\
+    c_n\end{pmatrix}, \quad
+    \sigma = \begin{cases}\sgn(c_1) & c_1 \not= 0 \\
+    1 & c_1 = 0\end{cases}, \quad
+    r = |d_1| \norm{c}_2
+\end{align*}
+ist eine Spiegelung, die den Vektor
+$c$ auf $-\sigma \norm{c}_2 \cdot e_1$ (also auf ein Vielfaches des
+ersten Einheitsvektors) abbildet.
+Sie wird \emph{Householder-Transformation} genannt.
+
+Normalerweise wird die Householder-Transformation durch
+\begin{align*}
+    A \mapsto A - d \cdot \frac{1}{r} \left(d^t A\right)
+\end{align*}
+gleichzeitig auf alle Spalten einer Matrix $A$ angewandt, wobei $c = A(:, 1)$
+die erste Spalte von $A$ ist.
+Dadurch werden die Einträge $a_{2,1}, a_{3,1}, \dotsc$ zu $0$.
+
+Die Matrix $Q$ einer Householder-Transformation ist symmetrisch ($Q^t = Q$), \\
+orthogonal ($Q^{-1} = Q^t$) und involutorisch ($Q^2 = E$).
+
+\linie
+
+\textbf{Permutation bei LGS}:
+Bei einem LGS $Ax = b$ ändert eine Permutation
+$(1, 2, \dotsc) \rightarrow I$ \\
+($I$ Indexvektor) der Zeilen der Matrix die rechte Seite ($A(I,:) x = b(I)$)
+und eine Permutation der Spalten die Lösung ($A(:,I) x(I) = b$).
+
+\linie
+
+\textbf{QR-Faktorisierung}:
+Eine $m \times n$-Matrix $A$ kann, ggf. nach einer Permutation der Spalten,
+als Produkt einer orthogonalen Matrix $Q$ und einer oberen Dreiecksmatrix
+$R$ geschrieben werden:
+\begin{align*}
+    A(:,I) = QR \quad\text{ mit }\quad
+    R = \begin{pmatrix}\widetilde{R} & S \\ 0 & 0\end{pmatrix},
+\end{align*}
+wobei $I$ ein Indexvektor und $\widetilde{R}$ eine quadratische invertierbare
+obere Dreiecksmatrix mit Zei\-len"~/Spaltenzahl $\rg A$ ist. \\
+Die QR-Zerlegung lässt sich mit maximal $\min\{m - 1, n\}$
+Householder-Transformationen $Q_k$ konstruieren:
+$Q = (\dotsc Q_2 Q_1)^{-1} = Q_1 Q_2 \dotsc$
+($Q_i$ sind orthogonal und symmetrisch).
+
+\textbf{Ablauf der QR-Faktorisierung}: \\
+\begin{tabular}{p{4.5cm}p{11.65cm}}
+\matrixsize{$\left(\begin{array}{ccc|ccc}
+\ast & \cdots & \ast & \ast & \cdots & \ast \\
+& \ddots & \vdots & \vdots & & \vdots \\
+0 & & \ast & \ast & \cdots & \ast \\ \hline
+& & & & & \\
+& 0 & & & B & \\
+& & & & & \\
+\end{array}\right)$}
+&
+\begin{minipage}[c]{11.65cm}
+Ist die Matrix $Q_{\ell - 1} \dotsm Q_1 A(:,I)$ vor dem $\ell$-ten
+Transformationsschritt von der Form wie links angegeben, so verläuft der
+nächste Schritt wie folgt:
+\end{minipage}\end{tabular}
+\begin{enumerate}
+    \item Ist $B = 0$, so ist die Transformation abgeschlossen.
+    Für $B \not= 0$ tauscht man die erste Spalte mit der Spalte, die
+    die maximale $2$-Norm hat ($c = B(:,1)$).
+    Die Permutation muss durch entsprechenden Tausch in I gespeichert werden.
+    
+    \item Falls $B$ mehr als eine Zeile hat, wendet man nun die
+    Householder-Transformation auf $B$ an, sodass unterhalb von Position
+    $(\ell, \ell)$ Nullen sind.
+\end{enumerate}
+
+\linie
+\pagebreak
+
+\textbf{Lösen eines LGS durch QR-Faktorisierung}:
+Ein LGS $Ax = b$ mit einer $m \times n$-Matrix $A$ kann mithilfe der
+QR-Zerlegung $A(:,I) = QR$ gelöst werden.
+Nach Anwendung der Householder-Transformationen auf $A(:,I)$
+(d.\,h. Multiplikation mit $Q^{-1} = Q^t$) hat das System
+$A(:,I) x(I) = b$ die Form
+\begin{align*}
+    A(:,I) x(I) = b \;\Leftrightarrow\;
+    Ry = Q^t b \;\Leftrightarrow\;
+    \begin{pmatrix}\widetilde{R} & S \\ 0 & 0\end{pmatrix}
+    \begin{pmatrix}u \\ v\end{pmatrix}
+    = \begin{pmatrix}c \\ d\end{pmatrix}, \qquad
+    R = \begin{pmatrix}\widetilde{R} & S \\ 0 & 0\end{pmatrix},
+\end{align*}
+wobei $\widetilde{R}$ eine quadratische, invertierbare, obere Dreiecksmatrix
+(Zeilen-/Spaltenzahl $= \rg A$), $y = x(I)$,
+$u = y(1:k)$, $v = y(k+1:n)$ und
+$Q^t b = \begin{pmatrix}c \\ d\end{pmatrix}$ ist.
+
+\textbf{Lösungen}:
+Eine Lösung existiert genau dann, wenn $d = 0$ ist.
+In diesem Fall kann sie durch Rückwärtseinsetzen bzw. Lösung des Systems
+$\widetilde{R}u + Sv = c$ berechnet werden.
+Für $k = n$ ist die Lösung ist eindeutig, für $k < n$ sind die Komponenten
+$y(k+1:n)$ frei wählbar. \\
+Für $d \not= 0$ ist das LGS nicht lösbar.
+
+\textbf{Fehlerminimierung}:
+Da orthogonale Transformationen (also auch Householder-Transforma\-tionen)
+die $2$-Norm invariant lassen, kann man durch die ermittelte Faktorisierung und
+den Fehler $e = \norm{Ax - b}_2 = \norm{Q^tAx - Q^tb}_2$ minimieren.
+Der Vektor $x$, der den Fehler $e$ minimiert, ergibt sich durch obige Lösung
+$\widetilde{R}u + Sv = c$.
+Der minimale Fehler ist dann $e_{min} = \norm{d}_2$.
+
+\textbf{reguläres System}:
+Ist $Ax = b$ mit einer invertierbaren $n \times n$-Matrix $A$,
+dann ist die Zei\-len"~/Spaltenzahl von $\widetilde{R}$ gleich $\rg A = n$.
+Die QR-Zerlegung $A(:,I) = QR$ ergibt in diesem Fall $R = \widetilde{R}$
+als invertierbare obere Dreiecksmatrix ($n \times n$).
+
+\subsection{%
+    \textsc{Padé}-Approximation%
+}
+
+\textbf{\textsc{Padé}-Approximation}:
+Die Padé-Approximation einer Funktion $f(x) = f_0 + f_1 x + f_2 x^2 + \dotsb$
+ist eine rationale Funktion
+\begin{align*}
+    \frac{p(x)}{q(x)} \approx f(x), \qquad
+    p(x) = p_0 + p_1 x + \dotsb + p_m x^m, \quad
+    q(x) = q_0 + q_1 x + \dotsb + q_m x^m
+\end{align*}
+mit Zählergrad $m$ und Nennergrad $n$,
+die mit $f$ für $z \to 0$ in den Termen der Ordnung bis einschließlich $m + n$
+übereinstimmt, d.\,h. $\frac{p(x)}{q(x)} - f(x) = \O(x^{m+n+1})$.
+
+\textbf{Beispiel für $m = n = 2$}:
+Zur Bestimmung der Koef"|fizienten von $p$ und $q$ kann man $f$ z.\,B. in
+eine Taylor-Reihe $f(x) = f_0 + f_1 x + f_2 x^2 + \dotsb$ im Punkt $0$
+entwickeln, damit $f$ eine Potenzreihe ist.
+Durch Ausmultiplizieren von $f(x) q(x) \approx p(x)$ bzw. \\
+$(f_0 + f_1 x + f_2 x^2 + \dotsb) (1 + q_1 x + q_2 x^2) =
+(p_0 + p_1 x + p_2 x^2)$ ($q_0$ kann durch Kürzen immer auf $1$ gesetzt werden)
+und Sammeln der Terme gleicher Ordnung auf der linken Seite entsteht ein
+LGS mit den $m + n + 1$ Unbestimmten $p_0, p_1, p_2, q_1, q_2$
+in $m + n + 1$ Gleichungen, wobei $f_0, f_1, f_2, f_3, f_4$ auf der
+rechten Seite steht.
+
+\pagebreak

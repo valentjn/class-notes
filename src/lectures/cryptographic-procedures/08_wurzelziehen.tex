@@ -1,0 +1,302 @@
+\section{%
+    Wurzelziehen in endlichen Körpern%
+}
+
+\subsection{%
+    Kriterien für Quadratzahlen%
+}
+
+\textbf{einfacher Spezialfall}:
+Wurzelziehen in einer endlichen Gruppe $G$ mit $|G|$ ungerade
+
+Ist $G$ eine endliche Gruppe mit $|G|$ ungerade und $a \in G$,
+so ist $a^{(|G|+1)/2}$ eine Wurzel von $a$
+nach dem Satz von Lagrange (wegen $(a^{(|G|+1)/2})^2 = a^{|G|} a = a$).
+Insbesondere besitzt jedes Element eine Wurzel.
+
+\textbf{Körper mit geraden vielen Elementen}:\\
+Damit besitzt in endlichen Körpern $\FF$ mit $|\FF|$ gerade jedes Element eine Wurzel,
+da dann $(\FF^\ast, \cdot)$ endliche Gruppe mit $|\FF^\ast|$ ungerade ist,
+wobei $\FF^\ast := \FF \setminus \{0\}$.
+Weil $|\FF|$ immer eine Primzahlpotenz ist, tritt dieser Fall ein genau dann, wenn
+$|\FF| = 2^k$ für ein $k \in \natural$.
+OBdA kann man im Folgenden also von $|\FF|$ ungerade ausgehen.
+
+\linie
+
+\textbf{Körper mit ungeraden vielen Elementen}:\\
+Sei im Folgenden $\FF$ ein Körper mit $q := |\FF|$ ungerade (es gilt $\FF \cong \FF_q$).
+
+\textbf{Satz (\name{Euler}-Kriterium)}:
+Sei $a \in (\FF_q)^\ast$ mit $q$ ungerade.\\
+Dann ist $a$ eine Quadratzahl in $(\FF_q)^\ast$ genau dann, wenn $a^{(q-1)/2} = 1$
+(sonst ist $a^{(q-1)/2} = -1$).
+Genau die Hälfte der Elemente aus $(\FF_q)^\ast$ ist eine Quadratzahl.
+
+\pagebreak
+
+\subsection{%
+    Algorithmus von \name{Cipolla}%
+}
+
+\textbf{Algorithmus von \name{Cipolla}}:
+Seien $\FF$ ein Körper mit $q := |\FF|$ ungerade und $a \in \FF^\ast$ eine Quadratzahl.
+Der \begriff{Algorithmus von \name{Cipolla}} bestimmt die Wurzel von $a$ in $\FF$ wie folgt:
+\begin{enumerate}
+    \item
+    Wähle $t \in \FF$ solange zufällig, bis $t^2 - 4a$ kein Quadrat ist.
+    
+    \item
+    Setze $f(X) := X^2 - tX + a \in \FF[X]$.
+    
+    \item
+    Gebe $X^{(q+1)/2} \bmod f(X)$ aus.
+\end{enumerate}
+
+\linie
+
+\textbf{Satz (Korrektheit)}:
+Der Algorithmus von Cipolla arbeitet korrekt, d.\,h. $\overline{X^{q+1}} = \overline{a}$.
+
+\begin{Beweis}
+    $t^2 - 4a$ ist die Diskriminante von $f(X)$ und keine Quadratzahl nach Konstruktion.
+    Damit ist $f(X)$ irreduzibel und $\KK := \FF[X]/\erzeugnis{f(X)}$ ein Körper.
+    Definiere nun das Polynom $g(Y) := Y^2 - \overline{t} Y + \overline{a} \in \KK[Y]$.
+    Dann hat $g(Y)$ die beiden Nullstellen $\overline{X}, \overline{t - X} \in \KK \setminus \FF$,
+    denn $g(\overline{X}) = \overline{X^2 - tX + a} = \overline{f(X)} = 0$,
+    $g(\overline{t - X}) = \overline{(t - X)^2 - t(t - X) + a} = \overline{X^2 - tX + a} = 0$.
+    $g(Y)$ ist normiert, d.\,h. es gilt damit
+    $g(Y) = (Y - \overline{X}) (Y - \overline{(t - X)}) = Y^2 - \overline{t}Y + \overline{X(t-X)}$.
+    Mit Koef"|fizientenvergleich muss daher $\overline{a} = \overline{X(t - X)}$ gelten.
+    Aus $a = a^{|\FF^\ast|} a = a^{q-1} a = a^q$ folgt nun
+    $\overline{a} = \overline{X}^q \overline{(t - X)}^q
+    = \overline{X}^q (\overline{t^q} - \overline{X}^q)
+    = \overline{X}^q (\overline{t} - \overline{X}^q)$.
+    Damit gilt aber $(Y - \overline{X}^q) (Y - \overline{(t - X^q)})$\\
+    $= Y^2 - \overline{t}Y + \overline{X}^q (\overline{t} - \overline{X}^q)
+    = Y^2 - \overline{t}Y + \overline{a} = g(Y)$, d.\,h. $\overline{X}^q, \overline{(t - X^q)}$
+    sind auch jeweils Nullstellen von $g$.
+    Polynome im Körper $\KK$ haben höchstens zwei Nullstellen, d.\,h.
+    $\{\overline{X}, \overline{t - X}\} = \{\overline{X}^q, \overline{(t - X^q)}\}$.
+    Es gilt $\overline{X}^q \not= \overline{X}$, da $\overline{X}$ sonst eine Nullstelle
+    von $Y^q - Y \in \KK[Y]$ wäre (dieses Polynom hat nur alle Elemente aus $\FF$ als Nullstelle,
+    es gilt aber $\overline{X} \notin \FF$).
+    Damit muss $\overline{X}^q = \overline{t - X}$ gelten sowie
+    $\overline{X^{q+1}} = \overline{X} \cdot \overline{X}^q
+    = \overline{X} \overline{(t - X)} = \overline{a}$.
+\end{Beweis}
+
+Nach dem Satz ist $\overline{X^{(q+1)/2}}$ eine Wurzel von $a$ in $\KK$.
+Weil aber $a$ eine Quadratzahl in $\FF$ ist, liegen alle Wurzeln in $\FF$ und es gibt ein
+Element in $\FF$ mit Nebenklasse $\overline{X^{(q+1)/2}}$ wie gewünscht.
+
+\linie
+
+\textbf{Satz (Zuverlässigkeit)}:
+Seien $a \in \FF^\ast$ eine Quadratzahl und $t \in \FF$ zufällig.\\
+Dann ist die Wahrscheinlichkeit, dass $t^2 - 4a$ kein Quadrat ist, gleich $\frac{q-1}{2q}$.
+
+\begin{Beweis}
+    $t^2 - 4a$ ist eine Quadratzahl genau dann, wenn $X^2 - tX + a$ in Linearfaktoren zerfällt,
+    d.\,h. wenn $\exists_{\alpha, \beta \in \FF}\; X^2 - tX + a = (X - \alpha)(X - \beta)$.
+    Das ist äquivalent zu
+    $\exists_{\alpha, \beta \in \FF}\; a = \alpha\beta,\; t = \alpha + \beta$.
+    Man geht daher alle Paare $\alpha, \beta \in \FF$ mit $\alpha\beta = a$ durch
+    (ohne Berücksichtigung der Reihenfolge)
+    und zählt die verschiedenen Summen $\alpha + \beta$,
+    um die Anzahl der $t \in \FF$ mit $t^2 - 4a$ Quadratzahl zu erhalten.
+    Es gibt zwei Fälle:
+    \begin{enumerate}
+        \item
+        $\alpha = \beta$:
+        Dieser Fall tritt genau zwei Mal auf, da $\alpha$ dann eine Wurzel von $a$ ist,
+        d.\,h. es gibt nur die Möglichkeiten $\alpha = \sqrt{a} = \beta$ und
+        $\alpha = -\sqrt{a} = \beta$.
+        Man erhält als Summe $\alpha + \beta = \pm 2\sqrt{a}$.
+        Das sind zwei verschiedene Werte, denn sonst wäre (in $\FF$ gilt $4 \not= 0$)\\
+        $4\sqrt{a} = 0 \iff \sqrt{a} = 0 \iff a = 0$, ein Widerspruch zu $a \in \FF^\ast$.
+        
+        \item
+        $\alpha \not= \beta$:
+        Dieser Fall tritt ein genau dann, wenn
+        $\alpha, \beta \in \FF^\ast \setminus \{\pm\sqrt{a}\}$.
+        Sei $\beta \in \FF^\ast \setminus \{\pm\sqrt{a}\}$ vorgegeben.
+        Dann ist $\alpha$ eindeutig bestimmt durch $\alpha = a\beta^{-1}$.
+        Weil es $(q - 3)$-viele Möglichkeiten für $\beta$ gibt,
+        gibt es $\frac{q-3}{2}$-viele Möglichkeiten für $\{\alpha, \beta\}$.
+        (Warum ist $\alpha + \beta$ für jede dieser Möglichkeiten verschieden?)
+    \end{enumerate}
+    Man erhält also $2 + \frac{q-3}{2} = \frac{q+1}{2}$ Möglichkeiten für $t \in \FF$,
+    damit $t^2 - 4a$ eine Quadratzahl ist,
+    bzw. $1 - \frac{q+1}{2} = \frac{q-1}{2}$ Möglichkeiten, damit $t^4 - 4a$ kein Quadrat ist.
+\end{Beweis}
+
+\linie
+
+\textbf{Laufzeit}:
+$\O(\log q)$ Körperoperationen, nachdem $t$ gefunden wurde
+
+\pagebreak
+
+\subsection{%
+    Algorithmus von \name{Tonelli}%
+}
+
+\textbf{Motivation}:
+Sei $\FF$ ein Körper mit $q := |\FF|$ ungerade,
+wobei $\ell \in \natural$ und $u \in \natural$ ungerade mit $q - 1 = 2^\ell u$.
+Definiere $G_i := \{g \in \FF^\ast \;|\; g^{2^i u} = 1\}$
+für $i = 0, \dotsc, \ell$.
+Aus Algebra weiß man, dass $G_i \le \FF^\ast$ eine zyklische Untergruppe
+mit $|G_i| = 2^i u$ ist:
+Ist nämlich $x \in \FF^\ast$ ein Erzeuger von $\FF^\ast$, dann ist
+$x^{2^{\ell-i}} = x^{(q-1)/(2^i u)}$ ein Erzeuger von $G_i$.
+Genauer gilt sogar $G_0 \le \dotsb \le G_\ell = \FF^\ast$ mit
+$[G_i : G_{i-1}] = \frac{|G_i|}{|G_{i-1}|} = 2$.
+Insbesondere ist $G_{i-1}$ in $G_i$ ein Normalteiler, d.\,h.
+$G_0 \vartriangleleft \dotsb \vartriangleleft G_\ell = \FF^\ast$.
+
+\linie
+
+Seien nun $i \in \{1, \dotsc, \ell\}$ und
+$g \in \FF^\ast$ keine Quadratzahl, also nach Euler $g^{2^{\ell-1}u} = g^{(q-1)/2} = -1$.
+
+\textbf{Lemma 1}:
+Für $h \in G_{\ell-i-1}$ ist $g^{2^i} h \in G_{\ell-i} \setminus G_{\ell-i-1}$.
+Für $h \in G_{\ell-i} \setminus G_{\ell-i-1}$ ist $g^{2^i} h \in G_{\ell-i-1}$.
+
+\begin{Beweis}
+    Ist $h \in G_{\ell-i-1}$, so ist $g^{2^i} h \in G_{\ell-i} \setminus G_{\ell-i-1}$,
+    weil $g^{2^i}, h \in G_{\ell-i}$
+    (da $(g^{2^i})^{2^{\ell-i} u} = g^{2^\ell u} = 1$),
+    aber $g^{2^i} \notin G_{\ell-i-1}$,
+    weil $(g^{2^i})^{2^{\ell-i-1} u} = g^{2^{\ell-1} u} = -1 \not= 1$.
+    
+    Umgekehrt folgt aus $h \in G_{\ell-i} \setminus G_{\ell-i-1}$,
+    dass $g^{2^i} h \in G_{\ell-i-1}$,
+    weil $(g^{2^i} h)^{2^{\ell-i-1} u} = g^{2^{\ell-1} u} h^{2^{\ell-i-1} u}$
+    und $g^{2^{\ell-1} u} = -1$ sowie
+    $h^{2^{\ell-i-1} u} = -1$ (es gilt $(h^{2^{\ell-i-1} u})^2 = h^{2^{\ell-i} u} = 1$ wegen
+    $h \in G_{\ell-i}$, d.\,h. $h^{2^{\ell-i-1} u} = \pm 1$,
+    aber $h^{2^{\ell-i-1} u} = +1$ ist wegen $h \notin G_{\ell-i-1}$ nicht möglich).
+\end{Beweis}
+
+\textbf{Lemma 2}:
+$G_{\ell-i}/G_{\ell-i-1} \subset \erzeugnis{gG_{\ell-i-1}}$
+
+\begin{Beweis}
+    Für $hG_{\ell-i-1} \in G_{\ell-i}/G_{\ell-i-1}$ gilt
+    $hG_{\ell-i-1} = G_{\ell-i-1}$ oder
+    $hG_{\ell-i-1} = G_{\ell-i} \setminus G_{\ell-i-1}$
+    und im zweiten Fall gilt $G_{\ell-i} \setminus G_{\ell-i-1} = g^{2^i} G_{\ell-i-1}$
+    nach dem vorherigen Lemma.
+\end{Beweis}
+
+%Es gilt $G_{\ell-i}/G_{\ell-i-1} = \{G_{\ell-i-1}, G_{\ell-i} \setminus G_{\ell-i-1}\}$, weil
+%$[G_{\ell-i} : G_{\ell-i-1}] = 2$.
+
+\textbf{Lemma 3}:
+Für alle $a \in \FF^\ast$ gibt es $h \in G_0$ und $k \in \natural_0$ mit $a = g^k h$.\\
+Ist $a$ zusätzlich eine Quadratzahl, dann ist $k$ gerade.
+
+\begin{Beweis}
+    Sei $a \in \FF^\ast = G_\ell$, dann gilt $aG_{\ell-1} \in G_\ell/G_{\ell-1} \subset
+    \erzeugnis{gG_{\ell-1}}$, d.\,h. es gibt ein $m_1 \in \natural_0$ mit
+    $a G_{\ell-1} = g^{m_1} G_{\ell-1}$ bzw. $ag^{-m_1} \in G_{\ell-1}$.
+    Damit gilt
+    $ag^{-m_1} G_{\ell-2} \in G_{\ell-1}/G_{\ell-2} \subset \erzeugnis{gG_{\ell-2}}$, d.\,h.
+    es gibt $m_2 \in \natural_0$ mit $ag^{-m_1} G_{\ell-2} = g^{m_2} G_{\ell-2}$ bzw.
+    $ag^{-m_1-m_2} \in G_{\ell-2}$ usw.
+    Induktiv erhält man, dass es für jedes $a \in \FF^\ast$ ein $k \in \natural_0$ gibt mit
+    $a = g^k h$ und $h \in G_0$.
+    (Darauf kommt man auch direkt, wenn man weiß, dass $G_0 \vartriangleleft \FF^\ast$
+    sowie $\FF^\ast/G_0$ zyklisch ist und von $gG_0$ erzeugt wird.)
+
+    Ist $a \in \FF^\ast$ eine Quadratzahl, dann gilt nach Euler\\
+    $1 = a^{(q-1)/2} = a^{2^{\ell-1} u} = (g^k h)^{2^{\ell-1} u}
+    = (g^{2^{\ell-1} u})^k (h^u)^{2^{\ell-1}} = (-1)^k$\\
+    ($g^{2^{\ell-1} u} = -1$ nach Euler und $h^u = 1$ wegen $h \in G_0$),
+    d.\,h. $k$ ist gerade.
+\end{Beweis}
+
+\linie
+\pagebreak
+
+\textbf{Idee}:
+Schreibe die Quadratzahl $a \in \FF^\ast$ als $a = g^k h$ und ziehe getrennt
+Wurzeln aus $g^k$ und $h$.\\
+Es gilt $\sqrt{g^k} = g^{k/2}$ wg. $k$ gerade und
+$\sqrt{h} = h^{(|G_0|+1)/2} = h^{(u+1)/2}$ wg. $h \in G_0$ mit
+$|G_0| = u$ ungerade.
+
+\textbf{Bestimmung von $k$}:
+Schreibe $k$ in Binärdarstellung $k = \sum_{j=0}^{\ell-1} k_j 2^j$ mit
+$k_0, \dotsc, k_{\ell-1} \in \{0, 1\}$.
+Dann bestimmt man für $i = 1, \dotsc, \ell$ den Koef"|fizienten $k_{i-1}$ aus
+$k_0, \dotsc, k_{i-2}$ wie folgt:
+Wegen $h^u = 1$ gilt $1 = h^{2^{\ell-i}u} = (ag^{-k})^{2^{\ell-i}u}
+= a^{2^{\ell-i}u} g^{-2^{\ell-i} u \sum_{j=0}^{i-1} k_j 2^j}
+\cdot [g^{-2^{\ell-i} u \sum_{j=i}^{\ell-1} k_j 2^j}]$.
+Es gilt $[\cdots] = 1$, weil $g^{2^\ell u} = 1$.
+Damit erhält man
+$1 = (ag^{-\sum_{j=0}^{i-1} k_j 2^j})^{2^{\ell-i} u}$, d.\,h.
+$ag^{-\sum_{j=0}^{i-1} k_j 2^j} \in G_{\ell-i}$.
+Analog gilt $ag^{-\sum_{j=0}^{i-2} k_j 2^j} \in G_{\ell-i+1}$.
+Gilt bereits $ag^{-\sum_{j=0}^{i-2} k_j 2^j} \in G_{\ell-i}$,
+so wählt man $k_{i-1} := 0$,
+andernfalls wählt man $k_{i-1} := 1$
+(nach Lemma 1 ist dann $(g^{-k_{i-1}})^{2^{i-1}} ag^{-\sum_{j=0}^{i-2} k_j 2^j}
+= ag^{-\sum_{j=0}^{i-1} k_j 2^j} \in G_{\ell-i}$).
+Die Wahl ist eindeutig (würde man $k_{i-1} := 1$ im ersten Fall wählen,
+dann wäre das Ergebnis in $G_{\ell-i+1} \setminus G_{\ell-i}$ nach Lemma 1).
+
+\textbf{Algorithmus von \name{Tonelli}}:
+Seien $\FF$ ein Körper mit $q := |\FF|$ ungerade und $a \in \FF^\ast$ eine Quadratzahl.
+Der \begriff{Algorithmus von \name{Tonelli}} bestimmt die Wurzel von $a$ in $\FF$ wie folgt:
+\begin{enumerate}
+    \item
+    Wähle $g \in \FF^\ast$ zufällig mit $g$ keine Quadratzahl.
+    
+    \item
+    Bestimme sukzessive $k_0, \dotsc, k_{\ell-1}$ mit
+    $ag^{-\sum_{j=0}^{i-1} k_j 2^j} \in G_{\ell-i}$.
+    
+    \item
+    Setze $k := \sum_{j=0}^{\ell-1} k_j 2^j$ und $h := ag^{-k}$.
+    
+    \item
+    Gebe $g^{k/2} h^{(u+1)/2}$ als Wurzel von $a$ aus.
+\end{enumerate}
+
+\linie
+
+\textbf{Satz (Korrektheit)}:
+Der Algorithmus arbeitet korrekt, d.\,h. $(g^{k/2} h^{(u+1)/2})^2 = a$.
+
+\begin{Beweis}
+    Nach obiger Bemerkung ist für $i = 1, \dotsc, \ell$ die Wahl von $k_{i-1}$ aus
+    $0, \dotsc, k_{i-2}$ eindeutig durch den Test
+    "`$ag^{-\sum_{j=0}^{i-2} k_j 2^j} \overset{?}{\in} G_{\ell-i}$"' bestimmt
+    und es gilt $ag^{-\sum_{j=0}^{i-1} k_j 2^j} \in G_{\ell-i}$.
+    Insbesondere gilt
+    $ag^{-\sum_{j=0}^{\ell-1} k_j 2^j} = ag^{-k} =: h \in G_0$,
+    wobei $|G_0| = u$ ungerade ist.\\
+    Damit ist $(g^{k/2} h^{(u+1)/2})^2 = g^k h^{u+1} = g^k h = a$.
+\end{Beweis}
+
+\linie
+
+\textbf{Laufzeit}:
+$\O(\ell \log q) \subset \O(\log^2 q)$ Körperoperationen, nachdem $g$ gefunden wurde
+%$\O(\log q)$ (aber bessere Konstante wie der Algorithmus von Cipolla)
+
+\textbf{\name{Shanks}' Trick}:
+ersetze $g$ durch $g' := g^u$\\
+($g'$ ist ebenfalls keine Quadratzahl, da
+$(g^u)^{(q-1)/2} = (g^{(q-1)/2})^u = (-1)^u = -1$),\\
+dann gilt $ag^{-\sum_{j=0}^{i-1} k_j 2^j} \in G_{\ell-i} \iff
+(c (g')^{-\sum_{j=0}^{i-1} k_j 2^j})^{2^{\ell-i}} = 1$
+mit $c := a^u$ (Überprüfung mit $\O(\ell)$ Operationen möglich),
+die Gesamtlaufzeit beträgt dann $\O(\ell^2 + \log q)$
+
+\pagebreak

@@ -1,0 +1,342 @@
+\section{%
+    Nicht-LP-basierte Approximationen%
+}
+
+\subsection{%
+    Lokale Suche für UFL%
+}
+
+\textbf{lokale Suche}:
+\begin{enumerate}
+    \item
+    Starte mit einer zulässigen Lösung
+    (bei UFL öffne ein Lager und verbinde alle Kunden mit dem Lager).
+    
+    \item
+    Führe lokale Operationen solange aus, bis sich die Lösung nicht mehr verbessert.
+    Bei UFL gibt es die folgenden Operationen:
+    \begin{itemize}
+        \item 
+        ADD:
+        Öffne ein neues Lager $i^\ast$ und
+        verbinde alle Kunden mit $i^\ast$, für die $i^\ast$ am billigsten ist
+        (nur, wenn die Ersparnisse die Öffnungskosten von $i^\ast$ überwiegen).
+        
+        \item
+        SWAP:
+        Öffne ein neues Lager $i^\ast$ und
+        schließe alle Lager $i$ mit\\
+        $f_i + \sum_{j \in D,\; \text{$j$ mit $i$ verbunden}} (c_{i,j} - c_{i^\ast,j}) > 0$\\
+        (nur, wenn $\sum_{\text{$i$ zu schließen}}
+        (f_i + \sum_{j \in D,\; \text{$j$ mit $i$ verbunden}} (c_{i,j} - c_{i^\ast,j})) >
+        f_{i^\ast}$).
+        
+        \item
+        DELETE:
+        Lösche ein Lager und verbinde die verwaisten Kunden mit den nächstgelegenen Lagern.
+    \end{itemize}
+\end{enumerate}
+
+\linie
+
+Seien $F, F^\ast$ die Öffnungskosten der aktuellen/optimalen Lösung und
+$C, C^\ast$ die Verbindungskosten der aktuellen/optimalen Lösung.
+
+\textbf{Lemma 1}:
+Wenn es keine verbessernde ADD-Operation mehr gibt, dann gilt
+$C \le F^\ast + C^\ast$.
+
+\textbf{Lemma 2}:
+Wenn es keine verbessernde SWAP/DELETE-Operationen mehr gibt, dann gilt
+$F \le F^\ast + C^\ast + C$.
+
+\textbf{Satz ($3$-Approximation)}:
+Es gilt $F + C \le 3(F^\ast + C^\ast)$.
+
+\begin{Beweis}
+    Aus den Lemmas folgt
+    $F + C
+    \le (F^\ast + C^\ast + C) + C
+    = F^\ast + C^\ast + 2C
+    \le 3(F^\ast + C^\ast)$.
+\end{Beweis}
+
+\linie
+
+Der Algorithmus muss in nicht in Polynomialzeit laufen, weil die lokale
+Verbesserung in jedem Schritt sehr klein sein kann.
+Man kann diesen Algorithmus aber in einen Polynomialzeit-Algorithmus umwandeln,
+wenn man nur solche Operationen durchführt,
+die den Zielfunktionswert um mindestens einen Faktor von $1 + \alpha$ mit $\alpha > 0$
+fest vergrößern.
+
+Besitzt nämlich die Startlösung den Zielfunktionswert $S_0$ und die optimale Lösung den Wert
+$S_\ast$,
+so macht der Algorithmus $k$ Iterationen mit
+$S_0 (1+\alpha)^k = S_\ast \iff k = \frac{\log(S_\ast/S_0)}{\log(1 + \alpha)}$,
+was polynomiell ist.
+
+Man kann zeigen, dass man mit diesem Algorithmus eine $3(1 + \alpha)$-Approximation erhält.
+
+\pagebreak
+
+\subsection{%
+    \emph{Precedence Constraint Scheduling}%
+}
+
+\subsubsection{%
+    Problem%
+}
+
+\textbf{Precedence Constraint Scheduling}:\\
+Beim \begriff{PCS-Problem} ist
+ein gerichteter azyklischer Graph (DAG) $G = (V, E)$ und $m \in \natural$ gegeben.\\
+Gesucht ist eine Funktion $\phi\colon V \to \natural$ mit
+$\forall_{i \in \natural}\; |\phi^{-1}(i)| \le m$ und
+$\forall_{e = (v,w) \in E}\; \phi(v) < \phi(w)$, sodass $\max_{v \in V} \phi(v)$ minimal wird.
+$\phi$ heißt \begriff{Schedule} und $\max_{v \in V} \phi(v)$ heißt \begriff{Länge} von $\phi$.\\
+Das PCS-Problem ist NP-vollständig.
+
+\textbf{Interpretation}:
+Die Knoten des Graphen stellen Teilprojekte eines zu absolvierenden Projekts dar,
+wobei die Kanten Abhängigkeiten zwischen den Teilprojekten angeben
+($w$ muss nach $v$ begonnen werden, falls $(v, w) \in E$).
+Jedes Projekt dauert $1$ Zeitschritt,
+wobei $m$ Arbeiter/Maschinen zur Verfügung stehen,
+d.\,h. niemals dürfen mehr als $m$ Teilprojekte gleichzeitig bearbeitet werden.
+$\phi(v)$ gibt nun an, zu welchem Zeitschritt das Teilprojekt $v$ bearbeitet wird.
+
+\subsubsection{%
+    Algorithmus%
+}
+
+\textbf{Algorithmus}:
+Angenommen, es gibt einen Knoten $s_0 \in V$ (\begriff{Startknoten})
+ohne eingehende Kanten, aber mit ausgehenden Kanten zu jedem anderen Knoten.
+\begin{enumerate}
+    \item
+    Berechne für jedes $v \in V$ ein \begriff{Distanz-Label} $d(v)$ als
+    die Länge des längsten Pfads von $s_0$ nach $v$ (geht, da $G$ azyklisch).
+    Es muss $\phi(v) \ge d(v)$ gelten.
+    
+    \item
+    Sei $d_i := |\{v \in V \;|\; d(v) = i\}|$.
+    Führe zunächst alle $v \in V$ mit $d(v) = 1$ aus
+    (benötigt $\lceil\frac{d_1}{m}\rceil$ Zeitschritte),
+    anschließend alle $v \in V$ mit $d(v) = 2$
+    (benötigt $\lceil\frac{d_2}{m}\rceil$ Zeitschritte) usw.
+\end{enumerate}
+
+\textbf{Satz ($2$-Approximation)}:
+Der Algorithmus produziert eine $2$-Approximation.
+
+\begin{Beweis}
+    Sei $t := \max_{v \in V} d(v)$ und $n := |V|$.
+    Dann ist die Länge $L := \max_{v \in V} \phi(v)$ des
+    vom Algorithmus erzeugten Schedules gegeben durch
+    $L
+    = \sum_{i=1}^t \lceil\frac{d_i}{m}\rceil
+    < \sum_{i=1}^t (\frac{d_i}{m} + 1)
+    = \frac{n}{m} + t
+    \le 2L_\opt$
+    mit $L_\opt$ der optimalen Schedulelänge
+    ($\frac{n}{m} \le L_\opt$, weil $\frac{n}{m}$ die Länge wäre,
+    wenn $m$ Arbeiter ununterbrochen arbeiten würden, und
+    $t \le L_\opt$, weil $\forall_{v \in V}\; \phi_{\text{opt}}(v) \ge d(v)$).
+    Somit produziert der Algorithmus eine $2$-Approximation.
+\end{Beweis}
+
+\pagebreak
+
+\subsubsection{%
+    Inapproximierbarkeit%
+}
+
+\textbf{$k$-CLIQUE}:
+Gegeben seien ein unger. Graph $G = (V, E)$ und $k \in \natural$.
+Das \begriff{$k$-CLIQUE-Problem} lautet nun:
+Gibt es eine \begriff{$k$-Clique} in $G$, d.\,h. $C \subset V$ mit $|C| = k$ und
+$\forall_{v, w \in C,\; v \not= w}\; \{v, w\} \in E$?\\
+$k$-CLIQUE ist NP-vollständig.
+
+\linie
+
+\textbf{Konstruktion von $I$}:
+Sei eine $k$-CLIQUE-Instanz $G = (V, E)$ mit $k \in \natural$ gegeben.
+Im Folgenden wird daraus eine PCS-Instanz $I$
+mit Graph $H = (W, D)$ und $m \in \natural$ konstruiert.
+\begin{itemize}
+    \item
+    Setze $W := V \cup E \cup F_1 \cup F_2 \cup F_3$ für die Knoten,
+    wobei $F_1, F_2, F_3$ paarweise disjunkte \begriff{Füllmengen} mit noch zu bestimmenden
+    Kardinalitäten sind.
+    
+    \item
+    Setze $D$ so, dass
+    alle Jobs in $F_1$ vor denen in $F_2$ bearbeitet sein müssen,
+    alle Jobs in $F_2$ vor denen in $F_3$ bearbeitet sein müssen und
+    $(v, e), (w, e) \in D$ für $e = \{v, w\} \in E$
+    (Knotenjobs vor zugehörigem Kantenjob).
+    
+    \item
+    Wähle $m, |F_1|, |F_2|, |F_3|$, sodass
+    $m = k + |F_1|$, $m = \frac{k(k-1)}{2} + (|V| - k) + |F_2|$ und\\
+    $m = |E| - \frac{k(k-1)}{2} + |F_3|$
+    (wähle z.\,B. $m := |V|^3$ und setze $|F_1|, |F_2|, |F_3|$ entsprechend).
+\end{itemize}
+
+\linie
+
+\textbf{Lemma 1}:
+$I$ kann immer in 4 Zeitschritten bearbeitet werden.
+
+\begin{Beweis}
+    1. Bearbeite $k$ beliebige Knotenjobs und $F_1$.
+    2. Bearbeite die restlichen $|V| - k$ Knotenjobs und $F_2$
+    (ein paar Arbeiter bleiben "`arbeitslos"').
+    3. Bearbeite $|E| - \frac{k(k-1)}{2}$ beliebige Kantenjobs und $F_3$.
+    4. Bearbeite die restlichen $\frac{k(k-1)}{2}$ Kantenjobs.
+\end{Beweis}
+
+\textbf{Lemma 2}:
+$G = (V, E)$ enthält eine $k$-Clique $\iff$ $I$ kann in 3 Zeitschritten bearbeitet werden.
+
+\begin{Beweis}
+    "`$\implies$"':
+    Angenommen, $G = (V, E)$ enthält eine $k$-Clique.
+    1. Bearbeite die $k$ Knotenjobs der $k$-Clique und $F_1$.
+    2. Bearbeite die restlichen $|V| - k$ Knotenjobs, $\frac{k(k-1)}{2}$ Kantenjobs der $k$-Clique
+    und $F_2$.
+    3. Bearbeite die restlichen $|E| - \frac{k(k-1)}{2}$ Kantenjobs und $F_3$.
+    
+    "`$\impliedby$"':
+    Angenommen, $I$ kann in 3 Zeitschritten bearbeitet werden.
+    Dann kann kein Arbeiter zu irgendeiner Zeit "`arbeitslos"' sein
+    (die Jobs $F_i$ müssen im Schritt $i$ bearbeitet werden,
+    dann bleiben für die 3 Zeitschritte insgesamt noch $|V| + |E|$ Arbeiter übrig).\\
+    In Schritt 1 muss wegen der Abhängigkeiten
+    $F_1$ und eine Teilmenge $V' \subset V$ von Knoten mit $|V'| = k$ bearbeitet werden.
+    In Schritt 2 müssen mindestens $F_2$ und die restlichen Knoten $V \setminus V'$ bearbeitet.
+    %werden (damit Kanten in Schritt 3 bearbeitet werden können).
+    Damit müssen in Schritt 2 genau $\frac{k(k-1)}{2}$ der Kanten bearbeitet werden,
+    was nur geht, wenn die bearbeiteten Knoten $V'$ aus Schritt 1 eine $k$-Clique von $G$
+    darstellen.
+\end{Beweis}
+
+\linie
+
+\textbf{Satz (Inapproximierbarkeit von PCS)}:
+Es gibt keinen Polynomialzeit-Algorithmus,
+der eine $\alpha$-Approximation für PCS mit $\alpha < \frac{4}{3}$ liefert,
+wenn $\text{P} \not= \text{NP}$.
+
+\begin{Beweis}
+    Angenommen, ein Polynomialzeit-Algorithmus für $\alpha$-Approximationen von PCS existiert
+    (mit $\alpha < \frac{4}{3}$).
+    Dann könnte man $k$-CLIQUE wie folgt in Polynomialzeit entscheiden:
+    Seien $G = (V, E)$ und $k \in \natural$ gegeben.
+    Konstruiere nun $I$ für $G$ und $k$ und führe den PCS-Algorithmus für $I$ aus,
+    um ein Schedule $\phi$ für $I$ zu erhalten.
+    Dann gibt es zwei Möglichkeiten:
+    \begin{itemize}
+        \item
+        \emph{$G$ enthält eine $k$-Clique}:
+        In diesem Fall kann $I$ nach Lemma 2 in 3 Zeitschritten bearbeitet werden.
+        Daher muss $\phi$ die Länge $3$ haben
+        (ein Schedule der Länge $\ge 4$ würde der $\alpha$-Approximation mit $\alpha < \frac{4}{3}$
+        widersprechen).
+        
+        \item
+        \emph{$G$ enthält keine $k$-Clique}:
+        In diesem Fall kann $I$ nach Lemma 1 in 4,
+        nach Lemma 2 aber nicht in 3 Zeitschritten bearbeitet werden.
+        Daher muss $\phi$ die Länge $\ge 4$ haben.
+    \end{itemize}
+    Man kann also aufgrund der Länge von $\phi$ in Polynomialzeit $k$-CLIQUE entscheiden,
+    ein Widerspruch zur Annahme $\text{P} \not= \text{NP}$.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    \emph{Vertex Cover}%
+}
+
+\textbf{Vertex-Cover-2-Approximation}:
+Der folgende Algorithmus berechnet eine Knotenüberdeckung $C$, die höchstens doppelt so
+groß ist wie eine kleinstmögliche Knotenüberdeckung $C_\opt$.
+\begin{enumerate}
+    \item
+    Setze $C \leftarrow \emptyset$.
+    
+    \item
+    Solange $E \not= \emptyset$, wiederhole:
+    \begin{enumerate}
+        \item
+        Wähle eine beliebige Kante $e = \{v, w\} \in E$.
+        
+        \item
+        Setze $C \leftarrow C \cup \{v, w\}$ und $M \leftarrow M \cup \{e\}$.
+        
+        \item
+        Entferne alle Kanten aus $E$, die inzident zu $v$ oder $w$ sind.
+    \end{enumerate}
+    
+    \item
+    Gebe $C$ aus.
+\end{enumerate}
+
+\linie
+
+\textbf{Satz ($2$-Approximation)}:
+Der Algorithmus produziert eine $2$-Approximation.
+
+\begin{Beweis}
+    Weil im jeden Schritt nur Kanten entfernt werden, von denen ein Endpunkt sich bereits in der
+    Knotenüberdeckung befindet, ist $C$ am Ende eine Knotenüberdeckung.
+    Außerdem ist stets $|C| = 2|M|$, denn wenn eine neue Kante $e$ gewählt wird, dann sind beide
+    Endpunkte noch nicht in $C$.
+    Daher sind die Kanten von $M$ paarweise nicht-adjazent,
+    d.\,h. $M$ ist am Ende ein Matching und es gilt
+    $|C_\opt| \ge |M| = \frac{|C|}{2} \iff |C| \le 2|C_\opt|$.
+    
+    ($|M| \le |C_\opt|$ gilt, weil man eine injektive Abbildung
+    $f\colon M \to C_\opt$ wie folgt konstruieren kann:
+    Sei $e = \{v, w\} \in M$ beliebig.
+    Dann ist $v \in C_\opt$ oder $w \in C_\opt$, d.\,h. setze z.\,B. $f(e) := v$.
+    Es gilt $f(e) \not= f(e')$ für $e \not= e'$,
+    weil sonst $f(e) = f(e')$ ein Endpunkt von $e$ und $e'$ wäre,
+    ein Widerspruch zu $M$ Matching.)
+\end{Beweis}
+
+\linie
+
+\textbf{Bemerkungen}:
+\begin{itemize}
+    \item
+    Der Algorithmus läuft in Zeit $\O(m)$ mit $m := |E|$.
+    
+    \item
+    Es gibt keinen Polynomialzeit-Algorithmus, der eine $1.1666$-Approximation produziert,
+    wenn $\text{P} \not= \text{NP}$.
+    
+    \item
+    Obwohl das VC-Problem NP-vollständig ist, ist die $\integer$-Version des dualen Problems
+    in Polynomialzeit lösbar (bekannt als \begriff{maximum cardinality matching}).
+    
+    \item
+    Es gibt VC-Instanzen, bei denen der Algorithmen tatsächlich Knotenüberdeckungen $C$
+    mit $|C| = 2|C_\opt|$ ausgibt
+    (z.\,B. vollständige bipartite Graphen),
+    d.\,h. die Approximationsschranke ist scharf.
+    
+    \item
+    Man kann keinen anderen Algorithmus entwerfen, der z.\,B. $C$ mit
+    $|C| = \frac{3}{2} |M|$ zurückgibt (und daher besser ist):
+    Sei dazu $K_n$ der vollständige Graph mit $n$ Knoten ($n$ ungerade).
+    Dann hat jedes Matching $M$ die Größe $\le \frac{n-1}{2}$,
+    aber jede Knotenüberdeckung $C$ hat die Größe $\ge n - 1$,
+    d.\,h. $|C|/|M| \ge 2$.
+\end{itemize}
+
+\pagebreak

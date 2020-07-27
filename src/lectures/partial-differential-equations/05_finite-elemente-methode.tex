@@ -1,0 +1,1361 @@
+\section{%
+    Finite-Elemente-Methode%
+}
+
+\subsection{%
+    \name{Galerkin}-Verfahren%
+}
+
+\subsubsection{%
+    Diskrete Lösung und \name{Galerkin}-Projektion%
+}
+
+\begin{Bem}
+    Die Idee des Galerkin-Verfahrens ist,
+    dass man zur numerischen Lösung schwacher Formen von PDEs diese auf
+    endlich-dimensionale Teilräume einschränkt.
+\end{Bem}
+
+\begin{Def}{diskrete Lösung}
+    Seien $V$ ein Hilbertraum,
+    $a(\cdot, \cdot)$ eine stetige, koerzive Bilinearform auf $V$,
+    $\ell(\cdot) \in V'$,
+    $\forall_{v \in V}\; a(u, v) = \ell(v)$ die schwache Form einer PDE und
+    $V_h \le V$ ein endlich-dimensionaler Unterraum.
+    Dann heißt $u_h \in V_h$ mit
+    $\forall_{v \in V_h}\; a(u_h, v) = \ell(v)$
+    \begriff{diskrete Lösung}.
+\end{Def}
+
+\begin{Satz}{Ex. + Eind. + Beschr.}
+    Die diskrete Lösung $u_h \in V_h$ existiert,
+    ist eindeutig und erfüllt $\norm{u_h} \le \frac{1}{\alpha} \norm{\ell}_{V'}$
+    mit $\alpha$ der Koerzivitätskonstanten von $a$ auf $V$.
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Das "`$h$"' in $V_h$ zeigt an, dass der Raum von $V_h$ durch einen
+    Diskretisierungsparameter (z.\,B. Gitterweite) $h \in \real^+$ charakterisiert wird
+    und Hoffnung besteht, dass $\lim_{h \to 0} u_h = u$ mit genügend schneller Konvergenz.
+    Es treten folgende Fragen auf:
+    \begin{itemize}
+        \item
+        Wie ist $V_h$ geschickt zu konstruieren?
+        
+        \item
+        Existieren a-priori-Fehlerschranken $\norm{u - u_h} \le C(u) h^p$?
+        
+        \item
+        Existieren a-posterori-Fehlerschranken $\norm{u - u_h} \le C(u_h) h^p$?
+        
+        \item
+        Wie löst man numerisch das entsprechende LGS?
+    \end{itemize}
+\end{Bem}
+
+\linie
+
+\begin{Lemma}{\name{Galerkin}-Orthogonalität}
+    Seien $u \in V$ die schwache Lösung der PDE und
+    $u_h \in V_h$ die diskrete Lösung.
+    Dann gilt $\forall_{v \in V_h}\; a(u - u_h, v) = 0$.
+\end{Lemma}
+
+\begin{Bem}
+    Für $a(\cdot, \cdot)$ symmetrisch ist dies gerade die Orthogonalität des
+    Projektionsfehlers der orth. Projektion von $u$ auf $V_h$ bzgl. des Energieskalarprodukts,
+    denn für die orth. Projektion $P_a\colon V \to V_h$ mit
+    $\forall_{v \in V} \forall_{w \in V_h}\; \sp{v - P_a v, w}_a = 0$
+    folgt nach dem Lemma $P_a u = u_h$ für die schwache Lösung $u$.
+    Damit ist für $a$ symmetrisch die diskrete Lösung $u_h$ genau das Bild der
+    orth. Projektion der schwachen Lösung $u$ auf $V_h$ bzgl. $\sp{\cdot, \cdot}_a$
+    und heißt daher \begriff{\name{Galerkin}-Projektion}.
+    
+    Für $a(\cdot, \cdot)$ nicht-symmetrisch ist die Galerkin-Projektion i.\,A.
+    keine orth. Projektion bzgl. irgendeines Skalarprodukts,
+    aber das Lemma gilt weiterhin und man spricht immer noch von
+    Galerkin-Projektion/-Orthogonalität.
+\end{Bem}
+
+\subsubsection{%
+    Eigenschaften der diskreten Lösung%
+}
+
+\begin{Lemma}{Reproduktion der schw. Lsg.}
+    Sei $u \in V$ die schw. Lösung.
+    Ist $u \in V_h$, dann $u_h = u$.
+\end{Lemma}
+
+\begin{Bem}
+    Daher ist $V_h := \Span(u)$ ein optimaler, höchstens eindimensionaler Approximationsraum,
+    der aber zur Berechnung so aufwendig ist wie $u$ selbst, also inpraktikabel.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{diskretes Problem als LGS}
+    Sei $(\varphi_j)_{j=1}^n$ eine Basis von $V_h$.
+    Definiere die \begriff{Steifigkeitsmatrix} $A_h = (a_{i,j})_{i,j=1}^n$
+    und die \begriff{rechte Seite} $b_h = (b_i)_{i=1}^n$ durch
+    $a_{i,j} := a(\varphi_j, \varphi_i)$ und $b_i := \ell(\varphi_i)$.\\
+    Dann ist $A_h d = b$ eindeutig lösbar und es gilt $u_h = \sum_{j=1}^n d_j \varphi_j$.
+\end{Satz}
+
+\begin{Bem}
+    $A_h$ ist symmetrisch für $a(\cdot, \cdot)$ symmetrisch
+    (im Gegensatz zum \begriff{Kollokationsverf.}).\\
+    $A_h$ ist positiv definit wg. $a(\cdot, \cdot)$ koerziv
+    (für $d \not= 0$ gilt
+    $d^\tp A_h d = \sum_{i,j=1}^n d_i d_j a(\varphi_j, \varphi_i)$\\
+    $= a(\sum_{j=1}^n d_j \varphi_j, \sum_{i=1}^n d_i \varphi_i)
+    = a(v, v) \ge \alpha \norm{v}^2 > 0$
+    mit $v := \sum_{j=1}^n d_j \varphi_j \not= 0$).
+\end{Bem}
+
+\subsubsection{%
+    Beispiele für Ansatzräume%
+}
+
+\begin{Bsp}
+    Wählt man $V_h$ als Aufspann von Eigenfunktionen des Diff.operators,
+    so erhält man eine optimale Basis bei unbekannter/variabler rechter Seite.
+    
+    Eigenfunktionen und -werte erhält man dabei aus der
+    \begriff{schwachen Form des EW-Problems} des Diff.operators:
+    $w \in V$ heißt \begriff{Eigenfunktion} zum \begriff{Eigenwert} $\lambda$, falls
+    $\forall_{v \in V}\; a(w, v) = \lambda \sp{w, v}_{L^2(\Omega)}$.
+    
+    Unter gewissen Voraussetzungen ($a(\cdot, \cdot)$ symmetrisch und $\Omega$ zush.)
+    kann man zeigen,
+    \begin{itemize}
+        \item
+        dass alle EWe $\lambda_j \in (0, \infty)$ erfüllen (und insb. reell sind),
+        
+        \item
+        dass es abzählbar unendlich viele, unbeschränkte Eigenwerte gibt,
+        also $0 < \lambda_1 \le \lambda_2 \le \dotsb$ und
+        $\lim_{j \to \infty} \lambda_j = \infty$, und
+        
+        \item
+        dass es eine bzgl. $\sp{\cdot, \cdot}_{L^2(\Omega)}$ orthonormale Menge
+        $\{w_j\}_{j\in\natural}$ von Eigenfunktionen zu den Eigenwerten $\lambda_j$ gibt.
+    \end{itemize}
+    
+    Wählt man nun $n \in \natural$, $h := \frac{1}{n}$,
+    $V_h := \Span(\varphi_1, \dotsc, \varphi_n)$,
+    $\varphi_j := w_j$, so folgt für $A_h$, dass
+    $a_{ij} = a(\varphi_j, \varphi_i) = \lambda_j \sp{w_j, w_i}_{L^2(\Omega)}
+    = \lambda_j \delta_{ij}$, also ist $A_h$ diagonal und $d_h = \frac{b_j}{\lambda_j}$.
+    
+    Allerdings ist dieser Ansatz i.\,A. inpraktikabel, da $w_j$ und $\lambda_j$
+    selten bekannt sind.
+\end{Bsp}
+
+\linie
+
+\begin{Bsp}
+    $V_h$ kann man auch als polynomiellen Ansatzraum wählen.
+    Seien dazu $d := 1$, $\Omega := [0, 1]$ und
+    $a(u, v) := \int_0^1 u'v' \dx$ auf $H^1_0(\Omega)$.
+    Dann hat ein Polynom mit Nullrandwerten die Gestalt $p(x) = x(1-x)q(x)$ für $q \in \PP_m$
+    mit $\PP_m$ den Polynomen vom Grad $\le m$.
+    
+    Wählt man nun $n \in \natural$, $h := \frac{1}{n}$,
+    $\varphi_j(x) := x(1-x) \cdot x^{j-1} = x^j (1-x)$, so folgt für $A_h$, dass i.\,A.
+    $a_{ij} = a(\varphi_j, \varphi_i) = \int_0^1 \varphi_j' \varphi_i' \dx \not= 0$,
+    also ist $A_h$ i.\,A. dicht besetzt.
+    Für große $n$ führt dies zu einem Speicherproblem,
+    für mäßig große $n$ ist das Verfahren realisierbar (\begriff{Spektralverfahren}).
+\end{Bsp}
+
+\subsubsection{%
+    \name{Céa}-Lemma%
+}
+
+\begin{Lemma}{\name{Céa}}
+    Seien $a(\cdot, \cdot)$ eine stetige, koerzive Bilinearform auf $V$ mit
+    Stetigkeitskonstante $\gamma$ und Koerzivitätskonstante $\alpha$
+    und $\ell$ eine Bilinearform.\\
+    Dann gilt $\norm{u - u_h} \le \frac{\gamma}{\alpha} \inf_{v \in V_h} \norm{u - v}$
+    für $u \in V$ schw. Lsg. und $u_h \in V_h$ diskr. Lsg.
+\end{Lemma}
+
+\linie
+
+\begin{Bem}
+    Das Céa-Lemma erlaubt einen Zusammenhang zwischen dem Galerkin-Projek"-tionsfehler und
+    der Bestapproximation, weil $\inf_{v \in V_h} \norm{u - v}$ der Bestapproximationsfehler
+    der orth. Projektion $P\colon V \to V_h$ ist (unabhängig von $a$ und $\ell$).
+    Weil der Galerkin-Projektionsfehler höchstens um einen konstanten Faktor schlechter als
+    die Bestapproximation ist, spricht man von \begriff{Quasi-Optimalität} der Galerkin-Projektion.
+    
+    $V_h$ sollte man daher so wählen,
+    dass alle möglichen $u \in V$ möglichst gut approximiert werden können
+    (weil $\lim_{h \to 0} \inf_{v \in V_h} \norm{u - v} = 0 \implies
+    \lim_{h \to 0} \norm{u - u_h} = 0$).
+    
+    Für $a(\cdot, \cdot)$ symmetrisch gilt das Céa-Lemma sogar mit Faktor
+    $\sqrt{\frac{\gamma}{\alpha}}$.
+    Es gilt dann nämlich Normäquivalenz zur Energienorm mit
+    $\sqrt{\alpha} \norm{v} \le \norm{v}_a \le \sqrt{\gamma} \norm{v}$
+    (wenn man $\norm{v}_a^2 = a(v, v)$ einsetzt und Stetigkeit/Koerzivität ausnutzt).
+    Daraus erhält man für $v \in V_h$\\
+    $\norm{u - u_h}_a^{\cancel{2}} = a(u - u_h, u - u_h) = a(u - u_h, u - v) =
+    \sp{u - u_h, u - v}_a \le \cancel{\norm{u - u_h}_a} \norm{u - v}_a$,
+    also $\norm{u - u_h}_a \le \norm{u - v}_a$ bzw.
+    $\norm{u - u_h} \le \sqrt{\frac{\gamma}{\alpha}} \norm{u - v}$.
+\end{Bem}
+
+\pagebreak
+
+\subsubsection{%
+    Notwendigkeit der Koerzivität%
+}
+
+\begin{Bem}
+    Die Koerzivität ist bei der Galerkin-Projektion wesentlich.
+    Für $a(\cdot, \cdot)$ nicht-koerziv kann die Galerkin-Projektion aus einem
+    regulären System in $V$ ein singuläres System in $V_h$ erzeugen.
+\end{Bem}
+
+\begin{Bsp}
+    Setze $V := \real^2$,
+    $a(u, v) := u^\tp \smallpmatrix{1&0\\0&-1} u$,
+    $\ell(v) := \smallpmatrix{1&1} v$.
+    Dann ist $a(\cdot, \cdot)$ nicht-koerziv (negativer EW),
+    aber das System ist regulär, weil\\
+    $\forall_{v \in V}\; a(u, v) = \ell(v) \iff
+    \forall_{v \in V}\; u^\tp \smallpmatrix{1&0\\0&-1} v = \smallpmatrix{1&1} v
+    \iff u^\tp \smallpmatrix{1&0\\0&-1} = \smallpmatrix{1&1}
+    \iff u = \smallpmatrix{1\\-1}$.\\
+    Wählt man nun $V_h := \Span(\varphi_1)$ mit $\varphi_1 := \smallpmatrix{1\\1}$,
+    dann ist das diskrete System singulär, weil das LGS
+    $A_h d = b_h$ mit $A_h = a_{1,1} = a(\varphi_1, \varphi_1) = 0$ und
+    $b_h = \ell(\varphi_1) = 2$ nicht lösbar ist.
+\end{Bsp}
+
+\linie
+
+\begin{Bem}
+    Ein Ausweg kann es sein,
+    getrennte Ansatz- und Testräume zu verwenden\\
+    (\begriff{\name{Petrov}-\name{Galerkin}-Projektion}), d.\,h.
+    seien $V_h, \widetilde{V}_h \le V$ endlich-dimensional,
+    suche $u_h \in V_h$ mit $\forall_{v \in \widetilde{V}_h}\; a(u_h, v) = \ell(v)$.
+    $\widetilde{V}_h$ sollte so gewählt werden, dass das diskrete System regulär ist.
+\end{Bem}
+
+\begin{Bsp}
+    Im Beispiel von eben
+    seien $\varphi_1 \in \real^2 \setminus \Span(\smallpmatrix{1\\1})$,
+    $\widetilde{\varphi}_1 := \smallpmatrix{1&0\\0&-1} \varphi_1$,
+    $V_h := \Span(\varphi_1)$ und
+    $\widetilde{V}_h := \Span(\widetilde{\varphi}_1)$.
+    Damit ist
+    $A_h = a(\varphi_1, \widetilde{\varphi}_1)
+    = \varphi_1^\tp \smallpmatrix{1&0\\0&-1} \widetilde{\varphi}_1
+    = \varphi_1^\tp \cancel{\smallpmatrix{1&0\\0&-1} \smallpmatrix{1&0\\0&-1}} \varphi_1
+    = \norm{\varphi_1}^2
+    > 0$
+    und $b_h := \ell(\widetilde{\varphi}_1)$,
+    d.\,h. das diskrete System ist jetzt regulär.
+\end{Bsp}
+
+\subsection{%
+    Implementierung der Finite-Elemente-Methode%
+}
+
+\subsubsection{%
+    1D-Beispiel (\name{Poisson}-Gleichung)%
+}
+
+\begin{Bem}
+    Üblicherweise wählt man Galerkin-Verfahren mit
+    stückweise polynomiellen, globalen stetigen Ansatzfunktionen, die einen lokalen Träger
+    besitzen.
+\end{Bem}
+
+\begin{Bsp}
+    Für $d := 1$, $\Omega := (0, 1)$
+    sei das äquidistante Gitter
+    $x_i := ih$, $i = 0, \dotsc, n + 1$, mit $n \in \natural$ und $h := \frac{1}{n+1}$ gegeben.
+    Wähle als Ansatzfunktionen die \begriff{Hütchenfunktionen}
+    $\varphi_j$ für $j = 1, \dotsc, n$
+    (d.\,h. stückweise linear mit $\varphi_j(x_i) = \delta_{i,j}$).
+    Man spricht auch von der \begriff{nodalen Basis}.
+    Es gilt $\supp\varphi_j = [x_{j-1}, x_{j+1}]$.
+    Als Ansatzraum erhält man den Raum $V_h := \Span((\varphi_j)_{j=1}^n) \le H^1_0(\Omega)$
+    der linearen Splines.
+    
+    Für das Poisson-Problem $-u'' = f$ in $\Omega$ und $u(0) = 0 = u(1)$ wählt man
+    $a(u, v) := \int_\Omega u'v'\dx$ und $\ell(v) := \int_\Omega fv\dx$.
+    Mit der Ableitung $\varphi_j'(x) = 1/h$ für $x \in (x_{j-1}, x_j)$ und
+    $\varphi_j'(x) = -1/h$ für $x \in (x_j, x_{j+1})$ bekommt man
+    $a_{j,j} = \int_{x_{j-1}}^{x_{j+1}} \frac{1}{h^2} \dx = \frac{2}{h}$,
+    $a_{j+1,j} = \int_{x_j}^{x_{j+1}} \frac{1}{h} (-\frac{1}{h}) \dx = -\frac{1}{h} = a_{j-1,j}$
+    und $a_{i,j} = 0$ für $|i - j| \ge 2$, weil dann
+    $|\supp(\varphi_i) \cap \supp(\varphi_j)| = 0$.
+    
+    Somit ist $A_h = \frac{1}{h}
+    \smallpmatrix{2&-1&&\\-1&2&-1&\\&\ddots&\ddots&\ddots&\\&&-1&2&-1\\&&&-1&2}$
+    tridiagonal und dünn besetzt,
+    weswegen es selbst für große $n$ kein Speicherproblem gibt.
+    Wegen der guten Approximationsfähigkeit von Splines erhält man mit dem
+    Céa-Lemma eine gute Approximation durch die Galerkin-Projektion.
+\end{Bsp}
+
+\pagebreak
+
+\subsubsection{%
+    Simplizes%
+}
+
+\begin{Def}{Simplex}
+    Seien $a_0, \dotsc, a_s \in \real^d$ in \begriff{allgemeiner Lage},
+    d.\,h. $a_1 - a_0, \dotsc, a_s - a_0 \in \real^d$ linear unabhängig.
+    Dann heißt $T := \Conv(a_0, \dotsc, a_s)
+    := \{\sum_{j=0}^s \lambda_j a_j \;|\; \lambda_j \ge 0,\; \sum_{j=0}^s \lambda_j = 1\}$
+    (nicht-degeneriertes) \begriff{$s$-dim. Simplex} in $\real^d$ mit
+    \begriff{Eckenmenge} $\E(T) := \{a_0, \dotsc, a_s\}$.
+\end{Def}
+
+\begin{Def}{Seitensimplex}
+    Seien $r \in \{0, \dotsc, s\}$ und $\{a_0', \dotsc, a_r'\} \subset \{a_0, \dotsc, a_s\}$.
+    Dann heißt\\
+    $S := \Conv(a_0', \dotsc, a_r')$ \begriff{$r$-dim. Seitensimplex}
+    von $T$ mit \begriff{Eckenmenge} $\E(S) := \{a_0', \dotsc, a_r'\}$.
+\end{Def}
+
+\begin{Def}{Einheitssimplex}
+    Der Simplex mit Ecken $0, e_1, \dotsc, e_d \in \real^d$
+    heißt \begriff{Einheitssimplex} oder \begriff{Referenzelement} $\widehat{T}$ in $\real^d$.
+\end{Def}
+
+\begin{Bem}
+    $T$ heißt \begriff{Strecke}, falls $s = 1$ und $d \ge 1$,
+    \begriff{Dreieck}, falls $s = 2$ und $d \ge 2$, und
+    \begriff{Tetraeder}, falls $s = 3$ und $d \ge 3$.
+    $S$ ist Ecke von $T$, falls $r = 0$,
+    und \begriff{Kante} von $T$, falls $r = 1$.
+\end{Bem}
+
+\linie
+
+\begin{Lemma}{baryzentrische Koordinaten}
+    Sei $T$ ein $s$-dim. Simplex in $\real^d$ und $x \in T$.
+    Dann gibt es eind. bestimmte \begriff{baryzentrische Koord.en}
+    $(\lambda_j)_{j=0}^s$ mit $x = \sum_{j=0}^s \lambda_j a_j$,
+    $\lambda_j \ge 0$ und $\sum_{j=0}^s \lambda_j = 1$.
+\end{Lemma}
+
+\begin{Bem}
+    Mit baryzentrischen Koordinaten kann man $x \in T$ testen
+    (für $x \in \Span(a_j)_{j=0}^d$ gilt
+    $x \in T \iff \forall_{j=0,\dotsc,s}\; \lambda_j \ge 0$).
+    Außerdem lässt sich für $x \in T$ herausfinden, ob $x$ auf einem echten Seitensimplex
+    von $T$ liegt
+    ($|\{j \;|\; \lambda_j \not= 0\}| - 1$ ist die Dimension des Seitensimplex).
+\end{Bem}
+
+\linie
+
+\begin{Def}{geometrische Maße}
+    Für einen Simplex $T$ seien
+    $h_T := \diam(T)$ der \begriff{Durchmesser} von $T$,
+    $\varrho_T := 2 \cdot \sup\{R > 0 \;|\; \exists_{x_0 \in T}\; B_R(x_0) \subset T\}$
+    der \begriff{Inkugeldurchmesser} und
+    $\sigma_T := \frac{h_T}{\varrho_T}$.
+\end{Def}
+
+\begin{Bem}
+    $\sigma_T$ ist ein Maß für die Degeneriertheit von $T$
+    ($\sigma_T$ groß, falls $T$ einen sehr spitzen Winkel hat,
+    und $\sigma_T$ klein, falls $T$ ähnliche Winkel besitzt)
+    und ist invariant unter Translation und Skalierung.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Bei der Fehleranalyse und bei der Implementierung der FEM werden Operationen
+    oft auf dem Referenzelement durchgeführt und dann auf
+    beliebige Simplizies durch Transformation übertragen.
+\end{Bem}
+
+\begin{Satz}{Referenzabbildung}\\
+    Seien $T \subset \real^d$ ein $d$-dim. Simplex mit Ecken $\{a_j\}_{j=0}^d$ und
+    $\widehat{T}$ das Referenzelement.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        Es gibt genau eine af"|fine Abbildung (\begriff{Referenzabbildung})
+        $F_T\colon \widehat{T} \to T$,
+        $F_T(\widehat{x}) := B\widehat{x} + t$,
+        mit $B \in \real^{d \times d}$ regulär und $t \in \real^d$,
+        sodass $F_T(e_j) = a_j$ für $j = 0, \dotsc, d$.
+        
+        \item
+        $\norm{B} \le \frac{h_T}{\varrho_{\widehat{T}}}$
+        (mit $\norm{B} = \norm{B}_2 := \sup_{\widehat{x}\not=0}
+        \frac{\norm{B\widehat{x}}}{\norm{\widehat{x}}}$) und
+        
+        \item
+        $\norm{B^{-1}} \le \frac{h_{\widehat{T}}}{\varrho_T}$
+        
+        \item
+        $|\det B| = \frac{|T|}{|\widehat{T}|}$ und
+        $\exists_{c, C > 0}\; c\varrho_T^d \le |\det B| \le Ch_T^d$
+        mit $c, C$ unabhängig von $T$ (abh. von $d$)
+    \end{enumerate}
+\end{Satz}
+
+\pagebreak
+
+\subsubsection{%
+    Triangulierungen in \texorpdfstring{$d$}{d} Dimensionen%
+}
+
+\begin{Def}{Triangulierung}
+    Seien $\Omega \subset \real^d$ of"|fen, beschränkt und polygonal berandet sowie
+    $I$ eine endliche Indexmenge.
+    Dann heißt $\T_h := \{T_i \;|\; i \in I\}$ \begriff{zulässige Triangulierung}
+    von $\Omega$, falls
+    \begin{itemize}
+        \item
+        $\forall_{i \in I}\; [\text{$T_i \subset \real^d$ ist $d$-dim. Simplex}]$,
+        
+        \item
+        $\bigcup_{i \in I} T_i = \overline{\Omega}$
+        (\emph{Überdeckung}),
+        
+        \item
+        $\forall_{i \not= j}\; \interior(T_i) \cap \interior(T_j) \not= \emptyset$
+        (\emph{keine Überlappung}) und
+        
+        \item
+        für $i \not= j$ ist $S := T_i \cap T_j$
+        leer oder $S$ ist Seitensimplex von $T_i$ und von $T_j$
+        (\begriff{Konformität}).
+    \end{itemize}
+    In diesem Fall heißt
+    $h := \max_{i \in I} h_{T_i}$ \begriff{globale Gitterweite/Feinheit} von $\T_h$,
+    $\varrho := \min_{i \in I} \varrho_{T_i}$ \begriff{minimaler Inkugelradius} von $\T_h$ und
+    $\E(\T_h) = \bigcup_{i \in I} \E(T_i)$ \begriff{Ecken-/Knotenmenge} von $\T_h$.
+\end{Def}
+
+\begin{Bem}
+    Eine zulässige Triangulierung besitzt keine hängenden Knoten.\\
+    Man kann die FEM auch für nicht-konforme Gitter definieren (aber technisch aufwändiger).\\
+    Wenn $\Omega$ keinen polygonalen Rand besitzt, dann kann man mit
+    \begriff{isoparametrischen Elementen} dem Rand approximieren
+    (Zulassen von nicht-linearen Referenzabbildungen).\\
+    Man kann die FEM auch für Vierecksgitter, allgemeine polygonale Triangulierungen
+    oder Gitter gemischter Typen durchführen.
+\end{Bem}
+
+\subsubsection{%
+    Polynome in baryzentrischen Koordinaten%
+}
+
+\begin{Def}{Polynome auf Simplex}
+    Seien $T \subset \real^d$ ein Simplex und $k \in \natural_0$.\\
+    Dann heißt $\PP_k(T) := \{p\colon T \to \real \;|\;
+    p(x) = \sum_{|\beta| \le k,\; \beta \in \natural_0^d} a_\beta x^\beta,\; a_\beta \in \real\}$
+    \begriff{Raum der polynomialen Funktionen} bis Grad $k$ auf $T$,
+    wobei $x^\beta := x_1^{\beta_1} \dotsm x_d^{\beta_d}$.
+\end{Def}
+
+\begin{Def}{Polynome auf Triangulierung}
+    Sei $\T_h$ eine zul. Triangulierung von $\Omega$ und $k \in \natural_0$.\\
+    Dann heißt
+    $\PP_k(\T_h) := \{p \in \C^0(\Omega) \;|\; \forall_{T \in \T_h}\; p|_T \in \PP_k(T)\}$
+    \begriff{Raum der global stetigen, stückweise polynomialen Fkt.en} und
+    $\PP_{k,0}(\T_h) := \{p \in \PP_k(\T_h) \;|\; p|_{\partial\Omega} \equiv 0\}$
+    \begriff{Teilraum mit Nullrandwerten}.
+\end{Def}
+
+\linie
+
+\begin{Lemma}{Polynome in baryzentrischen Koordinaten}
+    Sei $T \subset \real^d$ ein $d$-dim. Simplex.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        Für alle $p \in \PP_k(T)$ gibt es ein $\overline{p} \in \PP_k(\real^{d+1})$
+        in der Form $\overline{p}(\lambda) = \sum_{1 \le |\beta| \le k,\;
+        \beta \in \natural_0^{d+1}} d_\beta \lambda^\beta$, sodass
+        $\forall_{x \in T}\; p(x) = \overline{p}(\lambda(x))$ mit
+        $\lambda(x)$ den baryzentr. Koord.en von $x$ bzgl. $T$.
+        
+        \item
+        Für alle $\overline{p} \in \PP_k(\real^{d+1})$ gilt
+        $\overline{p}(\lambda(x))|_T \in \PP_k(T)$.
+    \end{enumerate}
+\end{Lemma}
+
+\pagebreak
+
+\subsubsection{%
+    Lineare Interpolation auf Triangulierungen%
+}
+
+\begin{Satz}{lineares Finite Element/\name{Courant}-Element}\\
+    Seien $T \subset \real^d$ ein $d$-dim. Simplex mit Ecken $\{a_j\}_{j=0}^d$
+    und $p_0, \dotsc, p_d \in \real$.\\
+    Dann gibt es genau ein $p \in \PP_1(T)$ mit $\forall_{j=0,\dotsc,d}\; p(a_j) = p_j$.
+\end{Satz}
+
+\begin{Bem}
+    Für die Numerik wählt man eine konkrete lokale Basis $\Phi := (\varphi_j)_{j=1}^d$ von
+    $\PP_1(T)$ (z.\,B. nodale Basis zu den Ecken) und schreibt $p \in \PP_1(T)$
+    als Linearkombination dieser Basis.\\
+    Die $\varphi_j$ heißen auch \begriff{Formfaktoren} (\begriff{shape functions}).
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Ex. + Eind. der $\PP_1(\T_h)$-Intp.}\\
+    Seien $\T_h$ eine zul. Triangulierung mit $n_\E := |\E(\T_h)|$,
+    $\{v_j\}_{j=1}^{n_\E} := \E(\T_h)$ und $p_1, \dotsc, p_{n_\E} \in \real$.\\
+    Dann gibt es genau ein $p \in \PP_1(\T_h)$ mit
+    $\forall_{j=1,\dotsc,n_\E}\; p(v_j) = p_j$.
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Die $n_\E$-fache Anwendung des Satzes auf $p_j = \delta_{i,j}$ für
+    $i = 1, \dotsc, n_\E$ liefert die Lagrange-Basis für $\PP_1(\T_h)$.
+\end{Bem}
+
+\begin{Satz}{\name{Lagrange}-Basis für $k = 1$}
+    Sei $\T_h$ eine zul. Triangulierung mit $\{v_j\}_{j=1}^{n_\E} := \E(\T_h)$.\\
+    Dann gibt es $\varphi_1, \dotsc, \varphi_{n_\E} \in \PP_1(\T_h)$ mit
+    $\forall_{i,j=1,\dotsc,n_\E}\; \varphi_i(v_j) = \delta_{i,j}$.\\
+    $\Phi := (\varphi_i)_{i=1}^{n_\E}$ ist eine Basis von $\PP_1(\T_h)$
+    und heißt \begriff{\name{Lagrange}-/nodale Basis} von $\PP_1(\T_h)$.
+\end{Satz}
+
+\begin{Bem}
+    Man kann zeigen, dass
+    $\PP_1(\T_h) \le H^1(\Omega)$ (siehe folgender Satz) und\\
+    $\PP_{1,0}(\T_h) =
+    \{p \in \PP_1(\T_h) \;|\; \forall_{v_j \in \E(\T_h) \cap \partial\Omega}\; p(v_j) = 0\}
+    \le H^1_0(\Omega)$,
+    d.\,h. man kann $V_h := \PP_{1,0}(\T_h)$ im Galerkin-Verfahren verwenden
+    (\begriff{lineare FEM}).
+    Freiheitsgrade sind nur Werte in inneren Knoten.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Der folgende Satz begründet im Fall $k = 1$ die Forderung der globalen Stetigkeit
+    (dann ist nämlich $\PP_1(\T_h) \le H^1(\Omega)$).
+\end{Bem}
+
+\begin{Satz}{schwache Ableitung auf Seitensimplizes}\\
+    Seien $\T_h$ eine zul. Triangulierung,
+    $k \in \natural$ und
+    $v\colon \Omega \to \real$ mit
+    $\forall_{T \in \T_h}\; v|_{\interior(T)} \in \C^k(\interior(T))$.\\
+    Dann gilt $v \in H^k(\Omega) \iff v \in \C^{k-1}(\overline{\Omega})$.
+\end{Satz}
+
+\pagebreak
+
+\subsubsection{%
+    Polynomiale Interpolation auf Triangulierungen%
+}
+
+\begin{Bem}
+    Es folgt eine Erweiterung von $\PP_1(\T_h)$ auf höhere Polynomgrade.
+\end{Bem}
+
+\begin{Def}{\name{Lagrange}-Gitter}
+    Sei $T$ ein $d$-dim. Simplex mit Ecken $\{a_j\}_{j=0}^d$.\\
+    Dann ist das \begriff{\name{Lagrange}-Gitter} der Ordnung $k \in \natural$ von $T$
+    definiert durch\\
+    $G_k(T) := \{\sum_{j=0}^d \lambda_j a_j \;|\;
+    \lambda_j \in \{\frac{i}{k} \;|\; i = 0, \dotsc, k\},\; \sum_{j=0}^d \lambda_j = 1\}$.
+\end{Def}
+
+\begin{Bem}
+    Für $k = 1$ ist $G_1(T) = \E(T)$ und $|G_1(T)| = d+1$.\\
+    Für $k \ge 1$ ist $G_k(T) \supset \E(T)$ mit $|G_k(T)| = \binom{d+k}{k}$.\\
+    Für einen $(d-1)$-dim. Seitensimplex $S \subset T$ gilt
+    $|G_k(T) \cap S| = |G_k(S)| = \binom{d-1+k}{k}$.\\
+    Es gilt
+    $\{\lambda \in \real^{d+1} \;|\; \lambda_j \in \{\frac{i}{k} \;|\; i = 0, \dotsc, k\},\;
+    \sum_{j=0}^d \lambda_j = 1\} \cong
+    \{\beta \in \natural_0^{d+1} \;|\; |\beta| = k\}$ via
+    $\lambda := \frac{\beta}{k}$.
+\end{Bem}
+
+\linie
+
+\begin{Lemma}{baryzentrische \name{Lagrange}-Polynome}\\
+    Seien $k \in \natural$ und
+    $p_\beta(\lambda) := \prod_{\ell=0}^d \prod_{j=0}^{\beta_\ell-1}
+    \frac{\lambda_\ell - j/k}{\beta_\ell/k - j/k}$
+    für $\beta \in \natural_0^{d+1}$, $|\beta| = k$, und $\lambda \in \real^{d+1}$.
+    Dann gilt
+    \begin{enumerate}
+        \item
+        $p_\beta(\lambda) \in \PP_k(\real^{d+1})$ und
+        
+        \item
+        $\forall_{\overline{\beta} \in \natural_0^{d+1},\; |\overline{\beta}| \le k}\;
+        p_\beta(\frac{\overline{\beta}}{k}) = \delta_{\beta,\overline{\beta}}$
+        (mit $\delta_{\beta,\overline{\beta}} :=
+        \prod_{i=0}^d \delta_{\beta_i,\overline{\beta_i}}$).
+    \end{enumerate}
+\end{Lemma}
+
+\begin{Satz}{allg. simpl. \name{Lagrange}-Element}
+    Seien $k \in \natural$,
+    $T$ ein $d$-dim. Simplex mit Lagrange-Gitter
+    $\{v_j\}_{j=1}^{n_k} := G_k(T)$ für
+    $k \in \natural$ und $n_k := |G_k(T)|$ sowie $p_1, \dotsc, p_{n_k} \in \real$.\\
+    Dann gibt es genau ein $p \in \PP_k(T)$ mit $\forall_{j=1,\dotsc,n_k}\; p(v_j) = p_j$.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{Ex. + Eind. der $\PP_k(\T_h)$-Interpolation}\\
+    Seien $\T_h$ eine zul. Triangulierung,
+    $k \in \natural$,
+    $\{v_j\}_{j=1}^{m_k} := G_k(\T_h) := \bigcup_{T \in \T_h} G_k(T)$
+    die \begriff{Vereinigung aller \name{Lagrange}-Gitter} mit
+    $m_k := |G_k(\T_h)|$ und
+    $p_1, \dotsc, p_{m_k} \in \real$.\\
+    Dann gibt es genau ein $p \in \PP_k(\T_h)$ mit
+    $\forall_{j=1,\dotsc,m_k}\; p(v_j) = p_j$.
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Die $m_k$-fache Anwendung des Satzes auf $p_j = \delta_{i,j}$ für
+    $i = 1, \dotsc, m_k$ liefert die Lagrange-Basis für $\PP_k(\T_h)$.
+\end{Bem}
+
+\begin{Satz}{\name{Lagrange}-Basis für $k \in \natural$}\\
+    Seien $\T_h$ eine zul. Triangulierung, $k \in \natural$ und
+    $\{v_j\}_{j=1}^{m_k} := G_k(\T_h)$.\\
+    Dann existieren $\varphi_1, \dotsc, \varphi_{m_k} \in \PP_k(\T_h)$
+    mit $\forall_{i,j=1,\dotsc,m_k}\; \varphi_i(v_j) = \delta_{i,j}$.\\
+    $\Phi := \{\varphi_i\}_{i=1}^{m_k}$ ist eine Basis von $\PP_k(\T_h)$ und heißt
+    \begriff{\name{Lagrange}-/nodale Basis der Ordnung $k$}.\\
+    $\Phi_0 := \{\varphi_i \in \Phi \;|\; v_i \notin \partial\Omega\}$
+    ist eine Basis von $\PP_{k,0}(\T_h)$ und heißt
+    \begriff{\name{Lagrange}-/nodale Basis von $\PP_{k,0}(\T_h)$} zur Knotenmenge
+    $G_{k,0}(\T_h) := G_k(\T_h) \setminus \partial\Omega$,
+    wobei $m_{k,0} := \dim \PP_{k,0}(\T_h) = |\Phi_0|$.
+\end{Satz}
+
+\begin{Def}{\name{Lagrange}-FEM-Approximation}
+    Seien $a(\cdot, \cdot)$ stetig, koerziv,
+    $\ell(\cdot)$ stetig auf $H^1_0(\Omega)$ und
+    $\T_h$ eine zul. Triangulierung mit inneren Lagrange-Knoten $G_{k,0}(\T_h)$
+    und nodalen Basisfunktionen $\Phi_0 = \{\varphi_i\}_{i=1}^{m_{k,0}}$.
+    Setze $V_h := \PP_{k,0}(\T_h) = \Span(\Phi_0)$.\\
+    Dann heißt $u_h \in V_h$ \begriff{\name{Lagrange}-FEM-Approximation},
+    falls $\forall_{v \in V_h}\; a(u_h, v) = \ell(v)$.
+\end{Def}
+
+\pagebreak
+
+\subsubsection{%
+    Quadraturen%
+}
+
+\begin{Bem}
+    Für die Aufstellung des Galerkin-LGS (Assemblierung) werden Integrale der Form
+    $\int_\Omega (A\nabla \varphi_i) \nabla \varphi_j \dx$,
+    $\int_\Omega f\varphi_j \dx$ und $\int_{\partial\Omega} g_N \varphi_j \dsigma(x)$
+    durch Quadratur berechnet.
+    Es reicht dabei, die Quadratur nur auf Referenzelementen zu betrachten,
+    die auf beliebige Simplizes transformiert und zu zusammengesetzten
+    Quadraturen für Gebietsintegrale kombiniert werden können.
+\end{Bem}
+
+\begin{Def}{Quadratur}
+    Seien $\widehat{T} \subset \real^d$ der Einheitssimplex,
+    $\widehat{x}_i \in \widehat{T}$ und $w_i \in \real$ für $i = 1, \dotsc, \ell$.\\
+    Dann heißt $\widetilde{I}(g) := \sum_{i=1}^\ell w_i g(\widehat{x}_i)$
+    \begriff{Quadratur} für $g \in \C^0(\widehat{T})$.\\
+    $\widetilde{I}$ heißt \begriff{exakt auf $\PP_k(\widehat{T})$} oder
+    \begriff{von Ordnung $\ge k$}, falls $\forall_{g \in \PP_k(\widehat{T})}\;
+    \widetilde{I}(g) = I(g) := \int_{\widehat{T}} g(\widehat{x})\d\widehat{x}$.
+\end{Def}
+
+\begin{Bsp}
+    \begin{itemize}
+        \item
+        Für $d \in \natural$ erhält man mit dem \begriff{Schwerpunkt}
+        $x_S := \frac{1}{d+1} (1, \dotsc, 1)^\tp \in \real^d$ von $\widehat{T}$
+        die \begriff{Mittel"-punktsintegration} $\widetilde{I}(g) := |\widehat{T}| g(x_S)$
+        (von Ordnung $0$).
+        
+        \item
+        Für $d = 2$ erhält man mit den \begriff{Kantenmittelpunkten}
+        $m_{i,j} := \frac{1}{2} (e_i + e_j)$ für $i, j = 0, 1, 2$, $i \not= j$,
+        die Formel
+        $\widetilde{I}(g) := \frac{1}{3} |\widehat{T}| \sum_{i,j=0,\; i<j}^2 g(m_{i,j})$
+        (von Ordnung $2$).
+        
+        \item
+        Für $d = 2$ erhält man die Formel\\
+        $\widetilde{I}(g) := \frac{1}{60} |\widehat{T}|
+        (3 \sum_{i=0}^2 g(e_i) + 8 \sum_{i,j=0,\; i<j}^2 g(m_{i,j}) + 27 g(x_S))$
+        (von Ordnung $3$).
+    \end{itemize}
+\end{Bsp}
+
+\linie
+
+\begin{Bem}
+    Für einen $d$-dim. Simplex $T \subset \real^d$ mit Referenzabb.
+    $F_T\colon \widehat{T} \to T$, $F_T(\widehat{x}) = B_T \widehat{x} + t_T$, gilt
+    $\int_T g(x)\dx = |\det B_T| \cdot \int_{\widehat{T}} g(F_T(\widehat{x})) \d\widehat{x}
+    \approx |\det B_T| \cdot \widetilde{I}(g \circ F_T) =: \widetilde{I}_T(g)$.\\
+    $\widetilde{I}_T$ ist exakt auf $\PP_k(T)$ genau dann,
+    wenn $\widetilde{I}$ exakt auf $\PP_k(\widehat{T})$ ist.
+\end{Bem}
+
+\begin{Bem}
+    Bei Dif"|ferentialausdrücken muss man die Transformation richtig durchführen.
+    Sei $\varphi \in \C^1(T)$, dann ist
+    $\widehat{\varphi} := \varphi \circ F_T \in \C^1(\widehat{T})$ und es gilt
+    $\nabla_{\widehat{x}} \widehat{\varphi}(\widehat{x})
+    = (\D\widehat{\varphi}(\widehat{x}))^\tp
+    = (\D\varphi(x) \cdot \D F_T)^\tp$\\
+    $= ((\nabla_x \varphi(x))^\tp \cdot B)^\tp
+    = B^\tp \nabla_x \varphi(x)$ mit $x = F_T(\widehat{x})$.\\
+    Damit gilt z.\,B. für die Steifigkeitsmatrix-Einträge\\
+    $\int_T (\nabla_x \varphi_i)^\tp A (\nabla_x \varphi_j) \dx
+    = \int_{\widehat{T}} (\nabla_{\widehat{x}} \widehat{\varphi}_{\widehat{i}})^\tp
+    B^{-1} A B^{-\tp} (\nabla_{\widehat{x}} \widehat{\varphi}_{\widehat{j}})
+    |\det B| \d\widehat{x}$\\
+    für die nodale Basis $\{\widehat{\varphi}_{\widehat{i}}\}_{\widehat{i}=1}^{n_k}$ und
+    geeignete $\widehat{i}, \widehat{j} \in \{1, \dotsc, n_k\}$.
+\end{Bem}
+
+\begin{Bem}
+    Gebietsintegrale werden einfach approximiert durch zusammengesetzte Quadraturen, d.\,h.
+    $\int_\Omega g(x)\dx
+    = \int_{T \in \T_h} \int_T g(x)\dx
+    \approx \sum_{T \in \T_h} \widetilde{I}_T(g)
+    = \sum_{T \in \T_h} |\det B_T| \sum_{i=1}^\ell w_i g(F_T(\widehat{x}_i))$.
+\end{Bem}
+
+\begin{Bem}
+    Die Ordnung der Quadratur sollte der (noch zu diskutierenden) FEM-Konvergenz"-ordnung
+    angepasst sein.
+    Zum einen sollte die Quadraturordnung hoch genug sein, damit die Konvergenz für $h \to 0$
+    nicht beeinträchtigt wird.
+    Zum anderen sollte sie aber auch nicht zu hoch sein, damit nicht ein Großteil der Rechenzeit
+    für die Quadratur verwendet wird.
+\end{Bem}
+
+\pagebreak
+
+\subsubsection{%
+    Assemblierung%
+}
+
+\begin{Bem}
+    Der Zusammenhang zwischen den lokalen und den globalen Freiheitsgraden wird durch eine
+    sog. globale Indexabbildung realisiert.
+    Seien dazu
+    $\{\widehat{\varphi}_{\widehat{j}}\}_{\widehat{j}=1}^{n_k}$
+    eine Basis von $\PP_k(\widehat{T})$ und
+    $\{\varphi_i\}_{i=1}^{m_k}$ eine Basis von $\PP_k(\T_h)$.
+    Dann heißt
+    $\widehat{g}\colon \T_h \times \{1, \dotsc, n_k\} \to \{1, \dotsc, m_k\}$
+    \begriff{globale Indexabbildung},
+    falls $\forall_{T \in \T_h} \forall_{\widehat{j}=1,\dotsc,n_k}\;
+    \widehat{\varphi}_{\widehat{j}} = \varphi_i \circ F_T$ für
+    $i := \widehat{g}(T, \widehat{j})$.\\
+    Mit der globalen Indexabb. ist die Kenntnis von $\{\varphi_i\}_{i=1}^{m_k}$
+    nicht mehr nötig, es reicht, eine Basis auf dem Referenzelement zu definieren.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Die direkte Berechnung der Steifigkeitsmatrix ist i.\,A. teuer.
+    Für die Poisson-Gleichung muss man
+    $a_{i,j} = \int_\Omega (\nabla\varphi_i)^\tp (\nabla\varphi_j) \dx
+    = \sum_{T \in \T_h} \int_T (\nabla\varphi_i)^\tp (\nabla\varphi_j) \dx$
+    für $i,j = 1, \dotsc, m$ mit $m := m_{k,0}$ berechnen.
+    Für $k = 1$ ist $|\T_h| = \O(m)$, d.\,h. der Gesamtaufwand für die Berechnung von $A_h$
+    ist $\O(m^3)$ (inpraktikabel für $m$ groß).
+    
+    Stattdessen nutzt man die Lokalität und die globale Indexabbildung:\\
+    Für $S_{i,j} := \supp(\varphi_i) \cap \supp(\varphi_j)$ gilt
+    $a_{i,j} = \int_{S_{i,j}} (\nabla\varphi_i)^\tp (\nabla\varphi_j) \dx$\\
+    $= \sum_{T \in \T_h,\; T \subset S_{i,j}} \int_T \nabla\varphi_i \nabla\varphi_j \dx
+    = \sum_{T \in \T_h,\; T \subset S_{i,j}} \widehat{a}_{\widehat{i},\widehat{j}}$,
+    $\widehat{a}_{\widehat{i},\widehat{j}}
+    := \int_{\widehat{T}} |\det B_T| (\nabla\widehat{\varphi}_{\widehat{i}})^\tp
+    B_T^{-1} B_T^{-\tp} (\nabla\widehat{\varphi}_{\widehat{j}}) \d\widehat{x}$,\\
+    mit $\widehat{i}, \widehat{j} \in \{1, \dotsc, n_k\}$, sodass
+    $i = \widehat{g}(T, \widehat{i})$ und $j = \widehat{g}(T, \widehat{j})$.
+    
+    Statt einer Schleife über $(i,j)$ kann man nun durch Addition der Beiträge
+    der \begriff{lokalen Steifigkeits"-matrix}
+    $A_{h,T} := (\widehat{a}_{\widehat{i},\widehat{j}})_{\widehat{i},\widehat{j}=1}^{n_k}$
+    die globale Steifigkeitsmatrix $A_h$ assemblieren:
+    \begin{enumerate}
+        \item
+        Setze $A_h := 0$.
+        
+        \item
+        Wiederhole für alle $T \in \T_h$:
+        \begin{enumerate}[label=\emph{(\roman*)}]
+            \item
+            Berechne $A_{h,T}$.
+            
+            \item
+            Wiederhole für alle $\widehat{i}, \widehat{j} = 1, \dotsc, n_k$:
+            Setze $(A_h)_{g(T,\widehat{i}),g(T,\widehat{j})} \;+\!\!:=
+            (A_{h,T})_{\widehat{i},\widehat{j}}$.
+        \end{enumerate}
+    \end{enumerate}
+    Die Gesamtkomplexität beträgt nun $\O(|\T_h| n_k^2) = \O(mn_k^2)$
+    was wegen $n_k$ konstant und klein wesentlich besser als $\O(m^3)$ ist.
+    
+    Ähnlich ist die Assemblierung von $b_h$ möglich.
+    Das geht sogar simultan mit $A_h$ (ohne zusätzliche Schleifen),
+    d.\,h. ein einziger Gitterdurchlauf reicht zur Assemblierung des gesamten Systems aus.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    $A_h$ ist dünnbesetzt,
+    da $(A_h)_{i,j} = 0$ für $|\supp(\varphi_i) \cap \supp(\varphi_j)| = 0$.\\
+    Ist $r$ die maximale Kantenzahl für einen Knoten,
+    dann existieren für $k = 1$ höchstens $r + 1$ Nichtnull-Einträge pro Zeile und
+    für $k > 1$ höchstens $r \cdot |G_k(T)|$.\\
+    Dies muss man bei der Implementierung durch Sparse-Matrizen berücksichtigen
+    (insb. sollte bei Verfeinerungen $r$ nicht unbegrenzt wachsen).
+\end{Bem}
+
+\begin{Bem}
+    Für $k \ge d+1$ gibt es innere Lagrange-Knoten.
+    Die entsprechenden Zeilen von $A_h$ haben nur Einträge für Knoten desselben Simplex,
+    nicht aber seiner Nachbarn.
+    Dies kann man ausnutzen, indem man z.\,B. durch Zeilenumformungen Einheitsvektoren
+    in den jeweiligen Zeilen erzeugt und so nur Unbekannte auf Seitensimplizes übrig bleiben
+    (vorteilhaft für $k$ groß).\\
+    Man nennt dies \begriff{innere/statische Kondensation}.
+\end{Bem}
+
+\pagebreak
+
+\subsubsection{%
+    Verallgemeinerungen%
+}
+
+\begin{Def}{finites Element}
+    Das Tripel $(T, \Phi, \N)$ heißt \begriff{finites Element}, falls
+    \begin{itemize}
+        \item
+        $T \subset \real^d$ beschr. und abg. mit Lipschitz-Rand und $\interior(T) \not= \emptyset$
+        (\begriff{Element-Geometrie}),
+        
+        \item
+        $\Phi := \{\varphi_1, \dotsc, \varphi_k\}$ l.\,u. Fkt.en auf $T$
+        (\begriff{Formfaktoren/-fkt.en}, \begriff{shape functions}) mit\\
+        $\P := \Span(\Phi)$ dem zugehörigen \begriff{diskreten Fkt.enraum} und
+        
+        \item
+        $\N := \{N_1, \dotsc, N_k\}$
+        eine Basis von $\P'$ ist (\begriff{Menge der lokalen Freiheitsgrade}).
+    \end{itemize}
+    $\Phi$ heißt \begriff{nodale Basis} und die $N_i$ heißen \begriff{nodale Variablen},
+    falls $\forall_{i,j=1,\dotsc,k}\; N_i(\varphi_j) = \delta_{i,j}$.
+\end{Def}
+
+\linie
+
+\begin{Bem}
+    Die Definition verallgemeinert Lagrange-Elemente.\\
+    Sei $T$ ein Simplex mit Lagrange-Gitter
+    $\{v_i\}_{i=1}^{n_{\widetilde{k}}} := G_{\widetilde{k}}(T)$,
+    $k := n_{\widetilde{k}}$,
+    $\Phi$ die nodale Basis von $\PP_{\widetilde{k}}(T)$ (d.\,h. $\varphi_i(v_j) = \delta_{i,j}$)
+    und $N_i(p) := p(v_i)$ für $p \in \PP_{\widetilde{k}}(T)$,
+    dann ist $(T, \Phi, \N)$ ein finites Element.
+    Wegen $N_i(\varphi_j) = \varphi_j(v_i) = \delta_{i,j}$ sind die $N_i$ nodale Variablen.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Statt Simplizes kann man auch andere Geometrien verwenden.
+    Auf Rechtecken und Würfeln verwendet man statt linearen Formfaktoren
+    eher bi- bzw. trilineare.\\
+    Allgemein sei für $d \in \natural$ der Funktionenraum
+    $Q_1([0,1]^d) := \bigotimes_{i=1}^d \PP_1([0,1])$ aller $d$-variaten Polynome
+    mit Koordinatengrad $\le 1$ definiert.\\
+    Beispielsweise hat $p \in Q_1([0,1]^2)$ für $d = 2$
+    die Gestalt $p(x_1, x_2) = a + bx_1 + cx_2 + dx_1 x_2$.
+    Man setzt nun $\Phi := (x_1 x_2, (1-x_1)x_2, x_1(1-x_2), (1-x_1)(1-x_2))^\tp$
+    und $\N_i(p) := p(a_i)$ für $p \in Q_1([0,1]^2)$ und $i = 1, \dotsc, 4$ mit
+    $a_1, \dotsc, a_4 \in \{0, 1\}^2$ den Ecken von $[0, 1]^2$.\\
+    Analog verfährt man für $d = 3$ (trilineare Elemente) oder
+    für $\widetilde{k} = 2$ (bi-/triquadratische Elemente).
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Statt Punktauswertungen kann man auch Ableitungswerte vorgeben.
+    Das \begriff{kubische \name{Hermite}-Element} erhält man wie folgt:
+    Sei $T \subset \real^2$ ein Dreieck mit Ecken $a_0, a_1, a_2$ und Schwerpunkt $x_S$.
+    Dann ist durch Vorgabe von $p(a_i), \nabla p(a_i), p(x_S)$ für $i = 0, 1, 2$
+    eindeutig ein interpolierendes Polynom $p \in \PP_3(T)$ definiert.
+    Die lokalen Freiheitsgrade sind somit gegeben durch
+    $\N := (N_1(p), \dotsc, N_{10}(p))$\\
+    $:= (p(x_S), p(a_0), p(a_1), p(a_2), \partial_{x_1} p(a_0), \partial_{x_1} p(a_1),
+    \partial_{x_1} p(a_2), \partial_{x_2} p(a_0), \partial_{x_2} p(a_1), \partial_{x_2} p(a_2))$.\\
+    Dabei existiert eine eindeutige Basis $\Phi := (\varphi_1, \dotsc, \varphi_{10})$ von
+    $\PP_3(T)$ mit $N_i(\varphi_j) = \delta_{i,j}$.\\
+    Man kann zeigen, dass zusammengesetzte Funktionen aus kubischen Hermite-Elementen
+    (auf zul. Triangulierungen) in $H^1(\Omega)$ sind, i.\,A. aber nicht in $H^2(\Omega)$.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Ein Element, welches durch Zusammensetzen $H^2(\Omega)$-Funktionen liefert, ist das sog.
+    \begriff{\name{Agyris}-Element} auf Dreiecken.
+    Dazu sei $T \subset \real^2$ ein Dreieck mit Ecken $a_0, a_1, a_2$ und
+    Kantenmittelpunkten $m_0, m_1, m_2$.
+    Dann ist durch Vorgabe von $p(a_i), \nabla p(a_i), \D^2 p(a_i), \nabla p(m_i) \cdot n_i$
+    für $i = 0, 1, 2$ (mit $n_i \in \real^2$ dem Normalenvektor in $m_i$) eindeutig ein
+    interpolierendes Polynom\\
+    $p \in \PP_5(T)$ definiert
+    (dabei enthält $\D^2 p(a_i)$ die drei Unbekannten
+    $\partial_{x_1}^2 p(a_i), \partial_{x_2}^2 p(a_i), \partial_{x_1} \partial_{x_2} p(a_i)$).
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Approximationssätze und FEM-Fehlerabschätzung%
+}
+
+\begin{Bem}
+    Zur Motivation sei $I_h\colon V \to V_h$ ein linearer (Interpolations-)Operator mit
+    Approximationsgüte $\norm{u - I_h u} \le Ch^r$ mit $C > 0$ möglichst klein und
+    $r > 0$ möglichst groß.
+    Dann folgt mit dem Lemma von Céa, dass
+    $\norm{u - u_h} \le \frac{\gamma}{\alpha} \inf_{v \in V_h} \norm{u - v}
+    \le \frac{\gamma}{\alpha} \norm{u - I_h u} \le \frac{\gamma}{\alpha} Ch^r$,
+    also die Konvergenz für $h \to 0$, die Konvergenzordnung $r$ und eine
+    Fehlerschranke für die Galerkin-Projektion $u_h$.
+\end{Bem}
+
+\begin{Bem}
+    Seien $\Omega \subset \real^d$ polygonal berandet, $V := H^m(\Omega)$,
+    $V_h := \PP_k(\T_h)$ für eine zul. Triang. $\T_h$ von $\Omega$
+    und $I_h$ der Lagrange-Interpolationsoperator.
+    Damit $I_h\colon H^m(\Omega) \to \PP_k(\T_h)$ sinnvoll definiert ist,
+    muss $H^m(\Omega)$ Punktauswertungen erlauben,
+    d.\,h. jedes $v \in H^m(\Omega)$ muss einen stetigen Repräsentanten
+    $\widetilde{v} \in \C^0(\Omega)$ besitzen mit $\norm{v - \widetilde{v}}_{H^m(\Omega)} = 0$,
+    damit Punkauswertungen von $v$ als Punktauswertungen von $\widetilde{v}$ definiert werden
+    können.\\
+    Nach dem 2. Sobolevschen Einbettungssatz kann $m$ je nach $d$ aber immer so gewählt werden,
+    dass $I_h$ wohldefiniert ist
+    (z.\,B. für $d = 2$ reicht z.\,B. $m = 2$).
+    Im Folgenden seien $d, m$ immer derart, dass $I_h$ wohldefiniert ist.
+\end{Bem}
+
+\subsubsection{%
+    \name{Bramble}-\name{Hilbert}-Lemma%
+}
+
+\begin{Def}{gebrochene Normen}
+    Sei $\T_h$ eine zul. Triang. von $\Omega$.
+    Dann ist der \begriff{gitterabhängige Raum}
+    $H^m(\T_h) := \{v\colon \Omega \to \real \;|\; \forall_{T \in \T_h}\; v|_T \in H^m(T)\}$
+    zusammen mit der Seminorm\\
+    $|v|_{H^m(\T_h)} := \sqrt{\sum_{T \in \T_h} |v|_{H^m(T)}^2}$
+    und der Norm $\norm{v}_{H^m(\T_h)} := \sqrt{\sum_{T \in \T_h} \norm{v}_{H^m(T)}^2}$ definiert.
+\end{Def}
+
+\begin{Bem}
+    Of"|fensichtlich gilt $H^m(\T_h) \supset H^m(\Omega)$ und
+    $\forall_{v \in H^m(\Omega)}\; \norm{v}_{H^m(\T_h)} = \norm{v}_{H^m(\Omega)}$.
+\end{Bem}
+
+\begin{Satz}{\name{Rellich}scher Auswahlsatz}
+    Seien $m \in \natural_0$ und $\Omega \subset \real^d$ polygonal berandet.\\
+    Dann ist die Einbettung $H^{m+1}(\Omega) \to H^m(\Omega)$ kompakt.
+\end{Satz}
+
+\begin{Bem}
+    Die Einheitskugel in $H^{m+1}(\Omega)$ ist kompakt bzgl. der
+    $\norm{\cdot}_{H^m(\Omega)}$-Norm bzw.
+    jede bzgl. $\norm{\cdot}_{H^{m+1}(\Omega)}$ beschränkte Folge enthält eine
+    bzgl. $\norm{\cdot}_{H^m(\Omega)}$ konvergente Teilfolge.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{lokaler Interpolationsfehler}
+    Seien $K \subset \real^p$ polygonal berandet und abgeschlossen
+    sowie $k \ge 2$ und $\{x_i\}_{i=1}^{n_k} \subset K$, sodass
+    die Polynominterpolation $I\colon H^k(K) \to \PP_{k-1}(K)$ wohldefiniert ist
+    (insb. ist die Einbettung $H^k(K) \to \C^0(K)$ stetig und $n_k := \binom{k+1}{2}$).\\
+    Dann gilt $\exists_{C = C(K, k) > 0}
+    \forall_{v \in H^k(K)}\; \norm{v - Iv}_{H^k(K)} \le C |v|_{H^k(K)}$.
+\end{Satz}
+
+\begin{Bem}
+    Die Voraussetzungen sind z.\,B. für $d = k = 2$, $K = T$ Dreieck
+    und $\{x_1, x_2, x_3\}$ Ecken von $T$ erfüllt.
+\end{Bem}
+
+\linie
+
+\begin{Lemma}{\name{Bramble}-\name{Hilbert}}
+    Seien $K \subset \real^d$ polygonal berandet und abgeschlossen sowie $k \ge 2$ und
+    $g \in (H^k(K))'$ mit $\forall_{p \in \PP_{k-1}(K)}\; g(p) = 0$.\\
+    Dann gilt $\exists_{C = C(g, K, k) > 0}
+    \forall_{v \in H^k(K)}\; |g(v)| \le C |v|_{H^k(K)}$.
+\end{Lemma}
+
+\pagebreak
+
+\subsubsection{%
+    Interpolationsabschätzung%
+}
+
+\begin{Satz}{Transformationsformel}\\
+    Seien $T$ ein $d$-dim. Simplex mit Referenzabbildung $F_T(\widehat{x}) = B\widehat{x} + t$
+    sowie $v \in H^m(T)$.\\
+    Dann ist $\widehat{v} := v \circ F_T \in H^m(\widehat{T})$ und es gilt\\
+    $\exists_{C = C(d, m) > 0} \forall_{v \in H^m(T)}\;
+    |\widehat{v}|_{H^m(\widehat{T})} \le C \norm{B}^m |\det B|^{-1/2} |v|_{H^m(T)}$.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{Interpolationsabschätzung}\\
+    Seien $k \ge 2$,
+    $\T_h$ eine zul. Triangulierung von $\Omega \subset \real^d$,
+    $h \le h_{\max}$ und
+    $\sigma > 0$ mit $\forall_{T \in \T_h}\; \sigma_T \le \sigma$.
+    Sei außerdem $I_h\colon H^k(\Omega) \to \PP_{k-1}(\T_h)$ die Lagrange-Interpolation.\\
+    Dann gilt $\exists_{C = C(k, \Omega, d, h_{\max}, \sigma) > 0}
+    \forall_{m=0,\dotsc,k} \forall_{u \in H^k(\Omega)}\;
+    \norm{u - I_h u}_{H^m(\T_h)} \le Ch^{k-m} |u|_{H^k(\Omega)}$.
+\end{Satz}
+
+\begin{Bem}
+    Für $k = 2$ und $I_h\colon H^2(\Omega) \to \PP_1(\T_h)$ erhält man\\
+    $\norm{u - I_h u}_{H^1(\Omega)} \le Ch |u|_{H^2(\Omega)}$ und
+    $\norm{u - I_h u}_{L^2(\Omega)} \le Ch^2 |u|_{H^2(\Omega)}$.\\
+    Ähnliche Abschätzungen gelten auch für quadratische Gitter und bilineare Elemente.
+\end{Bem}
+
+\linie
+
+\begin{Def}{nicht-entartet}
+    Eine Folge $(\T_i)_{i\in\natural}$ von zul. Triang.en mit $\lim_{i \to \infty} h_i = 0$
+    heißt \begriff{nicht-entartet}, falls
+    $\exists_{\sigma>0} \forall_{i \in \natural} \forall_{T \in \T_i}\;
+    \sigma_T = \frac{h_T}{\varrho_T} \le \sigma$.
+\end{Def}
+
+\begin{Def}{quasi-uniform}
+    Eine Folge $(\T_i)_{i\in\natural}$ von zul. Triang.en mit $\lim_{i \to \infty} h_i = 0$
+    heißt \begriff{quasi-uniform}, falls
+    $\exists_{\sigma>0} \forall_{i \in \natural} \forall_{T \in \T_i}\;
+    \frac{h_i}{\sigma_T} \le \sigma$.
+\end{Def}
+
+\begin{Bem}
+    Nicht-entartete Gittersequenzen lassen auch lokale Verfeinerungen zu und die
+    Innenwinkel sind nach unten beschränkt.
+    Bei quasi-uniformen Gittersequenzen ist $h_T \le h \le Ch_T$.\\
+    Quasi-uniforme Gittersequenzen sind nicht-entartet.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Konvergenz der Interpolation}
+    Seien $k \ge 2$,
+    $\{\T_i\}$ eine nicht-entartete Gittersequenz,
+    $h_{\max} := \max_{i \in \natural} h_i$ und
+    $I_{h_i}\colon H^k(\Omega) \to \PP_{k-1}(\T_i)$ die Lagrange-Interpolation.\\
+    Dann gilt $\forall_{m = 0, \dotsc, k - 1} \forall_{u \in H^m(\Omega)}\;
+    \lim_{i \to \infty} \norm{u - I_{h_i} u}_{H^m(\T_i)} = 0$.
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Die Interpolationsabschätzung sagt insb. aus, dass\\
+    $\norm{u - I_h u}_{H^m(\T_h)} \le Ch^{k-m} \norm{u}_{H^k(\Omega)}$,
+    d.\,h. der Interpolationsfehler wird für $m < k$ in schwächeren Normen gemessen als $u$,
+    wobei man $h$-Potenzen gewinnt.\\
+    Sog. \begriff{inverse Abschätzungen} leisten das Umgekehrte, indem man $h$-Potenzen opfert.
+    Sie gelten aber nur für FE-Ansatzfunktionen, nicht für den ganzen Sobolev-Raum.
+\end{Bem}
+
+\begin{Satz}{inverse Abschätzung}\\
+    Seien $k \in \natural$,
+    $\T_h$ eine zul. Triangulierung von $\Omega \subset \real^d$ und
+    $\sigma > 0$ mit $\forall_{T \in \T_h}\; \sigma_T \le \sigma$.\\
+    Dann gilt $\exists_{C = C(k, \Omega, d, \sigma) > 0}
+    \forall_{m=0,\dotsc,k} \forall_{v_h \in \PP_k(\T_h)}\;
+    \norm{v_h}_{H^k(\T_h)} \le Ch^{m-k} \norm{v_h}_{H^m(\T_h)}$.
+\end{Satz}
+
+\begin{Bem}
+    Für $d = 2$ und lineare Elemente ($k = 1$, $m = 0$) gilt also\\
+    $\norm{v_h}_{H^1(\T_h)} \le Ch^{-1} \norm{v_h}_{L^2(\T_h)}$.
+\end{Bem}
+
+\pagebreak
+
+\subsubsection{%
+    FEM-a-priori-Abschätzungen%
+}
+
+\begin{Satz}{FEM-a-priori-Fehlerschranke in $H^1$}\\
+    Seien $\Omega \subset \real^d$ of"|fen, beschränkt und polygonal berandet,
+    $a(\cdot, \cdot)$ stetig, koerziv und $\ell(\cdot)$ stetig auf $H^1_0(\Omega)$,
+    $u \in H^1_0(\Omega)$ die eindeutige schwache Lösung,
+    $\T_h$ eine zulässige Triangulierung und $\sigma > 0$ mit
+    $\forall_{T \in \T_h}\; \sigma_T \le \sigma$ sowie
+    $V_h := \PP_{k,0}(\T_h)$ mit $k \in \natural$ und
+    $u_h \in V_h$ der Lagrange-FEM-Lösung.\\
+    Wenn es ein $s \in \natural$ gibt mit $h \in H^{s+1}(\Omega) \cap H^1_0(\Omega)$, dann gilt\\
+    $\exists_{C = C(\Omega, d, \sigma, k) > 0}\;
+    \norm{u - u_h}_{H^1(\Omega)} \le Ch^s \norm{u}_{H^{s+1}(\Omega)}$.
+\end{Satz}
+
+\begin{Satz}{Konvergenz der FEM}
+    Sei $(\T_i)_{i \in \natural}$ eine nicht-entartete Gittersequenz
+    ($\lim_{i \to \infty} h_i = 0$), sodass die Voraussetzungen des
+    vorherigen Satzes für jedes $\T_i$ erfüllt seien.\\
+    Dann gilt $\lim_{i \to \infty} \norm{u_{h_i} - u}_{H^1(\Omega)} = 0$.
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Um $u \in H^{s+1}(\Omega)$ zu garantieren, wären zusätzlich
+    $\C^{s+1}$-Regularität von $\partial\Omega$ und $f \in H^{s-1}(\Omega)$ für
+    $\ell(v) = \int_\Omega fv \dx$ notwendig (Satz von Friedrichs).\\
+    Für lineare FEM ($k = 1$) reicht $H^2$-Regularität ($s = 1$),
+    denn dann folgt lineare Konvergenz in der $H^1$-Norm, weil
+    $\norm{u - u_h}_{H^1(\Omega)} \le Ch\norm{u}_{H^2(\Omega)} \le Ch\norm{f}_{L^2(\Omega)}$.\\
+    Für polygonal berandete Gebiete kann man eigentlich keine $H^3$-Regularität garantieren,
+    weil kein $\C^3$-Rand vorhanden ist.
+    Daher kann man nicht garantieren, dass quadratische oder kubische FEM eine bessere
+    Konvergenzordnung besitzen.
+    In der Praxis sind allerdings quadratische/kubische FEM gegenüber linearen FEM
+    zu bevorzugen.
+\end{Bem}
+
+\subsubsection{%
+    \name{Aubin}-\name{Nitsche}-Trick%
+}
+
+\begin{Bem}
+    Wegen $\norm{\cdot}_{L^2(\Omega)} \le \norm{\cdot}_{H^1(\Omega)}$
+    folgt aus der A-priori-$H^1$-Fehlerschranke trivialerweise eine $L^2$-Abschätzung
+    mit derselben $h$-Potenz.
+    Dies ist jedoch nicht optimal, mittels eines Dualitätsarguments
+    (\begriff{\name{Aubin}-\name{Nitsche}-Trick}) gewinnt man eine $h$-Potenz.
+\end{Bem}
+
+\begin{Satz}{\name{Aubin}-\name{Nitsche}}
+    Seien $H$ ein Hilbertraum mit Skalarprodukt $\sp{\cdot, \cdot}_H$ und Norm $\norm{\cdot}_H$
+    und $V \le H$ ein Unterraum, der mit dem Skalarprodukt
+    $\sp{\cdot, \cdot}_V$ und der Norm $\norm{\cdot}_V$ ein Hilbertraum ist,
+    sodass die Einbettung $V \to H$ stetig ist
+    (d.\,h. $\forall_{v \in V}\; \norm{v}_H \le C \norm{v}_V$).\\
+    Sei außerdem die schwache Form $\forall_{v \in V}\; a(u, v) = \ell(v)$
+    mit $a\colon V \times V \to \real$ einer stetigen, koerziven Bilinearform,
+    wobei $u \in V$ die schwache Lösung und $u_h \in V_h \le V$
+    die Galerkin-Projektion ist.\\
+    Dann gilt $\norm{u - u_h}_H = \gamma \norm{u - u_h}_V \cdot
+    \sup_{g \in H \setminus \{0\}} (\frac{1}{\norm{g}_H} \inf_{v_h \in V_h}
+    \norm{\varphi_g - v_h}_V)$,
+    wobei für $g \in H$ die \begriff{duale Lösung} $\varphi_g \in V$ definiert ist als
+    die schwache Lösung von $\forall_{w \in V}\; a(w, \varphi_g) = \sp{g, w}_H$ ist.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{FEM-a-priori-Fehlerschranke in $L^2$}
+    Unter den Vor.en der A-priori-$H^1$-Fehlerschranke gilt
+    $\norm{u - u_h}_{L^2(\Omega)} \le Ch \norm{u - u_h}_{H^1(\Omega)}$,
+    d.\,h. insb. im Fall von $H^{s+1}$-Regularität\\
+    $\norm{u - u_h}_{L^2(\Omega)} \le Ch^{s+1} \norm{u}_{H^{s+1}(\Omega)}
+    \le Ch^{s+1} \norm{f}_{H^{s-1}(\Omega)}$.
+\end{Satz}
+
+\begin{Bem}
+    Für lineare FEM ($k = 1$, $s = 1$) folgt im Fall von $H^2$-Regularität\\
+    $\norm{u - u_h}_{L^2(\Omega)} \le Ch^2 \norm{u}_{H^2(\Omega)}$.
+\end{Bem}
+
+\begin{Bem}
+    Die bisherigen Abschätzungen können keine lokal großen Fehler ausschließen,
+    was das Folgende macht.
+\end{Bem}
+
+\begin{Satz}{FEM-a-priori-Fehlerabschätzung in $L^\infty$}
+    Unter den Vor.en der A-priori-$H^1$-Fehlerschran"-ke sowie
+    $d = 2$ und $\T_h$ quasi-uniform gilt
+    $\norm{u - u_h}_{L^\infty(\Omega)} \le Ch\norm{f}_{L^2(\Omega)}$.
+\end{Satz}
+
+\begin{Bem}
+    Die Abschätzung ist nicht scharf, für $d = 2$ gilt z.\,B.\\
+    $\norm{u - u_h}_{L^\infty(\Omega)} \le Ch^2 |\log h|^{3/2} \norm{D^2 u}_{L^\infty(\Omega)}$,
+    für $d = 3$ verschwindet der $\log$-Term sogar.
+\end{Bem}
+
+\subsubsection{%
+    A-posteriori-Schätzer und Gitteradaptivität%
+}
+
+\begin{Bem}
+    Lagrange-Interpolationsoperatoren erfordern Punktauswertungen, d.\,h.
+    mindestens $u \in H^2(\Omega)$.
+    Sog. Clément-Operatoren bieten eine Appr.möglichkeit für $H^1(\Omega)$-Funktionen.
+\end{Bem}
+
+\begin{Def}{Patches}
+    Sei $\T_h$ eine zul. Triangulierung von $\Omega$ mit
+    $\{v_i\}_{i=1}^{m_\E} := \E(\T_h)$.\\
+    Zu jedem $v_i$ definiere
+    den \begriff{Patch aller angrenzenden Elemente}
+    $w_i := \bigcup_{T \in \T_h,\; v_i \in T} T$ und für jedes $T \in \T_h$
+    den \begriff{Patch der Nachbarn}
+    $w_T := \bigcup_{v_i \in T} w_i = \bigcup_{T' \in \T_h,\; T' \cap T \not= \emptyset} T'$.
+\end{Def}
+
+\begin{Def}{\name{Clément}-Approximation}
+    Für $V_h := \PP_1(\T_h)$ mit nodaler Basis $\{\varphi_i\}_{i=1}^{m_\E}$ sei der\\
+    \begriff{\name{Clément}-Operator} $C_h\colon H^1(\Omega) \to \PP_1(\T_h)$ definiert
+    durch $C_h v := \sum_{i=1}^{m_\E} (P_i v)(v_i) \varphi_i$ mit
+    der orthogonalen $L^2$-Projektion $P_i\colon L^2(w_i) \to \PP_0(w_i)$ auf Konstanten.
+\end{Def}
+
+\begin{Satz}{Clément-Approximationsfehler}
+    Seien $\T_h$ eine zul. Triang. und $\sigma > 0$ mit
+    $\forall_{T \in \T_h}\; \sigma_T \le \sigma$.\\
+    Dann gilt $\exists_{C = C(d, \sigma) > 0} \forall_{T \in \T_h}
+    \forall_{\text{$S \subset \partial T$ Seitensimplex}} \forall_{v \in H^1(\Omega)}
+    \forall_{m = 0, 1}$\\
+    $\norm{v - C_h v}_{H^m(T)} \le Ch_T^{1-m} \norm{v}_{H^1(w_T)},\;
+    \norm{v - C_h v}_{L^2(S)} \le Ch_T^{1/2} \norm{v}_{H^1(w_T)}$.
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Die FEM-Approximation $u_h \in V_h$ erzeugt ein \begriff{Residuum},
+    wenn man $u_h$ in die starke Form der PDE einsetzt.
+    Daraus kann man A-posteriori-Fehlerschätzer definieren, die
+    bis auf Konstanten obere und untere Schranken für den Fehler darstellen.
+    Im Folgenden wird nur das Poisson-Problem betrachtet.
+\end{Bem}
+
+\begin{Def}{Residuum}
+    Seien $\T_h$ eine zul. Triangulierung und
+    $u_h \in V_h := \PP_{k,0}(\T_h) \le H^1_0(\Omega)$ die
+    FEM-Lösung der Poisson-Gleichung.
+    Dann ist das \begriff{elementbasierte Residuum} für $T \in \T_h$ definiert als
+    $R_T = R_T(u_h) := \Delta u_h + f|_T$
+    und das \begriff{kantenbasierte Residuum der Ableitungssprünge}
+    ist für $S \in \S_0$  mit der \begriff{Menge der inneren Kanten}
+    $\S_0 := \{\text{$S$ Seitensimplex} \;|\;
+    \exists_{T \in \T_h}\; S \subset \partial T,\; S \not\subset \partial\Omega\}$
+    definiert als
+    $R_S = R_S(u_h) := [\frac{\partial u_h}{\partial n}] :=
+    \frac{\partial u_h}{\partial n}|_{T_1} - \frac{\partial u_h}{\partial n}|_{T_2}$
+    für $T_1, T_2 \in \T_h$ mit $T_1 \not= T_2$ und $S \subset T_1 \cap T_2$.
+\end{Def}
+
+\begin{Def}{residualer Fehlerschätzer}\\
+    Für $T \in \T_h$ heißt
+    $\eta_{T,R} := (h_T^2 \norm{R_T}_{L^2(T)}^2 +
+    \frac{1}{2} \sum_{S \subset \partial T} h_S \norm{R_S}_{L^2(S)}^2)^{1/2}$
+    \begriff{lokaler Fehlerschätzer} und\\
+    $\eta_R := (\sum_{T \in \T_h} \eta_{T,R}^2)^{1/2}
+    = (\sum_{T \in \T_h} h_T^2 \norm{R_T}_{L^2(T)}^2 +
+    \sum_{S \in \S_0} h_S \norm{R_S}_{L^2(S)}^2)^{1/2}$
+    \begriff{globaler Fehlersch.}
+\end{Def}
+
+\linie
+
+\begin{Satz}{obere A-posterori-Fehlerschranke}
+    Seien $\T_h$ eine zul. Triang. und $\sigma > 0$ mit
+    $\forall_{T \in \T_h}\; \sigma_T \le \sigma$.\\
+    Dann gilt $\exists_{C = C(\Omega, \sigma)}\;
+    \norm{u - u_h}_{H^1(\Omega)} \le C\eta_R$.
+\end{Satz}
+
+\begin{Bem}
+    Diese Schranke ist ein A-posteriori-Fehlerschätzer, d.\,h. erst nach Bestimmung der
+    numerischen Lösung $u_h$ kann die Schranke (bis auf die Konstante) berechnet werden.\\
+    Für $u_h \in \PP_1(\T_h)$ ist $\Delta u_h \equiv 0$, d.\,h.
+    $R_T$ ist dann ohne Kenntnis von $u_h$ a priori berechenbar.\\
+    Bei nicht-trivialem $f$ ist $\norm{R_T}_{L^2(T)}$ i.\,A. nicht exakt berechenbar.
+    Daher wählt man in der Praxis eine Approximation $f_h \approx f$ und
+    approximiert die Residuen durch
+    $\widetilde{R}_T := \Delta u_h + f_h$,
+    $\widetilde{\eta}_{T,R} := (h_T \norm{\widetilde{R}_T}_{L^2(T)}^2 +
+    \frac{1}{2} \sum_{S \subset \partial T} h_S \norm{R_S}_{L^2(S)}^2)^{1/2}$ und
+    $\widetilde{\eta}_R := (\sum_{T \in \T_h} \widetilde{\eta}_{T,R}^2)^{1/2}$.
+    Durch die Dreiecksungleichung erhält man
+    $\norm{\Delta u_h + f}_{L^2(T)}^2 \le
+    \norm{\Delta u_h + f_h}_{L^2(T)} + \norm{f - f_h}_{L^2(T)}$
+    und damit
+    $\norm{u - u_h}_{H^1(\Omega)} \le C\widetilde{\eta}_R +
+    C (\sum_{T \in \T_h} h_T^2 \norm{f - f_h}_{L^2(T)}^2)^{1/2}$.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    $\eta_R$ ist bis auf eine Konstante eine obere Schranke des Fehlers und heißt daher
+    \begriff{zuverlässiger Schätzer}.
+    Man kann zeigen, dass $\eta_R$ und $\widetilde{\eta}_R$ auch untere Schranken des Fehlers
+    sind, man spricht von einem \begriff{ef"|fizienten Schätzer}.
+\end{Bem}
+
+\begin{Satz}{untere A-posteriori-Fehlerschranke}
+    Seien $\T_h$ eine zul. Triang., $\sigma > 0$ mit
+    $\forall_{T \in \T_h}\; \sigma_T \le \sigma$.\\
+    Definiere für einen Seitensimplex $S$ den
+    \begriff{Patch der Kantennachbarn}
+    $w_S := \bigcup_{T \in \T_h,\; S \subset \partial T} T$ und
+    für $T \in \T_h$ analog $\widetilde{w}_T := \bigcup_{S \subset \partial T} w_S$.\\
+    Dann gilt $\exists_{C = C(\Omega, \sigma) > 0}\;
+    \widetilde{\eta}_{T,R} \le
+    C(\norm{u - u_h}_{H^1(\widetilde{w}_T)}^2 +
+    \sum_{T' \subset w_T} h_{T'}^2 \norm{f - f_h}_{L^2(T')}^2)^{1/2}$ und\\
+    $\widetilde{\eta}_R \le C(\norm{u - u_h}_{H^1(\Omega)}^2 +
+    \sum_{T \in \T_h} h_T^2 \norm{f - f_T}_{L^2(T)}^2)^{1/2}$.
+\end{Satz}
+
+\pagebreak

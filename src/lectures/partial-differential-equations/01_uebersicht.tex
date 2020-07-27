@@ -1,0 +1,394 @@
+\begin{landscape}
+    \section{%
+        Zusätzliches%
+    }
+
+    \subsection{%
+        \emph{Zusatz}: Übersicht über die behandelten DGLs%
+    }
+
+    \footnotesize
+
+    Alle Funktionen hängen von $(x, t) \in \Omega_T$ ab, soweit nicht anders erklärt.
+    Es ist $\div := \div_x$ und $\Delta := \Delta_x$.
+
+    \renewcommand*{\arraystretch}{1.2}
+    \begin{tabular}{p{65mm}p{55mm}p{128mm}}
+        \toprule
+
+        \textbf{DGL} & \textbf{Name} & \textbf{Herleitung}\\
+
+        \midrule
+
+        $\partial_t u + \div F = G$&
+        Transport-Reaktionsgleichung&
+        Massenbilanz in Kontrollvolumen,
+        $F(x,t) \in \real^d$ Fluss, $G(x,t) \in \real$ Konz.gewinn\\
+
+        $\partial_t u = G(x, t, u(x,t))$&
+        parametrisierte ODE&
+        aus TRGL: $F :\equiv 0$, $G$ $u$-abhängig\\
+
+        $\partial_t u + \div(vu) = 0$&
+        Advektionsgleichung&
+        aus TRGL: $F := vu$ mit $v \in \C^1(\Omega_T, \real^d)$ Geschw.feld, $G :\equiv 0$\\
+
+        \midrule
+
+        $\partial_t u + \div F(u) = 0$&
+        nicht-lineare Konvektionsgl.&
+        aus TRGL: $F := F(u)$, $G :\equiv 0$\\
+
+        $\partial_t u + \partial_x (v(u) \cdot u) = 0$&
+        Konvektionsgleichung&
+        aus nicht-linearer Konvektionsgl.: $d := 1$, $F(u) := v(u) \cdot u$\\
+
+        $\partial_t u + \partial_x(\frac{1}{2} u^2) = 0$&
+        Burgersgleichung&
+        aus nicht-linearer Konvektionsgl.: $d := 1$, $F(u) := \frac{1}{2} u^2$\\
+
+        \midrule
+
+        $\partial_t u - \div(a(x) \nabla u) = 0$&
+        allg. Dif"|fusionsgleichung&
+        aus TRGL: $F := -a(x) \nabla u$ (Ficksches Gesetz) mit $a \in \C^1(\Omega)$ Diff.koeff.,
+        $G :\equiv 0$\\
+
+        $\partial_t u - \Delta u = 0$&
+        Dif"|fusionsgleichung/instat. WLG&
+        aus allg. Dif"|fusionsgleichung: $a(x) :\equiv 1$\\
+
+        $-\Delta u = 0$&
+        Laplace-Gleichung&
+        aus instat. Wärmeleitungsgleichung mit $t \to \infty$ und
+        $u(\cdot, t) \to \overline{u}(\cdot) \in \C^2(\overline{\Omega})$ glm.\\
+
+        $-\Delta u = f$&
+        Poisson-Gleichung&
+        aus Laplace-Gleichung mit $G := f(x)$\\
+
+        \midrule
+
+        $-\div_x(\nabla_p L(\nabla u, u, x)) + \partial_z L(\nabla u, u, x) = 0$&
+        Euler-Lagrange-Gleichung&
+        PDE für Lösung $u$ des Variationsproblems
+        $I(u) \le I(w) := \int_\Omega L(\nabla w, w, x)\dx$\\
+
+        $-a_{11}(x) u''(x) + c(x) u(x) = f(x)$&
+        Sturm-Liouville-Problem&
+        aus ELGL: $L(p, z, x) := \frac{1}{2} p^\tp A(x) p + \frac{1}{2} c(x) z^2 - z f(x)$,
+        $d := 1$, $a_{11}(x) > 0$, $c(x) > 0$\\
+
+        $\partial_t^2 u - c^2 \Delta u = 0$&
+        Wellengleichung&
+        aus ELGL: $L(p, z, x) := \frac{c^2}{2} \sum_{i=1}^d |p_i|^2 - \frac{1}{2} |p_{d+1}|^2$
+        aus Hamilton-Prinzip\\
+
+        $-\Delta u + W'(u) = 0$&
+        stat. Allen-Cahn-Gleichung&
+        aus ELGL: $L(p, z, x) := W(z) + \frac{1}{2} \norm{p}^2$ mit z.\,B. $W(z) := (z^2 - 1)^2$\\
+
+        \bottomrule
+    \end{tabular}
+\end{landscape}
+
+\begin{landscape}
+    \subsection{%
+        \emph{Zusatz}: Übersicht über die Aussagen über PDE-Klassen%
+    }
+
+    \footnotesize
+
+    %\renewcommand*{\arraystretch}{1.2}
+    \begin{tabular}{p{20mm}p{20mm}p{30mm}p{169mm}}
+        \toprule
+
+        \textbf{PDE}&
+        \textbf{Problem}&
+        \textbf{Definition/Satz}&
+        \textbf{Voraussetzungen/Aussage}\\
+
+        \midrule
+
+        \multirow{9}{20mm}{Advektions-gleichung}&
+        \multirow{7}{20mm}{konstante Adv.geschw.}&
+        Definition&
+        $\Omega := \real^d$, $T := \infty$, $b \in \real^d$, $u_0 \in \C^1(\Omega)$
+        $\implies$
+        $\partial_t u + \div(bu) = 0$ in $\Omega_T$, $u(\cdot, 0) = u_0$ in $\Omega$\\
+
+        &&Translationsinv.&
+        $\forall_{(x, t) \in \Omega_T} \forall_{s \in (-t, T-t)}\;
+        \frac{\d}{\ds} u(x + bs, t + s) = 0$\\
+
+        &&Ex. + Eind.&
+        $u(x, t) := u_0(x - bt)$ eind. kl. Lsg.\\
+
+        &&$L^\infty$-Stabilität&
+        $u_0 \in \C^1(\Omega) \cap L^\infty(\Omega) \implies
+        \forall_{t \in (0, T)}\; \norm{u(\cdot, t)}_{L^\infty} \le \norm{u_0}_{L^\infty}$\\
+
+        &&Max.-/Min.prinzip&
+        $u_0 \in \C^1(\Omega) \cap L^\infty(\Omega) \implies
+        \forall_{(x, t) \in \Omega_T}\;
+        \inf_{\overline{x} \in \Omega} u_0(\overline{x}) \le u(x, t) \le
+        \sup_{\overline{x} \in \Omega} u_0(\overline{x})$\\
+
+        &&st. Abh. von $u_0$&
+        $u_0, u_0' \in \C^1(\Omega) \cap L^\infty(\Omega) \implies
+        \forall_{t \in (0, T)}\;
+        \norm{u(\cdot, t) - u'(\cdot, t)}_{L^\infty} \le \norm{u_0 - u_0'}_{L^\infty}$\\
+
+        &&keine st. Abh. von $b$&
+        $\lnot[\forall_{t \in (0, T)} \exists_{C(t) > 0}
+        \forall_{u_0 \in \C^1(\Omega) \cap L^\infty(\Omega), \norm{u_0}_{L^\infty} \le 1}
+        \forall_{b, b' \in \real}\;
+        \norm{u(\cdot, t) - u'(\cdot, t)}_{L^\infty} \le C(t) \norm{b - b'}]$\\
+
+        \cmidrule{2-4}
+
+        &\multirow{2}{20mm}{Reaktions-/ Quellterm}&
+        Definition&
+        $q \in \C^0(\Omega_T)$
+        $\implies$
+        $\partial_t u + \div(bu) = q$ in $\Omega_T$, $u(\cdot, 0) = u_0$ in $\Omega$\\
+
+        &&Ex. + Eind.&
+        $u(x, t) := u_0(x - bt) + \int_0^t q(x + (s-t)b, s)\ds$ eind. kl. Lsg.\\
+
+        \cmidrule{2-4}
+
+        &\multirow{2}{20mm}{nicht-lineare Konvektion}&
+        Definition&
+        $\Omega := \real$, $T > 0$, $f \in \C^2(\real)$, $u_0 \in \C^1(\Omega)$
+        $\implies$
+        $\partial_t u + \partial_x(f(u)) = 0$ in $\Omega_T$, $u(\cdot, 0) = u_0$ in $\Omega$\\
+
+        &&lokale Ex.&
+        $\norm{f''}_\infty, \norm{u_0'}_\infty < \infty
+        \implies \forall_{\overline{x} \in \real} \exists_{\varepsilon > 0} \exists_{T > 0}
+        \exists_{u \in \C^1(B_\varepsilon(\overline{x}) \times (0, T))}\;
+        [\text{$u$ kl. Lsg.}]$,
+        $u(x, t) = u_0(x - tf'(u(x, t)))$\\
+
+        \midrule
+
+        \multirow{17}{20mm}{Poisson-Gleichung}&
+        \multirow{8}{20mm}{Laplace-Gleichung}&
+        Definition&
+        $\Omega \subset \real^d$
+        $\implies$
+        $-\Delta u = 0$ in $\Omega$\\
+
+        &&MW-Eigenschaft&
+        $u \in C^2(\Omega)$ harm., $x \in \Omega$, $r > 0$, $\overline{B_r(x)} \subset \Omega$
+        $\implies \fint_{B_r(y)} u(y) \dy = u(x) = \fint_{\partial B_r(x)} u(y) \dsigma(y)$\\
+
+        &&Max.prinzip&
+        $\Omega$ of"|fen, beschr., $u \in \C^2(\overline{\Omega})$ harm.
+        $\implies \max_{x \in \overline{\Omega}} u(x) = \max_{x \in \partial\Omega} u(x)$\\
+
+        &&verallg. Max.prinz.&
+        $\Omega$ of"|fen, beschr., $u \in \C^2(\Omega) \cap \C^0(\overline{\Omega})$,
+        $-\Delta u = f \le 0$
+        $\implies$ $u$ nimmt Max. auf dem Rand an\\
+
+        &&Vgl.prinzip&
+        $\Omega$ of"|fen, beschr., $u, v \in \C^2(\Omega) \cap \C^0(\overline{\Omega})$,
+        $-\Delta u \le -\Delta v$ in $\Omega$, $u \le v$ auf $\partial\Omega$
+        $\implies$ $u \le v$ in $\Omega$\\
+
+        &&Regularität&
+        $\Omega := \real^d$, $u \in \C^2(\Omega)$ harm.
+        $\implies u \in \C^\infty(\Omega)$\\
+
+        &&Fundamentallsg.&
+        $\Omega := \real^d \setminus \{0\}$, $d > 1$
+        $\implies \Phi \in \C^\infty(\Omega)$,
+        $\Phi(x) := -\frac{1}{2\pi} \cdot \ln(\norm{x})$ für $d = 2$,\quad
+        $\Phi(x) := \frac{1}{(d-2)\omega_d} \cdot \frac{1}{\norm{x}^{d-2}}$ für $d \ge 3$\\
+
+        &&Eigenschaften&
+        $\int_{B_\varepsilon(0)} \Phi(x)\dx \to 0$,\quad
+        $\Phi \in L^1_\loc(\real^d)$,\quad
+        $\Phi(\varepsilon e_1) \varepsilon^{d-1} \to 0$,\quad
+        $\forall_{\varepsilon>0}\;
+        \int_{\partial B_\varepsilon(0)} \nabla\Phi(x) \cdot n\dsigma(x) = -1$\\
+
+        \cmidrule{2-4}
+
+        &\multirow{3}{20mm}{Poisson-Gleichung}&
+        Definition&
+        $\Omega \subset \real^d$, $f\colon \Omega \to \real$
+        $\implies$
+        $-\Delta u = f$ in $\Omega$\\
+
+        &&Rotationsinv.&
+        $u \in \C^2(\Omega)$ kl. Lsg.,
+        $O \in \real^{d \times d}$ orth., $\Omega = O\Omega$, $f = f \circ O$
+        $\implies v \in \C^2(\Omega)$ kl. Lsg., $v(x) := u(Ox)$\\
+
+        &&Faltungslösung&
+        $\Omega := \real^d$, $d \ge 2$, $f \in \C^2_0(\Omega)$
+        $\implies u := \Phi \ast f$ kl. Lsg.\\
+
+        \cmidrule{2-4}
+
+        &\multirow{4}{20mm}{Poisson-RWP}&
+        Definition&
+        $\Omega \subset \real^d$ of"|fen, beschr., $f \in \C^0(\Omega)$,
+        $g \in \C^0(\partial\Omega)$
+        $\implies$
+        $-\Delta u = f$ in $\Omega$, $u = g$ auf $\partial\Omega$\\
+
+        &&Eind.&
+        es gibt höchstens eine kl. Lsg. $u \in \C^2(\Omega) \cap \C^0(\overline{\Omega})$\\
+
+        &&st. Abh. von $g$&
+        $g, g' \in \C^0(\partial\Omega)
+        \implies \norm{u - u'}_\infty \le \norm{g - g'}_\infty$\\
+
+        &&st. Abh. von $f$&
+        $f, f' \in C^0(\Omega)
+        \implies \norm{u - u'}_\infty \le C \norm{f - f'}_\infty$, $C := \frac{R^2}{2}$,
+        $R := \sup_{x \in \Omega} \norm{x}$\\
+
+        \bottomrule
+    \end{tabular}
+
+    \pagebreak
+
+    \begin{tabular}{p{20mm}p{20mm}p{30mm}p{169mm}}
+        \toprule
+
+        \textbf{PDE}&
+        \textbf{Problem}&
+        \textbf{Definition/Satz}&
+        \textbf{Voraussetzungen/Aussage}\\
+
+        \midrule
+
+        \multirow{11}{20mm}{Dif"|fusions-gleichung}&
+        \multirow{5}{20mm}{AWP}&
+        Definition&
+        $\Omega \subset \real^d$, $T > 0$, $u_0\colon \Omega \to \real$
+        $\implies$
+        $\partial_t u - \Delta u = 0$ in $\Omega_T$,
+        $u(\cdot, 0) = u_0$ in $\Omega$\\
+
+        &&Skal.inv.&
+        $\Omega := \real^d$, $T := \infty$, $u \in \C^2(\Omega_T)$ kl. Lsg., $\lambda \in \real$
+        $\implies u_\lambda$ kl. Lsg., $u_\lambda(x, t) := u(\lambda x, \lambda^2 t)$\\
+
+        &&Fundamentallsg.&
+        $\Omega := \real^d$, $T := \infty$
+        $\implies \Phi \in \C^\infty(\Omega_T)$,
+        $\Phi(x, t) := \frac{1}{(4\pi t)^{d/2}} e^{-\norm{x}^2/(4t)}$\\
+
+        &&Faltungslösung&
+        $\Omega := \real^d$, $T := \infty$, $u_0 \in L^\infty(\Omega)$
+        $\implies u \in \C^\infty(\Omega_T)$,
+        $u(\cdot, t) := \Phi(\cdot, t) \ast u_0$ kl. Lsg.,\newline
+        für $u_0 \in \C^0(\real)$ gilt
+        $\forall_{\overline{x} \in \Omega}\;
+        \lim_{(x, t) \to (\overline{x}, 0)} u(x, t) = u_0(\overline{x})$,
+        $\forall_{t > 0}\; \norm{u(\cdot, t)}_{L^\infty} \le \norm{u_0}_{L^\infty}$\\
+
+        \cmidrule{2-4}
+
+        &\multirow{2}{20mm}{ARWP}&
+        Definition&
+        $g\colon \partial\Omega \times (0, T) \to \real$
+        $\implies$
+        $\partial_t u - \Delta u = 0$ in $\Omega_T$,
+        $u(\cdot, 0) = u_0$ in $\Omega$,
+        $u = g$ auf $\partial\Omega \times (0, T)$\\
+
+        &&Max.prinzip&
+        $u$ nimmt Maximum auf parabolischem Rand
+        $\Gamma := (\Omega \times \{0\}) \cup (\partial\Omega \times [0, T])$ an\\
+
+        \cmidrule{2-4}
+
+        &\multirow{3}{20mm}{inhom. ARWP}&
+        Definition&
+        $f\colon \Omega_T \to \real$
+        $\implies$
+        $\partial_t u - \Delta u = f$ in $\Omega_T$,
+        $u(\cdot, 0) = u_0$ in $\Omega$,
+        $u = g$ auf $\partial\Omega \times (0, T)$\\
+
+        &&Eind.&
+        $\Omega \subset \real^d$ Lipschitz
+        $\implies$ es gibt höchstens eine kl. Lsg.\\
+
+        &&Konv. gg. stat. Lsg.&
+        $\Omega \subset \real^d$ Lipschitz,
+        $f, g$ zeitunabh.,
+        $-\Delta\overline{u} = f$ in $\Omega$, $\overline{u} = g$ auf $\partial\Omega$
+        $\implies \norm{u(\cdot, t) - \overline{u}}_{L^2} \le
+        e^{-t/c_p} \norm{u_0 - \overline{u}}_{L^2}$\\
+
+        \midrule
+
+        \multirow{8}{20mm}{Wellen-gleichung}&
+        \multirow{5}{20mm}{AWP}&
+        Definition&
+        $\Omega := \real^d$, $T > 0$, $c > 0$, $u_0 \in \C^2(\Omega)$, $v_0 \in \C^1(\Omega)$
+        $\implies$
+        %$u \in \C^2(\Omega_T) \cap \C^1(\overline{\Omega_T})$,
+        $\partial_t^2 u - c^2 \Delta u = 0$ in $\Omega_T$, $u(\cdot, 0) = u_0$,
+        $\partial_t u(\cdot, 0) = v_0$ in $\Omega$\\
+
+        &&Ex. + Eind.&
+        $d := 1 \implies u(x, t) :=
+        \frac{1}{2} (u_0(x+ct) + u_0(x-ct)) + \frac{1}{2c} \int_{x-ct}^{x+ct} v_0(s)\ds$
+        eind. kl. Lsg.\\
+
+        &&$L^\infty$-Stabilität&
+        $d := 1$, $u_0 \in \C^2(\Omega) \cap L^\infty(\Omega)$,
+        $v_0 \in \C^1(\Omega) \cap L^1(\Omega)$
+        $\implies
+        \forall_{t \ge 0}\;
+        \norm{u(\cdot, t)}_{L^\infty} \le \norm{u_0}_{L^\infty} +
+        \frac{1}{2c} \norm{v_0}_{L^1}$\\
+
+        &&st. Abh. von $u_0, v_0$&
+        $d := 1$, $u_0, \overline{u_0} \in \C^2 \cap L^\infty$,
+        $v_0, \overline{v_0} \in \C^1 \cap L^1$
+        $\implies
+        \forall_{t \ge 0}\;
+        \norm{u(\cdot, t) - \overline{u}(\cdot, t)}_{L^\infty}
+        \le C \left(\norm{u_0 - \overline{u_0}}_{L^\infty} +
+        \norm{v_0 - \overline{v_0}}_{L^1}\right)$\\
+
+        &&Abh.kegel&
+        $d := 1$, $(x_0, t_0) \in \Omega_T$,
+        $\forall_{|x - x_0| \le ct_0}\; u_0(x) = v_0(x) = 0$
+        $\implies$ $u(x,t) = 0$ für $t \in [0, t_0]$, $|x - x_0| \le c(t_0 - t)$\\
+
+        \cmidrule{2-4}
+
+        &\multirow{3}{20mm}{inhom. ARWP}&
+        Definition&
+        $\Omega \subset \real^d$,
+        $f\colon \Omega_T \to \real$,
+        $g\colon \partial\Omega \times (0, T) \to \real$,
+        $u_0, v_0\colon \Omega \to \real$\newline
+        $\implies$
+        $\partial_t^2 u - c^2 \Delta u = f$ in $\Omega_T$,
+        $u(\cdot, 0) = u_0$ in $\Omega$,
+        $\partial_t u(\cdot, 0) = v_0$ in $\Omega$,
+        $u = g$ auf $\partial\Omega \times (0, T)$\\
+
+        &&Eind.&
+        $\Omega \subset \real^d$ Lipschitz
+        $\implies$ es gibt höchstens eine kl. Lsg.\\
+
+        \bottomrule
+    \end{tabular}
+
+    \pagebreak
+\end{landscape}
+
+\pagebreak

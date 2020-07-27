@@ -1,0 +1,845 @@
+\section{%
+    LP-basierte Approximationen für NP-schwere Probleme%
+}
+
+Im Folgenden werden Polynomialzeit-Algorithmen behandelt, die Approximationen für NP-schwere
+Optimierungsprobleme liefern und eine beweisbare Fehlerabschätzung zulassen.
+
+\subsection{%
+    Mengenüberdeckung (\emph{Set Cover})%
+}
+
+\subsubsection{%
+    Problem%
+}
+
+\textbf{Mengenüberdeckung}:\\
+Seien $\U := \{u_1, \dotsc, u_n\}$ eine endliche Menge und
+$\S := \{S_1, \dotsc, S_k\} \subset \P(\U)$ eine Familie von Teilmengen von $\U$
+mit $\bigcup_{S_i \in \S} S_i = \U$.
+Dann heißt $\S' \subset \S$ mit $\bigcup_{S_i \in \S'} S_i = \U$
+\begriff{Mengenüberdeckung} von $\U$.
+
+\textbf{Set-Cover-Problem}:
+%Sei $c\colon \S \to \real^+$ eine \begriff{Kostenfunktion}.
+Seien $c_i > 0$ die \begriff{Kosten} von $S_i$.
+Dann ist das \begriff{Set-Cover-Problem (SC)},
+eine Mengenüberdeckung $\S' \subset \S$ mit minimalen Kosten
+$c(\S') := \sum_{S_i \in \S'} c_i$ zu finden.\\
+Das SC-Problem ist NP-vollständig.
+
+Für das allgemeine Set-Cover-Problem existiert wahrscheinlich kein Polynomialzeit-Algorith"-mus,
+der eine Approximation $\S'$ mit $c(\S') < \log n \cdot c(\S_\opt)$ ausgibt.
+Das bedeutet insbesonders, dass es für jede Konstante $a > 0$ wohl auch keinen
+Polynomialzeit-Algorithmus gibt, der
+eine Lösung ausgibt, die höchstens $a$-mal so groß ist als das Optimum
+(\begriff{$a$-Approximation}).
+
+Ein einfacherer Spezialfall ist $c_1 = \dotsb = c_k = 1$.
+
+\linie
+
+\textbf{SC als LP}:
+Für jedes $S_i$ führe eine Variable $x_i$ ein, wobei $x_i = 1 \iff S_i$ wird für $\S'$ gewählt.
+Dann lässt sich das SC-Problem durch das LP\\
+$\min \sum_{S_i \in \S} x_i c_i$, $\forall_{u \in \U}\; \sum_{S_i \ni u} x_i \ge 1$,
+$\forall_{S_i \in \S}\; x_i \in \{0, 1\}$ beschreiben.
+
+\textbf{LP-Relaxation}:
+Von \begriff{LP-Relaxation} spricht man, wenn man bei einem Ganzzahl-LP die Forderung
+der Ganzzahligkeit aufgibt.
+Beim SC-Problem ersetzt man z.\,B. $x_i \in \{0, 1\}$ durch $x_i \ge 0$.
+
+\textbf{duales Problem}:
+Das zur LP-Relaxation von SC duale Problem lautet\\
+$\max \sum_{u \in \U} y_u$, $\forall_{S_i \in \S}\; \sum_{u \in S_i} y_u \le c_i$,
+$\forall_{u \in \U}\; y_u \ge 0$ (\begriff{Packing-Problem}).
+
+\subsubsection{%
+    Spezialfall \emph{Vertex Cover}%
+}
+
+\textbf{Knotenüberdeckung}:
+Gegeben sei ein ungerichteter Graph $G = (V, E)$.\\
+Dann heißt $C \subset V$ mit $\forall_{e \in E}\; e \cap C \not= \emptyset$
+\begriff{Knotenüberdeckung}.
+
+\textbf{Vertex-Cover-Problem}:
+Das \begriff{Vertex-Cover-Problem (VC)} ist, zu $G$ eine Knotenüberdeckung $C$ mit $|C|$ minimal
+zu finden.
+Das VC-Problem ist NP-vollständig.
+
+\textbf{VC als SC}:
+VC ist ein Spezialfall von SC mit $\U := E$ und
+$\S := \{\{e \in E \;|\; e \ni v\} \;|\; v \in V\}$.
+
+\linie
+
+\textbf{VC als Ganzzahl-LP}:
+Für jedes $v \in V$ führe eine Variable $x_v$ ein, wobei $x_v = 1 \iff v$ wird für $C$
+ausgewählt.
+Dann lässt sich das VC-Problem durch das LP\\
+$\min \sum_{v \in V} x_v$, $\forall_{e = \{v, w\} \in E}\; x_v + x_w \ge 1$,
+$\forall_{v \in V}\; x_v \in \{0, 1\}$
+beschreiben.
+
+\textbf{duales Problem}:
+Das duale Problem zur LP-Relaxation von VC lautet\\
+$\max \sum_{e \in E} y_e$, $\forall_{v \in V}\; \sum_{e \ni v} y_e \le 1$,
+$\forall_{e \in E}\; y_e \ge 0$ (\begriff{Matching-Problem},\\
+wähle so viele paarweise nicht-adjazente Kanten wie möglich).
+
+\pagebreak
+
+\subsubsection{%
+    Gieriger Algorithmus (\emph{Greedy})%
+}
+
+\textbf{gieriger Algorithmus für SC}:
+\begin{enumerate}
+    \item
+    Setze $C \leftarrow \emptyset$.
+    
+    \item
+    Solange $C \not= \U$, wiederhole:
+    \begin{enumerate}
+        \item
+        Setze $\alpha_i \leftarrow \frac{c_i}{|S_i \setminus C|}$
+        für alle $S_i$ mit $x_i = 0$.
+        
+        \item
+        Wähle $S_j$, sodass $\alpha_j = \min_i \alpha_i$.
+        
+        \item
+        Setze $x_j \leftarrow 1$.
+        
+        \item
+        Für alle $u \in S_j \setminus C$ setze $C \leftarrow C \cup \{u\}$ und
+        $y_u \leftarrow \alpha_j$.
+    \end{enumerate}
+    
+    \item
+    Gebe die Mengen $S_i$ mit $x_i = 1$ aus.
+\end{enumerate}
+
+Wie das folgende Lemma sagt, erzeugt der gierige Algorithmus eine
+Mengenüberdeckung, die höchstens um den Faktor $\O(\log n)$ teurer als
+eine optimale Lösung ist.
+Der Ansatz heißt dabei \begriff{Dual Fitting}:
+Man findet zunächst eine primale Lösung,
+modifiziert die zugehörige duale Lösung so, dass sie zulässig wird,
+und schätzt dann das Verhältnis von primaler Lösung zu modifizierter dualer Lösung ab.
+
+Es gibt Beispiele, bei denen der gierige Algorithmus tatsächlich um $\O(\log n)$
+schlechter ist:
+Wähle $S_i$ für $i = 1, \dotsc, k$ paarweise disjunkt (mit $k \ge 3$), sodass $|S_i| = 2^i$
+und $\U = \bigcup_{i=1}^k S_i$.
+Teile nun noch jedes $S_i$ in zwei Hälften $S_i', S_i''$ auf und setze
+$S' := \bigcup_{i=1}^k S_i'$ und $S'' := \bigcup_{i=1}^k S_i''$.
+Dann ist die optimale Mengenüberdeckung gegeben durch $\{S', S''\}$
+(d.\,h. minimale Größe $2$),
+der gierige Algorithmus gibt aber $\{S_1, \dotsc, S_k\}$ zurück
+(mit $k = \O(\log n)$ wegen $n = 2^{k+1} - 2$).
+
+\linie
+
+\textbf{Lemma (Approximationsgüte des gierigen Algorithmus)}:
+Der gierige Algorithmus gibt eine Mengenüberdeckung $\S' \subset \S$ aus mit
+Kosten $c(\S') \le H_n \cdot c(\S_\opt')$,
+wobei $\S_\opt' \subset \S$ eine optimale Mengenüberdeckung und
+$H_n := \sum_{i=1}^n \frac{1}{i} \le 1 + \log n$
+die \begriff{$n$-te harmonische Zahl} ist.
+
+\begin{Beweis}
+    Der gierige Algorithmus erzeugt eine zulässige Ganzzahl-Lösung $x$ des primalen Problems
+    mit Kosten $c(\S') = \sum_{S \in \S'} x_S c_S$.
+    Außerdem konstruiert er gleichzeitig eine Lösung $y$ des dualen Problems mit
+    exakt denselben Kosten
+    (denn in jedem Durchlauf werden sowohl der primale als der duale Zielfunktionswert um
+    genau $c_j$ erhöht).
+    Im Allgemeinen ist die duale Lösung aber nicht zulässig!
+    
+    Eine der dualen NBen $\forall_{S \in \S}\; \sum_{u \in S} y_u \le c_S$
+    ist also evtl. verletzt.
+    Im Folgenden wird gezeigt, dass immerhin $\sum_{u \in S} y_u \le H_n c_S$ gilt.
+    Dann kann man nämlich die zulässige duale Lösung $y' := \frac{y}{H_n}$ definieren,
+    die die Kosten $\sum_{u \in \U} y_u' = \frac{1}{H_n} \sum_{u \in \U} y_u =
+    \frac{1}{H_n} c(\S')$ besitzt.
+    Weil alle zulässigen Lösungen des dualen Problems Zielfunktionswerte besitzen,
+    die durch $c(\S_\opt')$ nach oben beschränkt sind
+    (das duale Problem ist ein Maximierungsproblem und
+    opt. primaler/dualer Zielfkt.wert fallen zusammen),
+    erhält man daher
+    $c(\S') = H_n \sum_{u \in \U} y_u' \le H_n \cdot c(\S_\opt')$.
+    
+    Sei also $S \in \S$ fest.
+    Sortiere $S := \{u_1, \dotsc, u_\ell\}$ in der Reihenfolge $u_1, \dotsc, u_\ell$,
+    in der die Elemente vom Algorithmus zu $C$ hinzugefügt werden.
+    Für $i \in \{1, \dotsc, \ell\}$ fest betrachte man den Durchlauf des Algorithmus, bei dem
+    $u_i$ hinzugefügt wurde.
+    In diesem Durchlauf wurde eine Menge $S' \in \S$ ausgewählt, für die
+    $\alpha_{S'} := \frac{c_{S'}}{|S' \setminus C|}$ minimal war, und $y_{u_i} := \alpha_{S'}$
+    gesetzt.
+    Weil aber auch $S$ ein "`Kandidat"' war, gilt $\alpha_{S'} \le \alpha_S$,
+    wobei $\alpha_S := \frac{c_S}{|S \setminus C|} \le \frac{c_S}{\ell - i + 1}$ gilt
+    (weil $u_i, u_{i+1}, \dotsc, u_\ell \in S \setminus C$ zu diesem Zeitpunkt aufgrund der
+    Sortierung).
+    Damit erhält man $y_{u_i} \le \frac{c_S}{\ell - i + 1}$.
+    
+    Durch Summation kommt man dann auf
+    $\sum_{u \in S} y_u \le
+    \sum_{i=1}^\ell \frac{c_S}{\ell - i + 1} = H_\ell c_S \le H_n c_S$.
+\end{Beweis}
+
+\pagebreak
+
+\subsubsection{%
+    Einfache LP-Rundung%
+}
+
+\textbf{LP-Rundung}:
+Bei der \begriff{LP-Rundung} erhält man eine Approximation eines Ganzzahl-LPs,
+indem man die zugehörige LP-Relaxation löst, die zugehörige Lösung in eine Ganzzahl-Lösung
+umwandelt und schließlich beweist, dass die Lösung nicht viel schlechter als das Ganzzahl-Optimum ist.
+
+\linie
+
+\textbf{einfache LP-Rundung für VC}:
+Sei $x = (x_v)_{v \in V}$ die optimale Lösung der LP-Relaxation.
+Dann wählt die \begriff{einfache LP-Rundung} für Vertex Cover $C := \{v \in V \;|\; x_v > 0\}$.
+
+Dieser Algorithmus konstruiert auch für allgemeine SC-Probleme stets eine zulässige Lösung,
+wobei allerdings nicht klar ist, wie gut diese eine optimale Lösung approximiert.
+Für den VC-Spezialfall wird gezeigt, dass das Resultat eine
+$2$-Approximation ist, d.\,h. $|C| \le 2 \cdot |C_\opt|$.
+
+\linie
+
+\textbf{Lemma (Halb-Ganzzahligkeit)}:
+Jede Ecke $x$ des Zielbereichs der LP-Relaxation des VC-Problems, die durch die NBen
+$\forall_{e = \{u, v\} \in E}\; x_u + x_v \ge 1$ definiert ist,
+erfüllt $\forall_{v \in V}\; x_v \in \{0, \frac{1}{2}, 1\}$.
+
+\begin{Beweis}
+    Sei $x$ eine Ecke mit $x_v \notin \{0, \frac{1}{2}, 1\}$ für ein $v \in V$.
+    Im Folgenden wird gezeigt, dass $x = \frac{1}{2} (y + z)$ mit
+    zwei zulässigen Punkten $y, z \not= x$ gilt.
+    Damit wäre $x$ wegen der Konvexität des Zielbereichs keine Ecke, ein Widerspruch.
+    
+    Setze $V^+ := \{v \in V \;|\; x_v \in (1/2, 1)\}$ und
+    $V^- := \{v \in V \;|\; x_v \in (0, 1/2)\}$.
+    Wegen $x_v \notin \{0, \frac{1}{2}, 1\}$ für ein $v \in V$
+    ist $V^+ \cup V^- \not= \emptyset$.
+    Definiere nun für $\varepsilon > 0$ die Punkte
+    $y, z$ mit $y_v := x_v \pm \varepsilon$ für $v \in V^\pm$ und $y_v := x_v$ sonst sowie
+    $z_v := x_v \mp \varepsilon$ für $v \in V^\pm$ und $z_v := x_v$ sonst.
+    Wegen $V^+ \cup V^- \not= \emptyset$ gilt $y, z \not= x$ und man erhält
+    $x = \frac{1}{2} (y + z)$.
+    
+    Zu zeigen ist jetzt noch, dass $y, z$ für $\varepsilon > 0$ klein genug
+    zulässige Lösungen sind.
+    Betrachte dazu alle NBen $x_v + x_w \ge 1$
+    (erfüllt, da $x$ zulässig ist).
+    \begin{itemize}
+        \item
+        \emph{Fall 1: $x_v + x_w > 1$}\\
+        Wähle $\varepsilon < \frac{1}{2} (x_v + x_w - 1)$.
+        Dann gilt nämlich $y_v + y_w \ge x_v + x_w - 2\varepsilon > 1$.
+        
+        \item
+        \emph{Fall 2: $x_v + x_w = 1$}
+        \begin{itemize}
+            \item
+            $x_v = x_w = \frac{1}{2}$:
+            In diesem Fall gilt $y_v = y_w = \frac{1}{2}$, d.\,h. $y_v + y_w = 1$.
+            
+            \item
+            $x_v = 0$, $x_w = 1$:
+            Dann gilt $y_v = 0$, $y_w = 1$, d.\,h. $y_v + y_w = 1$
+            (analog $x_v = 1$, $x_w = 0$).
+            
+            
+            \item
+            $v \in V^\pm$, $w \in V^\mp$:
+            In diesem Fall gilt
+            $y_v + y_w = (x_v \pm \varepsilon) + (x_w \mp \varepsilon) = x_v + x_w = 1$.
+        \end{itemize}
+    \end{itemize}
+    Analog sind auch die NBen $z_v + z_w \ge 1$ für $\varepsilon > 0$ klein genug erfüllt.
+\end{Beweis}
+
+\linie
+
+\textbf{Lemma (2-Approximation von VC)}:
+Für das Resultat $C$ der LP-Rundung für VC gilt $|C| \le 2 \cdot |C_\opt|$
+mit $C_\opt$ einer optimalen Knotenüberdeckung.
+
+\begin{Beweis}
+    Sei $(x_v)_{v \in V}$ die Lösung der LP-Relaxation des VC-Problems.
+    
+    Es gilt $\sum_{v \in V} x_v \le |C_\opt|$,
+    weil $|C_\opt|$ der Zielfunktionswert des Ganzzahl-LPs ist, sowie\\
+    $C = \{v \in V \;|\; x_v' = 1\}$ mit
+    $x_v' := 1$ für $x_v > 0$ und
+    $x_v' := 0$ für $x_v = 0$.
+    Nach dem ersten Lemma ist $x_v' \le 2x_v$,
+    also $|C| = \sum_{v \in V} x_v' \le \sum_{v \in V} 2x_v \le 2 |C_\opt|$.
+\end{Beweis}
+
+\pagebreak
+
+\subsubsection{%
+    Häufigkeitsbasierte LP-Rundung%
+}
+
+\textbf{häufigkeitsbasierte LP-Rundung für SC}:
+\begin{enumerate}
+    \item
+    Sei $f := \max_{u \in \U} |\{S_i \in \S \;|\; S_i \ni u\}|$
+    (max. Mengenzahl, in der ein Element vorkommt).
+    
+    \item
+    Löse die LP-Relaxation des SC-Problems.
+    
+    \item
+    Wähle alle Mengen $S_i$ mit $x_i \ge \frac{1}{f}$.
+\end{enumerate}
+
+\linie
+
+\textbf{Lemma ($f$-Approximation von SC)}:
+Das Resultat $\S'$ der häufigkeitsbasierten LP-Rundung für SC ist eine Mengenüberdeckung mit
+$c(\S') \le f \cdot c(\S'_\opt)$, wobei $\S'_\opt$ eine optimale Mengenüberdeckung ist.
+
+\begin{Beweis}
+    $\S'$ ist eine zulässige Lösung des SC-Problems, weil
+    für $u \in \U$ beliebig
+    aus $\sum_{S_i \ni u} x_i \ge 1$ und $x_i \ge 0$ folgt, dass
+    $\exists_{S_j \ni u}\; x_j \ge \frac{1}{f}$
+    (andernfalls wäre
+    $\sum_{S_i \ni u} x_i < \frac{1}{f} \cdot |\{S_i \in \S \;|\; S_i \ni u\}| \le 1$),
+    d.\,h. $S_j$ wird für $\S'$ ausgewählt und $u$ wird abgedeckt.
+    
+    Außerdem gilt $x_i' \le f \cdot x_i$ mit $x_i' := 1$ für $x_i \ge \frac{1}{f}$ und
+    $x_i' := 0$ sonst, d.\,h.\\
+    $c(\S') = \sum_{S_i \in \S} c_i x_i' \le f \cdot \sum_{S_i \in \S} c_i x_i \le
+    f \cdot c(\S'_\opt)$.
+\end{Beweis}
+
+\linie
+
+Für den VC-Spezialfall ist $f = 2$ und man erhält die einfache LP-Rundung von oben.
+
+\subsubsection{%
+    Randomisierte LP-Rundung%
+}
+
+\textbf{randomisierte LP-Rundung}:
+Sei $x^\ast$ die optimale Lösung der LP-Relaxation für SC und
+$\OPTLP$ der zugehörige Zielfunktionswert.
+Interpretiere die $x_i^\ast \in [0, 1]$ nun als Wahrscheinlichkeiten
+und wählen die Menge $S_i$ mit Wahrscheinlichkeit $x_i^\ast$.
+
+\linie
+
+\textbf{Kosten der rand. LP-Rundung}:
+Sei $x'$ das Ergebnis der LP-Rundung.
+Dann sind die erwarteten Kosten des Resultats gleich
+$\EE[\sum_{S_i \in \S} c_i x_i'] = \sum_{S_i \in \S} c_i \EE[x_i'] =
+\sum_{S_i \in \S} c_i \PP[x_i' = 1]$\\
+$= \sum_{S_i \in \S} c_i x_i^\ast = \OPTLP$.
+
+Weil $\OPTLP$ i.\,A. kleiner als $\OPTint = c(\S'_\opt)$ mit $\S'_\opt$
+einer optimalen Mengenüberdeckung
+ist, wird das Ergebnis der randomisierten LP-Rundung i.\,A. keine zulässige Mengenüberd. sein.
+
+\textbf{Lemma}:
+Sei $u \in \U$.
+Dann ist die Wahrscheinlichkeit, dass $u$ nicht abgedeckt wird, $\le \frac{1}{e}$.
+
+\begin{Beweis}
+    Sei $\ell$ die Anzahl der Mengen, die $u$ enthalten.
+    Wegen der NBen der LP-Relaxation gilt
+    $\sum_{S_i \ni u} x_i^\ast \ge 1$.
+    Daraus folgt
+    $\PP[\text{$u$ nicht abgedeckt}]
+    = \PP[\forall_{S_i \ni u}\; \text{$S_i$ nicht gewählt}]$\\
+    $= \prod_{S_i \ni u} \PP[\text{$S_i$ nicht gewählt}]
+    = \prod_{S_i \ni u} (1 - x_i^\ast)
+    \le \left(1 - \frac{1}{\ell}\right)^\ell
+    < \frac{1}{e}$\\
+    (da $e^x = \lim_{n \to \infty} \left(1 + \frac{x}{n}\right)^n$ streng monoton steigend).
+\end{Beweis}
+
+\linie
+
+Weil jedes $u \in \U$ mit einer konstanten Wahrscheinlichkeit abgedeckt wird,
+kann man $c \log n$ unabhängige randomisierte
+LP-Rundungen durchführen und die Vereinigung $\S'$ der gewählten Mengen bilden.
+Wählt man $c \in \natural$ mit
+$\left(\frac{1}{e}\right)^{c \log n} = \frac{1}{n^c} \le \frac{1}{4n}$, dann gilt\\
+$\PP[\text{$u$ durch $\S'$ nicht abgedeckt}] \le
+\left(\frac{1}{e}\right)^{c \log n} \le \frac{1}{4n}$.
+Somit erhält man\\
+$\PP[\text{$\S'$ keine Mengenüberdeckung}] \le
+n \cdot \frac{1}{4n} = \frac{1}{4}$.
+Die erwarteten Kosten der so erhaltenen Lösung sind
+$\EE[c(\S')] \le c \log n \cdot \OPTLP$.
+Wegen der Markov-Ungleichung $\PP[X \ge t] \le \frac{\EE[X]}{t}$
+(wobei $t := 4c \log n \cdot \OPTLP$) erhält man
+$\PP[c(\S') \ge 4c\log n \cdot \OPTLP] \le \frac{1}{4}$.\\
+Daher gilt
+$\PP[\text{$\S'$ Mengenüberdeckung mit $c(\S') < 4c \log n \cdot \OPTLP$}] \ge \frac{1}{2}$.
+Ist $\S'$ keine Mengenüberdeckung oder zu teuer (lässt sich leicht überprüfen),
+dann startet man neu, bis man eine zulässige und "`günstige"' Mengenüberdeckung erhält
+(erwartete Wiederholungszahl $\le 2$).
+
+\pagebreak
+
+\subsubsection{%
+    Primal-Dual-Schema%
+}
+
+\textbf{Idee}:
+Starte mit einem Paar von Lösungen $x_0, y_0$ des primalen/dualen LPs,
+wobei $x_0$ unzulässig und $y_0$ zulässig ist.
+Vergrößere nun duale Variablen, während die Zulässigkeit der dualen Lösung erhalten bleibt.
+Beim Vergrößern werden manche duale NBen \begriff{scharf} (erfüllen Gleichheit).
+Welche NBen scharf werden, bestimmt dann, welche primalen Variablen vergrößert werden.
+
+\textbf{Lemma (komplementäre Schlupfbedingung)}:\\
+Seien $x^\ast, y^\ast$ optimale Lösungen des primalen/dualen LPs.
+Dann gilt:
+\begin{itemize}
+    \item
+    $x_i^\ast > 0 \iff$ entsprechende duale NB ist scharf
+    
+    \item
+    $y_j^\ast > 0 \iff$ entsprechende primale NB ist scharf
+\end{itemize}
+
+\begin{Beweis}
+    Sei $y_j^\ast > 0$.
+    Dann ist die $j$-te primale NB $h_j$ an der V-Form beteiligt ($h_j \in B$),
+    die zur optimalen primalen Lösung $x^\ast$ gehört
+    (nach Konstruktion des dualen Simplex-Algorithmus).
+    Damit liegt $x^\ast$ auf der Hyperebene, die zu $h_j$ gehört, und
+    in der NB $h_j$ gilt Gleichheit.\\
+    Umgekehrt und für $x_i$ argumentiert man analog.
+\end{Beweis}
+
+\linie
+
+\textbf{Primal-Dual-Schema für SC}:
+\begin{enumerate}
+    \item
+    Starte mit primaler Lösung $x := 0$ (unzulässig) und
+    dualer Lösung $y := 0$ (zulässig).
+    
+    \item
+    Solange es ein noch nicht abgedecktes Element $u \in \U$ gibt, wiederhole:
+    \begin{enumerate}
+        \item
+        Wähle ein $u \in \U$, das noch nicht abgedeckt ist.
+        
+        \item
+        Vergrößere die duale Variable $y_u$ solange, bis duale NBen scharf werden.
+        
+        \item
+        Wähle alle Mengen $S_i \in \S$ ($x_i := 1$), die zu scharf gewordenen NBen gehören.
+    \end{enumerate}
+\end{enumerate}
+
+\textbf{Lemma (Korrektheit)}:\\
+Der Algorithmus terminiert mit zulässigen Lösungen $\widetilde{x}, \widetilde{y}$,
+wobei $\widetilde{x}$ ganzzahlig ist.
+
+\begin{Beweis}
+    $y$ ist immer eine zulässige duale Lösung während des Algorithmus.
+    $\widetilde{x}$ ist nach Konstruktion ebenfalls zulässig.
+    Es könnte allerdings sein, dass $y_u$ nicht vergrößert werden kann
+    (wobei $u \in \U$ noch nicht abgedeckt ist), weil alle NBen schon scharf sind.
+    Ist $S_i \in \S$ mit $u \in S_i$, dann wäre aber nach dem obigen Lemma
+    $S_i$ schon gewählt worden (da $x_i > 0$), ein Widerspruch dazu,
+    dass $u$ noch nicht abgedeckt ist.
+\end{Beweis}
+
+\linie
+
+\textbf{Lemma ($f$-Approximation von SC)}:
+Sei $f := \max_{u \in \U} |\{S_i \in \S \;|\; S_i \ni u\}|$.\\
+Dann ist $c^T \widetilde{x} \le f \cdot 1^\tp \widetilde{y}$.
+Insbesondere gilt
+$c(\S') \le f \cdot c(\S'_\opt)$, wobei $\S'$ das Ergebnis des Primal-Dual-Schemas und
+$\S'_\opt$ eine optimale Mengenüberdeckung ist.
+
+\begin{Beweis}
+    Weil für $S_i \in \S'$ die NBen, die zu $S_i$ gehören, scharf sind,
+    gilt $\sum_{u \in S_i} \widetilde{y}_u = c_i$ und daher
+    $c^T \widetilde{x} = \sum_{S_i \in \S'} c_i =
+    \sum_{S_i \in \S'} \sum_{u \in S_i} \widetilde{y}_u
+    \le f \cdot \sum_{u \in \U} \widetilde{y}_u = f \cdot 1^\tp \widetilde{y}$
+    (ein $u \in \U$ kommt in höchstens $f$ Mengen $S_i \in \S'$ vor).
+    Daraus folgt
+    $c(\S') = c^\tp \widetilde{x} \le f \cdot 1^\tp \widetilde{y} \le f \cdot \OPTLP \le
+    f \cdot c(\S'_\opt)$.
+\end{Beweis}
+
+\linie
+
+In dem SC-Beispiel, bei dem der Greedy-Algorithmus $\O(\log n)$-viele Mengen wählt,
+obwohl die optimale Mengenüberdeckung nur zwei Mengen enthält,
+schneidet das Primal-Dual-Schema wesentlich besser ab:
+Es werden unabhängig von $n$ stets vier Mengen gewählt
+($f = 2$).
+
+\pagebreak
+
+\subsection{%
+    \emph{Uncapacitated Facility Location}%
+}
+
+\subsubsection{%
+    Problem%
+}
+
+\textbf{Uncapacitated Facility Location}:
+Beim \begriff{UFL-Problem} ist $(V, F, D, f, c)$ gegeben mit
+\begin{itemize}
+    \item
+    einer endlichen Menge $V$ von \begriff{Standorten},
+    
+    \item
+    einer Teilmenge $F \subset V$ von \begriff{möglichen Lagerstandorten},
+    
+    \item
+    einer Teilmenge $D := V \setminus F$ von \begriff{Kundenstandorten},
+    
+    \item
+    einer Abbildung $f\colon F \to \real$ (\begriff{Fixkosten}) und
+    
+    \item
+    einer Metrik $c$ auf $V$ (\begriff{Verbindungskosten}).
+\end{itemize}
+Gesucht ist eine Teilmenge $F' \subset F$ von Lagerstandorten und eine Abbildung
+$\pi\colon D \to F'$, sodass die \begriff{Gesamtkosten}
+$c(F', \pi) := \sum_{i \in F'} (f_i + \sum_{j \in \pi^{-1}(i)} c_{i,j})$ minimiert werden,
+wobei $f_i := f(i)$ und $c_{i,j} := c(i, j)$ für $i \in F$ und $j \in D$.\\
+Das UFL-Problem ist NP-vollständig.
+
+\linie
+
+\textbf{UFL als LP}:
+Führt man binäre Variablen $y_i$ und $x_{i,j}$ ein mit
+$y_i = 1 \iff$ "`Lager $i$ wird eröffnet"' und
+$x_{i,j} = 1 \iff$ "`Kunde $j$ wird Lager $i$ zugewiesen"',
+so erhält man das Ganzzahl-LP
+$\min \sum_{i \in F} (y_i f_i + \sum_{j \in D} x_{i,j} c_{i,j})$ mit
+$\forall_{j \in D}\; \sum_{i \in F} x_{i,j} = 1$,
+$\forall_{j \in D} \forall_{i \in F}\; x_{i,j} \le y_i$ und
+$x_{i,j}, y_i \in \{0, 1\}$.
+
+\textbf{LP-Relaxation}:
+Die LP-Relaxation hat dieselbe Form, nur dass $x_{i,j}, y_i \ge 0$.
+
+\textbf{duales LP}:
+Das duale LP ist
+$\max \sum_{j \in D} v_j$ mit
+$\forall_{i \in F}\; \sum_{j \in D} w_{i,j} \le f_i$,
+$\forall_{i \in F} \forall_{j \in D}\; v_j - w_{i,j} \le c_{i,j}$ und
+$w_{i,j} \ge 0$ (aber $v_j \in \real$).
+
+\linie
+
+\textbf{Lemma (komplementäre Schlupfbedingung)}:\\
+Seien $(x^\ast, y^\ast)$ und $(v^\ast, w^\ast)$ optimale Lösungen für das primale bzw. duale LP.\\
+Dann gilt $x_{i,j}^\ast > 0 \implies c_{i,j} \le v_j^\ast$.
+
+\begin{Beweis}
+    Wegen der komplementären Schlupfbedingung gilt\\
+    $x_{i,j}^\ast > 0 \iff v_j^\ast - w_{i,j}^\ast = c_{i,j} \implies v_j^\ast \ge c_{i,j}$,
+    da $w_{i,j}^\ast \ge 0$.
+\end{Beweis}
+
+\linie
+
+\textbf{benachbart}:
+Seien $x^\ast$ eine LP-Lösung, $i \in F$ und $j \in D$.\\
+Dann sind $i$ und $j$ \begriff{benachbart}, falls $x_{i,j}^\ast > 0$.
+
+\textbf{Nachbarschaften}:
+Seien $x^\ast$ eine LP-Lösung und $j \in D$.\\
+Dann sind
+$N(j) := \{i \in F \;|\; \text{$i$ und $j$ benachbart}\}$ und\\
+$N^2(j) := \{k \in D \;|\; N(j) \cap N(k) \not= \emptyset\}$ die \begriff{Nachbarschaften} von $j$.
+
+\pagebreak
+
+\subsubsection{%
+    Deterministische Rundung%
+}
+
+\textbf{deterministische Rundung für UFL}:
+\begin{enumerate}
+    \item
+    Berechne optimale Lösungen $(x^\ast, y^\ast)$ und
+    $(v^\ast, w^\ast)$ des primalen bzw. dualen Problems.
+    
+    \item
+    Setze $S \leftarrow D$.
+    
+    \item
+    Solange $S \not= \emptyset$, wiederhole:
+    \begin{enumerate}
+        \item
+        Wähle $j \in S$ mit $v_j^\ast$ minimal.
+        
+        \item
+        Wähle $i \in N(j)$ mit $f_i$ minimal und öffne das Lager $i$.
+        
+        \item
+        Ordne $j$ und alle Kunden in $N^2(j)$, die bisher ohne Zuordnung sind, $i$ zu.
+        
+        \item
+        Setze $S \leftarrow S \setminus N^2(j)$.
+    \end{enumerate}
+\end{enumerate}
+
+\linie
+
+\textbf{Satz ($4$-Approximation)}:
+Obiger Algorithmus erzeugt eine Lösung, deren Kosten höchstens
+vier Mal so groß sind wie die optimal möglichen Kosten.
+
+\begin{Beweis}
+    Betrachte einen Durchlauf des Algorithmus, in dem der Kunde $j \in S$ und
+    der Lagerstandort $i \in N(j)$ gewählt wurden.
+    Dann gilt
+    $f_i = \sum_{\ell \in N(j)} x_{\ell,j}^\ast f_i$ wegen
+    $\sum_{\ell \in N(j)} x_{\ell,j}^\ast = 1$ (primale NB).
+    Wegen $\forall_{\ell \in N(j)}\; f_i \le f_\ell$ nach Wahl von $i$ und
+    $\forall_{\ell \in N(j)}\; x_{\ell,j}^\ast \le y_\ell^\ast$ (primale NB) gilt
+    $f_i \le \sum_{\ell \in N(j)} y_\ell^\ast f_\ell$.
+    Anders gesagt ist die Eröffnung des Lagers $i$ nicht teurer als die
+    Summe der rationalen Eröffnungkosten der Nachbarschaft von $j$.
+    
+    Wenn man diese Beziehung nun für alle Iterationen des Algorithmus summiert,
+    so erhält man $\sum_{i \in F'} f_i \le \sum_{i \in F} y_i^\ast f_i$,
+    weil die "`$N(j)$-Mengen"' von zwei verschiedenen Durchläufen disjunkt sind
+    (angenommen, es gibt $\ell \in N(j_1) \cap N(j_2)$,
+    wobei $j_1$ in einer Iteration 1 gewählt wurde und $j_2$ in einer späteren Iteration 2,
+    dann wäre $j_2 \in N^2(j_1)$, d.\,h. $j_2$ wäre in der Iteration 1 aus $S$ entfernt worden
+    und hätte nicht in Iteration 2 gewählt werden können, ein Widerspruch).\\
+    Damit gilt $\sum_{i \in F'} f_i \le \sum_{i \in F} y_i^\ast f_i \le \OPTprimal$.
+    
+    Aufgrund des obigen Lemmas sind die Kosten, obiges $j$ mit obigem $i$ zu verbinden,
+    gleich $c_{i,j} \le v_j^\ast$, da $i \in N(j)$.
+    Die Kosten, die bisher nicht zugeordneten Kunden $k \in N^2(j)$ mit $i$ zu verbinden,
+    sind gleich $c_{i,k} \le c_{\ell,k} + c_{\ell,j} + c_{i,j} \le 3v_k^\ast$
+    mit $\ell \in N(j) \cap N(k)$, weil $c_{\ell,k} \le v_k^\ast$ und
+    $c_{\ell,j}, c_{i,j} \le v_j^\ast \le v_k^\ast$ nach Wahl von $j$.
+    
+    Damit sind die Gesamtkosten beschränkt durch\\
+    $\sum_{i \in F'} f_i + \sum_{j \in D} 3v_j^\ast
+    \le \OPTprimal + 3\OPTdual = 4\OPTprimal \le 4\OPTint$.
+\end{Beweis}
+
+\pagebreak
+
+\subsubsection{%
+    Randomisierte Rundung%
+}
+
+\textbf{randomisierte Rundung für UFL}:
+Sei $C_j^\ast := \sum_{i \in F} x_{i,j}^\ast c_{i,j}$.
+\begin{enumerate}
+    \item
+    Berechne optimale Lösungen $(x^\ast, y^\ast)$ und
+    $(v^\ast, w^\ast)$ des primalen bzw. dualen Problems.
+    
+    \item
+    Setze $S \leftarrow D$.
+    
+    \item
+    Solange $S \not= \emptyset$, wiederhole:
+    \begin{enumerate}
+        \item
+        Wähle $j \in S$ mit $v_j^\ast + C_j^\ast$ minimal.
+        
+        \item
+        Wähle $i \in N(j)$ gemäß den Wahrscheinlichkeiten $x_{i,j}^\ast$ und öffne das Lager $i$.
+        
+        \item
+        Ordne $j$ und alle Kunden in $N^2(j)$, die bisher ohne Zuordnung sind, $i$ zu.
+        
+        \item
+        Setze $S \leftarrow S \setminus N^2(j)$.
+    \end{enumerate}
+\end{enumerate}
+
+\linie
+
+\textbf{Satz ($3$-Approximation)}:
+Obiger Algorithmus erzeugt eine Lösung, deren Kosten höchstens
+drei Mal so groß sind wie die optimal möglichen Kosten.
+
+\begin{Beweis}
+    Betrachte wieder einen Durchlauf des Algorithmus, in dem der Kunde $j \in S$
+    und der Lagerstandort $i \in N(j)$ gewählt wurden.
+    Bezeichnet die Zufallsvariable $\widetilde{F}$
+    die Eröffnungskosten für diesen Durchlauf, so gilt
+    $\EE[\widetilde{F}] = \sum_{i \in N(j)} x_{i,j}^\ast f_i \le \sum_{i \in N(j)} y_i^\ast f_i$
+    (primale NB).
+    
+    Sei $A_k$ die Zufallsvariable der Verbindungskosten des Kunden $k \in N^2(j)$ zu $i$.
+    \begin{itemize}
+        \item
+        Dann gilt für die erwarteten Kosten für $j$, dass
+        $\EE[A_j] = \sum_{i \in N(j)} x_{i,j}^\ast c_{i,j} = C_j^\ast$.
+        
+        \item
+        Für die erwarteten Kosten für $k \in N^2(j) \setminus \{j\}$
+        sei $\ell \in N(j) \cap N(k)$.
+        Dann erhält man
+        $\EE[A_k] \le c_{\ell,k} + c_{\ell,j} + C_j^\ast \le
+        v_k^\ast + (v_j^\ast + C_j^\ast) \le 2v_k^\ast + C_k^\ast$
+        nach Wahl von $j$ (und obiges Lemma).
+    \end{itemize}
+    
+    Die Gesamtkosten sind damit beschränkt durch
+    $\sum_{i \in F} y_i^\ast f_i + \sum_{j \in D} (2v_j^\ast + C_j^\ast)$\\
+    $= (\sum_{i \in F} y_i^\ast f_i + \sum_{j \in D} C_j^\ast) + 2\sum_{j \in D} v_j^\ast
+    = \OPTprimal + 2\OPTdual = 3\OPTprimal \le 3\OPTint$.
+\end{Beweis}
+
+\linie
+
+Eine Variante des natürlichen Rundungsalgorithmus
+(bei dem man zufällig Lager anhand der Wahrscheinlichkeiten $y_i^\ast$ öffnet und dann
+jeden Kunden mit dem nächstgelegenen Lager verbindet)
+liefert eine $1.736$-Approximation.
+Man kann zeigen, dass kein Polynomialzeit-Algorithmus eine $1.427$-Approximation liefert,
+wenn $\text{P} \not= \text{NP}$.
+
+\pagebreak
+
+\subsubsection{%
+    Primal-Dual-Schema%
+}
+
+\textbf{benachbart}:
+Seien $x^\ast, y^\ast$ Lösungen des primalen/dualen Problems, $i \in F$ und $j \in D$.\\
+Dann sind $i$ und $j$ \begriff{benachbart}, falls $v_j^\ast > c_{i,j}$.
+
+Diese Definition verstärkt die vorherige Definiton etwas, da
+$x_{i,j}^\ast > 0 \iff v_j^\ast \ge c_{i,j}$.\\
+Nachbarschaften sind analog wie vorher definiert.
+
+\linie
+
+\textbf{Primal-Dual-Schema für UFL}:
+\begin{enumerate}
+    \item
+    Setze $v \leftarrow 0$,
+    $w \leftarrow 0$,
+    $A \leftarrow \emptyset$,
+    $\ell \leftarrow 0$ und
+    $S \leftarrow D$.
+    
+    \item
+    Solange $S \not= \emptyset$, wiederhole:
+    \begin{enumerate}
+        \item
+        Setze $\ell \leftarrow \ell + 1$.
+        
+        \item
+        Vergrößere $v_j$ und $w_{i,j}$ für alle $j \in S$ und $i \in N(j)$ glm.,
+        bis $\exists_{i_\ell \in F}\; \sum_{j \in D} w_{i_\ell,j} = f_{i_\ell}$.
+        
+        \item
+        Setze $A \leftarrow A \cup \{i_\ell\}$
+        und $S \leftarrow S \setminus N(i_\ell)$.
+    \end{enumerate}
+\end{enumerate}
+
+Weil in jeder Runde die dualen Variablen $v_j$ aller Kunden $j$ ohne Zuordnung
+und $w_{i,j}$ für $i \in N(j)$ gleichmäßig vergrößert werden,
+bis eine duale NB für $i_\ell \in F$ scharf wird,
+bleibt die duale Lösung immer zulässig.
+Wenn man nun $i_\ell$ öffnen und alle $j \in N(i_\ell)$ mit $i_\ell$ verbinden würde,
+würde man eine zulässige primale Lösung erhalten.
+
+Leider kann es passieren, dass nach der Ausführung des Algorithmus
+in der Nachbarschaft $N(j)$ eines Kunden $j \in D$ mehrere Lager geöffnet haben,
+was die Analyse erschwert:
+Für die Öffnungskosten gilt nämlich
+$\sum_{i \in A} f_i
+= \sum_{i \in A} \sum_{j \in D} w_{i,j}
+= \sum_{i \in A} \sum_{j \in D} \max(v_j - c_{i,j}, 0)$\\
+$= \sum_{j \in D} \sum_{i \in N(j) \cap A} (v_j - c_{i,j})$.
+Würde nun $\forall_{j \in D}\; |N(j) \cap A| = 1$ gelten mit $N(j) \cap A =: \{i(j)\}$,
+so wäre dies gleich
+$\sum_{j \in D} (v_j - c_{i(j),j})
+\le \sum_{j \in D} v_j \le \OPTdual$.
+
+Leider gilt diese Eigenschaft nicht,
+aber man kann $A$ so zu einer Menge $A'$ von Lagerstandorten verändern,
+sodass $A'$ diese Eigenschaft erfüllt, ohne dass die Verbindungskosten zu hoch werden:
+\begin{enumerate}[start=3]
+    \item
+    Setze $A' \leftarrow A$.
+    
+    \item
+    Für $k = 1, \dotsc, \ell$ wiederhole:
+    \begin{enumerate}
+        \item
+        Wenn $i_k \in A'$ ist,
+        dann öffne das Lager $i_k$,
+        ordne alle Kunden in $N(i_k) \cup N^3(i_k)$, die bisher ohne Zuordnung sind, $i_k$ zu
+        und setze $A' \leftarrow A' \setminus N^2(i_k)$.
+    \end{enumerate}
+\end{enumerate}
+
+\linie
+
+\textbf{Lemma}:
+Sei $F'$ die Menge der geöffneten Lager.
+Dann gilt $\forall_{j \in D}\; |F' \cap N(j)| \le 1$.
+
+\begin{Beweis}
+    Angenommen, es gibt $j \in D$ und $i_a, i_b \in N(j)$ mit $a < b$.
+    Dann gilt $i_b \in N^2(i_a)$, d.\,h. in der Iteration $a$ ist $i_b$ aus $A'$
+    entfernt werden, ein Widerspruch.
+\end{Beweis}
+
+\textbf{Satz ($3$-Approximation)}:
+Obiger Algorithmus erzeugt eine Lösung, deren Kosten höchstens drei Mal so groß sind
+wie die optimal möglichen Kosten.
+
+\begin{Beweis}
+    Für die Öffnungskosten gilt wie vorher
+    $\sum_{i \in F'} f_i
+    = \sum_{j \in D,\; |N(j) \cap F'| = 1} (v_j - c_{i(j),j})$.
+    
+    Sei $j \in D$ mit $F' \cap N(j) = \emptyset$.
+    Zeige nun $c_{i(j),j} \le 3v_j$,
+    wobei $i(j)$ das Lager ist, mit dem $j$ verbunden wurde.
+    Jedes Lager $i \in A \cap N(j)$ hat einen höheren Index in $A$ als $i(j)$.
+    Daraus folgt $\forall_{k \in N(i(j))}\; v_j \ge v_k$.
+    Es gilt $j \in N(i(j)) \cap N^3(i(j))$.
+    Im Fall $j \in N(i(j))$ gilt $c_{i(j),j} \le v_j \le 3v_j$ und im Fall
+    $j \in N^3(i(j))$ erhält man
+    $c_{i(j),j} \le c_{i',j} + c_{i',k} + c_{i(j),k} \le v_j + v_k + v_k \le 3v_j$
+    mit $i' \in N(j) \cap N(k)$ und $i(j) \in N(k)$.
+    
+    Damit gilt insgesamt
+    $\sum_{i \in F'} f_i + \sum_{j \in D,\; |N(j) \cap F'| \le 1} c_{i(j),j}$\\
+    $\le \sum_{j \in D,\; |N(j) \cap F'| = 1} v_j
+    + \sum_{j \in D,\; |N(j) \cap F'| = 0} c_{i(j),j}
+    \le \sum_{j \in D,\; |N(j) \cap F'| = 1} v_j
+    + \sum_{j \in D,\; |N(j) \cap F'| = 0} 3v_j$\\
+    $\le 3\sum_{j \in D} v_j
+    = 3\OPTdual \le 3\OPTprimal \le 3\OPTint$.
+\end{Beweis}
+
+\pagebreak

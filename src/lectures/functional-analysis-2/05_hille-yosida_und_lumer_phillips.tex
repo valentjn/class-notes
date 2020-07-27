@@ -1,0 +1,281 @@
+\section{%
+    Die Sätze von \name{Hille}-\name{Yosida} und \name{Lumer}-\name{Phillips}%
+}
+
+\subsection{%
+    Spektrum dicht definierter, linearer Operatoren%
+}
+
+\begin{Bem}
+    Im Folgenden ist $X$ ein $\complex$-Banachraum.
+\end{Bem}
+
+\begin{Def}{Resolventenmenge, -abbildung, Spektrum}\\
+    Sei $T\colon D(T) \rightarrow X$ ein dicht definierter, linearer Operator.
+    \begin{itemize}
+        \item
+        Die Menge $\varrho(T) := \{\lambda \in \complex \;|\;
+        \text{$\lambda-T\colon D(T) \rightarrow X$ bijektiv, $(\lambda-T)^{-1} \in \Lin(X)$}\}$
+        heißt \begriff{Resolventenmenge} von $T$.
+        
+        \item
+        $R\colon \varrho(T) \rightarrow \Lin(X)$, $\lambda \mapsto R_\lambda := (\lambda-T)^{-1}$
+        heißt \begriff{Resolventenabbildung} von $T$.
+        
+        \item
+        $\sigma(T) := \complex \setminus \varrho(T)$ heißt \begriff{Spektrum} von $T$.
+    \end{itemize}
+\end{Def}
+
+\begin{Bem}
+    Ist $T$ auch noch abgeschlossen und $\lambda - T$ bijektiv, dann gilt
+    $(\lambda-T)^{-1} \in \Lin(X)$ automatisch
+    (Satz vom abg. Graphen für den abgeschlossenen,
+    linearen Operator $(\lambda - T)^{-1}$).
+\end{Bem}
+
+\begin{Bem}
+    Ist $T$ nicht abgeschlossen, dann ist $\varrho(T) = \emptyset$ bzw. $\sigma(T) = \complex$.
+    Daher interessiert man sich normalerweise nur für das Spektrum abgeschlossener Operatoren.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Eigenschaften}
+    Sei $T\colon D(T) \rightarrow X$ ein dicht definierter, linearer Operator.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $\varrho(T) \subset \complex$ ist of"|fen.
+        
+        \item
+        $\sigma(T) \subset \complex$ ist abgeschlossen.
+        
+        \item
+        Ist $T$ nicht stetig, dann muss $\sigma(T)$ nicht kompakt sein und es kann
+        $\sigma(T) = \emptyset$ gelten.
+        
+        \item
+        Die Resolventenabbildung $R\colon \varrho(T) \rightarrow \Lin(X)$
+        ist holomorph und $R_\lambda - R_\mu = (\mu - \lambda) R_\lambda R_\mu$.
+    \end{enumerate}
+\end{Satz}
+
+\subsection{%
+    Der Satz von \name{Hille}-\name{Yosida} für Kontraktionshalbgruppen%
+}
+
+\begin{Satz}{Erzeuger von Kontraktionshalbgruppen}\\
+    Seien $(T(t))_{t \ge 0}$ eine Kontraktionshalbgruppe mit Erzeuger $A$ und
+    $\lambda \in \complex$ mit $\Re(\lambda) > 0$.\\
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $\lambda \in \varrho(A)$
+        
+        \item
+        $\forall_{x \in X}\; (\lambda-A)^{-1} x = \int_0^\infty e^{-\lambda s} T(s) x \ds$
+        
+        \item
+        $\norm{(\Re \lambda) (\lambda-A)^{-1}}_{\Lin(X)} \le 1$
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bem}
+    Teil \emph{(2)} kann man als Laplace-Transformation von $s \mapsto T(s) x$ verstehen.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Satz von \name{Hille}-\name{Yosida} für Kontraktionshalbgruppen}\\
+    Ein linearer Operator $A$ ist ein Erzeuger einer Kontraktionshalbgruppe genau dann, wenn\\
+    $A$ dicht definiert und abg. ist,
+    $(0, \infty) \subset \varrho(A)$ gilt sowie
+    $\forall_{\lambda > 0}\; \norm{\lambda (\lambda-A)^{-1}}_{\Lin(X)} \le 1$ gilt.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Der Satz von \name{Hille}-\name{Yosida} für allgemeine \texorpdfstring{$\C_0$}{C₀}-Halbgruppen%
+}
+
+\begin{Satz}{Erzeuger von allg. $\C_0$-Halbgruppen}\\
+    Seien $(T(t))_{t \ge 0}$ eine $\C_0$-Halbgruppe mit Erzeuger $A$,
+    $M \ge 1$ und $\omega \in \real$ mit\\
+    $\forall_{t \ge 0}\; \norm{T(t)}_{\Lin(X)} \le M e^{\omega t}$ und
+    $\lambda \in \complex$ mit $\Re(\lambda) > \omega$.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $\lambda \in \varrho(A)$
+        
+        \item
+        $\forall_{x \in X}\; (\lambda-A)^{-1} x = \int_0^\infty e^{-\lambda s} T(s) x \ds$
+        
+        \item
+        $\forall_{n \in \natural}\;
+        \norm{(\Re \lambda - \omega)^n (\lambda-A)^{-n}}_{\Lin(X)} \le M$
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bem}
+    Teil \emph{(2)} kann man als Laplace-Transformation von $s \mapsto T(s) x$ verstehen.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Satz von \name{Hille}-\name{Yosida} für allg. $\C_0$-Halbgruppen}\\
+    Ein linearer Operator $A$ ist ein Erzeuger einer $\C_0$-Halbgruppe genau dann, wenn\\
+    $A$ dicht definiert und abg. ist und
+    es $M \ge 1$ und $\omega \in \real$ gibt mit
+    $(\omega, \infty) \subset \varrho(A)$ und\\
+    $\forall_{\lambda > \omega} \forall_{n \in \natural}\;
+    \norm{(\lambda - \omega)^n (\lambda-A)^{-n}}_{\Lin(X)} \le M$.\\
+    In diesem Fall erfüllt die erzeugte Halbgruppe $(T(t))_{t \ge 0}$ die Abschätzung\\
+    $\forall_{t \ge 0}\; \norm{T(t)}_{\Lin(X)} \le M e^{\omega t}$.
+\end{Satz}
+
+\subsection{%
+    Dissipative Operatoren%
+}
+
+\begin{Def}{Dualitätsabbildung}
+    Sei $X$ ein Banachraum.
+    Dann heißt die Abbildung $J\colon X \to \P(X')$ mit
+    $J(x) := \{x' \in X' \;|\; \norm{x'}_{X'} = \norm{x}_X,\; x'(x) = \norm{x}_X^2\}$
+    \begriff{Dualitätsabbildung} von $X$.
+\end{Def}
+
+\linie
+
+\begin{Bem}
+    Nach einer Folgerung aus dem Satz von Hahn-Banach gibt es zu jedem $x \in X$
+    ein $x' \in X'$ mit $\norm{x'}_{X'} = 1$ und
+    $x'(x) = \norm{x}_X$.
+    Daraus folgt $\norm{(\norm{x}_X x')}_{X'} = \norm{x}_X$ und
+    $(\norm{x}_X x')(x) = \norm{x}_X^2$, d.\,h. $(\norm{x}_X x') \in J(x)$.
+    Insbesondere gilt $J(x) \not= \emptyset$ für alle $x \in X$.
+\end{Bem}
+    
+\begin{Bem}
+    Für einen Hilbertraum $X$ erhält man $J(x) = \{\R x\}$ mit dem isometrischen Isomorphismus
+    $\R\colon X \to X'$, $x \mapsto \sp{\cdot, x}$ aus dem Rieszschen Darstellungssatz:
+    Einerseits gilt $\R x \in J(x)$.
+    Andererseits folgt aus $x' \in J(x)$ mit $y := \R^{-1} x' \in X$,
+    dass $\norm{y}_X = \norm{x}_X$ und $\sp{x, y} = \norm{x}_X^2$,
+    d.\,h. $\norm{x}_X^2 = \sp{x, y} \le \norm{x}_X \norm{y}_X = \norm{x}_X^2$,
+    nach C.-S. sind $x$ und $y$ linear abhängig, mit $\sp{x, y} = \norm{x}_X^2$ folgt $y = x$
+    und damit $x' = \R x$.
+\end{Bem}
+
+\begin{Bsp}
+    \begin{enumerate}
+        \item
+        Für $X = L^p$ mit $p \in (1, \infty)$ ist $J(f) \subset L^{p'} \cong (L^p)'$ ebenfalls immer
+        einelementig, nämlich $J(f) = \{g\}$ mit
+        $g(x) := \norm{f}_p^{2-p} \overline{f(x)} |f(x)|^{p-2}$ für $f(x) \not= 0$
+        bzw. $g(x) := 0$ für $f(x) := 0$
+        (wenn man $(L^p)'$ mit $L^{p'}$ mittels des konjugiert linearen, isometrischen Isomorphismus
+        $J_{p'}\colon L^{p'} \to (L^p)'$, $(J_{p'} f)(g) := \int g \overline{f} d\mu$
+        identifiziert).
+        
+        \item
+        Für $X \in \{L^1, L^\infty, \C^0([0, 1])\}$ ist $J$ i.\,A. mengenwertig,
+        z.\,B. gilt für $X = \C^0([0, 1])$, dass $J(x \mapsto 1)$
+        isomorph zur Menge aller Wahrscheinlichkeitsmaße auf $[0, 1]$ ist.
+    \end{enumerate}
+\end{Bsp}
+
+\linie
+
+\begin{Def}{dissipativ/akkretiv}
+    Sei $(A, D(A))$ ein linearer Operator.\\
+    $A$ heißt \begriff{dissipativ}, falls
+    $\forall_{x \in D(A)} \exists_{x' \in J(x)}\; \Re x'(Ax) \le 0$.\\
+    $A$ heißt \begriff{akkretiv}, falls $-A$ dissipativ ist.
+\end{Def}
+
+\begin{Bem}
+    Für $X$ Hilbertraum ist $A$ dissipativ genau dann, wenn
+    $\forall_{x \in D(A)}\; \Re \sp{Ax, x} \le 0$.
+\end{Bem}
+
+
+\linie
+
+\begin{Satz}{Charakterisierung von Dissipativität}\\
+    Ein linearer Operator $A$ ist dissipativ genau dann, wenn
+    $\forall_{\lambda > 0} \forall_{x \in D(A)}\; \norm{(\lambda - A) x}_X \ge \lambda \norm{x}_X$.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Der Satz von \name{Lumer}-\name{Phillips}%
+}
+
+\begin{Satz}{Satz von \name{Lumer}-\name{Phillips}}\\
+    Ein linearer Operator $A$ ist ein Erzeuger einer Kontraktionshalbgruppe genau dann, wenn\\
+    $A$ dicht definiert und dissipativ ist und
+    $\lambda_0 - A$ für ein $\lambda_0 > 0$ surjektiv ist.\\
+    (In diesem Fall ist $\lambda - A$ für alle $\lambda > 0$ surjektiv.)
+\end{Satz}
+
+\linie
+
+\begin{Bsp}
+    \begin{enumerate}[label=\emph{(\alph*)}]
+        \item
+        Seien $X := \C^0_0(\real^n)$ und $A := \Delta$ mit $D(A) := \S(\real^n)$.
+        Dann ist $\Delta$ dissipativ:
+        Sei $\varphi \in D(\Delta)$.
+        Dann gibt es ein $x_0 \in \real^n$ mit $|\varphi(x_0)| = \norm{\varphi}_X$.
+        Mit $\alpha := \overline{\varphi(x_0)} \in \complex$ und
+        $\ell := \alpha \delta_{x_0} \in X'$
+        gilt $\ell \in J(\varphi)$,
+        weil einerseits
+        $\norm{\ell}_{X'} = |\alpha| \norm{\delta_{x_0}}_{X'} = |\alpha| = |\varphi(x_0)| =
+        \norm{\varphi}_X$ sowie
+        andererseits
+        $\ell(\varphi) = \alpha \varphi(x_0) = |\varphi(x_0)|^2 = \norm{\varphi}_X^2$.
+        Außerdem gilt $\Re(\ell(\Delta\varphi)) = \Re(\alpha \cdot (\Delta \varphi)(x_0)) \le 0$,
+        da die reellwertige Funktion $\psi := \Re(\alpha\varphi)$ bei $x_0$ ihr Maximum annimmt,
+        d.\,h. es gilt
+        $\forall_{j=1,\dotsc,n}\; \frac{\partial^2\psi}{\partial x_j^2}(x_0) \le 0$.
+        Somit ist $\Delta$ dissipativ.
+        
+        \item
+        Betrachte das Anfangs-RWP
+        $v_t = v_{xx}$ für $t \ge 0$ und $x \in [0, 1]$,
+        $v(0, x) = f_0(x)$ für $x \in [0, 1]$ und
+        $v(t, 0) = 0 = v(t, 1)$ für $t \ge 0$
+        (\begriff{eindimensionale Wärmeleitungsgleichung}).
+        Dieses Problem kann man wie folgt in ein abstraktes Cauchy-Problem übersetzen:
+        Seien $X := \C^0_0((0, 1))$, $A := \frac{\partial^2}{\partial x^2}$ mit dem
+        Definitionsbereich $D(A) := \C^0_0((0, 1)) \cap \C^2([0, 1])$ und
+        $(u(t))(x) := v(t, x)$.
+        Statt eine Lösung $v$ des Anfangs-RWPs zu bestimmen, kann man eine Lösung
+        $u\colon [0, \infty) \to X$ von $u' = Au$, $u(0) = f_0$ bestimmen
+        (jede Lösung $u$ induziert eine Lösung $v$, die Umkehrung gilt nicht).
+        Eine Lösung $u$ existiert, wenn $A$ eine $\C_0$-Halbgruppe auf $X$ erzeugt.
+        Dies ist nach dem Satz von Lumer-Phillips in der Tat der Fall, denn:
+        \begin{itemize}
+            \item
+            $A$ ist dicht definiert
+            (wegen $\overline{\C^\infty_c((0, 1))}^{\norm{\cdot}_{\C^0}} = X$),
+            
+            \item
+            $A$ ist dissipativ (wie in \emph{(a)}) und
+            
+            \item
+            $\id - A$ ist surjektiv,
+            was äquivalent dazu ist, dass das RWP $f - f'' = g$ in $(0, 1)$ und $f(0) = 0 = f(1)$
+            für alle $g \in X$ eindeutig in $D(A)$ lösbar ist
+            (was man mithilfe von Fouriertransformation oder Regularitätstheorie zeigen kann).
+        \end{itemize}
+    \end{enumerate}
+\end{Bsp}
+
+\pagebreak
+\ifthenelse{\equal{\standalonedoc}{true}}{\addtocontents{toc}{\protect\newpage}}{}

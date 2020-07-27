@@ -1,0 +1,452 @@
+\section{%
+    Vergleich von Schätzern: Optimalitätstheorie%
+}
+
+\subsection{%
+    Schätzkriterien%
+}
+
+\begin{Bem}
+    Gegeben ist wieder ein reguläres statistisches Modell
+    $\P = \{\PP_\theta \;|\; \theta \in \Theta\}$.
+    Wie kann die Qualität eines Schätzers $T = T(X)$ für den Parameter $\theta$ beurteilt werden?\\
+    Der Schätzfehler $E = |T(X) - q(\theta)|$ ist hierfür ungeeignet, da
+    $E$ vom unbekannten Parameter $\theta$ und vom Zufall abhängt
+    (d.\,h. $E$ kann erst nach Vorliegen der Stichprobe berechnet werden).
+\end{Bem}
+
+\begin{Def}{mittlerer quadratischer Fehler}
+    Sei $T = T(X)$ ein Schätzer für $q(\theta) \in \real$.
+    Der \begriff{mittlere quadratische Fehler (MQF)} von $T$ ist definiert durch
+    $R(\theta, T) := \EE_\theta((T(X) - q(\theta))^2)$.
+\end{Def}
+
+\begin{Def}{Verzerrung/Bias}
+    $b(\theta, T) = \EE_\theta(T(X)) - q(\theta)$ heißt \begriff{Verzerrung}
+    oder \begriff{Bias} von $T$.
+\end{Def}
+
+\begin{Def}{unverzerrt/erwartungstreu}\\
+    Gilt $b(\theta, T) = 0$ für alle $\theta \in \Theta$, so heißt
+    $T$ \begriff{unverzerrt} oder \begriff{erwartungstreu}.
+\end{Def}
+
+\begin{Bem}
+    Für den MQF gilt
+    $R(\theta, T) = \EE_\theta((T(X) - \EE_\theta(T(X)) + \EE_\theta(T(X)) - q(\theta))^2)$\\
+    $= \EE_\theta((T(X) - \EE_\theta(T(X)))^2) + \EE_\theta((\EE_\theta(T(X)) - q(\theta))^2)
+    = \Var_\theta(T(X)) + b(\theta, T)^2$
+    unabhängig vom Zufall, da $\EE_\theta((T(X) - \EE_\theta(T(X)))^2) = 0$.
+    Diese Zerlegung heißt \begriff{Varianz-Bias-Zerlegung} des MQF.
+\end{Bem}
+
+\begin{Lemma}{Varianz-Bias-Zerlegung}
+    Es gilt $R(\theta, T) = \Var_\theta(T(X)) + b(\theta, T)^2$.
+\end{Lemma}
+
+\linie
+
+\begin{Bsp}
+    Seien $X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ i.i.d. mit
+    $\theta = (\mu, \sigma^2) \in \real \times \real^+$ unbekannt.
+    Weiter oben wurde erwähnt, dass
+    $\widehat{\theta} = (\frac{1}{n} \sum_{i=1}^n X_i, \frac{1}{n} (X_i - \overline{X})^2)$
+    der MLS für $\theta$ ist, wobei $\overline{X} \sim \N(\mu, \frac{\sigma^2}{n})$ gilt.\\
+    Für $q(\theta) = \mu$ gilt daher
+    $b(\theta, \overline{X}) = \EE_\theta(\overline{X}) - q(\theta) = 0$,
+    d.\,h. $\overline{X}$ ist ein erwartungstreuer Schätzer für $\mu$.
+    Für den MQF gilt $R(\theta, \overline{X}) = \Var_\theta(\overline{X}) + b(\theta, T)^2
+    = \frac{\sigma^2}{n} \to 0$ ($n \to \infty$).\\
+    Für $q(\theta) = \sigma^2$ ist $\widehat{\sigma}^2 = \sigma^2(X) :=
+    \frac{1}{n} \sum_{i=1}^n (X_i - \overline{X})^2$ ein brauchbarer Schätzer für $\sigma^2$,
+    da $\EE_\theta(\widehat{\sigma}^2) = \frac{n-1}{n} \EE_\theta(\frac{1}{n-1}
+    \sum_{i=1}^n (X_i - \overline{X})^2) = \frac{n-1}{n} \sigma^2 \to \sigma^2$ ($n \to \infty$),
+    d.\,h. $\widehat{\sigma}^2$ ist \begriff{asymptotisch unverzerrt}.
+    Im Gegensatz zur Stichprobenvarianz $S^2(X) := \frac{n}{n-1} \sigma^2$ ist
+    die empirische Varianz $\sigma^2(X)$ also kein erwartungstreuer Schätzer für $\sigma^2$.
+    Mit $S := \frac{n\widehat{\sigma}^2}{\sigma^2} =
+    \sum_{i=1}^n \left(\frac{X_i - \overline{X}}{\sigma}\right)^2 \sim \chi_{n-1}^2$ gilt
+    $\EE(S) = n - 1$ und $\Var(S) = 2(n - 1)$, damit lässt sich der MQF berechnen als\\
+    $R(\theta, \widehat{\sigma}^2) = \frac{\sigma^2}{n} \Var(S) +
+    (\frac{\sigma^2}{n} \EE(S) - \sigma^2)^2 =
+    \left(\frac{\sigma^2}{n}\right)^2 (2n-1) \to 0$ ($n \to \infty$).
+\end{Bsp}
+
+\begin{Bsp}
+    Man kann zwei Mittelwertschätzer für $X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ i.i.d.,
+    $X = (X_1, \dotsc, X_n)$ und $\theta = (\mu, \sigma^2)$ unbekannt mittels MQF vergleichen.
+    Dazu werden für $q(\theta) = \mu$
+    die Schätzer $T_1(X) := \overline{X}$ und $T_2(X) := a \overline{X}$ für ein
+    $a \in (0, 1)$ betrachtet.\\
+    Für $T_1$ gilt $b(\mu, T_1) = 0$ und $R(\mu, T_1) = \frac{\sigma^2}{n}$ wie eben berechnet.\\
+    Für $T_2$ gilt $b(\mu, T_2) = \EE_\theta(T_2(X)) - \mu = (a - 1)\mu$ und\\
+    $R(\mu, T_2) = \Var_\theta(T_2(X)) + b(\mu, T_2)^2 = \frac{a^2 \sigma^2}{n} + (a-1)^2 \mu^2$.\\
+    $T_2$ ist also nicht mehr erwartungstreu, aber für $\mu$ in einer hinreichend kleinen Umgebung
+    von $0$ gilt $R(\mu, T_2) < R(\mu, T_1)$, d.\,h. für ein solches $\mu$ schätzt $T_2$ besser.
+    Für $\mu$ hinreichend groß gilt natürlich $R(\mu, T_1) < R(\mu, T_2)$.
+\end{Bsp}
+
+\linie
+
+\begin{Def}{unzulässig}
+    Ein Schätzer $S = S(X)$ heißt \begriff{unzulässig}, falls es einen Schätzer $T = T(X)$ gibt
+    mit $\forall_{\theta \in \Theta}\; R(\theta, T) \le R(\theta, S)$ und
+    $\exists_{\theta \in \Theta}\; R(\theta, T) < R(\theta, S)$.
+\end{Def}
+
+\begin{Bem}
+    Es kann keinen perfekten, "`besten"' Schätzer $T$ geben mit
+    $\forall_{\theta \in \Theta}\; R(\theta, T) \le R(\theta, S)$ für jeden anderen Schätzer $S$.
+    Wählt man nämlich ein festes $\theta_0 \in \Theta$ und setzt $S(X) := q(\theta_0)$, so gilt
+    $R(\theta_0, S) = 0$.
+    Für den "`besten"' Schätzer $T$ müsste also $\forall_{\theta \in \Theta}\; R(\theta, T) = 0$
+    gelten, was of"|fensichtlich nicht geht.
+    Daher müssen wir die Klasse der Vergleichskandidaten für einen guten Schätzer auf die Klasse
+    der unverzerrten Schätzer einschränken ($S$ ist nicht unverzerrt).
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Unverzerrte Schätzer mit gleichmäßig minimaler Varianz%
+}
+
+\begin{Def}{UMVU-Schätzer}
+    Ein unverzerrter Schätzer $T(X)$ für $q(\theta)$ heißt
+    \begriff{UMVU-Schätzer\\
+    (uniformly minimal variance unbiased, UMVUE)} für $q(\theta)$, falls
+    für alle unverzerrten Schätzer $S(X)$ für $q(\theta)$ gilt, dass
+    $\forall_{\theta \in \Theta}\; \Var_\theta(T(X)) \le \Var_\theta(S(X))$.
+\end{Def}
+
+\begin{Satz}{\name{Rao}-\name{Blackwell}}
+    Seien $T(X)$ ein suf"|fizienter Schätzer für $\theta$ und $S(X)$ ein beliebiger Schätzer für
+    $q(\theta)$ mit $\forall_{\theta \in \Theta}\; \EE_\theta(|S(X)|) < \infty$.
+    Dann ist der Schätzer $T^\ast(X) := \EE(S(X)|T(X))$ für $q(\theta)$
+    unabhängig von $\theta$ und es gilt
+    $\forall_{\theta \in \Theta}\; R(\theta, T^\ast) \le R(\theta, S)$.
+    Ist zusätzlich $\Var_\theta(S(X)) < \infty$, so gilt Gleichheit genau dann, wenn
+    $\forall_{\theta \in \Theta}\; \PP_\theta(T^\ast(X) = S(X)) = 1$.
+\end{Satz}
+
+\begin{Bem}
+    Der Schätzer $T^\ast(X)$ für $q(\theta)$ ist also mindestens so gut wie $S(X)$.\\
+    $T^\ast(X)$ ist unabhängig von $\theta$, weil $T(X)$ ein suf"|fizienter Schätzer ist.
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Für $X_1, X_2 \sim \Bin(1, p)$ i.i.d. und $X := (X_1, X_2)$ ist $T(X) := X_1 + X_2$ eine
+    suf"|fiziente Statistik für $p$.
+    Wählt man $S(X) := X_1$, so gilt für $t = 0, 1, 2$, dass\\
+    $\EE(S(X)|T(X)=t) = \EE(X_1|X_1+X_2 = t) =
+    \frac{\PP(X_1 = 1, X_1 + X_2 = t)}{\PP(X_1 + X_2 = t)} =
+    \frac{\PP(X_1 = 1, X_2 = t - 1)}{\PP(X_1 + X_2 = t)} =
+    \frac{\PP(X_1 = 1) \cdot \PP(X_2 = t - 1)}{\PP(X_1 + X_2 = t)}$\\
+    $= \frac{p \cdot p^{t-1} (1-p)^{1-(t-1)}}{\binom{2}{t} p^t (1 - p)^{2-t}} =
+    \frac{1}{\binom{2}{t}} =
+    \frac{t}{2}$.
+    Somit ist $T^\ast(X) = \EE(S(X)|T(X)) = \frac{T(X)}{2} = \overline{X}$.\\
+    Berechnet man den MQF von $T^\ast$, so erhält man\\
+    $\EE_p((T^\ast(X) - p)^2) = \EE_p((\overline{X}-p)^2) = \Var_p(\overline{X}) =
+    \frac{p(1-p)}{2}$.
+    Dies ist echt kleiner als der MQF von $S$:\\
+    $\EE_p((S(X) - p)^2) = \EE_p((X_1 - p)^2) = \Var_p(X_1) = p(1-p)$.
+    Nach dem Satz von Rao-Blackwell muss dies auch so sein, denn $\Var_p(S(X)) = p(1-p) < \infty$
+    und $\PP_p(\overline{X} = X_1) < 1$ für alle $p \in (0, 1)$.
+\end{Bsp}
+
+\linie
+
+\begin{Bem}
+    Für eine Eindeutigkeitsaussage benötigt man den Begriff der vollständigen Statistik.
+    Er besagt, dass $\forall_{\theta \in \Theta}\;
+    (\EE_\theta(g_1(T(X))) = \EE_\theta(g_2(T(X))) \;\Rightarrow\; g_1 = g_2)$.
+    Äquivalent dazu ist folgende Definition.
+    Vollständigkeit ist eigentlich eine Eigenschaft von
+    $\P = \{\PP_\theta \;|\; \theta \in \Theta\}$ und verlangt eine gewisse Größe von $\Theta$,
+    um die Implikation zu erzwingen.
+\end{Bem}
+
+\begin{Def}{vollständig}
+    Eine Statistik $T(X)$ heißt \begriff{vollständig}, falls für jede messbare Abbildung
+    $g$ gilt, dass aus $\forall_{\theta \in \Theta}\; \EE_\theta(g(T(X))) = 0$ folgt, dass
+    $\forall_{\theta \in \Theta}\; \PP_\theta(g(T(X)) = 0) = 1$.
+\end{Def}
+
+\begin{Bsp}
+    Seien $X_1, \dotsc, X_n \sim \Pois(\theta)$ i.i.d. mit $\theta \in \Theta := \real^+$.
+    $T(X) = X_1 + \dotsb + X_n$ ist eine suf"|fiziente Statistik für $\theta$ mit
+    $T(X) \sim \Pois(n\theta)$.
+    Sei $g\colon \real \rightarrow \real$ messbar mit
+    $\forall_{\theta \in \Theta}\; \EE_\theta(g(T(X))) = 0$.
+    Dann gilt $\EE_\theta(g(T(X))) = \sum_{i=0}^\infty g(i) \cdot e^{-n\theta}
+    \frac{(n\theta)!}{\i!}$.
+    Dies ist eine Potenzreihe in $n\theta$, die in einer gewissen Umgebung von $0$ gleich
+    null ist.
+    Mit dem Eindeutigkeitssatz für Potenzreihen folgt, dass $g(i) = 0$ für alle $i \in \natural_0$,
+    d.\,h. $g \equiv 0$ und $T(X)$ ist eine vollständige Statistik.
+\end{Bsp}
+
+\linie
+
+\begin{Satz}{\name{Lehmann}-\name{Schef}\name{fé}}
+    Seien $T(X)$ eine vollständige, suf"|fiziente Statistik für $\theta$ und
+    $S(X)$ ein unverzerrter Schätzer für $q(\theta)$.\\
+    Dann ist der Rao-Blackwell-Schätzer $T^\ast(X) := \EE(S(X)|T(X))$ ein UMVU-Schätzer für
+    $q(\theta)$.\\
+    Ist zusätzlich $\forall_{\theta \in \Theta}\; \Var_\theta(T^\ast(X)) < \infty$, so ist
+    $T^\ast(X)$ der eindeutige UMVU-Schätzer für $q(\theta)$.
+\end{Satz}
+
+\begin{Bem}
+    Ist $h(T(X))$ ein unverzerrter Schätzer für $q(\theta)$ und $T(X)$ eine vollständige,
+    suf"|fiziente Statistik für $\theta$, so ist $h(T(X))$ ein UMVU-Schätzer für $q(\theta)$,
+    da wegen\\
+    $\EE(h(T(X))|T(X)) = h(T(X))$ der Schätzer $S(X) := h(T(X))$ gewählt werden kann.
+\end{Bem}
+
+\begin{Satz}{Konstruktion von vollständigen, suf{}fizienten Statistiken}
+    Ist $\P = \{\PP_\theta \;|\; \theta \in \Theta\}$ eine $k$-parametrige Exponentialfamilie und
+    enthält $c(\Theta) \subset \real^k$ mit $c = (c_1, \dotsc, c_k)$
+    ein of"|fenes Rechteck in $\real^k$, so ist
+    $T(X) := (T_1(X), \dotsc, T_k(X))$ eine vollständige, suf"|fiziente Statistik für
+    $\theta \in \Theta \subset \real^k$.
+\end{Satz}
+
+\linie
+\pagebreak
+
+\begin{Bsp}
+    Bei $X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ i.i.d. mit $X = (X_1, \dotsc, X_n)$ und
+    $\theta = (\mu, \sigma^2)$ unbekannt ist $T(X) := (\sum_{i=1}^n X_i, \sum_{i=1}^n X_i^2)$
+    nach dem letzten Satz eine vollständige, suf"|fiziente Statistik für
+    $\theta \in \Theta := \real \times \real^+$.
+    $\overline{X} = \frac{1}{n} T_1(X) =: h(T(X))$ ist ein unverzerrter Schätzer für
+    $\mu = q(\theta)$.
+    Damit ist $\overline{X}$ nach dem Satz von Lehmann-Schef"|fé ein UMVU-Schätzer, der sogar
+    eindeutig ist, da $\forall_{\theta \in \Theta}\; \Var_\theta(h(T(X))) =
+    \Var_\theta(\overline{X}) = \frac{\sigma^2}{n} < \infty$.\\
+    Da $S^2(X) = \frac{1}{n-1} \sum_{i=1}^n (X_i - \overline{X})^2$ ein erwartungstreuer Schätzer
+    für $\sigma^2$ ist und in der Form
+    $h(T(X)) := \frac{1}{n-1} \left(T_2(X) - \frac{1}{n} (T_1(X))^2\right)$ geschrieben werden
+    kann, folgt analog, dass auch $S^2(X)$ ein (bzw. der eindeutige)
+    UMVU-Schätzer für $\sigma^2 = q(\theta)$ ist.
+\end{Bsp}
+
+\subsection{%
+    Die Informationsungleichung%
+}
+
+\begin{Bem}
+    Im Folgenden sei $\P = \{\PP_\theta \;|\; \theta \in \Theta\}$ immer ein
+    einparametriges, reguläres statistisches Modell, das folgende Regularitätsbedingungen
+    (CR) erfülle.
+\end{Bem}
+
+\begin{Def}{\name{Cramér}-\name{Rao}-Regularitätsbedingungen (CR)}
+    \begin{enumerate}
+        \item
+        $\Theta \subset \real$ sei of"|fen.
+        
+        \item
+        $A := \{x \in \real^n \;|\; p(x, \theta) > 0\}$ sei unabhängig von $\theta$ und es gelte\\
+        $\forall_{x \in A} \forall_{\theta \in \Theta}\; (\frac{\partial}{\partial \theta} 
+        \ln p(x, \theta) \text{ existiert und ist endlich})$.
+        
+        \item
+        Hat $X$ eine L.-B.-Dichte und ist $T = T(X)$ eine Statistik mit
+        $\forall_{\theta \in \Theta}\; \EE_\theta(|T(X)|) < \infty$, so gelte
+        $\frac{\partial}{\partial \theta} \int_{\real^n} T(x) p(x, \theta) \dx =
+        \int_{\real^n} T(x) \frac{\partial}{\partial \theta} p(x, \theta) \dx$.
+    \end{enumerate}
+\end{Def}
+
+\begin{Bem}
+    Ist $\P$ eine $1$-parametrige Exp.fam. mit
+    $p(x, \theta) = \1_A(x) \exp(c(\theta)T(x) + d(\theta) + S(x))$, wobei
+    $\forall_{\theta \in \Theta}\; \frac{\partial}{\partial \theta} c(\theta) \not= 0$,
+    $\Theta \subset \real$ of"|fen und $c$ stetig ist, dann ist (CR) erfüllt.
+\end{Bem}
+
+\linie
+
+\begin{Def}{\name{Fisher}-Information}
+    Die \begriff{\name{Fisher}-Information} für einen Parameter $\theta$ ist gegeben durch
+    $I(\theta) := \EE_\theta\!\left(\left(\frac{\partial}{\partial \theta} \ln p(X, \theta)
+    \right)^2\right) \in [0, \infty]$.
+    Die partielle Ableitung heißt \begriff{Score-Funktion}.
+\end{Def}
+
+\begin{Bem}
+    Es gilt
+    $I(\theta) = \int_{\real^n} \frac{1}{p(x, \theta)} \cdot \left(\frac{\partial}{\partial \theta}
+    p(x, \theta)\right)^2 \dx$.\\
+    Für die Score-Funktion gilt
+    $\EE_\theta\!\left(\frac{\partial}{\partial \theta} \ln p(X, \theta)\right) = 0$.
+    Damit ist also $I(\theta) =
+    \Var_\theta\!\left(\frac{\partial}{\partial \theta} \ln p(X, \theta)\right)$.
+\end{Bem}
+
+\begin{Bem}
+    Gilt $X = (X_1, \dotsc, X_n)$ mit $X_1, \dotsc, X_n$ i.i.d., dann gilt\\
+    $I(\theta) = n \cdot \EE_\theta\!\left(\left(\frac{\partial}{\partial \theta}
+    \ln p_1(X_1, \theta)\right)^2\right)$.
+    Verdoppelt man also den Stichprobenumfang, so verdoppelt sich die Fisher-Information.
+\end{Bem}
+
+\begin{Bsp}
+    Für $X \sim \N(\mu, \sigma^2)$ mit $\theta = \mu$ unbekannt und $\sigma^2$ bekannt gilt
+    $I(\theta) = \frac{1}{\sigma^2}$.
+\end{Bsp}
+
+\linie
+
+\begin{Satz}{Informationsungleichung von \name{Cramér}-\name{Rao}}\\
+    Sei $T(X)$ eine Statistik mit $\forall_{\theta \in \Theta}\; \Var_\theta(T(X)) < \infty$.
+    Außerdem sei (CR) erfüllt und es gelte $\forall_{\theta \in \Theta}\; 0 < I(\theta) < \infty$.
+    Dann gilt für $\psi(\theta) := \EE_\theta(T(X))$, dass
+    $\psi(\theta)$ für alle $\theta \in \Theta$ dif"|ferenzierbar ist und
+    $\Var_\theta(T(X)) \ge \frac{(\psi'(\theta))^2}{I(\theta)}$.
+\end{Satz}
+
+\begin{Kor}
+    Ist $T = T(X)$ ein unverzerrter Schätzer für $\theta$, so gilt unter den Voraussetzungen
+    von eben die \begriff{\name{Cramér}-\name{Rao}-Schranke}
+    $\Var_\theta(T(X)) \ge \frac{1}{I(\theta)}$ für alle $\theta \in \Theta$.
+\end{Kor}
+
+\begin{Kor}
+    Sind $X_1, \dotsc, X_n$ i.i.d. mit $X = (X_1, \dotsc, X_n)$, so gilt unter den Voraussetzungen
+    von eben $\Var_\theta(T(X)) \ge \frac{(\psi'(\theta))^2}{n \cdot I_1(\theta)}$ mit
+    $I_1(\theta) = \EE_\theta\!\left(\left(\frac{\partial}{\partial \theta} \ln p_1(X_1, \theta)
+    \right)^2\right)$ der Fisher-Information der einzelnen Beobachtung.
+\end{Kor}
+
+\begin{Bem}
+    Dafür benötigt man die C.-S.-Ungleichung
+    $|\Cov(X,Y)| \le (\Var(X))^{1/2} (\Var(Y))^{1/2}$.
+    Man kann zeigen, dass die Cramér-Rao-Schranke nur für Exponentialfamilien erfüllt sein kann.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Asymptotische Theorie%
+}
+
+\begin{Def}{(schwach) konsistent}
+    Eine Folge von Schätzern $T_n := T_n(X_1, \dotsc, X_n)$ für $q(\theta)$ heißt\\
+    \begriff{(schwach) konsistent}, falls
+    $T_n \xrightarrow{\PP_\theta} q(\theta)$ für $n \to \infty$ und alle $\theta \in \Theta$.
+\end{Def}
+
+\begin{Def}{stark konsistent}
+    Eine Folge von Schätzern $T_n := T_n(X_1, \dotsc, X_n)$ für $q(\theta)$ heißt\\
+    \begriff{stark konsistent}, falls
+    $T_n \xrightarrow{n \to \infty} q(\theta)$ $\PP_\theta$-f.s. für alle $\theta \in \Theta$.
+\end{Def}
+
+\begin{Bem}
+    Aus starker Konsistenz folgt immer schwache Konsistenz.
+    Umgekehrt kann man zeigen, dass ein schwach konsistenter Schätzer stark konsistent ist,
+    wenn die stochastische Konvergenz schnell genug ist.\\
+    UMVU-Schätzer sind immer konsistent und MLS sind in der Regel auch konsistent.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Log-Likelihood-Funktion zum wahren Parameter besser}\\
+    Sei $\P = \{p(\cdot, \theta) \;|\; \theta \in \Theta\}$
+    ein reguläres statistisches Modell mit
+    \begin{enumerate}
+        \item
+        $\forall_{\theta, \theta' \in \Theta}\; \EE_\theta(\ln p(X, \theta')) < \infty$ und
+        
+        \item
+        $\forall_{\theta, \theta' \in \Theta,\; \theta \not= \theta'}\;
+        \PP_\theta \not= \PP_{\theta'}$
+        ($\P$ ist \begriff{identifizierbar}).
+    \end{enumerate}
+    Dann gilt $\forall_{\theta, \theta' \in \Theta,\; \theta \not= \theta'}\;
+    \EE_\theta(\ln p(X, \theta)) > \EE_\theta(\ln p(X, \theta'))$,
+    d.\,h. die Log-Likelihood-Funktion zum wahren Parameter $\theta$ ist im Mittel strikt besser
+    als die Log-Likelihood-Funktion zu einem anderen Parameter $\theta'$.
+\end{Satz}
+
+\begin{Satz}{Konsistenz des MLS}\\
+    Seien $\Theta \subset \real^k$ kompakt und $\P = \{p(\cdot, \theta) \;|\; \theta \in \Theta\}$
+    ein reguläres statistisches Modell mit
+    \begin{enumerate}
+        \item
+        $\forall_{\theta, \theta' \in \Theta}\; \EE_\theta(\ln p(X, \theta')) < \infty$ und
+        
+        \item
+        $\forall_{\varepsilon > 0} \exists_{\delta > 0} \forall_{\theta, \theta' \in \Theta,\;
+        \norm{\theta - \theta'} < \delta} \forall_{x \in \real^n}\;
+        |\ln p(x, \theta) - \ln p(x, \theta')| < \varepsilon$\\
+        ($\ln p(x, \cdot)\colon \Theta \rightarrow \real$ ist
+        \begriff{gleichmäßig gleichgradig stetig}).
+    \end{enumerate}
+    Dann ist jeder MLS $\widehat{\theta}_n$ mit Likel.-Funktion
+    $L(\theta, (X_1, \dotsc, X_n)) = \prod_{i=1}^n p(X_i, \theta)$
+    stark konsistent.
+\end{Satz}
+
+\begin{Bem}
+    Die Voraussetzungen $\Theta \subset \real^k$, $\Theta$ kompakt und
+    gleichmäßige gleichgradige Stetigkeit der Log-Likelihood-Funktion werden für die
+    starke Konsistenz des MLS nicht benötigt.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Ist ein MLS konsistent, so ist die Konvergenzgeschwindigkeit und die asymptotische Verteilung
+    des MLS häufig von großem Interesse.
+\end{Bem}
+
+\begin{Satz}{asymptotische Normalität des MLS}\\
+    Sei $\P = \{p(\cdot, \theta) \;|\; \theta \in \Theta\}$
+    ein reguläres statistisches Modell mit $\Theta \subset \real$ of"|fen und
+    \begin{enumerate}
+        \item
+        $B := \{x \in \real \;|\ p(x, \theta) > 0\}$ unabhängig von $\theta$,
+        
+        \item
+        $\forall_{\theta, \theta' \in \Theta,\; \theta \not= \theta'}\;
+        \PP_\theta \not= \PP_{\theta'}$
+        ($\P$ ist \begriff{identifizierbar}),
+        
+        \item
+        $\forall_{x \in \real}\; p(x, \cdot)\colon \Theta \rightarrow \real$ dreifach stetig
+        dif"|ferenzierbar,
+        
+        \item
+        $\frac{\partial^k}{\partial \theta^k} \int_B p(x, \theta) d\mu(x) =
+        \int_B \frac{\partial^k}{\partial \theta^k} p(x, \theta) d\mu(x)$ für $k = 1, 2$
+        (mit $\mu$ dem Zähl- oder L.-B.-Maß),
+        
+        \item
+        $\forall_{\theta \in \Theta} \exists_{c_\theta > 0}
+        \exists_{g_\theta\colon \real \rightarrow \real_0^+,\; \EE_\theta(g_\theta(X_1)) < \infty}
+        \forall_{\theta^\ast \in \Theta,\; |\theta^\ast - \theta| < c_\theta}
+        \forall_{x \in \real}\;
+        \left|\frac{\partial^3}{\partial \theta^3}
+        \left.\ln p(x, \theta)\right|_{\theta = \theta^\ast}\right| \le g_\theta(x)$,
+        
+        \item
+        $\forall_{\theta \in \Theta}\; I(\theta) =
+        \Var_\theta\!\left(\frac{\partial}{\partial \theta} \ln p(X, \theta)\right) \in
+        (0, \infty)$ und
+        
+        \item
+        $\forall_{\theta \in \Theta}\; \widehat{\theta}_n \text{ schwach konsistenter MLS für }
+        \theta$.
+    \end{enumerate}
+    Dann gilt $\sqrt{n I(\theta)} (\widehat{\theta}_n - \theta)
+    \xrightarrow{\text{(d)}} Z$ mit $Z \sim \N(0, 1)$ für alle $\theta \in \Theta$.
+\end{Satz}
+
+\pagebreak

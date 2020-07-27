@@ -1,0 +1,106 @@
+\section{%
+    Reelle Vektorräume%
+}
+
+\subsection{%
+    \texorpdfstring{Der $n$-dimensionale reelle Raum}%
+    {Der n-dimensionale reelle Raum}%
+}
+
+\begin{Def}{Vektorraum $\real^n$}
+    Sei $n \in \natural$.
+    Auf $\real^n$ ist eine \begriff{Addition} definiert durch \\
+    $(\alpha_1, \ldots, \alpha_n) + (\beta_1, \ldots, \beta_n)
+    = (\alpha_1 + \beta_1, \ldots, \alpha_n + \beta_n)$ und eine
+    \begriff{skalare Multiplikation} definiert durch
+    $\lambda (\alpha_1, \ldots, \alpha_n) =
+    (\lambda \alpha_1, \ldots, \lambda \alpha_n)$,
+    wobei $\alpha_i, \beta_i, \lambda \in \real$ für $i = 1, \ldots, n$.
+\end{Def}
+
+\begin{Satz}{Vektorraum-Axiome im $\real^n$}
+    Die Addition im $\real^n$ ist assoziativ, es gibt einen Nullvektor
+    $0 = (0, \ldots, 0)$ (neutrales Element), für jeden Vektor $v \in \real^n$
+    gibt es ein eindeutig bestimmtes additiv Inverses $-v \in \real^n$
+    und die Addition ist kommutativ. \\
+    $1 \in \real$ ist bzgl. der skalaren Multiplikation ein neutrales Element,
+    die skalare Multiplikation ist skalar assoziativ
+    ($(\lambda \mu) v = \lambda (\mu v)$),
+    skalar distributiv ($\lambda (u + v) = \lambda u + \lambda v$) sowie
+    vektoriell distributiv ($(\lambda + \mu) v = \lambda v + \mu v$). \qquad
+    Außerdem gilt $0 \cdot v = 0$ sowie $(-1) \cdot v = -v$.
+\end{Satz}
+
+\subsection{%
+    Linearkombinationen und Unterräume%
+}
+
+\begin{Def}{skalare Vielfache}
+    Seien $V = \real^n$ und $v \in V$. \\
+    Man schreibt $\real v = \{\lambda v \;|\; \lambda \in \real\}$,
+    die Elemente von $\real v$ heißen \begriff{skalare Vielfache}.
+\end{Def}
+
+\begin{Def}{Linearkombination}
+    Seien $V = \real^n$ und $T \subseteq V$ mit $T \not= \emptyset$.
+    Eine \begriff{Linearkombination} von $T$ ist ein Ausdruck der Form
+    $\lambda_1 v_1 + \cdots + \lambda_k v_k$, wobei $v_i \in T$ und
+    $\lambda_i \in \real$ für $i = 1, \ldots, k$ ist.
+\end{Def}
+
+\begin{Def}{linearer Aufspann}
+    Seien $V = \real^n$ und $T \subseteq V$ mit $T \not= \emptyset$.
+    Die Menge aller Linearkombinationen von $T$ heißt
+    \begriff{linearer Aufspann} und wird mit $\aufspann{T}$ bezeichnet. \\
+    Also ist $\aufspann{T} = \left\{\left. \sum_{i=1}^k \lambda_i v_i
+    \;\right|\; v_i \in T,\; \lambda_i \in \real,\;
+    i = 1, \ldots, k \right\}$ \\
+    $= \left\{\left. \sum_{t \in T} \lambda_t t
+    \;\right|\; \lambda_t \in \real,\;
+    \lambda_t = 0 \text{ f"ur fast alle } t \in T \right\}$. \qquad
+    Es ist $\aufspann{\{v_1, \ldots, v_j\}} = \aufspann{v_1, \ldots, v_j}$.
+\end{Def}
+
+\begin{Satz}{Aufspann einer Teilmenge ist abgeschlossen}
+    Sei $T \subseteq \real^n$ mit $T \not= \emptyset$ sowie
+    $U = \aufspann{T}$. \\
+    Dann gilt $u + v \in U$ und $\lambda v \in U$ für $u, v \in U$.
+    Die Teilmenge $U$ ist also abgeschlossen bzgl. Addition und skalarer
+    Multiplikation.
+\end{Satz}
+
+\begin{Def}{reeller Vektorraum}
+    Ein \begriff{reeller Vektorraum} ($\real$-Vektorraum) ist eine Menge $V$,
+    für die zwei Abbildungen
+    $\boldsymbol{+}: V \times V \rightarrow V$, $(u, v) \mapsto u + v$ sowie
+    $\boldsymbol{\cdot}: \real \times V \rightarrow V$,
+    $(\lambda, v) \mapsto \lambda \cdot v$ definiert sind.
+    Dabei bildet $V$ mit der Addition eine abelsche Gruppe und
+    die skalare Multiplikation besitzt das neutrale Element $1 \in \real$
+    ($1 \cdot v = v$), ist skalar assoziativ sowie skalar und vektoriell
+    distributiv über der Vektoraddition.
+\end{Def}
+
+\begin{Kor}
+    Nullvektor und additiv inverse Elemente sind eindeutig. \\
+    Es gilt $0 \cdot v = 0$, \quad
+    $\alpha \cdot 0 = 0$ \quad und \quad
+    $(-1) \cdot v = -v$.
+\end{Kor}
+
+\subsection{%
+    \emph{Zusätzliches}: Polynome%
+}
+
+\begin{Def}{Polynom}
+    Sei $K$ ein Körper. \\
+    $K[x]$ ist die Menge der Ausdrücke der Form
+    $f(x) = \sum_{i=0}^n \alpha_i x^i$ ($n \in \natural_0$,
+    $\alpha_i \in K$). \\
+    $f(x)$ heißt \begriff{Polynom} vom Grad $n = \deg f$ ($a_n \not= 0$).
+    Für $f = 0$ ist $\deg f = -1$. \\
+    Eine \begriff{polynomiale Funktion} ist eine Funktion
+    $f: K \rightarrow K$, $f(x) = \sum_{i = 0}^n \alpha_i x^i$.
+\end{Def}
+
+\pagebreak

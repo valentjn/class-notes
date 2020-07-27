@@ -1,0 +1,330 @@
+\section{%
+    Konvexe Hüllen%
+}
+
+\textbf{konvexe Hülle}:
+Sei $P \subset \real^d$ eine endliche Punktmenge mit $n := |P|$.\\
+Die \begriff{konvexe Hülle} $\CH(P)$ ist die minimale konvexe Menge $C \subset \real^d$ mit
+$P \subset C$.
+
+Wenn man $\CH(P)$ berechnet, interessiert meist eine Beschreibung des Rands von $\CH(P)$.
+In $\real^2$ ist diese mit der Abfolge der Punkte auf dem Rand von $\CH(P)$ gegen den
+Uhrzeigersinn gegeben.
+In $\real^3$ reicht der Oberflächengraph des entsprechenden Polytops,
+der als planarer Graph zur Speicherung $\O(n)$ Platz benötigt.
+In $d$ Dimensionen braucht man $\O(n^{\lfloor d/2 \rfloor})$ Platz.
+
+Zur Berechnung von $\CH(P)$ benötigt man i.\,A. $\Omega(n \log n)$ Zeit
+(wenn alle Punkte auf dem Rand liegen),
+denn Sortieren ist auf das Konvexe-Hülle-Problem reduzierbar:
+Gegebene Zahlen $x_1, \dotsc, x_n \in \real$ lassen sich durch Berechnung von
+$\CH(\{(x_1, x_1^2), \dotsc, (x_n, x_n^2)\})$ sortieren,
+weil die Standardparabel selbst konvex ist und der CH-Algorithmus die Punkte auf dem
+Rand in der richtigen Reihenfolge ausgibt.
+Weil aber vergleichsbasiertes Sortieren (deterministisch oder randomisiert)
+$\Omega(n \log n)$ Zeit benötigt, benötigt auch jeder CH-Algorithmus $\Omega(n \log n)$ Zeit.
+
+Genauer lässt sich zeigen:
+Ist $h$ die Anzahl der Punkte aus $P$ auf dem Rand von $\CH(P)$,
+dann ist die untere Laufzeit-Schranke $\Omega(n \log h)$.
+
+% \subsection{%
+%     \emph{Zusatz}: Planare Graphen%
+% }
+% 
+% \textbf{Graph}:
+% Ein \begriff{(ungerichteter) Graph} $G$ ist ein Tupel $(V, E)$ mit $V$ der Knotenmenge und\\
+% $E \subset \{\{v_1, v_2\} \;|\; v_1, v_2 \in V\}$ der Kantenmenge.
+% 
+% \textbf{Einbettung}:
+% Eine \begriff{Einbettung} eines Graphen $G$ ist eine Darstellung von $G$ in $\real^2$,
+% wobei Knoten jeweils einem Punkt und Kanten jeweils einem einfachen Bogen
+% (homöomorphe Bilder von $[0, 1]$) zugewiesen werden,
+% sodass die Endpunkte des Bogens einer Kante $e$ genau die Punkte der Endknoten von $e$ sind,
+% kein Punkt eines anderen Knotens auf einem Bogen liegt und
+% keine zwei Bögen sich in einem Punkt schneiden, der im Inneren von einem der beiden Bögen liegt.
+% 
+% \textbf{planar}:
+% Ein Graph $G$ heißt \begriff{planar}, falls eine Einbettung existiert,
+% d.\,h. falls der Graph in die Ebene zeichnen lässt, ohne dass sich Kanten schneiden.
+
+\subsection{%
+    \name{Graham}-Scan-Algorithmus%
+}
+
+\textbf{\name{Graham}-Scan-Algorithmus}:\\
+Der \begriff{\name{Graham}-Scan-Algorithmus} findet die konvexe Hülle in $\real^2$ wie folgt.
+\begin{enumerate}
+    \item
+    Finde den Punkt $p_0 \in P$ mit minimaler $y$-Koordinate.
+    
+    \item
+    Sortiere die Punkte $p \in P \setminus \{p_0\}$ aufsteigend gemäß dem Winkel
+    von $\overline{p_0 p}$ zur nach rechts zeigenden Horizontalen und erhalte
+    $p_1, \dotsc, p_{n-1}$.
+    
+    \item
+    Konstruiere das Polygon $p_0 p_1 \dotsb p_{n-1} p_0$.
+    
+    \item
+    Gehe auf dem Rand des Polygons entlang und entferne Konkavitäten:
+    \begin{enumerate}[label=\emph{(\roman*)}]
+        \item
+        Starte bei $i = 0$.
+        
+        \item
+        Prüfe, ob das Teilstück $p_i p_{i+1} p_{i+2}$ einen Links- oder Rechtsknick macht
+        ($p_{i+1}$ und $p_{i+2}$ am Ende entsprechend definiert).
+        
+        \item
+        Bei einem Rechtsknick entferne den Punkt $p_{i+1}$ aus dem Polygon und
+        nummeriere die nachfolgenden Punkte neu durch (d.\,h. $p_{i+2} \rightarrow p_{i+1}$ usw.).
+        Anschließend ziehe von $i$ eins ab.
+        (Dadurch werden keine Schnittpunkte erzeugt.)
+        
+        \item
+        Beende, wenn $p_0$ wieder der aktuelle Punkt ist.
+    \end{enumerate}
+\end{enumerate}
+Der Graham-Scan-Algorithmus kann ohne Weiteres nicht auf höhere Dimensionen verallgemeinert werden.
+In der Praxis werden die Winkel bei Schritt \emph{(2)} nicht ausgerechnet, sondern
+mit einem Links-Rechts-Test wird ermittelt, ob $p_j$ links oder rechts von $\overline{p_0 p_i}$
+liegt (bei der Vergleichsroutine im Sortieralgorithmus).
+
+\linie
+
+\textbf{Zeitaufwand}:
+$\O(n \log n)$
+
+\begin{Beweis}
+    Schritt \emph{(1)} benötigt Zeit $\O(n)$.
+    Schritt \emph{(2)} sortiert $n$ Punkte und benötigt daher Zeit $\O(n \log n)$.
+    Bei Schritt \emph{(4)} wird einmal durch das Polygon mit $n$ Ecken gegangen.
+    Es werden zwar "`Rückschritte"' gemacht, allerdings wird bei jedem Rückschritt eine Ecke
+    entfernt, was auch höchstens $n$ Mal passieren kann.
+    Daher benötigt Schritt \emph{(4)} Zeit $\O(n)$ und der gesamte Algorithmus hat den
+    Zeitaufwand $\O(n \log n)$.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    Gift-Wrapping-Algorithmus%
+}
+
+\textbf{Gift-Wrapping-Algorithmus}:\\
+Der \begriff{Gift-Wrapping-Algorithmus} findet die konvexe Hülle in $\real^2$ wie folgt.
+\begin{enumerate}
+    \item
+    Finde den Punkt $p_0 \in P$ mit minimaler $y$-Koordinate.
+    
+    \item
+    Lege eine horizontale Gerade durch $p_0$ und rotiere sie gegen den Uhrzeigersinn um $p_0$,
+    bis sie einen anderen Punkt $p_1 \in P$ trift.
+    Rotiere die Gerade nun gegen den Uhrzeigersinn um $p_1 \in P$ usw.,
+    bis wieder $p_0$ getrof"|fen wird.
+    Die getrof"|fenen Punkte bilden den Rand von $\CH(P)$.
+\end{enumerate}
+Der Algorithmus kann auf $\real^3$ verallgemeinert werden.
+
+\linie
+
+\textbf{Zeitaufwand}:
+$\O(n \cdot h)$ mit $h$ der Anzahl der Punkte auf dem Rand von $\CH(P)$
+
+\begin{Beweis}
+    Der erste Schritt kostet Zeit $\O(n)$,
+    während jeder "`Wickelschritt"' ebenfalls $\O(n)$ kostet (minimaler Winkel finden).
+    Man erhält also eine Gesamt-Laufzeit von $\O(n \cdot h)$.
+\end{Beweis}
+
+Der Algorithmus ist damit ausgabesensitiv.
+Wenn viele Punkte von $P$ auf dem Rand von $\CH(P)$ liegen, dann ist $h \approx n$ und
+der Graham-Scan-Algorithmus ist dann schneller.
+Gilt allerdings $h = o(\log n)$, so ist der Gift-Wrapping-Algorithmus vorzuziehen.
+
+\pagebreak
+
+\subsection{%
+    \name{Chan}s Algorithmus%
+}
+
+Chans Algorithmus ist eine Kombination des Graham-Scan-
+(oder jedes anderen $\O(n \log n)$-Konvexe-Hülle-Alg.)
+und des Gift-Wrapping-Alg.
+Der Algorithmus hat zwar eine bestmögliche Laufzeit von $\O(n \log h)$,
+kann aber ohne Weiteres nicht auf $\real^3$ verallgemeinert werden.
+
+Er benötigt zwar zunächst die Anzahl $h$ der Punkte auf dem Rand von $\CH(P)$,
+allerdings kann dieses Problem später umgangen werden.
+
+\textbf{\name{Chan}s Algorithmus}:
+\begriff{\name{Chan}s Algorithmus} findet die konvexe Hülle in $\real^2$ wie folgt.\\
+Sei $h \in \natural$ gegeben.
+\begin{enumerate}
+    \item
+    Partitioniere $P$ in $\frac{n}{h}$ Gruppen $P_1, \dotsc, P_{n/h}$ zu je $h$ Punkten.
+    
+    \item
+    Berechne die Mini-CHs $\CH(P_i)$ für alle $i = 1, \dotsc, \frac{n}{h}$ mittels des
+    Graham-Scan-Alg.
+    
+    \item
+    Führe Gift-Wrapping über die Mini-CHs durch, allerdings mit maximal $h$ Wickelschritten:
+    \begin{enumerate}[label=\emph{(\roman*)}]
+        \item
+        Finde den Punkt $p_0 \in P$ mit minimaler $y$-Koordinate.
+        
+        \item
+        Bestimme die Rechtstangente durch $p_0$ an jede Mini-CH und die zugehörigen
+        Berührpunkte ($\frac{n}{h}$ Stück).
+        
+        \item
+        Wähle den Berührpunkt mit dem kleinsten Winkel zu $p_0$ (wie bei Gift-Wrapping).
+        
+        \item
+        Wähle diesen Punkt als neuen Basispunkt und iteriere,
+        allerdings $\le h$ mal.
+        Ist nach $h$ Iterationen $p_0$ immer noch nicht erreicht, dann breche ab und
+        gebe einen Fehler zurück.
+    \end{enumerate}
+\end{enumerate}
+
+\linie
+
+\textbf{Zeitaufwand für geg. $h$}:
+$\O(n \log h)$
+
+\begin{Beweis}
+    Schritte \emph{(1)} und \emph{(2)} kosten $\O(n)$ bzw.
+    $\frac{n}{h} \cdot \O(h \log h) = \O(n \log h)$.
+    Bei Schritt \emph{(3)} werden $\le h$ Wickelschritte durchgeführt.
+    Ein naives Berechnen der Rechtstangente würde bei jedem Wickelschritt $\O(n)$ kosten,
+    indem man jeden der $n$ Eckpunkte der Mini-CHs anschaut
+    (im schlechtesten Fall liegen alle Punkte auf den Rändern der Mini-CHs).
+    
+    Es geht aber schneller:
+    Wenn man nur eine einzelne Mini-CH $\CH(P_i)$ betrachtet, dann fällt auf,
+    dass der berechnete Berührpunkt mit kleinstem Winkel zum aktuellen Punkt
+    nur ein Mal um das Polygon laufen kann.
+    Es reicht also aus, sich den letzten Berührpunkt von $\CH(P_i)$ zu merken und
+    beim Ermitteln des Berührpunkts beim nächsten Wickelschritt nur die nächsten Eckpunkte
+    von $\CH(P_i)$ zu betrachten.
+    Für die Ermittlung der Berührpunkte von $\CH(P_i)$ benötigt man so insgesamt nur
+    $\O(h)$ Schritte (so viele Eckpunkte kann $\CH(P_i)$ höchstens haben).
+    Für alle Mini-CHs erhält man so die Laufzeit von $\frac{n}{h} \cdot \O(h) = \O(n)$
+    (für Schritt \emph{(3)}).
+\end{Beweis}
+
+\linie
+
+Der Algorithmus terminiert erfolgreich genau dann, wenn er mit $h \ge h^\ast$ aufgerufen wurde
+(mit $h^\ast$ der wahren Anzahl der Eckpunkte der konvexen Hülle $\CH(P)$).
+Zur Bestimmung von $h^\ast$ versucht man den Algorithmus daher zunächst mit
+$h_1 := 4$, $h_2 := 16$, $h_3 := 256$ usw. ($h_i := 2^{2^i}$),
+bis bei $h_j$ der Algorithmus erfolgreich terminiert hat.
+
+\textbf{Zeitaufwand für unbek. $h^\ast$}: $\O(n \log h^\ast)$
+
+\begin{Beweis}
+    Der $i$-te Aufruf kostet Zeit $\O(n \log h_i)$, daher erhält man insgesamt den Zeitaufwand
+    $\sum_{i=1}^j \O(n \log h_i) = \O(n \cdot \sum_{i=1}^j 2^i) =
+    \O(n \cdot 2^j) = \O(n \log h_j)$.
+    Wegen $h_{j-1} < h^\ast$ (sonst hätte der Algorithmus schon bei $j - 1$ erfolgreich terminiert)
+    gilt allerdings $(h_{j-1})^2 = h_j < (h^\ast)^2$ und somit
+    $\log h_j < 2 \log h^\ast$ sowie
+    $\O(n \log h^\ast)$ Gesamt-Zeitaufwand.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    RIC-Algorithmus%
+}
+
+Der RIC-Algorithmus (engl. \emph{randomized incremental construction}) ist ein sog.
+\begriff{inkrementeller Algorithmus}.
+Bei diesen wird die Lösung der ersten $i$ Objekte sukzessive für $i = 1, \dotsc, n$ aus
+der Lösung der ersten $i - 1$ Objekte berechnet.
+Die Invariante beim RIC-Algorithmus ist daher, dass im $i$-ten Schritt die konvexe
+Hülle von $p_1, \dotsc, p_i$ berechnet wird.
+Zusätzlich ist der Algorithmus \begriff{randomisiert}, d.\,h.
+der Algorithmus macht sein Vorgehen an bestimmten Stellen vom Zufall abhängig.
+
+\textbf{RIC-Algorithmus}:
+Der \begriff{RIC-Algorithmus} findet die konvexe Hülle in $\real^2$ wie folgt.
+\begin{enumerate}
+    \item
+    Permutiere $P$ zufällig zu $p_1, \dotsc, p_n$.
+    
+    \item
+    Berechne $\CH_3 := \CH(p_1, p_2, p_3)$ als Dreieck $\Delta p_1 p_2 p_3$ und
+    berechne den Schwerpunkt $m$.
+    
+    \item
+    Für $i = 4, \dotsc, n$ weise jedem Punkt $p_i$ die Kante des Dreiecks $\CH_3$ zu,
+    die sich mit $\overline{mp_i}$ schneidet
+    (gibt es keinen solchen Schnittpunkt, dann liegt $p_i$ in $\CH_3$ und braucht nicht weiter
+    betrachtet zu werden).
+    Außerdem weise jeder Kante von $\CH_3$ die Punkte zu, die auf die Kante verweisen.
+    
+    \item
+    Für $i = 4, \dotsc, n$ wiederhole:
+    \begin{enumerate}[label=\emph{(\roman*)}]
+        \item
+        Starte bei der Kante, auf die der Punkt $p_i$ zeigt.
+        
+        \item
+        Gehe nun in beide Richtungen auf dem Rand von $\CH_{i-1}$ und bestimme so
+        die beiden Tangenten an $\CH_{i-1}$ durch $p_i$.
+        Alle übersprungenen Kanten werden gelöscht und die zwei Tangenten werden eingefügt,
+        um $\CH_i$ zu erhalten.
+        Aktualisiere nun noch die Verweise der Punkte und der Kanten.
+    \end{enumerate}
+\end{enumerate}
+Der RIC-Algorithmus kann auch auf höhere Dimensionen erweitert werden
+(mittels Breitensuche).
+Für $d$ Dimensionen besitzt er eine Laufzeit von $\O(n^{\lfloor d/2 \rfloor} \log n)$.
+
+\linie
+
+\textbf{Laufzeit}:
+Im Worst-Case kann die Laufzeit $\Omega(n^2)$ sein.
+Die Bestimmung der Tangenten kostet zwar insgesamt nur $\O(n)$
+(jede übersprungene Kante wird gelöscht und es gibt höchstens $2n$ Kanten, für jeden
+Punkt zwei).
+Allerdings kann es für jedes $i$ nötig sein, die Verweise aller verbleibenden Punkte
+zu aktualisieren
+(z.\,B. wenn alle Punkte übereinander liegen, außer drei unten als Dreieck, und die
+Punkte von unten nach oben durchnummeriert werden),
+was in einer Laufzeit von $\Omega(n^2)$ resultiert.
+Dieser Fall tritt aber nur bei bestimmten Permutationen auf.
+Man kann zeigen, dass allermeistens günstigere Reihenfolgen gewählt werden.
+Dazu ermittelt man den Durchschnitt (Erwartungswert) der Laufzeiten über alle möglichen
+Permutationen, die sog. \begriff{erwartete Laufzeit}.
+
+\textbf{erwartete Laufzeit}:
+$\O(n \log n)$
+
+\begin{Beweis}
+    Sei $T_j$ die erwartete Anzahl, die angibt, wie oft der Verweis des $j$-ten Punkts
+    der zufälligen Permutation auf eine Kante während der Einfügung von $p_4, \dotsc, p_{j-1}$
+    geändert werden musste (dabei ist $j$ fest).
+    Wenn man zeigen kann, dass $T_j = \O(\log n)$ gilt, dann folgt die Behauptung,
+    da die Gesamtlaufzeit dann $\sum_{j=4}^n T_j = \O(n \log n)$ beträgt.
+    
+    Dazu verwendet man die Technik der \begriff{Rückwärtsanalyse}:
+    Sei $P_{i,j}$ für $i < j$ die Wahrscheinlichkeit, dass der Verweis von $p_j$ auf eine Kante
+    bei der Einfügung von $p_i$ geändert werden musste.
+    Dann gilt $T_j = \sum_{i < j} P_{i,j}$
+    (denn wenn der Verweis geändert werden musste, entstehen Kosten von $1$, sonst $0$).
+    Der Verweis von $p_j$ auf eine Kante
+    musste bei der Einfügung von $p_i$ geändert werden genau dann,
+    wenn die Kante, auf die $p_j$ zeigt, nach dem Einfügen von $p_i$ den Punkt $p_i$ als einen
+    Endpunkt hat.
+    Es gibt $i$ mögliche Endpunkte $p_1, \dotsc, p_i$, damit ist die Wahrscheinlichkeit,
+    dass einer der beiden Endpunkte $p_i$ ist, gleich $P_{i,j} = \frac{2}{i}$
+    und man erhält $T_j = \sum_{i < j} \frac{2}{i} = \O(\log n)$.
+\end{Beweis}
+
+\pagebreak

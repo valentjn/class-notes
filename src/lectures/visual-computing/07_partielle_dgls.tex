@@ -1,0 +1,436 @@
+\section{%
+    Partielle Dif"|ferentialgleichungen%
+}
+
+\textbf{partielle Dif"|ferentialgleichung}:
+Eine \begriff{partielle Dif"|ferentialgleichung (PDE)} ist eine Gleichung,
+die eine multivariate Funktion (z.\,B. $u(x, t)$) in Beziehung mit den partiellen Ableitungen
+(z.\,B. $\partial_x u$, $\partial_t u$) und den Variablen (z.\,B. $x$, $t$) setzt.
+Die \begriff{Ordnung} einer PDE ist die Ordnung der höchsten partiellen Ableitung.
+Eine PDE heißt \begriff{linear}, falls $u$ und die partiellen Ableitungen nur linear auftauchen
+(wobei die Koef"|fizienten aber durchaus von den Variablen abhängen dürfen).
+Analytische Lösungen kann man explizit oft nur für sehr einfache Spezialfälle angeben.
+
+\subsection{%
+    1D-Advektionsgleichung%
+}
+
+\textbf{Advektionsgleichung}:
+Die Gleichung $\partial_t u + c \partial_x u = 0$ mit $c \in \real$ zusammen mit
+Anfangs- und/oder Randbedingungen heißt \begriff{1D-Advektionsgleichung}.
+Gesucht ist nun eine \begriff{Lösung}, d.\,h. eine Funktion $u(x, t)$,
+die diese Gleichung erfüllt.
+
+\textbf{Lösungen konstant entlang Charakteristiken}:
+Sei $x(t) = ct + x_0$ eine Gerade im $t$-$x$-Diagramm mit Steigung $c$.
+Dann gilt $\frac{\d}{\dt} u(x(t), t) = \partial_x u(x(t), t) x'(t) + \partial_t u(x(t), t)$\\
+$= (\partial_t u + c \partial_x u)(x(t), t) = 0$ für jede Lösung $u(x, t)$,
+d.\,h. Lösungen der Advektionsgleichung sind konstant entlang diesen sog.
+\begriff{Charakteristiken}.
+
+\textbf{Lösung der Advektionsgleichung}:
+Sei $u(x, t) := v(x - ct)$ für eine Funktion $v$.
+Dann gilt $\partial_t u + c \partial_x u = v'(x - ct) (-c) + c v'(x - ct) = 0$,
+d.\,h. $u$ ist eine Lösung der Advektionsgleichung.
+
+\subsection{%
+    Klassifikation linearer PDEs zweiter Ordnung%
+}
+
+\textbf{lineare PDE zweiter Ordnung}:
+Eine \begriff{lineare PDE zweiter Ordnung} auf einem Gebiet $D \subset \real^2$ kann man schreiben
+als $A \partial_x^2 u + 2B \partial_x \partial_y u + C \partial_y^2 u +
+D \partial_x u + E \partial_y u + Fu = G$ mit $A, \dotsc, G$ stückweise stetigen Funktionen
+von $x, y$ auf $D$.
+
+\textbf{Klassifikation}:
+Wenn $A^2 + B^2 + C^2 \not= 0$ in $D$ ist, dann heißt die PDE
+\begin{itemize}
+    \item
+    \begriff{elliptisch}, falls $AC - B^2 > 0$ in $D$,
+    
+    \item
+    \begriff{parabolisch}, falls $AC - B^2 = 0$ in $D$, und
+    
+    \item
+    \begriff{hyperbolisch}, falls $AC - B^2 < 0$ in $D$.
+\end{itemize}
+Diese Klassifikation ist analog zu der von Kegelschnitten $Ax^2 + 2Bxy + Cy^2 + Dx + Ey + F = 0$.
+
+\textbf{Beispiele}:
+\begin{itemize}
+    \item
+    \emph{elliptische PDEs}:
+    \begriff{\name{Laplace}-Gleichung}
+    ($\Delta u = 0$),
+    \begriff{\name{Poisson}-Gleichung}
+    ($\Delta u = f$),\\
+    \begriff{\name{Helmholtz}-Gleichung}
+    ($\Delta u + \varrho u = f$)
+    
+    \item
+    \emph{parabolische PDEs}:
+    \begriff{1D-Wärmeleitungsgleichung}
+    ($k \partial_x^2 u - \partial_t u = 0$),\\
+    \begriff{Dif"|fusionsgleichung}
+    ($\partial_t u(\vec{x}, t) = \div(D(u, \vec{x}) \nabla u(\vec{x}, t))$)
+    
+    \item
+    \emph{hyperbolische PDE}:
+    \begriff{Wellengleichung}
+    ($\partial_t^2 u - c^2 \Delta u = 0$)
+\end{itemize}
+
+\linie
+
+\textbf{Randbedingungen}:
+Damit die Lösung von elliptischen PDEs eindeutig bestimmt ist, muss man
+\begriff{Randbedingungen (RBen)} festlegen.
+Sei dazu $D$ stückweise $\C^1$-berandet mit den Stücken $\Gamma_i$,
+$\partial D = \Gamma = \bigcup_i \Gamma_i$ und $\vec{n}$ der nach außen zeigenden
+Einheitsnormalen.
+Dann spricht man bei $u = \varphi$ auf $\Gamma_i$ von \begriff{\name{Dirichlet}-RBen},
+bei $\partial_{\vec{n}} u = \gamma$ auf $\Gamma_i$ von \begriff{\name{Neumann}-RBen} und
+bei $\partial_{\vec{n}} u + \alpha u = \beta$ auf $\Gamma_i$ von \begriff{\name{Cauchy}-RBen}
+($\varphi, \gamma, \alpha, \beta$ feste Funktionen auf $\Gamma_i$).
+
+\pagebreak
+
+\subsection{%
+    \name{Laplace}-Gleichung in Polarkoordinaten%
+}
+
+\textbf{\name{Laplace}-Gleichung in Polarkoordinaten}:
+Seien $\Omega := B_1(0) \subset \real^2$ und $f \in \C^0(\partial\Omega)$.\\
+Gesucht ist eine Lösung $u \in \C^2(\Omega) \cap \C^0(\overline{\Omega})$ des RWPs
+$\Delta u = 0$ in $\Omega$ und $u = f$ auf $\partial\Omega$.
+
+Mit Transformation in Polarkoordinaten $x = r\cos\varphi$, $y = r\sin\varphi$ gilt
+$\partial_x = \cos\varphi \cdot \partial_r - \frac{\sin\varphi}{r} \partial_\varphi$ und
+$\partial_y = \sin\varphi \cdot \partial_r + \frac{\cos\varphi}{r} \partial_\varphi$.
+Durch nochmalige Ableitung erhält man
+$\Delta u = \partial_x^2 u + \partial_y^2 u = 0 \iff
+\partial_r^2 U + \frac{1}{r} \partial_r U + \frac{1}{r^2} \partial_\varphi^2 U = 0$
+mit $U(r, \varphi) := u(r\cos\varphi, r\sin\varphi)$.
+Die RB $u = f$ auf $\partial\Omega$ transformiert sich zu
+$U(1, \varphi) = f(\cos\varphi, \sin\varphi)$.
+Dabei ist $r \in (0, 1)$ und $\varphi \in (-\pi, \pi)$.
+
+Damit $u \in \C^2(\Omega) \cap \C^0(\overline{\Omega})$ gilt, sollte $U$ zusätzlich
+$U(r, \pi) = U(r, -\pi)$ und\\
+$\partial_\varphi U(r, \pi) = \partial_\varphi U(r, -\pi)$
+erfüllen und der Grenzwert $\lim_{r \to 0} U(r, \varphi)$ sollte für jedes $\varphi$ existieren
+und unabhängig von $\varphi$ sein.
+
+Mit dem Produktansatz $U(r, \varphi) := w(r) v(\varphi)$ erhält man
+$v \partial_r^2 w + \frac{1}{r} v \partial_r w + \frac{1}{r^2} w \partial_\varphi^2 v = 0$.
+Wenn man annimmt, dass $w(r) \not= 0 \not= v(\varphi)$, dann kann man das umschreiben zu\\
+$\frac{r^2}{w} \partial_r^2 w + \frac{r}{w} \partial_r w = -\frac{1}{v} \partial_\varphi^2 v =:
+\lambda$.
+$\lambda$ ist unabhängig von $r$ und $\varphi$, weil die linke Seite nur von $r$ abhängt und
+die rechte nur von $\varphi$.
+$w$ und $v$ müssen also die ODEs
+\begin{itemize}
+    \item
+    $v'' + \lambda v = 0$
+    mit $v(\pi) = v(-\pi)$ und $v'(\pi) = v'(-\pi)$
+    (\begriff{harmonischer Oszillator})
+    
+    \item
+    $r^2 w'' + rw' - \lambda w = 0$
+    (\begriff{\name{Bessel}sche DGL}) und
+\end{itemize}
+erfüllen.
+Aus der ersten DGL folgt, dass $v$ $2\pi$-periodisch sein muss,
+also $\lambda = k^2$ für $k \in \natural_0$ und
+$v_k(\varphi) = a_k \cos(k\varphi) + b_k \sin(k\varphi)$.
+Lösungen der zweiten DGL sind $w(r) = \log r$ für $k = 0$ und $w(r) = r^{\pm k}$ für $k \ge 1$.
+Allerdings ist nur $w(r) = r^k$ in $r = 0$ stetig.
+
+Somit ist $U(r, \varphi) = \frac{1}{2} a_0 + \sum_{k=1}^\infty U_k(r, \varphi)$ mit
+$U_k(r, \varphi) := (a_k \cos(k \varphi) + b_k \sin(k \varphi)) r^k$.
+Um die Koef"|fizienten $a_k$, $b_k$ zu bestimmen, nutzt man die Orthogonalitätsrelationen
+der trigonometrischen Funktionen aus
+(Multiplikation z.\,B. mit $\sin(n\varphi)$ und Integration über $\varphi$ für $r = 1$).
+
+\subsection{%
+    1D-Dif"|fusionsgleichung%
+}
+
+\textbf{Dif"|fusionsgleichung}:
+Die Gleichung $\partial_t u = D \partial_x^2 u$ für $x \in [0, L]$ mit $D \in \real$,
+der Anfangsbedingung $u(\cdot, 0) = f(\cdot)$ in $[0, L]$ und
+Dirichlet-Null-RBen $u(0, t) = u(L, t) = 0$ für $t > 0$ heißt \begriff{1D-Dif"|fusionsgleichung}.
+
+\textbf{analytische Lösung mit Trennung der Veränderlichen}:\\
+Mit dem Ansatz $u(x, t) := X(x) \cdot T(t)$ erhält man
+$\frac{1}{DT} \partial_t T = \frac{1}{X} \partial_x^2 X =: -\lambda$.
+Weil die linke Seite nur von $t$ und die rechte nur von $x$ abhängt, ist $\lambda$ konstant und
+man bekommt zwei ODEs
+\begin{itemize}
+    \item
+    $X'' + \lambda X = 0$ und
+    
+    \item
+    $T' + \lambda DT = 0$.
+\end{itemize}
+Die allgemeine Lösung der ersten Gleichung ist
+$X(x) = c_1 \cos(\sqrt{\lambda} x) + c_2 \sin(\sqrt{\lambda} x)$ für $\lambda > 0$.
+Mit den RBen erhält man $c_1 = 0$ und $\lambda = \lambda_n = (\frac{n \pi}{L})^2$ für
+$n \in \natural$, also $X(x) = C_n \sin(\frac{n \pi}{L} x)$.
+Aus der zweiten Gleichung bekommt man damit $T(t) = B_n e^{-D \lambda_n t}$.
+Insgesamt erhält man also als allgemeine Lösung der Dif"|fusionsgleichung
+$u(x, t) = \sum_{n=1}^\infty A_n \sin(\frac{n \pi}{L} x) \exp(-D (\frac{n \pi}{L})^2 t)$.
+
+\textbf{Bestimmung der Koef"|fizienten}:
+Für die Bestimmung der $A_n$ benutzt man die Identität
+$\int_0^L \sin(\frac{n \pi}{L} \xi) \sin(\frac{m \pi}{L} \xi) \dxi = \frac{L}{2} \delta_{n,m}$
+für $n \not= 0 \not= m$.
+Damit bekommt man\\
+$\int_0^L f(\xi) \sin(\frac{n \pi}{L} \xi) \dxi
+= \int_0^L u(\xi, 0) \sin(\frac{n \pi}{L} \xi) \dxi
+= \sum_{m=1}^\infty A_m \int_0^L \sin(\frac{n \pi}{L} \xi) \sin(\frac{m \pi}{L} \xi) \dxi
+= \frac{L}{2} A_n$\\
+$\iff A_n = \frac{2}{L} \int_0^L f(\xi) \sin(\frac{n \pi}{L} \xi) \dxi$.
+
+\pagebreak
+
+\subsection{%
+    Finite-Dif"|ferenzen-Methode%
+}
+
+\textbf{Finite-Dif"|ferenzen-Methode}:
+Bei der \begriff{Finite-Dif"|ferenzen-Methode} diskretisiert man das Gebiet $D$ zunächst
+als gleichmäßiges Gitter mit Gitterweite $\Delta t$, $\Delta x$ und $\Delta y$.
+Anschließend betrachtet man Approximationen $u_{i,j} \approx u(x_i, y_j)$
+und ersetzt alle Ableitungen durch Dif"|ferenzenquo"-tienten.
+Im Folgenden seien
+$u_P := u_{i,j}$,
+$u_N := u_{i,j+1}$,
+$u_E := u_{i+1,j}$,
+$u_S := u_{i,j-1}$ und
+$u_W := u_{i-1,j}$.
+
+\textbf{einfache Ableitungen}:
+Sei $h := \Delta x = \Delta y$.
+\begin{itemize}
+    \item
+    $\partial_x u(x_i, y_j) \approx \frac{u_E - u_P}{h}$ (\begriff{Vorwärts-Diff.quot.}),
+    $\partial_x u(x_i, y_j) \approx \frac{u_P - u_W}{h}$ (\begriff{Rückwärts-Diff.quot.}) oder
+    $\partial_x u(x_i, y_j) \approx \frac{u_E - u_W}{2h}$ (\begriff{zentraler Dif"|f.quot.})
+    
+    \item
+    $\partial_y u(x_i, y_j) \approx \frac{u_N - u_P}{h}$,
+    $\partial_y u(x_i, y_j) \approx \frac{u_P - u_S}{h}$ oder
+    $\partial_y u(x_i, y_j) \approx \frac{u_N - u_S}{2h}$
+\end{itemize}
+Eine Approximation höherer Ordnung ist
+$\partial_x u(x_i, y_j) \approx \frac{u_{WW} - 8u_W + 8u_E - 8u_{EE}}{12h}$.
+
+\textbf{zweifache Ableitungen}:
+$\partial_x^2 u \approx \frac{u_E - 2u_P + u_W}{h^2}$,
+$\partial_y^2 u \approx \frac{u_N - 2u_P + u_S}{h^2}$,
+$\partial_x \partial_y u \approx \frac{u_{NW} - u_{NE} - u_{SW} + u_{SE}}{4h^2}$\\
+Eine Approximation höherer Ordnung ist
+$\partial_x^2 u(x_i, y_j) \approx \frac{-u_{WW} + 16u_W - 30u_P + 16u_E - u_{EE}}{12h^2}$.
+
+\linie
+
+\textbf{FDM für die \name{Poisson}-Gleichung}:
+Die \begriff{\name{Poisson}-Gleichung} ist gegeben durch $-\Delta u = f$ mit einem Quellterm $f$.
+Die diskretisierte Version ist gegeben durch
+$4u_P - u_E - u_W - u_N - u_S = h^2 f_P$.
+Um Dirichlet-RBen zu erzwingen, setzt man die jeweiligen Terme auf den RB-Wert.\\
+Für Neumann-RBen mit z.\,B. $\vec{n} = (1, 0)^\tp$ und $\partial_{\vec{n}} u(x_i, y_j) = 0$
+erhält man die Approximation $0 = \partial_{\vec{n}} u(x_i, y_j) \approx \frac{u_E - u_W}{2h}$,
+also $u_E := u_W$.
+Daher erzwingt man Neumann-RBen, indem man in der Diskretisierung für den Randpunkt $P$
+den Term $u_E$ durch $u_W$ ersetzt, also\\
+$2u_P - u_W - \frac{1}{2} u_N - \frac{1}{2} u_S = \frac{1}{2} h^2 f_P$
+(Teilen durch $2$, damit LGS-Matrix nachher symmetrisch).
+Durch Lösen des entstehenden LGS kann man die Approximation ausrechnen.
+
+\linie
+
+\textbf{FDM für Advektionsgleichung}:
+Für die Advektionsgleichung $\partial_t u + c \partial_x u = 0$ gibt es mehrere
+Möglichkeiten zur Diskretisierung, je nachdem, welche Dif"|ferenzenquotienten man wählt.
+Dazu setzt man $u_i^n \approx u(x_i, t_n)$ mit Gitterweiten $\Delta x$ und $\Delta t$.
+\begin{itemize}
+    \item
+    \begriff{Upwind-Methode}:
+    $u_i^{n+1} := u_i^n - c \frac{\Delta t}{\Delta x} (u_i^n - u_{i-1}^n)$
+    (Zeit vorwärts, Ort rückwärts)
+    
+    \item
+    \begriff{Downwind-Methode}:
+    $u_i^{n+1} := u_i^n - c \frac{\Delta t}{\Delta x} (u_{i+1}^n - u_i^n)$
+    (Zeit vorwärts, Ort vorwärts)
+    
+    \item
+    \begriff{zentrierte Methode}:
+    $u_i^{n+1} := u_i^n - c \frac{\Delta t}{2 \Delta x} (u_{i+1}^n - u_{i-1}^n)$
+    (Zeit vorwärts, Ort zentriert)
+    
+    \item
+    \begriff{Leap-Frog-Methode}:
+    $u_i^{n+1} := u_i^{n-1} - c \frac{\Delta t}{\Delta x} (u_{i+1}^n - u_{i-1}^n)$
+    (Zeit zentriert, Ort zentriert)
+    
+    \item
+    \begriff{\name{Lax}-\name{Wendroff}-Methode}:
+    $u_i^{n+1} := u_i^n - c \frac{\Delta t}{2 \Delta x} (u_{i+1}^n - u_{i-1}^n) +
+    \frac{1}{2} (c \frac{\Delta t}{\Delta x})^2 (u_{i+1}^n - 2u_i^n + u_{i-1}^n)$
+\end{itemize}
+Für Stabilität sollte die \begriff{CFL-Zahl (\name{Courant}-\name{Friedrichs}-\name{Lewy})}
+$\sigma := c \frac{\Delta t}{\Delta x}$ kleiner als $1$ sein.
+
+\linie
+
+\textbf{FDM für Dif"|fusionsgleichung}:
+Als Beispiel betrachtet man die Wärmeleitung in einem Stab der Länge $L = 1$ mit $D = 1$.
+Anfangsbedingung soll $u(x, 0) = 0$ für $x \in [0, 1]$ und
+RBen sollen $u(0, t) = \sin(\pi t)$ und $\partial_x u(1, t) = 0$ für $t > 0$.
+Diskretisiere $D = [0, 1] \times [0, \infty)$ mit $x_i := i \Delta x$ und $t_n := n \Delta t$,
+wobei $\Delta x := \frac{1}{N}$, $i = 0, \dotsc, N$ und $n \in \natural_0$.
+Durch Verwendung von Vorwärts-Diff.quot. für die Zeit und zentralen Diff.quot. für den Ort
+bekommt man mit $u_i^n \approx u(x_i, t_n)$ die \begriff{FTCS-Methode}
+$u_i^{n+1} := u_i^n + \frac{\Delta t}{\Delta x^2} (u_{i+1}^n - 2u_i^n + u_{i-1}^n)$
+mit RBen $u_0^n := \sin(\pi n \Delta t)$ und
+$u_N^{n+1} := u_N^n + \frac{2\Delta t}{\Delta x^2} (u_{N-1}^n - u_N^n)$.
+Das Verfahren ist stabil $\iff \Delta t < \frac{1}{2} (\Delta x)^2$.
+
+\pagebreak
+
+\subsection{%
+    \name{Crank}-\name{Nicolson}-Methode%
+}
+
+\textbf{\name{Crank}-\name{Nicolson}-Methode}:
+Die \begriff{\name{Crank}-\name{Nicolson}-Methode} verwendet
+die Trapezregel für die Zeit und zentrale Diff.quot. für den Ort.
+Ist die Gleichung $\partial_t u = F(x, t, u, \partial_x u, \partial_x^2 u)$ gegeben
+und bezeichnen $\frac{u_i^{n+1} - u_i^n}{\Delta t} = F_i^n(x, t, u, \partial_x u, \partial_x^2 u)$
+und $\frac{u_i^{n+1} - u_i^n}{\Delta t} = F_i^{n+1}(x, t, u, \partial_x u, \partial_x^2 u)$
+einen expliziten bzw. impliziten Euler-Schritt, so erhält man die
+\name{Crank}-\name{Nicolson}-Methode durch Mittelung
+$\frac{u_i^{n+1} - u_i^n}{\Delta t} =
+\frac{1}{2} (F_i^n + F_i^{n+1})(x, t, u, \partial_x u, \partial_x^2 u)$.
+
+\textbf{\name{Crank}-\name{Nicolson}-Methode für Dif"|fusionsgleichung}:\\
+Man setzt $\partial_x^2 u(x_i, t_n) \approx
+\frac{1}{2(\Delta x)^2} ((u_{i+1}^n - 2u_i^n + u_{i-1}^n) +
+(u_{i+1}^{n+1} - 2u_i^{n+1} + u_{i-1}^{n+1}))$
+und erhält damit\\
+$-r u_{i-1}^{n+1} + (2+2r)u_i^{n+1} - ru_{i+1}^{n+1} = ru_{i-1}^n + (2-2r)u_i^n + ru_{i+1}^n$
+mit $r := \frac{\Delta t}{(\Delta x)^2}$.\\
+Die RBen lauten dabei $(2+2r)u_1^{n+1} - ru_2^{n+1} = (2-2r)u_1^n + ru_2^n +
+r(\sin(\pi n \Delta t) + \sin(\pi (n+1) \Delta t)$ und
+$-2ru_{N-1}^{n+1} + (2+2r)u_N^{n+1} = 2ru_{N-1}^n + (2-2r)u_N^n$.
+Für jede Zeit $t_n$ erhält man also ein tridiagonales LGS mit $N$ Gleichungen für die $N$
+Unbekannten $u_1^{n+1}, \dotsc, u_N^{n+1}$.
+
+\subsection{%
+    Anisotrope 1D-Dif"|fusionsgleichung%
+}
+
+\textbf{anisotrope 1D-Dif"|fusionsgleichung}:\\
+Die Gleichung $\partial_t u = \partial_x (D(x) \partial_x u)$
+heißt \begriff{anisotrope 1D-Dif"|fusionsgleichung}.
+
+\textbf{FDM für anisotrope 1D-Dif"|fusionsgleichung}:
+Diskretisiere zunächst die rechte Seite\\
+$\partial_x g(x)$ mit $g(x) := D(x) \partial_x u$ und halber Schrittweite
+durch $\partial_x g(x) \approx \frac{g(x + h/2) - g(x - h/2)}{h}$.
+Approximiere nun $g(x) \approx D(x) \frac{u(x + h/2) - u(x - h/2)}{h}$.
+Durch Einsetzen erhält man\\
+$\frac{u_i^{n+1} - u_i^n}{\Delta t} =
+\frac{1}{\Delta x^2} (D_{i+1/2} (u_{i+1}^n - u_i^n) - D_{i-1/2} (u_i^n - u_{i-1}^n))$
+mit $D_{i\pm1/2} := D(x_i \pm \Delta x/2)$.
+
+\textbf{\name{Crank}-\name{Nicolson} für anisotrope 1D-Dif"|fusionsgleichung}:\\
+Durch Mittelung für die Schritte $n$ und $n + 1$ erhält man\\
+$\frac{u_i^{n+1} - u_i^n}{\Delta t} =
+\frac{1}{2\Delta x^2}  (D_{i+1/2} (u_{i+1}^{n+1} + u_{i+1}^n - u_i^{n+1} - u_i^n) -
+D_{i-1/2} (u_i^{n+1} + u_i^n - u_{i-1}^{n+1} - u_{i-1}^n))$ bzw.\\
+$-D_{i+1/2} u_{i+1}^{n+1} + (\frac{2\Delta x^2}{\Delta t} + D_{i+1/2} + D_{i-1/2}) u_i^{n+1} -
+D_{i-1/2} u_{i-1}^{n+1}$\\
+$= D_{i+1/2} u_{i+1}^n (\frac{2\Delta x^2}{\Delta t} - D_{i+1/2} - D_{i-1/2}) u_i^n +
+D_{i-1/2} u_{i-1}^n$.\\
+Dies kann man in der Form $A\vec{u}^{n+1} = B\vec{u}^n$ schreiben mit
+$\vec{u}^n := (u_1^n, \dotsc, u_N^n)^\tp$,\\
+$A_{j,j-1} := -D_{j-1/2}$,
+$A_{j,j} := \frac{2\Delta x^2}{\Delta t} + D_{j+1/2} + D_{j-1/2}$,
+$A_{j,j+1} := -D_{j+1/2}$ und\\
+$B_{j,j-1} := D_{j-1/2}$,
+$B_{j,j} := \frac{2\Delta x^2}{\Delta t} - D_{j+1/2} - D_{j-1/2}$,
+$B_{j,j+1} := D_{j+1/2}$
+(sonst $A_{i,j} := 0 =: B_{i,j}$).\\
+Nach Hinzufügung der RBen zu $A$ und $B$ erhält man dann $\vec{u}^{n+1} = A^{-1} B\vec{u}^n$.
+
+\pagebreak
+
+\subsection{%
+    \name{Perona}-\name{Malik}-Dif"|fusion%
+}
+
+\textbf{\name{Perona}-\name{Malik}-Dif"|fusion}:
+Die \begriff{\name{Perona}-\name{Malik}-Dif"|fusionsgleichung} ist gegeben durch\\
+$\partial_t u = \div(g(|\vec{\nabla} u|) \vec{\nabla} u)$
+mit AB $u(\cdot, 0) = f$ und homogenen Neumann-RBen $\partial_{\vec{n}} u = 0$.\\
+Die \begriff{Dif"|fusivitätsfunktion} $g$ sollte
+$g(0) = 1$, $g \ge 0$ und $\lim_{s \to \infty} g(s) = 0$ erfüllen.
+PM schlagen z.\,B. $g(s) := \frac{1}{1 + s^2/\lambda^2}$ oder $g(s) := e^{-s^2/\lambda^2}$ mit
+dem \begriff{Kontrastparameter} $\lambda$ vor.
+
+\linie
+
+\textbf{1D-PM-Dif"|fusion}:
+In einer Dimension ist die PM-Dif"|fusion mit der \begriff{Flussfunktion}\\
+$\Phi(s) := s \cdot g(s)$ gegeben durch
+$\partial_t u = \partial_x (g(|\partial_x u|) \partial_x u) =
+\Phi'(|\partial_x u|) \partial_x^2 u$.
+Für die beiden von PM vorgeschlagenen Dif"|fusivitätsfunktionen gilt
+$\Phi'(|\partial_x u|) > 0$ für $|\partial_x u| < \lambda$ (Vorwärts-Dif"|fusion) und
+$\Phi'(|\partial_x u|) < 0$ für $|\partial_x u| > \lambda$ (Rückwärts-Dif"|fusion).
+Obwohl also die Dif"|fusivität $g$ nicht-negativ ist, gibt es Vor- und Rückwärts-Dif"|fusion.
+
+\linie
+
+\textbf{2D-PM-Dif"|fusion}:
+In zwei Dimensionen ist die PM-Dif"|fusion gegeben durch\\
+$\partial_t u = \partial_x (g(|\vec{\nabla} u|) \partial_x u) +
+\partial_y (g(|\vec{\nabla} u|) \partial_y u)$.
+Die Norm des Gradienten kann man mittels zentraler Diff.quot.en approximieren:
+$|\vec{\nabla} u_{i,j}| \approx \sqrt{(\frac{u_{i+1,j} - u_{i-1,j}}{2})^2 +
+(\frac{u_{i,j+1} - u_{i,j-1}}{2})^2}$ mit $g_{i,j} := g(|\vec{\nabla} u_{i,j}|)$.\\
+Damit kann man ein Finites-Dif"|ferenzen-Verfahren herleiten.\\
+Eine Anwendung ist die Rauschunterdrückung von Bildern, ohne dass Kanten unscharf werden
+(im Gegensatz zur linearen Dif"|fusion).
+
+\subsection{%
+    Dilatation und Erosion%
+}
+
+\textbf{Dilatation und Erosion}:
+Bei der Dilatation und Erosion ist eine Teilmenge $A \subset \real^2$ (z.\,B. ein Quadrat) und
+eine Maske $M \subset \real^2$ mit $0 \in M$ (z.\,B. ein Kreis).
+Die \begriff{Dilatation} ist das Ergebnis von $\bigcup_{x \in A} (M + x)$ und
+die \begriff{Erosion} ist das Ergebnis von $\{x \in A \;|\; M + x \subset A\}$.
+
+\textbf{Dilatationsgleichung}:
+Dilatation und Erosion können mithilfe der \begriff{Dilatationsgleichung}\\
+$\partial_t u = \pm|\vec{\nabla} u|$ simuliert werden.
+Bei der \begriff{\name{Rouy}-\name{Tourin}-Methode} setzt man\\
+$u_{i,j}^{n+1} := u_{i,j}^n \pm \Delta t \sqrt{(\partial_x u)^2 + (\partial_y u)^2}$ mit
+$(\partial_x u)^2 \approx
+\frac{1}{\Delta x^2} (\max\{0, u_{i+1,j} - u_{i,j}, -(u_{i,j} - u_{i-1,j})\})^2$,
+analog $(\partial_y u)^2$.\\
+Bei der \begriff{\name{Osher}-\name{Sethian}-Upwind-Methode} verwendet man stattdessen\\
+$(\partial_x u)^2 \approx
+\frac{1}{\Delta x^2} ((\max(0, u_{i+1,j} - u_{i,j}))^2 + (\max(0, u_{i-1,j} - u_{i,j}))^2)$,
+analog $(\partial_y u)^2$.\\
+Anwendungen von Dilatation und Erosion umfassen das Unscharfmachen von Kanten oder
+die Kontrasterhöhung von Fingerabdrucks-Bildern.
+
+\pagebreak

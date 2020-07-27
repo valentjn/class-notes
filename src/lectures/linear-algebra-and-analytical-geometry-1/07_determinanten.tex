@@ -1,0 +1,217 @@
+\section{%
+    Determinanten%
+}
+
+\subsection{%
+    Definition der Determinante%
+}
+
+\begin{Def}{Permutation}
+    Eine \begriff{Permutation} ist eine bijektive Abbildung einer Menge in
+    sich.
+    Die Menge aller Permutationen der Zahlen $1, \ldots, n$ bezeichnet man
+    als die \begriff{symmetrische Gruppe} $\perm_n$. \\
+    $\perm_n$ wird mit der Komposition zu einer Gruppe mit $n!$ Elementen. \\
+    Man schreibt $\pi =$ \matrixsize{$\begin{pmatrix}1 & \cdots & n \\
+    \pi(1) & \cdots & \pi(n)\end{pmatrix}$} für eine Permuation
+    $\pi \in \perm_n$. \\
+    Eine \begriff{Transposition} ist eine Vertauschung von zwei Zahlen. \\
+    Jede Permutation kann als Verkettung von Transpositionen dargestellt
+    werden. \\
+    Man kann zeigen, dass die Anzahl der Transpositionen modulo $2$ für eine
+    Permutation eindeutig festgelegt ist.
+    Für eine \begriff{gerade bzw. ungerade Permutation} sei $\sign(\pi) = 1$
+    bzw. $\sign(\pi) = -1$ das \begriff{Signum (Vorzeichen)} der Permutation.
+\end{Def}
+
+\begin{Def}{Determinante}
+    Sei $A = (\alpha_{ij}) \in M_n(K)$ eine quadratische
+    $n \times n$-Matrix. \\
+    Dann ist die \begriff{Determinante} $\det A = |A|$ definiert als
+    $\det A = \sum_{\pi \in \perm_n} \sign(\pi) \alpha_{1 \pi(1)} \cdots
+    \alpha_{n \pi(n)}$.
+\end{Def}
+
+\begin{Kor}
+    In jedem Summanden $T_\pi$ von $\det A$ kommt aus jeder Zeile/Spalte
+    genau ein Faktor vor.
+    Für jedes Produkt von Elementen aus $A$, in dem aus jeder Zeile/Spalte
+    genau ein Faktor vorkommt, gibt es einen Summanden, der bis aufs
+    Vorzeichen gleich ist.
+\end{Kor}
+
+\begin{Satz}{Regel von \name{Sarrus}}
+    Sei $A \in M_{3 \times 3}(K)$.
+    Dann erhält man $\det A$, indem man die ersten zwei Spalten rechts neben
+    die Matrix schreibt, die sechs aufsteigenden und absteigenden Diagonalen
+    einzeichnet, die Produkte über diese Diagonalen bildet, Produkte
+    aufsteigender Diagonalen mit negativem Vorzeichen versieht und aufsummiert.
+\end{Satz}
+
+\subsection{%
+    Rechenregeln%
+}
+
+\begin{Lemma}{Nullzeile/-spalte}
+    Enthält eine Zeile oder Spalte von $A$ nur Nullen, so ist $\det A = 0$.
+\end{Lemma}
+
+\begin{Def}{monomiale Matrix}
+    Eine quadratische Matrix heißt \begriff{monomial}, falls in jeder Zeile und
+    Spalte genau ein von Null verschiedener Eintrag vorkommt. \\
+    Sind diese Einträge alle $1$, so spricht man von einer
+    \begriff{Permutationsmatrix}.
+\end{Def}
+
+\begin{Kor}
+    Die Determinante einer monomialen Matrix ist bis aufs Vorzeichen gleich
+    dem Produkt ihrer nicht-verschwindenden Einträge.
+\end{Kor}
+
+\begin{Satz}{Rechenregeln}
+    Für $A, B \in M_n(K)$ gilt
+    $\det A^t = \det A$ und $\det(AB) = (\det A)(\det B)$.
+    Ist $A$ invertierbar, dann ist $\det (A^{-1}) = (\det A)^{-1}$.
+    \qquad Außerdem ist $\det(AB) = \det(BA)$.
+\end{Satz}
+
+\begin{Satz}{Elementaroperationen}
+    Addiert man zu einer Zeile/Spalte ein Vielfaches einer anderen, so ändert
+    sich $\det A$ nicht.
+    Vertauscht man zwei Zeilen/Spalten, so ändert sich das Vorzeichen von
+    $\det A$.
+    Multipliziert man eine Zeile/Spalte mit einem $\lambda$, so wird $\det A$
+    mit $\lambda$ multipliziert.
+\end{Satz}
+
+\begin{Satz}{Matrix invertierbar $\Leftrightarrow \det \not= 0$} \\
+    Eine quadratische Matrix $A$ ist genau dann invertierbar, wenn
+    $\det A \not= 0$.
+\end{Satz}
+
+\begin{Kor}
+    Für eine quadratische Matrix $A$ mit zwei identischen Zeilen/Spalten gilt
+    $\det A = 0$.
+\end{Kor}
+
+\begin{Def}{Kofaktor}
+    Der \begriff{Kofaktor} $A_{ij}$ vom $(i, j)$-ten Eintrag $\alpha_{ij}$ von
+    $A$ ($1 \le i, j \le n$) ist die $(n-1) \times (n-1)$-Matrix,
+    die man erhält, wenn man aus $A$ die $i$-te Zeile und $j$-te Spalte
+    streicht.
+\end{Def}
+
+\begin{Satz}{\name{Laplace}-Entwicklung}
+    Sei $A = (\alpha_{ij}) \in M_n(K)$ mit
+    $k \in \{1, \ldots, n\}$.
+    Dann ist \\
+    $\det A = \sum_{i=1}^n (-1)^{i+k} \alpha_{ik} \det(A_{ik})$
+    (Entwicklung nach der $k$-ten Spalte) bzw. \\
+    $\det A = \sum_{j=1}^n (-1)^{k+j} \alpha_{kj} \det(A_{kj})$
+    (Entwicklung nach der $k$-ten Zeile).
+\end{Satz}
+
+\begin{Satz}{$\det$-Abbildung}
+    Die Abbildung $\det: M_n(K) \rightarrow K$, $A \mapsto \det A$
+    ist multiplikativ und surjektiv.
+    Daher ist $\det: \GL_n(K) \rightarrow K^\ast$ ein Gruppenepimorphismus.
+\end{Satz}
+
+\begin{Def}{spezielle lineare Gruppe}
+    Der Kern von $\det$ eingeschränkt auf $\GL_n(K)$ heißt
+    \begriff{spezielle lineare Gruppe} $\SL_n(K)$, d.\,h. $\SL_n(K)$ ist die
+    Menge aller $n \times n$-Matrizen mit Determinante $1$.
+\end{Def}
+
+\begin{xDef}{ähnliche Matrizen}{ahnlich}
+    Zwei $n \times n$-Matrizen $A$ und $B$ heißen ähnlich, falls es eine
+    invertierbare $n \times n$-Matrix $P$ gibt mit $B = P^{-1} A P$.
+    Man schreibt dann $A \sim B$ und $\sim$ ist Äquivalenzrelation.
+\end{xDef}
+
+\begin{Satz}{Determinante ähnlicher Matrizen}
+    Für zwei ähnliche Matrizen $A \sim B$ gilt $\det A = \det B$.
+\end{Satz}
+
+\begin{Def}{Determinante von Endomorphismen}
+    Sei $f \in \End_K(V)$. \\
+    Dann ist die Determinante $\det f$ von $f$ definiert als $\det f = \det A$,
+    wobei $A = \hommatrix{f}{B}{B}$ für eine beliebige Basis $\basis{B}$ von
+    $V$ ist (laut obigem Satz ist die Determinante bei jeder Basis gleich).
+\end{Def}
+
+\subsection{%
+    Eine Anwendung%
+}
+
+\begin{Def}{Adjunkte}
+    Sei $A \in M_n(K)$ eine quadratische Matrix. \\
+    Dann ist die \begriff{Adjunkte} von $A$ die $n \times n$-Matrix
+    $\adj A =$ \matrixsize{$\begin{pmatrix}
+    (-1)^{1+1} |A_{11}| & \cdots & (-1)^{n+1} |A_{n1}| \\
+    \vdots & & \vdots \\
+    (-1)^{1+n} |A_{1n}| & \cdots & (-1)^{n+n} |A_{nn}|
+    \end{pmatrix}$}.
+\end{Def}
+
+\begin{Satz}{Adjunkte und Determinante}
+    Sei $A \in M_n(K)$ eine quadratische Matrix. \\
+    Dann ist $A \cdot \adj(A) = \det(A) \cdot E_n$. \qquad
+    Ist $A$ invertierbar, dann ist $A^{-1} = (\det A)^{-1} \cdot \adj(A)$.
+\end{Satz}
+
+\begin{Satz}{\name{Cramer}sche Regel}
+    Sei $\lgs{G}: Ax = b$ mit $A = (\alpha_{ij}) \in M_n(K)$ und
+    $b = $ \matrixsize{$\begin{pmatrix}\beta_1 \\ \vdots \\
+    \beta_n\end{pmatrix}$} $ \in K^n$ ein LGS.
+    Zusätzlich sei $\det A \not= 0$. \\
+    Dann ist \lgs{G} eindeutig lösbar und die Lösung ist
+    $x = A^{-1} b = (\det A)^{-1} \cdot \adj A \cdot b$.
+\end{Satz}
+
+\subsection{%
+    \emph{Zusätzliches}: Nullstellen von Polynomen%
+}
+
+\begin{Def}{Nullstelle}
+    $\alpha \in K$ ist eine \begriff{Nullstelle} des Polynoms $h(t) \in K[t]$,
+    falls $h(\alpha) = 0$ ist.
+\end{Def}
+
+\begin{Satz}{Polynomdivision}
+    Seien $h(t) \in K[t]$ ($h(t) \not= 0$) und $\alpha$ eine Nullstelle
+    von $h$. \\
+    Dann gibt es ein Polynom $g(t)$ mit $\deg g = \deg h - 1$, sodass
+    $h(t) = g(t) (t - \alpha)$.
+\end{Satz}
+
+\begin{Satz}{Aufspaltung in Linearfaktoren durch Polynomdivision}
+    Sind $\alpha_1, \ldots, \alpha_k$ genau die Nullstellen von $h$, dann
+    gibt es $\nu_1, \ldots, \nu_k \in \natural$, sodass
+    $h(t) = g_1(t) (t - \alpha_1)^{\nu_1} \cdots (t - \alpha_k)^{\nu_k}$,
+    wobei $g_1(t)$ ein Polynom ohne Nullstellen in $K$ ist mit
+    $\deg g_1 = \deg h - \nu_1 - \cdots - \nu_k$. \\
+    $m_{\alpha_i}(h(t)) := \nu_i$ heißt \begriff{Vielfachheit} der Nullstelle
+    $\alpha_i$ ($1 \le i \le k$).
+\end{Satz}
+
+\begin{Kor}
+    Ein Polynom vom Grad $n$ hat höchstens $n$ verschiedene Nullstellen.
+\end{Kor}
+
+\begin{Def}{algebraisch abgeschlossen}
+    Ein Körper $K$ heißt \begriff{algebraisch abgeschlossen}, falls jedes
+    Polynom $p \in K[x]$ mit $\deg p \ge 1$ eine Nullstelle besitzt.
+\end{Def}
+
+\begin{Fakt}{Hauptsatz der Algebra}
+    $\complex$ ist \begriff{algebraisch abgeschlossen}.
+\end{Fakt}
+
+\begin{Kor}
+    Jedes Polynom $p \in K[x]$ mit $\deg p \ge 1$ über einem algebraisch
+    abgeschlossenen Körper $K$ ist Produkt aus Linearfaktoren.
+    Ein \begriff{lineares Polynom} ist ein Polynom vom Grad $1$.
+\end{Kor}
+
+\pagebreak

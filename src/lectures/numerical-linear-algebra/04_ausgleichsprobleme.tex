@@ -1,0 +1,167 @@
+\section{%
+    Ausgleichsprobleme%
+}
+
+\subsection{%
+    Ausgleichsgerade und Normalengleichungen%
+}
+
+\textbf{Ausgleichsgerade (Methode der kleinsten Fehlerquadrate)}:
+Gegeben seien Datenpunkte $(t_i, f_i)$ für $i = 1, \dotsc, n$.
+Dann kann eine Ausgleichsgerade $p(t) = u + vt$ durch Minimierung
+der Fehlerquadratsumme
+$\sum_{i=1}^n (f_i - p(t_i))^2$ ermittelt werden.
+Man kann explizite Formeln für $u$ und $v$ ausrechnen,
+wenn mindestens zwei Abszissen $t_i$ verschieden sind:
+\begin{align*}
+    u = \frac{(\sum t_i^2) (\sum f_i) - (\sum t_i) (\sum t_i f_i)}
+    {n (\sum t_i^2) - (\sum t_i)^2}, \qquad
+    v = \frac{n(\sum t_i f_i) - (\sum t_i) (\sum f_i)}
+    {n (\sum t_i^2) - (\sum t_i)^2}.
+\end{align*}
+
+\linie
+
+\textbf{Normalengleichungen}:
+Seien $A$ eine beliebige $m \times n$-Matrix und $x \in \mathbb{R}^n$.
+Dann minimiert $x$ die Norm $\norm{Ax - b}_2$ des Residuums $r = Ax - b$
+(Ausgleichsproblem) genau dann, wenn $x$ die Normalengleichungen
+\begin{align*}
+    A^t Ax = A^t b,
+\end{align*}
+erfüllt.
+$A^t A$ ist eine quadratische $n \times n$-Matrix.
+Sie ist invertierbar genau dann, wenn $\rg A = n$, d.\,h. wenn die Spalten
+von $A$ linear unabhängig sind.
+Die Normalengleichungen sind auch für $A^t A$ nicht invertierbar lösbar,
+dann ist die Lösung jedoch nicht eindeutig.
+
+\subsection{%
+    \textsc{Cholesky}-Faktorisierung%
+}
+
+\textbf{positiv definite Matrix}:
+Eine quadratische $n \times n$-Matrix heißt positiv definit, falls
+$x^t A x > 0$ für alle $x \in \mathbb{R}^n$ mit $x \not= 0$ gilt.
+
+\textbf{\textsc{Cholesky}-Faktorisierung}:
+Eine symmetrische, positiv definite $n \times n$-Matrix $S$ besitzt eine
+eindeutige Faktorisierung
+\begin{align*}
+    S = R^t R,
+\end{align*}
+wobei $R$ eine obere Dreiecksmatrix mit positiven Diagonaleinträgen ist. \\
+Die Faktorisierung kann durch aufeinanderfolgendes Lösen der Gleichungen
+\begin{align*}
+    s_{jk} = r_{1j} r_{1k} + \dotsb + r_{jj} r_{jk}, \qquad k \ge j
+\end{align*}
+für $j = 1, \dotsc, n$ bestimmt werden.
+Dafür wird für jedes $j$ zunächst $r_{jj}$
+berechnet und dann können die $r_{jk}$ mit $k = j + 1, \dotsc, n$
+bestimmt werden:
+\begin{align*}
+    r_{jj} = \sqrt{s_{jj} - \sum_{i < j} r_{ij}^2}, \qquad
+    r_{jk} = \left(s_{jk} - \sum_{i < j} r_{ij} r_{ik}\right) / r_{jj}.
+\end{align*}
+
+\linie
+
+\textbf{Lösung eines symmetrischen, positiv definiten LGS}:
+Ein LGS $Sx = b$ mit einer symmetrischen, positiv definiten
+(also quadratischen) Matrix $S$ kann mithilfe der Cholesky-Zerlegung
+$S = R^t R$ gelöst werden:
+\begin{align*}
+    Sx = b \quad\Leftrightarrow\quad
+    R^t Rx = b \quad\Leftrightarrow\quad
+    R^t y = b \;\land\; Rx = y.
+\end{align*}
+Die Lösungen $y$ und $x$ der zwei LGS in Dreiecksform werden durch
+Vorwärts- und Rückwärtseinsetzen bestimmt.
+Die Cholesky-Zerlegung kann insbesondere zur Lösung der Normalengleichungen
+$A^t Ax = A^t c$ bzw. $Sx = b$ mit $S = A^t A$ und $b = A^t c$ genutzt werden,
+falls die $m \times n$-Matrix $A$ maximalen Rang $n$ hat.
+
+\subsection{%
+    Singulärwertzerlegung, Pseudoinverse und af"|fine Approximation%
+}
+
+\textbf{Singulärwertzerlegung}:
+Zu jeder reellen $m \times n$-Matrix $A$ existieren orthogonale Matrizen $U$
+und $V$, sodass
+\begin{align*}
+    U^t A V = S =
+    \begin{pmatrix}s_1 & & 0 \\ & s_2 & \\ 0 & & \ddots\end{pmatrix}, \qquad
+    S \text{ hat gleiche Größe wie } A.
+\end{align*}
+Dabei gilt $s_1 \ge \dotsb \ge s_k > s_{k+1} = \dotsb = 0$
+mit $k = \rg A$,
+die $s_i$ heißen \textbf{Singulärwerte} und sind die Wurzeln der Eigenwerte
+von $A^t A$.
+Die Spalten $u_j$ von $U$ bzw. $v_j$ von $V$ bilden ONBs aus Eigenvektoren
+von $A A^t$ bzw. $A^t A$ und es gilt
+$A v_j = s_j u_j$ für $j = 1, \dotsc, k$. \\
+(Der Satz gilt für komplexe Matrizen entsprechend.)
+
+Mithilfe der Singulärwertzerlegung lässt sich die lineare Abbildung
+$x \mapsto y = Ax$ in der Form
+\begin{align*}
+    y = \sum_{i=1}^k s_i (v_i^t x) u_i
+\end{align*}
+darstellen.
+Daraus folgt insbesondere, dass $\ker A = \aufspann{v_{k+1}, \dotsc, v_n}$ und
+$\im A = \aufspann{u_1, \dotsc, u_k}$. \\
+Außerdem gilt $\norm{A}_2 = s_1$ sowie
+$\norm{A}_F^2 = \sum_{j,k} |a_{j,k}|^2 = s_1^2 + \dotsb + s_k^2$.
+
+\linie
+
+\textbf{Pseudoinverse}:
+Mit der Singulärwertzerlegung $A = USV^t$ einer reellen $m \times n$-Matrix
+$A$ lässt sich die Lösung des Ausgleichsproblems
+$\norm{Ax - b}_2 \rightarrow \min$ mit minimaler Norm in der Form
+\begin{align*}
+    x = A^+ b, \quad
+    A^+ = V S^+ U^t, \qquad
+    S^+ = \diag\{1/s_1, \dotsc, 1/s_k, 0, \dotsc, 0\}, \quad
+    k = \rg A
+\end{align*}
+schreiben.
+Dabei heißt $A^+$ die \emph{Pseudoinverse} von $A$ und $S^+$ ist die
+$n \times m$-Diagonalmatrix mit den Kehrwerten der positiven Singulärwerte.
+(Der Satz gilt für komplexe Matrizen entsprechend.)
+
+Bezeichnen $\{u_1, \dotsc, u_m\}$ und $\{v_1, \dotsc, v_n\}$ die ONBs aus
+den Spalten von $U$ und $V$, so lässt sich die lineare Abbildung
+$b \mapsto x = A^+ b$ in der faktorisierten Form
+\begin{align*}
+    x = \sum_{\ell=1}^k \frac{1}{s_\ell} (u_\ell^t b) v_\ell
+\end{align*}
+darstellen.
+Daraus folgt insbesondere, dass $\ker A^+ = \aufspann{u_{k+1}, \dotsc, u_m}$,
+$\im A^+ = \aufspann{v_1, \dotsc, v_k}$ sowie $\norm{A^+}_2 = 1/s_k$.
+
+\linie
+
+\textbf{af"|fine Approximation von Punktwolken}:
+Eine beste Approximation von Punkten $p_i \in \mathbb{R}^n$, $i = 1, \dotsc, m$
+durch einen $k$-dimensionalen af"|finen Unterraum
+$H = a + \aufspann{v_1, \dotsc, v_k}$ lässt sich durch Minimierung der
+Quadratsumme der Distanzen $e(P, H)^2 = \sum_{i=1}^m d(p_i, H)^2$ bestimmen.
+
+$H$ kann folgendermaßen berechnet werden:
+Der Aufpunkt $a$ ist der Mittelpunkt der Ortsvektoren $p_i$.
+Die Richtungsvektoren können durch die Singulärwertzerlegung der
+$m \times n$-Matrix der zentrierten Punkte
+$(p_1 - a, \dotsc, p_m - a)$ bestimmt werden, d.\,h.
+\begin{align*}
+    a = \frac{1}{m} \sum_{i=1}^m p_i, \qquad
+    (p_1 - a, \dotsc, p_m - a) = U S V^t.
+\end{align*}
+Dabei müssen die ersten $k$ Spalten von $V$ als Basisvektoren $v_j$ gewählt
+werden. \\
+Der Fehler kann dabei durch die Singulärwerte errechnet werden:
+\begin{align*}
+    e(P, H)^2 = \sum_{i=k+1}^m s_i^2.
+\end{align*}
+
+\pagebreak

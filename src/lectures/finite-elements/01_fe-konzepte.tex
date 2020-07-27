@@ -1,0 +1,582 @@
+\section{%
+    Grundlegende Konzepte der Finite-Elemente-Methode%
+}
+
+\subsection{%
+    Einleitung%
+}
+
+Die \begriff{Methode der finiten Elemente (FE)}
+ist eine Methode zur numerischen Lösung von \begriff{partiellen Dif"|ferentialgleichungen}.
+Angenommen, es sei ein Gebiet $D$ (meistens Teilmenge des $\real^2$ oder $\real^3$) und ein
+Dif"|ferentialoperator $L$ gegeben.
+Gesucht ist eine Funktion $u$ auf $\overline{D}$, sodass $Lu = f$ auf $D$ und $u = 0$ auf
+$\partial D$.
+Ein Beispiel für $L$ im zweidimensionalen Fall wäre der Laplace-Operator
+$L = -\Delta = -\partial_x^2 - \partial_y^2$.
+Man kann zeigen, dass äquivalent zu einer Lösung die Minimierung des Funktionals
+$\Q(u) = \frac{1}{2} \int \norm{\grad u}^2 - \int fu$ ist.
+
+Bei der FE-Methode approximiert man die meistens nicht analytisch darstellbare Lösung $u$
+als Linearkombination $u_h = \sum_k u_k B_k$ von Basisfunktionen
+$B_k$, den \begriff{finiten Elementen}, eines "`einfachen"' Vektorraums,
+die auf dem Rand $\partial D$ von $D$ verschwinden --
+eine solche Approximation erfüllt also automatisch die homogene Randbedingung.
+Die Idee der FE-Methode ist es, statt $\Q(u)$ eher $\Q(u_h)$ über die Koef"|fizienten $c_k$
+zu minimieren, äquivalent ist $\int (Lu_h - f) B_k = 0$.
+Die \begriff{Kollokationsmethode}, eine andere Methode, konstruiert dagegen $u_h$, sodass
+$(Lu_h - f)(x_\ell) = 0$ ist für Punkte $x_\ell \in D$.
+
+Es gibt im Wesentlichen zwei Schwierigkeiten, die verhindern, als Basis des Vektorraums B-Splines
+zu verwenden:
+\begin{enumerate}
+    \item
+    Einfache Randbedingungen können nicht einfach modelliert werden.
+    Wenn zum Beispiel eine Linearkombination von B-Splines $p = \sum_k u_k b_k$ auf dem Rand
+    $\partial D$ eines Gebiets $D$ verschwinden soll, müssen i.\,A. alle Koef"|fizienten $u_k$
+    von B-Splines mit einem Träger, der $\partial D$ schneidet, gleich null sein.
+    Daher wäre $p$ auf einem größeren Streifen nahe des Randes gleich null, was in einer sehr
+    geringen Approximationsordnung für Lösungen von DGLs mit Dirichlet-Randbedingungen resultiert.
+    
+    \item
+    Die eingeschränkte B-Spline-Basis ist nicht gleichmäßig stabil.
+    Die Basis enthält nämlich B-Splines, deren Träger einen sehr kleinen Schnitt mit
+    dem Gebiet $D$ hat.
+    Die $L^2$-Norm aller B-Splines auf einem uniformen Gitter ist jedoch gleich, was zu
+    exzessiv großen Konditionen von FE-Systemen und daher zu extrem langsamer Konvergenz von
+    iterativen Methoden führt.
+\end{enumerate}
+Beide Schwierigkeiten können jedoch überwunden werden.
+Das erste Problem kann einfach gelöst werden, indem die Basisfunktionen $b_k$ mit einer
+Gewichtsfunktion $w$ multipliziert werden, man erhält also gewichtete B-Splines $w b_k$.
+Wenn $w$ auf dem Rand verschwindet (für homogene Randbedingungen), dann natürlich auch $w b_k$.
+Für einen Kreis wäre z.\,B. eine angemessene Gewichtsfunktion $w(x, y) := 1 - x^2 - y^2$.
+Das zweite Problem ist subtiler, man kann jedoch eine gut konditionierte Basis erhalten,
+indem man bestimmte Linearkombinationen $b_i + \sum_{j \in J(i)} e_{i,j} b_j$, $i \in I$,
+bildet.
+
+Wenn man beide Lösungen kombiniert, erhölt man die
+\begriff{gewichteten erweiterten B-Splines\\
+(WEB-Splines)}.
+Diese Basisfunktionen besitzen die Vorteile von normalen finiten Elementen.
+Zusätzlich gibt es eine Reihe von algorithmischen Vorteilen von B-Spline-Basen:
+\begin{itemize}
+    \item
+    Keine Netzgenerierung ist erforderlich.
+    
+    \item
+    Das uniforme Gitter eignet sich ideal für Parallelisierung und Mehrgitter-Techniken.
+    
+    \item
+    Genaue Approximationen sind mit relativ niedrig-dimensionalen Unterräumen möglich.
+    
+    \item
+    Glattheit und Approximationsordnung können beliebig gewählt werden.
+    
+    \item
+    Hierarchische Basen erlauben adaptive Verfeinerung.
+\end{itemize}
+
+\subsection{%
+    Modellproblem%
+}
+
+Betrachtet man das Problem der elastischen Membran, bei der eine Membran, auf die eine vertikale
+Kraft wirkt, am Rand fest eingespannt ist, so kann man die resultierende Verformung $u(x_1, x_2)$
+durch die sogenannte Poisson-Gleichung relativ genau modellieren, wenn $u$ klein ist.
+
+\textbf{\name{Poisson}-Gleichung}:
+Die \begriff{\name{Poisson}-Gleichung} mit homogenen Randbedingungen lautet
+für ein Gebiet $D \subset \real^m$
+\begin{align*}
+    -\Delta u = f \text{ in } D,\quad
+    u = 0 \text{ auf } \partial D.
+\end{align*}
+
+\textbf{klassische Lösung}:
+Eine \begriff{klassische Lösung} der Poisson-Gleichung ist eine Funktion $u$, die zweifach stetig
+diffb. in $D$ und stetig auf $\overline{D}$ ist, sodass $-\Delta u = f$ in $D$ und $u = 0$ auf
+$\partial D$ gilt.
+
+\textbf{schwache Lösung}:
+Eine \begriff{schwache Lösung} ist eine Funktion $u$, sodass
+\begin{align*}
+    \forall_{v \in H_0^1(D)}\; \int_D \grad u \grad v = \int_D fv.
+\end{align*}
+Äquivalent dazu ist, dass $\Q(u) = \min_{v \in H_0^1(D)} \Q(v)$ mit
+\begin{align*}
+    \Q(v) := \frac{1}{2} \int_D \norm{\grad v}^2 - \int_D fv.
+\end{align*}
+Jede klassische Lösung ist auch eine schwache Lösung.
+
+$H_0^1(D)$ wird noch genau zu definieren sein.
+Zu diesem Zeitpunkt reicht es aus, dass es sich um den Raum aller Funktionen $u$ mit $u = 0$ auf
+$\partial D$ und $u, u_x, u_y$ quadrat-integrierbar handelt.
+
+\linie
+
+Dass klassische Lösungen auch schwache Lösungen sind, zeigt man
+durch Multiplikation mit $v$ und anschließender partieller Integration.
+
+\textbf{mehrdimensionale partielle Integration}:
+Im Eindimensionalen lautet der Hauptsatz der Dif"|ferential- und Integralrechnung
+$\int_a^b u' = [u]_a^b$.
+Im Mehrdimensionalen gibt es eine ähnliche Formel für Gebiete $D$
+mit dem Einheitsnormalenvektor $\xi$:
+\begin{align*}
+    \int_D \partial_\nu u = \int_{\partial D} \xi_\nu u.
+\end{align*}\\
+Setzt man $uv$ ein, so erhält man die Formel
+$\int_D \partial_\nu (uv) = \int_D (\partial_\nu u) v + \int_D u (\partial_\nu v) =
+\int_{\partial D} \xi_\nu uv$, d.\,h.
+\begin{align*}
+    \int_D (\partial_\nu u) v
+    = -\int_D u (\partial_\nu v) + \int_{\partial D} \xi_\nu uv.
+\end{align*}
+Damit ergibt sich $-\int_D (\Delta u) v =
+-\int_D \left(\sum_\nu \partial_\nu \partial_\nu u\right) v =
+-\sum_\nu \int_D (\partial_\nu (\partial_\nu u)) v$\\
+$= -\sum_\nu \left(-\int_D (\partial_\nu u) (\partial_\nu v) +
+\int_{\partial D} \xi_\nu (\partial_\nu u) v\right) =
+\int_D \grad u \grad v - \int_{\partial D} \xi (\grad u) v$.\\
+Weil $\xi (\grad u) = \frac{\partial u}{\partial \xi}$ ist, gilt also die Formel
+\begin{align*}
+    -\int_D (\Delta u) v = \int_D \grad u \grad v -
+    \int_{\partial D} \frac{\partial u}{\partial \xi} v,
+\end{align*}
+ein Spezialfall des Satzes von Stokes oder des Satzes von Gauß für den Laplace-Operator.
+
+\linie
+
+Wenn man für die Poisson-Gleichung $\Q(\sum_i u_i B_i)$ ausrechnet, erhält man die quadratische
+Form
+\begin{align*}
+    \Q(u_h) = \frac{1}{2} UGU - FU,
+\end{align*}
+die minimal wird genau dann, wenn $GU = F$.
+
+\linie
+\pagebreak
+
+\textbf{\name{Ritz}-\name{Galerkin}-Approximation des \name{Poisson}-Problems}:\\
+Die Koef"|fizienten einer Standard-FE-Approximation $u_h = \sum_i u_i B_i$ mit
+$B_i|_{\partial D} = 0$ für das Randwertproblem $-\Delta u = f$, $u|_{\partial D} = 0$,
+werden durch das lineare Gleichungssystem $GU = F$ bestimmt mit
+\begin{align*}
+    g_{k,i} := \int_D \grad B_i \grad B_k,\quad
+    f_k := \int_D f B_k.
+\end{align*}
+
+\linie
+
+\textbf{\name{Sturm}-\name{Liouville}-Problem}:
+Das Poisson-Problem lässt sich auf verschiedene Arten verallgemeinern.
+Eine eindimensionale Verallgemeinerung ist das \begriff{\name{Sturm}-\name{Liouville}-Problem}\\
+$-(au')' + \alpha u = f$, $u(0) = u(1) = 0$.
+Durch partielle Integration erhält man die schwache Formulierung
+$\int_0^1 (au'v' + \alpha uv) = \int_0^1 fv$, $v(0) = v(1) = 0$.
+Das äquivalente Variationsproblem lautet
+$\Q(u) := \frac{1}{2} \int_0^1 (a|u'|^2 + \alpha u^2) - \int_0^1 fu \rightarrow \min$.\\
+Durch Einsetzen der FE-Approximation $u \approx u_h = \sum_k u_k B_k$ erhält man das
+Ritz-Galerkin-System $GU = F$ mit
+$g_{k,i} := \int_0^1 (a B_k' B_i' + \alpha B_k B_i)$ und $f_k := \int_0^1 f B_k$.
+
+\linie
+
+\textbf{homogene Randbedingungen sind keine Einschränkung}:
+Dass wir hier und im Folgenden nur von homogenen Randbedingungen ausgehen, bedeutet keine
+Einschränkung der Allgemeinheit.
+Bei inhomogenen Randbedingungen mit rechter Seite $g$ reduzieren wir $u$ durch
+$u = \widetilde{u} + g_E$ auf eine homogene Form, wobei $g_E$ eine Fortsetzung von $g$ auf
+$\overline{D}$ darstellt.
+Eine Lösung $\widetilde{u}$, die homogene Randbedingungen erfüllt, induziert eine Lösung
+$u$, die die inhomogenen Randbedingungen mit $g$ als rechter Seite erfüllt.
+
+\subsection{%
+    Netzbasierte Elemente%
+}
+
+Meistens sind finite Elemente auf einem Netz definiert, d.\,h. eine Unterteilung des Gebietes $D$
+in Dreiecke, Vierecke, Tetraeder, Hexaeder usw.
+Dreiecke und Tetraeder werden für die meisten Anwendungen bevorzugt, weil sie leicht an
+kompliziertere Ränder angepasst werden können.
+
+Die einfachste FE-Basis auf einem triangulierten zweidimensionalen Gebiet ist die Menge der
+Hutfunktionen.
+
+\textbf{Hut-Funktion}:
+Eine \begriff{Hut-Funktion} $B_i$ ist linear, gleich $1$ an einem innerem Knoten $x_i$ und
+verschwindet auf allen Dreiecken $\tau$, die nicht $x_i$ enthalten.
+
+Der Graph der Hut-Funktion ist eine Pyramide mit einem sternförmigen Träger.
+Für diese einfache Basisfunktion fallen die Koef"|fizienten $u_i$ einer Approximation
+$u_h = \sum_i u_i B_i$ mit den Werten $u_h(x_i)$ zusammen.
+
+\linie
+
+Die Ritz-Galerkin-Approximation des Poisson-Problems lässt sich mit Hut-Funktionen einfach
+errechnen.
+Das LGS $GU = F$ wird durch Summation der Beiträge jedes Dreiecks $\tau$ der Triangulierung
+assembliert, d.\,h.
+\begin{align*}
+    g_{k,i} = \sum_\tau \int_\tau \grad B_i \grad B_k,\quad
+    f_k = \sum_\tau \int_\tau f B_k.
+\end{align*}
+Die Gradienten im ersten Integral sind konstant und können durch Transformation der Hut-Funktionen
+zu einem Standard-Referenzdreieck berechnet werden.
+Für die Einträge der rechten Seite $F$ wird numerische Integration benutzt.
+Wegen des kleinen Trägers der Hut-Funktionen ist die Matrix $G$ dünn besetzt,
+daher kann das Ritz-Galerkin-System ef"|fizient mit iterativen Methoden gelöst werden.
+
+\pagebreak
+
+\subsection{%
+    \name{Sobolev}-Räume%
+}
+
+Durch das Poisson-Problem auf dem Einheitsquadrat kann man die Verwendung der sog.
+Sobolev-Räume motivieren.
+Sobolev-Räume lassen sich auch auf $p$-integrierbare Ableitungen verallgemeinern.
+
+\textbf{\name{Sobolev}-Raum}:
+Der \begriff{\name{Sobolev}-Raum} $H^\ell(D)$ besteht aus allen Funktionen $u$, für die die
+partiellen Ableitungen der Ordnung $\le \ell$
+\begin{align*}
+    \partial^\alpha u := \partial_1^{\alpha_1} \dotsm \partial_m^{\alpha_m} u,\quad
+    |\alpha| := \alpha_1 + \dotsb + \alpha_m \le \ell,
+\end{align*}
+quadrat-integrierbar sind.
+$H^\ell(D)$ ist ein Hilbertraum mit dem Skalarprodukt
+\begin{align*}
+    \sp{u, v}_\ell := \sum_{|\alpha| \le \ell} \int_D \partial^\alpha u \partial^\alpha v.
+\end{align*}
+Zusätzlich zur induzierten Norm
+$\norm{u}_\ell := \sqrt{\sp{u, u}_\ell} =
+\left(\sum_{|\alpha| \le \ell} \int_D \norm{\partial^\alpha u}^2\right)^{1/2}$ ist die
+Standard-Halbnorm auf $H^\ell(D)$ definiert durch
+\begin{align*}
+    |u|_\ell := \left(\sum_{|\alpha| = \ell} \int_D \norm{\partial^\alpha u}^2\right)^{1/2},
+\end{align*}
+d.\,h. nur Ableitungen der höchsten Ordnung werden berücksichtigt.
+
+\linie
+
+Die Ableitungen in der Definition des Sobolev-Raums sind schwache Ableitungen.
+
+\textbf{schwache Ableitung}:\\
+Eine integrierbare Funktion $\partial^\alpha u$ heißt \begriff{schwache Ableitung} von $u$ auf
+einem Gebiet $D$, falls
+\begin{align*}
+    \int_D (\partial^\alpha u) \varphi = (-1)^{|\alpha|} \int_D u (\partial^\alpha \varphi)
+\end{align*}
+für alle glatten Funktionen $\varphi$ mit kompaktem Träger in $D$.
+
+Es ist klar, dass die Formel für glatte Funktionen $u$ of"|fensichtlich erfüllt ist
+(partielle Integration).
+Daher ist der Begriff der schwachen Ableitung eine Verallgemeinerung der bekannten
+Ableitungsdefinition mittels Dif"|ferenzenquotienten.
+
+\linie
+
+\textbf{Beispiel}:
+Als Beispiel betrachtet man die Funktion $u\colon D \rightarrow \real$, $u(x) = r^p$ mit\\
+$r = \norm{x} = \sqrt{x_1^2 + \dotsb + x_m^2}$ und $p \not= 0$ auf
+$D = \{x \in \real^m \;|\; \norm{x} < 1\}$.\\
+Zunächst schaut man, für welche $p$ die Funktion $u$ integrierbar ist.
+Dazu benutzt man Polarkoordinaten:
+$\int_D |u(x)|\dx = \int_0^1 r^p \cdot c r^{m-1} \dr
+= c \int_0^1 r^{p+m-1} \dr$, da für winkelunabhängige Funktionen
+$\dx_1 \dotsb \dx_m = c r^{m-1} \dr$
+gilt (für $m = 2$ ist z.\,B. $c = 2\pi$ und für $m = 3$ ist $c = 4\pi$).
+Dieses Integral konvergiert genau dann, wenn $p + m - 1 > -1$ ist, d.\,h.
+$u$ ist integrierbar genau dann, wenn $p > -m$.\\
+Mit der partiellen Ableitung
+$\partial_\nu r = \frac{1}{2} r^{-1} (2x_\nu) = \frac{x_\nu}{r}$.
+von $r$ erhält man die partielle Ableitung
+$\partial_\nu u = p r^{p-1} \frac{x_\nu}{r} = pr^{p-2}x_\nu$ von $u(x)$.
+Diese schwache Ableitung ist für $p > 1 - m$ integrierbar, da $|\partial_\nu u| \le cr^{p-1}$.\\
+Damit können wir die $H^1(D)$-Norm von $u$ ausrechnen, um zu überprüfen, ob $u \in H^1(D)$ gilt:
+$\norm{u}_1^2 = \int_D |u|^2 + \sum_{\nu=1}^m \int_D |\partial_\nu u|^2 =
+c \int_0^1 \left(r^{2p} + p^2 r^{2p-2}\right) r^{m-1} \dr$.
+Daher gilt $u \in H^1(D)$ für $p > 1 - m/2$.
+Für $m > 2$ sind negative Exponenten möglich, daher können Funktionen mit quadrat-integrierbaren
+Ableitungen sogar unbeschränkt sein.
+
+\linie
+
+\textbf{\name{Sobolev}-Räume mit Randbedingungen}:
+Der Unterraum $H_0^\ell(D) \subset H^\ell(D)$ besteht aus allen Funktionen, die auf $\partial D$
+verschwinden.
+$H_0^\ell(D)$ ist der Abschluss der Menge der glatten Funktionen mit kompakten Träger in $D$
+bezüglich der Norm $\norm{\cdot}_\ell$.
+
+\subsection{%
+    \emph{Zusatz}:
+    Benötigte Definitionen und Ungleichungen%
+}
+
+Für die folgenden Abschnitte werden ein paar zusätzliche Definitionen und Ungleichungen benötigt.
+
+\linie
+
+\textbf{\name{Cauchy}-\name{Schwarz}-Ungleichung}:\\
+Wenn $\norm{u} = \sqrt{\sp{u, u}}$ eine von einem Skalarprodukt induzierte Norm ist,
+dann gilt
+\begin{align*}
+    |\sp{u, v}| \le \norm{u} \cdot \norm{v},
+\end{align*}
+wobei Gleichheit gilt genau dann, wenn $u$ und $v$ linear abhängig sind.
+
+\linie
+
+\textbf{Bilinearform}:
+Eine \begriff{Bilinearform} $a(\cdot, \cdot)$ auf einem Vektorraum ist linear in
+jeder Variable, d.\,h.
+\begin{align*}
+    a(r_1 u_1 + r_2 u_2, s_1 v_1 + s_2 v_2) = \sum_{\nu,\mu=1}^2 r_\nu s_\mu a(u_\nu, v_\mu)
+\end{align*}
+für alle Vektoren $u_\nu, v_\mu$ und Skalare $r_\nu$, $s_\mu$.
+Wenn $a$ symmetrisch ist und $a(u, u) > 0$ für alle $u \not= 0$,
+dann induziert $a$ ein Skalarprodukt $\sp{u, v}_a := a(u, v)$ und
+$\norm{u}_a := \sqrt{a(u, u)}$ ist eine Norm.
+
+\linie
+
+\textbf{\name{Hilbert}raum}:
+Ein \begriff{\name{Hilbert}raum} $H$ ist ein vollständiger Vektorraum mit einer Norm
+$\norm{\cdot}$, die durch ein Skalarprodukt $\sp{\cdot, \cdot}$ induziert wird.
+
+Seien $H$ ein Hilbertraum und $V \subset H$ ein abgeschlossener Unterraum.
+Dann gibt es für jedes $u \in H$ genau ein $v_\ast \in V$ mit
+\begin{align*}
+    \norm{u - v_\ast} = \inf_{v \in V} \norm{u - v}.
+\end{align*}
+$v_\ast \in V$ ist bestimmt durch die Orthogonalitätsbedingung
+\begin{align*}
+    \forall_{v \in V}\; \sp{u - v_\ast, v} = 0.
+\end{align*}
+
+\linie
+
+\textbf{\name{riesz}scher Darstellungssatz}:\\
+Jedes beschränkte, lineare Funktional $\lambda$ auf einem Hilbertraum $H$ kann in der Form
+\begin{align*}
+    \lambda(u) = \sp{\R\lambda, u}
+\end{align*}
+dargestellt werden, wobei $\R$ eine Isometrie auf $H$ ist,
+d.\,h. ein bijektiver, linearer Operator mit $\norm{\R\lambda} = \norm{\lambda}$.
+
+\linie
+
+\textbf{Spuroperator}:\\
+Die Beschränkung auf den Rand ist ein beschränkter Operator von $H^1(D)$ nach $L^2(\partial D)$.
+
+\linie
+
+\textbf{\name{Poincaré}-\name{Friedrichs}-Ungleichung}:
+Wenn $u$ auf einer Teilmenge $\Gamma \subset \partial D$ des Randes von $D$ verschwindet,
+die positives $(m - 1)$-dimensionales Maß besitzt, dann gilt
+\begin{align*}
+    |u|_0 \le \const(D, \Gamma) \cdot |u|_1.
+\end{align*}
+
+\pagebreak
+
+\subsection{%
+    Abstrakte Variationsprobleme%
+}
+
+\textbf{abstraktes Randwertproblem}:
+Ein \begriff{abstraktes Randwertproblem} kann in der Form
+\begin{align*}
+    \L u = f \text{ in } D,\quad
+    \B u = 0 \text{ auf } \partial D
+\end{align*}
+geschrieben werden, wobei $\L$ ein Dif"|ferentialoperator und $\B$ ein Randoperator ist.
+Wenn man die Randbedingungen in einen Hilbertraum $H$ einbaut, erlaubt die Dif"|ferentialgleichung
+überlicherweise eine Variationsformulierung
+\begin{align*}
+    \forall_{v \in H}\; a(u, v) = \lambda(v)
+\end{align*}
+mit einer Bilinearform $a$ und einem linearen Funktional $\lambda$.
+
+\linie
+
+\textbf{\name{Ritz}-\name{Galerkin}-Approximation}:\\
+Die \begriff{\name{Ritz}-\name{Galerkin}-Approximation} $u_h = \sum_i u_i B_i \in \BB_h \subset H$
+des Variationsproblems\\
+$\forall_{v \in H}\; a(u, v) = \lambda(v)$
+ist bestimmt durch das LGS $GU = F$:
+\begin{align*}
+    \sum_i a(B_i, B_k) u_i = \lambda(B_k).
+\end{align*}
+
+\linie
+
+\textbf{Beispiel}:
+Für das Modellproblem $-\Delta u = f$ in $D$ mit $u = 0$ auf $\partial D$
+lauten die Dif"|ferential- und Randoperatoren $\L = -\Delta$ und $\B u = u$.
+Die Bilinearform ist $a(u, v) = \int_D \grad u \grad v$ und das lineare Funktional ist
+$\lambda(v) = \int_D fv$.
+Der Hilbertraum ist $H = H_0^1(D)$ und der FE-Teilraum $\BB_h$ könnte z.\,B.
+der Raum aller stückweise linearen Funktionen auf einer Triangulierung von $D$ sein.
+
+\linie
+
+\textbf{Elliptizität}:
+Eine Bilinearform $a$ auf einem Hilbertraum $H$ heißt \begriff{elliptisch}, falls
+sie beschränkt und äquivalent zur Norm auf $H$ ist, d.\,h. falls für alle $u, v \in H$ gilt, dass
+\begin{align*}
+    |a(u, v)| \le c_b \norm{u} \norm{v},\quad
+    c_e \norm{u}^2 \le a(u, u)
+\end{align*}
+mit positiven Konstanten $c_b$ und $c_e$
+(d.\,h. sie ist \begriff{beschränkt} und \begriff{koerzitiv}).
+
+\linie
+
+\textbf{Beispiel}:
+Die Bilinearform $a(u, v) = \int_D \grad u \grad v$ des Poisson-Problems ist elliptisch.
+Zum einen ist sie beschränkt, denn aus der Cauchy-Schwarz-Ungleichung folgt\\
+$|a(u, v)| \le a(u, u)^{1/2} a(v, v)^{1/2} =
+\left(\int_D \norm{\grad u}^2\right)^{1/2} \left(\int_D \norm{\grad v}^2\right)^{1/2}
+\le \norm{u}_1 \norm{v}_1$, wobei\\
+$\norm{w}_1 = \left(\int_D \left(|w|^2 + \norm{\grad w}^2\right)\right)^{1/2}$
+die Norm auf $H = H_0^1(D)$ ist.
+Also ist $c_b = 1$.\\
+Zum anderen ist sie äquivalent zur Norm auf $H$, denn aus der Poincaré-Friedrichs-Ungleichung folgt
+$\int_D |u|^2 \le \const(D) \int_D \norm{\grad u}^2$ für $u \in H_0^1(D)$.
+Addiert man $\int_D \norm{\grad u}^2 = a(u, u)$ zu beiden Seiten, so erhält man
+$\norm{u}_1^2 \le (\const(D) + 1) \int_D \norm{\grad u}^2$,
+d.\,h. $c_e = (\const(D) + 1)^{-1}$.
+
+\linie
+
+\textbf{Satz von \name{Lax}-\name{Milgram}}:
+Sind $a$ eine elliptische Bilinearform und $\lambda$ ein beschränktes lineares Funktional auf einem
+Hilbertraum $H$, dann hat das Variationsproblem
+\begin{align*}
+    \forall_{v \in V}\; a(u, v) = \lambda(v)
+\end{align*}
+für jeden abgeschlossenen Unterraum $V$ von $H$ eine eindeutige Lösung $u \in V$.
+Falls zusätzlich $a$ auch noch symmetrisch ist, kann die Lösung $u$ als das Minimum der
+quadratischen Form
+\begin{align*}
+    \Q(u) = \frac{1}{2} a(u, u) - \lambda(u)
+\end{align*}
+auf $V$ charakterisiert werden.
+
+\linie
+\pagebreak
+
+\textbf{Beispiel}:
+Für $V = H$ erhält man die Eindeutigkeit und Existenz der schwachen Lösung.\\
+Für $V = \BB_h$ erhält man die Eindeutigkeit der FE-Approximation, denn in diesem Fall ist
+das Variationsproblem äquivalent zum Ritz-Galerkin-System $GU = F$.
+Die Elliptizität von $a$ impliziert aufgrund
+$UGU = \sum_{i,k} u_k a(B_i, B_k) u_i = a(u_h, u_h) \ge c_e \norm{u_h}^2 > 0$
+für $u_h \not= 0$ die positive Definitheit von $G$.
+Damit existiert $G^{-1}$ und das Ritz-Galerkin-System ist eindeutig lösbar.
+
+\textbf{\name{Banach}scher Fixpunktsatz}:
+Für den Beweis des Satzes von Lax-Milgram wird ein Spezialfall des
+\begriff{\name{Banach}schen Fixpunktsatzes} benötigt:
+Seien $H$ ein Hilbertraum und $g\colon H \rightarrow H$ eine Kontraktion, d.\,h.
+$\norm{g(u) - g(v)} \le c \norm{u - v}$ für ein $c < 1$.
+Dann existiert genau ein $u \in H$ mit $g(u) = u$.
+
+\subsection{%
+    Approximationsfehler%
+}
+
+\textbf{Orthogonalitätsbeziehung}:
+Die Ritz-Galerkin-Approximation $u_h \in \BB_h \subset H$ einer Lösung $u \in H$ für die
+Variationsgleichungen $\forall_{v \in H}\; a(u, v) = \lambda(v)$
+ist definiert durch
+\begin{align*}
+    \forall_{v_h \in \BB_h}\; a(u_h, v_h) = \lambda(v_h).
+\end{align*}
+Wegen $a(u, w_h) = \lambda(w_h) = a(u_h, w_h)$ für $w_h \in \BB_h$ erfüllt
+der Fehler folgende \begriff{Orthogonalitätsbe"-ziehung}:
+\begin{align*}
+    \forall_{w_h \in \BB_h}\; a(u - u_h, w_h) = 0.
+\end{align*}
+Bei einer symmetrischen Bilinearform $a$ (wenn also $a$ ein Skalarprodukt induziert)
+ist Orthogonalität ($u - u_h \perp_a \BB_h$)
+gleichbedeutend zur besten Approximation bzgl. der Skalarprodukt-Norm.
+
+\linie
+
+\textbf{\name{Céa}s Ungleichung}:
+Der Fehler der Ritz-Galerkin-Approximation $u_h \approx u$ für eine elliptische Bilinearform $a$
+erfüllt
+\begin{align*}
+    \norm{u - u_h} \le (c_b/c_e) \inf_{v_h \in \BB_h} \norm{u - v_h},
+\end{align*}
+wobei $c_b$ und $c_e$ die Elliptizitätskonstanten sind.
+
+\linie
+
+\textbf{Beispiel}:
+Als Beispiel betrachtet man die stückweise lineare Ritz-Galerkin-Approximation
+des Poisson-Problems $-\Delta u = f$ in $D$, $u = 0$ auf $\partial D$.
+Céas Ungleichung führt mit $H = H_0^1(D)$ zu
+$\norm{u - u_h}_1 \le (c_b/c_e) \inf_{v_h} \norm{u - v_h}_1$.
+Für eine Rand-konforme, quasi-uniforme Triangulierung eines konvexen Gebiets gilt
+$\inf_{v_h} \norm{u - v_h}_1 \le c_a h \norm{u}_2$, wobei $h$ die Netzweite der Triangulierung ist.
+Bei elliptischer Regularität für konvexe Gebiete gilt $\norm{u}_2 \le c_r \norm{f}_0$.
+Kombiniert man die Abschätzungen, so erhält man
+$\norm{u - u_h}_1 \le c_1 h \norm{f}_0$ mit $c_1 = (c_b/c_e) c_a c_r$.
+
+\linie
+\pagebreak
+
+\textbf{\name{Aubin}-\name{Nitsche}-Dualitätsprinzip}:
+Sei $H \subset H_\ast$ ein Unterraum des Hilbertraums $H_\ast$.
+Dann erfüllt der Fehler $e_h := u - u_h$ der Ritz-Galerkin-Approximation die Abschätzung
+\begin{align*}
+    \norm{e_h}_\ast^2 \le c_b r \norm{e_h},\quad
+    r = \inf_{v_h \in \BB_h} \norm{u_\ast - v_h},
+\end{align*}
+wobei $u_\ast$ die Lösung des dualen Problems
+\begin{align*}
+    \forall_{v \in H}\; a(v, u_\ast) = \sp{v, e_h}_\ast
+\end{align*}
+ist und $\sp{\cdot, \cdot}_\ast$ das Skalarprodukt auf $H_\ast$ bezeichnet.
+
+\linie
+
+\textbf{Beispiel}:
+Für das Modellproblem kann man mit Céas Ungleichung und dem Aubin-Nitsche-Dualitätsprinzip zeigen,
+dass $\norm{e_h}_0 \le c_0 h^2 \norm{f}_0$ für stückweise lineare finite Elemente auf
+quasi-uniformen Triangulierungen eines konvexen, polygonal berandeten Gebiets gilt.
+In diesem Fall ist $H := H_0^1(D)$, $H_\ast := L_2(D)$, $\norm{\cdot}_\ast := \norm{\cdot}_0$ und
+die beiden Faktoren in der Aubin-Nitsche-Abschätzung können jeweils durch
+\begin{align*}
+    \norm{e_h}_1 \le c_1 h \norm{f}_0,\quad
+    r \le ch\norm{u_\ast}_2
+\end{align*}
+beschränkt werden.
+Wegen $a(v, u_\ast) = \int_D \grad u_\ast \grad v$ ist das duale Problem die schwache Lösung von
+\begin{align*}
+    -\Delta u_\ast = e_h \text{ in } D,\quad
+    u_\ast = 0 \text{ auf } \partial D.
+\end{align*}
+Durch elliptische Regularität erhält man $\norm{u_\ast}_2 \le c_r \norm{e_h}_0$ und
+daher $\norm{e_h}_0 \le c_0 h^2 \norm{f}_0$ mit $c_0 := c_b c_1 (c c_r)$.
+
+Die Abschätzungen funktionieren auch bei anderen finiten Elementen.
+Bei Spline-Approximatio"-nen gilt zum Beispiel
+\begin{align*}
+    \norm{u - v_h}_\ell \preceq h^{n+1-\ell} \norm{u}_{n+1}
+\end{align*}
+mit $v_h$ der besten Spline-Approximation von $u$ vom Grad $\le n$ und Gitterweite $h$.
+Für Probleme 2. Ordnung impliziert Céas Ungleichung, dass für
+die $H^1$-Norm ($\ell = 1$) diese optimale Approximationsordnung erhalten bleibt.
+Dies gilt auch für die $L^2$-Norm wegen dem Aubin-Nitsche-Dualitätsprinzip.
+Hier muss man jedoch annehmen, dass das duale Problem optimale Regularität hat, d.\,h.
+\begin{align*}
+    \norm{u_\ast}_2 \le c_r \norm{e_h}_0.
+\end{align*}
+
+\pagebreak

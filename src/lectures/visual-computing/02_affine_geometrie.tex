@@ -1,0 +1,318 @@
+\section{%
+    Af"|fine Geometrie%
+}
+
+\subsection{%
+    Af"|fine Räume%
+}
+
+\textbf{af"|fine Geometrie}:
+Die dreidimensionale Alltagswelt ist koordinatenunabhängig.
+Objekte existieren ohne Koordinaten und es gibt kein
+vorgezogenes Koordinatensystem/keinen Ursprung.
+Um Punktmengen (Punkte haben nur Positionen) und
+Vektorräume (Vektoren haben nur Betrag und Richtung) zusammenzubringen,
+benutzt man \begriff{af"|fine Geometrie}.
+
+\linie
+
+\textbf{af"|finer Raum}:
+Ein af"|finer Raum $(\AA, \vec{V}, \oplus)$ ist ein Tripel bestehend aus
+\begin{itemize}
+    \item
+    einer nicht-leeren Menge $\AA$ (\begriff{Punktmenge}),
+    
+    \item
+    einem Vektorraum $(\vec{V}, +, \cdot)$ (\begriff{zugrundeliegender Vektorraum}) und
+    
+    \item
+    einer Operation $\oplus\colon \AA \times \vec{V} \to \AA$,
+    $(a, \vec{v}) \mapsto a \oplus \vec{v}$,
+\end{itemize}
+sodass folgende Bedingungen gelten:
+\begin{enumerate}
+    \item
+    $\forall_{a \in \AA}\; a \oplus \vec{0} = a$
+    (\begriff{neutrales Element}),
+    
+    \item
+    $\forall_{p, q \in \AA} \exists!_{\vec{v} =: \vec{pq} \in \vec{V}}\;
+    p \oplus \vec{v} = q$
+    (\begriff{eindeutige Verbindungsvektoren}) und
+    
+    \item
+    $\forall_{a \in \AA} \forall_{\vec{u}, \vec{v} \in \vec{V}}\;
+    (a \oplus \vec{u}) \oplus \vec{v} = a \oplus (\vec{u} + \vec{v})$
+    (\begriff{Assoziativität}).
+\end{enumerate}
+
+\textbf{Dimension}:
+Die \begriff{Dimension} von $(\AA, \vec{V}, \oplus)$ ist $\dim \AA := \dim \vec{V}$.
+
+\linie
+
+\textbf{Beispiel}:
+$(H, \vec{\real}^2, \oplus)$ mit der Ebene $H := \{(x, y, z) \in \real^3 \;|\; x + y + z = 1\}$
+durch $(1, 0, 0)$, $(0, 1, 0)$ und $(0, 0, 1)$ ist ein af"|finer Raum mit Operation
+$\oplus\colon H \times \vec{\real}^2 \to H$,\\
+$(x, y, 1 - x - y) \oplus \smallpmatrix{u\\v}
+:= (x + u, y + v, 1 - (x + u) - (y + v))$.
+
+\linie
+
+\textbf{Lemma (\name{Chasles}-Identität)}:
+Für $a, b, c \in \AA$ gilt $\vec{ac} = \vec{ab} + \vec{bc}$.
+
+\begin{Beweis}
+    Mit $b = a \oplus \vec{ab}$ gilt
+    $c = b \oplus \vec{bc} = (a \oplus \vec{ab}) \oplus \vec{bc} = a \oplus (\vec{ab} + \vec{bc})$.
+    Mit \emph{(2)} von oben folgt $\vec{ac} = \vec{ab} + \vec{bc}$.
+\end{Beweis}
+
+Wegen $\vec{aa} = \vec{0}$ (folgt aus $a = a \oplus \vec{0})$ gilt insbesondere
+$\vec{ba} = -\vec{ab}$.
+
+\linie
+
+\textbf{Vektorraum als af"|finer Raum}:
+Jeder Vektorraum $\vec{V}$ ist ein af"|finer Raum mit sich selbst als zugrundeliegender
+Vektorraum und der Vektoraddition als Verknüpfung, d.\,h. $\AA := \vec{V}$ und $\oplus := +$
+($\AA$ wird als Menge ohne Operationen oder ausgezeichneten Punkt angesehen).
+
+\textbf{Beispiel}:
+$(\real^n, \vec{\real}^n, \oplus)$ ist ein af"|finer Raum mit
+$(x_1, \dotsc, x_n) \oplus
+\smallpmatrix{v_1\\\vdots\\v_n} := (x_1 + v_1, \dotsc, x_n + v_n)$
+(Punkte als Zeilenvektor, Vektoren als Spaltenvektor)
+und heißt \begriff{af"|finer Standardraum}.
+
+\linie
+
+\textbf{af"|finer Unterraum}:
+Sei $(\AA, \vec{V}, \oplus)$ ein af"|finer Raum.
+Eine Teilmenge $\UU \subset \AA$ heißt \begriff{af"|finer Unterraum},
+falls es einen Unterraum $\vec{W} \le \vec{V}$ und ein $a_0 \in \AA$ gibt mit
+$\UU = \{a_0 \oplus \vec{w} \;|\; \vec{w} \in \vec{W}\}$.
+
+In diesem Fall ist $(\UU, \vec{W}, \oplus|_{\UU \times \vec{W}})$ wieder ein af"|finer Raum
+der Dimension $\dim \vec{W}$.\\
+Ein af"|finer Unterraum der Kodimension $1$ heißt auch \begriff{Hyperebene}.
+
+\textbf{Beispiel}:
+Für alle $a \in \AA$ ist $\{a\}$ ein af"|finer Unterraum von $\AA$ der Dimension $0$
+(mit $\vec{W} := \{\vec{0}\}$).\\
+$\AA$ ist ein af"|finer Unterraum von $\AA$ der Kodimension $0$.
+
+\pagebreak
+
+\subsection{%
+    Af"|fine Abbildungen%
+}
+
+\textbf{af"|fine Abbildung}:
+Seien $(\AA_1, \vec*{V}{1}, \oplus)$ und $(\AA_2, \vec*{V}{2}, \boxplus)$ zwei af"|fine Räume.\\
+Eine Abbildung $F\colon \AA_1 \to \AA_2$ heißt \begriff{af"|fine Abbildung}, falls
+es eine lineare Abbildung $f\colon \vec*{V}{1} \to \vec*{V}{2}$ gibt mit
+$\forall_{a, b \in \AA_1}\; f(\vec{ab}) = \vec{F(a)F(b)}$.
+
+\textbf{Af"|finität}:
+Eine bijektive af"|fine Abbildung heißt \begriff{Af"|finität}/\begriff{af"|finer Isomorphismus}.
+
+\linie
+
+\textbf{Lemma}:
+$F$ ist eine af"|fine Abbildung genau dann, wenn es eine
+lineare Abbildung $f\colon \vec*{V}{1} \to \vec*{V}{2}$ gibt mit
+$\forall_{a \in \AA_1} \forall_{\vec{v} \in \vec*{V}{1}}\;
+F(a \oplus \vec{v}) = F(a) \boxplus f(\vec{v})$.
+
+\begin{Beweis}
+    "`$\implies$"':
+    Seien $a \in \AA_1$ und $\vec{v} \in \vec*{V}{1}$ beliebig.
+    Definiere $b := a \oplus \vec{v}$.
+    Dann gilt $\vec{v} = \vec{ab}$ und daher
+    $f(\vec{v}) = f(\vec{ab}) = \vec{F(a)F(b)} = \vec{F(a) F(a \oplus \vec{v})}$,
+    also $F(a \oplus \vec{v}) = F(a) \boxplus f(\vec{v})$.
+    
+    "`$\impliedby$"':
+    Seien $a, b \in \AA_1$ beliebig.
+    Definiere $\vec{v} := \vec{ab}$.
+    Dann gilt $b = a \oplus \vec{v}$ und daher\\
+    $F(b) = F(a \oplus \vec{v}) = F(a) \boxplus f(\vec{ab})$,
+    also $f(\vec{ab}) = \vec{F(a)F(b)}$.
+\end{Beweis}
+
+\linie
+
+\textbf{Beispiel}:
+Seien $(\AA, \vec{V}, \oplus)$ ein af"|finer Raum und $\vec*{v}{0} \in \vec{V}$ fest.\\
+Dann ist $F\colon \AA \to \AA$, $F(a) := a \oplus \vec*{v}{0}$
+eine af"|fine Abbildung (\begriff{Parallelverschiebung}).
+
+\subsection{%
+    Af"|finkombinationen%
+}
+
+\textbf{Lemma}:\\
+Seien $(\AA, \vec{V}, \oplus)$ ein af"|finer Raum,
+$a_1, \dotsc, a_n \in \AA$ und $\lambda_1, \dotsc, \lambda_n \in \real$
+mit $\sum_{i=1}^n \lambda_i = 1$.\\
+Dann gilt für alle $a, b \in \AA$, dass
+$a \oplus \sum_{i=1}^n \lambda_i \vec{aa_i} = b \oplus \sum_{i=1}^n \lambda_i \vec{ba_i}$.
+
+\begin{Beweis}
+    Es gilt
+    $a \oplus \sum_{i=1}^n \lambda_i \vec{aa_i}
+    = a \oplus \sum_{i=1}^n \lambda_i (\vec{ab} + \vec{ba_i})
+    = a \oplus (\vec{ab} + \sum_{i=1}^n \lambda_i \vec{ba_i})$\\
+    $= (a \oplus \vec{ab}) \oplus \sum_{i=1}^n \lambda_i \vec{ba_i}
+    = b \oplus \sum_{i=1}^n \lambda_i \vec{ba_i}$.
+\end{Beweis}
+
+\linie
+
+\textbf{Af"|finkombination}:\\
+Seien $(\AA, \vec{V}, \oplus)$ ein af"|finer Raum,
+$a_1, \dotsc, a_n \in \AA$ und $\lambda_1, \dotsc, \lambda_n \in \real$
+mit $\sum_{i=1}^n \lambda_i = 1$.\\
+Dann heißt für beliebiges $a \in \AA$
+der Punkt $x = a \oplus \sum_{i=1}^n \lambda_i \vec{aa_i}$ \begriff{Af"|finkombination}
+der Punkte $a_i$ mit Gewichten $\lambda_i$
+(oder der \begriff{gewichteten Punkte} $(a_i, \lambda_i)$).
+
+\textbf{Schreibweise}:
+$x$ ist nach dem Lemma unabhängig von der Wahl von $a \in \AA$.
+Daher schreibt man die Af"|finkombination $x$ der gewichteten Punkte $(a_i, \lambda_i)$ auch
+als $\sum_{i=1}^n \lambda_i a_i$
+(obwohl man die $a_i$ eigentlich nicht skalieren oder addieren kann).
+
+\linie
+
+\textbf{Satz (af"|fine Abbildungen erhalten Af"|finkombinationen)}:\\
+Seien $(\AA_1, \vec*{V}{1}, \oplus)$ und $(\AA_2, \vec*{V}{2}, \boxplus)$ zwei af"|fine Räume
+und $F\colon \AA_1 \to \AA_2$ eine af"|fine Abbildung.\\
+Dann gilt für $a_1, \dotsc, a_n \in \AA_1$ und $\lambda_1, \dotsc, \lambda_n \in \real$
+mit $\sum_{i=1}^n \lambda_i = 1$
+die Gleichung\\
+$F(\sum_{i=1}^n \lambda_i a_i) = \sum_{i=1}^n \lambda_i F(a_i)$,
+d.\,h. $F$ erhält Af"|finkombinationen.
+
+\begin{Beweis}
+    Sei $a \in \AA_1$ beliebig.
+    Dann gilt
+    $F(\sum_{i=1}^n \lambda_i a_i)
+    = F(a \oplus \sum_{i=1}^n \lambda_i \vec{aa_i})$\\
+    $= F(a) \boxplus f(\sum_{i=1}^n \lambda_i \vec{aa_i})
+    = F(a) \boxplus \sum_{i=1}^n \lambda_i f(\vec{aa_i})
+    = F(a) \boxplus \sum_{i=1}^n \lambda_i \vec{F(a)F(a_i)}$\\
+    $= b \oplus \sum_{i=1}^n \lambda_i \vec{b F(a_i)}
+    = \sum_{i=1}^n \lambda_i F(a_i)$
+    mit $b := F(a)$.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    Af"|fine Koordinatensysteme%
+}
+
+\textbf{af"|fines Koordinatensystem}:
+Sei $(\AA, \vec{V}, \oplus)$ ein af"|finer Raum mit $n := \dim \vec{V} < \infty$.\\
+Eine Familie $(a_0, \dotsc, a_n)$ von $n+1$ Punkten in $\AA$ heißt
+\begriff{af"|fines Koordinatensystem} für $\AA$ mit \begriff{Ursprung} $a_0$, falls die
+Vektoren $\vec{a_0a_1}, \dotsc, \vec{a_0a_n}$ in $V$ linear unabhängig sind.
+
+\textbf{af"|fine Koordinaten}:
+Sei $(a_0, \dotsc, a_n)$ ein af"|fines Koordinatensystem von $(\AA, \vec{V}, \oplus)$.\\
+Dann kann jedes $x \in \AA$ dargestellt werden als
+$x = a_0 \oplus (\sum_{i=1}^n x_i \vec{a_0a_i})$
+für eindeutige Skalare $(x_1, \dotsc, x_n) \in \real^n$, die in diesem Fall die
+\begriff{(af"|finen) Koordinaten} von $x$ heißen.
+
+\subsection{%
+    Af"|fine Transformationen%
+}
+
+\textbf{Satz (Fundamentalsatz der af"|finen Geometrie)}:\\
+Seien $(\AA_1, \vec*{V}{1}, \oplus)$ und $(\AA_2, \vec*{V}{2}, \boxplus)$ zwei af"|fine Räume
+mit $n := \dim \vec*{V}{1} = \dim \vec*{V}{2} < \infty$
+und af"|finen Koordinatensystemen $(a_0, \dotsc, a_n)$ bzw. $(b_0, \dotsc, b_n)$.\\
+Dann gibt es genau eine af"|fine Abbildung $F\colon \AA_1 \to \AA_2$ mit
+$\forall_{i=0,\dotsc,n}\; F(a_i) = b_i$.\\
+$F$ ist in diesem Fall eine Af"|finität.
+
+\textbf{Korollar}:
+Alle af"|finen Räume derselben endlichen Dimension sind af"|fin isomorph.
+Daher kann man jedes Problem der endl.-dim. af"|finen Geometrie im Standardraum
+$(\real^n, \vec{\real}^n, +)$ betrachten.
+
+\linie
+
+\textbf{Satz (Struktur von af"|finen Abbildungen)}:\\
+Seien $\AA := \real^n$ der af"|fine Standardraum und
+$F\colon \AA \to \AA$ eine af"|fine Abbildung.\\
+Dann gibt es $b \in \real^n$ und $A \in \real^{n \times n}$, sodass
+$\forall_{x \in \real^n}\; F(x) = b \oplus Ax$.
+
+\begin{Beweis}
+    Seien $b := F(0)$, $f\colon \real^n \to \real^n$ eine lineare Abbildung,
+    die $F$ "`zugrunde liegt"', und $A$ die darstellende Matrix von $f$.
+    Dann gilt
+    $F(x)
+    = F(0 \oplus \vec{0x})
+    = b \oplus f(\vec{0x})
+    = (0 \oplus \vec{0b}) \oplus f(\vec{0x})$\\
+    $= 0 \oplus (\vec{0b} + f(\vec{0x}))
+    = 0 \oplus (\vec{0b} + A\vec{0x})$ und damit
+    $\vec{0F(x)} = \vec{0b} + A\vec{0x}$.
+    Wegen $\vec{0y} = y$ (weil $0 \oplus \vec{y} = \vec{y}$) für alle $y \in \real^n$ gilt daher
+    $F(x) = b + Ax$.
+\end{Beweis}
+
+\linie
+
+\textbf{Beispiele für af"|fine Transformationen in $\real^2$}:
+\begin{itemize}
+    \item
+    \begriff{Streckung}:
+    $A_S := \smallpmatrix{s_x&0\\0&s_y}$
+    
+    \item
+    \begriff{Drehung}:
+    $A_R := \smallpmatrix{\cos\varphi&-\sin\varphi\\\sin\varphi&\cos\varphi}$
+    
+    \item
+    \begriff{Scherung}:
+    $A_x := \smallpmatrix{1&c_x\\0&1}$,
+    $A_y := \smallpmatrix{1&0\\c_y&1}$
+\end{itemize}
+Diese af"|finen Transformationen kommutieren i.\,A. nicht!
+
+\linie
+
+\textbf{Beispiele für af"|fine Transformationen in $\real^2$}:
+\begin{itemize}
+    \item
+    \begriff{Streckung}:
+    $A_S := \smallpmatrix{s_x&0&0\\0&s_y&0\\0&0&s_z}$
+    
+    \item
+    \begriff{Drehung}:
+    $A_{R_x} := \smallpmatrix{1&0&0\\0&\cos\varphi&-\sin\varphi\\0&\sin\varphi&\cos\varphi}$,
+    $A_{R_y} := \smallpmatrix{\cos\varphi&0&\sin\varphi\\0&1&0\\-\sin\varphi&0&\cos\varphi}$,
+    $A_{R_z} := \smallpmatrix{\cos\varphi&-\sin\varphi&0\\\sin\varphi&\cos\varphi&0\\0&0&1}$
+\end{itemize}
+
+\textbf{\name{Euler}-Winkel}:
+Die \begriff{\name{Euler}-Winkel} sind drei unabhängige Parameter, mit denen die Orientierung
+eines Körpers im Raum beschrieben werden kann.
+Jede Drehung $R$ kann beschrieben werden als $R = R_z(\gamma) R_x(\beta) R_z(\alpha)$
+(\begriff{$x$-Konvention ($z, x', z''$)}).
+
+\textbf{Gimbal Lock}:
+Wenn $\beta = 0$ ist, dann gibt es mehrere verschiedene Winkelpaare $\alpha, \gamma$, die dieselbe
+Drehung beschreiben.
+Die Folge ist, dass man nicht um die $y$-Achse rotieren kann, ohne alle drei Winkel zu verändern.
+Diese Situation heißt \begriff{Gimbal Lock}.
+
+\pagebreak

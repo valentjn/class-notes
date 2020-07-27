@@ -1,0 +1,641 @@
+\section{%
+    Integration%
+}
+
+\subsection{%
+    Quadrataturformeln%
+}
+
+Im Folgenden werden Formeln gesucht, mit denen Integrale der Form
+$\int_a^b f(x)\dx$ möglichst gut approximiert werden können.
+Die vorgestellten Formeln haben alle die Form
+$\int_a^b f(x)\dx \approx \sum_{k=1}^n w_k f(x_k)$.
+Nun ist die Wahl der Stützstellen $x_k$ und Gewichte $w_k$ maßgeblich, d.\,h.
+in diesen Parametern unterscheiden sich die verschiedenen Methoden.
+Allen gemeinsam sind dabei folgende Forderungen, die man an die
+Approximationsformeln stellt:
+\begin{itemize}
+    \item
+    Die Formel sollte exakt für $f \equiv 1$ sein, d.\,h.
+    $b - a= \sum_{k=1}^n w_k$.
+    
+    \item
+    Die Gewichte $w_k > 0$ sollten positiv sein, da man sonst Funktionen
+    definieren könnte, die nur bei einem negativen Gewicht größer Null
+    und sonst überall Null sind.
+    Die Approximation würde einen negativen Wert ergeben, was of"|fensichtlich
+    sinnlos ist.
+    
+    \item
+    Die Formel sollte exakt für Polynome $f$ von möglichst hohem Grad sein.
+\end{itemize}
+
+\subsubsection{%
+    \name{Gauß}-Formel%
+}
+
+Die \textbf{\name{Gauß}-Formel der Ordnung $n$} approximiert das Integral einer
+Funktion $f$ durch das Integral des Interpolationspolynoms an den Nullstellen
+$x_1 < \dotsb < x_n$ des Legendre-Polynoms vom Grad $n$, d.\,h.
+\begin{align*}
+    \int_{-1}^1 f(x)\dx \approx \sum_{i=1}^n w_i f(x_i)
+\end{align*}
+mit $w_i$ den Integralen der Lagrange-Polynome über das Intervall $[-1, 1]$:
+\begin{align*}
+    w_i := \int_{-1}^1 p_i(x)\dx, \quad
+    p_i(x) := \prod_{j \not= i} \frac{x - x_j}{x_i - x_j}.
+\end{align*}
+
+Die Formel ist exakt für Polynome vom Grad $< 2n$ und vor allem für analytische
+Funktionen sehr genau.
+Alle Gewichte $w_i$ sind positiv und
+die Stützstellen $x_i$ liegen im Integrationsintervall $(-1, 1)$.
+
+Gauß-Parameter $x'$ und $w'$ für ein beliebiges Integrationsintervall $[a, b]$
+erhält man durch lineare Transformation:
+\begin{align*}
+    x_k' = a + \frac{b - a}{2} (x_k + 1), \quad
+    w_k' = \frac{b - a}{2} w_k.
+\end{align*}
+
+\subsubsection{%
+    Konvergenz der \name{Gauß}-Quadratur%
+}
+
+Für eine stetige Funktion $f$
+\textbf{konvergieren die Approximationen der Gauß-Quadratur}
+für ein Integrationsintervall $[a, b]$ mit wachsender Zahl $n$
+der Knoten gegen $\int_a^b f(x)\dx$, d.\,h.
+\begin{align*}
+    s_n f := \sum_{i=1}^n w_i^n f(x_i^n) \xrightarrow{n \to \infty}
+    \int_a^b f(x)\dx.
+\end{align*}
+
+\subsubsection{%
+    Fehler der \name{Gauß}-Quadratur%
+}
+
+Der \textbf{Fehler der \name{Gauß}-Quadratur} besitzt die Darstellung
+\begin{align*}
+    \sum_{i=1}^n w_i f(x_i) - \int_a^b f(x)\dx =
+    -\gamma_n f^{(2n)}(\xi)(b - a)^{2n + 1}
+\end{align*}
+mit
+\begin{align*}
+    \gamma_n := \frac{(n!)^4}{(2n + 1)((2n)!)^3},\quad \xi \in [a, b].
+\end{align*}
+Der Kehrwert der Fehlerkonstanten $\gamma_n$ besitzt für $n = 1, 2, 3, 4$
+die Werte $24, 4320, 2016000,$
+$1778112000$, d.\,h. $\gamma_n$ wird schnell sehr klein.
+
+\subsubsection{%
+    Gewichtete \name{Gauß}-Quadratur%
+}
+
+Seien $x_i$ die Nullstellen des Orthogonalpolynoms vom Grad $n$ zu einer
+Gewichtsfunktion $w$ auf einem Intervall $[a, b]$.
+Dann ist die auf polynomialer Interpolation basierende Quadraturformel
+\begin{align*}
+    \int_a^b f(x)w(x)\dx \approx \sum_{i=1}^n w_i f(x_i)
+\end{align*}
+für Polynome vom Grad $< 2n$ exakt
+(\textbf{gewichtete \name{Gauss}-Quadratur}).
+Die Gewichte $w_i$ sind positiv und können als Integrale der Lagrange-Polynome
+berechnet werden:
+\begin{align*}
+    w_i := \int_a^b p_k(x)w(x)\dx, \quad
+    p_i(x) := \prod_{j \not= i} \frac{x - x_j}{x_i - x_j}
+\end{align*}
+Der Fehler ist gleich $\gamma_n f^{(2n)}(\xi)$ für ein $\xi \in [a, b]$
+mit einer von der Gewichtsfunktion abhängigen Konstanten $\gamma_n$.
+
+Die folgende Tabelle zeigt die Parameter und Gewichtsfunktionen für die
+klassischen Orthogonalpolynome:
+
+\begin{tabular}{llll}
+    \toprule
+    
+    \textbf{Typ} & \textbf{$[a, b]$} & \textbf{$w(t)$} & \textbf{$\gamma_n$} \\
+    
+    \midrule
+    
+    \name{Legendre} & $[-1, 1]$ & $1$ &
+    $\frac{2^{2n + 1} (n!)^4}{(2n + 1)((2n)!)^3}$ \vspace{2mm}\\
+    
+    \name{Tschebyscheff} & $[-1, 1]$ & $\sqrt{1 - t^2}$ &
+    $\frac{\pi}{2^{2n - 1} (2n)!}$, $n > 0$ \vspace{2mm}\\
+    
+    \name{Jacobi} & $[-1, 1]$ & $(1 + t)^r (1 - t)^s$ &
+    $\frac{2^{2n + r + s + 1} n! \Gamma(n + r + 1) \Gamma(n + s + 1)
+    \Gamma(n + r + s + 1)}{(2n + r + s + 1)
+    \Gamma(2n + r + s + 1)^2 (2n)!}$ \vspace{2mm}\\
+    
+    \name{Laguerre} & $[0, \infty)$ & $\exp(-t)$ &
+    $\frac{(n!)^2}{(2n)!}$ \vspace{2mm}\\
+    
+    \name{Hermite} & $(-\infty, \infty)$ & $\exp(-t^2)$ &
+    $\frac{\sqrt{\pi} n!}{2^n (2n)!}$ \\
+    
+    \bottomrule
+\end{tabular}
+
+\pagebreak
+
+\subsubsection{%
+    Trapezregel%
+}
+
+Die Näherung
+\begin{align*}
+    \int_a^b f(x)\dx \approx s_h f :=
+    h \left(\frac{f(a)}{2} + f(a + h) + \dotsb +
+    f(b - h) + \frac{f(b)}{2}\right)
+\end{align*}
+approximiert das Integral durch \textbf{Summe von Trapezflächen (Trapezregel)}.
+
+Für eine zweimal stetig dif"|ferenzierbare Funktion gilt für den Fehler
+\begin{align*}
+    s_h f - \int_a^b f(x)\dx = \frac{b - a}{12} f''(\xi) h^2
+\end{align*}
+für ein $\xi \in [a, b]$.
+
+Genauer besitzt der Fehler für glatte Funktionen die asymptotische Entwicklung
+\begin{align*}
+    s_h f - \int_a^b f(x)\dx =
+    c_1 (f'(b) - f'(a)) h^2 +
+    c_2 (f'''(b) - f'''(a)) h^4 + \dotsb
+\end{align*}
+mit von $f$ und $h$ unabhängigen Konstanten $c_j$.
+Daraus folgt, dass die Trapezregel für $(b - a)$-periodische Funktionen
+sehr genau ist.
+Der Fehler strebt schneller als jede $h$-Potenz gegen Null.
+
+Diese Fehlerformel besagt insbesondere, dass für glatte periodische Integranden
+schnell eine hohe Genauigkeit erzielt werden kann.
+
+\subsubsection{%
+    \name{Bernoulli}-Polynome%
+}
+
+Die \textbf{normalisierten \name{Bernoulli}-Polynome} sind definiert
+durch die Rekursion
+\begin{align*}
+    p_i' := p_{i-1}, \quad
+    p_0(x) := 1 \quad \text{mit} \quad
+    \int_0^1 p_i(x)\dx = 0, \quad
+    i \in \natural.
+\end{align*}
+
+Die normalisierten Bernoulli-Polynome sind symmetrisch bzgl. $t = \frac{1}{2}$,
+d.\,h. $p_{2i-1}(x - \frac{1}{2})$ und $p_{2i}(x - \frac{1}{2})$
+sind ungerade bzw. gerade Funktionen ($i \in \natural$).
+Für $i \ge 2$ gilt außerdem
+\begin{align*}
+    & p_{2i-1}(0) = p_{2i-1}(1/2) = p_{2i-1}(1) = 0, \\
+    & p_{2i-1}(t) \not= 0 \quad\text{für}\quad
+    t \in (0, 1) \setminus \left\{\tfrac{1}{2}\right\}
+\end{align*}
+und für $i \ge 1$ ist
+\begin{align*}
+    \gamma_{2i} := p_{2i}(0) = p_{2i}(1)
+\end{align*}
+entweder ein Minimum oder ein Maximum von $p_{2i}$ auf $[0, 1]$. \\
+Die Werte $\gamma_{2i}$ heißen \textbf{normierte \name{Bernoulli}-Zahlen}.
+
+\pagebreak
+
+\subsubsection{%
+    \name{Euler}-\name{Maclaurin}-Entwicklung%
+}
+
+Für eine glatte Funktion $f$ hat der Fehler $e_h f := s_h f - \int_a^b f(x)\dx$
+der Trapezregel die Entwicklung
+\begin{align*}
+    \sum_{i=1}^{m-1} \gamma_{2i} (f^{(2i-1)}(b) - f^{(2i-1)}(a)) h^{2i}
+\end{align*}
+mit dem Restglied
+\begin{align*}
+    \gamma_{2m} f^{(2m)}(\xi) (b - a) h^{2m}
+\end{align*}
+für ein $\xi \in [a, b]$ und $\gamma_{2i}$ den normierten Bernoulli-Zahlen \\
+(\textbf{\name{Euler}-\name{Maclaurin}-Entwicklung}).
+
+Aus der Entwicklung folgt insbesondere, dass die Trapezregel für unendlich oft
+dif"|ferenzierbare $(b - a)$-periodische Funktionen sehr genau ist.
+Der Fehler strebt schneller als jede $h$-Potenz gegen Null.
+Für nicht-periodische Funktionen bildet die Entwicklung die Grundlage für
+Extrapolationsverfahren, mit denen ebenfalls beliebige
+Approximationsordnungen erzielt werden können. 
+
+\subsubsection{%
+    \name{Romberg}-Algorithmus%
+}
+
+Die Genauigkeit der Trapezregel
+\begin{align*}
+    s_h^1 := h \left(\frac{f(a)}{2} + f(a + h) + \dotsb +
+    f(b - h) + \frac{f(b)}{2}\right)
+\end{align*}
+lässt sich durch Extrapolation verbessern
+(\textbf{\name{Romberg}-Algorithmus}). \\
+Die rekursiv definierten Approximationen
+\begin{align*}
+    s_h^{j+1} := \frac{4^j s_{h/2}^j - s_h^j}{4^j - 1}
+\end{align*}
+haben die Fehlerordnung $\O(h^{2j+2})$ und können in einem Dreiecksschema
+berechnet werden:
+\begin{align*}
+    \begin{array}{ccccc}
+        s_h^1 & \rightarrow & s_h^2 & \rightarrow & s_h^3 \\
+        & \nearrow & & \nearrow \\
+        s_{h/2}^1 & \rightarrow & s_{h/2}^2 \\
+        & \nearrow \\
+        s_{h/4}^1
+    \end{array}
+\end{align*}
+Es werden solange sukzessive Diagonalen
+$s_{2^{-m}}^1, s_{2^{1-m}}^2, \dotsc, s_h^{m+1}$ hinzugefügt, bis mit dem
+zuletzt generierten Wert die gewünschte Genauigkeit erreicht ist.
+Bei den Trapezsummen können bereits berechnete Funktionswerte genutzt werden:
+\begin{align*}
+    s_{h/2}^1 = \frac{1}{2} \left(s_h^1 +
+    h \left(f(a + \tfrac{h}{2}) + \dotsb +
+    f\left(b - \tfrac{h}{2}\right)\right)\right).
+\end{align*}
+
+\pagebreak
+
+\subsubsection{%
+    Numerische Integration mit \matlab{}%
+}
+
+Das Integral $s = \int_a^b f(x)\dx$ kann in \matlab{} mit dem Befehl
+\code{s = quad(f, a, b, tol);} berechnet werden,
+wobei die zu integrierende Funktion \code{f} als Funktionshandle, Funktionsname
+(String) oder Inlinefunktion übergeben wird.
+\code{tol} ist optional (standardmäßig $10^{-6}$) und gibt die absolute
+Genauigkeit vor.
+
+\code{quad} basiert dabei auf der Simpson-Regel
+(abschnittsweise Interpolation mit quadratischen Polynomen und anschließende
+Integration) mit adaptiver Unterteilung des Integrationsintervalls, d.\,h.
+die Intervalllängen bzw. die Anzahl an Funktionsauswertungen werden an
+die lokale Komplexität der Funktion angepasst.
+
+Alternativ zu \code{quad} gibt es noch die Befehle \code{quadl} und
+\code{dblquad}.
+\code{quadl} erzielt eine höhere Approximationsordnung als \code{quad},
+sollte aber nur bei hohen Genauigkeiten und glatten Integranden verwendet
+werden.
+Bei niedrigen Genauigkeiten oder nicht-glatten Integranden empfiehlt sich daher
+die Verwendung von \code{quad}.
+\code{dblquad} berechnet ein bivariates Integral, d.\,h.
+\code{s = dblquad(f, xmin, xmax, ymin, ymax, tol);} berechnet
+das Integral der bivariaten Funktion \code{f} über das Rechteck
+$[$\code{xmin}$,\;$\code{xmax}$] \times [$\code{ymin}$,\;$\code{ymax}$]$.
+
+\pagebreak
+
+\subsection{%
+    Mehrfachintegrale%
+}
+
+\subsubsection{%
+    Tensorprodukt von Integrationsformeln%
+}
+
+\textbf{Integrationsformeln für Rechteck-Gebiete}
+\begin{align*}
+    Q := [a_1, b_1] \times \dotsb \times [a_m, b_m]
+\end{align*}
+erhält man durch Bilden von Tensorprodukten eindimensionaler Quadraturformeln.
+
+Sind die Formeln $\sum_k w_{k,\nu} f(t_{k,\nu})$ zur Approximation von
+$\int_{a_\nu}^{b_\nu} f$ exakt für Polynome vom Grad $\le n_\nu$,
+$\nu = 1, \dotsc, m$, so ist die Produktformel
+\begin{align*}
+    \int_Q f \approx
+    \sum_{k_1} \dotsb \sum_{k_m} (w_{k_1,1} \dotsb w_{k_m,m})
+    f(t_{k_1,1}, \dotsc, t_{k_m,m})
+\end{align*}
+exakt für Polynome vom Koordinatengrad $\le (n_1, \dotsc, n_m)$.
+
+\linie
+
+Für die \textbf{Trapezregel} mit Schrittweite $h = \frac{b - a}{n}$
+sind die Gewichte an den inneren Knoten gleich $h$ und an den äußeren
+Knoten $a$ und $b$ gleich $\frac{h}{2}$.
+Für ein Rechteck $[a_1, b_1] \times [a_2, b_2]$ und den Schrittweiten $h_1$
+und $h_2$ erhält man somit drei verschiedene Gewichte:
+$h_1 h_2$ für innere Knoten, $\frac{h_1 h_2}{2}$ für Knoten auf den Kanten
+(außer den Ecken) und $\frac{h_1 h_2}{4}$ für die Ecken.
+
+Allgemein gilt für ein $m$-dimensionales Rechteck mit Schrittweiten
+$h_\nu$, $\nu = 1, \dotsc, m$, dass
+$w_{k_1, \dotsc, k_m} = h^m 2^{-\alpha_1} \dotsm 2^{-\alpha_m}$
+mit $\alpha_\nu = 0$ für einen inneren Index bzw.
+$\alpha_\nu = 1$ für einen äußeren Index $k_\nu$, $\nu = 1, \dotsc, m$.
+
+Der Fehler der multivariaten Trapezregel besitzt eine quadratische Entwicklung,
+sodass wie für die univariate Formel die Romberg-Extrapolation anwendbar ist.
+
+\pagebreak
+
+\subsubsection{%
+    Transformation von Integrationsformeln%
+}
+
+Für eine bijektive, stetig dif"|ferenzierbare Transformation $g$ eines
+regulären Bereiches $U \subset \real^n$ mit
+$\det g'(x) \not= 0$ für $x \in U$
+gilt für stetige Funktionen $f$
+\begin{align*}
+    \int_U f \circ g |\det g'| dU = \int_V f dV, \quad V = g(U),
+\end{align*}
+wobei $\det g'$ als Funktionaldeterminante der Transformation bezeichnet wird.
+
+\linie
+
+Eine Integrationsformel
+\begin{align*}
+    \int_D f \approx \sum_k w_k f(x_k)
+\end{align*}
+kann man durch Variablensubstitution
+\textbf{auf andere Gebiete transformieren}. \\
+Ist $\varphi\colon D \rightarrow \widetilde{D}$ eine bijektive Abbildung,
+erhält man durch
+\begin{align*}
+    \widetilde{w}_k = \left|\det \varphi'(x_k)\right| w_k, \quad
+    \widetilde{x}_k = \varphi(x_k)
+\end{align*}
+Gewichte und Punkte für eine Integrationsformel auf $\widetilde{D}$.
+Dabei ist $\varphi'(x_k)$ die Jacobi-Matrix von $\varphi$ im Punkt $x_k$.
+$\det \varphi'(x_k)$ heißt \textbf{Funktionaldeterminante} der Transformation.
+
+Speziell gilt bei einer af"|finen Abbildung
+$\varphi(x) = Ax + b$ für die Gewichte
+$\widetilde{w}_i = |\det A| w_i$.
+
+Die Konvergenz der Integrationsformeln bleibt bei glatten Transformationen
+$\varphi$ erhalten.
+Allerdings werden Polynome auf $\widetilde{D}$ nicht mehr exakt integriert, da
+der Integrand die Funktionaldeterminante der Transformation enthält.
+
+\linie
+
+Beispielsweise ist ein durch eine Funktion $h$ berandeter
+Integrationsbereich \\
+$D = \{(x, y) \in \real^2 \;|\; x \in [a, b],\; y \in [0, h(x)]\}$
+als Bild des Rechtecks $Q = [a, b] \times [0, 1]$ unter der Abbildung
+$\varphi\colon Q \rightarrow D$, $(u, v) \mapsto (u, v h(u))$ mit der
+Funktionaldeterminante \\
+$\det \varphi'(u, v) =
+\det\begin{pmatrix}1 & 0\\vh'(u) & h(u)\end{pmatrix} = h(u)$
+darstellbar.
+Damit transformieren sich Punkte und Gewichte einer Produktformel für $Q$
+gemäß $(u_i, v_j) \rightarrow (u_i, v_j h(u_i))$ und
+$w_{i,j} \rightarrow w_{i,j} h(u_i)$.
+
+\subsubsection{%
+    Integrationsformeln für Simplizes%
+}
+
+Für einen $m$-dimensionalen Simplex $S$ mit den Ecken $v_0, \dotsc, v_m$ lässt
+sich eine Integrationsformel durch Interpolation mit Polynomen vom
+\textbf{totalen Grad}
+(d.\,h. die Summe der Koordinatengrade) $\le n$ konstruieren.
+Das interpolierende Polynom ist eindeutig durch die Werte an den Punkten
+\begin{align*}
+    x_k = \frac{1}{n} \sum_{\nu=0}^n k_\nu v_\nu, \quad
+    k_0 + \dotsb + k_n = n
+\end{align*}
+bestimmt, die ein regelmäßiges Gitter bilden.
+\begin{align*}
+    \int_S f \approx
+    \vol S \sum_{k_0 + \dotsb + k_n = n} w_k f(x_k)
+\end{align*}
+ist eine Approximation der Ordnung $n + 1$, d.\,h.
+die Integrationsformel ist exakt für alle Polynome vom totalen Grad $\le n$
+(\textbf{Integrationsformel für Simplizes}).
+Dabei sind $\vol S \cdot w_k$ die Integrale über die Lagrange-Polynome
+zu $x_k$.
+
+Für allgemeine Gebiete kann die Integrationsformel auf den Simplizes einer
+Triangulierung angewendet werden.
+Der Fehler hat dann die Ordnung $\O(h^{n+1})$, wobei $h$ den maximalen
+Durchmesser der Teilsimplizes bezeichnet.
+
+\subsection{%
+    Monte-Carlo-Verfahren%
+}
+
+\subsubsection{%
+    Lineare Kongruenzmethode%
+}
+
+Die \textbf{lineare Kongruenzmethode} definiert durch
+\begin{align*}
+    n_\ell & := \alpha n_{\ell-1} \mod \beta \\
+    x_\ell & := n_\ell / \beta
+\end{align*}
+mit $\alpha \in \natural$, $1 < \alpha < \beta$ und $\beta$
+einer sehr großen Primzahl kann bei geeigneter Wahl der Parameter zur
+numerischen Simulation von Zufallszahlen $x_\ell \in \left[0, 1\right)$
+benutzt werden.
+
+Eine minimale Anforderung ist, dass die maximale Periode $\beta - 1$ erreicht
+wird.
+Darüber hinaus soll die Folge $x_0, x_1, \dotsc$ bei möglichst vielen
+statistischen Tests gute Ergebnisse liefern.
+
+\subsubsection{%
+    Satz von \name{Fermat}%
+}
+
+Für jede Primzahl $\beta$ und $\alpha \not= 0 \mod \beta$ gilt
+der \textbf{Satz von \name{Fermat}}
+\begin{align*}
+    \alpha^{\beta-1} = 1 \mod \beta.
+\end{align*}
+
+\subsubsection{%
+    Maximale Periode bei der linearen Kongruenzmethode%
+}
+
+Für eine Primzahl $\beta$ hat die Folge $\alpha^\ell \mod \beta$,
+$\ell = 0, 1, \dotsc$ keine kleinere Periode als $\beta - 1$ genau dann, wenn
+\begin{align*}
+    \alpha^{(\beta-1)/m} \not= 1 \mod \beta
+\end{align*}
+für alle Primteiler $m$ von $\beta - 1$.
+(Die Periode ist dabei die Anzahl der vorkommenden verschiedenen Zahlen.)
+
+Mithilfe dieses Kriteriums lassen sich geeignete Multiplikatoren $\alpha$
+für die Simulation von Zufallszahlen mit der linearen Kongruenzmethode
+bestimmen.
+
+\linie
+
+Gebräuliche Parameter bei der Generierung von Pseudo-Zufallszahlen mit der
+linearen Kongruenzmethode sind die \name{Mersenne}-Primzahl
+$\beta = 2147483647 = 2^{31} - 1$ und der Multiplikator $\alpha = 16807$.
+Aufgrund der Größe dieser Zahlen ist das Testen der Periodenlänge
+nicht ganz einfach.
+
+Aufgrund der Primfaktorzerlegung
+$\beta - 1 = 2 \cdot 3^2 \cdot 7 \cdot 11 \cdot 31 \cdot 151 \cdot 331$
+erhält man als mögliche Perioden $m = (\beta - 1)/p_k$:
+$1073741823, 715827882, 306783378, 195225786, 69273666, 14221746,$
+$6487866$.
+
+Zur Berechnung der Potenzen $\alpha^m$ geht man zur Dualdarstellung
+$m = m_0 + 2m_1 + 4m_2 + \dotsb$, $m_k \in \{0, 1\}$ über.
+Man kann dann zunächst rekursiv die Potenzen
+$\alpha_k := \alpha^{2^k} \mod \beta$ berechnen, indem man
+$\alpha_{k+1} \mod \beta = \alpha_k^2 \mod \beta$ rechnet.
+Damit ist
+$\alpha^m \mod \beta = (\prod_{m_k=1} \alpha_k) \mod \beta$.
+
+Zum Beispiel ist $195225786 = (001011101000101110100010111010)_2$
+und man erhält \\
+$16807^{195225786} \mod \beta = 997852928 \not= 1$.
+Ebenso sind alle sechs anderen zu testenden Potenzen ungleich $1$ modulo
+$\beta$.
+Damit ist die Periode des \name{Mersenne}-Generators maximal.
+
+\pagebreak
+
+\subsubsection{%
+    Spektraltest für die lineare Kongruenzmethode%
+}
+
+Für eine Primzahl $\beta$ lässt sich die durch
+\begin{align*}
+    u_\ell := (\alpha^{\ell m} a \mod \beta) / \beta, \qquad
+    a := (1, \alpha, \dotsc, \alpha^{m-1}) \in \real^m
+\end{align*}
+definierte Folge von Vektoren $u_\ell$ durch parallele Hyperebenen im Abstand
+\begin{align*}
+    d := (\min\{\norm{n}_2 \;|\; n \in \integer^m,\; \norm{n}_2 \not= 0,\;
+    a^t n = 0 \mod \beta\})^{-1}
+\end{align*}
+überdecken.
+
+Der Abstand $d$ dient zur Beurteilung der Güte der Folge der
+Pseudo-Zufallsvektoren $u_\ell$ (\textbf{Spektraltest}).
+Je kleiner $d$ ist, um so besser sind im Allgemeinen die statistischen
+Eigenschaften der Folge.
+
+\subsubsection{%
+    Gleichverteilte Folgen%
+}
+
+Eine Folge $x_0, x_1, \dotsc$ in einem Quader
+\begin{align*}
+    Q := [a_1, b_1] \times \dotsb \times [a_n, b_n]
+\end{align*}
+heißt \textbf{gleichverteilt}, falls
+\begin{align*}
+    \lim_{\ell \to \infty} \frac{|\{x_k \in Q' \;|\; k < \ell\}|}{\ell}
+    = \frac{\vol Q'}{\vol Q}
+\end{align*}
+für alle Teilquader $Q' \subseteq Q$.
+
+Allgemeiner heißt die Folge \textbf{$m$-verteilt}, falls
+\begin{align*}
+    \lim_{\ell \to \infty} \frac{|\{x_{k+1} \in Q'_1, \dotsc, x_{k+m} \in Q'_m
+    \;|\; k < \ell\}|}{\ell}
+    = \frac{\vol Q'_1 \dotsm \vol Q'_m}{\vol Q}
+\end{align*}
+für alle Teilquader $Q'_1, \dotsc, Q'_m \subseteq Q$.
+
+Eine Folge, die für alle $m \in \natural$ $m$-verteilt ist, heißt
+\textbf{$\infty$-verteilt}.
+
+\linie
+
+\name{Franklin} hat gezeigt, dass die Folge
+\begin{align*}
+    x_\ell := r^\ell \mod 1,\quad \ell = 0, 1, \dotsc
+\end{align*}
+für fast alle $r > 1$ $\infty$-verteilt in $[0, 1)$ ist. 
+
+\subsubsection{%
+    Konvergenz der Monte-Carlo-Integration%
+}
+
+Für eine gleichverteilte Folge $x_0, x_1, \dotsc$ in $[0, 1)$ gilt
+\begin{align*}
+    \lim_{\ell \to \infty} \frac{1}{\ell} \sum_{k<\ell} f(x_k) = \int_0^1 f
+\end{align*}
+für jede Riemann-integrierbare Funktion $f$.
+Das entsprechende Approximationsverfahren wird aufgrund der quasi zufälligen
+Wahl der Punkte $x_k$ als \textbf{Monte-Carlo-Integration} bezeichnet.
+
+\pagebreak
+
+\subsubsection{%
+    Transformation gleichverteilter Zahlenfolgen%
+}
+
+Ausgehend von einer gleichverteilten Folge $x_0, x_1, \dotsc$ in dem
+Standardintervall $[0, 1)$ können gleichverteilte Zahlen und Vektorfolgen
+auf allgemeineren Mengen konstruiert werden. \\
+Für $k = 0, 1, \dotsc$ ist
+\begin{itemize}
+    \item
+    $a + (b - a)x_k$ eine Folge in $[a, b)$,
+    
+    \item
+    $\lfloor m + (n - m)x_k \rfloor$ eine Folge in $\{m, \dotsc, n - 1\}$,
+    
+    \item
+    $U_k := (x_{mk}, \dotsc, x_{mk + m - 1})$ eine Folge in $[0, 1)^m$ und
+    
+    \item
+    $A U_k + b$ mit einer $m \times m$-Matrix $A$ und einem $m$-Vektor $b$
+    eine Folge in $A[0,1)^m + b$.
+\end{itemize}
+Außerdem ist für eine gleichverteilte Folge in einem Quader $Q$ die in einer
+Teilmenge $D \subseteq Q$ liegende Teilfolge gleichverteilt in $D$.
+
+\linie
+
+Sei $x_0, x_1, \dotsc$ eine gleichverteilte Folge in $[0, 1)$.
+
+Zur Simulation von Würfeln kann die Folge
+$n_k = 1 + 6 \lfloor x_k \rfloor$ verwendet werden.
+
+Eine Folge im abgeschlossenen Einheitskreis $D\colon u^2 + v^2 \le 1$
+erhält man durch die Transformation $(u_k, v_k) = 2(x_{2k}, x_{2k+1}) - (1, 1)$
+und Auswahl der Teilfolge, die in $D$ liegt.
+
+Gleichverteilte Permutationen von $\{1, \dotsc, n\}$, etwa zum Simulieren
+des Mischens von Karten, können durch die Reihenfolge der Indizes beim
+Sortieren der Komponenten gleichverteilter $n$-Vektoren generiert werden.
+
+\subsubsection{%
+    Multivariate Monte-Carlo-Integration%
+}
+
+Ist $u_0, u_1, \dotsc$ eine gleichverteilte Folge in einem Quader $Q$, so lässt
+sich ein Integral über ein Gebiet $D \subseteq Q$ durch
+\begin{align*}
+    \int_D f = \lim_{\ell \to \infty} \frac{\vol Q}{\ell}
+    \sum_{k < \ell,\; u_k \in D} f(u_k)
+\end{align*}
+approximieren (\textbf{multivariate Monte-Carlo-Integration}). \\
+Im Spezialfall $f = 1$ erhält man ein Verfahren zur Volumenbestimmung:
+\begin{align*}
+    \vol D = \lim_{\ell \to \infty} \frac{\vol Q}{\ell}
+    |\{u_k \in D \;|\; k < \ell\}|.
+\end{align*}
+
+\linie
+
+Der Vorteil multivariater Monte-Carlo-Integrationen ist die weitgehende
+Unabhängigkeit der Konvergenzrate von der Dimension.
+Monte-Carlo-Verfahren sind daher besonders in hohen Dimension gut geeignet
+(z.\,B. besser als Trapezregel).
+
+\pagebreak

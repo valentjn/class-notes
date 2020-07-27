@@ -1,0 +1,224 @@
+\optpart{%
+    \name{Hilbert}raumtheorie%
+}
+
+\section{%
+    Orthogonale Projektionen%
+}
+
+\subsection{%
+    Der Projektionssatz%
+}
+
+\begin{Satz}{Existenz und Eindeutigkeit des bestappr. Elements}\\
+    Seien $H$ ein Hilbertraum und
+    $A \subset H$ eine nicht-leere, abgeschlossene und \begriff{konvexe} Teilmenge, d.\,h.
+    $\forall_{x, y \in A} \forall_{\lambda \in [0, 1]}\; \lambda x + (1 - \lambda) y \in A$.
+    Dann gilt
+    $\forall_{x_0 \in H} \exists!_{y_0 \in A}\;
+    \norm{x_0 - y_0} = \dist(x_0, A)$.\\
+    $y_0$ heißt \begriff{bestapproximierendes Element} an $x_0$ in $A$.
+\end{Satz}
+
+\begin{Satz}{Charakterisierung des bestappr. Elements als orthogonale Projektion}\\
+    Seien $H$ ein Hilbertraum und $M \subset H$ ein Unterraum.
+    Dann ist $y_0 \in M$ bestapproximierend an $x_0 \in H$ in $M$ genau dann, wenn
+    $\forall_{y \in M}\; \sp{x_0 - y_0, y} = 0$
+    (also $x_0 - y_0 \in M^\orth$).\\
+    $y_0$ heißt in diesem Fall die \begriff{orthogonale Projektion} von $x_0$ auf $M$.
+\end{Satz}
+
+\begin{Satz}{Projektionssatz}
+    Seien $H$ ein Hilbertraum und $M \subset H$ ein abgeschlossener Unterraum.\\
+    Dann gilt $\forall_{x_0 \in H} \exists!_{y_0 \in M} \exists!_{y_1 \in M^\orth}\;
+    x_0 = y_0 + y_1$,
+    also $H = M \oplus M^\orth$ (direkte Summe).\\
+    Dabei ist $M^\orth := \{y \in H \;|\; \forall_{x \in M}\; \sp{x, y} = 0\}$
+    das \begriff{orthogonale Komplement} von $M$ in $H$.
+\end{Satz}
+
+\begin{Kor}
+    Zu jedem abgeschlossenen, echten Unterraum $M$ eines Hilbertraums $H$ ($M \not= H$)
+    gibt es ein $z_0 \in M^\orth$ mit $z_0 \not= 0$ ($M^\orth \not= \{0\}$).
+\end{Kor}
+
+\begin{Bem}
+    Für jeden Unterraum $M \subset H$ gilt stets $M \cap M^\orth = \{0\}$.\\
+    Außerdem ist
+    $M^\orth = \bigcap_{x \in M} \{y \in H \;|\; \sp{x, y} = 0\}
+    = \bigcap_{x \in M} \sp{x, \cdot}^{-1}(0)$
+    abgeschlossen.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Orthonormalsysteme%
+}
+
+\begin{Def}{Orthonormalsystem}
+    Seien $(E, \sp{\cdot, \cdot})$ ein Skalarproduktraum und $e_i \in E$ für $i \in I$
+    ($I \not= \emptyset$ Indexmenge).
+    Die Familie $(e_i)_{i \in I}$ heißt \begriff{Orthonormalsystem (ONS)}, falls
+    $\forall_{i, j \in I}\; \sp{e_i, e_j} = \delta_{ij}$.
+\end{Def}
+
+\begin{Lemma}{orthogonale Projektion durch endliche ONS}
+    Sei $(e_i)_{i \in I}$ ein endliches ONS in $E$.\\
+    Dann liefert die Zuordnung $P_I\colon E \rightarrow E_I$,
+    $P_I(x) := \sum_{i \in I} \sp{x, e_i} e_i$ die orthogonale Projektion von $x$ auf
+    $E_I := [\{e_i \;|\; i \in I\}]$
+    und es gilt $\forall_{x \in E}\; \norm{x}^2 =
+    \sum_{i \in I} |\sp{x, e_i}|^2 + \norm{x - P_I(x)}^2$.\\
+    Außerdem sind die $(e_i)_{i \in I}$ linear unabhängig.
+\end{Lemma}
+
+\begin{Lemma}{\name{Bessel}sche Ungleichung}
+    Sei $(e_i)_{i \in I}$ ein beliebiges ONS in $E$.\\
+    Dann gilt $\forall_{x \in E}\; \sum_{i \in I} |\sp{x, e_i}|^2 \le \norm{x}^2$.
+\end{Lemma}
+
+\begin{Satz}{Äquivalenzen für abzählbare ONS}
+    Für jedes höchstens abzählbare ONS $(e_i)_{i \in I}$ ($I \subset \natural$)
+    in einem Skalarproduktraum $(E, \sp{\cdot, \cdot})$ sind äquivalent:
+    \begin{enumerate}
+        \item
+        $[\{e_i \;|\; i \in I\}]$ ist dicht in $E$.
+        
+        \item
+        $\forall_{x \in E}\; x = \sum_{i \in I} \sp{x, e_i} e_i$
+        
+        \item
+        $\forall_{x \in E}\; \norm{x}^2 = \sum_{i \in I} |\sp{x, e_i}|^2$
+        (\begriff{\name{Parseval}sche Gleichung})
+    \end{enumerate}
+    Ist $E$ ein Hilbertraum, dann ist zusätzlich jede dieser Aussagen äquivalent zu
+    \begin{enumerate}[start=4]
+        \item
+        $(e_i)_{i \in I}$ \begriff{maximal}, d.\,h. es gibt kein $y \in E \setminus \{0\}$ mit
+        $\forall_{i \in I}\; \sp{y, e_i} = 0$.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bem}
+    Wenn die Parsevalsche Gleichung oder eine der äquivalenten Aussagen gilt,
+    so spricht man auch oft von einer
+    \begriff{Orthonormalbasis (ONB)} $(e_i)_{i \in I}$
+    (i.\,A. aber keine Vektorraum-Basis)
+    oder einem \begriff{vollständigen ONS}.
+    In diesem Fall gilt
+    $\norm{\sum_{i \in I} \alpha_i e_i}^2 = \sum_{i \in I} |\alpha_i|^2$
+    für jede Folge $(\alpha_i)_{i \in I}$ in $\KK$, wie man sich leicht herleiten kann
+    (Verallgemeinerung des Satzes von Pythagoras).
+\end{Bem}
+
+\linie
+
+\begin{Def}{separabel}
+    Sei $(M, d)$ ein metrischer Raum.
+    Eine Teilmenge $T \subset M$ heißt \begriff{separabel}, falls es eine höchstens abzählbare
+    Teilmenge $A \subset M$ gibt, die dicht in $T$ ist.
+\end{Def}
+
+\begin{Satz}{Äquivalenz für separable Hilberträume}
+    Sei $H$ ein Hilbertraum. Dann sind äquivalent:
+    \begin{enumerate}
+        \item
+        $H$ ist separabel.
+        
+        \item
+        $H$ besitzt ein maximales, höchstens abzählbares ONS.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bsp}
+    \begin{enumerate}[label=\emph{(\alph*)}]
+        \item
+        Sei $H := L^2([0, 2\pi], \real)$.
+        Dann ist $\{\frac{1}{\sqrt{2\pi}}, g_1, h_1, g_2, h_2, \dotsc\}$
+        mit $g_n(x) := \frac{1}{\sqrt{\pi}} \cos(nx)$,\\
+        $h_n(x) := \frac{1}{\sqrt{\pi}} \sin(nx)$
+        eine abzählbare ONB.
+        Es gilt für alle $f \in H$, dass\\
+        $f(x) = \frac{1}{2\pi} \int_0^{2\pi} f(t)\dt +
+        \frac{1}{\pi} \sum_{n=1}^\infty \left(\int_0^{2\pi} f(t)\cos(nt)\dt\right) \cos(nx) \;+$\\
+        $+\; \frac{1}{\pi} \sum_{n=1}^\infty \left(\int_0^{2\pi} f(t)\sin(nt)\dt\right) \sin(nx)$,
+        wobei diese Reihen bzgl. der $L^2$-Norm konvergieren.
+        
+        \item
+        Sei $H := L^2([0, 2\pi], \complex)$.
+        Dann ist $(f_n)_{n \in \integer}$ mit $f_n(x) := \frac{1}{\sqrt{2\pi}} e^{\iu nx}$
+        eine abzählbare ONB.
+        Es gilt für alle $f \in H$, dass
+        $f(x) = \frac{1}{2\pi} \sum_{n=-\infty}^{+\infty}
+        \left(\int_0^{2\pi} f(t) e^{-\iu nt} \dt\right) e^{\iu nx}$,
+        wobei diese Reihe bzgl. der $L^2$-Norm konvergiert.
+    \end{enumerate}
+\end{Bsp}
+
+\pagebreak
+
+\subsection{%
+    Der \name{Riesz}sche Darstellungssatz%
+}
+
+\begin{Bem}
+    Jede lineare Abbildung $\ell\colon \real^n \rightarrow \real$ lässt sich durch eine
+    Matrix $L = \smallpmatrix{L_1 & \cdots & L_n}$ mit $L \in \real^{1 \times n}$ darstellen,
+    d.\,h. es gilt $\ell(x) = Lx = \sp{\smallpmatrix{L_1 \\ \vdots \\ L_n},
+    \smallpmatrix{x_1 \\ \vdots \\ x_n}}_2 = \sp{L^T, x}$ mit $L^T \in \real^n$.
+    Es ist überraschend, dass sich das auf Hilberträume verallgemeinern lässt.
+\end{Bem}
+
+\begin{Satz}{\name{Riesz}scher Darstellungssatz}
+    Seien $H$ ein Hilbertraum und $\ell \in H'$.\\
+    Dann gibt es genau ein $y \in H$ mit $\forall_{x \in H}\; \ell(x) = \sp{x, y}$.
+    Es gilt $\norm{\ell} = \norm{y}$.
+\end{Satz}
+
+\begin{Kor}\\
+    Seien $H$ ein Hilbertraum und $\R\colon H \rightarrow H'$, $y \mapsto \R y$ mit
+    $(\R y)(x) := \sp{x, y}$ für $x \in H$.\\
+    Dann ist $\R$ für $\KK = \real$ ein isometrischer Isomorphismus und\\
+    für $\KK = \complex$ ein \begriff{isometrischer, konjugiert linearer Isomorphismus}
+    (d.\,h. $\R$ ist eine Isometrie,\\
+    $\forall_{y_1, y_2 \in H} \forall_{\alpha \in \complex}\;
+    \R(y_1 + \alpha y_2) = \R y_1 + \overline{\alpha} \R y_2$,
+    $\R$ ist bijektiv und $\R, \R^{-1}$ sind stetig).
+\end{Kor}
+
+\linie
+
+\begin{Satz}{Charakterisierung des darstellenden Elements}\\
+    Seien $H$ ein Hilbertraum, $y \in H$ und $\ell \in H'$.\\
+    Dann gilt $\forall_{x \in H}\; \ell(x) = \sp{x, y}$
+    genau dann, wenn\\
+    $\frac{1}{2} \sp{y, y} - \Re(\ell(y)) =
+    \min_{x \in H} \left(\frac{1}{2} \sp{x, x} - \Re(\ell(x))\right)$.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{Satz von \upshape\,\!\name{Lax}-\name{Milgram}}
+    Seien $H$ ein Hilbertraum und $a\colon H \times H \rightarrow \KK$ \begriff{sesquilinear}\\
+    (d.\,h. linear im ersten und konjugiert linear im zweiten Argument).\\
+    Außerdem gebe es Konstanten $c_0, C_0 \in \real$ mit $0 < c_0 < C_0 < \infty$, sodass
+    \begin{enumerate}
+        \item
+        $\forall_{x, y \in H}\; |a(x, y)| \le C_0 \norm{x} \norm{y}$
+        (Stetigkeit von $a$) und
+        
+        \item
+        $\forall_{x \in H}\; \Re(a(x, x)) \ge c_0 \norm{x}^2$
+        (\begriff{Koerzitivität} von $a$).
+    \end{enumerate}
+    Dann gibt es zu jedem $\ell \in H'$ genau ein $z \in H$ mit
+    $\forall_{y \in H}\; \ell(y) = a(y, z)$.
+    Es gilt $\norm{z} \le \frac{1}{c_0} \norm{\ell}$.\\
+    Außerdem existiert genau eine Abbildung $A\colon H \rightarrow H$ mit
+    $\forall_{x, y \in H}\; a(y, x) = \sp{y, Ax}$.\\
+    $A$ ist ein Isomorphismus mit $\norm{A} \le C_0$ und
+    $\norm{A^{-1}} \le \frac{1}{c_0}$.
+\end{Satz}
+
+\pagebreak

@@ -1,0 +1,145 @@
+\section{%
+    Mehr über Faktorräume und Körper%
+}
+
+\subsection{%
+    Die Isomorphiesätze%
+}
+
+\begin{Bem}
+    Im Folgenden sind $V, W, U$ (nicht notwendigerweise endlich-dimensionale)\\
+    $K$-Vektorräume.
+    Die Isomorphiesätze gelten mit kleinen Änderungen auch für
+    Gruppen, Ringe, $K$-Algebren usw.
+\end{Bem}
+
+\begin{Def}{faktorisiert}
+    Ein Homomorphismus $f: V \rightarrow W$ \begriff{faktorisiert} über $U$,
+    falls es Homomorphismen $g: V \rightarrow U$ und $h: U \rightarrow W$
+    gibt, sodass $f = h \circ g$ ist.
+    Man sagt, dass das entsprechende Diagramm dann kommutiert.
+\end{Def}
+
+\begin{Satz}{1. Isomorphiesatz}
+    Seien $f: V \rightarrow W$ ein Homomorphismus und $U \ur \ker f$. \\
+    Dann faktorisiert $f$ eindeutig über $V/U$, genauer:
+    Es gibt genau einen Homomorphismus \\
+    $\widetilde{f}: V/U \rightarrow W$,
+    sodass $\widetilde{f} \circ \pi = f$ ist, wobei $\pi: V \rightarrow V/U$
+    die natürliche Projektion ist
+    (es gilt $\widetilde{f}(v + U) = f(v)$).
+    Darüber hinaus gilt $\im f = \im \widetilde{f}$
+    sowie $\ker \widetilde{f} = (\ker f)/U \ur V/U$.
+\end{Satz}
+
+\begin{Kor}
+    Sei $f: V \rightarrow W$ ein Homomorphismus. \\
+    Dann induziert $f$ einen Monomorphismus
+    $\widetilde{f}: V/\ker f \rightarrow W$.
+    Insbesondere sind $V/\ker f$ und $\im f$ isomorph (der Isomorphismus
+    ist gegeben durch $\widetilde{f}: V/\ker f \rightarrow \im f$).
+\end{Kor}
+
+\begin{Kor}
+    Sei $f: V \rightarrow W$ ein Homomorphismus.
+    Dann ist $\dim_K V = \dim_K \im f + \dim_K \ker f$
+    (insbesondere ist $\dim_K V = \dim_K W + \dim_K \ker f$, falls $f$ ein
+    Epimorphismus ist).
+\end{Kor}
+
+\begin{Satz}{Folgerung aus 1. Isomorphiesatz}
+    Seien $f: V \rightarrow W$ ein Homomorphismus und $X \ur W$. \\
+    Dann ist $f^{-1}(X) = \{v \in V \;|\; f(x) \in X\}$ ein Unterraum von
+    $V$, der $\ker f$ enthält. \\
+    Gilt sogar $X \ur \im f$, dann ist $f^{-1}(X) / \ker f \cong X$ und
+    $X \mapsto f^{-1}(X)$ ist eine inklusionserhaltende Bijektion zwischen
+    der Menge der Unterräume von $\im f$ und der Menge der Unterräume von
+    $V$, die $\ker f$ enthalten.
+    Diese Inklusion respektiert Summe und Durchschnitt von Unterräumen.
+\end{Satz}
+
+\begin{Satz}{2. Isomorphiesatz}
+    Seien $U, W \ur V$, dann ist
+    $(U + W)/U \cong W/(U \cap W)$.
+\end{Satz}
+
+\begin{Satz}{3. Isomorphiesatz}
+    Sei $U \ur W \ur V$. \\
+    Dann ist $W/U \ur V/U$ sowie
+    $(V/U)\big/(W/U) \cong V/W$.
+\end{Satz}
+
+\begin{Satz}{Kor}
+    Seien $f: V \rightarrow W$ ein Homomorphismus, $U = \ker f \ur V$
+    und $U'$ ein Komplement von $U$ in $V$ (d.\,h. $U \oplus U' = V$). \\
+    Dann ist $f$ auf $U'$ eingeschränkt ein Isomorphismus von $U'$ auf
+    $\im f$. \\
+    Ist insbesondere $\basis{A} = (v_1, \ldots, v_k, v_{k+1}, \ldots, v_n)$
+    eine Basis von $V$, sodass $(v_1, \ldots, v_k)$ eine Basis von $U'$ und
+    $(v_{k+1}, \ldots, v_n)$ eine Basis von $U$ ist, so ist
+    $(f(v_1), \ldots, f(v_k))$ eine Basis von $\im f$.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Mehr über Körper%
+}
+
+\begin{Lemma}{ggT}
+    Seien $p, q \in \natural$ sowie $d \in \natural$ der ggT von $p$ und
+    $q$. \\
+    Dann gibt es $a, b \in \integer$, sodass $ap + bq = d$ ist.
+\end{Lemma}
+
+\begin{Satz}{Restklassenkörper}
+    $\integer/(n)$ ist ein Körper genau dann, wenn $n$ eine Primzahl ist.
+\end{Satz}
+
+\begin{Def}{Unterkörper}
+    Eine Teilmenge $F \subseteq K$ eines Körpers $K$ heißt
+    \begriff{Unterkörper} von $K$,
+    wenn $F$ mit der Addition und mit der Multiplikation von $K$ eingeschränkt
+    auf $F$ wieder einen Körper bildet.
+    Es gilt $1_F = 1_K$ sowie $0_F = 0_K$.
+\end{Def}
+
+\begin{Lemma}{kleinster Unterkörper}
+    Jeder Körper $K$ besitzt einen kleinsten Unterkörper, d.\,h. einen
+    Unterkörper, der in jedem Unterkörper enthalten ist
+    (dieser kleinste Unterkörper ist der Durchschnitt aller Unterkörper).
+\end{Lemma}
+
+\begin{Def}{Primkörper}
+    Den kleinsten Unterkörper eines Körpers $K$ nennt man \begriff{Primkörper}
+    von $K$.
+\end{Def}
+
+\begin{Lemma}{$\rational$, $\integer/(n)$ haben keine echten Unterkörper}
+    Die Körper $\rational$ und $\integer/(n)$ haben keine echten Unterkörper
+    und sind daher ihre eigenen Primkörper.
+\end{Lemma}
+
+\begin{Def}{Charakteristik}
+    Die \begriff{Charakteristik} $\char(K)$ eines Körpers $K$ ist definiert
+    als \\
+    $\char(K) = p \in \natural$, falls $p$ die kleinste natürliche Zahl
+    ist mit $\overbrace{1_K + \ldots + 1_K}^{p-\text{mal}} = 0_K$ \\
+    und $\char(K) = 0$, falls es keine solche Zahl gibt. \\
+    Ist $\char(K) = p > 0$, so ist $p$ eine Primzahl.
+\end{Def}
+
+\begin{Satz}{$\rational$, $\integer/(n)$ als einzige Primkörper}
+    Sei $K$ ein Körper. \\
+    Ist $\char(K) = 0$, dann ist der Primkörper von $K$ isomorph zu
+    $\rational$. \\
+    Ist $\char(K) = p > 0$, dann ist der Primkörper von $K$ isomorph zu
+    $\integer/(p)$.
+\end{Satz}
+
+\begin{Lemma}{$|K| = p^n$}
+    Ist $K$ ein endlicher Körper, so ist $|K| = p^n$ für eine Primzahl
+    $p$, $n \in \natural$.
+\end{Lemma}
+
+\pagebreak

@@ -1,0 +1,674 @@
+\section{%
+    Gruppen%
+}
+
+\subsection{%
+    Gruppen, Homomorphismen, Untergruppen%
+}
+
+\begin{Def}{Gruppe}
+    Eine \begriff{Gruppe} $(G, \ast)$ ist eine Menge $G$ mit einer Abbildung\\
+    $\ast\colon G \times G \rightarrow G$,
+    $(g_1, g_2) \mapsto g_1 \ast g_2$, sodass gilt:
+    \begin{enumerate}[label=(G\arabic*)]
+        \item
+        \begriff{Assoziativität}: $\forall_{g_1, g_2, g_3 \in G}\; 
+        g_1 \ast (g_2 \ast g_3) = (g_1 \ast g_2) \ast g_3$
+        
+        \item
+        \begriff{neutrales Element}: $\exists_{e \in G} \forall_{g \in G}\;
+        e \ast g = g = g \ast e$
+        
+        \item
+        \begriff{inverse Elemente}: $\forall_{g \in G}
+        \exists_{h = g^{-1} \in G}\; g \ast h = e = h \ast g$
+    \end{enumerate}
+\end{Def}
+
+\begin{Def}{endlich, abelsch, zyklisch}
+    Eine Gruppe $(G, \ast)$ heißt
+    \begin{itemize}
+        \item
+        \begriff{endlich}, falls $G$ eine endliche Menge ist,
+        
+        \item
+        \begriff{abelsch} (\begriff{kommutativ}),
+        falls $\forall_{g_1, g_2 \in G}\; g_1 \ast g_2 = g_2 \ast g_1$, und
+        
+        \item
+        \begriff{zyklisch}, falls
+        $\exists_{g \in G}\; G = \{g^n \;|\; n \in \integer\}$\\
+        (dabei ist $g^n = g \ast \dotsb \ast g$, $g^0 = e$ und
+        $g^{-n} = g^{-1} \ast \dotsb \ast g^{-1}$
+        für $n \in \natural$).
+    \end{itemize}
+\end{Def}
+
+\begin{Def}{Gruppenhomomorphismus}
+    Seien $(G, \ast_G)$ und $(H, \ast_H)$ Gruppen.
+    Eine Abbildung\\
+    $\varphi\colon G \rightarrow H$ heißt
+    \begriff{Gruppenhomomorphismus}, falls $\forall_{g, g' \in G}\;
+    \varphi(g \ast_G g') = \varphi(g) \ast_H \varphi(g')$.
+\end{Def}
+
+\begin{Bem}
+    Das neutrale Element einer Gruppe $(G, \cdot)$ ist eindeutig, denn
+    sind $e$ und $e'$ neutrale Elemente, so gilt $e = e \cdot e' = e'$.\\
+    Genauso ist das zu $g$ inverse Element eindeutig,
+    denn sind $h$ und $h'$ invers zu $g$, so gilt\\
+    $g \cdot h = e = h' \cdot g$, daraus folgt
+    $h = e \cdot h = (h' \cdot g) \cdot h =
+    h' \cdot (g \cdot h) = h' \cdot e = h'$.
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Die kleinste Gruppe ist $G = \{e\}$ mit $e \cdot e := e$
+    ($G = \emptyset$ ist keine Gruppe,
+    da kein neutrales Element vorhanden ist).\\
+    Eine bekannte Gruppe ist $(\integer, +)$ mit $e := 0$ und $g^{-1} := -g$.
+    Sie ist zyklisch (z.\,B. mit $g = 1$ in obiger Definition).
+    Dagegen ist $(\integer, \cdot)$ keine Gruppe, weil $0$ kein inverses
+    Element besitzt.\\
+    Ist $X$ eine Menge, dann ist
+    $S(X) := \{f \colon X \rightarrow X \;|\; f\text{ bijektiv}\}$
+    eine Gruppe mit $f \ast g := g \circ f$ und $e := \id_X$.
+    Speziell ergibt sich für $X = \{1, \dotsc, n\}$ die symmetrische Gruppe
+    $\Sigma_n := S(X)$ der Permutationen von $n$ Elementen.\\
+    Ist $V$ ein $K$-Vektorraum, dann ist
+    $\GL(V) = \{f \colon V \rightarrow V \;|\; f\text{ linear, bijektiv}\}$
+    eine Gruppe, ähnlich wie eben $S(X)$.
+    Für $\dim V = n$ ist $V \simeq K^n$ und $\GL(V) \simeq \GL_n$
+    mit $\GL_n$ der Gruppe der invertierbaren $n \times n$-Matrizen
+    mit Einträgen in $K$.\\
+    Für ein gleichseitiges Dreieck entspricht die Symmetriegruppe
+    (Drehungen und Spiegelungen an Mittelsenkrechten, die jeden Punkt wieder
+    auf einen Punkt überführen) $\Sigma_3$.
+    Die Symmetriegruppe eines Quadrates ist dagegen eine echte Teilmenge
+    von $\Sigma_4$, d.\,h. es gibt Permutationen der Ecken, die man nicht mit
+    Drehungen und Spiegelungen erreichen kann.
+\end{Bsp}
+
+\linie
+
+\begin{Def}{Untergruppe}
+    Sei $(G, \ast)$ eine Gruppe.\\
+    Eine Teilmenge $H \subset G$ heißt \begriff{Untergruppe} von $(G, \ast)$
+    ($H < G$), falls $(H, \ast)$ eine Gruppe ist.\\
+    Das bedeutet:
+    $\forall_{h_1, h_2 \in H}\; h_1 \ast h_2 \in H$, $e \in H$ und
+    $\forall_{h \in H}\; h^{-1} \in H$.
+\end{Def}
+
+\begin{Bsp}
+    $H = (n\integer, +)$ ist eine Untergruppe von $G = (\integer, +)$ für
+    festes $n \in \natural$.\\
+    Es gilt $g \in H \iff n \;|\; g$.
+    Ist $a \in \integer$, so kann man Division mit Rest durchführen, d.\,h.
+    $a = bn + r$ mit $0 \le |r| < n$.
+    Damit kann man $\integer$ in disjunkte Mengen aufteilen:\\
+    $\integer = (n\integer) \dcup (n\integer + 1) \dcup \dotsb \dcup
+    (n\integer + (n - 1))$.
+\end{Bsp}
+
+\subsection{%
+    Nebenklassen und Normalteiler%
+}
+
+\begin{Def}{Nebenklasse}
+    Seien $(G, \ast)$ eine Gruppe, $H < G$ und $x \in G$.
+    Die Menge $xH := \{x \ast h \;|\; h \in H\}$ heißt
+    \begriff{Linksnebenklasse} von $x$.
+    Entsprechend heißt $Hx := \{h \ast x \;|\; h \in H\}$
+    \begriff{Rechtsnebenklasse}.
+\end{Def}
+
+\begin{Bem}
+    Für $x \in H$ gilt $xH = \{x \ast h \;|\; h \in H\} = H$.\\
+    Für $x \notin H$ gibt es eine Bijektion zwischen $H$ und $xH$
+    ($h \mapsto xh$).
+    Damit sind alle Linksnebenklassen gleich groß
+    (bijektiv aufeinander abbildbar).\\
+    Für $x, y \in G$ gilt $xH = yH$ oder $xH \cap yH = \emptyset$
+    (daraus folgt, dass es eine Partition von $G = \bigdcup x_i H$
+    für gewisse $x_i \in G$ gibt).\\
+    Definiert man $x \sim_H y$ für $xH = yH$ ($\!\!\iff y^{-1} x \in H$),
+    so ist $\sim_H$ eine Äquivalenzrelation,
+    deren Äquivalenzklassen genau die Linksnebenklassen von $H$ sind
+    (analog Rechtsnebenklassen).\\
+    Im Beispiel $G = \integer$, $H = n\integer$ ist
+    $x \sim_H y \iff x - y \in H \iff x \equiv y \mod n$.\\
+    Hier ist $\integer/n\integer$ wieder eine Gruppe
+    ($\overline{a} + \overline{b} := (a + b) + n\integer$ für
+    $\overline{a} = a + n\integer$ und $\overline{b} = b + n\integer$).\\
+    Im Allgemeinen bilden die Linksnebenklassen jedoch keine Gruppe:\\
+    Für $H < G$ ist $(xH) \ast (yH) := (x \ast y)H$ i.\,A. nicht wohldefiniert.
+\end{Bem}
+
+\begin{Bsp}
+    Ein Beispiel dafür ist $G = \Sigma_3$ und $H = \{\id, (1 2)\}$.\\
+    Es gibt die drei Linksnebenklassen
+    $H = \id H$,
+    $(2 3)H = \{(2 3), (1 2 3)\}$ und
+    $(1 3)H = \{(1 3), (1 3 2)\}$.\\
+    Damit ist $\Sigma_3 = H \dcup (2 3)H \dcup (1 3)H$.
+    $(23)H \ast (13)H$ ist mit obiger Verknüpfung nicht wohl\-definiert, denn
+    $(23)(13) = (132) \in (13)H$ und
+    $(123)(13) = (12) \in H$, aber $(13)H \cap H = \emptyset$.\\
+    Verschiedene Repräsentanten liefern also verschiedene Ergebnisse.
+\end{Bsp}
+
+\linie
+
+\begin{Def}{Normalteiler}
+    Sei $H < G$.
+    $H$ heißt \begriff{normal} (\begriff{Normalteiler}, $H \nt G$), falls
+    $\forall_{g \in G}\; gH = Hg$.
+\end{Def}
+
+\begin{Bem}
+    Es gilt
+    $gH = Hg \iff gHg^{-1} = H \iff \forall_{h \in H}\; ghg^{-1} \in H$.
+\end{Bem}
+
+\begin{Prop}{Faktorgruppe}
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        Seien $N \nt G$ und $G/N := \{gN \;|\; g \in G\}$
+        die Menge der Linksnebenklassen.\\
+        Dann ist $G/N$ eine Gruppe mit der Multiplikation
+        $g_1 N \ast g_2 N := (g_1 \ast g_2) N$.\\
+        $G/N$ heißt \begriff{Faktorgruppe} oder \begriff{Quotientengruppe}.
+        
+        \item
+        Seien $\varphi\colon G \rightarrow G'$ surjektiver
+        Gruppenhomomorphismus,\\
+        $H = \Kern(\varphi) :=
+        \{g \in G \;|\; \varphi(g) = e_{G'}\}$.
+        Dann ist $H \nt G$ und $G/H \simeq G'$.
+    \end{enumerate}
+\end{Prop}
+
+\begin{Bem}
+    Teil (a) besagt, dass $G/H$ eine Gruppe ist, falls $H \nt G$.\\
+    Andersherum: Ist $H < G$, sodass $G/H$ eine Gruppe ist, so ist
+    $\varphi\colon G \rightarrow G/H$, $g \mapsto gH$ ein surjektiver
+    Gruppenhomomorphismus, d.\,h. $H = \Kern(\varphi) \nt G$ nach Teil (b).\\
+    Also gilt: $G/H$ ist eine Gruppe genau dann, wenn $H \nt G$.
+\end{Bem}
+
+\begin{Bsp}
+    In einer abelschen Gruppe ist jede Untergruppe ein Normalteiler
+    (z.\,B. $n\integer \nt \integer$).\\
+    Ist $H < G$, sodass es genau zwei Nebenklassen gibt, so gilt ebenfalls
+    $H \nt G$, denn die Nebenklassen sind $H$ und $G \setminus H$.
+    Für $g \notin H$ gilt $gH = G \setminus H = Hg$ und
+    für $g \in H$ gilt $gH = H = Hg$.
+    Zum Beispiel folgt aus $|G| < \infty$ und $|H| = \frac{|G|}{2}$, dass
+    $H \nt G$, da $|H| = |gH|$.\\
+    Ein Beispiel ist $G = \Sigma_3$ mit $H = \{\id, (123), (132)\}$.
+    $H$ hat halb so viele Elemente wie $G$ ($|G| = 3! = 6$,
+    $\ord(H) := |H| = 3$), damit muss $H \nt G$ gelten.
+\end{Bsp}
+
+\pagebreak
+
+\subsection{%
+    Zyklische Gruppen%
+}
+
+\begin{Bem}
+    Jede zyklische Gruppe $G = \{g^n \;|\; n \in \natural\}$
+    ist abelsch, da\\
+    $g^n g^\ell = g^{n+\ell} = g^{\ell+n} = g^\ell g^n$.
+    $|G|$ bestimmt $G$ bis auf Isomorphie (siehe nächster Satz).
+\end{Bem}
+
+\begin{Satz}{Klassifikation der zyklischen Gruppen}
+    Jede zyklische Gruppe $G$ ist isomorph zu genau einer der Gruppen
+    $\integer$ oder $\integer/m\integer$ für ein $m \in \natural$
+    (dabei ist $m = |G|$).
+\end{Satz}
+
+\begin{Bsp}
+    Nicht jede abelsche Gruppe ist zyklisch.
+    Sei $G = \integer/4\integer \times \integer/2\integer$
+    die abelsche Gruppe mit komponentenweiser Multiplikation
+    ($(g_1, h_1) \cdot (g_2, h_2) := (g_1 \cdot g_2, h_1 \cdot h_2)$).
+    Wäre $G$ zyklisch, so würde es einen Isomorphismus
+    $\integer/8\integer \rightarrow \integer/4\integer \times
+    \integer/2\integer$ geben, der $0$ auf $(0, 0)$,
+    $1$ auf $(a, b)$ und $4$ auf $(4a, 4b)$ abbildet.
+    Wegen $a \in \integer/4\integer$, $b \in \integer/2\integer$ gilt
+    aber $4a = 4b = 0$, d.\,h. $4 \mapsto (0, 0)$, ein Widerspruch.
+\end{Bsp}
+
+\begin{Bem}
+    Welche Untergruppen hat die zyklische Gruppe $G = (\integer, +)$?
+    Sei $H < G$ beliebig mit $H \not= \{0\}$.
+    Definiere $n \in \natural \cap H$ minimal
+    ($n$ existiert, da $\widetilde{n} \in H$ existiert mit $H \not= 0$,
+    falls notwendig, invertiere $\widetilde{n}$, damit $n \in \natural$,
+    $n \in H$, da $H < G$).
+    Dann gilt $n\integer \subset H$.
+    Falls $n\integer \subsetneqq H$ gelten würde, gäbe es ein minimales
+    $\ell \in \natural \cap (H \setminus n\integer)$ mit $\ell > n$
+    (analoge Argumentation wie eben).
+    Teilen mit Rest ergibt $\ell = kn + r$ mit $0 \le r < n$.
+    Wegen $\ell, kn \in H$ gilt $r = \ell - kn \in H$.
+    Aufgrund $r < n$ und $n$ minimal mit $n \in \natural \cap H$ gilt
+    $r = 0$, d.\,h. $\ell = kn$, ein Widerspruch,
+    denn dann wäre $\ell \in n\integer$.
+    Daher sind alle Untergruppen von $(\integer, +)$ von der Form $n\integer$.
+\end{Bem}
+
+\linie
+
+\begin{Def}{Ordnung}
+    Sei $G$ eine Gruppe.
+    Die \begriff{Ordnung} von $G$ ist $\ord(G) := |G|$.\\
+    Die \begriff{Ordnung} von $g \in G$ ist
+    $\ord(g) := \min\{\ell \in \natural \;|\; g^\ell = e\}$.
+\end{Def}
+
+\begin{Prop}{zyklische Gruppen}
+    Sei $G = \erzeugnis{g}$ eine zyklische Gruppe.
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        Es gilt $\ord(G) = n \in \natural \cup \{\infty\}$ mit
+        $\ord(G) = \ord(g) = \min\{\ell \in \natural \;|\; g^\ell = e\}$.
+        
+        \item
+        Für $|G| < \infty$ und $s \in \integer$
+        gilt $\ord(g^s) = \frac{n}{\ggT(n, s)}$.
+        
+        \item
+        Jede Untergruppe $H$ von $G$ ist zyklisch.
+        
+        \item
+        Für $|G| < \infty$ und $d \teilt n$ gibt es genau eine Untergruppe
+        $H < G$ mit $|H| = d$, nämlich $H = \erzeugnis{g^{n/d}}$
+        (d.\,h. umgekehrt gibt es für jedes $H < G$ ein $d \teilt n$ mit
+        $H = \erzeugnis{g^{n/d}}$).
+    \end{enumerate}
+\end{Prop}
+
+\begin{Bsp}
+    $G = \integer/6\integer$ hat genau die Untergruppen
+    $\integer/6\integer$, $\integer/3\integer$, $\integer/2\integer$ und 
+    $\integer/1\integer = \{e\}$.
+\end{Bsp}
+
+\begin{Bem}
+    Für zyklische Gruppen $G$ und $H < G$ gilt $|H| \teilt |G|$.
+    Das gilt immer (siehe nächste Proposition).
+\end{Bem}
+
+\linie
+
+\begin{Def}{Index}
+    Seien $G$ eine Gruppe und $H < G$.
+    Die Anzahl $|G/H|$ der Linksnebenklassen von $H$ heißt der
+    \begriff{Index} $[G:H]$ von $H$ in $G$.
+\end{Def}
+
+\begin{Prop}{Satz von \upshape\,\!\name{Lagrange}}
+    Seien $G$ eine Gruppe und $H < G$.\\
+    Dann gilt $|G| = [G:H] \cdot |H|$, d.\,h.
+    insbesondere $|H| \teilt |G|$ für $|G| < \infty$.
+\end{Prop}
+
+\begin{Bem}
+    Seien $p$ eine Primzahl und $G = (\integer/p\integer, +)$.
+    Da $|G| = p$ nur $1$ und $p$ als Teiler hat, hat $G$ nur die
+    triviale Untergruppe $\{\overline{0}\}$ und die ganze Gruppe $G$
+    als Untergruppe.
+    Insbesondere gibt es keinen nicht-trivialen Normalteiler.
+\end{Bem}
+
+\begin{Def}{einfach}
+    Eine Gruppe $G$ ohne nicht-triviale Normalteiler heißt \begriff{einfach}.
+\end{Def}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    $\integer/n\integer$ ist keine Gruppe bzgl. $\cdot$, denn
+    $\overline{0}$ hat kein Inverses.
+    Für $n = a \cdot b$ ($a, b \not= 1$) gilt
+    $\overline{0} = \overline{n} = \overline{a} \cdot \overline{b}$, d.\,h.
+    $\overline{a}$ und $\overline{b}$ haben ebenfalls kein Inverses.
+    Lässt man diese Elemente (also die nicht-trivialen Teiler von $n$) weg,
+    so erhält man die multiplikative Gruppe\\
+    $(\integer/n\integer)^\ast := \{x \in \integer/n\integer \;|\;
+    x \text{ in } \integer/n\integer \text{ bzgl.} \cdot
+    \text{invertierbar}\}$.\\
+    Für Primzahlen $p$ gilt $(\integer/p\integer)^\ast =
+    \{\overline{1}, \overline{2}, \dotsc, \overline{p - 1}\}$,
+    denn aus dem Lemma von Bézout folgt, dass es für jedes
+    $a \in \{1, \dotsc, p - 1\}$ ganze Zahlen $r, s \in \integer$ gibt,
+    sodass $1 = \ggT(a, p) = ra + sp$.
+    Durch Bilden der Restklasse modulo $p$ ergibt
+    $\overline{1} = \overline{r} \cdot \overline{a}$,
+    d.\,h. $\overline{a}$ hat $\overline{r}$ als inverses Element.
+    Also gilt $\ord(\integer/p\integer)^\ast = p - 1$.
+    (Analog zeigt man so, dass $(\integer/n\integer)^\ast$ aus
+    $\integer/n\integer$ durch Entfernen der Nebenklassen aller Zahlen
+    entsteht, die nicht teilerfremd mit $n$ sind.)
+\end{Bem}
+
+\begin{Bem}
+    Allgemein gilt nach dem Satz von Lagrange für eine endliche Gruppe $G$,
+    $g \in G$ und $H := \erzeugnis{g} < G$, dass
+    $|H| \teilt |G|$.
+    Für $\ord(H) = n$ gilt $g^n = e$, d.\,h.
+    es gilt $g^{|G|} = e$ für endliche Gruppen $G$ und $g \in G$.
+\end{Bem}
+
+\begin{Kor}
+    Seien $p \in \natural$ eine Primzahl und
+    $x \in \integer$ mit $p \notteilt x$.\\
+    Dann gilt $p \teilt x^{p-1} - 1$, d.\,h.
+    $x^{p-1} \equiv 1 \mod p$
+    (\begriff{kleiner Satz von \name{Fermat}}).
+\end{Kor}
+
+\begin{Bem}
+    Die Schreibweise $a \equiv b \mod p$ ist erklärt durch
+    $a - b \in p\integer$, d.\,h. $p \teilt a - b$.
+    Wegen $\overline{x} \overline{x}^{p-2} = \overline{1}$ ist
+    somit $\overline{x}^{p-2}$ invers zu $\overline{x}$.
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Ein Beispiel für die Anwendung in der Kodierungstheorie ist die ISBN.
+    Sie hat die Form $a_1 - a_2 a_3 a_4 - a_5 a_6 a_7 a_8 a_9 - a_{10}$
+    mit $a_i \in \{0, \dotsc, 9\}$ für $i = 1, \dotsc 9$ und
+    $a_{10} \in \{0, \dotsc, 9, X\}$
+    ($X$ steht für $10$ als Zif"|fer).
+    $a_{10}$ ist eine sog. Prüfzif"|fer, mit ihr können einfache Fehler
+    (ein $a_i$ falsch) erkannt und eine unleserliche Stelle
+    berechnet werden.\\
+    $a_{10}$ berechnet sich nach der Formel
+    $\sum_{k=1}^{10} (11 - k) a_k \equiv 0 \mod 11$.
+    Sie kann umgeformt werden zu $a_{10} \equiv \sum_{k=1}^9 k a_k$,
+    da $(11 - k) \equiv -k \mod 11$ gilt.
+    Ist ein $a_i$ falsch, dann ist bei gegebener Prüfzif"|fer obige
+    Formel nicht mehr erfüllt.
+    Wenn ein $a_i$ (bei bekannter Stelle $i$) unleserlich ist,
+    kann dieses $a_i$ bei Kenntnis aller anderen Zif"|fern berechnet werden:\\
+    Weil $(\integer/11\integer)^\ast$ eine multiplikative Gruppe ist,
+    gibt es für jede der
+    $x_k := \overline{(11 - k)} \in (\integer/11\integer)^\ast$
+    ein Inverses $x_k^{-1}$.
+    Multipliziert man die Formel mit $x_i^{-1}$, so erhält man
+    $\sum_{k=1}^{10} x_i^{-1} (11 - k) a_k \equiv 0$.
+    Der Koef"|fizient vor $a_i$ ist $1$, daher ergibt sich eine Gleichung für
+    $a_i$.
+    Daher ist die Formel auch bei einem falschen $a_i$ nicht erfüllt.
+\end{Bsp}
+
+\pagebreak
+
+\subsection{%
+    Operationen von Gruppen auf Mengen%
+}
+
+\begin{Def}{Gruppenoperation}
+    Eine \begriff{(Links-)Operation} einer Gruppe $G$ auf einer Menge $M$
+    ist eine Abbildung $G \times M \rightarrow M$,
+    $(g, m) \mapsto gm$ mit den Eigenschaften:
+    \begin{enumerate}[label=(O\arabic*)]
+        \item
+        $\forall_{g_1, g_2 \in G, m \in M}\; (g_1 g_2) m = g_1 (g_2 m)$
+        
+        \item
+        $\forall_{m \in M}\; em = m$
+    \end{enumerate}
+    Man schreibt $G \curvearrowright M$ dafür,
+    dass $G$ auf $M$ operiert,
+    und man nennt $M$ eine \begriff{$G$-Menge}.
+\end{Def}
+
+\begin{Bsp}
+    Ein triviales Beispiel ist
+    $M := G$ mit $gm := g \cdot m$ (Multiplikation in $G$).
+    (O1) ist das Assoziativgesetz und
+    (O2) ist das Gesetz für das neutrale Element.
+    Für $g \in G$ ist die Abbildung $M \rightarrow M$, $m \mapsto gm$
+    die Linksmultiplikation mit $g$.
+    Sie hat eine inverse Abbildung (Linksmultiplikation mit $g^{-1}$), d.\,h.
+    $G$ kann in $\Sigma_G := \{\text{bij. Abb. } G \rightarrow G\}$
+    eingebettet werden (d.\,h. für verschiedene $g$ erhält man verschiedene
+    Abbildungen).
+\end{Bsp}
+
+\begin{Bsp}
+    $G = \Sigma_n \curvearrowright M = \{1, \dotsc, n\}$ durch
+    $g = \varphi\colon \{1, \dotsc, n\} \rightarrow \{1, \dotsc, n\}$,
+    $gm := g(m)$.
+\end{Bsp}
+
+\linie
+
+\begin{Bsp}
+    Für die Menge $G = \GL_n(\complex)$ aller invertierbaren
+    $n \times n$-Matrizen über $\complex$ und die Menge
+    $M = \Mat_n(\complex)$ aller $n \times n$-Matrizen über $\complex$ operiert
+    $G$ auf $M$ durch $m \mapsto g^{-1} m g \in M$
+    für $m \in M$ und $g \in G$ (Basiswechsel mittels $g$).
+    Betrachtet man nun die Bahn $G \cdot m = \{g \cdot m \;|\; g \in G\}$,
+    so erhält man alle zu $m$ ähnlichen Matrizen.
+    In der linearen Algebra ist nun eine "`Normalform"' gesucht, d.\,h.
+    eine Matrix mit "`besonders einfacher"' Gestalt
+    (Jordansche Normalform).
+\end{Bsp}
+
+\begin{Bsp}
+    Im allgemeineren Fall $M = \Mat(\ell \times m, \complex)$
+    (bijektiv zur Menge aller linearen Abbildungen $V \rightarrow U$
+    mit $\dim V = m$ und $\dim U = \ell$) und
+    $G = \GL_\ell(\complex) \times \GL_m(\complex)$ definiert man
+    $(g_1, g_2)m := g_1 m g_2^{-1}$, man führt also einen Basiswechsel
+    mit den Basiswechselmatrizen $g_1$ und $g_2$ durch.
+    Hier ergibt sich als Normalform die Zeilen-Stufen-Form
+    (Gauß-Elimination).
+\end{Bsp}
+
+\linie
+
+\begin{Def}{Bahn}
+    Die Gruppe $G$ operiere auf $M$.\\
+    Für $m \in M$ heißt $Gm := \{gm \;|\; g \in G\}$ die \begriff{Bahn}
+    von $m$ unter der Operation von $G$.\\
+    Die Operation heißt \begriff{transitiv}, falls
+    $\forall_{m \in M}\; Gm = M$ ($\!\!\iff
+    \forall_{m_1, m_2 \in M}\; \exists_{g \in G}\; g m_1 = m_2$).
+\end{Def}
+
+\begin{Def}{linksreguläre Permutationsdarstellung}
+    Ist $M = G$ und die Operation die Linksmultiplikation von $G$,
+    so heißt $M$ \begriff{linksreguläre Permutationsdarstellung}.
+\end{Def}
+
+\begin{Def}{Konjugation}
+    Ist $M = G$ und die Operation die \begriff{Konjugation}
+    (d.\,h. $m \mapsto gmg^{-1}$), so heißen die Bahnen
+    \begriff{Konjugationsklassen} (oder \begriff{Konjugiertenklassen}).
+\end{Def}
+
+\begin{Def}{Fixpunkt}
+    Ein $m \in M$ heißt \begriff{Fixpunkt}, falls $Gm = \{m\}$
+    ($\!\!\iff \forall_{g \in G}\; gm = m$).
+\end{Def}
+
+\begin{Def}{Stabilisator}
+    Für $m \in M$ heißt $G_m := \{g \in G \;|\; gm = m\}$
+    \begriff{Stabilisator} $\Stab_G(m)$ von $m$
+    (oder \begriff{Isotropiegruppe}).
+    Es gilt $G_m < G$.
+\end{Def}
+
+\begin{Def}{treu}
+    Die Operation von $G$ auf $M$ heißt \begriff{treu}, falls
+    $G \rightarrow \Sigma_M$, $g \mapsto (M \rightarrow M,\; m \mapsto gm)$
+    injektiv ist
+    (dabei ist $\Sigma_M = \{M \rightarrow M \text{ bijektiv}\}$).
+\end{Def}
+
+\linie
+
+\begin{Def}{Zentrum}
+    Für eine Gruppe $G$ heißt
+    $Z(G) := \{g \in G \;|\; \forall_{h \in G}\; gh = hg\}$
+    \begriff{Zentrum} von $G$.\\
+    Es gilt $Z(G) \nt G$.
+\end{Def}
+
+\begin{Def}{Zentralisator}
+    Für eine Gruppe $G$ und $g \in G$ heißt
+    $C_G(g) := \{h \in G \;|\; gh = hg\}$\\
+    \begriff{Zentralisator} von $g$ in $G$.
+    Es gilt $C_G(g) < G$.
+\end{Def}
+
+\begin{Prop}{Klassengleichung}
+    Seien $M$ eine $G$-Menge und $m \in M$ mit Stabilisator $G_m$.\\
+    Dann gibt es eine Bijektion $p\colon G/G_m \rightarrow Gm$.
+    Insbesondere gilt $|Gm| = [G:G_m]$.\\
+    Im Spezialfall $M = G$ mit der Konjugation als Operation
+    gilt die \begriff{Klassengleichung}\\
+    $|G| = |Z(G)| + \sum_{g_i \in G,\; g_i \notin Z(G)} [G:C_G(g_i)]$
+    für bestimmte Repräsentanten $g_i$.
+\end{Prop}
+
+\subsection{%
+    \texorpdfstring{$p$}{p}-Gruppen, \texorpdfstring{$p$}{p}-\name{Sylow}untergruppen und
+    die Sätze von \name{Sylow}%
+}
+
+\begin{Bem}
+    Gilt $\ord(G) = p$ mit $p$ prim, ist dann $G$ abelsch? (ja)\\
+    Gilt $\ord(G) = p^2$ mit $p$ prim, ist dann $G$ abelsch? (ja)\\
+    Gilt $\ord(G) = pq$ mit $p, q$ prim, $p \not= q$, ist dann
+    $G$ abelsch? (i.\,A. nein)\\
+    Gilt $\ord(G) = de$ mit $d, e \in \natural$, gilt dann
+    $\exists_{H < G}\; \ord(H) = d$? (i.\,A. nein)
+\end{Bem}
+
+\begin{Bem}
+    Die Antwort auf die erste Frage kann man relativ einfach zeigen:
+    Sei $\ord(G) = p$ prim und $g \in G$ mit $g \not= e$.
+    Dann ist $G = \erzeugnis{g}$, da nach dem Satz von Lagrange
+    $|\erzeugnis{g}| \teilt |G|$, aber $G$ prim und somit $|\erzeugnis{g}| = p$.
+    Also ist $G$ zyklisch (und somit abelsch) und
+    $G \simeq \integer/p\integer$.\\
+    Die Antwort auf die zweite Frage ist schon schwieriger
+    (siehe Proposition unten).
+\end{Bem}
+
+\begin{Bsp}
+    Für die dritte Frage gibt es das Gegenbeispiel
+    $G = \Sigma_3$ ($\ord(G) = 3! = 2 \cdot 3$, aber $G$ ist nicht abelsch).
+    Für die vierte Frage gibt es das Gegenbeispiel
+    $A_4 = \{\text{gerade Permutationen}\}$\\
+    $= \prod_{\text{gerade Anzahl}} \text{Transpositionen}
+    = \{\sigma \in \Sigma_4 \;|\; \sgn(\sigma) = 1\}$.
+    Es gilt $A_4 = 12$, aber $A_4$ hat keine Untergruppe der Ordnung $6$.
+\end{Bsp}
+
+\begin{Prop}{Gruppe mit Primzahl(quadrat)ordnung abelsch}\\
+    Sei $G$ eine Gruppe mit $\ord(G) \in \{p, p^2\}$, wobei $p$ prim ist.
+    Dann ist $G$ abelsch.
+\end{Prop}
+
+\linie
+
+\begin{Def}{$p$-Gruppe}
+    Sei $G$ eine endliche Gruppe mit $\ord(G) = p^m$, wobei $p$ prim und
+    $m \in \natural_0$ ist.\\
+    Dann heißt $G$ eine \begriff{$p$-Gruppe}.
+\end{Def}
+
+\begin{Def}{$p$-\name{Sylow}untergruppe}
+    Seien $G$ eine endliche Gruppe mit $\ord(G) = p^m q$,\\
+    $(p, q) := \ggT(p, q) = 1$
+    und $H < G$ mit $\ord(H) = p^m$, wobei $p$ prim ist.\\
+    Dann heißt $H$ eine \begriff{$p$-\name{Sylow}untergruppe} von $G$.
+\end{Def}
+
+\begin{Theorem}{\name{Cauchy}}
+    Seien $G$ eine endliche Gruppe und $p$ prim mit $p \teilt \ord(G)$.\\
+    Dann existiert ein $g \in G$ mit $\ord(g) = p$.
+\end{Theorem}
+
+\begin{Kor}
+    Seien $G$ eine endliche Gruppe und $p$ eine Primzahl.\\
+    Dann ist $G$ eine $p$-Gruppe genau dann, wenn
+    $\forall_{g \in G} \exists_{n \in \natural_0} \ord(g) = p^n$.
+\end{Kor}
+
+\linie
+
+\begin{Prop}{Fixpunktzahl}
+    Seien $p$ eine Primzahl und $G$ eine $p$-Gruppe.
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        Wenn $G$ auf einer endlichen Menge $X$ operiert, dann gilt
+        $|X^G| \equiv |X| \mod p$ mit\\
+        $X^G := \{x \in X \;|\; x \text{ Fixpunkt}\}$.
+        
+        \item
+        Wenn $G \not= \{e\}$ ist, dann gilt $Z(G) \not= \{e\}$.
+    \end{enumerate}
+\end{Prop}
+
+\linie
+
+\begin{Theorem}{\name{Sylow}}\\
+    Seien $G$ eine endliche Gruppe und $p$ eine Primzahl mit
+    $\ord(G) = p^m q$, $(p, q) = 1$.
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        Für alle $k = 1, \dotsc, m$ gibt es eine Untergruppe $H < G$
+        mit $|H| = p^k$.
+        
+        \item
+        Seien $S$ eine $p$-Sylowuntergruppe von $G$ (d.\,h. $\ord(S) = p^m$)
+        und $H < G$ eine $p$-Gruppe.\\
+        Dann gibt es ein $g \in G$ mit $H < gSg^{-1}$.
+        
+        \item
+        Sei $s_0 := \text{Anzahl der } p\text{-Sylowuntergruppen von } G$.
+        Dann gilt $s_0 \teilt q$ und $s_0 \equiv 1 \mod p$.
+    \end{enumerate}
+\end{Theorem}
+
+\begin{Bem}
+    $gSg^{-1}$ ist eine $p$-Sylowuntergruppe, wenn $S$ eine
+    $p$-Sylowuntergruppe ist.\\
+    Aus (b) folgt, dass für $p$-Sylowuntergruppen $S$ und $H$ von $G$ gilt,
+    dass $H = gSg^{-1}$ für ein $g \in G$, d.\,h. alle $p$-Sylowuntergruppen
+    sind zueinander konjugiert.\\
+    Außerdem gilt, dass alle $p$-Untergruppen von $G$ in $p$-Sylowuntergruppen
+    enthalten sind.
+\end{Bem}
+
+\begin{Kor}
+    Alle $p$-Sylowuntergruppen sind zueinander konjugiert.
+\end{Kor}
+
+\begin{Kor}
+    Seien $p$ und $q$ prim mit $p < q$ und $p \notteilt (q - 1)$
+    sowie $G$ eine Gruppe mit $|G| = p \cdot q$.
+    Dann gilt $G \simeq \integer/pq\integer \simeq
+    \integer/p\integer \times \integer/q\integer$, d.\,h. insbesondere ist
+    $G$ zyklisch und abelsch.
+\end{Kor}
+
+\pagebreak

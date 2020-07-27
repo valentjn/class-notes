@@ -1,0 +1,1844 @@
+\section{%
+    Komplexität%
+}
+
+\subsection{%
+    Komplexitätsklassen%
+}
+
+\begin{Bem}
+    Zur Wiederholung wird noch einmal definiert, was eine Rechnung einer Turingmaschine ist.
+\end{Bem}
+
+\begin{Def}{Rechnung}
+    Sei $M$ eine Turingmaschine.
+    Eine \begriff{Rechnung} von $M$ bei Eingabe $w$ ist eine Folge von Konfigurationen
+    $(\alpha_0, \dotsc, \alpha_m)$ mit $\alpha_0 = \Start(w)$ und $\alpha_{i-1} \vdash \alpha_i$
+    für $i = 1, \dotsc, m$.
+    Die Berechnung ist \begriff{erfolgreich}, falls $\alpha_m \in \Accept$.
+\end{Def}
+
+\begin{Def}{Zeitbedarf}
+    Der \begriff{Zeitbedarf der Berechnung} $(\alpha_0, \dotsc, \alpha_m)$ ist $m$.\\
+    Der \begriff{Zeitbedarf einer Turingmaschine} $M$ bei Eingabe $w$ ist
+    $N \in \natural$, falls jede Berechnung von $M$ bei Eingabe $w$ Zeitbedarf $\le N$ hat.
+\end{Def}
+
+\begin{Def}{Platzbedarf}
+    Der \begriff{Platzbedarf der Berechnung} $(\alpha_0, \dotsc, \alpha_m)$ ist
+    $\max_{i = 0, \dotsc, m} |\alpha_i|$.\\
+    Der \begriff{Platzbedarf einer Turingmaschine} $M$ bei Eingabe $w$ ist
+    $N \in \natural$, falls jede Berechnung von $M$ bei Eingabe $w$ Platzbedarf $\le N$ hat.
+\end{Def}
+
+\linie
+
+\begin{Def}{Komplexitätsklassen}
+    Seien $t, s\colon \natural_0 \rightarrow \natural_0$ monoton steigende Funktionen.\\
+    Dann sind folgende \begriff{Komplexitätsklassen} definiert:
+    \begin{itemize}
+        \item
+        $\DTIME(t) := \{L \subset \Sigma^\ast \;|\;
+        \text{es gibt eine det. TM } M \text{ mit } L = L(M) \text{,}$\\
+        $\text{die auf allen Eingaben der Länge }
+        n \text{ Zeitbedarf } \max\{t(n), n + 1\} \text{ hat}\}$
+        
+        \item
+        $\NTIME(t) := \{L \subset \Sigma^\ast \;|\;
+        \text{es gibt eine nicht-det. TM } M \text{ mit } L = L(M) \text{,}$\\
+        $\text{die auf allen Eingaben der Länge }
+        n \text{ Zeitbedarf } \max\{t(n), n + 1\} \text{ hat}\}$
+        
+        \item
+        $\DSPACE(s) := \{L \subset \Sigma^\ast \;|\;
+        \text{es gibt eine det. TM } M \text{ mit } L = L(M) \text{,}$\\
+        $\text{die auf allen Eingaben der Länge }
+        n \text{ Platzbedarf } s(n) \text{ hat}\}$
+        
+        \item
+        $\NSPACE(s) := \{L \subset \Sigma^\ast \;|\;
+        \text{es gibt eine nicht-det. TM } M \text{ mit } L = L(M) \text{,}$\\
+        $\text{die auf allen Eingaben der Länge }
+        n \text{ Platzbedarf } s(n) \text{ hat}\}$
+    \end{itemize}
+    Für eine Komplexitätsklasse $\C$ ist
+    $\Co\C := \{L \subset \Sigma^\ast \;|\; \Sigma^\ast \setminus L \in \C\}$
+    die Komplexitätsklasse aller Komplemente.
+\end{Def}
+
+\begin{Bem}
+    Für $\DTIME(t)$ und $\NTIME(t)$ werden nur Funktionen
+    $t\colon \natural_0 \rightarrow \natural_0$
+    mit $t(n) \ge n$ für alle $n \in \natural$ betrachtet.
+    Das erlaubt, die ganze Eingabe einzulesen
+    (tatsächlich werden nämlich $n + 1$ Schritte zugelassen).\\
+    Für $\DSPACE(s)$ und $\NSPACE(s)$ werden nur Funktionen
+    $s\colon \natural_0 \rightarrow \natural_0$ mit $s \in \Omega(\log_2 n)$ betrachtet.
+    Das erlaubt, eine Position $i \in \{1, \dotsc, n\}$ auf dem Arbeitsband abzuspeichern
+    (in binärer Darstellung).
+\end{Bem}
+
+\linie
+
+\begin{Def}{gebräuchliche Komplexitätsklassen}
+    \begin{itemize}
+        \item
+        $\L := \DSPACE(\log n)$
+        
+        \item
+        $\NL := \NSPACE(\log n)$
+        
+        \item
+        $\P := \bigcup_{k \in \natural} \DTIME(n^k)$
+        
+        \item
+        $\NP := \bigcup_{k \in \natural} \NTIME(n^k)$
+        
+        \item
+        $\PSPACE := \bigcup_{k \in \natural} \DSPACE(n^k) =
+        \bigcup_{k \in \natural} \NSPACE(n^k)$
+    \end{itemize}
+\end{Def}
+
+\begin{Bem}
+    Die letzte Gleichung folgt aus dem Satz von Savitch, der weiter unten noch kommt.
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    Es gelten die Beziehungen
+    $\L \subset \NL \subset \P \subset \NP \cap \Co\NP \subset
+    \NP \subset \PSPACE$.\\
+    Bei keiner von den Inklusionen ist jedoch bekannt, ob sie echt ist oder nicht.\\
+    Außerdem gilt $\NL \subsetneqq \bigcup_{k \in \natural} \DSPACE(\log_2^k n) =
+    \bigcup_{k \in \natural} \NSPACE(\log_2^k n) \subsetneqq \DSPACE(n) \subset$\\
+    $\NSPACE(n) = \Co\NSPACE(n) \subsetneqq \PSPACE(n)$.
+    Bei $\DSPACE(n) \subset \NSPACE(n)$ ist ebenfalls nicht bekannt, ob diese Inklusion echt ist
+    (1. LBA-Problem).
+\end{Bem}
+
+\begin{Bsp}
+    \begin{itemize}
+        \item
+        Es gilt $\{a^n b^n c^n \;|\; n \in \natural\} \in \L$:
+        Eine TM, die die Sprache erkennt, muss sich nur speichern, wie viele $a$'s am Anfang
+        gelesen wurden.
+        Dafür wird nur logarithmischer Platz benötigt.
+        
+        \item
+        Außerdem gilt $\{w \dollar w^R \;|\; w \in \Sigma^\ast\},
+        \{w w^R \;|\; w \in \Sigma^\ast\} \in \L$:
+        Bei der ersten Sprache geht man zunächst zum Dollarzeichen in der Mitte,
+        anschließend vergleicht man die Zeichen
+        von der Mitte ausgehend (also zunächst die neben dem Dollar, dann die Nachbarn von
+        diesen usw.).
+        Dafür muss man die aktuelle Position (logarithmischer Platz) abspeichern).\\
+        Bei der zweiten Sprache ist das ein wenig schwieriger, aber hier prüft man zunächst,
+        ob die Länge des Wortes ungerade ist, und läuft dann zur Mitte des Worts
+        (dann verfährt man wie bei der anderen Sprache).
+        
+        \item
+        Es gilt $\{w \dollar w \;|\; w \in \Sigma^\ast\},
+        \{w w \;|\; w \in \Sigma^\ast\} \in \L$:
+        Hier geht man wie eben vor, nur dass die Buchstaben jeweils von vorne verglichen werden.
+        
+        \item
+        $\{p \in 1\{0, 1\}^\ast \;|\; p \text{ Binärdarstellung einer Primzahl}\}$ ist in $\P$
+        (das wurde erst 2002 mit der Entdeckung des AKS-Primzahltests
+        gezeigt, vorher war nur Mitgliedschaft in $\NP \cap \Co\NP$ bekannt).
+    \end{itemize}
+\end{Bsp}
+
+\subsection{%
+    Algorithmische Probleme%
+}
+
+\begin{Def}{Traveling Salesman Problem (TSP)}
+    Sei $G = (V, E, \gamma)$ ein gerichteter, gewichteter Graph mit Knotenmenge
+    $V = \{1, \dotsc, n\}$, Kantenmenge $E \subset V \times V$ und Kantengewichtungsfunktion
+    $\gamma\colon E \rightarrow \natural$ (d.\,h. $\gamma(e) > 0$ für alle $e \in E$).\\
+    Ein \begriff{Rundweg} $W$ ist eine Folge $W = (x_0, \dotsc, x_n)$ mit
+    $x_0 = x_n$, $x_i \not= x_j$ für $i \not= j$ und
+    $(x_{i-1}, x_i) \in E$ für $i = 1, \dotsc, n$.\\
+    Die \begriff{Kosten} $\gamma(W)$ des Rundwegs $W$ sind
+    $\gamma(W) = \sum_{i=1}^n \gamma(x_{i-1}, x_i)$.\\
+    Dann sind folgende Varianten des \begriff{Traveling Salesman Problems (TSP)} definiert:
+    \begin{enumerate}[label=(\Alph*)]
+        \item
+        \begriff{Entscheidungsvariante}:
+        Gegeben ist $G$ und $k \ge 0$.\\
+        Gefragt ist, ob ein Rundweg mit Kosten $\le k$ exisiert.
+        
+        \item
+        \begriff{Berechnungsvariante}:
+        Gegeben ist $G$ und $k \ge 0$.\\
+        Gesucht ist ein Rundweg $W$ mit $\gamma(W) \le k$, falls ein solcher existiert.
+        
+        \item
+        \begriff{Optimierungsproblem}:
+        Gegeben ist $G$.\\
+        Gesucht ist ein Rundweg $W$ mit kleinstmöglichen Kosten\\
+        (d.\,h. $\gamma(W) \le \gamma(W')$ für alle Rundwege $W'$).
+    \end{enumerate}
+    In allen drei Varianten ist die Eingabegröße bis auf einen konstanten Faktor gleich\\
+    $|V| + \sum_{e \in E} \log_2 \gamma(e) \;(+ \log_2 k)$.
+\end{Def}
+
+\linie
+\pagebreak
+
+\begin{Satz}{$\text{(A)} \in \P \;\Rightarrow\; \text{(C)} \in \P$}
+    Ist (A) in Polynomialzeit lösbar, so auch (C).
+\end{Satz}
+
+\begin{Beweis}
+    \begin{enumerate}
+        \item
+        Überprüfe, ob überhaupt ein Rundweg existiert.
+        Dazu ruft man (A) mit $k_{\max} = \sum_{e \in E} \gamma(e)$ auf,
+        denn jeder Rundweg hat Kosten $\le k_{\max}$.
+        Im Folgenden wird die Existenz eines Rundwegs vorausgesetzt.
+        
+        \item
+        Berechne $k_\opt = \min\{\gamma(W) \;|\; W \text{ Rundweg}\}$ mittel binärer Suche:
+        \begin{align*}&
+            k_{\min} := 0;\\&
+            \WHILE (k_{\min} < k_{\max})\; \DO\\&
+            \qquad k_\text{mitte} := k_{\min} +
+            \left\lceil \frac{k_{\max} - k_{\min}}{2} \right\rceil;\\&
+            \qquad \IF (\exists_{\text{Rundweg } W}\; \gamma(W) \le k_\text{mitte})\; \THEN
+            k_{\max} := k_\text{mitte};\\&
+            \qquad \ELSE k_{\min} := k_\text{mitte} + 1;\\&
+            \qquad \END\IF\\&
+            \END\WHILE\\&
+            \RETURN k_{\min};
+        \end{align*}
+        Die Anzahl der Durchläufe der While-Schleife ist beschränkt durch\\
+        $\log_2 k_{\max} = \log_2 (\sum_{e \in E} \gamma(e)) \le \sum_{e \in E} \log_2 \gamma(e)$.
+        
+        \item
+        Berechne einen optimalen Rundweg mit $E = \{e_1, \dotsc, e_m\}$ wie folgt:
+        \begin{align*}&
+            G_0 := G;\\&
+            \FOR i := 1 \;\TO m \;\DO\\&
+            \qquad \IF (\exists_{\text{Rundweg } W \text{ in } G_{i-1} \setminus \{e_i\}}\;
+            \gamma(W) \le k_\opt)\; \THEN
+            G_i := G_{i-1} \setminus \{e_i\};\\&
+            \qquad \ELSE G_i := G_{i-1};\\&
+            \qquad \END\IF\\&
+            \END\FOR\\&
+            \RETURN G_m;
+        \end{align*}
+    \end{enumerate}
+\end{Beweis}
+
+\linie
+
+\begin{Def}{Vertex Cover (VC)}
+    Sei $G = (V, E)$ ein ungerichteter Graph.\\
+    Eine Teilmenge $C \subset V$ heißt \begriff{Knotenüberdeckung} (oder \begriff{Träger}) von $G$,
+    falls für jede Kante $\{u, v\} \in E$ gilt, dass $\{u, v\} \cap C \not= \emptyset$.\\
+    Dann sind folgende Varianten von \begriff{Vertex Cover (VC)} definiert:
+    \begin{enumerate}[label=(\Alph*)]
+        \item
+        \begriff{Entscheidungsvariante}:
+        Gegeben ist $G$ und $k \ge 0$.\\
+        Gefragt ist, ob eine Knotenüberdeckung von $G$ mit $|C| \le k$ existiert.
+        
+        \item
+        \begriff{Berechnungsvariante}:
+        Gegeben ist $G$ und $k \ge 0$.\\
+        Gesucht ist eine Knotenüberdeckung $C$ von $G$ mit $|C| \le k$,
+        falls eine solche existiert.
+        
+        \item
+        \begriff{Optimierungsproblem}:
+        Gegeben ist $G$.\\
+        Gesucht ist eine kleinstmögliche Knotenüberdeckung $C$ von $G$\\
+        (d.\,h. $|C| \le |C'|$ für alle Knotenüberdeckungen $C'$ von $G$).
+    \end{enumerate}
+\end{Def}
+
+\begin{Satz}{$\text{(A)} \in \P \;\Rightarrow\; \text{(C)} \in \P$}
+    Ist (A) in Polynomialzeit lösbar, so auch (C).
+\end{Satz}
+
+\linie
+\pagebreak
+
+\begin{Def}{Grapherreichbarkeitsproblem (GAP)}
+    Das \begriff{Grapherreichbarkeitsproblem (GAP)} ist wie folgt definiert:
+    Gegeben ist ein gerichteter Graph $G = (V, E)$ und zwei Knoten $s, t \in V$.\\
+    Gefragt ist, ob ein Pfad in $G$ von $s$ nach $t$ existiert.
+\end{Def}
+
+\begin{Bem}
+    GAP gehört zur Klasse $\P$:
+    GAP kann in Zeit $\O(|V|)$ mittels Breitensuche gelöst werden
+    (mit der einfachsten Dijkstra-Variante).\\
+    Es gilt sogar die Verschärfung, dass GAP zur Klasse $\NL$ gehört
+    (später wird $\NL \subset \P$ gezeigt):
+    \begin{align*}&
+        v := s;\\&
+        \WHILE (v \not= t) \DO\\&
+        \qquad \text{wähle einen Knoten } w \in V \text{ mit } (v, w) \in E;\\&
+        \qquad v := w;\\&
+        \END\WHILE\\&
+        \RETURN \text{"`es gibt einen Pfad in } G \text{ von } s \text{ nach } t \text{"'};
+    \end{align*}
+    Dieser nicht-det. Algorithmus kann man leicht auf einer nicht-det. TM implementieren.
+    Der Algorithmus benötigt nur logarithmischen Platz, weil er sich zu jedem Zeitpunkt
+    nur einen Knoten $v \in V$ merken muss und dieser binär mit $\log_2 n$ vielen Bits
+    abgespeichert werden kann (wenn man $V$ mit $\{1, \dotsc, n\}$ identifiziert).
+\end{Bem}
+
+\begin{Bem}
+    Aus dem Satz von Savitch weiter unten folgt GAP $\in \DSPACE(\log_2^2 n)$.\\
+    Man konnte 2004 zeigen, dass das Grapherreichbarkeitsproblem für ungerichtete Graphen\\
+    UGAP zur Klasse $\L$ gehört.
+\end{Bem}
+
+\subsection{%
+    Beziehungen zwischen den Komplexitätsklassen%
+}
+
+\begin{Def}{Komplexitätsklassen in \name{Landau}-Notation}\\
+    Man definiert $\DTIME(\O(f)) = \bigcup_{c \in \natural} \DTIME(c \cdot f) =
+    \bigcup_{g \in \O(f)} \DTIME(g)$.\\
+    Analog sind $\NTIME(\O(f))$, $\DSPACE(\O(f))$ und $\NSPACE(\O(f))$ definiert.
+\end{Def}
+
+\begin{Satz}{Beziehungen zwischen den Komplexitätsklassen}
+    Sei $f\colon \natural \rightarrow \natural$ eine Funktion.
+    \begin{enumerate}
+        \item
+        Für $\mathbf{X} \in \{\mathbf{D}, \mathbf{N}\}$ gilt
+        $\XSPACE(\O(f)) = \XSPACE_{\text{Einband}}(f)$\\
+        (\begriff{Bandreduktion} mit \begriff{Bandkompression}).
+        
+        \item
+        Aus $\exists_{\varepsilon > 0} \forall_{n \in \natural}\; f(n) \ge (1 + \varepsilon) n$
+        folgt, dass $\DTIME(\O(f)) = \DTIME(f)$\\
+        (deterministische \begriff{Zeitkompression}).
+        
+        \item
+        Es gilt $\NTIME(\O(f)) = \NTIME(f)$\\
+        (nicht-deterministische \begriff{Zeitkompression}).
+        
+        \item
+        Es gilt $\DTIME(n) \not= \DTIME(\O(n))$.
+    \end{enumerate}
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Der folgende Satz stellt einen Bandreduktionssatz für Zeitkomplexitätsklassen dar.
+\end{Bem}
+
+\begin{Satz}{Satz von \name{Hennie} und \name{Stearns}}
+    Seien $k \in \natural$ und $f\colon \natural \rightarrow \natural$ mit
+    $\forall_{n \in \natural}\; f(n) \ge n$.\\
+    Dann gilt $\DTIME_{k\text{-Band}}(f) \subset \DTIME_{2\text{-Band}}(f \cdot \log f)$.
+\end{Satz}
+
+\linie
+\pagebreak
+
+\begin{Satz}{$\NTIME(f) \subset \DSPACE(f)$}\\
+    Für $f(n) \ge n$ gilt $\DTIME(f) \subset \NTIME(f) \subset \DSPACE(f)$.
+\end{Satz}
+
+\begin{Beweis}
+    Die erste Inklusion ist klar, zu zeigen ist also $\NTIME(f) \subset \DSPACE(f)$.
+    
+    Sei $M = (Q, \Sigma, \Gamma, \delta, q_0, F, \Box)$ eine nicht-deterministische TM,
+    die durch $f(n)$ zeitbeschränkt ist.
+    Für eine Eingabe $w \in \Sigma^\ast$ der Länge $n$ kann man sich alle Rechnungen von $M$
+    in einem Berechnungsraum $T(M, w)$ vorstellen,
+    dessen Knoten Konfigurationen sind.
+    Die Wurzel ist gleich $\Start(w)$ und
+    die Kinder einer Konfiguration $\alpha$ sind alle Konfigurationen $\beta$ mit
+    $\alpha \vdash_M \beta$.\\
+    Diesen Baum $T(M, w)$ untersucht man jetzt durch Breitensuche auf eine akzeptierende
+    Konfiguration.
+    Dabei merkt man sich nur die aktuelle Konfiguration und das Protokoll $P \in \delta^\ast$,
+    mit dem man diese Konfiguration von der Wurzel $\Start(w)$ erreichen kann.
+    
+    Die Konfiguration zu merken benötigt den Platz $f(n)$, da man nach $f(n)$ vielen Schritten
+    höchstens $f(n)$ viele Felder des Bands beschrieben haben kann.
+    Das Protokoll für eine bei $\Start(w)$ beginnende Berechnung hat höchstens Länge $f(n)$ und
+    kann somit in Platz $\O(f)$ gespeichert werden.
+    Also ergibt sich ein gesamter Platzbedarf von $\O(f)$.
+    
+    Nach obigem Satz hat man also den Platzbedarf $\DSPACE(\O(f)) = \DSPACE(f)$.
+\end{Beweis}
+
+\linie
+
+\begin{Satz}{$\NSPACE(f) \subset \DTIME(2^{\O(f)})$}\\
+    Für $f(n) \ge \log n$ gilt $\DSPACE(f) \subset \NSPACE(f) \subset \DTIME(2^{\O(f)})$.
+\end{Satz}
+
+\begin{Beweis}
+    Die erste Inklusion ist klar, zu zeigen ist also $\NSPACE(f) \subset \DTIME(2^{\O(f)})$.
+    
+    Sei $M = (Q, \Sigma, \Gamma, \delta, q_0, F, \Box)$ eine nicht-deterministische TM,
+    die durch $f(n)$ platzbeschränkt ist.
+    Es gibt eine Konstante $c > 0$, die nur von $M$ abhängt, sodass
+    die für eine Eingabe $w \in \Sigma^\ast$ der Länge $n$ die Anzahl der von $\Start(w)$
+    erreichbaren Konfigurationen durch $c^{f(n)}$ beschränkt ist.
+    Hierbei ist $f(n) \ge \log n$ wichtig.
+    
+    Nun berechnet man die Menge $R$ der von $\Start(w)$ aus erreichbaren Konfigurationen wie folgt
+    (\begriff{Markierungsalgorithmus} oder \begriff{Flutalgorithmus}):
+    \begin{align*}&
+        R := \{\Start(w)\};\\&
+        \WHILE \exists_{\alpha, \beta \text{ Konfigurationen}}\; \alpha \in R,\; \beta \notin R,\;
+        \alpha \vdash_M \beta \;\DO\\&
+        \qquad R := R \cup \{\beta\};\\&
+        \END\WHILE\\&
+        \IF \Accept \cap R \not= \emptyset \;\THEN \RETURN M \text{ akzeptiert } w;
+    \end{align*}
+    $R$ enthält maximal $c^{f(n)}$ Konfigurationen der Länge $\le f(n)$.
+    Der Test $\exists_{\alpha, \beta \text{ Konfigurationen}}$\\
+    $\alpha \in R,\; \beta \notin R,\; \alpha \vdash_M \beta$ kann somit in Zeit
+    $\O(c^{f(n)} \cdot c^{f(n)} \cdot f(n)) = \O(c^{2f(n)} \cdot f(n))$
+    implementiert werden.
+    Der gesamte Zeitbedarf des Algorithmus beträgt also
+    $\O(c^{3f(n)} \cdot f(n)) \subset 2^{\O(f)}$.
+\end{Beweis}
+
+\linie
+
+\begin{Kor}
+    \begin{itemize}
+        \item
+        $\L \subset \NL \subset \DTIME(2^{\O(\log n)}) = \P$
+        
+        \item
+        $\CS = \LBA = \NSPACE(n) \subset \DTIME(2^{\O(n)})$\\
+        (mit $\CS$ den kontextsensitiven und $\LBA$ den durch LBAs akzeptierten Sprachen)
+        
+        \item
+        $\DSPACE(n^2) \subset \DTIME(2^{\O(n^2)})$
+    \end{itemize}
+\end{Kor}
+
+\pagebreak
+
+\subsection{%
+    Der Satz von \name{Savitch}%
+}
+
+\begin{Def}{platzkonstruierbar}
+    Sei $f\colon \natural \rightarrow \natural$ eine Funktion mit $f \in \Omega(\log(n))$.
+    Dann heißt $f$ \begriff{platzkonstruierbar}, falls es eine deterministische Turingmaschine
+    gibt, die bei Eingabe $a^n$ (d.\,h. unäre Kodierung von $n$) genau $f(n)$ Felder auf den
+    Arbeitsbändern markiert, dann hält und bei der Berechnung diesen Platz nicht verlässt.
+\end{Def}
+
+\begin{Def}{zeitkonstruierbar}
+    Sei $f\colon \natural \rightarrow \natural$ eine Funktion mit $f \in \Omega(n)$.
+    Dann heißt $f$ \begriff{zeitkonstruier\-bar}, falls es eine deterministische Turingmaschine
+    gibt, die bei Eingabe $a^n$ (d.\,h. unäre Kodierung von $n$) nach genau $f(n)$ Schritten
+    hält.
+\end{Def}
+
+\linie
+
+\begin{Satz}{Satz von \upshape\,\!\name{Savitch}}
+    Sei $s \in \Omega(\log n)$.
+    Dann gilt $\NSPACE(s) \subset \DSPACE(s^2)$.
+\end{Satz}
+
+\begin{Beweis}
+    Im Folgenden wird der Satz bewiesen unter der Annahme, dass $s$ platzkonstruierbar ist.
+    Der Satz ist auch für andere $s$ beweisbar, allerdings ist dann der Beweis etwas schwieriger.
+    
+    Sei also $M$ eine durch $s$ platzbeschränkte nicht-deterministische TM und $w$ eine Eingabe
+    für $M$.
+    Sei außerdem $\text{Conf}(M, w)$ die Menge aller Konfigurationen $\alpha$, sodass
+    auf dem Eingabeband die Eingabe $w$ steht und $|\alpha| \le s(|w|)$.
+    OBdA gebe es nur eine einzige akzeptierende Konfiguration $\alpha_f$.
+    Für $\alpha, \beta \in \text{Conf}(M, w)$ und $i \in \natural_0$ ist das Prädikat
+    $\text{Reach}(\alpha, \beta, i)$ definiert durch
+    $\text{Reach}(\alpha, \beta, i) \iff \exists_{k \le 2^i}\; \alpha \vdash_M^k \beta$.
+    Aus der Beschreibung von $M$ kann man explizit eine Konstante $c$ bestimmen, sodass
+    es $\le 2^{c \cdot s(|w|)}$ Konfigurationen gibt, die nur $s(|w|)$ viel Platz benötigen
+    (insbesondere gilt $\text{Conf}(M, w) \le 2^{c \cdot s(|w|)}$).
+    Damit gilt für alle Eingaben $w$, dass
+    $w \in L(M) \iff \text{Reach}(\Start(w), \alpha_f, c \cdot s(|w|))$, denn
+    keine Berechnung kann bei Eingabe $w$ länger als $2^{c \cdot s(|w|)}$ viel Zeit brauchen.
+    
+    Das Ziel ist nun, das Prädikat $\text{Reach}(\alpha, \beta, i)$ für
+    $\alpha, \beta \in \text{Conf}(M, w)$ und $i \in \{0, \dotsc, c \cdot s(|w|)\}$ mit
+    Platz $\O(s^2)$ durch eine deterministische TM zu berechnen.
+    Für $i > 0$ verwendet man dabei das Rekursionsschema
+    $\exists_{\gamma \in \text{Conf}(M, w)}\; (\text{Reach}(\alpha, \gamma, i - 1) \land
+    \text{Reach}(\gamma, \beta, i - 1))$.
+    Das kann man in einen deterministischen Algorithmus umsetzen:
+    \begin{align*}&
+        b := \FALSE;\\&
+        \IF i = 0 \;\THEN\\&
+        \qquad b := ((\alpha = \beta) \lor (\alpha \vdash_M \beta));\\&
+        \ELSE\\&
+        \qquad \FORALL \gamma \in \text{Conf}(M, w) \;\DO\\&
+        \qquad \qquad \IF ((\lnot b) \land \text{Reach}(\alpha, \gamma, i - 1)) \;\THEN
+        b := \text{Reach}(\gamma, \beta, i - 1);\\&
+        \qquad \END\FOR\\&
+        \END\IF\\&
+        \RETURN b;
+    \end{align*}
+    
+    Zu zeigen ist, dass ein Aufruf von $\text{Reach}(\alpha, \beta, i)$ den Platz
+    $\O((i + 1) s(|w|))$ benötigt.
+    Man kann das induktiv zeigen:
+    Für $i = 0$ kann die Bedingung
+    $((\alpha = \beta) \lor (\alpha \vdash_M \beta))$ in $\O(s(|w|))$ geprüft werden.
+    Für $i > 0$ benötigt der erste Aufruf $\text{Reach}(\alpha, \gamma, i - 1)$ nach
+    Induktionsvoraussetzung den Platz $\O(i \cdot s(|w|))$.
+    Das gleiche gilt auch für den zweiten Aufruf $\text{Reach}(\gamma, \beta, i - 1)$,
+    aber hier kann der Platz, der für den ersten Aufruf benötigt wurde, wiederverwendet werden.
+    Zusätzlich benötigt man noch den Platz $s(|w|)$, um die Konfiguration $\gamma$ zu speichern.
+    Also benötigt man insgesamt den Platz $\O((i + 1) s(|w|))$.
+    
+    Um $w \in L(M)$ zu entscheiden, kann man noch obiger Bemerkung
+    $\text{Reach}(\Start(w), \alpha_f, c \cdot s(|w|))$ testen.
+    $s(|w|)$ kann man berechnen, weil $s$ nach Annahme platzkonstruierbar ist.
+    Also ist der gesamte Platzbedarf
+    $\O(c \cdot s(|w|) \cdot s(|w|)) = \O(s(|w|)^2)$.
+\end{Beweis}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    Der Satz von Savitch besagt, dass eine nicht-deterministische platzbeschränkte TM unter
+    quadratischem Mehraufwand deterministisch simuliert werden kann.
+    Diese platzef"|fiziente Simulation wird durch einen extremen Mehraufwand an Rechenzeit
+    realisiert.
+\end{Bem}
+
+\begin{Kor}
+    GAP ist in $\DSPACE(\log^2 n)$, da GAP in $\NL$ ist.\\
+    $\PSPACE = \bigcup_{k \in \natural} \DSPACE(n^k) =
+    \bigcup_{k \in \natural} \NSPACE(n^k)$,\\
+    da $\NSPACE(n^k) \subset \DSPACE(n^{2k})$.
+    Daher wurde auch so etwas wie $\NPSPACE$ nicht definiert, weil das gleich $\PSPACE$ wäre.
+\end{Kor}
+
+\subsection{%
+    Hierarchiesätze%
+}
+
+\begin{Satz}{Platzhierarchiesatz}\\
+    Seien $s_1, s_2\colon \natural \rightarrow \natural$ Funktionen mit
+    $s_2$ platzkonstruierbar, $s_2 \in \Omega(\log n)$ und $s_2 \notin \O(s_1)$.\\
+    Dann gilt $\DSPACE(s_2) \not\subset \DSPACE(s_1)$, d.\,h.
+    $\DSPACE(s_2) \setminus \DSPACE(s_1) \not= \emptyset$.
+\end{Satz}
+
+\begin{Beweis}
+    Wegen $s_2 \notin \O(s_1)$ gilt
+    $\forall_{\varepsilon > 0} \exists_{n \in \natural}\; s_1(n) \le \varepsilon \cdot s_2(n)$.\\
+    Zu zeigen ist $\exists_{L \in \DSPACE(s_2)}\; L \notin \DSPACE(s_1)$.
+    
+    Wähle zunächst eine berechenbare binäre Kodierung von deterministischen TM,
+    d.\,h. eine berechenbare Funktion $x \mapsto M_x$, sodass zu jeder deterministischen TM $M$
+    eine Kodierung $x \in 1\{0, 1\}^\ast$ mit $L(M) = L(M_x)$ existiert
+    (jedes Wort $x \in 1\{0, 1\}^\ast$ soll also als Kodierung einer TM $M_x$ interpretiert werden
+    können).
+    Für beliebige $x \in 1\{0, 1\}^\ast$ und $k \in \natural$ gelte dabei
+    $M_{0^k x} := M_x$.
+    Somit hat jede TM eine Kodierung in fast allen Längen.
+    Im Folgenden wird eine TM $M$ konstruiert mit $L(M) \in \DSPACE(s_2) \setminus \DSPACE(s_1)$.
+    
+    Dazu wird zunächst eine durch $s_2$ platzbeschränkte TM $M'$ konstruiert, die
+    auf Eingabe $y$ mit $|y| = n$ wie folgt arbeitet:
+    Zuerst markiert $M'$ den Platz $s_2(n)$ auf den Arbeitsbändern
+    (geht, da $s_2$ platzkonstruierbar).
+    Sobald danach der markierte Platz verlassen wird, stoppt $M'$ und akzeptiert $y$ nicht --
+    damit ist $M'$ automatisch $s_2$-platzbeschränkt und es gilt $L(M') \in \DSPACE(s_2)$.
+    Jetzt führt $M'$ die Maschine $M_y = M_x$ mit $y =: 0^k x$ und $x \in 1\{0, 1\}^\ast$
+    auf der Eingabe $y$ aus.
+    Danach akzeptiert $M'$ die Eingabe $y$ genau dann, wenn $M_x$ die Eingabe $y$ akzeptiert
+    (und dabei der markierte Platz nicht verlassen wird).
+    
+    Da deterministische Platzklassen unter Komplement ef"|fektiv abgeschlossen sind,
+    kann man eine TM $M$ konstruieren mit $L(M) = \{0, 1\}^\ast \setminus L(M') \in \DSPACE(s_2)$.
+    Angenommen, es gelte $L(M) \in \DSPACE(s_1)$.
+    Es ist $L(M) = L(M_x)$ für ein $x \in 1\{0, 1\}^\ast$.
+    Sei $s_x$ die Platzfunktion von $M_x$.
+    Wegen $L(M) \in \DSPACE(s_1)$ gilt $\forall_{n \in \natural}\; s_x(n) \le s_1(n)$.
+    Es gibt eine Konstante $c_x$, sodass die Simulation von $M_x$ auf Eingabe $y$ mit $|y| = n$
+    den Platz $c_x \cdot s_x(n)$ kostet.
+    Wähle $\varepsilon > 0$ mit $c_x \cdot \varepsilon < 1$.
+    Wenn man $n \in \natural$ mit $n > |x|$ und $s_1(n) \le \varepsilon \cdot s_2(n)$ wählt
+    (geht nach der Voraussetzung $s_1 \notin \Omega(s_2)$)
+    und $y := 0^k x$ mit $|y| := n$ setzt,
+    dann gilt $c_x \cdot s_1(n) \le c_x \cdot \varepsilon \cdot s_2(n) < s_2(n)$,
+    also reicht der Platz $s_2(n)$ aus.
+    
+    Es gilt daher $y \in L(M) \iff y \notin L(M') \iff y \notin L(M_x) = L(M)$, ein Widerspruch
+    (für die zweite Äquivalenz benötigt man, dass der Platz $s_2(n)$ ausreicht).
+\end{Beweis}
+
+\begin{Kor}
+    Aus dem Platzhierarchiesatz folgt
+    $\L \subsetneqq \DSPACE(\log^2 n) \subsetneqq \DSPACE(n)$\\
+    $\subset \NSPACE(n) \subsetneqq \DSPACE(n^{2.1}) \subsetneqq \PSPACE$.
+\end{Kor}
+
+\linie
+
+\begin{Satz}{Zeithierarchiesatz}\\
+    Seien $t_1, t_2\colon \natural \rightarrow \natural$ Funktionen mit
+    $t_2$ zeitkonstruierbar, $t_2 \in \Omega(n \cdot \log n)$ und
+    $t_2 \notin \O(t_1 \cdot \log t_1)$.\\
+    Dann gilt $\DTIME(t_2) \not\subset \DTIME(t_1)$, d.\,h.
+    $\DTIME(t_2) \setminus \DTIME(t_1) \not= \emptyset$.
+\end{Satz}
+
+\begin{Kor}
+    Aus dem Zeithierarchiesatz folgt
+    $\DTIME(\O(n)) \subsetneqq \DTIME(\O(n^2)) \subsetneqq \P$\\
+    $\subsetneqq \DTIME(\O(2^n) \subsetneqq \DTIME(\O((2 + \varepsilon)^n))$.
+\end{Kor}
+
+\pagebreak
+
+\subsection{%
+    Lückensatz von \name{Borodin}%
+}
+
+\begin{Bem}
+    Der Lückensatz von Borodin besagt, dass es in der Hierarchie von Komplexitätsklassen
+    beliebig große Lücken gibt.
+    Egal wie groß $r$ im folgenden Satz gewählt wird, es gibt immer eine Funktion $s$,
+    sodass vom Übergang von $\DTIME(s)$ zu $\DTIME(r \circ s)$ keine neuen Elemente dazukommen,
+    d.\,h. es gibt eine Lücke zwischen $\DTIME(s)$ und $\DTIME(r \circ s)$.
+    $s$ kann nicht zeitkonstruierbar sein, denn sonst wäre das ein Widerspruch
+    zum Zeithierarchiesatz.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Lückensatz von \upshape\,\!\name{Borodin}}\\
+    Sei $r\colon \natural \rightarrow \natural$ eine überall definierte, berechenbare Funktion mit
+    $\forall_{n \in \natural}\; r(n) \ge n$.\\
+    Dann gibt es ef"|fektiv eine überall definierte, berechenbare Funktion
+    $s\colon \natural \rightarrow \natural$ mit\\
+    $\forall_{n \in \natural}\; s(n) \ge n + 1$ und $\DTIME(s) = \DTIME(r \circ s)$.
+\end{Satz}
+
+\begin{Beweis}
+    Seien $M_1, M_2$ eine Aufzählung aller deterministischen TM und
+    $t_k(n) \in \natural \cup \{\infty\}$ der tatsächliche maximale Zeitbedarf einer Rechnung
+    von $M_k$ auf einer Eingabe der Länge $\le n$.
+    Betrachte die Menge $N_n := \{t_k(n) \;|\; 1 \le k \le n\}$.
+    Diese Menge ist endlich, denn $|N_n| \le n$.
+    Also gibt es für alle $n \in \natural$ ein $s(n)$ mit
+    $N_n \cap [s(n), r(s(n))] = \emptyset$.
+    
+    Einen passenden, berechenbaren Wert $s(n)$ kann man durch folgenden Algorithmus ermitteln:
+    \begin{align*}&
+        s := n + 1;\\&
+        \DO\\&
+        \qquad s := s + 1;\\&
+        \UNTIL \forall_{k \le n}\; t_k(n) \notin [s, r(s)]\\&
+        \RETURN s;
+    \end{align*}
+    Somit ist $s(n)$ überall definiert, berechenbar und es gilt
+    $\forall_{n \in \natural}\; s(n) \ge n + 1$.
+    
+    Es gilt $\DTIME(s) = \DTIME(r \circ s)$:\\
+    "`$\subset$"':
+    Wegen $\forall_{n \in \natural}\; r(n) \ge n$ gilt $\DTIME(s) \subset \DTIME(r \circ s)$.\\
+    "`$\supset$"':
+    Sei $L \in \DTIME(r \circ s)$.
+    Dann gibt es ein $k \in \natural$ mit $L = L(M_k)$ und $M_k$ einer durch $r \circ s$
+    zeitbeschränkten, deterministischen TM.
+    Es gilt $\forall_{n \in \natural}\; t_k(n) \le r(s(n))$, denn es ist n.\,V.
+    $L(M_k) \in \DTIME(r \circ s)$.
+    Wegen $t_k(n) \in N_n$ für $n \ge k$ und $N_n \cap [s(n), r(s(n))] = \emptyset$ gilt
+    also $\forall_{n \ge k}\; t_k(n) < s(n)$.
+    Es gilt daher $t_k(n) \le s(n)$ für fast alle $n \in \natural$.
+    Für die endlich vielen Ausnahmen lässt sich eine zweite TM konstruieren, die diese
+    Ausnahmen abfängt, d.\,h. es gibt ein $k' \in \natural$ mit $L(M_k) = L(M_{k'})$ und
+    $\forall_{n \in \natural}\; t_{k'}(n) \le s(n)$.\\
+    Somit gilt $L = L(M_k) = L(M_{k'}) \in \DTIME(s)$.
+\end{Beweis}
+
+\subsection{%
+    Der Satz von \name{Immerman} und \name{Szelepcsényi}%
+}
+
+\begin{Bem}
+    Die Klassen $\DTIME$ und $\DSPACE$ sind unter Komplement abgeschlossen.
+    Ob dies auch für $\NSPACE$ gilt, war lange Zeit of"|fen.
+    1964 stellte Kuroda die Frage, ob die kontextsensitiven Sprachen unter Komplement
+    abgeschlossen sind (2. LBA-Problem).
+    Äquivalent dazu ist $\NSPACE(n) = \Co\NSPACE(n)$.
+    Diese Frage konnte nach 20 Jahren von Immerman und Szelepcsényi positiv beantwortet werden.
+\end{Bem}
+
+\begin{Satz}{Satz von \name{Immerman} und \name{Szelepcsényi}}\\
+    Sei $f \in \Omega(\log n)$.
+    Dann gilt $\NSPACE(f) = \Co\NSPACE(f)$.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Polynomialzeit-Reduktionen%
+}
+
+\begin{Bem}
+    Zur Wiederholung wird noch einmal die Definition einer Reduktion angegeben.
+\end{Bem}
+
+\begin{Def}{Reduktion}
+    Seien $L \subset \Sigma^\ast$ und $L' \subset \Sigma'^\ast$ Sprachen.
+    Dann heißt eine überall definierte, berechenbare Abbildung
+    $f\colon \Sigma^\ast \rightarrow \Sigma'^\ast$ \begriff{Reduktion} von $L$ auf $L'$, falls
+    $x \in L \iff f(x) \in L'$ für alle $x \in \Sigma^\ast$.
+    $A$ heißt auf $B$ \begriff{reduzierbar} ($L \le L'$), falls es eine Reduktion von $L$ auf $L'$
+    gibt.
+\end{Def}
+
+\linie
+
+\begin{Def}{Polynomialzeit-Reduktion}
+    Eine Reduktion $f\colon \Sigma^\ast \rightarrow \Sigma'^\ast$ von $L$ auf $L'$ heißt\\
+    \begriff{Polynomialzeit-Reduktion}, falls sich $f$ durch eine
+    deterministische polynomialzeit-beschränkte Turingmaschine berechnen lässt.
+\end{Def}
+
+\begin{Satz}{Übertragbarkeit bei Polynomialzeit-Reduktionen}
+    Seien $L \subset \Sigma^\ast$ und $L' \subset \Sigma'^\ast$ Sprachen,
+    sodass es eine Polynomialzeit-Reduktion von $L$ auf $L'$ gibt.
+    Wenn $L' \in \P$ gilt, dann auch $L \in \P$.
+\end{Satz}
+
+\begin{Beweis}
+    Seien $L' \in \DTIME(n^k)$ und $f$ eine Polynomialzeit-Reduktion, die in
+    Zeit $n^\ell$ berechnet werden kann.
+    Ist $x \in \Sigma^\ast$ eine Eingabe der Länge $n$, dann
+    kann $f(x)$ in Zeit $n^\ell$ berechnet werden.
+    Anschließend wird $f(x) \in L'$ überprüft, dies geht in Zeit $(n^\ell)^k = n^{k \cdot \ell}$,
+    weil $f(x)$ höchstens Länge $n^\ell$ haben kann.
+    Wegen $x \in L \iff f(x) \in L'$ wurde $x \in L$ in
+    polynomialer Zeit $n^\ell + n^{k \cdot \ell}$ überprüft, d.\,h. $L \in \P$.
+\end{Beweis}
+
+\subsection{%
+    Matching und Fluss als Beispiel für eine Polynomialzeit-Reduktion%
+}
+
+\begin{Def}{bipartiter Graph}
+    $G = (A, B, E)$ heißt \begriff{bipartiter Graph}, wenn $E \subset A \times B$
+    und $A \cap B = \emptyset$.
+\end{Def}
+
+\begin{Def}{Matching}
+    Sei $G = (A, B, E)$ ein bipartiter Graph.
+    Ein \begriff{Matching} $M \subset E$ eine Teilmenge von $E$, sodass keine zwei
+    verschiedene Kanten aus $M$ denselben Endknoten haben.
+\end{Def}
+
+\linie
+
+\begin{Bem}
+    Das Problem, ein Matching maximaler Größe zu berechnen,
+    kann sehr ef"|fizient auf die Berechnung eines maximalen Flusses in einem Netzwerk
+    reduziert werden.
+\end{Bem}
+
+\begin{Def}{Netzwerk}
+    Ein \begriff{Netzwerk} ist ein $5$-Tupel $N = (V, E, s, t, c)$, wobei
+    \begin{itemize}
+        \item
+        $(V, E)$ ein gerichteter Graph (d.\,h. $E \subset V \times V$) ist,
+        
+        \item
+        $s, t \in V$ mit $s \not= t$ (\begriff{Quelle} und \begriff{Senke}) gilt und
+        
+        \item
+        $c\colon E \rightarrow \natural$ jeder Kante $e \in E$ eine \begriff{Kapazität}
+        $c(e) > 0$ zuordnet.
+    \end{itemize}
+\end{Def}
+
+\begin{Def}{Fluss}
+    Ein \begriff{Fluss} $F$ ist eine Abbildung $F\colon E \rightarrow \natural_0$ mit
+    \begin{itemize}
+        \item
+        $\forall_{v \in V \setminus \{s, t\}}\;
+        \sum_{(x, v) \in E} F(x, v) = \sum_{(v, y) \in E} F(v, y)$ (\begriff{Flusserhaltung})
+        
+        \item
+        $\forall_{e \in E}\; F(e) \le c(e)$ (\begriff{Kapazitätskonformität})
+    \end{itemize}
+    $|F| := \sum_{(s, y) \in E} F(s, y)$ ist die \begriff{Größe} des Flusses $F$.
+\end{Def}
+
+\begin{Bem}
+    Ein Fluss maximaler Größe kann in polynomialer Zeit mittels des
+    Algorithmus von Ford-Fulkerson (Max-Flow-Min-Cut-Theorem) berechnet werden.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Reduktion von Matching auf Fluss}
+    Das Problem, ein maximales Matching zu berechnen, kann auf das Problem, einen
+    maximalen Fluss zu berechnen, reduziert werden.\\
+    Genauer gilt:
+    Sei $G = (A, B, E)$ ein bipartiter Graph.
+    Definiere ein Netzwerk $N := (V, E', s, t, c)$ mit
+    $V := A \cup B \cup \{s, t\}$ ($s, t \notin A \cup B$),
+    $E' := E \cup \{(s, a) \;|\; a \in A\} \cup \{(b, t) \;|\; b \in B\}$ und
+    $c(x, y) := 1$ für alle $(x, y) \in E'$.
+    Ist nun $F\colon E' \rightarrow \natural_0$ ein Fluss maximaler Größe in $N$,
+    dann ist $M := \{e \in E \;|\; F(e) = 1\}$ ein Matching maximaler Größe in $G$.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Logspace-Reduktionen%
+}
+
+\begin{Bem}
+    Viele in der Praxis wichtige Reduktionen lassen sich in logarithmischem Platz berechnen.
+    Deswegen definiert man Logspace-Reduktionen.
+\end{Bem}
+
+\begin{Def}{Logspace-Transducer}
+    Ein \begriff{logarithmisch platzbeschränkter Transduktor\\
+    (Logspace-Transducer)}
+    ist eine deterministische Turingmaschine $M$ mit
+    \begin{itemize}
+        \item
+        einem Eingabeband, von dem nur gelesen werden kann,
+        
+        \item
+        einem logarithmisch in der Eingabelänge platzbeschränkten Arbeitsband und
+        
+        \item
+        einem getrennten Ausgabeband, auf das nur geschrieben werden kann
+        (und der Schreibkopf bewegt sich nur nach rechts).
+    \end{itemize}
+\end{Def}
+
+\begin{Def}{in Logspace berechenbar}
+    Eine Abbildung $f\colon \Sigma^\ast \rightarrow \Sigma'^\ast$ heißt
+    \begriff{in Logspace berechenbar}, falls es einen Logspace-Transducer $M$ gibt,
+    sodass für alle $x \in \Sigma^\ast$
+    der Transduktor $M$ bei Eingabe $x$ anhält und $f(x) \in \Sigma'^\ast$ auf dem Ausgabeband
+    steht.
+\end{Def}
+
+\begin{Def}{Logspace-Reduktion}
+    Seien $L \subset \Sigma^\ast$ und $L' \subset \Sigma'^\ast$ Sprachen.
+    Dann heißt eine überall definierte, in Logspace berechenbare Abbildung
+    $f\colon \Sigma^\ast \rightarrow \Sigma'^\ast$
+    \begriff{Logspace-Reduktion} von $L$ auf $L'$, falls
+    $x \in L \iff f(x) \in L'$ für alle $x \in \Sigma^\ast$.
+    $L$ heißt auf $L'$ \begriff{in Logspace reduzierbar}
+    ($L \le_m^{\log} L'$), falls es eine Logspace-Reduktion von $L$ auf $L'$ gibt.
+\end{Def}
+
+\begin{Bem}
+    Der Index $m$ steht für many-one, was bedeutet, dass mehrere $w \in \Sigma^\ast$
+    auf ein Wort in $\Sigma'^\ast$ abgebildet werden können.\\
+    Jede in Logspace berechenbare Abbildung $f\colon \Sigma^\ast \rightarrow \Sigma'^\ast$ ist
+    in polynomialer Zeit berechenbar.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Eine analoge Aussage der folgenden gilt trivialerweise für Polynomialzeit-Reduk\-tionen.
+    Für Logspace-Reduktionen muss man etwas arbeiten,
+    denn man kann das Ergebnis der ersten Reduktion nicht einfach auf das Arbeitsband schreiben
+    (nicht in logarithmischem Platz).
+\end{Bem}
+
+\begin{Satz}{$\le_m^{\log}$ ist transitiv}
+    Seien $L \subset \Sigma^\ast$, $L' \subset \Sigma'^\ast$ und $L'' \subset \Sigma''^\ast$
+    mit $L \le_m^{\log} L' \le_m^{\log} L''$.\\
+    Dann gilt $L \le_m^{\log} L''$.
+\end{Satz}
+
+\begin{Beweis}
+    Seien $f\colon \Sigma^\ast \rightarrow \Sigma'^\ast$ bzw.
+    $g\colon \Sigma'^\ast \rightarrow \Sigma''^\ast$ Logspace-Reduktionen von $L$ auf $L'$
+    bzw. von $L'$ auf $L''$ und $w \in \Sigma^\ast$ eine Eingabe mit $|w| = n$.
+    Dann wird $g(f(w))$ in Platz $\O(\log n)$ wie folgt berechnet:
+    \begin{enumerate}
+        \item
+        Starte den Logspace-Transducer zur Berechnung von $g$ (ohne $f(w)$ vorher zu berechnen).
+        
+        \item
+        Wenn während der Berechnung von $g$ das $i$-te Bit von $f(w)$ benötigt wird,
+        dann wird der Logspace-Transducer zur Berechnung von $f(w)$ neugestartet,
+        bis schließlich das $i$-te Bit von $f(w)$ ausgegeben ist.
+        Die Bits $1, \dotsc, i - 1$ von $f(w)$ werden dabei nicht ausgegeben.
+        Dazu wird ein Binärzähler jedesmal genau dann inkrementiert, wenn
+        der Logspace-Transducer für $f$ ein Ausgabebit produziert.
+    \end{enumerate}
+    Der Binärzähler benötigt Platz $\O(\log |f(w)|) = \O(\log n)$,
+    denn es gilt $|f(w)| \le n^k$ für eine Konstante $k$.
+    Also ist die Komposition $g \circ f$ eine Logspace-Reduktion von $L$ auf $L''$.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    \emph{Zusatz}: Aussagenlogik%
+}
+
+\begin{Def}{aussagenlogische Formel}
+    Sei $\Sigma_0 := \{\lnot, \land, \lor, \Rightarrow, \Leftrightarrow, 0, 1,
+    (, ), x\}$.
+    Dann ist $\mathbb{A} \subset \Sigma_0^\ast$ die Menge aller \begriff{aussagenlogischen Formeln}
+    über der Variablenmenge $V := x1\{0, 1\}^\ast$ intuitiv definiert.
+\end{Def}
+
+\begin{Bem}
+    $\mathbb{A} \subset \Sigma_0^\ast$ ist deterministisch kontextfrei
+    und gehört damit zu $\DTIME(n)$.
+\end{Bem}
+
+\begin{Def}{erfüllbare Formel}
+    Eine aussagenlogische Formel $F$ heißt \begriff{erfüllbar},
+    falls es eine Belegung $\mathcal{B}\colon \Var(F) \rightarrow \{\TRUE, \FALSE\}$
+    der in $F$ vorkommenden Variablen $\Var(F)$ mit Wahrheitswerten so gibt,
+    sodass sich $F$ zu $\TRUE$ auswertet.
+\end{Def}
+
+\begin{Def}{$\SAT$}
+    Das Problem $\SAT$ ist definiert durch
+    $\SAT := \{F \in \mathbb{A} \;|\; F \text{ erfüllbar}\}$.
+\end{Def}
+
+\linie
+
+\begin{Def}{Literal}
+    Ein \begriff{Literal} ist eine aussagenlogische Variable
+    oder die Negation einer aussagenlogischen Variablen.
+    Statt $\lnot x$ kann man auch $\overline{x}$ schreiben.
+    Außerdem sei $\overline{\overline{x}} := x$.
+\end{Def}
+
+\begin{Def}{Konjunktion}
+    Die \begriff{Konjunktion} von zwei aussagenlogischen Formeln $A$ und $B$ ist
+    $A \land B$.
+\end{Def}
+
+\begin{Def}{Disjunktion}
+    Die \begriff{Disjunktion} von zwei aussagenlogischen Formeln $A$ und $B$ ist
+    $A \lor B$.
+\end{Def}
+
+\begin{Def}{Klausel}
+    Eine \begriff{Klausel} ist eine Disjunktion $A_1 \lor \dotsb \lor A_n$
+    von Literalen $A_1, \dotsc, A_n$.
+\end{Def}
+
+\begin{Def}{$\DNF$ und $\KNF$}
+    Die Probleme $\DNF$ und $\KNF$ sind definiert durch\\
+    $\DNF := \{F \in \mathbb{A} \;|\;
+    F \text{ ist Disjunktion von Konjunktionen von Literalen}\}$ und\\
+    $\KNF := \{F \in \mathbb{A} \;|\;
+    F \text{ ist Konjunktion von Disjunktionen von Literalen}\}$.
+\end{Def}
+
+\begin{Def}{$\kKNF{k}$ und $\kSAT{k}$}
+    Die Probleme $\kKNF{k}$ und $\kSAT{k}$ sind definiert durch\\
+    $\kKNF{k} := \{F \in \KNF \;|\;
+    \text{jede Klausel in } F \text{ enthält genau } k \text{ Literale}\}$ und\\
+    $\kSAT{k} := \kKNF{k} \cap \SAT$.
+\end{Def}
+
+\linie
+
+\begin{Satz}{Umformung in Normalform}
+    Für jede aussagenlogische Formel $F$ gibt es äquivalente
+    Formeln $\DNF(F) \in \DNF$ und $\KNF(F) \in \KNF$.
+\end{Satz}
+
+\begin{Beweis}
+    Für die Konstruktion von $\DNF(F)$ geht man die Wahrheitstabelle von $F$
+    zeilenweise durch.
+    Bei jeder Zeile (also Belegung), für die die Formel wahr wird,
+    erstellt man einen Ausdruck, der genau für diese Belegung wahr wird
+    (z.\,B. wenn $F$ für $A = B = \FALSE$ und $C = \TRUE$ wahr wird,
+    ist der zugehörige Ausdruck $\overline{A} \land \overline{B} \land C$).
+    All diese Klauseln werden nachher durch Disjunktionen
+    zusammengefasst, womit man $\DNF(F)$ erhält.
+    
+    $\KNF(F)$ erhält man analog, indem man die Zeilen betrachtet, für die die Formel falsch wird,
+    und für diese Zeilen die Negation der entsprechenden Klausel aufstellt
+    (z.\,B. wenn $F$ für $A = \TRUE$ und $B = C = \FALSE$ falsch wird,
+    dann ist die zugehörige Klausel $\overline{A} \lor B \lor C$).
+    Diese Klauseln werden dann durch Konjunktionen verbunden, womit man $\KNF(F)$ erhält.
+\end{Beweis}
+
+\linie
+
+\begin{Def}{\name{Horn}-Formel}
+    Eine \begriff{\name{Horn}-Klausel} ist eine Klausel mit höchstens einem
+    positiven Literal.
+    Eine \begriff{\name{Horn}-Formel} ist eine Formel in KNF, bei der jeder
+    Disjunktionsterm eine Horn-Klausel ist.
+\end{Def}
+
+\begin{Def}{$\HORN$ und $\HORNSAT$}
+    Die Probleme $\HORN$ und $\HORNSAT$ sind definiert durch\\
+    $\HORN := \{F \in \KNF \;|\;
+    F \text{ Horn-Formel}\}$ und
+    $\HORNSAT := \HORN \cap \SAT$.
+\end{Def}
+
+\pagebreak
+
+\subsection{%
+    Schwierige und vollständige Probleme%
+}
+
+\begin{Def}{schwierig}
+    Sei $\C$ eine Komplexitätsklasse.
+    Dann heißt $L \subset \Sigma^\ast$ \begriff{schwierig für $\C$} oder\\
+    \begriff{$\C$-schwierig} (bzgl. Logspace-Reduktionen),
+    falls $\forall_{K \in \C}\; K \le_m^{\log} L$.
+\end{Def}
+
+\begin{Def}{vollständig}
+    Sei $\C$ eine Komplexitätsklasse.
+    Dann heißt $L \subset \Sigma^\ast$ \begriff{vollständig für $\C$} oder
+    \begriff{$\C$-vollständig} (bzgl. Logspace-Reduktionen),
+    falls $L$ $\C$-schwierig ist und $L \in \C$ gilt.
+\end{Def}
+
+\linie
+
+\begin{Satz}{Abschluss unter Komplement}
+    Wenn die Komplexitätsklasse $\C$ unter Komplement abgeschlossen ist
+    (d.\,h. $\overline{L} \in \C$ für alle $L \in \C$),
+    dann ist eine Sprache $K \in \Sigma^\ast$ $\C$-vollständig genau dann,
+    wenn $\overline{K}$ $\C$-vollständig ist.
+\end{Satz}
+
+\begin{Beweis}
+    Sei $K \in \Sigma^\ast$.
+    Dann gilt $K \in \C$ genau dann, wenn $\overline{K} \in \C$ gilt.
+    Außerdem gilt $K$ $\C$-schwierig genau dann, wenn für alle
+    $L \in \C$ gilt, dass $L \le_m^{\log} K$.
+    Das ist äquivalent zu $\overline{L} \le_m^{\log} K$ für alle $\overline{L} \in \C$,
+    da $\C$ unter Komplement abgeschlossen ist.
+    Das gilt genau dann, wenn $L \le_m^{\log} \overline{K}$ für alle $L \in \C$
+    (durch Komplementbildung auf beiden Seiten der Reduktion).
+    Also ist $K$ $\C$-vollständig genau dann, wenn $\overline{K}$
+    $\C$-vollständig ist.
+\end{Beweis}
+
+\subsection{%
+    \texorpdfstring{$\NL$}{NL}-vollständige Probleme%
+}
+
+\begin{Satz}{GAP $\NL$-vollständig}
+    Das Grapherreichbarkeitsproblem GAP ist $\NL$-vollständig.
+\end{Satz}
+
+\begin{Beweis}
+    $\text{GAP} \in \NL$ wurde bereits gezeigt.
+    
+    Seien $L \in \NL$ und $M$ eine nicht-deterministische logarithmisch platzbeschränkte
+    Turingmaschine mit $L(M) = L$.
+    Für eine Eingabe $w \in \Sigma^\ast$ wird eine Reduktion $f$ definiert durch
+    $f(w) := (G, s, t)$ mit
+    \begin{itemize}
+        \item
+        $G := (V, E)$ der gerichtete Graph mit
+        $V := \{\alpha \;|\; \alpha \text{ Konfiguration von } M \text{ bei Eingabe } w,$\\
+        $|\alpha| \le \log |w|\}$ und
+        $E := \{(\alpha, \beta) \;|\; \alpha, \beta \in V,\; \alpha \vdash_M \beta\}$,
+        
+        \item
+        $s := \Start(w)$ und
+        
+        \item
+        $t := \text{die oBdA eindeutige akzeptierende Konfiguration von } M$.
+    \end{itemize}
+    Of"|fensichtlich gilt $w \in L(M) \iff \text{in } G \text{ gibt es einen gerichteten Pfad von }
+    s \text{ nach } t$.
+    Also ist $f$ eine Reduktion von $L$ auf GAP, die man in logarithmischem Platz berechnen kann.
+\end{Beweis}
+
+\linie
+\pagebreak
+
+\begin{Satz}{$\kSAT{2}$ $\NL$-vollständig}
+    $\kSAT{2}$ ist $\NL$-vollständig.
+\end{Satz}
+
+\begin{Beweis}
+    Aufgrund des Satzes von Immerman und Szelepcsényi genügt es,
+    die $\NL$-Vollständig\-keit von
+    $2\text{-NSAT} := \kKNF{2} \setminus \SAT$ zu zeigen,
+    denn es gilt $\overline{2\text{-NSAT}} = \kSAT{2}$
+    (Komplement bzgl. $\kKNF{2}$) und $\NL$ ist unter Komplement abgeschlossen
+    (nach dem Satz von Immerman und Szelepcsényi).
+    
+    $2\text{-NSAT}$ ist $\NL$-schwierig:
+    Dies kann man durch Reduktion $\text{GAP} \le_m^{\log} 2\text{-NSAT}$ des
+    Grapherreichbarkeitsproblems GAP auf $2\text{-NSAT}$ zeigen.
+    Sei $G = (V, E)$ ein gerichteter Graph und $s, t \in V$.
+    Für jeden Knoten $u \in V$ erstellt man eine logische Variable und
+    für jede Kante $(u, v) \in E$ die Implikation $u \Rightarrow v$,
+    also die Klausel $\lnot u \lor v$.
+    Außerdem werden die Klauseln $s$ und $\lnot t$ hinzugefügt.
+    Die so durch Konjunktionen zusammengesetzte Formel ist unerfüllbar,
+    wenn in $G$ ein Weg von $s$ nach $t$ existiert.
+    Wenn kein Weg existiert, dann können alle Variablen, deren zugehörige Knoten von $s$ aus
+    erreichbar sind, zu $\TRUE$ und alle anderen zu $\FALSE$ gesetzt werden.
+    Dies definiert eine die Formel erfüllende Belegung.
+    Also ist die Formel erfüllbar genau dann, wenn in $G$ ein Weg von $s$ nach $t$ existiert.
+    Man hat also eine Reduktion von GAP auf $2\text{-NSAT}$ gefunden.
+    GAP ist $\NL$-schwierig, also ist auch $2\text{-NSAT}$ ist $\NL$-schwierig.
+    
+    $2\text{-NSAT}$ liegt in $\NL$:
+    Gegeben sei eine Formel $\phi \in \kKNF{2}$
+    in den Variablen $x_1, \dotsc, x_n$.
+    Nun wird ein Graph mit Knotenmenge $V := \{x_1, \dotsc, x_n,
+    \overline{x_1}, \dotsc, \overline{x_n}\}$ konstruiert.
+    Jede Klausel $\alpha \lor \beta$ kann als Implikation interpretiert werden,
+    denn es gilt $(\alpha \lor \beta) \iff ((\overline{\alpha} \Rightarrow \beta) \lor
+    (\overline{\beta} \Rightarrow \alpha))$.
+    Deswegen werden zwei Kanten $\overline{\alpha} \rightarrow \beta$ und
+    $\overline{\beta} \rightarrow \alpha$ eingefügt.
+    Behauptung: Es gibt genau dann einen Knoten $x$ und
+    Pfade $x \rightarrow^\ast \overline{x}$ sowie $\overline{x} \rightarrow^\ast x$,
+    wenn $\phi$ unerfüllbar ist.
+    Somit kann die Nichterfüllbarkeit von $\phi$ mithilfe des $\NL$-Algorithmus
+    für Grapherreichbarkeit überprüft werden.
+    
+    Es reicht also, die Behauptung zu zeigen.
+    Das kann man wie folgt beweisen:
+    
+    "`$\Rightarrow$"':
+    Wenn es einen Knoten $x$ und
+    Pfade $x \rightarrow^\ast \overline{x}$ sowie $\overline{x} \rightarrow^\ast x$ gibt,
+    dann gelten die Implikationen $x \Rightarrow \overline{x}$ und
+    $\overline{x} \Rightarrow x$, d.\,h. weder $x$ noch $\overline{x}$ kann wahr sein.
+    $\phi$ ist also nicht erfüllbar.
+    
+    "`$\Leftarrow$"':
+    Für jeden Knoten $x$ existiere nun höchstens einer der Pfade
+    $x \rightarrow^\ast \overline{x}$ oder $\overline{x} \rightarrow^\ast x$.
+    Man kann annehmen, dass genau einer der Pfade existiert,
+    ansonsten füge die Kante $x \rightarrow \overline{x}$ hinzu.\\
+    Dies erzeugt keinen neuen Kreis:
+    Angenommen, durch die neue Kante $x \rightarrow \overline{x}$ wurde ein
+    Kreis mit $\alpha$ und $\overline{\alpha}$ erzeugt.
+    Dann benutzt dieser Kreis die Kante $x \rightarrow \overline{x}$, d.\,h.
+    es gilt $\alpha \rightarrow^\ast x \rightarrow \overline{x} \rightarrow^\ast
+    \overline{\alpha} \rightarrow^\ast \alpha \rightarrow^\ast x$
+    oder $\alpha \rightarrow^\ast x \rightarrow \overline{x} \rightarrow^\ast
+    \overline{\alpha} \rightarrow^\ast x \rightarrow \overline{x} \rightarrow^\ast \alpha$
+    ($\rightarrow^\ast$ benutzt nur alte Kanten).
+    Damit hätte der ursprüngliche Graph einen Pfad $\overline{x} \rightarrow^\ast x$,
+    im Widerspruch zur Annahme.
+    Somit kann immer eine Kante neu hinzugefügt werden, sodass immer
+    genau einer der Pfade $x \rightarrow^\ast \overline{x}$ oder $\overline{x} \rightarrow^\ast x$
+    existiert.\\
+    Nun wird $x$ auf $\TRUE$ gesetzt, wenn $\overline{x} \rightarrow^\ast x$ existiert
+    und $\FALSE$ sonst.
+    Diese Belegung ist erfüllend:
+    Sei $\alpha \lor \beta$ eine beliebige Klausel mit $\beta = \FALSE$
+    (sonst ist $\alpha \lor \beta$ ohnehin schon wahr).
+    Dann gibt es nach Konstruktion einen Pfad $\beta \rightarrow^\ast \overline{\beta}$.
+    Außerdem gibt es wegen der Klausel $\alpha \lor \beta$ die Kanten
+    $\overline{\alpha} \rightarrow \beta$ und $\overline{\beta} \rightarrow \alpha$.
+    Somit erhält man den Weg
+    $\overline{\alpha} \rightarrow \beta \rightarrow^\ast \overline{\beta} \rightarrow \alpha$.
+    Also gilt $\alpha = \TRUE$ und die Klausel ist erfüllt.\\
+    Es sind also alle Klauseln von $\phi$ erfüllt und damit $\phi$ selbst.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    \texorpdfstring{$\NP$}{NP}-vollständige Probleme%
+}
+
+\begin{Satz}{$\NP$-vollständige Sprache}
+    Wenn es eine $\NP$-vollständige Sprache $L$ gibt,
+    dann gibt es eine $\NP$-vollständige Sprache $L' \in \NTIME(n)$.
+\end{Satz}
+
+\begin{Beweis}
+    Für eine Eingabe $w \in \Sigma^\ast$ der Länge $|w| = n$
+    produziert eine Turingmaschine zunächst $w\dollar^{n^k}$ in der Zeit
+    $n^k$ mit $\dollar \notin \Sigma$ ($n \mapsto n^k$ ist zeitkonstruierbar).
+    
+    Setze nun $L' := \{w\dollar^{|w|^k} \;|\; w \in L\}$.
+    Es gilt $L \le_m^{\log} L'$ durch
+    $f\colon \Sigma^\ast \rightarrow (\Sigma \cup \{\dollar\})^\ast$,
+    $f(w) := w\dollar^{|w|^k}$, d.\,h. $L'$ ist $\NP$-vollständig, weil
+    $L$ auch $\NP$-vollständig ist.
+    Es gilt $L' \in \NTIME(n)$.
+\end{Beweis}
+
+\linie
+
+\begin{Satz}{Satz von \name{Cook} (und \name{Levin})}
+    $\SAT$ ist $\NP$-vollständig.
+\end{Satz}
+
+\begin{Beweis}
+    Es gilt $\SAT \in \NP$:
+    Für $F \in \Sigma_0^\ast$ überprüft man $F \in \SAT?$, indem man zunächst in Zeit $\O(|F|)$
+    prüft, ob $F$ überhaupt eine gültige aussagenlogische Formel ist, also $F \in \A$
+    (geht, weil $\A$ deterministisch kontextfrei ist, d.\,h. $A \in \DTIME(n)$).
+    In diesem Fall rät man eine Belegung $\B\colon \Var(F) \rightarrow {\true, \false}$
+    der in $F$ vorkommenden Variablen $\Var(F)$ mit Wahrheitswerten
+    und man akzeptiert, wenn $F$ sich unter $\B$ zu $\true$ auswertet
+    (kann in polynomieller Zeit geprüft werden).
+    
+    Um die $\NP$-Schwierigkeit von $\SAT$ zu zeigen,
+    reduziert man eine beliebige Sprache $L \in \NP$ auf $\SAT$, d.\,h.
+    man konstruiert eine Logspace-Reduktion
+    $\varphi\colon \Sigma^\ast \rightarrow \Sigma_0^\ast$ mit\\
+    $w \in L \iff \varphi(w) \text{ erfüllbar}$.
+    Dazu seien $M = (Q, \Sigma, \Gamma, \delta, q_0, F, \Box)$ eine durch das Polynom $p(n)$
+    zeitbeschränkte Turingmaschine mit $L = L(M)$
+    und $w = w_1 \dotsb w_n \in \Sigma^\ast$ eine Eingabe der Länge $n$.
+    OBdA stellt man folgende Forderungen an $M$:
+    \begin{enumerate}
+        \item
+        $M$ hat nur ein les- und schreibbares Band, auf dem zu Beginn die Eingabe steht.
+        
+        \item
+        $F = \{q_f\}$, es gibt also nur einen Endzustand.
+        
+        \item
+        Bei jeder Eingabe $w \in \Sigma^\ast$ hält $M$ nie, aber nach $p(n)$ Schritten ist $M$
+        im Endzustand genau dann, wenn $w \in L(M)$.
+        
+        \item
+        Nach $p(n)$ Schritten ist der Lese- und Schreib-Kopf wieder auf der Ausgangsposition.
+        
+        \item
+        Aus $(q, a, q', a', D) \in \delta$ und $(q, b, p', b', D') \in \delta$ folgt
+        $a = b$, $a' = b'$ und $D = D'$,
+        d.\,h. nur der resultierende neue Zustand wird nicht-deterministisch festgelegt
+        (hängt nicht vom Zeichen auf dem Band ab).
+        Dazu kann man zum Beispiel die Zustandsmenge $Q$ umdefinieren zu
+        $Q' := \{q_{a,a',D} \;|\; q \in Q,\; a, a' \in \Gamma,\;
+        D \in \{L, R, N\}\}$
+        und die Übergangsrelation $\delta$ zu\\
+        $\delta' := \{(q_{a,a',D}, a, q'_{b,b',D'}, a', D) \;|\; (q, a, q', a', D) \in \delta,\;
+        b, b' \in \Gamma, D' \in \{L, R, N\}\}$.
+    \end{enumerate}
+    
+    Somit können die Konfigurationen als
+    $\Conf := \{\Box uqv \Box \;|\; q \in Q,\; u, v \in \Gamma^\ast,\; |uv| = p(n)\}$
+    aufgefasst werden (nach 1.).
+    Die Startkonfiguration ist $\Box q_0 w \Box^{p(n)-n+1}$
+    und die akzeptierende Konfigurationen sind aus $\Box q_f \Gamma^{p(n)} \Box$
+    (nach 2. und 4.).
+    Man kann eine Konfiguration $\alpha \in \Conf$ auch schreiben als
+    $\alpha = \alpha_{-1} \alpha_{0} \dotsb \alpha_{p(n)} \alpha_{p(n)+1}$
+    mit $\alpha_{-1} = \Box$, $\alpha_{0}, \dotsc, \alpha_{p(n)} \in Q \cup \Gamma$ und
+    $\alpha_{p(n)+1} = \Box$
+    (dabei ist natürlich genau ein $\alpha_{0}, \dotsc, \alpha_{p(n)}$
+    in $Q$ und die anderen sind in $\Gamma$).
+    
+    Man definiert nun eine Menge von $4$-Tupeln, nämlich die Menge der lokalen Bandinhalte:\\
+    $\Delta := \{(a, b, c, b) \;|\; a, b, c \in \Gamma\} \;\cup$\\
+    $\{(c, b, q, p), (b, q, a, b), (q, a, d, a') \;|\; (q, a, p, a', L) \in \delta,\;
+    c, b, d \in \Gamma^\ast\} \;\cup$\\
+    $\{(c, b, q, b), (b, q, a, p), (q, a, d, a') \;|\; (q, a, p, a', N) \in \delta,\;
+    c, b, d \in \Gamma^\ast\} \;\cup$\\
+    $\{(c, b, q, b), (b, q, a, a), (q, a, d, p) \;|\; (q, a, p, a', R) \in \delta,\;
+    c, b, d \in \Gamma^\ast\}$.\\
+    Wegen 5. gilt dann für alle $\alpha, \alpha' \in \Box (Q \cup \Gamma)^\ast \Box$ mit
+    $|\alpha| = |\alpha'|$,
+    dass $\alpha, \alpha' \in \Conf$ und $\alpha \vdash_M \alpha'$ genau dann, wenn
+    $\alpha \in \Conf$ und
+    $(\alpha_{i-1}, \alpha_{i}, \alpha_{i+1}, \alpha'_{i}) \in \Delta$
+    für alle $i = 0, \dotsc, p(n)$.
+    
+    Falls zum Beispiel $(q, a, p, a', L) \in \delta$ gilt, so ist folgende lokale Bandänderung
+    für alle $b \in \Gamma$ möglich:
+    $\alpha = \dotsb \alpha_{i-2} b q a \alpha_{i+2} \dotsb \vdash_M
+    \alpha = \dotsb \alpha'_{i-2} p b a' \alpha'_{i+2} \dotsb$.
+    
+    Eine Rechnung $(\alpha_0, \alpha_1, \dotsc, \alpha_{p(n)})$ von $M$ kann damit als Matrix
+    beschrieben werden:
+    \begin{align*}\begin{array}{cccccccc}
+        \alpha_0 & = & \Box & \alpha_{0,0} & \alpha_{0,1} & \dotsb & \alpha_{0,p(n)} & \Box\\
+        \alpha_1 & = & \Box & \alpha_{1,0} & \alpha_{1,1} & \dotsb & \alpha_{1,p(n)} & \Box\\
+        & \vdots\\
+        \alpha_{p(n)} & = & \Box & \alpha_{p(n),0} & \alpha_{p(n),1} & \dotsb &
+        \alpha_{p(n),p(n)} & \Box
+    \end{array}\end{align*}
+    Für jedes Tripel $(a, i, t)$ mit $a \in Q \cup \Gamma$,
+    $i \in \{-1, 0, \dotsc, p(n), p(n) + 1\}$ und $t \in \{0, \dotsc, p(n)\}$ sei nun
+    $x(a, i, t)$ eine aussagenlogische Variable.
+    Die Interpretation der Variable ist, dass $x(a, i, t)$ wahr sein soll genau dann, wenn
+    zum Zeitpunkt $t$ das $i$-te Zeichen der aktuellen Konfiguration ein $a$ ist.
+    
+    Man definiert folgende Hornformeln:
+    \begin{itemize}
+        \item
+        Konsistenzformel: $C(n) := \bigwedge_i \bigwedge_t \bigwedge_{a \not= b}\;
+        (\lnot x(a, i, t) \lor \lnot x(b, i, t))$\\
+        (an der $i$-ten Stelle kann zu einem Zeitpunkt nur ein Zeichen stehen)
+        
+        \item
+        Randformel: $R(n) := \bigwedge_t\; (x(\Box, -1, t) \land x(\Box, p(n) + 1, t))$\\
+        (es darf nicht über den polynomiell beschränkten Platz hinausgegangen werden)
+        
+        \item
+        Startformel: $S(w) := X(q_0, 0, 0) \land \bigwedge_{i=1,\dotsc,n}\; x(a_i, i, 0) \land
+        \bigwedge_{i>n}\; x(\Box, i, 0)$\\
+        (Startkonfiguration ist $\Box q_0 w \Box^{p(n)-n+1}$)
+        
+        \item
+        Akzeptierungsformel: $A(n) := x(q_f, 0, p(n))$\\
+        (akzeptierende Konfigurationen sind aus $\Box q_f \Gamma^{p(n)} \Box$)
+    \end{itemize}
+    Anschließend definiert man die Übergangsformel
+    $D(n) := \bigwedge_i \bigwedge_t \bigwedge_{(a, b, c) \in (\Gamma \cup Q)^3}$\\
+    $\Big(\big(x(a, i - 1, t - 1) \lor x(b, i, t - 1) \lor x(c, i + 1, t - 1)\big) \Rightarrow
+    \big(\bigvee_{(a, b, c, d) \in \Delta}\; x(d, i, t)\big)\Big)$.\\
+    Die Endformel ist damit $\varphi(n) := C(n) \land R(n) \land S(w) \land A(n) \land D(n)$.
+    
+    Diese Formel ist in KNF.
+    Sie ist eine Hornformel genau dann, wenn $M$ deterministisch ist.
+    Dabei sind die Klauseln, die nur negative Literale enthalten, genau die Klauseln in $C(n)$
+    und die Klauseln in $D(n)$, bei denen die Disjunktion leer ist.
+    
+    Die Formel $\varphi'(w) := C(n) \land R(n) \land S(w) \land D(n)$ ist immer erfüllbar.
+    Die erfüllenden Belegungen entsprechen nämlich genau den Rechnungen von $M$.
+    Am Wert von $A(n)$ kann man einer solchen Belegung ansehen, ob sie erfolgreich ist.
+    Damit ist $\varphi(w)$ erfüllbar genau dann, wenn $w \in L$.
+\end{Beweis}
+
+\linie
+
+\begin{Bem}
+    Aus dem Beweis ergibt sich unmittelbar folgendes Korollar.
+\end{Bem}
+
+\begin{Kor}
+    $\HORNSAT$ ist $\P$-vollständig.
+\end{Kor}
+
+\linie
+
+\begin{Satz}{$\KNF \cap \SAT$ $\NP$-vollständig}
+    $\KNF \cap \SAT$ ist $\NP$-vollständig.
+\end{Satz}
+
+\begin{Beweis}
+    Siehe Beweis vom Satz von Cook (und Levin),
+    denn $\varphi(n)$ ist in KNF.
+\end{Beweis}
+
+\linie
+\pagebreak
+
+\begin{Satz}{$\kSAT{3}$ $\NP$-vollständig}
+    $\kSAT{3}$ ist $\NP$-vollständig.
+\end{Satz}
+
+\begin{Beweis}
+    $\kSAT{3} \in \NP$ gilt, weil die Prüfung der syntaktischen Korrektheit und der Anzahl
+    an Literalen pro Klausel deterministisch in polynomieller Zeit möglich ist.
+    Anschließend kann eine Belegung nicht-deterministisch geraten und in polynomieller Zeit
+    auf Erfüllung geprüft werden.
+    
+    Für die $\NP$-Schwierigkeit von $\kSAT{3}$ zeigt man $\KNF \cap \SAT \le \kSAT{3}$.
+    Sei also $F$ eine Formel, die schon in $\KNF$ ist.
+    Dann unterscheidet man drei Fälle:
+    \begin{enumerate}
+        \item
+        $F$ enthält eine Klausel $(\widetilde{x})$ mit nur einem Literal.
+        In diesem Fall führt man eine neue Variable $z$ ein und ersetzt $(\widetilde{x})$ durch
+        $(\widetilde{x} \lor z) \land (\widetilde{x} \lor \overline{z})$.
+        (Natürlich wird für jede solche Klausel mit nur einem Literal jeweils eine neue
+        Variable eingeführt.)
+        
+        \item
+        $F$ enthält eine Klausel $(\widetilde{x} \lor \widetilde{y})$ mit zwei Literalen.
+        In diesem Fall führt man eine neue Variable $z$ ein und ersetzt
+        $(\widetilde{x} \lor \widetilde{y})$ durch
+        $(\widetilde{x} \lor \widetilde{y} \lor z) \land
+        (\widetilde{x} \lor \widetilde{y} \lor \overline{z})$.
+        
+        \item
+        $F$ enthält eine Klausel $c := (\widetilde{x}_1 \lor \dotsb \lor \widetilde{x}_k)$ mit
+        $k \ge 4$ Literalen.
+        In diesem Fall führt man $k - 3$ neue Variablen $z_3, \dotsc, z_{k-1}$ ein und ersetzt
+        $c$ durch $c' :=$\\
+        $(\widetilde{x}_1 \lor \widetilde{x}_2 \lor z_3) \land
+        (\overline{z}_3 \lor \widetilde{x}_3 \lor z_4) \land
+        (\overline{z}_4 \lor \widetilde{x}_4 \lor z_5) \land \dotsb \land
+        (\overline{z}_{k-2} \lor \widetilde{x}_{k-2} \lor z_{k-3}) \land
+        (\overline{z}_{k-1} \lor \widetilde{x}_{k-1} \lor \widetilde{x}_k)$.
+    \end{enumerate}
+    
+    Diese Umwandlungen ändert nichts an der Erfüllbarkeit von $F$.
+    Für die ersten beiden Fälle ist das klar, für den dritten Fall gilt auch:
+    \begin{itemize}
+        \item
+        Sei $\sigma$ eine erfüllende Belegung für $c$.
+        Dann gilt $\sigma(\widetilde{x}_j) = 1$ für ein $j \in \{1, \dotsc, k\}$.
+        Wenn man $\sigma$ zu $\sigma'$ erweitert durch $\sigma'(z_i) := 1$ für $i = 3, \dotsc, j$
+        und $\sigma'(z_i) := 0$ für $i = j + 1, \dotsc, k - 1$,
+        dann ist $\sigma'$ eine erfüllende Belegung für $c'$.
+        
+        \item
+        Sei $\sigma'$ eine erfüllende Belegung für $c'$.
+        Angenommen, es gelte $\sigma'(\widetilde{x}_i) = 0$ für alle $i = 1, \dotsc, k$.
+        Dann muss $\sigma'(z_3) = 1$ gelten (wegen der ersten Klausel
+        $(\widetilde{x}_1 \lor \widetilde{x}_2 \lor z_3)$).
+        Induktiv folgt dann $\sigma'(z_i) = 1$ für alle $k = 3, \dotsc, k - 1$.
+        Dann gilt aber
+        $\sigma'((\overline{z}_{k-1} \lor \widetilde{x}_{k-1} \lor \widetilde{x}_k)) = 0$,
+        ein Widerspruch (es müssen alle Klauseln erfüllt werden).
+        Also ist die Einschränkung $\sigma$ von $\sigma'$ auf
+        $\widetilde{x}_1, \dotsc, \widetilde{x}_k$ eine erfüllende Belegung von $c$.
+    \end{itemize}
+    Somit hat man $F$ auf eine Formel in $3\text{-}\KNF$ abgebildet, die erfüllbar ist genau dann,
+    wenn $F$ erfüllbar ist.
+\end{Beweis}
+
+\linie
+
+\begin{Def}{$\LinProg(\integer)$}
+    \begriff{$\LinProg(\integer)$} ist definiert durch\\
+    $\LinProg(\integer) := \{\kod{A, b} \;|\; A \in \integer^{m \times n},\;
+    b \in \integer^m,\; \exists_{x \in \integer^n}\; Ax \ge b\}$.
+\end{Def}
+
+\begin{Satz}{$\LinProg(\integer)$ $\NP$-vollständig}
+    $\LinProg(\integer)$ ist $\NP$-vollständig.
+\end{Satz}
+
+\begin{Beweis}
+    $\LinProg(\integer) \in \NP$ ist der schwierige Teil des Beweises und wird hier ausgelassen.
+    Man kann nämlich nicht einfach nicht-deterministisch ein $x \in \integer^n$ raten,
+    da das evtl. nicht in polynomieller Zeit geht (wenn $x$ groß genug ist).
+    
+    $\LinProg(\integer)$ $\NP$-schwierig zeigt man durch
+    $\kSAT{3} \le_m^{\log} \LinProg(\integer)$.
+    Sei $F = c_1 \land \dotsb \land c_m$ eine Formel in $3\text{-}\KNF$ mit
+    Variablen $x_1, \dotsc, x_n$.
+    Dazu wird das folgende System von ganzzahligen Ungleichungen über den Variablen
+    $x_i, \overline{x}_i$, $i = 1, \dotsc, n$ gebildet:
+    \begin{enumerate}
+        \item
+        $x_i \ge 0$ für $i = 1, \dotsc, n$
+        
+        \item
+        $\overline{x_i} \ge 0$ für $i = 1, \dotsc, n$
+        
+        \item
+        $x_i + \overline{x_i} \ge 1$ für $i = 1, \dotsc, n$
+        
+        \item
+        $-x_i - \overline{x_i} \ge -1$ für $i = 1, \dotsc, n$
+        
+        \item
+        $\widetilde{x}_{j1} + \widetilde{x}_{j2} + \widetilde{x}_{j3} \ge 1$
+        für jede Klausel
+        $c_j = (\widetilde{x}_{j1} \lor \widetilde{x}_{j2} \lor \widetilde{x}_{j3})$,
+        $j = 1, \dotsc, m$
+    \end{enumerate}
+    Dieses System ist lösbar genau dann, wenn $F$ erfüllbar ist.
+\end{Beweis}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    Zur Wiederholung wird nochmal definiert, was Vertex Cover (VC) ist.
+\end{Bem}
+
+\begin{Def}{Vertex Cover (VC)}
+    Sei $G = (V, E)$ ein ungerichteter Graph.\\
+    Eine Teilmenge $C \subset V$ heißt \begriff{Knotenüberdeckung} (oder \begriff{Träger}) von $G$,
+    falls für jede Kante $\{u, v\} \in E$ gilt, dass $\{u, v\} \cap C \not= \emptyset$.
+    Dann ist \begriff{Vertex Cover (VC)} wie folgt definiert:\\
+    Gegeben ist $G$ und $k \ge 0$.
+    Gefragt ist, ob eine Knotenüberdeckung von $G$ mit $|C| \le k$ existiert.
+\end{Def}
+
+\begin{Satz}{VC $\NP$-vollständig}
+    VC ist $\NP$-vollständig.
+\end{Satz}
+
+\begin{Beweis}
+    $\VC \in \NP$:
+    Rate eine Teilmenge $C \subset V$ mit $|C| \le k$ und prüfe in Polynomialzeit, ob $C$ eine
+    Knotenüberdeckung ist.
+    
+    VC $\NP$-schwierig kann man durch $\kSAT{3} \le_m^{\log} \VC$ zeigen.
+    Sei $F = c_1 \land \dotsb \land c_m$ eine Formel in $3\text{-}\KNF$ mit
+    $c_j = (\widetilde{x}_{j1} \lor \widetilde{x}_{j2} \lor \widetilde{x}_{j3})$,
+    $j = 1, \dotsc, m$.
+    Man konstruiert zu $F$ einen ungerichteten Graphen $G(F)$ wie folgt:
+    Für jedes Literal in jeder Klausel erstellt man einen Knoten
+    (d.\,h. es gibt insgesamt $3m$ Knoten).
+    Kanten werden zwischen den Literalen einer Klausel eingefügt
+    (sodass man lauter disjunkte "`Dreiecke"' erhält)
+    und zusätzlich noch zwischen allen $x$ und $\overline{x}$ für alle Variablen $x$ aus $F$.
+    
+    In $G(F)$ muss jede Knotenüberdeckung $C$ mindestens $2m$ Knoten haben,
+    weil in jedem der $m$ Dreiecke mindestens zwei Knoten zu $C$ gehören müssen.
+    
+    Es gilt nun: $F \in \kSAT{3} \iff G(F)$ hat eine Knotenüberdeckung $C$ mit $|C| = 2m$.
+    
+    "`$\Rightarrow$":
+    Sei $F$ erfüllbar.
+    Dann wird in jeder Klausel $c_j$ mindestens ein Literal $\widetilde{x}_{ji}$ wahr.
+    Sei $C$ die Knotenmenge, die für jedes Dreieck die anderen beiden Literale enthält.
+    Dann enthält $C$ genau $2m$ Elemente und $C$ ist eine Knotenüberdeckung.
+    
+    "`$\Leftarrow$"':
+    Sei $C$ eine Knotenüberdeckung mit $|C| = 2m$.
+    Dann enhält $C$ in jedem Dreieck genau zwei Knoten.
+    Definiere eine Belegung $\sigma$ von $F$ durch\\
+    $\sigma(x) := 1$, falls eine Kopie von $x$ nicht zu $C$ gehört,\\
+    $\sigma(x) := 0$, falls eine Kopie von $\overline{x}$ nicht zu $C$ gehört, und\\
+    $\sigma(x) := 0$, falls alle Kopien von $x$ und $\overline{x}$ zu $C$ gehören.\\
+    Weil $C$ eine Knotenüberdeckung ist und alle Kanten $(x, \overline{x})$ in $G(F)$ vorhanden
+    sind, wird keine Variable gleichzeitig auf $0$ und $1$ gesetzt.
+    Es gilt $\sigma(F) = 1$.
+\end{Beweis}
+
+\linie
+\pagebreak
+
+\begin{Def}{$\NAEkSAT{k}$}
+    Das Problem \begriff{$\NAEkSAT{k}$} ist definiert durch\\
+    $\NAEkSAT{k} := \{F \in \kKNF{k} \;|\; \exists_{\text{Belegung } \sigma}\;
+    F(\sigma) = 1 = F(1 - \sigma)\}$.\\
+    Zur Abkürzung definiert man \begriff{$\NAESAT := \NAEkSAT{3}$}.
+\end{Def}
+
+\begin{Bem}
+    $F \in \NAEkSAT{k}$ heißt $F = c_1 \land \dotsb \land c_m$ mit
+    $c_j = (\widetilde{x}_{1j} \lor \dotsb \lor \widetilde{x}_{kj})$ Klausel
+    mit $k$ Literalen, sodass es eine Belegung $\sigma$ gibt, für die in jeder Klausel ein
+    Literal wahr und eins falsch ist.
+\end{Bem}
+
+\begin{Satz}{$\NAESAT$ $\NP$-vollständig}
+    $\NAESAT$ ist $\NP$-vollständig.
+\end{Satz}
+
+\begin{Beweis}
+    Es gilt $\NAESAT \in \NP$, da man $\sigma$ nicht-deterministisch raten und\\
+    $F(\sigma) = F(1 - \sigma) = 1$ in polynomieller Zeit verifizieren kann.
+    
+    Für $\NAESAT$ $\NP$-schwierig zeigt man zunächst
+    $\kSAT{3} \le_m^{\log} \NAEkSAT{4}$.\\
+    Dazu sei $F \in \kKNF{3}$ (dafür muss zuerst die syntaktische Korrektheit überprüft werden).
+    Sei $z$ eine neue Variable.
+    Ersetze nun jede Klausel $c_j$ in $F$ durch $c_j' := (c_j \lor z)$, d.\,h. aus\\
+    $F = (c_1 \land \dotsb \land c_m)$ wird $F' := (c_1' \land \dotsb \land c_m')$.
+    Es gilt $F \in \kSAT{3} \iff F' \in \NAEkSAT{4}$, denn:
+    
+    "`$\Rightarrow$"':
+    Sei $F \in \kSAT{3}$,
+    d.\,h. es gibt eine Belegung $\sigma$, sodass $F(\sigma) = 1$.
+    Erweitere nun $\sigma$ zu $\sigma'$ durch $\sigma'(z) := 0$.
+    Dann gilt immer noch $F'(\sigma') = 1$ (die $c_j$ sind weiterhin alle wahr),
+    aber auch $F'(1 - \sigma') = 1$, da $z$ in der Belegung $1 - \sigma'$ zu wahr ausgewertet wird.
+    
+    "`$\Leftarrow$"':
+    Sei $F' \in \NAEkSAT{4}$,
+    d.\,h. es gibt eine Belegung $\sigma'$, sodass $F'(\sigma') = F'(1 - \sigma') = 1$.
+    Gilt $\sigma'(z) = 0$, dann werten alle Klauseln $c_j$ zu wahr aus
+    (weil die $c_j' = (c_j \lor z)$ zu wahr auswerten, aber $z$ falsch ist),
+    d.\,h. die Einschränkung von $F'$ auf die Variablen von $F$ ist eine erfüllende Belegung
+    von $F$.
+    Gilt $\sigma'(z) = 1$, so ersetzt man $\sigma'$ durch $1 - \sigma'$.
+    
+    Nun zeigt man $\NAEkSAT{4} \le_m^{\log} \NAESAT$ wie oben:
+    Für $F \in \kKNF{4}$ mit $F = (c_1 \land \dotsb \land c_m)$ ersetzt man
+    $c_j = (\widetilde{x}_{1j} \lor \widetilde{x}_{2j} \lor
+    \widetilde{x}_{3j} \lor \widetilde{x}_{4j})$ durch
+    $c_j' := (\widetilde{x}_{1j} \lor \widetilde{x}_{2j} \lor z_j) \land
+    (\overline{z_j} \lor \widetilde{x}_{3j} \lor \widetilde{x}_{4j})$
+    (dabei sind die $z_j$, $j = 1, \dotsc, m$ neue Variablen).
+    Somit erhält man $F' := c_1' \land \dotsb \land c_m'$.
+    
+    Es gilt $F \in \NAEkSAT{4} \iff F' \in \NAESAT$:
+    
+    "`$\Rightarrow$"':
+    Sei $F \in \NAEkSAT{4}$,
+    d.\,h. es gibt eine Belegung $\sigma$ mit $F(\sigma) = F(1 - \sigma) = 1$.\\
+    Man erweitert $\sigma$ zu $\sigma'$ wie folgt:\\
+    Wenn $\sigma(\widetilde{x}_{1j}) = \sigma(\widetilde{x}_{2j})$ gilt, dann setze
+    $\sigma'(z_j) := 1 - \sigma(\widetilde{x}_{1j})$.\\
+    Wenn $\sigma(\widetilde{x}_{3j}) = \sigma(\widetilde{x}_{4j})$ gilt, dann setze
+    $\sigma'(z_j) := \sigma(\widetilde{x}_{3j})$.\\
+    (Beide Fälle können in Kombination mit
+    $\sigma(\widetilde{x}_{1j}) = \sigma(\widetilde{x}_{3j})$
+    nicht auftreten, da ein mindestens Literal wahr und mindestens eins falsch sein muss.)\\
+    Für $\sigma(\widetilde{x}_{1j}) \not= \sigma(\widetilde{x}_{2j})$ und
+    $\sigma(\widetilde{x}_{3j}) \not= \sigma(\widetilde{x}_{4j})$ setze
+    $\sigma'(z_j)$ beliebig.\\
+    Damit gilt $F'(\sigma') = F'(1 - \sigma') = 1$ und $F' \in \NAESAT$.
+    
+    "`$\Leftarrow$"':
+    Sei $F' \in \NAESAT$,
+    d.\,h. es gibt eine Belegung $\sigma'$ mit $F'(\sigma') = F'(1 - \sigma') = 1$.
+    Sei $\sigma$ die Einschränkung von $\sigma'$ auf die Variablen von $F$.\\
+    Wenn $\sigma'(\widetilde{x}_{1j}) \not= \sigma'(\widetilde{x}_{2j})$ oder
+    $\sigma'(\widetilde{x}_{3j}) \not= \sigma'(\widetilde{x}_{4j})$ gilt,
+    dann gilt $F(\sigma) = F(1 - \sigma) = 1$.\\
+    Sei also $\sigma'(\widetilde{x}_{1j}) = \sigma'(\widetilde{x}_{2j})$ und
+    $\sigma'(\widetilde{x}_{3j}) = \sigma'(\widetilde{x}_{4j})$.
+    Dann muss $\sigma'(\widetilde{x}_{2j}) \not= \sigma'(\widetilde{x}_{3j})$ gelten,
+    denn sonst wäre eine der beiden Klauseln aus $c_j'$ bei $\sigma'$ oder $1 - \sigma'$
+    nicht erfüllt
+    (z.\,B. wenn $\sigma'(z_j) = \sigma'(\widetilde{x}_{1j})$ gilt,
+    dann wäre die erste Klausel aus $c_j'$ für $\sigma'$ nicht erfüllt, wenn
+    $\sigma'(z_j) = 1$, und nicht für $1 - \sigma'$, wenn $\sigma'(z_j) = 0$).
+    Damit ist aber ebenfalls $F(\sigma) = F(1 - \sigma) = 1$, d.\,h. $F \in \NAEkSAT{4}$.
+\end{Beweis}
+
+\linie
+
+\begin{Def}{$\kSAT{2\text{-}4}$}
+    Das Problem \begriff{$\kSAT{2\text{-}4}$} ist definiert durch $\kSAT{2\text{-}4} :=$\\
+    $\{F \in \kKNF{4} \;|\; \exists_{\text{Belegung } \sigma}\;
+    \text{in jeder Klausel sind zwei Literale wahr und zwei falsch}\}$.
+\end{Def}
+
+\begin{Satz}{$\kSAT{2\text{-}4}$ $\NP$-vollständig}
+    $\kSAT{2\text{-}4}$ ist $\NP$-vollständig.
+\end{Satz}
+
+\begin{Beweis}
+    Man zeigt $\NAESAT \le_m^{\log} \kSAT{2\text{-}4}$, indem man die Klauseln
+    $c_j = (\widetilde{x}_{1j} \lor \widetilde{x}_{2j} \lor \widetilde{x}_{3j})$
+    ersetzt durch $c_j' := (c_j \lor z_j)$.
+\end{Beweis}
+
+\linie
+\pagebreak
+
+\begin{Def}{$\kFaerbbarkeit{3}$}
+    Sei $G = (V, E)$ ein ungerichteter Graph mit $V = \{1, \dotsc, n\}$ und\\
+    $E \subset \binom{V}{2} := \{\{u, v\} \;|\; u, v \in V,\; u \not= v\}$.\\
+    Das Problem \begriff{$\kFaerbbarkeit{3}$} ist damit wie folgt definiert:
+    Gegeben sei $G = (V, E)$.\\
+    Gefragt ist, ob es eine Abbildung $c\colon V \rightarrow \{\red, \green, \blue\}$ gibt,
+    sodass $\forall_{\{x, y\} \in E}\; c(x) \not= c(y)$.
+\end{Def}
+
+\begin{Satz}{$\kFaerbbarkeit{3}$ $\NP$-vollständig}
+    $\kFaerbbarkeit{3}$ ist $\NP$-vollständig.
+\end{Satz}
+
+\begin{Beweis}
+    $\kFaerbbarkeit{3} \in \NP$ ist klar (Raten einer Abbildung $c$ und Überprüfung der Bedingung).
+    
+    Für $\kFaerbbarkeit{3}$ $\NP$-schwierig zeigt man $\NAESAT \le_m^{\log} \kFaerbbarkeit{3}$.
+    Sei also $F \in \kKNF{3}$ mit $F = (c_1 \land \dotsb \land c_m)$ eine Formel
+    mit Variablen $x_1, \dotsc, x_n$ und Klauseln
+    $c_j = (\widetilde{x}_{1j} \lor \widetilde{x}_{2j} \lor \widetilde{x}_{3j})$.
+    Erstelle nun einen Graphen $G(F)$ wie folgt:
+    \begin{enumerate}
+        \item
+        Führe für jede Variable $x_i$ und der Negation $\overline{x_i}$ einen Knoten ein,
+        d.\,h. zunächst $2n$ Knoten.
+        Führe außerdem einen separaten "`Wurzelknoten"' ein.
+        Verbinde jedes $x_i$ mit $\overline{x_i}$ und alle $x_i$ und $\overline{x_i}$ jeweils mit
+        dem Wurzelknoten.
+        Der Wurzelknoten soll im Folgenden immer blau gefärbt sein.
+        Damit können die anderen Knoten im bisherigen Graphen nur rot oder grün gefärbt sein.
+        Die 3-Färbungen des Teilgraphen entsprechen den möglichen Belegungen.
+        
+        \item
+        Füge nun für jede Klausel
+        $c_j = (\widetilde{x}_{1j} \lor \widetilde{x}_{2j} \lor \widetilde{x}_{3j})$
+        jeweils ein disjunktes Dreieck ein.
+        Verbinde in den Dreiecken alle Literale mit ihrem komplementären Literal aus dem
+        1. Schritt.
+    \end{enumerate}
+    Es gilt $F \in \NAESAT \iff G(F)$ 3-färbbar:
+    
+    "`$\Rightarrow$"':
+    Sei $\sigma$ eine Belegung von $F$ mit $F(\sigma) = F(1 - \sigma) = 1$.
+    In den Dreiecken wird ein Knoten rot gefärbt, dessen entsprechendes Literal in der Klausel
+    für $\sigma$ wahr wird.
+    Ein Knoten, dessen Literal falsch ist (bzw. wahr für $1 - \sigma$), wird grün gefärbt
+    und der verbleibende Knoten blau.
+    Die Knoten im 1. Teilgraph werden dann entsprechend gefärbt
+    ($x_i$ rot und $\overline{x_i}$, falls $\sigma(x_i) = 1$, sonst andersherum).
+    
+    "`$\Leftarrow$"':
+    Sei $G(F)$ 3-färbbar, oBdA sei der Wurzelknoten blau gefärbt.
+    Pro Dreieck müssen in jedem Fall alle Farben rot, grün und blau verwendet werden.
+    Definiere $\sigma(x_i) := 1$, falls $x_i$ im 1. Teilgraphen rot ist, und
+    $\sigma(x_i) := 0$, falls $x_i$ im 1. Teilgraphen grün ist.
+    Das ist eine erfüllende Belegung, denn wenn z.\,B. $\sigma(c_j) = 0$ wäre,
+    dann wären alle Knoten des entsprechenden Dreiecks mit grünen Knoten verbunden.
+    Analog muss ein Literal pro Klausel falsch sein.
+\end{Beweis}
+
+\linie
+
+\begin{Def}{planar}
+    Ein Graph $G = (V, E)$ heißt \begriff{planar}, falls $G$ kreuzungsfrei in die Ebene $\real^2$
+    eingebettet werden kann.
+\end{Def}
+
+\begin{Bem}
+    Jeder planare Graph ist 4-färbbar.
+\end{Bem}
+
+\begin{Satz}{planare $\kFaerbbarkeit{3}$ $\NP$-vollständig}\\
+    $\kFaerbbarkeit{3}$ für planare Graphen ist $\NP$-vollständig.
+\end{Satz}
+
+\linie
+\pagebreak
+
+\begin{Def}{Rucksack-Problem}
+    Das Problem \begriff{$\Rucksack$} ist wie folgt definiert:\\
+    Gegeben seien $(s_i, p_i)$ und $s$ mit $s_i, p_i, s \in \natural$, $i = 1, \dotsc, n$.
+    Gesucht ist $I \subset \{1, \dotsc, n\}$, sodass $\sum_{i \in I} s_i \le s$ gilt
+    und unter dieser Bedingung $\sum_{i \in I} p_i$ maximal wird.
+\end{Def}
+
+\begin{Bem}
+    Bei der Entscheidungsvariante ist zusätzlich ein $p \in \natural$ gegeben.\\
+    Gefragt ist, ob $I \subset \{1, \dotsc, n\}$ existiert, sodass
+    $\sum_{i \in I} s_i \le s$ und $\sum_{i \in I} p_i \ge p$.\\
+    Mit binärer Suche (startend bei $p_{\max} := \sum_{i=1}^n p_i$) kann man zeigen:\\
+    Wenn die Entscheidungsvariante in $\P$ liegt, dann auch die Optimierungsvariante.\\
+    In der Kryptografie geht es oft nur um einen Spezialfall von $\Rucksack$.
+\end{Bem}
+
+\begin{Def}{$\SubsetSum$}
+    Das Problem \begriff{$\Rucksack$} ist wie folgt definiert:\\
+    Gegeben seien $s_i, s \in \natural$, $i = 1, \dotsc, n$.
+    Gesucht ist $I \subset \{1, \dotsc, n\}$, sodass $\sum_{i \in I} s_i = s$.
+\end{Def}
+
+\begin{Satz}{$\Rucksack$/$\SubsetSum$ $\NP$-vollständig}\\
+    $\Rucksack$ (sogar schon $\SubsetSum$) ist $\NP$-vollständig.
+\end{Satz}
+
+\begin{Beweis}
+    $\SubsetSum \in \NP$ ist klar (rate $I$ und verifiziere).
+    
+    $\SubsetSum$ $\NP$-schwierig kann man mit $\kSAT{2\text{-}4} \le_m^{\log} \SubsetSum$ zeigen.\\
+    Sei also $F = (c_1 \land \dotsb \land c_m)$ eine Formel in $\kKNF{4}$ mit
+    Klauseln $c_j = (\widetilde{x}_{1j} \lor \widetilde{x}_{2j} \lor
+    \widetilde{x}_{3j} \lor \widetilde{x}_{4j})$.
+    Aus dieser Formel werden $2n$ Werte $\widetilde{s}_i$
+    (ein Paar für jede Variable $x_i$, die in $F$ vorkommt) wie folgt erzeugt:
+    $\widetilde{s}_i := \ast\ast\; \ast\ast\; \dotsb\; \ast\ast\;\; \ast\;\;
+    0 \dotsb 010 \dotsb 0$.
+    Dabei stehen vorne $2m$ Bits (also $m$ Paare), danach folgt ein Trennbit und hinten befinden
+    sich $n$ Bits, wobei die $1$ an der $i$-ten Position von hinten ist.
+    Die vorderen Bits bestimmen sich folgendermaßen:\\
+    Das $j$-te vordere Paar von $s_i$ ist $00$,
+    falls $x_i \notin c_j$, und $01$, falls $x_i \in c_j$.\\
+    Das $j$-te vordere Paar von $\overline{s_i}$ ist $00$,
+    falls $\overline{x_i} \notin c_j$, und $01$, falls $\overline{x_i} \in c_j$.\\
+    Das Trennbit ist beliebig, z.\,B. $0$.
+    
+    Wenn man nun $s := 10\; 10\; \dotsb\; 10\;\; 0\;\; 11 \dotsb 1$ setzt,
+    dann gilt $F \in \kSAT{2\text{-}4}$ genau dann, wenn
+    es ein $I \subset \{1, \dotsc, n\}$ gibt mit $\sum_{i \in I} s_i = s$.
+\end{Beweis}
+
+\linie
+
+\begin{Bem}
+    $\Rucksack$ und $\SubsetSum$ sind pseudo-polynomiell lösbar,
+    d.\,h. die Probleme liegen in $\P$, falls die Zahlen unär kodiert werden
+    (zum Lösen benötigt man also polynomiell viel Zeit,
+    wobei das Polynom nicht von der Länge von $s$, sondern von $s$ selbst abhängt).
+    
+    Die Lösung erfolgt dabei mit \begriff{dynamischem Programmieren}:\\
+    Sei $S[j] := \{\sum_{i \in I} s_i \;|\; I \subset \{1, \dotsc, j\},\;
+    \sum_{i \in I} s_i \le s\}$.
+    Ausgehend von $S[0] = 0$ kann man $S[j]$ aus $S[j-1]$ für $j = 1, \dotsc, n$ berechnen
+    durch $S[j] = \{s_j + k \;|\; k \in S[j-1],\; s_j + k \le s\} \cup S[j-1]$.
+    Es gilt $S[0] \subset S[1] \subset \dotsb \subset S[n] \subset \{0, \dotsb s\}$,
+    d.\,h. $|S[j]| \le s + 1$ für alle $j = 0, \dotsc, n$.
+    Falls $|S[n]|$ polynomiell begrenzt bleibt, so ist das Problem polynomiell lösbar,
+    denn die Laufzeit ist $\O(n \cdot s \cdot \log s)$.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    \texorpdfstring{$\PSPACE$}{PSPACE}-vollständige Probleme%
+}
+
+\begin{Def}{quantifizierte \name{Boole}sche Formel (QBF)}
+    Eine \begriff{quantifizierte \name{Boole}sche Formel (QBF)} entsteht folgendermaßen:
+    \begin{itemize}
+        \item
+        Jede Aussagenvariable $x$ ist eine QBF.
+        In dieser Formel $x$ tritt $x$ \begriff{frei} auf.
+        
+        \item
+        $\lnot \varphi$, $(\varphi \land \psi)$ und $(\varphi \lor \psi)$ sind QBF,
+        falls $\varphi$ und $\psi$ QBF sind.
+        Eine Aussagenvariable $x$ aus $\varphi$ oder $\psi$ ist frei in den Formeln,
+        falls $x$ frei in $\varphi$ oder frei in $\psi$ ist.
+        
+        \item
+        $\forall_x \varphi$ und $\exists_x \varphi$ sind QBF,
+        falls $\varphi$ QBF und $x$ eine Aussagenvariable ist.
+        Der Gültigkeitsbereich von $\forall_x$ bzw. $\exists_x$ erstreckt sich auf jedes
+        freie Vorkommen von $x$ in $\varphi$.
+        $x$ ist in der entstehenden Formel nicht mehr frei,
+        alle anderen Aussagenvariablen dagegen schon.
+    \end{itemize}
+\end{Def}
+
+\begin{Def}{pränexe Normalform}
+    Eine QBF $F$ ist in \begriff{pränexer Normalform}, falls\\
+    $F = Q^{(1)}_{x_1} \dotsb Q^{(n)}_{x_n} \varphi(x_1, \dotsc, x_n)$ mit
+    $Q^{(1)}, \dotsc, Q^{(n)} \in \{\forall, \exists\}$ und\\
+    $\varphi(x_1, \dotsc, x_n)$ aussagenlogische Formel ohne Quantoren in den Variablen
+    $x_1, \dotsc, x_n$.
+\end{Def}
+
+\begin{Satz}{Existenz der pränexen Normalform}
+    Jede QBF kann in eine äquivalente pränexe Normalform gebracht werden
+    (in polynomieller Zeit).
+\end{Satz}
+
+\linie
+
+\begin{Def}{$\QBF$}
+    Das Problem \begriff{$\QBF$} ist definiert durch\\
+    $\QBF := \{F \;|\; F \text{ quantifizierte Boolesche Formel, die sich zu wahr auswertet}\}$.
+\end{Def}
+
+\begin{Satz}{$\QBF$ $\PSPACE$-schwierig}
+    $\QBF$ ist $\PSPACE$-schwierig.
+\end{Satz}
+
+\pagebreak

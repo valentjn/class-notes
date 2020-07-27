@@ -1,0 +1,263 @@
+\section{%
+    Spieltheorie%
+}
+
+\subsection{%
+    Strategische Spiele%
+}
+
+Es folgen zwei Beispiele für \begriff{strategische Spiele}.
+
+\textbf{Gefangenendilemma}:
+Zwei Bankräuber $A, B$ wurden gefasst.
+Man kann ihnen die Tat allerdings nicht nachweisen, man könnte sie nur wegen unerlaubten
+Waf"|fenbesitzes zu jeweils 3 Jahren Gefängnis verurteilen.
+Nun bietet der Staatsanwalt beiden Bankräubern getrennt an, ein Geständnis abzulegen,
+um in den Genuss einer Kronzeugenregelung zu kommen.
+Dazu darf der jeweils andere aber nicht gestehen.
+Ist das der Fall, so kommt der Kronzeuge nur 1 Jahr ins Gefängnis und der andere 9 Jahre.
+Gestehen jedoch beide, dann kommen beide für 7 Jahre ins Gefängnis.
+$A$ und $B$ haben keine Möglichkeit, sich abzusprechen.
+Wie sollen sie verfahren?
+
+\textbf{Kampf der Geschlechter}:
+Zwei Partner $A, B$ befinden sich an unterschiedlichen Orten.
+$A$ will ins Stadion und $B$ will einkaufen.
+Für beide gilt, dass sie am liebsten mit ihrem Partner am Lieblingsort wären.
+Am zweitliebsten ist beiden, mit ihrem Partner am anderen Ort zu sein.
+Am wenigsten gerne sind sie allein.
+$A$ und $B$ können sich nicht absprechen.
+Wo sollen sie hingehen?
+
+\linie
+
+\textbf{Entscheidungsmodell}:
+Für solche Situationen ist ein allgemeines Entscheidungsmodell erforderlich.
+Die Entscheidungen können erfolgen unter
+\begin{itemize}
+    \item
+    \begriff{Gewissheit}
+    (alle Bedingungen/Konsequenzen sind bekannt),
+    
+    \item
+    \begriff{Risiko}
+    (die Bedingungen sind nur mit bestimmter Wahrscheinlichkeit bekannt) und
+    
+    \item
+    \begriff{Ungewissheit}
+    (die Bedingungen sind unbekannt).
+\end{itemize}
+
+\subsection{%
+    Modell für Spiele%
+}
+
+Im Folgenden beschränkt man sich auf höchstens zwei Spieler $A$ und $B$
+mit $X \in \{A, B\}$.
+
+\textbf{Spiele}:
+Beide können ihre Handlungen (\begriff{Strategien}) aus Mengen $S_A$ bzw. $S_B$ wählen.
+Bei einem \begriff{endlichen Spiel} sind $S_A := \{a_1, \dotsc, a_{n_A}\}$ und
+$S_B := \{b_1, \dotsc, b_{n_B}\}$ endlich.
+Ein \begriff{Spielzugpaar} ist ein Element aus $S := S_A \times S_B$.
+Eine Funktion $u_X\colon S \to \real$ heißt \begriff{Auszahlungsfunktion}.
+Bei einem endlichen Spiel erhält man \begriff{Nutzenmatrizen}
+$U^X \in \real^{n_A \times n_B}$ mit
+$U_{i,j}^X := u_X(a_i, b_j)$.
+Beide Matrizen werden manchmal zur \begriff{Bimatrix}
+$U^{AB} \in (\real^2)^{n_A \times n_B}$ mit Einträgen $U_{i,j}^{AB} = (U_{i,j}^A, U_{i,j}^B)$
+zusammengefasst.
+
+\textbf{Nullsummenspiel}:
+Spiele mit $\forall_{s \in S}\; u_A(s) = -u_B(s)$ heißen \begriff{Nullsummenspiele}.
+Bei einem endlichen Spiel ist dann $U^A = -U^B$ und es genügt eine Nutzenmatrix $U := U^A$.
+Man spricht dann vom \begriff{Gewinnspieler} $A$ und vom \begriff{Verlustspieler} $B$.
+
+\textbf{strategische Normalform}:
+Der Strategieraum $S$ zusammen mit den Auszahlungsfunktionen $u_X$ heißt
+\begriff{strategische Normalform}.
+
+\textbf{Spiel mit vollständiger Information}:
+Bei einem \begriff{Spiel mit vollständiger Information} kennen $A$ und $B$ beide die
+vollständige Auszahlungsfunktion.
+
+Im Folgenden geht es nur noch um endliche Spiele mit vollständiger Information.
+
+\pagebreak
+
+\subsection{%
+    Einpersonenspiele%
+}
+
+\textbf{Einpersonenspiel}:
+Bei einem \begriff{Einpersonenspiel} oder \begriff{Spiel ohne Annahme über Gegner} trifft
+$B$ die Wahl unabhängig von $A$ (z.\,B. Wetter).
+Es gibt daher nur eine Nutzenmatrix $U = U^A$.
+
+\textbf{Spiel bei Gewissheit}:
+Wenn $A$ weiß, dass $B$ $b_j$ spielt, dann spielt $A$ natürlich $a_{\widehat{i}}$ mit\\
+$\widehat{i} \in \{1, \dotsc, n_A\}$, sodass $U_{\widehat{i},j} = \max_i U_{i,j}$.
+
+\textbf{Spiel bei Risiko}:
+Wenn $A$ keine Information über die Wahl von $B$ hat, dann hängt die Wahl von $A$ von dessen
+Mentalität ab.
+\begin{itemize}
+    \item
+    \emph{risikobereiter Spieler}:
+    Ermögliche den maximalen Gewinn, d.\,h.\\
+    wähle $\widehat{i} \in \{1, \dotsc, n_A\}$
+    mit $\max_j U_{\widehat{i},j} = \max_i \max_j U_{i,j}$.
+    
+    \item
+    \emph{vorsichtiger Spieler}:
+    Maximiere den garantierten Gewinn, d.\,h.\\
+    wähle $\widehat{i} \in \{1, \dotsc, n_A\}$
+    mit $\min_j U_{\widehat{i},j} = \max_i \min_j U_{i,j}$.
+\end{itemize}
+
+\textbf{weitere Strategien}:
+Man kann für die Entscheidung von $B$ auch eine Wahrscheinlichkeitsverteilung ansetzen,
+z.\,B. nach dem \begriff{Prinzip des unzureichenden Grunds} die Gleichverteilung
+$\PP(b_j) = \frac{1}{n_B}$.
+Das Ziel ist es dann, den Erwartungswert zu maximieren.
+
+\subsection{%
+    Zweipersonenspiele%
+}
+
+Nun spielen $A$ und $B$ gleichzeitig, es gibt also einen Interessenskonflikt.
+Zur Abkürzung verwendet man die Schreibweisen $-A := B$ und $-B := A$ für den jeweiligen Gegner.
+
+\textbf{Reaktionsabbildung}:
+Die \begriff{Reaktionsabbildung} ist definiert durch\\
+$r_X\colon S_{-X} \to \P(S_X)$,
+$r_X(y) := \{\widehat{x} \in S_X \;|\; u_X(\widehat{x}, y) = \max_{x \in S_X} u_X(x, y)\}$.
+
+$r_X(y)$ ist die Menge der Spielzüge, die optimal sind, wenn man weiß, dass der Gegner $y$ spielt.
+Bei unendlichen Strategiemengen muss das Maximum nicht notwendigerweise existieren.
+
+\textbf{Gesamt-Reaktionsabbildung}:
+Die \begriff{Gesamt-Reaktionsabbildung} ist definiert durch\\
+$r\colon S \to \P(S)$,
+$r(a, b) := r_A(b) \times r_B(a)$.
+
+$r(a, b)$ ist die Menge aller Strategiepaare, bei denen $A$ optimal auf $b$ und $B$ optimal auf
+$a$ reagiert.
+
+\linie
+
+\textbf{Beispiel}:
+Für $U^{AB} := \smallpmatrix{(0, 20) & (30, 20)\\(10, 0) & (10, 10)}$ ist
+$r(a_1, b_1) = \{(a_2, b_1), (a_2, b_2)\}$,\\
+$r(a_1, b_2) = \{(a_1, b_1), (a_1, b_2)\}$,
+$r(a_2, b_1) = \{(a_2, b_2)\}$ und
+$r(a_2, b_2) = \{(a_1, b_2)\}$.
+
+\textbf{Beispiel}:
+Für $S_A := [0, 1] =: S_B$, $u_A(a, b) := 2ab - a - b$ und $u_B(a, b) := -u_A(a, b)$ ist
+$r_A(b) = \{0\}$ für $b < \frac{1}{2}$,
+$r_A(b) = [0, 1]$ für $b = \frac{1}{2}$ und
+$r_A(b) = \{1\}$ für $b > \frac{1}{2}$,
+wobei $r_B(a) = r_A(a)$.
+
+\linie
+
+\textbf{dominante Strategie}:
+Eine \begriff{dominante Stratgie} für $X$
+ist $x \in S_X$ mit $\forall_{y \in S_Y}\; x \in r_X(y)$.
+
+\textbf{Beispiel}:
+Beim Gefangenendilemma ist $U^{AB} := \smallpmatrix{(-7, -7) & (-1, -9)\\(-9, -1) & (-3, -3)}$.\\
+Wegen $r_A(b_1) = \{a_1\} = r_A(b_2)$ ist $a_1$ eine dominante Stratgie für $A$
+und analog $b_1$ eine dominante Strategie für $B$.
+Deswegen müssen aber in der Realität $A$ und $B$ nicht immer $a_1$ bzw. $b_1$ spielen
+(z.\,B. Angst, dass sich $-X$ rächen).
+Ist das so, dann sollte die Nutzenmatrix geändert werden.
+
+\linie
+\pagebreak
+
+\textbf{\name{Nash}-Gleichgewicht}:
+Ein \begriff{\name{Nash}-Gleichgewicht (Gleichgewichtspunkt)} ist ein Spielzugpaar
+$\widehat{s} := (\widehat{a}, \widehat{b}) \in S$ mit
+$\widehat{a} \in r_A(\widehat{b})$ und $\widehat{b} \in r_B(\widehat{a})$
+(d.\,h. $\widehat{s} \in r(\widehat{s})$).
+
+Haben $A$ und $B$ ihre Strategie vorher vereinbart, dann ist eine alleinige Abweichung sinnlos.
+
+\textbf{alternative Charakterisierung}:
+Sei $\widehat{s} := (\widehat{a}, \widehat{b}) \in S$.
+Dann ist $\widehat{s}$ ein Nash-Gleichgewicht
+\begin{itemize}
+    \item
+    genau dann, wenn
+    $\forall_{b \in S_B}\; u_B(\widehat{a}, \widehat{b}) \ge u_B(\widehat{a}, b)$ und
+    $\forall_{a \in S_A}\; u_A(\widehat{a}, \widehat{b}) \ge u_A(a, \widehat{b})$, und
+    
+    \item
+    für ein Nullsummenspiel genau dann, wenn
+    $\forall_{(a, b) \in S}\;
+    u(\widehat{a}, b) \ge u(\widehat{a}, \widehat{b}) \ge u(a, \widehat{b})$.\\
+    In diesem Fall heißt $\widehat{s}$ auch \begriff{Sattelpunkt}.
+\end{itemize}
+
+\linie
+
+\textbf{Beispiel}:
+Bei der Schlacht in der Bismarck-See wollten die Japaner einen Nachschubkonvoi nach Neuguinea
+schicken.
+Die Amerikaner wollten das verhindern.
+Zwei mögliche Routen (Nord- und Südroute) standen zur Auswahl,
+die jeweils $3$ Tage Fahrt lang waren.
+Bei der Nordroute war die Sicht schlecht, sodass amerikanische Aufklärer einen ganzen Tag zur
+Aufklärung benötigten, bevor sie am nächsten Tag mit der Bombardierung beginnen konnten
+(wenn die Japaner die Nordroute gewählt haben).
+Hatten Japaner und Amerikaner die Südroute gewählt, so war die Sicht für die Amerikaner so gut,
+dass sie schon am selben Tag bombadieren konnten.
+Wenn $A$ die USA und $B$ Japan ist und man als Auszahlung die Tage mit Bombardierung festlegt,
+so ergibt sich die Nutzenmatrix $U = \smallpmatrix{2 & 2\\1 & 3}$.
+Weil $(a_1, b_1)$ ein Sattelpunkt ist, ist es für beide optimal, die Nordroute zu wählen
+(was auch so eingetreten ist).
+
+\subsection{%
+    Gemischte Strategien%
+}
+
+\textbf{Problem}:
+Nicht jedes Spiel hat nur einen Gleichgewichtspunkt.
+Beim Kampf der Geschlechter kann man z.\,B.
+$U^{AB} = \smallpmatrix{(20, 10) & (0, 0)\\(0, 0) & (10, 20)}$ ansetzen,
+d.\,h. $(a_1, b_1)$ und $(a_2, b_2)$ sind Gleichgewichtspunkte.
+Welcher der Punkte soll ohne Absprache gewählt werden?
+
+Analog ist es beim Nullsummenspiel $U = \smallpmatrix{5 & -5\\-5 & 5}$.
+Hier ist ein alleiniges Abweichen immer vorteilhaft, wenn der Gegner bei seiner Strategie bleibt.
+
+\linie
+
+\textbf{gemischte Strategien}:
+Bei einem Spiel mit \begriff{gemischten Strategien} geht man von einem endlichen Spiel mit
+$S := \{a_1, \dotsc, a_{n_A}\} \times \{b_1, \dotsc, b_{n_B}\}$ und Nutzenmatrizen $U^A, U^B$
+aus und setzt\\
+$\widetilde{S}_X := \{p_A = (p_{X,1}, \dotsc, p_{X,n_X})^\tp \in [0, 1]^{n_X} \;|\;
+\sum_{i=1}^{n_X} p_{X_i} = 1\}$ sowie\\
+$\widetilde{u}_X(p_A, p_B) := \EE(u_X) = p_A^\tp \cdot U^X \cdot p_B$
+(d.\,h. wählt man $p_A \in \widetilde{S}_A$, dann spielt $A$ mit Wahrscheinlichkeit $p_{A,i}$
+die Strategie $a_i$ für $i = 1, \dotsc, n_A$).
+
+\textbf{Beispiel}:
+Geht man vom Kampf der Geschlechter aus, so erhält man mit der Identifizierung
+$\widetilde{S}_X := [0, 1]$ und $p_X := p_{X,1}$ (geht wegen $p_{X,2} = 1 - p_{X,1}$)
+die Nutzenfunktionen\\
+$\widetilde{u}_A(p_A, p_B) = 20 p_A p_B + 10 (1 - p_A) (1 - p_B)
+= 30 p_A p_B - 10 p_A - 10 p_B + 10$ und\\
+$\widetilde{u}_B(p_A, p_B) = 10 p_A p_B + 20 (1 - p_A) (1 - p_B)
+= 30 p_A p_B - 20 p_A - 20 p_B + 20$.\\
+Man erhält
+$\widetilde{r}_A(p_B) = \{0\}$ für $p_B < \frac{1}{3}$,
+$\widetilde{r}_A(p_B) = [0, 1]$ für $p_B = \frac{1}{3}$ und
+$\widetilde{r}_A(p_B) = \{1\}$ für $p_B > \frac{1}{3}$
+(analog $\widetilde{r}_B(p_A)$ mit $p_A = \frac{2}{3}$).
+Gleichgewichtspunkte sind damit $(0, 0)$, $(1, 1)$ und $(\frac{2}{3}, \frac{1}{3})$.
+
+\pagebreak

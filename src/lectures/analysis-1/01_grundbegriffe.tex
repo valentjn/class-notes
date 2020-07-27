@@ -1,0 +1,809 @@
+\section{%
+    Einige Grundbegrif"|fe der Mathematik%
+}
+
+\subsection{%
+    Elemente der Aussagenlogik%
+}
+
+Eine \textbf{Aussage} ist ein sprachliches Gebilde, welches zur Beschreibung
+und Mitteilung von Sachverhalten dient.
+
+\begin{itemize}
+    \item Eine mathematische Aussage ist wahr oder falsch. \\
+    (\emph{Prinzip vom ausgeschlossenen Dritten})
+    
+    \item Eine mathematische Aussage kann nicht gleichzeitig wahr und falsch
+    sein. \\
+    (\emph{Prinzip vom ausgeschlossenen Widerspruch})
+\end{itemize}
+
+\textbf{Operationen}: Negation $\lnot a$, Konjunktion $a \land b$, Alternative
+$a \lor b$, Implikation $a \Rightarrow b$, Äquivalenz $a \Leftrightarrow b$
+
+\textbf{logisches Gesetz}: Aussagen logisch äquivalent unabhängig von der
+Belegung der Aussagewerte $\Rightarrow$ immer wahr.
+
+\textbf{Aussageform (Prädikat)}: $H(x)$ wird durch jedes eingesetztes $x \in A$
+(\emph{Subjekt/Variable}) aus dem {\em Subjektbereich} $A$ zu einer Aussage.
+
+\textbf{Quantoren}: \\
+\emph{Allquantor}:
+$\forall_{x \in A}\; H(x) \;\Leftrightarrow\; \bigwedge_{x \in A} H(x)$ \\
+\emph{Existenzquantor}:
+$\exists_{x \in A}\; H(x) \;\Leftrightarrow\; \bigvee_{x \in A} H(x)$
+
+\textbf{Verknüpfungen mit Quantoren}:\\
+$\lnot \forall_{x \in A}\; H(x) \;\Leftrightarrow\;
+\exists_{x \in A}\; \lnot H(x)$,
+$\quad\lnot \exists_{x \in A}\; H(x) \;\Leftrightarrow\;
+\forall_{x \in A}\; \lnot H(x)$ \\
+$(\forall_{x \in A}\; H_{1}(x)) \land (\forall_{x \in A}\; H_{2}(x))
+\;\Leftrightarrow\; \forall_{x \in A}\; (H_{1}(x) \land H_{2}(x))$ \\
+$(\forall_{x \in A}\; H_{1}(x)) \lor (\forall_{x \in A}\; H_{2}(x))
+\;\Rightarrow\; \forall_{x \in A}\; (H_{1}(x) \lor H_{2}(x))$ \\
+$(\exists_{x \in A}\; H_{1}(x)) \lor (\exists_{x \in A}\; H_{2}(x))
+\;\Leftrightarrow\; \exists_{x \in A}\; (H_{1}(x) \lor H_{2}(x))$ \\
+$(\exists_{x \in A}\; H_{1}(x)) \land (\exists_{x \in A}\; H_{2}(x))
+\;\Leftarrow\; \exists_{x \in A}\; (H_{1}(x) \land H_{2}(x))$ \\
+$\exists_x (\exists_y\; H(x, y)) \;\Leftrightarrow\; \exists_y
+(\exists_x\; H(x, y))$,
+$\quad\forall_x (\forall_y\; H(x, y)) \;\Leftrightarrow\; \forall_y
+(\forall_x\; H(x, y))$
+
+\subsection {%
+    Der Begriff der Menge%
+}
+
+hier Beschränkung auf \textbf{naive Mengenlehre}, die auf Georg \textsc{Cantor}
+zurückgeht
+
+Definition nach \textsc{Cantor}:
+Eine \textbf{Menge} ist eine Zusammenfassung bestimmter, wohlunterschiedener
+Objekte (unserer Anschauung und unseren Denkens) zu einem Ganzen.
+Diese Objekte heißen \textbf{Elemente} einer Menge.
+
+\begin{itemize}
+    \item \emph{bestimmt}: Es ist eindeutig entscheidbar, ob ein Objekt zur
+    Menge gehört oder nicht.
+    
+    \item \emph{wohlunterschieden}: Eine Menge enthält nicht zwei gleiche
+    Objekte.
+\end{itemize}
+
+\textbf{Extensionsprinzip}: Eine Menge ist bestimmt durch die Elemente, die sie
+enthält.
+Zwei Mengen sind genau dann gleich, wenn sie die gleichen Elemente beinhalten.
+
+$x \in A \Leftrightarrow H_{A}(x)$ wahr, man schreibt
+$A = \{x \;|\; H_{A}(x)\}$
+
+Zu jeder Menge gibt es eine Aussageform, die sie definiert.
+Doch nicht jede Aussageform bestimmt eine Menge.
+
+\textbf{\textsc{Russell}sche Antinomie}:
+$R$ sei die Familie aller Mengen, die sich nicht selbst als Element enthalten
+($H_{R}(M) = M \notin M$ bzw. $R = \{M \;|\; M \notin M\}$).
+R ist keine Menge.
+
+\textbf{Operationen mit Mengen}:
+
+\begin{itemize}
+    \item \emph{Teilmenge}: $B \subset A \;\Leftrightarrow\;
+    ((x \in B) \Rightarrow (x \in A)) \;\Leftrightarrow\;
+    \forall_{x \in B}\; x \in A$
+    \\ (wobei
+    $A = B \;\Leftrightarrow\; (A \subset B) \land (B \subset A)$ und
+    $\emptyset = \{x \in A \;|\; x \notin A\} \subset A$)
+    
+    \item \emph{Durchschnitt}:
+    $A \cap B = \{x \;|\; (x \in A) \land (x \in B)\} = B \cap A$
+    
+    \item \emph{Vereinigung}: $A \cup B = \{x \;|\; (x \in A) \lor (x \in B)\}
+    = B \cup A$
+    
+    \item \emph{Dif"|ferenz}: $A \setminus B = \{x \;|\; (x \in A) \land
+    (x \notin B)\}$
+    
+    \item \emph{Symmetrische Dif"|ferenz}: $A \,\triangle\, B =
+    (A \setminus B) \cup (B \setminus A) = (A \cup B) \setminus (A \cap B)$
+    
+    \item \emph{Komplement}:
+    $A_M^c = M \setminus A = \{x \in M \;|\; x \notin A\}$ \\
+    (wobei
+    $(A \cap B)_M^c = A_M^c \cup B_M^c$ und
+    $(A \cup B)_M^c = A_M^c \cap B_M^c$)
+    
+    \item \emph{Operationen mit Indexmengen}: \\
+    $\bigcup_{\kappa \in K} A_\kappa =
+    \{x \;|\; \exists_{\kappa \in K}\; x \in A_\kappa\}$,
+    $\bigcap_{\kappa \in K} A_\kappa =
+    \{x \;|\; \forall_{\kappa \in K}\; x \in A_\kappa\}$
+\end{itemize}
+
+\textbf{Kreuzprodukt (kartesisches Produkt)}:
+$A \times B = \{(a,\; b) \;|\; (a \in A) \land (b \in B)\}$, \\
+$(a_1, b_1) = (a_2, b_2) \;\Leftrightarrow\; (a_1 = a_2) \land (b_1 = b_2)$,
+Menge aller geordneten Paare (Tupel)
+
+\subsection{%
+    Relationen und Äquivalenzrelationen%
+}
+
+Eine \textbf{Relation} $R$ zwischen zwei Mengen $A$ und $B$ ist eine Teilmenge
+aus $A \times B$. \\
+$R \subset A \times B$, $(a,b) \in R \;\Leftrightarrow\; a R b$
+
+\textbf{Vorbereich}:
+$\Vb(R) = \{a \in A \;|\; \exists_{b \in B}\; a R b\}$ \\
+\textbf{Nachbereich}:
+$\Nb(R) = \{b \in B \;|\; \exists_{a \in A}\; a R b\}$
+
+\textbf{inverse Relation}: $R^{-1} \subset B \times A$,
+$(b,a) \in R^{-1} \Leftrightarrow (a,b) \in R$ \\
+$\Vb(R^{-1}) = \Nb(R)$, $\Nb(R^{-1}) = \Vb(R)$
+
+$R$ \textbf{voreindeutig}
+$\;\Leftrightarrow\; \forall_{a_1,a_2 \in A} \forall_{b \in B}\;
+(a_1 R b \land a_2 R b) \Rightarrow a_1 = a_2$ \\
+$R$ \textbf{nacheindeutig}
+$\;\Leftrightarrow\; \forall_{b_1,b_2 \in B} \forall_{a \in A}\;
+(a R b_1 \land a R b_2) \Rightarrow b_1 = b_2$ \\
+$R$ \textbf{eineindeutig} $\;\Leftrightarrow\; R$
+vor- und nacheindeutig
+
+\linie
+
+Für $R \subset A \times A$ (d.\,h. $R$ ist in $A$ gegeben):
+
+\begin{itemize}
+    \item[(1)] $R$ \textbf{reflexiv} $\;\Leftrightarrow\;
+    \forall_{a \in A}\; a R a$ (d.\,h. $\Vb(R) = \Nb(R) = A$)
+    
+    \item[(2)] $R$ \textbf{symmetrisch} $\;\Leftrightarrow\;
+    \forall_{a_1,a_2 \in A}\; (a_1 R a_2) \Leftrightarrow (a_2 R a_1)$
+    
+    \item[(3)] $R$ \textbf{transitiv} $\;\Leftrightarrow\;
+    \forall_{a_1,a_2,a_3 \in A}\;
+    (a_1 R a_2) \land (a_2 R a_3) \Rightarrow (a_1 R a_3)$
+\end{itemize}
+
+Eine reflexive, symmetrische und transitive Relation heißt
+\textbf{Äquivalenzrelation}. \\
+$a_1 R a_2 \;\Leftrightarrow\; a_1 \sim_R a_2 \;\Leftrightarrow\;
+a_1 \equiv a_2 \; \mod \; R$
+
+Sei $R$ Äquivalenzrelation in $A$. Für jedes $a \in A$ definiert man die
+\textbf{Äquivalenzklasse} \\
+$[a]_R = [a]_\sim = \{a' \in A \;|\; a \sim a'\}$.
+
+$[a]_R \subset A$, $a' \in [a]_R$ \textbf{Repräsentant} von $[a]_R$,
+darstellendes Element
+
+\textbf{Eigenschaften der Äquivalenzklasse}:
+
+\begin{enumerate}
+    \item $(a' \in [a]_R) \land (a'' \in [a]_R) \;\Rightarrow\; (a' \sim a'')$
+    
+    \item $[a]_R \not= \emptyset$, da $a \in [a]_R$
+    
+    \item entweder $[a_1]_R = [a_2]_R$ oder $[a_1]_R \cap [a_2]_R = \emptyset$
+    (für beliebige $a_1, a_2 \in A$)
+\end{enumerate}
+
+\linie
+\pagebreak
+
+Eine \textbf{Familie von Mengen} $\mathcal{F} = \{A_\kappa\}_{\kappa \in K}$
+heißt \textbf{Zerlegung} von $A$, falls
+
+\begin{itemize}
+    \item[(1)] $\forall_{\kappa \in K}\; A_\kappa \not= \emptyset$
+    
+    \item[(2)] $\forall_{\kappa_1, \kappa_2 \in K, \kappa_1 \not= \kappa_2}\;
+    A_{\kappa_1} \cap A_{\kappa_2} = \emptyset$
+    
+    \item[(3)] $\bigcup_{\kappa \in K} A_\kappa = A$
+\end{itemize}
+
+Die Familie der (verschiedenen) Äquivalenzklassen bildet eine Zerlegung von
+$A$.
+
+$\{[a]_R \;|\; a \in A\} = A/R = A/\!\!\sim$ ist die \textbf{Menge der
+(verschiedenen) Äquivalenzklassen}.
+
+\subsection{%
+    Abbildungen und Funktionen%
+}
+
+Eine \textbf{Funktion} $f$ zwischen $A$ und $B$ ist eine (nach-)eindeutige
+Relation $R_f$ in $A \times B$. \\
+$f(a) = b \;\Leftrightarrow\; (a, b) \in R_f$
+
+\begin{itemize}
+    \item \textbf{Definitionsbereich}:
+    $\operatorname{D}(f) = \Vb(R_f) =
+    \{a \in A \;|\; \exists_{b \in B}\; (a,b) \in R_f\}$
+    
+    \item \textbf{Wertebereich}:
+    $\operatorname{W}(f) = \Nb(R_f) =
+    \{b \in B \;|\; \exists_{a \in A}\; (a,b) \in R_f\}$
+\end{itemize}
+
+$f = g \;\Leftrightarrow\; R_f = R_g \;\Leftrightarrow\;
+\operatorname{D}(f) = \operatorname{D}(g) \land
+\forall_{a \in \operatorname{D}(f)}\; f(a) = g(a)$
+
+\textbf{Einschränkung} einer Funktion $f$ zwischen $A$ und $B$ auf
+$M \subset \operatorname{D}(f)$: \\
+$f|_M \leftrightarrow R_{f|_M} = \{(a,b) \;|\; (a,b) \in R_f \land a \in M\}$,
+d.\,h. $\operatorname{D}(f|_M) = M$, $f|_{M}(a) = f(a)$ für $a \in M$
+
+$f: A \rightarrow B \;\Leftrightarrow\; f$ von $A$ in $B$
+(d.\,h. $\operatorname{D}(f) = A$, $\operatorname{W}(f) \subset B$)
+
+\textbf{Bezeichnung von Funktionen}: $f$ ist Funktion \\
+\emph{aus $A$ in $B$}, wenn
+$\operatorname{D}(f) \subset A$, $\operatorname{W}(f) \subset B$, \qquad
+\emph{aus $A$ auf $B$}, wenn
+$\operatorname{D}(f) \subset A$, $\operatorname{W}(f) = B$, \\
+\emph{von $A$ in $B$}, wenn
+$\operatorname{D}(f) = A$, $\operatorname{W}(f) \subset B$, \qquad
+\emph{von $A$ auf $B$}, wenn
+$\operatorname{D}(f) = A$, $\operatorname{W}(f) = B$. \\
+Für $\operatorname{D}(f) = A$ ist \emph{$f$ auf $A$ gegeben}.
+
+\linie
+
+\begin{itemize}
+    \item $f$ \textbf{injektiv}
+    $\;\Leftrightarrow\; R_f$ eineindeutig (vor- und nacheindeutig) \\
+    $\Leftrightarrow\; \forall_{b \in \operatorname{W}(f)}
+    \exists!_{a \in \operatorname{D}(f)} $
+    $f(a) = b \;\Leftrightarrow\; \forall_{a_1, a_2 \in \operatorname{D}(f)}\;
+    f(a_1) = f(a_2) \Rightarrow a_1 = a_2$ (Eindeutigkeit)
+    
+    \item $f$ \textbf{surjektiv}
+    $\;\Leftrightarrow\; \operatorname{W}(f) = B \;\Leftrightarrow\;
+    \forall_{b \in B} \exists_{a \in \operatorname{D}(f)}\; f(a) = b$
+    (Lösbarkeit)
+    
+    \item $f$ \textbf{bijektiv} $\;\Leftrightarrow\; f$ injektiv und surjektiv
+\end{itemize}
+
+\textbf{Umkehrfunktion}: Sei $f: A \rightarrow B$ bijektiv. \\
+Dann definiert
+$R_{f^{-1}} = {R_f}^{-1}$ eine Funktion $f^{-1}: B \rightarrow A$ mit
+$f^{-1}$ bijektiv und $(f^{-1})^{-1} = f$.
+
+\linie
+
+Sei $f: A \rightarrow B$, $A_1 \subset A$, $B_1 \subset B$. Dann definiert man
+das \\
+\textbf{Bild} von $A_1$:
+$f(A_1) = \{b \in B \;|\; \exists_{a \in A_1}\; f(a) = b\}$ \\
+\textbf{Urbild} von $B_1$:
+$f^{-1}(B_1) = \{a \in A \;|\; f(a) \in B_1\}$
+($f$ muss nicht bijektiv sein)
+
+\textbf{Eigenschaften der Bilder/Urbilder}:
+$A_1 \subset A_2 \subset A \;\Rightarrow\; f(A_1) \subset f(A_2)$ \\
+$B_1 \subset B_2 \;\Rightarrow\; f^{-1}(B_1) \subset f^{-1}(B_2)$ \\
+$f(A_1 \cup A_2) = f(A_1) \cup f(A_2)$ \\
+$f(A_1 \cap A_2) \subset f(A_1) \cap f(A_2)$ \\
+$f^{-1}(B_1 \cap B_2) = f^{-1}(B_1) \cap f^{-1}(B_2)$ \\
+$f^{-1}(B_1 \cup B_2) = f^{-1}(B_1) \cup f^{-1}(B_2)$
+
+\linie
+
+\textbf{Komposition von Funktionen}: Sei $f$ Funktion zwischen $A$ und $B$, $g$
+zwischen $B$ und $C$. Dann ist $g \circ f$ Funktion mit
+$\operatorname{D}(g \circ f) =
+\{a \in \operatorname{D}(f) \;|\; f(a) \in \operatorname{D}(g)\}$, \\
+$(g \circ f)(a) = g(f(a))$ mit $a \in \operatorname{D}(g \circ f)$ bzw.
+$g \circ f \leftrightarrow R_{g \circ f} = \{(a,c) \in A \times C \;|\;
+\exists_{b \in B}\; (a R_f b) \land (b R_g c)\}$
+
+\textbf{Assoziativität der Komposition}: Mit $h$ zwischen $C$ und $D$ ist
+$h \circ (g \circ f) = (h \circ g) \circ f$.
+
+\subsection{%
+    Geordnete Mengen%
+}
+
+$R$ Relation in A, d.\,h. $R \subset A \times A$
+
+$R$ \textbf{antisymmetrisch}
+$\Leftrightarrow \forall_{a_1, a_2 \in A}\;
+(a_1 R a_2) \land (a_2 R a_1) \Rightarrow a_1 = a_2$
+
+Eine reflexive, antisymmetrische und transitive Relation heißt
+\textbf{Ordnungsrelation}. \\
+$a_1 R a_2 \Leftrightarrow a_1 \prec a_2$
+
+\subsection{%
+    Die natürlichen Zahlen%
+}
+
+Um abstrakte Begrif"|fe wie die natürlichen Zahlen zu beschreiben, gibt man
+deren Eigenschaften in \textbf{Axiomensystemen} an.
+Diese müssen folgende Kriterien erfüllen:
+\begin{itemize}
+    \item \emph{Vollständigkeit}: Mit den Axiomen lassen sich alle
+    Eigenschaften zeigen.
+    
+    \item \emph{Unabhängigkeit}: Kein Axiom lässt sich durch die anderen
+    herleiten.
+    
+    \item \emph{Widerspruchsfreiheit}: Die Axiome müssen erfüllt werden können,
+    d.\,h. sie widersprechen einander nicht.
+\end{itemize}
+
+\linie
+
+\textbf{Axiome von \textsc{Peano}}:
+\begin{itemize}
+    \item[(1)] 1 ist eine natürliche Zahl \\
+    (\emph{Existenz der natürlichen Zahlen, $\mathbb{N} \not= \emptyset$}).
+    
+    \item[(2)] Zu jeder natürlichen Zahl $n$ gibt es genau einen
+    Nachfolger $n'$ \\
+    (\emph{Existenz/Eindeutigkeit des Nachfolgers}).
+    
+    \item[(3)] 1 ist nicht Nachfolger einer natürlichen Zahl \\
+    (\emph{Existenz von unendlich vielen natürlichen Zahlen}).
+    
+    \item[(4)] $n' = m' \Rightarrow n = m$ \\
+    (\emph{Eindeutigkeit des Vorgängers}).
+    
+    \item[(5)] Sei $M \subset \mathbb{N}$ mit den Eigenschaften
+    $1 \in M$ (IA), $n \in M \Rightarrow n' \in M$ (IS).
+    Dann ist $M = \mathbb{N}$ \\
+    (\emph{Prinzip der vollständigen Induktion}).
+\end{itemize}
+
+\linie
+
+\textbf{Addition} natürlicher Zahlen: \\
+$(\text{IA})_{\boldsymbol{+}}$ $n + 1 \overset{\text{def.}}{=} n'$ \\
+$(\text{IS})_{\boldsymbol{+}}$ $n + m' \overset{\text{def.}}{=} (n + m)'$
+
+\textbf{Multiplikation} natürlicher Zahlen: \\
+$(\text{IA})_{\boldsymbol{\cdot}}$ $n \cdot 1 \overset{\text{def.}}{=} n$ \\
+$(\text{IS})_{\boldsymbol{\cdot}}$ $n \cdot m' \overset{\text{def.}}{=}
+n \cdot m + n$
+
+\textbf{Ordnung} natürlicher Zahlen:
+$n < m \Leftrightarrow \exists_{p \in \mathbb{N}}\; n + p = m$ \\
+\emph{Satz}: Für beliebige $m, n \in \mathbb{N}$ ist genau einer der Fälle
+$n < m$, $n = m$, $m < n$ erfüllt.
+
+\pagebreak
+
+\subsection{%
+    Die reellen Zahlen%
+}
+
+\textbf{Betrag}:
+$|q| = \begin{cases} q, & q \ge 0 \\ -q, & q < 0 \end{cases}$, \quad
+Eigenschaften: $|p \cdot q| = |p| \cdot |q|$, \quad $|q| \ge 0$, \quad
+$|q| = 0 \;\Leftrightarrow\; q = 0$,
+$|p + q| \le |p| + |q|$ (Dreiecksungleichung), \quad
+$||p| - |q|| \le |p \pm q| \le |p| + |q|$
+
+\textbf{Abstand} zweier rationaler Zahlen:
+$d(p, q) = |p - q|$ \\
+Eigenschaften:
+$d(p, q) \ge 0$, \;\;
+$d(p, q) = 0 \;\Leftrightarrow\; p = q$, \;\;
+$d(p, q) = d(q, p)$, \;\;
+$d(p, r) \le d(p, q) + d(q, r)$
+
+\linie
+
+Sei A eine nichtleere Menge. Eine \textbf{Folge} $(a_n)_{n \in \mathbb{N}}$
+bzw. $\{a_n\}_{n \in \mathbb{N}}$ ist eine Abbildung
+$f: \mathbb{N} \rightarrow A$, $a_n = f(n)$, $n \in \mathbb{N}$.
+
+\textbf{Konvergenz} einer Folge: Seien $A = \mathbb{Q}$, $a_n \in \mathbb{Q}$
+sowie $a \in \mathbb{Q}$. \\
+$a = \lim_{n \to \infty} a_n \Leftrightarrow
+\forall_{\varepsilon > 0} \exists_{N(\varepsilon) \in \mathbb{N}}
+\forall_{n \ge N(\varepsilon)}\; |a_n - a| < \varepsilon$ \\
+Ist $a = \lim_{n \to \infty} a_n$ (auch $a_n \xrightarrow{n \to \infty} a$),
+so heißt $\{a_n\}_{n \in \mathbb{N}}$ konvergent mit Grenzwert $a$, andernfalls
+divergent.
+
+\textbf{Eindeutigkeit des Grenzwerts}: Falls die Folge der $a_n \in \mathbb{Q}$
+konvergiert, so ist der Grenzwert eindeutig bestimmt.
+
+\textbf{Grenzwertsätze}: Sei $a_n \in \mathbb{Q}$, $b_n \in \mathbb{Q}$,
+$a, b \in \mathbb{Q}$, $a_n \to a$, $b_n \to b$.
+
+\begin{enumerate}
+    \item $\lim_{n \to \infty} (a_n + b_n) = a + b$
+    
+    \item $\lim_{n \to \infty} (a_n \cdot b_n) = a \cdot b$
+    
+    \item $\lim_{n \to \infty} (\frac{a_n}{b_n}) = \frac{a}{b}$ \quad
+    ($b_n \not= 0$, $b \not= 0$)
+    
+    \item $\forall_{n \in \mathbb{N}}\; a_n \le b_n \;\Rightarrow\; a \le b$
+\end{enumerate}
+
+Eine Folge rationaler Zahlen $\{a_n\}_{n \in \mathbb{N}}$ heißt
+\textbf{Fundamentalfolge} oder \textbf{Cauchy-Folge} \\
+$\Leftrightarrow\; \forall_{\varepsilon > 0}
+\exists_{N(\varepsilon) \in \mathbb{N}} \forall_{n,m \ge N(\varepsilon)}\;
+|a_n - a_m| < \varepsilon$-. \\
+In diesem Fall ist $\{a_n\}_{n \in \mathbb{N}} \in \CF(\mathbb{Q})$,
+$\CF(\mathbb{Q})$ ist die Menge aller Fundamentalfolgen über
+$\mathbb{Q}$.
+
+Besitzt eine Folge rationaler Zahlen $\{a_n\}_{n \in \mathbb{N}}$ einen
+Grenzwert $a \in \mathbb{Q}$, so gilt
+$\{a_n\}_{n \in \mathbb{N}} \in \CF(\mathbb{Q})$. \\
+D.\,h. \textbf{jede konvergente Folge ist eine Fundamentalfolge}.
+
+Allerdings besitzt nicht jede Fundamentalfolge aus $\mathbb{Q}$ einen Grenzwert
+in $\mathbb{Q}$, denn es gibt Folgen wie $a_{n+1} = \frac{1}{a_n} + 1$
+($a_1 = 1$), deren Grenzwert $a^2 - a - 1 = 0$ erfüllen müsste. Man kann
+zeigen, dass kein $a \in \mathbb{Q}$ diese Bedingung erfüllt.
+
+\linie
+
+\textbf{Definition der reellen Zahlen}: Sei $A = \CF(\mathbb{Q})
+\ni \{r_n\}_{n \in \mathbb{N}}$ , $r_n \in \mathbb{Q}$ Fundamentalfolge. Zwei
+Folgen $\{r_n\}_{n \in \mathbb{N}}$ und $\{s_n\}_{n \in \mathbb{N}}$ sind bzgl.
+einer Äquivalenzrelation $\sim$ genau dann äquivalent, wenn sie gegen denselben
+Grenzwert zu streben scheinen, d.\,h. \\
+$\{r_n\}_{n \in \mathbb{N}} \sim \{s_n\}_{n \in \mathbb{N}}
+\;\Leftrightarrow\; \lim_{n \to \infty} (r_n - s_n) = 0$.
+
+Die \textbf{reellen Zahlen} sind dann die Menge der Äquivalenzklassen der
+Cauchy-Folgen bzgl. dieser Äquivalenzrelation, d.\,h.
+$\mathbb{R} = \CF(\mathbb{Q})/\!\!\sim$.
+
+Dabei ist jedes $q \in \mathbb{Q}$ eine reelle Zahl, denn die konstante
+rationale Folge $\{q, q, \ldots\}$ ist Repräsentant einer Äquivalenzklasse
+$[q]$.
+
+Reelle Zahlen lassen sich dabei als \textbf{unendliche Dezimalbrüche}
+auf"|fassen. Allerdings ist die Darstellung als Dezimalbruch nicht eindeutig
+(z.\,B. ist $0,\overline{9} = 1$).
+
+\pagebreak
+
+\subsection{%
+    Rechenoperationen auf den reellen Zahlen%
+}
+
+$x, y \in \mathbb{R}$, wir betrachten $\{r_n\}_{n \in \mathbb{N}} \in x$,
+$\{s_n\}_{n \in \mathbb{N}} \in y$ (d.\,h.
+$\{r_n\}, \{s_n\} \in \CF(\mathbb{Q})$).
+
+\textbf{Addition auf den reellen Zahlen}:
+$x + y \overset{\text{def.}}{=} [\{r_n + s_n\}_{n \in \mathbb{N}}]$
+
+\emph{Korrektheit der Definition}:
+$\{r_n + s_n\} \in \CF(\mathbb{Q})$ \\
+\emph{Eindeutigkeit der Definition}:
+$\{r_n'\} \sim \{r_n\}, \{s_n'\} \sim \{s_n\} \;\Rightarrow\;
+\{r_n' + s_n'\} \sim \{r_n + s_n\}$
+
+\emph{Kommutativität}: $x + y = y + x$ \\
+\emph{Assoziativität}: $(x + y) + z = x + (y + z)$
+
+\textbf{Multiplikation auf den reellen Zahlen}:
+$x \cdot y \overset{\text{def.}}{=} [\{r_n \cdot s_n\}_{n \in \mathbb{N}}]$
+
+\textbf{Ordnung auf den reellen Zahlen}:
+$x < y \overset{\text{def.}}{\;\Leftrightarrow\;}
+\exists_{a_1, a_2 \in \mathbb{Q}} \exists_{N_{r,s}}
+\forall_{n \ge N_{r,s}}\; r_n < a_1 < a_2 < s_n$ \\
+\emph{Folgerung}: Für jedes $x, y \in \mathbb{R}$ mit $x < y$ existiert ein
+$a \in \mathbb{Q}$ mit $x < a < y$.
+
+\emph{Satz}: Ist $x, y \in \mathbb{R}$, dann ist genau einer der drei Fälle
+$x < y$, $x = y$ und $y < x$ erfüllt. \\
+\emph{Folgerung}: Für jedes $x \in \mathbb{R}$ mit $x > 0$ gibt es ein
+$a \in \mathbb{Q}$ mit $0 < a < x$ und ein $A \in \mathbb{Q}$ mit $0 < x < A$.
+
+\subsection{%
+    Das Axiomensystem der reellen Zahlen%
+}
+
+\textbf{I. Algebraische Struktur}: $\mathbb{R}$ ist Körper.
+
+\begin{tabular}{l|l|l}
+    & \emph{Addition} & \emph{Multiplikation} \\ \hline
+    & $\boldsymbol{+}: \mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R},
+    (x, y) \mapsto x + y$ &
+    $\boldsymbol{\cdot}: \mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R},
+    (x, y) \mapsto x \cdot y$ \\
+    Assoziativität & $(x + y) + z = x + (y + z)$ &
+    $(x \cdot y) \cdot z = x \cdot (y \cdot z)$ \\
+    Kommutativität & $x + y = y + x$ & $x \cdot y = y \cdot x$ \\
+    Neutrales Element &
+    $\exists_{0 \in \mathbb{R}} \forall_{x \in \mathbb{R}}\; 0 + x = x$ &
+    $\exists_{1 \in \mathbb{R}} \forall_{x \in \mathbb{R}}\; 1 \cdot x = x$ \\
+    Inverses Element &
+    $\forall_{x \in \mathbb{R}} \exists_{(-x) \in \mathbb{R}}\; x + (-x) = 0$ &
+    $\forall_{x \in \mathbb{R} \setminus \{0\}}
+    \exists_{x^{-1} \in \mathbb{R}}\; x \cdot (x^{-1}) = 1$ \\
+    Distributivität &
+    \multicolumn{2}{c}{$x \cdot (y + z) = x \cdot y + x \cdot z$}
+\end{tabular}
+
+\vspace{12pt}
+\linie
+
+\textbf{II. Ordnungsstruktur}: Auf $\mathbb{R}$ ist eine Ordnungsrelation $\le$
+definiert.
+
+$x \le x \quad \forall_{x \in \mathbb{R}}$ (Reflexivität) \\
+$(x \le y) \land (y \le x) \;\Rightarrow\; (x = y)$ (Antisymmetrie) \\
+$(x \le y) \land (y \le z) \;\Rightarrow\; (x \le z)$ (Transitivität)
+
+zusätzlich soll $\mathbb{R}$ vollständig geordnet sein:
+$\forall_{x, y \in \mathbb{R}}\; (x \le y) \lor (y \le x)$
+
+Dabei respektieren die Operationen die Ordnungsstruktur und zerstören diese
+nicht: \\
+$(x \le y) \;\Rightarrow\; \forall_{z \in \mathbb{R}}\; (x + z) \le (y + z)$,
+\qquad
+$(0 \le x) \land (0 \le y) \;\Rightarrow\; (0 \le x \cdot y)$
+
+\linie
+
+\textbf{III. Topologische Struktur} (Intervallschachtelungsaxiom):
+
+$n$-tes Intervall
+$[a_n, b_n] = \{x \in \mathbb{R} \;|\; a_n \le x \le b_n\}$ \\
+für das $n+1$-te Intervall muss gelten:
+$\forall_{n \in \mathbb{N}}\; a_n \le a_{n+1} \le b_{n+1} \le b_n$
+
+\emph{Intervallschachtelungsaxiom}:
+$\bigcap_{n \in \mathbb{N}}\; [a_n, b_n] \not= \emptyset$
+
+\linie
+
+\textbf{IV. Axiom von \textsc{Eudoxus}}: $\mathbb{R}$ ist archimedisch
+geordnet, d.\,h. es gibt keine unendlich kleine Zahl $x > 0$.
+Aus dem Lemma $\exists_{a \in \mathbb{Q}}\; 0 < a < x$ kann man dies folgern.
+
+$\forall_{x, y > 0} \exists_{n \in \mathbb{N}}\; y \le n \cdot x \quad$
+($x, y \in \mathbb{R}$)
+
+\subsection{%
+    Mächtigkeit von Mengen%
+}
+
+Zwei Mengen heißen \textbf{gleichmächtig}, wenn es zwischen diesen eine
+bijektive Abbildung gibt.
+
+Eine Menge $A$ heißt \textbf{transfinit} (\textbf{unendlich}), wenn eine
+\emph{echte} Teilmenge $A_1 \subset A$ existiert, welche zu $A$ gleichmächtig
+ist. Sonst heißt sie \textbf{finit} (\textbf{endlich}).
+
+$A, B$ Mengen, Relation $\sim$ mit
+$a \sim b \;\Leftrightarrow\; \exists_{f: A \rightarrow B}\; f$ bijektiv.
+$\sim$ ist eine Äquivalenzrelation. \\
+Ihre Äquivalenzklassen werden als
+\textbf{Kardinalzahlen}/\textbf{Mächtigkeiten} bezeichnet. \\
+$\card(A) = [A]$ ist die Mächtigkeit der Menge $A$ (Menge der zu
+$A$ gleichmächtigen Mengen).
+
+\begin{itemize}
+    \item \textbf{finite Kardinalzahlen}: zugehörig zu finiten (endlichen)
+    Mengen
+    
+    \item \textbf{transfinite Kardinalzahlen}: zugehörig zu transfiniten
+    (unendlichen) Mengen \\
+    (d.\,h. es gibt eine echte Teilmenge $A_1 \subset A$, $A_1 \not= A$
+    mit $A_1 \sim A$), \\
+    z.\,B. $\aleph_0 = \card(\mathbb{N})$,
+    $A \in \aleph_0 \;\Leftrightarrow\; A \sim \mathbb{N} \;\Leftrightarrow\;$
+    $A$ ist \emph{abzählbar unendlich}, d.\,h. es gibt eine vollständige,
+    nummerierte Liste von den Elementen von $A$: $a_1, a_2, a_3, \ldots$
+\end{itemize}
+
+\textbf{Vergleich von Kardinalzahlen}:
+$\card(A) \le \card(B) \Leftrightarrow
+\exists_{B_1 \subset B}\; A \sim B_1$
+
+\textbf{Satz von \textsc{Cantor} und \textsc{Bernstein}}:
+$A \sim B \;\Leftrightarrow\; \card(A) \le \card(B)
+\land \card(B) \le \card(A)$
+
+alle Kardinalzahlen sind vergleichbar, d.\,h.
+$\card(A) \le \card(B)
+\lor \card(B) \le \card(A)$ \\
+für jede transfinite Menge $A$ gilt $\aleph_0 \le \card(A)$
+
+\textbf{abzählbar unendliche Mengen}:
+
+\begin{itemize}
+    \item \emph{Hinzufügen endlicher Mengen} ändert nichts, d.\,h. \\
+    $\card(A) = \aleph_0$ und $B = \{b_1, \ldots, b_m\}$
+    $\;\Rightarrow\; \card(A \cup B) = \aleph_0$
+    
+    \item $\mathbb{Z}$, d.\,h.
+    $\card(A) = \card(B) = \aleph_0 \;\Rightarrow\; \card(A \cup B) = \aleph_0$
+    
+    \item $\mathbb{Q}$, d.\,h. $\card(A_n) = \aleph_0$
+    $\;\Rightarrow\; \card(\bigcup_{n \in \mathbb{N}} A_n) = \aleph_0$
+\end{itemize}
+
+Die Menge der reellen Zahlen $\mathbb{R}$ ist nicht abzählbar
+(d.\,h. \textbf{überabzählbar}),
+$\aleph_1 = \card(\mathbb{R})$.
+
+Menge $A$, $P(A) = 2^A$ Potenzmenge \\
+es zeigt sich: $\card(A) < \card(2^A)$,
+z.\,B. $\aleph_1 = \card(2^{\mathbb{N}})$,
+$\aleph_2 = \card(2^{\mathbb{R}})$ usw.
+
+\pagebreak
+
+\subsection{%
+    Die komplexen Zahlen%
+}
+
+$z = (x,\; y) \in \mathbb{R}$ \\
+$\boldsymbol{+}: z_1 + z_2 = (x_1,\; y_1) + (x_2,\; y_2) =
+(x_1 + x_2,\; y_1 + y_2)$ \\
+$\boldsymbol{\cdot}: z_1 \cdot z_2 = (x_1,\; y_1) \cdot (x_2,\; y_2) =
+(x_1 \cdot x_2 - y_1 \cdot y_2,\; x_1 \cdot y_2 + x_2 \cdot y_1)$
+
+$(\mathbb{R}^2, +, \cdot)$ bildet den \textbf{Körper der komplexen Zahlen}
+$\mathbb{C}$. Insbesondere gilt \emph{Kommutativität}, \emph{Assoziativität}
+und \emph{Distributivität}.
+
+Bezüglich der Grundrechenarten sind $\mathbb{R}$ und
+$\{(x,\; y) \in \mathbb{C} \;|\; y = 0\}$ \textbf{isomorph}.
+
+\emph{Schreibweise}:
+$(x,\; 0) \mathrel{\widehat{=}} x$, \quad
+$(0,\; 1) \mathrel{\widehat{=}} i$, \quad
+$(x,\; y) = x + iy = z$, \quad
+$i^2 = -1$
+
+\linie
+
+\textbf{Komplexes Konjugat}: $z = (x,\; y) = x + iy$, \quad
+$\overline{z} = (x,\; -y) = x - iy$ \\
+\emph{Regeln}: $\overline{z_1 + z_2} = \overline{z_1} + \overline{z_2}$, \quad
+$\overline{z_1 \cdot z_2} = \overline{z_1} \cdot \overline{z_2}$, \quad
+$\overline{z^{-1}} = \overline{z}^{-1}$ ($z \not= 0$) \\
+\emph{außerdem}: $\overline{\overline{z}} = z$, \quad
+$\overline{z} = z \Leftrightarrow z = (x,\; 0)$, \quad
+$z \cdot \overline{z} = x^2 + y^2 \ge 0$, \quad
+$z \cdot \overline{z} = 0 \Leftrightarrow z = 0$
+
+\textbf{Absolutbetrag}:
+$|z| = \sqrt{z \cdot \overline{z}} = \sqrt{x^2 + y^2}$ \\
+\emph{Regeln}: $|z| \ge 0$, $|z| = 0 \Leftrightarrow z = 0$,
+$|z_1 \cdot z_2| = |z_1| \cdot |z_2|$, $|z_1 + z_2| \le |z_1| + |z_2|$,
+$||z_1| - |z_2|| \le |z_1 - z_2|$
+
+\textbf{Regeln für die Addition}:
+$\Re(z_1 + z_2) = \Re(z_1) + \Re(z_2)$, \quad
+$\Im(z_1 + z_2) = \Im(z_1) + \Im(z_2)$
+
+\textbf{Regeln für die Multiplikation mit reellen Zahlen}: \\
+$\Re(\alpha \cdot z) = \alpha \cdot \Re(z)$, \quad
+$\Im(\alpha \cdot z) = \alpha \cdot \Im(z)$
+(nur für $\alpha \in \mathbb{R}$)
+
+\linie
+
+\textbf{Darstellung in Polarkoordinaten}: \\
+$z = x + iy = r \cdot \cos{\varphi} + i \cdot r \cdot \sin{\varphi} =
+r \cdot (\cos{\varphi} + i \cdot \sin{\varphi}) = r \cdot e^{i\varphi}$, \\
+$r = |z|$ \emph{Betrag} von $z$, $\varphi = \arg{z}$
+\emph{Argument} von $z$ (nur bis auf $2 \pi n$, $n \in \mathbb{Z}$ bestimmt) \\
+\emph{Regeln}: $|e^{i\varphi}| = 1$, $\overline{e^{i\varphi}} = e^{-i\varphi}$
+
+\textbf{Additionstheoreme}: \\
+$\sin(\varphi_1 + \varphi_2) =
+\sin \varphi_1  \cos \varphi_2  + \sin \varphi_2  \cos \varphi_1$, \quad
+$\cos(\varphi_1 + \varphi_2) =
+\cos \varphi_1  \cos \varphi_2  - \sin \varphi_1  \sin \varphi_2$ \\
+$\sin 2\varphi  = 2 \sin \varphi \cos \varphi$, \quad
+$\cos 2\varphi  = \cos^2 \varphi - \sin^2 \varphi$ \\
+$\sin^2$ {\Large $\frac{\varphi}{2}$} $=$
+{\Large $\frac{1 - \cos{\varphi}}{2}$}, \quad
+$\cos^2$ {\Large $\frac{\varphi}{2}$} $=$
+{\Large $\frac{1 + \cos{\varphi}}{2}$}
+
+\textbf{Multiplikation in Polarschreibweise}:
+$z_1 \cdot z_2 = (r_1 \cdot e^{i\varphi_1}) \cdot (r_2 \cdot e^{i\varphi_2}) =
+(r_1 r_2) \cdot e^{i(\varphi_1 + \varphi_2)}$, \\
+d.\,h. $|z_1 z_2| = |z_1| |z_2|$,
+$\arg{z_1 z_2} = \arg{z_1} + \arg{z_2}$, \\
+$z_1 \cdot z_2 = 0 \;\Leftrightarrow\; z_1 = 0 \lor z_2 = 0$
+
+\textbf{Division in Polarschreibweise}: \\
+$z^{-1} = r^{-1} \cdot e^{-i\varphi}$ ($z \not= 0$, d.\,h. $r > 0$), \qquad
+$\frac{z_1}{z_2} = \frac{r_1}{r_2} \cdot e^{i(\varphi_1 - \varphi_2)}$
+($z_2 \not= 0$)
+
+\linie
+
+\textbf{Elementare Funktionen komplexer Variablen}:
+($z \in \mathbb{C}$, $n \in \mathbb{N}$)
+\begin{itemize}
+    \item \emph{Potenzen}: $z^n = r^n \cdot e^{i \cdot n\varphi} =
+    r^n \cdot (\cos{n \varphi} + i \cdot \sin{n \varphi})$
+    
+    \item \emph{Wurzeln}: $w_k = \sqrt[n]{z} =$
+    {\Large $r^{\frac{1}{n}} \cdot
+    e^{i \cdot (\frac{\varphi}{n} + \frac{2k\pi}{n})}$},
+    $\quad k = 0, \ldots, n-1$ ($n$ Lösungen)
+    
+    \item \emph{Exponentialfunktion}: $e^z \overset{\text{def.}}{=}
+    e^{\Re{z}} \cdot e^{i \cdot \Im{z}} =
+    e^x \cdot e^{iy}$
+    
+    \item \emph{Sinus und Kosinus}:
+    $\sin{z} =$ {\Large $\frac{e^{iz} - e^{-iz}}{2i}$},
+    $\quad \cos{z} =$ {\Large $\frac{e^{iz} + e^{-iz}}{2}$}
+    
+    \item \emph{Sinus Hyperbolicus und Kosinus Hyperbolicus}: \\
+    $\sinh{z} =$ {\Large $\frac{e^{z} - e^{-z}}{2}$} $= -i \sin{iz}$,
+    $\quad \cosh{z} =$ {\Large $\frac{e^{z} + e^{-z}}{2}$} $= \cos{iz}$
+    
+    \item \emph{Natürlicher Logarithmus}: $w_k = \Ln{z} =
+    \ln{|z|} + i \cdot (\arg{z} + 2 \pi k)$, $\quad k \in \mathbb{Z}$
+    
+    \item \emph{Potenzen mit komplexen Exponenten}: $z^w = e^{w \cdot \Ln{z}}$
+\end{itemize}
+
+\pagebreak
+
+\subsection{%
+    Zur Faktorisierung von Polynomen%
+}
+
+\textbf{Polynom}: $P(z) = a_n z^n + a_{n-1} z^{n-1} + \cdots + a_1 z + a_0$,
+$\quad z \in \mathbb{C}$, $a_0, a_1, \ldots, a_n \in \mathbb{C}$,
+$n \in \mathbb{N} \cup \{0\}$ \\
+Polynom vom Grad $n$, n = $\deg(P)$
+
+\textbf{Nullstellen}: $z \in \mathbb{C}$ ist eine Nullstelle von $P$
+$\Leftrightarrow P(z) = 0$
+
+\textbf{Hauptsatz der Algebra}: \\
+Jedes Polynom $P$ vom Grad $n \ge 1$ besitzt
+mindestens eine Nullstelle $z \in \mathbb{C}$.
+
+\linie
+
+\emph{Lemma}: Sei $P_n(z)$ ein Polynom vom Grad $n \ge 1$,
+$a_j \in \mathbb{C}$, $z \in \mathbb{C}$. \\
+Dann existiert für jedes $c \in \mathbb{C}$ ein Polynom $Q_{n-1}(z; c)$ vom
+Grad $n-1$, sodass \\
+$P_n(z) = (z - c) \cdot Q_{n-1}(z; c) + P_n(c)$.
+
+Sei $c_1 \in \mathbb{C}$ mit $P_n(c_1) = 0$
+$\Rightarrow P_n(z) = (z - c_1) \cdot Q_{n-1}(z; c_1)$ \\
+\emph{Wiederholen}: $P_n(z) = (z - c_1) (z - c_2) \cdots
+(z - c_n) \cdot a_n$
+
+dabei können manche dieser $c_j$ gleich sein: \\
+$P(z) = a_n (z - \widetilde{c_1})^{\nu_1} (z - \widetilde{c_2})^{\nu_2} \cdots
+(z - \widetilde{c_\ell})^{\nu_\ell}$, \quad $\nu_1 + \cdots + \nu_\ell = n$
+
+Ein Polynom $n$-ter Ordnung hat höchstens $n$ verschiedene Nullstellen.
+
+\linie
+
+\textbf{reeller Spezialfall} $a_j \in \mathbb{R}$ ($j = 0, \ldots, n$): \\
+$P(\overline{z}) = \overline{P(z)}$, \quad
+daraus folgt $P(c) = 0 \Leftrightarrow P(\overline{c}) = 0$ \\
+Es ist also $P(z) = a_n \cdot \prod_{j=1}^{n_1} (z - x_j)^{\kappa_j} \cdot
+\prod_{\ell=1}^{n_2} (z^2 + a_\ell z + b_\ell)^{p_\ell}$ \quad mit
+$\sum_{j=1}^{n_1} \kappa_j + 2 \cdot \sum_{\ell=1}^{n_2} p_\ell = n$.
+
+\pagebreak

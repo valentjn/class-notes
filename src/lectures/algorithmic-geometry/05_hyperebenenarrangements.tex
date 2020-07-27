@@ -1,0 +1,432 @@
+\section{%
+    Hyperebenenarrangements und Dualität%
+}
+
+\subsection{%
+    Hyperebenenarrangements%
+}
+
+\textbf{Hyperebene}:
+Eine \begriff{Hyperebene} $h \subset \real^d$ ist eine Teilmenge von $\real^d$ der Form\\
+$h = \{x \in \real^d \;|\; \sp{x, a} = c\}$ für ein $a \in \real^d$ und ein $c \in \real$.
+
+\textbf{Äquivalenzrelation $\sim_\H$ auf $\real^d$}:
+Eine Hyperebene $h = \{x \in \real^d \;|\; \sp{x, a_h} = c_h\}$ induziert die Partition
+$\real^d = h \dcup \{x \in \real^d \;|\; \sp{x, a_h} > c_h\} \dcup
+\{x \in \real^d \;|\; \sp{x, a_h} < c_h\}$ von $\real^d$.\\
+Definiere $\sigma_h\colon \real^d \to \{-1, 0, +1\}$ mit
+$\sigma_h(x) := \sgn(\sp{x, a_h} - c_h)$ (Lage von $x$ bzgl. $h$).\\
+Für eine Familie $\H := \{h_1, \dotsc, h_n\}$ von Hyperebenen sei
+$\sigma_\H\colon \real^d \to \{-1, 0, +1\}^n$ mit\\
+$\sigma_\H(x) := (\sigma_{h_1}(x), \dotsc, \sigma_{h_n}(x))$.\\
+Dann ist $\sim_\H$ eine Äquivalenzrelation auf $\real^d$, wobei $x \sim_\H y$ gelte,
+falls $\sigma_\H(x) = \sigma_\H(y)$.
+
+\textbf{Hyperebenenarrangement}:
+Sei $\H = \{h_1, \dotsc, h_n\}$ eine Familie von Hyperebenen.\\
+Dann heißt die Menge $\real^d/{\sim_\H} \subset \P(\real^d)$ aller Äquivalenzklassen
+bzgl. $\sim_\H$\\
+\begriff{Hyperebenenarrangement (HE-Arrangement oder HEA)}.
+
+Jede Äquivalenzklasse ist als Schnitt von (konvexen) Halbräumen konvex.
+
+\textbf{Fragen}:
+\begin{itemize}
+    \item
+    Wie kann man HE-Arrangements berechnen?
+    
+    \item
+    Was ist die Komplexität eines HE-Arrangements?
+\end{itemize}
+
+\linie
+
+Man nimmt an, dass die Hyperebenen in allgemeiner Lage liegen,
+d.\,h. der Schnitt von $k$ Hyperebenen ist stets $(d - k)$-dimensional
+($k = 1, \dotsc, d + 1$).
+
+\textbf{Komplexität eines HE-Arrangements in $\real^2$}:
+\begin{itemize}
+    \item
+    \emph{$\binom{n}{2}$ Ecken}:
+    Jedes Paar zweier Geraden schneidet sich.
+    
+    \item
+    \emph{$n^2$ Kanten}:
+    Jede Gerade wird durch die anderen $n - 1$ Geraden in $n$ Stücke geteilt.
+    
+    \item
+    \emph{$1 + \frac{n(n+1)}{2}$ Zellen}:
+    Induktiv teilt eine neue $n$-te Gerade $n$ Zellen in jeweils zwei Hälften auf.
+    Eine andere Zählung ist, dass jeder Knoten der unterste Punkt genau einer Zelle ist
+    und kein Knoten der unterste Punkt zweier Zellen ist.
+    Es gibt also $\binom{n}{2}$ (Anzahl der Punkte) nach unten beschränkte Zellen,
+    es fehlen noch die $n + 1$ nach unten unbeschränkten Zellen.
+    Damit erhält man $\binom{n}{2} + n + 1 = 1 + \frac{n(n+1)}{2}$ Zellen.
+\end{itemize}
+
+\textbf{Komplexität eines HE-Arrangements in $\real^3$}:
+\begin{itemize}
+    \item
+    \emph{$\binom{n}{3}$ Ecken}: Jedes Tripel dreier Ebenen schneidet sich.
+    
+    \item
+    \emph{$\binom{n}{2} (n - 1)$ Kanten}:
+    Die Geraden, auf denen die Kanten liegen, korrespondieren zu allen möglichen Ebenenpaaren
+    (jedes Ebenenpaar schneidet sich in einer Gerade und diese Gerade liegt auf keinen
+    anderen zwei Ebenen).
+    Daher gibt es $\binom{n}{2}$ solcher Geraden, von denen jede durch die übrigen $n - 2$
+    Ebenen in $(n - 1)$ Kanten unterteilt wird.\\
+    Eine andere Zählung zählt die Kanten auf einer bestimmten Ebene $E$.
+    %Projiziert man die anderen Ebenen auf $E$, so erhält man $(n - 1)$ Geraden.
+    %Nach der $\real^2$-Komplexität gibt es $(n-1)^2$ Kanten auf $E$.
+    %Lässt man $E$ durch alle Ebenen laufen, so zählt man jede Kante doppelt, d.\,h.
+    %man bekommt $(n-1)^2 \frac{n}{2} = \binom{n}{2} (n - 1)$ Kanten.
+    
+    \item
+    \emph{$n (\binom{n-1}{2} + n)$ Facetten}:
+    Auf einer bestimmten Ebene $E$ gibt es nach dem $\real^2$-Fall genau $\binom{n-1}{2} + n$
+    viele Zellen für $(n - 1)$ Geraden.
+    Gehe für $E$ durch alle $n$ Ebenen durch.
+    
+    \item
+    \emph{$\binom{n}{3} + \binom{n}{2} + n + 1$ Zellen}:
+    Es gibt $\binom{n}{3}$ unterste Punkte.
+    Die nach unten in der $z$-Richtung unbeschränkten Zellen entsprechen genau den
+    $\real^2$-Zellen, die entstehen, wenn man die Ebenen
+    von unten in der $z$-Richtung "`anschaut"'.
+    Von diesen Zellen gibt es nach dem $\real^2$-Fall genau $\binom{n}{2} + n + 1$ Stück.
+\end{itemize}
+
+\pagebreak
+
+\subsection{%
+    Inkrementelle Konstruktion und Zonensatz%
+}
+
+Die Berechnung von HE-Arrangements in $\real^2$ kann auf zwei bereits bekannte Arten erfolgen:
+\begin{itemize}
+    \item
+    \emph{naiver Sweepline-Algorithmus}:
+    $\O(n^2 \log n)$ Zeit ($\O((n+k) \log n)$ und $k = \Theta(n^2)$ Ereignisse/Schnittpunkte
+    müssen verarbeitet werden)
+    
+    \item
+    \emph{RIC-Algorithmus zur Bestimmung von Strecken-Schnittpunkten}:
+    erwartet $\O(n^2)$ Zeit
+\end{itemize}
+Im Folgenden wird ein Algorithmus gezeigt, mit dem man HE-Arrangements deterministisch in
+$\O(n^2)$ Zeit bestimmen kann.
+Dazu verwendet man einen inkrementellen Ansatz.
+Wegen der "`großzügigeren"' Schranke von $\O(n^2)$ benötigt man keine Randomisierung.
+
+$\Omega(n^2)$ Zeit wird auf jeden Fall benötigt, weil die Ausgabegröße $\Theta(n^2)$ ist.
+
+\linie
+
+\textbf{inkrementelle Konstruktion von HEAs}:
+Die \begriff{inkrementelle Konstruktion von HEAs} in $\real^2$ verläuft für $n$ Geraden
+$h_1, \dotsc, h_n$ in $\real^2$ wie folgt.
+Definiere $\A_i$ als das HE-Arrangement der Geraden $h_1, \dotsc, h_i$.
+\begin{enumerate}
+    \item
+    Konstruiere das leere Arrangement $\A_0$.
+    
+    \item
+    Für $i = 1, \dotsc, n$ konstruiere $\A_i$ aus $\A_{i-1}$ wie folgt:
+    \begin{enumerate}
+        \item
+        Finde die Zelle ganz links, durch die $h_i$ geht
+        (geht in $\O(i)$ Zeit, wenn die $h_i$ nach ihrer Steigung sortiert sind).
+        
+        \item
+        Bestimme, wo $h_i$ die Zelle verlässt bzw. welche neue Zelle von $h_i$ betreten wird.
+        
+        \item
+        Wiederhole, bis die neue Zelle nach rechts unbeschränkt ist.
+    \end{enumerate}
+\end{enumerate}
+
+Die Kosten, um von einer Zelle $c$ in die nächste zu kommen, sind $\O(\deg(c))$ mit
+$\deg(c)$ der Anzahl von Kanten oder Ecken von $c$.
+Damit sind die Gesamtkosten für die Einfügung von $h_i$ gleich
+$\O(\sum_{c \in \A_{i-1},\; C \cap h_i \not= \emptyset} \deg(c))$.
+Es ist allerdings nicht direkt klar, ob das in $\O(i)$ ist.
+Man kann sich z.\,B. Arrangements vorstellen, in der eine einzelne Zelle bereits durch $\O(i)$
+Kanten begrenzt wird.
+
+\linie
+
+\textbf{Satz (Zonensatz)}:
+Sei $\zone(h, \A) := \{c \in \A \;|\; c \cap h \not= \emptyset\}$
+für ein Arrangement $\A$ von $n$ Geraden und eine zusätzliche Gerade $h$.
+Definiere $z(h, \A) := \sum_{c \in \zone(h, \A)} \deg(c)$ sowie\\
+$z(n) := \max\{z(h, \A) \;|\; \text{$\A$ Arrangement von $n$ Geraden, $h$ zusätzliche Gerade}\}$.\\
+Dann gilt $z(n) \le 6n$.
+
+\begin{Beweis}
+    Seien $\A$ ein beliebiges Arrangement von $n$ Geraden und $h$ eine zusätzliche Gerade.
+    Gezählt werden nun die Kanten der Zellen in $\A$, die $h$ schneidet.
+    Ist die Anzahl nach oben beschränkt durch $6n$, so gilt $z(n) \le 6n$.
+    
+    Es werden zunächst nur die Linksadjazenzen gezählt.
+    Betrachte die Geraden $h_1, \dotsc, h_n$ von $\A$ aufsteigend geordnet nach der $x$-Koordinate
+    ihres Schnittpunkts mit $h$.
+    Die erste Gerade $h_1$ erzeugt eine Linksadjazenz.
+    Jede weitere Gerade $h_i$ teilt die Zelle, die sich bis dahin am weitesten rechts befindet,
+    in zwei Zellen und erzeugt höchstens $3$ Linksadjazenzen.
+    Damit gibt es $\le 3n$ Linksadjazenzen.
+    Für die Rechtsadjazenzen geht die Argumentation analog, so dass es
+    $\le 6n$ Adjazenzen gibt.
+\end{Beweis}
+
+\linie
+
+\textbf{Zeitbedarf}:
+$\O(n^2)$
+
+\begin{Beweis}
+    Nach dem Zonensatz gilt
+    $\O(\sum_{c \in \A_{i-1},\; C \cap h_i \not= \emptyset} \deg(c)) = \O(i)$.\\
+    Dadurch erhält man $\sum_{i=1}^n \O(i) = \O(n^2)$ als Gesamtlaufzeit.
+\end{Beweis}
+
+\pagebreak
+
+\subsection{%
+    Dualität und Anwendungen%
+}
+
+\subsubsection{%
+    Dualität%
+}
+
+\textbf{(nicht-vertikale) Gerade}:
+Im Folgenden sind \begriff{(nicht-vertikale) Geraden} in der $x$-$y$-Ebene definiert durch
+$(y = kx - d) := \{(x, y) \in \real^2 \;|\; y = kx - d\}$ mit $k, d \in \real$.
+
+\textbf{Seiten einer Gerade}:\\
+Für eine Gerade $\ell := (y = kx - d)$ sei
+$\ell^{\pm} := \{(x, y) \in \real^2 \;|\; y \gtreqless kx - d\}$.\\
+($\ell^+$ ist die Menge aller Punkte über $\ell$, einschließlich $\ell$ selbst).
+
+\textbf{Dualitätstransformation}:
+Die \begriff{Dualitätstransformation} $\D$ bildet\\
+Punkte $(p_x, p_y) \in \real^2$ auf Geraden $\D(p_x, p_y) := (y = p_x x - p_y)$ ab und\\
+Geraden $y = kx - d$ auf Punkte $\D(y = kx - d) := (k, d)$.
+
+\textbf{Lemma (Dualität)}:
+Für einen Punkt $p \in \real^2$ und eine Gerade $\ell$ gilt
+\begin{enumerate}
+    \item
+    $p \in \ell \iff \D(\ell) \in \D(p)$,
+    
+    \item
+    $p \in \ell^+ \iff \D(\ell) \in \D(p)^+$ und
+    
+    \item
+    $p \in \ell^- \iff \D(\ell) \in \D(p)^-$.
+\end{enumerate}
+
+\begin{Beweis}
+    Seien $(p_x, p_y) := p$ und $(y = kx - d) := \ell$, d.\,h.
+    $\D(\ell) = (k, d)$ und $\D(p) = (y = p_x x - p_y)$,
+    es gilt also $p \in \ell \iff p_y = kp_x - d \iff d = p_x k - p_y \iff \D(\ell) \in \D(p)$.
+    Für \emph{(2)} und \emph{(3)} gilt analog
+    $p \in \ell^\pm \iff p_y \gtreqless kp_x - d \iff
+    d \gtreqless p_x k - p_y \iff \D(\ell) \in \D(p)^\pm$.
+\end{Beweis}
+
+\subsubsection{%
+    Erkennung von Kollinearität von Punkten%
+}
+
+\textbf{Erkennung von Kollinearität von Punkten}:\\
+Gegeben sind $n$ Punkte in $\real^2$.
+Gefragt ist, ob drei der Punkte kollinear sind\\
+(d.\,h. hier, ob die Punkte auf einer nicht-vertikalen Geraden liegen).
+
+Seien $p_1, p_2, p_3 \in \real^2$ drei Punkte mit $\ell_i := \D(p_i)$.
+Dann gilt:\\
+$p_1, p_2, p_3 \text{ kollinear} \iff
+\exists_{\ell \text{ Gerade}}\; p_1, p_2, p_3 \in \ell \iff
+\exists_{p \in \real^2}\; p \in \ell_1 \cap \ell_2 \cap \ell_3$,
+nämlich $p := \D(\ell)$.
+Drei der $n$ Punkte sind also kollinear genau dann, wenn sich drei der dualen Geraden in einem
+Punkt schneiden.
+Dies kann während der Konstruktion des entsprechenden HE-Arrangements festgestellt werden
+(wenn die nächste Gerade eine Zelle genau auf einem Randknoten verlässt),
+d.\,h. in Zeit $\O(n^2)$.
+
+\pagebreak
+
+\subsubsection{%
+    Bestimmung des flächenkleinsten Dreiecks%
+}
+
+\textbf{flächenkleinstes Dreieck}:
+Gegeben ist $P \subset \real^2$ mit $n := |P|$.\\
+Gesucht ist $p, q, r \in P$ mit $A(\triangle pqr)$ (Fläche von $\triangle pqr$) minimal
+(sowie $|\{p, q, r\}| = 3$).
+
+\textbf{naiv}:
+Teste alle $\binom{n}{3}$ Tupel in $\O(n^3)$ Zeit.
+
+\linie
+
+\textbf{besser}:
+Ein Dreieck $\triangle pqr$ ist durch eine Strecke $qr$ und einen Punkt $p$ eindeutig bestimmt.
+Im dualen Raum entspricht dies einem Punkt $\D(qr)$ und einer Gerade $\D(p)$
+(wenn man $qr$ mit der Gerade durch $qr$ identifiziert).
+
+\textbf{Satz}:
+Seien $p, q, r \in P$ mit $\triangle pqr$ flächenminimal.\\
+Dann gibt es eine Zelle $c$ im dualen Arrangement zu $P$, sodass
+$\D(qr)$ und $\D(p)$ auf $\partial c$ liegen.
+
+\begin{Beweis}
+    Sei $(p_x, p_y) \in \real^2$ ein Punkt und $y = kx - d$ eine Gerade.
+    Dann ist der vertikale Abstand von $(p_x, p_y)$ zu $y = kx - d$ ist $D := p_y - kp_x + d$.
+    Der vertikale Abstand von $\D(y = kx - d) = (k, d)$ zu $\D(p_x, p_y) = (y = p_x x - p_y)$
+    gleich $d - p_x k + p_y = D$, d.\,h. $\D$ lässt vertikale Abstände invariant.
+    
+    $\Delta pqr$ ist flächenminimal genau dann, wenn $p$ den kleinsten Abstand aller Punkte zu
+    $qr$ besitzt.
+    Dies gilt genau dann, wenn $p$ den kleinsten vertikalen (d.\,h. vertikal gemessenen) Abstand
+    zu $qr$ besitzt.
+    Dies gilt genau dann, wenn $\D(qr)$ den kleinsten vertikalen Abstand zu $\D(p)$ besitzt.
+    
+    Angenommen, $\D(p)$ und $\D(qr)$ würden an verschiedenen Zellen anliegen.
+    Dann gäbe es einen Punkt $p' \in P$, sodass die Gerade $\D(p')$ zwischen $\D(p)$ und $\D(qr)$
+    liegt, d.\,h. $\D(qr)$ hätte zu $\D(p')$ einen kleineren vertikalen Abstand,
+    also $A(\triangle p'qr) < A(\triangle pqr)$, ein Widerspruch zu $\triangle pqr$ flächenminimal.
+\end{Beweis}
+
+\textbf{Algorithmus}:
+Es müssen nur alle Kanten im dualen Arrangement jeweils
+zusammen mit den Ecken der beiden Zellen, die an der Kante anliegen, inspiziert werden.
+Dies geht in $\O(n^2)$ Zeit während der Konstruktion des HE-Arrangements:
+Wenn die neue Gerade $g$ eine Zelle $c$ betritt, dann inspiziere $g$ zusammen mit allen Ecken von
+$c$.
+Außerdem erzeugt $g$ mit $c$ zwei neue Schnittpunkte, diese müssen zusammen mit allen Kanten
+von $c$ inspiziert werden.
+Nach dem Zonensatz wird für $g$ die Zeit $\O(n)$ benötigt
+(Anzahl Kanten/Punkte der Zellen, durch die $g$ geht),
+d.\,h. insgesamt $\O(n^2)$ Zeit.
+
+\linie
+
+Es ist unbekannt, ob es einen Algorithmus gibt, der das Problem in $o(n^2)$ löst.
+Man geht aber davon aus, dass dies nicht der Fall ist, weil das Problem 3SUM-schwer ist.
+Man glaubt, dass $\Omega(n^2)$ die untere Schranke für 3SUM ist.
+
+\textbf{3SUM}:
+Gegeben sei $S \subset \integer$ mit $n := |S|$.
+Gefragt ist, ob $a, b, c \in S$ existieren mit $a + b + c = 0$.
+
+\textbf{3SUM $\le$ "`flächenkleinstes Dreieck"'}:
+Sei $S \subset \integer$ eine Instanz von 3SUM.
+Dann gilt für $a, b, c \in S$, dass $a + b + c = 0$ genau dann, wenn
+$(a, a^3), (b, b^3), (c, c^3) \in \real^2$ kollinear sind.
+
+Das Problem des flächenkleinsten Dreiecks ist eine Verallgemeinerung der Kollinearität
+von Punkten
+(drei Punkte sind kollinear $\iff$ das flächenkleinste Dreieck besitzt Fläche $0$).
+
+\pagebreak
+
+\subsubsection{%
+    Polarität: Dualität von Halbraumschnitten und konvexen Hüllen%
+}
+
+\textbf{Polytop}:
+Ein \begriff{Polytop} ist die konvexe Hülle einer
+endlichen Punktmenge $S \subset \real^d$, d.\,h.\\
+$\CH(S) := \{\sum_{p \in S} \lambda_p p \;|\; \lambda_p \ge 0,\; \sum_{p \in S} \lambda_p = 1\}$.
+
+\textbf{Polyeder}:
+Ein \begriff{Polyeder} ist der Schnitt einer endlichen Menge von abg. Halbräumen in $\real^d$.
+
+\textbf{Fall $\real^3$}:
+In $\real^3$ ist der Rand eines Polytops beschrieben durch seinen planeren Oberflächengraph
+(bestehend aus $v$ Ecken, $e$ Kanten und $f$ Facetten).
+Nach dem Eulerschen Polyedersatz gilt $v - e + f = 2$.
+Ein Polytop/Polyeder heißt \begriff{simpliziell}, falls jede Facette ein Dreieck ist,
+und \begriff{simpel}, falls jeder Knoten Grad 3 hat.
+
+\linie
+
+\textbf{duale Hyperebene/dualer Halbraum}:
+Sei $p \in \real^d$ ein Punkt.\\
+Dann ist $\D(p) := \{x \in \real^d \;|\; \sp{x, p} = 1\}$ die \begriff{duale Hyperebene} und\\
+$\H(p) := \{x \in \real^d \;|\; \sp{x, p} \le 1\}$ der \begriff{duale Halbraum}.
+
+\textbf{dualer Halbraumschnitt}:
+Sei $P$ ein Polytop in $\real^d$ mit $0 \in \interior(P)$.\\
+Dann ist $P^\ast := \bigcap_{p \in P} \H(p) = \bigcap_{\text{$p$ Ecke von $P$}} \H(p)$
+der \begriff{duale Halbraumschnitt}.
+
+Die Voraussetzung $0 \in \interior(P)$ benötigt man, damit der Halbraumschnitt beschränkt ist.
+
+\linie
+
+\textbf{Bijektion}:
+Sei $S \subset \real^d$ eine Punktmenge und $P := \CH(S)$ mit $0 \in \interior(P)$.\\
+Dann gibt es eine Bijektion zwischen
+der Menge aller Facetten von $P$ und
+der Menge aller Facetten von $P^\ast$ (jeweils von den Dimensionen $0, \dotsc, d - 1$),
+sodass $k$-dimensionale Facetten von $P$ auf $(d - k - 1)$-dimensionale Facetten von $P^\ast$
+abgebildet werden ($k = 0, \dotsc, d - 1$).
+
+Genauer gilt:
+Falls eine $(k + 1)$-elementige Teilmenge $F \subset S$ eine $k$-dimensionale Facette
+von $P$ aufspannt,
+dann bildet der Schnitt der $(k + 1)$-vielen dualen Halbräume eine $(d - k - 1)$-dimensionale
+Facette des Halbraumschnitts $P^\ast$.
+
+Letzteres zeigt man, indem man beweist, dass das $(d - k - 1)$-dimensionale Schnittobjekt in
+allen dualen Halbräumen liegt.
+
+\linie
+
+\textbf{zusammenhängende Probleme}:
+\begin{enumerate}
+    \item
+    Gegeben ist $S \subset \real^d$ mit $|S| = n$.
+    Berechne $\CH(S)$.
+    
+    \item
+    Gegeben ist eine Menge $\H$ von $n$ Halbräumen in $\real^d$.
+    Berechne $\bigcap_{h \in \H} h$.
+\end{enumerate}
+
+\textbf{Reduktion von \emph{(1)} auf \emph{(2)}}:
+Um \emph{(1)} mithilfe von \emph{(2)} zu lösen, geht man wie folgt vor.
+\begin{enumerate}
+    \item
+    Verschiebe zunächst $S$, sodass oBdA $0 \in \interior(\CH(S))$ gilt
+    (z.\,B. um $-\frac{1}{n} \sum_{p \in S} p$).
+    
+    \item
+    Wende die Dualitätsabbildung an, d.\,h. berechne $\H(p)$ für $p \in S$.
+    
+    \item
+    Berechne $\bigcap_{p \in S} \H(p)$.
+    
+    \item
+    Wende die inverse Dualitätsabbildung an und mache evtl. die Verschiebung rückgängig.
+\end{enumerate}
+
+\textbf{Umkehrung}:
+Die Umkehrung ist nicht so einfach, weil nicht jede beliebige Halbraumschnitt-Instanz zu einem
+CH-Problem dual ist (leer, unbeschränkt und $0$ nicht im Schnitt möglich).
+Damit $0$ im Schnitt ist, muss man einen Punkt im Halbraumschnitt kennen, was i.\,A.
+nicht der Fall ist.
+
+Weil i.\,A. die Komplexität zur Beschreibung der konvexen Hülle von $S$ gleich
+$\Theta(n^{\lfloor d/2 \rfloor})$ ist und daher auch die Komplexität von Halbraumschnitten
+exponentiell wächst, ist man oft nicht in einer vollständigen Beschreibung des Halbraumschnitts
+interessiert, sondern nur in einem Extrempunkt des Polyeders.
+Diesen erhält man mit linearer Programmierung.
+
+\pagebreak

@@ -1,0 +1,345 @@
+\section{%
+    Analytische Geometrie der Ebene und des Raums%
+}
+
+\subsection{%
+    Vektoren in der Ebene und im Raum%
+}
+
+\begin{Def}{Vektorgrößen}
+    Viele physikalische Größen (wie Kraft oder Geschwindigkeit) haben nicht nur
+    einen \begriff{Betrag}, sondern auch eine \begriff{Richtung}.
+    Solche Größen nennt man \begriff{Vektorgrößen}.
+    Sie können zusammengesetzt werden, sind frei beweglich und werden durch
+    einen Pfeil in der Ebene oder im Raum dargestellt, wobei die Länge
+    den Betrag der Größe angibt.
+    Pfeile derselben Länge und Richtung, die sich nur im Anfangspunkt
+    unterscheiden, repräsentieren denselben Vektor. \\
+    Im Folgenden sei $\eukl = \euklebene \text{ oder } \euklraum$
+    die Menge der Punkte der Ebene oder des Raums.
+\end{Def}
+
+\begin{Notation}
+    $d(A, B)$ Abstand der Punkte $A$ und $B$, \qquad
+    $(A, B)$ Verbindungsgerade durch $A$, $B$, \qquad
+    Geraden $g, h$ sind parallel, falls sie in einer Ebene liegen und keinen
+    Punkt gemeinsam haben oder falls sie gleich sind, \qquad
+    $\strecke{AB}$ gerichtete Strecke mit Anfangspunkt $A$ und Endpunkt $B$
+\end{Notation}
+
+\begin{Def}{verschiebungsgleich}
+    Die gerichteten Strecken $\strecke{AB}$ und $\strecke{CD}$ heißen
+    \begriff{verschiebungsgleich}, falls es eine Parallelverschiebung gibt,
+    die $A$ in $C$ und $B$ in $D$ überführt.
+\end{Def}
+
+\begin{Lemma}{Äquivalenzrelation der Translationen}
+    Die Relation "`verschiebungsgleich sein"' ist eine Äquivalenzrelation
+    auf der Menge der gerichteten Strecken in $\eukl$.
+\end{Lemma}
+
+\begin{Def}{Vektoren}
+    Die Äquivalenzklassen der Relation "`verschiebungsgleich sein"'
+    auf der Menge der gerichteten Strecken in $\eukl$ heißen
+    \begriff{Vektoren}.
+    Ist $\strecke{AB}$ eine gerichtete Strecke, so wird die Äquivalenzklasse
+    $[\strecke{AB}] = \{\strecke{CD} \;|\; \strecke{CD} \text{ und }
+    \strecke{ AB } \text{ sind verschiebungsgleich}\}$ mit $\vektor{AB}$
+    oder $\vec{a}$ bezeichnet. \\
+    Die Länge $|\vec{a}|$ des Vektors $\vec{a} = \vektor{AB}$ ist durch
+    $|\vec{a}| = d(A, B)$ definiert. \\
+    Im Folgenden sei $V$ die Menge der Vektoren in $\eukl$.
+\end{Def}
+
+\begin{Def}{Nullvektor}
+    Sei $A$ ein Punkt von $\eukl$.
+    Dann ist $\vec{o} = \vektor{AA}$ der \begriff{Nullvektor}.
+    Er hat die Länge $0$ und es ist $\vec{o} = \vektor{BB}$ für alle
+    $B \in \eukl$.
+    Die zugehörige Translation ist die Identität $\id_\eukl$.
+\end{Def}
+
+\begin{Def}{Addition von Vektoren}
+    Seien $\vec{a}, \vec{b} \in V$.
+    Wähle $O \in \eukl$ und $A, C \in \eukl$, sodass $\vec{a} = \vektor{OA}$
+    und $\vec{b} = \vektor{AC}$ ist.
+    Die Summe $\vec{a} + \vec{b} \in V$ ist dann definiert als
+    $\vec{a} + \vec{b} = \vektor{OC} \in V$.
+\end{Def}
+
+\begin{Satz}{Rechenregeln für die Vektoraddition}
+    Die Addition geometrischer Vektoren ist assoziativ.
+    Es gibt ein Nullelement $\vec{o}$ und zu jedem Element
+    $\vec{a} \in V$ ein additiv Inverses $-\vec{a} \in V$.
+    Außerdem ist die Addition kommutativ.
+\end{Satz}
+
+\begin{Def}{skalare Multiplikation}
+    Seien $\vec{a} \in V$ und $\lambda \in \real$.
+    Dann ist $\lambda a \in V$ der Vektor, der die Länge
+    $|\lambda| |\vec{a}|$ hat und die dieselbe (bzw. entgegengesetzte)
+    Richtung wie $\vec{a}$ hat, wenn $\lambda > 0$ (bzw. $\lambda < 0$)
+    ist.
+    Ist $\lambda = 0$, so ist
+    $\lambda \vec{a} = 0 \cdot \vec{a} = \vec{o}$ der Nullvektor.
+\end{Def}
+
+\begin{Satz}{Rechenregeln für die skalare Multiplikation}
+    $1 \in \real$ ist ein Einselement bzgl. der skalaren Multiplikation.
+    Die skalare Multiplikation ist assoziativ und skalar sowie vektoriell
+    distributiv über der Addition von Skalaren.
+\end{Satz}
+
+\begin{Notation}
+    Man kann eine Basis von $\euklebene$ oder $\euklraum$ wählen.
+    Ist $\vec{a} = \lambda \vektor{n_1} + \mu \vektor{n_2} \in V$
+    eindeutige Linearkombination der linear unabhängigen Vektoren
+    $\vektor{n_1}$ und $\vektor{n_2}$ in $\euklebene$, dann schreibt man
+    oft $\vec{a} = (\lambda, \mu)$.
+    Analog schreibt man in $\euklraum$ dann $\vec{a} = (\lambda, \mu, \nu)$.
+\end{Notation}
+
+\subsection{%
+    Die euklidische Ebene%
+}
+
+\begin{Bem}
+    Im Folgenden sei $V$ die Menge der Vektoren in $\euklebene$,
+    $\vec{a}, \vec{b} \in V$ sowie
+    $\varphi = \sphericalangle(\strecke{OA}, \strecke{OB})$ der Winkel zwischen
+    den Strecken $\strecke{OA}$ und $\strecke{OB}$.
+\end{Bem}
+
+\pagebreak
+
+\begin{Def}{Skalarprodukt}
+    $\vec{a} \vec{b} = |\vec{a}| |\vec{b}| \cos \varphi \in \real$
+    ist das \begriff{Skalarprodukt} von $\vec{a}$ und $\vec{b}$.
+\end{Def}
+
+\begin{Satz}{Rechenregeln für das Skalarprodukt}
+    Das Skalarprodukt ist i.\,A. nicht assoziativ.
+    Ist $\vec{a} = \vec{o}$ oder $\vec{b} = \vec{o}$, dann ist
+    $\vec{a} \vec{b} = 0$.
+    Das Skalarprodukt ist distributiv über der Vektoraddition und
+    es gilt $\vec{a} (\lambda \vec{b}) =
+    (\lambda \vec{a}) \vec{b} = \lambda (\vec{a} \vec{b})$.
+\end{Satz}
+
+\begin{Def}{orthogonal}
+    Seien $\vec{a}, \vec{b} \in V$ mit
+    $\vec{a}, \vec{b} \not= \vec{o}$. \\
+    Dann ist $\vec{a} \orth \vec{b}$, falls $\vec{a} \vec{b} = 0$,
+    d.\,h. falls die Vektoren \begriff{senkrecht} aufeinander stehen. \\
+    Es gilt $\vec{o} \orth \vec{a}$ für jeden Vektor $\vec{a} \in V$
+    sowie $\vec{a} \vec{a} = \vec{a}^2 =
+    |\vec{a}| |\vec{a}| \cos 0 = |\vec{a}|^2$.
+\end{Def}
+
+\begin{Def}{Orthogonalbasis}
+    Seien $\vektor{n_1}, \vektor{n_2} \in V$ mit
+    $\vektor{n_1}, \vektor{n_2} \not= \vec{o}$. \\
+    Ist $\vektor{n_1} \orth \vektor{n_2}$, dann ist
+    $\basis{B} = \{\vektor{n_1}, \vektor{n_2}\}$ eine Basis von $V$,
+    eine \begriff{Orthogonalbasis}. \\
+    Ist zusätzlich $|\vektor{n_1}| = |\vektor{n_2}| = 1$, so heißt
+    $\basis{B}$ \begriff{Orthonormalbasis (ONB)} von $V$.
+\end{Def}
+
+\begin{Lemma}{Skalarprodukt komponentenweise}
+    Seien $\{\vektor{n_1}, \vektor{n_2}\}$ ONB und $\vec{a} = (a_1, a_2)$,
+    $\vec{b} = (b_1, b_2)$ bzgl. dieser Basis.
+    Dann ist $\vec{a} \vec{b} = a_1 b_1 + a_2 b_2$.
+    Außerdem ist
+    $|\vec{a}| = \sqrt{\vec{a} \vec{a}} = \sqrt{a_1^2 + a_2^2}$.
+\end{Lemma}
+
+\begin{Def}{Gerade}
+    Seien $\vec{a}, \vec{b} \in V$. \\
+    Die \begriff{Gerade} durch $\vec{a}$ in Richtung $\vec{b}$ ist die Menge
+    $g = \{\vec{x} \;|\; \vec{x} = \vec{a} + \lambda \vec{b},\;
+    \lambda \in \real\}$. \\
+    \begriff{Parameterdarstellung}:
+    $g = \{(x, y) \in V \;|\; x = x_1 + \lambda x_2,\; y = y_1 + \lambda y_2,\;
+    \lambda \in \real\}$ mit $\vec{a} = (x_1, y_1)$, $\vec{b} = (x_2, y_2)$
+    bzgl. einer ONB $\{\vektor{n_1}, \vektor{n_2}\}$ von $\euklebene$ \\
+    \xbegriff{\name{Hesse}sche Normalform}%
+    {Hessesche Normalform@\name{Hesse}sche Normalform}:
+    $\vec{x} \vec{a} = d$, wobei $d \in \real$ und $\vec{a}$ senkrecht zur
+    Gerade und $|\vec{a}| = 1$ ist, \\
+    alternativ $ax + by = d$ mit $\vec{a} = (a, b)$ und $\vec{x} = (x, y)$.
+\end{Def}
+
+\begin{Satz}{\name{Hesse}sche Normalform}
+    Zu jeder Geraden $g$ in $\euklebene$ existieren $a, b, d \in \real$,
+    sodass \\
+    $g = \{(x, y) \in V \;|\; ax + by = d\}$ ist, wobei $a, b \not= 0$.
+    Die Konstanten $a, b, d$ sind bis auf einen gemeinsamen Faktor eindeutig
+    bestimmt.
+    Ist $\sqrt{a^2 + b^2} = 1$, so ist $|d|$ der Abstand von $g$ zum Ursprung.
+    Andernfalls ist $|d|$ gleich diesem Abstand multipliziert
+    mit $\sqrt{a^2 + b^2}$.
+\end{Satz}
+
+\begin{Kor}
+    Seien $ax + by = d$ \name{Hesse}sche Normalform der Gerade $g$ mit
+    $\sqrt{a^2 + b^2} = 1$ und $P = (x_0, y_0) \in V$ ein Punkt.
+    Dann ist $e = |ax_0 + by_0 - d|$ der Abstand von $g$ zu $P$.
+\end{Kor}
+
+\begin{Satz}{Schnittpunkt zweier Geraden}
+    Der Schnittpunkt $P = (x, y)$ zweier Geraden $g_1, g_2$ mit den Gleichungen
+    $g_1: a_1 x + b_1 y = d_1$ und $g_2: a_2 x + b_2 y = d_2$ ist
+    die Lösungsgesamtheit des LGS dieser zwei Gleichungen, falls Lösungen
+    existieren.
+    Andernfalls sind $g_1$ und $g_2$ parallel.
+\end{Satz}
+
+\subsection{%
+    Der euklidische Raum%
+}
+
+
+\begin{Bem}
+    Im Folgenden sei $V$ die Menge der Vektoren in $\euklraum$ und
+    $\vec{a}, \vec{b} \in V$.
+    In $\euklraum$ kann man ebenfalls ein Skalarprodukt analog zu $\euklebene$
+    definieren, dieses erfüllt dann dieselben Rechenregeln. \\
+    $\basis{B} = \{\vektor{n_1}, \vektor{n_2}, \vektor{n_3}\}$ heißt analog
+    Orthogonalbasis von $V$, falls
+    $\vektor{o} \not= \vektor{n_1}, \vektor{n_2}, \vektor{n_3} \in V$ sowie
+    $\vektor{n_1} \orth \vektor{n_2}$, $\vektor{n_1} \orth \vektor{n_3}$ und
+    $\vektor{n_2} \orth \vektor{n_3}$.
+    Ist zusätzlich $|\vektor{n_1}| = |\vektor{n_2}| = |\vektor{n_3}| = 1$,
+    so heißt $\basis{B}$ Orthonormalbasis (ONB). \\
+    Ist $\vec{a} = (a_1, a_2, a_3)$, $\vec{b} = (b_1, b_2, b_3)$ bzgl. einer
+    ONB von $V$, dann ist
+    $\vec{a} \vec{b} = a_1 b_1 + a_2 b_2 + a_3 b_3$. \\
+    Außerdem ist dann $|\vec{a}| = \sqrt{a_1^2 + a_2^2 + a_3^2}$.
+\end{Bem}
+
+\begin{Def}{Gerade im Raum}
+    Seien $\vec{a}, \vec{b} \in V$.
+    Die \begriff{Gerade} $g$ durch $\vec{a}$ in Richtung $\vec{b}$ ist die
+    Menge $g = \{\vec{x} \;|\; \vec{x} = \vec{a} + \lambda \vec{b},\;
+    \lambda \in \real\}$.
+    Ist $\vec{a} = (x_1, y_1, z_1)$, $\vec{b} = (x_2, y_2, z_2)$ bzgl. einer
+    ONB von $V$, dann ist die \begriff{Parameterdarstellung} von $g$ gegeben
+    durch $g = \{(x, y, z) \in V \;|\; x = x_1 + \lambda x_2,\;
+    y = y_1 + \lambda y_2,\; z = z_1 + \lambda z_2,\; \lambda \in \real\}$.
+\end{Def}
+
+\begin{Lemma}{parallele Geraden}
+    Zwei Geraden sind parallel genau dann, wenn die Richtungsvektoren Vielfache
+    voneinander sind.
+\end{Lemma}
+
+\pagebreak
+
+\begin{Bem}
+    Will man den Schnittpunkt zweier Geraden berechnen, so muss man ein LGS
+    lösen.
+    Dabei gibt es verschiedene Möglichkeiten:
+    Entweder gibt es eine eindeutige Lösung (Schnittpunkt), unendlich
+    viele Lösungen (Geraden sind gleich), keine Lösung und Geraden sind
+    parallel oder keine Lösung und Geraden sind nicht parallel
+    (\begriff{windschief}).
+\end{Bem}
+
+\begin{Def}{Ebene}
+    Seien $P_i = (x_i, y_i, z_i)$ drei Punkte ($i = 1, 2, 3$), die nicht auf
+    einer Geraden $g$ liegen.
+    Dann ist die Ebene durch $P_1$, $P_2$, $P_3$ definiert durch \\
+    $e = \{\vec{x} \;|\; \vec{x} = \vektor{x_1} +
+    \lambda (\vektor{x_1} - \vektor{x_2}) +
+    \mu (\vektor{x_1} - \vektor{x_3}),\; \lambda, \mu \in \real\}$, wobei
+    $\vektor{x_i} = \vektor{OP_i}$ für $i = 1, 2, 3$ ist. \\
+    Entsprechend ist die Parameterdarstellung von $e$ gegeben.
+\end{Def}
+
+\begin{Bem}
+    Schneidet man zwei Ebenen, dann ist der Schnitt entweder eine Gerade
+    (Schnittgerade), leer (parallele Ebenen) oder die Ebene selbst (Ebenen
+    sind gleich).
+\end{Bem}
+
+\begin{Satz}{Schnitt von Ebenen}
+    Zwei verschiedene Ebenen schneiden sich entweder in einer Geraden oder gar
+    nicht.
+    Zwei Ebenen sind parallel genau dann, wenn die Richtungsvektoren
+    der Ebenen dieselbe Ebene aufspannen.
+    Eine Ebene geht durch den Ursprung genau dann, wenn der Aufpunkt der
+    Ursprung ist.
+\end{Satz}
+
+\begin{Bem}
+    \xbegriff{\name{Hesse}sche Normalform}%
+    {Hessesche Normalform@\name{Hesse}sche Normalform}: $e: ax + by + cz = d$
+    mit $\sqrt{a^2 + b^2 + c^2} = 1$, $|d|$ ist der Abstand der Ebene zum
+    Ursprung
+\end{Bem}
+
+\subsection{%
+    Das vektorielle Produkt%
+}
+
+\begin{Def}{Vektorprodukt}
+    Seien $\vec{a} = (a_1, a_2, a_3)$, $\vec{b} = (b_1, b_2, b_3)$ bzgl.
+    einer ONB.
+    Das Vektorprodukt $\vec{a} \times \vec{b}$ von $\vec{a}$ und $\vec{b}$ ist
+    der Vektor $\vec{c} = (c_1, c_2, c_3)$ mit
+    $c_1 = a_2 b_3 - a_3 b_2$, $c_2 = a_3 b_1 - a_1 b_3$ und
+    $c_3 = a_1 b_2 - a_2 b_1$.
+\end{Def}
+
+\begin{Satz}{Rechenregeln für das Vektorprodukt}
+    Seien $\vec{a}, \vec{b}, \vec{c}, \vec{d} \in V$ und $r \in \real$.
+    Dann ist \\
+    $\vec{a} \times \vec{b} = -\vec{b} \times \vec{a}$, \qquad
+    $(\vec{a} + \vec{b}) \times \vec{c} =
+    \vec{a} \times \vec{c} + \vec{b} \times \vec{c}$, \qquad
+    $r(\vec{a} \times \vec{b}) = (r\vec{a}) \times \vec{b} =
+    \vec{a} \times (r\vec{b})$, \\
+    $\vec{a} \times \vec{b} = \vec{o} \;\Leftrightarrow\; \vec{a}, \vec{b}$
+    sind linear abhängig, \qquad
+    $\vec{a} (\vec{a} \times \vec{b}) = 0 =
+    \vec{b} (\vec{a} \times \vec{b})$, \\
+    $\vec{a} (\vec{b} \times \vec{c}) = \vec{b} (\vec{c} \times \vec{a}) =
+    \vec{c} (\vec{a} \times \vec{b})$, \qquad
+    $\vec{a} \times (\vec{b} \times \vec{c}) =
+    (\vec{a} \vec{c}) \vec{b} - (\vec{a} \vec{b}) \vec{c}$, \\
+    $\vec{a} \times (\vec{b} \times \vec{c}) +
+    \vec{b} \times (\vec{c} \times \vec{a}) +
+    \vec{c} \times (\vec{a} \times \vec{b}) = \vec{o}$, \qquad
+    $(\vec{a} \times \vec{b})(\vec{c} \times \vec{d}) =
+    (\vec{a} \vec{c}) (\vec{b} \vec{d}) - (\vec{a} \vec{d}) (\vec{b} \vec{c})$.
+\end{Satz}
+
+\begin{Satz}{Vektorprodukt}
+    Seien $\vec{a}, \vec{b} \in V$ mit $\vec{a}, \vec{b} \not= 0$.
+    Dann ist $\vec{a} \times \vec{b} \in V$ ein Vektor senkrecht zu $\vec{a}$
+    und $\vec{b}$, sodass $(\vec{a}, \vec{b}, \vec{a} \times \vec{b})$ ein
+    Rechtssystem bilden, falls $(\vektor{n_1}, \vektor{n_2}, \vektor{n_3})$ ein
+    Rechtssystem bilden.
+    Dabei gilt $|\vec{a} \times \vec{b}| = |\vec{a}| |\vec{b}| \sin \varphi$,
+    wobei $\varphi = \sphericalangle(\vec{a}, \vec{b})$ der (gerichtete) Winkel
+    zwischen $\vec{a}$ und $\vec{b}$ ist.
+    Außerdem ist $|\vec{a} \times \vec{b}|$ der Flächeninhalt des von
+    $\vec{a}$ und $\vec{b}$ aufgespannten Parallelogramms.
+\end{Satz}
+
+\begin{Kor}
+    Sei $e = \{\vec{x} \;|\; \vec{x} = \vektor{x_1} +
+    \lambda (\vektor{x_1} - \vektor{x_2}) +
+    \mu (\vektor{x_1} - \vektor{x_3}),\; \lambda, \mu \in \real\}$ eine Ebene,
+    die in Parameterform gegeben ist.
+    Dann ist $\vec{a} = (\vektor{x_1} - \vektor{x_2}) \times
+    (\vektor{x_1} - \vektor{x_3})$
+    Normalenvektor der Ebene.
+    Ist $\vec{b} = \vec{a} \cdot \frac{1}{|\vec{a}|}$ der normierte
+    Normalenvektor, dann ist
+    $e: \vec{x} \vec{b} = \vektor{x_1} \vec{b}$ die \name{Hesse}sche Normalform
+    der Ebene $e$.
+\end{Kor}
+
+\pagebreak

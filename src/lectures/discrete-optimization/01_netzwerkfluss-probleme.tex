@@ -1,0 +1,721 @@
+\section{%
+    Netzwerkfluss-Probleme%
+}
+
+\subsection{%
+    Maximaler Fluss (\emph{MaxFlow})%
+}
+
+\subsubsection{%
+    Problem%
+}
+
+\textbf{Netzwerk}:
+Ein \begriff{Netzwerk} $G = (V, E, \Cap, s, t)$ ist ein gerichteter Graph $(V, E)$ zusammen mit
+zwei verschiedenen, ausgezeichneten Knoten
+$s \in V$ und $t \in V$ (\begriff{Quelle} und \begriff{Senke}) und
+einer \begriff{Kapazitätsfunktion} $\Cap\colon E \to \natural$.
+
+OBdA kann man annehmen, dass $s$ nur aus- und $t$ nur eingehende Kanten besitzt.
+
+\textbf{Fluss}:
+Ein \begriff{Fluss} im Netzwerk $G$ ist eine Abbildung $f\colon E \to \natural_0$ mit
+\begin{itemize}
+    \item
+    $\forall_{e \in E}\; f(e) \le \Cap(e)$
+    (\begriff{Kapazitätsbedingung}) und
+    
+    \item
+    $\forall_{v \in V \setminus \{s, t\}}\;
+    \sum_{e = (\cdot, v)} f(e) = \sum_{e = (v, \cdot)} f(e)$
+    (\begriff{Flusserhaltung}).
+\end{itemize}
+$f$ hat den \begriff{Wert} $\val(f) := \sum_{e = (s, \cdot)} f(e)$.
+
+\textbf{MaxFlow-Problem}:
+Das \begriff{MaxFlow-Problem} lautet wie folgt.
+Gegeben ist $G = (V, E, \Cap, s, t)$.\\
+Gesucht ist ein Fluss von $s$ nach $t$ mit größtmöglichem Wert
+(\begriff{maximaler Fluss}).
+
+\subsubsection{%
+    \name{Ford}-\name{Fulkerson}-Algorithmus%
+}
+
+\textbf{Idee}:
+Wähle einen beliebigen Pfad von $s$ nach $t$ und schicke einen größtmöglichen Fluss $f$ entlang
+dieses Pfads.
+$f$ ist i.\,A. nicht der maximale Fluss.
+Allerdings kann man $f$ sozusagen vom Graphen "`abziehen"', d.\,h. man verändert den Graph,
+sodass jeder Fluss im ursprünglichen Graph gleich einem Fluss im modifizierten Graph plus $f$ ist.
+Dazu führt man umgekehrte Kanten ein, damit ein Teil des Flusses $f$ wieder "`rückgängig"' gemacht
+werden kann.
+
+\textbf{Residualnetzwerk}:
+Seien $G = (V, E, \Cap, s, t)$ ein Netzwerk und $f$ ein Fluss in $G$.\\
+Dann ist das \begriff{Residualnetzwerk} $G_f := (V, E_f, \Cap_f, s, t)$ ein Netzwerk
+mit denselben Knoten, wobei die Kanten mit ihren Kapazitäten wie folgt definiert sind:
+\begin{itemize}
+    \item
+    Für jede Kante $e \in E$ mit $f(e) < \Cap(e)$ sei
+    $e \in E_f$ mit $\Cap_f(e) := \Cap(e) - f(e)$.
+    
+    \item
+    Für jede Kante $e = (v, w) \in E$ mit $f(e) > 0$ sei
+    $e' := (w, v) \in E_f$ mit $\Cap_f(e') := f(e)$.
+\end{itemize}
+
+\linie
+
+\textbf{\name{Ford}-\name{Fulkerson}-Algorithmus}:\\
+Der \begriff{\name{Ford}-\name{Fulkerson}-Alg.} bestimmt einen maximalen Fluss in einem Netzwerk
+$G$ wie folgt.
+\begin{enumerate}
+    \item
+    Starte mit $f$ als Nullfluss.
+    
+    \item
+    Konstruiere das Residualnetzwerk $G_f = G$.
+    
+    \item
+    Solange es einen \begriff{augmentierenden Pfad} $\pi$ in $G_f$ von $s$ nach $t$ gibt,
+    wiederhole:
+    \begin{enumerate}
+        \item
+        Sende den \begriff{Flaschenhals-Wert} von $\pi$ von $s$ nach $t$ über $\pi$,
+        addiere den Fluss auf $f$.
+        
+        \item
+        Berechne $G_f$ neu.
+    \end{enumerate}
+    
+    \item
+    Gebe $f$ zurück.
+\end{enumerate}
+
+\textbf{Lemma (Terminiertheit)}:
+Der Algorithmus terminiert stets.
+
+\begin{Beweis}
+    In jeder Runde vergrößert sich der Wert von $f$ um mindestens $1$.
+    Allerdings ist der Wert begrenzt durch $\sum_{e = (s, \cdot)} \Cap(e)$.
+\end{Beweis}
+
+\linie
+\pagebreak
+
+Die Korrektheit ist etwas schwieriger zu zeigen.
+
+\textbf{gerichteter Schnitt}:
+Seien $G = (V, E, \Cap)$ ein ger. Graph mit Kapazitätsfkt. $\Cap$ und $A \subset V$.\\
+Dann heißt $\dcut(A, G) := \{(v, w) \in E \;|\; v \in A,\; w \in V \setminus A\}$
+von $A$ induz. \begriff{gerichteter Schnitt}.
+
+\textbf{Lemma}:
+Sei $A \subset V$ mit $s \in A$ und $t \notin A$.
+Dann ist der Wert jeden Flusses von $s$ nach $t$ in $G$ nach oben beschränkt durch
+$\sum_{e \in \dcut(A, G)} \Cap(e)$.
+
+\begin{Beweis}
+    Der Fluss kann nur in den Kanten in $\dcut(A, G)$ von $A$ nach $V \setminus A$
+    übergehen.
+\end{Beweis}
+
+\textbf{Lemma (Korrektheit)}:
+Der Algorithmus arbeitet korrekt.
+
+\begin{Beweis}
+    Sei $f$ der Fluss, der durch den Algorithmus ausgegeben wird.
+    Im Folgenden wird $A \subset V$ bestimmt mit $s \in A$, $t \notin A$ und
+    $\sum_{e \in \dcut(A, G)} \Cap(e) = \val(f)$.
+    Weil die linke Seite eine obere Schranke für den Wert eines optimalen Flusses ist,
+    muss $f$ dann maximal sein.
+    
+    Sei dazu $A$ die Menge der Knoten, die im letzten Residualnetzwerk $G_f$ von $s$ aus
+    erreichbar sind.
+    Dann gilt $s \in A$ und $t \notin A$
+    (sonst hätte der Algorithmus in dem Schritt nicht terminiert).
+    Betrachte nun das Ausgangsnetzwerk $G = (V, E, \Cap)$.
+    \begin{itemize}
+        \item
+        Für jede aus $A$ ausgehende Kante $e = (v, w)$ (also $v \in A$, $w \in V \setminus A$)
+        gilt $f(e) = \Cap(e)$.\\
+        Sonst würde aus $f(e) < \Cap(e)$ folgen, dass $e$ auch eine Kante in $G_f$ wäre.
+        Dann wäre $w$ von $s$ aus in $G_f$ erreichbar, ein Widerspruch zu $w \notin A$.
+        
+        \item
+        Für jede in $A$ eingehende Kante $e = (v, w)$ (also $v \in V \setminus A$, $w \in A$)
+        gilt $f(e) = 0$.\\
+        Sonst würde aus $f(e) > 0$ folgen, dass $e' = (w, v)$ eine Kante in $G_f$ wäre.
+        Dann wäre $v$ von $s$ aus in $G_f$ erreichbar, ein Widerspruch zu $v \notin A$.
+    \end{itemize}
+    Damit muss der Wert $\val(f)$ von $f$ gleich $\sum_{e \in \dcut(A, G)} \Cap(e)$ sein.
+\end{Beweis}
+
+Der Ford-Fulkerson-Algorithmus liefert mit dem gerichteten Schnitt $A$ aus dem Beweis von eben
+ein \begriff{Zertifikat der Optimalität}, weil leicht nachvollzogen werden kann, dass alle von $A$
+ausgehenden Kanten in $G$ bis zu ihrer Kapazität ausgenutzt werden
+(und die eingehenden gar nicht).
+
+\linie
+
+\textbf{Zeitbedarf}:
+Wenn der augmentierende Pfad mithilfe Breiten- oder Tiefensuche bestimmt wird,
+so benötigt der Algorithmus für jede Pfadbestimmung $\O(m + n)$ Zeit
+(mit $n := |V|$ und $m := |E|$).
+Auch die Konstruktion eines Residualnetzwerks kostet $\O(m + n)$ Zeit.
+Weil aber momentan nur bekannt ist, dass der Wert des Flusses $f$ sich in jedem Schritt nur um
+mindestens $1$ vergrößert, kann die Laufzeit des Ford-Fulkerson-Algorithmus nur durch\\
+$\O((m + n) \cdot (\text{optimaler Flusswert})) \subset \O(C(m + n))$
+mit $C := \sum_{e = (s, \cdot)} \Cap(e)$ beschränkt werden.
+Das kann sehr groß sein, insbesondere ist der optimale Flusswert i.\,A. nicht polynomiell in der
+Eingabelänge.
+
+\pagebreak
+
+\subsubsection{%
+    \emph{Capacity Scaling}%
+}
+
+\textbf{Idee}:
+Suche zunächst augmentierende Pfade mit einem hohen "`Flaschenhals-Wert"'.
+Es wenn es solche Pfade nicht mehr gibt, erlaube auch Pfade mit einem kleineren Wert.
+
+\textbf{\name{Ford}-\name{Fulkerson} mit Capacity Scaling}:\\
+Der Ford-Fulkerson-Algorithmus mit \begriff{Capacity Scaling} sieht wie folgt aus.
+\begin{enumerate}
+    \item
+    Starte mit $f$ als Nullfluss.
+    
+    \item
+    Wähle $D$ als die größte Zweierpotenz kleiner als $C := \max_{e \in E} \Cap(e)$
+    (d.\,h. $D := 2^{\lfloor \log_2 C \rfloor}$).
+    
+    \item
+    Wiederhole Folgendes, solange $D \ge 1$ ist:
+    \begin{enumerate}
+        \item
+        Konstruiere das Residualnetzwerk $G_f(D)$ von $G$ bzgl. $f$,
+        eingeschränkt auf die Kanten mit Kapazität $\ge D$.
+        
+        \item
+        Solange es einen Pfad $\pi$ in $G_f(D)$ von $s$ nach $t$ gibt, wiederhole:
+        \begin{enumerate}
+            \item
+            Augmentiere $f$ um den maximalen Fluss entlang $\pi$.
+            
+            \item
+            Berechne $G_f(D)$ neu.
+        \end{enumerate}
+        
+        \item
+        Halbiere $D$.
+    \end{enumerate}
+    
+    \item
+    Gebe $f$ zurück.
+\end{enumerate}
+
+\linie
+
+Die äußere Schleife wird $(\log D)$-mal ausgeführt.
+Für die innere Schleife muss etwas bewiesen werden.
+
+\textbf{Lemma}:
+Sei $f_D$ der Fluss aus dem Algorithmus, nachdem alle Augmentierungen mit Kapazitätsschranke $D$
+durchgeführt wurden.\\
+Dann ist der maximale Flusswert in $G$ beschränkt durch $\val(f_D) + mD$.
+
+\begin{Beweis}
+    Betrachte das Residualnetzwerk $G_{f_D}$
+    nach der letzten Augmentierung mit Kapazitätsschranke $D$
+    (mit allen Kanten, d.\,h. auch mit denen mit Kapazität $< D$).
+    Dann induziert die Menge $A$ aller Knoten, die von $s$ über einen Pfad,
+    der nur Kanten von Kapazität $\ge D$ enthält, erreichbar sind, einen gerichteten Schnitt
+    $\dcut(A, G)$, der $s$ von $t$ trennt.
+    Sei $c$ die Kapazität des gerichteten Schnitts.
+    Zieht man von den Kapazitäten der Kanten aus $\dcut(A, G)$ den Fluss $f_D$ ab,
+    so haben diese Kanten jeweils eine Kapazität $< D$,
+    d.\,h. $c - \val(f_D) < mD$.
+    Weil $c$ eine obere Schranke für den maximalen Flusswert ist, folgt die Behauptung.
+%     Alle von $A$ ausgehenden Kanten haben Kapazität $< D$,
+%     d.\,h. die Kapazität des gerichteten Schnitts ist $< mD$.
+%     Der Wert eines Flusses von $s$ nach $t$ in $G$ ist beschränkt durch die Summe aus
+%     dem Wert des aktuellen Flusses $f_D$ und der Kapazität des gerichteten Schnitts.
+\end{Beweis}
+
+\textbf{Lemma}:
+Für festes $D$ wird die innere Schleife höchstens $2m$-mal durchlaufen.
+
+\begin{Beweis}
+    Beginnt man für festes $D$ den ersten Durchgang der inneren Schleife mit dem Fluss $f$,
+    dann ist der maximale Flusswert von $G$ nach dem Lemma von eben $\le \val(f) + 2Dm$
+    (wegen der vorherigen Runde der äußeren Schleife mit Kapazitätsschranke $2D$).
+    In jeder Runde der inneren Schleife erhöht sich der Flusswert um mindestens $D$,
+    d.\,h. es kann höchstens $2m$-viele Runden geben.
+\end{Beweis}
+
+\textbf{Zeitbedarf}:
+FF mit Capacity Scaling benötigt die Laufzeit $\O((m + n)m \cdot \log C) = \O(m^2 \log C)$,
+wobei $C := \max_{e \in E} \Cap(e)$.
+
+\begin{Beweis}
+    Die äußere Schleife wird $(\log D)$-mal durchlaufen, wobei $\O(\log C) = \O(\log D)$.
+    Die innere Schleife wird $\O(m)$-mal durchlaufen und jede Pfadberechnung kostet
+    $\O(m + n)$ Zeit.
+\end{Beweis}
+
+Die Laufzeitschranke $\O(m^2 \log C)$ ist zwar polynomiell in der Eingabelänge, allerdings hängt
+sie immer noch von den Kapazitätszahlen ab, was man gerne vermeiden würde.
+
+\pagebreak
+
+\subsubsection{%
+    \name{Edmonds}-\name{Karp}-Algorithmus%
+}
+
+\textbf{\name{Edmonds}-\name{Karp}-Algorithmus}:
+Der \begriff{\name{Edmonds}-\name{Karp}-Algorithmus} verwendet
+wieder den ursprünglichen FF-Algorithmus, nur mit der Maßgabe, dass
+immer der kürzeste Pfad (im Sinne von Anzahl der verwendeten Kanten) als augmentierender Pfad
+verwendet werden soll.
+Ein solcher Pfad kann mit Breitensuche ebenfalls in $\O(m + n)$ Zeit gefunden werden.
+
+\linie
+
+\textbf{Lemma}:
+Während des Verlaufs des Algorithmus verringert sich die Länge der augmentierenden Pfade nie.
+
+\begin{Beweis}
+    Seien $\ell(v)$ die Distanz von $s$ zu $v \in V$ im Residualnetzwerk und
+    $G_\ell$ der Teilgraph des Residualnetzwerks, der die Kanten $(u, v)$ mit
+    $\ell(v) = \ell(u) + 1$ enthält.
+    Ein Pfad $\pi$ zwischen $s$ und einem Knoten $v$ im Residualnetzwerk ist am kürzesten
+    genau dann, wenn $\pi$ auch ein Pfad in $G_\ell$ ist.
+    Während der Augmentierung von $f$ entlang eines Pfades $\pi$ können prinzipiell zwei Ereignisse
+    auftreten:
+    \begin{itemize}
+        \item
+        Kanten im Residualnetzwerk können verschwinden (wegen voller Kapazität) oder
+        
+        \item
+        Rückwärtskanten, die vorher noch nicht da waren, können erstellt werden.
+    \end{itemize}
+    In beiden Fällen verringert sich die Distanz von $s$ zu den Knoten nicht,
+    was insb. für $t$ gilt.
+\end{Beweis}
+
+\textbf{Lemma}:
+Nach höchstens $\O(m)$ Augmentierungen erhöht sich die Länge des augmentierenden Pfads um
+mindestens $1$.
+
+\begin{Beweis}
+    Sei $E_k$ die Menge aller Kanten im Residualnetzwerk am Anfang einer "`Phase"', bei der
+    die Distanz zwischen $s$ und $t$ genau $k$ beträgt.
+    Sobald der kürzeste Pfad von $s$ nach $t$ eine Kante benutzt, die nicht in $E_k$ liegt,
+    hat der Pfad eine Länge $> k$.
+    Weil mit jeder Augmentierung mindestens eine Kante (die Flaschenhals-Kante) aus $E_k$
+    eliminiert wird, muss sich die Länge des kürzesten Pfads von $s$ nach $t$ nach höchstens
+    $|E_k| = \O(m)$ Schritten vergrößern.
+\end{Beweis}
+
+\textbf{Zeitbedarf}:
+Der Edmonds-Karp-Algorithmus terminiert nach $\O(mn)$ Schritten.\\
+Damit hat der Algorithmus einen Zeitbedarf von $\O((m+n)mn) = \O(m^2 n)$.
+
+\begin{Beweis}
+    Jeweils nach $\O(m)$ Runden erhöht sich nach dem letzten Lemma die Länge des augmentierenden
+    Pfads um mindestens $1$.
+    Weil jeder Pfad im Residualnetzwerk höchstens $\O(n)$ beteiligte Knoten haben kann,
+    geht das höchstens $\O(n)$-mal.
+\end{Beweis}
+
+\linie
+
+\textbf{nicht-ganzzahlige Kapazitäten}:
+Bisher wurde immer angenommen, dass die Kapazitäten des Netzwerks ganzzahlig sind.
+Wenn man allgemein nur reelle Zahlen voraussetzt, muss der FF-Algorithmus nicht terminieren.
+Es gibt sogar einfache Beispiele, bei denen der FF-Algorithmus nicht einmal gegen einen
+maximalen Fluss konvergiert.
+
+\pagebreak
+
+\subsection{%
+    Fluss minimaler Kosten (\emph{MinCostFlow})%
+}
+
+\subsubsection{%
+    Problem%
+}
+
+\textbf{MinCostFlow-Problem}:
+Das \begriff{MinCostFlow-Problem} ist eine Verallgemeinerung des Max"-Flow-Problems.
+Gegeben ist ein \begriff{erweitertes Netzwerk} $G = (V, E, b, c, \Cap)$ mit
+\begin{itemize}
+    \item
+    \begriff{Überschussfunktion} $b\colon V \to \integer$,
+    
+    \item
+    \begriff{Kostenfunktion} $c\colon E \to \integer$ und
+    
+    \item
+    \begriff{Kapazitätsfunktion} $\Cap\colon E \to \natural$,
+\end{itemize}
+wobei $\sum_{v \in V} b(v) = 0$ gelten soll (\begriff{Gesamtüberschuss gleich Gesamtbedarf}).\\
+Gesucht ist wie beim MaxFlow-Problem ein \begriff{zulässiger Fluss} $f\colon E \to \natural_0$,
+d.\,h.
+\begin{itemize}
+    \item
+    $\forall_{e \in E}\; f(e) \le \Cap(e)$
+    (\begriff{Kapazitätsbedingung}) und
+    
+    \item
+    $\forall_{v \in V}\;
+    b(v) + \sum_{e = (\cdot, v)} f(e) = \sum_{e = (v, \cdot)} f(e)$
+    (\begriff{Flusserhaltung}),
+\end{itemize}
+sodass $\sum_{e \in E} f(e)c(e)$ minimiert wird (\begriff{Fluss minimaler Kosten}).
+
+\linie
+
+\textbf{Berechnung eines zulässigen Flusses}:
+Zur Berechnung eines zulässigen Flusses erstellt man das Netzwerk $G' = (V', E', \Cap', s, t)$
+mit
+\begin{itemize}
+    \item
+    $V' := V \cup \{s, t\}$
+    (wobei $s \notin V$ die \begriff{Superquelle} und $t \notin V$ die \begriff{Supersenke} ist),
+    
+    \item
+    $E' := E \cup \{(s, v) \;|\; v \in V,\; b(v) > 0\} \cup \{(w, t) \;|\; w \in V,\; b(w) < 0\}$
+    sowie
+    
+    \item
+    $\Cap'(e) := e$ für $e \in E$, $\Cap'((s, v)) := b(v)$ und $\Cap'((w, t)) := -b(w)$.
+\end{itemize}
+Dann gibt es in $G$ einen zulässigen Fluss genau dann, wenn der maximale Flusswert in $G'$
+gleich $\sum_{v \in V,\; b(v) > 0} b(v)$ ist.
+Durch Berechnung eines maximalen Flusses in $G'$ mit dem FF-Algorithmus erhält man so einen
+zulässigen Fluss in $G$ (nach Einschränkung von $E$).
+
+\linie
+
+Zur Berechnung eines Flusses minimaler Kosten wird wieder das Residualnetzwerk definiert.
+
+\textbf{Residualnetzwerk}:
+Seien $G = (V, E, b, c, \Cap)$ ein Netzwerk und $f$ ein Fluss in $G$.\\
+Dann ist das \begriff{Residualnetzwerk} $G_f := (V, E_f, b, c_f, \Cap_f)$ ein Netzwerk
+mit denselben Knoten, wobei die Kanten mit ihren Kapazitäten wie folgt definiert sind:
+\begin{itemize}
+    \item
+    Für jede Kante $e \in E$ mit $f(e) < \Cap(e)$ sei $e \in E_f$ mit\\
+    $\Cap_f(e) := \Cap(e) - f(e)$ und $c_f(e) := c(e)$.
+    
+    \item
+    Für jede Kante $e = (v, w) \in E$ mit $f(e) > 0$ sei $e' := (w, v) \in E_f$ mit\\
+    $\Cap_f(e') := f(e)$ und $c_f(e) := -c(e)$.
+\end{itemize}
+
+\pagebreak
+
+\subsubsection{%
+    \emph{Cycle Canceling}%
+}
+
+\textbf{negativer Kreis}:
+Ein \begriff{negativer Kreis} ist ein Pfad $(v_0, \dotsc, v_k)$ mit
+$k \in \natural$,
+$v_0 = v_k$, $v_i \not= v_j$ für $i, j \ge 1$ und $\sum_{i=1}^k c((v_{i-1}, v_i)) < 0$.
+
+%\textbf{Idee}:
+%Während der FF-Algorithmus nach augmentierenden $s$-$t$-Pfaden im Residualnetzwerk gesucht hat,
+%wird nun nach \begriff{negativen Kreisen} gesucht, d.\,h. Pfaden $(v_0, \dotsc, v_k)$ mit
+%$v_0 = v_k$, $v_i \not= v_j$ für $i, j \ge 1$ und $\sum_{i=1}^k c((v_{i-1}, v_i)) < 0$.
+%Wird ein solcher negativer Kreis gefunden, dann wird 
+
+\textbf{Cycle-Canceling-Algorithmus}:
+Der \begriff{Cycle-Canceling-Algorithmus}
+bestimmt einen Fluss minimaler Kosten in einem Netzwerk $G$ wie folgt.
+\begin{enumerate}
+    \item
+    Berechne einen zulässigen Fluss $f$ wie oben.
+    
+    \item
+    Konstruiere das Residualnetzwerk $G_f$.
+    
+    \item
+    Solange es einen negativen Kreis $\pi$ in $G_f$ gibt, wiederhole:
+    \begin{enumerate}
+        \item
+        Sende den Flaschenhals-Wert über $\pi$ und addiere den Fluss auf $f$.
+        
+        \item
+        Berechne $G_f$ neu.
+    \end{enumerate}
+    
+    \item
+    Gebe $f$ zurück.
+\end{enumerate}
+
+\linie
+
+\textbf{Lemma (Terminiertheit)}:
+Der Algorithmus terminiert stets.
+
+\begin{Beweis}
+    Die Kosten jedes zulässigen Flusses $f$ sind nach unten durch
+    $\sum_{e \in E,\; c(e) < 0} \Cap(e) c(e)$ beschränkt.
+    Weil die Kosten von $f$ in jeder Runde um mindestens $1$ verringert werden,
+    terminiert der Algorithmus nach endlich vielen Runden.
+\end{Beweis}
+
+\linie
+
+\textbf{Satz (Korrektheit)}:
+Sei $f$ ein zulässiger Fluss in $G$.\\
+Dann ist $f$ ein Fluss minimaler Kosten genau dann, wenn $G_f$ keinen negativen Kreis enthält.
+
+\begin{Beweis}
+    "`$\implies$"':
+    Angenommen, $f$ besitzt minimale Kosten, aber $G_f$ enthält einen negativen Kreis.
+    Dann sende mindestens $1$ Fluss-Einheit entlang dieses Kreises, was die Kosten von $f$
+    um mindestens $1$ reduziert, ein Widerspruch zur Minimalität von $f$.
+    
+    "`$\impliedby$"':
+    Angenommen, $G_f$ enthält keinen negativen Kreis, aber $f$ besitzt nicht minimale Kosten.
+    Dann gibt es einen zulässigen Fluss $f^\ast$ mit $c(f^\ast) < c(f)$.
+    Betrachte nun die Flussdif"|ferenz $f' := f^\ast - f$.
+    Dann gilt $c(f') < 0$ und an jedem Knoten $v \in V$ ist der eingehende Fluss
+    genauso groß wie der ausgehende Fluss.
+    Daher kann man $f'$ in eine Menge $\C$ von Zykeln zerlegen.
+    Es gilt $\sum_{C \in \C} c(C) = c(f') < 0$,
+    d.\,h. es gibt ein $C_0 \in \C$ mit $c(C_0) < 0$.
+    Man kann sich überlegen, dass $C_0$ ebenfalls ein negativer Kreis in $G_f$ ist,
+    was aber ein Widerspruch zur Annahme ist, dass $G_f$ keine negativen Kreise enthält.
+\end{Beweis}
+
+\linie
+
+\textbf{Erkennung von negativen Kreisen}:
+Gegeben sei ein Graph $G = (V, E, c)$ mit Kostenfunktion $c\colon E \to \integer$
+($c(e) < 0$ ausdrücklich möglich) mit $n := |V|$ und $m := |E|$.
+Um negative Kreise zu finden, kann man einen \begriff{geschichteten Graphen} mit $n$ Schichten
+erstellen, wobei jede Schicht eine Kopie von $V$ enthält und es
+eine Kante zwischen $v$ in Schicht $i$ und $w$ in Schicht $i+1$ gibt genau dann, wenn
+$(v, w) \in E$ (wobei die Kantenkosten identisch seien).
+Nun ist ein Knoten $v$ Teil eines negativen Kreises genau dann, wenn
+es einen Pfad mit negativen Kosten von $v$ in der ersten Schicht zu $v$ in einer anderen Schicht
+gibt.
+
+\textbf{Komplexität}:
+Der geschichtete Graph hat die Größe $\O(nm)$.
+Der naive Weg, um negative Kreise zu finden (Distanzen mit kürzesten Pfaden von jedem Knoten in
+der ersten Schicht zu sich selbst in einer anderen Schicht in $\O(nm)$), kostet Zeit $\O(n^2 m)$.
+Besser ist der \begriff{\name{Bellman}-\name{Ford}\-Algorithmus}, der in $\O(nm)$ läuft.
+Es gibt aber auch Algorithmen, die in Polynomialzeit laufen und einen negativen Kreis
+$C$ zurückgeben, der $\frac{c(C)}{|C|}$ minimiert (mit $|C|$ der Pfadlänge).
+
+\pagebreak
+
+\subsubsection{%
+    \emph{Successive Shortest Paths}%
+}
+
+\textbf{Idee}:
+\begin{itemize}
+    \item
+    Der Cycle-Canceling-Algorithmus startet mit einem zulässigen Fluss
+    (nicht kostenoptimal) und verkleinert dann die Kosten, währenddessen die Zulässigkeit erhalten
+    bleibt.
+    
+    \item
+    Der SSP-Algorithmus startet mit dem Nullfluss und erhöht schrittweise
+    den Fluss, um Knoten-Überschuss/-Nachfrage zu decken,
+    während die Kostenoptimalität erhalten bleibt.
+\end{itemize}
+
+\linie
+
+\textbf{Successive-Shortest-Paths-Algorithmus}:
+Der \begriff{Successive-Shortest-Paths-Alg.} bestimmt ei"-nen Fluss minimaler Kosten in einem
+Netzwerk $G$ ohne negative Kreise wie folgt.
+\begin{enumerate}
+    \item
+    Starte mit $f$ als Nullfluss und
+    konstruiere das Residualnetzwerk $G_f = G$.
+        
+    \item
+    Wiederhole Folgendes:
+    \begin{enumerate}
+        \item
+        Berechne einen kürzesten Pfad $\pi$ (bzgl. Kosten) im Residualnetzwerk $G_f$
+        zwischen Knoten $v, w \in V$ mit $b(v) > 0$ und $b(w) < 0$.\\
+        Gibt es keinen solchen Pfad, dann ist $\forall_{v \in V}\; b(v) = 0$
+        und gebe $f$ zurück.
+        
+        \item
+        Sende so viel wie möglich von $v$ nach $w$
+        (d.\,h. $\min\{\text{Flaschenhals}(\pi), b(v), -b(w)\}$).
+        
+        \item
+        Aktualisiere $b(v), b(w), f$ und berechne $G_f$ neu.
+    \end{enumerate}
+\end{enumerate}
+Die in jedem Schritt zu berechnenden Knoten $v, w$ können durch eine einzige
+Kürzester-Pfad-Operation identifiziert werden, indem man eine Superquelle $s$ einführt,
+sie mit Kanten der Kapazität $\infty$ und Kosten $0$ mit allen Überschussknoten
+(d.\,h. $v \in V$ mit $b(v) > 0$) verbindet
+und analog eine Supersenke $t$ einführt.
+
+\linie
+
+\textbf{\name{Johnson}-Lemma}:
+Sei $G = (V, E, c)$ ein gerichteter Graph mit möglicherweise negativer Kostenfunktion
+$c\colon E \to \integer$, der keine negativen Kreise besitzt.
+Dann gibt es eine \begriff{Potentialfunktion} $\phi\colon V \to \integer$,
+sodass für $c'\colon E \to \integer$, $c'(v, w) := c(v, w) + \phi(v) - \phi(w)$ gilt, dass
+$\forall_{e \in E}\; c'(e) \ge 0$ und ein Pfad $\pi$ ist am kürzesten bzgl. $c$ $\iff$
+$\pi$ ist am kürzesten bzgl. $c'$.
+
+\begin{Beweis}
+    OBdA gebe es einen Knoten $s \in V$, von dem aus alle anderen Knoten erreichbar sind.
+    Sei $d_s(v) \in \integer$ für $v \in V$ die Distanz des kürzesten Pfads von $s$ nach $v$.
+    $d_s(v)$ ist wohldefiniert, weil $G$ keine negativen Kreise enthält,
+    und kann z.\,B. mit Bellman-Ford in $\O(mn)$ Zeit berechnet werden.
+    Definiere $\phi(v) := d_s(v)$.
+    Für $(v, w) \in E$ ist dann $d_s(w) \le d_s(v) + c(v, w)$, also\\
+    $c'(v, w) := c(v, w) + \phi(v) - \phi(w) \ge 0$.
+    Sei nun ein Pfad $\pi = v_0 \dotsb v_k$ in $G$ gegeben.
+    Die Kosten von $\pi$ bzgl. $c'$ sind gleich
+    $\sum_{i=0}^{k-1} c'(v_i, v_{i+1})
+    = \sum_{i=0}^{k-1} (c(v_i, v_{i+1}) + \phi(v_i) - \phi(v_{i+1}))$\\
+    $= \sum_{i=0}^{k-1} c(v_i, v_{i+1}) + \phi(v_0) - \phi(v_k)$,
+    wobei der erste Summand die Kosten von $\pi$ bzgl. $c$ darstellt.
+    Damit ist $\pi$ am kürzesten bzgl. $c$ ist genau dann,
+    wenn $\pi$ am kürzesten bzgl. $c'$ ist.
+\end{Beweis}
+
+\linie
+
+\textbf{Satz (Korrektheit)}:
+Jedes Residualnetzwerk ist frei von negativen Kreisen.
+
+\begin{Beweis}
+    Betrachte die erste Augmentierung nach dem Nullfluss.
+    Im entsprechenden Residualnetzwerk $G_f$ können sich Kanten mit negativen Kosten nur auf dem
+    Augmentierungspfad $\pi$ befinden.
+    Angenommen, $G_f$ besitzt einen negativen Kreis $C$,
+    dann muss $C$ auch ein paar Rückwärtskanten von $\pi$ benutzen.
+    $C$ lässt sich daher zerlegen in einen Pfad $C_1$,
+    der mit einer Kante mit negativen Kosten beginnt und endet,
+    und einen Pfad $C_2$, der nur Kanten mit nicht-negativen Kosten enthält.
+    OBdA enthalte $C_1$ nur Rückwärtskanten von $v$ nach $w$ ($\ast$).
+    Es gilt $c(C_1) + c(C_2) = c(C) < 0$ und $c(C_2) > 0$.
+    $C_2$ liefert einen Pfad von $w$ nach $v$ mit Kosten $0 < c(C_2) < -c(C_1)$,
+    was aber dem widerspricht, dass $\pi$ ein kürzester Pfad war.
+    
+    Für die späteren Augmentierungen können Kanten mit negativen Kosten überall in $G_f$ verteilt
+    sein.
+    Daher wendet man das Johnson-Lemma nach jeder Augmentierung an.
+\end{Beweis}
+
+\linie
+\pagebreak
+
+\textbf{Begründung für ($\ast$)}:
+Angenommen, $C_2$ geht von $v_6$ nach $v_0$.
+\begin{itemize}
+    \item
+    Wenn $C_1$ den augmentierenden Pfad in $v_1$ vor $v_0$ verlässt, aber in $v_5$ nach $v_6$
+    wieder betritt und dann nach $v_6$ läuft, dann kann $C_1$ einfach durch
+    $v_0 \rightsquigarrow v_1 \rightsquigarrow v_5 \rightsquigarrow v_6$
+    ersetzt werden (Kosten kleiner als $c(C_2) < 0$),
+    wobei "`$v_1 \rightsquigarrow v_5$"' den Teil auf dem augm. Pfad meint.
+    
+    \item
+    Wenn $C_1$ in $v_1$ vor $v_0$ den augmentierenden Pfad verlässt, dann aber in $v_3$ vor $v_6$
+    wieder betritt, in $v_4$ vor $v_3$ wieder verlässt, in $v_5$ nach $v_6$ wieder betritt und
+    dann nach $v_6$ läuft, muss man etwas argumentieren.
+    Es gilt $c(v_3 \rightsquigarrow v_4), c(v_5 \rightsquigarrow v_6),
+    c(v_0 \rightsquigarrow v_1) < 0$ und
+    $c(v_1 \rightsquigarrow v_3), c(v_4 \rightsquigarrow v_5), c(v_6 \rightsquigarrow v_0) > 0$.
+    Dann folgt $|c(v_5 \rightsquigarrow v_6)| + |c(v_3 \rightsquigarrow v_4)| \le
+    c(v_4 \rightsquigarrow v_5)$, weil
+    $v_4 \rightsquigarrow v_3 \rightsquigarrow v_6 \rightsquigarrow v_5$ der kürzeste Pfad von
+    $v_4$ nach $v_5$ war (Teilpfade des augmentierenden Pfads)
+    und $v_5 \rightsquigarrow v_6$ und $v_3 \rightsquigarrow v_4$ Rückwärts-Teilpfade von
+    $v_4 \rightsquigarrow v_3 \rightsquigarrow v_6 \rightsquigarrow v_5$ sind.
+    Analog gilt $|c(v_0 \rightsquigarrow v_1)| \le c(v_6 \rightsquigarrow v_0)$,
+    weil $v_6 \rightsquigarrow v_5 \rightsquigarrow v_1 \rightsquigarrow v_0$ der kürzeste Pfad von
+    $v_6$ nach $v_0$ war.
+    Daraus folgt $c(C) =
+    (-|c(v_5 \rightsquigarrow v_6)| - |c(v_3 \rightsquigarrow v_4)| +
+    c(v_4 \rightsquigarrow v_5))$\\
+    $+\; (-|c(v_0 \rightsquigarrow v_1)| + c(v_6 \rightsquigarrow v_0)) + c(v_1 \rightsquigarrow v_3)
+    \ge c(v_1 \rightsquigarrow v_3) \ge 0$,
+    ein Widerspruch zu $C$ negativer Kreis.
+    
+    \item
+    Die anderen Fälle gehen ähnlich.
+\end{itemize}
+
+\subsection{%
+    Anwendungen der Netzwerkfluss-Berechnung%
+}
+
+\textbf{kürzester Pfad zwischen zwei Knoten}:
+Gegeben sei ein Graph $G = (V, E, c)$ mit Kosten $c$ und
+zwei Knoten $s, t \in V$ mit $s \not= t$.
+Gesucht ist der bzgl. $c$ kürzeste Pfad von $s$ nach $t$.
+
+\textbf{Lösung}:
+Setze $b(s) := 1$, $b(t) := -1$, $\forall_{v \not= s, t}\; b(v) := 0$ und
+$\forall_{e \in E}\; \Cap(e) := 1$.
+
+\linie
+
+\textbf{Transport-Problem}:
+Gegeben seien $m$ Einrichtungen $f_1, \dotsc, f_m$, die jeweils $s_i$ Einheiten einer Ware
+anbieten.
+$n$ Kunden $u_1, \dotsc, u_n$ haben jeweils einen Bedarf an $d_j$ Einheiten der Ware,
+wobei $\sum_{i=1}^m s_i = \sum_{j=1}^n d_j$ gelten soll.
+Das Versenden einer Einheit der Ware von $f_i$ nach $u_j$ kostet $c_{i,j}$.
+Gesucht ist eine Verteilung der Ware mit minimalen Kosten, sodass alle Wünsche der Kunden
+erfüllt sind.
+
+\textbf{Lösung}:
+Erstelle einen vollständigen bipartiten Graph, d.\,h. Knotenmenge\\
+$V := \{f_1, \dotsc, f_m\} \cup \{u_1, \dotsc, u_n\}$
+und Kantenmenge $E := \{f_1, \dotsc, f_m\} \times \{u_1, \dotsc, u_n\}$,\\
+wobei $b(f_i) := s_i$ und $b(u_j) := -d_j$ sowie
+$\Cap(f_i, u_j) := \infty$ und $c(f_i, u_j) := c_{i,j}$.
+
+\textbf{Spezialfall}:
+Für $n = m$ und $s_i := d_j := 1$ für alle $i, j = 1, \dotsc, n$ erhält man das
+\begriff{Zuweisungspro"-blem}.
+Beispielsweise gibt es $n$ Arbeitsplätze und $n$ Arbeiter,
+wobei Arbeiter $i$ an Arbeitsplatz $j$ zu den Kosten $c_{i,j}$ arbeiten kann.
+Obige Lösung liefert dann eine Eins-zu-Eins-Zuweisung der Arbeiter auf die Arbeitsplätze
+mit minimalen Kosten.
+
+\linie
+
+\textbf{Airplane-Hopping-Problem}:
+Ein Flugzeug fliegt eine feste Route mit $n$ Zwischenhalten $v_1, \dotsc, v_n$
+und kann höchstens $p$ Passagiere tragen.
+Es gibt $t_{i,j}$ Passagiere, die von $v_i$ nach $v_j$ reisen wollen
+und dafür $f_{i,j}$ ausgeben (wobei $i < j$).
+Gesucht sind die Anteile an den $t_{i,j}$-vielen Passagieren, die die Fluglinie jeweils mitnehmen
+soll, um ihren Gewinn zu maximieren, ohne jemals mehr als $p$ Passagiere mitfliegen zu lassen.
+
+\textbf{Lösung}:
+Führe Knoten $v_i$ und $w_{i,j}$ (für $i = 1, \dotsc, n$ und $i < j$),
+wobei $w_{i,j}$ die Passagiere darstellt, die von $v_i$ nach $v_j$ reisen wollen.
+Setze $b(v_j) :=-\sum_{i<j} t_{i,j}$ und $b(w_{i,j}) := t_{i,j}$.\\
+Verbinde $v_i, v_{i+1}$ durch eine Kante mit Kapazität $p$ und Kosten $0$.
+Erstelle zudem\\
+Kanten $(w_{i,j}, v_i)$ mit $\Cap(w_{i,j}, v_i) := \infty$ und
+$c(w_{i,j}, v_i) := -f_{i,j}$ sowie\\
+Kanten $(w_{i,j}, v_j)$ mit $\Cap(w_{i,j}, v_j) := \infty$ und $c(w_{i,j}, v_j) := 0$.
+
+\pagebreak

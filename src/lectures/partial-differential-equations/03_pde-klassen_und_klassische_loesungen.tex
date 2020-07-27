@@ -1,0 +1,1191 @@
+\section{%
+    PDE-Klassen und klassische Lösungen%
+}
+
+\begin{Bem}
+    Das Ziel dieses Kapitels ist es, für die vier wichtigsten linearen PDEs die klassischen
+    Lösungen und deren Eigenschaften zu bestimmen.
+    Dabei werden Invarianzen ausgenutzt, um die PDE zu vereinfachen.
+    Außerdem werden die PDEs zweiter Ordnung klassifiziert.
+\end{Bem}
+
+\subsection{%
+    Advektionsgleichung%
+}
+
+\subsubsection{%
+    Konstante Advektionsgeschwindigkeit%
+}
+
+\begin{Def}{\name{Cauchy}problem für Advektionsgleichung}
+    Seien $\Omega := \real^d$,
+    $T := \infty$,
+    $\Omega_T := \Omega \times (0, T)$
+    $b \in \real^d$ die konst. \begriff{Advektionsgeschwindigkeit} und
+    $u_0 \in \C^1(\Omega)$ der \begriff{Anfangswert}.\\
+    Das Problem, ein $u \in \C^1(\Omega_T) \cap \C^0(\overline{\Omega_T})$ zu bestimmen mit
+    $\partial_t u + \div(bu) = 0$ in $\Omega_T$ und $u(\cdot, 0) = u_0$ in $\Omega$,
+    heißt \begriff{\name{Cauchy}problem für die Advektionsgleichung}.
+\end{Def}
+
+\begin{Bem}
+    Diese Form der Advektionsgleichung heißt \begriff{Divergenzform}/\begriff{Erhaltungsform}.\\
+    In der Literatur findet man auch $\partial_t u + b \nabla u = 0$.
+    Für $b\colon \Omega \to \real^d$ \begriff{divergenzfrei} (d.\,h. $\div b = 0$)
+    sind beide Formen äquivalent, da
+    $\div(bu) = \cancel{(\div b) u} + b \nabla u = b \nabla u$.\\
+    Cauchyprobleme heißen auch \begriff{Anfangswertprobleme (AWPs)},
+    im Gegensatz zu \begriff{Anfangs-Rand"-wertproblemen (ARWPs)} oder
+    \begriff{Randwertproblemen (RWPs)}.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Translationsinvarianz}
+    Sei $u$ eine klassische Lösung des Cauchyproblems.\\
+    Dann gilt $\forall_{(x, t) \in \Omega_T} \forall_{s \in (-t, T-t)}\;
+    \frac{\d}{\ds} u(x + bs, t + s) = 0$.
+\end{Satz}
+
+\begin{Bem}
+    Die Linien $\Gamma := \{(x_0 + bs, s) \;|\; s \in (0, T)\} \subset \Omega_T$,
+    entlang denen eine klassische Lösung des Cauchyproblems konstant ist,
+    heißen \begriff{charakteristische Kurven} oder \begriff{Charakteristiken}.
+\end{Bem}
+
+\begin{Satz}{Ex./Eind. der Traveling-Wave-Lösung}
+    Die Funktion $u(x, t) := u_0(x - bt)$ ist die eindeutige Lösung des Cauchyproblems
+    und heißt \begriff{Traveling-Wave-Lösung}.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{$L^\infty$-Stabilität}
+    Für $u_0 \in \C^1(\Omega) \cap L^\infty(\Omega)$ gilt für die Lösung $u$ des Cauchyproblems\\
+    $\forall_{t \in (0, T)}\; \norm{u(\cdot, t)}_{L^\infty} \le \norm{u_0}_{L^\infty}$.
+\end{Satz}
+
+\begin{Satz}{Maximum-/Minimumprinzip}
+    Für $u_0 \in \C^1(\Omega) \cap L^\infty(\Omega)$ gilt für die Lösung $u$ des Cauchyproblems
+    $\forall_{(x, t) \in \Omega_T}\;
+    \inf_{\overline{x} \in \Omega} u_0(\overline{x}) \le u(x, t) \le
+    \sup_{\overline{x} \in \Omega} u_0(\overline{x})$.
+\end{Satz}
+
+\begin{Bem}
+    Die Lösung nimmt ihr Maximum/Minimum auf dem Rand $\partial\Omega_T$ an.
+\end{Bem}
+
+\begin{Satz}{st. Abh. von Anfangsdaten}
+    Seien $u, u'$ zwei Lösungen des Cauchyproblems zu den Anfangsdaten
+    $u_0, u_0' \in \C^1(\Omega) \cap L^\infty(\Omega)$ mit identischem $b$.
+    Dann gilt\\
+    $\forall_{t \in (0, T)}\;
+    \norm{u(\cdot, t) - u'(\cdot, t)}_{L^\infty} \le \norm{u_0 - u_0'}_{L^\infty}$.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{keine stetige Abhängigkeit von $b$}
+    Es existiert keine $t$-abhängige Konstante $C(t)$ mit
+    $\forall_{t \in (0, T)}\;
+    \norm{u(\cdot, t) - u'(\cdot, t)}_\infty \le C(t) \norm{b - b'}$
+    für alle Anfangswerte $u_0 \in \C^1(\Omega) \cap L^\infty(\Omega)$ mit
+    $\norm{u_0}_{L^\infty} \le 1$,
+    wobei $u, u'$ zwei Lösungen des Cauchyproblems zu identischem $u_0$, aber unterschiedlichem
+    $b, b' \in \real^d$ sind.
+\end{Satz}
+
+\begin{Bem}
+    Damit existiert insbesondere keine $t$-unabhängige Konstante.
+    Die Einschränkung $\norm{u_0}_{L^\infty} \le 1$ ist erforderlich, weil die linke Seite mit
+    $\norm{u_0}_{L^\infty}$ skaliert.
+    Der Satz zeigt, dass Transportprobleme ohne Dif"|fusion bzgl. der Analysis unschöne
+    Eigenschaften haben können und spezielle analytische Werkzeuge erfordern,
+    z.\,B. neue Normen (\begriff{Totalvariation}) und Räume (\begriff{BV-Räume},
+    Räume von Funktionen beschränkter Variation).
+\end{Bem}
+
+\subsubsection{%
+    Verallgemeinerung 1: Beschränktes Gebiet%
+}
+
+\begin{Bem}
+    Ist $\Omega$ beschränkt, so betrachte das ARWP
+    $\partial_t u + \div_x(bu) = 0$ in $\Omega_T$,
+    $u(\cdot, 0) = u_0$ in $\Omega$ und
+    $u = g$ auf $\Gamma_\text{in} \times (0, T)$
+    mit Dirichlet-RBen (es sind aber auch Neumann-RBen oder gemischte RBen möglich).
+    Dabei bezeichnet $\Gamma_\text{in}$ den sog. \begriff{Einflussrand}
+    $\Gamma_\text{in} := \{x \in \partial\Omega \;|\; b^\tp n(x) < 0\}$
+    (die Stellen auf dem Rand, auf denen $b$ in $\Omega$ hinein zeigt).
+    
+    Falls $x - bt \notin \Omega$ ist, so gibt es einen Schnittpunkt der Charakteristik durch
+    $(x, t)$ und dem Zylinderrand $\partial\Omega \times [0, t)$.
+    Der entsprechende Randwert wird in das Gebiet hineintransportiert, sodass man die Lösungsformel
+    $u(x, t) := u_0(x - bt)$ für $\forall_{s \in (0, t)}\; x - bs \in \Omega$ und\\
+    $u(x, t) := g(x - b\overline{t}, t - \overline{t})$ mit
+    $\overline{t} := \min\{s \in (0, t) \;|\; x - bs \in \partial\Omega\}$ sonst
+    ($s = \overline{t}$ ist die Zeitspanne, die man zurückgehen muss, damit $x - bs$ auf dem Rand
+    liegt).
+    
+    Soll die Lösung zu allen Zeiten stetig auf $\overline{\Omega}$ sein
+    (d.\,h. $u(\cdot, t) \in \C^0(\overline{\Omega})$), dann dürfen keine Randwerte auf
+    $\partial\Omega \setminus \Gamma_\text{in}$ vorgegeben werden.
+    Außerdem müssen Randwerte auf verschiedenen Zusammenhangskomponenten von $\Gamma_\text{in}$
+    kompatibel sein, sonst ist keine Stetigkeit oder gar Diffb.keit zu erwarten.
+    Zusätzlich müssen Rand- und Anfangswerte miteinander kompatibel sein, um Stetigkeit/Diffb.keit
+    der Lösung zu ermöglichen, z.\,B. ist
+    $\forall_{x_0 \in \Gamma_\text{in}}\; \lim_{x \to x_0} u_0(x) = g(x_0, 0)$
+    notwendig für $u$ stetig.
+\end{Bem}
+
+\subsubsection{%
+    Verallgemeinerung 2: Reaktions-/Quellterm%
+}
+
+\begin{Bem}
+    Sei wieder $\Omega := \real^d$.
+    Betrachte das AWP $\partial_t u + \div(bu) = q$ in $\Omega_T$ und $u(\cdot, 0) = u_0$ in
+    $\Omega$ mit Quellterm $q \in \C^0(\Omega_T)$.
+    Dann kann man die explizite Lösung durch Integration über die Charakteristik erhalten:
+    $u(x, t) := u_0(x - bt) + \int_0^t q(x + (s-t)b, s)\ds$ für $(x, t) \in \Omega_T$.
+\end{Bem}
+
+\subsubsection{%
+    Verallgemeinerung 3: Allgemeine Anfangsdaten%
+}
+
+\begin{Bem}
+    Auch unstetige Daten wie $u_0(x) := \chi_{[-1,1]}(x)$ (für $d = 1$) sind physikalisch sinnvoll
+    und die obige Lösungsformel ist auch wohldefiniert.
+    Allerdings ist die resultierende Lösung nicht stetig diffb., d.\,h. keine klassische Lösung.
+    Deswegen sind verallgemeinerte Lösungsbegrif"|fe wie der einer schwachen Lösung sinnvoll
+    (siehe nächstes Kapitel).
+\end{Bem}
+
+\pagebreak
+
+\subsubsection{%
+    Verallgemeinerung 4: Nicht-lineare Konvektion%
+}
+
+\begin{Bem}
+    Seien nun $\Omega := \real$ und $\Omega_T := \Omega \times (0, T)$.
+    Betrachte die Konvektionsgleichung
+    $\partial_t u + \partial_x(f(u)) = 0$ in $\Omega_T$ und
+    $u(\cdot, 0) = u_0$ in $\Omega$
+    mit $f \in \C^2(\real)$ nicht-linear.
+    
+    Zu einer Lösung $u \in \C^1(\overline{\Omega_T})$ sei
+    $\gamma \in \C^1((0, T))$ mit $\gamma'(t) = f'(u(\gamma(t), t))$ und
+    $\gamma(0) = x_0 \in \Omega$\\
+    ($\gamma$ existiert nach dem Satz von Picard-Lindelöf, weil $f'$ L.-stetig in
+    $u(\gamma(t), t) \in [u_\text{min}, u_\text{max}]$ ist).\\
+    Dann kann man zu $u$ Charakteristiken $\Gamma := \{(\gamma(t), t) \;|\; t \in [0, T)\}$
+    definieren.\\
+    Die Lösung $u$ ist dann wieder konstant entlang Charakteristiken, da\\
+    $\partial_t((\gamma(t), t)) \cdot \nabla_{(x,t)} u(\gamma(t), t)
+    = (\gamma'(t), 1) \cdot \left.(\partial_x u, \partial_t u)^\tp\right|_{(\gamma(t), t)}
+    = (\partial_t u + \partial_x f(u))|_{(\gamma(t), t)} = 0$.\\
+    Wegen $\gamma'(t) = f'(u(\gamma(t), t))$ konstant (da $u(\gamma(t), t)$ konstant)
+    sind die Charakteristiken wieder Geraden, allerdings
+    haben die Geraden i.\,A. jeweils eine andere Steigung $\gamma'(0) = f'(u_0(x_0))$.
+    
+    Die Lösung $u(x, t)$ ist wieder vollständig durch $u_0$ definiert, falls die Charakteristiken
+    $\Omega_T$ überdecken, sich selbst aber untereinander nicht schneiden.
+    Sonst ist die klassische Lösung i.\,A. nur bis zu einer endlichen Zeit wohldefiniert.
+    Zwei Charakteristiken ausgehend von $x_0, x_0'$ schneiden sich genau dann, wenn
+    $x_0 + f'(u_0(x_0)) \overline{t} = x_0' + f'(u_0(x_0')) \overline{t}$
+    für eine Zeit $\overline{t} \in (0, T)$.
+    Durch Umformung bekommt man
+    $\overline{t} = \frac{x_0' - x_0}{f'(u(x_0)) - f'(u(x_0'))} = -\frac{1}{f''(v)}$
+    für ein $v$ zwischen $u(x_0)$ und $u(x_0')$.\\
+    Weil $\overline{t} \in (0, T)$ gilt, ist es hinreichend, dass
+    $T \le \inf_{v \in \real} \frac{1}{|f''(v)|} = (\norm{f''}_\infty)^{-1}$,
+    damit sich keine Charakteristiken in $\Omega_T$ schneiden.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{lokale Existenz von klassischen Lösungen}\\
+    Seien $f \in \C^2(\real)$ und $u_0 \in \C^1(\Omega)$ mit
+    $\norm{f''}_\infty, \norm{u_0'}_\infty < \infty$.\\
+    Dann gilt $\forall_{\overline{x} \in \real} \exists_{\varepsilon > 0} \exists_{T > 0}
+    \exists_{u}\;
+    \big[\text{$u$ klassische Lösung auf $B_\varepsilon(\overline{x}) \times (0, T)$}\big]$,\\
+    wobei die Lösung $u(x, t) = u_0(x - tf'(u(x, t)))$ erfüllt.
+\end{Satz}
+
+\linie
+
+\begin{Bsp}
+    Betrachte die \begriff{\name{Burgers}gleichung}
+    $\partial_t u + \partial_x (\frac{1}{2} u^2) = 0$, d.\,h. $f(u) := \frac{1}{2} u^2$.
+    \begin{itemize}
+        \item
+        Verwendet man $u_0(x) := x$, so erhält man
+        $u(x, t) = u_0(x - t u(x, t)) = x - t u(x, t)$\\
+        $\iff u(x, t) = \frac{x}{t + 1}$ als Lösung, die sogar auf $\real \times (0, \infty)$
+        definiert ist.
+        
+        \item
+        Verwendet man $u_0(x) := -x$, so erhält man analog $u(x, t) = \frac{x}{t - 1}$.
+        Diese Lösung ist nur für $T < 1$ wohldefiniert, weil sich alle Charakteristiken in
+        $(x, t) = (0, 1)$ schneiden.
+    \end{itemize}
+    Trotz glatter Daten können sich also Unstetigkeiten entwickeln.
+\end{Bsp}
+
+\pagebreak
+
+\subsection{%
+    \name{Poisson}-Gleichung%
+}
+
+\subsubsection{%
+    Gleichung%
+}
+
+\begin{Def}{\name{Poisson}-/\name{Laplace}-Gleichung}
+    Für $\Omega \subset \real^d$ heißt $-\Delta u = 0$ in $\Omega$
+    \begriff{\name{Laplace}-Gleichung} und für $f\colon \Omega \to \real$ in $\Omega$ heißt
+    $-\Delta u = f$ in $\Omega$ \begriff{\name{Poisson}-Gleichung}.
+\end{Def}
+
+\begin{Bem}
+    Lösungseindeutigkeit ist ohne weitere RBen nicht zu erwarten
+    ($u(x) + (c + dx)$ ist Lösung, wenn $u$ Lösung ist).
+    Lösungen der Laplace-Gleichung heißen auch \begriff{harmonisch}.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Rotationsinvarianz}
+    Seien $\Omega, f$ \begriff{rotationssymmetrisch},
+    d.\,h. es gibt ein $O \in \real^{d \times d} \setminus \{I_d\}$ orthogonal mit
+    $\Omega = O\Omega$ und $f = f \circ O$,
+    und $u \in \C^2(\Omega)$ eine klassische Lösung der Poisson-Gleichung.
+    Dann ist auch $v \in \C^2(\Omega)$ mit $v(x) := u(Ox)$ eine klassische Lösung.
+\end{Satz}
+
+\begin{Bem}
+    Es gilt \begriff{Translationsinvarianz}, d.\,h. ist
+    $t \in \real^d \setminus \{0\}$ mit $\Omega = \Omega + t$, $f(\cdot) = f(\cdot + t)$,
+    dann ist auch $v(x) := u(x + t)$ eine klassische Lösung.
+    Die Translations-/Rotationsinvarianz gilt insbesondere für die Laplace-Gleichung,
+    weil $f \equiv 0$ translations-/rotationsinvariant ist.
+\end{Bem}
+
+\subsubsection{%
+    Fundamentallösung der \name{Laplace}-Gleichung%
+}
+
+\begin{Bem}
+    Es soll eine explizite Lsg. $u \in \C^2(\Omega)$
+    für die Laplace-Gleichung hergeleitet werden, wobei $\Omega := \real^d \setminus \{0\}$.
+    Sei $u$ rot.symm., d.\,h. es gibt $v \in \C^2((0, \infty))$ mit
+    $u(x) = v(\norm{x})$ für alle $x \in \Omega$.
+    Dann folgt mit $r := \norm{x}$, dass
+    $\partial_{x_i} u(x) = v'(r) \cdot \frac{x_i}{r}$,
+    also $\partial_{x_i}^2 u(x) =
+    v''(r) \cdot \frac{x_i^2}{r^2} + v'(r) \cdot \frac{r - x_i^2/r}{r^2}$.
+    Ist $u$ harmonisch, so gilt
+    $0 = \Delta u(x) =
+    v''(r) + v'(r) \cdot \left(\frac{d}{r} - \frac{1}{r}\right)
+    = v''(r) + v'(r) \cdot \frac{d-1}{r}$,
+    womit man die DGL $v''(r) + v'(r) \cdot \frac{d-1}{r} = 0$ für $v(r)$ erhält.
+    Sei $v$ streng monoton, d.\,h. oBdA $v'(r) > 0$, dann bekommt man
+    $(\ln(v'(r)))' = \frac{v''(r)}{v'(r)} = \frac{1-d}{r}$.
+    Daraus folgt $\ln(v'(r)) = (1 - d)\ln(r) + \ln(a) = \ln(ar^{1-d})$
+    mit $a > 0$.
+    Man erhält die DGL $v'(r) = ar^{1-d}$ mit Lösung
+    $v(r) = ar + b$ für $d = 1$,
+    $v(r) = a\ln(r) + b$ für $d = 2$ und
+    $v(r) = \frac{a}{(2-d) r^{d-2}} + b$ für $d \ge 3$ mit $b \in \real$.
+\end{Bem}
+
+\linie
+
+\begin{Def}{Fundamentallösung}
+    Sei $\Omega := \real^d \setminus \{0\}$ mit $d > 1$.
+    Dann heißt die Funktion $\Phi \in \C^\infty(\Omega)$ mit
+    $\Phi(x) := -\frac{1}{2\pi} \cdot \ln(\norm{x})$ für $d = 2$ und
+    $\Phi(x) := \frac{1}{(d-2)\omega_d} \cdot \frac{1}{\norm{x}^{d-2}}$ für $d \ge 3$
+    \begriff{Fundamentallösung} der Laplace-Gleichung
+    mit $\omega_d := |\partial B_1(0)|$ der Oberfläche der Einheitssphäre in $\real^d$.
+\end{Def}
+
+\begin{Bem}
+    $\Phi$ hat in $0$ eine Singularität und ist eine klassische Lösung der Laplace-Gleichung.
+\end{Bem}
+
+\linie
+
+\begin{Lemma}{Eigenschaften von $\Phi$}
+    \begin{enumerate}
+        \item
+        $\forall_{\varepsilon>0}\; \int_{B_\varepsilon(0)} \Phi(x)\dx < \infty$,\quad
+        $\int_{B_\varepsilon(0)} \Phi(x)\dx \xrightarrow{\varepsilon \to 0} 0$
+        
+        \item
+        $\Phi \in L^1_\loc(\real^d)$
+        
+        \item
+        $\Phi(\varepsilon e_1) \varepsilon^{d-1} \xrightarrow{\varepsilon \to 0} 0$
+        
+        \item
+        $\forall_{\varepsilon>0}\;
+        \int_{\partial B_\varepsilon(0)} \nabla\Phi(x) \cdot n\dsigma(x) = -1$
+    \end{enumerate}
+\end{Lemma}
+
+\subsubsection{%
+    Faltungslösung der \name{Poisson}-Gleichung%
+}
+
+\begin{Satz}{Faltung und Dif{}ferentiation}
+    Seien $u \in L^1_\loc(\real^d)$ und $\phi \in \C^m_0(\real^d)$.\\
+    Dann gilt für die \begriff{Faltung} $u \ast \phi$ mit
+    $(u \ast \phi)(x) := \int_{\real^d} u(x-y)\phi(y) \dy
+    = \int_{\real^d} u(y)\phi(x-y) \dy$, dass
+    $u \ast \phi \in \C^m(\real^d)$ mit
+    $\forall_{|\beta| \le m}\; \partial^\beta (u \ast \phi) = u \ast \partial^\beta \phi$.
+\end{Satz}
+
+\begin{Satz}{Faltungslösung}
+    Seien $\Omega := \real^d$ mit $d \ge 2$ und $f \in \C^2_0(\Omega)$.\\
+    Dann ist $u := \Phi \ast f$ eine klassische Lösung der Poisson-Gleichung.
+\end{Satz}
+
+\pagebreak
+
+\subsubsection{%
+    Mittelwerteigenschaft/Maximumprinzip harm. Funktionen%
+}
+
+\begin{Def}{Mittelwert}
+    Für $K \subset \real^d$ mit $0 < |K| < \infty$ und $u \in L^1(K)$ ist
+    $\fint_K u(x) \dx := \frac{1}{|K|} \int_K u(x) \dx$
+    der \begriff{Mittelwert} von $u$ auf $K$.
+    Analog ist für $0 < |\partial K| < \infty$ und $u \in L^1(\partial K)$
+    der Mittelwert von $u$ auf $\partial K$ definiert durch
+    $\fint_{\partial K} u(x) \dsigma(x) :=
+    \frac{1}{|\partial K|} \int_{\partial K} u(x) \dsigma(x)$.
+\end{Def}
+
+\begin{Satz}{Mittelwerte harm. Fkt.en}\\
+    Seien $u \in \C^2(\Omega)$ harmonisch, $x \in \Omega$ und $r > 0$ mit
+    $\overline{B_r(x)} \subset \Omega$.\\
+    Dann ist $\fint_{B_r(y)} u(y) \dy = u(x) = \fint_{\partial B_r(x)} u(y) \dsigma(y)$.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{Maximumprinzip für harm. Fkt.en}\\
+    Seien $\Omega \subset \real^d$ of"|fen und beschränkt sowie
+    $u \in \C^2(\overline{\Omega})$ harmonisch.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $u$ nimmt das Maximum auf dem Rand an, d.\,h.
+        $\max_{x \in \overline{\Omega}} u(x) = \max_{x \in \partial\Omega} u(x)$.
+        
+        \item
+        Wenn $\Omega$ zusammenhängend ist und $\exists_{x \in \Omega}\;
+        u(x) = \max_{y \in \overline{\Omega}} u(y)$, dann ist $u$ konstant auf $\Omega$.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bem}
+    Analog gelten folgende Verallgemeinerungen.
+    \begin{itemize}
+        \item
+        \begriff{verallg. Max.prinzip}:\\
+        Für $u \in \C^2(\Omega) \cap \C^0(\overline{\Omega})$ mit $-\Delta u = f \le 0$
+        nimmt $u$ das Maximum auf dem Rand an.
+        
+        \item
+        \begriff{verallg. Min.prinzip}:
+        wie eben mit $-\Delta u = f \ge 0$ und Minimum
+        
+        \item
+        \begriff{Vergleichsprinzip}:
+        Für $u, v \in \C^2(\Omega) \cap \C^0(\overline{\Omega})$ mit $-\Delta u \le -\Delta v$ in
+        $\Omega$ und $u \le v$ auf $\partial\Omega$ gilt $u \le v$ in $\Omega$
+        (wähle $w := u - v$ im verallg. Max.prinzip).
+    \end{itemize}
+\end{Bem}
+
+\subsubsection{%
+    Eindeutigkeit und stetige Abhängigkeit beim \name{Poisson}-RWP%
+}
+
+\begin{Satz}{Eindeutigkeit}
+    Seien $\Omega \subset \real^d$ of"|fen und beschränkt, $g \in \C^0(\partial\Omega)$ und
+    $f \in \C^0(\Omega)$.\\
+    Dann gibt es höchstens eine Lösung $u \in \C^2(\Omega) \cap \C^0(\overline{\Omega})$ des
+    \begriff{\name{Poisson}-RWPs}\\
+    $-\Delta u = f$ in $\Omega$ und $u = g$ auf $\partial\Omega$.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{st. Abh. von Randdaten}
+    Seien $u, u' \in \C^2(\Omega) \cap \C^0(\overline{\Omega})$ Lsg.en des Poisson-RWPs
+    mit identischem $f \in \C^0(\Omega)$, aber unterschiedlichem $g, g' \in \C^0(\partial\Omega)$.
+    Dann gilt $\norm{u - u'}_\infty \le \norm{g - g'}_\infty$.
+\end{Satz}
+
+\begin{Satz}{st. Abh. von rechter Seite}
+    Seien $u, u' \in \C^2(\Omega) \cap \C^0(\overline{\Omega})$ Lösungen des Poisson-RWPs
+    mit identischem
+    $g \in \C^0(\partial\Omega)$, aber unterschiedlichem
+    $f, f' \in \C^0(\Omega)$.\\
+    Dann gilt $\norm{u - u'}_\infty \le C \norm{f - f'}_\infty$
+    mit $C := \frac{R^2}{2}$ und $R := \sup_{x \in \Omega} \norm{x}$.
+\end{Satz}
+
+\subsubsection{%
+    Regularität%
+}
+
+\begin{Satz}{$\C^\infty$-Regularität}
+    Seien $\Omega := \real^d$ und $u \in \C^2(\Omega)$ harmonisch.
+    Dann ist $u \in \C^\infty(\Omega)$.
+\end{Satz}
+
+\linie
+
+\begin{Def}{$\varepsilon$-Glättungskern}
+    Sei $\eta \in \C^\infty_0(\real^d)$ definiert durch
+    $\eta(x) := c \exp\!\left(\frac{1}{\norm{x}^2 - 1}\right)$ für $\norm{x} < 1$ und
+    $\eta(x) := 0$ sonst, wobei $c \in \real$ mit $\int_{\real^n} \eta(x) \dx = 1$.\\
+    Dann ist für $\varepsilon > 0$ der \begriff{$\varepsilon$-Glättungskern}
+    $\eta_\varepsilon \in \C^\infty_0(\real^d)$ definiert durch
+    $\eta_\varepsilon(x) := \frac{1}{\varepsilon^d} \eta(x/\varepsilon)$.
+\end{Def}
+
+\begin{Bem}
+    Es gilt $\int_{\real^d} \eta_\varepsilon(x) \dx = 1$ und
+    $\supp(\eta_\varepsilon) = \overline{B_\varepsilon(0)}$.
+\end{Bem}
+
+\begin{Def}{\name{Friedrichs}glättung}
+    Für $u \in L^1_\loc(\real^d)$ und $\varepsilon > 0$ heißt
+    $u_\varepsilon := u \ast \eta_\varepsilon$ \begriff{\name{Friedrichs}glättung}.
+\end{Def}
+
+\begin{Lemma}{Glättungseigenschaft}
+    Es gilt $u_\varepsilon \in \C^\infty(\real^d)$.
+\end{Lemma}
+
+\pagebreak
+
+\subsection{%
+    Dif"|fusionsgleichung/Wärmeleitungsgleichung%
+}
+
+\subsubsection{%
+    Gleichung%
+}
+
+\begin{Def}{Dif"|fusionsgleichung/instat. Wärmeleitungsgleichung}\\
+    Für $\Omega \subset \real^d$, $T \in (0, \infty]$ und $\Omega_T := \Omega \times (0, T)$
+    heißt $\partial_t u - \Delta u = 0$ in $\Omega_T$
+    \begriff{Dif"|fusionsgleichung} oder \begriff{instat. Wärmeleitungsgleichung}.
+\end{Def}
+
+\begin{Bem}\\
+    Für $\Omega = \real^d$ betrachtet man das Cauchy-Problem (AWP) mit Anfangswerten
+    $u(\cdot, 0) = u_0$ in $\Omega$ und
+    für $\Omega \subsetneqq \real^d$ das ARWP
+    $u(\cdot, 0) = u_0$ in $\Omega$ und
+    $u(x, t) = g(x, t)$ für $(x, t) \in \partial\Omega \times (0, T)$.\\
+    Ebenfalls möglich ist $\partial_t u - \Delta u = f$ in $\Omega_T$ (inhomogene Gleichung).
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Skalierungsinvarianz}\\
+    Seien $\Omega := \real^d$, $T := \infty$ und $u \in \C^2(\Omega_T)$ eine klassische
+    Lösung der Dif"|fusionsgleichung.\\
+    Dann ist für $\lambda \in \real$ auch $u_\lambda$ eine klassische Lösung
+    mit $u_\lambda(x, t) := u(\lambda x, \lambda^2 t)$.
+\end{Satz}
+
+\subsubsection{%
+    Fundamentallösung/Faltungslösung der Dif"|fusionsgleichung%
+}
+
+\begin{Bem}
+    Die Fundamentallösung soll rot.inv. und \begriff{selbstähnlich}
+    ($u(x, t) = C(t, \lambda) u(\lambda x, \lambda^2 t)$) sein und die
+    \begriff{Erhaltungseigenschaft} $\forall_{t > 0}\; \int_{\real^d} u(x, t) \dx = 1$ erfüllen.
+    Dafür ist der Ansatz $u(x, t) := \gamma(t) v(\frac{\norm{x}^2}{t})$ mit $\gamma(t) > 0$
+    geeignet (selbstähnlich mit $C(t, \lambda) := \frac{\gamma(t)}{\gamma(\lambda^2 t)}$).
+    $\gamma$ ergibt sich aus
+    $1 = \gamma(t) \int_{\real^d} v(\frac{\norm{x}^2}{t}) \dx = \gamma(t) t^{d/2} C_v$ mit
+    $C_v := \int_{\real^d} v(\norm{x'}^2) \dx'$.
+    Für $v$ benutzt man die PDE, also
+    $\partial_t u(x, t) = \gamma'(t) v(s) - \gamma(t) v'(s) \frac{s}{t}$,
+    $\partial_{x_i} u(x, t) = \gamma(t) v'(s) \frac{2x_i}{t}$,
+    $\partial_{x_i}^2 u(x, t) = \gamma(t) \cdot (v'(s) \frac{2}{t} + v''(s) \frac{4x_i^2}{t^2})$
+    und somit $0 = \partial_t u(x, t) - \Delta u(x, t)
+    = \gamma(t) (-v'(s) \frac{s}{t} - v'(s) \frac{2d}{t} - v''(s) \frac{4s}{t}) + \gamma'(t) v(s)$
+    mit $s := \frac{\norm{x}^2}{t}$.
+    Durch Einsetzen von $\gamma(t)$ und $\gamma'(t) = -\frac{d}{2C_v t^{d/2+1}}$ erhält man
+    $0 = \frac{d}{2} v(s) + (s + 2d) v'(s) + 4s v''(s)$.
+    Diese ODE für $v$ löst man mit dem Ansatz $v(s) := be^{as}$ mit $a, b \in \real$.
+    Man bekommt dann $0 = v(s) \cdot (s \cdot (4a + 1)a + (2a + \frac{1}{2})d)
+    \iff a = -\frac{1}{4}$, also $v(s) = be^{-s/4}$.
+    Es gilt daher\\
+    $C_v = \int_{\real^d} be^{-\norm{x}^2/4} \dx = b (4\pi)^{d/2}$ sowie
+    $\gamma(t) = \frac{1}{b(4\pi t)^{d/2}}$ und
+    $u(x, t) = \frac{1}{(4\pi t)^{d/2}} e^{-\norm{x}^2/(4t)}$.
+\end{Bem}
+
+\linie
+
+\begin{Def}{Fundamentallösung}
+    Seien $\Omega := \real^d$ und $T := \infty$.
+    Dann heißt die Funktion $\Phi \in \C^\infty(\Omega_T)$ mit
+    $\Phi(x, t) := \frac{1}{(4\pi t)^{d/2}} e^{-\norm{x}^2/(4t)}$
+    \begriff{Fundamentallösung} der Dif"|fusionsgleichung/\begriff{Wärmeleitungskern}.
+\end{Def}
+
+\begin{Bem}
+    $\Phi$ ist eine klassische Lösung der Wärmeleitungsgleichung und erfüllt\\
+    $\forall_{t > 0}\; \int_{\real^d} \Phi(x, t) \dx = 1$ (\begriff{Erhaltungseigenschaft}) sowie
+    $\forall_{\beta \in \natural_0^{d+1}} \forall_{\delta > 0}\;
+    \partial^\beta \Phi \in L^\infty(\Omega \times [\delta, \infty))$.\\
+    Allerdings gilt $\lim_{t \to 0} \Phi(x, t) = 0$ für $x \not= 0$, aber
+    $\lim_{t \to 0} \Phi(0, t) = \infty$, d.\,h. $\Phi \notin \C^0(\overline{\Omega_T})$.
+    Insbesondere ist $\Phi$ keine klassische Lösung des AWPs
+    (erfüllt Anfangswert $\delta_0$ im Distributionssinn).
+    Eine klassische Lösung des AWPs erhält man mittels Faltung.
+\end{Bem}
+
+\begin{Satz}{Faltungslösung}\\
+    Seien $\Omega := \real^d$, $T := \infty$,
+    $u_0 \in L^\infty(\Omega)$ sowie $u\colon \Omega_T \to \real$ mit
+    $u(\cdot, t) := \Phi(\cdot, t) \ast u_0$.
+    Dann gilt
+    \begin{enumerate}
+        \item
+        $u \in \C^\infty(\Omega_T)$,
+        
+        \item
+        $u$ klassische Lösung der Wärmeleitungsgleichung und
+        
+        \item
+        für $u_0 \in \C^0(\real^d)$, dass $\forall_{\overline{x} \in \Omega}\;
+        \lim_{(x, t) \to (\overline{x}, 0)} u(x, t) = u_0(\overline{x})$.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bem}
+    Teil \emph{(1)} gilt z.\,B. auch, wenn $u_0$ unstetig ist.
+    Dies nennt man den \begriff{glättenden/regula"-risierenden Ef"|fekt} der
+    Dif"|fusionsgleichung.\\
+    Wegen $u(x, t) = \int_{\real^d} \Phi(x - y, t) u_0(y) \dy$ und $\Phi(x, t) > 0$ für alle
+    $(x, t) \in \Omega_T$ trägt jeder Punktwert $u_0(x)$ zu jedem späteren Wert $u(x', t)$
+    für $t > 0$ bei,
+    insbesondere auch, wenn $x'$ beliebig weit von $x$ entfernt und $t$ beliebig klein ist.
+    Man nennt dies \begriff{unendliche Ausbreitungsgeschwindigkeit}.
+\end{Bem}
+
+\pagebreak
+
+\subsubsection{%
+    Eigenschaften der Lösung%
+}
+
+\begin{Satz}{$L^\infty$-Beschränktheit}
+    Seien $\Omega := \real^d$ und $u$ die Faltungslösung für die Anfangswerte $u_0$.\\
+    Dann gilt $\forall_{t > 0}\;
+    \norm{u(\cdot, t)}_{L^\infty(\Omega)} \le \norm{u_0}_{L^\infty(\Omega)}$.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{Eindeutigkeit für ARWPs}
+    Sei $\Omega \subset \real^d$ ein Lipschitz-Gebiet.\\
+    Dann gibt es höchstens eine klassische Lösung des inhomogenen ARWPs\\
+    $\partial_t u - \Delta u = f$ in $\Omega_T$,
+    $u(\cdot, 0) = u_0$ in $\Omega$ und $u(x, t) = g(x, t)$ auf $\partial\Omega \times (0, T)$.
+\end{Satz}
+
+\begin{Bem}
+    Die Aussage gilt ähnlich auch für Neumann-/Robin-RBen, aber sie sagt nichts über Existenz
+    von Lösungen aus
+    (z.\,B. mindestens Stetigkeit und Kompatibilität von $u_0$ und $g$ erforderlich).
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Maximumprinzip}
+    Sei u eine klassische Lösung des ARWPs
+    $\partial_t u - \Delta u = 0$ in $\Omega_T$,\\
+    $u(\cdot, 0) = u_0$ in $\Omega$ und $u(x, t) = g(x, t)$ auf $\partial\Omega \times (0, T)$.\\
+    Dann nimmt $u$ sein Maximum (und Minimum) auf dem
+    \begriff{parabolischen Rand}\\
+    $\Gamma := (\Omega \times \{0\}) \cup (\partial\Omega \times [0, T])$ an.
+\end{Satz}
+
+\subsubsection{%
+    Konvergenz gegen die stationäre Lösung%
+}
+
+\begin{Satz}{\name{Poincaré}-Ungleichung}
+    Sei $\Omega \subset \real^d$ ein Lipschitz-Gebiet.
+    Dann gibt es eine kleinste
+    \begriff{\name{Poincaré}-Konstante} $c_p = c_p(\Omega) > 0$ mit
+    $\forall_{w \in \C^1_0(\Omega)}\;
+    \int_\Omega w(x)^2 \dx \le c_p \int_\Omega \norm{\nabla w(x)}^2 \dx$\\
+    (oder kurz $\norm{w}_{L^2(\Omega)}^2 \le c_p \norm{\nabla w}_{L^2(\Omega)}^2$).
+\end{Satz}
+
+\begin{Bem}
+    Die Poincaré-Ungleichung gilt bereits für $w \in \C^1(\Omega)$ mit $w|_{\partial\Omega} = 0$.\\
+    Hat $w$ keine Nullrandwerte, dann gilt die Poincaré-Ungleichung i.\,A. nicht mehr.
+    Setzt man z.\,B. $w(x) :\equiv c$ mit $c \not= 0$,
+    dann ist $\int_\Omega w(x)^2 \dx = c^2 |\Omega| > 0$, aber
+    $\int_\Omega \norm{\nabla w(x)}^2 \dx = 0$.\\
+    Ein Beweis für $\Omega = (0, 1)$ sieht wie folgt aus:
+    Es gilt $w(x) = \int_0^x w'(\xi) \dxi$, weil $w(0) = 0$.
+    Nach Cauchy-Schwarz folgt
+    $|w(x)|^2 = |\int_0^x 1 \cdot w'(\xi) \dxi|^2
+    \le (\int_0^x |1|^2 \dxi) \cdot (\int_0^x |w'(\xi)|^2 \dxi)$\\
+    $\le x \cdot (\int_0^1 |w'(\xi)|^2 \dxi)$.
+    Durch Integration folgt
+    $\int_0^1 |w(x)|^2 \dx \le (\int_0^1 x \dx) \cdot (\int_0^1 |w'(\xi)|^2 \dxi)$\\
+    $= \frac{1}{2} \int_0^1 |w'(\xi)|^2 \dxi$,
+    also ist $c_p \le \frac{1}{2}$ für $\Omega = (0, 1)$.
+    (Genauer gilt $c_p = \frac{1}{\pi^2}$.)
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Konvergenz gegen stationäre Lösung}\\
+    Seien $\Omega \subset \real^d$ ein Lipschitz-Gebiet,
+    $f$, $g$ zeitunabhängig,
+    $u(x, t)$ klassische Lösung des inhomogenen ARWPs
+    $\partial_t u - \Delta u = f$ in $\Omega_T$,
+    $u(\cdot, 0) = u_0$ in $\Omega$ und $u(x, t) = g$ auf $\partial\Omega \times (0, T)$
+    sowie\\
+    $\overline{u}(x)$ klassische Lösung des \begriff{stat. \name{Poisson}-Problems}
+    $-\Delta\overline{u} = f$ in $\Omega$ und $\overline{u} = g$ auf $\partial\Omega$.\\
+    Dann konvergiert $u$ exp. gegen $\overline{u}$, genauer
+    $\forall_{t \in (0, T)}\; \norm{u(\cdot, t) - \overline{u}}_{L^2(\Omega)}^2 \le
+    e^{-2t/c_p} \norm{u_0 - \overline{u}}_{L^2(\Omega)}^2$\\
+    mit $c_p = c_p(\Omega)$ der Poincaré-Konstanten von $\Omega$.
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Man kann die Dif"|fusionsgleichung auch verallgemeinern.
+    Ist $D > 0$ die \begriff{Dif"|fusions"-konstante}, dann betrachtet man
+    $\partial_t u - D\Delta u = 0$.
+    Die \begriff{allgemeine Fundamentallösung} ist dann
+    $u(x, t) := \frac{1}{(4\pi Dt)^{d/2}} \exp(-\frac{\norm{x}^2}{4Dt})$.
+    Die Aussage über die Konvergenz gegen die stationäre Lösung wird zu
+    $\forall_{t > 0}\; \norm{u(\cdot, t) - \overline{u}}_{L^2(\Omega)}^2 \le
+    e^{-2Dt/c_p} \norm{u_0 - \overline{u}}_{L^2(\Omega)}^2$.
+    Ist also $D > 1$, dann ist die Fundamentallösung stärker glättend bzw.
+    die Lösung fällt schneller gegen die stationäre Lösung ab.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Wellengleichung%
+}
+
+\subsubsection{%
+    Gleichung%
+}
+
+\begin{Def}{Wellengleichung}\\
+    Für $\Omega := \real^d$, $T \in (0, \infty]$, $\Omega_T := \Omega \times (0, T)$,
+    $c > 0$ und Anfangswerte $u_0 \in \C^2(\Omega), v_0 \in \C^1(\Omega)$ heißt
+    das Problem, ein $u \in \C^2(\Omega_T) \cap \C^1(\overline{\Omega_T})$ zu finden mit
+    $\partial_t^2 u - c^2 \Delta u = 0$ in $\Omega_T$,
+    $u(\cdot, 0) = u_0$ in $\Omega$ und
+    $\partial_t u(\cdot, 0) = v_0$ in $\Omega$,
+    \begriff{\name{Cauchy}-Problem für die Wellengleichung}.
+\end{Def}
+
+\begin{Bem}
+    Für $c = 1$ ist die Gleichung \emph{nicht} äquivalent zu $-\Delta_{(x,t)} u = 0$,
+    weil das Vorzeichen von $\partial_t^2 u$ umgekehrt ist.
+\end{Bem}
+
+\subsubsection{%
+    1D-Lösung für \texorpdfstring{$v_0 = 0$}{v₀ = 0} oder \texorpdfstring{$u_0 = 0$}{u₀ = 0}%
+}
+
+\begin{Bem}
+    Im Folgenden wird eine Lösung für $d = 1$ konstruiert.
+    Zunächst wird die PDE umgeschrieben in ein System 1. Ordnung.
+    Dazu seien $w_1 := \partial_t u$ und $w_2 := \partial_x u$.\\
+    Es gilt $\partial_t w_1 - c^2 \partial_x w_2 = 0$,
+    wobei $w_1(\cdot, 0) = v_0$ und $w_2(\cdot, 0) = \partial_x u_0 = u_0'$ in $\Omega$.\\
+    Mit $w := \smallpmatrix{w_1\\w_2}$, $A := \smallpmatrix{0&-c^2\\-1&0}$ und
+    $w_0 := \smallpmatrix{v_0\\u_0'}$ ergibt sich
+    $\partial_t w + A \partial_x w = 0$, $w(\cdot, 0) = w_0$ in $\Omega$,
+    weil $\partial_x w_1 = \partial_t w_2$ (wegen $u \in \C^2(\Omega_T)$).\\
+    $A$ ist diagonalisierbar mit $A = R\Lambda R^{-1}$ sowie
+    $\Lambda := \smallpmatrix{-c&0\\0&c}$,
+    $R := \smallpmatrix{c&-c\\1&1}$ und $R^{-1} = \frac{1}{2c} \smallpmatrix{1&c\\-1&c}$.\\
+    Durch die Koordinatentransformation $z := R^{-1} w$ erhält man
+    $\partial_t Rz + R\Lambda R^{-1} \partial_x Rz = 0$ und $z(\cdot, 0) = z_0$ in $\Omega$
+    mit $z_0 = \smallpmatrix{z_{0,1}\\z_{0,2}} := R^{-1} w_0$.
+    Multipliziert man von links mit $R^{-1}$, so bekommt man
+    $\partial_t z + \Lambda \partial_x z = 0$ und $z(\cdot, 0) = z_0$ in $\Omega$.
+    Ausgeschrieben erhält man also zwei entkoppelte Advektionsgleichungen
+    $\partial_t z_1 - c \partial_x z_1 = 0$,
+    $z_1(\cdot, 0) = z_{0,1}$ sowie
+    $\partial_t z_2 + c \partial_x z_2 = 0$,
+    $z_2(\cdot, 0) = z_{0,2}$.\\
+    Mittels der Methode der Charakteristiken kann man eine explizite Lösung ermitteln als\\
+    $z(x, t) = \smallpmatrix{z_{0,1} (x - (-c)t)\\z_{0,2} (x - ct)}
+    = \smallpmatrix{z_{0,1} (x + ct)\\z_{0,2} (x - ct)}$,
+    wobei $z_0 = R^{-1} w_0 =
+    \frac{1}{2c} \smallpmatrix{w_{0,1} + cw_{0,2}\\-w_{0,1} + cw_{0,2}}$.\\
+    Man erhält
+    $z(x, t) = \frac{1}{2c} \smallpmatrix{w_{0,1} (x + ct) + cw_{0,2} (x + ct)\\
+    -w_{0,1} (x - ct) + cw_{0,2} (x - ct)}$ bzw.
+    $w(x, t) = \frac{1}{2c} \smallpmatrix{c&-c\\1&1}
+    \smallpmatrix{v_0 (x + ct) + c u_0' (x + ct)\\-v_0 (x - ct) + c u_0' (x - ct)}$.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    \begin{itemize}
+        \item
+        \textbf{Spezialfall: $v_0 = 0$}\\
+        In diesem Fall ist
+        $w(x, t) = \frac{1}{2} \smallpmatrix{cu_0'(x+ct) - cu_0'(x-ct)\\u_0'(x+ct) + u_0'(x-ct)}$,
+        also $\partial_x u(x, t) = \frac{1}{2} (u_0'(x+ct) + u_0'(x-ct))$ und damit
+        $u(x, t) = \frac{1}{2} (u_0(x+ct) + u_0(x-ct)) + K(t)$ mit geeignetem $K(t) \in \real$.
+        Für $t = 0$ erhält man $u_0(x) = u(x, 0) = u_0(x) + K(0) \iff K(0) = 0$.
+        Für $t > 0$ erhält man durch $\partial_t$ auf $u(x, t)$, dass
+        $\frac{\d}{\dt} K(t) = \partial_t u(x, t) - \frac{c}{2} (u_0'(x+ct) - u_0'(x-ct))
+        = \partial_t u(x, t) - w_1(x, t) \equiv 0$,
+        d.\,h. $K(t) \equiv 0$.\\
+        Somit ist $u(x, t) = \frac{1}{2} (u_0(x+ct) + u_0(x-ct))$ eine notwendige Bedingung
+        für die Lösung, die auch hinreichend ist (Überprüfung durch Einsetzen in PDE).
+        Damit ist eine eindeutige Lösung für $v_0 = 0$ gefunden.
+        
+        \item
+        \textbf{Spezialfall: $u_0 = 0$}\\
+        In diesem Fall ist
+        $w(x, t) = \frac{1}{2c} \smallpmatrix{cv_0(x+ct) + cv_0(x-ct)\\v_0(x+ct) - v_0(x-ct)}$,
+        also $\partial_x u(x, t) = \frac{1}{2c} (v_0(x+ct) - v_0(x-ct))$ und damit
+        $u(x, t) = \frac{1}{2c} \left(\int_0^{x+ct} v_0(s) \ds - \int_0^{x-ct} v_0(s) \ds\right)
+        + K(t)$ mit geeignetem $K(t) \in \real$,
+        weil aus $g(x) := \int_0^{z(x)} v_0(s) \ds$ folgt $g'(x) = z'(x) v_0(z(x))$.\\
+        Für $t = 0$ erhält man $0 = u_0(x) = u(x, 0) = 0 + K(0) \iff K(0) = 0$.
+        Für $t > 0$ erhält man durch $\partial_t$ auf $u(x, t)$, dass
+        $\frac{\d}{\dt} K(t) = \partial_t u(x, t) - \frac{1}{2c} (c v_0(x+ct) - (-c) v_0(x-ct))$\\
+        $= \partial_t u(x, t) - \frac{1}{2} (v_0(x+ct) + v_0(x-ct))
+        = \partial_t u(x, t) - w_1(x, t) \equiv 0$,
+        d.\,h. $K(t) \equiv 0$.\\
+        Somit ist $u(x, t) = \frac{1}{2c} \int_{x-ct}^{x+ct} v_0(s) \ds$ eine notwendige Bedingung
+        für die Lösung, die ebenfalls wieder hinreichend ist.
+        Damit ist eine eindeutige Lösung für $u_0 = 0$ gefunden.
+    \end{itemize}
+\end{Bem}
+
+\pagebreak
+
+\subsubsection{%
+    \name{d'Alembert}sche Formel für 1D%
+}
+
+\begin{Satz}{Ex. + Eind., \name{d'Alembert}sche Formel für $d = 1$}
+    Für $\Omega := \real$ ist die eindeutige klassische Lösung des AWPs gegeben durch
+    $u(x, t) = \frac{1}{2} (u_0(x+ct) - u_0(x-ct)) + \frac{1}{2c} \int_{x-ct}^{x+ct} v_0(s) \ds$.
+\end{Satz}
+
+\begin{Bem}\\
+    Die Notwendigkeit von $u_0 \in \C^2(\Omega)$ und $v_0 \in \C^1(\Omega)$ wird jetzt klar,
+    denn dann gilt $u \in \C^2(\Omega)$.\\
+    Die Wellengleichung hat keinen regularisierenden Ef"|fekt, da $u$ nicht glatter
+    als die Anfangsdaten.\\
+    Für $d > 1$ gibt es ebenfalls Lösungsformeln (die allerdings viel komplizierter sind).
+\end{Bem}
+
+\begin{Bem}
+    \begriff{Stehende Wellen}, die man z.\,B. bei schwingenden Saiten beobachten kann,
+    lassen sich mit der d'Alembertschen Formel erklären.
+    Mit $u_0(x) := \sin(\omega t)$ für ein $\omega \not= 0$ und $v_0 :\equiv 0$
+    erhält man $u(x, t) = \frac{1}{2} (\sin(\omega(x+ct)) + \sin(\omega(x-ct)))
+    = \sin(\omega x) \cos(\omega ct)$ (mit dem Additionstheorem),
+    d.\,h. eine Überlagerung zweier laufender Sinuswellen ergibt eine stehende Welle,
+    denn für $\omega x \in \pi\integer$ ist $u(x, t) = 0$ für alle $t \ge 0$.
+\end{Bem}
+
+\subsubsection{%
+    Eigenschaften der 1D-Lösung%
+}
+
+\begin{Satz}{$L^\infty$-Stabilität}
+    Seien $\Omega := \real$, $u_0 \in \C^2(\Omega) \cap L^\infty(\Omega)$ und
+    $v_0 \in \C^1(\Omega) \cap L^1(\Omega)$.\\
+    Dann erfüllt die Lösung $u$ des AWPs
+    $\forall_{t \ge 0}\; \norm{u(\cdot, t)}_{L^\infty(\Omega)} \le \norm{u_0}_{L^\infty(\Omega)} +
+    \frac{1}{2c} \norm{v_0}_{L^1(\Omega)}$.
+\end{Satz}
+
+\begin{Bem}
+    Es gilt kein Max.prinzip, denn trotz $u_0 = 0$ kann $u(\cdot, t) \not= 0$ gelten
+    (wenn $v_0 \not= 0$).
+\end{Bem}
+
+\begin{Satz}{st. Abh. von Anfangsdaten}
+    Seien $\Omega := \real$, $u, \overline{u}$ Lösungen des AWPs mit identischem $c$,
+    aber unterschiedlichem $u_0, \overline{u_0} \in \C^2(\Omega) \cap L^\infty(\Omega)$ und
+    $v_0, \overline{v_0} \in \C^1(\Omega) \cap L^1(\Omega)$.\\
+    Dann gilt $\exists_{C > 0} \forall_{t \ge 0}\;
+    \norm{u(\cdot, t) - \overline{u}(\cdot, t)}_{L^\infty(\Omega)}
+    \le C \left(\norm{u_0 - \overline{u_0}}_{L^\infty(\Omega)} +
+    \norm{v_0 - \overline{v_0}}_{L^1(\Omega)}\right)$.
+\end{Satz}
+
+\begin{Bem}
+    Wie bei der Advektionsgleichung gibt es keine stetige Abh. bzgl. $c$ in der
+    $L^\infty$-Norm.
+\end{Bem}
+
+\linie
+
+\begin{Def}{Abhängigkeitskegel}
+    Seien $\Omega := \real$ und $(x_0, t_0) \in \Omega_T$.\\
+    Dann ist der \begriff{Abhängigkeitskegel} von $(x_0, t_0)$ definiert
+    durch\\
+    $C := \{(x, t) \in \Omega_T \;|\; t \in [0, t_0],\; |x - x_0| \le c(t_0 - t)\}$.
+\end{Def}
+
+\begin{Satz}{Abhängigkeitskegel}
+    Seien $\Omega := \real$, $(x_0, t_0) \in \Omega_T$ und $C$ der Abhängigkeitskegel von
+    $(x_0, t_0)$.
+    Dann folgt aus $\forall_{x \in \Omega,\, |x - x_0| \le ct_0}\; u_0(x) = v_0(x) = 0$,
+    dass $u|_C \equiv 0$.
+\end{Satz}
+
+\begin{Bem}
+    Umgekehrt kann man sagen, dass der Anfangswert $u_0(x_0)$ im Punkt $x_0 \in \Omega$ die
+    Lösungswerte $u(x, t)$ nur für $t \ge 0$ und $|x - x_0| \le ct$ beeinflusst.
+    Information breitet sich also nur mit endlicher Geschwindigkeit $c$ aus
+    (im Gegensatz zur Dif"|fusionsgleichung).
+\end{Bem}
+
+\subsubsection{%
+    Eindeutigkeit für das inhomogene ARWP für \name{Lipschitz}-Gebiete%
+}
+
+\begin{Satz}{Eindeutigkeit}
+    Seien $\Omega \subset \real^d$ ein Lipschitz-Gebiet, $\Omega_T := \Omega \times (0, T)$,
+    $c > 0$, $f\colon \Omega_T \to \real$, $g\colon \partial\Omega \times (0, T) \to \real$,
+    $u_0, v_0\colon \Omega \to \real$ und das ARWP
+    $\partial_t^2 u - c^2 \Delta u = f$ in $\Omega_T$,
+    $u(\cdot, 0) = u_0$ in $\Omega$,
+    $\partial_t u(\cdot, 0) = v_0$ in $\Omega$ und
+    $u(x, t) = g(x, t)$ auf $\partial\Omega \times (0, T)$ gegeben.\\
+    Dann gibt es höchstens eine Lösung $u \in \C^2(\Omega_T) \cap \C^1(\overline{\Omega_T})$
+    des ARWPs.
+\end{Satz}
+
+\begin{Bem}
+    Ohne weitere Forderungen an die Daten (Regularität, Kompatibilität) kann man keine
+    Existenzaussage beweisen.
+    Die Anfangsdaten müssen sowohl für $u$ als auch für $\partial_t u$ vorgegeben werden,
+    wogegen die Randdaten nur für eines von beiden vorgegeben werden dürfen,
+    weil das ARWP sonst überbestimmt ist.
+\end{Bem}
+
+\pagebreak
+
+\subsubsection{%
+    Herleitung durch Linearisierung der \name{Euler}-Gleichungen%
+}
+
+\begin{Bem}
+    Die Wellengleichung kann auch aus den \begriff{\name{Euler}-Gleichungen}
+    (beschreiben Strömungen in reibungsfreien Fluiden) hergeleitet werden,
+    die man z.\,B. in der Akustik verwendet.
+    Nimmt man an, dass man Schallwellen modellieren will und die Luft ein isothermes Gas ist,
+    sich also durch die Druckschwankungen nicht aufwärmt, so lauten die Euler-Gleichungen
+    $\partial_t \varrho + \div_x(\varrho v) = 0$ (\begriff{Massenerhaltung}) und
+    $\partial_t v + (v \cdot \nabla) v + \frac{1}{\varrho} \nabla p(\varrho) = 0$
+    (\begriff{Impulserhaltung})
+    mit den Unbekannten $\varrho\colon \Omega \to \real$ (Dichte) und
+    $v\colon \Omega \to \real^d$ (Geschwindigkeit),
+    wobei\\
+    $(v \cdot \nabla) v := (\sum_{i=1}^d v_i \partial_{x_i} v_j)_{j=1}^d$.
+    Der Druck $p(\varrho)$ wird meist als \begriff{Zustandsgleichung} problemabhängig
+    vorgeschrieben (für ein ideales Gas mit adiabatischen NBen kann man z.\,B.
+    $p(\varrho) := K \varrho^\gamma$ mit $K, \gamma > 0$ nehmen).
+    
+    Wenn man annimmt, dass die Dichte nur kleine Schwankungen um den Mittelwert
+    $\varrho \in \real^+$ erfährt, also $\varrho = \varrho_0 (1 + g)$ mit "`kleinem"'
+    $g, \nabla g, v, \div(v)$, so kann man die quadratischen Terme
+    $g\div(v), v \nabla g, (v \cdot \nabla) v$ vernachlässigen.
+    
+    Eingesetzt in die Massenerhaltung bekommt man
+    $\varrho_0 (\partial_t g + \div((1 + g) v)) = 0$\\
+    $\iff \partial_t g + (1 + g) \div(v) + v \nabla g = 0
+    \iff \partial_t g + \div(v) + \cancel{g \div(v)} + \cancel{v \nabla g} = 0
+    \iff \partial_t g + \div(v) = 0$.
+    
+    Für die Impulserhaltung approximiert man
+    $\frac{1}{\varrho} \nabla p(\varrho)
+    = \frac{\nabla p(\varrho_0 (1 + g))}{\varrho_0 (1 + g)}
+    \approx \frac{p'(\varrho_0) \nabla g}{\varrho_0}$
+    und erhält so durch Einsetzen
+    $\partial_t v + \cancel{(v \cdot \nabla) v} + \frac{p'(\varrho_0) \nabla g}{\varrho_0}
+    = 0 \iff \partial_t v + c^2 \nabla g = 0$ mit $c^2 := \frac{p'(\varrho_0)}{\varrho_0}$.
+    
+    Wendet man nun $\partial_t$ auf die erste Gleichung und $\div$ auf die zweite an
+    und zieht das zweite Ergebnis vom ersten ab, so bekommt man
+    $\partial_t^2 g - c^2 \Delta g = 0$,
+    also die Wellengleichung.
+    
+    Dies heißt auch \begriff{akustische Approximation der \name{Euler}-Gleichungen}
+    und $c$ ist die Schallgeschwindigkeit.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Klassifikation linearer PDEs zweiter Ordnung%
+}
+
+\begin{Def}{linearer Dif"|ferentialoperator 2. Ordnung}
+    Seien $\Omega \subset \real^d$ of"|fen,\\
+    $A = (a_{ij})_{i,j=1}^d \in \C^0(\Omega, \real^{d \times d})$,
+    $b = (b_i)_{i=1}^d \in \C^0(\Omega, \real^d)$ und $c \in \C^0(\Omega)$.
+    Dann heißt\\
+    $\L\colon \C^2(\Omega) \to \C^0(\Omega)$ mit
+    $(\L u)(x) := -\sum_{i,j=1}^d a_{ij}(x) \partial_{x_i} \partial_{x_j} u(x) +
+    \sum_{i=1}^d b_i(x) \partial_{x_i} u(x) + c(x) u(x)$\\
+    \begriff{linearer Dif"|ferentialoperator 2. Ordnung}.
+\end{Def}
+
+\begin{Bem}
+    Mit dem Hadamard-Produkt $\circ$ (elementweise Matrizenmultiplikation) erhält man
+    $\L u = -A \circ (\nabla \nabla^\tp u) + b \nabla u + cu$.
+    Der erste Summand
+    $-A \circ (\nabla \nabla^\tp u)$ heißt \begriff{Hauptteil} von $\L$.\\
+    OBdA kann man $A$ symmetrisch wählen (sonst führt $\widetilde{A} := \frac{1}{2} (A + A^\tp)$
+    zum selben $\L$).\\
+    Mit $f \in \C^0(\Omega)$ erhält man eine PDE $\L u = f$ in $\Omega$.
+\end{Bem}
+
+\linie
+
+\begin{Def}{Klassifikation von linearen PDEs 2. Ordnung}
+    Sei $x \in \Omega$.
+    Dann heißt $\L$
+    \begin{itemize}
+        \item
+        \begriff{elliptisch in $x$},
+        falls alle EWe von $A(x)$ positiv sind,
+        
+        \item
+        \begriff{parabolisch in $x$},
+        falls $(d - 1)$ EWe von $A(x)$ positiv sind und der übrige verschwindet,
+        aber $\Rang(\smallpmatrix{A(x) & b(x)}) = d$, und
+        
+        \item
+        \begriff{hyperbolisch in $x$},
+        falls $(d - 1)$ EWe von $A(x)$ positiv sind und der übrige negativ ist.
+    \end{itemize}
+    $\L$ heißt \begriff{elliptisch}/\begriff{parabolisch}/\begriff{hyperbolisch},
+    falls $\L$ die Eigenschaft in allen $x \in \Omega$ erfüllt.\\
+    Die PDE $\L u = f$ heißt elliptisch/parabolisch/hyperbolisch,
+    falls $\L$ diese Eigenschaft erfüllt.
+\end{Def}
+
+\begin{Bem}
+    Die Begrif"|fe sind motiviert durch Quadriken,
+    denn $\{z \in \real^d \;|\; z^\tp A(x) z = 1\}$ beschreibt unter obigen Bedingungen
+    ein Ellipsoid, Paraboloid bzw. Hyperboloid.
+\end{Bem}
+
+\begin{Bsp}
+    \begin{itemize}
+        \item
+        Die Laplace-/Poisson-Gleichung ist elliptisch, da aus $\L u := -\Delta u$ folgt,
+        dass $A(x) :\equiv I_d$ und $b = c :\equiv 0$
+        (das erklärt den Sinn des negativen Vorzeichens).
+        
+        \item
+        Die Dif"|fusionsgleichung ist parabolisch, da aus $\L u := \partial_t u - \Delta_x u$
+        folgt, dass\\
+        $A(x, t) :\equiv \smallpmatrix{I_d&0\\0&0} \in \real^{(d+1)\times(d+1)}$,
+        $b :\equiv e_{d+1} \in \real^{d+1}$ und $c :\equiv 0$.
+        
+        \item
+        Die Wellengleichung ist hyperbolisch, da aus
+        $\L u := \partial_t^2 u - \widetilde{c}^2 \Delta_x u$ folgt, dass\\
+        $A(x, t) :\equiv \smallpmatrix{I_d&0\\0&-\widetilde{c}^2} \in \real^{(d+1)\times(d+1)}$ und
+        $b = c :\equiv 0$.
+        
+        \item
+        Die \begriff{\name{Tricomi}-Gleichung} $x_2 \partial_{x_1}^2 u + \partial_{x_2}^2 u = 0$
+        in $\Omega := \real^2$ ist vom gemischten Typ, da aus $A(x) := \smallpmatrix{x_2&0\\0&1}$ 
+        und $b = c :\equiv 0$ folgt, dass sie
+        elliptisch in $(x_1, x_2) \in \real \times (0, \infty)$ und
+        hyperbolisch in $(x_1, x_2) \in \real \times (-\infty, 0)$ ist.
+    \end{itemize}
+\end{Bsp}
+
+\linie
+
+\begin{Bem}
+    Die Unterscheidung ist sinnvoll wg. unterschiedlicher Lösungseigenschaften.
+    \begin{itemize}
+        \item
+        \emph{elliptische PDEs}:
+        meist RBen vorgegeben,
+        Lösungen meist sehr glatt ($\C^\infty$),
+        erfüllen häufig ein Maximumprinzip
+        
+        \item
+        \emph{parabolische PDEs}:
+        ausgezeichnete Achse meist Zeit,
+        Umschreiben als $\partial_t u + \widetilde{\L} u = \widetilde{f}$ mit
+        $\widetilde{\L}$ elliptisch möglich,
+        häufig ABen vorgegeben (ggf. RBen),
+        regularisierender Ef"|fekt (Lösung glatter als Anfangsdaten),
+        unendliche Ausbreitungsgeschwindigkeit
+        
+        \item
+        \emph{hyperbolische PDEs}:
+        ausgezeichnete Achse meist Zeit,
+        Umschreiben als $\partial_t^2 u + \widetilde{\L} u = \widetilde{f}$ mit
+        $\widetilde{\L}$ elliptisch möglich,
+        beschreiben Schwingungsvorgänge,
+        häufig ABen für $u$ und $\partial_t u$ vorgegeben (ggf. dazu noch RBen),
+        endliche Ausbreitungsgeschwindigkeit
+    \end{itemize}
+\end{Bem}
+
+\begin{Bem}
+    Sei $\L$ elliptisch.
+    Falls $\L$ rot.inv. ist, so gilt $\L u = -a \nabla u + cu$.
+    $\L$ heißt \begriff{glm. ell.} mit \begriff{Ell.konst.} $\alpha$, falls
+    $\exists_{\alpha > 0} \forall_{z \in \real^d} \forall_{x \in \Omega}\;
+    z^\tp A(x) z \ge \alpha \norm{z}^2$
+    (alle EWe von $A(\cdot)$ sind $\ge \alpha$).
+    Maximum-/""Minimum-/Vergleichsprinzipien und Eind. von Lsg.en folgen wie bei
+    der Poisson-Gleichung.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    \emph{Einschub}:
+    Finite Volumen für skalare Erhaltungsgleichungen in 1D%
+}
+
+\begin{Bem}
+    Im Folgenden betrachtet man für $\Omega := \real$, $\Omega_T := \real \times (0, T)$,
+    $f \in \C^1(\Omega)$ (\begriff{Flussfunk"-tion})
+    und $u_0 \in L^1_\loc(\Omega) \cap L^\infty(\Omega)$
+    das Cauchy-Problem $\partial_t u + \partial_x f(u) = 0$ in $\Omega_T$ und
+    $u(\cdot, 0) = u_0$.
+    
+    Gesucht ist ein num. Verfahren zur Lösung der PDE, das das Integral
+    $\int_\Omega u(x, t) \dx$ für $t \in (0, T)$ erhält.
+    Definiere das Gitter $x_j := j \Delta x$ und $t^n := n \Delta t$ für
+    $j \in \integer \cup (\integer + \frac{1}{2})$ und $n \in \natural_0$.
+    Man integriert nun über das Kontrollvolumen $V := [x_{j-1/2}, x_{j+1/2}] \times [t^n, t^{n+1}]$
+    und wendet den Gauß-Integralsatz an:
+    $0 = \int_V (\partial_t u + \partial_x f(u)) \dx
+    = \int_V \div_{(t,x)}((u, f(u))^\tp) \dx
+    = \int_{\partial V} (u, f(u))^\tp \cdot n \dsigma(t, x)$\\
+    $= \int_{x_{j-1/2}}^{x_{j+1/2}} (u(x, t^{n+1}) - u(x, t^n)) \dx +
+    \int_{t^n}^{t^{n+1}} (f(u(x_{j+1/2}, t)) - f(u(x_{j-1/2}, t))) \dt$.
+    
+    %Als Approximation nimmt man einen stückweise konstanten Wert $u_j^n$ für
+    %$u$ in $V$ an und definiert
+    Als Approximation nimmt man $u(x, t^n) \approx u_j^n$ konstant für
+    $x \in [x_{j-1/2}, x_{j+1/2}]$ an und definiert
+    $g_{j+1/2}^n := g(u_j^n, u_{j+1}^n) \approx
+    \frac{1}{\Delta t} \int_{t^n}^{t^{n+1}} f(u(x_{j+1/2}, t)) \dt$
+    für einen \begriff{num. Fluss} $g\colon \real^2 \to \real$.
+    
+    Damit erhält man das diskretisierte Problem
+    $0 = \Delta x (u_j^{n+1} - u_j^n) + \Delta t (g_{j+1/2}^n - g_{j-1/2}^n)$ bzw.\\
+    $u_j^{n+1} := u_j^n - \frac{\Delta t}{\Delta x} (g_{j+1/2}^n - g_{j-1/2}^n)$
+    mit den Anfangswerten $u_j^0 := \frac{1}{\Delta x} \int_{x_{j-1/2}}^{x_{j+1/2}} u_0(x) \dx$\\
+    (oder einfacher $u_j^0 := u_0(x_j)$).
+    
+    Die numerische Lösung ist dann stückweise konstant definiert als
+    $u_h(x, t) := \sum_{j,n} u_j^n \cdot \chi_{V_{j,n}}(x, t)$.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Die Erhaltungseigenschaft des Integrals ist gegeben, weil\\
+    $\sum_j u_j^{n+1} \Delta x
+    = \sum_j u_j^n \Delta x - \cancel{\sum_j \Delta t (g_{j+1/2}^n - g_{j-1/2}^n)}
+    = \sum_j u_j^n \Delta x
+    = \dotsb
+    = \sum_j u_j^0 \Delta x
+    \approx \int_\Omega u_0(x) \dx$.
+    
+    Es gilt ein \begriff{lokales Maximumprinzip}:
+    Ist $g$ Lipschitz-stetig mit Konstante $L$ und $\Delta t \le \frac{\Delta x}{2L}$,
+    dann liegt $u_j^{n+1}$ in der konvexen Hülle von $u_{j-1}^n, u_j^n, u_{j+1}^n$.\\
+    Daraus folgt direkt $L^\infty$-Stabilität,
+    d.\,h. $\norm{u^{n+1}}_\infty \le \norm{u^n}_\infty \le \dotsb \le
+    \norm{u_0}_{L^\infty(\Omega)}$.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Allgemein sollte ein geeigneter numerischer Fluss folgende Bedingungen erfüllen:
+    \begin{itemize}
+        \item
+        \begriff{Konsistenz}:
+        $g(u, u) = f(u)$
+        
+        \item
+        \begriff{\name{Lipschitz}-Stetigkeit}:
+        $g \in \C^{0,1}(\real^2)$
+        
+        \item
+        \begriff{Monotonie}:
+        $g(v, w)$ monoton wachsend in $v$ und fallend in $w$
+    \end{itemize}
+\end{Bem}
+
+\begin{Bsp}
+    Beispiele für numerische Flüsse umfassen:
+    \begin{itemize}
+        \item
+        \begriff{\name{Lax}-\name{Friedrichs}-Fluss}:
+        $g(u, v) := \frac{1}{2} (f(u) + f(v)) + \frac{1}{2\lambda} (u - v)$
+        mit $\lambda := \frac{\Delta t}{\Delta x}$
+        
+        \item
+        \begriff{\name{Engquist}-\name{Osher}-Fluss}:
+        Für $f'(u) > 0$ sollte man Rückwärtsdif"|ferenzen (Downwind)
+        und für $f'(u) < 0$ Vorwärtsdif"|ferenzen (Upwind) verwenden.
+        Die Berechnung erfolgt mit\\
+        $f^+(u) := f(0) + \int_0^u \max(f'(s), 0) \ds$ und
+        $f^-(u) := \int_0^u \min(f'(s), 0) \ds$ (damit $f = f^+ + f^-$)
+        durch $g(v, w) := f^+(v) + f^-(w)$.
+    \end{itemize}
+\end{Bsp}
+
+\pagebreak

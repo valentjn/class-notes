@@ -1,0 +1,191 @@
+\section{%
+    Überblick über zentrale Resultate zu stark stetigen Halbgruppen%
+}
+
+\subsection{%
+    Störungen%
+}
+
+\begin{Satz}{Störung mit beschränktem Operator}\\
+    Seien $(A, D(A))$ der Erzeuger einer $\C_0$-Halbgruppe $(T(t))_{t \ge 0}$ auf einem
+    Banachraum $X$,\\
+    $M > 1$ und $\omega \in \real$ mit
+    $\forall_{t \ge 0}\; \norm{T(t)}_{\Lin(X)} \le Me^{\omega t}$ und $B \in \Lin(X)$.\\
+    Dann erzeugt $(A + B, D(A))$ eine $\C_0$-Halbgruppe $(S(t))_{t \ge 0}$ mit\\
+    $\forall_{t \ge 0}\; \norm{S(t)}_{\Lin(X)} \le Me^{(\omega + M\norm{B}_{\Lin(X)}) t}$.\\
+    Außerdem gilt $\forall_{t \ge 0} \forall_{x \in X}\;
+    S(t)x = T(t)x + \int_0^t T(t-s)BS(s)x\ds$.
+\end{Satz}
+
+\begin{Bsp}
+    Die Dif"|ferentialgleichung
+    $\frac{\partial u}{\partial t} = \frac{\partial^2 u}{\partial x^2} + Vu$
+    für $x \in \real$ und $t > 0$ sowie $u(0, x) = u_0(x)$ mit $u_0 \in H^2$ und $L^2(\real)$
+    ist eindeutig klassisch lösbar, da $\frac{\partial^2}{\partial x^2} + V$ nach dem Satz von
+    eben eine $\C_0$-Halbgruppe erzeugt.
+\end{Bsp}
+
+\begin{Satz}{\name{Dyson}-\name{Phillips}-Reihe}\\
+    Mit den Voraussetzungen des Satzes von eben gilt
+    $S(t) = \sum_{n=0}^\infty S_n(t)$ mit $S_0(t) := T(t)$ und
+    $S_{n+1}(t)x := \int_0^t T(t-s)BS_n(x)x\ds$ für $x \in X$, $t \ge 0$ und $n \in \natural_0$.\\
+    Die Reihe konvergiert in $\Lin(X)$ gleichmäßig für $t$ aus kompakten Intervallen in $\real^+$
+    und heißt \begriff{\name{Dyson}-\name{Phillips}-Reihe}.
+\end{Satz}
+
+\linie
+
+\begin{Def}{$A$-beschränkt}
+    Seien $(A, D(A))$ und $(B, D(B))$ Operatoren auf $X$.\\
+    Dann heißt $B$ \begriff{$A$-beschränkt}, falls $D(A) \subset D(B)$ und $a_B < \infty$ mit\\
+    $a_B := \inf\{a \ge 0 \;|\; \exists_{b \ge 0} \forall_{x \in D(A)}\;
+    \norm{Bx}_X \le a \norm{Ax}_X + b \norm{x}_X\}$.\\
+    In diesem Fall heißt $a_B$ \begriff{$A$-Schranke} von $B$.
+\end{Def}
+
+\begin{Satz}{Störung mit $A$-beschränktem Operator}
+    Seien $(A, D(A))$ der Erzeuger einer Kontraktionshalbgruppe sowie
+    $(B, D(B))$ dissipativ und $A$-beschränkt mit $A$-Schranke $a_B < 1$.\\
+    Dann erzeugt $(A + B, D(A))$ eine Kontraktionshalbgruppe.
+\end{Satz}
+
+\begin{Bsp}
+    Seien $X := \C_0^0(\real)$, $D(B) := \{f \in X \cap \C^1 \;|\; f' \in X\}$ und
+    $Bf := \pm f'$ für $f \in X$.\\
+    Dann ist $B$ dissipativ (da Erzeuger einer Kontraktionshalbgruppe).\\
+    Definiert man $D(A) := D(B^2) \subset D(B)$ und $Af := f''$ für $f \in D(A)$,
+    so ist $A$ Erzeuger einer Kontraktionshalbgruppe und
+    $B$ ist $A$-beschränkt mit Schranke $0$.
+    Nach dem Satz erzeugt $(A + \alpha B, D(A))$ für beliebiges $\alpha \in \real$ eine
+    Kontraktionshalbgruppe.\\
+    Daraus folgt bspw. die Lösbarkeit von
+    $\frac{\partial u}{\partial t} =
+    \frac{\partial^2 u}{\partial x^2} + \alpha \frac{\partial u}{\partial x}$
+    für $x \in \real$ und $t > 0$.
+\end{Bsp}
+
+\linie
+
+\begin{Satz}{Variante für $A$ Erzeuger einer analyt. HG}\\
+    Sei $(A, D(A))$ der Erzeuger einer analytischen Halbgruppe.\\
+    Dann gibt es ein $\delta = \delta(A) > 0$, sodass
+    $(A + B, D(A))$ für jeden $A$-beschränkten Operator mit Schranke $a_B < \delta$
+    eine analytische Halbgruppe erzeugt.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Approximationen%
+}
+
+\begin{Bem}
+    Im Folgenden sei $G(M, \omega) := \{\text{$(T(t))_{t \ge 0}$ $\C_0$-HG} \;|\;
+    \forall_{t \ge 0}\; \norm{T(t)}_{\Lin(X)} \le Me^{\omega t}\}$
+    für $M \ge 1$ und $\omega \in \real$.
+\end{Bem}
+
+\begin{Satz}{\name{Trotter}-\name{Kato}-Approximationstheorem}\\
+    Sei $(T_n(t))_{t \ge 0} \in G(M, \omega)$ mit Erzeuger $(A_n, D(A_n))$ für alle
+    $n \in \natural$.
+    Für ein $\lambda_0 \ge \omega$ betrachtet man die folgenden Aussagen:
+    \begin{enumerate}
+        \item
+        Es existiert ein dicht definierter Operator $(A, D(A))$, sodass es ein Gen $D$
+        von $A$ gibt mit $\forall_{x \in D}\; A_n x \xrightarrow{n \to \infty} Ax$ und
+        $\overline{\Bild(\lambda_0 - A)} = X$.
+        
+        \item
+        Es gibt ein $R \in \Lin(X)$ mit $R(\lambda_0, A_n) \xrightarrow{n \to \infty} R$
+        punktweise in $X$ und $\overline{\Bild(R)} = X$.
+        
+        \item
+        Die $\C_0$-Halbgruppen $(T_n(t))_{t \ge 0}$ konvergieren für $n \to \infty$ punktweise
+        in $X$ gleichmäßig für $t \in [0, t_0]$ gegen eine $\C_0$-Halbgruppe $(T(t))_{t \ge 0}$
+        mit Erzeuger $B$.
+    \end{enumerate}
+    Dann gilt \emph{(1)} $\implies$ \emph{(2)} $\iff$ \emph{(3)}.\\
+    Falls \emph{(1)} gilt, so gilt $B = \overline{A}$.
+    Falls \emph{(3)} gilt, so gilt $R = R(\lambda_0, B)$.
+\end{Satz}
+
+\begin{Bsp}
+    Die Yosida-Approximation $A_n := nA R(n, A)$ mit
+    $(A, D(A))$ dicht definiert,\\
+    $(\omega, \infty) \subset \varrho(A)$ und
+    $\norm{R(\lambda, A)^n}_{\Lin(X)} \le \frac{M}{(\lambda - \omega)^n}$ für $n \in \natural$
+    ist ein Spezialfall des Trotter-Kato-Approximationstheorems.
+\end{Bsp}
+
+\linie
+
+\begin{Satz}{\name{Chernoff}-Produktformel}
+    Seien $V\colon \real_0^+ \to \Lin(X)$ stark stetig und $D \subset X$, sodass
+    \begin{enumerate}
+        \item
+        $V(0) = \id$,
+        
+        \item
+        $\forall_{t \ge 0} \forall_{m \in \natural}\; \norm{V(t)^m}_{\Lin(X)} \le M$,
+        
+        \item
+        $\forall_{x \in D}\;
+        [\text{$Ax := \lim_{t \to 0+0} \frac{V(t)x - x}{t}$ existiert in $X$}]$ und
+        
+        \item
+        $\exists_{\lambda_0 > 0}\; [\text{$D, (\lambda_0 - A)D$ dicht in $X$}]$.
+    \end{enumerate}
+    Dann ist $(A, D)$ abschließbar, $\overline{A}$ erzeugt eine beschränkte $\C_0$-Halbgruppe
+    $(T(t))_{t \ge 0}$ mit\\
+    $T(t)x := \lim_{n \to \infty} V(\frac{t}{n})^n x$ für $x \in X$ und
+    die Konvergenz ist gleichmäßig für $t$ aus kompakten Intervallen aus $\real^+_0$.
+\end{Satz}
+
+\begin{Bsp}
+    Sei $(T(t))_{t \ge 0} \in G(M, \omega)$ mit Erzeuger $(A, D(A))$.\\
+    Dann gilt $T(t)x = \lim_{n \to \infty} (\id - \frac{t}{n} A)^{-n} x
+    = \lim_{n \to \infty} (\frac{n}{t} R(\frac{n}{t}, A))^n x$ für alle $x \in X$ und $t \ge 0$
+    gleichmäßig auf kompakten $t$-Intervallen.
+    In diesem Sinne gilt $T(t) = e^{tA}$.
+\end{Bsp}
+
+\linie
+
+\begin{Satz}{\name{Trotter}-Produktformel}
+    Seien $(T(t))_{t \ge 0}$ und $(S(t))_{t \ge 0}$ $\C_0$-Halbgruppen mit den Erzeugern
+    $(A, D(A))$ bzw. $(B, D(B))$, sodass $\forall_{t \ge 0} \forall_{m \in \natural}\;
+    \norm{(T(t)S(t))^m}_{\Lin(X)} \le Me^{\omega mt}$ und\\
+    $\exists_{\lambda_0 > \omega}\; [\text{$(\lambda_0 - A - B)D, D$ dicht in $X$}]$, wobei
+    $D := D(A) \cap D(B)$.\\
+    Dann ist $(A + B, D)$ abschließbar und $\overline{A + B}$ erzeugt eine
+    $\C_0$-Halbgruppe $(U(t))_{t \ge 0} \in G(M, \omega)$ mit
+    $U(t)x := \lim_{n \to \infty} (T(\frac{t}{n}) S(\frac{t}{n}))^n x$ für $x \in X$ und $t \ge 0$.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Spektraleigenschaften%
+}
+
+\begin{Bem}
+    Sei $(A, D(A))$ der Erzeuger einer $\C_0$-Halbgruppe $(T(t))_{t \ge 0}$ auf $X$.\\
+    Die Frage ist, ob $\forall_{t \ge 0}\; e^{t \sigma(A)} = \sigma(T(t)) \setminus \{0\}$
+    (SMT) gilt (\begriff{spectral mapping theorem}).
+\end{Bem}
+
+\begin{Satz}{Spektralabbildungssatz}\\
+    Es gilt $\forall_{t \ge 0}\; e^{t \sigma(A)} \subset \sigma(T(t)) \setminus \{0\}$,
+    im Allgemeinen gilt jedoch keine Gleichheit.\\
+    Für normstetige oder analytische Halbgruppen gilt jedoch Gleichheit.\\
+    Gilt (SMT), dann ist die Spektralschranke
+    $s(A) := \sup\{\Re \lambda \;|\; \lambda \in \sigma(A)\}$ gleich der Wachstumsschranke
+    $\omega_0((T(t))_{t \ge 0})$.
+    Im Allgemeinen gilt nur $s(A) \le \omega_0((T(t))_{t \ge 0})$.\\
+    Gilt $s(A) = \omega_0((T(t))_{t \ge 0})$, dann gilt das
+    \begriff{Stabilitätskriterium von \name{Lyapunov}}, d.\,h.\\
+    $s(A) < 0 \iff \omega_0((T(t))_{t \ge 0}) < 0$
+    (eine negative Spektralschranke ist äquivalent zur asymptotischen Stabilität von $0$).
+\end{Satz}
+
+\pagebreak

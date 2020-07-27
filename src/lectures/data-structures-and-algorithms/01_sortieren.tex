@@ -1,0 +1,553 @@
+\section{%
+    Sortieren%
+}
+
+\subsection{%
+    Sortierproblem und Aufwandsanalyse%
+}
+
+Gegeben sei eine Menge $S = \{A[1], \ldots, A[n]\}$ aus einem total geordneten
+Universum.
+Gesucht ist eine Permutation $\pi$ von $\{1, \ldots, n\}$, sodass
+$A[\pi(1)] \le \dotsb \le A[\pi(n)]$ ist.
+
+Zum Beispiel ist für $S = \{2, 7, 1, 3, 5\} \subseteq \mathbb{N}$ das
+gesuchte $\pi$ gegeben durch {\footnotesize $\begin{pmatrix}1 & 2 & 3 & 4 & 5\\
+3 & 1 & 4 & 5 & 2\end{pmatrix}$}.
+
+Den "`lexikalischen Vergleich"' kann man definieren durch
+$w_1 x r < w_1 y r \;\Leftrightarrow\; x < y$ mit $x, y \in \Sigma$,
+$w_1, r \in \Sigma^\ast$.
+
+\linie
+
+\textbf{Aufwand}:
+\emph{Platz}, der benötigt wird, um $\pi$ zu berechnen; \qquad
+\emph{Anzahl der Arbeitsschritte}; \\
+\emph{Zeit} für die Berechnung von $\pi$ auf einer Maschine mit $p$ Prozessoren
+(= Anzahl der Arbeitsschritte für $p = 1$);
+\emph{Anzahl der I/O-Operationen} (wichtig beim Sortieren großer Datenmengen).
+
+\textbf{Bedingungen}, unter denen der Aufwand abgeschätzt werden soll:
+\begin{itemize}
+    \item \textbf{Worst-Case-Analyse}: Eingabe $S$ kann beliebig permutiert
+    sein, interessant ist obere Schranke, die immer gilt
+    
+    \item \textbf{probabilistische Analyse}: Eingabe stammt aus einer
+    Wahrscheinlichkeitsverteilung über alle Eingaben,
+    Ziel ist Verfahren, das eine gute (erwartete) Laufzeit erzielt
+    
+    \item \textbf{randomisierte Algorithmen}: Es kann nützlich sein, dass
+    Algorithmen den weiteren Fortgang vom Ergebnis eines Zufallsgenerators
+    abhängig machen.
+    Es interessiert uns die \emph{erwartete} Laufzeit bei beliebiger Eingabe.
+\end{itemize}
+
+\subsection{%
+    Bubblesort%
+}
+
+\begin{tabular}{p{6.0cm}p{10.1cm}}
+    \begin{minipage}[c]{6.0cm}
+        \begin{lstlisting}
+i := n
+while (i > 1) do
+    j := 1
+    while (j < i) do
+        if A[j] > A[j + 1]
+            swap(A[j], A[j + 1])
+        j := j + 1
+    od
+    i := i - 1
+od
+        \end{lstlisting}
+    \end{minipage} &
+    \begin{minipage}[c]{10.1cm}
+        Im ersten Durchlauf wandert das größte Element ganz nach hinten,
+        im zweiten Durchlauf wandert das zweitgrößte Element an die vorletzte
+        Position usw. \\
+        \emph{Beobachtung}: Die Menge der Elemente in $A[1], \ldots, A[n]$
+        bleibt während des Algorithmus gleich. \\
+        \emph{Lemma}: Für ein festes $i$ ist
+        $A[i] = \max_{j = 1, \ldots, i} A[j]$ am
+        Ende der äußeren Schleife. \\
+        \emph{Satz}: Nach der Durchführung liegt $A[\;]$ in sortierter
+        Reihenfolge vor.
+    \end{minipage}
+\end{tabular}
+
+\vspace{12pt}
+\linie
+
+\textbf{Problem bei der Laufzeitanalyse}:
+Die \emph{Implementierungssprache} sowie der \emph{Rechner}, auf dem der
+Algorithmus ausgeführt wird, haben erheblichen Einfluss auf die Zeit, die
+dieser zur Ausführung braucht.
+Daher ist die Zeitmessung nicht geeignet, um die Laufzeit/Qualität eines
+Algorithmus zu bestimmen. \\
+Besser scheint es, die Anzahl der aufgeführten \textbf{Instruktionen} beim
+Lösen eines bestimmten Problems zu zählen.
+Dabei nimmt man an, dass eine Instruktion \emph{konstante Zeit}
+($1$ Zeiteinheit) benötigt.
+Was ist jedoch eine Instruktion?
+Ist \code{swap} eine oder drei Instruktionen, oder noch mehr in Assembler?
+
+Die Anzahl der Instruktionen hängt zudem von der CPU-Architektur ab.
+Zur Analyse eines Algorithmus will man eine invariante Größe bzgl. Sprache und
+CPU-Architektur wählen. \\
+Dazu zählt man nur die Anzahl der \textbf{Vergleiche}, die durchgeführt werden.
+
+Man nimmt an, dass die Beschreibung (insbesondere die Länge) des Algorithmus
+unabhängig von der Eingabe ist.
+Sei $C$ die \textbf{Anzahl an Instruktionen} in der Beschreibung
+(nicht im Ablauf) des Algorithmus. \\
+$C$ hängt zwar von Sprache/CPU-Architektur ab, ist aber konstant.
+
+\textbf{Behauptung}: Wenn der Algorithmus terminiert, tritt bei der Ausführung
+spätestens nach jeweils $C$ Instruktionen ein Vergleich auf.
+
+\begin{Beweis}
+    Sobald $> C$ Instruktionen ausgeführt wurden, wurde mindestens
+    eine Instruktion mehrfach ausgeführt.
+    Falls zwischen der ersten und zweiten Ausführung kein Vergleich ausgeführt
+    wurde, gibt es keine Möglichkeit den Kontrollfluss dazwischen zu ändern
+    und es kommt zu einer Endlosschleife.
+\end{Beweis}
+
+Wenn man nur die Vergleiche zählt, kann man also die "`Laufzeit"' (Anzahl der
+ausgeführten Instruktionen) bis auf einen konstanten Fehler abschätzen, denn
+es gilt $n_{\text{Ins}} \le C \cdot n_{\text{Vgl}}$.
+
+\linie
+
+Bei Bubblesort beträgt die Gesamtzahl an Vergleichen $\le n^2 + n$.
+Daher beträgt die Anzahl ausgeführter Instruktionen $\le C \cdot (n^2 + n)$,
+wobei $C$ von Sprache/Implementierung abhängt.
+
+Die \textbf{$\O$-Notation} erlaubt es nun, Konstanten und dominierte Terme
+wegzulassen: \\
+$\O(f(n)) = \{g: \mathbb{N} \rightarrow \mathbb{R} \;|\;
+\exists_{C > 0} \exists_{n_0 \in \mathbb{N}} \forall_{n \ge n_0}\;
+g(n) \le C \cdot f(n)\}$.
+Bspw. ist $\O(n^2)$ die Menge der Funktionen, die für hinreichend große $n$
+nicht schneller wachsen als $n^2$.
+
+Bubblesort hat also Worst-Case-Laufzeit $\O(n^2)$
+(bzw. keine schlechtere Laufzeit).
+Es macht einen großen Unterschied, ob Algorithmen Laufzeiten mit
+$\O(n)$, $\O(n \log n)$ oder $\O(n^2)$ haben.
+
+\subsection{%
+    Mergesort%
+}
+
+Mergesort sortiert eine Datenreihe, indem sie so weit halbiert wird, bis sie
+nur noch aus ein- und zweielementigen Tupeln besteht.
+Diese werden sortiert und dann wieder in sortierter Reihenfolge verschmolzen
+(engl. \emph{merge}). \\
+Um eine Sequenz $a_1, \ldots, a_{\lceil n/2 \rceil},
+a_{\lceil n/2 \rceil + 1}, \ldots, a_n$ zu sortieren, werden zunächst
+$a_1, \ldots, a_{\lceil n/2 \rceil}$ und
+$a_{\lceil n/2 \rceil + 1}, \ldots, a_n$ sortiert und dann miteinander
+vermischt. \\
+Mergesort handelt nach dem \textbf{Divide-\&-Conquer-Paradigma}
+(\emph{teile und herrsche}).
+
+\linie
+
+\textbf{Laufzeitaufwand von Mergesort}: Der Gesamtlaufzeit $T(n)$, um
+eine Liste mit $n$ Elementen zu mischen, lässt sich ausdrücken als
+$T(n) = 2 \cdot T(\frac{n}{2}) + n$, wobei $T(2) = 1$.
+Eine solche rekursive Formel würde sich mit dem \emph{Master-Theorem}
+analytisch lösen lassen.
+
+Intuitiv nimmt man an, dass $n = 2^k$ (sonst erweitert man die Eingabe um
+Dummyzahlen, was die Problemgröße nur um konstanten Faktor verändert).
+Um zwei Folgen der Länge $\frac{n}{2^i}$ zu mischen, sind
+$2 \cdot \frac{n}{2^i}$ Vergleiche nötig.
+Im Laufe des Algorithmus tauchen $2^i$ Folgen der Länge $\frac{n}{2^i}$ auf,
+also $\frac{1}{2} \cdot 2^i$ Paare.
+Daher ist der Aufwand zum Mischen aller Folgen der Länge $\frac{n}{2^i}$
+gleich $\frac{1}{2} \cdot 2^i \cdot 2 \cdot \frac{n}{2^i} = n$.
+Es treten $\sim \log_2 n$ viele verschiedene Teilfolgenlängen auf,
+daher ist der Gesamtaufwand $\O(n \log n)$.
+
+Mergesort ist ein \textbf{optimales Sortierverfahren}. \\
+Man kann zeigen, dass das Sortierproblem nicht schneller als
+$\O(n \log n)$ zu lösen ist
+(zumindest nicht mit vergleichsbasierten, deterministischen Algorithmen,
+siehe
+\hyperref[ss_grenze_von_vergleichsbasiertem_sortieren]{%
+    \autoref{ss_grenze_von_vergleichsbasiertem_sortieren}
+    "`\nameref{ss_grenze_von_vergleichsbasiertem_sortieren}"'}%
+).
+
+\pagebreak
+
+\subsection{%
+    Insertionsort%
+}
+
+\begin{lstlisting}
+Insertionsort(A, n)
+    for j = 1 to n - 1 do
+        key := A[j]
+        i := j - 1
+        while (i >= 0 and A[i] > key) do
+            A[i + 1] := A[i]
+            i := i - 1
+        od
+        A[i + 1] := key
+    od
+\end{lstlisting}
+
+\textbf{Beschreibung}: \\
+Um eine Liste $A[0], \ldots, A[n - 1]$ mit $n$ Elementen zu sortieren, geht
+Insertionsort im $j$-ten Schritt davon aus, dass die
+Liste $A[0], \ldots, A[j - 1]$
+schon sortiert ist ($1 \le j \le n - 1$). \\
+Der \code{key} $= A[j]$ wird dann an der richtigen Stelle in dieser Liste
+eingefügt, sodass die Liste
+$A[0], \ldots, A[j - 1], A[j]$ sortiert ist.
+Dazu werden die größeren Elemente (als der \code{key}) allesamt
+"`nach rechts geschoben"' und \code{key} eingefügt (engl. \emph{insert}).
+
+\linie
+
+\textbf{Best-Case}:
+Insertionsort hat ein asymptotisches Laufzeitverhalten von
+$\O(n)$ im Best-Case.
+Dieser tritt ein, falls die Liste anfangs schon sortiert ist.
+
+\textbf{Worst-Case}:
+Insertionsort hat ein asymptotisches Laufzeitverhalten von
+$\O(n^2)$ im Worst-Case.
+Dieser tritt ein, falls die Liste anfangs falsch herum sortiert ist.
+
+\subsection{%
+    Heapsort%
+}
+
+\textbf{Heapsort} basiert auf der Datenstruktur \emph{Heap} und funktioniert
+wie folgt:
+Füge zunächst alle $n$ Elemente in den Heap ein,
+entferne dann $n$-mal das Maximum aus dem Heap und gebe es aus.
+
+\textbf{Heap}:
+Ein Heap (organisierter Haufen) ist ein Baum mit ausgezeichneter Wurzel, wobei
+die zu organisierenden Elemente in den Knoten des Baums stehen. \\
+Dabei gilt die sog. \textbf{Heap-Eigenschaft}: Das Element jedes Knotens ist
+immer größer/gleich den Elementen der Kinder des Knotens.
+%Heaps sind nützliche Datenstrukturen, die nicht nur zum Sortieren geeignet
+%sind:
+%Man kann sie z.\,B. brauchen, wenn Ereignisse in einer bestimmten Reihenfolge
+%abgearbeitet werden müssen, sich diese Reihenfolge aber dynamisch ändert
+%oder neue Elemente hinzukommen.
+
+\linie
+
+Wir fordern \textbf{binäre, balancierte Heaps}, bei denen nur "`rechts
+unten"' Blätter fehlen.
+Man kann solche Heaps mit $n$ Knoten in einem Array $A[0], \ldots, A[n - 1]$
+schichtweise in einem Array speichern, welches die vollständige Stuktur des
+Heaps widerspiegelt.
+Dabei steht die Wurzel an Stelle $0$ des Arrays.
+Der Vaterknoten eines Knotens mit Position $i$ steht an Position
+$\lfloor \frac{i - 1}{2} \rfloor$.
+Der linke bzw. rechte Kindknoten eines Knotens mit Position $i$ steht an
+Position $2i + 1$ bzw. $2i + 2$.
+Nur Knoten mit Position $i \le \lfloor \frac{n}{2} \rfloor - 1$ und
+$i \le \lfloor \frac{n}{2} \rfloor - 2$ haben ein linkes oder rechtes Kind.
+
+Umgekehrt repräsentiert ein Array mit $n$ Elementen $V[0], \ldots, V[n - 1]$
+einen Heap, falls \\
+$V[i] \ge V[2i + 1]$ für alle $i = 0, \ldots, \lfloor \frac{n}{2} \rfloor - 1$
+und
+$V[i] \ge V[2i + 2]$ für alle $i = 0, \ldots, \lfloor \frac{n}{2} \rfloor - 2$
+\\
+(d.\,h. Heap-Eigenschaft ist erfüllt).
+Dabei steht in $V[0]$ das größte Element und jede Folge von Werten von einem
+Knoten absteigend zu einem Blatt ist monoton fallend.
+
+\linie
+
+\textbf{\code{heapify}}:
+\code{heapify} kann mit einer Voraussetzung die Heap-Eigenschaft eines Baums
+von einem gewissen Index an wiederherstellen.
+
+\textbf{Aufbau von \code{heapify}}:
+Als Eingabe erwartet \code{heapify} ein Array $V[\;]$ und einen Index
+$top \in \{0, \ldots, n - 1\}$ mit der Annahme,
+dass für alle $i = top + 1, \ldots, n - 1$ mit $2i + 1 < n$ bzw.
+$2i + 2 < n$ gilt, dass $V[i] \ge V[2i + 1]$ bzw. $V[i] \ge V[2i + 2]$
+(d.\,h. die Heap-Eigenschaft ist für alle Indizes $i = top + 1, \ldots, n - 1$
+erfüllt). \\
+Die Ausgabe ist ein nur in den Indizes $top, \ldots, n - 1$ verändertes
+Array, bei dem die Heap-Eigenschaft für alle Indizes $i = top, \ldots, n - 1$
+erfüllt ist.
+
+\textbf{Funktionsweise von \code{heapify}}:
+Betrachte die Kinder des Knotens.
+Sind beide kleiner/gleich dem Knoten, dann ist \code{heapify} beendet.
+Ansonsten tausche den Inhalt des Knotens mit dem größten Inhalt seiner beiden
+Kinder und betrachte dieses Kind rekursiv.
+
+\textbf{Laufzeit von \code{heapify}}:
+Eine mögliche Verletzung der Heap-Eigenschaft wandert immer eine Tiefe nach
+unten.
+Somit ergibt sich eine Laufzeit von $\O(\log n)$.
+
+\linie
+
+\textbf{Operationen des Heaps}:
+Hinzufügen eines Elements zum Heap (\code{insert}),
+Entfernen des Maximums aus dem Heap, welches immer in der Wurzel steht
+(\code{remove_max}),
+Ändern eines Elements im Heap (\code{change_key}).
+
+\textbf{Funktionsweise von \code{remove_max}}:
+Entferne zunächst das Element aus der Wurzel und gebe es zurück.
+Danach stelle durch Kopieren des Inhalts des "`letzten"' Blatts in die Wurzel
+und anschließendes Anwenden von \code{heapify} auf der Wurzel die
+Heap-Eigenschaft wieder her.
+
+\textbf{Funktionsweise von \code{insert}}:
+Füge neues Blatt am "`Ende"' des Heaps ein.
+Danach prüfe, ob die Heap-Eigenschaft zum Vaterknoten verletzt ist.
+Falls ja, tausche mit Vaterknoten und überprüfe diesen rekursiv,
+falls nein, ist die Prozedur beendet und der Baum wieder ein Heap.
+
+\textbf{Kosten von \code{remove_max} und \code{insert}}:
+$\O(\log n)$
+
+\textbf{Funktionsweise \code{change_key}}:
+\code{change_key} ändert den Wert eines Knotens im Heap.
+Wird der Schlüssel erhöht, so muss mit dem Vaterknoten verglichen,
+ggf. getauscht und rekursiv der Vaterknoten überprüft werden.
+Wird der Schlüssel verringert, so muss \code{heapify} auf den Knoten aufgerufen
+werden.
+Die Laufzeit von \code{change_key} beträgt also in jedem Fall $\O(\log n)$.
+
+\textbf{Theorem}: Ein binärer Heap unterstützt \code{insert}, \code{remove_max}
+sowie \code{change_key} jeweils in $\O(\log n)$.
+Ein Heap mit $n$ Elementen kann auch in $\O(n)$ konstruiert werden.
+
+\textbf{Anmerkung}:
+Es gibt spezialisierte Heaps, die manche Operationen besser können.
+Ist z.\,B. bekannt, dass bei \code{change_key} der Wert immer nur erhöht wird
+und die Maxima während der Lebenszeit des Heaps monoton fallen, so gibt
+es spezielle Fibonacci-Heaps, die \code{change_key} in amortisiert $\O(1)$
+ausführen können.
+
+\linie
+
+\textbf{Möglichkeiten für Konstruktion des Heaps}:
+Entweder führt man $n$ \code{insert}-Operationen aus oder man schreibt die
+zu organisierenden Daten zuerst beliebig in $V$ und stellt dann die
+Heap-Struktur wieder her.
+Die erste Variante hat eine Laufzeit von $\O(n \log n)$.
+
+\textbf{Konstruktion des Heaps in $\O(n)$}:
+Mit der zweiten Variante kann man den Heap in $\O(n)$ konstruieren.
+Zunächst schreibt man die Daten in beliebiger Reihenfolge in den Baum.
+Dann ruft man \code{heapify} für jeden Knoten auf, von hinten nach vorne
+beginnend mit dem "`letzten"'. \\
+Eine simple Laufzeitanalyse ergibt ein $\O(n \log n)$-Verhalten
+($n$-mal \code{heapify}).
+Man kann jedoch beobachten, dass \code{heapify} für untere Knoten erheblich
+schneller ist wie für obere.
+
+\textbf{amortisierte Laufzeitanalyse}:
+Bei dieser Art von Laufzeitanalyse von Operationenfolgen betrachtet man nicht
+die maximalen Kosten jedes einzelnen Schritts, sondern man berücksichtigt
+verschiedene Laufzeiten bei unterschiedlichen Aufrufen.
+Somit kann sich im gesamten Worst-Case-Verhalten eine bessere Laufzeitschranke
+ergeben.
+
+Ein Knoten der Höhe $h$ hat Kosten $h$ (max. Aufrufe aller \code{heapify}s
+für den Knoten).
+Lege auf jeden Knoten seine Kosten in Form von Münzen.
+Die Gesamtzahl an Münzen im Baum entspricht dann der Gesamtlaufzeit aller
+\code{heapify}s.
+Geschickte Zählung: Verteile die Münzen jedes Knotens auf dem Pfad zu
+einem Blatt, der zunächst einmal "`links"', dann immer "`rechts"' führt
+(auf jede Kante eine Münze legen).
+Man kann beobachten, dass die Pfade disjunkt sind.
+Somit liegt auf jeder Kante maximal eine Münze und die Gesamtanzahl an Münzen
+im Baum ist kleiner/gleich wie die Anzahl an Kanten $n - 1$
+(falls der Baum $n$ Knoten hat).
+Also ist die Gesamtlaufzeit aller \code{heapify}s $\O(n)$.
+
+\subsection{%
+    Quicksort%
+}
+
+\textbf{Quicksort} funktioniert wie Mergesort gemäß "`Teile \& Herrsche"'.
+Der große Unterschied besteht jedoch darin, dass Quicksort hier randomisiert
+ist, d.\,h. der Algorithmus "`würfelt"' und macht das weitere Vorgehen
+vom Ergebnis des Zufallsexperiments abhängig.
+Man will allerdings garantieren, dass am Ende immer das richtige Ergebnis
+herauskommt.
+Die Laufzeitanalyse ergibt dabei einen Erwartungswert für die Laufzeit,
+der unabhängig von der Eingabe ist.
+
+\begin{lstlisting}
+Quicksort(A[1 ... n])
+    wähle ein A[$p$] mit $p \in \{1, \dotsc, n\}$ zufällig gleichverteilt (u.a.r.)
+    
+    rearrangiere A in $A_L \;A[p]\; A_R$, wobei $\forall_{a \in A_L}\;
+    a \le A[p]$ sowie $\forall_{a \in A_R}\; a > A[p]$
+    
+    Quicksort($A_L$)
+    Quicksort($A_R$)
+\end{lstlisting}
+
+Dabei steht u.a.r. für \emph{uniformly at random} und bedeutet
+"`gleichverteilt"'.
+\code{A[p]} heißt auch \textbf{Pivotelement}.
+Für die Rearrangierung sind $n - 1$ Vergleiche notwendig.
+
+\linie
+
+\textbf{Laufzeitanalyse}:
+Angenommen, es wird zufällig immer das kleinste Element als Pivotelement
+gewählt.
+Dann ist $A_L$ immer leer und der nächste Aufruf muss $n - 1$ Elemente
+sortieren.
+Dies ergibt eine Laufzeit von $\O(n^2)$.
+Jedoch sollte dieser Fall fast nie eintreten, weil die $A[p]$ immer zufällig
+gewählt werden.
+
+Für die randomisierte Laufzeitanalyse benötigt man ein paar grundlegende
+Definitionen:
+
+\textbf{reelle Zufallvariable}: Eine Funktion, die jedem Ergebnis eines
+Zufallsexperiments eine reelle Zahl zuweist.
+Beispiel Würfeln mit zwei Würfel:
+Dann ist $x_{ij} = i + j$ eine Zufallsvariable, wobei $ij$ das Ergebnis
+bedeutet, bei dem der erste Würfel $i$ Augen und der zweite $j$ Augen zeigt.
+
+\textbf{Erwartungswert}: Ein gewichteter Durchschnitt aller auftretenden
+Werte der Zufallsvariable gemäß der Wahrscheinlichkeit, wobei der
+Erwartungswert einer bestimmten Zufallsvariable zugewiesen wird.
+Somit gibt der Erwartungswert die durchschnittlich zu erwartenden Kosten
+etc. an.
+Beispiel Würfeln mit zwei Würfel:
+Sei $X$ die Summe der Augenzahlen beider Würfel, dann ist
+der Erwartungswert $E(X) = 2 \cdot \frac{1}{36} + 3 \cdot \frac{2}{36} +
+\dotsb + 11 \cdot \frac{2}{36} + 12 \cdot \frac{1}{36} = 7$. \\
+Der Erwartungswert der Summe von Zufallsvariablen ist die Summe
+der Erwartungswerte.
+
+\linie
+
+Im Folgenden wird gezeigt, dass die erwartete Laufzeit unabhängig von der
+Eingabe $\O(n \log n)$ ist.
+Man kann auch zeigen, dass es sehr unwahrscheinlich ist, dass die Laufzeit
+stark vom Erwartungswert abweicht.
+
+\begin{Beweis}
+    Seien $s_1, \dotsc, s_n$ die zu sortierenden Elemente gemäß der Ordnung,
+    d\,h. $s_i \le s_{i+1}$ für $i = 1, \dotsc, n - 1$.
+    Definiere die Zufallvariable
+    {\tiny $x_{ij} = \begin{cases}1 & s_i, s_j
+    \text{ werden während des kompletten Quicksort miteinander verglichen} \\
+    0 & \text{sonst}\end{cases}$}.
+    Beachte, dass $s_i$ und $s_j$ höchstens einmal miteinander verglichen
+    werden können.
+    Dann beträgt die Gesamtlaufzeit $\sum_{i < j} x_{ij}$ (Gesamtzahl der
+    Vergleiche, $x_{ij} = x_{ji}$ nicht doppelt zählen), wobei über
+    $i, j = 1, \dotsc, n$ summiert wird. \\
+    Die erwartete Laufzeit beträgt somit $E(\sum_{i < j} x_{ij})
+    = \sum_{i < j} E(x_{ij})$.
+
+    Was ist $E(x_{ij})$?
+    Sei $p_{ij}$ die Wahrscheinlichkeit, dass $s_i$ und $s_j$
+    während des kompletten Quicksort miteinander verglichen werden,
+    dann ist $E(x_{ij}) = 1 \cdot p_{ij} + 0 \cdot (1 - p_{ij}) = p_{ij}$
+    (nach Wahrscheinlichkeit gewichteter Durchschnitt der Werte, die $x_{ij}$
+    annehmen kann).
+
+    Was ist nun $p_{ij}$?
+    Man kann den Ablauf von Quicksort als Binärbaum darstellen, wobei jeder
+    Knoten ein Pivotelement darstellt und das linke bzw. rechte Kind dem
+    Pivotelement von $A_L$ bzw. $A_R$ entspricht.
+    Schreibe nun die Knoten in diesem Baum als Permutation in Levelorder
+    (Breitensuche: Ebene für Ebene von oben nach unten, dort links nach rechts)
+    auf.
+
+    \pagebreak
+
+    Wenn $s_i$ mit $s_j$ verglichen wird, dann befindet sich kein Element $s_k$
+    mit $s_i < s_k < s_j$ vor $s_i$ und $s_j$ in der Permutation, da
+    sonst dieses $s_k$ als Pivotelement $s_i$ in $A_L$ und $s_j$ in $A_R$
+    sortiert hätte (somit wären die beiden nicht verglichen worden).
+    Umgekehrt verhält es sich genau so. \\
+    Betrachtet man die Elemente $s_i, s_{i+1}, \dotsc, s_{j-1}, s_j$, so tritt
+    jedes mit gleicher Wahrscheinlichkeit als erstes dieser Elemente in der
+    Permutation auf.
+    Die Wahrscheinlichkeit, dass kein $s_k$ mit $s_i < s_k < s_j$ vor $s_i$ und
+    $s_j$ auftritt, ist gleichbedeutend mit der Wahrscheinlichkeit, dass
+    $s_i$ oder $s_j$ als erstes Element auftritt.
+    Also ist $p_{ij} = \frac{2}{j - i + 1}$, da es $j - i + 1$ Elemente in
+    dieser Liste gibt.
+
+    Also ist $\sum_{i < j} E(x_{ij}) = \sum_{i < j} p_{ij}
+    = \sum_{i < j} \frac{2}{j - i + 1}
+    = \sum_{i=1}^n (1 + \sum_{j=i+2}^n \frac{2}{j - i + 1})
+    = \sum_{i=1}^n (1 + \sum_{j=1}^{n-i-1} \frac{2}{j})$ \\
+    $= n + 2 \cdot \sum_{i=1}^n \sum_{j=1}^{n-i-1} \frac{1}{j}
+    \le n + 2 \cdot \sum_{i=1}^n \sum_{j=1}^{n} \frac{1}{j}
+    \le n + 2 \cdot \sum_{i=1}^n \log n \in \O(n \log n)$.
+\end{Beweis}
+
+
+\subsection{%
+    Grenze von vergleichsbasiertem Sortieren%
+}
+\label{ss_grenze_von_vergleichsbasiertem_sortieren}
+
+Gibt es Sortieralgorithmen, die eine bessere Schranke als $\O(n \log n)$
+besitzen?
+Zunächst muss ein Sortierverfahren stets alle Elemente der Eingabe betrachten.
+Andernfalls könnte man in einem nicht betrachteten Element eine Zahl
+"`verstecken"', die der berechneten Sortierung widerspricht.
+Daher benötigt jeder Sortieralgorithmus mindestens $\Omega(n)$.
+
+\textbf{Behauptung}: Jeder vergleichsbasierte deterministische
+Sortieralgorithmus muss im Worst-Case $\Omega(n \log n)$ Zeit aufwenden.
+
+\begin{Beweis}
+    Man kann die Ausführung eines deterministischen Algorithmus als Folge
+    von Vergleichen auf"|fassen.
+    Wegen des Determinismus führt der Algorithmus je nach Ausgang eines
+    Vergleichs einen bestimmten nächsten Vergleich aus (oder terminiert).
+    Somit lässt sich der Ablauf als Binärbaum darstellen (wahrer/falscher
+    Vergleich).
+    Der Algorithmus stoppt nach einer gewissen Anzahl an Vergleichen und gibt
+    eine Permutation der Eingabe aus.
+    Dies entspricht einem Blatt in diesem Baum.
+    Verschiedene Permutationen (derselben Eingabe) müssen in verschiedenen
+    Blättern des Baums enden, sonst wäre für eine Eingabe die Ausgabe falsch.
+    Es gibt $n!$ verschiedene Permutationen und ein Binärbaum der Höhe $h$ hat
+    höchstens $2^h$ viele Blätter.
+    Es muss wegen des vorherigen Satzes mindestens so viele Blätter wie
+    Permutationen geben.
+    Also gilt $2^h \ge n!$ bzw.
+    $h \ge \log n! \ge \log \left(\frac{n}{e}\right)^n
+    = n \cdot \log \frac{n}{e} \in \Omega(n \log n)$
+    (\textsc{Stirling}-Formel).
+    Die Höhe des Baums entspricht der Anzahl an Vergleichen im Worst-Case, also
+    ist die Worst-Case-Laufzeit $\Omega(n \log n)$.
+\end{Beweis}
+
+Der Beweis gilt nur für deterministische Algorithmen (also eigentlich nicht
+für randomisierte Algorithmen wie Quicksort).
+Man kann allerdings zeigen, dass randomisiertes Sortieren ebenfalls
+erwartet $\Omega(n \log n)$ Zeit braucht.
+
+Nimmt man an, die zu sortierenden Objekte sind Zahlen beschränkter Größe,
+so gibt es (nicht vergleichsbasierte) Sortierverfahren, die die
+$\Omega(n \log n)$-Schranke schlagen (z.\,B. Countingsort, Radixsort).
+
+\pagebreak

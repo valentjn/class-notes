@@ -1,0 +1,292 @@
+\section{%
+    Lineare Optimierung%
+}
+
+\subsection{%
+    Lineares Programm und Basislösungen%
+}
+
+\textbf{Standardform eines linearen Programms}:
+Ein \emph{lineares Programm} in Standardform ist ein Optimierungsproblem
+mit linearer Zielfunktion,
+linearen Gleichungsnebenbedingungen und nicht-negativen Unbekannten:
+\begin{align*}
+    c^t x \rightarrow \min, \qquad
+    Ax = b, \qquad
+    x \ge 0.
+\end{align*}
+Man nimmt an, dass die $m \times n$-Matrix $A$ vollen Rang $m \le n$ hat.
+
+\textbf{allgemeines Problem auf Standardform bringen}:
+Sind nur allgemeine lineare Nebenbedingungen
+$Py = q$, $Ry \le s$ mit den Unbekannten $y_i$ gegeben, so kann man das Problem
+durch Einführung zusätzlicher Variablen auf die Standardform bringen: \\
+Man schreibt $y = u - v$ als Differenz nicht-negativer Vektoren $u, v \ge 0$
+und führt nicht-negative Schlupfvariablen $w$ ein, um
+die Ungleichungsnebenbedingungen zu entfernen. \\
+Genauer gesagt werden die Nebenbedingungen ersetzt durch
+\begin{align*}
+    Pu - Pv = q, \qquad
+    Ru - Rv + w = s, \qquad
+    (u, v, w) \ge 0.
+\end{align*}
+Ist $c^t x \rightarrow \max$ als Maximimierungsproblem gegeben, so kann man
+mit $d^t x \rightarrow \min$, $d = -c$ ein äquivalentes Minimierungsproblem
+erzeugen.
+
+\linie
+
+\textbf{Basislösung}:
+Ein Vektor $x$ heißt \emph{Basislösung} eines linearen Programms
+$c^t x \rightarrow \min$, $Ax = b$, $x \ge 0$ mit $m \times n$-Matrix $A$
+vollen Ranges, falls es einen Indexvektor
+$I \subset \{1, \dotsc, n\}$ der Länge $m$ gibt, sodass
+$A_I = A(:, I)$ invertierbar ist und $A_I x_I = b$ mit $x_I = x(I)$
+und $x_k = 0$ für $k \notin I$.
+
+\textbf{zulässig/unzulässig}:
+Die Basislösung $x$ heißt \emph{zulässig}, falls $x_I \ge 0$ ist.
+Ansonsten heißt sie nicht \emph{nicht zulässig} oder \emph{unzulässig}.
+
+Eine Basislösung ist demnach eine Lösung mit einer möglichst großen Anzahl
+an Nullen.
+Die Indexmenge legt die Basislösung eindeutig fest.
+Umgekehrt kann es jedoch zu einer Basislösung mehrere Indexmengen mit derselben
+Basislösung geben, falls $x_i = 0$ für bestimmte $i \in I$.
+
+\linie
+
+\textbf{Satz zur optimalen Lösung linearer Programme}: \\
+Sei ein lineare Programm $c^t x \rightarrow \min$, $Ax = b$, $x \ge 0$
+gegeben.
+Ist die zulässige Lösungsmenge
+$D = \{x \in \mathbb{R}^n \;|\; Ax = b,\; x \ge 0\}$
+nicht-leer und ist die Zielfunktion $c^t x$ auf $D$ nach unten beschränkt,
+so existiert eine optimale zulässige Basislösung $x^\ast$ mit
+$c^t x^\ast = \inf_{x \in D} c^t x$.
+
+Gibt es also Lösungen und die Zielfunktion ist auf $D$ nach unten beschränkt,
+so ist die zulässige Basislösung mit dem kleinsten Zielfunktionswert optimal.
+
+\pagebreak
+
+\subsection{%
+    Pivotschritt für ein lineares Programm und Rang-1-Modifikation einer
+    inversen Matrix%
+}
+
+\textbf{Pivotschritt}:
+Ein Pivotschritt für ein lineares Programm $c^t x \rightarrow \min$,
+$Ax = b$, $x \ge 0$ benötigt die Indexmenge $I$ einer zulässigen Basislösung
+$x$ und verändert diese zu einer Indexmenge $J$ einer neuen zulässigen
+Basislösung $y$, sodass der Zielfunktionswert nicht ansteigt, d.\,h.
+\begin{align*}
+    I \rightarrow J = (I \setminus j) \cup k \quad\text{ mit }\quad
+    c^t y \le c^t x.
+\end{align*}
+Der Pivotschritt tauscht also ein Index der Basislösung mit einem anderen aus,
+sodass die Lösung nicht schlechter wird.
+
+\textbf{Bestimmung der Indizes}:
+\begin{itemize}
+    \item
+    \textbf{Bestimmung von $k$}:
+    Sei $K = \{1, \dotsc, n\} \setminus I$ das Komplement von $I$. \\
+    Dann berechnet man
+    \begin{align*}
+        d_K^t = c_K^t - c_I^t A_I^{-1} A_K
+    \end{align*}
+    und man wählt den kleinsten Eintrag von $d_K$.
+    $k \in K$ ist dann der zugehörige Index. \\
+    Für $d_K \ge 0$ ist $x$ eine optimale Lösung des linearen Programms.
+    
+    \item
+    \textbf{Bestimmung von $j$}:
+    Sei $A_k = A(:, k)$.
+    Man berechnet nun
+    \begin{align*}
+        z_I = A_I^{-1} A_k.
+    \end{align*}
+    Ist $z_I \le 0$, so ist die Zielfunktion nach unten unbeschränkt
+    und daher das lineare Programm unlösbar.
+    Andernsfalls muss $j \in I$ so gewählt werden, sodass 
+    \begin{align*}
+        \frac{x_j}{z_j} \quad\text{ mit }\quad z_j > 0
+    \end{align*}
+    minimal wird.
+\end{itemize}
+Bei Uneindeutigkeit wird für $k$ und $j$ jeweils der kleinstmögliche Index
+gewählt.
+
+\linie
+
+\textbf{Rang-1-Modifikation einer inversen Matrix}:
+Sei eine invertierbare Matrix $A$ mit ihrer Inversen $A^{-1}$ gegeben.
+Die Matrix $B$ entsteht aus $A$, indem man die $j$-te Spalte durch den
+Vektor $v$ ersetzt. \\
+Gilt nun
+\begin{align*}
+    Au = v \quad\text{ mit }\quad u_j \not= 0,
+\end{align*}
+so ist $B$ invertierbar und für die inverse Matrix $B^{-1}$ gilt
+\begin{align*}
+    B^{-1} = QA^{-1} \quad\text{ mit }\quad
+    Q = E + \frac{1}{u_j} (e_j - u) e_j^t.
+\end{align*}
+
+\pagebreak
+
+\subsection{%
+    Simplex-Tableau und Simplex-Algorithmus%
+}
+
+\textbf{Simplex-Tableau}:
+Sei ein lineares Programm $c^t x \rightarrow \min$, $Ax = b$, $x \ge 0$
+gegeben.
+Dann kann ein Pivot-Schritt $I \rightarrow J = (I \setminus j) \cup k$
+mithilfe des Tableaus $T_I = (A_I^{-1}, x_I)$ durchgeführt werden.
+Um das Tableau $T_J = (A_J^{-1}, y_J)$ zu erhalten, wird $T_I$ wie folgt
+verändert:
+\begin{enumerate}
+    \item
+    Man berechnet $z_I = A_I^{-1} A_k$.
+    
+    \item
+    Die Zeile mit Index $j$ von $T_I$ wird durch $z_j$ dividiert.
+    
+    \item
+    Für alle $i \in I \setminus J$ wird die modifizierte Zeile mit Index $j$
+    mit $z_i$ multipliziert und von der Zeile mit Index $i$ subtrahiert.
+\end{enumerate}
+Dabei sind die Matrizen und Vektoren entsprechend $I$ und $J$ indiziert,
+d.\,h. die Zeile mit Index $i$ ist die $\ell$-te Zeile, wobei $i$ der
+$\ell$-te Index in $I$ ist.
+
+\linie
+
+\textbf{Simplex-Algorithmus}:
+Der Simplex-Algorithmus zur Lösung eines linearen Programms \\
+$c^t x \rightarrow \min$, $Ax = b$, $x \ge 0$
+modifiziert eine zulässige Basislösung $x_I$ mit aufeinanderfolgenden
+Pivot-Operationen, bis ein optimaler Vektor $x$ gefunden ist.
+
+Ein Schritt $x_I \rightarrow x_J$ mit $J = (I \setminus j) \cup k$,
+der das Simplex-Tableau $T_I = (A_I^{-1}, x_I)$ verwendet, verläuft wie folgt:
+\begin{enumerate}
+    \item
+    Man berechnet $d_K^t = c_K^t - c_I^t A_I^{-1} A_K$ mit
+    $K = \{1, \dotsc, n\} \setminus I$ und wählt $k$ kleinstmöglich,
+    sodass $d_K$ sein Minimum annimmt.
+    Für $d_k \ge 0$ ist die aktuelle Basislösung $x_I$ optimal.
+    
+    \item
+    Ist $z_I = A_I^{-1} A_k \le 0$, so ist $\inf_{x \in D} c^t x = -\infty$
+    und das lineare Programm hat keine Lösung.
+    Andernfalls wählt man $j$ kleinstmöglich, sodass
+    $\frac{x_i}{z_i}$ mit $z_i > 0$ und $i \in I$ minimal wird.
+    
+    \item
+    Das Tableau $T_I$ wird aktualisiert mit
+    $T_I = (A_I^{-1}, x_I) \rightarrow T_J = (A_J^{-1}, y_J)$, indem
+    die Zeile mit Index $j$ durch $z_j$ dividiert und
+    für jedes $i \in I \setminus j$ von der Zeile mit Index $i$
+    die modifizierte Zeile mit Index $j$ multipliziert mit $z_i$ subtrahiert
+    wird.
+\end{enumerate}
+
+\linie
+
+\textbf{Hilfsproblem für ein lineares Programm}: \\
+Der Simplex-Algorithmus zur Lösung eines linearen Programms
+$c^t x \rightarrow \min$, $Ax = b$, $x \ge 0$
+benötigt anfangs eine zulässige Basislösung. \\
+Ist $b = (b_1, \dotsc, b_m) \ge 0$, so kann eine solche
+durch Lösen des Hilfsproblems
+\begin{align*}
+    y_1 + \dotsb + y_m \rightarrow \min, \qquad
+    Ax + y = b, \qquad
+    x, y \ge 0
+\end{align*}
+bestimmt werden.
+Um dieses Hilfproblem wiederum mit dem Simplex-Algorithmus zu lösen,
+benötigt man wieder eine zulässige Basislösung zum Start, die jedoch
+durch $(x^t, y^t) = (0, b^t)$ einfach gegeben ist. \\
+Ist nun $(x^t, y^t)$ eine Lösung des Hilfsproblems, so ist $x$ eine
+zulässige Basislösung für das Ausgangsproblem, falls $y = 0$ ist. \\
+$y \not= 0$ ist genau dann der Fall, wenn das Ausgangsproblem keine
+zulässigen Punkte hat.
+
+\pagebreak
+
+\subsection{%
+    \emph{Beispiel}: Polynomiale Approximierung einer Funktion%
+}
+
+Gegeben seien Messpunkte $(t_j, f_j)$ für $j = 1, \dotsc, m$.
+Sie sollen durch ein Polynom $n$-ten Grades approximiert werden.
+Als Approximationsfehler soll hier der größte Abstand des Polynoms
+zu einem Punkt minimiert werden:
+$\max_{j=1,\dotsc,m}
+\left|f_j - \sum_{k=0}^n p_k t_j^k\right| \rightarrow \min$.
+
+Dies lässt sich in Ungleichungen durch
+$\sum_{k=0}^n p_k t_j^k - e \le f_j$ und
+$\sum_{k=0}^n p_k t_j^k + e \ge f_j$ mit $e \rightarrow \min$ darstellen.
+Die Einführung von Schlupfvariablen führt zu \\
+$\sum_{k=0}^n p_k t_j^k - e + \delta_j^+ = f_j$ und
+$\sum_{k=0}^n p_k t_j^k + e = f_j + \delta_j^-$.
+
+Setzt man $p_k = p_k^+ - p_k^-$ mit $p_k^+, p_k^- \ge 0$ und trennt
+Variablen und Konstanten, so erhält man \\
+$-e + p_0^+ t_j^0 + \dotsb + p_n^+ t_j^n -
+p_0^- t_j^0 - \dotsb - p_n^- t_j^n + \delta_j^+ = f_j$ und \\
+$-e - p_0^+ t_j^0 - \dotsb - p_n^+ t_j^n +
+p_0^- t_j^0 + \dotsb + p_n^- t_j^n + \delta_j^- = -f_j$
+für $j = 1, \dotsc, m$.
+
+So erhält man die Nebenbedingungen
+\begin{align*}
+    \underbrace{\left(\begin{array}{ccccccccccccc}
+        -1 & t_1^0 & \dots & t_1^n & -t_1^0 & \dots & -t_1^n &
+        1 & & 0 & 0 & \dots & 0 \\
+        \vdots & \vdots & & \vdots & \vdots & & \vdots & & \ddots &
+        & \vdots & & \vdots \\
+        -1 & t_m^0 & \dots & t_m^n & -t_m^0 & \dots & -t_m^n &
+        0 & & 1 & 0 & \dots & 0 \\
+        -1 & -t_1^0 & \dots & -t_1^n & t_1^0 & \dots & t_1^n &
+        0 & \dots & 0 & 1 & & 0 \\
+        \vdots & \vdots & & \vdots & \vdots & & \vdots &
+        \vdots & & \vdots & & \ddots & \\
+        -1 & -t_m^0 & \dots & -t_m^n & t_m^0 & \dots & t_m^n &
+        0 & \dots & 0 & 0 & & 1
+    \end{array}\right)}_{A}
+    \underbrace{\left(\begin{array}{c}
+        e \\
+        p_0^+ \\
+        \vdots \\
+        p_n^+ \\
+        p_0^- \\
+        \vdots \\
+        p_n^- \\
+        \delta_1^+ \\
+        \vdots \\
+        \delta_m^+ \\
+        \delta_1^- \\
+        \vdots \\
+        \delta_m^-
+    \end{array}\right)}_{x}
+    =
+    \underbrace{\left(\begin{array}{c}
+        f_1 \\
+        \vdots \\
+        f_m \\
+        - f_1 \\
+        \vdots \\
+        - f_m
+    \end{array}\right)}_{b}.
+\end{align*}
+
+Eine Startlösung erhält man mit dem Polynom $p = 0$
+($p_k^+ = p_k^- = 0$, $e = \max_{j=1,\dotsc,m} |f_j|$).
+
+\pagebreak

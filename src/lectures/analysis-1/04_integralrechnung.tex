@@ -1,0 +1,690 @@
+\section{%
+    Zur Integralrechnung von Funktionen einer Variablen%
+}
+
+\subsection{%
+    Das \textsc{Riemann}-Integral%
+}
+
+Gegeben sei eine Funktion $f: [a,b] \rightarrow \mathbb{R}$, wobei $a \le b$.
+
+Durch $a = x_0 \le x_1 \le \cdots \le x_{n-1} \le x_n = b$ wird das Intervall
+$[a,b]$ zerlegt, die Menge $\delta = \{x_k\}_{k=0}^n = \{x_0, \ldots, x_n\}$
+heißt \textbf{Zerlegung} von $[a,b]$.
+
+$\Delta x_k = x_k - x_{k-1}$ ist die Länge, $\Delta_k = [x_{k-1}, x_k]$ das
+Intervall des $k$-ten Teilstücks.\\
+$\lambda(\delta) = \max_{k=1,\ldots,n} \Delta x_k$ bezeichnet den
+\textbf{Rang der Zerlegung} (Länge des längsten Teilstücks).
+
+Für jedes $\Delta_k$ kann man eine Stützstelle
+$\xi_k \in \Delta_k = [x_{k-1}, x_k]$ wählen ($k = 1, \ldots, n$). \\
+$\xi = \{\xi_k\}_{k=1}^n = \{\xi_1, \ldots, \xi_n\}$ bezeichnet einen
+\textbf{Satz von Stützstellen} für die Zerlegung $\delta$.
+
+$\mathfrak{S}(f, \delta, \xi) = \sum_{k=1}^n f(\xi_k) \Delta x_k$ heißt dann
+\textbf{\textsc{Riemann}-Summe} von $f$ bzgl. der Zerlegung $\delta$ und dem
+Satz von Stützstellen $\xi$.
+
+\linie
+
+$f: [a,b] \rightarrow \mathbb{R}$ heißt \textbf{\textsc{Riemann}-integrierbar},
+falls es ein $I \in \mathbb{R}$ gibt mit
+$I = \lim_{\lambda(\delta) \to 0} \mathfrak{S}(f, \delta, \xi)$ \\
+$\overset{\text{def.}}{\Leftrightarrow}\;
+\forall_{\varepsilon > 0}
+\exists_{\eta > 0}
+\forall_{\text{Zerlegungen } \delta,\; \lambda(\delta) < \eta}
+\forall_{\text{Stützstellen } \xi \text{ zu } \delta}\;
+|I - \mathfrak{S}(f, \delta, \xi)| < \varepsilon$ \\
+$\Leftrightarrow\;
+\forall_{\varepsilon > 0}
+\exists_{\eta > 0}
+\forall_{\delta', \delta'',\; \lambda(\delta') < \eta,\;
+\lambda(\delta'') < \eta}
+\forall_{\xi' = \xi'(\delta'),\; \xi'' = \xi''(\delta'')}\;
+|\mathfrak{S}(f, \delta', \xi') - \mathfrak{S}(f, \delta'', \xi'')|
+< \varepsilon$.
+
+\textbf{alternative Definition}:
+Eine Folge von Zerlegungen $\{\delta_k\}_{k \in \mathbb{N}}$ heißt
+\emph{ausgezeichnet}, falls \\
+$\lambda(\delta) \to 0$ für $k \to \infty$.
+Sei $\xi = \xi(\delta_k)$ ein beliebiger Satz von Stützstellen zu
+$\delta_k$. \\
+Falls $\mathfrak{S}(f, \delta_k, \xi(\delta_k))$ für $k \to \infty$
+immer einen Grenzwert $I$ besitzt und dieser Grenzwert unabhängig von der Wahl
+der $\delta_k$ und $\xi(\delta_k)$ ist, so nennt man $f$ Riemann-integrierbar.
+
+In jedem Fall schreibt man dann $\int_a^b f(x)\dx := I$.
+
+Es gilt $\int_a^a f(x)\dx = 0$
+\quad und \quad $\int_b^a f(x)\dx := -\int_a^b f(x)\dx$ für $a < b$ \\
+(das Riemann-Integral ist \emph{gerichtet}).
+
+\textbf{komplexwertige Funktionen}:
+Eine Funktion $f: [a,b] \rightarrow \mathbb{C}$ ist Riemann-integrierbar \\
+$\overset{\text{def.}}{\Leftrightarrow}\;$ $\Re f, \Im f$ sind
+Riemann-integrierbar, \quad
+$\int_a^b f(x)\dx := \int_a^b \Re(f(x))\dx + i \cdot \int_a^b \Im(f(x))\dx$.
+
+\textbf{vektorwertige Funktionen}:
+Eine Funktion $f: [a,b] \rightarrow \mathbb{K}^m$ ist Riemann-integrierbar \\
+$\overset{\text{def.}}{\Leftrightarrow}\;$ $\pi_j(f(x))$ ist
+Riemann-integrierbar für $j = 1, \ldots, m$, \quad
+$\pi_j\left(\int_a^b f(x)\dx\right) := \int_a^b \pi_j(f(x))\dx$.
+
+$R[a,b]$ ist die \textbf{Menge der Riemann-integrierbaren Funktionen}
+$f: [a,b] \rightarrow \mathbb{R}$.
+
+\textbf{R.-integr. Funktionen sind beschränkt}:
+Sei $f \in R[a,b]$. \qquad
+Dann ist $f$ beschränkt.
+
+\linie
+
+\textbf{Stetigkeitsmodul}:
+Seien $f: [a,b] \rightarrow \mathbb{R}$ sowie $E \subset [a,b]$. \\
+$\omega(f, E) = \sup_{x', x'' \in E} |f(x') - f(x'')|$
+heißt Stetigkeitsmodul von $f$ auf $E$.
+
+\textbf{Satz}:
+Seien $f: [a,b] \rightarrow \mathbb{R}$ beschränkt und
+$\lim_{\lambda(\delta) \to 0} \sum_{k=1}^n \omega(f, \Delta_k) \Delta x_k = 0$,
+d.\,h. \\
+$\forall_{\varepsilon > 0} \exists_{\eta > 0}
+\forall_{\delta,\; \lambda(\delta) < \eta}\;
+\sum_{k=1}^n \omega(f, \Delta_k) \Delta x_k < \varepsilon$. \qquad
+Dann ist $f \in R[a,b]$.
+
+\textbf{stetige Funktionen}:
+Stetige Funktionen $f \in C([a,b])$ sind Riemann-integrierbar. \\
+Ist eine Funktion bis auf endlich viele Punkte stetig, so ist sie
+Riemann-integrierbar. \\
+Verändert man eine Riemann-integrierbare Funktionen in nur einem Punkt,
+so ist sie immer noch Riemann-integrierbar und das Integral ist dasselbe.
+
+\linie
+
+\pagebreak
+
+\textbf{obere/untere \textsc{Darboux}-Summe}:
+Seien $f: [a,b] \rightarrow \mathbb{R}$ beschränkt und \\
+$a = x_0 < x_1 < \cdots < x_{n-1} < x_n = b$ mit
+$\Delta_k = [x_{k-1}, x_k]$. \\
+Außerdem sei $m_k = \inf_{x \in \Delta_k} f(x)$ und
+$M_k = \sup_{x \in \Delta_k} f(x)$. \\
+Dann heißt $s(f, \delta) = \sum_{k=1}^n m_k \Delta x_k$ untere bzw.
+$S(f, \delta) = \sum_{k=1}^n M_k \Delta x_k$ obere Darboux-Summe. \\
+Es gilt $s(f, \delta) \le \mathfrak{S}(f, \delta, \xi) \le S(f, \delta)$
+für jeden Satz von Stützstellen $\xi$.
+
+\textbf{Konvergenz der \textsc{Darboux}-Summe}:
+Sei $f: [a,b] \rightarrow \mathbb{R}$ beschränkt.
+Dann ist \\
+$f \in R[a,b] \;\Leftrightarrow\;
+\exists I = \lim_{\lambda(\delta) \to 0} s(f, \delta) =
+\lim_{\lambda(\delta) \to 0} S(f, \delta)$ \qquad
+$(I = \int_a^b f(x)\dx)$.
+
+\textbf{Satz}:
+Sei $f: [a,b] \rightarrow \mathbb{R}$ beschränkt.
+Dann ist \\
+$f \in R[a,b] \;\Leftrightarrow\;
+\lim_{\lambda(\delta) \to 0} \sum_{k=1}^n \omega(f, \Delta_k) \Delta x_k = 0$.
+
+\linie
+
+\textbf{\textsc{Lebesgue}-Maß}:
+Eine Menge $E \subset \mathbb{R}$ besitzt das Lebesgue-Maß $0$, falls \\
+$\forall_{\varepsilon > 0}
+\exists_{\{I_k(\varepsilon)\}_{k \in \mathbb{N}}}$ \quad
+1) $E \subset \bigcup_{k \in \mathbb{N}} I_k(\varepsilon)$ \quad und \quad
+2) $\sup_{n \in \mathbb{N}} \left(\sum_{k=1}^n |I_k(\varepsilon)|\right) <
+\varepsilon$, \\
+wobei $I_k = [\alpha_k, \beta_k] \subset \mathbb{R}$ mit $k \in \mathbb{N}$
+und $|I_k| = \beta_k - \alpha_k$.
+
+\textbf{fast überall}:
+Eine Aussageform $H(x)$ ist fast überall wahr, falls es eine Menge
+$E \subset [a,b]$ mit Lebesgue-Maß 0 gibt, sodass $H(x)$ wahr ist auf
+$[a,b] \setminus E$.
+
+\textbf{\textsc{Lebesgue}-Kriterium zur Riemann-Integrierbarkeit}:
+Sei $f: [a,b] \rightarrow \mathbb{R}$ beschränkt. \\
+Dann ist $f \in R[a,b] \;\Leftrightarrow\;$
+$f$ ist fast überall auf $[a,b]$ stetig.
+
+\textbf{monotone Funktionen}:
+Beschränkte und monotone Funktionen sind Riemann-integrierbar.
+
+\textbf{Struktur von $R[a,b]$}:
+Seien $f, g: [a,b] \rightarrow \mathbb{R}$,
+$\alpha \in \mathbb{R}$,
+$f, g \in R[a,b]$ und
+$[c,d] \subset [a,b]$. \\
+Dann ist auch $f + g,\quad \alpha \cdot f,\quad |f|,\quad f \cdot g \in R[a,b]$
+sowie $f|_{[c,d]} \in R[c,d]$.
+
+\subsection{%
+    Eigenschaften des \textsc{Riemann}-Integrals%
+}
+
+\textbf{Satz (Linearität)}:
+Seien $f, g \in R[a,b]$ und $\alpha, \beta \in \mathbb{R}$. \\
+Dann ist $\alpha f + \beta g \in R[a,b]$ und
+$\int_a^b (\alpha f + \beta g)(x)\dx =
+\alpha \int_a^b f(x)\dx + \beta \int_a^b g(x)\dx$.
+
+\textbf{Satz (Additivität bzgl. Integrationsbereich)}: \\
+$f \in R[a,b] \;\Leftrightarrow\;
+f|_{[a,c]} \in R[a,c] \land f|_{[c,b]} \in R[c,b]$ \\
+und $\int_a^b f(x)\dx = \int_a^c f(x)\dx + \int_c^b f(x)\dx$
+für $c \in \left]a,b\right[$. \\
+\emph{(Satz gilt mit $\int_b^a f(x)\dx = -\int_a^b f(x)\dx$ unabhängig von
+$c \in \left]a,b\right[$!)}
+
+\textbf{Satz (Monotonie des Riemann-Integrals)}:
+Seien $f_1, f_2 \in R[a,b]$ mit $f_1(x) \le f_2(x)$ für alle $x \in [a,b]$,
+wobei $a < b$. \qquad
+Dann ist $\int_a^b f_1(x)\dx \le \int_a^b f_2(x)\dx$.
+
+\textbf{Spezialfall}:
+Sei $f: [a,b] \rightarrow \mathbb{R}$ mit $m \le f(x) \le M$ für alle
+$x \in [a,b]$, wobei $a < b$. \\
+Dann ist $m \cdot (b - a) \le \int_a^b f(x)\dx \le M \cdot (b - a)$.
+
+\textbf{Spezialfall}:
+$\left|\int_a^b f(x)\dx\right| \le (b - a) \cdot \sup_{x \in [a,b]} |f(x)|$
+
+\textbf{Spezialfall}:
+$\left|\int_a^b f(x)\dx\right| \le \int_a^b |f(x)|\dx$
+
+\pagebreak
+
+\subsection{%
+    Die Formel von \textsc{Newton}-\textsc{Leibniz}%
+}
+
+\textbf{Satz von \textsc{Newton}-\textsc{Leibniz}}:
+Seien $F: [a,b] \rightarrow \mathbb{R}$ stetig,
+dif"|fb. in $\left]a,b\right[$ und \\
+$\dot{F}(x) =$ {\footnotesize $\begin{cases}F'(x) & x \in \left]a,b\right[ \\
+0 & x = a \lor x = b\end{cases}$} \;mit $\dot{F}(x) \in R[a,b]$. \qquad\qquad
+Dann ist $\int_a^b \dot{F}(x)\dx = F(b) - F(a)$.
+
+Der Satz lässt sich für Funktionen $F: [a,b] \rightarrow \mathbb{K}^n$
+verallgemeinern (komponentenweise).
+
+\textbf{Stammfunktion}:
+$F: [a,b] \rightarrow \mathbb{K}^n$ ist eine Stammfunktion von
+$f: [a,b] \rightarrow \mathbb{K}^n$, falls \\
+$F$ stetig auf $[a,b]$, \qquad
+$F$ dif"|fb. in $\left]a,b\right[$ \qquad und \qquad
+$F'(x) = f(x)$ für alle $x \in \left]a,b\right[$.
+
+Existiert zu $f$ eine Stammfunktion $F$, so ist diese bis auf eine Konstante
+eindeutig bestimmt.
+
+\textbf{Hauptsatz der Dif"|ferential- und Integralrechnung}:
+Sei $f: [a,b] \rightarrow \mathbb{R}$ mit $f \in R[a,b]$ und es existiere
+eine Stammfunktion $F$ zu $f$. \qquad\qquad
+Dann ist $\int_a^b f(x)\dx = F(b) - F(a)$.
+
+\linie
+
+\textbf{Satz}:
+Jede stetige Funktion $f: [a,b] \rightarrow \mathbb{R}$ besitzt eine
+Stammfunktion $F$ der Form \\
+$F(x) =$ {\footnotesize $\begin{cases}C & x = a \\
+\int_a^x f(t)\dt + C & x \in \left]a,b\right]\end{cases}$}.
+
+Allerdings besitzt nicht jede Funktion $f \in R[a,b]$ eine Stammfunktion!
+Beispiele sind monotone Funktionen mit Sprungstellen.
+Sie können nach \textsc{Darboux} keine Ableitung einer anderen
+Funktion darstellen.
+Auch bedeutet die Existenz nicht, dass man sie
+explizit hinschreiben kann.
+
+\linie
+
+\textbf{partielle Integration}:
+Seien $f, g: [a,b] \rightarrow \mathbb{R}$ stetig auf $[a,b]$,
+dif"|fb. in $\left]a,b\right[$ sowie \\
+$f'g, fg' \in R[a,b]$. \qquad\qquad
+Dann ist $\int_a^b f'g\dx = fg|_a^b - \int_a^b fg'\dx$.
+
+\subsection{%
+    Zur Integration rationaler Funktionen%
+}
+
+Wir betrachten rationale Funktionen
+$R(x) =$ {\large $\frac{P_m(x)}{Q_n(x)}$} $ = $
+{\large $\frac{a_m x^m \;+\; \cdots \;+\; a_1 x \;+\; a_0}
+{b_m b^m \;+\; \cdots \;+\; b_1 x \;+\; b_0}$} mit $a_m, b_n \not= 0$.
+
+\textbf{Spezialfälle}: \\
+$Q_n(x) = 1$: \qquad $\int P_m(x)\dx = $ {\large $\frac{a_m}{m + 1}$}
+$x^{m+1} + \cdots + $ {\large $\frac{a_1}{2}$} $x^2 + a_0 x + C$ \\
+$P_m(x) = 1$, $Q_n(x) = (x - a)^n$: \qquad
+$\int$ {\large $\frac{1}{(x - a)^n}$} $ = $
+{\footnotesize $\begin{cases}\ln |x - a| + C & \quad n = 1 \\
+\frac{(x - a)^{1-n}}{1 - n} + C & \quad n \ge 2 \end{cases}$}
+
+\textbf{Polynomdivision}:
+Seien $P_m(x)$ und $Q_n(x)$ zwei Polynome mit $m \ge n \ge 1$.
+Dann existieren eindeutig bestimmte Polynome $S_{m-n}(x)$ und
+$T_\ell(x)$ mit $\ell < n$, sodass
+{\large $\frac{P_m(x)}{Q_n(x)}$}
+$= S_{m-n}(x) \;+$ {\large $\frac{T_\ell(x)}{Q_n(x)}$}. \\
+$S_{m-n}(x)$ und $T_\ell(x)$ kann man durch \emph{Polynomdivision} bestimmen.
+
+\textbf{Satz}:
+Seien $P_m(x)$, $Q_n(x)$ Polynome mit $m < n$,
+$Q_n(x) = \prod_{i=1}^\ell (x - a_i)^{\kappa_i}$ und
+$\sum_{i=1}^\ell \kappa_i = n$. \\
+Dann gibt es eindeutig bestimmte Koef"|fizienten $A_{ir}$, sodass
+{\large $\frac{P_m(x)}{Q_n(x)}$} $= \sum_{i=1}^\ell \sum_{r=1}^{\kappa_i}$
+{\large $\frac{A_{ir}}{(x - a_i)^r}$}.
+
+\linie
+
+\textbf{Bestimmung der Koef"|fizienten}:
+$\frac{x^2 + 1}{x(x+1)(x-1)} = \frac{A_{11}}{x} + \frac{A_{21}}{x + 1} +
+\frac{A_{31}}{x - 1}$
+\begin{itemize}
+   \item \emph{Ausmultiplizieren und Koef"|fizientenvergleich}: \\
+   $\Rightarrow\; x^2 + 0x + 1 = A_{11}(x + 1)(x - 1) + A_{21}x(x - 1) +
+   A_{31}x(x + 1)$ \\
+   $\Leftrightarrow\; x^2 + 0x + 1 = (A_{11} + A_{21} + A_{31})x^2 +
+   (-A_{21} + A_{31})x + (-A_{11}) \cdot 1$, \qquad
+   LGS lösen
+   
+   \item \emph{Hand auf"|legen}:
+   $x_1 = 0$, $x_2 = -1$, $x_3 = 1$,
+   $A_{11} = \frac{x_1^2 + 1}{(x_1 + 1)(x_1 - 1)}$,
+   $A_{21} = \frac{x_2^2 + 1}{x_2 (x_2 - 1)}$,
+   $A_{31} = \frac{x_3^2 + 1}{x_3 (x_3 + 1)}$ \\
+   Man setzt in die linke Seite immer eine Nullstelle ein, während
+   man den zur Nullstelle zugehörigen Faktor im Nenner "`zudeckt"'.
+   Nachteil: Bei mehrfachen Nullstellen kann man nur den Koef"|fizienten mit
+   dem höchsten Exponenten ermitteln.
+   Empfohlen wird eine gemischte Anwendung beider Methoden mit
+   "`Hand auf"|legen"' zuerst und dann LGS lösen.
+\end{itemize}
+
+\subsection{%
+    Die Mittelwertsätze der Integralrechnung%
+}
+
+\textbf{1. Mittelwertsatz der Integralrechnung}: \\
+Seien $f, g: [a,b] \rightarrow \mathbb{R}$ stetig und $g(x) \ge 0$
+für $x \in [a,b]$. \\
+Dann gibt es ein $\xi \in [a,b]$, sodass
+$\int_a^b f(x)g(x)\dx = f(\xi) \cdot \int_a^b g(x)\dx$.
+
+\textbf{Spezialfall ($g(x) = 1$)}:
+Sei $f: [a,b] \rightarrow \mathbb{R}$ stetig. \\
+Dann gibt es ein $\xi \in [a,b]$, sodass
+$\int_a^b f(x)\dx = f(\xi) \cdot (b-a)$.
+
+\linie
+
+\emph{Lemma}: Sei $g \in R[a,b]$.
+Dann ist $G: [a,b] \rightarrow \mathbb{R}$, $G(x) = \int_a^\xi g(x)\dx$ stetig.
+
+\textbf{2. Mittelwertsatz der Integralrechnung}: \\
+Seien $f: [a,b] \rightarrow \mathbb{R}$ monoton fallend, $f \ge 0$
+und $g \in R[a,b]$. \\
+Dann gibt es ein $\xi \in [a,b]$, sodass
+$\int_a^b f(x)g(x)\dx = f(a) \cdot \int_a^\xi g(x)\dx$.
+
+\textbf{Spezialfall ($g(x) = 1$)}:
+Sei $f: [a,b] \rightarrow \mathbb{R}$ monoton fallend und $f \ge 0$. \\
+Dann gibt es ein $\xi \in [a,b]$, sodass
+$\int_a^b f(x)\dx = f(a) \cdot (\xi - a)$.
+
+Analog lässt sich der Satz für $f\!\!\uparrow$, $f \ge 0$ und $g \in R[a,b]$
+formulieren \\
+($\exists_{\xi \in [a,b]}\; \int_a^b f(x)g(x)\dx =
+f(b) \cdot \int_\xi^b g(x)\dx$).
+
+\linie
+
+\textbf{Satz (Erweiterung des 2. MWS)}:
+Sei $f$ monoton und beschränkt sowie $g \in R[a,b]$. \\
+Dann gibt es ein $\xi \in [a,b]$, sodass
+$\int_a^b f(x)g(x) = f(a) \int_a^\xi g(x)\dx + f(b) \int_\xi^b g(x)\dx$.
+
+Die Mittelwertsätze gelten i.\,A. nicht für komplex- oder vektorwertige
+Funktionen (beim komponentenweisen Anwenden können die $\xi$ unterschiedlich
+sein).
+
+\subsection{%
+    Zur Substitution der Integrationsvariablen%
+}
+
+\textbf{Satz}:
+Seien $f: [a,b] \rightarrow \mathbb{K}^n$ und
+$\psi: [\alpha,\beta] \rightarrow [a,b]$ stetig, $\psi$ dif"|fb. in
+$\left]\alpha,\beta\right[$ und $\psi'$ stetig in $\left]\alpha,\beta\right[$,
+wobei $\psi(\alpha) = a$ und $\psi(\beta) = b$.
+Außerdem existieren die Grenzwerte
+$\lim_{t \to \alpha} \psi'(t) \in \mathbb{R}$ und
+$\lim_{t \to \beta} \psi'(t) \in \mathbb{R}$,
+d.\,h. $\psi'$ lässt sich in den Randpunkten stetig fortsetzen. \\
+Dann ist $\int_a^b f(x)\dx = \int_\alpha^\beta f(\psi(t)) \psi'(t)\dt$.
+
+\subsection{%
+    Das Restglied in der Formel von \textsc{Taylor}%
+}
+
+\textbf{Formel von \textsc{Taylor} (Wiederholung)}:
+Sei $f: X \subset \mathbb{K} \rightarrow \mathbb{K}^n$ mit $X$ of"|fen,
+wobei $\overline{x_0 x} \in X$ ($x = x_0 + h$) und $f$ in $x_0$ $m$-fach
+dif"|fb. \\
+Dann ist $f(x_0 + h) = f(x_0) + \sum_{k=1}^m$
+{\large $\frac{f^{(k)}(x_0)}{k!}$}$h^k +
+r_m(x_0, h)$ mit $r_m(x_0, h) = o(h^m)$ für $h \to 0$.
+
+\textbf{Satz}: Sei $f$ zusätzlich in allen Punkten von $\overline{x_0 x}$
+$(m+1)$-fach stetig dif"|fb. \\
+Dann ist $r_m(x_0, h) =$ {\large $\frac{h^{m+1}}{m!}$} $\cdot
+\int_0^1 f^{(m+1)}(x_0 + th) (1 - t)^m \dt$.
+
+\textbf{Folgerung}:
+$\Vert r_m(x_0, h) \Vert \le$ {\large $\frac{|h|^{m+1}}{(m + 1)!}$} $\cdot
+\sup_{y \in \overline{x_0 x}} \Vert f^{(m+1)}(y) \Vert$
+
+\textbf{Spezialfall}:
+Für Funktionen $f: X \subset \mathbb{R} \rightarrow \mathbb{R}$ gilt
+$r_m(x_0, h) =$ {\large $\frac{f^{(m+1)}(y)}{(m + 1)!}$}$h^{m+1}$
+für einen bestimmten Punkt $y \in \overline{x_0 x}$.
+
+\pagebreak
+
+\subsection{%
+    Interpolationsformel von \textsc{Lagrange}%
+}
+
+Gegeben sei eine Fkt. $f: [a,b] \rightarrow \mathbb{R}$ und eine Zerlegung
+$a' = x_0 < x_1 < \cdots < x_{n-1} < x_n = b'$ mit $a < a' < b' < b$.
+Gesucht wird ein Polynom $P_n(x)$ mit $P(x_k) = f(x_k)$ für $k = 0, \ldots, n$,
+wobei $\deg P_n \le n$.
+
+Eine Lösung existiert in der Form $P_n(x) = \sum_{k=0}^n f(x_k)q_k(x)$
+mit $q_k(x_\ell) = 0$ für $\ell \not= k$ und
+$q_k(x_\ell) = 1$ für $\ell = k$. \\
+Die $q_k$ sind Polynome vom Grad $\le n$: \quad
+$q_k(x) =$
+{\large $\frac{(x - x_0) \cdots (x - x_{k-1}) (x - x_{k+1}) \cdots (x - x_n)}
+{(x_k - x_0) \cdots (x_k - x_{k-1}) (x_k - x_{k+1}) \cdots (x_k - x_n)}$}.
+
+\textbf{Satz (Fehlerabschätzung)}:
+Sei $f$ $(n+1)$-mal stetig dif"|fb. \\
+Dann gilt $\forall_{x \in [a',b']} \exists_{\eta_x \in [a',b']}\;
+f(x) - P_n(x) =$ {\large $\frac{f^{(n+1)}(\eta_x)}{(n + 1)!}$}
+$(x - x_0) \cdots (x - x_n)$.
+
+\subsection{%
+    Anwendungen der Dif"|ferential- und Integralrechnung%
+}
+
+\subsubsection{%
+    Länge und Krümmung einer Kurve%
+}
+
+Seien $\varphi: [a,b] \rightarrow \mathbb{R}^n$ und
+$\Gamma_\varphi = \varphi([a,b])$.
+
+\textbf{einfache Kurve}: Sei $\varphi$ stetig und injektiv.
+Dann erzeugt $\varphi$ die \emph{einfache Kurve} $\Gamma_\varphi$.
+
+\textbf{geschlossene Kurve}: Sei $\varphi$ stetig,
+$\varphi|_{\left[a,b\right[}$ injektiv und $\varphi(a) = \varphi(b)$. \\
+Dann erzeugt $\varphi$ die \emph{geschlossene Kurve} $\Gamma_\varphi$.
+
+\textbf{\textsc{Jordan}sche Kurve}: Einfache/geschlossene Kurven
+werden \emph{Jordansche Kurven} genannt.
+
+\textbf{\textsc{Jordan}sche Kurve der Klasse $C^p$}: $\varphi$ erzeuge eine
+Jordansche Kurve $\Gamma_\varphi$. \\
+Ist zusätzlich $\varphi$ $p$-fach stetig dif"|fb., $\varphi^{(k)}$ für
+$k = 0, \ldots, p$ stetig auf $[a,b]$ fortsetzbar sowie $\varphi'(t) \not= 0$
+für alle $t \in [a,b]$, so erzeugt $\varphi$ eine
+\emph{Jordansche Kurve der Klasse $C^p$}.
+
+\linie
+
+$\varphi: [a,b] \rightarrow \mathbb{R}^n$ erzeuge die Jordansche Kurve
+$\Gamma_\varphi$.
+Für jede Zerlegung $\delta = \{x_k\}_{k=0}^m$ von $[a,b]$ kann man die
+\textbf{Länge $\ell^\delta$ des zugehörigen Polygonzugs} definieren als
+$\ell^\delta = \sum_{k=1}^m \Vert \varphi(x_k) - \varphi(x_{k-1}) \Vert$. \\
+Für eine Zerlegung $\delta'$ mit $\delta \subset \delta'$ gilt
+$\ell^\delta \le \ell^{\delta'}$ (aufgrund Dreiecksungleichung).
+
+Die Kurve $\Gamma_\varphi$ ist \textbf{rektifizierbar}, falls
+$L(\Gamma_\varphi) = \sup_\delta \ell^\delta$ endlich ist. \\
+$L(\Gamma_\varphi) = \sup_\delta \ell^\delta$ heißt dann die
+\textbf{Bogenlänge} der Kurve $\Gamma_\varphi$.
+
+\textbf{Satz}: $\varphi: [a,b] \rightarrow \mathbb{R}^n$ erzeuge die
+Jordansche Kurve $\Gamma_\varphi$ der Klasse $C^1$. \\
+Dann ist $\Gamma_\varphi$ rektifizierbar und
+$L(\Gamma_\varphi) = \int_a^b \Vert \varphi'(t) \Vert \dt$.
+
+\linie
+
+\textbf{Kanon. Parametrisierung}:
+$\varphi: [a,b] \rightarrow \mathbb{R}^n$ erzeuge die
+Jordansche Kurve $\Gamma_\varphi$ der Klasse $C^1$. \\
+Sei $S: [a,b] \rightarrow [0, L(\Gamma_\varphi)]$ mit
+$S(t) = L(\Gamma_t) = L(\varphi([a,t])) =
+\int_a^t \Vert \varphi'(\tau) \Vert d \tau$. \\
+Es gilt $S'(t) = \Vert \varphi'(t) \Vert > 0$ und daher
+$S\!\!\upuparrows$, $S$ stetig. \\
+Also ist $S$ bijektiv mit der stetigen Umkehrfunktion
+$S^{-1}: [0, L(\Gamma_\varphi)] \rightarrow [a,b]$. \\
+$r: [0, L(\Gamma_\varphi)] \rightarrow \mathbb{R}^n$,
+$r(s) = \varphi(S^{-1}(s))$ ist dann eine neue Parametrisierung und wird
+\textbf{kanonische Parametrisierung} genannt.
+Das Kurvenstück zu $r|_{[0,s]}$ besitzt die Bogenlänge $s$. \\
+$r$ ist stetig dif"|fb. und $\Gamma_r$ ist eine Jordansche Kurve der Klasse
+$C^1$. \\
+$\tau: \left]0, L(\Gamma_\varphi)\right[ \rightarrow \mathbb{R}^n$,
+$\tau(s) = r'(s) =$ {\large $\frac{\varphi'(t)}{\Vert \varphi'(t) \Vert}$}
+ist der \textbf{Tangentialvektor} im Punkt $s$ (Länge $1$).
+
+\linie
+
+\textbf{Krümmung}: Gilt zusätzlich $\varphi \in C^2$, so ist
+$\kappa(s) = \tau'(s)$ der \textbf{Krümmungsvektor}, \\
+$K(s) = \Vert \kappa(s) \Vert$ die \textbf{Krümmung} und
+$\rho(s) =$ {\large $\frac{1}{K(s)}$} der \textbf{Krümmungsradius}.
+
+\textbf{Lemma}: $\kappa(s) \;\bot\; \tau(s)$
+
+\pagebreak
+
+\textbf{Krümmungsvektor}:
+$\kappa(s) =$ {\large $\frac{\varphi''(t) \cdot \Vert \varphi'(t) \Vert^2 -
+\varphi'(t) \cdot \langle \varphi'(t), \varphi''(t) \rangle}
+{\Vert \varphi'(t) \Vert^4}$} ist der Krümmungsvektor an $\Gamma_\varphi$
+im Punkt $r(s) = \varphi(t)$ ($s = S(t)$).
+
+\textbf{Krümmung einer Kurve im $\mathbb{R}^3$}:
+$\kappa(s) =$ {\large $\frac{[\varphi'(t), [\varphi''(t), \varphi'(t)]]}
+{\Vert \varphi'(t) \Vert^4}$}, \quad
+$K(s) =$ {\large $\frac{\Vert [\varphi''(t), \varphi'(t)] \Vert}
+{\Vert \varphi'(t) \Vert^3}$}
+
+\subsubsection{%
+    Flächen und Volumina%
+}
+
+Seien $X \subset \mathbb{R}^2$, $P', P''$ Vielecke mit
+$P' \subset X \subset P''$ und $A(P')$ bzw. $A(P'')$ der Flächeninhalt
+von $P'$ bzw. $P''$.
+Dann heißen $S_\ast = \sup_{P' \subset X} A(P')$ bzw.
+$S^\ast = \inf_{P'' \supset X} A(P'')$
+\textbf{innerer bzw. äußerer Flächeninhalt} von $X$.
+
+Eine Menge $X \subset \mathbb{R}^2$ heißt \textbf{quadrierbar}, falls
+$S_\ast = S^\ast =: A(X)$.
+
+\textbf{Lemma}: Sind $X_1, X_2 \subset \mathbb{R}^2$ quadrierbar mit
+$X_1 \cap X_2 = \emptyset$, so ist auch $X_1 \cup X_2$ quadrierbar und
+$A(X_1 \cup X_2) = A(X_1) + A(X_2)$.
+
+\linie
+
+\textbf{Fläche unter einer Kurve}:
+Seien $f: [a,b] \rightarrow \left[0, +\infty\right[$ stetig und \\
+$X = \{(x, y) \in \mathbb{R}^2 \;|\; x \in [a,b],\; 0 \le y \le f(x)\}$. \\
+Dann ist $X$ quadrierbar und $A(X) = \int_a^b f(x)\dx$.
+
+\textbf{Fläche mit Polarkoordinaten}:
+Seien $f: [\alpha,\beta] \subset [0,2\pi] \rightarrow \left[0,+\infty\right[$
+stetig, $(r, \varphi)$ Polarkoordinaten in $\mathbb{R}^2$ und
+$X = \{(r, \varphi) \;|\;
+\varphi \in [\alpha,\beta],\; 0 \le r \le f(\varphi)\}$. \\
+Dann ist $X$ quadrierbar und
+$A(X) = \frac{1}{2} \int_\alpha^\beta f^2(\varphi) d\varphi$.
+
+\textbf{Fläche zwischen zwei Kurven}:
+Seien $f_1, f_2: [a,b] \rightarrow \mathbb{R}$ stetig mit $f_1(x) \le f_2(x)$
+für alle $x \in [a,b]$ und $X = \{(x,y) \in \mathbb{R}^2 \;|\; x \in [a,b],\;
+f_1(x) \le y \le f_2(x)\}$. \\
+Dann ist $X$ quadrierbar und $A(X) = \int_a^b (f_2(x) - f_1(x))\dx$.
+
+Man schreibt auch $A(X) = \int_a^b (f_2(x) - f_1(x))\dx
+= \int_a^b f_2(x)\dx + \int_b^a f_1(x)\dx = -\oint y\dx = \oint x\dy$
+(für $\oint$ bzw. $-\oint$ kann man auch einen Pfeil gegen den bzw. im
+Uhrzeigersinn schreiben).
+
+\linie
+
+\textbf{Volumen}:
+beliebige Körper: $V := \int_a^b A(x)\dx$ ($A(x_0)$ ist die Querschnittsfläche
+bei $x = x_0$) \\
+Rotationskörper: $A(x) = \pi f^2(x)$, $V = \pi \int_a^b f^2(x)\dx$
+
+\textbf{Oberfläche von Rotationskörpern}:
+$F = 2\pi \int_a^b f(x) \sqrt{1 + (f'(x))^2}\dx$
+
+\linie
+
+\textbf{Schwerpunkt einer Kurve}:
+Sei ein System von Massepunkten $\{x_i, y_i\}$ mit den Massen $m_i$ gegeben.
+Dann liegt der Schwerpunkt $S$ bei
+$x_S :=$ {\large $\frac{\sum m_i x_i}{\sum m_i} = \frac{M_x}{M}$} und
+$y_S :=$ {\large $\frac{\sum m_i y_i}{\sum m_i} = \frac{M_y}{M}$}. \\
+Überträgt man das auf eine Jordansche Kurve $\Gamma$ der Klasse $C^1$
+(die Masse eines Kurvenstücks soll proportional
+zu dessen Länge sein), wobei $r(s) = (x(s), y(s))$ die kanonische
+Parametrisierung ist, so definiert man $x_S :=$
+{\large $\frac{\int_0^{L(\Gamma)} x(s)\ds}{L(\Gamma)} = \frac{M_y}{M}$}
+sowie $y_S :=$
+{\large $\frac{\int_0^{L(\Gamma)} y(s)\ds}{L(\Gamma)} = \frac{M_x}{M}$}.
+
+\textbf{1. \textsc{Guldin}sche Regel}:
+$2\pi y_s \cdot L(\Gamma) = 2\pi \int_0^{L(\Gamma)} y\ds$, wobei
+$2\pi y_s$ die Weglänge des Schwerpunkts bei Rotation um die $x$-Achse
+und $2\pi \int_0^{L(\Gamma)} y\ds$ die Oberfläche des Rotationskörpers ist.
+
+\linie
+
+\textbf{Schwerpunkt einer Fläche}:
+Sei $f: [a,b] \rightarrow \mathbb{R}$ mit $f \ge 0$ eine Funktion,
+dann definiert man den Schwerpunkt $S$ mit
+$x_S :=$ {\large $\frac{\int_a^b xf(x)\dx}{A(X)}$} und
+$y_S :=$ {\large $\frac{\frac{1}{2} \int_a^b f^2(x)\dx}{A(X)}$}, wobei
+$A(X) = \int_a^b f(x)\dx$ der Flächeninhalt des betrachteten Gebiets $X$
+(Fläche zwischen der Kurve von $f$ und der $x$-Achse).
+
+\textbf{2. \textsc{Guldin}sche Regel}:
+$2\pi y_s \cdot A(X) = \pi \int_a^b f^2(x)\dx$, wobei
+$2\pi y_s$ die Weglänge des Schwerpunkts bei Rotation um die $x$-Achse
+und $\pi \int_a^b f^2(x)\dx$ das Volumen
+des Rotationskörpers ist.
+
+\subsection{%
+    Interpolationsformeln und numerische Integration%
+}
+
+Seien $f: [a,b] \rightarrow \mathbb{R}$ und $\delta = \{x_k\}_{k=0}^n$
+eine \emph{äquidistante Zerlegung}, also $x_0 = a$, $x_n = b$ und
+$x_k = a + kh$ mit $h =$ {\large $\frac{b - a}{n}$}.
+Wähle $\xi = \{\xi_k\}_{k=1}^n$ mit
+$\xi_k =$ {\large $\frac{x_{k-1} + x_k}{2}$} als äquidistanten
+Satz von Stützstellen.
+
+\linie
+
+\textbf{die Rechteckformel (stückweise Approximation mit $P_0$)}: \\
+Auf jedem $\Delta_k$ wird $f$ durch das konstante Polynom
+$P_0(x) = f(\xi_k)$ für $k = 1, \ldots, n$ approximiert. \\
+Dann wird die Rechteckformel durch
+$\int_a^b f(x)\dx = \sum_{k=1}^n \int_{x_{k-1}}^{x_k} f(x)\dx
+\approx \sum_{k=1}^n \int_{x_{k-1}}^{x_k} P_0(x)\dx
+= \sum_{k=1}^n f(\xi_k) h =$
+{\large $\frac{b - a}{n}$} $\sum_{k=1}^n f(\xi_k) := I_R$ hergeleitet.
+
+\textbf{Fehlerabschätzung}: Ist $f \in C^2([a,b])$, so ist
+$\left|\int_a^b f(x)\dx - I_R\right| \le$
+{\large $\frac{(b - a)^3}{24n^2}$}
+$\max_{x \in [a,b]} |f''(x)|$, \\
+d.\,h. der Fehler verhält sich wie $\mathcal{O}(\frac{1}{n^2})$ für
+$n \to \infty$.
+
+\linie
+
+\textbf{die Trapezformel (stückweise Approximation mit $P_1$)}: \\
+Auf jedem $\Delta_k$ wird $f$ durch das Lagrange-Polynom ersten Grades \\
+$P_1(x) =$ {\large $\frac{x - x_k}{x_{k-1} - x_k}$} $f(x_{k-1}) \;+$
+{\large $\frac{x - x_{k-1}}{x_k - x_{k-1}}$} $f(x_k)$ approximiert
+($P_1$ geht durch $x_{k-1}$ und $x_k$). \\
+Dann wird die Trapezformel durch
+$\int_a^b f(x)\dx = \sum_{k=1}^n \int_{x_{k-1}}^{x_k} f(x)\dx
+\approx \sum_{k=1}^n \int_{x_{k-1}}^{x_k} P_1(x)\dx
+= \sum_{k=1}^n$ {\large $\frac{f(x_{k-1}) + f(x_k)}{2}$} $\cdot\; h
+=$ {\large $\frac{b - a}{n}$} $\cdot\; \Big(${\large $\frac{f(a) + f(b)}{2}$}
+$+\; f(x_1) + \cdots + f(x_{n-1})\Big) =: I_T$ hergeleitet.
+
+\textbf{Fehlerabschätzung}: Ist $f \in C^2([a,b])$, so ist
+$\left|\int_a^b f(x)\dx - I_T\right| \le$
+{\large $\frac{(b - a)^3}{12n^2}$}
+$\max_{x \in [a,b]} |f''(x)|$, \\
+d.\,h. der Fehler verhält sich wie $\mathcal{O}(\frac{1}{n^2})$ für
+$n \to \infty$.
+
+\linie
+
+\textbf{die \textsc{Simpson}sche Regel (stückweise Approximation mit $P_2$)}:
+\\
+Auf jedem $\Delta_k$ wird $f$ durch das Lagrange-Polynom zweiten Grades \\
+$P_2(x) =$ {\large $\frac{(x - \xi_k)(x - x_k)}
+{(x_{k-1} - \xi_k)(x_{k-1} - x_k)}$} $f(x_{k-1}) \;+$
+{\large $\frac{(x - x_{k-1})(x - x_k)}
+{(\xi_k - x_{k-1})(\xi_k - x_k)}$} $f(\xi_k) \;+$
+{\large $\frac{(x - x_{k-1})(x - \xi_k)}
+{(x_k - x_{k-1})(x_k - \xi_k)}$} $f(x_k)$ \\ 
+approximiert ($P_2$ geht durch $x_{k-1}$, $\xi_k$ und $x_k$). \\
+Dann wird die Simponsche Regel durch
+$\int_a^b f(x)\dx = \sum_{k=1}^n \int_{x_{k-1}}^{x_k} f(x)\dx
+\approx \sum_{k=1}^n \int_{x_{k-1}}^{x_k} P_2(x)\dx$\\
+$= \sum_{k=1}^n (f(x_{k-1}) + 4f(\xi_k) + f(x_k)) \;\cdot$
+{\large $\frac{h}{6}$} $=$ \\
+{\large $\frac{b - a}{6n}$} $\cdot \Big(f(a) + f(b) +
+2 \cdot \big(f(x_1) + \cdots + f(x_{n-1})\big) +
+4 \cdot \big(f(\xi_1) + \cdots + f(\xi_n)\big)\Big) =: I_S$ hergeleitet.
+
+\textbf{Fehlerabschätzung}: Ist $f \in C^4([a,b])$, so ist
+$\left|\int_a^b f(x)\dx - I_S\right| \le$
+{\large $\frac{(b - a)^5}{2880n^4}$}
+$\max_{x \in [a,b]} |f^{(4)}(x)|$, \\
+d.\,h. der Fehler verhält sich wie $\mathcal{O}(\frac{1}{n^4})$ für
+$n \to \infty$.
+
+\pagebreak

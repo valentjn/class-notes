@@ -1,0 +1,1074 @@
+\section{%
+    Metrik und Topologie in den Räumen
+    \texorpdfstring
+    {$\mathbb{R}$, $\mathbb{C}$, $\mathbb{R}^n$, $\mathbb{C}^n$}%
+    {ℝ, ℂ, ℝⁿ, ℂⁿ}%
+}
+
+\subsection{%
+    \texorpdfstring{Konvergenz in $\mathbb{R}$}{Konvergenz in ℝ}%
+}
+
+\textbf{Intervalle} ($a, b \in \mathbb{R}$): \\
+$\left]a,b\right[ = \left(a,b\right) =
+\{x \in \mathbb{R} \;|\; a < x < b\} \quad$ \emph{of"|fen}, \\
+$\left[a,b\right] =
+\{x \in \mathbb{R} \;|\; a \le x \le b\} \quad$ \emph{abgeschlossen}, \qquad
+$\left(a,b\right] = \left]a,b\right]$,
+$\left[a,b\right) = \left[a,b\right[ \quad$ \emph{halbof"|fen}
+
+\textbf{$\varepsilon$-Umgebung}: $U_\varepsilon(x) =
+(x - \varepsilon, x + \varepsilon) =
+\{y \in \mathbb{R} \;|\; |x - y| < \varepsilon\} \quad$
+($x \in \mathbb{R}$, $\varepsilon > 0$)
+
+\textbf{Konvergenz reeller Folgen}:
+$\{a_n\}_{n \in \mathbb{N}} \xrightarrow{n \to \infty} a \;\Leftrightarrow\;
+\forall_{\varepsilon > 0} \exists_{N(\varepsilon) \in \mathbb{N}}
+\forall_{n \ge N(\varepsilon)}\; a_n \in U_\varepsilon(a)$
+
+\textbf{Beschränktheit reeller Teilmengen}:
+$\exists_{C > 0} \forall_{x \in M}\; |x| \le C \quad$ ($M \subset \mathbb{R}$)
+
+\emph{Lemma}: Jede unbeschränkte Menge $M \subset \mathbb{R}$ ist
+transfinit. \\
+$\Rightarrow\;$ Jede endliche Menge ist beschränkt.
+
+\emph{Satz}: Sei $\{a_n\}_{n \in \mathbb{N}}$ mit $a_n \in \mathbb{R}$,
+$\lim_{n \to \infty} a_n = a \in \mathbb{R}$. \\
+1. $\bigcup_{n \in \mathbb{N}} \{a_n\} = M$ ist beschränkt.
+2. Für jede Teilfolge $\{a_j\}$ gilt ${a_j}_k \xrightarrow{n \to \infty} a$.
+
+Es gelten die \textbf{Grenzwertsätze}
+($\lim_{n \to \infty} a_n = a \in \mathbb{R}$,
+$\lim_{n \to \infty} b_n = b \in \mathbb{R}$): \\
+1. $\lim_{n \to \infty} (a_n + b_n) = a + b \qquad$
+2. $\lim_{n \to \infty} (a_n \cdot b_n) = a \cdot b$ \\
+3. $\lim_{n \to \infty} \frac{a_n}{b_n} = \frac{a}{b}$
+($b_n, b \not= 0$) $\qquad$
+4. $\lim_{n \to \infty} |a_n| = |a|$ \\
+Außerdem gilt
+$(\forall_{n \in \mathbb{N}}\; a_n \le b_n) \;\Rightarrow\; a \le b$.
+
+\textbf{Satz der zwei Polizisten}: Seien $\{a_n\}$, $\{b_n\}$, $\{c_n\}$
+reelle Folgen mit $a_n, b_n \xrightarrow{n \to \infty} a \in \mathbb{R}$. \\
+Dann gilt
+$(\forall_{n \ge N}\; a_n \le c_n \le b_n) \;\Rightarrow\;
+\lim_{n \to \infty} c_n = a$.
+
+\subsection{%
+    \texorpdfstring{$\mathbb{R}$ als metrischer Raum}{ℝ als metrischer Raum}%
+}
+
+Sei $M$ Menge, $d: M \times M \rightarrow \mathbb{R}$ Funktion. \\
+Dann heißt $d$ \textbf{Abstandsfunktion (Metrik)}, falls folgende Axiome
+erfüllt sind:
+
+\begin{itemize}
+    \item[(1)] $d(x,y) \ge 0$, $\quad d(x,y) = 0 \;\Leftrightarrow\; x = y$
+    \item[(2)] $d(x,y) = d(y,x)$
+    \item[(3)] $d(x,z) \le d(x,y) + d(y,z)$
+\end{itemize}
+
+$(M,d)$ heißt \textbf{metrischer Raum}. Bspw. ist $(\mathbb{R},d_{|\cdot|})$
+mit $d_{|\cdot|}(x,y) = |x - y|$ metrischer Raum.
+
+\textbf{triviale Metrik}:
+$M \not= \emptyset$, $d(x,y) = 0$ falls $x = y$, $d(x,y) = 1$ falls $x \not= y$
+
+\textbf{$\varepsilon$-Umgebung}:
+$U_\varepsilon(x) = \{y \in M \;|\; d(x,y) < \varepsilon\}$
+($x \in M$, $\varepsilon > 0$)
+
+\linie
+
+\textbf{Konvergenz im Sinne der Metrik}: $x_n, x \in M$ \\
+$x \overset{(M,d)}{=} \lim_{n \to \infty} x_n \; (x_n \xrightarrow{d} x)
+\;\Leftrightarrow\;
+\forall_{\varepsilon > 0} \exists_{N(\varepsilon) \in \mathbb{N}}
+\forall_{n \ge N(\varepsilon)}\; x_n \in U_\varepsilon(x)$
+
+\begin{enumerate}
+    \item Wenn eine Folge $x_n \in M$
+    konvergiert, dann hat sie genau einen Grenzwert.
+    
+    \item $a_n \xrightarrow{(M,d)} a \;\Leftrightarrow\;
+    d(a_n, a) \xrightarrow{\mathbb{R}} 0$
+    
+    \item $M' \subset M$ heißt beschränkt $\;\Leftrightarrow\;
+    \exists_{a \in M} \exists_{C \in \mathbb{R}} \forall_{a' \in M'}\;
+    d(a, a') \le C$
+\end{enumerate}
+
+\textbf{Cauchy-Folge}:
+$\{a_n\}_{n \in \mathbb{N}} \in \CF((M,d)) \;\Leftrightarrow\;
+\forall_{\varepsilon > 0} \exists_{N(\varepsilon) \in \mathbb{N}}
+\forall_{n,m \ge N(\varepsilon)}\; d(a_n, a_m) < \varepsilon$
+
+Eine \textbf{konvergente Folge ist auch eine Cauchy-Folge}, d.\,h. \\
+$a_n \xrightarrow{(M,d)} a \;\Rightarrow\;
+\{a_n\}_{n \in \mathbb{N}} \in \CF((M,d))$.
+
+\pagebreak
+
+Die Umkehrung ist nicht immer wahr. Ein metrischer Raum $(M,d)$ heißt
+\textbf{vollständig}, falls jede Cauchy-Folge $\{a_n\}_{n \in \mathbb{N}}$
+aus $M$ auch einen Grenzwert $a$ in $M$ besitzt.
+
+\linie
+
+\textbf{Satz von \textsc{Cauchy}}: $(\mathbb{R},d_{|\cdot|})$ ist vollständig,
+d.\,h. eine Folge reeller Zahlen $\{a_n\}_{n \in \mathbb{N}}$ konvergiert genau
+dann gegen ein $a \in \mathbb{R}$, wenn
+$\{a_n\}_{n \in \mathbb{N}} \in \CF((\mathbb{R},d_{|\cdot|}))$.
+
+Der Beweis erfolgt basierend auf den Lemmas $\{r_{n+n_0}\} \in x$ und
+$\{|r_n|\} \in |x|$ (wenn $x \in \mathbb{R}$, $\{r_n\} \in x$). Außerdem
+gilt in diesem Fall $\lim_{n \to \infty} r_n \overset{\mathbb{R}}{=} x$. Der
+Beweis des Satzes von \textsc{Cauchy} \\
+($\{x_n\}_{n \in \mathbb{N}} \in \CF(\mathbb{R}) \;\Rightarrow\;
+\exists_{y \in \mathbb{R}}\; y = \lim_{n \to \infty} x_n$)
+wird anschließend in drei Schritte aufgeteilt:
+
+\begin{itemize}
+    \item \emph{Schritt 1}: Konstruktion eines "`Kandidaten"'
+    $\{q_n\}_{n \in \mathbb{N}}$, $q_n \in \mathbb{Q}$
+    
+    \item \emph{Schritt 2}: $\{q_n\} \in \CF(\mathbb{Q})$, d.\,h.
+    $\exists_{y \in \mathbb{R}}\; y \ni \{q_n\}$
+    
+    \item \emph{Schritt 3}: $\lim_{n \to \infty} x_n = y$
+\end{itemize}
+
+\linie
+
+\textbf{Monotonie von reellen Folgen}:
+$\{x_n\}$ wächst monoton, d.\,h. $\{x_n\}\!\!\uparrow$
+$\;\Leftrightarrow\; \forall_{n \in \mathbb{N}}\; x_n \le x_{n+1}$ \\
+$\{x_n\}$ wächst streng monoton, d.\,h. $\{x_n\}\!\!\upuparrows$
+$\;\Leftrightarrow\; \forall_{n \in \mathbb{N}}\; x_n < x_{n+1}$,
+analog $\{x_n\}\!\!\downarrow$, $\{x_n\}\!\!\downdownarrows$
+
+\textbf{Beschränktheit von reellen Folgen}: $\{x_n\}$ ist beschränkt
+$\;\Leftrightarrow\;
+\exists_{C \in \mathbb{R}} \forall_{n \in \mathbb{N}}\; |x_n| \le C$
+
+\textbf{Satz}: Jede monotone, beschränkte Folge reeller Zahlen besitzt einen
+reellen Grenzwert.
+
+\subsection{%
+    Maximum, Minimum, Infimum, Supremum%
+}
+
+$M \subset \mathbb{R}$, $M \not= \emptyset$, $a \in \mathbb{R}$
+
+$a = \max{M} \;\Leftrightarrow\;
+(a \in M) \land (\forall_{x \in M}\; x \le a) \quad$ \textbf{Maximum} \\
+$a = \min{M} \;\Leftrightarrow\;
+(a \in M) \land (\forall_{x \in M}\; x \ge a) \quad$ \textbf{Minimum}
+
+$c \in \mathbb{R}$ heißt \textbf{obere Schranke} von
+$M \;\Leftrightarrow\; \forall_{x \in M}\; x \le c$ \\
+$c \in \mathbb{R}$ heißt \textbf{untere Schranke} von
+$M \;\Leftrightarrow\; \forall_{x \in M}\; x \ge c$
+
+$M_{+}$ Menge aller oberen Schranken, $M_{-}$ Menge aller unteren Schranken \\
+M ist \textbf{beschränkt nach oben}
+$\;\Leftrightarrow\; M_{+} \not= \emptyset$,
+M ist \textbf{beschränkt nach unten}
+$\;\Leftrightarrow\; M_{-} \not= \emptyset$
+
+$a = \sup{M} \;\Leftrightarrow\;
+(M_{+} \not= \emptyset) \land (a = \min{M_{+}}) \quad$ \textbf{Supremum} \\
+$a = \inf{M} \;\Leftrightarrow\;
+(M_{-} \not= \emptyset) \land (a = \max{M_{-}}) \quad$ \textbf{Infimum}
+
+\textbf{Satz}: Mengen, die nach oben/unten beschränkt sind, haben ein
+Supremum/Infimum, d.\,h. \\
+$M_{+} \not= \emptyset \;\Rightarrow\;
+\exists_{a_{+} \in \mathbb{R}}\; a_{+} = \sup{M}\quad $ bzw.
+$\quad M_{-} \not= \emptyset \;\Rightarrow\;
+\exists_{a_{-} \in \mathbb{R}}\; a_{-} = \inf{M}$.
+
+\subsection{%
+    \texorpdfstring{Die Eulersche Zahl $e$}{Die Eulersche Zahl ℯ}%
+}
+
+\textbf{Fakultät}: $n! \overset{\text{def.}}{=}
+1 \cdot 2 \cdot \cdots \cdot (n-1) \cdot n$,
+$\quad 0! \overset{\text{def.}}{=} 1$
+
+{\large $x_n = \sum_{k=0}^{n} \frac{1}{k!} \;=\; \frac{1}{0!} + \frac{1}{1!} +
+\frac{1}{2!} + \cdots + \frac{1}{n!}$}
+
+\begin{itemize}
+    \item \emph{Satz 1}: $\exists \lim_{n \to \infty} x_n$
+    in $\mathbb{R}$. \\
+    \textbf{Definition der Eulerschen Zahl}: $e = \lim_{n \to \infty} x_n$
+    
+    \item \emph{Satz 2}: Für $n \ge 2$ gilt
+    $x_n < e < x_n \;+ $ {\large $\frac{1}{n \cdot n!}$}.
+    
+    \item \emph{Satz 3}: $e$ ist irrational, d.\,h. $e \notin \mathbb{Q}$.
+    
+    \item \emph{Satz 4}: $y_n =$ {\large $(1 + \frac{1}{n})^n$},
+    $n \in \mathbb{N}$  $\;\Rightarrow\; e = \lim_{n \to \infty} y_n$.
+\end{itemize}
+
+\subsection{%
+    Einige wichtige Grenzwerte%
+}
+
+{\large
+\begin{tabular}{p{3.8cm}p{3.8cm}p{3.8cm}p{3.8cm}}
+    $\lim_{n \to \infty} \frac{n}{a^n} = 0$ & $a > 1$ &
+    $\lim_{n \to \infty} \frac{n^k}{a^n} = 0$ & $a > 1,$ $k \in \mathbb{N}$ \\
+    $\lim_{n \to \infty} \frac{1}{\sqrt[n]{n!}} = 0$ & &
+    $\lim_{n \to \infty} \frac{a^n}{n!} = 0$ & $a > 0$ \\
+    $\lim_{n \to \infty} n^k a^n = 0$ & $|a| < 1,$ $k \in \mathbb{N}$ &
+    $\lim_{n \to \infty} \sqrt[n]{a} = 1$ & $a > 0$ \\
+    $\lim_{n \to \infty} \frac{\log_a{n}}{n} = 0$ & $a > 1$ &
+    $\lim_{n \to \infty} \sqrt[n]{n} = 1$
+\end{tabular}
+}
+
+\vspace{3mm}
+\linie
+
+\textbf{bestimmte Divergenz}:
+
+\begin{itemize}
+    \item $\lim_{n \to \infty} x_n = +\infty \;\Leftrightarrow\;
+    \forall_{C > 0} \exists_{N(C) \in \mathbb{N}} \forall_{n \ge N(C)}\;
+    x_n \ge C$
+    
+    \item $\lim_{n \to \infty} x_n = -\infty \;\Leftrightarrow\;
+    \forall_{C > 0} \exists_{N(C) \in \mathbb{N}} \forall_{n \ge N(C)}\;
+    x_n \le -C$
+    
+    \item $\lim_{n \to \infty} x_n = \infty \;\Leftrightarrow\;
+    \forall_{C > 0} \exists_{N(C) \in \mathbb{N}} \forall_{n \ge N(C)}\;
+    |x_n| \ge C$
+\end{itemize}
+
+\subsection{%
+    \texorpdfstring{Der euklidische Raum $\mathbb{R}^n$}%
+    {Der euklidische Raum ℝⁿ}%
+}
+
+$\mathbb{R}^n = \mathbb{R} \times \cdots \times \mathbb{R}$,
+$\qquad x = (x_1, \ldots, x_n) \quad$ $x_j \in \mathbb{R}$,
+$j = 1, \ldots, n$
+
+$x, y \in \mathbb{R}^n \;\rightarrow\; x + y = (x_1 + y_1, \ldots, x_n + y_n)$,
+$\quad x \in \mathbb{R}^n$, $\alpha \in \mathbb{R} \;\rightarrow\;
+\alpha \cdot x = (\alpha \cdot x_1, \ldots, \alpha \cdot x_n)$
+
+\textbf{algebraische Struktur}: \\
+$X = \mathbb{R}^n$, $\mathbb{K} = \mathbb{R}$,
+$\quad \boldsymbol{+}: X \times X \rightarrow X$, $\;\boldsymbol{\cdot}:
+\mathbb{K} \times X \rightarrow X$
+erfüllen die \emph{Vektorraum-Axiome}:
+
+\begin{tabular}{p{8cm}p{8cm}}
+    (1) $x + y = y + x$ &
+    (5) $1 \cdot x = x$ ($1 \in \mathbb{K}$) \\
+    (2) $(x + y) + z = x + (y + z)$ &
+    (6) $\alpha (\beta x) = (\alpha \beta) x$ \\
+    (3) $\exists_{0 \in X}\; 0 + x = x$ für alle $x \in X$ &
+    (7) $(\alpha + \beta) x = \alpha x + \beta x$ \\
+    (4) $\forall_{x \in X} \exists_{-x \in X}\; x + (-x) = 0$ &
+    (8) $\alpha (x + y) = \alpha x + \alpha y$
+\end{tabular}
+
+\vspace{12pt}
+\linie
+
+\textbf{euklidische Struktur (Skalarprodukt/inneres Produkt)}:
+$X$ Vektorraum über $\mathbb{R}$ \\
+$\langle \cdot, \cdot \rangle:
+X \times X \rightarrow \mathbb{R}$ heißt \emph{(reelles) Skalarprodukt}, falls
+folgende Eigenschaften erfüllt sind:
+
+\begin{itemize}
+    \item[(1)] $\langle x, x \rangle \ge 0$,
+    $\qquad \langle x, x \rangle = 0 \Leftrightarrow x = 0$
+    
+    \item[(2)] $\langle x, y \rangle = \langle y, x \rangle$
+    
+    \item[(3)] $\langle \alpha' x' + \alpha'' x'', y \rangle =
+    \alpha' \langle x', y \rangle + \alpha'' \langle x'', y \rangle$
+    \qquad ($\alpha', \alpha'' \in \mathbb{R}$)
+\end{itemize}
+
+\emph{Kanonisches Skalarprodukt im $\mathbb{R}^n$}:
+$\langle x, y \rangle = x_1 y_1 + \cdots + x_n y_n$ \\
+$(X, \langle \cdot, \cdot \rangle)$ heißt \emph{euklidischer Raum}.
+
+\linie
+
+\textbf{Struktur des normierten Raumes}:
+$X$ Vektorraum über $\mathbb{R}$ \\
+$\Vert \cdot \Vert: X \rightarrow \mathbb{R}$ heißt \emph{Norm}, falls
+folgende Eigenschaften erfüllt sind:
+
+\begin{itemize}
+    \item[(1)] $\Vert x \Vert \ge 0$,
+    $\qquad \Vert x \Vert = 0 \Leftrightarrow x = 0$
+    
+    \item[(2)] $\Vert \alpha x \Vert = |\alpha| \Vert x \Vert$
+    \qquad ($\alpha \in \mathbb{R}$)
+    
+    \item[(3)] $\Vert x + y \Vert \le \Vert x \Vert + \Vert y \Vert$
+\end{itemize}
+
+Falls auf $X$ ein (reelles) Skalarprodukt gegeben ist, so definiert
+$\Vert x \Vert = \sqrt{\langle x, x \rangle} \ge 0$ die zum Skalarprodukt
+\emph{kanonische Norm} und erfüllt somit automatisch die Normeigenschaften \\
+(für $X = \mathbb{R}^n$ ist $\Vert x \Vert_{\mathbb{R}^n} =
+\sqrt{x_1^2 + \cdots + x_n^2}$). \\
+Für den Beweis ist die \emph{Ungleichung von
+\textsc{Cauchy}-\textsc{Schwarz}-\textsc{Bunjakowskij}} (\textbf{CSB})
+wichtig: \\
+$|\langle x, y \rangle| \le \Vert x \Vert \cdot \Vert y \Vert$
+
+$d_{\Vert \cdot \Vert}(x,y) = \Vert x - y \Vert$ ist eine Abstandsfunktion,
+$(\mathbb{R}^n, d_{\Vert \cdot \Vert})$ metrischer Raum.
+
+\subsection{%
+    \texorpdfstring{Der Raum $\mathbb{C}^n$}{Der Raum ℂⁿ}%
+}
+
+$\mathbb{C}^n = \mathbb{C} \times \cdots \times \mathbb{C}$,
+$\qquad z = (z_1, \ldots, z_n) \quad$ $z_j \in \mathbb{C}$,
+$j = 1, \ldots, n$
+
+$z, w \in \mathbb{C}^n \;\rightarrow\; z + w = (z_1 + w_1, \ldots, z_n + w_n)$,
+$\quad z \in \mathbb{C}^n$, $\alpha \in \mathbb{C} \;\rightarrow\;
+\alpha \cdot z = (\alpha \cdot z_1, \ldots, \alpha \cdot z_n)$
+
+$X = \mathbb{C}^n$, $\mathbb{K} = \mathbb{C}$ Vektorraum über
+$\mathbb{K} = \mathbb{C}$, Axiome (1) -- (8) erfüllt
+
+\linie
+
+\textbf{hermitesche Struktur (komplexes Skalarprodukt)}:
+$X$ Vektorraum über $\mathbb{C}$ \\
+$\langle \cdot, \cdot \rangle:
+X \times X \rightarrow \mathbb{C}$ heißt \emph{(komplexes) Skalarprodukt},
+falls folgende Eigenschaften erfüllt sind:
+
+\begin{itemize}
+    \item[(1)] $\langle z, z \rangle \ge 0$,
+    $\qquad \langle z, z \rangle = 0 \Leftrightarrow z = 0$
+    
+    \item[(2)] $\langle z, w \rangle = \overline{\langle w, z \rangle}$
+    
+    \item[(3)] $\langle \alpha' z' + \alpha'' z'', w \rangle =
+    \alpha' \langle z', w \rangle + \alpha'' \langle z'', w \rangle$
+    \qquad ($\alpha', \alpha'' \in \mathbb{C}$)
+\end{itemize}
+
+\emph{Kanonisches Skalarprodukt im $\mathbb{C}^n$}:
+$\langle z, w \rangle = z_1 \overline{w_1} + \cdots + z_n \overline{w_n}$
+
+\linie
+
+\textbf{normierter Raum}:
+$X$ Vektorraum über $\mathbb{C}$ \\
+$\Vert \cdot \Vert: X \rightarrow \mathbb{R}$ heißt \emph{Norm}, falls
+folgende Eigenschaften erfüllt sind:
+
+\begin{itemize}
+    \item[(1)] $\Vert z \Vert \ge 0$,
+    $\qquad \Vert z \Vert = 0 \Leftrightarrow z = 0$
+    
+    \item[(2)] $\Vert \alpha z \Vert = |\alpha| \Vert z \Vert$
+    \qquad ($\alpha \in \mathbb{C}$)
+    
+    \item[(3)] $\Vert z + w \Vert \le \Vert z \Vert + \Vert w \Vert$
+\end{itemize}
+
+Für $\Vert z \Vert = \sqrt{\langle z, z \rangle}$ sind automatisch die
+Normeigenschaften erfüllt, wobei die Dreiecksungleichung auf
+$|\langle z, w \rangle| \le \Vert z \Vert \cdot \Vert w \Vert$ (CSB) basiert.
+
+\linie
+
+Vektoren des $\mathbb{C}^n$ können als $n$-Tupel komplexer Zahlen
+$z_j = x_j + iy_j$ dargestellt werden: \\
+$\mathbb{C}^n \ni z = (z_1, \ldots, z_n) =
+(x_1 + iy_1, \ldots, x_n + iy_n) \quad$
+(wobei $x_j, y_j \in \mathbb{R}$). \\
+Nun können $x_j$, $y_j$ auch als Elemente von $\mathbb{R}^{2n}$ angesehen
+werden:
+$\mathbb{R}^{2n} \ni (x_1, y_1, x_2, y_2, \ldots, x_n, y_n)$ \\
+$\Vert z \Vert^2 = \sum_{j=1}^n z_j \overline{z_j} =
+\sum_{j=1}^n (x_j^2 + y_j^2) = \sum_{j=1}^n x_j^2 + \sum_{j=1}^n y_j^2$
+
+Bzgl. der Addition von Vektoren und der Norm ist es unerheblich, ob man die
+Vektoren als $n$-Tupel komplexer Zahlen oder als $2n$-Tupel reeller Zahlen
+betrachtet ($\mathbb{C}^n$ und $\mathbb{R}^{2n}$ \textbf{isomorph}).
+Dies gilt nicht mehr für die Multiplikation mit Skalaren
+(dort sind $\mathbb{C}^n$ und $\mathbb{R}^{2n}$ verschieden).
+
+\subsection{%
+    \texorpdfstring{Konvergenz im $\mathbb{R}^n$ und $\mathbb{C}^n$}%
+    {Konvergenz im ℝⁿ und ℂⁿ}%
+}
+
+$(X, \Vert \cdot \Vert)$ normierter Raum, z.\,B.
+$(\mathbb{R}^n, \Vert \cdot \Vert_{\mathbb{R}^n})$ oder
+$(\mathbb{C}^n, \Vert \cdot \Vert_{\mathbb{C}^n})$.
+
+$d(x,y) = \Vert x - y \Vert \quad$ ($x, y \in X$) ist Abstandsfunktion auf $X$.
+Daher ist $(X, d_{\Vert \cdot \Vert})$ ein \textbf{metrischer Raum} mit
+induzierter Abstandsfunktion
+$d_{\Vert \cdot \Vert}(x, y) = \Vert x - y \Vert$.
+
+Damit lassen sich automatisch auch die Definitionen
+\emph{$\varepsilon$-Umgebung}, \emph{Konvergenz} und \emph{Fundamentalfolge}
+auf $X$ übertragen:
+
+\textbf{$\varepsilon$-Umgebung}: $y \in X$;\; $U_\varepsilon(y) =
+\{x \in X \;|\; \Vert x - y \Vert < \varepsilon\}$ \\
+\textbf{Konvergenz}:
+$x_m \xrightarrow{\Vert \cdot \Vert} y \quad\Leftrightarrow\quad
+\forall_{\varepsilon > 0} \exists_{N_\varepsilon}
+\forall_{n \ge N_\varepsilon}\;
+x_m \in U_\varepsilon(y)$, \;d.\,h. $\Vert x_m - y \Vert < \varepsilon$ \\
+\textbf{Fundamentalfolge}:
+$\{x_m\}_{m \in \mathbb{N}} \in \CF(X, \Vert \cdot \Vert)
+\quad\Leftrightarrow\quad \forall_{\varepsilon > 0} \exists_{N_\varepsilon}
+\forall_{n, m \ge N_\varepsilon}\; \Vert x_m - x_n \Vert < \varepsilon$
+
+\textbf{Beschränktheit}:
+$\{x_m\}_{m \in \mathbb{N}}$ ($x_m \in X$) ist beschränkt
+$\quad\Leftrightarrow\quad \exists_{C} \forall_{m \in \mathbb{N}}\;
+\Vert x_m \Vert \le C$
+
+\linie
+\pagebreak
+
+\textbf{Satz}: \quad
+$\{x_m\}_{m \in \mathbb{N}}$, $x_m \in \mathbb{K}^n$,
+$y', y'' \in \mathbb{K}^n$
+
+\begin{enumerate}
+    \item $\quad (x_m \xrightarrow{\Vert \cdot \Vert} y') \land
+    (x_m \xrightarrow{\Vert \cdot \Vert} y'') \;\Rightarrow\; y' = y''$
+    
+    \item $\quad y' = \lim_{n \to \infty} x_m \;\Leftrightarrow\;
+    y' = \lim_{n \to \infty} x_{m + m_0}$
+    
+    \item $\quad y' = \lim_{n \to \infty} x_m \;\Rightarrow\;
+    \{x_m\}_{m \in \mathbb{N}}$ beschränkt
+\end{enumerate}
+
+\textbf{Grenzwertsätze im $\mathbb{K}^n$}: \quad
+$\{x_m'\}_{m \in \mathbb{N}}$, $\{x_m''\}_{m \in \mathbb{N}}$,
+$x_m', x_m'' \in \mathbb{K}^n$, \\
+$\{\alpha_k\}_{k \in \mathbb{N}}$,
+$\alpha_k \in \mathbb{K}$, \quad
+$y', y'' \in \mathbb{K}^n$,
+$\beta \in \mathbb{K}$, \quad
+$x_m' \xrightarrow{\Vert \cdot \Vert} y'$,
+$x_m'' \xrightarrow{\Vert \cdot \Vert} y''$,
+$\alpha_k \xrightarrow{|\cdot|} \beta$
+
+\begin{enumerate}
+    \item $\quad \lim_{m \to \infty} (x_m' + x_m'')
+    \;\overset{\mathbb{K}^n}{=}\; y' + y''$
+    
+    \item $\quad \lim_{m \to \infty} (\alpha_m x_m')
+    \;\overset{\mathbb{K}^n}{=}\; \beta y'$
+    
+    \item $\quad \lim_{m \to \infty}
+    \langle x_m', x_m'' \rangle_{\mathbb{K}^n}
+    \;\overset{\mathbb{K}}{=}\; \langle y', y'' \rangle$
+\end{enumerate}
+
+\linie
+
+\emph{Schreibweise}:
+$x_m = (\xi_m^{(1)}, \ldots, \xi_m^{(n)}) \in \mathbb{K}^n$,
+$\xi_m^{(j)} \in \mathbb{K}$ \\
+\textbf{Projektion auf die $j$-te Komponente}:
+$\pi_j: \mathbb{K}^n \rightarrow \mathbb{K}$,
+$\pi_j(x) = \pi_j(\xi^{(1)}, \ldots, \xi^{(n)}) = \xi^{(j)}$ \\
+es gilt:
+$\pi_j(\alpha'x' + \alpha''x'') = \alpha'\pi_j(x') + \alpha''\pi_j(x'')$
+
+\textbf{Basisvektoren}: $e_j = (0, \ldots, 0, 1, 0, \ldots, 0)$ mit der $1$
+an der $j$-ten Stelle, sonst $0$, $\Vert e_j \Vert_{\mathbb{K}^n} = 1$ \\
+mit $x = \sum_{j=1}^n \pi_j(x) e_j$ folgt
+$|\xi^{(j)}| = |\pi_j(x)| \le \Vert x \Vert \le \sum_{j=1}^n |\xi^{(j)}|$
+
+\textbf{Satz (Konvergenz)}:
+$y \overset{\mathbb{K}^n}{=} \lim_{m \to \infty} x_m \quad\Leftrightarrow\quad
+\forall_{j=1,\ldots,n}\; \pi_j(y) \overset{\mathbb{K}}{=}
+\lim_{m \to \infty} \pi_j(x_m)$
+
+\textbf{Satz (Cauchy-Folgen)}:
+$\{x_m\}_{m \in \mathbb{N}} \in \CF(\mathbb{K}^n)
+\quad\Leftrightarrow\quad
+\forall_{j=1,\ldots,n}\; \{\pi_j(x_m)\}_{m \in \mathbb{N}} \in
+\CF(\mathbb{K})$
+
+\textbf{Folgerung}: $\mathbb{R}^n$ und $\mathbb{C}^n$ sind vollständig.
+
+\subsection{%
+    Of"|fene und abgeschlossene Mengen%
+}
+
+$(M,d)$ metrischer Raum, $X \subset M$
+
+\begin{itemize}
+    \item \textbf{Häufungspunkt}:
+    $x_0 \in M$ heißt Häufungspunkt (HP) von $X$ bzw. $x_0 \in \acc(X)$ \\
+    $\Leftrightarrow\quad \forall_{\varepsilon > 0}\;\;
+    U_\varepsilon(x_0) \cap (X \setminus \{x_0\}) \not= \emptyset$
+    
+    \item \textbf{isolierter Punkt}:
+    $x_0 \in X$ ist ein isolierter Punkt von $X$ bzw. $x_0 \in \iso(X)$ \\
+    $\Leftrightarrow\quad \exists_{\varepsilon > 0}\;\;
+    U_\varepsilon(x_0) \cap (X \setminus \{x_0\}) = \emptyset$
+    \qquad d.\,h. $\iso(X) = X \setminus \acc(X)$
+    
+    \item \textbf{innerer Punkt}:
+    $x_0 \in X$ heißt innerer Punkt von $X$ bzw. $x_0 \in \interior(X)$ \\
+    $\Leftrightarrow\quad
+    \exists_{\varepsilon > 0}\;\; U_\varepsilon(x_0) \subset X$
+    
+    \item \textbf{äußerer Punkt}:
+    $x_0 \in M$ heißt äußerer Punkt zu $X$ bzw. $x_0 \in \exterior(X)$ \\
+    $\Leftrightarrow\quad
+    \exists_{\varepsilon > 0}\;\; U_\varepsilon(x_0) \subset X_M^c
+    \quad\Leftrightarrow\quad
+    \exists_{\varepsilon > 0}\;\; U_\varepsilon(x_0) \cap X = \emptyset$
+    
+    \item \textbf{Randpunkt}:
+    $x_0 \in M$ heißt Randpunkt von $X$ bzw. $x_0 \in \partial X$ \\
+    $\Leftrightarrow\quad
+    (x_0 \notin \interior(X)) \land (x_0 \notin \exterior(X))
+    \quad\Leftrightarrow\quad \forall_{\varepsilon > 0}\;\;
+    (U_\varepsilon(x_0) \cap X_M^c \not= \emptyset) \land
+    (U_\varepsilon(x_0) \cap X \not= \emptyset)$
+\end{itemize}
+
+\linie
+
+$\interior(X)$, $\exterior(X)$, $\partial X$ sind paarweise disjunkt und
+$M = \interior(X) \cup \partial X \cup \exterior(X)$. \\
+Dabei gilt $X \subset \interior(X) \cup \partial X$,
+$\quad X_M^c \subset \exterior(X) \cup \partial X$ \quad sowie
+$\partial X = \partial X_M^c$, da $(X_M^c)_M^c = X$.
+
+\emph{Lemma}: $\interior(X) = X \setminus \partial X$,
+$\quad\exterior(X) = X_M^c \setminus \partial X$ \\
+$X \cup \acc(X) = X \cup \partial X = \interior(X) \cup \partial X$
+
+Sei $X \subset X_1 \subset M$, dann gilt auch $\acc(X) \subset \acc(X_1)$,
+$\interior(X) \subset \interior(X_1)$ und
+$\exterior(X) \supset \exterior(X_1)$
+(über isolierte Punkte und den Rand ist keine Aussage möglich).
+
+\linie
+\pagebreak
+
+\textbf{of"|fene und abgeschlossene Mengen}:
+
+\begin{itemize}
+    \item $X$ ist \emph{of"|fen} in $(M,d)$
+    $\quad\Leftrightarrow\quad X = \interior(X) \quad\Leftrightarrow\quad
+    X \cap \partial X = \emptyset$
+    
+    \item $X$ ist \emph{abgeschlossen} in $(M,d)$ \\
+    $\Leftrightarrow\quad X \cup \partial X = X = 
+    \partial X \cup \interior(X) = X \cup \acc(X) \quad\Leftrightarrow\quad
+    \acc(X) \subset X$
+\end{itemize}
+
+\textbf{Satz}: $X$ of"|fen $\Leftrightarrow X_M^c$ abgeschlossen,
+$\quad X$ abgeschlossen $\Leftrightarrow X_M^c$ of"|fen
+
+\textbf{Familien von of"|fenen Mengen}:
+$F_\alpha \subset M$ of"|fen, $\alpha \in A$ Indexmenge
+$\;\Rightarrow\; F = \bigcup_{\alpha \in A} F_\alpha$ of"|fen \\
+\emph{endlich viele Mengen}:
+$F_k$ of"|fen, $k = 1, \ldots, n$ (endlich viele)
+$\;\Rightarrow\; F = \bigcap_{k=1}^n F_k$ of"|fen
+
+\textbf{Familien von abgeschlossenen Mengen}: \\
+$G_\alpha \subset M$ abgeschlossen
+$\;\Rightarrow\; G = \bigcap_{\alpha \in A} G_\alpha$ abgeschlossen \\
+\emph{endlich viele Mengen}:
+$G_k$ abgeschlossen, $k = 1, \ldots, n$
+$\;\Rightarrow\; G = \bigcup_{k=1}^n G_k$ abgeschlossen
+
+$\emptyset$ und $M$ sind sowohl abgeschlossen als auch of"|fen.
+
+\linie
+
+$\mathbb{R}^n$, $\mathbb{C}^n$ als \textbf{topologische Räume}: \\
+$2^M$ Menge aller Teilmengen aus $M$, $T \subset 2^M$ nennt man
+\textbf{Topologie}, falls
+
+\begin{itemize}
+    \item[(1)] $\emptyset \in T$, $M \in T$
+    
+    \item[(2)] $\{F_\alpha\}_{\alpha \in A}$, $F_\alpha \in T$
+    $\;\Rightarrow\; \bigcup_{\alpha \in A} F_\alpha \in T$
+    
+    \item[(3)] $\{F_k\}_{k=1}^n$, $F_k \in T$
+    $\;\Rightarrow\; \bigcap_{k=1}^n F_k \in T$
+\end{itemize}
+
+$(M,T)$ heißt dann \textbf{topologischer Raum}, $F \in T$
+\textbf{Umgebungen/of"|fene Mengen}. \\
+Mit $M = \mathbb{R}^n$ oder $M = \mathbb{C}^n$, $T \subset 2^M$ sowie
+$F \in T \;\Leftrightarrow\; F$ of"|fen ist eine Topologie definiert.
+
+\emph{Lemma}: $\interior(X)$ ist of"|fen. \qquad
+\emph{Folgerung}: $\exterior(X)$ ist of"|fen.
+
+\linie
+
+\textbf{Abschluss}: $\overline{X} = X \cup \partial X = X \cup \acc(X)$ ist
+der Abschluss der Menge $X$.
+
+\textbf{Sätze über den Abschluss}:
+$\overline{X}$ ist abgeschlossen. \\
+$\overline{X}$ ist die kleinste abgeschlossene Menge, die $X$
+enthält, d.\,h.
+$\overline{X} = \bigcap_{Y \supset X,\; Y \text{abgeschlossen}} Y$. \\
+$X$ ist abgeschlossen $\;\Leftrightarrow\; X = \overline{X} \qquad$ sowie
+$\qquad \overline{\overline{X}} = \overline{X}$. \\
+$\overline{X}$ ist die Menge aller möglichen Grenzwerte für Folgen
+$\{x_n\}_{n \in \mathbb{N}}$, $x_n \in X$.
+
+\subsection{%
+    Grenzwerte von Funktionen%
+}
+
+$(M_1,d_1)$, $(M_2,d_2)$ metrische Räume, $X \subset M_1$, $Y \subset M_2$,
+$f: X \rightarrow Y$ Funktion von $X$ nach $Y$
+
+\textbf{$\varepsilon$-$\delta$-Definition}:
+Sei $x_0 \in \acc(X)$, $y \in Y$. \\
+$y = \lim_{x \to x_0} f(x) \quad\Leftrightarrow\quad
+\forall_{\varepsilon > 0} \exists_{\delta > 0}
+\forall_{x \in X \cap U_\delta(x_0),\; x \not= x_0}\;
+f(x) \in U_\varepsilon(y)$
+
+\textbf{Folgendefinition}:
+Sei $x_0 \in \acc(X)$, $y \in Y$. \\
+$y = \lim_{x \to x_0} f(x) \quad\Leftrightarrow\quad
+\forall_{\{x_k\} \xrightarrow{k \to \infty} x_0,\;
+x_k \in X \setminus \{x_0\}}\;
+y_k = f(x_k) \xrightarrow{k \to \infty} y$
+
+\linie
+
+\textbf{Satz}: $f: X \rightarrow Y$,
+$x_0 \in \acc(X)$, $y_0 = \lim_{x \to x_0} f(x)$
+
+\begin{enumerate}
+    \item $y_0$ ist eindeutig bestimmt.
+    
+    \item Existenz/Wahl des Grenzwertes hängt nicht vom Verhalten von
+    $f(x)$ für $d(x,x_0) \ge \varepsilon$ ab.
+    
+    \item $\{f(x) \;|\; x \in U_\delta(x_0) \cap X\}$ ist für geeignetes
+    $\delta > 0$ beschränkt.
+\end{enumerate}
+
+\linie
+\pagebreak
+
+\textbf{Grenzwertsätze bei vektorwertigen Funktionen (Spezialfall)}:
+$\mathbb{K} = \mathbb{R}$ oder $\mathbb{K} = \mathbb{C}$, \\
+$f, g: X \subset M_1 \rightarrow \mathbb{K}^n$, \quad
+$\alpha: X \subset M_1 \rightarrow \mathbb{K}$, \quad
+$x_0 \in \acc(X)$, \\
+$y_0, z_0 \in \mathbb{K}^n$,
+$\beta \in \mathbb{K}$, \quad
+$y_0 = \lim_{x \to x_0} f(x)$,
+$z_0 = \lim_{x \to x_0} g(x)$,
+$\beta = \lim_{x \to x_0} \alpha(x)$
+
+\begin{enumerate}
+    \item $\lim_{x \to x_0} (f(x) + g(x)) = y_0 + z_0$
+    
+    \item $\lim_{x \to x_0} (\alpha(x) \cdot g(x)) = \beta \cdot z_0$
+    
+    \item $\lim_{x \to x_0} \langle f(x), g(x) \rangle =
+    \langle y_0, z_0 \rangle$
+    
+    \item $\lim_{x \to x_0} f|_{X_0}(x) = y_0$ \qquad
+    ($X_0 \subset X$, $x_0 \in \acc(X_0)$)
+    
+    \item $\lim_{x \to x_0} \frac{1}{\alpha(x)} = \frac{1}{\beta}$ \qquad
+    ($\alpha(x) \not= 0$, $\beta \not= 0$)
+\end{enumerate}
+
+\linie
+
+\textbf{links-/rechtsseitiger Grenzwert}:
+$f: X \subset \mathbb{R} \rightarrow M_2$, $X \subset [a,b]$,
+$x_0 \in \acc(X)$, $a < x_0 < b$ \\
+falls $x_0 \in \acc(X_-)$ mit $X_- = X \cap \left[a,x_0\right[$, ist
+$\lim_{x \to x_0 - 0} f(x) = \lim_{x \to x_0} f|_{X_-}(x)$ der
+\emph{linkss. GW} \\
+falls $x_0 \in \acc(X_+)$ mit $X_+ = X \cap \left]x_0,b\right]$, ist
+$\lim_{x \to x_0 + 0} f(x) = \lim_{x \to x_0} f|_{X_+}(x)$ der
+\emph{rechtss. GW}
+
+es gilt: $(y = \lim_{x \to x_0} f(x)) \;\Leftrightarrow\;
+(y = \lim_{x \to x_0 - 0} f(x)) \land (y = \lim_{x \to x_0 + 0} f(x))$
+
+\textbf{Satz}: $f: \left]a,b\right[ \rightarrow \mathbb{R}$, $a < b$ \qquad
+Ist $f$ monoton wachsend und beschränkt nach oben, dann gibt es den Grenzwert
+$\lim_{x \to b} f(x)$
+(analog für monoton fallende Funktionen).
+
+\subsection{%
+    Die komplexe Exponentialfunktion und die \textsc{Euler}sche Formel%
+}
+
+$z \in \mathbb{C}$; \quad $t_n(z) = 1 + \sum_{k=1}^n$
+{\large $\frac{z^k}{k!}$}, \quad $n \in \mathbb{N}$
+
+\textbf{Satz 1}: Die Folge $\{t_n(z)\}_{n \in \mathbb{N}}$ besitzt für jedes
+$z \in \mathbb{C}$ einen Grenzwert
+$\exp(z) \overset{\text{def.}}{=} \lim_{n \to \infty} t_n(z)$. \\
+Es ist $\exp(0) = 1$ sowie $\exp(1) = e$.
+
+\textbf{Satz 2} (Multiplikativität): Für $z, w \in \mathbb{C}$ ist
+$\exp(z + w) = \exp(z) \cdot \exp(w)$.
+
+\textbf{Folgerungen}: $\exp(n) = e^n$, $\exp(\frac{n}{m}) = e^{n/m}$
+($n, m \in \mathbb{N}$), $\exp(q) = e^q$ ($q \in \mathbb{Q}$), \\
+$\exp(z) \not= 0$, $\exp(-z) = \frac{1}{\exp(z)}$ ($z \in \mathbb{C}$)
+
+\textbf{Satz 3}: $|\exp(z) - z - 1| \le |z|^2$ für $z \in \mathbb{C}$,
+$|z| < 1$
+
+\textbf{Satz 4}: $z = x + iy \in \mathbb{C}$, $x = \Re z$, $y = \Im z$
+
+\begin{enumerate}
+    \item $\exp(\overline{z}) = \overline{\exp(z)}$
+    
+    \item $|\exp(z)| = \exp(x)$ \quad (von $y$ unabhängig)
+    
+    \item $\arg(\exp(z)) = \arg(\exp(iy)) \mod 2\pi$ \quad (von $x$ unabhängig)
+    
+    \item $\arg(\exp(iy)) = y \mod 2\pi$
+\end{enumerate}
+
+\textbf{Folgerung}: $\exp(iy) = \cos y + i \sin y = e^{iy}$, da
+$|\exp(iy)| = |\exp(0)| = 1$, $\arg(\exp(iy)) = y$, \\
+d.\,h. für $z = x + iy$ gilt
+$\exp(z) = \exp(x + iy) = \exp(x) \exp(iy) = e^x e^{iy}$
+
+\textbf{Reihendarstellung von Sinus/Kosinus}: \\
+$\sin z = \Im(\exp(iy)) =$ {\large $z - \frac{z^3}{3!} + \frac{z^5}{5!} -
+\frac{z^7}{7!} \pm \cdots$}, \quad
+$\cos z = \Re(\exp(iy)) =$ {\large $1 - \frac{z^2}{2!} + \frac{z^4}{4!} -
+\frac{z^6}{6!} \pm \cdots$}
+
+\subsection{%
+    Stetige Funktionen%
+}
+
+$(M_1,d_1)$, $(M_2,d_2)$ metrische Räume, $f: X \subset M_1 \rightarrow M_2$ \\
+\textbf{Stetigkeit}: $f$ ist stetig im Punkt $x_0 \in X$
+$\;\Leftrightarrow\; (x_0 \in \iso(X)) \lor (\lim_{x \to x_0} f(x) = f(x_0))$
+\\
+$f$ ist auf $X$ stetig $\;\Leftrightarrow\;$
+$f$ ist in allen $x_0 \in X$ stetig
+
+\pagebreak
+
+$f$ ist stetig in $x_0 \in X$
+$\;\Leftrightarrow\; \forall_{\varepsilon > 0}
+\exists_{\delta = \delta(\varepsilon, x_0)}
+\forall_{x \in U_\delta(x_0) \cap X}\; f(x) \in U_\varepsilon(f(x_0))$ \\
+$\;\Leftrightarrow\; \forall_{\{x_n\}_{n \in \mathbb{N}},\; x_n \in X,\;
+x_n \xrightarrow{n \to \infty} x_0}\;
+\lim_{n \to \infty} f(x_n) = f(x_0)$
+
+\textbf{Stetigkeit bei vektorwertigen Funktionen (Spezialfall)}: \\
+$f, g: X \subset M_1 \rightarrow \mathbb{K}^n$,
+$\alpha: X \subset M_1 \rightarrow \mathbb{K}$, $f, g, \alpha$ stetig
+in $x_0 \in X$ (auf $X$) \\
+$\Rightarrow\;$
+$f \pm g$, $\langle f, g \rangle_{\mathbb{K}^n}$, $\alpha \cdot f$ stetig
+in $x_0 \in X$ (auf $X$),
+$\frac{1}{\alpha(x)}$ stetig in $x_0 \in X$ bzw. auf $X$ ($\alpha(x) \not= 0$)
+\\
+$x_0 \in X_0 \subset X$, $f: X \rightarrow M_2$ stetig
+$\;\Rightarrow\;$ $f|_{X_0}: X_0 \rightarrow M_2$ stetig
+
+\textbf{Satz}: Polynome $P_n(z)$, der Betrag $|z|$ und $\exp(z)$ sind stetig
+auf $\mathbb{C}$, \\
+d.\,h. auch $\sin z$ und $\cos z$ sind stetig auf $\mathbb{C}$.
+
+Ist $f$ in $x_0 \in X$ stetig, dann ist $f$ in einer geeigneten
+$\delta$-Umgebung von $x_0$ beschränkt ($\delta > 0$).
+
+\linie
+
+\textbf{Formen der Unstetigkeit bei reellen Funktionen}:
+$f: X \subset \left]a,b\right[ \rightarrow \mathbb{R}$,
+$x_0 \in \left]a,b\right[$
+
+\begin{itemize}
+    \item \emph{Hebbare Unstetigkeit}: $x_0 \notin X$, d.\,h. $f$ ist im Punkt
+    $x_0$ nicht definiert, aber \\
+    $\exists \lim_{x \to x_0 - 0} f(x) =
+    \lim_{x \to x_0 + 0} f(x) \;\Rightarrow\;$
+    $\tilde{f}(x) =$ {\small
+    $\begin{cases}
+    \lim_{x \to x_0} f(x) & x = x_0 \\
+    f(x) & x \not= x_0
+    \end{cases}$} ist stetig in $x_0$.
+    
+    \item \emph{Unstetigkeit vom Typ 1}:
+    $\exists \lim_{x \to x_0 - 0} f(x)$, $\exists \lim_{x \to x_0 + 0} f(x)$,
+    aber $f(x_0 - 0) \not= f(x_0 + 0)$ \\
+    $\Rightarrow$ Sprung der Funktion (verschiedene Grenzwerte)
+    
+    \item \emph{Unstetigkeit vom Typ 2}:
+    $f(x_0 - 0)$ oder $f(x_0 + 0)$ existiert nicht
+\end{itemize}
+
+\linie
+
+\emph{Lemma}: $f: [a,b] \rightarrow \mathbb{R}$ stetig, $x_0 \in [a,b]$,
+$f(x_0) \not= 0 \;\Rightarrow\;
+\exists_{\delta > 0} \forall_{x \in U_\delta(x_0) \cap [a,b]}\;
+\sgn f(x) = \sgn f(x_0)$
+
+\textbf{Satz von \textsc{Bolzano}-\textsc{Cauchy}}:
+$f: [a,b] \rightarrow \mathbb{R}$ stetig mit $f(a)f(b) < 0$
+$\quad\Rightarrow\quad \exists_{c \in \left]a,b\right[}\; f(c) = 0$
+
+Ist $f\!\!\upuparrows$ oder $f\!\!\downdownarrows$, dann ist $c$ eindeutig
+bestimmt. \\
+Anwendung: eindeutige Lösungen $\sqrt[n]{g}$, $\ln g$, Existenz der
+Umkehrfunktionen
+
+\textbf{Folgerung (Zwischenwertsatz)}: $f: [a,b] \rightarrow \mathbb{R}$
+stetig, $x_1, x_2 \in [a,b]$ mit $x_1 < x_2$, \\
+$y_- = \min\{f(x_1), f(x_2)\}$, $y_+ = \max\{f(x_1), f(x_2)\}$
+$\;\Rightarrow\; \forall_{\eta \in \left]y_-,y_+\right[}
+\exists_{c(\eta) \in \left]x_1,x_2\right[}\; f(c(\eta)) = \eta$
+
+\textbf{Umkehrung als Satz}: $f: [a,b] \rightarrow \mathbb{R}$,
+$f\!\!\uparrow$ (wichtig!),
+$f$ nimmt alle Werte $y \in [f(a), f(b)]$ an \\
+$\Rightarrow\; f$ stetig auf $[a,b]$
+
+\textbf{Umkehrfunktionen}:
+$f: [a,b] \rightarrow [\alpha,\beta]$ monoton, bijektiv
+$\;\Rightarrow\; f^{-1}$ stetig auf $[\alpha,\beta]$
+
+\linie
+
+\textbf{Stetigkeit mit of"|fenen Mengen}: $(M_1,d_1)$, $(M_2,d_2)$
+metrische Räume, $f: M_1 \rightarrow M_2$ \\
+$f$ ist auf $M_1$ stetig
+$\;\Leftrightarrow\;$ das Urbild $V = f^{-1}(U)$ jeder in $M_2$ of"|fenen Menge
+$U$ ist in $M_1$ of"|fen.
+
+\textbf{Komposition von stetigen Funktionen}: Sind $f: M_1 \rightarrow M_2$ und
+$g: M_2 \rightarrow M_3$ stetige Funktionen, so ist auch
+$g \circ f: M_1 \rightarrow M_3$ stetig.
+
+\linie
+
+\textbf{dichte Menge}: $(M,d)$ metrischer Raum, $X \subset M$ \quad
+$X$ ist dicht in $M \;\Leftrightarrow\; \overline{X} = M$.
+
+\textbf{Satz}: Seien $f, g: M_1 \rightarrow M_2$ stetige Funktionen,
+$X \subset M_1$ und $X$ dicht in $M_1$. \\
+Ist $f|_X = g|_X$, dann ist auch $f(x) = g(x)$ für alle $x \in M_1$.
+
+\textbf{links- und rechtsseitige Stetigkeit}:
+$f: [a,b] \rightarrow M_2$, $x_0 \in [a,b]$ \\
+$f$ ist in $x_0$ linksseitig stetig
+$\;\Leftrightarrow\; f(x_0 - 0) = f(x_0)$ \\
+$f$ ist in $x_0$ rechtsseitig stetig
+$\;\Leftrightarrow\; f(x_0 + 0) = f(x_0)$ \\
+$f$ ist stetig in $x_0$ genau dann, wenn $f$ in $x_0$ links- und rechtsseitig
+stetig ist.
+
+\textbf{Notation (Grenzwerte von Funktionen)}:
+$f: \mathbb{R} \rightarrow M_2$, $y \in M_2$ \\
+$y = \lim_{x \to \infty} f(x) \;\Leftrightarrow\;
+\forall_{\varepsilon > 0} \exists_{C(\varepsilon)}
+\forall_{x \in \mathbb{R},\; |x| \ge C(\varepsilon)}\;
+|y - f(x)| < \varepsilon$ \\
+$y = \lim_{x \to +\infty} f(x) \;\Leftrightarrow\;
+\forall_{\varepsilon > 0} \exists_{C(\varepsilon)}
+\forall_{x \in \mathbb{R},\; x \ge C(\varepsilon)}\;
+|y - f(x)| < \varepsilon$ \\
+$y = \lim_{x \to -\infty} f(x) \;\Leftrightarrow\;
+\forall_{\varepsilon > 0} \exists_{C(\varepsilon)}
+\forall_{x \in \mathbb{R},\; x \le C(\varepsilon)}\;
+|y - f(x)| < \varepsilon$
+
+\subsection{%
+    Kompakte Mengen%
+}
+
+\textbf{Teilfolge}: Eine \emph{Teilfolge} entsteht durch "`Streichen"' von
+endlich oder unendlich vielen Gliedern, sodass unendlich viele Folgenglieder
+übrig bleiben.
+Die Ordnung bleibt erhalten! \\
+Wähle streng monotone Folge $\{n_k\}_{k \in \mathbb{N}}$,
+$n_k \in \mathbb{N}$, dann ist $\{x_{n_k}\}_{k \in \mathbb{N}}$ eine Teilfolge
+von $\{x_n\}_{n \in \mathbb{N}}$. \\
+Wenn $\lim_{n \to \infty} x_n = y$, dann konvergieren auch alle Teilfolgen:
+$\lim_{k \to \infty} x_{n_k} = y$.
+
+\textbf{kompakte Menge}: Sei $(M,d)$ metrischer Raum, $X \subset M$. \\
+$X$ heißt \emph{(folgen-)kompakt} $\;\Leftrightarrow\;$ aus jeder Folge
+$\{x_n\}_{n \in \mathbb{N}}$, $x_n \in X$ kann man mindestens eine geeignete
+Teilfolge $\{x_{n_k}\}_{k \in \mathbb{N}}$ auswählen, welche einen Grenzwert
+$\lim_{k \to \infty} x_{n_k} = y \in X$ besitzt.
+
+\textbf{Kompaktheitskriterium von \textsc{Bolzano}}: Sei $M = \mathbb{R}^d$
+oder $M = \mathbb{C}^d$. \\
+$X \subset \mathbb{R}^d$ bzw. $X \subset \mathbb{C}^d$ ist kompakt
+$\;\Leftrightarrow\; X$ ist beschränkt und abgeschlossen.
+
+\linie
+
+\textbf{Satz}: Sei $X \subset \mathbb{R}$ eine nicht-leere, kompakte
+Teilmenge von $\mathbb{R}$. \\
+Dann besitzt $X$ ein Maximum $x_+ = \max X$ und ein Minimum $x_- = \min X$.
+
+\textbf{Satz}: Sei $f: X \subset M_1 \rightarrow M_2$ stetig.
+Ist $X$ kompakt, dann ist auch das Bild $f(X)$ kompakt.
+
+\textbf{Satz von \textsc{Weierstraß} (Extremwertsatz)}:
+Sei $f: X \subset M_1 \rightarrow \mathbb{R}$ stetig und $X$ kompakt. \\
+Dann ist $f(X)$ beschränkt und es gibt Elemente $x_+, x_- \in X$, sodass
+$y_+ = f(x_+) = \max f(X)$ und $y_- = f(x_-) = \min f(X)$.
+
+\linie
+
+\textbf{Verdichtungspunkt}: Sei $x_k \in M$ eine Folge.
+$y \in M$ heißt \emph{Verdichtungspunkt} von $\{x_k\}$,
+falls es eine Teilfolge $\{x_{k_j}\}$ aus $\{x_k\}$ gibt mit
+$\lim_{j \to \infty} x_{k_j} = y$.
+
+Jede beschränkte Folge $\{x_k\}$, $x_k \in \mathbb{R}^d$
+($x_k \in \mathbb{C}^d$) besitzt mindestens einen Verdichtungspunkt.
+
+\subsection{%
+    Gleichmäßige Stetigkeit%
+}
+
+Seien $(M_1,d_1)$, $(M_2,d_2)$ metrische Räume und
+$f: X \subset M_1 \rightarrow M_2$ Funktion. \\
+\emph{Wiederholung}: $f$ heißt stetig auf $X$, falls
+$\forall_{x_0 \in X} \forall_{\varepsilon > 0}
+\exists_{\delta = \delta(\varepsilon, x_0) > 0}
+\forall_{x \in U_\delta(x_0) \cap X}\; f(x) \in U_\varepsilon(f(x_0))$.
+
+$f$ heißt \textbf{gleichmäßig stetig} auf $X$, falls
+$\forall_{\varepsilon > 0} \exists_{\delta = \delta(\varepsilon) > 0}
+\forall_{x_0 \in X} \forall_{x \in U_\delta(x_0) \cap X}\;
+f(x) \in U_\varepsilon(f(x_0))$ \\
+bzw. $\forall_{\varepsilon > 0} \exists_{\delta = \delta(\varepsilon) > 0}
+\forall_{x, x_0 \in X,\; d(x, x_0) < \delta}\;
+f(x) \in U_\varepsilon(f(x_0))$.
+
+Eine auf $X$ gleichmäßig stetige Funktion ist auch auf $X$ stetig.
+Die Umkehrung gilt nicht!
+
+\textbf{Satz von \textsc{Cantor}}: Sei $f: X \subset M_1 \rightarrow M_2$
+stetig auf $X$ sowie $X$ kompakt (\emph{wichtig}). \\
+Dann ist $f$ gleichmäßig stetig auf $X$.
+
+Bei einer vektorwertigen, stetigen Funktion
+$f: X \subset M \rightarrow \mathbb{K}^n$, $f(x) = (f_1(x), \ldots, f_n(x))$
+kann man also aus $X$ kompakt folgern, dass
+$f$ beschränkt ist, $\Vert f(x) \Vert$ das Maximum/Minimum annimmt
+sowie dass $f$ gleichmäßig stetig ist.
+
+\pagebreak
+
+\subsection{%
+    Der Raum der stetigen Funktionen%
+}
+
+Seien $M_1$, $M_2$ metrische Räume und $X \subset M$. \\
+$C(X, M_2)$ bezeichnet die \textbf{Menge aller stetigen Funktionen}
+$f: X \rightarrow M_2$.
+
+\linie
+
+\textbf{Spezialfall}: $X \subset M_1$, $X$ kompakt (\emph{wichtig!}),
+$M_2 = \mathbb{K}^d$
+($\mathbb{K} = \mathbb{R}$ oder $\mathbb{K} = \mathbb{C}$) \\
+Auf der Menge der stetigen Funktionen $C(X, \mathbb{K}^d)$ werden dann zwei
+Operationen definiert: \\
+$\boldsymbol{+}: C(X, \mathbb{K}^d) \times C(X, \mathbb{K}^d) \rightarrow
+C(X, \mathbb{K}^d)$, $(f + g)(x) = f(x) + g(x)$ für $x \in X$ \\
+$\boldsymbol{\cdot}: \mathbb{K} \times C(X, \mathbb{K}^d) \rightarrow
+C(X, \mathbb{K}^d)$, $(\alpha \cdot f)(x) = \alpha \cdot f(x)$ für $x \in X$ \\
+Mit diesen Operationen wird $C(X, \mathbb{K}^d)$ zu einem
+$\mathbb{K}$-Vektorraum (Nullvektor ist Nullabbildung).
+
+\textbf{$C(X, \mathbb{K}^d)$ als normierter Raum}:
+Die Norm einer Funktion $f \in C(X, \mathbb{K}^d)$ wird definiert als
+$\Vert f \Vert_C := \max_{x \in X} \Vert f(x) \Vert_{\mathbb{K}^d}$
+(Maximum existiert nach \textsc{Weierstraß}).
+Die so definierte Funktion erfüllt die Eigenschaften einer Norm,
+d.\,h. $C(X, \mathbb{K}^d)$ ist normierter Raum.
+Dadurch wird $C(X, \mathbb{K}^d)$ auch zum metrischen Raum mit
+$d_c(f,g) = \Vert f - g \Vert_C =
+\max_{x \in X} \Vert f(x) - g(x) \Vert_{\mathbb{K}^d}$.
+
+\linie
+
+\textbf{Konvergenz in $C(X, \mathbb{K}^d)$}:
+$f_n, g \in C(X, \mathbb{K}^d)$, \quad
+$f_n \xrightarrow{\Vert \cdot \Vert_C} g \;\Leftrightarrow\;
+\forall_{\varepsilon > 0} \exists_{N(\varepsilon)}
+\forall_{n \ge N(\varepsilon)}\; \Vert f_n - g \Vert_C < \varepsilon$ \\
+$\Leftrightarrow\; \forall_{\varepsilon > 0} \exists_{N(\varepsilon)}
+\forall_{n \ge N(\varepsilon)}\;
+\max_{x \in X} \Vert f_n(x) - g(x) \Vert_{\mathbb{K}^d} < \varepsilon$
+
+\textbf{punktweise Konvergenz}:
+$\lim_{n \to \infty} f_n(x) = g(x)$ punktweise für $x \in X$ \\
+$\Leftrightarrow\; \forall_{x \in X} \forall_{\varepsilon > 0}
+\exists_{N(\varepsilon, x)} \forall_{n \ge N(\varepsilon, x)}\;
+\Vert f_n(x) - g(x) \Vert_{\mathbb{K}^d} < \varepsilon$ \\
+Die Grenzwert-Funktion bzgl. einer punktweisen Konvergenz muss nicht stetig
+sein.
+
+\textbf{gleichmäßige Konvergenz}:
+$\lim_{n \to \infty} f_n(x) = g(x)$ gleichmäßig bzgl. $x \in X$ \\
+$\Leftrightarrow\; \forall_{\varepsilon > 0} \exists_{N(\varepsilon)}
+\forall_{n \ge N(\varepsilon)} \forall_{x \in X}\;
+\Vert f_n(x) - g(x) \Vert_{\mathbb{K}^d} < \varepsilon$. \\
+Damit ist gleichmäßige Konvergenz gleichbedeutend mit Konvergenz im
+$C(X, \mathbb{K}^d)$. \\
+Gleichmäßige Konvergenz impliziert punktweise Konvergenz.
+Die Umkehrung gilt nicht!
+
+\textbf{Satz}: $C(X, \mathbb{K}^d)$ ist vollständig
+(bzgl. der gleichmäßigen Konvergenz).
+
+\textbf{Folgerung}: Seien $f_n \in C(X, \mathbb{K}^d)$,
+$g: X \rightarrow \mathbb{K}^d$ ($X$ kompakt) mit
+$f_n(x) \xrightarrow{n \to \infty} g(x)$ gleichmäßig bzgl. $x \in X$.
+Dann ist auch $g$ stetig, d.\,h. $g \in C(X, \mathbb{K}^d)$.
+
+\pagebreak

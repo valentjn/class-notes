@@ -1,0 +1,339 @@
+\section{%
+    Scheduling%
+}
+
+Im Folgenden geht es um \begriff{Scheduling}, d.\,h. die möglichst optimale Zuordnung von
+Ressourcen (Personal, Zeit, Aufträge, Maschinen usw.) zu Aufgaben mit
+Abhängigkeiten (Reihenfolge, begrenzte Ressourcen usw.).
+Beispiele sind Projektplanung, Stundenplanerstellung und die Produktion in einer Fabrik.
+
+\subsection{%
+    Prozess-Scheduling%
+}
+
+\textbf{erstes Modell}:
+Ein \begriff{Prozess} bestehe aus $n$ \begriff{Aufträgen} $A_1, \dotsc, A_n$.
+Jeder Auftrag $A_i$ benötigt eine (deterministische) Bearbeitungszeit $t_i \ge 0$.
+Ein \begriff{Zeitplan} ist eine Abb. $\{A_1, \dotsc, A_n\} \to [0, \infty)^n$,\\
+$A_i \mapsto s_i$, die jedem Auftrag $A_i$ eine Startzeit $s_i$ zuordnet.
+Ein Zeitplan definiert die \begriff{Fertig"-stellungszeiten} $c_i := s_i + t_i$
+(die Aufträge werden also am Stück abgearbeitet).
+Die \begriff{Kosten} eines Zeitplans sind gegeben durch $\max_{i=1,\dotsc,n} c_i$.
+
+\textbf{Präzendenzrelation}:
+Es sei eine \begriff{Präzendenzrelation} "`$\to$"' gegeben,
+wobei $A_i \to A_j$ bedeutet, dass $A_j$ von $A_i$ abhängt.
+Ein Zeitplan heißt \begriff{zulässig}, falls
+$\forall_{i,j=1,\dotsc,n}\; [A_i \to A_j \;\Rightarrow\; c_i \le s_j]$.
+
+"`$\to$"' kann durch die transitive Hülle ersetzt werden, ohne dass sich die zulässigen
+Zeitpläne ändern.
+Das Ziel ist es nun, einen zulässigen Zeitplan mit minimalen Kosten zu finden.
+
+\linie
+
+\textbf{Scheduling-Problem als Graph}:
+Das Scheduling-Problem kann als Graph $G := (V, E)$ modelliert werden mit Knoten
+$V := \{A_S, A_1, \dotsc, A_n, A_E\}$ und Kanten
+$E := \{(A_i, A_j) \;|\; A_i \to A_j\}$\\
+$\cup\; \{(A_S, A_i) \;|\; \text{$A_i$ hat keine eingehende Kante}\} \cup
+\{(A_i, A_E) \;|\; \text{$A_i$ hat keine ausgehende Kante}\}$,\\
+wobei $S := 0$, $t_S := 0$, $E := n+1$ und $t_E := 0$.
+
+\textbf{Pfad}:
+Ein \begriff{Pfad} ist eine Folge von Aufträgen $A_{i_1}, \dotsc, A_{i_k}$ mit
+$A_{i_1} \to \dotsb \to A_{i_k}$.
+Die Länge des Pfades $A_{i_1} \to \dotsb \to A_{i_k}$ ist
+$\sum_{j=1}^k t_{i_j}$.
+In jedem zulässigen Zeitplan gilt $c_{i_k} \ge s_{i_1} + \sum_{j=1}^k t_{i_j}$
+für jeden Pfad $A_{i_1} \to \dotsb \to A_{i_k}$
+(weil $c_{i_k} = s_{i_k} + t_{i_k} \ge c_{i_{k-1}} + t_{i_k} \ge s_{i_1} + \sum_{j=1}^k t_{i_j}$).
+
+\textbf{Zyklen}:
+Ein \begriff{Zyklus} ist ein Pfad $A_{i_1} \to \dotsb \to A_{i_k} \to A_{i_1}$.
+In jedem zulässigen Zeitplan gilt $s_{i_1} \ge c_{i_k} \ge s_{i_1} + \sum_{j=1}^k t_{i_j}$,
+also $t_{i_1} = \dotsb = t_{i_k} = 0$.
+OBdA kann man also annehmen, dass der Graph zyklenfrei ist.
+Er ist dann ein DAG (gerichteter azyklischer Graph).
+
+\linie
+\pagebreak
+
+\textbf{Konstruktion eines opt. Zeitplans für DAGs}:
+Ein optimaler Zeitplan kann für DAGS wie folgt konstruiert werden.
+Seien $s_i'$ die \begriff{Vorlaufzeit} (frühest möglicher Startpunkt) und
+$c_i' := s_i' + t_i$ die \begriff{Fertigstellungszeit} von $A_i$.
+\begin{enumerate}
+    \item
+    Setze $s_S' := c_S' := 0$.
+    
+    \item
+    Solange es noch unbearbeitete Knoten gibt, wiederhole Folgendes:
+    \begin{enumerate}
+        \item
+        Wähle einen unbearbeiteten Knoten $A_i$, bei dem alle $A_j$ mit $A_j \to A_i$
+        bereits bearbeitet wurden
+        (der Knoten existiert aufgrund der Zyklenfreiheit).
+        
+        \item
+        Setze $s_i' := \max\{c_j' \;|\; A_j \to A_i\}$ und $c_i' := s_i' + t_i$.
+    \end{enumerate}
+\end{enumerate}
+DAGs können per modifizierte Tiefensuche topologisch so sortiert werden, dass
+$A_i \to A_j$ nur für $i < j$ gelten kann.
+In diesem Fall kann man die Knoten in der Reihenfolge $1, \dotsc, n + 1$ bearbeiten.
+
+\textbf{Eigenschaften des Zeitplans}:
+Kein Auftrag kann früher gestartet werden (insb. $A_E$).
+Wenn man einen Auftrag $A_i$ später startet, kann das $c_E'$ nicht verbessern.
+
+\textbf{alternativ über Restlaufzeit}:
+Seien $c_i''$ die späteste Fertigstellungszeit von $A_i$, sodass die optimale
+Gesamtfertigstellungszeit $c_E'$ erreicht wird, und $s_i'' := c_i'' - t_i$ die späteste
+Startzeit.
+Dann ist $c_E' - s_i''$ die \begriff{Restlaufzeit} von Auftrag $A_i$.
+Die Berechnung erfolgt analog zur Vorlaufzeit, außer dass man mit
+$c_E'' := s_E'' := c_E'$ startet und umgekehrt vorgeht.
+
+\linie
+
+\textbf{kritischer Knoten}:
+Ist $s_i' = s_i''$, dann ist $A_i$ ein \begriff{kritischer Knoten}
+und es gilt $s_i = s_i' = s_i''$ für jeden optimalen Zeitplan.
+Jeder kritische Knoten liegt auf einem \begriff{kritischem Pfad} von $A_S$ nach $A_E$, der nur aus
+kritischen Knoten besteht.
+Für jede Kante $A_k \to A_\ell$ eines kritischen Pfades gilt $c_k' = s_\ell''$.
+
+\textbf{Schlupf}:
+Ist $s_i' < s_i''$, so heißt die Dif"|ferenz $s_i'' - s_i'$ \begriff{Schlupf} von $A_i$.
+Für jeden optimalen Zeitplan gilt $s_i \in [s_i', s_i'']$.
+
+\textbf{Kritischer-Pfad-Methode}:
+Es gibt immer mindestens einen kritischen Pfad.
+Wenn es mehrere gibt, so haben sie dieselbe Länge.
+Die Länge eines kritischen Pfads ist eine untere Schranke für $c_E$ für jeden zulässigen Zeitplan.
+Das Vorgehen heißt \begriff{Kritischer-Pfad-Methode (CPM)}.
+Werkzeuge sind z.\,B. Gantt-Diagramme und Netzpläne.
+Die Optimierung von Aufträgen setzt üblicherweise beim kritischem Pfad an.
+
+\linie
+
+\begin{floatingfigure}[r]{67mm}
+    \vspace{-8mm}
+    \begin{align*}
+        \xymatrix@R=3mm@C=6mm{
+            &
+            *=<2em>[Fo]{1^{[3]}}\ar[r]&
+            *=<2em>[Fo]{3^{[2]}}\ar[r]\ar[rd]&
+            *=<2em>[Fo]{4^{[3]}}\ar[rd]
+            \\
+            %
+            *=<2em>[Fo]{S^{[0]}}\ar[ru]\ar[r]\ar[rd]&
+            *=<2em>[Fo]{2^{[2]}}\ar[ru]&&
+            *=<2em>[Fo]{5^{[2]}}\ar[r]&
+            *=<2em>[Fo]{E^{[0]}}\\
+            %
+            &
+            *=<2em>[Fo]{6^{[4]}}\ar[r]&
+            *=<2em>[Fo]{7^{[4]}}\ar@/_/[rru]
+        }
+    \end{align*}
+    \begin{tabular}{p{5mm}*{9}{p{2mm}}}
+        \toprule
+        
+        $i$ & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ \\
+        
+        \midrule
+        
+        $t_i$ & $0$ & $3$ & $3$ & $2$ & $3$ & $2$ & $4$ & $4$ & $0$\\
+        
+        \midrule
+        
+        $s_i'$ & $0$ & $0$ & $0$ & $3$ & $5$ & $5$ & $0$ & $4$ & $8$\\
+        $c_i'$ & $0$ & $3$ & $2$ & $5$ & $8$ & $7$ & $4$ & $8$ & $8$\\
+        
+        \midrule
+        
+        $s_i''$ & $0$ & $0$ & $1$ & $3$ & $5$ & $6$ & $0$ & $4$ & $8$\\
+        $c_i''$ & $0$ & $3$ & $3$ & $5$ & $8$ & $8$ & $4$ & $8$ & $8$\\
+        
+        \bottomrule
+    \end{tabular}
+\end{floatingfigure}
+\textbf{Beispiel}:
+Rechts sind die Bedingungen gegeben durch
+$\{A_1 \to A_3, A_2 \to A_3, A_3 \to A_4, A_3 \to A_5, A_6 \to A_7\}$ und
+die Bearbeitungszeiten stehen in eckigen Klammern.
+In der Tabelle stehen die Werte von $s_i', c_i', s_i'', c_i''$, wenn man den Algorithmus oben
+anwendet.
+Wie man leicht sieht, gibt es hier zwei kritische Pfade,
+nämlich $A_S \to A_1 \to A_3 \to A_4 \to A_E$, $A_S \to A_6 \to A_7 \to A_E$.
+
+\pagebreak
+
+\subsection{%
+    Job-Shop-Probleme%
+}
+
+Das Modell soll nun so erweitert werden, dass Ressourcen beschränkt sind,
+d.\,h. es können nicht mehr beliebig viele Aufträge parallel abgearbeitet werden.
+
+\textbf{Job-Shop-Problem}:
+Es gibt $n$ Aufträge $A_1, \dotsc, A_n$
+und $m$ Maschinen $1, \dotsc, m$.
+Jeder Auftrag $A_i$ zerfällt nun in $n_i$ Teilaufträge $A_{i,j}$, $j = 1, \dotsc, n_i$,
+wobei ein Teilauftrag $A_{i,j}$ die Zeit $t_{i,j}$ und
+die Maschine $m_{i,j} \in \{1, \dotsc, m\}$ zur Bearbeitung benötigt.
+Pro Maschine darf immer nur ein Teilauftrag gleichzeitig bearbeitet werden.
+Zur Vereinfachung wird einschränkend angenommen, dass für jeden Auftrag $A_i$
+jede Maschine nur von höchstens einem Teilauftrag $A_{i,j}$ benötigt wird
+(also $m_{i,j} \not= m_{i,j'}$ für $j \not= j'$).
+
+\textbf{Flow-Shop-Modell}:
+Bei einem \begriff{Flow-Shop-Modell} werden die Maschinen von den Teilaufträgen in gleicher
+Reihenfolge benötigt.
+
+\textbf{Matrixnotation}:
+Mit $A_i = \smallpmatrix{m_{i,1} & \dots & m_{i,n_i} \\ t_{i,1} & \dots & t_{i,n_i}}$
+wird das Problem vollständig beschrieben.
+
+\textbf{Zeitplan}:
+Ein \begriff{Zeitplan} ist eine Abbildung $A_{i,j} \mapsto s_{i,j}$ für
+$i = 1, \dotsc, n$, $j = 1, \dotsc, n_i$, wobei $s_{i,j} \ge 0$.
+Der Zeitplan heißt \begriff{zulässig}, falls
+\begin{itemize}
+    \item
+    kein Teilauftrag $A_{i,j}$ gestartet wird, bevor der Vorgänger $A_{i,j-1}$ beendet ist, und
+    
+    \item
+    zu keinem Zeitpunkt mehrere Teilaufträge auf derselben Maschine angesetzt sind.
+\end{itemize}
+Gesucht ist ein optimaler Zeitplan hinsichtlich der spätesten Fertigstellungszeit.
+
+\linie
+
+\textbf{Präzedenzgraph}:
+Um die Abhängigkeiten in einem Graph zu modellieren, erstellt man wieder einen
+\begriff{Präzedenzgraphen}, wobei die Teilaufträge $A_{i,j}$ zusammen mit $A_S$ und $A_E$
+die Knoten sind.
+
+\textbf{Konjunktivkanten}:
+Die Reihenfolge innerhalb von Aufträgen wird durch die \begriff{Konjunktiv"-kanten}
+$A_{i,j-1} \to A_{i,j}$ für $i = 1, \dotsc, n$, $j = 2, \dotsc, n_i$
+sowie $A_S \to A_{i,1}$ und $A_{i,n_i} \to A_E$ für $i = 1, \dotsc, n$ modelliert.
+
+\textbf{Disjunktivkanten}:
+Die Abhängigkeiten mit den Maschinen modelliert man mit \begriff{Disjunktiv"-kanten}:
+Betrachte für $k \in \{1, \dotsc, m\}$ die Teilaufträge $M(k) := \{A_{i,j} \;|\; m_{i,j} = k\}$,
+die Maschine $k$ benötigen.
+Dann dürfen sich die Bearbeitungszeiten für Teilauftragspaare $A_{i,j}, A_{i',j'} \in M(k)$
+nicht überlappen.
+Ein zulässiger Zeitplan muss deswegen eine der beiden Präzendenzkanten $A_{i,j} \to A_{i',j'}$ oder
+$A_{i',j'} \to A_{i,j}$ auswählen.
+Weil aber nicht im Voraus bekannt ist, welche Kante am besten gewählt werden soll,
+fügt man zunächst beide Kanten als Disjunktivkanten ein und
+ein Optimierungsalgorithmus wählt dann eine Kante aus.
+
+\textbf{Disjunktivkanten-Belegung}:
+Eine \begriff{Disjunktivkanten-Belegung (DKB)} ist eine Auswahl genau einer Kante aus jedem Paar
+von Disjunktivkanten.
+Sie heißt \begriff{zulässig}, falls der entstehende Präzedenzgraph zyklenfrei ist
+(muss nicht notwendigerweise gelten).
+
+Wenn eine zulässige DKB gegeben ist, dann kann ein optimaler Zeitplan
+mit der Kritischer-Pfad-Methode bestimmt werden.
+Es gibt immer eine zulässige DKB, die folgendermaßen bestimmt werden kann:
+\begin{enumerate}
+    \item
+    Starte $A_{i,j}$, wenn $A_{i,j-1}$ beendet und $m_{i,j}$ frei ist.
+    
+    \item 
+    Kommen mehrere Teilaufträge für eine Maschine in Frage, wähle eine aus.
+\end{enumerate}
+
+Die Ermittlung einer optimalen DKB ist schwierig:
+Gibt es $k$ Disjunktivkanten, so gibt es $2^k$ DKBs und es müssen $2^k$ CPE-Läufe durchgeführt
+werden.
+Für große Probleme ist das unrealistisch.
+Das Problem kann, wie viele Probleme aus der diskreten Optimierung, i.\,A. nicht in unabhängige
+Teilprobleme zerlegt werden.
+Weil auch Branch-and-Bound zu teuer ist, müssen Heuristiken verwendet werden
+(z.\,B. \begriff{Shifting Bottleneck}), d.\,h. man gibt die Optimalität auf.
+
+\pagebreak
+
+\subsection{%
+    Stochastisches Scheduling%
+}
+
+Dass die Bearbeitungszeit von Aufträgen deterministisch ist, ist unrealistisch.
+Vielmehr sind verschieden lange Verzögerungen mit unterschiedlichen Wahrscheinlichkeiten möglich.
+Zur Vereinfachung seien die Ressourcen wieder unbeschränkt,
+d.\,h. es werden Job-Shop-Probleme betrachtet.
+
+Die Bearbeitungszeiten der Aufträge $A_i$ sind nicht mehr deterministisch, sondern
+Zufallsvariablen $T_i$.
+Die optimale Gesamtfertigstellungszeit $C_E$ ist dann ebenfalls eine Zufallsvariable.
+Mögliche Fragen sind nun z.\,B.:
+\begin{itemize}
+    \item
+    Welche Verteilung hat $C_E$?
+    
+    \item
+    In welcher Zeit ist der Prozess mit \SI{95}{\percent} Wahrscheinlichkeit abgeschlossen?
+    
+    \item
+    Wo ist der kritische Pfad?
+\end{itemize}
+
+\linie
+
+\textbf{gemeinsame Verteilungfunktion}:
+Die \begriff{gemeinsame Verteilungfkt.} der Aufträge $A_1, \dotsc, A_n$ ist
+die Verteilungsfunktion
+$F_{T_1,\dotsc,T_n}(t_1, \dotsc, t_n) := \PP(T_1 \le T_1, \dotsc, T_n \le t_n)$
+des Zufallsvektors $(T_1, \dotsc, T_n)$.
+Die Verteilungsfunktion beschreibt die Abhängigkeiten zwischen den $T_i$.
+Im Folgenden wird als Modellvereinfachung angenommen, dass die $T_i$ unabhängig sind, d.\,h.\\
+$\PP(T_1 \le T_1, \dotsc, T_n \le t_n) = \prod_{i=1}^n \PP(T_i \le t_i)$.
+
+\textbf{optimale Gesamtfertigstellungszeit}:
+Die optimale Gesamtfertigstellungszeit $C_E$ ist eine Zufallsvariable und hängt von
+$T_1, \dotsc, T_n$ ab.
+Ist eine konkrete Realisierung $t_1, \dotsc, t_n$ bekannt, so bestimmt sich $c_E$ mit der CPM.
+Allerdings kann man nicht einfach alle Realisierungen ausprobieren:
+Selbst wenn jedes $T_i$ diskret verteilt ist und nur drei Werte annimmt, so gibt es
+$3^n$ Kombinationen und es müssen $3^n$ viele CPM-Läufe durchgeführt werden.
+Eine Abhilfe kann es sein, die $t_i$ durch $\EE(T_i)$ zu ersetzen
+und das resultierende $c_E$ als Schätzung für $\EE(c_E)$ zu benutzen.
+
+\linie
+
+\textbf{serielle Bearbeitung}:
+Werden die Aufträge seriell bearbeitet ($A_S \to A_1 \to \dotsb \to A_n \to A_E$),
+so ist $C_E = \sum_{i=1}^n T_i$.
+Wegen der Linearität des Erwartungswerts gilt
+$\EE(C_E) = \sum_{i=1}^n \EE(T_i)$, d.\,h. obige Schätzung ist exakt.
+
+\textbf{parallele Bearbeitung}:
+Werden die Aufträge parallel bearbeitet ($A_S \to A_i \to A_E$),
+so ist $C_E = \max_{i=1,\dotsc,n} T_i$.
+Allerdings gilt i.\,A. nur $\EE(C_E) \ge \max_{i=1,\dotsc,n} \EE(T_i)$
+(\begriff{\name{jensen}sche Unglei"-chung}),
+d.\,h. obige Schätzung ist i.\,A. zu optimistisch.
+Dass die Schätzung schon bei mittelgroßen $n$ viel zu optimistisch ist, sieht man
+z.\,B. bei auf $[0, 1]$ gleichverteilten $T_i$.
+Dann ist $\EE(C_E) = \frac{n}{n+1}$, aber die Schätzung ist stets $\frac{1}{2}$.
+
+Die Schätzung ist nicht einmal sinnvoll nutzbar für die Bestimmung des kritischen Pfades.
+Als Beispiel betrachte man die parallelen Aufträge $A_1, A_2$ mit
+$\PP(T_1 = 0) = \PP(T_1 = 8) = \frac{1}{2}$,
+$\PP(T_2 = 1) = \frac{3}{4}$ und $\PP(T_2 = 9) = \frac{1}{4}$.
+Der Pfad über $A_1$ ist kritisch genau dann, wenn $T_1 = 8$ und $T_2 = 1$, was mit
+Wahrscheinlichkeit $\frac{1}{2} \cdot \frac{3}{4} = \frac{3}{8}$ passiert.
+Somit ist der Pfad über $A_2$ mit Wahrscheinlichkeit $\frac{5}{8}$ kritisch.
+Betrachtet man allerdings die Erwartungswerte $\EE(T_1) = 4$ und $\EE(T_2) = 3$,
+so sieht man, dass hier der obere Pfad kritisch wäre, wenn man die Erwartungswerte als
+Schätzung nutzen würde.
+
+\pagebreak

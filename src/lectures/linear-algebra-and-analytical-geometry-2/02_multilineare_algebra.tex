@@ -1,0 +1,919 @@
+\section{%
+    Etwas multilineare Algebra%
+}
+
+\subsection{%
+    Der Dualraum%
+}
+
+\begin{Bem}
+    Im Folgenden seien $K$ ein Körper und $V, U$ usw. endliche $K$-Vektorräume.
+\end{Bem}
+
+\begin{Def}{Dualraum}
+    Der $K$-Vektorraum $\Hom_K(V, K)$ wird mit $V^\ast$ bezeichnet. \\
+    $V^\ast$ heißt der \begriff{zu $V$ duale Raum}.
+    Die Elemente von $V^\ast$ heißen \begriff{Linearformen}.
+\end{Def}
+
+\begin{Bem}
+    Bspw. sind die Abbildungen $\tr: M_{n \times n}(K) \rightarrow K$ und
+    $I_a^b: V \rightarrow \real$,\\
+    $I_a^b(f) = \int_a^b f(x)\dx$
+    ($V = \{f: [a,b] \rightarrow \real \text{ stetig}\}$) Linearformen.
+\end{Bem}
+
+\begin{Def}{durch Basis definierte Linearformen}
+    Sei $\basis{B} = \{v_i \;|\; i \in I\}$ eine (nicht notwendigerweise
+    endliche) Basis von $V$.
+    Dann ist die Linearform $v_i^\ast \in V^\ast$ eindeutig durch
+    $v_i^\ast(v_j) = \delta_{ij}$ definiert. \\
+    Ist $x \in V$ mit $x = \sum_{j \in I} \lambda_j v_j$ ($\lambda_j \in K$
+    fast alle $0$), so ist $v_i^\ast(x) = \lambda_i$.
+\end{Def}
+
+\begin{Satz}{Basis von $V^\ast$}
+    Sei $\basis{B} = (v_1, \ldots, v_n)$ eine Basis von $V$
+    (endlich-dimensional!). \\
+    Dann ist $\basis{B}^\ast = (v_1^\ast, \ldots, v_n^\ast)$ eine Basis von
+    $V^\ast$ (die zu $\basis{B}$ \begriff{duale Basis}).
+    Insbesondere sind $V$ und $V^\ast$ isomorph, ein Isomorphismus ist gegeben
+    durch $v_i \mapsto v_i^\ast$ (linear ausgedehnt). \\
+    Ist $f \in V^\ast$, so ist $f = \sum_{i=1}^n f(v_i) v_i^\ast$.
+\end{Satz}
+
+\begin{Bem}
+    Für $\dim_K V = \infty$ ist $\sum f(v_i) v_i^\ast$ nicht definiert,
+    dann ist $\dim_K V^\ast > \dim_K V$ und $\basis{B}^\ast$ ist keine
+    Basis von $V^\ast$. \\
+    Der Isomorphismus $\ast: V \rightarrow V^\ast$,
+    $\sum_{i=1}^n \lambda_i v_i \mapsto \sum_{i=1}^n \lambda_i v_i^\ast$
+    hängt wesentlich von der gewählten $\basis{B} = (v_1, \ldots, v_n)$ von
+    $V$ ab.
+    Die Bezeichnung $v^\ast = \sum_{i=1}^n \lambda_i v_i^\ast$ ist daher
+    irreführend, wird aber doch behalten, wenn keine Missverständnisse zu
+    befürchten sind.
+\end{Bem}
+
+\begin{Def}{duales Kompliment}
+    Sei $U \ur V$.
+    Dann ist $U^\bot = \{f \in V^\ast \;|\; f(U) = (0_K)\}$ ein
+    Unterraum von $V^\ast$ und wird \begriff{duales Kompliment} von $U$
+    in $V^\ast$ genannt.
+    Ist $(v_1, \ldots, v_n)$ eine Basis von $V$, sodass $(v_1, \ldots, v_k)$
+    eine Basis von $U$ ist, so ist $(v_{k+1}^\ast, \ldots, v_n^\ast)$ eine
+    Basis von $U^\bot$. \\
+    Insbesondere ist $\dim_K U^\bot = \dim_K V - \dim_K U$.
+\end{Def}
+
+\begin{Satz}{Doppeldualraum}
+    Für $v \in V$ ist durch $f_v: V^\ast \rightarrow K$, $f_v(x) = x(v)$
+    eine $K$-lineare Abbildung definiert, d.\,h. $f_v$ ist eine Linearform
+    auf $V^\ast$ und daher Element des Dualraums $V^{\ast\ast} = (V^\ast)^\ast$
+    von $V^\ast$.
+    Die Abbildung $\mathcal{E}: V \rightarrow V^{\ast\ast}$, $v \mapsto f_v$
+    ist ein Isomorphismus.
+\end{Satz}
+
+\begin{Bem}
+    Der Isomorphismus $\mathcal{E}: V \rightarrow V^{\ast\ast}$ hängt nicht
+    von einer gewählten Basis ab.
+    Man spricht von einem \begriff{kanonischen/natürlichen Isomorphismus}.
+\end{Bem}
+
+\begin{Satz}{$\mathcal{E}$ unabhängig von Basis}
+    Sei $V$ ein $K$-Vektorraum.
+    Dann wird durch $\mathcal{E}: V \rightarrow V^{\ast\ast}$, $v \mapsto f_v$
+    ein Monomorphismus definiert.
+    Ist zusätzlich $V$ endlich dimensional,
+    $\basis{B}$ eine Basis von $V$,
+    $\basis{B}^\ast$ die zugehörige duale Basis von $V$,
+    $\basis{B}^{\ast\ast}$ die zugehörige doppelduale Basis von $V$
+    und $b \in \basis{B}$, so ist $b^{\ast\ast} = f_b$.
+    Man bezeichnet daher $\mathcal{E}$ auch mit $\ast\ast$.
+    $\ast\ast: V \rightarrow V^{\ast\ast}$ ist dann ein Isomorphismus.
+\end{Satz}
+
+\begin{Satz}{$\ast$ bei linearen Abbildungen}
+    Sei $f: V \rightarrow U$ ein Homomorphismus.
+    Dann wird durch $f^\ast: U^\ast \rightarrow V^\ast$,
+    $f^\ast(h) = h \circ f \in V^\ast$ für $h \in U^\ast$ eine
+    $K$-lineare Abbildung $f^\ast$ definiert. \\
+    Sind $V$ und $U$ endlich-dimensional, so gilt \qquad\;\;\,
+    1. $\ker f^\ast = (\im f)^\bot$ \\
+    2. $\dim_K(\im f) = \dim_K(\im f^\ast)$ \qquad\qquad\qquad\qquad\,
+    3. $f^\ast$ ist surjektiv $\;\Leftrightarrow\; f$ ist injektiv \\
+    4. $f^\ast$ ist injektiv $\;\Leftrightarrow\; f$ ist surjektiv
+    \qquad\qquad\qquad
+    5. $f^{\ast\ast}(v^{\ast\ast}) = (f(v))^{\ast\ast}$ \\
+    6. Ist $g: U \rightarrow W$ Homomorphismus, so gilt
+    $(g \circ f)^\ast = f^\ast \circ g^\ast$ \\
+    ($\ast: \Hom_K(V, U) \rightarrow \Hom_K(U^\ast, V^\ast)$ ist
+    \begriff{kontravariant})
+\end{Satz}
+
+\begin{Satz}{Matrix von $f^\ast$}
+    Seien $f: V \rightarrow U$ Homomorphismus,
+    $\basis{B} = (v_1, \ldots, v_n)$ bzw.\\
+    $\basis{C} = (u_1, \ldots, u_m)$
+    Basen von $V$ bzw. $U$ sowie $A = \hommatrix{f}{C}{B}$.
+    Dann ist $\hommatrix{f^\ast}{B^\ast}{C^\ast} = A^t$.
+\end{Satz}
+
+\begin{Kor}
+    Für $A \in M_{m \times n}(K)$ sind Spalten- und Zeilenrang gleich.
+\end{Kor}
+
+\subsection{%
+    Bilinearformen%
+}
+
+\begin{Def}{Bilinearform}
+    Seien $V$, $U$ und $W$ $K$-Vektorräume.
+    Eine Abbildung $f: V \times U \rightarrow W$ heißt \begriff{bilinear},
+    falls $f(v_1 + v_2, u) = f(v_1, u) + f(v_2, u)$,
+    $f(v, u_1 + u_2) = f(v, u_1) + f(v, u_2)$ und \\
+    $f(\lambda v, u) = f(v, \lambda u) = \lambda f(v, u)$ gilt
+    für alle $v, v_1, v_2 \in V$, $u, u_1, u_2 \in U$ und $\lambda \in K$. \\
+    Eine bilineare Abbildung $f: V \times V \rightarrow K$ heißt
+    \begriff{Bilinearform} auf $K$. \\
+    Ersetzt man die dritte Bedingung durch
+    $f(\lambda v, u) = f(v, \kk{\lambda} u) = \lambda f(v, u)$, wobei
+    $\kk{\;\;}: K \rightarrow K$ ein Automorphismus von $K$ mit
+    $\kk{\kk{\lambda}} = \lambda$ für alle $\lambda \in K$ ist,
+    so heißt die Abbildung \begriff{semilinear}.
+\end{Def}
+
+\begin{Satz}{Festlegung einer Bilinearform}
+    Seien $\sp{\cdot, \cdot}: V \times V \rightarrow K$ eine Bilinearform \\
+    und $\basis{B} = \{v_i \;|\; i \in I\}$ eine Basis von $V$. \\
+    Dann ist $\sp{\cdot, \cdot}$ durch die Angabe der Skalare
+    $\lambda_{ij} = \sp{v_i, v_j} \in K$ vollständig bestimmt. \\
+    Gibt man umgekehrt Skalare $\lambda_{ij} \in K$ vor und definiert
+    $\sp{v, w} = \sp{\sum_{i \in I} \alpha_i v_i, \sum_{j \in I} \beta_j v_j}
+    = \sum_{i, j \in I} \alpha_i \lambda_{ij} \beta_j \in K$
+    für $v = \sum_{i \in I} \alpha_i v_i$ und
+    $w = \sum_{j \in I} \beta_j v_j$ ($\alpha_i, \beta_j \in K$ fast alle $0$),
+    dann ist $\sp{\cdot, \cdot}: V \times V \rightarrow K$ eine Bilinearform
+    auf $V$.
+\end{Satz}
+
+\begin{Def}{Grammatrix}
+    Die Matrix $\grammatrix = \grammatrix(\basis{B}) = (\lambda_{ij})_{ij}$
+    (mit $i, j \in I$) heißt \begriff{Grammatrix} der Bilinearform
+    $\sp{\cdot, \cdot}$ bzgl. der Basis $\basis{B}$.
+    Ist $V$ endlich-dimensional und $\basis{B} = (v_1, \ldots, v_n)$,
+    so ist $\grammatrix(\basis{B})$ eine $n \times n$-Matrix.
+\end{Def}
+
+\begin{Bem}
+    Ist $\grammatrix(\basis{B}) = (\lambda_{ij})_{ij}$ die Grammatrix
+    von $\sp{\cdot, \cdot}$ bzgl. $\basis{B}$ und
+    $v = \sum_{i \in I} \alpha_i v_i$ und $w = \sum_{j \in I} \beta_j v_j$
+    ($\alpha_i, \beta_j \in K$ fast alle $0$), so ist
+    $\sp{v, w} = (\alpha_i)_i^t \cdot (\lambda_{ij})_{ij} \cdot (\beta_j)_j$
+    als Matrizenprodukt, wobei $(\alpha_i)_i, (\beta_j)_j$ Spaltenvektoren
+    sind.
+\end{Bem}
+
+\begin{Bem}
+    Die Menge der Bilinearformen auf $V$ wird ein Vektorraum, wenn
+    man $f+g: V \times V \rightarrow K$, $(f+g)(v, w) = f(v, w) + g(v, w)$
+    und $\lambda f: V \times V \rightarrow K$,
+    $(\lambda f)(v, w) = \lambda f(v, w)$ für \\
+    $f, g: V \times V \rightarrow K$
+    Bilinearformen und $\lambda \in K$ definiert. \\
+    Dann wird $\grammatrix_f(\basis{B})$ (die Abbildung, die jeder Bilinearform
+    auf $V$ die Grammatrix bzgl. einer festen Basis $\basis{B}$ zuordnet)
+    zum Vektorraum-Isomorphismus zwischen der Menge der Bilinearformen
+    auf $V$ und $M_{n \times n}(K)$.
+    Es gilt $\grammatrix_f(\basis{C}) = (\hommatrix{\id}{B}{C})^t
+    \grammatrix_f(\basis{B}) \hommatrix{\id}{B}{C}$.
+\end{Bem}
+
+\begin{Def}{links-/rechtsorthogonal}
+    Seien $V$ ein $K$-Vektorraum, $\sp{\cdot, \cdot}: V \times V \rightarrow K$
+    eine Bilinearform auf $V$ und $x, y \in V$.
+    Dann heißt $x$ \begriff{linksorthogonal} zu $y$ und $y$
+    \begriff{rechtsorthogonal} zu $x$, falls $\sp{x, y} = 0$.
+    Man schreibt auch $x \orth y$.
+\end{Def}
+
+\begin{Def}{Links-/Rechtsradikal}
+    $\rad_l(\sp{\cdot, \cdot}) = \{x \in V \;|\;
+    \forall_{y \in V}\; \sp{x, y} = 0\}$
+    heißt \begriff{Linksradikal} und
+    $\rad_r(\sp{\cdot, \cdot}) = \{x \in V \;|\;
+    \forall_{y \in V}\; \sp{y, x} = 0\}$
+    heißt \begriff{Rechtsradikal} der Bilinearform $\sp{\cdot, \cdot}$.
+\end{Def}
+
+\begin{Satz}{Links-/Rechtsradikal als Unterraum} \\
+    Links- und Rechtsradikal einer Bilinearform auf $V$ sind Unterräume von
+    $V$.
+\end{Satz}
+
+\begin{Satz}{assoziierter Links-/Rechtshomomorphismus}
+    Sei $f = \sp{\cdot, \cdot}: V \times V \rightarrow K$ bilinear.
+    Dann wird durch
+    $E_l: V \rightarrow V^\ast$, $E_l(v) = \lambda_v$ mit
+    $\lambda_v: V \rightarrow K$, $\lambda_v(x) = \sp{v, x}$
+    ein Homomorphismus definiert, dieser heißt der zu $f$ assoziierte
+    (kanonische) \begriff{Linkshomomorphismus} von $V$ nach $V^\ast$.
+    Zur Verdeutlichung, dass $E_l$ bzgl. $f$ gebildet wurde, schreibt man
+    auch $E_l^f$.
+    Analog wird $E_r: V \rightarrow V^\ast$, $E_r(v) = \rho_v$ mit
+    $\rho_v: V \rightarrow K$, $\rho_v(x) = \sp{x, v}$
+    der \begriff{Rechtshomomorphismus} definiert. \\
+    Es gilt $\rad_l(\sp{\cdot, \cdot}) = \ker E_l$ sowie
+    $\rad_r(\sp{\cdot, \cdot}) = \ker E_r$. \\
+    Ist $V$ endlich-dimensional und $\basis{B}$ Basis von $V$, so gilt
+    $\hommatrix{E_r}{B^\ast}{B} = \grammatrix_f(\basis{B}) =
+    (\hommatrix{E_l}{B^\ast}{B})^t$.
+\end{Satz}
+
+\begin{Kor}
+    Sei $V$ endlich-dimensional.
+    Dann ist $\dim_K \rad_l(f) = \dim_K \rad_r(f) =
+    n - \rg(\grammatrix_f(\basis{B}))$.
+    Außerdem ist $\rad_l(f) = (0) \;\Leftrightarrow\; \rad_r(f) = (0)$.
+    In diesem Fall heißt $f$ \begriff{nicht ausgeartet}, sonst
+    \begriff{ausgeartet}.
+    Für $f$ nicht ausgeartet definieren $E_l$, $E_r$ kanonische Isomorphismen
+    von $V$ auf $V^\ast$.
+    (Im Falle von $V$ unendlich-dimensional sind $E_l$, $E_r$ injektiv.)
+\end{Kor}
+
+\begin{Satz}{Bijektion}
+    $f \mapsto E_l^f$ und $f \mapsto E_r^f$ definieren Bijektionen zwischen
+    der Menge der Bilinearformen $f$ auf $V$ und $\Hom_K(V, V^\ast)$.
+    Für $\dim_K V < \infty$ ist dies ein Isomorphismus.
+\end{Satz}
+
+\begin{Def}{spezielle Bilinearformen}
+    Sei $\sp{\cdot, \cdot}$ eine Bilinearform auf $V$. \\
+    $\sp{\cdot, \cdot}$ heißt \begriff{symmetrisch}, falls
+    $\sp{v_1, v_2} = \sp{v_2, v_1}$ für alle $v_1, v_2 \in V$. \\
+    $\sp{\cdot, \cdot}$ heißt \begriff{alternierend}, falls
+    $\sp{v_1, v_2} = -\sp{v_2, v_1}$ für alle $v_1, v_2 \in V$.
+\end{Def}
+
+\begin{Lemma}{Eigenschaften spezieller Bilinearformen}
+    Ist $\sp{\cdot, \cdot}$ symmetrisch oder alternierend, so ist
+    $x \orth y \;\Leftrightarrow\; y \orth x$ und die Relation $\bot$ ist
+    symmetrisch. \\
+    Ist $\sp{\cdot, \cdot}$ symmetrisch oder alternierend, so braucht man
+    daher nicht mehr zwischen Links- und Rechtsradikal zu unterscheiden. \\
+    Für $\sp{\cdot, \cdot}$ symmetrisch ist $E_l = E_r$,
+    für $\sp{\cdot, \cdot}$ alternierend ist $E_l = -E_r$. \\
+    Ist $\char K = 2$ (also $1 = -1$ in $K$), so ist alternierend und
+    symmetrisch dasselbe. \\
+    $\sp{\cdot, \cdot}$ ist symmetrisch genau dann, wenn
+    $\grammatrix_{\sp{\cdot, \cdot}}(\basis{B})$ bzgl. einer Basis $\basis{B}$
+    symmetrisch ist. \\
+    $\sp{\cdot, \cdot}$ ist alternierend genau dann, wenn
+    $\grammatrix_{\sp{\cdot, \cdot}}(\basis{B})$ bzgl. einer Basis $\basis{B}$
+    schiefsymmetrisch ist (d.\,h. $A^t = -A$).
+\end{Lemma}
+
+\addtocounter{subsection}{1}
+
+\subsection{%
+    Symmetrische Gruppen%
+}
+
+\begin{Satz}{Existenz der Ordnung einer endlichen Gruppe}
+    Seien $G$ eine endliche Gruppe und $g \in G$. \\
+    Dann gibt es ein $k \in \natural$, sodass $g^k = g \dotsm g = 1_G$ ist.
+\end{Satz}
+
+\begin{Def}{Ordnung}
+    Die kleinste Zahl $k \in \natural$, für die $g^k = 1_G$ gilt,
+    heißt \begriff{Ordnung} $|g|$ von $g \in G$.
+\end{Def}
+
+\begin{Def}{Bahn, Zykel}
+    Sei $\pi \in \perm_n$ und $i \in \{1, \dotsc, n\}$.
+    Wegen $\pi^{|\pi|}(i) = \id(i) = i$ gibt es eine kleinste Zahl
+    $k \in \natural$, sodass $\pi^k(i) = i$ ist.
+    Dann sind $i, \pi(i), \pi^2(i), \dotsc, \pi^{k-1}(i)$ paarweise
+    verschieden.
+    Die Menge $\{i, \pi(i), \pi^2(i), \dotsc, \pi^{k-1}(i)\}$ heißt
+    \begriff{Bahn von $i$ unter $\pi$} oder \begriff{Zykel} und wird mit
+    $i^{[\pi]}$ bezeichnet.
+    Dabei ist $k$ die \begriff{Länge der Bahn}.
+\end{Def}
+
+\begin{Lemma}{Äquivalenzrelation auf $\matrixm$}
+    Sei $\pi \in \perm_n$ und $\matrixm = \{1, \dotsc, n\}$.
+    Sei die Relation $\sim_\pi$ auf $\matrixm$ definiert durch
+    $s \sim_\pi t \;\Leftrightarrow\;
+    \exists_{k \in \natural_0}\; \pi^k(s) = t$.
+    Dann ist $\sim_\pi$ eine Äquivalenzrelation auf $\matrixm$ und die
+    Äquivalenzklassen $[s]$ sind genau die Bahnen $s^{[\pi]}$ unter $\pi$.
+\end{Lemma}
+
+\begin{Kor}
+    Sei $\pi \in \perm_n$.
+    Dann zerlegen die Bahnen bzgl. $\pi$ die Menge $\matrixm$ disjunkt.
+    Also existieren Elemente $x_i \in \matrixm$
+    und $k_1, \dotsc, k_t \in \natural$ für $i = 1, \dotsc, t$, sodass
+    $\matrixm$ disjunkte Vereinigung von den Bahnen
+    $\{x_i, \pi(x_i), \dotsc, \pi^{k_i-1}(x_i)\}$ ist.
+\end{Kor}
+
+\begin{Notation}
+    Für $\pi \in \perm_n$ schreibt man
+    $\pi = (x_1, \pi(x_1), \dotsc, \pi^{k_1-1}(x_1)) \dotsm
+    (x_t, \pi(x_t), \dotsc, \pi^{k_t-1}(x_t))$.
+    Diese Schreibweise heißt \begriff{Zykelschreibweise}.
+    Die Teile mit $k_i = 1$ kann man auch weglassen.
+\end{Notation}
+
+\begin{Bem}
+    \matrixsize{$\pi = \begin{pmatrix} 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+    2 & 4 & 7 & 1 & 5 & 6 & 3 \end{pmatrix}$} lautet in Zykelschreibweise\\
+    $\pi = (124)(37)(5)(6) = (124)(37)$.
+\end{Bem}
+
+\begin{Def}{Zykel}
+    Ein \begriff{Zykel} ist eine Permutation $\pi \in \perm_n$,
+    die höchstens eine Bahn hat, die länger als $1$ ist, d.\,h.
+    $\pi = (a_1, \dotsc, a_k)$.
+    Es gilt $\pi(a_i) = a_{i+1}$ für $i = 1, \dotsc, k - 1$,
+    $\pi(a_k) = a_1$ und $\pi(b) = b$ für
+    $b \in \matrixm \setminus \{a_1, \dotsc, a_k\}$.
+    Die Ordnung von $\pi$ ist $|\pi| = k$.
+\end{Def}
+
+\begin{Lemma}{disjunkte Zyklen kommutieren}
+    Disjunkte Zyklen kommutieren, d.\,h. es ist z.\,B. \\
+    $(124)(356) = (356)(124)$, aber
+    $(123)(245) \not= (245)(123)$.
+\end{Lemma}
+
+\begin{Kor}
+    Jede Permutation $\pi \in \perm_n$ kann bis auf die Reihenfolge eindeutig
+    als Produkt von disjunkten Zyklen beschrieben werden.
+    Die Zyklen entsprechen dabei den Bahnen der Länge größer $1$.
+\end{Kor}
+
+\begin{Satz}{$|\pi| = \kgV$}
+    Sei $\pi \in \perm_n$. \\
+    Dann ist $|\pi|$ das kleinste gemeinsame Vielfache der Längen aller
+    Bahnen von $\pi$.
+\end{Satz}
+
+\begin{Def}{Transposition}
+    Ein Zykel der Länge $2$ heißt \begriff{Transposition}. \\
+    Eine Transposition der Form $(i, i + 1)$ heißt
+    \begriff{Fundamentaltransposition}.
+\end{Def}
+
+\begin{Satz}{Permutation als Produkt von Transpositionen}
+    Jede Permutation $\pi \in \perm_n$ kann als Produkt von Transpositionen
+    geschrieben werden.
+    Jede Transposition (und daher auch jede Permutation)
+    kann als Produkt von Fundamentaltranspositionen geschrieben werden.
+\end{Satz}
+
+\begin{Def}{reduzierter Ausdruck}
+    Sei $\pi \in \perm_n$.
+    Ein \begriff{reduzierter Ausdruck} von $\pi$ ist ein Produkt von
+    Fundamentaltranspositionen
+    $\pi = (i_1, i_1 + 1)(i_2, i_2 + 1) \dotsm (i_l, i_l + 1)$, sodass
+    $l$ minimal ist
+    (d.\,h. $\pi$ lässt sich nicht als Produkt von weniger als $l$
+    Fundamentaltranspositionen schreiben). \\
+    Der reduzierte Ausdruck für $\id$ sei dabei der leere Ausdruck mit
+    $l = 0$ Faktoren. \\
+    $l(\pi) = l$ heißt die \begriff{Länge der Permutation} $\pi$.
+\end{Def}
+
+\begin{Def}{Fehlstände}
+    Sei $\pi \in \perm_n$.
+    Die Menge der Fehlstände von $\pi$ ist definiert als \\
+    $\{[i,j] \;|\; 1 \le i < j \le n \text{ mit } \pi(i) > \pi(j)\}$.
+\end{Def}
+
+\begin{Lemma}{Fehlstände und Fundamentaltransposition}
+    Seien $n(\pi)$ die Anzahl der Fehlstände von $\pi \in \perm_n$
+    und $(k, k + 1)$ eine Fundamentaltransposition. \\
+    Dann gilt $n(\pi \; (k, k + 1)) =$
+    \matrixsize{$\begin{cases} n(\pi) + 1 & \pi(k) < \pi(k + 1) \\
+    n(\pi) - 1 & \pi(k) > \pi(k + 1) \end{cases}$}.
+\end{Lemma}
+
+\begin{Satz}{Länge der Permutation gleich Anzahl Fehlstände} \\
+    Sei $\pi \in \perm_n$.
+    Dann ist $l(\pi)$ gleich der Anzahl der Fehlstände von $\pi$.
+\end{Satz}
+
+\begin{Kor}
+    Kein Produkt einer geraden Anzahl von (Fundamental-)Transpositionen
+    ist gleich einem Produkt einer ungeraden Anzahl von
+    (Fundamental-)Transpositionen.
+\end{Kor}
+
+\begin{Def}{gerade/ungerade, Signum}
+    Eine Permutation $\pi$ heißt \begriff{gerade/ungerade}, wenn
+    $l(\pi)$ gerade/ungerade ist.
+    $\sign(\pi) = (-1)^{l(\pi)}$ heißt \begriff{Signum} von $\pi$.
+\end{Def}
+
+\begin{Lemma}{$\sign$ als Gruppenhomomorphismus}
+    Die Abbildung $\sign: \perm_n \rightarrow \{1, -1\}$ ist ein
+    Gruppenhomomorphismus in die multiplikative Gruppe $\{1, -1\}$,
+    d.\,h. $\sign(\sigma \pi) = \sign(\sigma) \sign(\pi)$.
+\end{Lemma}
+
+\begin{Kor}
+    Ein Produkt von einer geraden Anzahl von Transpositionen multipliziert mit
+    einer ebensolchen ist wieder ein
+    Produkt einer geraden Anzahl von Transpositionen.
+\end{Kor}
+
+\begin{Def}{Konjugationsklasse}
+    Zwei Elemente $x, y \in G$ einer Gruppe $G$ heißen \begriff{konjugiert},
+    falls es ein $g \in G$ gibt, sodass $x = g y g^{-1}$. \\
+    Die Äquivalenzklasse $x^G = \{g x g^{-1} \;|\; g \in G\}$ heißt
+    \begriff{Konjugationsklasse} von $x \in G$.
+\end{Def}
+
+\begin{Lemma}{"`konjugiert"' als Äquivalenzrelation}
+    Die Relation $\sim$ auf $G$ definiert durch \\
+    $x \sim y \;\Leftrightarrow\; \exists_{g \in G}\; x = g y g^{-1}$
+    ist eine Äquivalenzrelation.
+    Die Äquivalenzklassen sind genau die Konjugationsklassen,
+    also ist $G$ disjunkte Vereinigung seiner Konjugationsklassen.
+\end{Lemma}
+
+\begin{Lemma}{Zykel konjugieren}
+    Seien $\pi, \sigma \in \perm_n$ und $\sigma = (a_1, \dotsc, a_k)$
+    ein Zykel. \\
+    Dann ist $\pi \sigma \pi^{-1} = (\pi(a_1), \dotsc, \pi(a_k))$.
+\end{Lemma}
+
+\begin{Def}{Partition}
+    Sei $n \in \natural$.
+    Eine \begriff{Partition} von $n$ ist eine Folge
+    $\lambda = (\lambda_1, \dotsc, \lambda_k)$ von
+    Zahlen $\lambda_i \in \natural$, sodass
+    $\lambda_1 \ge \dotsb \ge \lambda_k$ und $\sum_{i=1}^k \lambda_i = n$.
+\end{Def}
+
+\begin{Def}{Zykeltyp}
+    Sei $\pi \in \perm_n$.
+    Der \begriff{Zykeltyp} von $\pi$ ist die Partition von $n$, die entsteht,
+    wenn man $\pi$ als Produkt von disjunkten Zykeln schreibt und die
+    Längen der Zykel (einschließlich der Zykel der Länge $1$)
+    absteigend ordnet.
+\end{Def}
+
+\begin{Lemma}{Zykeltyp und konjugiert}
+    Zwei Permutationen aus $\perm_n$ sind konjugiert genau dann, wenn
+    sie vom selben Zykeltyp sind.
+\end{Lemma}
+
+\begin{Satz}{Bijektion}
+    Es gibt eine Bijektion zwischen den Konjugationsklassen der $\perm_n$
+    und den Partitionen von $n$,
+    diese bildet eine Konjugationsklasse $\pi^{\sigma_n}$ auf
+    den Zykeltyp von $\pi$ ab.
+\end{Satz}
+
+\subsection{%
+    Multilinearformen%
+}
+
+\begin{Def}{Multilinearform}
+    Seien $K$ ein Körper, $V_1, \dotsc, V_k, W$ $K$-Vektorräume und \\
+    $f: V_1 \times \dotsb \times V_k \rightarrow W$ eine Abbildung.
+    Dann heißt $f$ \begriff{multilinear} (oder \begriff{$k$-fach linear}),
+    falls für alle $i = 1, \dotsc, k$ gilt, dass
+    $f(v_1, \dotsc, v_i' + v_i'', \dotsc, v_k) =
+    f(v_1, \dotsc, v_i', \dotsc, v_k) + f(v_1, \dotsc, v_i'', \dotsc, v_k)$
+    und $f(v_1, \dotsc, \lambda v_i, \dotsc, v_k) =
+    \lambda f(v_1, \dotsc, v_i, \dotsc, v_k)$ für
+    $v_1 \in V_1$, \dots, $v_k \in V_k$, $v_i', v_i'' \in V_i$ und
+    $\lambda \in K$. \\
+    Eine multilineare Abbildung
+    $f: V \overset{k\text{-fach}}{\times \dotsb \times} V \rightarrow K$ heißt
+    \begriff{$k$-fache Multilinearform auf $V$}.
+\end{Def}
+
+\begin{Satz}{Menge der multilinearen Abbildungen als $K$-Vektorraum} \\
+    Sei $M = \{f: V_1 \times \dotsb \times V_k \rightarrow W \;|\;
+    f \text{ multilinear}\}$.
+    Definiere auf $M$ eine Addition \\
+    $f + g: V_1 \times \dotsb \times V_k \rightarrow W$,
+    $(f + g)(v_1, \dotsc, v_k) = f(v_1, \dotsc, v_k) + g(v_1, \dotsc, v_k)$
+    sowie eine skalare Multiplikation
+    $\lambda f: V_1 \times \dotsb \times V_k \rightarrow W$,
+    $(\lambda f)(v_1, \dotsc, v_k) = \lambda f(v_1, \dotsc, v_k)$
+    mit $v_i \in V_i$ ($i = 1, \dotsc, k$), $f, g \in M$ und $\lambda \in K$.
+    Dann wird $M$ mit diesen Operationen zum $K$-Vektorraum.
+\end{Satz}
+
+\begin{Bem}
+    Das Nullelement von $M$ ist die Nullabbildung
+    $0: V_1 \times \dotsb \times V_k \rightarrow W$,
+    $0(v_1, \dotsc, v_k) = 0_W$.
+\end{Bem}
+
+\begin{Def}{Multiindex}
+    Seien $I_1 = \{1, \dotsc, n_1\}$, \dots, $I_k = \{1, \dotsc, n_k\}$
+    endliche Indexmengen.
+    Ein Element $\mi{i} \in I_1 \times \dotsb \times I_k$ heißt
+    \begriff{Multiindex} und $\mi{I} = I_1 \times \dotsb \times I_k$
+    heißt \begriff{Menge der Multiindizes}. \\
+    Sind $V_1, \dotsc, V_k$ Vektorräume und $\mi{i} = (i_1, \dotsc, i_k)$,
+    dann sei $v_\mi{i} \in V_1 \times \dotsb \times V_k$ definiert durch
+    $v_\mi{i} = (v_{i_1}^{(1)}, \dotsc, v_{i_k}^{(k)})$, wobei
+    $v_1^{(\nu)}, \dotsc, v_{n_\nu}^{(\nu)} \in V_\nu$ für
+    $\nu = 1, \dotsc, k$. \\
+    Damit ist auch das Kronecker-Delta für Multiindizes definiert
+    durch \matrixsize{$\delta_{\mi{i} \mi{j}} =
+    \begin{cases} 1 & \mi{i} = \mi{j} \\ 0 & \mi{i} \not= \mi{j} \end{cases}$},
+    da für $\mi{i}, \mi{j} \in \mi{I}$ mit $\mi{i} = (i_1, \dotsc, i_k)$ und
+    $\mi{j} = (j_1, \dotsc, j_k)$ gilt, dass
+    $\mi{i} = \mi{j} \;\Leftrightarrow\; (i_1 = j_1) \land \dotsb \land
+    (i_k = j_k)$.
+\end{Def}
+
+\begin{Satz}{Dimension von $M$, Basis}
+    Seien $V_1, \dotsc, V_k, W$ endlich-dimensionale Vektorräume. \\
+    Dann ist $M$ ebenfalls endlich-dimensional und
+    $\dim_K M = \dim_K V_1 \dotsm \dim_K V_k \dim_K W$. \\
+    Seien $n_\nu = \dim_K V_\nu$,
+    $\basis{B}_\nu = (v_1^{(\nu)}, \dotsc, v_{n_\nu}^{(\nu)})$ eine Basis
+    von $V_\nu$ für $\nu = 1, \dotsc, k$ sowie $(w_1, \dotsc, w_m)$ eine
+    Basis von $W$, dann ist
+    $\basis{B} = \{f_{\mi{i},j} \;|\; \mi{i} \in \mi{I},\; 1 \le j \le m\}$
+    eine Basis von $M$, wobei \\
+    $f_{\mi{i},j}: V_1 \times \dotsb \times V_k \rightarrow W$,
+    \matrixsize{$f_{\mi{i},j}(v_\mi{k}) = \begin{cases}
+    w_j & \mi{i} = \mi{k} \\ 0 & \text{sonst} \end{cases}$} multilinear
+    für $\mi{i}, \mi{k} \in \mi{I}$ und $j = 1, \dotsc, m$.
+\end{Satz}
+
+\begin{Def}{symmetrische Multilinearform} \\
+    Sei $f: V^{\times k} \rightarrow K$ eine $k$-fache Multilinearform auf $V$
+    (dabei ist $V^{\times k} =
+    V \overset{k \text{ Faktoren}}{\times \dotsb \times} V$). \\
+    $f$ heißt \begriff{symmetrisch}, falls
+    $f(v_1, \dotsc, v_k) = f(v_{\pi(1)}, \dotsc, v_{\pi(k)})$ für
+    alle $\pi \in \perm_k$ ist.
+\end{Def}
+
+\begin{Def}{alternierende Multilinearform (1. Versuch)} \\
+    Sei $f: V^{\times k} \rightarrow K$ eine $k$-fache Multilinearform auf
+    $V$. \\
+    $f$ heißt \begriff{alternierend}, falls
+    $f(v_1, \dotsc, v_k) = \sign(\pi) \cdot f(v_{\pi(1)}, \dotsc, v_{\pi(k)})$
+    für alle $\pi \in \perm_k$ ist.
+\end{Def}
+
+\begin{Lemma}{alternierende Multilinearform ist $0$ bei gleichen Vektoren}
+    Seien $\char K \not= 2$ (d.\,h. es ist $-1_K \not= 1_K$) und
+    $f: V^{\times k} \rightarrow K$ eine $k$-fache alternierende
+    Multilinearform auf $V$. \\
+    Dann gilt $f(v_1, \dotsc, v_k) = 0$, falls
+    $v_1, \dotsc, v_k \in V$ mit $v_i = v_j$ für bestimmte $i \not= j$ ist.
+\end{Lemma}
+
+\begin{Lemma}{alternierende Multilinearform ist $0$ bei linear abhängigen
+              Vektoren} \\
+    Seien $\char K \not= 2$ und
+    $f: V^{\times k} \rightarrow K$ eine $k$-fache alternierende
+    Multilinearform auf $V$. \\
+    Dann gilt $f(v_1, \dotsc, v_k) = 0$, falls
+    $v_1, \dotsc, v_k \in V$ linear abhängige Vektoren sind.
+\end{Lemma}
+
+\begin{Lemma}{Umkehrung}
+    Sei $f: V^{\times k} \rightarrow K$ eine $k$-fache Multilinearform auf $V$.
+    Dann ist $f$ alternierend, wenn
+    $f(v_1, \dotsc, v_k) = 0$ für jede linear abhängige Menge
+    $\{v_1, \dotsc, v_k\}$ ist.
+\end{Lemma}
+
+\begin{Bem}
+    Also: Ist $\char(K) \not= 2$, dann ist $f$ alternierend genau dann,
+    wenn $f(v_1, \dotsc, v_k) = 0$ für jedes linear abhängige Tupel
+    $(v_1, \dotsc, v_k)$ ist.
+    Für $\char(K) = 2$ gibt es alternierende Multilinearformen, die diese
+    Bedingung nicht erfüllen.
+    Sie ist daher stärker als die Definition "`alternierend"' von oben und
+    deswegen wird die Definition verschärft.
+\end{Bem}
+
+\pagebreak
+
+\begin{Def}{alternierende Multilinearform}
+    Sei $f: V^{\times k} \rightarrow K$ eine $k$-fache Multilinearform auf
+    $V$. \\
+    $f$ heißt \begriff{alternierend}, falls $f(v_1, \dotsc, v_k) = 0$
+    für jedes linear abhängige Tupel $(v_1, \dotsc, v_k)$ ist,
+    wobei $v_i \in V$ für $i = 1, \dotsc, k$.
+\end{Def}
+
+\begin{Satz}{Basis und alternierende Multilinearform}
+    Seien $n = \dim_K V$, $f: V^{\times n} \rightarrow K$ eine $n$-fache
+    alternierende Multilinearform auf $V$ mit $f \not= 0$
+    und $v_1, \dotsc, v_n \in V$. \\
+    Dann ist $\basis{B} = (v_1, \dotsc, v_n)$ Basis von $V$ genau dann,
+    wenn $f(v_1, \dotsc, v_n) \not= 0$ ist.
+\end{Satz}
+
+\begin{Satz}{alternierende Multilinearformen als Unterraum} \\
+    Die Menge $\alt_k(V)$ der $k$-fachen alternierenden Multilinearformen
+    auf $V$ ist ein Unterraum der Menge der $k$-fachen Multilinearformen
+    auf $V$.
+\end{Satz}
+
+\begin{Satz}{Basis des Vektorraums aller (alternierenden) Multilinearformen
+             auf $V$} \\
+    Sei $\basis{B} = (v_1, \dotsc, v_n)$ Basis von $V$. \\
+    $e_\mi{j}$ sei definiert durch $e_\mi{j}: V^{\times k} \rightarrow K$,
+    $e_\mi{j}(v_\mi{\ell}) = \delta_{\mi{j} \mi{\ell}}$, wobei
+    $\mi{j}, \mi{\ell} \in \{1, \dotsc, n\}^{\times k}$ ist. \\
+    $\pi(\mi{i}) \in \mi{I}$ sei für $\mi{i} = (i_1, \dotsc, i_n)$ und
+    $\pi \in \perm_k$ definiert durch
+    $\pi(\mi{i}) = (i_{\pi(1)}, \dotsc, i_{\pi(k)})$.
+    Dann gilt: \\
+    1. Sind $u_1, \dotsc, u_k \in V$ und $\pi \in \perm_k$, dann ist
+    $e_\mi{i}(u_{\pi(1)}, \dotsc, u_{\pi(k)}) =
+    e_{\pi^{-1}(\mi{i})}(u_1, \dotsc, u_k)$. \\
+    2. $\{e_\mi{j} \;|\; \mi{j} \in \{1, \dotsc, n\}^{\times k}\}$ ist
+    Basis des Vektorraums aller $k$-fachen Multilinearformen auf $V$. \\
+    3. Sei $a_\mi{i} = \sum_{\pi \in \perm_k} \sign(\pi) e_{\pi(\mi{i})}$.
+    Dann ist $\{a_\mi{i} \;|\; \mi{i} =
+    (i_1, \dotsc, i_k) \in \{1, \dotsc, n\}^{\times k},\; i_1 < \dotsb < i_k\}$
+    Basis von $\alt_k(V)$.
+\end{Satz}
+
+\begin{Kor}
+    Es gilt $\dim_K \alt_k(V) = \binom{n}{k} =
+    \Big|\{(i_1, \dotsc, i_k) \in \{1, \dotsc, n\}^{\times k} \;|\;
+    1 \le i_1 < \dotsb < i_k \le n\}\Big|$. \\
+    Insbesondere gilt $\dim_K \alt_k(V) = 1$ für $k = n$ und
+    $\dim_K \alt_k(V) = 0$ für $k > n$.
+\end{Kor}
+
+\begin{Satz}{alternierende Multilinearformen und Determinanten} \\
+    Seien $\dim_K V = n$ und $f$ eine $n$-fache alternierende Multilinearform
+    auf $V$. \\
+    Ist $\basis{B} = (v_1, \dotsc, v_n)$ Basis von $V$ und ist
+    $u_i = \sum_{j=1}^n \lambda_{i,j} v_j$ für $\lambda_{i,j} \in K$ und
+    $i = 1, \dotsc, n$, dann ist
+    $f(u_1, \dotsc, u_n) = f(v_1, \dotsc, v_n) \cdot
+    \sum_{\pi \in \perm_n} \sign(\pi) \lambda_{1,\pi(n)} \dotsm
+    \lambda_{n,\pi(n)} = f(v_1, \dotsc, v_n) \cdot \det(\lambda_{ij})$.
+\end{Satz}
+
+\subsection{%
+    Determinanten%
+}
+
+\begin{Def}{Determinante}
+    Seien $V$ ein $K$-Vektorraum mit $\dim_K V = n$ und
+    $\phi \in \End_K(V)$. \\
+    Dann ist die \begriff{Determinante} $D(\phi)$ des Endomorphismus
+    $\phi$ von $V$ folgendermaßen definiert: \\
+    Man wähle eine von der Nullform verschiedene $n$-fache alternierende
+    Multilinearform $f$ von $V$ (existiert nach Folgerung oben)
+    sowie eine beliebige Basis $\basis{B} = (v_1, \dotsc, v_n)$ von $V$. \\
+    Dann ist \fracsize{$D(\phi) =
+    \frac{f(\phi(v_1), \dotsc, \phi(v_n))}{f(v_1, \dotsc, v_n)}$}.
+\end{Def}
+
+\begin{Satz}{Determinante wohldefiniert}
+    Sei $\phi \in \End_K(V)$.
+    Dann ist $D(\phi) \in K$ unabhängig von der Wahl der Basis $\basis{B}$
+    von $V$ und von der Wahl der Form $f \in \alt_n(V)$, $f \not= 0$
+    definiert.
+\end{Satz}
+
+\begin{Satz}{Determinante stimmt mit bekannter Definition überein}
+    Seien $\phi \in \End_K(V)$, \\
+    $\basis{B} = (v_1, \dotsc, v_n)$ eine
+    Basis von $V$ sowie $\phi(v_j) = \sum_{i=1}^n \lambda_{ij} v_i$
+    für $j = 1, \dotsc, n$. \\
+    Dann ist $D(\phi) = \sum_{\pi \in \perm_n} \sign(\pi)
+    \lambda_{1 \pi(1)} \dotsm \lambda_{n \pi(n)}$
+    und deswegen stimmen die Definitionen der Determinante überein.
+\end{Satz}
+
+\begin{Satz}{Rechenregeln}
+    Seien $\phi, \psi \in \End_K(V)$.
+    Dann gilt:
+    1. $D(\phi) \not= 0 \;\Leftrightarrow\; \phi \in \Aut_K(V)$, \\\
+    2. $D(\id_V) = 1$, \qquad
+    3. $D(\phi \circ \psi) = D(\phi) D(\psi)$, \qquad
+    4. $D(\phi^{-1}) = (D(\phi))^{-1}$ für $\phi \in \Aut_K(V)$.
+\end{Satz}
+
+\pagebreak
+
+\begin{Bem}
+    Man kann leicht auch folgende bekannte Regeln zeigen:
+    Ist eine Spalte von $A$ der Nullvektor, so ist $\det A = 0$.
+    Hat $A$ zwei identische Spalten, so ist $\det A = 0$.
+    Addiert man zu einer Spalte von $A$ das $\lambda$-fache einer anderen,
+    so ändert sich die Determinante nicht.
+    Vertauscht man zwei Spalten von $A$, so ändert sich das Vorzeichen
+    der Determinante.
+    Wenn man eine Spalte mit $\lambda \in K$, $\lambda \not= 0$ multipliziert,
+    so multipliziert sich die Determinante mit $\lambda$. \\
+    Außerdem kann man mit der ursprünglichen Definition leicht
+    $\det(A) = \det(A^t)$ zeigen.
+    Daher gelten alle Behauptungen auch für Zeilen.
+\end{Bem}
+
+\begin{Satz}{Entwicklungssatz von \textsc{Laplace}}
+    Seien $k \in \{1, \dotsc, n\}$ und $A = (\alpha_{ij})$. \\
+    Dann gilt $\det A = \sum_{i=1}^n (-1)^{i+k} a_{ik} \det(A_{ik})$.
+\end{Satz}
+
+\subsection{%
+    \emph{Zusatz}: Projekt 9 und 10 (projektive Geometrie)%
+}
+
+\begin{Def}{projektiver Raum}
+    Ein \begriff{projektiver Raum} $P$ über einem Körper $K$ ist die Menge aller
+    eindimensionaler Unterräume eines $K$-Vektorraums $V_P$.
+\end{Def}
+
+\begin{Def}{projektiver Unterraum}
+    Eine Teilmenge $U \subseteq P$ heißt \begriff{projektiver Unterraum} von
+    $P$, falls sie genau aus den eindimensionalen Unterräumen eines Unterraums
+    $V_U \ur V_P$ besteht. \\
+    Alternativ: $U \subseteq P$ ist projektiver Unterraum von $P$, falls $U$
+    ein projektiver Raum ist.
+\end{Def}
+
+\begin{Def}{projektive Dimension}
+    Die \begriff{projektive Dimension} eines projektiven Raums $P$ ist
+    definiert durch $\pdim P = \dim_K V_P - 1$.
+\end{Def}
+
+\begin{Def}{Punkt, Gerade, Ebene}
+    Für einen Punkt $p \in P$ gibt es ein $p' \in V_P$ mit $p' \not= 0$, sodass
+    $p = \aufspann{p'}$.
+    Die leere Menge ist ein Unterraum von $P$, wobei $V_\emptyset = (0)$ ist
+    (daher gilt $\pdim \emptyset = -1$). \\
+    \begriff{Punkte}, \begriff{Geraden} und \begriff{Ebenen} sind Unterräume
+    der p-Dimension $0$, $1$ und $2$. \\
+    Ein Unterraum $H$ von $P$ mit $\pdim P = n$ und $\pdim H = n - 1$ heißt
+    Hyperebene.
+\end{Def}
+
+\begin{Def}{Fernhyperebene}
+    Sei $P \not= \emptyset$ ein $n$-dimensionaler
+    projektiver Raum und $H$ eine Hyperebene von $P$.
+    Dann ist $A = P \setminus H$ der
+    \begriff{zu $H$ gehörende af"|fine Raum} von $P$. \\
+    Die Punkte von $A$ heißen \begriff{eigentliche Punkte},
+    die Punkte von $H$ heißen \begriff{uneigentliche Punkte}. \\
+    $H$ heißt \begriff{uneigentliche Hyperebene} oder
+    \begriff{Fernhyperebene} von $P$.
+\end{Def}
+
+\begin{Satz}{Dimensionsformel}
+    Seien $M$ und $N$ projektive Unterräume von $P$. \\
+    Dann sind auch $M \cap N$ (\begriff{Schnittraum}) bzw.
+    $M \lor N = \bigcap_{U \ur P,\; U \supseteq M,N} U$
+    (\begriff{Verbindungsraum}) Unterräume von $P$ mit
+    $V_{M \cap N} = V_M \cap V_N$ bzw. $V_{M \lor N} = V_M + V_N$. \\
+    Es gilt $\pdim M + \pdim N = \pdim(M \lor N) + \pdim(M \cap N)$.
+\end{Satz}
+
+\begin{Def}{unabhängige Punkte}
+    Seien $p_0, \ldots, p_k$ Punkte des projektiven Raums $P$. \\
+    $p_0, \ldots, p_k$ heißen \begriff{unabhängig}, falls
+    $\pdim(p_0 \lor \cdots \lor p_k) = k$ gilt. \\
+    Die Punkte $p_0, \ldots, p_k \in P$ sind genau dann unabhängig, falls
+    $p_0', \ldots, p_k'$ linear unabhängige Vektoren sind
+    ($\aufspann{p_i'} = p_i$ für $i = 0, \ldots, k$).
+\end{Def}
+
+\begin{Def}{projektives Koordinatensystem}
+    Ein geordnetes $n+2$-Tupel $K = (q_0, \ldots, q_n, e)$ heißt
+    \begriff{projektives Koordinatensystem},
+    falls je $n + 1$ Punkte aus $K$ unabhängig sind.
+    Die Punkte $q_0, \ldots, q_n$ heißen \begriff{Grundpunkte} und $e$ heißt
+    \begriff{Einheitspunkt} von $K$.
+\end{Def}
+
+\begin{Def}{homogene Koordinaten}
+    Nach obigem Lemma gibt es $q_i' \in q_i$ und $e' \in e$
+    mit $e = q_0 + \cdots + q_n$.
+    Für jeden Punkt $x = \aufspann{x'} \in P$ hat $x' \not= 0$ die eindeutige
+    Darstellung $x' = \lambda_0 q_0' + \cdots + \lambda_n q_n'$.
+    Dabei sind die Skalare $\lambda_i \in K$ bis auf einen gemeinsamen Faktor
+    durch $x$ eindeutig bestimmt.
+    Die Skalare $\lambda_0, \ldots, \lambda_n \in K$ heißen die
+    \begriff{homogenen Koordinaten} des Punktes $x \in P$ bzgl. des projektiven
+    Koordinatensystems $K$.
+    $(\lambda_0, \ldots, \lambda_n) \in K^{n+1}$ heißt
+    \begriff{homogener Koordinatenvektor} und ist bis auf einen Faktor
+    eindeutig bestimmt.
+\end{Def}
+
+\begin{Def}{projektive Abbildung, Projektivität}
+    Seien $P_1, P_2$ ein projektiver Raum mit zugehörigen $K$-Vektorräumen
+    $V_{P_1}, V_{P_2}$.
+    Eine \begriff{projektive Abbildung} $f: P_1 \rightarrow P_2$ wird durch
+    eine injektive lineare Abbildung $F: V_{P_1} \rightarrow V_{P_2}$
+    mit $f(\aufspann{x}) = \aufspann{F(x)}$ induziert.
+    $F$ muss injektiv sein, denn sonst gäbe es Elemente
+    $x \in \ker F$, $x \not= 0$ mit
+    $f(\aufspann{x}) = \aufspann{0} \notin P_2$. \\
+    Ist $F$ bijektiv, so ist auch $f$ bijektiv und heißt
+    \begriff{Projektivität}.
+\end{Def}
+
+\begin{Satz}{$P(V) \cong P(V^\ast)$}
+    Sei $V$ endlich-dimensional.
+    Dann ist $P(V)$ isomorph zu $P(V^\ast)$, wenn $P(V)$ der projektive Raum
+    mit zugehörigem Vektorraum $V_{P(V)} = V$ ist.
+\end{Satz}
+
+\begin{Satz}{Dualitätsprinzip allgemein}
+    Vertauscht man in einer wahren Aussage über Punkte, Geraden usw.
+    eines projektiven Raums der p-Dimension $n$ die Begriffe
+    "`Punkt"' mit "`Hyperebene"', "`Gerade"' mit
+    "`$n - 2$-dimensionaler Unterraum"' usw.
+    (also "`$i$-dimensionaler Unterraum"'
+    mit "`$n - i - 1$ dimensionaler Unterraum"'),
+    so erhält man wieder eine wahre Aussage.
+\end{Satz}
+
+\begin{Satz}{Dualitätsprinzip für projektive Ebenen}
+    Vertauscht man in einer wahren Aussage über Punkte und Geraden einer
+    projektiven Ebene die Begriffe "`Punkt"' mit
+    "`Gerade"' sowie "`Verbindung"' mit "`Schnitt"' und umgekehrt,
+    so erhält man wieder eine wahre Aussage.
+\end{Satz}
+
+\subsection{%
+    \emph{Zusatz}: Projekt 11 (Tensorprodukte)%
+}
+
+\begin{Def}{freier Vektorraum über einer Menge}
+    Sei $M$ eine Menge und $K$ ein Körper.
+    Dann ist der \begriff{freie $K$-Vektorraum} $\mathcal{F}(M)$ über der
+    Menge $M$ definiert durch \\
+    $\mathcal{F}(M) = \{(k_m)_{m \in M} \;|\; k_m \in K \text{ fast alle } 0\}
+    = \{k: M \rightarrow K \;|\; k(m) = 0 \text{ für fast alle } m \in M\}$. \\
+    $\mathcal{F}(M)$ wird zum $K$-Vektorraum durch
+    $(k + l): M \rightarrow K$, $(k + l)(m) = k(m) + l(m)$ und
+    $(\lambda k): M \rightarrow K$, $(\lambda k)(m) = \lambda k(m)$ für
+    $k \in \mathcal{F}(M)$.
+\end{Def}
+
+\begin{Def}{Tensorprodukt als Faktorraum}
+    Seien $V, W$ $K$-Vektorräume.
+    Dann ist das \begriff{Tensorprodukt} $V \otimes W$ definiert durch
+    $V \otimes W = \mathcal{F}(V \times W)/R$ mit
+    $R = \aufspann{S} \ur \mathcal{F}(V \times W)$ und \\
+    $S = \{(v_1 + v_2, w) - (v_1, w) - (v_2, w),\;
+    (v, w_1 + w_2) - (v, w_1) - (v, w_2),\;
+    (\lambda v, w) - \lambda (v, w),\;
+    (v, \lambda w) - (v, \lambda w) \;|\;
+    v_1, v_2, v \in V,\; w_1, w_2, w \in W, \lambda \in K\} \subseteq
+    \mathcal{F}(V \times W)$, wobei $(v, w) \in \mathcal{F}(V \times W)$ die
+    Abbildung $f_{(v, w)}: V \times W \rightarrow K$, $f_{(v, w)}(x, y) = 1$
+    für $(x, y) = (v, w)$ und $f_{(v, w)}(x, y) = 0$ sonst darstellt.
+    $v \otimes w = (v, w) + R \in V \otimes W$ mit $v \in V$, $w \in W$ ist
+    ein \begriff{einfacher Tensor}.
+\end{Def}
+
+\begin{Lemma}{Basis von $V \otimes W$}
+    Ist $\basis{B} = (v_1, v_2, \dotsc)$ eine Basis von $V$ und
+    $\basis{C} = (w_1, w_2, \dotsc)$ eine Basis von $W$, so ist
+    $(v_1 \otimes w_1, v_1 \otimes w_2, \dotsc, v_2 \otimes w_1, v_2 \otimes w_2, \dotsc)$
+    eine Basis von $V \otimes W$.
+\end{Lemma}
+
+\begin{Satz}{Tensorprodukt über universelle Eigenschaft}
+    Seien $V$ und $W$ $K$-Vektorräume.
+    Sei außerdem $A$ ein $K$-Vektorraum, der die folgenden Eigenschaften
+    hat: \\
+    1. Es gibt eine bilineare Abbilduing $j: V \times W \rightarrow A$. \qquad
+    2. Ist $U$ ein $K$-Vektorraum und $f: V \times W \rightarrow U$ bilinear,
+    so gibt es genau einen Homomorphismus $\widetilde{f}: A \rightarrow U$
+    mit $\widetilde{f} \circ j = f$. \\
+    Dann ist $A \cong V \otimes W$.
+\end{Satz}
+
+\begin{Bem}
+    Man kann auch das Tensorprodukt über diesen Satz definieren, d.\,h.
+    jeder $K$-Vektorraum $A$, der die \begriff{universelle Eigenschaft}
+    erfüllt, heißt Tensorprodukt $V \otimes W$.
+    Der Satz garantiert, dass so das Tensorprodukt bis auf Isomorphie eindeutig
+    definiert ist.
+\end{Bem}
+
+\pagebreak

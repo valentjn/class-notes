@@ -1,0 +1,813 @@
+\section{%
+    Modellierung mit PDEs%
+}
+
+\subsection{%
+    Grundlagen, Definitionen und Notationen%
+}
+
+\subsubsection{%
+    Partielle Ableitungen%
+}
+
+\begin{Def}{Multiindex}
+    $\beta = (\beta_1, \dotsc, \beta_d) \in \natural_0^d$ heißt \begriff{Multiindex} der
+    \begriff{Ordnung} $k = |\beta| := \sum_{i=1}^d \beta_i$.
+\end{Def}
+
+\begin{Def}{partielle Ableitung}
+    Seien $u\colon \real^d \to \real$ genügend oft dif"|ferenzierbar und $\beta$ ein Multiindex.\\
+    Dann heißt $\partial^\beta u := (\frac{\partial}{\partial x_1})^{\beta_1} \dotsm
+    (\frac{\partial}{\partial x_d})^{\beta_d} u$ \begriff{partielle Ableitung} von $u$
+    zum Index $\beta$.
+\end{Def}
+
+\begin{Def}{Vektor aller part. Ableitungen}
+    Sei $\BB_k := \{\beta \in \natural_0^d \;|\; |\beta| = k\}$ die Menge aller Multiindizes
+    der Ordnung $k$.
+    Dann heißt $\D^k u := (\partial^\beta u)_{\beta \in \BB_k}$ der
+    \begriff{Vektor aller partiellen Ableitungen} der Ordnung $k$
+    (mit beliebiger Reihenfolge).
+\end{Def}
+
+\begin{Def}{Räume stetig dif"|fb. Funktionen}
+    Seien $k \in \natural_0$ sowie $\Omega \subset \real^d$ of"|fen und beschränkt.\\
+    Dann ist $\C^k(\overline{\Omega}, \real^n)$ der
+    \begriff{Raum aller $k$-mal stetig dif"|ferenzierbarer Funktionen},
+    deren $k$-te Ableitungen stetig auf $\overline{\Omega}$ fortsetzbar sind.
+    Für $n = 1$ schreibt man auch $\C^k(\overline{\Omega}) := \C^k(\overline{\Omega}, \real)$.\\
+    Auf $\C^0(\overline{\Omega})$ definiert man die \begriff{Supremumsnorm}
+    $\norm{u}_\infty := \sup_{x \in \overline{\Omega}} |u(x)|$ mit
+    $u \in \C^0(\overline{\Omega})$.\\
+    Auf $\C^k(\overline{\Omega})$ mit $k \ge 1$ definiert man die Norm
+    $\norm{u}_{\C^k(\overline{\Omega})} := \sum_{|\beta| \le k} \norm{\partial^\beta u}_\infty$ mit
+    $u \in \C^k(\overline{\Omega})$.
+\end{Def}
+
+\begin{Bem}
+    \begin{itemize}
+        \item
+        $\C^k(\overline{\Omega})$ ist ein Banachraum.
+        
+        \item
+        Für $u \in \C^k(\overline{\Omega})$ und $\ell \in \{0, \dotsc, k\}$ ist
+        $\partial^\beta u \in \C^{k - |\beta|}(\overline{\Omega})$ und
+        $\D^\ell u \in (\C^{k - \ell}(\overline{\Omega}))^{|\BB_\ell|}$.
+        
+        \item
+        Die Reihenfolge der Einträge von $\D^1 u$ für $u \in \C^1(\overline{\Omega})$ wird
+        vereinbart durch\\
+        $\D^1 u := \nabla u =
+        (\frac{\partial}{\partial x_1} u, \dotsc, \frac{\partial}{\partial x_d} u)^\tp$.
+        
+        \item
+        Später werden auch Räume $\C^k(\Omega)$ für $\Omega$ of"|fen, unbeschränkt und
+        $k = \infty$ erlaubt sein.
+        Statt einer Norm kann man dann eine Metrik (\begriff{\name{Fréchet}-Metrik}) definieren.
+        Bzgl. dieser ist $\C^k(\Omega)$ ebenfalls vollständig.
+    \end{itemize}
+\end{Bem}
+
+\subsubsection{%
+    \name{Hölder}räume%
+}
+
+\begin{Def}{\name{Hölder}räume}
+    Seien $k \in \natural_0$, $\alpha \in [0, 1]$, $\Omega \subset \real^d$ of"|fen
+    und beschränkt sowie $u \in \C^0(\overline{\Omega})$.\\
+    Dann heißt $\hol_\alpha(u, \overline{\Omega}) := \sup_{x, y \in \overline{\Omega}, x \not= y}
+    \frac{|u(x) - u(y)|}{\norm{x - y}^\alpha}$ \begriff{\name{Hölder}-Konstante} von $u$
+    bzgl. $\alpha$ und\\
+    $\C^{k,\alpha}(\overline{\Omega}) := \{u \in \C^k(\overline{\Omega}) \;|\;
+    \forall_{|\beta| = k}\; \hol_\alpha(\partial^\beta u, \overline{\Omega}) < \infty\}$
+    \begriff{\name{Hölder}raum}.\\
+    $\C^{k,\alpha}(\overline{\Omega})$ enthält die \begriff{\name{hölder}stetigen} Funktionen
+    (jeweils mit \begriff{Exponent} $\alpha$).\\
+    Für $k = 0$ und $\alpha = 1$ spricht man von \begriff{\name{Lipschitz}-stetigen} Funktionen
+    mit \begriff{\name{Lipschitz}-Kons"-tante}
+    $L = \Lip(u, \overline{\Omega}) := \hol_1(u, \overline{\Omega})$.
+\end{Def}
+
+\begin{Satz}{\name{Hölder}räume vollständig}\\
+    $\C^{k,\alpha}(\overline{\Omega})$ ist mit der Norm
+    $\norm{u}_{\C^{k,\alpha}(\overline{\Omega})} :=
+    \norm{u}_{\C^k(\overline{\Omega})} +
+    \sum_{|\beta|=k} \hol_\alpha(\partial^\beta u, \overline{\Omega})$
+    ein Banachraum.
+\end{Satz}
+
+\begin{Satz}{Schachtelung von \name{Hölder}räumen}\\
+    Für $k \in \natural_0$ und $0 \le \widehat{\alpha} \le \alpha \le 1$ gilt
+    $\C^k(\overline{\Omega}) \supset \C^{k,\widehat{\alpha}}(\overline{\Omega}) \supset
+    \C^{k,\alpha}(\overline{\Omega}) \supset \C^{k+1}(\overline{\Omega})$.
+\end{Satz}
+
+\begin{Bsp}
+    Seien $\Omega := (0, 1)$ und $u(x) := \sqrt{x}$.
+    Dann ist $u \in \C^0(\overline{\Omega}) \setminus \C^1(\overline{\Omega})$.\\
+    Es gilt $u \in \C^{0,\alpha}(\overline{\Omega}) \iff \alpha \le \frac{1}{2}$
+    (d.\,h. $u$ ist insbesondere nicht Lipschitz-stetig).\\
+    Die Richtung "`$\Rightarrow$"' gilt, weil\\
+    $\hol_\alpha(u, \overline{\Omega})
+    = \sup_{x \not= y} \frac{|\sqrt{x} - \sqrt{y}|}{|x - y|^\alpha}
+    \ge \sup_{y \not= 0} \frac{|\sqrt{0} - \sqrt{y}|}{|0 - y|^\alpha} =
+    \sup_{y \not = 0} y^{1/2-\alpha} = \infty$ für $\alpha > \frac{1}{2}$.
+\end{Bsp}
+
+\pagebreak
+
+\subsubsection{%
+    \texorpdfstring{$L^p$}{Lp}-Räume%
+}
+
+\begin{Def}{$\widetilde{L}^p$-Räume}
+    Für $p \in [1, \infty)$ heißt
+    $\widetilde{L}^p(\Omega) :=
+    \{\text{$u\colon \Omega \to \real$ Lebesgue-messb.} \;|\; \int_\Omega |u|^p \dx < \infty\}$
+    \begriff{$\widetilde{L}^p$-Raum}
+    mit Seminorm $\norm{u}_p := (\int_\Omega |u|^p \dx)^{1/p}$ für
+    $u \in \widetilde{L}^p(\Omega)$.\\
+    Für $p = \infty$ ist $L^\infty(\Omega) :=
+    \{\text{$u\colon \Omega \to \real$ Lebesgue-messb.} \;|\;
+    \esssup_{x \in \Omega} |u(x)| < \infty\}$
+    mit Norm $\norm{u}_\infty := \esssup_{x \in \Omega} |u(x)|$.
+\end{Def}
+
+\begin{Bem}
+    \begin{itemize}
+        \item
+        $\norm{\cdot}_p$ ist i.\,A. keine Norm auf $\widetilde{L}^p(\Omega)$ für
+        $p \in [1, \infty)$
+        ($\exists_{u \in \widetilde{L}^p(\Omega)}$ mit $u \not= 0$, aber $\norm{u}_p = 0$).
+        
+        \item
+        Für $u \in \C^0(\overline{\Omega})$ ist $u \in \widetilde{L}^\infty(\overline{\Omega})$ und
+        beide Definitionen von $\norm{\cdot}_\infty$ stimmen überein.
+    \end{itemize}
+\end{Bem}
+
+\linie
+
+\begin{Def}{$L^p$-Räume}
+    Definiere eine Äquivalenzrelation $\sim$ auf $\widetilde{L}^p(\Omega)$ durch
+    $u \sim v$, falls\\
+    $\exists_{\text{$N \subset \Omega$ Nullmenge}}
+    \forall_{x \in \Omega \setminus N}\; u(x) = v(x)$.
+    Dann heißt $L^p(\Omega) := \widetilde{L}^p(\Omega)/\!\sim$ \begriff{$L^p$-Raum}.\\
+    $\norm{\cdot}_p$ ist auf $L^p(\Omega)$ erweiterbar (da konstant auf Äquivalenzklassen).
+\end{Def}
+
+\begin{Bem}
+    \begin{itemize}
+        \item
+        $L^p(\Omega)$ ist ein Banachraum.
+        
+        \item
+        Die Elemente von $L^p(\Omega)$ sind eigentlich Äquivalenzklassen von Funktionen.
+        Trotzdem identifiziert man diese in der Praxis oft mit Repräsentanten und nennt
+        $L^p(\Omega)$ einen "`Funktionenraum"'.
+        Man sollte dabei immer bedenken, ob die definierten Operationen wohldefiniert sind
+        (z.\,B. sei $T, S\colon L^1(\Omega) \to \real$,
+        dann ist $T(u) := \int_\Omega u(x) \dx$ wohldefiniert,
+        aber $S(u) := u(y)$ für ein festes $y \in \Omega$ nicht).
+        
+        \item
+        $\sp{u, v}_{L^2(\Omega)} := \int_\Omega uv \dx$ ist ein Skalarprodukt auf
+        $L^2(\Omega)$ mit induzierter Norm\\
+        $\norm{u}_{L^2(\Omega)} = \sqrt{\langle u, u \rangle_{L^2(\Omega)}}$,
+        d.\,h. $L^2(\Omega)$ ist ein Hilbertraum.
+        
+        \item
+        Ist $V$ ein normierter Raum, dann ist der Dualraum
+        $V' := \{\varphi\colon V \to \real \;|\; \text{$\varphi$ linear, stetig}\}$
+        mit der Norm
+        $\norm{\varphi}_{V'} := \sup_{u \in V \setminus \{0\}} \frac{|\varphi(u)|}{\norm{u}_V}$
+        ein Banachraum.
+        
+        \item
+        Für $p, q \in (1, \infty)$ mit $\frac{1}{p} + \frac{1}{q} = 1$ ist
+        $L^q(\Omega) \cong (L^p(\Omega))'$
+        (z.\,B. $L^2(\Omega) \cong (L^2(\Omega))'$).
+    \end{itemize}
+\end{Bem}
+
+\linie
+
+\begin{Satz}{\name{Young}sche Ungleichung}
+    Für $a, b \ge 0$ und $p, q \in (1, \infty)$ mit $\frac{1}{p} + \frac{1}{q} = 1$ gilt
+    $ab \le \frac{1}{p} a^p + \frac{1}{q} b^q$.\\
+    Ist zusätzlich $\varepsilon > 0$, so gilt
+    $ab \le \frac{\varepsilon}{2} a^2 + \frac{1}{2\varepsilon} b^2$.
+\end{Satz}
+
+\begin{Bem}
+    Die Young-Ungleichung wird zur Trennung von Produkten verwendet.
+\end{Bem}
+
+\begin{Satz}{\name{Hölder}-Ungleichung}\\
+    Für $p, q \in [1, \infty]$ mit $\frac{1}{p} + \frac{1}{q} = 1$ sowie
+    $u \in L^p(\Omega)$ und $v \in L^q(\Omega)$ gilt $\norm{uv}_1 \le \norm{u}_p \norm{v}_q$.
+\end{Satz}
+
+\begin{Bem}
+    Insbesondere ist $uv \in L^1(\Omega)$ und für $p = q = 2$ folgt Cauchy-Schwarz
+    für $L^2(\Omega)$.
+\end{Bem}
+
+\subsubsection{%
+    Fundamentalsatz der Variationsrechnung%
+}
+
+\begin{Def}{lokal intb. Fkt.en}
+    $L^1_\loc(\Omega) := \{\text{$u\colon \Omega \to \real$ L.-messbar} \;|\;
+    \forall_{\text{$K \subset \Omega$ kpkt.}}\; \int_K |u|\dx < \infty\}$
+    ist der \begriff{Raum aller lokal integrierbaren Funktionen}.
+\end{Def}
+
+\begin{Bsp}
+    Für $u\colon \real \to \real$, $u(x) :\equiv 1$, gilt
+    $u \in L^1_\loc(\real) \setminus L^1(\real)$.
+\end{Bsp}
+
+\linie
+
+\begin{Def}{Fkt.en mit kpkt. Träger}
+    Seien $\Omega \subset \real^d$ of"|fen (evtl. unbeschr.) und
+    $m \in \natural_0 \cup \{\infty\}$.\\
+    Dann ist
+    $\C^m_0(\Omega) := \{u \in \C^m(\Omega) \;|\; \text{$\supp(u) \subset \Omega$ kpkt.}\}$
+    der \begriff{Raum aller Fkt.en mit kpkt. Träger}.
+\end{Def}
+
+\begin{Satz}{Fundamentalsatz der Variationsrechnung}
+    Seien $\Omega \subset \real^d$ of"|fen und $u \in L^1_\loc(\Omega)$.\\
+    Dann gilt $\forall_{v \in \C^\infty_0(\Omega)}\; \int_\Omega uv \dx = 0$ genau dann, wenn
+    $u = 0$ fast überall.
+\end{Satz}
+
+\pagebreak
+
+\subsubsection{%
+    Dif"|ferentialoperatoren%
+}
+
+\begin{Def}{Gradient}
+    Für $u \in \C^1(\Omega)$ und $x \in \Omega$ ist
+    $\grad u(x) := \nabla u(x) = (\partial_{x_1} u(x), \dotsc, \partial_{x_d} u(x))^\tp$
+    der \begriff{Gradient} von $u$ (wobei $\partial_{x_i} := \frac{\partial}{\partial x_i}$).
+\end{Def}
+
+\begin{Def}{Divergenz}
+    Für ein Vektorfeld $v = (v_i)_{i=1}^d \in \C^1(\Omega, \real^d)$ ist\\
+    $\div v(x) := \nabla \cdot v(x) = \sum_{i=1}^d \partial_{x_i} v_i(x)$
+    die \begriff{Divergenz} von $v$.
+\end{Def}
+
+\begin{Def}{Rotation}
+    Für ein Vektorfeld $v \in \C^1(\Omega, \real^3)$ mit $\Omega \subset \real^3$ ist\\
+    $\rot v(x) := \nabla \times v(x)$ die \begriff{Rotation} von $v$.
+\end{Def}
+
+\begin{Def}{\name{Laplace}-Operator}
+    Für $u \in \C^2(\Omega)$ ist der \begriff{\name{Laplace}-Operator} definiert durch\\
+    $\Delta u(x) := \nabla \cdot (\nabla u(x)) = \div(\grad(u)) =
+    \sum_{i=1}^d \partial_{x_i}^2 u(x)$
+    (wobei $\partial_{x_i}^2 := \frac{\partial^2}{\partial x_i^2}$).
+\end{Def}
+
+\subsubsection{%
+    Satz von \name{Gauß}%
+}
+
+\begin{Def}{\name{Lipschitz}-Gebiet}
+    Sei $\Omega \subset \real^d$ of"|fen und beschränkt.\\
+    Dann heißt $\Omega$ \begriff{\name{Lipschitz}-Gebiet}, falls endlich viele
+    of"|fene Mengen $U_1, \dotsc, U_n \subset \real^d$ existieren, sodass
+    $\bigcup_{i=1}^n U_i \supset \partial\Omega$ gilt und
+    sich $\partial\Omega \cap U_i$ in geeigneter Richtung als Graph einer Lipschitz-stetigen
+    Funktion schreiben lässt, sodass $\Omega$ komplett auf einer Seite des Graphen liegt.
+\end{Def}
+
+\begin{Satz}{Satz von \name{Gauß} für \name{Lipschitz}-Gebiete}\\
+    Seien $\Omega \subset \real^d$ ein L.-Gebiet und
+    $v \in \C^1(\Omega, \real^d) \cap \C^0(\overline{\Omega}, \real^d)$ ein Vektorfeld mit
+    $\div(v) \in L^1(\Omega)$.\\
+    Dann gilt $\int_\Omega \div v \dx = \int_{\partial\Omega} v \cdot n \dsigma(x)$ mit
+    $n$ der äußeren Einheitsnormalen an $\partial\Omega$.
+\end{Satz}
+
+\begin{Satz}{partielle Integration}
+    Für $u \in \C^1(\overline{\Omega})$ und $v \in \C^1(\overline{\Omega}, \real^d)$ gilt\\
+    $\int_\Omega \nabla u \cdot v \dx = -\int_\Omega u \div v \dx +
+    \int_{\partial\Omega} uv \cdot n \dsigma(x)$.
+\end{Satz}
+
+\subsubsection{%
+    Skalare PDEs%
+}
+
+\begin{Def}{skalare PDE}
+    Seien $k \in \natural$ und
+    $F\colon \real^{|\BB_k|} \times \real^{|\BB_{k-1}|} \times \dotsb
+    \times \real \times \Omega \to \real$
+    gegeben.\\
+    Dann heißt $F(\D^k u, \D^{k-1} u, \dotsc, u, x) = 0$ für $x \in \Omega$
+    \begriff{skalare PDE} der \begriff{Ordnung} $k$.
+\end{Def}
+
+\begin{Bem}
+    Es gibt auch Systeme von PDEs, die hier nicht weiter betrachtet werden.
+\end{Bem}
+
+\begin{Def}{klassische Lösung}
+    Sei eine skalare PDE gegeben.\\
+    Eine Funktion $u \in \C^k(\Omega)$ heißt \begriff{klassische Lösung}, falls
+    $\forall_{x \in \Omega}\; F(\D^k u, \D^{k-1} u, \dotsc, u, x) = 0$.
+\end{Def}
+
+\begin{Bem}
+    Alle Notationen für $\Omega \subset \real^d$ mit $x = (x_1, \dotsc, x_d) \in \Omega$ werden
+    auf \begriff{Ort-Zeit-Gebiete} $\Omega_T := \Omega \times (0, T) \subset \real^d \times \real$
+    mit $T \in (0, \infty]$, $(x, t) \in \Omega_T$, $\partial_t := \frac{\partial}{\partial t}$
+    und $\partial_t^2 := \frac{\partial^2}{\partial t^2}$ übertragen.\\
+    In diesem Fall wird für $u \in \C^1(\Omega_T)$ festgelegt, dass
+    $\nabla u := \nabla_x u = (\partial_{x_1} u, \dotsc, \partial_{x_d} u)$ und\\
+    $\Delta u := \Delta_x u = \sum_{i=1}^k \partial_{x_i}^2 u$.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Modellierung%
+}
+
+\begin{Bem}
+    Unter \begriff{Modellierung} versteht man die Herleitung eines mathematischen Modells für einen
+    realen Prozess.
+    Es gibt verschiedene Modellierungsansätze, die zu PDEs führen,
+    u.\,a. Erhaltungsprinzip, Variationsprinzip und Mikro-Makro-Skalenübergang.
+\end{Bem}
+
+\subsubsection{%
+    Erhaltungsprinzip%
+}
+
+\begin{Bem}
+    Das \begriff{Erhaltungsprinzip} wird wie folgt motiviert.
+    Für eine Zustandsgröße (Masse, Impuls, Energie) gilt, dass die Änderung der Zustandsgröße
+    in einem beliebigen Volumen $V$ nur durch Transport über den Rand $\partial V$ des Volumens
+    geschehen kann (wenn keine Quellen und Senken vorhanden sind).
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Im Folgenden wird die allgemeine Transport-Reaktionsgleichung hergeleitet.
+    
+    Seien $\Omega \subset \real^d$ und $\Omega_T := \Omega \times (0, T)$.
+    Gesucht ist ein Modell für die Konzentration $u(x, t)$ eines Stof"|fes in $\Omega$
+    (z.\,B. Tinte in Wasser, Ruß in Luft) unter den folgenden Annahmen:
+    \begin{itemize}
+        \item
+        Der Stoff wird nur durch Transport im Raum verteilt.
+        
+        \item
+        Der Stoff kann abgebaut oder erzeugt werden
+        (Bsp. Tintenkiller oder Schornstein).
+    \end{itemize}
+    Dazu definiert man
+    \begin{itemize}
+        \item
+        den Fluss $F(x, t) \in \real^d$ durch $x$ zur Zeit $t$ und
+        
+        \item
+        den Konzentrationsgewinn/-verlust $G(x, t) \in \real$ in $x$ zur Zeit $t$.
+    \end{itemize}
+    Zur Herleitung der PDE stellt man eine Massenbilanz in einem Kontrollvolumen $V \subset \Omega$
+    im Zeitintervall $[t, t + \Delta t]$ für $\Delta t > 0$ beliebig auf:
+    Die Masse zur Zeit $t + \Delta t$ ist gleich der Masse zur Zeit $t$ minus dem Ausfluss aus $V$
+    plus dem Konzentrationsgewinn durch Reaktion, d.\,h.
+    $\int_V u(x, t + \Delta t) \dx = \int_V u(x, t) \dx -
+    \int_t^{t + \Delta t} \int_{\partial V} F(x,s) \cdot n\dsigma(x) \ds +
+    \int_t^{t + \Delta t} \int_V G(x, s) \dx \ds$\\
+    $\iff \int_V \frac{u(x, t + \Delta t) - u(x, t)}{\Delta t} \dx =
+    -\frac{1}{\Delta t} \int_t^{t + \Delta t} \int_{\partial V} F(x,s) \cdot n\dsigma(x) \ds +
+    \frac{1}{\Delta t} \int_t^{t + \Delta t} \int_V G(x, s) \dx \ds$.\\
+    Für $\Delta t \to 0$ erhält man
+    $\int_V \partial_t u(x, t) \dx = -\int_{\partial V} F(x, t) \cdot n \dsigma(x) +
+    \int_V G(x, t) \dx$ und nach dem Satz von Gauß somit
+    $\int_V \partial_t u(x, t) \dx = -\int_V \div_x F(x, t) \dx + \int_V G(x, t) \dx$.
+    Weil $V$ beliebig war, kann man $V$ auf einen Punkt $x$ "`zusammenziehen"' und bekommt die\\
+    \begriff{Transport-Reaktionsgleichung}
+    $\partial_t u + \div F = G$ in $\Omega_T$.
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Ohne Transport (d.\,h. $F :\equiv 0$), aber $u$-abhängiger Reaktion $G(t, x, u)$ bekommt man
+    die in $x \in \Omega$ parametrisierte gewöhnliche DGL
+    $\partial_t u(x, t) = G(x, t, u(x, t))$ für $t \in (0, T)$.
+\end{Bsp}
+
+\linie
+
+\begin{Bsp}
+    Sei $v \in \C^1(\Omega_T, \real^d)$ ein Geschwindigkeitsfeld.
+    Mit $F(x, t) := v(x, t) \cdot u(x, t)$ und\\
+    $G(x, t) := 0$ bekommt man die
+    \begriff{Advektionsgleichung} $\partial_t u + \div(vu) = 0$
+    (lineare PDE).
+\end{Bsp}
+
+\linie
+
+\begin{Bsp}
+    Wenn man Autos in einer Einbahnstraße modellieren will,
+    dann setzt man $d = 1$.
+    $\Omega := \real$ entspricht der Straße
+    und $u(x, t) \in \real$ der Fahrzeugdichte (Anzahl pro Strecke).\\
+    Eine $u$-abhängige Geschwindigkeit ist realistisch (z.\,B. $v(u) = v_{\max}(1 - u)$).\\
+    Mit $F(u) := v(u) \cdot u$ (d.\,h. $F(x, t) = v(u(x, t)) \cdot u(x, t)$)
+    und $G(x, t) := 0$ erhält man die \begriff{Konvektionsgleichung}
+    $\partial_t u + \partial_x F(u) = 0$ in $\Omega_T$.
+\end{Bsp}
+
+\linie
+\pagebreak
+
+\begin{Bsp}
+    Sei $a \in \C^1(\Omega)$ (\begriff{Dif"|fusionskoef"|fizient}).
+    Will man Transport durch Dif"|fusion modellieren, so benutzt man
+    $G :\equiv 0$ und $F(x, t) := -a(x) \nabla u(x, t)$ (\begriff{\name{Fick}sches Gesetz}).
+    Die Motivation ist, dass starke Gradienten ausgeglichen werden.
+    Damit erhält man die \begriff{allg. Dif"|fusionsgleichung}
+    $\partial_t u - \div(a \nabla u) = 0$.
+    
+    Ist $a \in \C^1(\Omega, \real^{d \times d})$ matrix-/tensorwertig, so heißt $a$
+    \begriff{Dif"|fusionstensor} (sinnvoll, wenn die Dif"|fusion wie in Faserstrukturen
+    richtungsabhängig unterschiedlich verläuft).
+    Für $a(x) \equiv 1$ konstant ergibt sich die \begriff{Dif"|fusionsgleichung}
+    $\partial_t u - \Delta u = 0$.
+    
+    Ist $u(x, t)$ eine Temperatur, so heißt diese Gleichung
+    \begriff{instationäre Wärmeleitungsgleichung},
+    $F$ \begriff{Wärmefluss} und $a$ \begriff{Wärmeleitkoef"|fizient}.
+\end{Bsp}
+
+\linie
+
+\begin{Bsp}
+    Falls die Lösung $u(x, t)$ der instationären Wärmeleitungsgleichung in einen stationären
+    Zustand übergeht, d.\,h. $\overline{u} \in \C^2(\overline{\Omega})$ existiert mit
+    $u(\cdot, t) \to \overline{u}$ gleichmäßig, so erfüllt $\overline{u}$ die
+    \begriff{\name{Laplace}-Gleichung} $-\Delta \overline{u} = 0$ in $\Omega$.
+    
+    Falls in der Wärmeleitungsgleichung ein Quellterm $G(x, t) := f(x)$ enthalten ist
+    (Ofen, Kühlschrank), so führt dies asymptotisch zur
+    \begriff{\name{Poisson}-Gleichung} $-\Delta \overline{u} = f$ in $\Omega$.
+\end{Bsp}
+
+\linie
+
+\begin{Bem}
+    Ohne weitere Bedingungen sind Lösungen von PDEs i.\,A. nicht eindeutig.
+    Für die Transport-Reaktionsgleichung fordert man häufig:
+    \begin{itemize}
+        \item
+        \emph{Anfangsbedingungen}:
+        $u_0(\cdot, 0) = u_0$ für ein gegebenes $u_0\colon \Omega \to \real$\\
+        (wie bei gewöhnlichen DGLs, da sonst Lsg. mehrdeutig)
+        
+        \item
+        \emph{Randbedingungen für $\Omega \subsetneqq \real^d$}:
+        \begin{itemize}
+            \item
+            \begriff{\name{Dirichlet}-Randbedingungen}:
+            $u(x, t) = g(x, t)$ auf $\partial\Omega \times (0, T)$\\
+            (z.\,B. bei Wärmeleitung Kühlung/Heizung durch vorgeg. Temp. am Rand)
+            
+            \item
+            \begriff{\name{Neumann}-Randbedingungen}:
+            $F(x, t, u) \cdot n(x) = g(x, t)$ auf $\partial\Omega \times (0, T)$\\
+            (Vorgeben des Flusses, bei Wärmeleitung isolierende, No-Flow-RBen
+            $-(a \nabla u) \cdot n = 0$)
+            
+            \item
+            \begriff{weitere Mischformen}:
+            auf Teilen des Randes Dirichlet-, auf Teilen Neumann-RBen
+            
+            \item
+            \begriff{\name{Robin}sche Randbedingungen}:
+            $F(x, t, u) \cdot n(x) = g_0(x, t) + g_1(x, t) \cdot u$
+            
+            \item
+            \begriff{Inflow-Randbedingungen}:
+            RBen auf Einflussrand bei reiner Konvektion (ohne Dif"|fusion)
+        \end{itemize}
+    \end{itemize}
+\end{Bem}
+
+\pagebreak
+
+\subsubsection{%
+    Variationsprinzip%
+}
+
+\begin{Bem}
+    Die Motivation des \begriff{Variationsprinzips} ist z.\,B. bei der Energieminimierung, dass
+    ein physikalisches System immer in den Zustand minimaler Energie strebt.
+\end{Bem}
+
+\begin{Def}{Variationsproblem}
+    Seien $\Omega \subset \real^d$ of"|fen und beschränkt,
+    $\F \subset \C^1(\Omega)$ die \begriff{Menge zulässiger Funktionen} und
+    $L(p, z, x) \in \C^2(\real^d \times \real \times \Omega)$ die
+    \begriff{\name{Lagrange}-Funktion}.
+    Das Problem, $u \in \F$ mit $\forall_{w \in \F}\; I(u) \le I(w)$ zu finden,
+    wobei $I(w) := \int_\Omega L(\nabla w(x), w(x), x) \dx$, heißt \begriff{Variationsproblem}.\\
+    $u$ heißt in diesem Fall \begriff{Minimierer} des Variationsproblems.
+\end{Def}
+
+\begin{Bem}
+    $L$ soll zweifach stetig diffb. sein, weil das für die Euler-Lagrange-Gleichungen benötigt
+    wird.
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Seien $\Omega \subset \real^d$ of"|fen und beschränkt,
+    $A := (a_{ij})_{i,j=1}^d \in \C^2(\overline{\Omega}, \real^{d \times d})$
+    symmetrisch, $c, f \in \C^2(\overline{\Omega})$ und $\F := \C^1(\Omega)$.
+    Man wählt die quadratische Lagrange-Funktion\\
+    $L(p, z, x) := \frac{1}{2} p^\tp A(x) p + \frac{1}{2} c(x) z^2 - z f(x)$.
+    Das zugehörige Funktional\\
+    $I(w) = \int_\Omega (\frac{1}{2} \nabla w^\tp A \nabla w + \frac{1}{2} cw^2 - wf) \dx$
+    heißt \begriff{\name{Dirichlet}-Funktional}.
+    $I(w)$ ist dabei endlich.\\
+    Wenn $A(\cdot)$ positiv definit und $c$ positiv (d.\,h. $\forall_{x \in \Omega}\; c(x) > 0$)
+    ist,
+    dann ist $I$ \begriff{strikt konvex}, also
+    $\forall_{w, w' \in \F,\; w \not= w'} \forall_{\lambda \in (0, 1)}\;
+    \lambda I(w) + (1 - \lambda) I(w') > I(\lambda w + (1-\lambda) w')$.
+    Nach einem Satz weiter unten folgt damit die Existenz und Eindeutigkeit des Minimierers.
+\end{Bsp}
+
+\linie
+
+\begin{Bsp}
+    Das \begriff{\name{Hamilton}-Prinzip} besagt, dass im räumlich-zeitlichen Mittel
+    die Dif"|ferenz zwischen
+    kinetischer und potentieller Energie extremal wird.
+    Im Folgenden wird dies für die Bewegung einer eingespannten elastischen Membran angewendet
+    (z.\,B. Seifenhaut in Drahtring, Trommel).
+    
+    Seien $\Omega \subset \real^d$ of"|fen und beschränkt und $\Omega_T := \Omega \times (0, T)$.
+    Gegeben ist die feste Randhöhe $g(x)$ der Membran in $x \in \partial\Omega$,
+    die Anfangshöhe $u_0(x)$ der Membran in $x \in \Omega$ und
+    die vertikale Anfangsgeschwindigkeit $v_0(x)$ in $x \in \Omega$.
+    Gesucht ist die Höhe $u(x, t)$ (und die Geschwindigkeit $\partial_t u(x, t)$)
+    der Membran für $(x, t) \in \Omega_T$.
+    
+    Die kinetische Energie zur Zeit $t$ beträgt
+    $E_\kin(t) := \int_\Omega \frac{1}{2} (\partial_t u)^2 \dx$ und
+    die potentielle Energie zur Zeit $t$ beträgt
+    $E_\pot(t) := \int_\Omega \frac{c^2}{2} \norm{\nabla_x u}^2 \dx$ mit $c > 0$.
+    
+    Die Menge der zulässigen Funktionen sei\\
+    $\F := \{w \in \C^1(\overline{\Omega_T}) \;|\; w(\cdot, 0) = u_0,\;
+    \partial_t w(\cdot, 0) = v_0,\;
+    \forall_{t \in (0, T)}\; w(\cdot, t)|_{\partial\Omega} = g\}$.\\
+    $\F$ ist als af"|fin-linearer Unterraum von $\C^1(\overline{\Omega_T})$ konvex
+    (wählt man $\widehat{w} \in \F$ beliebig, dann ist
+    $\F_0 := \F - \widehat{w} = \{w \in \C^1(\overline{\Omega_T}) \;|\;
+    w(\cdot, 0) = 0,\; \partial_t w(\cdot, 0) = 0,\;
+    \forall_{t \in (0, T)}\; w(\cdot, t)|_{\partial\Omega} = 0\}$
+    linearer UR).
+    
+    Die Lagrange-Funktion ist nach dem Hamilton-Prinzip zu wählen als\\
+    $L(p, z, x) := \frac{c^2}{2} \sum_{i=1}^d |p_i|^2 - \frac{1}{2} |p_{d+1}|^2$,
+    denn damit erhält man das Variationsfunktional\\
+    $I(w) = \int_0^T \int_\Omega
+    \left(\frac{c^2}{2} \norm{\nabla_x w}^2 - \frac{1}{2} (\partial_t w)^2\right) \dx\dt
+    = \int_0^T (E_\pot(t) - E_\kin(t)) \dt$.
+\end{Bsp}
+
+\linie
+\pagebreak
+
+\begin{Bsp}
+    Es soll die Trennung von zwei Phasen in $\Omega$ modelliert werden (Wasser/Öl).
+    Im Gleichgewicht sind beide Phasen so getrennt,
+    dass die in der Trennfläche gesp. Energie minimal wird.
+    
+    Sei $\Omega \subset \real^d$ of"|fen und beschränkt.
+    Gesucht ist eine \begriff{Phasenfeld-Variable} $u\colon \Omega \to \real$ mit\\
+    $u(x) = -1$, falls sich im Punkt $x$ nur Phase $1$ befindet,
+    $u(x) = 1$, falls sich im Punkt $x$ nur Phase $2$ befindet, und
+    $u(x) \in (-1, 1)$, falls im Punkt $x$ beide Phasen anteilig vorhanden sind.
+    
+    $\partial\Omega$ sei undurchlässig, d.\,h. das Phasenverhältnis ist konstant,
+    also
+    $\exists_{\alpha \in [-1, 1]}\; \alpha = \frac{1}{|\Omega|} \int_\Omega u(x) \dx$.
+    
+    Es sind verschiedene Trennungen für $\Omega = [0, 1]^2$ und $\alpha = 0$ denkbar, z.\,B.
+    \begin{itemize}
+        \item
+        keine Trennung (kontinuierlicher Verlauf von $u = 1$ zu $u = -1$),
+        
+        \item
+        Trennung, aber Trennfläche groß ("`wilde"' Trennfläche, Blasen), oder
+        
+        \item
+        Trennung, aber scharfe Kanten (nicht dif"|ferenzierbar).
+    \end{itemize}
+    Das Ziel ist ein \begriff{Energiefunktional}, dessen Minimum der vollständigen Trennung
+    entspricht.
+    
+    Wählt man eine \begriff{Double-Well-Funktion} $W(z)$, die große Abweichungen von $-1$ und $1$
+    bestraft, z.\,B. $W(z) := (z^2-1)^2$, und setzt $L(p, z, x) := W(z)$,
+    so erhält man das Variationsfunktional $I(w) = \int_\Omega W(w(x)) \dx$.
+    Allerdings ergeben sich folgende Probleme:
+    \begin{itemize}
+        \item
+        \emph{mathematisch}:
+        Für $\alpha \in (-1, 1)$ existieren keine $\C^1$-Minimierer, denn in $L^1$ ist jedes\\
+        $u \in L^1(\Omega)$ mit $\frac{1}{|\Omega|} \int_\Omega u(x) \dx = \alpha$ und
+        $\Bild(u) \subset \{-1, 1\}$ ein Minimierer mit $I(u) = 0$.\\
+        Das Variationsproblem ist also über $\C^1$ schlecht gestellt,
+        weil diese $u$ sehr unregulär sind.
+        
+        \item
+        \emph{physikalisch}:
+        Die Lösungen sind unnatürlich, z.\,B. sind beliebig viele Vorzeichenwechsel möglich.
+        Außerdem wird die Trennfläche nicht berücksichtigt.
+    \end{itemize}
+    
+    Eine Verbesserung kann eine \begriff{Regularisierung} sein, indem ein zusätzlicher Summand
+    eine kleine Norm der Lösung erzwingt, z.\,B. $L(p, z, x) := W(z) + \frac{1}{2} \norm{p}^2$.
+    Damit bekommt man das \begriff{\name{van-der-Waals}-Funktional}
+    $I(w) = \int_\Omega \left(W(w(x)) + \frac{1}{2} \norm{\nabla w(x)}^2\right) \dx$.
+    
+    Man erhält durch Minimierung tatsächlich eine Trennung mit einer
+    \begriff{dif"|fusiven Grenzschicht} (im Gegensatz zu scharfen Phasengrenzen) und die Lösung
+    ist dif"|ferenzierbar.
+\end{Bsp}
+
+\linie
+
+\begin{Bem}
+    Variationsfunktionale können also
+    physikalische Energieterme,
+    künstliche Regularisierungsterme ($\norm{\nabla u}^2$, $\norm{u}^2$, \dots) und
+    Zielwert-Funktionale umfassen.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Im Folgenden werden PDEs aus Variationsproblemen hergeleitet.
+\end{Bem}
+
+\begin{Satz}{Variationsprinzip, notwendige Bedingung}\\
+    Seien $\F$ ein af"|fin-linearer Raum, $I(\cdot)$ stetig diffb. und $u \in \F$ ein Minimierer
+    von $I(\cdot)$.\\
+    Dann gilt $\frac{\d}{\d\varepsilon} I(u + \varepsilon v)|_{\varepsilon=0} = 0$
+    für alle zulässigen Variationen $v \in \F - u$.
+\end{Satz}
+
+\begin{Satz}{hinreichende Bedingung}
+    Seien $\F$ konvex sowie $I(\cdot)$ stetig diffb. und konvex.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        Jede Funktion $u \in \F$ mit
+        $\forall_{v \in \F - u}\;
+        \frac{\d}{\d\varepsilon} I(u + \varepsilon v)|_{\varepsilon=0} = 0$ ist ein Minimierer.
+        
+        \item
+        Die Menge der Minimierer ist konvex in $\F$.
+        
+        \item
+        Ist $I(\cdot)$ strikt konvex, so ist der Minimierer (falls existent) eindeutig.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Satz}{\name{Euler}-\name{Lagrange}-Gleichung}\\
+    Seien $\Omega \subset \real^d$ ein Lipschitz-Gebiet,
+    $\F \subset \C^1(\overline{\Omega})$ ein af"|fin-linearer Unterraum mit
+    $\F + \C_0^\infty(\Omega) \subset \F$,
+    $u \in \F \cap \C^2(\Omega)$ ein Minimierer von $I(\cdot)$ und
+    $L(p, z, x)$ genügend glatt.\\
+    Dann erfüllt $u$ die PDE
+    $-\sum_{i=1}^d \partial_{x_i} ((\partial_{p_i} L) (\nabla u, u, x)) +
+    \partial_z L(\nabla u, u, x) = 0$
+    für $x \in \Omega$.\\
+    Die PDE $-\div_x(\nabla_p L(\nabla u, u, x)) + \partial_z L(\nabla u, u, x) = 0$ heißt \begriff{\name{Euler}-\name{Lagrange}-Gleichung}.
+\end{Satz}
+
+\linie
+
+\begin{Bsp}
+    Betrachtet man die Lagrange-Funktion
+    $L(p, z, x) := \frac{1}{2} p^\tp A(x) p + \frac{1}{2} c(x) z^2 - zf(x)$
+    des Dirichlet-Funktionals, so erhält man wegen $\nabla_p L(p, z, x) = Ap$ und
+    $\partial_z L(p, z, x) = cz - f$ die Euler-Lagrange-Gleichung
+    $-\div(A\nabla u) + cu - f = 0$ für $x \in \Omega$.
+    Spezialfälle sind:
+    \begin{itemize}
+        \item
+        $A :\equiv I_d$, $c, f :\equiv 0$
+        $\implies$ $-\Delta u = 0$ (Laplace-Gleichung)
+        
+        \item
+        $d := 1$, $a_{11} > 0$, $c > 0$
+        $\implies$ $-a_{11} u'' + cu = f$ (\begriff{\name{Sturm}-\name{Liouville}-Problem})
+    \end{itemize}
+\end{Bsp}
+
+\linie
+
+\begin{Bsp}
+    Mit der Lagrange-Funktion
+    $L(p, z, x) := \frac{c^2}{2} \sum_{i=1}^d |p_i|^2 - \frac{1}{2} |p_{d+1}|^2$ aus dem
+    Hamilton-Prinzip erhält man $\partial_{p_i} L(p, z, x) = c^2 p_i$ für $i = 1, \dotsc, d$,
+    $\partial_{p_{d+1}} L(p, z, x) = -p_{d+1}$ und\\
+    $\partial_z L(p, z, x) = 0$.
+    Die Euler-Lagrange-Gleichung lautet also
+    $\partial_t^2 u - c^2 \Delta u = 0$ für $x \in \Omega$\\
+    (\begriff{Wellengleichung}).
+\end{Bsp}
+
+\linie
+
+\begin{Bsp}
+    Die PDE für den Trennungsprozess von eben erhält man wie folgt.
+    Mit $\F := \C^1(\Omega)$ ohne die Nebenbedingung
+    $\frac{1}{|\Omega|} \int_\Omega u(x)dx = \alpha$
+    gilt $\F + \C_0^\infty(\Omega) \subset \F$.
+    In diesem Fall gilt mit der Lagrange-Funktion $L(p, z, x) := W(z) + \frac{1}{2} \norm{p}^2$,
+    dass $\nabla_p L(p, z, x) = p$ und $\partial_z L(p, z, x) = W'(z)$.\\
+    Man erhält also die Euler-Lagrange-Gleichung
+    $-\Delta u + W'(u) = 0$ für $x \in \Omega$
+    (\begriff{stationäre \name{Allen}-\name{Cahn}-Gleichung}).
+\end{Bsp}
+
+\subsubsection{%
+    Mikro-Makro-Skalenübergang%
+}
+
+\begin{Bem}
+    PDEs können aus stochastischen Überlegungen und einem Mikro-Makro-Skalen"-übergang resultieren.
+    Im nächsten Beispiel erhält man aus einem Mikroskalenmodell (Partikel) ein
+    Makroskalenmodell (Kontinuum).
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Im Folgenden soll die Brownsche Bewegung von Partikeln in einem Fluid modelliert werden.
+    Man geht davon aus, dass der Weg eines Partikels sehr irregulär und die Bewegung
+    unterschiedlicher Partikel unabhängig ist.
+    
+    Für ein eindimensionales Modell seien $\Omega_T := \real \times (0, \infty)$,
+    $h > 0$ die Ortsschrittweite,
+    $x_m := mh$ Gitterpunkte für $m \in \integer$,
+    $k := \alpha h^2$ die Zeitschrittweite für ein $\alpha > 0$,
+    $t_n := nk$ diskrete Zeitpunkte für $n \in \natural_0$ und
+    $\T_h := \{(x_m, t_n) \;|\; m \in \integer,\; n \in \natural_0\}$ das Raum-Zeit-Gitter.
+    
+    Es soll ein einzelnes Partikel modelliert werden.
+    Anfangs (zu $t = t_0$) befindet es sich in $x_0$.
+    Danach gilt:
+    Wenn es sich zur Zeit $t = t_n$ in $x_m$ befindet, dann ist es einen Zeitschritt später
+    (zu $t = t_{n+1}$) entweder in $x_{m-1}$ oder in $x_{m+1}$
+    (jeweils mit $50$-prozentiger Wahrscheinlichkeit).
+    
+    Sei $p_h(x_m, t_n)$ die Wahrscheinlichkeit, dass sich das Partikel zu $t = t_n$ in $x_m$
+    befindet (es gilt $\sum_{m \in \integer} p_h(x_m, t_n) = 1$).
+    Für $t = t_0$ gilt $p_h(x_m, t_0) = \delta_{m,0}$.
+    Danach gilt\\
+    $p_h(x_m, t_{n+1}) = \frac{1}{2} (p_h(x_{m-1}, t_n) + p_h(x_{m+1}, t_n))$, also
+    $\frac{p_h(x_m, t_{n+1}) - p_h(x_m, t_n)}{k}$\\
+    $= \frac{1}{2} \frac{p_h(x_{m-1}, t_n) - 2p_h(x_m, t_n) + p_h(x_{m+1}, t_n)}{k}
+    = \frac{1}{2\alpha} \cdot \frac{1}{h}
+    \left(\frac{p_h(x_{m+1}, t_n) - p_h(x_m, t_n)}{h} -
+    \frac{p_h(x_m, t_n) - p_h(x_{m-1}, t_n)}{h}\right)$
+    aufgrund $k = \alpha h^2$,
+    man erhält also einen 2. zentralen Dif"|ferenzenquotienten.
+    
+    Sei $p_h$ geeignet auf $\Omega_T$ fortgesetzt
+    (z.\,B. stückweise konstant/linear).
+    Falls\\
+    $p := \lim_{h \to 0} p_h \in \C^2(\Omega_T)$ existiert, dann ist es plausibel
+    anzunehmen, dass $\partial_t p(x, t) = \frac{1}{2\alpha} \partial_x^2 p(x, t)$ gilt,
+    d.\,h. $p$ erfüllt die Dif"|fusionsgleichung.
+    
+    Falls $\int_\real p(x, 0)\dx = 1$ gilt, dann gilt wegen der Erhaltungseigenschaft der
+    Dif"|fusionsgleichung auch $\int_\real p(x, t)\dx = 1$ für $t \in (0, \infty)$, d.\,h.
+    $p(\cdot, t)$ ist eine Wahrscheinlichkeitsdichte.
+\end{Bsp}
+
+\pagebreak

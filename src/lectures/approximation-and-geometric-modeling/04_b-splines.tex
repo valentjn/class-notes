@@ -1,0 +1,401 @@
+\section{%
+    B-Splines%
+}
+
+\subsection{%
+    Rekursionsformel%
+}
+
+\textbf{Knotenfolge}:
+Eine \begriff{Knotenfolge}
+\begin{align*}
+    \xi\colon \dotsb \le \xi_{-1} \le \xi_0 \le \xi_1 \le \dotsb
+\end{align*}
+ist eine endliche, unendliche oder bi-unendliche nicht-fallende Folge von reellen Zahlen.
+Sie induziert eine Partition von $[\inf_k \xi_k, \sup_k \xi_k)$ in \begriff{Knotenintervalle}
+$[\xi_\ell, \xi_{\ell+1})$.
+Die \begriff{Vielfachheit} $\#\xi_k$ eines Knotens ist die maximale Zahl an Wiederholungen von
+$\xi_k$ in der Folge $\xi$.
+Man spricht analog zu Nullstellen von Funktionen von einfachen und doppelten Knoten usw.
+
+\linie
+
+\textbf{Rekursionsformel}:
+Für eine Knotenfolge $\xi$ sind die \begriff{B-Splines} $b_{k,\xi}^n$ vom Grad $n$ definiert
+durch die Rekursion
+\begin{align*}
+    b_{k,\xi}^n := \gamma_{k,\xi}^n b_{k,\xi}^{n-1} +
+    (1 - \gamma_{k+1,\xi}^n) b_{k+1,\xi}^{n-1},\quad
+    \gamma_{k,\xi}^n(x) := \frac{x - \xi_k}{\xi_{k+n} - \xi_k},
+\end{align*}
+beginnend mit den charakteristischen Funktionen
+\begin{align*}
+    b_{k,\xi}^0(x) :=
+    \begin{cases}1 & \text{für } \xi_k \le x < \xi_{k+1}\\0 & \text{sonst}\end{cases}
+\end{align*}
+der Knotenintervalle $[\xi_k, \xi_{k+1})$, wobei Terme mit $0$ als Nenner weggelassen werden.
+
+Jeder B-Spline $b_{k,\xi}^n$ ist durch seine Knoten $\xi_k, \dotsc, \xi_{k+n+1}$ eindeutig
+bestimmt und verschwindet außerhalb des Intervalls $[\xi_k, \xi_{k+n+1})$.
+Außerdem ist $b_{k,\xi}^n$ auf jedem nicht-leeren Knotenintervall $[\xi_\ell, \xi_{\ell+1})$ mit
+$\ell = k, \dotsc, k + n$ ein nicht-negatives Polynom vom Grad $\le n$.\\
+Falls der Grad und die Knotenfolge bei der Diskussion eines bestimmten Themas fixiert sind,
+schreibt man $b_k = b_{k,\xi}^n$, um eine übermäßige Nutzung von tief- und hochgestellten Indizes
+zu vermeiden.
+
+\linie
+
+\textbf{\name{Bernstein}-Polynome als B-Splines}:
+Die B-Splines enthalten die Bernstein-Polynome als Spezialfall.
+Der B-Spline $b_{k,\xi}^n$ mit den Knoten
+\begin{align*}
+    0 = \xi_k = \dotsb = \xi_n < \xi_{n+1} = \dotsb = \xi_{k+n+1} = 1
+\end{align*}
+entspricht einem Bernstein-Polynom:
+\begin{align*}
+    b_{k,\xi}^n(x) = b_k^n(x) = \binom{n}{k} (1 - x)^{n - k} x^k,\quad 0 \le x < 1.
+\end{align*}
+
+\linie
+
+\textbf{erstes und letztes B-Spline-Segment}:
+Für $\xi_k < \xi_{k+1}$ ist bloß der erste Summand in der Rekursion für $b_{k,\xi}^n$
+auf dem Intervall $[\xi_k, \xi_{k+1})$ ungleich Null.
+Daher ist auf diesem Intervall der B-Spline ein Produkt der Faktoren $\gamma_{k,\xi}^m$:
+\begin{align*}
+    b_{k,\xi}^n(x) = \frac{(x - \xi_k)^n}{(\xi_{k+1} - \xi_k) \dotsm (\xi_{k+n} - \xi_k)},\quad
+    \xi_k \le x < \xi_{k+1}.
+\end{align*}
+Eine analoge Formel gilt für das am weitesten rechts liegende Intervall $[\xi_{k+n}, \xi_{k+n+1})$
+des Trägers von $b_{k,\xi}^n$.
+Insbesondere gilt für $\xi_{k+1} = \dotsb = \xi_{k+n}$, dass der B-Spline aus zwei Monomen
+zusammengesetzt ist, die am mittleren Knoten $1$ ergeben.
+
+\linie
+
+\textbf{stetige Abhängigkeit vom Knotenvektor}:
+Wenn $x$ im Inneren von einem der Knotenintervalle des B-Splines $b_{k,\xi}^n$ liegt und
+\begin{align*}
+    \eta_\ell \to \xi_\ell,\quad \ell = k, \dotsc, k + n + 1,
+\end{align*}
+dann gilt
+\begin{align*}
+    \lim_{\eta \to \xi} b_{k,\eta}^n(x) = b_{k,\xi}^n(x).
+\end{align*}
+
+\subsection{%
+    Ableitung eines B-Splines%
+}
+
+\textbf{Ableitung eines B-Splines}:
+Die Ableitung eines B-Splines vom Grad $n$ mit den Knoten $\xi_k, \dotsc, \xi_{k+n+1}$
+ist die gewichtete Dif"|ferenz zweier B-Splines vom Grad $n - 1$.
+Auf jedem Knotenintervall $[\xi_\ell, \xi_{\ell+1})$ gilt
+\begin{align*}
+    (b_{k,\xi}^n)' = \alpha_{k,\xi}^n b_{k,\xi}^{n-1} - \alpha_{k+1,\xi}^n b_{k+1,\xi}^{n-1},\quad
+    \alpha_{k,\xi}^n := \frac{n}{\xi_{k+n} - \xi_k},
+\end{align*}
+wobei Terme mit $0$ als Nenner weggelassen werden.
+
+Aus der Rekursion folgt, dass $b_{k,\xi}$ an einem Knoten $\xi_\ell$
+$(n - m)$-mal stetig dif"|ferenzierbar ist, falls $\xi_\ell$ unter $\xi_k, \dotsc, \xi_{k+n+1}$
+die Vielfachheit $m \le n$ besitzt.
+Insbesondere ist $b_{k,\xi}^n$ stetig auf $\real$, falls keiner der Knoten die Vielfachheit
+$n + 1$ hat.
+
+\linie
+
+\textbf{Nullstellenordnungen bei B-Splines}:
+Mithilfe der Ableitungsformel kann man auch das genaue Verhalten eines B-Splines an den Endpunkten
+seines Trägers bestimmen.
+Wenn $\xi_k$ die Vielfachheit $m$ unter den Knoten von $b_{k,\xi}^n$ besitzt, dann ist der
+linke Endpunkt $\xi_k$ des B-Spline-Trägers eine Nullstelle der Ordnung $n + 1 - m$.
+
+Dies folgt per Induktion über dem Grad:
+Für den Induktionsschritt von $n - 1$ nach $n$ bemerkt man, dass die zwei B-Splines von Grad
+$n - 1$ im Ausdruck von $(b_{k,\xi}^n)'$ jeweils Nullstellen von Ordnung $n - m$ und $n - (m - 1)$
+besitzen.
+Daher hat $(b_{k,\xi}^n)'$ in $\xi_k$ eine Nullstelle der Ordnung $n - m$.
+Durch Integration erhöht sich die Ordnung um $1$.
+
+\subsection{%
+    Darstellung von Polynomen durch B-Splines%
+}
+
+\textbf{\name{Marsden}-Identität}:
+Für eine bi-unendliche Knotenfolge $\xi$ mit $\lim_{k \to \pm\infty} \xi_k = \pm\infty$
+kann jedes Polynom vom Grad $\le n$ durch eine Linearkombination von B-Splines dargestellt werden.
+Genauer gilt für beliebige $y \in \real$
+\begin{align*}
+    (x - y)^n = \sum_{k \in \integer} \psi_{k,\xi}^n(y) b_{k,\xi}(x),\quad x \in \real,
+\end{align*}
+mit $\psi_{k,\xi}^n(y) := (\xi_{k+1} - y) \dotsm (\xi_{k+n} - y)$.
+
+Durch Dif"|ferentiation der Identität nach $y$ und Auswertung in $y = 0$ erhält man explizite
+Darstellungen für die Monome $x^m$.
+Es gilt z.\,B.
+\begin{align*}
+    1 = \sum_k b_{k,\xi}^n(x),\quad
+    x = \sum_k \xi_k^n b_{k,\xi}^n(x)
+\end{align*}
+mit $\xi_k^n := (\xi_{k+1} + \dotsb + \xi_{k+n})/n$ den \begriff{Knotenmitteln}.
+
+\linie
+\pagebreak
+
+\textbf{Einschränkung des Parameters}:
+Die Marsden-Identität ist zwar für bi-unendliche Knotenfolgen formuliert, die sich über die ganze
+reelle Achse erstrecken.
+Of"|fensichtlich kann man aber auch endliche Knotenfolgen betrachten.
+Wenn man $x$ auf ein Knotenintervall $D_\ell = [\xi_\ell, \xi_{\ell+1})$ einschränkt,
+sind nur B-Splines mit Träger, die $D_\ell$ überlappen, relevant:
+\begin{align*}
+    (x - y)^n = \sum_{k=\ell-n}^\ell \psi_{k,\xi}^n(y) b_{k,\xi}^n(x),\quad
+    \xi_\ell \le x < \xi_{\ell+1},
+\end{align*}
+falls $\xi$ die involvierten Knoten $\xi_{\ell-n}, \dotsc, \xi_{\ell+n+1}$ enthält.
+
+\linie
+
+\textbf{Beispiel (Darstellung der Standard-Parabel durch B-Splines)}:
+Die Darstellung des Monoms $x^2$ erhält man durch Koef"|fizientenvergleich in der Marsden-Identität
+bei $(-y)^{n-2}$ und Division durch $\binom{n}{2}$ auf beiden Seiten:
+\begin{align*}
+    x^2 = \sum_k c_k b_k(x),\quad
+    c_k = \frac{2}{n(n - 1)} \sum_{1 \le i < j \le n} \xi_{k+i}\xi_{k+j},
+\end{align*}
+da die Summe gleich dem Koef"|fizienten von $(-y)^{n-2}$ in einer Entwicklung von $\psi_{k,\xi}^n$
+ist.
+Mit
+\begin{align*}
+    \xi_k^n := \frac{1}{n} \sum_{\ell=1}^n \xi_{k+\ell},\quad
+    \sigma_k^2 := \frac{1}{n - 1} \sum_{\ell=1}^n (\xi_{k+\ell} - \xi_k^n)^2
+\end{align*}
+den Knotenmitteln und der \begriff{geometrischen Varianz} von $n$ aufeinanderfolgenden Knoten kann
+man $c_k$ kompakter schrieben, denn es gilt
+\begin{align*}
+    c_k = (\xi_k^n)^2 - \sigma_k^2/n.
+\end{align*}
+
+\subsection{%
+    Splines%
+}
+
+\textbf{Spline}:
+Ein \begriff{Spline} $p$ vom Grad $\le n$ mit Knotenfolge $\xi$ auf einem Parameterintervall $D$
+ist eine Linearkombination der B-Splines $b_k = b_{k,\xi}^n$:
+\begin{align*}
+    p(x) = \sum_{k \sim D} c_k b_k(x),\quad
+    x \in D.
+\end{align*}
+Der Summenindex läuft über alle relevanten B-Splines, d.\,h. die B-Splines, die an Punkten $x$ in
+$D$ nicht verschwinden.
+Die Koef"|fizienten $c_k$ sind eindeutig bestimmt, d.\,h. die B-Splines formen eine Basis des
+\begriff{Spline-Raums} $S_\xi^n(D)$.
+
+Ein \begriff{Standard-Spline-Raum} $S_\xi^n$ hat eine endliche Knotenfolge
+$\xi_0, \dotsc, \xi_{m+n}$ mit Vielfachheiten $\le n$, das Parameterintervall $D = [\xi_n, \xi_m]$
+und relevante B-Splines $b_0, \dotsc, b_{m-1}$.
+Der Raum besteht aus allen stetigen Funktionen, die
+\begin{itemize}
+    \item
+    auf den abgeschlossenen Knotenintervallen $[\xi_\ell, \xi_{\ell+1}]$ in $D$
+    Polynome vom Grad $\le n$ und
+    
+    \item
+    an Knoten im Inneren von $D$ mit Vielfachheit $\mu$
+    mindestens $(n - \mu)$-mal stetig dif"|ferenzierbar sind.
+\end{itemize}
+$S_\xi^n$ hat die $\real$-Dimension $m$.
+
+\linie
+\pagebreak
+
+\textbf{Beispiel (Knotenfolgen bei kubischen Splines)}:
+In Anwendungen sind kubische Splines wichtig.
+Zwei häufig benutzte Knotenfolgen sind:
+\begin{itemize}
+    \item
+    \emph{einfache Knoten}:
+    Wenn $\xi_0 < \dotsb < \xi_{m+3}$ gilt,
+    dann besteht der Standard-Spline-Raum $S_\xi^3$ aus allen zweifach stetig dif"|ferenzierbaren
+    Funktionen, die Polynome vom Grad $\le 3$ auf jedem abgeschlossenen Knotenintervall
+    $[\xi_\ell, \xi_{\ell+1}]$ in $D = [\xi_3, \xi_m]$ sind.
+    
+    \item
+    \emph{doppelte Knoten}:
+    Wenn $\xi_0 = \xi_1 < \xi_2 = \xi_3 < \dotsb < \xi_m = \xi_{m+1} < \xi_{m+2} = \xi_{m+3}$ gilt,
+    dann können die zweiten Ableitungen der kubischen Splines Sprünge besitzen.
+    In diesem Fall sind die kubischen Splines auf jedem abgeschlossenen Knotenintervall
+    $[\xi_{2k-1}, \xi_{2k}]$ eindeutig bestimmt durch die Werte und Ableitungen an den Knoten.
+    Diese Daten stellen bei der Bestimmung eines Splines in $S_\xi^3$
+    eine Alternative zur B-Spline-Basis dar.
+\end{itemize}
+
+\linie
+
+\textbf{Beispiel (äußere Knoten beim Standard-Spline-Raum)}:
+Für eine Knotenfolge\\
+$\xi_0, \dotsc, \xi_{n+m}$ benötigt die B-Spline-Basis des
+Standard-Spline-Raums $S_\xi^n$ $n$ äußere Knoten auf jeder Seite des Parameterintervalls
+$D = [\xi_n, \xi_m]$.
+Diese Knoten $\xi_k$ mit $k < n$ oder $k > m$ sind für die Definition von $S_\xi^n$ bezüglich
+der abschnittsweisen polynomialen Struktur irrelevant.
+Jedoch beeinflussen sie die B-Spline-Basis.
+Es gibt zwei Standardfälle:
+\begin{itemize}
+    \item
+    \emph{einfache äußere Knoten}:
+    Mit $\Delta\xi_\ell := \xi_{\ell+1} - \xi_\ell$ definiert man
+    $\xi_{n-\ell} := \xi_n - \ell \Delta\xi_n$ und $\xi_{m+\ell} := \xi_m + \ell \Delta\xi_{m-1}$
+    für $\ell = 1, \dotsc, n$.
+    Diese Wahl der Knoten erhält den Abstand zwischen Knoten auf dem ersten und letzten
+    Knotenintervall in $D$ und maximiert die Glattheit der B-Splines.
+    
+    \item
+    \emph{mehrfache äußere Knoten}:
+    Man definiert  $\xi_1 := \dotsb := \xi_n$ und $\xi_m := \dotsb := \xi_{m+n-1}$
+    und wählt nur $\xi_0$ und $\xi_{m+n}$ außerhalb des Intervalls $D$.
+    Wegen der maximal möglichen Vielfachheit sind nur die B-Splines $b_0$ und $b_{m-1}$
+    nicht Null auf den Intervallendpunkten (diese sind dort gleich Eins).
+    Daher gilt für einen Spline $p = \sum_{k=0}^{m-1} c_k b_k$, dass
+    $p(\xi_n) = c_0$ und $p(\xi_m) = c_{m-1}$.
+    Der Nachteil der Vielfachheit $n$ ist, dass die Ableitungen der B-Splines nicht länger
+    stetig sind.
+    Die Konvention der Stetigkeit von rechts führt daher zu einem asymmetrischen Verhalten
+    auf den Intervallendpunkten von $D$.
+\end{itemize}
+
+\linie
+
+\textbf{uniforme B-Splines}:
+Der \begriff{uniforme B-Spline} $b^n$ hat die Knoten $0, 1, \dotsc, n + 1$.
+In diesem Spezialfall vereinfachen sich die Rekursionen für Auswertung und Dif"|ferentiation:
+\begin{align*}
+    n b^n(x) &= xb^{n-1}(x) + (n + 1 - x)b^{n-1} (x - 1),\\
+    \frac{d}{dx} b^n(x) &= b^{n-1}(x) - b^{n-1}(x - 1).
+\end{align*}
+Die zweite Gleichung kann als Bildung eines Mittelwerts geschrieben werden:
+\begin{align*}
+    b^n(x) = \int_0^1 b^{n-1}(x - y)\dy.
+\end{align*}
+Die B-Splines für eine beliebige uniforme Knotenfolge
+\begin{align*}
+    \xi = h\integer\colon \dotsc, -h, 0, h, \dotsc,
+\end{align*}
+sind skalierte Translate von $b^n$, d.\,h. $b_{k,h}^n(x) := b^n(x/h - k)$, $k \in \integer$.
+
+\linie
+\pagebreak
+
+\textbf{Beispiel (Rekursion für die \name{Taylor}-Koef"|fizienten von uniformen B-Splines)}:\\
+Die Rekursion für die Auswertung kann auch als Rekursion für die Taylor-Koef"|fizienten der
+polynomialen Abschnitte eines uniformen B-Splines formuliert werden.
+Für $x \in [k, k + 1)$ definiert man
+\begin{align*}
+    p_k^n(y) := \sum_{\ell=0}^n a_{k,\ell}^n y^\ell = b^n(x),\quad
+    x - k = y \in [0, 1).
+\end{align*}
+Damit kann die Rekursion umgeschrieben werden zu
+\begin{align*}
+    np_k^n(y) = (k + y)p_k^{n-1}(y) + (n + 1 - k - y) p_{k-1}^{n-1}(y),\quad
+    k = 0, \dotsc, n,
+\end{align*}
+mit $p_{-1}^{n-1} = p_n^{n-1} = 0$.
+Die entsprechende Identität für die Koef"|fizienten ist
+\begin{align*}
+    n a_{k,\ell}^n = k a_{k,\ell}^{n-1} + a_{k,\ell-1}^{n-1} + (n + 1 - k) a_{k-1,\ell}^{n-1} -
+    a_{k-1,\ell-1}^{n-1}
+\end{align*}
+mit $a_{k,-1}^{n-1} = a_{k,n}^{n-1} = 0$.
+Die ersten paar Koef"|fizientenvektoren lauten
+\begin{align*}
+    a_0^1 &= \left(0, 1\right), &
+    a_1^1 &= \left(1, -1\right),\\
+    a_0^2 &= \left(0, 0, \frac{1}{2}\right), &
+    a_1^2 &= \left(\frac{1}{2}, 1, -1\right), &
+    a_2^2 &= \left(\frac{1}{2}, -1, \frac{1}{2}\right),\\
+    a_0^3 &= \left(0, 0, 0, \frac{1}{6}\right), &
+    a_1^3 &= \left(\frac{1}{6}, \frac{1}{2}, \frac{1}{2}, -\frac{1}{2}\right), &
+    a_2^3 &= \left(\frac{2}{3}, 0, -1, \frac{1}{2}\right), &
+    a_3^3 &= \left(\frac{1}{6}, -\frac{1}{2}, \frac{1}{2}, -\frac{1}{6}\right).
+\end{align*}
+Mithilfe der tabulierten Taylorkoef"|fizienten kann man uniforme B-Splines schneller als mit
+der Rekursion auswerten.
+
+\subsection{%
+    Auswertung und Dif"|ferentiation%
+}
+
+\textbf{Auswertung eines Splines}:
+Ein Spline $p = \sum_k c_k b_k$ vom Grad $\le n$ mit Knotenfolge $\xi$ kann in
+$x \in [\xi_\ell, \xi_{\ell+1})$ ausgewertet werden, indem man
+Konvexkombinationen der Koef"|fizienten der B-Splines bildet, die in $x$ nicht verschwinden.
+Mit
+\begin{align*}
+    p_k^0 := c_k,\quad
+    k = \ell - n, \dotsc, \ell,
+\end{align*}
+startend berechnet man sukzessive für $i = 0, \dotsc, n - 1$
+\begin{align*}
+    p_k^{i+1} := \gamma_{k,\xi}^{n-i} p_k^i + (1 - \gamma_{k,\xi}^{n-i}) p_{k-1}^i,\quad
+    k = \ell - n + i + 1, \dotsc, \ell,
+\end{align*}
+mit
+\begin{align*}
+    \gamma_{k,\xi}^{n-i} := \frac{x - \xi_k}{\xi_{k+n-i} - \xi_k}
+\end{align*}
+und erhält $p(x)$ als letzten Wert $p_\ell^n$.
+
+Das entstehende Dreiecksschema vereinfacht sich etwas, wenn $x = \xi_\ell$ gilt.
+In diesem Fall gilt $p(x) = p_{\ell-\mu}^{n-\mu}$, d.\,h.
+es sind nur $n - \mu$ Schritte für $c_{\ell-n}, \dotsc, c_{\ell-\mu}$ notwendig,
+wenn $\xi_\ell$ Vielfachheit $\mu$ besitzt.
+
+\linie
+\pagebreak
+
+\textbf{Dif"|ferentiation eines Splines}:
+Die Ableitung eines Splines ist ein Spline mit derselben Knotenfolge.
+Genauer gilt für jedes $x$ in einem of"|fenen Knotenintervall $(\xi_\ell, \xi_{\ell+1})$
+mit $n + 1$ relevanten B-Splines $b_{k,\xi}^n$
+\begin{align*}
+    \frac{d}{dx} \left(\sum_{k=\ell-n}^\ell c_k b_{k,\xi}^n(x)\right)
+    = \sum_{k=\ell-n+1}^\ell \alpha_{k,\xi}^n \nabla c_k b_{k,\xi}^{n-1}(x),\quad
+    \alpha_{k,\xi}^n := \frac{n}{\xi_{k+n} - \xi_k}
+\end{align*}
+mit $\nabla$ dem Rückwärts-Dif"|ferenz-Operator (d.\,h. $\nabla c_k := c_k - c_{k-1}$).
+Die Identität bleibt auch an den Endpunkten $\xi_\ell$ und $\xi_{\ell+1}$ des Knotenintervalls
+gültig, falls die Knoten Vielfachheit $< n$ haben.
+
+Für einen Spline $p = \sum_{k=0}^{m-1} c_k b_k$ in einem Standard-Spline-Raum $S_\xi^n$ mit
+Knotenfolge\\
+$\xi_0, \dotsc, \xi_{m+n}$ und Vielfachheiten $< n$ gilt
+mit $d_k := \alpha_{k,\xi} \nabla c_k$
+\begin{align*}
+    p' = \sum_{k=1}^{m-1} d_k b_{k,\xi'}^{n-1} \in S_{\xi'}^{n-1},
+\end{align*}
+wobei $\xi'$ aus $\xi$ durch Weglassen des ersten und des letzten Knotens entsteht.
+Dies ist mit der Dif"|ferenzenbildung $\nabla$ konsistent, weil die Anzahl der möglichen Indizes
+um Eins reduziert wird.
+
+\subsection{%
+    Periodische Splines%
+}
+
+\textbf{periodische Splines}:
+Ein Spline $p = \sum_{k \in \integer} c_k b_k \in S_\xi^n(\real)$
+mit einer bi-unendlichen Knotenfolge $\xi$ ist $T$-periodisch genau dann,
+wenn die Knoten $\xi_k$ und die Koef"|fizienten $c_k$ die Periodizitätsbedingungen
+\begin{align*}
+    \xi_{k+M} = \xi_k + T,\quad
+    c_{k+M} = c_k,\quad
+    k \in \integer,
+\end{align*}
+erfüllen (für ein $M \in \natural$).
+
+Die periodischen Splines bilden einen Unterraum $S_{\eta,T}^n$ von $S_\xi^n(\real)$
+der Dimension $M$, wobei $\eta$ eine beliebige Teilfolge von $M$ aufeinanderfolgenden Knoten aus
+$\xi$ ist.
+
+\pagebreak

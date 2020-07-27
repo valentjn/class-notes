@@ -1,0 +1,253 @@
+\section{%
+    \name{Miller}-\name{Rabin}-Test%
+}
+
+\subsection{%
+    Verfahren%
+}
+
+Der Miller-Rabin-Test ist ein probabilistischer Primzahltest.
+Wenn der Algorithmus ausgibt, dass die Zahl zusammengesetzt ist, dann stimmt das auch,
+allerdings stimmt die Ausgabe "`wahrscheinlich prim"' nur zu $\ge$ \SI{50}{\percent}.
+Der Miller-Rabin-Test baut auf dem Fermat-Test auf.
+
+\textbf{\name{Fermat}-Test}:
+Der \begriff{\name{Fermat}-Test} ist ein probabilistischer Primzahltest und läuft wie folgt ab.\\
+Gegeben sei $n \in \natural$.
+\begin{enumerate}
+    \item
+    Wähle $a \in \{1, \dotsc, n - 1\}$ zufällig.
+    Falls $\ggT(a, n) > 1$ gilt, dann gib "`$n$ nicht prim"' aus.
+    
+    \item
+    Wenn $a^{n-1} \equiv_n 1$, dann gib "`$n$ wahrscheinlich prim"' aus,
+    ansonsten "`$n$ nicht prim"'.
+\end{enumerate}
+Der Test basiert auf dem kleinen Satz von Fermat:
+Für $\ggT(a, n) = 1$ und $n$ prim gilt $a^{n-1} \equiv_n 1$.
+Ist die Kongruenz also nicht erfüllt, kann $n$ nicht prim sein.
+
+\textbf{\name{Carmichael}-Zahl}:\\
+Eine Zahl $n \in \natural$ heißt \begriff{\name{Carmichael}-Zahl}, falls
+$n$ zusammengesetzt ist und $\forall_{a \in (\ZnZ)^\ast}\; a^{n-1} \equiv_n 1$.
+
+Es gibt unendlich vieler solcher Zahlen, die kleinste ist $561 = 3 \cdot 11 \cdot 17$.
+Bei bestimmten $n$ gibt also der Fermat-Test immer "`$n$ wahrscheinlich prim"' aus,
+obwohl $n$ nicht prim ist
+(wenn der Test nicht zufällig einen nicht-trivialen Teiler $a$ von $n$ erwischt).
+Daher ist der Fermat-Test als Primzahltest ungeeignet.
+
+\linie
+
+\textbf{\name{Miller}-\name{Rabin}-Test}:
+Der \begriff{\name{Miller}-\name{Rabin}-Test (MR-Test)} ist ein probabilistischer Primzahltest
+und läuft wie folgt ab.
+Gegeben sei $n \in \natural$ ungerade mit $n \ge 3$.
+\begin{enumerate}
+    \item
+    Schreibe $n - 1 = 2^\ell u$ mit $u \in \natural$ ungerade und $\ell \in \natural$.
+    
+    \item
+    Wähle $a \in \{1, \dotsc, n - 1\}$ zufällig.
+    Falls $\ggT(a, n) > 1$ gilt, dann gib "`$n$ nicht prim"' aus.\\
+    Sonst berechne $b := a^u \bmod n$.
+    
+    \item
+    Wenn $b = 1$ ist, dann gib "`$n$ wahrscheinlich prim"' aus.
+    
+    \item
+    Sonst berechne die Folge $(b, b^2, b^{2^2}, \dotsc, b^{2^{\ell-1}})$ in $\ZnZ$.
+    
+    \item
+    Falls $-1$ in dieser Folge vorkommt, dann gib "`$n$ wahrscheinlich prim"' aus,
+    ansonst gib "`$n$ nicht prim"' aus.
+\end{enumerate}
+Der Miller-Rabin-Test ist gewissermaßen eine Verallgemeinerung des Fermat-Tests:
+Wenn der MR-Test "`$n$ wahrscheinlich prim"' ausgibt, dann gibt der Fermat-Test dies auch aus
+(wenn der Fermat-Test "`$n$ nicht prim"' ausgibt, dann ist $\ggT(a, n) > 1$ oder
+$a^{n-1} \not\equiv_n 1$).
+Die Umkehrung gilt allerdings nicht,
+d.\,h. der MR-Test erkennt mehr zusammengesetzte Zahlen sicher als solche.
+
+\pagebreak
+
+\subsection{%
+    Korrektheit%
+}
+
+\textbf{Satz (Korrektheit des MR-Tests)}:\\
+Wenn der MR-Test "`$n$ nicht prim"' ausgibt, dann ist $n$ nicht prim.
+
+\begin{Beweis}
+    Sei $n \ge 3$ prim.
+    Dann gibt es kein $a \in \{1, \dotsc, n - 1\}$ mit $\ggT(a, n) > 1$, d.\,h.
+    in Schritt \emph{(2)} wird nichts ausgegeben.
+    Sei also $a \in (\ZnZ)^\ast$ beliebig.
+    Ist $b := a^u \bmod n = 1$, dann gibt der Test "`$n$ wahrscheinlich prim"' aus.
+    
+    Sei also $b \not= 1$.
+    Es gilt $a^{n-1} \equiv_n 1$ nach dem kleinen Satz von Fermat (weil $n$ prim),
+    also $1 \equiv_n a^{2^\ell u} \equiv_n b^{2^\ell}$.
+    Daher gilt $b^{2^{\ell-1}} \equiv_n \pm 1$
+    ($\ZnZ$ Körper wegen $n$ prim).\\
+    Ist $b^{2^{\ell-1}} \equiv_n -1$, dann gibt der Test "`$n$ wahrscheinlich prim"' aus.
+    Sonst ist $b^{2^{\ell-1}} \equiv_n 1$ und man kann die Argumentation wiederholen.
+    Der Test gibt also "`$n$ wahrscheinlich prim"' aus oder es gilt
+    $b^{2^\ell} \equiv_n b^{2^{\ell-1}} \equiv_n \dotsb \equiv_n b \equiv_n 1$,
+    ein Widerspruch zur Annahme $b \not= 1$.
+    Somit gibt der Algorithmus in jedem Fall "`$n$ wahrscheinlich prim"' aus.
+\end{Beweis}
+
+\subsection{%
+    Zuverlässigkeit%
+}
+
+Im Folgenden wird gezeigt, dass für $n$ zusammengesetzt die Wahrscheinlichkeit,
+dass ein $a$ gewählt wird, sodass "`$n$ wahrscheinlich prim"' ausgegeben wird,
+höchstens \SI{50}{\percent} ist
+(in Wahrheit ist diese Fehlerwahrscheinlichkeit sogar höchstens \SI{25}{\percent}).
+Bei $m$ Iterationen des Algorithmus ist deswegen die Fehlerwahrscheinlichkeit
+höchstens $\frac{1}{2^m}$.
+Andersherum ist die Wahrscheinlichkeit, dass $n$ prim ist, wenn $m$-mal
+"`$n$ wahrscheinlich prim"' ausgegeben wurde, mindestens $1 - \frac{1}{2^m}$.
+
+\linie
+
+\textbf{Lemma}:
+Seien $p \ge 3$ prim und $d \ge 2$.
+Dann gilt $(p^{d-1} + 1)^{p^d-1} \not\equiv \pm 1 \pmod{p^d}$.
+
+\begin{Beweis}
+    Im Folgenden wird immer modulo $p^d$ gerechnet.
+    
+    Nach dem Binomischen Lehrsatz gilt
+    $(p^{d-1} + 1)^{p^d-1} = \sum_{k \in \natural_0} \binom{p^d - 1}{k} p^{(d-1)k}$.
+    Für $k \ge 2$ ist $(d-1)k \ge d$, weil $k \ge 2 \ge \frac{d}{d-1}$ wegen $d \ge 2$.
+    Damit gilt $p^d \teilt p^{(d-1)k}$ für $k \ge 2$, d.\,h. $p^{(d-1)k} \equiv 0$ und
+    alle Summanden für $k \ge 2$ verschwinden modulo $p^d$.
+    
+    Daher gilt
+    $(p^{d-1} + 1)^{p^d-1} = 1 + (p^d - 1) p^{d-1} \equiv
+    1 + (0 - 1)p^{d-1} = 1 - p^{d-1}$.\\
+    Wäre $1 - p^{d-1} \equiv 1$, so würde $p^{d-1} \equiv 0$ gelten,
+    also $p^d \teilt p^{d-1}$, ein Widerspruch.\\
+    Wäre $1 - p^{d-1} \equiv -1$, so würde $p^{d-1} \equiv 2$ gelten,
+    also $p^d \teilt (p^{d-1}-2)$,
+    ein Widerspruch.
+\end{Beweis}
+
+Insbesondere ist $p^d$ für $p \ge 3$ und $d \ge 2$ keine Carmichael-Zahl, weil dann
+$p^d$ zusammengesetzt ist und $\ggT(p^{d-1}+1, p^d) = 1$ gilt.
+
+\linie
+\pagebreak
+
+\textbf{Satz}:
+Seien $n \ge 3$ ungerade und zusammengesetzt, $u \in \natural$ ungerade und $\ell \in \natural$.\\
+Definiere $G := \{a \in (\ZnZ)^\ast \;|\; a^{2^\ell u} \equiv_n 1\}$ und
+$H := \{a \in G \;|\; a^{2^{\ell'-1} u} \equiv_n \pm 1\}$ mit\\
+$\ell' := \min\{k \in \natural_0 \;|\; \forall_{a \in G}\; a^{2^k u} \equiv_n 1\}$.
+Dann gilt $H < G < (\ZnZ)^\ast$ mit $H \not= (\ZnZ)^\ast$.
+
+\begin{Beweis}
+    Zunächst ist $\ell' > 0$, da $-1 \in G$ (wegen $\ell \ge 1$)
+    und $a^{2^k u} = (-1)^u = -1 \not\equiv_n 1$ für $a = -1 \in G$ und $k = 0$
+    (wegen $u$ ungerade und $n \not= 2$).
+    Außerdem ist $\ell' \le \ell$, weil $\forall_{a \in G}\; a^{2^k u} \equiv_n 1$ für $k = \ell$.
+    (Damit ist $\ell' \in \{1, \dotsc, \ell\}$ tatsächlich endlich.)
+    
+    Es gilt $G < (\ZnZ)^\ast$, weil $1 \in G$,
+    $(ab)^{2^\ell u} = a^{2^\ell u} b^{2^\ell u} \equiv_n 1$ und
+    $(a^{-1})^{2^\ell u} = (a^{2^\ell u})^{-1} \equiv_n 1$ für $a, b \in G$.
+    Analog ist $H < G$, weil $1 \in H$,
+    $(ab)^{2^{\ell'-1} u} = a^{2^{\ell'-1} u} b^{2^{\ell'-1} u} \equiv_n (\pm 1)^2 = 1$ und
+    $(a^{-1})^{2^{\ell'-1} u} = (a^{2^{\ell'-1} u})^{-1} \equiv_n (\pm 1)^{-1} = \pm 1$ für
+    $a, b \in G$.
+    
+    Für $G \not= (\ZnZ)^\ast$ ist nichts zu zeigen.
+    Sei also $G = (\ZnZ)^\ast$.
+    Wegen der Minimalität von $\ell'$ existiert ein $a \in G$ mit
+    $a^{2^{\ell'-1} u} \not\equiv_n 1$.
+    Schreibe $n = r \cdot s$ mit $r, s \ge 3$ und $\ggT(r, s) = 1$.
+    Nach dem chin. Restsatz kann $a^{2^{\ell'-1} u} \equiv 1$
+    nicht gleichzeitig modulo $r$ und modulo $s$ gelten.
+    Sei also oBdA $a^{2^{\ell'-1} u} \not\equiv_r 1$.
+    Wähle ein $c \in (\ZnZ)^\ast$ mit $c \equiv_r a$ und $c \equiv_s 1$
+    (existiert nach dem chin. Restsatz).
+    Dann gilt $c \in G = (\ZnZ)^\ast$, aber $c \notin H$:
+    
+    Wäre $c^{2^{\ell'-1} u} \equiv_n 1$, dann
+    $a^{2^{\ell'-1} u} \equiv_r c^{2^{\ell'-1} u} \equiv_r 1$ (wegen $c \equiv_r a$),
+    Widerspruch zu $a^{2^{\ell'-1} u} \not\equiv_r 1$.\\
+    Wäre $c^{2^{\ell'-1} u} \equiv_n -1$, dann
+    $1 \equiv_s c^{2^{\ell'-1} u} \equiv_s -1$ (wegen $c \equiv_s 1$),
+    was nur für $s = 2$ gehen würde.
+    
+    Damit gilt $H \lneqq G = (\ZnZ)^\ast$.
+\end{Beweis}
+
+\linie
+
+Seien $u \in \natural$ ungerade und
+$\ell \in \natural$ ab jetzt wieder so gewählt, dass $n-1 = 2^\ell u$.
+
+\textbf{Lemma}:
+Seien $n \ge 3$ ungerade und $a \in (\ZnZ)^\ast$.\\
+Wenn $a \notin H$ gilt, dann gibt der MR-Test "`$n$ nicht prim"' aus.
+
+\begin{Beweis}
+    Sei $b := a^u \bmod n$.
+    Wäre $b = 1$, dann wäre $a^{2^{\ell'-1} u} = b^{2^{\ell'-1}} = 1$,
+    d.\,h. $a \in H$, ein Widerspruch zur Voraussetzung.
+    Daher gilt $b \not= 1$ und in Schritt \emph{(3)} wird nichts ausgegeben.
+    
+    Ist $1 \in \{b, b^2, b^{2^2}, \dotsc, b^{2^{\ell-1}}\}$ modulo $n$,
+    dann gilt $a \in G$,
+    da dann $a^{2^\ell u} = (a^u)^{2^\ell} \equiv_n b^{2^\ell} \equiv_n 1$.
+    Damit gilt $a \in G \setminus H$ und
+    $b^{2^{\ell'-1}} \not\equiv_n \pm 1$.
+    Daraus folgt $b^{2^k} \not\equiv_n -1$ für alle $k \in \{0, \dotsc, \ell' - 1\}$.
+    Nach Def. von $\ell' \le \ell$ gilt außerdem $b^{2^{\ell'}} \equiv_n 1$.
+    Daraus folgt $b^{2^k} \equiv_n 1$ für alle $k \in \{\ell', \dotsc, \ell - 1\}$.
+    In jedem Fall gilt $b^{2^k} \not\equiv_n -1$ für alle $k \in \{0, \dotsc, \ell - 1\}$.
+    
+    Ist $1 \notin \{b, b^2, b^{2^2}, \dotsc, b^{2^{\ell-1}}\}$ modulo $n$,
+    dann ist $b^{2^k} \not\equiv_n -1$ für $k \in \{0, \dotsc, \ell-2\}$.
+    Zusätzlich gilt $b^{2^{\ell-1}} \not\equiv_n -1$,
+    da sonst $a \in G$
+    (wegen $a^{2^\ell u} \equiv_n (b^{2^{\ell-1}})^2 \equiv_n (-1)^2 = 1$)
+    und man wie eben argumentieren kann.
+    
+    Es gilt also immer, dass $-1$ nicht in der Folge $(b, b^2, b^{2^2}, \dotsc, b^{2^{\ell-1}})$
+    in $\ZnZ$ vorkommt.
+    Damit gibt der Algorithmus "`$n$ nicht prim"' aus.
+\end{Beweis}
+
+\linie
+
+\textbf{Satz (Zuverlässigkeit des MR-Tests)}:
+Sei $n \ge 3$ ungerade und zusammengesetzt.\\
+Dann liefert der MR-Test bei mindestens der Hälfte aller $a \in (\ZnZ)^\ast$
+"`$n$ nicht prim"'.
+
+\begin{Beweis}
+    Seien $n-1 = 2^\ell u$ und $G$ und $H$ wie im obigen Satz.
+    Nach demselben Satz gilt $H \lneqq (\ZnZ)^\ast$,
+    d.\,h. $[(\ZnZ)^\ast : H] \ge 2$.
+    Für mindestens der Hälfte aller $a \in (\ZnZ)^\ast$ gilt daher $a \notin H$.
+    Nach obigem Lemma gibt der MR-Test für diese $a$ "`$n$ nicht prim"' aus.
+\end{Beweis}
+
+\linie
+
+\textbf{Faktorisierung}:
+Gilt $b^{2^k} \equiv_n 1$ für ein $k \in \{1, \dotsc, \ell - 1\}$,
+dann kommt nach dem Beweis des letzten Lemmas
+keine $-1$ in der Folge vor und man kann $n$ sogar faktorisieren.\\
+Sei dazu $c := (b^{2^{k-1}} \bmod n) \not= 1$ mit $b^{2^k} \equiv_n 1$.
+Dann gilt $c^2 \equiv_n 1$ sowie $c \not\equiv_n \pm 1$,
+d.\,h. $(c-1)(c+1) \equiv_n 0$ bzw. $n \teilt (c-1)(c+1)$,
+aber $n \notteilt (c-1)$ und $n \notteilt (c+1)$.\\
+Damit folgt $1 < \ggT(c-1, n), \ggT(c+1, n) < n$.
+
+\pagebreak

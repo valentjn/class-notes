@@ -1,0 +1,188 @@
+\section{%
+    Approximation mit gewichteten Splines%
+}
+
+Um Abschätzungen der Form $\norm{u - u_h}_\ell \le c h^{n+1-\ell} \norm{u}_{n+1}$ zu erhalten,
+benutzt man Céas Ungleichung, die besagt, dass der Fehler in der Energie-Norm
+durch den Fehler der besten Approximation aus dem FE-Unterraum beschränkt ist.
+Daher genügt es, die Approximationseigenschaften der Basisfunktionen zu analysieren,
+ohne auf die spezifischen Randwertprobleme eingehen zu müssen.
+Für die FE-Basen erhält man Abschätzungen wie
+$\inf_{u_h} \norm{u - u_h}_1 \preceq h^n \norm{u}_{n+1}$,
+wobei die $u_h$ gewichtete Approximationen vom Grad $\le n$
+aus den Räumen $w\BB_h$ oder $w^\e\BB_h$ sind.
+
+\subsection{%
+    Duale Funktionen%
+}
+
+Es wäre eine nützliche Eigenschaft, wenn die B-Spline-Basis zusätzlich orthogonal wäre.
+Dies ist jedoch ohne Weiteres (wie andere Skalarprodukte) nicht möglich.
+Es ist aber möglich, duale Basen zu konstruieren.
+Für WEB-Splines handelt es sich um Funktionen $\Lambda_i$ mit
+$\sp{\Lambda_i, B_k}_0 = \delta_{i,k}$ für $i, k \in I$.
+Solche biorthogonalen Systeme sind für Stabilitätsfragen und lokale Approximationsschemata
+entscheidend.
+Zum Beispiel kann man einen kanonischen Projektionsoperator
+$P_h u = \sum_{i \in I} \sp{\Lambda_i, u}_0 B_i$ definieren
+(analog zu Orthogonalentwicklungen).
+
+\textbf{duale Funktionen}:
+Für jeden $m$-dimensionalen Hyperkubus $Q_i' \subset \supp b_i$ mit Breite $\theta h$
+existiert eine Funktion $\lambda_i$ mit Träger in $Q_i'$, sodass
+\begin{align*}
+    \int_{Q_i'} \lambda_i b_k = \delta_{i,k},\quad
+    k \in \integer^m,
+\end{align*}
+und $\norm{\lambda_i}_0 \le \const(m, n, \theta) h^{-m/2}$
+mit $\const(m, n, \theta) \to \infty$ für $\theta \to 0$.
+
+\textbf{gewichtete duale Funktionen}:
+Für WEB-Splines, die zu einer Gewichtsfunktion der Ordnung $\gamma$ gehören,
+existieren lokal getragene, gleichmäßig beschränkte \begriff{duale Funktionen} $\Lambda_i$, also
+\begin{align*}
+    \sp{\Lambda_i, B_k}_0 = \delta_{i,k},\quad
+    i, k \in \integer^m,
+\end{align*}
+mit $\supp \Lambda_i \subset Q_i$ und
+$\norm{\Lambda_i}_0 \le \const(D, w, n) h^{-m/2}$.
+
+\subsection{%
+    Stabilität%
+}
+
+\textbf{Stabilität}:\\
+Für eine Gewichtsfunktion der Ordnung $\gamma$ erfüllen Linearkombinationen von WEB-Splines
+\begin{align*}
+    \norm{\sum_{i \in I} c_i B_i}_0 \asymp h^{m/2} \norm{C},
+\end{align*}
+wobei die Konstanten in den Abschätzungen von $D$, $w$ und $n$ abhängen.
+
+\textbf{\name{Bernstein}-Ungleichung}:
+Sei $w$ eine Gewichtsfunktion der Ordnung $\gamma$, die \begriff{$\ell$-regulär} ist,
+d.\,h. die partiellen Ableitungen bis zur Ordnung $\ell$ sind beschränkt und
+\begin{align*}
+    |\partial^\alpha w(x)| \le \const(w) \dist(w, \Gamma)^{\gamma-|\alpha|},\quad
+    |\alpha| \le \min(\gamma, \ell).
+\end{align*}
+Dann gilt
+\begin{align*}
+    h^\nu \norm{\sum_{i \in I} c_i B_i}_\nu
+    \le \const(D, w, n) h^{m/2} \norm{C},\quad
+    \nu \le \ell,
+\end{align*}
+für Linearkombinationen von WEB-Splines vom Grad $n \ge \ell$.
+
+\subsection{%
+    Polynomiale Approximation%
+}
+
+\textbf{\name{Taylor}-Restglied}:\\
+Für eine glatte Funktion $f$ und dem Taylor-Polynom $p_n$ vom Grad $\le n$
+von $f$ in $x = 0$ gilt
+\begin{align*}
+    \norm{f - p_n}_{0,[0,h]}
+    \le \frac{1}{(n+1)!} h^{n+1} \norm{f^{(n+1)}}_{0,[0,h]}.
+\end{align*}
+
+\textbf{\name{Bramble}-\name{Hilbert}-Abschätzung}:
+Der Fehler der \begriff{orthogonalen Projektion} $P_n$ auf Polynome vom totalen Grad $\le n$
+auf einem skalierten Gebiet $hD$ erfüllt
+\begin{align*}
+    |f - P_n f|_{\nu,hD}
+    \le \const(D, n) h^{\mu-\nu} |f|_{\mu,hD},\quad
+    0 \le \nu \le \mu \le n + 1.
+\end{align*}
+
+\subsection{%
+    Quasi-Interpolation%
+}
+
+\textbf{Standard-Projektor}:
+Der \begriff{Standard-Projektor}, der durch
+\begin{align*}
+    P_h u := \sum_{i \in I} \sp{\Lambda_i, u}_0 B_i,
+\end{align*}
+definiert ist,
+erfüllt $P_h B_i = B_i$ und bildet gewichtete Polynome $p$ vom Koordinatengrad $\le n$
+auf sich selbst ab:
+\begin{align*}
+    P_h (wp) = wp
+\end{align*}
+(sogar alle WEB-Splines aus dem Raum $w^\e\BB_h$).
+Wenn $w$ eine $\ell$-reguläre Gewichtsfunktion der Ordnung $\gamma$ ist, dann gilt für jede
+Gitterzelle $Q$, dass
+\begin{align*}
+    \norm{P_h u}_{\nu,Q \cap D} \le \const(D, w, n) h^{-\nu} \norm{u}_{0,Q'},\quad
+    \nu \le \min(\ell, n),
+\end{align*}
+wobei $Q_i := \bigcup_{i \in I(Q)} \supp B_i \subset D$ die Vereinigung der Träger
+aller WEB-Splines ist, die auf $Q \cap D$ nicht verschwinden.
+
+\textbf{Approximationsordnung}:
+Wenn $w$ eine $\ell$-reguläre Gewichtsfunktion der Ordnung $\gamma$ und
+$v = u/w$ auf $\overline{D}$ glatt ist,
+dann gilt
+\begin{align*}
+    \norm{u - P_h u}_\nu \le \const(D, w, u, n) h^{n+1-\nu},\quad
+    \nu \le \min(\ell, n).
+\end{align*}
+Insbesondere haben WEB-Splines $w^\e\BB_h$ und gewichtete Splines $w\BB_h$
+die optimale Approximationsordnung.
+
+\pagebreak
+
+\subsection{%
+    Rand-Regularität%
+}
+
+\textbf{Regularität von univariaten Quotienten}:
+Für $p(t) = tq(t)$ gilt
+\begin{align*}
+    \norm{q^{(\ell-1)}}_{0,[0,1]}
+    \le 2 \norm{p^{(\ell)}}_{0,[0,1]}.
+\end{align*}
+
+\textbf{Regularität von Quotienten}:
+Wenn $w$ eine Standard-Gewichtsfunktion und $u = wv$ ist, dann
+gilt für jedes Teilgebiet $D' \subset D$ mit Abstand $\delta$ zum Rand, dass
+\begin{align*}
+    \norm{v}_{\ell,D'}
+    \le \const(w, \ell) \delta^{-1} \left(\norm{u}_{\ell,D'} + \norm{v}_{\ell-1,D'}\right).
+\end{align*}
+Außerdem gilt
+\begin{align*}
+    \norm{v}_{\ell-1} \le \const(D, w, \ell) \norm{u}_\ell.
+\end{align*}
+
+\subsection{%
+    Fehlerabschätzungen für Standard-Gewichtsfunktionen%
+}
+
+\textbf{\name{Jackson}-Ungleichung}:
+Wenn $w$ eine Standard-Gewichtsfunktion ist, dann gilt
+\begin{align*}
+    \norm{u - P_h u}_\ell \le \const(D, w, n) h^{k-\ell} \norm{u}_k,\quad
+    \ell < k \le n + 1,
+\end{align*}
+für jede Funktion $u \in H^k$, die auf $\partial D$ verschwindet.
+
+\textbf{Fehler von \name{Ritz}-\name{Galerkin}-Approximationen}:
+Seien $w$ eine Standard-Gewichtsfunktion und
+$u_h$ die Ritz-Galerkin-Approximation aus $w^\e\BB_h$ oder $w\BB_h$ eines $H_0^1$-elliptischen
+Problems
+\begin{align*}
+    a(u, \varphi) = \sp{f, \varphi}_0,\quad
+    \varphi \in H_0^1.
+\end{align*}
+Außerdem habe das duale Problem die Standard-Regularität, d.\,h.
+die Lösung $u_\ast$ für die rechte Seite $f_\ast$ erfüllt
+$\norm{u_\ast}_2 \preceq \norm{f_\ast}_0$.
+Dann gilt
+\begin{align*}
+    \norm{e_h}_0
+    \le \const(D, a, w, n) h \norm{e_h}_1
+\end{align*}
+mit $e_h := u - u_h$.
+
+\pagebreak

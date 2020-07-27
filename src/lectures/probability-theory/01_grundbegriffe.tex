@@ -1,0 +1,1264 @@
+\section{%
+    Grundbegrif"|fe der Wahrscheinlichkeitstheorie%
+}
+
+\subsection{%
+    Zufallsexperimente%
+}
+
+\begin{Bem}
+    Im Folgenden soll ein mathematisches Fundament aufgebaut werden, sodass
+    Zufallexperimente in der Realität durch Modellbildung so abstrahiert werden können,
+    dass sie in ein mathematisches Modell (einen Wahrscheinlichkeitsraum) übersetzt werden.
+    Durch Theoreme der Wahrscheinlichkeitstheorie sind (Vor-)Aussagen über das Modell möglich,
+    die dann durch Interpretation auf die Realität, also das Zufallsexperiment übertragen werden
+    können.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Für die Definition eines Wahrscheinlichkeitsraums (Modell eines Zufallsexperiments)
+    sind drei Elemente notwendig:
+    ein Ergebnisraum $\Omega$,
+    ein Ereignisraum $\A$ und
+    ein Wahrscheinlichkeitsmaß $P$.
+\end{Bem}
+
+\begin{Def}{Ergebnisraum}
+    Ein \begriff{Ergebnisraum} ist eine Menge $\Omega \not= \emptyset$.
+    Seine Elemente $\omega \in \Omega$ heißen \begriff{Ergebnisse/Realisierungen}.
+    Eine Stichprobe ist ein $n$-Tupel $(\omega_1, \dotsc, \omega_n) \in \Omega^n$.
+\end{Def}
+
+\begin{Bem}
+    Nach Durchführung eines Zufallsexperiments soll genau ein Ergebnis $\omega \in \Omega$
+    feststehen.
+    Ein Ereignis ist nun eine Aussage, die anhand eines Ergebnisses eines Zufallsexperiments
+    eindeutig entschieden werden kann.
+    Daher kann man Ereignisse als Teilmengen $\Omega$ interpretieren.
+    Dabei sollen für $A, B \subset \Omega$ Ereignisse verschiedene Interpretationen möglich sein:
+    
+    \begin{tabular}{p{60mm}p{100mm}}
+        \toprule
+        \emph{Ereignis} &
+        \emph{Interpretation}\\
+        
+        \midrule
+        
+        $A^C = \Omega \setminus A$ &
+        $A$ tritt nicht ein \\
+        
+        $A \cup B$ &
+        $A$ oder $B$ tritt ein \\
+        
+        $A \cap B$ &
+        $A$ und $B$ treten ein \\
+        
+        $A \setminus B$ &
+        $A$, aber nicht $B$ tritt ein \\
+        
+        $A \vartriangle B = (A \cup B) \setminus (A \cap B)$ &
+        entweder $A$ oder $B$ tritt ein \\
+        
+        $\bigcup_{i \in I} A_i$ &
+        mindestens eins der $A_i$ tritt ein \\
+        
+        $\bigcap_{i \in I} A_i$ &
+        alle $A_i$ treten ein \\
+        
+        $\limsup_{n \in \natural} A_n :=
+        \bigcap_{n=1}^\infty \left(\bigcup_{k=n}^\infty A_k\right)$ &
+        unendlich viele der $A_n$ treten ein \\
+        
+        $\liminf_{n \in \natural} A_n :=
+        \bigcup_{n=1}^\infty \left(\bigcap_{k=n}^\infty A_k\right)$ &
+        alle bis auf endlich viele der $A_n$ treten ein \\
+        
+        $A \subset B$ &
+        $A$ impliziert $B$ \\
+        
+        $A \cap B = \emptyset$ &
+        $A$ und $B$ schließen einander aus \\
+        
+        \bottomrule
+    \end{tabular}
+    
+    Man fordert daher als Ereignismenge eine Teilmenge der Potenzmenge von $\Omega$ mit bestimmten
+    Abschlusseigenschaften.
+\end{Bem}
+
+\begin{Def}{$\sigma$-Algebra}
+    Sei $\Omega \not= \emptyset$.
+    Dann heißt $\A \subset \P(\Omega)$ \begriff{$\sigma$-Algebra} über $\Omega$, falls
+    \begin{enumerate}
+        \item
+        $\emptyset \in \A$
+        
+        \item
+        $A \in \A \;\Rightarrow\; \Omega \setminus A \in \A$
+        
+        \item
+        $A_n \in \A$ für $n \in \natural$ $\Rightarrow\;$ $\bigcup_{n=1}^\infty A_n \in \A$
+    \end{enumerate}
+    In diesem Fall heißt $(\Omega, \A)$ \begriff{Messraum} und $A \in \A$ heißt \begriff{messbar}.
+\end{Def}
+
+\begin{Satz}{Eigenschaften von Messräumen}
+    Sei $(\Omega, \A)$ ein Messraum.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $\Omega \in \A$
+        
+        \item
+        $\bigcap_{n=1}^\infty A_n, \limsup_{n \in \natural} A_n,
+        \liminf_{n \in \natural} A_n \in \A$
+        für $A_n \in \A$ und $n \in \natural$
+        
+        \item
+        $A \cup B, A \cap B, A \setminus B, A \vartriangle B \in \A$ für $A, B \in \A$
+    \end{enumerate}
+\end{Satz}
+
+\linie
+\pagebreak
+
+\begin{Def}{Ereignisraum}
+    Ein \begriff{Ereignisraum} über $\Omega \not= \emptyset$ ist eine $\sigma$-Algebra
+    $\A \subset \P(\Omega)$ über $\Omega$.\\
+    $\emptyset$ heißt \begriff{unmögliches Ereignis} und
+    $\Omega$ heißt \begriff{sicheres Ereignis}.\\
+    Für $\omega \in \Omega$ heißt $\{\omega\}$ \begriff{Elementarereignis}.
+\end{Def}
+
+\begin{Bsp}
+    Es gibt manchmal mehrere Möglichkeiten, ein Zufallsexperiment zu modellieren.
+    \begin{enumerate}
+        \item
+        Wurf eines Würfels und "`gerade Augenzahl"':
+        $\Omega = \{1, \dotsc, 6\}$, $A = \{2, 4, 6\}$
+        
+        \item
+        Wurf zweier Würfel und "`Pasch"':\\
+        $\Omega_1 = \{(k, \ell) \;|\; k, \ell \in \{1, \dotsc, 6\}\}$
+        für Beachtung der Reihenfolge, $A_1 = \{(1, 1), \dotsc, (6, 6)\}$,\\
+        $\Omega_2 = \{\{k, \ell\} \;|\; k, \ell \in \{1, \dotsc, 6\}\}$
+        ohne Beachtung der Reihenfolge, $A_2 = \{\{1\}, \dotsc, \{6\}\}$,\\
+        $\Omega_3 = \{2, \dotsc, 12\}$ mit Summe der Augenzahlen,
+        hier ist das Ereignis nicht modellierbar
+        
+        \item
+        Mischen eines Kartenblatts mit 52 Karten:
+        $\Omega = \{\text{mögliche Anordnungen}\}$,\\
+        $|\Omega| = 52! \approx 8 \cdot 10^{67}$
+        
+        \item
+        unendlicher Münzwurf mit Reihenfolge:
+        $\Omega = \{(\omega_k)_{k \in \natural} \;|\; \omega_k \in \{0, 1\}\}$
+        (0 = Kopf, 1 = Zahl),\\
+        z.\,B. "`der fünfte Wurf ist Zahl"` durch
+        $A = \{(\omega_k)_{k \in \natural} \;|\; \omega_5 = 1\}$\\
+        oder "`es wird unendlich oft Zahl geworfen"' durch
+        $B = \{(\omega_k)_{k \in \natural} \;|\;
+        \forall_{n \in \natural} \exists_{k \ge n}\; \omega_k = 1\}$
+        
+        \item
+        Brechen eines Stabs der Länge $L$ an einer zufälligen Stelle:
+        $\Omega = [0, L]$ überabzählbar,\\
+        z.\,B. "`Bruch ist ist linken Dritten"' durch $A = [0, \frac{1}{3} L]$\\
+        oder "`Bruch ist genau in der Mitte"' durch $B = \{\frac{1}{2} L\}$
+        
+        \item
+        Schadenshöhe bei einem Autounfall:
+        $\Omega = [0, \infty)$
+        
+        \item
+        zufällige Bewegung eines Teilchens in einer Flüssigkeit (\begriff{random walk}):\\
+        $\Omega = \{\omega \in [0, \infty) \rightarrow \real^3 \;|\; \omega \text{ stetig}\}$
+    \end{enumerate}
+\end{Bsp}
+
+\subsection{%
+    Wahrscheinlichkeitsmaße%
+}
+
+\begin{Def}{Maß}
+    Sei $(\Omega, \A)$ ein Messraum.\\
+    Dann heißt eine Abbildung $\mu\colon \A \rightarrow [0, \infty]$ \begriff{Maß}
+    auf $(\Omega, \A)$, falls
+    \begin{enumerate}
+        \item
+        $\mu(\emptyset) = 0$ (\begriff{Nulltreue})
+        
+        \item
+        $\mu(\bigcup_{n=1}^\infty A_n) = \sum_{n=1}^\infty \mu(A_n)$ für
+        $A_n \in \A$ paarweise disjunkt (\begriff{$\sigma$-Additivität})
+    \end{enumerate}
+    Falls zusätzlich $\mu(\Omega) < \infty$ gilt, dann heißt $\mu$ \begriff{endlich}.\\
+    Falls sogar $\mu(\Omega) = 1$ gilt, dann heißt $\mu = P$ \begriff{Wahrscheinlichkeitsmaß}
+    (\begriff{W-Maß}).
+\end{Def}
+
+\begin{Def}{Wahrscheinlichkeitsraum}\\
+    Ein \begriff{Wahrscheinlichkeitsraum} (\begriff{W-Raum}) ist ein Tripel $(\Omega, \A, P)$ mit
+    \begin{enumerate}
+        \item
+        $\Omega \not= \emptyset$ (Ergebnisraum)
+        
+        \item
+        $\A$ eine $\sigma$-Algebra über $\Omega$ ($\sigma$-Algebra der messbaren Ereignisse)
+        
+        \item
+        $P$ ein Wahrscheinlichkeitsmaß auf $(\Omega, \A)$
+    \end{enumerate}
+\end{Def}
+
+\linie
+\pagebreak
+
+\begin{Satz}{Eigenschaften von W-Räumen}\\
+    Seien $(\Omega, \A, P)$ ein W-Raum und $A, B, A_k \in \A$ für $k \in \natural$. Dann gilt:
+    \begin{enumerate}
+        \item
+        $P(B \setminus A) = P(B) - P(A \cap B)$
+        
+        \item
+        $A \subset B \;\Rightarrow\; P(A) \le P(B)$
+        (\begriff{Monotonie})
+        
+        \item
+        $0 \le P(A) \le 1$, $P(\Omega \setminus A) = 1 - P(A)$
+        
+        \item
+        $P(A \cup B) = P(A) + P(B) - P(A \cap B) \le P(A) + P(B)$
+        
+        \item
+        $P(\bigcup_{k=1}^n A_k) = \sum_{k=1}^n (-1)^{k+1} \sum_{1 \le i_1 < \dotsb < i_k \le n}
+        P(A_{i_1} \cap \dotsb \cap A_{i_k}) \le \sum_{k=1}^n P(A_k)$\\
+        (\begriff{\name{Poincaré}-\name{Sylvester}-Formel},
+        \begriff{Formel des Ein- und Ausschließens})
+        
+        \item
+        $A_1 \subset A_2 \subset \dotsb \;\Rightarrow\;
+        P(\bigcup_{k=1}^\infty A_k) = \lim_{n \to \infty} P(A_n)$
+        (\begriff{Stetigkeit von unten})
+        
+        \item
+        $A_1 \supset A_2 \supset \dotsb \;\Rightarrow\;
+        P(\bigcap_{k=1}^\infty A_k) = \lim_{n \to \infty} P(A_n)$
+        (\begriff{Stetigkeit von oben})
+        
+        \item
+        $P(\bigcup_{k=1}^\infty A_k) \le \sum_{k=1}^\infty P(A_k)$
+        (\begriff{$\sigma$-Subadditivität})
+        
+        \item
+        $\sum_{k=1}^\infty P(A_k) < \infty \;\Rightarrow\; P(\limsup_{k \to \infty} A_k) = 0$
+        (\begriff{Satz von \name{Borel}-\name{Cantelli}, 1. Teil})
+        
+        \item
+        $\lim_{k \to \infty} P(A_k) = 0,\; \sum_{k=1}^\infty P(A_k^c \cap A_{k+1}) < \infty
+        \;\Rightarrow\; P(\limsup_{k \to \infty} A_k) = 0$\\
+        (\begriff{\name{Barndorff-Nielsen}s Verschärfung des
+        Satzes von \name{Borel}-\name{Cantelli}})
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bsp}
+    \begin{enumerate}
+        \item
+        Für $\Omega \not= \emptyset$ endlich ist $(\Omega, \P(\Omega), P)$ mit
+        $P\colon \P(\Omega) \rightarrow [0, 1]$, $A \mapsto \frac{|A|}{n}$ ein W-Raum.\\
+        $P$ heißt \begriff{Gleichverteilung}.
+        
+        \item
+        Für $\Omega \not= \emptyset$ beliebig ist $(\Omega, \P(\Omega), \mu)$
+        mit dem \begriff{Zählmaß}
+        $\mu\colon \P(\Omega) \rightarrow [0, \infty]$, $A \mapsto |A|$ für $A$ endlich und
+        $A \mapsto \infty$ für $A$ unendlich ein W-Raum.
+        
+        \item
+        Für $\Omega \not= \emptyset$ beliebig und festes $\omega \in \Omega$ ist
+        $(\Omega, \P(\Omega), P_{\{\omega\}})$ mit dem \begriff{\name{Dirac}maß}\\
+        $P_{\{\omega\}}\colon \P(\Omega) \rightarrow [0, 1]$,
+        $A \mapsto 1$ für $\omega \in A$ und $A \mapsto 0$ für $\omega \notin A$ ein W-Raum.
+    \end{enumerate}
+\end{Bsp}
+
+\subsection{%
+    Diskrete Wahrscheinlichkeitsräume%
+}
+
+\begin{Def}{diskreter W-Raum}\\
+    Ein W-Raum $(\Omega, \A, P)$ heißt \begriff{diskret}, falls $\Omega$ höchstens abzählbar ist
+    und $\A = \P(\Omega)$ gilt.
+\end{Def}
+
+\begin{Def}{Zähldichte}
+    Wenn $(\Omega, \P(\Omega), P)$ ein diskreter W-Raum ist, dann gilt für jedes Ereignis\\
+    $A \subset \Omega$, dass $P(A) = P(\bigcup_{\omega \in A} \{\omega\}) =
+    \sum_{\omega \in A} P(\{\omega\}) = \sum_{\omega \in A} p_\omega$
+    für $p_\omega := P(\{\omega\})$.\\
+    Für die $p_\omega$ gilt $p_\omega \in [0, 1]$ und
+    $\sum_{\omega \in \Omega} p_\omega = P(\Omega) = 1$.
+    Die Folge $(p_\omega)_{\omega \in \Omega}$ heißt \begriff{Zähldichte}.
+\end{Def}
+
+\begin{Satz}{Konstruktion von diskreten W-Räumen}
+    \begin{enumerate}
+        \item
+        Sei $\Omega \not= \emptyset$ höchstens abzählbar und $(p_\omega)_{\omega \in \Omega}$
+        eine Folge von Zahlen in $[0, 1]$ mit\\
+        $\sum_{\omega \in \Omega} p_\omega = 1$ (d.\,h. eine Zähldichte).
+        Dann ist $(\Omega, \P(\Omega), P)$ mit $P\colon \P(\Omega) \rightarrow [0, 1]$,\\
+        $A \mapsto \sum_{\omega \in A} p_\omega$ ein diskreter W-Raum mit
+        $P(\{\omega\}) = p_\omega$ für $\omega \in \Omega$.
+        
+        \item
+        Ist $(\Omega, \P(\Omega), P)$ ein diskreter W-Raum, so ist $(p_\omega)_{\omega \in \Omega}$
+        mit $p_\omega := P(\{\omega\})$ eine Zähldichte
+        auf $\Omega$ und $P$ entsteht aus $(p_\omega)_{\omega \in \Omega}$ durch die Konstruktion
+        in (a).
+    \end{enumerate}
+\end{Satz}
+
+\linie
+\pagebreak
+
+\begin{Def}{diskrete Gleichverteilung}
+    Seien $N \in \natural$, $\Omega := \{1, \dotsc, N\}$ und $p_k := \frac{1}{N}$
+    für $k \in \Omega$.
+    Dann ist $(p_k)_{k \in \Omega}$ eine Zähldichte und heißt \begriff{Gleichverteilung} oder
+    \begriff{\name{Laplace}-Verteilung}.
+    Dadurch ist ein diskreter W-Raum $(\Omega, \P(\Omega), P)$, ein sog.
+    \begriff{\name{Laplace}scher W-Raum} gegeben.\\
+    Für ein Ereignis $A \subset \Omega$ gilt
+    $P(A) = \sum_{\omega \in A} p_\omega = \frac{|A|}{|\Omega|}$.
+\end{Def}
+
+\begin{Bsp}
+    \begin{enumerate}
+        \item
+        Wurf eines fairen, sechsseitigen Würfels:
+        $\Omega = \{1, \dotsc, 6\}$, Laplace-W-Raum $(\Omega, \P(\Omega), P)$.\\
+        Für das Ereignis $A :=$ "`Augenzahl gerade"' $= \{2, 4, 6\}$ gilt
+        $P(A) = \frac{|A|}{|\Omega|} = \frac{3}{6} = \frac{1}{2}$.
+        
+        \item
+        $n$-maliger Wurf einer fairen Münze:\\
+        $\Omega = \{0, 1\}^n = \{(\omega_1, \dotsc, \omega_n) \;|\; \omega_k \in \{0, 1\}\}$,
+        Laplace-W-Raum $(\Omega, \P(\Omega), P)$.\\
+        Für $n = 3$ und das Ereignis $A$, dass mindestens einmal Zahl auftritt, gilt
+        $\Omega \setminus A = \{0, 0, 0\}$, d.\,h.
+        $P(A) = P(\Omega \setminus (\Omega \setminus A)) = 1 - P(\Omega \setminus A) =
+        1 - \frac{|\Omega \setminus A|}{|\Omega|} = 1 - \frac{1}{8} = \frac{7}{8}$.
+        
+        \item
+        \begriff{Ziegenproblem}:
+        In einer Spielshow gibt es drei Tore.
+        Hinter genau einem befindet sich ein Auto, hinter den anderen beiden sind Nieten.
+        Nach Auswahl eines Tores durch einen Kandidaten öffnet der Showmaster ein anderes Tor,
+        hinter dem sich eine Niete befindet, und fragt den Kandidaten, ob er das Tor wechseln
+        möchte.
+        Wie soll der Kandidat sich entscheiden, wenn er das Auto gewinnen will?\\
+        Angenommen, der Kandidat wählt Tor 1 und es ist unbekannt, hinter welchem das Auto steht.
+        Es liegt Gleichverteilung vor und es gibt drei Möglichkeiten:
+        \begin{enumerate}[label=\arabic*.]
+            \item
+            Das Auto ist hinter Tor 1.
+            Der Showmaster öffnet also Tor 2 oder Tor 3, aber in beiden Fällen sollte der Kandidat
+            nicht wechseln.
+            
+            \item
+            Das Auto ist hinter Tor 2.
+            Der Showmaster öffnet also Tor 3, in diesem Fall sollte der Kandidat wechseln.
+            
+            \item
+            Das Auto ist hinter Tor 3.
+            Der Showmaster öffnet also Tor 2,
+            in diesem Fall sollte der Kandidat ebenfalls wechseln.
+        \end{enumerate}
+        Mit einer Wahrscheinlichkeit von $p = \frac{2}{3}$ ist es also ratsam, das Tor zu wechseln.
+    \end{enumerate}
+\end{Bsp}
+
+\linie
+
+\begin{Def}{\name{Bernoulli}-Verteilung}
+    Seien $\Omega := \{0, 1\}$, $p \in [0, 1]$, $p_0 := 1 - p$ und $p_1 := p$.
+    Dann ist $(p_k)_{k \in \Omega}$ eine Zähldichte und
+    heißt \begriff{\name{Bernoulli}-Verteilung}.
+    Sie definiert ein diskretes W-Maß.
+\end{Def}
+
+\begin{Bsp}
+    \begin{enumerate}
+        \item
+        Wurf einer unfairen Münze: $\Omega = \{0, 1\}$,
+        Wahrscheinlichkeit für Zahl (1) sei $p \in [0, 1]$
+        
+        \item
+        $n$-maliger Wurf einer unfairen Münze: $\Omega = \{0, 1\}^n =
+        \{\omega = (\omega_1, \dotsc, \omega_n) \;|\; \omega_k \in \{0, 1\}\}$.\\
+        Ein Ergebnis $\omega$ hat die Wahrscheinlichkeit
+        $p_\omega = \prod_{k=1}^n$
+        \matrixsize{$\begin{cases}p & \omega_k = 1\\1 - p & \omega_k = 0\end{cases}$},
+        da jeder Wurf unabhängig von allen anderen ist.
+        Definiert man $k(\omega) = \sum_{k=1}^n \omega_k$ als die Anzahl von Zahl in $\omega$,
+        so gilt $p_\omega = p^{k(\omega)} (1 - p)^{n - k(\omega)}$.
+        Diese Zähldichte definiert ein diskretes W-Maß auf $\Omega$.
+        Wie groß ist die Wahrscheinlichkeit, genau $k$-mal Zahl zu werfen?
+        Dazu sei\\
+        $A_k := \text{"`es wird genau } k\text{-mal Zahl geworfen"'} = 
+        \{\omega \in \Omega \;|\; k(\omega) = k\}$.
+        Für die Wahrscheinlichkeit gilt aufgrund der Diskretheit
+        $P(A_k) = \sum_{p_\omega \in A_k} p_\omega = p^k (1 - p)^{n-k} \cdot |A_k|$.\\
+        Um $|A_k|$ zu bestimmen, verteilt man in das $n$-Tupel $\omega = (0, \dotsc, 0)$ $k$
+        Einsen und zählt die verschiedenen möglichen Resultate.
+        Allerdings darf es auf die Reihenfolge nicht ankommen
+        (ob man zuerst $\omega_1 = 1$ und dann $\omega_2 = 1$ setzt oder andersherum muss
+        egal sein).
+        Daher muss man noch durch die Anzahl der verschiedenen Verteilungen mit gleichen Resultaten
+        dividieren.
+        Dies entspricht genau den $k!$ Permutationen der Einsen, daher ist
+        $|A_k| = \frac{n (n - 1) \dotsm (n - k + 1)}{k (k - 1) \dotsm 1} =
+        \frac{n!}{(n - k)! k!} = \binom{n}{k}$ ein \begriff{Binomialkoef"|fizient}.\\
+        Damit gilt $P(A_k) = \binom{n}{k} p^k (1 - p)^{n-k}$.
+    \end{enumerate}
+\end{Bsp}
+
+\linie
+\pagebreak
+
+\begin{Def}{Binomialverteilung}
+    Seien $n \in \natural$ und $p \in [0, 1]$.
+    Auf $\Omega := \natural_0$ ist $p_k := \binom{n}{k} p^k (1 - p)^{n-k}$ für $0 \le k \le n$
+    und $p_k := 0$ sonst mit $k \in \Omega$ eine Zähldichte.
+    Das zugehörige W-Maß heißt \begriff{Binomialverteilung} $B(n, p)$.
+    Man definiert $B(n, p, k) := p_k$.
+\end{Def}
+
+\begin{Def}{\name{Poisson}-Verteilung}
+    Sei $\lambda > 0$.
+    Auf $\Omega := \natural_0$ ist $p_k := \frac{\lambda^k}{k!} e^{-\lambda}$ eine Zähldichte
+    und heißt \begriff{\name{Poisson}-Verteilung} zum Parameter $\lambda$.
+    Man definiert $\Pois(\lambda, k) := p_k$.
+    Das zugehörige W-Maß heißt \begriff{\name{Poisson}-Maß} $\Pois(\lambda)$.
+\end{Def}
+
+\begin{Satz}{\name{Poisson}-Verteilung als Grenzwert der Binomialverteilung}\\
+    Für $\lambda > 0$ und $k \in \natural_0$ gilt
+    $\lim_{n \to \infty} B(n, \frac{\lambda}{n}, k) = \Pois(\lambda, k)$.
+\end{Satz}
+
+\begin{Bsp}
+    Beim Roulette gibt es 37 mögliche Zahlen, die alle gleich wahrscheinlich sind.
+    Die Gewinnwahrscheinlichkeit pro Spiel beträgt also $p = \frac{1}{37}$.\\
+    Wie groß ist die Wahrscheinlichkeit für genau $k$ Gewinne bei 37 Spielen?\\
+    Die Binomialverteilung ergibt $B(37, \frac{1}{37}, k) = \binom{37}{k} p^k (1 - p)^{37-k} =
+    \frac{37!}{(37 - k)! k!} \cdot \frac{36^{37-k}}{37^{37}}$.\\
+    Weil sich das nicht so leicht ausrechnen lässt, nutzt man die ungefähre Gleichheit zu\\
+    $\Pois(1, k) = \frac{1}{e \cdot k!}$ aus.
+    Die Abweichung beträgt nur $0{,}005$.
+\end{Bsp}
+
+\subsection{%
+    Kombinatorik%
+}
+
+\begin{Satz}{Produktregel}
+    Wenn eine Auswahl von Objekten in $n$ Schritten getroffen werden soll, dabei die Reihenfolge
+    wichtig ist und für die $k$-te Auswahl $\alpha_k$ Möglichkeiten zur Verfügung stehen,
+    so gibt es für die Gesamtauswahl $\alpha_1  \dotsm \alpha_n$ verschiedene
+    Möglichkeiten.
+\end{Satz}
+
+\begin{Satz}{Summenregel}
+    Wenn ein einzelnes Objekt in der Weise ausgewählt werden soll, dass zunächst eine Wahl unter
+    $n$ Sorten von Objekten getrof"|fen und dann ein Objekt der gewählten Sorte ausgewählt wird,
+    so gibt es, falls es jeweils $\alpha_k$ verschiedene Objekte der $k$-ten Sorte gibt,
+    insgesamt $\alpha_1 + \dotsb + \alpha_n$ Möglichkeiten, ein Objekt auszuwählen.
+\end{Satz}
+
+\linie
+
+\begin{Def}{Permutation}
+    Gegeben seien $n$ Objekte $a_1, \dotsc, a_n$ (nicht notwendigerweise verschieden).\\
+    Dann heißt ein $n$-Tupel $(a_{i_1}, \dotsc, a_{i_n})$ mit $i_j \in \{1, \dotsc, n\}$ und
+    $i_j \not= i_k$ für $j \not= k$ \begriff{Permutation} der gegebenen Objekte.
+\end{Def}
+
+\begin{Bsp}
+    Es gibt $6$ Permutationen der Zahlen $1, 2, 3$, nämlich
+    $(1, 2, 3)$, $(1, 3, 2)$, $(2, 1, 3)$, $(2, 3, 1)$, $(3, 1, 2)$ und $(3, 2, 1)$.\\
+    Dagegen gibt es nur die $3$ Permutationen $(1, 2, 2)$, $(2, 1, 2)$ und $(2, 2, 1)$
+    der Zahlen $1, 2, 2$.
+\end{Bsp}
+
+\begin{Satz}{Anzahl an Permutationen}
+    \begin{enumerate}
+        \item
+        Es gibt $n!$ viele Permutationen von $n$ verschiedenen Objekten.
+        
+        \item
+        Es gibt $\frac{n!}{n_1! \dotsm n_p!}$ viele Permutationen von $n$ Objekten,
+        unter denen es $p \le n$ verschiedene Objekte gibt,
+        falls das $i$-te Objekt insgesamt $n_i$-mal unter den gegebenen Objekten vorkommt
+        ($i = 1, \dotsc, p$).
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bsp}
+    Die $32$ Karten eines Skatblatts lassen sich in $32! \approx 2{,}6 \cdot 10^{35}$
+    verschiedene Anordnungen bringen.
+    Wenn es nur auf die $8$ verschiedenen Symbole ankommt, die jeweils in $4$ Farben vorkommen,
+    so gibt es $\frac{32!}{(4!)^8} \approx 2{,}4 \cdot 10^{24}$ Möglichkeiten.
+    Bei der gleichen Frage für die Farben gibt es $\frac{32!}{(8!)^4} \approx 1{,}0 \cdot 10^{16}$
+    Möglichkeiten.
+\end{Bsp}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    Bei wahrscheinlichkeitstheoretischen Fragen im Zusammenhang mit Kombinatorik müssen häufig
+    aus $n$ Objekten $k$-viele ausgewählt werden.
+    Solche Sachverhalte werden durch \begriff{Urnenmodelle} veranschaulicht.
+    Dabei stellt man sich vor, dass man eine Urne $S$ gegeben hat, in der sich $n$ Kugeln befinden.
+    Aus dieser werden $k$ Kugeln zufällig gezogen (\begriff{Stichprobe}).\\
+    Es gibt vier Möglichkeiten der Ziehung:
+    \begin{enumerate}
+        \item
+        \begriff{geordnete Stichprobe ohne Zurücklegen}:\\
+        Stichprobe ist $k$-Tupel $(\omega_1, \dotsc, \omega_k)$ mit
+        $\omega_1, \dotsc, \omega_k \in S$ paarweise verschieden
+        
+        \item
+        \begriff{geordnete Stichprobe mit Zurücklegen}:\\
+        Stichprobe ist $k$-Tupel $(\omega_1, \dotsc, \omega_k)$ mit
+        $\omega_1, \dotsc, \omega_k \in S$
+        
+        \item
+        \begriff{ungeordnete Stichprobe ohne Zurücklegen}:\\
+        Stichprobe ist $k$-elementige Teilmenge $\{\omega_1, \dotsc, \omega_k\}$ von $S$
+        
+        \item
+        \begriff{ungeordnete Stichprobe mit Zurücklegen}:\\
+        Stichprobe ist "`Sammlung"' $[\omega_1, \dotsc, \omega_k]$ von $k$ Elementen aus $S$,
+        die mehrfach vorkommen können, hinsichtlich ihrer Reihenfolge aber nicht unterschieden
+        werden (\begriff{Multimenge})
+    \end{enumerate}
+\end{Bem}
+
+\begin{Satz}{Anzahl der Möglichkeiten beim Urnenmodell}
+    Sei $S$ eine $n$-elementige Menge und\\
+    $k \in \natural_0$.
+    Dann gilt für die Anzahl an Stichproben bei Ziehung von $k$ Elementen aus $S$:
+    \begin{enumerate}
+        \item
+        \begriff{geordnete Stichprobe ohne Zurücklegen}:
+        $\frac{n!}{(n - k)!} = n \cdot (n - 1) \cdot \dotsm \cdot (n - k + 1)$
+        
+        \item
+        \begriff{geordnete Stichprobe mit Zurücklegen}:
+        $n^k$
+        
+        \item
+        \begriff{ungeordnete Stichprobe ohne Zurücklegen}:
+        $\binom{n}{k} = \frac{n!}{(n - k)! \cdot k!} =
+        \frac{n \cdot (n - 1) \cdot \dotsm \cdot (n - k + 1)}{k!}$
+        
+        \item
+        \begriff{ungeordnete Stichprobe mit Zurücklegen}:
+        $\binom{n + k - 1}{k}$
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bsp}
+    \begin{enumerate}
+        \item
+        In einem Turnier mit $20$ Teilnehmern sollen die ersten drei Podiumspläte zufällig
+        ermittelt werden.
+        Das entspricht einer geordneten Stichprobe ohne Zurücklegen mit $n = 20$ und $k = 3$.
+        Es gibt daher $20 \cdot 19 \cdot 18 = 6840$ Möglichkeiten.
+        
+        \item
+        Die Verteilung von Geburtstagen von $k$ Schülern einer Klasse ist äquivalent zu
+        einer geordneten Stichprobe mit Zurücklegen mit $n = 365$.
+        Hier gibt es $365^k$ Möglichkeiten.
+        
+        \item
+        Beim Lotto (6 aus 49) ist das Ergebnis eine ungeordnete Stichprobe ohne Zurücklegen
+        mit $n = 49$ und $k = 6$.
+        Es gibt $\binom{49}{6} = 13983816$ Möglichkeiten.\\
+        Um die Wahrscheinlichkeit für genau $\ell$ Richtige zu berechnen, zählt man die
+        Anzahl der Möglichkeiten, aus 49 Zahlen $\ell$ Richtige und $6 - \ell$ Falsche zu ziehen.
+        Es gibt genau $\binom{6}{\ell} \binom{43}{6 - \ell}$ solche Möglichkeiten.
+        Somit erhält man für die gesuchte Wahrscheinlichkeit\\
+        $p_\ell = \binom{6}{\ell} \binom{43}{6 - \ell} \left/\binom{49}{6}\right.$.
+        Es gilt $p_0 \approx 43{,}6\%$, $p_1 \approx 41{,}5\%$, $p_2 \approx 13{,}2\%$,
+        \dots, $p_6 \approx 0{,}0000072\%$.
+    \end{enumerate}
+\end{Bsp}
+
+\linie
+
+\begin{Def}{hypergeometrische Verteilung}
+    Seien $n, k \in \natural$ und $m \in \natural_0$ mit $m, k \le n$.
+    Auf $\Omega := \natural_0$ ist
+    $p_\ell := \binom{m}{l}\binom{n - m}{k - \ell} \left/\binom{n}{k}\right.$ für
+    $\ell \in \{\max\{0, k - (n - m)\}, \dotsc, \min\{m, k\}\}$ und
+    $p_\ell := 0$ sonst mit $\ell \in \Omega$ eine Zähldichte.
+    Das zugehörige W-Maß heißt \begriff{hypergeometrische Verteilung} $H(n, m, k)$
+    mit Parametern $n$, $m$ und $k$.
+    Man definiert $H(n, m, k, \ell) := p_\ell$.\\
+    $H(n, m, k, \ell)$ gibt die Wahrscheinlichkeit an, dass bei einer ungeordneten Ziehung
+    von $k$ Kugeln ohne Zurücklegen aus einer Urne mit $m$ schwarzen Kugeln und $n - m$
+    weißen Kugeln genau $\ell$ schwarze Kugeln gezogen werden.
+\end{Def}
+
+\begin{Satz}{Grenzwert der hypergeometrischen Verteilung}\\
+    Sei $n_0(n) \in \{0, \dotsc, n\}$ eine Folge mit
+    $\lim_{n \to \infty} \frac{n_0(n)}{n} = p \in (0, 1)$.\\
+    Dann gilt $\lim_{n \to \infty} H(n, n_0(n), k, l) = \binom{k}{l} p^l (1 - p)^{k-l}$
+    für $k \in \natural$ und $l \in \{0, \dotsc, k\}$.
+\end{Satz}
+
+\linie
+
+\begin{Bsp}
+    Die Wahrscheinlichkeit, dass in einer Klasse mit $k$ Schülern mindestens zwei am selben Tag
+    Geburtstag haben, lässt sich mit der Wahrscheinlichkeit des Komplementärereignisses berechnen,
+    d.\,h. alle Schüler haben an unterschiedlichen Tagen Geburtstag.
+    Dies entspricht einer geordneten Ziehung von $k$ Kugeln aus einer Urne mit 365 Kugeln
+    ohne Zurücklegen.
+    Dementsprechend gibt es $\frac{365!}{(365 - k)!}$ Möglichkeiten.
+    Insgesamt gibt es $365^k$ verschiedene Geburtstagsverteilungen, d.\,h. die gesuchte
+    Wahrscheinlichkeit, dass alle an unterschiedlichen Tagen Geburtstag haben, beträgt
+    $1 - \frac{365!}{(365 - k)! 365^k}$.
+    Schon für $k = 23$ ist das ungefähr $50{,}7\%$.
+    Das erscheint intuitiv erstaunlich, was als \begriff{Geburtstagsparadoxon} bekannt ist.\\
+    Die auf"|tretenden Fakultäten lassen sich mit der \begriff{\name{Stirling}-Formel} gut
+    abschätzen:\\
+    $n! \approx \sqrt{2\pi n} (n/e)^n e^{n/12}$.
+\end{Bsp}
+
+\subsection{%
+    Bedingte Wahrscheinlichkeiten%
+}
+
+\begin{Bsp}
+    Einer Gruppe von $66$ Menschen wird befragt, ob sie Sport machen und
+    welches Geschlecht sie haben.
+    Es stellt sich heraus, dass von den Männern $12$ Sport machen und $18$ nicht;
+    bei den Frauen machen $16$ Sport und $20$ nicht.
+    Nun wird zufällig eine Person ausgewählt.
+    Dann ist die Wahrscheinlichkeit, dass diese Person weiblich ist, gleich
+    $\frac{38}{66} = \frac{19}{33}$.\\
+    Angenommen, man weiß schon, dass die Person Sport treibt.
+    Wie hoch ist dann die Wahrscheinlichkeit, dass die Person eine Frau ist?
+    Of"|fensichtlich muss man nur noch die Befragten anschauen, die Sport machen.
+    Von diesen sind $12$ männlich und $16$ weiblich, d.\,h. die Wahrscheinlichkeit ist jetzt
+    gleich $\frac{|\text{Frau} \cap \text{Sport}|}{|\text{Sport}|} = \frac{18}{30} = \frac{3}{5}$.
+    Man kann das zu $\frac{|\text{Frau} \cap \text{Sport}|/|\Omega|}{|\text{Sport}|/|\Omega|} =
+    \frac{P(\text{Frau} \cap \text{Sport})}{P(\text{Sport})}$ umschreiben.
+    Genau diese Darstellung verwendet man nun zur Verallgemeinerung von so einer
+    bedingten Wahrscheinlichkeit auf allgemeine Wahrscheinlichkeitsräume.
+\end{Bsp}
+
+\linie
+
+\begin{Def}{bedingte Wahrscheinlichkeit}
+    Seien $(\Omega, \A, P)$ ein W-Raum und $A, B \in \A$ mit $P(A) > 0$.\\
+    Dann heißt $P(B \,|\, A) := \frac{P(B \cap A)}{P(A)}$ die \begriff{bedingte Wahrscheinlichkeit}
+    von $B$ unter dem Vorwissen von $A$.
+\end{Def}
+
+\begin{Satz}{Aussagen über bedingte Wahrscheinlichkeit}\\
+    Seien $(\Omega, \A, P)$ ein W-Raum und $A \in \A$.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $P(\cdot \,|\, A)\colon \A \rightarrow [0, 1]$, $B \mapsto P(B \,|\, A)$ ist ein W-Maß
+        auf $\Omega$ mit $P(A \,|\, A) = 1$.
+        
+        \item
+        Für $B \in \A$ mit $P(B) > 0$ gilt
+        $P(A \,|\, B) = P(B \,|\, A) \cdot \frac{P(A)}{P(B)}$
+        (\begriff{erste Formel von \name{Bayes}}).
+        
+        \item
+        Für $B_1, \dotsc, B_m \in \A$ mit $P(B_1 \cap \dotsb \cap B_m) > 0$ gilt\\
+        $P(B_1 \cap \dotsb \cap B_m) = P(B_1) \cdot P(B_2 \,|\, B_1) \cdot
+        P(B_3 \,|\, (B_1 \cap B_2)) \cdot \dotsm \cdot
+        P(B_m \,|\, (B_1 \cap \dotsb B_{m-1}))$.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Satz}{bedingte Wahrscheinlichkeit mit unendlich vielen Ereignissen}\\
+    Seien $(\Omega, \A, P)$ ein W-Raum und $A_i, B \in \A$ mit $P(A_i) > 0$ für $i \in I$
+    mit $I$ höchstens abzählbar.
+    Die $A_i$ sollen eine Zerlegung von $\Omega$ bilden
+    (d.\,h. $A_i$ paarweise disjunkt, $\bigcup_{i \in I} A_i = \Omega$).
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $P(B) = \sum_{i \in I} P(B \,|\, A_i) \cdot P(A_i)$
+        (\begriff{Formel von der totalen Wahrscheinlichkeit})
+        
+        \item
+        $P(A_j \,|\, B) = \frac{P(B \,|\, A_j) \cdot P(A_j)}
+        {\sum_{i \in I} P(B \,|\, A_i) \cdot P(A_i)}$ für $j \in I$
+        (\begriff{zweite Formel von \name{Bayes}})
+    \end{enumerate}
+\end{Satz}
+
+\linie
+\pagebreak
+
+\begin{Bsp}
+    \begin{enumerate}
+        \item
+        Ein Ehepaar hat zwei Kinder.
+        Man weiß, dass mindestens eines davon männlich ist.\\
+        Wie hoch ist die Wahrscheinlichkeit, dass das Ehepaar sogar zwei Söhne hat?\\
+        Mit $A := \text{"`mindestens ein Sohn"'}$ und $B := \text{"`zwei Söhne"'}$ gilt
+        mithilfe der ersten Formel von Bayes
+        $P(B \,|\, A) = P(A \,|\, B) \cdot \frac{P(B)}{P(A)} = 1 \cdot \frac{1/4}{3/4} =
+        \frac{1}{3}$, wieder ein unintuitives Ergebnis.
+        
+        \item
+        Ein Test auf eine Krankheit hat eine Zuverlässigkeit von $99{,}9\%$.
+        Die Krankheit tritt für eine einzelne Person mit einer Wahrscheinlichkeit von
+        $0{,}01\%$ auf.
+        Nun ist der Test bei einer bestimmten Person positiv ausgefallen.
+        Wie hoch ist die Wahrscheinlichkeit, dass die Person tatsächlich erkrankt ist?\\
+        Mit $A := \text{"`Test positiv"'}$ und $B := \text{"`Person krank"'}$ ist zunächst
+        mit der Formel von der totalen Wahrscheinlichkeit
+        $P(A) = P(A \,|\, B) \cdot P(B) + P(A \,|\, B^c) \cdot P(B^c)$\\
+        $= (1 - 10^{-3}) \cdot 10^{-4} + 10^{-3} \cdot (1 - 10^{-4}) = \frac{10998}{10^7}$.
+        Damit kann man nun\\
+        $P(B \,|\, A) = P(A \,|\, B) \cdot \frac{P(B)}{P(A)}
+        = (1 - 10^{-3}) \cdot 10^{-4} \cdot \frac{10^7}{10998} =
+        \frac{999}{10998} \approx 9{,}1\%$ errechnen.
+        Diese geringe Wahrscheinlichkeit lässt sich damit erklären, dass die Krankheit im Vergleich
+        zur Zuverlässigkeit des Tests zu selten auftritt.
+        Ohne weitere Tests oder andere Anhaltspunkte lässt sich also nicht pauschal sagen, dass
+        die Person krank ist.
+        
+        \item
+        Auch das Ziegenproblem lässt sich bedingten Wahrscheinlichkeiten erklären:\\
+        Angenommen, der Kandidat wählt Tor 1.
+        Seien $A_k := \text{"`Auto hinter Tor } k \text{"'}$ und\\
+        $B := \text{"`Showmaster öf"|fnet Tor } 2 \text{"'}$.
+        Wenn der Showmaster nun tatsächlich Tor 2 öf"|fnet, wie groß ist die Wahrscheinlichkeit,
+        dass das Auto hinter Tor $k$ ist?
+        Es gilt $P(A_k) = \frac{1}{3}$ sowie $P(B \,|\, A_1) = \frac{1}{2}$,
+        $P(B \,|\, A_2) = 0$ und $P(B \,|\, A_3) = 1$.
+        Damit gilt mit der zweiten Formel von Bayes
+        $P(A_k \,|\, B) = \frac{P(A_k) \cdot P(B \,|\, A_k)}
+        {\sum_{i=1}^3 P(A_i) \cdot P(B \,|\, A_i)} = \frac{1/3 \cdot P(B \,|\, A_k)}{1/2} =
+        \frac{2}{3} \cdot P(B \,|\, A_k)$,
+        d.\,h. $P(A_1 \,|\, B) = \frac{1}{3}$, $P(A_2 \,|\, B) = 0$ und
+        $P(A_3 \,|\, B) = \frac{2}{3}$, der Kandidat sollte also wechseln.
+    \end{enumerate}
+\end{Bsp}
+
+\subsection{%
+    Unabhängigkeit von Ereignissen%
+}
+
+\begin{Bem}
+    Man möchte einen Unabhängigkeitsbegriff für Ereignisse definieren.
+    Für zwei unabhängige Ereignisse $A$ und $B$ soll $P(B) = P(B \,|\, A)$ gelten,
+    d.\,h. die Wahrscheinlichkeit von $B$ soll sich mit dem Vorwissen von $A$ nicht ändern
+    (und umgekehrt).
+    Wenn man die Definition von $P(B \,|\, A)$ ausschreibt, kommt man auf
+    $P(A \cap B) = P(A) \cdot P(B)$, eine Definition, die auch für $P(A) = 0$ oder $P(B) = 0$
+    verwendet werden kann.
+\end{Bem}
+
+\begin{Def}{(stochastisch) unabhängig}
+    Seien $(\Omega, \A, P)$ ein W-Raum und $A, B \in \A$.\\
+    $A$ und $B$ heißen \begriff{(stochastisch) unabhängig}, falls $P(A \cap B) = P(A) \cdot P(B)$.
+\end{Def}
+
+\begin{Bsp}
+    Man wirft einen Würfel zweimal unter Beachtung der Reihenfolge,
+    $\Omega = \{1, \dotsc, 6\}^2$.
+    Seien $A := \text{"`erster Wurf gerade"'}$, $B := \text{"`zweiter Wurf gerade"'}$ und
+    $C := \text{"`Summe gerade"'}$.\\
+    Dann ist $P(A) = P(B) = P(C) = \frac{1}{2}$ und
+    $P(A \cap B) = P(A \cap C) = P(B \cap C) = \frac{9}{36} = \frac{1}{4}$.\\
+    Somit sind $A$ und $B$, $A$ und $C$ bzw. $B$ und $C$ stochastisch unabhängig.
+\end{Bsp}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    Im Folgenden soll ein W-Raum $(\Omega, \A, P)$ konstruiert werden,
+    der die Durchführung von zwei Experimenten, dargestellt von zwei W-Räumen
+    $(\Omega_1, \A_1, P_1)$ und $(\Omega_2, \A_2, P_2)$, hintereinander darstellt.
+    Es soll also $\Omega = \Omega_1 \times \Omega_2$ sein.
+    Für den Ereignisraum $\A$ soll gelten, dass alle Ereignisse $A_1 \times A_2$ mit
+    $A_1 \in \A_1$ und $A_2 \in \A_2$ messbar sein sollen.
+    Allerdings reichen diese "`Rechtecke"' noch nicht, denn die Vereinigung von zwei disjunkten
+    Rechtecken ist i.\,A. nicht wieder ein Rechteck.
+    Somit wählt man $\A$ als die kleinste $\sigma$-Algebra, die alle $A_1 \times A_2$ enthält.
+    Für das Wahrscheinlichkeitsmaß $P$ soll $P(A_1 \times A_2) = P_1(A_1) \times P_2(A_2)$ für alle
+    $A_1 \in \A_1$ und $A_2 \in \A_2$ gelten, weil die beiden Experimente sich nicht
+    beeinflussen sollen.
+\end{Bem}
+
+\begin{Satz}{Existenz und Eindeutigkeit des Produktraums}
+    Seien $(\Omega_1, \A_1, P_1)$ und $(\Omega_2, \A_2, P_2)$ zwei W-Räume.
+    Dann gibt es eine kleinste $\sigma$-Algebra $\A_1 \otimes \A_2$ auf $\Omega_1 \times \Omega_2$
+    mit $A_1 \times A_2 \in \A_1 \otimes \A_2$ für alle $A_1 \in \A_1$ und $A_2 \in \A_2$
+    und es gibt genau ein W-Maß $P_1 \otimes P_2$ auf dem Messraum
+    $(\Omega_1 \times \Omega_2, \A_1 \otimes \A_2)$ mit
+    $(P_1 \otimes P_2)(A_1 \times A_2) = P_1(A_1) \cdot P_2(A_2)$
+    für alle $A_1 \in \A_1$ und $A_2 \in \A_2$.
+\end{Satz}
+
+\begin{Def}{Produktraum}
+    Seien $(\Omega_1, \A_1, P_1)$ und $(\Omega_2, \A_2, P_2)$ zwei W-Räume.\\
+    Dann heißt $P_1 \otimes P_2$ \begriff{Produktmaß} und
+    $(\Omega_1 \times \Omega_2, \A_1 \otimes \A_2, P_1 \otimes P_2)$ heißt \begriff{Produktraum}
+    der beiden W-Räume $(\Omega_1, \A_1, P_1)$ und $(\Omega_2, \A_2, P_2)$.
+\end{Def}
+
+\linie
+
+\begin{Def}{(stochastisch) unabhängig für beliebige Familien}
+    Seien $(\Omega, \A, P)$ ein W-Raum und $A_i \in \A$ für $i \in I$.
+    Die $(A_i)_{i \in I}$ heißen \begriff{(stochastisch) unabhängig},
+    falls $P(\bigcap_{i \in K}) = \prod_{i \in K} P(A_i)$
+    für alle $K \subset I$ endlich.
+\end{Def}
+
+\begin{Bem}\\
+    $(A_i)_{i \in I}$ sind unabhängig genau dann, wenn die Komplemente
+    $(\Omega \setminus A_i)_{i \in I}$ unabhängig sind.
+\end{Bem}
+
+\begin{Satz}{Satz von \name{Borel}-\name{Cantelli}, 2. Teil}\\
+    Seien $(\Omega, \A, P)$ ein W-Raum und $A_k \in \A$ für $k \in \natural$.
+    Gilt $\sum_{k=1}^\infty P(A_n) = \infty$ und sind die $(A_k)_{k \in \natural}$ stochastisch
+    unabhängig, dann gilt $P(\limsup_{k \to \infty} A_k) = 1$.
+\end{Satz}
+
+\begin{Bem}
+    Somit gilt für $(A_k)_{k \in \natural}$ stoch. unabhängig,
+    dass entweder $P(\limsup_{k \to \infty} A_k) = 0$ oder $P(\limsup_{k \to \infty} A_k) = 1$
+    (\begriff{Null-Eins-Gesetz für stochastisch unabhängige Ereignisse}).
+\end{Bem}
+
+\subsection{%
+    Zufallsvariablen in diskreten Wahrscheinlichkeitsräumen%
+}
+
+\begin{Def}{Zufallsvariable}
+    Seien $(\Omega, \P(\Omega), P)$ ein diskreter W-Raum und $E$ eine Menge.\\
+    Dann heißt eine Abbildung $X\colon \Omega \rightarrow E$ eine
+    \begriff{Zufallsvariable (ZV) mit Werten in $E$}.
+\end{Def}
+
+\begin{Bem}
+    Seien $(\Omega, \P(\Omega), P)$ ein diskreter W-Raum und $X\colon \Omega \rightarrow E$
+    eine Zufallsvariable.
+    Dann ist $(p_x)_{x \in \widetilde{E}}$ mit
+    $p_x := P(\{\omega \in \Omega \;|\; X(\omega) = x\})$
+    eine Zähldichte auf dem Bild $\widetilde{E} := X(\Omega)$,
+    da $p_x \ge 0$ für alle $x \in \widetilde{E}$ und $\sum_{x \in \widetilde{E}} p_x = 1$.
+    Somit ist $\widetilde{P}_X\colon \P(\widetilde{E}) \rightarrow [0, 1]$,
+    $B \mapsto \sum_{x \in B} p_x$ ein diskretes W-Maß auf $(\widetilde{E}, P(\widetilde{E}))$.
+    Man kann dieses W-Maß auf $E$ fortsetzen, indem man $p_x := 0$ für
+    $x \in E \setminus \widetilde{E}$ setzt.
+    Dann erhält man ein W-Maß auf $(E, \P(E))$ durch
+    $P_X\colon \P(E) \rightarrow [0, 1]$, $B \mapsto \widetilde{P}_X(B \cap \widetilde{E})
+    = \sum_{x \in B \cap \widetilde{E}} p_x = P(\{\omega \in \Omega \;|\; X(\omega) \in B\})$.
+    Man beachte, dass die Summe zwar überabzählbar viele Glieder enthält, aber nur
+    höchstens abzählbar viele davon können ungleich Null sein.
+\end{Bem}
+
+\begin{Def}{Notation}
+    Man definiert für $B \subset E$ und $x \in B$ die Schreibweisen\\
+    $\{X \in B\} := \{\omega \in \Omega \;|\; X(\Omega) \in B\}$ und
+    $\{X = x\} := \{\omega \in \Omega \;|\; X(\Omega) = x\}$.
+    Die Mengenklammern können weggelassen werden.
+    (Für $E \subset \real$ kann man auch "`$\le$"' und "`$<$"' statt "`$=$"' verwenden.)
+\end{Def}
+
+\begin{Def}{Verteilung einer Zufallsvariablen}
+    Seien $(\Omega, \P(\Omega), P)$ ein diskreter W-Raum und\\
+    $X\colon \Omega \rightarrow E$ eine Zufallsvariable.
+    Dann heißt das W-Maß $P_X\colon \P(E) \rightarrow [0, 1]$, $B \mapsto P(X \in B)$
+    die \begriff{Verteilung von $X$ unter $P$}.
+\end{Def}
+
+\linie
+\pagebreak
+
+\begin{Bsp}
+    \begin{enumerate}
+        \item
+        Wurf von zwei fairen Würfeln mit Reihenfolge:
+        $\Omega = \{1, \dotsc, 6\}^2$ mit\\
+        $X\colon \Omega \rightarrow \natural$, $(\omega_1, \omega_2) \mapsto \omega_1 + \omega_2$
+        der Summe der Augenzahlen.\\
+        Um $P(X = n)$ für $n \in \{2, \dotsc, 12\}$ zu berechnen, ermittelt man wegen\\
+        $P(X = n) = P(\{\omega \in \Omega \;|\; X(\omega) = n\}) =
+        \frac{|\{\omega \in \Omega \;|\; X(\omega) = n\}|}{|\Omega|}$ die Mengen
+        $\{X = 2\} = \{(1, 1)\}$, $\{X = 3\} = \{(1, 2), (2, 1)\}$ usw.\\
+        Somit ist $P(X = 2) = P_X(\{2\}) = \frac{1}{36}$,
+        $P(X = 3) = P_X(\{3\}) = \frac{2}{36}$ etc.
+        
+        \item
+        Angenommen, ein Kongress mit 500 Teilnehmern wird eröf"|fnet.
+        Zur Überraschung der Gäste sollen diejenigen ein Geschenk bekommen, die am Tag der
+        Eröf"|fnung Geburtstag haben.
+        Wie viele Geschenke sollen gekauft werden, damit zu einer vorgegebenen Wahrscheinlichkeit
+        (z.\,B. $99\%$) die Anzahl der Geschenke für die Gäste ausreichen?\\
+        Sei $\Omega = \{1, \dotsc, 365\}^{500}$, wobei
+        $\omega = (\omega_1, \dotsc, \omega_{500}) \in \Omega$ bedeutet, dass Gast Nummer $k$
+        an Tag $\omega_k$ Geburtstag hat ($k = 1, \dotsc, 500$).
+        Außerdem sei $h \in \{1, \dotsc, 365\}$ der Tag der Kongresseröf"|fnung.
+        Definiere nun $X_k\colon \Omega \rightarrow \natural_0$,
+        $\omega \mapsto 1$ für $\omega_k = h$ und $\omega \mapsto 0$ sonst.
+        Damit ist $X\colon \Omega \rightarrow \natural_0$ mit
+        $\omega \mapsto \sum_{k=1}^{500} X_k(\omega)$ die Anzahl der Teilnehmer in $\omega$,
+        die am Tag $h$ der Kongresseröf"|fnung Geburtstag haben.
+        Für die Anzahl der Blumensträuße $n \in \natural_0$ ist nun $P(X \le n)$ gesucht,
+        d.\,h. die Wahrscheinlichkeit, dass weniger als $n$ Leute am Tag $h$ Geburtstag haben.\\
+        Es gilt $P_X(\{n\}) = P(X = n) = \frac{|\{X = n\}|}{|\Omega|} =
+        \frac{1}{365^{500}} \cdot \binom{500}{n} \cdot 364^{500-n}$
+        (Binomialverteilung: Ziehen von $500$ Kugeln aus einer Urne mit $365$ Kugeln mit
+        Zurücklegen ohne Beachtung der Reihenfolge).
+        Damit ist $P(X \le n) = P_X(\{0, \dotsc, n\}) = \sum_{k=0}^n P_X(\{k\})
+        = \frac{1}{365^{500}} \cdot \sum_{k=0}^n 364^{500-k} \cdot \binom{500}{k}$.
+        Es gilt zum Beispiel $P(X \le 4) \approx 98{,}7\%$ und
+        $P(X \le 5) \approx 99{,}7\%$.
+    \end{enumerate}
+\end{Bsp}
+
+\linie
+
+\begin{Def}{Verteilungsfunktion}
+    Seien $(\Omega, \P(\Omega), P)$ ein diskreter W-Raum und\\
+    $X\colon \Omega \rightarrow E$ eine Zufallsvariable.
+    Dann heißt $F_X\colon \real \rightarrow [0, 1]$,\\
+    $F_X(x) := P(X \le x) = P_X((-\infty, x])$ die
+    \begriff{Verteilungsfunktion von $X$ unter $P$}.
+\end{Def}
+
+\begin{Satz}{Eigenschaften der Verteilungsfunktion}
+    Seien $(\Omega, \P(\Omega), P)$ ein diskreter W-Raum und\\
+    $X\colon \Omega \rightarrow E$ eine Zufallsvariable.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $F_X$ ist monoton wachsend und rechtsseitig stetig.
+        
+        \item
+        $\lim_{x \to -\infty} F_X(x) = 0$,
+        $\lim_{x \to +\infty} F_X(x) = 1$
+        
+        \item
+        Es gilt $F_X(x) - \lim_{y \to x - 0} F_X(y) = P(X = x)$,
+        d.\,h. $P$ kann aus $P_X$ rekonstruiert werden und
+        $F_X$ hat höchstens abzählbar viele Sprungstellen.
+        
+        \item
+        $F_X(x) = \sum_{y \le x} P(X = y)$
+    \end{enumerate}
+\end{Satz}
+
+\linie
+
+\begin{Def}{geometrische Verteilung}
+    Sei $p \in (0, 1]$. Auf $\Omega := \natural$ ist
+    $p_k := p \cdot (1 - p)^{k-1}$ eine Zähldichte.
+    Das zugehörige W-Maß heißt \begriff{geometrische Verteilung} $G(p)$ mit Parameter $p$.
+    Man definiert $G(p, k) := p_k$.\\
+    $G(p, k)$ gibt die Wahrscheinlichkeit an, dass bei unabhängigen Würfen auf eine Dartscheibe
+    mit $p = \frac{1}{4}$ im $k$-ten Wurf erstmals das rechte obere Viertel trifft.
+\end{Def}
+
+\begin{Satz}{Zufallsvariable geometrisch verteilt $\iff$ gedächtnislos}\\
+    Eine Zufallsvariable $X\colon \Omega \rightarrow \natural$ auf einem diskreten W-Raum
+    $(\Omega, \P(\Omega), P)$ ist geometrisch verteilt genau dann, wenn sie \begriff{gedächtnislos}
+    ist, d.\,h. $P(\{X > n + k\} \;|\; \{X > n\}) = P(X > k)$ für alle $n, k \in \natural$.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Erwartungswert in diskreten Wahrscheinlichkeitsräumen%
+}
+
+\begin{Def}{Erwartungswert}
+    Seien $(\Omega, \P(\Omega), P)$ ein diskreter W-Raum und
+    $X\colon \Omega \rightarrow E$ eine Zufallsvariable mit
+    $\sum_{\omega \in \Omega} |X(\omega)| \cdot P(\{\omega\}) < \infty$
+    (d.\,h. \begriff{$X$ hat endlichen Erwartungswert}).\\
+    Dann heißt $\EW(X) := \sum_{\omega \in \Omega} X(\omega) \cdot P(\{\omega\})$
+    \begriff{Erwartungswert (EW)} von $X$.\\
+    (Für $X \ge 0$ sei auch $\EW(X) = \infty$ zugelassen.)
+\end{Def}
+
+\begin{Bsp}
+    \begin{enumerate}
+        \item
+        Wurf eines fairen Würfels:
+        Sei $X\colon \Omega \rightarrow \real$ die Zufallsvariable, die jedem $\omega \in \Omega$
+        die Augenzahl zuordnet.
+        Dann gilt $\EW(X) = 1 \cdot \frac{1}{6} + \dotsb + 6 \cdot \frac{1}{6} = \frac{7}{2}$.
+        
+        \item
+        Wurf zweier Würfel:
+        Sei $X\colon \Omega \rightarrow \real$,
+        $(\omega_1, \omega_2) \mapsto \omega_1 + \omega_2$ die Zufallsvariable, die jedem Ergebnis
+        die Summe der Augenzahlen zuordnet.\\
+        Dann gilt $\EW(X) = X((1, 1)) \cdot P(\{(1, 1)\}) +
+        X((1, 2)) \cdot P(\{(1, 2)\}) + \dotsb = 7$.\\
+        Dies lässt sich allerdings einfacher bestimmen, wenn man die Summanden mit gleichem
+        Wert der Zufallsvariablen $X$ zusammenfasst.
+        Mit dieser Methode ist\\
+        $\EW(X) = \sum_{n=2}^{12} n \cdot P(X = n) =
+        2 \cdot \frac{1}{36} + 2 \cdot \frac{2}{36} + \dotsb + 12 \cdot \frac{1}{36} = 7$.
+    \end{enumerate}
+\end{Bsp}
+
+\begin{Satz}{diskreter Transformationssatz}
+    Seien $(\Omega, \P(\Omega), P)$ ein diskreter W-Raum und
+    $X\colon \Omega \rightarrow E$ eine Zufallsvariable mit Verteilung $P_X$.
+    Dann sind äquivalent:
+    \begin{enumerate}
+        \item
+        $X$ hat endlichen Erwartungswert.
+        
+        \item
+        $\sum_{x \in X(\Omega)} |x| \cdot P_X(\{x\}) < \infty$
+    \end{enumerate}
+    In diesem Fall gilt $\EW(X) = \sum_{x \in X(\Omega)} x \cdot P_X(\{x\})$.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{Rechenregeln für den Erwartungswert}\\
+    Seien $X, Y\colon \Omega \rightarrow \real$ zwei reelle Zufallsvariablen mit endlichen
+    Erwartungswerten.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $X + Y$ hat endlichen Erwartungswert $\EW(X + Y) = \EW(X) + \EW(Y)$.
+        
+        \item
+        Für $\alpha \in \real$ hat
+        $\alpha \cdot X$ endlichen Erwartungswert $\EW(\alpha \cdot X) = \alpha \cdot \EW(X)$.
+        
+        \item
+        Für $A \in \P(\Omega)$ hat die \begriff{Indikatorfunktion} von $A$
+        $\1_A\colon \Omega \rightarrow \real$ mit $\omega \mapsto 1$ für $\omega \in A$ und
+        $\omega \mapsto 0$ für $\omega \notin A$ endlichen Erwartungswert $\EW(\1_A) = P(A)$.
+        
+        \item
+        Aus $X \le Y$ folgt $\EW(X) \le \EW(Y)$.
+        
+        \item
+        $|X|$ hat endlichen Erwartungswert mit $|\EW(X)| \le \EW(|X|)$.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bsp}
+    Wenn man den Erwartungswert etwas umschreibt, lässt er sich oft leichter berechnen.
+    \begin{enumerate}
+        \item
+        Wurf zweier Würfel:
+        Hier kann man die Zufallsvariable "`Summe der Augenzahlen"' als Summe $X = X_1 + X_2$
+        der beiden Zufallsvariablen $X_k\colon \Omega \rightarrow \real$,
+        $(\omega_1, \omega_2) \mapsto \omega_k$ für $k = 1, 2$ schreiben.
+        Somit gilt $\EW(X) = \EW(X_1) + \EW(X_2) = \frac{7}{2} + \frac{7}{2} = 7$.
+        
+        \item
+        Kongresseröf"|fnung:
+        Es gilt $X = X_1 + \dotsb + X_{500}$, wobei
+        $X_k\colon \Omega \rightarrow \{0, 1\}$ mit $\omega \mapsto 1$ für $\omega_k = h$
+        und $\omega \mapsto 0$ sonst (also $X_k = \1_{\{\omega_k = h\}}$).
+        Den Erwartungswert $\EW(X_k)$ kann man einfach ausrechnen,
+        da $\EW(X_k) = P(\{\omega_k = h\}) = \frac{1}{365}$.
+        Damit gilt $\EW(X) = \frac{500}{365} = \frac{100}{73}$.
+    \end{enumerate}
+\end{Bsp}
+
+\linie
+\pagebreak
+
+\begin{Satz}{Erwartungswert von elementaren Verteilungen}
+    Seien $(\Omega, \P(\Omega), P)$ ein diskreter\\
+    W-Raum und $X\colon \Omega \rightarrow E$ eine Zufallsvariable mit Verteilung $P_X$.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        Für $X \equiv c$ hat $X$ endlichen Erwartungswert $\EW(X) = c$.
+        
+        \item
+        Ist $n := |X(\Omega)| < \infty$ und $P_X$ die Gleichverteilung auf X($\Omega)$
+        (\begriff{$X$ ist diskret gleichverteilt}), dann hat $X$ endlichen Erwartungswert
+        $\EW(X) = \frac{1}{n} \cdot \sum_{x \in X(\Omega)} x$.
+        
+        \item
+        Ist $P_X$ die Binomialverteilung auf $X(\Omega) = \natural_0$
+        zu den Parametern $n$ und $p$, dann hat $X$ endlichen Erwartungswert $\EW(X) = np$.
+        
+        \item
+        Ist $P_X$ die Poissonverteilung auf $X(\Omega) = \natural_0$ zum Parameter $\lambda > 0$,
+        dann hat $X$ endlichen Erwartungswert $\EW(X) = \lambda$.
+        
+        \item
+        Ist $P_X$ die hypergeometrische Verteilung auf $X(\Omega) = \natural_0$ zu den Parametern
+        $k$, $n$ und $s$, dann hat $X$ endlichen Erwartungswert $\EW(X) = \frac{ks}{n}$.
+    \end{enumerate}
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Im Allgemeinen gilt $\EW(X \cdot Y) \not= \EW(X) \cdot \EW(Y)$ für zwei reelle Zufallsvariablen
+    $X$ und $Y$.
+    Es gilt nämlich\\
+    $\EW(X \cdot Y) =
+    \sum_{\omega \in \Omega} X(\omega) \cdot Y(\omega) \cdot P(\{\omega\}) =
+    \sum_{x \in X(\Omega)} \sum_{y \in Y(\Omega)} x \cdot y \cdot P(\{X = x\} \cap \{Y = y\})$,\\
+    aber $\EW(X) \cdot \EW(Y) = \left(\sum_{x \in X(\Omega)} x \cdot P(X = x)\right) \cdot
+    \left(\sum_{y \in Y(\Omega)} y \cdot P(Y = y)\right)$\\
+    $= \sum_{x \in X(\Omega)} \sum_{y \in Y(\Omega)} x \cdot y \cdot P(X = x) \cdot P(Y = y)$.\\
+    Wenn also $P(\{X = x\} \cap \{Y = y\}) = P(X = x) \cdot P(Y = y)$ für alle $x \in X(\Omega)$
+    und $y \in Y(\Omega)$ gelten würde, dann würde $\EW(X \cdot Y) = \EW(X) \cdot \EW(Y)$ gelten
+    (das ist i.\,A. aber nicht der Fall).
+    Dies ist äquivalent zur stochastischen Unabhängigkeit von $\{X = x\}$ und $\{Y = y\}$.
+    Man erweitert diese Bedingung noch etwas, um zu einer Definition von stochastischer
+    Unabhängigkeit für Zufallsvariablen zu kommen.
+\end{Bem}
+
+\begin{Def}{(stochastisch) unabhängig für ZV}\\
+    Seien $(\Omega, \P(\Omega), P)$ ein diskreter W-Raum und
+    $X_i\colon \Omega \rightarrow E_i$ Zufallsvariablen für $i \in I$ ($I \not= \emptyset$).\\
+    Die $(X_i)_{i \in I}$ heißen \begriff{(stochastisch) unabhängig},
+    falls für jede Wahl von Teilmengen
+    $B_i \subset E_i$ für $i \in I$ die Familie von Ereignissen
+    $(\{X_i \in B_i\})_{i \in I}$ stochastisch unabhängig ist.
+\end{Def}
+
+\begin{Satz}{Produktregel für unabhängige ZV}
+    Seien $X, Y\colon \Omega \rightarrow \real$ reelle Zufallsvariablen mit endlichen
+    Erwartungswerten.
+    Wenn $X$ und $Y$ unabhängig sind, dann hat $X \cdot Y$ endlichen Erwartungswert
+    $\EW(X \cdot Y) = \EW(X) \cdot \EW(Y)$.
+\end{Satz}
+
+\begin{Bem}
+    Der Satz lässt sich auf eine beliebige endliche Zahl von Zufallsvariablen verallgemeinern.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Varianz in diskreten Wahrscheinlichkeitsräumen%
+}
+
+\begin{Bem}
+    Im Folgenden soll eine Größe für die "`Schwankungsbreite"' einer reellen Zufallsvariable
+    eingeführt werden.
+    Dafür betrachtet man den Fehler $X - \EW(X)$.
+    Um den absoluten Fehler zu berücksichtigen und die Rechnung nicht unnötig zu verkomplizieren,
+    verwendet man das Quadrat $(X - \EW(X))^2$.
+    Dies ist wieder eine Zufallsvariable, von der man unter gewissen Umständen den Erwartungswert
+    berechnen kann, d.\,h. der "`durchschnittliche"' Fehler, den die Zufallsvariable $X$ gegenüber
+    dem Erwartungswert $\EW(X)$ macht.
+\end{Bem}
+
+\linie
+
+\begin{Lemma}{Varianz}
+    Seien $(\Omega, \P(\Omega), P)$ ein diskreter W-Raum und
+    $X\colon \Omega \rightarrow \real$ eine reelle ZV.\\
+    Wenn $X^2$ einen endlichen Erwartungswert besitzt, dann auch $X$ und
+    $(X - \EW(X))^2$.
+    In diesem Fall gilt $\EW((X - \EW(X))^2) = \EW(X^2) - \EW(X)^2$.
+\end{Lemma}
+
+\begin{Def}{Varianz}
+    Seien $(\Omega, \P(\Omega), P)$ ein diskreter W-Raum und
+    $X\colon \Omega \rightarrow \real$ eine reelle ZV mit $\EW(X^2) < \infty$.
+    Dann heißt $\Var(X) := \EW((X - \EW(X))^2) = \EW(X^2) - \EW(X)^2$
+    die \begriff{Varianz} von $X$.
+\end{Def}
+
+\begin{Satz}{Aussagen über Varianz}
+    Seien $(\Omega, \P(\Omega), P)$ ein diskreter W-Raum und\\
+    $X, X_1, \dotsc, X_n\colon \Omega \rightarrow \real$ reelle ZV mit
+    $\EW(X^2), \EW(X_i^2) < \infty$ für $i = 1, \dotsc, n$.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $\Var(\alpha X) = \alpha^2 \Var(X)$ und
+        $\Var(X + c) = \Var(X)$ für $\alpha, c \in \real$
+        
+        \item
+        $\Var(X_1 + \dotsb + X_n) = \Var(X_1) + \dotsb + \Var(X_n)$,
+        falls $X_1, \dotsc, X_n$ unabhängig sind\\
+        (\begriff{Satz von \name{Bienaymé}})
+        
+        \item
+        $\Var(X) = 0 \;\Rightarrow\; P(X = \EW(X)) = 1$
+    \end{enumerate}
+\end{Satz}
+
+\linie
+
+\begin{Satz}{Varianz von elementaren Verteilungen}
+    Seien $(\Omega, \P(\Omega), P)$ ein diskreter W-Raum und
+    $X\colon \Omega \rightarrow \real$ eine reelle Zufallsvariable mit Verteilung $P_X$.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        Ist $X$ konstant, so gilt $\Var(X) = 0$.
+        
+        \item
+        Ist $n := |X(\Omega)| < \infty$ und $P_X$ die Gleichverteilung auf $X(\Omega)$, dann gilt\\
+        $\Var(X) = \frac{1}{n} \cdot \sum_{x \in X(\Omega)} (x - \EW(X))^2$.
+        
+        \item
+        Ist $P_X$ die Binomialverteilung auf $X(\Omega) = \natural_0$
+        zu den Parametern $n$ und $p$, dann gilt $\Var(X) = np(1 - p)$.
+        
+        \item
+        Ist $P_X$ die Poissonverteilung auf $X(\Omega) = \natural_0$ zum Parameter $\lambda > 0$,
+        dann gilt $\Var(X) = \lambda$.
+        
+        \item
+        Ist $P_X$ die hypergeometrische Verteilung auf $X(\Omega) = \natural_0$ zu den Parametern
+        $k$, $n$ und $s$, dann gilt
+        $\Var(X) = \frac{ks}{n} \cdot (1 - \frac{s}{n}) \cdot \frac{n - k}{n - 1}$.
+    \end{enumerate}
+\end{Satz}
+
+\linie
+
+\begin{Def}{standarisiert}
+    Seien $(\Omega, \P(\Omega), P)$ ein diskreter W-Raum und
+    $X\colon \Omega \rightarrow \real$ eine reelle Zufallsvariable mit $\EW(X^2) < \infty$.
+    Dann heißt $X$ standarisiert, falls $\EW(X) = 0$ und $\Var(X) = 1$.
+\end{Def}
+
+\begin{Def}{Standarisierung}
+    Sei $X\colon \Omega \rightarrow \real$ eine reelle Zufallsvariable mit $\EW(X^2) < \infty$
+    und $\Var(X) \not= 0$.
+    Dann ist $X^\ast := \frac{X - \EW(X)}{\sqrt{\Var(X)}}$ eine standarisierte Zufallsvariable,
+    die sog. \begriff{Standarisierung} von $X$.
+\end{Def}
+
+\pagebreak

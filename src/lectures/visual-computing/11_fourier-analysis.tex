@@ -1,0 +1,260 @@
+\section{%
+    \name{Fourier}-Analysis%
+}
+
+\subsection{%
+    Trigonometrische Approximation und \name{Fourier}-Reihen%
+}
+
+\textbf{trigonometrische Approximation}:
+Gegeben sei eine $2\pi$-periodische, stückweise stetige Funktion $f\colon \real \to \real$, d.\,h.
+$\forall_{x \in \real}\; f(x + 2\pi) = f(x)$, sodass für alle $x_0 \in \real$ die Grenzwerte\\
+$\lim_{h \to 0+0} f(x_0 - h) = y_0^-$ und $\lim_{h \to 0+0} f(x_0 + h) = y_0^+$ existieren.\\
+Gesucht ist $g_n(x) := \frac{1}{2} a_0 + \sum_{k=1}^n (a_k\cos(kx) + b_k\sin(kx))$, sodass\\
+$F := \norm{g_n - f}_{L^2}^2 = \int_{-\pi}^\pi (g_n - f)^2 \dx \to \min$.\\
+Durch $\partial_{a_0} F = \partial_{a_j} F = \partial_{b_j} F \overset{!}{=} 0$ für
+$j = 1, \dotsc, n$ erhält man folgende Formeln.
+
+\linie
+
+\textbf{reelle \name{Fourier}-Reihe}:\\
+Seien $a_k := \frac{1}{\pi} \int_{-\pi}^\pi f(x)\cos(kx) \dx$ für $k \in \natural_0$
+und $b_k := \frac{1}{\pi} \int_{-\pi}^\pi f(x)\sin(kx) \dx$ für $k \in \natural$.\\
+Das \begriff{reelle \name{Fourier}-Polynom} ist gegeben durch
+$g_n(x) := \frac{1}{2} a_0 + \sum_{k=1}^n (a_k\cos(kx) + b_k\sin(kx))$.\\
+Die \begriff{reelle \name{Fourier}-Reihe} ist gegeben durch
+$g(x) := \frac{1}{2} a_0 + \sum_{k=1}^\infty (a_k\cos(kx) + b_k\sin(kx))$.
+
+\textbf{komplexe \name{Fourier}-Reihe}:
+Durch Einsetzen von $\cos(kx) = \frac{e^{\iu kx} + e^{-\iu kx}}{2}$ und
+$\sin(kx) = \frac{e^{\iu kx} - e^{-\iu kx}}{2\iu}$ in die reelle Fourier-Reihe erhält man
+die \begriff{komplexe \name{Fourier}-Reihe} $g(x) = \sum_{k\in\integer} c_k e^{\iu kx}$
+mit $c_k := \frac{2}{\pi} \int_{-\pi}^\pi f(x) e^{-\iu kx} \dx$ bzw.
+$c_0 := \frac{a_0}{2}$ für $k = 0$,
+$c_k := \frac{a_k - \iu b_k}{2}$ und $c_{-k} := \frac{a_k + \iu b_k}{2}$ für $k \in \natural$.
+
+\linie
+
+\textbf{Satz (Konvergenz der \name{Fourier}-Reihe)}:
+Gegeben sei eine $2\pi$-periodische, stückweise stetige Funktion $f\colon \real \to \real$
+mit stückweise stetiger Ableitung.\\
+Dann konvergiert die Fourier-Reihe
+$g(x) := \frac{1}{2} a_0 + \sum_{k=1}^\infty (a_k\cos(kx) + b_k\sin(kx))$ in $x_0 \in \real$
+\begin{itemize}
+    \item
+    gegen $f(x_0)$, wenn $f$ stetig in $x_0$ ist, und
+    
+    \item
+    gegen $\frac{y_0^- + y_0^+}{2}$, wenn $x_0$ eine Sprungstelle von $f$ ist.
+\end{itemize}
+
+\textbf{\name{Gibbs}-Phänomen}:
+Anhand der Rechteck-Funktion $f := \chi_{[-\pi/2,\pi/2]}$ erkennt man,
+dass die Fourier-Reihe zwar punktweise f.\,ü. konvergiert,
+die $L^\infty$-Norm der Dif"|ferenz aber nicht konvergiert,
+weil $g_n(x_0) \to 1.08949$ für $n \to \infty$ und $x_0 = x_0(n)$ der Maximalstelle von $g_n$.
+
+\pagebreak
+
+\subsection{%
+    \name{Fourier}-Transformation%
+}
+
+\textbf{\name{Fourier}-Transformation}:
+Sei $f \in L^1(\real) := L^1(\real, \complex)$.\\
+Dann ist $(\F(f))(k) = F(k) := \int_\real f(x)e^{-\iu kx} \dx$
+die \begriff{\name{Fourier}-Transformation}.
+
+\textbf{inverse \name{Fourier}-Transformation}:
+Sei $f \in L^1(\real)$ mit $F = \F(f) \in L^1(\real)$.\\
+Dann ist $f(x) = \frac{1}{2\pi} \int_\real F(k) e^{\iu kx}\d k$ die
+\begriff{inverse \name{Fourier}-Transformation}.
+
+\textbf{Eigenschaften der \name{Fourier}-Transformation}:
+
+{\small\begin{tabular}{lll}
+    \toprule
+    \emph{Eigenschaft} & \emph{Funktion} & \emph{\name{Fourier}-Transformierte}\\
+    \midrule
+    Fourier-Transformation & $f(x)$ & $F(k)$\\
+    inverse Fourier-Transformation & $F(x)$ & $2\pi f(-k)$\\
+    \midrule
+    Faltung & $(f_1 \ast f_2)(x)$ & $F_1(k) F_2(k)$\\
+    Multiplikation & $f_1(x) f_2(x)$ & $\frac{1}{2\pi} (F_1 \ast F_2)(k)$\\
+    \midrule
+    Translation & $f(x - a)$ & $e^{-\iu ak} F(k)$\\
+    Modulation & $e^{\iu ax} f(x)$ & $F(k - a)$\\
+    \midrule
+    Skalierung & $f(x/a)$ & $|a| F(ak)$\\
+    \midrule
+    Ableitung & $f^{(p)}(x)$ & $(\iu k)^p F(k)$\\
+    Frequenzableitung & $(-\iu x)^p f(x)$ & $F^{(p)}(k)$\\
+    \midrule
+    komplexes Konjugat & $\overline{f(x)}$ & $\overline{F(-k)}$\\
+    hermitesche Symmetrie & $f(x) \in \real$ & $F(k) = \overline{F(-k)}$\\
+    \bottomrule
+\end{tabular}}
+
+\subsection{%
+    \name{Dirac}sche Delta-Distribution%
+}
+
+\textbf{\name{Dirac}-Delta}:
+Die \begriff{\name{dirac}sche Delta-Distribution} $\delta$
+ist eine Distribution, die eine stetige Funktion $\phi$ im Punkt $t = 0$ auswertet,
+d.\,h. $\int_\real \phi(t) \delta(t) \dt := \phi(0)$
+(keine Funktion, da $\int_\real \delta(t) \dt = 1$).
+Für die Auswertung in $u \in \real$ schreibt man
+$(\phi \ast \delta)(u) = \int_\real \phi(t) \delta(u - t) \dt := \phi(u)$.
+Die Ableitung ist gegeben durch
+$\int_\real \phi(t) \delta^{(n)}(t) \dt := (-1)^n \phi^{(n)}(0)$.
+
+\textbf{Delta-Folgen}:
+\begriff{Delta-Folgen} approximieren $\delta$,
+z.\,B. die \begriff{Glockenkurve}
+$\delta_\varepsilon(x) := \frac{1}{\sqrt{2\pi\varepsilon}} e^{-x^2/(2\varepsilon)}$ und
+die \begriff{\name{Lorentz}-Kurve}
+$\delta_\varepsilon(x) := \frac{1}{\pi} \cdot \frac{\varepsilon}{x^2 + \varepsilon^2}$
+(erfüllen jeweils $\int_\real \delta_\varepsilon(x) \dx = 1$).
+
+\textbf{\name{Fourier}-Transformation mit dem \name{Dirac}-Delta}:
+
+\begin{tabular}{p{60mm}p{60mm}}
+    \toprule
+    \emph{Funktion} $f(x)$ & \emph{\name{Fourier}-Transformierte} $F(k)$\\
+    \midrule
+    $\delta(x - a)$ & $e^{-\iu ka}$\\
+    $c$ & $c \delta(k)$\\
+    \midrule
+    $\cos(k_0 x)$ & $\frac{1}{2} (\delta(k - k_0) + \delta(k + k_0))$\\
+    $\sin(k_0 x)$ & $\frac{1}{2\iu} (\delta(k - k_0) - \delta(k + k_0))$\\
+    %\midrule
+    %$\sum_{n\in\integer} c_n e^{\iu nx/\Delta x}$&
+    %$\sum_{n\in\integer} c_n \delta(k - \frac{n}{\Delta x})$\\
+    %$\sum_{n\in\integer} \delta(x - n\Delta x)
+    %= \frac{1}{\Delta x} \sum_{n \in \integer} e^{\iu n}$&
+    %$\frac{1}{\Delta x} \sum_{n\in\integer} \delta(k - n/\Delta x)$\\
+    \bottomrule
+\end{tabular}
+
+\pagebreak
+
+\subsection{%
+    Sampling-Theorem%
+}
+
+In diesem Abschnitt wird eine andere Definition für die Fourier-Transformation benutzt,
+nämlich $(\F(f))(k) = F(k) := \int_\real f(x) e^{-2\pi\iu kx} \dx$
+(bzw. $f(x) = \int_\real F(k) e^{2\pi\iu kx} \d k$).
+
+\textbf{Delta-Kamm}:
+Die Transformation eines kontinuierlichen Signals $f$ in ein diskretes Signal $\widehat{f}$
+kann man mit dem \begriff{Delta-Kamm} $c(x) := \sum_{n \in \integer} \delta(x - n\Delta x)$
+darstellen durch\\
+$\widehat{f}(x) := f(x) c(x) = \sum_{n \in \integer} f(n\Delta x) \delta(x - n\Delta x)$,
+wobei $\Delta x$ die \begriff{Sampling-Gitterweite} ist.\\
+Dabei besitzt $\widehat{f}(x)$ die Fourier-Transformierte
+$\widehat{F}(k) = \frac{1}{\Delta x} \sum_{n \in \integer} F(k - \frac{n}{\Delta x})$.
+
+\linie
+
+\textbf{Rekonstruktion des originalen Signals}:\\
+Um $f(x)$ aus $\widehat{F}(k)$ zu rekonstruieren, verfährt man wie folgt.
+\begin{enumerate}
+    \item
+    Multipliziere $\widehat{F}(k)$ mit der Rechtecksfunktion
+    $R(k) := \Delta x \cdot \chi_{[-k_c,k_c]}(k)$\\
+    (es gilt $F(k) = \widehat{F}(k) R(k)$ genau dann, wenn $f$ bandbegrenzt durch $k_c$ ist).
+    
+    \item
+    Wende die inverse FT auf $\widehat{F}(k) R(k)$ an, d.\,h.\\
+    $\F^{-1}(\widehat{F}(k) R(k))
+    = \sum_{n \in \integer} f(n\Delta x) 2k_c \Delta x \sinc(2k_c (x - n\Delta x))$
+    mit $\sinc(x) := \frac{\sin(\pi x)}{\pi x}$.
+\end{enumerate}
+
+\textbf{Sampling-Theorem}:
+Sei $f(\cdot)$ eine Funktion.
+Gibt es eine \begriff{Abschneidefrequenz} $k_c > 0$
+mit $\forall_{|k| \ge k_c}\; F(k) = 0$, dann kann $f$ aus der
+gesampelten Funktion $\widehat{f}$ exakt rekonstruiert werden,
+wenn $k_c \le \frac{1}{2 \Delta x} = \frac{k_s}{2}$
+mit der \begriff{Samplerate} $k_s := \frac{1}{\Delta x}$ und
+der \begriff{\name{Nyquist}-Frequenz} $\frac{k_s}{2}$.\\
+In diesem Fall gilt
+$f(x) = \sum_{n \in \integer} f(n\Delta x) 2k_c \Delta x \sinc(2k_c (x - n\Delta x))$.
+
+\textbf{Aliasing}:
+Wenn $f(x)$ unterabgetastet wird, d.\,h. $k_s \not\ge 2k_c$,
+dann besitzt die rekonstruierte Funktion Artefakte, sog. \begriff{Aliasing-Ef"|fekte}.
+
+\subsection{%
+    Diskrete \name{Fourier}-Transformation%
+}
+
+\textbf{diskrete 1D-\name{Fourier}-Transformation}:\\
+Seien $\vec{g} := (g_n)_{n=0}^{N-1} \in \complex^N$
+und $\omega_N := e^{2\pi\iu/N}$ die \begriff{$N$-te Einheitswurzel}.\\
+Dann heißt
+$G_v := \sum_{n=0}^{N-1} \omega_N^{-vn} g_n$ für $v = 0, \dotsc, N - 1$
+\begriff{diskrete \name{Fourier}-Transf. (DFT)}.\\
+$g_n = \frac{1}{N} \sum_{v=0}^{N-1} \omega_N^{vn} G_v$ für $n = 0, \dotsc, N - 1$
+heißt \begriff{inverse DFT}.\\
+Es gilt $G_v = \sqrt{N} \sp{\vec*{b}{v}, \vec{g}}$
+und $g_n = \frac{1}{\sqrt{N}} \sp{\vec*{b}{-n}, \vec{G}}$ mit den Basisvektoren\\
+$\vec*{b}{v} := \frac{1}{\sqrt{N}}
+(\omega_N^0, \omega_N^{v}, \dotsc, \omega_N^{(N-1)v})^\tp$,
+wobei $\sp{\vec{x}, \vec{y}} := \vec{x}^\ast \vec{y}$ mit
+$\vec{x}^\ast := \overline{\vec{x}^\tp}$.
+
+\linie
+
+\textbf{diskrete 2D-\name{Fourier}-Transformation}:
+Sei $g := (g_{m,n})_{m,n=0}^{M-1,N-1} \in \complex^{M \times N}$.\\
+Dann heißt
+$G_{u,v} := \sum_{m=0}^{M-1} \sum_{n=0}^{N-1} \omega_M^{-um} \omega_N^{-vn} g_{m,n}$ für
+$u = 0, \dotsc, M - 1$, $v = 0, \dotsc, N - 1$
+\begriff{diskrete 2D-\name{Fourier}-Transf. (2D-DFT)}.
+$g_{m,n} = \frac{1}{MN} \sum_{u=0}^{M-1} \sum_{v=0}^{N-1} \omega_M^{um} \omega_N^{vn} G_{u,v}$
+heißt \begriff{inverse 2D-DFT}.\\
+Es gilt $G_{u,v} = \sqrt{MN} \sp{B_{u,v}, g}$
+und $g_{m,n} = \frac{1}{\sqrt{MN}} \sp{B_{-m,-n}, G}$
+mit den Basismatrizen\\
+$B_{u,v} := \frac{1}{\sqrt{MN}} (\omega_M^0, \omega_M^u, \dotsc, \omega_M^{(M-1)u})^\tp
+(\omega_N^0, \omega_N^v, \dotsc, \omega_N^{(N-1)v})$,\\
+wobei $\sp{G, H} := \sum_{m=0}^{M-1} \sum_{n=0}^{N-1} \overline{g_{m,n}} h_{m,n}$.
+
+\textbf{Eigenschaften}:
+\begin{itemize}
+    \item
+    \vspace{-1mm}
+    \emph{1D-Periodizität}:
+    $G_{v+\ell N} = G_v$,
+    $g_{n+\ell N} = g_n$
+    für alle $\ell \in \integer$
+    
+    \item
+    \vspace{-1mm}
+    \emph{2D-Periodizität}:
+    $G_{u+kM,v+\ell N} = G_{u,v}$,
+    $g_{m+kM,n+\ell N} = g_{m,n}$
+    für alle $k, \ell \in \integer$
+    
+    \item
+    \vspace{-1mm}
+    \emph{1D-DFT einer reellen Folge ist hermitesch}:
+    $g_n \in \real \implies \overline{G_v} = G_{-v} = G_{N-v}$
+    
+    \item
+    \vspace{-1mm}
+    \emph{1D-DFT einer hermiteschen Folge ist reell}:
+    $g_{N-n} = g_{-n} = \overline{g_n} \implies G_v \in \real$
+    
+    \item
+    \vspace{-1mm}
+    \emph{2D-Faltungssatz}:
+    2D-DFT von $f_{m,n} = \sum_{m'=0}^{M-1} \sum_{n'=0}^{N-1} h_{m',n'} g_{m-m',n-n'}$
+    ist $MN \cdot (H \cdot G)$
+\end{itemize}
+
+\pagebreak

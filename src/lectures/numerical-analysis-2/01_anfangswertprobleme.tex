@@ -1,0 +1,1677 @@
+\section{%
+    Anfangswertprobleme für gewöhnliche Dif"|ferentialgleichungen%
+}
+
+\addtocounter{subsection}{-1}
+\subsection{%
+    \emph{Wiederholung}: \name{Landau}-Notation und \name{Taylor}-Entwicklung%
+}
+
+\begin{Def}{\name{Landau}-Notation}
+    Seien $f, g\colon \left]0, +\infty\right[ \rightarrow \real^n$
+    Abbildungen.\\
+    Man schreibt $f = \O(g)$, falls
+    $\exists_{c > 0} \exists_{\delta > 0}
+    \forall_{x \in \left]0, \delta\right[}\;
+    \norm{f(x)} \le c \norm{g(x)}$.\\
+    Man schreibt $f = o(g)$, falls
+    $\forall_{\varepsilon > 0} \exists_{\delta > 0}
+    \forall_{x \in \left]0, \delta\right[}\;
+    \norm{f(x)} \le \varepsilon \norm{g(x)}$.
+\end{Def}
+
+\begin{Bsp}
+    $f = \O(1)$ gilt genau dann, wenn $f$ in einer $\delta$-Umgebung von $0$
+    beschränkt ist.\\
+    $f = o(1)$ ist äquivalent zu $\lim_{x \to 0} f(x) = 0$.\\
+    $f = o(x)$ ist äquivalent zu $\widetilde{f} = o(1)$ mit
+    $f(x) = x\widetilde{f}(x)$.
+\end{Bsp}
+
+\begin{Satz}{\name{Taylor}-Entwicklung}\\
+    Seien $U \subset \real$ ein Intervall und
+    $f\colon U \subset \real \rightarrow \real^n$ in $x_0 \in U$
+    $(m + 1)$-fach stetig dif"|ferenzierbar.\\
+    Dann gilt $f(x_0 + h) = f(x_0) +
+    \sum_{k=1}^m \frac{1}{k!} f^{(k)}(x_0) h^k + r_m(x_0, h)$ mit\\
+    $r_m(x_0, h) = \frac{1}{(m + 1)!} f^{(m+1)}(y) h^{m+1}$
+    für ein $y \in \overline{x_0, x_0 + h}$, d.\,h.\\
+    $r_m(x_0, h) = \O(h^{m+1})$.
+    Es gilt auch $r_m(x_0, h) = o(h^m)$.
+\end{Satz}
+
+\subsection{%
+    Motivation, Beispiele%
+}
+
+\begin{Bem}
+    Gegeben seien eine Funktion $f\colon \real \times \real \rightarrow \real$,
+    $t_0 \in \real$ und $u_0 \in \real$.
+    Gesucht ist eine dif"|ferenzierbare Funktion
+    $u = u(t)\colon \real \rightarrow \real$, sodass
+    $u'(t) = f(t, u(t))$ für $t \ge t_0$.
+    Dieses Problem heißt \begriff{Anfangswertproblem}.
+\end{Bem}
+
+\begin{Bsp}
+    Sei $t$ die Zeit und $P(t)$ eine Population.
+    Für die Zunahme $\Delta P := P(t + \Delta t) - P(t)$ in der Zeit $\Delta t$
+    soll $\Delta P \approx \alpha P(t) \Delta t$ mit $\alpha > 0$ gelten.
+    Für $\Delta t \to 0$ erhält man die DGL $\frac{dP}{dt} = \alpha P(t)$.
+    Sie hat die allgemeine Lösung $P(t) = c \cdot e^{\alpha t}$ mit
+    $c$ beliebig
+    (\begriff{exponentielles Wachstum}).
+    Ist ein Anfangswert $P_0 = P(t_0)$ gegeben, so bestimmt sich $c$ durch
+    $c = P_0 e^{-\alpha t_0}$, d.\,h. die partikuläre Lösung ist
+    $P(t) = P_0 e^{\alpha (t - t_0)}$.
+\end{Bsp}
+
+\begin{Bsp}
+    Die DGL $\frac{dP}{dt} = \lambda P(K - P)$ mit $\lambda, K > 0$ modelliert
+    \begriff{logistisches Wachstum}.
+    Zum Beispiel gilt für $P \equiv K$, dass $\frac{dP}{dt} = 0$,
+    d.\,h. $P$ ändert sich nicht.
+    Die DGL hat die Lösung
+    $P(t) = \frac{K}{1 + \frac{K}{P_0 - 1} e^{-\lambda K t}}$.
+\end{Bsp}
+
+\begin{Bsp}
+    Eine DGL, mit der das \begriff{aktuelle Bevölkerungswachstum}
+    beschrieben werden kann, lautet $\frac{dP}{dt} = \alpha P(t)^\beta$ mit
+    $\alpha > 0$, $\beta > 1$.
+\end{Bsp}
+
+\begin{Bsp}
+    Wird die Menge einer \begriff{radioaktiven Substanz}
+    durch $u = u(t)$ beschrieben,
+    so modelliert die DGL $du = -\lambda u dt$, $\lambda > 0$ den Zerfall
+    der Substanz aufgrund der Radioaktivität.
+    Für $t_0 = 0$ lautet eine Lösung $u(t) = u_0 e^{-\lambda t}$.
+    Die \begriff{Halbwertszeit} ist die Zeit, in der sich die Menge der
+    Substanz halbiert.
+    Sie ist unabhängig von der aktuellen Menge und beträgt
+    $\tau = \frac{\ln(2)}{\lambda}$.
+\end{Bsp}
+
+\pagebreak
+
+\subsection{%
+    Theoretische Grundlagen%
+}
+
+\begin{Def}{Anfangswertproblem}
+    Seien $U \subset \real^n$ of"|fen (\begriff{Zustandsraum}),
+    $f \in \C(\real \times U, \real^n)$, $u_0 \in U$,
+    $I \subset \real$ und $t_0 \in I$.
+    Gesucht ist eine Funktion $u = (u_1, \dotsc, u_n)^t \in \C^1(I, U)$
+    mit $u'(t) = f(t, u(t))$ für $t \in I$ und $u(t_0) = u_0$.
+    Dieses Problem heißt \begriff{Anfangswertproblem} (AWP).
+\end{Def}
+
+\begin{Bsp}
+    Im \begriff{Räuber-Beute-Modell} wird mit $y_1(t)$ bzw. $y_2(t)$ die
+    Population der Beute- bzw. Raubtiere bezeichnet.
+    Die DGLs $y_1'(t) = \alpha y_1(t) (1 - y_2(t))$ und
+    $y_2'(t) = \beta y_2(t) (y_1(t) - 1)$ modellieren dann den
+    zeitlichen Verlauf der Populationen.
+\end{Bsp}
+
+\subsubsection{%
+    Existenz und Eindeutigkeit der Lösung des Anfangswertproblems%
+}
+
+\begin{Satz}{\name{Peano}}
+    Seien $f$ auf einem kompakten Rechteck\\
+    $R := \{(t, u) \in \real \times U \;|\;
+    |t - t_0| \le a,\; \norm{u - u_0} \le b\}$ stetig,\\
+    $\mu := \max_{(t, u) \in R} \norm{f(t, u)} < \infty$ und
+    $\alpha := \min(a, \frac{b}{\mu})$.\\
+    Dann hat das Anfangswertproblem auf $[t_0 - \alpha, t_0 + \alpha]$
+    mindestens eine Lösung.
+\end{Satz}
+
+\begin{Satz}{\name{Picard}-\name{Lindelöf}}
+    Sei zusätzlich $f$ in $R$ im zweiten Argument \name{Lipschitz}-stetig,
+    d.\,h.
+    $\norm{f(t, w) - f(t, \widetilde{w})} \le L \norm{w - \widetilde{w}}$
+    für alle $(t, w), (t, \widetilde{w}) \in R$.\\
+    Dann existiert für $U = \real^n$ genau eine Lösung
+    $u \in \C^1([t_0 - \alpha, t_0 + \alpha], \real^n)$.
+\end{Satz}
+
+\begin{Satz}{\name{Banach}scher Fixpunktsatz}
+    Seien $(X, \norm{\cdot})$ ein Banachraum und
+    $D \subset X$ eine abgeschlossene Teilmenge mit $D \not= \emptyset$.
+    Sei außerdem $T\colon D \rightarrow X$ eine Abbildung mit
+    $T(D) \subset D$ und
+    $\exists_{0 < c < 1} \forall_{v, \widetilde{v} \in D}\;
+    \norm{Tv - T\widetilde{v}} \le c \norm{v - \widetilde{v}}$.
+    Dann gibt es genau ein $u \in D$, sodass $Tu = u$.
+\end{Satz}
+
+\subsubsection{%
+    Behandlung von Anfangswertproblemen höherer Ordnung%
+}
+
+\begin{Bem}
+    Ein \begriff{Anfangswertproblem höherer Ordnung} ist ein Anfangswertproblem
+    der Form $y^{(m)}(t) = f(t, y(t), y'(t), \dotsc, y^{(m-1)}(t))$ mit
+    $y^{(i)}(t_0) = y_{0,i}$ für $i = 0, \dotsc, m - 1$.\\
+    Es kann in ein \begriff{System 1. Ordnung} umgeformt werden, indem
+    $z_1(t) = y(t)$, $z_2(t) = y'(t)$, \dots, $z_m(t) = y^{(m-1)}(t)$ gesetzt
+    wird.
+    Damit ist $z' = (z_1', z_2', \dotsc, z_{m-1}', z_m')^t$\\
+    $= (z_2, z_3, \dotsc, z_m, f(t, z_1, z_2, \dotsc, z_m))^t$
+    ein System 1. Ordnung mit der Anfangsbedingung\\
+    $z(t_0) = (y(t_0), y'(t_0), \dotsc, y^{(m-1)}(t_0))^t =
+    (y_{0,0}, y_{0,1}, \dotsc, y_{0,m-1})^t$.
+\end{Bem}
+
+\begin{Bsp}
+    Die \begriff{elastische Schwingung} eines fest eingespannten
+    Federpendels, an dem ein Körper mit Masse $m$ hängt, kann durch die DGL
+    $m y''(t) + r y'(t) + D(y(t) - \ell) = g(t)$ beschrieben werden,
+    wenn $y(t)$ die Auslenkung darstellt und $y(0)$ und $y'(0)$ gegeben sind.
+    Umgeformt nach $y''$ ergibt dies
+    $y'' = \frac{1}{m} (g - D(y - \ell) - ry')$.
+    Mit $z_1 = y$ und $z_2 = y'$ ist
+    $z' = (z_1', z_2')^t = (z_2, \frac{1}{m} (g - D(z_1 - \ell) - r z_2))^t$
+    ein System 1. Ordnung mit Anfangsbedingung
+    $z(0) = (y_{0,0}, y_{0,1})^t$.
+\end{Bsp}
+
+\subsubsection{%
+    Lösung durch Trennung der Variablen%
+}
+
+\begin{Bem}
+    Eine DGL hat \begriff{trennbare Veränderliche}, falls sie die Form
+    $y'(t) = f(t) g(y)$ mit $y(t_0) = y_0$ besitzt.
+    In diesem Fall kann sie mit der Gleichung
+    $\frac{1}{g(y)} dy = f(t) dt$ und anschließendem Integrieren, also
+    $\int_{y_0}^y \frac{1}{g(z)}\dz = \int_{t_0}^t f(s)\ds$, gelöst werden,
+    indem nach $y(t)$ umgeformt und die Integrationskonstante mit der
+    Anfangsbedingung berechnet wird.
+\end{Bem}
+
+\begin{Satz}{Korrektheit der Trennung der Veränderlichen}
+    Seien $f \in \C(I_t, \real)$, $g \in \C(I_y, \real)$ und
+    $t_0$ bzw. $y_0$ seien aus dem Inneren von $I_t$ bzw. $I_y$.
+    In diesem Fall ist die obige DGL mit dem eben beschriebenen Algorithmus
+    in einer Umgebung von $t_0$ eindeutig lösbar.
+\end{Satz}
+
+\pagebreak
+
+\subsubsection{%
+    Spezielle Typen von DGL 1. Ordnung%
+}
+
+\begin{Def}{autonom}
+    Eine DGL $u'(t) = f(t, u(t))$ heißt \begriff{autonom},
+    falls $u'(t) = f(u(t))$.
+\end{Def}
+
+\begin{Def}{linear}
+    Eine DGL $u'(t) = f(t, u(t))$ heißt \begriff{linear},
+    falls $u'(t) = A(t) u(t) + b(t)$ mit\\
+    $A \in \C(I, \real^{n \times n})$ und $b \in \C(I, \real^n)$.\\
+    Eine lineare DGL heißt \begriff{homogen}, falls $b \equiv 0$,
+    sonst heißt sie \begriff{inhomogen}/\begriff{af"|fin}.
+\end{Def}
+
+\begin{Satz}{eindeutige Lösbarkeit linearer DGLs}\\
+    Sei $u'(t) = A(t)u(t) + b(t)$ eine lineare DGL mit
+    $A \in \C(I, \real^{n \times n}) \cap
+    L^\infty(\real, \real^{n \times n})$.\\
+    Dann hat das Anfangswertproblem genau eine Lösung in $\C^1(I, \real^n)$.
+\end{Satz}
+
+\begin{Satz}{Lösungen linearer DGLs}
+    Unter den Voraussetzungen von eben gilt:
+    \begin{enumerate}
+        \item
+        Die Lösungen der homogenen DGL $u'(t) = A(t) u(t)$
+        bilden einen $n$-dimensionalen Unterraum
+        $V \subset \C^1(\real, \real^n)$ mit einer Basis
+        $u_i \in \C^1(\real, \real^n)$, $u_i(0) = e_i$, $i = 1, \dotsc, n$.\\
+        Die \begriff{normierte Fundamentalmatrix} ist
+        $Y_0(t) = (u_1, \dotsc, u_n)$.
+        
+        \item
+        Die Lösungen der inhomogen DGL $u'(t) = A(t) u(t) + b(t)$
+        bilden einen af"|finen Unterraum
+        $\widetilde{u} + V \subset \C^1(\real, \real^n)$
+        mit einer speziellen Lösung $\widetilde{u}$.
+        Für die Lösung gilt\\
+        $u(t) = Y_0(t) u_0 + \int_0^t Y_0(t) (Y_0(s))^{-1} b(s) \ds$
+        (dabei sei $t_0 = 0)$.
+        
+        \item
+        Ist die DGL autonom, d.\,h. ist $u'(t) = A u(t)$, so gilt
+        $Y_0(t) = e^{At} := \sum_{n=0}^\infty \frac{t^n}{n!} A^n$.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bsp}
+    \matrixsize{$\begin{pmatrix}u_1'(t)\\u_2'(t)\end{pmatrix}$}
+    $=$
+    \matrixsize{$\begin{pmatrix}u_2(t)\\u_1(t)\end{pmatrix}$}
+    $+$
+    \matrixsize{$\begin{pmatrix}1\\0\end{pmatrix}$}, d.\,h.
+    $A =$
+    \matrixsize{$\begin{pmatrix}0 & 1\\1 & 0\end{pmatrix}$}.
+    Es gilt $A^2 = E_2$, d.\,h.\\
+    $Y_0(t) = \sum_{n=0}^\infty \frac{t^n}{n!} A^n =
+    \sum_{k=0}^\infty \frac{t^{2k+1}}{(2k+1)!} A +
+    \sum_{k=0}^\infty \frac{t^{2k}}{(2k)!} E_2 =
+    \sinh(t) A + \cosh(t) E_2 =$
+    \matrixsize{$\begin{pmatrix}\cosh(t) & \sinh(t)\\
+    \sinh(t) & \cosh(t)\end{pmatrix}$}.\\
+    Wegen $\det Y_0(t) = \cosh^2(t) - \sinh^2(t) = 1$ gilt
+    $Y_0^{-1}(t) =$
+    \matrixsize{$\begin{pmatrix}\cosh(t) & -\sinh(t)\\
+    -\sinh(t) & \cosh(t)\end{pmatrix}$}
+    und somit ist die Lösung
+    $u(t) = 2$
+    \matrixsize{$\begin{pmatrix}\sinh(t)\\\cosh(t)\end{pmatrix}$}
+    $-$
+    \matrixsize{$\begin{pmatrix}0\\1\end{pmatrix}$}.
+\end{Bsp}
+
+\begin{Bsp}
+    Für $u'(t) = t^3 u + e^t$, $u(0) = 1$ ist die homogene DGL
+    $u_h' = t^3 u_h$, deren Lösung ist $u_h(t) = e^{t^4/4} = Y_0(t)$.
+    Die allgemeine Lösungsformel von oben ergibt nun\\
+    $u(t) = e^{t^4/4} +
+    e^{t^4/4} \cdot \int_0^t e^{\tau - \tau^4/4} \d\tau$,
+    jedoch kann das Integral analytisch nicht berechnet werden.\\
+    Die bestehenden Möglichkeiten sind nun einerseits das Anwenden einer
+    Quadraturformel für das Integral, zum anderen numerische Verfahren für
+    das Ausgangsproblem.
+\end{Bsp}
+
+\pagebreak
+
+\subsection{%
+    Einzelschrittverfahren%
+}
+
+\begin{Def}{Einzelschrittverfahren}
+    Angenommen, das Anfangswertproblem besitzt eine eindeutige Lösung
+    $u \in \C^1(I, \real^n)$.
+    Seien $t_0 := 0$ und $I := [0, T]$ mit $T > 0$.\\
+    Ein \begriff{Schrittweitenvektor} ist ein Vektor
+    $h := (h_0, \dotsc, h_{N-1})^t \in [0, T]^N$ mit
+    $\sum_{j=0}^{N-1} h_j = T$.\\
+    Das \begriff{Gitter} $I_h$ zu $h$ ist
+    $I_h := \{0 = t_0, t_1, \dotsc, t_N = T\}$ mit
+    $t_j := t_{j-1} + h_{j-1}$.\\
+    Das Gitter heißt \begriff{äquidistant}, falls $h_0 = \dotsb = h_{N-1}$.
+    In diesem Fall sei $h$ skalar ($h = h_0$).\\
+    Die \begriff{Gitterweite} ist $|h| := \max_{j=0,\dotsc,N-1} h_j$.\\
+    Das Ziel ist die Bestimmung einer Gitterfunktion
+    $u_h\colon I_h \rightarrow \real^n$.
+    Dabei setzt man $u_j := u_h(t_j)$ für $j = 0, \dotsc, N$.
+\end{Def}
+
+\subsubsection{%
+    Das \name{Euler}sche Polygonzugverfahren%
+}
+
+\begin{Bem}
+    Zur Vereinfachung setzt man $n = 1$,
+    $I_h$ äquidistant und $u_h(t_0) = u_0$.\\
+    Für die exakte Lösung $u$ des Anfangswertproblems gilt
+    $u(t_1) = u(t_0) + u'(t_{01}) (t_1 - t_0)$\\
+    $= u_0 + h f(t_{01}, u(t_{01}))$
+    mit $t_{01} \in [t_0, t_1]$ (Taylorformel mit Restglied).\\
+    Mittels $t_{01} \approx t_0$ erhält man eine Näherung
+    $u_1 = u_h(t_1)$ für $u(t_1)$, wobei
+    $u_1 = u_0 + h f(t_0, u_0)$.
+\end{Bem}
+
+\begin{Def}{explizites \name{Euler}-Verfahren}\\
+    Das \begriff{explizite \name{Euler}-Verfahren} hat die Iterationsvorschrift
+    $u_j := u_{j-1} + h f(t_{j-1}, u_{j-1})$.
+\end{Def}
+
+\begin{Bsp}
+    Für $u'(t) = t^3 u + e^t$, $u(0) = 1$ und $t \in [0, 1]$ erhält man schon
+    für geringe $N$ gute Näherungen.
+    Bei $u'(t) = \sin(t) u(t)$, $u(0) = 1$
+    (exakte Lösung $u(t) = e^{1 - \cos(t)}$) und $t \in [0, 50]$
+    benötigt man schon wesentlich größere Werte für $N$, um sinnvolle
+    Näherungen zu erzeugen.
+\end{Bsp}
+
+\subsubsection{%
+    Allgemeine Definition, Beispiele%
+}
+
+\begin{Def}{explizites Einschrittverfahren}
+    Es seien ein Gitter $I_h$ und eine Funktion\\
+    $\phi \in \C([0, T]^2 \times \real^n, \real^n)$ gegeben.
+    Dann heißt das Verfahren
+    $u_j := u_{j-1} + h_{j-1} \phi(h_{j-1}, t_{j-1}, u_{j-1})$,
+    $j = 1, \dotsc, N$ \begriff{explizites Einschrittverfahren} (ESV)
+    und $\phi$ heißt \begriff{zugehörige Inkrementfunktion}.
+\end{Def}
+
+\begin{Bsp}
+    Im Euler-Verfahren setzt man
+    $u'(t_{01}) \approx u'(t_0) = f(t_0, u_0)$.\\
+    Man kann dies auch anders approximieren:
+    $u'(t_{01}) \approx f(t_0 + \frac{h}{2}, u(t_0 + \frac{h}{2}))$ mit\\
+    $u(t_0 + \frac{h}{2}) \approx u(t_0) + \frac{h}{2} u'(t_0) =
+    u_0 + \frac{h}{2} f(t_0, u_0)$.
+    Daraus ergibt sich die neue Iterationsvorschrift
+    $u_j := u_{j-1} + h_{j-1} f(t_{j-1} + \frac{h_{j-1}}{2}, u_{j-1} +
+    \frac{h_{j-1}}{2} f(t_{j-1}, u_{j-1}))$, $j = 1, \dotsc, N$.\\
+    Dieses Verfahren nennt sich
+    \begriff{modifiziertes explizites \name{Euler}-Verfahren}.
+\end{Bsp}
+
+\begin{Bsp}
+    Ein anderes Verfahren ergibt sich wie folgt:
+    $u'(t_1) = u(t_0) + (t_1 - t_0) u'(t_{01})$\\
+    $= u_0 + h f(t_{01}, u(t_{01})) =
+    u_0 + \frac{h}{2} (f(t_{01}, u(t_{01})) + f(t_{01}, u(t_{01}))) \approx
+    u_0 + \frac{h}{2} (f(t_0, u(t_0)) + f(t_1, u(t_1)))$\\
+    $\approx
+    u_0 + \frac{h}{2} (f(t_0, u_0) + f(t_0 + h, u_0 + h f(t_0, u_0)))$.\\
+    Das sogenannte \begriff{Verfahren von \name{Heun}} hat also die
+    Iterationsvorschrift\\
+    $u_j := u_{j-1} + \frac{h_{j-1}}{2} (f(t_{j-1}, u_{j-1}) +
+    f(t_{j-1} + h_{j-1}, u_{j-1} + h_{j-1} f(t_{j-1}, u_{j-1})))$,
+    $j = 1, \dotsc, N$.
+\end{Bsp}
+
+\linie
+
+\begin{Def}{explizites \name{Euler}-Verfahren}
+    Die Inkrementfunktion des
+    \begriff{expliziten \name{Euler}-Verfahrens} ist\\
+    $\phi(k, t, w) := f(t, w)$.
+\end{Def}
+
+\begin{Def}{modifiziertes explizites \name{Euler}-Verfahren}
+    Die Inkrementfunktion des\\
+    \begriff{modifizierten expliziten \name{Euler}-Verfahrens} ist
+    $\phi(k, t, w) := f(t + \frac{k}{2}, w + \frac{k}{2} f(t, w))$.
+\end{Def}
+
+\begin{Def}{Verfahren von \name{Heun}}
+    Die Inkrementfunktion des \begriff{Verfahrens von \name{Heun}} ist\\
+    $\phi(k, t, w) := \frac{1}{2} (f(t, w) + f(t + k, w + k f(t, w)))$.
+\end{Def}
+
+\pagebreak
+
+\subsubsection{%
+    Konsistenz, Konvergenz, Stabilität, numerischer Aufwand%
+}
+
+\begin{Def}{globale Fehlerfunktion/globaler Diskretisierungsfehler}\\
+    Die Funktion $e_h\colon I_h \rightarrow \real^n$ mit
+    $e_h := u|_{I_h} - u_h$ heißt \begriff{globale Fehlerfunktion}.\\
+    Der \begriff{globale Diskretisierungsfehler} ist
+    $\overline{e_h} := \max_{j=0,\dotsc,N} \norm{e_h(t_j)}$.
+\end{Def}
+
+\begin{Def}{lokale Fehlerfunktion/lokaler Diskretisierungsfehler}\\
+    Die Funktion $\varepsilon_h\colon I_h \rightarrow \real^n$ mit
+    $\varepsilon_h(t_j) = \frac{1}{h_j}
+    (u(t_{j+1}) - u(t_j) - h_j \phi(h_j, t_j, u(t_j)))$ heißt\\
+    \begriff{lokale Fehlerfunktion}.
+    Der \begriff{lokale Diskretisierungsfehler} ist
+    $\overline{\varepsilon_h} :=
+    \max_{j=0,\dotsc,N} \norm{\varepsilon_h(t_j)}$.
+\end{Def}
+
+\begin{Bem}
+    Der lokale Diskretisierungsfehler gibt den Fehler an, der bei einem
+    Schritt gemacht wird.
+    Er kann als Dif"|ferenz von der Steigung der exakten Lösung $u$ und der
+    Steigung der Approximation $u_h$ interpretiert werden.
+\end{Bem}
+
+\linie
+
+\begin{Def}{Konvergenz}
+    Das Einzelschrittverfahren heißt \begriff{konvergent}, falls
+    $\overline{e_h} \to 0$ für $|h| \to 0$.
+\end{Def}
+
+\linie
+
+\begin{Def}{Konsistenz}
+    Das Einzelschrittverfahren heißt \begriff{konsistent} zu (AWP), falls
+    $\overline{\varepsilon_h} \to 0$ für $|h| \to 0$.
+\end{Def}
+
+\begin{Def}{Konsistenzordnung}\\
+    Das Einzelschrittverfahren heißt \begriff{konsistent zur Ordnung $p$} zu
+    (AWP), falls
+    $\overline{\varepsilon_h} = \O(|h|^p)$.
+\end{Def}
+
+\begin{Def}{numerischer Aufwand}
+    Der \begriff{numerische Aufwand} ist die Anzahl der Auswertungen von $f$.
+\end{Def}
+
+\begin{Bsp}
+    Konsistenz und numerischer Aufwand der bisher betrachteten Verfahren:\\
+    explizites Euler-Verfahren: $p = 1$ und $1$\\
+    modifiziertes Euler-Verfahren: $p = 2$ und $2$\\
+    Verfahren von Heun: $p = 2$ und $2$
+\end{Bsp}
+
+\begin{Bem}
+    Der Aufwand pro Zeitschritt ist proportional zu $p$.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Konsistenz von Einzelschrittverfahren}
+    Seien $h \in [0, T]^N$ ein Schrittweitenvektor,
+    $I_h$ ein Gitter und $\phi \in \C([0, T]^2 \times \real^n, \real^n)$
+    die Inkrementfunktion für ein Einzelschrittverfahren (ESV).
+    \begin{enumerate}[label=(\emph{\roman*})]
+        \item
+        Das Einzelschrittverfahren ist zu (AWP) konsistent genau dann, wenn\\
+        $\forall_{t \in I}\; \phi(0, t, u(t)) = f(t, u(t))$.
+        
+        \item
+        Seien zusätzlich $f \in \C^p(I \times \real^n, \real^n)$ und
+        $\phi \in \C^p([0, T]^2 \times \real^n, \real^n)$.\\
+        Dann ist das Einzelschrittverfahren konsistent mit der Ordnung $p$
+        zu (AWP) genau dann, wenn
+        $\forall_{t \in I}\; \frac{d^i}{dt^i} f(t, u(t))
+        = (i + 1) \frac{\partial^i}{\partial k^i} \phi(k, t, u(t))|_{k=0}$
+        für $i = 0, \dotsc, p - 1$.
+    \end{enumerate}
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Was ist der Zusammenhang zwischen dem lokalen Konsistenzfehler
+    $\varepsilon_h$ und dem globalen Fehler $e_h$?
+\end{Bem}
+
+\begin{Def}{Raum der beschränkten Gitterfunktionen}
+    Sei $I_h$ ein Gitter zum Schrittweitenvektor $h$.
+    Die Menge $X_h := \{v_h\colon I_h \setminus \{t_n = T\} \rightarrow
+    \real^n \;|\; \exists_{c > 0} \forall_{j = 0, \dotsc, N - 1}\;
+    \norm{v_h(t_j)} \le c\}$ heißt\\
+    \begriff{Raum der beschränkten Gitterfunktionen}.\\
+    Mit der Norm $\norm{v_h}_\infty :=
+    \max_{j = 0, \dotsc, N - 1} \norm{v_h(t_j)}_\infty$
+    ist $X_h$ ein Banachraum isomorph zu $\real^{nN}$.
+\end{Def}
+
+\begin{Def}{diskreter Operator}
+    Seien $I_h$ ein Gitter zum Schrittweitenvektor $h$
+    und $\phi \in \C(I^2 \times \real^n, \real^n)$
+    die Inkrementfunktion für ein Einzelschrittverfahren (ESV).
+    Der Operator $T_h\colon X_h \rightarrow X_h$,\\
+    $(T_h v_h)(t_0) := v_h(t_0) - u_0$ und
+    $(T_h v_h)(t_j) := \frac{1}{h_j} (v_h(t_{j+1}) - v_h(t_j) -
+    h_j \phi(h_j, t_j, v_h(t_j)))$ für\\
+    $j = 1, \dotsc, N - 1$
+    heißt der dem Einzelschrittverfahren (ESV)
+    zugeordnete \begriff{diskrete Operator}.
+\end{Def}
+
+\begin{Bem}\\
+    $u_h$ ist die Gitterfunktion aus einem Einzelschrittverfahren genau dann,
+    wenn $T_h u_h = 0$.\\
+    Es gilt $\norm{T_h(u|_{I_h})} = \O(|h|^p)$,
+    da $(T_h (u|_{I_h}))(t_j) = \varepsilon_h(t_j)$,
+    falls (ESV) kons. mit Ordn. $p$ ist.
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Def}{Stabilität}
+    Der Operator $T_h$ heißt \begriff{stabil}, falls\\
+    $\exists_{c, \overline{h} > 0} \forall_{h \in [0, T]^N, |h| < \overline{h}}
+    \forall_{v_h^{(1)}, v_h^{(2)} \in X_h}\;
+    \norm{v_h^{(1)} - v_h^{(2)}}_\infty \le
+    c \norm{T_h v_h^{(1)} - T_h v_h^{(2)}}_\infty$.
+\end{Def}
+
+\begin{Bem}
+    Sei das Einzelschrittverfahren (ESV) stabil. Dann gilt:\\
+    Die Lösung $u_h$ von $T_h u_h = 0$ ist eindeutig,
+    denn $\norm{u_h - \widetilde{u}_h}_\infty \le
+    c \norm{T_h u_h - T_h \widetilde{u}_h}_\infty = 0$.\\
+    Die Lösung $u_h$ von $T_h u_h = 0$ ist beschränkt,
+    denn\\
+    $\norm{u_h}_\infty = \norm{u_h - 0}_\infty \le
+    c \norm{T_h u_h - T_h[0]}_\infty = c c_0$
+    für $c_0 := \norm{T_h u_h}_\infty$.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Konvergenz von Einzelschrittverfahren I}\\
+    Sei ein ESV mit Inkrementfunktion
+    $\phi \in \C(I^2 \times \real^n, \real^n)$ gegeben.
+    Ist das ESV stabil, so gilt:
+    \begin{enumerate}[label=(\emph{\roman*})]
+        \item
+        Ist das ESV konsistent, so ist es auch konvergent.
+        
+        \item
+        Ist das ESV konsistent zur Ordnung $p \in \natural$, so gilt
+        $\overline{e_h} = \O(|h|^p)$.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Satz}{Konvergenz von Einzelschrittverfahren II}\\
+    Sei ein ESV mit Inkrementfunktion
+    $\phi \in \C(I^2 \times \real^n, \real^n)$ gegeben.
+    Außerdem existiere für $\overline{h}$ fest eine Konstante $M > 0$ mit
+    $\forall_{k \in (0, \overline{h})} \forall_{t \in I}
+    \forall_{w, \widetilde{w} \in \real^n}\;
+    \norm{\phi(k, t, w) - \phi(k, t, \widetilde{w})}_\infty \le
+    M \cdot \norm{w - \widetilde{w}}_\infty$\\
+    (globale Lipschitz-Bedingung an $\phi$ im dritten Argument).
+    \begin{enumerate}[label=(\emph{\roman*})]
+        \item
+        Das ESV ist stabil.
+        
+        \item
+        Ist das ESV konsistent, so ist es auch konvergent.
+        
+        \item
+        Ist das ESV konsistent zur Ordnung $p$, so existiert eine
+        Konstante $c > 0$, sodass für alle Gitter $I_h$ mit
+        $|h| < \overline{h}$ die Abschätzung
+        $\overline{e_h} \le c c_s |h|^p$ gilt, wobei
+        $c_s := e^{MT} (T+1)$ die \begriff{Stabilitätskonstante} und
+        $I = [0, T]$ ist.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bem}
+    Die Abschätzung von (\emph{iii}) ist bzgl. der Stabilitätskonstanten $c_s$
+    bestmöglich, d.\,h. auf $I = [0, \infty)$ ist nicht mit gleichmäßiger
+    Konvergenz zu rechnen.
+\end{Bem}
+
+\begin{Bsp}
+    Als Beispiel betrachtet man das AWP $u'(t) = a u(t)$ mit $u(0) = 1$ und
+    $a > 0$.
+    Für die Lösung $u(t) = e^{at}$ ergibt sich bei Anwendung des expliziten
+    Euler-Verfahrens mit äquidistantem Gitter
+    $u_j = (1 + ah)^{j-1} = (1 + ah)^{t_j/h - 1}$ (mit $t_j = jh$), also
+    $e_h(t_j) = e^{a t_j} - (1 + ah)^{t_j/h - 1}$.
+\end{Bsp}
+
+\begin{Satz}{Konvergenz von Einzelschrittverfahren III}\\
+    Sei ein ESV mit Inkrementfunktion
+    $\phi \in \C(I^2 \times \real^n, \real^n)$ gegeben.
+    Außerdem existiere für $\overline{h}$ und $\varepsilon > 0$ fest
+    eine Konstante $M > 0$ mit\\
+    $\forall_{k \in (0, \overline{h})}
+    \forall_{t \in I} \forall_{w, \widetilde{w} \in
+    \{v \in \real^n \;|\;
+    \exists_{t \in I}\; \norm{v - u(t)}_\infty \le \varepsilon\}}\;
+    \norm{\phi(k, t, w) - \phi(k, t, \widetilde{w})}_\infty \le
+    M \cdot \norm{w - \widetilde{w}}_\infty$\\
+    (lokale Lipschitz-Bedingung an $\phi$ im dritten Argument).\\
+    Dann gelten (\emph{i}), (\emph{ii}) und (\emph{iii}) aus obigem Satz:
+    \begin{enumerate}[label=(\emph{\roman*})]
+        \item
+        Das ESV ist stabil.
+        
+        \item
+        Ist das ESV konsistent, so ist es auch konvergent.
+        
+        \item
+        Ist das ESV konsistent zur Ordnung $p$, so ist es auch konvergent zur
+        Ordnung $p$.
+    \end{enumerate}
+\end{Satz}
+
+\pagebreak
+
+\subsubsection{%
+    Explizite \name{Runge}-\name{Kutta}-Verfahren%
+}
+
+\begin{Bem}
+    Seien $p \in \natural_0$ und ein Anfangswertproblem (AWP) mit einer
+    Lösung\\
+    $u \in \C^{p+1}(I, \real^n)$ vorgegeben
+    (dies ist z.\,B. der Fall für $f \in \C^p(I, \real^n)$).\\
+    Kann man nun systematisch ein Einzelschrittverfahren mit
+    Konsistenzordnung $p$ konstruieren?
+\end{Bem}
+
+\begin{Bsp}
+    Das Heun-Verfahren $u_{j+1} = u_j + \frac{h_j}{2}
+    (f(t_j, u_j) + f(t_j + h_j, u_j + h_j f(t_j, u_j)))$
+    mit Inkrementfunktion
+    $\phi(k, t, w) = \frac{1}{2} (f(t, w) + f(t + k, w + k f(t, w)))$
+    erreicht durch iterative Auswertung von $f$ eine höhere Konsistenzordnung
+    (nämlich $2$).
+    Es gehört zu den einfachsten expliziten Runge-Kutta-Verfahren.
+\end{Bsp}
+
+\linie
+
+\begin{Def}{explizites \name{Runge}-\name{Kutta}-Verfahren}
+    Seien $r \in \natural$, $\alpha_2, \dotsc, \alpha_r \in \real$,
+    $\gamma_1, \dotsc, \gamma_r \in \real$ und
+    $\beta_{ij}$ für $i = 2, \dotsc, r$, $j = 1, \dotsc, r - 1$ und $i > j$
+    gegeben.\\
+    Das Einzelschrittverfahren (ESV) mit
+    $\phi(k, t, w) := \sum_{i=1}^r \gamma_i K_i(k, t, w)$ und\\
+    $K_1(k, t, w) := f(t, w)$,\\
+    $K_2(k, t, w) := f(t + \alpha_2 k, w + k \cdot \beta_{21} K_1(k, t, w))$,\\
+    \dots,\\
+    $K_r(k, t, w) := f(t + \alpha_r k,
+    w + k \cdot \sum_{s=1}^{r-1} \beta_{rs} K_s(k, t, w))$\\
+    heißt \begriff{allgemeines explizites \name{Runge}-\name{Kutta}-Verfahren}
+    der Stufe $r$.
+\end{Def}
+
+\begin{Def}{\name{Butcher}-Tableau}
+    Die Koef"|fizienten eines allgemeinen Runge-Kutta-Verfahrens können in
+    der Form einer Tabelle (\begriff{\name{Butcher}-Tableau}) zusammengefasst
+    werden:
+    \begin{align*}
+        \begin{array}{c|cccc}
+            \alpha_2 & \beta_{21}\\
+            \vdots & \vdots & \ddots\\
+            \alpha_r & \beta_{r1} & \hdots & \beta_{r,r-1}\\\hline
+            & \gamma_1 & \hdots & \gamma_{r-1} & \gamma_r
+        \end{array}
+    \end{align*}
+\end{Def}
+
+\linie
+
+\begin{Bsp}
+    Das explizite Euler-Verfahren $\phi(k, t, w) = f(t, w)$ (Stufe $1$),
+    das modifizierte Euler-Verfahren
+    $\phi(k, t, w) = f(t + \frac{k}{2}, w + \frac{k}{2} f(t, w))$
+    (Stufe $2$) und das Verfahren von Heun\\
+    $\phi(k, t, w) = \frac{1}{2} (f(t, w) + f(t + k, w + k f(t, w)))$
+    (Stufe $2$)
+    besitzen folgende Butcher-Tableaus:
+    \begin{align*}
+        \begin{array}{c|c}
+            \\\hline
+            & 1
+        \end{array}
+        \qquad
+        \begin{array}{c|ccc}
+            \frac{1}{2} & \frac{1}{2}\\\hline
+            & 0 & 1
+        \end{array}
+        \qquad
+        \begin{array}{c|ccc}
+            1 & 1\\\hline
+            & \frac{1}{2} & \frac{1}{2}
+        \end{array}
+    \end{align*}
+\end{Bsp}
+
+\begin{Bem}
+    Setzt man $\alpha_1 := 0$, so kann man die Koef"|fizientenfunktionen
+    $K_i$ iterativ bestimmen durch die Formel
+    $K_i(k, t, w) = f(t + \alpha_i k,
+    w + k \cdot \sum_{j=1}^{i-1} \beta_{ij} K_j(k, t, w))$ für
+    $i = 1, \dotsc, r$.
+\end{Bem}
+
+\begin{Bsp}
+    Für $K_1 = f(t_j, u_j)$,
+    $K_2 = f(t_j + \frac{h_j}{2}, u_j + \frac{1}{2} h_j K_1)$,
+    $K_3 = f(t_j + \frac{h_j}{2}, u_j + \frac{1}{2} h_j K_2)$,
+    $K_4 = f(t_j + h_j, u_j + h_j K_3)$ ergibt sich ein
+    Runge-Kutta-Verfahren mit der Inkrementfunktion
+    $u_{j+1} = u_j + \frac{h_j}{6} (K_1 + 2K_2 + 2K_3 + K_4)$.
+    Es heißt \begriff{klassisches \name{Runge}-\name{Kutta}-Verfahren} und
+    besitzt folgendes Butcher-Tableau:
+    \begin{align*}
+        \begin{array}{c|cccc}
+            \frac{1}{2} & \frac{1}{2} \\
+            \frac{1}{2} & 0 & \frac{1}{2}\\
+            1 & 0 & 0 & 1\\\hline
+            & \frac{1}{6} & \frac{1}{3} & \frac{1}{3} & \frac{1}{6}
+        \end{array}
+    \end{align*}
+\end{Bsp}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    Man kann sich fragen, wieviele Runge-Kutta-Verfahren $r$-ter Ordnung
+    auch eine Konsistenzordnung von $r$ besitzen.\\
+    Für den Fall $r = 2$ ergibt obiger Satz
+    (Konsistenz von Einzelschrittverfahren)
+    die Bedingungen $f(t, w) = \phi(0, t, w)$ und
+    $\frac{d}{dt} f(t, u(t)) =
+    2 \cdot \frac{\partial}{\partial k} \phi(k, t, u(t))|_{k=0}$.\\
+    Es gilt $\phi(0, t, w) = \gamma_1 f(t, w) + \gamma_2 f(t, w)$
+    und $\frac{d}{dt} f(t, u(t)) = \frac{\partial f}{\partial t} +
+    \frac{\partial f}{\partial u} \cdot \frac{du}{dt} =
+    \frac{\partial f}{\partial t} +
+    \frac{\partial f}{\partial u} \cdot f(t, u(t))$.\\
+    Für die Ableitung von $\phi$ gilt
+    $\phi(k, t, w) = \gamma_1 f(t, w) +
+    \gamma_2 f(t + \alpha_2 k, w + k \beta_{21} f(t, w))$, also\\
+    $2 \cdot \left.\frac{\partial \phi}{\partial k}\right|_{k=0} =
+    2 \gamma_2 (\alpha_2 \frac{\partial f}{\partial t} +
+    \beta_{21} f(t, u(t)) \frac{\partial f}{\partial u})$.\\
+    Aus Koef"|fizientenvergleich ergibt sich das nicht-lineare Gleichungssystem
+    $1 = \gamma_1 + \gamma_2$, $2 \gamma_2 \alpha_2 = 1$,
+    $2 \gamma_2 \beta_{21} = 1$.
+    Für $\gamma_2 \not= 0$ kann man die drei Gleichungen mit vier Unbekannten
+    mit $\gamma_2$ als Parameter auf"|lösen und erhält
+    $\gamma_1 = 1 - \gamma_2$, $\alpha_2 = \frac{1}{2 \gamma_2}$ und
+    $\beta_{21} = \frac{1}{2 \gamma_2}$.
+    Das Butcher-Tableau lautet
+    \begin{align*}
+        \begin{array}{c|cc}
+            \frac{1}{2 \gamma_2} & \frac{1}{2 \gamma_2}\\\hline
+            & 1 - \gamma_2 & \gamma_2.
+        \end{array}
+    \end{align*}
+    Für $\gamma_2 = \frac{1}{2}$ erhält man das Heun-Verfahren und für
+    $\gamma_2 = 1$ das modifizierte Euler-Verfahren.
+\end{Bem}
+
+\begin{Bem}
+    Allgemein muss man ein nicht-lineares Gleichungssystem lösen.
+    Die Konsistenzordnung  eines $r$-stufigen Runge-Kutta-Verfahrens ist nach
+    oben durch $r$ beschränkt.\\
+    Leider gilt i.\,A. nicht, dass $r$ die maximal erreichbare
+    Konsistenzordnung ist:
+    \begin{align*}
+        \begin{array}{c|ccccccccc}
+            r & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & \ge 9\\\hline
+            p_{\max}(r) & 1 & 2 & 3 & 4 & 4 & 5 & 6 & 6 & \le r - 2
+        \end{array}
+    \end{align*}
+\end{Bem}
+
+\begin{Bem}
+    Ein Runge-Kutta-Verfahren der Stufe $r$ ist konsistent genau dann, wenn\\
+    $\sum_{i=1}^r \gamma_i = 1$ gilt, denn
+    aufgrund $K_i(0, t, w) = f(t, w)$ für $i = 1, \dotsc, r$ gilt\\
+    $\phi(0, t, w) = \sum_{i=1}^r \gamma_i K_i(0, t, w) =
+    f(t, w) \cdot \sum_{i=1}^r \gamma_i \overset{!}{=} f(t, w)$.
+\end{Bem}
+
+\subsubsection{%
+    Implizite \name{Runge}-\name{Kutta}-Verfahren%
+}
+
+\begin{Bem}
+    Man spricht von einem \begriff{impliziten Einzelschrittverfahren},
+    falls die Inkrementfunktion $\phi$ auch von $u_{i+1} = u_h(t_{i+1})$
+    abhängt, d.\,h. $u_{i+1} = u_i + h_i \phi(h_i t_i, u_i, u_{i+1})$.\\
+    Die Vorteile sind die verbesserte Stabilität und
+    eine höhere mögliche Konsistenzordnung von bis zu $2r$.
+    Der Nachteil ist natürlich der höhere numerische Aufwand, da man pro
+    Zeitschritt ein in der Regel nicht-lineares Gleichungssystem lösen muss.
+\end{Bem}
+
+\begin{Bsp}
+    Das \begriff{implizite \name{Euler}-Verfahren} ist gegeben durch
+    $u_{i+1} = u_i + h_i f(t_{i+1}, u_{i+1})$.
+\end{Bsp}
+
+\linie
+
+\begin{Def}{implizites \name{Runge}-\name{Kutta}-Verfahren}\\
+    Seien $r \in \natural$, $\alpha_1, \dotsc, \alpha_r \in \real$,
+    $\gamma_1, \dotsc, \gamma_r \in \real$ und
+    $b_{ij}$ für $i, j = 1, \dotsc, r$ gegeben.\\
+    Das Einzelschrittverfahren (ESV) mit
+    $\phi(k, t, w) := \sum_{i=1}^r \gamma_i K_i(k, t, w)$
+    heißt \begriff{allgemeines\\
+    implizites \name{Runge}-\name{Kutta}-Verfahren}
+    der Stufe $r$, falls das nicht-lineare Gleichungssystem\\
+    $K_1(k, t, w) := f(t + \alpha_1 k,
+    w + k \cdot \sum_{s=1}^r b_{1s} K_s(k, t, w))$,\\
+    \dots,\\
+    $K_r(k, t, w) := f(t + \alpha_r k,
+    w + k \cdot \sum_{s=1}^r b_{rs} K_s(k, t, w))$,\\
+    erfüllt ist.
+    Die Koef"|fizienten können analog zum expliziten Fall
+    in einem \begriff{\name{Butcher}-Tableau} zusammengefasst werden:
+    \begin{align*}
+        \begin{array}{c|cccc}
+            \alpha_1 & b_{11} & \hdots & b_{1r}\\
+            \vdots & \vdots & & \vdots\\
+            \alpha_r & b_{r1} & \hdots & b_{rr}\\\hline
+            & \gamma_1 & \hdots & \gamma_r
+        \end{array}
+    \end{align*}
+\end{Def}
+
+\linie
+\pagebreak
+
+\begin{Bsp}
+    Beim impliziten Euler-Verfahren
+    $u_{j+1} = u_j + h_j f(t_{j+1}, u_{j+1})$ ist
+    $K_1 = f(t_{j+1}, u_{j+1})$, d.\,h.
+    $K_1 = f(t_{j+1}, u_j + h_j K_1)$.
+    In der Regel ist pro Zeitschritt eine nicht-lineare Gleichung zu lösen.
+    Man kann z.\,B. eine einfache Iteration
+    $K_1^{(\ell+1)} = f(t_{j+1}, u_j + h_h K_1^{(\ell)})$ bzw.\\
+    $u_{j+1}^{(\ell+1)} = u_j + h_j f(t_{j+1}, u_{j+1}^{(\ell)})$ lösen
+    oder das Newton-Verfahren anwenden.\\
+    Das Butcher-Tableau ist folgendes:
+    \begin{align*}
+        \begin{array}{c|c}
+            1 & 1\\\hline
+            & 1
+        \end{array}
+    \end{align*}
+\end{Bsp}
+
+\begin{Bsp}
+    Allgemeine Runge-Kutta-Verfahren der Stufe $r = 1$ besitzen im
+    skalaren Fall $n = 1$ die nicht-lineare Gleichung
+    $K_1 = f(t + \alpha_1 k, w + k b_{11} K_1)$.
+    Man nimmt an, dass die Gleichung eindeutig lösbar ist mit
+    $K_1 \in \C^1(I^2 \times \real, \real)$.\\
+    Für die Konsistenz muss $\phi(0, t, w) = \gamma_1 K_1(0, t, w) = f(t, w)$
+    gelten, das stimmt für $\gamma_1 = 1$
+    (für $\alpha_1 = b_{11} = 1$ erhält man das implizite Euler-Verfahren).
+    Differentiation von obiger Gleichung in $k = 0$ ergibt
+    $\frac{\partial}{\partial k} \phi(0, t, w) =
+    \frac{\partial f}{\partial t}(t, w) \alpha_1 +
+    \frac{\partial f}{\partial w}(t, w) b_{11} K_1(0, t, w)$ und\\
+    $\frac{d}{dt} f(t, u(t)) = \frac{\partial f}{\partial t}(t, u(t)) +
+    \frac{\partial f}{\partial w}(t, u(t)) f(t, u(t))$.
+    Nach dem Konsistenzsatz muss für $p = 2$ gelten, dass
+    $2 \frac{\partial}{\partial k} \phi(0, t, u(t)) = \frac{d}{dt} f(t, u(t))$,
+    also $\alpha_1 = b_{11} = \frac{1}{2}$.\\
+    Konkret erhält man also
+    $u_{j+1} = u_j + h_j K_1 =
+    u_j + h_j f(t_j + \frac{1}{2} h_j, u_j + \frac{1}{2} h_j K_1)$\\
+    $= u_j + h_j f(\frac{1}{2} (t_j + t_{j+1},
+    u_j + \frac{1}{2} (u_{j+1} - u_j)) =
+    u_j + h_j f(\frac{1}{2} (t_j + t_{j+1}), \frac{1}{2} (u_j + u_{j+1}))$,\\
+    da $K_1 = \frac{1}{h_j} (u_{j+1} - u_j)$.
+\end{Bsp}
+
+\begin{Bsp}
+    implizites Runge-Kutta-Verfahren der Stufe $r = 2$
+    und Ordnung $p = 4$:
+    \begin{align*}
+        \begin{array}{c|cc}
+            (3 - \sqrt{3})/6 & 1/4 & 1/4 - \sqrt{3}/6\\
+            (3 + \sqrt{3})/6 & 1/4 + \sqrt{3}/6 & 1/4\\\hline
+            & 1/2 & 1/2
+        \end{array}
+    \end{align*}
+\end{Bsp}
+
+\linie
+
+\begin{Bem}
+    Jedes implizites ESV lässt sich für $|h|$ hinreichend klein als
+    explizites Verfahren darstellen.
+\end{Bem}
+
+\begin{Bsp}
+    Wendet man das implizite Euler-Verfahren auf $u' = au$ an,
+    so erhält man\\
+    $u_{i+1} = u_i + ahu_{i+1}$, also
+    $u_{i+1} = \frac{1}{1 - ah} u_i =
+    u_i + \left(\frac{1}{1 - ah} - 1\right) u_i =
+    u_i + h \frac{a}{1 - ah} u_i$.
+\end{Bsp}
+
+\begin{Bsp}
+    Für die \begriff{halbimpliziten \name{Runge}-\name{Kutta}-Verfahren}
+    gilt $b_{is} = 0$ für $i < s$, also\\
+    $K_1(k, t, w) := f(t + \alpha_1 k,
+    w + k b_{11} K_1(k, t, w))$,\\
+    \dots,\\
+    $K_r(k, t, w) := f(t + \alpha_r k,
+    w + k \cdot \sum_{s=1}^r b_{rs} K_s(k, t, w))$,\\
+    d.\,h. die einzelnen Gleichungen sind nacheinander lösbar.
+    Das Butcher-Tableau hat dann folgende Form:
+    \begin{align*}
+        \begin{array}{c|cccc}
+            \alpha_1 & b_{11} & & 0\\
+            \vdots & \vdots & \ddots\\
+            \alpha_r & b_{r1} & \hdots & b_{rr}\\\hline
+            & \gamma_1 & \hdots & \gamma_r
+        \end{array}
+    \end{align*}
+\end{Bsp}
+
+\pagebreak
+
+\subsubsection{%
+    Zusammenhang zwischen \name{Runge}-\name{Kutta}-Verfahren und
+    Quadraturformeln%
+}
+
+\begin{Bem}
+    Der Zusammenhang zwischen Runge-Kutta-Verfahren und Quadraturformeln
+    gibt einen weiteren Weg zur systematischen Konstruktion von
+    Runge-Kutta-Verfahren zu einer vorgegebenen Konsistenzordnung $p$.
+\end{Bem}
+
+\begin{Bem}
+    Gegeben sei das allgemeine Runge-Kutta-Verfahren
+    $u_{j+1} = u_j + h_j \cdot \sum_{i=1}^r \gamma_i K_i$,\\
+    $K_i = f(t_j + \alpha_i h_j, u_j + h_j \cdot \sum_{s=1}^r b_{is} K_s)$.\\
+    Im Folgenden wird versucht, eine notwendige Bedingung für die
+    Konsistenzordnung $p$ herzuleiten.
+    Betrachtet man das Anfangswertproblem $u'(t) = g(t)$, $t \in I$,
+    $u(0) = u_0 \in \real^n$ mit $g\colon I \rightarrow \real^n$
+    (Lösung $u(t) = u_0 + \int_{t_0}^t g(\tau)\d\tau$), so
+    ergibt das Runge-Kutta-Verfahren\\
+    $\frac{1}{h_j} (u_{j+1} - u_j) =
+    \sum_{i=1}^r \gamma_i g(t_j + \alpha_i h_j)$.
+    Der Konsistenzfehler ist laut Definition\\
+    $\varepsilon_h(t_j) = \frac{1}{h_j} (u(t_{j+1}) - u(t_j) -
+    h_j \sum_{i=1}^r \gamma_i g(t_j + \alpha_i h_j)) =
+    \frac{1}{h_j} \left(\int_{t_j}^{t_{j+1}} g(t)\dt -
+    h_j \sum_{i=1}^r \gamma_i g(t_j + \alpha_i h_j)\right)$, d.\,h. um die
+    Konsistenzordnung $p$ zu erreichen, muss\\
+    $\left|\int_{t_j}^{t_{j+1}} g(t)\dt -
+    h_j \sum_{i=1}^r \gamma_i g(t_j + \alpha_i h_j)\right| = \O(h_j^{p+1})$
+    gelten.\\
+    Dies ist ein Quadraturproblem (Gewichte $\gamma_i$,
+    Stützstellen $t_j + \alpha_i h_j$).
+    Damit können die Koef"|fizienten $\alpha_1, \dotsc, \alpha_r$ und
+    $\gamma_1, \dotsc, \gamma_r$ bestimmt werden.
+\end{Bem}
+
+\begin{Bem}
+    Das Einsetzen der exakten Lösung in das Runge-Kutta-Verfahren ergibt\\
+    $\frac{u(t_{j+1}) - u(t_j)}{h_j} \approx
+    \sum_{i=1}^r \gamma_i K_i(h_j, t_j, u(t_j))$.
+    Daraus folgt
+    $\int_{t_j}^{t_{j+1}} u'(t)\dt \approx
+    h_j \sum_{i=1}^r \gamma_i K_i(h_j, t_j, u(t_j))$.\\
+    Wegen der Gleichung von eben sollte für schon gegebene $\alpha_i$ und
+    $\gamma_i$ gelten, dass $K_i \approx u'(t_j + \alpha_i h_j)$
+    für $i = 1, \dotsc, r$.
+    Aus der Definition der $K_i$ folgt damit
+    $K_i = f(t_j + \alpha_i h_j, u_j + h_j \sum_{s=1}^r b_{is} K_s)
+    \approx u'(t_j + \alpha_i h_j) =
+    f(t_j + \alpha_i h_j, u(t_j + \alpha_i h_j))$.
+    Daraus folgt $u(t_j + \alpha_i h_j) \approx
+    u(t_j) + h(t_j) \sum_{s=1}^r b_{is} K_s$, d.\,h.
+    $\int_{t_j}^{t_j + \alpha_i h_j} u'(t)\dt \approx
+    \sum_{s=1}^r b_{is} u'(t_j + \alpha_s h_j)$ für $i = 1, \dotsc, r$.
+    Somit erhält man ein Quadraturproblem, mit dem sich die
+    $b_{is}$ bestimmen lassen ($i, s = 1, \dotsc, r$).\\
+    Dies motiviert den folgenden Satz.
+\end{Bem}
+
+\begin{Satz}{\name{Butcher}, \name{Kunzmann}, 1969}
+    Es sei ein Runge-Kutta-Verfahren mit $\alpha_i, \gamma_i \in \real$ für
+    $i = 1, \dotsc, r$ und $b_{ij} \in \real$ für $i, j = 1, \dotsc, r$
+    gegeben.
+    Für $p, q \in \natural$ seien die Koef"|fizienten so gewählt, dass
+    für alle $g_1 \in \C^{p+1}(I, \real^n)$ und $g_2 \in \C^{q+1}(I, \real^n)$
+    gilt
+    \begin{enumerate}[label=(\emph{\roman*})]
+        \item
+        $\left|\frac{1}{h_j} \int_{t_j}^{t_{j+1}} g_1(t)\dt -
+        \sum_{s=1}^r \gamma_s g_1(t_j + \alpha_s h_j)\right| = \O(h_j^p)$
+        für $j = 0, \dotsc, N - 1$ und
+        
+        \item
+        $\left|\frac{1}{h_j} \int_{t_j}^{t_j + \alpha_i h_j} g_2(t)\dt -
+        \sum_{s=1}^r \beta_{is} g_2(t_j + \alpha_s h_j)\right| = \O(h_j^q)$
+        für $j = 0, \dotsc, N - 1$ und $i = 1, \dotsc, r$.
+    \end{enumerate}
+    Dann ist das Runge-Kutta-Verfahren konsistent mit der Ordnung
+    $\min\{p, q + 1\}$.
+\end{Satz}
+
+\linie
+
+\begin{Def}{Exaktheit einer Quadraturformel}
+    Es seien $g \in \C([0, 1], \real)$ und $\tau \in \left(0, 1\right]$
+    gegeben.\\
+    Sei $Q(g) := \sum_{i=1}^r \gamma_i g(\alpha_i)$ eine Quadraturformel
+    für das Integral $\int_0^\tau g(t)\dt$, wobei
+    $\alpha_i \in [0, 1]$ und $\gamma_i \in \real$ für $i = 1, \dotsc, r$.
+    $Q$ heißt \begriff{vom Grad $\ell$ exakt}, falls
+    $Q(p) - \int_0^\tau p(t)\dt = 0$ für alle $p \in P_\ell$\\
+    ($P_\ell$ Menge der Polynome vom Grad $\le \ell$).
+\end{Def}
+
+\begin{Satz}{Fehler einer Quadraturformel mit \name{Peano}-Kern}
+    Seien $\ell \in \natural$, $g \in \C^{\ell+1}([0, 1], \real)$,\\
+    $\tau \in \left(0, 1\right]$ und
+    $Q$ eine Quadraturformel, die vom Grad $\ell$ exakt ist.\\
+    Dann gilt $\int_0^\tau g(t)\dt =
+    Q(g) + \int_0^1 \pi_{\ell+1}(t) g^{(\ell+1)}(t)\dt$,
+    wobei $\pi_{\ell+1}$ der \begriff{\name{Peano}-Kern}\\
+    $\pi_{\ell+1}(t) := \frac{1}{(\ell + 1)!} (((\tau - t)_+)^{\ell+1} -
+    (\ell + 1) \cdot \sum_{i=1}^r \gamma_i ((\alpha_i - t)_+)^\ell)$
+    ist mit\\
+    $t \in [0, 1]$ und $\alpha_+(t) = \max\{\alpha(t), 0\}$.
+\end{Satz}
+
+\linie
+\pagebreak
+
+\begin{Def}{\name{Legendre}-Polynom}
+    Für $m \in \natural_0$ ist das \begriff{\name{Legendre}-Polynom} $p_m$
+    vom Grad $m$ gegeben durch
+    $p_m(t) := \frac{m!}{(2m)!} \cdot \frac{d^m}{dt^m} (t^2 - 1)^m$
+    für $t \in \real$.
+\end{Def}
+
+\begin{Bsp}
+    Es gilt $p_0(t) = 1$,
+    $p_1(t) = t$,
+    $p_2(t) = t^2 - \frac{1}{3}$ usw.
+\end{Bsp}
+
+\begin{Lemma}{Nullstellen und Orthogonalität der \name{Legendre}-Polynome}
+    \begin{enumerate}
+        \item
+        Das Legendre-Polynom $p_m$ besitzt paarweise verschiedene Nullstellen\\
+        $\varrho_1, \dotsc, \varrho_m$ mit
+        $-1 < \varrho_1 < \dotsb < \varrho_m < 1$.
+        
+        \item
+        Für $m, n \in \natural$ mit $m \not= n$ gilt
+        $\int_{-1}^1 p_m(t) p_n(t) \dt = 0$.
+    \end{enumerate}
+\end{Lemma}
+
+\begin{Satz}{\name{Gauß}-Quadratur}
+    Seien $g \in \C([-1, 1], \real)$ und
+    $Q(g) := \sum_{i=1}^m \omega_i g(\varrho_i)$
+    die\\
+    \begriff{\name{Gauß}-Quadraturformel} mit
+    den Stützstellen $\varrho_i$ (Nullstellen des Legendre-Polynoms $p_m$)
+    und den Gewichten $\omega_i := \int_{-1}^1 \left(\prod_{j=1,\;j\not=i}^m
+    \frac{t - \varrho_j}{\varrho_i - \varrho_j}\right) \dt$
+    (Integrale für Lagrange-Polynome) für $m \in \natural$.\\
+    Dann gilt $Q(p) = \int_{-1}^1 p(t)\dt$ für alle $p \in P_{2m-1}$,\\
+    d.\,h. die Gauß-Quadratur ist exakt vom Grad $2m - 1$.
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Nun kann man analysieren, wie gut das Runge-Kutta-Verfahren ist, das durch
+    die Gauß-Quadratur bestimmt wird.
+    Dazu wendet man den Satz von Butcher und Kunzmann an.
+    \begin{enumerate}[label=(\emph{\roman*})]
+        \item
+        Mit $t = t_j + h_j \tau$, $\tau \in [0, 1]$ gilt
+        $\frac{1}{h_j} \int_{t_j}^{t_{j+1}} g_1(t)\dt =
+        \int_0^1 g_1(t_j + h_j \tau)\d\tau$\\
+        $=
+        \sum_{i=1}^r \widetilde{\omega}_i g_1(t_j + h_j \widetilde{\varrho}_i)
+        + \int_0^1 \pi_{2r}(\tau) g_1^{(2r)}(t_j + h_j \tau) \d\tau$,
+        da die Gauß-Quadratur exakt vom Grad $2r - 1$ ist.
+        Daraus folgt
+        $\left|\frac{1}{h_j} \int_{t_j}^{t_{j+1}} g_1(t)\dt -
+        \sum_{i=1}^r \widetilde{\omega}_i g_1(t_j + h_j \widetilde{\varrho}_i)
+        \right|$\\
+        $\le \max_{\tau \in [0, 1]} |\pi_{2r}(\tau)| \cdot
+        \int_0^1 |g_1^{(2r)}(t_j + h_j \tau)| \d\tau \le c |h|^{2r}$
+        aufgrund der Beschränktheit von $\pi$
+        (bei jeder Ableitung von $g_1$ kommt ein Faktor $h_j$ hinzu).
+        Dabei ist $\gamma_i := \widetilde{\omega}_i = \frac{\omega_i}{2}$
+        und $\alpha_i := \widetilde{\varrho}_i = \frac{\varrho_i + 1}{2}$
+        für $i = 1, \dotsc, r$, weil
+        $\int_0^1 g(\tau)\d\tau = \frac{1}{2} \int_{-1}^1 g(\frac{z+1}{2})\dz
+        \approx \frac{1}{2} \sum_{i=1}^r \omega_i g(\frac{\varrho_i + 1}{2})$.
+        
+        \item
+        Analog wie eben ist
+        $\frac{1}{h_j} \int_{t_j}^{t_j + \alpha_i h_j} g_2(t)\dt =
+        \int_0^{\alpha_i} g_2(t_j + h_j \tau)\d\tau$\\
+        $= \sum_{s=1}^r \widehat{\omega}_s g_2(t_j + h_j \widehat{\varrho}_s) +
+        \int_0^1 \pi_{2r}(\tau)
+        g_2^{(2r)}(t_j + h_j \widehat{\varrho}_s)\d\tau$. Daraus folgt wieder\\
+        $\left|\frac{1}{h_j} \int_{t_j}^{t_j + \alpha_i h_j} g_2(t)\dt -
+        \sum_{s=1}^r \widehat{\omega}_s
+        g_2(t_j + h_j \widehat{\varrho}_s)\right| \le c |h|^{2r}$ mit\\
+        $\beta_{is} := \widehat{\omega}_s = \frac{\alpha_i \omega_s}{2}$
+        und $\widetilde{\varrho}_s = \alpha_i \frac{\varrho_s + 1}{2}$ wegen
+        $\int_0^\alpha g(\tau)\d\tau =
+        \frac{\alpha}{2} \int_{-1}^1 g(\alpha \frac{z + 1}{2})\dz$.
+    \end{enumerate}
+    Somit ergibt sich eine Konsistenzordnung von $p = \min\{2r, 2r + 1\} = 2r$.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Mehrschrittverfahren%
+}
+
+\subsubsection{%
+    Definitionen und Beispiele%
+}
+
+\begin{Bem}
+    Um die Genauigkeit von Einzelschrittverfahren zu erhöhen, verwendet man
+    nicht nur die letzte, sondern die letzten $k$ Approximationen.
+\end{Bem}
+
+\begin{Def}{Mehrschrittverfahren}
+    Seien $\psi \in \C(I^{k+2} \times \real^{n(k+1)}, \real^n)$ und
+    $k \in \natural$.\\
+    Weiter seien $a_0, \dotsc, a_k \in \real$
+    und $u_0 = u(t_0), u_1, \dotsc, u_{k-1} \in \real^n$ gegeben.
+    Das Verfahren\\
+    $\frac{1}{h} (a_0 u_j + a_1 u_{j+1} + \dotsb + a_k u_{j+k}) =
+    \psi(h, t_j, \dotsc, t_{j+k}, u_j, \dotsc, u_{j+k})$ mit
+    $j = 0, \dotsc, N - k$ heißt\\
+    \begriff{$k$-Mehrschrittverfahren} ($k$-MSV) mit Verfahrensfunktion $\psi$.
+    (Das Gitter $I_h$ ist also äquidistant.)
+\end{Def}
+
+\begin{Bem}
+    Falls $\psi$ nicht von $u_{j+k}$ abhängt und $a_k \not= 0$ gilt, so heißt
+    das $k$-MSV \begriff{explizit}.\\
+    Ein explizites $1$-MSV ist ein explizites Einzelschrittverfahren.
+\end{Bem}
+
+\begin{Bem}
+    Um die Verfahrensgleichung lösen zu können, müssen zunächst die Startwerte
+    $u_0, \dotsc, u_{k-1}$ bekannt sein.
+    Diese sollte mit einem ESV derselben Konsistenzordnung berechnet werden.
+\end{Bem}
+
+\begin{Def}{lineares MSV}
+    Falls die Verfahrensfunktion $\psi$ von der Form
+    $\psi(h, t_j, \dotsc, t_{j+k}, u_j, \dotsc, u_{j+k}) =
+    \sum_{i=0}^k b_i f(t_{j+i}, u_{j+i})$ mit $b_0, \dotsc, b_k \in \real$ ist,
+    so heißt das zugehörige $k$-MSV \begriff{linear}.\\
+    Lineare MSV haben also die Form
+    $\frac{1}{h} \sum_{i=0}^k a_i u_{j+i} =
+    \sum_{i=0}^k b_i f(t_{j+i}, u_{j+i})$
+\end{Def}
+
+\linie
+
+\begin{Bem}
+    Auch MSV lassen sich durch Quadraturformeln herleiten.
+    Die Integralgleichung $u(t) = u(s) + \int_s^t f(r, u(r))\dr$ mit $t > s$
+    und $t, s \in I$ ist äquivalent zu $u'(t) = f(t, u(t))$, speziell gilt
+    $u(t_{j+k}) = u(t_{j+k-1}) + \int_{t_{j+k-1}}^{t_{j+k}} f(r, u(r))\dr =
+    u(t_{j+k-1}) + \int_{t_{j+k-1}}^{t_{j+k}} u'(r)\dr$.
+\end{Bem}
+
+\begin{Bsp}
+    Verwendet man die Trapezregel\\
+    $u(t_{j+1}) = u(t_j) + \int_{t_j}^{t_{j+1}} f(r, u(r))\dr \approx
+    u(t_j) + \frac{1}{2} h (f(t_j, u(t_j)) + f(t_{j+1}, u(t_{j+1})))$
+    (also $k = 1$), so ergibt sich das \begriff{Trapezverfahren}
+    $u_{j+1} := u_j + \frac{1}{2} h (f(t_j, u_j) + f(t_{j+1}, u_{j+1}))$.
+\end{Bsp}
+
+\begin{Bem}
+    Eine Idee für weitere Verfahren ist eine bessere Approximation der
+    Integralgleichung durch Ersetzung des Integranden $u'(r)$ durch ein
+    Interpolationspolynom.\\
+    Die Interpolationspolynome $p_j \in P_{k-1}$, $j = 0, \dotsc, N - k$
+    sind eindeutig bestimmt durch die $k$ Bedingungen
+    $p_j(t_{j+i}) := u'(t_{j+i}) = f(t_{j+i}, u(t_{j+i}))$ für
+    $i = 0, \dotsc, k - 1$.
+    Man erhält die veränderte Integralgleichung
+    $u(t_{j+k}) \approx u(t_{j+k-1}) +
+    \int_{t_{j+k-1}}^{t_{j+k}} p_j(r)\dr$.\\
+    Da man dafür allerdings die exakte Lösung $u$ benötigt, kann man auch
+    $\widetilde{p}_j \in P_{k-1}$ verwenden, die analog definiert sind durch
+    $\widetilde{p}_j(t_{j+i}) := f(t_{j+i}, u_{j+i})$ für
+    $i = 0, \dotsc, k - 1$.
+    Verwendet man $\widetilde{p}_j$ statt $p_j$ in der Integralgleichung,
+    so erhält man ein explizites $k$-MSV\\
+    $\frac{1}{h} (u_{j+k} - u_{j+k-1}) = \psi(h, t_j, \dotsc, t_{j+k},
+    u_j, \dotsc, u_{j+k-1}) := \frac{1}{h}
+    \int_{t_{j+k-1}}^{t_{j+k}} \widetilde{p}_j(r)\dr$.
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Ein Beispiel für ein so erhaltenes
+    lineares $4$-Mehrschrittverfahren mit $p = 4$ ist\\
+    $\frac{1}{h} (u_{j+4} - u_{j+3}) = \frac{1}{24}
+    (55 f(t_j, u_j) - 59 f(t_{j+1}, u_{j+1}) + 37 f(t_{j+2}, u_{j+2}) -
+    9 f(t_{j+3}, u_{j+3}))$.\\
+    Es heißt \begriff{\name{Adams}-\name{Bashforth}-Verfahren} der
+    Stufe $k = 4$.
+\end{Bsp}
+
+\begin{Bem}
+    Bei jedem Zeitschritt ist nur eine neue Auswertung von $f$ notwendig\\
+    (und zwar in $(t_{j+k-1}, u_{j+k-1})$).
+\end{Bem}
+
+\begin{Bsp}
+    Ein implizites Verfahren lässt sich analog konstruieren, nur bezieht man
+    dabei\\
+    $t_{j+k}, u_{j+k}$ als Stützpunkte für die Interpolation ein.\\
+    Diese Verfahren heißen \begriff{\name{Adams}-\name{Moulton}-Verfahren}.\\
+    Ein Beispiel für $k = 4$ und $p = 5$ ist
+    $\frac{1}{h} (u_{j+4} - u_{j+3})$\\
+    $= \frac{1}{720} (251 f(t_{j+4}, u_{j+4}) + 646 f(t_{j+3}, u_{j+3})
+    - 269 f(t_{j+2}, u_{j+2}) + 106 f(t_{j+1}, u_{j+1}) - 19 f(t_j, u_j)$.
+\end{Bsp}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    Bei den sog. \begriff{Prädiktor-Korrektor-Verfahren} kombiniert man
+    implizite und explizite Verfahren.
+    Seien also $\frac{1}{h} \sum_{i=0}^k a_i u_{j+i} =
+    \psi_1(h, t_j, \dotsc, t_{j+k}, u_j, \dotsc, u_{j+k-1})$ ein explizites und
+    $\frac{1}{h} \sum_{i=0}^k \alpha_i u_{j+i} =
+    \psi_2(h, t_j, \dotsc, t_{j+k}, u_j, \dotsc, u_{j+k})$ ein implizites
+    $k$-MSV.\\
+    Man berechnen nun zuerst den Prädiktor $u_{j+k}^{(p)}$ mit dem expliziten
+    MSV, d.\,h.\\
+    $\frac{1}{h} \sum_{i=0}^{k-1} a_i u_{j+i} +
+    \frac{1}{h} a_k u_{j+k}^{(p)} =
+    \psi_1(h, t_j, \dotsc, t_{j+k}, u_j, \dotsc, u_{j+k-1})$.
+    Anschließend berechnet man $u_{j+k}$ mit dem impliziten Verfahren, also
+    $\frac{1}{h} \sum_{i=0}^k \alpha_i u_{j+i} =
+    \psi_2(h, t_j, \dotsc, t_{j+k}, u_j, \dotsc, u_{j+k-1}, u_{j+k}^{(p)})$.\\
+    Man muss also keine nicht-linearen Gleichungen lösen, sondern man verwendet
+    den Prädiktor als Schätzwert für den wahren Wert $u_{j+k}$.\\
+    Alternativ lässt sich der Prädiktor auch als Startwert für eine
+    Fixpunktiteration verwenden, d.\,h. $u_{j+k}^{(0)} := u_{j+k}^{(p)}$ und
+    $\frac{1}{h} \sum_{i=0}^{k-1} \alpha_i u_{j+i} +
+    \frac{1}{h} \alpha_k u_{j+k}^{(m+1)} :=
+    \psi_2(h, t_j, \dotsc, t_{j+k}, u_j, \dotsc, u_{j+k-1}, u_{j+k}^{(m)})$.
+\end{Bem}
+
+\subsubsection{%
+    Konsistenz und Konvergenz von Mehrschrittverfahren%
+}
+
+\begin{Def}{Fehler von linearen Mehrschrittverfahren}\\
+    Es sei $u_h\colon I_h \rightarrow \real^n$ durch ein lineares
+    $k$-MSV gegeben.\\
+    $e_h := u|_{I_h} - u_h$ ist die \begriff{globale Fehlerfunktion}.\\
+    $\overline{e_h} := \max_{j=0,\dotsc,N} \norm{e_h(t_j)}$ ist der
+    \begriff{globale Diskretisierungsfehler}.\\
+    $\varepsilon_h(t_{j+k}) := \frac{1}{h} \sum_{i=0}^k a_i u(t_{j+i}) -
+    \sum_{i=0}^k b_i f(t_{j+i}, u(t_{j+i}))$, $j = 0, \dotsc, N - k,$
+    ist die \begriff{lokale Fehlerfunkt.}\\
+    $\overline{\varepsilon_h} :=
+    \max_{j=0,\dotsc,N-k} \norm{\varepsilon_h(t_{j+k})}$ ist der
+    \begriff{lokale Diskretisierungsfehler}.
+\end{Def}
+
+\begin{Bem}
+    Die Koef"|fizienten $a_0, \dotsc, a_k, b_0, \dotsc, b_k$ sollten so
+    bestimmt werden, dass\\
+    $\overline{\varepsilon_h} = \O(h^p)$.
+    Dafür betrachtet man $\varepsilon_h(t_{j+k}) =
+    \frac{1}{h} \sum_{i=0}^k a_i u(t_j + ih) - \sum_{i=0}^k b_i u'(t_j + ih)$
+    und setzt für $p_\ell(i) := \frac{1}{\ell!} i^\ell$
+    die Taylor-Entwicklungen
+    $u(t_j + ih) = \sum_{\ell=0}^p h^\ell p_\ell(i) u^{(\ell)}(t_j) +
+    \O(h^{p+1})$ bzw.\\
+    $u'(t_j + ih) = \sum_{\ell=0}^p h^\ell p_\ell(i) u^{(\ell+1)}(t_j) +
+    \O(h^{p+1}) =
+    \sum_{\ell=1}^p h^{\ell-1} p_{\ell-1}(i) u^{(\ell)}(t_j) + \O(h^p)$\\
+    $= \sum_{\ell=1}^p h^{\ell-1} p_\ell'(i) u^{(\ell)}(t_j) + \O(h^p)$
+    ein.
+    Daraus folgt dann\\
+    $\varepsilon_h(t_{j+k}) =
+    \frac{1}{h} \sum_{i=0}^k a_i
+    (\sum_{\ell=0}^p h^\ell p_\ell(i) u^{(\ell)}(t_j)) -
+    \sum_{i=0}^k b_i
+    (\sum_{\ell=1}^p h^{\ell-1} p_\ell'(i) u^{(\ell)}(t_j)) + \O(h^p)$\\
+    $= \sum_{\ell=0}^p h^{\ell-1} u^{(\ell)}(t_j)
+    (\sum_{i=0}^k a_i p_\ell(i) - \sum_{i=0}^k b_i p_\ell'(i)) + \O(h^p)$.\\
+    Verschwindet der Ausdruck in Klammern, so hat das Verfahren die
+    Konsistenzordnung $p$.
+    Das beweist folgenden Satz.
+\end{Bem}
+
+\begin{Satz}{Konsistenz von MSV}
+    Falls die Koef"|fizienten eines linearen $k$-MSV\\
+    $a_0, \dotsc, a_k, b_0, \dotsc, b_k \in \real$ die Bedingungen
+    $\sum_{i=0}^k a_i p_\ell(i) = \sum_{i=0}^k b_i p_\ell'(i)$ für
+    $\ell = 0, \dotsc, p$ erfüllen,
+    so besitzt das MSV die Konsistenzordnung $p$.\\
+    Dabei ist $p_\ell(i) := \frac{1}{\ell!} i^\ell$ und
+    $p_\ell'(i) := p_{\ell-1}(i) = \frac{1}{(\ell - 1)!} i^{\ell - 1}$
+    für $\ell \ge 1$ bzw. $p_0'(i) := 0$.
+\end{Satz}
+
+\begin{Bem}
+    Diese Bedingungen entsprechen einem LGS mit $p + 1$ Gleichungen und
+    $2(k + 1)$ Unbekannten.
+    Da die Lösung $a_0 = \dotsb = a_k = b_0 = \dotsb = b_k = 0$
+    keinen Sinn ergibt,
+    ergänzt man manchmal die Normierungsbedingung $\sum_{i=0}^k b_i = 1$.\\
+    Damit das Gleichungssystem nicht überbestimmt ist, soll es höchstens so
+    viele Gleichungen wie Variablen geben.
+    Mit der Normierungsbedingung ist dann $p + 2 \le 2(k + 1)$, d.\,h.
+    die Konsistenzordnung $p$ ist durch $2k$ nach oben beschränkt.\\
+    Bei expliziten Verfahren ist $b_k = 0$, d.\,h. es gibt eine Variable
+    weniger.
+    Hier ist $p + 2 \le 2k + 1$, also ist die Konsistenzordnung $p$
+    durch $2k - 1$ nach oben beschränkt.
+\end{Bem}
+
+\begin{Bsp}
+    Für $k = 1$ soll $p = 2$ erreicht werden, d.\,h. die Gleichungen
+    $a_0 + a_1 = 0$, $a_1 = b_0 + b_1$, $\frac{1}{2} a_1 = b_1$ und
+    $b_0 + b_1 = 1$ sollen erfüllt werden.
+    Daraus folgt $a_0 = -1$, $a_1 = 1$, $b_0 = \frac{1}{2}$ und
+    $b_1 = \frac{1}{2}$.
+    Man erhält also die Trapezregel
+    $\frac{1}{h} (-u_j + u_{j+1}) = \frac{1}{2} f(t_j, u_j) +
+    \frac{1}{2} f(t_{j+1}, u_{j+1})$.
+\end{Bsp}
+
+\pagebreak
+
+\subsubsection{%
+    Stabilität von Mehrschrittverfahren%
+}
+
+\begin{Def}{erzeugende Polynome}\\
+    Sei ein lineares $k$-Mehrschrittverfahren
+    $\frac{1}{h} \sum_{i=0}^k a_i u_{j+i} =
+    \sum_{i=0}^k b_i f(t_{j+i}, u_{j+i})$
+    gegeben.\\
+    Dann heißen die Polynome
+    $\varrho(z) := \sum_{i=0}^k a_i z^i$ und
+    $\sigma(z) := \sum_{i=0}^k b_i z^i$
+    \begriff{erzeugende Polynome} des MSV
+    ($z \in \complex$).
+\end{Def}
+
+\begin{Def}{alternative Schreibweise von linearen MSV}
+    Sei $E$ der Vorwärts-Shift-Operator, d.\,h. $E y_j := y_{j+1}$.
+    Dann lässt sich das lineare $k$-Mehrschrittverfahren\\
+    $\frac{1}{h} \sum_{i=0}^k a_i u_{j+i} =
+    \sum_{i=0}^k b_i f(t_{j+i}, u_{j+i})$
+    auch durch die erzeugenden Polynome in der Form\\
+    $\frac{1}{h} \varrho(E) u_j = \sigma(E) f_j$
+    mit $f_j = f(t_j, u_j)$ schreiben, wobei
+    $p(E) y_j := \sum_{i=0}^k p_i y_{j+i}$ mit einem Polynom
+    $p(z) = \sum_{i=0}^k p_i z^i$.
+\end{Def}
+
+\linie
+
+\begin{Bem}
+    Nicht jedes konsistente lineare MSV ist konvergent.
+    Es wird eine zusätzliche Stabilitätsbedingung benötigt.
+\end{Bem}
+
+\begin{Bsp}
+    Ein Beispiel für ein instabiles lineares $2$-MSV mit
+    Konsistenzordnung $p = 3$ ist\\
+    $\frac{1}{h} (u_{i+2} + 4 u_{i+1} - 5 u_i) = 4 f_{i+1} + 2 f_i$.
+    Die erzeugenden Polynome sind dabei
+    $\varrho(z) = z^2 + 4z - 5$ und $\sigma(z) = 4z - 2$.
+    Man wendet das MSV auf das triviale Anfangswertproblem
+    $u' = 0$, $u(0) = 1$ (d.\,h. die Lösung ist $u(t) \equiv 1$) an.\\
+    Sei $u_1 = 1 + \varepsilon h$ leicht gestört.
+    Daraus ergibt sich die Drei-Term-Rekursion
+    $u_{i+2} + 4 u_{i+1} - 5 u_i = 0$
+    (rechte Seite verschwindet wegen $f \equiv 0$)
+    mit den Startwerten $u_0 = 1$ und $u_1 = 1 + \varepsilon h$.\\
+    Für spezielle Lösungen betrachtet man die Nullstellen
+    $z_1 = 1$ und $z_2 = -5$ des erzeugenden Polynoms $\varrho(z)$.
+    Setzt man $u_i = z_1^i$ an, so ist
+    $z_1^{i+2} + 4 z_1^{i+1} - 5 z_1^i = 0$ genau dann, wenn
+    $z_1^i \varrho(z_1) = 0$.
+    Wegen $\varrho(z_1) = 0$ ist
+    $u_i = z_1^i$ eine spezielle Lösung der Rekursion,
+    analog $u_i = z_2^i$.\\
+    Für die allgemeine Lösung setzt man $u_i = A z_1^i + B z_2^i$ an, also
+    $u_{i+2} + 4 u_{i+1} - 5 u_i = 0$ genau dann, wenn
+    $A z_1^i \varrho(z_1) + B z_2^i \varrho(z_2) = 0$.
+    Die Parameter $A$ und $B$ ergeben sich aus den Startbedingungen
+    $1 = u_0 = A z_1^0 + B z_2^0 = A + B$ und
+    $1 + \varepsilon h = u_1 = A z_1^1 + B z_2^1 = A - 5B$.\\
+    Daraus ergibt sich $A = 1 + \frac{\varepsilon h}{6}$ und
+    $B = -\frac{\varepsilon h}{6}$.
+    Somit ist die allgemeine Lösung der Rekursion\\
+    $u_i = A z_1^i + B z_2^i =
+    1 + \frac{\varepsilon h}{6} - \frac{\varepsilon h}{6} \cdot (-5)^i$.
+    Für den Fall $\varepsilon = 0$ kommt die exakte Lösung heraus.
+    Ist allerdings $u_1$ leicht gestört ($\varepsilon > 0$), so wird der
+    Fehler durch den Faktor $(-5)^i$ verstärkt, d.\,h. das MSV ist instabil.
+\end{Bsp}
+
+\linie
+
+\begin{Bem}
+    Die Vorgehensweise lässt sich auf allgemeine $k$-MSV verallgemeinern.
+    Durch Anwendung der Testgleichung $u' = 0$, $u(0) = 1$ erhält man die
+    \begriff{homogene Rekursion} bzw. Dif"|ferenzengleichung
+    $a_0 u_j + \dotsb + a_k u_{j+k} = 0$ für $j = 0, \dotsc, N - k$
+    mit Startwerten $u_0, \dotsc, u_{k-1}$.
+\end{Bem}
+
+\begin{Satz}{Lösungen der homogenen Rekursion}
+    Sei $\lambda \in \complex$ eine $m$-fache Nullstelle des erzeugenden
+    Polynoms $\varrho(z)$, d.\,h.
+    $\varrho(\lambda) = \varrho'(\lambda) = \dotsb =
+    \varrho^{(m-1)}(\lambda) = 0$.
+    Dann gilt:
+    \begin{enumerate}[label=(\emph{\roman*})]
+        \item
+        $u_i^{(1)} := \lambda^i$,\qquad
+        $u_i^{(2)} := i \lambda^{i-1}$,\qquad \dots,\qquad
+        $u_i^{(m)} := D^{m-1} \lambda^i =
+        i (i - 1) \dotsm (i - m + 2) \lambda^{i-m+1}$\\
+        sind spezielle Lösungen der homogenen Rekursion.
+        
+        \item
+        Die allgemeine Lösung der homogenen Rekursion ist eine
+        Linearkombination der insgesamt $k$ speziellen Lösungen aus
+        (\emph{i}).\\
+        (Für jede Nullstelle $\lambda$ von $\varrho(z)$ erhält man entsprechend
+        der Vielfachheit viele spezielle Lösungen, d.\,h. insgesamt
+        $\text{Grad}(\varrho) = k$ viele Lösungen.)
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bem}
+    Sei $\lambda$ eine Nullstelle von $\varrho(z)$.
+    Dann gilt für $|\lambda| > 1$, dass $\{u_i\} = \{\lambda^i\}$ exponentiell
+    wächst, und für $|\lambda| < 1$, dass $\{u_i\} = \{\lambda^i\}$
+    exponentiell fällt.\\
+    Für $|\lambda| = 1$ und Vielfachheit $\ell$ von $\lambda$ ist
+    $|u_i^{(1)}| = |\lambda|^i = 1$ und
+    $u_i^{(\ell)} = i (i - 1) \dotsm (i - \ell + 2) \lambda^{i - \ell + 1}$
+    wächst polynomial für $\ell \ge 2$.
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Def}{stabil}
+    Ein $k$-Mehrschrittverfahren heißt \begriff{stabil}, falls alle Nullstellen
+    des Polynoms $\varrho(z)$ im abgeschlossenen Einheitskreis liegen und
+    diejenigen auf dem Rand nur einfach sind, d.\,h.\\
+    $\varrho(\lambda) = 0 \;\Rightarrow\; |\lambda| \le 1$ und
+    $(\varrho(\lambda) = 0 \land |\lambda| = 1) \;\Rightarrow\;
+    \varrho'(\lambda) \not= 0$.\\
+    Wegen der Testgleichung $u' = 0$ spricht man auch von
+    \begriff{Nullstabilität} oder \begriff{$D$-Stabilität}
+    (nach \name{Dahlquist}).
+\end{Def}
+
+\begin{Def}{stark/schwach stabil}
+    Das $k$-MSV heißt \begriff{stark stabil}, falls
+    für alle Nullstellen außer $\lambda = 1$ gilt, dass $|\lambda| < 1$.
+    Ansonsten heißt das $k$-MSV \begriff{schwach stabil}.
+\end{Def}
+
+\begin{Bem}\\
+    Bei konsistenten $k$-MSV ist $\lambda = 1$ immer eine Nullstelle von
+    $\varrho(z)$, denn
+    $\varrho(1) = \sum_{i=0}^k a_i = 0$.\\
+    Die \begriff{Adams-Verfahren}
+    (Adams-Bashforth und Adams-Moulton) sind stark stabil,
+    denn hier ist $a_k = 1$, $a_{k-1} = -1$ und
+    $a_{k-2} = \dotsb = a_0 = 0$, d.\,h.
+    $\varrho(z) = z^k - z^{k-1} = z^{k-1} \cdot (z - 1)$.\\
+    $\lambda = 1$ ist einfache Nullstelle, während
+    $\lambda = 0$ eine $(k - 1)$-fache Nullstelle ist.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{\name{Dahlquist}-Barriere -- maximale Konvergenzordnung
+             stabiler linearer MSV}\\
+    Ein lineares $k$-Mehrschrittverfahren
+    $\frac{1}{h} \sum_{i=0}^k a_i u_{j+i} =
+    \sum_{i=0}^k b_i f(t_{j+i}, u_{j+i})$, das obige
+    Stabilitätsbedingung erfüllt, hat maximal die Konvergenzordnung
+    \begin{itemize}
+        \item
+        $k + 2$ für $k$ gerade,
+        
+        \item
+        $k + 1$ für $k$ ungerade und
+        
+        \item
+        $k$ für $\frac{b_k}{a_k} \le 0$ (insbesondere für explizite Verfahren).
+    \end{itemize}
+    Die Ordnung $k + 2$ kann nur erzielt werden, wenn alle Nullstellen von
+    $\varrho(z)$ auf dem Rand des Einheitskreises liegen.
+\end{Satz}
+
+\begin{Bsp}
+    Für $k = 1$ wird die maximale Konvergenzordnung $p = 2$ von
+    der Trapezformel erreicht.
+    Für $k = 2$ wird die maximale Konvergenzordnung $p = 4$ vom
+    \begriff{\name{Milne}-\name{Simpson}-Verfahren}
+    $u_{i+1} = u_{i-1} + \frac{h}{3} (f_{i-1} + 4 f_i + f_{i+1})$
+    erreicht (schwach stabil).\\
+    Das Adams-Bashforth-Verfahren ($k = 4$) ist explizit und erreicht daher
+    nur die Konvergenzordnung $p = 4$.
+    Das Adams-Moulton-Verfahren ist stark stabil (kann nicht Ordnung $k + 2$
+    erreichen) und erreicht die Konvergenzordnung $5 = k + 1$.
+\end{Bsp}
+
+\begin{Satz}{Konvergenz von MSV}
+    Falls ein lineares MSV die Konsistenzordnung $p$ hat und
+    obige Stabilitätsbedingung erfüllt, so ist es auch konvergent mit Ordnung
+    $p$.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Adaptive Schrittweitensteuerung%
+}
+
+\begin{Bem}
+    Sei ein Einzelschrittverfahren zur Lösung des Anfangswertproblems (AWP)
+    gegeben.
+    Für ein gegebenes Gitter $I_h$ sei $T(I_h)$ der numerische Aufwand zur
+    Lösung des ESV auf $I_h$ (Rechenzeit).
+    Außerdem sei $\TOL$ eine gegebene Fehlertoleranz.\\
+    Die Aufgabe ist nun, ein Gitter $I_h^\opt$ zu finden mit
+    $\overline{e_h} \le \TOL$ und
+    $T(I_h^\opt) \le T(I_h)$ für alle Gitter $I_h$ mit
+    $\overline{e_h} \le \TOL$.\\
+    Man weiß nicht, ob $I_h^\opt$ überhaupt existiert oder ob es eindeutig ist.
+    Durch die sog. \begriff{adaptive Schrittweitensteuerung} versucht man,
+    eine möglichst gute Approximation von $I_h^\opt$ zu finden.
+\end{Bem}
+
+\begin{Satz}{Fehlerentwicklung}
+    Seien $u \in \C^{p+2}(I, \real^n)$ eine Lösung von (AWP) und
+    $I_h$ ein Gitter.
+    Außerdem sei ein stabiles ESV mit Inkrementfunktion
+    $\phi \in \C^{p+1}(I^2 \times \real^n, \real^n)$, $u_h(0) = u_0$
+    und Konsistenzordnung $p$ gegeben.\\
+    Dann existiert eine Funktion $e_0 \in \C^2(I, \real^n)$ mit
+    $e_0(0) = 0$ und\\
+    $\norm{u_h - (u - h^p e_0)|_{I_h}}_\infty = \O(h^{p+1})$.\\
+    Es gibt zusätzlich eine Funktion
+    $e_1 \in \C^3(I, \real^n)$ mit $e_1(0) = 0$ und\\
+    $\norm{u_h - (u - h^p e_0 - h^{p+1} e_1)|_{I_h}}_\infty = \O(h^{p+2})$.
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Führt man für ein festes $t \in I_h$ das Hilfsproblem
+    $v'(s) = f(s, v(s))$ für $s > t$ und $v(t) = u_h(t)$ ein,
+    so gilt $u_h(t + h) - v(t + h) =
+    h^p e_0(t + h) + h^{p+1} e_1(t + h) + \O(h^{p+2}) =
+    h^p (e_0(t) + h e_0'(t)) + h^{p+1} (e_1(t) + h e_1'(t)) + \O(h^{p+2}) =
+    h^{p+1} e_0'(t) + \O(h^{p+2})$ wegen
+    $e_0(t) = e_1(t) = 0$.
+    Analog gilt $u_{h/2}(t + h) - v(t + h) =
+    \left(\frac{h}{2}\right)^p h e_0'(t) + \O(h^{p+2})$.\\
+    Somit ist $u_h(t + h) - u_{h/2}(t + h) =
+    \left(h^{p+1} - \left(\frac{h}{2}\right)^p h\right) e_0'(t) +
+    \O(h^{p+2})$,\\
+    d.\,h. $h e_0'(t) = \frac{1}{2^p - 1} \left(\frac{h}{2}\right)^{-p}
+    (u_h(t + h) - u_{h/2}(t + h)) + \O(h^2)$.\\
+    Man erhält also für den Fehler der halben Gitterweite die Formel\\
+    $u_{h/2}(t + h) - v(t + h) = \Delta_h + \O(h^{p+2})$ mit
+    $\Delta_h := \frac{1}{2^p - 1} (u_h(t + h) - u_{h/2}(t + h))$
+    einem \begriff{Fehlerschätzer}, der nur aus berechenbaren Größen besteht.
+    Man definiert nun den \begriff{relativen Fehlerschätzer}
+    $\widetilde{\Delta}_h := \frac{\Delta h}{\max\{1, \norm{u_h}\}}$
+    und kann daraus einen selbstadaptiven Algorithmus erstellen.
+\end{Bem}
+
+\linie
+
+\begin{Def}{selbstadaptiver Algorithmus mit $(h, h/2)$-Gittersteuerung}\\
+    Startschrittweite $h_0 \in [0, T]$,\qquad
+    minimale und maximale Schrittweite $h_{\min} < h_0 < h_{\max}$,\\
+    Fehlertoleranz $\TOL > 0$,\qquad
+    Verkleinerungs-/Vergrößerungsfaktoren
+    $k_{\min} < 1$ und $k_{\max} > 1$,\\
+    Verfahrensordnung $p \in \natural$
+    \begin{align*}&
+        t := 0;\quad
+        u := u(0);\quad
+        h := h_0;\\&
+        \mathbf{while}\; (t < T)\; \{\\&
+        \qquad|\widetilde{\Delta}_h| := \TOL + 1;\;\\&
+        \qquad\mathbf{while}\; (|\widetilde{\Delta}_h| > \TOL)\; \{\\&
+        \qquad\qquad v := u + h \cdot \phi(h, t, u);\\&
+        \qquad\qquad z := u + h/2 \cdot \phi(h/2, t, u);\\&
+        \qquad\qquad w := z + h/2 \cdot \phi(h/2, t + h/2, z);\\&
+        \qquad\qquad |\widetilde{\Delta}_h| := \frac{1}{2^p - 1} \cdot
+                     \frac{|v - w|}{\max\{1, u\}};\\&
+        \qquad\qquad h := \max\{h_{\min}, k_{\min} \cdot h\};\\&
+        \qquad\qquad\mathbf{if}\; h = h_{\min}\; \{\; \mathbf{return}; \}\\&
+        \qquad\}\\&
+        \qquad u := w;\quad
+        h := \min\{h_{\max}, k_{\max} \cdot h\};\quad
+        t := t + h;\\&
+        \}
+    \end{align*}
+\end{Def}
+
+\pagebreak
+

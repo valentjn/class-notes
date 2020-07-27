@@ -1,0 +1,34 @@
+\def\withproofs{true}
+
+\definecolor{mydarkgray}{gray}{0.4}
+
+\newenvironment{Beweis}[1][Beweis]{\ifthenelse{\equal{\withproofs}{false}}{\comment}{}%
+    \color{mydarkgray}\textbf{#1}: }{\hfill $\Box$%
+    \ifthenelse{\equal{\withproofs}{false}}{\endcomment}{}}
+
+\renewcommand*{\A}{\mathcal{A}}
+\newcommand*{\D}{\mathcal{D}}
+\renewcommand*{\H}{\mathcal{H}}
+\renewcommand*{\L}{\mathcal{L}}
+\renewcommand*{\O}{\mathcal{O}}
+\renewcommand*{\P}{\mathcal{P}}
+\newcommand*{\T}{\mathcal{T}}
+\newcommand*{\EE}{\mathbb{E}}
+\newcommand*{\PP}{\mathbb{P}}
+\newcommand*{\DT}{\operatorname{DT}}
+\newcommand*{\dcup}{\mathbin{\dot{\cup}}}
+\newcommand*{\parent}{\operatorname{parent}}
+\newcommand*{\cc}{\operatorname{cc}}
+\newcommand*{\interior}{\operatorname{int}}
+\newcommand*{\CH}{\operatorname{CH}}
+\newcommand*{\sgn}{\operatorname{sgn}}
+\newcommand*{\zone}{\operatorname{zone}}
+
+\newcommand*{\code}[1]{\texttt{#1}}
+
+\input{01_geometrische_suchstrukturen}
+\input{02_konvexe_huellen}
+\input{03_planare_unterteilungen}
+\input{04_delaunay_und_voronoi}
+\input{05_hyperebenenarrangements}
+\input{06_lineare_programmierung}

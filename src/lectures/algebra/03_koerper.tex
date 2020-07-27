@@ -1,0 +1,749 @@
+\section{%
+    Körper%
+}
+
+\subsection{%
+    Motivation und Beispiele%
+}
+
+\begin{Bem}
+    Im Folgenden werden Methoden gesucht, mit dem man einen gegebenen
+    Körper $K$ so zu einem Körper $L$ erweitern kann,
+    sodass ein in $K[x]$ irreduzibles Polynom $f(x)$ in $L[x]$ reduzibel ist.
+    Dies ist gleichwertig zur Suche von Nullstellen.
+    $L$ sollte dabei in irgendeiner Art kleinstmöglich sein.
+\end{Bem}
+
+\begin{Bsp}
+    Beispielsweise ist für $K = \real$ das Polynom $f(x) = x^2 + 1$
+    irreduzibel, denn\\
+    $f(x) = (x - \i)(x + \i)$ ist reduzibel in $\complex[x]$,
+    d.\,h. aufgrund der Eindeutigkeit der Primfaktorzerlegung in $\complex[x]$
+    müsste $f(x)$ in $\real[x]$ dieselbe Primfaktorzerlegung besitzen.
+    Da $x \pm \i \notin \real[x]$ gilt, ist $f(x)$ irreduzibel in $\real[x]$.
+\end{Bsp}
+
+\begin{Bsp}
+    In $K = \rational$ ist $f(x) = x^2 - 2$ mit gleicher Argumentation
+    irreduzibel.
+    Definiert man $L = \rational[\sqrt{2}] :=
+    \{a + b\sqrt{2} \;|\; a, b \in \rational\}$, so sieht man, dass $L$
+    ein Ring ist
+    (es gilt $(a + b\sqrt{2}) + (c + d\sqrt{2}) \in L$ und
+    $(a + b\sqrt{2})(c + d\sqrt{2}) = (ac + 2bd) + (ad + bc)\sqrt{2} \in L$).
+    Man kann sogar zeigen, dass $L$ ein Körper ist:
+    Für $a + b\sqrt{2} \in L$ muss ein multiplikativ
+    Inverses gefunden werden.\\
+    Falls $a = 0$, $b \not= 0$, so ist $\frac{1}{2b} \sqrt{2} \in L$ invers.
+    Falls $b = 0$, $a \not= 0$, so ist $\frac{1}{a} \in L$ invers.\\
+    Falls $a, b \not= 0$ ist, so muss für ein Inverses $c + d\sqrt{2}$ gelten,
+    dass $ac + 2bd = 1$ und $ad + bc = 0$.
+    Aus der zweiten Gleichung folgt $c = -\frac{ad}{b}$, d.\,h.
+    $-\frac{a^2 d}{b} + 2bd = 1$, also
+    $-a^2 d + 2b^2 d = b$ bzw.
+    $d = \frac{b}{2b^2 - a^2}$.
+    Man hat also $c, d \in \rational$ bzw. das Inverse $c + d\sqrt{2} \in L$
+    gefunden.\\
+    Der Nenner kann nicht $0$ werden, denn sonst ist
+    $a^2 = 2b^2$ für $a, b \in \rational$.
+    Setzt man $\frac{a}{b} = \frac{p}{q}$ mit ganzen Zahlen $p, q \in \integer$
+    und $(p, q) = 1$, so gilt $p^2 = 2q^2$.
+    Dann würde $2 \teilt p^2$ gelten, also $2 \teilt p$.
+    Daraus folgt $4 \teilt p^2 = 2q^2$, also $2 \teilt q$,
+    ein Widerspruch, denn $p$ und $q$ sind teilerfremd.\\
+    Somit ist $\rational[\sqrt{2}]$ ein solcher Erweiterungskörper.
+    Analog gilt $\real[\i] = \complex$ mit $\i = \sqrt{-1}$.
+\end{Bsp}
+
+\subsection{%
+    Körpererweiterungen%
+}
+
+\begin{Def}{Teilkörper}
+    Sei $L$ Körper.
+    Ein Teilring $K \subset L$ heißt \begriff{Teilkörper} von $L$,
+    falls
+    $\forall_{a \in K \setminus \{0\}}\; a^{-1} \in K$.\\
+    $L$ heißt dann \begriff{Erweiterungskörper} von $K$
+    und die Inkl. $K \subset L$ heißt \begriff{Körpererweiterung} $L/K$.
+\end{Def}
+
+\begin{Def}{Zwischenkörper}
+    Ein Körper $K'$ mit $K \subset K' \subset L$ heißt \begriff{Zwischenkörper}
+    von $L/K$.
+\end{Def}
+
+\begin{Def}{erzeugter Teilkörper}
+    Sei $M \subset L$ eine Teilmenge.\\
+    Dann heißt $T(M) := \bigcap_{T \text{ Teilkörper von } L,\; T \supset M} T$
+    der \begriff{von $M$ erzeugte Teilkörper} von $L$.\\
+    $T(M)$ ist der kleinste Teilkörper von $L$, der $M$ enthält.
+\end{Def}
+
+\begin{Def}{Adjunktion}
+    Sei $M \subset L$ eine Teilmenge und $K \subset L$ ein Teilkörper.\\
+    Dann entsteht $K(M)$ aus $K$ durch \begriff{Adjunktion}, d.\,h.
+    $K(M) := T(M \cup K)$.\\
+    Für $M = \{a_1, \dotsc, a_n\}$ schreibt man
+    $K(a_1, \dotsc, a_n) := K(\{a_1, \dotsc, a_n\})$.
+\end{Def}
+
+\begin{Def}{endlich erzeugt}
+    $L/K$ heißt \begriff{endlich erzeugt}, falls
+    $\exists_{a_1, \dotsc, a_n \in L}\; L = K(a_1, \dotsc, a_n)$.
+\end{Def}
+
+\begin{Def}{einfach}
+    $L/K$ heißt \begriff{einfach} oder \begriff{einfache Erweiterung}, falls
+    $\exists_{a \in L}\; L = K(a)$.
+\end{Def}
+
+\linie
+
+\begin{Def}{Grad einer Körpererweiterung}
+    Sei $L/K$ eine Körpererweiterung.\\
+    Die Vektorraumdimension $\dim_K L$ heißt der \begriff{Grad} $[L:K]$
+    der Körpererweiterung.
+\end{Def}
+
+\begin{Def}{endlich}
+    Eine Körpererweiterung $L/K$ heißt
+    \begriff{endlich}, falls $[L:K] < \infty$.
+\end{Def}
+
+\begin{Bsp}
+    $[\rational[\sqrt{2}]:\rational] = 2 =
+    [\rational[\sqrt{3}]:\rational] =
+    [\complex:\real]$
+\end{Bsp}
+
+\begin{Lemma}{Produkt}
+    Es gilt $[M:K] = [M:L] \cdot [L:K]$ für $M/L$ und $L/K$
+    Körpererweiterungen.
+\end{Lemma}
+
+\subsection{%
+    Auswertungshomomorphismus%
+}
+
+\begin{Bem}
+    Im Folgenden soll versucht werden, zu gegebenen polynomialen Gleichungen,
+    die in einem gegebenen Körper nicht lösbar sind, einen kleinstmöglichen
+    größeren Körper zu konstruieren, in dem die Gleichung lösbar wird.\\
+    Es ist also $K$ ein Körper und $f(x) \in K[x]$ gegeben.
+    Existiert eine Körpererweiterung $L/K$, sodass $f(x)$ in $L$ eine
+    Nullstelle hat?\\
+    Bei z.\,B. $\rational[\sqrt{2}]$ oder $\real[\i]$ kannte man die Lösung
+    schon, bevor man diese Körper konstruiert hat.
+    Was ist, wenn man die Lösung nicht kennt?
+\end{Bem}
+
+\begin{Bem}
+    Die Idee ist, $L$ als Quotient von $K[x]$ zu produzieren.
+    Sinnvoll ist dabei, sich eine Abbildung
+    $\varphi\colon K[x] \rightarrow L = K(a)$ zu definieren, wobei
+    $\varphi(\lambda) = \lambda$ und $\varphi(x) = a$ für $\lambda \in K$
+    gelten soll.
+    Falls $\varphi$ existiert, so ist $K(a)$ Quotient von $K[x]$.
+\end{Bem}
+
+\linie
+
+\begin{Prop}{Auswertungshomomorphismus}\\
+    Seien $R$ und $S$ Ringe,
+    $\alpha\colon R \rightarrow S$ ein Ringhomomorphismus und
+    $a \in S$.\\
+    Dann gibt es genau einen Ringhomomorphismus
+    $\varphi\colon R[x] \rightarrow S$ mit $\varphi|_R = \alpha$ und
+    $\varphi(x) = a$.\\
+    $\varphi$ heißt \begriff{Auswertungshomomorphismus}.
+    \begin{align*}
+        \begin{xy}
+            \xymatrix{
+                R \ar@{^{(}->}[d] \ar[r]^{\alpha} & S \ni a \\
+                R[x] \ar@{-->}[ur]_{\quad\exists!\varphi,\;
+                \varphi|_R = \alpha,\; \varphi(x) = a}
+            }
+        \end{xy}
+    \end{align*}
+\end{Prop}
+
+\linie
+
+\begin{Bsp}
+    Oft wird als $\alpha$ die Inklusion verwendet.
+    Im Beispiel $\rational[\sqrt{2}]$ gibt es einen Ringhomomorphismus
+    $\varphi\colon \rational[x] \rightarrow \rational[\sqrt{2}]$, wobei
+    $f(x) \mapsto f(a)$ gilt
+    (daher der Name Auswertungshomomorphismus).
+    Wählt man $a = \sqrt{2}$, dann gilt $\varphi(c + dx) = c + d\sqrt{2}$,
+    d.\,h. $\varphi$ ist surjektiv (i.\,A. ist dies nicht so).
+    Da $\rational[x]$ ein Hauptidealring ist, ist
+    $\Kern(\varphi) = \erzeugnis{f(x)}$ für $f(x) \in \Kern(\varphi)$ mit
+    minimalem Grad.
+    Man kann z.\,B. $f(x) = x^2 - 2 \in \Kern(\varphi)$ wählen
+    (es gilt $\Kern(\varphi) = \erzeugnis{f(x)}$, da $f(x)$ irreduzibel ist,
+    denn wenn $f(x)$ nicht minimalen Grad hätte, wäre $f(x)$ reduzibel).\\
+    Nach dem Isomorphiesatz gilt
+    $\rational[\sqrt{2}] \simeq \rational[x]/\erzeugnis{x^2 - 2}$.
+    $\rational[x]/\erzeugnis{x^2 - 2}$ ist dabei "`unabhängig von $\sqrt{2}$"',
+    d.\,h. man hat nun den Körper ohne Kenntnis der Lösung konstruiert.
+    Die Lösung $\sqrt{2}$ entspricht dabei $\overline{x}$,
+    denn für den Isomorphismus gilt
+    $\overline{x} \mapsto \varphi(x) = \sqrt{2}$.
+\end{Bsp}
+
+\begin{Bsp}
+    Analog gilt $\real[\i] \simeq \complex \simeq
+    \real[x]/\erzeugnis{x^2 + 1}$.
+\end{Bsp}
+
+\begin{Bsp}
+    Ein Beispiel, in dem der Auswertungshomomorphismus nicht surjektiv ist,
+    ist $K = \rational$ mit $a = \pi$.
+    Der Auswertungshomomorphismus
+    $\varphi\colon \rational[x] \rightarrow \real$ kann nicht surjektiv sein,
+    denn $\rational[x]$ ist abzählbar und $\real$ ist überabzählbar.
+    Alternativ kann man auch $\pi^{-1} \notin \Bild(\varphi)$ zeigen:
+    Sonst wäre $\pi^{-1} = \varphi(f(x)) = \sum_{i=0}^n r_i \pi^i$, also
+    $1 = \sum_{i=0}^n r_i \pi^{i+1}$.
+    Damit wäre $\pi$ Lösung einer algebraischen Gleichung, was nicht sein kann.
+\end{Bsp}
+
+\pagebreak
+
+\subsection{%
+    Algebraische Elemente und Minimalpolynom%
+}
+
+\begin{Def}{algebraisch/transzendent}
+    Seien $L/K$ eine Körpererweiterung und
+    $\varphi\colon K[x] \rightarrow L$ der Auswertungshomomorphismus mit
+    $\alpha$ als Inklusion $K \rightarrow L$ und $\varphi(x) = a \in L$.\\
+    Dann heißt $a$ \begriff{transzendent} über $K$,
+    falls $\varphi$ injektiv ist,
+    sonst \begriff{algebraisch (abhängig)} über $K$.
+\end{Def}
+
+\begin{Bem}
+    $a$ ist transzendent genau dann, wenn $a$ keine algebraische Gleichung
+    in $K$ erfüllt.
+\end{Bem}
+
+\linie
+
+\begin{Def}{Minimalpolynom}
+    Seien $L/K$ eine Körpererweiterung und $a \in L$ algebraisch.
+    Ein Polynom\\
+    $f(x) \in K[x] \setminus \{0\}$ minimalen Grades mit
+    $f(a) = 0$ heißt \begriff{Minimalpolynom} von $a$ über $K$.\\
+    Das \begriff{normierte Minimalpolynom} zu $a$ bezeichnet man mit
+    $m_a = m_{a,K}$.
+\end{Def}
+
+\begin{Bem}
+    Ist $f(x) \in K[x] \setminus \{0\}$ ein Minimalpolynom, so gilt
+    $\Kern(\varphi) = \erzeugnis{f(x)}$, d.\,h. das Minimalpolynom ist
+    eindeutig bis auf skalare Vielfache bestimmt.\\
+    Insbesondere ist das normierte Minimalpolynom $m_{a,K}$ eindeutig
+    bestimmt.
+\end{Bem}
+
+\begin{Bem}
+    Jedes andere Polynom $p(x) \in K[x] \setminus \{0\}$
+    mit $p(a) = 0$ wird von $m_a$ geteilt,
+    d.\,h. es gibt ein Polynom $q(x) \in K[x]$ mit $m_a(x) q(x) = p(x)$.
+    Ist $p(x)$ irreduzibel, so muss $q(x)$ eine Einheit sein, also
+    $\grad q(x) = 0$ und $\grad m_a(x) = \grad p(x)$.
+    Somit ist jedes normierte und irreduzible Polynom
+    $p(x) \in K[x] \setminus \{0\}$ mit $p(a) = 0$ gleich $m_a$.\\
+    Wäre umgekehrt $m_a$ reduzibel, so wäre $m_a(x) = p(x) q(x)$ mit
+    $p(x), q(x) \in K[x]$ und\\
+    $0 < \grad p(x), \grad q(x) < \grad m_a(x)$.
+    Wegen $m_a(a) = 0$ ist $p(a) = 0$ oder $q(a) = 0$, d.\,h. $m_a$ hätte nicht
+    minimalen Grad.
+\end{Bem}
+
+\begin{Lemma}{Kriterium für Minimalpolynom}\\
+    Seien $L/K$ eine Körpererweiterung, $a \in L$ algebraisch
+    und $p(x) \in K[x] \setminus \{0\}$ ein Polynom.\\
+    Dann ist $p = m_a$ genau dann, wenn
+    $p(a) = 0$ sowie $p$ normiert und irreduzibel ist.\\
+    ($p$ ist Minimalpolynom genau dann,
+    wenn $p(a) = 0$ und $p$ irreduzibel ist.)
+\end{Lemma}
+
+\linie
+
+\begin{Def}{Polynome ausgewertet in $a$}
+    Sei $L/K$ eine Körpererweiterung und $a \in L$.\\
+    Dann ist $K[a] := \{\sum_{i=0}^n r_i a^i \;|\;
+    n \in \natural_0,\; r_i \in K\}$ die Menge aller
+    \begriff{Polynome ausgewertet in $a$}.
+\end{Def}
+
+\begin{Bem}
+    Für $L/K$ und $a \in L$ ist $K(a)$ der kleinste Teilkörper von $L$, der
+    $K \cup \{a\}$ enthält.\\
+    Für den Auswertungshomomorphismus $\varphi\colon K[x] \rightarrow L$
+    mit Inklusion $\alpha$ gilt $\Bild(\varphi) = K[a]$.\\
+    $K[a]$ ist i.\,A. kein Körper.
+\end{Bem}
+
+\begin{Prop}{Äquivalenzen zu algebraisch}
+    Seien $L/K$ eine Körpererweiterung und $a \in L$.\\
+    Dann sind äquivalent:
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        $K[a] = K(a)$
+        
+        \item
+        $a \in L$ ist algebraisch abhängig über $K$.
+        
+        \item
+        $[K(a) : K] < \infty$
+    \end{enumerate}
+    In diesem Fall gilt zusätzlich $\lambda(m_{a,K}) = [K(a) : K]$.
+\end{Prop}
+
+\begin{Def}{Grad eines algebraischen Elements}
+    Seien $L/K$ eine Körpererweiterung und $a \in L$ algebraisch.
+    Dann heißt $\lambda(m_{a,K}) = [K(a) : K]$ \begriff{Grad} von $a$ über $K$.
+\end{Def}
+
+\begin{Bem}
+    Im Beweis wird zusätzlich gezeigt:
+    Falls $f(x) \in K[x] \setminus \{0\}$ irreduzibel ist,
+    so ist $\erzeugnis{f(x)}$ maximales Ideal (siehe oben).
+    Insbesondere ist das Ideal $\erzeugnis{m_{a,K}}$ ist maximal in $K[x]$.\\
+    Der Körper $K[x]/\erzeugnis{f(x)}$ hat als $K$-Vektorraum die Basis
+    $1, \overline{x}, \dotsc, \overline{x}^{n-1}$.\\
+    Ist $a$ transzendent, dann ist $a^{-1} \notin K[a]$, d.\,h.
+    $K[a]$ ist ein Körper $\iff$ $a$ ist algebraisch.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Das Kriterium von \name{Eisenstein}%
+}
+
+\begin{Theorem}{Kriterium von \upshape\,\!\name{Eisenstein}}
+    Sei $R$ ein faktorieller Ring,
+    $K = Q(R)$ der Quotientenkörper von $R$ und
+    $f(x) = \sum_{i=0}^n a_i x^i \in R[x]$ mit $n \ge 1$.\\
+    Sei außerdem $p \in R$ irreduzibel mit $p \teilt a_i$ für
+    $i = 0, \dotsc, n - 1$, aber
+    $p \notteilt a_n$ und $p^2 \notteilt a_0$.\\
+    Dann ist $f(x)$ irreduzibel in $K[x]$.\\
+    Falls zusätzlich $f(x)$ primitiv ist (z.\,B. $a_n = 1$), so ist
+    $f(x)$ irreduzibel in $R[x]$.
+\end{Theorem}
+
+\begin{Bsp}
+    Für $f(x) = x^n - pq$ mit $p \in R$ prim und $q \in R$ mit $p \notteilt q$
+    erfüllt $p$ das Kriterium, d.\,h. $x^n - pq$ ist irreduzibel in $R[x]$.\\
+    Auf $g(x) = (x^p - 1)/(x - 1) = x^{p-1} + \dotsb + x + 1$
+    mit $p \in R$ prim lässt sich das Kriterium nicht direkt anwenden.
+    Substituiert man aber $x \rightarrow x + 1$ und nimmt an, dass
+    $g(x) = g_1(x) g_2(x)$ reduzibel ist mit $\grad(g_1), \grad(g_2) \ge 1$,
+    so ist $g(x + 1) = g_1(x + 1) g_2(x + 1)$ ebenfalls reduzibel.
+    Es gilt aber $g(x + 1) = ((x + 1)^p - 1) / (x + 1 - 1) =
+    \left(\sum_{j=0}^p \binom{p}{j} x^j - 1\right) / x$\\
+    $= \sum_{j=1}^p \binom{p}{j} x^{j-1} =
+    x^{p-1} + p x^{p-2} + \dotsb + p$
+    und $p \teilt \binom{p}{j}$ für alle $j < p$.
+    Daher ist das Kriterium von Eisenstein anwendbar und $g(x + 1)$
+    irreduzibel, ein Widerspruch.
+\end{Bsp}
+
+\subsection{%
+    Beispiel für eine Körpererweiterung%
+}
+
+\begin{Bsp}
+    Ein Beispiel für eine einfache Körpererweiterung ist
+    $(\rational(\sqrt{2}))(\sqrt{3})$.
+    
+    Dazu stellt man zunächst fest, dass $\sqrt{3} \notin \rational(\sqrt{2})$:
+    Sonst wäre nämlich $\sqrt{3} = a + b\sqrt{2}$ mit $a, b \in \rational$.
+    Quadrieren ergibt $3 = a^2 + 2b^2 + 2ab\sqrt{2}$ bzw.
+    $\sqrt{2} = \frac{3 - a^2 - 2b^2}{2ab}$, d.\,h. $\sqrt{2} \in \rational$
+    für $ab \not= 0$.
+    Da dies nicht stimmt, ist $a = 0$
+    (für $b = 0$ wäre $a^2 = 3$, das dies für $a \in \rational$ nicht geht,
+    zeigt man analog wie für $\sqrt{2}$).
+    Für $a = 0$ ist $\frac{3}{2} = \frac{p^2}{q^2}$ mit $b = \frac{p}{q}$,
+    $p \in \integer$, $q \in \natural$ und $(p, q) = 1$.
+    Daraus folgt $3q^2 = 2p^2$, d.\,h. $2 \teilt q^2$,
+    $2 \teilt q$, $4 \teilt 2p^2$, $2 \teilt p^2$ und $2 \teilt p$.\\
+    Das ist ein Widerspruch, daher ist $\sqrt{3} \notin \rational(\sqrt{2})$.
+    
+    Somit muss $\dim_\rational (\rational(\sqrt{2}))(\sqrt{3}) > 2$ sein
+    ($\sqrt{3}$ ist nicht als $\rational$-Linearkombination von
+    $1$ und $\sqrt{2}$ darstellbar).
+    Es gilt außerdem $\dim_\rational (\rational(\sqrt{2}))(\sqrt{3}) \le 4$,
+    da $x^2 - 3$ das Minimalpolynom von $\sqrt{3}$ über $\rational$ ist.\\
+    $x^2 - 3$ ist auch irreduzibel über $\rational(\sqrt{2})$
+    (sonst wäre $x^2 - 3$ das Produkt von zwei linearen Faktoren,
+    wegen $x^2 - 3 = (x + \sqrt{3})(x - \sqrt{3})$ und $\complex[x]$
+    faktoriell wären dies die gesuchten Faktoren, das steht allerdings im
+    Widerspruch zu $\sqrt{3} \notin \rational(\sqrt{2})$, siehe oben).
+    Daher ist $x^2 - 3$ das Minimalpolynom von
+    $\sqrt{3}$ über $\rational(\sqrt{2})$.
+    
+    Somit ist $[(\rational(\sqrt{2}))(\sqrt{3}) : \rational(\sqrt{2})] = 2$,
+    mit $[\rational(\sqrt{2}) : \rational] = 2$ gilt also
+    $[(\rational(\sqrt{2}))(\sqrt{3}) : \rational] = 4$.
+    
+    Ist diese Erweiterung einfach?
+    Dazu versucht man nun $b := \sqrt{2} + \sqrt{3}$.
+    Es gilt $b^2 = 5 + 2\sqrt{2}\sqrt{3}$ und $(b^2 - 5)^2 = 24$.
+    $b$ ist also Nullstelle von $x^4 - 10x^2 + 1 \in \rational[x]$.
+    Es gilt $\rational(\sqrt{2} + \sqrt{3}) \subset
+    (\rational(\sqrt{2}))(\sqrt{3})$.
+    Umgekehrt gilt wegen $b^3 = 11\sqrt{2} + 9\sqrt{3}$, dass
+    $b^3 - 9b = 2\sqrt{2}$, d.\,h.
+    $\sqrt{2} \in \rational(\sqrt{2} + \sqrt{3})$ und daher auch
+    $\sqrt{3} \in \rational(\sqrt{2} + \sqrt{3})$.
+    Somit gilt $\rational(\sqrt{2} + \sqrt{3}) =
+    (\rational(\sqrt{2}))(\sqrt{3})$ und
+    $x^4 - 10x^2 + 1$ ist das Minimalpolynom von $\sqrt{2} + \sqrt{3}$
+    (da Grad $4$ und\\
+    $\lambda(m_{b,\rational}) =
+    [\rational(\sqrt{2} + \sqrt{3}) : \rational] =
+    [(\rational(\sqrt{2}))(\sqrt{3}) : \rational] = 4$).
+\end{Bsp}
+
+\pagebreak
+
+\subsection{%
+    Der Satz von \name{Kronecker}%
+}
+
+\begin{Def}{algebraische Körpererweiterung}
+    Eine Körpererweiterung $L/K$ heißt \begriff{algebraisch}, falls alle
+    $a \in L$ algebraisch abhängig über $K$ sind.
+\end{Def}
+
+\begin{Prop}{Körpererweiterungen}
+    Seien $M/L$ und $L/K$ Körpererweiterungen. Dann gilt:
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        $L/K$ ist endlich genau dann, wenn $L/K$ algebraisch
+        und endlich erzeugt ist.
+        
+        \item
+        Sind $M/L$ und $L/K$ algebraisch, so ist auch $M/K$ algebraisch.
+    \end{enumerate}
+\end{Prop}
+
+\begin{Theorem}{Satz von \upshape\,\!\name{Kronecker}}\\
+    Seien $K$ ein Körper und $f(x) \in K[x]$ ein irreduzibles Polynom.\\
+    Dann existiert eine einfache, algebraische Körpererweiterung $L/K$ mit
+    $[L:K] = \grad(f(x))$, sodass $f(x)$ in $L$ eine Nullstelle hat.
+\end{Theorem}
+
+\begin{Bem}
+    Alle polynomialen Gleichungen sind also lösbar!\\
+    Der Beweis ist konstruktiv ($L := K[x]/\erzeugnis{f(x)}$,
+    Nullstelle $\overline{x} = x + \erzeugnis{f(x)} \in L$).
+\end{Bem}
+
+\subsection{%
+    \emph{Einschub}: Auswahlaxiom und \name{Zorn}sches Lemma%
+}
+
+\begin{Bem}
+    Existiert für alle Körper $K$ der algebraische Abschluss $\overline{K}$
+    (siehe unten)?
+    Wenn ja, ist dieser eindeutig?
+    Für den Existenzbeweis wird das Auswahlaxiom benötigt, das unabhängig
+    vom Axiomensystem von Zermelo-Fraenkel ist.
+\end{Bem}
+
+\begin{Def}{Auswahlaxiom}
+    Das \begriff{Auswahlaxiom} garantiert die Richtigkeit
+    der folgenden Aussage:\\
+    Seien $I \not= \emptyset$ eine Menge und
+    $\{M_i \;|\; i \in I\}$ eine Menge von Mengen mit
+    $M_i \not= \emptyset$ für alle $i \in I$.\\
+    Dann existiert eine Funktion (\begriff{Auswahlfunktion})
+    $f \colon I \rightarrow \bigcup_{i \in I} M_i$ mit
+    $f(i) \in M_i$ für alle $i \in I$,
+    d.\,h. es gibt eine Folge $(x_i)_{i \in I} \in \prod_{i \in I} M_i$.
+\end{Def}
+
+\linie
+
+\begin{Def}{partielle Ordnung}
+    Seien $M$ eine Menge und $\le$ eine Relation auf $M$.
+    Dann heißt $\le$ \begriff{partielle Ordnung} auf $M$, falls
+    $\forall_{x \in M}\; x \le x$(\begriff{reflexiv}),
+    $\forall_{x, y, z \in M}\;
+    (x \le y \land y \le z) \Rightarrow (x \le z)$ (\begriff{transitiv}) und
+    $\forall_{x, y \in M}\; (x \le y \land y \le x) \Rightarrow (x = y)$
+    (\begriff{antisymmetrisch}).
+\end{Def}
+
+\begin{Def}{Totalordnung}
+    Seien $M$ eine Menge und $\le$ eine partielle Ordnung auf $M$.\\
+    Dann heißt $\le$ \begriff{Totalordnung}, falls
+    $\forall_{x, y \in M}\; (x \le y \lor y \le x)$.
+\end{Def}
+
+\begin{Def}{obere Schranke}
+    Sei $N \subset M$.
+    $a \in M$ heißt \begriff{obere Schranke für $N$}, falls
+    $\forall_{x \in N}\; x \le a$.
+\end{Def}
+
+\begin{Def}{maximales Element}
+    $a \in M$ heißt \begriff{maximales Element in $M$}, falls
+    $\forall_{x \in M}\; (a \le x \Rightarrow x = a)$.
+\end{Def}
+
+\begin{Prop}{\name{Zorn}sches Lemma}
+    Folgende Aussage ist äquivalent zum Auswahlaxiom:\\
+    Sei $M \not= \emptyset$ partiell geordnet durch $\le$, sodass
+    für jede total geordnete Teilmenge $N \subset M$ eine obere Schranke
+    $a \in M$ existiert.
+    Dann gibt es ein maximales Element in $M$.
+\end{Prop}
+
+\begin{Bsp}
+    Mit dem Auswahlaxiom kann man zum Beispiel beweisen
+    (sogar äquivalent):
+    \begin{itemize}
+        \item
+        Jeder Vektorraum hat eine Basis.
+        
+        \item
+        Es gibt nicht-messbare Mengen.
+        
+        \item
+        Das Produkt von kompakten Mengen ist kompakt.
+    \end{itemize}
+\end{Bsp}
+
+\pagebreak
+
+\subsection{%
+    Algebraischer Abschluss%
+}
+
+\begin{Bem}
+    Um alle Nullstellen eines irreduziblen Polynoms zu erzeugen, kann
+    man den Satz von Kronecker iterativ anwenden.\\
+    Gibt es für beliebige Körper $K$ eine Körpererweiterung $L/K$, sodass
+    \emph{alle} polynomialen Gleichungen lösbar sind?
+    (Für $K = \real$ wählt man z.\,B. $L = \complex$.)
+\end{Bem}
+
+\begin{Def}{algebraisch abgeschlossen}
+    Ein Körper $K$ heißt \begriff{algebraisch abgeschlossen}
+    ($K = \overline{K}$), falls eine der folgenden äquivalenten
+    Bedingungen erfüllt ist:
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        Jedes nicht-konstante Polynom $f(x) \in K[x] \setminus K$ hat eine
+        Nullstelle in $K$.
+        
+        \item
+        Jedes nicht-konstante Polynom $f(x) \in K[x] \setminus K$ zerfällt in
+        ein Produkt von Linearfaktoren $f = f_1 \dotsm f_n$ mit
+        $f_i(x) \in K[x]$ und $\grad f_i(x) = 1$ für $i = 1, \dotsc, n$.
+        
+        \item
+        Jedes irreduzible normierte Polynom $f(x) \in K[x]$ ist von der Form
+        $f(x) = x - a$, $a \in K$.
+        
+        \item
+        Für jede algebraische Körpererweiterung $L/K$ gilt $L = K$.
+    \end{enumerate}
+\end{Def}
+
+\begin{Def}{algebraischer Abschluss}
+    Sei $K$ ein Körper.
+    Dann heißt ein Erweiterungskörper $\overline{K}$, der
+    algebraisch abgeschlossen und für den $\overline{K}/K$
+    algebraisch ist,
+    \begriff{algebraischer Abschluss} von $K$.
+\end{Def}
+
+\begin{Bsp}
+    $\overline{\real} = \complex$
+\end{Bsp}
+
+\linie
+
+\begin{Theorem}{Existenz von maximalen Idealen}
+    Seien $R$ ein Ring.\\
+    Dann existiert ein maximales Ideal $I_0$ in $R$
+    ($I_0 \not= R$ und für jedes Ideal $J$ in $R$ mit $J \supset I_0$
+    gilt $J = I_0$ oder $J = R$),
+    falls das Auswahlaxiom vorausgesetzt wird.
+\end{Theorem}
+
+\begin{Bem}
+    Somit kann man jeden Ring $R$ surjektiv auf einen Körper $R/I_0$ abbilden.
+\end{Bem}
+
+\begin{Theorem}{Existenz vom algebraischen Abschluss}\\
+    Jeder Körper $K$ hat einen algebraischen Abschluss,
+    falls das Auswahlaxiom vorausgesetzt wird.
+\end{Theorem}
+
+\linie
+
+\begin{Bem}
+    Für die Eindeutigkeit des algebraischen Abschlusses definiert man
+    Eindeutigkeit als Eindeutigkeit bis auf $K$-Isomorphie, d.\,h. der
+    Grundkörper soll elementweise festgehalten werden.
+\end{Bem}
+
+\begin{Def}{$K$-Homomorphismus}
+    Seien $L_1/K$ und $L_2/K$ Körpererweiterungen über demselben Körper $K$ und
+    $\varphi\colon L_1 \rightarrow L_2$ ein Ringhomomorphismus.\\
+    $\varphi$ heißt \begriff{$K$-Homomorphismus}, falls $\varphi(x) = x$ für
+    alle $x \in K$ (d.\,h. $\varphi|_K = \id_K$).\\
+    $\varphi$ heißt \begriff{$K$-Isomorphismus}, falls
+    $\varphi$ ein bijektiver $K$-Homomorphismus ist.\\
+    $\varphi$ heißt \begriff{$K$-Automorphismus}, falls
+    $\varphi$ ein $K$-Isomorphismus mit $L_1 = L_2$ ist.
+\end{Def}
+
+\begin{Def}{Gruppe der $K$-Automorphismen}
+    Sei $L/K$ eine Körpererweiterung.\\
+    Dann ist $\Aut_K(L)$ die \begriff{Gruppe der $K$-Automorphismen von $L$}
+    unter Komposition.
+\end{Def}
+
+\begin{Bsp}
+    Die komplexe Konjugation in $\complex/\real$, d.\,h.
+    $a + b\i \mapsto a - b\i$ für $a, b \in \real$, ist ein
+    $\real$-Automorphismus von $\complex$.
+    Analog ist in $\rational[\sqrt{2}]/\rational$ die Abbildung\\
+    $\rational[\sqrt{2}] \rightarrow \rational[\sqrt{2}]$,
+    $a + b\sqrt{2} \mapsto a - b\sqrt{2}$ ein
+    $\rational$-Automorphismus von $\rational[\sqrt{2}]$.
+\end{Bsp}
+
+\begin{Bem}
+    Beide Automorphismen bilden eine Nullstelle des Minimalpolynoms
+    ($x^2 + 1$ bzw. $x^2 - 2$) auf eine Nullstelle des Minimalpolynoms ab
+    ($\i \mapsto -\i$ bzw. $\sqrt{2} \mapsto -\sqrt{2}$).
+    Das ist kein Zufall:
+    Ist $L = K(a)$, $m_a(x) = f(x) = \sum_{i=0}^n \lambda_j x^j$,
+    $\alpha\colon L \rightarrow L$ ein $K$-Automorphismus und
+    $x_0$ Nullstelle von $m_a(x)$, so gilt
+    $0 = \alpha(0) = \alpha(\sum_{i=0}^n \lambda_j x_0^j) =
+    \sum_{i=0}^n \alpha(\lambda_j) \alpha(x_0)^j =
+    \sum_{i=0}^n \lambda_j \alpha(x_0)^j$, also ist $\alpha(x_0)$ Nullstelle
+    von $m_a(x)$.
+    Insbesondere gilt das für die Nullstelle $a$, es gilt sogar:\\
+    Für einen $K$-Automorphismus $\varphi\colon L \rightarrow L$,
+    $f(x) \in K[x]$ und $a \in L$ mit $f(a) = 0$ gilt
+    $f(\varphi(a)) = 0$.
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Prop}{Anzahl an $K$-Isomorphismen}\\
+    Seien $K, K'$ Körper, $\sigma\colon K \rightarrow K'$ ein
+    Isomorphismus, $\sigma^\ast\colon K[x] \rightarrow K'[x]$,
+    $\sum \lambda_i x^i \mapsto \sum \sigma(\lambda_i) x^i$\\
+    der \begriff{induzierte Isomorphismus} und
+    $L/K$ und $L'/K'$ algebraische Körpererweiterungen.\\
+    Dann gilt:
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        Für $a \in L$ und $a' \in L'$ mit
+        $m_{a',K'} = \sigma^\ast(m_{a,K})$ gibt es genau einen Isomorphismus\\
+        $\varphi\colon K(a) \rightarrow K'(a')$ mit $\varphi|_K = \sigma$ und
+        $\varphi(a) = a'$.
+        
+        \item
+        Für $a \in L$ gilt
+        $\#\{\varphi\colon K(a) \rightarrow L' \text{ Homom.}
+        \;|\; \varphi|_K = \sigma\} =
+        \#\{x \in L' \;|\; \sigma^\ast(m_{a,K})(x) = 0\}$.
+    \end{enumerate}
+\end{Prop}
+
+\begin{Bsp}
+    Für $K = K'$ ist $\sigma = \id_K$ ein Isomorphismus.
+    Es gilt dann $\sigma^\ast = \id_{K[x]}$.\\
+    Für $K = K' = \rational$,
+    $L = \rational(\sqrt[3]{2})$, $L' = \complex$ und $a = \sqrt[3]{2}$
+    ist $m_{a,\rational}(x) = x^3 - 2$.
+    Nach (b) gilt daher
+    $\#\{\varphi\colon \rational(\sqrt[3]{2}) \rightarrow \complex \;|\;
+    \varphi|_\rational = \id_\rational\} =
+    \#\{x \in \complex \;|\; x^3 - 2 = 0\}$.
+    Die Menge der rechten Seite ist
+    $\{\sqrt[3]{2}, \sqrt[3]{2} e^{2\pi\i/3}, \sqrt[3]{2} e^{4\pi\i/3}\}$,
+    d.\,h. es gibt drei Abbildungen
+    $\varphi\colon \rational(\sqrt[3]{2}) \rightarrow \complex$,
+    die $\rational$ elementweise festlassen.
+\end{Bsp}
+
+\linie
+
+\begin{Theorem}{Eindeutigkeit des algebraischen Abschlusses}\\
+    Setzt man das Auswahlaxiom voraus, so gilt:
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        Seien $L/K$ algebraisch, $M$ algebraisch abgeschlossen und
+        $\sigma\colon K \rightarrow M$ Homomorphismus.\\
+        Dann existiert ein Homomorphismus $\varphi\colon L \rightarrow M$
+        mit $\varphi|_K = \sigma$.
+        \begin{align*}
+            \begin{xy}
+                \xymatrix{
+                    K \ar[r]^\sigma \ar@{_{(}->}[d] &
+                    M = \overline{M} \\
+                    L \ar@{-->}[ru]_{\exists \varphi} &
+                }
+            \end{xy}
+        \end{align*}
+        
+        \item
+        Seien $K \simeq K'$ isomorph durch $\sigma$ und
+        $\overline{K}, \overline{K'}$ algebraische Abschlüsse von $K, K'$.\\
+        Dann existiert ein Isomorphismus $\varphi\colon \overline{K}
+        \xrightarrow{\sim} \overline{K'}$ mit $\varphi|_K = \sigma$.
+        \begin{align*}
+            \begin{xy}
+                \xymatrix{
+                    K \ar[r]^\sigma_\sim \ar@{_{(}->}[d] &
+                    K' \ar@{^{(}->}[d] \\
+                    \overline{K} \ar@{-->}[r]_{\exists \varphi}^\sim &
+                    \overline{K'}
+                }
+            \end{xy}
+        \end{align*}
+        
+        \item
+        Seien $K$ ein Körper und $L_1, L_2$ algebraische Abschlüsse von $K$.\\
+        Dann existiert ein $K$-Isomorphismus
+        $\varphi\colon L_1 \xrightarrow{\sim} L_2$.
+        \begin{align*}
+            \begin{xy}
+                \xymatrix{
+                    & K \ar@{_{(}->}[dl] \ar@{^{(}->}[dr] \\
+                    L_1 \ar@{-->}[rr]_{\exists \varphi}^\sim & & L_2
+                }
+            \end{xy}
+        \end{align*}
+    \end{enumerate}
+\end{Theorem}
+
+\begin{Bem}
+    Also ist der algebraische Abschluss eindeutig bis auf $K$-Isomorphie.
+    Alle algebraischen Erweiterungen $L/K$ finden in $\overline{K}$ statt
+    (bis auf $K$-Isomorphie).
+\end{Bem}
+
+\pagebreak

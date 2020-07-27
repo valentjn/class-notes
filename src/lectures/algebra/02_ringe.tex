@@ -1,0 +1,507 @@
+\section{%
+    Ringe%
+}
+
+\subsection{%
+    Ringe, Ideale, Restklassenringe und Körper%
+}
+
+\begin{Def}{Ring}
+    Ein \begriff{Ring} $(R, +, \cdot)$ ist eine Menge $R$ mit zwei Abbildungen
+    $+\colon R \times R \rightarrow R$, $(a, b) \mapsto a + b$ und
+    $\cdot\colon R \times R \rightarrow R$, $(a, b) \mapsto a \cdot b$,
+    sodass gilt:
+    \begin{enumerate}[label=(R\arabic*)]
+        \item
+        $(R, +)$ ist eine abelsche Gruppe
+        (mit neutralem Element $0$, zu $a$ inversem Element $-a$).
+        
+        \item
+        \begriff{Assoziativität von $\cdot$}:
+        $\forall_{a, b, c \in R}\; a(bc) = (ab)c$\\
+        \begriff{Distributivität von $\cdot$ bzgl. $+$}:
+        $\forall_{a, b, c \in R}\;
+        a \cdot (b + c) = (a \cdot b) + (a \cdot c),\;
+        (a + b) \cdot c = (a \cdot c) + (b \cdot c)$\\
+        \begriff{neutrales Element von $\cdot$}:
+        $\exists_{1 \in R} \forall_{a \in R}\; a \cdot 1 = a = 1 \cdot a$
+    \end{enumerate}
+    Im Folgenden wird zusätzlich $0 \not= 1$ verlangt
+    (sonst wäre $R = \{0\}$ zugelassen).
+\end{Def}
+
+\begin{Def}{kommutativ}
+    Ein Ring $(R, +, \cdot)$ heißt \begriff{kommutativ},
+    falls $\forall_{a, b \in R}\; a \cdot b = b \cdot a$.
+\end{Def}
+
+\begin{Def}{Ringhomomorphismus}
+    Seien $R$ und $S$ Ringe.
+    Eine Abbildung\\
+    $\varphi\colon R \rightarrow S$ heißt
+    \begriff{Ringhomomorphismus}, falls gilt:
+    \begin{itemize}
+        \item
+        $\varphi\colon (R, +) \rightarrow (S, +)$ ist ein Homomorphismus von
+        abelschen Gruppen.
+        
+        \item
+        $\forall_{a, b \in R}\;
+        \varphi(a \cdot b) = \varphi(a) \cdot \varphi(b)$
+        
+        \item
+        $\varphi(1_R) = 1_S$
+    \end{itemize}
+\end{Def}
+
+\begin{Bem}
+    $\{0\}$ ist kein Ring, da kein Einselement vorhanden ist.\\
+    Für jeden Ring $R$ und $a \in R$ gilt
+    $0 \cdot a = (0 + 0) \cdot a = 0 \cdot a + 0 \cdot a$, also
+    $0 \cdot a = 0$.
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Beispiele für bekannte Ringe sind
+    $(\integer, +, \cdot)$,
+    $(\rational, +, \cdot)$,
+    $(\real, +, \cdot)$ und
+    $(\complex, +, \cdot)$.\\
+    $(\Mat(n \times n, \rational), +, \cdot)$ ist ein Ring, der für
+    $n \ge 2$ nicht kommutativ ist.\\
+    $\rational[x] := \{f(x) = \sum_{i=0}^n a_i x^i \;|\; n \in \natural_0,
+    a_0, \dotsc, a_n \in \rational\}$
+    ist der \begriff{Polynomring} über $\rational$.\\
+    Für $U \subset \real^n$ of"|fen ist bspw. die Menge aller stetigen
+    Funktionen $f\colon U \rightarrow \real$ ein Ring, wobei Addition und
+    Multiplikation im Bild erfolgen ($(f + g)(x) := f(x) + g(x)$,
+    $(f \cdot g)(x) := f(x) \cdot g(x)$).\\
+    Für eine abelsche Gruppe $G$ ist die Menge $\Hom(G, G)$ aller
+    Gruppenhomomorphismen ein Ring.\\
+    Die einzige Möglichkeit, $R = \{0, 1\}$ zu einem Ring zu machen, ist
+    $1 \cdot 1 = 1$, $1 \cdot 0 = 0 \cdot 1 = 0 \cdot 0 = 0$,
+    $1 + 0 = 0 + 1 = 1$, $0 + 0 = 1 + 1 = 0$.
+    Dies entspricht dem Quotientenring $\integer/2\integer$ von
+    $(\integer, +, \cdot)$.
+\end{Bsp}
+
+\linie
+
+\begin{Def}{(Links-/Rechts-)Ideal}
+    Seien $(R, +, \cdot)$ ein Ring und $I \subset R$ eine Untergruppe von
+    $(R, +)$.\\
+    $I$ heißt \begriff{Linksideal} von $R$, falls
+    $\forall_{x \in I, a \in R}\; ax \in I$.
+    $I$ heißt \begriff{Rechtsideal} von $R$, falls
+    $\forall_{x \in I, a \in R}\; xa \in I$.\\
+    $I$ heißt \begriff{Ideal} von $R$, falls $I$ Links- und Rechtsideal ist.
+\end{Def}
+
+\begin{Bsp}
+    $I = \{0\}$ ist stets ein Ideal.
+    Jede Untergruppe $I = n\integer \subset \integer$ von $\integer$ ist ein
+    Ideal.
+\end{Bsp}
+
+\begin{Prop}{Restklassenring}
+    Seien $R$ ein Ring und $I$ ein Ideal mit $I \not= R$.\\
+    Dann ist die Faktorgruppe $R/I$ ein Ring mit der Multiplikation
+    $(x + I) \cdot (y + I) := (xy) + I$.\\
+    $R/I$ heißt \begriff{Restklassenring}.
+\end{Prop}
+
+\begin{Bem}
+    Für $I = R$ wäre $R/I = \{0\}$ kein Ring (enthält kein Einselement).
+\end{Bem}
+
+\linie
+
+\begin{Def}{Einheitengruppe}
+    Sei $R$ ein Ring und\\
+    $R^\ast := \{x \in R \;|\; x \text{ invertierbar bzgl. } \cdot\}$
+    $= \{x \in R \;|\; \exists_{y \in R}\; xy = 1 = yx\}$.\\
+    Die Elemente von $R^\ast$ heißen \begriff{Einheiten} und
+    $R^\ast$ heißt \begriff{Einheitengruppe} von $R$.
+\end{Def}
+
+\begin{Bsp}
+    $\integer^\ast = \{\pm 1\}$,
+    $\rational^\ast = \rational \setminus \{0\}$,
+    $\real^\ast = \real \setminus \{0\}$,
+    $(\integer/6\integer)^\ast = \{\overline{1}, \overline{5}\}$
+\end{Bsp}
+
+\begin{Def}{Schiefkörper/Körper}
+    $R$ heißt \begriff{Schiefkörper} oder \begriff{Divisionsring}, falls
+    $R^\ast = R \setminus \{0\}$.\\
+    $R$ heißt \begriff{Körper}, falls $R$ Schiefkörper und kommutativ ist.
+\end{Def}
+
+\begin{Bsp}
+    Sei $K$ ein Körper und $R = K[x]$ der Polynomring.
+    Was ist $R^\ast$?\\
+    Für $f(x) \in R^\ast$ gibt es ein $g(x) \in R^\ast$ mit $f(x)g(x) = 1$.
+    Ist $f(x) = a_0 + a_1 x + \dotsb + a_n x^n$ und
+    $g(x) = b_0 + b_1 x + \dotsb + b_\ell x^\ell$ mit $a_j, b_j \in K$ und
+    $a_n \not= 0$, $b_\ell \not= 0$, so gilt\\
+    $1 = f(x) g(x) = a_n b_\ell x^{n+\ell} +
+    \text{Terme echt kleineren Grades}$.
+    Wegen $a_n b_\ell \not= 0$ muss $n + \ell = 0$ sein
+    (Koef"|fizientenvergleich), d.\,h. $n = \ell = 0$ und
+    $f(x) = a_0$.
+    Also gilt $R^\ast = K \setminus \{0\}$.
+\end{Bsp}
+
+\subsection{%
+    Kommutative Ringe%
+}
+
+\begin{Bem}
+    Im Folgenden sei jeder Ring als kommutativ vorausgesetzt.
+\end{Bem}
+
+\begin{Prop}{Äquivalenzen zu Körper}
+    Sei $R$ ein Ring.
+    Dann sind äquivalent:
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        $R$ ist ein Körper.
+        
+        \item
+        $R$ hat genau zwei Ideale ($\{0\}, R$).
+        
+        \item
+        Für jeden Ring $S$ ist jeder Ringhomomorphismus $R \rightarrow S$
+        injektiv.
+    \end{enumerate}
+\end{Prop}
+
+\begin{Def}{Integritätsbereich}
+    Sei $R$ ein Ring.\\
+    $a \in R$ heißt \begriff{Nullteiler}, falls es ein
+    $b \in R \setminus \{0\}$ gibt mit $ab = 0$.\\
+    $R$ heißt \begriff{Integritätsbereich}, falls $0$ der einzige Nullteiler
+    in $R$ ist.
+\end{Def}
+
+\begin{Bsp}
+    In $R = \integer/6\integer$ sind die Nullteiler $\overline{0}$,
+    $\overline{2}$, $\overline{3}$ und $\overline{4}$.\\
+    $\integer$, $K$ und $K[x]$ sind Integritätsbereiche, falls
+    $K$ ein Körper ist.
+\end{Bsp}
+
+\linie
+
+\begin{Def}{Hauptideal(ring)/Primideal/max. Ideal}
+    Sei $R$ ein Ring und $I$ ein Ideal in $R$.\\
+    $I$ heißt \begriff{Hauptideal}, falls $\exists_{a \in R}\; I = Ra$.\\
+    $R$ heißt \begriff{Hauptidealring}, falls jedes Ideal in $R$ ein Hauptideal
+    ist.\\
+    $I$ heißt \begriff{Primideal}, falls $I \not= R$ und
+    $\forall_{a, b \in R,\; ab \in I}\; \{a, b\} \cap I \not= \emptyset$.\\
+    $I$ heißt \begriff{maximales Ideal}, falls $I \not= R$ und
+    $\forall_{J \text{ Ideal in } R,\; I \subset J}\; J \in \{I, R\}$.
+\end{Def}
+
+\begin{Bem}
+    $I = \{0\}$ und $I = R$ sind Hauptideale.\\
+    Ist $R$ ein Körper, so ist $R$ ein Hauptidealring.\\
+    $R$ ist ein Körper genau dann, wenn $I = \{0\}$ maximales Ideal ist.\\
+    $I$ ist maximal genau dann, wenn $R/I$ ein Körper ist.\\
+    $I$ ist Primideal genau dann, wenn $R/I$ Integritätsbereich ist.\\
+    Ist $I$ maximales Ideal, so ist $R/I$ ein Körper, also insb.
+    Int.bereich und somit ist $I$ ein Primideal.\\
+    (Die Umkehrung gilt nicht: $\{0\} \subset \integer$ ist Primideal,
+    aber nicht maximal.)
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Im Beispiel $R = \integer$ sind Ideale genau die $n\integer$
+    ($n \in \natural_0$), dies sind alles Hauptideale.\\
+    Welche $n\integer$ sind Primideale, welche sind maximal?\\
+    Sei zunächst $n = p$ Primzahl, dann ist $\integer/p\integer$ Körper,
+    also ist $p\integer$ maximales Ideal und Primideal.\\
+    Ist $n = ab$ mit $1 < a, b < n$, dann gilt in $\integer/n\integer$
+    $\overline{0} = \overline{n} = \overline{ab} = \overline{a} \overline{b}$.
+    Wegen $\overline{a}, \overline{b} \not= \overline{0}$ ist
+    $\integer/n\integer$ kein Integritätsbereich, also ist $n\integer$
+    weder Primideal noch maximales Ideal.\\
+    Für $n = 0$ ist $0\integer = \{0\}$.
+    $\integer/0\integer \simeq \integer$ ist ein Integritätsbereich, aber kein
+    Körper,
+    d.\,h. $0\integer$ ist Primideal, aber nicht maximal.\\
+    Es gilt also: $n\integer$ ist ein Primideal genau dann, wenn $\pm n$
+    eine Primzahl ist.
+\end{Bsp}
+
+\begin{Bem}
+    Ein Beispiel für einen Ring, der kein Hauptidealring ist, ist
+    $R = \integer[x]$.\\
+    Sei dafür $I = \erzeugnis{2, x} =
+    \{a_0 + a_1 x + \dotsb \;|\; a_i \in \integer,\; 2 \teilt a_0\}$.
+    $I$ ist kein Hauptideal, denn andernfalls
+    gäbe es ein $f(x) \in \integer[x]$ mit $I = \erzeugnis{f(x)} = Rf(x)$.
+    Wegen $2 \in I$ gibt es dann ein $g(x) \in \integer[x]$ mit
+    $f(x) g(x) = 2$.
+    Da $\grad(f(x)g(x)) = \grad f(x) + \grad g(x) = 0$ sein muss,
+    gilt $f(x) \in \integer$, d.\,h. $f(x) \in \{\pm 1, \pm 2\}$.
+    Wegen $x \in I$ gibt es ein $h(x) \in \integer[x]$ mit $h(x) f(x) = x$,
+    also $f(x) \not= \pm 2$.
+    Daher gilt $f(x) = \pm 1$ und $I = Rf(x) = R$, ein Widerspruch zu
+    $I \not= R$.
+\end{Bem}
+
+\linie
+
+\begin{Def}{\name{euklid}isch}
+    Ein Integritätsbereich $R$ heißt \begriff{\name{euklid}isch}, falls
+    es eine \begriff{Gradabbildung}\\
+    $\lambda\colon R \setminus \{0\} \rightarrow \natural_0$ gibt, sodass
+    $\forall_{a \in R,\; b \in R \setminus \{0\}} \exists_{q, r \in R}\;
+    a = qb + r$ und $r = 0$ oder $\lambda(r) < \lambda(b)$.
+\end{Def}
+
+\begin{Theorem}{euklidisch $\Rightarrow$ Hauptidealring}
+    Sei $R$ euklidisch.
+    Dann ist $R$ ein Hauptidealring.
+\end{Theorem}
+
+\linie
+
+\begin{Prop}{Polynomring über Körper euklidisch}
+    Sei $K$ ein Körper.\\
+    Dann ist $K[x]$ ein euklidischer Ring, d.\,h. insbesondere Hauptidealring.
+\end{Prop}
+
+\begin{Bem}
+    Man definiert dabei $\lambda(f(x)) := n$
+    für $f(x) = a_0 + a_1 x + \dotsb + a_n x^n$, $a_n \not= 0$.
+    Ist $I \not= \{0\}$ ein Ideal in $K[x]$, so ist
+    $I = \erzeugnis{f(x)}$ mit $f(x)$ einem Polynom kleinsten Grades in $I$.
+\end{Bem}
+
+\begin{Def}{Ring der ganzen \name{Gauß}schen Zahlen}\\
+    Der \begriff{Ring der ganzen \name{Gauß}schen Zahlen} ist
+    $\integer[\i] := \{a + b\i \;|\; a, b \in \integer\} \subset \complex$.
+\end{Def}
+
+\begin{Prop}{$\integer[\i]$ euklidisch}
+    Der Ring $\integer[\i]$ ist euklidisch, d.\,h. insbesondere Hauptidealring.
+\end{Prop}
+
+\begin{Bem}
+    Die Norm $N(z)$ für $z \in \complex$ ist dabei definiert als
+    $N(z) = |z|^2 = z \overline{z}$.
+\end{Bem}
+
+\subsection{%
+    Irreduzible und Primelemente%
+}
+
+\begin{Bem}
+    Im Folgenden sei jeder Ring als kommutativ vorausgesetzt.
+\end{Bem}
+
+\begin{Def}{irreduzibel/prim}
+    Seien $R$ ein Integritätsbereich und $p \in R \setminus \{0\}$ mit
+    $p \notin R^\ast$.\\
+    $p$ heißt \begriff{irreduzibel}, falls
+    $\forall_{x, y \in R,\; p = xy}\; \{x, y\} \cap R^\ast \not= \emptyset$.\\
+    $p$ heißt \begriff{prim} oder \begriff{Primelement}, falls
+    $\forall_{x, y \in R,\; p \teilt xy}\; (p \teilt x) \lor (p \teilt y)$.
+    Eine äquivalente Definition ist, dass $\erzeugnis{p}$ ein Primideal ist.
+\end{Def}
+
+\begin{Lemma}{Primelemente sind irreduzibel}
+    Jedes Primelement ist irreduzibel.
+\end{Lemma}
+
+\begin{Bem}
+    Die Umkehrung gilt i.\,A. nicht.
+\end{Bem}
+
+\begin{Prop}{Äquivalenz in HIR}
+    Seien $R$ ein Hauptidealring und $p \in R \setminus \{0\}$ mit
+    $p \notin R^\ast$.\\
+    Dann sind äquivalent:
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        $p$ ist irreduzibel.
+        
+        \item
+        $p$ ist prim.
+        
+        \item
+        $\erzeugnis{p}$ ist ein maximales Ideal.
+    \end{enumerate}
+\end{Prop}
+
+\linie
+
+\begin{Def}{\name{noether}sch}
+    Ein Ring $R$ heißt \begriff{\name{noether}sch}, falls
+    jede aufsteigende Kette von Idealen
+    $I_1 \subset I_2 \subset \dotsb \subset I_k \subset \dotsb$
+    stationär wird, d.\,h. es gibt ein $N \in \natural$ mit
+    $I_N = I_{N+1} = \dotsb$.
+\end{Def}
+
+\begin{Lemma}{HIRs sind noethersch}
+    Sei $R$ ein Hauptidealring.
+    Dann ist $R$ noethersch.
+\end{Lemma}
+
+\begin{Def}{faktorieller Ring}
+    Ein Integritätsbereich $R$ heißt \begriff{faktorieller Ring},
+    falls jedes $a \in R \setminus \{0\}$ mit $a \notin R^\ast$
+    als endliches Produkt von Primelementen darstellbar ist.\\
+    Das ist äquivalent dazu, dass
+    jedes $a \in R \setminus \{0\}$ mit $a \notin R^\ast$
+    als endliches Produkt von irreduziblen Elementen darstellbar
+    und diese Zerlegung bis auf Reihenfolge und Einheiten eindeutig ist.\\
+    In faktoriellen Ringen sind Primelemente genau die irreduziblen Elemente.
+\end{Def}
+
+\begin{Def}{Repräsentanten der Primelemente}
+    $\Prim(R)$ ist eine Menge von Repräsentanten von Primelementen von $R$,
+    d.\,h. aus jeder Assoziiertheitsklasse
+    $\{\varepsilon p \;|\; \varepsilon \in R^\ast\}$ für $p \in R$ prim
+    wählt man genau ein Element aus.
+\end{Def}
+
+\begin{Theorem}{HIRs sind UFDs}
+    Sei $R$ ein Hauptidealring.
+    Dann ist $R$ faktoriell.
+\end{Theorem}
+
+\linie
+\pagebreak
+
+\begin{Bsp}
+    In $K[x]$ ist z.\,B. $(x - \lambda)$ irreduzibel.\\
+    $(x^2 + 1)$ ist irreduzibel in $\real[x]$ und
+    $(x^2 - 2)$ ist irreduzibel in $\rational[x]$.\\
+    $5$ ist nicht prim in $\integer[\i]$, da
+    $5 = (1 + 2\i)(1 - 2\i)$, d.\,h.
+    $5$ teilt das Produkt, aber $5$ teilt keinen der Faktoren
+    (sonst wäre $5a = 1 \pm 2\i$, aber
+    $N(5a) = 25 |a|^2 = 5 = N(1 \pm 2\i)$, d.\,h.
+    $|a|^2 = \frac{1}{5}$, es gibt aber kein solches $a \in \integer[\i]$).\\
+    $\integer[\sqrt{-5}]$ ist nicht faktoriell.
+    Dazu zeigt man, dass z.\,B. $2$ irreduzibel, aber nicht prim ist.\\
+    $2$ ist irreduzibel, denn aus $2 = ab$ folgt
+    $N(a) = N(x + y\sqrt{-5}) = x^2 + 5y^2 \teilt 4 = N(2)$ und
+    $N(b) = N(u + v\sqrt{-5}) = u^2 + 5v^2 \teilt 4 = N(2)$,
+    somit gilt $y = v = 0$ und $a, b \in \integer$.
+    Dann muss aber $a = 1$, $b = 2$ oder $a = 2$, $b = 1$ gelten.\\
+    $2$ ist nicht prim, denn $2 \cdot 3 = 6 = (1 + \sqrt{-5})(1 - \sqrt{-5})$.
+    Wäre $2$ prim, dann würde gelten, dass $2 \teilt (1 + \sqrt{-5})$ oder
+    $2 \teilt (1 - \sqrt{-5})$.
+    Aus $2 \teilt (1 \pm \sqrt{-5})$ folgt aber, dass
+    $2z = 1 \pm \sqrt{-5}$ für ein $z \in \integer[\sqrt{-5}]$, also
+    $z = \frac{1}{2} \pm \frac{1}{2} \sqrt{-5} \notin \integer[\sqrt{-5}]$,
+    ein Widerspruch.
+\end{Bsp}
+
+\subsection{%
+    Der Satz von \name{Gauss}%
+}
+
+\begin{Bem}
+    Im Folgenden sei jeder Ring als kommutativ vorausgesetzt.
+\end{Bem}
+
+\begin{Theorem}{Satz von \upshape\,\!\name{Gauss}}
+    Sei $R$ ein faktorieller Ring.
+    Dann ist auch $R[x]$ faktoriell.
+\end{Theorem}
+
+\linie
+
+\begin{Bem}
+    Für den Beweis dieses Satzes benötigt man einige Vorarbeit.
+\end{Bem}
+
+\begin{Def}{Quotientenkörper}
+    Sei $R$ ein Integritätsbereich.
+    Definiere eine Äquivalenzrelation $\sim$ auf
+    $M = \{(a, b) \in R \times R \;|\; b \not= 0\}$ mit
+    $(a, b) \sim (c, d)$, falls $ad = bc$.
+    Die Äquivalenzklasse von $(a, b) \in M$ wird mit $\frac{a}{b}$
+    bezeichnet.
+    Die Menge aller Äquivalenzklassen heißt \begriff{Quotientenkörper}
+    $Q(R) := \{\frac{a}{b} \;|\; a, b \in R,\; b \not= 0\}$.
+    Man definiert Addition und Multiplikation analog wie in $\rational$
+    ($\frac{a}{b} + \frac{c}{d} := \frac{ad + bc}{bd}$,
+    $\frac{a}{b} \cdot \frac{c}{d} := \frac{ac}{bd}$).
+    Mit diesen Operationen wird $Q(R)$ zum Körper, der $R$ als Teilring
+    enthält (mittels dem injektiven Ringhomomorphismus
+    $R \rightarrow Q(R)$, $r \mapsto \frac{r}{1}$).
+\end{Def}
+
+\begin{Bem}
+    Ist $R$ faktoriell und $a, b \in R$, so kann man $a$ und $b$ eindeutig
+    bis auf Einheiten in Primelemente zerlegen, d.\,h.
+    $a = \varepsilon p_1^{a_1} \dotsm p_n^{a_n}$ und
+    $b = \varepsilon' p_1^{b_1} \dotsm p_n^{b_n}$
+    für $a_i, b_i \in \natural_0$ und $\varepsilon, \varepsilon' \in R^\ast$.\\
+    Daher ist
+    $\frac{a}{b} = \widetilde{\varepsilon} p_1^{c_1} \dotsm p_n^{c_n}$
+    mit $c_i = a_i - b_i$.
+    Man kann also jedes Element $\frac{a}{b} \in Q(R)$ schreiben als
+    $\frac{a}{b} = \varepsilon \prod_{p \in \Prim(R)} p^{\nu_p}$ mit
+    eindeutigen Exponenten $\nu_p = \nu_p(\frac{a}{b}) \in \integer$.
+    Formal setzt man $\nu_p(0) := \infty$, um die Regel
+    $\nu_p(ab) = \nu_p(a) + \nu_p(b)$ auch auf $0$ anwenden zu können.
+\end{Bem}
+
+\begin{Bem}
+    Auch für $Q(R)[x]$ kann man diese Schreibweise anwenden:\\
+    Für $f(x) = \sum_{i=0}^n a_i x^i$ definiert man
+    $\nu_p(f) := \min_{i=0,\dotsc,n} \nu_p(a_i)$.\\
+    Mit obigem Formalismus gilt $f = 0 \iff \nu_p(f) = \infty$ und
+    $f \in R[x] \iff \nu_p(f) \ge 0$.
+\end{Bem}
+
+\linie
+
+\begin{Prop}{Lemma von \upshape\,\!\name{Gauss}}\\
+    Seien $R$ ein faktorieller Ring, $p \in \Prim(R)$ und $f, g \in Q(R)[x]$.\\
+    Dann gilt $\nu_p(fg) = \nu_p(f) + \nu_q(g)$.
+\end{Prop}
+
+\begin{Def}{normiertes Polynom}
+    Ein Polynom $f(x) = \sum_{i=0}^n a_i x^i$ heißt \begriff{normiert},
+    falls $a_n = 1$.
+\end{Def}
+
+\begin{Def}{primitives Polynom}
+    Ein Polynom $f \in R[x]$ mit $\nu_p(f) = 0$ für alle $p \in \Prim(R)$
+    heißt \begriff{primitiv}.
+\end{Def}
+
+\begin{Bem}
+    Jedes normierte Polynom $f \in R[x]$ ist primitiv.
+    Für primitive Polynome $f \in R[x]$ sind die Primfaktorzerlegungen über
+    $R[x]$ und über $Q(R)[x]$ identisch.
+\end{Bem}
+
+\begin{Kor}
+    Seien $R$ ein faktorieller Ring, $h \in R[x]$ normiert
+    und $h = fg$ mit $f, g \in Q(R)[x]$.\\
+    Dann gilt $f, g \in R[x]$.
+\end{Kor}
+
+\begin{Bem}
+    $h \in R[x]$ primitiv ist irreduzibel in $R[x]$ $\iff$
+    $h$ ist irreduzibel in $Q(R)[x]$.\\
+    Für $g \in Q(R)[x]$ ist $g = af$ mit $f$ primitiv und
+    $a = \prod_{p \in \Prim(R)} p^{\nu_p(g)} \in Q(R)$.
+\end{Bem}
+
+\pagebreak

@@ -1,0 +1,376 @@
+\section{%
+    Lineare Gleichungssysteme%
+}
+
+\subsection{%
+    Theoretisches%
+}
+
+\begin{Def}{lineares Gleichungssystem} \\
+    \begin{tabular}{p{7.7cm}p{8.3cm}}
+    \matrixsize{$\begin{array}{rcrcccrcl}
+    \alpha_{11} x_1 & + & \alpha_{12} x_2 & + & \cdots &
+    + & \alpha_{1n} x_n & = & \beta_1 \\
+    \alpha_{21} x_1 & + & \alpha_{22} x_2 & + & \cdots &
+    + & \alpha_{2n} x_n & = & \beta_2 \\
+    \vdots & & \vdots & & & & \vdots & & \vdots \\
+    \alpha_{m1} x_1 & + & \alpha_{m2} x_2 & + & \cdots &
+    + & \alpha_{mn} x_n & = & \beta_m
+    \end{array}$}
+    &
+    \begin{minipage}[c]{8.3cm}Ein lineares Gleichungssystem \lgs{G} besteht
+    aus $m$ Gleichungen, $n$ Unbestimmten $x_j$ ($1 \le j \le n$),
+    Koef"|fizienten $\alpha_{ij} \in K$ und $\beta_i \in K$ ($1 \le i \le m$)
+    und hat die links angegebene Form.\end{minipage}
+    \end{tabular}
+\end{Def}
+
+\begin{Def}{Matrixform}
+    Ein LGS \lgs{G} kann in eine Matrixgleichung $Ax = b$ umgeschrieben
+    werden. \\
+    Dabei ist $x =$
+    \matrixsize{$\begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix}$}
+    $ \in K^n$, $b = $
+    \matrixsize{$\begin{pmatrix}\beta_1 \\ \vdots \\
+    \beta_m\end{pmatrix}$} $ \in K^m$
+    und $A = (\alpha_{ij}) \in M_{m \times n}(K)$. \\
+    Der \begriff{zu \lgs{G} gehörende Homomorphismus}
+    $f_A: K^n \rightarrow K^m$ wird definiert als $f_A(x) = Ax$ für $x \in K^n$
+    (unabhängig von $b$).
+    Es ist $\hommatrix{f_A}{\stdbasis{m}}{\stdbasis{n}} = A$.
+    Die Lösungsgesamtheit \lgslsg{G} von \lgs{G} besteht aus allen Vektoren in
+    der Faser $f_A^{-1}(b)$.
+\end{Def}
+
+\begin{Def}{homogenes LGS}
+    Sei ein LGS \lgs{G} mit $Ax = b$ gegeben. \\
+    Ist $b$ der Nullvektor, so heißt \lgs{G} \begriff{homogen},
+    sonst \begriff{inhomogen}. \\
+    Ist \lgs{G} homogen, so ist die Lösung $x = 0$ die
+    \begriff{triviale Lösung}. \\
+    Ist \lgs{G} inhomogen, so heißt das LGS \lgs{H} mit $Ax = 0$ das
+    \begriff{zu \lgs{G} gehörige homogene System}.
+\end{Def}
+
+\begin{Satz}{Lösungen eines homogenen LGS}
+    Die Lösungsgesamtheit eines homogenen LGS $Ax = 0$ besteht genau aus
+    den Vektoren von $\ker f_A$.
+\end{Satz}
+
+\begin{Kor}
+    Ein homogenes LGS \lgs{H} ($Ax = 0$) besitzt genau dann nur die triviale
+    Lösung, wenn der zugehörige Homomorphismus $f_A$ injektiv ist. \\
+    Die Menge der Lösungen von \lgs{H} ist ein Unterraum von $K^n$ mit der
+    Dimension $n - \rg(A)$.
+\end{Kor}
+
+\begin{Satz}{Lösbarkeit}
+    Sei $\lgs{G}: Ax = b$ ein LGS mit $A \in M_{m \times n}(K)$.
+    Dann sind folgende Aussagen äquivalent: \qquad
+    \lgs{G} besitzt eine Lösung, \qquad $b \in \im f_A$, \qquad
+    $\rg(A) = \rg(A|b)$. \\
+    \lgs{G} hat genau dann eine eindeutige Lösung, wenn
+    $\rg(A) = \rg(A|b) = n$.
+\end{Satz}
+
+\begin{Satz}{Lösungen}
+    Sei $x_0$ eine Lösung des LGS \lgs{G}.
+    Dann ist $\lgslsg{G} = x_0 + \ker f_A$.
+\end{Satz}
+
+\begin{Kor}
+    Sei $\lgs{G}: Ax = b$ ein LGS mit $n$ Gleichungen und $n$ Unbestimmten.
+    Dann hat \lgs{G} eine eindeutige Lösung genau dann, wenn $A$ invertierbar
+    ist.
+    In diesem Fall ist die Lösung $x = A^{-1}b$.
+\end{Kor}
+
+\begin{Kor}
+    Sei $m < n$ und $\lgs{H}: Ax = 0$ ein homogenes LGS mit $m$ Gleichungen
+    und $n$ Unbestimmten.
+    Dann hat \lgs{H} nichttriviale Lösungen.
+\end{Kor}
+
+\pagebreak
+
+\subsection{%
+    Konkretes%
+}
+
+\begin{Satz}{LGS-Umformungen}
+    Sei $\lgs{G}: Ax = b$ ein LGS mit $A \in M_{m \times n}(K)$. \\
+    Kann man $(A|b)$ in ($A'|b')$ mittels elementaren Zeilenoperationen
+    umwandeln, so ist $\lgslsg{G} = \lgslsg{G'}$ \\
+    (wobei $\lgs{G'}: A'x = b'$).
+    Wandelt man $A$ in $A''$ durch eine Permutation $\pi$ der Spalten von $A$
+    um, so erhält man $\lgslsg{G}$ aus $\lgslsg{G''}$, indem man auf die
+    Komponenten jedes Lösungsvektors $x_0$ von $\lgslsg{G'}$ die inverse
+    Permutation $\pi^{-1}$ anwendet (wobei $\lgs{G''}: A''x = b$).
+\end{Satz}
+
+\begin{Satz}{Lösen von LGS} \\
+    \begin{tabular}{p{6.8cm}p{9.2cm}}
+    \matrixsize{$\left(\begin{array}{ccccccc|c}
+    1 & 0 & \cdots & 0 &
+    \delta_{1, r+1} & \cdots & \delta_{1, n} & \beta'_1 \\
+    0 & 1 & \cdots & 0 &
+    \delta_{2, r+1} & \cdots & \delta_{2, n} & \beta'_2 \\
+    \vdots & \vdots & \ddots & \vdots & \vdots & & \vdots & \vdots \\
+    0 & 0 & \cdots & 1 &
+    \delta_{r, r+1} & \cdots & \delta_{r, n} & \beta'_r \\
+    0 & 0 & \cdots & 0 & 0 & \cdots & 0 & \beta'_{r+1} \\
+    \vdots & \vdots & & \vdots & \vdots & & \vdots & \vdots \\
+    0 & 0 & \cdots & 0 & 0 & \cdots & 0 & \beta'_m \end{array}\right)$}
+    &
+    \begin{minipage}[c]{9.2cm}
+    Sei $\lgs{G}: Ax = b$ ein LGS mit $A \in M_{m \times n}(K)$.
+    Dann kann $(A|b)$ durch Zeilenoperationen und Anwendung einer Permutation
+    $\pi$ der Spalten von $A$ auf die Gestalt $(A'|b')$ (siehe links)
+    gebrachten werden.
+    Dabei ist $r = \rg(A)$ sowie $\delta_{kl}, \beta'_i \in K$
+    ($1 \le k \le r < r+1 \le l \le n$, $1 \le i \le m$).
+    \end{minipage}\end{tabular}
+\end{Satz}
+
+\begin{Satz}{Lösungen eines LGS} \\
+    \begin{tabular}{p{5.9cm}p{10.1cm}}
+    \matrixsize{$x_0 = \begin{pmatrix}\beta'_1 \\ \vdots \\ \beta'_r \\ 0 \\
+    \vdots \\ 0\end{pmatrix}
+    \in K^n,\; x_i = \begin{pmatrix}-\delta_{1, r+i} \\ \vdots \\
+    -\delta_{r, r+i} \\ 0 \\ \vdots \\ 1 \\ \vdots \\
+    0\end{pmatrix} \in K^n$}
+    &
+    \begin{minipage}[c]{10.1cm}
+    Sei $\lgs{G'}: A'x = b'$ ein LGS mit der obigen Form.
+    Dann ist \lgs{G} genau dann lösbar, falls
+    $\beta'_{r+1} = \cdots = \beta'_m = 0$. \\
+    In diesem Fall besteht $\lgslsg{G'}$ aus allen Vektoren der Form \\
+    $x = x_0 + \lambda_1 x_1 + \cdots + \lambda_s x_s$
+    mit $\lambda_1, \ldots, \lambda_s \in K$, $s = n - r$ sowie
+    $r = \rg(A)$, wobei der Eintrag $1$ an der $r+i$-ten Stelle steht.
+    Dabei ist $x_0$ eine spezielle Lösung und
+    $\aufspann{x_1, \ldots, x_s} = \ker f_A$, genauer
+    $\{x_1, \ldots, x_s\}$ eine Basis von $\ker f_A$.
+    \end{minipage}\end{tabular}
+\end{Satz}
+
+\begin{Prozedur}{Lineares Gleichungssystem lösen}
+    Gegeben sei ein LGS $\lgs{G}: Ax = b$.
+    \begin{enumerate}
+        \item Man bildet die augmentierte Matrix $(A|b)$.
+        
+        \item Ist die erste Spalte eine Nullspalte, so vertauscht man sie mit
+        der ersten Spalte vom $A$-Teil, die keine Nullspalte ist.
+        Ist $A$ die Nullmatrix, so ist man fertig (Schritt 6).
+        
+        \item Ist das Element an Position $(1, 1)$ Null, so vertauscht man die
+        erste Zeile mit einer Zeile, an deren erster Position keine Null steht.
+        
+        \item Dann dividiert man die erste Zeile durch den ersten
+        Eintrag, sodass dort eine $1$ steht. \\
+        Durch Abziehen von Vielfachen der ersten Zeile kann man
+        erreichen, dass in der ersten Spalte bis auf den ersten Eintrag nur
+        Nullen stehen.
+        
+        \item Dann macht man mit der zweiten Spalte und Zeile genau so weiter.
+        Der $(2, 2)$-te Eintrag ist dann eine Eins, durch Abziehen
+        eines Vielfachen der zweiten Spalte kann man erreichen, dass der
+        $(1, 2)$-te Eintrag $0$ ist.
+        
+        \item Mit den anderen Zeilen/Spalten fährt man auf diese Weise fort.
+        Man endet in einer Matrix $(A'|b')$ der obigen Form.
+        
+        \item Ist $\beta'_i \not= 0$ für ein $i$ mit $r + i \le i \le m$, dann
+        ist das LGS nicht lösbar.
+        Andernfalls füllt man $(A'|b')$ auf ($m < n$) oder streicht Nullen
+        ($m > n$), bis eine Matrix mit $n$ Zeilen entsteht.
+        
+        \item $x_0$ ist dann eine spezielle Lösung des modifizierten LGS
+        und die $x_i$ ($1 \le i \le n - r$) eine Basis der Lösungsgesamtheit
+        des zugehörigen homogenen LGS (\emph{siehe oben}).
+        Dann werden die Spaltenpermutationen durch Anwendung der inversen
+        Permutation auf $x_0, x_1, \ldots, x_{n-r}$ wieder rückgängig
+        gemacht. \\
+        Die Lösungsgesamtheit des LGS \lgs{G} ist dann
+        $\lgslsg{G} = x_0 + \aufspann{x_1, \ldots, x_{n-r}}$.
+    \end{enumerate} 
+\end{Prozedur}
+
+\subsection{%
+    Numerisches%
+}
+
+\begin{Def}{Treppenform}
+    $A = (\alpha_{ji}) \in M_{m \times n}(K)$ mit Zeilenvektoren $z_j$ ist in
+    \begriff{Treppenform}, falls $A = (0)$ oder es Indizes
+    $1 \le i_1 < \cdots < i_r \le n$ ($r = \rg(A)$) gibt, sodass \\
+    1. alle Zeilen $z_j$ mit $j > r$ Nullzeilen sind und \quad
+    2. für $j \le r$ der erste von Null verschiedene Eintrag der Zeile $z_j$
+    in Spalte $i_j$ ist, d.\,h. $\alpha_{ji_{j}} \not= 0$ sowie für $k < i_j$
+    gilt $\alpha_{jk} = 0$.
+\end{Def}
+
+\begin{Beobachtung}
+    Ein LGS in oberer Dreiecksgestalt (quadratisch, unter der Hauptdiagonalen
+    Nullen) lässt sich durch Einsetzen von unten nach oben einfach auflösen.
+    (Man kann immer annehmen, dass die Matrix quadratisch ist:
+    sonst Nullzeilen/-spalten hinzufügen.)
+\end{Beobachtung}
+
+\begin{xDef}{\name{Gauß}-Algorithmus}%
+{Gauss-Algorithmus@\name{Gauß}-Algorithmus}
+    Mit dem
+    \xbegriff{Gauß-Algorithmus}{Gauss-Algorithmus@\name{Gauß}-Algorithmus}
+    lässt sich ein LGS sogar nur mit elementaren Zeilenoperationen
+    (ohne Spaltenoperationen) lösen.
+\end{xDef}
+
+\subsection{%
+    \emph{Zusätzliches}: Projekt 6 (Af"|fine Geometrie)%
+}
+
+\begin{Def}{af"|finer Raum}
+    Ein \begriff{af"|finer Raum} $(\affin{A}, V, \boldsymbol{+})$ besteht aus
+    einer nicht-leeren Menge $\affin{A}$ von Punkten, einem $K$-Vektorraum $V$
+    und einer Abbildung
+    $\boldsymbol{+}: \affin{A} \times V \rightarrow \affin{A}$,
+    sodass $(P + v) + u = P + (v + u)$,
+    $\exists!_{x \in V}\; Q = P + x$ sowie
+    $P + 0_V = P$
+    für alle $P, Q \in \affin{A}$ und $u, v \in V$. \\
+    Der eindeutig bestimmte Vektor $x \in V$ in der Gleichung $Q = P + x$
+    heißt $x = \vektor{PQ}$. \\
+    Für $\affin{A} = \emptyset$ entfallen Vektorraum und Abbildung. \\
+    Ist $K = \real$ oder $K = \complex$, so heißt $\affin{A}$
+    \begriff{reeller oder komplexer af"|finer Raum}. \\
+    Die \begriff{Dimension} $\dim \affin{A}$ eines af"|finen Raums ist
+    $\dim V$.
+    Für $\affin{A} = \emptyset$ ist $\dim \affin{A} = -1$.
+\end{Def}
+
+\begin{Def}{af"|finer Unterraum}
+    Sei $(\affin{A}, V, \boldsymbol{+})$ ein af"|finer Raum.
+    $(\affin{U}, V_\affin{U}, \boldsymbol{+})$ heißt
+    \begriff{af"|finer Unterraum} von $\affin{A}$, falls
+    $\affin{U} \subseteq \affin{A}$ und $V_\affin{U} \ur V$ mit
+    $V_\affin{U} = \{v \in V \;|\;
+    P + v \in \affin{U} \text{ für alle } P \in \affin{U}\}$. \\
+    Zwei nicht-leere af"|fine Unterräume $\affin{U}, \affin{W}$ des af"|finen 
+    Raums $\affin{A}$ heißen \begriff{parallel}
+    ($\affin{U} \parallel \affin{W}$),
+    falls $V_\affin{U} \subseteq V_\affin{W}$ oder
+    $V_\affin{W} \subseteq V_\affin{U}$.
+    $\emptyset$ als af"|finer Unterraum ist parallel zu allen Unterräumen.
+\end{Def}
+
+\begin{Def}{af"|fine Abbildung}
+    Seien $(\affin{A}, V_1, \boldsymbol{+})$,
+    $(\affin{B}, V_2, \boldsymbol{+})$ zwei af"|fine Räume
+    ($V_1, V_2$ $K$-Vektorräume).
+    Eine Abbildung $f: \affin{A} \rightarrow \affin{B}$ heißt
+    \begriff{af"|fine Abbildung}, falls es eine $K$-lineare Abbildung
+    $f^\ast: V_1 \rightarrow V_2$ gibt,
+    sodass $f^\ast(\vektor{PQ}) = \vektor{f(P) f(Q)}$ für alle
+    $P, Q \in \affin{A}$ \\
+    (alternativ $f(P + v) = f(P) + f^\ast(v)$ für alle
+    $P \in \affin{A}$ und $v \in V_1$). \\
+    Eine bijektive af"|fine Abbildung eines af"|finen Raums in sich heißt
+    \begriff{Af"|finität}.
+\end{Def}
+
+\begin{Lemma}{Af{}finitäten und Isomorphismen}
+    Eine af"|fine Abbildung $f$ ist genau dann eine Af"|finität, wenn
+    $f^\ast$ ein Isomorphismus ist.
+\end{Lemma}
+
+\begin{Def}{Punkt, Gerade, Ebene}
+    Sei $\affin{A}$ ein af"|finer Raum. \\
+    Ein \begriff{Punkt} ist ein Element $P \in \affin{A}$
+    (oder ein $0$-dimensionaler af"|finer Unterraum). \\
+    Eine \begriff{Gerade} bzw. eine \begriff{Ebene} ist ein $1$- bzw.
+    $2$-dimensionaler Unterraum von $\affin{A}$.
+\end{Def}
+
+\begin{Def}{Verbindungsraum}
+    Für zwei af"|fine Unterräume $\affin{U}, \affin{W}$ von $\affin{A}$ ist
+    $\affin{U} \lor \affin{W}$ der \begriff{Verbindungsraum} und zwar
+    der kleinste af"|fine Unterraum von $\affin{A}$, der $\affin{U}$ und
+    $\affin{W}$ als Teilmengen enthält.
+\end{Def}
+
+\begin{Lemma}{Verbindungsraum und Durchschnitt}
+    Es gilt $V_{\affin{U} \lor \affin{W}} = V_\affin{U} + V_\affin{W}$ für
+    $\affin{U} \cap \affin{W} \not= \emptyset$ bzw.
+    $V_{\affin{U} \lor \affin{W}} = V_\affin{U} + V_\affin{W} +
+    K (\vektor{PP'})$ für $\affin{U} \cap \affin{W} = \emptyset$,
+    wobei $P \in \affin{U}$ und $P' \in \affin{W}$ fest gewählt sind. \\
+    Es gilt $V_{\affin{U} \cap \affin{W}} = V_\affin{U} \cap V_\affin{W}$.
+\end{Lemma}
+
+\begin{Satz}{Dimensionssatz}
+    Seien $\affin{U}, \affin{W}$ zwei endlich-dimensionale af"|fine Unterräume
+    des af"|finen Raums $\affin{A}$.
+    Dann gilt $\dim \affin{U} + \dim \affin{W} =
+    \dim(\affin{U} \lor \affin{W}) + \dim(\affin{U} \cap \affin{W}) +
+    \dim(V_\affin{U} \cap V_\affin{W})$ für den Fall
+    $\affin{U}, \affin{W} \not= \emptyset$ und
+    $\affin{U} \cap \affin{W} = \emptyset$.
+    Andernfalls ist $\dim \affin{U} + \dim \affin{W} =
+    \dim(\affin{U} \lor \affin{W}) + \dim(\affin{U} \cap \affin{W})$.
+\end{Satz}
+
+\pagebreak
+
+\begin{Def}{kollinear}
+    Drei Punkte $x, y, z \in \affin{A}$ eines af"|finen Raums $\affin{A}$
+    heißen \begriff{kollinear}, falls sie auf einer gemeinsamen Gerade liegen.
+\end{Def}
+
+\begin{Def}{Teilverhältnis}
+    Seien $P, Q, R \in \affin{A}$ drei kollineare Punkte eines af"|finen Raums
+    $\affin{A}$. \\
+    Ist $P \not= Q$, dann existiert ein Skalar $t \in K$, sodass
+    $\vektor{PR} = t \cdot \vektor{PQ}$. \\
+    $t = \TV(P, Q, R)$ heißt \begriff{Teilverhältnis} von $P, Q, R$.
+\end{Def}
+
+\begin{Satz}{af{}fine Abbildungen erhält Teilverhältnis}
+    Seien $P, Q, R \in \affin{A}$ drei kollineare Punkte eines af"|finen Raums
+    $\affin{A}$ und $f: \affin{A} \rightarrow \affin{B}$ eine af"|fine
+    Abbildung. \\
+    Dann sind $f(P), f(Q), f(R)$ ebenfalls kollinear.
+    Ist $P \not= Q$ sowie $f(P) \not= f(Q)$, dann bleibt das Teilverhältnis
+    erhalten, d.\,h. ist $\vektor{PR} = t \cdot \vektor{PQ}$ für ein $t \in K$,
+    dann ist $\vektor{f(P)f(R)} = t \cdot \vektor{f(P)f(Q)}$.
+\end{Satz}
+
+\begin{Def}{Fixpunkt, Fixgerade, Fixpunktgerade}
+    Ein \begriff{Fixpunkt} $P$ einer af"|finen Abbildung
+    $f: \affin{A} \rightarrow \affin{A}$ ist ein Punkt $P \in \affin{A}$,
+    sodass $f(P) = P$.
+    Eine \begriff{Fixgerade} ist eine Gerade, die wieder auf sich selbst
+    abgebildet wird, d.\,h. das Bild jeden Punktes der Gerade liegt wieder auf
+    der Gerade.
+    Eine \begriff{Fixpunktgerade} ist eine Gerade, die nur aus Fixpunkten
+    besteht, d.\,h. jeder Punkt wird auf sich selbst abgebildet.
+\end{Def}
+
+\begin{Satz}{Bestimmung von af{}finen Abbildungen durch Fixpunkte}
+    Sei $\affin{G}$ eine af"|fine Gerade und
+    $f: \affin{G} \rightarrow \affin{G}$
+    eine af"|fine Abbildung mit zwei verschiedenen Fixpunkten.
+    Dann ist $f$ die Identität. \\
+    Sei $\affin{E}$ eine af"|fine Ebene und
+    $f: \affin{E} \rightarrow \affin{E}$
+    eine af"|fine Abbildung mit zwei verschiedenen Fixpunktgeraden.
+    Dann ist $f$ die Identität.
+\end{Satz}
+
+\begin{Def}{af"|fines Koordinatensystem}
+    Sei $(\affin{A}, V, \boldsymbol{+})$ ein af"|finer Raum.
+    Eine Menge $\{p_0, p_1, \ldots, p_n\}$ heißt
+    \begriff{af"|fines Koordinatensystem}, falls
+    $\{\vektor{p_0 p_i} \;|\; 1 \le i \le n\}$ eine Basis von $V$ bildet.
+\end{Def}
+
+\pagebreak

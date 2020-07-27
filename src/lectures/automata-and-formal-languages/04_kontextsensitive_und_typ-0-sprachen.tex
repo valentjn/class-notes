@@ -1,0 +1,348 @@
+\section{%
+    Kontextsensitive und Typ-0-Sprachen%
+}
+
+\subsection{%
+    Normalform%
+}
+
+\begin{Def}{\name{Kuroda}-Normalform}
+    Eine Typ-1-Grammatik heißt in \begriff{\name{Kuroda}-Normalform}, falls
+    alle Regeln von der Form $A \rightarrow a$, $A \rightarrow B$,
+    $A \rightarrow BC$ oder $AB \rightarrow CD$ sind
+    ($A, B, C, D$ Variablen und $a$ Terminal).
+\end{Def}
+
+\begin{Satz}{\name{Kuroda}-Normalform}
+    Zu jeder Typ-1-Grammatik $G$ mit $\varepsilon \notin L(G)$ gibt
+    es eine Typ-1-Grammatik $G'$ in Kuroda-Normalform mit
+    $L(G) = L(G')$.
+\end{Satz}
+
+\begin{Beweis}
+    Zuerst führt man für jedes Terminalsymbol $a$ eine Variable $A$
+    (Pseudoterminal) mit der Regel $A \rightarrow a$ ein.
+    Alle $a$'s in den alten Regeln werden durch $A$ ersetzt.\\
+    Nun gibt es nur Regeln der Form $A \rightarrow a$ (die sind okay) und
+    $A_1 \dotsb A_m \rightarrow B_1 \dotsb B_n$ mit $1 \le m \le n$.
+    
+    Für $m = 1$ kann man wie bei der Chomsky-Normalform
+    $A_1 \rightarrow B_1 \dotsb B_n$ durch mehrere Ableitungsregeln ersetzen:
+    Man führt eine Variable $C_1$ ein und ersetzt die alte Regel durch
+    $A_1 \rightarrow B_1 C_2$ und $C_2 \rightarrow B_2 \dotsb B_n$.
+    Induktiv verfährt man genauso, bis die rechte Seite Länge $\le 2$ hat.
+    
+    Für $m \ge 2$ gilt $2 \le m \le n$, somit kann man
+    $A_1 \dotsb A_m \rightarrow B_1 \dotsb B_n$ ersetzen durch die Regeln
+    $A_1 A_2 \rightarrow B_1 C_2$ und
+    $C_2 A_3 \dotsb A_m \rightarrow B_2 \dotsb B_n$, wobei
+    $C_2$ eine neue Variable ist.
+    Induktiv wiederholt man dies, bis die linke Seite Länge $2$ hat.
+    Falls die entstehende letzte Regel eine rechte Seite der Länge $> 2$ hat
+    kann man wie oben verfahren, andernfalls sind nun alle Regeln in
+    Kuroda-Normalform.
+    
+    Man erhält also eine Typ-1-Grammatik $G'$ in Kuroda-Normalform mit
+    $L(G) = L(G')$.
+\end{Beweis}
+
+\subsection{%
+    \name{Turing}maschinen%
+}
+
+\begin{Bem}
+    Eine Turingmaschine besteht bildlich gesprochen aus einem potentiell
+    unendlichen Arbeitsband mit Schreib-/Lesekopf und einer endlichen
+    Zustandskontrolle.
+    Auf dem Arbeitsband befinden sich Symbole aus einem Bandalphabet
+    (einer Obermenge des Eingabealphabets).
+    Es können immer nur endlich viele Symbole des Arbeitsbandes beschrieben
+    sein.
+    Die anderen Symbole enthalten ein Leerzeichen $\Box$.\\
+    In einem Schritt führt die Turingmaschine Folgendes durch:
+    In Kenntnis von dem aktuellen Zustand $z$ und dem Zeichen $a$, an dem sich
+    der Schreib-/Lesekopf gerade befindet, wird ein neuer Zustand $z'$
+    angenommen, $a$ wird mit $a'$ überschrieben und der Kopf bewegt sich um
+    ein Feld nach links, rechts oder verharrt in seiner Position.
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Def}{deterministische/nicht-deterministische
+            \name{Turing}maschine (DTM/TM)}\\
+    Eine \begriff{deterministische/nicht-deterministische
+    \name{Turing}maschine (DTM/NTM oder TM)}
+    ist ein $7$-Tupel $M = (Z, \Sigma, \Gamma, \delta, z_0, \Box, E)$, wobei
+    \begin{itemize}
+        \item
+        $Z$ eine endliche, nicht-leere Menge
+        (die Menge der \begriff{Zustände}),
+        
+        \item
+        $\Sigma$ eine endliche, nicht-leere Menge
+        mit $Z \cap \Sigma = \emptyset$
+        (das \begriff{Eingabealphabet}),
+        
+        \item
+        $\Gamma \supset \Sigma$ eine endliche, nicht-leere Menge
+        mit $Z \cap \Gamma = \emptyset$
+        (das \begriff{Bandalphabet}),
+        
+        \item
+        $\delta\colon Z \times \Gamma \rightarrow
+        Z \times \Gamma \times \{L, R, N\}$ für eine DTM und\\
+        $\delta\colon Z \times \Gamma \rightarrow
+        \P(Z \times \Gamma \times \{L, R, N\})$ für eine NTM
+        (die \begriff{Überführungsfunktion}),
+        
+        \item
+        $z_0 \in Z$ (der \begriff{Startzustand}),
+        
+        \item
+        $\Box \in \Gamma \setminus \Sigma$ (das \begriff{Leerzeichen}) und
+        
+        \item
+        $E \subset Z$ (die \begriff{akzeptierenden Endzustände}) ist.
+    \end{itemize}
+\end{Def}
+
+\linie
+
+\begin{Bem}
+    Ein Übergang $(z', a', X) = \delta(z, a)$ bzw.
+    $(z', a', X) \in \delta(z, a)$ bedeutet Folgendes:\\
+    Wechsle vom Zustand $z$ in den Zustand $z'$ und schreibe das Bandsymbol
+    $a'$ an die Stelle von $a$.
+    Bewege anschließend den Schreib-/Lesekopf nach links ($X = L$),
+    rechts ($X = R$) bzw. lasse ihn in seiner Position ($X = N$).\\
+    Um eine Konfiguration (d.\,h. die aktuelle Situation der TM) darzustellen,
+    müssen Bandinhalt (nur der bisher beschriebene Teil),
+    Kopfposition und aktueller Zustand bekannt sein.
+    Dies kann man als Elemente von $\Gamma^\ast Z \Gamma^\ast$ darstellen,
+    d.\,h. für $\alpha z \beta \in \Gamma^\ast Z \Gamma^\ast$ mit $z \in Z$
+    steht $\alpha$ links vor dem Schreib-/Lesekopf auf dem Band,
+    der Kopf selbst zeigt auf den ersten Buchstaben $b_1$ von
+    $\beta = b_1 b_2 \dotsb b_n$ ($b_i \in \Gamma$) und
+    $b_2 \dotsb b_n$ stehen rechts nach dem Schreib-/Lesekopf.
+\end{Bem}
+
+\begin{Def}{Konfiguration}\\
+    Eine Konfiguration $k$ der TM
+    $M = (Z, \Sigma, \Gamma, \delta, z_0, \Box, E)$
+    ist ein Element $k \in \Gamma^\ast Z \Gamma^\ast$.
+\end{Def}
+
+\begin{Def}{Übergangsrelation}
+    Auf der Menge $\Gamma^\ast Z \Gamma^\ast$ wird eine
+    Relation $\vdash$ definiert durch\\
+    $a_1 \dotsb a_m z b_1 \dotsb b_n \vdash
+    a_1 \dotsb a_{m-1} z' a_m c b_2 \dotsb b_n$ für
+    $(z', c, L) = \delta(z, b_1)$ und $m, n \ge 1$,\\
+    $a_1 \dotsb a_m z b_1 \dotsb b_n \vdash
+    a_1 \dotsb a_m c z' b_2 \dotsb b_n$ für
+    $(z', c, R) = \delta(z, b_1)$ und $m \ge 0$, $n \ge 2$ sowie\\
+    $a_1 \dotsb a_m z b_1 \dotsb b_n \vdash
+    a_1 \dotsb a_m z' c b_2 \dotsb b_n$ für
+    $(z', c, N) = \delta(z, b_1)$ und $m \ge 0$, $n \ge 1$\\
+    (\begriff{Übergangsrelation}).
+    Außerdem ist
+    $z b_1 \dotsb b_n \vdash
+    z' \Box c b_2 \dotsb b_n$ für
+    $(z', c, L) = \delta(z, b_1)$ und\\
+    $a_1 \dotsb a_m z b_1 \vdash
+    a_1 \dotsb a_m c z' \Box$ für
+    $(z', c, R) = \delta(z, b_1)$.\\
+    Im nicht-deterministischen Fall ersetzt man die "`$=$"'
+    vor den $\delta$'s durch "`$\in$"'.\\
+    $\vdash^\ast$ ist der ref"|lexive und transitive Abschluss von $\vdash$.
+\end{Def}
+
+\begin{Def}{akzeptierte Sprache}
+    Die von einer TM $M = (Z, \Sigma, \Gamma, \delta, z_0, \Box, E)$
+    \begriff{akzeptierte Sprache} ist
+    $T(M) := \{x \in \Sigma^\ast \;|\;
+    \exists_{z \in E} \exists_{\alpha, \beta \in \Gamma^\ast}\;
+    z_0 x \vdash^\ast \alpha z \beta\}$.
+\end{Def}
+
+\begin{Bem}
+    Falls $x \notin T(M)$ gilt, so ergibt sich entweder eine unendlich lange
+    Berechnung (es wiederholen sich immer die gleichen Zustände oder immer
+    mehr Speicher wird verwendet) oder die Maschine terminiert, ohne in einem
+    Endzustand zu sein.
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Ein Beispiel für eine Turingmaschine, die die Eingabe
+    $x = x_1 \dotsb x_n \in \{0, 1\}^\ast$ bitweise invertiert und den Kopf
+    am Ende wieder an den linken Rand stellt, ist\\
+    $M = (\{z_0, z_1, z_2\}, \{0, 1\}, \{0, 1, \Box\}, \delta, z_0, \Box,
+    \{z_2\})$ mit $\delta$ gegeben durch\\
+    $\delta(z_0, 0) = (z_0, 1, R)$,
+    $\delta(z_0, 1) = (z_0, 0, R)$,
+    $\delta(z_0, \Box) = (z_1, \Box, L)$,\\
+    $\delta(z_1, 0) = (z_1, 0, L)$,
+    $\delta(z_1, 1) = (z_1, 1, L)$ und
+    $\delta(z_1, \Box) = (z_2, \Box, R)$.
+\end{Bsp}
+
+\pagebreak
+
+\subsection{%
+    Linear beschränkte \name{Turing}maschinen%
+}
+
+\begin{Bem}
+    Eine linear beschränkte Turingmaschine soll genau den durch das Eingabewort
+    vorbelegten Speicher benutzen (und nicht mehr), d.\,h.
+    für $z_0 x \vdash^\ast \alpha z \beta$ soll immer $|\alpha \beta| = |x|$
+    gelten.
+    Man spricht von einer linearen Beschränkung, denn in jedem Bandbuchstaben
+    können höchstens endlich viele Informationen gespeichert werden
+    (z.\,B. durch $n$-Tupel), daraus ergibt sich ein Speicherplatz von
+    $n \cdot |x|$.
+    Damit die Turingmaschine den letzte Buchstaben erkennt, ohne über den
+    Rand zu springen, wird das Bandalphabet verdoppelt und der letzte Buchstabe
+    besonders markiert.
+\end{Bem}
+
+\begin{Def}{linear beschränkte \name{Turing}maschine (LBA)}
+    Eine \begriff{linear beschränkte \name{Turing}maschine} oder
+    \begriff{linear bounded automaton (LBA)} ist eine Turingmaschine
+    $M = (Z, \Sigma', \Gamma, \delta, z_0, \Box, E)$ mit
+    $\Sigma' := \Sigma \cup \{\widehat{a} \;|\; a \in \Sigma\}$,
+    sodass für alle $a_1 \dotsb a_{n-1} a_n \in \Sigma^+$,
+    $\alpha, \beta \in \Gamma^\ast$ und $z \in Z$ mit\\
+    $z_0 a_1 \dotsb a_{n-1} \widehat{a}_{n} \vdash^\ast \alpha z \beta$ gilt,
+    dass $|\alpha \beta| = n$.\\
+    Die von einem LBA erkannte Sprache ist\\
+    $T(M) := \{a_1 \dotsb a_{n-1} a_n \in \Sigma^+ \;|\;
+    \exists_{z \in E} \exists_{\alpha, \beta \in \Gamma^\ast}\;
+    z_0 a_1 \dotsb a_{n-1} \widehat{a}_n \vdash^\ast \alpha z \beta\}$.
+\end{Def}
+
+\linie
+
+\begin{Satz}{Satz von \upshape\,\!\name{Kuroda}}
+    Die Klasse der von LBAs akzeptierten Sprachen ist gleich
+    der Klasse der Typ-1-Sprachen.
+    (Dabei ist $\varepsilon$ in den Sprachen nicht enthalten.)
+\end{Satz}
+
+\begin{Beweis}
+    Sei $L$ eine Typ-1-Sprache, d.\,h. $L = L(G)$ für eine Grammatik
+    $G = (V, \Sigma, P, S)$ mit nicht-verkürzenden Regeln.
+    Ein LBA, der $L$ erkennt, wird folgendermaßen konstruiert:\\
+    Sei die Eingabe $x = x_1 \dotsb x_n$, zu prüfen ist, ob
+    $S \Rightarrow^\ast x$ in $G$.
+    \begin{enumerate}
+        \item
+        Wähle (nicht-deterministisch) eine Regel
+        $\alpha \rightarrow \beta \in P$.
+        
+        \item
+        Wähle eine (nicht-deterministisch) Position auf dem Band.
+        
+        \item
+        Prüfe, ob ab der aktuellen Position $\beta$ auf dem Band steht.
+        
+        \item
+        Wenn ja: Ersetze $\beta$ durch $\alpha$,
+        gegebenenfalls muss rechts von $\beta$ ein Bandteil nach links
+        verschoben werden (dies ist durch LBAs möglich).
+        
+        \item
+        Wenn nur noch $S$ dasteht, akzeptiere, ansonst wiederhole mit 1.
+    \end{enumerate}
+    Der Vorgang wird so lange wiederholt, bis entweder nur $S$ auf dem
+    Band steht oder kein Übergang mehr möglich ist
+    (und zwar bei allen endlich vielen, durch den
+    Nicht-Deterministismus entstehenden Möglichkeiten).
+    Für den konstruierten LBA $M$ gilt $L(G) = T(M)$.
+    
+    Sei nun $L = T(M)$ für einen LBA $M$.
+    Gesucht ist eine Typ-1-Grammatik $G$ mit $L(G) = T(M)$.
+    Die Grammatik soll den Automaten "`simulieren"', indem die
+    Konfigurationsübergänge durch Ableitungen modelliert werden.
+    Da $\alpha z \beta$ eine größere Länge als $|\alpha \beta|$ hat und
+    $G$ nur nicht-verkürzende Regeln besitzen darf,
+    schreibt man statt $\alpha z \beta$ einfach
+    $\alpha (z, \beta_1) \beta_2 \dotsb \beta_r$ für
+    $\beta = \beta_1 \dotsb \beta_r$.
+    Man erhält also ein neues Alphabet
+    $\Delta := \Gamma \cup (Z \times \Gamma)$.\\
+    Zum Beispiel soll sich $(z', a', L) \in \delta(z, \beta_1)$
+    auf $\alpha_1 \dotsb \alpha_s (z, \beta_1) \beta_2 \dotsb \beta_r$
+    auswirken durch\\
+    $\alpha_1 \dotsb \alpha_{s-1} (z', \alpha_s) a' \beta_2 \dotsb \beta_r$.
+    Man erhält also die Regel
+    $\alpha (z, \beta) \rightarrow (z', \alpha) \gamma$
+    für $(z', \gamma, L) \in \delta(z, \beta)$.
+    
+    So konstruiert man die Grammatik $G = (V, \Sigma, P, S)$ mit
+    $V = \{S, A\} \cup (\Delta \times \Sigma)$.
+    Die Variablen sind speziell gewählt:
+    Eine Satzform hat immer zwei "`Spuren"':
+    Auf der einen (sagen wir oberen) Spur steht der aktuelle Bandinhalt des
+    LBA mit aktueller Kopfposition, wobei das letzte Zeichen immer markiert
+    ist.
+    Auf der unteren Spur steht das Wort, das erkannt werden soll.
+    Die untere Spur bleibt dabei stets unverändert.
+    Daher definiert man die Regeln $S \rightarrow A (\widehat{a}, a)$,
+    $A \rightarrow A (a, a)$ und
+    $A \rightarrow ((z_0, a), a)$ für alle $a \in \Sigma$
+    (nicht-deterministisches Erzeugen aller
+    möglichen Wörter aus $\Sigma^\ast$),
+    Regeln wie eben im Beispiel,
+    $(a, b) \rightarrow b$ für $a \in \Gamma$, $b \in \Sigma$ und
+    $((z, a), b) \rightarrow b$ für $a \in \Gamma$, $b \in \Sigma$ und
+    $z \in E$
+    (akzeptieren durch Hinschreiben der unteren Spur, falls im Endzustand).\\
+    Alle Regeln sind nicht-verkürzend und es gilt $T(M) = L(G)$.
+\end{Beweis}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    Der Satz kann genauso bewiesen werden, wenn die Regeln verkürzend sein
+    dürfen und das Band der Turingmaschine unbeschränkt benutzt werden darf.
+    Daraus ergibt sich folgender Satz.
+\end{Bem}
+
+\begin{Satz}{$\NTM = \TypNull$}
+    Die Klasse $\NTM$ der von Turingmaschinen akzeptierten Sprachen
+    ist gleich der Klasse $\TypNull$ der Typ-0-Sprachen.
+\end{Satz}
+
+\begin{Bem}
+    Die Simulation einer nicht-deterministischen Turingmaschine durch
+    eine deterministische Turingmaschine ist möglich
+    (man wende Breitensuche auf den Berechnungsbaum des Wortes an).
+    Dabei ergibt sich jedoch eine exponentiell erhöhte Laufzeit.\\
+    Daher ist $\DTM = \NTM = \TypNull$.
+    Ob das auch für den Fall linear beschränkter Turingmaschinen gilt
+    ($\DLBA = \LBA$?) ist ein of"|fenes Problem, das sogenannte
+    \begriff{LBA-Problem}.
+\end{Bem}
+
+\subsection{%
+    Der Satz von \name{Immerman} und \name{Szelepcsényi}%
+}
+
+\begin{Bem}
+    Bis vor Kurzem bestand neben dem heutigen LBA-Problem ein zweites
+    LBA-Problem, nämlich ob $\LBA = \coLBA$ gilt.
+    Dieses Problem wurde vor ungefähr zwanzig Jahren von
+    Immerman und Szelepcsényi unabhängig voneinander gelöst.\\
+    Der Beweis wird hier nicht dargestellt.
+\end{Bem}
+
+\begin{Satz}{Satz von \name{Immerman} und \name{Szelepcsényi}}\\
+    Die Klasse der Typ-1-Sprachen ist abgeschlossen gegen Komplement.
+\end{Satz}
+
+\pagebreak

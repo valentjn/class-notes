@@ -1,0 +1,531 @@
+\section{%
+    Gewöhnliche Dif"|ferentialgleichungen%
+}
+
+\subsection{%
+    ODEs erster Ordnung%
+}
+
+\textbf{ODE 1. Ordnung}:
+Sei $f\colon D \to \real$ stetig auf $D \subset \real^2$ of"|fen.\\
+Dann heißt $y'(x) = f(x, y(x))$ oder $y' = f(x, y)$ \begriff{ODE 1. Ordnung}.
+$f$ heißt \begriff{rechte Seite} der ODE,
+$y$ \begriff{abhängige} und $x$ \begriff{unabhängige Variable}.
+Eine \begriff{Lösung} der ODE auf einem Intervall $I \subset \real$ ist eine
+stetig diffb. Funktion $u\colon I \to \real$ mit
+$\forall_{x \in I}\; (x, u(x)) \in D$, $u'(x) = f(x, u(x))$.\\
+Eine DGL $y'(x) = f(x, y(x))$ mit der Bedingung $y(x_0) = y_0$ heißt
+\begriff{Anfangswertproblem (AWP)}.\\
+Eine DGL kann durch ein \begriff{2D-Richtungsfeld} in $x$-$y$-Koordinaten dargestellt werden,
+indem in diskreten Punkten $(x, y) \in D$ Pfeile mit Steigung $\tan \varphi = y'(x)$
+gezeichnet werden (meistens mit Länge $1$).
+Jede Lösung verläuft tangential zum Richtungsfeld.
+
+\linie
+
+\textbf{homogene lineare ODE 1. Ordnung}:
+Das AWP einer \begriff{homogenen linearen ODE 1. Ordnung} ist gegeben durch
+$\forall_{x \in I}\; y'(x) = a(x) y(x)$ mit $y(x_0) = y_0$,
+wobei $I \subset \real$, $a \in \C^0(I)$,
+$x_0 \in I$, $y_0 \in \real$ und $y \in \C^1(I)$.
+Die Lösung ist gleich $y(x) = y_0 e^{A(x)}$ mit $A(x) := \int_{x_0}^x a(t) \dt$.
+
+\textbf{inhomogene lineare ODE 1. Ordnung}:
+Das AWP einer \begriff{inhomogenen linearen ODE 1. Ordnung} ist gegeben durch
+$\forall_{x \in I}\; y'(x) = a(x) y(x) + b(x)$ mit $y(x_0) = y_0$
+mit $b \in \C^0(I)$.\\
+Die Lösung ist gleich $y(x) = (y_0 + \int_{x_0}^x e^{-A(s)} b(s) \ds) e^{A(x)}$
+mit $A(x) := \int_{x_0}^x a(t) \dt$.
+
+\subsection{%
+    Phasenbilder autonomer Systeme%
+}
+
+Im Folgenden betrachtet man Systeme zweier autonomer ODEs 1. Ordnung, also\\
+$x'(t) = f_1(x(t), y(t))$ und $y'(t) = f_2(x(t), y(t))$ mit
+$f_1, f_2 \in \C^1(\Omega)$ und $\Omega \subset \real^2$.\\
+Jede Lösung $\vec{\varphi}(t, \vec*{\eta}{0})$ ist entweder injektiv, periodisch oder konstant.
+
+\textbf{Trajektorie/Orbit}:
+Jede Lösung $t \mapsto \vec{\varphi}(t, \vec*{\eta}{0})$ des Systems heißt \begriff{Trajektorie}.\\
+Die Spur $\vec{\varphi}(I, \vec*{\eta}{0})$ heißt \begriff{Orbit}.
+
+\textbf{kritischer Punkt}:\\
+Punkte $\vec{\eta} \in \Omega$ mit $f_1(\vec{\eta}) = f_2(\vec{\eta}) = 0$ heißen
+\begriff{kritisch}/\begriff{stationär}/\begriff{GG-Punkte}.
+
+\textbf{Phasenraum}:
+Der \begriff{Phasenraum} $\Omega$ ist die disjunkte Vereinigung aller Orbits,
+jeder Punkt liegt auf genau einem Orbit.
+Zwei Orbits sind entweder disjunkt oder gleich.
+
+\textbf{Phasenportrait}:\\
+Ein \begriff{Phasenportrait} zeigt die kritischen Punkte und ein paar typische Orbits
+als Pfeile.
+
+\linie
+
+\textbf{Linearisierung in kritischen Punkten}:
+Sei $\vec*{\eta}{0}$ ein kritischer Punkt, also $\vec{f}(\vec*{\eta}{0}) = \vec{0}$.\\
+Mit der Taylor-Entwicklung gilt $\vec{f}(\vec*{\eta}{0} + \vec{h}) = A\vec{h} + \O(|\vec{h}|^2)$
+mit $A := \D\vec{f}(\vec*{\eta}{0})$.
+Ist die Lösung $\vec{\varphi}(t)$ nahe bei $\vec*{\eta}{0}$, so ist
+$\vec{\psi}(t) := \vec{\varphi}(t) - \vec*{\eta}{0}$ "`klein"' und\\
+$\vec{\psi}'(t) = \vec{\varphi}'(t) = \vec{f}(\vec{\varphi}(t))
+= \vec{f}(\vec*{\eta}{0} + \vec{\psi}(t)) = A\vec{\psi}(t) + \O(|\vec{\psi}(t)|^2)$,
+also $\vec{\psi}'(t) \approx A\vec{\psi}(t)$.\\
+Um kritische Punkte herum kann man also das Verhalten des Systems durch
+die lineare ODE $\vec{\psi}'(t) = A\vec{\psi}(t)$ mit
+$\vec{\varphi}(t) \approx \vec{\psi}(t) + \vec*{\eta}{0}$ approximieren.
+
+\textbf{Satz von \name{Hartman}-\name{Grobman}}:
+Seien die Realteile der Eigenwerte von $\D\vec{f}(\vec*{\eta}{0})$ für den kritischen Punkt
+$\vec*{\eta}{0}$ ungleich Null (\begriff{hyperbolischer kritischer Punkt}).\\
+Dann ist das Phasenportrait des linearisierten Systems "`ähnlich"' dem des originalen Systems.
+
+\pagebreak
+
+\subsection{%
+    Klassifikation von kritischen Punkten in 2D%
+}
+
+Gegeben sei ein autonomes lineares System $\vec{y}' = A\vec{y}$ mit
+$A := \smallpmatrix{a_{11}&a_{12}\\a_{21}&a_{22}} \in \real^{2 \times 2} \setminus \{0\}$.\\
+Ist $S \in \real^{2 \times 2}$ inv.bar, so ist das System äquivalent zu
+$\vec{x}' = B\vec{x}$ mit $B := S^{-1} AS$ (mit $\vec{y} = S\vec{x}$).
+$S$ kann stets so gewählt werden, dass $B$ einer der Matrizen\\
+$B_1 := \smallpmatrix{\lambda_1&0\\0&\lambda_2}$,
+$B_2 := \smallpmatrix{\lambda&1\\0&\lambda}$ und
+$B_3 := \smallpmatrix{-\varrho&-\omega\\\omega&-\varrho}$
+gleicht mit $\lambda, \lambda_1, \lambda_2, \varrho, \omega \in \real$.
+
+\textbf{Fall 1: zwei reelle Eigenwerte}\\
+Ist $B = B_1$, dann ist die Lösung gegeben durch $x_1(t) = \xi_1 e^{\lambda_1 t}$ und
+$x_2(t) = \xi_2 e^{\lambda_2 t}$ mit $x_1(0) = \xi_1$ und $x_2(0) = \xi_2$.
+\begin{itemize}
+    \item
+    Für $\lambda_2 < \lambda_1 < 0$ oder $0 < \lambda_1 < \lambda_2$
+    erhält man einen \begriff{Zweitangentenknoten/echten Knoten ((proper) node)}.
+    Dabei gilt $x_2 = cx_1^k$ mit
+    $c := \xi_2 \xi_1^{-k}$ für $\xi_1 \not= 0$
+    und $k := \frac{\lambda_2}{\lambda_1} > 1$.
+    Die Orbits sind Parabelstücke.
+    
+    \item
+    Für $\lambda_1 = \lambda_2$ erhält man einen
+    \begriff{Sternknoten (singular/star node)}.\\
+    Dabei gilt $x_2 = cx_1$ mit $c := \xi_2 \xi_1^{-k}$ für $\xi_1 \not= 0$.
+    Die Orbits sind Geradenstücke.
+    
+    \item
+    Für $\lambda_1 \not= 0$ und $\lambda_2 = 0$ liegen die kritischen Knoten alle auf
+    einer Geraden ($x_1 = 0$) und die Orbits sind zu dieser Gerade orthogonale Geraden
+    (parallel zur $x_1$-Achse).
+    
+    \item
+    Für $\lambda_2 < 0 < \lambda_1$ erhält man einen \begriff{Sattelpunkt (saddle)}.
+    Dabei gilt $x_2 = \pm c|x_1|^{-k}$ mit
+    $c := \pm\xi_2 |\xi_1|^k$ für $\xi_1 \not= 0$
+    und $k := -\frac{\lambda_2}{\lambda_1} > 0$.
+    Die Orbits sind Hyperbelstücke.
+\end{itemize}
+
+\textbf{Fall 2: nur ein reeller Eigenwert}\\
+Ist $B = B_2$, dann ist die Lösung gleich $x_1(t) = (\xi_1 + \xi_2 t) e^{\lambda t}$ und
+$x_2(t) = \xi_2 e^{\lambda t}$ mit $x_1(0) = \xi_1$\\
+und $x_2(0) = \xi_2$.
+Für $\lambda \not= 0$ erhält man dann einen
+\begriff{Eintangentenknoten/unechten Knoten (degenerate/improper node)}.
+Die Orbits laufen spiralförmig auf den kritischen Punkt zu bzw. von ihm weg,
+wobei sie auf der Richtung des Eigenvektors genau auf ihn zu bzw. weg laufen.
+
+\textbf{Fall 3: zwei komplexe Eigenwerte}\\
+Ist $B = B_3$, dann hat $B$ die Eigenwerte $\lambda_{1,2} := -\varrho \pm \iu\omega$
+mit $\omega > 0$.
+Mit der Substitution $z = x_1 + \iu x_2$
+(damit $z' = \lambda_1 z \implies z(t) = z_0 e^{\lambda_1 t}$) erhält man dann die Lösung\\
+$x_1(t) = r_0 e^{-\varrho t} \cos(\omega t + \varphi_0)$,
+$x_2(t) = r_0 e^{-\varrho t} \sin(\omega t + \varphi_0)$\\
+mit $x_1(0) = r_0 \cos(\varphi_0)$ und
+$x_2(0) = r_0 \sin(\varphi_0)$ (wobei $z_0 = r_0 e^{\iu\varphi_0}$).
+\begin{itemize}
+    \item
+    Für $\varrho = 0$ erhält man ein \begriff{Zentrum (center)},
+    Orbits = Kreise um den krit. Pkt.
+    
+    \item
+    Für $\varrho \not= 0$ erhält man einen \begriff{Spiralknoten (focus)}.
+    Orbits = Spiralen um den krit. Pkt.
+\end{itemize}
+
+In allen Fällen gilt, dass die Orbits auf den kritischen Punkt zu laufen,
+wenn der Realteil des Eigenwerts negativ ist, und von ihm weg laufen,
+wenn der Realteil positiv ist.
+
+\linie
+
+\textbf{Zusammenfassung}:
+Für die Eigenwerte gilt
+$\lambda_{1,2} = \frac{\tr(A)}{2} \pm \frac{1}{2} \sqrt{\tr(A)^2 - 4\det(A)}$
+(char. Gleichung $\lambda^2 - \tr(A) \lambda + \det(A) = 0$).
+Von den Vorzeichen von Spur, Determinante und Diskriminate $\tr(A)^2 - 4\det(A)$ lässt sich der
+Typ des kritischen Punkts bestimmen:
+\begin{itemize}
+    \item
+    $\det(A) < 0$: \emph{Sattelpunkt}
+    
+    \item
+    $\det(A) > 0$:
+    \begin{itemize}
+        \item
+        $\tr(A) = 0$: \emph{Zentrum}
+        
+        \item
+        $\tr(A)^2 - 4\det(A) = 0$: \emph{Sternknoten} oder \emph{unechter Knoten}
+        (stabil $\iff \tr(A) < 0$)
+        
+        \item
+        $\tr(A)^2 - 4\det(A) < 0$: \emph{Spiralknoten} (stabil $\iff \tr(A) < 0$)
+        
+        \item
+        $\tr(A)^2 - 4\det(A) > 0$: \emph{echter Knoten} (stabil $\iff \tr(A) < 0$)
+    \end{itemize}
+\end{itemize}
+
+\pagebreak
+
+\subsection{%
+    Grenzzykel und Separatrizen%
+}
+
+Gegeben sei nun das zweidimensionale autonome System $\vec{x}' = \vec{f}(\vec{x})$.
+
+\textbf{Grenzzyklus}:
+Ein \begriff{Grenzzyklus} ist eine isolierte periodische Lösung.
+
+\textbf{\name{Bendixon}-Kriterium}:
+Seien $D \subset \real^2$ ein einfach zush. Gebiet (d.\,h. keine Löcher) und\\
+$x' = f_1(x, y)$, $y' = f_2(x, y)$ mit $f_1, f_2 \in \C^1(D)$.\\
+Wenn $\div \vec{f} = \partial_x f_1 + \partial_y f_2$ nicht identisch Null ist und
+keinen VZ-Wechsel hat, dann gibt es keine geschlossenen Orbits des Systems, die vollständig
+in $D$ liegen.
+
+\linie
+
+\textbf{Fluss}:
+Ein \begriff{Fluss} ist eine Abbildung $\vec{\phi} \in \C^1(\real^2, \real^2)$ mit
+$\forall_{\vec{x} \in \real^2}\; \vec{\phi}(\vec{x}, 0) = \vec{x}$ und\\
+$\forall_{\vec{x} \in \real^2} \forall_{s, t \in \real}\;
+\vec{\phi}(\vec{\phi}(\vec{x}, t), s) = \vec{\phi}(\vec{x}, t+s)$.
+
+\textbf{Grenzpunkt}:
+Seien $\vec{x} \in \real^2$ und $\vec{\phi}$ der vom System $\vec{x}' = \vec{f}(\vec{x})$
+erzeugte Fluss.\\
+Ein Punkt $\vec*{x}{0} \in \real^2$ heißt \begriff{$\omega$-Grenzpunkt} von $\vec{x}$
+für das System, falls es eine Folge $(t_i)_{i \in \natural}$
+mit $t_i \to \infty$ gibt, sodass $\vec{\phi}(t_i, \vec{x}) \to \vec*{x}{0}$.\\
+\begriff{$\alpha$-Grenzpunkte} sind analog mit $t_i \to -\infty$ definiert.
+
+\textbf{Grenzmenge}:
+Die Menge $\omega(\vec{x})$ aller $\omega$-Grenzpunkte von $\vec{x}$ heißt
+\begriff{$\omega$-Grenzmenge}.\\
+Die \begriff{$\alpha$-Grenzmenge} ist analog definiert.
+
+\linie
+
+\textbf{stabiler Grenzzyklus}:
+Ein Grenzzyklus $\Gamma$ heißt \begriff{stabil}
+(oder \begriff{$\omega$-Grenzzyklus}), falls $\Gamma$ die\\
+$\omega$-Grenzmenge aller Lösungen in einer Umgebung von $\Gamma$ ist.
+
+\textbf{instabiler Grenzzyklus}:
+Ein Grenzzyklus $\Gamma$ heißt \begriff{instabil}
+(oder \begriff{$\alpha$-Grenzzyklus}), falls $\Gamma$ die\\
+$\alpha$-Grenzmenge aller Lösungen in einer Umgebung von $\Gamma$ ist.
+
+\textbf{semistabiler Grenzzyklus}:
+Ein Grenzzyklus heißt \begriff{semistabil}, falls er auf der einen Seite stabil und auf der
+anderen instabil ist.
+
+\linie
+
+\textbf{homokliner Orbit}:
+Seien $\vec*{x}{0}$ ein kritischer Punkt von $\vec{x}' = \vec{f}(\vec{x})$
+und $\gamma$ ein Orbit des Systems.\\
+$\gamma$ heißt \begriff{homoklin}, falls $\omega(\gamma) = \{\vec*{x}{0}\} = \alpha(\gamma)$.
+
+\textbf{heterokliner Orbit}:
+Seien $\vec*{x}{0} \not= \vec*{y}{0}$ zwei kritische Punkte von $\vec{x}' = \vec{f}(\vec{x})$
+und $\gamma$ ein Orbit des Systems.
+$\gamma$ heißt \begriff{heteroklin}, falls $\omega(\gamma) = \{\vec*{x}{0}\}$
+und $\alpha(\gamma) = \{\vec*{y}{0}\}$.
+
+\textbf{Separatrix}:
+Eine \begriff{Separatrix} ist ein Orbit, der den Phasenraum in zwei Bereiche
+qualitativ unterschiedlichen Verhaltens teilt.
+
+\pagebreak
+
+\subsection{%
+    Pfadlinien, Stromlinien und Streichlinien%
+}
+
+Gegeben sei ein zeitabhängiges 2D-Vektorfeld $\vec{v}(\vec{x}, t)$ auf $D \subset \real^2$
+(z.\,B. ein Fluss).
+
+\textbf{Pfadlinie}:
+Eine \begriff{Pfadlinie} ist eine Trajektorie eines masselosen Teilchens im Fluss.\\
+Man erhält sie durch Lösung von $\vec{x}' = \vec{v}(\vec{x}, t)$ für $t > 0$ und
+$\vec{x}(0) = \vec*{x}{0}$.
+
+\textbf{Stromlinie}:
+Eine \begriff{Stromlinie} ist eine Kurve, die überall tangential zum
+Vektorfeld $\vec{v}(\cdot, t_s)$ für ein festes $t_s$ ist.
+Man erhält sie durch Lösung von $\frac{\d}{\ds}\vec{x} = \vec{v}(\vec{x}, t_s)$ für $s > 0$ und
+$\vec{x}(0) = \vec*{x}{0}$.
+
+\textbf{Streichlinie}:
+Eine \begriff{Streichlinie} ist eine Kurve, die entsteht, wenn man ständig zu Zeitpunkten
+$t' \in [0, t]$ Partikel in einem bestimmten Punkt $(x_0, y_0)$ starten lässt 
+und dann schaut, wo sich die Partikel zum Zeitpunkt $t$ befinden.
+Die Streichlinie ist nun die Kurve, die diese $t$-Aufenthaltsorte verbindet.
+Zur Berechnung von Streichlinien verfährt man wie folgt:
+\begin{enumerate}
+    \item
+    Berechne zunächst die Pfadlinie $(x(t, c_1, c_2), y(t, c_1, c_2))$
+    im Anfangspunkt $(c_1, c_2)$ für $t = 0$.
+    
+    \item
+    Setze $x_0 := x(t', c_1, c_2)$ und $y_0 := y(t', c_1, c_2)$.
+    Diese Gleichungen beschreiben die Anfangspositionen $(c_1, c_2)$ zu $t = 0$,
+    von denen das Partikel zum Zeitpunkt $t' \in [0, t]$ durch $(x_0, y_0)$ gewandert ist.
+    
+    \item
+    Löse nach $c_1$ und $c_2$ auf und setze diese Ausdrücke in $x(t, c_1, c_2)$ und
+    $y(t, c_1, c_2)$ ein.
+    
+    \item
+    Eliminiere $t'$, um die Streichlinien-Parametrisierungen in Abhängigkeit von $t$
+    zu einer Kurve der Art $y = y(x)$ umzuformen.
+\end{enumerate}
+
+\subsection{%
+    Numerische Lösung%
+}
+
+Gegeben seien das AWP $y'(x) = f(x, y(x))$ in $I := [a, b]$ und $y(a) = y_0$
+und eine Diskretisierung $x_j := a + jh$ von $I$ für $j = 0, \dotsc, N$ und $h := \frac{b-a}{N}$
+mit $N \in \natural$.\\
+Gesucht sind Approximationen $u_j \approx y(x_j)$.
+
+\textbf{explizites \name{Euler}-Verfahren}:
+Mit Taylor-Enwicklung gilt $y(x_{j+1}) = y(x_j) + y'(x_j) h + \O(h^2)$.
+Für kleines $h$ erhält man daher Approximationen
+$u_0 := y_0$ und $u_{j+1} := u_j + h f(x_j, u_j)$ für $j = 0, \dotsc, N-1$
+(\begriff{explizites \name{Euler}-Verfahren}).
+Das Verfahren hat Fehlerordnung $\O(h^2)$.
+
+\linie
+
+\textbf{\name{Runge}-\name{Kutta}-Verfahren}:\\
+Beim \begriff{\name{Runge}-\name{Kutta}-Verfahren} ist ebenfalls $u_0 := y_0$.
+$u_{j+1}$ errechnet sich aus $u_j$ durch
+\begin{enumerate}
+    \item
+    $k_1 := f(x_j, u_j)$,
+    
+    \item
+    $k_2 := f(x_j + h/2, u_j + hk_1/2)$,
+    
+    \item
+    $k_3 := f(x_j + h/2, u_j + hk_2/2)$,
+    
+    \item
+    $k_4 := f(x_j + h, u_j + hk_3)$ und
+    
+    \item
+    $u_{j+1} := u_j + h/6 \cdot (k_1 + 2k_2 + 2k_3 + k_4)$.
+\end{enumerate}
+Das Verfahren hat Fehlerordnung $\O(h^4)$.
+
+\linie
+
+\textbf{\name{Störmer}-\name{Verlet}-Verfahren}:
+Das \begriff{\name{Störmer}-\name{Verlet}-Verfahren} ist geeignet,
+um newtonsche Bewegungsgleichungen $m\vec{a} = m\vec{x}'' = \vec{F}$ zu lösen.
+Zunächst wandelt man mit $\vec{v} = \vec{x}'$ die ODE in ein 2D-System um.
+Anschließend berechnet man für jedes Partikel $k$ zum Zeitschritt $n$ zunächst
+$\vec*{a}{k}^n := \vec*{F}{k}^n(\vec*{x}{k}^n)/m_k$,
+$\vec*{v}{k}^{n+1/2} := \vec*{v}{k}^n + \vec*{a}{k}^n \Delta t/2$ und dann
+$\vec*{x}{k}^{n+1} := \vec*{x}{k}^n + \vec*{v}{k}^{n+1/2} \Delta t$ sowie
+$\vec*{a}{k}^{n+1} := \vec*{F}{k}^n(\vec*{x}{k}^{n+1})/m_k$ und
+$\vec*{v}{k}^{n+1} := \vec*{v}{k}^{n+1/2} + \vec*{a}{k}^{n+1} \Delta t/2$.
+Das Verfahren hat Fehlerordnung $\O(h^2)$ (ist aber sehr stabil).
+
+\pagebreak
+
+\subsection{%
+    Anwendungen%
+}
+
+\textbf{einfache Partikelsimulation}:
+Die newtonsche Gravitation einer großen Masse $M$ auf eine kleine Masse $m$
+im Punkt $\vec{r}$ wird durch die Gleichung
+$m\vec{r}'' = -\frac{GMm}{r^2} \frac{\vec{r}}{|\vec{r}|}$ beschrieben (mit Konstante $G$).
+Mit kartesischen Koordinaten $\vec{r} = (x, y)^\tp$ erhält man
+$\smallpmatrix{x''\\y''} = -\frac{GM}{(x^2 + y^2)^{3/2}} \smallpmatrix{x\\y}$.
+Mit $v_x := x'$ und $v_y := y'$ wandelt man diese ODE-System in das System
+$\smallpmatrix{x'\\y'\\v_x'\\v_y'}
+= \smallpmatrix{v_x\\v_y\\-\frac{GM}{(x^2 + y^2)^{3/2}} x\\-\frac{GM}{(x^2 + y^2)^{3/2}} y}$
+um.
+Dieses System kann mit dem Störmer-Verlet-Verfahren gelöst werden.
+
+\linie
+
+\textbf{elektrostatische Umwandlung in Rasterbilder}:\\
+Gegeben sei ein Graustufenbild $f\colon \Omega \to [0, 1]$.
+Gesucht wird eine Methode, die mithilfe der Elektrostatik $f$ in ein Rasterbild $g$
+(nur einzelne überschneidungsfreie schwarze Kreise auf weißer Fläche) umwandelt.
+Dazu nimmt man an, dass die Rasterpunkte Partikel gleicher Ladung (z.\,B. Elektronen) sind,
+die mithilfe der Coulomb-Kraft $\vec{F} \propto \frac{q_1 q_2}{r^2} \frac{\vec{r}}{|\vec{r}|}$
+wechselwirken.
+Wegen der gegenseitigen Abstoßung ergibt sich asymptotisch eine gleichmäßige Verteilung
+auf $\Omega$.
+Daher erzeugt man durch die Grauwerte $f$ eine Verteilung fester positiver Ladungen,
+die die Elektronen anziehen.
+
+\linie
+
+\textbf{bilineare Interpolation}:
+Ein \begriff{regelmäßiges zweidim. Gitter} ist gegeben durch
+$x_i := x_0 + i \Delta x$, $y_j := y_0 + j \Delta y$ für
+$i = 0, \dotsc, N_x$ und $j = 0, \dotsc, N_y$.
+Eine \begriff{Zelle} $(i, j)$ ist das Rechteck mit den Ecken
+$(i, j)$, $(i+1, j)$, $(i+1, j+1)$ und $(i, j+1)$.
+Ein Punkt $(x_p, y_p) \in \real^2$ befindet sich in der Zelle
+$i = \lfloor \frac{x_p - x_0}{\Delta x} \rfloor$,
+$j = \lfloor \frac{y_p - y_0}{\Delta y} \rfloor$.
+Um eine Annäherung an den Wert einer Funktion $f(x, y)$ in einem Punkt
+$(x, y) \in [x_i, x_{i+1}] \times [y_j, y_{j+1}]$ aus den Werten
+$f_{i,j}, f_{i+1,j}, f_{i+1,j+1}, f_{i,j+1}$ an den Zellecken zu erhalten,
+benutzt man \begriff{bilineare Interpolation}:\\
+$f(x, y) = (1-\alpha)(1-\beta) f_{i,j} + \alpha(1-\beta) f_{i+1,j} +
+(1-\alpha)\beta f_{i,j+1} + \alpha\beta f_{i+1,j+1}$, wobei\\
+$\alpha := \frac{x - x_i}{\Delta x}, \beta := \frac{y - y_j}{\Delta y} \in [0, 1]$
+die \begriff{lokalen Koordinaten} sind.
+
+\linie
+
+\textbf{LIC}:
+Sei $\Omega := \{x_0, x_0 + \Delta r, \dotsc, x_0 + N_x \Delta r\} \times
+\{y_0, y_0 + \Delta r, \dotsc, y_0 + N_y \Delta r\}$
+ein reguläres Gitter mit Gitterweite $\Delta r > 0$ sowie
+$\widetilde{\Omega} := [x_0, x_0 + N_x \Delta r] \times [y_0, y_0 + N_y \Delta r]$.
+Gesucht ist eine in $\widetilde{\Omega}$ dichte Darstellung eines Stromlinien-Vektorfelds
+$\vec{v}\colon \Omega \to \real^2$.
+Seien dazu
+\begin{itemize}
+    \item
+    $\vec{\varphi}(s, \vec{\eta})$ die Stromlinie des Vektorfelds
+    mit Anfangswert $\vec{\eta} \in \widetilde{\Omega}$ für $s = 0$,
+    
+    \item
+    $k\colon [-L, L] \to \real$ eine Funktion mit $\int_{-L}^L k(s) \ds = 1$
+    (\begriff{Faltungskern}) und
+    
+    \item
+    $T\colon \Omega \to [0, 1]$ eine \begriff{Rauschtextur}.
+\end{itemize}
+Dann ist die Intensität $I$ des \begriff{LIC-Bilds} in $(x_i, y_j) \in \Omega$ gegeben durch die
+Faltung\\
+$I(x_i, y_j) = \int_{-L}^L k(s) T(\vec{\varphi}(s, (x_i, y_j)^\tp)) \ds$
+(LIC steht für \begriff{Line Integral Convolution}).
+
+\textbf{OLIC}:
+LIC hat bei Verwendung von $k(s) :\equiv \frac{1}{2L}$ den Nachteil, dass die Richtungsinformation
+verloren geht.
+Durch Verwendung eines asymmetrischen Faltungskerns und Spot Noise bleibt die Richtungsinformation
+erhalten, man spricht von \begriff{OLIC (Oriented LIC)}.
+
+\pagebreak
+
+\subsection{%
+    Numerische Bestimmung von kritischen Punkten und Separatrizen%
+}
+
+\textbf{Bestimmung von kritischen Punkten}:
+Sei ein Vektorfeld $\vec{f}\colon \Omega \to \real^2$ mit $\Omega, \widetilde{\Omega}$ wie eben
+gegeben.
+Kritische Punkte der zugehörigen ODE sind genau die Nullstellen von $\vec{f}$.
+Allerdings ist $\vec{f} = (u, v)^\tp$ nur diskret gegeben.
+Daher markiert man zunächst die Gitterpunkte mit $(+,+)$, $(+,-)$, $(-,+)$, $(-,-)$ je nach
+Vorzeichen von $u$ und $v$.
+Anschließend bestimmt man die Zellen, bei denen sich in den Eckpunkten das Vorzeichen in
+beiden Komponenten $u, v$ jeweils ändert.
+Anschließend gibt es verschiedene Möglichkeiten:
+\begin{itemize}
+    \item
+    \emph{Isogeraden}:
+    Finde mittels Interpolation Nullstellen von $u$ und $v$ auf den Kanten der Zelle,
+    verbinde die Nullstellen und schneide die beiden Geraden, die zu $u$ und zu $v$ gehören.
+    
+    \item
+    \emph{Isolinien aus Interpolation}:
+    Besser ist es, $u$ und $v$ jeweils bilinear zu interpolieren und
+    Nullstellen der Interpolierenden zu bestimmen.
+    Setze also\\
+    $u(x, y) = (1-\alpha)(1-\beta) u_{i,j} + \alpha(1-\beta) u_{i+1,j} +
+    (1-\alpha)\beta u_{i,j+1} + \alpha\beta u_{i+1,j+1}$ sowie\\
+    $v(x, y) = (1-\alpha)(1-\beta) v_{i,j} + \alpha(1-\beta) v_{i+1,j} +
+    (1-\alpha)\beta v_{i,j+1} + \alpha\beta v_{i+1,j+1}$ und
+    bestimme $\alpha, \beta \in [0, 1]$, sodass $u(x, y) = 0 = v(x, y)$
+    (nicht-lineares Gleichungssystem).
+    
+    \item
+    \emph{Subdivision}:
+    Noch besser ist eine Subdivision der Zelle in vier Teilzellen,
+    Überprüfung, in welcher der Teilzellen die Nullstelle liegt, und Wiederholung,
+    bis die Zellgröße eine bestimmte Grenze unterschritten hat.
+    Dieses Verfahren ist numerisch robuster und liefert bessere Ergebnisse.
+\end{itemize}
+
+\linie
+
+\textbf{Bestimmung des Typs eines kritischen Punkts}:
+Um den Typ eines kritischen Punkts $(x, y)^\tp$ zu bestimmen, muss man die Eigenwerte der
+Jacobi-Matrix $J(x, y)$ von $\vec{f}$ im Punkt $(x, y)^\tp$ berechnen.
+Zur approximativen Berechnung der Jacobi-Matrix gibt es zwei Möglichkeiten:
+\begin{itemize}
+    \item
+    \emph{Interpolation der Jacobi-Matrix}:
+    Berechne zunächst die Jacobi-Matrizen $J_{k,\ell}$ in den Eckpunkten $(k, \ell)$
+    der Gitterzelle $(i, j)$, die $(x, y)^\tp$ enthält, also\\
+    $J_{k,\ell} := \smallpmatrix{(u_{k+1,\ell} - u_{k-1,\ell}) / (2\Delta x) &
+    (u_{k,\ell+1} - u_{k,\ell-1}) / (2\Delta y) \\ (v_{k+1,\ell} - v_{k-1,\ell}) / (2\Delta x) &
+    (v_{k,\ell+1} - v_{k,\ell-1}) / (2\Delta y)}$.
+    Interpoliere dann die vier Jacobi-Matrizen bilinear, d.\,h.
+    $J(x, y) = (1-\alpha)(1-\beta) J_{i,j} + \alpha(1-\beta) J_{i+1,j} +
+    (1-\alpha)\beta J_{i,j+1} + \alpha\beta J_{i+1,j+1}$.
+    
+    \item
+    \emph{Jacobi-Matrix des Interpolanten}:
+    Interpoliere\\
+    $u(x, y) = (1-\alpha)(1-\beta) u_{i,j} + \alpha(1-\beta) u_{i+1,j} +
+    (1-\alpha)\beta u_{i,j+1} + \alpha\beta u_{i+1,j+1}$ sowie\\
+    $v(x, y) = (1-\alpha)(1-\beta) v_{i,j} + \alpha(1-\beta) v_{i+1,j} +
+    (1-\alpha)\beta v_{i,j+1} + \alpha\beta v_{i+1,j+1}$ und berechne die Jacobi-Matrix
+    $J(x, y) = \smallpmatrix{\partial_x u & \partial_y u \\ \partial_x v & \partial_y v}$
+    des Interpolanten.
+\end{itemize}
+
+\linie
+
+\textbf{Bestimmung der Separatrizen}:
+Für jeden Sattelpunkt $\vec{\eta}$ mit Eigenwerten $\lambda_i$ und Eigenvektoren $\vec*{e}{i}$
+setze $\vec*{p}{i}^{\pm} := \vec{\eta} \pm \varepsilon \vec*{e}{i}$,
+wobei $\varepsilon > 0$ so klein ist, dass sich alle $\vec*{p}{i}^\pm$ immer noch in derselben
+Zelle wie $\vec{\eta}$ befinden.
+Berechne nun den positiven Halborbit mit Anfangswert $\vec*{p}{i}^{\pm}$, wenn $\lambda_i > 0$,
+und den negativen Halborbit, wenn $\lambda_i < 0$.
+
+\pagebreak

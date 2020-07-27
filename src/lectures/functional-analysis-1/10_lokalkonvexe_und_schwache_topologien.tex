@@ -1,0 +1,787 @@
+\section{%
+    Lokalkonvexe und schwache Topologien%
+}
+
+\subsection{%
+    Grundbegrif"|fe aus der Topologie%
+}
+
+\begin{Def}{topologischer Raum}
+    Seien $X$ eine Menge und $\T \subset \P(X)$.\\
+    Dann heißt $(X, \T)$ \begriff{topologischer Raum}, falls
+    \begin{enumerate}
+        \item
+        $\emptyset \in \T$, $X \in \T$,
+        
+        \item
+        $\forall_{\T' \subset \T}\; \bigcup_{U \in \T'} U \in \T$ und
+        
+        \item
+        $\forall_{U_1, U_2 \in \T}\; U_1 \cap U_2 \in \T$.
+    \end{enumerate}
+    In diesem Fall heißt $\T$ \begriff{Topologie} auf $X$ und die Elemente von $\T$ heißen
+    \begriff{of"|fen}.
+\end{Def}
+
+\begin{Bem}
+    Im Folgenden ist $(X, \T)$ ein topologischer Raum und $M \subset X$.
+\end{Bem}
+
+\begin{Def}{abgeschlossen}
+    $M \subset X$ heißt \begriff{abgeschlossen}, falls $X \setminus M$ of"|fen ist.
+\end{Def}
+
+\begin{Def}{Inneres}
+    $\interior{M} := \{x \in M \;|\; \exists_{O \in \T}\; O \subset M,\; x \in O\}$
+    heißt das \begriff{Innere} von $M$.
+\end{Def}
+
+\begin{Def}{Abschluss}
+    $\overline{M} := X \setminus \interior{X \setminus M}$ heißt \begriff{Abschluss} von $M$.
+\end{Def}
+
+\begin{Def}{Rand}
+    $\partial M := \overline{M} \setminus \interior{M}$ heißt \begriff{Rand} von $M$.
+\end{Def}
+
+\begin{Def}{dicht}
+    $M$ heißt \begriff{dicht} in $X$, falls $\overline{M} = X$.
+\end{Def}
+
+\begin{Satz}{abgeschlossene Mengen}
+    $\emptyset$ und $X$ sind abgeschlossen.
+    Schnitte beliebig vieler und Vereinigungen endlicher vieler abgeschlossener Mengen sind
+    abgeschlossen.
+\end{Satz}
+
+\linie
+
+\begin{Def}{Umgebung}
+    Seien $(X, \T)$ ein topologischer Raum und $x \in X$.\\
+    Dann heißt $U \subset X$ \begriff{Umgebung} von $x$, falls
+    $\exists_{O \in \T}\; O \subset U,\; x \in O$
+    (d.\,h. $x \in \interior{U}$).
+\end{Def}
+
+\begin{Def}{Umgebungsfilter}
+    $\U(x) := \{U \subset X \;|\; U \text{ Umgebung von } x\}$ heißt
+    \begriff{Umgebungsfilter} von $x$.
+\end{Def}
+
+\begin{Def}{Umgebungsbasis}\\
+    Eine Teilfamilie $\V(x) \subset \U(x)$ heißt \begriff{Umgebungsbasis} von $x$, falls
+    $\forall_{U \in \U(x)} \exists_{V \in \V(x)}\; V \subset U$.
+\end{Def}
+
+\begin{Satz}{Eigenschaften des Umgebungsfilters}
+    Seien $(X, \T)$ ein topologischer Raum und $x \in X$.\\
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $\forall_{U \in \U(x)}\; x \in U$
+        
+        \item
+        $\forall_{U \in \U(x)} \exists_{V \in \U(x)} \forall_{y \in V}\; U \in \U(y)$
+        
+        \item
+        $\forall_{U \in \U(x)} \forall_{V \supset U}\; V \in \U(x)$
+        
+        \item
+        $\forall_{U, V \in \U(x)}\; U \cap V \in \U(x)$
+    \end{enumerate}
+\end{Satz}
+
+\begin{Satz}{Umgebungsfilter induziert Topologie}
+    Sei $X$ eine Menge und $\U(x) \subset \P(X)$ für jedes $x \in X$,
+    sodass \emph{(1)} bis \emph{(4)} von eben erfüllt sind.
+    Dann gibt es genau eine Topologie $\T$ auf $X$, sodass $\U(x)$ für $x \in X$ der
+    Umgebungsfilter von $x$ ist.
+    Es gilt $\T = \bigcup_{x \in X} \O(x) \cup \{\emptyset\}$,
+    wobei $\O(x) := \{\interior{U} \;|\; U \in \U(x)\}$ und
+    $\interior{U} := \{y \in X \;|\; U \in \U(y)\}$.
+\end{Satz}
+
+\linie
+\pagebreak
+
+\begin{Satz}{Metrik induziert Topologie}
+    Jeder metrische Raum induziert einen topologischen Raum.
+    In diesem Fall besitzt jeder Punkt $x$ des topologischen Raums eine abzählbare
+    Umgebungsbasis $\V(x)$.
+    Allerdings ist nicht jeder topologische Raum \begriff{metrisierbar}
+    (d.\,h. die Topologie wird nicht von einer Metrik induziert).
+\end{Satz}
+
+\begin{Def}{feiner/gröber}
+    Seien $\T_1, \T_2$ Topologien auf $X$.\\
+    Dann heißt $\T_2$ \begriff{stärker/feiner} als $\T_1$ bzw.
+    $\T_1$ \begriff{schwächer/gröber} als $\T_2$, falls $\T_1 \subsetneqq \T_2$.
+\end{Def}
+
+\begin{Def}{\name{Hausdorff}-Raum}
+    Ein topologischer Raum $(X, \T)$ heißt \begriff{\name{Hausdorff}-Raum}, falls\\
+    $\forall_{x, y \in X,\; x \not= y} \exists_{U \in \U(x)} \exists_{V \in \U(y)}\;
+    U \cap V = \emptyset$.
+\end{Def}
+
+\begin{Def}{Konvergenz}
+    Eine Folge $(x_n)_{n \in \natural}$ in $X$ konvergiert gegen $x \in X$
+    ($x_n \xrightarrow{n \to \infty} x$), falls\\
+    $\forall_{U \in \U(x)} \exists_{n_U \in \natural} \forall_{n \ge n_U}\; x_n \in V$.
+\end{Def}
+
+\begin{Satz}{GWe in \name{Hausdorff}-Räumen eindeutig}\\
+    Grenzwerte von Folgen in Hausdorff-Räumen sind eindeutig.
+\end{Satz}
+
+\begin{Def}{folgenabgeschlossen}\\
+    $A \subset X$ heißt \begriff{folgenabgeschlossen}, falls
+    $\forall_{x \in X} \forall_{(x_n)_{n \in \natural} \text{ Folge in } A,\; x_n \to x}\;
+    x \in A$.
+\end{Def}
+
+\begin{Satz}{abg. $\Rightarrow$ folgenabg.}
+    Wenn $A \subset X$ abgeschlossen ist,\\
+    dann ist $A$ auch folgenabgeschlossen.
+    Die Umkehrung gilt i.\,A. nicht.
+\end{Satz}
+
+\linie
+
+\begin{Def}{stetig}
+    Seien $(X, \T_X), (Y, \T_Y)$ topologische Räume.\\
+    Eine Abbildung $T\colon X \rightarrow Y$ heißt \begriff{stetig}, falls
+    $\forall_{x \in X} \forall_{V \in \U(Tx)} \exists_{U \in \U(x)}\; T(U) \subset V$.
+\end{Def}
+
+\begin{Satz}{äquivalente Beschreibungen von Stetigkeit}
+    Folgende Aussagen sind äquivalent:
+    \begin{enumerate}
+        \item
+        $T$ ist stetig.
+        
+        \item
+        Für alle of"|fenen Teilmengen $O \subset Y$ ist $T^{-1}(O) \subset X$ of"|fen.
+        
+        \item
+        Für alle abgeschlossenen Teilmengen $A \subset Y$ ist $T^{-1}(A) \subset X$ abgeschlossen.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Satz}{stetig $\Rightarrow$ folgenstetig}
+    Wenn $T$ stetig ist, dann ist $T$ auch \begriff{folgenstetig}, d.\,h.\\
+    $\forall_{x \in X}
+    \forall_{(x_n)_{n \in \natural} \text{ Folge in } X,\; x_n \to x}\;
+    T(x_n) \xrightarrow{n \to \infty} T(x)$.
+    Die Umkehrung gilt i.\,A. nicht.
+\end{Satz}
+
+\linie
+
+\begin{Def}{kompakt}
+    Sei $(X, \T)$ ein topologischer Raum.
+    $K \subset X$ heißt \begriff{kompakt}, falls\\
+    $\forall_{I \text{ Indexmenge}} \forall_{O_i \subset X \text{ of"|fen},\;
+    K \subset \bigcup_{i \in I} O_i} \exists_{i_1, \dotsc, i_n \in I}\;
+    K \subset \bigcup_{j=1}^n O_{i_j}$.
+\end{Def}
+
+\begin{Def}{folgenkompakt}
+    $K$ heißt \begriff{folgenkompakt}, falls\\
+    $\forall_{(x_n)_{n \in \natural} \text{ Folge in } K}
+    \exists_{(x_{n_k})_{k \in \natural} \text{ Teilfolge}} \exists_{x \in K}\;
+    x = \lim_{k \to \infty} x_{n_k}$.
+\end{Def}
+
+\begin{Bem}
+    Kompaktheit und Folgenkompaktheit sind i.\,A. nicht äquivalent.
+\end{Bem}
+
+\linie
+
+\begin{Def}{separabel}
+    Sei $(X, \T)$ ein topologischer Raum.\\
+    Dann heißt $(X, \T)$ separabel, falls $X$ eine abzählbare, dichte Teilmenge enthält.
+\end{Def}
+
+\linie
+
+\begin{Satz}{Relativtopologie}
+    Seien $(X, \T)$ ein topologischer Raum und $A \subset X$.\\
+    Dann ist $(A, \T_A)$ ein topologischer Raum mit der \begriff{Relativtopologie}
+    $\T_A := \{U \cap A \;|\; U \in \T\}$.
+\end{Satz}
+
+\begin{Satz}{Produkttopologie}
+    Seien $I$ eine Indexmenge, $(X_i, \T_i)_{i \in I}$ eine Familie topologischer Räume und
+    $X := \prod_{i \in I} X_i$.
+    Dann ist $(X, \T)$ ein topologischer Raum mit der \begriff{Produkttopologie} $\T$ mit Basis
+    $\{\prod_{i \in I} O_i \;|\; \forall_{i \in I}\; O_i \in \T_i,\;
+    \text{fast alle } O_i = X_i\}$
+    (beliebige Vereinigungen hinzunehmen).
+\end{Satz}
+
+\begin{Satz}{Satz von \scshape\,\!\name{Tychonov}}
+    Seien $I$ eine Indexmenge, $(X_i, \T_i)_{i \in I}$ eine Familie topologischer Räume,
+    $X := \prod_{i \in I} X_i$ und $\T$ die Produkttopologie auf $X$.\\
+    Dann ist $X$ kompakt genau dann, wenn $X_i$ für alle $i \in I$ kompakt ist.
+\end{Satz}
+
+\begin{Bem}
+    Dieser Satz ist äquivalent zum Auswahlaxiom.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Lokalkonvexe Topologie%
+}
+
+\begin{Def}{lokalkonvexe Topologie}
+    Seien $X$ ein $\KK$-Vektorraum und $(p_\alpha)_{\alpha \in I}$ eine Familie von
+    Halbnormen auf $X$ ($I$ Indexmenge).
+    Für $x \in X$ definiert man
+    \begin{itemize}
+        \item
+        $U_{\varepsilon,H}(x) := \{y \in X \;|\; \forall_{\alpha \in H}\;
+        p_\alpha(x - y) < \varepsilon\}$
+        für $\varepsilon > 0$ und $H \subset I$ endlich,
+        
+        \item
+        $\V(x) := \{U_{\varepsilon,H}(x) \;|\; \varepsilon > 0,\; H \subset I \text{ endlich}\}$,
+        
+        \item
+        $\U(x) := \{U \subset X \;|\; \exists_{V \in \V(x)}\; V \subset U\}$ und
+        
+        \item
+        $\T := \{O \subset X \;|\; \forall_{x \in O} \exists_{V \in \V(x)}\; V \subset O\}$.
+    \end{itemize}
+    Man kann zeigen, dass $(X, \T)$ ein topologischer Raum ist,
+    wobei $\U(x)$ der Umgebungsfilter und $\V(x)$ eine Umgebungsbasis von $x \in X$ ist.
+    $\T$ heißt die von $(p_\alpha)_{\alpha \in I}$ induzierte \begriff{lokalkonvexe Topologie}
+    auf $X$ und $(X, \T)$ heißt \begriff{lokalkonvexer (topologischer) Raum}.
+\end{Def}
+
+\begin{Bem}
+    Die Topologie heißt deshalb lokalkonvex, weil es für jeden Punkt $x \in X$ eine
+    Umgebungsbasis aus konvexen Mengen $U_{\varepsilon,H}(x)$ gibt.
+\end{Bem}
+
+\begin{Bem}
+    $(X, \T)$ ist bereits eindeutig durch die Nullumgebungsbasis $\V(0)$ festgelegt,
+    da $\V(x) = x + \V(0)$ und $\U(x) = x + \U(0)$
+    (weil $U_{\varepsilon,H}(x) = x + U_{\varepsilon,H}(0)$).
+\end{Bem}
+
+\linie
+
+\begin{Lemma}{Charakterisierung der Konvergenz}
+    Seien $(X, \T)$ ein lokalkonvexer Raum, der durch $(p_\alpha)_{\alpha \in I}$ induziert wird,
+    $(x_n)_{n \in \natural}$ eine Folge in $X$ und $x \in X$.
+    Dann sind äquivalent:
+    \begin{enumerate}
+        \item
+        $x_n \xrightarrow{n \to \infty} x$
+        
+        \item
+        $x_n - x \xrightarrow{n \to \infty} 0$
+        
+        \item
+        $\forall_{\alpha \in I}\; p_\alpha(x_n - x) \xrightarrow{n \to \infty} 0$
+    \end{enumerate}
+\end{Lemma}
+
+\linie
+
+\begin{Lemma}{Charakterisierung von \name{hausdorff}sch}\\
+    Sei $(X, \T)$ ein lokalkonvexer Raum, der durch $(p_\alpha)_{\alpha \in I}$ induziert wird.
+    Dann sind äquivalent:
+    \begin{enumerate}
+        \item
+        $(X, \T)$ ist hausdorffsch.
+        
+        \item
+        $\forall_{x \in X \setminus \{0\}} \exists_{\alpha \in I}\; p_\alpha(x) \not= 0$
+    \end{enumerate}
+\end{Lemma}
+
+\linie
+
+\begin{Lemma}{Charakterisierung von Stetigkeit}
+    Seien $(X, \T_X), (Y, \T_Y)$ von den Halbnormfamilien $(p_\alpha)_{\alpha \in I_X}$ bzw.
+    $(q_\beta)_{\beta \in I_Y}$ induzierte lokalkonvexe Räume und $T\colon X \rightarrow Y$
+    linear.\\
+    Dann sind äquivalent:
+    \begin{enumerate}
+        \item
+        $T$ ist stetig.
+        
+        \item
+        $T$ ist stetig in $0$.
+        
+        \item
+        $\forall_{\beta \in I_Y} \exists_{H \subset I_X \text{ endlich}} \exists_{M \ge 0}
+        \forall_{x \in X}\; q_\beta(Tx) \le M \cdot \max_{\alpha \in H} p_\alpha(x)$
+    \end{enumerate}
+\end{Lemma}
+
+\begin{Kor}
+    Seien $(X, \T)$ ein lokalkonvexer Raum und $T\colon X \rightarrow \KK$ linear.\\
+    Dann ist $T$ stetig genau dann, wenn
+    $\exists_{H \subset I \text{ endlich}} \exists_{M \ge 0}
+    \forall_{x \in X}\; |Tx| \le M \cdot \max_{\alpha \in H} p_{\alpha_i}(x)$.
+\end{Kor}
+
+\begin{Def}{Dualraum}
+    Sei $(X, \T)$ ein lokalkonvexer Raum.\\
+    Dann heißt $X' := \{T\colon X \rightarrow \KK \;|\; T \text{ linear und stetig}\}$
+    \begriff{Dualraum} von $X$.
+\end{Def}
+
+\begin{Bem}
+    Es gibt Verallgemeinerungen des Satzes von Hahn-Banach und der Trennungssätze
+    für lokalkonvexe Räume.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Schwache Konvergenz und \texorpdfstring{Schwach$\ast$}{Schwach*}-Konvergenz%
+}
+
+\begin{Def}{schwache Topologie}
+    Seien $X$ ein normierter Raum und $X'$ der Dualraum von $X$.\\
+    $(p_{x'})_{x' \in X'}$ mit $p_{x'}(x) := |x'(x)|$ für $x \in X$ ist eine Familie von
+    Halbnormen auf $X$.\\
+    Die induzierte lokalkonvexe Topologie heißt \begriff{schwache Topologie}
+    $\sigma(X, X')$ auf $X$.
+\end{Def}
+
+\begin{Def}{Schwach$\ast$-Topologie}
+    Seien $X$ ein normierter Raum und $X'$ der Dualraum von $X$.\\
+    $(p_x)_{x \in X}$ mit $p_x(x') := |x'(x)|$ für $x' \in X'$ ist eine Familie von
+    Halbnormen auf $X'$.\\
+    Die induzierte lokalkonvexe Topologie heißt \begriff{Schwach$\ast$-Topologie}
+    $\sigma(X', X)$ auf $X'$.
+\end{Def}
+
+\begin{Def}{schwache Konvergenz}
+    Seien $X$ ein normierter Raum, $(x_n)_{n \in \natural}$ eine Folge in $X$ und $x \in X$.\\
+    Dann \begriff{konvergiert} $(x_n)_{n \in \natural}$ \begriff{schwach} gegen $x$
+    ($x_n \rightharpoonup x$), falls
+    $x_n \xrightarrow{n \to \infty} x$ bzgl. $\sigma(X, X')$.
+\end{Def}
+
+\begin{Def}{Schwach$\ast$-Konvergenz}
+    Seien $X$ ein normierter Raum, $(x_n')_{n \in \natural}$ eine Folge in $X'$ und $x \in X'$.\\
+    Dann \begriff{konvergiert} $(x_n')_{n \in \natural}$ \begriff{schwach$\ast$} gegen $x'$
+    ($x_n' \xrightharpoonup{\ast} x'$), falls
+    $x_n' \xrightarrow{n \to \infty} x'$ bzgl. $\sigma(X', X)$.
+\end{Def}
+
+\begin{Bem}
+    Schwache Konvergenz ist äquivalent
+    zu $\forall_{x' \in X'}\; x'(x_n) \xrightarrow{n \to \infty} x'(x)$.\\
+    Analog ist Schwach$\ast$-Konvergenz äquivalent
+    zu $\forall_{x \in X}\; x_n'(x) \xrightarrow{n \to \infty} x'(x)$.
+\end{Bem}
+
+\subsection{%
+    Distributionen%
+}
+
+\begin{Def}{Distributionen}
+    Seien $\Omega \subset \real^d$ of"|fen und $\D(\Omega) := \C^\infty_c(\Omega)$.
+    Zunächst definiert man Halbnormen $(p_m)_{m \in \natural_0}$
+    durch $p_m(\varphi) := \sup_{|\beta| \le m} \norm{\partial_x^\beta \varphi}_{\C^0(\Omega)}$.
+    Anschließend definiert man $(p_\alpha)_{\alpha \in I}$ als Familie aller Halbnormen
+    $p_\alpha$, sodass
+    $\forall_{K \subset \Omega \text{ kpkt.}} \exists_{C \ge 0} \exists_{m \in \natural_0}
+    \forall_{\varphi \in \C^\infty_c(K)}\; p_\alpha(\varphi) \le C \cdot p_m(\varphi)$.\\
+    Dann heißt der Dualraum $\D'(\Omega)$ von $(\D(\Omega), \T_\D)$
+    \begriff{Raum der Distributionen} auf $\Omega$,
+    wobei $\T_\D$ die von $(p_\alpha)_{\alpha \in I}$ induzierte lokalkonvexe Topologie auf
+    $\D(\Omega)$ ist.
+\end{Def}
+
+\begin{Bem}
+    Sei $(\varphi_n)_{n \in \natural}$ eine Folge in $\D(\Omega)$ und $\varphi \in \D(\Omega)$.\\
+    Dann gilt $\varphi_n \xrightarrow{n \to \infty} \varphi$ (bzgl. $\T_\D$) genau dann, wenn
+    es $K \subset \Omega$ kompakt gibt mit\\
+    $\supp(\varphi) \subset K$,
+    $\forall_{n \in \natural}\; \supp(\varphi_n) \subset K$ und
+    $\forall_{\beta \in \natural_0^d}\; \partial_x^\beta \varphi_n
+    \xrightarrow{\norm{\cdot}_{\C^0(K)}} \partial_x^\beta \varphi$.
+\end{Bem}
+
+\linie
+
+\begin{Lemma}{Eigenschaften des Testfunktionenraums}
+    \begin{enumerate}
+        \item
+        Seien $K \subset \Omega$ kompakt und $\D_K(\Omega) := \C^\infty_c(K)$.
+        Dann ist die von $(p_m)_{m \in \natural_0}$ erzeugte lokalkonvexe Topologie
+        auf $\D_K(\Omega)$ gleich der
+        Relativtopologie von $(D(\Omega), \T_\D)$ auf $\D_K(\Omega)$.
+        
+        \item
+        $(\D(\Omega), \T_\D)$ ist hausdorffsch.
+    \end{enumerate}
+\end{Lemma}
+
+\begin{Lemma}{Charakterisierung der Stetigkeit}
+    Sei $T\colon \D(\Omega) \rightarrow \KK$ linear.
+    Dann sind äquivalent:
+    \begin{enumerate}
+        \item
+        $T \in \D'(\Omega)$
+        
+        \item
+        $\forall_{K \subset \Omega \text{ kpkt.}}\; T|_{\D_K(\Omega)} \in (\D_K(\Omega))'$
+        
+        \item
+        $\forall_{K \subset \Omega \text{ kpkt.}} \exists_{m \in \natural_0}
+        \exists_{C \ge 0} \forall_{\varphi \in \D_K(\Omega)}\; |T\varphi| \le C p_m(\varphi)$
+        
+        \item
+        $T$ ist \begriff{folgenstetig}, d.\,h.
+        aus $\varphi_n \to \varphi$ in $(\D(\Omega), \T_D)$ folgt $T\varphi_n \to T\varphi$.
+        
+        \item
+        $T$ ist folgenstetig in $0$, d.\,h.
+        aus $\varphi_n \to 0$ in $(\D(\Omega), \T_D)$ folgt $T\varphi_n \to 0$.
+    \end{enumerate}
+\end{Lemma}
+
+\linie
+
+\begin{Def}{Schwach$\ast$-Topologie für Distributionen}
+    Sei die Familie $(p_\varphi)_{\varphi \in \D(\Omega)}$ von Halbnormen auf $\D'(\Omega)$
+    definiert durch $p_\varphi(T) := |T\varphi|$ für alle $T \in \D'(\Omega)$.\\
+    Dann heißt die von $(p_\varphi)_{\varphi \in \D(\Omega)}$ induzierte lokalkonvexe Topologie
+    \begriff{Schwach$\ast$-Topologie}\\
+    $\sigma(\D'(\Omega), \D(\Omega))$ auf $\D'(\Omega)$.
+\end{Def}
+
+\begin{Bem}
+    Sei $(T_n)_{n \in \natural}$ eine Folge in $\D'(\Omega)$ und $T \in \D'(\Omega)$.\\
+    Dann gilt $T_n \xrightarrow{n \to \infty} T$ (bzgl. $\sigma(\D'(\Omega), \D(\Omega))$)
+    genau dann, wenn $\forall_{\varphi \in \D(\Omega)}\;
+    T_n \varphi \xrightarrow{n \to \infty} T \varphi$.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Beispiele für Distributionen und distributionelle Ableitung%
+}
+
+\begin{Def}{induzierte reguläre Distribution}\\
+    Sei $f \in L^1_\loc(\Omega)$
+    mit $L^1_\loc(\Omega) := \{f\colon \Omega \rightarrow \real \text{ messbar} \;|\;
+    \forall_{K \subset \Omega \text{ kpkt.}}\; f \in L^1(K)\}$.\\
+    Dann heißt $T_f \in \D'(\Omega)$ mit $T_f(\varphi) := \int_\Omega f(y)\varphi(y)\dy$
+    für $\varphi \in \D(\Omega)$
+    die durch $f$ \begriff{induzierte reguläre Distribution}.
+\end{Def}
+
+\begin{Bem}
+    Die Abbildung $L^1_\loc(\Omega) \rightarrow \D'(\Omega)$, $f \mapsto T_f$ ist injektiv
+    (sie ist linear und aus $T_f = 0$ folgt $T_f(\varphi) = 0$ für alle $\varphi \in \D(\Omega)$,
+    also $f = 0$ f.ü. nach dem Fundamentallemma der Variationsrechnung).
+    Daher kann man die Funktionen $f \in L^1_\loc(\Omega)$ mit den
+    induzierten regulären Distributionen $T_f \in \D'(\Omega)$ identifizieren.\\
+    Eine Distribution $T \in \D'(\Omega)$ heißt \begriff{regulär},
+    falls $\exists_{f \in L^1_\loc(\Omega)}\; T = T_f$,
+    d.\,h. falls sie im Bild dieser Abbildung ist.
+    Nicht jede Distribution ist regulär, wie die Delta-Distribution zeigt.
+\end{Bem}
+
+\begin{Def}{\name{Dirac}-/Delta-Distribution}
+    Sei $x \in \Omega$.
+    Dann heißt $\delta_x \in \D'(\Omega)$ mit $\delta_x(\varphi) := \varphi(x)$ für
+    $\varphi \in \D(\Omega)$ \begriff{\name{Dirac}- oder Delta-Distribution} zum Punkt $x$.
+    Man schreibt $\delta := \delta_0$.
+\end{Def}
+
+\begin{Bem}
+    $\delta_x$ ist nicht regulär.
+    Angenommen, es gilt $\delta_x = T_f$ für ein $f \in L^1_\loc(\Omega)$.
+    Definiere für $\varphi \in \D(\Omega)$ die Testfunktion
+    $\psi_\varphi \in \D(\Omega)$ durch $\psi_\varphi(y) := |y - x|^2 \varphi(y)$.
+    Dann gilt für alle $\varphi \in \D(\Omega)$, dass
+    $0 = \psi_\varphi(x) = \delta_x(\psi_\varphi) = T_f(\psi_\varphi) =
+    \int_\Omega f(y) |y - x|^2 \varphi(y) \dy$.
+    Nach dem Fundamentallemma der Variationsrechnung folgt,
+    dass $f(y) |y - x|^2 = 0$ für fast alle $y \in \Omega$, d.\,h. $f = 0$ f.ü.
+    Damit wäre aber $\delta_x = T_f = 0$, ein Widerspruch
+    (es gibt $\varphi \in \D(\Omega)$ mit $\delta_x(\varphi) = \varphi(x) \not= 0$).\\
+    Trotzdem schreibt man formal häufig
+    $\int_\Omega \delta_x(y) \varphi(y) \dy := \varphi(x)$.
+\end{Bem}
+
+\begin{Satz}{\name{Dirac}-Folge}
+    Sei $f_n \in L^1_\loc(\Omega)$ mit
+    $f_n(x) := \left(\frac{n}{4\pi}\right)^{d/2} \exp\!\left(-\frac{n|x|^2}{4}\right)$
+    für $n \in \natural$.\\
+    Dann gilt $T_{f_n} \to \delta_0$ bzgl. $\sigma(\D'(\Omega), \D(\Omega))$.
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Seien $f \in L^1_\loc(\Omega)$ und $\beta \in \natural_0^d$, sodass
+    die partielle Ableitung $\partial^\beta_x f$ der Ordnung $\beta$ existiert.
+    Dann gilt $T_{\partial^\beta_x f}(\varphi)
+    = \int_{\real^d} (\partial^\beta_x f)(x) \varphi(x) \dx
+    = (-1)^{|\beta|} \int_{\real^d} f(x) (\partial^\beta_x \varphi)(x) \dx$\\
+    $= (-1)^{|\beta|} T_f(\partial^\beta_x \varphi)$ wegen partieller Integration.
+    Die folgende Definition erklärt $T_{\partial^\beta_x f}$ zur "`Ableitung"' von $T_f$
+    und verallgemeinert dies für nicht-reguläre Distributionen.
+\end{Bem}
+
+\begin{Def}{distributionelle Ableitung}
+    Seien $T \in \D'(\Omega)$ und $\beta \in \natural_0^d$.\\
+    Dann heißt $\partial^\beta_x T \in \D'(\Omega)$ mit
+    $(\partial^\beta_x T)(\varphi) := (-1)^{|\beta|} T(\partial^\beta_x \varphi)$
+    \begriff{distributionelle Ableitung} von $T$ der Ordnung $\beta$.
+\end{Def}
+
+\begin{Bsp}
+    Seien $\Omega := (-1, 1)$ und $f \in L^1_\loc((-1, 1))$ mit $f(x) := |x|$.\\
+    Dann gilt $T_f(\partial_x \varphi) = \int_{-1}^0 (-x)(\partial_x \varphi)(x) \dx +
+    \int_0^1 x (\partial_x \varphi)(x) \dx = \int_{-1}^0 \varphi(x) \dx - \int_0^1 \varphi(x)\dx
+    = -T_g(\varphi)$ für alle $\varphi \in \D((-1, 1))$ mit
+    $g(x) := -1$ für $x < 0$, $g(x) := 0$ für $x = 0$ und $g(x) := 1$ für $x > 0$
+    (Vorzeichenfunktion).
+    Somit ist $T_g$ die distributionelle Ableitung von $T_f$
+    (man identifiziert $f$ und $g$ mit $T_f$ bzw. $T_g$ und spricht oft davon,
+    dass $g$ die distributionelle Ableitung von $f$ ist).
+    Wegen $g \in L^2((-1, 1))$ ist $g$ auch die schwache Ableitung von $f$.
+    
+    Außerdem gilt
+    $T_f(\partial_x^2 \varphi) =
+    \int_{-1}^0 (\partial_x \varphi)(x)\dx - \int_0^1 (\partial_x \varphi)(x) \dx =
+    2\varphi(0) = 2\delta(\varphi)$.
+    Daher ist $2\delta$ die zweite distributionelle Ableitung von $T_f$ (bzw. von $f$),
+    allerdings besitzt $g$ keine schwache Ableitung ($\delta$ ist keine Funktion).
+\end{Bsp}
+
+\begin{Satz}{distr. Ableitungsoperator stetig}\\
+    Die Abbildung $\partial^\beta_x\colon \D'(\Omega) \rightarrow \D'(\Omega)$,
+    $T \mapsto \partial^\beta_x T$ ist stetig bzgl. $\sigma(\D'(\Omega), \D(\Omega))$.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Eigenschaften der schwachen Konvergenz und der Satz von \name{Alaoglu}%
+}
+
+\begin{Lemma}{schwache Konvergenz und Schwach$\ast$-Konvergenz}
+    Seien $X$ ein normierter Raum,
+    $(x_n)_{n \in \natural}$ eine Folge in $X$,
+    $(x_n')_{n \in \natural}$ eine Folge in $X'$,
+    $x \in X$ und
+    $x' \in X'$.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $x_n \rightharpoonup x \iff J_X x_n \xrightharpoonup{\ast} J_X x$ mit
+        $J_X\colon X \rightarrow X''$, $(J_X x)(x') := x'(x)$ für $x \in X$, $x' \in X'$
+        
+        \item
+        Aus $x_n' \rightharpoonup x'$ folgt $x_n' \xrightharpoonup{\ast} x'$.
+        
+        \item
+        Der schwache Grenzwert von $(x_n)_{n \in \natural}$ (falls existent) und
+        der Schwach$\ast$-Grenzwert von $(x_n')_{n \in \natural}$ (falls existent) sind eindeutig.
+        
+        \item
+        Aus $x_n \to x$ (bzgl. $\norm{\cdot}_X$) folgt $x_n \rightharpoonup x$ und
+        aus $x_n' \to x'$ (bzgl. $\norm{\cdot}_{X'}$) folgt $x_n' \xrightharpoonup{\ast} x'$.
+        
+        \item
+        Aus $x_n' \xrightharpoonup{\ast} x'$ folgt
+        $\norm{x'}_{X'} \le \liminf_{n \to \infty} \norm{x_n'}_{X'}$.
+        
+        \item
+        Aus $x_n \rightharpoonup x$ folgt
+        $\norm{x}_X \le \liminf_{n \to \infty} \norm{x_n}_X$\\
+        (\begriff{Unterhalbstetigkeit} der Norm bzgl. der schwachen Konvergenz von Folgen).
+        
+        \item
+        Konvergiert $(x_n)_{n \in \natural}$ schwach,
+        so ist $(x_n)_{n \in \natural}$ beschränkt.\\
+        Konvergiert $(x_n')_{n \in \natural}$ schwach$\ast$,
+        so ist $(x_n')_{n \in \natural}$ beschränkt.
+        
+        \item
+        Aus $x_n \to x$ und $x_n' \xrightharpoonup{\ast} x'$ folgt
+        $x_n'(x_n) \to x'(x)$ in $\KK$.\\
+        Aus $x_n \rightharpoonup x$ und $x_n' \to x'$ folgt
+        $x_n'(x_n) \to x'(x)$ in $\KK$.
+    \end{enumerate}
+\end{Lemma}
+
+\linie
+
+\begin{Bsp}
+    \begin{enumerate}[label=\emph{(\alph*)}]
+        \item
+        Sei $(\Omega, \Sigma, \mu)$ ein Maßraum, $p \in [1, \infty)$ und
+        $p'$ mit $\frac{1}{p} + \frac{1}{p'} = 1$.
+        Im Fall $p = 1$ sei $\mu$ zusätzlich $\sigma$-endlich.
+        Dann ist $J_{p'}\colon L^{p'}(\Omega) \rightarrow (L^p(\Omega))'$ mit
+        $(J_{p'} f)(g) := \int_\Omega g\overline{f} d\mu$ für $g \in L^p(\mu)$
+        ein konjugiert linearer, isometrischer Isomorphismus.
+        Für $p = 2$ ist $J_2 = \R_{L^2(\Omega)}$ gleich dem
+        konjugiert linearen Isomorphismus aus dem Rieszschen Darstellungssatz.\\
+        Seien $(f_k)_{k \in \natural}$ eine Folge in $L^p(\Omega)$ und $f \in L^p(\Omega)$.\\
+        Dann gilt $f_k \rightharpoonup f$ in $L^p(\Omega)$ genau dann,
+        wenn $\forall_{g \in L^{p'}(\Omega)}\; \int_\Omega f_k \overline{g} d\mu
+        \xrightarrow{k \to \infty} \int_\Omega f\overline{g} d\mu$.
+        
+        \item
+        Seien $K \subset \real^n$ kompakt und
+        $\text{rca}(K)$ der Raum der signierten Borelmaße auf $K$.\\
+        Dann ist $J\colon \text{rca}(K) \rightarrow (\C^0(K))'$ mit
+        $(J\nu)(f) := \int_K fd\nu$ ein isometrischer Isomorphismus.\\
+        Seien $(f_k)_{k \in \natural}$ eine Folge in $\C^0(K)$ und $f \in \C^0(K)$.\\
+        Dann gilt $f_k \rightharpoonup f$ in $\C^0(K)$ genau dann,
+        wenn $\forall_{\nu \in \text{rca}(K)}\; \int_K f_k d\nu
+        \xrightarrow{k \to \infty} \int_K f d\nu$.
+        
+        \item
+        Seien $\Omega \subset \real^n$ of"|fen, $m \in \natural$ und $p \in [1, \infty]$,\\
+        außerdem $(u_k)_{k \in \natural}$ eine
+        Folge in $W^{m,p}(\Omega)$ und $u \in W^{m,p}(\Omega)$.\\
+        Dann gilt $u_k \rightharpoonup u$ in $W^{m,p}(\Omega)$ genau dann,
+        wenn $\forall_{|s| \le m}\; \partial_x^s u_k \rightharpoonup \partial_x^s u$
+        in $L^p(\Omega)$.\\
+        Die gleiche Aussage gilt für $W^{m,p}_0(\Omega)$.
+    \end{enumerate}
+\end{Bsp}
+
+\linie
+
+\begin{Satz}{beschr. Folge in $X'$ besitzt schwach$\ast$ konv. TF für $X$ separabel}\\
+    Sei $X$ ein separabler normierter Raum.\\
+    Dann ist $\overline{B_1(0)} \subset X'$ schwach$\ast$ folgenkompakt.
+\end{Satz}
+
+\begin{Bem}
+    In diesem Fall gilt diese Aussage auch für jede andere abgeschlossene Kugel
+    $\overline{B_R(0)}$.
+    Insbesondere besitzt jede beschränkte Folge in $X'$ eine schwach$\ast$ konvergente Teilfolge.\\
+    Die Aussage gilt i.\,A. nicht, wenn $X$ nicht separabel ist.
+\end{Bem}
+
+\begin{Satz}{Satz von \scshape\,\!\name{Alaoglu}}
+    Sei $X$ ein Banachraum.\\
+    Dann ist $\overline{B_1(0)} \subset X'$ kompakt bzgl. der Schwach$\ast$-Topologie auf $X'$.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Beste Approximationen in reflexiven Räumen%
+}
+
+\begin{Def}{reflexiv}
+    Sei $X$ ein Banachraum.\\
+    Dann heißt $X$ \begriff{reflexiv}, falls $J_X\colon X \rightarrow X''$
+    (mit $(J_X x)x' = x'(x)$) surjektiv, also bijektiv ist.
+\end{Def}
+
+\begin{Satz}{(Gegen-)Beispiele für reflexive Räume}
+    \begin{enumerate}
+        \item
+        Jeder Hilbertraum ist reflexiv.
+        
+        \item
+        $L^p(\Omega)$ ist für $p \in (1, \infty)$ reflexiv.
+        
+        \item
+        $W^{m,p}(\Omega)$ ist für $p \in (1, \infty)$ reflexiv.
+        
+        \item
+        $\C^0(K)$ ist für $K$ kompakt und unendlich nicht reflexiv.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Lemma}{Eigenschaften reflexiver Räume}
+    Sei $X$ ein Banachraum.
+    \begin{enumerate}
+        \item
+        Ist $X$ reflexiv, dann stimmen schwache Konvergenz in $X'$ und
+        Schwach$\ast$-Konvergenz in $X'$ überein.
+        
+        \item
+        Ist $X$ reflexiv, dann ist auch jeder abgeschlossene Unterraum von $X$ reflexiv.
+        
+        \item
+        Sei $Y$ ein zu $X$ isomorpher Banachraum.\\
+        Dann ist $X$ reflexiv genau dann, wenn $Y$ reflexiv ist.
+        
+        \item
+        $X$ ist reflexiv genau dann, wenn $X'$ reflexiv ist.
+    \end{enumerate}
+\end{Lemma}
+
+\linie
+
+\begin{Satz}{beschr. Folge in $X$ besitzt schwach konv. TF für $X$ reflexiv}\\
+    Sei $X$ ein reflexiver Banachraum.\\
+    Dann ist $\overline{B_1(0)} \subset X$ schwach folgenkompakt.
+\end{Satz}
+
+\begin{Bem}
+    In diesem Fall gilt diese Aussage auch für jede andere abgeschlossene Kugel
+    $\overline{B_R(0)}$.
+    Insbesondere besitzt jede beschränkte Folge in $X$ eine schwach konvergente Teilfolge.
+\end{Bem}
+
+\begin{Lemma}{$X'$ separabel $\Rightarrow$ $X$ separabel}
+    Sei $X$ ein Banachraum mit $X'$ separabel.\\
+    Dann ist auch $X$ separabel.
+\end{Lemma}
+
+\linie
+
+\begin{Def}{Vollstetigkeit}
+    Seien $X, Y$ Banachräume und $T\colon X \rightarrow Y$ linear.
+    Dann heißt $T$ \begriff{vollstetig}, falls
+    für alle Folgen $(x_n)_{n \in \natural}$ in $X$ und $x \in X$ mit $x_n \rightharpoonup x$
+    gilt, dass $Tx_n \to Tx$.
+\end{Def}
+
+\begin{Satz}{Vollstetigkeit}
+    Seien $X, Y$ Banachräume und $T\colon X \rightarrow Y$ linear.
+    \begin{enumerate}
+        \item
+        Ist $T$ kompakt, dann ist $T$ vollstetig.
+        
+        \item
+        Ist $X$ reflexiv und $T$ vollstetig, dann ist $T$ kompakt.
+    \end{enumerate}
+\end{Satz}
+
+\linie
+
+\begin{Satz}{konvexe abg. Menge schwach folgenabg.}\\
+    Seien $X$ ein normierter Raum und $M \subset X$
+    nicht-leer, konvex und abgeschlossen.\\
+    Dann ist $M$ schwach folgenabgeschlossen.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{bestapproximierendes Element für reflexive Räume}\\
+    Seien $X$ ein reflexiver Banachraum und $M \subset X$
+    nicht-leer, konvex und abgeschlossen.\\
+    Dann gilt $\forall_{x_0 \in X} \exists_{y_0 \in M}\;
+    \norm{x_0 - y_0} = \dist(x_0, M)$.
+\end{Satz}
+
+\pagebreak

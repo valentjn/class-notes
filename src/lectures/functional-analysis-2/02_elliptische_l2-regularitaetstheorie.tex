@@ -1,0 +1,194 @@
+\section{%
+    Elliptische \texorpdfstring{$L^2$}{L²}-Regularitätstheorie%
+}
+
+\begin{Bem}
+    Im Folgenden betrachtet man die Lösungen von
+    $-\div(a \nabla u) = f$ in $\Omega$ und $u = 0$ auf $\partial\Omega$, wobei
+    $\Omega \subset \real^n$ of"|fen sowie $a\colon \Omega \rightarrow \real^{n \times n}$ mit
+    $\forall_{x \in \Omega}\; [\text{$a(x)$ symmetrisch}]$ und
+    $a$ \begriff{gleichmäßig elliptisch}, d.\,h.
+    $\exists_{\lambda > 0} \forall_{x \in \Omega} \forall_{\xi \in \real^n}\;
+    \frac{1}{\lambda} |\xi|^2 \ge \xi a(x) \xi \ge \lambda |\xi|^2$.\\
+    Im Fall $a(x) \equiv I$ (Einheitsmatrix) ergibt sich die Poisson-Gleichung.\\
+    Dabei ist $\div(F) = \nabla \cdot F := \partial_{x_1} F_1 + \dotsb + \partial_{x_n} F_n$
+    die \begriff{Divergenz} des Vektorfelds $F$.\\
+    Es gilt $\div(a \nabla u) = \sum_{i,j=1,\dotsc,n} \partial_{x_i} (a_{ij} \partial_{x_j} u)$ mit
+    $a_{ij}(x) := e_i a(x) e_j$.
+\end{Bem}
+
+\begin{Bem}
+    Um den Regularitätssatz für $\C^{m+2}$-berandete Gebiete $\Omega$ zu zeigen, zeigt man
+    eine Modifikation zunächst für den Ganzraum
+    $\real^n$ und dann für den Halbraum $\{x \in \real^n \;|\; x_1 > 0\}$.
+\end{Bem}
+
+\subsection{%
+    Regularitätssatz für den Ganzraum%
+}
+
+\begin{Satz}{Ganzraum-Fall}\\
+    Seien $m \in \natural_0$,
+    $a \in \C^{m+1}_b(\real^n, \real^{n \times n})$ gleichmäßig elliptisch,
+    $f \in H^m(\real^n)$ und $u$ die schwache Lösung von
+    $-\div(a \nabla u) = f$ in $\real^n$, d.\,h.
+    $u \in H^1(\real^n)$ mit $\forall_{\varphi \in H^1(\real^n)}\;
+    \int_{\real^n} a \nabla u \nabla\varphi \dx = \int_{\real^n} f\varphi \dx$.\\
+    Dann ist $u \in H^{m+2}(\real^n)$ mit
+    $\norm{u}_{H^{m+2}(\real^n)} \le
+    C (\norm{f}_{H^m(\real^n)} + \norm{u}_{H^1(\real^n)})$ und $C = C(n, a)$.
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Zum Beweis benötigt man ein paar Sätze über Dif"|ferenzenquotienten.
+\end{Bem}
+
+\begin{Def}{Dif"|ferenzenquotient}
+    Seien $v \in H^1(\real^n)$, $h > 0$ und $e_i$ der $i$-te Einheitsvektor.\\
+    Dann heißen
+    $\partial_{x_i}^h v(x) := \frac{1}{h} (v(x + he_i) - v(x))$ und
+    $\partial_{x_i}^{-h} v(x) := \frac{1}{h} (v(x) - v(x - he_i))$
+    \begriff{Dif"|ferenzen"-quotienten} von $v$ zur Schrittweite $h$.
+\end{Def}
+
+\begin{Lemma}{Dif"|ferenzenquotienten}
+    Für $u, v \in H^1(\real^n)$ gilt
+    $\partial_{x_i}^h v, \partial_{x_i}^{-h} v \in H^1(\real^n)$ und
+    \begin{enumerate}
+        \item
+        $\int_{\real^n} v (\partial_{x_i}^{-h} u)\dx = -\int_{\real^n} (\partial_{x_i}^h v) u \dx$
+        (\begriff{diskrete partielle Integration}),
+        
+        \item
+        $\partial_{x_i}^h (vu)
+        = v (\partial_{x_i}^h u) + (\partial_{x_i}^h v) u(\cdot + he_i)$
+        (\begriff{diskrete Produktregel}) und
+        
+        \item
+        $\int_{\real^n} |\partial_{x_i}^{-h} v|^2 \dx \le \int_{\real^n} |\nabla v|^2 \dx$,
+        also $\norm{\partial_{x_i}^{-h} v}_{L^2(\real^n)} \le \norm{\nabla v}_{L^2(\real^n)}$.
+    \end{enumerate}
+\end{Lemma}
+
+\begin{Lemma}{abg. Einheitskugel in $L^2(\real^n)$ schwach folgenkpkt.}\\
+    In einem reflexiven Banachraum ist $\overline{B_1(0)}$ schwach folgenkompakt.
+    Jede beschränkte Folge enthält also eine schwach konvergente Teilfolge.\\
+    $L^2(\real^n)$ ist sogar ein reflexiver Hilbertraum und $(L^2(\real^n))' \cong L^2(\real^n)$
+    mittels des Isomorphismus aus dem Rieszschen Darstellungssatz, d.\,h.
+    $f_k \rightharpoonup f$ in $L^2(\real^n)$ genau dann, wenn\\
+    $\forall_{g \in L^2(\real^n)}\; \int_{\real^n} f_k g\dx \xrightarrow{k \to \infty}
+    \int_{\real^n} fg\dx$.\\
+    Dabei gilt $\norm{f}_{L^2(\real^n)} \le \liminf_{k \to \infty} \norm{f_k}_{L^2(\real^n)}$
+    (Unterhalbstetigkeit der Norm).
+\end{Lemma}
+
+\subsection{%
+    Regularitätssatz für den Halbraum%
+}
+
+\begin{Satz}{Halbraum-Fall}\\
+    Seien $m \in \natural_0$,
+    $\Omega := \{x \in \real^n \;|\; x_1 > 0\}$,
+    $a \in \C^{m+1}_b(\overline{\Omega}, \real^{n \times n})$ gleichmäßig elliptisch,
+    $f \in H^m(\Omega)$ und $u$ die schwache Lösung von
+    $-\div(a \nabla u) = f$ in $\Omega$ und $u = 0$ auf $\partial\Omega$, d.\,h.
+    $u \in H^1_0(\Omega)$ mit $\forall_{\varphi \in H^1_0(\Omega)}\;
+    \int_\Omega a \nabla u \nabla\varphi \dx = \int_\Omega f\varphi \dx$.\\
+    Dann ist $u \in H^{m+2}(\Omega)$ mit
+    $\norm{u}_{H^{m+2}(\Omega)} \le
+    C (\norm{f}_{H^m(\Omega)} + \norm{u}_{H^1(\Omega)})$ und $C = C(n, a)$.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Elliptischer \texorpdfstring{$L^2$}{L²}-Regularitätssatz
+    (\texorpdfstring{$\C^{m+2}$}{Cᵐ⁺²}-berandete Gebiete)%
+}
+
+\begin{Satz}{elliptischer $L^2$-Regularitätssatz}
+    Seien $m \in \natural_0$,
+    $\Omega \subset \real^n$ of"|fen, beschränkt und $\C^{m+2}$-berandet,
+    $a \in \C^{m+1}(\overline{\Omega}, \real^{n \times n})$ gleichmäßig elliptisch,
+    $f \in H^m(\Omega)$ und $u$ die \begriff{schwache Lösung} von
+    $-\div(a \nabla u) = f$ in $\Omega$ und $u = 0$ auf $\partial\Omega$, d.\,h.
+    $u \in H^1_0(\Omega)$ mit $\forall_{\varphi \in H^1_0(\Omega)}\;
+    \int_\Omega a \nabla u \nabla\varphi \dx = \int_\Omega f\varphi \dx$.\\
+    Dann ist $u \in H^{m+2}(\Omega)$ mit
+    $\norm{u}_{H^{m+2}(\Omega)} \le C \norm{f}_{H^m(\Omega)}$ und $C = C(\Omega, a)$.
+\end{Satz}
+
+\begin{Bem}
+    Der Satz gilt auch, wenn $\Omega \subset \real^n$ of"|fen, beschränkt und Lipschitz-berandet
+    ist.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Der Beweis erfolgt mittels Dif"|feomorphismen und Rückführung auf den Ganz- und den
+    Halbraum-Fall.
+    
+    Weil $\Omega$ $\C^{m+2}$-berandet ist, gilt
+    $\exists_{N \in \natural} \forall_{k = 1, \dotsc, N}
+    \exists_{U_k \subset \real^n \text{ of"|fen}}
+    \exists_{\phi_k\colon \real^n \rightarrow \real^n}$
+    $\phi_k(\Omega \cap U_k) \subset \{y_1 > 0\}$ und
+    $\phi_k(\partial\Omega \cap U_k) \subset \{y_1 = 0\}$, sodass
+    $\partial\Omega \subset \bigcup_{k=1}^N U_k$.
+    Dabei sind die $\phi_k$ \begriff{$\C^{m+2}_b$-Dif"|feomorphismen}, d.\,h.
+    $\phi_k$ ist bijektiv und $\phi_k, \phi_k^{-1} \in \C^{m+2}_b(\real^n)$.
+    Definiert man $U_0 := \Omega$, so gilt $\overline{\Omega} \subset \bigcup_{k=0}^N U_k$.
+    
+    Wegen $\norm{u}_{L^2(\Omega)} \le C(\Omega, a) \norm{\nabla u}_{L^2(\Omega)} \le
+    C'(\Omega, a) \norm{f}_{L^2(\Omega)}$ reicht es aus, die Normen
+    $\norm{\partial_x^\alpha u}_{L^2(\Omega)}$ der höheren Ableitungen mit
+    $2 \le |\alpha| \le m + 2$ nach $\norm{f}_{H^m(\Omega)} + \norm{u}_{H^1(\Omega)}$
+    abzuschätzen.
+    
+    Es gibt eine \begriff{Partition der Eins}, d.\,h.
+    $\forall_{k=0,\dotsc,N} \exists_{\eta_k \in \C^\infty_c(U_k)}\;
+    \eta_k \ge 0$ und $\sum_{k=0}^N \eta_k = 1$ auf $\overline{\Omega}$.
+    Definiert man $u_k := \eta_k u$ für $k = 0, \dotsc, N$, so gilt
+    $\sum_{k=0}^N u_k = u$ in $\Omega$ und $u_k \in H^1_0(\Omega)$ mit
+    $\norm{u_k}_{H^1(\Omega)} \le C \norm{u}_{H^1(\Omega)}$.
+    Hat man die Abschätzung für alle $u_k$ bewiesen, dann gilt\\
+    $\norm{\partial_x^\alpha u}_{L^2(\Omega)}
+    \le \sum_{k=0}^N \norm{\partial_x^\alpha u_k}_{L^2(\Omega)}
+    \le \sum_{k=0}^N C' (\norm{f}_{H^m(\Omega)} + \norm{u_k}_{H^1(\Omega)})
+    \le C'' (\norm{f}_{H^m(\Omega)} + \norm{u}_{H^1(\Omega)})$.
+    Daher reicht es, die Abschätzung nur für $u_k$, $k = 0, \dotsc, N$ zu zeigen.
+%     
+%     Wenn man $u_k$ außerhalb von $\supp \eta_k$ durch $0$ fortsetzt, so ist
+%     $u_0 \in H^1(\real^n)$ die schwache Lösung von $-\div(a \nabla u_k) = f_k$ in $\real^n$
+%     mit $f_k := \eta_k f + a \nabla u \nabla \eta_k + \div(au \nabla \eta_k)$, weil\\
+%     $-\div(a \nabla u_k) = -\div(a \nabla (\eta_k u)) =
+%     -\div(a (\eta_k \nabla u + u \nabla \eta_k))$\\
+%     $= -\eta_k \div(a \nabla u) + a \nabla u \nabla \eta_k + \div(au \nabla \eta_k)
+%     = -\eta_k f + a \nabla u \nabla \eta_k + \div(au \nabla \eta_k) = f_k$.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Durch Kombination des Satzes von Lax-Milgram,
+    des elliptischen $L^2$-Regularitäts"-satzes und
+    des Sobolevschen Einbettungssatzes erhält man die Existenz von klassischen Lösungen
+    des elliptischen Dirichlet-Problems, falls $f \in H^m(\Omega)$ und $m = m(n) \in \natural$
+    hinreichend groß ist.
+    Für $m = \infty$ ist die Lösung unendlich oft dif"|ferenzierbar,
+    d.\,h. $u \in \C^\infty(\Omega)$.
+    Man kann die Beweis-Strategie auch verallgemeinern, sodass man unendlich oft dif"|ferenzierbare
+    Lösungen des Eigenwertproblems für den Laplace-Operator erhält.
+\end{Bem}
+
+\begin{Bem}
+    Man kann die elliptische $L^2$-Regularitätstheorie zur
+    elliptischen $L^p$-Regularitäts"-theorie für $p \in (1, \infty)$ verallgemeinern.
+    Diese Verallgemeinerung heißt \begriff{\name{Calderón}-\name{Zygmund}\-Theorie} und
+    man bekommt dann Abschätzungen der $W^{m,p}$-Normen von $u$ gegen $f$.
+\end{Bem}
+
+\pagebreak

@@ -1,0 +1,72 @@
+\section{%
+    Dif"|ferentiation und Integration in Banachräumen%
+}
+
+\subsection{%
+    \name{Gâteaux}- und \name{Fréchet}-Ableitung%
+}
+
+\begin{Def}{\name{Gâteaux}-Dif"|ferenzierbarkeit}
+    Seien $(X, \norm{\cdot}_X)$ und $(Y, \norm{\cdot}_Y)$ Banachräume,
+    $U \subset X$ of"|fen, $x \in U$ und $F\colon X \rightarrow Y$ eine Abbildung.
+    Dann heißt $F$ \begriff{\name{Gâteaux}-dif"|ferenzierbar} in $x$,
+    falls die \begriff{\name{Gâteaux}-Ableitung} $DF(x)[v]$
+    an der Stelle $x$ in Richtung $v$ für alle $v \in X$ existiert, wobei\\
+    $DF(x)[v] := \lim_{h \to 0} \frac{F(x + hv) - F(x)}{h}$ mit $h \in \real$.
+\end{Def}
+
+\begin{Def}{\name{Fréchet}-Dif"|ferenzierbarkeit}
+    $F$ heißt \begriff{\name{Fréchet}-dif"|ferenzierbar} in $x$, falls die\\
+    \begriff{\name{Fréchet}-Ableitung} $JF(x) \in \Lin(X, Y)$
+    an der Stelle $x$ existiert, wobei\\
+    $\lim_{h \to 0} \frac{\norm{F(x + h) - F(x) - JF(x)[h]}_Y}{\norm{h}_X} = 0$ mit $h \in X$.
+\end{Def}
+
+\begin{Bem}
+    Gâteaux- und Fréchet-Ableitung verallgemeinern die Richtungsableitung bzw. totale Ableitung
+    aus der reellen Dif"|ferentialrechnung.
+    Für $X = \real$ gilt $JF(x) = DF(x)[1]$,
+    d.\,h. $JF(x)[v] = v \cdot DF(x)[1]$ für alle $v \in \real$.
+    Mithilfe von Gâteaux- und Fréchet-Ableitung lassen sich zentrale Sätze aus der
+    reellen Dif"|ferentialrechnung
+    (z.\,B. der Satz von Taylor, der Satz über implizite Funktionen und die Sätze über die
+    Berechnung von Extremstellen ohne oder mit Nebenbedingungen)
+    auf den Fall von Banachräumen verallgemeinern.
+\end{Bem}
+
+\subsection{%
+    \name{Riemann}-Integrale in Banachräumen
+}
+
+\begin{Def}{\name{Riemann}-Summe}
+    Seien $(X, \norm{\cdot}_X)$ ein Banachraum, $a < b$ und
+    $f\colon [a, b] \rightarrow X$ eine Abbildung.
+    Seien außerdem $P = \{x_0, \dotsc, x_n\}$
+    mit $a = x_0 < \dotsb < x_n = b$ eine \begriff{Partition} des Intervalls $[a, b]$
+    und $\xi = (\xi_1, \dotsc, \xi_n)$ \begriff{Stützstellen}
+    mit $\xi_k \in [x_{k-1}, x_k]$ für alle $k = 1, \dotsc, n$.
+    Dann heißt $S(f, P, \xi) := \sum_{k=1}^n (x_k - x_{k-1}) f(\xi_k)$
+    \begriff{\name{Riemann}-Summe} von $f$ zur Partition $P$ mit Stützstellen $\xi$.
+\end{Def}
+
+\begin{Def}{\name{Riemann}-integrierbar}
+    $f$ heißt \begriff{\name{Riemann}-integrierbar}, falls der Grenzwert\\
+    $\lim_{n \to \infty} S(f, P(n), \xi(n))$ für alle Folgen
+    $(P(n), \xi(n))_{n \in \natural}$ von Partitionen $P(n)$ und Stützstellen $\xi(n)$,
+    die $\lim_{n \to \infty} |P(n)| = 0$ erfüllen, existiert
+    und unabhängig von den Folgen ist
+    (dabei ist $|P| := \max_{k=1,\dotsc,n} (x_k - x_{k-1})$ die \begriff{Feinheit} der Partition
+    $P$).
+    In diesem Fall nennt man $\int_a^b f(x)\dx := \lim_{|P| \to 0} S(f, P, \xi)$
+    \begriff{\name{Riemann}-Integral} von $f$ von $a$ bis $b$.
+\end{Def}
+
+\begin{Bem}
+    Mithilfe dieses Integralbegrif"|fs lassen sich zentrale Sätze aus der reellen
+    Integralrechnung auf den Fall von Banachräumen verallgemeinern, z.\,B. gilt:
+    Jede stetige Funktion $f\colon [a, b] \rightarrow X$ ist Riemann-integrierbar.
+    Außerdem kann man den lokalen Existenz- und Eindeutigkeitssatz von Picard-Lindelöf auf
+    den Fall von gewöhnlichen Dif"|ferentialgleichungen mit Werten in Banachräumen verallgemeinern.
+\end{Bem}
+
+\pagebreak

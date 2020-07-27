@@ -1,0 +1,605 @@
+\section{%
+    Die \textsc{Jordan}sche Normalform%
+}
+
+\subsection{%
+    Der Satz von \textsc{Cayley}-\textsc{Hamilton}%
+}
+
+\begin{Satz}{Teilen von charakteristischen Polynomen}
+    Seien $V$ ein endlich-dimensionaler $K$-Vektor"-raum, $f \in \End_K(V)$,
+    $U$ ein $f$-invarianter Unterraum und $\widehat{f}$ die Einschränkung
+    von $f$ auf $U$. \\
+    Dann teilt das charakteristische Polynom der Einschränkung $\widehat{f}$
+    das von $f$:
+    $\chi_{\widehat{f}}(t) \;|\; \chi_f(t)$.
+\end{Satz}
+
+\begin{Bem}
+    Man kann Endomorphismen in Polynome über $K$ einsetzen und erhält
+    wieder Endomorphismen:
+    Ist $p(t) = \sum \alpha_i t^i \in K[t]$ und $f \in \End_K(V)$,
+    so ist $p(f) = \sum \alpha_i f^i \in \End_K(V)$. \\
+    Für $p(t), q(t) \in K[t]$ gilt $(pq)(f) = p(f) \circ q(f)$.
+\end{Bem}
+
+\begin{Def}{zyklischer Unterraum}
+    Sei $x \in V$. \\
+    Dann heißt $W = \aufspann{x, f(x), f^2(x), \dotsc}$
+    der \begriff{von $x$ erzeugte $f$-zyklische Unterraum} von $V$.
+\end{Def}
+
+\begin{Lemma}{über zyklische Unterräume}
+    Es gilt $W = \{(p(f))(x) \;|\; p \in K[t]\}$. \\
+    Der von $x$ erzeugte $f$-zyklische Unterraum $W$ ist $f$-invariant. \\
+    $W$ ist der kleinste $f$-invariante Unterraum von $V$, der $x$ enthält.
+\end{Lemma}
+
+\begin{Satz}{Basis des zyklischen Unterraums}
+    Seien $f \in \End_K(V)$, $W$ der von $x \in V$ erzeugte $f$-zyklische
+    Unterraum von $V$ und $k = \dim_K W \ge 1$ (d.\,h. $x \not= 0$). \\
+    Dann ist $\basis{B}_W = (x, f(x), f^2(x), \dotsc, f^{k-1}(x))$ eine
+    Basis von $W$.
+\end{Satz}
+
+\begin{Bem}
+    Es gibt $\alpha_0, \dotsc, \alpha_{k-1} \in K$, sodass
+    $f^k(x) = -\alpha_0 x - \alpha_1 f(x) - \dotsb -
+    \alpha_{k-1} f^{k-1}(x)$. \\
+    Ist $\widetilde{f} = f|_W$, so ist
+    $\matrixm_{\widetilde{f}}(\basis{B}_W) =$
+    \matrixsize{$\begin{pmatrix}0 & \cdots & 0 & -\alpha_0 \\
+    1 & & 0 & -\alpha_1 \\ \vdots & \ddots & \vdots & \vdots \\
+    0 & \cdots & 1 & -\alpha_{k-1}\end{pmatrix}$} \\
+    die \begriff{Begleitmatrix} des Polynoms
+    $p(t) = \alpha_0 + \alpha_1 t + \dotsb + \alpha_{k-1} t^{k-1} + t^k$.
+\end{Bem}
+
+\begin{Satz}{charakteristisches Polynom der Einschränkung}
+    Seien die Bezeichnungen wie eben und
+    $f^k(x) = -\alpha_0 x - \alpha_1 f(x) - \dotsb - \alpha_{k-1}(x) f^{k-1}$.
+    Dann ist das charakteristische Polynom von $\widetilde{f} = f|_W$
+    gegeben durch
+    $\chi_{\widetilde{f}}(t) = \alpha_0 + \alpha_1 t + \dotsb +
+    \alpha_{k-1} t^{k-1} + t^k$.
+\end{Satz}
+
+\begin{Def}{erfüllt}
+    Seien $f \in \End_K(V)$ und $p(t) \in K[t]$.
+    Dann \begriff{erfüllt $f$ das Polynom $p(t)$}, falls
+    $p(f) \equiv 0$.
+\end{Def}
+
+\begin{Satz}{\textsc{Cayley}-\textsc{Hamilton}}
+    Seien $f \in \End_K(V)$ und $V$ endlich-dimensional. \\
+    Dann erfüllt $f$ sein charakteristisches Polynom $\chi_f(t)$.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Verallgemeinerte Eigenräume%
+}
+
+\begin{Def}{\textsc{Jordan}-Block/-Form}
+    \matrixsize{$J_\lambda(k) = \begin{pmatrix}\lambda & 1 & 0 & \cdots & 0 \\
+    0 & \lambda & 1 & & 0 \\ \vdots & & \ddots & \ddots & \vdots \\
+    0 & 0 & & \lambda & 1 \\ 0 & 0 & \cdots & 0 & \lambda\end{pmatrix}$},
+    \qquad
+    \matrixsize{$\begin{pmatrix}J_1 & 0 & \cdots & 0 & 0 \\
+    0 & J_2 & & 0 & 0 \\ \vdots & & \ddots & & \vdots \\
+    0 & & & J_{k-1} & 0 \\ 0 & 0 & \cdots & 0 & J_k\end{pmatrix}$} \\
+    Eine $k \times k$-Matrix der Form $J_\lambda(k)$
+    heißt \begriff{\textsc{Jordan}-Block}. \\
+    Eine Matrix heißt in
+    \begriff{\textsc{Jordan}-Form} oder
+    \begriff{\textsc{Jordan}sche Normalform}, wenn sie in der Form
+    wie oben rechts ist mit $J_i = J_{\lambda_i}(k_i)$ für $i = 1, \dotsc, k$,
+    wobei die $\lambda_i$ die (nicht notwendigerweise verschiedenen) Eigenwerte
+    von $A$ sind und $k_i \in \natural$ ist.
+\end{Def}
+
+\begin{Def}{\textsc{Jordan}-Basis}
+    Seien $V$ ein endlich-dimensionaler Vektorraum und $f \in \End_K(V)$,
+    wobei das charakteristische Polynom $\chi_f(t)$ in Linearfaktoren
+    zerfällt. \\
+    Eine \begriff{\textsc{Jordan}-Basis} von $f$ ist eine Basis
+    $\basis{B}_f$ von $V$, sodass $\matrixm_f(\basis{B}_f)$ in Jordanform
+    ist.
+\end{Def}
+
+\begin{Def}{verallgemeinerter Eigenraum}
+    Seien $f \in \End_K(V)$, $V$ endlich-dimensional und $\lambda \in K$.
+    Dann ist $\ker(f - \ell_\lambda) \ur \ker(f - \ell_\lambda)^2 \ur \dotsb
+    \ur \ker(f - \ell_\lambda)^i \ur \dotsb$ eine aufsteigende Kette
+    von Unterräumen von $V$, die terminiert
+    (d.\,h. es gibt $k \in \natural$, sodass
+    $\ker(f - \ell_\lambda)^{n+i} = \ker(f - \ell_\lambda)^n$ für alle
+    $i \in \natural$).
+    Daher ist $\mathcal{V}_\lambda(f) = \bigcup_{i=1}^\infty
+    \ker(f - \ell_\lambda)^i$ ein wohldefinierter Unterraum von $V$.
+    $\mathcal{V}_\lambda(f)$ heißt \begriff{verallgemeinerter Eigenraum}
+    zum Eigenwert $\lambda$ von $f$ und seine Elemente heißen
+    \begriff{verallgemeinerte Eigenvektoren} von $f$.
+    Also gilt $\mathcal{V}_\lambda(f) = \{v \in V \;|\;
+    \exists_{p \in \natural}\; (f - \ell_\lambda)^p(v) = 0\}$. \\
+    Analog kann man auch für quadratische Matrizen $\mathcal{V}_\lambda(A)$
+    definieren.
+\end{Def}
+
+\begin{Bem}
+    Sei $\matrixm_f(\basis{B}_f) = J_\lambda(n)$.
+    Dann ist $V_\lambda(f)$ ein- und $\mathcal{V}_\lambda(f)$ $n$-dimensional.
+    Ist $\basis{B}_f = (v_1, \dotsc, v_n)$, so ist $v_1 \in V_\lambda(f)$ der
+    bis auf skalare Vielfache eindeutig bestimmte Eigenvektor von $f$ mit
+    Eigenwert $\lambda$ und $\basis{B}_f$ ist die \begriff{zyklische Basis} des
+    von $v_n$ erzeugten $f - \ell_\lambda$-zyklischen Unterraums von $V$.
+\end{Bem}
+
+\begin{Satz}{$\mathcal{V}_\lambda(f)$ ist $f$-invarianter Unterraum}
+    Sei $\lambda$ ein Eigenwert von $f \in \End_K(V)$. \\
+    Dann ist $\mathcal{V}_\lambda(f)$ ein $f$-invarianter Unterraum von $V$,
+    der den Eigenraum $V_\lambda(f)$ enthält.
+\end{Satz}
+
+\begin{Def}{Zykel}
+    Seien $\lambda$ ein Eigenwert von $f \in \End_K(V)$, $v$ ein
+    verallgemeinerter Eigenvektor zu $\lambda$
+    (d.\,h. $v \in \mathcal{V}_\lambda(f)$)
+    und $p \in \natural$ die kleinste
+    natürliche Zahl, sodass $(f - \ell_\lambda)^p(v) = 0$. \\
+    Dann ist $\basis{B} = ((f - \ell_\lambda)^{p-1}(v),
+    (f - \ell_\lambda)^{p-2}(v), \dotsc, (f - \ell_\lambda)(v), v)$
+    eine Basis des von $v$ erzeugten $f - \ell_\lambda$-zyklischen Unterraums
+    von $V$. \\
+    $\basis{B}$ ist \begriff{der von $v$ erzeugte Zykel verallgemeinerter
+    Eigenvektoren von $f$} oder kurz \begriff{$\lambda$-Zykel von $f$}.
+    $v$ heißt der \begriff{Anfangsvektor} und $(f - \ell_\lambda)^{p-1}(v)$
+    der \begriff{Endvektor} des Zykels.
+\end{Def}
+
+\begin{Satz}{Eigenschaften von Anfangs-/Endvektor}
+    Sei $\basis{B}$ ein $\lambda$-Zykel von $f$. \\
+    Dann ist $\basis{B}$ eine Basis des vom Anfangsvektor erzeugten
+    $f - \ell_\lambda$-zyklischen Unterraums $W$ von $V$ und dieser
+    ist $f$-invariant.
+    Die Einschränkung von $f$ auf $W$ besitzt genau einen eindimensionalen
+    Eigenraum und dieser wird vom Endvektor des Zykels $\basis{B}$ erzeugt.
+    Es gilt $\enmatrix{f|_W}{B} = J_\lambda(p)$.
+\end{Satz}
+
+\begin{Satz}{Jordanbasis $\;\Leftrightarrow\;$
+             disjunkte Vereinigung von Zykeln}
+    Sei $\basis{B}$ eine geordnete Basis von $V$. \\
+    Dann ist $\basis{B}$ eine Jordanbasis von $f$ genau dann, wenn
+    $\basis{B}$ eine disjunkte Vereinigung von Zykeln verallgemeinerter
+    Eigenvektoren von $f$ ist.
+\end{Satz}
+
+\begin{Satz}{$V$ ist direkte Summe der verallgemeinerten Eigenräume}
+    Sei $f \in \End_K(V)$, wobei $\chi_f(t)$ in Linearfaktoren zerfällt.
+    Dann ist $V$ die direkte Summe der verallgemeinerten Eigenräume
+    $V = \bigoplus_{\lambda} \mathcal{V}_\lambda(f)$, wobei $\lambda$
+    die Menge der Eigenwerte von $f$ durchläuft.
+\end{Satz}
+
+\begin{Kor}
+    Seien $\lambda_1, \dotsc, \lambda_k$ die paarweise verschiedenen
+    Eigenwerte von $f$,
+    $\basis{B}_i$ eine Basis von $\mathcal{V}_{\lambda_i}(f)$,
+    $\basis{B} = \bigcup_{i=1}^k \basis{B}_i$ und
+    $f_i$ die Einschränkung von $f$ auf $\mathcal{V}_{\lambda_{i}}(f)$. \\
+    Dann ist $\enmatrix{f}{B} =$ \matrixsize{%
+    $\begin{pmatrix}A_1 & & 0 \\ & \ddots & \\ 0 & & A_k\end{pmatrix}$},
+    wobei $A_i = \matrixm_{f_i}(\basis{B}_i)$ ist.
+\end{Kor}
+
+\subsection{%
+    Die \textsc{Jordan}sche Normalform: Algorithmus%
+}
+
+\begin{Bem}
+    Im Folgenden wird versucht, ein Algorithmus zur Bestimmung der
+    JNF und der zugehörigen Jordanbasis eines
+    Endomorphismus bzw. einer Matrix zu finden, wobei immer vorausgesetzt wird,
+    dass das charakteristische Polynom vollständig in Linearfaktoren
+    zerfällt. \\
+    Zur Einfachheit kann dank obiger Folgerung angenommen werden, dass
+    $\chi_f(t) = (t - \lambda)^n$, d.\,h. $f$ besitzt genau einen
+    Eigenwert $\lambda$ mit Vielfachheit $n$.
+\end{Bem}
+
+\begin{Lemma}{Kern-Dimensionen eines Jordanblocks}
+    Sei $J = J_\lambda(k)$ ein Jordanblock. \\
+    Dann ist $\dim_K \ker(J - \lambda E)^i = i$ für $i = 1, \dotsc, k$ und
+    $\dim_K \ker(J - \lambda E)^i = k$ für $i > k$.
+\end{Lemma}
+
+\begin{Lemma}{Bestimmung der Anzahl und
+              Größen der Jordanblöcke einer Matrix} \\
+    Seien $A$ eine Matrix in Blockdiagonalform, deren $s$ Diagonalblöcke
+    Jordanblöcke $J_i = J_\lambda(i)$ sind ($\lambda \in K$ fest),
+    sowie $n_i = \dim_K \ker(A - \lambda E)^i$ und $r \in \natural$,
+    sodass $n_{r - 1} < n_r = n_{r+1}$. \\
+    Sei außerdem $k_i \in \natural_0$ die Anzahl der vorkommenden Kästchen
+    $J_i$. \\
+    Dann ist $n_1 = k_1 + k_2 + k_3 + \dotsb + k_r$, \qquad
+    $n_2 = n_1 + k_2 + k_3 + \dotsb + k_r$, \\
+    $n_3 = n_2 + k_3 + \dotsb + k_r$, \quad \dots, \quad
+    $n_r = n_{r-1} + k_r$. \\
+    Insbesondere ist $n_i - n_{i-1} = k_i + k_{i+1} + \dotsb + k_r$ für
+    $i = 2, \dotsc, r$. \\
+    Daher lassen sich die $k_i$ rekursiv aus den $n_j$ ausrechnen.
+\end{Lemma}
+
+\begin{Prozedur}{Bestimmung der Jordanschen Normalform (1)} \\
+    Sei $A \in M_n(K)$, sodass $\chi_A(t)$ in Linearfaktoren zerfällt. \\
+    Dann kann folgendermaßen die Jordansche Normalform von $A$ bestimmt werden:
+    \begin{enumerate}
+        \item Man ermittelt die Eigenwerte von $A$.
+        Für jeden Eigenwert $\lambda \in K$ von $A$ werden die folgenden
+        Schritte durchgeführt:
+        
+        \item Man berechnet $n_i = \dim_K \ker(A - \lambda E)^i$ für
+        $i = 1, 2, \dotsc$.
+        Beim ersten $r$ mit $n_r = n_{r+1}$ bricht man ab, denn
+        die Dimensionen bleiben dann konstant.
+        
+        \item Man berechnet $l_i = n_i - n_{i-1}$ für $i = 1, \dotsc, r$,
+        wobei $n_0 = 0$.
+        
+        \item Man berechnet $k_i = l_i - l_{i+1}$ für $i = 1, \dotsc, r$,
+        wobei $l_{r+1} = 0$.
+        
+        \item Der Block der Jordanform von $A$, der zum Eigenwert $\lambda$
+        korrespondiert, ist die Blockdiagonalmatrix, bei der
+        $J_\lambda(i)$ genau $k_i$-mal als Diagonalblock auftritt.
+    \end{enumerate}
+\end{Prozedur}
+
+\begin{Prozedur}{Bestimmung der Jordanschen Normalform (2)} \\
+    Gegeben seien die $n_i$ wie eben.
+    Man malt ein Diagramm aus Kreuzen in der Ebene in einem Gitter
+    und zwar in die erste Zeile $l_1 = n_1$ Kreuze, in die zweite
+    $l_2 = n_2 - n_1$ und in die $i$-te Zeile
+    $l_i = n_i - n_{i-1}$ Kreuze. \\
+    Wegen $l_i = k_i + k_{i+1} + \dotsb + k_r$ erhält man eine abfallende
+    Folge natürlicher Zahlen, die sich mit $l_1 + l_2 + \dotsb + l_r =
+    (n_1 - 0) + (n_2 - n_1) + \dotsb + (n_r - n_{r-1}) = n_r$ gerade zu
+    $n_r = \dim_K \mathcal{V}_\lambda(A)$ aufsummieren. \\
+    Die Spalten des entstehenden Diagramms geben dann gerade
+    die $\lambda$-Zyklen wieder:
+    Eine Spalte mit $k$ Kreuzen entspricht einem Jordanblock $J_\lambda(k)$
+    der Größe $k$ von $A$. \\
+    Das Diagramm heißt \begriff{\textsc{Young}-Diagramm}
+    zur Partition $l_1 \ge \dotsb \ge l_r$ von $n_r$ oder
+    $\lambda$-Diagramm von $A$ und wird mit $\mathfrak{D}_\lambda$
+    bezeichnet. \\
+    Im Diagramm entsprechen den untersten/obersten Spitzen der Spalten
+    die Anfangs-/Endvekto"-ren der $\lambda$-Zykeln.
+\end{Prozedur}
+
+\begin{Def}{linear unabhängig modulo $U$}
+    Seien $U \ur V$ und $y_1, \dotsc, y_s \in V$.
+    Dann sind die $y_i$ linear unabhängig modulo $U$, falls die
+    Nebenklassen $y_1 + U, \dotsc, y_s + U$ in $V/U$ linear unabhängig sind,
+    d.\,h. ist $\sum_{i=1}^s \lambda_i y_i \in U$ mit
+    $\lambda_1, \dotsc, \lambda_s \in K$, dann ist
+    $\lambda_1 = \dotsb = \lambda_s = 0$. \\
+    Sind $y_1, \dotsc, y_s$ linear unabhängig modulo $U$, so sind sie
+    linear unabhängig in $V$.
+    Die Umkehrung gilt nicht.
+\end{Def}
+
+\begin{Satz}{Vereinigung von Zykeln ist linear unabhängig}
+    Seien $f \in \End_K(V)$ und $\lambda \in K$ ein Eigenwert von $f$.
+    Für $i = 1, \dotsc, s$ seien $\lambda$-Zyklen $Z_i$ von $f$ mit derselben
+    Länge $t$ gegeben, wobei $y_i$ der Anfangsvektor von $Z_i$ ist. \\
+    Ist die Menge der Anfangsvektoren $\{y_1, \dotsc, y_s\}$ linear
+    unabhängig modulo $\ker(f - \ell_\lambda)^{t-1}$, so ist
+    $Z = \bigcup_{i=1}^s Z_i$ ebenfalls linear unabhängig. \\
+    Insbesondere ist daher die Summe der von den $Z_i$ aufgespannten
+    Unterräume direkt.
+\end{Satz}
+
+\begin{Kor}
+    Seien wie eben $y_1, \dotsc, y_s \in \ker(f - \ell_\lambda)^t$, deren
+    Restklassen im Faktorraum \\
+    $\ker(f - \ell_\lambda)^t / \ker(f - \ell_\lambda)^{t-1}$ linear
+    unabhängig sind. \\
+    Dann sind die von den $y_i$ erzeugten $\lambda$-Zykel paarweise
+    disjunkt.
+\end{Kor}
+
+\begin{Lemma}{höhere Kerne bleiben gleich}
+    Sei $\mathcal{N}_i = \ker(f - \ell_\lambda)^i$. \\
+    Gilt $\mathcal{N}_r = \mathcal{N}_{r+1}$, so gilt
+    $\mathcal{N}_r = \mathcal{N}_{r+i}$ für alle $i \in \natural$.
+\end{Lemma}
+
+\begin{Prozedur}{Bestimmung der Jordanbasis} \\
+    Sei $f \in \End_K(V)$, sodass $\chi_f(t)$ in Linearfaktoren zerfällt. \\
+    Dann kann folgendermaßen die Jordansche Normalform von
+    $f$ bestimmt werden:
+    \begin{enumerate}
+        \item
+        Sei $r \in \natural$ minimal mit $\mathcal{N}_r = \mathcal{N}_{r+1}$
+        (Anzahl der Zeilen im $\lambda$-Diagramm).
+        Man ergänzt eine Basis von $\mathcal{N}_{r-1}$ mit
+        $y_1, \dotsc, y_{k_r}$  zu einer Basis von $\mathcal{N}_r$.
+        
+        \item
+        Im $\lambda$-Diagramm ordnet man der $i$-ten Spalte von unten nach
+        oben den Kreuzen die Elemente
+        $y_i, (f - \ell_\lambda)(y_i), \dotsc, (f - \ell_\lambda)^{r-1}(y_i)$
+        für $i = 1, \dotsc, k_r$ zu.
+        Die Vektoren einer Spalte bilden dann einen $\lambda$-Zykel von $f$.
+        Sei $U_1$ die Summe der von diesen $\lambda$-Zykeln aufgespannten
+        Unterräumen, dann bilden die $(f - \ell_\lambda)^k y_i$
+        mit $i = 1, \dotsc, k_r$ und $k = 1, \dotsc, r$ eine Basis von $U_1$.
+        
+        \item
+        Die nächste, also die $k_r + 1$-te Spalte ist kürzer als die
+        vorherigen.
+        Sei sie von der Länge $t$ und $k_t$ die Anzahl der Spalten dieser
+        Länge.
+        Es gibt $k_t$ Basiselemente in einem Komplement von
+        $(U_1 \cap \mathcal{N}_t) + \mathcal{N}_{t-1}$ in $\mathcal{N}_t$
+        und nehmen wie eben die davon erzeugten $\lambda$-Zyklen von $f$.
+        Diese erzeugen $U_2$ und sind eine Basis von $U_2$.
+        
+        \item
+        Die nächste, also die $k_r + k_t + 1$-te Spalte ist kürzer als die
+        vorherigen.
+        Sei sie von der Länge $w$ und $k_w$ die Anzahl der Spalten dieser
+        Länge.
+        Es gibt $k_w$ Basiselemente in einem Komplement
+        von $((U_1 + U_2) \cap \mathcal{N}_w) + \mathcal{N}_{w-1}$
+        in $\mathcal{N}_w$
+        und nehmen wie eben die davon erzeugten $\lambda$-Zyklen von $f$.
+        Diese erzeugen $U_3$ und sind eine Basis von $U_3$.
+        
+        \item
+        Man fährt so fort, bis man eine Basis von ganz
+        $\mathcal{V}_\lambda(f)$ konstruiert hat.
+        Jedem Kreuz im $\lambda$-Diagramm ist nun genau ein Basiselement
+        zugeordnet.
+        Diese werden nun spaltenweise (und von oben nach unten)
+        durchnummeriert und bilden dann die Jordanbasis.
+    \end{enumerate}
+\end{Prozedur}
+
+\begin{Def}{Fahne, angepasst}
+    Sei $V$ ein $K$-Vektorraum.
+    Eine \begriff{Fahne} der Länge $k$ in $V$ ist eine aufsteigende
+    Kette $\mathcal{F}: (0) = U_0 \ur U_1 \ur \dotsb \ur U_k \ur V$ von
+    Unterräumen $U_i$ von $V$. \\
+    Eine Basis $\basis{B} = (v_1, \dotsc, v_n)$ von $V$ heißt
+    \begriff{an $\mathcal{F}$ angepasst}, falls
+    $(v_1, \dotsc, v_{m_i})$ eine Basis von $U_i$ ist, wobei
+    $m_i = \dim_K U_i$ ist.
+\end{Def}
+
+Die Unterräume $\ker(f - \ell_\lambda)^i$ von $\mathcal{V}_\lambda(f)$
+sind ein Beispiel von Fahnen, wobei die zugehörige Jordanbasis angepasst ist.
+
+\begin{Lemma}{Eigenwerte und charakteristisches Polynom von
+             nilpotenten/unipotenten Matrizen} \\
+    Eine nilpotente Matrix $A \in M_n(K)$ kann nur $0$ als Eigenwert haben,
+    d.\,h. $\chi_A(t) = t^n$. \\
+    Ist $A$ unipotent, dann muss für jeden Eigenwert $\lambda^k = 1$ gelten,
+    d.\,h. $\lambda$ ist eine $k$-te Einheitswurzel.
+    Also ist $\chi_A(t) = \prod_{i=1}^n (t - \zeta_i)$ mit $\zeta_i^k = 1$.
+\end{Lemma}
+
+\begin{Lemma}{binomischer Lehrsatz im Ring}
+    Seien $R$ ein Ring und $a, b \in R$ mit $ab = ba$. \\
+    Dann gilt $(a + b)^n = \sum_{i=0}^n \binom{n}{i} a^i b^{n-i}$.
+    Ist zusätzlich eines der beiden Ringelemente nilpotent, so lässt
+    sich die Summe einfach auswerten.
+\end{Lemma}
+
+\begin{Lemma}{Jordanform ist Summe einer Diagonalmatrix und einer
+              nilpotenten Matrix} \\
+    Sei $A \in M_n(K)$ in Jordanform.
+    Dann ist $A = D + N$ mit $DN = ND$, wobei $D$ eine Diagonalmatrix und
+    $N$ eine nilpotente Matrix ist.
+\end{Lemma}
+
+\begin{Lemma}{ähnliche Matrizen zu nilpotenter Matrix sind nilpotent} \\
+    Seien $A, N \in M_n(K)$ ähnlich, wobei $N$ nilpotent (unipotent) ist. \\
+    Dann ist $A$ ebenfalls nilpotent (unipotent).
+\end{Lemma}
+
+\begin{Satz}{Jordanzerlegung}
+    Sei $A \in M_n(K)$, sodass $\chi_A(t)$ in Linearfaktoren zerfällt. \\
+    Dann ist $A = S + N$ mit $SN = NS$, wobei $S$ eine diagonalisierbare
+    und $N$ eine nilpotente Matrix ist.
+    Diese Zerlegung heißt \begriff{Jordanzerlegung} von $A$.
+\end{Satz}
+
+\subsection{%
+    Das Minimalpolynom%
+}
+
+\begin{Def}{Ideal}
+    Sei $R$ ein Ring (oder eine $K$-Algebra).
+    Eine nicht-leere Teilmenge $I \subseteq R$ heißt \begriff{Rechtsideal},
+    falls $a - b \in I$ und $ar \in I$ für alle $a, b \in I$, $r \in R$ ist.
+    Gilt $a - b \in I$ und $ra \in I$ für alle $a, b \in I$, $r \in R$,
+    so heißt I \begriff{Linksideal}. \\
+    Ein \begriff{(zweiseitiges) Ideal} ist eine nicht-leere Teilmenge
+    $I \subseteq R$, die zugleich Links- und Rechtsideal ist.
+    In diesem Fall schreibt man $I \trianglelefteq R$.
+\end{Def}
+
+\begin{Bem}
+    Es gilt $0 \cdot i = 0 \in I$ für jedes Ideal.
+    Sind $a, b \in I$, so ist auch $a + b \in I$, da $0 - b = -b \in I$ ist.
+    Jedes Ideal $I \trianglelefteq R$ ist auch ein Ring, indem man die
+    Addition und Multiplikation von $R$ auf $I$ einschränkt.
+    Ist $J \trianglelefteq R$ und $J \subseteq I$, so ist
+    $J \trianglelefteq I$.
+    Ist $R$ ein kommutativer Ring, so sind Ideale, Links- und Rechtsideale
+    dasselbe.
+\end{Bem}
+
+\begin{Def}{Faktorring}
+    Seien $R$ ein Ring und $I \trianglelefteq R$ ein Ideal. \\
+    Dann wird durch $r \sim s \;\Leftrightarrow\; r - s \in I$
+    für $r, s \in R$ auf $R$ eine Äquivalenzrelation definiert. \\
+    Die Äquivalenzklasse von $r \in R$ heißt $r + I$ und
+    die Menge der Äquivalenzklassen mit \\
+    $R/I = \{r + I \;|\; r \in R\}$.
+    $R/I$ wird zum Ring durch
+    $(r + I) + (s + I) = (r + s) + I$ und
+    $(r + I) \cdot (s + I) = (r \cdot s) + I$
+    und heißt \begriff{Faktorring}. \\
+    Die natürliche Projektion $\pi: R \rightarrow R/I$, $\pi(r) = r + I$
+    ist ein Ringhomomorphismus.
+\end{Def}
+
+\begin{Lemma}{Kern von Ringhomomorphismen}
+    Sei $f: R \rightarrow S$ ein Ringhomomorphismus. \\
+    Dann ist $\ker f \trianglelefteq R$ und $f$ ist injektiv genau dann,
+    wenn $\ker f = (0)$.
+\end{Lemma}
+
+\begin{Satz}{Isomorphiesätze für Ringe}
+    \begin{enumerate}
+        \item
+        Seien $f: R \rightarrow S$ ein Ringhomomorphismus
+        und $I \trianglelefteq R$ ein Ideal mit $I \subseteq \ker f$.
+        Dann gibt es genau einen Ringhomomorphismus $\widetilde{f}$, sodass
+        $f = \widetilde{f} \circ \pi$.
+        Es gilt $\widetilde{f}: R/I \rightarrow S$,
+        $\widetilde{f}(r + I) = f(r)$.
+        Mit $I = \ker f$ gilt insbesondere, dass $R/\ker f$ isomorph
+        zu $\im f$ ist.
+        
+        \item
+        Seien $R$ ein Ring und $I, J \trianglelefteq R$ zwei Ideale.
+        Dann sind $I \cap J$ und \\
+        $I + J = \{i + j \;|\; i \in I\;, j \in J\}$
+        ebenfalls Ideale von $R$ und es gilt
+        $I/(I \cap J) \cong (I + J)/J$.
+        
+        \item
+        Seien $R$ ein Ring und $I, J, K \trianglelefteq R$ drei Ideale
+        mit $K \subseteq J \subseteq I$. \\
+        Dann ist $I/J \cong (I/K)/(J/K)$.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bem}
+    Jeder Kern eines Ringhomomorphismus ist ein Ideal.
+    Jedes Ideal $I \trianglelefteq R$ ist Kern eines Ringhomomorphismus,
+    nämlich der von $\pi: R \rightarrow R/I$.
+    Also sind Ideale genau die Kerne von Ringhomomorphismen.
+\end{Bem}
+
+\pagebreak
+
+\begin{Def}{Verschwindungsideal}
+    Sei $V$ ein endlich-dimensionaler Vektorraum und $f \in \End_K(V)$.
+    Dann ist
+    $\mathcal{I}_f = \{p(t) \in K[t] \;|\; p(f) \equiv 0\}$
+    ein Ideal von $K[t]$ und wird \begriff{Verschwindungsideal} genannt.
+\end{Def}
+
+\begin{Satz}{Polynomdivision}
+    Seien $h, g \in K[t]$ Polynome mit $\deg g \le \deg h$.
+    Dann gibt es Polynome $q, r \in K[t]$ mit $\deg r < \deg g$, sodass
+    $h = gq + r$ ist.
+    Das Polynom $r$ ist der Rest bei der Polynomdivision.
+\end{Satz}
+
+\begin{Def}{normiert}
+    Ein Polynom $g(t) \in K[t]$ heißt \begriff{normiert}, falls der
+    \begriff{führende Koef"|fizient}
+    (also der nicht-verschwindende Koef"|fizient
+    bei der höchsten Potenz) gleich $1$ ist.
+\end{Def}
+
+\begin{Satz}{Ideale des Polynomrings}
+    Seien $I \trianglelefteq K[t]$ ein Ideal mit $I \not= (0)$ und
+    $p \in I$ ein nicht-triviales Polynom minimalen Grades in $I$.
+    Dann ist $I = p K[t]$ und es gilt
+    $I = r K[t] \;\Leftrightarrow\; r = \beta p$, wenn $r \in K[t]$ und
+    $\beta \in K$ mit $\beta \not= 0$ ist.
+\end{Satz}
+
+\begin{Def}{Erzeuger, Hauptideal}
+    Es gibt genau ein normiertes Polynom $q \in I$, sodass $I = q K[t]$ ist.
+    $q$ heißt \begriff{normierter Erzeuger} von $I$.
+    Ideale, die von einem Element erzeugt werden, heißen \begriff{Hauptideale}.
+\end{Def}
+
+\begin{Bem}
+    Der Satz sagt also aus, dass alle Ideale von $K[t]$ Hauptideale sind.
+\end{Bem}
+
+\begin{Def}{Minimalpolynom}
+    Sei $f \in \End_K(V)$.
+    Das eindeutig bestimmte normierte Polynom kleinsten Grades
+    in $\mathcal{I}_f$ heißt \begriff{Minimalpolynom} von $f$ und wird
+    mit $\mu_f(t)$ bezeichnet. \\
+    Analog ist das Minimalpolynom $\mu_A(t)$ einer Matrix $A \in M_n(K)$
+    definiert.
+\end{Def}
+
+\begin{Kor}
+    Sei $p \in K[t]$ ein Polynom mit $p(f) \equiv 0$.
+    Dann gibt es $q \in K[t]$, sodass \\
+    $p(t) = q(t) \cdot \mu_f(t)$ ist,
+    d.\,h. das Minimalpolynom $\mu_f(t)$ teilt $p$.
+    Insbesondere teilt das Minimalpolynom das charakteristische Polynom von
+    $f$.
+\end{Kor}
+
+\begin{Satz}{Minimalpolynome ähnlicher Matrizen gleich} \\
+    Die Minimalpolynome ähnlicher Matrizen stimmen überein. \\
+    Analog: Konjugierte Endomorphismen $f, g \in \End_K(V)$
+    (d.\,h. $f = h^{-1} g h$ für ein $h \in \Aut_K(V)$)
+    haben dasselbe Minimalpolynom.
+\end{Satz}
+
+\begin{Satz}{$\chi_f(t)$ und $\mu_f(t)$ haben dieselben Nullstellen}
+    Sei $f \in \End_K(V)$.
+    Dann ist $\lambda \in K$ eine Nullstelle von $\mu_f(t)$ genau dann,
+    wenn er Eigenwert von $f$ ist.
+    Also haben $\chi_f(t)$ und $\mu_f(t)$ dieselben Nullstellen.
+\end{Satz}
+
+\begin{Satz}{Minimalpolynome teilen sich}
+    Seien $f \in \End_K(V)$, wobei $\chi_f(t)$ in Linearfaktoren zerfalle,
+    $V = V_1 \oplus \dotsb \oplus V_k$ eine Zerlegung in $f$-invariante
+    Unterräume $V_i$ sowie $\mu_i$ das Minimalpolynom von der
+    Einschränkung $f_i$ von $f$ auf $V_i$ für $i = 1, \dotsc, k$. \\
+    Dann teilt $\mu_f(t)$ das Polynom $\prod_{i=1}^k \mu_i(t)$ und jedes
+    $\mu_i(t)$ teilt $\mu_f(t)$. \\
+    Insbesondere gilt $\mu_f(t) = \prod_{i=1}^k \mu_i(t)$, falls die
+    $\mu_i(t)$ paarweise teilerfremd sind.
+\end{Satz}
+
+\begin{Kor} \\
+    Sei $A = \diag\{J_1, \dotsc, J_k\}$ eine Blockdiagonalmatrix und
+    $\chi_A(t)$ zerfalle in Linearfaktoren. \\
+    Dann ist $\mu_A(t) = \prod_{i=1}^k \mu_{J_i}(t)$,
+    falls die $\mu_{J_i}(t)$ paarweise teilerfremd sind.
+\end{Kor}
+
+\begin{Satz}{Minimalpolynom bestimmen}
+    Sei $f \in \End_K(V)$ mit
+    $\chi_f(t) = (t - \lambda_1)^{n_1} \dotsm (t - \lambda_k)^{n_k}$,
+    wobei die $\lambda_i$ paarweise verschieden sind. \\
+    Dann ist $\mu_f(t) = (t - \lambda_1)^{m_1} \dotsm (t - \lambda_k)^{m_k}$,
+    wobei $m_i$ für $i = 1, \dotsc, k$
+    die kleinste natürliche Zahl $s \in \natural$ mit
+    $\ker(f - \ell_{\lambda_i})^s = \ker(f - \ell_{\lambda_i})^{s+1}$ ist
+    (d.\,h. die Größe des größten Jordanblocks zum Eigenwert $\lambda_i$). \\
+    Insbesondere ist $f$ diagonalisierbar genau dann, wenn
+    $\mu_f(t) = (t - \lambda_1) \dotsm (t - \lambda_k)$ ist.
+\end{Satz}
+
+\pagebreak

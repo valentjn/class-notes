@@ -1,0 +1,385 @@
+\section{%
+    Lineare Programmierung%
+}
+
+\subsection{%
+    Standardform%
+}
+
+\textbf{Diätproblem}:
+Eine Motivation der linearen Programmierung ist das Diätproblem
+(siehe "`Algorithmische Geometrie"').
+
+MaxFlow-, MinCostFlow- und Kürzester-Pfad-Probleme können als lineare Programme modelliert werden
+(z.\,B. für MaxFlow:
+Variablen $x_e$ für jede Kante $e$,
+maximiere $\sum_{e=(s,\cdot)} x_e$,
+NBen $\forall_{e \in E}\; 0 \le x_e \le \Cap(e)$ und
+$\forall_{v \in V}\; \sum_{e = (\cdot,v) \in E} x_e = \sum_{e = (v,\cdot) \in E} x_e$).
+
+\linie
+
+\textbf{Standardform eines linearen Programms}:
+Seien $A \in \real^{n \times d}$, $b \in \real^n$ und $c \in \real^d$.\\
+Gesucht ist $x \in \real^d$ mit $\max c^\tp x$, wobei $Ax \le b$.
+
+Es kann auch vorkommen, dass die \begriff{Zielfunktion} $c^\tp x$ minimiert werden soll
+(statt maximiert).
+Außerdem kann es \begriff{Nebenbedingungen} geben mit $(Ax)_i \ge b_i$ oder $(Ax)_i = b_i$.
+Weil aber diese Varianten leicht in obige Standardform überführt werden können,
+wird im Folgenden meist nur die Standardform betrachtet.
+
+\textbf{Zielbereich}:
+$\{x \in \real^d \;|\; Ax \le b\}$ heißt \begriff{Zielbereich},
+er enthält die \begriff{zulässigen Lösungen}.
+Jede Nebenbedingung definiert einen Halbraum $(Ax)_i \le b_i$, der durch die Hyperebene
+$(Ax)_i = b_i$ begrenzt wird.
+Der Zielbereich ist stets konvex (aber nicht notwendigerweise nicht-leer oder beschränkt).
+Genauer ist der Zielbereich ein Polyeder, dessen Ecken jeweils durch den Schnitt von
+$d$ Hyperebenen, die zu NBen gehören, festgelegt werden.
+
+\textbf{geometrische Interpretation}:
+In zwei Dimensionen teilt jede Nebenbedingung die Ebene in zwei Hälften.
+Der Schnitt aller Halbebenen ist der Zielbereich, ein Polyeder.
+Durch Setzen von $c_1 x_1 + c_2 x_2 = z$ für $z \in \real$ verschiebt man die Gerade
+$c_1 x_1 + c_2 x_2 = 0$ solange nach oben, bis sie zwar noch einen Schnitt hat
+(i.\,A. einen Eckpunkt des Polyeders), danach aber nicht mehr.
+Der letzte Schnitt enthält dann die optimalen Lösungen.
+
+\linie
+
+\textbf{Lemma}:
+Wenn der Zielbereich nicht-leer und beschränkt ist,
+dann gibt es eine Ecke des Polyeders, die eine optimale Lösung ist.
+
+\begin{Beweis}
+    Die Behauptung folgt trivialerweise aus der Konvexität des Polyeders und der
+    Linearität der Zielfunktion.
+\end{Beweis}
+
+\subsection{%
+    Simplex-Algorithmus%
+}
+
+\textbf{Idee in 2D}:
+OBdA wird der unterste Punkt gesucht.
+\begin{enumerate}
+    \item
+    Starte mit einer beliebigen Ecke des Zielbereichs.
+    
+    \item
+    Wechsle zu einer benachbarten Ecke, wenn sie weiter unten ist.
+    
+    \item
+    Wiederhole, bis alle benachbarten Ecken nicht weiter unten als die aktuelle Ecke sind.
+\end{enumerate}
+
+\linie
+
+\textbf{in $d$ Dimensionen}:
+Jede Ecke des Zielbereichs ist durch den Schnitt von $d$ Hyperebenen,
+die die zu den NBen gehörigen Halbräume begrenzen, eindeutig festgelegt.
+Eine Menge von $d$ NBen, die eine Ecke des Zielbereichs festlegen, heißt \begriff{Basis}.
+Wenn man zu einer benachbarten Ecke wechselt, kann das als Basiswechsel so interpretiert werden,
+dass eine NB die Basis für eine andere NB verlässt.
+Wie im 2D-Fall wird solange gewechselt, bis die Ecke optimal ist.
+Weil es höchstens $\binom{n}{d}$ Ecken gibt und keine Ecke mehrfach besucht wird,
+terminiert der Algorithmus und arbeitet korrekt.
+
+\linie
+\pagebreak
+
+\textbf{Fragen}:
+\begin{enumerate}
+    \item
+    Wie findet man eine Anfangsecke?
+    
+    \item
+    Wie berechnet man die Eckpunktkoordinaten, wenn eine Basis von $d$ NBen gegeben ist?
+    
+    \item
+    Gegeben sei ein Eckpunkt als Basis.
+    Wie findet man eine benachbarte, bessere, zulässige Ecke (falls existent)?
+\end{enumerate}
+
+\linie
+
+\textbf{1. Frage}:
+Übung
+
+\linie
+
+\textbf{2. Frage}:
+Gegeben seien $d$ NBen
+$(a_{i_k,\cdot}) x \le b_{i_k}$ für $k = 1, \dotsc, d$.
+Dann berechnet sich die Ecke, die durch die NBen festgelegt ist
+(falls sie in allg. Position sind), durch die Lösung des LGS
+$(a_{i_k,\cdot}) x = (b_{i_k})_{k=1}^d$.
+
+\linie
+
+\textbf{3. Frage (Pivot-Schritt)}:
+Sei $v$ eine zulässige Ecke des Zielbereichs, die durch $d$ NBen
+$(a_{i_k,\cdot}) x \le b_{i_k}$ für $k = 1, \dotsc, d$ gegeben ist.
+Dann gibt es $d$ Halbgeraden/Strahlen, die von $v$ aus auf den Randkanten des Zielbereichs laufen.
+Gesucht ist ein Strahl, der den Zielfunktionswert verkleinert, wenn man ihm folgt
+(entspricht einer NB, die man aus der Basis streicht).
+
+Durch Umschreiben der NBen und Einführung von Schlupfvariablen $s_j$, $j = 1, \dotsc, d$,
+erhält man $A_B x + s = b_B$ mit $A_B := (a_{i_k,j})_{k,j=1}^d$, $b_B := (b_{i_k})_{k=1}^d$ und
+$s := (s_j)_{j=1}^d$ mit $s_j \ge 0$.
+Die Koordinaten von $v$ berechnen sich durch $x = A_B^{-1} b_B - A_B^{-1} s$ für $s = 0$.
+Wenn man nun sich von einer der Hyperebenen wegbewegt (auf dem Schnitt der restlichen Hyperebenen),
+dann ist das nichts anderes als die Vergrößerung der entsprechenden Schlupfvariablen.
+
+Für den Zielfunktionswert gilt $c^\tp x = c^\tp A_B^{-1} b_B + (-c^\tp A_B^{-1}) s$.
+Dabei ist der erste Summand der Zielfunktionswert in $v$, während der zweite Summand eine
+lineare Funktion in den $s_j$ ist.\\
+Somit vergrößert das Wegbewegen von einer NB den Zielfunktionswert genau dann, wenn
+der entsprechende Koef"|fizient in $-c^\tp A_B^{-1}$ positiv ist.
+Sind alle Koef"|fizienten nicht-positiv, dann ist $v$ bereits optimal.
+
+Es gibt verschiedene Strategien zur Wahl einer NB mit positivem Koef"|fizienten (siehe unten),
+z.\,B. kann man die NB wählen, deren positiver Koeff. in $-c^\tp A_B^{-1}$ am größten ist.
+
+\linie
+
+Angenommen, eine der NBen wurde auserkoren, die Basis zu verlassen,
+z.\,B. die $i$-te NB\\
+$(a_{i,\cdot}) x \le b_i$.
+Dann muss nun bestimmt werden, welche andere NB (von allen) die Bewegung auf dem Strahl zuerst
+stoppt.
+
+Sei $x' := A_B^{-1} b_B$ die aktuelle Ecke.
+Dann ist $x'' := A_B^{-1} b_B - (A_B^{-1})_{\cdot,i}$ ein Punkt auf dem Strahl,
+den wir betrachten (mit größerem Zielfunktionswert als $x'$).
+Der Strahl ist daher gegeben durch
+$r(\lambda) = x' + \lambda (x'' - x') = x' - \lambda (A_B^{-1})_{\cdot,i}$
+für $\lambda \ge 0$.
+
+Um den Schnittpunkt von $r(\lambda)$ mit einer anderen NB, z.\,B. der $\ell$-ten, zu
+berechnen, setzt man $r(\lambda)$ in die NB ein und erhält
+$(a_{\ell,\cdot}) (x' - \lambda (A_B^{-1})_{\cdot,i}) \le b_\ell
+\iff (a_{\ell,\cdot}) x' - \lambda (a_{\ell,\cdot}) (A_B^{-1})_{\cdot,i} \le b_\ell$.
+\begin{itemize}
+    \item
+    Ist nun $(a_{\ell,\cdot}) (A_B^{-1})_{\cdot,i} \ge 0$,
+    dann wird diese NB den Strahl nie blockieren\\
+    (es gilt in jedem Fall $(a_{\ell,\cdot}) x' \le b_\ell$,
+    weil $x'$ vorher bereits zulässig war).
+    
+    \item
+    Andernfalls gilt $(a_{\ell,\cdot}) (A_B^{-1})_{\cdot,i} < 0$ und erhält man die Schranke
+    $\lambda \le \frac{(a_{\ell,\cdot}) x' - b_\ell}{(a_{\ell,\cdot}) (A_B^{-1})_{\cdot,i}}$,
+    damit $r(\lambda)$ noch die $\ell$-te NB erfüllt.
+\end{itemize}
+Trifft der erste Fall auf jede NB zu, dann ist der Zielbereich in Zielfunktionsrichtung
+unbeschränkt.
+Ansonsten ist die $j$-te NB mit der kleinsten Schranke die NB, die als erstes vom Strahl
+getrof"|fen wird.
+Diese NB $j$ wird dann in der Basis gegen die NB $i$ getauscht.
+
+\pagebreak
+
+\subsection{%
+    Pivot-Strategien%
+}
+
+\textbf{Pivot-Strategien}:
+Insbesondere bei höherdimensionalen linearen Programmen gibt es oft mehrere Strahlen
+ausgehend vom aktuellen Knoten, die die Zielfunktion vergrößern.
+Es gibt viele Strategien, um zu entscheiden, welchem Strahl man folgt
+(d.\,h. welche NB man aus der Basis "`wirft"'):
+\begin{itemize}
+    \item
+    \begriff{Regel des steilsten Anstiegs}:
+    Wähle den Strahl, der die Zielfunktion am schnellsten vergrößert
+    (d.\,h. zum größten positiven Koeff. von $-c^\tp A_B^{-1}$ gehörig).
+    
+    \item
+    \begriff{gieriger Ansatz}:
+    Wähle den Strahl, bei dem der neue Eckpunkt den größten Zielfunktionswert besitzt
+    (anders als steilster Anstieg).
+    
+    \item
+    \begriff{randomisiert}:
+    Wähle einen zufälligen Strahl, der den Zielfunktionswert vergrößert.
+\end{itemize}
+Für die meisten deterministischen Pivot-Strategien wurden Gegenbeispiele gefunden,
+die dazu führen, dass der Simplex-Algorithmus eine exponentielle Zahl an Schritten durchführen
+muss.
+In der Praxis treten diese Extremfälle jedoch so gut wie nicht auf,
+dort sind die Strategien sogar ziemlich gut.
+
+\linie
+
+\textbf{Basiszykel und \name{Bland}s Regel}:
+Liegen die NBen nicht in allgemeiner Lage, d.\,h. haben bestimmte $> d$ der NBen einen nicht-leeren
+Schnitt, dann können Strategien wie die Regel des steilsten Anstiegs sogar zu einem
+\begriff{Zyklus} führen, sodass der Simplex-Algorithmus nicht terminiert.
+Die Anwendung von \begriff{\name{Bland}s Regel} garantiert, dass nach einer endlichen Zahl von
+Schritten die aktuelle Ecke verlassen und eine "`bessere"' (bzgl. Zielfunktionswert) Ecke erreicht
+wird.
+Allerdings ist die Anwendung dieser Regel nur empfehlenswert, wenn ein Zyklus vermutet wird,
+andernfalls sind die anderen Strategien in der Praxis besser.
+
+\pagebreak
+
+\subsection{%
+    Dualität%
+}
+
+\textbf{Dualität}:
+Gegeben sei ein LP $\max_{Ax \le b} c^\tp x$ in Standardform,
+wobei $A \in \real^{n \times d}$, $x \in \real^d$, $b \in \real^n$\\
+und $c \in \real^d$.
+Gesucht ist eine obere Schranke an den optimalen Zielfunktionswert $c^\tp x$,
+ohne das LP direkt zu lösen.
+Dazu führt man nicht-negative Variablen $y_1, \dotsc, y_n$ für jede NB ein, multipliziert
+jede NB $(Ax)_i \le b_i$ mit der entsprechenden Variable $y_i$
+und addiert alle anschließend die Ungleichungen.
+Gesucht sind nun solche Werte der Variablen, sodass auf der linken Seite die Koef"|fizienten
+der Zielfunktion entstehen und der Wert auf der rechten Seite so klein wie möglich ist.
+Jeder Wert auf der rechten Seite, den man so erhält (auch wenn er nicht kleinstmöglich ist),
+ist dann eine obere Schranke an den optimalen Zielfunktionswert von
+$\max_{Ax \le b} c^\tp x$
+(\begriff{schwache Dualität}).
+Man kann sogar zeigen, dass der optimale, kleinstmögliche Wert exakt gleich dem optimalen
+Zielfunktionswert von $\max_{Ax \le b} c^\tp x$ ist (\begriff{starke Dualität}).
+
+\textbf{duales LP}:
+Das zu $\max_{Ax \le b} c^\tp x$ \begriff{duale lineare Programm} ist gegeben durch\\
+$\min b^\tp y$, wobei $A^\tp y = c$ und $y_1, \dotsc, y_n \ge 0$.
+
+\linie
+
+\textbf{wirtschaftliche Interpretation des dualen LPs zum Diätproblem}:
+Man betrachte das Diätproblem $\min c^\tp x$, $Ax \ge b$,
+wobei $x := \smallpmatrix{x_m\\x_t\\x_b\\x_c}$,
+$c := \smallpmatrix{7\\3\\2\\4}$,
+$A := \smallpmatrix{1&2&4&1\\3&2&1&4\\5&0&0&2\\&I_4}$ und
+$b := \smallpmatrix{11\\7\\5\\0_4}$,
+wobei $m$, $t$, $b$ und $c$ für die angebotenen Gerichte Fleisch, Tofu, Brot und Käse und
+die ersten drei Gleichungen für die benötigten Größen Kohlenhydrate, Proteine und Fett stehen.
+Man kann das zu diesem LP duale LP dann wie folgt interpretieren:
+Angenommen, ein Produzent stellt Nahrungsergänzungsmittel-Pillen für Kohlenhydrate, Proteine
+und Fett her und möchte seinen Gewinn maximieren.
+Seien $y_c$, $y_p$ und $y_f$ jeweils die Preise einer der Pillen.
+Der Produzent weiß, dass der Kunde $11$ der Kohlenhydrat-, $7$ der Protein- und $5$ der Fett-Pillen
+benötigt, d.\,h. der Gewinn pro Kunde ist $11y_c + 7y_p + 5y_f$.
+
+Allerdings kann der Produzent die Preise nicht beliebig hoch setzen:
+Wenn die Preise zu hoch sind, wird der Kunde stattdessen eines der Nahrungsmittel kaufen.
+Weil $y_c + 3y_p + 5y_f$ der Preis ist, den der Kunde ausgeben müsste, um die äquivalente Menge
+an Stof"|fen zu erhalten, die in einer Einheit Fleisch enthalten ist, sollte
+$y_c + 3y_p + 5y_f \le 7$ sein (wobei eine Einheit Fleisch $7$ kostet).
+Analog erhält man $2y_c + 2y_p + 0y_f \le 3$ (Tofu),
+$4y_c + 1y_p + 0y_f \le 2$ (Brot) und
+$1y_c + 4y_p + 2y_f \le 4$ (Käse).
+Zusätzlich wird noch $y_c, y_p, y_f \ge 0$ gefordert.
+
+Dieses neue LP ist tatsächlich äquivalent zum dualen LP des Diätproblems:
+Das Diätproblem lautet in der Standardform\\
+$\max c^\tp x$ mit $Ax \le b$, wobei
+$c := \smallpmatrix{-7\\-3\\-2\\-4}$,
+$A := \smallpmatrix{-1&-2&-4&-1\\-3&-2&-1&-4\\-5&0&0&-2\\&-I_4}$,
+$b := \smallpmatrix{-11\\-7\\-5\\0_4}$.\\
+Setzt man $y := (y_c, y_p, y_f, y_1, y_2, y_3, y_4)^\tp$, so ist das duale Problem gegeben durch\\
+$\min c^\tp y$ mit $Ay = b$ und $y \ge 0$, wobei
+$c := \smallpmatrix{-11\\-7\\-5\\0_4}$,
+$A := \smallpmatrix{-1&-3&-5&\\-2&-2&0&-I_4\\-4&-1&0&\\-1&-4&-2&}$,
+$b := \smallpmatrix{-7\\-3\\-2\\-4}$.\\
+Durch Multiplikation mit $-1$ kommt man zu\\
+$\max c^\tp y$ mit $Ay = b$ und $y \ge 0$, wobei
+$c := \smallpmatrix{11\\7\\5\\0_4}$,
+$A := \smallpmatrix{1&3&5&\\2&2&0&I_4\\4&1&0&\\1&4&2&}$,
+$b := \smallpmatrix{7\\3\\2\\4}$.\\
+Jetzt eliminiert man $y_1, y_2, y_3, y_4$ als Schlupfvariablen und erhält\\
+$\max c^\tp y'$ mit $Ay' \le b$ und $y' \ge 0$, wobei
+$c := \smallpmatrix{11\\7\\5}$,
+$A := \smallpmatrix{1&3&5\\2&2&0\\4&1&0\\1&4&2}$,
+$b := \smallpmatrix{7\\3\\2\\4}$ mit
+$y' := \smallpmatrix{y_c\\y_p\\y_f}$,\\
+also obiges Produzenten-LP.
+
+\pagebreak
+
+\subsection{%
+    Dualer Simplex-Algorithmus%
+}
+
+Obiger (primaler) Simplex-Algorithmus startet in einer Ecke des Zielbereichs und springt solange
+zu besseren Ecken, wie es geht.
+Die Idee des dualen Simplex-Algorithmus ist völlig anders.
+
+\textbf{Idee}:
+Der \begriff{duale Simplex-Algorithmus} verläuft wie folgt.
+\begin{enumerate}
+    \item
+    Starte mit einer Ecke (V-Form), die optimal für eine Teilmenge der NBen ist.
+    
+    \item
+    Solange eine NB die aktuelle V-Form verletzt, benutze diese NB, um zu einer besseren V-Form
+    zu gelangen.
+    
+    \item
+    Das Optimum ist erreicht, falls die aktuelle V-Form keine NB mehr verletzt
+    (und daher zulässig ist).
+\end{enumerate}
+
+\textbf{V-Form}:
+Eine Ecke ist der Schnitt von $d$ linear unabhängigen NBen.
+Eine \begriff{V-Form} soll nun eine solche Ecke sein, sodass die NBen eine Bewegung in
+Zielfunktionsrichtung (z.\,B. nach unten) verhindern.
+Formal ist eine V-Form eine Teilmenge $B$ der NBen,
+sodass $\exists_{y \in \real^n,\; y \ge 0}\; A^\tp y = c$
+mit $y_i = 0$ für alle NBen $h_i \notin B$
+(d.\,h. $c$ liegt im Kegel, der durch die NB-Normalen aufgespannt wird).
+Somit ist jede V-Form ein zulässiger Punkt des dualen LPs.
+
+\linie
+
+\textbf{Ablauf}:
+Gegeben sei ein primales LP in Standardform, wobei zur Vereinfachung der unterste Punkt gesucht
+wird.
+Außerdem sei eine Menge von $d$ linear unabhängigen NBen gegeben, die den Zielfunktionswert von
+unten beschränken, d.\,h. eine initiale V-Form.
+
+Eine V-Form ist eine Teilmenge $B$ von $d$ NBen, sodass der eindeutige Schnittpunkt $x_B$ zur 
+selben Zeit die optimale Lösung für das Teil-LP ist, wenn man nur die NBen aus $B$ verwendet.
+Wenn $x_B$ zusätzlich noch zulässig für alle NBen nicht in $B$ ist, dann ist $x_B$ natürlich die
+optimale Lösung für das ganze LP.
+
+Daher braucht man nur nach einer höheren V-Form suchen, wenn $x_B$ eine NB $h_i \notin B$
+verletzt, d.\,h. $(a_{i,\cdot}) x_B > b_i$
+(das überprüft man, indem man $x_B$ in alle NBen außerhalb $B$ einsetzt).
+Wenn eine verletzende NB $h_i$ gefunden wurde, dann kann man mit dieser NB die nächste V-Form
+konstruieren, indem man den untersten zulässigen Punkt für die NBen $B \cup \{h_i\}$ sucht
+(z.\,B. alle $\binom{d+1}{d} - 1 = d$ neuen Ecken durchgehen und
+die unterste zulässige als nächste V-Form nehmen).
+
+Der duale Simplex-Algorithmus läuft solange weiter, bis die V-Form für alle NBen zulässig ist.
+Der Algorithmus terminiert, weil immer zu einer höheren V-Form gesprungen wird
+(wenn die NBen in allgemeiner Lage sind) und es höchstens $\binom{n}{d} < \infty$
+mögliche V-Formen gibt.
+
+Die Invariante $A^\tp y = c$ ($y \ge 0$)
+des dualen Simplex-Algorithmus entspricht der des primalen
+Simplex-Algorithmus angewendet auf das duale LP.
+Dabei ist $b^\tp y $ die "`Höhe"' der aktuellen V-Form,
+weil $y_B = A_B^{-\tp} c$ und damit
+$b^\tp y = y_B^\tp b_B = c^\tp (A_B^{-1} b_B) = c^\tp x_B$
+mit $A_B$ der Teilmatrix mit den NBen aus $B$
+(analog $b_B$ Teil der rechten Seite),
+$x_B := A_B^{-1} b$ der Position der aktuellen V-Form (Schnittpunkt der NBen aus $B$) und
+$y_i := (y_B)_i$ für $h_i \in B$ und $y_i := 0$ sonst.
+
+\linie
+
+\textbf{weitere LP-Algorithmen}:
+Es ist nicht bekannt, ob die Simplex-Algorithmen in polynomieller Zeit laufen,
+obwohl sie in der Praxis sehr schnell sind.
+Es gibt polynomielle LP-Lösungsalgo"-rithmen, z.\,B. \begriff{Innere-Punkte-Methoden} oder
+\begriff{Ellipsoid-Methoden}.
+
+\pagebreak

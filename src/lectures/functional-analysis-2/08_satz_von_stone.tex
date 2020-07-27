@@ -1,0 +1,160 @@
+\section{%
+    Der Satz von \name{Stone}%
+}
+
+\begin{Bem}
+    Im Folgenden seien $H$ ein Hilbertraum und $A\colon D(A) \to H$ ein linearer Operator.
+\end{Bem}
+
+\subsection{%
+    Adjungierter Operator%
+}
+
+\begin{Def}{symmetrisch}
+    $A$ heißt symmetrisch, falls $\forall_{x, y \in D(A)}\; \sp{Ax, y} = \sp{x, Ay}$.
+\end{Def}
+
+\begin{Def}{Adjungierte}
+    Sei $A$ dicht definiert.\\
+    Dann heißt der Operator $(A^\ast, D(A^\ast))$ mit
+    $D(A^\ast) := \{y \in H \;|\; \exists_{y^\ast \in H} \forall_{x \in D(A)}\;
+    \sp{Ax, y} = \sp{x, y^\ast}\}$ und $A^\ast y := y^\ast$ für $y \in D(A^\ast)$
+    der \begriff{zu $A$ adjungierte Operator}.
+\end{Def}
+
+\begin{Bem}
+    Für $y \in D(A^\ast)$ ist $y^\ast \in H$ mit
+    $\forall_{x \in D(A)}\; \sp{Ax, y} = \sp{x, y^\ast}$
+    wegen $D(A^\ast)$ dicht in $H$ eindeutig bestimmt.
+    $(A^\ast, D(A^\ast))$ ist ein linearer Operator auf $H$.
+\end{Bem}
+
+\linie
+
+\begin{Lemma}{Eigenschaften von $A^\ast$}
+    Sei $A$ dicht definiert.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $A^\ast$ ist abgeschlossen.
+        
+        \item
+        Ist $A$ symmetrisch, dann gilt $(A, D(A)) \subset (A^\ast, D(A^\ast))$.
+    \end{enumerate}
+\end{Lemma}
+
+\subsection{%
+    Selbstadjungierte Operatoren%
+}
+
+\begin{Def}{Abschließung}
+    $A$ heißt \begriff{abschließbar}, falls es eine abgeschlossene Erweiterung von $A$ gibt.\\
+    In diesem Fall heißt die kleinste abgeschlossene Erweiterung $(\overline{A}, D(\overline{A}))$
+    \begriff{Abschließung} von $A$.
+\end{Def}
+
+\begin{Def}{selbstadjungiert}
+    Sei $A$ dicht definiert.\\
+    Dann heißt $A$ \begriff{selbstadjungiert}, falls $(A, D(A)) = (A^\ast, D(A^\ast))$.
+\end{Def}
+
+\begin{Def}{wesentlich selbstadjungiert}
+    Sei $A$ symmetrisch und dicht definiert.\\
+    Dann heißt $A$ \begriff{wesentlich selbstadjungiert}, falls
+    $(\overline{A}, D(\overline{A}))$ selbstadjungiert ist.
+\end{Def}
+
+\begin{Bem}
+    Nach dem Lemma von eben ist jeder symmetrische, dicht definierte Operator $A$ abschließbar,
+    wobei $(\overline{A}, D(\overline{A})) \subset (A^\ast, D(A^\ast))$.
+    Jeder selbstadjungierte Operator ist symmetrisch
+    (wegen $\forall_{x, y \in D(A)}\; \sp{Ax, y} = \sp{x, A^\ast y} = \sp{x, Ay}$)
+    und abgeschlossen.
+\end{Bem}
+
+\linie
+
+\begin{Lemma}{Bild von $(A - \lambda)$}
+    Sei $A$ dicht definiert.
+    Dann gilt $\forall_{\lambda \in \complex}\;
+    (\Bild(A - \lambda))^{\orth} = \Kern(A^\ast - \overline{\lambda})$.
+\end{Lemma}
+
+\begin{Satz}{Spektrum von selbstadj. Operatoren reell}
+    Sei $A$ selbstadjungiert.
+    Dann ist $\sigma(A) \subset \real$.
+\end{Satz}
+
+\begin{Satz}{Charakterisierung von Selbstadjungiertheit}
+    Sei $A$ symmetrisch und dicht definiert.\\
+    Dann sind äquivalent:
+    \begin{enumerate}
+        \item
+        $A$ ist selbstadjungiert.
+        
+        \item
+        Es gilt
+        $\exists_{\lambda \in \complex}\; \Bild(A - \lambda) = H = \Bild(A - \overline{\lambda})$.
+    \end{enumerate}
+    In diesem Fall gilt $\forall_{\lambda \in \complex \setminus \real}\; \Bild(A - \lambda) = H$.
+\end{Satz}
+
+\linie
+
+\begin{Bsp}
+    Im Folgenden wird gezeigt, dass $(\Delta, H^2(\real^n))$ auf $L^2(\real^n)$
+    selbstadjungiert ist.\\
+    Wegen partieller Integration gilt
+    $\sp{\Delta u, v}_{L^2} = \int_{\real^n} \Delta u \overline{v} \dx
+    = \int_{\real^n} u \overline{\Delta v} \dx = \sp{u, \Delta v}_{L^2}$,
+    d.\,h. $\Delta$ ist symmetrisch.
+    Seien nun $\lambda \in \complex \setminus \real$ und $f \in L^2(\real^n)$ und
+    betrachte $\Delta u - \lambda u = f$.
+    Mit Fouriertransformation gilt
+    $u(x) = (2\pi)^{-n/2} \int_{\real^n}
+    \left(-\frac{\widehat{f}(k)}{\lambda + k^2}\right) e^{\iu\sp{k, x}} dk$
+    (der Nenner verschwindet nicht, da $\Im(\lambda) \not= 0$),
+    daraus folgt, dass es eine Lösung $u \in H^2(\real^n)$ gibt.
+    Mit dem Satz von eben folgt, dass $(\Delta, H^2(\real^n))$ selbstadjungiert ist.
+\end{Bsp}
+
+\pagebreak
+
+\subsection{%
+    Satz von \name{Stone}%
+}
+
+\begin{Def}{unitär}
+    Sei $U \in \Lin(H)$.
+    Dann heißt $U$ unitär, falls $U$ bijektiv ist und $U^\ast = U^{-1}$.
+\end{Def}
+
+\begin{Lemma}{Charakterisierung von Unitärität}\\
+    $U \in \Lin(H)$ ist unitär genau dann,
+    wenn $U$ eine surjektive Isometrie ist.
+\end{Lemma}
+
+\begin{Satz}{Satz von \name{Stone}}\\
+    Sei $A$ ein dicht definierter, linearer Operator auf einem Hilbertraum $H$.\\
+    $A$ ist Erzeuger einer $\C_0$-Gruppe $(U(t))_{t \in \real}$ von unitären Operatoren
+    auf $H$ genau dann, wenn $\iu A$ selbstadjungiert ist.
+\end{Satz}
+
+\begin{Lemma}{Fall $A, A^\ast$ dissipativ und abg.}\\
+    Sei $(A, D(A))$ ein dicht definierter, abgeschlossener, linearer Operator auf $H$.\\
+    Sind sowohl $A$ als auch $A^\ast$ dissipativ, dann ist $A$ der Erzeuger einer
+    Kontraktions-HG auf $H$.
+\end{Lemma}
+
+\linie
+
+\begin{Bsp}
+    Wegen dem Satz von Stone und obigem Beispiel erzeugt $A := \iu\Delta$ eine $\C_0$-Gruppe
+    von unitären Operatoren.
+    Insbesondere ist die sogenannte \begriff{lineare \name{Schrödinger}-Gleichung}
+    $\partial_t u = \iu\Delta u$ und $u(t = 0) = u_0$ lösbar in $H^2$
+    und die $L^2$-Norm der Lösung bleibt erhalten
+    (kann man mit der Fouriertransformation auch direkt nachrechnen).
+\end{Bsp}
+
+\pagebreak

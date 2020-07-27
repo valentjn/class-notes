@@ -1,0 +1,313 @@
+\section{%
+    Diskreter Logarithmus%
+}
+
+\textbf{diskreter Logarithmus}:
+Gegeben ist eine endliche Gruppe $G$, $g \in G$ und $y \in \erzeugnis{g}$.\\
+Gesucht ist ein \begriff{diskreter Logarithmus} $x$ von $y$ zur Basis $g$,
+d.\,h. $x \in \natural_0$ mit $y = g^x$.
+
+Im Folgenden sei $n := |G|$.
+$n$ ist aber nicht zwangsläufig bekannt
+(bei großen Elementordnungen kann man sich auch vorstellen, dass $n \approx \ord(g)$).
+
+\linie
+
+\textbf{naiver Ansatz}:\\
+Man berechnet alle Potenzen $g^0, g^1, \dotsc, g^{n-1}$ und überprüft, welches Element gleich
+$y$ ist.
+
+\textbf{Zeitbedarf}:
+$\O(n)$
+
+\textbf{Speicherbedarf}:
+$\O(1)$
+
+Der naive Ansatz ist für große Gruppenordnungen ($n > 2^{160}$) praktisch nicht durchführbar.
+
+\subsection{%
+    \name{Shank}s Babystep-Giantstep-Methode%
+}
+
+\textbf{Idee}:
+Mit $m \in \natural$ mit $m \ge \sqrt{n}$ (z.\,B. $m := \left\lceil\sqrt{n}\right\rceil$)
+gilt $\exists_{0 \le s, r < m}\; x = sm + r$.
+Man kann nun $s, r$ mehr oder weniger separat berechnen.
+
+\linie
+
+\textbf{\name{Shank}s Babystep-Giantstep-Methode}:
+Die \begriff{Babystep-Giantstep-Methode (BSGS-Metho"-de) von \name{Shank}} berechnet einen
+diskreten Logarithmus wie folgt.
+\begin{enumerate}
+    \item
+    Berechne $m := \left\lceil\sqrt{n}\right\rceil$ oder, soweit $n$ nicht bekannt ist,
+    eine obere Schranke $m \ge \sqrt{n}$.
+    
+    \item
+    Berechne $(r, yg^{-r}) \in \natural \times G$ für alle $r = 0, \dotsc, m - 1$ und
+    speichere die Paare in einer \begriff{Hashtabelle}
+    (Nachschlagen in Zeit $\O(1)$).
+    
+    \item
+    Berechne $h^s \in G$ mit $h := g^m$ für alle $s = 0, \dotsc, m - 1$
+    und breche ab, sobald $(r, h^s)$ mit einem $r \in \{0, \dotsc, m - 1\}$
+    in der Hashtabelle vorkommt.
+    
+    \item
+    $x = sm + r$ ist dann der diskrete Logarithmus, weil
+    $g^x = g^{sm + r} = h^s g^r = y g^{-r} g^r = y$.
+\end{enumerate}
+Bei Schritt \emph{(2)} werden die \begriff{Babysteps} und bei Schritt \emph{(3)} die
+\begriff{Giantsteps} berechnet.
+
+\linie
+
+\textbf{Zeitbedarf}:
+$\O(m)$ Gruppenoperationen (für $m = \left\lceil\sqrt{n}\right\rceil$: $\O(\sqrt{n})$)
+
+\textbf{Speicherbedarf}:
+$\O(m)$ Gruppenelemente (für $m = \left\lceil\sqrt{n}\right\rceil$: $\O(\sqrt{n})$)
+
+Die BSGS-Methode ist daher in der Praxis ebenfalls nicht anwendbar (Speicherverbrauch zu groß).
+
+\pagebreak
+
+\subsection{%
+    \name{Pollard}s \texorpdfstring{$\varrho$}{ρ}-Methode für den diskreten Logarithmus%
+}
+
+\textbf{Idee}:
+Partitioniere $G$ in drei Mengen $P_1, P_2, P_3$.
+Die Zugehörigkeit eines Elements aus $G$ zu einer drei Klassen sollte sich leicht berechnen
+lassen und die Aufteilung sollte sich in etwa zufällig verhalten.
+Meistens rechnet man modulo $3$ und sammelt jedes dritte Element in einer Klasse.
+Definiere nun die Abbildung $f\colon \ZnZ \times \ZnZ \rightarrow \ZnZ \times \ZnZ$ mit
+\begin{itemize}
+    \item
+    $f(r, s) := (r + 1, s)$, falls $g^r y^s \in P_1$,
+    
+    \item
+    $f(r, s) := (2r, 2s)$, falls $g^r y^s \in P_2$, und
+    
+    \item
+    $f(r, s) := (r, s + 1)$, falls $g^r y^s \in P_3$.
+\end{itemize}
+Sei $r, s \in \ZnZ$.
+Ist $(r', s') := f(r, s)$, $h := g^r y^s$ und $h' := g^{r'} y^{s'}$, so gilt
+\begin{itemize}
+    \item
+    $h' = gh$, falls $h \in P_1$,
+    
+    \item
+    $h' = h^2$, falls $h \in P_2$, und
+    
+    \item
+    $h' = hy$, falls $h \in P_3$
+\end{itemize}
+(weil $y \in \erzeugnis{g}$).
+Man startet daher mit einem zufälligen Paar $(r_1, s_1) \in \ZnZ \times \ZnZ$.
+Die Folge $(h_k)_{k \in \natural}$ mit $h_k := g^{r_k} y^{s_k}$ und
+$(r_{k+1}, s_{k+1}) := f(r_k, s_k)$ für $k \in \natural$ ist dann eine Pseudozufallsfolge.
+Nach dem Geburtstagsparadoxon gilt $\exists_{i, j \in \natural,\; i < j}\; h_i = h_j$, wobei
+$j = \O(\sqrt{n})$ (erwartet).
+Es gilt also $g^{r_i+xs_i} = g^{r_i} y^{s_i} = g^{r_j} y^{s_j} = g^{r_j+xs_j}$
+und damit $x(s_i - s_j) \equiv_n r_j - r_i$.
+Man braucht also nur noch für Lösungen $x$ dieser Kongruenz zu testen, ob $y = g^x$ gilt.
+Je kleiner $\ggT(s_i - s_j, n)$ ist, desto weniger Lösungen $x$ müssen überprüft werden.
+
+\linie
+
+Ein Zyklus in der Folge könnte mit dem Verfahren bei Pollards $\varrho$-Methode für die
+Faktorisierung gefunden werden.
+Es geht aber auch anders (diese Methode kann auch bei der Faktorisierung verwendet werden).
+
+\textbf{\name{Pollard}s $\varrho$-Methode für den DL}:
+\begriff{\name{Pollard}s $\varrho$-Methode für den diskreten Logarithmus} berechnet einen
+diskreten Logarithmus wie folgt.
+\begin{enumerate}
+    \item
+    Sei $\ell := 1$ und $h_1 := g^{r_1} y^{s_1}$ mit einem zufälligen Paar
+    $(r_1, s_1) \in \ZnZ \times \ZnZ$.
+    
+    \item
+    Berechne sukzessive $h_k$ für $k = \ell + 1, \dotsc, 2\ell$,
+    wobei sich $h_k$ aus $h_{k-1}$ wie oben ergibt
+    und $(r_k, s_k) := f(r_{k-1}, s_{k-1})$ wie oben
+    (damit gilt $h_k = g^{r_k} y^{s_k}$).
+    Stimmt eines der Elemente $h_k$ mit $h_\ell$ überein, so breche ab.
+    Ansonsten verdopple $\ell$ und wiederhole.
+    
+    \item
+    Definiere $(r, s) := (r_\ell, s_\ell)$ und $(r', s') := (r_k, s_k)$.
+    Dann teste für jede Lösung $x$ der Kongruenz $x(s - s') \equiv_n r' - r$, ob $y = g^x$ gilt.
+    Falls ja, ist $x$ der gesuchte diskrete Logarithmus.
+\end{enumerate}
+Gilt $\exists_{i, j \in \natural,\; i < j}\; h_i = h_j$ mit $j = \O(\sqrt{n})$ (erwartet)
+wie oben, so terminiert der Algorithmus spätestens für $\ell \ge j$
+(weil dann $h_\ell = h_{\ell+j-i}$).
+
+\linie
+
+\textbf{Zeitbedarf}:
+erwartet $\O(\sqrt{n})$ Gruppenoperationen
+
+\textbf{Speicherbedarf}:
+$\O(1)$ Gruppenelemente
+
+\linie
+
+\textbf{Vorteile gegenüber BSGS}:
+konstanter Speicherverbrauch,
+leichter zu implementieren
+
+\textbf{Nachteile gegenüber BSGS}:
+probabilistisches Verfahren (Laufzeit kann schlecht sein),
+Vielfaches von $\ord(g)$ (z.\,B. $n = |G|$) muss bekannt sein
+
+\pagebreak
+
+\subsection{%
+    \name{Pohlig}-\name{Hellman}-Algorithmus%
+}
+
+Für den Pohlig-Hellman-Algorithmus seien $G$ zyklisch, d.\,h. $G = \erzeugnis{g}$, und
+die Primfaktorzerlegung $\prod_{p \in \PP,\; p \teilt n} p^{e(p)}$ von $n = |G|$ bekannt.
+
+Für jedes $p \in \PP$ mit $p \teilt n$ seien im Folgenden
+$n_p := \frac{n}{p^{e(p)}}$,
+$g_p := g^{n_p}$,
+$y_p := y^{n_p}$ und
+$x_p \in \natural_0$ mit $y_p = g_p^{x_p}$.
+$g_p$ und $y_p$ sind Elemente der Untergruppe $G_p := \{h^{n_p} \;|\; h \in G\}$ von $G$.
+Diese ist zyklisch mit Ordnung $|G_p| = p^{e(p)}$.
+
+\textbf{Lemma}:
+Sei $x \in \natural_0$ mit
+$\forall_{p \in \PP,\; p \teilt n}\; x \equiv x_p \pmod{p^{e(p)}}$.
+Dann ist $y = g^x$.
+
+\begin{Beweis}
+    Für jedes $p \in \PP$ mit $p \teilt n$ gilt
+    $(g^{-x} y)^{n_p} = g_p^{-x} y_p = g_p^{-x_p} y_p = 1$,
+    da $g_p^x = g_p^{x_p}$
+    (es gilt $g_p \in G_p$ und $x, x_p$ unterscheiden sich nur um ein Vielfaches der
+    Gruppenordnung $p^{e(p)}$ von $G_p$).
+    Daraus folgt, dass $\ord_G(g^{-x} y) \teilt n_p$ für jeden Primteiler $p$ von $n$.
+    Insbesondere gilt\\
+    $\ord_G(g^{-x} y) \teilt \ggT(\{n_p \;|\; p \in \PP,\; p \teilt n\}) = 1$
+    (bei jeder Zahl $n_p$ wurde eine Primzahl $p$ herausgeteilt).
+    Damit ist $\ord_G(g^{-x} y) = 1$ und $g^x = y$.
+\end{Beweis}
+
+\linie
+
+OBdA kann man also von $G$ zyklisch mit $n = p^e$ ($p \in \PP$, $e \in \natural$)
+ausgehen.
+Sonst bestimmt man für jeden Primteiler $p \teilt n$ die $x_p$ mit $y_p = g_p^{x_p}$
+und löst das System $\forall_{p \in \PP,\; p \teilt n}\; x \equiv x_p \pmod{p^{e(p)}}$
+von Kongruenzen mit dem chinesischen Restsatz.
+
+\textbf{\name{Pohlig}-\name{Hellman}-Algorithmus}:
+Der \begriff{\name{Pohlig}-\name{Hellman}-Algorithmus} bestimmt den diskreten Logarithmus
+in einer zyklischen Gruppe (oBdA mit Primzahlpotenzordnung $p^e$) wie folgt.
+\begin{enumerate}
+    \item
+    Schreibe $x = x_0 + x_1 p + \dotsb + x_{e-1} p^{e-1}$ mit
+    $x_0, \dotsc, x_{e-1} \in \{0, \dotsc, p-1\}$
+    (da $x < |G| = p^e$).
+    
+    \item
+    Zur Bestimmung der Koef"|fizienten $x_0, \dotsc, x_{e-1}$ wiederhole für
+    $i = 0, \dotsc, e - 1$ Folgendes:
+    \begin{enumerate}
+        \item
+        Berechne $z_i := yg^{-(x_0 p^0 + \dotsb + x_{i-1} p^{i-1})}$.
+        Dann gilt $g^{x_i p^i + \dotsb + x_{e-1} p^{e-1}} = z_i$.
+        Potenzieren mit dem Exponenten $p^{e-i-1}$ auf beiden Seiten führt zu
+        $g^{x_i p^{e-1}} = z_i^{p^{e-i-1}}$ wg. $\forall_{e' \ge e}\; g^{p^{e'}} = 1$.
+        
+        \item
+        Berechne den diskreten Logarithmus $x_i$ von $z_i^{p^{e-i-1}}$ zur Basis $g^{p^{e-1}}$
+        in der Untergruppe $\{h^{p^{e-1}} \;|\; h \in G\}$ von $G$
+        (zyklisch mit Ordnung $p$),
+        also $x_i \in \natural_0$ mit $(g^{p^{e-1}})^{x_i} = z_i^{p^{e-i-1}}$,
+        z.\,B. mit der BSGS- oder Pollards $\varrho$-Methode.
+    \end{enumerate}
+\end{enumerate}
+
+\linie
+
+\textbf{Zeitbedarf}:
+$\O(\sum_{p \in \PP,\; p \teilt n} e(p) \cdot (\log n + \sqrt{p}))$ Gruppenoperationen in $G$
+
+Die Laufzeit des Pohlig-Hellman-Algorithmus ist daher gut, wenn $n$ nur kleine Primteiler besitzt.
+Der Algorithmus kann nur durchgeführt werden, wenn nicht nur die Gruppenordnung $n$,
+sondern sogar ihre Primfaktorzerlegung bekannt ist.
+
+\pagebreak
+
+\subsection{%
+    Index-Calculus-Algorithmus%
+}
+
+Für den Index-Calculus-Algorithmus ist $g \in G = (\ZpZ)^\ast$ mit $p$ prim
+(oft kann man sich $\erzeugnis{g} = (\ZpZ)^\ast$ vorstellen) und $y \in \erzeugnis{g}$.
+Gesucht ist $x \in \natural_0$ mit $g^x \equiv_p y$.
+
+\textbf{Index-Calculus-Algorithmus}:
+Mit dem \begriff{Index-Calculus-Algorithmus} kann man den diskreten Logarithmus
+in $(\ZpZ)^\ast$ für $p$ prim wie folgt bestimmen.
+\begin{enumerate}
+    \item
+    Wähle eine Faktorbasis $B = \{q \in \PP \;|\; q \le B_0\}$ für eine Schranke
+    $B_0 \in \natural$.
+    
+    \item
+    Für alle $q \in B$ bestimme $x_q \in \natural_0$ mit $g^{x_q} \equiv_p q$
+    (diskreter Logarithmus von $q$).
+    
+    \item
+    Bestimme $b \in \natural_0$, sodass $(yg^b \bmod p)$ $B$-glatt ist,
+    d.\,h. $yg^b \equiv_p \prod_{q \in B} q^{e_q}$.
+    
+    \item
+    Wähle $x := (-b + \sum_{q \in B} x_q e_q) \bmod (p-1)$.
+\end{enumerate}
+
+\textbf{Lemma (Korrektheit)}:
+Der Index-Calculus-Algorithmus arbeitet korrekt, d.\,h. $g^x \equiv_p y$.
+
+\begin{Beweis}
+    Es gilt $g^x \equiv_p g^{-b} g^{\sum_{q \in B} x_q e_q}
+    = g^{-b} \prod_{q \in B} g^{x_q e_q}
+    \equiv_p g^{-b} \prod_{q \in B} q^{e_q}
+    \equiv_p g^{-b} \cdot yg^b \equiv_p y$.
+\end{Beweis}
+
+\linie
+
+\textbf{zu Schritt \emph{(2)}}:
+Wähle zufällige Zahlen $z \in \natural_0$ mit $(g^z \bmod p)$ $B$-glatt,
+d.\,h. $g^z \equiv_p \prod_{q \in B} q^{f(q,z)}$ für bestimmte $f(q,z) \in \natural_0$.
+Wenn man nun $(f(q,z))_{q \in B}$ als Vektor abspeichert
+und $q \equiv_p g^{x_q}$ mit den Variablen $(x_q)_{q \in B}$ setzt,
+dann gilt $z \equiv \sum_{q \in B} x_q f(q, z) \pmod{p - 1}$.
+Gibt es genügend solche viele Zahlen $z$, dann hat das entstehende LGS modulo den höchsten
+Primteilerpotenzen von $(p-1)$ genügend viele Gleichungen und dann gibt es eine Lösung
+$(x_q)_{q \in B}$.
+
+\textbf{zu Schritt \emph{(3)}}:
+Bestimme $y$ zufällig mit $(yg^b \bmod p)$ $B$-glatt.
+
+\linie
+
+\textbf{Zeitbedarf}:
+erwartet $2^{\weakO(\sqrt{\log p})}$
+
+\linie
+
+Der Index-Calculus-Algorithmus ist nicht auf andere Gruppen übertragbar, weil
+"`$B$-glatt"' dann keinen Sinn mehr ergibt.
+
+\pagebreak

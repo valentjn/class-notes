@@ -1,0 +1,510 @@
+\section{%
+    Kurze Einführung in die Sprache \Ada{}%
+}
+
+\subsection{%
+    Grundsätzliches%
+}
+
+\begin{Def}{Techniken des imperativen Programmierens}
+    Verfahren wird durch Folge von \begriff{Anwei\-sungen} beschrieben;
+    Daten werden in strukturierten Behältern (\begriff{Variablen}) abgelegt,
+    zu jedem Behälter gibt ein Datentyp an, was hineingelegt werden darf;
+    \begriff{Zuweisung} als grundlegende Anweisung;
+    Festlegung der Bearbeitungsreihenfolge durch \begriff{Kontrollstrukturen};
+    Zusammenfassung von Teilverfahren zu \begriff{Prozeduren}.
+\end{Def}
+
+\begin{Def}{Variablen und Zuweisung}
+    Variable als Behälter, zu jedem Behälter gehört ein Kontrollmechanismus,
+    der den Datentyp des zugewiesenen Werts prüft; \\
+    elementare Datentypen: Integer, Natural, Float, Char sowie Boolean.
+\end{Def}
+
+\subsection{%
+    Diszipliniertes Vorgehen%
+}
+
+\begin{Def}{Vorgehen beim "`Programmieren im Kleinen"'}
+    Ideen umgangssprachlich aufschreiben;
+    präzise Formulierung;
+    Ermitteln von Eigenschaften;
+    Entwicklung eines Algorithmus;
+    Implementierung in ein Programm;
+    Testen \& Messen;
+    kritisches Überdenken.
+\end{Def}
+
+\addtocounter{subsection}{1}
+\subsection{%
+    Programmaufbau in \Ada{}%
+}
+
+\begin{Def}{Programmaufbau} \\
+    \begin{tabular}{p{6.0cm}p{9.8cm}}
+\vspace{-30pt}
+\begin{lstlisting}[language=ada]
+<with/use-Bereich>
+procedure <Name des Programms> is
+   <Deklarationsteil>
+begin
+   <Anweisungsteil>
+end <Name des Programms>;
+\end{lstlisting}
+\vspace{-25pt}
+        &
+        \begin{minipage}[c]{9.8cm}
+    \adacode{<abc>} ist ein \begriff{Platzhalter}, \begriff{Kommentare} durch
+    \adacode{--} bis zum Zeilenende, \begriff{Name} besteht aus mindestens
+    einem \begriff{Bezeichner} (Folge von Buchstaben, Ziffern und
+    Unterstrichen, die mit einem Buchstaben beginnt), keine Unterscheidung der
+    Groß-/Kleinschreibung, Schlüsselwörter dürfen nicht als Name verwendet
+    werden (Datentypen aber schon)
+        \end{minipage}
+    \end{tabular}
+\end{Def}
+
+\begin{Def}{Deklarationsteil}
+    enthält \begriff{Variablen-}
+    (\adacode{<Liste von Variablen> : <Datentyp>;}) sowie
+    \begriff{Konstantendeklarationen}
+    (\adacode{<Bezeichner> : constant <Datentyp> := <Ausdruck>;}),
+    bei \adacode{Integer} und \adacode{Float} darf der Datentyp weggelassen
+    werden) \\
+    zu den wichtigsten skalaren Datentypen gehören \adacode{Boolean},
+    \adacode{Integer}, \adacode{Float} sowie \adacode{Character}
+\end{Def}
+
+\begin{Def}{Anweisungsteil}
+    endliche Folge von elementaren und strukturierten Anweisungen, wie \\
+    \begriff{Zuweisung} (\adacode{<Variable> := <Ausdruck>;}),
+    \begriff{No-Op} (\adacode{null;}) und
+    \begriff{Ein-/Ausgabe} \\
+    (\adacode{Get (<Variable>);}, \adacode{Put (<Variable>);})
+\end{Def}
+
+\addtocounter{subsection}{2}
+\subsection{%
+    Funktionen und Prozeduren%
+}
+
+\begin{Def}{Funktionsdeklaration} \\
+    \begin{tabular}{p{7.8cm}p{8.1cm}}
+\vspace{-30pt}
+\begin{lstlisting}[language=ada]
+function <Name der Funktion> (<Parameter>)
+  return <Datentyp> is
+   <Deklarationsteil>
+begin
+   <Anweisungsteil>
+end <Name der Funktion>;
+\end{lstlisting}
+\vspace{-25pt}
+        &
+        \begin{minipage}[c]{8.1cm}
+    in der Funktion muss man auf eine elementare Anweisung der Form
+    \adacode{return <Ausdruck>;} stoßen,
+    die Liste der \begriff{formalen Parameter} enthält
+    die Parameter mit Name und Datentyp getrennt durch Semikolon
+        \end{minipage}
+    \end{tabular}
+\end{Def}
+
+\pagebreak
+
+\begin{Def}{Prozedurdeklaration} \\
+    \begin{tabular}{p{8.0cm}p{8.0cm}}
+\vspace{-30pt}
+\begin{lstlisting}[language=ada]
+procedure <Name der Prozedur> (<Parameter>) is
+   <Deklarationsteil>
+begin
+   <Anweisungsteil>
+end <Name der Prozedur>;
+\end{lstlisting}
+\vspace{-25pt}
+        &
+        \begin{minipage}[c]{8.0cm}
+    die Prozedur kann vorzeitig über \adacode{return;} verlassen werden,
+    wird als Anweisung verwendet, wie bei Funktion heißt der Teil bis zum
+    \adacode{is} \begriff{Kopf}, der Rest \begriff{Rumpf}
+        \end{minipage}
+    \end{tabular}
+\end{Def}
+
+\begin{Def}{Rekursion}
+    \begriff{Rekursion} ist die (in)direkte Verwendung einer
+    Funktion in ihrem Rumpf.%
+\end{Def}
+
+\begin{Def}{Operatoren}
+    \begriff{Operatoren} sind spezielle Funktionen (in der Regel ein- oder
+    zweistellig) und besitzen statt eines Namens ein Operatorsymbol,
+    in \Ada{} können Operatoren wie Funktionen deklariert werden
+    (z.~B. \adacode{function "+"} usw.)
+\end{Def}
+
+\subsection{%
+    Skalare Datentypen%
+}
+
+\begin{Def}{Datentyp}
+    Eine Menge zusammen mit der auf ihr definierten Operationen heißt
+    \begriff{Datentyp}, es gibt \begriff{skalare} (Datentypen, die man nicht
+    auf andere zurückführt, wie vordefinierte und Aufzählungs-Datentypen) und
+    \begriff{zusammengesetzte Datentypen}
+\end{Def}
+
+\begin{Def}{Aufzählungstypen}
+    \adacode{type <Name des Datentyps> is (<Liste der Elemente>);} \\
+    (der Aufzählungstyp ist geordnet, d.~h. die Reihenfolge ordnet die Elemente
+    an) \\
+    Operationen (\begriff{Attribute}): nullstellig (alle Elemente von
+    \adacode{T}, \adacode{T'First}, \adacode{T'Last}, \adacode{T'(Sa)}), \\
+    einstellig (\adacode{T'Pred (X)}, \adacode{T'Succ (X)},
+    \adacode{T'Pos (X)}, \adacode{T'Val (I)}) sowie \\
+    zweistellig (\adacode{=}, \adacode{/=}, \adacode{<}, \adacode{<=},
+    \adacode{>}, \adacode{>=}, \adacode{T'Min (X, Y)}, \adacode{T'Max (X, Y)})
+\end{Def}
+
+\begin{Def}{Standard-Datentypen}
+    \adacode{Boolean},
+    \adacode{Character},
+    \adacode{Integer} (\adacode{Natural}, \adacode{Positive}),
+    \adacode{Float}
+\end{Def}
+
+\begin{Def}{\adacode{Boolean}}
+    Wertebereich \adacode{False}/\adacode{True},
+    Operationen \adacode{not}, \adacode{and}, \adacode{or}, \adacode{xor},
+    \adacode{=}, \adacode{and then},\\
+    \adacode{or else},
+    Klammerung bei logischen Ausdrücken wird empfohlen
+    (teilweise verpflichtend!)
+\end{Def}
+
+\begin{Def}{\adacode{Character}}
+    wird als Aufzählungstyp mit den Zeichen aus ISO-8859-1 (Latin-1)
+    als Wertebereich aufgefasst, Zeichen werden in Apostrophe eingeschlossen
+    (Apostroph durch zwei Apostrophe),
+    Operationen: wie bei allen Aufzählungstypen
+\end{Def}
+
+\begin{Def}{\adacode{Integer}}
+    wird als Aufzählungstyp von \adacode{Integer'First} bis
+    \adacode{Integer'Last} (rechnerabhängig) aufgefasst,
+    Operationen: alle Konstanten, \adacode{+}, \adacode{-}, \adacode{abs}
+    (alle einstellig), \adacode{+}, \adacode{-}, \adacode{*}, \adacode{mod}
+    (nicht-negativ), \adacode{/} (ganzzahlige Division, Abschneiden der
+    Dezimalen), \adacode{rem} (auch negativ), \adacode{**},
+    \adacode{=}, \adacode{/=}, \adacode{<}, \adacode{<=}, \adacode{>},
+    \adacode{>=}, \adacode{Min}, \adacode{Max}, \adacode{Pred}, \adacode{Succ},
+    \adacode{Pos}, \adacode{Val}
+    (\emph{Ausnahme}: \adacode{Integer'Pos (I) = I})
+\end{Def}
+
+\begin{Def}{\adacode{Float}}
+    es können eigene Floattypen festgelegt werden:
+    durch Angabe von Ober-/Untergrenze
+    (\adacode{type <Datentypname> is delta d range unten .. oben;})
+    oder durch Angabe der Dezimalziffern
+    (\adacode{type <Datentypname> is delta p digits a;}, hier ist \adacode{p}
+    eine Zehnerpotenz),
+    der eingebaute Typ \adacode{Float} besitzt eine Genauigkeit von mindestens
+    6 Dezimalziffern (eigene Genauigkeit durch
+    \adacode{type <Datentypname> is digits a;}),
+    Operationen: \adacode{+}, \adacode{-}, \adacode{abs} (alle einstellig),
+    \adacode{+}, \adacode{-}, \adacode{*}, \adacode{/}, \adacode{**}
+    (rechts darf nur eine ganze Zahl stehen), \adacode{=}, \adacode{/=},
+    \adacode{<}, \adacode{<=}, \adacode{>}, \adacode{>=}
+    (Vermeidung von \adacode{=}, \adacode{/=} aufgrund Rundungsfehlern),
+    ausnahmsweise können ganze mit reellen Zahlen multipliziert
+    und reelle Zahlen durch ganze dividiert werden
+\end{Def}
+
+\begin{Def}{Typumwandlung}
+    \Ada{} ist streng typisiert, d.~h. es können meist nur zwei Operanden
+    gleichen Typs verrechnet werden.
+    Abhilfe schaffen die Funktionen \adacode{Float (I);} sowie\\
+    \adacode{Integer (X);} (\emph{rundet zur nächsten ganzen Zahl!}).
+\end{Def}
+
+\begin{Def}{Initialisierung}
+    Variablen können bei der Deklaration durch \\
+    \adacode{<Liste von Bezeichnern> : <Datentyp> := <Ausdruck>;}
+    initialisiert werden. \\
+    Dies gilt auch für Aufzählungstypen, Arrays und Records.
+\end{Def}
+
+\begin{Def}{Ein-/Ausgabe}
+    erfolgt über die Paket \adacode{Ada.Text\_IO},
+    \adacode{Ada.Integer\_Text\_IO}, und \\
+    \adacode{Ada.Float\_Text\_IO}
+    (über \adacode{with} und ggf. \adacode{use} einbinden)
+\end{Def}
+
+\subsection{%
+    Felder%
+}
+
+\begin{Def}{Unterbereiche}
+    In \Ada{} werden Unterbereiche durch \adacode{subtype} mittels \\
+    \adacode{subtype <Name> is <Datentyp> range <unten> .. <oben>;}
+    deklariert. \\
+    \adacode{range <unten> .. <oben>} kann weggelassen werden, in diesem Fall
+    besitzt der Unterbereich die gleiche Wertemenge wie der Datentyp.
+    Alle Operationen des Datentyps werden vom Unterbereich übernommen.
+    Ein Variable vom Typ eines Unterbereichs wird als Variable des Basistyps
+    aufgefasst, erst bei der Zuweisung wird die Einschränkung geprüft. \\
+    Vorderfinierte Unterbereiche sind \adacode{Natural} und
+    \adacode{Positive}. \\
+    Unterbreiche kann man auch für \adacode{Float} einführen, sofern die
+    Grenzen reellwertig sind.
+\end{Def}
+
+\begin{Def}{Array}
+    Arraytypen können durch \\
+    \adacode{type <Feldname> is array (<Indexdatentyp>) of <Datentyp>;}
+    deklariert werden. \\
+    Mehrdimensionale Arrays können durch Angabe von zwei kommagetrennten
+    Indexdatentypen deklariert werden (z. B.
+    \adacode{type Matrix is array (1 .. 10, 1 .. 50) of Float;}). \\
+    Bei einem \begriff{statischen Feld} sind alle Feldgrenzen zur
+    Übersetzungszeit bekannt, sonst heißt das Feld \begriff{dynamisch}
+    (in \Ada{} können die Feldgrenzen aber nicht verändert werden).
+\end{Def}
+
+\begin{Def}{Unspezifizierte Feldgrenzen}
+    bei Typdeklaration ist es erlaubt, die Feldgrenzen wegzulassen und
+    stattdessen \adacode{<Datentyp> range <>} zu schreiben \\
+    (z.~B. \adacode{type Text is array (Natural range <>) of Character;}).
+    Die Feldgrenzen müssen jedoch bei der Variablendeklaration angegeben
+    werden.
+    Operationen: \adacode{T'Range (I)} (gibt den Felddatentyp der
+    \adacode{I}-ten Dimension an, bei eindimensionalen Arrays kann
+    \adacode{(1)} weggelassen werden), \adacode{T'Length (I)} (Anzahl der
+    Elemente), \adacode{T'First (I)}, \adacode{T'Last (I)} (erstes/letztes
+    Element des Indexdatentyps)
+\end{Def}
+
+\subsection{%
+    BNF und EBNF%
+}
+
+\begin{Def}{BNF (\name{Backus}-\name{Naur}-Form)}
+    Eine BNF ist ein Viertupel $(V, \Sigma, P, S)$ mit
+    \begin{itemize}
+        \item $V$ nicht-leere endliche Menge der Form \ebnfcode{<Zeichenkette>}
+        (\begriff{Nichtterminalzeichen}),
+        
+        \item $\Sigma$ nicht-leere endliche Menge mit
+        $V \cap \Sigma = \emptyset$ und $| \notin \Sigma$
+        (\begriff{Terminalzeichen}),
+        
+        \item $P$ endliche Menge (\begriff{Regeln} oder
+        \begriff{Produktionen}), zu jedem Nichtterminalzeichen $A \in V$ gibt
+        es genau eine Regel aus $P$ mit der Form
+        \ebnfcode{A ::= u1 | ... | uk}, wobei jedes \ebnfcode{ui} eine
+        Folge von Zeichen aus $V \cup \Sigma$ ist
+        (die leere Zeichenfolge $\varepsilon$ ist als ein \ebnfcode{ui}
+        zugelassen),
+        
+        \item $S \in V$ (\begriff{Startsymbol}).
+    \end{itemize}
+\end{Def}
+
+\begin{Def}{EBNF (erweiterte BNF)}
+    die BNF wird um folgende Möglichkeiten erweitert:
+    \begin{itemize}
+        \item \begriff{Verwenden von Schlüsselwörtern}, die in Apostrophe
+        eingeschlossen werden (z.~B. \\
+        \ebnfcode{<Operatoren> ::= 'and' | 'or'}), die dann als
+        Terminalzeichen aufgefasst werden
+        
+        \item \begriff{Einführen von eckigen Klammern}, deren Inhalt auch
+        ausgelassen werden kann (z.~B. \\
+        \ebnfcode{<Ziffernfolge> ::= <Ziffer> [<Ziffernfolge>]})
+        
+        \item \begriff{Einführen von geschweiften Klammern}, deren Inhalt
+        beliebig oft wiederholt und ausgelassen werden kann (z.~B.
+        \ebnfcode{<Ziffernfolge> ::= <Ziffer> \{<Ziffer>\}})
+    \end{itemize}    
+\end{Def}
+
+\subsection{%
+    Kontrollstrukturen%
+}
+
+\begin{tabular}{p{8.2cm}p{7.9cm}}
+\begin{Def}{Fallunterscheidung}
+\begin{lstlisting}[language=ada]
+if Ausdruck1 then <Anweisungsfolge>
+elsif Ausdruck2 then <Anweisungsfolge>
+elsif Ausdruck3 then <Anweisungsfolge>
+else <Anweisungsfolge>
+end if;
+\end{lstlisting}
+\end{Def}
+\vspace{-20pt}
+&
+\begin{Def}{Auswahlanweisung}
+\begin{lstlisting}[language=ada]
+case Tag is
+   when Mo | Di => <Anweisungsfolge>
+   when Mi .. Fr => <Anweisungsfolge>
+   when others => <Anweisungsfolge>
+end case;
+\end{lstlisting}
+\end{Def}
+\vspace{-20pt}
+\end{tabular}
+
+Die Auswahlmöglichkeiten bei \adacode{case} müssen disjunkt und vollständig
+sein!
+Von \Ada{} werden alle Möglichkeiten ausgewertet, die
+\adacode{case}-Anweisung wird nur dann ausgeführt, wenn genau einmal der Wert
+\adacode{True} vorkam.
+
+\begin{tabular}{p{4.1cm}p{4.1cm}p{7.4cm}}
+\begin{Def}{\adacode{while}-Schleife}
+\begin{lstlisting}[language=ada]
+while B loop
+    <Anweisungsfolge>
+end loop;
+\end{lstlisting}
+\end{Def}
+&
+\begin{Def}{\adacode{for}-Schleife}
+\begin{lstlisting}[language=ada]
+for I in 1 .. 10 loop
+    <Anweisungsfolge>
+end loop;
+\end{lstlisting}
+\end{Def}
+&
+    Mit \adacode{reverse} wird der Bereich der Laufvariablen rückwärts
+    durchlaufen.
+    Mit dem Befehl \adacode{exit when B;} wird die aktuelle Schleife verlassen,
+    falls \adacode{B} zutrifft (\adacode{when B} kann weggelassen werden).
+\end{tabular}
+
+\adacode{loop <Anweisungsfolge> end loop;} erzeugt eine Endlosschleife.
+Wird eine Schleife mit einem Namen versehen (z.~B.
+\adacode{Schleife1: while B loop}), so kann sie mit \\
+\adacode{exit Schleife1 when B;} verlassen werden
+(\adacode{when B} kann weggelassen werden). \\
+Mittels \adacode{exit} dürfen allerdings keine Blöcke verlassen werden.
+
+\begin{Def}{Block}
+\begin{lstlisting}[language=ebnf,
+emph={declare,begin,end},
+emphstyle=\underbar]
+<Block> ::= [<Blockname>:] [declare <Deklarationsteil>]
+  begin
+     <volle_Anweisungsfolge>
+  end [<Blockname>];
+\end{lstlisting}
+    Blöcke liefern die zentrale Grundstruktur von Programmen in \Ada{}.
+    Mittels \adacode{declare}-Blöcken können dynamische Felder erstellt werden.
+    Alle Variablen des Blocks unterliegen \begriff{Lebensdauer} und
+    \begriff{Sichtbarkeit}
+    (nicht sichtbare Objekte können mittels
+    \adacode{<Blockname>.<Bezeichner>}
+    sichtbar gemacht werden).
+\end{Def}
+
+\begin{Def}{Sprunganweisung}
+    Mittels \adacode{goto abc;} springt man an die Anweisung des Programms,
+    die mit \adacode{abc} markiert ist (z.~B. \adacode{<<abc>> null;}).
+    Mit \adacode{goto} darf man nicht in eine struktuierte Anweisung oder
+    aus einem Block heraus springen.
+\end{Def}
+
+\subsection{%
+    Records%
+}
+
+\begin{Def}{Records} \\
+\begin{tabular}{p{6.0cm}p{10.0cm}}
+\vspace{-10pt}
+\begin{lstlisting}[language=ada]
+type Datum is record
+   Jahr : Integer := 2010;
+   Monat : Monatsname;
+   Tag : Integer range 1 .. 31;
+end record;
+\end{lstlisting}
+\vspace{-10pt}
+&
+\vspace{-10pt}
+\begin{lstlisting}[language=ada]
+--  Tag, Monat und Jahr heissen Selektoren
+WM_Beginn : Datum := (2010, Juni, 11);
+Neujahr : Datum := Datum'(2011, Tag => 1, Monat => Januar);
+--  Datum'/Verbundaggregat kann man weglassen
+\end{lstlisting}
+\vspace{-10pt}
+\end{tabular}
+    
+    Einen leeren Verbund kann man mit
+    \adacode{type Leerer\_Verbund is null record;} deklarieren.
+    Mit \begriff{Verbundaggregaten} kann man einen ganzen Record auf einmal
+    befüllen (entweder Liste von Werten, Liste von Werten mit Angabe der
+    Selektoren oder Liste der Werte, danach Liste mit Angabe der Selektoren).
+    \adacode{others} am Ende befüllt die restlichen Komponenten. \\
+    Vorbesetzungen der Komponenten sind durch
+    \begriff{Verbund-Initialisierungen} möglich. \\
+    Ist der Datentyp nicht eindeutig, so ist \begriff{Typ-Qualifizierung}
+    (\adacode{Datum'}) erforderlich.
+\end{Def}
+
+\pagebreak
+
+\begin{Def}{Variante Records} \\
+\begin{tabular}{p{8.0cm}p{8.0cm}}
+\vspace{-10pt}
+\begin{lstlisting}[language=ada]
+type SL is (D, EU, sonst);
+type Student (Herkunft : SL) is record
+   Name : Unbounded_String;
+   Matrikelnummer : Positive;
+   case Herkunft is
+      when D => Geburtsort : Unbounded_String;
+      when EU | sonst =>
+              Land : Unbounded_String;
+   end case;
+end record;
+\end{lstlisting}
+\vspace{-10pt}
+&
+\vspace{-10pt}
+\begin{lstlisting}[language=ada]
+type Kategorie is (PKW, Bus, Karren);
+type Fahrzeug (Art : Kategorie := PKW)
+        is record
+   Laenge, Breite, Hoehe : Float;
+   case Art is
+      when Bus => record Sitzplaetze : 8 .. 60;
+        Stehplaetze : 0 .. 80; end record;
+      when PKW => Airbags : Positive;
+      when Karren => null record;
+   end case;
+end record;
+\end{lstlisting}
+\vspace{-10pt}
+\end{tabular}
+    
+    \begriff{Variante Records} bekommen bei ihrer Initialisierung eine sog.
+    \begriff{Diskriminante} mitgegeben, von der abhängt, welche Komponenten
+    der Record enthält.
+    Man spricht von einem \begriff{varianten Anteil} des Records.
+    Die Diskriminante darf eine Vorbesetzung enthalten
+    (\adacode{Herkunft : SL := D}).
+    Die Auflistung im varianten Teil muss vollständig und disjunkt sein,
+    ein Selektor darf in einem gesamten Record höchstens einmal vorkommen.
+    Diskriminanten können auch die Größe von Records beeinflussen
+    (z.~B. übergibt man einen Integer-Wert als Diskriminante, dieser bestimmt
+    die Größe eines Arrays).
+\end{Def}
+
+%\addtocounter{subsection}{1}

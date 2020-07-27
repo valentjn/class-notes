@@ -1,0 +1,218 @@
+\section{%
+    Eigenwertprobleme%
+}
+
+\subsection{%
+    \textsc{Hessenberg}-Form, \textsc{von-Mises}-Iteration und Deflation%
+}
+
+\textbf{\textsc{Hessenberg}-Form}:
+Sei $A$ eine $n \times n$-Matrix.
+Dann kann man die Einträge $(a_{j,k})$ mit $j > k + 1$ durch $n - 2$
+Householder-Transformationen annullieren:
+\begin{align*}
+    A \mapsto Q_{n-2} \dotsm Q_1 A Q_1 \dotsm Q_{n-2}.
+\end{align*}
+Dabei erzeugt die $\ell$-te Transformation $Q_\ell$ Nullen unterhalb
+von Position $(\ell + 1, \ell)$.
+Die so transformierte Matrix heißt
+\emph{(obere) Hessenberg-Matrix}. \\
+Ist $A$ symmetrisch, so ist auch $Q_{n-2} \dotsm Q_1 A Q_1 \dotsm Q_{n-2}$
+symmetrisch und daher tridiagonal (nur Einträge ungleich $0$ auf der Haupt-
+und den beiden Nebendiagonalen). \\
+Bei der Transformation in die Hessenberg-Form bleiben die Eigenwerte erhalten,
+daher ist die Transformation eine nützliche Vorbereitung auf jede
+Eigenwert-Routine.
+
+\textbf{$\ell$-ter Schritt der \textsc{Hessenberg}-Transformation}:
+\matrixsize{\begin{align*}
+    & \left(\begin{array}{cccc|cccc}
+    & & & & \ast & \ast & \cdots & \ast \\
+    & & & & \ast & \ast & \cdots & \ast \\
+    & H & & & \vdots & \vdots & & \vdots \\
+    & & & & \ast & \ast & \cdots & \ast \\ \hline
+    & & & \boldsymbol{\ast} & \ast & \ast & \cdots & \ast \\
+    & & & \boldsymbol{\ast} & \ast & \ast & \cdots & \ast \\
+    & 0 & & \boldsymbol{\vdots} & \vdots & \vdots & & \vdots \\
+    & & & \boldsymbol{\ast} & \ast & \ast & \cdots & \ast
+    \end{array}\right)
+    \xrightarrow{Q_i \cdot}
+    \left(\begin{array}{cccc|cccc}
+    & & & & \ast & \ast & \cdots & \ast \\
+    & & & & \ast & \ast & \cdots & \ast \\
+    & H & & & \vdots & \vdots & & \vdots \\
+    & & & & \ast & \ast & \cdots & \ast \\ \hline
+    & & & \ast' & \ast' & \ast' & \cdots & \ast' \\
+    & & & 0 & \ast' & \ast' & \cdots & \ast' \\
+    & 0 & & \vdots & \vdots & \vdots & & \vdots \\
+    & & & 0 & \ast' & \ast' & \cdots & \ast'
+    \end{array}\right)
+    \xrightarrow{\cdot Q_i}
+    \left(\begin{array}{ccccc|ccc}
+    \ast & \cdots & \ast & \ast & \ast'' & \ast'' & \cdots & \ast'' \\
+    \ast & \cdots & \ast & \ast & \ast'' & \ast'' & \cdots & \ast'' \\
+    & \ddots & \vdots & \vdots & \vdots & \vdots & & \vdots \\
+    0 & & \ast & \ast & \ast'' & \ast'' & \cdots & \ast'' \\
+    & & & \ast' & \ast'' & \ast'' & \cdots & \ast'' \\ \hline
+    & & & 0 & \ast'' & \ast'' & \cdots & \ast'' \\
+    & 0 & & \vdots & \vdots & \vdots & & \vdots \\
+    & & & 0 & \ast'' & \ast'' & \cdots & \ast''
+    \end{array}\right) \\
+    & \text{mit } Q_\ell =
+    \left(\begin{array}{c|c}
+        E_\ell & 0 \\ \hline 0 & \widetilde{Q}_\ell
+    \end{array}\right)
+    \text{ und } H \text{ ist }
+    \ell \times \ell \text{-Matrix bereits in Hessenbergform}
+\end{align*}}
+\textbf{Beispiel}:
+\matrixsize{\begin{align*}
+    \left(\begin{array}{c|ccc}
+        x & x & x & x \\ \hline \boldsymbol{x} & x & x & x \\
+        \boldsymbol{x} & x & x & x \\ \boldsymbol{x} & x & x & x
+    \end{array}\right)
+    \xrightarrow{Q_1 \cdot}
+    \left(\begin{array}{c|ccc}
+        x & x & x & x \\ \hline y & y & y & y \\
+        0 & y & y & y \\ 0 & y & y & y
+    \end{array}\right)
+    \xrightarrow{\cdot Q_1}
+    \left(\begin{array}{cc|cc}
+        x & z & z & z \\ y & z & z & z \\ \hline
+        0 & \boldsymbol{z} & z & z \\ 0 & \boldsymbol{z} & z & z
+    \end{array}\right)
+    \xrightarrow{Q_2 \cdot}
+    \left(\begin{array}{cc|cc}
+        x & z & z & z \\ y & z & z & z \\ \hline
+        0 & u & u & u \\ 0 & 0 & u & u
+    \end{array}\right)
+    \xrightarrow{\cdot Q_2}
+    \left(\begin{array}{ccc|c}
+        x & z & v & v \\ y & z & v & v \\
+        0 & u & v & v \\ \hline 0 & 0 & \boldsymbol{v} & v
+    \end{array}\right)
+\end{align*}}
+
+\linie
+
+\textbf{\textsc{von-Mises}-Iteration}:
+Die \emph{von-Mises-Iteration} (auch \emph{Potenzmethode}) wendet Potenzen
+einer Matrix $A$ auf einen Startvektor $x$ an.
+Die resultierende normierte Folge
+\begin{align*}
+    u_n = \frac{A^n x}{\norm{A^n x}_2}
+\end{align*}
+konvergiert i.\,A. gegen einen dominanten Eigenvektor.
+Hinreichend für Konvergenz ist, dass $A$ diagonalisierbar ist und einen
+betragsmäßig größten Eigenwert $\lambda$ besitzt.
+Dann gilt für jeden Vektor $x$ mit einer nicht-trivialen Komponente
+$u \in V_\lambda(A)$, dass
+\begin{align*}
+    \norm{e^{-in\varphi}u_n - \frac{u}{\norm{u}_2}}_2 =
+    \O\left(\left|\frac{\rho}{\lambda}\right|^n\right),
+\end{align*}
+wobei \fracsize{$e^{i\varphi} = \frac{\lambda}{|\lambda|}$} und $\rho$ ein
+Eigenwert von $A$ mit zweitgrößtem Betrag ist.
+
+Bei einer einfachen (diagonalisierbaren) Matrix mit separierten Eigenwerten
+nähert sich so $u_n$ dem normierten Eigenvektor des betragsmäßig größten
+Eigenwerts an.
+Die Konvergenzrate ist mit
+\fracsize{$\O\left(\left|\frac{\rho}{\lambda}\right|^n\right)$} gegeben,
+für $\lambda = 10$ und $\rho = 1$ ist also z.\,B.
+\fracsize{$\O\left(\left|\frac{1}{10}\right|^n\right)$}, d.\,h.
+ungefähr eine Dezimalstelle pro Schritt.
+
+\linie
+\pagebreak
+
+\textbf{Deflation}:
+Sei eine $n \times n$-Matrix $A$ gegeben.
+Ist $\lambda$ ein Eigenwert von $A$ mit einem Eigenvektor $v$ der Form
+\begin{align*}
+    v = \begin{pmatrix}1 \\ u_1 \\ \vdots \\ u_{n-1}\end{pmatrix},
+    \text{ dann gilt }
+    \underbrace{\left(\begin{array}{c|ccc}
+    1 & 0 & \cdots & 0 \\ \hline & & & \\ -u & & E & \\ & & &
+    \end{array}\right)}_{Q^{-1}} A
+    \underbrace{\left(\begin{array}{c|ccc}
+    1 & 0 & \cdots & 0 \\ \hline & & & \\ u & & E & \\ & & &
+    \end{array}\right)}_{Q}
+    = \left(\begin{array}{c|ccc}
+    \lambda & & A(1, 2:n) & \\ \hline 0 & & & \\
+    \vdots & & B & \\ 0 & & &
+    \end{array}\right),
+\end{align*}
+wobei $B = A(2:n, 2:n) - u \cdot A(1, 2:n)$.
+Die restlichen Eigenwerte von $A$ sind nun die Eigenwerte der Matrix
+$(n - 1) \times (n - 1)$-Matrix $B$. \\
+Ist für alle Eigenvektoren $v$ zu $\lambda$ die erste Komponente $0$, so
+wird die Deflation auf \\
+$\widetilde{A} = PAP$ angewandt, wobei
+$P = P^{-1}$ ein Permutationsmatrix ist, die eine von $0$ verschiedene
+Komponente von $v$ mit der $0$ in Position $1$ vertauscht
+(diese gibt es, da Eigenvektoren immer ungleich Nullvektor sind).
+
+\subsection{%
+    \textsc{Wielandt}- und QR-Iteration%
+}
+
+\textbf{\textsc{Wielandt}-Iteration}:
+Die Wielandt-Iteration ist eine Variante (Verbesserung) der von-Mises-Iteration.
+Dabei kann die Wielandt-Iteration beliebige Eigenwerte berechnen.
+Sie berechnet eine Folge von Approximationen zu einem Eigenwert
+$\lambda$ und einem entsprechenden normierten Eigenvektor $u$ einer Matrix $A$.
+Dabei geht man von einer hinreichend guten Startnäherung $\lambda_0$ und $u_0$
+($u_0$ kann auch zufällig gewählt sein) aus.
+Die Wielandt-Iteration konvergiert zu einem normierten Eigenvektor $u$,
+der zum Eigenwert $\lambda$ von $A$ gehört, der am nächsten bei $\lambda_0$
+liegt. \\
+Ein Iterationsschritt hat die Form
+\begin{align*}
+    \lambda_\ell = u_\ell^t A u_\ell, \qquad
+    v_\ell = (A - \lambda_\ell E)^{-1} u_\ell, \qquad
+    u_{\ell + 1} = \frac{v_\ell}{\norm{v_\ell}_2}.
+\end{align*}
+In der Implementierung wird $v_\ell$ als Lösung eines LGS berechnet.
+Für einen einfachen Eigenwert einer symmetrischen Matrix konvergiert die
+Iteration kubisch, d.\,h. $\Delta_{\ell+1} \le c \Delta_\ell^3$, wobei \\
+$\Delta_\ell = \max\{|\lambda_\ell - \lambda|,
+\norm{u_\ell - \sigma_\ell u}_2\}$
+mit $\sigma_\ell = \sgn(u_\ell^t u)$.
+
+\linie
+
+\textbf{QR-Iteration}:
+Sei eine Matrix $A$ in Hessenberg-Form gegeben.
+Die QR-Iteration approximiert einen Eigenwert von $A$ mit Hilfe orthogonaler
+Ähnlichkeitstransformationen
+\begin{align*}
+    A_\ell \rightarrow A_{\ell+1} = Q_{\ell+1}^t A_\ell Q_\ell, \quad
+    A_0 = A,
+\end{align*}
+wobei die Matrix $Q_{\ell+1}$ durch die QR-Zerlegung
+\[\begin{array}{c}
+    A_\ell - \lambda_\ell E = Q_{\ell+1} R_{\ell+1}, \quad
+    \lambda_\ell = \frac{d_+}{2} + \frac{\sigma}{2}
+    \sqrt{d_-^2 + 4 A_\ell(n, n - 1) A_\ell(n - 1, n)},\\
+    d_\pm = A_\ell(n, n) \pm A_\ell(n - 1, n - 1), \quad
+    \sigma = \begin{cases}1 & d_- \ge 0 \\ -1 & d_- < 0\end{cases}
+\end{array}\]
+definiert wird.
+Dabei ist der \emph{Shift} $\lambda_\ell$ der am nächsten bei
+$A_\ell(n, n)$ gelegene Eigenwert der $2 \times 2$-Untermatrix
+$A_\ell(n - 1:n, n - 1:n)$ (man kann auch $A_\ell(n, n)$ nehmen).
+
+Die Null-Diagonalen der Hessenberg-Form bleiben bei der QR-Iteration erhalten.
+Ist $A$ symmetrisch, so sind daher alle Matrizen $A_\ell$ tridiagonal.
+Für $\ell \to \infty$ geht der unterste nebendiagonale Eintrag
+$A_\ell(n, n - 1)$ gegen $0$, deswegen nähert sich $A_\ell(n, n)$ einem
+Eigenwert $\lambda$ von $A$. \\
+Ist $A$ symmetrisch, so ist die Konvergenz kubisch.
+
+Hat die Iteration konvergiert (d.\,h. ist der unterste nebendiagonale Eintrag
+von $A_\ell$ innerhalb der Toleranz $\approx 0$), so wird das Verfahren
+auf die Untermatrix $A_\ell(1 : n - 1, 1 : n - 1)$ angewandt.
+So können schließlich alle Eigenwerte von $A$ berechnet werden.
+
+\pagebreak

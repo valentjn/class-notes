@@ -1,0 +1,469 @@
+\optpart{%
+    Grundlegende Räume und Abbildungen der Funktionalanalysis%
+}
+
+\section{%
+    Skalarprodukte, Normen und Metriken%
+}
+
+\subsection{%
+    Skalarprodukte%
+}
+
+\begin{Bem}
+    Im Folgenden ist $\KK = \real$ oder $\KK = \complex$.
+\end{Bem}
+
+\begin{Def}{Skalarprodukt}
+    Sei $V$ ein $\KK$-Vektorraum.\\
+    Eine Abbildung $\sp{\cdot, \cdot}\colon V \times V \rightarrow \KK$ heißt
+    \begriff{Skalarprodukt} (oder \begriff{inneres Produkt}) auf $V$, falls
+    \begin{enumerate}
+        \item
+        $\forall_{\alpha \in \KK} \forall_{x, y, z \in V}\;
+        \sp{\alpha x + y, z} = \alpha \sp{x, z} + \sp{y, z}$
+        (\begriff{Linearität im ersten Argument}),
+        
+        \item
+        $\forall_{x, y \in V}\; \sp{x, y} = \kk{\sp{y, x}}$
+        (\begriff{Symmetrie} bzw. \begriff{\name{Hermite}sche Symmetrie}) und
+        
+        \item
+        $\forall_{x \in V}\; \sp{x, x} \ge 0 \;\land\; \left[\sp{x, x} = 0 \iff x = 0\right]$
+        (\begriff{positive Definitheit}).
+    \end{enumerate}
+    $V$ zusammen mit $\sp{\cdot, \cdot}$ heißt \begriff{Skalarproduktraum}
+    (oder \begriff{Prä-\name{Hilbert}raum}).
+\end{Def}
+
+\begin{Bem}
+    Aus \emph{(1)} und \emph{(2)} folgt
+    $\forall_{\alpha \in \KK} \forall_{x, y, z \in V}\; \sp{x, \alpha y + z} =
+    \kk{\alpha} \sp{x, y} + \sp{x, z}$.
+    Ein Skalarprodukt ist also für $\KK = \real$ bzw. $\KK = \complex$
+    eine positiv definite, symmetrische Bilinearform bzw.
+    eine positiv definite, hermitesche Sesquilinearform.
+\end{Bem}
+
+\begin{Bsp}
+    Folgende Vektorräume bilden mit den zugehörigen Abbildungen Skalarprodukträume.
+    \begin{enumerate}[label=\emph{(\alph*)}]
+        \item
+        $V := \real^n$, $\sp{x, y} := \sum_{i=1}^n x_i y_i$
+        
+        \item
+        $V := \complex^n$, $\sp{x, y} := \sum_{i=1}^n x_i \kk{y_i}$
+        
+        \item
+        $V := \left\{\left.x \in \real^\natural \;\right|\; \sp{x, x} < \infty\right\}$,
+        $\sp{x, y} := \sum_{i=1}^\infty x_i y_i$
+        
+        \item
+        $V := \left\{\left.x \in \complex^\natural \;\right|\; \sp{x, x} < \infty\right\}$,
+        $\sp{x, y} := \sum_{i=1}^\infty x_i \kk{y_i}$
+        
+        \item
+        $V := \C([a,b], \real)$ mit $a < b$ reell, $\sp{x, y} := \int_a^b x(t)y(t)\dt$
+        
+        \item
+        $V := \C([a,b], \complex)$ mit $a < b$ reell, $\sp{x, y} := \int_a^b x(t)\kk{y(t)}\dt$
+    \end{enumerate}
+\end{Bsp}
+
+\begin{Satz}{\name{Cauchy}-\name{Schwarz}sche Ungleichung}
+    Seien $X$ ein Skalarproduktraum und $x, y \in X$.\\
+    Dann gilt $|\sp{x, y}| \le \sqrt{\sp{x, x}} \cdot \sqrt{\sp{y, y}}$.
+    Gleichheit gilt genau dann, wenn $x$ und $y$ linear abhängig sind.
+\end{Satz}
+
+\subsection{%
+    Normen%
+}
+
+\begin{Bem}
+    Ein Skalarprodukt kann zur Abstandsmessung verwendet werden.
+\end{Bem}
+
+\begin{Def}{Norm}
+    Sei $X$ ein $\KK$-Vektorraum.
+    Eine Abbildung $\norm{\cdot}\colon X \rightarrow \real$ heißt \begriff{Norm}, falls
+    \begin{enumerate}
+        \item
+        $\forall_{x \in X}\; \norm{x} \ge 0 \;\land\; \left[\norm{x} = 0 \iff x = 0\right]$
+        (\begriff{Positivität} und \begriff{Definitheit}),
+        
+        \item
+        $\forall_{\alpha \in \KK} \forall_{x \in X}\; \norm{\alpha x} = |\alpha| \cdot \norm{x}$
+        (\begriff{Homogenität}) und
+        
+        \item
+        $\forall_{x, y \in X}\; \norm{x + y} \le \norm{x} + \norm{y}$
+        (\begriff{Dreiecksungleichung}).
+    \end{enumerate}
+    $V$ zusammen mit $\norm{\cdot}$ heißt \begriff{normierter Raum}.
+\end{Def}
+
+\linie
+\pagebreak
+
+\begin{Satz}{induzierte Norm}
+    In jedem Skalarproduktraum $X$ lässt sich durch $\norm{x} := \sqrt{\sp{x, x}}$ eine Norm
+    einführen.
+    Man nennt sie die durch das Skalarprodukt \begriff{induzierte Norm}.
+\end{Satz}
+
+\begin{Satz}{Parallelogrammgleichung}
+    Seien $(X, \sp{\cdot, \cdot})$ ein Skalarproduktraum und $\norm{\cdot}$ die durch
+    $\sp{\cdot, \cdot}$ induzierte Norm.
+    Dann gilt
+    $\forall_{x, y \in X}\; \norm{x + y}^2 + \norm{x - y}^2 = 2(\norm{x}^2 + \norm{y}^2)$.
+\end{Satz}
+
+\begin{Bem}
+    Nach dem Satz über die induzierte Norm ist jeder Skalarproduktraum auch ein normierter Raum.
+    Allerdings wird nicht jede Norm von einem Skalarprodukt induziert:
+    Sei $X := \real^2$ mit Norm $\norm{x} := \max_{k = 1, 2} |x_k|$ für $x \in X$.
+    Für $x := (1, 2)^T$ und $y := (2, 0)^T$ gilt $\norm{x} = \norm{y} = 2$,
+    $\norm{x + y} = 3$ und $\norm{x - y} = 2$, also
+    $\norm{x + y}^2 + \norm{x - y}^2 = 13 \not= 16 = 2(\norm{x}^2 + \norm{y}^2)$.
+    Die Parallelogrammgleichung ist nicht erfüllt, somit kann die Norm nicht von einem
+    Skalarprodukt induziert werden.
+\end{Bem}
+
+\begin{Satz}{Bedingung für Induktion von Normen durch Skalarprodukte}
+    Genau diejenigen normierten Räume $X$, in denen die Parallelogrammgleichung gilt,
+    sind Skalarprodukträume, d.\,h. genau in diesen Räumen gibt es ein Skalarprodukt,
+    welches die Norm induziert.\\
+    In diesem Fall lässt sich für $\KK = \real$ durch
+    $\sp{x, y} := \frac{1}{4} (\norm{x + y}^2 - \norm{x - y}^2)$
+    und für $\KK = \complex$ durch
+    $\sp{x, y} := \frac{1}{4} (\norm{x + y}^2 - \norm{x - y}^2 +
+    \iu \cdot (\norm{x + \iu y}^2 - \norm{x - \iu y}^2))$
+    (\begriff{Polarisationsformeln})
+    ein Skalarprodukt auf $X$ erklären, das die Norm induziert.
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Mithilfe von reellen Skalarprodukten kann man einen Winkelbegriff einführen, denn es gilt
+    $\frac{|\sp{x, y}|}{\norm{x} \cdot \norm{y}} \le 1$ für $x, y \not= 0$ aufgrund der
+    Cauchy-Schwarz-Ungleichung.
+\end{Bem}
+
+\begin{Def}{Winkel}
+    Seien $X$ ein reeller Skalarproduktraum und $x, y \in X \setminus \{0\}$.\\
+    Dann heißt $\alpha \in [0, \pi]$ mit $\cos(\alpha) = \frac{\sp{x, y}}{\norm{x} \cdot \norm{y}}$
+    der \begriff{Winkel} zwischen $x$ und $y$.
+\end{Def}
+
+\begin{Def}{orthogonal}
+    Sei $X$ ein Skalarproduktraum.
+    \begin{enumerate}
+        \item
+        $x, y \in X$ heißen \begriff{orthogonal zueinander} ($x \orth y$), falls $\sp{x, y} = 0$.
+        
+        \item
+        $X_1, X_2 \subset X$ mit $X_1, X_2 \not= \emptyset$ heißen \begriff{orthogonal zueinander}
+        ($X_1 \orth X_2$), falls\\
+        $\forall_{x \in X_1} \forall_{y \in X_2}\; x \orth y$.
+    \end{enumerate}
+\end{Def}
+
+\begin{Satz}{\name{Pythagoras}}
+    Seien $X$ ein Skalarproduktraum und $x, y \in X$ mit $x \orth y$.\\
+    Dann gilt $\norm{x + y}^2 = \norm{x}^2 + \norm{y}^2$.
+\end{Satz}
+
+\subsection{%
+    Beispiele für normierte Räume%
+}
+
+\begin{Bsp}
+    \begriff{$\KK^n$ mit der $p$-Norm}
+    \begin{enumerate}[label=\emph{(\alph*)}]
+        \item
+        $\norm{x}_p := \left(\sum_{k=1}^n |x_k|^p\right)^{1/p}$ für $p \in [1, \infty)$
+        
+        \item
+        $\norm{x}_\infty := \max_{k=1,\dotsc,n} |x_k|$
+    \end{enumerate}
+\end{Bsp}
+
+\begin{Bsp}
+    \begriff{Folgenräume}
+    \begin{enumerate}[label=\emph{(\alph*)}]
+        \item
+        $\ell^p := \{x \in \KK^\natural \;|\;
+        \norm{x}_{\ell^p} < \infty\}$, $\norm{x}_{\ell^p} :=
+        \left(\sum_{k=1}^\infty |x_k|^p\right)^{1/p}$ für $p \in [1, \infty)$
+        
+        \item
+        $\ell^\infty := \{x \in \KK^\natural \;|\;
+        \norm{x}_{\ell^\infty} < \infty\}$, $\norm{x}_{\ell^\infty} :=
+        \sup_{k \in \natural} |x_k|$
+        
+        \item
+        $c_0 := \{x \in \KK^\natural \;|\; \lim_{k \to \infty} x_k = 0\}$,
+        $\norm{\cdot}_{\ell^\infty}$
+        
+        \item
+        $c := \{x \in \KK^\natural \;|\; x \text{ konvergiert}\}$,
+        $\norm{\cdot}_{\ell^\infty}$
+        
+        \item
+        $c_\ast := \{x \in \KK^\natural \;|\; x_k = 0 \text{ für fast alle }
+        k \in \natural\}$, $\norm{\cdot}_{\ell^p}$ für $p \in [1, \infty]$
+    \end{enumerate}
+\end{Bsp}
+
+\linie
+\pagebreak
+
+\begin{Bsp}
+    \begriff{Funktionenräume}\\
+    Seien $M, K, \Omega \subset \real^n$ nicht-leer mit $K$ kompakt und $\Omega$ of"|fen.
+    Die Räume sind auch definiert, falls $\KK$ weggelassen wird, in diesem Fall gilt
+    $\KK = \real$.
+    \begin{enumerate}[label=\emph{(\alph*)}]
+        \item
+        $B(M, \KK) := \{f\colon M \rightarrow \KK \;|\; \norm{f}_\infty < \infty\}$,
+        $\norm{f}_\infty := \sup_{x \in M} |f(x)|$,\\
+        \begriff{Raum der beschränkten Funktionen auf $M$}
+        
+        \item
+        $\C^0(K, \KK) := \{f\colon K \rightarrow \KK \;|\; f \text{ stetig}\}$,
+        $\norm{f}_{\C^0} := \sup_{x \in K} |f(x)|$,\\
+        \begriff{Raum der stetigen Funktionen auf $K$}
+        
+        \item
+        $\C^0_b(\Omega, \KK) := \{f\colon \Omega \rightarrow \KK \;|\; f \text{ stetig},\;
+        \norm{f}_{\C_0} < \infty\}$,
+        $\norm{f}_{\C^0} := \sup_{x \in \Omega} |f(x)|$,\\
+        \begriff{Raum der stetigen, beschränkten Funktionen auf $\Omega$}
+        
+        \item
+        $\C^0_c(\Omega, \KK) := \{f \in \C^0_b(\Omega, \KK) \;|\;
+        \supp f \subset \Omega \text{ kompakt}\}$,
+        $\norm{\cdot}_{\C^0}$,\\
+        \begriff{Raum der stetigen, beschränkten Funktionen mit kompaktem Träger in $\Omega$}
+        
+        \item
+        $\C^0_\unif(\Omega, \KK) := \BUC(\Omega, \KK) := \{f \in \C^0_b(\Omega, \KK) \;|\;
+        f \text{ gleichmäßig stetig auf } \Omega\}$,
+        $\norm{\cdot}_{\C^0}$,\\
+        \begriff{Raum der gleichmäßig stetigen, beschränkten Funktionen auf $\Omega$}
+        
+        \item
+        $\C^{0,\alpha}(\Omega, \KK) := \{f \in \C^0_b(\Omega, \KK) \;|\;
+        \norm{f}_{\C^{0,\alpha}} < \infty\}$, $\alpha \in (0, 1]$,
+        $\norm{f}_{\C^{0,\alpha}} := \norm{f}_{\C^0} + [f]_{\C^{0,\alpha}}$,\\
+        $[f]_{\C^{0,\alpha}} := \sup_{x, y \in \Omega,\; x \not= y}
+        \frac{|f(x) - f(y)|}{\norm{x - y}^\alpha}$,
+        \begriff{Raum der \name{Hölder}-stetigen Funktionen auf $\Omega$},\\
+        für $\alpha = 1$ ist
+        $\C^{0,1}(\Omega, \KK) =: \Lip(\Omega, \KK)$
+        der \begriff{Raum der \name{Lipschitz}-stetigen Funktionen auf $\Omega$}
+        
+        \item
+        $\C^m(K, \KK) := \{f\colon K \rightarrow \KK \;|\;
+        \partial_x^j f \text{ stetig auf } \overset{\circ}{K} = \interior K,\;
+        \text{stetig fortsetzb. auf } K,\; |j| \le m\}$,\\
+        $\norm{f}_{\C^m} := \sum_{|j| \le m} \norm{\partial_x^j f}_{\C^0}$,
+        \begriff{Raum der $m$-fach stetig dif"|ferenzierbaren Funktionen auf $K$}\\
+        (dabei ist $j = (j_1, \dotsc, j_n) \in \natural_0^n$ ein \begriff{Multiindex}
+        mit $|j| := j_1 + \dotsb + j_n$
+        sowie $x = (x_1, \dotsc, x_n)$ und
+        $\partial_x^j = \partial_{x_1}^{j_1} \dotsb \partial_{x_n}^{j_n}$)
+        
+        \item
+        $\C^m_b(\Omega, \KK) := \{f\colon \Omega \rightarrow \KK \;|\;
+        \partial_x^j f \text{ stetig},\; \norm{\partial_x^j f}_{\C^0} < \infty,\; |j| \le m\}$,
+        $\norm{\cdot}_{\C^m}$,\\
+        \begriff{Raum der $m$-fach stetig diffb.,
+        in allen Ableitungen beschränkten Funktionen auf $\Omega$}
+        
+        \item
+        $\C^m_c(\Omega, \KK) := \{f \in \C^m_b(\Omega, \KK) \;|\;
+        \partial_x^j f \text{ stetig},\; \supp f \subset \Omega \text{ kompakt}\}$,
+        $\norm{\cdot}_{\C^m}$,\\
+        \begriff{Raum der $m$-fach stetig diffb. Funktionen mit kompaktem Träger in $\Omega$}
+        
+        \item
+        $\C^m_\unif(\Omega, \KK) := \{f \in \C^m_b(\Omega, \KK) \;|\;
+        \partial_x^j f \in \C^0_\unif(\Omega, \KK),\; |j| \le m\}$,
+        $\norm{\cdot}_{\C^m}$,\\
+        \begriff{Raum der $m$-fach stetig diffb., in allen Ableitungen
+        glm. stetigen Funktionen auf $\Omega$}
+        
+        \item
+        $\C^{m,\alpha}(\Omega, \KK) := \{f \in \C^m_b(\Omega, \KK) \;|\;
+        \partial_x^j f \in \C^{0,\alpha}(\Omega, \KK) \text{ für } |j| = m\}$,\\
+        $\norm{f}_{\C^{m,\alpha}} := \norm{f}_{\C^{m-1}} +
+        \sum_{|j|=m} \norm{\partial_x^j f}_{\C^{0,\alpha}}$ (für $m \ge 1$),\\
+        \begriff{Raum der $m$-fach stetig diffb., in den $m$-ten Ableitungen
+        \name{Hölder}-stetigen Fkt.en auf $\Omega$}
+    \end{enumerate}
+\end{Bsp}
+
+\linie
+
+\begin{Def}{Halbnorm}
+    Sei $X$ ein $\KK$-Vektorraum.
+    Eine Abbildung $[\cdot]\colon X \rightarrow \real$ heißt \begriff{Halbnorm},
+    falls sie alle Norm-Eigenschaften außer
+    die Definitheit ($[x] = 0 \iff x = 0$) erfüllt.\\
+    $X$ zusammen mit $[\cdot]$ heißt \begriff{halbnormierter Raum}.
+\end{Def}
+
+\begin{Satz}{Faktorisierung von halbnormierten Räumen}
+    Sei $(X, [\cdot])$ ein halbnormierter Raum.
+    \begin{enumerate}
+        \item
+        $\Kern([\cdot]) := \{x \in X \;|\; [x] = 0\}$ ist ein Unterraum von $X$.
+        
+        \item
+        $X/\Kern([\cdot])$ mit der kanonischen Quotientenvektorraum-Struktur und der Norm\\
+        $\norm{x + \Kern([\cdot])} := [x]$ ist ein normierter Raum.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bem}
+    Dabei ist $X/\Kern([\cdot]) := \{\widehat{x} \;|\; x \in X\}$
+    mit $\widehat{x} := x + \Kern([\cdot]) = \{y \in X \;|\; x \sim y\}$,
+    wobei die Äquivalenzrelation $\sim$ durch
+    $x \sim y \iff x - y \in \Kern([\cdot])$ definiert ist.
+    Dadurch wird $X/\Kern([\cdot])$ mit den Operationen
+    $\widehat{x} + \widehat{y} := \widehat{x + y}$ und
+    $\alpha \widehat{x} := \widehat{\alpha x}$ zu einem Vektorraum mit
+    Nullelement $\Kern([\cdot])$.
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Def}{$\L^p_\KK(\Omega)$-, $L^p_\KK(\Omega)$-, $\ell^p_\KK$-Räume}
+    Sei $(\Omega, \Sigma, \lambda)$ ein Maßraum,
+    also $\Sigma$ eine $\sigma$-Algebra über $\Omega$ und $\lambda$ ein Maß über
+    $(\Omega, \Sigma)$.
+    Definiere $\L^p_\KK(\Omega) := \{f\colon \Omega \rightarrow \KK \;|\;
+    f \text{ ist } (\Sigma, \lambda)\text{-messbar},\; [f]_{L^p} < \infty\}$, wobei
+    $[f]_{L^p} := \left(\int_\Omega |f|^p d\lambda\right)^{1/p}$ für $1 \le p < \infty$
+    und $[f]_{L^\infty} := \inf_{B \in \Sigma,\; \lambda(B) = 0} \sup_{x \in \Omega \setminus B}
+    |f(x)|$.\\
+    Dadurch wird $(\L^p_\KK(\Omega), [\cdot]_{L^p})$ zum halbnormierten Raum.\\
+    Gemäß obigem Satz ist $L^p_\KK(\Omega) := \L^p_\KK(\Omega)/\Kern([\cdot]_{L^p})$
+    mit $\norm{f}_{L^p} := [f]_{L^p}$ ein normierter Raum,
+    wobei $\Kern([\cdot]_{L^p}) = \{f \in \L^p_\KK(\Omega) \;|\; f = 0 \;\lambda\text{-f.ü.}\}$.\\
+    Für $\Omega = \natural$, $\Sigma = \pot(\natural)$ und $\lambda$ gleich
+    dem \begriff{Zählmaß} (oder \begriff{Diracmaß}), definiert durch $\lambda(B) := |B|$ für
+    $B \subset \natural$, definiert man $\ell^p_\KK := L^p_\KK(\natural) \cong
+    \L^p_\KK(\natural)$.\\
+    Außerdem legt man fest, dass $\KK = \real$ ist, wenn $\KK$
+    bei $\L^p_\KK(\Omega)$, $L^p_\KK(\Omega)$ oder $\ell^p_\KK$ weggelassen wird.
+\end{Def}
+
+%\begin{Bem}
+%    Der schwierige Schritt beim Nachweis der Halbnorm-/Normeigenschaften von\\
+%    $\L^p_\KK(\Omega)$/$L^p_\KK(\Omega)$ ist der Beweis der Dreiecksungleichung.
+%    Dazu benötigt man ein paar Hilfssätze.
+%\end{Bem}
+
+\begin{Def}{konjugierte Zahl}
+    Sei $p \in [1, \infty]$.\\\
+    Dann heißt $p' \in [1, \infty]$ mit $\frac{1}{p} + \frac{1}{p'} = 1$ die zu $p$
+    \begriff{konjugierte Zahl}
+    (wobei $\frac{1}{\infty} := 0$).
+\end{Def}
+
+\begin{Lemma}{\name{Young}sche Ungleichung}
+    Seien $a, b \ge 0$ und $p \in (1, \infty)$.
+    Dann ist $ab \le \frac{1}{p} a^p + \frac{1}{p'} b^{p'}$.
+\end{Lemma}
+
+\begin{Satz}{\name{Hölder}sche Ungleichung}
+    Seien $p \in [1, \infty]$, $f \in L^p(\Omega)$ und $g \in L^{p'}(\Omega)$.\\
+    Dann ist $fg \in L^1(\Omega)$ und $\norm{fg}_{L^1} \le \norm{f}_{L^p} \norm{g}_{L^{p'}}$.
+\end{Satz}
+
+\begin{Satz}{\name{Minkowski}sche Ungleichung}
+    Seien $p \in [1, \infty]$ und $f, g \in L^p(\Omega)$.\\
+    Dann ist $f + g \in L^p(\Omega)$ und $\norm{f + g}_{L^p} \le \norm{f}_{L^p} + \norm{g}_{L^p}$.
+\end{Satz}
+
+\begin{Bem}
+    Für $\lambda(\Omega) < \infty$ (d.\,h. $\lambda$ ist ein \begriff{endliches Maß})
+    und $p, q \in [1, \infty]$ mit $p < q$ gilt
+    $L^q(\Omega) \subset L^p(\Omega)$, genauer
+    $\exists_{C > 0} \forall_{f \in L^q(\Omega)}\; \norm{f}_{L^p} \le C \norm{f}_{L^q}$.
+\end{Bem}
+
+\subsection{%
+    Metriken%
+}
+
+\begin{Def}{Metrik}
+    Sei $X \not= \emptyset$.
+    Eine Abbildung $d\colon X \times X \rightarrow \real$ heißt \begriff{Metrik}, falls
+    \begin{enumerate}
+        \item
+        $\forall_{x, y \in X}\; d(x, y) \ge 0 \;\land\; [d(x, y) = 0 \iff x = y]$
+        (\begriff{Positivität} und \begriff{Definitheit}),
+        
+        \item
+        $\forall_{x, y \in X}\; d(x, y) = d(y, x)$
+        (\begriff{Symmetrie}) und
+        
+        \item
+        $\forall_{x, y, z \in X}\; d(x, y) \le d(x, z) + d(z, y)$
+        (\begriff{Dreiecksungleichung}).
+    \end{enumerate}
+    $X$ zusammen mit $d$ heißt \begriff{metrischer Raum}.
+\end{Def}
+
+\begin{Def}{Halbmetrik}
+    Erfüllt $d$ alle Metrik-Eigenschaften außer die Definitheit\\
+    ($d(x, y) = 0 \iff x = y$),
+    so heißt $d$ \begriff{Halbmetrik}.\\
+    $X$ zusammen mit $d$ heißt \begriff{halbmetrischer Raum}.
+\end{Def}
+
+\begin{Bem}
+    Durch Verwendung von Quotientenräumen kann man wie bei halbnormierten Räumen
+    halbmetrische Räume zu metrischen Räumen machen.
+\end{Bem}
+
+\begin{Satz}{induzierte Metrik}
+    \begin{enumerate}
+        \item
+        Sei $(X, \norm{\cdot})$ ein normierter Raum.
+        Dann ist durch $d(x, y) := \norm{x - y}$ eine Metrik
+        (die sog. \begriff{induzierte Metrik}) definiert,
+        die folgende zusätzliche Eigenschaften besitzt:
+        \begin{enumerate}[start=4]
+            \item
+            $\forall_{x, y, z \in X}\; d(x + z, y + z) = d(x, y)$
+            (\begriff{Translationsinvarianz}) und
+            
+            \item
+            $\forall_{x, y \in X} \forall_{\alpha \in \KK}\;
+            d(\alpha x, \alpha y) = |\alpha| \cdot d(x, y)$
+            (\begriff{Homogenität}).
+        \end{enumerate}
+        
+        \item
+        Sei $(X, d)$ ein metrischer Raum.
+        Außerdem sei $X$ ein $\KK$-Vektorraum, sodass
+        $d$ translationsinvariant und homogen ist.
+        Dann ist durch $\norm{x} := d(x, 0)$ eine Norm definiert,
+        die die Metrik $d$ induziert.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bsp}
+    Für $X \not= \emptyset$ ist $d(x, y) := 0$ für $x = y$ und $d(x, y) := 1$ sonst
+    eine Metrik, die \begriff{diskrete Metrik}.
+    Falls $X$ ein $\KK$-Vektorraum ist, wird sie von keiner Norm induziert, wenn $|X| \ge 2$.
+\end{Bsp}
+
+\pagebreak

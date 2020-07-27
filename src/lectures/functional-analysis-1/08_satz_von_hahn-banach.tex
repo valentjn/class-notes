@@ -1,0 +1,306 @@
+\optpart{%
+    \name{Banach}raumtheorie%
+}
+
+\section{%
+    Der Satz von \name{Hahn}-\name{Banach} und die Hauptsätze der \name{Banach}raumtheorie%
+}
+
+\subsection{%
+    Der Satz von \name{Hahn}-\name{Banach}, Projektions- und Trennungssatz
+}
+
+\begin{Bem}
+    Sämtliche Aussagen in diesem Abschnitt basieren auf dem Satz von Hahn-Banach, für dessen
+    Beweis man das Auswahlaxiom benötigt.
+\end{Bem}
+
+\begin{Satz}{Satz von \name{Hahn}-\name{Banach}}
+    Sei $X$ ein $\real$-Vektorraum und $Y \subset X$ ein Unterraum.\\
+    Außerdem seien
+    \begin{enumerate}
+        \item
+        $p\colon X \rightarrow \real$ \begriff{sublinear},
+        d.\,h. $\forall_{x, y \in X}\; p(x + y) \le p(x) + p(y)$ und
+        $\forall_{x \in X} \forall_{\alpha \ge 0}\; p(\alpha x) = \alpha p(x)$,
+        
+        \item
+        $f\colon Y \rightarrow \real$ linear und
+        
+        \item
+        $f \le p$ auf $Y$.
+    \end{enumerate}
+    Dann gibt es eine lineare Abbildung $F\colon X \rightarrow \real$ mit
+    $F|_Y = f$ und $F \le p$ auf $X$.
+\end{Satz}
+
+\begin{Satz}{Satz von \name{Hahn}-\name{Banach} für lineare Funktionale}\\
+    Seien $X$ ein normierter Raum und $Y \subset X$ ein Unterraum (mit der Norm von $X$).
+    Dann gilt\\
+    $\forall_{y' \in Y'} \exists_{x' \in X'}\; [x'|_Y = y',\; \norm{x'}_{X'} = \norm{y'}_{Y'}]$.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{Projektionssatz für norm. Räume}\\
+    Seien $X$ ein normierter Raum, $Y \subset X$ ein abgeschlossener Unterraum und
+    $x_0 \in X \setminus Y$.\\
+    Dann gilt
+    $\exists_{x' \in X'}\; [x'|_Y = 0,\; \norm{x'}_{X'} = 1,\; x'(x_0) = \dist(x_0, Y)]$.
+\end{Satz}
+
+\begin{Bem}
+    $x'$ ist also eine Art lineare Näherung der Abstandsabbildung $\dist(\cdot, Y)$.\\
+    Der Satz kann als Verallgemeinerung des Projektionssatzes für Hilberträume aufgefasst werden:
+    Ist $X$ sogar ein Hilbertraum,
+    dann erfüllt $x' \in X'$ mit $x'(x) := \sp{x, \frac{(\id - P)x_0}{\norm{(\id - P)x_0}}}$ mit
+    $P$ der orthogonalen Projektion auf $Y$ die Eigenschaften des obigen Satzes.
+    Es gilt $(\id - P)x_0 \in Y^\orth$,
+    weil $\id - P$ die orthogonale Projektion auf $Y^\orth$ ist
+    (daraus folgt $x'|_Y = 0$).
+    Außerdem gilt mit $x'(Px_0) = 0$ (wegen $Px_0 \in Y$), dass
+    $x'(x_0)
+    = x'((\id - P)x_0)
+    = \norm{(\id - P)x_0}
+    = \dist(x_0, Y)$,
+    insbesondere gilt also $\norm{x'}_{X'} \ge 1$.
+    $x' \in X'$ gilt wegen $|x'(x)| \le \norm{x}_X$, also $\norm{x'}_{X'} \le 1$.
+\end{Bem}
+
+\linie
+
+\begin{Kor}
+    Seien $X$ ein normierter Raum und $x_0 \in X$.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        Ist $x_0 \not= 0$, so gibt es ein $x_0' \in X'$ mit $\norm{x_0'}_{X'} = 1$ und
+        $x_0'(x_0) = \norm{x_0}_X$.
+        
+        \item
+        Wenn $\forall_{x' \in X'}\; x'(x_0) = 0$ gilt, dann ist $x_0 = 0$.
+        
+        \item
+        Sei $J_{x_0}\colon X' \rightarrow \KK$, $J_{x_0} x' := x'(x_0)$.
+        Dann ist $J_{x_0} \in X''$ mit $\norm{J_{x_0}}_{X''} = \norm{x_0}_X$.
+    \end{enumerate}
+\end{Kor}
+
+\begin{Bem}
+    $X''$ heißt \begriff{Bidualraum} von $X$.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Trennungssatz}
+    Seien $X$ ein normierter Raum, $M \subset X$ eine nicht-leere, abgeschlossene und
+    konvexe Teilmenge und $x_0 \in X \setminus M$.\\
+    Dann gilt $\exists_{x' \in X'} \exists_{\alpha \in \real} \forall_{x \in M}\;
+    \Re(x'(x)) \le \alpha,\; \Re(x'(x_0)) > \alpha$.\\
+    Insbesondere ist $x' \not= 0$ und $\{x \in X \;|\; \Re(x'(x)) = \alpha\}$ ist
+    eine Hyperebene in $X$.
+\end{Satz}
+
+\begin{Bem}
+    Man kann sich den Satz so vorstellen, dass die Hyperebene $\Re(x'(x)) = \alpha$
+    den Raum $X$ in $\Re(x'(x)) \le \alpha$ und $\Re(x'(x)) > \alpha$ aufteilt, wobei diese beiden
+    Mengen $M$ bzw. $x_0$ enthalten.
+    Für nicht-konvexe Mengen gilt die Aussage i.\,A. nicht.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    \name{Baire}scher Kategoriensatz und der Satz von \name{Banach}-\name{Steinhaus}%
+}
+
+\begin{Bem}
+    Der folgende Bairesche Kategoriensatz gilt nur in vollständigen metrischen Räumen.
+    Ein Gegenbeispiel für nicht-vollständige metrische Räume
+    ist $\rational = \bigcup_{q \in \rational} \{q\}$.
+\end{Bem}
+
+\begin{Satz}{\name{Baire}scher Kategoriensatz}
+    Seien $X$ ein nicht-leerer, vollständiger metrischer Raum und $A_k \subset X$ abgeschlossen
+    mit $X = \bigcup_{k \in \natural} A_k$.\\
+    Dann gibt es ein $k_0 \in \natural$ mit $\interior{A_{k_0}} \not= \emptyset$.
+\end{Satz}
+
+\begin{Satz}{Prinzip der gleichmäßigen Beschränktheit}
+    Seien $X$ ein nicht-leerer, vollständiger metrischer Raum, $Y$ ein normierter Raum und
+    $\F \subset \C^0(X, Y)$ mit $\forall_{x \in X} \sup_{f \in \F} \norm{f(x)}_Y < \infty$.\\
+    Dann gilt $\exists_{x_0 \in X} \exists_{\varepsilon_0 > 0}\;
+    \sup_{x \in \overline{B_{\varepsilon_0}(x_0)}} \sup_{f \in \F} \norm{f(x)}_Y < \infty$.
+\end{Satz}
+
+\begin{Satz}{Satz von \name{Banach}-\name{Steinhaus}}\\
+    Seien $X$ ein Banachraum, $Y$ ein normierter Raum und
+    $\T \subset \Lin(X, Y)$ mit\\
+    $\forall_{x \in X}\; \sup_{T \in \T} \norm{Tx}_Y < \infty$.\\
+    Dann ist $\T$ beschränkt, d.\,h. $\sup_{T \in \T} \norm{T}_{\Lin(X, Y)} < \infty$.
+\end{Satz}
+
+\begin{Satz}{Satz von \name{Banach}-\name{Steinhaus} für lineare, stetige Funktionale}\\
+    Seien $X$ ein Banachraum, $Y$ ein normierter Raum und
+    $\T \subset \Lin(X, Y)$ mit\\
+    $\forall_{x \in X} \forall_{y' \in Y'}\; \sup_{T \in \T} |y'(Tx)| < \infty$.\\
+    Dann ist $\T$ beschränkt, d.\,h. $\sup_{T \in \T} \norm{T}_{\Lin(X, Y)} < \infty$.
+\end{Satz}
+
+\linie
+
+\begin{Def}{of"|fene Abbildung}
+    Seien $X, Y$ metrische Räume.\\
+    Dann heißt eine Abbildung $f\colon X \rightarrow Y$ of"|fen, falls
+    $\forall_{U \subset X \text{ of"|fen}}\; f(U) \subset Y \text{ of"|fen}$.
+\end{Def}
+
+\begin{Bem}
+    Ist $f$ bijektiv, dann ist $f$ of"|fen genau dann, wenn $f^{-1}$ stetig ist.
+\end{Bem}
+
+\begin{Bem}
+    Sind $X, Y$ normierte Räume und $T\colon X \rightarrow Y$ linear,
+    dann ist $T$ of"|fen genau dann, wenn $\exists_{\delta > 0}\; B_\delta(0) \subset TB_1(0)$
+    (d.\,h. $0 \in \interior{TB_1(0)}$).\\
+    Wenn $T$ nämlich of"|fen ist, dann ist $TB_1(0)$ of"|fen in $Y$
+    (als Bild einer of"|fenen Menge in $X$) und weil $0 \in TB_1(0)$, gibt es eine
+    $\delta$-Kugel um $0$ in $TB_1(0)$.\\
+    Sei umgekehrt $B_\delta(0) \subset TB_1(0)$ für ein $\delta > 0$.
+    Ist $U \subset X$ of"|fen und $Tx \in TU$, dann gibt es ein $\varepsilon > 0$ mit
+    $B_\varepsilon(x) \subset U$.
+    Sei $y \in B_{\varepsilon\delta}(Tx)$, also $\norm{y - Tx}_Y < \varepsilon\delta$,
+    dann gilt $\frac{1}{\varepsilon} (y - Tx) \in B_\delta(0)$,
+    d.\,h. $\frac{1}{\varepsilon} (y - Tx) \in TB_1(0)$.
+    Daher gibt es ein $z \in B_1(0)$ mit $\frac{1}{\varepsilon} (y - Tx) = Tz$,
+    also $y = T(\varepsilon z + x)$.
+    Es gilt $\varepsilon z + x \in B_\varepsilon(x) \subset U$,
+    d.\,h. $y \in TU$ und $B_{\varepsilon\delta}(Tx) \subset TU$.
+    Damit ist $TU$ of"|fen.
+\end{Bem}
+
+\begin{Satz}{Satz von der of{}fenen Abbildung}
+    Seien $X, Y$ Banachräume und $T \in \Lin(X, Y)$.\\
+    Dann ist $T$ surjektiv genau dann, wenn $T$ of"|fen ist.
+\end{Satz}
+
+\begin{Satz}{Satz von der inversen Abbildung}\\
+    Seien $X, Y$ Banachräume und $T \in \Lin(X, Y)$ bijektiv.
+    Dann ist $T^{-1} \in \Lin(Y, X)$.
+\end{Satz}
+
+\linie
+
+\begin{Def}{Graph}
+    Seien $X, Y$ Banachräume und $T\colon X \rightarrow Y$ eine Abbildung.\\
+    Dann heißt
+    $\graph(T) := \{(x, Tx) \;|\; x \in X\} \subset X \times Y$ der \begriff{Graph} von $T$.
+\end{Def}
+
+\begin{Satz}{Satz vom abgeschlossenen Graphen}
+    Seien $X, Y$ Banachräume und $T\colon X \rightarrow Y$ linear.\\
+    Dann ist $\graph(T) \subset X \times Y$ abgeschlossen genau dann, wenn $T \in \Lin(X, Y)$.
+\end{Satz}
+
+\begin{Bem}
+    $X \times Y$ wird dabei mit der Norm $\norm{(x, y)}_{X \times Y} := \norm{x}_X + \norm{y}_Y$
+    für $(x, y) \in X \times Y$ versehen.
+    Äquivalent dazu ist die Norm $\norm{(x, y)}_{X \times Y}' := \max(\norm{x}_X, \norm{y}_Y)$
+    (oder allgemeiner $\norm{(x, y)}_{X \times Y}'' := (\norm{x}_X^p + \norm{y}_Y^p)^{1/p}$
+    für $p \in [1, \infty]$).
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Projektionen in Banachräumen%
+}
+
+\begin{Def}{Projektion}
+    Seien $X$ ein $\KK$-Vektorraum, $Y \subset X$ ein Unterraum und
+    $P\colon X \rightarrow X$ linear.\\
+    Dann heißt $P$ \begriff{Projektion} auf $Y$,
+    falls $P^2 = P$ und $\Bild(P) = Y$.
+\end{Def}
+
+\begin{Lemma}{Eigenschaften von Projektionen}
+    \begin{enumerate}
+        \item
+        $P$ ist eine Projektion auf $Y$ genau dann, wenn $P\colon X \rightarrow Y$ und
+        $P|_Y = \id$.
+        
+        \item
+        Wenn $P$ eine Projektion ist, dann ist $X = \Kern(P) \oplus \Bild(P)$.
+        
+        \item
+        Wenn $P$ eine Projektion ist, dann ist $\id - P$ auch eine Projektion mit\\
+        $\Kern(\id - P) = \Bild(P)$ und $\Bild(\id - P) = \Kern(P)$.
+        
+        \item
+        Zu jedem Unterraum $Y \subset X$ existiert eine Projektion auf $Y$.
+    \end{enumerate}
+\end{Lemma}
+
+\begin{Bem}
+    Für den Beweis der vierten Eigenschaft benötigt man das Auswahlaxiom.
+\end{Bem}
+
+\linie
+
+\begin{Def}{Menge der stetigen Projektionen}
+    Sei $X$ ein normierter Raum.\\
+    Dann heißt $\P(X) := \{P \in \Lin(X) \;|\; P^2 = P\}$ die
+    \begriff{Menge der stetigen Projektionen}.
+\end{Def}
+
+\begin{Lemma}{Eigenschaften von stetigen Projektionen}
+    Sei $P \in \P(X)$.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $\Kern(P)$ und $\Bild(P)$ sind abgeschlossen in $X$.
+        
+        \item
+        $\norm{P} \ge 1$ oder $P = 0$
+    \end{enumerate}
+\end{Lemma}
+
+\linie
+
+\begin{Satz}{Satz vom abgeschlossenen Komplement}
+    Seien $X$ ein Banachraum, $Y \subset X$ ein abgeschlossener Unterraum und
+    $Z \subset X$ ein Unterraum mit $Y \oplus Z = X$.
+    Dann sind äquivalent:
+    \begin{enumerate}
+        \item
+        Es gibt eine stetige Projektion $P$ auf $Y$ mit $Z = \Kern(P)$.
+        
+        \item
+        $Z$ ist abgeschlossen.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bem}
+    Ist $H$ ein Hilbertraum und $Y \subset H$ ein abgeschlossener Unterraum,
+    dann ist nach dem Projektionssatz die orthogonale Projektion $P$ auf $Y$ eine stetige
+    Projektion auf $Y$ im Sinne der obigen Definition und $H = Y \oplus Y^\orth$ mit $Y^\orth$
+    abgeschlossen.
+    Wegen der Besselschen Ungleichung ist $\norm{P} \le 1$, d.\,h. $\norm{P} = 1$ oder $P = 0$.
+\end{Bem}
+
+\begin{Satz}{Projektionen auf endl.-dim. Unterräume}\\
+    Seien $X$ ein normierter Raum, $E \subset X$ ein endlich-dimensionaler Unterraum mit Basis\\
+    $\{e_1, \dotsc, e_n\}$ und $Y \subset X$ ein abgeschlossener Unterraum mit
+    $Y \cap E = \{0\}$.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $\exists_{e_1', \dotsc, e_n' \in X'} \forall_{i,j=1,\dotsc,n}\;
+        e_j'|_Y = 0,\; e_j'(e_i) = \delta_{ij}$
+        
+        \item
+        Es gibt eine stetige Projektion $P$ auf $E$ mit $Y \subset \Kern(P)$.
+    \end{enumerate}
+\end{Satz}
+
+\pagebreak

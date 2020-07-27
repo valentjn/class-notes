@@ -1,0 +1,438 @@
+\section{%
+    Moduln über Hauptidealringen%
+}
+
+\subsection{%
+    Torsionsmoduln%
+}
+
+\begin{Def}{Annullator}
+    Sei $R$ ein kommutativer Ring mit Eins und $M$ ein $R$-Modul. \\
+    Dann ist der \begriff{Annullator} $\ann_R(m)$ von $m \in M$ definiert durch
+    $\ann_R(m) = \{r \in R \;|\; rm = 0\}$. \\
+    Ähnlich ist für $S \subseteq M$ $\ann_R(S) =
+    \{r \in R \;|\; \forall_{m \in S}\; rm = 0\} =
+    \bigcap_{m \in S}\; \ann_R(m)$.
+\end{Def}
+
+\begin{Lemma}{Annullator ist Ideal}
+    $\ann_R(m)$ und $\ann_R(S)$ sind Ideale von $R$.
+\end{Lemma}
+
+\begin{Lemma}{Annullator eines endlich erzeugten Moduls}
+    Sei $M = \aufspann{m_1, \dotsc, m_k}$ endlich erzeugt.
+    Dann ist $\ann_R(M) = \bigcap_{i=1}^k \ann_R(m_i)$.
+\end{Lemma}
+
+\begin{Def}{Torsionselement}
+    Seien $R$ Integritätsbereich und $M$ ein $R$-Modul. \\
+    Ein Element $m \in M$ heißt \begriff{Torsionselement}, falls
+    $\ann_R(m) \not= 0$ ist, d.\,h. es gibt ein $r \in R$, $r \not= 0$
+    mit $rm = 0$.
+    Das Nullelement $0_M$ von $M$ ist immer ein Torsionselement.
+    Ist es auch das einzige Torsionselement, so heißt $M$
+    \begriff{torsionsfrei}.
+\end{Def}
+
+\begin{Def}{Torsionsmoduln und -untermoduln}
+    Seien $R$ Integritätsbereich und $M$ ein $R$-Modul. \\
+    Dann ist die Menge $T(M)$ der Torsionselemente von $M$ ein Untermodul
+    von $M$, der \\
+    \begriff{Torsionsuntermodul} von $M$.
+    Ist $T(M) = M$, so heißt $M$ \begriff{Torsionsmodul}.
+\end{Def}
+
+\begin{Bem}
+    Beispielsweise ist ${}_\integer \integer$ ein torsionsfreier Modul
+    und $\integer/z\integer$ ist Torsionsmodul.
+\end{Bem}
+
+\begin{Satz}{Torsionsmoduln und torsionsfreie Moduln}
+    Sei $R$ ein Integritätsbereich. \\
+    Ist $M$ ein freier $R$-Modul, dann ist $M$ torsionsfrei. \\
+    Ist $M$ ein $R$-Modul, dann ist $M/T(M)$ torsionsfrei. \\
+    Epimorphe Bilder von Torsionsmoduln sind Torsionsmoduln. \\
+    Sei $\{M_\alpha \;|\; \alpha \in \mathcal{A}\}$ eine Menge von $R$-Moduln.
+    Dann ist $T\left(\bigoplus_{\alpha \in \mathcal{A}} M_\alpha\right) =
+    \bigoplus_{\alpha \in \mathcal{A}} T(M_\alpha)$.
+    Sind insbesondere die $M_\alpha$ Torsionsmoduln bzw. torsionsfrei,
+    so ist auch ihre direkte Summe Torsionsmodul bzw. torsionsfrei. \\
+    Untermoduln von Torsionsmoduln sind Torsionsmoduln. \\
+    Untermoduln von torsionsfreien Moduln sind torsionsfrei.
+\end{Satz}
+
+\begin{Def}{zyklischer $R$-Modul}
+    Seien $R$ ein kommutativer Ring mit Eins und $M$ ein $R$-Modul. \\
+    $M$ heißt \begriff{zyklischer $R$-Modul}, falls
+    $M$ einelementig erzeugt wird, d.\,h. $M = Rm$ für ein $m \in M$. \\
+    In diesem Fall wird durch $f: {}_R R \rightarrow M$, $r \mapsto rm$
+    ein $R$-Modulepimorphismus vom regulären $R$-Modul ${}_R R$ auf $M$
+    definiert. \\
+    Insbesondere ist $M$ isomorph zum Faktormodul $R/\ker f$ mit
+    $\ker f \trianglelefteq R$. \\
+    Umgekehrt ist $R/I$ zyklischer $R$-Modul ertezgt von der Nebenklasse
+    $1 + I$, falls $I \trianglelefteq R$ ist.
+\end{Def}
+
+\begin{Lemma}{torsionsfreie, zyklische Moduln sind frei} \\
+    Seien $R$ ein Integritätsbereich und
+    $(0) \not= M = Rm$ ein torsionsfreier, zyklischer $R$-Modul. \\
+    Dann ist $M \cong {}_R R$ frei mit Basis $\{m\}$.
+\end{Lemma}
+
+\begin{Satz}{Untermoduln von e.e. freien Moduln über HIR
+             sind frei von kleinerem Rang} \\
+    Seien $R$ ein Hauptidealring, $F$ ein endlich erzeugter,
+    freier $R$-Modul mit $\rg F = n$ und $R$-Basis
+    $\basis{B} = \{v_1, \dotsc, v_n\}$ sowie $M \ur F$.
+    Dann ist $M$ ein freier $R$-Modul mit $\rg M = k \le n$.
+\end{Satz}
+
+\begin{Kor}
+    Seien $R$ ein Hauptidealring und $M$ ein torsionsfreier, endlich erzeugter
+    $R$-Modul mit Erzeugendensystem $S$ der Kardinalität $|S| = k$.
+    Dann ist $M$ frei vom Rang $n \le k$.
+\end{Kor}
+
+\begin{Bem}
+    Für Hauptidealringe $R$ sind also die torsionsfreien, endlich erzeugten
+    $R$-Moduln genau die freien $R$-Moduln mit endlichem Rang.
+    Für andere Integritätsbereiche ist dies i.\,A. falsch. \\
+    Obige Folgerung besagt nicht, dass Erzeugendensysteme freier $R$-Moduln
+    eine Basis enthalten.
+    (Beispielsweise wird der freie $\integer$-Modul ${}_\integer \integer$
+    von $\{2, 3\}$ erzeugt, $\{2, 3\}$ enthält aber keine Basis.)
+\end{Bem}
+
+\begin{Satz}{e.e. Modul über HIR als Summe von Torsionsmodul und
+             freiem Modul} \\
+    Seien $R$ ein Hauptidealring und $M$ ein endlich erzeugter $R$-Modul. \\
+    Dann ist $M = T(M) \oplus U$ mit $U \ur M$ freier $R$-Modul von
+    endlichem Rang mit $U \cong M/T(M)$.
+\end{Satz}
+
+Das Ziel, alle endlich erzeugten Moduln über Hauptidealringen $R$ zu
+klassifizieren, kann man nun darauf reduzieren, alle endlich erzeugten
+$R$-Torsionsmoduln zu klassifizieren. \\
+Hat man nämlich eine Liste $\{M_\alpha \;|\; \alpha \in \mathcal{A}\}$ aller
+paarweise nicht-isomorphen, endlich erzeugten $R$-Torsionsmoduln, bekommt man
+eine aller paarweise nicht-isomorphen, endlich erzeugten $R$-Moduln als
+$\{M_{\alpha,k} \;|\; \alpha \in \mathcal{A},\; k \in \natural_0\}$ mit
+$M_{\alpha,k} = M_\alpha \oplus
+R \oplus \overset{k\text{-mal}}{\dotsb} \oplus R$. \\
+Nun will man eine Liste $\{M_\alpha \;|\; \alpha \in \mathcal{A}\}$
+konstruieren.
+
+\subsection{%
+    Primärkomponenten%
+}
+
+\begin{Bem}
+    Im Folgenden sei $R$ immer ein Hauptidealring und $M$ ein endlich erzeugter
+    $R$-Modul.
+\end{Bem}
+
+\begin{Def}{$M_p$, Primärkomponente}
+    Sei $p \in R$.
+    Dann ist \begriff{$M_p$} der Untermodul \\
+    $M_p = \{m \in M \;|\; \exists_{k \in \natural}\; p^k m = 0\}$ von $M$. \\
+    Ist $p \not= 0$ ein Primelement, so heißt $M_p$ \begriff{Primärkomponente}.
+\end{Def}
+
+\begin{Lemma}{direkte Summe von $M_p$ und $M_q$}
+    Seien $p, q \in R$, $p, q \not= 0$ mit $\ggT(p, q) = 1$. \\
+    Dann ist $M_p \cap M_q = (0)$ und daher ist ihre Summe $M_p + M_q$ direkt.
+\end{Lemma}
+
+\begin{Def}{Ordnung}
+    Seien $R$ ein Hauptidealring und $M$ ein endlich erzeugter
+    $R$-Torsionsmodul. \\
+    Dann ist der Annullator $\ann_R(M)$ ist nicht-trivial und wird von einem
+    bis auf Einheiten eindeutig bestimmten $r \in R$ erzeugt, d.\,h.
+    $\ann_R(M) = rR \not= (0)$. \\
+    Ein Erzeuger von $\ann_R(M)$ wird \begriff{Ordnung} von $M$
+    genannt und mit $r = \ordnung(M)$ bezeichnet.
+\end{Def}
+
+\begin{Satz}{Primärkomponentenzerlegung} \\
+    Seien $R$ ein Hauptidealring und $M$ ein e.e.
+    $R$-Torsionsmodul. \\
+    Ist $\ordnung(M) = r$ und $r = p_1^{k_1} \dotsm p_n^{k_n}$ die
+    Primfaktorzerlegung von $r$ in paarweise nicht-assoziierte
+    Primelemente $p_1, \dotsc, p_n \in R$, $k_1, \dotsc, k_n \in \natural$
+    (möglich da $R$ UFD), \\
+    so zerlegt sich $M$ in die direkte Summe
+    $M = M_{p_1} \oplus \dotsb \oplus M_{p_n}$
+    seiner (eindeutig bestimmten) Primärkomponenten $M_{p_i}$ für
+    $i = 1, \dotsc, n$. \\
+    Diese Zerlegung heißt \begriff{Primärkomponentenzerlegung} des
+    e.e. Torsionsmoduls $M$.
+\end{Satz}
+
+\begin{Kor}
+    Seien $M$ und $r = p_1^{k_1} \dotsm p_n^{k_n}$ wie eben.
+    Dann ist $\ordnung(M_{p_i}) = p_i^{k_i}$.
+\end{Kor}
+
+\begin{Def}{Ordnung}
+    Seien $M$ ein e.e. $R$-Torsionsmodul, $m \in M$ und $\ann_R(m) = rR$. \\
+    Dann heißt $r$ die \begriff{Ordnung} von $m$, die mit $\ordnung(m)$
+    bezeichnet wird.
+\end{Def}
+
+\begin{Bem}
+    Ist nun ein beliebiger e.e. $R$-Modul $M$ gegeben ($R$ HIR), so kann
+    man zunächst mit \\
+    $M = T(M) \oplus U$ den torsionsfreien Teil $U$ von $M$ abspalten.
+    Der freie $R$-Modul $U \cong M/T(M)$ ist auch e.e. und bis auf Isomorphie
+    eindeutig bestimmt.
+    Der Rang von $U$ ist eindeutig bestimmt und endlich. \\
+    Der Torsionsmodul $T(M) \cong M/U$ ist ebenfalls e.e. und hat eine
+    eindeutige Zerlegung in Primärkomponenten
+    $T(M) = T(M)_{p_1} \oplus \dotsc \oplus T(M)_{p_n}$, wobei die paarweise
+    verschiedenen Primelemente $p_i \in R$, $i = 1, \dotsc, n$ gerade die
+    Primfaktoren der Ordnung $\ordnung(M)$ sind, die in der
+    Primfaktorzerlegung von $\ordnung(M)$ vorkommen.
+    Nun muss man also die Moduln $T(M)_{p_i}$ weiter zerlegen und bestimmen.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Elementarteiler und Prototypen%
+}
+
+\begin{Def}{zyklischer Modul}
+    Seien $R$ ein Ring mit Einselement und $M$ ein $R$-Modul. \\
+    Dann ist $M$ ein \begriff{zyklischer $R$-Modul}, falls $M$ von einem
+    Element erzeugt wird, d.\,h. \\
+    $M = Rm = \{rm \;|\; r \in R\}$ für ein $m \in M$.
+\end{Def}
+
+\begin{Satz}{$M$ zyklisch $\Leftrightarrow M$ epimorphes Bild von ${}_R R$}
+    $M$ ist zyklischer $R$-Modul genau dann, wenn $M$ epimorphes Bild des
+    regulären $R$-Moduls ${}_R R$ ist. \\
+    In diesem Fall (sei $M = Rm$) ist $M \cong R/\ann_R(m)$.
+\end{Satz}
+
+\begin{Kor} \\
+    Seien $R$ ein HIR, $M$ ein zyklischer $R$-Torsionsmodul mit Erzeuger
+    $m \in M$ sowie $r = \ordnung(m)$. \\
+    Dann ist $M \cong R/rR$ als $R$-Modul und $\ordnung(M) = r$.
+\end{Kor}
+
+\begin{Def}{unabhängig}
+    Seien $R$ ein Ring mit Eins und $M$ ein $R$-Modul. \\
+    Dann heißen $y_1, \dotsc, y_m \in M$ \begriff{unabhängig}, falls aus
+    $\lambda_1 y_1 + \dotsb + \lambda_m y_m = 0$ mit
+    $\lambda_1, \dotsc, \lambda_m \in R$ stets $\lambda_i y_i = 0$ für
+    alle $i = 1, \dotsc, m$ folgt.
+\end{Def}
+
+\begin{Bem}
+    \emph{Vorsicht}:
+    Lineare Unabhängigkeit fordert mehr wie Unabhängigkeit, d.\,h.
+    aus linearer Unabhängigkeit folgt immer Unabhängigkeit.
+    Die Umkehrung gilt \emph{nicht}.
+\end{Bem}
+
+\begin{Satz}{Erzeugendensystem unabhängig $\Leftrightarrow M$ zerfällt in
+             direkte Summe}
+    Seien $R$ ein Ring mit Eins, $M$ ein $R$-Modul und $\{y_1, \dotsc, y_m\}$
+    ein unabhängiges Erzeugendensystem. \\
+    Dann ist $M = Ry_1 \oplus \dotsb \oplus Ry_m$. \\
+    Ist umgekehrt $M = Ry_1 \oplus \dotsb \oplus Ry_m$, so ist
+    $\{y_1, \dotsc, y_m\}$ unabhängig.
+\end{Satz}
+
+\begin{Kor}
+    Sei $R$ ein HIR, $M$ ein $R$-Modul, $\{y_1, \dotsc, y_m\}$
+    ein unabhängiges Erzeugendensystem und $s_i = \ordnung(y_i)$.
+    Dann ist $M = Ry_1 \oplus \dotsb \oplus Ry_m \cong
+    R/Rs_1 \oplus \dotsb \oplus R/Rs_m$.
+\end{Kor}
+
+\begin{Bem}
+    Nun muss für e.e. $R$-Torsionsmoduln $M$ ($R$ HIR) ein unabhängiges
+    Erzeugendensystem gefunden werden.
+\end{Bem}
+
+\begin{Lemma}{in Nebenklassen gibt es Elemente gleicher Ordnung}
+    Seien $R$ ein HIR und $M$ ein e.e. $R$-Torsionsmodul, dessen Ordnung
+    $\ordnung(M) = p^k$ für ein Primelement $p \in R$, $k \in \natural$ ist
+    (d.\,h. es gilt $M = M_p$).
+    Seien außerdem $m \in M$ mit $\ordnung(m) = \ordnung(M) = p^k$ und
+    $\nk{M} = M/Rm$.
+    Dann gibt es in jeder Nebenklasse $\nk{x} = x + Rm \in \nk{M}$ einen Vektor
+    $y \in x + Rm$ mit $\ordnung(\nk{x}) = \ordnung(y)$.
+\end{Lemma}
+
+\begin{Lemma}{unabhängige Mengen}
+    Seien $R$ ein HIR und $M$ ein e.e. $R$-Torsionsmodul mit \\
+    $\ordnung(M) = p^k$ für ein Primelement $p \in R$, $k \in \natural$.
+    Seien außerdem $m \in M$, sodass \\
+    $\ordnung(m) = \ordnung(M) = p^k$ ist, und
+    $y_1, \dotsc, y_n \in M$, sodass $\nk{y_i} = y_i + Rm \in M/Rm$
+    unabhängig sind. \\
+    Die Repräsentanten $y_i \in \nk{y_i}$ seien so gewählt, dass
+    $\ordnung(\nk{y_i}) = \ordnung(y_i)$ ($i = 1, \dotsc, n$). \\
+    Dann ist auch $\{m, y_1, \dotsc, y_n\} \subseteq M$ unabhängig.
+\end{Lemma}
+
+\begin{Satz}{Untermoduln des zyklischen Moduls}
+    Sei $R$ ein HIR und $M = Rm$ ($m \in M$) ein zyklischer $R$-Modul mit
+    $\ordnung(M) = p^k$ für ein Primelement $r \in R$, $k \in \natural$.
+    Dann gilt: \\
+    1. Für $\nu = 0, \dotsc, k$ sei $M_\nu = p^\nu M = Rp^\nu \cdot m$. \\
+    Dann ist $M_\nu \in M$ und $\{M_\nu \;|\; \nu = 0, \dotsc, k\}$ ist genau
+    die Menge der Untermoduln von $M$. \\
+    2. $(0) = M_k \lneqq M_{k-1} \lneqq \dotsb \lneqq M_1 \lneqq M_0 = M$
+    und $\ordnung(M_\nu) = p^{k - \nu}$ für $nu = 0, \dotsc, k$. \\
+    $M_\nu$ ist zyklisch mit Erzeuger $p^\nu m$ der Ordnung $p^{k-\nu}$. \\
+    3. Sei $x \in M$.
+    Dann ist $M = Rx$ (d.\,h. $x$ Erzeuger von $M$) genau dann,
+    wenn $x \notin M_1$ ist. \\
+    4. Jedes Erzeugendensystem von $M$ enthält ein $x \notin M_1$ mit $M = Rx$.
+\end{Satz}
+
+\begin{Def}{minimales Erzeugendensystem}
+    Seien $R$ ein Ring mit Einselement, $M$ ein $R$-Modul und
+    $S \subseteq M$ Erzeugendensystem von $M$, d.\,h.
+    $M = \aufspann{S} = \sum_{x \in S} Rx$. \\
+    $S$ heißt \begriff{minimales Erzeugendensystem von $M$}, falls
+    $\aufspann{T} \lneqq M$ für jede echte Teilmenge $T \subset S$.
+\end{Def}
+
+\pagebreak
+
+\begin{Kor}
+    Seien $R$ ein HIR, $M$ ein zyklischer $R$-Modul der Ordnung $p^k$ für
+    ein Primelement $p \in R$, $k \in \natural$ sowie $S \subseteq M$
+    minimales Erzeugendensystem von $M$. \\
+    Dann ist $S = \{x\}$ für ein $x \in M$, aber $x \notin pM$.
+\end{Kor}
+
+\begin{Satz}{Modul zerfällt in Faktormoduln}
+    Seien $R$ ein HIR, $M$ ein e.e. $R$-Torsionsmodul der Ordnung $p^k$ für
+    ein Primelement $p \in R$, $k \in \natural$ sowie
+    $S = \{m_1, \dotsc, m_n\} \subseteq M$ ein minimales
+    Erzeugendensystem von $M$.
+    Dann enthält jedes minimale Erzeugendensystem von $M$ exakt $n$ Elemente
+    und es gibt eindeutig bestimmte natürliche Zahlen
+    $k = e_1 \ge e_2 \ge \dotsb \ge e_n$, sodass
+    $M \cong R/Rq_1 \oplus \dotsb \oplus R/Rq_n$ mit $q_i = p^{e_i}$,
+    $i = 1, \dotsc, n$ ist.
+    (Es gilt $q_n \;|\; \dotsb \;|\; q_2 \;|\; q_1 = p^k$.)
+\end{Satz}
+
+\begin{Satz}{Liste I von Prototypen} \\
+    Seien $R$ ein HIR und $p_1, \dotsc, p_k \in R$ paarweise nicht-assoziierte
+    Primelemente. \\
+    Für $i = 1, \dotsc, k$ seien
+    $e_1^{(i)} \ge e_2^{(i)} \ge \dotsb \ge e_{n_i}^{(i)} \ge 1$ natürliche
+    Zahlen sowie $I_\nu^{(i)} = Rp^{e_\nu^{(i)}}$ für $\nu = 1, \dotsc, n_i$.
+    Sei $\mi{e}_i := (e_1^{(i)}, \dotsc, e_{n_i}^{(i)})$ und
+    $E(p_i, \mi{e}_i) := R/I_1^{(i)} \oplus \dotsb \oplus R/I_{n_i}^{(i)}$.
+    Zusätzlich sei
+    $M(p_1, \mi{e}_1, \dotsc, p_k, \mi{e}_k, \alpha) =
+    E(p_1, \mi{e}_1) \oplus \dotsb \oplus E(p_k, \mi{e}_k) \oplus
+    (R \oplus \overset{\alpha\text{-mal}}{\dotsb} \oplus R)$
+    für $\alpha \in \natural_0$. \\
+    %, es ist also
+    %$M(p_1, \mi{e}_1, \dotsc, p_k, \mi{e}_k, \alpha) =
+    %R/Rp^{e_1^{(1)}} \oplus \dotsb \oplus R/Rp^{e_{n_1}^{(1)}} \oplus \dotsb
+    %\oplus R/Rp^{e_1^{(k)}} \oplus \dotsb \oplus R/Rp^{e_{n_k}^{(k)}} \oplus
+    %(R \oplus \overset{\alpha\text{-mal}}{\dotsb} \oplus R)$. \\
+    Dann ist
+    $\{M(p_1, \mi{e}_1, \dotsc, p_k, \mi{e}_k, \alpha) \;|\;
+    k \in \natural_0,\;
+    p_1, \dotsc, p_k \in R \text{ Primelemente}$\\
+    $\text{(bis auf Assoziierung)},
+    \alpha \in \natural_0,\;
+    n_i \in \natural \text{ und }
+    \mi{e}_i = (e_1^{(i)}, \dotsc, e_{n_i}^{(i)}) \text{ mit }
+    e_1^{(i)} \ge \dotsb \ge e_{n_i}^{(i)} \text{ für } i = 1, \dotsc, k\}$
+    eine vollständige Liste von paarweise nicht-isomorphen, endlich erzeugten
+    $R$-Moduln.
+\end{Satz}
+
+\begin{Bem}
+    Nun ist zunächst das Klassifikationsproblem gelöst.
+    Das Wiedererkennungsproblem ist damit noch nicht gelöst.
+    Sei $M = R/Rr$ mit $r \in R$, $R$ HIR
+    (d.\,h. $M$ ist zyklischer $R$-Modul der Ordnung $r$).
+    Zu welchem der $R$-Moduln aus obiger Liste ist $M$ dann isomorph?
+\end{Bem}
+
+\begin{Satz}{Zerlegung von $R/Rr$ in teilerfremde Faktoren}
+    Seien $R$ ein HIR sowie $r = s \cdot t$ eine Zerlegung von $r \in R$
+    in Faktoren $s, t \in R$, $s, t \notin U(R)$, wobei
+    $\ggT(s, t) = 1$ ist. \\
+    Dann ist der zyklische $R$-Modul $M = R/Rr$ isomorph zu
+    $R/Rs \oplus R/Rt$.
+\end{Satz}
+
+\begin{Kor}
+    Seien $R$ ein HIR und $q = p_1^{e_1} \dotsm p_k^{e_k}$ Primfaktorzerlegung
+    von $q \in R$. \\
+    Dann ist $R/Rq \cong R/Rp_1^{e_1} \oplus \dotsb \oplus
+    R/Rp_k^{e_k}$. \\
+    Diese Zerlegung ist genau die Zerlegung von $R/Rq$ in Primärkomponenten
+    $M = M_{p_1} \oplus \dotsb \oplus M_{p_k}$.
+\end{Kor}
+
+\begin{Bem}
+    Seien $R$ ein HIR und $p_1, \dotsc, p_k \in R$ paarweise nicht-assoziierte
+    Primelemente von $R$.
+    Für $i = 1, \dotsc, k$ seien
+    $e_1^{(i)}, \dotsc, e_{n_i}^{(i)} \in \natural$ mit
+    $e_1^{(i)} \ge \dotsb \ge e_{n_i}^{(i)}$.
+    Man setzt $e_\nu^{(i)} = 0$ für $\nu = n_i, \dotsc, n$ mit
+    $n = \max\{n_1, \dotsc, n_k\}$.
+    Außerdem seien wie oben $\mi{e}_i = (e_1^{(i)}, \dotsc, e_{n_i}^{(i)})$
+    und $E_i = E(p_i, \mi{e}_i) = R/Rp_i^{e_1^{(i)}} \oplus \dotsb \oplus
+    R/Rp_i^{e_n^{(i)}}$.
+    (Beachte: Für $\nu > n_i$ ist $R/Rp_i^{e_\nu^{(i)}} = R/R = (0)$.) \\
+    Sei $M = M(p_1, \mi{e}_1, \dotsc, p_k, \mi{e}_k) = E_1 \oplus \dotsb
+    \oplus E_k$ aus der Liste oben. \\
+    \begin{tabular}{p{5cm}p{11.0cm}}
+    \matrixsize{$\begin{array}{ccccccc}
+    e_1^{(1)} & \ge & \cdots & \ge & e_n^{(1)} & \ge & 0 \\
+    \vdots & & & & \vdots & & \vdots \\
+    e_n^{(k)} & \ge & \cdots & \ge & e_n^{(k)} & \ge & 0
+    \end{array}$}
+    &
+    \begin{minipage}[c]{11.0cm}
+    Betrachte linksstehendes Schema.
+    Für $i = 1, \dotsc, n$ sei \\
+    $q_i = p_1^{e_i^{(1)}} \dotsm p_k^{e_i^{(k)}}$.
+    Dann ist $q_n \;|\; \dotsb \;|\; q_1$.
+    Nach obiger Liste I ist $M = M_1 \oplus \dotsb \oplus M_n$ mit
+    $M_i = R/Rp_1^{e_i^{(1)}} \oplus \dotsb \oplus
+    R/Rp_k^{e_i^{(k)}}$.
+    \end{minipage}\end{tabular}
+    
+    Es gilt $M_i \cong R/Rq_i$ nach obiger Folgerung.
+    Die $q_i$ heißen dabei \begriff{Elementarteiler} von $M$. \\
+    So kommt man auf folgende alternative Liste von e.e. $R$-Moduln.
+\end{Bem}
+
+\begin{Satz}{Liste II von Prototypen}
+    Seien $R$ ein HIR, $q_1, \dotsc, q_n \in R$ Repräsentanten von
+    Assoziierungsklassen von Elementen von $R$ mit $q_n \;|\; \dotsb \;|\; q_1$
+    und $\alpha \in \natural_0$. \\
+    Sei außerdem $M(q_1, \dotsc, q_n, \alpha) = R/Rq_1 \oplus \dotsb \oplus
+    R/Rq_n \oplus R \oplus \overset{\alpha\text{-mal}}{\dotsb} \oplus R$. \\
+    Ist $R_\alpha$ ein Repräsentantensystem der Assoziierungsklassen von $R$,
+    dann ist \\
+    $\{M(q_1, \dotsc, q_n, \alpha) \;|\;
+    q_1, \dotsc, q_n \in R_\alpha,\;
+    q_n \;|\; \dotsb \;|\; q_1,\;
+    n \in \natural,\; \alpha \in \natural_0\}$
+    ein vollständiges System paarweise nicht-isomorpher endlich erzeugter
+    $R$-Moduln. \\
+    Dabei ist $q_1 = \ordnung(M(q_1, \dotsc, q_n, 0))$ und
+    $\ordnung(M(q_1, \dotsc, q_n, \alpha)) = 0$ für $\alpha \not= 0$.
+\end{Satz}
+
+\pagebreak

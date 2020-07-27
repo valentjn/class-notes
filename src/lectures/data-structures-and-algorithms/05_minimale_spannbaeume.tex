@@ -1,0 +1,287 @@
+\section{%
+    Minimale Spannbäume (MST)%
+}
+
+\subsection{%
+    Allgemeines%
+}
+
+Gegeben sei ein zusammenhängender, ungerichteter Graph $G = (V, E, c)$
+mit Kostenfunktion $c: E \rightarrow \mathbb{R}^+$.
+Gesucht ist $E' \subseteq E$ mit $G' = (V, E')$ als zusammenhängender
+Teilgraph, sodass $\sum_{e' \in E'} c(e')$ minimal wird.
+Ein solcher Teilgraph heißt \textbf{minimaler Spannbaum}
+oder auch \textbf{MST} (\emph{minimal spanning tree}).
+
+\textbf{Anwendungen}:
+Kommikationsnetzwerke (Unternehmen möchte Kommunikationsnetz aufbauen,
+dabei alle mit minimalen Kosten verbinden) und als Hilfsmittel z.\,B.
+für die Lösung des TSP (\emph{travelling salesman problem}).
+
+\linie
+
+\textbf{Was ist ein Baum?}
+Ein ungerichteter Graph heißt Baum, falls
+\begin{itemize}
+    \item
+    er minimal zusammenhängend ist
+    
+    \item
+    er zusammenhängend ist und $n - 1$ Kanten hat ($n$ Knoten)
+    
+    \item
+    er maximal zyklenfrei ist.  
+\end{itemize}
+
+\textbf{Beobachtung}:
+Die $E'$ formen einen Baum.
+
+\begin{Beweis}
+    Die $E'$ müssen einen zusammenhängenden Graph induzieren.
+    Falls dieser kein Baum ist, gibt es einen Zyklus.
+    Wegnahme einer Kante des Zyklus verletzt den Zusammenhang nicht,
+    macht aber die Lösung billiger.
+    Widerspruch, denn $E'$ muss minimale Kosten haben.
+\end{Beweis}
+
+\subsection{%
+    \textsc{Prim}s Algorithmus%
+}
+
+Man fängt mit einem beliebigen Knoten an.
+Nun betrachtet man alle Kanten, die zu den bisherigen aufgenommen Knoten
+inzident sind, und fügt die Kante mit dem kleinsten Gewicht hinzu.
+Dies macht man solange, bis alle Knoten aufgenommen wurden.
+
+\linie
+
+\textbf{Laufzeit}:
+naiv $\O(n \cdot m)$, da $n$ Knoten aufgenommen werden und jedes Mal
+aus maximal $m$ Kanten die billigste ausgesucht werden muss.
+
+\textbf{besser}:
+Organisiere Knoten, die bislang noch nicht im Spannbaum sind,
+in einem Heap.
+
+Seien $S$ die Knoten im bereits konstruierten Spannbaum und $V \setminus S$
+der Rest.
+Man organisiert $V \setminus S$ in einem Min-Heap gemäß ihrem minimalen
+Abstand zu einem Knoten in $S$.
+Zu Beginn ist $|S| = 1$ und alle Knoten in $V \setminus S$ sind mit ihrem
+Kantengewicht zum Startknoten im Heap ($\O(n)$, da max. $n$ Knoten aufgenommen
+werden müssen).
+
+Wird ein Knoten $v$ nun hinzugenommen, so entferne das Minimum aus dem Heap
+(also der Knoten, der am billigsten angebunden werden kann, $\O(\log n)$).
+Gehe dann alle Kanten $(v, w)$ durch, falls $w \in V \setminus S$ und
+der Distanzwert von $w$ im Heap größer als $c(v, w)$ ist, muss
+der Schlüssel von $w$ in $c(v, w)$ geändert werden
+($\O(\log n)$, \code{change_key}).
+Insgesamt werden so alle $m$ Kanten einmal betrachtet, also beträgt die
+Gesamtlaufzeit $\O(m \log n)$, da $n \le m$ ist.
+
+\linie
+
+\textbf{Korrektheit}: Prims Algorithmus berechnet einen MST.
+
+\begin{Beweis}
+    In jeder "`Runde"' wird die billigste Kante zwischen $S$ und
+    $V \setminus S$ hinzugenommen.
+    Gemäß \emph{cut property} ist diese Kante Teil jeden MSTs.
+    Der Algorithmus terminiert erst für $S = V$, die Kanten sind alle Teil
+    jeden MSTs, also ist $S$ am Ende auch ein MST.
+\end{Beweis}
+
+\pagebreak
+
+\textbf{Lemma (\emph{cut property})}:
+Sei $S \subseteq V$ und $e = (v, w)$ die Kante mit minimalem Gewicht
+zwischen $S$ und $V \setminus S$.
+Dann ist $e$ in jedem MST von $G$ enthalten.
+
+\begin{Beweis}
+    Betrachte alle Kanten $E^\ast$ eines MST, der $e$ nicht enthält.
+    In $E^\ast$ muss eine Kante $e'$ zwischen $S$ und $V \setminus S$
+    verlaufen, da der MST ein Spannbaum ist. \\
+    Nimmt man $e$ zu $E^\ast$ hinzu, so entsteht ein Zyklus.
+    Dieser Zyklus übertritt die Grenze zwischen $S$ und $V \setminus S$
+    ein weiteres Mal, dieser Übertritt ist teurer als $e$
+    (da $e$ minimales Gewicht).
+    Also verringert das Aufnehmen von $e$ und das Löschen des Übertritts
+    die Kosten und erhält den Zusammenhang.
+    Damit war der MST nicht minimal, ein Widerspruch.
+\end{Beweis}
+
+\subsection{%
+    \textsc{Kruskal}s Algorithmus%
+}
+
+Man ordnet zunächst alle Kanten aufsteigend nach ihrem Gewicht.
+Betrachte dann alle Kanten nacheinander:
+Wenn die Kante zwei beliebige bisher nicht verbundene Knoten verbindet,
+nimmt man sie in $E'$ auf, ansonsten betrachtet man sie nicht mehr.
+
+\linie
+
+\textbf{Korrektheit}:
+1. $E'$ bildet einen zusammenhängenden Graph. \qquad
+2. $E'$ bildet einen Baum. \\
+3. $E'$ bildet einen MST.
+
+\begin{Beweis}
+    1. Angenommen, $E'$ bildet nicht einen zusammenhängenden Graph,
+    dann zerfällt $(V, E')$ in mehrere ZHKs.
+    Damit existiert in $G = (V, E)$ eine Kante, die zwei dieser ZHKs verbindet.
+    Sie muss vom Algorithmus weggeworfen sein (andernfalls wäre sie in $E'$),
+    ein Widerspruch, da der Algorithmus die Kante hätte aufnehmen müssen. \\
+    2. $E'$ bildet einen Baum, da zyklenschließende Kanten weggeworfen
+    werden. \\
+    3. Wenn eine Kante $e = (v, w)$ in $E'$ aufgenommen wird, kann man folgende
+    Partitionierung vornehmen:
+    Zu $P$ gehört die ZHK von $v$ und $V \setminus P$ ist die ZHK von $w$
+    sowie alle anderen Knoten.
+    Nach der \emph{cut property} ist $e$ in jeder MST enthalten, da es keine
+    billigere Kante zwischen $P$ und $V \setminus P$ gibt.
+\end{Beweis}
+
+\linie
+
+\textbf{Datenstruktur für ef"|fiziente Implementierung}:
+Eine solche Datenstruktur muss folgende Operationen unterstützen:
+1. teste, ob Knoten $v$ und $w$ in gleicher ZHK sind \\
+2. vereinige ZHKs von $v$ und $w$,
+d.\,h. drücke aus, dass $v$ und $w$ ab jetzt in gleicher ZHK sind.
+
+\textbf{Union-Find-Datenstruktur}:
+Gegeben sei ein Universerum $U = \{1, \dotsc, N\}$.
+Man will eine Partition von $U$, also einer Zerlegung in disjunkte Teilmengen,
+verwalten, wobei die folgenden Operationen zulässig sein sollen:
+\begin{itemize}
+    \item
+    \textbf{\code{InitPartition(}$N$\code{)}}:
+    legt Partition in $N$ Teilmengen an
+    
+    \item
+    \textbf{\code{Find(}$x$\code{)}}: \\
+    gibt für $x \in U$ einen eindeutigen Bezeichner der Teilmenge, in der
+    $x$ liegt, zurück
+    
+    \item
+    \textbf{\code{Union(}$x, y$\code{)}}: \\
+    vereinigt für $x, y \in U$ ($x, y$ nicht in gleicher Teilmenge)
+    die beiden Teilmengen
+\end{itemize}
+
+\textbf{Anwendung im Fall von \textsc{Kruskal}s Algorithmus}:
+Das Universum entspricht den Knoten des Graphen,
+die Teilmengen entsprechen den ZHKs während des Ablaufs des Algorithmus. \\
+Wenn eine Kante $e = (v, w)$ betrachtet wird, muss entschieden werden,
+ob $v$ und $w$ in gleicher ZHK liegen, d.\,h. es muss überprüft werden, ob
+\code{Find(}$v$\code{)} $=$ \code{Find(}$w$\code{)}. \\
+Falls dies nicht der Fall ist, wird die Kante als Teil des MST gewählt und
+die ZHKs werden verschmolzen, d.\,h. \code{Union(}$v, w$\code{)} muss
+aufgerufen werden. \\
+\textsc{Kruskal}s Algorithmus führt dabei höchstens $m$ \code{Find}s und
+$n - 1$ \code{Union}s aus.
+
+\linie
+\pagebreak
+
+\textbf{Implementierung}:
+Stelle ein Array \code{TM[]} der Größe $N$ zur Verfügung, in dem für jedes
+Element $v$ ein kanonisches Element der Teilmenge, die $v$ enthält,
+als Repräsentant gespeichert wird.
+Zu Beginn ist jede Teilmenge einelementig: \code{TM[}$v$\code{]} $= v$. \\
+Zusätzlich soll noch für jeden Repräsentanten $v$ eine Liste der Elemente der
+Teilmenge, deren Repräsentant $v$ ist, sowie die Länge dieser Liste
+gespeichert werden.
+
+\begin{itemize}
+    \item
+    \textbf{\code{InitPartition(}$N$\code{)}}:
+    klar
+    
+    \item
+    \textbf{\code{Find(}$v$\code{)}}:
+    gib \code{TM[}$v$\code{]} zurück
+    (Kosten $\O(1)$)
+    
+    \item
+    \textbf{\code{Union(}$v, w$\code{)}}:
+    Ohne Einschränkung befinde sich $w$ in der kleineren Teilmenge. \\
+    Dann setze \code{TM[}$x$\code{]} $:=$ \code{Find(}$v$\code{)} für alle
+    $x$ mit \code{TM[}$x$\code{]} $=$ \code{Find(}$w$\code{)}, hänge die
+    Liste von \code{Find(}$w$\code{)} an \code{Find(}$v$\code{)} und
+    aktualisiere die Listenlängen \\
+    (Kosten $\O($Länge der Liste von \code{Find(}$w$\code{)}$)$).
+\end{itemize}
+
+\linie
+
+\textbf{Laufzeitanalyse}:
+\code{Union} muss im schlimmsten Fall $\frac{N}{2}$ Knoten umsetzen.
+Die Gesamtkosten für $n$ Unions sind
+$G = \sum_{i=1}^n \;($Kosten für $i$-te \code{Union}-Operation$)$.
+Es gilt nun $G \le N \log N$, d.\,h. es kann nicht sein, dass jede der
+\code{Union}-Operationen $\frac{N}{2}$ kostet.
+
+\begin{Beweis}
+    Man betrachtet die Anzahl der Umsetzungen eines bestimmten Knotens $v$,
+    d.\,h. man schaut, wie oft sich \code{TM[}$v$\code{]} ändert.
+    Die Gesamtkosten sind dann $G = \sum_v \;($Anzahl, wie oft sich
+    \code{TM[}$v$\code{]} ändert$)$.
+    Mit jeder Änderung von \code{TM[}$v$\code{]} verdoppelt sich die Teilmenge,
+    die $v$ enthält, mindestens.
+    Also kann sich \code{TM[}$v$\code{]} maximal $\log N$-mal ändern. \\
+    Daher ist $G \le \sum_v (\log N) \le N \log N$.
+\end{Beweis}
+
+Für \textsc{Kruskal}s Algorithmus bedeutet dies,
+dass der Algorithmus in $\O(m \log n)$ implementiert werden kann, denn
+das Sortieren der Kanten benötigt $\O(m \log m) = \O(m \log n)$, \\
+es gibt höchstens $m$ \code{Find}s ($\O(m)$) sowie
+$n - 1$ \code{Union}s ($\O(n \log n)$). \\
+Ein einzelner Union-Schritt kann jedoch $\O(n)$ kosten.
+
+\linie
+
+\textbf{falls man garantieren will, dass jeder Union-Schritt $\O(\log n)$
+kostet}:
+
+Bislang waren die Kosten für \code{Find} bzw. \code{Union}
+$\O(1)$ bzw. evtl. $\O(n)$.
+Im Folgenden wird gezeigt, wie man \code{Find}
+in $\O(\log n)$ durchführt, dafür aber \code{Union} in $\O(1)$.
+
+\textbf{Idee}: Verwalte die Teilmengen als gewurzelte Bäume.
+Zu Beginn ist jede Teilmenge der Baum mit nur einem Element, der Wurzel.
+Eine \code{Union}-Operation auf zwei Teilmengen verschmelzt die entsprechenden
+Bäume, indem der kleinere Baum (der mit weniger Knoten) direkt unter die Wurzel
+des größeren gehängt wird.
+
+\textbf{Kosten nun}: \code{Find(}$v$\code{)} kostet
+$\O(\text{Tiefe des Baums})$ (laufe im Baum, der $v$ enthält, von $v$ zur
+Wurzel, gib diese als eindeutige ID für Teilmenge zurück).
+\code{Union} kostet $\O(1)$.
+
+\textbf{Lemma}:
+Die Tiefe der auftretenden Bäume ist höchstens $\log n$.
+
+\begin{Beweis}
+    Betrachte das tiefste Blatt $v$ eines Baums.
+    Die Tiefe von $v$ hat genau dann um $1$ zugenommen, wenn der Baum von $v$
+    unter die Wurzel eines anderen Baums gehängt wurde.
+    Der andere Baum ist in diesem Fall mindestens so groß gewesen wie der Baum,
+    der $v$ enthält.
+    Daher kann der Baum von $v$ höchstens $\log n$-mal unter einen anderen
+    Baum gehängt werden.
+    Deswegen ist die Tiefe von $v$ höchstens $\log n$.
+\end{Beweis}
+
+\textbf{Optimierungsidee}:
+Wenn \code{Find(}$x$\code{)} auf einen Knoten aufgerufen wird, so wird
+im Baum von $x$ von $x$ aus nach oben bis zur Wurzel gelaufen.
+Wenn man die Knoten auf dem Weg zur Wurzel alle direkt unter die Wurzel hängt,
+so werden spätere \code{Find}s nach diesen Knoten billiger ($\O(1)$).
+
+\pagebreak

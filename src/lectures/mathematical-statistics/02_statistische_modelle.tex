@@ -1,0 +1,596 @@
+\section{%
+    Statistische Modelle%
+}
+
+\begin{Bem}
+    In der Wahrscheinlichkeitstheorie ist meist ein W-Raum $(\Omega, \A, P)$ gegeben und
+    man soll $P(A)$ für $A \in \A$ berechnen oder approximieren.
+    Dagegen geht die mathematische Statistik gewissermaßen umgekehrt vor:
+    Dort sind eine Familie $\P$ von W-Maßen auf dem Messraum $(\Omega, \A)$ und
+    eine Folge $X_1, \dotsc, X_n$ von reellwertigen Zufallsvariablen mit Werten $x_1, \dotsc, x_n$
+    gegeben.
+    Welches $\PP \in \P$ oder welche Teilmenge $\P_0 \subset \P$ eigenet sich "`am Besten"'
+    zur Erklärung der Realisierung/des Datensatzes $x_1, \dotsc, x_n$?
+    
+    Die Wahrscheinlichkeitstheorie liefert eine axiomatiche Begründung des Phänomens "`Zufall"'
+    und konstruiert und beschreibt Modelle für zufällige Prozesse.
+    Die Statistik behandelt die zur WT "`inverse"' Fragestellung:
+    Die \begriff{mathematische Statistik} (auch \begriff{Inferenzstatistik} oder
+    \begriff{induktive Statistik}) sucht zu gegebenen Daten das "`beste"' Modell oder die
+    "`besten"' Modelle aus einer vorgegebenen Familie von Modellen aus.
+    Davon zu unterscheiden ist die \begriff{deskriptive Statistik}, die man landläufig unter dem
+    Begriff "`Statistik"' versteht.
+    Bei dieser Art von Statistik werden die vorliegenden Daten ohne Verwendung eines
+    wahrscheinlichkeitstheoretischen Modells beschrieben
+    (z.\,B. Fußball-Statistik, amtliche Statistiken).
+    Die Weihnachtsgeschichte zeigt, dass diese Statistik schon sehr lange betrieben wird --
+    dennoch ist sie immer noch aktuell (bspw. Chartanalyse bei Aktienkursen).
+\end{Bem}
+
+\subsection{%
+    Grundbegrif"|fe%
+}
+
+\begin{Bem}
+    Eine konkrete Beobachtung fasst der Statistiker auf als ein Element $x \in \X$
+    (z.\,B. $x = (x_1, \dotsc, x_n) \in \real^n = \X$) und interpretiert $x$ als eine
+    \begriff{Realisierung} $x = X(\omega)$ einer Zufallsvariablen
+    $X\colon (\Omega, \A) \rightarrow (\X, \B)$.
+    $(\Omega, \A)$ heißt \begriff{Grundraum} und $(\X, \B)$ \begriff{Stichprobenraum}
+    der \begriff{Stichprobe} $X$.
+    Liegt auf $(\Omega, \A)$ ein W-Maß $\PP$ vor, so induziert dies auf $(\X, \B)$
+    ein W-Maß $\PP_X$ durch $\PP_X(B) := \PP(X \in B)$ =
+    $\PP(X^{-1}(B)) = \PP(\{\omega \in \Omega \;|\; X(\omega) \in B\})$ für $B \in \B$,
+    das \begriff{Verteilung} von $X$ genannt wird.
+    
+    Typischerweise ist $X = (X_1, \dotsc, X_n)$ ein Zufallsvektor mit stochastisch unabhängigen
+    Komponenten $X_1, \dotsc, X_n$.
+    Falls die $X_i$ alle reellwertig sind, gilt $(\X, \B) = (\real^n, \B^n)$ mit
+    $\B^n$ der \begriff{\name{borel}schen $\sigma$-Algebra} des $\real^n$
+    (kleinste $\sigma$-Algebra, die alle of"|fenen Mengen des $\real^n$ enthält) und
+    $\PP_X = \bigotimes_{i=1}^n \PP_{X_i}$ dem Produktmaß der $\PP_{X_i}$ auf $\B^n$.
+    Da die Verteilung $\PP_X$ dem Statistiker nicht (vollständig) bekannt ist, wird für $\PP_X$
+    ein \begriff{statistisches Modell} bestimmt, das heißt
+    $\P = \{P_\theta \;|\; \theta \in \Theta\}$ mit $P_\theta$ Verteilung auf $(\X, \B)$.
+    Kann $\P$ mit einer Parametermenge $\Theta \subset \real^d$ parametrisiert werden,
+    so spricht man von einem \begriff{parametrischem Modell}, andernfalls von einem
+    \begriff{nicht-parametrischem Modell}.
+    
+    Das Ziel ist, basierend auf einer Stichprobe $X$ ein $P_\theta \in \P$ zu finden,
+    das der tatsächlichen Verteilung von $X$ "`möglichst ähnlich"' ist.
+    Die Verteilung von $X$ muss nicht notwendigerweise in $\P$ enthalten sein.
+\end{Bem}
+
+\begin{Bsp}
+    $\P = \{\N(\mu, \sigma^2) \;|\; (\mu, \sigma^2) \in \real \times \real^+\}$
+    ist ein parametrisches Modell für eine reellwertige Messgröße
+    (z.\,B. Körpergröße der Studenten im Hörsaal).\\
+    Dagegen ist $\P = \{P \;|\; P \text{ ist Verteilung auf } (\real, \B^1)\text{, welche
+    eine Lebesgue-Borel-Dichte besitzt}\}$ ein nicht-parametrisches Modell.
+    Ein W-Maß $P$ besitzt eine \begriff{L.-B.-Dichte}, falls es eine L.-B.-messbare Funktion
+    $f\colon \real \rightarrow \real_0^+$ so gibt, dass $P(B) = \int_B f d\lambda$ für alle
+    $B \in \B^1$.
+    Dabei bezeichnet $\lambda$ das L.-B.-Maß auf $\real$.
+\end{Bsp}
+
+\linie
+\pagebreak
+
+\begin{Def}{statistischer Raum}
+    Sei $\P$ eine Menge von W-Maßen auf dem Messraum $(\X, \B)$.\\
+    Dann heißt $(\X, \B, \P)$ \begriff{statistischer Raum}.
+\end{Def}
+
+\begin{Bem}
+    Vereinfacht gesagt ist ein statistischer Raum ein W-Raum mit vielen W-Maßen.\\
+    Häufig ist die genaue Gestalt der Stichprobe $X$ nicht von Interesse,
+    daher wird $X$ "`begrenzt"'
+    (wenn man z.\,B. die Geschlechterverteilung der Studierenden untersuchen will,
+    dann interessiert nicht das Geschlecht jedes einzelnen Studenten,
+    sondern nur die Anzahl der Frauen und Männer).
+\end{Bem}
+
+\begin{Def}{Statistik}
+    Sei $T\colon (\X, \B) \rightarrow (\Y, \C)$ eine messbare Abbildung.\\
+    Dann heißt $T(X)$ eine \begriff{Statistik} (oder \begriff{Stichprobenfunktion})
+    der Stichprobe $X$.
+\end{Def}
+
+\begin{Bem}
+    $\Y$ wird i.\,A. "`kleiner"' gewählt als $\X$.
+\end{Bem}
+
+\begin{Bsp}
+    Eine klinische Studie untersucht bei $n = 100$ Patienten die Wirkung eines neuen Medikaments.
+    Dafür definiert man $n$ Zufallsvariablen $X_i$ mit $X_i := 0$ bzw. $X_i := 1$, falls
+    das Medikament auf Patient $i$ keine bzw. eine Wirkung zeigt.
+    Man nimmt an, dass $X_1, \dotsc, X_n$ unabhängig
+    und identisch verteilt (i.i.d.) sind mit $X_i \sim \Bin(1, \theta)$,
+    dabei sei $\theta \in [0, 1]$ unbekannt.
+    Die Zufallsvariable $X = (X_1, \dotsc, X_n) \sim \bigotimes_{i=1}^n \Bin(1, \theta)$
+    hat Werte in $\X = \prod_{i=1}^n \{0, 1\} = \{0, 1\}^n$,
+    der Raum ist diskret, d.\,h. $\B = \pot(\X)$.
+    Damit können wir nun ein statistisches Modell aufstellen durch
+    $\P = \left\{\bigotimes_{i=1}^n \Bin(1, \theta) \;|\; \theta \in [0, 1]\right\}$.
+    Eine typische Statistik für $X$ ist z.\,B. die Anzahl $T(X) = \sum_{i=1}^n X_i$ der Patienten,
+    auf die das Medikament eine Wirkung zeigt, oder der relative Anteil
+    $T(X) = \frac{1}{n} \sum_{i=1}^n X_i$ dieser Patienten.
+\end{Bsp}
+
+\begin{Bem}
+    Typische Fragen in der Statistik sind beispielsweise:
+    \begin{itemize}
+        \item
+        \begriff{Schätzproblem}: Finde zu gegebener Stichprobe $X\colon \Omega \rightarrow \X$
+        einen Schätzwert für den wahren, aber unbekannten Parameter $\theta$.
+        
+        \item
+        \begriff{Bereichsschätzung}: Schätze basierend auf der Stichprobe $X$ ein Intervall $I$,
+        sodass z.\,B.
+        $\PP_\theta(\theta \in I) \ge 0{,}95$ (\begriff{$95\,\%$-Konfidenzintervall}).
+        $I$ soll so klein wie möglich sein.
+        
+        \item
+        \begriff{Testproblem}: Entscheide basierend auf der Stichprobe $X$, ob z.\,B.
+        $\theta > 0{,}5$ (mit hoher Sicherheit) angenommen werden kann.
+    \end{itemize}
+\end{Bem}
+
+\begin{Bem}
+    Man verwendet bei den verschiedenen statistischen Räumen folgende Notation:
+    Die W-Maße des in der Regel uninteressanten Raums
+    $(\Omega, \A, (\PP_\theta)_{\theta \in \Theta})$
+    werden mit Doppelstrich-Buchstaben versehen.
+    Dieser Raum wird durch die Zufallsvariable $X$ abgebildet auf den statistischen Raum
+    $(\X, \B, (P_\theta)_{\theta \in \Theta})$, der normalerweise gegeben ist.
+    Die W-Maße $P_\theta$ entsprechen den Bildmaßen
+    $(\PP_\theta)_X$ von $\PP_\theta$ unter $X$.
+    Mittels einer Statistik $T$ wird dieser Raum wiederum abgebildet auf
+    $(\Y, \C, ((P_\theta)_T)_{\theta \in \Theta})$.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Um unnötige maßtheoretische Argumentationen zu vermeiden, wird in Zukunft meistens davon
+    ausgegangen, dass das statistische Modell $\P$ regulär ist.
+\end{Bem}
+
+\begin{Def}{regulär}\\
+    Ein statistisches Modell $\P$ heißt \begriff{regulär}, falls eine der beiden folgenden
+    Bedingungen erfüllt ist:
+    \begin{enumerate}
+        \item
+        Alle $P \in \P$ besitzen eine Dichte $p\colon \X \rightarrow \real_0^+$
+        (bzgl. dem L.-B.-Maß),\\
+        d.\,h. $\forall_{B \in \B}\; \PP(X \in B) = P(B) = \int_B p(x)\dx$.
+        
+        \item
+        Alle $P \in \P$ besitzen eine Zähldichte $p\colon \X \rightarrow \real_0^+$
+        (bzgl. dem Zählmaß),\\
+        d.\,h. $\forall_{B \in \B}\; \PP(X \in B) = P(B) = \sum_{x \in B} p(x)$.
+    \end{enumerate}
+    Für ein reguläres Modell schreibt man oft $\P = \{P_\theta \;|\; \theta \in \Theta\}$,
+    wobei $p(\cdot, \theta)$ die L.-B.-Dichte bzw. die Zähldichte von $P_\theta$ bezeichnet.
+\end{Def}
+
+\pagebreak
+
+\subsection{%
+    Suf"|fizienz%
+}
+
+\begin{Bem}
+    Eine Statistik $T$ soll zwar die Stichprobe $X$ "`komprimieren"', jedoch nicht zu stark,
+    d.\,h. es darf keine Information verloren gehen.
+    Kennt man also $T(X) = t$, dann darf $X$ keine weiteren Informationen über $\theta$ enthalten.
+\end{Bem}
+
+\begin{Def}{suf"|fizient}
+    Seien $(\X, \B, \P)$ ein statistischer Raum und $X$ eine Stichprobe aus $\X$.\\
+    Dann heißt die Statistik $T(X)$ von $X$ \begriff{suf"|fizient für $P \in \P$}, falls
+    die bedingte Verteilung von $X$ gegeben $T(X) = t$ unabhängig von $P$ ist
+    (bzw. unabhängig von $\theta$ für $\P$ parametrisierbar).
+\end{Def}
+
+\begin{Def}{bedingte Verteilung}
+    Sind $X$ und $Y$ zwei diskrete Zufallsvariablen mit gemeinsamer Zähldichte $p(x, y)$,
+    so ist die \begriff{bedingte Verteilung von $X$ gegeben $Y$} (von $X|Y$) definiert durch
+    die Zähldichte $p(x|y) = \frac{p(x, y)}{p_Y(y)} = \PP(X = x|Y = y)$,
+    wobei $p_Y$ mit $p_Y(y) = \PP(Y = y) = \sum_{x'} p(x', y)$ die Randverteilung von $Y$
+    bezeichnet.\\
+    Sind $X$ und $Y$ zwei stetige Zufallsvariablen mit gemeinsamer L.-B.-Dichte $p(x, y)$,
+    so ist die \begriff{bedingte Verteilung von $X$ gegeben $Y$} (von $X|Y$) definiert durch 
+    die Dichte $p(x|y) = \frac{p(x, y)}{p_Y(y)}$ mit $p_Y(y) = \int p(x', y)\dx'$.
+\end{Def}
+
+\begin{Bsp}
+    Man konstruiert eine suf"|fiziente Statistik für die Binomialverteilung.\\
+    Dazu seien $X_1, \dotsc, X_n \sim \Bin(1, p)$ i.i.d.,
+    $X := (X_1, \dotsc, X_n)$ der Zufallsvektor und\\
+    $Y := \sum_{i=1}^n X_i \sim \Bin(n, p)$.
+    Um zu prüfen, ob $T(X) := Y$ eine suf"|fiziente Statistik für\\
+    $\P = \{\Bin(n, p) \;|\; p \in [0, 1]\}$ ist, muss man die bedingte Verteilung von $X|Y$
+    berechnen.\\
+    Für $x \in \{0, 1\}^n$ und $y \in \{0, \dotsc, n\}$ gilt
+    $p(x|y) = \frac{\PP(X = x, Y = y)}{\PP(Y = y)} =
+    \frac{p^y (1-p)^{n-y}}{\binom{n}{y} p^y (1-p)^{n-y}} = \frac{1}{\binom{n}{y}}$
+    unabhängig von $p$,
+    denn es gilt $\PP(X = x) = \PP(X_1 = x_1) \dotsm \PP(X_n = x_n) =
+    p^{x_1} (1-p)^{1-x_1} \dotsm p^{x_n} (1-p)^{1-x_n} =
+    p^{x_1+\dotsb+x_n} (1-p)^{1-(x_1+\dotsb+x_n)}$, weil die $X_i$ unabhängig sind.\\
+    Also ist die bedingte Verteilung von $X|Y = y$ eine Gleichvert. auf
+    $\{x \in \{0, 1\}^n \;|\; \sum_{i=1}^n x_i = y\}$
+    (diese Menge besitzt ja $\binom{n}{y}$ viele Elemente).
+    Damit ist $T(X) := \sum_{i=1}^n X_i$ eine suf"|fiziente Statistik für
+    $\P = \{\Bin(n, p) \;|\; p \in [0, 1]\}$.
+    Dies gilt auch für das arithmetische Mittel $T(X) := \frac{1}{n} \sum_{i=1}^n X_i$.
+\end{Bsp}
+
+\begin{Bsp}
+    Man konstruiert eine suf"|fiziente Statistik für die Normalverteilung.\\
+    Dazu seien $X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ i.i.d.,
+    wobei $(\mu, \sigma^2) \in \real \times \real^+$ nicht bekannt ist.\\
+    Das arithm. Mittel $\overline{X} := \frac{1}{n} \sum_{i=1}^n X_i$ und die
+    Stichprobenvarianz $S^2(X) := \frac{1}{n-1} \sum_{i=1}^n (X_i - \overline{X})^2$ sind
+    bei gegebener Stichprobe $X := (X_1, \dotsc, X_n)$
+    brauchbare Schätzer für $\mu$ und $\sigma^2$.\\
+    Ist $T(X) := (\overline{X}, S^2(X))$ eine suf"|fiziente Statistik für
+    $\P = \{\N(\mu, \sigma^2) \;|\; (\mu, \sigma^2) \in \real \times \real^+\}$?
+\end{Bsp}
+
+\linie
+
+\begin{Bem}
+    Die Definition der Suf"|fizienz einer Statistik gibt leider keine Möglichkeit,
+    wie eine suf"|fiziente Statistik konstruiert werden kann.
+\end{Bem}
+
+\begin{Satz}{Faktorisierungssatz}
+    Sei $\P = \{P_\theta \;|\; \theta \in \Theta\}$ ein reguläres Modell.
+    Dann sind äquivalent:
+    \begin{enumerate}
+        \item
+        $T(X)$ ist suf"|fizient für $\theta$.
+        
+        \item
+        Es existieren Abbildungen $g\colon \Y \times \Theta \rightarrow \real$
+        und $h\colon \real^n \rightarrow \real$, sodass
+        für alle $x \in \real^n$ und $\theta \in \Theta$ gilt, dass
+        $p(x, \theta) = g(T(x), \theta) \cdot h(x)$.
+    \end{enumerate}
+\end{Satz}
+
+\linie
+
+\begin{Bsp}
+    Wenn man das Beispiel von eben mit der Normalverteilung fortsetzt und die Zufallsvariable
+    $T_1(X) := (\sum_{i=1}^n X_i, \sum_{i=1}^n X_i^2)$ betrachet,
+    dann gilt mit $h(x) := 1$ und\\
+    $g(T_1(x), \theta) := \frac{1}{(2\pi\sigma)^{n/2}} e^{-\frac{n\mu^2}{2\sigma^2}}
+    \exp\!\left(-\frac{1}{2\sigma^2}
+    \left(\sum_{i=1}^n x_i^2 - 2\mu \sum_{i=1}^n x_i\right)\right)$\\
+    $= \prod_{i=1}^n \frac{1}{\sqrt{2\pi\sigma^2}}
+    \exp\!\left(-\frac{(x_i - \mu)^2}{2\sigma^2}\right)$, dass
+    $p(x, \theta) = g(T_1(x), \theta) \cdot h(x)$.\\
+    $T_1(X)$ ist also nach dem Faktorisierungssatz eine suf"|fiziente Statistik für
+    $\theta = (\mu, \sigma^2)$.\\
+    Wegen $\overline{X} = \frac{1}{n} \sum_{i=1}^n X_i$ und
+    $S^2(X) = \frac{1}{n-1} \sum_{i=1}^n (X_i^2 - (\overline{X})^2)$ ist auch
+    $T(X) := (\overline{X}, S^2(X))$ eine suf"|fiziente Statistik für $\theta$.
+\end{Bsp}
+
+\subsection{%
+    Exponentialfamilien%
+}
+
+\begin{Bem}
+    Die Exponentialfamilien (auch exponentielle Familien) bilden wichtige Klassen von Verteilungen
+    mit einem Parameter oder mehreren Parametern.
+    Im Folgenden seien Mengen und Funktionen immer als messbar vorausgesetzt, falls dies
+    benötigt wird.
+\end{Bem}
+
+\begin{Def}{$1$-parametrige Exponentialfamilie}
+    Eine Familie von Verteilungen $\P = \{P_\theta \;|\; \theta \in \Theta\}$ auf
+    $(\real^n, \B^n)$ mit $\Theta \subset \real$ heißt
+    \begriff{$1$-parametrige Exponentialfamilie}, falls
+    es Funktionen\\
+    $c, d\colon \Theta \rightarrow \real$ und
+    $T, S\colon \real^n \rightarrow \real$ sowie eine Menge $A \subset \real^n$ gibt,\\
+    sodass die L.-B.-Dichte/Zähldichte $p(x, \theta)$ von $P_\theta$ für $x \in \real^n$
+    durch\\
+    $p(x, \theta) = \1_A(x) \cdot \exp(c(\theta) T(x) + d(\theta) + S(x))$
+    dargestellt werden kann.
+\end{Def}
+
+\begin{Bem}
+    $A$ ist unabhängig von $\theta$.
+    $d(\theta)$ dient zur Normierung (damit $\int_{\real^n} p(x, \theta)\dx = 1$).\\
+    Nach dem Faktorisierungssatz ist $T(x)$ immer eine suf"|fiziente Statistik für
+    $\theta \in \Theta$, denn mit $g(t, \theta) := \exp(c(\theta) t + d(\theta))$ und
+    $h(x) := \1_A(x) \cdot \exp(S(x))$ gilt $p(x, \theta) = g(T(x), \theta) \cdot h(x)$.
+    Die Statistik $T$ heißt daher \begriff{natürliche suf"|fiziente Statistik}.\\
+    Für den Fall $c = \id_\Theta$ spricht man von einer \begriff{natürlichen Exponentialfamilie}.
+    Jede Exponentialfamilie hat eine Darstellung als natürliche Exponentialfamilie, was man
+    mit der Umparametrisierung $\eta = c(\theta)$ erreichen kann,
+    in diesem Fall gilt $p_0(x, \eta) = \1_A(x) \cdot \exp(\eta \cdot T(x) + d_0(\eta) + S(x))$,
+    wobei $d_0(\eta)$ die neue Normierungskonstante darstellt.
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Bei bekannter Varianz $\sigma^2 > 0$ ist $\P = \{\N(\mu, \sigma^2) \;|\; \mu \in \real\}$
+    eine $1$-parametrige Exponentialfamilie, denn es gilt für die L.-B.-Dichte
+    $p(x, \mu) = \frac{1}{\sqrt{2\pi\sigma^2}}
+    \exp\!\left(-\frac{(x - \mu)^2}{2\sigma^2}\right)$\\
+    $= \1_\real(x) \cdot \exp\!\left(\frac{\mu}{\sigma^2} x + \frac{-\mu^2}{2\sigma^2} +
+    \left(-\frac{x^2}{2\sigma^2} - \ln \sqrt{2\pi\sigma^2}\right)\right)$.\\
+    Man wählt also $A := \real$, $c(\mu) = \frac{\mu}{\sigma^2}$, $T(x) := x$,
+    $d(\mu) := \frac{-\mu^2}{2\sigma^2}$ und
+    $S(x) := -\frac{x^2}{2\sigma^2} - \ln \sqrt{2\pi\sigma^2}$.
+\end{Bsp}
+
+\begin{Bsp}
+    Die Familie $\P = \{\Bin(n, \theta) \;|\; \theta \in (0, 1)\}$ der Binomialverteilungen
+    bei bekanntem $n$ ist eine $1$-parametrige Exponentialfamilie, da
+    $p(k, \theta) = \binom{n}{k} \theta^k (1-\theta)^{n-k}$\\
+    $= \1_{\{0,\dotsc,n\}}(k) \cdot
+    \exp\!\left(\ln\!\left(\frac{\theta}{1 - \theta}\right) \cdot k +
+    n \cdot \ln(1 - \theta) + \ln \binom{n}{k}\right)$.
+    Man wählt also $A := \{0, \dotsc, n\}$,\\
+    $c(\theta) := \ln\!\left(\frac{\theta}{1 - \theta}\right)$,
+    $T(k) := k$, $d(\theta) := n \cdot \ln(1 - \theta)$ und
+    $S(k) = \ln \binom{n}{k}$.
+\end{Bsp}
+
+\begin{Bsp}
+    Die Gleichverteilung auf $(0, \theta)$ bildet keine $1$-parametrige Exponentialfamilie.
+\end{Bsp}
+
+\linie
+
+\begin{Bem}
+    Sind $X_1, \dotsc, X_m$ i.i.d. $n$-dimensionale Zufallsvektoren mit Verteilungen aus einer
+    Exponentialfamilie $\P = \{P_\theta \;|\; \theta \in \Theta\}$,
+    so besitzt auch der Zufallsvektor $X := (X_1^T, \dotsc, X_m^T)^T$ mit Werten
+    $x = (x_1^T, \dotsc, x_m^T)^T \in \real^{n \cdot m}$ eine Verteilung aus einer
+    Exponentialfamilie, denn die Dichte von $X$ ist aufgrund der Unabhängigkeit\\
+    $p_X(x, \theta) = \prod_{i=1}^m p(x_i, \theta) =
+    \prod_{i=1}^m \1_A(x_i) \cdot \exp\!\left(c(\theta) T(x_i) + d(\theta) + S(x_i)\right)$\\
+    $= \left(\prod_{i=1}^m \1_A(x_i)\right) \cdot
+    \exp\!\left(c(\theta) \sum_{i=1}^m T(x_i) + m d(\theta) + \sum_{i=1}^m S(x_i)\right)$.\\
+    Wählt man $A' := A^m$ (dann gilt $\prod_{i=1}^m \1_A(x_i) = \1_{A'}(x)$),
+    $c'(\theta) := c(\theta)$, $T'(x) := \sum_{i=1}^m T(x_i)$,
+    $d'(\theta) := m d(\theta)$ und
+    $S'(x) := \sum_{i=1}^m S(x_i)$, so erhält man eine Darstellung als $1$-parametrige
+    Exponentialfamilie.
+\end{Bem}
+
+\begin{Bsp}
+    Sind $X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ i.i.d. und
+    $X := (X_1, \dotsc, X_n)^T$, dann sind $T(X) := \sum_{i=1}^n X_i$ und
+    $\overline{X} := \frac{1}{n} \sum_{i=1}^n X_i$ suf"|fiziente Statistiken für den unbekannten
+    Erwartungswert $\mu$ und die Verteilung von $X$ bildet wieder eine $1$-parametrige
+    Exponentialfamilie.
+\end{Bsp}
+
+\linie
+\pagebreak
+
+\begin{Def}{$k$-parametrige Exponentialfamilie}
+    Eine Familie von Verteilungen $\P = \{P_\theta \;|\; \theta \in \Theta\}$ auf
+    $(\real^n, \B^n)$ mit $\Theta \subset \real^k$ heißt
+    \begriff{$k$-parametrige Exponentialfamilie}, falls
+    es Funktionen\\
+    $c_j, d\colon \Theta \rightarrow \real$ und
+    $T_j, S\colon \real^n \rightarrow \real$, $j = 1, \dotsc, k$,
+    sowie eine Menge $A \subset \real^n$ gibt,\\
+    sodass die L.-B.-Dichte/Zähldichte $p(x, \theta)$ von $P_\theta$ für $x \in \real^n$
+    durch\\
+    $p(x, \theta) = \1_A(x) \cdot
+    \exp\!\left(\sum_{j=1}^k c_j(\theta) T_j(x) + d(\theta) + S(x)\right)$
+    dargestellt werden kann.
+\end{Def}
+
+\begin{Bem}
+    Analog zur $1$-parametrigen Exponentialfamilie ist $T(X) := (T_1(X), \dotsc, T_k(X))^T$
+    eine suf"|fiziente Statistik für $\theta \in \Theta$,
+    die \begriff{natürliche suf"|fiziente Statistik}.
+\end{Bem}
+
+\begin{Bsp}
+    Die Familie $\P = \{\N(\mu, \sigma^2) \;|\; (\mu, \sigma^2) \in \real \times \real^+\}$ bildet
+    eine $2$-parametrige Exponentialfamilie mit
+    $\theta = (\mu, \sigma^2) \in \Theta = \real \times \real^+$, denn es gilt für die Dichte\\
+    $p(x, \theta) = \frac{1}{\sqrt{2\pi\sigma^2}}
+    \exp\!\left(-\frac{(x - \mu)^2}{2\sigma^2}\right) =
+    \1_\real(x) \cdot \exp\!\left(\frac{\mu}{\sigma^2}x - \frac{1}{2\sigma^2} x^2 -
+    \frac{1}{2} \left(\frac{\mu^2}{\sigma^2} + \ln(2\pi\sigma^2)\right)\right)$.\\
+    Wählt man $A := \real$, $c_1(\theta) := \frac{\mu}{\sigma^2}$, $T_1(x) := x$,
+    $c_2(\theta) := -\frac{1}{2\sigma^2}$, $T_2(x) := x^2$,\\
+    $d(\theta) := -\frac{1}{2} \left(\frac{\mu^2}{\sigma^2} + \ln(2\pi\sigma^2)\right)$
+    und $S(x) := 0$, so erhält man eine Darstellung als $2$-parametrige Exponentialfamilie.
+\end{Bsp}
+
+\subsection{%
+    \name{Bayes}ianische Modelle%
+}
+
+\begin{Bem}
+    Der bayesianische Ansatz in der Statistik geht davon aus, dass der Wert einer unbekannten
+    Verteilung eine Realisierung einer Zufallsvariablen mit gegebener
+    a-priori-Verteilung ist.
+    Diese a-priori-Verteilung kann zur Modellierung einer subjektiven Einschätzung
+    (z.\,B. Expertenwissen) oder einer Vorabinformation dienen.
+\end{Bem}
+
+\begin{Def}{\name{bayes}ianisches Modell}\\
+    Ein \begriff{\name{bayes}ianisches Modell} für die Daten $X$ mit dem Parameter $\theta$
+    ist bestimmt durch
+    \begin{enumerate}
+        \item
+        eine \begriff{a-priori-Verteilung} $\pi$, sodass $\theta \sim \pi$, und
+        
+        \item
+        eine reguläre Verteilung $\PP_\theta$, sodass $X|\theta \sim \PP_\theta$.
+    \end{enumerate}
+\end{Def}
+
+\linie
+
+\begin{Bem}
+    Nach Erhebung der Daten kann die a-priori-Verteilung $\pi(\theta)$ von $\theta$
+    zur \begriff{a-posteri\-ori-Verteilung} $p(\theta|x) := p(\theta|X=x)$ mittels
+    \begriff{\name{Bayes}-Formel} aktualisiert werden:\\
+    $p(\theta|x) = \frac{\pi(\theta) p(x|\theta)}{m(x)}$,
+    wobei $m(x) := \sum_{\theta' \in \Theta} \pi(\theta') p(x|\theta')$, falls $\theta$ die
+    Zähldichte $\pi(\theta)$ besitzt, und
+    $m(x) := \int_\Theta \pi(\theta') p(x|\theta') \d\theta'$, falls $\theta$ die L.-B.-Dichte
+    $\pi(\theta)$ besitzt.
+    $m(x)$ heißt \begriff{marginale Verteilung (Randverteilung)} von $X$.\\
+    Ist der Zähler in $\frac{\pi(\theta) p(x|\theta)}{m(x)}$ bekannt, dann auch der Nenner,
+    da $p(x|\theta)$ über $\theta$ summiert bzw. integriert gleich $1$ sein muss.
+    Deshalb schreibt man obige Formel häufig kurz durch\\
+    $p(\theta|x) \propto \pi(\theta) p(x|\theta)$.
+\end{Bem}
+
+\begin{Bem}
+    Die Bayes-Formel für Ereignisse sieht ähnlich aus:
+    Für $A, B \in \A$, $P(A), P(B) > 0$, gilt
+    $P(A|B) = \frac{P(A \cap B)}{P(B)}$, also
+    $P(B|A) = \frac{P(A \cap B)}{P(A)} = \frac{P(A|B) \cdot P(B)}{P(A)} =
+    \frac{P(A|B) \cdot P(B)}{P(A|B) \cdot P(B) + P(A|B^C) \cdot P(B^C)}$.
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Bsp}
+    Seien $X_1, \dotsc, X_n$ unabhängige Bernoulli-verteilte Zufallsvariablen mit
+    zufälligem Parameter $\theta \in (0, 1)$, d.\,h.
+    $\PP(X_i = 1|\vartheta) = \vartheta$.
+    Die a-priori-Verteilung $\pi$ von $\theta$ sei durch eine \begriff{Beta-Verteilung} gegeben,
+    also mit L.-B.-Dichte $p_{a,b}(x) = \frac{x^{a-1} (1-x)^{b-1}}{B(a, b)} \1_{(0,1)}(x)$
+    für $a, b > 0$,
+    wobei $B(a, b) = \int_0^1 t^{a-1} (1-t)^{b-1} \dt$ die Beta-Funktion ist.
+    Die Beta-Verteilung verallgemeinert die Gleichverteilung auf dem Intervall $(0, 1)$
+    (für $a = b = 1$ erhält man die Gleichverteilung).
+    
+    Sei jetzt $s = \sum_{i=1}^n x_i$ die Summe der Werte von $X_1, \dotsc, X_n$.\\
+    Dann ist $p(x|\theta) = \theta^s (1 - \theta)^{n-s} \cdot \1_{(0, 1)}(\theta)$
+    die Zähldichte von $X$ ($x \in \{0, 1\}^n$) und die a-posteriori-Dichte von $\theta|X = x$
+    berechnet sich durch\\
+    $p(\theta|x) = \frac{\pi(\theta) p(x|\theta)}{\int_\Theta \pi(\theta') p(x|\theta') \d\theta'}
+    = \frac{\theta^{a-1} (1 - \theta)^{b-1} \cdot \theta^s (1 - \theta)^{n-s}}{\int_0^1 \dots}
+    \cdot \frac{B(a, b)}{B(a, b)} \cdot \1_{(0, 1)}(\theta)
+    \propto \theta^{a+s-1} (1 - \theta)^{b+n-s-1} \1_{(0,1)}(\theta)$.\\
+    Also gilt $\theta|X = x \sim \BetaV(a + s, b + n - s)$.
+\end{Bsp}
+
+\begin{Bem}
+    Damit ist die a-posteriori-Verteilung von $\theta$ aus derselben Klasse wie die
+    a-priori-Verteilung, die Beta-Verteilung ist eine
+    \begriff{(zur \name{Bernoulli}-Verteilung) konjugierte Verteilung}.\\
+    Für bestimmte Verteilungen, die sich als Exponentialfamilie
+    darstellen lassen, lässt sich eine konjugierte Familie
+    (ebenfalls als Exponentialfamilie) angeben,
+    wie das folgende Lemma zeigt.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{konjugierte Familie für Familie der Exponentialverteilungen}\\
+    Sei $X|\theta$ eine i.i.d.-Stichprobe einer $k$-parametrigen Exponentialfamilie mit
+    Zähl-/L.-B.-Dichte\\
+    $p(x|\theta) = \1_A(x) \cdot \exp\!\left(\sum_{j=1}^k c_j(\theta)
+    \sum_{i=1}^n T_j(x_i) + \sum_{i=1}^n S(x_i) + n d(\theta)\right)$, $x = (x_1, \dotsc, x_n)$.\\
+    Dann wird durch die $(k + 1)$-parametrige Exponentialfamilie gegeben durch\\
+    $\pi(\theta; t_1, \dotsc, t_{k+1}) \propto
+    \exp\!\left(\sum_{j=1}^k c_j(\theta) t_j + d(\theta) t_{k+1}\right)$
+    eine zu obiger Verteilung von $X|\theta$ konjugierte Familie definiert.
+    Für die a-posteriori-Verteilung von $\theta|X = x$ gilt\\
+    $p(\theta|x) \propto \pi\!\left(\theta; t_1 + \sum_{i=1}^n T_1(x_i), \dotsc,
+    t_k + \sum_{i=1}^n T_k(x_i), t_{k+1} + n\right)$.
+\end{Satz}
+
+\linie
+
+\begin{Bsp}
+    Sei $X \sim \Bin(1, \theta)$ Bernoulli-verteilt mit $\theta \in (0, 1)$.
+    Dann ist die Dichte von $X|\theta$ gleich
+    $p(x|\theta) = \theta^x (1 - \theta)^{1-x} =
+    \exp\!\left(x \ln\!\left(\frac{\theta}{1-\theta}\right) + \ln(1 - \theta)\right)
+    \cdot \1_{\{0, 1\}}(x)$.
+    Mit dem Satz erhält man eine dazu konjugierte $2$-parametrige Exponentialfamilie mit
+    a-priori-Dichte\\
+    $\pi(\theta; t_1, t_2) \propto \exp(t_1 c(\theta) + t_2 d(\theta))
+    = \exp\!\left(t_1 \ln\!\left(\frac{\theta}{1 - \theta}\right) + t_2 \ln(1 - \theta)\right) \cdot
+    \1_{(0,1)}(\theta)$\\
+    $= \theta^{t_1} (1 - \theta)^{t_2 - t_1} \1_{(0, 1)}(\theta)$
+    mit $t_1, t_2 - t_1 > -1$.
+    Mittels Reparametrisierung $t_1 \mapsto a - 1$ und $t_2 \mapsto b + a$
+    ergibt sich $\widetilde{\pi}(\theta; a, b) \propto
+    \vartheta^{a-1} (1 - \vartheta)^{b-1} \cdot \1_{(0,1)}(\theta)$, $a, b > 0$,
+    als konjugierte a-priori-Verteilung (Beta-Verteilung).
+    
+    Die a-posteriori-Verteilung folgt mit obigem Satz:
+    $p(\theta|x) \propto \pi(\theta; t_1 + 1, t_2 + 1)
+    = \theta^{t_1+x} (1 - \theta)^{t_2 + 1 - (t_1 + x)} = \theta^{a-1+x} (1 - \theta)^{b-x}$.
+    Dies ist die Dichte der Beta-Verteilung $\BetaV(a+x, b+1-x)$,
+    die den Erwartungswert $\frac{a+x}{a+b+1}$ und die Varianz
+    $\frac{(a+x)(b+1-x)}{(a+b+2)(a+b+1)^2}$ besitzt.
+    Die Beta-Verteilung ist also eine zur Binomialverteilung konjugierte Verteilung
+    (was auch schon aus obigem Beispiel für $n = 1$ folgt).
+\end{Bsp}
+
+\linie
+\pagebreak
+
+\begin{Bsp}
+    Seien $X_1, \dotsc, X_n \sim \N(\mu, \sigma^2)$ i.i.d. mit bekannter Varianz $\sigma^2$
+    und unbekanntem Erwartungswert $\mu = \theta$.
+    Es gilt $p(x|\theta) \propto \exp\!\left(-\frac{(x - \mu)^2}{2\sigma^2}\right) \propto
+    \exp\!\left(\frac{\theta x}{\sigma^2} - \frac{\theta^2}{2\sigma^2}\right)$.
+    Wenn man in obigem Satz also $T_1(x) = x$, $c_1(\theta) = \frac{\theta}{\sigma^2}$ und
+    $d(\theta) = -\frac{\theta^2}{2\sigma^2}$ wählt,
+    erhält man eine konjugierte $2$-parametrige Exponentialfamilie als a-priori-Verteilung mit der
+    Dichte $\pi(\theta; t_1, t_2) \propto
+    \exp\!\left(\frac{\theta}{\sigma^2} t_1 - \frac{\theta^2}{2\sigma^2} t_2\right)$\\
+    $\propto \exp\!\left(\frac{t_2}{2\sigma^2} \left(\theta^2 - \frac{2\sigma^2}{t_2} \cdot
+    \frac{\theta t_1}{\sigma^2} + \left(\frac{t_1}{t_2}\right)^2\right)\right)
+    = \exp\!\left(\frac{t_2}{2\sigma^2} \left(\theta - \frac{t_1}{t_2}\right)^2\right)$.
+    Nach $t_2 > 0$ ist $\pi(\theta; t_1, t_2)$ die Dichte einer
+    $\N\!\left(\frac{t_1}{t_2}, \frac{\sigma^2}{t_2}\right)$-Verteilung.
+    Durch die Reparametrisierung $t_1 \mapsto \eta \frac{\sigma^2}{\tau^2}$ und
+    $t_2 \mapsto \frac{\sigma^2}{\tau^2}$ mit $\eta \in \real$ und $\tau^2 > 0$ erhält man
+    als a-priori-Verteilung eine $\N(\eta, \tau^2)$-Verteilung.
+    
+    Nach dem Satz hat die a-posteriori-Verteilung die Dichte
+    $p(\theta|x) \propto \pi(\theta, t_1 + \sum_{i=1}^n T_1(x_i), t_2 + n)$.
+    Mit $s = \sum_{i=1}^n x_i$ und $T_1(x_i) = x_i$ erhält man also die Dichte von
+    $\N\!\left(\frac{t_1 + s}{t_2 + n}, \frac{\sigma^2}{t_2 + n}\right)$.
+    
+    Der Erwartungswert $\frac{t_1 + s}{t_2 + n} =
+    \frac{n}{\sigma^2/\tau^2 + n} \overline{x} +
+    \frac{\sigma^2/\tau^2}{\sigma^2/\tau^2+n} \eta$ geht für $n \to \infty$ gegen
+    $\overline{x}$ (wenn man $n$ gegen Null laufen lassen würde, geht der Erwartungswert gegen
+    $\eta$).
+    Die Varianz $\frac{\sigma^2}{t_2 + n} = \frac{\sigma^2}{\sigma^2/\tau^2 + n}$ geht für
+    $n \to \infty$ gegen $0$ (für $n \to 0$ gegen $\tau^2$).
+    Also wird für $n \to \infty$ der Einfluss der a-priori-Verteilung auf die
+    a-posteriori-Verteilung immer geringer.
+\end{Bsp}
+
+\begin{Bem}
+    Hat man keine a-priori-Information über den unbekannten Parameter $\theta$,
+    so kann dies durch $\pi(\theta) \propto 1$, die sog.
+    \begriff{nicht-informative a-priori-Verteilung}, zum Ausdruck gebracht werden.
+    Ist $\Theta$ jedoch nicht endlich bzw. beschränkt, so handelt es sich bei $\pi(\theta)$ nicht
+    um eine Zähl-/L.-B.-Dichte (wegen fehlender Normierbarkeit).
+    Ist die a-posteriori-Dichte $p(\theta|x)$ dennoch normierbar, so kann die uneigentliche
+    a-priori-Dichte $\pi(\theta) \propto 1$ trotzdem verwendet werden.
+\end{Bem}
+
+\pagebreak

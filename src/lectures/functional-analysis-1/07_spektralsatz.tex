@@ -1,0 +1,589 @@
+\section{%
+    Der Spektralsatz für kompakte, selbstadjungierte Operatoren%
+}
+
+\subsection{%
+    \name{Hilbert}raum-Adjungierte%
+}
+
+\begin{Bem}
+    Seien $H_1, H_2$ Hilberträume und $T \in \Lin(H_1, H_2)$.
+    Für $y \in H_2$ ist die Abbildung $x \mapsto \sp{Tx, y}_{H_2}$ ein Element des Dualraums
+    von $H_1$.
+    Nach dem Rieszschen Darstellungssatz gibt es daher genau ein $T^\ast y \in H_1$ mit
+    $\forall_{x \in H_1}\; \sp{Tx, y}_{H_2} = \sp{x, T^\ast y}_{H_1}$.
+    Somit existiert die Hilbertraum-Adjungierte $T^\ast$ und ist eindeutig.
+\end{Bem}
+
+\begin{Def}{\name{Hilbert}raum-Adjungierte}
+    Seien $H_1, H_2$ Hilberträume und $T \in \Lin(H_1, H_2)$.
+    Dann heißt die Abbildung $T^\ast\colon H_2 \rightarrow H_1$ mit
+    $\forall_{x \in H_1,\, y \in H_2}\; \sp{Tx, y}_{H_2} = \sp{x, T^\ast y}_{H_1}$
+    \begriff{\name{Hilbert}raum-Adjungierte} von $T$.
+\end{Def}
+
+\begin{Lemma}{Eigenschaften der \name{Hilbert}raum-Adjungierten}
+    \begin{enumerate}
+        \item
+        $T^\ast \in \Lin(H_2, H_1)$ mit $\norm{T^\ast} = \norm{T}$
+        
+        \item
+        $(T + S)^\ast = T^\ast + S^\ast$, $(\alpha T)^\ast = \overline{\alpha} T^\ast$,
+        $(T \circ S)^\ast = S^\ast \circ T^\ast$
+        
+        \item
+        $T^{\ast\ast} = T$
+    \end{enumerate}
+\end{Lemma}
+
+\linie
+
+\begin{Bsp}
+    \begin{enumerate}[label=\emph{(\alph*)}]
+        \item
+        Für $H_1 = H_2 = \real^n$ (mit eukl. Skalarprodukt) und
+        $T = (a_{ij})_{i,j=1,\dotsc,n}$ ist $T^\ast = (a_{ji})_{i,j=1,\dotsc,n}$.
+        
+        \item
+        Für $H_1 = H_2 = \complex^n$ ist $T^\ast = (\overline{a_{ji}})_{i,j=1,\dotsc,n}$.
+        
+        \item
+        Für $H_1 = H_2 = \ell^2_\real$ und
+        $T((x_n)_{n \in \natural}) := (a_n x_n)_{n \in \natural}$ für eine Folge
+        $(a_n)_{n \in \natural}$, $\sup_{n \in \natural} |a_n| < \infty$, ist
+        $T^\ast((x_n)_{n \in \natural}) = (a_n x_n)_{n \in \natural} = T((x_n)_{n \in \natural})$.
+        
+        \item
+        Für $H_1 = H_2 = \ell^2_\complex$ ist
+        $T^\ast((x_n)_{n \in \natural}) = (\overline{a_n} x_n)_{n \in \natural}$.
+    \end{enumerate}
+\end{Bsp}
+
+\linie
+
+\begin{Bsp}
+    Seien $H_1 = L^2(\Omega_1, \complex)$ und $H_2 = L^2(\Omega_2, \complex)$,
+    wobei $\Omega_1 \subset \real^n$ und $\Omega_2 \subset \real^m$ messbar seien.
+    Außerdem sei $K\colon \Omega_1 \times \Omega_2 \rightarrow \complex$ messbar
+    mit $\norm{K} := \left(\int_{\Omega_1} \int_{\Omega_2}
+    |K(x, y)|^2 \dy \dx\right)^{1/2} < \infty$.
+    Sei für $f \in L^2(\Omega_1, \complex)$ die Abbildung $Tf\colon \Omega_2 \rightarrow \complex$
+    definiert durch $(Tf)(y) := \int_{\Omega_1} K(x, y)f(x)\dx$.\\
+    Dann ist $T \in \Lin(H_1, H_2)$ und $\norm{T} \le \norm{K}$.
+    Außerdem gilt $(T^\ast g)(x) = \int_{\Omega_2} \overline{K(x, y)} g(y) \dy$,
+    wenn $n = m$ und $\Omega_1 = \Omega_2$.
+    
+    Dies sieht man wie folgt:
+    Es gilt $\norm{Tf}_{H_2}^2 = \int_{\Omega_2} |(Tf)(y)|^2 \dy
+    = \int_{\Omega_2} \left|\int_{\Omega_1} K(x, y)f(x)\dx\right|^2 \dy\\
+    %$\le \int_{\Omega_2} \left|\int_{\Omega_1} |K(x, y)| |f(x)| \dx\right|^2 \dy
+    = \int_{\Omega_2} \left|\sp{K(\cdot, y), f}_{H_1}\right|^2 \dy
+    \le \int_{\Omega_2} \norm{K(\cdot, y)}_{H_1}^2 \norm{f}_{H_1}^2 \dy
+    = \norm{K}^2 \norm{f}_{H_1}^2$,
+    also $Tf \in H_2$,\\
+    $T \in \Lin(H_1, H_2)$ und $\norm{T} \le \norm{K}$.
+    Die Adjungierte $T^\ast$ erhält man durch direktes Nachrechnen
+    (wobei man die konjugierte Linearität im zweiten Argument beachten muss).
+    Ersetzt man $\complex$ durch $\real$, so ist $T^\ast = T$.
+\end{Bsp}
+
+\linie
+
+\begin{Def}{selbstadjungiert}
+    Sei $H$ ein Hilbertraum.\\
+    Dann heißt $T \in \Lin(H)$ \begriff{selbstadjungiert}, falls $T^\ast = T$
+    (d.\,h. $\forall_{x, y \in H}\; \sp{Tx, y} = \sp{x, Ty}$).
+\end{Def}
+
+\begin{Bem}
+    Ist $T \in \Lin(H)$ selbstadjungiert, so gilt für $x = y$, dass
+    $\sp{Tx, x} = \sp{x, Tx} = \overline{\sp{Tx, x}}$,
+    also $\sp{Tx, x} = \sp{x, Tx} \in \real$ für alle $x \in H$.
+    Manchmal ist Selbstadjungiertheit eine zu starke Eigenschaft,
+    in diesem Fall verwendet man die Verallgemeinerung von normalen Abbildungen.
+\end{Bem}
+
+\begin{Def}{normal}
+    Sei $H$ ein Hilbertraum.
+    Dann heißt $T \in \Lin(H)$ \begriff{normal}, falls $T^\ast T = TT^\ast$.
+\end{Def}
+
+\begin{Lemma}{Charakterisierung}
+    $T$ ist normal genau dann, wenn
+    $\forall_{x \in H}\; \norm{Tx} = \norm{T^\ast x}$.
+\end{Lemma}
+
+\pagebreak
+
+\subsection{%
+    Kompakte Operatoren%
+}
+
+\begin{Def}{kompakter Operator}
+    Seien $E, F$ Banachräume.\\
+    Dann heißt $T \in \Lin(E, F)$ \begriff{kompakt}, falls
+    $\overline{T B_E} = \overline{\{Tx \;|\; \norm{x}_E \le 1\}}$ kompakt in $F$ ist.\\
+    Äquivalent dazu sind:
+    \begin{enumerate}
+        \item
+        Für jede Folge $(x_n)_{n \in \natural}$ in $B_E$ besitzt $(Tx_n)_{n \in \natural}$
+        eine konvergente Teilfolge in $F$.
+        
+        \item
+        Für alle $\varepsilon > 0$ gibt es eine endliche Menge $M \subset F$ mit
+        $TB_E \subset M + \varepsilon B_F$.
+    \end{enumerate}
+    Die \begriff{Menge aller kompakten Operatoren} von $E$ nach $F$ bezeichnet man mit
+    $\K(E, F)$ und man schreibt $\K(E) := \K(E, E)$.
+\end{Def}
+
+\begin{Bem}
+    Ist $X$ ein Banachraum, dann gilt $\id \in \K(X) \iff X \;\text{endl.-dim.}$
+\end{Bem}
+
+\begin{Lemma}{$\K(E, F)$ abg. UVR}
+    $\K(E, F)$ ist ein abgeschlossener Unterraum von $\Lin(E, F)$.
+\end{Lemma}
+
+\linie
+
+\begin{Def}{Operator mit endlichem Rang}
+    Seien $E, F$ Banachräume.
+    Die \begriff{Menge aller Operatoren mit endlichem Rang} ist definiert durch
+    $\F(E, F) := \{T \in \Lin(E, F) \;|\; \dim TE < \infty\}$.
+\end{Def}
+
+\begin{Bsp}
+    \begin{enumerate}[label=\emph{(\alph*)}]
+        \item
+        Für $T \in \F(E, F)$ gilt $T \in \K(E, F)$, denn
+        $TB_E$ ist beschränkt in $TE$ (für alle $x \in B_E$ gilt
+        $\norm{Tx}_F \le \norm{T} \norm{x}_E \le \norm{T}$) und
+        somit ist $\overline{TB_E}$ beschränkt und abgeschlossen.
+        Damit ist $\overline{TB_E}$ kompakt in $TE$ (wegen $\dim TE < \infty$)
+        und insbesondere kompakt in $F$.
+        
+        \item
+        Für $\dim E < \infty$ ist $\dim TE < \infty$ für alle $T \in \Lin(E, F)$,
+        also gilt\\
+        $\Lin(E, F) \subset \F(E, F) \subset \K(E, F) \subset \Lin(E, F)$,
+        d.\,h. jeder lineare, stetige Operator ist kompakt, wenn $E$ endlich-dimensional ist.
+        
+        \item
+        Es gilt $\overline{\F(E, F)} \subset \K(E, F)$, weil $\K(E, F)$ abgeschlossen ist.
+    \end{enumerate}
+\end{Bsp}
+
+\begin{Bem}
+    Lange war ungeklärt, ob die Umkehrung auch gilt,
+    d.\,h. ob $\overline{\F(E, F)} = \K(E, F)$.
+    Die Frage war also, ob jeder kompakte Operator durch Operatoren von endlichem Rang
+    approximiert werden kann.
+    Per Enflo konnte als Erster ein Gegenbeispiel liefern (1973).
+    Allerdings stimmt die Aussage, wenn $F$ ein Hilbertraum ist.
+\end{Bem}
+
+\begin{Lemma}{kpkt.e Operatoren als GW von Operatoren mit endl. Rang}\\
+    Seien $E$ ein Banachraum und $F$ ein Hilbertraum.
+    Dann gilt $\overline{\F(E, F)} = \K(E, F)$.
+\end{Lemma}
+
+\linie
+\pagebreak
+
+\begin{Bsp}
+    Obiger Integraloperator $T \in \Lin(H_1, H_2)$ ist kompakt.
+    Wählt man ein vollständiges ONS $(e_k)_{k \in \natural}$ von $H_1$, dann gilt nach
+    Parseval
+    $\norm{K}^2 = \int_{\Omega_2} \norm{\overline{K(\cdot, y)}}_{H_1}^2 \dy$\\
+    $= \int_{\Omega_2} \sum_{k \in \natural}
+    \left|\sp{\overline{K(\cdot, y)}, e_k}_{H_1}\right|^2 \dy
+    = \int_{\Omega_2} \sum_{k \in \natural} |(Te_k)(y)|^2 \dy
+    = \sum_{k \in \natural} \norm{Te_k}_{H_2}^2$.\\
+    Sei $P_n$ die orthogonale Projektion von $H_1$ auf $[e_1, \dotsc, e_n]$, d.\,h.
+    $P_n f := \sum_{k=1}^n \sp{f, e_k}_{H_1} e_k$.\\
+    Dann gilt
+    $\norm{(T - TP_n) f}_{H_2}^2
+    = \norm{T (f - P_n f)}_{H_2}^2
+    = \norm{T\!\left(\sum_{k > n} \sp{f, e_k}_{H_1} e_k\right)}_{H_2}^2$\\
+    $= \norm{\sum_{k > n} \sp{f, e_k}_{H_1} Te_k}_{H_2}^2
+    \le \left(\sum_{k > n} \left|\sp{f, e_k}_{H_1}\right| \norm{Te_k}_{H_2}\right)^2$\\
+    $\le \sum_{k > n} \left|\sp{f, e_k}_{H_1}\right|^2 \cdot \sum_{k > n} \norm{Te_k}_{H_2}^2$
+    wegen der Cauchy-Schwarz-Ungleichung für $\ell^2$.
+    Der erste Faktor ist mit Parseval durch $\norm{f}_{H_1}^2$ nach oben beschränkt, während
+    der zweite für $n \to \infty$ gegen Null geht 
+    (weil $\sum_{k \in \natural} \norm{Te_k}_{H_2}^2 = \norm{K}^2 < \infty$).
+    Damit gilt\\
+    $\norm{(T - TP_n) f}_{H_2}^2 \le \sum_{k > n} \norm{Te_k}_{H_2}^2
+    \norm{f}_{H_1}^2$
+    und somit $\norm{T - TP_n}^2 \le \sum_{k > n} \norm{Te_k}_{H_2}^2 \to 0$
+    für $n \to \infty$.
+    Wegen $\Bild(TP_n) = T(\Bild(P_n))$ endlich-dimensional für alle $n \in \natural$ ist
+    $T$ kompakt.
+\end{Bsp}
+
+\begin{Bem}
+    Man kann bei Vorhandensein entsprechender Integrabilität von $K$ auch Integraloperatoren
+    $T^{p,q} \in \Lin(L^p(\Omega_1, \KK), L^q(\Omega_2, \KK))$ für $\frac{1}{p} + \frac{1}{q} = 1$
+    bekommen.
+    Auch sie sind stetig (Nachweis mit Hölder statt Cauchy-Schwarz, ähnlich wie für $p = q = 2$)
+    und kompakt (Nachweis mithilfe von Fréchet-Kolmogorov, Riesz).
+    Man nennt diese Operatoren\\
+    \begriff{\name{Hilbert}-\name{Schmidt}-Integraloperatoren}.
+\end{Bem}
+
+\linie
+
+\begin{Lemma}{Komposition kpkt.}
+    Seien $X, Y, Z$ Banachräume, $T_1 \in \Lin(X, Y)$ und $T_2 \in \Lin(Y, Z)$.\\
+    Dann folgt aus $T_1$ kompakt oder $T_2$ kompakt, dass $T_2 T_1$ kompakt ist.
+\end{Lemma}
+
+\begin{Bem}
+    Algebraisch lässt sich das für $X = Y = Z$ wie folgt ausdrücken:
+    Mit der Verkettung $\circ$ als Multiplikation ist der Vektorraum
+    $(\Lin(X), +, \circ)$ eine nicht-kommutative Algebra,
+    d.\,h. $\circ$ ist assoziativ (aber i.\,A. nicht-kommutativ),
+    $+$ und $\circ$ sind distributiv und für alle $\alpha \in \KK$ gilt
+    $\alpha (f \circ g) = (\alpha f) \circ g = f \circ (\alpha g)$.
+    Für $S, T \in \Lin(X)$ gilt außerdem $\norm{S \circ T} \le \norm{S} \cdot \norm{T}$.
+    Ein Banachraum, der eine Algebra ist und dessen Multiplikation diese Beziehung erfüllt,
+    heißt \begriff{\name{Banach}algebra}.
+    $(\Lin(X), +, \circ)$ ist also eine Banachalgebra und obiges Lemma besagt nun,
+    dass $\K(X)$ ein Ideal in $\Lin(X)$ ist.
+\end{Bem}
+
+\linie
+
+\begin{Satz}{Eigenwerte kompakter Operatoren}\\
+    Seien $X$ ein Banachraum, $T \in \K(X)$ und $\lambda \in \KK \setminus \{0\}$.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $\dim \Kern(\lambda\id - T) < \infty$
+        
+        \item
+        $\Bild(\lambda\id - T) \subset X$ abgeschlossen
+        
+        \item
+        $\lambda\id - T$ injektiv $\iff$ $\lambda\id - T$ surjektiv
+    \end{enumerate}
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Das Spektrum linearer Abbildungen über Banachräumen%
+}
+
+\begin{Bem}
+    Im Folgenden seien $X$ ein $\complex$-Banachraum und $T \in \Lin(X)$.
+\end{Bem}
+
+\begin{Def}{Resolventenmenge}\\
+    Die Menge $\varrho(T) := \{\lambda \in \complex \;|\; \lambda\id - T \text{ bijektiv}\}$
+    heißt \begriff{Resolventenmenge} von $T$.
+\end{Def}
+
+\begin{Def}{Spektrum}
+    Die Menge $\sigma(T) := \complex \setminus \varrho(T)$
+    heißt \begriff{Spektrum} von $T$.
+    Es kann zerlegt werden in
+    \begin{itemize}
+        \item
+        das \begriff{Punktspektrum}\\
+        $\sigma_p(T) := \{\lambda \in \complex \;|\; \lambda\id - T \text{ nicht injektiv}\}$,
+        
+        \item
+        das \begriff{kontinuierliche Spektrum}\\
+        $\sigma_c(T) := \{\lambda \in \complex \;|\; \lambda\id - T
+        \text{ injektiv, aber nicht surjektiv und } \overline{\Bild(\lambda\id - T)} = X\}$ und
+        
+        \item
+        das \begriff{Residualspektrum}\\
+        $\sigma_r(T) := \{\lambda \in \complex \;|\; \lambda\id - T
+        \text{ injektiv und } \overline{\Bild(\lambda\id - T)} \not= X\}$.
+    \end{itemize}
+\end{Def}
+
+\begin{Def}{Eigenvektor, Eigenwert, Eigenraum}\\
+    Für $\lambda \in \complex$ gilt $\lambda \in \sigma_p(T)$ genau dann, wenn
+    $\exists_{x \in X \setminus \{0\}}\; Tx = \lambda x$.
+    In diesem Fall heißt $x$ \begriff{Eigenvektor} von $T$ zum \begriff{Eigenwert} $\lambda$.
+    Ist $X$ ein Funktionenraum, so heißt $x$ auch \begriff{Eigenfunktion}.
+    Der Unterraum $\Kern(\lambda\id - T)$ von $X$ heißt \begriff{Eigenraum} von $T$ zum
+    Eigenwert $\lambda$.
+    Seine Dimension heißt \begriff{Vielfachheit} des Eigenwerts $\lambda$.
+    Der Eigenraum ist ein $T$-invarianter Unterraum, d.\,h.
+    $T(\Kern(\lambda\id - T)) \subset \Kern(\lambda\id - T)$.
+\end{Def}
+
+\begin{Bem}
+    Für $\dim(X) < \infty$ gilt $\sigma(T) = \sigma_p(T)$ für alle $T \in \Lin(X)$
+    (da in diesem Fall $\lambda\id - T$ injektiv $\iff$ $\lambda\id - T$ surjektiv für alle
+    $\lambda \in \complex$).
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Im weiteren Verlauf wird der folgende (nicht-triviale) Satz aus der Banachraum-Theorie
+    benötigt, der später bewiesen wird.
+\end{Bem}
+
+\begin{Satz}{Umkehrabbildung stetig}
+    Seien $E$ und $F$ Banachräume und $L \in \Lin(E, F)$ bijektiv.\\
+    Dann gilt $L^{-1} \in \Lin(F, E)$.
+\end{Satz}
+
+\begin{Def}{Resolvente}
+    Sei $\lambda \in \varrho(T)$.
+    Dann heißt $R(\lambda, T) := (\lambda\id - T)^{-1} \in \Lin(X)$
+    \begriff{Resolvente} von $T$ in $\lambda$ und
+    $R(\cdot, T)\colon \varrho(T) \rightarrow \Lin(X)$,
+    $\lambda \mapsto R(\lambda, T)$ heißt \begriff{Resolventenfunktion}.
+\end{Def}
+
+
+\begin{Satz}{Resolventenfunktion holomorph}
+    $\varrho(T) \subset \complex$ ist of"|fen und
+    $R(\cdot, T)\colon \varrho(T) \rightarrow \Lin(X)$ ist holomorph, d.\,h.
+    $\lim_{h \to 0} \frac{R(\lambda + h, T) - R(\lambda, T)}{h}$ existiert in $\Lin(X)$.\\
+    Außerdem gilt $\forall_{\lambda \in \varrho(T)}\;
+    \norm{R(\lambda, T)}^{-1} \le \dist(\lambda, \sigma(T))$.
+\end{Satz}
+
+\linie
+
+\begin{Def}{Spektralradius}
+    $\sup_{\lambda \in \sigma(T)} |\lambda|$ heißt \begriff{Spektralradius} von $T$.
+\end{Def}
+
+\begin{Satz}{Spektrum kompakt}
+    $\sigma(T)$ ist kompakt und für $X \not= \{0\}$ auch nicht-leer mit\\
+    $\sup_{\lambda \in \sigma(T)} |\lambda| = \lim_{m \to \infty} \norm{T^m}^{1/m} \le \norm{T}$.
+\end{Satz}
+
+\begin{Satz}{Spektralradius normaler Operatoren über Hilberträume}\\
+    Sei $X \not= \{0\}$ ein $\complex$-Hilbertraum und
+    $T \in \Lin(X)$ normal.
+    Dann gilt $\sup_{\lambda \in \sigma(T)} |\lambda| = \norm{T}$.
+\end{Satz}
+
+\pagebreak
+
+\subsection{%
+    Das Spektrum kompakter Operatoren und der Spektralsatz%
+}
+
+\begin{Satz}{Spektrum kompakter Operatoren}
+    Sei $T \in \K(X)$.\\
+    Dann stimmt $\sigma(T)$ mit den Eigenwerten $\sigma_p(T)$ bis auf $0$ überein,
+    d.\,h. $\sigma(T) \setminus \{0\} = \sigma_p(T) \setminus \{0\}$.\\
+    Außerdem besteht $\sigma(T) \setminus \{0\}$
+    \begin{enumerate}
+        \item
+        aus endlich vielen Eigenwerten oder
+        
+        \item
+        aus abzählbar unendlich vielen Eigenwerten mit $0$ als einzigem Häufungspunkt.
+    \end{enumerate}
+    Die Vielfachheit jeden von $0$ verschiedenen Eigenwerts
+    $\lambda \in \sigma(T) \setminus \{0\}$ ist endlich.\\
+    Für $\dim X = \infty$ ist $0 \in \sigma(T)$.
+\end{Satz}
+
+\linie
+
+\begin{Def}{positiv semidefinit}
+    Seien $H$ ein $\complex$-Hilbertraum und $T \in \Lin(H)$ selbstadjungiert.\\
+    Dann heißt $T$ \begriff{positiv semidefinit}, falls
+    $\forall_{x \in H}\; \sp{x, Tx} \ge 0$.
+\end{Def}
+
+\begin{Satz}{Spektralsatz für kompakte, selbstadjungierte Operatoren}\\
+    Seien $H$ ein $\complex$-Hilbertraum und $T \in \Lin(H) \setminus \{0\}$
+    kompakt und selbstadjungiert.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $\sigma_p(T) \setminus \{0\} = \{\lambda_k \;|\; k \in N\}$
+        mit $N = \{1, \dotsc, n\}$ oder $N = \natural$ und
+        $\lambda_k$ paarweise verschieden.\\
+        Für alle $k \in N$ gilt $\dim(\Kern(\lambda_k \id - T)) < \infty$ und gibt es Eigenvektoren
+        $e_{k,j_k}$,\\
+        $j_k = 1, \dotsc, \dim(\Kern(\lambda_k \id - T))$,
+        von $T$ zu $\lambda_k$, sodass
+        $(e_{k,j_k})_{k,j_k}$ ein ONS in $H$ ist.\\
+        Für $N = \natural$ gilt $\lim_{k \to \infty} \lambda_k = 0$.
+        
+        \item
+        $H = \Kern(T) \oplus \overline{[\{e_{k,j_k} \;|\; k, j_k\}]}$
+        mit $\Kern(T) \,\orth\, \overline{[\{e_{k,j_k} \;|\; k, j_k\}]}$
+        
+        \item
+        $\forall_{x \in H}\; Tx = \sum_k \sum_{j_k} \lambda_k \sp{x, e_{k,j_k}} e_{k,j_k}$
+        
+        \item
+        $\sigma_p(T) \subset [-\norm{T}, \norm{T}] \subset \real$
+        
+        \item
+        $\norm{T} \in \sigma_p(T)$ oder $-\norm{T} \in \sigma_p(T)$
+        
+        \item
+        Ist $T$ positiv semidefinit, dann gilt $\sigma_p(T) \subset [0, \norm{T}]$.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bem}
+    Dieser Satz ist eine unendlich-dimensionale Verallgemeinerung des Theorems
+    aus der linearen Algebra, dass jede
+    symmetrische Matrix mithilfe von ONBen aus Eigenvektoren reell diagonalisierbar ist.
+\end{Bem}
+
+\begin{Satz}{Spektralsatz für kompakte, normale Operatoren}\\
+    Seien $H$ ein $\complex$-Hilbertraum und $T \in \Lin(H) \setminus \{0\}$
+    kompakt und normal.\\
+    Dann gelten die Aussagen \emph{(1)}, \emph{(2)} und \emph{(3)} aus obigem Satz.
+\end{Satz}
+
+\begin{Bem}
+    Anhand des Beweises erkennt man, dass die Aussagen \emph{(4)} und \emph{(6)} gelten,
+    wenn $T$ nur selbstadjungiert (und stetig) ist, aber nicht kompakt.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Ist $X$ ein $\real$-Banachraum, so kann man $X$ \begriff{komplexifizieren},
+    d.\,h. $\widetilde{X} := X \times X$ mit
+    $\alpha \cdot (x_1, x_2) := (a x_1 - b x_2, a x_2 + b x_1)$ und
+    $\overline{(x_1, x_2)} := (x_1, -x_2)$ für $(x_1, x_2) \in \widetilde{X}$ und
+    $\alpha := a + \iu b \in \complex$ mit $a, b \in \real$.
+    Damit wird $\widetilde{X}$ ein $\complex$-Vektorraum.\\
+    Mit $\norm{x}_{\widetilde{X}} := \sup_{\theta \in \real}
+    \left(\norm{\cos(\theta)x_1 - \sin(\theta)x_2}_X^2 +
+    \norm{\sin(\theta)x_1 + \cos(\theta)x_2}_X^2\right)^{1/2}$ gilt dann\\
+    $\forall_{x \in \widetilde{X}} \forall_{\theta \in \real}\;
+    \norm{e^{\iu\theta}x}_{\widetilde{X}} = \norm{x}_{\widetilde{X}}$
+    und $\widetilde{X}$ ist ein $\complex$-Banachraum.\\
+    Falls $X$ ein $\real$-Hilbertraum ist, so ist $\widetilde{X}$ ein $\complex$-Hilbertraum
+    sowie $\norm{x}_{\widetilde{X}} = \left(\norm{x_1}_X^2 + \norm{x_2}_X^2\right)^{1/2}$.\\
+    Für $T \in \Lin(X)$ ist $\widetilde{T} \in \Lin(\widetilde{X})$ mit
+    $\widetilde{T}x := (Tx_1, Tx_2)$.
+    Zusätzliche Eigenschaften wie Kompaktheit oder Selbstadjungiertheit von $T$ übertragen sich
+    auf $\widetilde{T}$.
+    Somit kann man mit dieser Komplexifizierung Spektralsätze wie oben auch auf reelle
+    Hilberträume übertragen (analog auch von komplexen auf reelle Banachräume).
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Def}{\name{Rayleigh}-Quotient}
+    Seien $H$ ein $\complex$-Hilbertraum und $T \in \Lin(H)$ selbstadjungiert.\\
+    Dann heißt $R_T(u) := \frac{\sp{Tu, u}}{\sp{u, u}}$
+    der \begriff{\name{Rayleigh}-Quotient} von $u \in H \setminus \{0\}$.
+\end{Def}
+
+\begin{Bem}
+    Der Rayleigh-Quotient von Eigenvektoren ist
+    gleich dem jeweiligen Eigenwert.
+\end{Bem}
+
+\begin{Satz}{Eigenwerte kompakter, selbstadjungierter Operatoren}\\
+    Seien $H$ ein $\complex$-Hilbertraum und $T \in \Lin(H) \setminus \{0\}$
+    kompakt und selbstadjungiert.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        Wenn $\lambda \not= 0$ mit
+        $\lambda := \sup_{u \in H \setminus \{0\}} R_T(u) = \sup_{u \in H,\;\norm{u}=1} \sp{Tu, u}$
+        gilt, dann ist\\
+        $\lambda = \max(\sigma_p(T) \setminus \{0\})$.
+        Das Supremum wird in diesem Fall von allen Eigenvektoren zum Eigenwert $\lambda$
+        angenommen.
+        
+        \item
+        Wenn $\mu \not= 0$ mit
+        $\mu := \inf_{u \in H \setminus \{0\}} R_T(u) = \inf_{u \in H,\;\norm{u}=1} \sp{Tu, u}$
+        gilt, dann ist\\
+        $\mu = \min(\sigma_p(T) \setminus \{0\})$.
+        Das Infimum wird in diesem Fall von allen Eigenvektoren zum Eigenwert $\lambda$
+        angenommen.
+        
+        \item
+        Für $\sup_{u \in \Kern(\lambda\id - T)^\orth \setminus \{0\}} R_T(u) \not= 0$
+        ist dies der zweitgrößte von $0$ verschiedene Eigenwert usw.
+    \end{enumerate}
+\end{Satz}
+
+\begin{Bem}
+    Für alle von $0$ verschiedenen Eigenwerte sind die Lösungen der jeweiligen
+    Eigen"-wert-Gleichungen die Lösungen von Variationsproblemen mit Nebenbedingungen,
+    wobei die Eigenwerte als Lagrange-Parameter auftreten.
+\end{Bem}
+
+\subsection{%
+    Der Spektralsatz für den \name{Laplace}-Operator%
+}
+
+\begin{Def}{inverser \name{Laplace}-Operator}
+    Sei $\Omega \subset \real^n$ ein beschränktes und stückweise $\C^1$-berandetes Gebiet.
+    Dann ist der \begriff{(schwache) inverse \name{Laplace}-Operator
+    (mit homogenen \name{Dirichlet}-RB)}
+    $\Delta^{-1}\colon L^2(\Omega) \rightarrow H_0^1(\Omega)$ definiert durch die für
+    $f \in L^2(\Omega)$ eindeutige Lösung $-\Delta^{-1} f \in H_0^1(\Omega)$ von
+    $\forall_{\varphi \in H_0^1(\Omega)}\;
+    \int_\Omega (\nabla (-\Delta^{-1} f) \nabla \varphi - f \varphi) \dx = 0$
+    (schwache Lösung des Dirichlet-Problems für die Poisson-Gleichung mit
+    homogenen Randbedingungen).
+\end{Def}
+
+\begin{Satz}{Eigenschaften von $-\Delta^{-1}$}
+    $-\Delta^{-1}\colon L^2(\Omega) \rightarrow L^2(\Omega)$ ist
+    linear, stetig, injektiv, kompakt, selbstadjungiert und positiv semidefinit.
+\end{Satz}
+
+\begin{Satz}{Satz von \scshape\,\!\name{Rellich}}
+    Sei $\Omega \subset \real^n$ ein beschränktes und stückweise $\C^1$-berandetes Gebiet.
+    Dann ist die Einbettung $\id\colon H^1(\Omega) \hookrightarrow L^2(\Omega)$ ein kompakter
+    Operator, d.\,h. jede in $H^1(\Omega)$ beschränkte Folge enthält eine in
+    $L^2(\Omega)$ konvergente Teilfolge.
+\end{Satz}
+
+\linie
+
+\begin{Def}{schwacher \name{Laplace}-Operator}\\
+    $\Delta := (\Delta^{-1})^{-1}\colon \Delta^{-1}(L^2(\Omega)) \rightarrow L^2(\Omega)$
+    heißt \begriff{schwacher \name{Laplace}-Operator}.
+\end{Def}
+
+\begin{Satz}{Spektralsatz für den \name{Laplace}-Operator}\\
+    Sei $\Omega \subset \real^n$ ein beschränktes und stückweise $\C^1$-berandetes Gebiet.
+    Dann gilt:
+    \begin{enumerate}
+        \item
+        $\sigma_p(-\Delta) = \{\lambda_k \;|\; k \in \natural\}$ mit
+        $0 < \lambda_1 \le \lambda_2 \le \dotsb$,
+        $\dim(\Kern(\lambda_k\id + \Delta)) < \infty$ und\\
+        $\lim_{k \to \infty} \lambda_k = \infty$
+        
+        \item
+        Es gibt eine Folge $(e_k)_{k \in \natural}$ in $H_0^1(\Omega)$, sodass
+        $(e_k)_{k \in \natural}$ ein vollständiges ONS in $L^2(\Omega)$ aus Eigenvektoren von
+        $-\Delta$ ist, d.\,h.
+        $\forall_{\varphi \in H_0^1(\Omega)}\;
+        \sp{e_k, \varphi}_{H_0^1} = \lambda_k \sp{e_k, \varphi}_{L^2}$ und\\
+        $\forall_{u \in L^2(\Omega)}\;
+        u \overset{L^2}{=} \sum_{k=1}^\infty \sp{u, e_k}_{L^2} e_k,\;
+        \norm{u}_{L^2}^2 = \sum_{k=1}^\infty |\sp{u, e_k}_{L^2}|^2$.
+        
+        \item
+        Für $k \in \natural$ gilt
+        $\lambda_k = \min\left\{\left.\frac{\norm{u}_{H_0^1}^2}{\norm{u}_{L^2}^2} \;\right|\;
+        u \in H_0^1 \setminus \{0\},\; u \;\orth\; [e_1, \dotsc, e_{k-1}]\right\}$.
+    \end{enumerate}
+\end{Satz}
+
+\pagebreak

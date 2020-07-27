@@ -1,0 +1,1229 @@
+\section{%
+    Distributionen%
+}
+
+\subsection{%
+    Der Raum der Testfunktionen \texorpdfstring{$\D$}{D}%
+}
+
+Im Folgenden wird die Menge $\C_0^\infty(\real^d, \complex)$
+aller glatten Funktionen mit kompaktem Träger betrachtet.
+Eine Funktion $\varphi\colon \real^d \rightarrow \complex$ ist in
+$\C_0^\infty(\real^d, \complex)$ genau dann, wenn
+sie beliebig oft (stetig) partiell dif"|ferenzierbar ist und
+es ein $R = R(\varphi) < \infty$ gibt mit $\varphi(x) \equiv 0$ für alle
+$|x| \ge R$.
+
+\textbf{Konvergenz auf $\D$}:
+Für eine Folge von Funktionen $\{\varphi_n\}_{n \in \natural}$ und
+$\varphi$ in $\C_0^\infty(\real^d, \complex)$
+\emph{konvergiert $\varphi_n$ auf $\D$ gegen $\varphi$}
+($\varphi_n \xrightarrow{\D} \varphi$), falls
+$\exists_{R < \infty} \forall_{n \in \natural} \forall_{|x| \ge R}\;
+\varphi_n(x) \equiv 0$ und
+$\forall_{\alpha \in \natural_0^d}\;
+\partial^\alpha \varphi_n \xrightarrow[\text{glm.}]{\real^d}
+\partial^\alpha \varphi$.
+
+\textbf{Raum der Testfunktionen $\D = \D(\real^d)$}:
+Der \emph{Raum der Testfunktionen}
+$\D = \D(\real^d)$ ist der topologische Vektorraum gebildet durch die Menge
+$\C_0^\infty(\real^d, \complex)$ und obiger Konvergenz.
+
+Der Raum ist nicht metrisierbar, d.\,h. es gibt keine Metrik, die obigen
+Konvergenzbegriff induziert.
+
+\linie
+
+\textbf{Träger}:
+Für $\varphi \in \D(\real^d)$ ist
+$\supp \varphi := \overline{\{x \in \real^d \;|\; \varphi(x) \not= 0\}}$
+der \emph{Träger} von $\varphi$.
+
+\textbf{Lemma}:
+Es gilt $\supp \partial^\alpha \varphi \subset \supp \varphi$ für alle
+$\varphi \in \D(\real^d)$ und $\alpha \in \natural_0^d$.
+
+\textbf{Raum der Testfunktionen $\D(G)$}:
+Sei $G \subset \real^d$ of"|fen.\\
+Dann ist $\D(G) := \{\varphi \in \D(\real^d) \;|\; \supp \varphi \subset G\}$
+der \emph{Raum der Testfunktionen auf $G$}.
+
+\linie
+
+\textbf{Lemma ("`Vollständigkeit"' von $\D$)}:\\
+Für $n \in \natural$ seien $\varphi_n \in \D$ gegeben mit
+$\exists_{R < \infty} \forall_{n \in \natural}\;
+\supp \varphi_n \subset U_R(0)$.\\
+Außerdem gelte für alle $\alpha \in \natural_0^d$, dass
+$\partial^\alpha \varphi_n
+\xrightarrow[\text{glm.}]{\real^d} \psi_\alpha$ mit
+$\psi_\alpha$ stetig.\\
+Dann gibt es ein $\varphi \in \D$ mit $\varphi_n \xrightarrow{\D} \varphi$.
+
+\linie
+
+\textbf{stetige Abbildung auf $\D$}:
+Sei $T\colon \D \rightarrow \D$ eine Abbildung.\\
+$T$ heißt stetig, falls aus $\varphi_n \xrightarrow{\D} \varphi$ stets
+$T \varphi_n \xrightarrow{\D} T\varphi$ folgt.
+
+\emph{Beispiel}:
+Für $T = \partial^\beta$ sei
+$T \varphi_n = \partial^\beta \varphi_n =: \psi_n^{(\beta)}$ und
+$\varphi_n \xrightarrow{\D} \varphi$.
+Aufgrund des Träger-Lemmas gilt
+$\supp \psi_n^{(\beta)} = \supp \partial^\beta \varphi_n \subset
+\supp \varphi_n \subset \overline{U_R(0)}$,
+d.\,h. die erste Bedingung für
+$\psi_n^{(\beta)} \xrightarrow{\D} \psi^{(\beta)} := \partial^\beta \varphi$
+ist überprüft.
+Außerdem gilt $\partial^\alpha \psi_n^{(\beta)} =
+\partial^\alpha (\partial^\beta \varphi_n) =
+\partial^{\alpha + \beta} \varphi_n \xrightarrow{\text{glm.}}
+\partial^{\alpha + \beta} \varphi = \partial^\alpha \psi^{(\beta)}$,
+also ist auch die zweite Bedingung erfüllt und es gilt
+$\psi_n^{(\beta)} \xrightarrow{\D} \psi^{(\beta)}$.
+Daher ist $T = \partial^\beta$ eine stetige Abbildung.
+
+\emph{Beispiel}:
+Für $\alpha \in \C^\infty(\real^d, \complex)$ ist
+$T\colon \D \rightarrow \D$, $T\varphi = \alpha \cdot \varphi$ stetig
+(Leibnizregel).
+
+\emph{Beispiel}:
+Für eine $d \times d$-Matrix $A \in \real^{d \times d}$ mit $\det A \not= 0$
+ist $A\colon \real^d \rightarrow \real^d$ eine bijektive Abbildung.
+Dies definiert eine stetige Abbildung $T\colon \D \rightarrow \D$,
+$(T\varphi)(x) = \varphi(Ax + b)$.
+
+\pagebreak
+
+\subsection{%
+    Distributionen über \texorpdfstring{$\D$}{D}%
+}
+
+\textbf{Distributionen über $\D$}:\\
+Eine \emph{Distribution} $f$ über $\D$ ist ein lineares stetiges Funktional
+$f\colon \D \rightarrow \complex$.\\
+Man schreibt $\varphi \mapsto f[\varphi] = (f, \varphi)$ für $\varphi \in \D$.
+
+Es müssen also zwei Bedingungen erfüllt werden:
+Zum einen muss für $\varphi, \psi \in \D$ und $\lambda, \mu \in \complex$
+gelten, dass
+$f[\lambda \varphi + \mu \psi] = \lambda f[\varphi] + \mu f[\psi]$,
+und es muss aus $\varphi_n \xrightarrow{\D} \varphi$ stets
+$f[\varphi_n] \to f[\varphi]$ folgen.\\
+Ist Linearität gezeigt, genügt es, die Stetigkeit für $\varphi \equiv 0$
+zu überprüfen.
+
+Zwei Distributionen sind gleich, falls sie auf allen Testfunktionen angewendet
+gleich sind, d.\,h. $\forall_{\varphi \in \D}\; (f, \varphi) = (g, \varphi)$.
+
+\textbf{Konvergenz auf $\D'$}:
+Für eine Folge von Distributionen $\{f_n\}_{n \in \natural}$ und
+eine Distribution $f$ \emph{konvergiert $f_n$ auf $\D'$ gegen $f$}
+($f_n \xrightarrow{\D'} f$), falls
+$\forall_{\varphi \in \D}\; (f_n, \varphi) \to (f, \varphi)$.
+
+\textbf{Raum der Distributionen $\D'$}:
+Der \emph{Raum der Distributionen $\D'$} ist der topologische Vektorraum
+gebildet durch die Menge der Distributionen über $\D$ und obiger Konvergenz.
+
+Da $\D'$ ein Vektorraum ist, gilt
+$(\alpha f + \beta g)[\varphi] := \alpha f[\varphi] + \beta g[\varphi]$
+für $f, g \in \D'$, $\alpha, \beta \in \complex$ und $\varphi \in \D$\\
+(stetig, da $f, g$ stetig sind).
+
+Für $f_n \xrightarrow{\D'} f$, $g_n \xrightarrow{\D'} g$ und
+$\alpha, \beta \in \complex$ gilt
+$\alpha f_n + \beta g_n \xrightarrow{\D'} \alpha f + \beta g$.
+
+\linie
+
+\textbf{Lemma ("`Vollständigkeit"' von $\D'$)}:
+Für $n \in \natural$ seien $f_n \in \D'$ gegeben mit\\
+$\forall_{\varphi \in \D} \exists_{\ell_\varphi \in \complex}\;
+\ell_\varphi = \lim_{n \to \infty} (f_n, \varphi)$.\\
+Dann gibt es ein $\ell \in \D'$ mit $\ell_\varphi = \ell[\varphi]$ für
+alle $\varphi \in \D$,\\
+d.\,h. es gilt $\ell \in \D'$ und $f_n \xrightarrow{\D'} \ell$ mit
+$(\ell, \varphi) := \ell_\varphi$.
+
+\linie
+
+\textbf{Gleichheit von Distributionen auf $G$}:
+Seien $f, g \in \D'$ und $G \subset \real^d$ of"|fen.\\
+Dann sei $f|_G \equiv 0$, falls
+$\forall_{\varphi \in \D,\; \supp \varphi \subset G}\; (f, \varphi) = 0$.\\
+Außerdem sei $f|_G \equiv g|_G$, falls $(f - g)|_G \equiv 0$.
+
+\textbf{Satz}:
+Seien $f \in \D'$ und $G \subset \real^d$ of"|fen mit
+$\forall_{x \in G} \exists_{V_x \subset G \text{ of"|fen},\; x \in V_x}\;
+f|_{V_x} \equiv 0$
+($f$ ist lokal $0$).\\
+Dann gilt $f|_G \equiv 0$
+($f$ ist global $0$).
+
+\textbf{Träger einer Distribution}:
+Seien $f \in \D'$ und
+$O_f := \bigcup_{G \text{ of"|fen},\; f|_G \equiv 0} G$.\\
+Dann ist $\supp f := \real^d \setminus O_f$ der \emph{Träger} von $f$
+(abgeschlossen, da $O_f$ of"|fen).
+
+Nach dem Satz gilt $f|_{O_f} \equiv 0$.\\
+Es ist $x \in O_f$ genau dann, wenn es ein
+$V_x \subset \real^d$ of"|fen gibt mit $x \in V_x$ und $f|_{V_x} \equiv 0$.\\
+Daher ist $x \in \supp f$ genau dann, wenn es kein
+$V_x \subset \real^d$ of"|fen gibt mit $x \in V_x$ und $f|_{V_x} \equiv 0$.
+
+\pagebreak
+
+\subsection{%
+    Reguläre und singuläre Distributionen%
+}
+
+\textbf{Raum der lokal integrierbaren Funktionen
+$L^1_\loc = L^1_\loc(\real^d)$}:\\
+Der \emph{Raum der lokal integrierbaren Funktionen $L^1_\loc(\real^d)$} ist
+der Raum aller Funktionen\\
+$f\colon \real^d \rightarrow \complex$ mit
+$f|_K \in L^1(K, dx)$ für alle $K \subset \real^d$ kompakt.
+
+\textbf{von $f$ erzeugte reguläre Distribution}:
+Sei $f \in L^1_\loc$.
+Dann ist die \emph{von $f$ erzeugte reguläre Distribution} $\ell_f$ definiert
+durch $\ell_f(\varphi) = f[\varphi] := \int_{\real^d} f(x) \varphi(x) \dx$
+für alle $\varphi \in \D$.
+
+Das Integral ist wohldefiniert, da $\varphi$ als Testfunktion
+kompakt getragen ist.\\
+$\ell_f$ ist in der Tat eine Distribution:
+$\ell_f$ ist of"|fensichtlich linear, da das Integral ebenfalls linear ist.
+$\ell_f$ ist außerdem in $\varphi \equiv 0$ stetig, denn:
+Seien $\varphi_n \in \D$ mit $\varphi_n \xrightarrow{\D} 0$,
+dann gilt $\supp \varphi_n \subset \overline{U_R(0)}$ und
+$\varphi_n \xrightarrow{\text{glm.}} 0$.
+Daraus folgt $|\ell_f(\varphi_n)| =
+\left|\int_{\real^d} f(x) \varphi_n(x) \dx\right| \le
+\int_{|x| \le R} |f(x)| |\varphi_n(x)| \dx$\\
+$\le \sup_{|x| \le R} |\varphi_n(x)| \cdot \int_{|x| \le R} |f(x)| \dx$.
+Der erste Faktor geht gegen $0$, da $\varphi_n \xrightarrow{\text{glm.}} 0$.
+Der zweite Faktor ist endlich, da $f$ lokal integrierbar ist.
+Somit gilt $\ell_f(\varphi_n) \to 0$.
+Also ist $\ell_f \in \D'$.
+
+\linie
+
+\textbf{reguläre und singuläre Distributionen}:\\
+Eine Distribution $h \in \D'$ heißt \emph{regulär}, falls
+es ein $f \in L^1_\loc$ gibt mit $\ell_f = h$.\\
+Andernfalls heißt $h$ \emph{singulär}.
+
+Für $f, g \in L^1_\loc$ mit $f \not= g$ in $L^1_\loc$ gibt es ein
+$\varphi \in \D$ mit $(f, \varphi) \not= (g, \varphi)$, d.\,h. es gilt
+$\ell_f \not= \ell_g$.
+
+\emph{Beispiel}:
+Die Distribution $\delta \in \D'$ mit
+$\delta[\varphi] = (\delta, \varphi) := \varphi(0)$ ist die sogenannte\\
+\textbf{Delta-Distribution}.
+Sie ist eine singuläre Distribution.
+
+\emph{Beispiel}:
+Für eine Mannigfaltigkeit $S \subset \real^d$ mit Volumenform ist
+$\delta_S[\delta] := \int_S \varphi(x) dS$ eine\\
+Distribution.
+
+\emph{Beispiel}:
+Für $d = 1$ ist $f(x) = \frac{1}{x}$ keine lokal-integrierbare Funktion
+(nicht integrierbar auf jedem Intervall, das die $0$ enthält).
+Man versucht dieses Problem zu umgehen, in dem man
+$(\frac{1}{x \pm \i \cdot 0}, \varphi) :=
+\lim_{\varepsilon \to 0} \left(\int_\real
+\frac{\varphi(x)}{x \pm \i \varepsilon} \dx\right)$ definiert.
+Für $\varepsilon > 0$ fest ist der Ausdruck in Klammern gleich
+$(f_\varepsilon, \varphi)$ mit einer regulären Distribution $f_\varepsilon$.
+
+\emph{Beispiel}:
+$(P\frac{1}{x}, \varphi) :=
+\vp\int_{-\infty}^{+\infty} \frac{\varphi(x)}{x} \dx =
+\lim_{\varepsilon \to 0 + 0} \left(\int_{-\infty}^{-\varepsilon} +
+\int_\varepsilon^{+\infty}\right) \frac{\varphi(x)}{x} \dx$
+ist eine Distribution.
+
+\pagebreak
+
+\subsection{%
+    Koordinatentransformation%
+}
+
+Seien $\pi\colon \real^d \rightarrow \real^d$ mit $x = \pi y = Ay + b$
+und $A \in \real^{d \times d}$, $\det A \not= 0$ und
+$b \in \real^d$.
+
+\emph{Motivation}:
+Für $f \in L^1_\loc(\real^d)$ gilt $(f \circ \pi, \varphi) =
+\int_{\real^d} (f \circ \pi)(y) \varphi(y) \dy =
+\int_{\real^d} f(x) \varphi(\pi^{-1} x) \left|\frac{Dy}{Dx}\right| \dx$\\
+$= \frac{1}{|\det A|} \int_{\real^d} f(x) (\varphi \circ \pi^{-1})(x) \dx =
+\frac{1}{|\det A|} (f, \varphi \circ \pi^{-1})$.
+Dies verwendet man als Definition.
+
+\textbf{Koordinatentransformation einer Distribution}:
+Sei $f \in \D'$.\\
+Dann ist die Distribution $f \circ \pi$ definiert durch
+$(f \circ \pi, \varphi) := \frac{1}{|\det A|} (f, \varphi \circ \pi^{-1})$
+für alle $\varphi \in \D$.
+
+\textbf{Korrektheit}:
+Für $\varphi \in \D$ ist $\varphi \circ \pi^{-1} \in \D$, d.\,h.
+$(f, \varphi \circ \pi^{-1})$ ist wohldefiniert.\\
+$f \circ \pi$ ist linear (klar).
+Für $\varphi_n \xrightarrow{\D} 0$ gilt aufgrund
+$\cdot \circ \pi^{-1}\colon \D \rightarrow \D$ stetig, dass
+$\varphi_n \circ \pi^{-1} \xrightarrow{\D} 0$,
+also gilt für $f \in \D'$, dass $(f, \varphi_n \circ \pi^{-1}) \to 0$
+(da $f$ stetig ist).
+
+\emph{Beispiel}:
+Für $A = E$ gleich der Einheitsmatrix gilt $\det A = 1$ und
+$x = \pi y = y + b$, also $y = \pi^{-1} x = x - b$.
+Somit ist $(f \circ \pi, \varphi) = (f, \varphi(x - b))$\\
+(im regulären Fall wäre das z.\,B. $\int_{\real^d} f(x) \varphi(x - b) \dx$).\\
+Insbesondere gilt für die Delta-Distribution $\delta$, dass
+$(\delta \circ \pi, \varphi) = \varphi(-b)$.
+
+\emph{Beispiel}:
+Für $A = c \cdot E$ mit $c > 0$ und $b = 0$ gilt\\
+$(\delta \circ \pi, \varphi) =
+\frac{1}{|\det A|} (\delta, \varphi \circ \pi^{-1}) =
+\frac{1}{|\det A|} (\varphi \circ \pi^{-1})(0) =
+c^{-d} \varphi(0)$.
+
+\linie
+
+\emph{Motivation}:
+Für $f \in L^1_\loc(\real^d)$ und $\alpha \in \C^\infty(\real^d, \complex)$
+ist $\alpha f \in L^1_\loc(\real^d)$ und es gilt\\
+$(\alpha f, \varphi) = \int_{\real^d} \alpha(x) f(x) \varphi(x) \dx =
+(f, \alpha \varphi)$, da $\alpha \varphi \in \D$.
+
+\textbf{Multiplikation einer Distribution mit einer glatten Funktion}:
+Seien $f \in \D'$ und $\alpha \in \C^\infty$.\\
+Dann ist die Distribution $\alpha f$ definiert durch
+$(\alpha f, \varphi) := (f, \alpha \varphi)$ für alle $\varphi \in \D$.
+
+\textbf{Korrektheit}:
+Für $\varphi \in \D$ ist $\alpha \varphi \in \D$, d.\,h.
+$(f, \alpha \varphi)$ ist wohldefiniert.\\
+$\alpha f$ ist linear (klar).
+Für $\varphi_n \xrightarrow{\D} 0$ gilt $\alpha \varphi_n \xrightarrow{\D} 0$,
+also $(f, \alpha \varphi_n) \to 0$
+(da die Multiplikation $T_\alpha\colon \D \rightarrow \D$,
+$\varphi \mapsto \alpha \varphi$ eine stetige Abbildung ist).
+
+\emph{Beispiel}:
+Für $\alpha \in \C^\infty(\real^d, \complex)$ und der Delta-Distribution
+$\delta \in \D'$ gilt $(\alpha \cdot \delta, \varphi) =
+(\delta, \alpha \cdot \varphi) = \alpha(0) \varphi(0)$.
+Für $d = 1$ ist z.\,B. $x \cdot \delta = 0$ die Nulldistribution
+($\alpha(x) = x$).
+
+\emph{Beispiel}:
+Für $d = 1$ soll $x \cdot P \frac{1}{x}$ betrachtet werden.
+Es ist\\
+$(x \cdot P \frac{1}{x}, \varphi) = (P \frac{1}{x}, x \cdot \varphi) =
+\vp\int_{-\infty}^{+\infty} \frac{1}{x} \cdot x \varphi(x) \dx =
+\int_{-\infty}^{+\infty} 1 \cdot \varphi(x) = (1, \varphi)$, also
+$x \cdot P \frac{1}{x} = 1$ in $\D'$.
+
+\emph{Vorsicht}:
+Es gibt keine assoziative und kommutative Multiplikation auf den
+Distributionen, denn sonst wäre
+$0 = 0 \cdot P \frac{1}{x} = (x \cdot \delta) \cdot P \frac{1}{x} =
+\delta \cdot (x \cdot P \frac{1}{x}) = \delta \cdot 1 = \delta$.
+
+\pagebreak
+
+\subsection{%
+    Dif"|ferentiation von Distributionen%
+}
+
+\emph{Motivation}:
+Für $f \in \C^1(\real^d, \complex)$ gilt
+$f'_{x_j} \in \C(\real^d, \complex)$ für $j = 1, \dotsc, d$.
+Betrachtet man die erzeugte reguläre Distribution, so ergibt sich
+(da $\varphi$ kompakt getragen ist)\\
+$(f'_{x_j}, \varphi) = \int_{\real^d} f'_{x_j}(x) \varphi(x) \dx =
+\int_{\real^{d-1}} \left(\left.f(x) \varphi(x)\right|_{x_j=-\infty}^{+\infty} -
+\int_{-\infty}^{+\infty} f(x) \varphi'_{x_j}(x) \dx_j\right) \dx' =
+-(f, \varphi'_{x_j})$, wobei bei $x'$ die $j$-te Komponente $x_j$ fehlt.
+Allgemeiner ist $(\partial^\alpha f, \varphi) =
+(-1)^{|\alpha|} (f, \partial^\alpha \varphi)$.
+
+\textbf{Ableitung einer Distribution}:
+Seien $f \in \D'$ und $\alpha \in \natural_0^d$.\\
+Dann ist die Distribution $\partial^\alpha f$ definiert durch
+$(\partial^\alpha f, \varphi) := (-1)^{|\alpha|} (f, \partial^\alpha \varphi)$
+für alle $\varphi \in \D$.
+
+\textbf{Korrektheit}:
+Für $\varphi \in \D$ ist $\partial^\alpha \varphi \in \D$, d.\,h.
+$(f, \partial^\alpha \varphi)$ ist wohldefiniert.\\
+$\partial^\alpha f$ ist linear (klar).
+Für $\varphi_n \xrightarrow{\D} 0$ gilt
+$\partial^\alpha \varphi \xrightarrow{\D} 0$, also
+$(f, \partial^\alpha \varphi_n) \to 0$, da
+$\partial^\alpha\colon \D \rightarrow \D$ stetig ist.
+
+\emph{Beispiel}:
+Die Ableitung der Delta-Distribution $\delta \in \D$ für $d = 1$ ist\\
+$(\delta', \varphi) = (-1) \cdot (\delta, \varphi') = -\varphi'(0)$.
+Man kann sich eine analoge Formel für $\partial^\alpha \delta$ überlegen.
+Dabei gilt, dass $\supp \partial^\alpha \delta = \{0\}$.
+In der Tat ist jede Distribution mit nur einem Punkt als Träger eine
+Linearkombination von der Delta-Distribution und ihren Ableitungen.
+
+\linie
+
+\textbf{Rechenregeln}:
+Für $f, g \in \D'$ gilt
+$\partial^\alpha (f + g) = \partial^\alpha f + \partial^\alpha g$.\\
+Es gilt $\partial^\alpha (\partial^\beta f) = \partial^{\alpha + \beta} f$ und
+$\partial^\alpha (cf) = c (\partial^\alpha f)$ für $c \in \complex$.
+
+\textbf{Produktregel}:
+Für $f \in \D'$ und $\alpha \in \C^\infty$ gilt
+$\frac{\partial}{\partial x_j} (\alpha f) =
+\left(\frac{\partial \alpha}{\partial x_j}\right) f +
+\alpha \left(\frac{\partial f}{\partial x_j}\right)$.
+
+\textbf{Träger von Ableitungen}:
+Es ist $\supp f = \real^d \setminus O_f$ mit
+$O_f = \bigcup_{G \text{ of"|fen},\; f|_G \equiv 0} G$.\\
+Dabei bedeutet $f|_G \equiv 0$, dass
+$\forall_{\varphi \in \D(G)}\; (f, \varphi) = 0$.
+Daraus folgt $(f, \partial^\alpha \varphi) = 0$ für alle $\varphi \in \D(G)$
+und daher $\partial^\alpha f|_G \equiv 0$.
+Also gilt $O_f \subset O_{\partial^\alpha f}$ bzw.
+$\supp \partial^\alpha f \subset \supp f$.
+
+\textbf{Satz}:
+Die Abbildung $\partial^\alpha\colon \D' \rightarrow \D'$
+ist linear und stetig.
+
+\textbf{Folgerung}:
+Für $f_n \in L^1_\loc$ mit $f_n \xrightarrow{L^1_\loc} f$ gilt
+$(f_n, \varphi) = \int_{\real^d} f_n(x) \varphi(x) \dx \to
+\int_{\real^d} f(x) \varphi(x) \dx$, d.\,h.
+$f_n \xrightarrow{\D'} f$ und
+$\partial^\alpha f_n \xrightarrow{\D'} \partial^\alpha f$.
+
+\linie
+
+\textbf{Reihen von Distributionen}:
+Seien $f_k \in \D'$ für $k \in \natural$ und
+$S_n := \sum_{k=1}^n f_k \in \D'$ für $n \in \natural$.\\
+Dann ist $\sum_{k=1}^\infty f_k \overset{\D'}{:=} S$, falls
+$S_n \xrightarrow{\D'} S$.
+
+\textbf{Folgerung}:
+In diesem Fall gilt auch
+$\partial^\alpha S = \sum_{k=1}^\infty \partial^\alpha f_k$.
+
+\textbf{Satz}:
+Seien $c_k \in \complex$ für $k \in \integer$ mit
+$|c_k| \le a |k|^m + b$ für ein $m \in \natural$ und $a, b > 0$.\\
+Dann konvergiert $S = \sum_{k=-\infty}^{+\infty} c_k e^{\i kx} =
+\lim_{N \to \infty} \sum_{k=-N}^N c_k e^{\i kx}$ in $\D'$.
+
+\subsection{%
+    Stammfunktion einer Distribution%
+}
+
+\textbf{Stammfunktion einer Distribution}:
+Sei $f \in \D'$.\\
+Dann heißt eine Distribution $F = f^{-1} \in \D'$
+\emph{Stammfunktion} von $f$, falls $F' = f$, d.\,h.\\
+$(F, \varphi') = -(f, \varphi)$ für alle $\varphi \in \D$.
+
+Beachte:
+$(F, \varphi') = -(f, \varphi)$ ist nur auf $\psi = \varphi'$ mit
+$\varphi \in \D$ gegeben.\\
+Nicht alle $\widetilde{\varphi} \in \D$ sind Ableitungen von Stammfunktionen.
+
+\textbf{Satz}:
+Für jede Distribution $f \in \D'$ existiert eine Stammfunktion $F \in \D'$.
+Diese ist bis auf eine additive Konstante eindeutig.
+
+\textbf{Folgerung}:
+Falls $f \in \D'$ mit $f' = 0$ gilt, so ist $f \equiv \const$.
+
+\pagebreak
+
+\subsection{%
+    Wichtige Beispiele%
+}
+
+\emph{Beispiel}:
+\textbf{Ableitung von regulären Distributionen mit Sprungstellen}\\
+Sei $f\colon \real \rightarrow \real$ (oder $\complex$) eine Funktion
+mit Sprungstelle $x_0 \in \real$, d.\,h.
+$f|_{\left]-\infty, x_0\right[} \in \C^1$ und
+$f|_{\left]x_0, +\infty\right[} \in \C^1$.
+Dabei sei $[f]_{x_0} := f(x_0 + 0) - f(x_0 - 0)$ die Höhe des Sprungs und\\
+$\{f'\}(x) := f'(x)$ für $x \not= x_0$ die klassische Ableitung.
+Es gilt $f \in L^1_\loc(\real)$, d.\,h. $f \in \D'$ ist eine reguläre
+Distribution.
+Was ist nun die distributionelle Ableitung $f'$?\\
+Für $\varphi \in \D(\real)$ gilt
+$(f', \varphi) = -(f, \varphi') = -\int_\real f(x)\varphi'(x)\dx$\\
+$= -\int_{-\infty}^{x_0} f(x)\varphi'(x)\dx -
+\int_{x_0}^{+\infty} f(x)\varphi'(x)\dx$\\
+$= -f(x)\varphi(x)|_{-\infty}^{x_0 - 0} - f(x)\varphi(x)|_{x_0 + 0}^{+\infty} +
+\left(\int_{-\infty}^{x_0} + \int_{x_0}^{+\infty}\right)
+\{f'\}(x)\varphi(x)\dx$\\
+$= -f(x_0 - 0)\varphi(x_0 - 0) + f(x_0 + 0)\varphi(x_0 + 0) +
+(\{f'\}, \varphi) =
+[f]_{x_0} \varphi(x_0) + (\{f'\}, \varphi)$\\
+$= ([f]_{x_0} \delta(x - x_0) + \{f'\}, \varphi)$,
+d.\,h. es gilt $f' = [f]_{x_0} \delta(x - x_0) + \{f'\}$.\\
+Im Spezialfall $f(x) = \theta(x) :=$ \matrixsize{$\begin{cases}
+0 & x \le 0 \\
+1 & x > 0
+\end{cases}$} (\emph{\name{Heaviside}-Funktion})
+gilt $\theta' = \delta$.
+
+\linie
+
+\emph{Beispiel}:
+\textbf{Distributionen mit Träger in einem Punkt}\\
+Gesucht ist $u \in \D'(\real)$ mit $x^m u = 0$ für ein $m \in \natural$.\\
+Man sieht schnell, dass dafür notwendigerweise $\supp u = \{0\}$ gelten muss.\\
+Eine Lösung ist eine Linearkombination $u = \sum_{k=0}^{m-1} c_k \delta^{(k)}$
+von Ableitungen der Delta-Distr.\\
+Wie die Probe
+$(x^m c_k \delta^{(k)}, \varphi) = c_k (\delta^{(k)}, x^m \varphi) =
+c_k (-1)^k (\delta, \frac{d^k}{dx^k} (x^m \varphi)) =
+c_k (-1)^k \frac{d^k}{dx^k} (x^m \varphi)|_{x=0} = 0$ für
+$\varphi \in \D(\real)$ zeigt, ist dies tatsächlich eine Lösung.
+Man kann zeigen, dass das sogar die allgemeine Lösung ist
+(d.\,h. jede Lösung ist von dieser Form).
+
+\linie
+
+\emph{Beispiel}:
+\textbf{Lösung von ODE}\\
+Sei $L = \frac{d^m}{dt^m} + a_1(t) \frac{d^{m-1}}{dt^{m-1}} + \dotsb +
+a_{m-1}(t) \frac{d}{dt} + a_m(t)$ ein Dif"|ferentialausdruck mit
+$a_j \in \C^\infty(\real)$ und $|a_j| \le C$.
+Man betrachtet das Cauchy-Problem $Lz(t) = 0$ für $t > 0$ mit\\
+$z(0) = z'(0) = \dotsb = z^{(m-2)(}(0) = 0$ und $z^{m-1}(0) = 1$.\\
+Mit der Heaviside-Funktion kann die Lösung erweitert werden zu
+$\varepsilon(t) = \theta(t) z(t)$ für $t \in \real$.\\
+Dabei gilt $\varepsilon^{(k)}(0) = 0$ für $k = 0, \dotsc, m - 2$ und
+$\varepsilon^{(m-1)}(0 - 0) = 0$ sowie $\varepsilon^{(m-1)}(0 + 0) = 1$.\\
+Somit ist $\varepsilon^{(m)}(t) = \theta(t) z^{(m)}(t) + \delta(t)$
+nach obiger Formel.\\
+Wegen $\varepsilon^{(k)}(t) = \theta(t) z^{(k)}(t)$ für $k = 0, \dotsc, m - 2$
+gilt $L\varepsilon(t) = \theta(t) Lz(t) + \delta(t) = \delta(t)$
+($Lz(t) = 0$).\\
+Somit löst $\varepsilon(t) = \theta(t) z(t)$ die Gleichung
+$L\varepsilon(t) = \delta(t)$.
+Man spricht von einer \emph{Fundamental"|lösung}.
+
+\linie
+
+\emph{Beispiel}:
+\textbf{Fundamental"|lösung für $\Delta$ und $d = 2$}\\
+Es soll verifiziert werden, dass $\varepsilon_2(x) = \frac{1}{2\pi} \ln |x|$
+eine Fundamental"|lösung für den Laplace-Operator
+$\Delta = \frac{\partial^2}{\partial x_1^2} +
+\frac{\partial^2}{\partial x_2^2}$ in zwei Dimensionen ist.
+Dabei seien $x = (x_1, x_2) \in \real^2$ kartesische Koordinaten und
+$|x| = \sqrt{x_1^2 + x_2^2}$.\\
+Zunächst gilt $\ln |x| \in L^1_\loc(\real^2)$ und mit
+$\chi_\varepsilon(x) :=$ \matrixsize{$\begin{cases}
+1 & |x| \ge \varepsilon \\
+0 & |x| < \varepsilon\end{cases}$} ist
+$\chi_\varepsilon(x)\ln |x| \xrightarrow{L^1_\loc} \ln |x|$ für
+$\varepsilon \to 0$.
+Daraus folgt $\chi_\varepsilon(x) \ln |x| \xrightarrow{\D'} \ln |x|$ und
+$\Delta (\chi_\varepsilon(x) \ln |x|) \xrightarrow{\D'} \Delta \ln |x|$
+für $\varepsilon \to 0$, da $\Delta\colon \D' \rightarrow \D'$ stetig ist.\\
+Man geht nun zu Polarkoordinaten $(r, \theta)$ über,
+der entsprechend transformierte Ausdruck für den Laplace-Operator ist
+$\Delta = \frac{\partial^2}{\partial x_1^2} +
+\frac{\partial^2}{\partial x_2^2} =
+\frac{1}{r} \frac{\partial}{\partial r} r \frac{\partial}{\partial r} +
+\frac{1}{r^2} \frac{\partial^2}{\partial \theta^2}$.\\
+Daraus folgt dann $(\Delta (\chi_\varepsilon(x)\ln |x|), \varphi) =
+(\chi_\varepsilon(x)\ln |x|, \Delta \varphi) =
+\int_0^{2\pi} \int_\varepsilon^R
+\ln r \cdot (\Delta \varphi(r, \theta)) \cdot r\dr\dtheta$\\
+$= \int_0^{2\pi} \int_\varepsilon^R
+\ln r \cdot \left(\frac{1}{r} \frac{\partial}{\partial r} r
+\frac{\partial}{\partial r} \varphi +
+\frac{1}{r^2} \frac{\partial^2}{\partial \theta^2} \varphi\right) \cdot
+r\dr\dtheta$.\\
+Dabei ist $\int_0^{2\pi} \int_\varepsilon^R
+\ln r \cdot
+\left(\frac{1}{r^2} \frac{\partial^2}{\partial \theta^2} \varphi\right) \cdot
+r\dr\dtheta =
+\int_\varepsilon^R \frac{\ln r}{r} \cdot
+\left(\int_0^{2\pi} \frac{\partial^2 \varphi}{\partial \theta^2}d\theta\right)
+\dr = 0$,
+da $\varphi$ in $\theta$ $2\pi$-periodisch ist
+(der Ausdruck in Klammern ist $0$).
+
+\pagebreak
+
+Also ist
+$\int_0^{2\pi} \int_\varepsilon^R
+\ln r \cdot \left(\frac{1}{r} \frac{\partial}{\partial r} r
+\frac{\partial}{\partial r} \varphi +
+\frac{1}{r^2} \frac{\partial^2}{\partial \theta^2} \varphi\right) \cdot
+r\dr\dtheta =
+\int_0^{2\pi} \int_\varepsilon^R
+\ln r \cdot \left(\frac{\partial}{\partial r} r
+\frac{\partial}{\partial r} \varphi\right) \dr\dtheta$\\
+$= \int_0^{2\pi} \left(\left.\ln r \cdot r
+\frac{\partial}{\partial r} \varphi\right|_\varepsilon^R -
+\int_\varepsilon^R \left(\frac{1}{r} \cdot
+r \frac{\partial}{\partial r} \varphi\right)d\theta\right)\dr =
+o(\varepsilon) - \int_0^{2\pi}
+\left(\int_\varepsilon^R \frac{\partial}{\partial r}
+\varphi \dr\right)d\theta$\\
+$= o(\varepsilon) - \int_0^{2\pi}
+\left(\varphi(R, \theta) - \varphi(\varepsilon, \theta)\right) d\theta$.
+Dabei verschwindet $\varphi(R, \theta)$ (kompakter Träger) und
+$\varphi(\varepsilon, \theta)$ geht für $\varepsilon \to 0$ gleichmäßig gegen
+$\varphi(0)$.
+Somit gilt
+$\lim_{\varepsilon \to 0}
+\left(\Delta \chi_\varepsilon(x)\ln |x|, \varphi\right) =
+0 + \int_0^{2\pi} \varphi(0)d\theta$\\
+$= 2\pi\varphi(0) = (2\pi\delta, \varphi)$,
+d.\,h. $\Delta\ln|x| = 2\pi\delta$ für $d = 2$
+und $\Delta \varepsilon_2 = \delta$.
+
+\subsection{%
+    Tensorprodukt von Distributionen%
+}
+
+\textbf{Tensorprodukt von Funktionen}:
+Seien $f \in L^1_\loc(\real^n_x)$ und $g \in L^1_\loc(\real^m_y)$.\\
+Dann ist das \emph{Tensorprodukt}
+$f \otimes g \in L^1_\loc(\real^{n+m}_{(x,y)})$ gegeben durch
+$(f \otimes g)(x, y) := f(x) \cdot g(y)$.
+
+Ist $\varphi(\cdot, \cdot) \in \D(\real^{n+m}_{(x,y)})$
+eine Testfunktion, so sind auch
+$\varphi(x_0, \cdot) \in \D(\real^m_y)$ und
+$\varphi(\cdot, y_0) \in \D(\real^n_x)$ Tesfunktionen und es gilt
+$(f \otimes g, \varphi) = \int_{\real^{n+m}} f(x)g(y)\varphi(x, y)d^nxd^my$\\
+$= \int_{\real^n} f(x) \cdot
+\left(\int_{\real^m} g(y)\varphi(x, y)d^my\right)d^nx$.
+Den Ausdruck in Klammern kann man als Testfunktion $\psi \in \D(\real^n_x)$
+auf"|fassen.
+Daher gilt $(f \otimes g, \varphi) = (f, \psi)$ mit
+$\psi(x) = (g(y), \varphi(x, y))$.
+
+\textbf{Tensorprodukt von Distributionen}:
+Seien $f \in \D'(\real^n_x)$ und $g \in \D'(\real^m_y)$.\\
+Dann ist die Distribution $f \otimes g \in \D'(\real^{n+m}_{(x,y)})$
+definiert durch $(f \otimes g, \varphi) := (f(x), (g(y), \varphi(x, y)))$
+für alle $\varphi \in \D(\real^{n+m}_{(x,y)})$.
+
+\textbf{Lemma}:
+Seien $g \in \D'(\real^m_y)$ und $\varphi \in \D(\real^{n+m}_{(x,y)})$.
+Dann gilt:
+\begin{enumerate}
+    \item
+    $\psi(x) = (g(y), \varphi(x, y)) \in \D(\real^n_x)$
+    
+    \item
+    $\partial^\alpha_x \psi(x) = (g(y), \partial^\alpha_x \varphi(x, y))$
+    für alle $\alpha \in \natural_0^n$
+    
+    \item
+    Gilt $\varphi_k \xrightarrow{\D(\real^{n+m}_{(x,y)})} 0$, so gilt
+    $\psi_k(x) = (g(y), \varphi_k(x, y)) \xrightarrow{\D(\real^n_x)} 0$.
+\end{enumerate}
+
+\textbf{Korrektheit}:
+Wohldefiniertheit folgt aus 1.
+Linearität ist klar und Stetigkeit folgt aus 3.
+
+\emph{Beispiel}:
+Für $\delta_x \in \D'(\real^n_x)$ und $\delta_y \in \D'(\real^m_y)$ gilt
+$(\delta_x \otimes \delta_y, \varphi) = (\delta_x, (\delta_y, \varphi(x, y))) =
+(\delta_x, \varphi(x, 0))$\\
+$= \varphi(0, 0) = (\delta_{(x,y)}, \varphi)$
+für alle $\varphi \in \D(\real^{n+m}_{(x,y)})$.
+
+\linie
+
+\textbf{Eigenschaften}: $f \in \D'(\real^n_x)$, $g \in \D'(\real^m_y)$
+\begin{enumerate}
+    \item
+    \emph{"`Kommutativität"'}:
+    Für $f \in L^1_\loc(\real^n_x)$ und $g \in L^1_\loc(\real^m_y)$ gilt
+    $(f(x) \cdot g(y), \varphi(x, y))$\\
+    $= (f(x), (g(y), \varphi(x, y))) =
+    (g(y), (f(x), \varphi(x, y))) = (g(y) \cdot f(x), \varphi(x, y))$.
+    Es stellt sich heraus, dass dies auch allgemein für Distributionen
+    $f, g \in \D'$ gilt, d.\,h. es gilt
+    $(f \otimes g, \varphi)$\\
+    $= (f(x), (g(y), \varphi(x, y))) = (g(y), (f(x), \varphi(x, y)))$.
+    Es gilt allerdings \emph{nicht} $f \otimes g = g \otimes f$, da sich die
+    Variablenreihenfolge in $\varphi$ nicht ändert.
+    
+    \item
+    \emph{Dif"|ferenzierbarkeit}:
+    Es gilt $\partial_x^\alpha (f \otimes g) = (\partial_x^\alpha f) \otimes g$
+    und $\partial_y^\beta (f \otimes g) = f \otimes (\partial_y^\beta g)$,
+    denn mit 2. von oben gilt
+    $(\partial_x^\alpha (f \otimes g), \varphi) =
+    (-1)^{|\alpha|} (f \otimes g, \partial_x^\alpha \varphi) =
+    (-1)^{|\alpha|} (f(x), (g(y), \partial_x^\alpha \varphi(x, y)))$\\
+    $= (-1)^{|\alpha|} (f(x), \partial_x^\alpha (g(y), \varphi(x, y))) =
+    (\partial_x^\alpha f(x), (g(y), \varphi(x, y))) =
+    ((\partial_x^\alpha f) \otimes g, \varphi)$.
+    
+    \item
+    \emph{Stetigkeit}:
+    Die Abbildung $\tau_g\colon \D'(\real^n_x) \rightarrow
+    \D'(\real^{n+m}_{(x,y)})$ mit $\tau_g f = f \otimes g$ ist stetig, d.\,h.\\
+    aus $f_k \xrightarrow{\D'(\real^n_x)} f$ folgt
+    $f_k \otimes g \xrightarrow{\D'(\real^{n+m}_{(x,y)})} f \otimes g$.\\
+    Analog ist $\tau_f\colon \D'(\real^m_y) \rightarrow
+    \D'(\real^{n+m}_{(x,y)})$ mit $\tau_f g = f \otimes g$ stetig.
+    
+    \item
+    \emph{Assoziativität}:
+    $(f \otimes g) \otimes h = f \otimes (g \otimes h)$
+    
+    \item
+    \emph{skalare Assoziativität}:
+    $(\alpha f) \otimes g = \alpha (f \otimes g)$ für
+    $\alpha \in \C^\infty(\real^n_x)$
+    
+    \item
+    \emph{Translation}:
+    $f(x + h) \cdot g(y) = (f \otimes g)(x + h, y)$
+\end{enumerate}
+
+\pagebreak
+
+\subsection{%
+    Faltung von Distributionen%
+}
+
+Für $f, g \in L^1(\real^n)$ gilt $f \ast g \in L^1(\real^n)$ mit
+$(f \ast g)(x) = \int_{\real^n} f(\tau)g(x - \tau)\d\tau$.\\
+Allerdings folgt aus $f, g \in L^1_\loc(\real^n)$ nicht, dass
+$f \ast g \in L^1_\loc(\real^n)$
+(ein Gegenbeispiel ist $f = g \equiv 1$).
+
+Man kann zeigen, dass für $f \in L^1_\loc(\real^n)$ und $g \in L^1(\real^n)$
+mit $\supp g = K$ kompakt gilt, dass $f \ast g \in L^1(\real^n)$ existiert.
+
+\emph{Motivation}:
+Um eine Definition für Distributionen herzuleiten, betrachtet man
+$f, g \in L^1(\real^n)$.
+Dann ist $(f \ast g, \varphi) = \int_{\real^n} (f \ast g)(x)\varphi(x)\dx =
+\int_{\real^n} \int_{\real^n} f(\tau)g(x - \tau)\varphi(x)\d\tau \dx$\\
+$= \int_{\real^n} g(y) \cdot
+\left(\int_{\real^n} f(\tau)\varphi(y + \tau)\d\tau\right)\dy =
+(g(y), (f(\tau), \varphi(y + \tau)))$.\\
+Man würde nun gern schreiben, dass dies gleich
+$(g(y) f(\tau), \varphi(y + \tau))$ ist, allerdings ist\\
+$\psi(y, \tau) = \varphi(y + \tau) \notin \D(\real^{2n}_{(y,\tau)})$,
+da $\psi$ i.\,A. nicht kompakt getragen ist\\
+(sei z.\,B. $\varphi(0) \not= 0$, dann ist $\psi(y, -y) = \varphi(0) \not= 0$
+für alle $y \in \real^n$).\\
+Man muss daher vorher ein geeignetes Abschneiden durchführen, um
+eine Definition der Faltung für Distributionen zu ermöglichen.
+
+\textbf{$\eta_k \to 1$}:
+Seien $\eta_k \in \D(\real^{2n})$ für $k \in \natural$.\\
+Man schreibt $\eta_k \to 1$, falls
+$\forall_{K \subset \real^{2n} \text{ kpkt.}} \exists_{N(K) \in \natural}
+\forall_{n \ge N(K)} \forall_{(x, y) \in K}\; \eta_n(x, y) = 1$ und\\
+$\forall_{\alpha \in \natural_0^{2n}} \exists_{C_\alpha < \infty}
+\forall_{k \in \natural}\; |\partial^\alpha \eta_k(x, y)| \le C_\alpha$.
+
+Mit dieser Definition ist nun
+$(f \ast g, \varphi) = \int_{\real^n} g(y) \cdot
+\left(\int_{\real^n} f(\tau)\varphi(y + \tau)\d\tau\right)\dy$\\
+$= \lim_{k \to \infty} \left(g(y), \int_{\real^n}
+f(\tau)\varphi(y + \tau)\eta_k(y, \tau)\d\tau\right) =
+\lim_{k \to \infty} (g(y) f(\tau), \varphi(y + \tau)\eta_k(y, \tau))$.\\
+Dabei ist
+$\psi_k(y, \tau) = \varphi(y + \tau)\eta_k(y, \tau) \in \D(\real^{2n})$
+für alle $k \in \natural$.
+
+\textbf{Faltung von Distributionen}:
+Seien $f, g \in \D'(\real^n)$ und $\eta_k \in \D(\real^{2n})$ mit
+$\eta_k \to 1$.\\
+Falls für alle $\varphi \in \D(\real^n)$ der Grenzwert
+$\lim_{k \to \infty} (f(x)g(y), \varphi(x + y)\eta_k(x, y)) =:
+\ell_{f \ast g}(\varphi)$ existiert und unabhängig von der Wahl der $\eta_k$
+ist, dann ist die Distribution $f \ast g \in \D'(\real^n)$ definiert durch
+$(f \ast g, \varphi) := \ell_{f \ast g}(\varphi)$ für alle
+$\varphi \in \D(\real^n)$.
+
+Die Faltung existiert nicht immer (z.\,B. $1 \ast 1$).
+
+\emph{Beispiel}:
+Seien $f, \delta \in \D'(\real^n)$.
+Dann ist $f \ast \delta = \delta \ast f = f$, da
+$(f(x)\delta(y), \varphi(x + y)\eta_k(x, y))$\\
+$= (f(x), (\delta(y), \varphi(x + y)\eta_k(x, y))) =
+(f(x), \varphi(x)\eta_k(x, 0)) =
+(f, \varphi)$ für $k \ge N(K)$ mit $K = \supp \varphi$,
+da $\eta_k(x, 0) = 1$ für diese $k$ und alle $x \in K$.
+
+\linie
+\pagebreak
+
+\textbf{Eigenschaften}:
+\begin{enumerate}
+    \item
+    \emph{Stetigkeit gilt \textbf{nicht}}:
+    $\tau_f\colon T \subset \D'(\real^n) \rightarrow \D'(\real^n)$,
+    $g \mapsto f \ast g$ ist linear,
+    aber i.\,A. nicht stetig ($T$ sei die Teilmenge von $\D'(\real^n)$,
+    sodass $f \ast g$ für $g \in T$ definiert ist).\\
+    Ein Gegenbeispiel ist für $d = 1$ die Distributionenfolge
+    $g_k = \delta(x - k)$ für $k \in \natural$.
+    Es gilt $(g_k, \varphi) = \varphi(k) \to 0$ für $k \to 0$,
+    da $\varphi$ kompakt getragen ist.
+    Somit ist $g_k = \delta(x - k) \xrightarrow{\D'} 0$.
+    Für $f \equiv 1$ gilt allerdings
+    $f \ast g_k = f \ast \delta(x - k) = f = 1 \not\to 0$,
+    d.\,h. die Abbildung $\tau_f$ ist nicht stetig.
+    Analog argumentiert man für $\tau_g\colon f \mapsto f \ast g$.
+    
+    \item
+    \emph{Kommutativität}:
+    Für $f, g \in \D'(\real^n)$ mit $\exists f \ast g \in \D'(\real^n)$
+    gibt es auch $g \ast f \in \D'(\real^n)$ und es gilt
+    $g \ast f = f \ast g$, denn
+    $(f \ast g, \varphi) =
+    \lim_{k \to \infty} (f(x)g(y), \eta_k(x, y)\varphi(x + y))$\\
+    $= \lim_{k \to \infty} (g(y)f(x), \eta_k(x, y)\varphi(x + y)) =
+    \lim_{k \to \infty} (g(x)f(y), \eta_k(y, x)\varphi(x + y)) =
+    (g \ast f, \varphi)$,
+    da $\eta_k(y, x) \to 1$ wie $\eta_k(x, y)$.
+    
+    \item
+    \emph{Dif"|ferenzierbarkeit}:
+    Für $f, g \in \D'(\real^n)$ mit $\exists f \ast g \in \D'(\real^n)$
+    und $\alpha \in \natural_0^n$
+    gibt es auch $(\partial^\alpha f) \ast g,
+    f \ast (\partial^\alpha g) \in \D'(\real^n)$ und es gilt
+    $(\partial^\alpha f) \ast g = f \ast (\partial^\alpha g) =
+    \partial^\alpha (f \ast g)$.\\
+    Die Umkehrung gilt nicht:
+    Aus der Existenz von $\theta' \ast 1$ und $\theta \ast 1'$
+    kann man nicht folgern, dass $\theta \ast 1$ existiert
+    (sonst gäbe es $\theta' \ast 1 = \delta \ast 1 = 1$ und
+    $\theta \ast 1' = \theta \ast 0 = 0$ und
+    die beiden Ausdrücke wären gleich).
+    
+    \item
+    \emph{Assoziativität gilt \textbf{nicht}}:
+    Sonst wäre $(\theta \ast \delta') \ast 1 = \theta \ast (\delta' \ast 1)$,
+    allerdings ist die linke Seite
+    $(\theta \ast \delta') \ast 1 = (\theta \ast \delta)' \ast 1 =
+    (\theta)' \ast 1 = \delta \ast 1 = 1$ und die rechte Seite\\
+    $\theta \ast (\delta' \ast 1) = \theta \ast (\delta \ast 1)' =
+    \theta \ast (1)' = \theta \ast 0 = 0$.
+    
+    \item
+    \emph{Translation}:
+    Existiert $f \ast g$, so existiert auch
+    $f(x + h) \ast g = (f \ast g)(x + h)$.
+    
+    \item
+    \emph{Existenzkriterium bei kompaktem Träger}:
+    Seien $f, g \in \D'(\real^n)$ mit $\supp g = K$ kompakt.\\
+    Dann existiert die Faltung $f \ast g$.
+    
+    \item
+    \emph{Stetigkeit bei kompaktem Träger}:
+    Seien $f_k, f, g \in \D'(\real^n)$ mit $f_k \xrightarrow{\D'(\real^n)} f$
+    und $\supp g = K$ kompakt.
+    Dann gilt $f_k \ast g \xrightarrow{\D'(\real^n)} f \ast g$.
+    Umgekehrt seien $g_k, f, g \in \D'(\real^n)$ mit
+    $g_k \xrightarrow{\D'(\real^n)} g$
+    und $\exists_{R < \infty} \forall_{k \in \natural}\;
+    \supp g_k \subset U_R(0)$.
+    Dann gilt $f \ast g_k \xrightarrow{\D'(\real^n)} f \ast g$.
+    
+    \item
+    \emph{Faltung mit Testfunktion}:
+    Sei $\psi \in \D(\real^n)$.
+    Dann ist $(f \ast \psi)(y) = (f(x), \psi(y - x)) \in \C^\infty(\real^n)$.\\
+    Als Beispiel betrachtet man eine Delta-Folge $\psi_k \in \D$.
+    Dann gilt $f_k = f \ast \psi_k \in \C^\infty$ und
+    $f_k \xrightarrow{\D'} f \ast \delta = f$ aufgrund der Stetigkeit.
+    Damit ist $\D$ dicht in $\D'$.
+\end{enumerate}
+
+\subsection{%
+    Fundmental"|lösungen für PDE%
+}
+
+\textbf{Dif"|ferentialausdruck}:
+Seien $m \in \natural$ und $a_\alpha \in \complex$ konstant für alle
+$\alpha \in \natural_0^d$ mit $|\alpha| \le m$.\\
+Dann heißt $L(\partial) = \sum_{|\alpha| \le m} a_\alpha \partial^\alpha$
+\emph{Dif"|ferentialausdruck}.
+
+\textbf{Fundamental"|lösung}:
+$\varepsilon \in \D'(\real^d)$ heißt \emph{Fundamental"|lösung} von
+$L(\partial)$, falls $L(\partial) \varepsilon = \delta$.
+
+\emph{Beispiel}: Sei $L(\partial) = \Delta =
+\frac{\partial^2}{\partial x_1^2} + \dotsb +
+\frac{\partial^2}{\partial x_d^2}$ der Laplace-Operator.\\
+Dann ist $\varepsilon_2 = \frac{1}{2\pi} \ln |x|$
+eine Fundamental"|lösung für $d = 2$ und
+$\varepsilon_d = \frac{-|x|^{2-d}}{(d - 2)\sigma_d}$
+eine Fundamental"|lösung für $d \ge 2$ mit
+$\sigma_d = \frac{2\pi^{d/2}}{\Gamma(d/2)}$
+der Oberfläche der $d$-dimensionalen Einheitskugel.
+
+\textbf{Anmerkung}:
+Die Fundamental"|lösung ist i.\,A. nicht eindeutig, denn für
+$u_0 \in \D'$ mit $L(\partial) u_0 = 0$ gilt
+$L(\partial)(\varepsilon + u_0) = L(\delta)\varepsilon + L(\partial)u_0 =
+L(\delta)\varepsilon = \delta$.
+
+\textbf{Satz}:
+Seien $\varepsilon$ eine Fundamental"|lösung von $L(\partial)$ und
+$f \in \D'$, sodass $u = \varepsilon \ast f \in \D'$ existiert.\\
+Dann gilt $L(\partial)u = f$ und jede Lösung $u$ von $L(\partial)u = f$
+ist eindeutig in der Klasse der $u$, für welche $u \ast \varepsilon$ existiert.
+
+\pagebreak
+
+\subsection{%
+    Der Raum der temperierten Distributionen \texorpdfstring{$\S'$}{S'}%
+}
+
+Für Anwendungen wie die Fourier-Transformation sieht man, dass die bisher
+betrachtete Räume $\D$ und $\D'$ von Testfunktionen und Distributionen
+zu weit gefasst sind.
+Daher werden nun andere Räume $\S$ und $\S'$ von Testfunktionen und
+Distributionen eingeführt, um die Fourier-Transformationen auf $\S'$
+zu verallgemeinern.
+
+\textbf{Raum der Testfunktionen $\S = \S(\real^d)$}:
+Als Raum der Testfunktionen betrachtet man nun\\
+$\S = \S(\real^d) := \{\varphi \in \C^\infty(\real^d) \;|\;
+\forall_{\alpha, \beta \in \natural_0^d} \exists_{C(\alpha, \beta) < \infty}\;
+|(1 + x^\alpha)\partial^\beta \varphi| \le C(\alpha, \beta)\}$.
+
+\textbf{Konvergenz auf $\S$}:
+Für eine Folge von Testfunktionen $\{\varphi_k\}_{k \in \natural}$ und
+$\varphi$ in $\S$ schreibt man $\varphi_k \xrightarrow{\S} \varphi$, falls
+$\forall_{\alpha, \beta \in \natural_0^d}\;
+\sup_{x \in \real^d} |(1 + x^\alpha) \partial^\beta (\varphi_k - \varphi)|
+\to 0$.
+
+\textbf{Bemerkung}:
+Es gilt $\D \subset \S$ dicht und aus
+$\varphi_k \xrightarrow{\D} \varphi$ folgt
+$\varphi_k \xrightarrow{\S} \varphi$.
+
+\textbf{Eigenschaften}:
+\begin{enumerate}
+    \item
+    $\partial^\alpha\colon \S \rightarrow \S$ ist linear und stetig.
+    
+    \item
+    $\pi_{A,b}\colon \S \rightarrow \S$ ist linear und stetig.
+    
+    \item
+    Für $\alpha \in \C^\infty$ und $\varphi \in \S$ gilt i.\,A. \emph{nicht}
+    $\alpha \cdot \varphi \in \S$
+    (wenn $\alpha$ schneller wächst wie $\varphi$ abfällt).
+    Daher geht man über zu $\Theta_M := \{\alpha \in \C^\infty \;|\;
+    \forall_{\beta \in \natural_0^d} \exists_{C(\beta) < \infty}\;
+    |\partial^\beta \alpha(x)| \le C(\beta) (1 + |x|^{m_\beta})\}$.\\
+    In diesem Fall folgt aus $\alpha \in \Theta_M$ und $\varphi \in \S$,
+    dass $\alpha \cdot \varphi \in \S$ und die Abbildung
+    $\varphi \mapsto \alpha \cdot \varphi$ ist stetig in $\S$.
+\end{enumerate}
+
+\linie
+
+\emph{Motivation}:
+Für $f \in L^1_\loc$ und $\int f(x) (1 + |x|)^{-m} \dx < \infty$ für ein
+geeignetes $m \in \natural$ definiert
+$(f, \varphi) = \int f(x) \varphi(x)\dx$ ein lineares stetiges Funktional auf
+$\S$.
+
+\textbf{Raum der temperierten Distributionen $\S'$}:\\
+$\S'$ ist der Raum der linearen stetigen Funktionale auf $\S$.
+
+\textbf{Konvergenz auf $\S'$}:
+Für eine Folge von Distributionen $\{f_k\}_{k \in \natural}$ und
+$f$ in $\S'$ schreibt man $f_k \xrightarrow{\S'} f$, falls
+$\forall_{\varphi \in \S}\; (f_k, \varphi) \to (f, \varphi)$.
+
+Es gilt $\D_f' \subset \S' \subset \D'$, wobei
+$\D_f'$ der Raum der Distributionen aus $\D'$ mit kompaktem Träger ist.
+Somit können alle Operationen
+(Ableitung, Tensorprodukt, Faltung usw.)
+für $\S'$ analog wie für $\D'$ definiert werden,
+die Rechenregeln bleiben dabei dieselben.
+
+\pagebreak
+
+\subsection{%
+    Die \name{Fourier}-Transformation für temperierte Distributionen%
+}
+
+Sei $\varphi \in \S(\real^d)$.\\
+Dann ist die Fourier-Transformation definiert durch
+$\F[\varphi](\xi) = \frac{1}{(2\pi)^{d/2}}
+\int_{\real^d} e^{-\i\sp{x, \xi}}\varphi(x)\dx$.\\
+Die Fourier-Transformation $\F\colon \S \rightarrow \S$ ist wie schon gezeigt
+eine bijektive Abbildung.
+
+\textbf{Lemma}: $\F\colon \S \rightarrow \S$ ist eine stetige Bijektion.\\
+Aus $\varphi_n \xrightarrow{\S} 0$ folgt
+$\partial^\alpha_\xi (\xi^\beta \F[\varphi_n]) \to 0$ gleichmäßig.
+
+Man nun den Begriff der Fourier-Transformation auf Distributionen erweitern.\\
+Beispielsweise soll für die Delta-Distribution gelten, dass\\
+$\F[\delta(x - x_0)](\xi) = \frac{1}{(2\pi)^{d/2}}
+\int_{\real^d} e^{-\i\sp{x, \xi}}\delta(x - x_0)\dx =
+\frac{1}{(2\pi)^{d/2}} e^{-\i\sp{x_0, \xi}}$.
+
+\linie
+
+\emph{Motivation}:
+Für $f \in L^1(\real^d)$ gilt nach Fubini
+$(\F[f], \varphi) = \frac{1}{(2\pi)^{d/2}} \int_{\real^d} \varphi(\xi)
+\left(\int_{\real^d} e^{-\i\sp{x, \xi}}f(x)\dx\right) \d\xi$\\
+$= \frac{1}{(2\pi)^{d/2}} \int_{\real^d} f(x)
+\left(\int_{\real^d} e^{-\i\sp{\xi, x}}\varphi(\xi)\d\xi\right) \dx =
+(f, \F[\varphi])$.
+
+\textbf{\name{Fourier}-Transformation}:
+Sei $f \in \S'(\real^d)$.\\
+Dann ist die Distribution $\F[f] \in \S'(\real^d)$ definiert durch
+$(\F[f], \varphi) := (f, \F[\varphi])$ für alle\\
+$\varphi \in \S(\real^d)$.
+
+\textbf{Korrektheit}:
+Für $\varphi \in \S$ ist $\F[\varphi] \in \S$, d.\,h.
+$(f, \F[\varphi])$ ist wohldefiniert.\\
+Die Linearität folgt aus der Linearität von $\F\colon \S \rightarrow \S$.\\
+Die Stetigkeit folgt aus obigem Lemma:\\
+Für $\varphi_k \xrightarrow{\S} \varphi$ gilt
+$\F[\varphi_k] \xrightarrow{\S} \F[\varphi]$, d.\,h.
+$(f, \F[\varphi_k]) \to (f, \F[\varphi])$.
+
+\emph{Beispiel}:
+Für die Fourier-Transformation der Delta-Distribution gilt
+$(\F[\delta(x - x_0)](\xi), \varphi(\xi))$\\
+$= (\delta(x - x_0), \F[\varphi](x)) = \F[\varphi](x_0) =
+\frac{1}{(2\pi)^{d/2}} \int_{\real^d} e^{-\i\sp{x_0, \xi}}\varphi(\xi)\d\xi =
+(\frac{1}{(2\pi)^{d/2}} e^{-\i\sp{x_0, \xi}}, \varphi(\xi))$, also\\
+$\F[\delta(x - x_0)] = \frac{1}{(2\pi)^{d/2}} e^{-\i\sp{x_0, \xi}}$.
+
+Wichtige Formeln sind $\F[\delta] = \frac{1}{(2\pi)^{d/2}}$ und
+$\F[1] = \frac{1}{(2\pi)^{d/2}} \delta$.
+
+\linie
+
+\emph{Motivation}:
+Für $\psi \in \S$ gilt $\F^{-1}[\psi](x) =
+\frac{1}{(2\pi)^{d/2}} \int_{\real^d} e^{\i\sp{x, \xi}}\psi(\xi)\d\xi =
+\F[\psi \circ \pi](x)$ mit\\
+$(\psi \circ \pi)(\xi) = \psi(-\xi)$.
+
+\textbf{inverse \name{Fourier}-Transformation}:
+Sei $f \in \S'(\real^d)$.\\
+Dann ist die Distribution $\F^{-1}[f]$ definiert durch
+$\F^{-1}[f] := \F[f \circ \pi]$ mit $\pi\colon \real^d \rightarrow \real^d$,
+$\xi \mapsto -\xi$.
+
+\linie
+
+\textbf{Eigenschaften}
+\begin{enumerate}
+    \item
+    \emph{FT und inverse FT sind invers zueinander}:
+    Sei $f \in \S'(\real^d)$.\\
+    Dann gilt $\F[\F^{-1}[f]] = \F^{-1}[\F[f]] = f$, denn\\
+    $(\F^{-1}[\F[f]], \varphi) =
+    (\F[\F[f] \circ \pi], \varphi) =
+    (\F[f] \circ \pi, \F[\varphi]) =
+    (\F[f], \F[\varphi] \circ \pi) =
+    (\F[f], \F^{-1}[\varphi])$\\
+    $= (f, \F[\F^{-1}[\varphi]]) =
+    (f, \varphi)$
+    aufgrund $\F[\F^{-1}[\varphi]] = \varphi$ für $\varphi \in \S(\real^d)$.
+    
+    \item
+    \emph{FT ist eine Bijektion}:
+    $\F\colon \S' \rightarrow \S'$ ist eine Bijektion, denn sie ist\\
+    surjektiv
+    (für $g \in \S'$ gilt $\F[f] = g$ mit $f = \F^{-1}[g] \in \S$) und\\
+    injektiv
+    (aus $f \in \S'$ mit $\F[f] = 0$ folgt
+    $\forall_{\varphi \in \S}\; (\F[f], \varphi) = (f, \F[\varphi]) = 0$,
+    also\\
+    $\forall_{\psi \in \S}\; (f, \psi) = 0$ und daher $f = 0$,
+    indem man $\varphi = \F^{-1}(\psi) \in \S$ setzt).
+    
+    \item
+    \emph{Ableitung der FT}:
+    Für $f \in \S'(\real^d)$ und $\alpha \in \natural_0^d$ gilt
+    $\partial_\xi^\alpha \F[f] = \F[(-\i x)^\alpha f]$, denn\\
+    $(\partial_\xi^\alpha \F[f](\xi), \varphi(\xi)) =
+    (-1)^{|\alpha|} (\F[f](\xi), \partial_\xi^\alpha \varphi(\xi)) =
+    (-1)^{|\alpha|} (f(x), \F[\partial_\xi^\alpha \varphi(\xi)](x))$\\
+    $= (-1)^{|\alpha|} (f(x), (ix)^\alpha \F[\varphi(\xi)](x)) =
+    (-1)^{|\alpha|} ((ix)^\alpha f(x), \F[\varphi(\xi)](x))$\\
+    $= ((-ix)^\alpha f(x), \F[\varphi(\xi)](x)) =
+    (\F[(-ix)^\alpha f](\xi), \varphi(\xi))$.
+    
+    \item
+    \emph{FT der Ableitung}:
+    Analog beweist man $\F[\partial_x^\alpha f] = (i\xi)^\alpha \F[f]$.
+    
+    \item
+    \emph{FT einer skalierten Funktion}:
+    Sei $c \in \real$ mit $c \not= 0$.
+    Dann ist $\F[f(cx)](\xi) = |c|^{-d} \F[f](\frac{\xi}{c})$.
+    
+    \item
+    \emph{FT vom Tensorprodukt}:
+    Mit $x, \xi \in \real^n$ und $y, \eta \in \real^m$ gilt
+    $\F_{(x, y) \to (\xi, \eta)}[f(x) \cdot g(y)](\xi, \eta)$\\
+    $= \F_{x \to \xi}[f](\xi) \cdot \F_{y \to \eta}[g](\eta) =
+    \F_{y \to \eta}[\F_{x \to \xi}[f](\xi) \cdot g(y)](\eta) =
+    \F_{x \to \xi}[\F_{y \to \eta}[g](\eta) \cdot f(x)](\xi)$.
+    
+    \item
+    \emph{FT bei kompaktem Träger}:
+    Für $g \in \D'(\real^d)$ mit $\supp g = K$ kompakt
+    (d.\,h. insbesondere $g \in \S'(\real^d)$) gilt
+    $\F[g] \in \Theta_M$ mit
+    $\F[g] = (g(x), \eta(x)\frac{e^{-\i\sp{x, y}}}{(2\pi)^{d/2}})$.\\
+    Dabei ist $\eta \in \D(\real^d)$ mit $\eta \equiv 1$ auf $K$.
+    
+    \item
+    \emph{FT der Faltung}:
+    Seien $f, g \in \S'(\real^d)$ mit $\supp g = K$ kompakt.\\
+    Dann ist $\frac{1}{(2\pi)^{d/2}} \F[f \ast g] = \F[f] \cdot \F[g]$
+    mit $\F[f] \in \S'(\real^d)$ und $\F[g] \in \Theta_M$, denn\\
+    $(\F[f \ast g], \varphi) = (f \ast g, \F[\varphi]) =
+    (f(x), (g(y)\eta(y) \cdot \frac{1}{(2\pi)^{d/2}}
+    \int_{\real^d} e^{-\i\sp{x + y, \xi}}\varphi(\xi)\d\xi))$\\
+    $= (f(x), \int_{\real^d}
+    \left(\frac{1}{(2\pi)^{d/2}} (g(y), \eta(y)e^{-\i\sp{y, \xi}})\right)
+    \varphi(\xi)e^{-\i\sp{x, \xi}}\d\xi) =
+    (f(x), \int_{\real^d} \F[g](\xi)\varphi(\xi)e^{-\i\sp{x, \xi}}\d\xi)$\\
+    $= (2\pi)^{d/2} (f(x), \F[\F[g](\xi) \cdot \varphi(\xi)](x)) =
+    (2\pi)^{d/2} (\F[f], \F[g] \cdot \varphi) =
+    (2\pi)^{d/2} (\F[g] \cdot \F[f], \varphi)$.\\
+    Dabei ist $\eta(y)$ gleich $1$ auf $\supp g$ und es wurde die Formel aus
+    7. angewandt.
+\end{enumerate}
+
+\subsection{%
+    Die \name{Fourier}-Transformation zur Berechnung von Fundamental"|lösungen%
+}
+
+Sei $L(\partial) = \sum_{|\alpha| \le m} a_\alpha \partial^\alpha$ ein
+Dif"|ferentialausdruck auf $\real^d$ mit konstanten $a_\alpha \in \complex$.\\
+Gesucht ist ein $\varepsilon \in \S'(\real^d)$ mit
+$L(\partial)\varepsilon = \delta$ (Fundmental"|lösung).\\
+Für dieses $\varepsilon$ gilt dann $\F[L(\partial)\varepsilon] = \F[\delta]$,
+d.\,h. $L(\i\xi) \F[\varepsilon] = \frac{1}{(2\pi)^{d/2}}$.
+
+\emph{Beispiel}:
+Für $d = 2$ und $L(\partial) = \Delta = \frac{\partial^2}{\partial x_1^2} +
+\frac{\partial^2}{\partial x_2^2}$ gilt
+$L(\i\xi) = (\i\xi_1)^2 + (\i\xi_2)^2 = -(\xi_1^2 + \xi_2^2)$.\\
+Daher gilt für $\varepsilon \in \S'(\real^2)$, dass
+$\Delta \varepsilon = \delta$ genau dann, wenn
+$-(\xi_1^2 + \xi_2^2) \F[\varepsilon] = \frac{1}{2\pi}$.
+
+Aus der Gleichung $L(\i\xi) \F[\varepsilon] = \frac{1}{(2\pi)^{d/2}}$
+kann man $\varepsilon$ herleiten:
+Falls $\frac{1}{L(\i\xi)} \in L^1_\loc$ gilt, so ist
+$\F[\varepsilon] = \frac{1}{(2\pi)^{d/2} L(\i\xi)}$.
+Andernfalls führt man eine geeignete Regularisation durch
+(z.\,B. Annähern von $\frac{1}{x}$ durch $P\frac{1}{x}$ oder
+$\frac{1}{x \pm \i \cdot 0}$).
+Der \textbf{Satz von Hörmander} besagt, dass
+obige Gleichung immer eine distributionelle Lösung $X$ besitzt.
+Dann kann man $\varepsilon = \F^{-1}[X]$ berechnen.
+
+\linie
+
+\emph{Beispiel}:
+Um die Fundmental"|lösung für $d = 3$ und den Laplace-Operator $\Delta$
+zu finden, verwendet man wieder die Gleichung
+$-|\xi|^2 \F[\varepsilon] = \frac{1}{(2\pi)^{3/2}}$.
+Dabei ist $|\xi|^2 = \xi_1^2 + \xi_2^2 + \xi_3^2$ und
+$X := \F[\varepsilon]$.\\
+Man erhält also $X = -\frac{1}{(2\pi)^{3/2} |\xi|^2}$.
+Dies ist allerdings nur lokal integrierbar (nicht im $L^1$).\\
+Man verwendet daher die Approximation (Regularisierung)
+$X_\nu := -\frac{\chi|_{|\xi| \le R(\nu)}}
+{(2\pi)^{3/2} (|\xi|^2 + |\nu|^2)}$.\\
+Für $\nu \to 0$ und $R(\nu) \to 0$ gilt
+$X_\nu(\xi) \xrightarrow{(\cdot)} X(\xi)$,
+also $X_\nu \xrightarrow{\S'} X$ und
+$F^{-1}[X_\nu] \xrightarrow{\S'} \F^{-1}[X] = \varepsilon$.\\
+Daher ist $\varepsilon = \lim_{\nu \to 0, R(\nu) \to \infty} \F^{-1}[X_\nu]$.\\
+Für die Berechnung von
+$\F^{-1}[X_\nu] = \frac{1}{(2\pi)^3} \int_{\real^3,\; |\xi| \le R(\nu)}
+\frac{e^{\i\sp{x, \xi}}}{|\xi|^2 + \nu^2}d^3\xi$ führt man eine
+Koordinatentransformation in Kugelkoordinaten $(R, \varphi, \theta)$
+durch, sodass $x$ auf der $z$-Achse liegt.
+Mit $r := |x|$ und $R := |\xi|$ ist dann $\sp{x, \xi} = rR\cos \theta$
+mit $\theta$ dem Winkel zwischen $x$ und $\xi$.\\
+Damit ist dann
+$\F^{-1}[X_\nu] = \frac{1}{(2\pi)^3} \int_{\real^3,\; |\xi| \le R(\nu)}
+\frac{e^{\i\sp{x, \xi}}}{|\xi|^2 + \nu^2}d^3\xi =
+\frac{1}{(2\pi)^3} \int_0^{2\pi} \int_0^\pi \int_0^{R(\nu)}
+\frac{e^{\i rR\cos \theta}}{R^2 + \nu^2} R^2 \dr \sin \theta d\theta d\varphi$\\
+$= \frac{1}{(2\pi)^2} \int_0^\pi \int_0^{R(\nu)}
+\frac{e^{\i rR\cos \theta}}{R^2 + \nu^2} R^2 \dr \sin \theta d\theta =
+\frac{1}{(2\pi)^2} \int_{-1}^1 \int_0^{R(\nu)} \frac{R^2}{R^2 + \nu^2}
+e^{\i rRy} dR\dy$\\
+$= \frac{1}{(2\pi)^2} \int_0^{R(\nu)} \frac{R^2}{R^2 + \nu^2} \cdot
+\frac{1}{\i rR} (e^{\i rR} - e^{-\i rR}) dR =
+\frac{1}{(2\pi)^2} \cdot 2 \cdot \frac{1}{r}
+\int_0^{R(\nu)} \frac{R}{R^2 + \nu^2} \cdot \sin(rR) dR$\\
+$= \frac{1}{(2\pi)^2} \cdot \frac{1}{r}
+\int_{-R(\nu)}^{R(\nu)} \frac{R}{R^2 + \nu^2} \cdot \sin(rR) dR =
+\frac{1}{(2\pi)^2} \cdot \frac{1}{2\i r}
+\int_{-R(\nu)}^{R(\nu)} \frac{R}{R^2 + \nu^2} (e^{\i rR} - e^{-\i rR}) dR$
+mit $y = \cos \theta$.\\
+Per Integration über einen Halbkreis in der oberen bzw. unteren Halbebene
+sieht man\\
+$I_\nu^\pm := \int_{-R(\nu)}^{R(\nu)}
+\frac{R}{R^2 + \nu^2} e^{\pm\i rR}dR = \pm\i\pi e^{-\nu r} + o(1)$ für
+$\nu \to 0$ (mit dem Lemma von Riemann).\\
+Damit ist $\F^{-1}[X_\nu] =
+\frac{1}{(2\pi)^2} \cdot \frac{1}{2\i r} \cdot (I_\nu^+ - I_\nu^-) =
+\frac{1}{(2\pi)^2} \cdot \frac{1}{2\i r} \cdot (\i\pi - (-\i\pi))e^{\nu r} +
+o(1) \xrightarrow{\nu \to 0} \frac{1}{4\pi r}$.
+
+\pagebreak

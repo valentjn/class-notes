@@ -1,0 +1,376 @@
+\section{%
+    Begriffe der Programmierung%
+}
+
+\subsection{%
+    Blöcke, Ausnahmen, Überladen%
+}
+
+\begin{Def}{Block}
+    Ein Block ist eine sich geschlossene, durch \adacode{begin}/\adacode{end}
+    geklammerte Folge von Anweisungen mit Deklarations- bzw. Ausnahmeteil
+    am Anfang bzw. Ende. \\
+    Die Bezeichnungen des Deklarationsteils können nur innerhalb dieses
+    Blocks und seiner Unterblöcke verwendet werden.
+    Nach Verlassen des Blocks sind die Bezeichner und die entsprechenden
+    Objekte undefiniert/unbekannt. \\
+    Ein Bezeichner, der explizit im Deklarationsteil eines Blocks oder implizit
+    als Laufvariable/Marke/Bezeichnung eingeführt wird, heißt \begriff{lokal}
+    zu diesem Block.
+    Bezeichner, die in Oberblöcken deklariert wurden, heißen \begriff{global}
+    in den Unterblöcken. \\
+    Ein in einem Oberblock deklarierter Bezeichner wird durch Neudeklaration
+    in einem Unterblock "`ausgeblendet"' und kann nicht mehr angesprochen
+    werden.
+\end{Def}
+
+\begin{Def}{Bezeichner}
+    Ein Bezeichner $X$ bezieht sich stets auf die Deklaration von $X$,
+    die sich im Deklarationsteil des innersten Blocks befindet.
+\end{Def}
+
+\begin{Def}{Lebensdauer/Sichtbarkeit}
+    Die \begriff{Lebensdauer} eines Bezeichners (und des zugehörigen Objekts)
+    ist der Block, in dem der Bezeichner deklariert wurde.
+    Der Bezeichner/das Objekt lebt genau ab der Stelle seiner Deklaration,
+    bis zu der Stelle, an dem der Block verlassen wird.
+    Wird der Block später neu betreten, so wird ein neues Objekt erzeugt. \\
+    Der \begriff{Gültigkeits-/Sichtbarkeitsbereich} eines Bezeichners/Objekts
+    ist der Teil der Lebensdauer, in dem unmittelbar über den Bezeichner
+    auf das Objekt zugegriffen werden kann.
+    Ein Objekt kann unsichtbar und dann wieder sichtbar werden.
+\end{Def}
+
+\begin{Def}{Speicher}
+    Blöcke und die Variablen werden auf dem Stack gespeichert und verwaltet.
+\end{Def}
+
+\begin{Def}{Vorteile von Blöcken}
+    getrennte Entwicklung/Optimierung, besseres Verständnis; \\
+    Hilfsvariablen und Zwischenrechnung verschwinden nach Abarbeiten; \\
+    Vermeidung von Namenskonflikten bei größeren Programmeinheiten; \\
+    Einfluss auf den Stack und eigene gezielte Verwaltung des Speicherplatzes.
+\end{Def}
+
+\begin{Def}{Überladen}
+    \begriff{Überladen} ist die Mehrfachdeklaration eines Bezeichners
+    (d.~h. einem Bezeichner sind mehrere verschiedene Objekte zugeordnet).
+    An jeder Stelle des Programms muss aber aus dem Kontext eindeutig
+    hervorgehen, welche Bedeutung gemeint ist. \\
+    In \Ada{} ist Überladen für bestimmte Bezeichner (Literale in
+    Aufzählungstypen, Funktionen, Operatoren, Unterprogramme) zulässig,
+    andere (Datenobjekte, implizite Bezeichner) dürfen nicht überladen
+    werden. \\
+    Bei Unterprogrammen ist Überladen zulässig, falls sich die Deklarationen
+    in der Reihenfolge der Parametertypen, in mindestens einem Parametertyp
+    oder im Ergebnistyp unterscheiden.
+\end{Def}
+
+\begin{Def}{Ausnahmen}
+    In \Ada{} kann am Ende jedes Blocks eine Ausnahmebehandlung definiert
+    werden.
+    Dazu deklariert man im Deklarationsteil (z.~B. des Packages) mittels \\
+    \adacode{Fehlername : exception;} die Ausnahme.
+    In einem Unterprogramm wird diese mittels \\
+    \adacode{raise Fehlername;} geworfen.
+    Fehler kann man in einem übergeordneten Unterprogramm
+    durch \adacode{exception when Fehlername => Put ("1");
+    when others => Put ("2");} kontrolliert abfangen.
+    Im Falle eines Fehlers wird dabei nach der Ausnahmebehandlung gesucht
+    (notfalls wird zum übergeordneten Block gewechselt).
+    Dabei werden u.~U. auch Prozeduren/ Funktionen verlassen und der
+    entsprechende Platz auf dem Stack freigegeben. \\
+    In \Ada{} sind vier Standardfehler \adacode{Constraint\_Error},
+    \adacode{Program\_Error}, \adacode{Strorage\_Error}, \adacode{Tasking\_Error}
+    vorhanden.
+\end{Def}
+
+\subsection{%
+    Prozeduren und Funktionen%
+}
+
+\begin{Def}{Unterprogramm}
+    Eine Folge von Deklarationen und Anweisungen kann zur einer Programmeinheit
+    (\begriff{Prozedur}/\begriff{Unterprogramm}) mit Namen und formalen
+    Parametern zusammengefasst werden.
+    Eine Prozedur besteht aus Spezifikation (Name, Parameter) und Rumpf
+    (Deklarationsteil, Anweisungen).
+    \begriff{Seiteneffekte}, die durch Verwendung globaler Variablen auftreten
+    können, sind zu vermeiden.
+\end{Def}
+
+\begin{Def}{Rekursion}
+    \begriff{Rekursion} ist die Verwendung eines Unterprogramms
+    in seinem eigenen Rumpf.
+\end{Def}
+
+\begin{Def}{Parameterübergabe (Pseudocode)}
+    \begin{itemize}
+        \item \begriff{Call-By-Value}: Die mit \pseudocode{value} versehenen
+        formalen Parameter werden als lokale Variablen aufgefasst, denen beim
+        Funktionsaufruf die Werte der aktuellen Parameter zugewiesen werden.
+        Sie dürfen neue Werte erhalten, diese werden jedoch am Ende der
+        Prozedur nicht wieder zurückgeschrieben.
+        
+        \item \begriff{Call-By-Reference}: Die mit \pseudocode{access} versehenen
+        formalen Parameter sind Zeiger auf die aktuellen Parameter.
+        
+        \item \begriff{Call-By-Name}: Die mit \pseudocode{name} versehenen
+        formalen Parameter werden beim Funktionsaufruf textuell durch die
+        aktuellen Parameter ersetzt.
+    \end{itemize}
+\end{Def}
+
+\begin{Def}{Kopierregel} \\
+    \begin{tabular}{p{7.0cm}p{9.1cm}}
+        \begin{minipage}[c]{7.0cm}
+            \begin{tabular}{p{0.2cm}l}
+                \multicolumn{2}{l}{$\mathtt{\mathbf{declare}\; X_1 : Typ_1;\; \ldots;\; X_n : Typ_n;}$} \\
+                \multicolumn{2}{l}{$\mathtt{\mathbf{begin}}$} \\
+                & $\mathtt{X_1 := \alpha_1;\;\; \ldots;\;\; X_n := \alpha_n;}$ \\
+                & $\mathtt{modifizierterPRUMPF}$ \\
+                \multicolumn{2}{l}{$\mathtt{\mathbf{end};}$}
+            \end{tabular}
+        \end{minipage}
+        &
+        \begin{minipage}[c]{9.1cm}
+            Gegeben sei eine Prozedur\\
+            $\mathtt{\mathbf{procedure}\; }$
+            $\mathtt{P(X_1: p"u_1\; T_1;\; \ldots;\; X_n: p"u_n\; T_n)}$\\
+            $\mathtt{\mathbf{is}\; PRUMPF;}$, wobei
+            $\mathtt{p"u_i} \in \{\mathtt{\mathbf{value}},
+            \mathtt{\mathbf{access}}, \mathtt{\mathbf{name}}\}$ die
+            Parameterübergabe angibt.
+            Der Prozeduraufruf $\mathtt{P(\alpha_1, \ldots, \alpha_n)}$ mit den
+            aktuellen Parametern $\mathtt{\alpha_1}, \mathtt{\ldots},
+            \mathtt{\alpha_n}$ wird dann durch
+            nebenstehenden Block ersetzt.
+        \end{minipage}
+    \end{tabular}
+    
+    Dabei sei $\mathtt{Typ_i = T_i}$ für $\mathtt{p"u_i = \mathbf{value}}$,
+    $\mathtt{Typ_i = \mathbf{access}\; T_i}$ für
+    $\mathtt{p"u_i = \mathbf{access}}$ und \\
+    $\mathtt{X_i : Typ_i;}$ sowie $\mathtt{X_i := \alpha_i;}$ entfallen für
+    $\mathtt{p"u_i = \mathbf{name}}$. \\
+    $\mathtt{modifizierterPRUMPF}$ ist ein Block, der folgendermaßen aus
+    $\mathtt{PRUMPF}$
+    entsteht:
+    \begin{enumerate}
+        \item Jeder formale Parameter
+        $\mathtt{X_i}$ mit $\mathtt{p"u_i = \mathbf{access}}$ wird durch
+        $\mathtt{\mathbf{deref}\; X_i}$ ersetzt.
+        
+        \item Jeder formale Parameter und jeder lokale Name in
+        $\mathtt{PRUMPF}$, der gleich einem Namen ist, der in irgendeinem
+        aktuellen Parameter $\mathtt{\alpha_i}$ mit
+        $\mathtt{p"u_i = \mathbf{name}}$ vorkommt, wird durchgehend mit einem
+        neuen Namen bezeichnet.
+        
+        \item Alle $\mathtt{X_i}$ mit $\mathtt{p"u_i = \mathbf{name}}$ werden
+        durch $\mathtt{\alpha_i}$ textuell ersetzt.
+        
+        \item (Globale Variablen dürfen nicht "`lokaler"' werden.)
+    \end{enumerate}
+    
+    Dann wird dieser Block ausgeführt.
+    Nach der Ausführung wird er wieder durch den Prozeduraufruf
+    $P(\alpha_1, \ldots, \alpha_n)$ ersetzt und das Programm setzt
+    mit der folgenden Anweisung fort. \\
+    Die obige Kopie des Prozedurrumpfs heißt
+    \begriff{Inkarnation}/\begriff{konkrete Ausprägung} der Prozedur.
+\end{Def}
+
+\begin{Def}{Nur Call-By-Value}
+    Manche Sprachen erlauben nur Call-By-Value als Übergabeart (z.~B. C).
+    Jedoch kann man dann einen Pointer als Parameter übergeben, sodass
+    man die referenzierte Variable abändern kann.
+\end{Def}
+
+\begin{Def}{Parameterübergabe in \Ada{}}
+    In \Ada{} gibt es Parameter vom Typ \adacode{in} (formaler Parameter wird
+    wie eine Konstante behandelt, darf nicht verändert werden), \adacode{out}
+    (wird wie eine Variable behandelt, aktueller Parameter muss eine Variable
+    sein, zugewiesene Werte werden erst bei Beendigung der Prozedur dem
+    aktuellen Parameter zugewiesen) und \adacode{in out}
+    (wie \adacode{out}, aber dem formalen Parameter
+    wird wie bei \adacode{in} anfangs der Wert des aktuellen Parameters
+    zugewiesen). \\
+    In Funktionen sind nur \adacode{in}-Parameter erlaubt
+    (Standard, wenn nicht angegeben).
+\end{Def}
+
+\subsection{%
+    Moduln%
+}
+
+\begin{Def}{Eigenschaften von Moduln}
+    \emph{in sich abgeschlossene Einheit} mit klar definierter Aufgabe;
+    genau definierte \emph{Schnittstelle} nach außen (nur die dort
+    genannten Eigenschaften sind nach außen hin sichtbar);
+    die \emph{interne Arbeitsweise}/\emph{Implementation} ist außen nicht
+    bekannt (zwei Sichten: Außenansicht und Innensicht, die nach außen hin
+    versteckt bleibt);
+    \emph{überschaubar}, gut zu testen, einfach zu warten;
+    in \emph{Bibliotheken} aufbewahrbar und leichte Einbaubarkeit in
+    beliebige Programmsysteme
+\end{Def}
+
+\begin{Def}{Schematischer Aufbau eines Moduls}
+\begin{lstlisting}[language=pseudosprache]
+module <Name des Moduls> is
+[with ...; use ...]   --  Angaben, welche anderen Einheiten verwendet werden und in welcher Weise
+specification ...     --  Angabe der nach aussen sichtbaren Datentypen, Konstanten, Variablen und
+                      --  "Methoden" (also Funktionen, Operatoren usw.)
+[implementation ...]  --  weitere (nach aussen nicht sichtbare) Deklarationen sowie Programme
+                      --  zur Implementierung der Methoden und Typen
+[begin ... end]       --  Anweisungen zur Initialisierung, einschliesslich der Ausnahmebehandlungen
+end module [<Name des Moduls>]
+\end{lstlisting}
+    \vspace{-10pt}
+    Moduln sind die programmiersprachliche Realisierung von Datentypen.
+    Beispielsweise kann ein "`Stack für Zeichen"' als Modul umgesetzt werden.
+\end{Def}
+
+\begin{Def}{Moduln in \Ada{} ("`Pakete"')}
+    Das Schlüsselwort in \Ada{} lautet \adacode{package}, man spricht von
+    \begriff{Paketen}.
+    Spezifikations-/Implementierungsteil werden voneinander
+    getrennt und lauten \\
+    \adacode{package <Paketname> is <einfache Deklarationen> end <Paketname>;}
+    bzw. \\
+    \adacode{package body <Paketname> is <Deklarationen> end <Paketname>;}. \\
+    Der Implementierungsteil kann entfallen, falls die Spezifikation nur
+    aus Datentyp- und Konstantendeklarationen besteht. \\
+    Die Deklaration \begriff{privater Typen} erfolgt durch
+    \adacode{type <Typname> is private;}, die Struktur des Typs wird
+    am Ende der Spezifikation nach dem Schlüsselwort \adacode{private}
+    angegeben und so vor dem Benutzer versteckt.
+    In \Ada{} sind mit einem Datentype (auch privat) stets die Operationen
+    \adacode{=}, \adacode{/=} und \adacode{:=} verbunden.
+    Sollen diese Operationen nicht für die Benutzer des Moduls zugelassen
+    werden, so muss man den Typ als \adacode{limited private} deklarieren.
+\end{Def}
+
+\subsection{%
+    Polymorphie%
+}
+
+\begin{Def}{Allgemein}
+    \begriff{Polymorphie} (griechisch: \emph{Vielgestaltigkeit}) ist ein
+    Grundprinzip der Informatik, das sich durch folgende Maßnahmen äußert:
+    Möglichst lange den konkreten Datentyp von Variablen offen lassen
+    (z.~B. unspezifizierte Feldgrenzen), möglichst lange konkrete
+    Realisierung offen lassen (z.~B. Spezifikations-/Implementierungsteil
+    trennen) und Parametrisierung von Paketen und Unterprogrammen für den
+    Einsatz in möglichst vielen Programmen (z.~B. Generizität).
+\end{Def}
+
+\begin{Def}{in der Programmierung}
+    In der Programmierung spricht man von \begriff{Polymorphie}, falls
+    Bezeichner mehrfach verwendet werden (Überladen), falls
+    Variablen je nach aktueller Umgebung Elemente verschiedener Datentypen
+    bezeichnen, falls Parametrisierung mit Typen erfolgt (also falls Typen als
+    Parameter für Prozeduren/Typen verwendet werden) und falls
+    \begriff{Generizität} bei Unterprogrammen/Moduln verwendet wird.
+\end{Def}
+
+\begin{Def}{Generizität}
+\begin{lstlisting}[language=ada]
+--  Spezifikation                           --  Implementierung
+generic type Element is private;            procedure Tausch (A, B : in out Element) is ...
+procedure Tausch (A, B : in out Element);   begin ... end Tausch;
+
+--  Verwendung
+procedure IntTausch is new Tausch (Integer);
+X, Y : Integer;
+...
+IntTausch (X, Y);
+\end{lstlisting}
+    In \Ada{} wird der variabel gehaltene Bereich mit \adacode{generic}
+    eingeleitet.
+    Im Beispiel ist \adacode{Element} ein formaler Parameter, der bei der
+    Instanziierung durch \adacode{is new} textuell durch den aktuellen
+    Parameter (hier \adacode{Integer}) ersetzt wird.
+    Ein \adacode{generic}-Parameter darf in \Ada{} nicht bereits im
+    \adacode{generic}-Bereich verwendet werden.
+    Das Problem wird durch generische Pakete gelöst.
+\end{Def}
+
+\subsection{%
+    Vererbung%
+}
+
+\begin{Def}{Ableitungen von Datentypen}
+    Ist ein Datentyp bereits deklariert, so kann man durch Hinzufügen weiterer
+    Komponenten aus ihm weitere Datentypen ableiten
+    (\begriff{Spezialisierung}). \\
+    Liegen mehrere Datentypen vor, die gewisse Komponenten gemeinsam haben, so
+    kann man diese Gemeinsamkeiten als eigenen Datentyp herausziehen
+    (\begriff{Generalisierung}).
+\end{Def}
+
+\begin{Def}{Spezialisierung in \Ada{}}
+    Mittels \adacode{type abc is tagged record ... end record;} kann man einen
+    Record erstellen, der erweitert werden soll.
+    Bei der Erweiterung mit einem \begriff{Unterda\-tentyp} muss der
+    \begriff{Obertyp} per
+    \adacode{type xyz is new abc with record ... end record;} angegeben werden.
+    Man spricht beim Vorgang, Eigenschaften an andere Einheiten
+    weiterzureichen, von \begriff{Vererbung}.
+    Die Obertypen heißen \begriff{Eltern}, die Untertypen \begriff{Kinder}.
+    Man sagt, \adacode{xyz} ist ein aus \adacode{abc}
+    \begriff{abgeleiteter Typ}.
+    (Die Eigenschaft \adacode{tagged} vererbt sich automatisch an die
+    Untertypen, d.~h. diese können wiederum ohne Zusätze weiter abgeleitet
+    werden.)
+\end{Def}
+
+\begin{Def}{Generalisierung in \Ada{}}
+    Gemeinsame Komponenten kann man in einen Obertyp herausziehen.
+    Man deklariert einen solchen Obertyp mit \\
+    \adacode{type abc is abstract tagged record ... end record;},
+    Untertypen lassen sich dann wie oben erstellen.
+    Der Unterschied ist, dass sich abstrakte Datentypen (wie hier
+    \adacode{abc}) im Gegensatz zu den Untertypen nicht als Variable oder
+    formaler Parameter deklarieren lassen.
+\end{Def}
+
+\begin{Def}{Umdefinitionen}
+    Bei der Vererbung von Typen kann man vererbte Komponenten neu definieren.
+    Die vererbten Komponenten sind dann wegen der Sichtbarkeitsregel
+    automatisch ausgeblendet (\begriff{overridden}).
+\end{Def}
+
+\begin{Def}{Mehrfachvererbung}
+    Es gibt Sprachen (wie \Ada{}), in denen ein Datentyp höchsten einen
+    direkten Obertyp besitzen kann (\begriff{Einfach-Vererbung}).
+    Können Eigenschaften mehrerer Obertypen an einen Datentyp weitergereicht
+    werden, spricht man von \begriff{Mehrfach-Vererbung}.
+\end{Def}
+
+\subsection{%
+    Objekte%
+}
+
+\begin{Def}{Objekte}
+    \begriff{Objekte} sind in sich geschlossene Einheiten, die wie Moduln
+    aufgebaut sind.
+    Es gibt ein Schema (\begriff{Klasse}), das aus \begriff{Attributen} und
+    \begriff{Methoden} besteht.
+    Aus diesem kann ein konkretes Objekt (eine \begriff{Instanz}) erzeugt
+    werden.
+    Objekte können einen individuellen Zustand besitzen und miteinander
+    kommunizieren.
+    Durch Vererbung können sie ihre Eigenschaften an neue Objekte/Klassen
+    weiterreichen.
+\end{Def}
+
+\begin{Def}{Prinzipien der Objektorientierung}
+    es gibt nur Objekte (eindeutig über Namen identifizierbar);
+    handeln in eigener Verantwortung;
+    Klassen werden in Bibliotheken aufbewahrt und stehen allen
+    Programmen zur Verfügung\dots
+\end{Def}
+
+\pagebreak

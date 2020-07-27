@@ -1,0 +1,138 @@
+\section{%
+    Einführung in OpenGL%
+}
+
+\subsection{%
+    Was ist OpenGL?%
+}
+
+\textbf{Wie zeigt man Geometrie auf dem Bildschirm an?}
+\begin{itemize}
+    \item
+    \begriff{Raytracing}:
+    Bilden von imaginären Strahlen von Kamera zu Szenerie, die die "`Bildfläche"' irgendwo
+    schneiden, was am Endpunkt des Strahls ist, bestimmt den Farbwert
+    
+    \item
+    \begriff{Rasterisierung}:
+    Die Anwendung verwaltet Punkte, sog. \begriff{Vertices}.
+    Durch Geometrie-Verar"-beitung erhält man \begriff{Primitive} (oft Dreiecke).
+    Die Rasterisierung unterteilt die Primitive in \begriff{Fragmente}.
+    Durch Anwendung von Operationen auf jedem Fragment erhält man \begriff{Pixel},
+    die dann in den Frame-Buffer geschrieben werden.
+\end{itemize}
+
+\linie
+
+\textbf{OpenGL}:
+\begriff{OpenGL} ist eine plattform- und hardwareunabhängige 3D-Darstellungs-API.
+Der OpenGL-Standard spezifiziert ca. 200 Befehle zur Definition von Geometrien und
+Ausführen von typischen Operationen für interaktive 3D-Grafik.
+Es fehlen allerdings Ereignisse, Fenster, Menüs usw.
+Die klassische OpenGL-Versionen 2.x unterscheiden sich von den modernen OpenGL-Versionen
+(ab 3.0), die programmierbare Stufen unterstützen.
+Aktuell ist OpenGL 4.4.
+
+\textbf{Funktionen}:
+OpenGL unterstützt \begriff{Zustände}, die solange fest sind, bis sie verändert werden.
+Außerdem wird ein Client-Server-Konzept unterstützt (wobei heutzutage Client und Server immer
+auf demselben Rechner sind).
+Bestimmte GPU-Funktionen werden durch \begriff{Erweiterungen} aktiviert.
+Mit der Shading-Sprache \begriff{GLSL} (C-ähnlich, wird allerdings erst zur Laufzeit kompiliert)
+können eigene Shader programmiert werden.
+
+\textbf{OpenGL-Primitive}:
+Alle geometrischen Primitive werden durch Vertices in homogenen Koordinaten gegeben.
+Falls die homogene Koordinate $w$ fehlt, dann wird $w := 1$ gesetzt.\\
+Zu den eindimensionalen Primitiven gehören
+\code{GL\_POINTS} (Punktmenge),
+\code{GL\_LINES} (Strecken AB, CD usw..),
+\code{GL\_LINE\_LOOP} (geschlossenes Polygon ohne Inneres) und
+\code{GL\_LINE\_STRIP} (of"|fenes Polygon ohne Inneres).
+Zu den zweidimensionalen Primitiven zählt man
+\code{GL\_TRIANGLES} (Dreiecke ABC, DEF usw.),
+\code{GL\_TRIANGLE\_STRIP} (Dreiecke ABC, BCD usw.),
+\code{GL\_TRIANGLE\_FAN} (Dreiecke ABC, ACD usw.),
+\code{GL\_QUADS} (Vierecke ABCD, EFGH usw.),
+\code{GL\_QUAD\_STRIP} (Vierecke ABCD, CDEF usw.) und
+\code{GL\_POLYGON} (Polygon der beteiligten Vertices).
+Die letzten drei Primitiven sind in OpenGL 3 entfernt worden, dafür gibt es jetzt
+\code{GL\_PATCHES}.
+
+\subsection{%
+    Grafikpipeline und Vertex-Transformation%
+}
+
+\textbf{Grafikpipeline}:
+Die komplette Grafikpipeline von OpenGL 4.4 ist sehr komplex.
+Für eine grundlegende Funktionalität benötigt man prinzipiell einen
+\begriff{Vertex-Shader} und einen \begriff{Frag"-ment-Shader}.
+Dabei speichert die CPU die Vertices im sog. \begriff{Vertex Buffer Object (VBO)}.
+Mit dem Vertex-Shader wird die Geometrie verarbeitet, d.\,h. es erfolgt die Umwandlung in
+Display-Koordinaten.
+Das Ergebnis wird rasterisiert und mittels des Fragment-Shaders gefärbt.
+Die Ausgabe wird im Framebuffer gespeichert, der schließlich angezeigt wird.
+
+\textbf{Vertex-Transformation}:
+Jedes Objekt hat seine eigenen \begriff{Objekt-Koordinaten} $p_\text{obj}$.
+Mit $M_\text{model}$ werden diese Koordinaten zu den \begriff{Welt-Koordinaten} $p_\text{world}$
+vereinigt.
+Mit einer weiteren Transformation $M_\text{view}$ erhält man die \begriff{Kamera-Koordinaten}
+$p_\text{cam}$.
+Daraus folgen mit $M_\text{proj}$ die \begriff{Clip-Koor"-dinaten} $p_\text{clip}$
+und mit einer projektiven Division die \begriff{normierten Gerätekoordinaten} $p_\text{ndc}$.
+Durch Einschränkung des sichtbaren Bereichs folgen schließlich die \begriff{Fenster-Koordinaten}
+$p_\text{win}$.
+
+In Formeln gilt $p_\text{clip} = M_\text{proj} M_\text{view} M_\text{model} p_\text{obj}$ und
+$p_\text{ndc} = \smallpmatrix{\frac{x_\text{clip}}{w_\text{clip}} &
+\frac{y_\text{clip}}{w_\text{clip}} & \frac{z_\text{clip}}{w_\text{clip}}} \to p_\text{win}$.
+
+\pagebreak
+
+\subsection{%
+    OpenGL Utility Toolkit (GLUT)%
+}
+
+\textbf{OpenGL Utility Toolkit (GLUT)}:
+Das \begriff{OpenGL Utility Toolkit (GLUT)} ist eine Befehlssammlung, die sich um das
+"`Drumherum"' kümmert wie Fenstererstellung und Maus-/Tastatur-Ereignisse.
+
+\textbf{Struktur einer GLUT-Anwendung}:
+Mit \code{glutInit} muss GLUT zunächst initialisiert werden.
+Durch \code{glutCreateWindow} kann man Fenster erstellt.
+Nach der Initialisierung von OpenGL kann man die Callback-Funktionen registieren,
+die z.\,B. aufgerufen werden, wenn
+gezeichnet (\code{glutDisplayFunc}),
+die Fenstergröße geändert (\code{glutResizeFunc}),
+Animationen abgespielt (\code{glutIdleFunc}) oder
+Tastatur- (\code{glutKeyboardFunc}, \code{glutSpecialFunc}) und
+Maus-Ereignisse verarbeitet (\code{glutMouseFunc}, \code{glutMotionFunc}) werden sollen.
+Schließlich ruft man \code{glutMainLoop} auf, sodass man die Kontrolle der Endlosschleife von
+GLUT übergibt.
+
+\subsection{%
+    OGL4Core%
+}
+
+\textbf{OGL4Core}:
+\begriff{OGl4Core} ist ein von der Universität Stuttgart entwickeltes OpenGL-Framework,
+das die immer wieder nötigen Standard-Programmierungsschritte auf ein Minimum reduzieren soll.
+OGl4Core ist plattformunabhängig und durch ein Plugin-System benötigt man keine weiteren
+Bibliotheken
+(für jede OpenGL-Anwendung schreibt man ein Plugin, das dann im vorkompilierten Hauptprogramm
+dynamisch eingebunden wird).
+Veränderliche Parameter der Plugins (Schnelligkeit einer Animation etc.)
+können über eine grafische Benutzeroberfläche (GUI) wie bei einem HUD verändert werden.
+OGL4Core benötigt mindestens OpenGL 2.x und basiert auf C++11.
+
+\textbf{Erstellung eines Plugins}:
+Ein neues Plugin muss durch Ableitung von der Oberklasse \code{Render"-Plugin} erstellt werden.
+Konstruktor, Destruktor und die Methoden \code{Init}, \code{Activate}, \code{Deactivate} und
+\code{Render} sind zwingend notwendig.
+Optionale Methoden zur Maus-/Tastaturkontrolle und Erstellung von Animationen können ebenfalls
+verwendet werden.
+Durch Deklaration spezieller Felder können veränderliche Parameter aller möglichen Typen
+angelegt werden, die dann über die GUI während der Ausführung des Programms eingestellt werden.
+
+\pagebreak

@@ -1,0 +1,1511 @@
+\section{%
+    Randwertprobleme für gewöhnliche Dif"|ferentialgleichungen 2. Ordnung%
+}
+
+\subsection{%
+    Definitionen und Beispiele%
+}
+
+\begin{Def}{allgemeines Anfangs-Randwertproblem}
+    Es seien $a, b \in \real$, $I = (a, b)$ und $T \ge 0$.\\
+    Außerdem sind ein \begriff{Dif"|ferentialoperator}
+    $B\colon \C^\alpha \rightarrow \C^\beta$ und eine Funktion
+    $f \in \C^\beta([0, T] \times I, \real^n)$ gegeben.
+    Gesucht ist eine Funktion $u \in \C^\alpha([0, T] \times I, \real^n)$
+    mit $B(u) = f$.\\
+    Dabei sollen die \begriff{Anfangsbedingungen}
+    $\forall_{x \in I}\; u(0, x) = u_0(x)$ sowie die
+    \begriff{Randbedingungen}\\
+    $\forall_{t \in [0, T]}\;
+    (\gamma_a u)(t, a) = g_a(t),\;
+    (\gamma_b u)(t, b) = g_b(t)$ mit gegegeben Funktionen $u_0, g_a, g_b$
+    sowie\\
+    \begriff{Randdif"|ferentialoperatoren}
+    $\gamma_a, \gamma_b$ erfüllt sein.\\
+    Für $u(0, a)$ und $u(0, b)$ sind außerdem
+    \begriff{Kompatibilitätsbedingungen} erforderlich, damit sich die
+    Anfangs- und Randbedingungen nicht von vorneherein widersprechen.\\
+    Dieses Problem heißt \begriff{allgemeines Anfangs-Randwertproblem} (ARWP).
+\end{Def}
+
+\begin{Def}{stationär}
+    Ein ARWP heißt \begriff{stationär}, falls $T = 0$
+    (d.\,h. $B(u)$ enthält keine Abhängigkeiten von $t$)
+    und keine Anfangsbedingung existiert.
+    Man nennt das ARWP dann auch \begriff{stationäres Randwertproblem} (RWP).
+\end{Def}
+
+\linie
+
+\begin{Bsp}
+    Ein Beispiel für ein stationäres RWP ist die
+    \begriff{\name{Poisson}-Gleichung}
+    $-u''(x) = f(x)$ für $x \in (a, b)$ mit den sog.
+    \begriff{\name{Dirichlet}-Randbedingungen}
+    $u(a) = u_a$ und $u(b) = u_b$.
+    Man erhält eine triviale Lösung durch zweifache Integration unter
+    Bestimmung der Integrationskonstanten aus den Randbedingungen.
+\end{Bsp}
+
+\begin{Bsp}
+    Bei der \begriff{instationären Wärmeleitungsgleichung} ist ein Stab
+    der Länge $L$ gegeben.
+    Gesucht wird die Temperaturverteilung $u(t, x)$ im Stab in Abhängigkeit
+    von der Zeit $t$ und der Stelle $x$.
+    Das ARWP ist $u_t = u_{xx}$ für $(t, x) \in (0, \infty) \times (0, L)$ mit
+    der Anfangsbedingung $u(0, x) = u_0(x)$ für $x \in (0, L)$ und den
+    Randbedingungen $u(t, 0) = u^{(0)}(t)$ und $u(t, L) = u^{(L)}(t)$
+    für $t \in (0, \infty)$.
+    Die Kompatibilitätsbedingung ist $u(0, 0) = u_0(0) = u^{(0)}(0)$.\\
+    Man kann auch ein stationäres RWP für $t \to \infty$ formulieren:
+    $u_{xx} = 0$ für $x \in (0, L)$ mit
+    $u(0) = u^{(0)}$ und $u(L) = u^{(L)}$.
+\end{Bsp}
+
+\begin{Bsp}
+    Weitere Beispiele umfassen chemische Reaktionen
+    (Transport durch Dif"|fusion und Reaktion) und die Festkörpermechanik
+    (Modellierung von Verschiebungen und Spannungen unter dem Einfluss von
+    Randbedingungen und Kräften).
+\end{Bsp}
+
+\linie
+
+\begin{Def}{Typen von linearen Anfangs-Randwertproblemen}
+    Sei ein ARWP mit $B$ linear gegeben.
+    Außerdem sei $B$ so, dass keine gemischten Ableitungen auf"|treten.
+    \begin{itemize}
+        \item
+        Falls die Terme mit den höchsten Ableitungen gleiches Vorzeichen
+        haben, so heißt $B$ \begriff{elliptisch}.
+        Ein Beispiel ist $Bu = -u_{xx}$
+        (\begriff{\name{Poisson}-Gleichung},
+        ein stationäres Problem ist stets elliptisch).
+        
+        \item
+        Falls die Terme mit den höchsten Ableitungen umgekehrtes Vorzeichen
+        haben, so heißt $B$ \begriff{hyperbolisch}.
+        Ein Beispiel ist $Bu = u_{tt} - u_{xx}$
+        (\begriff{Wellengleichung}).
+        
+        \item
+        Falls ein Term höchster Ableitung fehlt,
+        so heißt $B$ \begriff{parabolisch}.\\
+        Ein Beispiel ist $Bu = u_t - u_{xx}$
+        (\begriff{Wärmeleitungsgleichung}).
+    \end{itemize}
+\end{Def}
+
+\linie
+\pagebreak
+
+\begin{Def}{\name{Sturm}-\name{Liouville}-Problem}
+    Gesucht ist $u \in \C^2(I)$ mit $-(pu')' + qu = g$ für $x \in I = (a, b)$.
+    Dabei sind $p(x) > 0$ und $q(x) \ge 0$ gegeben und es sollen die
+    Randbedingungen\\
+    $R_1 u := r_{11} u(a) + r_{12} u'(a) = s_1$ und
+    $R_2 u := r_{21} u(b) + r_{22} u'(b) = s_2$ mit
+    gegebenen $r_{ij} \in \real$,\\
+    $(r_{11}, r_{12}), (r_{21}, r_{22}) \not= (0, 0)$ und
+    $s_i \in \real$ erfüllt werden.\\
+    Dieses Problem heißt \begriff{\name{Sturm}-\name{Liouville}-Problem}.
+\end{Def}
+
+\begin{Bem}
+    Das Sturm-Liouville-Problem $-(pu')' + qu = g$ ist äquivalent zu\\
+    $\alpha_2(x) u''(x) + \alpha_1 u'(x) + \alpha_0(x) u(x) = g(x)$ mit
+    $\alpha_2 = -p$, $\alpha_1 = -p'$ und $\alpha_0 = q$:\\
+    Einerseits gilt $-(pu')' + qu = g = -pu'' - p'u' + qu$.\\
+    Andererseits gilt mit $u := vw$, $v, w$ beliebig, dass
+    $u' = v'w + vw'$ und
+    $u'' = v''w + 2v'w' + vw''$, also
+    $\alpha_2 u'' + \alpha_1 u' + \alpha_0 u =
+    (\alpha_2 w) v'' + (2 \alpha_2 w' + \alpha_1 w) v' +
+    (\alpha_2 w'' + \alpha_1 w' + \alpha_0 w) v$.
+    Definiert man $p := -\alpha_2 w$ und
+    $q := \alpha_2 w'' + \alpha_1 w' + \alpha_0 w$, so muss
+    $(\alpha_2 w)' = (2 \alpha_2 w' + \alpha_1 w)$ gelten, also\\
+    $\alpha_2 w' + (\alpha_1 - \alpha_2') w = 0$.
+    Man erhält die Dif"|ferentialgleichung
+    $\frac{\alpha_2' - \alpha_1}{\alpha_2} w = w'$, die durch die spezielle
+    Wahl von $w(x) = e^{\beta(x)}$ mit
+    $\beta(x) = \int \frac{\alpha_2'(x) - \alpha_1(x)}{\alpha_2(x)} \dx$
+    gelöst wird.
+    Somit erhält man das Problem
+    $-(pv')' + qv = g$ mit
+    $p = -\alpha_2 e^\beta$ und\\
+    $q = \alpha_2 w'' + \alpha_1 w' + \alpha_0 w =
+    \alpha_2 \beta'' w + \alpha_2 \beta' w' + \alpha_1 \beta' w + \alpha_0 w =
+    (\alpha_2 \beta'' + \alpha_2 (\beta')^2 + \alpha_1 \beta' + \alpha_0)
+    e^\beta$.
+\end{Bem}
+
+\begin{Satz}{eindeutige Lösbarkeit des \name{Sturm}-\name{Liouville}-Problems}\\
+    Das Sturm-Liouville-Problem $\alpha_2 u'' + \alpha_1 u' + \alpha_0 u = g$
+    für $x \in I$ und $\alpha_2 \not= 0$ mit den Randbedingungen
+    $R_1 u := r_{11} u(a) + r_{12} u'(a) = s_1$ und
+    $R_2 u := r_{21} u(b) + r_{22} u'(b) = s_2$
+    ist eindeutig lösbar genau dann, wenn
+    $\det$\matrixsize{$\begin{pmatrix}R_1 u_1 & R_1 u_2 \\
+    R_2 u_1 & R_2 u_2\end{pmatrix}$} $\not= 0$, wobei
+    $(u_1, u_2)$ ein Fundamentalsystem zur homogenen Gleichung
+    $\alpha_2 u'' + \alpha_1 u' + \alpha_0 u = 0$ ist.
+\end{Satz}
+
+\begin{Bsp}
+    Für das Beispiel $-u''(x) = f(x)$ für $x \in I$ und
+    $R_1 u := u'(a) = 0$, $R_2 u := u'(b) = 0$ muss zunächst ein
+    Fundamentalsystem von $u''(x) = 0$ gefunden werden.
+    Das ist z.\,B. $u_1(x) = 1$ und $u_2(x) = x$.
+    Damit ist $\det$\matrixsize{$\begin{pmatrix}R_1 u_1 & R_1 u_2 \\
+    R_2 u_1 & R_2 u_2\end{pmatrix}$} $=$
+    $\det$\matrixsize{$\begin{pmatrix}0 & 1 \\ 0 & 1\end{pmatrix}$} $= 0$,
+    d.\,h. das Sturm-Liouville-Problem ist nicht eindeutig lösbar.
+\end{Bsp}
+
+\linie
+
+\begin{Bem}
+    Die Schreibweise $-(pu')' + qu = g$ ist vor allem daher von Bedeutung,
+    weil sie "`Variationsstruktur"' besitzt.
+    Sei $F\colon \C^1(I) \rightarrow \real$ das Funktional
+    $F(v) := \frac{1}{2} \int_a^b p(x) (v'(x))^2 \dx +
+    \frac{1}{2} \int_a^b q(x) (v(x))^2 \dx - \int_a^b g(x) v(x) \dx$.
+    Betrachte folgende Variationsaufgabe:
+    Finde $u \in \C^2(I)$ mit $\forall_{v \in \C^2(I)}\; F(u) \le F(v)$.
+    Für eine Lösung $u$ dieses Variationsproblems gilt\\
+    $\forall_{w \in \C_0^\infty(I)}\;
+    \lim_{\varepsilon \to 0} \frac{dF}{d\varepsilon}(u + \varepsilon w) = 0$.
+    Mit $z(\varepsilon) := F(u + \varepsilon w)$\\
+    $= \frac{1}{2} \int_a^b p(x) (u'(x) + \varepsilon w'(x))^2 \dx +
+    \frac{1}{2} \int_a^b q(x) (u(x) + \varepsilon w(x))^2 \dx -
+    \int_a^b g(x) (u(x) + \varepsilon w(x)) \dx$ gilt\\
+    $\frac{dz}{d\varepsilon} =
+    \int_a^b p (u' + \varepsilon w') w' \dx +
+    \int_a^b q (u + \varepsilon w) w \dx - \int_a^b g w \dx$\\
+    $= -\int_a^b (p (u' + \varepsilon w'))' w \dx +
+    \int_a^b q (u + \varepsilon w) w \dx - \int_a^b g w \dx
+    \xrightarrow{\varepsilon \to 0} 0$.
+    Daraus folgt\\
+    $-\int_a^b (p u')' w \dx +
+    \int_a^b q u w \dx - \int_a^b g w \dx =
+    \int_a^b ((-p u')' + q u - g) w \dx = 0$ für alle $w \in \C_0^\infty(I)$,
+    d.\,h. $u$ ist Lösung des SL-Problems.
+    Umgekehrt ist jede Lösung eine Lösung des Var.problems.\\
+    Ein anderer Zugang erfolgt über die
+    \begriff{\name{Euler}-\name{Lagrange}-Gleichung}.
+\end{Bem}
+
+\linie
+
+\begin{Def}{Typen von RB}
+    Für stationäre RWP unterscheidet man folgende Arten von RB:
+    \begin{itemize}
+        \item
+        \begriff{\name{Dirichlet}-Randbedingungen}:
+        $u(a) = u_a$, $u(b) = u_b$
+        
+        \item
+        \begriff{\name{Neumann}-Randbedingungen}:
+        $u'(a) = v_a$, $u'(b) = v_b$
+        
+        \item
+        \begriff{\name{Robin}sche Randbedingungen}:
+        $u'(a) + \alpha u(a) = w_a$, $u'(b) + \beta u(b) = w_b$
+    \end{itemize}
+\end{Def}
+
+\begin{Bsp}
+    Dirichlet-Randbedingungen finden sich bspw. für eine fest vorgegebene
+    Temperatur am Rand eines Stabes und bei einem fest eingespannten Körper.
+    Neumann-Randbedingungen können bei vorgegebenem Fluss/Kraft auftreten.
+    Robinsche Randbedingungen sind eine Kombination von Dirichlet- und
+    Neumann-Randbedin\-gung und kommen in der Modellierung vor.
+    Natürlich sind auch andere Kombinationen wie
+    $u(a) = u_a$, $u'(b) = v_b$ usw. möglich.
+\end{Bsp}
+
+\pagebreak
+
+\subsection{%
+    Die Finite-Dif"|ferenzen-Methode in einer Dimension%
+}
+
+\begin{Def}{\name{Sturm}sches Problem}
+    Gesucht ist $u \in \C^2(I)$ mit $-u''(x) = f(x, u, u')$ für
+    $x \in I = (a, b)$ mit Dirichlet-Randbedingungen
+    $u(a) = u_a$ und $u(b) = u_b$.\\
+    Dieses Problem heißt \begriff{\name{Sturm}sches Problem}.
+\end{Def}
+
+\begin{Bem}
+    Das Sturmsche Problem ist bis auf die Randbedingungen eine
+    Verallgemeinerung des Sturm-Liouville-Problems.
+    Hier wird vereinfachend $n = 1$ angenommen.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Angenommen, das Sturmsche Problem als Modellproblem ist lösbar.
+    In diesem Fall soll das Problem approximativ (numerisch) gelöst werden.\\
+    Sei $I_h = \{x_0, \dotsc, x_N\}$ ein äquidistantes Gitter zu $I$, d.\,h.
+    $a = x_0 < x_1 < \dotsb < x_{N-1} < x_N = b$ mit
+    $h := \frac{b - a}{N}$ und $x_i := a + ih$ für $i = 0, \dotsc, N$.\\
+    Auf $I_h$ werden die \begriff{zentralen Dif"|ferenzenquotienten}
+    $u'(x_i) \approx \frac{u(x_{i+1}) - u(x_{i-1})}{2h}$ für
+    $i = 1, \dotsc, N - 1$ betrachtet.
+    Durch zweifache Anwendung mit halber Schrittweite erhält man\\
+    $u''(x_i) \approx \frac{u'(x_i + h/2) - u'(x_i - h/2)}{h} \approx
+    \frac{1}{h} \left(\frac{u(x_i + h) - u(x_i)}{h} -
+    \frac{u(x_i) - u(x_i - h)}{h}\right) =
+    \frac{u(x_{i+1}) - 2 u(x_i) + u(x_{i-1})}{h^2}$.\\
+    Durch Einsetzen in das Sturmsche Problem erhält man das folgende Verfahren.
+\end{Bem}
+
+\begin{Def}{Finite-Dif"|ferenzen-Methode}
+    Sei ein Sturmsches Problem mit $-u''(x) = f(x, u, u')$ gegeben.
+    Dann heißt das Verfahren
+    $-\frac{1}{h^2} (u_{i+1} - 2 u_i + u_{i-1}) =
+    f(x_i, u_i, \frac{1}{2h} (u_{i+1} - u_{i-1}))$, $i = 1, \dotsc, N - 1$
+    \begriff{Finite-Dif"|ferenzen-Methode} (FDM) zum Sturmschen Problem.
+\end{Def}
+
+\begin{Bem}
+    Um $u_h$ nach diesem Verfahren zu bestimmen, muss man ein Gleichungssystem
+    mit $N - 1$ Variablen und Gleichungen lösen, das eventuell
+    (je nach den Eigenschaften von $f$) nicht-linear ist.
+\end{Bem}
+
+\linie
+
+\begin{Def}{diskreter Operator}
+    Sei eine FDM und ein äquidistantes Gitter $I_h$ gegeben.\\
+    Man definiert $X_h := \{w_h\colon I_h \rightarrow \real\}$ und bezeichnet
+    $T_h\colon X_h \rightarrow X_h$ mit\\
+    $(T_h w_h)(x_0) := w_h(x_0) - u_0$,\\
+    $(T_h w_h)(x_N) := w_h(x_N) - u_N$ und\\
+    $(T_h w_h)(x_i) :=
+    -\frac{1}{h^2} (w_h(x_{i+1}) - 2 w_h(x_i) + w_h(x_{i-1})) -
+    f(x_i, w_h(x_i), \frac{1}{2h} (w_h(x_{i+1}) - w_h(x_{i-1})))$\\
+    für $i = 1, \dotsc, N - 1$
+    als den der FDM zugeordneten \begriff{diskreten Operator}.
+\end{Def}
+
+\begin{Bem}
+    Die FDM ist äquivalent zu $T_h w_h = 0$.
+\end{Bem}
+
+\begin{Def}{Konsistenz}
+    Die FDM heißt \begriff{konsistent mit der Ordnung $p$}, falls
+    $\norm{T_h (u|_{I_h})}_\infty = \O(h^p)$.
+\end{Def}
+
+\begin{Def}{Konvergenz}
+    Die FDM heißt \begriff{konvergent mit der Ordnung $p$}, falls
+    $\overline{e_h} = \O(h^p)$ mit\\
+    $\overline{e_h} := \max_{i=0,\dotsc,N} \norm{u_h(x_i) - u(x_i)}_\infty$.
+\end{Def}
+
+\begin{Def}{Stabilität}
+    Die FDM heißt \begriff{stabil}, falls
+    $\exists_{c > 0} \forall_{w_h, \widetilde{w}_h \in X_h}\;
+    \norm{w_h - \widetilde{w}_h}_\infty \le c \cdot
+    \norm{T_h w_h - T_h \widetilde{w}_h}_\infty$.
+\end{Def}
+
+\begin{Satz}{Konsistenz der FDM}
+    Seien $f(x, v, w) \in \C(I \times \real^2, \real)$ und
+    $\frac{\partial^2 f}{\partial w^2} \in \C(I \times \real^2, \real)$.\\
+    Dann ist die FDM für $u \in \C^4(\overline{I})$ mit der Ordnung $2$
+    konsistent.
+\end{Satz}
+
+\begin{Bem}
+    $u \in \C^4(\overline{I})$ ist oft nicht realistisch.
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    Wie hängen Konsistenz und Stabilität mit Konvergenz zusammen?
+    
+    Die Frage wird im Folgenden für das (einfachere) Sturm-Liouville-Problem
+    in der Form\\
+    $-u''(x) + \alpha_1(x) u'(x) + \alpha_0(x) u(x) = g(x)$ für
+    $x \in I = (a, b)$ beantwortet.\\
+    Die zugehörige FDM hat dann die Gestalt
+    $-\frac{u_{i+1} - 2 u_i + u_{i-1}}{h^2} + \alpha_1(x_i)
+    \frac{u_{i+1} - u_{i-1}}{2h} + \alpha_0(x_i) u_i = g(x_i)$
+    für $i = 1, \dotsc, N - 1$.
+    
+    Für $T_h$ ergibt sich dabei\\
+    $(T_h w_h)(x_i) =
+    -\frac{1}{h^2} (w_h(x_{i+1}) - 2 w_h(x_i) + w_h(x_{i-1})) -
+    f(x_i, w_h(x_i), \frac{1}{2h} (w_h(x_{i+1}) - w_h(x_{i-1})))$\\
+    $= -\frac{1}{h^2} (w_{i+1} - 2w_i + w_{i-1}) +
+    \alpha_1(x_i) \frac{1}{2h} (w_{i+1} - w_{i-1}) +
+    \alpha_0(x_i) w_i - g(x_i)$\\
+    $= (-\frac{1}{h^2} - \frac{\alpha_1(x_i)}{2h}) w_{i-1} +
+    (\frac{2}{h^2} + \alpha_0(x_i)) w_i +
+    (-\frac{1}{h^2} + \frac{\alpha_1(x_i)}{2h}) w_{i+1} - g(x_i)$
+    für $i = 2, \dotsc, N - 2$,\\
+    $(T_h w_h)(x_1) = (\frac{2}{h^2} + \alpha_0(x_1)) w_1 +
+    (-\frac{1}{h^2} + \frac{\alpha_1(x_1)}{2h}) w_2 -
+    g(x_1) + (-\frac{1}{h^2} - \frac{\alpha_1(x_1)}{2h}) w_0$ und\\
+    $(T_h w_h)(x_{N-1}) =
+    (-\frac{1}{h^2} - \frac{\alpha_1(x_{N-1})}{2h}) w_{N-2} +
+    (\frac{2}{h^2} + \alpha_0(x_{N-1})) w_{N-1} -
+    g(x_{N-1}) + (-\frac{1}{h^2} + \frac{\alpha_1(x_{N-1})}{2h}) w_N$.
+    
+    Man betrachtet nun $\widetilde{X}_h :=
+    \{w_h \in X_h \;|\; w_h(x_0) = u_a,\; w_h(x_N) = u_b\}$, d.\,h.\\
+    $(T_h w_h)(x_i) = 0$ ist für $i \in \{0, N\}$ immer erfüllt.
+    
+    Man erhält damit eine Matrixschreibweise für $T_h w_h = A_h w_h - r_h$ mit
+    $w_h = (w_1, \dotsc, w_{N-1})^t$,\\
+    $A_h :=$ \matrixsize{$\begin{pmatrix}
+    \frac{2}{h^2} + \alpha_0(x_1) &
+    -\frac{1}{h^2} + \frac{\alpha_1(x_1)}{2h} & 0 & \dots & 0 \\
+    -\frac{1}{h^2} - \frac{\alpha_1(x_2)}{2h} &
+    \frac{2}{h^2} + \alpha_0(x_2) &
+    -\frac{1}{h^2} + \frac{\alpha_1(x_2)}{2h} & & \\
+    & \ddots & \ddots & \ddots & & & \\
+    & & -\frac{1}{h^2} - \frac{\alpha_1(x_{N-2})}{2h} &
+    \frac{2}{h^2} + \alpha_0(x_{N-2}) &
+    -\frac{1}{h^2} + \frac{\alpha_1(x_{N-2})}{2h} \\
+    0 & \dots & 0 & -\frac{1}{h^2} - \frac{\alpha_1(x_{N-1})}{2h} &
+    \frac{2}{h^2} + \alpha_0(x_{N-1})
+    \end{pmatrix}$} und\\
+    $r_h :=
+    \left(\left(\frac{1}{h^2} + \frac{\alpha_1(x_1)}{2h}\right) u_a + g(x_1),\;
+    g(x_2),\; \dotsc,\; g(x_{N-2}),\;
+    \left(\frac{1}{h^2} - \frac{\alpha_1(x_{N-1})}{2h}\right) u_b +
+    g(x_{N-1})\right)^t$.
+    
+    Es gilt $T_h w_h = 0$ genau dann, wenn $w_h$ das LGS $A_h w_h = r_h$
+    löst.\\
+    Eine notwendige Voraussetzung dafür ist $\det A_h \not= 0$.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Angenommen, $A_h$ ist invertierbar und es gilt
+    $\norm{A_h^{-1}}_\infty \le c$ für hinreichend kleine $h < h_0$,
+    wobei $\norm{B}_\infty :=
+    \sup_{x \in X_h,\; x \not= 0} \frac{\norm{Bx}_\infty}{\norm{x}_\infty}$
+    die Matrixnorm ist.\\
+    Dann ist die FDM stabil, denn
+    $\norm{w_h - \widetilde{w}_h}_\infty \le
+    \norm{A_h^{-1}}_\infty \norm{A_h (w_h - \widetilde{w}_h)}_\infty$\\
+    $\le c \cdot \norm{(A_h w_h - r_h) - (A_h \widetilde{w}_h - r_h)}_\infty =
+    c \cdot \norm{T_h w_h - T_h \widetilde{w}_h}_\infty$.\\
+    Um Bedingungen herzuleiten, wann $\norm{A_h^{-1}}_\infty \le c$ gilt,
+    muss ein kleiner Exkurs in die Matrizenalgebra unternommen werden.
+\end{Bem}
+
+\begin{Def}{Halbordnung auf $\real^m$, $\real^{m \times m}$}
+    Seien $u, v \in \real^m$ und $A, B \in \real^{m \times m}$.
+    Dann schreibt man $u \le v$, falls $u_i \le v_i$
+    für alle $i = 1, \dotsc, m$, und $A \le B$, falls
+    $a_{ij} \le b_{ij}$ für alle $i, j = 1, \dotsc, m$.\\
+    Analog ist $<$ definiert.
+\end{Def}
+
+\begin{Def}{nicht-negative Matrix}\\
+    Eine quadratische Matrix $A$ heißt \begriff{nicht-negativ}
+    (oder \begriff{monoton}), falls $0 \le A$.
+\end{Def}
+
+\begin{Def}{inversmonoton}\\
+    Eine quadratische Matrix $A$ heißt \begriff{inversmonoton},
+    falls $\det A \not= 0$ und $A^{-1}$ monoton ist.
+\end{Def}
+
+\begin{Satz}{Äquivalenz zu Monotonie}
+    Sei $A \in \real^{m \times m}$.
+    Dann gilt:\\
+    $A$ ist nicht-negativ $\iff
+    \forall_{u, v \in \real^m}\; (u \le v \;\Rightarrow\; Au \le Av) \iff
+    \forall_{v \in \real^m}\; (0 \le v \;\Rightarrow\; 0 \le Av)$.
+\end{Satz}
+
+\begin{Satz}{Äquivalenz zu Inversmonotonie}
+    Sei $A \in \real^{m \times m}$ invertierbar.
+    Dann gilt:\\
+    $A$ ist inversmonoton $\iff
+    \forall_{u, v \in \real^m}\; (Au \le Av \;\Rightarrow\; u \le v) \iff
+    \forall_{v \in \real^m}\; (0 \le Av \;\Rightarrow\; 0 \le v)$.
+\end{Satz}
+
+\linie
+\pagebreak
+
+\begin{Def}{gewichtete Maximumsnorm}
+    Sei $e \in \real^m$ mit $0 < e$.\\
+    Dann heißt die Norm $\norm{\cdot}_e\colon \real^m \rightarrow \real$
+    mit $\norm{u}_e := \max_{j=1,\dotsc,m} \frac{|u_j|}{e_j}$
+    \begriff{gewichtete Maximumsnorm}.\\
+    Die gewichtete Maximumsnorm induziert eine Matrixnorm
+    $\norm{A}_e := \sup_{u \in \real^m,\; \norm{u}_e = 1} \norm{Au}_e$.
+\end{Def}
+
+\begin{Bsp}
+    Ein triviales Beispiel ist $e = (1, \dotsc, 1)^t$, in diesem Fall ist
+    $\norm{\cdot}_e = \norm{\cdot}_\infty$.
+\end{Bsp}
+
+\begin{Satz}{Normabschätzung für $A^{-1}$}\\
+    Seien $A \in \real^{m \times m}$ inversmonoton sowie
+    $e \in \real^m$ mit $0 < e$ und $\exists_{c > 0}\; ce \le Ae$.\\
+    Dann gilt $\norm{A^{-1}}_e \le \frac{1}{c}$.
+\end{Satz}
+
+\begin{Bem}
+    Im Allgmeinen ist die Inversmonotonie $0 \le A^{-1}$ allerdings
+    schwer zu zeigen, daher geht man einen Umweg über M-Matrizen.
+\end{Bem}
+
+\begin{Def}{M-Matrix}
+    Eine Matrix $A \in \real^{m \times m}$ heißt \begriff{M-Matrix}, falls
+    $A$ inversmonoton und $a_{ij} \le 0$ für
+    $i, j = 1, \dotsc, m$ mit $i \not= j$ gilt.
+\end{Def}
+
+\begin{Satz}{M-Kriterium}
+    Sei $A \in \real^{m \times m}$ mit $a_{ij} \le 0$ für
+    $i, j = 1, \dotsc, m$ mit $i \not= j$.\\
+    Falls ein $e \in \real^m$ mit $0 < e$ und $0 < Ae$ existiert, dann ist
+    $A$ eine M-Matrix.
+\end{Satz}
+
+\linie
+
+\begin{Satz}{Konvergenz der FDM}
+    Sei die Sturm-Liouville-Gleichung $-(pu')' + qu = g$ mit
+    Dirichlet-Randbedingungen gegeben.
+    Außerdem seien $p, q > 0$ und $u \in \C^4(\overline{I})$ die eindeutige
+    Lösung.\\
+    Dann gilt:
+    \begin{enumerate}[label=(\emph{\roman*})]
+        \item
+        Es gibt ein $h_0 > 0$, sodass die FDM $T_h u_h = 0$ für alle
+        $0 < h < h_0$ eindeutig lösbar ist.
+        
+        \item
+        Für den Fehler gilt $\norm{u|_{I_h} - u_h}_\infty = \O(h^2)$,
+        d.\,h. die FDM ist konvergent mit Ordnung $2$.
+    \end{enumerate}
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Es lassen sich die gleichen Ideen wie bei Zeitschrittverfahren anwenden:
+    \begin{itemize}
+        \item
+        "`eingebettete Verfahren"', d.\,h. zwei Rechnungen auf dem gleichen
+        Gitter, aber mit verschiedener Ordnung
+        
+        \item
+        gleiches Verfahren, aber zwei Gitter (grob/fein)
+        
+        \item
+        Interpolation usw.
+    \end{itemize}
+\end{Bem}
+
+\begin{Bem}
+    Eine weitere Idee zur Lösung eines Randwertproblems, z.\,B.
+    das Sturmsche Problem $-u'' = f(x, u, u')$ mit Dirichlet-Randbedingungen
+    $u(a) = u_a$ und $u(b) = u_b$, besteht in der Rückführung auf ein
+    Anfangswertproblem.\\
+    Man setzt also $u_\alpha'(a) = \alpha$ und löst
+    $-u_\alpha''(x) = f(x, u_\alpha(x), u_\alpha'(x)$ für $x \in (a, b)$
+    mit $u_\alpha(a) = u_a$ und $u_\alpha'(a) = \alpha$.
+    Dies geht z.\,B. durch Überführung in ein System erster Ordnung mit
+    $u_\alpha' = w$, d.\,h. löse das Dif"|ferentialgleichungssystem
+    $w'(x) = f(x, u_\alpha(x), w(x))$, $u_\alpha'(x) = w(x)$ für $x \in (a, b)$
+    mit $u_\alpha(a) = u_a$ und $w(a) = \alpha$.
+    Danach wendet man eines der bekannten Zeitschrittverfahrens bis zur
+    "`Zeit"' $T = b$ an und erhält so einen Schätzwert
+    $u_h^{(\alpha)}(b)$ für $u_b$.
+    Falls $u_h^{(\alpha)}(b) \approx u_b$, dann war $\alpha$ richtig gewählt,
+    sonst muss eine Korrektur vorgenommen werden.\\
+    Das Verfahren nennt sich \begriff{Schießverfahren}, weil $\alpha$ die
+    Steigung der Lösung im Punkt $a$ bestimmt und das $\alpha$ so gewählt
+    werden muss, dass $u_b$ für $T = b$ "`getrof"|fen"' wird.\\
+    Mathematischer formuliert ist $\alpha \in \real$ gesucht mit
+    $F(\alpha) = 0$, wobei $F(\alpha) := u_{\alpha}(b) - u_b$.
+    Dies kann z.\,B. durch das Newton-Verfahren durchgeführt werden.\\
+    Eine Variante, das \begriff{Mehrschießverfahren}, besteht in der
+    stückweisen Anwendung auf Teilintervalle.
+\end{Bem}
+
+\pagebreak
+
+\subsection{%
+    Die Finite-Elemente-Methode in einer Dimension%
+}
+
+\subsubsection{%
+    Einführung und Motivation%
+}
+
+\begin{Bem}
+    Betrachtet wird wieder die Sturm-Liouville-Gleichung
+    $-(pu')' + qu = g$ für\\
+    $x \in (a, b)$ mit Randbedingungen.
+    Anstatt die Gleichung punktweise zu lösen, wird sie in eine
+    Variationsform wie folgt überführt:
+    \begin{enumerate}
+        \item
+        Multiplikation der Gleichung mit einer \begriff{Testfunktion} $v$
+        
+        \item
+        partielle Integration:
+        $-\int_a^b (pu')'v\dx + \int_a^b quv\dx = \int_a^b gv\dx$ mit\\
+        $\int_a^b (pu')'v\dx = pu'v|_a^b - \int_a^b pu'v'\dx$,
+        dies ergibt die Aufgabenstellung:\\
+        Gesucht ist ein $u \in U$ mit
+        $\int_a^b p(x)u'(x)v'(x)\dx + \int_a^b q(x)u(x)v(x)\dx \;-$\\
+        $(p(b)u'(b)v(b) - p(a)u'(a)v(a)) = \int_a^b g(x)v(x)\dx$
+        für alle $v \in V$.\\
+        Dabei sind $U, V$ \begriff{Funktionenräume},
+        dies ist die \begriff{schwache Formulierung} und
+        $u \in U$ heißt \begriff{schwache Lösung}.
+        
+        \item
+        näherungsweises Lösen der schwachen Formulierung durch Ersetzen
+        der (unendlich-dimen\-sionalen) Räume $U$ und $V$ durch
+        endlich-dimensionale Teilräume $U_h$ und $V_h$, z.\,B.
+        stückweise Polynome.
+        Das entstehende Verfahren heißt \begriff{\name{Galerkin}-Verfahren}.\\
+        Für $U_h = V_h$ spricht man von einem
+        \begriff{\name{Galerkin}-\name{Bulimov}-Verfahren},\\
+        für $U_h \not= V_h$ heißt das Verfahren
+        \begriff{\name{Galerkin}-\name{Petrov}-Verfahren}.
+        
+        \item
+        Überführung in ein Gleichungssystem
+    \end{enumerate}
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Dabei drängen sich folgende Fragen auf:
+    \begin{enumerate}
+        \item
+        Wie hängen "`klassische"' und "`schwache Lösung"' zusammen?
+        
+        \item
+        Wie baut man die Randbedingungen ein?
+        
+        \item
+        Was sind $U$ und $V$?
+        
+        \item
+        Wie wählt man $U_h$ und $V_h$?
+        Welche Eigenschaften für Konsistenz, Stabilität und
+        A-priori-Fehlerabschätzung ergeben sich dann?
+        
+        \item
+        Kann man den Fehler a posteriori schätzen und gibt es
+        adaptive Verfahren?
+        
+        \item
+        Wie löst man das Gleichungssystem?
+    \end{enumerate}
+\end{Bem}
+
+\pagebreak
+
+\subsubsection{%
+    Klassische und schwache Lösung%
+}
+
+\begin{Def}{klassische Lösung}
+    Es seien in der Sturm-Liouville-Gleichung $-(pu')' + qu = g$
+    die Bedingungen $p \in \C^1(\overline{I})$ und
+    $q, g \in \C(\overline{I})$ erfüllt.\\
+    Dann heißt eine Funktion $u \in \C^2(\overline{I})$, die die
+    Sturm-Liouville-Gleichung punktweise erfüllt
+    (inklusive gegebener Randbedingungen)
+    \begriff{klassische Lösung}.
+\end{Def}
+
+\begin{Bem}\\
+    Seien nun $p, q \in L^\infty(I)$ und $g \in L^2(I)$ mit
+    $p(x) \ge p_0 > 0$ und $q(x) \ge 0$ für alle $x \in \overline{I}$.
+\end{Bem}
+
+\begin{Bem}
+    Diese Bedingungen sind wesentlich schwächer als die Bedingungen
+    in der Definition für klassische Lösungen.
+    Gelten nur obige Bedingungen, so sind das klassische Lösungskonzept einer
+    punktweisen Lösung und die Finite-Dif"|ferenzen-Methode nicht anwendbar.
+\end{Bem}
+
+\begin{Satz}{schwache Lösung als klassische Lösung}\\
+    Sei $-(pu')' + qu = g$ die Sturm-Liouville-Gleichung mit
+    Dirichlet-Randbedingungen\\
+    $u(a) = u(b) = 0$.
+    Außerdem seien obige Bedingungen erfüllt, d.\,h.\\
+    $p, q \in L^\infty(I)$ und $g \in L^2(I)$ mit
+    $p(x) \ge p_0 > 0$ und $q(x) \ge 0$ für alle $x \in \overline{I}$.\\
+    Weiter sei $V := \{v \in \C^1(\overline{I}) \;|\; v(a) = v(b) = 0\}$
+    und $u \in U = V$ eine \begriff{schwache Lösung}, d.\,h.
+    $\int_a^b pu'v'\dx + \int_a^b quv\dx = \int_a^b gv\dx$ für alle $v \in V$.\\
+    Wenn $u \in \C^2(\overline{I})$, $p \in \C^1(\overline{I})$ und
+    $q, g \in \C(\overline{I})$ gilt, dann ist $u$ auch eine klassische
+    Lösung der Sturm-Liouville-Gleichung.
+\end{Satz}
+
+\begin{Lemma}{Variationslemma}
+    Sei $G \subset \real$ of"|fen und $u\colon G \rightarrow \real$ stetig.\\
+    Wenn $\int_G u(x)\varphi(x)\dx = 0$ für alle $\varphi \in \C_0^\infty(G)$
+    gilt, dann ist $u = 0$.
+\end{Lemma}
+
+\linie
+
+\begin{Bem}
+    Wie $V$ zu wählen ist, hängt u.\,a. von den Randbedingungen ab.
+    Gilt z.\,B. $u(a) = 0$ und $u'(b) = 0$
+    (\begriff{natürliche Randbedingungen}), so ist
+    $V := \{v \in \C^1(\overline{I}) \;|\; v(a) = 0\}$ sinnvoll.
+\end{Bem}
+
+\begin{Bem}
+    Variationsformulierungen werden in den Ingenieurwissenschaften oft als
+    \begriff{Prinzip der virtuellen Arbeit/Verrückung} o.\,Ä. bezeichnet
+    und zum Beispiel über Kräfte- oder Energiebilanzen hergeleitet.
+\end{Bem}
+
+\begin{Bem}
+    Man benötigt für den neuen Lösungsbegriff "`schwache Lösung"'
+    neue Lösungsräume.
+    Die klassischen Räume $\C^k(I)$ sind nur für punktweise Betrachtungen
+    geeignet.
+\end{Bem}
+
+\subsubsection{%
+    \name{Sobolev}-Räume in einer Dimension%
+}
+
+\begin{Bem}
+    Um später Terme der Art $\int_a^b pu'v'\dx$ und $\int_a^b quv\dx$
+    abschätzen zu können, ist es sinnvoll, mit einer Norm
+    $\norm{v}_V := \left(\int_a^b (v'(x))^2\dx +
+    \int_a^b (v(x))^2\dx\right)^{1/2}$ (ähnlich wie im $L^2$) zu arbeiten.
+    Allerdings ist $(V, \norm{\cdot}_V)$ nicht vollständig.
+\end{Bem}
+
+\begin{Bsp}
+    Sei $I = (-1, 1)$.
+    Für $n \in \natural$ sei\\
+    $v_n(x) :=$ \matrixsize{$\begin{cases}
+    -x & x \in [-1, -1/n] \\
+    1/2 \cdot nx^2 + 1/(2n) & x \in \left]-1/n, 1/n\right] \\
+    x & x \in \left]1/n, 1\right]\end{cases}$}.
+    Es gilt $v_n'(x) :=$ \matrixsize{$\begin{cases}
+    -1 & x \in [-1, -1/n] \\
+    nx & x \in \left]-1/n, 1/n\right] \\
+    1 & x \in \left]1/n, 1\right]\end{cases}$}.\\
+    $\{v_n\}_{n \in \natural}$ ist eine Cauchy-Folge, da die
+    beiden Integrale gegen $0$ gehen.\\
+    Alerdings konvergiert diese Folge nicht, da
+    $v_n \to v$ mit der Grenzfunktion $v(x) = |x|$
+    und $v'(x)$ ist nicht stetig, d.\,h. $v \notin \C^1(I)$.
+    Also ist $(V, \norm{\cdot}_V)$ nicht vollständig.
+\end{Bsp}
+
+\linie
+\pagebreak
+
+\begin{Def}{schwache Ableitung}
+    Sei $u \in L^1_\loc(I) := \{w\colon I \rightarrow \real \;|\;
+    \forall_{K \subset I \text{ kpkt.}}\; w|_K \in L^1(K)\}$.\\
+    Dann heißt $v \in L^1_\loc(I)$ \begriff{schwache Ableitung} der Ordnung $k$
+    von $u$, falls\\
+    $\int_a^b u(x)\phi^{(k)}(x)\dx =
+    (-1)^k \int_a^b v(x)\phi(x)\dx$ für alle $\phi \in \C_0^\infty(I)$.
+\end{Def}
+
+\begin{Bem}
+    Für $k = 1$ muss z.\,B.
+    $\int_a^b u(x)\phi'(x)\dx = -\int_a^b v(x)\phi(x)\dx$
+    für alle $\phi \in \C_0^\infty(I)$ gelten.\\
+    Wenn $v, \widetilde{v} \in L^1_\loc(I)$ schwache Ableitungen von $u$ sind,
+    so gilt $v = \widetilde{v}$ fast überall.\\
+    Wenn $u \in L^1_\loc(I) \cap \C^1(\overline{I})$ gilt, so existiert eine
+    schwache Ableitung von $u$ und sie stimmt mit der klassischen Ableitung
+    überein.
+\end{Bem}
+
+\begin{Bsp}
+    Sei $u \in L^1_\loc(I)$ mit $u(x) = |x|$.
+    Dann ist eine schwache Ableitung $u'$ durch\\
+    $v(x) =$ \matrixsize{$\begin{cases}
+    -1 & x < 0 \\
+    1 & x \ge 0\end{cases}$}
+    definiert, wie man durch Ausrechnen der Integrale nachrechnet.
+\end{Bsp}
+
+\begin{Bsp}
+    Dieses $v(x)$ ist nicht schwach dif"|ferenzierbar.
+    Angenommen doch, dann wäre\\
+    $\int_{-1}^1 v(x)\phi'(x)\dx = -\int_{-1}^1 w(x)\phi(x)\dx$
+    für alle $\phi \in \C_0^\infty(I)$ und ein $w \in L^1_\loc(I)$.\\
+    Daraus folgt $\int_{-1}^1 v(x)\phi'(x)\dx = -2\phi(0) =
+    -\int_{-1}^1 w(x)\phi(x)\dx$ für alle $\phi \in \C_0^\infty(I)$.\\
+    Andererseits gibt es eine Folge $\{\phi_n\}_{n \in \natural}$ von
+    $\phi_n \in \C_0^\infty(I)$ mit
+    $\left|\int_{-1}^1 w(x)\phi_n(x)\dx\right| \le \delta$ für alle
+    $n \ge N(\delta)$ und $\phi_n(0) = 1$.
+    Das Integral wird also betragsmäßig sehr klein, soll andererseits aber
+    immer gleich $2\phi_n(0) = 2$ sein, ein Widerspruch.
+\end{Bsp}
+
+\linie
+
+\begin{Def}{\name{Sobolev}-Räume}
+    Seien $p \in [1, \infty]$ und $k \in \natural_0$.\\
+    Dann heißt der Raum
+    $W^{k,p}(I) := \{u \in L^1_\loc(I) \;|\;
+    \forall_{\ell=0,\dotsc,k}\; u^{(\ell)} \in L^p(I)\}$
+    \begriff{\name{Sobolev}-Raum},\\
+    wobei $u^{(\ell)}$ die $\ell$-te schwache Ableitung bedeutet.
+\end{Def}
+
+\begin{Bem}
+    Es gilt $W^{0,p}(I) = L^p(I)$.
+    Für $p = 2$ schreibt man häufig $H^k(I) := W^{k,2}(I)$.
+\end{Bem}
+
+\begin{Bsp}
+    $u = |x|$ ist of"|fenbar in $W^{1,p} \subset L^p(I)$ für $I = (-1, 1)$,
+    aber $u \notin W^{2,p}(I)$\\
+    (klassisch gilt $u \in \C(I)$ und $u \notin \C^1(I)$, d.\,h. man hat
+    eine Ordnung "`gewonnen"').
+\end{Bsp}
+
+\begin{Def}{\name{Sobolev}-Norm}
+    Die \begriff{\name{Sobolev}-Norm} ist
+    $\norm{u}_{W^{k,p}(I)} :=
+    \left(\sum_{\ell=0}^k \int_I |u^{(\ell)}(x)|^p\dx\right)^{1/p}$\\
+    für $p \in \left[1, \infty\right[$ und
+    $\norm{u}_{W^{k,\infty}(I)} :=
+    \sum_{\ell=0}^k \esssup |u^{(\ell)}(x)|$,\\
+    wobei $\esssup w(x) :=
+    \inf \{M \in \real \;|\; \mu(\{x \in I \;|\; w(x) > M\}) = 0\}$
+    das \begriff{wesentliche Supremum} ist
+    für eine $\mu$-messbare, reell\-wertige Funktion $f$.
+\end{Def}
+
+\begin{Satz}{\name{Sobolev}-Raum als Banachraum}\\
+    $W^{k,p}(I)$ ist mit der Norm $\norm{\cdot}_{W^{k,p}(I)}$ mit
+    $k \in \natural_0$ und $p \in [1, \infty]$ ein Banachraum.
+\end{Satz}
+
+\linie
+
+\begin{Bem}
+    Mithilfe der Sobolev-Slobodeckij-Norm
+    lassen sich auch Räume $W^{s,p}(I)$ mit $s \notin \natural_0$, $s \ge 0$
+    definieren:
+    Sei $s = k + \sigma$ mit $k = \lfloor s \rfloor$.
+    Dann ist
+    $|u|_{W^{\sigma,p}(I)} := \left(\int_I \int_I
+    \frac{|u^{(k)}(x) - u^{(k)}(y)|^p}
+    {|x - y|^{1+\sigma p}} \dx\dy\right)^{1/p}$ die
+    \begriff{\name{Sobolev}-\name{Slobodeckij}-Halbnorm} und
+    $\norm{u}_{W^{s,p}(I)} := \left(\norm{u}_{W^{k,p}(I)}^p +
+    |u|_{W^{\sigma,p}(I)}^p\right)^{1/p}$ die\\
+    \begriff{\name{Sobolev}-\name{Slobodeckij}-Norm}.
+    Der Raum $W^{s,p}(I)$ ist dann der Raum aller Funktionen aus
+    $W^{k,p}(I)$, sodass die Ableitungen bis zur Ordnung $k$ beschränkt sind.
+\end{Bem}
+
+\begin{Bem}
+    Für $s < 0$ definiert man
+    $W^{s,p}(I) := (W^{-s,q}_0(I))^\ast$ als Raum der linearen Funktionale
+    über $W^{-s,q}_0(I)$ mit $\frac{1}{p} + \frac{1}{q} = 1$.
+    Dabei ist $W^{-s,q}_0(I)$ der Abschluss von $\C_0^\infty(I)$ in
+    $W^{-s,q}(I)$.
+\end{Bem}
+
+\begin{Bem}
+    Alternativ kann man Sobolev-Räume auch über Distributionen definieren:\\
+    Sei $D'(I)$ der Raum der linearen Funktionale über $D(I) = \C_0^\infty(I)$.
+    Die Ableitung einer Distribution $T \in D'(I)$ ist gegeben durch
+    $T'(\varphi) := -T(\varphi')$ für alle $\varphi \in D(I)$.
+    Eine Distribution ist z.\,B. $T_f(\varphi) = \int_I f(x)\varphi(x)\dx$
+    oder auch $T_\delta(\phi) := \phi(0)$ für alle $\phi \in \C_0^\infty(I)$.
+    Man definiert dann den Sobolev-Raum durch
+    $W^{s,p}(\real) := \{u \in S'(\real) \;|\;
+    (1 + |\xi|^2)^{s/2} (\F u)(\xi) \in L^p(\real)\}$
+    mit $\F$ der Fouriertransformation, $S' \subset D'$ durch
+    $S' := S^\ast$ mit dem Schwartz-Raum\\
+    $S(\real) := \{\phi \in \C^\infty(\real) \;|\;
+    \forall_{\alpha, \beta \in \natural_0}\;
+    \sup_{x \in \real} |x^\alpha \phi^{(\beta)}(x)| < \infty\}$.
+\end{Bem}
+
+\pagebreak
+
+\subsubsection{%
+    Existenz und Eindeutigkeit der schwachen Lösung%
+}
+
+
+\begin{Def}{schwache Formulierung}
+    Sei $-(pu')' + qu = g$ die Sturm-Liouville-Gleichung mit
+    Dirichlet-Randbedingungen
+    $u(a) = u(b) = 0$.\\
+    Sei außerdem $U = V = \widetilde{W}^{2,1}(I)$ mit
+    $\widetilde{W}^{k,p}(I) := \{w \in W^{k,p}(I) \;|\; w(a) = w(b) = 0\}$.\\
+    Dann heißt folgende Formulierung \begriff{schwache Formulierung}:\\
+    Gesucht ist ein $u \in V$ mit
+    $\int_a^b pu'v'\dx + \int_a^b quv\dx = \int_a^b gv\dx$ für alle $v \in V$.
+\end{Def}
+
+\begin{Def}{schwache Lösung}
+    Eine Lösung der schwachen Formulierung heißt \begriff{schwache Lösung}.
+\end{Def}
+
+\begin{Bem}
+    Die schwache Formulierung ist äquivalent zu folgender Minimierungsaufgabe:
+    Finde $u \in V$ mit $F(u) \le F(v)$ für alle $v \in V$, wobei
+    $F(v) := \frac{1}{2} \int_a^b p(v')^2 \dx + \frac{1}{2} \int_a^b q v^2 \dx -
+    \int_a^b g v \dx$.\\
+    (Dabei gilt für die Lösung $u$, dass
+    $\lim_{\varepsilon \to 0} \frac{dF}{d\varepsilon}(u + \varepsilon w) = 0$.)
+\end{Bem}
+
+\linie
+
+\begin{Lemma}{\name{Young}sche Ungleichung/$\varepsilon$-Ungleichung}
+    Für $a, b \ge 0$ und $\varepsilon > 0$ gilt
+    $a \cdot b \le \varepsilon a^2 + \frac{1}{4\varepsilon} b^2$.
+\end{Lemma}
+
+\begin{Lemma}{\name{Poincaré}-Ungleichung}
+    Für $v \in \widetilde{W}^{2,1}(I)$ gilt
+    $\int_a^b (v(x))^2 \dx \le \frac{(b - a)^2}{2} \int_a^b (v'(x))^2 \dx$.
+\end{Lemma}
+
+\begin{Satz}{Existenz und Eindeutigkeit einer schwachen Lösung}\\
+    Seien $p, q \in L^\infty(I)$ und $g \in L^2(I)$ mit
+    $p(x) \ge p_0 > 0$ und $q(x) \ge 0$ für alle $x \in I$.\\
+    Dann gibt es genau eine schwache Lösung der schwachen Formulierung.
+\end{Satz}
+
+\subsubsection{%
+    Finite-Elemente-Diskretisierung in einer Dimension%
+}
+
+\begin{Bem}
+    Die Idee ist nun, die schwache Variationsformulierung in einem
+    endlich-dimensiona\-len Teilraum $V_h \subset V$ von $V$ mit
+    $\dim V_h = N < \infty$ zu betrachten.\\
+    Gesucht ist also ein $u_h \in V_h$ mit
+    $\int_a^b pu_h'v_h'\dx + \int_a^b qu_hv_h\dx = \int_a^b gv_h\dx$
+    für alle $v_h \in V_h$.
+\end{Bem}
+
+\begin{Satz}{Existenz und Eindeutigkeit von $u_h$}\\
+    Unter den Bedingungen des obigen Satzes ist das Problem für $V_h$
+    eindeutig lösbar.
+\end{Satz}
+
+\begin{Bem}
+    Im Gegensatz zur FDM ($I_h \rightarrow \real$) ist hier
+    $u_h\colon I \rightarrow \real$.\\
+    Wie wählt man nun den Raum $V_h$?
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Eine Idee ist, Polynome zu verwenden.\\
+    Sei also $V_h := P_n \cap \widetilde{W}^{2,1}(I) =
+    \{v_h \in P_n \;|\; v_h(a) = v_h(b) = 0\}$.
+    Es gilt $V_h = \aufspann{\varphi_2, \dotsc, \varphi_n}$ mit\\
+    $\varphi_k(x) := (x - a)^{k/2} (b - x)^{k/2}$ für $k$ gerade und\\
+    $\varphi_k(x) := \frac{1}{2} ((x - a)^{(k-1)/2} (x - b)^{(k+1)/2} +
+    (x - a)^{(k+1)/2} (x - b)^{(k-1)/2})$ für $k$ ungerade.\\
+    Ein Polynom $u_h \in V_h$ lässt sich dann durch
+    $u_h(x) = \sum_{i=2}^n u_i \varphi_i(x)$ darstellen, d.\,h.
+    die schwache Formulierung für $V_h$ ist dann:
+    Gesucht ist ein $\widetilde{u} \in \real^{n-2}$ mit\\
+    $\sum_{i=2}^n
+    \left(\int_a^b p\varphi_i'v_h'\dx + \int_a^b q\varphi_iv_h\dx\right)u_i =
+    \int_a^b gv_h\dx$ für alle $v_h \in V_h$.\\
+    Aus Linearitätsgründen genügt es, diese Gleichung für die Basis von $V_h$
+    zu erfüllen, d.\,h.
+    $\sum_{i=2}^n a_{ij} u_i = g_j$ für alle $j = 2, \dotsc, n$ mit
+    $a_{ij} := \int_a^b p\varphi_i'\varphi_j'\dx +
+    \int_a^b q\varphi_i\varphi_j\dx$ und
+    $g_j := \int_a^b g\varphi_j\dx$.\\
+    Man erhält also ein LGS $A\widetilde{u} = g$.
+    
+    Dabei ergeben sich jedoch zwei Probleme:
+    $A$ ist voll besetzt, d.\,h. numerisches Lösen ist nicht so einfach.
+    Außerdem ist die Lösung des LGS instabil, da die Kondition\\
+    $\cond(A) = \norm{A}_2 \cdot \norm{A^{-1}}_2$ zu groß ist.
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    Ein Ausweg ist, stückweise definierte Polynome (Splines) zu verwenden.\\
+    Sei $I_h = \{x_0 = a, x_1, \dotsc, x_N, x_{N+1} = b\}$ ein Gitter und
+    $h_j := x_{j+1} - x_j$, $I_j := [x_j, x_{j+1}]$ für $j = 0, \dotsc, N$.
+    Man nennt die $I_j$ auch \begriff{finite Elemente}.\\
+    Sei nun $V_{h,k} := \{\varphi_h \in \C(\overline{I}) \;|\;
+    \forall_{j=0,\dotsc,N}\; \varphi_h|_{I_j} \in P_k,\;
+    \varphi_h(a) = \varphi_h(b) = 0\} \subset \widetilde{W}^{2,1}(I)$.\\
+    $k = 0$ ist nicht möglich, da dann aus der Stetigkeit der $\varphi_h$
+    und den Randbedingungen folgt, dass $\varphi_h \equiv 0$ ist.
+    
+    Der einfachste Fall ist $k = 1$.
+    In diesem Fall sind die \begriff{Hütchenfunktionen}\\
+    $(\varphi_1, \dotsc, \varphi_N)$ eine Basis von $V_{h,k}$, d.\,h.
+    $V_{h,1} = \aufspann{\varphi_1, \dotsc, \varphi_N}$
+    mit $\varphi_j(x) =$ \matrixsize{$\begin{cases}
+    (x - x_{j-1})/h_{j-1} & x \in I_{j-1} \\
+    (x_{j+1} - x)/h_j & x \in I_j \\
+    0 & \text{sonst}
+    \end{cases}$} für $j = 1, \dotsc, N$
+    und $(\varphi_1, \dotsc, \varphi_N)$ ist linear unabhängig.
+    
+    Im Fall von Neumann-Randbedingungen kommen am Rand Basisfunktionen hinzu,
+    z.\,B.\\
+    $\varphi_{N+1}(x) =$ \matrixsize{$\begin{cases}
+    (x - x_N)/h_N & x \in I_N \\
+    0 & \text{sonst}
+    \end{cases}$}.
+    
+    Die Matrix $A = (a_{ij})_{i,j=1}^N$ mit
+    $a_{ij} = \int_a^b p\varphi_i'\varphi_j'\dx +
+    \int_a^b q\varphi_i\varphi_j\dx$ ist schwach besetzt, denn aus
+    $\supp \varphi_j = I_{j-1} \cup I_j$ folgt
+    $\supp (\varphi_j) \cap \supp(\varphi_i) = \emptyset$ für $|j - i| \ge 2$,
+    d.\,h. $a_{ij} = 0$ für $|j - i| \ge 2$.
+    
+    Führt man eine Koordinatentransformation
+    $\xi = \frac{x - x_j}{h_j}$ bzw. $x = x_j + \xi h_j$ mit $dx = h_j d\xi$
+    für $\xi \in (0, 1)$ (\begriff{Referenz-Element})
+    durch und definiert Funktionen auf $(0, 1)$ durch
+    $\psi_1(\xi) := \xi$ und $\psi_2(\xi) := 1 - \xi$, so reicht es aus,
+    die Integrale für $a_{ij}$ nur einmal als
+    $\int_0^1 \psi_\ell(\xi) \psi_k(\xi) \d\xi$ bzw.
+    $\int_0^1 \psi_\ell'(\xi) \psi_k'(\xi) \d\xi$ für $\ell, k = 1, 2$
+    zu berechnen und anschließend zu transformieren.\\
+    Man bezeichnet diesen Vorgang als \begriff{Assemblierung} von $A$
+    Element für Element.
+\end{Bem}
+
+\linie
+
+\begin{Bsp}
+    Für $-u''(x) = g$, $I = (-1, 1)$, $u(-1) = u(1) = 0$ und $N = 3$
+    ist $A$ gegeben durch\\
+    $a_{ij} = \int_{-1}^1 \varphi_i'\varphi_j'\dx$, d.\,h.
+    $A =$ \matrixsize{$\begin{pmatrix}
+        \int_{x_0}^{x_1} (\varphi_1')^2\dx + \int_{x_1}^{x_2} (\varphi_1')^2\dx &
+        \int_{x_1}^{x_2} \varphi_1'\varphi_2'\dx &
+        0 \\
+        \int_{x_1}^{x_2} \varphi_1'\varphi_2'\dx &
+        \int_{x_1}^{x_2} (\varphi_2')^2\dx + \int_{x_2}^{x_3} (\varphi_2')^2\dx &
+        \int_{x_2}^{x_3} \varphi_2'\varphi_3'\dx \\
+        0 &
+        \int_{x_2}^{x_3} \varphi_2'\varphi_3'\dx &
+        \int_{x_2}^{x_3} (\varphi_3')^2\dx + \int_{x_3}^{x_4} (\varphi_3')^2\dx
+    \end{pmatrix}$}\\
+    $=$ \matrixsize{$\begin{pmatrix}
+        \int_{x_0}^{x_1} (\varphi_1')^2\dx &
+        0 &
+        0 \\
+        0 &
+        0 &
+        0 \\
+        0 &
+        0 &
+        0
+    \end{pmatrix} + \begin{pmatrix}
+        \int_{x_1}^{x_2} (\varphi_1')^2\dx &
+        \int_{x_1}^{x_2} \varphi_1'\varphi_2'\dx &
+        0 \\
+        \int_{x_1}^{x_2} \varphi_1'\varphi_2'\dx &
+        \int_{x_1}^{x_2} (\varphi_2')^2\dx &
+        0 \\
+        0 &
+        0 &
+        0
+    \end{pmatrix} + \begin{pmatrix}
+        0 &
+        0 &
+        0 \\
+        0 &
+        \int_{x_2}^{x_3} (\varphi_2')^2\dx &
+        \int_{x_2}^{x_3} \varphi_2'\varphi_3'\dx \\
+        0 &
+        \int_{x_2}^{x_3} \varphi_2'\varphi_3'\dx &
+        \int_{x_2}^{x_3} (\varphi_3')^2\dx
+    \end{pmatrix} + \begin{pmatrix}
+        0 &
+        0 &
+        0 \\
+        0 &
+        0 &
+        0 \\
+        0 &
+        0 &
+        \int_{x_3}^{x_4} (\varphi_3')^2\dx
+    \end{pmatrix}$}\\
+    $=$ \matrixsize{$\frac{1}{h_1} \begin{pmatrix}
+        \int_0^1 (\psi_1')^2\d\xi &
+        0 &
+        0 \\
+        0 &
+        0 &
+        0 \\
+        0 &
+        0 &
+        0
+    \end{pmatrix} + \frac{1}{h_2} \begin{pmatrix}
+        \int_0^1 (\psi_1')^2\d\xi &
+        \int_0^1 \psi_1'\psi_2'\d\xi &
+        0 \\
+        \int_0^1 \psi_1'\psi_2'\d\xi &
+        \int_0^1 (\psi_2')^2\d\xi &
+        0 \\
+        0 &
+        0 &
+        0
+    \end{pmatrix}$\\
+    $+\; \frac{1}{h_3} \begin{pmatrix}
+        0 &
+        0 &
+        0 \\
+        0 &
+        \int_0^1 (\psi_2')^2\d\xi &
+        \int_0^1 \psi_1'\psi_2'\d\xi \\
+        0 &
+        \int_0^1 \psi_1'\psi_2'\d\xi &
+        \int_0^1 (\psi_1')^2\d\xi
+    \end{pmatrix} +\frac{1}{h_4} \begin{pmatrix}
+        0 &
+        0 &
+        0 \\
+        0 &
+        0 &
+        0 \\
+        0 &
+        0 &
+        \int_0^1 (\psi_2')^2\d\xi
+    \end{pmatrix}$}\\
+    $=$ \matrixsize{$\frac{1}{h_1} \begin{pmatrix}
+        1 &
+        0 &
+        0 \\
+        0 &
+        0 &
+        0 \\
+        0 &
+        0 &
+        0
+    \end{pmatrix} + \frac{1}{h_2} \begin{pmatrix}
+        1 &
+        -1 &
+        0 \\
+        -1 &
+        1 &
+        0 \\
+        0 &
+        0 &
+        0
+    \end{pmatrix} + \frac{1}{h_3} \begin{pmatrix}
+        0 &
+        0 &
+        0 \\
+        0 &
+        1 &
+        -1 \\
+        0 &
+        -1 &
+        1
+    \end{pmatrix} +\frac{1}{h_4} \begin{pmatrix}
+        0 &
+        0 &
+        0 \\
+        0 &
+        0 &
+        0 \\
+        0 &
+        0 &
+        1
+    \end{pmatrix}$}\\
+    mit der \begriff{Elementsteifigkeitsmatrix}
+    \matrixsize{$\begin{pmatrix}
+        1 &
+        -1 \\
+        -1 &
+        1
+    \end{pmatrix}$}.
+    Im äquidistanten Fall gilt also
+    $A = \frac{1}{h}$ \matrixsize{$\begin{pmatrix}
+        2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 2
+    \end{pmatrix}$}.
+\end{Bsp}
+
+\pagebreak
+
+\subsubsection{%
+    Konvergenz der FEM%
+}
+
+\begin{Bem}
+    Man kann die schwache Formulierung allgemeiner ausdrücken:\\
+    Gesucht ist $u \in V$ mit $a(u, v) = (g, v)$ für alle $v \in V$.\\
+    Dabei ist $(g, v) := \int_a^b gv\dx$ ein Funktional auf $V$ und z.\,B.
+    $a(u, v) := \int_a^b pu'v'\dx + \int_a^b quv\dx$ eine Bilinearform auf
+    $V \times V$.\\
+    Das zugehörige \begriff{\name{Galerkin}-Verfahren} betrachtet wieder nur
+    einen endlich-dimensionalen Teilraum:
+    Gesucht ist $u_h \in V_h$ mit $a(u_h, v_h) = (g, v_h)$ für alle
+    $v_h \in V_h$.\\
+    Für den Fehler $e_h := u - u_h$ gilt $a(e_h, v_h) = 0$ für alle
+    $v_h \in V_h$ (\begriff{\name{Galerkin}-Orthogonalität}),\\
+    da $a(e_h, v_h) = a(u, v_h) - a(u_h, v_h) = (g, v_h) - (g, v_h) = 0$.
+\end{Bem}
+
+\begin{Satz}{\name{Céa}s Lemma}
+    Sei $a(\cdot, \cdot)\colon V \times V \rightarrow \real$ bilinear mit\\
+    $\exists_{C_0 > 0} \forall_{v \in V}\; a(v, v) \ge C_0 \norm{v}_V^2$
+    (\begriff{Koerzitivität}, \begriff{Elliptizität}) und\\
+    $\exists_{C_1 > 0} \forall_{v, w \in V}\;
+    a(v, w) \le C_1 \norm{v}_V \norm{w}_V$
+    (\begriff{Stetigkeit}).\\
+    Dann gibt es ein $C > 0$ (unabhängig von $h$) mit
+    $\norm{u - u_h}_V \le C \cdot \inf_{v_h \in V_h} \norm{u - v_h}_V$,\\
+    wobei $u \in V$ die schwache Lösung und $u_h \in V_h$ die diskrete Lösung
+    ist.
+\end{Satz}
+
+\begin{Satz}{Konvergenz der FEM}\\
+    Seien $u \in V$ die schwache Lösung der schwachen Formulierung und
+    $u_h \in V_h$ die Finite-Elemente-Appro\-ximation für einen Teilraum $V_h$,
+    wobei $u \in W^{2,2}(I)$ gelten soll.\\
+    Dann gilt die Fehlerabschätzung
+    $\norm{u - u_h}_{W^{1,2}(I)} \le c |h| \norm{u''}_{L^2(I)}$.\\
+    Ist außerdem $h_{\max} = |h| \le c h_{\min}$ mit
+    $h_{\min} = \min_{j=1,\dotsc,N} h_j$ für das Gitter $I_h$ erfüllt\\
+    (d.\,h. $I_h$ ist \begriff{quasi-uniform}),\\
+    dann gilt zusätzlich
+    $\norm{u - u_h}_{L^2(I)} \le c |h|^2 \norm{u''}_{L^2(I)}$
+    und $\norm{u - u_h}_{L^\infty(I)} \le c |h|^2 \norm{u''}_{L^2(I)}$.
+\end{Satz}
+
+\begin{Bem}
+    Allgemein gilt $\norm{u - u_h}_{W^{s,2}} \le c h^{t-s} \norm{u}_{W^{t,2}}$
+    für $t \ge 2$.\\
+    Oft kann man zeigen, dass
+    $\norm{u''}_{L^2(I)} \sim \norm{u}_{W^{2,2}(I)} \sim \norm{g}_{L^2(I)}$.
+\end{Bem}
+
+\subsubsection{%
+    Adaptive Verfahren%
+}
+
+\begin{Bem}
+    Die Aufgabe bei adaptiven Verfahren ist, ein optimales Gitter $I_h$ zu
+    finden, sodass $\norm{u - u_h} \le \TOL$ gilt.
+    Eigentlich ist dies ein nicht-lineares Optimierungsproblem.\\
+    In der Praxis verwendet man daher \begriff{A-posteriori-Fehlerschätzer},
+    um den Fehler möglichst genau (gute Abschätzung) und
+    möglichst lokal (wo muss Genauigkeit erhöht werden) zu kontrollieren.
+\end{Bem}
+
+\begin{Def}{Fehlerschätzer}
+    Eine Größe $\eta$ heißt \begriff{Fehlerschätzer} zu
+    $\norm{e_h} = \norm{u - u_h}$, falls Konstanten $c_l$ und $c_r$
+    unabhängig von $I_h$ existieren, sodass
+    $c_l \eta \le \norm{e_h} \le c_r \eta$.\\
+    Gilt zusätzlich $\lim_{|h| \to 0} \frac{\norm{e_h}}{|\eta|} = 1$,
+    dann heißt der Fehlerschätzer \begriff{asymptotisch exakt}.
+\end{Def}
+
+\begin{Def}{Fehlerindikator}
+    Wenn sich ein Fehlerschätzer durch
+    $\eta = (\sum_{i=1}^N \lambda_i^2)^{1/2}$, $\lambda_i \ge 0$
+    darstellen lässt (wobei jedes $\lambda_i$ einem finiten Element $I_i$
+    zugeordnet sein soll), so heißen die Zahlen $\lambda_i$
+    \begriff{Fehlerindikatoren}.
+\end{Def}
+
+\begin{Bem}
+    Ein adaptives Verfahren zur FEM läuft so ab, dass die Elemente $I_i$ mit
+    großem Fehlerindikator $\lambda_i$ verkleinert werden
+    (\begriff{$h$-Methode}).\\
+    Alternativ kann man auch den Polynomgrad erhöhen
+    (\begriff{$p$-Methode}, dafür ist aber eine
+    höhere Regularität notwendig).\\
+    Die Kombinationen beider Methoden nennen sich wenig überraschend
+    $h$-$p$-Methoden.
+\end{Bem}
+
+\pagebreak
+
+\subsubsection{%
+    Numerische Stabilität der FEM%
+}
+
+\begin{Bem}
+    Wie stabil ist die Lösung von
+    $u_h \in V_h\colon \forall_{v_h \in V_h}\; a(u_h, v_h) = (g, v_h)$
+    gegenüber Störungen bei der Diskretisierung?
+    Wie hoch ist der Aufwand der FEM?
+\end{Bem}
+
+\begin{Bem}
+    Das Problem ist äquivalent zur Lösung $Au = g$ mit
+    $a_{ij} = a(\varphi_i, \varphi_j)$ und $g_i = (g, \varphi_i)$
+    für $i, j = 1, \dotsc, N$.
+\end{Bem}
+
+\begin{Def}{Spektralradius}
+    Sei $A \in \real^{N \times N}$ eine Matrix mit
+    den Eigenwerten $\mu_1, \dotsc, \mu_m$.\\
+    Dann heißt $\varrho(A) := \max_{i=1,\dotsc,m} |\mu_i|$
+    \begriff{Spektralradius} von $A$.
+\end{Def}
+
+\begin{Def}{Kondition}
+    Seien $\norm{\cdot}$ eine Vektornorm im $\real^N$ und
+    $\norm{A}$ die entsprechende induzierte Matrixnorm für
+    $A \in \real^{N \times N}$.
+    Dann heißt $\cond(A) := \norm{A} \cdot \norm{A^{-1}}$
+    \begriff{Kondition} von $A$.
+\end{Def}
+
+\begin{Bem}
+    Die euklidische Vektornorm
+    $\norm{x}_2^2 = \sum_{i=1}^N x_i^2$ induziert die
+    \begriff{Spektralnorm}\\
+    $\norm{A}_2^2 = \mu_{\max}(A^t A)$.
+    Für $A = A^t$ gilt damit $\cond_2(A) = \frac{|\mu_{\max}|}{|\mu_{\min}|}$.
+\end{Bem}
+
+\linie
+
+\begin{Bem}
+    Seien $\widetilde{u}$ die numerische Lösung zu $Au = g$,
+    $e := u - \widetilde{u}$ der Fehler und\\
+    $r := Ae = g - A\widetilde{u}$ das Residuum.
+    Dann gilt wegen $\norm{g} \le \norm{A} \cdot \norm{u}$
+    für den relativen Fehler, dass
+    $\frac{\norm{e}}{\norm{u}} \le
+    \frac{\norm{A^{-1}} \cdot \norm{r}}{\norm{g} \cdot \norm{A}^{-1}} =
+    \norm{A} \cdot \norm{A^{-1}} \cdot \frac{\norm{r}}{\norm{g}}$,
+    also $e_\rel \le \cond(A) \cdot r_\rel$ mit
+    $e_\rel := \frac{\norm{e}}{\norm{u}}$ und
+    $r_\rel := \frac{\norm{r}}{\norm{g}}$.\\
+    Sei nun $(A + \Delta A) (u + \Delta u) = g + \Delta g$ das mit
+    $\Delta A$ und $\Delta g$ gestörte LGS,
+    wobei $\Delta u = \widetilde{u} - u$.
+\end{Bem}
+
+\begin{Satz}{Abschätzung für relativen Fehler}\\
+    Für den relativen Fehler gilt
+    $\frac{\norm{\Delta u}}{\norm{u}} \le \frac{\cond(A)}
+    {1 - \cond(A) \cdot \norm{\Delta A}/\norm{A}} \cdot
+    \left(\frac{\norm{\Delta g}}{\norm{g}} +
+    \frac{\norm{\Delta A}}{\norm{A}}\right)$,
+    wenn $A + \Delta A$ invertierbar ist und
+    $\norm{A^{-1} \Delta A} < 1$.
+\end{Satz}
+
+\linie
+
+\begin{Bsp}
+    Bei der Aufgabe $-u'' = g$ mit
+    $u(-1) = u(1) = 0$ und Hütchenfunktionen auf einem
+    äquidistanten Gitter erhält man
+    $\frac{1}{h}$ \matrixsize{$\begin{pmatrix}
+        2 & -1 & & & 0 \\
+        -1 & 2 & -1 \\
+        & \ddots & \ddots & \ddots \\
+        & & -1 & 2 & -1 \\
+        0 & & & -1 & 2
+    \end{pmatrix}$},
+    d.\,h. $\cond(A) = \frac{1}{h} \O(N^2)$.\\
+    Um dies zu verbessern, führt man eine \begriff{Vorkonditionierung} durch,
+    also betrachtet man statt $Au = g$ das LGS $CAu = Cg$ mit
+    $\widetilde{A} := CA$ und $\widetilde{g} := Cg$, sodass
+    $\cond(CA) \ll \cond(A)$
+    (\begriff{Links-Vorkonditionierung}).\\
+    Bei der \begriff{symmetrischen Vorkonditionierung} ist
+    $Au = g$ äquivalent zu $K^t A K y = K^t g$ mit\\
+    $y = K^{-1} u$ und $C = K K^t$.
+    Dabei ist $K = K^t$ mit $\det K \not= 0$.
+\end{Bsp}
+
+\pagebreak
+
+\subsubsection{%
+    Numerischer Aufwand und schnelle Löser für die FEM%
+}
+
+\begin{Bem}
+    Bestandteile der FEM waren
+    das Berechnen der Matrix $A$ (Aufwand $\O(N)$),
+    das Berechnen der rechten Seite (Aufwand $\O(N)$) und
+    das Lösen des LGS --
+    direkte Verfahren wie das Gaußsche Eliminationsverfahren
+    haben einen Aufwanden von $\O(N^3)$.\\
+    Um den Aufwand zu verkleinern,
+    werden iterative Verfahren betrachtet, die nur
+    Matrix-Vektor-Operationen benutzen
+    (jede Multiplikation hat einen Aufwand von $\O(N)$).\\
+    Optimal wären iterative Verfahren mit von $N$ unabhängiger Iterationszahl,
+    sodass ein Gesamtaufwand von $\O(N)$ besteht.
+    \begin{itemize}
+        \item
+        \begriff{Fixpunkt-Iteration}:
+        Umformung von $Au = g$ in
+        $u_{k+1} = u_k + T(g - Au_k)$ mit $T \in \real^{N \times N}$
+        
+        \item
+        Verfahren, die auf einer Aufspaltung von $A$ beruhen\\
+        (also $A = M_1 - M_2$ und $u_{k+1} = M_1^{-1} (M_2 u_k + g)$)
+        \begin{itemize}
+            \item
+            \begriff{\name{Jacobi}-Verfahren}:
+            $u_{k+1} = D^{-1} (L + R) u_k + g$
+            
+            \item
+            \begriff{\name{Gauß}-\name{Seidel}-Verfahren}:
+            $u_{k+1} = (D - L)^{-1} (Ru_k + g)$
+        \end{itemize}
+        
+        \item
+        Verfahren, die ein der Gleichung $Au = g$ äquivalentes Funktional
+        verwenden
+        \begin{itemize}
+            \item
+            \begriff{Gradientenverfahren}:
+            $A$ symmetrisch positiv definit,
+            Funktional $f(v) := \frac{1}{2} v^t A v - g^t v$,
+            \begriff{Energienorm} $\norm{v}_A := \sqrt{v^t A v}$
+            (Norm, falls $A$ positiv definit ist)\\
+            Es gilt $f(v) = \frac{1}{2} v^t A v - g^t v =
+            \frac{1}{2} u^t A u - g^t u +
+            \frac{1}{2} v^t A v - v^t A u + \frac{1}{2} u^t A u =
+            f(u) + \frac{1}{2} \norm{v - u}_A^2$.\\
+            Das Gradientenverfahren besteht nun darin, $f$ in Richtung
+            des steilsten Abstiegs zu minimieren.
+            Ausgehend von einer aktuellen Näherungslösung $v_k$ ist\\
+            $d_k := -\nabla f(v_k) = g - Av_k$
+            der negative Gradient und
+            $v_{k+1} := v_k + \alpha_k d_k$, sodass
+            $f(v_k + t d_k)$ minimal wird.
+            Dies ist der Fall für
+            $\alpha_k := \frac{d_k^t d_k}{d_k^t A d_k}$.\\
+            Für den Fehler gilt
+            $\norm{v_k - u}_A \le
+            \left(\frac{\cond_2(A) - 1}{\cond_2(A) + 1}\right)^k
+            \norm{v_0 - u}_A$.
+            Der Ausdruck in Klammern ist sehr nahe bei $1$, falls
+            $\cond_2(A)$ groß ist,
+            d.\,h. die Fehlerschranke verkleinert sich für größer werdendes $k$
+            nur sehr langsam.
+            
+            \item
+            \begriff{cg-Verfahren}:
+            Wählt man die Suchrichtungen anders, sodass sie $A$-orthogonal
+            zueinander sind (also $d_k^t A d_\ell = 0$ für $k \not= \ell$),
+            so erhält man Konvergenz nach $N$ Schritten
+            (bei exakter Rechnung).\\
+            Seien $v_0 \in \real^N$ ein Startvektor und
+            $d_0 := -g_0 := g - Av_0$.\\
+            Dann ist
+            $\alpha_k := \frac{g_k^t g_k}{d_k^t A d_k}$,\qquad
+            $v_{k+1} := v_k + \alpha_k d_k$,\qquad
+            $g_{k+1} := g_k + \alpha_k A d_k$,\\
+            $\beta_k := \frac{g_{k+1}^t g_{k+1}}{g_k^t g_k}$,\qquad
+            $d_{k+1} := -g_{k+1} + \beta_k d_k$.\\
+            Für den Fehler gilt
+            $\norm{v_k - u}_A \le
+            2 \left(\frac{\sqrt{\cond_2(A)} - 1}
+            {\sqrt{\cond_2(A)} + 1}\right)^k \norm{v_0 - u}_A$.
+            
+            \item
+            \begriff{cg-Verfahren mit Vorkonditionierung}:
+            Seien $g_0 := g - Av_0$, $h_0 := Cg_0$ und $d_0 := -h_0$.\\
+            Dann ist
+            $\alpha_k := \frac{g_k^t h_k}{d_k^t A d_k}$,\qquad
+            $v_{k+1} := v_k + \alpha_k d_k$,\qquad
+            $g_{k+1} := g_k + \alpha_k A d_k$,\\
+            $h_{k+1} := Cg_{k+1}$,\qquad
+            $\beta_k := \frac{g_{k+1}^t h_{k+1}}{g_k^t h_k}$,\qquad
+            $d_{k+1} := -h_{k+1} + \beta_k d_k$.\\
+            Es gelten die gleichen Fehlerabschätzungen und
+            Konvergenzaussagen analog mit $\cond_2(CA)$.
+        \end{itemize}
+    \end{itemize}
+\end{Bem}
+
+\linie
+\pagebreak
+
+\begin{Bem}
+    Möglichkeiten zur Vorkonditionierung:
+    \begin{itemize}
+        \item
+        \begriff{Diagonalvorkonditionierung}:
+        $c_{ij} = a_{ij}$ für $i = j$ und $c_{ij} = 0$ sonst
+        
+        \item
+        einige Schritte des Gauß-Seidel-Verfahrens mit \begriff{Relaxation}
+        
+        \item
+        \begriff{Incomplete-\name{Chomsky}-Zerlegung
+        (IC-Vorkonditionierung)}:
+        Statt der Chomsky-Zerlegung $A = LL^t$ mit $A^{-1} = (L^t)^{-1} L^{-1}$
+        betrachtet man die Zerlegung $A = \widetilde{L}\widetilde{L}^t + R$
+        mit $\widetilde{A} = \widetilde{L}\widetilde{L}^t$ und
+        $\widetilde{A}^{-1} = (\widetilde{L}^t)^{-1} \widetilde{L}^{-1}$.
+        
+        \item
+        \begriff{Mehrgitterverfahren}:
+        Aus der Beobachtung, dass "`klassische"' Verfahren den Fehler
+        "`glätten"', kann man durch eine Approximation auf einem gröberen
+        Gitter einen besseren Fehler erhalten.
+        Bei den Zweigitterverfahren führt man in jedem Zyklus zunächst
+        eine Glättung (d.\,h. $\nu$ Glättungsschritte) und anschließend
+        eine Grobgitterkorrektur durch.
+        Bei den Mehrgitterverfahren wird diese Methode verschachtelt und
+        iterativ angewandt.
+        Diese Verfahren können zur Vorkonditionierung benutzt werden.
+        
+        \item
+        \begriff{Vorkonditionierung durch Lösen einfacherer, aber ähnlicher
+        Probleme}:
+        Beispielsweise kann eine einfachere Gleichung
+        (z.\,B. $-u''$ für Sturm-Liouville oder
+        $-\Delta$ für Elastizitätsgleichung) oder
+        ein entkoppeltes Problem gelöst werden
+        (die Matrizen der Kopplung, d.\,h. die Matrizen, die den
+        Zusammenhang zwischen verschiedenen Abschnitten herstellen,
+        weglassen).
+    \end{itemize}
+\end{Bem}
+
+\pagebreak

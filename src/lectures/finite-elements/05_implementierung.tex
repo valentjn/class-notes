@@ -1,0 +1,258 @@
+\section{%
+    Implementierung%
+}
+
+Der normale Ablauf einer FE-Simulation ist
+die Beschreibung des Rands,
+die Generierung des Netzes,
+die Auswahl von relevanten Elementen,
+die Assemblierung des Systems und
+schließlich die Lösung des Systems.
+Bei der WEB-Methode wird die
+meist sehr schwierige und zeitaufwendige Netzgenerierung sowie die Elementewahl
+ersetzt durch die Konstruktion der WEB-Basis.
+Dazu müssen zunächst die Zelltypen bestimmt werden,
+dann werden die B-Splines klassifiziert,
+anschließend werden die Erweiterungen berechnet und
+zuletzt wird die Gewichtsfunktion definiert.
+
+\subsection{%
+    Darstellung des Rands%
+}
+
+\textbf{rationale \name{Bézier}-Kurve}:
+Eine \begriff{rationale \name{Bézier}-Kurve} mit Kontrollpunkten $c_\nu \in \real^m$ und
+Gewichten $\omega_\nu > 0$ ist parametrisiert durch
+\begin{align*}
+    p(t) = \frac{\sum_{\nu=0}^n c_\nu \omega_\nu \beta_\nu^n(t)}
+    {\sum_{\nu=0}^n \omega_\nu \beta_\nu^n(t)},\quad
+    t \in [0, 1],
+\end{align*}
+wobei $\beta_\nu^n(t) = \binom{n}{\nu} (1 - t)^{n-\nu} t^\nu$ die Bernstein-Polynome vom Grad $n$
+sind.
+
+\textbf{Eigenschaften von rationalen \name{Bézier}-Kurven}:
+\begin{itemize}
+    \item
+    \textbf{Endpunktinterpolation}:
+    $p(0) = c_0$,
+    $p(1) = c_n$ und
+    das Kontrollpolygon bestimmt durch $c_0, \dotsc, c_n$
+    ist tangential zu $p$.
+    
+    \item
+    \textbf{konvexe Hülle}:
+    Die Kurve $p$ liegt in der konvexen Hülle der Kontrollpunkte $c_0, \dotsc, c_n$.
+    
+    \item
+    \textbf{Einfluss der Gewichte}:
+    Die Vergrößerung eines Gewichts $\omega_\nu$ zieht die Kurve in Richtung des Kontrollpunkts
+    $c_\nu$.
+    Wenn $\omega_\nu = 1$ für alle $\nu$,
+    dann ist der Nenner $\sum_\nu \omega_\nu \beta_\nu^n(t)$ identisch gleich eins und
+    $p$ ist eine polynomiale Parametrisierung.
+\end{itemize}
+
+\textbf{rationale \name{Bézier}-Fläche}:
+Eine \begriff{rationale \name{Bézier}-Fläche} mit Kontrollpunkten $c_{\nu,\mu} \in \real^3$ und
+Gewichten $\omega_{\nu,\mu} > 0$ ist parametrisiert durch
+\begin{align*}
+    p(s, t) = \frac{\sum_{\nu,\mu=0}^n c_{\nu,\mu} \omega_{\nu,\mu} \beta_\nu^n(s) \beta_\mu^n(t)}
+    {\sum_{\nu,\mu=0}^n \omega_{\nu,\mu} \beta_\nu^n(s) \beta_\mu^n(t)},\quad
+    s, t \in [0, 1].
+\end{align*}
+
+\subsection{%
+    Klassifikation der Gitterzellen%
+}
+
+Die Gitterzellen müssen in innere, äußere und Randzellen $Q$ eingeteilt werden, je nachdem
+ob $Q \subset \overline{D}$, $Q \cap D = \emptyset$ oder das Innere von $Q$ den Rand schneidet.
+Am schwierigsten ist es, die Randzellen zu bestimmen.
+Die Unterscheidung zwischen inneren und äußeren Zellen erfolgt anschließend durch Anwendung
+eines Standard-Tests auf einen einzigen Punkt in jeder Zelle.
+
+\textbf{Charakterisierung planarer Gitterzellen}:
+Das Innere einer planaren Randzelle enthält mindestens ein lokales Extremum von $\partial D$
+oder ein Segment zwischen zwei aufeinanderfolgenden Schnittpunkten von $\partial D$ mit
+Gitterlinien.
+
+Ein Algorithmus kann daher wie folgt aussehen:
+Zuerst werden die horizontalen und vertikalen (linearen) Randsegmente bestimmt
+und für jedes solches Segment ein Punkt einer Liste von Testpunkten hinzugefügt.
+Anschließend werden die isolierten Extrempunkte der Liste hinzugefügt.
+Schließlich werden die Schnitte mit Gitterlinien bestimmt und jeweils ein Punkt zwischen
+aufeinanderfolgenden Schnitten als weitere Testpunkte gewählt.
+Nun muss nur überprüft werden, zu welchen Zellen die Testpunkte gehören,
+wobei Punkte auf Gitterlinien ignoriert werden.
+
+\linie
+\pagebreak
+
+Die Verallgemeinerung auf drei Dimensionen ist möglich, aber nicht trivial,
+weil mehr topologische Möglichkeiten bestehen.
+Daher wird ein anderer Ansatz gewählt, der besonders für Bézier-Darstellungen geeignet ist:
+Die Bézier-Fläche wird in sog.
+\begriff{Bounding-Boxen} eingebettet, die zu einer uniformen Unterteilung
+des Parameterraums gehören.
+Die Mittelpunkte $p(s_\nu, t_\mu)$ der Boxes liegen auf der Fläche,
+die Breite bestimmt sich durch die Hilfe von Schranken der Ableitungen der Parametrisierung.
+
+\textbf{Bounding-Box}:
+Wenn $d_{\ell,s}$ und $d_{\ell,t}$ ($\ell = 1, 2, 3$) Schranken für den Betrag der Ableitungen
+$\partial_s p_\ell$ und $\partial_t p_\ell$ sind, dann ist das Flächenstück
+\begin{align*}
+    p(s + \sigma, t + \tau),\quad
+    |\sigma| \le \delta_s/2,
+    |\tau| \le \delta_t/2,
+\end{align*}
+vollständig in der Box mit Mittelpunkt $p(s, t)$ und Breite
+$d_{\ell,s}\delta_s + d_{\ell,t}\delta_t$ in der $\ell$-ten Koordinatenrichtung enthalten.
+
+Wenn $\delta_s$ und $\delta_t$ klein genug gewählt sind,
+dann enthalten die meisten Gitterzellen, die die Bézier-Fläche schneiden,
+einer der Punkte $p(s_\nu, t_\mu)$ und sind somit leicht identifizierbar.
+Nur wenige Gitterzellen werden eine Bounding-Box schneiden, aber keinen der Punkte
+$p(s_\nu, t_\mu)$ enthalten.
+Für die Zellen kann man z.\,B. einen Optimierungsalgorithmus verwenden oder
+einfach $\delta_s$ und $\delta_t$ kleiner wählen.
+
+\subsection{%
+    Auswertung von Gewichtsfunktionen%
+}
+
+Für die Berechnung der Ritz-Galerkin-Integrale ist es notwendig, beteiligte Gewichtsfunktionen
+auswerten und ableiten zu können.
+
+\textbf{Auswertung und Ableitung von Gewichtsfunktionen}:
+Die Evaluation und Dif"|ferentiation von Gewichtsfunktionen, die mithilfe von R-Funktionen
+konstruiert wurden, kann rekursiv erfolgen.
+Ausgehend von vordefinierten Gewichtsfunktionen
+\begin{align*}
+    w_\ell,\quad
+    \ell = 1, \dotsc, \alpha,
+\end{align*}
+berechnet man
+\begin{align*}
+    w_\ell = r_\ell(w_\nu, w_\mu),\quad
+    \ell = \alpha + 1, \dotsc, \beta,
+\end{align*}
+wobei man zum Schluss $w = w_\beta$ erhält.
+Die R-Funktionen $r_\ell$ gehören dabei zu booleschen Operationen und haben ein
+oder zwei vorher definierte Gewichtsfunktionen als Argument
+(im Falle eines Arguments wird die Abhängigkeit von $w_\mu$ ignoriert).
+
+Der Gradient von $w$ kann simultan durch Dif"|ferentiation der Rekursion berechnet werden.
+Durch die Kettenregel erhält man
+\begin{align*}
+    \grad w_\ell
+    = (\partial_1 r_\ell) \grad w_\nu + (\partial_2 r_\ell) \grad w_\mu,
+\end{align*}
+wobei $\partial_k$ die Ableitung bzgl. der $k$-ten Variable darstellt.
+Dadurch erhält man sukzessive
+\begin{align*}
+    (w_{\alpha+1}, \grad w_{\alpha+1}), \dotsc, (w_\beta, \grad w_\beta).
+\end{align*}
+
+\linie
+\pagebreak
+
+Für Gewichtsfunktionen, die nur durch R-Funktionen aufgebaut wurden, erhält man so explizite
+Ausdrücke.
+Übergeblendete Gewichtsfunktionen müssen numerisch ausgewertet werden,
+dazu geht man wie weiter oben beschrieben mithilfe der Abstandsfunktion $d(x) = \dist(x, \Gamma)$
+vor.
+Die Ableitung dieser Funktion erhält man durch die negative Außeneinheitsnormale
+(intuitiv klar):
+
+\textbf{Abstandsfunktion}:
+Für Punkte $x$ in einem genügend kleinen Streifen $\Gamma_\delta$ nahe des Randes ist der Abstand
+\begin{align*}
+    d(x) = \dist(x, \Gamma) = \norm{x - p(t)}
+\end{align*}
+von $x$ zu einem Kurvensegment $\Gamma$ mit regulärer Parametrisierung
+(z.\,B. in Bézier-Form)\\
+$t \mapsto p(t) = (p_1(t), p_2(t))$, $\norm{p'(t)} \not= 0$,
+bestimmt durch die Orthogonalitätsbeziehung
+\begin{align*}
+    (x - p(t)) p'(t) = 0.
+\end{align*}
+Dabei gilt $\grad d(x) = -\xi(t)$.
+
+Für den Abstand zu einer Fläche $\Gamma$ geht man analog vor.
+
+\subsection{%
+    Numerische Integration%
+}
+
+Für die Assemblierung der Ritz-Galerkin-Systeme müssen Integrale über Teilmengen des Gebiets $D$
+und seines Rands $\partial D$ berechnet werden.
+Dies wird durch Summation über die Beiträge jeder Gitterzelle $Q$ erledigt, d.\,h. die Integrale
+haben die Form $\int_{Q \cap D} \varphi$ oder $\int_{Q \cap \partial D} \psi$,
+wobei $\varphi$ und $\psi$ von den Basisfunktionen etc. abhängen.
+Weil nur in sehr wenigen Fällen exakte analytische Lösungen vorhanden sind, müssen
+numerische Verfahren benutzt werden.
+
+Bei Integration von glatten Funktionen über kleine Mengen liefert
+\begriff{\name{Gauß}-Quadratur} die ef"|fizientesten Approximationen.
+Die Knoten $t_\nu$ der $\ell$-Punkt-Gauß-Formel sind die Nullstellen der Legendre-Polynome
+$\ell$-ten Grades und die Gewichte $\gamma_\nu$ sind die Integrale der zugehörigen
+Lagrange-Polynome.
+
+Integrale der Form $\int_{Q \cap D} \varphi$ können für Gitterzellen $Q = \ell h + [0, 1]^m h$,
+die den Rand nicht schneiden, einfach durch die Tensorprodukt-Gauß-Formel berechnet werden.
+Zum Beispiel ist für $m = 3$
+\begin{align*}
+    \int_Q \varphi
+    \approx h^3 \sum_{\nu,\mu,\sigma} \gamma_\nu \gamma_\mu \gamma_\sigma
+    \varphi(t_\nu', t_\mu', t_\sigma'),
+\end{align*}
+wobei $t' = \ell h + (t_\nu, t_\mu, t_\sigma) h$ die transformierten Gauß-Knoten sind.
+Für kleines $h$ fallen die meisten Integrale in diese Kategorie.
+Dennoch gibt es eine Anzahl von Rand-Gitterzellen, bei denen man anders verfahren muss.
+Wenn man naiverweise einfach $\varphi = 0$ auf $Q \setminus D$ setzt und die Integrationsformel
+anwendet, würde man viel Glattheit verlieren und die Lösung würde nur wenig genau sein.
+Durch Unterteilung von $Q \cap D$ kann man abschnittsweise die Formeln anwenden.
+Dies ist in zwei Dimensionen schon kompliziert, wird in dreien aber noch komplizierter.
+
+\textbf{Unterteilung für Gebiets-Integrale}:
+Durch Schnitte parallel zu den Koordinatenrichtungen an Kantenschnittpunkten,
+lokalen Extrema und Ecken von $Q \cap \partial D$ kann die Menge $Q \cap D$ in
+glatt deformierte Rechtecke unterteilt werden.
+
+\pagebreak
+
+\subsection{%
+    Matrix-Assemblierung%
+}
+
+\textbf{\name{Ritz}-\name{Galerkin}-System für gewichtete B-Splines}:\\
+Die Matrix $G$ und die rechte Seite $F$ des Ritz-Galerkin-Systems für die Räume $w\BB$
+können durch folgenden Algorithmus assembliert werden.
+\begin{align*}
+    &G = 0,\, F = 0\\
+    &\mathbf{for}\; Q = \alpha h + [0, 1]^m h \text{ mit } Q \cap D \not= \emptyset\\
+    &\qquad\mathbf{for}\; k \in \alpha - \{0, \dotsc, n\}^m\\
+    &\qquad\qquad f_k = f_k + \lambda_Q(w b_k)\\
+    &\qquad\qquad\mathbf{for}\; \ell \in \alpha - \{0, \dotsc, n\}^m\\
+    &\qquad\qquad\qquad g_{k,\ell} = g_{k,\ell} + a_Q(w b_\ell, w b_k)\\
+    &\qquad\qquad\mathbf{end}\\
+    &\qquad\mathbf{end}\\
+    &\mathbf{end}
+\end{align*}
+
+\textbf{\name{Ritz}-\name{Galerkin}-System für WEB-Splines}:\\
+Die Ritz-Galerkin-Systeme $GU = F$ und ${}^\e G{}^\e U = {}^\e F$ für die gewichteten Spline-Räume
+$w\BB$ und $w^\e\BB$ hängen zusammen durch
+\begin{align*}
+    {}^\e G = \widetilde{E} G \widetilde{E}^t,\quad
+    {}^\e F = \widetilde{E} F,
+\end{align*}
+wobei
+\begin{align*}
+    \widetilde{e}_{i,k}
+    := \frac{1}{w(x_i)} \cdot \begin{cases}1 & k = i,\\e_{i,j} & k = j \in J(i),\\0 & \text{sonst}.
+    \end{cases}
+\end{align*}
+
+\pagebreak
