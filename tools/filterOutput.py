@@ -10,6 +10,7 @@ FILTER_REGEXS = [
   r"^entering extended mode$",
   r"^ restricted \\write18 enabled.$",
   r"^LaTeX2e <[0-9\-]+>",
+  r"^ *L3 programming layer <[0-9\-]+>",
   r"^luaotfload | main : initialization completed in ",
   r"^Babel <.*> and hyphenation patterns for .* language\(s\) loaded\.$",
   r"^Document Class: ",
