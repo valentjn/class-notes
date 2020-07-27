@@ -40,7 +40,12 @@
 % otherwise there will be "undefined font shape" warnings
 \usepackage[T1]{fontenc}
 
-% use Bitstream Charter as main font
+% silence warnings
+\usepackage{silence}
+
+% use Bitstream Charter as main font,
+% suppress warning due to https://github.com/latex3/latex2e/issues/299
+\WarningFilter{latex}{Font shape declaration has incorrect series value `mc'.}
 \usepackage[bitstream-charter]{mathdesign}
 \usepackage{XCharter}
 
