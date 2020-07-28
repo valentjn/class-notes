@@ -164,3 +164,21 @@ for dirName in dirNames:
   env.Depends(target=pdf, dependency=dependencies)
   env.Alias(dirName, pdf)
   pdfs.append(pdfs)
+
+  # clean build subdirectory with `scons -c <dirName>`
+  env.Clean("all", f"build/{dirName}")
+
+# clean whole build directory with `scons -c`
+if GetOption("clean"):
+  env.Default("all")
+  env.Clean("all", "build")
+
+# print all available lectures
+if env.GetOption("help"):
+  print("")
+  print("List of available lectures:")
+  for dirName in dirNames: print(f"- {dirName}")
+  print("")
+  print("To build a specific list of lectures, append their names separated by space to the "
+      "`scons` command. `scons` without any lectures will build everything.")
+  print("")
