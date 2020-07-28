@@ -40,8 +40,18 @@ verschiedenen anderen Gebieten (XXIX bis XXXI).
   % only include parts in list of parts
   \setcounter{tocdepth}{\parttocdepth}
 
-  % use dotted lines for list of parts, make font smaller
-  \RedeclareSectionCommand[tocstyle=dottedtocline]{part}
+  \RedeclareSectionCommand[
+    % use dotted lines for list of parts, make font smaller
+    tocstyle=dottedtocline,
+    % make space for Roman part numbers larger
+    tocnumwidth=3.8em,
+  ]{part}
+
+  % make space for Roman part numbers larger
+  \makeatletter
+  \renewcommand*{\@pnumwidth}{2.7em}
+  \renewcommand*{\@tocrmarg}{2.7em}
+  \makeatother
 
   % list of parts
   \renewcommand*{\contentsname}{Vorlesungen}
