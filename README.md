@@ -1,10 +1,10 @@
-# L<sup>A</sup>T<sub>E</sub>X Class Notes (German)
+# L<sup>A</sup>T<sub>E</sub>X-ed Class Notes (German)
 
 [comment]: <> "LTeX: language=en-US"
 
 *Julian Valentin*
 
-This repository contains L<sup>A</sup>T<sub>E</sub>X class notes in German taken during lectures at the University of Stuttgart, Germany, in the years of 2009 to 2014. Their main purpose was helping me studying and preparing for exams. Due to time constraints, most of the drawings and mathematical proofs are missing. However, these class notes are provided here in the hope that somebody might benefit from them. Mistakes can be reported at the [GitHub repo](https://github.com/valentjn/class-notes). The L<sup>A</sup>T<sub>E</sub>X realization of the notes is licensed under the [CC BY-SA 4.0 license](https://creativecommons.org/licenses/by-sa/4.0/).
+This repository contains L<sup>A</sup>T<sub>E</sub>X-ed class notes in German taken during lectures at the University of Stuttgart, Germany, in the years of 2009 to 2014. Their main purpose was helping me studying and preparing for exams. Due to time constraints, most of the drawings and mathematical proofs are missing. However, these class notes are provided here in the hope that somebody might benefit from them. Mistakes can be reported at the [GitHub repo](https://github.com/valentjn/class-notes). The L<sup>A</sup>T<sub>E</sub>X realization of the notes (i.e., source code and PDFs) is licensed under the [CC BY-SA 4.0 license](https://creativecommons.org/licenses/by-sa/4.0/).
 
 The class notes consist of 31 lectures, 178 chapters, and over 1100 pages, treating various areas of mathematics and computer science. In case an English translation of a paragraph is needed, [DeepL](https://www.deepl.com/translator) seems to produce somewhat suitable translations.
 
