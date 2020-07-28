@@ -114,7 +114,7 @@ dirNameOrder = [
       "finite-elements",
       "programming-and-software-engineering",
       "data-structures-and-algorithms",
-      "automata-and-formal-languages",
+      "formal-languages-and-automata",
       "computability-and-complexity",
       "algorithmic-geometry",
       "discrete-optimization",
