@@ -1,0 +1,48 @@
+os: "linux"
+dist: "bionic"
+
+language: "minimal"
+
+addons:
+  apt:
+    update: true
+    packages:
+      - "scons"
+      - "texlive-fonts-extra"
+      - "texlive-lang-cyrillic"
+      - "texlive-lang-german"
+      - "texlive-latex-extra"
+      - "texlive-luatex"
+      - "texlive-plain-generic"
+      - "texlive-science"
+
+install:
+  # update KOMA-Script package as TeX Live 2017 is too old
+  - "mkdir tmp && cd tmp"
+  - "wget https://svwh.dl.sourceforge.net/project/koma-script/KOMA-Script/koma-script-3511.zip"
+  - "unzip koma-script-3511.zip"
+  - "rm koma-script-3511.zip"
+  - "sudo mv * /usr/local/share/texmf/"
+  - "sudo texhash"
+  - "cd .. && rmdir tmp"
+
+script:
+  - "/usr/bin/env python3 $(which scons) -j $(nproc)"
+
+before_deploy:
+  - "mkdir deploy"
+  - "find build -name '*.pdf' | sort | grep -E 'lectures/([^/]+)/\\1.pdf|collection/collection.pdf' | xargs cp -t deploy/"
+  - "mv deploy/collection.pdf deploy/_collection.pdf"
+
+deploy:
+  provider: "releases"
+  api_key:
+    secure: "hctc8wnAGvnWOqQ05kBzE8tnQXeMcZQYWP4xbgm3ZsupSqfKLe2lunE/X7ef04z5tzIon6hx7OLHYqIAzsd6h/enPLBZGgUQ2o7VCDezwm4hmCQK1X9akTJ0xQibkmyXXGpNK8ELSf+snr2vrVspU6F2V1ZVCx8qSeeK54eAWdcyQbpm0KYGF2QSOk7R4/gcSI+YmTdK8QIQQOlnNBU6UGF3pxzaryxOEvLgT37yfRANmnDdYznjswU14tZl3dp2+XXsrE6nKbkPMsDeQ91ASPU9zOnFfJlvB6Noy5aEbIR49DfRegyn0VMCorQztp0xw+FUzJA1ZgYqf4spQf0Mgjt7be2J3i+N0vwVdyZAOzfLs126gxlb+k/s/+E9Y4f0A89eNJ4ae1vffzY+6IlUNjZjkvoVZXXqF7VCPyicN7vbP/QZxlnoXjMt93X2CP+nqL+brsphGQG9lDvqNuzUk11oN2HeOeh2VM7C1CGQjXmbwYeja/RjZJxvftk9v2cKhSt6YFokPIOlzmNml7z8F3QFIS3b0QiorJJAT/MnA8+RMjFHhcWJPAb4ypNsLNonwIYTQzptT21cqQNgpj98n/QfkzEravnMurz9hTFRAZ1SAzeX+sT3GA0jYGGmb/MrmmsbbPad1JnNk471C7IJMwYc5bsgMwSLI5y+ycMc5Ic="
+  file: "deploy/*.pdf"
+  file_glob: true
+  # needs to be removed for Travis's dpl v2
+  # see https://blog.travis-ci.com/2019-08-27-deployment-tooling-dpl-v2-preview-release#cleaning-up-the-git-working-directory
+  skip_cleanup: true
+  on:
+    repo: "valentjn/class-notes"
+    tags: true

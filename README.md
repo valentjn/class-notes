@@ -64,3 +64,4 @@ Execute `scons` to build all lectures and the collection. Use `-j 4` to run four
 ### Possible Problems
 
 - Make sure that your system runs SCons with Python 3, otherwise running `scons` will fail (e.g., Ubuntu). On Linux, you can try running `/usr/bin/env python3 $(which scons)` instead.
+- For other potential build problems, a look at `.travis.yml` might help.
