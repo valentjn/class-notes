@@ -17,14 +17,21 @@ addons:
       - "texlive-science"
 
 install:
-  # update KOMA-Script package as TeX Live 2017 is too old
+  # update KOMA-Script and etoc packages as TeX Live 2017 is too old
   - "mkdir tmp && cd tmp"
   - "wget https://svwh.dl.sourceforge.net/project/koma-script/KOMA-Script/koma-script-3511.zip"
   - "unzip koma-script-3511.zip"
   - "rm koma-script-3511.zip"
   - "sudo mv * /usr/local/share/texmf/"
+  - "wget http://mirrors.ctan.org/macros/latex/contrib/etoc.zip"
+  - "unzip etoc.zip"
+  - "cd etoc"
+  - "etex etoc.dtx"
+  - "sudo mkdir -p /usr/local/share/texmf/tex/latex/etoc"
+  - "sudo mv etoc.sty /usr/local/share/texmf/tex/latex/etoc/"
+  - "cd .. && rm -r etoc"
   - "sudo texhash"
-  - "cd .. && rmdir tmp"
+  - "cd .. && rm -r tmp"
 
 script:
   - "/usr/bin/env python3 $(which scons) -j $(nproc)"
