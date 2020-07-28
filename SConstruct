@@ -56,7 +56,7 @@ variables = Variables(None, ARGUMENTS)
 env = Environment(variables=variables, ENV=os.environ)
 
 # display help about build flags when called with -h
-Help(variables.GenerateHelpText(env))
+env.Help(variables.GenerateHelpText(env))
 
 # use timestamp to decide if a file should be rebuilt
 # (otherwise SCons won't rebuild even if it is necessary)
@@ -78,10 +78,8 @@ env.Replace(PDFTEX=luaLatex, PDFLATEX=luaLatex)
 env.Append(PDFLATEXFLAGS="--file-line-error")
 # enable SyncTeX for GUI editors
 env.Append(PDFLATEXFLAGS="--synctex=1")
-# enable shell commands to display Git version
-env.Append(PDFLATEXFLAGS="--shell-escape")
-# set output directory
-#env.Append(PDFLATEXFLAGS="--output-directory={}".format(buildDirPath))
+# enable shell commands
+#env.Append(PDFLATEXFLAGS="--shell-escape")
 
 # compile in build directory
 for rootDirName, dirNames, fileNames in os.walk("src", followlinks=True):
@@ -137,21 +135,30 @@ for dirName in dirNames:
   dirPath = (f"lectures/{dirName}" if dirType != "collection" else "collection")
 
   dependencies = []
+
+  # depend on all files in lecture directory
   dependencies.extend(Helper.translateSrcToBuild(Glob(f"src/{dirPath}/*")))
+
+  # copy all files from common to lecture directory, rename preamble to <dirName>.tex
   dependencies.extend(env.Install(target=f"build/{dirPath}", source=Glob("build/common/*")))
   dependencies.extend(env.Command(target=f"build/{dirPath}/{dirName}.tex",
       source=f"build/{dirPath}/preamble.tex", action=Move("$TARGET", "$SOURCE")))
   dependencies = [x for x in dependencies if x.name != "preamble.tex"]
 
   if dirType == "lectures":
+    # copy document.tex from parent directory to lecture directory
     dependencies.extend(env.Install(target=f"build/{dirPath}",
         source=f"build/{dirType}/document.tex"))
   else:
+    # generate collectionInclude.tex (including the different lectures) from the list of
+    # available lectures
     dependencies.extend(env.Command(
         target=f"build/{dirPath}/collectionInclude.tex", source="",
         action=functools.partial(Helper.buildCollectionIncludeTex, dirNames)))
+    # depend on source files of all lectures
     dependencies.extend(Helper.translateSrcToBuild(Glob("src/lectures/*/*")))
 
+  # generate lecture PDF, add dependencies, create alias
   pdf = env.PDF(target=f"build/{dirPath}/{dirName}.pdf",
       source=f"build/{dirPath}/{dirName}.tex")
   env.Depends(target=pdf, dependency=dependencies)
