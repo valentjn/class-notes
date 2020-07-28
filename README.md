@@ -12,44 +12,46 @@ A “collection” PDF that combines all lectures into a single handy 9 MB PDF f
 
 ## Lectures
 
-- Analysis
-  - Analysis 1
-  - Analysis 2
-  - Analysis 3
-  - Analysis 4
-  - Functional Analysis 1 *(Funktionalanalysis 1)*
-  - Functional Analysis 2 *(Funktionalanalysis 2)*
-- Algebra
-  - Linear Algebra and Analytical Geometry 1 *(Lineare Algebra und Analytische Geometrie 1)*
-  - Linear Algebra and Analytical Geometry 2 *(Lineare Algebra und Analytische Geometrie 2)*
-  - Algebra
-- Topology
-  - Topology *(Topologie)*
-- Applied mathematics
-  - Probability Theory *(Wahrscheinlichkeitstheorie)*
-  - Mathematical Statistics *(Mathematische Statistik)*
-  - Linear Control Theory *(Lineare Kontrolltheorie)*
-- Numerical analysis
-  - Numerical Linear Algebra *(Numerische Lineare Algebra)*
-  - Numerical Mathematics 1 *(Numerische Mathematik 1)*
-  - Numerical Mathematics 2 *(Numerische Mathematik 2)*
-  - Partial Differential Equations *(Partielle Differentialgleichungen)*
-  - Approximation and Geometric Modeling *(Approximation und geometrische Modellierung)*
-  - Finite Elements *(Finite Elemente)*
-- Computer science
-  - Programming and Software Engineering *(Programmierung und Software-Entwicklung)*
-  - Data Structures and Algorithms *(Datenstrukturen und Algorithmen)*
-  - Formal Languages and Automata *(Formale Sprachen und Automatentheorie)*
-  - Computability and Complexity *(Berechenbarkeit und Komplexität)*
-  - Algorithmic Geometry *(Algorithmische Geometrie)*
-  - Discrete Optimization *(Diskrete Optimierung)*
-  - Cryptographic Procedures *(Kryptografische Verfahren)*
-  - Theoretical and Methodological Foundations of Visual Computing *(Theoretische und methodische Grundlagen des Visual Computing)*
-  - Modeling and Simulation *(Modellbildung und Simulation)*
-- Miscellaneous areas
-  - Optical Phenomena in Nature and Everyday Life *(Optische Phänomene in Natur und Alltag)*
-  - Basic Principles of Geosciences *(Geowissenschaftliche Grundlagen der Planetenforschung)*
-  - History of Wind Energy Use *(Geschichte der Windenergie-Nutzung)*
+**[>> Collection of all class notes <<](https://github.com/valentjn/class-notes/releases/latest/download/-collection.pdf)**
+
+- **Analysis**
+  - [Analysis 1](https://github.com/valentjn/class-notes/releases/latest/download/analysis-1.pdf)
+  - [Analysis 2](https://github.com/valentjn/class-notes/releases/latest/download/analysis-2.pdf)
+  - [Analysis 3](https://github.com/valentjn/class-notes/releases/latest/download/analysis-3.pdf)
+  - [Analysis 4](https://github.com/valentjn/class-notes/releases/latest/download/analysis-4.pdf)
+  - [Functional Analysis 1 *(Funktionalanalysis 1)*](https://github.com/valentjn/class-notes/releases/latest/download/functional-analysis-1.pdf)
+  - [Functional Analysis 2 *(Funktionalanalysis 2)*](https://github.com/valentjn/class-notes/releases/latest/download/functional-analysis-2.pdf)
+- **Algebra**
+  - [Linear Algebra and Analytical Geometry 1 *(Lineare Algebra und Analytische Geometrie 1)*](https://github.com/valentjn/class-notes/releases/latest/download/linear-algebra-and-analytical-geometry-1.pdf)
+  - [Linear Algebra and Analytical Geometry 2 *(Lineare Algebra und Analytische Geometrie 2)*](https://github.com/valentjn/class-notes/releases/latest/download/linear-algebra-and-analytical-geometry-2.pdf)
+  - [Algebra](https://github.com/valentjn/class-notes/releases/latest/download/algebra.pdf)
+- **Topology**
+  - [Topology *(Topologie)*](https://github.com/valentjn/class-notes/releases/latest/download/topology.pdf)
+- **Applied mathematics**
+  - [Probability Theory *(Wahrscheinlichkeitstheorie)*](https://github.com/valentjn/class-notes/releases/latest/download/probability-theory.pdf)
+  - [Mathematical Statistics *(Mathematische Statistik)*](https://github.com/valentjn/class-notes/releases/latest/download/mathematical-statistics.pdf)
+  - [Linear Control Theory *(Lineare Kontrolltheorie)*](https://github.com/valentjn/class-notes/releases/latest/download/linear-control-theory.pdf)
+- **Numerical analysis**
+  - [Numerical Linear Algebra *(Numerische Lineare Algebra)*](https://github.com/valentjn/class-notes/releases/latest/download/numerical-linear-algebra.pdf)
+  - [Numerical Analysis 1 *(Numerische Mathematik 1)*](https://github.com/valentjn/class-notes/releases/latest/download/numerical-analysis-1.pdf)
+  - [Numerical Analysis 2 *(Numerische Mathematik 2)*](https://github.com/valentjn/class-notes/releases/latest/download/numerical-analysis-2.pdf)
+  - [Partial Differential Equations *(Partielle Differentialgleichungen)*](https://github.com/valentjn/class-notes/releases/latest/download/partial-differential-equations.pdf)
+  - [Approximation and Geometric Modeling *(Approximation und geometrische Modellierung)*](https://github.com/valentjn/class-notes/releases/latest/download/approximation-and-geometric-modeling.pdf)
+  - [Finite Elements *(Finite Elemente)*](https://github.com/valentjn/class-notes/releases/latest/download/finite-elements.pdf)
+- **Computer science**
+  - [Programming and Software Engineering *(Programmierung und Software-Entwicklung)*](https://github.com/valentjn/class-notes/releases/latest/download/programming-and-software-engineering.pdf)
+  - [Data Structures and Algorithms *(Datenstrukturen und Algorithmen)*](https://github.com/valentjn/class-notes/releases/latest/download/data-structures-and-algorithms.pdf)
+  - [Formal Languages and Automata *(Formale Sprachen und Automatentheorie)*](https://github.com/valentjn/class-notes/releases/latest/download/formal-languages-and-automata.pdf)
+  - [Computability and Complexity *(Berechenbarkeit und Komplexität)*](https://github.com/valentjn/class-notes/releases/latest/download/computability-and-complexity.pdf)
+  - [Algorithmic Geometry *(Algorithmische Geometrie)*](https://github.com/valentjn/class-notes/releases/latest/download/algorithmic-geometry.pdf)
+  - [Discrete Optimization *(Diskrete Optimierung)*](https://github.com/valentjn/class-notes/releases/latest/download/discrete-optimization.pdf)
+  - [Cryptographic Procedures *(Kryptografische Verfahren)*](https://github.com/valentjn/class-notes/releases/latest/download/cryptographic-procedures.pdf)
+  - [Theoretical and Methodological Foundations of Visual Computing *(Theoretische und methodische Grundlagen des Visual Computing)*](https://github.com/valentjn/class-notes/releases/latest/download/visual-computing.pdf)
+  - [Modeling and Simulation *(Modellbildung und Simulation)*](https://github.com/valentjn/class-notes/releases/latest/download/modeling-and-simulation.pdf)
+- **Miscellaneous areas**
+  - [Optical Phenomena in Nature and Everyday Life *(Optische Phänomene in Natur und Alltag)*](https://github.com/valentjn/class-notes/releases/latest/download/optical-phenomena.pdf)
+  - [Basic Principles of Geosciences *(Geowissenschaftliche Grundlagen der Planetenforschung)*](https://github.com/valentjn/class-notes/releases/latest/download/basic-principles-of-geosciences.pdf)
+  - [History of Wind Energy Use *(Geschichte der Windenergie-Nutzung)*](https://github.com/valentjn/class-notes/releases/latest/download/history-of-wind-energy-use.pdf)
 
 ## How to Build
 
