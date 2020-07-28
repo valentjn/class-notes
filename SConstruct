@@ -135,8 +135,13 @@ pdfs = []
 for dirName in dirNames:
   dirType = ("lectures" if dirName != "collection" else "collection")
   dirPath = (f"lectures/{dirName}" if dirType != "collection" else "collection")
-  dependencies = Helper.translateSrcToBuild(Glob(f"src/{dirPath}/*"))
-  env.InstallAs(target=f"build/{dirPath}/{dirName}.tex", source="build/common/preamble.tex")
+
+  dependencies = []
+  dependencies.extend(Helper.translateSrcToBuild(Glob(f"src/{dirPath}/*")))
+  dependencies.extend(env.Install(target=f"build/{dirPath}", source=Glob("build/common/*")))
+  dependencies.extend(env.Command(target=f"build/{dirPath}/{dirName}.tex",
+      source=f"build/{dirPath}/preamble.tex", action=Move("$TARGET", "$SOURCE")))
+  dependencies = [x for x in dependencies if x.name != "preamble.tex"]
 
   if dirType == "lectures":
     dependencies.extend(env.Install(target=f"build/{dirPath}",
