@@ -5,18 +5,18 @@
 *Julian Valentin*
 
 [![Travis CI status](https://img.shields.io/travis/valentjn/class-notes/master)](https://travis-ci.org/github/valentjn/class-notes)
-[![Collection PDF download](https://img.shields.io/badge/collection%20PDF-download-blue)](https://github.com/valentjn/class-notes/releases/latest/download/-collection.pdf)
+[![Collection PDF download](https://img.shields.io/badge/collection%20PDF-download-blue)][collection]
 [![CC BY-SA 4.0 license](https://img.shields.io/badge/license-CC%20BY--SA%204.0-blue)][license]
 
 This repository contains L<sup>A</sup>T<sub>E</sub>X-ed class notes in German taken during lectures at the University of Stuttgart, Germany, in the years of 2009 to 2014. Their main purpose was helping me study and prepare for exams. Due to time constraints, most of the drawings and mathematical proofs are missing. However, these class notes are provided here in the hope that somebody might benefit from them. Mistakes can be reported at the [GitHub repo](https://github.com/valentjn/class-notes). The L<sup>A</sup>T<sub>E</sub>X realization of the notes (i.e., source code and PDFs) is licensed under the [CC BY-SA 4.0 license][license].
 
-The class notes consist of 31 lectures, 178 chapters, and over 1100 pages, treating various areas of mathematics and computer science. In case an English translation of a paragraph is needed, [DeepL](https://www.deepl.com/translator) seems to produce somewhat suitable translations.
+Totaling to 31 lectures, 178 chapters, more than 1100 pages, and over 500,000 words (mostly formulas), the compactly-presented class notes yield a small library covering a wide variety of different topics of mathematics and computer science. The class notes are available as per-lecture PDFs and as a collection PDF, which combines all lectures into a single handy 9 MB PDF file.
 
-A “collection” PDF that combines all lectures into a single handy 9 MB PDF file is available as well.
+In case an English translation of a paragraph is needed, [DeepL](https://www.deepl.com/translator) seems to produce somewhat usable translations.
 
 ## Lectures
 
-**[>> Collection of all class notes <<](https://github.com/valentjn/class-notes/releases/latest/download/-collection.pdf)**
+**[>> Collection of all class notes <<][collection]**
 
 - **Analysis**
   - [Analysis 1](https://github.com/valentjn/class-notes/releases/latest/download/analysis-1.pdf)
@@ -65,11 +65,12 @@ To build the PDFs yourself, the following is required:
 - [Python 3](https://www.python.org/)
 - [SCons](https://scons.org/)
 
-Execute `scons` to build all lectures and the collection. Use `-j 4` to run four jobs simultaneously. Supply a space-separated list of lecture names (may include `collection`) to build specific PDFs. The PDFs will be stored in `build/lectures/LECTURENAME` and `build/collection`, respectively.
+Execute `scons` to build the collection and all lectures. Use `-j 4` to run four jobs simultaneously. Supply a space-separated list of lecture names to build specific PDFs. Run `scons -h` to obtain a list of lecture names. The PDFs will be stored in `build/collection` and `build/lectures/LECTURENAME`, respectively.
 
 ### Possible Problems
 
-- Make sure that your system runs SCons with Python 3, otherwise running `scons` will fail (e.g., Ubuntu). On Linux, you can try running `/usr/bin/env python3 $(which scons)` instead.
+- Make sure that your system runs SCons with Python 3, otherwise running `scons` might fail (e.g., Ubuntu). On Linux, you can try running `/usr/bin/env python3 $(which scons)` instead.
 - For other potential build problems, a look at `.travis.yml` might help.
 
+[collection]: https://github.com/valentjn/class-notes/releases/latest/download/-collection.pdf
 [license]: https://creativecommons.org/licenses/by-sa/4.0/
