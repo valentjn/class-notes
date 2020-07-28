@@ -4,7 +4,11 @@
 
 *Julian Valentin*
 
-This repository contains L<sup>A</sup>T<sub>E</sub>X-ed class notes in German taken during lectures at the University of Stuttgart, Germany, in the years of 2009 to 2014. Their main purpose was helping me studying and preparing for exams. Due to time constraints, most of the drawings and mathematical proofs are missing. However, these class notes are provided here in the hope that somebody might benefit from them. Mistakes can be reported at the [GitHub repo](https://github.com/valentjn/class-notes). The L<sup>A</sup>T<sub>E</sub>X realization of the notes (i.e., source code and PDFs) is licensed under the [CC BY-SA 4.0 license](https://creativecommons.org/licenses/by-sa/4.0/).
+[![Travis CI status](https://img.shields.io/travis/valentjn/class-notes/master)](https://travis-ci.org/github/valentjn/class-notes)
+[![Collection PDF download](https://img.shields.io/badge/collection%20PDF-download-blue)](https://github.com/valentjn/class-notes/releases/latest/download/-collection.pdf)
+[![CC BY-SA 4.0 license](https://img.shields.io/badge/license-CC%20BY--SA%204.0-blue)][license]
+
+This repository contains L<sup>A</sup>T<sub>E</sub>X-ed class notes in German taken during lectures at the University of Stuttgart, Germany, in the years of 2009 to 2014. Their main purpose was helping me studying and preparing for exams. Due to time constraints, most of the drawings and mathematical proofs are missing. However, these class notes are provided here in the hope that somebody might benefit from them. Mistakes can be reported at the [GitHub repo](https://github.com/valentjn/class-notes). The L<sup>A</sup>T<sub>E</sub>X realization of the notes (i.e., source code and PDFs) is licensed under the [CC BY-SA 4.0 license][license].
 
 The class notes consist of 31 lectures, 178 chapters, and over 1100 pages, treating various areas of mathematics and computer science. In case an English translation of a paragraph is needed, [DeepL](https://www.deepl.com/translator) seems to produce somewhat suitable translations.
 
@@ -67,3 +71,5 @@ Execute `scons` to build all lectures and the collection. Use `-j 4` to run four
 
 - Make sure that your system runs SCons with Python 3, otherwise running `scons` will fail (e.g., Ubuntu). On Linux, you can try running `/usr/bin/env python3 $(which scons)` instead.
 - For other potential build problems, a look at `.travis.yml` might help.
+
+[license]: https://creativecommons.org/licenses/by-sa/4.0/
