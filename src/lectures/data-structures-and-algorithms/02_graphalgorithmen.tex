@@ -84,8 +84,8 @@ Die von $s$ erreichbaren Knoten sind $s$ und alle Knoten, die von
 Knoten $u$ mit $(s, u) \in E$ erreichbar sind.
 
 \begin{lstlisting}
-DFS(u)                                                    Annahme: Erreichbar[] ist Boolesches Array
-    Erreichbar[u] := true                                  mit $\forall_{v \in V}$ Erreichbar[$v$] = false (zu Beginn)
+DFS(u)                                            Annahme: Erreichbar[] ist Boolesches Array
+    Erreichbar[u] := true                          mit $\forall_{v \in V}$ Erreichbar[$v$] = false (zu Beginn)
     forall e = (u, w)
         if Erreichbar[w] = false
             DFS(w)
@@ -172,12 +172,12 @@ DFS(v)                                                      Globale Variablen:
     $E = T \;\dot{\cup}\; F \;\dot{\cup}\; B \;\dot{\cup}\; C$,
 
     \item
-    die Menge $T$ entspricht dem Aufrufwald der rekursiven Aufrufe,
+    Die Menge $T$ entspricht dem Aufrufwald der rekursiven Aufrufe.
 
     \item
     $v \rightarrow^\ast_T w \;\Leftrightarrow\;$
     \code{dfsnum[}$v$\code{]} $\le$ \code{dfsnum[}$w$\code{]} $\;\land\;$
-    \code{compnum[}$v$\code{]} $\ge$ \code{compnum[}$w$\code{]},
+    \code{compnum[}$v$\code{]} $\ge$ \code{compnum[}$w$\code{]}
 
     \item
     Seien $v, w, z \in V$ mit $v \rightarrow^\ast_T w$ und
@@ -191,24 +191,25 @@ DFS(v)                                                      Globale Variablen:
 
     \item
     $\forall_{(v, w) \in E}\; (v, w) \in T \cup F \;\Leftrightarrow\;$
-    \code{dfsnum[}$v$\code{]} $<$ \code{dfsnum[}$w$\code{]},
+    \code{dfsnum[}$v$\code{]} $<$ \code{dfsnum[}$w$\code{]}
 
     \item
     $\forall_{(v, w) \in E}\; (v, w) \in B \;\Leftrightarrow\;$
     \code{dfsnum[}$v$\code{]} $>$ \code{dfsnum[}$w$\code{]} $\;\land\;$
-    \code{compnum[}$v$\code{]} $<$ \code{compnum[}$w$\code{]},
+    \code{compnum[}$v$\code{]} $<$ \code{compnum[}$w$\code{]}
 
     \item
     $\forall_{(v, w) \in E}\; (v, w) \in C \;\Leftrightarrow\;$
     \code{dfsnum[}$v$\code{]} $>$ \code{dfsnum[}$w$\code{]} $\;\land\;$
-    \code{compnum[}$v$\code{]} $>$ \code{compnum[}$w$\code{]}.
+    \code{compnum[}$v$\code{]} $>$ \code{compnum[}$w$\code{]}
 \end{itemize}
 
 \linie
 
 \textbf{Folgerungen}:
 Die Klassifizierung der Kanten aus $E$ in $T$-/$F$-/$B$-/$C$-Kanten kann
-mittels \code{dfsnum}/\code{compnum} ef"|fizient algorithmisch erfolgen. \\
+mittels \\
+\code{dfsnum}/\code{compnum} ef"|fizient algorithmisch erfolgen. \\
 $G$ ist azyklisch
 (d.\,h. besitzt keine Zyklen, also Pfade mit demselben Anfangs- und Endpunkt)
 $\;\Leftrightarrow\; \forall_{(v,w) \in E}\;$
@@ -344,11 +345,11 @@ die Knoten in $[v]$.
 Somit können die SZHKs in $\O(n + m)$ berechnet werden.
 
 \begin{lstlisting}
-DFS($v$)                                                                  forall $v \in V$
-    besucht[$v$] :=  true                                                      besucht[v] := false
-    count1++                                                               fertig[v] := false
-    dfsnum[$v$] :=  count1                                                     count1 := 0
-    lownum[$v$] :=  dfsnum[$v$]                                                   DFS(v)
+DFS($v$)                                                            forall $v \in V$
+    besucht[$v$] :=  true                                                besucht[v] := false
+    count1++                                                         fertig[v] := false
+    dfsnum[$v$] :=  count1                                               count1 := 0
+    lownum[$v$] :=  dfsnum[$v$]                                             DFS(v)
     unfertig.push(v)
 
     forall $e = (v, w)$

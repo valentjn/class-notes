@@ -92,7 +92,7 @@ $\exists_{X \pd}\; A^T X + XA + C^T C \nd,\; \Spur(B^T X B) \prec \gamma$.
 %$\dot{x} = Ax$, $z = Cx$, $x(0) = Be_k$
 %(also $z_k(t) = Ce^{At} Be_k$, da kein Eingang vorhanden ist).
 Seien $B_1, \dotsc, B_q$ die Spalten von $B$ und $z_k(t) = Ce^{At} B_k$ die Antworten
-von $\dot{x} = Ax + Bw$, $z = Cx$ auf einen Impuls im $k$-ten Eingang.
+von $\dot{x} = Ax + Bw$, $z = Cx$ auf einen Impuls im $k$-ten Eingang.\\
 Es gilt
 $\sum_{k=1}^q \int_0^\infty \norm{z_k(t)}^2 \dt
 = \sum_{k=1}^q B_k^T \left[\int_0^\infty e^{A^T t} C^T C e^{At} \dt\right] B_k
@@ -300,7 +300,7 @@ $\widetilde{w}$ heißt \begriff{farbiges Rauschen (colored noise)}, falls es
 $(\widetilde{A}, \widetilde{B}, \widetilde{C})$ gibt
 mit $\widetilde{A}$ einer Hurwitz-Matrix, sodass
 $\widetilde{w}$ der Ausgang von
-$\dot{\widetilde{x}} = \widetilde{A} \widetilde{x} + \widetilde{B} \dot{W}$,
+$\dotwidetilde{x} = \widetilde{A} \widetilde{x} + \widetilde{B} \dot{W}$,
 $\widetilde{w} = \widetilde{C} \widetilde{x}$, $\widetilde{x}(0) = 0$ ist.
 
 Man spricht auch davon, dass man $\widetilde{w}$ durch
@@ -320,7 +320,7 @@ $\widetilde{w}(t)$ und $\widetilde{w}(t + \tau)$, d.\,h.
 $R(\tau) := \lim_{t \to \infty} \EE[\widetilde{w}(t + \tau) \widetilde{w}(t)^T]$.
 
 \textbf{Satz (algebraische Berechnung von $R(\tau)$)}:
-Seien $\widetilde{A}$ eine Hurwitz-Matrix und $\widetilde{P}$ die Regelbarkeits-Gram-Matrix
+Seien $\widetilde{A}$ eine Hurwitz-Matrix und $\widetilde{P}$ die Regelbar"-keits-Gram-Matrix
 von $(\widetilde{A}, \widetilde{B})$
 (d.\,h. die eindeutige Lösung von
 $\widetilde{A} \widetilde{P} +
@@ -373,7 +373,7 @@ Man nennt $T$ einen \begriff{Spektralfaktor (spectral factor)} von $G$.
 Die Antwort des linearen Systems\\
 $\dot{x} = Ax + B\widetilde{w}$, $z = Cx + D\widetilde{w}$,
 $x(0) = \xi$, das durch farbiges Rauschen betrieben wird, ist definiert durch den Ausgang von
-$\smallpmatrix{\dot{x} \\ \dot{\widetilde{x}}} =
+$\smallpmatrix{\dot{x} \\ \dotwidetilde{x}} =
 \smallpmatrix{A & B\widetilde{C} \\ 0 & \widetilde{A}} \smallpmatrix{x \\ \widetilde{x}} +
 \smallpmatrix{0 \\ \widetilde{B}} \dot{W}$,
 $z = \smallpmatrix{C & D\widetilde{C}} \smallpmatrix{x \\ \widetilde{x}}$,
@@ -482,7 +482,7 @@ $\gamma_\opt = \Spur(B_w^T P B_w)$, wobei der optimale Wert für $F = B^T P$ ang
 Gegeben sei wieder $\dot{x} = Ax + B_w w + Bu$,
 $z = C_z x + D_z u$, $y = Cx + D_w w$.
 Wenn $w = 0$ gilt, dann ist
-$\dot{\widehat{x}} = A\widehat{x} + Bu + L(y - \widehat{y})$,
+$\dotwidehat{x} = A\widehat{x} + Bu + L(y - \widehat{y})$,
 $\widehat{z} = C_z \widehat{x} + D_z u$,
 $\widehat{y} = C\widehat{x}$
 ein Beobachter für dieses System, wobei $L$ so gewählt ist, dass $A - LC$ eine Hurwitz-Matrix ist
@@ -554,7 +554,7 @@ sowie $Q$ die stabilisierende Lösung der ARE $AQ + QA^T - QC^T CQ + B_w B_w^T =
 Dann löst der Regler
 $\dot{x}_K = (A - BB^T P - QC^T C) x_K + QC^T y$, $u = -B^T P x_K$
 das $H_2$-Regelungsproblem und die zugehörige optimale $H_2$-Norm des geschlossenen Regelkreises
-ist gleich
+ist gleich\\
 $\sqrt{\Spur(B_w^T P B_w) + \Spur(B^T PQPB)}$.
 
 Die erste Voraussetzung ist notwendig für die Existenz eines stabilisierenden Reglers.

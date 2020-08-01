@@ -58,6 +58,8 @@ overriding_indicator ::= [not] overriding
     \end{itemize}
 \end{Def}
 
+\pagebreak
+
 \section{%
     Zeigertypen%
 }
@@ -118,6 +120,8 @@ Put (Anker.Inhalt);
     Zwei Zeiger sind gleich, wenn sie auf dieselbe Variable zeigen.
 \end{Def}
 
+\pagebreak
+
 \section{%
     Listen%
 }
@@ -153,7 +157,7 @@ Put (Anker.Inhalt);
 \begin{Def}{Queue (Schlange)}
     Eine \begriff{Queue} ist eine lineare Liste mit genau den Operationen
     \adacode{Empty(A)} (leert eine Liste durch Setzen auf Nullpointer),
-    \adacode{Isempty(A)} (überprüft, ob \adacode{A} leer ist),
+    \adacode{Isempty(A)} (überprüft, ob \adacode{A} leer ist), \\
     \adacode{First(A)} (gibt das erste Element zurück),
     \adacode{Enter(A, E)} (fügt ein Element ans Ende an),
     \adacode{Remove(A)} (löscht das erste Element der Liste). \\
@@ -211,6 +215,8 @@ Zeiger : Ptr_Integer := I'Access;
     Allgemein erhält ein Objekt, das auf Objekte der Referenzstufe $k$
     verweist, die Referenzstufe $k + 1$.
 \end{Def}
+
+\pagebreak
 
 \section{%
     Bäume%
@@ -275,8 +281,6 @@ Zeiger : Ptr_Integer := I'Access;
     sind größer/gleich dem Inhalt von $u$.
 \end{Def}
 
-\pagebreak
-
 \begin{Def}{Durchlauf von binären Bäumen}
 
     \begin{tabular}{lll}
@@ -286,20 +290,20 @@ procedure Inorder (b : Ref_BinBaum)
 is begin
    if b /= null then
       Inorder (b.L);
-      --  hier Knoten b bearbeiten
+      --  Knoten b bearbeiten
       Inorder (b.R);
    end if;
 end Inorder;
 \end{lstlisting} &
 \begin{lstlisting}[language=ada]
---  hier Knoten b bearbeiten
+--  Knoten b bearbeiten
 Preorder (b.L);
 Preorder (b.R);
 \end{lstlisting} &
 \begin{lstlisting}[language=ada]
 Postorder (b.L);
 Postorder (b.R);
---  hier Knoten b bearbeiten
+--  Knoten b bearbeiten
 \end{lstlisting}
     \end{tabular}
 
@@ -307,6 +311,8 @@ Postorder (b.R);
     Im ungünstigsten Fall benötigt man $n$ Speicherplätze, im günstigsten
     proportional zu $\log n$.
 \end{Def}
+
+\pagebreak
 
 \section{%
     Relationen und Graphen%
@@ -329,7 +335,7 @@ Postorder (b.R);
     $R$ heißt \begriff{irreflexiv}, falls $\forall_{x \in M}\; \lnot(xRx)$.
     $R$ heißt \begriff{symmetrisch}, falls
     $\forall_{x, y \in M}\; (xRy \Leftrightarrow yRx)$.
-    $R$ heißt \begriff{antisymmetrisch}, falls
+    $R$ heißt \begriff{antisym"-metrisch}, falls
     $\forall_{x, y \in M}\; (xRy \land yRx \Rightarrow x = y)$.
     $R$ heißt \begriff{transitiv}, falls \\
     $\forall_{x, y, z \in M}\; (xRy \land yRz \Rightarrow xRz)$.

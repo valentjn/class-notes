@@ -44,11 +44,11 @@
 \vspace{-30pt}
 \begin{lstlisting}[language=ada]
 <with/use-Bereich>
-procedure <Name des Programms> is
+procedure <Name> is
    <Deklarationsteil>
 begin
    <Anweisungsteil>
-end <Name des Programms>;
+end <Name>;
 \end{lstlisting}
 \vspace{-25pt}
         &
@@ -65,11 +65,11 @@ end <Name des Programms>;
 
 \begin{Def}{Deklarationsteil}
     enthält \begriff{Variablen-}
-    (\adacode{<Liste von Variablen> : <Datentyp>;}) sowie
+    (\adacode{<Liste von Variablen> : <Typ>;}) sowie\\
     \begriff{Konstantendeklarationen}
-    (\adacode{<Bezeichner> : constant <Datentyp> := <Ausdruck>;}),
+    (\adacode{<Name> : constant <Typ> := <Ausdruck>;}),
     bei \adacode{Integer} und \adacode{Float} darf der Datentyp weggelassen
-    werden) \\
+    werden),
     zu den wichtigsten skalaren Datentypen gehören \adacode{Boolean},
     \adacode{Integer}, \adacode{Float} sowie \adacode{Character}
 \end{Def}
@@ -82,24 +82,26 @@ end <Name des Programms>;
     (\adacode{Get (<Variable>);}, \adacode{Put (<Variable>);})
 \end{Def}
 
+\pagebreak
+
 \section{%
     Funktionen und Prozeduren%
 }
 
 \begin{Def}{Funktionsdeklaration} \\
-    \begin{tabular}{p{7.8cm}p{8.1cm}}
+    \begin{tabular}{p{7.6cm}p{8.3cm}}
 \vspace{-30pt}
 \begin{lstlisting}[language=ada]
-function <Name der Funktion> (<Parameter>)
+function <Name> (<Parameter>)
   return <Datentyp> is
    <Deklarationsteil>
 begin
    <Anweisungsteil>
-end <Name der Funktion>;
+end <Name>;
 \end{lstlisting}
 \vspace{-25pt}
         &
-        \begin{minipage}[c]{8.1cm}
+        \begin{minipage}[c]{8.3cm}
     in der Funktion muss man auf eine elementare Anweisung der Form
     \adacode{return <Ausdruck>;} stoßen,
     die Liste der \begriff{formalen Parameter} enthält
@@ -108,17 +110,15 @@ end <Name der Funktion>;
     \end{tabular}
 \end{Def}
 
-\pagebreak
-
 \begin{Def}{Prozedurdeklaration} \\
     \begin{tabular}{p{8.0cm}p{8.0cm}}
 \vspace{-30pt}
 \begin{lstlisting}[language=ada]
-procedure <Name der Prozedur> (<Parameter>) is
+procedure <Name> (<Parameter>) is
    <Deklarationsteil>
 begin
    <Anweisungsteil>
-end <Name der Prozedur>;
+end <Name>;
 \end{lstlisting}
 \vspace{-25pt}
         &
@@ -142,6 +142,8 @@ end <Name der Prozedur>;
     (z.~B. \adacode{function "+"} usw.)
 \end{Def}
 
+\pagebreak
+
 \section{%
     Skalare Datentypen%
 }
@@ -153,7 +155,7 @@ end <Name der Prozedur>;
     \begriff{zusammengesetzte Datentypen}
 \end{Def}
 
-\begin{Def}{Aufzählungstypen}
+\begin{Def}{Aufzählungstyp}
     \adacode{type <Name des Datentyps> is (<Liste der Elemente>);} \\
     (der Aufzählungstyp ist geordnet, d.~h. die Reihenfolge ordnet die Elemente
     an) \\
@@ -202,10 +204,11 @@ end <Name der Prozedur>;
 \end{Def}
 
 \begin{Def}{\adacode{Float}}
-    es können eigene Floattypen festgelegt werden:
-    durch Angabe von Ober-/Untergrenze
+    eigene Floattypen festlegen
+    durch Angabe von Ober-/Untergrenze \\
     (\adacode{type <Datentypname> is delta d range unten .. oben;})
-    oder durch Angabe der Dezimalziffern
+    oder durch Angabe \\
+    der Dezimalziffern
     (\adacode{type <Datentypname> is delta p digits a;}, hier ist \adacode{p}
     eine Zehnerpotenz),
     der eingebaute Typ \adacode{Float} besitzt eine Genauigkeit von mindestens
@@ -241,6 +244,8 @@ end <Name der Prozedur>;
     (über \adacode{with} und ggf. \adacode{use} einbinden)
 \end{Def}
 
+\pagebreak
+
 \section{%
     Felder%
 }
@@ -275,7 +280,7 @@ end <Name der Prozedur>;
 \begin{Def}{Unspezifizierte Feldgrenzen}
     bei Typdeklaration ist es erlaubt, die Feldgrenzen wegzulassen und
     stattdessen \adacode{<Datentyp> range <>} zu schreiben \\
-    (z.~B. \adacode{type Text is array (Natural range <>) of Character;}).
+    (z.~B. \adacode{type Text is array (Natural range <>) of Character;}). \\
     Die Feldgrenzen müssen jedoch bei der Variablendeklaration angegeben
     werden.
     Operationen: \adacode{T'Range (I)} (gibt den Felddatentyp der
@@ -329,6 +334,8 @@ end <Name der Prozedur>;
     \end{itemize}
 \end{Def}
 
+\pagebreak
+
 \section{%
     Kontrollstrukturen%
 }
@@ -363,7 +370,7 @@ Von \Ada{} werden alle Möglichkeiten ausgewertet, die
 \adacode{case}-Anweisung wird nur dann ausgeführt, wenn genau einmal der Wert
 \adacode{True} vorkam.
 
-\begin{tabular}{p{4.1cm}p{4.1cm}p{7.4cm}}
+\begin{tabular}{p{4.1cm}p{4.1cm}p{7.5cm}}
 \begin{Def}{\adacode{while}-Schleife}
 \begin{lstlisting}[language=ada]
 while B loop
@@ -418,12 +425,14 @@ emphstyle=\underbar]
     aus einem Block heraus springen.
 \end{Def}
 
+\pagebreak
+
 \section{%
     Records%
 }
 
 \begin{Def}{Records} \\
-\begin{tabular}{p{6.0cm}p{10.0cm}}
+\begin{tabular}{@{}p{5.7cm}p{10.8cm}@{}}
 \vspace{-10pt}
 \begin{lstlisting}[language=ada]
 type Datum is record
@@ -438,7 +447,7 @@ end record;
 \begin{lstlisting}[language=ada]
 --  Tag, Monat und Jahr heissen Selektoren
 WM_Beginn : Datum := (2010, Juni, 11);
-Neujahr : Datum := Datum'(2011, Tag => 1, Monat => Januar);
+NJ : Datum := Datum'(2011, Tag => 1, Monat => Januar);
 --  Datum'/Verbundaggregat kann man weglassen
 \end{lstlisting}
 \vspace{-10pt}
@@ -456,8 +465,6 @@ Neujahr : Datum := Datum'(2011, Tag => 1, Monat => Januar);
     (\adacode{Datum'}) erforderlich.
 \end{Def}
 
-\pagebreak
-
 \begin{Def}{Variante Records} \\
 \begin{tabular}{p{8.0cm}p{8.0cm}}
 \vspace{-10pt}
@@ -467,7 +474,7 @@ type Student (Herkunft : SL) is record
    Name : Unbounded_String;
    Matrikelnummer : Positive;
    case Herkunft is
-      when D => Geburtsort : Unbounded_String;
+      when D => Ort : Unbounded_String;
       when EU | sonst =>
               Land : Unbounded_String;
    end case;
@@ -482,8 +489,8 @@ type Fahrzeug (Art : Kategorie := PKW)
         is record
    Laenge, Breite, Hoehe : Float;
    case Art is
-      when Bus => record Sitzplaetze : 8 .. 60;
-        Stehplaetze : 0 .. 80; end record;
+      when Bus => record Sitzpl : 8 .. 60;
+        Stehpl : 0 .. 80; end record;
       when PKW => Airbags : Positive;
       when Karren => null record;
    end case;

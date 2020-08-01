@@ -70,12 +70,13 @@
     In \Ada{} kann am Ende jedes Blocks eine Ausnahmebehandlung definiert
     werden.
     Dazu deklariert man im Deklarationsteil (z.~B. des Packages) mittels \\
-    \adacode{Fehlername : exception;} die Ausnahme.
+    \adacode{Fehler : exception;} die Ausnahme.
     In einem Unterprogramm wird diese mittels \\
-    \adacode{raise Fehlername;} geworfen.
+    \adacode{raise Fehler;} geworfen.
     Fehler kann man in einem übergeordneten Unterprogramm
-    durch \adacode{exception when Fehlername => Put ("1");
-    when others => Put ("2");} kontrolliert abfangen.
+    durch \adacode{exception when Fehler => Put ("1");
+    when others => Put ("2");} \\
+    kontrolliert abfangen.
     Im Falle eines Fehlers wird dabei nach der Ausnahmebehandlung gesucht
     (notfalls wird zum übergeordneten Block gewechselt).
     Dabei werden u.~U. auch Prozeduren/ Funktionen verlassen und der
@@ -142,7 +143,8 @@
             \mathtt{\mathbf{access}}, \mathtt{\mathbf{name}}\}$ die
             Parameterübergabe angibt.
             Der Prozeduraufruf $\mathtt{P(\alpha_1, \ldots, \alpha_n)}$ mit den
-            aktuellen Parametern $\mathtt{\alpha_1}, \mathtt{\ldots},
+            aktuellen Parametern\\
+            $\mathtt{\alpha_1}, \mathtt{\ldots},
             \mathtt{\alpha_n}$ wird dann durch
             nebenstehenden Block ersetzt.
         \end{minipage}
@@ -195,7 +197,7 @@
     aktuellen Parameter zugewiesen) und \adacode{in out}
     (wie \adacode{out}, aber dem formalen Parameter
     wird wie bei \adacode{in} anfangs der Wert des aktuellen Parameters
-    zugewiesen). \\
+    zugewiesen).
     In Funktionen sind nur \adacode{in}-Parameter erlaubt
     (Standard, wenn nicht angegeben).
 \end{Def}
@@ -219,12 +221,12 @@
 \begin{Def}{Schematischer Aufbau eines Moduls}
 \begin{lstlisting}[language=pseudosprache]
 module <Name des Moduls> is
-[with ...; use ...]   --  Angaben, welche anderen Einheiten verwendet werden und in welcher Weise
-specification ...     --  Angabe der nach aussen sichtbaren Datentypen, Konstanten, Variablen und
+[with ...; use ...]   --  welche anderen Einheiten verwendet werden und in welcher Weise
+specification ...     --  nach aussen sichtbare Datentypen, Konstanten, Variablen und
                       --  "Methoden" (also Funktionen, Operatoren usw.)
-[implementation ...]  --  weitere (nach aussen nicht sichtbare) Deklarationen sowie Programme
-                      --  zur Implementierung der Methoden und Typen
-[begin ... end]       --  Anweisungen zur Initialisierung, einschliesslich der Ausnahmebehandlungen
+[implementation ...]  --  weitere (nach aussen nicht sichtbare) Deklarationen sowie
+                      --  Programme zur Implementierung der Methoden und Typen
+[begin ... end]       --  Initialisierung, einschliesslich Ausnahmebehandlungen
 end module [<Name des Moduls>]
 \end{lstlisting}
     \vspace{-10pt}
@@ -251,6 +253,8 @@ end module [<Name des Moduls>]
     Sollen diese Operationen nicht für die Benutzer des Moduls zugelassen
     werden, so muss man den Typ als \adacode{limited private} deklarieren.
 \end{Def}
+
+\pagebreak
 
 \section{%
     Polymorphie%
@@ -297,6 +301,8 @@ IntTausch (X, Y);
     Das Problem wird durch generische Pakete gelöst.
 \end{Def}
 
+\pagebreak
+
 \section{%
     Vererbung%
 }
@@ -311,11 +317,11 @@ IntTausch (X, Y);
 \end{Def}
 
 \begin{Def}{Spezialisierung in \Ada{}}
-    Mittels \adacode{type abc is tagged record ... end record;} kann man einen
-    Record erstellen, der erweitert werden soll.
+    Mittels \adacode{type abc is tagged record ... end record;} \\
+    kann man einen Record erstellen, der erweitert werden soll.
     Bei der Erweiterung mit einem \begriff{Unterda\-tentyp} muss der
-    \begriff{Obertyp} per
-    \adacode{type xyz is new abc with record ... end record;} angegeben werden.
+    \begriff{Obertyp} per \\
+    \adacode{type xyz is new abc with record ... end record;} angegeben werden. \\
     Man spricht beim Vorgang, Eigenschaften an andere Einheiten
     weiterzureichen, von \begriff{Vererbung}.
     Die Obertypen heißen \begriff{Eltern}, die Untertypen \begriff{Kinder}.

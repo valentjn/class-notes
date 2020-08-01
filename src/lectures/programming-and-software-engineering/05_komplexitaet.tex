@@ -112,8 +112,6 @@
 \pagebreak
 
 \begin{Def}{Befehle der Registermaschine} \\
-    \begin{tabular}{p{11.5cm}p{4.5cm}}
-        \begin{minipage}[c]{11.5cm}
     \begin{tabular}{lp{3cm}|ll|lll}
 \assembler{load V,c} & \pseudocode{V := c} &
 \assembler{copy V,V'} & \pseudocode{V := V'} \\
@@ -129,18 +127,14 @@
 \multicolumn{3}{l|}{\pseudocode{if F=1 then B := b else B := B + 1 fi}} \\ \hline
 \assembler{stop} & Anhalten
     \end{tabular}
-        \end{minipage}
-        &
-        \begin{minipage}[c]{4.5cm}
-            $V, V'$ Register, \\
-            $c \in \mathbb{Z}$, \quad
-            $b \in \mathbb{N}_0$, \\
-            $Rk$ $k$-te Speicherzelle, \\
-            $v \in \{>, \ge, <, \le, =, \not=\}$, \\
-            außer bei \assembler{jump} wird nach jedem Befehl \assembler{B}
-            um eins erhöht.
-        \end{minipage}
-    \end{tabular}
+
+    $V, V'$ Register,
+    $c \in \mathbb{Z}$,
+    $b \in \mathbb{N}_0$,
+    $Rk$ $k$-te Speicherzelle,
+    $v \in \{>, \ge, <, \le, =, \not=\}$,
+    außer bei \assembler{jump} wird nach jedem Befehl \assembler{B}
+    um eins erhöht.
 
     Diese Befehle finden sich bei allen Mikroprozessoren (bei diesen kommen
     Befehle hinzu). \\

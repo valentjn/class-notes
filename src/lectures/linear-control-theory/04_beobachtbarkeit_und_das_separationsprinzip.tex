@@ -152,7 +152,7 @@ Daher versucht man, den Zustand asymptotisch zu rekonstruieren.
 \textbf{Beobachter}:
 Ein \begriff{Beobachter (observer)} für das lineare System $\dot{x} = Ax + Bu$, $y = Cx + Du$
 ist das dynamische System
-$\dot{\widehat{x}} = A\widehat{x} + Bu + L(y - \widehat{y})$, $\widehat{y} = C\widehat{x} + Du$.
+$\dotwidehat{x} = A\widehat{x} + Bu + L(y - \widehat{y})$, $\widehat{y} = C\widehat{x} + Du$.
 
 Ein Beobachter ist eine Kopie des Originalsystems mit einem Korrekturterm $L(y - \widehat{y})$,
 der dazu dient, dass der geschätzte Zustand $\widehat{x}$ in Richtung $x$ geregelt wird
@@ -163,7 +163,7 @@ unterscheidet).
 Natürlich sollte der \begriff{Schätzfehler} $\widetilde{x} := x - \widehat{x}$ schnell gegen
 Null konvergieren.
 Für seine Dynamik gilt
-$\dot{\widetilde{x}} = \dot{x} - \dot{\widehat{x}} =
+$\dotwidetilde{x} = \dot{x} - \dotwidehat{x} =
 Ax + Bu - A\widehat{x} - Bu - L(y - \widehat{y})$\\
 $= A\widetilde{x} - L(Cx + Du - C\widehat{x} - Du)
 = (A - LC) \widetilde{x}$ (\begriff{Fehlerdynamik}).
@@ -330,21 +330,21 @@ $\widehat{x}$ zu ersetzen, d.\,h. $u = -F\widehat{x}$.
 
 \textbf{beobachterbasierter Ausgangsrückführungs-Regler}:
 Für die Design-Parameter $F$ und $L$ ist das lineare System
-$\dot{\widehat{x}} = A\widehat{x} + Bu + L(y - \widehat{y})$,
+$\dotwidehat{x} = A\widehat{x} + Bu + L(y - \widehat{y})$,
 $\widehat{y} = C\widehat{x} + Du$, $u = -F\widehat{x}$
 ein\\
 \begriff{beobachterbasierter Ausgangsrückführungs-Regler
 (observer-based output-feedback controller)}.
 
 Äquivalente Implementierungen sind
-$\dot{\widehat{x}} = (A - LC) \widehat{x} + (B - LD)u + Ly$, $u = -F\widehat{x}$ und
-$\dot{\widehat{x}} = (A - LC - BF + LDF) \widehat{x} + Ly$, $u = -F\widehat{x}$.
+$\dotwidehat{x} = (A - LC) \widehat{x} + (B - LD)u + Ly$, $u = -F\widehat{x}$ und
+$\dotwidehat{x} = (A - LC - BF + LDF) \widehat{x} + Ly$, $u = -F\widehat{x}$.
 
 \textbf{Satz (geschlossener Regelkreis)}:
 Die Verbindung des beobachterbasierten Ausgangsrück"-führungs-Regler mit dem ursprünglichen
 System führt zum geschlossenen Regelkreis\\
 $\dot{x}  = Ax - BF\widehat{x}$,
-$\dot{\widehat{x}} = (A - LC - BF) \widehat{x} + LCx$.
+$\dotwidehat{x} = (A - LC - BF) \widehat{x} + LCx$.
 Dieses System ist asymptotisch stabil genau dann, wenn $A - BF$ und $A - LC$ Hurwitz-Matrizen sind.
 
 Den Satz sieht man sehr schnell durch die Transformation
@@ -352,7 +352,7 @@ $\smallpmatrix{x \\ \widetilde{x}} = T \smallpmatrix{x \\ \widehat{x}}$ mit
 $T := \smallpmatrix{I & 0 \\ I & -I} = T^{-1}$.
 Damit ergibt sich $T \smallpmatrix{A & -BF \\ LC & A - LC - BF} T^{-1} = \A
 := \smallpmatrix{A - BF & BF \\ 0 & A - LC}$, d.\,h. die Eigenwerte des Systems
-$\smallpmatrix{\dot{x} \\ \dot{\widetilde{x}}} = \A \smallpmatrix{x \\ \widetilde{x}}$
+$\smallpmatrix{\dot{x} \\ \dotwidetilde{x}} = \A \smallpmatrix{x \\ \widetilde{x}}$
 sind gleich denen von $A - BF$ vereinigt mit denen von $A - LC$.
 
 \linie
@@ -415,7 +415,7 @@ Sei $v$ ein Rauschsignal und $\dot{x} = Ax + Bu$, $y = Cx + Du + v$ das durch da
 gestörte System.
 Der beobachterbasierte Ausgangsrückführungs-Regler soll aber gleich bleiben, weil er keinen
 Zugriff auf $v$ hat, d.\,h.
-$\dot{\widehat{x}} = A_c \widehat{x} + Ly$, $u = -F\widehat{x}$
+$\dotwidehat{x} = A_c \widehat{x} + Ly$, $u = -F\widehat{x}$
 mit $A_c := A - LC - BF + LDF$.
 Mit der Übertragungsmatrix $G(s) = C (sI - A)^{-1} B + D$ des Systems und
 $K(s) = -F(sI - A_c)^{-1} L$ der Übertragungsmatrix des Reglers erhält man

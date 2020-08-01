@@ -174,7 +174,7 @@ Die Aufgabe ist es, einen Regler zu gestalten, der das System stabilisiert und f
 $z$ asymptotisch alle konstanten Referenzsignale $r$ nachführt, d.\,h.\\
 $\lim_{t \to \infty} [r - z(t)] = 0$
 (für alle Anfangsbedingungen).
-Dieses Problem heißt \begriff{Nachführungsproblem (tracking problem)}.
+Dieses Problem heißt \begriff{Nachführungspro"-blem (tracking problem)}.
 
 Um das System stabilisieren zu können, wird von nun an angenommen, dass $(A, B)$ stabilisierbar
 und $(A, C)$ entdeckbar ist.
@@ -206,21 +206,21 @@ $[D_z - (C_z - D_z F)(A - BF)^{-1} B] G = I$.
 \textbf{Nachführung durch Ausgangsrückführung}:
 Wenn $x$ nicht messbar ist, also $y \not= x$ gilt, dann wählt man $L$, sodass $A - LC$ eine
 Hurwitz-Matrix ist, und verwendet den Beobachter
-$\dot{\widehat{x}} = A\widehat{x} + Bu + L(y - \widehat{y})$, $\widehat{y} = C\widehat{y} + Du$,
+$\dotwidehat{x} = A\widehat{x} + Bu + L(y - \widehat{y})$, $\widehat{y} = C\widehat{y} + Du$,
 um den Zustand asymptotisch rekonstruieren zu können.
 Das Separationsprinzip motiviert dann die Regelung des Systems durch
 $u = -F\widehat{x} + Gr$, wobei $F$ und $G$ die Verstärkungsmatrizen vom Regler mit
 vollständiger Information sind.
 
 \textbf{Satz (Nachführung durch das Separationsprinzip)}:
-Der so konstruierte Ausgangsrück"-führungs-Regler stabilisiert das System und
+Der so konstruierte Ausgangsrückfüh"-rungs-Regler stabilisiert das System und
 erzielt asymptotische Nachführung.
 
 % Tatsächlich stabilisiert der so konstruierte Ausgangsrückführungs-Regler das System und
 % erzielt Nachführung:
 % Wenn man den Fehler $\widetilde{x} = x - \widehat{x}$ definiert, so gilt
-% $\dot{\widetilde{x}} = (A - LC) \widetilde{x}$ unabhängig von $r$, d.\,h.
-% der geschlossene Regelkreis ist $\smallpmatrix{\dot{x} \\ \dot{\widetilde{x}}} =
+% $\dotwidetilde{x} = (A - LC) \widetilde{x}$ unabhängig von $r$, d.\,h.
+% der geschlossene Regelkreis ist $\smallpmatrix{\dot{x} \\ \dotwidetilde{x}} =
 % \smallpmatrix{A - BF & BF \\ 0 & A - LC} \smallpmatrix{x \\ \widetilde{x}} +
 % \smallpmatrix{BG \\ 0} r$,\\
 % $z = \smallpmatrix{C_z - D_z F & D_z F} \smallpmatrix{x \\ \widetilde{x}} + D_z Gr$.
@@ -398,7 +398,8 @@ $(A_E, C_E)$ ist entdeckbar genau dann, wenn
 $(A, C)$ entdeckbar ist und (D) gilt.
 
 \textbf{Lemma (asymptotisch verschwindende Störungen)}:
-Seien $A$ eine Hurwitz-Matrix und $\lim_{t \to \infty} v(t) = 0$.
+Seien $A$ eine Hurwitz-Matrix und\\
+$\lim_{t \to \infty} v(t) = 0$.
 Dann gilt für jede Lösung von $\dot{x} = Ax + v$, dass $\lim_{t \to \infty} x(t) = 0$.
 
 \linie
@@ -427,7 +428,7 @@ In diesem Fall wählt man
     $G := \Gamma + F\Pi$ mit $(\Pi, \Gamma)$ einer Lösung der Regulatorgleichung (R0).
 \end{enumerate}
 Dann löst der folgende Regler das Regulationsproblem:\\
-$\smallpmatrix{\dot{\widehat{x}} \\ \dot{\widehat{d}}}
+$\smallpmatrix{\dotwidehat{x} \\ \dotwidehat{d}}
 = \smallpmatrix{A & B_d \\ 0 & 0} \smallpmatrix{\widehat{x} \\ \widehat{d}} +
 \smallpmatrix{B \\ 0} u + L(y - \widehat{y})$,\quad
 $u = \smallpmatrix{-F & G} \smallpmatrix{\widehat{x} \\ \widehat{d}}$,\quad
@@ -500,7 +501,7 @@ In diesem Fall wählt man
     $G := \Gamma + F\Pi$ mit $(\Gamma, \Pi)$ einer Lösung der Regulatorgleichung (R).
 \end{enumerate}
 Der Regler
-$\smallpmatrix{\dot{\widehat{x}} \\ \dot{\widehat{d}}}
+$\smallpmatrix{\dotwidehat{x} \\ \dotwidehat{d}}
 = \smallpmatrix{A & B_d \\ 0 & S} \smallpmatrix{\widehat{x} \\ \widehat{d}} +
 \smallpmatrix{B \\ 0} u + L(y - \widehat{y})$,\quad
 $u = \smallpmatrix{-F & G} \smallpmatrix{\widehat{x} \\ \widehat{d}}$,\quad
@@ -578,7 +579,7 @@ Außerdem geht der zweite Summand gegen $0$ genau dann, wenn $C_1 X + C_2 = 0$ i
 Daher gilt $\lim_{t \to \infty} y(t) = 0$ für alle Trajektorien genau dann, wenn $C_1 X + C_2 = 0$.
 
 \textbf{Lemma (Ausgangsstabilität)}:
-Alle Trajektorien des Systems $\dot{x} = Ax$, $y = Cx$ erfüllen
+Alle Trajektorien des Systems $\dot{x} = Ax$, $y = Cx$ erfüllen\\
 $\lim_{t \to \infty} y(t) = 0$ genau dann, wenn $\E_{0+}(A) \subset N(C)$.
 
 \linie
@@ -621,7 +622,7 @@ Die Anlage
 $\smallpmatrix{\dot{x} \\ \dot{d} \\ e \\ y} =
 \smallpmatrix{A & B_d & B \\ 0 & S & 0 \\ C_e & D_{ed} & D_e \\ C & D_d & D}
 \smallpmatrix{x \\ d \\ u}$
-ist die \begriff{erweiterte verallgemeinerte Anlage}.
+ist die \begriff{erweiterte verallgemei"-nerte Anlage}.
 
 Es wird angenommen, dass $(A, B)$ stabilisierbar und $(A, C)$ entdeckbar ist.
 Außerdem soll $\Eig(S) \subset \complex^0 \cup \complex^+$ gelten, d.\,h. es werden nur
@@ -704,7 +705,7 @@ $\left(\smallpmatrix{A & B_d \\ 0 & S}, \smallpmatrix{C & D_d}\right)$ entdeckba
 wobei $\Eig(S) \subset \complex^0 \cup \complex^+$.\\
 Außerdem sei (C) ein Regler, der das Regulationsproblem löst.\\
 Dann gibt es eine Zustandskoordina"-ten-Transformation von (C) in\\
-$\dot{\widetilde{x}}_K = \smallpmatrix{S & \widetilde{C}_K \\ 0 & \widetilde{A}_K} \widetilde{x}_K
+$\dotwidetilde{x}_K = \smallpmatrix{S & \widetilde{C}_K \\ 0 & \widetilde{A}_K} \widetilde{x}_K
 + \smallpmatrix{\widetilde{D}_K \\ \widetilde{B}_K} y$,
 $u = \smallpmatrix{\Gamma & \widehat{C}_K} \widetilde{x}_K$.
 
