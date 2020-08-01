@@ -9,7 +9,8 @@ import sys
 FILTER_REGEXS = [
   r"^ system commands enabled\.$",
   r"^entering extended mode$",
-  r"^ restricted \\write18 enabled.$",
+  r"^ restricted system commands enabled\.$",
+  r"^ restricted \\write18 enabled\.$",
   r"^LaTeX2e <[0-9\-]+>",
   r"^ *L3 programming layer <[0-9\-]+>",
   r"^luaotfload | main : initialization completed in ",
@@ -40,6 +41,7 @@ FILTER_REGEXS = [
   r"^ Copyright \(c\) 1991-[0-9]+ by Kristoffer H. Rose <krisrose@tug\.org> and others$",
   r"^ Xy-pic is free software: see the User's Guide for details\.$",
   r"^Loading kernel: messages; fonts;",
+  r"^Package floatflt Message: Floating figure [0-9]+ set on page [0-9]+$",
 ]
 
 
