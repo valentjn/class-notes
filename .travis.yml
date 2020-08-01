@@ -38,8 +38,8 @@ script:
 
 before_deploy:
   - "mkdir deploy"
-  - "find build -name '*.pdf' | sort | grep -E 'lectures/([^/]+)/\\1.pdf|collection/collection.pdf' | xargs cp -t deploy/"
-  - "mv deploy/collection.pdf deploy/-collection.pdf"
+  - "find build -name '*.pdf' | sort | grep -E 'lectures/([^/]+)/\\1.pdf' | xargs cp -t deploy/"
+  - "cp build/collection/collection.pdf deploy/-collection.pdf"
 
 deploy:
   provider: "releases"
