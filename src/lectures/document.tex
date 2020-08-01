@@ -10,7 +10,13 @@
 
 {%
   \usekomafont{disposition}\huge%
-  Vorlesungsnotizen: \vorlesung{}\par%
+  Vorlesungsnotizen:
+  \ifdef{\vorlesungInLectureHeading}{%
+    \vorlesungInLectureHeading{}%
+  }{%
+    \vorlesung{}%
+  }%
+  \par%
 }
 \vspace*{1em}
 
