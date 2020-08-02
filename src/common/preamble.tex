@@ -262,21 +262,6 @@
   afterskip=1.5ex plus 0.2ex,
 ]{subsection}
 
-\makeatletter
-\AtBeginDocument{%
-  %\renewcommand*{\theHchapter}{%
-  %  \theHpart.\arabic{chapter}%
-  %}%
-  \renewcommand*{\theHlstnumber}{%
-    \ifx\lst@@caption\@empty
-      \lst@neglisting
-    \else
-      \theHlstlisting
-    \fi.\thelstnumber
-  }%
-}
-\makeatother
-
 \begin{document}
   \input{document}
 \end{document}
