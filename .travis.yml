@@ -1,6 +1,5 @@
 os: "linux"
 dist: "bionic"
-
 language: "minimal"
 
 addons:
@@ -8,30 +7,19 @@ addons:
     update: true
     packages:
       - "scons"
-      - "texlive-fonts-extra"
-      - "texlive-lang-cyrillic"
-      - "texlive-lang-german"
-      - "texlive-latex-extra"
-      - "texlive-luatex"
-      - "texlive-plain-generic"
-      - "texlive-science"
 
 install:
-  # update KOMA-Script and etoc packages as TeX Live 2017 is too old
-  - "mkdir tmp && cd tmp"
-  - "wget https://svwh.dl.sourceforge.net/project/koma-script/KOMA-Script/koma-script-3511.zip"
-  - "unzip koma-script-3511.zip"
-  - "rm koma-script-3511.zip"
-  - "sudo mv * /usr/local/share/texmf/"
-  - "wget http://mirrors.ctan.org/macros/latex/contrib/etoc.zip"
-  - "unzip etoc.zip"
-  - "cd etoc"
-  - "etex etoc.dtx"
-  - "sudo mkdir -p /usr/local/share/texmf/tex/latex/etoc"
-  - "sudo mv etoc.sty /usr/local/share/texmf/tex/latex/etoc/"
-  - "cd .. && rm -r etoc"
-  - "sudo texhash"
-  - "cd .. && rm -r tmp"
+  # list of packages (heavily modified output of "\RequirePackage{snapshot}")
+  - "export PACKAGES='bbm bbm-macros booktabs cancel charter chemgreek courier cyrillic dashrule enumitem epstopdf esint esvect etoc floatflt fontaxes framed gofonts ifmtarg import koma-script lastpage listings ly1 mathdesign mathtools mhchem microtype multirow silence siunitx snapshot translator ulem xcharter xcolor xkeyval xpatch xstring xypic'"
+  - "wget https://ftp.tu-chemnitz.de/pub/tug/historic/systems/texlive/2020/install-tl-unx.tar.gz"
+  - "tar -xzf install-tl-unx.tar.gz"
+  - "rm -f install-tl-unx.tar.gz"
+  - "cd install-tl*"
+  - "./install-tl \"--profile=$TRAVIS_BUILD_DIR/.travis.texlive-profile\""
+  - "cd .."
+  - "rm -rf install-tl*"
+  - "export PATH=\"/home/travis/local/share/texlive/bin/x86_64-linux:$PATH\""
+  - "tlmgr install $PACKAGES"
 
 script:
   - "/usr/bin/env python3 $(which scons) -j $(nproc)"
