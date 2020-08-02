@@ -6,18 +6,15 @@ class Helper(object):
   # check if a dependency is installed, fail if not (if desired)
   @staticmethod
   def checkProgramInstalled(env, program, fail=False):
-    if (not env.GetOption("help")) and (not env.GetOption("clean")):
-      conf = Configure(env, log_file=None)
+    if env.GetOption("help") or env.GetOption("clean"): return True
+    conf = Configure(env, log_file=None)
+    found = (conf.CheckProg(program) is not None)
+    conf.Finish()
 
-      if (conf.CheckProg(program) is None) and fail:
-        message = "Program \"{}\" required, but not found in PATH.".format(program)
-        if env["REQUIRE_PROGRAMS"]: raise RuntimeError(message)
-        else: warnings.warn(message)
+    if (not found) and fail:
+      raise RuntimeError("Program \"{}\" required, but not found in PATH.".format(program))
 
-      conf.Finish()
-      return False
-    else:
-      return True
+    return found
 
   @staticmethod
   def translateSrcToBuild(path):
@@ -62,18 +59,26 @@ env.Help(variables.GenerateHelpText(env))
 # (otherwise SCons won't rebuild even if it is necessary)
 env.Decider("timestamp-newer")
 
-# increase line length of LuaLaTeX error log lines by
+# increase line length of compiler error log lines by
 # setting environment variables
 env["ENV"]["max_print_line"] = "10000"
 env["ENV"]["error_line"] = "254"
 env["ENV"]["half_error_line"] = "238"
 
-# use LuaLaTeX as compiler (successor of pdfLaTeX)
-Helper.checkProgramInstalled(env, "lualatex", fail=True)
-# filter the output of LuaLaTeX with custom script
-luaLatex = "python3 {} --ignore-texinputs lualatex".format(File("#/tools/filterOutput.py").abspath)
-env.Replace(PDFTEX=luaLatex, PDFLATEX=luaLatex)
+# use LuaTeX-based compiler
+for compiler in ["luahbtex", "lualatex"]:
+  if Helper.checkProgramInstalled(env, compiler, fail=True): break
+  compiler = None
 
+if compiler is None: raise RuntimeError("No suitable compiler has been found")
+
+# filter the compiler output with custom script
+compilerCommand = "python3 {} --ignore-texinputs {}".format(
+    File("#/tools/filterOutput.py").abspath, compiler)
+env.Replace(PDFTEX=compilerCommand, PDFLATEX=compilerCommand)
+
+# set program name to use LaTeX instead of TeX
+env.Append(PDFLATEXFLAGS="--progname=lualatex")
 # show file and line number for errors
 env.Append(PDFLATEXFLAGS="--file-line-error")
 # enable SyncTeX for GUI editors
