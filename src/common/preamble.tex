@@ -10,7 +10,8 @@
   numbers=noendperiod,
 ]{scrreprt}
 
-\setparsizes{0em}{0.45\baselineskip plus .45\baselineskip}{0em plus 1fil}
+% set paragraph spacing
+\setparsizes{0em}{0.45\baselineskip plus 0.45\baselineskip}{0em plus 1fil}
 
 % set German as language
 \usepackage[ngerman]{babel}
@@ -55,36 +56,38 @@
   shrink=10,
 ]{microtype}
 
-% Durchschnittsintegral
+% integral signs
 \usepackage{esint}
 
-% fließende Grafiken
+% graphics
 \usepackage{graphicx}
+
+% floating figures
 \usepackage{floatflt}
 
 % own headers/footers, have different \leftmark/\rightmark despite one-sided document
 \usepackage[autooneside=false]{scrlayer-scrpage}
 \usepackage{lastpage}
 
-% Farbe (Kopf-/Fußzeile)
+% colors
 \usepackage{color}
 
 % relative imports
 \usepackage{import}
 
-% Unterstreichungen
+% underline
 \usepackage[normalem]{ulem}
 
-% gestrichelte Linien
+% dashed rules
 \usepackage{dashrule}
 
-% umrandete Boxen
+% framed boxes
 \usepackage{framed}
 
-% verbesserte Tabellen
+% prettier tables
 \usepackage{booktabs}
 
-% mehrere Zeilen für eine Zelle
+% multiple rows for one cell
 \usepackage{multirow}
 
 % SI units
@@ -92,30 +95,30 @@
 \DeclareSIUnit{\year}{a}
 \DeclareSIUnit{\ppm}{ppm}
 
-% Chemie
+% chemistry
 \usepackage[version=3]{mhchem}
 
-% erweiterte Vektorpfeile (gestrichene Vektoren)
+% vector arrows with subscripts
 \usepackage[e]{esvect}
 
-% angepasste Listen und Aufzählungen
+% customized lists
 \usepackage{enumitem}
 \setlist[enumerate]{label=\emph{(\arabic*)}}
 \renewlist{enumerate}{enumerate}{5}
 
-% Diagramme
+% diagrams
 \usepackage[all]{xy}
 
-% Blackboard-Fonts (auch für Kleinbuchstaben)
+% blackboard fonts (even for lowercase letters)
 \usepackage{bbm}
 
-% Querformat
+% landscape format
 \usepackage{lscape}
 
-% Kürzen
+% canceling terms
 \usepackage{cancel}
 
-% Quelltext
+% source code listings
 \usepackage{listings}
 \usepackage{scrhack}
 
@@ -133,7 +136,7 @@
   footskip=10mm,
 ]{geometry}
 
-% hyperref für PDF-Metainformationen und Hyperlinks
+% hyperref for PDF meta-information and links
 \usepackage{hyperref}
 \hypersetup{
   pdfkeywords={},
@@ -144,7 +147,7 @@
   linktoc=all,
 }
 
-% eigene Operatoren
+% own operators
 \newcommand*{\name}[1]{\textsc{#1}}
 \newcommand*{\smallpmatrix}[1]{\left(\begin{smallmatrix}#1\end{smallmatrix}\right)}
 
@@ -194,10 +197,10 @@
   \vspace{-12pt}\textcolor{mygray}{\hdashrule{0.975\textwidth}{0.8pt}{5pt}}\vspace{-6pt}%
 }
 
-% Formeln in \textbf{...} fett schreiben
+% make formulae in \textbf{...} bold
 \renewcommand*{\textbf}[1]{{\bfseries\boldmath{}#1}}
 
-% graue Farbe für Header
+% medium gray for header/footer
 \definecolor{mygray}{gray}{0.5}
 
 % dark gray color for proofs
