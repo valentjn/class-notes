@@ -1,0 +1,140 @@
+/* define Charter font faces */
+@font-face {
+  font-family: "Charter";
+  src:local("Charter"), url("fonts/charter-regular.woff") format("woff");
+  font-style:normal;
+  font-weight:400;
+  text-rendering:optimizeLegibility;
+  font-display:swap;
+}
+
+@font-face {
+  font-family:"Charter";
+  src:local("Charter Italic"), url("fonts/charter-italic.woff") format("woff");
+  font-style:italic;
+  font-weight:400;
+  text-rendering:optimizeLegibility;
+  font-display:swap;
+}
+
+@font-face {
+  font-family:"Charter";
+  src:local("Charter Bold"), url("fonts/charter-bold.woff") format("woff");
+  font-style:normal;
+  font-weight:700;
+  text-rendering:optimizeLegibility;
+  font-display:swap;
+}
+
+@font-face {
+  font-family:"Charter";
+  src:local("Charter Bold Italic"), url("fonts/charter-bold-italic.woff") format("woff");
+  font-style:italic;
+  font-weight:700;
+  text-rendering:optimizeLegibility;
+  font-display:swap;
+}
+
+/* default font for LaTeX text */
+.lwarp-contents { font-family:"Charter"; }
+
+/* logo in topnav */
+.navbar-brand {
+  display:flex;
+  align-items:center;
+}
+.fa-home::before { content:none; }
+.navbar-brand > img {
+  display:inline-block;
+  height:2em;
+  margin-right:0.2em;
+}
+
+/* links in topnav */
+.navbar-right .btn { font-weight:bold; }
+
+/* sidebar */
+li.sidebarTitle { font-weight:bold; }
+.nav > li > a { font-weight:bold; }
+.nav ul li a { padding-left:30px; }
+
+/* table of contents */
+div#toc {
+  float:right;
+  margin-left:20px;
+}
+div#toc ul {
+  min-width:200px;
+  max-width:400px;
+}
+div#toc > ul::before {
+  display:inline-block;
+  width:auto;
+  padding-top:0;
+  padding-bottom:10px;
+  padding-left:5px;
+  font-weight:bold;
+}
+div#toc ul li,
+div#toc ul li ul li {
+  margin-top:0;
+  margin-bottom:0;
+}
+
+/* headings */
+h3 { font-size:125%; }
+
+/* inline code */
+code + a > code { margin-left:0; }
+
+/* links */
+a.no-external::after,
+a[href^="https://valentjn.github.io/"]::after {
+  content:none;
+}
+a[href^="http://"]:not(.btn, .no-external)::after,
+a[href^="https://"]:not(.btn, .no-external)::after {
+  margin-right:-17px;
+}
+a[href^="http://"]:not(.btn, .no-external),
+a[href^="https://"]:not(.btn, .no-external) {
+  padding-right:17px;
+}
+
+/* images */
+@media only screen and (min-width:900px),
+only screen and (min-device-width:900px) {
+  .col-md-9 img {
+    max-width:100%;
+  }
+}
+
+/* footer */
+footer { font-size:14px; }
+footer .githubEditButton {
+  margin-left:1em;
+  margin-bottom:0;
+}
+.footer {
+  display:flex;
+  justify-content:right;
+  align-items:center;
+}
+.fa-github {
+  vertical-align:-10%;
+  margin-left:0.1em;
+}
+
+/* colors */
+.navbar-inverse {
+  background-color:#6666cc;  /* blue: 347dbe */
+  border-color:#4545c4;      /* blue: 015cae */
+}
+.nav > li.active > a { background-color:#6666cc; }  /* blue: 347dbe */
+.nav > li > a:hover { background-color:#5b5bfc; }   /* blue: 248ec2 */
+li.sidebarTitle { color:#5555ff !important; }
+code {
+  color:#5555ff;
+  background-color:#f2f2f9;
+}
+h3 { color:inherit; }
