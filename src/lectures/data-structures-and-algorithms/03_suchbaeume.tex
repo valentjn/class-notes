@@ -32,15 +32,15 @@ Die Suche nach einem Schlüssel $x$ im Suchbaum verläuft wie folgt: \\
 $a_\ell \le x$ im Baum zurück, sonst $-\infty$.
 
 \begin{lstlisting}
-search($x, \emptyset$) = $-\infty$
+search(x, {}) = -unendlich
 
-search($x$, $a$)
-    if $x < a$
-        return search($x$, $a_L$)
-    else if $x = a$
-        return $a$
+search(x, a)
+    if x < a
+        return search(x, a_L)
+    else if x = a
+        return a
     else
-        return max($a$, search($a$, $a_R$))
+        return max(a, search(a, a_R))
 \end{lstlisting}
 
 Suchbäume können, falls der Baum ausbalanciert ist, dabei helfen, sehr
@@ -78,10 +78,10 @@ Gegeben sei wieder eine linear geordnete Menge $S = \{a_1, \dotsc, a_n\}$.
 
 \textbf{Suche nach einem Schlüssel $k$}:
 \begin{lstlisting}
-$v$ :=  wurzel
-while $v$ kein Blatt do
-    bestimme $\ell$ mit $k_{\ell-1}(v) < k \le k_\ell(v)$                              (wobei $k_0(v) = -\infty$ und $k_{grad}(v) = +\infty$ gesetzt wird)
-    $v$ :=  $\ell$-tes Kind von $v$
+v := wurzel
+while v kein Blatt do
+    bestimme l mit k_{l-1}(v) < k <= k_l(v)      (wobei k_0(v) = -unendlich und k_grad(v) = +unendlich gesetzt wird)
+    v := l-tes Kind von v
 od
 \end{lstlisting}
 
@@ -117,10 +117,10 @@ $Schl"ussel(linkerNachbar) < k \le Schl"ussel(v)$ vorliegt
     Wenn die Wurzel gespalten werden muss, muss eine neue Wurzel erzeugt
     werden, sodass die Tiefe um $1$ steigt.
     \begin{lstlisting}
-$v$ :=  vater($v$)
-while $v$ hat fuenf Kinder do
-    spalte($v$)
-    $v$ :=  vater($v$)
+v := vater(v)
+while v hat fuenf Kinder do
+    spalte(v)
+    v := vater(v)
 od
     \end{lstlisting}
 \end{enumerate}
@@ -269,11 +269,11 @@ $\O(m \cdot \log \frac{m + n}{m}) = \O(\log \binom{m + n}{m})$ zu einem
 (2, 4)-Baum mischen, der $S_1$ und $S_2$ enthält.
 
 \begin{lstlisting}
-finger := "linkestes" Blatt in $S_1$
-$i$ := 1
-while $i \le m$ do
-    suche nach $x_i$ von finger aus
-    fuege $x_i$ ein
+finger := "linkestes" Blatt in S_1
+i := 1
+while i <= m do
+    suche nach x_i von finger aus
+    fuege x_i ein
     finger := Zeiger auf neues Blatt
     i++
 od

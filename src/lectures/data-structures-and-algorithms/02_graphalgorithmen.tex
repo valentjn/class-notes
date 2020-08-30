@@ -84,8 +84,8 @@ Die von $s$ erreichbaren Knoten sind $s$ und alle Knoten, die von
 Knoten $u$ mit $(s, u) \in E$ erreichbar sind.
 
 \begin{lstlisting}
-DFS(u)                                            Annahme: Erreichbar[] ist Boolesches Array
-    Erreichbar[u] := true                          mit $\forall_{v \in V}$ Erreichbar[$v$] = false (zu Beginn)
+DFS(u)                                Annahme: Erreichbar[] ist Boolesches Array
+    Erreichbar[u] := true              mit Erreichbar[v] = false fuer alle v in V (zu Beginn)
     forall e = (u, w)
         if Erreichbar[w] = false
             DFS(w)
@@ -148,16 +148,16 @@ DFS(v)                                                      Globale Variablen:
     count1++                                                count1 := 0, count2 := 0
     dfsnum[v] := count1
                                                             Oberroutine:
-    forall e = (v, w)                                       forall $s \in V$
+    forall e = (v, w)                                       forall s in V
         if besucht[w] = false                                   if besucht[s] = false
-            T := $T \cup \{e\}$                                                    DFS(s)
+            fuege e zu T hinzu                                      DFS(s)
             DFS(w)
         else if v $\rightarrow^\ast_T$ w
-            F := $F \cup \{e\}$
+            fuege e zu F hinzu
         else if w $\rightarrow^\ast_T$ v
-            B := $B \cup \{e\}$
+            fuege e zu B hinzu
         else
-            C := $C \cup \{e\}$
+            fuege e zu C hinzu
 
     count2++
     compnum[v] := count2
@@ -345,27 +345,27 @@ die Knoten in $[v]$.
 Somit können die SZHKs in $\O(n + m)$ berechnet werden.
 
 \begin{lstlisting}
-DFS($v$)                                                            forall $v \in V$
-    besucht[$v$] :=  true                                                besucht[v] := false
-    count1++                                                         fertig[v] := false
-    dfsnum[$v$] :=  count1                                               count1 := 0
-    lownum[$v$] :=  dfsnum[$v$]                                             DFS(v)
+DFS(v)                                                            forall v in V
+    besucht[v] := true                                                besucht[v] := false
+    count1++                                                          fertig[v] := false
+    dfsnum[v] := count1                                               count1 := 0
+    lownum[v] := dfsnum[v]                                            DFS(v)
     unfertig.push(v)
 
-    forall $e = (v, w)$
-        if besucht[$w$] = false
+    forall e = (v, w)
+        if besucht[w] = false
             DFS(w)
-            lownum[$v$] :=  min(lownum[$v$], lownum[$w$])
-        else if fertig[$w$] = false
-            lownum[$v$] :=  min(lownum[$v$], dfsnum[$w$])
+            lownum[v] := min(lownum[v], lownum[w])
+        else if fertig[w] = false
+            lownum[v] := min(lownum[v], dfsnum[w])
 
-    if lownum[$v$] = dfsnum[$v$]
+    if lownum[v] = dfsnum[v]
         print "Komponente"
         do
-            $t$ :=  unfertig.pop()
-            print $t$
-            fertig[$t$] :=  true
-        while $t \not= v$
+            t := unfertig.pop()
+            print t
+            fertig[t] := true
+        while t != v
 \end{lstlisting}
 
 \section{%
@@ -413,22 +413,22 @@ Zu Beginn von Phase $i$ gilt für die Knoten mit $d(v) \le i$, dass
 $V_i$ sowie \code{next} ist leer.
 
 \begin{lstlisting}
-current := {$s$}
-next := $\emptyset$
-dist[$s$] :=  0
-forall $v \in V \setminus \{s\}$
-    dist[$v$] :=  $\infty$
+current := {s}
+next := {}
+dist[s] :=  0
+forall v in V ohne {s}
+    dist[v] := unendlich
 
-while current $\not= \emptyset$ do
-    while current $\not= \emptyset$ do
+while current != {} do
+    while current != {} do
         v := current.pop()
-        forall $e = (v, w)$
-            if dist[$w$] = $\infty$
-                dist[$w$] :=  dist[$v$] + 1
-                next.push($w$)
+        forall e = (v, w)
+            if dist[w] = unendlich
+                dist[w] := dist[v] + 1
+                next.push(w)
     od
     current := next
-    next := $\emptyset$
+    next := {}
 od
 \end{lstlisting}
 
@@ -486,18 +486,18 @@ $\forall_{(v,w) \in E}\;$
 betrachtet werden müssen).
 
 \begin{lstlisting}
-dist[$s$] = 0
-forall $v \in V$, $v \not= s$
-    dist[$v$] = $+\infty$
-$U$ = $\{s\}$
+dist[s] = 0
+forall v in V, v != s
+    dist[v] = +unendlich
+U = {s}
 
-while $U \not= \emptyset$
-    entferne $v \in U$ (beliebig)
-    forall $e = (v,w)$
-        $x$ = dist[$v$] + $c(v, w)$
-        if ($x$ < dist[$w$])
-            dist[$w$] = $x$
-            $U$ = $U \cup \{w\}$
+while U != {}
+    entferne v in U (beliebig)
+    forall e = (v,w)
+        x = dist[v] + c(v, w)
+        if (x < dist[w])
+            dist[w] = x
+            U = U \cup {w}
 \end{lstlisting}
 
 \linie

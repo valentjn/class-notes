@@ -47,9 +47,9 @@ rekLCS(A[1 ... m], B[1 ... n])                      gibt die Laenge der LCS von
     if A[m] = B[n]
         return 1 + rekLCS(A[1 ... m - 1], B[1 ... n - 1])
 
-    $l_1$ = rekLCS(A[1 ... m], B[1 ... n - 1])
-    $l_2$ = rekLCS(A[1 ... m - 1], B[1 ... n])
-    return max($l_1$, $l_2$)
+    l_1 = rekLCS(A[1 ... m], B[1 ... n - 1])
+    l_2 = rekLCS(A[1 ... m - 1], B[1 ... n])
+    return max(l_1, l_2)
 \end{lstlisting}
 
 \textbf{Laufzeit}: Ist $|A| = |B| = n$, so ist die Laufzeit von

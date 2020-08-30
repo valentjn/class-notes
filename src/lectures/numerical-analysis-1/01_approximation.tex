@@ -683,16 +683,16 @@ kann für $n = 2^\ell$ mit der
 $2n\ell = 2 n \log_2 n$ Operationen berechnet werden.
 
 In der rekursiven Version hat der Algorithmus die folgende Form:
-\begin{lstlisting}[mathescape]
-function $f$ = FFT($c$)
-    $n$ = length($c$);
-    if $n$ = $1$;
-        $f$ = $c$;
+\begin{lstlisting}
+function f = FFT(c)
+    n = length(c);
+    if n = 1;
+        f = c;
     else;
-        $g$ = FFT($c_0, c_2, \dotsc, c_{n-2}$);
-        $h$ = FFT($c_1, c_3, \dotsc, c_{n-1}$);
-        $p$ = $\left(1, w_n, w_n^2, \dotsc, w_n^{n/2-1}\right)$;
-        $f$ = $(g + p \;.\!\ast h,\; g - p \;.\!\ast h)$;
+        g = FFT(c_0, c_2, ..., c_{n-2});
+        h = FFT(c_1, c_3, ..., c_{n-1});
+        p = (1, w_n, w_n^2, ..., w_n^{n/2-1});
+        f = (g + p .* h, g - p .* h);
     end;
 \end{lstlisting}
 
@@ -802,11 +802,11 @@ berechnen in der Form
 \end{align*}
 Für $n = 2^\ell$ ist die FFT anwendbar, und man erhält den folgenden
 Lösungsalgorithmus:
-\begin{lstlisting}[mathescape]
-$c$ = IFFT($b$);
-$\lambda$ = $n \;\cdot$ IFFT($a$);
-$y_j$ = $c_j / \lambda_j$, $\quad j = 0, \dotsc, n - 1$;
-$x$ = FFT($y$);
+\begin{lstlisting}
+c = IFFT(b);
+lambda = n * IFFT(a);
+y_j = c_j / lambda_j,   j = 0, ..., n - 1;
+x = FFT(y);
 \end{lstlisting}
 
 \linie
