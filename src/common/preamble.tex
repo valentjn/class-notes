@@ -10,6 +10,17 @@
   numbers=noendperiod,
 ]{scrreprt}
 
+% lwarp for HTML generation
+% fontaxes needs to be loaded before lwarp
+\usepackage{fontaxes}
+\usepackage[mathjax]{lwarp}
+\begin{warpHTML}
+  % this prevents an options clash when lwarp-fontenc is loaded later
+  \usepackage[T2A,LY1,T1]{lwarp-fontenc}
+  % this command is missing in HTML mode
+  \newcommand*{\automark}[1]{}
+\end{warpHTML}
+
 % set paragraph spacing
 \setparsizes{0em}{0.45\baselineskip plus 0.45\baselineskip}{0em plus 1fil}
 
@@ -209,8 +220,10 @@
 % scrpage2 page style
 \setkomafont{pageheadfoot}{\boldmath\fontfamily{bch}\selectfont\color{mygray}\bfseries}
 \setkomafont{pagenumber}{\usekomafont{pagehead}}
-\KOMAoptions{headsepline=1pt}
-\KOMAoptions{footsepline=1pt}
+\begin{warpprint}
+  \KOMAoptions{headsepline=1pt}
+  \KOMAoptions{footsepline=1pt}
+\end{warpprint}
 
 % header and footer
 \pagenumbering{arabic}

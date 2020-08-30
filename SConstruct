@@ -162,11 +162,20 @@ for dirName in dirNames:
     # depend on source files of all lectures
     dependencies.extend(Helper.translateSrcToBuild(Glob("src/lectures/*/*")))
 
-  # generate lecture PDF, add dependencies, create alias
+  # generate lecture PDF, add dependencies, create aliases
   pdf = env.PDF(target=f"build/{dirPath}/{dirName}.pdf",
       source=f"build/{dirPath}/{dirName}.tex")
   env.Depends(target=pdf, dependency=dependencies)
   env.Alias(dirName, pdf)
+  env.Alias(f"{dirName}-pdf", pdf)
+
+  # generate lecture HTML, make it depend on the PDF, create alias
+  if dirType == "lectures":
+    html = env.Command(target=f"build/{dirPath}/{dirName}.html",
+        source=f"build/{dirPath}/{dirName}.tex",
+        action=f"cd 'build/{dirPath}' && lwarpmk html && lwarpmk limages")
+    env.Depends(target=html, dependency=pdf)
+    env.Alias(f"{dirName}-html", html)
 
   # clean build subdirectory with `scons -c <dirName>`
   env.Clean("all", f"build/{dirName}")
