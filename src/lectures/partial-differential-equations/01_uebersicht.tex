@@ -110,36 +110,36 @@
 
         \midrule
 
-        \multirow{9}{20mm}{Advektions-gleichung}&
+        \multirow{11}{20mm}{Advektions-gleichung}&
         \multirow{7}{20mm}{konstante Adv.geschw.}&
         Definition&
         $\Omega := \real^d$, $T := \infty$, $b \in \real^d$, $u_0 \in \C^1(\Omega)$
         $\implies$
         $\partial_t u + \div(bu) = 0$ in $\Omega_T$, $u(\cdot, 0) = u_0$ in $\Omega$\\
 
-        &&Translationsinv.&
+        \mrowcell&\mrowcell&Translationsinv.&
         $\forall_{(x, t) \in \Omega_T} \forall_{s \in (-t, T-t)}\;
         \frac{\d}{\ds} u(x + bs, t + s) = 0$\\
 
-        &&Ex. + Eind.&
+        \mrowcell&\mrowcell&Ex. + Eind.&
         $u(x, t) := u_0(x - bt)$ eind. kl. Lsg.\\
 
-        &&$L^\infty$-Stabilität&
+        \mrowcell&\mrowcell&$L^\infty$-Stabilität&
         $u_0 \in \C^1(\Omega) \cap L^\infty(\Omega) \implies
         \forall_{t \in (0, T)}\; \norm{u(\cdot, t)}_{L^\infty} \le \norm{u_0}_{L^\infty}$\\
 
-        &&Max.-/Min.prinzip&
+        \mrowcell&\mrowcell&Max.-/Min.prinzip&
         $u_0 \in \C^1(\Omega) \cap L^\infty(\Omega) \implies
         \forall_{(x, t) \in \Omega_T}\;
         \inf_{\overline{x} \in \Omega} u_0(\overline{x}) \le u(x, t) \le
         \sup_{\overline{x} \in \Omega} u_0(\overline{x})$\\
 
-        &&st. Abh. von $u_0$&
+        \mrowcell&\mrowcell&st. Abh. von $u_0$&
         $u_0, u_0' \in \C^1(\Omega) \cap L^\infty(\Omega) \implies
         \forall_{t \in (0, T)}\;
         \norm{u(\cdot, t) - u'(\cdot, t)}_{L^\infty} \le \norm{u_0 - u_0'}_{L^\infty}$\\
 
-        &&keine st. Abh. von $b$&
+        \mrowcell&\mrowcell&keine st. Abh. von $b$&
         $\lnot[\forall_{t \in (0, T)} \exists_{C(t) > 0}
         \forall_{u_0 \in \C^1(\Omega) \cap L^\infty(\Omega), \norm{u_0}_{L^\infty} \le 1}
         \forall_{b, b' \in \real}\;
@@ -147,24 +147,24 @@
 
         \cmidrule{2-4}
 
-        &\multirow{2}{20mm}{Reaktions-/ Quellterm}&
+        \mrowcell&\multirow{2}{20mm}{Reaktions-/ Quellterm}&
         Definition&
         $q \in \C^0(\Omega_T)$
         $\implies$
         $\partial_t u + \div(bu) = q$ in $\Omega_T$, $u(\cdot, 0) = u_0$ in $\Omega$\\
 
-        &&Ex. + Eind.&
+        \mrowcell&\mrowcell&Ex. + Eind.&
         $u(x, t) := u_0(x - bt) + \int_0^t q(x + (s-t)b, s)\ds$ eind. kl. Lsg.\\
 
         \cmidrule{2-4}
 
-        &\multirow{2}{20mm}{nicht-lineare Konvektion}&
+        \mrowcell&\multirow{2}{20mm}{nicht-lineare Konvektion}&
         Definition&
         $\Omega := \real$, $T > 0$, $f \in \C^2(\real)$, $u_0 \in \C^1(\Omega)$
         $\implies$
         $\partial_t u + \partial_x(f(u)) = 0$ in $\Omega_T$, $u(\cdot, 0) = u_0$ in $\Omega$\\
 
-        &&lokale Ex.&
+        \mrowcell&\mrowcell&lokale Ex.&
         $\norm{f''}_\infty, \norm{u_0'}_\infty < \infty
         \implies \forall_{\overline{x} \in \real} \exists_{\varepsilon > 0} \exists_{T > 0}
         \exists_{u \in \C^1(B_\varepsilon(\overline{x}) \times (0, T))}\;
@@ -180,35 +180,35 @@
         $\implies$
         $-\Delta u = 0$ in $\Omega$\\
 
-        &&MW-Eigenschaft&
+        \mrowcell&\mrowcell&MW-Eigenschaft&
         $u \in C^2(\Omega)$ harm., $x \in \Omega$, $r > 0$, $\overline{B_r(x)} \subset \Omega$
         $\implies \fint_{B_r(y)} u(y) \dy = u(x) = \fint_{\partial B_r(x)} u(y) \dsigma(y)$\\
 
-        &&Max.prinzip&
+        \mrowcell&\mrowcell&Max.prinzip&
         $\Omega$ of"|fen, beschr., $u \in \C^2(\overline{\Omega})$ harm.
         $\implies \max_{x \in \overline{\Omega}} u(x) = \max_{x \in \partial\Omega} u(x)$\\
 
-        &&verallg. Max.prinz.&
+        \mrowcell&\mrowcell&verallg. Max.prinz.&
         $\Omega$ of"|fen, beschr., $u \in \C^2(\Omega) \cap \C^0(\overline{\Omega})$,
         $-\Delta u = f \le 0$
         $\implies$ $u$ nimmt Max. auf dem Rand an\\
 
-        &&Vgl.prinzip&
+        \mrowcell&\mrowcell&Vgl.prinzip&
         $\Omega$ of"|fen, beschr., $u, v \in \C^2(\Omega) \cap \C^0(\overline{\Omega})$,
         $-\Delta u \le -\Delta v$ in $\Omega$, $u \le v$ auf $\partial\Omega$
         $\implies$ $u \le v$ in $\Omega$\\
 
-        &&Regularität&
+        \mrowcell&\mrowcell&Regularität&
         $\Omega := \real^d$, $u \in \C^2(\Omega)$ harm.
         $\implies u \in \C^\infty(\Omega)$\\
 
-        &&Fundamentallsg.&
+        \mrowcell&\mrowcell&Fundamentallsg.&
         $\Omega := \real^d \setminus \{0\}$, $d > 1$
         $\implies \Phi \in \C^\infty(\Omega)$,
         $\Phi(x) := -\frac{1}{2\pi} \cdot \ln(\norm{x})$ für $d = 2$,\quad
         $\Phi(x) := \frac{1}{(d-2)\omega_d} \cdot \frac{1}{\norm{x}^{d-2}}$ für $d \ge 3$\\
 
-        &&Eigenschaften&
+        \mrowcell&\mrowcell&Eigenschaften&
         $\int_{B_\varepsilon(0)} \Phi(x)\dx \to 0$,\quad
         $\Phi \in L^1_\loc(\real^d)$,\quad
         $\Phi(\varepsilon e_1) \varepsilon^{d-1} \to 0$,\quad
@@ -217,38 +217,38 @@
 
         \cmidrule{2-4}
 
-        &\multirow{3}{20mm}{Poisson-Gleichung}&
+        \mrowcell&\multirow{3}{20mm}{Poisson-Gleichung}&
         Definition&
         $\Omega \subset \real^d$, $f\colon \Omega \to \real$
         $\implies$
         $-\Delta u = f$ in $\Omega$\\
 
-        &&Rotationsinv.&
+        \mrowcell&\mrowcell&Rotationsinv.&
         $u \in \C^2(\Omega)$ kl. Lsg.,
         $O \in \real^{d \times d}$ orth., $\Omega = O\Omega$, $f = f \circ O$
         $\implies v \in \C^2(\Omega)$ kl. Lsg., $v(x) := u(Ox)$\\
 
-        &&Faltungslösung&
+        \mrowcell&\mrowcell&Faltungslösung&
         $\Omega := \real^d$, $d \ge 2$, $f \in \C^2_0(\Omega)$
         $\implies u := \Phi \ast f$ kl. Lsg.\\
 
         \cmidrule{2-4}
 
-        &\multirow{4}{20mm}{Poisson-RWP}&
+        \mrowcell&\multirow{4}{20mm}{Poisson-RWP}&
         Definition&
         $\Omega \subset \real^d$ of"|fen, beschr., $f \in \C^0(\Omega)$,
         $g \in \C^0(\partial\Omega)$
         $\implies$
         $-\Delta u = f$ in $\Omega$, $u = g$ auf $\partial\Omega$\\
 
-        &&Eind.&
+        \mrowcell&\mrowcell&Eind.&
         es gibt höchstens eine kl. Lsg. $u \in \C^2(\Omega) \cap \C^0(\overline{\Omega})$\\
 
-        &&st. Abh. von $g$&
+        \mrowcell&\mrowcell&st. Abh. von $g$&
         $g, g' \in \C^0(\partial\Omega)
         \implies \norm{u - u'}_\infty \le \norm{g - g'}_\infty$\\
 
-        &&st. Abh. von $f$&
+        \mrowcell&\mrowcell&st. Abh. von $f$&
         $f, f' \in C^0(\Omega)
         \implies \norm{u - u'}_\infty \le C \norm{f - f'}_\infty$, $C := \frac{R^2}{2}$,
         $R := \sup_{x \in \Omega} \norm{x}$\\
@@ -276,16 +276,16 @@
         $\partial_t u - \Delta u = 0$ in $\Omega_T$,
         $u(\cdot, 0) = u_0$ in $\Omega$\\
 
-        &&Skal.inv.&
+        \mrowcell&\mrowcell&Skal.inv.&
         $\Omega := \real^d$, $T := \infty$, $u \in \C^2(\Omega_T)$ kl. Lsg., $\lambda \in \real$
         $\implies u_\lambda$ kl. Lsg., $u_\lambda(x, t) := u(\lambda x, \lambda^2 t)$\\
 
-        &&Fundamentallsg.&
+        \mrowcell&\mrowcell&Fundamentallsg.&
         $\Omega := \real^d$, $T := \infty$
         $\implies \Phi \in \C^\infty(\Omega_T)$,
         $\Phi(x, t) := \frac{1}{(4\pi t)^{d/2}} e^{-\norm{x}^2/(4t)}$\\
 
-        &&Faltungslösung&
+        \mrowcell&\mrowcell&Faltungslösung&
         $\Omega := \real^d$, $T := \infty$, $u_0 \in L^\infty(\Omega)$
         $\implies u \in \C^\infty(\Omega_T)$,
         $u(\cdot, t) := \Phi(\cdot, t) \ast u_0$ kl. Lsg.,\newline
@@ -296,7 +296,7 @@
 
         \cmidrule{2-4}
 
-        &\multirow{2}{20mm}{ARWP}&
+        \mrowcell&\multirow{2}{20mm}{ARWP}&
         Definition&
         $g\colon \partial\Omega \times (0, T) \to \real$
         $\implies$
@@ -304,13 +304,13 @@
         $u(\cdot, 0) = u_0$ in $\Omega$,
         $u = g$ auf $\partial\Omega \times (0, T)$\\
 
-        &&Max.prinzip&
+        \mrowcell&\mrowcell&Max.prinzip&
         $u$ nimmt Maximum auf parabolischem Rand
         $\Gamma := (\Omega \times \{0\}) \cup (\partial\Omega \times [0, T])$ an\\
 
         \cmidrule{2-4}
 
-        &\multirow{3}{20mm}{inhom. ARWP}&
+        \mrowcell&\multirow{3}{20mm}{inhom. ARWP}&
         Definition&
         $f\colon \Omega_T \to \real$
         $\implies$
@@ -318,11 +318,11 @@
         $u(\cdot, 0) = u_0$ in $\Omega$,
         $u = g$ auf $\partial\Omega \times (0, T)$\\
 
-        &&Eind.&
+        \mrowcell&\mrowcell&Eind.&
         $\Omega \subset \real^d$ Lipschitz
         $\implies$ es gibt höchstens eine kl. Lsg.\\
 
-        &&Konv. gg. stat. Lsg.&
+        \mrowcell&\mrowcell&Konv. gg. stat. Lsg.&
         $\Omega \subset \real^d$ Lipschitz,
         $f, g$ zeitunabh.,
         $-\Delta\overline{u} = f$ in $\Omega$, $\overline{u} = g$ auf $\partial\Omega$
@@ -340,12 +340,12 @@
         $\partial_t^2 u - c^2 \Delta u = 0$ in $\Omega_T$, $u(\cdot, 0) = u_0$,
         $\partial_t u(\cdot, 0) = v_0$ in $\Omega$\\
 
-        &&Ex. + Eind.&
+        \mrowcell&\mrowcell&Ex. + Eind.&
         $d := 1 \implies u(x, t) :=
         \frac{1}{2} (u_0(x+ct) + u_0(x-ct)) + \frac{1}{2c} \int_{x-ct}^{x+ct} v_0(s)\ds$
         eind. kl. Lsg.\\
 
-        &&$L^\infty$-Stabilität&
+        \mrowcell&\mrowcell&$L^\infty$-Stabilität&
         $d := 1$, $u_0 \in \C^2(\Omega) \cap L^\infty(\Omega)$,
         $v_0 \in \C^1(\Omega) \cap L^1(\Omega)$
         $\implies
@@ -353,7 +353,7 @@
         \norm{u(\cdot, t)}_{L^\infty} \le \norm{u_0}_{L^\infty} +
         \frac{1}{2c} \norm{v_0}_{L^1}$\\
 
-        &&st. Abh. von $u_0, v_0$&
+        \mrowcell&\mrowcell&st. Abh. von $u_0, v_0$&
         $d := 1$, $u_0, \overline{u_0} \in \C^2 \cap L^\infty$,
         $v_0, \overline{v_0} \in \C^1 \cap L^1$
         $\implies
@@ -362,14 +362,14 @@
         \le C \left(\norm{u_0 - \overline{u_0}}_{L^\infty} +
         \norm{v_0 - \overline{v_0}}_{L^1}\right)$\\
 
-        &&Abh.kegel&
+        \mrowcell&\mrowcell&Abh.kegel&
         $d := 1$, $(x_0, t_0) \in \Omega_T$,
         $\forall_{|x - x_0| \le ct_0}\; u_0(x) = v_0(x) = 0$
         $\implies$ $u(x,t) = 0$ für $t \in [0, t_0]$, $|x - x_0| \le c(t_0 - t)$\\
 
         \cmidrule{2-4}
 
-        &\multirow{3}{20mm}{inhom. ARWP}&
+        \mrowcell&\multirow{3}{20mm}{inhom. ARWP}&
         Definition&
         $\Omega \subset \real^d$,
         $f\colon \Omega_T \to \real$,
@@ -381,7 +381,7 @@
         $\partial_t u(\cdot, 0) = v_0$ in $\Omega$,
         $u = g$ auf $\partial\Omega \times (0, T)$\\
 
-        &&Eind.&
+        \mrowcell&\mrowcell&Eind.&
         $\Omega \subset \real^d$ Lipschitz
         $\implies$ es gibt höchstens eine kl. Lsg.\\
 
