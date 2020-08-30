@@ -208,10 +208,14 @@ for dirName in dirNames:
   # clean build subdirectory with `scons -c <dirName>`
   env.Clean("all", f"build/{dirName}")
 
+# compile all lectures if no target is specified
+env.Alias("all", "all-pdf")
+env.Alias("all-pdf", [f"{x}-pdf" for x in dirNames])
+env.Alias("all-html", [f"{x}-html" for x in dirNames if x != "collection"])
+env.Default("all")
+
 # clean whole build directory with `scons -c`
-if GetOption("clean"):
-  env.Default("all")
-  env.Clean("all", "build")
+if GetOption("clean"): env.Clean("all", "build")
 
 # print all available lectures
 if env.GetOption("help"):
