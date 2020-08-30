@@ -1,5 +1,6 @@
 import functools
 import os
+import re
 
 # class with helper methods
 class Helper(object):
@@ -23,6 +24,27 @@ class Helper(object):
     else:
       newPath = path.abspath.replace("/src", "/build")
       return (Dir(newPath) if path.isdir() else File(newPath))
+
+  @staticmethod
+  def buildMathJaxTex(dirNames, target, source, env):
+    mathJaxTex = ""
+
+    for x in source:
+      with open(x.abspath, "r") as f: tex = f.read()
+      commands = re.findall(r"^\s*% class-notes: begin-mathjax-commands$(.*?)" +
+          r"^\s*% class-notes: end-mathjax-commands$", tex, flags=re.DOTALL | re.MULTILINE)
+      mathJaxTex += "\n\n".join(commands)
+
+    mathJaxTex = re.sub(r"^\s*%.*", "", mathJaxTex, flags=re.MULTILINE)
+    mathJaxTex = re.sub("\n\n+", "\n", mathJaxTex)
+
+    if mathJaxTex != "":
+      mathJaxTex = re.sub(r"(\\(?:re)?newcommand)\*", r"\1", mathJaxTex)
+      mathJaxTex = re.sub(r"^(.+)$", r"  \\CustomizeMathJax{\1}", mathJaxTex, flags=re.MULTILINE)
+      mathJaxTex = f"\\begin{{warpMathJax}}{mathJaxTex}\\end{{warpMathJax}}\n"
+
+    for x in target:
+      with open(x.abspath, "w") as f: f.write(mathJaxTex)
 
   @staticmethod
   def buildCollectionIncludeTex(dirNames, target, source, env):
@@ -153,6 +175,12 @@ for dirName in dirNames:
     # copy document.tex from parent directory to lecture directory
     dependencies.extend(env.Install(target=f"build/{dirPath}",
         source=f"build/{dirType}/document.tex"))
+    # generate mathJax.tex from magic comments (copy and wrap everything between
+    # "% class-notes: begin-mathjax-commands" and "% class-notes: end-mathjax-commands")
+    dependencies.extend(env.Command(target=f"build/{dirPath}/mathJax.tex",
+        source=Helper.translateSrcToBuild(Glob(f"src/lectures/{dirName}/*.tex")) +
+        Helper.translateSrcToBuild(Glob(f"src/common/*.tex")),
+        action=functools.partial(Helper.buildMathJaxTex, [dirName])))
   else:
     # generate collectionInclude.tex (including the different lectures) from the list of
     # available lectures
