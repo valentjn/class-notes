@@ -133,7 +133,6 @@ dirNameOrder = [
 dirNames = ([x.name for x in Glob("src/lectures/*") if x.isdir()] + ["collection"])
 dirNames.sort(key=lambda x: ((dirNameOrder.index(x), 0) if x in dirNameOrder else
       (len(dirNameOrder), x)))
-pdfs = []
 
 for dirName in dirNames:
   dirType = ("lectures" if dirName != "collection" else "collection")
@@ -168,7 +167,6 @@ for dirName in dirNames:
       source=f"build/{dirPath}/{dirName}.tex")
   env.Depends(target=pdf, dependency=dependencies)
   env.Alias(dirName, pdf)
-  pdfs.append(pdfs)
 
   # clean build subdirectory with `scons -c <dirName>`
   env.Clean("all", f"build/{dirName}")
