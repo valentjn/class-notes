@@ -214,7 +214,7 @@
 
 \begin{Def}{\name{Fourier}transformation}
     Für $f \in \S(\real^n)$ heißt $\widehat{f}\colon \real^n \rightarrow \complex$ mit\\
-    $\widehat{f}(k) := (2\pi)^{-n/2} \int_{\real^n} e^{-\iu\sp{k,x}} f(x)\dx$
+    $\widehat{f}(k) := (2\pi)^{-n/2} \int_{\real^n} e^{-\iu\innerproduct{k,x}} f(x)\dx$
     \begriff{\name{Fourier}transformierte} von $f$.
     Der Operator $\F$ von $\S(\real^n)$ in den Raum der Abbildungen $\real^n \rightarrow \complex$
     mit $f \mapsto \widehat{f}$ heißt \begriff{\name{Fourier}transformation}.
@@ -223,15 +223,15 @@
 \begin{Bem}
     Die Normierung von $\widehat{f}$ in der Literatur ist nicht einheitlich.
     Häufige alternative Normierungen sind
-    $(2\pi)^{-n} \int_{\real^n} e^{-\iu\sp{k,x}} f(x)\dx$ und
-    $\int_{\real^n} e^{-2\pi\iu\sp{k,x}} f(x)\dx$.
+    $(2\pi)^{-n} \int_{\real^n} e^{-\iu\innerproduct{k,x}} f(x)\dx$ und
+    $\int_{\real^n} e^{-2\pi\iu\innerproduct{k,x}} f(x)\dx$.
 \end{Bem}
 
 \begin{Satz}{Eigenschaften der \name{Fourier}transformation}
     $\F\colon \S \rightarrow \S$ ist linear und bijektiv.\\
     Die inverse Abbildung ist gegeben durch $\F^{-1}\colon \S \rightarrow \S$ mit
     $\F^{-1} f \in \S$ der \begriff{inversen \name{Fourier}"-transformierten} gegeben durch
-    $(\F^{-1} f)(x) := (2\pi)^{-n/2} \int_{\real^n} e^{\iu\sp{k,x}} \widehat{f}(k)dk$
+    $(\F^{-1} f)(x) := (2\pi)^{-n/2} \int_{\real^n} e^{\iu\innerproduct{k,x}} \widehat{f}(k)dk$
     für $x \in \real^n$.\\
     Es gilt $(\F^2 f)(x) = f(-x)$ und $(\F^4 f)(x) = f(x)$ für $x \in \real^n$.
 \end{Satz}
@@ -266,7 +266,7 @@
 
         \item
         Für $f_a \in \S$ mit $f_a(x) := f(x + a)$ gilt
-        $\widehat{f_a}(k) = e^{\iu\sp{k,a}} \widehat{f}(k)$.
+        $\widehat{f_a}(k) = e^{\iu\innerproduct{k,a}} \widehat{f}(k)$.
 
         \item
         Für $A\colon \real^n \rightarrow \real^n$ linear und bijektiv gilt
@@ -293,7 +293,7 @@
 \linie
 
 \begin{Satz}{\name{Plancherel}, \name{Parseval}}
-    Für alle $f, g \in \S$ gilt $\sp{f, g}_{L^2} =
+    Für alle $f, g \in \S$ gilt $\innerproduct{f, g}_{L^2} =
     \langle\widehat{f}, \widehat{g}\rangle_{L^2}$.\\
     Insbesondere gilt $\forall_{f \in \S}\; \norm{f}_{L^2} = \Vert\widehat{f}\Vert_{L^2}$ und\\
     $\F\colon \S \rightarrow \S$ ist eine bijektive, lineare und stetige Isometrie
@@ -310,11 +310,11 @@
 
 \begin{Satz}{\name{Fourier}transformation als Grenzwert}\\
     Für $f \in L^2$ gilt
-    $\widehat{f}(k) = \lim_{m \to \infty} (2\pi)^{-n/2} \int_{B_m(0)} e^{-\iu\sp{k,x}}f(x)\dx$
+    $\widehat{f}(k) = \lim_{m \to \infty} (2\pi)^{-n/2} \int_{B_m(0)} e^{-\iu\innerproduct{k,x}}f(x)\dx$
     f.ü. in $\real^n$, wobei der Grenzwert gleichmäßig in $k$ bzgl. $\norm{\cdot}_{L^2}$
     angenommen wird.\\
     Für $f \in L^1 \cap L^2$ gilt
-    $\widehat{f}(k) = (2\pi)^{-n/2} \int_{\real^n} e^{-\iu\sp{k,x}}f(x)\dx$ f.ü. in $\real^n$.
+    $\widehat{f}(k) = (2\pi)^{-n/2} \int_{\real^n} e^{-\iu\innerproduct{k,x}}f(x)\dx$ f.ü. in $\real^n$.
 \end{Satz}
 
 \begin{Satz}{Übertragbarkeit der Rechenregeln}
@@ -412,7 +412,7 @@
 \end{Bem}
 
 \begin{Bsp}\\
-    Für $u(x) := (2\pi)^{-n/2} e^{\iu\sp{k,x}}$ mit $k \in \real^n$ fest ist
+    Für $u(x) := (2\pi)^{-n/2} e^{\iu\innerproduct{k,x}}$ mit $k \in \real^n$ fest ist
     $(\F T_u)\varphi = \varphi(k)$ für alle $\varphi \in \S$, d.\,h. $\F T_u = \delta_k$.
     Für $u(x) := x^\alpha$ ist
     $\F T_u = (2\pi)^{n/2} \iu^{|\alpha|} \cdot \partial_k^\alpha \delta_0$.

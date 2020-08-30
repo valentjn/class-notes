@@ -38,24 +38,24 @@
 
 \begin{Def}{Bilinearform}
     Sei $K$ ein Körper und $V$ ein $K$-Vektorraum.
-    Eine Abbildung $\sp{\cdot, \cdot}: V \times V \rightarrow K$ heißt
+    Eine Abbildung $\innerproduct{\cdot, \cdot}: V \times V \rightarrow K$ heißt
     \begriff{bilinear}, falls für alle $x, y, z \in V$ und $\alpha \in K$ gilt:
     \begin{enumerate}
-        \item[(1)] $\sp{x + y, z} = \sp{x, z} + \sp{y, z}$
+        \item[(1)] $\innerproduct{x + y, z} = \innerproduct{x, z} + \innerproduct{y, z}$
 
-        \item[(2)] $\sp{x, y + z} = \sp{x, y} + \sp{x, z}$
+        \item[(2)] $\innerproduct{x, y + z} = \innerproduct{x, y} + \innerproduct{x, z}$
 
-        \item[(3)] $\sp{\alpha x, y} = \sp{x, \alpha y} = \alpha \sp{x, y}$
+        \item[(3)] $\innerproduct{\alpha x, y} = \innerproduct{x, \alpha y} = \alpha \innerproduct{x, y}$
     \end{enumerate}
 \end{Def}
 
 \begin{Def}{Eigenschaften einer reellen Bilinearform}
-    Sei $\sp{\cdot, \cdot}$ eine Bilinearform auf dem reellen Vektorraum $V$.
-    Dann heißt $\sp{\cdot, \cdot}$ \begriff{symmetrisch},
-    falls $\sp{x, y} = \sp{y, x}$ für alle $x, y \in V$.
-    $\sp{\cdot, \cdot}$ heißt \begriff{positiv semidefinit} und
-    \begriff{positiv definit}, falls $\sp{x, y} \ge 0$ und
-    $\sp{x, x} = 0 \;\Leftrightarrow\; x = 0$ für alle $x \in V$.
+    Sei $\innerproduct{\cdot, \cdot}$ eine Bilinearform auf dem reellen Vektorraum $V$.
+    Dann heißt $\innerproduct{\cdot, \cdot}$ \begriff{symmetrisch},
+    falls $\innerproduct{x, y} = \innerproduct{y, x}$ für alle $x, y \in V$.
+    $\innerproduct{\cdot, \cdot}$ heißt \begriff{positiv semidefinit} und
+    \begriff{positiv definit}, falls $\innerproduct{x, y} \ge 0$ und
+    $\innerproduct{x, x} = 0 \;\Leftrightarrow\; x = 0$ für alle $x \in V$.
 \end{Def}
 
 \begin{xDef}{reelles Skalarprodukt}{Skalarprodukt!reelles}
@@ -68,30 +68,30 @@
 
 \begin{Def}{hermitesche Form}
     Sei $V$ ein komplexer Vektorraum.
-    Eine Abbildung $\sp{\cdot, \cdot}: V \times V \rightarrow \complex$
+    Eine Abbildung $\innerproduct{\cdot, \cdot}: V \times V \rightarrow \complex$
     heißt \begriff{hermitesche Form}, falls für alle $x, y, z \in V$ und
     $\lambda \in \complex$ gilt:
     \begin{enumerate}
-        \item[(1)] $\sp{x + y, z} = \sp{x, z} + \sp{y, z}$
+        \item[(1)] $\innerproduct{x + y, z} = \innerproduct{x, z} + \innerproduct{y, z}$
 
-        \item[(2)] $\sp{\lambda x, y} = \lambda \sp{x, y}$
+        \item[(2)] $\innerproduct{\lambda x, y} = \lambda \innerproduct{x, y}$
 
-        \item[(3)] $\sp{x, y} = \kk{\sp{y, x}}$
+        \item[(3)] $\innerproduct{x, y} = \kk{\innerproduct{y, x}}$
     \end{enumerate}
 \end{Def}
 
 \begin{Lemma}{Eigenschaften der hermiteschen Form}
-    Für eine hermitesche Form $\sp{\cdot, \cdot}$ gilt für alle
+    Für eine hermitesche Form $\innerproduct{\cdot, \cdot}$ gilt für alle
     $x, y, z \in V$ und $\lambda \in \complex$, dass
-    $\sp{x, y + z} = \sp{x, y} + \sp{x, z}$,
-    $\sp{x, \lambda y} = \kk{\lambda} \sp{x, y}$ und
-    $\sp{x, x} \in \real$.
+    $\innerproduct{x, y + z} = \innerproduct{x, y} + \innerproduct{x, z}$,
+    $\innerproduct{x, \lambda y} = \kk{\lambda} \innerproduct{x, y}$ und
+    $\innerproduct{x, x} \in \real$.
 \end{Lemma}
 
 \begin{Def}{Eigenschaften einer hermiteschen Form}
     Eine hermitesche Form heißt \begriff{positiv semi"-definit}, falls
-    $\sp{x, x} \ge 0$ für alle $x \in V$, und \begriff{positiv definit}, falls
-    $\sp{x, x} > 0$ für $x \in V$, $x \not= 0$.
+    $\innerproduct{x, x} \ge 0$ für alle $x \in V$, und \begriff{positiv definit}, falls
+    $\innerproduct{x, x} > 0$ für $x \in V$, $x \not= 0$.
 \end{Def}
 
 \begin{xDef}{komplexes Skalarprodukt}{Skalarprodukt!komplexes}
@@ -104,14 +104,14 @@
 
 \begin{Bem}
     Im Folgenden sei $K = \real$/$K= \complex$, $V$ ein $K$-Vektorraum
-    und $\sp{\cdot, \cdot}$ eine bilineare/hermitesche Form auf $V$,
+    und $\innerproduct{\cdot, \cdot}$ eine bilineare/hermitesche Form auf $V$,
     sodass $V$ mit dieser Form einen euklidischen/unitären Raum bildet.
 \end{Bem}
 
 \begin{Def}{vom Skalarprodukt induzierte Norm}
     Sei $x \in V$.
     Die \begriff{Norm} oder \begriff{Länge} von $x$ ist die reelle Zahl
-    $\norm{x} = \sqrt{\sp{x, x}}$.
+    $\norm{x} = \sqrt{\innerproduct{x, x}}$.
     Insbesondere ist $\norm{x} = 0 \;\Leftrightarrow\; x = 0$.
 \end{Def}
 
@@ -124,7 +124,7 @@
 
 \begin{Satz}{Ungleichung von \name{Cauchy}-\name{Schwarz}}
     Seien $V$ ein euklidischer oder unitärer Vektorraum und $x, y \in V$.
-    Dann ist $|\sp{x, y}| \le \norm{x} \cdot \norm{y}$.
+    Dann ist $|\innerproduct{x, y}| \le \norm{x} \cdot \norm{y}$.
 \end{Satz}
 
 \begin{Kor}
@@ -139,7 +139,7 @@
 \begin{Kor}
     Seien $V$ ein euklidischer Vektorraum und $\norm{\cdot}$ wie oben.
     Dann ist der Betrag von
-    $\cos(x, y) =$ \fracsize{$\frac{\sp{x, y}}{\norm{x} \cdot \norm{y}}$}
+    $\cos(x, y) =$ \fracsize{$\frac{\innerproduct{x, y}}{\norm{x} \cdot \norm{y}}$}
     eine reelle nicht-negative Zahl $\le 1$.
     Insbesondere ist $\cos(x, y) \in [-1, 1]$.
 \end{Kor}
@@ -148,7 +148,7 @@
     Seien $V$ ein euklidischer Vektorraum und $x, y \in V$.
     Dann ist der Winkel $\alpha$ zwischen $x$ und $y$ (nicht eindeutig) gegeben
     durch $\cos \alpha = \cos(x, y) =$
-    \fracsize{$\frac{\sp{x, y}}{\norm{x} \cdot \norm{y}}$}.
+    \fracsize{$\frac{\innerproduct{x, y}}{\norm{x} \cdot \norm{y}}$}.
 \end{Def}
 
 \begin{Bem}
@@ -161,10 +161,10 @@
 \begin{Def}{Orthogonalität}
     Sei $V$ ein euklidischer/unitärer Vektorraum. \\
     $x$ und $y$ sind \begriff{orthogonal} ($x \orth y$), falls
-    $\sp{x, y} = 0$ ist (wobei $x, y \in V$). \\
+    $\innerproduct{x, y} = 0$ ist (wobei $x, y \in V$). \\
     $M$ und $N$ sind \begriff{orthogonal} ($M \orth N$), falls $x \orth y$ für
     alle $x \in M$, $y \in N$ (wobei $\emptyset \not= M, N \subseteq V$). \\
-    $M^\bot = \{v \in V \;|\; \forall_{m \in M}\; \sp{v, m} = 0\}$ ist die
+    $M^\bot = \{v \in V \;|\; \forall_{m \in M}\; \innerproduct{v, m} = 0\}$ ist die
     \begriff{Menge der zu $M$ orthogonalen Vektoren}.
 \end{Def}
 
@@ -199,7 +199,7 @@
     folgendermaßen definiert: \\
     1.\quad $e_1 =$ \fracsize{$\frac{v_1}{\norm{v_1}}$} \qquad\qquad
     2.\quad $e_k =$ \fracsize{$\frac{x_k}{\norm{x_k}}$} mit
-    $x_k = v_k - \sum_{i=1}^{k-1} \sp{v_k, e_i}e_i$
+    $x_k = v_k - \sum_{i=1}^{k-1} \innerproduct{v_k, e_i}e_i$
 \end{Prozedur}
 
 \begin{Satz}{\name{Gram}-\name{Schmidt}}
@@ -215,14 +215,14 @@
 
 \begin{Satz}{Koef"|fizienten eines Vektors bzgl. ONB} \\
     Seien $\basis{E} = (e_1, e_2, \ldots)$ eine ONB von $V$ und $x \in V$.
-    Dann ist $x = \sp{x, e_1}e_1 + \sp{x, e_2}e_2 + \cdots$.
+    Dann ist $x = \innerproduct{x, e_1}e_1 + \innerproduct{x, e_2}e_2 + \cdots$.
 \end{Satz}
 
 \begin{Satz}{Skalarprodukt zweier Vektoren bzgl. ONB}
     Seien $x, y \in V$ mit $x = \alpha_1 e_1 + \alpha_2 e_2 + \cdots$
     und $y = \beta_1 e_1 + \beta_2 e_2 + \cdots$.
     Dann ist
-    $\sp{x, y} = \alpha_1 \kk{\beta_1} + \alpha_2 \kk{\beta_2} + \cdots$.
+    $\innerproduct{x, y} = \alpha_1 \kk{\beta_1} + \alpha_2 \kk{\beta_2} + \cdots$.
 \end{Satz}
 
 \pagebreak
@@ -234,14 +234,14 @@
     wobei: \\
     1.\quad $x_1 = v_1$ \qquad\qquad
     2.\quad $x_k = v_k - \sum_{i=1}^{k-1}$
-    \fracsize{$\frac{\sp{v_k, x_i}}{\norm{x_i}^2}$} $x_i$
+    \fracsize{$\frac{\innerproduct{v_k, x_i}}{\norm{x_i}^2}$} $x_i$
 \end{Satz}
 
 \begin{xDef}{\name{Fourier}koef"|fizienten}%
 {Fourierkoeffizienten@\name{Fourier}koef"|fizienten}
     Seien $V$ Vektorraum mit Skalarprodukt, $\basis{B}$ orthonormales
     System und $x \in V$.
-    Dann heißen die Skalare $\sp{x, b}$ mit $b \in \basis{B}$
+    Dann heißen die Skalare $\innerproduct{x, b}$ mit $b \in \basis{B}$
     \xbegriff{\name{Fourier}koef"|fizienten}%
     {Fourierkoeffizienten@\name{Fourier}koef"|fizienten}
     von $x$ bzgl. $\basis{B}$.
@@ -272,8 +272,8 @@
     Seien $V$ ein euklidischer/unitärer Vektorraum,
     $W \ur V$ endlich-dimensional mit ONB $(e_1, ..., e_k)$ und $y \in V$.
     Dann gibt es genau ein $z \in W^\bot$ mit
-    $y = \sum_{i=1}^k \sp{y, e_i}e_i + z$. \\
-    Der Vektor $y_1 = y - z = \sum_{i=1}^k \sp{y, e_i}e_i$ ist der
+    $y = \sum_{i=1}^k \innerproduct{y, e_i}e_i + z$. \\
+    Der Vektor $y_1 = y - z = \sum_{i=1}^k \innerproduct{y, e_i}e_i$ ist der
     eindeutig bestimmte Vektor von $W$, der $y$ am nächsten ist, d.\,h.
     $\forall_{u \in W}\; \norm{y - y_1} \le \norm{y - u}$.
 \end{Kor}
@@ -303,7 +303,7 @@
     Seien $V, W$ euklidische Vektorräume und $f: V \rightarrow W$ eine
     $\real$-lineare Abbildung. \\
     Dann ist $f$ eine \begriff{orthogonale Abbildung}, falls
-    $\sp{f(x), f(y)} = \sp{x, y}$ für alle $x, y \in V$.
+    $\innerproduct{f(x), f(y)} = \innerproduct{x, y}$ für alle $x, y \in V$.
 \end{Def}
 
 \begin{Def}{Isometrie}
@@ -486,7 +486,7 @@
     Seien $V, W$ unitäre Vektorräume und $f: V \rightarrow W$ eine
     $\complex$-lineare Abbildung. \\
     Dann ist $f$ eine \begriff{unitäre Abbildung}, falls
-    $\sp{f(x), f(y)} = \sp{x, y}$ für alle $x, y \in V$.
+    $\innerproduct{f(x), f(y)} = \innerproduct{x, y}$ für alle $x, y \in V$.
 \end{Def}
 
 \begin{Satz}{äquivalente Aussagen}
@@ -561,7 +561,7 @@
 
 \begin{Kor}
     Seien $f \in \End_\complex(V)$ und $x, y \in V$.
-    Dann ist $\sp{f(x), y} = \sp{x, f^\ast(y)}$.
+    Dann ist $\innerproduct{f(x), y} = \innerproduct{x, f^\ast(y)}$.
 \end{Kor}
 
 \begin{Def}{hermitesche und normale Endomorphismen}
@@ -574,21 +574,21 @@
 
 \begin{Kor}
     Seien $f \in \End_\complex(V)$ hermitesch und $x, y \in V$.
-    Dann ist $\sp{f(x), y} = \sp{x, f(y)}$.
+    Dann ist $\innerproduct{f(x), y} = \innerproduct{x, f(y)}$.
 \end{Kor}
 
 \begin{Satz}%
-{$f$ normal $\Leftrightarrow \sp{f(x), f(y)} = \sp{f^\ast(x), f^\ast(y)}$}
+{$f$ normal $\Leftrightarrow \innerproduct{f(x), f(y)} = \innerproduct{f^\ast(x), f^\ast(y)}$}
     Sei $f \in \End_\complex(V)$. \\
     Dann ist $f$ normal genau dann, wenn
-    $\sp{f(x), f(y)} = \sp{f^\ast(x), f^\ast(y)}$ für alle $x, y \in V$ gilt.
+    $\innerproduct{f(x), f(y)} = \innerproduct{f^\ast(x), f^\ast(y)}$ für alle $x, y \in V$ gilt.
 \end{Satz}
 
 \begin{Kor}
     Ist $f$ normal, dann gilt insbesondere $\norm{f(x)} = \norm{f^\ast(x)}$
     und $\ker f = \ker f^\ast$ für alle $x \in V$.
-    Ist $x \in \ker f$, dann ist $\sp{f^\ast(x), f^\ast(x)} =
-    \sp{f(x), f(x)} = 0$ und daher $f^\ast(x) = 0$.
+    Ist $x \in \ker f$, dann ist $\innerproduct{f^\ast(x), f^\ast(x)} =
+    \innerproduct{f(x), f(x)} = 0$ und daher $f^\ast(x) = 0$.
 \end{Kor}
 
 \begin{Satz}{Eigenvektoren des adjungierten Endomorphismus}

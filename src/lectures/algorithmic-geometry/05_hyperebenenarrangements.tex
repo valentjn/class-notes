@@ -8,14 +8,14 @@
 
 \textbf{Hyperebene}:
 Eine \begriff{Hyperebene} $h \subset \real^d$ ist eine Teilmenge von $\real^d$ der Form\\
-$h = \{x \in \real^d \;|\; \sp{x, a} = c\}$ für ein $a \in \real^d$ und ein $c \in \real$.
+$h = \{x \in \real^d \;|\; \innerproduct{x, a} = c\}$ für ein $a \in \real^d$ und ein $c \in \real$.
 
 \textbf{Äquivalenzrelation $\sim_\H$ auf $\real^d$}:
-Eine Hyperebene $h = \{x \in \real^d \;|\; \sp{x, a_h} = c_h\}$ induziert die Partition
-$\real^d = h \dcup \{x \in \real^d \;|\; \sp{x, a_h} > c_h\} \dcup
-\{x \in \real^d \;|\; \sp{x, a_h} < c_h\}$ von $\real^d$.\\
+Eine Hyperebene $h = \{x \in \real^d \;|\; \innerproduct{x, a_h} = c_h\}$ induziert die Partition
+$\real^d = h \dcup \{x \in \real^d \;|\; \innerproduct{x, a_h} > c_h\} \dcup
+\{x \in \real^d \;|\; \innerproduct{x, a_h} < c_h\}$ von $\real^d$.\\
 Definiere $\sigma_h\colon \real^d \to \{-1, 0, +1\}$ mit
-$\sigma_h(x) := \sgn(\sp{x, a_h} - c_h)$ (Lage von $x$ bzgl. $h$).\\
+$\sigma_h(x) := \sgn(\innerproduct{x, a_h} - c_h)$ (Lage von $x$ bzgl. $h$).\\
 Für eine Familie $\H := \{h_1, \dotsc, h_n\}$ von Hyperebenen sei
 $\sigma_\H\colon \real^d \to \{-1, 0, +1\}^n$ mit\\
 $\sigma_\H(x) := (\sigma_{h_1}(x), \dotsc, \sigma_{h_n}(x))$.\\
@@ -358,8 +358,8 @@ und \begriff{simpel}, falls jeder Knoten Grad 3 hat.
 
 \textbf{duale Hyperebene/dualer Halbraum}:
 Sei $p \in \real^d$ ein Punkt.\\
-Dann ist $\D(p) := \{x \in \real^d \;|\; \sp{x, p} = 1\}$ die \begriff{duale Hyperebene} und\\
-$\H(p) := \{x \in \real^d \;|\; \sp{x, p} \le 1\}$ der \begriff{duale Halbraum}.
+Dann ist $\D(p) := \{x \in \real^d \;|\; \innerproduct{x, p} = 1\}$ die \begriff{duale Hyperebene} und\\
+$\H(p) := \{x \in \real^d \;|\; \innerproduct{x, p} \le 1\}$ der \begriff{duale Halbraum}.
 
 \textbf{dualer Halbraumschnitt}:
 Sei $P$ ein Polytop in $\real^d$ mit $0 \in \interior(P)$.\\

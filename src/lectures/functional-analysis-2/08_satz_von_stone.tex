@@ -11,20 +11,20 @@
 }
 
 \begin{Def}{symmetrisch}
-    $A$ heißt symmetrisch, falls $\forall_{x, y \in D(A)}\; \sp{Ax, y} = \sp{x, Ay}$.
+    $A$ heißt symmetrisch, falls $\forall_{x, y \in D(A)}\; \innerproduct{Ax, y} = \innerproduct{x, Ay}$.
 \end{Def}
 
 \begin{Def}{Adjungierte}
     Sei $A$ dicht definiert.\\
     Dann heißt der Operator $(A^\ast, D(A^\ast))$ mit
     $D(A^\ast) := \{y \in H \;|\; \exists_{y^\ast \in H} \forall_{x \in D(A)}\;
-    \sp{Ax, y} = \sp{x, y^\ast}\}$ und $A^\ast y := y^\ast$ für $y \in D(A^\ast)$
+    \innerproduct{Ax, y} = \innerproduct{x, y^\ast}\}$ und $A^\ast y := y^\ast$ für $y \in D(A^\ast)$
     der \begriff{zu $A$ adjungierte Operator}.
 \end{Def}
 
 \begin{Bem}
     Für $y \in D(A^\ast)$ ist $y^\ast \in H$ mit
-    $\forall_{x \in D(A)}\; \sp{Ax, y} = \sp{x, y^\ast}$
+    $\forall_{x \in D(A)}\; \innerproduct{Ax, y} = \innerproduct{x, y^\ast}$
     wegen $D(A^\ast)$ dicht in $H$ eindeutig bestimmt.
     $(A^\ast, D(A^\ast))$ ist ein linearer Operator auf $H$.
 \end{Bem}
@@ -68,7 +68,7 @@
     Nach dem Lemma von eben ist jeder symmetrische, dicht definierte Operator $A$ abschließbar,
     wobei $(\overline{A}, D(\overline{A})) \subset (A^\ast, D(A^\ast))$.
     Jeder selbstadjungierte Operator ist symmetrisch
-    (wegen $\forall_{x, y \in D(A)}\; \sp{Ax, y} = \sp{x, A^\ast y} = \sp{x, Ay}$)
+    (wegen $\forall_{x, y \in D(A)}\; \innerproduct{Ax, y} = \innerproduct{x, A^\ast y} = \innerproduct{x, Ay}$)
     und abgeschlossen.
 \end{Bem}
 
@@ -105,14 +105,14 @@
     Im Folgenden wird gezeigt, dass $(\Delta, H^2(\real^n))$ auf $L^2(\real^n)$
     selbstadjungiert ist.\\
     Wegen partieller Integration gilt
-    $\sp{\Delta u, v}_{L^2} = \int_{\real^n} \Delta u \overline{v} \dx
-    = \int_{\real^n} u \overline{\Delta v} \dx = \sp{u, \Delta v}_{L^2}$,
+    $\innerproduct{\Delta u, v}_{L^2} = \int_{\real^n} \Delta u \overline{v} \dx
+    = \int_{\real^n} u \overline{\Delta v} \dx = \innerproduct{u, \Delta v}_{L^2}$,
     d.\,h. $\Delta$ ist symmetrisch.
     Seien nun $\lambda \in \complex \setminus \real$ und $f \in L^2(\real^n)$ und
     betrachte $\Delta u - \lambda u = f$.
     Mit Fouriertransformation gilt
     $u(x) = (2\pi)^{-n/2} \int_{\real^n}
-    \left(-\frac{\widehat{f}(k)}{\lambda + k^2}\right) e^{\iu\sp{k, x}} dk$
+    \left(-\frac{\widehat{f}(k)}{\lambda + k^2}\right) e^{\iu\innerproduct{k, x}} dk$
     (der Nenner verschwindet nicht, da $\Im(\lambda) \not= 0$),
     daraus folgt, dass es eine Lösung $u \in H^2(\real^n)$ gibt.
     Mit dem Satz von eben folgt, dass $(\Delta, H^2(\real^n))$ selbstadjungiert ist.

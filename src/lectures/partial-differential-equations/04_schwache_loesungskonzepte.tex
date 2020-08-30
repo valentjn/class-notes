@@ -197,8 +197,8 @@
     Seien $m \in \natural_0$ und $p \in [1, \infty]$.\\
     Dann ist $H^{m,p}(\Omega)$ ein Banachraum und
     $H^m(\Omega)$ ein Hilbertraum mit dem Skalarprodukt\\
-    $\sp{u, v}_{H^m(\Omega)} :=
-    \sum_{|\beta| \le m} \sp{\partial^\beta u, \partial^\beta v}_{L^2(\Omega)}$.
+    $\innerproduct{u, v}_{H^m(\Omega)} :=
+    \sum_{|\beta| \le m} \innerproduct{\partial^\beta u, \partial^\beta v}_{L^2(\Omega)}$.
 \end{Satz}
 
 \begin{Bem}
@@ -458,9 +458,9 @@
 \end{Def}
 
 \begin{Bsp}
-    Das Skalarprodukt $\sp{\cdot, \cdot}$ von $V$ ist stetig mit $\gamma_a = 1$, denn
-    $|a(u, v)| = |\sp{u, v}| \le \norm{u} \norm{v}$ nach Cauchy-Schwarz
-    (und $|a(u, u)| = |\sp{u, u}| = \norm{u}^2$ für $u = v$).
+    Das Skalarprodukt $\innerproduct{\cdot, \cdot}$ von $V$ ist stetig mit $\gamma_a = 1$, denn
+    $|a(u, v)| = |\innerproduct{u, v}| \le \norm{u} \norm{v}$ nach Cauchy-Schwarz
+    (und $|a(u, u)| = |\innerproduct{u, u}| = \norm{u}^2$ für $u = v$).
 \end{Bsp}
 
 \linie
@@ -472,8 +472,8 @@
 \end{Def}
 
 \begin{Bsp}
-    Das Skalarprodukt $\sp{\cdot, \cdot}$ von $V$ ist stetig mit $\alpha = 1$, denn
-    $\frac{a(u, u)}{\norm{u}^2} = \frac{\sp{u, u}}{\norm{u}^2} = 1$.
+    Das Skalarprodukt $\innerproduct{\cdot, \cdot}$ von $V$ ist stetig mit $\alpha = 1$, denn
+    $\frac{a(u, u)}{\norm{u}^2} = \frac{\innerproduct{u, u}}{\norm{u}^2} = 1$.
 \end{Bsp}
 
 \linie
@@ -545,13 +545,13 @@
 
 \begin{Def}{Energie-Skalarprodukt}
     Sei $a\colon V \times V \to \real$ eine koerzive Bilinearform.\\
-    Dann heißt der symm. Anteil $\sp{u, v}_a := \frac{1}{2} (a(u,v) + a(v,u))$
+    Dann heißt der symm. Anteil $\innerproduct{u, v}_a := \frac{1}{2} (a(u,v) + a(v,u))$
     \begriff{Energie-Skalarprodukt} von $a$.
 \end{Def}
 
 \begin{Bem}
-    $\sp{\cdot, \cdot}_a$ ist ein Skalarprodukt mit induzierter
-    \begriff{Energienorm} $\norm{u}_a := \sqrt{\sp{u, u}_a}$.
+    $\innerproduct{\cdot, \cdot}_a$ ist ein Skalarprodukt mit induzierter
+    \begriff{Energienorm} $\norm{u}_a := \sqrt{\innerproduct{u, u}_a}$.
 \end{Bem}
 
 \linie
@@ -579,17 +579,17 @@
 \begin{Satz}{orthogonale Projektion}\\
     Seien $V$ ein Hilbertraum und $W \le V$ ein abgeschlossener Unterraum.\\
     Dann gibt es genau eine Abb. $P\colon V \to W$ mit
-    $\forall_{v \in V} \forall_{w \in W}\; \sp{v - Pv, w} = 0$
+    $\forall_{v \in V} \forall_{w \in W}\; \innerproduct{v - Pv, w} = 0$
     (d.\,h. $v - Pv \in W^\bot$).\\
     $P$ ist ein linearer, stetiger Operator und heißt \begriff{orthogonale Projektion} auf $W$.
 \end{Satz}
 
 \begin{Satz}{\name{Riesz}scher Darstellungssatz}\\
-    Seien $V$ ein Hilbertraum und $J\colon V \to V'$, $(Jv)(w) := \sp{v, w}$.\\
+    Seien $V$ ein Hilbertraum und $J\colon V \to V'$, $(Jv)(w) := \innerproduct{v, w}$.\\
     Dann ist $J$ eine lineare, stetige, bijektive Isometrie.
     Insbesondere existiert zu jedem $\ell \in V'$ ein eindeutiger
     \begriff{\name{Riesz}-Repräsentant} $v_\ell := J^{-1}(\ell) \in V$ mit
-    $\ell(\cdot) = \sp{v_\ell, \cdot}$.
+    $\ell(\cdot) = \innerproduct{v_\ell, \cdot}$.
 \end{Satz}
 
 \pagebreak
@@ -645,7 +645,7 @@
     $a \colon V \times V \to \real$ eine stetige, koerzive Bilinearform mit
     Koerzivitätskonstante $\alpha > 0$.\\
     Dann gibt es genau eine Abbildung $\A\colon V \to V$ mit
-    $\forall_{u, v \in V}\; a(u, v) = \sp{\A u, v}$.\\
+    $\forall_{u, v \in V}\; a(u, v) = \innerproduct{\A u, v}$.\\
     Dabei ist $\A$ linear, stetig und bijektiv sowie $\A^{-1}$ ebenfalls stetig mit
     $\norm{\A^{-1}} \le \frac{1}{\alpha}$.
 \end{Satz}
@@ -756,7 +756,7 @@
 
 \begin{Def}{$H^s$-Regularität}
     Sei $H^1_0(\Omega) \le V \le H^1(\Omega)$.\\
-    Eine PDE in schwacher Form $\forall_{v \in V}\; a(u, v) = \sp{f, v}_{L^2(\Omega)}$ mit
+    Eine PDE in schwacher Form $\forall_{v \in V}\; a(u, v) = \innerproduct{f, v}_{L^2(\Omega)}$ mit
     $a$ koerziv auf $V$ heißt \begriff{$H^s$-regulär}, falls es ein $C_R > 0$ gibt, sodass
     es für alle $f \in H^{s-2}(\Omega)$ eine schwache Lösung $u \in H^s(\Omega)$ gibt mit
     $\norm{u}_{H^s(\Omega)} \le C_R \norm{f}_{H^{s-2}(\Omega)}$.

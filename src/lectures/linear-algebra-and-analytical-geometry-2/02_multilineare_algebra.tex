@@ -145,33 +145,33 @@
 \end{Def}
 
 \begin{Satz}{Festlegung einer Bilinearform}
-    Seien $\sp{\cdot, \cdot}: V \times V \rightarrow K$ eine Bilinearform \\
+    Seien $\innerproduct{\cdot, \cdot}: V \times V \rightarrow K$ eine Bilinearform \\
     und $\basis{B} = \{v_i \;|\; i \in I\}$ eine Basis von $V$. \\
-    Dann ist $\sp{\cdot, \cdot}$ durch die Angabe der Skalare
-    $\lambda_{ij} = \sp{v_i, v_j} \in K$ vollständig bestimmt. \\
+    Dann ist $\innerproduct{\cdot, \cdot}$ durch die Angabe der Skalare
+    $\lambda_{ij} = \innerproduct{v_i, v_j} \in K$ vollständig bestimmt. \\
     Gibt man umgekehrt Skalare $\lambda_{ij} \in K$ vor und definiert
-    $\sp{v, w} = \sp{\sum_{i \in I} \alpha_i v_i, \sum_{j \in I} \beta_j v_j}$\\
+    $\innerproduct{v, w} = \innerproduct{\sum_{i \in I} \alpha_i v_i, \sum_{j \in I} \beta_j v_j}$\\
     $= \sum_{i, j \in I} \alpha_i \lambda_{ij} \beta_j \in K$
     für $v = \sum_{i \in I} \alpha_i v_i$ und
     $w = \sum_{j \in I} \beta_j v_j$ ($\alpha_i, \beta_j \in K$ fast alle $0$),
-    dann ist $\sp{\cdot, \cdot}: V \times V \rightarrow K$ eine Bilinearform
+    dann ist $\innerproduct{\cdot, \cdot}: V \times V \rightarrow K$ eine Bilinearform
     auf $V$.
 \end{Satz}
 
 \begin{Def}{Grammatrix}
     Die Matrix $\grammatrix = \grammatrix(\basis{B}) = (\lambda_{ij})_{ij}$
     (mit $i, j \in I$) heißt \begriff{Grammatrix} der Bilinearform
-    $\sp{\cdot, \cdot}$ bzgl. der Basis $\basis{B}$.
+    $\innerproduct{\cdot, \cdot}$ bzgl. der Basis $\basis{B}$.
     Ist $V$ endlich-dimensional und $\basis{B} = (v_1, \ldots, v_n)$,
     so ist $\grammatrix(\basis{B})$ eine $n \times n$-Matrix.
 \end{Def}
 
 \begin{Bem}
     Ist $\grammatrix(\basis{B}) = (\lambda_{ij})_{ij}$ die Grammatrix
-    von $\sp{\cdot, \cdot}$ bzgl. $\basis{B}$ und
+    von $\innerproduct{\cdot, \cdot}$ bzgl. $\basis{B}$ und
     $v = \sum_{i \in I} \alpha_i v_i$ und $w = \sum_{j \in I} \beta_j v_j$
     ($\alpha_i, \beta_j \in K$ fast alle $0$), so ist
-    $\sp{v, w} = (\alpha_i)_i^t \cdot (\lambda_{ij})_{ij} \cdot (\beta_j)_j$
+    $\innerproduct{v, w} = (\alpha_i)_i^t \cdot (\lambda_{ij})_{ij} \cdot (\beta_j)_j$
     als Matrizenprodukt, wobei $(\alpha_i)_i, (\beta_j)_j$ Spaltenvektoren
     sind.
 \end{Bem}
@@ -192,20 +192,20 @@
 \end{Bem}
 
 \begin{Def}{links-/rechtsorthogonal}
-    Seien $V$ ein $K$-Vektorraum, $\sp{\cdot, \cdot}: V \times V \rightarrow K$
+    Seien $V$ ein $K$-Vektorraum, $\innerproduct{\cdot, \cdot}: V \times V \rightarrow K$
     eine Bilinearform auf $V$ und $x, y \in V$.
     Dann heißt $x$ \begriff{linksorthogonal} zu $y$ und $y$
-    \begriff{rechtsorthogonal} zu $x$, falls $\sp{x, y} = 0$.
+    \begriff{rechtsorthogonal} zu $x$, falls $\innerproduct{x, y} = 0$.
     Man schreibt auch $x \orth y$.
 \end{Def}
 
 \begin{Def}{Links-/Rechtsradikal}
-    $\rad_l(\sp{\cdot, \cdot}) = \{x \in V \;|\;
-    \forall_{y \in V}\; \sp{x, y} = 0\}$
+    $\rad_l(\innerproduct{\cdot, \cdot}) = \{x \in V \;|\;
+    \forall_{y \in V}\; \innerproduct{x, y} = 0\}$
     heißt \begriff{Linksradikal} und
-    $\rad_r(\sp{\cdot, \cdot}) = \{x \in V \;|\;
-    \forall_{y \in V}\; \sp{y, x} = 0\}$
-    heißt \begriff{Rechtsradikal} der Bilinearform $\sp{\cdot, \cdot}$.
+    $\rad_r(\innerproduct{\cdot, \cdot}) = \{x \in V \;|\;
+    \forall_{y \in V}\; \innerproduct{y, x} = 0\}$
+    heißt \begriff{Rechtsradikal} der Bilinearform $\innerproduct{\cdot, \cdot}$.
 \end{Def}
 
 \begin{Satz}{Links-/Rechtsradikal als Unterraum} \\
@@ -214,19 +214,19 @@
 \end{Satz}
 
 \begin{Satz}{assoziierter Links-/Rechtshomomorphismus}
-    Sei $f = \sp{\cdot, \cdot}: V \times V \rightarrow K$ bilinear.
+    Sei $f = \innerproduct{\cdot, \cdot}: V \times V \rightarrow K$ bilinear.
     Dann wird durch
     $E_l: V \rightarrow V^\ast$, $E_l(v) = \lambda_v$ mit
-    $\lambda_v: V \rightarrow K$, $\lambda_v(x) = \sp{v, x}$
+    $\lambda_v: V \rightarrow K$, $\lambda_v(x) = \innerproduct{v, x}$
     ein Homomorphismus definiert, dieser heißt der zu $f$ assoziierte
     (kanonische) \begriff{Linkshomomorphismus} von $V$ nach $V^\ast$.
     Zur Verdeutlichung, dass $E_l$ bzgl. $f$ gebildet wurde, schreibt man
     auch $E_l^f$.
     Analog wird $E_r: V \rightarrow V^\ast$, $E_r(v) = \rho_v$ mit
-    $\rho_v: V \rightarrow K$, $\rho_v(x) = \sp{x, v}$
+    $\rho_v: V \rightarrow K$, $\rho_v(x) = \innerproduct{x, v}$
     der \begriff{Rechtshomomorphismus} definiert. \\
-    Es gilt $\rad_l(\sp{\cdot, \cdot}) = \ker E_l$ sowie
-    $\rad_r(\sp{\cdot, \cdot}) = \ker E_r$. \\
+    Es gilt $\rad_l(\innerproduct{\cdot, \cdot}) = \ker E_l$ sowie
+    $\rad_r(\innerproduct{\cdot, \cdot}) = \ker E_r$. \\
     Ist $V$ endlich-dimensional und $\basis{B}$ Basis von $V$, so gilt
     $\hommatrix{E_r}{B^\ast}{B} = \grammatrix_f(\basis{B}) =
     (\hommatrix{E_l}{B^\ast}{B})^t$.
@@ -251,28 +251,28 @@
 \end{Satz}
 
 \begin{Def}{spezielle Bilinearformen}
-    Sei $\sp{\cdot, \cdot}$ eine Bilinearform auf $V$. \\
-    $\sp{\cdot, \cdot}$ heißt \begriff{symmetrisch}, falls
-    $\sp{v_1, v_2} = \sp{v_2, v_1}$ für alle $v_1, v_2 \in V$. \\
-    $\sp{\cdot, \cdot}$ heißt \begriff{alternierend}, falls
-    $\sp{v_1, v_2} = -\sp{v_2, v_1}$ für alle $v_1, v_2 \in V$.
+    Sei $\innerproduct{\cdot, \cdot}$ eine Bilinearform auf $V$. \\
+    $\innerproduct{\cdot, \cdot}$ heißt \begriff{symmetrisch}, falls
+    $\innerproduct{v_1, v_2} = \innerproduct{v_2, v_1}$ für alle $v_1, v_2 \in V$. \\
+    $\innerproduct{\cdot, \cdot}$ heißt \begriff{alternierend}, falls
+    $\innerproduct{v_1, v_2} = -\innerproduct{v_2, v_1}$ für alle $v_1, v_2 \in V$.
 \end{Def}
 
 \begin{Lemma}{Eigenschaften spezieller Bilinearformen}
-    Ist $\sp{\cdot, \cdot}$ symmetrisch oder alternierend, so ist
+    Ist $\innerproduct{\cdot, \cdot}$ symmetrisch oder alternierend, so ist
     $x \orth y \;\Leftrightarrow\; y \orth x$ und die Relation $\bot$ ist
     symmetrisch. \\
-    Ist $\sp{\cdot, \cdot}$ symmetrisch oder alternierend, so braucht man
+    Ist $\innerproduct{\cdot, \cdot}$ symmetrisch oder alternierend, so braucht man
     daher nicht mehr zwischen Links- und Rechtsradikal zu unterscheiden. \\
-    Für $\sp{\cdot, \cdot}$ symmetrisch ist $E_l = E_r$,
-    für $\sp{\cdot, \cdot}$ alternierend ist $E_l = -E_r$. \\
+    Für $\innerproduct{\cdot, \cdot}$ symmetrisch ist $E_l = E_r$,
+    für $\innerproduct{\cdot, \cdot}$ alternierend ist $E_l = -E_r$. \\
     Ist $\characteristic K = 2$ (also $1 = -1$ in $K$), so ist alternierend und
     symmetrisch dasselbe. \\
-    $\sp{\cdot, \cdot}$ ist symmetrisch genau dann, wenn
-    $\grammatrix_{\sp{\cdot, \cdot}}(\basis{B})$ bzgl. einer Basis $\basis{B}$
+    $\innerproduct{\cdot, \cdot}$ ist symmetrisch genau dann, wenn
+    $\grammatrix_{\innerproduct{\cdot, \cdot}}(\basis{B})$ bzgl. einer Basis $\basis{B}$
     symmetrisch ist. \\
-    $\sp{\cdot, \cdot}$ ist alternierend genau dann, wenn
-    $\grammatrix_{\sp{\cdot, \cdot}}(\basis{B})$ bzgl. einer Basis $\basis{B}$
+    $\innerproduct{\cdot, \cdot}$ ist alternierend genau dann, wenn
+    $\grammatrix_{\innerproduct{\cdot, \cdot}}(\basis{B})$ bzgl. einer Basis $\basis{B}$
     schiefsymmetrisch ist (d.\,h. $A^t = -A$).
 \end{Lemma}
 

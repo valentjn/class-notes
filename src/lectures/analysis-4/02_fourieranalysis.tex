@@ -8,17 +8,17 @@
 
 Sei $E$ ein euklidischer oder hermitescher Vektorraum der Dimension
 $\dim E = n$, d.\,h. ein $\real$- oder $\complex$-Vektorraum, auf dem
-ein Skalarprodukt $\sp{\cdot, \cdot}$ gegeben ist
+ein Skalarprodukt $\innerproduct{\cdot, \cdot}$ gegeben ist
 (hier linear im ersten Argument).
 
 In diesem Fall existiert eine \textbf{Orthonormalbasis (ONB)}
 $\{e_1, \dotsc, e_n\}$, d.\,h. eine Basis, sodass
-$\sp{e_j, e_k} = \delta_{jk}$ für $j, k = 1, \dotsc, n$ ist.
+$\innerproduct{e_j, e_k} = \delta_{jk}$ für $j, k = 1, \dotsc, n$ ist.
 Ist $x \in E$ ein Vektor, so kann man $x$ eindeutig als Linearkombination
 der Basis darstellen, also $x = \xi_1 e_1 + \dotsb + \xi_n e_n$
 mit Skalaren $\xi_k$.\\
-Es gilt $\xi_k = \sp{x, e_k}$ für $k = 1, \dotsc, n$.
-Die $\sp{x, e_k}$ heißen \textbf{\name{Fourier}koef"|fizienten} von $x$.
+Es gilt $\xi_k = \innerproduct{x, e_k}$ für $k = 1, \dotsc, n$.
+Die $\innerproduct{x, e_k}$ heißen \textbf{\name{Fourier}koef"|fizienten} von $x$.
 
 Dies gilt ohne Weiteres jedoch nicht mehr für unendlich-dimensionale
 Vektorräume $E$, z.\,B. ist auf $E = \C([a, b], \complex)$ die Norm
@@ -28,7 +28,7 @@ Skalarprodukt, das diese Norm induziert.
 \linie
 
 Im Folgenden wird das Skalarprodukt
-$\sp{f, g}_{L^2} = \int_{[a, b]} f(t) \overline{g(t)} \dt$ und die davon
+$\innerproduct{f, g}_{L^2} = \int_{[a, b]} f(t) \overline{g(t)} \dt$ und die davon
 induzierte Norm $\norm{f}_{L^2}^2 = \int_{[a, b]} |f(t)|^2 \dt$ verwendet.\\
 Der Einfachheit halber beschränkt man sich auf $[a, b] = [-\pi, \pi]$.
 
@@ -62,11 +62,11 @@ ist trivial).
 
 Für eine gegebene Funktion $f \in \C([-\pi, \pi], \complex)$ kann man nun
 die Fourierkoef"|fizienten\\
-$\alpha_n := \sp{f, \frac{1}{\sqrt{\pi}} \sin(nx)}_{L^2} =
+$\alpha_n := \innerproduct{f, \frac{1}{\sqrt{\pi}} \sin(nx)}_{L^2} =
 \frac{1}{\sqrt{\pi}} \int_{-\pi}^\pi f(x)\sin(nx)\dx$,\\
-$\beta_m := \sp{f, \frac{1}{\sqrt{\pi}} \cos(mx)}_{L^2} =
+$\beta_m := \innerproduct{f, \frac{1}{\sqrt{\pi}} \cos(mx)}_{L^2} =
 \frac{1}{\sqrt{\pi}} \int_{-\pi}^\pi f(x)\cos(mx)\dx$ und\\
-$\gamma := \sp{f, \frac{1}{\sqrt{2\pi}}}_{L^2} =
+$\gamma := \innerproduct{f, \frac{1}{\sqrt{2\pi}}}_{L^2} =
 \frac{1}{\sqrt{2\pi}} \int_{-\pi}^\pi f(x)\dx$
 für $n, m \in \natural$ berechnen.
 
@@ -98,7 +98,7 @@ $c + \sum_{n=1}^\infty (a_n \sin(nx) + b_n \cos(nx))$.
 
 Ersetzt man $\sin(nx) = \frac{e^{\i nx} - e^{-\i nx}}{2\i}$ und
 $\cos(mx) = \frac{e^{\i mx} + e^{-\i mx}}{2}$, so gilt wegen\\
-$\sp{e^{\i nx}, e^{\i mx}}_{L^2} = \int_{-\pi}^\pi e^{\i nx} e^{-\i mx}\dx =
+$\innerproduct{e^{\i nx}, e^{\i mx}}_{L^2} = \int_{-\pi}^\pi e^{\i nx} e^{-\i mx}\dx =
 \int_{-\pi}^\pi e^{\i (n - m)x}\dx =$
 \matrixsize{$\begin{cases}0 & n \not= m\\2\pi & n = m\end{cases}$}
 für $n, m \in \integer$,\\
@@ -106,7 +106,7 @@ dass $\left\{\frac{1}{\sqrt{2\pi}} e^{\i nx}\right\}_{n \in \integer}$
 ein Orthonormalsystem ist.
 
 Definiert man
-$\gamma_n := \sp{f, \frac{1}{\sqrt{2\pi}} e^{\i nx}}_{L^2} =
+$\gamma_n := \innerproduct{f, \frac{1}{\sqrt{2\pi}} e^{\i nx}}_{L^2} =
 \frac{1}{\sqrt{2\pi}} \int_{-\pi}^\pi f(x) e^{-\i nx}\dx$, so kann man wieder
 die formale Fourier-Reihe
 $\sum_{n \in \integer} \frac{\gamma_n}{\sqrt{2\pi}} e^{\i nx}$ definieren.\\
@@ -379,31 +379,31 @@ $\frac{1}{\sqrt{2\pi}}
 
 Sei $H$ ein \emph{$K$-Vektorraum} mit $K = \complex$.
 
-Sei $\sp{\cdot, \cdot}\colon H \times H \rightarrow \complex$
+Sei $\innerproduct{\cdot, \cdot}\colon H \times H \rightarrow \complex$
 ein \emph{Skalarprodukt}, d.\,h.
-$\sp{x, x} \ge 0$,
-$\sp{x, x} = 0 \iff x = 0$,
-$\sp{x, y} = \overline{\sp{y, x}}$ und
-$\sp{\alpha_1 x_1 + \alpha_2 x_2, y} =
-\alpha_1 \sp{x_1, y} + \alpha_2 \sp{x_2, y}$
-(also $\sp{x, \beta_1 y_1 + \beta_2 y_2} =
-\overline{\beta_1} \sp{x, y_1} + \overline{\beta_2} \sp{x, y_2}$).
+$\innerproduct{x, x} \ge 0$,
+$\innerproduct{x, x} = 0 \iff x = 0$,
+$\innerproduct{x, y} = \overline{\innerproduct{y, x}}$ und
+$\innerproduct{\alpha_1 x_1 + \alpha_2 x_2, y} =
+\alpha_1 \innerproduct{x_1, y} + \alpha_2 \innerproduct{x_2, y}$
+(also $\innerproduct{x, \beta_1 y_1 + \beta_2 y_2} =
+\overline{\beta_1} \innerproduct{x, y_1} + \overline{\beta_2} \innerproduct{x, y_2}$).
 
 Das Skalarprodukt definiert eine Norm $\norm{\cdot}\colon H \rightarrow \real$
-mit $\norm{x} = \sqrt{\sp{x, x}} \ge 0$.\\
+mit $\norm{x} = \sqrt{\innerproduct{x, x}} \ge 0$.\\
 Es gilt die \emph{\name{Cauchy}-\name{Schwarz}sche Ungleichung}, d.\,h.
-$|\sp{x, y}| \le \norm{x} \cdot \norm{y}$.
+$|\innerproduct{x, y}| \le \norm{x} \cdot \norm{y}$.
 
 \textbf{\name{Hilbert}raum}:
-Sei $H$ ein $K$-Vektorraum mit Skalarprodukt $\sp{\cdot, \cdot}$.\\
-Dann heißt $(H, \sp{\cdot, \cdot})$ \emph{\name{Hilbert}raum}, falls
+Sei $H$ ein $K$-Vektorraum mit Skalarprodukt $\innerproduct{\cdot, \cdot}$.\\
+Dann heißt $(H, \innerproduct{\cdot, \cdot})$ \emph{\name{Hilbert}raum}, falls
 $(H, \norm{\cdot})$ vollständig ist.
 
 Die \emph{Parallelogramgleichung}
 $\norm{x + y}^2 + \norm{x - y}^2 = 2 \norm{x}^2 + 2 \norm{y}^2$ ist
 erfüllt genau dann, wenn eine gegebene Norm ein Skalarprodukt induziert
 (in diesem Fall gilt z.\,B. für $K = \real$, dass
-$4 \sp{x, y} = \norm{x + y}^2 - \norm{x - y}^2$).
+$4 \innerproduct{x, y} = \norm{x + y}^2 - \norm{x - y}^2$).
 
 \linie
 
@@ -414,7 +414,7 @@ Es gilt\\
 $\ell^2(\natural) = \{\{a_n\}_{n \in \natural} \;|\;
 \sum_{n \in \natural} |a_n|^2 < \infty\}$,
 das Skalarprodukt ist
-$\sp{\{a_n\}, \{b_n\}}_{\ell^2(\natural)} =
+$\innerproduct{\{a_n\}, \{b_n\}}_{\ell^2(\natural)} =
 \sum_{n \in \natural} a_n \overline{b_n}$.\\
 $\ell^2(\natural)$ und $\ell^2(\integer)$ sind \emph{separabel}, d.\,h.
 es gibt eine abzählbare dichte Teilmenge.
@@ -423,48 +423,48 @@ es gibt eine abzählbare dichte Teilmenge.
 Die Verallgemeinerung ist $L^2(X, \mu) =
 \{f\colon X \rightarrow \complex \;|\;
 \norm{f}_{L^2}^2 = \int_X |f|^2 d\mu < \infty\}$ mit dem Skalarprodukt
-$\sp{f, g}_{L^2} = \int_X f \overline{g} d\mu$.
+$\innerproduct{f, g}_{L^2} = \int_X f \overline{g} d\mu$.
 Falls $(X, \mu)$ ein separabler Maßraum ist, so ist auch
 $L^2(X, \mu)$ separabel (z.\,B. Lebesgue-Maß).
 
 \linie
 
 \textbf{Orthogonalität}:
-Sei $(H, \sp{\cdot, \cdot})$ ein Hilbertraum.
+Sei $(H, \innerproduct{\cdot, \cdot})$ ein Hilbertraum.
 Man definiert eine Relation $\bot$ auf $H$ mit
-$f \orth g$, falls $\sp{f, g} = 0$
+$f \orth g$, falls $\innerproduct{f, g} = 0$
 ($f$ und $g$ sind zueinander \emph{orthogonal}).
 
 Für $f \orth g$ gilt der \emph{Satz des Pythagoras}, d.\,h.
-$\norm{f + g}^2 = \sp{f + g, f + g} = \norm{f}^2 + \norm{g}^2$.
+$\norm{f + g}^2 = \innerproduct{f + g, f + g} = \norm{f}^2 + \norm{g}^2$.
 
 Für $f_n \xrightarrow{\norm{\cdot}} f$ und $g_n \xrightarrow{\norm{\cdot}} g$
-gilt $\sp{f_n, g_n} \to \sp{f, g}$, da
-$|\sp{f_n, g_n} - \sp{f, g}|$\\
-$= |\sp{f_n, g_n - g} + \sp{f_n - f, g}| \le
+gilt $\innerproduct{f_n, g_n} \to \innerproduct{f, g}$, da
+$|\innerproduct{f_n, g_n} - \innerproduct{f, g}|$\\
+$= |\innerproduct{f_n, g_n - g} + \innerproduct{f_n - f, g}| \le
 \norm{f_n} \cdot \norm{g_n - g} + \norm{f_n - f} \cdot \norm{g}
 \le C \cdot \norm{g_n - g} + \norm{f_n - f} \cdot C \to 0$.
 
 \linie
 
 \textbf{orthonormiertes System (ONS)}:
-Sei $(H, \sp{\cdot, \cdot})$ ein Hilbertraum.\\
+Sei $(H, \innerproduct{\cdot, \cdot})$ ein Hilbertraum.\\
 Ein System $\{\varphi_n\}_n \subset H$ heißt
 \emph{orthonormiertes System (ONS)}, falls
-$\sp{\varphi_n, \varphi_k} = \delta_{nk}$.
+$\innerproduct{\varphi_n, \varphi_k} = \delta_{nk}$.
 
 \textbf{linear unabhängig}:
-Sei $(H, \sp{\cdot, \cdot})$ ein Hilbertraum.\\
+Sei $(H, \innerproduct{\cdot, \cdot})$ ein Hilbertraum.\\
 Ein System $\{\varphi_n\}_n \subset H$ heißt
 \emph{linear unabhängig}, falls jedes endliche Teilsystem lin.\,unabh. ist.
 
 Jedes ONS ist linear unabhängig
 (aus $\alpha_1 \varphi_1 + \dotsb + \alpha_n \varphi_n = 0$ folgt\\
-$\sp{\alpha_1 \varphi_1 + \dotsb + \alpha_n \varphi_n, \varphi_k}
-= \alpha_k = \sp{0, \varphi_k} = 0$ für alle $k = 1, \dotsc, n$).
+$\innerproduct{\alpha_1 \varphi_1 + \dotsb + \alpha_n \varphi_n, \varphi_k}
+= \alpha_k = \innerproduct{0, \varphi_k} = 0$ für alle $k = 1, \dotsc, n$).
 
 \textbf{vollständig}:
-Sei $(H, \sp{\cdot, \cdot})$ ein Hilbertraum.\\
+Sei $(H, \innerproduct{\cdot, \cdot})$ ein Hilbertraum.\\
 Ein System $\{\varphi_n\}_{n \in \natural} \subset H$ heißt
 \emph{vollständig}, falls\\
 $\forall_{x \in H} \forall_{\varepsilon > 0}
@@ -474,7 +474,7 @@ $\forall_{x \in H} \forall_{\varepsilon > 0}
 < \varepsilon$.
 
 \textbf{Basis, Orthonormalbasis (ONB)}:
-Sei $(H, \sp{\cdot, \cdot})$ ein Hilbertraum.\\
+Sei $(H, \innerproduct{\cdot, \cdot})$ ein Hilbertraum.\\
 Ein System $\{\varphi_n\}_{n \in \natural} \subset H$ heißt
 \emph{Basis}, falls es vollständig und linear unabhängig ist.\\
 Ein ONS heißt \emph{Orthonormalbasis (ONB)}, falls es vollständig ist.
@@ -501,11 +501,11 @@ Linearkombinationen von $M$.
 Aus $f \orth M$ folgt $f \orth \bigvee M$.
 
 \textbf{Projektion auf Unterraum}:\\
-Seien $(H, \sp{\cdot, \cdot})$ ein Hilbertraum,
+Seien $(H, \innerproduct{\cdot, \cdot})$ ein Hilbertraum,
 $\{\varphi_n\}_{n \in \natural}$ ein ONS und
 $L = \bigvee \{\varphi_1, \dotsc, \varphi_N\}$ mit $N \in \natural$.\\
 Dann ist $P_L\colon H \rightarrow H$,
-$P_L x := \sum_{k=1}^N \sp{x, \varphi_k} \varphi_k$
+$P_L x := \sum_{k=1}^N \innerproduct{x, \varphi_k} \varphi_k$
 die \emph{Projektion auf den Unterraum $L$}.
 
 \textbf{Eigenschaf"|ten}:
@@ -519,9 +519,9 @@ die \emph{Projektion auf den Unterraum $L$}.
     \item
     $x - P_L x =: h \orth L$,
     denn für $f = \beta_1 \varphi_1 + \dotsb + \beta_N \varphi_N \in L$ gilt\\
-    $\sp{h, f} = \sp{x, f} - \sp{P_L x, f} =
-    \sum_{k=1}^N \sp{x, \varphi_k} \overline{\beta_k} -
-    \sum_{k=1}^N \sum_{j=1}^N \sp{\sp{x, \varphi_j} \varphi_j, \varphi_k}
+    $\innerproduct{h, f} = \innerproduct{x, f} - \innerproduct{P_L x, f} =
+    \sum_{k=1}^N \innerproduct{x, \varphi_k} \overline{\beta_k} -
+    \sum_{k=1}^N \sum_{j=1}^N \innerproduct{\innerproduct{x, \varphi_j} \varphi_j, \varphi_k}
     \overline{\beta_k} = 0$
 
     \item
@@ -553,9 +553,9 @@ Also besitzt das Problem $\{f \in L \;|\;
 $f = P_L x$.
 
 \textbf{Satz (\name{Bessel}sche Ungleichung)}:
-Seien $(H, \sp{\cdot, \cdot})$ ein Hilbertraum,
+Seien $(H, \innerproduct{\cdot, \cdot})$ ein Hilbertraum,
 $\{\varphi_k\}_{k \in \natural}$ ein ONS,
-$x \in H$ und $c_k := \sp{x, \varphi_k}$ die Fourierkoef"|fizienten.\\
+$x \in H$ und $c_k := \innerproduct{x, \varphi_k}$ die Fourierkoef"|fizienten.\\
 Dann gilt $\sum_{k=1}^\infty |c_k|^2 \le \norm{x}^2$.
 
 \textbf{Satz}:
@@ -563,7 +563,7 @@ Es gilt $\sum_{k=1}^\infty |c_k|^2 = \norm{x}^2$ genau dann, wenn
 $\sum_{k=1}^N c_k \varphi_k \xrightarrow{\norm{\cdot}} x$.
 
 \textbf{abgeschlossen}:
-Seien $(H, \sp{\cdot, \cdot})$ ein Hilbertraum.
+Seien $(H, \innerproduct{\cdot, \cdot})$ ein Hilbertraum.
 Ein ONS $\{\varphi_k\}_{k \in \natural}$ heißt \emph{abgeschlossen}, falls
 für alle $x \in H$ die \emph{Gleichung von \name{Parseval}} gilt, d.\,h.
 $\forall_{x \in H}\; \sum_{k=1}^\infty |c_k|^2 = \norm{x}^2$\\
@@ -574,13 +574,13 @@ Die Gleichung von Parseval ist eine unendliche Verallgemeinerung des
 Satzes des Pythagoras.
 
 \textbf{total}:
-Seien $(H, \sp{\cdot, \cdot})$ ein Hilbertraum.
+Seien $(H, \innerproduct{\cdot, \cdot})$ ein Hilbertraum.
 Ein ONS $\{\varphi_k\}_{k \in \natural}$ heißt \emph{total}, falls\\
 $\forall_{x \in H}\; (\forall_{k \in \natural}\;
-c_k = \sp{x, \varphi_k} = 0) \;\Rightarrow\; (x = 0)$.
+c_k = \innerproduct{x, \varphi_k} = 0) \;\Rightarrow\; (x = 0)$.
 
 \textbf{Satz}:
-Seien $(H, \sp{\cdot, \cdot})$ ein Hilbertraum und
+Seien $(H, \innerproduct{\cdot, \cdot})$ ein Hilbertraum und
 $\{\varphi_k\}_{k \in \natural}$ ein ONS.\\
 Dann ist das ONS abgeschlossen $\iff$ vollständig $\iff$ total.
 
@@ -588,10 +588,10 @@ Dann ist das ONS abgeschlossen $\iff$ vollständig $\iff$ total.
 \pagebreak
 
 \textbf{Zuordnung von Vektoren und Folgen}:\\
-Seien $(H, \sp{\cdot, \cdot})$ ein Hilbertraum und
+Seien $(H, \innerproduct{\cdot, \cdot})$ ein Hilbertraum und
 $\{\varphi_n\}_{n \in \natural}$ ein ONS.\\
 Definiere eine Abbildung $\phi\colon H \rightarrow \ell^2(\natural)$,
-$x \mapsto \{c_k\}_{k \in \natural}$ mit $c_k = \sp{x, \varphi_k}$.
+$x \mapsto \{c_k\}_{k \in \natural}$ mit $c_k = \innerproduct{x, \varphi_k}$.
 
 \textbf{Eigenschaf"|ten}:
 \begin{enumerate}
@@ -614,10 +614,10 @@ $x \mapsto \{c_k\}_{k \in \natural}$ mit $c_k = \sp{x, \varphi_k}$.
     (da die Reihe $\sum_{k=1}^\infty |c_k|^2$ konvergiert, d.\,h. die
     Partialsummen bilden eine Cauchy-Folge).
     Also ist $\{S_N\}_{N \in \natural}$ eine Cauchy-Folge und wegen der
-    Vollständigkeit von $(H, \sp{\cdot, \cdot})$ existiert ein $x \in H$ mit
+    Vollständigkeit von $(H, \innerproduct{\cdot, \cdot})$ existiert ein $x \in H$ mit
     $\sum_{k=1}^\infty c_k \varphi_k = x$.\\
-    Es gilt $\sp{x, \varphi_k} =
-    \lim_{N \to \infty} \sp{S_N, \varphi_k} = c_k$, also
+    Es gilt $\innerproduct{x, \varphi_k} =
+    \lim_{N \to \infty} \innerproduct{S_N, \varphi_k} = c_k$, also
     $\phi x = \{c_k\}_{k \in \natural}$.
 
     \item
@@ -788,7 +788,7 @@ die Gewichte $\alpha_k(N)$ für jedes $N$ unterschiedlich sind.
     \item
     Für $f \in L^2([-\pi, \pi], dx)$ ist $\{\varphi_n\}_{n \in \integer}$
     mit $\varphi_n(t) = \frac{1}{\sqrt{2\pi}} e^{\i nt}$ eine ONB.
-    Für die Fourierkoeff. $\gamma_k = \sp{f, \varphi_k}_{L^2} =
+    Für die Fourierkoeff. $\gamma_k = \innerproduct{f, \varphi_k}_{L^2} =
     \frac{1}{\sqrt{2\pi}} \int_{[-\pi, \pi]} f(t) e^{-\i kt}\dt$ gilt
     $\sum_{k \in \integer} |\gamma_k|^2 = \norm{f}_{L^2}^2 =
     \int_{[-\pi, \pi]} |f(t)|^2 \dt$.\\
@@ -930,7 +930,7 @@ $\F[f], \F[g] \in \S(\real) \subset L^2(\real, dx)$.
 
 \textbf{Satz von \name{Plancherel} für $\S(\real)$}:
 Für $f, g \in \S(\real)$ gilt
-$\sp{\F[f], \F[g]}_{L^2} = \sp{f, g}_{L^2}$,\\
+$\innerproduct{\F[f], \F[g]}_{L^2} = \innerproduct{f, g}_{L^2}$,\\
 d.\,h. $\F\colon \S_t(\real) \rightarrow \S_\lambda(\real)$ ist ein
 \emph{unitärer Operator}.
 Insbesondere gilt $\norm{\F[f]}_{L^2} = \norm{f}_{L^2}$.
@@ -985,18 +985,18 @@ Für zwei Funktionen $f, g \in L^2(\real, dx)$ lässt sich der Satz
 von Plancherel verallgemeinern:
 Ist $f_n, g_n \in \S(\real)$ mit $f_n \xrightarrow{L^2} f$ und
 $g_n \xrightarrow{L^2} g$,
-so gilt einerseits $\sp{\F[f_n], \F[g_n]}_{L^2} = \sp{f_n, g_n}_{L^2} \to
-\sp{f, g}_{L^2}$
+so gilt einerseits $\innerproduct{\F[f_n], \F[g_n]}_{L^2} = \innerproduct{f_n, g_n}_{L^2} \to
+\innerproduct{f, g}_{L^2}$
 aufgrund des Satzes von Plancherel für $\S(\real)$ und der Stetigkeit des
 Skalarprodukts, andererseits gilt aber
-$\sp{\F[f_n], \F[g_n]}_{L^2} \to \sp{\F[f], \F[g]}_{L^2}$
+$\innerproduct{\F[f_n], \F[g_n]}_{L^2} \to \innerproduct{\F[f], \F[g]}_{L^2}$
 aufgrund der Stetigkeit des Skalarprodukts und der Defintion von $\F[f]$ bzw.
 $\F[g]$.
-Also gilt $\sp{\F[f], \F[g]}_{L^2} = \sp{f, g}_{L^2}$.
+Also gilt $\innerproduct{\F[f], \F[g]}_{L^2} = \innerproduct{f, g}_{L^2}$.
 
 \textbf{Satz von \name{Plancherel} für $L^2(\real, dx)$}:
 Für $f, g \in L^2(\real, dx)$ gilt
-$\sp{\F[f], \F[g]}_{L^2} = \sp{f, g}_{L^2}$,\\
+$\innerproduct{\F[f], \F[g]}_{L^2} = \innerproduct{f, g}_{L^2}$,\\
 d.\,h. $\F\colon L^2(\real, dx) \rightarrow L^2(\real, dx)$ ist ein
 \emph{unitärer Operator}.
 Insbesondere gilt $\norm{\F[f]}_{L^2} = \norm{f}_{L^2}$.
@@ -1040,10 +1040,10 @@ $\S(\real^d)$ heißt \emph{\name{Schwartz}sche Funktionenklasse}.
 
 \textbf{\name{Fourier}-Transformation im $\real^d$}:\\
 Für $f \in \S(\real^d)$ sei $\F[f](\xi) := \frac{1}{(2\pi)^{d/2}}
-\int_{\real^d} f(x) e^{-\i\sp{x, \xi}} \dx$ für $\xi \in \real^d$.
+\int_{\real^d} f(x) e^{-\i\innerproduct{x, \xi}} \dx$ für $\xi \in \real^d$.
 
-Wegen $\sp{x, \xi}_{\real^d} = x_1 \xi_1 + \dotsb + x_d \xi_d$ gilt
-$e^{-\i\sp{x, \xi}} = e^{-\i x_1 \xi_1} \dotsm e^{-i x_d \xi_d}$.
+Wegen $\innerproduct{x, \xi}_{\real^d} = x_1 \xi_1 + \dotsb + x_d \xi_d$ gilt
+$e^{-\i\innerproduct{x, \xi}} = e^{-\i x_1 \xi_1} \dotsm e^{-i x_d \xi_d}$.
 Nach dem Satz von Fubini gilt daher
 $\F[f](\xi) = \frac{1}{\sqrt{2\pi}} \int_\real e^{-\i x_d \xi_d}
 \Big(\frac{1}{\sqrt{2\pi}} \int_\real e^{-\i x_{d-1} \xi_{d-1}}
@@ -1072,7 +1072,7 @@ $\F\colon \S(\real^d) \rightarrow \S(\real^d)$ ist eine Bijektion.
 
 \textbf{Satz}:
 Für $f, g \in \S(\real^d)$ gilt
-$\sp{\F[f], \F[g]}_{L^2(\real^d, dx)} = \sp{f, g}_{L^2(\real^d, dx)}$.
+$\innerproduct{\F[f], \F[g]}_{L^2(\real^d, dx)} = \innerproduct{f, g}_{L^2(\real^d, dx)}$.
 
 Man kann analog wie eben $\F$ zu
 $\F\colon L^2(\real^d, dx) \rightarrow L^2(\real^d, dx)$ erweitern.

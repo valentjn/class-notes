@@ -200,11 +200,11 @@ $G_v := \sum_{n=0}^{N-1} \omega_N^{-vn} g_n$ für $v = 0, \dotsc, N - 1$
 \begriff{diskrete \name{Fourier}-Transf. (DFT)}.\\
 $g_n = \frac{1}{N} \sum_{v=0}^{N-1} \omega_N^{vn} G_v$ für $n = 0, \dotsc, N - 1$
 heißt \begriff{inverse DFT}.\\
-Es gilt $G_v = \sqrt{N} \sp{\vec*{b}{v}, \vec{g}}$
-und $g_n = \frac{1}{\sqrt{N}} \sp{\vec*{b}{-n}, \vec{G}}$ mit den Basisvektoren\\
+Es gilt $G_v = \sqrt{N} \innerproduct{\vec*{b}{v}, \vec{g}}$
+und $g_n = \frac{1}{\sqrt{N}} \innerproduct{\vec*{b}{-n}, \vec{G}}$ mit den Basisvektoren\\
 $\vec*{b}{v} := \frac{1}{\sqrt{N}}
 (\omega_N^0, \omega_N^{v}, \dotsc, \omega_N^{(N-1)v})^\tp$,
-wobei $\sp{\vec{x}, \vec{y}} := \vec{x}^\ast \vec{y}$ mit
+wobei $\innerproduct{\vec{x}, \vec{y}} := \vec{x}^\ast \vec{y}$ mit
 $\vec{x}^\ast := \overline{\vec{x}^\tp}$.
 
 \linie
@@ -217,12 +217,12 @@ $u = 0, \dotsc, M - 1$, $v = 0, \dotsc, N - 1$
 \begriff{diskrete 2D-\name{Fourier}-Transf. (2D-DFT)}.
 $g_{m,n} = \frac{1}{MN} \sum_{u=0}^{M-1} \sum_{v=0}^{N-1} \omega_M^{um} \omega_N^{vn} G_{u,v}$
 heißt \begriff{inverse 2D-DFT}.\\
-Es gilt $G_{u,v} = \sqrt{MN} \sp{B_{u,v}, g}$
-und $g_{m,n} = \frac{1}{\sqrt{MN}} \sp{B_{-m,-n}, G}$
+Es gilt $G_{u,v} = \sqrt{MN} \innerproduct{B_{u,v}, g}$
+und $g_{m,n} = \frac{1}{\sqrt{MN}} \innerproduct{B_{-m,-n}, G}$
 mit den Basismatrizen\\
 $B_{u,v} := \frac{1}{\sqrt{MN}} (\omega_M^0, \omega_M^u, \dotsc, \omega_M^{(M-1)u})^\tp
 (\omega_N^0, \omega_N^v, \dotsc, \omega_N^{(N-1)v})$,\\
-wobei $\sp{G, H} := \sum_{m=0}^{M-1} \sum_{n=0}^{N-1} \overline{g_{m,n}} h_{m,n}$.
+wobei $\innerproduct{G, H} := \sum_{m=0}^{M-1} \sum_{n=0}^{N-1} \overline{g_{m,n}} h_{m,n}$.
 
 \textbf{Eigenschaften}:
 \begin{itemize}

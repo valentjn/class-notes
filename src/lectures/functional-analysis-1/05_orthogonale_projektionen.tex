@@ -19,7 +19,7 @@
 \begin{Satz}{Charakterisierung des bestappr. Elements als orthogonale Projektion}\\
     Seien $H$ ein Hilbertraum und $M \subset H$ ein Unterraum.
     Dann ist $y_0 \in M$ bestapproximierend an $x_0 \in H$ in $M$ genau dann, wenn
-    $\forall_{y \in M}\; \sp{x_0 - y_0, y} = 0$
+    $\forall_{y \in M}\; \innerproduct{x_0 - y_0, y} = 0$
     (also $x_0 - y_0 \in M^\orth$).\\
     $y_0$ heißt in diesem Fall die \begriff{orthogonale Projektion} von $x_0$ auf $M$.
 \end{Satz}
@@ -29,7 +29,7 @@
     Dann gilt $\forall_{x_0 \in H} \exists!_{y_0 \in M} \exists!_{y_1 \in M^\orth}\;
     x_0 = y_0 + y_1$,
     also $H = M \oplus M^\orth$ (direkte Summe).\\
-    Dabei ist $M^\orth := \{y \in H \;|\; \forall_{x \in M}\; \sp{x, y} = 0\}$
+    Dabei ist $M^\orth := \{y \in H \;|\; \forall_{x \in M}\; \innerproduct{x, y} = 0\}$
     das \begriff{orthogonale Komplement} von $M$ in $H$.
 \end{Satz}
 
@@ -41,8 +41,8 @@
 \begin{Bem}
     Für jeden Unterraum $M \subset H$ gilt stets $M \cap M^\orth = \{0\}$.\\
     Außerdem ist
-    $M^\orth = \bigcap_{x \in M} \{y \in H \;|\; \sp{x, y} = 0\}
-    = \bigcap_{x \in M} \sp{x, \cdot}^{-1}(0)$
+    $M^\orth = \bigcap_{x \in M} \{y \in H \;|\; \innerproduct{x, y} = 0\}
+    = \bigcap_{x \in M} \innerproduct{x, \cdot}^{-1}(0)$
     abgeschlossen.
 \end{Bem}
 
@@ -53,46 +53,46 @@
 }
 
 \begin{Def}{Orthonormalsystem}
-    Seien $(E, \sp{\cdot, \cdot})$ ein Skalarproduktraum und $e_i \in E$ für $i \in I$
+    Seien $(E, \innerproduct{\cdot, \cdot})$ ein Skalarproduktraum und $e_i \in E$ für $i \in I$
     ($I \not= \emptyset$ Indexmenge).
     Die Familie $(e_i)_{i \in I}$ heißt \begriff{Orthonormalsystem (ONS)}, falls
-    $\forall_{i, j \in I}\; \sp{e_i, e_j} = \delta_{ij}$.
+    $\forall_{i, j \in I}\; \innerproduct{e_i, e_j} = \delta_{ij}$.
 \end{Def}
 
 \begin{Lemma}{orthogonale Projektion durch endliche ONS}
     Sei $(e_i)_{i \in I}$ ein endliches ONS in $E$.\\
     Dann liefert die Zuordnung $P_I\colon E \rightarrow E_I$,
-    $P_I(x) := \sum_{i \in I} \sp{x, e_i} e_i$ die orthogonale Projektion von $x$ auf
+    $P_I(x) := \sum_{i \in I} \innerproduct{x, e_i} e_i$ die orthogonale Projektion von $x$ auf
     $E_I := [\{e_i \;|\; i \in I\}]$
     und es gilt $\forall_{x \in E}\; \norm{x}^2 =
-    \sum_{i \in I} |\sp{x, e_i}|^2 + \norm{x - P_I(x)}^2$.\\
+    \sum_{i \in I} |\innerproduct{x, e_i}|^2 + \norm{x - P_I(x)}^2$.\\
     Außerdem sind die $(e_i)_{i \in I}$ linear unabhängig.
 \end{Lemma}
 
 \begin{Lemma}{\name{Bessel}sche Ungleichung}
     Sei $(e_i)_{i \in I}$ ein beliebiges ONS in $E$.\\
-    Dann gilt $\forall_{x \in E}\; \sum_{i \in I} |\sp{x, e_i}|^2 \le \norm{x}^2$.
+    Dann gilt $\forall_{x \in E}\; \sum_{i \in I} |\innerproduct{x, e_i}|^2 \le \norm{x}^2$.
 \end{Lemma}
 
 \begin{Satz}{Äquivalenzen für abzählbare ONS}
     Für jedes höchstens abzählbare ONS $(e_i)_{i \in I}$ ($I \subset \natural$)
-    in einem Skalarproduktraum $(E, \sp{\cdot, \cdot})$ sind äquivalent:
+    in einem Skalarproduktraum $(E, \innerproduct{\cdot, \cdot})$ sind äquivalent:
     \begin{enumerate}
         \item
         $[\{e_i \;|\; i \in I\}]$ ist dicht in $E$.
 
         \item
-        $\forall_{x \in E}\; x = \sum_{i \in I} \sp{x, e_i} e_i$
+        $\forall_{x \in E}\; x = \sum_{i \in I} \innerproduct{x, e_i} e_i$
 
         \item
-        $\forall_{x \in E}\; \norm{x}^2 = \sum_{i \in I} |\sp{x, e_i}|^2$
+        $\forall_{x \in E}\; \norm{x}^2 = \sum_{i \in I} |\innerproduct{x, e_i}|^2$
         (\begriff{\name{Parseval}sche Gleichung})
     \end{enumerate}
     Ist $E$ ein Hilbertraum, dann ist zusätzlich jede dieser Aussagen äquivalent zu
     \begin{enumerate}[start=4]
         \item
         $(e_i)_{i \in I}$ \begriff{maximal}, d.\,h. es gibt kein $y \in E \setminus \{0\}$ mit
-        $\forall_{i \in I}\; \sp{y, e_i} = 0$.
+        $\forall_{i \in I}\; \innerproduct{y, e_i} = 0$.
     \end{enumerate}
 \end{Satz}
 
@@ -161,20 +161,20 @@
 \begin{Bem}
     Jede lineare Abbildung $\ell\colon \real^n \rightarrow \real$ lässt sich durch eine
     Matrix $L = \smallpmatrix{L_1 & \cdots & L_n}$ mit $L \in \real^{1 \times n}$ darstellen,
-    d.\,h. es gilt $\ell(x) = Lx = \sp{\smallpmatrix{L_1 \\ \vdots \\ L_n},
-    \smallpmatrix{x_1 \\ \vdots \\ x_n}}_2 = \sp{L^T, x}$ mit $L^T \in \real^n$.
+    d.\,h. es gilt $\ell(x) = Lx = \innerproduct{\smallpmatrix{L_1 \\ \vdots \\ L_n},
+    \smallpmatrix{x_1 \\ \vdots \\ x_n}}_2 = \innerproduct{L^T, x}$ mit $L^T \in \real^n$.
     Es ist überraschend, dass sich das auf Hilberträume verallgemeinern lässt.
 \end{Bem}
 
 \begin{Satz}{\name{Riesz}scher Darstellungssatz}
     Seien $H$ ein Hilbertraum und $\ell \in H'$.\\
-    Dann gibt es genau ein $y \in H$ mit $\forall_{x \in H}\; \ell(x) = \sp{x, y}$.
+    Dann gibt es genau ein $y \in H$ mit $\forall_{x \in H}\; \ell(x) = \innerproduct{x, y}$.
     Es gilt $\norm{\ell} = \norm{y}$.
 \end{Satz}
 
 \begin{Kor}\\
     Seien $H$ ein Hilbertraum und $\R\colon H \rightarrow H'$, $y \mapsto \R y$ mit
-    $(\R y)(x) := \sp{x, y}$ für $x \in H$.\\
+    $(\R y)(x) := \innerproduct{x, y}$ für $x \in H$.\\
     Dann ist $\R$ für $\KK = \real$ ein isometrischer Isomorphismus und\\
     für $\KK = \complex$ ein \begriff{isometrischer, konjugiert linearer Isomorphismus}
     (d.\,h. $\R$ ist eine Isometrie,\\
@@ -187,10 +187,10 @@
 
 \begin{Satz}{Charakterisierung des darstellenden Elements}\\
     Seien $H$ ein Hilbertraum, $y \in H$ und $\ell \in H'$.\\
-    Dann gilt $\forall_{x \in H}\; \ell(x) = \sp{x, y}$
+    Dann gilt $\forall_{x \in H}\; \ell(x) = \innerproduct{x, y}$
     genau dann, wenn\\
-    $\frac{1}{2} \sp{y, y} - \Re(\ell(y)) =
-    \min_{x \in H} \left(\frac{1}{2} \sp{x, x} - \Re(\ell(x))\right)$.
+    $\frac{1}{2} \innerproduct{y, y} - \Re(\ell(y)) =
+    \min_{x \in H} \left(\frac{1}{2} \innerproduct{x, x} - \Re(\ell(x))\right)$.
 \end{Satz}
 
 \linie
@@ -212,7 +212,7 @@
     $\forall_{y \in H}\; \ell(y) = a(y, z)$.
     Es gilt $\norm{z} \le \frac{1}{c_0} \norm{\ell}$.\\
     Außerdem existiert genau eine Abbildung $A\colon H \rightarrow H$ mit
-    $\forall_{x, y \in H}\; a(y, x) = \sp{y, Ax}$.\\
+    $\forall_{x, y \in H}\; a(y, x) = \innerproduct{y, Ax}$.\\
     $A$ ist ein Isomorphismus mit $\norm{A} \le C_0$ und
     $\norm{A^{-1}} \le \frac{1}{c_0}$.
 \end{Satz}

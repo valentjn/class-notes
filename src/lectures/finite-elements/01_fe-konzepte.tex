@@ -248,10 +248,10 @@ partiellen Ableitungen der Ordnung $\le \ell$
 quadrat-integrierbar sind.
 $H^\ell(D)$ ist ein Hilbertraum mit dem Skalarprodukt
 \begin{align*}
-    \sp{u, v}_\ell := \sum_{|\alpha| \le \ell} \int_D \partial^\alpha u \partial^\alpha v.
+    \innerproduct{u, v}_\ell := \sum_{|\alpha| \le \ell} \int_D \partial^\alpha u \partial^\alpha v.
 \end{align*}
 Zusätzlich zur induzierten Norm
-$\norm{u}_\ell := \sqrt{\sp{u, u}_\ell} =
+$\norm{u}_\ell := \sqrt{\innerproduct{u, u}_\ell} =
 \left(\sum_{|\alpha| \le \ell} \int_D \norm{\partial^\alpha u}^2\right)^{1/2}$ ist die
 Standard-Halbnorm auf $H^\ell(D)$ definiert durch
 \begin{align*}
@@ -320,10 +320,10 @@ Für die folgenden Abschnitte werden ein paar zusätzliche Definitionen und Ungl
 \linie
 
 \textbf{\name{Cauchy}-\name{Schwarz}-Ungleichung}:\\
-Wenn $\norm{u} = \sqrt{\sp{u, u}}$ eine von einem Skalarprodukt induzierte Norm ist,
+Wenn $\norm{u} = \sqrt{\innerproduct{u, u}}$ eine von einem Skalarprodukt induzierte Norm ist,
 dann gilt
 \begin{align*}
-    |\sp{u, v}| \le \norm{u} \cdot \norm{v},
+    |\innerproduct{u, v}| \le \norm{u} \cdot \norm{v},
 \end{align*}
 wobei Gleichheit gilt genau dann, wenn $u$ und $v$ linear abhängig sind.
 
@@ -337,14 +337,14 @@ jeder Variable, d.\,h.
 \end{align*}
 für alle Vektoren $u_\nu, v_\mu$ und Skalare $r_\nu$, $s_\mu$.
 Wenn $a$ symmetrisch ist und $a(u, u) > 0$ für alle $u \not= 0$,
-dann induziert $a$ ein Skalarprodukt $\sp{u, v}_a := a(u, v)$ und
+dann induziert $a$ ein Skalarprodukt $\innerproduct{u, v}_a := a(u, v)$ und
 $\norm{u}_a := \sqrt{a(u, u)}$ ist eine Norm.
 
 \linie
 
 \textbf{\name{Hilbert}raum}:
 Ein \begriff{\name{Hilbert}raum} $H$ ist ein vollständiger Vektorraum mit einer Norm
-$\norm{\cdot}$, die durch ein Skalarprodukt $\sp{\cdot, \cdot}$ induziert wird.
+$\norm{\cdot}$, die durch ein Skalarprodukt $\innerproduct{\cdot, \cdot}$ induziert wird.
 
 Seien $H$ ein Hilbertraum und $V \subset H$ ein abgeschlossener Unterraum.
 Dann gibt es für jedes $u \in H$ genau ein $v_\ast \in V$ mit
@@ -353,7 +353,7 @@ Dann gibt es für jedes $u \in H$ genau ein $v_\ast \in V$ mit
 \end{align*}
 $v_\ast \in V$ ist bestimmt durch die Orthogonalitätsbedingung
 \begin{align*}
-    \forall_{v \in V}\; \sp{u - v_\ast, v} = 0.
+    \forall_{v \in V}\; \innerproduct{u - v_\ast, v} = 0.
 \end{align*}
 
 \linie
@@ -361,7 +361,7 @@ $v_\ast \in V$ ist bestimmt durch die Orthogonalitätsbedingung
 \textbf{\name{riesz}scher Darstellungssatz}:\\
 Jedes beschränkte, lineare Funktional $\lambda$ auf einem Hilbertraum $H$ kann in der Form
 \begin{align*}
-    \lambda(u) = \sp{\R\lambda, u}
+    \lambda(u) = \innerproduct{\R\lambda, u}
 \end{align*}
 dargestellt werden, wobei $\R$ eine Isometrie auf $H$ ist,
 d.\,h. ein bijektiver, linearer Operator mit $\norm{\R\lambda} = \norm{\lambda}$.
@@ -540,9 +540,9 @@ Dann erfüllt der Fehler $e_h := u - u_h$ der Ritz-Galerkin-Approximation die Ab
 \end{align*}
 wobei $u_\ast$ die Lösung des dualen Problems
 \begin{align*}
-    \forall_{v \in H}\; a(v, u_\ast) = \sp{v, e_h}_\ast
+    \forall_{v \in H}\; a(v, u_\ast) = \innerproduct{v, e_h}_\ast
 \end{align*}
-ist und $\sp{\cdot, \cdot}_\ast$ das Skalarprodukt auf $H_\ast$ bezeichnet.
+ist und $\innerproduct{\cdot, \cdot}_\ast$ das Skalarprodukt auf $H_\ast$ bezeichnet.
 
 \linie
 

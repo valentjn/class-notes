@@ -20,11 +20,11 @@ Es wäre eine nützliche Eigenschaft, wenn die B-Spline-Basis zusätzlich orthog
 Dies ist jedoch ohne Weiteres (wie andere Skalarprodukte) nicht möglich.
 Es ist aber möglich, duale Basen zu konstruieren.
 Für WEB-Splines handelt es sich um Funktionen $\Lambda_i$ mit
-$\sp{\Lambda_i, B_k}_0 = \delta_{i,k}$ für $i, k \in I$.
+$\innerproduct{\Lambda_i, B_k}_0 = \delta_{i,k}$ für $i, k \in I$.
 Solche biorthogonalen Systeme sind für Stabilitätsfragen und lokale Approximationsschemata
 entscheidend.
 Zum Beispiel kann man einen kanonischen Projektionsoperator
-$P_h u = \sum_{i \in I} \sp{\Lambda_i, u}_0 B_i$ definieren
+$P_h u = \sum_{i \in I} \innerproduct{\Lambda_i, u}_0 B_i$ definieren
 (analog zu Orthogonalentwicklungen).
 
 \textbf{duale Funktionen}:
@@ -41,7 +41,7 @@ mit $\const(m, n, \theta) \to \infty$ für $\theta \to 0$.
 Für WEB-Splines, die zu einer Gewichtsfunktion der Ordnung $\gamma$ gehören,
 existieren lokal getragene, gleichmäßig beschränkte \begriff{duale Funktionen} $\Lambda_i$, also
 \begin{align*}
-    \sp{\Lambda_i, B_k}_0 = \delta_{i,k},\quad
+    \innerproduct{\Lambda_i, B_k}_0 = \delta_{i,k},\quad
     i, k \in \integer^m,
 \end{align*}
 mit $\supp \Lambda_i \subset Q_i$ und
@@ -101,7 +101,7 @@ auf einem skalierten Gebiet $hD$ erfüllt
 \textbf{Standard-Projektor}:
 Der \begriff{Standard-Projektor}, der durch
 \begin{align*}
-    P_h u := \sum_{i \in I} \sp{\Lambda_i, u}_0 B_i,
+    P_h u := \sum_{i \in I} \innerproduct{\Lambda_i, u}_0 B_i,
 \end{align*}
 definiert ist,
 erfüllt $P_h B_i = B_i$ und bildet gewichtete Polynome $p$ vom Koordinatengrad $\le n$
@@ -172,7 +172,7 @@ Seien $w$ eine Standard-Gewichtsfunktion und
 $u_h$ die Ritz-Galerkin-Approximation aus $w^\e\BB_h$ oder $w\BB_h$ eines $H_0^1$-elliptischen
 Problems
 \begin{align*}
-    a(u, \varphi) = \sp{f, \varphi}_0,\quad
+    a(u, \varphi) = \innerproduct{f, \varphi}_0,\quad
     \varphi \in H_0^1.
 \end{align*}
 Außerdem habe das duale Problem die Standard-Regularität, d.\,h.

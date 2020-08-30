@@ -67,10 +67,10 @@
     Für $a(\cdot, \cdot)$ symmetrisch ist dies gerade die Orthogonalität des
     Projektionsfehlers der orth. Projektion von $u$ auf $V_h$ bzgl. des Energieskalarprodukts,
     denn für die orth. Projektion $P_a\colon V \to V_h$ mit
-    $\forall_{v \in V} \forall_{w \in V_h}\; \sp{v - P_a v, w}_a = 0$
+    $\forall_{v \in V} \forall_{w \in V_h}\; \innerproduct{v - P_a v, w}_a = 0$
     folgt nach dem Lemma $P_a u = u_h$ für die schwache Lösung $u$.
     Damit ist für $a$ symmetrisch die diskrete Lösung $u_h$ genau das Bild der
-    orth. Projektion der schwachen Lösung $u$ auf $V_h$ bzgl. $\sp{\cdot, \cdot}_a$
+    orth. Projektion der schwachen Lösung $u$ auf $V_h$ bzgl. $\innerproduct{\cdot, \cdot}_a$
     und heißt daher \begriff{\name{Galerkin}-Projektion}.
 
     Für $a(\cdot, \cdot)$ nicht-symmetrisch ist die Galerkin-Projektion i.\,A.
@@ -125,7 +125,7 @@
     Eigenfunktionen und -werte erhält man dabei aus der
     \begriff{schwachen Form des EW-Problems} des Diff.operators:
     $w \in V$ heißt \begriff{Eigenfunktion} zum \begriff{Eigenwert} $\lambda$, falls
-    $\forall_{v \in V}\; a(w, v) = \lambda \sp{w, v}_{L^2(\Omega)}$.
+    $\forall_{v \in V}\; a(w, v) = \lambda \innerproduct{w, v}_{L^2(\Omega)}$.
 
     Unter gewissen Voraussetzungen ($a(\cdot, \cdot)$ symmetrisch und $\Omega$ zush.)
     kann man zeigen,
@@ -139,14 +139,14 @@
         $\lim_{j \to \infty} \lambda_j = \infty$, und
 
         \item
-        dass es eine bzgl. $\sp{\cdot, \cdot}_{L^2(\Omega)}$ orthonormale Menge
+        dass es eine bzgl. $\innerproduct{\cdot, \cdot}_{L^2(\Omega)}$ orthonormale Menge
         $\{w_j\}_{j\in\natural}$ von Eigenfunktionen zu den Eigenwerten $\lambda_j$ gibt.
     \end{itemize}
 
     Wählt man nun $n \in \natural$, $h := \frac{1}{n}$,
     $V_h := \Span(\varphi_1, \dotsc, \varphi_n)$,
     $\varphi_j := w_j$, so folgt für $A_h$, dass
-    $a_{ij} = a(\varphi_j, \varphi_i) = \lambda_j \sp{w_j, w_i}_{L^2(\Omega)}
+    $a_{ij} = a(\varphi_j, \varphi_i) = \lambda_j \innerproduct{w_j, w_i}_{L^2(\Omega)}
     = \lambda_j \delta_{ij}$, also ist $A_h$ diagonal und $d_h = \frac{b_j}{\lambda_j}$.
 
     Allerdings ist dieser Ansatz i.\,A. inpraktikabel, da $w_j$ und $\lambda_j$
@@ -203,7 +203,7 @@
     (wenn man $\norm{v}_a^2 = a(v, v)$ einsetzt und Stetigkeit/Koerzivität ausnutzt).
     Daraus erhält man für $v \in V_h$\\
     $\norm{u - u_h}_a^{\cancel{2}} = a(u - u_h, u - u_h) = a(u - u_h, u - v) =
-    \sp{u - u_h, u - v}_a \le \cancel{\norm{u - u_h}_a} \norm{u - v}_a$,
+    \innerproduct{u - u_h, u - v}_a \le \cancel{\norm{u - u_h}_a} \norm{u - v}_a$,
     also $\norm{u - u_h}_a \le \norm{u - v}_a$ bzw.
     $\norm{u - u_h} \le \sqrt{\frac{\gamma}{\alpha}} \norm{u - v}$.
 \end{Bem}
@@ -1183,9 +1183,9 @@
 \end{Bem}
 
 \begin{Satz}{\name{Aubin}-\name{Nitsche}}
-    Seien $H$ ein Hilbertraum mit Skalarprodukt $\sp{\cdot, \cdot}_H$ und Norm $\norm{\cdot}_H$
+    Seien $H$ ein Hilbertraum mit Skalarprodukt $\innerproduct{\cdot, \cdot}_H$ und Norm $\norm{\cdot}_H$
     und $V \le H$ ein Unterraum, der mit dem Skalarprodukt
-    $\sp{\cdot, \cdot}_V$ und der Norm $\norm{\cdot}_V$ ein Hilbertraum ist,
+    $\innerproduct{\cdot, \cdot}_V$ und der Norm $\norm{\cdot}_V$ ein Hilbertraum ist,
     sodass die Einbettung $V \to H$ stetig ist
     (d.\,h. $\forall_{v \in V}\; \norm{v}_H \le C \norm{v}_V$).\\
     Sei außerdem die schwache Form $\forall_{v \in V}\; a(u, v) = \ell(v)$
@@ -1196,7 +1196,7 @@
     \sup_{g \in H \setminus \{0\}} (\frac{1}{\norm{g}_H} \inf_{v_h \in V_h}
     \norm{\varphi_g - v_h}_V)$,
     wobei für $g \in H$ die \begriff{duale Lösung} $\varphi_g \in V$ definiert ist als
-    die schwache Lösung von $\forall_{w \in V}\; a(w, \varphi_g) = \sp{g, w}_H$ ist.
+    die schwache Lösung von $\forall_{w \in V}\; a(w, \varphi_g) = \innerproduct{g, w}_H$ ist.
 \end{Satz}
 
 \linie

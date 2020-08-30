@@ -994,7 +994,7 @@ die Rechenregeln bleiben dabei dieselben.
 Sei $\varphi \in \S(\real^d)$.\\
 Dann ist die Fourier-Transformation definiert durch
 $\F[\varphi](\xi) = \frac{1}{(2\pi)^{d/2}}
-\int_{\real^d} e^{-\i\sp{x, \xi}}\varphi(x)\dx$.\\
+\int_{\real^d} e^{-\i\innerproduct{x, \xi}}\varphi(x)\dx$.\\
 Die Fourier-Transformation $\F\colon \S \rightarrow \S$ ist wie schon gezeigt
 eine bijektive Abbildung.
 
@@ -1005,17 +1005,17 @@ $\partial^\alpha_\xi (\xi^\beta \F[\varphi_n]) \to 0$ gleichmäßig.
 Man nun den Begriff der Fourier-Transformation auf Distributionen erweitern.\\
 Beispielsweise soll für die Delta-Distribution gelten, dass\\
 $\F[\delta(x - x_0)](\xi) = \frac{1}{(2\pi)^{d/2}}
-\int_{\real^d} e^{-\i\sp{x, \xi}}\delta(x - x_0)\dx =
-\frac{1}{(2\pi)^{d/2}} e^{-\i\sp{x_0, \xi}}$.
+\int_{\real^d} e^{-\i\innerproduct{x, \xi}}\delta(x - x_0)\dx =
+\frac{1}{(2\pi)^{d/2}} e^{-\i\innerproduct{x_0, \xi}}$.
 
 \linie
 
 \emph{Motivation}:
 Für $f \in L^1(\real^d)$ gilt nach Fubini
 $(\F[f], \varphi) = \frac{1}{(2\pi)^{d/2}} \int_{\real^d} \varphi(\xi)
-\left(\int_{\real^d} e^{-\i\sp{x, \xi}}f(x)\dx\right) \d\xi$\\
+\left(\int_{\real^d} e^{-\i\innerproduct{x, \xi}}f(x)\dx\right) \d\xi$\\
 $= \frac{1}{(2\pi)^{d/2}} \int_{\real^d} f(x)
-\left(\int_{\real^d} e^{-\i\sp{\xi, x}}\varphi(\xi)\d\xi\right) \dx =
+\left(\int_{\real^d} e^{-\i\innerproduct{\xi, x}}\varphi(\xi)\d\xi\right) \dx =
 (f, \F[\varphi])$.
 
 \textbf{\name{Fourier}-Transformation}:
@@ -1037,9 +1037,9 @@ $(f, \F[\varphi_k]) \to (f, \F[\varphi])$.
 Für die Fourier-Transformation der Delta-Distribution gilt
 $(\F[\delta(x - x_0)](\xi), \varphi(\xi))$\\
 $= (\delta(x - x_0), \F[\varphi](x)) = \F[\varphi](x_0) =
-\frac{1}{(2\pi)^{d/2}} \int_{\real^d} e^{-\i\sp{x_0, \xi}}\varphi(\xi)\d\xi =
-(\frac{1}{(2\pi)^{d/2}} e^{-\i\sp{x_0, \xi}}, \varphi(\xi))$, also\\
-$\F[\delta(x - x_0)] = \frac{1}{(2\pi)^{d/2}} e^{-\i\sp{x_0, \xi}}$.
+\frac{1}{(2\pi)^{d/2}} \int_{\real^d} e^{-\i\innerproduct{x_0, \xi}}\varphi(\xi)\d\xi =
+(\frac{1}{(2\pi)^{d/2}} e^{-\i\innerproduct{x_0, \xi}}, \varphi(\xi))$, also\\
+$\F[\delta(x - x_0)] = \frac{1}{(2\pi)^{d/2}} e^{-\i\innerproduct{x_0, \xi}}$.
 
 Wichtige Formeln sind $\F[\delta] = \frac{1}{(2\pi)^{d/2}}$ und
 $\F[1] = \frac{1}{(2\pi)^{d/2}} \delta$.
@@ -1048,7 +1048,7 @@ $\F[1] = \frac{1}{(2\pi)^{d/2}} \delta$.
 
 \emph{Motivation}:
 Für $\psi \in \S$ gilt $\F^{-1}[\psi](x) =
-\frac{1}{(2\pi)^{d/2}} \int_{\real^d} e^{\i\sp{x, \xi}}\psi(\xi)\d\xi =
+\frac{1}{(2\pi)^{d/2}} \int_{\real^d} e^{\i\innerproduct{x, \xi}}\psi(\xi)\d\xi =
 \F[\psi \circ \pi](x)$ mit\\
 $(\psi \circ \pi)(\xi) = \psi(-\xi)$.
 
@@ -1121,7 +1121,7 @@ $\xi \mapsto -\xi$.
     Für $g \in \D'(\real^d)$ mit $\supp g = K$ kompakt
     (d.\,h. insbesondere $g \in \S'(\real^d)$) gilt
     $\F[g] \in \Theta_M$ mit
-    $\F[g] = (g(x), \eta(x)\frac{e^{-\i\sp{x, y}}}{(2\pi)^{d/2}})$.\\
+    $\F[g] = (g(x), \eta(x)\frac{e^{-\i\innerproduct{x, y}}}{(2\pi)^{d/2}})$.\\
     Dabei ist $\eta \in \D(\real^d)$ mit $\eta \equiv 1$ auf $K$.
 
     \item
@@ -1131,11 +1131,11 @@ $\xi \mapsto -\xi$.
     mit $\F[f] \in \S'(\real^d)$ und $\F[g] \in \Theta_M$, denn\\
     $(\F[f \ast g], \varphi) = (f \ast g, \F[\varphi]) =
     (f(x), (g(y)\eta(y) \cdot \frac{1}{(2\pi)^{d/2}}
-    \int_{\real^d} e^{-\i\sp{x + y, \xi}}\varphi(\xi)\d\xi))$\\
+    \int_{\real^d} e^{-\i\innerproduct{x + y, \xi}}\varphi(\xi)\d\xi))$\\
     $= (f(x), \int_{\real^d}
-    \left(\frac{1}{(2\pi)^{d/2}} (g(y), \eta(y)e^{-\i\sp{y, \xi}})\right)
-    \varphi(\xi)e^{-\i\sp{x, \xi}}\d\xi)$\\
-    $= (f(x), \int_{\real^d} \F[g](\xi)\varphi(\xi)e^{-\i\sp{x, \xi}}\d\xi) =
+    \left(\frac{1}{(2\pi)^{d/2}} (g(y), \eta(y)e^{-\i\innerproduct{y, \xi}})\right)
+    \varphi(\xi)e^{-\i\innerproduct{x, \xi}}\d\xi)$\\
+    $= (f(x), \int_{\real^d} \F[g](\xi)\varphi(\xi)e^{-\i\innerproduct{x, \xi}}\d\xi) =
     (2\pi)^{d/2} (f(x), \F[\F[g](\xi) \cdot \varphi(\xi)](x))$\\
     $= (2\pi)^{d/2} (\F[f], \F[g] \cdot \varphi) =
     (2\pi)^{d/2} (\F[g] \cdot \F[f], \varphi)$.
@@ -1193,14 +1193,14 @@ $F^{-1}[X_\nu] \xrightarrow{\S'} \F^{-1}[X] = \varepsilon$.\\
 Daher ist $\varepsilon = \lim_{\nu \to 0, R(\nu) \to \infty} \F^{-1}[X_\nu]$.\\
 Für die Berechnung von
 $\F^{-1}[X_\nu] = \frac{1}{(2\pi)^3} \int_{\real^3,\; |\xi| \le R(\nu)}
-\frac{e^{\i\sp{x, \xi}}}{|\xi|^2 + \nu^2}d^3\xi$ führt man eine
+\frac{e^{\i\innerproduct{x, \xi}}}{|\xi|^2 + \nu^2}d^3\xi$ führt man eine
 Koordinatentransformation in Kugelkoordinaten $(R, \varphi, \theta)$
 durch, sodass $x$ auf der $z$-Achse liegt.
-Mit $r := |x|$ und $R := |\xi|$ ist dann $\sp{x, \xi} = rR\cos \theta$
+Mit $r := |x|$ und $R := |\xi|$ ist dann $\innerproduct{x, \xi} = rR\cos \theta$
 mit $\theta$ dem Winkel zwischen $x$ und $\xi$.\\
 Damit ist dann
 $\F^{-1}[X_\nu] = \frac{1}{(2\pi)^3} \int_{\real^3,\; |\xi| \le R(\nu)}
-\frac{e^{\i\sp{x, \xi}}}{|\xi|^2 + \nu^2}d^3\xi =
+\frac{e^{\i\innerproduct{x, \xi}}}{|\xi|^2 + \nu^2}d^3\xi =
 \frac{1}{(2\pi)^3} \int_0^{2\pi} \int_0^\pi \int_0^{R(\nu)}
 \frac{e^{\i rR\cos \theta}}{R^2 + \nu^2} R^2 \dr \sin \theta d\theta d\varphi$\\
 $= \frac{1}{(2\pi)^2} \int_0^\pi \int_0^{R(\nu)}

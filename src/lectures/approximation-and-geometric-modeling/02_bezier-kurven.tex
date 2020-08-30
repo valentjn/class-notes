@@ -125,7 +125,7 @@ $p(t) = \sum_{m=0}^n \binom{n}{m} (\Delta^m c_{n-m}) (1 - t)^m$
 \textbf{Beispiel (Entfernung eines Punktes zu einer \name{Bézier}-Kurve)}:
 Ein zu einem Punkt $q$ nächster Punkt $p(t) = \sum_{k=0}^n c_k b_k^n(t)$ einer Bézier-Kurve ist
 einer der Endpunkte ($t = 0$ oder $t = 1$) oder erfüllt die Orthogonalitätsbedingung
-$\varphi(t) = \sp{q - p(t), p'(t)} = 0$.
+$\varphi(t) = \innerproduct{q - p(t), p'(t)} = 0$.
 Darum müssen für eine numerische Lösung nur die Nullstellen des Polynoms $\varphi$
 bestimmt werden.
 Das Polynom $\varphi$ hat Grad $\le 2n - 1$.

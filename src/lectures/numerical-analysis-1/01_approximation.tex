@@ -344,7 +344,7 @@ werden (d.\,h. $p_k = p(x_k)$).
 }
 
 Zu jeder auf einem Intervall $(a, b)$ positiven Gewichtsfunktion $w$
-existiert eine bzgl. des Skalarprodukts $\sp{f, g} := \int_a^b f g w$
+existiert eine bzgl. des Skalarprodukts $\innerproduct{f, g} := \int_a^b f g w$
 orthogonale Folge von Polynomen
 \begin{align*}
     p_n(x) = \alpha_n x^n + \O(x^{n-1}),\quad
@@ -352,7 +352,7 @@ orthogonale Folge von Polynomen
 \end{align*}
 Bis auf die Normierungsfaktoren $\alpha_n$ sind die
 \textbf{orthogonalen Polynome} durch die Orthogonalitätsbedingungen
-$\sp{p_m, p_n} = 0$ für $m \not= n$ eindeutig bestimmt und können
+$\innerproduct{p_m, p_n} = 0$ für $m \not= n$ eindeutig bestimmt und können
 mit dem Orthongalisierungsverfahren von \name{Gram}-\name{Schmidt} bestimmt
 werden.
 
@@ -362,7 +362,7 @@ werden.
 Sei $b_1, \dotsc, b_n$ Basis eines Vektorraums $V$.
 Dann kann man eine orthogonale Basis $u_1, \dotsc, u_n$ durch
 \begin{align*}
-    u_j := b_j - \sum_{k=1}^{j-1} \frac{\sp{b_j, u_k}}{\sp{u_k, u_k}} u_k,
+    u_j := b_j - \sum_{k=1}^{j-1} \frac{\innerproduct{b_j, u_k}}{\innerproduct{u_k, u_k}} u_k,
     \quad j = 1, \dotsc, n
 \end{align*}
 konstruieren.
@@ -372,7 +372,7 @@ Beim analogen
 vereinfacht sich die Rekursion, da man die Basisvektoren nach jedem Schritt
 normiert:
 \begin{align*}
-    u_j := b_j - \sum_{k=1}^{j-1} \sp{b_j, u_k} u_k, \quad
+    u_j := b_j - \sum_{k=1}^{j-1} \innerproduct{b_j, u_k} u_k, \quad
     u_j \leftarrow \frac{u_j}{\norm{u_j}}, \quad
     j = 1, \dotsc, n.
 \end{align*}
@@ -389,7 +389,7 @@ schon bekannten Polynomen $p_k$, $k = 0, \dotsc, n - 1$. \\
 Dabei wird $p_n(x) = \alpha_n x^n + c_{n-1} x^{n-1} + \dotsb + c_1 x + c_0$
 allgemein angesetzt ($\alpha_n$ bekannter Normierungsfaktor).
 Aus den Orthogonalitätsbedingungen \\
-$0 = \sp{p_n, p_k}
+$0 = \innerproduct{p_n, p_k}
 = \int_0^1 \left(\alpha_n x^n + \sum_{i=0}^{n-1} c_i x^i\right) p_k(x) \dx$ für
 $k = 0, \dotsc, n - 1$ folgen dann $n$ Gleichungen für die $n$ Unbekannten
 $c_0, \dotsc, c_{n-1}$.
@@ -435,11 +435,11 @@ mit $\xi(x) := x$
 (\textbf{dreigliedrige Rekursion}).
 Die Koef"|fizienten $\beta_n$ und $\gamma_n$ lassen sich mithilfe des
 Skalarprodukts
-$\sp{f, g} = \int_a^b f g w$ ausdrücken:
+$\innerproduct{f, g} = \int_a^b f g w$ ausdrücken:
 \begin{align*}
-    \beta_n := \frac{\sp{\xi q_n, q_n}}{\varrho_n},\quad
+    \beta_n := \frac{\innerproduct{\xi q_n, q_n}}{\varrho_n},\quad
     \gamma_n := \frac{\varrho_n}{\varrho_{n-1}}
-    \quad\text{mit}\quad \varrho_n := \sp{q_n, q_n}.
+    \quad\text{mit}\quad \varrho_n := \innerproduct{q_n, q_n}.
 \end{align*}
 
 Für orthogonale Polynome $p_n(x) = \alpha_n x^n + \O(x^{n-1})$ mit
@@ -468,7 +468,7 @@ Die \textbf{\name{Legendre}-Polynome}
     p_n(x) := \frac{1}{2^n n!} \frac{d^n}{dx^n} (x^2 - 1)^n
     = \frac{(2n)!}{2^n (n!)^2} x^n + \O(x^{n-1})
 \end{align*}
-sind bzgl. des Skalarprodukts $\sp{f, g} = \int_{-1}^1 f g$
+sind bzgl. des Skalarprodukts $\innerproduct{f, g} = \int_{-1}^1 f g$
 orthogonal. \\
 Sie sind Lösungen der Dif"|ferentialgleichung
 \begin{align*}
@@ -518,8 +518,8 @@ Dies impliziert die dreigliedrige Rekursion
 
 Die \textbf{Tschebyscheff-Entwicklung einer Funktion} $f$
 \begin{align*}
-    f(x) \sim \sum_{n=0}^\infty \frac{\sp{f, p_n}}{\varrho_n} p_n(x),
-    \quad \varrho_n = \sp{p_n, p_n}
+    f(x) \sim \sum_{n=0}^\infty \frac{\innerproduct{f, p_n}}{\varrho_n} p_n(x),
+    \quad \varrho_n = \innerproduct{p_n, p_n}
 \end{align*}
 entspricht der Fourier-Reihe der transformierten Funktion $g(t) = f(x)$,
 $x = \cos(t)$, d.\,h.
@@ -563,7 +563,7 @@ Dann ist die \textbf{komplexe \name{Fourier}-Reihe} von $f$ die Entwicklung
 nach dem Orthonormalsystem $e_k(x) = e^{\i kx}$, $k \in \integer$:
 \begin{align*}
     f(x) \sim \sum_{k \in \integer} c_k e_k(x), \quad
-    c_k = \sp{f, e_k}_{2\pi} :=
+    c_k = \innerproduct{f, e_k}_{2\pi} :=
     \frac{1}{2\pi} \int_0^{2\pi} f(t) \overline{e_k(t)} \dt.
 \end{align*}
 Die Art der Konvergenz der Reihe hängt dabei von der Glattheit von $f$ bzw.
@@ -666,7 +666,7 @@ Die inverse Transformation kann als
 \textbf{Riemann-Summe für die Fourier-Koef"|fizienten} \\
 interpretiert werden:
 \begin{align*}
-    \sp{f, e_k}_{2\pi} = \frac{1}{2\pi} \int_0^{2\pi} f(x) e^{-\i k x} \dx
+    \innerproduct{f, e_k}_{2\pi} = \frac{1}{2\pi} \int_0^{2\pi} f(x) e^{-\i k x} \dx
     \approx \frac{1}{n} \sum_{j=0}^{n-1} f(x_j) e^{-\i k x_j}, \quad
     x_j = 2 \pi j / n.
 \end{align*}

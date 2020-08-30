@@ -8,17 +8,17 @@
 
 \begin{Bem}
     Seien $H_1, H_2$ Hilberträume und $T \in \Lin(H_1, H_2)$.
-    Für $y \in H_2$ ist die Abbildung $x \mapsto \sp{Tx, y}_{H_2}$ ein Element des Dualraums
+    Für $y \in H_2$ ist die Abbildung $x \mapsto \innerproduct{Tx, y}_{H_2}$ ein Element des Dualraums
     von $H_1$.
     Nach dem Rieszschen Darstellungssatz gibt es daher genau ein $T^\ast y \in H_1$ mit
-    $\forall_{x \in H_1}\; \sp{Tx, y}_{H_2} = \sp{x, T^\ast y}_{H_1}$.
+    $\forall_{x \in H_1}\; \innerproduct{Tx, y}_{H_2} = \innerproduct{x, T^\ast y}_{H_1}$.
     Somit existiert die Hilbertraum-Adjungierte $T^\ast$ und ist eindeutig.
 \end{Bem}
 
 \begin{Def}{\name{Hilbert}raum-Adjungierte}
     Seien $H_1, H_2$ Hilberträume und $T \in \Lin(H_1, H_2)$.
     Dann heißt die Abbildung $T^\ast\colon H_2 \rightarrow H_1$ mit
-    $\forall_{x \in H_1,\, y \in H_2}\; \sp{Tx, y}_{H_2} = \sp{x, T^\ast y}_{H_1}$
+    $\forall_{x \in H_1,\, y \in H_2}\; \innerproduct{Tx, y}_{H_2} = \innerproduct{x, T^\ast y}_{H_1}$
     \begriff{\name{Hilbert}raum-Adjungierte} von $T$.
 \end{Def}
 
@@ -77,7 +77,7 @@
     Es gilt $\norm{Tf}_{H_2}^2 = \int_{\Omega_2} |(Tf)(y)|^2 \dy
     = \int_{\Omega_2} \left|\int_{\Omega_1} K(x, y)f(x)\dx\right|^2 \dy\\
     %$\le \int_{\Omega_2} \left|\int_{\Omega_1} |K(x, y)| |f(x)| \dx\right|^2 \dy
-    = \int_{\Omega_2} \left|\sp{K(\cdot, y), f}_{H_1}\right|^2 \dy
+    = \int_{\Omega_2} \left|\innerproduct{K(\cdot, y), f}_{H_1}\right|^2 \dy
     \le \int_{\Omega_2} \norm{K(\cdot, y)}_{H_1}^2 \norm{f}_{H_1}^2 \dy
     = \norm{K}^2 \norm{f}_{H_1}^2$,
     also $Tf \in H_2$,\\
@@ -92,13 +92,13 @@
 \begin{Def}{selbstadjungiert}
     Sei $H$ ein Hilbertraum.\\
     Dann heißt $T \in \Lin(H)$ \begriff{selbstadjungiert}, falls $T^\ast = T$
-    (d.\,h. $\forall_{x, y \in H}\; \sp{Tx, y} = \sp{x, Ty}$).
+    (d.\,h. $\forall_{x, y \in H}\; \innerproduct{Tx, y} = \innerproduct{x, Ty}$).
 \end{Def}
 
 \begin{Bem}
     Ist $T \in \Lin(H)$ selbstadjungiert, so gilt für $x = y$, dass
-    $\sp{Tx, x} = \sp{x, Tx} = \overline{\sp{Tx, x}}$,
-    also $\sp{Tx, x} = \sp{x, Tx} \in \real$ für alle $x \in H$.
+    $\innerproduct{Tx, x} = \innerproduct{x, Tx} = \overline{\innerproduct{Tx, x}}$,
+    also $\innerproduct{Tx, x} = \innerproduct{x, Tx} \in \real$ für alle $x \in H$.
     Manchmal ist Selbstadjungiertheit eine zu starke Eigenschaft,
     in diesem Fall verwendet man die Verallgemeinerung von normalen Abbildungen.
 \end{Bem}
@@ -197,18 +197,18 @@
     Parseval
     $\norm{K}^2 = \int_{\Omega_2} \norm{\overline{K(\cdot, y)}}_{H_1}^2 \dy$\\
     $= \int_{\Omega_2} \sum_{k \in \natural}
-    \left|\sp{\overline{K(\cdot, y)}, e_k}_{H_1}\right|^2 \dy
+    \left|\innerproduct{\overline{K(\cdot, y)}, e_k}_{H_1}\right|^2 \dy
     = \int_{\Omega_2} \sum_{k \in \natural} |(Te_k)(y)|^2 \dy
     = \sum_{k \in \natural} \norm{Te_k}_{H_2}^2$.\\
     Sei $P_n$ die orthogonale Projektion von $H_1$ auf $[e_1, \dotsc, e_n]$, d.\,h.
-    $P_n f := \sum_{k=1}^n \sp{f, e_k}_{H_1} e_k$.\\
+    $P_n f := \sum_{k=1}^n \innerproduct{f, e_k}_{H_1} e_k$.\\
     Dann gilt
     $\norm{(T - TP_n) f}_{H_2}^2
     = \norm{T (f - P_n f)}_{H_2}^2
-    = \norm{T\!\left(\sum_{k > n} \sp{f, e_k}_{H_1} e_k\right)}_{H_2}^2$\\
-    $= \norm{\sum_{k > n} \sp{f, e_k}_{H_1} Te_k}_{H_2}^2
-    \le \left(\sum_{k > n} \left|\sp{f, e_k}_{H_1}\right| \norm{Te_k}_{H_2}\right)^2$\\
-    $\le \sum_{k > n} \left|\sp{f, e_k}_{H_1}\right|^2 \cdot \sum_{k > n} \norm{Te_k}_{H_2}^2$
+    = \norm{T\!\left(\sum_{k > n} \innerproduct{f, e_k}_{H_1} e_k\right)}_{H_2}^2$\\
+    $= \norm{\sum_{k > n} \innerproduct{f, e_k}_{H_1} Te_k}_{H_2}^2
+    \le \left(\sum_{k > n} \left|\innerproduct{f, e_k}_{H_1}\right| \norm{Te_k}_{H_2}\right)^2$\\
+    $\le \sum_{k > n} \left|\innerproduct{f, e_k}_{H_1}\right|^2 \cdot \sum_{k > n} \norm{Te_k}_{H_2}^2$
     wegen der Cauchy-Schwarz-Ungleichung für $\ell^2$.
     Der erste Faktor ist mit Parseval durch $\norm{f}_{H_1}^2$ nach oben beschränkt, während
     der zweite für $n \to \infty$ gegen Null geht
@@ -398,7 +398,7 @@
 \begin{Def}{positiv semidefinit}
     Seien $H$ ein $\complex$-Hilbertraum und $T \in \Lin(H)$ selbstadjungiert.\\
     Dann heißt $T$ \begriff{positiv semidefinit}, falls
-    $\forall_{x \in H}\; \sp{x, Tx} \ge 0$.
+    $\forall_{x \in H}\; \innerproduct{x, Tx} \ge 0$.
 \end{Def}
 
 \begin{Satz}{Spektralsatz für kompakte, selbstadjungierte Operatoren}\\
@@ -422,7 +422,7 @@
         mit $\Kern(T) \,\orth\, \overline{[\{e_{k,j_k} \;|\; k, j_k\}]}$
 
         \item
-        $\forall_{x \in H}\; Tx = \sum_k \sum_{j_k} \lambda_k \sp{x, e_{k,j_k}} e_{k,j_k}$
+        $\forall_{x \in H}\; Tx = \sum_k \sum_{j_k} \lambda_k \innerproduct{x, e_{k,j_k}} e_{k,j_k}$
 
         \item
         $\sigma_p(T) \subset [-\norm{T}, \norm{T}] \subset \real$
@@ -482,7 +482,7 @@
 
 \begin{Def}{\name{Rayleigh}-Quotient}
     Seien $H$ ein $\complex$-Hilbertraum und $T \in \Lin(H)$ selbstadjungiert.\\
-    Dann heißt $R_T(u) := \frac{\sp{Tu, u}}{\sp{u, u}}$
+    Dann heißt $R_T(u) := \frac{\innerproduct{Tu, u}}{\innerproduct{u, u}}$
     der \begriff{\name{Rayleigh}-Quotient} von $u \in H \setminus \{0\}$.
 \end{Def}
 
@@ -498,7 +498,7 @@
     \begin{enumerate}
         \item
         Wenn $\lambda \not= 0$ mit
-        $\lambda := \sup_{u \in H \setminus \{0\}} R_T(u) = \sup_{u \in H,\;\norm{u}=1} \sp{Tu, u}$
+        $\lambda := \sup_{u \in H \setminus \{0\}} R_T(u) = \sup_{u \in H,\;\norm{u}=1} \innerproduct{Tu, u}$
         gilt, dann ist\\
         $\lambda = \max(\sigma_p(T) \setminus \{0\})$.
         Das Supremum wird in diesem Fall von allen Eigenvektoren zum Eigenwert $\lambda$
@@ -506,7 +506,7 @@
 
         \item
         Wenn $\mu \not= 0$ mit
-        $\mu := \inf_{u \in H \setminus \{0\}} R_T(u) = \inf_{u \in H,\;\norm{u}=1} \sp{Tu, u}$
+        $\mu := \inf_{u \in H \setminus \{0\}} R_T(u) = \inf_{u \in H,\;\norm{u}=1} \innerproduct{Tu, u}$
         gilt, dann ist\\
         $\mu = \min(\sigma_p(T) \setminus \{0\})$.
         Das Infimum wird in diesem Fall von allen Eigenvektoren zum Eigenwert $\lambda$
@@ -574,10 +574,10 @@
         $(e_k)_{k \in \natural}$ ein vollständiges ONS in $L^2(\Omega)$ aus Eigenvektoren von
         $-\Delta$ ist, d.\,h.
         $\forall_{\varphi \in H_0^1(\Omega)}\;
-        \sp{e_k, \varphi}_{H_0^1} = \lambda_k \sp{e_k, \varphi}_{L^2}$ und\\
+        \innerproduct{e_k, \varphi}_{H_0^1} = \lambda_k \innerproduct{e_k, \varphi}_{L^2}$ und\\
         $\forall_{u \in L^2(\Omega)}\;
-        u \overset{L^2}{=} \sum_{k=1}^\infty \sp{u, e_k}_{L^2} e_k,\;
-        \norm{u}_{L^2}^2 = \sum_{k=1}^\infty |\sp{u, e_k}_{L^2}|^2$.
+        u \overset{L^2}{=} \sum_{k=1}^\infty \innerproduct{u, e_k}_{L^2} e_k,\;
+        \norm{u}_{L^2}^2 = \sum_{k=1}^\infty |\innerproduct{u, e_k}_{L^2}|^2$.
 
         \item
         Für $k \in \natural$ gilt

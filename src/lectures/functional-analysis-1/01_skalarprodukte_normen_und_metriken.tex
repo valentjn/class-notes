@@ -12,30 +12,30 @@
 
 \begin{Def}{Skalarprodukt}
     Sei $V$ ein $\KK$-Vektorraum.\\
-    Eine Abbildung $\sp{\cdot, \cdot}\colon V \times V \rightarrow \KK$ heißt
+    Eine Abbildung $\innerproduct{\cdot, \cdot}\colon V \times V \rightarrow \KK$ heißt
     \begriff{Skalarprodukt} (oder \begriff{inneres Produkt}) auf $V$, falls
     \begin{enumerate}
         \item
         $\forall_{\alpha \in \KK} \forall_{x, y, z \in V}\;
-        \sp{\alpha x + y, z} = \alpha \sp{x, z} + \sp{y, z}$
+        \innerproduct{\alpha x + y, z} = \alpha \innerproduct{x, z} + \innerproduct{y, z}$
         (\begriff{Linearität im ersten Argument}),
 
         \item
-        $\forall_{x, y \in V}\; \sp{x, y} = \kk{\sp{y, x}}$
+        $\forall_{x, y \in V}\; \innerproduct{x, y} = \kk{\innerproduct{y, x}}$
         (\begriff{Symmetrie} bzw. \begriff{\name{Hermite}sche Symmetrie}) und
 
         \item
-        $\forall_{x \in V}\; \sp{x, x} \ge 0 \;\land\; \left[\sp{x, x} = 0 \iff x = 0\right]$
+        $\forall_{x \in V}\; \innerproduct{x, x} \ge 0 \;\land\; \left[\innerproduct{x, x} = 0 \iff x = 0\right]$
         (\begriff{positive Definitheit}).
     \end{enumerate}
-    $V$ zusammen mit $\sp{\cdot, \cdot}$ heißt \begriff{Skalarproduktraum}
+    $V$ zusammen mit $\innerproduct{\cdot, \cdot}$ heißt \begriff{Skalarproduktraum}
     (oder \begriff{Prä-\name{Hilbert}raum}).
 \end{Def}
 
 \begin{Bem}
     Aus \emph{(1)} und \emph{(2)} folgt
-    $\forall_{\alpha \in \KK} \forall_{x, y, z \in V}\; \sp{x, \alpha y + z} =
-    \kk{\alpha} \sp{x, y} + \sp{x, z}$.
+    $\forall_{\alpha \in \KK} \forall_{x, y, z \in V}\; \innerproduct{x, \alpha y + z} =
+    \kk{\alpha} \innerproduct{x, y} + \innerproduct{x, z}$.
     Ein Skalarprodukt ist also für $\KK = \real$ bzw. $\KK = \complex$
     eine positiv definite, symmetrische Bilinearform bzw.
     eine positiv definite, hermitesche Sesquilinearform.
@@ -45,30 +45,30 @@
     Folgende Vektorräume bilden mit den zugehörigen Abbildungen Skalarprodukträume.
     \begin{enumerate}[label=\emph{(\alph*)}]
         \item
-        $V := \real^n$, $\sp{x, y} := \sum_{i=1}^n x_i y_i$
+        $V := \real^n$, $\innerproduct{x, y} := \sum_{i=1}^n x_i y_i$
 
         \item
-        $V := \complex^n$, $\sp{x, y} := \sum_{i=1}^n x_i \kk{y_i}$
+        $V := \complex^n$, $\innerproduct{x, y} := \sum_{i=1}^n x_i \kk{y_i}$
 
         \item
-        $V := \left\{\left.x \in \real^\natural \;\right|\; \sp{x, x} < \infty\right\}$,
-        $\sp{x, y} := \sum_{i=1}^\infty x_i y_i$
+        $V := \left\{\left.x \in \real^\natural \;\right|\; \innerproduct{x, x} < \infty\right\}$,
+        $\innerproduct{x, y} := \sum_{i=1}^\infty x_i y_i$
 
         \item
-        $V := \left\{\left.x \in \complex^\natural \;\right|\; \sp{x, x} < \infty\right\}$,
-        $\sp{x, y} := \sum_{i=1}^\infty x_i \kk{y_i}$
+        $V := \left\{\left.x \in \complex^\natural \;\right|\; \innerproduct{x, x} < \infty\right\}$,
+        $\innerproduct{x, y} := \sum_{i=1}^\infty x_i \kk{y_i}$
 
         \item
-        $V := \C([a,b], \real)$ mit $a < b$ reell, $\sp{x, y} := \int_a^b x(t)y(t)\dt$
+        $V := \C([a,b], \real)$ mit $a < b$ reell, $\innerproduct{x, y} := \int_a^b x(t)y(t)\dt$
 
         \item
-        $V := \C([a,b], \complex)$ mit $a < b$ reell, $\sp{x, y} := \int_a^b x(t)\kk{y(t)}\dt$
+        $V := \C([a,b], \complex)$ mit $a < b$ reell, $\innerproduct{x, y} := \int_a^b x(t)\kk{y(t)}\dt$
     \end{enumerate}
 \end{Bsp}
 
 \begin{Satz}{\name{Cauchy}-\name{Schwarz}sche Ungleichung}
     Seien $X$ ein Skalarproduktraum und $x, y \in X$.\\
-    Dann gilt $|\sp{x, y}| \le \sqrt{\sp{x, x}} \cdot \sqrt{\sp{y, y}}$.
+    Dann gilt $|\innerproduct{x, y}| \le \sqrt{\innerproduct{x, x}} \cdot \sqrt{\innerproduct{y, y}}$.
     Gleichheit gilt genau dann, wenn $x$ und $y$ linear abhängig sind.
 \end{Satz}
 
@@ -103,14 +103,14 @@
 \pagebreak
 
 \begin{Satz}{induzierte Norm}
-    In jedem Skalarproduktraum $X$ lässt sich durch $\norm{x} := \sqrt{\sp{x, x}}$ eine Norm
+    In jedem Skalarproduktraum $X$ lässt sich durch $\norm{x} := \sqrt{\innerproduct{x, x}}$ eine Norm
     einführen.
     Man nennt sie die durch das Skalarprodukt \begriff{induzierte Norm}.
 \end{Satz}
 
 \begin{Satz}{Parallelogrammgleichung}
-    Seien $(X, \sp{\cdot, \cdot})$ ein Skalarproduktraum und $\norm{\cdot}$ die durch
-    $\sp{\cdot, \cdot}$ induzierte Norm.
+    Seien $(X, \innerproduct{\cdot, \cdot})$ ein Skalarproduktraum und $\norm{\cdot}$ die durch
+    $\innerproduct{\cdot, \cdot}$ induzierte Norm.
     Dann gilt
     $\forall_{x, y \in X}\; \norm{x + y}^2 + \norm{x - y}^2 = 2(\norm{x}^2 + \norm{y}^2)$.
 \end{Satz}
@@ -132,9 +132,9 @@
     sind Skalarprodukträume, d.\,h. genau in diesen Räumen gibt es ein Skalarprodukt,
     welches die Norm induziert.\\
     In diesem Fall lässt sich für $\KK = \real$ durch
-    $\sp{x, y} := \frac{1}{4} (\norm{x + y}^2 - \norm{x - y}^2)$
+    $\innerproduct{x, y} := \frac{1}{4} (\norm{x + y}^2 - \norm{x - y}^2)$
     und für $\KK = \complex$ durch
-    $\sp{x, y} := \frac{1}{4} (\norm{x + y}^2 - \norm{x - y}^2 +
+    $\innerproduct{x, y} := \frac{1}{4} (\norm{x + y}^2 - \norm{x - y}^2 +
     \iu \cdot (\norm{x + \iu y}^2 - \norm{x - \iu y}^2))$
     (\begriff{Polarisationsformeln})
     ein Skalarprodukt auf $X$ erklären, das die Norm induziert.
@@ -144,13 +144,13 @@
 
 \begin{Bem}
     Mithilfe von reellen Skalarprodukten kann man einen Winkelbegriff einführen, denn es gilt
-    $\frac{|\sp{x, y}|}{\norm{x} \cdot \norm{y}} \le 1$ für $x, y \not= 0$ aufgrund der
+    $\frac{|\innerproduct{x, y}|}{\norm{x} \cdot \norm{y}} \le 1$ für $x, y \not= 0$ aufgrund der
     Cauchy-Schwarz-Ungleichung.
 \end{Bem}
 
 \begin{Def}{Winkel}
     Seien $X$ ein reeller Skalarproduktraum und $x, y \in X \setminus \{0\}$.\\
-    Dann heißt $\alpha \in [0, \pi]$ mit $\cos(\alpha) = \frac{\sp{x, y}}{\norm{x} \cdot \norm{y}}$
+    Dann heißt $\alpha \in [0, \pi]$ mit $\cos(\alpha) = \frac{\innerproduct{x, y}}{\norm{x} \cdot \norm{y}}$
     der \begriff{Winkel} zwischen $x$ und $y$.
 \end{Def}
 
@@ -158,7 +158,7 @@
     Sei $X$ ein Skalarproduktraum.
     \begin{enumerate}
         \item
-        $x, y \in X$ heißen \begriff{orthogonal zueinander} ($x \orth y$), falls $\sp{x, y} = 0$.
+        $x, y \in X$ heißen \begriff{orthogonal zueinander} ($x \orth y$), falls $\innerproduct{x, y} = 0$.
 
         \item
         $X_1, X_2 \subset X$ mit $X_1, X_2 \not= \emptyset$ heißen \begriff{orthogonal zueinander}

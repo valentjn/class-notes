@@ -24,22 +24,22 @@ werden kann.
 
 Auf dem \textbf{euklidischen Raum} $\real^n$, ein $\real$-Vektorraum, kann man
 ein \textbf{Skalarprodukt} \\
-$\sp{-, -}\colon \real^n \times \real^n \rightarrow \real$
-definieren durch $\sp{(x_1, \dotsc, x_n), (y_1, \dotsc, y_n)} =
+$\innerproduct{-, -}\colon \real^n \times \real^n \rightarrow \real$
+definieren durch $\innerproduct{(x_1, \dotsc, x_n), (y_1, \dotsc, y_n)} =
 x_1 y_1 + \dotsb + x_n y_n$. \\
 Es erfüllt die Skalarprodukt-Axiome
 \begin{enumerate}[label=(S\arabic*)]
     \item
-    $\sp{x, x} \ge 0$ und $\sp{x, x} = 0 \;\Leftrightarrow\; x = 0$,
+    $\innerproduct{x, x} \ge 0$ und $\innerproduct{x, x} = 0 \;\Leftrightarrow\; x = 0$,
 
     \item
-    $\sp{x, y} = \sp{y, x}$ sowie
+    $\innerproduct{x, y} = \innerproduct{y, x}$ sowie
 
     \item
-    $\sp{x, \lambda y + \mu z} = \lambda \sp{x, y} + \mu \sp{x, z}$.
+    $\innerproduct{x, \lambda y + \mu z} = \lambda \innerproduct{x, y} + \mu \innerproduct{x, z}$.
 \end{enumerate}
 
-Das Skalarprodukt induziert eine \textbf{Norm} $\norm{x} = \sqrt{\sp{x, x}}$,
+Das Skalarprodukt induziert eine \textbf{Norm} $\norm{x} = \sqrt{\innerproduct{x, x}}$,
 die wiederum die Norm-Axiome
 \begin{enumerate}[label=(N\arabic*)]
     \item
@@ -67,12 +67,12 @@ Metrik-Axiomen
 
 Man kann auch von den Axiomen ausgehen und auf einem $\real$-Vektorraum $V$ ein
 \textbf{euklidisches Skalarprodukt} definieren
-(eine positiv definite, symmetrische Bilinearform $\sp{-, -}$ auf $V$).
-Damit wird $(V, \sp{-, -})$ zum \textbf{euklidischen Vektorraum}. \\
+(eine positiv definite, symmetrische Bilinearform $\innerproduct{-, -}$ auf $V$).
+Damit wird $(V, \innerproduct{-, -})$ zum \textbf{euklidischen Vektorraum}. \\
 Analog kann man \textbf{normierte Vektorräume} definieren. Jedes Skalarprodukt
 induziert eine Norm, diese erfüllt die
 \textbf{Ungleichung von \name{Cauchy}-\name{Schwarz}}
-$|\sp{x, y}| \le \norm{x} \cdot \norm{y}$.
+$|\innerproduct{x, y}| \le \norm{x} \cdot \norm{y}$.
 
 \emph{Beispiele für euklidische Räume}: \\
 $\Omega = \natural$,
@@ -80,13 +80,13 @@ $\ell^2(\Omega) = \{f\colon \Omega \rightarrow \real \;|\;
 \sum_{x \in \Omega} f(x)^2 < \infty\}$
 (Menge aller quadrat-summierbaren Abbildungen)
 mit Skalarprodukt
-$\sp{f, g} = \sum_{x \in \Omega} f(x)g(x)$.
+$\innerproduct{f, g} = \sum_{x \in \Omega} f(x)g(x)$.
 Für $\Omega = \{1, \dotsc, n\}$ erhält man den
 $\real^n$ mit üblichem Skalarprodukt. \\
-$\C([0,1], \real)$ mit Skalarprodukt $\sp{f, g} = \int_0^1 f(x)g(x)\dx$.
+$\C([0,1], \real)$ mit Skalarprodukt $\innerproduct{f, g} = \int_0^1 f(x)g(x)\dx$.
 
 \emph{Beispiele für normierte Räume}: \\
-Jede euklidische Raum ist normiert mittels $\norm{x} = \sqrt{\sp{x, x}}$
+Jede euklidische Raum ist normiert mittels $\norm{x} = \sqrt{\innerproduct{x, x}}$
 (\begriff{induzierte Norm}). \\
 Auf $\real^n$ wird für $1 \le p < \infty$ die Norm
 $\norm{x}_p = (|x_1|^p + \dotsb + |x_n|^p)^{1/p}$ (\begriff{$p$-Norm})

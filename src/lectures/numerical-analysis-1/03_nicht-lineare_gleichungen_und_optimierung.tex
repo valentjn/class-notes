@@ -729,11 +729,11 @@ Norm.
 \textbf{$A$-Skalarprodukt}:
 Zu einer symmetrischen, positiv definiten Matrix $A$ lässt sich durch
 \begin{align*}
-    \sp{x, y}_A := x^t A y
+    \innerproduct{x, y}_A := x^t A y
 \end{align*}
 ein Skalarprodukt definieren. \\
 Zwei Vektoren $x$ und $y$ heißen \textbf{$A$-orthogonal}, falls
-$\sp{x, y}_A = 0$ ist.
+$\innerproduct{x, y}_A = 0$ ist.
 
 \linie
 
@@ -742,13 +742,13 @@ Ausgehend von einem beliebigen Startvektor $x_0$ und \\
 $g_0 := -u_1 := Ax_0 - b$ erhält man mit der Iteration
 \begin{align*}
     x_\ell & := x_{\ell-1} +
-    \frac{\sp{g_{\ell-1}, g_{\ell-1}}}{\sp{u_\ell, u_\ell}_A} u_\ell \\
+    \frac{\innerproduct{g_{\ell-1}, g_{\ell-1}}}{\innerproduct{u_\ell, u_\ell}_A} u_\ell \\
     g_\ell & := Ax_\ell - b \\
     u_{\ell+1} & := -g_\ell +
-    \frac{\sp{g_\ell, g_\ell}}{\sp{g_{\ell-1}, g_{\ell-1}}} u_\ell
+    \frac{\innerproduct{g_\ell, g_\ell}}{\innerproduct{g_{\ell-1}, g_{\ell-1}}} u_\ell
 \end{align*}
 die Lösung des linearen LGS $Ax = b$ mit symmetrischer, positiv definiter
-$n \times n$-Matrix $A$ und $\sp{\cdot, \cdot}_A$ dem $A$-Skalarprodukt
+$n \times n$-Matrix $A$ und $\innerproduct{\cdot, \cdot}_A$ dem $A$-Skalarprodukt
 in maximal $n$ Schritten. \\
 Bei exakter Rechnung ist $g_\ell = 0$ spätestens für $\ell = n$.
 Dieses Verfahren nennt man die
@@ -761,7 +761,7 @@ als Minimierung der quadratischen Funktion $f$ auf"|fassen.
 Für die Gradienten $g_\ell$ und die Suchrichtungen $u_\ell$ gilt
 \begin{align*}
     g_\ell = g_{\ell-1} + \alpha_\ell A u_\ell \quad\text{mit}\quad
-    \alpha_\ell := \frac{\sp{g_{\ell-1}, g_{\ell-1}}}{\sp{u_\ell, u_\ell}_A},
+    \alpha_\ell := \frac{\innerproduct{g_{\ell-1}, g_{\ell-1}}}{\innerproduct{u_\ell, u_\ell}_A},
 \end{align*}
 d.\,h. es ist möglich, bei der Implementierung eines Iterationsschritts \\
 $(x_{\ell-1}, g_{\ell-1}, u_\ell) \rightarrow (x_\ell, g_\ell, u_{\ell+1})$
@@ -792,7 +792,7 @@ Suchrichtungen $d_\ell$ durch folgende Rekursionen:
     x_{\ell+1} & := x_\ell + \alpha_\ell d_\ell \\
     g_{\ell+1} & := \grad f(x_{\ell+1}) \\
     d_{\ell+1} & := -g_{\ell+1} + \beta_\ell d_\ell, \qquad
-    \beta_\ell := \frac{\sp{g_{\ell+1}, g_{\ell+1}}}{\sp{g_\ell, g_\ell}},
+    \beta_\ell := \frac{\innerproduct{g_{\ell+1}, g_{\ell+1}}}{\innerproduct{g_\ell, g_\ell}},
 \end{align*}
 wobei $\alpha_\ell > 0$ bestimmt ist durch Minimierung von
 $f(x_\ell + \alpha d_\ell)$ für $\alpha > 0$.
@@ -815,11 +815,11 @@ Funktion).
 Die eindimensionale Minimierung wird i.\,A. nicht exakt durchgeführt.
 Dann ist jedoch darauf zu achten, dass
 \begin{align*}
-    \sp{g_{\ell+1}, d_{\ell+1}} < 0,
+    \innerproduct{g_{\ell+1}, d_{\ell+1}} < 0,
 \end{align*}
 d.\,h. die Suchrichtungen sind lokale Abstiegsrichtungen.
 Ist $x_{\ell+1}$ ein lokales Minimum von $f$ in Richtung $d_\ell$, so gilt
-$\sp{g_{\ell+1}, d_\ell} = 0$, sodass aufgrund der Definition von
+$\innerproduct{g_{\ell+1}, d_\ell} = 0$, sodass aufgrund der Definition von
 $d_{\ell+1}$ diese Bedingung automatisch erfüllt ist.
 
 \linie
@@ -828,7 +828,7 @@ Es existieren einige Varianten bei der Parameterwahl, die ebenfalls mit dem
 quadratischen Fall konsistent sind.
 Beispielsweise definieren \name{Polak} und \name{Ribiere}
 \begin{align*}
-    \beta_\ell := \frac{\sp{g_{\ell+1} - g_\ell, d_\ell}}{\sp{g_\ell, d_\ell}}.
+    \beta_\ell := \frac{\innerproduct{g_{\ell+1} - g_\ell, d_\ell}}{\innerproduct{g_\ell, d_\ell}}.
 \end{align*}
 Diese Wahl führt in der Praxis oft zu besseren Ergebnissen als die klassische
 Variante von Fletcher und Reeves.
