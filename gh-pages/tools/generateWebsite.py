@@ -58,6 +58,27 @@ def replaceSubsubsectionHeading(match):
   slug = convertTextTitleToSlug(convertHtmlTitleToTextTitle(htmlTitle))
   return f"<h3 id=\"{slug}\">{htmlTitle}</h3>"
 
+class ListItemReplacer(object):
+  def __init__(self):
+    self.css = ""
+    self.cssClassCounter = 0
+
+  def replace(self, match):
+    cssClass = f"list-item-f{self.cssClassCounter}"
+    self.cssClassCounter += 1
+
+    self.css += f".lwarp-contents li.{cssClass}::marker {{\n"
+
+    marker = match.group(2)
+    self.css += f"  content:'{marker}\\00a0\\00a0';\n"
+
+    if match.group(1) == "<em>": self.css += "  font-style:italic;\n"
+    elif match.group(1) == "<b>": self.css += "  font-weight:bold;\n"
+
+    self.css += "}\n"
+
+    return f"<li class=\"{cssClass}\"><p>"
+
 def extractSections(lecture):
   with open(os.path.join("..", "build", "lectures", lecture, f"{lecture}.html"), "r") as f:
     html_ = f.read()
@@ -100,6 +121,13 @@ def extractSections(lecture):
         f"/class-notes/images/lectures/{lecture}/")
 
     #sectionHtml = re.sub(r"<br */>", " ", sectionHtml)
+
+    listItemReplacer = ListItemReplacer()
+    sectionHtml = re.sub(r"<li>\s*<p>\s*(<em>|<b>)?(\u2022|\u2013|\*|\(\S*?\)|\S*?\.|\S*?\))"
+        r"(</em>|</b>)? ", listItemReplacer.replace, sectionHtml)
+
+    if listItemReplacer.css != "":
+      sectionHtml = f"<style type=\"text/css\">\n{listItemReplacer.css}</style>\n{sectionHtml}"
 
     sectionHtml = re.sub(r"<p>\s*(?:&#x2003;)+[\s\u0083]*\Z", "", sectionHtml)
 
