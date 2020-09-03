@@ -80,7 +80,7 @@ def extractSections(lecture):
 
   mathJaxDefinitions = re.search(r"<div\s+class=\"hidden\"\s*>.*?</\s*div\s*>", html_,
       flags=re.DOTALL).group()
-  matches = list(re.finditer(r"<p>\s*[0-9]+(?:\s|&#x2002;|&#x2003;)+(.+?)\s*<p>\s*</p>", html_))
+  matches = list(re.finditer(r"<p>\s*[0-9]+(?:&#x2002;|&#x2003;)(.+?)\n\s*", html_))
 
   for i in range(len(matches)):
     match = matches[i]
@@ -91,9 +91,9 @@ def extractSections(lecture):
         re.search(r"-autofile-last\"></a>", html_).end())
     sectionHtml = html_[match.end():sectionEndPos]
 
-    sectionHtml = re.sub(r"<p>\s*[0-9]+\.[0-9]+(?:\s|&#x2002;|&#x2003;)+(.+?)\s*<p>\s*</p>",
+    sectionHtml = re.sub(r"<p>\s*[0-9]+\.[0-9]+(?:&#x2002;|&#x2003;)+(.+?)\n\s*",
         replaceSubsectionHeading, sectionHtml)
-    sectionHtml = re.sub(r"<p>\s*[0-9]+\.[0-9]+\.[0-9]+(?:\s|&#x2002;|&#x2003;)+(.+?)\s*<p>\s*</p>",
+    sectionHtml = re.sub(r"<p>\s*[0-9]+\.[0-9]+\.[0-9]+(?:&#x2002;|&#x2003;)+(.+?)\n\s*",
         replaceSubsubsectionHeading, sectionHtml)
     sectionHtml = sectionHtml.replace(f"{lecture}-images/",
         f"/class-notes/images/lectures/{lecture}/")
