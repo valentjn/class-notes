@@ -118,7 +118,7 @@ def extractSections(lecture):
     sectionMarkdown = f"""
 ---
 title: "{title}"
-permalink: "/{lecture}/{slug}.html"
+permalink: "/lectures/{lecture}/{slug}.html"
 sidebar: "sidebar"
 toc: false
 ---
