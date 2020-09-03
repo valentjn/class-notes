@@ -103,14 +103,16 @@ def extractSections(lecture):
 
     sectionHtml = re.sub(r"<p>\s*(?:&#x2003;)+[\s\u0083]*\Z", "", sectionHtml)
 
+    # Due to some weird bug, I can't get Jekyll/Liquid to not escape the </div> tag
+    # if placed at the end (even inside the raw environment). So we'll just leave it open.
     sectionHtml = f"""
+<div class="lwarp-contents">
 {{% raw %}}
 {mathJaxDefinitions}
 
-<div class="lwarp-contents">
 {sectionHtml}
-</div>
-{{% endraw %}}"""
+{{% endraw %}}
+"""
     writeFile(os.path.join("_includes", "lectures", lecture, f"{slug}.html"), sectionHtml)
 
     sectionMarkdown = f"""
