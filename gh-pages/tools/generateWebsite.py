@@ -31,8 +31,7 @@ def convertHtmlTitleToTextTitle(s):
   s = re.sub(r"<span class=\"textsc\" >(.*?)</span>", r"\1", s)
   s = re.sub(r"<em>(.*?)</em>", r"\1", s)
   s = re.sub(r"<kbd>(.*?)</kbd>", r"\1", s)
-  s = s.replace("\\(\\mathbb {C}\\)", "\u2102")
-  s = s.replace("\\(\\mathbb {R}\\)", "\u211d")
+  s = s.replace("\\mathbb {C}", "\u2102").replace("\\mathbb {R}", "\u211d").replace("^n", "\u207f")
   s = re.sub(r"\\\((.*?)\\\)", r"\1", s)
   s = s.replace("M ATLAB", "MATLAB")
   return s
@@ -43,6 +42,7 @@ def convertTextTitleToSlug(s):
   s = re.sub("([aou])\u0308", r"\1e", s)
   s = s.replace("\u00df", "ss")
   s = s.replace("\u00e9", "e")
+  s = s.replace("\u2102", "c").replace("\u211d", "r").replace("\u207f", "n")
   s = s.replace(" ", "-")
   s = re.sub(r"[^a-z0-9\-]", "", s)
   s = re.sub(r"--+", "-", s)
