@@ -65,6 +65,19 @@ def extractSections(lecture):
   createDir(os.path.join("_includes", "lectures", lecture))
   createDir(os.path.join("pages", "lectures", lecture))
 
+  lectureTitle = re.search(r"<p>\s*Vorlesungs(?:mitschrieb|notizen):\s*(.+?)\s*</p>", html_,
+      flags=re.DOTALL).group(1)
+  lectureTitle = re.sub(r"<br */>", " ", lectureTitle)
+  lectureTitle = lectureTitle.replace("\n", " ")
+  lectureTitle = re.sub(r"  +", " ", lectureTitle)
+  lectureTitle = convertHtmlTitleToTextTitle(lectureTitle.strip())
+
+  sidebarYaml = f"""
+      - title: "{lectureTitle}"
+        output: "web"
+        folderitems:
+""".lstrip("\r\n")
+
   mathJaxDefinitions = re.search(r"<div\s+class=\"hidden\"\s*>.*?</\s*div\s*>", html_,
       flags=re.DOTALL).group()
   matches = list(re.finditer(r"<p>\s*[0-9]+(?:\s|&#x2002;|&#x2003;)+(.+?)\s*<p>\s*</p>", html_))
@@ -105,6 +118,16 @@ toc: false
 {{% include lectures/{lecture}/{slug}.html %}}""".lstrip()
     writeFile(os.path.join("pages", "lectures", lecture, f"{slug}.md"), sectionMarkdown)
 
+    sidebarYaml += f"""
+          - title: "{title}"
+            url: "/lectures/{lecture}/{slug}.html"
+            output: "web"
+""".lstrip("\r\n")
+
+  return sidebarYaml
+
+
+
 def main():
   os.chdir(os.path.join(os.path.dirname(__file__), ".."))
 
@@ -116,8 +139,61 @@ def main():
   deleteDir(os.path.join("pages", "lectures"))
   createDir(os.path.join("pages", "lectures"))
 
-  lectures = sorted(os.listdir(os.path.join("..", "src", "lectures")))
+  lectures = os.listdir(os.path.join("..", "src", "lectures"))
   lectures = [x for x in lectures if os.path.isdir(os.path.join("..", "src", "lectures", x))]
+
+  lectureOrder = [
+      "analysis-1",
+      "analysis-2",
+      "analysis-3",
+      "analysis-4",
+      "functional-analysis-1",
+      "functional-analysis-2",
+      "linear-algebra-and-analytical-geometry-1",
+      "linear-algebra-and-analytical-geometry-2",
+      "algebra",
+      "topology",
+      "probability-theory",
+      "mathematical-statistics",
+      "linear-control-theory",
+      "numerical-linear-algebra",
+      "numerical-analysis-1",
+      "numerical-analysis-2",
+      "partial-differential-equations",
+      "approximation-and-geometric-modeling",
+      "finite-elements",
+      "programming-and-software-engineering",
+      "data-structures-and-algorithms",
+      "formal-languages-and-automata",
+      "computability-and-complexity",
+      "algorithmic-geometry",
+      "discrete-optimization",
+      "cryptographic-procedures",
+      "visual-computing",
+      "modeling-and-simulation",
+      "optical-phenomena",
+      "basic-principles-of-geosciences",
+      "history-of-wind-energy-use",
+    ]
+  lectures.sort(key=lambda x: ((lectureOrder.index(x), 0) if x in lectureOrder else
+      (len(lectureOrder), x)))
+
+  sidebarYaml = """
+entries:
+  - title: "sidebar"
+    product: "Vorlesungsmitschriebe"
+    version: ""
+    folders:
+      - title: "Über diese Mitschriebe"
+        output: "web"
+        folderitems:
+          - title: "Startseite"
+            url: "/index.html"
+            type: "homepage"
+            output: "web"
+""".lstrip("\r\n")
+
+  lectures = ["analysis-1"]
 
   for lecture in lectures:
     imagesDirPath = os.path.join("images", "lectures", lecture)
@@ -125,7 +201,9 @@ def main():
     imagesSrcDirPath = os.path.join("..", "build", "lectures", lecture, f"{lecture}-images")
     if len(os.listdir(imagesSrcDirPath)) > 0: copyDir(imagesSrcDirPath, imagesDirPath)
 
-    extractSections(lecture)
+    sidebarYaml += extractSections(lecture)
+
+  writeFile(os.path.join("_data", "sidebars", "sidebar.yml"), sidebarYaml)
 
 
 
