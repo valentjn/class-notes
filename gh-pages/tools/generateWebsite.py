@@ -95,8 +95,14 @@ def extractSections(lecture):
         replaceSubsectionHeading, sectionHtml)
     sectionHtml = re.sub(r"<p>\s*[0-9]+\.[0-9]+\.[0-9]+(?:&#x2002;|&#x2003;)+(.+?)\n\s*",
         replaceSubsubsectionHeading, sectionHtml)
+
     sectionHtml = sectionHtml.replace(f"{lecture}-images/",
         f"/class-notes/images/lectures/{lecture}/")
+
+    #sectionHtml = re.sub(r"<br */>", " ", sectionHtml)
+
+    sectionHtml = re.sub(r"<p>\s*(?:&#x2003;)+[\s\u0083]*\Z", "", sectionHtml)
+
     sectionHtml = f"""
 {{% raw %}}
 {mathJaxDefinitions}
