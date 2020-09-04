@@ -182,7 +182,7 @@ def extractSections(lecture):
 title: "{lectureTitle} \u2013 {title}"
 permalink: "/lectures/{lecture}/{slug}.html"
 sidebar: "sidebar"
-toc: false
+toc: true
 tex_path: "src/lectures/{lecture}/{texFileName}"
 ---
 
