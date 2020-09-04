@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-lg-12 footer">
                     {% if site.github_editme_path %}
-                    <a target="_blank" rel="noopener" href="https://github.com/{{site.github_editme_path}}{{page.path}}" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me on GitHub</a>
+                    <a target="_blank" rel="noopener" href="https://github.com/{{site.github_editme_path}}{% if page.tex_path %}{{page.tex_path}}{% else %}{{page.path}}{% endif %}" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me on GitHub</a>
                     {% endif %}
                 </div>
             </div>

@@ -87,6 +87,8 @@ def extractSections(lecture):
   createDir(os.path.join("pages", "lectures", lecture))
 
   lectureDirPath = os.path.join("..", "src", "lectures", lecture)
+  texFileNames = os.listdir(lectureDirPath)
+
   with open(os.path.join(lectureDirPath, "metadata.tex")) as f: metadataTex = f.read()
 
   lectureTitle = re.search(r"\{\\vorlesung\}\{(.*)\}", metadataTex).group(1)
@@ -160,12 +162,15 @@ def extractSections(lecture):
 """
     writeFile(os.path.join("_includes", "lectures", lecture, f"{slug}.html"), sectionHtml)
 
+    texFileName = next(x for x in texFileNames if x.startswith(f"{i+1:02}_"))
+
     sectionMarkdown = f"""
 ---
 title: "{lectureTitle} \u2013 {title}"
 permalink: "/lectures/{lecture}/{slug}.html"
 sidebar: "sidebar"
 toc: false
+tex_path: "src/lectures/{lecture}/{texFileName}"
 ---
 
 {{% include lectures/{lecture}/{slug}.html %}}""".lstrip()
