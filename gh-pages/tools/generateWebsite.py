@@ -146,7 +146,7 @@ def extractSections(lecture):
 
     sectionMarkdown = f"""
 ---
-title: "{title}"
+title: "{lectureTitle} \u2013 {title}"
 permalink: "/lectures/{lecture}/{slug}.html"
 sidebar: "sidebar"
 toc: false
