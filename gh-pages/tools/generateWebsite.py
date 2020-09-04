@@ -2,16 +2,13 @@
 
 import html
 import os
+import functools
 import re
 import shutil
 
 def copyFile(srcPath, destPath):
   print(f"Copying '{srcPath}' to '{destPath}'...")
   shutil.copy(srcPath, destPath)
-
-def copyDir(srcPath, destPath):
-  print(f"Copying '{srcPath}' to '{destPath}'...")
-  shutil.copytree(srcPath, destPath)
 
 def deleteDir(dirPath):
   if os.path.isdir(dirPath):
@@ -57,6 +54,18 @@ def replaceSubsubsectionHeading(match):
   htmlTitle = match.group(1)
   slug = convertTextTitleToSlug(convertHtmlTitleToTextTitle(htmlTitle))
   return f"<h3 id=\"{slug}\">{htmlTitle}</h3>"
+
+def replaceImageUrl(lecture, match):
+  attributeName, fileName = match.group(1), match.group(2)
+
+  if fileName.startswith("/class-notes/images") or fileName.endswith(".html"):
+    return match.group(0)
+  else:
+    if attributeName == "src":
+      copyFile(os.path.join("..", "build", "lectures", lecture, fileName),
+          os.path.join("images", "lectures", lecture))
+
+    return f"{attributeName}=\"/class-notes/images/lectures/{lecture}/{fileName}\""
 
 class ListItemReplacer(object):
   def __init__(self):
@@ -137,6 +146,8 @@ def extractSections(lecture):
 
     sectionHtml = sectionHtml.replace(f"{lecture}-images/",
         f"/class-notes/images/lectures/{lecture}/")
+    sectionHtml = re.sub(r"(src|href)=\"(.*?)\"",
+        functools.partial(replaceImageUrl, lecture), sectionHtml)
 
     #sectionHtml = re.sub(r"<br */>", " ", sectionHtml)
 
@@ -325,8 +336,12 @@ Folgende Mitschriebe stehen zur Verfügung:
   for lecture in lectures:
     imagesDirPath = os.path.join("images", "lectures", lecture)
     deleteDir(imagesDirPath)
+    createDir(imagesDirPath)
+
     imagesSrcDirPath = os.path.join("..", "build", "lectures", lecture, f"{lecture}-images")
-    if len(os.listdir(imagesSrcDirPath)) > 0: copyDir(imagesSrcDirPath, imagesDirPath)
+
+    for fileName in os.listdir(imagesSrcDirPath):
+      copyFile(os.path.join(imagesSrcDirPath, fileName), imagesDirPath)
 
     possibleFields = [x["title"] for x in fields if lecture in x["lectures"]]
     field = (possibleFields[0] if len(possibleFields) > 0 else prevField)
@@ -343,6 +358,8 @@ Folgende Mitschriebe stehen zur Verfügung:
     indexMarkdown += curIndexMarkdown
 
     prevField = field
+
+    if len(os.listdir(imagesDirPath)) == 0: deleteDir(imagesDirPath)
 
   indexMarkdown += """
   </tbody>
