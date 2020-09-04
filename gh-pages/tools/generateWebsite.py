@@ -86,6 +86,22 @@ def extractSections(lecture):
   createDir(os.path.join("_includes", "lectures", lecture))
   createDir(os.path.join("pages", "lectures", lecture))
 
+  lectureDirPath = os.path.join("..", "src", "lectures", lecture)
+  with open(os.path.join(lectureDirPath, "metadata.tex")) as f: metadataTex = f.read()
+
+  lectureTitle = re.search(r"\{\\vorlesung\}\{(.*)\}", metadataTex).group(1)
+  lectureTitle = lectureTitle.replace("\"-", "").replace("\"|", "")
+
+  match = re.search(r"\{\\dozent\}\{(.*)\\name\{(.*)\}\}", metadataTex)
+  lecturerDegree, lecturer = match.group(1), match.group(2)
+  if "Jun.-Prof." in lecturerDegree:   lecturer = f"JP&nbsp;{lecturer}"
+  elif "Prof." in lecturerDegree:      lecturer = f"Prof.&nbsp;{lecturer}"
+  elif "Dr." in lecturerDegree:        lecturer = f"Dr.&nbsp;{lecturer}"
+  elif "Dipl.-Ing." in lecturerDegree: lecturer = f"Dipl.-Ing.&nbsp;{lecturer}"
+
+  semester = re.search(r"\{\\semester\}\{(.*)\}", metadataTex).group(1)
+  semester = semester.replace("Wintersemester", "WiSe").replace("Sommersemester", "SoSe")
+
   lectureTitle = re.search(r"<p>\s*Vorlesungs(?:mitschrieb|notizen):\s*(.+?)\s*</p>", html_,
       flags=re.DOTALL).group(1)
   lectureTitle = re.sub(r"<br */>", " ", lectureTitle)
@@ -161,7 +177,16 @@ toc: false
             output: "web"
 """.lstrip("\r\n")
 
-  return sidebarYaml
+    if i == 0:
+      indexMarkdown = f"""
+    <tr>
+      <td><a href="/class-notes/lectures/{lecture}/{slug}.html">{lectureTitle}</a></td>
+      <td>{lecturer}</td>
+      <td>{semester}</td>
+    </tr>
+""".lstrip("\r\n")
+
+  return sidebarYaml, indexMarkdown
 
 
 
@@ -176,42 +201,79 @@ def main():
   deleteDir(os.path.join("pages", "lectures"))
   createDir(os.path.join("pages", "lectures"))
 
-  lectures = os.listdir(os.path.join("..", "src", "lectures"))
-  lectures = [x for x in lectures if os.path.isdir(os.path.join("..", "src", "lectures", x))]
+  lecturesDirPath = os.path.join("..", "src", "lectures")
+  lectures = os.listdir(lecturesDirPath)
+  lectures = [x for x in lectures if os.path.isdir(os.path.join(lecturesDirPath, x))]
 
-  lectureOrder = [
-      "analysis-1",
-      "analysis-2",
-      "analysis-3",
-      "analysis-4",
-      "functional-analysis-1",
-      "functional-analysis-2",
-      "linear-algebra-and-analytical-geometry-1",
-      "linear-algebra-and-analytical-geometry-2",
-      "algebra",
-      "topology",
-      "probability-theory",
-      "mathematical-statistics",
-      "linear-control-theory",
-      "numerical-linear-algebra",
-      "numerical-analysis-1",
-      "numerical-analysis-2",
-      "partial-differential-equations",
-      "approximation-and-geometric-modeling",
-      "finite-elements",
-      "programming-and-software-engineering",
-      "data-structures-and-algorithms",
-      "formal-languages-and-automata",
-      "computability-and-complexity",
-      "algorithmic-geometry",
-      "discrete-optimization",
-      "cryptographic-procedures",
-      "visual-computing",
-      "modeling-and-simulation",
-      "optical-phenomena",
-      "basic-principles-of-geosciences",
-      "history-of-wind-energy-use",
-    ]
+  fields = [
+        {
+          "title" : "Analysis",
+          "lectures" : [
+              "analysis-1",
+              "analysis-2",
+              "analysis-3",
+              "analysis-4",
+              "functional-analysis-1",
+              "functional-analysis-2",
+          ],
+        },
+        {
+          "title" : "Algebra",
+          "lectures" : [
+            "linear-algebra-and-analytical-geometry-1",
+            "linear-algebra-and-analytical-geometry-2",
+            "algebra",
+          ],
+        },
+        {
+          "title" : "Topologie",
+            "lectures" : [
+            "topology",
+          ],
+        },
+        {
+          "title" : "Angewandte Mathematik",
+          "lectures" : [
+            "probability-theory",
+            "mathematical-statistics",
+            "linear-control-theory",
+          ],
+        },
+        {
+          "title" : "Numerik",
+          "lectures" : [
+            "numerical-linear-algebra",
+            "numerical-analysis-1",
+            "numerical-analysis-2",
+            "partial-differential-equations",
+            "approximation-and-geometric-modeling",
+            "finite-elements",
+          ],
+        },
+        {
+          "title" : "Informatik",
+          "lectures" : [
+            "programming-and-software-engineering",
+            "data-structures-and-algorithms",
+            "formal-languages-and-automata",
+            "computability-and-complexity",
+            "algorithmic-geometry",
+            "discrete-optimization",
+            "cryptographic-procedures",
+            "visual-computing",
+            "modeling-and-simulation",
+          ],
+        },
+        {
+          "title" : "Verschiedene andere Gebiete",
+          "lectures" : [
+            "optical-phenomena",
+            "basic-principles-of-geosciences",
+            "history-of-wind-energy-use",
+          ],
+        },
+      ]
+  lectureOrder = [y for x in fields for y in x["lectures"]]
   lectures.sort(key=lambda x: ((lectureOrder.index(x), 0) if x in lectureOrder else
       (len(lectureOrder), x)))
 
@@ -230,7 +292,30 @@ entries:
             output: "web"
 """.lstrip("\r\n")
 
-  lectures = ["analysis-1"]
+  indexMarkdown = """
+---
+title: "Vorlesungsmitschriebe"
+permalink: "/index.html"
+sidebar: "sidebar"
+toc: false
+---
+
+Diese Vorlesungsmitschriebe entstanden als Hörer in Vorlesungen an der Universität Stuttgart in den Jahren 2009 bis 2014. Sie dienten hauptsächlich als Lernhilfe für mich; aus Zeitgründen fehlen viele Skizzen und mathematische Beweise. Studentische Mitschriebe sind keine offiziellen Skripte; weder die Universität Stuttgart noch ihre Mitarbeiter sind für sie verantwortlich. Fehler können auf [GitHub](https://github.com/valentjn/class-notes) gemeldet werden. Die LaTeX-Umsetzung der Mitschriebe steht unter [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+Folgende Mitschriebe stehen zur Verfügung:
+
+<table>
+  <thead>
+    <tr>
+      <th>Vorlesung</th>
+      <th>Dozent</th>
+      <th>Semester</th>
+    </tr>
+  </thead>
+  <tbody>
+""".lstrip("\r\n")
+
+  prevField = None
 
   for lecture in lectures:
     imagesDirPath = os.path.join("images", "lectures", lecture)
@@ -238,9 +323,29 @@ entries:
     imagesSrcDirPath = os.path.join("..", "build", "lectures", lecture, f"{lecture}-images")
     if len(os.listdir(imagesSrcDirPath)) > 0: copyDir(imagesSrcDirPath, imagesDirPath)
 
-    sidebarYaml += extractSections(lecture)
+    possibleFields = [x["title"] for x in fields if lecture in x["lectures"]]
+    field = (possibleFields[0] if len(possibleFields) > 0 else prevField)
+
+    if field != prevField:
+      indexMarkdown += f"""
+    <tr>
+      <td colspan="3"><b>{field}</b></td>
+    </tr>
+""".lstrip("\r\n")
+
+    curSidebarYaml, curIndexMarkdown = extractSections(lecture)
+    sidebarYaml += curSidebarYaml
+    indexMarkdown += curIndexMarkdown
+
+    prevField = field
+
+  indexMarkdown += """
+  </tbody>
+</table>
+""".lstrip("\r\n")
 
   writeFile(os.path.join("_data", "sidebars", "sidebar.yml"), sidebarYaml)
+  writeFile(os.path.join("pages", "index.md"), indexMarkdown)
 
 
 
