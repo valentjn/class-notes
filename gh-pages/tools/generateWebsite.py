@@ -81,7 +81,7 @@ class HeadingReplacer(object):
     self.tableOfContentsMarkdown += (f"{indent * ' '}* [{sectionTitle}]("
         f"/class-notes/lectures/{self.lecture}/{self.chapterSlug}.html#{sectionSlug})\n")
 
-    return f"<{tag} id=\"{sectionSlug}\">{sectionHtmlTitle}</{tag}>"
+    return f"<{tag} id=\"{sectionSlug}\">{sectionTitle}</{tag}>"
 
 def replaceImageUrl(lecture, match):
   attributeName, fileName = match.group(1), match.group(2)
