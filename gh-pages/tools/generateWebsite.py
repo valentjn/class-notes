@@ -169,6 +169,14 @@ toc: false
 
 """.lstrip("\r\n")
 
+  html_ = html_.replace("\u00c3\u00a7", "\u00df")
+  html_ = html_.replace("\u00c3\u010f", "\u00e4")
+  html_ = html_.replace("\u00c3\u0171", "\u00f6")
+  html_ = html_.replace("\u00c3\u0133", "\u00fc")
+  html_ = html_.replace("&quot;|", "")
+  html_ = html_.replace("&quot;\u2018", "\u201e")
+  html_ = html_.replace("&quot;\u2019", "\u201c")
+
   html_ = re.sub(r"\\mathbbm\s*\{b\}", "\U0001d553", html_)
   html_ = re.sub(r"\\mathbbm\s*\{c\}", "\U0001d554", html_)
   html_ = re.sub(r"\\mathbbm\s*\{f\}", "\U0001d557", html_)
