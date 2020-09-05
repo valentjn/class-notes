@@ -25,13 +25,23 @@ def writeFile(filePath, s):
 
 def convertHtmlTitleToTextTitle(s):
   s = html.unescape(s)
-  s = re.sub(r"<span class=\"textsc\" >(.*?)</span>", r"\1", s)
+  s = re.sub(r"<span class=\"textsc\"\s*>(.*?)</span>", r"\1", s)
   s = re.sub(r"<em>(.*?)</em>", r"\1", s)
   s = re.sub(r"<kbd>(.*?)</kbd>", r"\1", s)
+  s = s.replace("\\alpha", "\u03b1").replace("\\mu", "\u03bc").replace("\\xi", "\u03be")
   s = s.replace("\\mathbb {C}", "\u2102").replace("\\mathbb {R}", "\u211d")
-  s = s.replace("^2", "\u00b2").replace("^n", "\u207f").replace("_2", "\u2082")
+  s = s.replace("\\complex", "\u2102").replace("\\real", "\u211d")
+  s = s.replace("^2", "\u00b2").replace("^n", "\u207f")
+  s = s.replace("_0", "\u2080").replace("_2", "\u2082")
+  s = s.replace("\\to", "\u2192").replace("\\infty ", "\u221e")
+  s = s.replace("\\O (", "O(").replace("n\\log", "n log")
+  s = s.replace(" ^\\ast", "*")
+  s = re.sub(r"\\lim _\{(.*?)\}", r"\1", s)
   s = re.sub(r"\\\((.*?)\\\)", r"\1", s)
+  s = re.sub(r" ([\)\-\^\}_\u2019\u207f\u2080])", r"\1", s)
+  s = s.replace("\\", "")
   s = s.replace("M ATLAB", "MATLAB")
+  s = re.sub(r"  +", " ", s).strip()
   return s
 
 def convertTextTitleToSlug(s):
@@ -40,8 +50,11 @@ def convertTextTitleToSlug(s):
   s = re.sub("([aou])\u0308", r"\1e", s)
   s = s.replace("\u00df", "ss")
   s = s.replace("\u00e9", "e")
+  s = s.replace("\u03b1", "alpha").replace("\u03bc", "mu").replace("\u03be", "xi")
   s = s.replace("\u2102", "c").replace("\u211d", "r")
-  s = s.replace("\u00b2", "2").replace("\u207f", "n").replace("\u2082", "2")
+  s = s.replace("\u00b2", "2").replace("\u207f", "n")
+  s = s.replace("\u2080", "0").replace("\u2082", "2")
+  s = s.replace("\u221e", "infty")
   s = s.replace(" ", "-")
   s = re.sub(r"[^a-z0-9\-]", "", s)
   s = re.sub(r"--+", "-", s)
@@ -61,7 +74,7 @@ class HeadingReplacer(object):
       tag = "h3"
       indent = 4
 
-    sectionHtmlTitle = match.group(2)
+    sectionHtmlTitle = match.group(2).strip()
     sectionTitle = convertHtmlTitleToTextTitle(sectionHtmlTitle)
     sectionSlug = convertTextTitleToSlug(sectionTitle)
 
@@ -170,8 +183,8 @@ toc: false
     chapterHtml = html_[match.end():chapterEndPos]
 
     headingReplacer = HeadingReplacer(lecture, chapterSlug)
-    chapterHtml = re.sub(r"<p>\s*[0-9]+\.[0-9]+(\.[0-9]+)?(?:&#x2002;|&#x2003;)+(.+?)\n\s*",
-        headingReplacer.replace, chapterHtml)
+    chapterHtml = re.sub(r"<p>\s*[0-9]+\.[0-9]+(\.[0-9]+)?(?:&#x2002;|&#x2003;)+(.+?)</?p>",
+        headingReplacer.replace, chapterHtml, flags=re.DOTALL)
     chapterTableOfContentsMarkdownLine = (f"* [{chapterTitle}]("
         f"/class-notes/lectures/{lecture}/{chapterSlug}.html)\n")
     tableOfContentsMarkdown += "\n".join([f"  {x}".rstrip() for x in
