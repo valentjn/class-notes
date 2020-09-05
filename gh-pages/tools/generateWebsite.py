@@ -169,6 +169,15 @@ toc: false
 
 """.lstrip("\r\n")
 
+  html_ = re.sub(r"\\mathbbm\s*\{b\}", "\U0001d553", html_)
+  html_ = re.sub(r"\\mathbbm\s*\{c\}", "\U0001d554", html_)
+  html_ = re.sub(r"\\mathbbm\s*\{f\}", "\U0001d557", html_)
+  html_ = re.sub(r"\\mathbbm\s*\{h\}", "\U0001d559", html_)
+  html_ = re.sub(r"\\mathbbm\s*\{v\}", "\U0001d567", html_)
+  html_ = re.sub(r"\\mathbbm\s*\{x([\u2019\u201d]?)\}", "\U0001d569\\1", html_)
+  html_ = re.sub(r"\\mathbbm\s*\{y\}", "\U0001d56a", html_)
+  html_ = re.sub(r"\\mathbbm\s*\{1\}", "\U0001d7d9", html_)
+
   mathJaxDefinitions = re.search(r"<div\s+class=\"hidden\"\s*>.*?</\s*div\s*>", html_,
       flags=re.DOTALL).group()
   matches = list(re.finditer(r"<p>\s*[0-9]+(?:&#x2002;|&#x2003;)(.+?)\n\s*", html_))
