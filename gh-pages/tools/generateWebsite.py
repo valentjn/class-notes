@@ -363,7 +363,9 @@ toc: false
 
 *Julian Valentin*
 
-Diese Vorlesungsmitschriebe entstanden als Hörer in Vorlesungen an der Universität Stuttgart in den Jahren 2009 bis 2014. Sie dienten hauptsächlich als Lernhilfe für mich; aus Zeitgründen fehlen viele Skizzen und mathematische Beweise. Studentische Mitschriebe sind keine offiziellen Skripte; weder die Universität Stuttgart noch ihre Mitarbeiter sind für sie verantwortlich. Fehler können auf [GitHub](https://github.com/valentjn/class-notes) gemeldet werden. Die HTML-Umsetzung der Mitschriebe steht unter [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+Diese Vorlesungsmitschriebe entstanden als Hörer in Vorlesungen an der Universität Stuttgart in den Jahren 2009 bis 2014. Sie dienten hauptsächlich als Lernhilfe für mich; aus Zeitgründen fehlen viele Skizzen und mathematische Beweise. Studentische Mitschriebe sind keine offiziellen Skripte; weder die Universität Stuttgart noch ihre Mitarbeiter sind für sie verantwortlich. Fehler können auf [GitHub](https://github.com/valentjn/class-notes) gemeldet werden. Die Mitschriebe stehen unter der [CC-BY-SA-4.0-Lizenz](https://creativecommons.org/licenses/by-sa/4.0/).
+
+Die HTML-Version wurde mithilfe des `lwarp`-Pakets automatisiert basierend auf der LaTeX-Originalversion erzeugt. LaTeX-Quellcode und PDFs sind auf [GitHub](https://github.com/valentjn/class-notes) verfügbar.
 
 Folgende Mitschriebe stehen zur Verfügung:
 
