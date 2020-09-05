@@ -47,15 +47,28 @@ def convertTextTitleToSlug(s):
   s = re.sub(r"--+", "-", s)
   return s
 
-def replaceSubsectionHeading(match):
-  htmlTitle = match.group(1)
-  slug = convertTextTitleToSlug(convertHtmlTitleToTextTitle(htmlTitle))
-  return f"<h2 id=\"{slug}\">{htmlTitle}</h2>"
+class HeadingReplacer(object):
+  def __init__(self, lecture, chapterSlug):
+    self.lecture = lecture
+    self.chapterSlug = chapterSlug
+    self.tableOfContentsMarkdown = ""
 
-def replaceSubsubsectionHeading(match):
-  htmlTitle = match.group(1)
-  slug = convertTextTitleToSlug(convertHtmlTitleToTextTitle(htmlTitle))
-  return f"<h3 id=\"{slug}\">{htmlTitle}</h3>"
+  def replace(self, match):
+    if match.group(1) is None:
+      tag = "h2"
+      indent = 2
+    else:
+      tag = "h3"
+      indent = 4
+
+    sectionHtmlTitle = match.group(2)
+    sectionTitle = convertHtmlTitleToTextTitle(sectionHtmlTitle)
+    sectionSlug = convertTextTitleToSlug(sectionTitle)
+
+    self.tableOfContentsMarkdown += (f"{indent * ' '}* [{sectionTitle}]("
+        f"/class-notes/lectures/{self.lecture}/{self.chapterSlug}.html#{sectionSlug})\n")
+
+    return f"<{tag} id=\"{sectionSlug}\">{sectionHtmlTitle}</{tag}>"
 
 def replaceImageUrl(lecture, match):
   attributeName, fileName = match.group(1), match.group(2)
@@ -90,7 +103,7 @@ class ListItemReplacer(object):
 
     return f"<li class=\"{cssClass}\"><p>"
 
-def extractSections(lecture):
+def processLecture(lecture):
   with open(os.path.join("..", "build", "lectures", lecture, f"{lecture}.html"), "r") as f:
     html_ = f.read()
 
@@ -115,17 +128,32 @@ def extractSections(lecture):
   semester = re.search(r"\{\\semester\}\{(.*)\}", metadataTex).group(1)
   semester = semester.replace("Wintersemester", "WiSe").replace("Sommersemester", "SoSe")
 
-  lectureTitle = re.search(r"<p>\s*Vorlesungs(?:mitschrieb|notizen):\s*(.+?)\s*</p>", html_,
-      flags=re.DOTALL).group(1)
-  lectureTitle = re.sub(r"<br */>", " ", lectureTitle)
-  lectureTitle = lectureTitle.replace("\n", " ")
-  lectureTitle = re.sub(r"  +", " ", lectureTitle)
-  lectureTitle = convertHtmlTitleToTextTitle(lectureTitle.strip())
-
   sidebarYaml = f"""
       - title: "{lectureTitle}"
         output: "web"
         folderitems:
+          - title: "Inhaltsverzeichnis"
+            url: "/lectures/{lecture}/index.html"
+            output: "web"
+""".lstrip("\r\n")
+
+  indexMarkdown = f"""
+    <tr>
+      <td><a href="/class-notes/lectures/{lecture}/index.html">{lectureTitle}</a></td>
+      <td>{lecturer}</td>
+      <td>{semester}</td>
+    </tr>
+""".lstrip("\r\n")
+
+  tableOfContentsMarkdown = f"* [{lectureTitle}](/class-notes/lectures/{lecture}/index.html)\n"
+  lectureTableOfContentsMarkdown = f"""
+---
+title: "{lectureTitle} \u2013 Inhaltsverzeichnis"
+permalink: "/lectures/{lecture}/index.html"
+sidebar: "sidebar"
+toc: false
+---
+
 """.lstrip("\r\n")
 
   mathJaxDefinitions = re.search(r"<div\s+class=\"hidden\"\s*>.*?</\s*div\s*>", html_,
@@ -134,77 +162,75 @@ def extractSections(lecture):
 
   for i in range(len(matches)):
     match = matches[i]
-    title = convertHtmlTitleToTextTitle(match.group(1))
-    slug = convertTextTitleToSlug(title)
+    chapterTitle = convertHtmlTitleToTextTitle(match.group(1))
+    chapterSlug = convertTextTitleToSlug(chapterTitle)
 
-    sectionEndPos = (matches[i+1].start() if i < len(matches) - 1 else
+    chapterEndPos = (matches[i+1].start() if i < len(matches) - 1 else
         re.search(r"-autofile-last\"></a>", html_).end())
-    sectionHtml = html_[match.end():sectionEndPos]
+    chapterHtml = html_[match.end():chapterEndPos]
 
-    sectionHtml = re.sub(r"<p>\s*[0-9]+\.[0-9]+(?:&#x2002;|&#x2003;)+(.+?)\n\s*",
-        replaceSubsectionHeading, sectionHtml)
-    sectionHtml = re.sub(r"<p>\s*[0-9]+\.[0-9]+\.[0-9]+(?:&#x2002;|&#x2003;)+(.+?)\n\s*",
-        replaceSubsubsectionHeading, sectionHtml)
+    headingReplacer = HeadingReplacer(lecture, chapterSlug)
+    chapterHtml = re.sub(r"<p>\s*[0-9]+\.[0-9]+(\.[0-9]+)?(?:&#x2002;|&#x2003;)+(.+?)\n\s*",
+        headingReplacer.replace, chapterHtml)
+    chapterTableOfContentsMarkdownLine = (f"* [{chapterTitle}]("
+        f"/class-notes/lectures/{lecture}/{chapterSlug}.html)\n")
+    tableOfContentsMarkdown += "\n".join([f"  {x}".rstrip() for x in
+        (chapterTableOfContentsMarkdownLine + headingReplacer.tableOfContentsMarkdown).split("\n")])
+    lectureTableOfContentsMarkdown += (chapterTableOfContentsMarkdownLine +
+        headingReplacer.tableOfContentsMarkdown)
 
-    sectionHtml = sectionHtml.replace(f"{lecture}-images/",
+    chapterHtml = chapterHtml.replace(f"{lecture}-images/",
         f"/class-notes/images/lectures/{lecture}/")
-    sectionHtml = re.sub(r"(src|href)=\"(.*?)\"",
-        functools.partial(replaceImageUrl, lecture), sectionHtml)
+    chapterHtml = re.sub(r"(src|href)=\"(.*?)\"",
+        functools.partial(replaceImageUrl, lecture), chapterHtml)
 
-    #sectionHtml = re.sub(r"<br */>", " ", sectionHtml)
+    #chapterHtml = re.sub(r"<br */>", " ", chapterHtml)
 
     listItemReplacer = ListItemReplacer()
-    sectionHtml = re.sub(r"<li>\s*<p>\s*(<em>|<b>)?(\u2022|\u2013|\*|\(\S*?\)|\S*?\.|\S*?\))"
-        r"(</em>|</b>)? ", listItemReplacer.replace, sectionHtml)
+    chapterHtml = re.sub(r"<li>\s*<p>\s*(<em>|<b>)?(\u2022|\u2013|\*|\(\S*?\)|\S*?\.|\S*?\))"
+        r"(</em>|</b>)? ", listItemReplacer.replace, chapterHtml)
 
     if listItemReplacer.css != "":
-      sectionHtml = f"<style type=\"text/css\">\n{listItemReplacer.css}</style>\n{sectionHtml}"
+      chapterHtml = f"<style type=\"text/css\">\n{listItemReplacer.css}</style>\n{chapterHtml}"
 
-    sectionHtml = re.sub(r"<p>\s*(?:&#x2003;)+[\s\u0083]*\Z", "", sectionHtml)
+    chapterHtml = re.sub(r"<p>\s*(?:&#x2003;)+[\s\u0083]*\Z", "", chapterHtml)
 
-    sectionHtml = f"""
+    chapterHtml = f"""
 {{::nomarkdown}}
 <div class="lwarp-contents">
 {{% raw %}}
 {mathJaxDefinitions}
 
-{sectionHtml}
+{chapterHtml}
 {{% endraw %}}
 </div>
 {{:/nomarkdown}}
 """
-    writeFile(os.path.join("_includes", "lectures", lecture, f"{slug}.html"), sectionHtml)
+    writeFile(os.path.join("_includes", "lectures", lecture, f"{chapterSlug}.html"), chapterHtml)
 
     texFileName = next(x for x in texFileNames if x.startswith(f"{i+1:02}_"))
 
-    sectionMarkdown = f"""
+    chapterMarkdown = f"""
 ---
-title: "{lectureTitle} \u2013 {title}"
-permalink: "/lectures/{lecture}/{slug}.html"
+title: "{lectureTitle} \u2013 {chapterTitle}"
+permalink: "/lectures/{lecture}/{chapterSlug}.html"
 sidebar: "sidebar"
 toc: true
 tex_path: "src/lectures/{lecture}/{texFileName}"
 ---
 
-{{% include lectures/{lecture}/{slug}.html %}}""".lstrip()
-    writeFile(os.path.join("pages", "lectures", lecture, f"{slug}.md"), sectionMarkdown)
+{{% include lectures/{lecture}/{chapterSlug}.html %}}""".lstrip()
+    writeFile(os.path.join("pages", "lectures", lecture, f"{chapterSlug}.md"), chapterMarkdown)
 
     sidebarYaml += f"""
-          - title: "{title}"
-            url: "/lectures/{lecture}/{slug}.html"
+          - title: "{chapterTitle}"
+            url: "/lectures/{lecture}/{chapterSlug}.html"
             output: "web"
 """.lstrip("\r\n")
 
-    if i == 0:
-      indexMarkdown = f"""
-    <tr>
-      <td><a href="/class-notes/lectures/{lecture}/{slug}.html">{lectureTitle}</a></td>
-      <td>{lecturer}</td>
-      <td>{semester}</td>
-    </tr>
-""".lstrip("\r\n")
+  writeFile(os.path.join("pages", "lectures", lecture, "index.md"), lectureTableOfContentsMarkdown)
 
-  return sidebarYaml, indexMarkdown
+  return sidebarYaml, indexMarkdown, tableOfContentsMarkdown
 
 
 
@@ -308,6 +334,10 @@ entries:
             url: "/index.html"
             type: "homepage"
             output: "web"
+          - title: "Komplettes Inhaltsverzeichnis"
+            url: "/table-of-contents.html"
+            type: "homepage"
+            output: "web"
 """.lstrip("\r\n")
 
   indexMarkdown = """
@@ -318,7 +348,9 @@ sidebar: "sidebar"
 toc: false
 ---
 
-Diese Vorlesungsmitschriebe entstanden als Hörer in Vorlesungen an der Universität Stuttgart in den Jahren 2009 bis 2014. Sie dienten hauptsächlich als Lernhilfe für mich; aus Zeitgründen fehlen viele Skizzen und mathematische Beweise. Studentische Mitschriebe sind keine offiziellen Skripte; weder die Universität Stuttgart noch ihre Mitarbeiter sind für sie verantwortlich. Fehler können auf [GitHub](https://github.com/valentjn/class-notes) gemeldet werden. Die LaTeX-Umsetzung der Mitschriebe steht unter [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+*Julian Valentin*
+
+Diese Vorlesungsmitschriebe entstanden als Hörer in Vorlesungen an der Universität Stuttgart in den Jahren 2009 bis 2014. Sie dienten hauptsächlich als Lernhilfe für mich; aus Zeitgründen fehlen viele Skizzen und mathematische Beweise. Studentische Mitschriebe sind keine offiziellen Skripte; weder die Universität Stuttgart noch ihre Mitarbeiter sind für sie verantwortlich. Fehler können auf [GitHub](https://github.com/valentjn/class-notes) gemeldet werden. Die HTML-Umsetzung der Mitschriebe steht unter [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 Folgende Mitschriebe stehen zur Verfügung:
 
@@ -331,6 +363,16 @@ Folgende Mitschriebe stehen zur Verfügung:
     </tr>
   </thead>
   <tbody>
+""".lstrip("\r\n")
+
+  tableOfContentsMarkdown = """
+---
+title: "Komplettes Inhaltsverzeichnis"
+permalink: "/table-of-contents.html"
+sidebar: "sidebar"
+toc: false
+---
+
 """.lstrip("\r\n")
 
   prevField = None
@@ -355,9 +397,10 @@ Folgende Mitschriebe stehen zur Verfügung:
     </tr>
 """.lstrip("\r\n")
 
-    curSidebarYaml, curIndexMarkdown = extractSections(lecture)
+    curSidebarYaml, curIndexMarkdown, curTableOfContentsMarkdown = processLecture(lecture)
     sidebarYaml += curSidebarYaml
     indexMarkdown += curIndexMarkdown
+    tableOfContentsMarkdown += curTableOfContentsMarkdown
 
     prevField = field
 
@@ -370,6 +413,7 @@ Folgende Mitschriebe stehen zur Verfügung:
 
   writeFile(os.path.join("_data", "sidebars", "sidebar.yml"), sidebarYaml)
   writeFile(os.path.join("pages", "index.md"), indexMarkdown)
+  writeFile(os.path.join("pages", "table-of-contents.md"), tableOfContentsMarkdown)
 
 
 
