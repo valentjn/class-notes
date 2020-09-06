@@ -31,7 +31,8 @@ def writeFile(filePath, s):
 
 def convertHtmlTitleToTextTitle(s):
   s = html.unescape(s)
-  s = re.sub(r"<span class=\"textsc\"\s*>(.*?)</span>", r"\1", s)
+  s = re.sub(r"<span class=\"textsc\"\s*>(.*?)</span>",
+      r"<span style=\"font-variant: small-caps;\">\1</span>", s)
   s = re.sub(r"<em>(.*?)</em>", r"\1", s)
   s = re.sub(r"<kbd>(.*?)</kbd>", r"\1", s)
   s = s.replace("\\alpha", "\u03b1").replace("\\mu", "\u03bc").replace("\\xi", "\u03be")
@@ -51,6 +52,7 @@ def convertHtmlTitleToTextTitle(s):
   return s
 
 def convertTextTitleToSlug(s):
+  s = re.sub(r"<span style=\"font-variant: small-caps;\">(.*?)</span>", r"\1", s)
   s = s.lower()
   s = s.replace("\u00e4", "ae").replace("\u00f6", "oe").replace("\u00fc", "ue")
   s = re.sub("([aou])\u0308", r"\1e", s)
