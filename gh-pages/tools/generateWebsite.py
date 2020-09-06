@@ -206,6 +206,7 @@ toc: false
     match = matches[i]
     chapterTitle = convertHtmlTitleToTextTitle(match.group(1))
     chapterSlug = convertTextTitleToSlug(chapterTitle)
+    escapedChapterTitle = chapterTitle.replace("\"", "\\\"")
 
     chapterEndPos = (matches[i+1].start() if i < len(matches) - 1 else
         re.search(r"-autofile-last\"></a>", html_).end())
@@ -255,7 +256,7 @@ toc: false
 
     chapterMarkdown = f"""
 ---
-title: "{lectureTitle} \u2013 {chapterTitle}"
+title: "{lectureTitle} \u2013 {escapedChapterTitle}"
 permalink: "/lectures/{lecture}/{chapterSlug}.html"
 sidebar: "sidebar"
 toc: true
@@ -266,7 +267,7 @@ tex_path: "src/lectures/{lecture}/{texFileName}"
     writeFile(os.path.join("pages", "lectures", lecture, f"{chapterSlug}.md"), chapterMarkdown)
 
     sidebarYaml += f"""
-          - title: "{chapterTitle}"
+          - title: "{escapedChapterTitle}"
             url: "/lectures/{lecture}/{chapterSlug}.html"
             output: "web"
 """.lstrip("\r\n")
