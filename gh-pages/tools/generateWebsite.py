@@ -109,17 +109,17 @@ class ListItemReplacer(object):
   def replace(self, match):
     cssClass = f"list-item-f{self.cssClassCounter}"
     self.cssClassCounter += 1
-
     self.css += f".lwarp-contents li.{cssClass}::marker {{\n"
-
     marker = match.group(2)
-    self.css += f"  content:'{marker}\\00a0\\00a0';\n"
 
-    if match.group(1) == "<em>": self.css += "  font-style:italic;\n"
-    elif match.group(1) == "<b>": self.css += "  font-weight:bold;\n"
+    for tag, fontStyle in [("em", "italic"), ("b", "bold")]:
+      tagMatch = re.match(rf"^\(<{tag}>(.*?)</{tag}>\)$", marker)
 
-    self.css += "}\n"
+      if (match.group(1) == f"<{tag}>") or (tagMatch is not None):
+        self.css += f"  font-style:{fontStyle};\n"
+        if tagMatch is not None: marker = f"({tagMatch.group(1)})"
 
+    self.css += f"  content:'{marker}\\00a0\\00a0';\n}}\n"
     return f"<li class=\"{cssClass}\"><p>"
 
 def processLecture(lecture):
@@ -226,7 +226,8 @@ toc: false
     #chapterHtml = re.sub(r"<br */>", " ", chapterHtml)
 
     listItemReplacer = ListItemReplacer()
-    chapterHtml = re.sub(r"<li>\s*<p>\s*(<em>|<b>)?(\u2022|\u2013|\*|\(\S*?\)|\S*?\.|\S*?\))"
+    chapterHtml = re.sub(r"<li>\s*<p>\s*(<em>|<b>)?"
+        r"(\u2022|\u2013|\*|\(\S*?\)|\S*?\.|\S*?\)|\(<em>\S*?</em>\)|\(<b>\S*?</b>\))"
         r"(</em>|</b>)? ", listItemReplacer.replace, chapterHtml)
 
     if listItemReplacer.css != "":
