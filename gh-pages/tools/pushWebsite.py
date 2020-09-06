@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 
 import os
+import shutil
 import subprocess
 
 def main():
   os.chdir(os.path.join(os.path.dirname(__file__), ".."))
-  if os.path.isdir(".git"): shutil.rmdir(".git")
+  if os.path.isdir(".git"): shutil.rmtree(".git")
 
   subprocess.run(["git", "init", "-b", "gh-pages"])
   subprocess.run(["git", "add", "."])
@@ -17,7 +18,7 @@ def main():
   subprocess.run(["git", "remote", "add", "origin", "git@github.com:valentjn/class-notes.git"])
   subprocess.run(["git", "push", "-f", "origin", "gh-pages"])
 
-  shutil.rmdir(".git")
+  shutil.rmtree(".git")
 
 
 
