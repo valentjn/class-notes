@@ -203,6 +203,8 @@ toc: false
 
   mathJaxDefinitions = re.search(r"<div\s+class=\"hidden\"\s*>.*?</\s*div\s*>", html_,
       flags=re.DOTALL).group()
+  mathJaxDefinitions = mathJaxDefinitions.replace(
+      "\\(\\newcommand {\\pm }{\\pico \\metre }\)\n\n", "")
 
   matches = list(re.finditer(r"<p>\s*[0-9]+(?:&#x2002;|&#x2003;)(.+?)\n\s*", html_))
 
