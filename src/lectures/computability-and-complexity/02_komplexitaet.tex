@@ -203,33 +203,33 @@
 
         \item
         Berechne $k_\opt = \min\{\gamma(W) \;|\; W \text{ Rundweg}\}$ mittel binärer Suche:
-        \begin{align*}&
-            k_{\min} := 0;\\&
-            \WHILE (k_{\min} < k_{\max})\; \DO\\&
-            \qquad k_\text{mitte} := k_{\min} +
-            \left\lceil \frac{k_{\max} - k_{\min}}{2} \right\rceil;\\&
-            \qquad \IF (\exists_{\text{Rundweg } W}\; \gamma(W) \le k_\text{mitte})\; \THEN
-            k_{\max} := k_\text{mitte};\\&
-            \qquad \ELSE k_{\min} := k_\text{mitte} + 1;\\&
-            \qquad \END\IF\\&
-            \END\WHILE\\&
-            \RETURN k_{\min};
+        \begin{align*}
+            &k_{\min} := 0;\\
+            &\WHILE (k_{\min} < k_{\max})\; \DO\\
+            &\qquad k_\text{mitte} := k_{\min} +
+            \left\lceil \frac{k_{\max} - k_{\min}}{2} \right\rceil;\\
+            &\qquad \IF (\exists_{\text{Rundweg } W}\; \gamma(W) \le k_\text{mitte})\; \THEN
+            k_{\max} := k_\text{mitte};\\
+            &\qquad \ELSE k_{\min} := k_\text{mitte} + 1;\\
+            &\qquad \END\IF\\
+            &\END\WHILE\\
+            &\RETURN k_{\min};
         \end{align*}
         Die Anzahl der Durchläufe der While-Schleife ist beschränkt durch\\
         $\log_2 k_{\max} = \log_2 (\sum_{e \in E} \gamma(e)) \le \sum_{e \in E} \log_2 \gamma(e)$.
 
         \item
         Berechne einen optimalen Rundweg mit $E = \{e_1, \dotsc, e_m\}$ wie folgt:
-        \begin{align*}&
-            G_0 := G;\\&
-            \FOR i := 1 \;\TO m \;\DO\\&
-            \qquad \IF (\exists_{\text{Rundweg } W \text{ in } G_{i-1} \setminus \{e_i\}}\;
+        \begin{align*}
+            &G_0 := G;\\
+            &\FOR i := 1 \;\TO m \;\DO\\
+            &\qquad \IF (\exists_{\text{Rundweg } W \text{ in } G_{i-1} \setminus \{e_i\}}\;
             \gamma(W) \le k_\opt)\; \THEN
-            G_i := G_{i-1} \setminus \{e_i\};\\&
-            \qquad \ELSE G_i := G_{i-1};\\&
-            \qquad \END\IF\\&
-            \END\FOR\\&
-            \RETURN G_m;
+            G_i := G_{i-1} \setminus \{e_i\};\\
+            &\qquad \ELSE G_i := G_{i-1};\\
+            &\qquad \END\IF\\
+            &\END\FOR\\
+            &\RETURN G_m;
         \end{align*}
     \end{enumerate}
 \end{Beweis}
@@ -280,13 +280,13 @@
     (mit der einfachsten Dijkstra-Variante).\\
     Es gilt sogar die Verschärfung, dass GAP zur Klasse $\NL$ gehört
     (später wird $\NL \subset \P$ gezeigt):
-    \begin{align*}&
-        v := s;\\&
-        \WHILE (v \not= t) \DO\\&
-        \qquad \text{wähle einen Knoten } w \in V \text{ mit } (v, w) \in E;\\&
-        \qquad v := w;\\&
-        \END\WHILE\\&
-        \RETURN \text{"`es gibt einen Pfad in } G \text{ von } s \text{ nach } t \text{"'};
+    \begin{align*}
+        &v := s;\\
+        &\WHILE (v \not= t) \DO\\
+        &\qquad \text{wähle einen Knoten } w \in V \text{ mit } (v, w) \in E;\\
+        &\qquad v := w;\\
+        &\END\WHILE\\
+        &\RETURN \text{"`es gibt einen Pfad in } G \text{ von } s \text{ nach } t \text{"'};
     \end{align*}
     Dieser nicht-det. Algorithmus kann man leicht auf einer nicht-det. TM implementieren.
     Der Algorithmus benötigt nur logarithmischen Platz, weil er sich zu jedem Zeitpunkt
@@ -394,13 +394,13 @@
 
     Nun berechnet man die Menge $R$ der von $\Start(w)$ aus erreichbaren Konfigurationen wie folgt
     (\begriff{Markierungsalgorithmus} oder \begriff{Flutalgorithmus}):
-    \begin{align*}&
-        R := \{\Start(w)\};\\&
-        \WHILE \exists_{\alpha, \beta \text{ Konfigurationen}}\; \alpha \in R,\; \beta \notin R,\;
-        \alpha \vdash_M \beta \;\DO\\&
-        \qquad R := R \cup \{\beta\};\\&
-        \END\WHILE\\&
-        \IF \Accept \cap R \not= \emptyset \;\THEN \RETURN M \text{ akzeptiert } w;
+    \begin{align*}
+        &R := \{\Start(w)\};\\
+        &\WHILE \exists_{\alpha, \beta \text{ Konfigurationen}}\; \alpha \in R,\; \beta \notin R,\;
+        \alpha \vdash_M \beta \;\DO\\
+        &\qquad R := R \cup \{\beta\};\\
+        &\END\WHILE\\
+        &\IF \Accept \cap R \not= \emptyset \;\THEN \RETURN M \text{ akzeptiert } w;
     \end{align*}
     $R$ enthält maximal $c^{f(n)}$ Konfigurationen der Länge $\le f(n)$.
     Der Test $\exists_{\alpha, \beta \text{ Konfigurationen}}$\\
@@ -480,17 +480,17 @@
     $\exists_{\gamma \in \text{Conf}(M, w)}\; (\text{Reach}(\alpha, \gamma, i - 1) \land
     \text{Reach}(\gamma, \beta, i - 1))$.
     Das kann man in einen deterministischen Algorithmus umsetzen:
-    \begin{align*}&
-        b := \FALSE;\\&
-        \IF i = 0 \;\THEN\\&
-        \qquad b := ((\alpha = \beta) \lor (\alpha \vdash_M \beta));\\&
-        \ELSE\\&
-        \qquad \FORALL \gamma \in \text{Conf}(M, w) \;\DO\\&
-        \qquad \qquad \IF ((\lnot b) \land \text{Reach}(\alpha, \gamma, i - 1)) \;\THEN
-        b := \text{Reach}(\gamma, \beta, i - 1);\\&
-        \qquad \END\FOR\\&
-        \END\IF\\&
-        \RETURN b;
+    \begin{align*}
+        &b := \FALSE;\\
+        &\IF i = 0 \;\THEN\\
+        &\qquad b := ((\alpha = \beta) \lor (\alpha \vdash_M \beta));\\
+        &\ELSE\\
+        &\qquad \FORALL \gamma \in \text{Conf}(M, w) \;\DO\\
+        &\qquad \qquad \IF ((\lnot b) \land \text{Reach}(\alpha, \gamma, i - 1)) \;\THEN
+        b := \text{Reach}(\gamma, \beta, i - 1);\\
+        &\qquad \END\FOR\\
+        &\END\IF\\
+        &\RETURN b;
     \end{align*}
 
     Zu zeigen ist, dass ein Aufruf von $\text{Reach}(\alpha, \beta, i)$ den Platz
@@ -644,12 +644,12 @@
     $N_n \cap [s(n), r(s(n))] = \emptyset$.
 
     Einen passenden, berechenbaren Wert $s(n)$ kann man durch folgenden Algorithmus ermitteln:
-    \begin{align*}&
-        s := n + 1;\\&
-        \DO\\&
-        \qquad s := s + 1;\\&
-        \UNTIL \forall_{k \le n}\; t_k(n) \notin [s, r(s)]\\&
-        \RETURN s;
+    \begin{align*}
+        &s := n + 1;\\
+        &\DO\\
+        &\qquad s := s + 1;\\
+        &\UNTIL \forall_{k \le n}\; t_k(n) \notin [s, r(s)]\\
+        &\RETURN s;
     \end{align*}
     Somit ist $s(n)$ überall definiert, berechenbar und es gilt
     $\forall_{n \in \natural}\; s(n) \ge n + 1$.

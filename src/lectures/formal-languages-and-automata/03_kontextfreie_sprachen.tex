@@ -227,20 +227,20 @@
     $A_i \rightarrow A_j \beta$ nur mit $i < j$ vorkommen.
     Dabei müssen ggf. entsprechend der Überlegung wie eben neue Variablen
     eingeführt werden, um Linksrekursion zu vermeiden.
-    \begin{align*}&
-        \FOR i := 1 \;\TO m \;\DO\\&
-        \qquad\FOR j := 1 \;\TO i - 1 \;\DO\\&
-        \qquad\qquad\FORALL A_i \rightarrow A_j \alpha \in P \;\DO\\&
-        \qquad\qquad\qquad\IF A_j \rightarrow
+    \begin{align*}
+        &\FOR i := 1 \;\TO m \;\DO\\
+        &\qquad\FOR j := 1 \;\TO i - 1 \;\DO\\
+        &\qquad\qquad\FORALL A_i \rightarrow A_j \alpha \in P \;\DO\\
+        &\qquad\qquad\qquad\IF A_j \rightarrow
         \beta_1 \;|\; \dotsb \;|\; \beta_n
         \;\THEN \text{streiche }A_i \rightarrow A_j \alpha,\;
         \text{neu in }P\text{: } A_i \rightarrow \beta_1 \alpha \;|\; \dotsb
-        \;|\; \beta_n \alpha\\&
-        \qquad\qquad\END\\&
-        \qquad\END\\&
-        \qquad\FORALL A_i \rightarrow A_i \alpha \in P:
-        \text{beseitige wie in Vorüberlegung}\\&
-        \END
+        \;|\; \beta_n \alpha\\
+        &\qquad\qquad\END\\
+        &\qquad\END\\
+        &\qquad\FORALL A_i \rightarrow A_i \alpha \in P:
+        \text{beseitige wie in Vorüberlegung}\\
+        &\END
     \end{align*}
     Es werden also die Ableitungsmöglichkeiten
     $A_i \Rightarrow A_j \alpha \Rightarrow \beta_k \alpha$ ersetzt durch
@@ -743,21 +743,21 @@
     Dann ermittelt folgender Algorithmus für alle
     $w = w_1 \dotsb w_n \in \Sigma^\ast$, dass $w \in L(G)$
     (Wortproblem):
-    \begin{align*}&
-        \FOR i := 1 \;\TO n \;\DO\\&
-        \qquad T[i, 1] := \{A \in V \;|\; A \rightarrow w_i \in P\};\\&
-        \END\\&
-        \FOR j := 2 \;\TO n \;\DO\\&
-        \qquad\FOR i := 1 \;\TO n + 1 - j \;\DO\\&
-        \qquad\qquad T[i, j] := \emptyset;\\&
-        \qquad\qquad\FOR k := 1 \;\TO j - 1 \;\DO\\&
-        \qquad\qquad\qquad T[i, j] := T[i, j] \cup \{A \in V \;|\;
+    \begin{align*}
+        &\FOR i := 1 \;\TO n \;\DO\\
+        &\qquad T[i, 1] := \{A \in V \;|\; A \rightarrow w_i \in P\};\\
+        &\END\\
+        &\FOR j := 2 \;\TO n \;\DO\\
+        &\qquad\FOR i := 1 \;\TO n + 1 - j \;\DO\\
+        &\qquad\qquad T[i, j] := \emptyset;\\
+        &\qquad\qquad\FOR k := 1 \;\TO j - 1 \;\DO\\
+        &\qquad\qquad\qquad T[i, j] := T[i, j] \cup \{A \in V \;|\;
             \exists_{B \in T[i, k],\; C \in T[i + k, j - k]}\;
-            A \rightarrow BC \in P\};\\&
-        \qquad\qquad\END\\&
-        \qquad\END\\&
-        \END\\&
-        \IF S \in T[1, n] \;\THEN
+            A \rightarrow BC \in P\};\\
+        &\qquad\qquad\END\\
+        &\qquad\END\\
+        &\END\\
+        &\IF S \in T[1, n] \;\THEN
         \text{output}(1) \;\ELSE
         \text{output}(0);
     \end{align*}

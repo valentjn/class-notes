@@ -310,11 +310,11 @@
     Als Beweis wird ein Algorithmus angegeben.\\
     Seien also $G = (V, \Sigma, P, S)$ eine Typ-1-Grammatik und
     $x \in \Sigma^\ast$ mit $n := |x| \ge 1$.
-    \begin{align*}&
-        T := \{S\}\\&
-        \REPEAT T_1 := T;\; T := \Abl_n(T)\\&
-        \UNTIL (x \in T) \;\OR (T = T_1);\\&
-        \IF x \in T \;\THEN
+    \begin{align*}
+        &T := \{S\}\\
+        &\REPEAT T_1 := T;\; T := \Abl_n(T)\\
+        &\UNTIL (x \in T) \;\OR (T = T_1);\\
+        &\IF x \in T \;\THEN
         \text{output}(1) \;\ELSE
         \text{output}(0);
     \end{align*}

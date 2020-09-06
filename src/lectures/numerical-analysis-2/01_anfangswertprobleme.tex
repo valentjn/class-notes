@@ -1650,25 +1650,25 @@
     Verkleinerungs-/Vergrößerungsfaktoren
     $k_{\min} < 1$ und $k_{\max} > 1$,\\
     Verfahrensordnung $p \in \natural$
-    \begin{align*}&
-        t := 0;\quad
+    \begin{align*}
+        &t := 0;\quad
         u := u(0);\quad
-        h := h_0;\\&
-        \mathbf{while}\; (t < T)\; \{\\&
-        \qquad|\widetilde{\Delta}_h| := \TOL + 1;\;\\&
-        \qquad\mathbf{while}\; (|\widetilde{\Delta}_h| > \TOL)\; \{\\&
-        \qquad\qquad v := u + h \cdot \phi(h, t, u);\\&
-        \qquad\qquad z := u + h/2 \cdot \phi(h/2, t, u);\\&
-        \qquad\qquad w := z + h/2 \cdot \phi(h/2, t + h/2, z);\\&
-        \qquad\qquad |\widetilde{\Delta}_h| := \frac{1}{2^p - 1} \cdot
-                     \frac{|v - w|}{\max\{1, u\}};\\&
-        \qquad\qquad h := \max\{h_{\min}, k_{\min} \cdot h\};\\&
-        \qquad\qquad\mathbf{if}\; h = h_{\min}\; \{\; \mathbf{return}; \}\\&
-        \qquad\}\\&
-        \qquad u := w;\quad
+        h := h_0;\\
+        &\mathbf{while}\; (t < T)\; \{\\
+        &\qquad|\widetilde{\Delta}_h| := \TOL + 1;\;\\
+        &\qquad\mathbf{while}\; (|\widetilde{\Delta}_h| > \TOL)\; \{\\
+        &\qquad\qquad v := u + h \cdot \phi(h, t, u);\\
+        &\qquad\qquad z := u + h/2 \cdot \phi(h/2, t, u);\\
+        &\qquad\qquad w := z + h/2 \cdot \phi(h/2, t + h/2, z);\\
+        &\qquad\qquad |\widetilde{\Delta}_h| := \frac{1}{2^p - 1} \cdot
+                     \frac{|v - w|}{\max\{1, u\}};\\
+        &\qquad\qquad h := \max\{h_{\min}, k_{\min} \cdot h\};\\
+        &\qquad\qquad\mathbf{if}\; h = h_{\min}\; \{\; \mathbf{return}; \}\\
+        &\qquad\}\\
+        &\qquad u := w;\quad
         h := \min\{h_{\max}, k_{\max} \cdot h\};\quad
-        t := t + h;\\&
-        \}
+        t := t + h;\\
+        &\}
     \end{align*}
 \end{Def}
 
