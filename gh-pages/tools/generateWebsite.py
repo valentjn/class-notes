@@ -70,6 +70,8 @@ def convertTextTitleToSlug(s):
   s = re.sub(r"--+", "-", s)
   return s
 
+
+
 class HeadingReplacer(object):
   def __init__(self, lecture, chapterSlug):
     self.lecture = lecture
@@ -93,6 +95,8 @@ class HeadingReplacer(object):
 
     return f"<{tag} id=\"{sectionSlug}\">{sectionTitle}</{tag}>"
 
+
+
 def replaceImageUrl(lecture, match):
   attributeName, fileName = match.group(1), match.group(2)
 
@@ -104,6 +108,8 @@ def replaceImageUrl(lecture, match):
           os.path.join("images", "lectures", lecture))
 
     return f"{attributeName}=\"/class-notes/images/lectures/{lecture}/{fileName}\""
+
+
 
 class ListItemReplacer(object):
   def __init__(self):
@@ -125,6 +131,8 @@ class ListItemReplacer(object):
 
     self.css += f"  content:'{marker}\\00a0\\00a0';\n}}\n"
     return f"<li class=\"{cssClass}\"><p>"
+
+
 
 def processLecture(lecture):
   with open(os.path.join("..", "build", "lectures", lecture, f"{lecture}.html"), "r") as f:
@@ -168,7 +176,7 @@ def processLecture(lecture):
     </tr>
 """.lstrip("\r\n")
 
-  tableOfContentsMarkdown = f"* [{lectureTitle}](/class-notes/lectures/{lecture}/index.html)\n"
+  tableOfContentsMarkdown = f"\n## {lectureTitle}\n\n"
   lectureTableOfContentsMarkdown = f"""
 ---
 title: "{lectureTitle} \u2013 Inhaltsverzeichnis"
@@ -221,10 +229,10 @@ toc: false
     headingReplacer = HeadingReplacer(lecture, chapterSlug)
     chapterHtml = re.sub(r"<p>\s*[0-9]+\.[0-9]+(\.[0-9]+)?(?:&#x2002;|&#x2003;)+(.+?)</?p>",
         headingReplacer.replace, chapterHtml, flags=re.DOTALL)
-    chapterTableOfContentsMarkdownLine = (f"* [{chapterTitle}]("
-        f"/class-notes/lectures/{lecture}/{chapterSlug}.html)\n")
-    tableOfContentsMarkdown += "\n".join([f"  {x}".rstrip() for x in
-        (chapterTableOfContentsMarkdownLine + headingReplacer.tableOfContentsMarkdown).split("\n")])
+    chapterTableOfContentsMarkdownLine = (f"* **[{chapterTitle}]("
+        f"/class-notes/lectures/{lecture}/{chapterSlug}.html)**\n")
+    tableOfContentsMarkdown += (chapterTableOfContentsMarkdownLine +
+        headingReplacer.tableOfContentsMarkdown)
     lectureTableOfContentsMarkdown += (chapterTableOfContentsMarkdownLine +
         headingReplacer.tableOfContentsMarkdown)
 
@@ -428,7 +436,6 @@ permalink: "/table-of-contents.html"
 sidebar: "sidebar"
 toc: false
 ---
-
 """.lstrip("\r\n")
 
   prevField = None
