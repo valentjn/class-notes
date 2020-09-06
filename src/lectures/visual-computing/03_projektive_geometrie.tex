@@ -145,8 +145,8 @@ Der gesuchte Punkt $p$ ist also durch $\vec{p} := \vec{n} \times \vec{m}$ gegebe
 
 \textbf{projektiv unabhängig}:
 $r+1$ Punkte $p_1, \dotsc, p_{r+1} \in \PP^n(\real)$ heißen \begriff{projektiv unabhängig}, falls
-$\vec*{p}{1}, \dotsc, \vec*{p}{r+1} \in \vec{\real}^{n+1} \setminus \{\vec{0}\}$ linear unabhängig
-sind, wobei $p_i = \real\vec*{p}{i}$.
+$\vecs{p}{1}, \dotsc, \vecs{p}{r+1} \in \vec{\real}^{n+1} \setminus \{\vec{0}\}$ linear unabhängig
+sind, wobei $p_i = \real\vecs{p}{i}$.
 
 \textbf{projektive Basis}:
 $n+2$ Punkte $p_1, \dotsc, p_{n+2} \in \PP^n(\real)$ heißen
@@ -266,15 +266,15 @@ wobei die Koordinatentransformation die Zeichenebene auf die Ebene $z' = 0$ abbi
 \textbf{Herleitung der Projektionsmatrix}:
 Seien $\vec{p} \in \real^3$ die Projektionsrichtung (Normale der Zeichenebene) mit $|\vec{p}| = 1$,
 $\vec{u} \in \real^3$ ein beliebiger Vektor mit $|\vec{u}| = 1$, der sog. \begriff{Hochvektor},
-und $\vec*{e}{x}, \vec*{e}{y}, \vec*{e}{z} \in \vec{\real}^3$ die Standardbasis von
+und $\vecs{e}{x}, \vecs{e}{y}, \vecs{e}{z} \in \vec{\real}^3$ die Standardbasis von
 $\vec{\real}^3$.
-Dann ist $\vec*{e}{x}', \vec*{e}{y}', \vec*{e}{z}' \in \vec{\real}^3$
-mit $\vec*{e}{z}' := -\vec{p}$,
-$\vec*{e}{x}' := \frac{\vec{u} \times \vec*{e}{z}'}{|\vec{u} \times \vec*{e}{z}'|}$ und
-$\vec*{e}{y}' := \vec*{e}{z}' \times \vec*{e}{x}'$
+Dann ist $\vecs{e}{x}', \vecs{e}{y}', \vecs{e}{z}' \in \vec{\real}^3$
+mit $\vecs{e}{z}' := -\vec{p}$,
+$\vecs{e}{x}' := \frac{\vec{u} \times \vecs{e}{z}'}{|\vec{u} \times \vecs{e}{z}'|}$ und
+$\vecs{e}{y}' := \vecs{e}{z}' \times \vecs{e}{x}'$
 ein rechtshändiges Koordinatensystem, dessen $x'$-$y'$-Ebene in der Projektionsebene liegt.
 Die Koordinatentransformation erhält man durch
-$S := \smallpmatrix{\vec*{e}{x}' & \vec*{e}{y}' & \vec*{e}{z}'}$,
+$S := \smallpmatrix{\vecs{e}{x}' & \vecs{e}{y}' & \vecs{e}{z}'}$,
 wobei sich die Koordinaten mit $S^{-1} = S^\tp$ transformieren ($S$ ist orthogonal),
 in homogenen Koordinaten also $A := \smallpmatrix{S^{-1} & \vec{0} \\ \vec{0}^\tp & 1}$.
 Mit der Projektion auf die Ebene $z' = 0$ bekommt man
@@ -540,9 +540,9 @@ Die Kamera befindet sich dann im Ursprung und schaut in negative $z$-Richtung,
 wobei der Hochvektor der positiven $y$-Richtung entspricht.
 Von den Welt- zu den Kamerakoordinaten gelangt man durch die Transformation
 $M_\text{view} :=
-\smallpmatrix{\vec*{e}{x}'^\tp&-c_x\\\vec*{e}{y}'^\tp&-c_y\\\vec*{e}{z}'^\tp&-c_z\\\vec{0}^\tp&1}$,
+\smallpmatrix{\vecs{e}{x}'^\tp&-c_x\\\vecs{e}{y}'^\tp&-c_y\\\vecs{e}{z}'^\tp&-c_z\\\vec{0}^\tp&1}$,
 wobei\\
-$\vec*{e}{x}', \vec*{e}{y}', \vec*{e}{z}'$ die Basisvektoren des Kamerasystems sind und
+$\vecs{e}{x}', \vecs{e}{y}', \vecs{e}{z}'$ die Basisvektoren des Kamerasystems sind und
 $\vec{c}$ die Kameraposition ist (jeweils bzgl. Weltkoordinaten).
 
 \linie

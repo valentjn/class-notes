@@ -7,39 +7,39 @@
 }
 
 \textbf{\name{Voronoi}-Diagramm}:
-Gegeben sei eine Menge $\S := \{\vec*{x}{1}, \dotsc, \vec*{x}{N}\} \subset \real^n$ von
+Gegeben sei eine Menge $\S := \{\vecs{x}{1}, \dotsc, \vecs{x}{N}\} \subset \real^n$ von
 $N$ Punkten und eine Metrik $d$ auf $\real^n$.
-Die \begriff{\name{Voronoi}-Zelle} von $\vec*{x}{i}$ ist definiert als\\
-$V(\vec*{x}{i}) := \{\vec{x} \in \real^n \;|\;
-\forall_{j\not=i}\; d(\vec{x}, \vec*{x}{i}) < d(\vec{x}, \vec*{x}{j})\}$.\\
-Das \begriff{\name{Voronoi}-Diagramm} von $\S$ ist $\Vor(\S) := \{V(\vec*{x}{i})\}_{i=1}^N$.
+Die \begriff{\name{Voronoi}-Zelle} von $\vecs{x}{i}$ ist definiert als\\
+$V(\vecs{x}{i}) := \{\vec{x} \in \real^n \;|\;
+\forall_{j\not=i}\; d(\vec{x}, \vecs{x}{i}) < d(\vec{x}, \vecs{x}{j})\}$.\\
+Das \begriff{\name{Voronoi}-Diagramm} von $\S$ ist $\Vor(\S) := \{V(\vecs{x}{i})\}_{i=1}^N$.
 
 \textbf{\name{Delaunay}-Triangulierung}:
 Die \begriff{\name{Delaunay}-Triangulierung} $\Del(\S)$ ist dual zu $\Vor(\S)$.\\
-Zwei Punkte $\vec*{x}{i}$, $\vec*{x}{j}$ werden verbunden, falls
-$V(\vec*{x}{i})$ und $V(\vec*{x}{j})$ eine gemeinsame Kante besitzen.
-$\vec*{x}{i}, \vec*{x}{j}, \vec*{x}{k}$ bilden ein Dreieck genau dann, wenn
+Zwei Punkte $\vecs{x}{i}$, $\vecs{x}{j}$ werden verbunden, falls
+$V(\vecs{x}{i})$ und $V(\vecs{x}{j})$ eine gemeinsame Kante besitzen.
+$\vecs{x}{i}, \vecs{x}{j}, \vecs{x}{k}$ bilden ein Dreieck genau dann, wenn
 kein anderer Punkt aus $\S$ im Umkreis des Dreiecks
-$\Delta\vec*{x}{i}\vec*{x}{j}\vec*{x}{k}$ liegt.
+$\Delta\vecs{x}{i}\vecs{x}{j}\vecs{x}{k}$ liegt.
 $\Del(\S)$ maximiert lexikografisch die minimalen Innenwinkel der Triang. und außerdem
 das Verhältnis $a := \frac{r_\text{Inkreis}}{r_\text{Umkreis}}$.
 
 \textbf{\name{Bowyer}-\name{Watson}-Algorithmus}:
 Der \begriff{\name{Bowyer}-\name{Watson}-Algorithmus} konstruiert $\Del(\S)$ inkrementell.
-Um einen Punkt $\vec*{x}{i}$ in die aktuelle Delaunay-Triang. der Punkte
-$\vec*{x}{1}, \dotsc, \vec*{x}{i-1}$ einzufügen,
-wird zunächst betrachtet, in welchen Dreiecksumkreisen $\vec*{x}{i}$ liegt.
+Um einen Punkt $\vecs{x}{i}$ in die aktuelle Delaunay-Triang. der Punkte
+$\vecs{x}{1}, \dotsc, \vecs{x}{i-1}$ einzufügen,
+wird zunächst betrachtet, in welchen Dreiecksumkreisen $\vecs{x}{i}$ liegt.
 Diese Dreiecke werden dann aus der aktuellen Delaunay-Triang. gelöscht,
 was ein sternförmiges Gebiet erzeugt.
-Verbinde nun den Punkt $\vec*{x}{i}$ mit allen Ecken, um die neue Delaunay-Triang. zu erhalten.
+Verbinde nun den Punkt $\vecs{x}{i}$ mit allen Ecken, um die neue Delaunay-Triang. zu erhalten.
 
 \linie
 
-Seien nun Datenwerte $f_1, \dotsc, f_N$ an den $\vec*{x}{1}, \dotsc, \vec*{x}{N}$ gegeben.
+Seien nun Datenwerte $f_1, \dotsc, f_N$ an den $\vecs{x}{1}, \dotsc, \vecs{x}{N}$ gegeben.
 
 \textbf{Interpolation mit \name{Voronoi}-Zerlegung}:
 Mit der Voronoi-Zerlegung kann man interpolieren,
-indem man jeder Zelle $V(\vec*{x}{i})$ den Wert $f_i$ zuweist
+indem man jeder Zelle $V(\vecs{x}{i})$ den Wert $f_i$ zuweist
 (nächster Nachbar).
 
 \textbf{Interpolation mit \name{Delaunay}-Triangulierung}:
@@ -52,13 +52,13 @@ indem man lineare Interpolation in jedem Dreieck durchführt.
 
 \textbf{\name{Shepard}-Interpolation}:
 Die \begriff{\name{Shepard}-Interpolation} (oder \begriff{inverse Distanzwichtung})
-interpoliert $f_i \in \real$, $\vec*{x}{i} := (x_i, y_i) \in \real^2$ ($i = 1, \dotsc, N$)
+interpoliert $f_i \in \real$, $\vecs{x}{i} := (x_i, y_i) \in \real^2$ ($i = 1, \dotsc, N$)
 mit dem Ansatz $f(x, y) := \sum_{j=1}^N f_j w_j(x, y)$.
 Damit erhält man $\forall_{i=1,\dotsc,N}\; f_i = f(x_i, y_i) \iff
 \forall_{i,j=1,\dotsc,N}\; w_j(x_i, y_i) = \delta_{j,i}$.\\
 Dies motiviert den Ansatz
 $w_j(x, y) := \frac{\varphi_j(x, y)^\mu}{\sum_{k=1}^N \varphi_k(x, y)^\mu}$ mit
-$\varphi_j(x, y) := \frac{1}{|\vec{x} - \vec*{x}{j}|}$ und $\mu \in (0, \infty)$.\\
+$\varphi_j(x, y) := \frac{1}{|\vec{x} - \vecs{x}{j}|}$ und $\mu \in (0, \infty)$.\\
 Es gilt $w_j(x, y) \in [0, 1]$, $\sum_{j=1}^N w_j(x, y) = 1$ und $w_j(x_i, y_i) = \delta_{j,i}$\\
 (wenn man $\varphi_j(x_j, y_j) := \infty$ und $w_j(x_j, y_j) := 1$ setzt).
 
@@ -67,7 +67,7 @@ Es gilt $w_j(x, y) \in [0, 1]$, $\sum_{j=1}^N w_j(x, y) = 1$ und $w_j(x_i, y_i) 
 \textbf{lokale \name{Shepard}-Interpolation}:
 Bei der \begriff{lokalen \name{Shepard}-Interpolation} verwendet man\\
 Gewichtsfunktionen $w_j$, die nur von einer lokalen Teilmenge von Samplepunkten abhängen.
-Definiert man $r_j = r_j(x, y) := |\vec{x} - \vec*{x}{j}|$, dann
+Definiert man $r_j = r_j(x, y) := |\vec{x} - \vecs{x}{j}|$, dann
 kann man z.\,B.
 \begin{itemize}
     \item
@@ -91,10 +91,10 @@ kann man z.\,B.
 }
 
 \textbf{Methode der radialen Basisfunktionen}:
-Seien $N$ paarw. disj. Datenpunkte $\vec*{x}{i} \in \real^n$ und Werte $f_i \in \real$
+Seien $N$ paarw. disj. Datenpunkte $\vecs{x}{i} \in \real^n$ und Werte $f_i \in \real$
 für $i = 1, \dotsc, N$ gegeben.
 Die \begriff{Methode der radialen Basisfunktionen} arbeitet ähnlich wie die Shepard-Intp.,
-mit dem Unterschied, dass hier $f(\vec{x}) := \sum_{i=1}^N \lambda_i \phi(|\vec{x} - \vec*{x}{i}|)$
+mit dem Unterschied, dass hier $f(\vec{x}) := \sum_{i=1}^N \lambda_i \phi(|\vec{x} - \vecs{x}{i}|)$
 mit einer \begriff{radialen Basisfunktion (RBF)} $\phi(r)\colon [0, \infty) \to \real$
 angesetzt wird (d.\,h. die Koef"|fizienten sind jetzt allgemein und
 die Funktionen sind zwingend radialsymmetrisch).
@@ -146,9 +146,9 @@ $\phi(r) := r^2 \ln r$
 
 \textbf{Ermitteln der Koef"|fizienten}:
 Die Koef"|fizienten bekommt man aus dem LGS\\
-$\forall_{i=1,\dotsc,N}\; f(\vec*{x}{i}) = f_i
+$\forall_{i=1,\dotsc,N}\; f(\vecs{x}{i}) = f_i
 \iff \Phi\vec{\lambda} = \vec{f}$
-mit $\Phi := (\phi_{i,j})_{i,j=1}^N$, $\phi_{i,j} := \phi(|\vec*{x}{i} - \vec*{x}{j}|)$,
+mit $\Phi := (\phi_{i,j})_{i,j=1}^N$, $\phi_{i,j} := \phi(|\vecs{x}{i} - \vecs{x}{j}|)$,
 $\vec{\lambda} := (\lambda_j)_{j=1}^N$ und $\vec{f} := (f_i)_{i=1}^N$.
 Ist $\Phi$ invertierbar, so gilt $\vec{\lambda} = \Phi^{-1} \vec{f}$.
 
@@ -174,7 +174,7 @@ Eine Funktion $\psi\colon [0, \infty) \to \real$ heißt \begriff{vollständig mo
 Sei $\psi(r) := \phi(\sqrt{r})$.
 Ist $\psi$ vollständig monoton, aber nicht konstant auf $[0, \infty)$,
 dann ist $\Phi := (\phi_{i,j})_{i,j=1}^N$ für paarw. disjunkte Punkte
-$\vec*{x}{i}$ p.\,d. und insb. invertierbar.
+$\vecs{x}{i}$ p.\,d. und insb. invertierbar.
 
 \textbf{Beispiel}:
 Für die Gauß-RBF ist $\psi(r) = e^{-\varepsilon^2 r}$
@@ -192,7 +192,7 @@ Ist $\psi \in \C^0([0, \infty))$,
 $\forall_{r>0}\; \psi(r) > 0$ und
 $\psi'$ vollständig monoton, aber nicht konstant auf $[0, \infty)$,
 dann ist $\Phi := (\phi_{i,j})_{i,j=1}^N$ für paarw. disjunkte Punkte
-$\vec*{x}{i}$ invertierbar.
+$\vecs{x}{i}$ invertierbar.
 
 \textbf{Beispiel}:
 Für die MQ-RBF ist der Satz anwendbar.
@@ -208,21 +208,21 @@ für $r$ groß).
 Sei $\{p_k\}_{k=1}^M$ eine Basis von $\PP_m(\real^d)$
 ($d$-variate Polynome vom Grad $\le m$, $M := \binom{m+d}{m}$) und $m \in \natural_0$.
 Dann ist der Ansatz für die \begriff{augmentierte RBF-Interpolation}
-$f(\vec{x}) = \sum_{i=1}^N \lambda_j \phi(|\vec{x} - \vec*{x}{j}|) +
+$f(\vec{x}) = \sum_{i=1}^N \lambda_j \phi(|\vec{x} - \vecs{x}{j}|) +
 \sum_{k=1}^M \gamma_k p_k(\vec{x})$.
 Damit die Interpolation nicht unterbestimmt ist, legt man die
-zusätzlichen Bedingungen $\forall_{k=1,\dotsc,M}\; \sum_{j=1}^N \lambda_j p_k(\vec*{x}{j}) = 0$
+zusätzlichen Bedingungen $\forall_{k=1,\dotsc,M}\; \sum_{j=1}^N \lambda_j p_k(\vecs{x}{j}) = 0$
 fest.\\
 Man erhält das Interpolations-LGS
 $A\smallpmatrix{\vec{\lambda}\\\vec{\gamma}} = \smallpmatrix{\vec{f}\\\vec{0}}$ mit
-$A := \smallpmatrix{\Phi&P\\P^\tp&0}$, $\Phi := (\phi(|\vec*{x}{j} - \vec*{x}{k}|))_{j,k=1}^N$ und
-$P := (p_k(\vec*{x}{j}))_{j,k=1}^{N,M}$.
+$A := \smallpmatrix{\Phi&P\\P^\tp&0}$, $\Phi := (\phi(|\vecs{x}{j} - \vecs{x}{k}|))_{j,k=1}^N$ und
+$P := (p_k(\vecs{x}{j}))_{j,k=1}^{N,M}$.
 
 \textbf{Satz 2 von \name{Micchelli}}:
 Seien $\psi(r) := \phi(\sqrt{r})$ und $m \in \natural_0$.
 Ist $\psi \in \C^0([0, \infty))$,
 $\psi^{(m+1)}$ vollständig monoton, aber nicht konstant auf $[0, \infty)$, und
 $\Rang(P) = M$ (d.\,h. $P$ hat vollen Spaltenrang),
-dann ist $A$ für paarw. disjunkte Punkte $\vec*{x}{i}$ invertierbar.
+dann ist $A$ für paarw. disjunkte Punkte $\vecs{x}{i}$ invertierbar.
 
 \pagebreak

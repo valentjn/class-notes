@@ -44,11 +44,11 @@ mit $A(x) := \int_{x_0}^x a(t) \dt$.
 Im Folgenden betrachtet man Systeme zweier autonomer ODEs 1. Ordnung, also\\
 $x'(t) = f_1(x(t), y(t))$ und $y'(t) = f_2(x(t), y(t))$ mit
 $f_1, f_2 \in \C^1(\Omega)$ und $\Omega \subset \real^2$.\\
-Jede Lösung $\vec{\varphi}(t, \vec*{\eta}{0})$ ist entweder injektiv, periodisch oder konstant.
+Jede Lösung $\vec{\varphi}(t, \vecs{\eta}{0})$ ist entweder injektiv, periodisch oder konstant.
 
 \textbf{Trajektorie/Orbit}:
-Jede Lösung $t \mapsto \vec{\varphi}(t, \vec*{\eta}{0})$ des Systems heißt \begriff{Trajektorie}.\\
-Die Spur $\vec{\varphi}(I, \vec*{\eta}{0})$ heißt \begriff{Orbit}.
+Jede Lösung $t \mapsto \vec{\varphi}(t, \vecs{\eta}{0})$ des Systems heißt \begriff{Trajektorie}.\\
+Die Spur $\vec{\varphi}(I, \vecs{\eta}{0})$ heißt \begriff{Orbit}.
 
 \textbf{kritischer Punkt}:\\
 Punkte $\vec{\eta} \in \Omega$ mit $f_1(\vec{\eta}) = f_2(\vec{\eta}) = 0$ heißen
@@ -66,21 +66,21 @@ als Pfeile.
 \linie
 
 \textbf{Linearisierung in kritischen Punkten}:
-Sei $\vec*{\eta}{0}$ ein kritischer Punkt, also $\vec{f}(\vec*{\eta}{0}) = \vec{0}$.\\
-Mit der Taylor-Entwicklung gilt $\vec{f}(\vec*{\eta}{0} + \vec{h}) = A\vec{h} + \O(|\vec{h}|^2)$
-mit $A := \D\vec{f}(\vec*{\eta}{0})$.
-Ist die Lösung $\vec{\varphi}(t)$ nahe bei $\vec*{\eta}{0}$, so ist
-$\vec{\psi}(t) := \vec{\varphi}(t) - \vec*{\eta}{0}$ "`klein"' und\\
+Sei $\vecs{\eta}{0}$ ein kritischer Punkt, also $\vec{f}(\vecs{\eta}{0}) = \vec{0}$.\\
+Mit der Taylor-Entwicklung gilt $\vec{f}(\vecs{\eta}{0} + \vec{h}) = A\vec{h} + \O(|\vec{h}|^2)$
+mit $A := \D\vec{f}(\vecs{\eta}{0})$.
+Ist die Lösung $\vec{\varphi}(t)$ nahe bei $\vecs{\eta}{0}$, so ist
+$\vec{\psi}(t) := \vec{\varphi}(t) - \vecs{\eta}{0}$ "`klein"' und\\
 $\vec{\psi}'(t) = \vec{\varphi}'(t) = \vec{f}(\vec{\varphi}(t))
-= \vec{f}(\vec*{\eta}{0} + \vec{\psi}(t)) = A\vec{\psi}(t) + \O(|\vec{\psi}(t)|^2)$,
+= \vec{f}(\vecs{\eta}{0} + \vec{\psi}(t)) = A\vec{\psi}(t) + \O(|\vec{\psi}(t)|^2)$,
 also $\vec{\psi}'(t) \approx A\vec{\psi}(t)$.\\
 Um kritische Punkte herum kann man also das Verhalten des Systems durch
 die lineare ODE $\vec{\psi}'(t) = A\vec{\psi}(t)$ mit
-$\vec{\varphi}(t) \approx \vec{\psi}(t) + \vec*{\eta}{0}$ approximieren.
+$\vec{\varphi}(t) \approx \vec{\psi}(t) + \vecs{\eta}{0}$ approximieren.
 
 \textbf{Satz von \name{Hartman}-\name{Grobman}}:
-Seien die Realteile der Eigenwerte von $\D\vec{f}(\vec*{\eta}{0})$ für den kritischen Punkt
-$\vec*{\eta}{0}$ ungleich Null (\begriff{hyperbolischer kritischer Punkt}).\\
+Seien die Realteile der Eigenwerte von $\D\vec{f}(\vecs{\eta}{0})$ für den kritischen Punkt
+$\vecs{\eta}{0}$ ungleich Null (\begriff{hyperbolischer kritischer Punkt}).\\
 Dann ist das Phasenportrait des linearisierten Systems "`ähnlich"' dem des originalen Systems.
 
 \pagebreak
@@ -221,9 +221,9 @@ $\forall_{\vec{x} \in \real^2} \forall_{s, t \in \real}\;
 \textbf{Grenzpunkt}:
 Seien $\vec{x} \in \real^2$ und $\vec{\phi}$ der vom System $\vec{x}' = \vec{f}(\vec{x})$
 erzeugte Fluss.\\
-Ein Punkt $\vec*{x}{0} \in \real^2$ heißt \begriff{$\omega$-Grenzpunkt} von $\vec{x}$
+Ein Punkt $\vecs{x}{0} \in \real^2$ heißt \begriff{$\omega$-Grenzpunkt} von $\vec{x}$
 für das System, falls es eine Folge $(t_i)_{i \in \natural}$
-mit $t_i \to \infty$ gibt, sodass $\vec{\phi}(t_i, \vec{x}) \to \vec*{x}{0}$.\\
+mit $t_i \to \infty$ gibt, sodass $\vec{\phi}(t_i, \vec{x}) \to \vecs{x}{0}$.\\
 \begriff{$\alpha$-Grenzpunkte} sind analog mit $t_i \to -\infty$ definiert.
 
 \textbf{Grenzmenge}:
@@ -250,15 +250,15 @@ anderen instabil ist.
 \linie
 
 \textbf{homokliner Orbit}:
-Seien $\vec*{x}{0}$ ein kritischer Punkt von $\vec{x}' = \vec{f}(\vec{x})$
+Seien $\vecs{x}{0}$ ein kritischer Punkt von $\vec{x}' = \vec{f}(\vec{x})$
 und $\gamma$ ein Orbit des Systems.\\
-$\gamma$ heißt \begriff{homoklin}, falls $\omega(\gamma) = \{\vec*{x}{0}\} = \alpha(\gamma)$.
+$\gamma$ heißt \begriff{homoklin}, falls $\omega(\gamma) = \{\vecs{x}{0}\} = \alpha(\gamma)$.
 
 \textbf{heterokliner Orbit}:
-Seien $\vec*{x}{0} \not= \vec*{y}{0}$ zwei kritische Punkte von $\vec{x}' = \vec{f}(\vec{x})$
+Seien $\vecs{x}{0} \not= \vecs{y}{0}$ zwei kritische Punkte von $\vec{x}' = \vec{f}(\vec{x})$
 und $\gamma$ ein Orbit des Systems.
-$\gamma$ heißt \begriff{heteroklin}, falls $\omega(\gamma) = \{\vec*{x}{0}\}$
-und $\alpha(\gamma) = \{\vec*{y}{0}\}$.
+$\gamma$ heißt \begriff{heteroklin}, falls $\omega(\gamma) = \{\vecs{x}{0}\}$
+und $\alpha(\gamma) = \{\vecs{y}{0}\}$.
 
 \textbf{Separatrix}:
 Eine \begriff{Separatrix} ist ein Orbit, der den Phasenraum in zwei Bereiche
@@ -276,13 +276,13 @@ Gegeben sei ein zeitabhängiges 2D-Vektorfeld $\vec{v}(\vec{x}, t)$ auf $D \subs
 \textbf{Pfadlinie}:
 Eine \begriff{Pfadlinie} ist eine Trajektorie eines masselosen Teilchens im Fluss.\\
 Man erhält sie durch Lösung von $\vec{x}' = \vec{v}(\vec{x}, t)$ für $t > 0$ und
-$\vec{x}(0) = \vec*{x}{0}$.
+$\vec{x}(0) = \vecs{x}{0}$.
 
 \textbf{Stromlinie}:
 Eine \begriff{Stromlinie} ist eine Kurve, die überall tangential zum
 Vektorfeld $\vec{v}(\cdot, t_s)$ für ein festes $t_s$ ist.
 Man erhält sie durch Lösung von $\frac{\d}{\ds}\vec{x} = \vec{v}(\vec{x}, t_s)$ für $s > 0$ und
-$\vec{x}(0) = \vec*{x}{0}$.
+$\vec{x}(0) = \vecs{x}{0}$.
 
 \textbf{Streichlinie}:
 Eine \begriff{Streichlinie} ist eine Kurve, die entsteht, wenn man ständig zu Zeitpunkten
@@ -355,11 +355,11 @@ Das \begriff{\name{Störmer}-\name{Verlet}-Verfahren} ist geeignet,
 um newtonsche Bewegungsgleichungen $m\vec{a} = m\vec{x}'' = \vec{F}$ zu lösen.
 Zunächst wandelt man mit $\vec{v} = \vec{x}'$ die ODE in ein 2D-System um.
 Anschließend berechnet man für jedes Partikel $k$ zum Zeitschritt $n$ zunächst
-$\vec*{a}{k}^n := \vec*{F}{k}^n(\vec*{x}{k}^n)/m_k$,
-$\vec*{v}{k}^{n+1/2} := \vec*{v}{k}^n + \vec*{a}{k}^n \Delta t/2$ und dann
-$\vec*{x}{k}^{n+1} := \vec*{x}{k}^n + \vec*{v}{k}^{n+1/2} \Delta t$ sowie
-$\vec*{a}{k}^{n+1} := \vec*{F}{k}^n(\vec*{x}{k}^{n+1})/m_k$ und
-$\vec*{v}{k}^{n+1} := \vec*{v}{k}^{n+1/2} + \vec*{a}{k}^{n+1} \Delta t/2$.
+$\vecs{a}{k}^n := \vecs{F}{k}^n(\vecs{x}{k}^n)/m_k$,
+$\vecs{v}{k}^{n+1/2} := \vecs{v}{k}^n + \vecs{a}{k}^n \Delta t/2$ und dann
+$\vecs{x}{k}^{n+1} := \vecs{x}{k}^n + \vecs{v}{k}^{n+1/2} \Delta t$ sowie
+$\vecs{a}{k}^{n+1} := \vecs{F}{k}^n(\vecs{x}{k}^{n+1})/m_k$ und
+$\vecs{v}{k}^{n+1} := \vecs{v}{k}^{n+1/2} + \vecs{a}{k}^{n+1} \Delta t/2$.
 Das Verfahren hat Fehlerordnung $\O(h^2)$ (ist aber sehr stabil).
 
 \pagebreak
@@ -521,11 +521,11 @@ Zur approximativen Berechnung der Jacobi-Matrix gibt es zwei Möglichkeiten:
 \linie
 
 \textbf{Bestimmung der Separatrizen}:
-Für jeden Sattelpunkt $\vec{\eta}$ mit Eigenwerten $\lambda_i$ und Eigenvektoren $\vec*{e}{i}$
-setze $\vec*{p}{i}^{\pm} := \vec{\eta} \pm \varepsilon \vec*{e}{i}$,
-wobei $\varepsilon > 0$ so klein ist, dass sich alle $\vec*{p}{i}^\pm$ immer noch in derselben
+Für jeden Sattelpunkt $\vec{\eta}$ mit Eigenwerten $\lambda_i$ und Eigenvektoren $\vecs{e}{i}$
+setze $\vecs{p}{i}^{\pm} := \vec{\eta} \pm \varepsilon \vecs{e}{i}$,
+wobei $\varepsilon > 0$ so klein ist, dass sich alle $\vecs{p}{i}^\pm$ immer noch in derselben
 Zelle wie $\vec{\eta}$ befinden.
-Berechne nun den positiven Halborbit mit Anfangswert $\vec*{p}{i}^{\pm}$, wenn $\lambda_i > 0$,
+Berechne nun den positiven Halborbit mit Anfangswert $\vecs{p}{i}^{\pm}$, wenn $\lambda_i > 0$,
 und den negativen Halborbit, wenn $\lambda_i < 0$.
 
 \pagebreak

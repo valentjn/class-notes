@@ -71,15 +71,15 @@ $\smallpmatrix{H_0^3(x)\\H_1^3(x)\\H_2^3(x)\\H_3^3(x)}
 }
 
 \textbf{bikubische Interpolation}:
-Gegeben seien $\vec*{f}{i,j} = (x_i, y_j)^\tp$ für $x_i, y_j \in \{0, 1\}$ und Werte\\
+Gegeben seien $\vecs{f}{i,j} = (x_i, y_j)^\tp$ für $x_i, y_j \in \{0, 1\}$ und Werte\\
 $z_{i,j}, \partial_x z_{i,j}, \partial_y z_{i,j},
 \partial_x \partial_y z_{i,j} \in \real$.
 Gesucht ist bei der \begriff{bikubischen Interpolation} das bikubische Polynom
 $f(x, y) = \sum_{n=0}^3 \sum_{m=0}^3 a_{n,m} x^n y^m$ mit
-$f(\vec*{p}{i,j}) = z_{i,j}$,
-$\partial_x f(\vec*{p}{i,j}) = \partial_x z_{i,j}$,
-$\partial_y f(\vec*{p}{i,j}) = \partial_y z_{i,j}$ und
-$\partial_x \partial_y f(\vec*{p}{i,j}) = \partial_x \partial_y z_{i,j}$.
+$f(\vecs{p}{i,j}) = z_{i,j}$,
+$\partial_x f(\vecs{p}{i,j}) = \partial_x z_{i,j}$,
+$\partial_y f(\vecs{p}{i,j}) = \partial_y z_{i,j}$ und
+$\partial_x \partial_y f(\vecs{p}{i,j}) = \partial_x \partial_y z_{i,j}$.
 Schreibt man $\vec{\alpha} := (a_{0,0}, a_{1,0}, a_{2,0}, a_{3,0}, a_{0,1}, \dotsc, a_{3,3})^\tp$
 und\\
 $\vec{z} = (z_{0,0}, z_{1,0}, z_{0,1}, z_{1,1}, \partial_x z_{0,0}, \dotsc,
@@ -91,12 +91,12 @@ Es gilt dann $\vec{\alpha} = B^{-1} \vec{z}$.
 \textbf{bikubische Interpolation mit \name{Hermite}-Polynomen}:
 Man kann den Ansatz auch schreiben als
 $f(x, y) = \vec{y}^\tp A \vec{x}$
-mit $\vec{x} := (1, x, x^2, x^3)^\tp = C^\tp \vec*{h}{x}$,
-$\vec*{h}{x} := (H_0^3(x), \dotsc, H_3^3(x))^\tp$ und
+mit $\vec{x} := (1, x, x^2, x^3)^\tp = C^\tp \vecs{h}{x}$,
+$\vecs{h}{x} := (H_0^3(x), \dotsc, H_3^3(x))^\tp$ und
 einer bestimmten Basiswechsel-Matrix $C = \smallpmatrix{1&0&0&0\\0&1&0&0\\0&1&2&3\\1&1&1&1}$,
 die man aus $C^{-1} = \smallpmatrix{1&0&0&0\\0&1&0&0\\-3&-2&-1&3\\2&1&1&-2}$ erhält
-(analog $\vec{y} = C^\tp \vec*{h}{y}$).
-Damit bekommt man $f(x, y) = \vec*{h}{y}^\tp C A C^\tp \vec*{h}{x}$.
+(analog $\vec{y} = C^\tp \vecs{h}{y}$).
+Damit bekommt man $f(x, y) = \vecs{h}{y}^\tp C A C^\tp \vecs{h}{x}$.
 Man kann zeigen, dass\\
 $CAC^\tp = F := \smallpmatrix{f(0,0)&f_x(0,0)&f_x(1,0)&f(1,0)\\
 f_y(0,0)&f_{xy}(0,0)&f_{xy}(1,0)&f_y(1,0)\\
@@ -183,11 +183,11 @@ Im C-Raum sollte das Gitter ein uniformes 2D-Rechtecksgitter mit Gitterabstände
 $\Delta\xi = 1 = \Delta\eta$ sein.
 
 \textbf{Umrechnung der Ableitungen}:
-Für $\vec*{\partial}{xy} := (\partial_x, \partial_y,
+Für $\vecs{\partial}{xy} := (\partial_x, \partial_y,
 \partial_x^2, \partial_x \partial_y, \partial_y^2)^\tp$ und\\
-$\vec*{\partial}{\xi\eta} := (\partial_\xi, \partial_\eta,
+$\vecs{\partial}{\xi\eta} := (\partial_\xi, \partial_\eta,
 \partial_\xi^2, \partial_\xi \partial_\eta, \partial_\eta^2)^\tp$
-erhält man $\vec*{\partial}{xy} = B\vec*{\partial}{\xi\eta}$ mit
+erhält man $\vecs{\partial}{xy} = B\vecs{\partial}{\xi\eta}$ mit
 $B := \smallpmatrix{B_1&0\\B_2&B_3}$ und\\
 $B_1 := \smallpmatrix{\partial_x \xi&\partial_x \eta\\\partial_y \xi&\partial_y \eta}$,
 $B_2 := \smallpmatrix{\partial_x^2 \xi&\partial_x^2 \eta\\\partial_x \partial_y \xi&
@@ -198,7 +198,7 @@ $B_3 := \smallpmatrix{(\partial_x \xi)^2&2\partial_x \xi \cdot \partial_x \eta&
 \partial_x \xi \cdot \partial_y \eta + \partial_x \eta \cdot \partial_y \xi&
 \partial_x \eta \cdot \partial_y \eta\\
 (\partial_y \xi)^2&2\partial_y \xi \cdot \partial_y \eta&(\partial_y \eta)^2}$.\\
-Umgekehrt gilt $\vec*{\partial}{\xi\eta} = C\vec*{\partial}{xy}$ mit
+Umgekehrt gilt $\vecs{\partial}{\xi\eta} = C\vecs{\partial}{xy}$ mit
 $C := B^{-1} = \smallpmatrix{C_1&0\\C_2&C_3}$ und\\
 $C_1 := B_1^{-1}
 = \smallpmatrix{\partial_\xi x&\partial_\xi y\\\partial_\eta x&\partial_\eta y}$,

@@ -45,35 +45,35 @@ Damit erhält man $\vec{y} = A^{-1} \vec{b} = (C^\tp C)^{-1} C^\tp \vec{d}$
 Ein Nachteil der Normalengleichungen ist, dass die Konditionszahl groß sein kann.
 
 \textbf{Zusammenhang mit Regression}:
-Seien nun $\vec*{x}{1}, \dotsc, \vec*{x}{N} \in \real^d$ und $f_1, \dotsc, f_N \in \real$
+Seien nun $\vecs{x}{1}, \dotsc, \vecs{x}{N} \in \real^d$ und $f_1, \dotsc, f_N \in \real$
 gegeben.
 Gesucht ist $g \in \PP_m(\real^d)$ wie vorhin.
 Ist $\{p_k\}_{k=1}^M$ eine Basis von $\PP_m(\real^d)$
 (mit $M := \binom{d+m}{m}$),
 so erhält man das für $N > M$ überbestimmte LGS
-$\forall_{i=1,\dotsc,N}\; g(\vec*{x}{i}) = \vec{p}(\vec*{x}{i})^\tp \vec{c} = f_i$
+$\forall_{i=1,\dotsc,N}\; g(\vecs{x}{i}) = \vec{p}(\vecs{x}{i})^\tp \vec{c} = f_i$
 mit $\vec{p}(\vec{x}) := (p_1(\vec{x}), \dotsc, p_M(\vec{x}))^\tp$.
 Damit erhält man die Normalengleichungen
 $A\vec{c} = \vec{b}$ mit\\
-$A := \sum_{i=1}^N \vec{p}(\vec*{x}{i}) \vec{p}(\vec*{x}{i})^\tp$ und
-$\vec{b} := \sum_{i=1}^N f_i \vec{p}(\vec*{x}{i})$
-($A = C^\tp C$ mit $C_{i,j} = p_j(\vec*{x}{i})$).
+$A := \sum_{i=1}^N \vec{p}(\vecs{x}{i}) \vec{p}(\vecs{x}{i})^\tp$ und
+$\vec{b} := \sum_{i=1}^N f_i \vec{p}(\vecs{x}{i})$
+($A = C^\tp C$ mit $C_{i,j} = p_j(\vecs{x}{i})$).
 
 \section{%
     Weighted Least Squares (WLS)%
 }
 
 \textbf{Weighted Least Squares (WLS)}:
-Gegeben seien $\vec*{x}{1}, \dotsc, \vec*{x}{N} \in \real^d$ und
+Gegeben seien $\vecs{x}{1}, \dotsc, \vecs{x}{N} \in \real^d$ und
 $f_1, \dotsc, f_N \in \real$.\\
 Die \begriff{WLS-Methode} sucht nun für $\vec{\xi} \in \real^d$ fest
 ein Polynom $g \in \PP_m(\real^d)$ mit\\
-$F := \sum_{i=1}^N \theta(|\vec{\xi} - \vec*{x}{i}|) (f_i - g(x_i))^2 \to \min$
+$F := \sum_{i=1}^N \theta(|\vec{\xi} - \vecs{x}{i}|) (f_i - g(x_i))^2 \to \min$
 mit einer Gewichtsfunktion $\theta\colon [0, \infty) \to \real$.\\
 Mit dem Ansatz $g(\vec{x}) = \vec{p}(\vec{x})^\tp \vec{c}$ und
 $\vec{\nabla} F(\vec{c}) = \vec{0}$ erhält man das LGS\\
-$\sum_{i=1}^N \theta(r_i) \vec{p}(\vec*{x}{i}) \vec{p}(\vec*{x}{i})^\tp \cdot \vec{c}
-= \sum_{i=1}^N \theta(r_i) f_i \vec{p}(\vec*{x}{i})$ mit $r_i := |\vec{\xi} - \vec*{x}{i}|$.\\
+$\sum_{i=1}^N \theta(r_i) \vec{p}(\vecs{x}{i}) \vec{p}(\vecs{x}{i})^\tp \cdot \vec{c}
+= \sum_{i=1}^N \theta(r_i) f_i \vec{p}(\vecs{x}{i})$ mit $r_i := |\vec{\xi} - \vecs{x}{i}|$.\\
 Gebräuchliche Gewichtsfunktionen sind
 $\theta(r) := e^{-r^2/h^2}$ für $h > 0$ (\begriff{Gauß}),\\
 $\theta(r) := (1 - \frac{r}{h})^4 (\frac{4r}{h} + 1)$ für $r \in [0, h]$ und $h > 0$
@@ -110,16 +110,16 @@ Seien $x_1, \dotsc, x_N \in \real$, $f_1, \dotsc, f_N \in \real$ und $\xi \in \r
 }
 
 \textbf{Moving Least Squares (MLS)}:
-Gegeben seien $\vec*{x}{1}, \dotsc, \vec*{x}{N} \in \real^d$ und
+Gegeben seien $\vecs{x}{1}, \dotsc, \vecs{x}{N} \in \real^d$ und
 $f_1, \dotsc, f_N \in \real$.\\
 Die \begriff{MLS-Methode} sucht nun für jedes $\vec{x} \in \real^d$
 ein Polynom $g_{\vec{x}} \in \PP_m(\real^d)$ mit\\
-$F_{\vec{x}} := \sum_{i=1}^N \theta(|\vec{x} - \vec*{x}{i}|) (f_i - g(x_i))^2 \to \min$
+$F_{\vec{x}} := \sum_{i=1}^N \theta(|\vec{x} - \vecs{x}{i}|) (f_i - g(x_i))^2 \to \min$
 mit einer Gewichtsfunktion $\theta\colon [0, \infty) \to \real$.\\
-Mit dem Ansatz $g_{\vec{x}}(\vec{y}) = \vec{p}(\vec{y})^\tp \vec*{c}{\vec{x}}$ und
-$\vec{\nabla} F_{\vec{x}}(\vec*{c}{\vec{x}}) = \vec{0}$ erhält man das LGS\\
-$\sum_{i=1}^N \theta(r_i) \vec{p}(\vec*{x}{i}) \vec{p}(\vec*{x}{i})^\tp \cdot \vec*{c}{\vec{x}}
-= \sum_{i=1}^N \theta(r_i) f_i \vec{p}(\vec*{x}{i})$ mit $r_i := |\vec{x} - \vec*{x}{i}|$.\\
+Mit dem Ansatz $g_{\vec{x}}(\vec{y}) = \vec{p}(\vec{y})^\tp \vecs{c}{\vec{x}}$ und
+$\vec{\nabla} F_{\vec{x}}(\vecs{c}{\vec{x}}) = \vec{0}$ erhält man das LGS\\
+$\sum_{i=1}^N \theta(r_i) \vec{p}(\vecs{x}{i}) \vec{p}(\vecs{x}{i})^\tp \cdot \vecs{c}{\vec{x}}
+= \sum_{i=1}^N \theta(r_i) f_i \vec{p}(\vecs{x}{i})$ mit $r_i := |\vec{x} - \vecs{x}{i}|$.\\
 Die Approximation ist dann gegeben durch
 $h\colon \real^d \to \real$, $h(\vec{x}) := g_{\vec{x}}(\vec{x})$,
 d.\,h. für jeden Auswertungspunkt $\vec{x}$ muss ein WLS-Problem gelöst werden.
@@ -127,28 +127,28 @@ d.\,h. für jeden Auswertungspunkt $\vec{x}$ muss ein WLS-Problem gelöst werden
 \linie
 
 \textbf{Bilddeformation mit MLS}:\\
-Seien $\Omega := [0, 1]^2$ und $\vec*{p}{i}, \vec*{q}{i} \in \Omega$
+Seien $\Omega := [0, 1]^2$ und $\vecs{p}{i}, \vecs{q}{i} \in \Omega$
 für $i = 1, \dotsc, N$ Kontrollpunkte.\\
 Gesucht ist nun eine Deformationsfunktion $\vec{f}$ mit
-$\vec{f}(\vec*{p}{i}) = \vec*{q}{i}$ für $i = 1, \dotsc, N$ (Interpolation),
+$\vec{f}(\vecs{p}{i}) = \vecs{q}{i}$ für $i = 1, \dotsc, N$ (Interpolation),
 $\vec{f}$ glatt und
-$[\forall_{i=1,\dotsc,N}\; \vec*{p}{i} = \vec*{q}{i}] \implies \vec{f} = \id_\Omega$.\\
+$[\forall_{i=1,\dotsc,N}\; \vecs{p}{i} = \vecs{q}{i}] \implies \vec{f} = \id_\Omega$.\\
 Dazu benutzt man MLS mit af"|finen Transformationen, d.\,h. man setzt
-$\vec{f}(\vec{x}) = \vec*{g}{\vec{x}}(\vec{x})$ an,
-wobei $\vec*{g}{\vec{x}}(\vec{y}) := M_{\vec{x}} \vec{y} + \vec*{t}{\vec{x}}$,
-$F_{\vec{x}} := \sum_{i=1}^N w_i |\vec*{g}{\vec{x}}(\vec*{p}{i}) - \vec*{q}{i}|^2 \to \min$ und
-$w_i := \frac{1}{|\vec*{p}{i} - \vec{x}|^{2\alpha}}$.\\
-Durch $\vec*{\nabla}{\vec{t}} F \overset{!}{=} \vec{0}$
-erhält man $\vec{t} = \vec*{q}{\ast} - M\vec*{p}{\ast}$ mit
-$\vec*{p}{\ast} := \frac{\sum_{i=1}^N w_i\vec*{p}{i}}{\sum_{i=1}^N w_i}$ und
-$\vec*{q}{\ast} := \frac{\sum_{i=1}^N w_i\vec*{q}{i}}{\sum_{i=1}^N w_i}$.\\
+$\vec{f}(\vec{x}) = \vecs{g}{\vec{x}}(\vec{x})$ an,
+wobei $\vecs{g}{\vec{x}}(\vec{y}) := M_{\vec{x}} \vec{y} + \vecs{t}{\vec{x}}$,
+$F_{\vec{x}} := \sum_{i=1}^N w_i |\vecs{g}{\vec{x}}(\vecs{p}{i}) - \vecs{q}{i}|^2 \to \min$ und
+$w_i := \frac{1}{|\vecs{p}{i} - \vec{x}|^{2\alpha}}$.\\
+Durch $\vecs{\nabla}{\vec{t}} F \overset{!}{=} \vec{0}$
+erhält man $\vec{t} = \vecs{q}{\ast} - M\vecs{p}{\ast}$ mit
+$\vecs{p}{\ast} := \frac{\sum_{i=1}^N w_i\vecs{p}{i}}{\sum_{i=1}^N w_i}$ und
+$\vecs{q}{\ast} := \frac{\sum_{i=1}^N w_i\vecs{q}{i}}{\sum_{i=1}^N w_i}$.\\
 Ist $M = (m_{i,j})_{i,j=1}^2$, so bekommt man mit $\partial_{m_{i,j}} F \overset{!}{=} 0$,
-$\vec*{\varrho}{i} = \vec*{p}{i} - \vec*{p}{\ast}$ und
-$\vec*{\sigma}{i} = \vec*{q}{i} - \vec*{q}{\ast}$ die Bedingung
+$\vecs{\varrho}{i} = \vecs{p}{i} - \vecs{p}{\ast}$ und
+$\vecs{\sigma}{i} = \vecs{q}{i} - \vecs{q}{\ast}$ die Bedingung
 $MR = S$ mit
-$R := \sum_{i=1}^N w_i \vec*{\varrho}{i} \vec*{\varrho}{i}^\tp$ und
-$S := \sum_{i=1}^N w_i \vec*{\varrho}{i} \vec*{\sigma}{i}^\tp$,
+$R := \sum_{i=1}^N w_i \vecs{\varrho}{i} \vecs{\varrho}{i}^\tp$ und
+$S := \sum_{i=1}^N w_i \vecs{\varrho}{i} \vecs{\sigma}{i}^\tp$,
 d.\,h. $M = SR^{-1}$.\\
-Somit bekommt man $\vec*{g}{\vec{x}}(\vec{y}) = M(\vec{y} - \vec*{p}{\ast}) + \vec*{q}{\ast}$.
+Somit bekommt man $\vecs{g}{\vec{x}}(\vec{y}) = M(\vec{y} - \vecs{p}{\ast}) + \vecs{q}{\ast}$.
 
 \pagebreak

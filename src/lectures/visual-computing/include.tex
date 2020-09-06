@@ -1,8 +1,5 @@
-\makeatletter
-\def\vec{\@ifstar\@@vec\@vec}
-\def\@vec#1{\vv{#1}}
-\def\@@vec#1#2{\vv*{#1}{#2}}
-\makeatother
+\renewcommand*{\vec}[1]{\vv{#1}}
+\newcommand*{\vecs}[2]{\vv*{#1}{#2}}
 
 % class-notes: begin-mathjax-commands
 \renewcommand*{\AA}{\mathbb{A}}
