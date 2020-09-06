@@ -192,11 +192,14 @@ toc: false
   html_ = re.sub(r"\\mathbbm\s*\{y\}", "\U0001d56a", html_)
   html_ = re.sub(r"\\mathbbm\s*\{1\}", "\U0001d7d9", html_)
 
+  html_ = re.sub(r"(Gau|Weierstra)(?:$|ss|([^\u00df]))", "\\1\u00df\\2", html_, flags=re.MULTILINE)
+
   # workaround for https://github.com/mathjax/MathJax/issues/2511
   html_ = re.sub(r"\\boldsymbol\s*\{", r"\\boldsymbol{", html_)
 
   mathJaxDefinitions = re.search(r"<div\s+class=\"hidden\"\s*>.*?</\s*div\s*>", html_,
       flags=re.DOTALL).group()
+
   matches = list(re.finditer(r"<p>\s*[0-9]+(?:&#x2002;|&#x2003;)(.+?)\n\s*", html_))
 
   for i in range(len(matches)):
