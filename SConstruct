@@ -35,6 +35,7 @@ class Helper(object):
           r"^\s*% class-notes: end-mathjax-commands$", tex, flags=re.DOTALL | re.MULTILINE)
       mathJaxTex += "\n\n".join(commands)
 
+    mathJaxTex = mathJaxTex.replace("\hbadness=10000", "")
     mathJaxTex = re.sub(r"^\s*%.*", "", mathJaxTex, flags=re.MULTILINE)
     mathJaxTex = re.sub("\n\n+", "\n", mathJaxTex)
 
