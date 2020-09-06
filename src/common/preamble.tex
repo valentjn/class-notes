@@ -147,6 +147,11 @@
   footskip=10mm,
 ]{geometry}
 
+% somehow \texorpdfstring is already defined on Travis before including lwarp-hyperref
+\begin{warpHTML}
+  \let\texorpdfstring\undefined
+\end{warpHTML}
+
 % hyperref for PDF meta-information and links
 \usepackage{hyperref}
 \hypersetup{
