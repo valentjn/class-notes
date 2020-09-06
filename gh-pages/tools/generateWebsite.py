@@ -6,22 +6,28 @@ import functools
 import re
 import shutil
 
+verbose = False
+
+
+
 def copyFile(srcPath, destPath):
-  print(f"Copying '{srcPath}' to '{destPath}'...")
+  if verbose: print(f"Copying '{srcPath}' to '{destPath}'...")
   shutil.copy(srcPath, destPath)
 
 def deleteDir(dirPath):
   if os.path.isdir(dirPath):
-    print(f"Deleting '{dirPath}'...")
+    if verbose: print(f"Deleting '{dirPath}'...")
     shutil.rmtree(dirPath)
 
 def createDir(dirPath):
-  print(f"Creating directory '{dirPath}'...")
+  if verbose: print(f"Creating directory '{dirPath}'...")
   os.mkdir(dirPath)
 
 def writeFile(filePath, s):
-  print(f"Writing file '{filePath}'...")
+  if verbose: print(f"Writing file '{filePath}'...")
   with open(filePath, "w") as f: f.write(s)
+
+
 
 def convertHtmlTitleToTextTitle(s):
   s = html.unescape(s)
@@ -413,6 +419,8 @@ toc: false
   prevField = None
 
   for lecture in lectures:
+    print(f"Processing '{lecture}'...")
+
     imagesDirPath = os.path.join("images", "lectures", lecture)
     deleteDir(imagesDirPath)
     createDir(imagesDirPath)
