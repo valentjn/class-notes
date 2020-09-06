@@ -382,7 +382,7 @@ entries:
     product: "Vorlesungsmitschriebe"
     version: ""
     folders:
-      - title: "Über diese Mitschriebe"
+      - title: "\u00dcber diese Mitschriebe"
         output: "web"
         folderitems:
           - title: "Startseite"
@@ -405,18 +405,18 @@ toc: false
 
 *Julian Valentin*
 
-Diese Vorlesungsmitschriebe entstanden als Hörer in Vorlesungen an der Universität Stuttgart in den Jahren 2009 bis 2014. Sie dienten hauptsächlich als Lernhilfe für mich; aus Zeitgründen fehlen viele Skizzen und mathematische Beweise. Studentische Mitschriebe sind keine offiziellen Skripte; weder die Universität Stuttgart noch ihre Mitarbeiter sind für sie verantwortlich. Fehler können auf [GitHub](https://github.com/valentjn/class-notes) gemeldet werden. Die Mitschriebe stehen unter der [CC-BY-SA-4.0-Lizenz](https://creativecommons.org/licenses/by-sa/4.0/).
+Diese Vorlesungsmitschriebe entstanden als H\u00f6rer in Vorlesungen an der Universit\u00e4t Stuttgart in den Jahren 2009 bis 2014. Sie dienten haupts\u00e4chlich als Lernhilfe f\u00fcr mich; aus Zeitgr\u00fcnden fehlen viele Skizzen und mathematische Beweise. Studentische Mitschriebe sind keine offiziellen Skripte; weder die Universit\u00e4t Stuttgart noch ihre Mitarbeiter sind f\u00fcr sie verantwortlich. Fehler k\u00f6nnen auf [GitHub](https://github.com/valentjn/class-notes) gemeldet werden. Die Mitschriebe stehen unter der [CC-BY-SA-4.0-Lizenz](https://creativecommons.org/licenses/by-sa/4.0/).
 
-Die kompakt geschriebenen Vorlesungsmitschriebe ergeben mit ihren 31 Vorlesungen, 178 Kapiteln, mehr als 1100 PDF-Seiten und über 500.000 Wörtern (meistens Formeln) eine kleine Bibliothek, die viele verschiedene Themen aus Mathematik und Informatik abdeckt. Die Vorlesungsmitschriebe stehen zur Verfügung
+Die kompakt geschriebenen Vorlesungsmitschriebe ergeben mit ihren 31 Vorlesungen, 178 Kapiteln, mehr als 1100 PDF-Seiten und \u00fcber 500.000 W\u00f6rtern (meistens Formeln) eine kleine Bibliothek, die viele verschiedene Themen aus Mathematik und Informatik abdeckt. Die Vorlesungsmitschriebe stehen zur Verf\u00fcgung
 
 * [als LaTeX-Code](https://github.com/valentjn/class-notes),
-* [als einzelne PDFs für jede Vorlesung](https://github.com/valentjn/class-notes/releases),
+* [als einzelne PDFs f\u00fcr jede Vorlesung](https://github.com/valentjn/class-notes/releases),
 * [als Sammlungs-PDF](https://github.com/valentjn/class-notes/releases) (das alle Vorlesungen in eine einzelne handliche 9-MB-PDF-Datei zusammenfasst) und
 * als HTML-Version.
 
 Die vorliegende HTML-Version wurde mithilfe des `lwarp`-Pakets halbautomatisiert aus der LaTeX-Originalversion erzeugt.
 
-Folgende Mitschriebe stehen zur Verfügung:
+Folgende Mitschriebe stehen zur Verf\u00fcgung:
 
 <table>
   <thead>
