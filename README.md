@@ -8,9 +8,14 @@
 [![Collection PDF download](https://img.shields.io/badge/collection%20PDF-download-blue)][collection]
 [![CC BY-SA 4.0 license](https://img.shields.io/badge/license-CC%20BY--SA%204.0-blue)][license]
 
-This repository contains L<sup>A</sup>T<sub>E</sub>X-ed class notes in German taken during lectures at the University of Stuttgart, Germany, in the years of 2009 to 2014. Their main purpose was helping me study and prepare for exams. Due to time constraints, most of the drawings and mathematical proofs are missing. However, these class notes are provided here in the hope that somebody might benefit from them. Mistakes can be reported at the [GitHub repo](https://github.com/valentjn/class-notes). The L<sup>A</sup>T<sub>E</sub>X realization of the notes (i.e., source code and PDFs) is licensed under the [CC BY-SA 4.0 license][license].
+This repository contains L<sup>A</sup>T<sub>E</sub>X-ed class notes in German taken during lectures at the University of Stuttgart, Germany, in the years of 2009 to 2014. Their main purpose was helping me study and prepare for exams. Due to time constraints, most of the drawings and mathematical proofs are missing. Student notes are not official lecture notes, i.e., neither the University of Stuttgart nor its employees are responsible for their contents. Mistakes can be reported at the [GitHub repo](https://github.com/valentjn/class-notes). The notes are licensed under the [CC BY-SA 4.0 license][license].
 
-Totaling to 31 lectures, 178 chapters, more than 1100 pages, and over 500,000 words (mostly formulas), the compactly-presented class notes yield a small library covering a wide variety of different topics of mathematics and computer science. The class notes are available as per-lecture PDFs and as a collection PDF, which combines all lectures into a single handy 9 MB PDF file.
+Totaling to 31 lectures, 178 chapters, more than 1100 pages, and over 500,000 words (mostly formulas), the compactly-presented class notes yield a small library covering a wide variety of different topics of mathematics and computer science. The class notes are available
+
+* as L<sup>A</sup>T<sub>E</sub>X code,
+* as per-lecture PDFs,
+* as a collection PDF (combining all lectures into a single handy 9 MB PDF file), and
+* as [HTML version](https://valentjn.github.io/class-notes/).
 
 In case an English translation of a paragraph is needed, [DeepL](https://www.deepl.com/translator) seems to produce somewhat usable translations.
 

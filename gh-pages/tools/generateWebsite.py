@@ -402,7 +402,14 @@ toc: false
 
 Diese Vorlesungsmitschriebe entstanden als Hörer in Vorlesungen an der Universität Stuttgart in den Jahren 2009 bis 2014. Sie dienten hauptsächlich als Lernhilfe für mich; aus Zeitgründen fehlen viele Skizzen und mathematische Beweise. Studentische Mitschriebe sind keine offiziellen Skripte; weder die Universität Stuttgart noch ihre Mitarbeiter sind für sie verantwortlich. Fehler können auf [GitHub](https://github.com/valentjn/class-notes) gemeldet werden. Die Mitschriebe stehen unter der [CC-BY-SA-4.0-Lizenz](https://creativecommons.org/licenses/by-sa/4.0/).
 
-Die HTML-Version wurde mithilfe des `lwarp`-Pakets automatisiert basierend auf der LaTeX-Originalversion erzeugt. LaTeX-Quellcode und PDFs sind auf [GitHub](https://github.com/valentjn/class-notes) verfügbar.
+Die kompakt geschriebenen Vorlesungsmitschriebe ergeben mit ihren 31 Vorlesungen, 178 Kapiteln, mehr als 1100 PDF-Seiten und über 500.000 Wörtern (meistens Formeln) eine kleine Bibliothek, die viele verschiedene Themen aus Mathematik und Informatik abdeckt. Die Vorlesungsmitschriebe stehen zur Verfügung
+
+* [als LaTeX-Code](https://github.com/valentjn/class-notes),
+* [als einzelne PDFs für jede Vorlesung](https://github.com/valentjn/class-notes/releases),
+* [als Sammlungs-PDF](https://github.com/valentjn/class-notes/releases) (das alle Vorlesungen in eine einzelne handliche 9-MB-PDF-Datei zusammenfasst) und
+* als HTML-Version.
+
+Die vorliegende HTML-Version wurde mithilfe des `lwarp`-Pakets halbautomatisiert aus der LaTeX-Originalversion erzeugt.
 
 Folgende Mitschriebe stehen zur Verfügung:
 
