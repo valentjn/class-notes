@@ -287,9 +287,6 @@ tex_path: "src/lectures/{lecture}/{texFileName}"
 def main():
   os.chdir(os.path.join(os.path.dirname(__file__), ".."))
 
-  copyFile(os.path.join("..", "LICENSE.md"), ".")
-  copyFile(os.path.join("..", "README.md"), ".")
-
   deleteDir(os.path.join("_includes", "lectures"))
   createDir(os.path.join("_includes", "lectures"))
   deleteDir(os.path.join("pages", "lectures"))
