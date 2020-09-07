@@ -412,7 +412,7 @@ Die kompakt geschriebenen Vorlesungsmitschriebe ergeben mit ihren 31 Vorlesungen
 
 * [als LaTeX-Code](https://github.com/valentjn/class-notes),
 * [als einzelne PDFs f\u00fcr jede Vorlesung](https://github.com/valentjn/class-notes/releases),
-* [als Sammlungs-PDF](https://github.com/valentjn/class-notes/releases) (das alle Vorlesungen in eine einzelne handliche 9-MB-PDF-Datei zusammenfasst) und
+* [als Sammlungs-PDF](https://github.com/valentjn/class-notes/releases) (das alle Vorlesungen in eine einzige handliche 9-MB-PDF-Datei zusammenfasst) und
 * als HTML-Version.
 
 Die vorliegende HTML-Version wurde mithilfe des `lwarp`-Pakets halbautomatisiert aus der LaTeX-Originalversion erzeugt.
