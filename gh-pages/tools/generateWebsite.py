@@ -298,6 +298,8 @@ def main():
 
   deleteDir(os.path.join("_includes", "lectures"))
   createDir(os.path.join("_includes", "lectures"))
+  deleteDir(os.path.join("images", "lectures"))
+  createDir(os.path.join("images", "lectures"))
   deleteDir(os.path.join("pages", "lectures"))
   createDir(os.path.join("pages", "lectures"))
 
