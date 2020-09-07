@@ -49,6 +49,7 @@ def convertHtmlTitleToTextTitle(s):
   s = re.sub(r" ([\)\-\^\}_\u2019\u207f\u2080])", r"\1", s)
   s = s.replace("\\", "")
   s = s.replace("M ATLAB", "MATLAB")
+  s = s.replace("Wahrscheinlichkeitstheorie", "Wahrscheinlichkeits&shy;theorie")
   s = re.sub(r"  +", " ", s).strip()
   return s
 
