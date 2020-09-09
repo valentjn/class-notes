@@ -1,0 +1,2666 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\newcommand {\Vb }{\ensuremath {\operatorname {Vb}}}\)
+
+\(\newcommand {\Nb }{\ensuremath {\operatorname {Nb}}}\)
+
+\(\newcommand {\card }{\ensuremath {\operatorname {card}}}\)
+
+\(\renewcommand {\Re }{\ensuremath {\operatorname {Re}}}\)
+
+\(\renewcommand {\Im }{\ensuremath {\operatorname {Im}}}\)
+
+\(\newcommand {\Ln }{\ensuremath {\operatorname {Ln}}}\)
+
+\(\newcommand {\CF }{\ensuremath {\operatorname {CF}}}\)
+
+\(\newcommand {\acc }{\ensuremath {\operatorname {acc}}}\)
+
+\(\newcommand {\iso }{\ensuremath {\operatorname {iso}}}\)
+
+\(\newcommand {\interior }{\ensuremath {\operatorname {int}}}\)
+
+\(\newcommand {\exterior }{\ensuremath {\operatorname {ext}}}\)
+
+\(\newcommand {\sgn }{\ensuremath {\operatorname {sgn}}}\)
+
+\(\newcommand {\arccot }{\ensuremath {\operatorname {arccot}}}\)
+
+\(\newcommand {\arsinh }{\ensuremath {\operatorname {arsinh}}}\)
+
+\(\newcommand {\arcosh }{\ensuremath {\operatorname {arcosh}}}\)
+
+\(\newcommand {\artanh }{\ensuremath {\operatorname {artanh}}}\)
+
+\(\newcommand {\arcoth }{\ensuremath {\operatorname {arcoth}}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f9::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f10::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f11::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f12::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f13::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f14::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f15::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f16::marker {
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f17::marker {
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f18::marker {
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f19::marker {
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f20::marker {
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f21::marker {
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f22::marker {
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f23::marker {
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f24::marker {
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f25::marker {
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f26::marker {
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f27::marker {
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f28::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f29::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f30::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f31::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f32::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f33::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f34::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f35::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f36::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f37::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f38::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f39::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f40::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f41::marker {
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f42::marker {
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f43::marker {
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f44::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f45::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f46::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f47::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f48::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f49::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f50::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f51::marker {
+  font-style:italic;
+  content:'(5)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f52::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f53::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f54::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f55::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f56::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f57::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f58::marker {
+  content:'•\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+
+<h2 id="konvergenz-in-r">Konvergenz in ℝ</h2>
+
+</p>
+
+
+<p>
+<b>Intervalle</b> (\(a, b \in \mathbb {R}\)):<br />
+\(\left ]a,b\right [ = \left (a,b\right ) = \{x \in \mathbb {R} \;|\; a &lt; x &lt; b\} \quad \) <em>offen</em>,<br />
+\(\left [a,b\right ] = \{x \in \mathbb {R} \;|\; a \le x \le b\} \quad \) <em>abgeschlossen</em>, &#x2003;&#x2003;\(\left (a,b\right ] = \left ]a,b\right ]\), \(\left [a,b\right ) = \left
+[a,b\right [ \quad \) <em>halboffen</em>
+</p>
+
+<p>
+<b>\(\varepsilon \)-Umgebung</b>: \(U_\varepsilon (x) = (x - \varepsilon , x + \varepsilon ) = \{y \in \mathbb {R} \;|\; |x - y| &lt; \varepsilon \} \quad \) (\(x \in \mathbb {R}\), \(\varepsilon
+&gt; 0\))
+</p>
+
+<p>
+<b>Konvergenz reeller Folgen</b>: \(\{a_n\}_{n \in \mathbb {N}} \xrightarrow {n \to \infty } a \;\Leftrightarrow \; \forall _{\varepsilon &gt; 0} \exists _{N(\varepsilon ) \in \mathbb {N}}
+\forall _{n \ge N(\varepsilon )}\; a_n \in U_\varepsilon (a)\)
+</p>
+
+<p>
+<b>Beschra&#x0308;nktheit reeller Teilmengen</b>: \(\exists _{C &gt; 0} \forall _{x \in M}\; |x| \le C \quad \) (\(M \subset \mathbb {R}\))
+</p>
+
+<p>
+<em>Lemma</em>: Jede unbeschra&#x0308;nkte Menge \(M \subset \mathbb {R}\) ist transfinit.<br />
+\(\Rightarrow \;\) Jede endliche Menge ist beschra&#x0308;nkt.
+</p>
+
+<p>
+<em>Satz</em>: Sei \(\{a_n\}_{n \in \mathbb {N}}\) mit \(a_n \in \mathbb {R}\), \(\lim _{n \to \infty } a_n = a \in \mathbb {R}\).<br />
+1. \(\bigcup _{n \in \mathbb {N}} \{a_n\} = M\) ist beschra&#x0308;nkt. 2. Fu&#x0308;r jede Teilfolge \(\{a_j\}\) gilt \({a_j}_k \xrightarrow {n \to \infty } a\).
+</p>
+
+<p>
+Es gelten die <b>Grenzwertsa&#x0308;tze</b> (\(\lim _{n \to \infty } a_n = a \in \mathbb {R}\), \(\lim _{n \to \infty } b_n = b \in \mathbb {R}\)):<br />
+1. \(\lim _{n \to \infty } (a_n + b_n) = a + b \qquad \) 2. \(\lim _{n \to \infty } (a_n \cdot b_n) = a \cdot b\)<br />
+3. \(\lim _{n \to \infty } \frac {a_n}{b_n} = \frac {a}{b}\) (\(b_n, b \not = 0\)) \(\qquad \) 4. \(\lim _{n \to \infty } |a_n| = |a|\)<br />
+Außerdem gilt \((\forall _{n \in \mathbb {N}}\; a_n \le b_n) \;\Rightarrow \; a \le b\).
+</p>
+
+<p>
+<b>Satz der zwei Polizisten</b>: Seien \(\{a_n\}\), \(\{b_n\}\), \(\{c_n\}\) reelle Folgen mit \(a_n, b_n \xrightarrow {n \to \infty } a \in \mathbb {R}\).<br />
+Dann gilt \((\forall _{n \ge N}\; a_n \le c_n \le b_n) \;\Rightarrow \; \lim _{n \to \infty } c_n = a\).
+</p>
+
+
+
+<h2 id="r-als-metrischer-raum">ℝ als metrischer Raum</h2>
+
+</p>
+
+
+<p>
+Sei \(M\) Menge, \(d: M \times M \rightarrow \mathbb {R}\) Funktion.<br />
+Dann heißt \(d\) <b>Abstandsfunktion (Metrik)</b>, falls folgende Axiome erfu&#x0308;llt sind:
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p>\(d(x,y) \ge 0\), \(\quad d(x,y) = 0 \;\Leftrightarrow \; x = y\)
+</p>
+
+</li>
+<li class="list-item-f1"><p>\(d(x,y) = d(y,x)\)
+</p>
+
+</li>
+<li class="list-item-f2"><p>\(d(x,z) \le d(x,y) + d(y,z)\)
+</p>
+</li>
+</ul>
+
+<p>
+\((M,d)\) heißt <b>metrischer Raum</b>. Bspw. ist \((\mathbb {R},d_{|\cdot |})\) mit \(d_{|\cdot |}(x,y) = |x - y|\) metrischer Raum.
+</p>
+
+<p>
+<b>triviale Metrik</b>: \(M \not = \emptyset \), \(d(x,y) = 0\) falls \(x = y\), \(d(x,y) = 1\) falls \(x \not = y\)
+</p>
+
+<p>
+<b>\(\varepsilon \)-Umgebung</b>: \(U_\varepsilon (x) = \{y \in M \;|\; d(x,y) &lt; \varepsilon \}\) (\(x \in M\), \(\varepsilon &gt; 0\))
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Konvergenz im Sinne der Metrik</b>: \(x_n, x \in M\)<br />
+\(x \overset {(M,d)}{=} \lim _{n \to \infty } x_n \; (x_n \xrightarrow {d} x) \;\Leftrightarrow \; \forall _{\varepsilon &gt; 0} \exists _{N(\varepsilon ) \in \mathbb {N}} \forall _{n \ge
+N(\varepsilon )}\; x_n \in U_\varepsilon (x)\)
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f3"><p>Wenn eine Folge \(x_n \in M\) konvergiert, dann hat sie genau einen Grenzwert.
+</p>
+</li>
+<li class="list-item-f4"><p>\(a_n \xrightarrow {(M,d)} a \;\Leftrightarrow \; d(a_n, a) \xrightarrow {\mathbb {R}} 0\)
+</p>
+</li>
+<li class="list-item-f5"><p>\(M’ \subset M\) heißt beschra&#x0308;nkt \(\;\Leftrightarrow \; \exists _{a \in M} \exists _{C \in \mathbb {R}} \forall _{a’ \in M’}\; d(a, a’) \le C\)
+</p>
+</li>
+</ul>
+
+<p>
+<b>Cauchy-Folge</b>: \(\{a_n\}_{n \in \mathbb {N}} \in \CF ((M,d)) \;\Leftrightarrow \; \forall _{\varepsilon &gt; 0} \exists _{N(\varepsilon ) \in \mathbb {N}} \forall _{n,m \ge N(\varepsilon
+)}\; d(a_n, a_m) &lt; \varepsilon \)
+</p>
+
+<p>
+Eine <b>konvergente Folge ist auch eine Cauchy-Folge</b>, d.&#x202f;h.<br />
+\(a_n \xrightarrow {(M,d)} a \;\Rightarrow \; \{a_n\}_{n \in \mathbb {N}} \in \CF ((M,d))\).
+</p>
+
+<p>
+Die Umkehrung ist nicht immer wahr. Ein metrischer Raum \((M,d)\) heißt <b>vollsta&#x0308;ndig</b>, falls jede Cauchy-Folge \(\{a_n\}_{n \in \mathbb {N}}\) aus \(M\) auch einen Grenzwert \(a\) in \(M\) besitzt.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Satz von <span class="textsc" >Cauchy</span></b>: \((\mathbb {R},d_{|\cdot |})\) ist vollsta&#x0308;ndig, d.&#x202f;h. eine Folge reeller Zahlen \(\{a_n\}_{n \in \mathbb {N}}\) konvergiert genau dann gegen
+ein \(a \in \mathbb {R}\), wenn \(\{a_n\}_{n \in \mathbb {N}} \in \CF ((\mathbb {R},d_{|\cdot |}))\).
+</p>
+
+<p>
+Der Beweis erfolgt basierend auf den Lemmas \(\{r_{n+n_0}\} \in x\) und \(\{|r_n|\} \in |x|\) (wenn \(x \in \mathbb {R}\), \(\{r_n\} \in x\)). Außerdem gilt in diesem Fall \(\lim _{n \to \infty } r_n \overset
+{\mathbb {R}}{=} x\). Der Beweis des Satzes von <span class="textsc" >Cauchy</span><br />
+(\(\{x_n\}_{n \in \mathbb {N}} \in \CF (\mathbb {R}) \;\Rightarrow \; \exists _{y \in \mathbb {R}}\; y = \lim _{n \to \infty } x_n\)) wird anschließend in drei Schritte aufgeteilt:
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f6"><p><em>Schritt 1</em>: Konstruktion eines „Kandidaten“ \(\{q_n\}_{n \in \mathbb {N}}\), \(q_n \in \mathbb {Q}\)
+</p>
+</li>
+<li class="list-item-f7"><p><em>Schritt 2</em>: \(\{q_n\} \in \CF (\mathbb {Q})\), d.&#x202f;h. \(\exists _{y \in \mathbb {R}}\; y \ni \{q_n\}\)
+</p>
+</li>
+<li class="list-item-f8"><p><em>Schritt 3</em>: \(\lim _{n \to \infty } x_n = y\)
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Monotonie von reellen Folgen</b>: \(\{x_n\}\) wa&#x0308;chst monoton, d.&#x202f;h. \(\{x_n\}\!\!\uparrow \) \(\;\Leftrightarrow \; \forall _{n \in \mathbb {N}}\; x_n \le x_{n+1}\)<br />
+\(\{x_n\}\) wa&#x0308;chst streng monoton, d.&#x202f;h. \(\{x_n\}\!\!\upuparrows \) \(\;\Leftrightarrow \; \forall _{n \in \mathbb {N}}\; x_n &lt; x_{n+1}\), analog \(\{x_n\}\!\!\downarrow \),
+\(\{x_n\}\!\!\downdownarrows \)
+</p>
+
+<p>
+<b>Beschra&#x0308;nktheit von reellen Folgen</b>: \(\{x_n\}\) ist beschra&#x0308;nkt \(\;\Leftrightarrow \; \exists _{C \in \mathbb {R}} \forall _{n \in \mathbb {N}}\; |x_n| \le C\)
+</p>
+
+<p>
+<b>Satz</b>: Jede monotone, beschra&#x0308;nkte Folge reeller Zahlen besitzt einen reellen Grenzwert.
+</p>
+
+
+
+<h2 id="maximum-minimum-infimum-supremum">Maximum, Minimum, Infimum, Supremum</h2>
+
+</p>
+
+
+<p>
+\(M \subset \mathbb {R}\), \(M \not = \emptyset \), \(a \in \mathbb {R}\)
+</p>
+
+<p>
+\(a = \max {M} \;\Leftrightarrow \; (a \in M) \land (\forall _{x \in M}\; x \le a) \quad \) <b>Maximum</b><br />
+\(a = \min {M} \;\Leftrightarrow \; (a \in M) \land (\forall _{x \in M}\; x \ge a) \quad \) <b>Minimum</b>
+</p>
+
+<p>
+\(c \in \mathbb {R}\) heißt <b>obere Schranke</b> von \(M \;\Leftrightarrow \; \forall _{x \in M}\; x \le c\)<br />
+\(c \in \mathbb {R}\) heißt <b>untere Schranke</b> von \(M \;\Leftrightarrow \; \forall _{x \in M}\; x \ge c\)
+</p>
+
+<p>
+\(M_{+}\) Menge aller oberen Schranken, \(M_{-}\) Menge aller unteren Schranken<br />
+M ist <b>beschra&#x0308;nkt nach oben</b> \(\;\Leftrightarrow \; M_{+} \not = \emptyset \), M ist <b>beschra&#x0308;nkt nach unten</b> \(\;\Leftrightarrow \; M_{-} \not = \emptyset \)
+</p>
+
+<p>
+\(a = \sup {M} \;\Leftrightarrow \; (M_{+} \not = \emptyset ) \land (a = \min {M_{+}}) \quad \) <b>Supremum</b><br />
+\(a = \inf {M} \;\Leftrightarrow \; (M_{-} \not = \emptyset ) \land (a = \max {M_{-}}) \quad \) <b>Infimum</b>
+</p>
+
+<p>
+<b>Satz</b>: Mengen, die nach oben/unten beschra&#x0308;nkt sind, haben ein Supremum/Infimum, d.&#x202f;h.<br />
+\(M_{+} \not = \emptyset \;\Rightarrow \; \exists _{a_{+} \in \mathbb {R}}\; a_{+} = \sup {M}\quad \) bzw. \(\quad M_{-} \not = \emptyset \;\Rightarrow \; \exists _{a_{-} \in \mathbb {R}}\;
+a_{-} = \inf {M}\).
+</p>
+
+
+
+<h2 id="die-eulersche-zahl-e">Die Eulersche Zahl e</h2>
+
+</p>
+
+
+<p>
+<b>Fakulta&#x0308;t</b>: \(n! \overset {\text {def.}}{=} 1 \cdot 2 \cdot \cdots \cdot (n-1) \cdot n\), \(\quad 0! \overset {\text {def.}}{=} 1\)
+</p>
+
+<p>
+\(x_n = \sum _{k=0}^{n} \frac {1}{k!} \;=\; \frac {1}{0!} + \frac {1}{1!} + \frac {1}{2!} + \cdots + \frac {1}{n!}\)
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f9"><p><em>Satz 1</em>: \(\exists \lim _{n \to \infty } x_n\) in \(\mathbb {R}\).<br />
+<b>Definition der Eulerschen Zahl</b>: \(e = \lim _{n \to \infty } x_n\)
+</p>
+</li>
+<li class="list-item-f10"><p><em>Satz 2</em>: Fu&#x0308;r \(n \ge 2\) gilt \(x_n &lt; e &lt; x_n \;+ \) \(\frac {1}{n \cdot n!}\).
+</p>
+</li>
+<li class="list-item-f11"><p><em>Satz 3</em>: \(e\) ist irrational, d.&#x202f;h. \(e \notin \mathbb {Q}\).
+</p>
+</li>
+<li class="list-item-f12"><p><em>Satz 4</em>: \(y_n =\) \((1 + \frac {1}{n})^n\), \(n \in \mathbb {N}\) \(\;\Rightarrow \; e = \lim _{n \to \infty } y_n\).
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="einige-wichtige-grenzwerte">Einige wichtige Grenzwerte</h2>
+
+</p>
+<table>
+
+<tr>
+<td class="tdp">
+
+<p>
+\(\lim _{n \to \infty } \frac {n}{a^n} = 0\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(a &gt; 1\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\lim _{n \to \infty } \frac {n^k}{a^n} = 0\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(a &gt; 1,\) \(k \in \mathbb {N}\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(\lim _{n \to \infty } \frac {1}{\sqrt [n]{n!}} = 0\)
+</p>
+</td>
+<td class="tdp">
+
+</td>
+<td class="tdp">
+
+<p>
+\(\lim _{n \to \infty } \frac {a^n}{n!} = 0\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(a &gt; 0\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(\lim _{n \to \infty } n^k a^n = 0\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(|a| &lt; 1,\) \(k \in \mathbb {N}\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\lim _{n \to \infty } \sqrt [n]{a} = 1\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(a &gt; 0\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(\lim _{n \to \infty } \frac {\log _a{n}}{n} = 0\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(a &gt; 1\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\lim _{n \to \infty } \sqrt [n]{n} = 1\)
+</p>
+</td>
+<td class="tdp">
+
+</td>
+</tr>
+
+</table>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>bestimmte Divergenz</b>:
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f13"><p>\(\lim _{n \to \infty } x_n = +\infty \;\Leftrightarrow \; \forall _{C &gt; 0} \exists _{N(C) \in \mathbb {N}} \forall _{n \ge N(C)}\; x_n \ge C\)
+</p>
+</li>
+<li class="list-item-f14"><p>\(\lim _{n \to \infty } x_n = -\infty \;\Leftrightarrow \; \forall _{C &gt; 0} \exists _{N(C) \in \mathbb {N}} \forall _{n \ge N(C)}\; x_n \le -C\)
+</p>
+</li>
+<li class="list-item-f15"><p>\(\lim _{n \to \infty } x_n = \infty \;\Leftrightarrow \; \forall _{C &gt; 0} \exists _{N(C) \in \mathbb {N}} \forall _{n \ge N(C)}\; |x_n| \ge C\)
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="der-euklidische-raum-rn">Der euklidische Raum ℝⁿ</h2>
+\(\mathbb {R}^n = \mathbb {R} \times \cdots \times \mathbb {R}\), \(\qquad x = (x_1, \ldots , x_n) \quad \) \(x_j \in \mathbb {R}\), \(j = 1, \ldots , n\)
+
+<p>
+\(x, y \in \mathbb {R}^n \;\rightarrow \; x + y = (x_1 + y_1, \ldots , x_n + y_n)\), \(\quad x \in \mathbb {R}^n\), \(\alpha \in \mathbb {R} \;\rightarrow \; \alpha \cdot x = (\alpha \cdot x_1,
+\ldots , \alpha \cdot x_n)\)
+
+<p>
+<b>algebraische Struktur</b>:<br />
+\(X = \mathbb {R}^n\), \(\mathbb {K} = \mathbb {R}\), \(\quad \boldsymbol{+}: X \times X \rightarrow X\), \(\;\boldsymbol{\cdot }: \mathbb {K} \times X \rightarrow X\) erfu&#x0308;llen die
+<em>Vektorraum-Axiome</em>:
+</p>
+<table>
+
+<tr>
+<td class="tdp">
+
+<p>
+(1) \(x + y = y + x\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+(5) \(1 \cdot x = x\) (\(1 \in \mathbb {K}\))
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+(2) \((x + y) + z = x + (y + z)\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+(6) \(\alpha (\beta x) = (\alpha \beta ) x\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+(3) \(\exists _{0 \in X}\; 0 + x = x\) fu&#x0308;r alle \(x \in X\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+(7) \((\alpha + \beta ) x = \alpha x + \beta x\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+(4) \(\forall _{x \in X} \exists _{-x \in X}\; x + (-x) = 0\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+(8) \(\alpha (x + y) = \alpha x + \alpha y\)
+</p>
+</td>
+</tr>
+
+</table>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>euklidische Struktur (Skalarprodukt/inneres Produkt)</b>: \(X\) Vektorraum u&#x0308;ber \(\mathbb {R}\)<br />
+\(\langle \cdot , \cdot \rangle : X \times X \rightarrow \mathbb {R}\) heißt <em>(reelles) Skalarprodukt</em>, falls folgende Eigenschaften erfu&#x0308;llt sind:
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f16"><p>\(\langle x, x \rangle \ge 0\), \(\qquad \langle x, x \rangle = 0 \Leftrightarrow x = 0\)
+</p>
+</li>
+<li class="list-item-f17"><p>\(\langle x, y \rangle = \langle y, x \rangle \)
+</p>
+</li>
+<li class="list-item-f18"><p>\(\langle \alpha ’ x’ + \alpha ’’ x’’, y \rangle = \alpha ’ \langle x’, y \rangle + \alpha ’’ \langle x’’, y \rangle \) &#x2003;&#x2003;(\(\alpha ’, \alpha ’’ \in \mathbb {R}\))
+</p>
+</li>
+</ul>
+
+<p>
+<em>Kanonisches Skalarprodukt im \(\mathbb {R}^n\)</em>: \(\langle x, y \rangle = x_1 y_1 + \cdots + x_n y_n\)<br />
+\((X, \langle \cdot , \cdot \rangle )\) heißt <em>euklidischer Raum</em>.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Struktur des normierten Raumes</b>: \(X\) Vektorraum u&#x0308;ber \(\mathbb {R}\)<br />
+\(\Vert \cdot \Vert : X \rightarrow \mathbb {R}\) heißt <em>Norm</em>, falls folgende Eigenschaften erfu&#x0308;llt sind:
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f19"><p>\(\Vert x \Vert \ge 0\), \(\qquad \Vert x \Vert = 0 \Leftrightarrow x = 0\)
+</p>
+</li>
+<li class="list-item-f20"><p>\(\Vert \alpha x \Vert = |\alpha | \Vert x \Vert \) &#x2003;&#x2003;(\(\alpha \in \mathbb {R}\))
+</p>
+</li>
+<li class="list-item-f21"><p>\(\Vert x + y \Vert \le \Vert x \Vert + \Vert y \Vert \)
+</p>
+</li>
+</ul>
+
+<p>
+Falls auf \(X\) ein (reelles) Skalarprodukt gegeben ist, so definiert \(\Vert x \Vert = \sqrt {\langle x, x \rangle } \ge 0\) die zum Skalarprodukt <em>kanonische Norm</em> und erfu&#x0308;llt somit automatisch die
+Normeigenschaften<br />
+(fu&#x0308;r \(X = \mathbb {R}^n\) ist \(\Vert x \Vert _{\mathbb {R}^n} = \sqrt {x_1^2 + \cdots + x_n^2}\)).<br />
+Fu&#x0308;r den Beweis ist die <em>Ungleichung von <span class="textsc" >Cauchy</span>-<span class="textsc" >Schwarz</span>-<span class="textsc" >Bunjakowskij</span></em> (<b>CSB</b>) wichtig:<br />
+\(|\langle x, y \rangle | \le \Vert x \Vert \cdot \Vert y \Vert \)
+</p>
+
+<p>
+\(d_{\Vert \cdot \Vert }(x,y) = \Vert x - y \Vert \) ist eine Abstandsfunktion, \((\mathbb {R}^n, d_{\Vert \cdot \Vert })\) metrischer Raum.
+</p>
+
+
+
+<h2 id="der-raum-cn">Der Raum ℂⁿ</h2>
+
+</p>
+
+
+<p>
+\(\mathbb {C}^n = \mathbb {C} \times \cdots \times \mathbb {C}\), \(\qquad z = (z_1, \ldots , z_n) \quad \) \(z_j \in \mathbb {C}\), \(j = 1, \ldots , n\)
+</p>
+
+<p>
+\(z, w \in \mathbb {C}^n \;\rightarrow \; z + w = (z_1 + w_1, \ldots , z_n + w_n)\), \(\quad z \in \mathbb {C}^n\), \(\alpha \in \mathbb {C} \;\rightarrow \; \alpha \cdot z = (\alpha \cdot z_1,
+\ldots , \alpha \cdot z_n)\)
+</p>
+
+<p>
+\(X = \mathbb {C}^n\), \(\mathbb {K} = \mathbb {C}\) Vektorraum u&#x0308;ber \(\mathbb {K} = \mathbb {C}\), Axiome (1) – (8) erfu&#x0308;llt
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>hermitesche Struktur (komplexes Skalarprodukt)</b>: \(X\) Vektorraum u&#x0308;ber \(\mathbb {C}\)<br />
+\(\langle \cdot , \cdot \rangle : X \times X \rightarrow \mathbb {C}\) heißt <em>(komplexes) Skalarprodukt</em>, falls folgende Eigenschaften erfu&#x0308;llt sind:
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f22"><p>\(\langle z, z \rangle \ge 0\), \(\qquad \langle z, z \rangle = 0 \Leftrightarrow z = 0\)
+</p>
+</li>
+<li class="list-item-f23"><p>\(\langle z, w \rangle = \overline {\langle w, z \rangle }\)
+</p>
+</li>
+<li class="list-item-f24"><p>\(\langle \alpha ’ z’ + \alpha ’’ z’’, w \rangle = \alpha ’ \langle z’, w \rangle + \alpha ’’ \langle z’’, w \rangle \) &#x2003;&#x2003;(\(\alpha ’, \alpha ’’ \in \mathbb {C}\))
+</p>
+</li>
+</ul>
+
+<p>
+<em>Kanonisches Skalarprodukt im \(\mathbb {C}^n\)</em>: \(\langle z, w \rangle = z_1 \overline {w_1} + \cdots + z_n \overline {w_n}\)
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>normierter Raum</b>: \(X\) Vektorraum u&#x0308;ber \(\mathbb {C}\)<br />
+\(\Vert \cdot \Vert : X \rightarrow \mathbb {R}\) heißt <em>Norm</em>, falls folgende Eigenschaften erfu&#x0308;llt sind:
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f25"><p>\(\Vert z \Vert \ge 0\), \(\qquad \Vert z \Vert = 0 \Leftrightarrow z = 0\)
+</p>
+</li>
+<li class="list-item-f26"><p>\(\Vert \alpha z \Vert = |\alpha | \Vert z \Vert \) &#x2003;&#x2003;(\(\alpha \in \mathbb {C}\))
+</p>
+</li>
+<li class="list-item-f27"><p>\(\Vert z + w \Vert \le \Vert z \Vert + \Vert w \Vert \)
+</p>
+</li>
+</ul>
+
+<p>
+Fu&#x0308;r \(\Vert z \Vert = \sqrt {\langle z, z \rangle }\) sind automatisch die Normeigenschaften erfu&#x0308;llt, wobei die Dreiecksungleichung auf \(|\langle z, w \rangle | \le \Vert z \Vert \cdot
+\Vert w \Vert \) (CSB) basiert.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+Vektoren des \(\mathbb {C}^n\) ko&#x0308;nnen als \(n\)-Tupel komplexer Zahlen \(z_j = x_j + iy_j\) dargestellt werden:<br />
+\(\mathbb {C}^n \ni z = (z_1, \ldots , z_n) = (x_1 + iy_1, \ldots , x_n + iy_n) \quad \) (wobei \(x_j, y_j \in \mathbb {R}\)).<br />
+Nun ko&#x0308;nnen \(x_j\), \(y_j\) auch als Elemente von \(\mathbb {R}^{2n}\) angesehen werden: \(\mathbb {R}^{2n} \ni (x_1, y_1, x_2, y_2, \ldots , x_n, y_n)\)<br />
+\(\Vert z \Vert ^2 = \sum _{j=1}^n z_j \overline {z_j} = \sum _{j=1}^n (x_j^2 + y_j^2) = \sum _{j=1}^n x_j^2 + \sum _{j=1}^n y_j^2\)
+</p>
+
+<p>
+Bzgl. der Addition von Vektoren und der Norm ist es unerheblich, ob man die Vektoren als \(n\)-Tupel komplexer Zahlen oder als \(2n\)-Tupel reeller Zahlen betrachtet (\(\mathbb {C}^n\) und \(\mathbb {R}^{2n}\)
+<b>isomorph</b>). Dies gilt nicht mehr fu&#x0308;r die Multiplikation mit Skalaren (dort sind \(\mathbb {C}^n\) und \(\mathbb {R}^{2n}\) verschieden).
+</p>
+
+
+
+<h2 id="konvergenz-im-rn-und-cn">Konvergenz im ℝⁿ und ℂⁿ</h2>
+
+</p>
+
+
+<p>
+\((X, \Vert \cdot \Vert )\) normierter Raum, z.&#x202f;B. \((\mathbb {R}^n, \Vert \cdot \Vert _{\mathbb {R}^n})\) oder \((\mathbb {C}^n, \Vert \cdot \Vert _{\mathbb {C}^n})\).
+</p>
+
+<p>
+\(d(x,y) = \Vert x - y \Vert \quad \) (\(x, y \in X\)) ist Abstandsfunktion auf \(X\). Daher ist \((X, d_{\Vert \cdot \Vert })\) ein <b>metrischer Raum</b> mit induzierter Abstandsfunktion \(d_{\Vert \cdot
+\Vert }(x, y) = \Vert x - y \Vert \).
+</p>
+
+<p>
+Damit lassen sich automatisch auch die Definitionen <em>\(\varepsilon \)-Umgebung</em>, <em>Konvergenz</em> und <em>Fundamentalfolge</em> auf \(X\) u&#x0308;bertragen:
+</p>
+
+<p>
+<b>\(\varepsilon \)-Umgebung</b>: \(y \in X\); \(U_\varepsilon (y) = \{x \in X \;|\; \Vert x - y \Vert &lt; \varepsilon \}\)<br />
+<b>Konvergenz</b>: \(x_m \xrightarrow {\Vert \cdot \Vert } y \quad \Leftrightarrow \quad \forall _{\varepsilon &gt; 0} \exists _{N_\varepsilon } \forall _{n \ge N_\varepsilon }\; x_m \in
+U_\varepsilon (y)\), d.&#x202f;h. \(\Vert x_m - y \Vert &lt; \varepsilon \)<br />
+<b>Fundamentalfolge</b>: \(\{x_m\}_{m \in \mathbb {N}} \in \CF (X, \Vert \cdot \Vert ) \quad \Leftrightarrow \quad \forall _{\varepsilon &gt; 0} \exists _{N_\varepsilon } \forall _{n, m \ge
+N_\varepsilon }\; \Vert x_m - x_n \Vert &lt; \varepsilon \)
+</p>
+
+<p>
+<b>Beschra&#x0308;nktheit</b>: \(\{x_m\}_{m \in \mathbb {N}}\) (\(x_m \in X\)) ist beschra&#x0308;nkt \(\quad \Leftrightarrow \quad \exists _{C} \forall _{m \in \mathbb {N}}\; \Vert x_m \Vert \le
+C\)
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Satz</b>: &#x2003;\(\{x_m\}_{m \in \mathbb {N}}\), \(x_m \in \mathbb {K}^n\), \(y’, y’’ \in \mathbb {K}^n\)
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f28"><p>\(\quad (x_m \xrightarrow {\Vert \cdot \Vert } y’) \land (x_m \xrightarrow {\Vert \cdot \Vert } y’’) \;\Rightarrow \; y’ = y’’\)
+</p>
+</li>
+<li class="list-item-f29"><p>\(\quad y’ = \lim _{n \to \infty } x_m \;\Leftrightarrow \; y’ = \lim _{n \to \infty } x_{m + m_0}\)
+</p>
+</li>
+<li class="list-item-f30"><p>\(\quad y’ = \lim _{n \to \infty } x_m \;\Rightarrow \; \{x_m\}_{m \in \mathbb {N}}\) beschra&#x0308;nkt
+</p>
+</li>
+</ul>
+
+<p>
+<b>Grenzwertsa&#x0308;tze im \(\mathbb {K}^n\)</b>: &#x2003;\(\{x_m’\}_{m \in \mathbb {N}}\), \(\{x_m’’\}_{m \in \mathbb {N}}\), \(x_m’, x_m’’ \in \mathbb {K}^n\),<br />
+\(\{\alpha _k\}_{k \in \mathbb {N}}\), \(\alpha _k \in \mathbb {K}\), &#x2003;\(y’, y’’ \in \mathbb {K}^n\), \(\beta \in \mathbb {K}\), &#x2003;\(x_m’ \xrightarrow {\Vert \cdot \Vert } y’\), \(x_m’’
+\xrightarrow {\Vert \cdot \Vert } y’’\), \(\alpha _k \xrightarrow {|\cdot |} \beta \)
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f31"><p>\(\quad \lim _{m \to \infty } (x_m’ + x_m’’) \;\overset {\mathbb {K}^n}{=}\; y’ + y’’\)
+</p>
+</li>
+<li class="list-item-f32"><p>\(\quad \lim _{m \to \infty } (\alpha _m x_m’) \;\overset {\mathbb {K}^n}{=}\; \beta y’\)
+</p>
+</li>
+<li class="list-item-f33"><p>\(\quad \lim _{m \to \infty } \langle x_m’, x_m’’ \rangle _{\mathbb {K}^n} \;\overset {\mathbb {K}}{=}\; \langle y’, y’’ \rangle \)
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Schreibweise</em>: \(x_m = (\xi _m^{(1)}, \ldots , \xi _m^{(n)}) \in \mathbb {K}^n\), \(\xi _m^{(j)} \in \mathbb {K}\)<br />
+<b>Projektion auf die \(j\)-te Komponente</b>: \(\pi _j: \mathbb {K}^n \rightarrow \mathbb {K}\), \(\pi _j(x) = \pi _j(\xi ^{(1)}, \ldots , \xi ^{(n)}) = \xi ^{(j)}\)<br />
+es gilt: \(\pi _j(\alpha ’x’ + \alpha ’’x’’) = \alpha ’\pi _j(x’) + \alpha ’’\pi _j(x’’)\)
+</p>
+
+<p>
+<b>Basisvektoren</b>: \(e_j = (0, \ldots , 0, 1, 0, \ldots , 0)\) mit der \(1\) an der \(j\)-ten Stelle, sonst \(0\), \(\Vert e_j \Vert _{\mathbb {K}^n} = 1\)<br />
+mit \(x = \sum _{j=1}^n \pi _j(x) e_j\) folgt \(|\xi ^{(j)}| = |\pi _j(x)| \le \Vert x \Vert \le \sum _{j=1}^n |\xi ^{(j)}|\)
+</p>
+
+<p>
+<b>Satz (Konvergenz)</b>: \(y \overset {\mathbb {K}^n}{=} \lim _{m \to \infty } x_m \quad \Leftrightarrow \quad \forall _{j=1,\ldots ,n}\; \pi _j(y) \overset {\mathbb {K}}{=} \lim _{m \to
+\infty } \pi _j(x_m)\)
+</p>
+
+<p>
+<b>Satz (Cauchy-Folgen)</b>: \(\{x_m\}_{m \in \mathbb {N}} \in \CF (\mathbb {K}^n) \quad \Leftrightarrow \quad \forall _{j=1,\ldots ,n}\; \{\pi _j(x_m)\}_{m \in \mathbb {N}} \in \CF (\mathbb
+{K})\)
+</p>
+
+<p>
+<b>Folgerung</b>: \(\mathbb {R}^n\) und \(\mathbb {C}^n\) sind vollsta&#x0308;ndig.
+</p>
+
+
+
+<h2 id="offene-und-abgeschlossene-mengen">Offene und abgeschlossene Mengen</h2>
+
+</p>
+
+
+<p>
+\((M,d)\) metrischer Raum, \(X \subset M\)
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f34"><p><b>Ha&#x0308;ufungspunkt</b>: \(x_0 \in M\) heißt Ha&#x0308;ufungspunkt (HP) von \(X\) bzw. \(x_0 \in \acc (X)\)<br />
+\(\Leftrightarrow \quad \forall _{\varepsilon &gt; 0}\;\; U_\varepsilon (x_0) \cap (X \setminus \{x_0\}) \not = \emptyset \)
+</p>
+</li>
+<li class="list-item-f35"><p><b>isolierter Punkt</b>: \(x_0 \in X\) ist ein isolierter Punkt von \(X\) bzw. \(x_0 \in \iso (X)\)<br />
+\(\Leftrightarrow \quad \exists _{\varepsilon &gt; 0}\;\; U_\varepsilon (x_0) \cap (X \setminus \{x_0\}) = \emptyset \) &#x2003;&#x2003;d.&#x202f;h. \(\iso (X) = X \setminus \acc (X)\)
+</p>
+</li>
+<li class="list-item-f36"><p><b>innerer Punkt</b>: \(x_0 \in X\) heißt innerer Punkt von \(X\) bzw. \(x_0 \in \interior (X)\)<br />
+\(\Leftrightarrow \quad \exists _{\varepsilon &gt; 0}\;\; U_\varepsilon (x_0) \subset X\)
+</p>
+</li>
+<li class="list-item-f37"><p><b>a&#x0308;ußerer Punkt</b>: \(x_0 \in M\) heißt a&#x0308;ußerer Punkt zu \(X\) bzw. \(x_0 \in \exterior (X)\)<br />
+\(\Leftrightarrow \quad \exists _{\varepsilon &gt; 0}\;\; U_\varepsilon (x_0) \subset X_M^c \quad \Leftrightarrow \quad \exists _{\varepsilon &gt; 0}\;\; U_\varepsilon (x_0) \cap X =
+\emptyset \)
+</p>
+</li>
+<li class="list-item-f38"><p><b>Randpunkt</b>: \(x_0 \in M\) heißt Randpunkt von \(X\) bzw. \(x_0 \in \partial X\)<br />
+\(\Leftrightarrow \quad (x_0 \notin \interior (X)) \land (x_0 \notin \exterior (X)) \quad \Leftrightarrow \quad \forall _{\varepsilon &gt; 0}\;\; (U_\varepsilon (x_0) \cap X_M^c \not =
+\emptyset ) \land (U_\varepsilon (x_0) \cap X \not = \emptyset )\)
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+\(\interior (X)\), \(\exterior (X)\), \(\partial X\) sind paarweise disjunkt und \(M = \interior (X) \cup \partial X \cup \exterior (X)\).<br />
+Dabei gilt \(X \subset \interior (X) \cup \partial X\), \(\quad X_M^c \subset \exterior (X) \cup \partial X\) &#x2003;sowie \(\partial X = \partial X_M^c\), da \((X_M^c)_M^c = X\).
+</p>
+
+<p>
+<em>Lemma</em>: \(\interior (X) = X \setminus \partial X\), \(\quad \exterior (X) = X_M^c \setminus \partial X\)<br />
+\(X \cup \acc (X) = X \cup \partial X = \interior (X) \cup \partial X\)
+</p>
+
+<p>
+Sei \(X \subset X_1 \subset M\), dann gilt auch \(\acc (X) \subset \acc (X_1)\), \(\interior (X) \subset \interior (X_1)\) und \(\exterior (X) \supset \exterior (X_1)\) (u&#x0308;ber isolierte Punkte und
+den Rand ist keine Aussage mo&#x0308;glich).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>offene und abgeschlossene Mengen</b>:
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f39"><p>\(X\) ist <em>offen</em> in \((M,d)\) \(\quad \Leftrightarrow \quad X = \interior (X) \quad \Leftrightarrow \quad X \cap \partial X = \emptyset \)
+</p>
+</li>
+<li class="list-item-f40"><p>\(X\) ist <em>abgeschlossen</em> in \((M,d)\)<br />
+\(\Leftrightarrow \quad X \cup \partial X = X = \partial X \cup \interior (X) = X \cup \acc (X) \quad \Leftrightarrow \quad \acc (X) \subset X\)
+</p>
+</li>
+</ul>
+
+<p>
+<b>Satz</b>: \(X\) offen \(\Leftrightarrow X_M^c\) abgeschlossen, \(\quad X\) abgeschlossen \(\Leftrightarrow X_M^c\) offen
+</p>
+
+<p>
+<b>Familien von offenen Mengen</b>: \(F_\alpha \subset M\) offen, \(\alpha \in A\) Indexmenge \(\;\Rightarrow \; F = \bigcup _{\alpha \in A} F_\alpha \) offen<br />
+<em>endlich viele Mengen</em>: \(F_k\) offen, \(k = 1, \ldots , n\) (endlich viele) \(\;\Rightarrow \; F = \bigcap _{k=1}^n F_k\) offen
+</p>
+
+<p>
+<b>Familien von abgeschlossenen Mengen</b>:<br />
+\(G_\alpha \subset M\) abgeschlossen \(\;\Rightarrow \; G = \bigcap _{\alpha \in A} G_\alpha \) abgeschlossen<br />
+<em>endlich viele Mengen</em>: \(G_k\) abgeschlossen, \(k = 1, \ldots , n\) \(\;\Rightarrow \; G = \bigcup _{k=1}^n G_k\) abgeschlossen
+</p>
+
+<p>
+\(\emptyset \) und \(M\) sind sowohl abgeschlossen als auch offen.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+\(\mathbb {R}^n\), \(\mathbb {C}^n\) als <b>topologische Ra&#x0308;ume</b>:<br />
+\(2^M\) Menge aller Teilmengen aus \(M\), \(T \subset 2^M\) nennt man <b>Topologie</b>, falls
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f41"><p>\(\emptyset \in T\), \(M \in T\)
+</p>
+</li>
+<li class="list-item-f42"><p>\(\{F_\alpha \}_{\alpha \in A}\), \(F_\alpha \in T\) \(\;\Rightarrow \; \bigcup _{\alpha \in A} F_\alpha \in T\)
+</p>
+</li>
+<li class="list-item-f43"><p>\(\{F_k\}_{k=1}^n\), \(F_k \in T\) \(\;\Rightarrow \; \bigcap _{k=1}^n F_k \in T\)
+</p>
+</li>
+</ul>
+
+<p>
+\((M,T)\) heißt dann <b>topologischer Raum</b>, \(F \in T\) <b>Umgebungen/offene Mengen</b>.<br />
+Mit \(M = \mathbb {R}^n\) oder \(M = \mathbb {C}^n\), \(T \subset 2^M\) sowie \(F \in T \;\Leftrightarrow \; F\) offen ist eine Topologie definiert.
+</p>
+
+<p>
+<em>Lemma</em>: \(\interior (X)\) ist offen. &#x2003;&#x2003;<em>Folgerung</em>: \(\exterior (X)\) ist offen.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Abschluss</b>: \(\overline {X} = X \cup \partial X = X \cup \acc (X)\) ist der Abschluss der Menge \(X\).
+</p>
+
+<p>
+<b>Sa&#x0308;tze u&#x0308;ber den Abschluss</b>: \(\overline {X}\) ist abgeschlossen.<br />
+\(\overline {X}\) ist die kleinste abgeschlossene Menge, die \(X\) entha&#x0308;lt, d.&#x202f;h. \(\overline {X} = \bigcap _{Y \supset X,\; Y \text {abgeschlossen}} Y\).<br />
+\(X\) ist abgeschlossen \(\;\Leftrightarrow \; X = \overline {X} \qquad \) sowie \(\qquad \overline {\overline {X}} = \overline {X}\).<br />
+\(\overline {X}\) ist die Menge aller mo&#x0308;glichen Grenzwerte fu&#x0308;r Folgen \(\{x_n\}_{n \in \mathbb {N}}\), \(x_n \in X\).
+</p>
+
+
+
+<h2 id="grenzwerte-von-funktionen">Grenzwerte von Funktionen</h2>
+
+</p>
+
+
+<p>
+\((M_1,d_1)\), \((M_2,d_2)\) metrische Ra&#x0308;ume, \(X \subset M_1\), \(Y \subset M_2\), \(f: X \rightarrow Y\) Funktion von \(X\) nach \(Y\)
+</p>
+
+<p>
+<b>\(\varepsilon \)-\(\delta \)-Definition</b>: Sei \(x_0 \in \acc (X)\), \(y \in Y\).<br />
+\(y = \lim _{x \to x_0} f(x) \quad \Leftrightarrow \quad \forall _{\varepsilon &gt; 0} \exists _{\delta &gt; 0} \forall _{x \in X \cap U_\delta (x_0),\; x \not = x_0}\; f(x) \in U_\varepsilon
+(y)\)
+</p>
+
+<p>
+<b>Folgendefinition</b>: Sei \(x_0 \in \acc (X)\), \(y \in Y\).<br />
+\(y = \lim _{x \to x_0} f(x) \quad \Leftrightarrow \quad \forall _{\{x_k\} \xrightarrow {k \to \infty } x_0,\; x_k \in X \setminus \{x_0\}}\; y_k = f(x_k) \xrightarrow {k \to \infty } y\)
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Satz</b>: \(f: X \rightarrow Y\), \(x_0 \in \acc (X)\), \(y_0 = \lim _{x \to x_0} f(x)\)
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f44"><p>\(y_0\) ist eindeutig bestimmt.
+</p>
+</li>
+<li class="list-item-f45"><p>Existenz/Wahl des Grenzwertes ha&#x0308;ngt nicht vom Verhalten von \(f(x)\) fu&#x0308;r \(d(x,x_0) \ge \varepsilon \) ab.
+</p>
+</li>
+<li class="list-item-f46"><p>\(\{f(x) \;|\; x \in U_\delta (x_0) \cap X\}\) ist fu&#x0308;r geeignetes \(\delta &gt; 0\) beschra&#x0308;nkt.
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Grenzwertsa&#x0308;tze bei vektorwertigen Funktionen (Spezialfall)</b>: \(\mathbb {K} = \mathbb {R}\) oder \(\mathbb {K} = \mathbb {C}\),<br />
+\(f, g: X \subset M_1 \rightarrow \mathbb {K}^n\), &#x2003;\(\alpha : X \subset M_1 \rightarrow \mathbb {K}\), &#x2003;\(x_0 \in \acc (X)\),<br />
+\(y_0, z_0 \in \mathbb {K}^n\), \(\beta \in \mathbb {K}\), &#x2003;\(y_0 = \lim _{x \to x_0} f(x)\), \(z_0 = \lim _{x \to x_0} g(x)\), \(\beta = \lim _{x \to x_0} \alpha (x)\)
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f47"><p>  \(\lim _{x \to x_0} (f(x) + g(x)) = y_0 + z_0\)
+</p>
+</li>
+<li class="list-item-f48"><p>  \(\lim _{x \to x_0} (\alpha (x) \cdot g(x)) = \beta \cdot z_0\)
+</p>
+</li>
+<li class="list-item-f49"><p>  \(\lim _{x \to x_0} \langle f(x), g(x) \rangle = \langle y_0, z_0 \rangle \)
+</p>
+</li>
+<li class="list-item-f50"><p>  \(\lim _{x \to x_0} f|_{X_0}(x) = y_0\) &#x2003;&#x2003;(\(X_0 \subset X\), \(x_0 \in \acc (X_0)\))
+</p>
+</li>
+<li class="list-item-f51"><p>  \(\lim _{x \to x_0} \frac {1}{\alpha (x)} = \frac {1}{\beta }\) &#x2003;&#x2003;(\(\alpha (x) \not = 0\), \(\beta \not = 0\))
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>links-/rechtsseitiger Grenzwert</b>: \(f: X \subset \mathbb {R} \rightarrow M_2\), \(X \subset [a,b]\), \(x_0 \in \acc (X)\), \(a &lt; x_0 &lt; b\)<br />
+falls \(x_0 \in \acc (X_-)\) mit \(X_- = X \cap \left [a,x_0\right [\), ist \(\lim _{x \to x_0 - 0} f(x) = \lim _{x \to x_0} f|_{X_-}(x)\) der <em>linkss. GW</em><br />
+falls \(x_0 \in \acc (X_+)\) mit \(X_+ = X \cap \left ]x_0,b\right ]\), ist \(\lim _{x \to x_0 + 0} f(x) = \lim _{x \to x_0} f|_{X_+}(x)\) der <em>rechtss. GW</em>
+</p>
+
+<p>
+es gilt: \((y = \lim _{x \to x_0} f(x)) \;\Leftrightarrow \; (y = \lim _{x \to x_0 - 0} f(x)) \land (y = \lim _{x \to x_0 + 0} f(x))\)
+</p>
+
+<p>
+<b>Satz</b>: \(f: \left ]a,b\right [ \rightarrow \mathbb {R}\), \(a &lt; b\) &#x2003;&#x2003;Ist \(f\) monoton wachsend und beschra&#x0308;nkt nach oben, dann gibt es den Grenzwert \(\lim _{x \to b}
+f(x)\) (analog fu&#x0308;r monoton fallende Funktionen).
+</p>
+
+
+
+<h2 id="die-komplexe-exponentialfunktion-und-die-eulersche-formel">Die komplexe Exponentialfunktion und die <span style="font-variant: small-caps;">Euler</span>sche Formel</h2>
+
+</p>
+
+
+<p>
+\(z \in \mathbb {C}\); &#x2003;\(t_n(z) = 1 + \sum _{k=1}^n\) \(\frac {z^k}{k!}\), &#x2003;\(n \in \mathbb {N}\)
+</p>
+
+<p>
+<b>Satz 1</b>: Die Folge \(\{t_n(z)\}_{n \in \mathbb {N}}\) besitzt fu&#x0308;r jedes \(z \in \mathbb {C}\) einen Grenzwert \(\exp (z) \overset {\text {def.}}{=} \lim _{n \to \infty } t_n(z)\).<br />
+Es ist \(\exp (0) = 1\) sowie \(\exp (1) = e\).
+</p>
+
+<p>
+<b>Satz 2</b> (Multiplikativita&#x0308;t): Fu&#x0308;r \(z, w \in \mathbb {C}\) ist \(\exp (z + w) = \exp (z) \cdot \exp (w)\).
+</p>
+
+<p>
+<b>Folgerungen</b>: \(\exp (n) = e^n\), \(\exp (\frac {n}{m}) = e^{n/m}\) (\(n, m \in \mathbb {N}\)), \(\exp (q) = e^q\) (\(q \in \mathbb {Q}\)),<br />
+\(\exp (z) \not = 0\), \(\exp (-z) = \frac {1}{\exp (z)}\) (\(z \in \mathbb {C}\))
+</p>
+
+<p>
+<b>Satz 3</b>: \(|\exp (z) - z - 1| \le |z|^2\) fu&#x0308;r \(z \in \mathbb {C}\), \(|z| &lt; 1\)
+</p>
+
+<p>
+<b>Satz 4</b>: \(z = x + iy \in \mathbb {C}\), \(x = \Re z\), \(y = \Im z\)
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f52"><p>  \(\exp (\overline {z}) = \overline {\exp (z)}\)
+</p>
+</li>
+<li class="list-item-f53"><p>  \(|\exp (z)| = \exp (x)\) &#x2003;(von \(y\) unabha&#x0308;ngig)
+</p>
+</li>
+<li class="list-item-f54"><p>  \(\arg (\exp (z)) = \arg (\exp (iy)) \mod 2\pi \) &#x2003;(von \(x\) unabha&#x0308;ngig)
+</p>
+</li>
+<li class="list-item-f55"><p>  \(\arg (\exp (iy)) = y \mod 2\pi \)
+</p>
+</li>
+</ul>
+
+<p>
+<b>Folgerung</b>: \(\exp (iy) = \cos y + i \sin y = e^{iy}\), da \(|\exp (iy)| = |\exp (0)| = 1\), \(\arg (\exp (iy)) = y\),<br />
+d.&#x202f;h. fu&#x0308;r \(z = x + iy\) gilt \(\exp (z) = \exp (x + iy) = \exp (x) \exp (iy) = e^x e^{iy}\)
+</p>
+
+<p>
+<b>Reihendarstellung von Sinus/Kosinus</b>:<br />
+\(\sin z = \Im (\exp (iy)) =\) \(z - \frac {z^3}{3!} + \frac {z^5}{5!} - \frac {z^7}{7!} \pm \cdots \), &#x2003;\(\cos z = \Re (\exp (iy)) =\) \(1 - \frac {z^2}{2!} + \frac {z^4}{4!} - \frac
+{z^6}{6!} \pm \cdots \)
+</p>
+
+
+
+<h2 id="stetige-funktionen">Stetige Funktionen</h2>
+
+</p>
+
+
+<p>
+\((M_1,d_1)\), \((M_2,d_2)\) metrische Ra&#x0308;ume, \(f: X \subset M_1 \rightarrow M_2\)<br />
+<b>Stetigkeit</b>: \(f\) ist stetig im Punkt \(x_0 \in X\) \(\;\Leftrightarrow \; (x_0 \in \iso (X)) \lor (\lim _{x \to x_0} f(x) = f(x_0))\)<br />
+\(f\) ist auf \(X\) stetig \(\;\Leftrightarrow \;\) \(f\) ist in allen \(x_0 \in X\) stetig
+</p>
+
+<p>
+\(f\) ist stetig in \(x_0 \in X\) \(\;\Leftrightarrow \; \forall _{\varepsilon &gt; 0} \exists _{\delta = \delta (\varepsilon , x_0)} \forall _{x \in U_\delta (x_0) \cap X}\; f(x) \in U_\varepsilon
+(f(x_0))\)<br />
+\(\;\Leftrightarrow \; \forall _{\{x_n\}_{n \in \mathbb {N}},\; x_n \in X,\; x_n \xrightarrow {n \to \infty } x_0}\; \lim _{n \to \infty } f(x_n) = f(x_0)\)
+</p>
+
+<p>
+<b>Stetigkeit bei vektorwertigen Funktionen (Spezialfall)</b>:<br />
+\(f, g: X \subset M_1 \rightarrow \mathbb {K}^n\), \(\alpha : X \subset M_1 \rightarrow \mathbb {K}\), \(f, g, \alpha \) stetig in \(x_0 \in X\) (auf \(X\))<br />
+\(\Rightarrow \;\) \(f \pm g\), \(\langle f, g \rangle _{\mathbb {K}^n}\), \(\alpha \cdot f\) stetig in \(x_0 \in X\) (auf \(X\)), \(\frac {1}{\alpha (x)}\) stetig in \(x_0 \in X\) bzw. auf \(X\) (\(\alpha (x)
+\not = 0\))<br />
+\(x_0 \in X_0 \subset X\), \(f: X \rightarrow M_2\) stetig \(\;\Rightarrow \;\) \(f|_{X_0}: X_0 \rightarrow M_2\) stetig
+</p>
+
+<p>
+<b>Satz</b>: Polynome \(P_n(z)\), der Betrag \(|z|\) und \(\exp (z)\) sind stetig auf \(\mathbb {C}\),<br />
+d.&#x202f;h. auch \(\sin z\) und \(\cos z\) sind stetig auf \(\mathbb {C}\).
+</p>
+
+<p>
+Ist \(f\) in \(x_0 \in X\) stetig, dann ist \(f\) in einer geeigneten \(\delta \)-Umgebung von \(x_0\) beschra&#x0308;nkt (\(\delta &gt; 0\)).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Formen der Unstetigkeit bei reellen Funktionen</b>: \(f: X \subset \left ]a,b\right [ \rightarrow \mathbb {R}\), \(x_0 \in \left ]a,b\right [\)
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f56"><p><em>Hebbare Unstetigkeit</em>: \(x_0 \notin X\), d.&#x202f;h. \(f\) ist im Punkt \(x_0\) nicht definiert, aber<br />
+\(\exists \lim _{x \to x_0 - 0} f(x) = \lim _{x \to x_0 + 0} f(x) \;\Rightarrow \;\) \(\tilde {f}(x) =\) \(\begin {cases} \lim _{x \to x_0} f(x) &amp; x = x_0 \\ f(x) &amp; x \not = x_0 \end
+{cases}\) ist stetig in \(x_0\).
+</p>
+</li>
+<li class="list-item-f57"><p><em>Unstetigkeit vom Typ 1</em>: \(\exists \lim _{x \to x_0 - 0} f(x)\), \(\exists \lim _{x \to x_0 + 0} f(x)\), aber \(f(x_0 - 0) \not = f(x_0 + 0)\)<br />
+\(\Rightarrow \) Sprung der Funktion (verschiedene Grenzwerte)
+</p>
+</li>
+<li class="list-item-f58"><p><em>Unstetigkeit vom Typ 2</em>: \(f(x_0 - 0)\) oder \(f(x_0 + 0)\) existiert nicht
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Lemma</em>: \(f: [a,b] \rightarrow \mathbb {R}\) stetig, \(x_0 \in [a,b]\), \(f(x_0) \not = 0 \;\Rightarrow \; \exists _{\delta &gt; 0} \forall _{x \in U_\delta (x_0) \cap [a,b]}\; \sgn f(x) =
+\sgn f(x_0)\)
+</p>
+
+<p>
+<b>Satz von <span class="textsc" >Bolzano</span>-<span class="textsc" >Cauchy</span></b>: \(f: [a,b] \rightarrow \mathbb {R}\) stetig mit \(f(a)f(b) &lt; 0\) \(\quad \Rightarrow \quad \exists _{c
+\in \left ]a,b\right [}\; f(c) = 0\)
+</p>
+
+<p>
+Ist \(f\!\!\upuparrows \) oder \(f\!\!\downdownarrows \), dann ist \(c\) eindeutig bestimmt.<br />
+Anwendung: eindeutige Lo&#x0308;sungen \(\sqrt [n]{g}\), \(\ln g\), Existenz der Umkehrfunktionen
+</p>
+
+<p>
+<b>Folgerung (Zwischenwertsatz)</b>: \(f: [a,b] \rightarrow \mathbb {R}\) stetig, \(x_1, x_2 \in [a,b]\) mit \(x_1 &lt; x_2\),<br />
+\(y_- = \min \{f(x_1), f(x_2)\}\), \(y_+ = \max \{f(x_1), f(x_2)\}\) \(\;\Rightarrow \; \forall _{\eta \in \left ]y_-,y_+\right [} \exists _{c(\eta ) \in \left ]x_1,x_2\right [}\; f(c(\eta )) =
+\eta \)
+</p>
+
+<p>
+<b>Umkehrung als Satz</b>: \(f: [a,b] \rightarrow \mathbb {R}\), \(f\!\!\uparrow \) (wichtig!), \(f\) nimmt alle Werte \(y \in [f(a), f(b)]\) an<br />
+\(\Rightarrow \; f\) stetig auf \([a,b]\)
+</p>
+
+<p>
+<b>Umkehrfunktionen</b>: \(f: [a,b] \rightarrow [\alpha ,\beta ]\) monoton, bijektiv \(\;\Rightarrow \; f^{-1}\) stetig auf \([\alpha ,\beta ]\)
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Stetigkeit mit offenen Mengen</b>: \((M_1,d_1)\), \((M_2,d_2)\) metrische Ra&#x0308;ume, \(f: M_1 \rightarrow M_2\)<br />
+\(f\) ist auf \(M_1\) stetig \(\;\Leftrightarrow \;\) das Urbild \(V = f^{-1}(U)\) jeder in \(M_2\) offenen Menge \(U\) ist in \(M_1\) offen.
+</p>
+
+<p>
+<b>Komposition von stetigen Funktionen</b>: Sind \(f: M_1 \rightarrow M_2\) und \(g: M_2 \rightarrow M_3\) stetige Funktionen, so ist auch \(g \circ f: M_1 \rightarrow M_3\) stetig.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>dichte Menge</b>: \((M,d)\) metrischer Raum, \(X \subset M\) &#x2003;\(X\) ist dicht in \(M \;\Leftrightarrow \; \overline {X} = M\).
+</p>
+
+<p>
+<b>Satz</b>: Seien \(f, g: M_1 \rightarrow M_2\) stetige Funktionen, \(X \subset M_1\) und \(X\) dicht in \(M_1\).<br />
+Ist \(f|_X = g|_X\), dann ist auch \(f(x) = g(x)\) fu&#x0308;r alle \(x \in M_1\).
+</p>
+
+<p>
+<b>links- und rechtsseitige Stetigkeit</b>: \(f: [a,b] \rightarrow M_2\), \(x_0 \in [a,b]\)<br />
+\(f\) ist in \(x_0\) linksseitig stetig \(\;\Leftrightarrow \; f(x_0 - 0) = f(x_0)\)<br />
+\(f\) ist in \(x_0\) rechtsseitig stetig \(\;\Leftrightarrow \; f(x_0 + 0) = f(x_0)\)<br />
+\(f\) ist stetig in \(x_0\) genau dann, wenn \(f\) in \(x_0\) links- und rechtsseitig stetig ist.
+</p>
+
+<p>
+<b>Notation (Grenzwerte von Funktionen)</b>: \(f: \mathbb {R} \rightarrow M_2\), \(y \in M_2\)<br />
+\(y = \lim _{x \to \infty } f(x) \;\Leftrightarrow \; \forall _{\varepsilon &gt; 0} \exists _{C(\varepsilon )} \forall _{x \in \mathbb {R},\; |x| \ge C(\varepsilon )}\; |y - f(x)| &lt;
+\varepsilon \)<br />
+\(y = \lim _{x \to +\infty } f(x) \;\Leftrightarrow \; \forall _{\varepsilon &gt; 0} \exists _{C(\varepsilon )} \forall _{x \in \mathbb {R},\; x \ge C(\varepsilon )}\; |y - f(x)| &lt;
+\varepsilon \)<br />
+\(y = \lim _{x \to -\infty } f(x) \;\Leftrightarrow \; \forall _{\varepsilon &gt; 0} \exists _{C(\varepsilon )} \forall _{x \in \mathbb {R},\; x \le C(\varepsilon )}\; |y - f(x)| &lt;
+\varepsilon \)
+</p>
+
+
+
+<h2 id="kompakte-mengen">Kompakte Mengen</h2>
+
+</p>
+
+
+<p>
+<b>Teilfolge</b>: Eine <em>Teilfolge</em> entsteht durch „Streichen“ von endlich oder unendlich vielen Gliedern, sodass unendlich viele Folgenglieder u&#x0308;brig bleiben. Die Ordnung bleibt erhalten!<br />
+Wa&#x0308;hle streng monotone Folge \(\{n_k\}_{k \in \mathbb {N}}\), \(n_k \in \mathbb {N}\), dann ist \(\{x_{n_k}\}_{k \in \mathbb {N}}\) eine Teilfolge von \(\{x_n\}_{n \in \mathbb {N}}\).<br />
+Wenn \(\lim _{n \to \infty } x_n = y\), dann konvergieren auch alle Teilfolgen: \(\lim _{k \to \infty } x_{n_k} = y\).
+</p>
+
+<p>
+<b>kompakte Menge</b>: Sei \((M,d)\) metrischer Raum, \(X \subset M\).<br />
+\(X\) heißt <em>(folgen-)kompakt</em> \(\;\Leftrightarrow \;\) aus jeder Folge \(\{x_n\}_{n \in \mathbb {N}}\), \(x_n \in X\) kann man mindestens eine geeignete Teilfolge \(\{x_{n_k}\}_{k \in \mathbb {N}}\)
+auswa&#x0308;hlen, welche einen Grenzwert \(\lim _{k \to \infty } x_{n_k} = y \in X\) besitzt.
+</p>
+<p>
+<b>Kompaktheitskriterium von <span class="textsc" >Bolzano</span></b>: Sei \(M = \mathbb {R}^d\) oder \(M = \mathbb {C}^d\).<br />
+\(X \subset \mathbb {R}^d\) bzw. \(X \subset \mathbb {C}^d\) ist kompakt \(\;\Leftrightarrow \; X\) ist beschra&#x0308;nkt und abgeschlossen.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Satz</b>: Sei \(X \subset \mathbb {R}\) eine nicht-leere, kompakte Teilmenge von \(\mathbb {R}\).<br />
+Dann besitzt \(X\) ein Maximum \(x_+ = \max X\) und ein Minimum \(x_- = \min X\).
+</p>
+
+<p>
+<b>Satz</b>: Sei \(f: X \subset M_1 \rightarrow M_2\) stetig. Ist \(X\) kompakt, dann ist auch das Bild \(f(X)\) kompakt.
+</p>
+
+<p>
+<b>Satz von <span class="textsc" >Weierstraß</span> (Extremwertsatz)</b>: Sei \(f: X \subset M_1 \rightarrow \mathbb {R}\) stetig und \(X\) kompakt.<br />
+Dann ist \(f(X)\) beschra&#x0308;nkt und es gibt Elemente \(x_+, x_- \in X\), sodass \(y_+ = f(x_+) = \max f(X)\) und \(y_- = f(x_-) = \min f(X)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Verdichtungspunkt</b>: Sei \(x_k \in M\) eine Folge. \(y \in M\) heißt <em>Verdichtungspunkt</em> von \(\{x_k\}\), falls es eine Teilfolge \(\{x_{k_j}\}\) aus \(\{x_k\}\) gibt mit \(\lim _{j \to \infty } x_{k_j} =
+y\).
+</p>
+
+<p>
+Jede beschra&#x0308;nkte Folge \(\{x_k\}\), \(x_k \in \mathbb {R}^d\) (\(x_k \in \mathbb {C}^d\)) besitzt mindestens einen Verdichtungspunkt.
+</p>
+
+
+
+<h2 id="gleichmaessige-stetigkeit">Gleichmäßige Stetigkeit</h2>
+
+</p>
+
+
+<p>
+Seien \((M_1,d_1)\), \((M_2,d_2)\) metrische Ra&#x0308;ume und \(f: X \subset M_1 \rightarrow M_2\) Funktion.<br />
+<em>Wiederholung</em>: \(f\) heißt stetig auf \(X\), falls \(\forall _{x_0 \in X} \forall _{\varepsilon &gt; 0} \exists _{\delta = \delta (\varepsilon , x_0) &gt; 0} \forall _{x \in U_\delta (x_0) \cap
+X}\; f(x) \in U_\varepsilon (f(x_0))\).
+</p>
+
+<p>
+\(f\) heißt <b>gleichma&#x0308;ßig stetig</b> auf \(X\), falls \(\forall _{\varepsilon &gt; 0} \exists _{\delta = \delta (\varepsilon ) &gt; 0} \forall _{x_0 \in X} \forall _{x \in U_\delta (x_0) \cap
+X}\; f(x) \in U_\varepsilon (f(x_0))\)<br />
+bzw. \(\forall _{\varepsilon &gt; 0} \exists _{\delta = \delta (\varepsilon ) &gt; 0} \forall _{x, x_0 \in X,\; d(x, x_0) &lt; \delta }\; f(x) \in U_\varepsilon (f(x_0))\).
+</p>
+
+<p>
+Eine auf \(X\) gleichma&#x0308;ßig stetige Funktion ist auch auf \(X\) stetig. Die Umkehrung gilt nicht!
+</p>
+
+<p>
+<b>Satz von <span class="textsc" >Cantor</span></b>: Sei \(f: X \subset M_1 \rightarrow M_2\) stetig auf \(X\) sowie \(X\) kompakt (<em>wichtig</em>).<br />
+Dann ist \(f\) gleichma&#x0308;ßig stetig auf \(X\).
+</p>
+
+<p>
+Bei einer vektorwertigen, stetigen Funktion \(f: X \subset M \rightarrow \mathbb {K}^n\), \(f(x) = (f_1(x), \ldots , f_n(x))\) kann man also aus \(X\) kompakt folgern, dass \(f\) beschra&#x0308;nkt ist, \(\Vert
+f(x) \Vert \) das Maximum/Minimum annimmt sowie dass \(f\) gleichma&#x0308;ßig stetig ist.
+</p>
+
+
+
+<h2 id="der-raum-der-stetigen-funktionen">Der Raum der stetigen Funktionen</h2>
+
+</p>
+
+
+<p>
+Seien \(M_1\), \(M_2\) metrische Ra&#x0308;ume und \(X \subset M\).<br />
+\(C(X, M_2)\) bezeichnet die <b>Menge aller stetigen Funktionen</b> \(f: X \rightarrow M_2\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Spezialfall</b>: \(X \subset M_1\), \(X\) kompakt (<em>wichtig!</em>), \(M_2 = \mathbb {K}^d\) (\(\mathbb {K} = \mathbb {R}\) oder \(\mathbb {K} = \mathbb {C}\))<br />
+Auf der Menge der stetigen Funktionen \(C(X, \mathbb {K}^d)\) werden dann zwei Operationen definiert:<br />
+\(\boldsymbol{+}: C(X, \mathbb {K}^d) \times C(X, \mathbb {K}^d) \rightarrow C(X, \mathbb {K}^d)\), \((f + g)(x) = f(x) + g(x)\) fu&#x0308;r \(x \in X\)<br />
+\(\boldsymbol{\cdot }: \mathbb {K} \times C(X, \mathbb {K}^d) \rightarrow C(X, \mathbb {K}^d)\), \((\alpha \cdot f)(x) = \alpha \cdot f(x)\) fu&#x0308;r \(x \in X\)<br />
+Mit diesen Operationen wird \(C(X, \mathbb {K}^d)\) zu einem \(\mathbb {K}\)-Vektorraum (Nullvektor ist Nullabbildung).
+</p>
+
+<p>
+<b>\(C(X, \mathbb {K}^d)\) als normierter Raum</b>: Die Norm einer Funktion \(f \in C(X, \mathbb {K}^d)\) wird definiert als \(\Vert f \Vert _C := \max _{x \in X} \Vert f(x) \Vert _{\mathbb {K}^d}\)
+(Maximum existiert nach <span class="textsc" >Weierstraß</span>). Die so definierte Funktion erfu&#x0308;llt die Eigenschaften einer Norm, d.&#x202f;h. \(C(X, \mathbb {K}^d)\) ist normierter Raum. Dadurch wird
+\(C(X, \mathbb {K}^d)\) auch zum metrischen Raum mit \(d_c(f,g) = \Vert f - g \Vert _C = \max _{x \in X} \Vert f(x) - g(x) \Vert _{\mathbb {K}^d}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Konvergenz in \(C(X, \mathbb {K}^d)\)</b>: \(f_n, g \in C(X, \mathbb {K}^d)\), &#x2003;\(f_n \xrightarrow {\Vert \cdot \Vert _C} g \;\Leftrightarrow \; \forall _{\varepsilon &gt; 0} \exists
+_{N(\varepsilon )} \forall _{n \ge N(\varepsilon )}\; \Vert f_n - g \Vert _C &lt; \varepsilon \)<br />
+\(\Leftrightarrow \; \forall _{\varepsilon &gt; 0} \exists _{N(\varepsilon )} \forall _{n \ge N(\varepsilon )}\; \max _{x \in X} \Vert f_n(x) - g(x) \Vert _{\mathbb {K}^d} &lt; \varepsilon \)
+</p>
+
+<p>
+<b>punktweise Konvergenz</b>: \(\lim _{n \to \infty } f_n(x) = g(x)\) punktweise fu&#x0308;r \(x \in X\)<br />
+\(\Leftrightarrow \; \forall _{x \in X} \forall _{\varepsilon &gt; 0} \exists _{N(\varepsilon , x)} \forall _{n \ge N(\varepsilon , x)}\; \Vert f_n(x) - g(x) \Vert _{\mathbb {K}^d} &lt;
+\varepsilon \)<br />
+Die Grenzwert-Funktion bzgl. einer punktweisen Konvergenz muss nicht stetig sein.
+</p>
+
+<p>
+<b>gleichma&#x0308;ßige Konvergenz</b>: \(\lim _{n \to \infty } f_n(x) = g(x)\) gleichma&#x0308;ßig bzgl. \(x \in X\)<br />
+\(\Leftrightarrow \; \forall _{\varepsilon &gt; 0} \exists _{N(\varepsilon )} \forall _{n \ge N(\varepsilon )} \forall _{x \in X}\; \Vert f_n(x) - g(x) \Vert _{\mathbb {K}^d} &lt; \varepsilon
+\).<br />
+Damit ist gleichma&#x0308;ßige Konvergenz gleichbedeutend mit Konvergenz im \(C(X, \mathbb {K}^d)\).<br />
+Gleichma&#x0308;ßige Konvergenz impliziert punktweise Konvergenz. Die Umkehrung gilt nicht!
+</p>
+
+<p>
+<b>Satz</b>: \(C(X, \mathbb {K}^d)\) ist vollsta&#x0308;ndig (bzgl. der gleichma&#x0308;ßigen Konvergenz).
+</p>
+
+<p>
+<b>Folgerung</b>: Seien \(f_n \in C(X, \mathbb {K}^d)\), \(g: X \rightarrow \mathbb {K}^d\) (\(X\) kompakt) mit \(f_n(x) \xrightarrow {n \to \infty } g(x)\) gleichma&#x0308;ßig bzgl. \(x \in X\). Dann ist
+auch \(g\) stetig, d.&#x202f;h. \(g \in C(X, \mathbb {K}^d)\).
+</p>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

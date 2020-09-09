@@ -1,0 +1,1737 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\newcommand {\field }{\ensuremath {\mathbb {K}}}\)
+
+\(\renewcommand {\Re }{\ensuremath {\operatorname {Re}}}\)
+
+\(\renewcommand {\Im }{\ensuremath {\operatorname {Im}}}\)
+
+\(\newcommand {\Ln }{\ensuremath {\operatorname {Ln}}}\)
+
+\(\newcommand {\vp }{\ensuremath {\operatorname {v.\!p.\!}}}\)
+
+\(\newcommand {\R }{\ensuremath {\mathcal {R}}}\)
+
+\(\renewcommand {\C }{\ensuremath {\mathcal {C}}}\)
+
+\(\renewcommand {\L }{\ensuremath {\mathcal {L}}}\)
+
+\(\renewcommand {\ms }{\ensuremath {\!\!\uparrow }}\)
+
+\(\newcommand {\mf }{\ensuremath {\!\!\downarrow }}\)
+
+\(\newcommand {\sms }{\ensuremath {\!\!\upuparrows }}\)
+
+\(\newcommand {\smf }{\ensuremath {\!\!\downdownarrows }}\)
+
+\(\newcommand {\acc }{\ensuremath {\operatorname {acc}}}\)
+
+\(\newcommand {\grad }{\ensuremath {\operatorname {grad}}}\)
+
+\(\renewcommand {\div }{\ensuremath {\operatorname {div}}}\)
+
+\(\newcommand {\tr }{\ensuremath {\operatorname {tr}}}\)
+
+\(\newcommand {\rg }{\ensuremath {\operatorname {rg}}}\)
+
+\(\newcommand {\fracsize }[1]{{\large #1}}\)
+
+\(\newcommand {\matrixsize }[1]{{\scriptsize #1}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  font-style:italic;
+  content:'(5)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f9::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f10::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f11::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f12::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+
+<h2 id="definitionen">Definitionen</h2>
+
+</p>
+
+
+<p>
+<b>Reihe</b>: Sei \(\{a_k\}_{k \in \natural }\) eine Folge mit \(a_k \in \field ^p\), wobei \(\field \in \{\real , \complex \}\). \(S_n = a_1 + \dotsb + a_n = \sum _{k=1}^n a_k\) ist die <b>\(n\)-te
+Partialsumme</b>. Dann konvergiert die <em>Reihe</em> \(\sum _{k=1}^\infty a_k\) genau dann, wenn der Grenzwert \(\sum _{k=1}^\infty a_k := \lim _{n \to \infty } S_n\) existiert.
+</p>
+
+<p>
+<b>uneigentliches Integral</b>: Sei \(f: \left [0, +\infty \right [ \rightarrow \field ^p\) auf \([0, r]\) fu&#x0308;r alle \(r &gt; 0\) Riemann-integrierbar.<br />
+Dann konvergiert das <em>uneigentliche Integral</em> \(\int _0^{+\infty } f(x)\dx \) genau dann, wenn der Grenzwert \(\int _0^{+\infty } f(x)\dx := \lim _{r \to +\infty } \int _0^r f(x)\dx \) existiert.
+</p>
+
+<p>
+Analog definiert man \(\sum _{k=k_0}^\infty a_k\), \(\sum _{k=-\infty }^{k_0} a_k\), \(\int _{y_0}^{+\infty } f(x)\dx \) und \(\int _{-\infty }^{y_0} f(x)\dx \) fu&#x0308;r \(k_0 \in \integer \), \(y_0
+\in \real \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Reihe vom Typ \(\sum _{k=-\infty }^{+\infty }\)</b>: \(\sum _{k=-\infty }^{+\infty } a_k\) konvergiert genau dann, wenn sowohl \(\sum _{k=k_0}^{+\infty } a_k\) als auch \(\sum _{k=-\infty }^{k_0-1}
+a_k\) (unabha&#x0308;ngig voneinander) konvergieren.<br />
+Dann ist \(\sum _{k=-\infty }^{+\infty } a_k := \sum _{k=-\infty }^{k_0-1} a_k + \sum _{k=k_0}^{+\infty } a_k\).<br />
+(<em>Diese Definition ist unabha&#x0308;ngig von der konkreten Wahl von \(k_0 \in \integer \).</em>)
+</p>
+
+<p>
+<b>uneig. Integral vom Typ \(\int _{-\infty }^{+\infty }\)</b>: Sei \(f: \real \rightarrow \field ^p\) mit \(f \in \R [-R_1, R_2]\) fu&#x0308;r alle \(R_1, R_2 &gt; 0\).<br />
+\(\int _{-\infty }^{+\infty } f(x)\dx \) konvergiert genau dann, wenn sowohl \(\int _{y_0}^{+\infty } f(x)\dx \) als auch \(\int _{-\infty }^{y_0} f(x)\dx \) konvergieren. Dann ist \(\int _{-\infty
+}^{+\infty } f(x)\dx := \int _{-\infty }^{y_0} f(x)\dx + \int _{y_0}^{+\infty } f(x)\dx \).<br />
+(<em>Diese Definition ist unabha&#x0308;ngig von der konkreten Wahl von \(y_0 \in \real \).</em>)
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>uneigentliches Integral mit Definitionslu&#x0308;cke</b>:<br />
+Sei \(f: \left [a,b\right [ \cup \left ]b,c\right ] \rightarrow \field ^p\), \(a &lt; b &lt; c\), wobei \(f \in \R [a, b - \varepsilon _1]\) und \(f \in \R [b + \varepsilon _2, c]\) \(\forall
+_{\varepsilon &gt; 0}\).<br />
+Dann ist \(\int _a^b f(x)\dx := \lim _{\varepsilon _1 \to 0+0} \int _a^{b-\varepsilon _1} f(x)\dx \) sowie \(\int _b^c f(x)\dx := \lim _{\varepsilon _2 \to 0+0} \int _{b+\varepsilon _2}^c f(x)\dx
+\).<br />
+Das uneigentliche Integral \(\int _a^c f(x)\dx \) konvergiert genau dann, wenn sowohl \(\int _a^b f(x)\dx \) als auch \(\int _b^c f(x)\dx \) konvergieren. Dann ist \(\int _a^c f(x)\dx := \int _a^b f(x)\dx +
+\int _b^c f(x)\dx \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Hauptwert von <span class="textsc" >Cauchy</span></b>:<br />
+Sei \(f: \left [a,b\right [ \cup \left ]b,c\right ] \rightarrow \field ^p\), \(a &lt; b &lt; c\), wobei \(f \in \R [a, b - \varepsilon ]\) und \(f \in \R [b + \varepsilon , c]\) \(\forall
+_{\varepsilon &gt; 0}\).<br />
+Dann ist \(\vp \int _a^c f(x)\dx = \fint _a^c f(x)\dx := \lim _{\varepsilon \to 0+0} \left (\int _a^{b-\varepsilon } f(x)\dx + \int _{b+\varepsilon }^c f(x)\dx \right )\).
+</p>
+
+<p>
+<b>Hauptwert bei \(\int _{-\infty }^{+\infty }\)</b>: Sei \(f: \real \rightarrow \field ^p\) mit \(f \in \R [-R, R]\) fu&#x0308;r alle \(R &gt; 0\).<br />
+Dann ist \(\vp \int _{-\infty }^{+\infty } f(x)\dx := \lim _{R \to +\infty } \int _{-R}^R f(x)\dx \).
+</p>
+
+<p>
+<b>Hauptwert bei \(\sum _{k=-\infty }^{+\infty }\)</b>: \(\vp \sum _{k=\infty }^{+\infty } a_k := \lim _{N \to +\infty } \sum _{k=-N}^{+N} a_k\)
+</p>
+
+<p>
+Falls \(\sum _{k=-\infty }^{+\infty } a_k\) (im u&#x0308;blichen Sinn) konvergiert, so konvergiert auch \(\vp \sum _{k=-\infty }^{+\infty } a_k = \sum _{k=-\infty }^{+\infty } a_k\).<br />
+Analog: Falls \(\int _{-\infty }^{+\infty } f(x)\dx \) konvergiert, so konvergiert auch \(\vp \int _{-\infty }^{+\infty } f(x)\dx = \int _{-\infty }^{+\infty } f(x)\dx \).
+</p>
+
+
+
+<h2 id="einfache-aussagen-zu-reihen-und-uneigentlichen-integralen">Einfache Aussagen zu Reihen und uneigentlichen Integralen</h2>
+
+</p>
+
+
+<p>
+<b>Satz (Konvergenz-Kriterium von <span class="textsc" >Cauchy</span> bei Reihe)</b>: Sei \(a_k \in \field ^p\) fu&#x0308;r \(k \in \natural \).<br />
+Dann gilt: \(\sum _{k=1}^{+\infty } a_k\) konvergiert \(\;\Leftrightarrow \;\) \(\forall _{\varepsilon &gt; 0} \exists _{N_\varepsilon } \forall _{m \ge n \ge N_\varepsilon }\; \big \Vert \sum
+_{k=n+1}^m a_k \big \Vert &lt; \varepsilon \).
+</p>
+
+<p>
+<b>Satz (Konvergenz-Kriterium von <span class="textsc" >Cauchy</span> bei uneig. Integral)</b>:<br />
+Sei \(f: \left [0,+\infty \right [ \rightarrow \field ^p\), \(f \in \R [0, R]\) fu&#x0308;r alle \(R &gt; 0\).<br />
+Dann gilt: \(\int _0^{+\infty } f(x)\dx \) konvergiert \(\;\Leftrightarrow \;\) \(\forall _{\varepsilon &gt; 0} \exists _{R_\varepsilon } \forall _{R’’ \ge R’ \ge R_\varepsilon }\; \big \Vert \int
+_{R’}^{R’’} f(x)\dx \big \Vert &lt; \varepsilon \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Folgerung</b>: Konvergiert \(\sum _{k=1}^\infty a_k\), so ist \(\lim _{k \to \infty } a_k = 0\). &#x2003;&#x2003;Die Umkehrung gilt i.&#x202f;A. <b>nicht</b>.<br />
+Außerdem kann man aus \(\int _0^{+\infty } f(x)\dx \) konvergiert i.&#x202f;A. <b>nicht</b> folgern, dass \(\lim _{x \to +\infty } f(x) = 0\).
+</p>
+
+<p>
+<b>Anmerkung</b>: \(\sum _{k=1}^{+\infty } a_k\) konvergent \(\;\Leftrightarrow \; \sum _{k=k_0}^{+\infty } a_k\) konvergent,<br />
+\(\int _0^{+\infty } f(x)\dx \) konvergent \(\;\Leftrightarrow \; \int _C^{+\infty } f(x)\dx \) konvergent.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Satz (Linearita&#x0308;t bei Integral)</b>: Seien \(f_1, f_2: \left [0,+\infty \right [ \rightarrow \field ^p\) mit \(\forall _{R &gt; 0}\; f_1, f_2 \in \R [0,R]\).<br />
+Falls \(\int _0^{+\infty } f_1(x)\dx \) und \(\int _0^{+\infty } f_2(x)\dx \) konvergieren, so konvergiert auch<br />
+\(\int _0^{+\infty } (\alpha _1 f_1(x) + \alpha _2 f_2(x))\dx = \alpha _1 \cdot \int _0^{+\infty } f_1(x)\dx + \alpha _2 \cdot \int _0^{+\infty } f_2(x)\dx \).
+</p>
+
+<p>
+<b>Satz (Linearita&#x0308;t bei Reihe)</b>: Falls \(\sum _{k=1}^{+\infty } a^{(1)}_k\) und \(\sum _{k=1}^{+\infty } a^{(2)}_k\) konvergieren, so konvergiert auch \(\sum _{k=1}^{+\infty } (\alpha _1
+a^{(1)}_k + \alpha _2 a^{(2)}_k) = \alpha _1 \cdot \sum _{k=1}^{+\infty } a^{(1)}_k + \alpha _2 \cdot \sum _{k=1}^{+\infty } a^{(2)}_k\).
+</p>
+
+
+
+<h2 id="reihen-mit-nicht-negativen-summanden-umordnungssatz">Reihen mit nicht-negativen Summanden, Umordnungssatz</h2>
+
+</p>
+
+
+<p>
+Sei \(a_k \in \real \), \(a_k \ge 0\) fu&#x0308;r alle \(k \in \natural \). Dann ist \(S_n = \sum _{k=1}^n a_k\) monoton steigend.<br />
+Entweder ist nun \(\{S_n\}\) beschra&#x0308;nkt, d.&#x202f;h. konvergent, oder \(\{S_n\}\) divergiert bestimmt gegen \(+\infty \).<br />
+Konvergiert \(\{S_n\}\), so ist \(S := \sum _{k=1}^{+\infty } a_k = \lim _{n \to \infty } S_n = \sup _{n \in \natural } S_n\).
+</p>
+
+<p>
+<b>Vergleichssatz</b>: Seien \(0 \le b_k \le a_k\) fu&#x0308;r alle \(k \in \natural \). Dann ist \(0 \le \sum _{k=1}^\infty b_k \le \sum _{k=1}^\infty a_k\),<br />
+d.&nbsp;h. konvergiert \(\sum _{k=1}^\infty a_k\), so konvergiert auch \(\sum _{k=1}^\infty b_k\).
+</p>
+
+<p>
+<b>Umordnungssatz</b>: Seien \(a_k \ge 0\) fu&#x0308;r \(k \in \natural \) sowie \(b_k = a_{\varphi (k)}\), wobei \(\varphi : \natural \rightarrow \natural \) bijektiv ist.<br />
+Dann ist \(\sum _{k=1}^\infty b_k = \sum _{k=1}^\infty a_k\).
+</p>
+
+<p>
+<b>Umordnungssatz von <span class="textsc" >Riemann</span></b>: Seien \(a_k \in \real \) mit \(\lim _{k \to \infty } a_k = 0\) und beide Reihen \(\sum _{k=1}^\infty a_k^+\) sowie \(\sum _{k=1}^\infty
+a_k^-\) divergent, wobei \(a_k^+ = \max \{0, a_k\}\) und \(a_k^- = \min \{0, a_k\}\).<br />
+Dann gilt \(\forall _{r \in \real \cup \{+\infty \} \cup \{-\infty \}} \exists _{\varphi _r: \natural \rightarrow \natural \text { bijektiv}}\; \sum _{k=1}^\infty a_{\varphi _r(k)} = r\).
+</p>
+
+<p>
+Anschaulich kann eine Reihe einer Folge \(\{a_k\}\) mit diesen Voraussetzungen durch Umordnung der Folgenglieder jeden Grenzwert annehmen (auch bestimmt divergieren).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Reihen u&#x0308;ber abza&#x0308;hlbar unendliche Mengen</b>: Seien \(A\) abza&#x0308;hlbar unendlich (d.&nbsp;h. es gibt eine Bijektion \(\varphi : A \rightarrow \natural \)) sowie fu&#x0308;r jedes
+\(\alpha \in A\) ein \(a_\alpha \in \real \) mit \(a_\alpha \ge 0\) gegeben.<br />
+Dann ist \(\sum _{\alpha \in A} a_\alpha := \sum _{k=1}^\infty a_{\varphi ^{-1}(k)}\) wegen des Umordnungssatzes unabha&#x0308;ngig von \(\varphi \) definiert.
+</p>
+
+<p>
+Typische Anwendungen: Sind \(A\) und \(B\) abza&#x0308;hlbar, so sind auch \(A \cup B\), \(A \times B\) und \(A^n\) abza&#x0308;hlbar und \(\sum _{(\alpha ,\beta ) \in A \times B} a_{\alpha ,\beta }\) mit
+\(a_{\alpha ,\beta } \ge 0\) ist wohldefiniert.
+</p>
+<p>
+<b>Satz</b>: Sei \(A\) abza&#x0308;hlbar.
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p>\(\forall _{\alpha \in A}\; 0 \le a_\alpha \le b_\alpha \quad \Rightarrow \quad 0 \le \sum _{\alpha \in A} a_\alpha \le \sum _{\alpha \in A} b_\alpha \)
+</p>
+</li>
+<li class="list-item-f1"><p>\(0 \le a_\alpha , b_\alpha , c_1, c_2 \quad \Rightarrow \quad \sum _{\alpha \in A} (c_1 a_\alpha + c_2 b_\alpha ) = c_1 \sum _{\alpha \in A} a_\alpha + c_2 \sum _{\alpha \in A}
+b_\alpha \)
+</p>
+</li>
+<li class="list-item-f2"><p>\(A’ \subset A\), &#x2003;\(a_\alpha \ge 0\), &#x2003;\(a’_\alpha = a_\alpha \) fu&#x0308;r \(\alpha \in A’\), sonst \(a’_\alpha = 0\)<br />
+\(\Rightarrow \quad \sum _{\alpha \in A’} a_\alpha = \sum _{\alpha \in A’} a’_\alpha = \sum _{\alpha \in A} a’_\alpha \le \sum _{\alpha \in A} a_\alpha \)
+</p>
+</li>
+<li class="list-item-f3"><p>\(A_1, A_2 \subset A\) (d.&#x202f;h. \(A_1, A_2\) ebenfalls abza&#x0308;hlbar), &#x2003;\(A = A_1 \cup A_2\) mit \(A_1 \cap A_2 = \emptyset \), &#x2003;\(a_\alpha \ge 0\)<br />
+\(\Rightarrow \quad \sum _{\alpha \in A} a_\alpha = \sum _{\alpha \in A_1} a_\alpha + \sum _{\alpha \in A_2} a_\alpha \)
+</p>
+</li>
+<li class="list-item-f4"><p>\(a_\alpha \ge 0 \quad \Rightarrow \quad \sum _{\alpha \in A} a_\alpha = \sup _{\widetilde {A} \subset A,\; \widetilde {A} \text { endlich}} \sum _{a \in \widetilde {A}} a_\alpha
+\)
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Satz (Doppelreihen)</b>: Seien \(A, B\) abza&#x0308;hlbar und \(a_{\alpha ,\beta } \ge 0\) fu&#x0308;r \((\alpha ,\beta ) \in A \times B\).<br />
+Dann ist \(\sum _{(\alpha ,\beta ) \in A \times B} a_{\alpha ,\beta } = \sum _{\alpha \in A} \Big (\sum _{\beta \in B} a_{\alpha ,\beta }\Big ) = \sum _{\beta \in B} \Big (\sum _{\alpha \in A}
+a_{\alpha ,\beta }\Big )\).
+</p>
+
+<p>
+<b>Satz</b>: Seien \(a_k, b_k \ge 0\). Dann ist \(\sum _{(m,n) \in \natural \times \natural } a_m b_n = \left (\sum _{m=1}^\infty a_m\right ) \left (\sum _{n=1}^\infty b_n\right )\).
+</p>
+
+
+
+<h2 id="konvergenzkriterien-fuer-reihen-mit-nicht-negativen-positiven-summanden">Konvergenzkriterien für Reihen mit nicht-negativen (positiven) Summanden</h2>
+
+</p>
+
+
+<p>
+<b>Satz 1</b>: Seien \(c &gt; 0\) sowie \(0 \le a_k \le c \cdot b_k\) fu&#x0308;r \(k \in \natural \). Dann folgt aus \(\sum _{k=1}^\infty b_k\) konvergent, dass \(\sum _{k=1}^\infty a_k\) konvergent ist sowie
+aus \(\sum _{k=1}^\infty a_k\) divergent, dass \(\sum _{k=1}^\infty b_k\) divergent ist.
+</p>
+
+<p>
+<b>Satz 2</b>: Seien \(a_k, b_k &gt; 0\) sowie \(\frac {a_{k+1}}{a_k} \le \frac {b_{k+1}}{b_k}\) fu&#x0308;r alle \(k \in \natural \). &#x2003;Dann la&#x0308;sst sich Satz 1 anwenden.<br />
+(<em>Es genu&#x0308;gt schon \(k \ge k_0\).</em>)
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Wurzelkriterium von <span class="textsc" >Cauchy</span></b>: Sei \(a_k \ge 0\) fu&#x0308;r \(k \ge k_0\).
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f5"><p>\(\sqrt [k]{a_k} \le q &lt; 1\) fu&#x0308;r \(k \ge k_0\) \(\quad \Rightarrow \quad \sum _{k=1}^\infty a_k\) konvergent
+</p>
+</li>
+<li class="list-item-f6"><p>\(\sqrt [k]{a_k} \ge 1\) fu&#x0308;r \(k \ge k_0\) \(\quad \Rightarrow \quad \sum _{k=1}^\infty a_k\) divergent
+</p>
+</li>
+</ul>
+
+<p>
+<b>Quotientenkriterium von <span class="textsc" >d’Alembert</span></b>: Sei \(a_k &gt; 0\) fu&#x0308;r \(k \ge k_0\).
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f7"><p>\(\frac {a_{k+1}}{a_k}\) \(\le q &lt; 1\) fu&#x0308;r \(k \ge k_0\) \(\quad \Rightarrow \quad \sum _{k=1}^\infty a_k\) konvergent
+</p>
+</li>
+<li class="list-item-f8"><p>\(\frac {a_{k+1}}{a_k}\) \(\ge 1\) fu&#x0308;r \(k \ge k_0\) \(\quad \Rightarrow \quad \sum _{k=1}^\infty a_k\) divergent
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Reihen als uneigentliche Integrale</b>: Seien \(a_k \in \real \) fu&#x0308;r \(k \in \natural \). Definiere \(f: \left [0,+\infty \right [\), \(f(x) = a_k\) fu&#x0308;r \(x \in \left ]k-1,k\right ]\)
+sowie \(f(0) = 0\). Dann ist \(\sum _{k=1}^n a_k = \int _0^n f(x)\dx \) sowie \(\int _0^{n+r} f(x)\dx \) liegt zwischen \(S_n\) und \(S_{n+1}\) mit \(n \in \natural \), \(r \in \left ]0,1\right [\). Daher ist
+\(\sum _{k=1}^\infty a_k = \int _0^\infty f(x)\dx \).
+</p>
+
+<p>
+<b>Vergleichssatz bei uneig. Integralen</b>: Seien \(f, g: [0,+\infty ] \rightarrow \real \) mit \(f, g \in \R [0, R]\) fu&#x0308;r alle \(R &gt; 0\) sowie \(0 \le f(x) \le g(x)\) fu&#x0308;r alle \(x &gt;
+0\). Dann folgt aus \(\int _0^{+\infty } g(x)\dx \) konvergent, dass \(\int _0^{+\infty } f(x)\dx \) konvergent ist, sowie aus \(\int _0^{+\infty } f(x)\dx \) divergent, dass \(\int _0^{+\infty } g(x)\dx \)
+divergent ist.
+</p>
+
+<p>
+<b>Integralkriterium von <span class="textsc" >Maclaurin</span> und <span class="textsc" >Cauchy</span></b>: Seien \(a_k \ge 0\) fu&#x0308;r \(k \in \natural \),<br />
+\(f: \left [1,+\infty \right [ \rightarrow \real \), wobei \(f(x) \ge 0\) und \(\forall _{R &gt; 1}\; f \in \R [1,R]\), \(f\mf \) und \(f(k) = a_k\) fu&#x0308;r \(k \in \natural \).<br />
+Dann konvergiert \(\int _1^{+\infty } f(x)\dx \) genau dann, wenn \(\sum _{k=1}^\infty a_k\) konvergiert.<br />
+Außerdem gilt dann \(\sum _{k=2}^\infty a_k \le \int _1^{+\infty } f(x)\dx \le \sum _{k=1}^\infty a_k\).
+</p>
+
+<p>
+Bspw. konvergiert die <b>harmonische Reihe</b> \(\sum _{k=1}^\infty \frac {1}{k^\alpha }\), \(\alpha &gt; 0\) genau dann, wenn \(\alpha &gt; 1\) ist.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Satz (es gibt keine universelle Vergleichsfunktion):</b><br />
+Seien \(0 &lt; p_k \le s_k\) fu&#x0308;r \(k \in \natural \) mit \(s_k \to 0\) sowie \(\sum _{k=1}^\infty p_k\) konvergent und \(\sum _{k=1}^\infty s_k\) divergent.<br />
+Dann gibt es \(0 &lt; p_k’\) mit \(\sum _{k=1}^\infty p_k’\) konvergent, aber \(\lim _{k \to \infty }\) \(\frac {p_k}{p_k’}\) \(= 0\), sowie<br />
+\(0 &lt; s_k’\) mit \(\sum _{k=1}^\infty s_k’\) divergent, aber \(\lim _{k \to \infty }\) \(\frac {s_k’}{s_k}\) \(= 0\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Kriterium von <span class="textsc" >Raabe</span></b>: Seien \(a_n &gt; 0\) sowie \(R_n = n \cdot \Big (\)\(\frac {a_n}{a_{n+1}}\) \(-\; 1\Big )\) fu&#x0308;r \(n \in \natural \).
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f9"><p>\(R_n \ge r &gt; 1\) fu&#x0308;r \(n \ge N\) \(\quad \Rightarrow \quad \sum _{k=1}^\infty a_k\) konvergent
+</p>
+</li>
+<li class="list-item-f10"><p>\(R_n \le 1\) fu&#x0308;r \(n \ge N\) \(\quad \Rightarrow \quad \sum _{k=1}^\infty a_k\) divergent
+</p>
+</li>
+</ul>
+
+<p>
+<b>Kriterium von <span class="textsc" >Kummer</span></b>: Seien \(a_k &gt; 0\), \(c_k &gt; 0\) mit \(K_n = c_n \;\cdot \) \(\frac {a_n}{a_{n+1}}\) \(-\; c_{n+1}\) fu&#x0308;r \(k \in \natural \), wobei
+\(\sum _{k=1}^\infty \) \(\frac {1}{c_k}\) divergiert.
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f11"><p>\(K_n \ge \delta &gt; 0\) \(\quad \Rightarrow \quad \sum _{k=1}^\infty a_k\) konvergent
+</p>
+</li>
+<li class="list-item-f12"><p>\(K_n \le 0\) \(\quad \Rightarrow \quad \sum _{k=1}^\infty a_k\) divergent
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="konvergenzkriterien-in-limesform">Konvergenzkriterien in Limesform</h2>
+<b>oberer/unterer Grenzwert</b>: Sei \(\{x_n\}_{n \in \natural }\) eine reelle Folge (\(x_k \in \real \)). Es gilt \(\{y_n\}\mf \), \(\{z_n\}\ms \), wobei \(y_n := \sup _{k \ge n} x_k\), \(z_n := \inf _{k \ge
+n} x_k\). Der Grenzwert \(\limsup _{k \to \infty } x_k = \varlimsup _{k \to \infty } x_k := \lim _{n \to \infty } y_n\) bzw. \(\liminf _{k \to \infty } x_k = \varliminf _{k \to \infty } x_k :=
+\lim _{n \to \infty } z_n\) heißt <em>oberer bzw. unterer Grenzwert</em>.
+</p>
+
+<p>
+<b>Satz</b>: \(\{a_k\}\) konvergiert \(\;\Leftrightarrow \;\) \(\liminf _{k \to \infty } a_k = \limsup _{k \to \infty } a_k =: A\) (dann ist \(\lim _{k \to \infty } a_k = A\)).<br />
+Es gilt stets \(\liminf _{k \to \infty } a_k \le \limsup _{k \to \infty } a_k\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Vergleichssatz in Limesform</b>:<br />
+Seien \(a_k \ge 0\) und \(b_k &gt; 0\) fu&#x0308;r \(k \in \natural \) sowie \(\limsup _{k \to \infty }\) \(\frac {a_k}{b_k}\) \(&lt; +\infty \).<br />
+Dann folgt aus \(\sum _{k=1}^\infty b_k\) konvergent, dass \(\sum _{k=1}^\infty a_k\) konvergent ist, sowie aus \(\sum _{k=1}^\infty a_k\) divergent folgt, dass \(\sum _{k=1}^\infty b_k\) divergent ist.
+</p>
+
+<p>
+<b>Wurzelkriterium von <span class="textsc" >Cauchy</span> in Limesform</b>:<br />
+Sei \(a_k \ge 0\) fu&#x0308;r \(k \in \natural \). Dann folgt aus \(\limsup _{k \to \infty } \sqrt [k]{a_k} &lt; 1\), dass \(\sum _{k=1}^\infty a_k\) konvergent ist, sowie aus \(\liminf _{k \to \infty }
+\sqrt [k]{a_k} &gt; 1\) folgt, dass \(\sum _{k=1}^\infty a_k\) divergent ist.
+</p>
+
+<p>
+<b>Quotientenkriterium von <span class="textsc" >d’Alembert</span> in Limesform</b>:<br />
+Sei \(a_k &gt; 0\) fu&#x0308;r \(k \in \natural \). Dann folgt aus \(\limsup _{k \to \infty }\) \(\frac {a_{k+1}}{a_k}\) \(&lt; 1\), dass \(\sum _{k=1}^\infty a_k\) konvergent ist, sowie aus \(\liminf _{k \to
+\infty }\) \(\frac {a_{k+1}}{a_k}\) \(&gt; 1\) folgt, dass \(\sum _{k=1}^\infty a_k\) divergent ist.
+</p>
+
+
+
+<h2 id="absolute-und-bedingte-konvergenz">Absolute und bedingte Konvergenz</h2>
+
+</p>
+
+
+<p>
+<b>bedingte Konvergenz</b>: Seien \(a_n \in \field ^p\) mit \(\field \in \{\real , \complex \}\).<br />
+Dann heißt Konvergenz von \(\sum _{k=1}^\infty a_k = \lim _{n \to \infty } \sum _{k=1}^n a_k\) <em>bedingte Konvergenz</em>.
+</p>
+
+<p>
+<b>absolute Konvergenz (Reihe)</b>: \(\sum _{k=1}^\infty a_k\) konvergiert <em>absolut</em>, falls \(\sum _{k=1}^\infty \Vert a_k \Vert \) konvergiert.
+</p>
+
+<p>
+Manchmal bedeutet „absolute Konvergenz“ die Konvergenz von \(\sum _{k=1}^\infty |a_k|\) fu&#x0308;r \(a_k \in \field \) und „normale Konvergenz“ die Konvergenz von \(\sum _{k=1}^\infty \Vert a_k \Vert \)
+fu&#x0308;r \(a_k \in \field ^n\).
+</p>
+
+<p>
+<b>absolute Konvergenz (Integral)</b>: Sei \(f: \left [0,+\infty \right [ \rightarrow \field ^p\) mit \(f \in \R [0,R]\) fu&#x0308;r alle \(R &gt; 0\).<br />
+\(\int _0^{+\infty } f(x)\dx \) <em>konvergent absolut</em>, falls \(\int _0^{+\infty } \Vert f(x) \Vert \dx \) konvergiert.
+</p>
+
+<p>
+Analog la&#x0308;sst sich absolute Konvergenz von uneig. Integralen mit Definitionslu&#x0308;cke definieren.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Satz</b>: Konvergiert \(\sum _{k=1}^\infty a_k\) bzw. \(\int _0^{+\infty } f(x)\dx \) absolut, so konvergiert die Reihe bzw. das uneigentliche Integral auch bedingt.
+</p>
+
+<p>
+<b>Anmerkung</b>: \(\sum _{k=1}^\infty a_k\) konvergiert absolut, falls \(\sum _{k=1}^\infty \Re (a_k)\) und \(\sum _{k=1}^\infty \Im (a_k)\) absolut konvergieren (falls \(a_k \in \complex \)). \(\sum
+_{k=1}^\infty a_k\) konvergiert absolut, falls \(\sum _{k=1}^\infty \pi _\ell (a_k)\) fu&#x0308;r alle \(\ell = 1, \dotsc , p\) absolut konvergiert (falls \(a_k \in \field ^p\)).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Satz</b>: Seien \(a_k \in \real \), \(a_k^+ = \max \{0, a_k\} \ge 0\) und \(a_k^- = \min \{0, a_k\} \le 0\).<br />
+Dann konvergiert \(\sum _{k=1}^\infty a_k\) absolut genau dann, wenn \(\sum _{k=1}^\infty a_k^+\) und \(\sum _{k=1}^\infty a_k^-\) konvergieren.
+</p>
+
+<p>
+<b>Umordnungssatz fu&#x0308;r absolut konvergente Reihen</b>: Seien \(a_k \in \field ^p\) und \(\sum _{k=1}^\infty a_k\) konvergiert absolut. Dann ist \(\sum _{k=1}^\infty a_k = \sum _{k=1}^\infty
+a_{\varphi (k)}\) fu&#x0308;r jede Bijektion \(\varphi : \natural \rightarrow \natural \).
+</p>
+
+<p>
+<em>Beispiel</em>: \(\zeta (s) = \sum _{k=1}^\infty \frac {1}{k^s}\) fu&#x0308;r \(s = \sigma + it \in \complex \) (\(\sigma , t \in \real \)) konvergiert absolut fu&#x0308;r \(\sigma &gt; 1\) und
+divergiert fu&#x0308;r \(\sigma \le 1\). Bis heute ist es ein ungelo&#x0308;stes Problem, ob alle Nullstellen dieser <b><span class="textsc" >Riemann</span>schen Zetafunktion</b> den Realteil \(\frac {1}{2}\)
+besitzen (<b><span class="textsc" >Riemann</span>sche Vermutung</b>).
+</p>
+
+
+
+<h2 id="nicht-absolut-konvergente-reihen">Nicht absolut konvergente Reihen</h2>
+
+</p>
+
+
+<p>
+<b><span class="textsc" >Abel</span>sche Summation</b>: Seien \(\alpha _m, \beta _m \in \real \) und \(B_n = \sum _{k=1}^n \beta _k\). Dann ist \(\beta _n = B_n - B_{n-1}\).<br />
+Dann gilt \(S_m = \sum _{k=1}^m \alpha _k \beta _k = \alpha _m B_m + \sum _{k=1}^{m-1} (\alpha _{k+1} - \alpha _k) B_k\) (<b>partielle Summation</b>).
+</p>
+
+<p>
+<b><span class="textsc" >Abel</span>sches Kriterium</b>: Seien \(a_k, b_k \in \real \), \(\sum _{k=1}^\infty b_k\) konvergiere bedingt und \(\{a_k\}\) sei monoton und beschra&#x0308;nkt. Dann konvergiert
+auch \(\sum _{k=1}^\infty a_k b_k\) bedingt.
+</p>
+
+<p>
+<b>Kritierium von <span class="textsc" >Dirichlet</span></b>: Sei \(\{a_k\}\) monoton, \(\lim _{n \to \infty } a_n = 0\) sowie \(\{B_n\}\) beschra&#x0308;nkt mit \(B_n = \sum _{k=1}^n b_k\). Dann
+konvergiert \(\sum _{k=1}^\infty a_k b_k\).
+</p>
+
+<p>
+<b>Satz von <span class="textsc" >Leibniz</span></b>: \(a_k &gt; 0\), \(\{a_k\}\) monoton und \(\lim _{k \to \infty } a_k = 0\) \(\;\Rightarrow \; \sum _{k=1}^\infty (-1)^k a_k\) konvergent.
+</p>
+
+<p>
+<b>Kritierium von <span class="textsc" >Dirichlet</span> fu&#x0308;r uneigentliche Integrale</b>: Sei \(a: \left [0, +\infty \right [ \rightarrow \left [0, +\infty \right [\) eine stetige und
+differenzierbare Funktion sowie \(a\mf \) und \(\lim _{x \to +\infty } a(x) = 0\).<br />
+Außerdem sei \(b: \left [0, +\infty \right [ \rightarrow \real \) auf jedem endlichen Intervall Riemann-integrierbar, wobei \(|\int _{x_1}^{x_2} b(x)\dx | \le C\) fu&#x0308;r alle \(x_2 \ge x_1 \ge 0\).
+&#x2003;&#x2003;Dann ist \(\int _0^{+\infty } a(x)b(x)\dx \) konvergent.
+</p>
+
+
+
+<h2 id="unendliche-produkte">Unendliche Produkte</h2>
+
+</p>
+
+
+<p>
+Seien \(a_k \in \complex \) mit \(a_k \not = 0\). Dann heißt \(P_n = \prod _{k=1}^n a_k\) das <b>\(n\)-te Partialprodukt</b>.
+</p>
+
+<p>
+<b>unendliches Produkt</b>: \(\prod _{k=1}^\infty a_k\) <em>konvergiert</em>, falls es einen Grenzwert gibt mit \(\lim _{n \to \infty } P_n \not = 0\).<br />
+Gibt es keinen Grenzwert \(\lim _{n \to \infty } P_n\), dann <em>divergiert</em> \(\prod _{k=1}^\infty a_k\).<br />
+Gibt es einen Grenzwert \(\lim _{n \to \infty } P_n = 0\), dann <em>divergiert \(\prod _{k=1}^\infty a_k\) bestimmt gegen \(0\)</em>.
+</p>
+
+<p>
+<b>Satz</b>: Wenn \(\prod _{k=1}^\infty a_k\) konvergiert, dann ist \(\lim _{k \to \infty } a_k = 1\).
+</p>
+
+<p>
+<b>Satz</b>: \(\prod _{k=1}^\infty a_k\) konvergiert genau dann, wenn \(\sum _{k=1}^\infty \Ln a_k\) konvergiert.
+</p>
+
+
+
+<h2 id="die-summierung-divergenter-reihen">Die Summierung divergenter Reihen</h2>
+
+</p>
+
+
+<p>
+Man will den Begriff der Konvergenz einer Reihe so verallgemeinern, sodass <b>Linearita&#x0308;t</b> (Reihe la&#x0308;sst sich auseinander ziehen) und <b>Regularita&#x0308;t</b> (eine im u&#x0308;blichen Sinne
+konvergente Reihe muss auch im neuen Sinn konvergieren und die Werte sind gleich) gilt.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Potenzreihenmethode nach <span class="textsc" >Poisson</span>-<span class="textsc" >Abel</span></b>: Sei \(a_k \in \complex \) gegeben. Fu&#x0308;r \(0 &lt; x &lt; 1\) definiert man \(f(x) = \sum
+_{k=1}^\infty a_k x^k\). Sei \(f(x)\) konvergent fu&#x0308;r alle \(x \in \left ]0,1\right [\) und es existiere der Grenzwert \(S_{PA} = \lim _{x \to 1-0} f(x)\). Der Grenzwert \(S_{PA}\) heißt <b>Summe nach
+<span class="textsc" >Poisson</span>-<span class="textsc" >Abel</span></b>.
+</p>
+
+<p>
+<b>Satz von <span class="textsc" >Abel</span></b>: Die Potenzreihenmethode ist regula&#x0308;r, d.&#x202f;h. wenn \(\sum _{k=1}^\infty a_k\) konvergiert, dann konvergiert auch \(S_{PA}\) sowie \(S_{PA} = \lim
+_{x \to 1-0} \sum _{k=1}^\infty a_k x^k = \sum _{k=1}^\infty a_k\).
+</p>
+
+<p>
+<b>Satz von <span class="textsc" >Tauber</span></b>: Sei \(S_{PA} = \lim _{x \to 1-0} f(x)\) konvergent und \(\lim _{n \to \infty }\) \(\frac {a_1 + 2a_2 + \dotsb + na_n}{n}\) \(= 0\).<br />
+Dann ist auch \(\sum _{k=1}^\infty a_k\) konvergent (gegen \(S_{PA}\)).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Methode der arithmetischen Mittel nach <span class="textsc" >Cesaro</span></b>:<br />
+Ist \(S_n = \sum _{k=1}^n a_k\), dann definiert man \(S_C := \lim _{m \to \infty }\) \(\frac {S_1 + \dotsb + S_m}{m}\).
+</p>
+
+<p>
+<b>Lemma (Regularita&#x0308;t)</b>: Sei \(\{b_k\}\) mit \(b = \lim _{k \to \infty } b_k\). &#x2003;&#x2003;Dann ist \(\lim _{n \to \infty }\) \(\frac {b_1 + \dotsb + b_n}{n}\) \(= b\).
+</p>
+
+<p>
+<b>Satz von <span class="textsc" >Frobenius</span></b>: Konvergiert \(S_C\), dann konvergiert auch \(S_{PA}\) und \(S_{PA} = S_C\).
+</p>
+
+<p>
+<b>Satz von <span class="textsc" >Hardy</span></b>: Seien \(S_C\) konvergent sowie \(|a_k| \cdot k \le C\) fu&#x0308;r alle \(k \in \natural \).<br />
+Dann ist \(\sum _{k=1}^\infty a_k\) konvergent (gegen \(S_C\)).
+</p>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

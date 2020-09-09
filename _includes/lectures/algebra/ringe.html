@@ -1,0 +1,1587 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\newcommand {\id }{\ensuremath {\operatorname {id}}}\)
+
+\(\newcommand {\GL }{\ensuremath {\operatorname {GL}}}\)
+
+\(\newcommand {\Mat }{\ensuremath {\operatorname {Mat}}}\)
+
+\(\newcommand {\Kern }{\ensuremath {\operatorname {Kern}}}\)
+
+\(\newcommand {\Bild }{\ensuremath {\operatorname {Im}}}\)
+
+\(\newcommand {\ord }{\ensuremath {\operatorname {ord}}}\)
+
+\(\newcommand {\ggT }{\ensuremath {\operatorname {ggT}}}\)
+
+\(\newcommand {\Stab }{\ensuremath {\operatorname {Stab}}}\)
+
+\(\newcommand {\sgn }{\ensuremath {\operatorname {sgn}}}\)
+
+\(\newcommand {\Hom }{\ensuremath {\operatorname {Hom}}}\)
+
+\(\newcommand {\grad }{\ensuremath {\operatorname {grad}}}\)
+
+\(\renewcommand {\i }{\ensuremath {\text {i}}}\)
+
+\(\newcommand {\Prim }{\ensuremath {\operatorname {Prim}}}\)
+
+\(\newcommand {\Aut }{\ensuremath {\operatorname {Aut}}}\)
+
+\(\newcommand {\Gal }{\ensuremath {\operatorname {Gal}}}\)
+
+\(\newcommand {\Kon }{\ensuremath {\operatorname {Kon}}}\)
+
+\(\renewcommand {\F }{\ensuremath {\mathbb {F}}}\)
+
+\(\renewcommand {\U }{\ensuremath {\mathcal {U}}}\)
+
+\(\newcommand {\Z }{\ensuremath {\mathcal {Z}}}\)
+
+\(\newcommand {\Char }{\ensuremath {\operatorname {char}}}\)
+
+\(\newcommand {\dcup }{\ensuremath {\mathbin {\dot {\cup }}}}\)
+
+\(\newcommand {\bigdcup }{\ensuremath {\mathop {\dot {\bigcup }}}}\)
+
+\(\newcommand {\nt }{\ensuremath {\mathbin {\vartriangleleft }}}\)
+
+\(\newcommand {\teilt }{\ensuremath {\mathbin {|}}}\)
+
+\(\newcommand {\notteilt }{\ensuremath {\mathbin {\!\not |}}}\)
+
+\(\newcommand {\erzeugnis }[1]{\ensuremath {\left \langle #1\right \rangle }}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  content:'(R1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  content:'(R2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  content:'(a)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  content:'(b)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  content:'(c)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  content:'(a)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f9::marker {
+  content:'(b)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f10::marker {
+  content:'(c)\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+
+<h2 id="ringe-ideale-restklassenringe-und-koerper">Ringe, Ideale, Restklassenringe und Körper</h2>
+
+</p>
+
+
+<p>
+<b>Ring</b>:&#x2003; Ein <em><span class="dashuline" >Ring</span></em> \((R, +, \cdot )\) ist eine Menge \(R\) mit zwei Abbildungen \(+\colon R \times R \rightarrow R\), \((a, b) \mapsto a + b\) und
+\(\cdot \colon R \times R \rightarrow R\), \((a, b) \mapsto a \cdot b\), sodass gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p>\((R, +)\) ist eine abelsche Gruppe (mit neutralem Element \(0\), zu \(a\) inversem Element \(-a\)).
+</p>
+</li>
+<li class="list-item-f1"><p><em><span class="dashuline" >Assoziativita&#x0308;t von \(\cdot \)</span></em>: \(\forall _{a, b, c \in R}\; a(bc) = (ab)c\)<br />
+<em><span class="dashuline" >Distributivita&#x0308;t von \(\cdot \) bzgl. \(+\)</span></em>: \(\forall _{a, b, c \in R}\; a \cdot (b + c) = (a \cdot b) + (a \cdot c),\; (a + b) \cdot c = (a \cdot c) +
+(b \cdot c)\)<br />
+<em><span class="dashuline" >neutrales Element von \(\cdot \)</span></em>: \(\exists _{1 \in R} \forall _{a \in R}\; a \cdot 1 = a = 1 \cdot a\)
+</p>
+</li>
+</ul>
+
+<p>
+Im Folgenden wird zusa&#x0308;tzlich \(0 \not = 1\) verlangt (sonst wa&#x0308;re \(R = \{0\}\) zugelassen).
+</p>
+
+<p>
+<b>kommutativ</b>:&#x2003; Ein Ring \((R, +, \cdot )\) heißt <em><span class="dashuline" >kommutativ</span></em>, falls \(\forall _{a, b \in R}\; a \cdot b = b \cdot a\).
+</p>
+
+<p>
+<b>Ringhomomorphismus</b>:&#x2003; Seien \(R\) und \(S\) Ringe. Eine Abbildung<br />
+\(\varphi \colon R \rightarrow S\) heißt <em><span class="dashuline" >Ringhomomorphismus</span></em>, falls gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f2"><p>\(\varphi \colon (R, +) \rightarrow (S, +)\) ist ein Homomorphismus von abelschen Gruppen.
+</p>
+</li>
+<li class="list-item-f3"><p>\(\forall _{a, b \in R}\; \varphi (a \cdot b) = \varphi (a) \cdot \varphi (b)\)
+</p>
+</li>
+<li class="list-item-f4"><p>\(\varphi (1_R) = 1_S\)
+</p>
+</li>
+</ul>
+
+<p>
+<em>Bemerkung</em>: \(\{0\}\) ist kein Ring, da kein Einselement vorhanden ist.<br />
+Fu&#x0308;r jeden Ring \(R\) und \(a \in R\) gilt \(0 \cdot a = (0 + 0) \cdot a = 0 \cdot a + 0 \cdot a\), also \(0 \cdot a = 0\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Beispiel</em>: Beispiele fu&#x0308;r bekannte Ringe sind \((\integer , +, \cdot )\), \((\rational , +, \cdot )\), \((\real , +, \cdot )\) und \((\complex , +, \cdot )\).<br />
+\((\Mat (n \times n, \rational ), +, \cdot )\) ist ein Ring, der fu&#x0308;r \(n \ge 2\) nicht kommutativ ist.<br />
+\(\rational [x] := \{f(x) = \sum _{i=0}^n a_i x^i \;|\; n \in \natural _0, a_0, \dotsc , a_n \in \rational \}\) ist der <em><span class="dashuline" >Polynomring</span></em> u&#x0308;ber \(\rational
+\).<br />
+Fu&#x0308;r \(U \subset \real ^n\) offen ist bspw. die Menge aller stetigen Funktionen \(f\colon U \rightarrow \real \) ein Ring, wobei Addition und Multiplikation im Bild erfolgen (\((f + g)(x) := f(x) + g(x)\),
+\((f \cdot g)(x) := f(x) \cdot g(x)\)).<br />
+Fu&#x0308;r eine abelsche Gruppe \(G\) ist die Menge \(\Hom (G, G)\) aller Gruppenhomomorphismen ein Ring.<br />
+Die einzige Mo&#x0308;glichkeit, \(R = \{0, 1\}\) zu einem Ring zu machen, ist \(1 \cdot 1 = 1\), \(1 \cdot 0 = 0 \cdot 1 = 0 \cdot 0 = 0\), \(1 + 0 = 0 + 1 = 1\), \(0 + 0 = 1 + 1 = 0\). Dies entspricht dem
+Quotientenring \(\integer /2\integer \) von \((\integer , +, \cdot )\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>(Links-/Rechts-)Ideal</b>:&#x2003; Seien \((R, +, \cdot )\) ein Ring und \(I \subset R\) eine Untergruppe von \((R, +)\).<br />
+\(I\) heißt <em><span class="dashuline" >Linksideal</span></em> von \(R\), falls \(\forall _{x \in I, a \in R}\; ax \in I\). \(I\) heißt <em><span class="dashuline" >Rechtsideal</span></em> von \(R\), falls
+\(\forall _{x \in I, a \in R}\; xa \in I\).<br />
+\(I\) heißt <em><span class="dashuline" >Ideal</span></em> von \(R\), falls \(I\) Links- und Rechtsideal ist.
+</p>
+
+<p>
+<em>Beispiel</em>: \(I = \{0\}\) ist stets ein Ideal. Jede Untergruppe \(I = n\integer \subset \integer \) von \(\integer \) ist ein Ideal.
+</p>
+
+<p>
+<span class="uline" ><em>Proposition</em> (<span class="textsl" >Restklassenring</span>):</span> Seien \(R\) ein Ring und \(I\) ein Ideal mit \(I \not = R\).<br />
+Dann ist die Faktorgruppe \(R/I\) ein Ring mit der Multiplikation \((x + I) \cdot (y + I) := (xy) + I\).<br />
+\(R/I\) heißt <em><span class="dashuline" >Restklassenring</span></em>.
+</p>
+
+<p>
+<em>Bemerkung</em>: Fu&#x0308;r \(I = R\) wa&#x0308;re \(R/I = \{0\}\) kein Ring (entha&#x0308;lt kein Einselement).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Einheitengruppe</b>:&#x2003; Sei \(R\) ein Ring und<br />
+\(R^\ast := \{x \in R \;|\; x \text { invertierbar bzgl. } \cdot \}\) \(= \{x \in R \;|\; \exists _{y \in R}\; xy = 1 = yx\}\).<br />
+Die Elemente von \(R^\ast \) heißen <em><span class="dashuline" >Einheiten</span></em> und \(R^\ast \) heißt <em><span class="dashuline" >Einheitengruppe</span></em> von \(R\).
+</p>
+
+<p>
+<em>Beispiel</em>: \(\integer ^\ast = \{\pm 1\}\), \(\rational ^\ast = \rational \setminus \{0\}\), \(\real ^\ast = \real \setminus \{0\}\), \((\integer /6\integer )^\ast = \{\overline {1}, \overline
+{5}\}\)
+</p>
+
+<p>
+<b>Schief ko&#x0308;rper/Ko&#x0308;rper</b>:&#x2003; \(R\) heißt <em><span class="dashuline" >Schiefko&#x0308;rper</span></em> oder <em><span class="dashuline" >Divisionsring</span></em>, falls \(R^\ast
+= R \setminus \{0\}\).<br />
+\(R\) heißt <em><span class="dashuline" >Ko&#x0308;rper</span></em>, falls \(R\) Schiefko&#x0308;rper und kommutativ ist.
+</p>
+
+<p>
+<em>Beispiel</em>: Sei \(K\) ein Ko&#x0308;rper und \(R = K[x]\) der Polynomring. Was ist \(R^\ast \)?<br />
+Fu&#x0308;r \(f(x) \in R^\ast \) gibt es ein \(g(x) \in R^\ast \) mit \(f(x)g(x) = 1\). Ist \(f(x) = a_0 + a_1 x + \dotsb + a_n x^n\) und \(g(x) = b_0 + b_1 x + \dotsb + b_\ell x^\ell \) mit \(a_j, b_j
+\in K\) und \(a_n \not = 0\), \(b_\ell \not = 0\), so gilt<br />
+\(1 = f(x) g(x) = a_n b_\ell x^{n+\ell } + \text {Terme echt kleineren Grades}\). Wegen \(a_n b_\ell \not = 0\) muss \(n + \ell = 0\) sein (Koeffizientenvergleich), d.&#x202f;h. \(n = \ell = 0\) und \(f(x)
+= a_0\). Also gilt \(R^\ast = K \setminus \{0\}\).
+</p>
+
+
+
+<h2 id="kommutative-ringe">Kommutative Ringe</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Im Folgenden sei jeder Ring als kommutativ vorausgesetzt.
+</p>
+
+<p>
+<span class="uline" ><em>Proposition</em> (<span class="textsl" >A&#x0308;quivalenzen zu Ko&#x0308;rper</span>):</span> Sei \(R\) ein Ring. Dann sind a&#x0308;quivalent:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f5"><p>\(R\) ist ein Ko&#x0308;rper.
+</p>
+</li>
+<li class="list-item-f6"><p>\(R\) hat genau zwei Ideale (\(\{0\}, R\)).
+</p>
+</li>
+<li class="list-item-f7"><p>Fu&#x0308;r jeden Ring \(S\) ist jeder Ringhomomorphismus \(R \rightarrow S\) injektiv.
+</p>
+</li>
+</ul>
+
+<p>
+<b>Integrita&#x0308;tsbereich</b>:&#x2003; Sei \(R\) ein Ring.<br />
+\(a \in R\) heißt <em><span class="dashuline" >Nullteiler</span></em>, falls es ein \(b \in R \setminus \{0\}\) gibt mit \(ab = 0\).<br />
+\(R\) heißt <em><span class="dashuline" >Integrita&#x0308;tsbereich</span></em>, falls \(0\) der einzige Nullteiler in \(R\) ist.
+</p>
+
+<p>
+<em>Beispiel</em>: In \(R = \integer /6\integer \) sind die Nullteiler \(\overline {0}\), \(\overline {2}\), \(\overline {3}\) und \(\overline {4}\).<br />
+\(\integer \), \(K\) und \(K[x]\) sind Integrita&#x0308;tsbereiche, falls \(K\) ein Ko&#x0308;rper ist.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Hauptideal(ring)/Primideal/max. Ideal</b>:&#x2003; Sei \(R\) ein Ring und \(I\) ein Ideal in \(R\).<br />
+\(I\) heißt <em><span class="dashuline" >Hauptideal</span></em>, falls \(\exists _{a \in R}\; I = Ra\).<br />
+\(R\) heißt <em><span class="dashuline" >Hauptidealring</span></em>, falls jedes Ideal in \(R\) ein Hauptideal ist.<br />
+\(I\) heißt <em><span class="dashuline" >Primideal</span></em>, falls \(I \not = R\) und \(\forall _{a, b \in R,\; ab \in I}\; \{a, b\} \cap I \not = \emptyset \).<br />
+\(I\) heißt <em><span class="dashuline" >maximales Ideal</span></em>, falls \(I \not = R\) und \(\forall _{J \text { Ideal in } R,\; I \subset J}\; J \in \{I, R\}\).
+</p>
+
+<p>
+<em>Bemerkung</em>: \(I = \{0\}\) und \(I = R\) sind Hauptideale.<br />
+Ist \(R\) ein Ko&#x0308;rper, so ist \(R\) ein Hauptidealring.<br />
+\(R\) ist ein Ko&#x0308;rper genau dann, wenn \(I = \{0\}\) maximales Ideal ist.<br />
+\(I\) ist maximal genau dann, wenn \(R/I\) ein Ko&#x0308;rper ist.<br />
+\(I\) ist Primideal genau dann, wenn \(R/I\) Integrita&#x0308;tsbereich ist.<br />
+Ist \(I\) maximales Ideal, so ist \(R/I\) ein Ko&#x0308;rper, also insb. Int.bereich und somit ist \(I\) ein Primideal.<br />
+(Die Umkehrung gilt nicht: \(\{0\} \subset \integer \) ist Primideal, aber nicht maximal.)
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Beispiel</em>: Im Beispiel \(R = \integer \) sind Ideale genau die \(n\integer \) (\(n \in \natural _0\)), dies sind alles Hauptideale.<br />
+Welche \(n\integer \) sind Primideale, welche sind maximal?<br />
+Sei zuna&#x0308;chst \(n = p\) Primzahl, dann ist \(\integer /p\integer \) Ko&#x0308;rper, also ist \(p\integer \) maximales Ideal und Primideal.<br />
+Ist \(n = ab\) mit \(1 &lt; a, b &lt; n\), dann gilt in \(\integer /n\integer \) \(\overline {0} = \overline {n} = \overline {ab} = \overline {a} \overline {b}\). Wegen \(\overline {a}, \overline {b}
+\not = \overline {0}\) ist \(\integer /n\integer \) kein Integrita&#x0308;tsbereich, also ist \(n\integer \) weder Primideal noch maximales Ideal.<br />
+Fu&#x0308;r \(n = 0\) ist \(0\integer = \{0\}\). \(\integer /0\integer \simeq \integer \) ist ein Integrita&#x0308;tsbereich, aber kein Ko&#x0308;rper, d.&#x202f;h. \(0\integer \) ist Primideal, aber nicht
+maximal.<br />
+Es gilt also: \(n\integer \) ist ein Primideal genau dann, wenn \(\pm n\) eine Primzahl ist.
+</p>
+
+<p>
+<em>Bemerkung</em>: Ein Beispiel fu&#x0308;r einen Ring, der kein Hauptidealring ist, ist \(R = \integer [x]\).<br />
+Sei dafu&#x0308;r \(I = \erzeugnis {2, x} = \{a_0 + a_1 x + \dotsb \;|\; a_i \in \integer ,\; 2 \teilt a_0\}\). \(I\) ist kein Hauptideal, denn andernfalls ga&#x0308;be es ein \(f(x) \in \integer [x]\) mit
+\(I = \erzeugnis {f(x)} = Rf(x)\). Wegen \(2 \in I\) gibt es dann ein \(g(x) \in \integer [x]\) mit \(f(x) g(x) = 2\). Da \(\grad (f(x)g(x)) = \grad f(x) + \grad g(x) = 0\) sein muss, gilt \(f(x) \in
+\integer \), d.&#x202f;h. \(f(x) \in \{\pm 1, \pm 2\}\). Wegen \(x \in I\) gibt es ein \(h(x) \in \integer [x]\) mit \(h(x) f(x) = x\), also \(f(x) \not = \pm 2\). Daher gilt \(f(x) = \pm 1\) und \(I = Rf(x) =
+R\), ein Widerspruch zu \(I \not = R\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b><span class="textsc" >euklid</span>isch</b>:&#x2003; Ein Integrita&#x0308;tsbereich \(R\) heißt <em><span class="dashuline" ><span class="textsc" >euklid</span>isch</span></em>, falls es eine <em><span
+class="dashuline" >Gradabbildung</span></em><br />
+\(\lambda \colon R \setminus \{0\} \rightarrow \natural _0\) gibt, sodass \(\forall _{a \in R,\; b \in R \setminus \{0\}} \exists _{q, r \in R}\; a = qb + r\) und \(r = 0\) oder \(\lambda (r) &lt;
+\lambda (b)\).
+</p>
+
+<p>
+<span class="uline" ><em>Theorem</em> (<span class="textsl" >euklidisch \(\Rightarrow \) Hauptidealring</span>):</span> Sei \(R\) euklidisch. Dann ist \(R\) ein Hauptidealring.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Proposition</em> (<span class="textsl" >Polynomring u&#x0308;ber Ko&#x0308;rper euklidisch</span>):</span> Sei \(K\) ein Ko&#x0308;rper.<br />
+Dann ist \(K[x]\) ein euklidischer Ring, d.&#x202f;h. insbesondere Hauptidealring.
+</p>
+
+<p>
+<em>Bemerkung</em>: Man definiert dabei \(\lambda (f(x)) := n\) fu&#x0308;r \(f(x) = a_0 + a_1 x + \dotsb + a_n x^n\), \(a_n \not = 0\). Ist \(I \not = \{0\}\) ein Ideal in \(K[x]\), so ist \(I = \erzeugnis
+{f(x)}\) mit \(f(x)\) einem Polynom kleinsten Grades in \(I\).
+</p>
+
+<p>
+<b>Ring der ganzen <span class="textsc" >Gauß</span>schen Zahlen</b>:&#x2003;<br />
+Der <em><span class="dashuline" >Ring der ganzen <span class="textsc" >Gauß</span>schen Zahlen</span></em> ist \(\integer [\i ] := \{a + b\i \;|\; a, b \in \integer \} \subset \complex \).
+</p>
+
+<p>
+<span class="uline" ><em>Proposition</em> (<span class="textsl" >\(\integer [\i ]\) euklidisch</span>):</span> Der Ring \(\integer [\i ]\) ist euklidisch, d.&#x202f;h. insbesondere Hauptidealring.
+</p>
+
+<p>
+<em>Bemerkung</em>: Die Norm \(N(z)\) fu&#x0308;r \(z \in \complex \) ist dabei definiert als \(N(z) = |z|^2 = z \overline {z}\).
+</p>
+
+
+
+<h2 id="irreduzible-und-primelemente">Irreduzible und Primelemente</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Im Folgenden sei jeder Ring als kommutativ vorausgesetzt.
+</p>
+
+<p>
+<b>irreduzibel/prim</b>:&#x2003; Seien \(R\) ein Integrita&#x0308;tsbereich und \(p \in R \setminus \{0\}\) mit \(p \notin R^\ast \).<br />
+\(p\) heißt <em><span class="dashuline" >irreduzibel</span></em>, falls \(\forall _{x, y \in R,\; p = xy}\; \{x, y\} \cap R^\ast \not = \emptyset \).<br />
+\(p\) heißt <em><span class="dashuline" >prim</span></em> oder <em><span class="dashuline" >Primelement</span></em>, falls \(\forall _{x, y \in R,\; p \teilt xy}\; (p \teilt x) \lor (p \teilt y)\).
+Eine a&#x0308;quivalente Definition ist, dass \(\erzeugnis {p}\) ein Primideal ist.
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >Primelemente sind irreduzibel</span>): Jedes Primelement ist irreduzibel.
+</p>
+
+<p>
+<em>Bemerkung</em>: Die Umkehrung gilt i.&#x202f;A. nicht.
+</p>
+
+<p>
+<span class="uline" ><em>Proposition</em> (<span class="textsl" >A&#x0308;quivalenz in HIR</span>):</span> Seien \(R\) ein Hauptidealring und \(p \in R \setminus \{0\}\) mit \(p \notin R^\ast \).<br />
+Dann sind a&#x0308;quivalent:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f8"><p>\(p\) ist irreduzibel.
+</p>
+</li>
+<li class="list-item-f9"><p>\(p\) ist prim.
+</p>
+</li>
+<li class="list-item-f10"><p>\(\erzeugnis {p}\) ist ein maximales Ideal.
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b><span class="textsc" >noether</span>sch</b>:&#x2003; Ein Ring \(R\) heißt <em><span class="dashuline" ><span class="textsc" >noether</span>sch</span></em>, falls jede aufsteigende Kette von Idealen
+\(I_1 \subset I_2 \subset \dotsb \subset I_k \subset \dotsb \) stationa&#x0308;r wird, d.&#x202f;h. es gibt ein \(N \in \natural \) mit \(I_N = I_{N+1} = \dotsb \).
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >HIRs sind noethersch</span>): Sei \(R\) ein Hauptidealring. Dann ist \(R\) noethersch.
+</p>
+
+<p>
+<b>faktorieller Ring</b>:&#x2003; Ein Integrita&#x0308;tsbereich \(R\) heißt <em><span class="dashuline" >faktorieller Ring</span></em>, falls jedes \(a \in R \setminus \{0\}\) mit \(a \notin R^\ast \) als endliches
+Produkt von Primelementen darstellbar ist.<br />
+Das ist a&#x0308;quivalent dazu, dass jedes \(a \in R \setminus \{0\}\) mit \(a \notin R^\ast \) als endliches Produkt von irreduziblen Elementen darstellbar und diese Zerlegung bis auf Reihenfolge und Einheiten eindeutig
+ist.<br />
+In faktoriellen Ringen sind Primelemente genau die irreduziblen Elemente.
+</p>
+
+<p>
+<b>Repra&#x0308;sentanten der Primelemente</b>:&#x2003; \(\Prim (R)\) ist eine Menge von Repra&#x0308;sentanten von Primelementen von \(R\), d.&#x202f;h. aus jeder Assoziiertheitsklasse \(\{\varepsilon p \;|\;
+\varepsilon \in R^\ast \}\) fu&#x0308;r \(p \in R\) prim wa&#x0308;hlt man genau ein Element aus.
+</p>
+
+<p>
+<span class="uline" ><em>Theorem</em> (<span class="textsl" >HIRs sind UFDs</span>):</span> Sei \(R\) ein Hauptidealring. Dann ist \(R\) faktoriell.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Beispiel</em>: In \(K[x]\) ist z.&#x202f;B. \((x - \lambda )\) irreduzibel.<br />
+\((x^2 + 1)\) ist irreduzibel in \(\real [x]\) und \((x^2 - 2)\) ist irreduzibel in \(\rational [x]\).<br />
+\(5\) ist nicht prim in \(\integer [\i ]\), da \(5 = (1 + 2\i )(1 - 2\i )\), d.&#x202f;h. \(5\) teilt das Produkt, aber \(5\) teilt keinen der Faktoren (sonst wa&#x0308;re \(5a = 1 \pm 2\i \), aber \(N(5a) =        25 |a|^2 =
+5 = N(1 \pm 2\i )\), d.&#x202f;h. \(|a|^2 = \frac {1}{5}\), es gibt aber kein solches \(a \in \integer [\i ]\)).<br />
+\(\integer [\sqrt {-5}]\) ist nicht faktoriell. Dazu zeigt man, dass z.&#x202f;B. \(2\) irreduzibel, aber nicht prim ist.<br />
+\(2\) ist irreduzibel, denn aus \(2 = ab\) folgt \(N(a) = N(x + y\sqrt {-5}) = x^2 + 5y^2 \teilt 4 = N(2)\) und \(N(b) = N(u + v\sqrt {-5}) = u^2 + 5v^2 \teilt 4 = N(2)\), somit gilt \(y = v = 0\)                   und \(a, b
+\in \integer \). Dann muss aber \(a = 1\), \(b = 2\) oder \(a = 2\), \(b = 1\) gelten.<br />
+\(2\) ist nicht prim, denn \(2 \cdot 3 = 6 = (1 + \sqrt {-5})(1 - \sqrt {-5})\). Wa&#x0308;re \(2\) prim, dann wu&#x0308;rde gelten, dass \(2 \teilt (1 + \sqrt {-5})\) oder \(2 \teilt (1 - \sqrt                     {-5})\). Aus
+\(2 \teilt (1 \pm \sqrt {-5})\) folgt aber, dass \(2z = 1 \pm \sqrt {-5}\) fu&#x0308;r ein \(z \in \integer [\sqrt {-5}]\), also \(z = \frac {1}{2} \pm \frac {1}{2} \sqrt {-5} \notin \integer                        [\sqrt
+{-5}]\), ein Widerspruch.
+</p>
+
+
+
+<h2 id="der-satz-von-gauss">Der Satz von <span style="font-variant: small-caps;">Gauß</span></h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Im Folgenden sei jeder Ring als kommutativ vorausgesetzt.
+</p>
+
+<p>
+<span class="uline" ><em>Theorem</em> (<span class="textsl" >Satz von &#x202f;<span class="textsc" >Gauß</span></span>):</span> Sei \(R\) ein faktorieller Ring. Dann ist auch \(R[x]\) faktoriell.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Fu&#x0308;r den Beweis dieses Satzes beno&#x0308;tigt man einige Vorarbeit.
+</p>
+
+<p>
+<b>Quotientenko&#x0308;rper</b>:&#x2003; Sei \(R\) ein Integrita&#x0308;tsbereich. Definiere eine A&#x0308;quivalenzrelation \(\sim \) auf \(M = \{(a, b) \in R \times R \;|\; b \not = 0\}\) mit \((a, b) \sim
+(c, d)\), falls \(ad = bc\). Die A&#x0308;quivalenzklasse von \((a, b) \in M\) wird mit \(\frac {a}{b}\) bezeichnet. Die Menge aller A&#x0308;quivalenzklassen heißt <em><span class="dashuline"
+>Quotientenko&#x0308;rper</span></em> \(Q(R) := \{\frac {a}{b} \;|\; a, b \in R,\; b \not = 0\}\). Man definiert Addition und Multiplikation analog wie in \(\rational \) (\(\frac {a}{b} + \frac {c}{d} :=
+\frac {ad + bc}{bd}\), \(\frac {a}{b} \cdot \frac {c}{d} := \frac {ac}{bd}\)). Mit diesen Operationen wird \(Q(R)\) zum Ko&#x0308;rper, der \(R\) als Teilring entha&#x0308;lt (mittels dem injektiven
+Ringhomomorphismus \(R \rightarrow Q(R)\), \(r \mapsto \frac {r}{1}\)).
+</p>
+
+<p>
+<em>Bemerkung</em>: Ist \(R\) faktoriell und \(a, b \in R\), so kann man \(a\) und \(b\) eindeutig bis auf Einheiten in Primelemente zerlegen, d.&#x202f;h. \(a = \varepsilon p_1^{a_1} \dotsm p_n^{a_n}\) und \(b =
+\varepsilon ’ p_1^{b_1} \dotsm p_n^{b_n}\) fu&#x0308;r \(a_i, b_i \in \natural _0\) und \(\varepsilon , \varepsilon ’ \in R^\ast \).<br />
+Daher ist \(\frac {a}{b} = \widetilde {\varepsilon } p_1^{c_1} \dotsm p_n^{c_n}\) mit \(c_i = a_i - b_i\). Man kann also jedes Element \(\frac {a}{b} \in Q(R)\) schreiben als \(\frac {a}{b} = \varepsilon
+\prod _{p \in \Prim (R)} p^{\nu _p}\) mit eindeutigen Exponenten \(\nu _p = \nu _p(\frac {a}{b}) \in \integer \). Formal setzt man \(\nu _p(0) := \infty \), um die Regel \(\nu _p(ab) = \nu _p(a) + \nu
+_p(b)\) auch auf \(0\) anwenden zu ko&#x0308;nnen.
+</p>
+
+<p>
+<em>Bemerkung</em>: Auch fu&#x0308;r \(Q(R)[x]\) kann man diese Schreibweise anwenden:<br />
+Fu&#x0308;r \(f(x) = \sum _{i=0}^n a_i x^i\) definiert man \(\nu _p(f) := \min _{i=0,\dotsc ,n} \nu _p(a_i)\).<br />
+Mit obigem Formalismus gilt \(f = 0 \iff \nu _p(f) = \infty \) und \(f \in R[x] \iff \nu _p(f) \ge 0\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Proposition</em> (<span class="textsl" >Lemma von &#x202f;<span class="textsc" >Gauß</span></span>):</span><br />
+Seien \(R\) ein faktorieller Ring, \(p \in \Prim (R)\) und \(f, g \in Q(R)[x]\).<br />
+Dann gilt \(\nu _p(fg) = \nu _p(f) + \nu _q(g)\).
+</p>
+
+<p>
+<b>normiertes Polynom</b>:&#x2003; Ein Polynom \(f(x) = \sum _{i=0}^n a_i x^i\) heißt <em><span class="dashuline" >normiert</span></em>, falls \(a_n = 1\).
+</p>
+
+<p>
+<b>primitives Polynom</b>:&#x2003; Ein Polynom \(f \in R[x]\) mit \(\nu _p(f) = 0\) fu&#x0308;r alle \(p \in \Prim (R)\) heißt <em><span class="dashuline" >primitiv</span></em>.
+</p>
+
+<p>
+<em>Bemerkung</em>: Jedes normierte Polynom \(f \in R[x]\) ist primitiv. Fu&#x0308;r primitive Polynome \(f \in R[x]\) sind die Primfaktorzerlegungen u&#x0308;ber \(R[x]\) und u&#x0308;ber \(Q(R)[x]\) identisch.
+</p>
+
+<p>
+<b>Folgerung</b>: Seien \(R\) ein faktorieller Ring, \(h \in R[x]\) normiert und \(h = fg\) mit \(f, g \in Q(R)[x]\).<br />
+Dann gilt \(f, g \in R[x]\).
+</p>
+
+<p>
+<em>Bemerkung</em>: \(h \in R[x]\) primitiv ist irreduzibel in \(R[x]\) \(\iff \) \(h\) ist irreduzibel in \(Q(R)[x]\).<br />
+Fu&#x0308;r \(g \in Q(R)[x]\) ist \(g = af\) mit \(f\) primitiv und \(a = \prod _{p \in \Prim (R)} p^{\nu _p(g)} \in Q(R)\).
+</p>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

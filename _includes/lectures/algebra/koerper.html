@@ -1,0 +1,1832 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\newcommand {\id }{\ensuremath {\operatorname {id}}}\)
+
+\(\newcommand {\GL }{\ensuremath {\operatorname {GL}}}\)
+
+\(\newcommand {\Mat }{\ensuremath {\operatorname {Mat}}}\)
+
+\(\newcommand {\Kern }{\ensuremath {\operatorname {Kern}}}\)
+
+\(\newcommand {\Bild }{\ensuremath {\operatorname {Im}}}\)
+
+\(\newcommand {\ord }{\ensuremath {\operatorname {ord}}}\)
+
+\(\newcommand {\ggT }{\ensuremath {\operatorname {ggT}}}\)
+
+\(\newcommand {\Stab }{\ensuremath {\operatorname {Stab}}}\)
+
+\(\newcommand {\sgn }{\ensuremath {\operatorname {sgn}}}\)
+
+\(\newcommand {\Hom }{\ensuremath {\operatorname {Hom}}}\)
+
+\(\newcommand {\grad }{\ensuremath {\operatorname {grad}}}\)
+
+\(\renewcommand {\i }{\ensuremath {\text {i}}}\)
+
+\(\newcommand {\Prim }{\ensuremath {\operatorname {Prim}}}\)
+
+\(\newcommand {\Aut }{\ensuremath {\operatorname {Aut}}}\)
+
+\(\newcommand {\Gal }{\ensuremath {\operatorname {Gal}}}\)
+
+\(\newcommand {\Kon }{\ensuremath {\operatorname {Kon}}}\)
+
+\(\renewcommand {\F }{\ensuremath {\mathbb {F}}}\)
+
+\(\renewcommand {\U }{\ensuremath {\mathcal {U}}}\)
+
+\(\newcommand {\Z }{\ensuremath {\mathcal {Z}}}\)
+
+\(\newcommand {\Char }{\ensuremath {\operatorname {char}}}\)
+
+\(\newcommand {\dcup }{\ensuremath {\mathbin {\dot {\cup }}}}\)
+
+\(\newcommand {\bigdcup }{\ensuremath {\mathop {\dot {\bigcup }}}}\)
+
+\(\newcommand {\nt }{\ensuremath {\mathbin {\vartriangleleft }}}\)
+
+\(\newcommand {\teilt }{\ensuremath {\mathbin {|}}}\)
+
+\(\newcommand {\notteilt }{\ensuremath {\mathbin {\!\not |}}}\)
+
+\(\newcommand {\erzeugnis }[1]{\ensuremath {\left \langle #1\right \rangle }}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  content:'(a)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  content:'(b)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  content:'(c)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  content:'(a)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  content:'(b)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  content:'(a)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f9::marker {
+  content:'(b)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f10::marker {
+  content:'(c)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f11::marker {
+  content:'(d)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f12::marker {
+  content:'(a)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f13::marker {
+  content:'(b)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f14::marker {
+  content:'(a)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f15::marker {
+  content:'(b)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f16::marker {
+  content:'(c)\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+
+<h2 id="motivation-und-beispiele">Motivation und Beispiele</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Im Folgenden werden Methoden gesucht, mit dem man einen gegebenen Ko&#x0308;rper \(K\) so zu einem Ko&#x0308;rper \(L\) erweitern kann, sodass ein in \(K[x]\) irreduzibles Polynom \(f(x)\) in
+\(L[x]\) reduzibel ist. Dies ist gleichwertig zur Suche von Nullstellen. \(L\) sollte dabei in irgendeiner Art kleinstmo&#x0308;glich sein.
+</p>
+
+<p>
+<em>Beispiel</em>: Beispielsweise ist fu&#x0308;r \(K = \real \) das Polynom \(f(x) = x^2 + 1\) irreduzibel, denn<br />
+\(f(x) = (x - \i )(x + \i )\) ist reduzibel in \(\complex [x]\), d.&#x202f;h. aufgrund der Eindeutigkeit der Primfaktorzerlegung in \(\complex [x]\) mu&#x0308;sste \(f(x)\) in \(\real [x]\) dieselbe
+Primfaktorzerlegung besitzen. Da \(x \pm \i \notin \real [x]\) gilt, ist \(f(x)\) irreduzibel in \(\real [x]\).
+</p>
+
+<p>
+<em>Beispiel</em>: In \(K = \rational \) ist \(f(x) = x^2 - 2\) mit gleicher Argumentation irreduzibel. Definiert man \(L = \rational [\sqrt {2}] := \{a + b\sqrt {2} \;|\; a, b \in \rational \}\), so sieht man,
+dass \(L\) ein Ring ist (es gilt \((a + b\sqrt {2}) + (c + d\sqrt {2}) \in L\) und \((a + b\sqrt {2})(c + d\sqrt {2}) = (ac + 2bd) + (ad + bc)\sqrt {2} \in L\)). Man kann sogar zeigen, dass \(L\) ein
+Ko&#x0308;rper ist: Fu&#x0308;r \(a + b\sqrt {2} \in L\) muss ein multiplikativ Inverses gefunden werden.<br />
+Falls \(a = 0\), \(b \not = 0\), so ist \(\frac {1}{2b} \sqrt {2} \in L\) invers. Falls \(b = 0\), \(a \not = 0\), so ist \(\frac {1}{a} \in L\) invers.<br />
+Falls \(a, b \not = 0\) ist, so muss fu&#x0308;r ein Inverses \(c + d\sqrt {2}\) gelten, dass \(ac + 2bd = 1\) und \(ad + bc = 0\). Aus der zweiten Gleichung folgt \(c = -\frac {ad}{b}\), d.&#x202f;h. \(-\frac {a^2
+d}{b} + 2bd = 1\), also \(-a^2 d + 2b^2 d = b\) bzw. \(d = \frac {b}{2b^2 - a^2}\). Man hat also \(c, d \in \rational \) bzw. das Inverse \(c + d\sqrt {2} \in L\) gefunden.<br />
+Der Nenner kann nicht \(0\) werden, denn sonst ist \(a^2 = 2b^2\) fu&#x0308;r \(a, b \in \rational \). Setzt man \(\frac {a}{b} = \frac {p}{q}\) mit ganzen Zahlen \(p, q \in \integer \) und \((p, q) = 1\), so
+gilt \(p^2 = 2q^2\). Dann wu&#x0308;rde \(2 \teilt p^2\) gelten, also \(2 \teilt p\). Daraus folgt \(4 \teilt p^2 = 2q^2\), also \(2 \teilt q\), ein Widerspruch, denn \(p\) und \(q\) sind teilerfremd.<br />
+Somit ist \(\rational [\sqrt {2}]\) ein solcher Erweiterungsko&#x0308;rper. Analog gilt \(\real [\i ] = \complex \) mit \(\i = \sqrt {-1}\).
+</p>
+
+
+
+<h2 id="koerpererweiterungen">Körpererweiterungen</h2>
+
+</p>
+
+
+<p>
+<b>Teilko&#x0308;rper</b>:&#x2003; Sei \(L\) Ko&#x0308;rper. Ein Teilring \(K \subset L\) heißt <em><span class="dashuline" >Teilko&#x0308;rper</span></em> von \(L\), falls \(\forall _{a \in K \setminus
+\{0\}}\; a^{-1} \in K\).<br />
+\(L\) heißt dann <em><span class="dashuline" >Erweiterungsko&#x0308;rper</span></em> von \(K\) und die Inkl. \(K \subset L\) heißt <em><span class="dashuline" >Ko&#x0308;rpererweiterung</span></em> \(L/K\).
+</p>
+<p>
+<b>Zwischenko&#x0308;rper</b>:&#x2003; Ein Ko&#x0308;rper \(K’\) mit \(K \subset K’ \subset L\) heißt <em><span class="dashuline" >Zwischenko&#x0308;rper</span></em> von \(L/K\).
+</p>
+
+<p>
+<b>erzeugter Teilko&#x0308;rper</b>:&#x2003; Sei \(M \subset L\) eine Teilmenge.<br />
+Dann heißt \(T(M) := \bigcap _{T \text { Teilkörper von } L,\; T \supset M} T\) der <em><span class="dashuline" >von \(M\) erzeugte Teilko&#x0308;rper</span></em> von \(L\).<br />
+\(T(M)\) ist der kleinste Teilko&#x0308;rper von \(L\), der \(M\) entha&#x0308;lt.
+</p>
+
+<p>
+<b>Adjunktion</b>:&#x2003; Sei \(M \subset L\) eine Teilmenge und \(K \subset L\) ein Teilko&#x0308;rper.<br />
+Dann entsteht \(K(M)\) aus \(K\) durch <em><span class="dashuline" >Adjunktion</span></em>, d.&#x202f;h. \(K(M) := T(M \cup K)\).<br />
+Fu&#x0308;r \(M = \{a_1, \dotsc , a_n\}\) schreibt man \(K(a_1, \dotsc , a_n) := K(\{a_1, \dotsc , a_n\})\).
+</p>
+
+<p>
+<b>endlich erzeugt</b>:&#x2003; \(L/K\) heißt <em><span class="dashuline" >endlich erzeugt</span></em>, falls \(\exists _{a_1, \dotsc , a_n \in L}\; L = K(a_1, \dotsc , a_n)\).
+</p>
+
+<p>
+<b>einfach</b>:&#x2003; \(L/K\) heißt <em><span class="dashuline" >einfach</span></em> oder <em><span class="dashuline" >einfache Erweiterung</span></em>, falls \(\exists _{a \in L}\; L = K(a)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Grad einer Ko&#x0308;rpererweiterung</b>:&#x2003; Sei \(L/K\) eine Ko&#x0308;rpererweiterung.<br />
+Die Vektorraumdimension \(\dim _K L\) heißt der <em><span class="dashuline" >Grad</span></em> \([L:K]\) der Ko&#x0308;rpererweiterung.
+</p>
+
+<p>
+<b>endlich</b>:&#x2003; Eine Ko&#x0308;rpererweiterung \(L/K\) heißt <em><span class="dashuline" >endlich</span></em>, falls \([L:K] &lt; \infty \).
+</p>
+
+<p>
+<em>Beispiel</em>: \([\rational [\sqrt {2}]:\rational ] = 2 = [\rational [\sqrt {3}]:\rational ] = [\complex :\real ]\)
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >Produkt</span>): Es gilt \([M:K] = [M:L] \cdot [L:K]\) fu&#x0308;r \(M/L\) und \(L/K\) Ko&#x0308;rpererweiterungen.
+</p>
+
+
+
+<h2 id="auswertungshomomorphismus">Auswertungshomomorphismus</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Im Folgenden soll versucht werden, zu gegebenen polynomialen Gleichungen, die in einem gegebenen Ko&#x0308;rper nicht lo&#x0308;sbar sind, einen kleinstmo&#x0308;glichen gro&#x0308;ßeren
+Ko&#x0308;rper zu konstruieren, in dem die Gleichung lo&#x0308;sbar wird.<br />
+Es ist also \(K\) ein Ko&#x0308;rper und \(f(x) \in K[x]\) gegeben. Existiert eine Ko&#x0308;rpererweiterung \(L/K\), sodass \(f(x)\) in \(L\) eine Nullstelle hat?<br />
+Bei z.&#x202f;B. \(\rational [\sqrt {2}]\) oder \(\real [\i ]\) kannte man die Lo&#x0308;sung schon, bevor man diese Ko&#x0308;rper konstruiert hat. Was ist, wenn man die Lo&#x0308;sung nicht kennt?
+</p>
+
+<p>
+<em>Bemerkung</em>: Die Idee ist, \(L\) als Quotient von \(K[x]\) zu produzieren. Sinnvoll ist dabei, sich eine Abbildung \(\varphi \colon K[x] \rightarrow L = K(a)\) zu definieren, wobei \(\varphi (\lambda ) =
+\lambda \) und \(\varphi (x) = a\) fu&#x0308;r \(\lambda \in K\) gelten soll. Falls \(\varphi \) existiert, so ist \(K(a)\) Quotient von \(K[x]\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Proposition</em> (<span class="textsl" >Auswertungshomomorphismus</span>):</span><br />
+Seien \(R\) und \(S\) Ringe, \(\alpha \colon R \rightarrow S\) ein Ringhomomorphismus und \(a \in S\).<br />
+Dann gibt es genau einen Ringhomomorphismus \(\varphi \colon R[x] \rightarrow S\) mit \(\varphi |_R = \alpha \) und \(\varphi (x) = a\).<br />
+\(\varphi \) heißt <em><span class="dashuline" >Auswertungshomomorphismus</span></em>.
+</p>
+
+
+<div class="displaymath" >
+
+<a id="autoid-1" ></a >
+
+<p>
+<span
+    id="lateximage-algebra-1"
+    class="lateximagesource"
+><!--
+        α   /S3a
+ R _        :
+
+       ∃!ϕ, ϕ|R =α, ϕ(x)=a
+R[x]
+--><img
+   src="/class-notes/images/lectures/algebra/image-1.svg"
+   alt="(3.1–3.0) \{begin}{align*} \begin{xy} \xymatrix { R \ar @{^{(}-&gt;}[d] \ar [r]^{\alpha } &amp; S \ni a \\ R[x] \ar @{--&gt;}[ur]_{\quad \exists !\varphi ,\; \varphi |_R = \alpha ,\;
+\varphi (x) = a} } \end {xy} \{end}{align*} "
+   style=""
+   class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Beispiel</em>: Oft wird als \(\alpha \) die Inklusion verwendet. Im Beispiel \(\rational [\sqrt {2}]\) gibt es einen Ringhomomorphismus \(\varphi \colon \rational [x] \rightarrow \rational [\sqrt {2}]\),
+wobei \(f(x) \mapsto f(a)\) gilt (daher der Name Auswertungshomomorphismus). Wa&#x0308;hlt man \(a = \sqrt {2}\), dann gilt \(\varphi (c + dx) = c + d\sqrt {2}\), d.&#x202f;h. \(\varphi \) ist surjektiv
+(i.&#x202f;A. ist dies nicht so). Da \(\rational [x]\) ein Hauptidealring ist, ist \(\Kern (\varphi ) = \erzeugnis {f(x)}\) fu&#x0308;r \(f(x) \in \Kern (\varphi )\) mit minimalem Grad. Man kann z.&#x202f;B.
+\(f(x) = x^2 - 2 \in \Kern (\varphi )\) wa&#x0308;hlen (es gilt \(\Kern (\varphi ) = \erzeugnis {f(x)}\), da \(f(x)\) irreduzibel ist, denn wenn \(f(x)\) nicht minimalen Grad ha&#x0308;tte, wa&#x0308;re
+\(f(x)\) reduzibel).<br />
+Nach dem Isomorphiesatz gilt \(\rational [\sqrt {2}] \simeq \rational [x]/\erzeugnis {x^2 - 2}\). \(\rational [x]/\erzeugnis {x^2 - 2}\) ist dabei „unabha&#x0308;ngig von \(\sqrt {2}\)“, d.&#x202f;h. man
+hat nun den Ko&#x0308;rper ohne Kenntnis der Lo&#x0308;sung konstruiert. Die Lo&#x0308;sung \(\sqrt {2}\) entspricht dabei \(\overline {x}\), denn fu&#x0308;r den Isomorphismus gilt \(\overline {x} \mapsto
+\varphi (x) = \sqrt {2}\).
+</p>
+
+<p>
+<em>Beispiel</em>: Analog gilt \(\real [\i ] \simeq \complex \simeq \real [x]/\erzeugnis {x^2 + 1}\).
+</p>
+
+<p>
+<em>Beispiel</em>: Ein Beispiel, in dem der Auswertungshomomorphismus nicht surjektiv ist, ist \(K = \rational \) mit \(a = \pi \). Der Auswertungshomomorphismus \(\varphi \colon \rational [x] \rightarrow \real
+\) kann nicht surjektiv sein, denn \(\rational [x]\) ist abza&#x0308;hlbar und \(\real \) ist u&#x0308;berabza&#x0308;hlbar. Alternativ kann man auch \(\pi ^{-1} \notin \Bild (\varphi )\) zeigen: Sonst
+wa&#x0308;re \(\pi ^{-1} = \varphi (f(x)) = \sum _{i=0}^n r_i \pi ^i\), also \(1 = \sum _{i=0}^n r_i \pi ^{i+1}\). Damit wa&#x0308;re \(\pi \) Lo&#x0308;sung einer algebraischen Gleichung, was nicht sein
+kann.
+</p>
+
+
+
+<h2 id="algebraische-elemente-und-minimalpolynom">Algebraische Elemente und Minimalpolynom</h2>
+
+</p>
+
+
+<p>
+<b>algebraisch/transzendent</b>:&#x2003; Seien \(L/K\) eine Ko&#x0308;rpererweiterung und \(\varphi \colon K[x] \rightarrow L\) der Auswertungshomomorphismus mit \(\alpha \) als Inklusion \(K \rightarrow
+L\) und \(\varphi (x) = a \in L\).<br />
+Dann heißt \(a\) <em><span class="dashuline" >transzendent</span></em> u&#x0308;ber \(K\), falls \(\varphi \) injektiv ist, sonst <em><span class="dashuline" >algebraisch (abha&#x0308;ngig)</span></em>
+u&#x0308;ber \(K\).
+</p>
+
+<p>
+<em>Bemerkung</em>: \(a\) ist transzendent genau dann, wenn \(a\) keine algebraische Gleichung in \(K\) erfu&#x0308;llt.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Minimalpolynom</b>:&#x2003; Seien \(L/K\) eine Ko&#x0308;rpererweiterung und \(a \in L\) algebraisch. Ein Polynom<br />
+\(f(x) \in K[x] \setminus \{0\}\) minimalen Grades mit \(f(a) = 0\) heißt <em><span class="dashuline" >Minimalpolynom</span></em> von \(a\) u&#x0308;ber \(K\).<br />
+Das <em><span class="dashuline" >normierte Minimalpolynom</span></em> zu \(a\) bezeichnet man mit \(m_a = m_{a,K}\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Ist \(f(x) \in K[x] \setminus \{0\}\) ein Minimalpolynom, so gilt \(\Kern (\varphi ) = \erzeugnis {f(x)}\), d.&#x202f;h. das Minimalpolynom ist eindeutig bis auf skalare Vielfache bestimmt.<br
+/>
+Insbesondere ist das normierte Minimalpolynom \(m_{a,K}\) eindeutig bestimmt.
+</p>
+
+<p>
+<em>Bemerkung</em>: Jedes andere Polynom \(p(x) \in K[x] \setminus \{0\}\) mit \(p(a) = 0\) wird von \(m_a\) geteilt, d.&#x202f;h. es gibt ein Polynom \(q(x) \in K[x]\) mit \(m_a(x) q(x) = p(x)\). Ist \(p(x)\)
+irreduzibel, so muss \(q(x)\) eine Einheit sein, also \(\grad q(x) = 0\) und \(\grad m_a(x) = \grad p(x)\). Somit ist jedes normierte und irreduzible Polynom \(p(x) \in K[x] \setminus \{0\}\) mit \(p(a) = 0\) gleich
+\(m_a\).<br />
+Wa&#x0308;re umgekehrt \(m_a\) reduzibel, so wa&#x0308;re \(m_a(x) = p(x) q(x)\) mit \(p(x), q(x) \in K[x]\) und<br />
+\(0 &lt; \grad p(x), \grad q(x) &lt; \grad m_a(x)\). Wegen \(m_a(a) = 0\) ist \(p(a) = 0\) oder \(q(a) = 0\), d.&#x202f;h. \(m_a\) ha&#x0308;tte nicht minimalen Grad.
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >Kriterium fu&#x0308;r Minimalpolynom</span>):<br />
+Seien \(L/K\) eine Ko&#x0308;rpererweiterung, \(a \in L\) algebraisch und \(p(x) \in K[x] \setminus \{0\}\) ein Polynom.<br />
+Dann ist \(p = m_a\) genau dann, wenn \(p(a) = 0\) sowie \(p\) normiert und irreduzibel ist.<br />
+(\(p\) ist Minimalpolynom genau dann, wenn \(p(a) = 0\) und \(p\) irreduzibel ist.)
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Polynome ausgewertet in \(a\)</b>:&#x2003; Sei \(L/K\) eine Ko&#x0308;rpererweiterung und \(a \in L\).<br />
+Dann ist \(K[a] := \{\sum _{i=0}^n r_i a^i \;|\; n \in \natural _0,\; r_i \in K\}\) die Menge aller <em><span class="dashuline" >Polynome ausgewertet in \(a\)</span></em>.
+</p>
+
+<p>
+<em>Bemerkung</em>: Fu&#x0308;r \(L/K\) und \(a \in L\) ist \(K(a)\) der kleinste Teilko&#x0308;rper von \(L\), der \(K \cup \{a\}\) entha&#x0308;lt.<br />
+Fu&#x0308;r den Auswertungshomomorphismus \(\varphi \colon K[x] \rightarrow L\) mit Inklusion \(\alpha \) gilt \(\Bild (\varphi ) = K[a]\).<br />
+\(K[a]\) ist i.&#x202f;A. kein Ko&#x0308;rper.
+</p>
+
+<p>
+<span class="uline" ><em>Proposition</em> (<span class="textsl" >A&#x0308;quivalenzen zu algebraisch</span>):</span> Seien \(L/K\) eine Ko&#x0308;rpererweiterung und \(a \in L\).<br />
+Dann sind a&#x0308;quivalent:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p>\(K[a] = K(a)\)
+</p>
+</li>
+<li class="list-item-f1"><p>\(a \in L\) ist algebraisch abha&#x0308;ngig u&#x0308;ber \(K\).
+</p>
+</li>
+<li class="list-item-f2"><p>\([K(a) : K] &lt; \infty \)
+</p>
+</li>
+</ul>
+
+<p>
+In diesem Fall gilt zusa&#x0308;tzlich \(\lambda (m_{a,K}) = [K(a) : K]\).
+</p>
+
+<p>
+<b>Grad eines algebraischen Elements</b>:&#x2003; Seien \(L/K\) eine Ko&#x0308;rpererweiterung und \(a \in L\) algebraisch. Dann heißt \(\lambda (m_{a,K}) = [K(a) : K]\) <em><span class="dashuline"
+>Grad</span></em> von \(a\) u&#x0308;ber \(K\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Im Beweis wird zusa&#x0308;tzlich gezeigt: Falls \(f(x) \in K[x] \setminus \{0\}\) irreduzibel ist, so ist \(\erzeugnis {f(x)}\) maximales Ideal (siehe oben). Insbesondere ist das Ideal \(\erzeugnis
+{m_{a,K}}\) ist maximal in \(K[x]\).<br />
+Der Ko&#x0308;rper \(K[x]/\erzeugnis {f(x)}\) hat als \(K\)-Vektorraum die Basis \(1, \overline {x}, \dotsc , \overline {x}^{n-1}\).<br />
+Ist \(a\) transzendent, dann ist \(a^{-1} \notin K[a]\), d.&#x202f;h. \(K[a]\) ist ein Ko&#x0308;rper \(\iff \) \(a\) ist algebraisch.
+</p>
+
+
+
+<h2 id="das-kriterium-von-eisenstein">Das Kriterium von <span style="font-variant: small-caps;">Eisenstein</span></h2>
+
+</p>
+
+
+<p>
+<span class="uline" ><em>Theorem</em> (<span class="textsl" >Kriterium von &#x202f;<span class="textsc" >Eisenstein</span></span>):</span> Sei \(R\) ein faktorieller Ring, \(K = Q(R)\) der
+Quotientenko&#x0308;rper von \(R\) und \(f(x) = \sum _{i=0}^n a_i x^i \in R[x]\) mit \(n \ge 1\).<br />
+Sei außerdem \(p \in R\) irreduzibel mit \(p \teilt a_i\) fu&#x0308;r \(i = 0, \dotsc , n - 1\), aber \(p \notteilt a_n\) und \(p^2 \notteilt a_0\).<br />
+Dann ist \(f(x)\) irreduzibel in \(K[x]\).<br />
+Falls zusa&#x0308;tzlich \(f(x)\) primitiv ist (z.&#x202f;B. \(a_n = 1\)), so ist \(f(x)\) irreduzibel in \(R[x]\).
+</p>
+
+<p>
+<em>Beispiel</em>: Fu&#x0308;r \(f(x) = x^n - pq\) mit \(p \in R\) prim und \(q \in R\) mit \(p \notteilt q\) erfu&#x0308;llt \(p\) das Kriterium, d.&#x202f;h. \(x^n - pq\) ist irreduzibel in \(R[x]\).<br />
+Auf \(g(x) = (x^p - 1)/(x - 1) = x^{p-1} + \dotsb + x + 1\) mit \(p \in R\) prim la&#x0308;sst sich das Kriterium nicht direkt anwenden. Substituiert man aber \(x \rightarrow x + 1\) und nimmt an, dass \(g(x) =
+g_1(x) g_2(x)\) reduzibel ist mit \(\grad (g_1), \grad (g_2) \ge 1\), so ist \(g(x + 1) = g_1(x + 1) g_2(x + 1)\) ebenfalls reduzibel. Es gilt aber \(g(x + 1) = ((x + 1)^p - 1) / (x + 1 - 1) = \left (\sum
+_{j=0}^p \binom {p}{j} x^j - 1\right ) / x\)<br />
+\(= \sum _{j=1}^p \binom {p}{j} x^{j-1} = x^{p-1} + p x^{p-2} + \dotsb + p\) und \(p \teilt \binom {p}{j}\) fu&#x0308;r alle \(j &lt; p\). Daher ist das Kriterium von Eisenstein anwendbar und \(g(x + 1)\)
+irreduzibel, ein Widerspruch.
+</p>
+
+
+
+<h2 id="beispiel-fuer-eine-koerpererweiterung">Beispiel für eine Körpererweiterung</h2>
+
+</p>
+
+
+<p>
+<em>Beispiel</em>: Ein Beispiel fu&#x0308;r eine einfache Ko&#x0308;rpererweiterung ist \((\rational (\sqrt {2}))(\sqrt {3})\).
+</p>
+
+<p>
+Dazu stellt man zuna&#x0308;chst fest, dass \(\sqrt {3} \notin \rational (\sqrt {2})\): Sonst wa&#x0308;re na&#x0308;mlich \(\sqrt {3} = a + b\sqrt {2}\) mit \(a, b \in \rational \). Quadrieren ergibt \(3 =
+a^2 + 2b^2 + 2ab\sqrt {2}\) bzw. \(\sqrt {2} = \frac {3 - a^2 - 2b^2}{2ab}\), d.&#x202f;h. \(\sqrt {2} \in \rational \) fu&#x0308;r \(ab \not = 0\). Da dies nicht stimmt, ist \(a = 0\) (fu&#x0308;r \(b = 0\)
+wa&#x0308;re \(a^2 = 3\), das dies fu&#x0308;r \(a \in \rational \) nicht geht, zeigt man analog wie fu&#x0308;r \(\sqrt {2}\)). Fu&#x0308;r \(a = 0\) ist \(\frac {3}{2} = \frac {p^2}{q^2}\) mit \(b = \frac
+{p}{q}\), \(p \in \integer \), \(q \in \natural \) und \((p, q) = 1\). Daraus folgt \(3q^2 = 2p^2\), d.&#x202f;h. \(2 \teilt q^2\), \(2 \teilt q\), \(4 \teilt 2p^2\), \(2 \teilt p^2\) und \(2 \teilt p\).<br />
+Das ist ein Widerspruch, daher ist \(\sqrt {3} \notin \rational (\sqrt {2})\).
+</p>
+
+<p>
+Somit muss \(\dim _\rational (\rational (\sqrt {2}))(\sqrt {3}) &gt; 2\) sein (\(\sqrt {3}\) ist nicht als \(\rational \)-Linearkombination von \(1\) und \(\sqrt {2}\) darstellbar). Es gilt außerdem \(\dim
+_\rational (\rational (\sqrt {2}))(\sqrt {3}) \le 4\), da \(x^2 - 3\) das Minimalpolynom von \(\sqrt {3}\) u&#x0308;ber \(\rational \) ist.<br />
+\(x^2 - 3\) ist auch irreduzibel u&#x0308;ber \(\rational (\sqrt {2})\) (sonst wa&#x0308;re \(x^2 - 3\) das Produkt von zwei linearen Faktoren, wegen \(x^2 - 3 = (x + \sqrt {3})(x - \sqrt {3})\) und \(\complex
+[x]\) faktoriell wa&#x0308;ren dies die gesuchten Faktoren, das steht allerdings im Widerspruch zu \(\sqrt {3} \notin \rational (\sqrt {2})\), siehe oben). Daher ist \(x^2 - 3\) das Minimalpolynom von \(\sqrt {3}\)
+u&#x0308;ber \(\rational (\sqrt {2})\).
+</p>
+
+<p>
+Somit ist \([(\rational (\sqrt {2}))(\sqrt {3}) : \rational (\sqrt {2})] = 2\), mit \([\rational (\sqrt {2}) : \rational ] = 2\) gilt also \([(\rational (\sqrt {2}))(\sqrt {3}) : \rational ] = 4\).
+</p>
+
+<p>
+Ist diese Erweiterung einfach? Dazu versucht man nun \(b := \sqrt {2} + \sqrt {3}\). Es gilt \(b^2 = 5 + 2\sqrt {2}\sqrt {3}\) und \((b^2 - 5)^2 = 24\). \(b\) ist also Nullstelle von \(x^4 - 10x^2 + 1 \in
+\rational [x]\). Es gilt \(\rational (\sqrt {2} + \sqrt {3}) \subset (\rational (\sqrt {2}))(\sqrt {3})\). Umgekehrt gilt wegen \(b^3 = 11\sqrt {2} + 9\sqrt {3}\), dass \(b^3 - 9b = 2\sqrt {2}\),
+d.&#x202f;h. \(\sqrt {2} \in \rational (\sqrt {2} + \sqrt {3})\) und daher auch \(\sqrt {3} \in \rational (\sqrt {2} + \sqrt {3})\). Somit gilt \(\rational (\sqrt {2} + \sqrt {3}) = (\rational (\sqrt
+{2}))(\sqrt {3})\) und \(x^4 - 10x^2 + 1\) ist das Minimalpolynom von \(\sqrt {2} + \sqrt {3}\) (da Grad \(4\) und<br />
+\(\lambda (m_{b,\rational }) = [\rational (\sqrt {2} + \sqrt {3}) : \rational ] = [(\rational (\sqrt {2}))(\sqrt {3}) : \rational ] = 4\)).
+</p>
+
+
+
+<h2 id="der-satz-von-kronecker">Der Satz von <span style="font-variant: small-caps;">Kronecker</span></h2>
+
+</p>
+
+
+<p>
+<b>algebraische Ko&#x0308;rpererweiterung</b>:&#x2003; Eine Ko&#x0308;rpererweiterung \(L/K\) heißt <em><span class="dashuline" >algebraisch</span></em>, falls alle \(a \in L\) algebraisch abha&#x0308;ngig
+u&#x0308;ber \(K\) sind.
+</p>
+
+<p>
+<span class="uline" ><em>Proposition</em> (<span class="textsl" >Ko&#x0308;rpererweiterungen</span>):</span> Seien \(M/L\) und \(L/K\) Ko&#x0308;rpererweiterungen. Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f3"><p>\(L/K\) ist endlich genau dann, wenn \(L/K\) algebraisch und endlich erzeugt ist.
+</p>
+</li>
+<li class="list-item-f4"><p>Sind \(M/L\) und \(L/K\) algebraisch, so ist auch \(M/K\) algebraisch.
+</p>
+</li>
+</ul>
+
+<p>
+<span class="uline" ><em>Theorem</em> (<span class="textsl" >Satz von &#x202f;<span class="textsc" >Kronecker</span></span>):</span><br />
+Seien \(K\) ein Ko&#x0308;rper und \(f(x) \in K[x]\) ein irreduzibles Polynom.<br />
+Dann existiert eine einfache, algebraische Ko&#x0308;rpererweiterung \(L/K\) mit \([L:K] = \grad (f(x))\), sodass \(f(x)\) in \(L\) eine Nullstelle hat.
+</p>
+
+<p>
+<em>Bemerkung</em>: Alle polynomialen Gleichungen sind also lo&#x0308;sbar!<br />
+Der Beweis ist konstruktiv (\(L := K[x]/\erzeugnis {f(x)}\), Nullstelle \(\overline {x} = x + \erzeugnis {f(x)} \in L\)).
+</p>
+
+
+
+<h2 id="einschub-auswahlaxiom-und-zornsches-lemma">Einschub: Auswahlaxiom und <span style="font-variant: small-caps;">Zorn</span>sches Lemma</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Existiert fu&#x0308;r alle Ko&#x0308;rper \(K\) der algebraische Abschluss \(\overline {K}\) (siehe unten)? Wenn ja, ist dieser eindeutig? Fu&#x0308;r den Existenzbeweis wird das Auswahlaxiom
+beno&#x0308;tigt, das unabha&#x0308;ngig vom Axiomensystem von Zermelo-Fraenkel ist.
+</p>
+
+<p>
+<b>Auswahlaxiom</b>:&#x2003; Das <em><span class="dashuline" >Auswahlaxiom</span></em> garantiert die Richtigkeit der folgenden Aussage:<br />
+Seien \(I \not = \emptyset \) eine Menge und \(\{M_i \;|\; i \in I\}\) eine Menge von Mengen mit \(M_i \not = \emptyset \) fu&#x0308;r alle \(i \in I\).<br />
+Dann existiert eine Funktion (<em><span class="dashuline" >Auswahlfunktion</span></em>) \(f \colon I \rightarrow \bigcup _{i \in I} M_i\) mit \(f(i) \in M_i\) fu&#x0308;r alle \(i \in I\), d.&#x202f;h. es
+gibt eine Folge \((x_i)_{i \in I} \in \prod _{i \in I} M_i\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>partielle Ordnung</b>:&#x2003; Seien \(M\) eine Menge und \(\le \) eine Relation auf \(M\). Dann heißt \(\le \) <em><span class="dashuline" >partielle Ordnung</span></em> auf \(M\), falls \(\forall _{x \in M}\;
+x \le x\)(<em><span class="dashuline" >reflexiv</span></em>), \(\forall _{x, y, z \in M}\; (x \le y \land y \le z) \Rightarrow (x \le z)\) (<em><span class="dashuline" >transitiv</span></em>) und
+\(\forall _{x, y \in M}\; (x \le y \land y \le x) \Rightarrow (x = y)\) (<em><span class="dashuline" >antisymmetrisch</span></em>).
+</p>
+
+<p>
+<b>Totalordnung</b>:&#x2003; Seien \(M\) eine Menge und \(\le \) eine partielle Ordnung auf \(M\).<br />
+Dann heißt \(\le \) <em><span class="dashuline" >Totalordnung</span></em>, falls \(\forall _{x, y \in M}\; (x \le y \lor y \le x)\).
+</p>
+
+<p>
+<b>obere Schranke</b>:&#x2003; Sei \(N \subset M\). \(a \in M\) heißt <em><span class="dashuline" >obere Schranke fu&#x0308;r \(N\)</span></em>, falls \(\forall _{x \in N}\; x \le a\).
+</p>
+
+<p>
+<b>maximales Element</b>:&#x2003; \(a \in M\) heißt <em><span class="dashuline" >maximales Element in \(M\)</span></em>, falls \(\forall _{x \in M}\; (a \le x \Rightarrow x = a)\).
+</p>
+
+<p>
+<span class="uline" ><em>Proposition</em> (<span class="textsl" ><span class="textsc" >Zorn</span>sches Lemma</span>):</span> Folgende Aussage ist a&#x0308;quivalent zum Auswahlaxiom:<br />
+Sei \(M \not = \emptyset \) partiell geordnet durch \(\le \), sodass fu&#x0308;r jede total geordnete Teilmenge \(N \subset M\) eine obere Schranke \(a \in M\) existiert. Dann gibt es ein maximales Element in \(M\).
+</p>
+
+<p>
+<em>Beispiel</em>: Mit dem Auswahlaxiom kann man zum Beispiel beweisen (sogar a&#x0308;quivalent):
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f5"><p>Jeder Vektorraum hat eine Basis.
+</p>
+</li>
+<li class="list-item-f6"><p>Es gibt nicht-messbare Mengen.
+</p>
+</li>
+<li class="list-item-f7"><p>Das Produkt von kompakten Mengen ist kompakt.
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="algebraischer-abschluss">Algebraischer Abschluss</h2>
+<em>Bemerkung</em>: Um alle Nullstellen eines irreduziblen Polynoms zu erzeugen, kann man den Satz von Kronecker iterativ anwenden.<br />
+Gibt es fu&#x0308;r beliebige Ko&#x0308;rper \(K\) eine Ko&#x0308;rpererweiterung \(L/K\), sodass <em>alle</em> polynomialen Gleichungen lo&#x0308;sbar sind? (Fu&#x0308;r \(K = \real \) wa&#x0308;hlt man
+z.&#x202f;B. \(L = \complex \).)
+</p>
+
+<p>
+<b>algebraisch abgeschlossen</b>:&#x2003; Ein Ko&#x0308;rper \(K\) heißt <em><span class="dashuline" >algebraisch abgeschlossen</span></em> (\(K = \overline {K}\)), falls eine der folgenden a&#x0308;quivalenten
+Bedingungen erfu&#x0308;llt ist:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f8"><p>Jedes nicht-konstante Polynom \(f(x) \in K[x] \setminus K\) hat eine Nullstelle in \(K\).
+</p>
+</li>
+<li class="list-item-f9"><p>Jedes nicht-konstante Polynom \(f(x) \in K[x] \setminus K\) zerfa&#x0308;llt in ein Produkt von Linearfaktoren \(f = f_1 \dotsm f_n\) mit \(f_i(x) \in K[x]\) und \(\grad f_i(x) = 1\) fu&#x0308;r \(i = 1,
+\dotsc , n\).
+</p>
+</li>
+<li class="list-item-f10"><p>Jedes irreduzible normierte Polynom \(f(x) \in K[x]\) ist von der Form \(f(x) = x - a\), \(a \in K\).
+</p>
+</li>
+<li class="list-item-f11"><p>Fu&#x0308;r jede algebraische Ko&#x0308;rpererweiterung \(L/K\) gilt \(L = K\).
+</p>
+</li>
+</ul>
+
+<p>
+<b>algebraischer Abschluss</b>:&#x2003; Sei \(K\) ein Ko&#x0308;rper. Dann heißt ein Erweiterungsko&#x0308;rper \(\overline {K}\), der algebraisch abgeschlossen und fu&#x0308;r den \(\overline {K}/K\) algebraisch
+ist, <em><span class="dashuline" >algebraischer Abschluss</span></em> von \(K\).
+</p>
+
+<p>
+<em>Beispiel</em>: \(\overline {\real } = \complex \)
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Theorem</em> (<span class="textsl" >Existenz von maximalen Idealen</span>):</span> Seien \(R\) ein Ring.<br />
+Dann existiert ein maximales Ideal \(I_0\) in \(R\) (\(I_0 \not = R\) und fu&#x0308;r jedes Ideal \(J\) in \(R\) mit \(J \supset I_0\) gilt \(J = I_0\) oder \(J = R\)), falls das Auswahlaxiom vorausgesetzt wird.
+</p>
+
+<p>
+<em>Bemerkung</em>: Somit kann man jeden Ring \(R\) surjektiv auf einen Ko&#x0308;rper \(R/I_0\) abbilden.
+</p>
+
+<p>
+<span class="uline" ><em>Theorem</em> (<span class="textsl" >Existenz vom algebraischen Abschluss</span>):</span><br />
+Jeder Ko&#x0308;rper \(K\) hat einen algebraischen Abschluss, falls das Auswahlaxiom vorausgesetzt wird.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Fu&#x0308;r die Eindeutigkeit des algebraischen Abschlusses definiert man Eindeutigkeit als Eindeutigkeit bis auf \(K\)-Isomorphie, d.&#x202f;h. der Grundko&#x0308;rper soll elementweise festgehalten
+werden.
+</p>
+
+<p>
+<b>\(K\)-Homomorphismus</b>:&#x2003; Seien \(L_1/K\) und \(L_2/K\) Ko&#x0308;rpererweiterungen u&#x0308;ber demselben Ko&#x0308;rper \(K\) und \(\varphi \colon L_1 \rightarrow L_2\) ein
+Ringhomomorphismus.<br />
+\(\varphi \) heißt <em><span class="dashuline" >\(K\)-Homomorphismus</span></em>, falls \(\varphi (x) = x\) fu&#x0308;r alle \(x \in K\) (d.&#x202f;h. \(\varphi |_K = \id _K\)).<br />
+\(\varphi \) heißt <em><span class="dashuline" >\(K\)-Isomorphismus</span></em>, falls \(\varphi \) ein bijektiver \(K\)-Homomorphismus ist.<br />
+\(\varphi \) heißt <em><span class="dashuline" >\(K\)-Automorphismus</span></em>, falls \(\varphi \) ein \(K\)-Isomorphismus mit \(L_1 = L_2\) ist.
+</p>
+
+<p>
+<b>Gruppe der \(K\)-Automorphismen</b>:&#x2003; Sei \(L/K\) eine Ko&#x0308;rpererweiterung.<br />
+Dann ist \(\Aut _K(L)\) die <em><span class="dashuline" >Gruppe der \(K\)-Automorphismen von \(L\)</span></em> unter Komposition.
+</p>
+
+<p>
+<em>Beispiel</em>: Die komplexe Konjugation in \(\complex /\real \), d.&#x202f;h. \(a + b\i \mapsto a - b\i \) fu&#x0308;r \(a, b \in \real \), ist ein \(\real \)-Automorphismus von \(\complex \). Analog ist in
+\(\rational [\sqrt {2}]/\rational \) die Abbildung<br />
+\(\rational [\sqrt {2}] \rightarrow \rational [\sqrt {2}]\), \(a + b\sqrt {2} \mapsto a - b\sqrt {2}\) ein \(\rational \)-Automorphismus von \(\rational [\sqrt {2}]\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Beide Automorphismen bilden eine Nullstelle des Minimalpolynoms (\(x^2 + 1\) bzw. \(x^2 - 2\)) auf eine Nullstelle des Minimalpolynoms ab (\(\i \mapsto -\i \) bzw. \(\sqrt {2} \mapsto -\sqrt
+{2}\)). Das ist kein Zufall: Ist \(L = K(a)\), \(m_a(x) = f(x) = \sum _{i=0}^n \lambda _j x^j\), \(\alpha \colon L \rightarrow L\) ein \(K\)-Automorphismus und \(x_0\) Nullstelle von \(m_a(x)\), so gilt \(0 = \alpha
+(0) = \alpha (\sum _{i=0}^n \lambda _j x_0^j) = \sum _{i=0}^n \alpha (\lambda _j) \alpha (x_0)^j = \sum _{i=0}^n \lambda _j \alpha (x_0)^j\), also ist \(\alpha (x_0)\) Nullstelle von \(m_a(x)\).
+Insbesondere gilt das fu&#x0308;r die Nullstelle \(a\), es gilt sogar:<br />
+Fu&#x0308;r einen \(K\)-Automorphismus \(\varphi \colon L \rightarrow L\), \(f(x) \in K[x]\) und \(a \in L\) mit \(f(a) = 0\) gilt \(f(\varphi (a)) = 0\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Proposition</em> (<span class="textsl" >Anzahl an \(K\)-Isomorphismen</span>):</span><br />
+Seien \(K, K’\) Ko&#x0308;rper, \(\sigma \colon K \rightarrow K’\) ein Isomorphismus, \(\sigma ^\ast \colon K[x] \rightarrow K’[x]\), \(\sum \lambda _i x^i \mapsto \sum \sigma (\lambda _i) x^i\)<br />
+der <em><span class="dashuline" >induzierte Isomorphismus</span></em> und \(L/K\) und \(L’/K’\) algebraische Ko&#x0308;rpererweiterungen.<br />
+Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f12"><p>Fu&#x0308;r \(a \in L\) und \(a’ \in L’\) mit \(m_{a’,K’} = \sigma ^\ast (m_{a,K})\) gibt es genau einen Isomorphismus<br />
+\(\varphi \colon K(a) \rightarrow K’(a’)\) mit \(\varphi |_K = \sigma \) und \(\varphi (a) = a’\).
+</p>
+</li>
+<li class="list-item-f13"><p>Fu&#x0308;r \(a \in L\) gilt \(\#\{\varphi \colon K(a) \rightarrow L’ \text { Homom.} \;|\; \varphi |_K = \sigma \} = \#\{x \in L’ \;|\; \sigma ^\ast (m_{a,K})(x) = 0\}\).
+</p>
+</li>
+</ul>
+
+<p>
+<em>Beispiel</em>: Fu&#x0308;r \(K = K’\) ist \(\sigma = \id _K\) ein Isomorphismus. Es gilt dann \(\sigma ^\ast = \id _{K[x]}\).<br />
+Fu&#x0308;r \(K = K’ = \rational \), \(L = \rational (\sqrt [3]{2})\), \(L’ = \complex \) und \(a = \sqrt [3]{2}\) ist \(m_{a,\rational }(x) = x^3 - 2\). Nach (b) gilt daher \(\#\{\varphi \colon \rational
+(\sqrt [3]{2}) \rightarrow \complex \;|\; \varphi |_\rational = \id _\rational \} = \#\{x \in \complex \;|\; x^3 - 2 = 0\}\). Die Menge der rechten Seite ist \(\{\sqrt [3]{2}, \sqrt [3]{2} e^{2\pi
+\i /3}, \sqrt [3]{2} e^{4\pi \i /3}\}\), d.&#x202f;h. es gibt drei Abbildungen \(\varphi \colon \rational (\sqrt [3]{2}) \rightarrow \complex \), die \(\rational \) elementweise festlassen.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Theorem</em> (<span class="textsl" >Eindeutigkeit des algebraischen Abschlusses</span>):</span><br />
+Setzt man das Auswahlaxiom voraus, so gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f14"><p>Seien \(L/K\) algebraisch, \(M\) algebraisch abgeschlossen und \(\sigma \colon K \rightarrow M\) Homomorphismus.<br />
+Dann existiert ein Homomorphismus \(\varphi \colon L \rightarrow M\) mit \(\varphi |_K = \sigma \).
+</p>
+
+
+<div class="displaymath" >
+<a id="autoid-2" ></a >
+<p>
+<span
+    id="lateximage-algebra-2"
+    class="lateximagesource"
+><!--
+       σ/
+K _        M; = M
+
+       ∃ϕ
+L
+--><img
+    src="/class-notes/images/lectures/algebra/image-2.svg"
+    alt="(3.1–3.0) \{begin}{align*} \begin{xy} \xymatrix { K \ar [r]^\sigma \ar @{_{(}-&gt;}[d] &amp; M = \overline {M} \\ L \ar @{--&gt;}[ru]_{\exists \varphi } &amp; } \end {xy}
+\{end}{align*} "
+    style=""
+    class="lateximage"
+></span>
+</p>
+</div>
+</li>
+<li class="list-item-f15"><p>Seien \(K \simeq K’\) isomorph durch \(\sigma \) und \(\overline {K}, \overline {K’}\) algebraische Abschlu&#x0308;sse von \(K, K’\).<br />
+Dann existiert ein Isomorphismus \(\varphi \colon \overline {K} \xrightarrow {\sim } \overline {K’}\) mit \(\varphi |_K = \sigma \).
+</p>
+
+
+<div class="displaymath" >
+<a id="autoid-3" ></a >
+<p>
+<span
+    id="lateximage-algebra-3"
+    class="lateximagesource"
+><!--
+       σ    / K 0
+K _   ∼          _
+
+              
+K
+       ∼    / K0
+       ∃ϕ
+--><img
+     src="/class-notes/images/lectures/algebra/image-3.svg"
+     alt="(3.1–3.0) \{begin}{align*} \begin{xy} \xymatrix { K \ar [r]^\sigma _\sim \ar @{_{(}-&gt;}[d] &amp; K’ \ar @{^{(}-&gt;}[d] \\ \overline {K} \ar @{--&gt;}[r]_{\exists \varphi }^\sim
+&amp; \overline {K’} } \end {xy} \{end}{align*} "
+     style=""
+     class="lateximage"
+></span>
+</p>
+</div>
+</li>
+<li class="list-item-f16"><p>Seien \(K\) ein Ko&#x0308;rper und \(L_1, L_2\) algebraische Abschlu&#x0308;sse von \(K\).<br />
+Dann existiert ein \(K\)-Isomorphismus \(\varphi \colon L_1 \xrightarrow {\sim } L_2\).
+</p>
+
+
+<div class="displaymath" >
+<a id="autoid-4" ></a >
+<p>
+<span
+    id="lateximage-algebra-4"
+    class="lateximagesource"
+><!--
+         Oo K  o
+
+                   
+L1
+          ∼         /L
+         ∃ϕ            2
+--><img
+   src="/class-notes/images/lectures/algebra/image-4.svg"
+   alt="(3.1–3.0) \{begin}{align*} \begin{xy} \xymatrix { &amp; K \ar @{_{(}-&gt;}[dl] \ar @{^{(}-&gt;}[dr] \\ L_1 \ar @{--&gt;}[rr]_{\exists \varphi }^\sim &amp; &amp; L_2 } \end {xy}
+\{end}{align*} "
+   style=""
+   class="lateximage"
+></span>
+</p>
+</div>
+</li>
+</ul>
+
+<p>
+<em>Bemerkung</em>: Also ist der algebraische Abschluss eindeutig bis auf \(K\)-Isomorphie. Alle algebraischen Erweiterungen \(L/K\) finden in \(\overline {K}\) statt (bis auf \(K\)-Isomorphie).
+</p>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

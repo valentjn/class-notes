@@ -1,0 +1,1732 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\renewcommand {\AA }{\mathbb {A}}\)
+
+\(\newcommand {\EE }{\mathbb {E}}\)
+
+\(\newcommand {\PP }{\mathbb {P}}\)
+
+\(\newcommand {\UU }{\mathbb {U}}\)
+
+\(\newcommand {\XX }{\mathbb {X}}\)
+
+\(\renewcommand {\C }{\mathcal {C}}\)
+
+\(\renewcommand {\F }{\mathcal {F}}\)
+
+\(\renewcommand {\H }{\mathcal {H}}\)
+
+\(\renewcommand {\O }{\mathcal {O}}\)
+
+\(\renewcommand {\S }{\mathcal {S}}\)
+
+\(\newcommand {\GL }{\mathrm {GL}}\)
+
+\(\newcommand {\eps }{\mathrm {eps}}\)
+
+\(\renewcommand {\div }{\mathrm {div}}\)
+
+\(\newcommand {\rot }{\mathrm {rot}}\)
+
+\(\newcommand {\D }{\mathop {}\!\mathrm {D}}\)
+
+\(\newcommand {\iu }{\text {i}}\)
+
+\(\newcommand {\tr }{\text {tr}}\)
+
+\(\newcommand {\Vor }{\mathrm {Vor}}\)
+
+\(\newcommand {\Del }{\mathrm {Del}}\)
+
+\(\newcommand {\Rang }{\text {Rang}}\)
+
+\(\newcommand {\id }{\text {id}}\)
+
+\(\newcommand {\sinc }{\operatorname {sinc}}\)
+
+\(\newcommand {\code }[1]{\texttt {#1}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  content:'–\00a0\00a0';
+}
+.lwarp-contents li.list-item-f9::marker {
+  content:'–\00a0\00a0';
+}
+.lwarp-contents li.list-item-f10::marker {
+  content:'–\00a0\00a0';
+}
+.lwarp-contents li.list-item-f11::marker {
+  content:'–\00a0\00a0';
+}
+.lwarp-contents li.list-item-f12::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f13::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f14::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f15::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f16::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f17::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f18::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f19::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f20::marker {
+  font-style:italic;
+  content:'(5)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f21::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f22::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f23::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f24::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f25::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f26::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f27::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f28::marker {
+  content:'•\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+
+<h2 id="odes-erster-ordnung">ODEs erster Ordnung</h2>
+
+</p>
+
+
+<p>
+<b>ODE 1. Ordnung</b>: Sei \(f\colon D \to \real \) stetig auf \(D \subset \real ^2\) offen.<br />
+Dann heißt \(y’(x) = f(x, y(x))\) oder \(y’ = f(x, y)\) <em><span class="dashuline" >ODE 1. Ordnung</span></em>. \(f\) heißt <em><span class="dashuline" >rechte Seite</span></em> der ODE, \(y\) <em><span
+class="dashuline" >abha&#x0308;ngige</span></em> und \(x\) <em><span class="dashuline" >unabha&#x0308;ngige Variable</span></em>. Eine <em><span class="dashuline" >Lo&#x0308;sung</span></em> der ODE
+auf einem Intervall \(I \subset \real \) ist eine stetig diffb. Funktion \(u\colon I \to \real \) mit \(\forall _{x \in I}\; (x, u(x)) \in D\), \(u’(x) = f(x, u(x))\).<br />
+Eine DGL \(y’(x) = f(x, y(x))\) mit der Bedingung \(y(x_0) = y_0\) heißt <em><span class="dashuline" >Anfangswertproblem (AWP)</span></em>.<br />
+Eine DGL kann durch ein <em><span class="dashuline" >2D-Richtungsfeld</span></em> in \(x\)-\(y\)-Koordinaten dargestellt werden, indem in diskreten Punkten \((x, y) \in D\) Pfeile mit Steigung \(\tan \varphi =
+y’(x)\) gezeichnet werden (meistens mit La&#x0308;nge \(1\)). Jede Lo&#x0308;sung verla&#x0308;uft tangential zum Richtungsfeld.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>homogene lineare ODE 1. Ordnung</b>: Das AWP einer <em><span class="dashuline" >homogenen linearen ODE 1. Ordnung</span></em> ist gegeben durch \(\forall _{x \in I}\; y’(x) = a(x) y(x)\) mit \(y(x_0)
+= y_0\), wobei \(I \subset \real \), \(a \in \C ^0(I)\), \(x_0 \in I\), \(y_0 \in \real \) und \(y \in \C ^1(I)\). Die Lo&#x0308;sung ist gleich \(y(x) = y_0 e^{A(x)}\) mit \(A(x) := \int _{x_0}^x a(t) \dt
+\).
+</p>
+
+<p>
+<b>inhomogene lineare ODE 1. Ordnung</b>: Das AWP einer <em><span class="dashuline" >inhomogenen linearen ODE 1. Ordnung</span></em> ist gegeben durch \(\forall _{x \in I}\; y’(x) = a(x) y(x) + b(x)\)
+mit \(y(x_0) = y_0\) mit \(b \in \C ^0(I)\).<br />
+Die Lo&#x0308;sung ist gleich \(y(x) = (y_0 + \int _{x_0}^x e^{-A(s)} b(s) \ds ) e^{A(x)}\) mit \(A(x) := \int _{x_0}^x a(t) \dt \).
+</p>
+
+
+
+<h2 id="phasenbilder-autonomer-systeme">Phasenbilder autonomer Systeme</h2>
+
+</p>
+
+
+<p>
+Im Folgenden betrachtet man Systeme zweier autonomer ODEs 1. Ordnung, also<br />
+\(x’(t) = f_1(x(t), y(t))\) und \(y’(t) = f_2(x(t), y(t))\) mit \(f_1, f_2 \in \C ^1(\Omega )\) und \(\Omega \subset \real ^2\).<br />
+Jede Lo&#x0308;sung \(\vec {\varphi }(t, \vecs {\eta }{0})\) ist entweder injektiv, periodisch oder konstant.
+</p>
+
+<p>
+<b>Trajektorie/Orbit</b>: Jede Lo&#x0308;sung \(t \mapsto \vec {\varphi }(t, \vecs {\eta }{0})\) des Systems heißt <em><span class="dashuline" >Trajektorie</span></em>.<br />
+Die Spur \(\vec {\varphi }(I, \vecs {\eta }{0})\) heißt <em><span class="dashuline" >Orbit</span></em>.
+</p>
+
+<p>
+<b>kritischer Punkt</b>:<br />
+Punkte \(\vec {\eta } \in \Omega \) mit \(f_1(\vec {\eta }) = f_2(\vec {\eta }) = 0\) heißen <em><span class="dashuline" >kritisch</span></em>/<em><span class="dashuline"
+>stationa&#x0308;r</span></em>/<em><span class="dashuline" >GG-Punkte</span></em>.
+</p>
+
+<p>
+<b>Phasenraum</b>: Der <em><span class="dashuline" >Phasenraum</span></em> \(\Omega \) ist die disjunkte Vereinigung aller Orbits, jeder Punkt liegt auf genau einem Orbit. Zwei Orbits sind entweder disjunkt oder gleich.
+</p>
+
+<p>
+<b>Phasenportrait</b>:<br />
+Ein <em><span class="dashuline" >Phasenportrait</span></em> zeigt die kritischen Punkte und ein paar typische Orbits als Pfeile.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Linearisierung in kritischen Punkten</b>: Sei \(\vecs {\eta }{0}\) ein kritischer Punkt, also \(\vec {f}(\vecs {\eta }{0}) = \vec {0}\).<br />
+Mit der Taylor-Entwicklung gilt \(\vec {f}(\vecs {\eta }{0} + \vec {h}) = A\vec {h} + \O (|\vec {h}|^2)\) mit \(A := \D \vec {f}(\vecs {\eta }{0})\). Ist die Lo&#x0308;sung \(\vec {\varphi }(t)\) nahe bei
+\(\vecs {\eta }{0}\), so ist \(\vec {\psi }(t) := \vec {\varphi }(t) - \vecs {\eta }{0}\) „klein“ und<br />
+\(\vec {\psi }’(t) = \vec {\varphi }’(t) = \vec {f}(\vec {\varphi }(t)) = \vec {f}(\vecs {\eta }{0} + \vec {\psi }(t)) = A\vec {\psi }(t) + \O (|\vec {\psi }(t)|^2)\), also \(\vec {\psi }’(t)
+\approx A\vec {\psi }(t)\).<br />
+Um kritische Punkte herum kann man also das Verhalten des Systems durch die lineare ODE \(\vec {\psi }’(t) = A\vec {\psi }(t)\) mit \(\vec {\varphi }(t) \approx \vec {\psi }(t) + \vecs {\eta }{0}\)
+approximieren.
+</p>
+
+<p>
+<b>Satz von <span class="textsc" >Hartman</span>-<span class="textsc" >Grobman</span></b>: Seien die Realteile der Eigenwerte von \(\D \vec {f}(\vecs {\eta }{0})\) fu&#x0308;r den kritischen Punkt
+\(\vecs {\eta }{0}\) ungleich Null (<em><span class="dashuline" >hyperbolischer kritischer Punkt</span></em>).<br />
+Dann ist das Phasenportrait des linearisierten Systems „a&#x0308;hnlich“ dem des originalen Systems.
+</p>
+
+
+
+<h2 id="klassifikation-von-kritischen-punkten-in-2d">Klassifikation von kritischen Punkten in 2D</h2>
+
+</p>
+
+
+<p>
+Gegeben sei ein autonomes lineares System \(\vec {y}’ = A\vec {y}\) mit \(A := \smallpmatrix {a_{11}&amp;a_{12}\\a_{21}&amp;a_{22}} \in \real ^{2 \times 2} \setminus \{0\}\).<br />
+Ist \(S \in \real ^{2 \times 2}\) inv.bar, so ist das System a&#x0308;quivalent zu \(\vec {x}’ = B\vec {x}\) mit \(B := S^{-1} AS\) (mit \(\vec {y} = S\vec {x}\)). \(S\) kann stets so gewa&#x0308;hlt werden, dass
+\(B\) einer der Matrizen<br />
+\(B_1 := \smallpmatrix {\lambda _1&amp;0\\0&amp;\lambda _2}\), \(B_2 := \smallpmatrix {\lambda &amp;1\\0&amp;\lambda }\) und \(B_3 := \smallpmatrix {-\varrho &amp;-\omega \\\omega &amp;-\varrho
+}\) gleicht mit \(\lambda , \lambda _1, \lambda _2, \varrho , \omega \in \real \).
+</p>
+
+<p>
+<b>Fall 1: zwei reelle Eigenwerte</b><br />
+Ist \(B = B_1\), dann ist die Lo&#x0308;sung gegeben durch \(x_1(t) = \xi _1 e^{\lambda _1 t}\) und \(x_2(t) = \xi _2 e^{\lambda _2 t}\) mit \(x_1(0) = \xi _1\) und \(x_2(0) = \xi _2\).
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p>Fu&#x0308;r \(\lambda _2 &lt; \lambda _1 &lt; 0\) oder \(0 &lt; \lambda _1 &lt; \lambda _2\) erha&#x0308;lt man einen <em><span class="dashuline" >Zweitangentenknoten/echten Knoten ((proper)
+node)</span></em>. Dabei gilt \(x_2 = cx_1^k\) mit \(c := \xi _2 \xi _1^{-k}\) fu&#x0308;r \(\xi _1 \not = 0\) und \(k := \frac {\lambda _2}{\lambda _1} &gt; 1\). Die Orbits sind Parabelstu&#x0308;cke.
+</p>
+</li>
+<li class="list-item-f1"><p>Fu&#x0308;r \(\lambda _1 = \lambda _2\) erha&#x0308;lt man einen <em><span class="dashuline" >Sternknoten (singular/star node)</span></em>.<br />
+Dabei gilt \(x_2 = cx_1\) mit \(c := \xi _2 \xi _1^{-k}\) fu&#x0308;r \(\xi _1 \not = 0\). Die Orbits sind Geradenstu&#x0308;cke.
+</p>
+</li>
+<li class="list-item-f2"><p>Fu&#x0308;r \(\lambda _1 \not = 0\) und \(\lambda _2 = 0\) liegen die kritischen Knoten alle auf einer Geraden (\(x_1 = 0\)) und die Orbits sind zu dieser Gerade orthogonale Geraden (parallel zur \(x_1\)-Achse).
+</p>
+</li>
+<li class="list-item-f3"><p>Fu&#x0308;r \(\lambda _2 &lt; 0 &lt; \lambda _1\) erha&#x0308;lt man einen <em><span class="dashuline" >Sattelpunkt (saddle)</span></em>. Dabei gilt \(x_2 = \pm c|x_1|^{-k}\) mit \(c := \pm \xi _2 |\xi
+_1|^k\) fu&#x0308;r \(\xi _1 \not = 0\) und \(k := -\frac {\lambda _2}{\lambda _1} &gt; 0\). Die Orbits sind Hyperbelstu&#x0308;cke.
+</p>
+</li>
+</ul>
+
+<p>
+<b>Fall 2: nur ein reeller Eigenwert</b><br />
+Ist \(B = B_2\), dann ist die Lo&#x0308;sung gleich \(x_1(t) = (\xi _1 + \xi _2 t) e^{\lambda t}\) und \(x_2(t) = \xi _2 e^{\lambda t}\) mit \(x_1(0) = \xi _1\)<br />
+und \(x_2(0) = \xi _2\). Fu&#x0308;r \(\lambda \not = 0\) erha&#x0308;lt man dann einen <em><span class="dashuline" >Eintangentenknoten/unechten Knoten (degenerate/improper node)</span></em>. Die Orbits
+laufen spiralfo&#x0308;rmig auf den kritischen Punkt zu bzw. von ihm weg, wobei sie auf der Richtung des Eigenvektors genau auf ihn zu bzw. weg laufen.
+</p>
+
+<p>
+<b>Fall 3: zwei komplexe Eigenwerte</b><br />
+Ist \(B = B_3\), dann hat \(B\) die Eigenwerte \(\lambda _{1,2} := -\varrho \pm \iu \omega \) mit \(\omega &gt; 0\). Mit der Substitution \(z = x_1 + \iu x_2\) (damit \(z’ = \lambda _1 z \implies z(t) = z_0
+e^{\lambda _1 t}\)) erha&#x0308;lt man dann die Lo&#x0308;sung<br />
+\(x_1(t) = r_0 e^{-\varrho t} \cos (\omega t + \varphi _0)\), \(x_2(t) = r_0 e^{-\varrho t} \sin (\omega t + \varphi _0)\)<br />
+mit \(x_1(0) = r_0 \cos (\varphi _0)\) und \(x_2(0) = r_0 \sin (\varphi _0)\) (wobei \(z_0 = r_0 e^{\iu \varphi _0}\)).
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f4"><p>Fu&#x0308;r \(\varrho = 0\) erha&#x0308;lt man ein <em><span class="dashuline" >Zentrum (center)</span></em>, Orbits = Kreise um den krit. Pkt.
+</p>
+</li>
+<li class="list-item-f5"><p>Fu&#x0308;r \(\varrho \not = 0\) erha&#x0308;lt man einen <em><span class="dashuline" >Spiralknoten (focus)</span></em>. Orbits = Spiralen um den krit. Pkt.
+</p>
+</li>
+</ul>
+
+<p>
+In allen Fa&#x0308;llen gilt, dass die Orbits auf den kritischen Punkt zu laufen, wenn der Realteil des Eigenwerts negativ ist, und von ihm weg laufen, wenn der Realteil positiv ist.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Zusammenfassung</b>: Fu&#x0308;r die Eigenwerte gilt \(\lambda _{1,2} = \frac {\tr (A)}{2} \pm \frac {1}{2} \sqrt {\tr (A)^2 - 4\det (A)}\) (char. Gleichung \(\lambda ^2 - \tr (A) \lambda + \det
+(A) = 0\)). Von den Vorzeichen von Spur, Determinante und Diskriminate \(\tr (A)^2 - 4\det (A)\) la&#x0308;sst sich der Typ des kritischen Punkts bestimmen:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f6"><p>\(\det (A) &lt; 0\): <em>Sattelpunkt</em>
+</p>
+</li>
+<li class="list-item-f7"><p>\(\det (A) &gt; 0\):
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f8"><p>\(\tr (A) = 0\): <em>Zentrum</em>
+</p>
+</li>
+<li class="list-item-f9"><p>\(\tr (A)^2 - 4\det (A) = 0\): <em>Sternknoten</em> oder <em>unechter Knoten</em> (stabil \(\iff \tr (A) &lt; 0\))
+</p>
+</li>
+<li class="list-item-f10"><p>\(\tr (A)^2 - 4\det (A) &lt; 0\): <em>Spiralknoten</em> (stabil \(\iff \tr (A) &lt; 0\))
+</p>
+</li>
+<li class="list-item-f11"><p>\(\tr (A)^2 - 4\det (A) &gt; 0\): <em>echter Knoten</em> (stabil \(\iff \tr (A) &lt; 0\))
+</p>
+</li>
+</ul>
+</li>
+</ul>
+
+
+
+<h2 id="grenzzykel-und-separatrizen">Grenzzykel und Separatrizen</h2>
+Gegeben sei nun das zweidimensionale autonome System \(\vec {x}’ = \vec {f}(\vec {x})\).
+</p>
+
+<p>
+<b>Grenzzyklus</b>: Ein <em><span class="dashuline" >Grenzzyklus</span></em> ist eine isolierte periodische Lo&#x0308;sung.
+</p>
+
+<p>
+<b><span class="textsc" >Bendixon</span>-Kriterium</b>: Seien \(D \subset \real ^2\) ein einfach zush. Gebiet (d.&#x202f;h. keine Lo&#x0308;cher) und<br />
+\(x’ = f_1(x, y)\), \(y’ = f_2(x, y)\) mit \(f_1, f_2 \in \C ^1(D)\).<br />
+Wenn \(\div \vec {f} = \partial _x f_1 + \partial _y f_2\) nicht identisch Null ist und keinen VZ-Wechsel hat, dann gibt es keine geschlossenen Orbits des Systems, die vollsta&#x0308;ndig in \(D\) liegen.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Fluss</b>: Ein <em><span class="dashuline" >Fluss</span></em> ist eine Abbildung \(\vec {\phi } \in \C ^1(\real ^2, \real ^2)\) mit \(\forall _{\vec {x} \in \real ^2}\; \vec {\phi }(\vec {x}, 0) =
+\vec {x}\) und<br />
+\(\forall _{\vec {x} \in \real ^2} \forall _{s, t \in \real }\; \vec {\phi }(\vec {\phi }(\vec {x}, t), s) = \vec {\phi }(\vec {x}, t+s)\).
+</p>
+
+<p>
+<b>Grenzpunkt</b>: Seien \(\vec {x} \in \real ^2\) und \(\vec {\phi }\) der vom System \(\vec {x}’ = \vec {f}(\vec {x})\) erzeugte Fluss.<br />
+Ein Punkt \(\vecs {x}{0} \in \real ^2\) heißt <em><span class="dashuline" >\(\omega \)-Grenzpunkt</span></em> von \(\vec {x}\) fu&#x0308;r das System, falls es eine Folge \((t_i)_{i \in \natural }\) mit \(t_i
+\to \infty \) gibt, sodass \(\vec {\phi }(t_i, \vec {x}) \to \vecs {x}{0}\).<br />
+<em><span class="dashuline" >\(\alpha \)-Grenzpunkte</span></em> sind analog mit \(t_i \to -\infty \) definiert.
+</p>
+
+<p>
+<b>Grenzmenge</b>: Die Menge \(\omega (\vec {x})\) aller \(\omega \)-Grenzpunkte von \(\vec {x}\) heißt <em><span class="dashuline" >\(\omega \)-Grenzmenge</span></em>.<br />
+Die <em><span class="dashuline" >\(\alpha \)-Grenzmenge</span></em> ist analog definiert.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>stabiler Grenzzyklus</b>: Ein Grenzzyklus \(\Gamma \) heißt <em><span class="dashuline" >stabil</span></em> (oder <em><span class="dashuline" >\(\omega \)-Grenzzyklus</span></em>), falls \(\Gamma \) die<br
+/>
+\(\omega \)-Grenzmenge aller Lo&#x0308;sungen in einer Umgebung von \(\Gamma \) ist.
+</p>
+
+<p>
+<b>instabiler Grenzzyklus</b>: Ein Grenzzyklus \(\Gamma \) heißt <em><span class="dashuline" >instabil</span></em> (oder <em><span class="dashuline" >\(\alpha \)-Grenzzyklus</span></em>), falls \(\Gamma \)
+die<br />
+\(\alpha \)-Grenzmenge aller Lo&#x0308;sungen in einer Umgebung von \(\Gamma \) ist.
+</p>
+
+<p>
+<b>semistabiler Grenzzyklus</b>: Ein Grenzzyklus heißt <em><span class="dashuline" >semistabil</span></em>, falls er auf der einen Seite stabil und auf der anderen instabil ist.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>homokliner Orbit</b>: Seien \(\vecs {x}{0}\) ein kritischer Punkt von \(\vec {x}’ = \vec {f}(\vec {x})\) und \(\gamma \) ein Orbit des Systems.<br />
+\(\gamma \) heißt <em><span class="dashuline" >homoklin</span></em>, falls \(\omega (\gamma ) = \{\vecs {x}{0}\} = \alpha (\gamma )\).
+</p>
+
+<p>
+<b>heterokliner Orbit</b>: Seien \(\vecs {x}{0} \not = \vecs {y}{0}\) zwei kritische Punkte von \(\vec {x}’ = \vec {f}(\vec {x})\) und \(\gamma \) ein Orbit des Systems. \(\gamma \) heißt <em><span
+class="dashuline" >heteroklin</span></em>, falls \(\omega (\gamma ) = \{\vecs {x}{0}\}\) und \(\alpha (\gamma ) = \{\vecs {y}{0}\}\).
+</p>
+
+<p>
+<b>Separatrix</b>: Eine <em><span class="dashuline" >Separatrix</span></em> ist ein Orbit, der den Phasenraum in zwei Bereiche qualitativ unterschiedlichen Verhaltens teilt.
+</p>
+
+
+
+<h2 id="pfadlinien-stromlinien-und-streichlinien">Pfadlinien, Stromlinien und Streichlinien</h2>
+
+</p>
+
+
+<p>
+Gegeben sei ein zeitabha&#x0308;ngiges 2D-Vektorfeld \(\vec {v}(\vec {x}, t)\) auf \(D \subset \real ^2\) (z.&#x202f;B. ein Fluss).
+</p>
+
+<p>
+<b>Pfadlinie</b>: Eine <em><span class="dashuline" >Pfadlinie</span></em> ist eine Trajektorie eines masselosen Teilchens im Fluss.<br />
+Man erha&#x0308;lt sie durch Lo&#x0308;sung von \(\vec {x}’ = \vec {v}(\vec {x}, t)\) fu&#x0308;r \(t &gt; 0\) und \(\vec {x}(0) = \vecs {x}{0}\).
+</p>
+
+<p>
+<b>Stromlinie</b>: Eine <em><span class="dashuline" >Stromlinie</span></em> ist eine Kurve, die u&#x0308;berall tangential zum Vektorfeld \(\vec {v}(\cdot , t_s)\) fu&#x0308;r ein festes \(t_s\) ist. Man
+erha&#x0308;lt sie durch Lo&#x0308;sung von \(\frac {\d }{\ds }\vec {x} = \vec {v}(\vec {x}, t_s)\) fu&#x0308;r \(s &gt; 0\) und \(\vec {x}(0) = \vecs {x}{0}\).
+</p>
+
+<p>
+<b>Streichlinie</b>: Eine <em><span class="dashuline" >Streichlinie</span></em> ist eine Kurve, die entsteht, wenn man sta&#x0308;ndig zu Zeitpunkten \(t’ \in [0, t]\) Partikel in einem bestimmten Punkt \((x_0,
+y_0)\) starten la&#x0308;sst und dann schaut, wo sich die Partikel zum Zeitpunkt \(t\) befinden. Die Streichlinie ist nun die Kurve, die diese \(t\)-Aufenthaltsorte verbindet. Zur Berechnung von Streichlinien verfa&#x0308;hrt
+man wie folgt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f12"><p>Berechne zuna&#x0308;chst die Pfadlinie \((x(t, c_1, c_2), y(t, c_1, c_2))\) im Anfangspunkt \((c_1, c_2)\) fu&#x0308;r \(t = 0\).
+</p>
+</li>
+<li class="list-item-f13"><p>Setze \(x_0 := x(t’, c_1, c_2)\) und \(y_0 := y(t’, c_1, c_2)\). Diese Gleichungen beschreiben die Anfangspositionen \((c_1, c_2)\) zu \(t = 0\), von denen das Partikel zum Zeitpunkt \(t’ \in [0,
+t]\) durch \((x_0, y_0)\) gewandert ist.
+</p>
+</li>
+<li class="list-item-f14"><p>Lo&#x0308;se nach \(c_1\) und \(c_2\) auf und setze diese Ausdru&#x0308;cke in \(x(t, c_1, c_2)\) und \(y(t, c_1, c_2)\) ein.
+</p>
+</li>
+<li class="list-item-f15"><p>Eliminiere \(t’\), um die Streichlinien-Parametrisierungen in Abha&#x0308;ngigkeit von \(t\) zu einer Kurve der Art \(y = y(x)\) umzuformen.
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="numerische-loesung">Numerische Lösung</h2>
+Gegeben seien das AWP \(y’(x) = f(x, y(x))\) in \(I := [a, b]\) und \(y(a) = y_0\) und eine Diskretisierung \(x_j := a + jh\) von \(I\) fu&#x0308;r \(j = 0, \dotsc , N\) und \(h := \frac {b-a}{N}\) mit \(N \in
+\natural \).<br />
+Gesucht sind Approximationen \(u_j \approx y(x_j)\).
+</p>
+
+<p>
+<b>explizites <span class="textsc" >Euler</span>-Verfahren</b>: Mit Taylor-Enwicklung gilt \(y(x_{j+1}) = y(x_j) + y’(x_j) h + \O (h^2)\). Fu&#x0308;r kleines \(h\) erha&#x0308;lt man daher Approximationen
+\(u_0 := y_0\) und \(u_{j+1} := u_j + h f(x_j, u_j)\) fu&#x0308;r \(j = 0, \dotsc , N-1\) (<em><span class="dashuline" >explizites <span class="textsc" >Euler</span>-Verfahren</span></em>). Das Verfahren
+hat Fehlerordnung \(\O (h^2)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b><span class="textsc" >Runge</span>-<span class="textsc" >Kutta</span>-Verfahren</b>:<br />
+Beim <em><span class="dashuline" ><span class="textsc" >Runge</span>-<span class="textsc" >Kutta</span>-Verfahren</span></em> ist ebenfalls \(u_0 := y_0\). \(u_{j+1}\) errechnet sich aus \(u_j\) durch
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f16"><p>    \(k_1 := f(x_j, u_j)\),
+</p>
+</li>
+<li class="list-item-f17"><p>    \(k_2 := f(x_j + h/2, u_j + hk_1/2)\),
+</p>
+</li>
+<li class="list-item-f18"><p>    \(k_3 := f(x_j + h/2, u_j + hk_2/2)\),
+</p>
+</li>
+<li class="list-item-f19"><p>    \(k_4 := f(x_j + h, u_j + hk_3)\) und
+</p>
+</li>
+<li class="list-item-f20"><p>    \(u_{j+1} := u_j + h/6 \cdot (k_1 + 2k_2 + 2k_3 + k_4)\).
+</p>
+</li>
+</ul>
+
+<p>
+Das Verfahren hat Fehlerordnung \(\O (h^4)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b><span class="textsc" >Sto&#x0308;rmer</span>-<span class="textsc" >Verlet</span>-Verfahren</b>: Das <em><span class="dashuline" ><span class="textsc" >Sto&#x0308;rmer</span>-<span
+class="textsc" >Verlet</span>-Verfahren</span></em> ist geeignet, um newtonsche Bewegungsgleichungen \(m\vec {a} = m\vec {x}’’ = \vec {F}\) zu lo&#x0308;sen. Zuna&#x0308;chst wandelt man mit \(\vec {v} =
+\vec {x}’\) die ODE in ein 2D-System um. Anschließend berechnet man fu&#x0308;r jedes Partikel \(k\) zum Zeitschritt \(n\) zuna&#x0308;chst \(\vecs {a}{k}^n := \vecs {F}{k}^n(\vecs {x}{k}^n)/m_k\), \(\vecs
+{v}{k}^{n+1/2} := \vecs {v}{k}^n + \vecs {a}{k}^n \Delta t/2\) und dann \(\vecs {x}{k}^{n+1} := \vecs {x}{k}^n + \vecs {v}{k}^{n+1/2} \Delta t\) sowie \(\vecs {a}{k}^{n+1} := \vecs {F}{k}^n(\vecs
+{x}{k}^{n+1})/m_k\) und \(\vecs {v}{k}^{n+1} := \vecs {v}{k}^{n+1/2} + \vecs {a}{k}^{n+1} \Delta t/2\). Das Verfahren hat Fehlerordnung \(\O (h^2)\) (ist aber sehr stabil).
+</p>
+
+
+
+<h2 id="anwendungen">Anwendungen</h2>
+
+</p>
+
+
+<p>
+<b>einfache Partikelsimulation</b>: Die newtonsche Gravitation einer großen Masse \(M\) auf eine kleine Masse \(m\) im Punkt \(\vec {r}\) wird durch die Gleichung \(m\vec {r}’’ = -\frac {GMm}{r^2} \frac {\vec
+{r}}{|\vec {r}|}\) beschrieben (mit Konstante \(G\)). Mit kartesischen Koordinaten \(\vec {r} = (x, y)^\tp \) erha&#x0308;lt man \(\smallpmatrix {x’’\\y’’} = -\frac {GM}{(x^2 + y^2)^{3/2}} \smallpmatrix
+{x\\y}\). Mit \(v_x := x’\) und \(v_y := y’\) wandelt man diese ODE-System in das System \(\smallpmatrix {x’\\y’\\v_x’\\v_y’} = \smallpmatrix {v_x\\v_y\\-\frac {GM}{(x^2 + y^2)^{3/2}} x\\-\frac
+{GM}{(x^2 + y^2)^{3/2}} y}\) um. Dieses System kann mit dem Sto&#x0308;rmer-Verlet-Verfahren gelo&#x0308;st werden.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>elektrostatische Umwandlung in Rasterbilder</b>:<br />
+Gegeben sei ein Graustufenbild \(f\colon \Omega \to [0, 1]\). Gesucht wird eine Methode, die mithilfe der Elektrostatik \(f\) in ein Rasterbild \(g\) (nur einzelne u&#x0308;berschneidungsfreie schwarze Kreise auf weißer
+Fla&#x0308;che) umwandelt. Dazu nimmt man an, dass die Rasterpunkte Partikel gleicher Ladung (z.&#x202f;B. Elektronen) sind, die mithilfe der Coulomb-Kraft \(\vec {F} \propto \frac {q_1 q_2}{r^2} \frac {\vec
+{r}}{|\vec {r}|}\) wechselwirken. Wegen der gegenseitigen Abstoßung ergibt sich asymptotisch eine gleichma&#x0308;ßige Verteilung auf \(\Omega \). Daher erzeugt man durch die Grauwerte \(f\) eine Verteilung fester
+positiver Ladungen, die die Elektronen anziehen.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>bilineare Interpolation</b>: Ein <em><span class="dashuline" >regelma&#x0308;ßiges zweidim. Gitter</span></em> ist gegeben durch \(x_i := x_0 + i \Delta x\), \(y_j := y_0 + j \Delta y\) fu&#x0308;r \(i =
+0, \dotsc , N_x\) und \(j = 0, \dotsc , N_y\). Eine <em><span class="dashuline" >Zelle</span></em> \((i, j)\) ist das Rechteck mit den Ecken \((i, j)\), \((i+1, j)\), \((i+1, j+1)\) und \((i, j+1)\). Ein Punkt
+\((x_p, y_p) \in \real ^2\) befindet sich in der Zelle \(i = \lfloor \frac {x_p - x_0}{\Delta x} \rfloor \), \(j = \lfloor \frac {y_p - y_0}{\Delta y} \rfloor \). Um eine Anna&#x0308;herung an den Wert
+einer Funktion \(f(x, y)\) in einem Punkt \((x, y) \in [x_i, x_{i+1}] \times [y_j, y_{j+1}]\) aus den Werten \(f_{i,j}, f_{i+1,j}, f_{i+1,j+1}, f_{i,j+1}\) an den Zellecken zu erhalten, benutzt man <em><span
+class="dashuline" >bilineare Interpolation</span></em>:<br />
+\(f(x, y) = (1-\alpha )(1-\beta ) f_{i,j} + \alpha (1-\beta ) f_{i+1,j} + (1-\alpha )\beta f_{i,j+1} + \alpha \beta f_{i+1,j+1}\), wobei<br />
+\(\alpha := \frac {x - x_i}{\Delta x}, \beta := \frac {y - y_j}{\Delta y} \in [0, 1]\) die <em><span class="dashuline" >lokalen Koordinaten</span></em> sind.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>LIC</b>: Sei \(\Omega := \{x_0, x_0 + \Delta r, \dotsc , x_0 + N_x \Delta r\} \times \{y_0, y_0 + \Delta r, \dotsc , y_0 + N_y \Delta r\}\) ein regula&#x0308;res Gitter mit Gitterweite \(\Delta r
+&gt; 0\) sowie \(\widetilde {\Omega } := [x_0, x_0 + N_x \Delta r] \times [y_0, y_0 + N_y \Delta r]\). Gesucht ist eine in \(\widetilde {\Omega }\) dichte Darstellung eines Stromlinien-Vektorfelds \(\vec
+{v}\colon \Omega \to \real ^2\). Seien dazu
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f21"><p>\(\vec {\varphi }(s, \vec {\eta })\) die Stromlinie des Vektorfelds mit Anfangswert \(\vec {\eta } \in \widetilde {\Omega }\) fu&#x0308;r \(s = 0\),
+</p>
+</li>
+<li class="list-item-f22"><p>\(k\colon [-L, L] \to \real \) eine Funktion mit \(\int _{-L}^L k(s) \ds = 1\) (<em><span class="dashuline" >Faltungskern</span></em>) und
+</p>
+</li>
+<li class="list-item-f23"><p>\(T\colon \Omega \to [0, 1]\) eine <em><span class="dashuline" >Rauschtextur</span></em>.
+</p>
+</li>
+</ul>
+
+<p>
+Dann ist die Intensita&#x0308;t \(I\) des <em><span class="dashuline" >LIC-Bilds</span></em> in \((x_i, y_j) \in \Omega \) gegeben durch die Faltung<br />
+\(I(x_i, y_j) = \int _{-L}^L k(s) T(\vec {\varphi }(s, (x_i, y_j)^\tp )) \ds \) (LIC steht fu&#x0308;r <em><span class="dashuline" >Line Integral Convolution</span></em>).
+</p>
+
+<p>
+<b>OLIC</b>: LIC hat bei Verwendung von \(k(s) :\equiv \frac {1}{2L}\) den Nachteil, dass die Richtungsinformation verloren geht. Durch Verwendung eines asymmetrischen Faltungskerns und Spot Noise bleibt die
+Richtungsinformation erhalten, man spricht von <em><span class="dashuline" >OLIC (Oriented LIC)</span></em>.
+</p>
+
+
+
+<h2 id="numerische-bestimmung-von-kritischen-punkten-und-separatrizen">Numerische Bestimmung von kritischen Punkten und Separatrizen</h2>
+
+</p>
+
+
+<p>
+<b>Bestimmung von kritischen Punkten</b>: Sei ein Vektorfeld \(\vec {f}\colon \Omega \to \real ^2\) mit \(\Omega , \widetilde {\Omega }\) wie eben gegeben. Kritische Punkte der zugeho&#x0308;rigen ODE sind
+genau die Nullstellen von \(\vec {f}\). Allerdings ist \(\vec {f} = (u, v)^\tp \) nur diskret gegeben. Daher markiert man zuna&#x0308;chst die Gitterpunkte mit \((+,+)\), \((+,-)\), \((-,+)\), \((-,-)\) je nach Vorzeichen
+von \(u\) und \(v\). Anschließend bestimmt man die Zellen, bei denen sich in den Eckpunkten das Vorzeichen in beiden Komponenten \(u, v\) jeweils a&#x0308;ndert. Anschließend gibt es verschiedene Mo&#x0308;glichkeiten:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f24"><p><em>Isogeraden</em>: Finde mittels Interpolation Nullstellen von \(u\) und \(v\) auf den Kanten der Zelle, verbinde die Nullstellen und schneide die beiden Geraden, die zu \(u\) und zu \(v\) geho&#x0308;ren.
+</p>
+</li>
+<li class="list-item-f25"><p><em>Isolinien aus Interpolation</em>: Besser ist es, \(u\) und \(v\) jeweils bilinear zu interpolieren und Nullstellen der Interpolierenden zu bestimmen. Setze also<br />
+\(u(x, y) = (1-\alpha )(1-\beta ) u_{i,j} + \alpha (1-\beta ) u_{i+1,j} + (1-\alpha )\beta u_{i,j+1} + \alpha \beta u_{i+1,j+1}\) sowie<br />
+\(v(x, y) = (1-\alpha )(1-\beta ) v_{i,j} + \alpha (1-\beta ) v_{i+1,j} + (1-\alpha )\beta v_{i,j+1} + \alpha \beta v_{i+1,j+1}\) und bestimme \(\alpha , \beta \in [0, 1]\), sodass \(u(x, y) = 0 =
+v(x, y)\) (nicht-lineares Gleichungssystem).
+</p>
+</li>
+<li class="list-item-f26"><p><em>Subdivision</em>: Noch besser ist eine Subdivision der Zelle in vier Teilzellen, U&#x0308;berpru&#x0308;fung, in welcher der Teilzellen die Nullstelle liegt, und Wiederholung, bis die Zellgro&#x0308;ße eine bestimmte
+Grenze unterschritten hat. Dieses Verfahren ist numerisch robuster und liefert bessere Ergebnisse.
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Bestimmung des Typs eines kritischen Punkts</b>: Um den Typ eines kritischen Punkts \((x, y)^\tp \) zu bestimmen, muss man die Eigenwerte der Jacobi-Matrix \(J(x, y)\) von \(\vec {f}\) im Punkt \((x, y)^\tp \)
+berechnen. Zur approximativen Berechnung der Jacobi-Matrix gibt es zwei Mo&#x0308;glichkeiten:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f27"><p><em>Interpolation der Jacobi-Matrix</em>: Berechne zuna&#x0308;chst die Jacobi-Matrizen \(J_{k,\ell }\) in den Eckpunkten \((k, \ell )\) der Gitterzelle \((i, j)\), die \((x, y)^\tp \) entha&#x0308;lt, also<br />
+\(J_{k,\ell } := \smallpmatrix {(u_{k+1,\ell } - u_{k-1,\ell }) / (2\Delta x) &amp; (u_{k,\ell +1} - u_{k,\ell -1}) / (2\Delta y) \\ (v_{k+1,\ell } - v_{k-1,\ell }) / (2\Delta x) &amp;
+(v_{k,\ell +1} - v_{k,\ell -1}) / (2\Delta y)}\). Interpoliere dann die vier Jacobi-Matrizen bilinear, d.&#x202f;h. \(J(x, y) = (1-\alpha )(1-\beta ) J_{i,j} + \alpha (1-\beta ) J_{i+1,j} + (1-\alpha
+)\beta J_{i,j+1} + \alpha \beta J_{i+1,j+1}\).
+</p>
+</li>
+<li class="list-item-f28"><p><em>Jacobi-Matrix des Interpolanten</em>: Interpoliere<br />
+\(u(x, y) = (1-\alpha )(1-\beta ) u_{i,j} + \alpha (1-\beta ) u_{i+1,j} + (1-\alpha )\beta u_{i,j+1} + \alpha \beta u_{i+1,j+1}\) sowie<br />
+\(v(x, y) = (1-\alpha )(1-\beta ) v_{i,j} + \alpha (1-\beta ) v_{i+1,j} + (1-\alpha )\beta v_{i,j+1} + \alpha \beta v_{i+1,j+1}\) und berechne die Jacobi-Matrix \(J(x, y) = \smallpmatrix {\partial
+_x u &amp; \partial _y u \\ \partial _x v &amp; \partial _y v}\) des Interpolanten.
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Bestimmung der Separatrizen</b>: Fu&#x0308;r jeden Sattelpunkt \(\vec {\eta }\) mit Eigenwerten \(\lambda _i\) und Eigenvektoren \(\vecs {e}{i}\) setze \(\vecs {p}{i}^{\pm } := \vec {\eta } \pm
+\varepsilon \vecs {e}{i}\), wobei \(\varepsilon &gt; 0\) so klein ist, dass sich alle \(\vecs {p}{i}^\pm \) immer noch in derselben Zelle wie \(\vec {\eta }\) befinden. Berechne nun den positiven Halborbit mit
+Anfangswert \(\vecs {p}{i}^{\pm }\), wenn \(\lambda _i &gt; 0\), und den negativen Halborbit, wenn \(\lambda _i &lt; 0\).
+</p>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

@@ -1,0 +1,179 @@
+/* define Charter font faces */
+@font-face {
+  font-family: "Charter";
+  src:local("Charter"), url("fonts/charter-regular.woff") format("woff");
+  font-style:normal;
+  font-weight:400;
+  text-rendering:optimizeLegibility;
+  font-display:swap;
+}
+
+@font-face {
+  font-family:"Charter";
+  src:local("Charter Italic"), url("fonts/charter-italic.woff") format("woff");
+  font-style:italic;
+  font-weight:400;
+  text-rendering:optimizeLegibility;
+  font-display:swap;
+}
+
+@font-face {
+  font-family:"Charter";
+  src:local("Charter Bold"), url("fonts/charter-bold.woff") format("woff");
+  font-style:normal;
+  font-weight:700;
+  text-rendering:optimizeLegibility;
+  font-display:swap;
+}
+
+@font-face {
+  font-family:"Charter";
+  src:local("Charter Bold Italic"), url("fonts/charter-bold-italic.woff") format("woff");
+  font-style:italic;
+  font-weight:700;
+  text-rendering:optimizeLegibility;
+  font-display:swap;
+}
+
+/* logo in topnav */
+.navbar-brand {
+  display:flex;
+  align-items:center;
+}
+.fa-home::before { content:none; }
+.navbar-brand > img {
+  display:inline-block;
+  height:2em;
+  margin-right:0.2em;
+}
+.navbar-brand:hover .projectTitle { text-decoration:underline; }
+
+/* links in topnav */
+.navbar-right .btn { font-weight:bold; }
+
+/* hide collapsable links in topnav */
+.navbar-toggle,
+.navbar-collapse {
+  display:none;
+}
+
+/* sidebar */
+.sidebarTitle {
+  margin-top:20px;
+  margin-bottom:10px;
+  margin-left:5px;
+  font-size:130%;
+  font-weight:bold;
+}
+.sidebarTitle a { color:rgb(81, 140, 242) !important; }
+.nav > li > a { font-weight:bold; }
+.nav ul li a { padding-left:30px; }
+
+/* table of contents */
+div#toc {
+  float:right;
+  margin-left:20px;
+  margin-top:50px;
+}
+div#toc ul {
+  min-width:200px;
+  max-width:400px;
+}
+div#toc > ul::before {
+  display:inline-block;
+  width:auto;
+  padding-top:0;
+  padding-bottom:10px;
+  padding-left:5px;
+  font-weight:bold;
+}
+div#toc ul li,
+div#toc ul li ul li {
+  margin-top:0;
+  margin-bottom:0;
+}
+
+/* headings */
+h3 { font-size:125%; }
+
+/* default font for LaTeX text */
+.lwarp-contents {
+  font-family:"Charter";
+  font-size:16px;
+}
+.lwarp-contents h1,
+.lwarp-contents h2,
+.lwarp-contents h3,
+.lwarp-contents h4,
+.lwarp-contents h5,
+.lwarp-contents h6 {
+  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight:bold;
+}
+
+/* LaTeX lists */
+.lwarp-contents ul,
+.lwarp-contents ol {
+  padding-left:3em;
+}
+
+/* underlined LaTeX text */
+.lwarp-contents span.uline,
+.lwarp-contents span.dashuline {
+  text-underline-offset:0.25em;
+}
+
+/* inline code */
+code + a > code { margin-left:0; }
+
+/* links */
+a.no-external::after,
+a[href^="https://valentjn.github.io/"]::after {
+  content:none;
+}
+a[href^="http://"]:not(.btn, .no-external)::after,
+a[href^="https://"]:not(.btn, .no-external)::after {
+  margin-right:-17px;
+}
+a[href^="http://"]:not(.btn, .no-external),
+a[href^="https://"]:not(.btn, .no-external) {
+  padding-right:17px;
+}
+
+/* images */
+@media only screen and (min-width:900px),
+only screen and (min-device-width:900px) {
+  .col-md-9 img {
+    max-width:100%;
+  }
+}
+
+/* footer */
+footer { font-size:14px; }
+footer .githubEditButton {
+  margin-left:1em;
+  margin-bottom:0;
+}
+.footer {
+  display:flex;
+  justify-content:right;
+  align-items:center;
+}
+.fa-github {
+  vertical-align:-10%;
+  margin-left:0.1em;
+}
+
+/* colors */
+code {
+  color:#248ec2;
+  background-color:#f2f2f9;
+}
+h3 { color:inherit; }

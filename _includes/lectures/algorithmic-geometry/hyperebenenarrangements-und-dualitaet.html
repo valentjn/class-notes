@@ -1,0 +1,1633 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\renewcommand {\A }{\mathcal {A}}\)
+
+\(\newcommand {\D }{\mathcal {D}}\)
+
+\(\renewcommand {\H }{\mathcal {H}}\)
+
+\(\renewcommand {\L }{\mathcal {L}}\)
+
+\(\renewcommand {\O }{\mathcal {O}}\)
+
+\(\renewcommand {\P }{\mathcal {P}}\)
+
+\(\newcommand {\T }{\mathcal {T}}\)
+
+\(\newcommand {\EE }{\mathbb {E}}\)
+
+\(\newcommand {\PP }{\mathbb {P}}\)
+
+\(\newcommand {\DT }{\operatorname {DT}}\)
+
+\(\newcommand {\dcup }{\mathbin {\dot {\cup }}}\)
+
+\(\newcommand {\parent }{\operatorname {parent}}\)
+
+\(\newcommand {\cc }{\operatorname {cc}}\)
+
+\(\newcommand {\interior }{\operatorname {int}}\)
+
+\(\newcommand {\CH }{\operatorname {CH}}\)
+
+\(\newcommand {\sgn }{\operatorname {sgn}}\)
+
+\(\newcommand {\zone }{\operatorname {zone}}\)
+
+\(\newcommand {\code }[1]{\texttt {#1}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f9::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f10::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f11::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f12::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f13::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f14::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f15::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f16::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f17::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f18::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f19::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f20::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f21::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f22::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f23::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f24::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+</style>
+<h2 id="hyperebenenarrangements">Hyperebenenarrangements</h2>
+<b>Hyperebene</b>: Eine <em><span class="dashuline" >Hyperebene</span></em> \(h \subset \real ^d\) ist eine Teilmenge von \(\real ^d\) der Form<br />
+\(h = \{x \in \real ^d \;|\; \innerproduct {x, a} = c\}\) fu&#x0308;r ein \(a \in \real ^d\) und ein \(c \in \real \).
+</p>
+
+<p>
+<b>A&#x0308;quivalenzrelation \(\sim _\H \) auf \(\real ^d\)</b>: Eine Hyperebene \(h = \{x \in \real ^d \;|\; \innerproduct {x, a_h} = c_h\}\) induziert die Partition \(\real ^d = h \dcup \{x \in \real
+^d \;|\; \innerproduct {x, a_h} &gt; c_h\} \dcup \{x \in \real ^d \;|\; \innerproduct {x, a_h} &lt; c_h\}\) von \(\real ^d\).<br />
+Definiere \(\sigma _h\colon \real ^d \to \{-1, 0, +1\}\) mit \(\sigma _h(x) := \sgn (\innerproduct {x, a_h} - c_h)\) (Lage von \(x\) bzgl. \(h\)).<br />
+Fu&#x0308;r eine Familie \(\H := \{h_1, \dotsc , h_n\}\) von Hyperebenen sei \(\sigma _\H \colon \real ^d \to \{-1, 0, +1\}^n\) mit<br />
+\(\sigma _\H (x) := (\sigma _{h_1}(x), \dotsc , \sigma _{h_n}(x))\).<br />
+Dann ist \(\sim _\H \) eine A&#x0308;quivalenzrelation auf \(\real ^d\), wobei \(x \sim _\H y\) gelte, falls \(\sigma _\H (x) = \sigma _\H (y)\).
+</p>
+
+<p>
+<b>Hyperebenenarrangement</b>: Sei \(\H = \{h_1, \dotsc , h_n\}\) eine Familie von Hyperebenen.<br />
+Dann heißt die Menge \(\real ^d/{\sim _\H } \subset \P (\real ^d)\) aller A&#x0308;quivalenzklassen bzgl. \(\sim _\H \)<br />
+<em><span class="dashuline" >Hyperebenenarrangement (HE-Arrangement oder HEA)</span></em>.
+</p>
+
+<p>
+Jede A&#x0308;quivalenzklasse ist als Schnitt von (konvexen) Halbra&#x0308;umen konvex.
+</p>
+
+<p>
+<b>Fragen</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p>Wie kann man HE-Arrangements berechnen?
+</p>
+</li>
+<li class="list-item-f1"><p>Was ist die Komplexita&#x0308;t eines HE-Arrangements?
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+Man nimmt an, dass die Hyperebenen in allgemeiner Lage liegen, d.&#x202f;h. der Schnitt von \(k\) Hyperebenen ist stets \((d - k)\)-dimensional (\(k = 1, \dotsc , d + 1\)).
+</p>
+
+<p>
+<b>Komplexita&#x0308;t eines HE-Arrangements in \(\real ^2\)</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f2"><p><em>\(\binom {n}{2}\) Ecken</em>: Jedes Paar zweier Geraden schneidet sich.
+</p>
+</li>
+<li class="list-item-f3"><p><em>\(n^2\) Kanten</em>: Jede Gerade wird durch die anderen \(n - 1\) Geraden in \(n\) Stu&#x0308;cke geteilt.
+</p>
+</li>
+<li class="list-item-f4"><p><em>\(1 + \frac {n(n+1)}{2}\) Zellen</em>: Induktiv teilt eine neue \(n\)-te Gerade \(n\) Zellen in jeweils zwei Ha&#x0308;lften auf. Eine andere Za&#x0308;hlung ist, dass jeder Knoten der unterste Punkt genau einer Zelle
+ist und kein Knoten der unterste Punkt zweier Zellen ist. Es gibt also \(\binom {n}{2}\) (Anzahl der Punkte) nach unten beschra&#x0308;nkte Zellen, es fehlen noch die \(n + 1\) nach unten unbeschra&#x0308;nkten Zellen.
+Damit erha&#x0308;lt man \(\binom {n}{2} + n + 1 = 1 + \frac {n(n+1)}{2}\) Zellen.
+</p>
+</li>
+</ul>
+
+<p>
+<b>Komplexita&#x0308;t eines HE-Arrangements in \(\real ^3\)</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f5"><p><em>\(\binom {n}{3}\) Ecken</em>: Jedes Tripel dreier Ebenen schneidet sich.
+</p>
+</li>
+<li class="list-item-f6"><p><em>\(\binom {n}{2} (n - 1)\) Kanten</em>: Die Geraden, auf denen die Kanten liegen, korrespondieren zu allen mo&#x0308;glichen Ebenenpaaren (jedes Ebenenpaar schneidet sich in einer Gerade und diese Gerade liegt auf
+keinen anderen zwei Ebenen). Daher gibt es \(\binom {n}{2}\) solcher Geraden, von denen jede durch die u&#x0308;brigen \(n - 2\) Ebenen in \((n - 1)\) Kanten unterteilt wird.<br />
+Eine andere Za&#x0308;hlung za&#x0308;hlt die Kanten auf einer bestimmten Ebene \(E\).
+</p>
+</li>
+<li class="list-item-f7"><p><em>\(n (\binom {n-1}{2} + n)\) Facetten</em>: Auf einer bestimmten Ebene \(E\) gibt es nach dem \(\real ^2\)-Fall genau \(\binom {n-1}{2} + n\) viele Zellen fu&#x0308;r \((n - 1)\) Geraden. Gehe fu&#x0308;r
+\(E\) durch alle \(n\) Ebenen durch.
+</p>
+</li>
+<li class="list-item-f8"><p><em>\(\binom {n}{3} + \binom {n}{2} + n + 1\) Zellen</em>: Es gibt \(\binom {n}{3}\) unterste Punkte. Die nach unten in der \(z\)-Richtung unbeschra&#x0308;nkten Zellen entsprechen genau den \(\real ^2\)-Zellen,
+die entstehen, wenn man die Ebenen von unten in der \(z\)-Richtung „anschaut“. Von diesen Zellen gibt es nach dem \(\real ^2\)-Fall genau \(\binom {n}{2} + n + 1\) Stu&#x0308;ck.
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="inkrementelle-konstruktion-und-zonensatz">Inkrementelle Konstruktion und Zonensatz</h2>
+Die Berechnung von HE-Arrangements in \(\real ^2\) kann auf zwei bereits bekannte Arten erfolgen:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f9"><p><em>naiver Sweepline-Algorithmus</em>: \(\O (n^2 \log n)\) Zeit (\(\O ((n+k) \log n)\) und \(k = \Theta (n^2)\) Ereignisse/Schnittpunkte mu&#x0308;ssen verarbeitet werden)
+</p>
+</li>
+<li class="list-item-f10"><p><em>RIC-Algorithmus zur Bestimmung von Strecken-Schnittpunkten</em>: erwartet \(\O (n^2)\) Zeit
+</p>
+</li>
+</ul>
+
+<p>
+Im Folgenden wird ein Algorithmus gezeigt, mit dem man HE-Arrangements deterministisch in \(\O (n^2)\) Zeit bestimmen kann. Dazu verwendet man einen inkrementellen Ansatz. Wegen der „großzu&#x0308;gigeren“ Schranke
+von \(\O (n^2)\) beno&#x0308;tigt man keine Randomisierung.
+</p>
+
+<p>
+\(\Omega (n^2)\) Zeit wird auf jeden Fall beno&#x0308;tigt, weil die Ausgabegro&#x0308;ße \(\Theta (n^2)\) ist.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>inkrementelle Konstruktion von HEAs</b>: Die <em><span class="dashuline" >inkrementelle Konstruktion von HEAs</span></em> in \(\real ^2\) verla&#x0308;uft fu&#x0308;r \(n\) Geraden \(h_1, \dotsc , h_n\) in
+\(\real ^2\) wie folgt. Definiere \(\A _i\) als das HE-Arrangement der Geraden \(h_1, \dotsc , h_i\).
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f11"><p>Konstruiere das leere Arrangement \(\A _0\).
+</p>
+</li>
+<li class="list-item-f12"><p>Fu&#x0308;r \(i = 1, \dotsc , n\) konstruiere \(\A _i\) aus \(\A _{i-1}\) wie folgt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f13"><p>Finde die Zelle ganz links, durch die \(h_i\) geht (geht in \(\O (i)\) Zeit, wenn die \(h_i\) nach ihrer Steigung sortiert sind).
+</p>
+</li>
+<li class="list-item-f14"><p>Bestimme, wo \(h_i\) die Zelle verla&#x0308;sst bzw. welche neue Zelle von \(h_i\) betreten wird.
+</p>
+</li>
+<li class="list-item-f15"><p>Wiederhole, bis die neue Zelle nach rechts unbeschra&#x0308;nkt ist.
+</p>
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+Die Kosten, um von einer Zelle \(c\) in die na&#x0308;chste zu kommen, sind \(\O (\deg (c))\) mit \(\deg (c)\) der Anzahl von Kanten oder Ecken von \(c\). Damit sind die Gesamtkosten fu&#x0308;r die Einfu&#x0308;gung
+von \(h_i\) gleich \(\O (\sum _{c \in \A _{i-1},\; C \cap h_i \not = \emptyset } \deg (c))\). Es ist allerdings nicht direkt klar, ob das in \(\O (i)\) ist. Man kann sich z.&#x202f;B. Arrangements vorstellen, in der eine
+einzelne Zelle bereits durch \(\O (i)\) Kanten begrenzt wird.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Satz (Zonensatz)</b>: Sei \(\zone (h, \A ) := \{c \in \A \;|\; c \cap h \not = \emptyset \}\) fu&#x0308;r ein Arrangement \(\A \) von \(n\) Geraden und eine zusa&#x0308;tzliche Gerade \(h\). Definiere
+\(z(h, \A ) := \sum _{c \in \zone (h, \A )} \deg (c)\) sowie<br />
+\(z(n) := \max \{z(h, \A ) \;|\; \text {$\A $ Arrangement von $n$ Geraden, $h$ zusätzliche Gerade}\}\).<br />
+Dann gilt \(z(n) \le 6n\).
+</p>
+
+<p>
+<b>Beweis</b>: Seien \(\A \) ein beliebiges Arrangement von \(n\) Geraden und \(h\) eine zusa&#x0308;tzliche Gerade. Geza&#x0308;hlt werden nun die Kanten der Zellen in \(\A \), die \(h\) schneidet. Ist die Anzahl nach
+oben beschra&#x0308;nkt durch \(6n\), so gilt \(z(n) \le 6n\).
+</p>
+
+<p>
+Es werden zuna&#x0308;chst nur die Linksadjazenzen geza&#x0308;hlt. Betrachte die Geraden \(h_1, \dotsc , h_n\) von \(\A \) aufsteigend geordnet nach der \(x\)-Koordinate ihres Schnittpunkts mit \(h\). Die erste Gerade
+\(h_1\) erzeugt eine Linksadjazenz. Jede weitere Gerade \(h_i\) teilt die Zelle, die sich bis dahin am weitesten rechts befindet, in zwei Zellen und erzeugt ho&#x0308;chstens \(3\) Linksadjazenzen. Damit gibt es \(\le 3n\)
+Linksadjazenzen. Fu&#x0308;r die Rechtsadjazenzen geht die Argumentation analog, so dass es \(\le 6n\) Adjazenzen gibt. &#x2003;&#x2003;
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Zeitbedarf</b>: \(\O (n^2)\)
+</p>
+
+<p>
+<b>Beweis</b>: Nach dem Zonensatz gilt \(\O (\sum _{c \in \A _{i-1},\; C \cap h_i \not = \emptyset } \deg (c)) = \O (i)\).<br />
+Dadurch erha&#x0308;lt man \(\sum _{i=1}^n \O (i) = \O (n^2)\) als Gesamtlaufzeit. &#x2003;&#x2003;
+</p>
+
+
+
+<h2 id="dualitaet-und-anwendungen">Dualität und Anwendungen</h2>
+
+</p>
+
+
+<h3 id="dualitaet">Dualität</h3>
+
+</p>
+
+
+<p>
+<b>(nicht-vertikale) Gerade</b>: Im Folgenden sind <em><span class="dashuline" >(nicht-vertikale) Geraden</span></em> in der \(x\)-\(y\)-Ebene definiert durch \((y = kx - d) := \{(x, y) \in \real ^2 \;|\; y = kx
+- d\}\) mit \(k, d \in \real \).
+</p>
+
+<p>
+<b>Seiten einer Gerade</b>:<br />
+Fu&#x0308;r eine Gerade \(\ell := (y = kx - d)\) sei \(\ell ^{\pm } := \{(x, y) \in \real ^2 \;|\; y \gtreqless kx - d\}\).<br />
+(\(\ell ^+\) ist die Menge aller Punkte u&#x0308;ber \(\ell \), einschließlich \(\ell \) selbst).
+</p>
+
+<p>
+<b>Dualita&#x0308;tstransformation</b>: Die <em><span class="dashuline" >Dualita&#x0308;tstransformation</span></em> \(\D \) bildet<br />
+Punkte \((p_x, p_y) \in \real ^2\) auf Geraden \(\D (p_x, p_y) := (y = p_x x - p_y)\) ab und<br />
+Geraden \(y = kx - d\) auf Punkte \(\D (y = kx - d) := (k, d)\).
+</p>
+
+<p>
+<b>Lemma (Dualita&#x0308;t)</b>: Fu&#x0308;r einen Punkt \(p \in \real ^2\) und eine Gerade \(\ell \) gilt
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f16"><p>\(p \in \ell \iff \D (\ell ) \in \D (p)\),
+</p>
+</li>
+<li class="list-item-f17"><p>\(p \in \ell ^+ \iff \D (\ell ) \in \D (p)^+\) und
+</p>
+</li>
+<li class="list-item-f18"><p>\(p \in \ell ^- \iff \D (\ell ) \in \D (p)^-\).
+</p>
+</li>
+</ul>
+
+<p>
+<b>Beweis</b>: Seien \((p_x, p_y) := p\) und \((y = kx - d) := \ell \), d.&#x202f;h. \(\D (\ell ) = (k, d)\) und \(\D (p) = (y = p_x x - p_y)\), es gilt also \(p \in \ell \iff p_y = kp_x - d \iff d = p_x
+k - p_y \iff \D (\ell ) \in \D (p)\). Fu&#x0308;r <em>(2)</em> und <em>(3)</em> gilt analog \(p \in \ell ^\pm \iff p_y \gtreqless kp_x - d \iff d \gtreqless p_x k - p_y \iff \D (\ell ) \in \D
+(p)^\pm \). &#x2003;&#x2003;
+</p>
+
+
+
+<h3 id="erkennung-von-kollinearitaet-von-punkten">Erkennung von Kollinearität von Punkten</h3>
+
+</p>
+
+
+<p>
+<b>Erkennung von Kollinearita&#x0308;t von Punkten</b>:<br />
+Gegeben sind \(n\) Punkte in \(\real ^2\). Gefragt ist, ob drei der Punkte kollinear sind<br />
+(d.&#x202f;h. hier, ob die Punkte auf einer nicht-vertikalen Geraden liegen).
+</p>
+
+<p>
+Seien \(p_1, p_2, p_3 \in \real ^2\) drei Punkte mit \(\ell _i := \D (p_i)\). Dann gilt:<br />
+\(p_1, p_2, p_3 \text { kollinear} \iff \exists _{\ell \text { Gerade}}\; p_1, p_2, p_3 \in \ell \iff \exists _{p \in \real ^2}\; p \in \ell _1 \cap \ell _2 \cap \ell _3\), na&#x0308;mlich \(p
+:= \D (\ell )\). Drei der \(n\) Punkte sind also kollinear genau dann, wenn sich drei der dualen Geraden in einem Punkt schneiden. Dies kann wa&#x0308;hrend der Konstruktion des entsprechenden HE-Arrangements
+festgestellt werden (wenn die na&#x0308;chste Gerade eine Zelle genau auf einem Randknoten verla&#x0308;sst), d.&#x202f;h. in Zeit \(\O (n^2)\).
+</p>
+
+
+
+<h3 id="bestimmung-des-flaechenkleinsten-dreiecks">Bestimmung des flächenkleinsten Dreiecks</h3>
+
+</p>
+
+
+<p>
+<b>fla&#x0308;chenkleinstes Dreieck</b>: Gegeben ist \(P \subset \real ^2\) mit \(n := |P|\).<br />
+Gesucht ist \(p, q, r \in P\) mit \(A(\triangle pqr)\) (Fla&#x0308;che von \(\triangle pqr\)) minimal (sowie \(|\{p, q, r\}| = 3\)).
+</p>
+
+<p>
+<b>naiv</b>: Teste alle \(\binom {n}{3}\) Tupel in \(\O (n^3)\) Zeit.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>besser</b>: Ein Dreieck \(\triangle pqr\) ist durch eine Strecke \(qr\) und einen Punkt \(p\) eindeutig bestimmt. Im dualen Raum entspricht dies einem Punkt \(\D (qr)\) und einer Gerade \(\D (p)\) (wenn man \(qr\)
+mit der Gerade durch \(qr\) identifiziert).
+</p>
+
+<p>
+<b>Satz</b>: Seien \(p, q, r \in P\) mit \(\triangle pqr\) fla&#x0308;chenminimal.<br />
+Dann gibt es eine Zelle \(c\) im dualen Arrangement zu \(P\), sodass \(\D (qr)\) und \(\D (p)\) auf \(\partial c\) liegen.
+</p>
+
+<p>
+<b>Beweis</b>: Sei \((p_x, p_y) \in \real ^2\) ein Punkt und \(y = kx - d\) eine Gerade. Dann ist der vertikale Abstand von \((p_x, p_y)\) zu \(y = kx - d\) ist \(D := p_y - kp_x + d\). Der vertikale Abstand von \(\D
+(y = kx - d) = (k, d)\) zu \(\D (p_x, p_y) = (y = p_x x - p_y)\) gleich \(d - p_x k + p_y = D\), d.&#x202f;h. \(\D \) la&#x0308;sst vertikale Absta&#x0308;nde invariant.
+</p>
+
+<p>
+\(\Delta pqr\) ist fla&#x0308;chenminimal genau dann, wenn \(p\) den kleinsten Abstand aller Punkte zu \(qr\) besitzt. Dies gilt genau dann, wenn \(p\) den kleinsten vertikalen (d.&#x202f;h. vertikal gemessenen) Abstand zu
+\(qr\) besitzt. Dies gilt genau dann, wenn \(\D (qr)\) den kleinsten vertikalen Abstand zu \(\D (p)\) besitzt.
+</p>
+
+<p>
+Angenommen, \(\D (p)\) und \(\D (qr)\) wu&#x0308;rden an verschiedenen Zellen anliegen. Dann ga&#x0308;be es einen Punkt \(p’ \in P\), sodass die Gerade \(\D (p’)\) zwischen \(\D (p)\) und \(\D (qr)\) liegt,
+d.&#x202f;h. \(\D (qr)\) ha&#x0308;tte zu \(\D (p’)\) einen kleineren vertikalen Abstand, also \(A(\triangle p’qr) &lt; A(\triangle pqr)\), ein Widerspruch zu \(\triangle pqr\) fla&#x0308;chenminimal.
+&#x2003;&#x2003;
+</p>
+
+<p>
+<b>Algorithmus</b>: Es mu&#x0308;ssen nur alle Kanten im dualen Arrangement jeweils zusammen mit den Ecken der beiden Zellen, die an der Kante anliegen, inspiziert werden. Dies geht in \(\O (n^2)\) Zeit wa&#x0308;hrend
+der Konstruktion des HE-Arrangements: Wenn die neue Gerade \(g\) eine Zelle \(c\) betritt, dann inspiziere \(g\) zusammen mit allen Ecken von \(c\). Außerdem erzeugt \(g\) mit \(c\) zwei neue Schnittpunkte, diese
+mu&#x0308;ssen zusammen mit allen Kanten von \(c\) inspiziert werden. Nach dem Zonensatz wird fu&#x0308;r \(g\) die Zeit \(\O (n)\) beno&#x0308;tigt (Anzahl Kanten/Punkte der Zellen, durch die \(g\) geht),
+d.&#x202f;h. insgesamt \(\O (n^2)\) Zeit.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+Es ist unbekannt, ob es einen Algorithmus gibt, der das Problem in \(o(n^2)\) lo&#x0308;st. Man geht aber davon aus, dass dies nicht der Fall ist, weil das Problem 3SUM-schwer ist. Man glaubt, dass \(\Omega (n^2)\) die untere
+Schranke fu&#x0308;r 3SUM ist.
+</p>
+
+<p>
+<b>3SUM</b>: Gegeben sei \(S \subset \integer \) mit \(n := |S|\). Gefragt ist, ob \(a, b, c \in S\) existieren mit \(a + b + c = 0\).
+</p>
+
+<p>
+<b>3SUM \(\le \) „fla&#x0308;chenkleinstes Dreieck“</b>: Sei \(S \subset \integer \) eine Instanz von 3SUM. Dann gilt fu&#x0308;r \(a, b, c \in S\), dass \(a + b + c = 0\) genau dann, wenn \((a, a^3), (b,
+b^3), (c, c^3) \in \real ^2\) kollinear sind.
+</p>
+
+<p>
+Das Problem des fla&#x0308;chenkleinsten Dreiecks ist eine Verallgemeinerung der Kollinearita&#x0308;t von Punkten (drei Punkte sind kollinear \(\iff \) das fla&#x0308;chenkleinste Dreieck besitzt Fla&#x0308;che \(0\)).
+</p>
+
+
+
+<h3 id="polaritaet-dualitaet-von-halbraumschnitten-und-konvexen-huellen">Polarität: Dualität von Halbraumschnitten und konvexen Hüllen</h3>
+
+</p>
+
+
+<p>
+<b>Polytop</b>: Ein <em><span class="dashuline" >Polytop</span></em> ist die konvexe Hu&#x0308;lle einer endlichen Punktmenge \(S \subset \real ^d\), d.&#x202f;h.<br />
+\(\CH (S) := \{\sum _{p \in S} \lambda _p p \;|\; \lambda _p \ge 0,\; \sum _{p \in S} \lambda _p = 1\}\).
+</p>
+
+<p>
+<b>Polyeder</b>: Ein <em><span class="dashuline" >Polyeder</span></em> ist der Schnitt einer endlichen Menge von abg. Halbra&#x0308;umen in \(\real ^d\).
+</p>
+
+<p>
+<b>Fall \(\real ^3\)</b>: In \(\real ^3\) ist der Rand eines Polytops beschrieben durch seinen planeren Oberfla&#x0308;chengraph (bestehend aus \(v\) Ecken, \(e\) Kanten und \(f\) Facetten). Nach dem Eulerschen
+Polyedersatz gilt \(v - e + f = 2\). Ein Polytop/Polyeder heißt <em><span class="dashuline" >simpliziell</span></em>, falls jede Facette ein Dreieck ist, und <em><span class="dashuline" >simpel</span></em>, falls jeder
+Knoten Grad 3 hat.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>duale Hyperebene/dualer Halbraum</b>: Sei \(p \in \real ^d\) ein Punkt.<br />
+Dann ist \(\D (p) := \{x \in \real ^d \;|\; \innerproduct {x, p} = 1\}\) die <em><span class="dashuline" >duale Hyperebene</span></em> und<br />
+\(\H (p) := \{x \in \real ^d \;|\; \innerproduct {x, p} \le 1\}\) der <em><span class="dashuline" >duale Halbraum</span></em>.
+</p>
+
+<p>
+<b>dualer Halbraumschnitt</b>: Sei \(P\) ein Polytop in \(\real ^d\) mit \(0 \in \interior (P)\).<br />
+Dann ist \(P^\ast := \bigcap _{p \in P} \H (p) = \bigcap _{\text {$p$ Ecke von $P$}} \H (p)\) der <em><span class="dashuline" >duale Halbraumschnitt</span></em>.
+</p>
+
+<p>
+Die Voraussetzung \(0 \in \interior (P)\) beno&#x0308;tigt man, damit der Halbraumschnitt beschra&#x0308;nkt ist.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Bijektion</b>: Sei \(S \subset \real ^d\) eine Punktmenge und \(P := \CH (S)\) mit \(0 \in \interior (P)\).<br />
+Dann gibt es eine Bijektion zwischen der Menge aller Facetten von \(P\) und der Menge aller Facetten von \(P^\ast \) (jeweils von den Dimensionen \(0, \dotsc , d - 1\)), sodass \(k\)-dimensionale Facetten von \(P\) auf \((d
+- k - 1)\)-dimensionale Facetten von \(P^\ast \) abgebildet werden (\(k = 0, \dotsc , d - 1\)).
+</p>
+
+<p>
+Genauer gilt: Falls eine \((k + 1)\)-elementige Teilmenge \(F \subset S\) eine \(k\)-dimensionale Facette von \(P\) aufspannt, dann bildet der Schnitt der \((k + 1)\)-vielen dualen Halbra&#x0308;ume eine \((d - k -
+1)\)-dimensionale Facette des Halbraumschnitts \(P^\ast \).
+</p>
+
+<p>
+Letzteres zeigt man, indem man beweist, dass das \((d - k - 1)\)-dimensionale Schnittobjekt in allen dualen Halbra&#x0308;umen liegt.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>zusammenha&#x0308;ngende Probleme</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f19"><p>Gegeben ist \(S \subset \real ^d\) mit \(|S| = n\). Berechne \(\CH (S)\).
+</p>
+</li>
+<li class="list-item-f20"><p>Gegeben ist eine Menge \(\H \) von \(n\) Halbra&#x0308;umen in \(\real ^d\). Berechne \(\bigcap _{h \in \H } h\).
+</p>
+</li>
+</ul>
+
+<p>
+<b>Reduktion von <em>(1)</em> auf <em>(2)</em></b>: Um <em>(1)</em> mithilfe von <em>(2)</em> zu lo&#x0308;sen, geht man wie folgt vor.
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f21"><p>    Verschiebe zuna&#x0308;chst \(S\), sodass oBdA \(0 \in \interior (\CH (S))\) gilt (z.&#x202f;B. um \(-\frac {1}{n} \sum _{p \in S} p\)).
+</p>
+</li>
+<li class="list-item-f22"><p>    Wende die Dualita&#x0308;tsabbildung an, d.&#x202f;h. berechne \(\H (p)\) fu&#x0308;r \(p \in S\).
+</p>
+</li>
+<li class="list-item-f23"><p>    Berechne \(\bigcap _{p \in S} \H (p)\).
+</p>
+</li>
+<li class="list-item-f24"><p>    Wende die inverse Dualita&#x0308;tsabbildung an und mache evtl. die Verschiebung ru&#x0308;ckga&#x0308;ngig.
+</p>
+</li>
+</ul>
+
+<p>
+<b>Umkehrung</b>: Die Umkehrung ist nicht so einfach, weil nicht jede beliebige Halbraumschnitt-Instanz zu einem CH-Problem dual ist (leer, unbeschra&#x0308;nkt und \(0\) nicht im Schnitt mo&#x0308;glich). Damit \(0\) im
+Schnitt ist, muss man einen Punkt im Halbraumschnitt kennen, was i.&#x202f;A. nicht der Fall ist.
+</p>
+
+<p>
+Weil i.&#x202f;A. die Komplexita&#x0308;t zur Beschreibung der konvexen Hu&#x0308;lle von \(S\) gleich \(\Theta (n^{\lfloor d/2 \rfloor })\) ist und daher auch die Komplexita&#x0308;t von Halbraumschnitten
+exponentiell wa&#x0308;chst, ist man oft nicht in einer vollsta&#x0308;ndigen Beschreibung des Halbraumschnitts interessiert, sondern nur in einem Extrempunkt des Polyeders. Diesen erha&#x0308;lt man mit linearer
+Programmierung.
+</p>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

@@ -1,0 +1,1563 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\renewcommand {\AA }{\mathbb {A}}\)
+
+\(\newcommand {\EE }{\mathbb {E}}\)
+
+\(\newcommand {\PP }{\mathbb {P}}\)
+
+\(\newcommand {\UU }{\mathbb {U}}\)
+
+\(\newcommand {\XX }{\mathbb {X}}\)
+
+\(\renewcommand {\C }{\mathcal {C}}\)
+
+\(\renewcommand {\F }{\mathcal {F}}\)
+
+\(\renewcommand {\H }{\mathcal {H}}\)
+
+\(\renewcommand {\O }{\mathcal {O}}\)
+
+\(\renewcommand {\S }{\mathcal {S}}\)
+
+\(\newcommand {\GL }{\mathrm {GL}}\)
+
+\(\newcommand {\eps }{\mathrm {eps}}\)
+
+\(\renewcommand {\div }{\mathrm {div}}\)
+
+\(\newcommand {\rot }{\mathrm {rot}}\)
+
+\(\newcommand {\D }{\mathop {}\!\mathrm {D}}\)
+
+\(\newcommand {\iu }{\text {i}}\)
+
+\(\newcommand {\tr }{\text {tr}}\)
+
+\(\newcommand {\Vor }{\mathrm {Vor}}\)
+
+\(\newcommand {\Del }{\mathrm {Del}}\)
+
+\(\newcommand {\Rang }{\text {Rang}}\)
+
+\(\newcommand {\id }{\text {id}}\)
+
+\(\newcommand {\sinc }{\operatorname {sinc}}\)
+
+\(\newcommand {\code }[1]{\texttt {#1}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f9::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f10::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f11::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f12::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f13::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f14::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f15::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f16::marker {
+  content:'•\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+<p>
+<b>partielle Differentialgleichung</b>: Eine <em><span class="dashuline" >partielle Differentialgleichung (PDE)</span></em> ist eine Gleichung, die eine multivariate Funktion (z.&#x202f;B. \(u(x, t)\)) in Beziehung mit den
+partiellen Ableitungen (z.&#x202f;B. \(\partial _x u\), \(\partial _t u\)) und den Variablen (z.&#x202f;B. \(x\), \(t\)) setzt. Die <em><span class="dashuline" >Ordnung</span></em> einer PDE ist die Ordnung der
+ho&#x0308;chsten partiellen Ableitung. Eine PDE heißt <em><span class="dashuline" >linear</span></em>, falls \(u\) und die partiellen Ableitungen nur linear auftauchen (wobei die Koeffizienten aber durchaus von den
+Variablen abha&#x0308;ngen du&#x0308;rfen). Analytische Lo&#x0308;sungen kann man explizit oft nur fu&#x0308;r sehr einfache Spezialfa&#x0308;lle angeben.
+</p>
+
+
+
+<h2 id="1d-advektionsgleichung">1D-Advektionsgleichung</h2>
+
+</p>
+
+
+<p>
+<b>Advektionsgleichung</b>: Die Gleichung \(\partial _t u + c \partial _x u = 0\) mit \(c \in \real \) zusammen mit Anfangs- und/oder Randbedingungen heißt <em><span class="dashuline"
+>1D-Advektionsgleichung</span></em>. Gesucht ist nun eine <em><span class="dashuline" >Lo&#x0308;sung</span></em>, d.&#x202f;h. eine Funktion \(u(x, t)\), die diese Gleichung erfu&#x0308;llt.
+</p>
+
+<p>
+<b>Lo&#x0308;sungen konstant entlang Charakteristiken</b>: Sei \(x(t) = ct + x_0\) eine Gerade im<br />
+\(t\)-\(x\)-Diagramm mit Steigung \(c\). Dann gilt \(\frac {\d }{\dt } u(x(t), t) = \partial _x u(x(t), t) x’(t) + \partial _t u(x(t), t)\)<br />
+\(= (\partial _t u + c \partial _x u)(x(t), t) = 0\) fu&#x0308;r jede Lo&#x0308;sung \(u(x, t)\), d.&#x202f;h. Lo&#x0308;sungen der Advektionsgleichung sind konstant entlang diesen sog. <em><span
+class="dashuline" >Charakteristiken</span></em>.
+</p>
+
+<p>
+<b>Lo&#x0308;sung der Advektionsgleichung</b>: Sei \(u(x, t) := v(x - ct)\) fu&#x0308;r eine Funktion \(v\). Dann gilt \(\partial _t u + c \partial _x u = v’(x - ct) (-c) + c v’(x - ct) = 0\),
+d.&#x202f;h. \(u\) ist eine Lo&#x0308;sung der Advektionsgleichung.
+</p>
+
+
+
+<h2 id="klassifikation-linearer-pdes-zweiter-ordnung">Klassifikation linearer PDEs zweiter Ordnung</h2>
+
+</p>
+
+
+<p>
+<b>lineare PDE zweiter Ordnung</b>: Eine <em><span class="dashuline" >lineare PDE zweiter Ordnung</span></em> auf einem Gebiet \(D \subset \real ^2\) kann man schreiben als \(A \partial _x^2 u + 2B \partial
+_x \partial _y u + C \partial _y^2 u + D \partial _x u + E \partial _y u + Fu = G\) mit \(A, \dotsc , G\) stu&#x0308;ckweise stetigen Funktionen von \(x, y\) auf \(D\).
+</p>
+
+<p>
+<b>Klassifikation</b>: Wenn \(A^2 + B^2 + C^2 \not = 0\) in \(D\) ist, dann heißt die PDE
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p><em><span class="dashuline" >elliptisch</span></em>, falls \(AC - B^2 &gt; 0\) in \(D\),
+</p>
+</li>
+<li class="list-item-f1"><p><em><span class="dashuline" >parabolisch</span></em>, falls \(AC - B^2 = 0\) in \(D\), und
+</p>
+</li>
+<li class="list-item-f2"><p><em><span class="dashuline" >hyperbolisch</span></em>, falls \(AC - B^2 &lt; 0\) in \(D\).
+</p>
+</li>
+</ul>
+
+<p>
+Diese Klassifikation ist analog zu der von Kegelschnitten \(Ax^2 + 2Bxy + Cy^2 + Dx + Ey + F = 0\).
+</p>
+
+<p>
+<b>Beispiele</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f3"><p><em>elliptische PDEs</em>: <em><span class="dashuline" ><span class="textsc" >Laplace</span>-Gleichung</span></em> (\(\Delta u = 0\)), <em><span class="dashuline" ><span class="textsc"
+>Poisson</span>-Gleichung</span></em> (\(\Delta u = f\)),<br />
+<em><span class="dashuline" ><span class="textsc" >Helmholtz</span>-Gleichung</span></em> (\(\Delta u + \varrho u = f\))
+</p>
+</li>
+<li class="list-item-f4"><p><em>parabolische PDEs</em>: <em><span class="dashuline" >1D-Wa&#x0308;rmeleitungsgleichung</span></em> (\(k \partial _x^2 u - \partial _t u = 0\)),<br />
+<em><span class="dashuline" >Diffusionsgleichung</span></em> (\(\partial _t u(\vec {x}, t) = \div (D(u, \vec {x}) \nabla u(\vec {x}, t))\))
+</p>
+</li>
+<li class="list-item-f5"><p><em>hyperbolische PDE</em>: <em><span class="dashuline" >Wellengleichung</span></em> (\(\partial _t^2 u - c^2 \Delta u = 0\))
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Randbedingungen</b>: Damit die Lo&#x0308;sung von elliptischen PDEs eindeutig bestimmt ist, muss man <em><span class="dashuline" >Randbedingungen (RBen)</span></em> festlegen. Sei dazu \(D\)
+stu&#x0308;ckweise \(\C ^1\)-berandet mit den Stu&#x0308;cken \(\Gamma _i\), \(\partial D = \Gamma = \bigcup _i \Gamma _i\) und \(\vec {n}\) der nach außen zeigenden Einheitsnormalen. Dann spricht man bei \(u
+= \varphi \) auf \(\Gamma _i\) von <em><span class="dashuline" ><span class="textsc" >Dirichlet</span>-RBen</span></em>, bei \(\partial _{\vec {n}} u = \gamma \) auf \(\Gamma _i\) von <em><span
+class="dashuline" ><span class="textsc" >Neumann</span>-RBen</span></em> und bei \(\partial _{\vec {n}} u + \alpha u = \beta \) auf \(\Gamma _i\) von <em><span class="dashuline" ><span
+class="textsc" >Cauchy</span>-RBen</span></em> (\(\varphi , \gamma , \alpha , \beta \) feste Funktionen auf \(\Gamma _i\)).
+</p>
+
+
+
+<h2 id="laplace-gleichung-in-polarkoordinaten"><span style="font-variant: small-caps;">Laplace</span>-Gleichung in Polarkoordinaten</h2>
+
+</p>
+
+
+<p>
+<b><span class="textsc" >Laplace</span>-Gleichung in Polarkoordinaten</b>: Seien \(\Omega := B_1(0) \subset \real ^2\) und \(f \in \C ^0(\partial \Omega )\).<br />
+Gesucht ist eine Lo&#x0308;sung \(u \in \C ^2(\Omega ) \cap \C ^0(\overline {\Omega })\) des RWPs \(\Delta u = 0\) in \(\Omega \) und \(u = f\) auf \(\partial \Omega \).
+</p>
+
+<p>
+Mit Transformation in Polarkoordinaten \(x = r\cos \varphi \), \(y = r\sin \varphi \) gilt \(\partial _x = \cos \varphi \cdot \partial _r - \frac {\sin \varphi }{r} \partial _\varphi \) und \(\partial _y
+= \sin \varphi \cdot \partial _r + \frac {\cos \varphi }{r} \partial _\varphi \). Durch nochmalige Ableitung erha&#x0308;lt man \(\Delta u = \partial _x^2 u + \partial _y^2 u = 0 \iff \partial _r^2
+U + \frac {1}{r} \partial _r U + \frac {1}{r^2} \partial _\varphi ^2 U = 0\) mit \(U(r, \varphi ) := u(r\cos \varphi , r\sin \varphi )\). Die RB \(u = f\) auf \(\partial \Omega \) transformiert sich zu
+\(U(1, \varphi ) = f(\cos \varphi , \sin \varphi )\). Dabei ist \(r \in (0, 1)\) und \(\varphi \in (-\pi , \pi )\).
+</p>
+
+<p>
+Damit \(u \in \C ^2(\Omega ) \cap \C ^0(\overline {\Omega })\) gilt, sollte \(U\) zusa&#x0308;tzlich \(U(r, \pi ) = U(r, -\pi )\) und<br />
+\(\partial _\varphi U(r, \pi ) = \partial _\varphi U(r, -\pi )\) erfu&#x0308;llen und der Grenzwert \(\lim _{r \to 0} U(r, \varphi )\) sollte fu&#x0308;r jedes \(\varphi \) existieren und
+unabha&#x0308;ngig von \(\varphi \) sein.
+</p>
+
+<p>
+Mit dem Produktansatz \(U(r, \varphi ) := w(r) v(\varphi )\) erha&#x0308;lt man \(v \partial _r^2 w + \frac {1}{r} v \partial _r w + \frac {1}{r^2} w \partial _\varphi ^2 v = 0\). Wenn man annimmt,
+dass \(w(r) \not = 0 \not = v(\varphi )\), dann kann man das umschreiben zu<br />
+\(\frac {r^2}{w} \partial _r^2 w + \frac {r}{w} \partial _r w = -\frac {1}{v} \partial _\varphi ^2 v =: \lambda \). \(\lambda \) ist unabha&#x0308;ngig von \(r\) und \(\varphi \), weil die linke Seite nur
+von \(r\) abha&#x0308;ngt und die rechte nur von \(\varphi \). \(w\) und \(v\) mu&#x0308;ssen also die ODEs
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f6"><p>\(v’’ + \lambda v = 0\) mit \(v(\pi ) = v(-\pi )\) und \(v’(\pi ) = v’(-\pi )\) (<em><span class="dashuline" >harmonischer Oszillator</span></em>)
+</p>
+</li>
+<li class="list-item-f7"><p>\(r^2 w’’ + rw’ - \lambda w = 0\) (<em><span class="dashuline" ><span class="textsc" >Bessel</span>sche DGL</span></em>) und
+</p>
+</li>
+</ul>
+
+<p>
+erfu&#x0308;llen. Aus der ersten DGL folgt, dass \(v\) \(2\pi \)-periodisch sein muss, also \(\lambda = k^2\) fu&#x0308;r \(k \in \natural _0\) und \(v_k(\varphi ) = a_k \cos (k\varphi ) + b_k \sin (k\varphi
+)\). Lo&#x0308;sungen der zweiten DGL sind \(w(r) = \log r\) fu&#x0308;r \(k = 0\) und \(w(r) = r^{\pm k}\) fu&#x0308;r \(k \ge 1\). Allerdings ist nur \(w(r) = r^k\) in \(r = 0\) stetig.
+</p>
+
+<p>
+Somit ist \(U(r, \varphi ) = \frac {1}{2} a_0 + \sum _{k=1}^\infty U_k(r, \varphi )\) mit \(U_k(r, \varphi ) := (a_k \cos (k \varphi ) + b_k \sin (k \varphi )) r^k\). Um die Koeffizienten \(a_k\),
+\(b_k\) zu bestimmen, nutzt man die Orthogonalita&#x0308;tsrelationen der trigonometrischen Funktionen aus (Multiplikation z.&#x202f;B. mit \(\sin (n\varphi )\) und Integration u&#x0308;ber \(\varphi \) fu&#x0308;r
+\(r = 1\)).
+</p>
+
+
+
+<h2 id="1d-diffusionsgleichung">1D-Diffusionsgleichung</h2>
+
+</p>
+
+
+<p>
+<b>Diffusionsgleichung</b>: Die Gleichung \(\partial _t u = D \partial _x^2 u\) fu&#x0308;r \(x \in [0, L]\) mit \(D \in \real \), der Anfangsbedingung \(u(\cdot , 0) = f(\cdot )\) in \([0, L]\) und
+Dirichlet-Null-RBen \(u(0, t) = u(L, t) = 0\) fu&#x0308;r \(t &gt; 0\) heißt <em><span class="dashuline" >1D-Diffusionsgleichung</span></em>.
+</p>
+
+<p>
+<b>analytische Lo&#x0308;sung mit Trennung der Vera&#x0308;nderlichen</b>:<br />
+Mit dem Ansatz \(u(x, t) := X(x) \cdot T(t)\) erha&#x0308;lt man \(\frac {1}{DT} \partial _t T = \frac {1}{X} \partial _x^2 X =: -\lambda \). Weil die linke Seite nur von \(t\) und die rechte nur von \(x\)
+abha&#x0308;ngt, ist \(\lambda \) konstant und man bekommt zwei ODEs
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f8"><p>\(X’’ + \lambda X = 0\) und
+</p>
+</li>
+<li class="list-item-f9"><p>\(T’ + \lambda DT = 0\).
+</p>
+</li>
+</ul>
+
+<p>
+Die allgemeine Lo&#x0308;sung der ersten Gleichung ist \(X(x) = c_1 \cos (\sqrt {\lambda } x) + c_2 \sin (\sqrt {\lambda } x)\) fu&#x0308;r \(\lambda &gt; 0\). Mit den RBen erha&#x0308;lt man \(c_1 = 0\)
+und \(\lambda = \lambda _n = (\frac {n \pi }{L})^2\) fu&#x0308;r \(n \in \natural \), also \(X(x) = C_n \sin (\frac {n \pi }{L} x)\). Aus der zweiten Gleichung bekommt man damit \(T(t) = B_n e^{-D
+\lambda _n t}\). Insgesamt erha&#x0308;lt man also als allgemeine Lo&#x0308;sung der Diffusionsgleichung \(u(x, t) = \sum _{n=1}^\infty A_n \sin (\frac {n \pi }{L} x) \exp (-D (\frac {n \pi }{L})^2 t)\).
+</p>
+
+<p>
+<b>Bestimmung der Koeffizienten</b>: Fu&#x0308;r die Bestimmung der \(A_n\) benutzt man die Identita&#x0308;t<br />
+\(\int _0^L \sin (\frac {n \pi }{L} \xi ) \sin (\frac {m \pi }{L} \xi ) \dxi = \frac {L}{2} \delta _{n,m}\) fu&#x0308;r \(n \not = 0 \not = m\). Damit bekommt man<br />
+\(\int _0^L f(\xi ) \sin (\frac {n \pi }{L} \xi ) \dxi = \int _0^L u(\xi , 0) \sin (\frac {n \pi }{L} \xi ) \dxi = \sum _{m=1}^\infty A_m \int _0^L \sin (\frac {n \pi }{L} \xi ) \sin (\frac
+{m \pi }{L} \xi ) \dxi = \frac {L}{2} A_n\)<br />
+\(\iff A_n = \frac {2}{L} \int _0^L f(\xi ) \sin (\frac {n \pi }{L} \xi ) \dxi \).
+</p>
+
+
+
+<h2 id="finite-differenzen-methode">Finite-Differenzen-Methode</h2>
+
+</p>
+
+
+<p>
+<b>Finite-Differenzen-Methode</b>: Bei der <em><span class="dashuline" >Finite-Differenzen-Methode</span></em> diskretisiert man das Gebiet \(D\) zuna&#x0308;chst als gleichma&#x0308;ßiges Gitter mit Gitterweite
+\(\Delta t\), \(\Delta x\) und \(\Delta y\). Anschließend betrachtet man Approximationen \(u_{i,j} \approx u(x_i, y_j)\) und ersetzt alle Ableitungen durch Differenzenquotienten. Im Folgenden seien \(u_P :=
+u_{i,j}\), \(u_N := u_{i,j+1}\), \(u_E := u_{i+1,j}\), \(u_S := u_{i,j-1}\) und \(u_W := u_{i-1,j}\).
+</p>
+
+<p>
+<b>einfache Ableitungen</b>: Sei \(h := \Delta x = \Delta y\).
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f10"><p>\(\partial _x u(x_i, y_j) \approx \frac {u_E - u_P}{h}\) (<em><span class="dashuline" >Vorwa&#x0308;rts-Diff.quot.</span></em>), \(\partial _x u(x_i, y_j) \approx \frac {u_P - u_W}{h}\) (<em><span
+class="dashuline" >Ru&#x0308;ckwa&#x0308;rts-Diff.quot.</span></em>) oder \(\partial _x u(x_i, y_j) \approx \frac {u_E - u_W}{2h}\) (<em><span class="dashuline" >zentraler Diff.quot.</span></em>)
+</p>
+</li>
+<li class="list-item-f11"><p>\(\partial _y u(x_i, y_j) \approx \frac {u_N - u_P}{h}\), \(\partial _y u(x_i, y_j) \approx \frac {u_P - u_S}{h}\) oder \(\partial _y u(x_i, y_j) \approx \frac {u_N - u_S}{2h}\)
+</p>
+</li>
+</ul>
+
+<p>
+Eine Approximation ho&#x0308;herer Ordnung ist \(\partial _x u(x_i, y_j) \approx \frac {u_{WW} - 8u_W + 8u_E - 8u_{EE}}{12h}\).
+</p>
+
+<p>
+<b>zweifache Ableitungen</b>: \(\partial _x^2 u \approx \frac {u_E - 2u_P + u_W}{h^2}\), \(\partial _y^2 u \approx \frac {u_N - 2u_P + u_S}{h^2}\), \(\partial _x \partial _y u \approx \frac {u_{NW}
+- u_{NE} - u_{SW} + u_{SE}}{4h^2}\)<br />
+Eine Approximation ho&#x0308;herer Ordnung ist \(\partial _x^2 u(x_i, y_j) \approx \frac {-u_{WW} + 16u_W - 30u_P + 16u_E - u_{EE}}{12h^2}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>FDM fu&#x0308;r die <span class="textsc" >Poisson</span>-Gleichung</b>: Die <em><span class="dashuline" ><span class="textsc" >Poisson</span>-Gleichung</span></em> ist gegeben durch \(-\Delta u =
+f\) mit einem Quellterm \(f\). Die diskretisierte Version ist gegeben durch \(4u_P - u_E - u_W - u_N - u_S = h^2 f_P\). Um Dirichlet-RBen zu erzwingen, setzt man die jeweiligen Terme auf den RB-Wert.<br />
+Fu&#x0308;r Neumann-RBen mit z.&#x202f;B. \(\vec {n} = (1, 0)^\tp \) und \(\partial _{\vec {n}} u(x_i, y_j) = 0\) erha&#x0308;lt man die Approximation \(0 = \partial _{\vec {n}} u(x_i, y_j) \approx
+\frac {u_E - u_W}{2h}\), also \(u_E := u_W\). Daher erzwingt man Neumann-RBen, indem man in der Diskretisierung fu&#x0308;r den Randpunkt \(P\) den Term \(u_E\) durch \(u_W\) ersetzt, also<br />
+\(2u_P - u_W - \frac {1}{2} u_N - \frac {1}{2} u_S = \frac {1}{2} h^2 f_P\) (Teilen durch \(2\), damit LGS-Matrix nachher symmetrisch). Durch Lo&#x0308;sen des entstehenden LGS kann man die Approximation
+ausrechnen.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>FDM fu&#x0308;r Advektionsgleichung</b>: Fu&#x0308;r die Advektionsgleichung \(\partial _t u + c \partial _x u = 0\) gibt es mehrere Mo&#x0308;glichkeiten zur Diskretisierung, je nachdem, welche
+Differenzenquotienten man wa&#x0308;hlt. Dazu setzt man \(u_i^n \approx u(x_i, t_n)\) mit Gitterweiten \(\Delta x\) und \(\Delta t\).
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f12"><p><em><span class="dashuline" >Upwind-Methode</span></em>: \(u_i^{n+1} := u_i^n - c \frac {\Delta t}{\Delta x} (u_i^n - u_{i-1}^n)\) (Zeit vorwa&#x0308;rts, Ort ru&#x0308;ckwa&#x0308;rts)
+</p>
+</li>
+<li class="list-item-f13"><p><em><span class="dashuline" >Downwind-Methode</span></em>: \(u_i^{n+1} := u_i^n - c \frac {\Delta t}{\Delta x} (u_{i+1}^n - u_i^n)\) (Zeit vorwa&#x0308;rts, Ort vorwa&#x0308;rts)
+</p>
+</li>
+<li class="list-item-f14"><p><em><span class="dashuline" >zentrierte Methode</span></em>: \(u_i^{n+1} := u_i^n - c \frac {\Delta t}{2 \Delta x} (u_{i+1}^n - u_{i-1}^n)\) (Zeit vorwa&#x0308;rts, Ort zentriert)
+</p>
+</li>
+<li class="list-item-f15"><p><em><span class="dashuline" >Leap-Frog-Methode</span></em>: \(u_i^{n+1} := u_i^{n-1} - c \frac {\Delta t}{\Delta x} (u_{i+1}^n - u_{i-1}^n)\) (Zeit zentriert, Ort zentriert)
+</p>
+</li>
+<li class="list-item-f16"><p><em><span class="dashuline" ><span class="textsc" >Lax</span>-<span class="textsc" >Wendroff</span>-Methode</span></em>: \(u_i^{n+1} := u_i^n - c \frac {\Delta t}{2 \Delta x} (u_{i+1}^n -
+u_{i-1}^n) + \frac {1}{2} (c \frac {\Delta t}{\Delta x})^2 (u_{i+1}^n - 2u_i^n + u_{i-1}^n)\)
+</p>
+</li>
+</ul>
+
+<p>
+Fu&#x0308;r Stabilita&#x0308;t sollte die <em><span class="dashuline" >CFL-Zahl (<span class="textsc" >Courant</span>-<span class="textsc" >Friedrichs</span>-<span class="textsc"
+>Lewy</span>)</span></em> \(\sigma := c \frac {\Delta t}{\Delta x}\) kleiner als \(1\) sein.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>FDM fu&#x0308;r Diffusionsgleichung</b>: Als Beispiel betrachtet man die Wa&#x0308;rmeleitung in einem Stab der La&#x0308;nge \(L = 1\) mit \(D = 1\). Anfangsbedingung soll \(u(x, 0) = 0\) fu&#x0308;r \(x \in
+[0, 1]\) und RBen sollen \(u(0, t) = \sin (\pi t)\) und \(\partial _x u(1, t) = 0\) fu&#x0308;r \(t &gt; 0\). Diskretisiere \(D = [0, 1] \times [0, \infty )\) mit \(x_i := i \Delta x\) und \(t_n := n
+\Delta t\), wobei \(\Delta x := \frac {1}{N}\), \(i = 0, \dotsc , N\) und \(n \in \natural _0\). Durch Verwendung von Vorwa&#x0308;rts-Diff.quot. fu&#x0308;r die Zeit und zentralen Diff.quot. fu&#x0308;r den Ort
+bekommt man mit \(u_i^n \approx u(x_i, t_n)\) die <em><span class="dashuline" >FTCS-Methode</span></em> \(u_i^{n+1} := u_i^n + \frac {\Delta t}{\Delta x^2} (u_{i+1}^n - 2u_i^n + u_{i-1}^n)\) mit
+RBen \(u_0^n := \sin (\pi n \Delta t)\) und \(u_N^{n+1} := u_N^n + \frac {2\Delta t}{\Delta x^2} (u_{N-1}^n - u_N^n)\). Das Verfahren ist stabil \(\iff \Delta t &lt; \frac {1}{2} (\Delta x)^2\).
+</p>
+
+
+
+<h2 id="crank-nicolson-methode"><span style="font-variant: small-caps;">Crank</span>-<span style="font-variant: small-caps;">Nicolson</span>-Methode</h2>
+
+</p>
+
+
+<p>
+<b><span class="textsc" >Crank</span>-<span class="textsc" >Nicolson</span>-Methode</b>: Die <em><span class="dashuline" ><span class="textsc" >Crank</span>-<span class="textsc"
+>Nicolson</span>-Methode</span></em> verwendet die Trapezregel fu&#x0308;r die Zeit und zentrale Diff.quot. fu&#x0308;r den Ort. Ist die Gleichung \(\partial _t u = F(x, t, u, \partial _x u, \partial _x^2 u)\)
+gegeben und bezeichnen \(\frac {u_i^{n+1} - u_i^n}{\Delta t} = F_i^n(x, t, u, \partial _x u, \partial _x^2 u)\) und \(\frac {u_i^{n+1} - u_i^n}{\Delta t} = F_i^{n+1}(x, t, u, \partial _x u,
+\partial _x^2 u)\) einen expliziten bzw. impliziten Euler-Schritt, so erha&#x0308;lt man die <span class="textsc" >Crank</span>-<span class="textsc" >Nicolson</span>-Methode durch Mittelung \(\frac
+{u_i^{n+1} - u_i^n}{\Delta t} = \frac {1}{2} (F_i^n + F_i^{n+1})(x, t, u, \partial _x u, \partial _x^2 u)\).
+</p>
+
+<p>
+<b><span class="textsc" >Crank</span>-<span class="textsc" >Nicolson</span>-Methode fu&#x0308;r Diffusionsgleichung</b>:<br />
+Man setzt \(\partial _x^2 u(x_i, t_n) \approx \frac {1}{2(\Delta x)^2} ((u_{i+1}^n - 2u_i^n + u_{i-1}^n) + (u_{i+1}^{n+1} - 2u_i^{n+1} + u_{i-1}^{n+1}))\) und erha&#x0308;lt damit<br />
+\(-r u_{i-1}^{n+1} + (2+2r)u_i^{n+1} - ru_{i+1}^{n+1} = ru_{i-1}^n + (2-2r)u_i^n + ru_{i+1}^n\) mit \(r := \frac {\Delta t}{(\Delta x)^2}\).<br />
+Die RBen lauten dabei \((2+2r)u_1^{n+1} - ru_2^{n+1} = (2-2r)u_1^n + ru_2^n + r(\sin (\pi n \Delta t) + \sin (\pi (n+1) \Delta t)\) und \(-2ru_{N-1}^{n+1} + (2+2r)u_N^{n+1} = 2ru_{N-1}^n +
+(2-2r)u_N^n\). Fu&#x0308;r jede Zeit \(t_n\) erha&#x0308;lt man also ein tridiagonales LGS mit \(N\) Gleichungen fu&#x0308;r die \(N\) Unbekannten \(u_1^{n+1}, \dotsc , u_N^{n+1}\).
+</p>
+
+
+
+<h2 id="anisotrope-1d-diffusionsgleichung">Anisotrope 1D-Diffusionsgleichung</h2>
+
+</p>
+
+
+<p>
+<b>anisotrope 1D-Diffusionsgleichung</b>:<br />
+Die Gleichung \(\partial _t u = \partial _x (D(x) \partial _x u)\) heißt <em><span class="dashuline" >anisotrope 1D-Diffusionsgleichung</span></em>.
+</p>
+
+<p>
+<b>FDM fu&#x0308;r anisotrope 1D-Diffusionsgleichung</b>: Diskretisiere zuna&#x0308;chst die rechte Seite<br />
+\(\partial _x g(x)\) mit \(g(x) := D(x) \partial _x u\) und halber Schrittweite durch \(\partial _x g(x) \approx \frac {g(x + h/2) - g(x - h/2)}{h}\). Approximiere nun \(g(x) \approx D(x) \frac {u(x +
+h/2) - u(x - h/2)}{h}\). Durch Einsetzen erha&#x0308;lt man<br />
+\(\frac {u_i^{n+1} - u_i^n}{\Delta t} = \frac {1}{\Delta x^2} (D_{i+1/2} (u_{i+1}^n - u_i^n) - D_{i-1/2} (u_i^n - u_{i-1}^n))\) mit \(D_{i\pm 1/2} := D(x_i \pm \Delta x/2)\).
+</p>
+
+<p>
+<b><span class="textsc" >Crank</span>-<span class="textsc" >Nicolson</span> fu&#x0308;r anisotrope 1D-Diffusionsgleichung</b>:<br />
+Durch Mittelung fu&#x0308;r die Schritte \(n\) und \(n + 1\) erha&#x0308;lt man<br />
+\(\frac {u_i^{n+1} - u_i^n}{\Delta t} = \frac {1}{2\Delta x^2} (D_{i+1/2} (u_{i+1}^{n+1} + u_{i+1}^n - u_i^{n+1} - u_i^n) - D_{i-1/2} (u_i^{n+1} + u_i^n - u_{i-1}^{n+1} - u_{i-1}^n))\) bzw.<br
+/>
+\(-D_{i+1/2} u_{i+1}^{n+1} + (\frac {2\Delta x^2}{\Delta t} + D_{i+1/2} + D_{i-1/2}) u_i^{n+1} - D_{i-1/2} u_{i-1}^{n+1}\)<br />
+\(= D_{i+1/2} u_{i+1}^n (\frac {2\Delta x^2}{\Delta t} - D_{i+1/2} - D_{i-1/2}) u_i^n + D_{i-1/2} u_{i-1}^n\).<br />
+Dies kann man in der Form \(A\vec {u}^{n+1} = B\vec {u}^n\) schreiben mit \(\vec {u}^n := (u_1^n, \dotsc , u_N^n)^\tp \),<br />
+\(A_{j,j-1} := -D_{j-1/2}\), \(A_{j,j} := \frac {2\Delta x^2}{\Delta t} + D_{j+1/2} + D_{j-1/2}\), \(A_{j,j+1} := -D_{j+1/2}\) und<br />
+\(B_{j,j-1} := D_{j-1/2}\), \(B_{j,j} := \frac {2\Delta x^2}{\Delta t} - D_{j+1/2} - D_{j-1/2}\), \(B_{j,j+1} := D_{j+1/2}\) (sonst \(A_{i,j} := 0 =: B_{i,j}\)).<br />
+Nach Hinzufu&#x0308;gung der RBen zu \(A\) und \(B\) erha&#x0308;lt man dann \(\vec {u}^{n+1} = A^{-1} B\vec {u}^n\).
+</p>
+
+
+
+<h2 id="perona-malik-diffusion"><span style="font-variant: small-caps;">Perona</span>-<span style="font-variant: small-caps;">Malik</span>-Diffusion</h2>
+
+</p>
+
+
+<p>
+<b><span class="textsc" >Perona</span>-<span class="textsc" >Malik</span>-Diffusion</b>: Die <em><span class="dashuline" ><span class="textsc" >Perona</span>-<span class="textsc"
+>Malik</span>-Diffusionsgleichung</span></em> ist gegeben durch<br />
+\(\partial _t u = \div (g(|\vec {\nabla } u|) \vec {\nabla } u)\) mit AB \(u(\cdot , 0) = f\) und homogenen Neumann-RBen \(\partial _{\vec {n}} u = 0\).<br />
+Die <em><span class="dashuline" >Diffusivita&#x0308;tsfunktion</span></em> \(g\) sollte \(g(0) = 1\), \(g \ge 0\) und \(\lim _{s \to \infty } g(s) = 0\) erfu&#x0308;llen. PM schlagen z.&#x202f;B. \(g(s) :=
+\frac {1}{1 + s^2/\lambda ^2}\) oder \(g(s) := e^{-s^2/\lambda ^2}\) mit dem <em><span class="dashuline" >Kontrastparameter</span></em> \(\lambda \) vor.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>1D-PM-Diffusion</b>: In einer Dimension ist die PM-Diffusion mit der <em><span class="dashuline" >Flussfunktion</span></em><br />
+\(\Phi (s) := s \cdot g(s)\) gegeben durch \(\partial _t u = \partial _x (g(|\partial _x u|) \partial _x u) = \Phi ’(|\partial _x u|) \partial _x^2 u\). Fu&#x0308;r die beiden von PM vorgeschlagenen
+Diffusivita&#x0308;tsfunktionen gilt \(\Phi ’(|\partial _x u|) &gt; 0\) fu&#x0308;r \(|\partial _x u| &lt; \lambda \) (Vorwa&#x0308;rts-Diffusion) und \(\Phi ’(|\partial _x u|) &lt; 0\) fu&#x0308;r
+\(|\partial _x u| &gt; \lambda \) (Ru&#x0308;ckwa&#x0308;rts-Diffusion). Obwohl also die Diffusivita&#x0308;t \(g\) nicht-negativ ist, gibt es Vor- und Ru&#x0308;ckwa&#x0308;rts-Diffusion.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>2D-PM-Diffusion</b>: In zwei Dimensionen ist die PM-Diffusion gegeben durch<br />
+\(\partial _t u = \partial _x (g(|\vec {\nabla } u|) \partial _x u) + \partial _y (g(|\vec {\nabla } u|) \partial _y u)\). Die Norm des Gradienten kann man mittels zentraler Diff.quot.en approximieren:
+\(|\vec {\nabla } u_{i,j}| \approx \sqrt {(\frac {u_{i+1,j} - u_{i-1,j}}{2})^2 + (\frac {u_{i,j+1} - u_{i,j-1}}{2})^2}\) mit \(g_{i,j} := g(|\vec {\nabla } u_{i,j}|)\).<br />
+Damit kann man ein Finites-Differenzen-Verfahren herleiten.<br />
+Eine Anwendung ist die Rauschunterdru&#x0308;ckung von Bildern, ohne dass Kanten unscharf werden (im Gegensatz zur linearen Diffusion).
+</p>
+
+
+
+<h2 id="dilatation-und-erosion">Dilatation und Erosion</h2>
+
+</p>
+
+
+<p>
+<b>Dilatation und Erosion</b>: Bei der Dilatation und Erosion ist eine Teilmenge \(A \subset \real ^2\) (z.&#x202f;B. ein Quadrat) und eine Maske \(M \subset \real ^2\) mit \(0 \in M\) (z.&#x202f;B. ein Kreis). Die
+<em><span class="dashuline" >Dilatation</span></em> ist das Ergebnis von \(\bigcup _{x \in A} (M + x)\) und die <em><span class="dashuline" >Erosion</span></em> ist das Ergebnis von \(\{x \in A \;|\; M + x
+\subset A\}\).
+</p>
+
+<p>
+<b>Dilatationsgleichung</b>: Dilatation und Erosion ko&#x0308;nnen mithilfe der <em><span class="dashuline" >Dilatationsgleichung</span></em><br />
+\(\partial _t u = \pm |\vec {\nabla } u|\) simuliert werden. Bei der <em><span class="dashuline" ><span class="textsc" >Rouy</span>-<span class="textsc" >Tourin</span>-Methode</span></em> setzt man<br
+/>
+\(u_{i,j}^{n+1} := u_{i,j}^n \pm \Delta t \sqrt {(\partial _x u)^2 + (\partial _y u)^2}\) mit \((\partial _x u)^2 \approx \frac {1}{\Delta x^2} (\max \{0, u_{i+1,j} - u_{i,j}, -(u_{i,j} -
+u_{i-1,j})\})^2\), analog \((\partial _y u)^2\).<br />
+Bei der <em><span class="dashuline" ><span class="textsc" >Osher</span>-<span class="textsc" >Sethian</span>-Upwind-Methode</span></em> verwendet man stattdessen<br />
+\((\partial _x u)^2 \approx \frac {1}{\Delta x^2} ((\max (0, u_{i+1,j} - u_{i,j}))^2 + (\max (0, u_{i-1,j} - u_{i,j}))^2)\), analog \((\partial _y u)^2\).<br />
+Anwendungen von Dilatation und Erosion umfassen das Unscharfmachen von Kanten oder die Kontrasterho&#x0308;hung von Fingerabdrucks-Bildern.
+</p>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

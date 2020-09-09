@@ -1,0 +1,1580 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\newcommand {\id }{\ensuremath {\operatorname {id}}}\)
+
+\(\newcommand {\GL }{\ensuremath {\operatorname {GL}}}\)
+
+\(\newcommand {\Mat }{\ensuremath {\operatorname {Mat}}}\)
+
+\(\newcommand {\Kern }{\ensuremath {\operatorname {Kern}}}\)
+
+\(\newcommand {\Bild }{\ensuremath {\operatorname {Im}}}\)
+
+\(\newcommand {\ord }{\ensuremath {\operatorname {ord}}}\)
+
+\(\newcommand {\ggT }{\ensuremath {\operatorname {ggT}}}\)
+
+\(\newcommand {\Stab }{\ensuremath {\operatorname {Stab}}}\)
+
+\(\newcommand {\sgn }{\ensuremath {\operatorname {sgn}}}\)
+
+\(\newcommand {\Hom }{\ensuremath {\operatorname {Hom}}}\)
+
+\(\newcommand {\grad }{\ensuremath {\operatorname {grad}}}\)
+
+\(\renewcommand {\i }{\ensuremath {\text {i}}}\)
+
+\(\newcommand {\Prim }{\ensuremath {\operatorname {Prim}}}\)
+
+\(\newcommand {\Aut }{\ensuremath {\operatorname {Aut}}}\)
+
+\(\newcommand {\Gal }{\ensuremath {\operatorname {Gal}}}\)
+
+\(\newcommand {\Kon }{\ensuremath {\operatorname {Kon}}}\)
+
+\(\renewcommand {\F }{\ensuremath {\mathbb {F}}}\)
+
+\(\renewcommand {\U }{\ensuremath {\mathcal {U}}}\)
+
+\(\newcommand {\Z }{\ensuremath {\mathcal {Z}}}\)
+
+\(\newcommand {\Char }{\ensuremath {\operatorname {char}}}\)
+
+\(\newcommand {\dcup }{\ensuremath {\mathbin {\dot {\cup }}}}\)
+
+\(\newcommand {\bigdcup }{\ensuremath {\mathop {\dot {\bigcup }}}}\)
+
+\(\newcommand {\nt }{\ensuremath {\mathbin {\vartriangleleft }}}\)
+
+\(\newcommand {\teilt }{\ensuremath {\mathbin {|}}}\)
+
+\(\newcommand {\notteilt }{\ensuremath {\mathbin {\!\not |}}}\)
+
+\(\newcommand {\erzeugnis }[1]{\ensuremath {\left \langle #1\right \rangle }}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  content:'I.\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  content:'II.\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  content:'III.\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  content:'(a)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  content:'(b)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  content:'(c)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  content:'(d)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  content:'(a)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  content:'(b)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f9::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f10::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f11::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f12::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f13::marker {
+  content:'(a)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f14::marker {
+  content:'(b)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f15::marker {
+  content:'(a)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f16::marker {
+  content:'(b)\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+
+<h2 id="konstruktionen-mit-zirkel-und-lineal">Konstruktionen mit Zirkel und Lineal</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Die Aufgabe in diesem Abschnitt ist es, geometrische Konstruktionen durch Ko&#x0308;rpererweiterungen zu modellieren. Gegeben ist dabei eine Menge von „Startpunkten“ \(M \subset \real ^2 =
+\complex \), ein Lineal (ohne Markierungen) und ein Zirkel.<br />
+Das Ziel ist der Beweis der Unlo&#x0308;sbarkeit von klassischen Problemen wie der Wu&#x0308;rfelverdopplung und der Winkeldreiteilung. Die Wu&#x0308;rfelverdopplung findet zwar im Dreidimensionalen statt, auf dort
+lassen sich die hier vorgestellten Aussagen jedoch leicht u&#x0308;bertragen (beispielsweise ist es im Zweidimensionalen nicht mo&#x0308;glich, die Kante eines verdoppelten Wu&#x0308;rfels zu konstruieren).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Gerade</b>:&#x2003; Seien \(M \subset \real ^2\) und \(p, q \in M\) mit \(p \not = q\).<br />
+Dann bezeichnet \(p \lor q\) die <em><span class="dashuline" >Gerade</span></em> durch \(p\) und \(q\).
+</p>
+
+<p>
+<b>Kreis</b>:&#x2003; Seien \(M \subset \real ^2\) und \(p, q_1, q_2 \in M\) mit \(q_1 \not = q_2\).<br />
+Dann bezeichnet \(K(p, \varrho )\) mit \(\varrho := |q_1 - q_2|\) den <em><span class="dashuline" >Kreis</span></em> um \(p\) mit Radius \(\varrho \).
+</p>
+
+<p>
+<b>elementare Konstruktion</b>:&#x2003; Sei \(M \subset \real ^2\).<br />
+Eine <em><span class="dashuline" >elementare Konstruktion</span></em> aus \(M\) ist eine der folgenden Konstruktionen:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p><em><span class="dashuline" >Schnitt von zwei Geraden</span></em>:<br />
+Seien \(p_1, p_2, q_1, q_2 \in M\), mit \(p_1 \not = p_2\), \(q_1 \not = q_2\) und \((p_1 \lor p_2) \not = (q_1 \lor q_2)\).<br />
+Dann ist der Schnittpunkt \(\widehat {p} := (p_1 \lor p_2) \cap (q_1 \lor q_2)\) konstruiert (falls er existiert).
+</p>
+</li>
+<li class="list-item-f1"><p><em><span class="dashuline" >Schnitt einer Geraden mit einem Kreis</span></em>:<br />
+Seien \(p_1, p_2, q, q_1, q_2 \in M\), mit \(p_1 \not = p_2\) und \(q_1 \not = q_2\).<br />
+Dann sind die Schnittpunkte \(\{\widehat {r}, \widehat {s}\} := (p_1 \lor p_2) \cap K(q, |q_1 - q_2|)\) konstruiert.
+</p>
+</li>
+<li class="list-item-f2"><p><em><span class="dashuline" >Schnitt von zwei Kreisen</span></em>:<br />
+Seien \(p, p_1, p_2, q, q_1, q_2 \in M\), mit \(p_1 \not = p_2\) und \(q_1 \not = q_2\).<br />
+Dann sind die Schnittpunkte \(\{\widehat {r}, \widehat {s}\} := K(p, |p_1 - p_2|) \cap K(q, |q_1 - q_2|)\) konstruiert.
+</p>
+</li>
+</ul>
+
+<p>
+<b>konstruierbare Punkte</b>:&#x2003; Sei \(M \subset \real ^2 = \complex \). Ein Punkt \(p = (x, y) \in \complex \) heißt <em><span class="dashuline" >aus \(M\) (mit Zirkel und Lineal)
+konstruierbar</span></em>, falls es ein \(n \in \natural \) und \(M = M_0 \subset M_1 \subset \dotsb \subset M_n\) gibt mit \(p \in M_n\), sodass jedes \(M_i\) aus \(M_{i-1}\) durch eine elementare Konstruktion
+entsteht.<br />
+Die Menge \(\Kon (M) := \{p \in \real ^2 \;|\; p \text { aus } M \text { konstruierbar}\}\) ist die Menge aller aus \(M\)<br />
+<em><span class="dashuline" >konstruierbaren Punkte</span></em>.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Im Folgenden wird angenommen, dass \(M\) stets zwei Punkte entha&#x0308;lt,<br />
+na&#x0308;mlich \(0 := (0, 0)\) und \(1 := (1, 0)\).
+</p>
+
+<p>
+<span class="uline" ><em>Theorem</em> (<span class="textsl" >\(\Kon (M)\) als Erweiterungsko&#x0308;rper</span>):</span> Seien \(M \subset \complex \) mit \(0, 1 \in M\). Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f3"><p>\(\Kon (M)\) ist ein Teilko&#x0308;rper von \(\complex \).
+</p>
+</li>
+<li class="list-item-f4"><p>\(\Kon (M) = \overline {\Kon (M)} := \{\overline {z} \;|\; z \in \Kon (M)\}\)
+</p>
+</li>
+<li class="list-item-f5"><p>\(\rational (M \cup \overline {M})\) ist ein Teilko&#x0308;rper von \(\Kon (M)\).
+</p>
+</li>
+<li class="list-item-f6"><p>Fu&#x0308;r \(b \in \complex \) gilt: Falls \(b^2 \in \Kon (M)\) ist, so ist auch \(b \in \Kon (M)\)<br />
+(d.&#x202f;h. \(\Kon (M)\) ist <em><span class="dashuline" >quadratisch abgeschlossen</span></em>).
+</p>
+</li>
+</ul>
+
+<p>
+<em>Bemerkung</em>: Man kann also mit Zirkel und Lineal addieren, subtrahieren, multiplizieren, dividieren und Quadratwurzeln ziehen. \(\Kon (\rational )\) ist echt kleiner als \(\complex \), hat aber unendlichen Grad
+u&#x0308;ber \(\rational \), da \(\sqrt {2}, \sqrt [4]{2}, \sqrt [8]{2}, \dotsc \in \Kon (\rational )\) linear unabha&#x0308;ngig sind.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Theorem</em> (<span class="textsl" >Ko&#x0308;rpererweiterung \(\Kon (M)/\rational (M \cup \overline {M})\)</span>):</span> Seien \(M \subset \complex \) und \(0, 1 \in M\).
+Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f7"><p>\(\Kon (M)/\rational (M \cup \overline {M})\) ist algebraisch.
+</p>
+</li>
+<li class="list-item-f8"><p>Fu&#x0308;r \(z \in \complex \) gilt \(z \in \Kon (M)\) genau dann, wenn es eine Kette von Ko&#x0308;rperweiterungen \(\rational (M \cup \overline {M}) = L_0 \subset L_1 \subset \dotsb \subset L_r\)
+gibt mit \(z \in L_r\) und \(\forall _{j=1,\dotsc ,r}\; [L_j:L_{j-1}] \le 2\).<br />
+Fu&#x0308;r \(z \in \Kon (M)\) ist also \([L_0(z):L_0]\) eine Potenz von \(2\).
+</p>
+</li>
+</ul>
+
+<p>
+<em>Bemerkung</em>: Ist also \([L_0(z):L_0]\) keine Potenz von \(2\), so ist \(z\) nicht konstruierbar<br />
+(z.&#x202f;B. fu&#x0308;r \(M = \{0, 1\}\) ist \(L_0 = \rational \)).
+</p>
+
+
+
+<h2 id="unmoeglichkeit-bestimmter-geometrischer-konstruktionen">Unmöglichkeit bestimmter geometrischer Konstruktionen</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Die bisher entwickelte Theorie la&#x0308;sst sich nun fu&#x0308;r Unmo&#x0308;glichkeitsbeweise von geometrischen Konstruktionen verwenden:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f9"><p><em><span class="dashuline" >Wu&#x0308;rfelverdopplung (Delisches Problem)</span></em>: Konstruiere die Seitenla&#x0308;nge eines Wu&#x0308;rfels vom Volumen \(2\). Aufgrund \([\rational (\sqrt
+[3]{2}):\rational ] = 3\) ist \(\sqrt [3]{2}\) nicht aus \(0, 1\) konstruierbar, d.&#x202f;h. die Aufgabe ist unlo&#x0308;sbar.
+</p>
+</li>
+<li class="list-item-f10"><p><em><span class="dashuline" >Dreiteilung eines Winkels</span></em>: Gegeben ist \(z = e^{\i \alpha }\), konstruiere \(e^{\i \alpha /3}\).<br />
+Wa&#x0308;hle \(\alpha = 120^\circ = \frac {2\pi }{3}\). In diesem Fall ist \(z = e^{2\pi \i /3} = -\frac {1}{2} + \frac {\i }{2} \sqrt {3}\) gegeben, gesucht ist \(\xi = e^{2\pi \i /9}\). Es gilt
+\([\rational (z):\rational ] = 2\) (\(x^2 + x + 1\) Minimalpolynom von \(x\) u&#x0308;ber \(\rational \)).
+</p>
+<p>
+Wenn man zeigt, dass \([\rational (\xi ):\rational ] = 6\), dann folgt aufgrund \(\rational (z) \subset \rational (z, \xi ) = \rational (\xi )\) und<br />
+\([\rational (\xi ):\rational ] = [\rational (\xi ):\rational (z)] \cdot [\rational (z):\rational ]\), dass \([\rational (\xi ):\rational (z)] = 3\), d.&#x202f;h. \(\xi \) ist nicht aus \(z\)
+konstruierbar. Es gilt \([\rational (\xi ):\rational ] \le 6\), da das Minimalpolynom von \(\xi \) u&#x0308;ber \(\rational \) das Polynom \(\frac {x^9 - 1}{x^3 - 1} = x^6 + x^3 + 1\) teilen muss. Außerdem
+gilt \(2 &lt; [\rational (\xi ):\rational ]\) und \(2 \teilt [\rational (\xi ):\rational ]\).<br />
+Es bleiben also nur die Mo&#x0308;glichkeiten \([\rational (\xi ):\rational ] = 4\) und \([\rational (\xi ):\rational ] = 6\).
+</p>
+<p>
+Nun wird gezeigt, dass \([\rational (\xi ):\rational ] = 6\). Ein \(\rational \)-Automorphismus von \(\rational (\xi )\) bildet jede Nullstelle von \(x^6 + x^3 + 1\) wieder auf eine Nullstelle ab, d.&#x202f;h.
+\(e^{2\pi \i /9}\) wird abgebildet \(e^{2\pi \i \ell /9}\) mit \(\ell \in \{1, 2, 4, 5, 7, 8\}\). Jeder Automorphismus \(\sigma \colon \rational (\xi ) \rightarrow \rational (\xi )\) ist bestimmt durch
+\(\sigma (\xi ) = e^{2\pi \i \ell /9}\), d.&#x202f;h. \(\ell \in (\integer /9\integer )^\ast \). Die Zuordnung \(\sigma \mapsto \ell \in (\integer /9\integer )^\ast \) definiert einen
+Gruppenhomomorphismus \(\Aut _\rational (\rational (\xi )) \rightarrow (\integer /9\integer )^\ast \), dieser ist injektiv. Somit ist \(\Aut _\rational (\rational (\xi ))\) isomorph zu einer Untergruppe von
+\((\integer /9\integer )^\ast \), daraus folgt \(|\Aut _\rational (\rational (\xi ))| \teilt 6\). \(\rational (\xi )/\rational \) ist eine Galoiserweiterung (separabel und normal), also \(|\Aut _\rational
+(\rational (\xi ))| = [\rational (\xi ):\rational ] \teilt 6\).
+</p>
+<p>
+Somit muss \([\rational (\xi ):\rational ] = 6\) gelten und die Winkeldreiteilung ist nicht mo&#x0308;glich.
+</p>
+</li>
+<li class="list-item-f11"><p><em><span class="dashuline" >Quadratur des Kreises</span></em>: Gegeben ist der Einheitskreis, gesucht ist ein Quadrat mit derselben Fla&#x0308;che, d.&#x202f;h. man muss \(\sqrt {\pi }\) oder \(\pi \)
+konstruieren. Die Zahlentheorie besagt allerdings, dass \(\pi \) transzendent ist, also nicht konstruierbar. Somit ist die Quadratur des Kreises unmo&#x0308;glich.
+</p>
+</li>
+<li class="list-item-f12"><p><em><span class="dashuline" >Konstruktion von regelma&#x0308;ßigen \(n\)-Ecken</span></em>: Es mu&#x0308;ssen die \(n\)-ten Einheitswurzeln \(\xi = e^{2\pi \i /n}\) konstruiert werden. Das
+Minimalpolynom von \(\xi \) u&#x0308;ber \(\rational \) ist ein Teiler von \(x^n - 1\), sein Grad ist \(\varphi (n) := |(\integer /n\integer )^\ast | = \{j \in \{1, \dotsc , n\} \;|\; \ggT (j, n) = 1\}\)
+(<em><span class="dashuline" ><span class="textsc" >Euler</span>sche \(\varphi \)-Funktion</span></em>). Es gilt nun \(\xi \) konstruierbar \(\iff \) \(\varphi (n)\) ist eine Potenz von \(2\) \(\iff \) \(n =
+2^\ell \cdot p_1 \dotsm p_r\) mit paarweise verschiedenen <em><span class="dashuline" ><span class="textsc" >Fermat</span>schen Primzahlen</span></em> \(p_1, \dotsc , p_r\) (d.&#x202f;h. eine Primzahl der
+Form \(p_i = 2^{2^a} + 1\)). Fu&#x0308;r \(a = 0, 1, 2, 3, 4\) ist das prim (man erha&#x0308;lt \(3\), \(5\), \(17\), \(257\), \(65537\)), fu&#x0308;r \(a = 5\) gilt allerdings \(641 \teilt 4294967297\). Es ist ein
+ungelo&#x0308;stes Problem, ob weitere Fermatsche Primzahlen existieren (man vermutet, dass dies nicht zutrifft). Somit ist auch die Konstruktion von regelma&#x0308;ßigen \(n\)-Ecken fu&#x0308;r allgemeine \(n\) ein
+ungelo&#x0308;stes Problem.
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="polynomiale-gleichungen">Polynomiale Gleichungen</h2>
+<em>Bemerkung</em>: Sei \(K\) ein Ko&#x0308;rper und \(f(x) \in K[x]\) ein Polynom vom Grad \(n\). Gesucht ist eine Formel, die die Nullstellen von \(f(x)\) berechnet. Beispielsweise geht dies fu&#x0308;r \(n = 2\)
+und<br />
+\(f(x) = ax^2 + bx + c\) mit der Mitternachtsformel \(\frac {-b \pm \sqrt {b^2 - 4ac}}{2a}\) fu&#x0308;r \(\Char K \not = 2\). Fu&#x0308;r \(n = 3\) und \(f(x) = x^3 + ax^2 + bx + c\) ergeben sich schon
+kompliziertere Formeln, man formt zuna&#x0308;chst um zu \(x^3 + px + q\) und erha&#x0308;lt Lo&#x0308;sungen wie \(\sqrt [3]{-\frac {q}{2} + \sqrt {\left (\frac {p}{3}\right )^3 + \left (\frac
+{q}{2}\right )^2}} + \sqrt [3]{-\frac {q}{2} - \sqrt {\left (\frac {p}{3}\right )^3 + \left (\frac {q}{2}\right )^2}}\) fu&#x0308;r \(\Char K \not = 2, 3\) – hier werden schon verschiedene Wurzeln
+beno&#x0308;tigt.<br />
+Im Folgenden wird gezeigt, dass es fu&#x0308;r \(n \ge 5\) keine solche allgemeine Formel gibt, die Lo&#x0308;sungen aus den Koeffizienten berechnet (erlaubt sind \(+, -, \cdot , /\) und beliebige Wurzeln). Dabei reicht es,
+ein Polynom anzugeben, das eine Nullstelle besitzt, die nicht mit diesen Operationen berechnet werden kann.<br />
+Die Strategie ist, Ko&#x0308;rpererweiterungen \(K(\sqrt [n]{a})/K\) zu Galoiserweiterungen zu vergro&#x0308;ßern, sodass die Galoisgruppen spezielle Eigenschaften haben. Dann wird ein \(f(x)\) angegeben, dessen
+Zerfa&#x0308;llungsko&#x0308;rper diese Eigenschaften nicht hat.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Im Folgenden ist \(\Char K = 0\) (oder sogar \(K = \rational \)), d.&#x202f;h. Ko&#x0308;rpererweiterungen sind automatisch separabel.
+</p>
+
+<p>
+<b>Radikal</b>:&#x2003; Seien \(K\) ein Ko&#x0308;rper, \(n \in \natural \), \(a \in K\) und \(E/K\) eine Ko&#x0308;rpererweiterung, sodass \(b^n = a\) fu&#x0308;r ein \(b \in E\). Dann heißt \(b\) <em><span
+class="dashuline" >Radikal</span></em> von \(a\) u&#x0308;ber \(K\) (Schreibweise \(b = \sqrt [n]{a}\)).<br />
+\(b\) ist eindeutig bis auf Multiplikation mit <em><span class="dashuline" >Einheitswurzeln</span></em> (\(\sqrt [n]{1}\)).
+</p>
+
+<p>
+<b>Ko&#x0308;rpererw. durch Radikale auflo&#x0308;sbar</b>:&#x2003; Eine Ko&#x0308;rpererweiterung \(L/K\) heißt <em><span class="dashuline" >(durch<br />
+Radikale) auflo&#x0308;sbar</span></em>, falls es eine Kette von Ko&#x0308;rpererweiterungen \(K = K_0 = K_1 \subset \dotsb \subset K_\ell \) gibt mit \(\ell \in \natural \), \(L \subset K_\ell \) und
+\(K_{j+1} = K_j(b_j)\) mit \(b_j = \sqrt [n_j]{a_j}\) fu&#x0308;r ein \(a_j \in K_j\) fu&#x0308;r alle \(j = 0, \dotsc , \ell - 1\).
+</p>
+
+<p>
+<b>Polynom durch Radikale auflo&#x0308;sbar</b>:&#x2003; Ein Polynom \(f(x) \in K[x]\) heißt <em><span class="dashuline" >(durch Radikale) auflo&#x0308;sbar</span></em>, falls es sein
+Zerfa&#x0308;llungsko&#x0308;rper \(L\) u&#x0308;ber \(K\) durch Radikale auflo&#x0308;sbar ist.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Im Folgenden sei \(K\) ein Ko&#x0308;rper mit \(\rational \subset K\) und \(K_n\) der Zerfa&#x0308;llungsko&#x0308;rper von \(x^n - 1\) u&#x0308;ber \(K\). Wegen \(\rational \subset K\)
+haben daher die Einheitswurzeln \(\sqrt [n]{1}\) die Werte \(e^{2\pi \i j/n}\) fu&#x0308;r \(j = 0, \dotsc , n - 1\).
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >\(\Gal (K_n/K)\) abelsch</span>): Es gibt einen injektiven Grp.homom. \(\Gal (K_n/K) \rightarrow (\integer /n\integer )^\ast \), d.&#x202f;h. \(\Gal (K_n/K)\) ist
+isomorph zu einer Untergruppe von \((\integer /n\integer )^\ast \) und daher abelsch.
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >\(\Gal (K(\sqrt [n]{a})/K)\) abelsch</span>): Seien \(e^{2\pi \i /n} \in K\) und \(L := K(\sqrt [n]{a})\) fu&#x0308;r ein \(a \in K\).<br />
+Dann ist \(L/K\) eine Galoiserweiterung und \(\Gal (L/K)\) ist zyklisch mit \(|\Gal (L/K)| \teilt n\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Es gilt auch die Umkehrung: Ist \(L/K\) eine endliche Galoiserw. mit \(\Gal (L/K)\) zyklisch und \(n := [L:K]\), dann ist \(L\) der Zerfa&#x0308;llungsko&#x0308;rper von \(x^n - a\) fu&#x0308;r ein
+\(a \in K\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Man erha&#x0308;lt also in beiden Erweiterungen \(K \subset K(\sqrt [n]{1}) \subset K(\sqrt [n]{a})\) abelsche Gruppen. Allerdings geht die Eigenschaft „abelsch“ beim Iterieren verloren, wie
+folgendes Gegenbeispiel zeigt: Sei \(K = \rational \), \(n = 3\) und \(a = 2\). Dann ist \(\Gal (K(\sqrt [n]{1})/K) = \Gal (\rational (e^{2\pi \i /3})/\rational ) \simeq \integer /2\integer \) und \(\Gal
+(K(\sqrt [n]{a})/K) = \Gal (\rational (\sqrt [3]{2}, e^{2\pi \i /3})/\rational ) \simeq \Sigma _3\). \(\Sigma _3\) ist jedoch nicht abelsch.
+</p>
+
+<p>
+<b>Normalreihe</b>:&#x2003; Sei \(G\) eine Gruppe. Eine endliche Kette \(\{1\} = G_0 \nt G_1 \nt \dotsb \nt G_n = G\) von Untergruppen mit \(G_j \nt G_{j+1}\) fu&#x0308;r \(j = 0, \dotsc , n - 1\) heißt
+<em><span class="dashuline" >Normalreihe</span></em>.<br />
+Die Normalreihe heißt <em><span class="dashuline" >abelsch</span></em>, falls \(G_{j+1}/G_j\) fu&#x0308;r \(j = 0, \dotsc , n - 1\) abelsch ist.
+</p>
+
+<p>
+<b>Gruppe auflo&#x0308;sbar</b>:&#x2003;<br />
+Eine Gruppe \(G\) heißt <em><span class="dashuline" >auflo&#x0308;sbar</span></em>, falls \(G\) eine abelsche Normalreihe besitzt.
+</p>
+
+<p>
+<em>Bemerkung</em>: Das Ziel ist zu zeigen, dass ein Polynom durch Radikale auflo&#x0308;sbar ist genau dann, wenn sein Zerfa&#x0308;llungsko&#x0308;rper eine auflo&#x0308;sbare Galoisgruppe besitzt. Dann muss man
+noch zeigen, dass es Galoisgruppen gibt, die nicht auflo&#x0308;sbar sind.
+</p>
+
+<p>
+<em>Beispiel</em>: Auflo&#x0308;sbare Gruppen sind z.&#x202f;B. abelsche Gruppen (\(\{1\} \nt G\)),<br />
+\(\Sigma _3\) (\(\{1\} \nt \erzeugnis {(123)} \nt \Sigma _3\), da \([\Sigma _3:\erzeugnis {(123)}] = 2\), und \(\Sigma _3/\erzeugnis {(123)}\) ist zyklisch, da \(|\Sigma _3/\erzeugnis {(123)}| = 2\))<br
+/>
+und \(G\) mit \(|G| = p^n\) mit \(p\) prim und \(n \in \natural _0\) (fu&#x0308;r \(n \not = 0\) gilt \(Z(G) \not = \{e\}\), \(Z(G) \nt G\) mit \(|G/Z(G)| = p^\ell \) fu&#x0308;r ein \(\ell &lt; n\), induktiv ist
+also \(G\) auflo&#x0308;sbar).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Kommutator</b>:&#x2003; Seien \(G\) eine Gruppe und \(a, b \in G\).<br />
+Dann heißt \([a, b] := aba^{-1}b^{-1}\) der <em><span class="dashuline" >Kommutator</span></em> von \(a\) und \(b\).<br />
+Die von allen Kommutatoren erzeugte Untergruppe \(D(G) := \erzeugnis {[a, b] \;|\; a, b \in G}\) heißt<br />
+<em><span class="dashuline" >Kommutatoruntergruppe</span></em> (oder <em><span class="dashuline" >derivierte Gruppe</span></em>) von \(G\).<br />
+Mit \(D^n(G) := D(\dotsb (D(G))\dotsb )\) bezeichnet man die <em><span class="dashuline" >iterierte Kommutatoruntergruppe</span></em>.
+</p>
+
+<p>
+<em>Bemerkung</em>: Es gilt \([a, b] = 1\) genau dann, wenn \(ab = ba\). \(\{[a, b] \;|\; a, b \in G\}\) ist i.&#x202f;A. keine Gruppe. Es gilt \(D(G) \nt G\), da \(g [a,b] g^{-1} = gaba^{-1}b^{-1}g^{-1} =
+(gag^{-1})(gbg^{-1})(ga^{-1}g^{-1})(gb^{-1}g^{-1})\) ein Kommutator ist. \(G\) ist abelsch genau dann, wenn \(D(G) = \{1\}\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Durch iterierte Anwendung der Kommutatoruntergruppe kann man eine Normalreihe \(G &gt; D(G) &gt; D^2(G) &gt; \dotsb \) herstellen (die Untergruppen sind alle normal).<br />
+\(G/D(G)\) ist abelsch, denn fu&#x0308;r \(a, b \in G\) ist \(\overline {a} \overline {b} = \overline {b} \overline {a}\), da \(\overline {1} = \overline {[a,b]} = \overline {a}\overline {b}\overline
+{a}^{-1}\overline {b}^{-1}\).<br />
+Also ist \(G \vartriangleright D(G) \vartriangleright D^2(G) \vartriangleright \dotsb \) eine abelsche Normalreihe, falls \(D^n(G) = \{1\}\) fu&#x0308;r ein \(n \in \natural \). Allerdings muss diese Bedingung
+nicht immer erfu&#x0308;llt sein: Ist \(G\) einfach, aber nicht abelsch, dann besitzt \(G\) keine Normalteiler außer \(\{1\}\) und \(G\). Wegen \(D(G) \not = \{1\}\) (\(G\) nicht abelsch) und \(D(G) \nt G\) gilt also \(G =
+D(G)\) (und \(D(G) = D^2(G) = \dotsb \)).<br />
+Es kann also passieren, dass diese Reihe stehen bleibt. Im Folgenden wird das ausgenutzt, indem die Aussage getroffen wird, dass dann \(G\) nicht auflo&#x0308;sbar ist (man muss nur diese „Testreihe“ pru&#x0308;fen).
+</p>
+
+<p>
+<span class="uline" ><em>Proposition</em> (<span class="textsl" >Testreihe der Kommutatoruntergruppen</span>):</span><br />
+Eine Gruppe \(G\) ist auflo&#x0308;sbar genau dann, wenn \(D^n(G) = \{1\}\) fu&#x0308;r ein \(n \in \natural \).
+</p>
+
+<p>
+<span class="uline" ><em>Proposition</em> (<span class="textsl" >\(\Sigma _n\) fu&#x0308;r \(n \ge 5\) nicht auf&#x202f;lo&#x0308;sbar</span>):</span> Sei \(n \ge 5\). Dann ist \(D(\Sigma _n) = D(A_n) =
+A_n\).<br />
+Insbesondere sind \(\Sigma _n\) und \(A_n\) fu&#x0308;r \(n \ge 5\) nicht auflo&#x0308;sbar.<br />
+(\(A_n &lt; \Sigma _n\) ist die Untergruppe der geraden Permutationen.)
+</p>
+
+<p>
+<em>Bemerkung</em>: Man kann zeigen, dass \(A_n\) sogar einfach fu&#x0308;r \(n \ge 5\) ist.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Theorem</em> (<span class="textsl" >Ko&#x0308;rpererw. auf&#x202f;lo&#x0308;sbar \(\Rightarrow \) Galoisgrp. auf&#x202f;lo&#x0308;sbar</span>):</span><br />
+Sei \(L/K\) eine endliche Ko&#x0308;rpererweiterung mit \(\Char K = 0\). Dann gilt (a) \(\Rightarrow \) (b), wobei:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f13"><p>\(L/K\) ist durch Radikale auflo&#x0308;sbar.
+</p>
+</li>
+<li class="list-item-f14"><p>Es gibt eine endliche Galoiserweiterung \(M/K\) mit \(M \supset L\), sodass \(\Gal (M/K)\) auflo&#x0308;sbar ist.
+</p>
+</li>
+</ul>
+
+<p>
+<em>Bemerkung</em>: Es gilt auch die Umkehrung (b) \(\Rightarrow \) (a), wobei aber die erwa&#x0308;hnte Umkehrung des obigen Lemmas beno&#x0308;tigt wird.
+</p>
+
+<p>
+<em>Bemerkung</em>: Wie wendet man dieses Theorem bei unbekanntem \(M\) an?<br />
+Gegeben seien \(f(x) \in K[x]\) und \(L\) der Zerfa&#x0308;llungsko&#x0308;rper von \(f(x)\) u&#x0308;ber \(K\). Aufgrund \(\Char K = 0\) ist \(L/K\) separabel, also galoissch.<br />
+Angenommen, \(L/K\) ist durch Radikale auflo&#x0308;sbar. Dann folgt aus dem Hauptsatz der Galoistheorie und obigem Satz, dass \(\Gal (L/K) \simeq \Gal (M/K)/\Gal (M/L)\).<br />
+Ist \(\Gal (M/K)\) auflo&#x0308;sbar, so ist auch \(\Gal (L/K)\) auflo&#x0308;sbar (allgemein gilt: gibt es einen surjektiven Gruppenhomomorphismus \(G \rightarrow \overline {G}\) mit \(G\) auflo&#x0308;sbar, so ist
+auch \(\overline {G}\) auflo&#x0308;sbar, da aus \(D^n(G) = \{e\}\) folgt, dass \(D^n(\overline {G}) = \{\overline {e}\}\), weil \([\overline {g}, \overline {h}] = \overline {[g, h]}\)).<br />
+Ist also \(L/K\) durch Radikale auflo&#x0308;sbar, so muss \(\Gal (L/K)\) auflo&#x0308;sbar sein. Im Umkehrschluss kann eine Gleichung mit nicht auflo&#x0308;sbarer Galoisgruppe nicht durch Radikale auflo&#x0308;sbar
+sein.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Proposition</em> (<span class="textsl" >bestimmte Polynome in \(\rational [x]\) sind nicht auf&#x202f;lo&#x0308;sbar</span>):</span> Sei \(f(x) \in \rational [x]\) irreduzibel vom
+Grad \(5\), sodass \(f(x)\) in \(\complex \) genau drei reelle Nullstellen besitzt.<br />
+Dann ist die Galoisgruppe von \(f(x)\) (d.&#x202f;h. die Galoisgruppe des Zerfa&#x0308;llungsko&#x0308;rpers von \(f(x)\) u&#x0308;ber \(\rational \)) nicht auflo&#x0308;sbar, insbesondere ist \(f(x)\) nicht durch
+Radikale auflo&#x0308;sbar.
+</p>
+
+<p>
+<em>Bemerkung</em>: Ein Beispiel fu&#x0308;r ein solches Polynom ist \(f(x) = x^5 - 4x + 2 \in \rational [x]\) (irreduzibel nach Eisenstein). Das Polynom \(f(x) - 2 = x^5 - 4x = x(x^2 - 2)(x^2 + 2)\) hat drei
+reelle Nullstellen (na&#x0308;mlich \(0\) und \(\pm \sqrt {2}\)) und zwei komplexe. Um die Frage zu beantworten, ob dies fu&#x0308;r \(f(x)\) auch gilt, ko&#x0308;nnen die Extrempunkte bestimmt werden. \(\frac
+{d}{dx}(f(x) - 2) = f’(x) = 5x^4 - 4 = 0\) gilt fu&#x0308;r \(x = \pm \sqrt [4]{\frac {4}{5}}\). Der Wert von \(f(x) - 2\) fu&#x0308;r diese \(x\) ist gro&#x0308;ßer bzw. kleiner als \(\pm 2\), d.&#x202f;h.
+auch \(f(x)\) hat \(3\) reelle und zwei komplexe Nullstellen (der Abstand der Extrempunkte zur \(x\)-Achse ist gro&#x0308;ßer als die Verschiebung). Somit ist \(f(x)\) nach der Proposition nicht auflo&#x0308;sbar und es gibt
+keine allgemeine Formel fu&#x0308;r Lo&#x0308;sungen polynomialer Gleichungen.
+</p>
+
+
+
+<h2 id="der-fundamentalsatz-der-algebra">Der Fundamentalsatz der Algebra</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Man kann den Fundamentalsatz der Algebra tatsa&#x0308;chlich algebraisch beweisen (zusa&#x0308;tzlich z.&#x202f;B. zum naiv-analytischen, zum komplex-analytischen und zum topologischen Beweis).
+Dazu verwendet man nur ein wenig elementare Analysis:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f15"><p>Jedes Polynom \(f(x) \in \real [x]\) mit ungeradem Grad besitzt eine reelle Nullstelle.
+</p>
+</li>
+<li class="list-item-f16"><p>Jede positive reelle Zahl besitzt eine Quadratwurzel (d.&#x202f;h. \(f(x) = x^2\) hat das Bild \(\real _{\ge 0}\)).
+</p>
+</li>
+</ul>
+
+<p>
+Die Aussagen folgen beide aus dem Zwischenwertsatz (Vollsta&#x0308;ndigkeit von \(\real \)).
+</p>
+
+<p>
+<span class="uline" ><em>Theorem</em> (<span class="textsl" >Fundamentalsatz der Algebra</span>):</span><br />
+Der Ko&#x0308;rper \(\complex \) der komplexen Zahlen ist algebraisch abgeschlossen.
+</p>
+
+<a id="algebra-autofile-last"></a>
+{% endraw %}
+</div>
+{:/nomarkdown}

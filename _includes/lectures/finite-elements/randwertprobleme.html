@@ -1,0 +1,2603 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\newcommand {\B }{\mathcal {B}}\)
+
+\(\newcommand {\BB }{\mathbb {B}}\)
+
+\(\newcommand {\DD }{\mathbb {D}}\)
+
+\(\newcommand {\e }{\mathrm {e}}\)
+
+\(\renewcommand {\L }{\mathcal {L}}\)
+
+\(\renewcommand {\O }{\mathcal {O}}\)
+
+\(\newcommand {\Q }{\mathcal {Q}}\)
+
+\(\newcommand {\R }{\mathcal {R}}\)
+
+\(\newcommand {\grad }{\operatorname {grad}}\)
+
+\(\renewcommand {\div }{\operatorname {div}}\)
+
+\(\newcommand {\const }{\operatorname {const}}\)
+
+\(\newcommand {\supp }{\operatorname {supp}}\)
+
+\(\newcommand {\dist }{\operatorname {dist}}\)
+
+\(\newcommand {\trace }{\operatorname {trace}}\)
+
+\(\renewcommand {\theta }{\vartheta }\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<p>
+
+</p>
+
+
+<p>
+Im Folgenden geht es um die Approximation der typischen Randwertprobleme. Im Allgemeinen hat dabei die DGL fu&#x0308;r die Lo&#x0308;sung \(u\) eine schwache Formulierung als Variationsproblem \(a(u, v) = \lambda
+(v)\), \(v \in H\), wobei \(H\) ein Hilbertraum ist, in dem die Randbedingungen verarbeitet sind. Die Ritz-Galerkin-Approximation \(u_h = \sum _{i \in I} u_i B_i\) erha&#x0308;lt man einfach durch Ersetzung von \(u\)
+durch \(u_h\) und von \(v\) durch die Basisfunktionen \(B_k\).
+</p>
+
+
+
+<h2 id="wesentliche-randbedingungen">Wesentliche Randbedingungen</h2>
+
+</p>
+
+
+<p>
+Wesentliche Randbedingungen sind Randbedingungen, die in die FE-Unterra&#x0308;ume eingearbeitet werden mu&#x0308;ssen und daher eine Gewichtsfunktion beno&#x0308;tigen. Dagegen sind natu&#x0308;rliche
+Randbedingungen automatisch durch die Lo&#x0308;sungen der Variationsprobleme erfu&#x0308;llt und erlauben eine einfachere Approximation.
+</p>
+
+<p>
+<b><span class="textsc" >Poisson</span>-Problem mit inhomogenen <span class="textsc" >Dirichlet</span>-Randbedingungen</b>: Das typische Modellproblem fu&#x0308;r wesentliche Randbedingungen ist das
+<em><span class="dashuline" ><span class="textsc" >Poisson</span>-Problem mit inhomogenen<br />
+<span class="textsc" >Dirichlet</span>-Randbedingungen</span></em>:
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                             −∆ϕ = f in D,                                        ϕ = g auf ∂ D.
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+-\Delta \varphi = f \text { in } D,\quad \varphi = g \text { auf } \partial D.
+\end{align*}
+
+</p>
+
+<p>
+Durch Setzen von \(\varphi = u + \widetilde {g}\) ko&#x0308;nnen die inhomogenen Randbedingungen eliminiert werden, wobei \(u \in H_0^1(D)\) und \(\widetilde {g}\) eine Erweiterung von \(g\) auf \(D\) ist.
+Durch Multiplikation der DGL mit \(v \in H_0^1(D)\) und partielle Integration erha&#x0308;lt man mit dem Satz von Lax-Milgram folgende Aussage.
+</p>
+
+<p>
+<b><span class="textsc" >Dirichlet</span>-Problem</b>: Das <em><span class="dashuline" >inhomogene <span class="textsc" >Dirichlet</span>-Problem</span></em> mit zugeho&#x0308;riger Bilinearform und
+zugeho&#x0308;rigem linearen Funktional
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                                 
+                                                                                    a(u, v) :=               grad u grad v,                                  λ(v) :=                      ( f v − grad e
+                                                                                                                                                                                                       g grad v)
+                                                                                                         D                                                                            D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+a(u, v) := \int _D \grad u \grad v,\quad \lambda (v) := \int _D (fv - \grad \widetilde {g} \grad v)
+\end{align*}
+hat eine eindeutige Lo&#x0308;sung \(\varphi = u + \widetilde {g}\) mit \(u \in H_0^1(D)\), wenn \(f\) und \(\grad \widetilde {g}\) quadrat-integrierbar sind.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+Fu&#x0308;r die Ritz-Galerkin-Approximation \(a(u_h, B_i) = \lambda (B_i)\), \(i \in I\), kann jeder der Ra&#x0308;ume \(w\BB _h\), \(w^\e \BB _h\) und \(w\BB _h(\DD )\) verwendet werden, wobei \(w\) eine
+Gewichtsfunktion der Ordnung \(1\) ist, die auf dem ganzen Rand \(\partial D\) verschwindet. Die einfacheren gewichteten Splines \(w\BB _h\) sind fu&#x0308;r kleine Systeme gut geeignet, wo Stabilita&#x0308;t keine große
+Rolle spielt. Hierarchische Verfeinerung wird bei Lo&#x0308;sungen mit Singularita&#x0308;ten empfohlen.
+</p>
+
+<p>
+Fu&#x0308;r die Berechnung der rechten Seite des Ritz-Galerkin-Systems ist eine Erweiterung \(\widetilde {g}\) der Randdaten no&#x0308;tig. Wenn kein exakter analytischer Ausdruck verfu&#x0308;gbar ist, kann eine
+Linearkombination von B-Splines
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                              X
+                                                                                                                                 g≈e
+                                                                                                                                 e gh :=                                  g k bk
+                                                                                                                                                              k∈∂ K
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\widetilde {g} \approx \widetilde {g}_h := \sum _{k \in \partial K} g_k b_k
+\end{align*}
+verwendet werden, die durch die Minimierung von \(\int _{\partial D} |g - \widetilde {g}_h|^2\) definiert ist. Die Menge \(\partial K\) entha&#x0308;lt all die Indizes \(k\), fu&#x0308;r die \(b_k\) auf \(\partial
+D\) nicht verschwindet. Bei Gebieten, die durch die R-Methode definiert sind, kann sogenannte <em><span class="dashuline" >transfinite Interpolation</span></em> verwendet werden.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Approximationsfehler fu&#x0308;r das <span class="textsc" >Dirichlet</span>-Problem</b>: Wenn der Rand, die Gewichtsfunktion und die Daten \(f, g\) glatt sind, approximieren WEB-Splines mit optimaler
+Approximationsordnung. Aus Céas Ungleichung und der Ungleichung von Jackson folgt
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                                     keh k1  hn kukn+1 .
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\norm {e_h}_1 \preceq h^n \norm {u}_{n+1}.
+\end{align*}
+Fu&#x0308;r den \(L^2\)-Fehler gewinnt man durch das Aubin-Nitsche-Dualita&#x0308;tsprinzip einen Faktor \(h\) und erha&#x0308;lt
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                                 keh k0  hn+1 kukn+1
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\norm {e_h}_0 \preceq h^{n+1} \norm {u}_{n+1}
+\end{align*}
+(die Konstanten ha&#x0308;ngen von \(D\), \(w\) und \(n\) ab).
+</p>
+
+
+
+<h2 id="natuerliche-randbedingungen">Natürliche Randbedingungen</h2>
+
+</p>
+
+
+<p>
+<b><span class="textsc" >Neumann</span>-Problem</b>: Das <em><span class="dashuline" ><span class="textsc" >Neumann</span>-Problem</span></em> lautet
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                         −∆u = f in D,                                       ∂ ⊥ u = g auf ∂ D,
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+-\Delta u = f \text { in } D,\quad \partial ^\perp u = g \text { auf } \partial D,
+\end{align*}
+wobei \(\partial ^\perp \) die Normalenableitung bezeichnet, d.&#x202f;h. \(\partial ^\perp u = \xi \grad u\) mit \(\xi \) der nach außen zeigenden Einheitsnormalen zu \(\partial D\).
+</p>
+
+<p>
+<b>Kompatibilita&#x0308;tsbedingungen</b>: Integriert man die Gleichung \(-\Delta u = f\), so erha&#x0308;lt man mit der Formel \(\int _D \partial _\nu u = \int _{\partial D} \xi _\nu u\)
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                         
+                                                                                                                             f =−                     ∆u = −                           ∂ ⊥ u,
+                                                                                                                         D                       D                             ∂D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\int _D f = -\int _D \Delta u = -\int _{\partial D} \partial ^\perp u,
+\end{align*}
+d.&#x202f;h. damit u&#x0308;berhaupt eine Lo&#x0308;sung existiert, mu&#x0308;ssen die Daten die <em><span class="dashuline" >Kompatibilita&#x0308;tsbedingungen</span></em>
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                 
+                                                                                                                                                 f =−                         g
+                                                                                                                                             D                        ∂D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\int _D f = -\int _{\partial D} g
+\end{align*}
+erfu&#x0308;llen.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Herleitung der schwachen Formulierung</b>: Durch Multiplikation der Gleichung mit einer Testfunktion \(v\) und partielle Integration
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                                                           
+                                                                                                                                                                                            ⊥
+                                                                                        −           (∆u)v =                          grad u grad v −                                      (∂ u)v =                    fv
+                                                                                                D                                D                                                ∂D                              D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+-\int _D (\Delta u) v = \int _D \grad u \grad v -\int _{\partial D} (\partial ^\perp u) v = \int _D fv
+\end{align*}
+(\(v\) verschwindet hier nicht auf dem Rand) erha&#x0308;lt man die schwache Formulierung
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                                    
+                                                                                                                     grad u grad v =                                      fv+                      g v,
+                                                                                                                 D                                                    D                    ∂D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\int _D \grad u \grad v = \int _D fv + \int _{\partial D} gv,
+\end{align*}
+wobei die Randbedingungen auf „natu&#x0308;rliche“ Weise auf der rechten Seite eingesetzt wurden. Die rechte Seite ist ein beschra&#x0308;nktes, lineares Funktional \(\lambda \), was man mit \(\norm {u}_{0,\partial D}
+\preceq \norm {u}_1\) (die Beschra&#x0308;nkung auf den Rand ist eine beschra&#x0308;nkte Abbildung von \(H^1(D)\) nach \(L^2(\partial D)\)) und der Ungleichung von Cauchy-Schwarz leicht zeigen kann. Die
+Bilinearform \(a\) auf der linken Seite ist auch beschra&#x0308;nkt auf \(H^1\) (Cauchy-Schwarz).
+</p>
+
+<p>
+Um eine Eindeutigkeitsaussage fu&#x0308;r die Lo&#x0308;sbarkeit des Variationsproblems zu erhalten, muss man jedoch einen anderen Raum verwenden, da in \(H^1\) die Summe \(u + c\) ebenfalls eine Lo&#x0308;sung ist,
+wenn \(u\) eine Lo&#x0308;sung ist – die Bilinearform ist nicht nach unten beschra&#x0308;nkt, weil sie auf Konstanten verschwindet (beim Dirichlet-Problem hat \(H_0^1\) keine Konstanten ungleich null zugelassen). Dazu geht
+man zum Unterraum
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                                          
+                                                                                                                     H⊥1         := u ∈ H                     1
+                                                                                                                                                                              u=0
+                                                                                                                                                                          D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+H_\perp ^1 := \left \{u \in H^1 \;\left |\; \int _D u = 0\right .\right \}
+\end{align*}
+u&#x0308;ber. Mit der Projektion
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                             Á 
+                                                                                                                             P0 u :=                         u      1
+                                                                                                                                                         D                     D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+P_0 u := \left (\int _D u\right )\left /\left (\int _D 1\right )\right .
+\end{align*}
+auf Konstanten, die auf \(H_\perp ^1\) gleich null ist, erha&#x0308;lt man mit dem Bramble-Hilbert-Lemma
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                         kuk20 = ku − P0 uk20  |u|21 = a(u, u),
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\norm {u}_0^2 = \norm {u - P_0 u}_0^2 \preceq |u|_1^2 = a(u, u),
+\end{align*}
+was die Elliptizita&#x0308;t von \(a\) zeigt. Somit kann man den Satz von Lax-Milgram anwenden.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b><span class="textsc" >Neumann</span>-Problem</b>:<br />
+Das <em><span class="dashuline" ><span class="textsc" >Neumann</span>-Problem</span></em> mit zugeho&#x0308;riger Bilinearform und zugeho&#x0308;rigem linearen Funktional
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                                                            
+                                                                                       a(u, v) :=                        grad u grad v,                               λ(v) :=                      fv+                gv
+                                                                                                                     D                                                                         D              ∂D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+a(u, v) := \int _D \grad u \grad v,\quad \lambda (v) := \int _D fv + \int _{\partial D} gv
+\end{align*}
+hat eine eindeutige Lo&#x0308;sung \(u \in H_\perp ^1\), wenn die Kompatibilita&#x0308;tsbedingung
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                 
+                                                                                                                                                 f =−                         g
+                                                                                                                                             D                        ∂D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\int _D f = -\int _{\partial D} g
+\end{align*}
+erfu&#x0308;llt ist sowie \(f\) und \(g\) quadrat-integrierbar sind.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>schwache und klassische Lo&#x0308;sungen des <span class="textsc" >Neumann</span>-Problems</b>:<br />
+Fu&#x0308;r \(f, g \in L^2(D)\) haben die Variationsgleichungen
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                    
+                                                                                 a(u, v) =           grad u grad v =                                     fv+                      g v = λ(v),                     v ∈ H⊥1 (D),
+                                                                                                 D                                                   D                    ∂D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+a(u, v) = \int _D \grad u \grad v = \int _D fv + \int _{\partial D} gv = \lambda (v),\quad v \in H_\perp ^1(D),
+\end{align*}
+eine eindeutige schwache Lo&#x0308;sung \(u \in H_\perp ^1(D)\). Ist zusa&#x0308;tzlich \(u\) glatt und die Kompatibilita&#x0308;tsbedingung \(\int _D f = -\int _{\partial D} g\) erfu&#x0308;llt, so gilt
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                             −∆u = f in D,                                        u = g auf ∂ D,
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+-\Delta u = f \text { in } D,\quad u = g \text { auf } \partial D,
+\end{align*}
+d.&#x202f;h. \(u\) ist die klassische Lo&#x0308;sung.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b><span class="textsc" >Ritz</span>-<span class="textsc" >Galerkin</span>-Approximation des <span class="textsc" >Neumann</span>-Problems</b>: Sei die Kompatibilita&#x0308;tsbedingung \(\int _D f
+= -\int _{\partial D} g\) erfu&#x0308;llt und \(u \in H_\perp ^1(D)\) glatt, wobei \(u\) die Lo&#x0308;sung des Neumann-Problems \(\forall _{v \in H_\perp ^1(D)}\; a(u, v) = \lambda (v)\). Dann hat der
+Fehler einer beliebigen Ritz-Galerkin-Approximation \(u_h\) aus den Ra&#x0308;umen \(\BB _h\) oder \({}^\e \BB _h\) (WEB-Splines mit \(w = 1\)) optimale Fehlerordnung:
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                              eh kν,D = O (hn+1−ν ),
+                                                                                                         ku − u                                                                       ν = 0, 1,
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\norm {u - \widetilde {u}_h}_{\nu ,D} = \O (h^{n+1-\nu }),\quad \nu = 0, 1,
+\end{align*}
+wobei \(\widetilde {u}_h\) die Projektion von \(u_h\) auf \(H_\perp ^1(D)\) bezeichnet.
+</p>
+
+
+
+<h2 id="gemischte-probleme-mit-variablen-koeffizienten">Gemischte Probleme mit variablen Koeffizienten</h2>
+
+</p>
+
+
+<p>
+Das folgende Problem ist eine Verallgemeinerung der beiden Probleme, die weiter oben beschrieben wurden. Die Beschra&#x0308;nkung auf homogene Dirichlet-Randbedingungen stellt keine Einschra&#x0308;nkungen dar (siehe
+oben).
+</p>
+
+<p>
+<b>allgemeines elliptisches Problem 2. Ordnung</b>:<br />
+Ein <em><span class="dashuline" >allgemeines elliptisches Problem 2. Ordnung</span></em> lautet
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                     − div(Agrad u) + a0 u = f                                                    in D,
+                                                                                                                                                             u=0                  auf Γ ,
+                                                                                                                         Agrad uξ + αu = g                                        auf ∂ D \ Γ .
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+-\div (A \grad u) + a_0 u &amp;= f \quad \text {in } D,\\ u &amp;= 0 \quad \text {auf } \Gamma ,\\ A \grad u \xi + \alpha u &amp;= g \quad \text {auf } \partial D \setminus \Gamma .
+\end{align*}
+Dabei ist \(A(x)\) eine symmetrische, positiv definite Matrix, die auf \(\overline {D}\) glatt ist, \(a_0\) und \(\alpha \) sind beschra&#x0308;nkte, nicht-negative Funktionen, \(\Gamma \subset \partial D\) ist eine
+Teilmenge des Rands mit nicht-verschwindendem \((m - 1)\)-dimensionalem Maß und \(\xi \) ist die Einheitsaußennormale fu&#x0308;r \(\partial D\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Beispiel</b>: Ein ha&#x0308;ufig verwendeter Fall ist \(A = a(x) \cdot E\), d.&#x202f;h. \(A\) ist ein Vielfaches der Einheitsmatrix. In diesem Fall ist na&#x0308;mlich \(A \grad u = a \grad u\), d.&#x202f;h. \(\div
+(A \grad u) = \sum _\nu \partial _\nu (a \grad u)_\nu = a \Delta u + \grad a \grad u\).
+</p>
+
+<p>
+<b>Gegenbeispiel</b>: Die Annahmen u&#x0308;ber die Vorzeichen von \(a_0\) und \(\alpha \) sind fu&#x0308;r die Existenz einer eindeutigen Lo&#x0308;sung notwendig. Betrachtet man \(-u’’ + a_0 u = 0\) mit \(u(0)
+= 0\) und \(u’(1) + \alpha u(1) = 1\), so sieht man, dass es fu&#x0308;r bestimmte Werte von \(a_0\) und \(\alpha \) keine Lo&#x0308;sung gibt, wenn man \(a_0, \alpha \ge 0\) nicht voraussetzt.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Herleitung der schwachen Formulierung</b>: Durch Multiplikation mit \(v\) mit \(v = 0\) auf \(\Gamma \) und partielle Integration erha&#x0308;lt man
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                                           
+                                                                                                                 (− div(Agrad u)v + a0 uv) =                                                           f v.
+                                                                                                             D                                                                                     D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\int _D (-\div (A \grad u)v + a_0 u v) = \int _D fv.
+\end{align*}
+Das Integral des ersten Summanden ist gleich \(-\int _D \div (A \grad u) v = -\sum _\nu \int _D \partial _\nu (A \grad u)_\nu v = \sum _\nu \int _D (A \grad u)_\nu \partial _\nu v - \sum _\nu \int
+_{\partial D} (A \grad u)_\nu v \xi _\nu = \int _D A \grad u \grad v - \int _{\partial D} (A \grad u) v \xi \).<br />
+Wegen \((A \grad u) v \xi = gv - \alpha uv\) erha&#x0308;lt man folgende schwache Formulierung.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Lo&#x0308;sung von allgemeinen elliptischen Problemen 2. Ordnung</b>: Ein allgemeines elliptisches Problem 2. Ordnung besitzt die Bilinearform und das lineare Funktional
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+                                                                                                                                                                                                                                                
+                                                                              a(u, v) :=            (Agrad u grad v + a0 uv) +                                                    αuv,                    λ(v) :=                          fv+                  g v.
+                                                                                                D                                                                     ∂ D\Γ                                                            D               ∂ D\Γ
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+a(u, v) := \int _D (A \grad u \grad v + a_0 uv) + \int _{\partial D \setminus \Gamma } \alpha uv,\quad \lambda (v) := \int _D fv + \int _{\partial D \setminus \Gamma } gv.
+\end{align*}
+Es besitzt eine eindeutige schwache Lo&#x0308;sung \(u \in H_\Gamma ^1\), wenn \(f\) und \(g\) quadrat-integrierbar sind.<br />
+Dabei ist
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                                    HΓ1 := {u ∈ H 1 | u = 0 auf Γ }.
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+H_\Gamma ^1 := \{u \in H^1 \;|\; u = 0 \text { auf } \Gamma \}.
+\end{align*}
+
+</p>
+
+
+
+<h2 id="biharmonische-gleichung">Biharmonische Gleichung</h2>
+
+</p>
+
+
+<p>
+<b>eingespannte Platte</b>: Das folgende Problem tritt zum Beispiel bei einer horizontal eingespannten Platte auf, auf die eine transversale Kraft \(f\) wirkt. Die Position \(u\) der Platte bestimmt sich durch Minimierung der
+potentiellen Energie
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                                                                              
+                                                                                       1                                                                                                                              
+                                                                                Q(u) =                                   2
+                                                                                                             |∆u| + 2(1 − ν)(|∂1 ∂2 u|                                2
+                                                                                                                                                                          − (∂12 u)(∂22 u)                                −            f u,       u ∈ H02 ,
+                                                                                       2                D                                                                                                                          D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\Q (u) = \frac {1}{2} \int _D \left (|\Delta u|^2 + 2(1 - \nu ) (|\partial _1 \partial _2 u|^2 - (\partial _1^2 u) (\partial _2^2 u)\right ) - \int _D fu,\quad u \in H_0^2,
+\end{align*}
+wobei \(H_0^2 = \{u \in H^2 \;|\; u = \partial ^\perp u = 0 \text { auf } \partial D\}\) und \(\nu = \lambda /(2(\lambda + \mu )) \in (0, 1/2)\) der <em><span class="dashuline" ><span
+class="textsc" >Poisson</span>Koeffizient</span></em> der Platte ist, der durch die <em><span class="dashuline" ><span class="textsc" >Lamé</span>-Konstanten</span></em> \(\lambda \) und \(\mu \) bestimmt ist.
+Es gilt
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                                                        
+                                                                                                        (∂1 ∂2 u)(∂1 ∂2 u) = −                               (∂12 ∂2 u)(∂2 u) =                                   (∂12 u)(∂22 u),
+                                                                                                    D                                                    D                                                    D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\int _D (\partial _1 \partial _2 u) (\partial _1 \partial _2 u) = -\int _D (\partial _1^2 \partial _2 u) (\partial _2 u) = \int _D (\partial _1^2 u) (\partial _2^2 u),
+\end{align*}
+da aus \(u = \partial ^\perp u = 0\) auf \(\partial D\) folgt, dass \(\grad u = 0\) auf \(\partial D\). Dadurch vereinfacht sich das Funktional zu
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                                      
+                                                                                                                                                     1
+                                                                                                                                     Q(u) =                       |∆u|2 −                         f u.
+                                                                                                                                                     2        D                               D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\Q (u) = \frac {1}{2} \int _D |\Delta u|^2 - \int _D fu.
+\end{align*}
+
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>biharmonisches Randwertproblem</b>: Das <em><span class="dashuline" >biharmonische Randwertproblem</span></em> lautet
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                     ∆2 u = f in D,                           u = ∂ ⊥ u = 0 auf ∂ D.
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\Delta ^2 u = f \text { in } D,\quad u = \partial ^\perp u = 0 \text { auf } \partial D.
+\end{align*}
+
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Herleitung der schwachen Formulierung</b>: Durch Multiplikation mit \(v\) mit \(v = \partial ^\perp v = 0\) auf \(\partial D\) und partielle Integration erha&#x0308;lt man
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                         
+                                                                                                                                                    (∆2 u)v =                         f v.
+                                                                                                                                               D                              D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\int _D (\Delta ^2 u) v = \int _D fv.
+\end{align*}
+Das erste Integral ist gleich \(\int _D (\Delta (\Delta u)) v = \sum _\nu \int _D (\partial _\nu ^2 (\Delta u)) v\)<br />
+\(= -\sum _\nu \int _D (\partial _\nu (\Delta u)) (\partial _\nu v) + \sum _\nu \int _{\partial D} (\partial _\nu (\Delta u)) v \xi _\nu \)<br />
+\(= \int _D (\Delta u) (\Delta v) - \int _{\partial D} (\Delta u) \grad v \xi + \int _{\partial D} \grad (\Delta u) v \xi = \int _D (\Delta u) (\Delta v)\) wegen \(v = \grad v \xi = 0\).
+</p>
+
+<p>
+Die Bilinearform \(a(u, v) = \int _D (\Delta u) (\Delta v)\) ist elliptisch, da \(|a(u, v)| \le \norm {\Delta u}_0 \norm {\Delta v}_0 \le \norm {u}_2 \norm {v}_2\) nach der Ungleichung von Cauchy-Schwarz –
+fu&#x0308;r die untere Schranke benutzt man
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                                              
+                                                                                     a(u, u) =                      |∂12 u + ∂22 u|2 =                         |∂12 u|2 + 2|∂1 ∂2 u|2 + |∂22 u|2 = |u|22
+                                                                                                                D                                         D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+a(u, u) = \int _D |\partial _1^2 u + \partial _2^2 u|^2 = \int _D \left (|\partial _1^2 u|^2 + 2|\partial _1 \partial _2 u|^2 + |\partial _2^2 u|^2\right ) = |u|_2^2
+\end{align*}
+wegen \(\int _D (\partial _1^2 u)(\partial _2^2 u) = \int _D |\partial _1 \partial _2 u|^2\) (siehe oben). Aufgrund der Poincaré-Friedrichs-Ungleichung
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                                     X                            X                                   X
+                                                                                     |u|20  |u|21 ,                 |u|21 =               |∂ν u|20                    |∂ν u|21 =                                        |∂µ ∂ν u|2 = |u|22 ,
+                                                                                                                                       ν                          ν                                   ν,µ         D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+|u|_0^2 \preceq |u|_1^2,\quad |u|_1^2 = \sum _\nu |\partial _\nu u|_0^2 \preceq \sum _\nu |\partial _\nu u|_1^2 = \sum _{\nu ,\mu } \int _D |\partial _\mu \partial _\nu u|^2 = |u|_2^2,
+\end{align*}
+folgt \(\norm {u}_2^2 = |u|_0^2 + |u|_1^2 + |u|_2^2 \preceq |u|_2^2 = a(u, u)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Lo&#x0308;sung des biharmonischen Randwertproblems</b>: Das biharmonische Randwertproblem besitzt die Bilinearform und das lineare Funktional
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                                                             
+                                                                                                                    a(u, v) :=                     (∆u)(∆v),                      λ(v) :=                             f v.
+                                                                                                                                               D                                                                  D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+a(u, v) := \int _D (\Delta u) (\Delta v),\quad \lambda (v) := \int _D fv.
+\end{align*}
+Es besitzt eine eindeutige schwache Lo&#x0308;sung \(u \in H_0^2\), wenn \(f\) quadrat-integrierbar ist.
+</p>
+
+
+
+<h2 id="lineare-elastizitaet">Lineare Elastizität</h2>
+
+</p>
+
+
+<p>
+Elastizita&#x0308;ts-Simulationen waren einer der Auslo&#x0308;ser fu&#x0308;r die Entwicklung der FE-Methode und stellen heute noch einen wichtigen Zweig der FE-Analysis dar. Dabei wird ein elastischer Ko&#x0308;rper,
+der ein Volumen \(\overline {D}\) belegt, an einem Teil \(\Gamma \) des Rands fixiert und einer Volumenkraft auf \(D\) bzw. einer Randkraft auf \(\partial D \setminus \Gamma \) mit Dichten \((f_1, f_2, f_3)\) bzw.
+\((g_1, g_2, g_3)\) ausgesetzt. Diese Kra&#x0308;fte bewirken kleine Deformationen des Ko&#x0308;rpers, die durch eine Verschiebung \(u(x) \in \real ^3\) der Materialpunkte \(x \in D\) beschrieben werden.
+Normalerweise ist \(u\) sehr klein, gro&#x0308;ßere Verschiebungen zeigen das Vorhandensein riesiger Kra&#x0308;fte an.
+</p>
+
+<p>
+<b><span class="textsc" >Lamé</span>-<span class="textsc" >Navier</span>-Gleichungen</b>: Die <em><span class="dashuline" ><span class="textsc" >Lamé</span>-<span class="textsc"
+>Navier</span>-Gleichungen der linearen Elastizita&#x0308;t</span></em> lauten
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                                    − div σ(u) = f                        in D,
+                                                                                                                                                      u=0                 auf Γ ,
+                                                                                                                                           σ(u)ξ = g                      auf ∂ D \ Γ .
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+-\div \sigma (u) &amp;= f \quad \text {in }D,\\ u &amp;= 0 \quad \text {auf } \Gamma ,\\ \sigma (u) \xi &amp;= g \quad \text {auf } \partial D \setminus \Gamma .
+\end{align*}
+Dabei ist
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                                    1
+                                                                                                                         "k,` (u) :=  (∂k u` + ∂` uk ),
+                                                                                                                                    2
+                                                                                                                        σk,` (u) := λ trace "(u)δk,` + 2µ"k,` (u)
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\varepsilon _{k,\ell }(u) &amp;:= \frac {1}{2} (\partial _k u_\ell + \partial _\ell u_k),\\ \sigma _{k,\ell }(u) &amp;:= \lambda \trace \varepsilon (u) \delta _{k,\ell } + 2\mu \varepsilon
+_{k,\ell }(u)
+\end{align*}
+fu&#x0308;r \(k, \ell = 1, 2, 3\), wobei \(\trace \varepsilon := \varepsilon _{1,1} + \varepsilon _{2,2} + \varepsilon _{3,3}\).
+</p>
+
+<p>
+Die Divergenz \(\div \sigma \) der Matrix \(\sigma \) ist zeilenweise definiert, d.&#x202f;h. \((\div \sigma )_k := \sum _\nu \partial _\nu \sigma _{\nu ,k}\). Die Konstanten \(\lambda \) und \(\mu \) sind die
+<em><span class="dashuline" ><span class="textsc" >Lamé</span>-Koeffizienten</span></em>, die die Elastizita&#x0308;tseigenschaften des Materials beschreiben. Die zweite Gleichung, die den <em><span
+class="dashuline" >Spannungstensor</span></em> \(\sigma \) mit dem <em><span class="dashuline" >Verzerrungstensor</span></em> \(\varepsilon \) (symmetrisierter Gradient) in Verbindung bringt, ist auch als
+<em><span class="dashuline" ><span class="textsc" >hooke</span>sches Gesetz</span></em> bekannt.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Herleitung der schwachen Formulierung</b>: Durch Multiplikation mit \(v\) mit \(v_\ell = 0\) auf \(\Gamma \) (\(\ell = 1, 2, 3\)) erha&#x0308;lt man
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                                     
+                                                                                                                                      −            (div σ(u))v =                              f v.
+                                                                                                                                               D                                          D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+-\int _D (\div \sigma (u)) v = \int _D fv.
+\end{align*}
+Ausgeschrieben ist die linke Seite gleich \(-\sum _\ell \int _D (\div \sigma (u))_\ell v_\ell = -\sum _{k,\ell } \int _D (\partial _k \sigma _{k,\ell }(u)) v_\ell \). Durch partielle Integration
+erha&#x0308;lt man \(\sum _{k,\ell } \int _D \sigma _{k,\ell }(u) (\partial _k v_\ell ) - \sum _{k,\ell } \int _{\partial D} \sigma _{k,\ell }(u) v_\ell \xi _k\). Der erste Summand ist gleich
+\(\frac {1}{2} \big (\sum _{k,\ell } \int _D \sigma _{k,\ell }(u) (\partial _k v_\ell ) + \sum _{k,\ell } \int _D \sigma _{k,\ell }(u) (\partial _\ell v_k)\big ) = \sum _{k,\ell } \int _D
+\sigma _{k,\ell }(u) \varepsilon _{k,\ell }(v)\) wegen \(\sigma \) symmetrisch (\(\sigma _{k,\ell } = \sigma _{\ell ,k}\)). Der zweite Summand ist gleich \(-\int _{\partial D \setminus \Gamma } \sigma
+(u) \xi v = -\int _{\partial D \setminus \Gamma } gv\) wegen \(v_\ell = 0\) auf \(\Gamma \). Damit erha&#x0308;lt man folgende Variationsform.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Elastizita&#x0308;tsproblem</b>: Die Lamé-Navier-Gleichungen besitzen die Variationsform mit der Bilinearform und dem linearen Funktional
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                                                                    
+                                                                                                    a(u, v) :=                       σ(u) : "(v),                  λ(v) :=                            fv+                              g v,
+                                                                                                                                 D                                                                D                        ∂ D\Γ
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+a(u, v) := \int _D \sigma (u):\varepsilon (v),\quad \lambda (v) := \int _D fv + \int _{\partial D \setminus \Gamma } gv,
+\end{align*}
+wobei
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                                                              3
+                                                                                                                                                              X
+                                                                                                                                           σ : " :=                     σk,` "k,` .
+                                                                                                                                                              k,`=1
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\sigma :\varepsilon := \sum _{k,\ell =1}^3 \sigma _{k,\ell } \varepsilon _{k,\ell }.
+\end{align*}
+Die schwache Formulierung besitzt eine eindeutige Lo&#x0308;sung \((u_1, u_2, u_3) \in H_\Gamma ^1(D)^3\), wenn<br />
+\(f \in L^2(D)^3\) und \(g \in L^2(\partial D \setminus \Gamma )^3\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+Weil der Integrand von \(a(u, v)\) nur Ableitungen erster Ordnung beinhaltet, ist die Beschra&#x0308;nktheit von \(a\) im Raum \((H_\Gamma ^1)^3\) einfach nachzuweisen, wobei der Raum mit der Produktnorm \(\norm
+{u}_1 := \left (\sum _{\nu =1}^3 \norm {u_\nu }_1^2\right )^{1/2}\) ausgestattet ist. Die Abscha&#x0308;tzung nach unten ist allerdings viel schwieriger, fu&#x0308;r sie wird die sog. <em><span class="dashuline"
+><span class="textsc" >Korn</span>-Ungleichung</span></em> beno&#x0308;tigt.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b><span class="textsc" >Ritz</span>-<span class="textsc" >Galerkin</span>-Approximiation des <span class="textsc" >Lamé</span>-<span class="textsc" >Navier</span>-Systems</b>:<br />
+Wenn man WEB-Splines als Basis fu&#x0308;r den FE-Teilraum verwendet, dann wird jede Komponente \(u_\nu \) des Vektors \(u\) separat durch eine Linearkombination
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                  X
+                                                                                                                                               (uh )ν =                   ui,ν Bi
+                                                                                                                                                                  i∈I
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+(u_h)_\nu = \sum _{i \in I} u_{i,\nu } B_i
+\end{align*}
+approximiert, wobei \(B_i|_\Gamma = 0\). Man kann dies auch a&#x0308;quivalent schreiben als
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                      X
+                                                                               uh =         ui,ν Bi,ν ,                      Bi,1 := (Bi , 0, 0),                         Bi,2 := (0, Bi , 0),                                  Bi,3 := (0, 0, Bi ).
+                                                                                      i,ν
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+u_h = \sum _{i,\nu } u_{i,\nu } B_{i,\nu },\qquad B_{i,1} := (B_i, 0, 0),\quad B_{i,2} := (0, B_i, 0),\quad B_{i,3} := (0, 0, B_i).
+\end{align*}
+Bis auf die Doppelindizes erha&#x0308;lt man also die u&#x0308;bliche Form \(u_h = \sum _j u_j B_j\). Daher hat das Ritz-Galerkin-System \(GU = F\) Blockstruktur. Der Block \((k, i)\) von \(G\) ist die \((3 \times
+3)\)-Matrix mit Eintra&#x0308;gen
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                            
+                                                                                                                                    σ(Bi,ν ) : "(Bk,` ),                      `, ν = 1, 2, 3,
+                                                                                                                                D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\int _D \sigma (B_{i,\nu }):\varepsilon (B_{k,\ell }),\quad \ell , \nu = 1, 2, 3,
+\end{align*}
+und der \(k\)-te Block des Vektors \(F\) ist der \(3\)-Vektor mit Komponenten
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                            
+                                                                                                    f Bk,` +                          gBk,` =                 f ` Bk +                            g ` Bk ,                 ` = 1, 2, 3.
+                                                                                                D                           ∂ D\Γ                         D                           ∂ D\Γ
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\int _D f B_{k,\ell } + \int _{\partial D \setminus \Gamma } g B_{k,\ell } = \int _D f_\ell B_k + \int _{\partial D \setminus \Gamma } g_\ell B_k,\quad \ell = 1, 2, 3.
+\end{align*}
+Weil die Basisfunktionen \(B_{i,\nu }\) nur in einer Komponente nicht null sein ko&#x0308;nnen, vereinfachen sich die Tensoren \(\sigma \) und \(\varepsilon \) etwas. Beispielsweise gilt
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                              
+                                                                                                                                1                   1
+                                                                                                            ∂1 Bk               2 ∂2 Bk             2 ∂3 Bk
+                                                                                 "(Bk,1 ) =  21 ∂2 Bk                               0                0        ,             σ(Bi,1 ) = λ(∂1 Bi )I3 + 2µ"(Bi,1 )
+                                                                                                                                                              
+                                                                                                            1
+                                                                                                            2 ∂3 Bk                  0                0
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\varepsilon (B_{k,1}) = \begin{pmatrix}\partial _1 B_k &amp; \frac {1}{2} \partial _2 B_k &amp; \frac {1}{2} \partial _3 B_k\\ \frac {1}{2} \partial _2 B_k &amp; 0 &amp; 0\\ \frac {1}{2}
+\partial _3 B_k &amp; 0 &amp; 0\end {pmatrix},\quad \sigma (B_{i,1}) = \lambda (\partial _1 B_i) I_3 + 2\mu \varepsilon (B_{i,1})
+\end{align*}
+mit \(I_3\) der \((3 \times 3)\)-Einheitsmatrix.
+</p>
+
+
+
+<h2 id="plane-strain-und-plane-stress-modell">Plane-Strain- und Plane-Stress-Modell</h2>
+
+</p>
+
+
+<p>
+Die folgenden zwei Modelle sind Spezialfa&#x0308;lle der oben vorgestellten Elastizita&#x0308;tsgleichung.
+</p>
+
+<p>
+<b>Herleitung des Plane-Strain-Modells</b>: Beim <em><span class="dashuline" >Plane-Strain-Modell</span></em> (Modell der ebenen Verzerrung) geht man von einem konstanten, horizontalen Schnitt \(D\) aus, der
+horizontalen Kra&#x0308;ften ausgesetzt wird (d.&#x202f;h. keine vertikale Verschiebung). Unter diesen Voraussetzungen ist \(\varepsilon _{3,\ell } = \varepsilon _{\ell ,3} = 0\) fu&#x0308;r \(\ell = 1, 2, 3\).
+Das hookesche Gesetz vereinfacht sich zu
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                                                                                                       
+                                                                                    σ1,1        σ1,2                0                                                   1         0           0                                "1,1         "1,2        0
+                                                                                σ2,1           σ2,2                0  = λ("1,1 + "2,2 ) 0                                      1           0 + 2µ "2,1                                 "2,2        0 .
+                                                                                                                                                                                                                                                    
+
+                                                                                     0              0           σ3,3                                                    0         0           1                                 0             0         0
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\begin{pmatrix}\sigma _{1,1} &amp; \sigma _{1,2} &amp; 0\\\sigma _{2,1} &amp; \sigma _{2,2} &amp; 0\\ 0 &amp; 0 &amp; \sigma _{3,3}\end {pmatrix} = \lambda (\varepsilon _{1,1} + \varepsilon
+_{2,2}) \begin{pmatrix}1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1\end {pmatrix} + 2\mu \begin{pmatrix}\varepsilon _{1,1} &amp; \varepsilon _{1,2} &amp; 0\\ \varepsilon _{2,1} &amp;
+\varepsilon _{2,2} &amp; 0\\0 &amp; 0 &amp; 0\end {pmatrix}.
+\end{align*}
+Durch die Einfu&#x0308;hrung von
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                " := ("1,1 , "2,2 , "1,2 ),                       σ := (σ1,1 , σ2,2 , σ1,2 ),
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\underline {\varepsilon } := (\varepsilon _{1,1}, \varepsilon _{2,2}, \varepsilon _{1,2}),\quad \underline {\sigma } := (\sigma _{1,1}, \sigma _{2,2}, \sigma _{1,2}),
+\end{align*}
+sowie durch Umschreiben
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                                          Eν                                                     E
+                                                                                                                        λ=                          ,                         µ=                       ,
+                                                                                                                                    (1 + ν)(1 − 2ν)                                           2(1 + ν)
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\lambda = \frac {E\nu }{(1 + \nu )(1 - 2\nu )},\quad \mu = \frac {E}{2(1 + \nu )},
+\end{align*}
+der Lamé-Koeffizienten \(\lambda \) und \(\mu \) in Abha&#x0308;ngigkeit von dem <em><span class="dashuline" ><span class="textsc" >Poisson</span>-Verha&#x0308;ltnis</span></em> \(\nu \in (0, 1/2)\) und
+dem <em><span class="dashuline" ><span class="textsc" >Young</span>-Modulus</span></em> \(E &gt; 0\) erha&#x0308;lt man die zweidimensionale Spannungs-/Verzerrungsrelation
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                                                                                                  
+                                                                                                                                                                                              1−ν                          ν                  0
+                                                                                                                                                      E
+                                                                                    σ = Q strain ",                     Q strain :=                             ν                                                    1−ν                     0    .
+                                                                                                                                                                                                                                                  
+                                                                                                                                               (1 + ν)(1 − 2ν)
+                                                                                                                                                                 0                                                         0               1 − 2ν
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\underline {\sigma } = Q_{\text {strain}} \underline {\varepsilon },\quad Q_{\text {strain}} := \frac {E}{(1 + \nu )(1 - 2\nu )} \begin{pmatrix}1 - \nu &amp;\nu &amp;0\\\nu &amp;1 - \nu
+&amp;0\\0&amp;0&amp;1-2\nu \end {pmatrix}.
+\end{align*}
+Im elementweisen Produkt \(\sigma :\varepsilon \) taucht der gemischte Term \(\sigma _{1,2} \varepsilon _{1,2}\) doppelt auf, was in der Bilinearform beru&#x0308;cksichtigt werden muss.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Plane-Strain-Modell</b>: Wenn \(f\) und \(g\) quadrat-integrierbare Dichten von horizontalen Kra&#x0308;ften sind, die auf ein elastisches Objekt mit konstantem Querschnitt \(D\) und vertikaler Verschiebung \(u_3(x_1,
+x_2) = 0\) angewendet werden, dann ist
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                            u = (u1 , u2 ) ∈ (HΓ1 (D))2 ,                                     D ⊂ R2 ,
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+u = (u_1, u_2) \in (H_\Gamma ^1(D))^2,\quad D \subset \real ^2,
+\end{align*}
+bestimmt durch
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                         
+                                                                                                             " 0 (u)Q strain "(v) =                           fv+                             g v,                v ∈ (HΓ1 )2 ,
+                                                                                                         D                                                D                    ∂ D\Γ
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\int _D \underline {\varepsilon }’(u) Q_{\text {strain}} \underline {\varepsilon }(v) = \int _D fv + \int _{\partial D \setminus \Gamma } gv,\quad v \in (H_\Gamma ^1)^2,
+\end{align*}
+wobei \(\underline {\varepsilon }’ := (\varepsilon _{1,1}, \varepsilon _{2,2}, 2\varepsilon _{1,2})\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Herleitung des Plane-Stress-Modells</b>: Fu&#x0308;r das <em><span class="dashuline" >Plane-Stress-Modell</span></em> (Modell der ebenen Spannung) geht man von einem Objekt mit gleichma&#x0308;ßiger
+vertikaler Dicke aus, die verglichen mit der horizontalen Gro&#x0308;ße relativ klein ist. Man nimmt an, dass \(\sigma \) nicht von \(x_3\) abha&#x0308;ngt und dass \(\sigma _{3,\ell } = \sigma _{\ell ,3} = 0\)
+fu&#x0308;r \(\ell = 1, 2, 3\). Wie beim Plane-Strain-Modell erha&#x0308;lt man eine zweidimensionale Version des hookeschen Gesetzes. Zuna&#x0308;chst bemerkt man \(\varepsilon _{1,3} = \varepsilon _{3,1} =
+0 = \varepsilon _{2,3} = \varepsilon _{3,2}\). Im Allgemeinen ist \(\varepsilon _{3,3} \not = 0\), d.&#x202f;h. kleine vertikale Deformationen \(u_3(x) = \varepsilon _{3,3} x_3\) sind mo&#x0308;glich.
+Eingesetzt in die Gleichung \(\sigma _{3,3} = 0\) ergibt dies
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                                                       λ
+                                                                                                                                     "3,3 = −               ("1,1 + "2,2 ).
+                                                                                                                                                     λ + 2µ
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\varepsilon _{3,3} = -\frac {\lambda }{\lambda + 2\mu } (\varepsilon _{1,1} + \varepsilon _{2,2}).
+\end{align*}
+Wenn man die Lamé-Koeffizienten wieder durch das Poisson-Verha&#x0308;ltnis und den Young-Modulus ersetzt, erha&#x0308;lt man die Identita&#x0308;t
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                                                                                  
+                                                                                                                                                                                              1           ν               0
+                                                                                                                                                                    E 
+                                                                                                        σ = Q stress ",                    Q stress :=                   ν                               1               0 .
+                                                                                                                                                                                                                            
+                                                                                                                                                                  1 − ν2
+                                                                                                                                                                          0                               0        1−ν
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\underline {\sigma } = Q_{\text {stress}} \underline {\varepsilon },\quad Q_{\text {stress}} := \frac {E}{1 - \nu ^2} \begin{pmatrix} 1&amp;\nu &amp;0\\\nu &amp;1&amp;0\\0&amp;0&amp;1-\nu
+\end {pmatrix}.
+\end{align*}
+
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Plane-Stress-Modell</b>: Fu&#x0308;r das Plane-Stress-Modell gilt dasselbe wie fu&#x0308;r das Plane-Strain-Modell, wenn man \(Q_{\text {strain}}\) durch \(Q_{\text {stress}}\) ersetzt. Wenn \(f\) und \(g\)
+quadrat-integrierbare Dichten von horizontalen Kra&#x0308;ften sind, die auf ein elastisches Objekt mit konstanter vertikaler Dicke angewendet werden, und \(\sigma \) nur horizontale Komponenten besitzt, dann minimieren die
+ersten beiden Komponenten \((u_1, u_2)\) der Verschiebung das Energie-Funktional
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                                                    
+                                                                                                                     1
+                                                                                                                                    " 0 (u)Q stress "(u) −                        fu−                                 gu
+                                                                                                                     2       D                                                D                           ∂ D\Γ
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\frac {1}{2} \int _D \underline {\varepsilon }’(u) Q_{\text {stress}} \underline {\varepsilon }(u) - \int _D fu - \int _{\partial D \setminus \Gamma } gu
+\end{align*}
+u&#x0308;ber alle \(u \in (H_\Gamma ^1)^2\), wobei \(\underline {\varepsilon }’ := (\varepsilon _{1,1}, \varepsilon _{2,2}, 2\varepsilon _{1,2})\).
+</p>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

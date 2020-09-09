@@ -1,0 +1,1855 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\newcommand {\code }[1]{\lstinline [basicstyle=\ttfamily ]{#1}}\)
+
+\(\renewcommand {\O }{\ensuremath {\mathcal {O}}}\)
+
+\(\newcommand {\source }{\ensuremath {\operatorname {source}}}\)
+
+\(\newcommand {\target }{\ensuremath {\operatorname {target}}}\)
+
+\(\renewcommand {\num }{\ensuremath {\operatorname {num}}}\)
+
+\(\newcommand {\indeg }{\ensuremath {\operatorname {indeg}}}\)
+
+\(\newcommand {\mycap }{\ensuremath {\operatorname {cap}}}\)
+
+\(\newcommand {\cost }{\ensuremath {\operatorname {cost}}}\)
+
+\(\newcommand {\pot }{\ensuremath {\operatorname {pot}}}\)
+
+\(\newcommand {\ccost }{\ensuremath {\operatorname {ccost}}}\)
+
+\(\newcommand {\dcost }{\ensuremath {\operatorname {dcost}}}\)
+
+\(\newcommand {\icost }{\ensuremath {\operatorname {icost}}}\)
+
+\(\newcommand {\qed }{\hfill $\Box $}\)
+
+\(\newcommand {\fracsize }[1]{{\large #1}}\)
+
+\(\newcommand {\matrixsize }[1]{{\scriptsize #1}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  content:'1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  content:'2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  content:'3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  content:'4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  content:'–\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  content:'–\00a0\00a0';
+}
+.lwarp-contents li.list-item-f9::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f10::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f11::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f12::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f13::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f14::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f15::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f16::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f17::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f18::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f19::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f20::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f21::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f22::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f23::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f24::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f25::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f26::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f27::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f28::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f29::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f30::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+<h2 id="allgemeines-zu-graphen">Allgemeines zu Graphen</h2>
+
+</p>
+
+<p>
+<b>Graph</b>: Ein Graph \(G = (V, E, c)\) besteht aus einer Knotenmenge \(V\), einer Kantenmenge \(E\) und einer Kostenfunktion \(c: E \rightarrow \mathbb {R}\). Ist der Graph <b>ungerichtet</b>
+bzw. <b>gerichtet</b>, so sind die Elemente von \(E\) der Form \(\{a, b\}\) bzw. \((a, b)\) mit \(a, b \in V\). Man legt \(n = |V|\) und \(m = |E|\) fest.
+</p>
+<p>
+Graphen sind <em>das</em> Modellierungswerkzeug fu&#x0308;r Algorithmen (z.&#x202f;B. Straßennetzwerke, soziale Netzwerke, Zuordnungsprobleme usw.).
+</p>
+<p>
+<b>Pfad</b>: Ein Pfad von \(v\) nach \(w\) in einem gerichteten Graph \(G = (V, E)\) ist eine Folge von Knoten \(v_0 v_1 \dotsc v_{k-1} v_k\) mit \(v_0 = v\), \(v_k = w\) und \(\forall
+_{i=0,\dotsc ,k-1}\; (v_i, v_{i+1}) \in E\).<br />
+Dabei heißt \(k\) die La&#x0308;nge des Pfades.
+</p>
+
+
+<h2 id="speicherung-und-darstellung-von-graphen-im-speicher">Speicherung und Darstellung von Graphen im Speicher</h2>
+
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p><b>Adjazenzmatrix</b>: \(n \times n\)-Matrix \((\lambda _{vw})\) mit \(\lambda _{vw} = 1\), falls \((v, w) \in E\) und \(\lambda _{vw} = 0\) sonst.<br />
+Platzbedarf: \(\sim n^2\)
+</p>
+</li>
+<li class="list-item-f1"><p><b>Knoten-Kanten-Inzidenzmatrix</b>: \(n \times m\)-Matrix \((\lambda _{ve})\) mit \(\lambda _{ve} = -1\) und \(\lambda _{we} = +1\), falls \(e = (v, w) \in E\). Platzbedarf: \(\sim n
+\cdot m\)
+</p>
+</li>
+<li class="list-item-f2"><p><b>Adjazenzlisten</b>: Jeder Graph la&#x0308;sst sich darstellen durch
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f3"><p>Liste der Knoten,
+</p>
+</li>
+<li class="list-item-f4"><p>Liste der Kanten,
+</p>
+</li>
+<li class="list-item-f5"><p>fu&#x0308;r jeden Knoten \(v\) eine Liste der Kanten \(e\) mit \(\source (e) = v\) (ausgehende Kanten) und
+</p>
+</li>
+<li class="list-item-f6"><p>fu&#x0308;r jeden Knoten \(v\) eine Liste der Kanten \(e\) mit \(\target (e) = v\) (eingehende Kanten).
+</p>
+</li>
+</ul>
+<p>
+Konkret erstellt man dann zwei Datenstrukturen <span class="inlineprogramlisting"></span>Knoten und <span class="inlineprogramlisting"></span>Kante mit
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f7"><p><b><span class="inlineprogramlisting"></span>Knoten</b>: Nummer = \(1, \dotsc , n\), &#x2003;na&#x0308;chster Knoten in Liste 1),<br />
+erste ausgehende Kante in Liste 3), &#x2003;erste eingehende Kante in Liste 4) und
+</p>
+</li>
+<li class="list-item-f8"><p><b><span class="inlineprogramlisting"></span>Kante</b>: Nummer = \(1, \dotsc , m\),<br />
+<b>source</b>: Verweis auf Quellknoten, &#x2003;<b>target</b>: Verweis auf Zielknoten,<br />
+jeweils ein Verweis auf na&#x0308;chste Kante in Liste 2), 3) und 4).
+</p>
+</li>
+</ul>
+<p>
+Platzbedarf: \(\sim n + m\)
+</p>
+</li>
+</ul>
+
+
+<h2 id="tiefensuche-dfs-und-klassifizierung-von-kanten">Tiefensuche (DFS) und Klassifizierung von Kanten</h2>
+<b>Problem (Bestimmung aller von einem Knoten erreichbaren Knoten)</b>:<br />
+Gegeben sei ein gerichteter Graph \(G = (V, E)\) sowie ein ausgezeichneter Knoten \(s \in V\).<br />
+Wie bestimmt man alle Knoten \(v\), die von \(s\) erreichbar sind (d.&#x202f;h. es existiert ein Pfad von \(s\) nach \(v\))? Die von \(s\) erreichbaren Knoten sind \(s\) und alle Knoten, die von Knoten \(u\) mit \((s, u)
+\in E\) erreichbar sind.
+</p>
+<pre class="programlisting">
+DFS(u)                     Annahme: Erreichbar[] ist Boolesches Array
+   Erreichbar[u] := true    mit Erreichbar[v] = false fuer alle v in V (zu Beginn)
+   forall e = (u, w)
+      if Erreichbar[w] = false
+         DFS(w)
+</pre>
+
+
+<p>
+<b>Satz</b>: Nach Ausfu&#x0308;hrung von <span class="inlineprogramlisting">DFS(s</span>) gilt<br />
+1. \(\forall _{v \in V}\) <span class="inlineprogramlisting">Erreichbar</span>[\(v\)<span class="inlineprogramlisting">] = </span>true \(\;\Leftrightarrow \;\) es
+gibt ein Pfad von \(s\) nach \(v\),<br />
+2. Laufzeit ist \(\O (n + m)\) unter der Annahme, dass auf die Liste der adjazenten Knoten eines Knotens in \(\O (1)\) zugegriffen werden kann.
+</p>
+<p>
+<b>Beweis</b>: 1. „\(\Rightarrow \)“: Man konstruiert fu&#x0308;r einen Knoten \(v\) mit <span class="inlineprogramlisting">Erreichbar</span>[\(v\)<span
+class="inlineprogramlisting">] = </span>true einen Pfad \(\pi _v\) von \(s\) nach \(v\) induktiv: \(\pi _s = s\) sowie \(\pi _v = \pi _w v\), wobei \(v \not = s\) ein Knoten ist, der besucht
+wurde, und \((w, v) \in E\) so gewa&#x0308;hlt ist, dass <span class="inlineprogramlisting">DFS</span>(\(v\)<span class="inlineprogramlisting"></span>) ausgehend von <span
+class="inlineprogramlisting">DFS</span>(\(w\)<span class="inlineprogramlisting"></span>) aufgerufen wurde.<br />
+„\(\Leftarrow \)“: Sei \(v_0 \dotsc v_k\), \(v_0 = s\), \(v_k = v\) ein Pfad von \(s\) nach \(v\). Induktiv kann man zeigen, dass <span
+class="inlineprogramlisting">DFS</span>(\(v_i\)<span class="inlineprogramlisting"></span>), \(i = 0, \dotsc , k\) aufgerufen wurde (somit wurden alle \(v_i\) besucht). \(i =
+0\) ist trivial, denn der erste Aufruf ist <span class="inlineprogramlisting">DFS</span>(\(s\)<span class="inlineprogramlisting"></span>). Angenommen, <span
+class="inlineprogramlisting">DFS</span>(\(v_i\)<span class="inlineprogramlisting"></span>) wurde aufgerufen. Dann wird in diesem Aufruf die Kante \((v_i, v_{i+1})\) betrachtet.
+Entweder wurde \(v_{i+1}\) schon betrachtet (fertig) oder wird jetzt aufgerufen (fertig).<br />
+2. Jeder Knoten und jede Kante wird maximal \(1\) Mal angeschaut. &#x2003;&#x2003;
+</p>
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+DFS heißt <b>Tiefensuche</b> und teilt die Kanten eines Graphen in vier disjunkte Klassen ein:<br />
+\(E = T \;\dot {\cup }\; F \;\dot {\cup }\; B \;\dot {\cup }\; C\), wobei der Zeitpunkt betrachtet wird, wenn DFS eine Kante \(e = (v, w)\) betrachtet. Dabei wird vorausgesetzt, dass der Graph
+keine Schlingen entha&#x0308;lt.
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f9"><p>\(e \in T\) (<em>tree</em>, Baumkante), falls \(w\) noch nicht besucht,
+</p>
+
+</li>
+<li class="list-item-f10"><p>\(e \in F\) (<em>forward</em>, Vorwa&#x0308;rtskante), falls \(w\) schon besucht und \(v \rightarrow ^\ast _T w\) auf Baumkanten,
+</p>
+
+</li>
+<li class="list-item-f11"><p>\(e \in B\) (<em>backward</em>, Ru&#x0308;ckwa&#x0308;rtskante), falls \(w\) schon besucht und \(w \rightarrow ^\ast _T v\) auf Baumkanten,
+</p>
+
+</li>
+<li class="list-item-f12"><p>\(e \in C\) (<em>cross</em>, Querkante), falls \(w\) schon besucht und weder \(v \rightarrow ^\ast _T w\) noch \(w \rightarrow ^\ast _T v\).
+</p>
+</li>
+</ul>
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+Man kann nun einen <b>erweiterten DFS</b> betrachten, der zusa&#x0308;tzlich zu der Einordnung jeder Kante den Aufrufszeitpunkt von <span class="inlineprogramlisting">DFS(v</span>) jedes Knotens
+\(v\) in <span class="inlineprogramlisting">dfsnum[v</span>] und den Zeitpunkt, wann <span class="inlineprogramlisting">DFS(v</span>) abgeschlossen wurde, in <span
+class="inlineprogramlisting">compnum[v</span>] speichert.
+</p>
+<pre class="programlisting">
+DFS(v)                                                          Globale Variablen:
+   besucht[v] := true                                            besucht[], zu Beginn alles false
+   count1++                                                     count1 := 0, count2 := 0
+   dfsnum[v] := count1
+                                                                Oberroutine:
+    forall e = (v, w)                                           forall s in V
+       if besucht[w] = false                                       if besucht[s] = false
+          fuege e zu T hinzu                                          DFS(s)
+          DFS(w)
+       else if v $\rightarrow^\ast_T$ w
+          fuege e zu F hinzu
+       else if w $\rightarrow^\ast_T$ v
+          fuege e zu B hinzu
+       else
+          fuege e zu C hinzu
+
+    count2++
+    compnum[v] := count2
+</pre>
+
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+<b>Lemma</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f13"><p>\(E = T \;\dot {\cup }\; F \;\dot {\cup }\; B \;\dot {\cup }\; C\),
+</p>
+</li>
+<li class="list-item-f14"><p>Die Menge \(T\) entspricht dem Aufrufwald der rekursiven Aufrufe.
+</p>
+</li>
+<li class="list-item-f15"><p>\(v \rightarrow ^\ast _T w \;\Leftrightarrow \;\) <span class="inlineprogramlisting">dfsnum</span>[\(v\)<span class="inlineprogramlisting"></span>] \(\le \)
+<span class="inlineprogramlisting">dfsnum</span>[\(w\)<span class="inlineprogramlisting"></span>] \(\;\land \;\) <span
+class="inlineprogramlisting">compnum</span>[\(v\)<span class="inlineprogramlisting"></span>] \(\ge \) <span
+class="inlineprogramlisting">compnum</span>[\(w\)<span class="inlineprogramlisting"></span>]
+</p>
+</li>
+<li class="list-item-f16"><p>Seien \(v, w, z \in V\) mit \(v \rightarrow ^\ast _T w\) und \((w, z) \in E\) mit \(v \nrightarrow ^\ast _T z\), dann gilt:<br />
+<span class="inlineprogramlisting">dfsnum</span>[\(z\)<span class="inlineprogramlisting"></span>] \(&lt;\) <span
+class="inlineprogramlisting">dfsnum</span>[\(v\)<span class="inlineprogramlisting"></span>], &#x2003;&#x2003;\((w, z) \in B \cup C\),<br />
+<span class="inlineprogramlisting">compnum</span>[\(z\)<span class="inlineprogramlisting"></span>] \(&gt;\) <span
+class="inlineprogramlisting">compnum</span>[\(v\)<span class="inlineprogramlisting"></span>] \(\;\Leftrightarrow \; (w, z) \in B\),<br />
+<span class="inlineprogramlisting">compnum</span>[\(z\)<span class="inlineprogramlisting"></span>] \(&lt;\) <span
+class="inlineprogramlisting">compnum</span>[\(v\)<span class="inlineprogramlisting"></span>] \(\;\Leftrightarrow \; (w, z) \in C\).
+</p>
+</li>
+<li class="list-item-f17"><p>\(\forall _{(v, w) \in E}\; (v, w) \in T \cup F \;\Leftrightarrow \;\) <span class="inlineprogramlisting">dfsnum</span>[\(v\)<span
+class="inlineprogramlisting"></span>] \(&lt;\) <span class="inlineprogramlisting">dfsnum</span>[\(w\)<span class="inlineprogramlisting"></span>]
+</p>
+</li>
+<li class="list-item-f18"><p>\(\forall _{(v, w) \in E}\; (v, w) \in B \;\Leftrightarrow \;\) <span class="inlineprogramlisting">dfsnum</span>[\(v\)<span
+class="inlineprogramlisting"></span>] \(&gt;\) <span class="inlineprogramlisting">dfsnum</span>[\(w\)<span class="inlineprogramlisting"></span>] \(\;\land \;\)
+<span class="inlineprogramlisting">compnum</span>[\(v\)<span class="inlineprogramlisting"></span>] \(&lt;\) <span
+class="inlineprogramlisting">compnum</span>[\(w\)<span class="inlineprogramlisting"></span>]
+</p>
+</li>
+<li class="list-item-f19"><p>\(\forall _{(v, w) \in E}\; (v, w) \in C \;\Leftrightarrow \;\) <span class="inlineprogramlisting">dfsnum</span>[\(v\)<span
+class="inlineprogramlisting"></span>] \(&gt;\) <span class="inlineprogramlisting">dfsnum</span>[\(w\)<span class="inlineprogramlisting"></span>] \(\;\land \;\)
+<span class="inlineprogramlisting">compnum</span>[\(v\)<span class="inlineprogramlisting"></span>] \(&gt;\) <span
+class="inlineprogramlisting">compnum</span>[\(w\)<span class="inlineprogramlisting"></span>]
+</p>
+</li>
+</ul>
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+<b>Folgerungen</b>: Die Klassifizierung der Kanten aus \(E\) in \(T\)-/\(F\)-/\(B\)-/\(C\)-Kanten kann mittels<br />
+<span class="inlineprogramlisting"></span>dfsnum/<span class="inlineprogramlisting"></span>compnum effizient algorithmisch erfolgen.<br />
+\(G\) ist azyklisch (d.&#x202f;h. besitzt keine Zyklen, also Pfade mit demselben Anfangs- und Endpunkt) \(\;\Leftrightarrow \; \forall _{(v,w) \in E}\;\) <span
+class="inlineprogramlisting">compnum</span>[\(v\)<span class="inlineprogramlisting"></span>] \(&gt;\) <span
+class="inlineprogramlisting">compnum</span>[\(w\)<span class="inlineprogramlisting"></span>] \(\;\Leftrightarrow \;\) es gibt keine \(B\)-Kanten.<br />
+In diesem Fall ist \(\num (v) = n + 1 \;-\) <span class="inlineprogramlisting">compnum</span>[\(v\)<span class="inlineprogramlisting"></span>] eine topologische Sortierung.
+</p>
+<p>
+<b>topologische Sortierung</b>: Ein gerichteter Graph hat eine <em>topologische Sortierung</em>, falls die Knoten auf einer horizontalen Linie gemalt werden ko&#x0308;nnen, sodass alle Kanten nur von links nach rechts
+gehen. Formal ist eine Abbildung \(\num : V \rightarrow \{1, \dotsc , n\}\) eine topologische Sortierung des gerichteten Graphen \(G = (V, E)\) mit \(|V| = n\), falls \(\num (v) &lt; \num (w)\)
+fu&#x0308;r alle \((v, w) \in E\).<br />
+Ein gerichteter Graph \(G\) hat eine topologische Sortierung genau dann, wenn \(G\) azyklisch ist.
+</p>
+
+
+<h2 id="zusammenhangskomponenten">Zusammenhangskomponenten</h2>
+
+</p>
+
+<p>
+<b>Zusammenhangskomponenten (ZHK) eines ungerichteten Graphen</b>:<br />
+maximale Teilmenge \(V’ \subseteq V\), sodass fu&#x0308;r alle \(v, w \in V’\) ein Pfad von \(v\) nach \(w\) existiert.
+</p>
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+<b>starke Zusammenhangskomponenten (SZHK) eines gerichteten Graphen</b>:<br />
+maximale Teilmenge \(V’ \subseteq V\), welche stark zusammenha&#x0308;ngend ist.<br />
+Eine Knotenmenge \(V’ \subseteq V\) ist <em>stark zusammenha&#x0308;ngend</em>, wenn es fu&#x0308;r alle \(v, w \in V’\) einen Pfad von \(v\) nach \(w\) gibt. \(v\) <em>liegt in derselben SZHK</em> wie
+\(w\) genau dann, wenn es einen Pfad von \(v\) nach \(w\) und einen Pfad von \(w\) nach \(v\) gibt.
+</p>
+<p>
+<b>Satz</b>: Seien \((V_1, E_1), \dotsc , (V_k, E_k)\) die SZHKs von \(G\). Dann gilt:<br />
+1. \(\bigcup _{i=1}^k V_i = V\), &#x2003;&#x2003;&#x2003;&#x2003;2. \(\forall _{i, j = 1, \dotsc , k,\; i \not = j}\; V_i \cap V_j = \emptyset \),<br />
+3. Der Graph \(G’ = (V’, E’)\) mit \(V’ = \{v_1, \dotsc , v_k\}\) (wobei \(v_i \in V_i\) fu&#x0308;r \(i = 1, \dotsc , k\)) und<br />
+\(E’ = \{(v_i, v_j) \;|\; \exists _{v \in V_i,\; w \in V_j}\; (v, w) \in E,\; i \not = j\}\) ist azyklisch (<em>component graph</em>).
+</p>
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+<b>naive Berechnung der SZHK eines Knotens \(v\)</b>: Rufe zuna&#x0308;chst <span class="inlineprogramlisting">DFS</span>(\(v\)<span class="inlineprogramlisting"></span>) auf
+und speichere alle von \(v\) erreichbaren Knoten in \(R\). Rufe dann fu&#x0308;r alle \(w \in R\) <span class="inlineprogramlisting">DFS</span>(\(w\)<span
+class="inlineprogramlisting"></span>) auf. Falls \(v\) dabei erreicht wird, liegt \(w\) in derselben SZHK wie \(v\).
+</p>
+<p>
+<b>etwas effizientere Berechnung</b>: Rufe zuna&#x0308;chst wie eben <span class="inlineprogramlisting">DFS</span>(\(v\)<span class="inlineprogramlisting"></span>) auf und
+speichere alle von \(v\) erreichbaren Knoten in \(R\). Rufe dann <span class="inlineprogramlisting">DFS</span>(\(v\)<span class="inlineprogramlisting"></span>) auf \(G^{-1}\) auf
+(wobei \(G^{-1}\) dieselben Knoten und die gleichen, bloß umgedrehten Kanten wie \(G\) hat), speichere somit alle Knoten, von denen \(v\) erreichbar ist, in \(R’\). Die SZHK von \(v\) ist dann \(R \cap R’\).
+</p>
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+<b>Grundidee der effizienten Berechnung von SZHKs</b>:<br />
+SZHKs bilden Teilba&#x0308;ume des von DFS (durch die \(T\)-Kanten) aufgespannten Baums \(\mathcal {T}\).
+</p>
+<p>
+<b>Beobachtung (Lemma)</b>: Wenn \(a \rightarrow ^\ast b\) und \(b \rightarrow ^\ast a\) gilt, dann liegen alle Knoten \(c\) „in der Mitte“, d.&#x202f;h. \(a \rightarrow ^\ast c
+\rightarrow ^\ast b\), in derselben SZHK wie \(a\) und \(b\).
+</p>
+<p>
+<b>Beweis</b>: Angenommen, die SZHK \(\Sigma \) eines Knotens \(v\) liegt in zwei disjunkten Teilba&#x0308;umen \(\Sigma _1, \Sigma _2\) von \(\mathcal {T}\). Entweder liegt ein Bereich „unterhalb“
+eines anderen oder die beiden Bereiche liegen „nebeneinander“. Im ersten Fall wu&#x0308;rden die Knoten dazwischen aufgrund des Lemmas auch zur selben SZHK geho&#x0308;ren wie die Knoten von \(\Sigma _1\) und
+\(\Sigma _2\) (Widerspruch). Im zweiten Fall gibt es fu&#x0308;r jeden Knoten \(v \in \Sigma _1\) einen Pfad zu allen Knoten \(w \in \Sigma _2\) und umgekehrt. Ohne Einschra&#x0308;nkung wurde
+\(\Sigma _1\) vor \(\Sigma _2\) von <span class="inlineprogramlisting"></span>DFS besucht. Dann ha&#x0308;tte aber \(\Sigma _2\) von \(\Sigma _1\) aus besucht werden mu&#x0308;ssen, also
+wu&#x0308;rde \(\Sigma _2\) unterhalb von \(\Sigma _1\) im Baum stehen (Widerspruch). &#x2003;&#x2003;
+</p>
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+<b>Kopf einer SZHK</b>: Der Kopf einer SZHK ist der Knoten mit der kleinsten <span class="inlineprogramlisting"></span>dfsnum.
+</p>
+<p>
+<b>Behauptung</b>: Ein Knoten \(v\) ist Kopf seiner SZHK, wenn es aus dem Unterbaum unter \(v\) keine \(B\)-Kante zu einem Vorfahr von \(v\) gibt und es keine \(C\)-Kante aus dem Unterbaum unter \(v\) zu einem
+Knoten \(w\) gibt, dessen SZHK einen Kopf \(z\) hat, der Vorfahr von \(v\) ist.
+</p>
+<p>
+<b>Beweis</b>: Angenommen, es ga&#x0308;be eine \(B\)-Kante von einem Nachfolger von \(v\) zu einem Vorga&#x0308;nger von \(v\). Dann ist dieser Vorga&#x0308;nger in derselben SZHK und daher \(v\) nicht
+Kopf.<br />
+Angenommen, es ga&#x0308;be eine \(C\)-Kante von einem Nachfolger von \(v\) zu \(w\) mit Kopf \(z\), wobei \(z\) ein Vorfahr von \(v\) ist. Dann liegt \(z\) in derselben SZHK wie \(v\) und daher ist \(v\) nicht Kopf. Ist
+\(z\) nicht Vorfahr von \(v\), dann kann \(z\) nicht in derselben SZHK wie \(v\) sein, denn sonst wa&#x0308;re die SZHK in zwei disjunkten Teilba&#x0308;umen, daher ko&#x0308;nnen solche Kanten ignoriert werden.
+&#x2003;&#x2003;
+</p>
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+Es reicht also, fu&#x0308;r einen Knoten \(v\) zu entscheiden, ob es keine \(B\)-Kante aus einem Teilbaum unter \(v\) zu einem seiner Vorga&#x0308;nger und es keine \(C\)-Kante zu Knoten mit Ko&#x0308;pfen, die
+Vorga&#x0308;nger von \(v\) sind, gibt. In diesem Fall ist \(v\) Kopf seiner SZHK.<br />
+Ein Knoten \(v\) heißt „fertig“, falls seine SZHK \([v]\) vollsta&#x0308;ndig von <span class="inlineprogramlisting"></span>DFS besucht wurde (alle Knoten und alle Kanten).<br />
+Man fu&#x0308;hrt nun in <span class="inlineprogramlisting"></span>DFS ein zusa&#x0308;tzliches Feld <span class="inlineprogramlisting">lownum</span>[] ein, welches die kleinste
+<span class="inlineprogramlisting"></span>dfsnum eines aus dem Unterbaum von \(v\) durch eine \(B\)- oder \(C\)-Kante erreichbaren, unfertigen Knotens \(w\) speichert. Außerdem fu&#x0308;hrt man
+einen Stack <span class="inlineprogramlisting">unfertig</span>[] ein, welche die Knoten speichert, die nicht fertig sind.
+</p>
+<p>
+Falls nun <span class="inlineprogramlisting">dfsnum</span>[\(v\)<span class="inlineprogramlisting"></span>] \(=\) <span
+class="inlineprogramlisting">lownum</span>[\(v\)<span class="inlineprogramlisting"></span>] gerade vor Abschluss der Bearbeitung von <span
+class="inlineprogramlisting">DFS</span>(\(v\)<span class="inlineprogramlisting"></span>) ist, so ist \(v\) Kopf von \([v]\) und alle Elemente im Stack <span
+class="inlineprogramlisting">unfertig</span>[] sind die Knoten in \([v]\). Somit ko&#x0308;nnen die SZHKs in \(\O (n + m)\) berechnet werden.
+</p>
+<pre class="programlisting">
+DFS(v)                                                        forall v in V
+   besucht[v] := true                                            besucht[v] := false
+   count1++                                                      fertig[v] := false
+   dfsnum[v] := count1                                           count1 := 0
+   lownum[v] := dfsnum[v]                                        DFS(v)
+   unfertig.push(v)
+
+   forall e = (v, w)
+      if besucht[w] = false
+         DFS(w)
+         lownum[v] := min(lownum[v], lownum[w])
+      else if fertig[w] = false
+         lownum[v] := min(lownum[v], dfsnum[w])
+
+   if lownum[v] = dfsnum[v]
+      print "Komponente"
+      do
+         t := unfertig.pop()
+         print t
+         fertig[t] := true
+      while t != v
+</pre>
+
+
+
+
+<h2 id="breitensuche-bfs">Breitensuche (BFS)</h2>
+<b>Distanz zweier Knoten in gerichteten Graphen</b>: Wie kann man fu&#x0308;r einen gegebenen Startknoten \(s\) fu&#x0308;r alle \(v \in V\) die Distanz \(d(v) := \min \{k \;|\; \exists \text
+{Pfad von } s \text { nach } v \text { mit } k \text { Knoten}\}\) berechnen?
+</p>
+<p>
+<b>Idee</b>: Man bestimmt iterativ Mengen \(V_i = \{v \in V \;|\; d(v) = i\}\) durch<br />
+\(V_i = \{v \in (V \setminus \bigcup _{k &lt; i} V_k) \;|\; \exists _{(w,v) \in E}\; w \in V_{i-1}\}\) fu&#x0308;r \(i \in \mathbb {N}\) (\(V_0 = \{s\}\)).
+</p>
+<p>
+<b>Beweis</b>: 1. \(v \in V_i \;\Rightarrow \; d(v) \le i\) mit Induktion u&#x0308;ber \(i\): \(i = 0\) ist trivial, denn \(V_0 = \{s\}\) und \(d(s) = 0 \le 0\). Sei \(v \in V_i\). Dann gibt
+es ein \(w \in V_{i-1}\) mit \((w, v) \in E\).<br />
+Dann ist allerdings \(d(v) \le d(w) + 1 \le (i - 1) + 1 = i\).<br />
+2. \(d(v) = i \;\Rightarrow \; v \in V_0 \cup \dotsb \cup V_i\) mit Induktion u&#x0308;ber \(i\): \(i = 0\) ist trivial, denn \(d(v) = 0 \;\Rightarrow \; v = s\), \(v \in V_0\). Sei
+\(d(v) = i\). Dann gibt es ein \(u\) mit \((u, v) \in E\) und \(d(u) = i - 1\). Nach IV gilt \(u \in V_0 \cup \dotsb \cup V_{i-1}\), daher gilt \(v \in V_0 \cup \dotsb \cup V_{i-1}
+\cup V_i\).<br />
+3. \(v \in V_i \;\Rightarrow \; d(v) = i\), denn nach 1. gilt \(d(v) \le i\). Falls \(d(v) &lt; i\) wa&#x0308;re, dann wa&#x0308;re nach 2. \(v \in V_0 \cup \dotsb \cup V_{i-1}\) und
+somit \(v \notin V_i\), da die \(V_i\) disjunkt sind.<br />
+4. \(d(v) = i \;\Rightarrow \; v \in V_i\) folgt direkt aus 2. wegen der Disjunktheit der \(V_i\). &#x2003;&#x2003;
+</p>
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+BFS arbeitet in Phasen und benutzt zwei Schlangen/Queues. Zu Beginn von Phase \(i\) gilt fu&#x0308;r die Knoten mit \(d(v) \le i\), dass <span class="inlineprogramlisting">dist</span>[\(v\)<span
+class="inlineprogramlisting"></span>] \(= d(v)\), fu&#x0308;r die Knoten mit \(d(v) &gt; i\) gilt<br />
+<span class="inlineprogramlisting">dist</span>[\(v\)<span class="inlineprogramlisting"></span>] \(= \infty \) und <span
+class="inlineprogramlisting"></span>current entha&#x0308;lt die Menge \(V_i\) sowie <span class="inlineprogramlisting"></span>next ist leer.
+</p>
+<pre class="programlisting">
+current := {s}
+next := {}
+dist[s] := 0
+forall v in V ohne {s}
+   dist[v] := unendlich
+
+while current != {} do
+   while current != {} do
+      v := current.pop()
+      forall e = (v, w)
+         if dist[w] = unendlich
+            dist[w] := dist[v] + 1
+            next.push(w)
+   od
+   current := next
+   next := {}
+od
+</pre>
+
+
+<p>
+Die Laufzeit von BFS ist \(\O (n + m)\), da jeder Knoten ho&#x0308;chstens \(1\) Mal entfernt wird und dann alle seine ausgehenden Kanten betrachtet werden. Man ha&#x0308;tte oben auch Listen, Stacks usw. benutzen
+ko&#x0308;nnen. Außerdem kann man das Programm so modifizieren, sodass nur eine Queue benutzt wird.
+</p>
+
+
+<h2 id="kuerzeste-wege-in-gewichteten-graphen">Kürzeste Wege in gewichteten Graphen</h2>
+
+</p>
+
+<p>
+<b>Berechnung ku&#x0308;rzester Wege in gewichteten Graphen</b>: Gegeben sei ein Graph<br />
+\(G = (V, E, c)\), wobei \(c: E \rightarrow \mathbb {R}\) die Kosten fu&#x0308;r jede Kante angibt, sowie ein Knoten \(s \in V\).<br />
+Zu bestimmen ist nun \(d(v) := \inf \{c(\pi ) \;|\; \pi \text { ist Pfad von } s \text { nach } v\}\) fu&#x0308;r alle Knoten \(v \in V\), wobei fu&#x0308;r einen Pfad \(\pi = v_0
+\dotsc v_k\) gilt, dass \(c(\pi ) := \sum _{i=0}^{k-1} c(v_i, v_{i+1})\).
+</p>
+<p>
+Durch einen <b>negativen Zyklus</b> kann es auch Knoten \(v\) mit \(d(v) = -\infty \) geben.
+</p>
+<p>
+Eine naive Berechnung wu&#x0308;rde einfach alle Pfade von \(s\) nach \(v\) betrachten. Dies ko&#x0308;nnen allerdings je nach Graph sehr viele oder sogar unendlich viele sein.
+</p>
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+<b>Idee fu&#x0308;r einen Algorithmus</b>: Man berechnet „vorla&#x0308;ufige“ Distanzwerte <span class="inlineprogramlisting">dist</span>[] und will erreichen, dass spa&#x0308;ter <span
+class="inlineprogramlisting">dist</span>[\(v\)<span class="inlineprogramlisting"></span>] \(= d(v)\) fu&#x0308;r alle \(v \in V\) ist.<br />
+Dazu setzt man zu Beginn <span class="inlineprogramlisting">dist</span>[\(s\)<span class="inlineprogramlisting"></span>] \(= 0\) und <span
+class="inlineprogramlisting">dist</span>[\(v\)<span class="inlineprogramlisting"></span>] \(= +\infty \) fu&#x0308;r alle \(v \in V\) mit \(v \not = s\).<br />
+Solange es nun Kanten \(e = (v, w) \in E\) mit <span class="inlineprogramlisting">dist</span>[\(w\)<span class="inlineprogramlisting"></span>] \(&gt;\) <span
+class="inlineprogramlisting">dist</span>[\(v\)<span class="inlineprogramlisting"></span>] \(+\; c(v,w)\) gibt, setze<br />
+<span class="inlineprogramlisting">dist</span>[\(w\)<span class="inlineprogramlisting"></span>] \(=\) <span class="inlineprogramlisting">dist</span>[\(v\)<span
+class="inlineprogramlisting"></span>] \(+\; c(v,w)\) (<b>Kantenrelaxierung</b>). Man zielt darauf ab, dass es spa&#x0308;ter keine solche Kanten mehr gibt und <span
+class="inlineprogramlisting">dist</span>[\(v\)<span class="inlineprogramlisting"></span>] \(= d(v)\) fu&#x0308;r alle \(v \in V\).
+</p>
+<p>
+Es kommt nun darauf an, in welcher Reihenfolge die Kanten betrachtet werden, damit mo&#x0308;glichst wenig Kanten mehrfach betrachtet werden.
+</p>
+<p>
+<b>Invariante</b>: \(U \subseteq V\) definiert durch \(v \notin U \;\Leftrightarrow \;\) \(\forall _{(v,w) \in E}\;\) <span
+class="inlineprogramlisting">dist</span>[\(v\)<span class="inlineprogramlisting"></span>] \(+\; c(v,w) \ge \) <span
+class="inlineprogramlisting">dist</span>[\(w\)<span class="inlineprogramlisting"></span>]<br />
+(\(U\) ist Menge der Knoten, die ausgehende Kanten haben, die noch betrachtet werden mu&#x0308;ssen).
+</p>
+<pre class="programlisting">
+dist[s] = 0
+forall v in V, v != s
+   dist[v] = +unendlich
+U = {s}
+
+while U != {}
+   entferne v in U (beliebig)
+   forall e = (v,w)
+      x = dist[v] + c(v, w)
+      if (x &lt;dist[w])
+         dist[w] = x
+         U = U \cup {w}
+</pre>
+
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+<b>Eigenschaften des Algorithmus</b>:<br />
+1. Invariante ist erfu&#x0308;llt.<br />
+2. Fu&#x0308;r den Fall <span class="inlineprogramlisting">dist</span>[\(w\)<span class="inlineprogramlisting"></span>] \(&gt; d(w) &gt; -\infty \) gibt es einen Knoten \(u\)
+auf dem ku&#x0308;rzesten Weg von \(s\) nach \(w\) mit \(u \in U\) und <span class="inlineprogramlisting">dist</span>[\(u\)<span class="inlineprogramlisting"></span>] \(=
+d(u)\).<br />
+3. Wird ein Knoten \(u\) aus \(U\) zu einem Zeitpunkt mit <span class="inlineprogramlisting">dist</span>[\(u\)<span class="inlineprogramlisting"></span>] \(= d(u)\) entfernt, so wird
+\(u\) nie mehr in \(U\) aufgenommen.
+</p>
+<p>
+<b>Beweis</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f20"><p>Die Invariante gilt nach der Initialisierung. Solange \(u \notin U\) gilt, a&#x0308;ndert sich <span class="inlineprogramlisting">dist</span>[\(u\)<span
+class="inlineprogramlisting"></span>] nicht, d.&#x202f;h. der Wert der linken Seite a&#x0308;ndert sich nicht. Die rechte Seite wird im Verlauf des Algorithmus nur kleiner und wenn \(u\) aus \(U\) entfernt wird,
+wird die Gu&#x0308;ltigkeit der Invariante sichergestellt.
+</p>
+</li>
+<li class="list-item-f21"><p>Seien \(v_0 v_1 \dotsc v_k\) (\(v_0 = s\), \(v_k = w\)) ein ku&#x0308;rzester Weg von \(s\) nach \(w\) und \(i\) maximal mit <span
+class="inlineprogramlisting">dist</span>[\(v_i\)<span class="inlineprogramlisting"></span>] \(= d(v_i)\). \(i\) existiert, denn es gilt \(d(s) =\) <span
+class="inlineprogramlisting">dist</span>[\(s\)<span class="inlineprogramlisting"></span>] \(= 0\). Angenommen, es gilt \(v_i \notin U\). Dann ist <span
+class="inlineprogramlisting">dist</span>[\(v_{i+1}\)<span class="inlineprogramlisting"></span>] \(\le d(v_i) + c(v_i, v_{i+1})\) nach Definition von \(U\).
+Zusa&#x0308;tzlich gilt n.&#x202f;V. <span class="inlineprogramlisting">dist</span>[\(v_i\)<span class="inlineprogramlisting"></span>] \(= d(v_i)\), daher ist <span
+class="inlineprogramlisting">dist</span>[\(v_{i+1}\)<span class="inlineprogramlisting"></span>] \(= d(v_{i+1})\) (\(v_0 \dotsc v_i v_{i+1} \dotsc w\) ist
+ku&#x0308;rzester Weg, also ist auch \(v_0 \dotsc v_i v_{i+1}\) ku&#x0308;rzester Weg). Widerspruch, da dann \(i\) nicht maximal.
+</p>
+</li>
+</ul>
+<p>
+&#x2003;&#x2003;
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+<b>Implementierung</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f22"><p><b>allgemeine Kantenkosten (auch negativ)</b>:<br />
+Implementiere \(U\) als Schlange, entferne immer erstes Element aus \(U\).<br />
+Wenn \(v\) zu \(U\) hinzugefu&#x0308;gt wird (und es ist noch nicht in \(U\)), fu&#x0308;ge es hinten an.
+</p>
+<p>
+<b>Behauptung</b>: Wenn \(d(w) &gt; -\infty \) fu&#x0308;r alle \(w \in V\) gilt, dann wird jeder Knoten ho&#x0308;chstens \(n\)-mal aus \(U\) entfernt.
+</p>
+<p>
+<b>Beweis</b>: Betrachte \(U\), wenn \(v\) zu \(U\) hinzugefu&#x0308;gt wird. \(U\) entha&#x0308;lt laut 2. (siehe oben) einen Knoten \(z\) mit <span
+class="inlineprogramlisting">dist</span>[\(z\)<span class="inlineprogramlisting"></span>] \(= d(z)\). \(z\) wird vor \(v\) aus \(U\) entfernt und zwar endgu&#x0308;ltig (siehe 3.). Also
+kommt \(v\) maximal \(n-1\)-mal zu \(U\) hinzu. 
+</p>
+<p>
+<b>Laufzeit</b>: Die Laufzeit ist \(\O (m \cdot n)\), da jede Kante maximal \(n\)-mal anschaut wird (na&#x0308;mlich jedes Mal, wenn ihr Quellknoten aus \(U\) entfernt wird).
+</p>
+</li>
+<li class="list-item-f23"><p><b>\(G\) ist azyklisch</b>:<br />
+Sortiere \(G\) topologisch und gehe Knoten in aufsteigender Reihenfolge durch.
+</p>
+</li>
+<li class="list-item-f24"><p><b>nicht-negative Kantenkosten (Algorithmus von <span class="textsc" >Dijkstra</span>)</b>:<br />
+Entferne immer das Element aus \(U\) mit dem kleinsten <span class="inlineprogramlisting"></span>dist-Wert.
+</p>
+<p>
+<b>Behauptung</b>: Sei \(w \in U\) mit <span class="inlineprogramlisting">dist</span>[\(w\)<span class="inlineprogramlisting"></span>] minimal. Dann ist <span
+class="inlineprogramlisting">dist</span>[\(w\)<span class="inlineprogramlisting"></span>] \(= d(w)\).
+</p>
+<p>
+<b>Beweis</b>: Falls <span class="inlineprogramlisting">dist</span>[\(w\)<span class="inlineprogramlisting"></span>] \(&gt; d(w)\), existiert ein Knoten \(v\) auf
+ku&#x0308;rzestem Weg von \(s\) nach \(w\) mit \(v \in U\) und <span class="inlineprogramlisting">dist</span>[\(v\)<span class="inlineprogramlisting"></span>] \(= d(v)\). Weil
+die Kantenkosten nicht-negativ sind, gilt daher \(d(v) \le d(w) &lt;\) <span class="inlineprogramlisting">dist</span>[\(w\)<span class="inlineprogramlisting"></span>]. Also ist
+<span class="inlineprogramlisting">dist</span>[\(v\)<span class="inlineprogramlisting"></span>] \(&lt;\) <span
+class="inlineprogramlisting">dist</span>[\(w\)<span class="inlineprogramlisting"></span>], ein Widerspruch, da \(w \in U\) mit <span
+class="inlineprogramlisting">dist</span>[\(w\)<span class="inlineprogramlisting"></span>] minimal. 
+</p>
+<p>
+<b>Laufzeit</b>: Jeder Knoten wird maximal 1 Mal aus \(U\) entnommen. Jeder Knoten a&#x0308;ndert maximal \(\indeg (v)\) Mal seine Distanz. Also gibt es maximal \(n\) Minimumsextraktionen und \(m\)
+Distanza&#x0308;nderungen. Wie findet man das Minimum der <span class="inlineprogramlisting"></span>dist-Werte in \(U\)? Eine naive Bestimmung wu&#x0308;rde jedes Mal durch \(U\) laufen, dies
+kostet jedoch dann \(\O (n^2 + m)\). Besser ist es, per Heap die Minima zu bestimmen, dann ist die Laufzeit \(\O (n \cdot \log n + m \cdot \log n)\). Noch besser ist es, wenn man <span
+class="textsc" >Fibonacci</span>-Heaps oder R-Heaps nutzt.
+</p>
+</li>
+</ul>
+
+
+<h2 id="weitere-graphprobleme-mit-polynomiellen-algorithmus">Weitere Graphprobleme mit polynomiellen Algorithmus</h2>
+Ein Beispiel fu&#x0308;r ein nicht-polynomielles Problem ist das <b><em>stable-set</em>/<em>independent-set</em>-Problem</b>: Gegeben sei ein Graph \(G = (V, E)\). Finde \(S \subseteq V\), sodass es
+fu&#x0308;r alle \(u, v \in S\) keine Kante \((u, v) \in E\) gibt und \(S\) die gro&#x0308;ßtmo&#x0308;gliche Kardinalita&#x0308;t hat.
+</p>
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+<b>Netwerkfluss</b>: Gegeben seien \(G = (V, E)\) gerichtet, \(s, t \in V\) sowie \(\mycap : E \rightarrow \mathbb {R}_0^+\).<br />
+Gesucht ist \(f: E \rightarrow \mathbb {R}_0^+\), sodass<br />
+1. &#x2003;fu&#x0308;r alle \(e \in E\) gilt, dass \(0 \le f(e) \le \mycap (e)\),<br />
+2. &#x2003;fu&#x0308;r alle \(v \in V \setminus \{s, t\}\) gilt, dass \(\sum _{e = (v, \cdot ) \in E} f(e) = \sum _{e = (\cdot , v) \in E} f(e)\), sowie<br />
+3. &#x2003;\(\sum _{e = (s, \cdot ) \in E} f(e)\) ist maximal.<br />
+Zusa&#x0308;tzlich kann \(\cost : E \rightarrow \mathbb {R}\) gegeben sein. Dann wird der maximale Fluss bei minimalen Kosten gesucht.
+</p>
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+<b>Matching (Bipartit)</b>: Gegeben sei \(G = (A \cup B, E)\) ungerichtet, wobei \(A \cap B = \emptyset \) sowie \(E \subseteq A \times B\). Gesucht ist eine Menge \(M \subseteq E\) mit
+\(|M|\) maximal sowie fu&#x0308;r alle \(v \in A \cup B\) gibt es ho&#x0308;chstens eine Kante inzident zu \(v\). \(M\) bezeichnet man als Matching. Zusa&#x0308;tzlich kann es noch \(\cost : E \rightarrow
+\mathbb {R}\) geben, wobei dann ein Matching mit maximalen/minimalen Kosten gesucht ist.
+</p>
+<p>
+Ein Matching-Problem lautet: \(A\) sind Ma&#x0308;nner, \(B\) sind Frauen und \(|A| = |B| = n\). Jeder Mann \(a \in A\) bzw. jede Frau \(b \in B\) hat eine totale Ordnung \(&lt;_a\) der Frauen bzw.
+\(&lt;_b\) der Ma&#x0308;nner. Gesucht ist ein „gutes“ Matching, d.&#x202f;h. Zuordnung Ma&#x0308;nner – Frauen.
+</p>
+<p>
+\(M\) heißt <b>instabil</b>, falls es ein \(a \in A\) und ein \(b \in B\) gibt mit<br />
+1. &#x2003;\((a, b) \notin M\),<br />
+2. &#x2003;\(a\) zieht \(b\) seiner Partnerin \(M(a)\) vor, d.&#x202f;h. \(b &gt;_a M(a)\), und<br />
+3. &#x2003;\(b\) zieht \(a\) ihrem Partner \(M(b)\) vor, d.&#x202f;h. \(a &gt;_b M(b)\).<br />
+\(M\) heißt <b>stabil</b>, falls \(M\) nicht instabil ist.
+</p>
+<p>
+Es gibt immer ein stabiles Matching. Dieses kann mit folgendem Algorithmus bestimmt werden:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f25"><p>Jeder alleinstehende Mann macht oberster Frau auf seiner Liste einen Antrag.
+</p>
+</li>
+<li class="list-item-f26"><p>Jede Frau sucht sich aus den Angeboten und dem aktuellen Partner den Besten aus und schickt die anderen weg.
+</p>
+</li>
+<li class="list-item-f27"><p>Jeder abgewiesene Mann streicht oberste Frau von seiner Liste und wird (bzw. bleibt) alleinstehend. Das Verfahren wird so lange wiederholt, bis jeder Mann eine Frau hat.
+</p>
+</li>
+</ul>
+<p>
+<b>Behauptung</b>:<br />
+Der Algorithmus erzeugt ein stabiles Matching, welches fu&#x0308;r alle Ma&#x0308;nner optimal ist.
+</p>
+<p>
+<b>Beweis</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f28"><p><b>\(M\) ist vollsta&#x0308;ndig</b> (jeder Mann/jede Frau bekommt einen Partner).<br />
+Falls eine Frau einen Partner hat, hat sie ab da immer einen. Falls am Ende Frau \(b\) keinen Partner hat, hat ein Mann \(a\) keine Partnerin. \(a\) ha&#x0308;tte \(b\) irgendwann einmal gefragt und \(b\) wa&#x0308;re mit
+\(a\) zusammen (oder mit einem besseren), ein Widerspruch.
+</p>
+</li>
+<li class="list-item-f29"><p><b>\(M\) ist stabil</b>.<br />
+Sei \((a, b’) \in M\), \(b \not = b’\) beliebige Frau. Falls der Mann \(a\) der Frau \(b\) einen Antrag gemacht hat und wg. \(a’ \not = a\) abgewiesen wurde, hat \(b\) einen Partner, den sie \(a\) vorzieht. Falls
+der Mann \(a\) der Frau \(b\) keinen Antrag gemacht hat, hat \(a\) eine Partnerin, die er \(b\) vorzieht.
+</p>
+</li>
+<li class="list-item-f30"><p><b>\(M\) ist fu&#x0308;r alle Ma&#x0308;nner optimal</b>, d.&#x202f;h. falls \(a\) von \(b\) zuru&#x0308;ckgewiesen wurde, dann ist \(b\) fu&#x0308;r \(a\) unerreichbar, d.&#x202f;h. es gibt kein
+stabiles Matching \(M^\ast \) mit \((a, b) \in M^\ast \).<br />
+Der Beweis erfolgt mit Induktion u&#x0308;ber die Anzahl der Runden des Algorithmus. Die Induktionsbehauptung ist: Falls \(a\) von \(b\) in Runde \(\le i\) zuru&#x0308;ckgewiesen wurde, ist \(b\) fu&#x0308;r \(a\)
+unerreichbar.<br />
+IA: \(i = 0\), klar, da niemand zuru&#x0308;ckgewiesen<br />
+IS: Angenommen, \(a\) wird von \(b\) in der \(i\)-ten Runde zuru&#x0308;ckgewiesen. Dann hat \(b\) am Ende der Runde einen „besseren“ Partner \(a’\). Angenommen, es ga&#x0308;be ein stabiles Matching \(M^\ast \)
+mit \((a, b) \in M^\ast \). \(a’\) kann in \(M^\ast \) nicht mit \(b\) zusammen sein.<br />
+Fall 1: \(M^\ast (a’)\) steht vor \(b\) in der Reihenfolge von \(a’\). Da \(a’\) der Frau \(b\) schon einen Antrag gemacht hat, hat er \(M^\ast (a’)\) auch schon einen Antrag gemacht (in einer Runde davor) und wurde
+zuru&#x0308;ckgewiesen. Nach IV ist \(M^\ast (a’)\) fu&#x0308;r \(a’\) unerreichbar, ein Widerspruch, denn \(a’\) und \(M^\ast (a’)\) sind im stabilen Matching \(M^\ast \) zusammen (\((a’, M^\ast
+(a’)) \in M^\ast \)).<br />
+Fall 2: \(M^\ast (a’)\) steht nach \(b\) in der Reihenfolge von \(a’\). Dann wu&#x0308;rde \(a’\) \(b\) bevorzugen und \(b\) wu&#x0308;rde \(a’\) bevorzugen, ein Widerspruch zu \((a, b) \in M^\ast \).
+</p>
+</li>
+</ul>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

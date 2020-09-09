@@ -1,0 +1,1817 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\newcommand {\field }{\ensuremath {\mathbb {K}}}\)
+
+\(\renewcommand {\Re }{\ensuremath {\operatorname {Re}}}\)
+
+\(\renewcommand {\Im }{\ensuremath {\operatorname {Im}}}\)
+
+\(\newcommand {\Ln }{\ensuremath {\operatorname {Ln}}}\)
+
+\(\newcommand {\vp }{\ensuremath {\operatorname {v.\!p.\!}}}\)
+
+\(\newcommand {\R }{\ensuremath {\mathcal {R}}}\)
+
+\(\renewcommand {\C }{\ensuremath {\mathcal {C}}}\)
+
+\(\renewcommand {\L }{\ensuremath {\mathcal {L}}}\)
+
+\(\renewcommand {\ms }{\ensuremath {\!\!\uparrow }}\)
+
+\(\newcommand {\mf }{\ensuremath {\!\!\downarrow }}\)
+
+\(\newcommand {\sms }{\ensuremath {\!\!\upuparrows }}\)
+
+\(\newcommand {\smf }{\ensuremath {\!\!\downdownarrows }}\)
+
+\(\newcommand {\acc }{\ensuremath {\operatorname {acc}}}\)
+
+\(\newcommand {\grad }{\ensuremath {\operatorname {grad}}}\)
+
+\(\renewcommand {\div }{\ensuremath {\operatorname {div}}}\)
+
+\(\newcommand {\tr }{\ensuremath {\operatorname {tr}}}\)
+
+\(\newcommand {\rg }{\ensuremath {\operatorname {rg}}}\)
+
+\(\newcommand {\fracsize }[1]{{\large #1}}\)
+
+\(\newcommand {\matrixsize }[1]{{\scriptsize #1}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+
+<h2 id="das-prinzip-der-gleichmaessigkeit">Das Prinzip der Gleichmäßigkeit</h2>
+
+</p>
+
+
+<p>
+Eine Eigenschaft \(A(p)\) gilt gleichma&#x0308;ßig bzgl. \(p \in P\) (<em>Parameter</em> aus <em>Parametermenge</em>), falls
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p>\(A(p)\) ist fu&#x0308;r alle \(p \in P\) wahr
+</p>
+
+</li>
+<li class="list-item-f1"><p>die Konstanten in \(A(p)\) sind von \(p\) unabha&#x0308;ngig wa&#x0308;hlbar.
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>gleichma&#x0308;ßige Konvergenz einer Folge</b>: Sei \(a: \natural \times P \rightarrow M\) eine parameterabha&#x0308;ngige Folge \(\{a_k(p)\}_{k \in \natural }\) (\(P\) Parametermenge), wobei
+\((M,d)\) ein metrischer Raum ist.
+</p>
+
+<p>
+<b>punktweise Konvergenz</b>: \(a_n \xrightarrow {(\cdot )} a(p) \quad \Leftrightarrow \quad \forall _{p \in P} \forall _{\varepsilon &gt; 0} \exists _{N(\varepsilon , p)} \forall _{n \ge
+N(\varepsilon , p)}\; d(a_n(p), a(p)) &lt; \varepsilon \)
+</p>
+
+<p>
+<b>gleichma&#x0308;ßige Konvergenz</b>: \(a_n \rightrightarrows a(p) \quad \Leftrightarrow \quad \forall _{\varepsilon &gt; 0} \exists _{N(\varepsilon )} \forall _{p \in P} \forall _{n \ge
+N(\varepsilon )}\; d(a_n(p), a(p)) &lt; \varepsilon \)
+</p>
+
+<p>
+Zum Beispiel gilt bei der Folge \(a_n(p) = \frac {n/p}{1 + (n / p)^2}\) (\(n, p \in \natural \)) fu&#x0308;r \(n = p\), dass \(a_n(p) = \frac {1}{2}\), jedoch gilt fu&#x0308;r jedes feste \(p\), dass \(\lim _{n \to
+\infty } a_n(p) = 0\), aber nicht gleichma&#x0308;ßig.
+</p>
+
+<p>
+Dagegen ist die Folge \(a_n(p) = \frac {1}{1 + n + p} &lt; \frac {1}{1 + n}\) fu&#x0308;r \(n, p \in \natural \) gleichma&#x0308;ßig konvergent bzgl. \(p \in P = \natural \), da fu&#x0308;r \(n \ge \frac
+{1}{\varepsilon }\) gilt, dass \(|a_n(p) - 0| &lt; \varepsilon \) fu&#x0308;r alle \(p \in \natural \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>gleichma&#x0308;ßige Konvergenz einer Reihe</b>: Sei \(a: \natural \times P \rightarrow \field ^n\) eine Folge, wobei \(\field \in \{\real , \complex \}\).<br />
+\(\sum _{k=1}^\infty a_n(p)\) konvergiert gleichma&#x0308;ßig bzgl. \(p \in P\), falls \(S_m(p) = \sum _{n=1}^m a_n(p) \rightrightarrows S(p)\) gleichma&#x0308;ßig.
+</p>
+
+<p>
+<b>gleichma&#x0308;ßige Konvergenz uneigentlicher Integrale</b>:<br />
+Sei \(f: \left [0, +\infty \right [ \times P \rightarrow \field ^d\) mit \(\forall _{p \in P} \forall _{R &gt; 0}\; f(x, p) \in \R [0,R]_x\). Dann konvergiert \(\int _0^{+\infty } f(x, p)\dx \)
+gleichma&#x0308;ßig bzgl. \(p \in P\), falls \(\forall _{\varepsilon &gt; 0} \exists _{R(\varepsilon )} \forall _{R’, R’’ \ge R(\varepsilon )} \forall _{p \in P}\; \big |\int _{R’}^{R’’} f(x, p)\dx
+\big | &lt; \varepsilon \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>gleichma&#x0308;ßig stetige Funktionen</b>:<br />
+Seien \((M_1, d_1)\), \((M_2, d_2)\) metrische Ra&#x0308;ume sowie \(f: X \subset M_1 \rightarrow M_2\).
+</p>
+
+<p>
+<b>punktweise Stetigkeit</b>: \(\forall _{x_0 \in X} \forall _{\varepsilon &gt; 0} \exists _{\delta (x_0, \varepsilon ) = \delta &gt; 0} \forall _{x \in U_\delta (x_0) \cap X}\; f(x) \in
+U_\varepsilon (f(x_0))\)
+</p>
+
+<p>
+<b>gleichma&#x0308;ßige Stetigkeit</b>: \(\forall _{\varepsilon &gt; 0} \exists _{\delta (\varepsilon ) = \delta &gt; 0} \forall _{x_0 \in X} \forall _{x \in U_\delta (x_0) \cap X}\; f(x) \in
+U_\varepsilon (f(x_0))\)
+</p>
+
+<p>
+Gleichma&#x0308;ßige Stetigkeit/Konvergenz impliziert punktweise Stetigkeit/Konvergenz.<br />
+<em>Die Umkehrung gilt nicht!</em>
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Lemma</b>: Sei \(a: \natural \times P \rightarrow M\). Dann ist \(a_n(p) \rightrightarrows a(p) \;\Leftrightarrow \; \lim _{n \to \infty } \left (\sup _{p \in P} d(a_n(p), a(p))\right ) = 0\).
+</p>
+
+
+
+<h2 id="satz-zum-vertauschen-von-grenzwerten">Satz zum Vertauschen von Grenzwerten</h2>
+
+</p>
+
+
+<p>
+Man betrachtet Doppelfolgen mit \(P = \natural \), d.&#x202f;h. \(a_n(p) = a_{n,p}\). Angenommen, es gibt Grenzwerte \(\lim _{n \to \infty } a_{n,p} = u(p)\) und \(\lim _{p \to \infty } a_{n,p} = v(n)\).
+Im Allgemeinen gilt dann <b>nicht</b><br />
+\(\lim _{p \to \infty } (\lim _{n \to \infty } a_{n,p}) = \lim _{p \to \infty } u(p) = \lim _{n \to \infty } v(n) = \lim _{n \to \infty } (\lim _{p \to \infty } a_{n,p})\).
+</p>
+
+<p>
+<b>Satz</b>: Sei \(a: \natural \times \natural \rightarrow M\) eine Doppelfolge mit \((M,d)\) vollsta&#x0308;ndig. Außerdem existiere fu&#x0308;r alle \(p \in \natural \) der Grenzwert \(\lim _{n \to \infty }
+a_{n,p} = u(p)\) sowie fu&#x0308;r alle \(n \in \natural \) existiere der Grenzwert \(\lim _{p \to \infty } a_{n,p} = v(n)\). Einer dieser Grenzwerte sei gleichma&#x0308;ßig angenommen.<br />
+Dann existieren die Grenzwerte \(\lim _{p \to \infty } u(p) = \lim _{n \to \infty } v(n)\) und sind gleich.
+</p>
+
+<p>
+Unter diesen Voraussetzungen gilt somit \(\lim _{p \to \infty } (\lim _{n \to \infty } a_{n,p}) = \lim _{n \to \infty } (\lim _{p \to \infty } a_{n,p})\).
+</p>
+
+
+
+<h2 id="zur-stetigkeit-der-grenzfunktion-und-zum-vertauschen-von-grenzwerten-vom-typ-n-infty-und-x-xi">Zur Stetigkeit der Grenzfunktion und zum Vertauschen von Grenzwerten vom Typ n → ∞ und x → ξ</h2>
+
+</p>
+
+
+<p>
+Seien \(M_1, M_2\) metrische Ra&#x0308;ume, \(M_2\) vollsta&#x0308;ndig, \(X \subset M_1\), \(\xi \in \acc (X)\) sowie \(f: \natural \times X \rightarrow M_2\) eine Folge von Funktionen \(f_n(x)\) mit \(n \in
+\natural \), \(x \in X\).
+</p>
+
+<p>
+<b>Vertauschen von \(\lim _{n \to \infty }\) und \(\lim _{x \to \xi }\)</b>:<br />
+Fu&#x0308;r alle \(n \in \natural \) existiere der Grenzwert \(\lim _{x \to \xi } f_n(x) = a_n\) sowie der Grenzwert<br />
+\(\lim _{n \to \infty } f_n(x) = \varphi (x)\) existiere gleichma&#x0308;ßig bzgl. \(x \in X\).<br />
+Dann existieren die Grenzwerte \(\lim _{n \to \infty } a_n = \lim _{x \to \xi } \varphi (x)\) und sind gleich.
+</p>
+
+<p>
+Unter diesen Voraussetzungen gilt somit \(\lim _{n \to \infty } \left (\lim _{x \to \xi } f_n(x)\right ) = \lim _{x \to \xi } \left (\lim _{n \to \infty } f_n(x)\right )\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Anwendung (\(\varphi \) stetig in \(\xi \))</b>:<br />
+Gilt zudem \(\xi \in X\) und \(f_n\) ist stetig in \(\xi \) fu&#x0308;r alle \(n \in \natural \), dann ist auch \(\varphi \) stetig in \(\xi \).
+</p>
+
+<p>
+<b>Anmerkung</b>: Ist \(f_n \in \C ([a,b], \field ^d)\) fu&#x0308;r alle \(n \in \natural \) und \(\lim _{n \to \infty } f_n(x) = \varphi (x)\) existiert gleichma&#x0308;ßig bzgl. \(x \in [a,b]\), so ist
+auch \(\varphi \in \C ([a,b], \field ^d)\) und \(f_n \xrightarrow {\norm {\cdot }_\C } \varphi \).
+</p>
+
+<p>
+<em>Die Voraussetzung „gleichma&#x0308;ßig“ ist wesentlich!</em>
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Banachraum</b>: Ein Banachraum ist ein vollsta&#x0308;ndiger, normierter Vektorraum (d.&#x202f;h. vollsta&#x0308;ndig bzgl. der von der Norm induzierten Metrik).
+</p>
+
+<p>
+Seien nun \(Y\) ein Banachraum, \(M\) ein metrischer Raum, \(X \subset M\), \(\xi \in \acc (X)\) und \(a: \natural \times X \rightarrow Y\) eine Funktionenfolge \(a_n(x)\).
+</p>
+
+<p>
+<b>Vertauschen von \(\sum _{n=1}^\infty \) und \(\lim _{x \to \xi }\)</b>:<br />
+Sei \(\lim _{x \to \xi } a_n(x) = b_n\) konvergent fu&#x0308;r alle \(n \in \natural \) und \(\sum _{n=1}^\infty a_n(x) = S(x)\) konvergiere gleichma&#x0308;ßig bzgl. \(x \in X\).<br />
+Dann existieren die Grenzwerte \(\sum _{n=1}^\infty b_n = \lim _{x \to \xi } S(x)\) und sind gleich.
+</p>
+
+<p>
+Unter diesen Voraussetzungen gilt somit \(\sum _{n=1}^\infty \left (\lim _{x \to \xi } a_n(x)\right ) = \lim _{x \to \xi } \left (\sum _{n=1}^\infty a_n(x)\right )\).
+</p>
+
+<p>
+<b>Folgerung</b>: Ist zusa&#x0308;tzlich \(\xi \in X\) und sind alle \(a_n(x)\) stetig in \(\xi \), dann ist auch<br />
+\(S(x) = \sum _{n=1}^\infty a_n(x)\) in \(\xi \) stetig.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+Wie zeigt man, dass \(\sum _{n=1}^\infty a_n(x)\) gleichma&#x0308;ßig bzgl. \(x \in X\) konvergiert?
+</p>
+
+<p>
+<b>Majorantenkriterium von <span class="textsc" >Weierstraß</span></b>: Fu&#x0308;r alle \(n \in \natural \) und \(x \in X\) sei \(\norm {a_n(x)} \le C_n\) (d.&#x202f;h. \(C_n\) ist von \(x\)
+unabha&#x0308;ngig). Zudem sei \(\sum _{n=1}^\infty C_n\) konvergent.<br />
+Dann konvergiert \(\sum _{n=1}^\infty a_n(x)\) gleichma&#x0308;ßig bzgl. \(x \in X\).
+</p>
+
+<p>
+<b>Anwendung (<span class="textsc" >Fourier</span>-Reihen)</b>: Seien \(a_n \in \complex \) eine komplexe Folge und \(\sum _{n=1}^\infty |a_k|\) sei konvergent. Dann konvergieren folgende Funktionenreihen
+ebenfalls (absolut) fu&#x0308;r alle \(x \in \real \) und sind stetig: \(S(x) = \sum _{n=1}^\infty a_n \sin (nx)\), \(C(x) = a_0 \sum _{n=1}^\infty a_n \cos (nx)\), \(E(x) = \sum _{n \in \integer } a_n
+e^{inx}\).
+</p>
+
+
+
+<h2 id="zur-stetigkeit-der-grenzfunktion-zweier-variablen">Zur Stetigkeit der Grenzfunktion zweier Variablen</h2>
+
+</p>
+
+
+<p>
+<b>Vertauschen von \(\lim _{x \to x_0}\) und \(\lim _{y \to y_0}\)</b>: Seien \(M_1, M_2, M_3\) metrische Ra&#x0308;ume mit \(M_3\) vollsta&#x0308;ndig, \(X \subset M_1\), \(Y \subset M_2\), \(x_0 \in \acc
+(X)\) und \(y_0 \in \acc (Y)\).<br />
+Weiterhin sei \(f: X \times Y \rightarrow M_3\) eine Funktion, wobei fu&#x0308;r alle \(x \in X\) der Grenzwert<br />
+\(\lim _{y \to y_0} f(x, y) = \varphi (x)\) und fu&#x0308;r alle \(y \in Y\) der Grenzwert \(\lim _{x \to x_0} f(x, y) = \psi (y)\) existiert.<br />
+Einer dieser beiden Grenzwerte werde gleichma&#x0308;ßig angenommen.<br />
+Dann gibt es die Grenzwerte \(\lim _{x \to x_0} \varphi (x) = \lim _{y \to y_0} \psi (y)\) und sind gleich.
+</p>
+
+<p>
+Unter diesen Voraussetzungen gilt somit \(\lim _{x \to x_0} \left (\lim _{y \to y_0} f(x, y)\right ) = \lim _{y \to y_0} \left (\lim _{x \to x_0} f(x, y)\right )\).
+</p>
+
+<p>
+<b>Folgerung</b>: Seien zusa&#x0308;tzlich \(x_0 \in X\), \(f(x, y)\) stetig im Punkt \(x = x_0\) (fu&#x0308;r jedes beliebige \(y\)) und der erste Grenzwert werde gleichma&#x0308;ßig erreicht.<br />
+Dann ist auch \(\varphi (x)\) stetig im Punkt \(x = x_0\).
+</p>
+
+
+
+<h2 id="zum-vertauschen-von-grenzwert-und-riemann-integral">Zum Vertauschen von Grenzwert und <span style="font-variant: small-caps;">Riemann</span>-Integral</h2>
+
+</p>
+
+
+<p>
+<b>Vertauschen von \(\lim _{n \to \infty }\) und \(\int _a^b\)</b>: Seien \(f_n \in \C ([a,b], \field ^d)\) fu&#x0308;r \(n \in \natural \), wobei<br />
+\(\lim _{n \to \infty } f_n(x) = f(x)\) gleichma&#x0308;ßig bzgl. \(x \in [a,b]\).<br />
+Dann gibt es die Grenzwerte \(\lim _{n \to \infty } \left (\int _a^b f_n(x)\dx \right ) = \int _a^b f(x)\dx \) und sind gleich.
+</p>
+
+<p>
+<b>Vertauschen von \(\sum _{n=1}^\infty \) und \(\int _a^b\)</b>: Seien \(a_n \in \C ([a,b], \field ^d)\) fu&#x0308;r \(n \in \natural \), wobei<br />
+\(\sum _{n=1}^\infty a_n(x) = S(x)\) gleichma&#x0308;ßig bzgl. \(x \in [a,b]\).<br />
+Dann gibt es die Grenzwerte \(\sum _{n=1}^\infty \left (\int _a^b a_n(x)\dx \right ) = \int _a^b S(x)\dx \) und sind gleich.
+</p>
+
+<p>
+<b>Vertauschen von \(\lim _{x \to x_0}\) und \(\int _a^b\)</b>: Seien \(M\) ein metrischer Raum mit \(X \subset M\) und<br />
+\(x_0 \in \acc (X)\). Außerdem sei \(f: X \times [a,b] \rightarrow \field ^d\) eine Funktion mit \(\forall _{x \in X}\; f(x, \cdot ) \in \C ([a,b])\) und \(\lim _{x \to x_0} f(x, y) = \varphi
+_{x_0}(y)\) werde gleichma&#x0308;ßig bzgl. \(y \in [a,b]\) angenommen.<br />
+Dann gibt es die Grenzwerte \(\lim _{x \to x_0} \left (\int _a^b f(x, y)\dy \right ) = \int _a^b \varphi _{x_0}(y)\dy \) und sind gleich.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>kartesisches Produkt zweier metrischer Ra&#x0308;ume</b>: Seien \((M_1, d_1)\) und \((M_2, d_2)\) zwei metrische Ra&#x0308;ume und \(M = M_1 \times M_2\). Definiere fu&#x0308;r \(m’ = (x’, y’) \in M\)
+und \(m’’ = (x’’, y’’) \in M\) die Funktion \(d(m’, m’’) = d_1(x’, x’’) + d_2(y’, y’’)\). Damit wird \((M, d)\) zum metrischen Raum, \(d\) ist die von \(M = M_1 \times M_2\) induzierte Metrik. Ist eine Folge von
+\(m_k = (x_k, y_k) \in M\) und \(m = (x, y)\) gegeben, so ist \(m_k \xrightarrow {d} m \;\Leftrightarrow \; (x_k \xrightarrow {d_1} x) \land (y_k \xrightarrow {d_2} y)\).
+</p>
+
+<p>
+<b>Lemma fu&#x0308;r kompakte Mengen</b>: Seien \(X \subset M_1\) kompakt und \(Y \subset M_2\) kompakt.<br />
+Dann ist \(X \times Y \subset M\) ebenfalls kompakt.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Satz (Stetigkeit von \(J(x)\))</b>: Seien \(M\) ein metrischer Raum, \(X \subset M\) kompakt und<br />
+\(f: X \times [a,b] \rightarrow \field ^d\) mit \(f \in \C (X \times [a,b], \field ^d)\).<br />
+Dann ist \(J(x) = \int _a^b f(x, y)\dy \) stetig in \(x\).
+</p>
+
+
+
+<h2 id="zum-vertauschen-von-grenzwert-und-ableitung">Zum Vertauschen von Grenzwert und Ableitung</h2>
+
+</p>
+
+
+<p>
+<b>Vorsicht</b>: Seien \(f_n \in \C ([a,b])\) gegeben mit \(f_n\) diffb. in \(\left ]a,b\right [\) sowie \(f_n(x) \rightrightarrows f(x)\) gleichma&#x0308;ßig bzgl. \(x \in [a,b]\). Dann gilt i.&#x202f;A.
+<em>nicht</em>, dass \(f\) in \(\left ]a,b\right [\) diffb. ist und \(f’(x) = \lim _{n \to \infty } f_n’(x)\)!
+</p>
+
+<p>
+<b>Vertauschen von \(\lim _{n \to \infty }\) und \(\frac {d}{dx}\)</b>: Seien \(f_n \in \C ^1([a,b], \field ^d)\) fu&#x0308;r \(n \in \natural \) und fu&#x0308;r alle \(x \in [a,b]\) existiere der Grenzwert
+\(\lim _{n \to \infty } f_n(x) = f(x)\) sowie der Grenzwert \(\lim _{n \to \infty } f_n’(x) = \varphi (x)\) werde gleichma&#x0308;ßig bzgl. \(x \in [a,b]\) angenommen. Dann ist auch \(f \in \C
+^1([a,b])\) und \(f’(x) = \varphi (x)\).
+</p>
+
+<p>
+Unter diesen Voraussetzungen gilt somit \(\lim _{n \to \infty } \left (\frac {d}{dx} f_n(x)\right ) = \frac {d}{dx} \left (\lim _{n \to \infty } f_n(x)\right )\).
+</p>
+
+<p>
+<b>Vertauschen von \(\sum _{n=1}^\infty \) und \(\frac {d}{dx}\)</b>: Seien \(a_k \in \C ^1([a,b], \field ^d)\) fu&#x0308;r \(k \in \natural \) und fu&#x0308;r alle<br />
+\(x \in [a,b]\) existiere die Reihe \(\sum _{k=1}^\infty a_k(x) = S(x)\) sowie der Grenzwert \(\sum _{k=1}^\infty a_k’(x) = T(x)\) werde gleichma&#x0308;ßig bzgl. \(x \in [a,b]\) angenommen.<br />
+Dann ist auch \(S \in \C ^1([a,b])\) und \(S’(x) = T(x)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>partielle Ableitung</b>: Seien \(f: \left ]a,b\right [ \times Y \rightarrow \field ^d\) eine Funktion mit \(x_0 \in \left ]a,b\right [\) und \(y_0 \in Y\).<br />
+Dann ist \(\left .\frac {\partial f}{\partial x}\right |_{(x_0, y_0)} := \lim _{h \to 0,\; h \in \field } \frac {f(x_0 + h, y_0) - f(x_0, y_0)}{h}\)<br />
+die <em>partielle Ableitung</em> von \(f\) nach \(x\) im Punkt \((x_0, y_0)\).
+</p>
+
+<p>
+<b>Vertauschen von \(\lim _{y \to y_0}\) und \(\frac {d}{dx}\)</b>: Seien \(M\) ein metrischer Raum, \(Y \subset M\), \(y_0 \in \acc (Y)\) und \(f: \left ]a,b\right [ \times Y \rightarrow \field ^d\) eine
+Funktion, wobei \(\forall _{y \in Y}\; f(\cdot , y) \in \C ^1([a,b], \field ^d)\), fu&#x0308;r alle \(x \in [a,b]\) existiere der Grenzwert \(\lim _{y \to y_0} f(x,y) = \varphi (x)\) sowie der Grenzwert
+\(\lim _{y \to y_0}\) \(\frac {\partial f(x,y)}{\partial x}\) \(= \psi (x)\) werde gleichma&#x0308;ßig bzgl. \(x \in [a,b]\) angenommen. Dann ist auch \(\varphi \in \C ^1([a,b])\) und \(\varphi ’(x) =
+\psi (x)\).
+</p>
+
+<p>
+Unter diesen Voraussetzungen gilt somit \(\frac {d}{dx} \left (\lim _{y \to y_0} f(x,y)\right ) = \lim _{y \to y_0} \left (\frac {\partial }{\partial x} f(x,y)\right )\).
+</p>
+
+
+
+<h2 id="differenzieren-und-integrieren-von-parameterabhaengigen-integralen">Differenzieren und Integrieren von parameterabhängigen Integralen</h2>
+
+</p>
+
+
+<p>
+<b>Satz</b>: Seien \(\Omega = [a,b] \times [c,d]\) und \(f, \frac {\partial f}{\partial y} \in \C (\Omega , \field ^d)\).<br />
+Dann ist \(J(y) = \int _a^b f(x,y)\dx \in \C ^1([c,d])\) und \(J’(y) = \int _a^b \frac {\partial f(x,y)}{\partial y} \dx \).
+</p>
+
+<p>
+<b>Satz</b>: Seien \(\Omega = [a,b] \times [c,d]\) und \(f \in \C (\Omega , \field ^d)\).<br />
+Dann ist \(\int _a^b \left (\int _c^d f(x,y)\dy \right )\dx = \int _c^d \left (\int _a^b f(x,y)\dx \right )\dy \).
+</p>
+
+
+
+<h2 id="stetigkeit-und-diffbarkeit-von-integralen-mit-parameterabh-grenzen">Stetigkeit und Diff.barkeit von Integralen mit parameterabh. Grenzen</h2>
+
+</p>
+
+
+<p>
+Seien \(\Omega = [a,b] \times [c,d]\), \(f \in \C (\Omega , \field ^d)\) und \(\alpha , \beta : [c,d] \rightarrow [a,b]\).<br />
+Man betrachtet nun das Integral \(J(y) = \int _{\alpha (y)}^{\beta (y)} f(x,y)\dx \).
+</p>
+
+<p>
+<b>Satz 1</b>: Seien \(f \in \C (\Omega , \field ^d)\) und \(\alpha , \beta \in \C ([c,d], [a,b])\).<br />
+Dann ist \(J(y) = \int _{\alpha (y)}^{\beta (y)} f(x,y)\dx \in \C ([c,d])\).
+</p>
+
+<p>
+<b>Satz 2</b>: Seien \(\Omega _\delta = [a,b] \times [c - \delta , c + \delta ]\) fu&#x0308;r \(\delta &gt; 0\), \(f \in \C (\Omega _\delta )\), \(\frac {\partial f}{\partial y} \in \C (\Omega
+_\delta )\) und \(\alpha , \beta \) in \(\left ]c,d\right [\) diffb. Dann ist \(J(y)\) ist diffb. fu&#x0308;r \(y \in \left ]c,d\right [\) und<br />
+\(J’(y_0) = \int _{\alpha (y_0)}^{\beta (y_0)} \left .\frac {\partial f(x, y)}{\partial y}\right |_{y = y_0}\dx + \beta ’(y_0) \cdot f(\beta (y_0), y_0) - \alpha ’(y_0) \cdot f(\alpha (y_0),
+y_0)\).
+</p>
+
+
+
+<h2 id="zum-vertauschen-von-grenzwert-und-uneigentlichem-integral">Zum Vertauschen von Grenzwert und uneigentlichem Integral</h2>
+
+</p>
+
+
+<p>
+<b>Vertauschen von \(\lim _{n \to \infty }\) und \(\int _0^{+\infty }\)</b>: Seien \(f_n \in \C (\left [0,+\infty \right [, \real )\) fu&#x0308;r \(n \in \natural \), wobei<br />
+\(\lim _{R \to \infty } \left (\int _0^R f_n(x)\dx \right ) = \int _0^{+\infty } f_n(x)\dx \) gleichma&#x0308;ßig bzgl. \(n \in \natural \) und<br />
+\(f(x) = \lim _{n \to \infty } f_n(x)\) gleichma&#x0308;ßig bzgl. \(x \in [0,R]\) fu&#x0308;r jedes fixierte \(R &gt; 0\) angenommen werden.<br />
+Dann gibt es die Grenzwerte \(\int _0^{+\infty } f(x)\dx = \lim _{n \to \infty } \left (\int _0^{+\infty } f_n(x)\dx \right )\) und sind gleich.
+</p>
+
+<p>
+<b>Vertauschen von \(\sum _{n=1}^\infty \) und \(\int _0^{+\infty }\)</b>: Seien \(f_n \in \C (\left [0,+\infty \right [, \real )\) fu&#x0308;r \(n \in \natural \), wobei<br />
+\(\lim _{R \to \infty } \left (\int _0^R f_n(x)\dx \right ) = \int _0^{+\infty } f_n(x)\dx \) gleichma&#x0308;ßig bzgl. \(n \in \natural \) und<br />
+\(f(x) = \sum _{n=1}^\infty f_n(x)\) gleichma&#x0308;ßig bzgl. \(x \in [0,R]\) fu&#x0308;r jedes fixierte \(R &gt; 0\) angenommen werden.<br />
+Dann gibt es die Grenzwerte \(\int _0^{+\infty } f(x)\dx = \sum _{n=1}^\infty \left (\int _0^{+\infty } f_n(x)\dx \right )\) und sind gleich.
+</p>
+
+<p>
+<b>Vertauschen von \(\lim _{y \to y_0}\) und \(\int _0^{+\infty }\)</b>: Seien \(M\) ein metrischer Raum, \(Y \subset M\), \(y_0 \in \acc (Y)\) und \(f \in \C (\left [0, +\infty \right [ \times Y, \real
+)\), wobei<br />
+\(\lim _{R \to \infty } \left (\int _0^R f(x,y)\dx \right ) = \int _0^{+\infty } f(x,y)\dx \) gleichma&#x0308;ßig bzgl. \(y \in Y\) und<br />
+\(\lim _{y \to y_0} f(x,y) = \varphi _{y_0}(x)\) gleichma&#x0308;ßig bzgl. \(x \in [0,R]\) angenommen werden.<br />
+Dann existieren die Grenzwerte \(\int _0^{+\infty } \varphi _{y_0}(x)\dx = \lim _{y \to y_0} \left (\int _0^{+\infty } f(x,y)\dx \right )\) und sind gleich.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Vertauschen von \(\frac {d}{dx}\) und \(\int _0^{+\infty }\)</b>: Seien \(\Omega = \left [0, +\infty \right [ \times [c,d]\) und \(f, \frac {\partial f}{\partial y} \in \C (\Omega , \real )\),<br
+/>
+wobei fu&#x0308;r alle \(y \in [c,d]\) der Grenzwert \(\lim _{R \to \infty } \left (\int _0^R f(x,y)\dx \right ) = \int _0^{+\infty } f(x,y)\dx \) existiert und<br />
+\(\lim _{R \to \infty } \left (\int _0^R \frac {\partial f(x, y)}{\partial y}\dx \right ) = \int _0^{+\infty } \frac {\partial f(x,y)}{\partial y}\dx \) gleichma&#x0308;ßig bzgl. \(y \in [c,d]\)
+angenommen wird.<br />
+Dann ist \(\int _0^{+\infty } f(x,y)\dx \) differenzierbar und \(\frac {d}{dy} \left (\int _0^{+\infty } f(x,y)\dx \right ) = \int _0^{+\infty } \frac {\partial f(x,y)}{\partial y}\dx \).
+</p>
+
+<p>
+<b>Vertauschen von \(\int _c^d\) und \(\int _0^{+\infty }\)</b>: Seien \(\Omega = \left [0, +\infty \right [ \times [c,d]\) und \(f \in \C (\Omega , \real )\), wobei<br />
+\(\lim _{R \to \infty } \int _0^R f(x,y)\dx = \int _0^{+\infty } f(x,y)\dx \) gleichma&#x0308;ßig bzgl. \(y \in [c,d]\) angenommen wird.<br />
+Dann ist \(\int _c^d \left (\int _0^{+\infty } f(x,y)\dx \right )\dy = \int _0^{+\infty } \left (\int _c^d f(x,y)\dy \right )\dx \).
+</p>
+
+
+
+<h2 id="potenzreihen">Potenzreihen</h2>
+
+</p>
+
+
+<p>
+<b>Potenzreihe</b>: Fu&#x0308;r \(k \in \natural _0\) seien \(a_k \in \complex \) sowie \(z_0 \in \complex \) gegeben.<br />
+Man definiert \(S_n(z) = a_0 + \sum _{k=1}^n a_k(z - z_0)^k\) fu&#x0308;r \(z \in \complex \).<br />
+Dann heißt \(S(z) = \lim _{n \to \infty } S_n(z) = \sum _{k=0}^\infty a_k(z - z_0)^k\) <em>Potenzreihe</em>.
+</p>
+
+<p>
+Man will untersuchen, fu&#x0308;r welche \(z\) eine gegebene Potenzreihe konvergiert und fu&#x0308;r welche nicht. Im Weiteren betrachten wir durch \(\widetilde {z} = z - z_0\), also \(\sum _{k=0}^\infty a_k (z -
+z_0)^k = \sum _{k=0}^\infty a_k \widetilde {z}^k\), ohne Einschra&#x0308;nkung nur noch Potenzreihen mit \(z_0 = 0\).
+</p>
+
+<p>
+<b>Konvergenzkreis/-radius</b>: Sei eine Potenzreihe \(\sum _{k=0}^\infty a_k z^k\) gegeben. \(U_R = \{z \in \complex \;|\; |z| &lt; R\}\) heißt <em>Konvergenzkreis</em> der Potenzreihe mit dem
+<em>Konvergenzradius</em> \(R\), falls<br />
+\(\sum _{k=0}^\infty a_k z^k\) fu&#x0308;r alle \(z \in U_R\) konvergent ist (d.&#x202f;h. \(|z| &lt; R\)) und<br />
+\(\sum _{k=0}^\infty a_k z^k\) fu&#x0308;r alle \(z \notin \overline {U_R}\) divergent ist (d.&#x202f;h. \(|z| &gt; R\)).<br />
+Fu&#x0308;r \(|z| = R\) macht der Konvergenzkreis keine Aussage. Mo&#x0308;glich sind fu&#x0308;r \(R\) auch \(R = 0\) (konvergent nur fu&#x0308;r \(z = 0\)) und \(R = +\infty \) (konvergent fu&#x0308;r alle \(z
+\in \complex \)).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Satz von <span class="textsc" >Cauchy</span>-<span class="textsc" >Hadamard</span></b>: Jede Potenzreihe \(\sum _{k=0}^\infty a_k z^k\) (\(a_k, z \in \complex \)) besitzt einen Konvergenzkreis mit
+dem Konvergenzradius \(R = \frac {1}{\limsup _{k \to \infty } \sqrt [k]{|a_k|}}\).<br />
+Fu&#x0308;r \(a_n \not = 0\), \(n \ge N\) gilt \(R = \lim _{n \to \infty } \Big |\)\(\frac {a_n}{a_{n+1}}\)\(\Big |\), falls der Grenzwert existiert.<br />
+(Alle Fa&#x0308;lle \(R \in \left ]0, +\infty \right [ \cup \{0\} \cup \{+\infty \}\) sind zugelassen.)
+</p>
+
+<p>
+<b>Satz</b>: Sei \(R \le +\infty \) und \(R &gt; 0\). Wa&#x0308;hle \(R_1 &lt; R\) mit \(R_1 &gt; 0\).<br />
+Dann konvergiert \(S(z) = \sum _{k=0}^\infty a_k z^k\) gleichma&#x0308;ßig bzgl \(|z| &lt; R_1\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Satz (Differenzieren von Potenzreihen)</b>: Seien \(S(z) = \sum _{k=0}^\infty c_k (z - a)^k\) eine Potenzreihe mit Konvergenzradius \(R &gt; 0\) und \(S_1(z) = \sum _{k=1}^\infty k c_k (z -
+a)^{k-1}\).<br />
+Dann ist \(S(z)\) im Konvergenzkreis komplex differenzierbar und die Ableitung erfolgt gliedweise, d.&#x202f;h. es gilt \(S’(z) = S_1(z)\) fu&#x0308;r alle \(z \in \complex \) mit \(|z - a| &lt; R\).<br />
+Dabei ist die Ableitung eine Potenzreihe mit demselben Konvergenzradius.
+</p>
+
+<p>
+<b>Satz (Integrieren von Potenzreihen)</b>: Seien \(S(z) = \sum _{k=0}^\infty c_k (z - a)^k\) eine Potenzreihe mit Konvergenzradius \(R &gt; 0\) und \(S_{-1}(z) = C + \sum _{k=0}^\infty \frac {c_k}{k + 1}
+(z - a)^{k+1}\).<br />
+Dann ist \(S_{-1}(z)\) eine Potenzreihe mit demselben Konvergenzradius und gliedweise diffb. mit \(S_{-1}’(z) = S(z)\). Also ist \(S_{-1}(z)\) eine Stammfunktion von \(S(z)\).
+</p>
+
+<p>
+Potenzreihen sind also in ihrem Konvergenzkreis beliebig oft komplex differenzierbar und aufleitbar. Die Ableitung kann durch gliedweise Differenzieren bestimmt werden, analog wird die Stammfunktion durch gliedweise Integrieren
+bestimmt.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Potenzreihen als <span class="textsc" >Taylor</span>-Reihen darstellen</b>: Sei \(S(z) = \sum _{k=0}^\infty c_k (z - a)^k\) eine Potenzreihe mit Konvergenzradius \(R &gt; 0\). Dann ist \(c_0 = S(a)\),
+\(c_1 = S’(a)\), \(c_2 = \frac {S’’(a)}{2!}\), &#x2026;, \(c_k = \frac {S^{(k)}(a)}{k!}\), d.&#x202f;h. die \(c_k\) sind die Taylorkoeffizienten. Also ist jede Potenzreihe in ihrem Konvergenzkreis durch ihre Taylorreihe
+darstellbar: \(S(z) = \sum _{k=0}^\infty \frac {S^{(k)}(a)}{k!} (z - a)^k\).
+</p>
+
+<p>
+<b><span class="textsc" >Taylor</span>-Reihe einer Funktion</b>: Sei \(f: \left ]-R,R\right [ \rightarrow \complex \) eine Funktion mit \(R &gt; 0\), wobei \(f\) in \(x_0 = 0\) beliebig oft reell differenzierbar
+ist.<br />
+Dann la&#x0308;sst sich bekannterweise \(f\) durch \(f(x) = T_n(x) + r_n(0, x)\) mit \(T_n(x) = \sum _{k=0}^n \frac {f^{(k)}(0)}{k!} x^k\) als <b><span class="textsc" >Taylor</span>-Polynom</b> und
+\(r_n(0, x) = r_n(x) = o(x^n)\) fu&#x0308;r \(x \to 0\) darstellen.
+</p>
+
+<p>
+Im Allgemeinen muss \(T_n(x)\) fu&#x0308;r \(n \to \infty \) nicht unbedingt konvergieren.<br />
+Besitzt jedoch \(t(x) = \lim _{n \to \infty } T_n(x) = \sum _{k=0}^\infty \frac {f^{(k)}(0)}{k!} x^k\) einen Konvergenzradius \(R &gt; 0\), so bezeichnet man \(t(x)\) als <b><span class="textsc"
+>Taylor</span>-Reihe</b> von \(f(x)\). Allerdings ist i.&#x202f;A. \(t(x) \not = f(x)\) fu&#x0308;r alle \(x\), d.&#x202f;h. der Rest \(r_n(x)\) muss fu&#x0308;r \(n \to \infty \) nicht gegen \(0\) konvergieren!
+</p>
+
+<p>
+<b>als <span class="textsc" >Taylor</span>reihe darstellbar</b>: \(f\) ist in einer Umgebung von \(x_0 = 0\) als Taylor-Reihe darstellbar, falls \(f(x) = t(x)\) ist fu&#x0308;r \(|x| &lt; \varepsilon \).
+</p>
+
+<p>
+<b>Satz (Kriterium fu&#x0308;r Darstellbarkeit)</b>: Seien \(f: \left ]-R,R\right [ \rightarrow \complex \) beliebig oft diffb.,<br />
+\(\forall _{k \in \natural } \exists _{C(k)} \forall _{|x| &lt; R}\; |f^{(k)}(x)| \le C(k)\) sowie \(\lim _{k \to \infty } \frac {C(k) R^k}{k!} = 0\).<br />
+Dann ist \(f(x) = t(x)\) fu&#x0308;r \(|x| &lt; R\).
+</p>
+
+
+
+<h2 id="der-satz-von-stone-und-weierstrass">Der Satz von <span style="font-variant: small-caps;">Stone</span> und <span style="font-variant: small-caps;">Weierstraß</span></h2>
+
+</p>
+
+
+<p>
+<b>Satz von <span class="textsc" >Stone</span> und <span class="textsc" >Weierstraß</span></b>: Die Menge der Polynome ist in \(C([a,b])\) dicht.
+</p>
+
+<p>
+<b>a&#x0308;quivalente Formulierung</b>: Gegeben sei eine stetige Funktion \(f: [a,b] \rightarrow \complex \). Dann gibt es eine Folge von Polynomen \(P_n(x)\), sodass \(\lim _{n \to \infty } P_n(x) = f(x)\)
+gleichma&#x0308;ßig bzgl. \(x \in [a,b]\).
+</p>
+
+
+
+<h2 id="die-eulerschen-integrale">Die <span style="font-variant: small-caps;">Euler</span>schen Integrale</h2>
+
+</p>
+
+
+<p>
+<b>Betafunktion</b>: \(B(a, b) = \int _0^1 x^{a-1} (1 - x)^{b-1} \dx \), \(a, b &gt; 0\)
+</p>
+
+<p>
+\(B(a, b)\) ist konvergent fu&#x0308;r alle \(a, b &gt; 0\):<br />
+\(a \ge 1\), \(b \ge 1\): Riemann-Integral, da Integrand beschra&#x0308;nkt, sonst konvergentes uneigentliches Integral, denn \(\int _0^1 x^{a-1} (1 - x)^{b-1} \dx = \int _0^{\frac {1}{2}} x^{a-1} (1 -
+x)^{b-1} \dx + \int _{\frac {1}{2}}^1 x^{a-1} (1 - x)^{b-1} \dx \),<br />
+fu&#x0308;r das Integral \(\int _0^{\frac {1}{2}} x^{a-1} (1 - x)^{b-1} \dx \) gilt \((1 - x)^{b-1} \le \left (\frac {1}{2}\right )^{b-1}\) fu&#x0308;r \(0 \le x \le \frac {1}{2}\) sowie<br />
+\(\int _0^{\frac {1}{2}} x^{a-1} \dx = \frac {2^{-a}}{a} &lt; \infty \),<br />
+fu&#x0308;r das Integral \(\int _{\frac {1}{2}}^1 x^{a-1} (1 - x)^{b-1} \dx \) gilt \(x^{a-1} \le \left (\frac {1}{2}\right )^{a-1}\) fu&#x0308;r \(\frac {1}{2} \le x \le 1\), sowie<br />
+\(\int _{\frac {1}{2}}^1 (1 - x)^{b-1} \dx = \frac {2^{-b}}{b} &lt; \infty \), \(0 &lt; a &lt; 1\), \(0 &lt; b &lt; 1\)
+</p>
+
+<p>
+<b>Eigenschaften der Betafunktion</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f2"><p>\(B(a, b) = B(b, a)\)
+</p>
+</li>
+<li class="list-item-f3"><p>\(B(a, b) =\) \(\frac {b - 1}{a + b - 1}\) \(\cdot \; B(a, b - 1)\) fu&#x0308;r \(a &gt; 0\), \(b &gt; 1\) und<br />
+\(B(a, b) =\) \(\frac {a - 1}{a + b - 1}\) \(\cdot \; B(a - 1, b)\) fu&#x0308;r \(a &gt; 1\), \(b &gt; 0\)
+</p>
+</li>
+<li class="list-item-f4"><p>\(B(a, 1 - a) =\) \(\frac {\pi }{\sin a\pi }\)
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Gammafunktion</b>: \(\Gamma (a) = \int _0^\infty x^{a-1} e^{-x} \dx \), \(a &gt; 0\)
+</p>
+
+<p>
+\(\Gamma (a)\) ist konvergent fu&#x0308;r alle \(a &gt; 0\):<br />
+\(\int _0^\infty x^{a-1} e^{-x} \dx = \int _0^1 x^{a-1} e^{-x} \dx + \int _1^\infty x^{a-1} e^{-x} \dx \),<br />
+das Integral \(\int _0^1 x^{a-1} e^{-x} \dx \) ist fu&#x0308;r \(a \ge 1\) ein Riemann-Integral, da Integrand beschra&#x0308;nkt, sonst gilt \(x^{a-1} e^{-x} \le x^{a-1}\) fu&#x0308;r \(a &lt; 1\), \(x \in
+[0,1]\),<br />
+das Integral \(\int _1^\infty x^{a-1} e^{-x} \dx \) konvergiert, da \(x^{a-1} e^{-x} \le x^{-2}\) fu&#x0308;r genu&#x0308;gend große \(x\)
+</p>
+
+<p>
+<b>Eigenschaften der Gammafunktion</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f5"><p>  \(\Gamma (a)\) stetig
+</p>
+</li>
+<li class="list-item-f6"><p>  \(\Gamma (a)\) differenzierbar und \(\Gamma ’(a) = \int _0^\infty x^{a-1} \ln (x) e^{-x} \dx \)
+</p>
+</li>
+<li class="list-item-f7"><p>  \(\Gamma (a + 1) = a \cdot \Gamma (a)\), es gilt daher \(\Gamma (n + a) = (n + a - 1) (n + a - 2) \dotsm (a + 1) a \cdot \Gamma (a)\) und insbesondere \(\Gamma (n + 1) = n!\) (da \(\Gamma
+(1) = 1\))
+</p>
+</li>
+<li class="list-item-f8"><p>  \(\lim _{a \to 0} \Gamma (a) = \lim _{a \to \infty } \Gamma (a) = +\infty \)
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Zusammenhang zwischen Beta- und Gammafunktion</b>: \(B(a, b) =\) \(\frac {\Gamma (a) \Gamma (b)}{\Gamma (a + b)}\)
+</p>
+
+
+
+<h2 id="zusatz-ein-analytischer-beweis-des-hauptsatzes-der-algebra">Zusatz: Ein analytischer Beweis des Hauptsatzes der Algebra</h2>
+
+</p>
+
+
+<p>
+<b>Satz (Hauptsatz der Algebra)</b>:<br />
+Jedes Polynom in \(\complex \) vom Grad gro&#x0308;ßer/gleich \(1\) besitzt mindestens eine Nullstelle.
+</p>
+
+<p>
+<b>Lemma 1</b>: \(\forall _{M &gt; 0} \exists _{R &gt; 0} \forall _{|z| \ge R}\; |p(z)| \ge M\)
+</p>
+
+<p>
+<b>Lemma 2</b>: \(\forall _{z^\ast \in \complex ,\; p(z^\ast ) \not = 0} \exists _{h \in \complex }\; |p(z^\ast + h)| &lt; |p(z^\ast )|\)
+</p>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

@@ -1,0 +1,1766 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\renewcommand {\AA }{\mathbb {A}}\)
+
+\(\newcommand {\EE }{\mathbb {E}}\)
+
+\(\newcommand {\PP }{\mathbb {P}}\)
+
+\(\newcommand {\UU }{\mathbb {U}}\)
+
+\(\newcommand {\XX }{\mathbb {X}}\)
+
+\(\renewcommand {\C }{\mathcal {C}}\)
+
+\(\renewcommand {\F }{\mathcal {F}}\)
+
+\(\renewcommand {\H }{\mathcal {H}}\)
+
+\(\renewcommand {\O }{\mathcal {O}}\)
+
+\(\renewcommand {\S }{\mathcal {S}}\)
+
+\(\newcommand {\GL }{\mathrm {GL}}\)
+
+\(\newcommand {\eps }{\mathrm {eps}}\)
+
+\(\renewcommand {\div }{\mathrm {div}}\)
+
+\(\newcommand {\rot }{\mathrm {rot}}\)
+
+\(\newcommand {\D }{\mathop {}\!\mathrm {D}}\)
+
+\(\newcommand {\iu }{\text {i}}\)
+
+\(\newcommand {\tr }{\text {tr}}\)
+
+\(\newcommand {\Vor }{\mathrm {Vor}}\)
+
+\(\newcommand {\Del }{\mathrm {Del}}\)
+
+\(\newcommand {\Rang }{\text {Rang}}\)
+
+\(\newcommand {\id }{\text {id}}\)
+
+\(\newcommand {\sinc }{\operatorname {sinc}}\)
+
+\(\newcommand {\code }[1]{\texttt {#1}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  content:'–\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  content:'–\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f9::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f10::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f11::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f12::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f13::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f14::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+
+<h2 id="klassfikation-von-projektionen">Klassfikation von Projektionen</h2>
+
+</p>
+
+
+<p>
+<b>planare geometrische Projektionen</b>:<br />
+<em><span class="dashuline" >Planare geometrische Projektionen</span></em> lassen sich unterteilen in:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p><em><span class="dashuline" >parallele Projektionen</span></em> (Projektionsstrahlen sind parallel):
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f1"><p><em><span class="dashuline" >Orthogonalprojektionen</span></em> (Projektionsrichtung normal zur Zeichenebene):
+</p>
+<ul style="list-style-type:none">
+
+
+<li>
+<p>
+<em><span class="dashuline" >Normalprojektionen</span></em> (Projektionsrichtung achsenparallel):<br />
+Aufsicht, Grundriss usw.
+</p>
+</li>
+<li>
+<p>
+<em><span class="dashuline" >axonometrische Projektionen</span></em> (Projektionsrichtung nicht achsenparallel):<br />
+<em><span class="dashuline" >isometrische/dimetrische/trimetrische Axonometrie</span></em><br />
+(Skalierung aller Achsen/von zwei Achsen gleich/aller Achsen unterschiedlich)
+</p>
+</li>
+</ul>
+</li>
+<li class="list-item-f2"><p><em><span class="dashuline" >Schra&#x0308;grisse</span></em> (Projektionsrichtung nicht normal zur Zeichenebene):<br />
+<em><span class="dashuline" >Kabinettriss</span></em>, <em><span class="dashuline" >Kavalierriss</span></em>
+</p>
+</li>
+</ul>
+</li>
+<li class="list-item-f3"><p><em><span class="dashuline" >perspektivische Projektionen</span></em> (Projektionsstrahlen sind nicht parallel):<br />
+<em><span class="dashuline" >Einpunkt-/Zweipunkt-/Dreipunkt-Perspektive</span></em>
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="projektive-raeume">Projektive Räume</h2>
+<b>projektiver Raum</b>: Sei \(\vec {V}\) ein Vektorraum. Dann heißt die Menge \(\PP (\vec {V})\) aller eindimensionalen Unterra&#x0308;ume von \(\vec {V}\) <em><span class="dashuline" >projektiver
+Raum</span></em> mit <em><span class="dashuline" >zugrunde liegendem Vektorraum</span></em> \(\vec {V}\).
+</p>
+
+<p>
+<b>Dimension</b>: Ist \(\dim \vec {V} &lt; \infty \), dann ist \(\dim \PP (\vec {V}) := \dim \vec {V} - 1\) die <em><span class="dashuline" >Dimension</span></em> von \(\PP (\vec {V})\).
+</p>
+
+<p>
+<b>projektiver Raum u&#x0308;ber \(\real \)</b>:<br />
+\(\PP ^n(\real ) := \PP (\vec {\real }^{n+1})\) heißt <em><span class="dashuline" >\(n\)-dimensionaler projektiver Raum u&#x0308;ber \(\real \)</span></em>.
+</p>
+
+<p>
+<b>kanonische Abbildung</b>: \(\pi \colon \vec {V} \setminus \{\vec {0}\} \to \PP (\vec {V})\), \(\pi (\vec {v}) = \real \vec {v}\) heißt <em><span class="dashuline" >kanonische
+Abbildung</span></em>.<br />
+Fu&#x0308;r zwei Vektoren \(\vec {v}, \vec {w} \in \vec {V} \setminus \{\vec {0}\}\) gilt \(\pi (\vec {v}) = \pi (\vec {w}) \iff \) \(\vec {v}, \vec {w}\) sind linear abha&#x0308;ngig.
+</p>
+
+<p>
+<b>projektiver Unterraum</b>: Eine Teilmenge \(\XX \subset \PP (\vec {V})\) heißt <em><span class="dashuline" >projektiver Unterraum</span></em>, falls es einen Unterraum \(\vec {U} \le \vec {V}\) gibt mit
+\(\XX = \PP (\vec {U})\).
+</p>
+
+
+
+<h2 id="homogene-koordinaten">Homogene Koordinaten</h2>
+
+</p>
+
+
+<p>
+<b>homogene Koordinaten</b>: Sei \(\vec {v} = (v_1, \dotsc , v_n, v_{n+1}) \in \vec {\real }^{n+1} \setminus \{\vec {0}\}\).<br />
+Dann heißt \((v_1 : \dotsc : v_n : v_{n+1}) := \real \vec {v} \in \PP ^n(\real )\) <em><span class="dashuline" >homogene Koordinaten</span></em> von \(\vec {v}\).
+</p>
+
+<p>
+Homogene Koordinaten sind nicht eindeutig. Sie werden eindeutig, wenn man sie normiert, u&#x0308;berlicherweise in der letzten Komponente.
+</p>
+
+<p>
+<b>Fernhyperebene</b>: \(\H := \{(x_1 : \dotsc : x_n : 0) \;|\; x_1, \dotsc , x_n \in \real \} \subset \PP ^n(\real )\) heißt <em><span class="dashuline" >Fernhyperebene</span></em>.
+</p>
+
+<p>
+<b>affiner Teil</b>: \(\PP ^n(\real ) \setminus \H \) heißt <em><span class="dashuline" >affiner Teil des projektiven Raums \(\PP ^n(\real )\)</span></em>.
+</p>
+
+<p>
+<b>Einbettung von \(\real ^n\) in \(\PP ^n(\real )\)</b>:<br />
+Die Abbildung \(\vec {\real }^n \to \PP ^n(\real ) \setminus \H \), \((x_1, \dotsc , x_n) \mapsto (x_1 : \dotsc : x_n : 1)\) ist eine Bijektion<br />
+mit Umkehrabbildung \(\PP ^n(\real ) \setminus \H \to \vec {\real }^n\), \((y_1 : \dotsc : y_n : y_{n+1}) \mapsto (\frac {y_1}{y_{n+1}}, \dotsc , \frac {y_n}{y_{n+1}})\).
+</p>
+
+
+
+<h2 id="projektive-geraden-in-der-projektiven-ebene">Projektive Geraden in der projektiven Ebene</h2>
+
+</p>
+
+
+<p>
+<b>projektive Gerade</b>: \(\PP ^1(\real )\) ist eine <em><span class="dashuline" >projektive Gerade</span></em>.<br />
+Der affine Teil ist \(\H = \{(x_1 : x_2) \in \PP ^1(\real ) \;|\; x_2 \not = 0\}\) und \((1 : 0)\) ist der Fernpunkt.
+</p>
+
+<p>
+<b>projektive Ebene</b>: \(\PP ^2(\real )\) ist eine <em><span class="dashuline" >projektive Ebene</span></em>.<br />
+Der affine Teil ist \(\H = \{(x_1 : x_2 : x_3) \in \PP ^2(\real ) \;|\; x_3 \not = 0\}\), wogegen die Fernpunkte durch \(\{(x_1 : x_2 : 0) \in \PP ^2(\real ) \;|\; (x_1, x_2) \in \vec {\real }^2\}\)
+gegeben sind.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>projektive Geraden in der projektiven Ebene</b>: Eine Gerade in der affinen Ebene \(\vec {\real }^2\) kann implizit durch \(n_1x_1 + n_2x_2 + n_3 = 0\) dargestellt werden. Indem man \(x_1 = \xi _1/\xi _3\) und
+\(x_2 = \xi _2/\xi _3\) mit \(\xi _3 \not = 0\) setzt, erha&#x0308;lt man die Gleichung \(n_1 \xi _1 + n_2 \xi _2 + n_3 \xi _3 = 0 \iff \vec {n} \cdot \vec {\xi } = 0\). Die Gerade ist also gegeben durch
+Projektion von \(\vec {U} = \{\vec {\xi } \in \real ^3 \;|\; \vec {n} \cdot \vec {\xi } = 0\}\) auf die affine Ebene \(\xi _3 = 1\). \(\vec {U}\) ist ein zweidimensionaler Unterraum von \(\vec {\real }^3\),
+d.&#x202f;h. \(\PP (\vec {U})\) ist ein projektiver Unterraum der Dimension \(1\) der projektiven Ebene \(\PP ^2(\real )\), also eine projektive Gerade.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>projektive Gerade durch zwei Punkte</b>: Seien \(p, q \in \PP ^2(\real )\). Gesucht ist eine projektive Gerade \(L := \{\xi \in \real ^3 \;|\; \vec {n} \cdot \vec {\xi } = 0\}\) mit \(\vec {p}, \vec {q}
+\in L \iff \vec {n} \cdot \vec {p} = 0 = \vec {n} \cdot \vec {q}\).<br />
+Der gesuchte Vektor \(\vec {n}\) ist also durch \(\vec {n} := \vec {p} \times \vec {q}\) gegeben.
+</p>
+
+<p>
+<b>Schnitt zwischen zwei projektiven Geraden</b>: Seien \(L_1, L_2 \subset \PP ^2(\real )\) zwei projektive Geraden \(L_1\colon \vec {n} \cdot \vec {\xi } = 0\) und \(L_2\colon \vec {m} \cdot \vec {\xi }
+= 0\) mit \(\vec {n}, \vec {m} \in \vec {\real }^3\). Gesucht ist ein projektiver Punkt \(p = \real \vec {p} \in \PP ^2(\real )\) mit \(\vec {p} \in L_1 \cap L_2 \iff \vec {n} \cdot \vec {p} = 0 = \vec
+{m} \cdot \vec {p}\).<br />
+Der gesuchte Punkt \(p\) ist also durch \(\vec {p} := \vec {n} \times \vec {m}\) gegeben.
+</p>
+
+
+
+<h2 id="projektive-basen">Projektive Basen</h2>
+
+</p>
+
+
+<p>
+<b>projektiv unabha&#x0308;ngig</b>: \(r+1\) Punkte \(p_1, \dotsc , p_{r+1} \in \PP ^n(\real )\) heißen <em><span class="dashuline" >projektiv unabha&#x0308;ngig</span></em>, falls \(\vecs {p}{1},
+\dotsc , \vecs {p}{r+1} \in \vec {\real }^{n+1} \setminus \{\vec {0}\}\) linear unabha&#x0308;ngig sind, wobei \(p_i = \real \vecs {p}{i}\).
+</p>
+
+<p>
+<b>projektive Basis</b>: \(n+2\) Punkte \(p_1, \dotsc , p_{n+2} \in \PP ^n(\real )\) heißen <em><span class="dashuline" >projektive Basis/projektives Koordinatensystem</span></em> von \(\PP ^n(\real )\), falls je
+\(n+1\) Punkte projektiv unabha&#x0308;ngig sind.
+</p>
+
+<p>
+<b>Beispiel</b>: Die vier Punkte \((1:0:0), (0:1:0), (0:0:1), (1:1:1) \in \PP ^2(\real )\) bilden die <em><span class="dashuline" >projektive Standardbasis</span></em> von \(\PP ^2(\real )\).
+</p>
+
+
+
+<h2 id="projektive-abbildungen">Projektive Abbildungen</h2>
+
+</p>
+
+
+<p>
+<b>projektive Abbildung</b>: Eine Abbildung \(F\colon \PP (\vec {V}) \to \PP (\vec {W})\) zwischen zwei projektiven Ra&#x0308;umen heißt <em><span class="dashuline" >projektive
+Abbildung/Projektivita&#x0308;t</span></em>, falls es eine injektive lineare Abbildung \(f\colon \vec {V} \to \vec {W}\) gibt mit \(\forall _{v \in \vec {V} \setminus \{\vec {0}\}}\; F(\real \vec {v}) = \real
+f(\vec {v})\).
+</p>
+
+<p>
+<b>Lemma</b>: Zwei injektive lineare Abbildungen \(f_1, f_2\colon \vec {V} \to \vec {W}\) definieren dieselbe projektive Abbildung genau dann, wenn \(\exists _{\lambda \not =0}\; f_2 = \lambda f_1\).
+</p>
+
+<p>
+<b>Satz (eindeutige projektive Abbildung fu&#x0308;r projektive Basen)</b>:<br />
+Seien \(\dim \vec {V} = n + 1 = \dim \vec {W}\) sowie \(p_1, \dotsc , p_{n+2} \in \PP (\vec {V})\) und \(q_1, \dotsc , q_{n+2} \in \PP (\vec {W})\) projektive Basen von \(\PP (\vec {V})\) bzw. \(\PP
+(\vec {W})\).<br />
+Dann gibt es genau eine projektive Abbildung \(F\colon \PP (\vec {V}) \to \PP (\vec {W})\) mit \(\forall _{i = 1, \dotsc , n+2}\; F(p_i) = q_i\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>projektive Abb. als affine Abb.</b>: Sei \(F\colon \PP ^n(\real ) \to \PP ^n(\real )\) eine projektive Abbildung.<br />
+Dann heißt \(F\) <em><span class="dashuline" >affine Abbildung</span></em>, falls \(F(\H ) = \H \), wobei \(\H \) die Fernhyperebene von \(\PP ^n(\real )\) ist<br />
+(oder a&#x0308;quivalent \(p \in \H \iff F(p) \in \H \)).
+</p>
+
+<p>
+<b>Bedingung fu&#x0308;r affine Abb.</b>: Sei \(F\colon \PP ^n(\real ) \to \PP ^n(\real )\) eine projektive Abbildung mit zugeho&#x0308;riger linearer Abbildung \(f\colon \vec {\real }^{n+1} \to \vec {\real
+}^{n+1}\). Dann gibt es eine invertierbare Matrix \(A \in \GL _{n+1}(\real )\) mit \(f(\vec {v}) = A\vec {v}\) fu&#x0308;r alle \(\vec {v} \in \vec {\real }^{n+1}\). Ist \(p = (x_1 : \dotsc : x_{n+1}) \in \PP
+^n(\real )\) ein projektiver Punkt, dann ist \(F(p) = q := (y_1 : \dotsc : y_{n+1})\) mit \(y_i := (A\vec {x})_i = a_{i,1} x_1 + \dotsb + a_{i,n+1} x_{n+1}\). Wenn \(F\) affin ist, dann muss \(0 \overset
+{!}{=} y_{n+1} = a_{n+1,1} x_1 + \dotsb + a_{n+1,n} x_n + a_{n+1,n+1} 0\) fu&#x0308;r alle \(p = (x_1 : \dotsc : x_n : 0) \in \H \) gelten. Das geht aber nur fu&#x0308;r \(a_{n+1,1} = \dotsb =
+a_{n+1,n} = 0\). Damit gilt dann \(F(\H ) \subset \H \).<br />
+(\(p \notin \H \implies F(p) \notin \H \) gilt deshalb, weil \(a_{n+1,n+1} \not = 0\) aufgrund \(A\) invertierbar gelten muss und daher \(y_{n+1} = a_{n+1,n+1} x_{n+1} \not = 0\) fu&#x0308;r \(p = (x_1 :
+\dotsc : x_n : x_{n+1}) \notin \H \iff x_{n+1} \not = 0\).)<br />
+Somit ist \(F\) affin genau dann, wenn \(a_{n+1,1} = \dotsb = a_{n+1,n} = 0\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Beispiele</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f4"><p><em>affine Verschiebung in \(\PP ^3(\real )\)</em>: Ist \(\vec {t} := (t_x, t_y, t_z)^\tp \) der Verschiebungsvektor, so definieren \(T := \smallpmatrix
+{1&amp;0&amp;0&amp;t_x\\0&amp;1&amp;0&amp;t_y\\0&amp;0&amp;1&amp;t_z\\0&amp;0&amp;0&amp;1}\) bzw. \(\widetilde {T} := \smallpmatrix
+{t_w&amp;0&amp;0&amp;t_x\\0&amp;t_w&amp;0&amp;t_y\\0&amp;0&amp;t_w&amp;t_z\\0&amp;0&amp;0&amp;t_w}\) eine Verschiebung in homogenen Koordinaten.<br />
+Will man einen projektiven Punkt \(p = (p_x:p_y:p_z:1)\) um \(t = (t_x:t_y:t_z:1)\) verschieben, so erha&#x0308;lt man \(Tp = (p_x + t_x, p_y + t_y, p_z + t_z, 1)^\tp \).<br />
+Will man einen projektiven Punkt \(p = (p_x:p_y:p_z:p_w)\) um \(t = (t_x:t_y:t_z:t_w)\) verschieben, so erha&#x0308;lt man \(\widetilde {T}p = (t_w p_x + t_x p_w, t_w p_y + t_y p_w, t_w p_z + t_z p_w,
+t_w p_w)^\tp \) mit<br />
+\(\real (\widetilde {T}p) = (\frac {p_x}{p_w} + \frac {t_x}{t_w} : \frac {p_y}{p_w} + \frac {t_y}{t_w} : \frac {p_z}{p_w} + \frac {t_z}{t_w} : 1)\).
+</p>
+</li>
+<li class="list-item-f5"><p><em>affine Drehungen in \(\PP ^3(\real \))</em>: Affine Drehungen mit Winkel \(\alpha \) werden definiert durch<br />
+\(R_x(\alpha ) := \smallpmatrix {1&amp;0&amp;0&amp;0\\0&amp;\cos \varphi &amp;-\sin \varphi &amp;0\\ 0&amp;\sin \varphi &amp;\cos \varphi &amp;0\\0&amp;0&amp;0&amp;1}\), \(R_y(\alpha ) :=
+\smallpmatrix {\cos \varphi &amp;0&amp;\sin \varphi &amp;0\\ 0&amp;1&amp;0&amp;0\\-\sin \varphi &amp;0&amp;\cos \varphi &amp;0\\0&amp;0&amp;0&amp;1}\), \(R_z(\alpha ) := \smallpmatrix {\cos
+\varphi &amp;-\sin \varphi &amp;0&amp;0\\ \sin \varphi &amp;\cos \varphi &amp;0&amp;0\\0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;1}\).
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="parallele-orthogonalprojektionen">Parallele Orthogonalprojektionen</h2>
+               3.7.1&#x2003;Normalprojektion
+
+<p>
+<b>Normalprojektion</b>: Bei der <em><span class="dashuline" >Normalprojektion</span></em> ist die Projektionsebene achsenparallel. Zum Beispiel ist die Normalprojektion eines Punkts \(p = (x:y:z:1)\) auf die Ebene
+\(z = z_0\) gegeben durch \(\smallpmatrix {1&amp;0&amp;0&amp;0\\0&amp;1&amp;0&amp;0\\0&amp;0&amp;0&amp;z_0\\0&amp;0&amp;0&amp;1} \smallpmatrix {x\\y\\z\\1} = \smallpmatrix {x\\y\\z_0\\1}\).
+</p>
+
+
+
+<h3 id="axonometrische-projektion">Axonometrische Projektion</h3>
+
+</p>
+
+
+<p>
+<b>axonometrische Projektion</b>: Bei <em><span class="dashuline" >axonometrischen Projektionen</span></em> ist die Projektionsrichtung \(\vec {p}\) orthogonal zur Zeichenebene (die durch den Ursprung geht). Sie
+lassen sich aufspalten in eine Koordinatentransformation und eine anschließende Normalprojektion auf die Ebene \(z’ = 0\), wobei die Koordinatentransformation die Zeichenebene auf die Ebene \(z’ = 0\) abbildet.
+</p>
+
+<p>
+<b>Herleitung der Projektionsmatrix</b>: Seien \(\vec {p} \in \real ^3\) die Projektionsrichtung (Normale der Zeichenebene) mit \(|\vec {p}| = 1\), \(\vec {u} \in \real ^3\) ein beliebiger Vektor mit \(|\vec {u}|
+= 1\), der sog. <em><span class="dashuline" >Hochvektor</span></em>, und \(\vecs {e}{x}, \vecs {e}{y}, \vecs {e}{z} \in \vec {\real }^3\) die Standardbasis von \(\vec {\real }^3\). Dann ist \(\vecs
+{e}{x}’, \vecs {e}{y}’, \vecs {e}{z}’ \in \vec {\real }^3\) mit \(\vecs {e}{z}’ := -\vec {p}\), \(\vecs {e}{x}’ := \frac {\vec {u} \times \vecs {e}{z}’}{|\vec {u} \times \vecs {e}{z}’|}\) und
+\(\vecs {e}{y}’ := \vecs {e}{z}’ \times \vecs {e}{x}’\) ein rechtsha&#x0308;ndiges Koordinatensystem, dessen \(x’\)-\(y’\)-Ebene in der Projektionsebene liegt. Die Koordinatentransformation erha&#x0308;lt man
+durch \(S := \smallpmatrix {\vecs {e}{x}’ &amp; \vecs {e}{y}’ &amp; \vecs {e}{z}’}\), wobei sich die Koordinaten mit \(S^{-1} = S^\tp \) transformieren (\(S\) ist orthogonal), in homogenen Koordinaten also \(A
+:= \smallpmatrix {S^{-1} &amp; \vec {0} \\ \vec {0}^\tp &amp; 1}\). Mit der Projektion auf die Ebene \(z’ = 0\) bekommt man \(P := P_z A = \smallpmatrix
+{1&amp;0&amp;0&amp;0\\0&amp;1&amp;0&amp;0\\0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;1} \cdot A = \smallpmatrix {e_{x1}’&amp;e_{x2}’&amp;e_{x3}’&amp;0\\
+e_{y1}’&amp;e_{y2}’&amp;e_{y3}’&amp;0\\0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;1}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Beispiel</b>: Mit \(\vec {p} := \frac {1}{\sqrt {3}} (-1, -1, -1)^\tp \) und \(\vec {u} := (0, 0, 1)^\tp \) bekommt man die Projektionsmatrix \(P = \smallpmatrix {-\frac {1}{\sqrt {2}}&amp;\frac
+{1}{\sqrt {2}}&amp;0&amp;0\\ -\frac {1}{\sqrt {6}}&amp;-\frac {1}{\sqrt {6}}&amp;\frac {2}{\sqrt {6}}&amp;0\\0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;1}\). Man kann berechnen, dass zwischen den
+Bildpunkten \(\widetilde {x_i} = Px_i\) von \(x_1 := (1:0:0:1)\), \(x_2 := (0:1:0:1)\) und \(x_3 := (0:0:1:1)\) und der \(x’\)-Achse der Projektionsebene die Winkel 150&deg; bzw. 30&deg; liegen. Außerdem bleibt
+das Seitenverha&#x0308;ltnis erhalten, es handelt sich um eine Isometrie.
+</p>
+
+<p>
+<b>andere parallele Projektionen</b>: Man za&#x0308;hlt außerdem noch dimetrische (nur zwei Achsen werden nicht skaliert) und trimetrische (nur eine Achse wird nicht skaliert) Projektionen zu den parallelen
+Orthogonalprojektionen. Ist die Projektionsrichtung nicht mehr normal zur Projektionsebene, so spricht man von Schra&#x0308;grissen (dazu geho&#x0308;ren Kavlierriss und Kabinettriss).
+</p>
+
+
+
+<h2 id="perspektivische-projektionen">Perspektivische Projektionen</h2>
+
+</p>
+
+
+<h3 id="einpunkt-perspektive">Einpunkt-Perspektive</h3>
+
+</p>
+
+
+<p>
+<b>Herleitung der Einpunkt-Perspektive in \(\PP ^2(\real )\)</b>: Seien \(p, o \in \PP ^2(\real )\) zwei affine Punkte mit \(p = (x:y:1)\) und \(o := (-x_0:0:1)\), wobei \(x_0 &gt; 0\). Der Beobachter befindet
+sich im <em><span class="dashuline" >Augpunkt</span></em> \(o\) und die Projektionsgerade sei die \(y\)-Achse. Um \(p\) auf die \(y\)-Achse zu projizieren, benutzt man den Strahlensatz und erha&#x0308;lt \(y_0 = \frac
+{x_0}{x + x_0} y\) als \(y\)-Achsenabschnitt, d.&#x202f;h.<br />
+\((x:y:1) \mapsto (0:y_0:1) = (0:\frac {x_0}{x + x_0} y:1) = (0:y:1+\frac {x}{x_0})\). In Matrixschreibweise erha&#x0308;lt man<br />
+\(\smallpmatrix {0&amp;0&amp;0\\0&amp;1&amp;0\\\frac {1}{x_0}&amp;0&amp;1} \smallpmatrix {x\\y\\1} = \smallpmatrix {0\\y\\1+\frac {x}{x_0}}\). Definiert man \(P_x := \smallpmatrix
+{0&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1}\) und \(T_1 := \smallpmatrix {1&amp;0&amp;0\\0&amp;1&amp;0\\\frac {1}{x_0}&amp;0&amp;1}\), soll la&#x0308;sst sich die Matrix aufteilen in \(P_x T_1\) mit
+\(P_x\) der Projektion auf die \(y\)-Achse und \(T_1\) der <em><span class="dashuline" >perspektivischen Transformation der Einpunkt-Perspektive</span></em>. Es gilt \(T_1 p = (x : y : \frac {x}{x_0} + w)\) mit \(p :=
+(x:y:w)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Eigenschaften der perspektivischen Transformation \(T_1\)</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f6"><p><em>Grenze \(x = -x_0\) des Sichtfelds wird auf \(\H \) abgebildet</em>: Fu&#x0308;r Punkte \((-x_0:y:1)\) auf der Grenze \(x = -x_0\) des Sichtfelds \(x &gt; -x_0\) gilt \(T_1 (-x_0:y:1) = (-x_0:y:0)\).
+</p>
+</li>
+<li class="list-item-f7"><p><em>Punkte auf Projektionsgerade sind Fixpunkte</em>: Fu&#x0308;r Punkte \((0:y:1)\) auf der Projektionsgeraden (hier die \(y\)-Achse) gilt \(T_1 (0:y:1) = (0:y:1)\), d.&#x202f;h. die Projektionsgerade ist eine
+Fixpunktgerade.
+</p>
+</li>
+<li class="list-item-f8"><p><em>Parallelen zur Projektionsgeraden bleiben parallel</em>: Alle Parallelen zur Projektionsgeraden schneiden sich im Fernpunkt \((0:1:0)\), der ein Fixpunkt ist (\(T_1 (0:1:0) = (0:1:0)\)). Damit bleiben Parallelen zur
+Projektionsgeraden nach der Projektion auch parallel.
+</p>
+</li>
+<li class="list-item-f9"><p><em>Bild von Geraden durch \(o\)</em>: Sei \(g_1\) die projektive Gerade durch \(o\) und \(p := (0:y_p:1)\). Dann geht das Bild \(T_1 g_1\) der Geraden durch \(o’ := (1:0:0)\) und \(p\) (\(p\) ist ein Fixpunkt). Man
+erha&#x0308;lt \(\vec {n} = \vec {o}’ \times \vec {p} = (0, -1, y_p)^\tp \) (Formel fu&#x0308;r die Gerade durch zwei Punkte). Somit ist die Gerade \(T_1 g_1\) gegeben durch \(-\xi _2 + y_p \xi _3 = 0 \iff
+y = y_p\). Das Bild von Geraden durch \(o\) ist also nach der perspektivischen Transformation orthogonal zur Projektionsgeraden.
+</p>
+</li>
+<li class="list-item-f10"><p><em>die Bilder von Parallelen schneiden sich in einem affinen Punkt</em>:<br />
+Sei wieder \(p := (0:y_p:1)\). Dann schneiden sich alle Geraden, die parallel zu der durch \(o\) und \(p\) sind, im Fernpunkt \(s := (x_0:y_p:0)\). Damit mu&#x0308;ssen sich die Bilder dieser Geraden alle im Punkt \(s’ :=
+T_1 s = (x_0:y_p:1)\) schneiden. Unabha&#x0308;ngig von \(y_p\) liegt dieser gemeinsame Schnittpunkt (<em><span class="dashuline" >Fluchtpunkt</span></em>) auf der Geraden \(x = x_0\), der sog. <em><span
+class="dashuline" >Fluchtgeraden</span></em>. Alle Geraden enden in diesem Punkt. Wa&#x0308;hlt man \(y_0 = 0\) (also die Parallelen zur \(x\)-Achse), dann erha&#x0308;lt man den <em><span class="dashuline"
+>Hauptfluchtpunkt</span></em> \((x_0:0:1)\).
+</p>
+</li>
+</ul>
+
+
+
+<h3 id="zweipunkt-perspektive">Zweipunkt-Perspektive</h3>
+<b>Zweipunkt-Perspektive in \(\PP ^2(\real )\)</b>: Die <em><span class="dashuline" >perspektivische Transformation der Zweipunkt-Perspektive</span></em> ist gegeben durch \(T_2 p := \smallpmatrix
+{1&amp;0&amp;0\\0&amp;1&amp;0\\\frac {1}{x_0}&amp;\frac {1}{y_0}&amp;1} \smallpmatrix {x\\y\\w} = \smallpmatrix {x\\y\\\frac {x}{x_0} + \frac {y}{y_0} + w}\) mit \(x_0, y_0 &gt; 0\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Grenze des Sichtfelds</b>: Punkte der affinen Gerade \(\frac {x}{x_0} + \frac {y}{y_0} = -1\) durch \(o_1 := (-x_0:0:1)\) und \(o_2 := (0:-y_0:1)\) werden auf Fernpunkte abgebildet, d.&#x202f;h. \((x:y:1)
+\mapsto (x:y:0)\). Diese Gerade definiert daher die <em><span class="dashuline" >Grenze des Sichtfelds</span></em>.
+</p>
+
+<p>
+<b>Projektionsgerade</b>: Die Gerade \(\frac {x}{x_0} + \frac {y}{y_0} = 0\) ist eine Fixpunktgerade, die <em><span class="dashuline" >Projektionsgerade</span></em>.
+</p>
+
+<p>
+<b>Augpunkt</b>: \(o = \left (-\frac {x_0 y_0^2}{x_0^2 + y_0^2} : -\frac {x_0^2 y_0}{x_0^2 + y_0^2} : 1\right )\) mit \(T_2 o = (y_0 : x_0 : 0)\)
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Bild von Geraden durch \(o\)</b>: Geraden durch \(o\) werden auf Geraden abgebildet, die zur Projektionsgeraden senkrecht sind.
+</p>
+
+<p>
+<b>Bild von Parallelen zu Koordinatenachsen</b>: Parallelen zu den Koordinatenachsen werden auf Geraden abgebildet, die in einem der zwei <em><span class="dashuline" >Hauptfluchtpunkte</span></em> \((x_0:0:1)\),
+\((0:y_0:1)\) enden. Die Gerade \(\frac {x}{x_0} + \frac {y}{y_0} = 1\), die die beiden Hauptfluchtpunkte verbindet, heißt <em><span class="dashuline" >Fluchtgerade</span></em>: Die Bilder aller anderen Geraden
+enden in einem Punkt auf der Fluchtgeraden. Außerdem werden Fernpunkte \((s:t:0)\) auf affine Punkte der Fluchtgeraden abgebildet.
+</p>
+
+<p>
+<b>Zweipunkt-Perspektive durch Drehung der Einpunkt-Perspektive</b>:<br />
+Es gilt \(T_2 = R(\mu ) T_1 R(-\mu )\) mit \(R(\mu ) = \smallpmatrix {\cos \mu &amp;-\sin \mu &amp;0\\\sin \mu &amp;\cos \mu &amp;0\\0&amp;0&amp;1}\) (Eintrag von \(T_1\) links unten ist \(\frac
+{1}{d}\)).<br />
+Sind \(x_0, y_0\) bekannt, so ist \(\mu = \arctan \frac {x_0}{y_0}\) und \(d = \frac {x_0y_0}{\sqrt {x_0^2+y_0^2}}\).
+</p>
+
+
+
+<h3 id="dreipunkt-perspektive">Dreipunkt-Perspektive</h3>
+
+</p>
+
+
+<p>
+<b>Dreipunkt-Perspektive in \(\PP ^3(\real )\)</b>: Die <em><span class="dashuline" >perspektivische Transformation der Dreipunkt-Perspektive</span></em> ist gegeben durch \(T_3 p := \smallpmatrix
+{1&amp;0&amp;0&amp;0\\0&amp;1&amp;0&amp;0\\0&amp;0&amp;1&amp;0\\\frac {1}{x_0}&amp;\frac {1}{y_0}&amp;\frac {1}{z_0}&amp;1} \smallpmatrix {x\\y\\z\\w} = \smallpmatrix {x\\y\\z\\\frac {x}{x_0}
++ \frac {y}{y_0} + \frac {z}{z_0} + w}\) mit \(x_0, y_0, z_0 &gt; 0\).
+</p>
+
+<p>
+<b>Eigenschaften</b>: Die Grenzebene \(\frac {x}{x_0} + \frac {y}{y_0} + \frac {z}{z_0} = -1\) des Sichtfelds wird auf \(\H \) abgebildet. Die Projektionsebene \(\frac {x}{x_0} + \frac {y}{y_0} + \frac
+{z}{z_0} = 0\) ist eine Fixpunktebene. Der Augpunkt \(o\) liegt auf der Grenzebene und alle Geraden durch \(o\) werden auf affine Geraden abgebildet, die senkrecht zur Projektionsebene liegen. Daraus folgt \(o = \left
+(-\frac {x_0 y_0^2 z_0^2}{x_0^2 + y_0^2 + z_0^2} : -\frac {x_0^2 y_0 z_0^2}{x_0^2 + y_0^2 + z_0^2} : -\frac {x_0^2 y_0^2 z_0}{x_0^2 + y_0^2 + z_0^2} : 1\right )\). Fernpunkte \((s:t:u:0)\) auf
+\(\H \) werden auf \((s:t:u:\frac {s}{x_0}+\frac {t}{y_0}+\frac {u}{z_0})\) abgebildet, d.&#x202f;h. landen auf der <em><span class="dashuline" >Fluchtebene</span></em> \(\frac {x}{x_0} + \frac {y}{y_0}
++ \frac {z}{z_0} = 1\). Die Hauptfluchtpunkte sind \((x_0:0:0:1)\), \((0:y_0:0:1)\) und \((0:0:z_0:1)\).
+</p>
+
+
+
+<h3 id="rekonstruktion-von-perspektivischen-transformationen">Rekonstruktion von perspektivischen Transformationen</h3>
+
+</p>
+
+
+<p>
+<b>Rekonstruktion</b>: Bei dem Problem der <em><span class="dashuline" >Rekonstruktion von perspektivischen Transformationen</span></em> in \(\PP ^3(\real )\) sind fu&#x0308;nf Paare \((P_i, P_i’)\) von Punkten
+in \(\PP ^3(\real )\) gegeben. Gesucht ist die perspektivische Transformation \(T\) mit \(TP_i = P_i’\) fu&#x0308;r \(i = 1, \dotsc , 5\). Die Rekonstruktion verla&#x0308;uft wie folgt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f11"><p>Wa&#x0308;hle die projektive Standardbasis \(p_1 := (1:0:0:0)\), \(p_2 := (0:1:0:0)\),<br />
+\(p_3 := (0:0:1:0)\), \(p_4 := (0:0:0:1)\), \(p_5 := (1:1:1:1)\) von \(\PP ^3(\real )\).
+</p>
+</li>
+<li class="list-item-f12"><p>Bestimme homogene Matrizen \(A\) und \(B\), sodass \(Ap_i = P_i\) und \(Bp_i = P_i’\) fu&#x0308;r \(i = 1, \dotsc , 4\). Weil sie homogen sind, sind sie nur bis auf skalare Faktoren \(\lambda \) bzw.
+\(\lambda ’\) eindeutig bestimmt (jede Spalte mit einem eigenem Faktor \(\lambda _i\) bzw. \(\lambda _i’\) durchmultiplizieren).
+</p>
+</li>
+<li class="list-item-f13"><p>Indem \(Ap_5 = P_5\) und \(Bp_5 = P_5’\) eingesetzt wird, kann man \(\lambda _1, \dotsc , \lambda _4\) bzw. \(\lambda _1’, \dotsc , \lambda _4’\) in Abha&#x0308;ngigkeit von \(\lambda _5\)
+bzw. \(\lambda _5’\) darstellen (nach Lo&#x0308;sung von jeweils einem LGS).
+</p>
+</li>
+<li class="list-item-f14"><p>Aus \(P_i’ = TP_i\) folgt \(Bp_i = TAp_i\), was a&#x0308;quivalent zu \(B = TA\) ist. Nun la&#x0308;sst sich \(T\) (wiederum nur bis auf einen skalaren Faktor) durch \(T = BA^{-1}\) bestimmen.
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="opengl-vertex-pipeline">OpenGL-Vertex-Pipeline</h2>
+
+</p>
+<div class="marginblock" style="width:154pt">
+
+
+
+<div class="displaymath" >
+
+<a id="autoid-1" ></a >
+
+<p>
+<span
+    id="lateximage-visual-computing-1"
+    class="lateximagesource"
+><!--
+   Objektkoord. pobj
+
+                    Mmodel
+            
+   Weltkoord. pworld
+
+                    Mview
+            
+  Kamerakoord. pcam
+                    Mproj
+                
+    Clipkoord. pclip
+
+                    proj. Divison
+                
+norm. Gerätekoord. pndc
+
+                    Sichtbereich
+            
+  Fensterkoord. pwin
+--><img
+   src="/class-notes/images/lectures/visual-computing/image-1.svg"
+   alt="(3.1–3.0) \{begin}{align*} \xymatrix @R=10mm@C=20mm{ *=&lt;47mm,8mm&gt;[F]{\text {Objektkoord. $p_\text {obj}$}}\ar [d]^{M_\text {model}}\\ *=&lt;47mm,8mm&gt;[F]{\text {Weltkoord.
+$p_\text {world}$}}\ar [d]^{M_\text {view}}\\ *=&lt;47mm,8mm&gt;[F]{\text {Kamerakoord. $p_\text {cam}$}}\ar [d]^{M_\text {proj}}\\ *=&lt;47mm,8mm&gt;[F]{\text {Clipkoord. $p_\text
+{clip}$}}\ar [d]^{\text {proj. Divison}}\\ *=&lt;47mm,8mm&gt;[F]{\text {norm. Gerätekoord. $p_\text {ndc}$}}\ar [d]^{\text {Sichtbereich}}\\ *=&lt;47mm,8mm&gt;[F]{\text {Fensterkoord.
+$p_\text {win}$}} } \{end}{align*} "
+   style=""
+   class="lateximage"
+></span>
+</p>
+</div>
+
+</div>
+
+<p>
+<b>OpenGL-Vertex-Pipeline</b>: Rechts dargestellt ist die <em><span class="dashuline" >OpenGL-Vertex-Pipeline</span></em>, also die verschiedenen Wechsel von Koordinatensystemen, die OpenGL durchfu&#x0308;hrt, um
+letztendlich zu bestimmen, wo auf dem Bildschirm was angezeigt wird.
+</p>
+
+<p>
+<b>Objektkoordinaten</b>: Jedes Objekt „lebt“ in seinem eigenen Koordinatensystem und hat eigene <em><span class="dashuline" >Objektkoordinaten</span></em> \(p_\text {obj}\).
+</p>
+
+<p>
+<b>Weltkoordinaten</b>: Wenn man alle darzustellenden Objekte in ein Koordinatensystem legt, erha&#x0308;lt man die <em><span class="dashuline" >Weltkoordinaten</span></em> \(p_\text {world}\). Von den Objekt-
+zu den Weltkoordinaten gelangt man durch eine Transformation \(M_\text {model}\), die Rotationen, Scherungen, Skalierungen und Translationen enthalten kann.
+</p>
+
+<p>
+<b>Kamerakoordinaten</b>: Die Welt aus der Sicht der Kamera wird mithilfe der <em><span class="dashuline" >Kamerakoordinaten</span></em> \(p_{\text {cam}}\) ausgedru&#x0308;ckt. Die Kamera befindet sich dann
+im Ursprung und schaut in negative \(z\)-Richtung, wobei der Hochvektor der positiven \(y\)-Richtung entspricht. Von den Welt- zu den Kamerakoordinaten gelangt man durch die Transformation \(M_\text {view} :=
+\smallpmatrix {\vecs {e}{x}’^\tp &amp;-c_x\\\vecs {e}{y}’^\tp &amp;-c_y\\\vecs {e}{z}’^\tp &amp;-c_z\\\vec {0}^\tp &amp;1}\), wobei<br />
+\(\vecs {e}{x}’, \vecs {e}{y}’, \vecs {e}{z}’\) die Basisvektoren des Kamerasystems sind und \(\vec {c}\) die Kameraposition ist (jeweils bzgl. Weltkoordinaten).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Clipkoordinaten</b>: Die <em><span class="dashuline" >Clipkoordinaten</span></em> \(p_\text {clip}\) geben an, was die Kamera sehen kann und was nicht. Dieser Bereich heißt <em><span class="dashuline"
+>Sichtvolumen</span></em>. Es gibt zwei Arten von Sichtvolumen: orthografisches Sichtvolumen und perspektivischer Sichtstumpf. Zur Vereinheitlichung transformiert man am Ende den sichtbaren Bereich auf den Wu&#x0308;rfel
+\([-1, 1]^3\), das sog. <em><span class="dashuline" >kanonische Sichtvolumen</span></em>. Nahe Objekte sind dabei bei \(z = -1\) und ferne Objekte sind bei \(z = 1\).
+</p>
+
+<p>
+<b>orthografisches Sichtvolumen</b>: Beim <em><span class="dashuline" >orthografischen Sichtvolumen</span></em> seien Werte \(l &lt; r\), \(b &lt; t\) und \(0 &lt; n &lt; f\) vorgegeben. Das Sichtvolumen
+umfasst dann den Quader \([l, r] \times [b, t] \times [-f, -n]\)<br />
+(die Kamera befindet sich dabei im Ursprung und blickt in negative \(z\)-Richtung). Zur Transformation in das kanonische Sichtvolumen benutzt man die Transformation<br />
+\(M_\text {proj}^\text {orth} := \smallpmatrix {\frac {2}{r-l}&amp;0&amp;0&amp;0\\0&amp;\frac {2}{t-b}&amp;0&amp;0\\0&amp;0&amp;\frac {-2}{f-n}&amp;0\\0&amp;0&amp;0&amp;1} \cdot \smallpmatrix
+{1&amp;0&amp;0&amp;-\frac {r+l}{2}\\0&amp;1&amp;0&amp;-\frac {t+b}{2}\\0&amp;0&amp;1&amp;\frac {f+n}{2}\\0&amp;0&amp;0&amp;1} = \smallpmatrix {\frac {2}{r-l}&amp;0&amp;0&amp;-\frac
+{r+l}{r-l}\\0&amp;\frac {2}{t-b}&amp;0&amp;-\frac {t+b}{t-b}\\ 0&amp;0&amp;\frac {-2}{f-n}&amp;-\frac {f+n}{f-n}\\0&amp;0&amp;0&amp;1}\)<br />
+(Komposition von Translation des Mittelpunkts in \(\vec {0}\) und anschließender Skalierung).
+</p>
+
+<p>
+<b>Sichtstumpf</b>: Beim <em><span class="dashuline" >Sichtstumpf</span></em> legt man fest, dass das Sichtvolumen einem Pyramidenstumpf entspricht. Ist wieder \(l &lt; r\), \(b &lt; t\) und \(0 &lt; n &lt; f\),
+dann hat die Pyramide ihre Grundfla&#x0308;che in der Ebene \(z = -f\) und ihre Spitze im Ursprung (Kameraposition). Sie wird in der Ebene \(z = -n\) abgeschnitten, die Deckfla&#x0308;che ist gegeben durch \([l, r]
+\times [b, t] \times \{-n\}\). Die Transformation \(M_\text {proj}^\text {persp} := nI \cdot M_\text {proj}^\text {orth} \cdot T_z(-n) \cdot S_z(f/n) \cdot P_z(-n) \cdot T_z(n)\) transformiert den
+Sichtstumpf in das Volumen \([-n, n]^3\), d.&#x202f;h. \(\frac {1}{n} M_\text {proj}^\text {persp}\) transformiert den Sichtstumpf in das kanonische Sichtvolumen (\(nI\) ist nur kosmetisch). Dabei sind \(T_z(n) :=
+\smallpmatrix {1&amp;0&amp;0&amp;0\\0&amp;1&amp;0&amp;0\\0&amp;0&amp;1&amp;n\\0&amp;0&amp;0&amp;1}\), \(S_z(n) := \smallpmatrix
+{1&amp;0&amp;0&amp;0\\0&amp;1&amp;0&amp;0\\0&amp;0&amp;s&amp;0\\0&amp;0&amp;0&amp;1}\), \(P_z(-n) := \smallpmatrix
+{1&amp;0&amp;0&amp;0\\0&amp;1&amp;0&amp;0\\0&amp;0&amp;1&amp;0\\0&amp;0&amp;-\frac {1}{n}&amp;1}\) jeweils Translation um \(n\) in \(z\)-Richtung, Skalierung um \(n\) in \(z\)-Richtung und perspektivische
+Transformation auf die Ebene \(z = 0\). Insgesamt ergibt sich<br />
+\(M_\text {proj}^\text {persp} = \smallpmatrix {\frac {2n}{r-l}&amp;0&amp;\frac {r+l}{r-l}&amp;0\\0&amp;\frac {2n}{t-b}&amp;\frac {t+b}{t-b}&amp;0\\ 0&amp;0&amp;-\frac {f+n}{f-n}&amp;-\frac
+{2fn}{f-n}\\0&amp;0&amp;-1&amp;0} = \smallpmatrix {\frac {\cot (\text {fovY}/2)}{\text {aspect}}&amp;0&amp;0&amp;0\\ 0&amp;\cot (\text {fovY}/2)&amp;0&amp;0\\0&amp;0&amp;-\frac
+{f+n}{f-n}&amp;-\frac {2fn}{f-n}\\0&amp;0&amp;-1&amp;0}\).<br />
+Die letzte Formel gilt fu&#x0308;r den Fall, dass \(l = -r\), \(b = -t\), \(r = \text {aspect} \cdot t\) und \(t = n \cdot \tan (\text {fovY}/2)\) gelten. Dabei ist \(\text {aspect}\) das Seitenverha&#x0308;ltnis
+(Breite durch Ho&#x0308;he) und \(\text {fovY}\) der vertikale O&#x0308;ffnungswinkel der Kamera.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>normierte Gera&#x0308;tekoordinaten</b>: Die <em><span class="dashuline" >normierten Gera&#x0308;tekoordinaten</span></em> \(p_\text {ndc}\) erha&#x0308;lt aus den Clipkoordinaten durch
+komponentenweise Division durch die homogene Koordinate.
+</p>
+
+<p>
+<b>Fensterkoordinaten</b>: Die <em><span class="dashuline" >Fensterkoordinaten</span></em> \(p_\text {win}\) geben die Position bzgl. des Fensters an, das auf dem Bildschirm angezeigt wird. Der Ursprung befindet sich
+unten links und es wird nach rechts bzw. oben positiv geza&#x0308;hlt. Wenn sich die linke untere Ecke des Fensters sich im Punkt \((o_x, o_y)\) befindet und die Fenstergro&#x0308;ße \((\text {width}, \text {height})\)
+ist, so erha&#x0308;lt man die Fenster- aus den NDC-Koordinaten durch \(\smallpmatrix {x_\text {win}\\y_\text {win}\\z_\text {win}} = \smallpmatrix {\frac {\text {width}}{2} (x_\text {ndc} + 1) + o_x\\
+\frac {\text {height}}{2} (y_\text {ndc} + 1) + o_y\\ \frac {f-n}{2} (z_\text {ndc} + 1) + n}\), wobei \((x_\text {ndc}, y_\text {ndc}, z_\text {ndc}) \in [-1, 1]^3\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Tiefengenauigkeit</b>: Weil beim U&#x0308;bergang von normierten Gera&#x0308;tekoordinaten zu Clipkoordinaten durch die homogene Komponente geteilt wird, sollte die Differenz zwischen \(n\) und \(f\) nicht zu groß
+gewa&#x0308;hlt werden (fu&#x0308;r \(f = 1000\) ist \(n = 500\) besser als \(n = 10\)), sonst wirken sich Rechenungenauigkeiten bei entfernten Objekten zu stark aus.
+</p>
+
+<p>
+<b>Clipping</b>: In 2D ist Clipping mit einem Rechteck einfach durchfu&#x0308;hrbar. In 3D geht das ebenfalls noch einfach bei der orthografischen Projektion. Bei der perspektivischen Projektion gibt es Probleme, wenn man erst
+nach der Projektion clippt, weil sonst Objekte, die hinter der Kamera liegen, nach vorne auf die Sichtfla&#x0308;che gelangen ko&#x0308;nnen.
+</p>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

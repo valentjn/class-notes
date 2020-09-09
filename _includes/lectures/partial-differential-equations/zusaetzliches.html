@@ -1,0 +1,2262 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\renewcommand {\A }{\mathcal {A}}\)
+
+\(\renewcommand {\C }{\mathcal {C}}\)
+
+\(\newcommand {\D }{\text {D}}\)
+
+\(\newcommand {\E }{\mathcal {E}}\)
+
+\(\renewcommand {\F }{\mathcal {F}}\)
+
+\(\renewcommand {\L }{\mathcal {L}}\)
+
+\(\renewcommand {\N }{\mathcal {N}}\)
+
+\(\renewcommand {\O }{\mathcal {O}}\)
+
+\(\renewcommand {\P }{\mathcal {P}}\)
+
+\(\renewcommand {\S }{\mathcal {S}}\)
+
+\(\newcommand {\T }{\mathcal {T}}\)
+
+\(\newcommand {\BB }{\mathbb {B}}\)
+
+\(\newcommand {\PP }{\mathbb {P}}\)
+
+\(\newcommand {\hol }{\text {höl}}\)
+
+\(\newcommand {\Lip }{\text {Lip}}\)
+
+\(\newcommand {\esssup }{\text {ess\,sup}}\)
+
+\(\newcommand {\loc }{\text {loc}}\)
+
+\(\newcommand {\supp }{\operatorname {supp}}\)
+
+\(\newcommand {\grad }{\operatorname {grad}}\)
+
+\(\renewcommand {\div }{\operatorname {div}}\)
+
+\(\newcommand {\rot }{\operatorname {rot}}\)
+
+\(\newcommand {\kin }{\text {kin}}\)
+
+\(\newcommand {\pot }{\text {pot}}\)
+
+\(\newcommand {\Bild }{\operatorname {Bild}}\)
+
+\(\newcommand {\Rang }{\operatorname {Rang}}\)
+
+\(\newcommand {\id }{\operatorname {id}}\)
+
+\(\newcommand {\sgn }{\operatorname {sgn}}\)
+
+\(\newcommand {\diam }{\operatorname {diam}}\)
+
+\(\newcommand {\argmin }{\operatorname {arg\,min}}\)
+
+\(\newcommand {\dcup }{\mathbin {\dot {\cup }}}\)
+
+\(\newcommand {\Span }{\operatorname {Span}}\)
+
+\(\newcommand {\Conv }{\operatorname {Conv}}\)
+
+\(\newcommand {\interior }{\operatorname {int}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<p>
+
+</p>
+
+
+
+<h2 id="zusatz-uebersicht-ueber-die-behandelten-dgls">Zusatz: Übersicht über die behandelten DGLs</h2>
+
+</p>
+
+
+<p>
+Alle Funktionen ha&#x0308;ngen von \((x, t) \in \Omega _T\) ab, soweit nicht anders erkla&#x0308;rt. Es ist \(\div := \div _x\) und \(\Delta := \Delta _x\).
+</p>
+<table>
+
+<tr class="tbrule">
+<td class="tdp">
+
+<p>
+<b>DGL</b>
+</p>
+</td>
+<td class="tdp">
+
+<p>
+<b>Name</b>
+</p>
+</td>
+<td class="tdp">
+
+<p>
+<b>Herleitung</b>
+</p>
+</td>
+</tr>
+
+
+<tr class="hline" >
+<td class="tdp">
+
+<p>
+\(\partial _t u + \div F = G\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+Transport-Reaktionsgleichung
+</p>
+</td>
+<td class="tdp">
+
+<p>
+Massenbilanz in Kontrollvolumen, \(F(x,t) \in \real ^d\) Fluss, \(G(x,t) \in \real \) Konz.gewinn
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(\partial _t u = G(x, t, u(x,t))\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+parametrisierte ODE
+</p>
+</td>
+<td class="tdp">
+
+<p>
+aus TRGL: \(F :\equiv 0\), \(G\) \(u\)-abha&#x0308;ngig
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(\partial _t u + \div (vu) = 0\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+Advektionsgleichung
+</p>
+</td>
+<td class="tdp">
+
+<p>
+aus TRGL: \(F := vu\) mit \(v \in \C ^1(\Omega _T, \real ^d)\) Geschw.feld, \(G :\equiv 0\)
+</p>
+</td>
+</tr>
+
+
+<tr class="hline" >
+<td class="tdp">
+
+<p>
+\(\partial _t u + \div F(u) = 0\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+nicht-lineare Konvektionsgl.
+</p>
+</td>
+<td class="tdp">
+
+<p>
+aus TRGL: \(F := F(u)\), \(G :\equiv 0\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(\partial _t u + \partial _x (v(u) \cdot u) = 0\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+Konvektionsgleichung
+</p>
+</td>
+<td class="tdp">
+
+<p>
+aus nicht-linearer Konvektionsgl.: \(d := 1\), \(F(u) := v(u) \cdot u\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(\partial _t u + \partial _x(\frac {1}{2} u^2) = 0\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+Burgersgleichung
+</p>
+</td>
+<td class="tdp">
+
+<p>
+aus nicht-linearer Konvektionsgl.: \(d := 1\), \(F(u) := \frac {1}{2} u^2\)
+</p>
+</td>
+</tr>
+
+
+<tr class="hline" >
+<td class="tdp">
+
+<p>
+\(\partial _t u - \div (a(x) \nabla u) = 0\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+allg. Diffusionsgleichung
+</p>
+</td>
+<td class="tdp">
+
+<p>
+aus TRGL: \(F := -a(x) \nabla u\) (Ficksches Gesetz) mit \(a \in \C ^1(\Omega )\) Diff.koeff., \(G :\equiv 0\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(\partial _t u - \Delta u = 0\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+Diffusionsgleichung/instat. WLG
+</p>
+</td>
+<td class="tdp">
+
+<p>
+aus allg. Diffusionsgleichung: \(a(x) :\equiv 1\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(-\Delta u = 0\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+Laplace-Gleichung
+</p>
+</td>
+<td class="tdp">
+
+<p>
+aus instat. Wa&#x0308;rmeleitungsgleichung mit \(t \to \infty \) und \(u(\cdot , t) \to \overline {u}(\cdot ) \in \C ^2(\overline {\Omega })\) glm.
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(-\Delta u = f\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+Poisson-Gleichung
+</p>
+</td>
+<td class="tdp">
+
+<p>
+aus Laplace-Gleichung mit \(G := f(x)\)
+</p>
+</td>
+</tr>
+
+
+<tr class="hline" >
+<td class="tdp">
+
+<p>
+\(-\div _x(\nabla _p L(\nabla u, u, x)) + \partial _z L(\nabla u, u, x) = 0\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+Euler-Lagrange-Gleichung
+</p>
+</td>
+<td class="tdp">
+
+<p>
+PDE fu&#x0308;r Lo&#x0308;sung \(u\) des Variationsproblems \(I(u) \le I(w) := \int _\Omega L(\nabla w, w, x)\dx \)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(-a_{11}(x) u’’(x) + c(x) u(x) = f(x)\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+Sturm-Liouville-Problem
+</p>
+</td>
+<td class="tdp">
+
+<p>
+aus ELGL: \(L(p, z, x) := \frac {1}{2} p^\tp A(x) p + \frac {1}{2} c(x) z^2 - z f(x)\), \(d := 1\), \(a_{11}(x) &gt; 0\), \(c(x) &gt; 0\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(\partial _t^2 u - c^2 \Delta u = 0\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+Wellengleichung
+</p>
+</td>
+<td class="tdp">
+
+<p>
+aus ELGL: \(L(p, z, x) := \frac {c^2}{2} \sum _{i=1}^d |p_i|^2 - \frac {1}{2} |p_{d+1}|^2\) aus Hamilton-Prinzip
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(-\Delta u + W’(u) = 0\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+stat. Allen-Cahn-Gleichung
+</p>
+</td>
+<td class="tdp">
+
+<p>
+aus ELGL: \(L(p, z, x) := W(z) + \frac {1}{2} \norm {p}^2\) mit z.&#x202f;B. \(W(z) := (z^2 - 1)^2\)
+</p>
+</td>
+</tr>
+
+
+<tr class="tbrule">
+<td class="tdp">
+
+</td>
+<td class="tdp">
+
+</td>
+<td class="tdp">
+
+</td>
+</tr>
+
+</table>
+
+
+
+<h2 id="zusatz-uebersicht-ueber-die-aussagen-ueber-pde-klassen">Zusatz: Übersicht über die Aussagen über PDE-Klassen</h2>
+
+</p>
+<table>
+
+<tr class="tbrule">
+<td class="tdp">
+
+<p>
+<b>PDE</b>
+</p>
+</td>
+<td class="tdp">
+
+<p>
+<b>Problem</b>
+</p>
+</td>
+<td class="tdp">
+
+<p>
+<b>Definition/Satz</b>
+</p>
+</td>
+<td class="tdp">
+
+<p>
+<b>Voraussetzungen/Aussage</b>
+</p>
+</td>
+</tr>
+
+
+<tr   class="hline" >
+<td   rowspan="11" class="tdp" style="vertical-align:middle">Advektions-gleichung</td>
+<td   rowspan="7" class="tdp" style="vertical-align:middle">konstante Adv.geschw.</td>
+<td   class="tdp">
+
+<p>
+Definition
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\Omega := \real ^d\), \(T := \infty \), \(b \in \real ^d\), \(u_0 \in \C ^1(\Omega )\) \(\implies \) \(\partial _t u + \div (bu) = 0\) in \(\Omega _T\), \(u(\cdot , 0) = u_0\) in \(\Omega \)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Translationsinv.
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\forall _{(x, t) \in \Omega _T} \forall _{s \in (-t, T-t)}\; \frac {\d }{\ds } u(x + bs, t + s) = 0\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Ex. + Eind.
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(u(x, t) := u_0(x - bt)\) eind. kl. Lsg.
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(L^\infty \)-Stabilita&#x0308;t
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(u_0 \in \C ^1(\Omega ) \cap L^\infty (\Omega ) \implies \forall _{t \in (0, T)}\; \norm {u(\cdot , t)}_{L^\infty } \le \norm {u_0}_{L^\infty }\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Max.-/Min.prinzip
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(u_0 \in \C ^1(\Omega ) \cap L^\infty (\Omega ) \implies \forall _{(x, t) \in \Omega _T}\; \inf _{\overline {x} \in \Omega } u_0(\overline {x}) \le u(x, t) \le \sup _{\overline {x} \in
+\Omega } u_0(\overline {x})\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+st. Abh. von \(u_0\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(u_0, u_0’ \in \C ^1(\Omega ) \cap L^\infty (\Omega ) \implies \forall _{t \in (0, T)}\; \norm {u(\cdot , t) - u’(\cdot , t)}_{L^\infty } \le \norm {u_0 - u_0’}_{L^\infty }\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+keine st. Abh. von \(b\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\lnot [\forall _{t \in (0, T)} \exists _{C(t) &gt; 0} \forall _{u_0 \in \C ^1(\Omega ) \cap L^\infty (\Omega ), \norm {u_0}_{L^\infty } \le 1} \forall _{b, b’ \in \real }\; \norm {u(\cdot ,
+t) - u’(\cdot , t)}_{L^\infty } \le C(t) \norm {b - b’}]\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td rowspan="2" class="tdp tdrule" style="vertical-align:middle">Reaktions-/ Quellterm</td>
+<td class="tdp tdrule">
+
+<p>
+Definition
+</p>
+</td>
+<td class="tdp tdrule">
+
+<p>
+\(q \in \C ^0(\Omega _T)\) \(\implies \) \(\partial _t u + \div (bu) = q\) in \(\Omega _T\), \(u(\cdot , 0) = u_0\) in \(\Omega \)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Ex. + Eind.
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(u(x, t) := u_0(x - bt) + \int _0^t q(x + (s-t)b, s)\ds \) eind. kl. Lsg.
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td rowspan="2" class="tdp tdrule" style="vertical-align:middle">nicht-lineare Konvektion</td>
+<td class="tdp tdrule">
+
+<p>
+Definition
+</p>
+</td>
+<td class="tdp tdrule">
+
+<p>
+\(\Omega := \real \), \(T &gt; 0\), \(f \in \C ^2(\real )\), \(u_0 \in \C ^1(\Omega )\) \(\implies \) \(\partial _t u + \partial _x(f(u)) = 0\) in \(\Omega _T\), \(u(\cdot , 0) = u_0\) in \(\Omega \)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+lokale Ex.
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\norm {f’’}_\infty , \norm {u_0’}_\infty &lt; \infty \implies \forall _{\overline {x} \in \real } \exists _{\varepsilon &gt; 0} \exists _{T &gt; 0} \exists _{u \in \C ^1(B_\varepsilon
+(\overline {x}) \times (0, T))}\; [\text {$u$ kl. Lsg.}]\), \(u(x, t) = u_0(x - tf’(u(x, t)))\)
+</p>
+</td>
+</tr>
+
+
+<tr   class="hline" >
+<td   rowspan="17" class="tdp" style="vertical-align:middle">Poisson-Gleichung</td>
+<td   rowspan="8" class="tdp" style="vertical-align:middle">Laplace-Gleichung</td>
+<td   class="tdp">
+
+<p>
+Definition
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\Omega \subset \real ^d\) \(\implies \) \(-\Delta u = 0\) in \(\Omega \)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+MW-Eigenschaft
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(u \in C^2(\Omega )\) harm., \(x \in \Omega \), \(r &gt; 0\), \(\overline {B_r(x)} \subset \Omega \) \(\implies \fint _{B_r(y)} u(y) \dy = u(x) = \fint _{\partial B_r(x)} u(y) \dsigma (y)\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Max.prinzip
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\Omega \) offen, beschr., \(u \in \C ^2(\overline {\Omega })\) harm. \(\implies \max _{x \in \overline {\Omega }} u(x) = \max _{x \in \partial \Omega } u(x)\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+verallg. Max.prinz.
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\Omega \) offen, beschr., \(u \in \C ^2(\Omega ) \cap \C ^0(\overline {\Omega })\), \(-\Delta u = f \le 0\) \(\implies \) \(u\) nimmt Max. auf dem Rand an
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Vgl.prinzip
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\Omega \) offen, beschr., \(u, v \in \C ^2(\Omega ) \cap \C ^0(\overline {\Omega })\), \(-\Delta u \le -\Delta v\) in \(\Omega \), \(u \le v\) auf \(\partial \Omega \) \(\implies \) \(u \le v\) in \(\Omega
+\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Regularita&#x0308;t
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\Omega := \real ^d\), \(u \in \C ^2(\Omega )\) harm. \(\implies u \in \C ^\infty (\Omega )\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Fundamentallsg.
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\Omega := \real ^d \setminus \{0\}\), \(d &gt; 1\) \(\implies \Phi \in \C ^\infty (\Omega )\), \(\Phi (x) := -\frac {1}{2\pi } \cdot \ln (\norm {x})\) fu&#x0308;r \(d = 2\),&#x2003;\(\Phi (x) :=
+\frac {1}{(d-2)\omega _d} \cdot \frac {1}{\norm {x}^{d-2}}\) fu&#x0308;r \(d \ge 3\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Eigenschaften
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\int _{B_\varepsilon (0)} \Phi (x)\dx \to 0\),&#x2003;\(\Phi \in L^1_\loc (\real ^d)\),&#x2003;\(\Phi (\varepsilon e_1) \varepsilon ^{d-1} \to 0\),&#x2003;\(\forall _{\varepsilon &gt;0}\;
+\int _{\partial B_\varepsilon (0)} \nabla \Phi (x) \cdot n\dsigma (x) = -1\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td rowspan="3" class="tdp tdrule" style="vertical-align:middle">Poisson-Gleichung</td>
+<td class="tdp tdrule">
+
+<p>
+Definition
+</p>
+</td>
+<td class="tdp tdrule">
+
+<p>
+\(\Omega \subset \real ^d\), \(f\colon \Omega \to \real \) \(\implies \) \(-\Delta u = f\) in \(\Omega \)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Rotationsinv.
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(u \in \C ^2(\Omega )\) kl. Lsg., \(O \in \real ^{d \times d}\) orth., \(\Omega = O\Omega \), \(f = f \circ O\) \(\implies v \in \C ^2(\Omega )\) kl. Lsg., \(v(x) := u(Ox)\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Faltungslo&#x0308;sung
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\Omega := \real ^d\), \(d \ge 2\), \(f \in \C ^2_0(\Omega )\) \(\implies u := \Phi \ast f\) kl. Lsg.
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td rowspan="4" class="tdp tdrule" style="vertical-align:middle">Poisson-RWP</td>
+<td class="tdp tdrule">
+
+<p>
+Definition
+</p>
+</td>
+<td class="tdp tdrule">
+
+<p>
+\(\Omega \subset \real ^d\) offen, beschr., \(f \in \C ^0(\Omega )\), \(g \in \C ^0(\partial \Omega )\) \(\implies \) \(-\Delta u = f\) in \(\Omega \), \(u = g\) auf \(\partial \Omega \)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Eind.
+</p>
+</td>
+<td class="tdp">
+
+<p>
+es gibt ho&#x0308;chstens eine kl. Lsg. \(u \in \C ^2(\Omega ) \cap \C ^0(\overline {\Omega })\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+st. Abh. von \(g\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(g, g’ \in \C ^0(\partial \Omega ) \implies \norm {u - u’}_\infty \le \norm {g - g’}_\infty \)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+st. Abh. von \(f\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(f, f’ \in C^0(\Omega ) \implies \norm {u - u’}_\infty \le C \norm {f - f’}_\infty \), \(C := \frac {R^2}{2}\), \(R := \sup _{x \in \Omega } \norm {x}\)
+</p>
+</td>
+</tr>
+
+
+<tr class="tbrule">
+<td class="tdp">
+
+</td>
+<td class="tdp">
+
+</td>
+<td class="tdp">
+
+</td>
+<td class="tdp">
+
+</td>
+</tr>
+
+</table>
+<table>
+
+<tr class="tbrule">
+<td class="tdp">
+
+<p>
+<b>PDE</b>
+</p>
+</td>
+<td class="tdp">
+
+<p>
+<b>Problem</b>
+</p>
+</td>
+<td class="tdp">
+
+<p>
+<b>Definition/Satz</b>
+</p>
+</td>
+<td class="tdp">
+
+<p>
+<b>Voraussetzungen/Aussage</b>
+</p>
+</td>
+</tr>
+
+
+<tr   class="hline" >
+<td   rowspan="11" class="tdp" style="vertical-align:middle">Diffusions-gleichung</td>
+<td   rowspan="5" class="tdp" style="vertical-align:middle">AWP</td>
+<td   class="tdp">
+
+<p>
+Definition
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\Omega \subset \real ^d\), \(T &gt; 0\), \(u_0\colon \Omega \to \real \) \(\implies \) \(\partial _t u - \Delta u = 0\) in \(\Omega _T\), \(u(\cdot , 0) = u_0\) in \(\Omega \)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Skal.inv.
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\Omega := \real ^d\), \(T := \infty \), \(u \in \C ^2(\Omega _T)\) kl. Lsg., \(\lambda \in \real \) \(\implies u_\lambda \) kl. Lsg., \(u_\lambda (x, t) := u(\lambda x, \lambda ^2 t)\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Fundamentallsg.
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\Omega := \real ^d\), \(T := \infty \) \(\implies \Phi \in \C ^\infty (\Omega _T)\), \(\Phi (x, t) := \frac {1}{(4\pi t)^{d/2}} e^{-\norm {x}^2/(4t)}\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Faltungslo&#x0308;sung
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\Omega := \real ^d\), \(T := \infty \), \(u_0 \in L^\infty (\Omega )\) \(\implies u \in \C ^\infty (\Omega _T)\), \(u(\cdot , t) := \Phi (\cdot , t) \ast u_0\) kl. Lsg.,<br />
+fu&#x0308;r \(u_0 \in \C ^0(\real )\) gilt \(\forall _{\overline {x} \in \Omega }\; \lim _{(x, t) \to (\overline {x}, 0)} u(x, t) = u_0(\overline {x})\), \(\forall _{t &gt; 0}\; \norm {u(\cdot ,
+t)}_{L^\infty } \le \norm {u_0}_{L^\infty }\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td rowspan="2" class="tdp tdrule" style="vertical-align:middle">ARWP</td>
+<td class="tdp tdrule">
+
+<p>
+Definition
+</p>
+</td>
+<td class="tdp tdrule">
+
+<p>
+\(g\colon \partial \Omega \times (0, T) \to \real \) \(\implies \) \(\partial _t u - \Delta u = 0\) in \(\Omega _T\), \(u(\cdot , 0) = u_0\) in \(\Omega \), \(u = g\) auf \(\partial \Omega \times (0,
+T)\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Max.prinzip
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(u\) nimmt Maximum auf parabolischem Rand \(\Gamma := (\Omega \times \{0\}) \cup (\partial \Omega \times [0, T])\) an
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td rowspan="3" class="tdp tdrule" style="vertical-align:middle">inhom. ARWP</td>
+<td class="tdp tdrule">
+
+<p>
+Definition
+</p>
+</td>
+<td class="tdp tdrule">
+
+<p>
+\(f\colon \Omega _T \to \real \) \(\implies \) \(\partial _t u - \Delta u = f\) in \(\Omega _T\), \(u(\cdot , 0) = u_0\) in \(\Omega \), \(u = g\) auf \(\partial \Omega \times (0, T)\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Eind.
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\Omega \subset \real ^d\) Lipschitz \(\implies \) es gibt ho&#x0308;chstens eine kl. Lsg.
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Konv. gg. stat. Lsg.
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\Omega \subset \real ^d\) Lipschitz, \(f, g\) zeitunabh., \(-\Delta \overline {u} = f\) in \(\Omega \), \(\overline {u} = g\) auf \(\partial \Omega \) \(\implies \norm {u(\cdot , t) - \overline
+{u}}_{L^2} \le e^{-t/c_p} \norm {u_0 - \overline {u}}_{L^2}\)
+</p>
+</td>
+</tr>
+
+
+<tr   class="hline" >
+<td   rowspan="8" class="tdp" style="vertical-align:middle">Wellen-gleichung</td>
+<td   rowspan="5" class="tdp" style="vertical-align:middle">AWP</td>
+<td   class="tdp">
+
+<p>
+Definition
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\Omega := \real ^d\), \(T &gt; 0\), \(c &gt; 0\), \(u_0 \in \C ^2(\Omega )\), \(v_0 \in \C ^1(\Omega )\) \(\implies \) \(\partial _t^2 u - c^2 \Delta u = 0\) in \(\Omega _T\), \(u(\cdot , 0) = u_0\),
+\(\partial _t u(\cdot , 0) = v_0\) in \(\Omega \)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Ex. + Eind.
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(d := 1 \implies u(x, t) := \frac {1}{2} (u_0(x+ct) + u_0(x-ct)) + \frac {1}{2c} \int _{x-ct}^{x+ct} v_0(s)\ds \) eind. kl. Lsg.
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(L^\infty \)-Stabilita&#x0308;t
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(d := 1\), \(u_0 \in \C ^2(\Omega ) \cap L^\infty (\Omega )\), \(v_0 \in \C ^1(\Omega ) \cap L^1(\Omega )\) \(\implies \forall _{t \ge 0}\; \norm {u(\cdot , t)}_{L^\infty } \le \norm
+{u_0}_{L^\infty } + \frac {1}{2c} \norm {v_0}_{L^1}\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+st. Abh. von \(u_0, v_0\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(d := 1\), \(u_0, \overline {u_0} \in \C ^2 \cap L^\infty \), \(v_0, \overline {v_0} \in \C ^1 \cap L^1\) \(\implies \forall _{t \ge 0}\; \norm {u(\cdot , t) - \overline {u}(\cdot , t)}_{L^\infty
+} \le C \left (\norm {u_0 - \overline {u_0}}_{L^\infty } + \norm {v_0 - \overline {v_0}}_{L^1}\right )\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Abh.kegel
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(d := 1\), \((x_0, t_0) \in \Omega _T\), \(\forall _{|x - x_0| \le ct_0}\; u_0(x) = v_0(x) = 0\) \(\implies \) \(u(x,t) = 0\) fu&#x0308;r \(t \in [0, t_0]\), \(|x - x_0| \le c(t_0 - t)\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td rowspan="3" class="tdp tdrule" style="vertical-align:middle">inhom. ARWP</td>
+<td class="tdp tdrule">
+
+<p>
+Definition
+</p>
+</td>
+<td class="tdp tdrule">
+
+<p>
+\(\Omega \subset \real ^d\), \(f\colon \Omega _T \to \real \), \(g\colon \partial \Omega \times (0, T) \to \real \), \(u_0, v_0\colon \Omega \to \real \)<br />
+\(\implies \) \(\partial _t^2 u - c^2 \Delta u = f\) in \(\Omega _T\), \(u(\cdot , 0) = u_0\) in \(\Omega \), \(\partial _t u(\cdot , 0) = v_0\) in \(\Omega \), \(u = g\) auf \(\partial \Omega \times (0,
+T)\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+Eind.
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(\Omega \subset \real ^d\) Lipschitz \(\implies \) es gibt ho&#x0308;chstens eine kl. Lsg.
+</p>
+</td>
+</tr>
+
+
+<tr class="tbrule">
+<td class="tdp">
+
+</td>
+<td class="tdp">
+
+</td>
+<td class="tdp">
+
+</td>
+<td class="tdp">
+
+</td>
+</tr>
+
+</table>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

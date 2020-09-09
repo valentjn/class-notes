@@ -1,0 +1,1403 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f9::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f10::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f11::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f12::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f13::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f14::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f15::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f16::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f17::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f18::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f19::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f20::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f21::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f22::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f23::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f24::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f25::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f26::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f27::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f28::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f29::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f30::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f31::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f32::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f33::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f34::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f35::marker {
+  content:'•\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p><b>Strahlen-/Teilchenmodell</b>: Strahlenmodell/Teilchenmodell erkla&#x0308;rt viele Dinge, aber manche Sachen ko&#x0308;nnen nur mit dem Wellenmodell beschrieben werden, manchmal mu&#x0308;ssen Wellen- und
+Teilcheneigenschaften des Lichts beru&#x0308;cksichtigt werden, dies erfordert das Quantenmodell
+</p>
+</li>
+<li class="list-item-f1"><p><b>Licht als elektromagnetische Welle</b>: Licht ist vektorielle Welle (nicht wie Schall skalar), Vektor des elektrischen und Vektor des magnetischen Felds stehen immer senkrecht zur Ausbreitungsrichtung (transversale Welle),
+jedoch wird \(B\)-Feld durch \(E\)-Feld fest bestimmt, d.&#x202f;h. man kann sich auf \(E\)-Feld konzentrieren, Licht wird letztlich durch die vier Parameter Amplitude (proportional zur Wurzel der Lichtintensita&#x0308;t),
+Wellenla&#x0308;nge (als Maß fu&#x0308;r die „Farbe“), Phase und Polarisation beschrieben
+</p>
+</li>
+<li class="list-item-f2"><p><b>Zusammenhang Wellen-/Strahlenmodell</b>: Lichtstrahlen stehen senkrecht auf den Wellenfronten (Fla&#x0308;chen konstanter Phase), Wellenfronten stehen senkrecht auf den Lichtstrahlen, Kugelwelle/ebene Welle
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f3"><p><b>Interferenz</b>: Superposition (Addition) von Wellen
+</p>
+</li>
+<li class="list-item-f4"><p><b>Seifenblase</b>: Licht wird einerseits direkt an Oberfla&#x0308;che reflektiert, andererseits an der Unterseite (Innenseite) der Seifenhaut reflektiert, beide Lichtanteile u&#x0308;berlagern sich (interferieren), fu&#x0308;hrt
+zu Abschwa&#x0308;chung oder Versta&#x0308;rkung bestimmter Spektralanteile, unterschiedlicher Blickwinkel fu&#x0308;hrt zu unterschiedlichem Farbeindruck
+</p>
+</li>
+<li class="list-item-f5"><p><b>Lichtdetektoren</b>: detektieren das zeitliche Mittel der Intensita&#x0308;t (Amplitude im Quadrat)
+</p>
+</li>
+<li class="list-item-f6"><p><b>konstruktive/destruktive Interferenz</b>: je nach Phasenverschiebung u&#x0308;berlagern sich die Wellen konstruktiv (versta&#x0308;rken sich) oder destruktiv (lo&#x0308;schen sich anna&#x0308;hernd aus)
+</p>
+</li>
+<li class="list-item-f7"><p><b>kurz vor dem Zerplatzen wird Seifenblase schwarz</b>: Dicke geht gegen \(0\), nur noch destruktive Interferenz mo&#x0308;glich (Phasensprung von \(\pi \))
+</p>
+</li>
+<li class="list-item-f8"><p><b>Perlen, Perlmutt usw.</b>: schillert wegen Interferenz (Schichten aus Aragonit und Beugung an der feinen regelma&#x0308;ßigen Oberfla&#x0308;chenstruktur), analog Interfenzpigmente in Lacken, O&#x0308;lfilm auf
+Straße, Antireflexbeschichtung von entspiegelnden Gla&#x0308;ser (destruktive Interferenz unterdru&#x0308;ckt Reflexionen)
+</p>
+</li>
+<li class="list-item-f9"><p><b>leuchtende Augen</b>: Interferenzspiegel erho&#x0308;hen Lichtempfindlichkeit von Augen nachtaktiver Tiere (Katzen, Hunde, Wale, Pferde usw.)
+</p>
+</li>
+<li class="list-item-f10"><p><b>Schmetterlinge</b>: komplizierte Interferenzeffekte an Schichtsystemen, teilweise auch mit Beugung und Streuung (zur Tarnung, Verwirrung der Gegner oder Partnersuche)
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f11"><p><b>Holografie</b>: Problem beim konventionellen Foto ist, dass die Richtung des einfallenden Lichts nicht aufgezeichnet wird, damit ist ein Umrunden der Szene nicht mo&#x0308;glich, bei der Holografie wird
+zusa&#x0308;tzlich zum u&#x0308;blichen Foto die Phase der Wellenfront aufgezeichnet, aus der die urspru&#x0308;ngliche Welle rekonstruiert werden kann
+</p>
+</li>
+<li class="list-item-f12"><p><b>holografische Projektoren</b>: wie R2-D2 in Star Wars, wu&#x0308;rden nicht funktionieren, da Licht sich geradlinig ausbreitet
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f13"><p><b>Beugung</b>: U&#x0308;berlagerung von vielen Wellen, geschieht aufgrund folgender Eigenschaften des Lichts: Licht breitet sich nur na&#x0308;herungsweise geradlinig aus (Lichtstrahl hat endliche Breite und Divergenz),
+Fokussierung nur auf Lichtfleck von der Gro&#x0308;ße der halben Wellenla&#x0308;nge mo&#x0308;glich, fa&#x0308;llt Licht auf kleine Begrenzung, dann wird es gebeugt, d.&#x202f;h. das Licht fa&#x0308;chert sich auf,
+wird das gebeugte Licht mit Schirm sichtbar gemacht, so gibt es Stellen mit lokalen Intensita&#x0308;tsmaxima und Stellen mit Intensita&#x0308;t \(0\) (Verteilung ha&#x0308;ngt ab von Wellenla&#x0308;nge, Begrenzung und
+Abstand des Schirms von Begrenzung), an feinen Gittern wird das Licht aufgespaltet in eine Ebene senkrecht zur Gitterorientierung (Anwendung bei Schmetterlingen oder Geldscheinen), Inferferenz tritt nur auf, falls intereferiende
+Lichtanteile zueinander koha&#x0308;rent sind, Koha&#x0308;renzla&#x0308;nge = wie stark variieren unterschiedliche Wege von der Lichtquelle bis zum Beobachtungspunkt in der (optischen) La&#x0308;nge, ohne dass
+Interferenzfa&#x0308;higkeit verloren geht (Sonne: wenige Mikrometer, Laser: mehrere Kilometer)
+</p>
+</li>
+<li class="list-item-f14"><p><b><span class="textsc" >Poisson</span>scher Fleck</b>: helle Stelle im Zentrum eines Schattenbereichs
+</p>
+</li>
+<li class="list-item-f15"><p><b>Wellenausbreitung in der Na&#x0308;he von Hindernissen</b>: einfallendes Licht fu&#x0308;hrt zu Anregung vieler kleiner Kugelwellen, die sich dann weiter ausbreiten
+</p>
+</li>
+<li class="list-item-f16"><p><b>Beugung/Streuung</b>: was ist der Unterschied? Frage falsch, da es nur <em>eine</em> Wechselwirkung des Lichts mit dem Objekt gibt, Beugung und Streuung sind nur Modelle zur na&#x0308;herungsweisen Beschreibung
+der Auswirkung
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f17"><p><b>Spalt/Doppelspalt/Mehrfachspalt/Gitter</b>: punktfo&#x0308;rmige, helle Lichtquelle (Halogenbirne/LED) durch du&#x0308;nnen Spalt betrachten, Resultat ist farbiger Streifen mit Maxima und Minima (statt
+punktfo&#x0308;rmiger Quelle), auch mit engmaschigem Giter mo&#x0308;glich (sehr feine Gardinen, Strumpfhosen, Regenschirme, Vogelfeder)
+</p>
+</li>
+<li class="list-item-f18"><p><b><span class="textsc" >Fraunhofer</span>-Beugung</b>: vereinfachte mathematische Beschreibung der Beugung fu&#x0308;r große Absta&#x0308;nde (Schirm idealerweise unendlich weit entfernt aufgestellt),
+Begru&#x0308;ndung der Beugungserscheinungen mit konstruktiver bzw. destruktiver Interferenz der von den Spalten ausgesandten Kugelwellen
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f19"><p><b>beugungsbegrenzte Auflo&#x0308;sung</b>: \(r_A = 1.22 \lambda K\) mit der Blendenzahl \(K = \frac {f’}{D}\) (\(f’\) Brennweite und \(D\) Durchmesser der Eintrittspupille der Optik, bei Einzellinsensystem ist
+dies der Linsendurchbesser), zwei Objektpunkte, deren Bilder gerade noch um \(r_A\) separiert liegen, werden noch als getrennte Punkt wahrgenommen, \(K\) kann nicht beliebig klein gemacht werden, maximal kann eine
+Auflo&#x0308;sung von ca. \(\lambda /2\) erzielt werden (Rayleighsche Auflo&#x0308;sungsgrenze), hinzu kommen Fehler des optischen Systems/in der Fokussierung, die die Auflo&#x0308;sung verringern
+</p>
+</li>
+<li class="list-item-f20"><p><b>Spionagesatellit</b>: um Nummernschilder aus dem Weltraum zu erkennen, mu&#x0308;sste das optische System einen Durchmesser von \(\SI {8.1}{\meter }\) besitzen, also nicht mo&#x0308;glich, zusa&#x0308;tzlich
+kommen Wolken und Abberationen aufgrund Atmospha&#x0308;re
+</p>
+</li>
+<li class="list-item-f21"><p><b>a&#x0308;rgerlicher Mann/neutrale Frau</b>: begrenzte Auflo&#x0308;sung optischer Abbildungen fu&#x0308;hrt dazu, dass hohe Frequenzen eines Objekts (feine Strukturen) aus großen Entfernungen nicht mehr
+gesehen werden ko&#x0308;nnen
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f22"><p><b>Korona</b>: farbige Ringmuster um Lichtquelle aufgrund der Beugung an kleinen Objekten (z.&#x202f;B. Wassertropfen), du&#x0308;nne Wolken oder Nebel zwischen Sonne oder Mond, inkoha&#x0308;rente
+U&#x0308;berlagerung der an verschiedenen Tropfen gebeugten Wellen, falls alle Tropfen eine a&#x0308;hnliche Gro&#x0308;ße haben, Tropfen haben aufgrund des Babinet-Prinzips die Wirkung einer Ringblende mit demselben
+Durchmesser, daher Ringmuster (mehr oder weniger rotierte Spaltbeugungsfunktion), fu&#x0308;r ausgedehnte Lichtquelle ergibt sich fu&#x0308;r jeden Punkt der Lichtquelle ein farbiges Ringmuster mit Rot außen,
+U&#x0308;berlagerung ergibt auf der Fla&#x0308;che der Lichtquelle Weiß, aber am Rand heben sich die Farben nicht komplett weg, sodass ein farbiges Ringmuster um die Lichtquelle beobachtbar ist, sind Wolken zu dick,
+dominieren Mehrfachstreuungen und Effekt ist nicht beobachtbar
+</p>
+</li>
+<li class="list-item-f23"><p><b><span class="textsc" >Babinet</span>-Prinzip</b>: Beugungsmuster einer Blende entspricht (weitgehend) dem<br />
+Beugungsmuster der inversen Blende
+</p>
+</li>
+<li class="list-item-f24"><p><b>Pollenkorona</b>: Korona analog auch an Eiskristallen oder Pollen mo&#x0308;glich, oder einfach in Dunkelheit auf starke Lichtquelle (Autoscheinwerfer) schauen, Beugung an kleinen Unregelma&#x0308;ßigkeit in der
+Hornhaut (ciliare Korona), oder durch leicht beschlagene Scheibe
+</p>
+</li>
+<li class="list-item-f25"><p><b>Glorie</b>: Korona aufgrund von ru&#x0308;ckgestreutem Licht durch Wassertropfen, a&#x0308;hnliches Beugungsmuster, wird am besten aus vom Flugzeug aus beobachtet, zeigt sich in Richtung des eigenen Schattens,
+somit kann man daraus ermitteln, wo man im Flugzeug sitzt
+</p>
+</li>
+<li class="list-item-f26"><p><b>irisierende Wolken</b>: kurze Koronasegmente, analog Entstehung durch Beugung an Wassertropfen oder Eiskristallen, aber Ringstruktur nicht sichtbar, da nur ein Teil des Ringbereichs mit passenden Partikeln bedeckt ist
+(oder Gro&#x0308;ße der Streuer variieren, dann entstehen komplexere Farbmuster), findet sich oft am Rand von Wolken (breite Gro&#x0308;ßenverteilung der Wassertro&#x0308;pfchen bei geringer mittlerer Gro&#x0308;ße,
+Wolke du&#x0308;nn, d.&#x202f;h. kaum Mehrfachstreuung), bei großen Winkelabstand von der Sonne sind in der Regel Eiskristalle verantwortlich, denn Wasertropfen ergeben nur nach vorne und hinten starke Intensita&#x0308;t
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f27"><p><b>u&#x0308;berza&#x0308;hlige Bo&#x0308;gen</b>: Interferenzeffekte beim Regenbogen, da an unterschiedlichen Positionen einfallende Strahlen in einen Tropfen unter demselben Winkel wieder austreten und daher
+interferieren ko&#x0308;nnen, treten vor allem dann auf, wenn alle Tropfen ungefa&#x0308;hr die gleiche Gro&#x0308;ße haben (sonst Verschmierung der Maxima), Maxima in der Na&#x0308;he der Haupt- und
+Nebenbo&#x0308;gen
+</p>
+</li>
+<li class="list-item-f28"><p><b>Nebelbogen</b>: breite Beugungsbo&#x0308;gen fu&#x0308;r jeder Wellenla&#x0308;nge, U&#x0308;berlagerung aller Farben
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f29"><p><b><span class="textsc" >Michelson</span>-Interferometer</b>: von links Lichtstrahl auf halbdurchla&#x0308;ssigen Spiegel, nach oben bzw. rechts zu Spiegel, dann wieder zuru&#x0308;ck auf
+halbdurchla&#x0308;ssigen Spiegel, Ha&#x0308;lfte des Lichts wird nach unten geschickt zu einem Detektor,<br />
+bei exakt gleichem Weg ist konstruktive Interferenz vorhanden,<br />
+bei um \(\lambda /4\) vergro&#x0308;ßertem Abstand ist destruktive Interferenz vorhanden,<br />
+Grundlage fu&#x0308;r Entfernungsmessung mittels Optik (Interferometrie)
+</p>
+</li>
+<li class="list-item-f30"><p><b>Koha&#x0308;renz</b>: bei inkoha&#x0308;renten Lichtquellen gibt es keine unendlich ausgedehnten Kosinusschwingungen, sondern relativ kurze Wellenpakete (z.&#x202f;B. mit La&#x0308;nge \(\SI {5}{\micro
+\meter }\)), aber sehr schnell hintereinander, Wellenpakete haben keine Beziehung zueinander
+</p>
+</li>
+<li class="list-item-f31"><p><b>Koha&#x0308;renz und Interferenz</b>: wird La&#x0308;nge beim Interferometer um \(\SI {1}{\milli \meter }\) verstellt, dann verschwindet Interferenz, da viele unterschiedliche U&#x0308;berlagerungen von
+Wellenpaketen stattfinden (mal konstruktiv, mal destruktiv), im zeitlichen Mittel verschwindet der Interferenzterm, Argumentation bricht zusammen, wenn Wegdifferenz kleiner als Wellenpaketla&#x0308;nge ist, hier gibt es lauter
+U&#x0308;berlagerungen von Wellen mit derselben Phasendifferenz
+</p>
+</li>
+<li class="list-item-f32"><p><b>Koha&#x0308;renzla&#x0308;nge/-zeit</b>: ra&#x0308;umliche/zeitliche Wellenpaketla&#x0308;nge, spektral schmalbandige<br />
+Lichtquellen (Laser) haben große Koha&#x0308;renzla&#x0308;ngen, Sonne dagegen nur wenige \(\si {\micro \meter }\)
+</p>
+</li>
+<li class="list-item-f33"><p><b>Speckles</b>: raue Oberfla&#x0308;che wird mit koha&#x0308;rentem Licht beleuchtet (Laser), dann gehen von der Oberfla&#x0308;che viele Kugelwellen mit zufa&#x0308;lliger Phase aus, Resultat auf Netzhaut ist
+zufa&#x0308;llige Interferenz, Voraussetzungen sind Unebenheiten kleiner Koha&#x0308;renzla&#x0308;nge (aber nicht zu klein, sonst kaum Interferenz)
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f34"><p><b>Funktionsweise eines Lasers</b>: stimulierte Emission, ankommendes Licht regt andere Atome an, ebenfalls Licht auszusenden (sogar gleichphaseig), in sich koha&#x0308;renter Wellenzug wird la&#x0308;nger,
+zusa&#x0308;tzliche Spiegel sorgen dafu&#x0308;r, dass das Rohr nicht zu lang sein muss
+</p>
+</li>
+<li class="list-item-f35"><p><b>warum sind Laser so gefa&#x0308;hrlich</b>: Leistung konzentriert auf einen kleinen Punkt (im Gegensatz z.&#x202f;B. zur Glu&#x0308;hbirne) und Lichtquelle hat eine sehr geringe Ausdehnung (anna&#x0308;herend
+punktfo&#x0308;rmig), sodass die Lichtquelle auf einen kleinen Punkt in der Netzhaut abgebildet wird
+</p>
+</li>
+</ul>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

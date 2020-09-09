@@ -1,0 +1,2513 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\newcommand {\fracsize }[1]{{\large #1}}\)
+
+\(\newcommand {\matrixsize }[1]{{\scriptsize #1}}\)
+
+\(\newcommand {\extreal }{\ensuremath {\widehat {\mathbb {R}}}}\)
+
+\(\renewcommand {\A }{\ensuremath {\mathcal {A}}}\)
+
+\(\newcommand {\B }{\ensuremath {\mathcal {B}}}\)
+
+\(\renewcommand {\C }{\ensuremath {\mathcal {C}}}\)
+
+\(\newcommand {\E }{\ensuremath {\mathcal {E}}}\)
+
+\(\newcommand {\EW }{\ensuremath {\mathbb {E}}}\)
+
+\(\renewcommand {\L }{\ensuremath {\mathcal {L}}}\)
+
+\(\newcommand {\M }{\ensuremath {\mathcal {M}}}\)
+
+\(\renewcommand {\H }{\ensuremath {\mathcal {H}}}\)
+
+\(\renewcommand {\N }{\ensuremath {\mathcal {N}}}\)
+
+\(\renewcommand {\O }{\ensuremath {\mathcal {O}}}\)
+
+\(\renewcommand {\P }{\ensuremath {\mathcal {P}}}\)
+
+\(\newcommand {\T }{\ensuremath {\mathcal {T}}}\)
+
+\(\renewcommand {\U }{\ensuremath {\mathcal {U}}}\)
+
+\(\renewcommand {\1}{\ensuremath {𝟙}}\)
+
+\(\newcommand {\Pois }{\ensuremath {\text {Pois}}}\)
+
+\(\newcommand {\Var }{\ensuremath {\text {Var}}}\)
+
+\(\newcommand {\Exp }{\ensuremath {\text {Exp}}}\)
+
+\(\newcommand {\id }{\ensuremath {\text {id}}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f9::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f10::marker {
+  font-style:italic;
+  content:'(5)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f11::marker {
+  font-style:italic;
+  content:'(6)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f12::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f13::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f14::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f15::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f16::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f17::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f18::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f19::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f20::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f21::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f22::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f23::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f24::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f25::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f26::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f27::marker {
+  font-style:italic;
+  content:'(5)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f28::marker {
+  font-style:italic;
+  content:'(6)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f29::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f30::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f31::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f32::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f33::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f34::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f35::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f36::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f37::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f38::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f39::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f40::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f41::marker {
+  font-style:italic;
+  content:'(5)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f42::marker {
+  font-style:italic;
+  content:'(6)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f43::marker {
+  font-style:italic;
+  content:'(7)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f44::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f45::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f46::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f47::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f48::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f49::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f50::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f51::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f52::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f53::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f54::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f55::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f56::marker {
+  font-style:italic;
+  content:'(5)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f57::marker {
+  content:'(i)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f58::marker {
+  content:'(ii)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f59::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f60::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f61::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f62::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f63::marker {
+  font-style:italic;
+  content:'(5)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f64::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f65::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f66::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f67::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f68::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f69::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f70::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f71::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f72::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f73::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f74::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+
+<h2 id="die-erweiterte-zahlengerade-extreal">Die erweiterte Zahlengerade extreal</h2>
+
+</p>
+
+
+<p>
+<b>erweiterte Zahlengerade</b>:&#x2003; Die <em><span class="dashuline" >erweiterte Zahlengerade</span></em> ist definiert als \(\extreal := \real \cup \{\pm \infty \}\). Die Operationen \(+\) und \(\cdot \)
+werden auf \(\extreal \) erweitert durch \(\infty + \infty := \infty \), \((-\infty ) + (-\infty ) := -\infty \), \(-\infty &lt; a &lt; +\infty \) fu&#x0308;r alle \(a \in \real \) usw. Fu&#x0308;r \(c \in
+\real \) sei \(c \cdot \infty := \infty \) fu&#x0308;r \(c &gt; 0\), \(c \cdot \infty := -\infty \) fu&#x0308;r \(c &lt; 0\) und \(c \cdot \infty := 0\) fu&#x0308;r \(c = 0\). Damit ist das Produkt \(a \cdot
+b\) fu&#x0308;r alle \(a, b \in \extreal \) definiert.<br />
+Ausdru&#x0308;cke wie \(\infty - \infty \) werden undefiniert gelassen.
+</p>
+
+<p>
+<b>Intervalle und Umgebungen</b>:&#x2003; Intervalle \([-\infty , a)\), \([-\infty , a]\), \((a, \infty ]\) und \([a, \infty ]\) sind definiert durch \([-\infty , a) := \{-\infty \} \cup (-\infty , a)\)
+usw. mit \(a \in \extreal \). Fu&#x0308;r \(\varepsilon &gt; 0\) sind \(\varepsilon \)-Umgebungen von \(\pm \infty \) definiert durch \(U_\varepsilon (\infty ) := (\frac {1}{\varepsilon }, \infty ]\) und
+\(U_\varepsilon (-\infty ) := [-\infty , -\frac {1}{\varepsilon })\). Dadurch sind auch offene und abgeschlossene Teilmengen von \(\extreal \) definiert.
+</p>
+
+<p>
+<em>Bemerkung</em>: Eine Teilmenge von \(\real \) ist offen in \(\extreal \) genau dann, wenn sie offen in \(\real \) ist. Mit „abgeschlossen“ statt „offen“ stimmt die Aussage nicht mehr: Es gibt Teilmengen von \(\real \),
+die zwar abgeschlossen in \(\real \), aber nicht in \(\extreal \) abgeschlossen sind (z.&#x202f;B. \(M = [0, \infty )\)).
+</p>
+
+
+
+<h2 id="die-borel-sigma-algebra">Die <span style="font-variant: small-caps;">Borel</span>-sigma-Algebra</h2>
+
+</p>
+
+
+<p>
+<b>erzeugte \(\sigma \)-Algebra</b>:&#x2003; Seien \(\Omega \not = \emptyset \) eine nicht-leere Menge und \(\E \in \P (\Omega )\) ein System von Teilmengen. Dann gibt es eine kleinste \(\sigma \)-Algebra
+\(\sigma (\E )\), die \(\E \) entha&#x0308;lt. Sie heißt <em><span class="dashuline" >die von \(\E \) erzeugte \(\sigma \)-Algebra</span></em>.
+</p>
+
+<p>
+<em>Beispiel</em>: Sei \(\Omega \not = \emptyset \) eine nicht-leere Menge.
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p>Fu&#x0308;r \(A \subset \Omega \) ist \(\sigma (\{A\}) = \{\emptyset , A, \Omega \setminus A, \Omega \}\).
+</p>
+</li>
+<li class="list-item-f1"><p>Fu&#x0308;r eine Partition \((A_n)_{n \in \natural }\) von \(\Omega \) (d.&#x202f;h. \(A_n \subset \Omega \) paarweise disjunkt und \(\bigcup _{n \in \natural } A_n = \Omega \)) gilt \(\sigma
+(\{A_1, A_2, \dotsc \}) = \left \{\bigcup _{k \in K} A_k \;|\; K \subset \natural \right \}\).
+</p>
+</li>
+</ul>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Abschluss der \(\sigma \)-Algebra</span>):</span> Seien \(\Omega \not = \emptyset \) eine nicht-leere Menge, \(\E \in \P (\Omega )\) ein System von
+Teilmengen und \(A, A_1, A_2, \dotsc \in \E \). Dann ist \(\Omega \setminus A, \bigcup _{n=1}^\infty A_n, \bigcap _{n=1}^\infty A_n \in \sigma (\E )\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b><span class="textsc" >Borel</span>-\(\sigma \)-Algebra auf \(\real \)</b>:&#x2003; Sei \(\E (\real ) := \{(a, b] \;|\; -\infty &lt; a \le b &lt; \infty \}\).<br />
+Dann heißt \(\B (\real ) := \sigma (\E (\real ))\) die <em><span class="dashuline" ><span class="textsc" >Borel</span>-\(\sigma \)-Algebra auf \(\real \)</span></em>.<br />
+Die Elemente von \(\B (\real )\) heißen <em><span class="dashuline" ><span class="textsc" >Borel</span>-Mengen</span></em>.
+</p>
+
+<p>
+<em>Beispiel</em>: Beispiele fu&#x0308;r Borel-Mengen von \(\real \) sind
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f2"><p>die offenen und abgeschlossenen Intervalle \((a, b) = \bigcup _{n=1}^\infty (a, b - \frac {1}{n}]\) und \([a, b] = \bigcap _{n=1}^\infty (a - \frac {1}{n}, b + \frac {1}{n})\),
+</p>
+</li>
+<li class="list-item-f3"><p>die Elementarereignisse \(\{a\} = [a, a]\) (d.&#x202f;h. jede abza&#x0308;hlbare Teilmenge von \(\real \)),
+</p>
+</li>
+<li class="list-item-f4"><p>alle offenen und abgeschlossenen Teilmengen von \(\real \) (jede offene Menge ist eine ho&#x0308;chstens abza&#x0308;hlbare Vereinigung offener Intervalle) und
+</p>
+</li>
+<li class="list-item-f5"><p>alle ho&#x0308;chstens abza&#x0308;hlbaren Vereinigungen oder Schnitte von offenen und/oder abgeschlossenen Teilmengen von \(\real \) (z.&#x202f;B. das <em><span class="dashuline" ><span
+class="textsc" >Cantor</span>sche Diskontinuum</span></em>).
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: \(\B (\real )\) hat auch andere Erzeugendensysteme:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f6"><p>  \(\{[a, b) \;|\; -\infty &lt; a \le b &lt; \infty \}\)
+</p>
+</li>
+<li class="list-item-f7"><p>  \(\{(a, b) \;|\; -\infty &lt; a \le b &lt; \infty \}\)
+</p>
+</li>
+<li class="list-item-f8"><p>  \(\{[a, b] \;|\; -\infty &lt; a \le b &lt; \infty \}\)
+</p>
+</li>
+<li class="list-item-f9"><p>  \(\{(-\infty , b] \;|\; b \in \real \}\)
+</p>
+</li>
+<li class="list-item-f10"><p>  \(\{O \subset \real \;|\; O \text { offen}\}\)
+</p>
+</li>
+<li class="list-item-f11"><p>  \(\{A \subset \real \;|\; A \text { abgeschlossen}\}\)
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b><span class="textsc" >Borel</span>-\(\sigma \)-Algebra auf \(\extreal \)</b>:&#x2003; Sei \(\E (\extreal ) := \{(a, b] \;|\; -\infty \le a \le b \le \infty \}\).<br />
+Dann heißt \(\B (\extreal ) := \sigma (\E (\extreal ))\) die <em><span class="dashuline" ><span class="textsc" >Borel</span>-\(\sigma \)-Algebra auf \(\extreal \)</span></em>
+</p>
+
+<p>
+<b><span class="textsc" >Borel</span>-\(\sigma \)-Algebra auf \(\real ^n\)</b>:&#x2003; Sei \(\E (\real ^n) := \{I_1 \times \dotsb \times I_n \;|\; I_1, \dotsc , I_n \in \E (\real )\}\).<br />
+Dann heißt \(\B (\real ^n) := \sigma (\E (\real ^n))\) die <em><span class="dashuline" ><span class="textsc" >Borel</span>-\(\sigma \)-Algebra auf \(\real ^n\)</span></em>
+</p>
+
+<p>
+<b>Spur-\(\sigma \)-Algebra</b>:&#x2003; Sei \((\Omega , \A )\) ein Messraum und \(M \subset \Omega \) eine nicht-leere Teilmenge.<br />
+Dann ist \(\A _M := \{A \cap M \;|\; A \in \A \}\) eine \(\sigma \)-Algebra auf \(M\), die sog. <em><span class="dashuline" >Spur-\(\sigma \)-Algebra</span></em>.<br />
+Ist \(M\) eine Teilmenge von \(\real \), \(\extreal \) oder \(\real ^n\), dann heißt die Spur-\(\sigma \)-Algebra \(\B (\real )_M\), \(\B (\extreal )_M\) oder \(\B (\real ^n)_M\) die <em><span class="dashuline"
+>Borel-\(\sigma \)-Algebra \(\B (M)\) auf \(M\)</span></em>.
+</p>
+
+
+
+<h2 id="fortsetzung-von-massen">Fortsetzung von Maßen</h2>
+
+</p>
+
+
+<p>
+<b>Halbring</b>:&#x2003; Sei \(\Omega \not = \emptyset \). Dann heißt \(\H \subset \P (\Omega )\) <em><span class="dashuline" >Halbring</span></em> u&#x0308;ber \(\Omega \), falls
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f12"><p>\(\emptyset \in \H \)
+</p>
+</li>
+<li class="list-item-f13"><p>\(A, B \in \H \;\Rightarrow \; A \cap B \in \H \)
+</p>
+</li>
+<li class="list-item-f14"><p>Fu&#x0308;r alle \(A, B \in \H \) mit \(A \subset B\) existieren \(C_1, \dotsc , C_n \in \H \) paarweise disjunkt mit<br />
+\(B \setminus A = \bigcup _{k=1}^n C_k\).
+</p>
+</li>
+</ul>
+
+<p>
+<em>Beispiel</em>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f15"><p>Jede \(\sigma \)-Algebra u&#x0308;ber \(\Omega \) ist ein Halbring.
+</p>
+</li>
+<li class="list-item-f16"><p>Fu&#x0308;r \(\Omega \not = \emptyset \) ist \(\H := \{A \subset \Omega \;|\; |A| \le 1\} = \{\emptyset \} \cup \{\{x\} \;|\; x \in \Omega \}\) ein Halbring u&#x0308;ber \(\Omega \).
+</p>
+</li>
+<li class="list-item-f17"><p>\(\E (\real ^n)\) ist ein Halbring u&#x0308;ber \(\real ^n\).
+</p>
+</li>
+</ul>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Vereinigung von zwei Mengen im Halbring</span>):</span> Sei \(\H \) ein Halbring u&#x0308;ber \(\Omega \) und \(A, B \in \H \).<br />
+Dann gibt es paarweise disjunkte Mengen \(C_1, \dotsc , C_n \in \H \) mit \(A \cup B = \bigcup _{k=1}^n C_k\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Pra&#x0308;maß</b>:&#x2003; Sei \(\H \) ein Halbring u&#x0308;ber \(\Omega \not = \emptyset \).<br />
+Dann heißt eine Abbildung \(\mu _0\colon \H \rightarrow [0, \infty ]\) <em><span class="dashuline" >Pra&#x0308;maß</span></em> auf \(\H \), falls
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f18"><p>\(\mu _0(\emptyset ) = 0\) (<em><span class="dashuline" >Nulltreue</span></em>)
+</p>
+</li>
+<li class="list-item-f19"><p>\(\mu _0(\bigcup _{n=1}^\infty A_n) = \sum _{n=1}^\infty \mu _0(A_n)\) fu&#x0308;r \(A_n \in \A \) paarweise disjunkt mit \(\bigcup _{n=1}^\infty A_n \in \H \)<br />
+(<em><span class="dashuline" >\(\sigma \)-Additivita&#x0308;t</span></em>)
+</p>
+</li>
+</ul>
+
+<p>
+Falls es zusa&#x0308;tzlich Mengen \((A_n)_{n \in \natural }\) mit \(\mu _0(A_n) &lt; \infty \) fu&#x0308;r alle \(n \in \natural \) und \(\bigcup _{n=1}^\infty A_n = \Omega \) gibt, so heißt \(\mu _0\)
+<em><span class="dashuline" >\(\sigma \)-endlich</span></em>.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Beispiel</em>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f20"><p>Jedes Maß ist auch ein Pra&#x0308;maß.
+</p>
+</li>
+<li class="list-item-f21"><p>Fu&#x0308;r \(\Omega \not = \emptyset \) und den Halbring \(\H = \{A \subset \Omega \;|\; |A| \le 1\}\) ist \(\mu _0\colon \H \rightarrow [0, \infty ]\) mit \(A \mapsto 0\) fu&#x0308;r \(A
+= \emptyset \) und \(A \mapsto 1\) sonst ein Pra&#x0308;maß. Es ist \(\sigma \)-endlich genau dann, wenn \(\Omega \) ho&#x0308;chstens abza&#x0308;hlbar ist.
+</p>
+</li>
+<li class="list-item-f22"><p>\(\E (\real ^n) = \{(a_1, b_1] \times \dotsb \times (a_n, b_n] \;|\; a_i \le b_i\}\) ist ein Halbring. Die Abbildung \(\lambda _0^n\colon \E (\real ^n) \rightarrow [0, \infty ]\) mit
+\((a_1, b_1] \times \dotsb \times (a_n, b_n] \mapsto \prod _{i=1}^n (b_i - a_i)\) ist ein \(\sigma \)-endliches Pra&#x0308;maß und heißt <em><span class="dashuline" ><span class="textsc"
+>Lebesgue</span>-Pra&#x0308;maß</span></em>.
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Fortsetzungssatz von &#x202f;<span class="textsc" >Carathéodory</span></span>):</span><br />
+Seien \(\H \) ein Halbring u&#x0308;ber \(\Omega \not = \emptyset \) und \(\mu _0\colon \H \rightarrow [0, \infty ]\) ein \(\sigma \)-endliches Pra&#x0308;maß.<br />
+Dann gibt es genau ein Maß \(\mu \colon \sigma (\H ) \rightarrow [0, \infty ]\) mit \(\mu |_\H = \mu _0\).<br />
+Außerdem gilt fu&#x0308;r \(A \in \sigma (\H )\) beliebig \(\mu (A) = \inf \{\sum _{n=1}^\infty \mu _0(B_n) \;|\; B_n \in \H ,\; A \subset \bigcup _{n=1}^\infty B_n\}\).
+</p>
+
+<p>
+<b>Folgerung</b>: Seien \(\H \) ein Halbring u&#x0308;ber \(\Omega \not = \emptyset \) und \(\mu , \nu \colon \sigma (\H ) \rightarrow [0, \infty ]\) zwei \(\sigma \)-endliche Maße mit \(\mu |_\H = \nu
+|_\H \). Dann gilt \(\mu = \nu \).
+</p>
+
+<p>
+<em>Beispiel</em>: Seien wieder \(\Omega \not = \emptyset \), \(\H = \{A \subset \Omega \;|\; |A| \le 1\}\) und \(\mu _0\colon \H \rightarrow [0, \infty ]\) wie oben. Wenn \(\Omega \) ho&#x0308;chstens
+abza&#x0308;hlbar ist, dann gibt es genau ein Maß auf \(\sigma (\H ) = P(\Omega )\) mit \(\mu |_\H = \mu _0\).<br />
+Weil das Za&#x0308;hlmaß auch diese Eigenschaft hat, muss \(\mu \) nach dem Fortsetzungssatz von Carathéodory gleich dem Za&#x0308;hlmaß sein (d.&#x202f;h. \(\mu (A) = |A| \in \natural _0 \cup \{\infty \}\)).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b><span class="textsc" >Lebesgue</span>-Maß</b>:&#x2003; Das Lebesgue-Pra&#x0308;maß \(\lambda _0^n\) la&#x0308;sst sich nach Carathéodory eindeutig zu einem Maß \(\lambda ^n\colon \B (\real ^n)
+\rightarrow [0, \infty ]\) fortsetzen. \(\lambda ^n\) heißt <em><span class="dashuline" ><span class="textsc" >Lebesgue</span>-Maß</span></em>.<br />
+Es gilt \(\lambda ^n((a_1, b_1] \times \dotsb \times (a_n, b_n]) = \prod _{i=1}^n (b_i - a_i)\) bzw. insbesondere gilt fu&#x0308;r<br />
+\(\lambda := \lambda ^1\colon \B (\real ) \rightarrow [0, \infty ]\), dass \(\lambda ((a, b]) = b - a\).
+</p>
+
+<p>
+<em>Beispiel</em>: Fu&#x0308;r \(\Omega \in \B (\real ^n)\) mit \(0 &lt; \lambda ^n(\Omega ) &lt; \infty \) definiert \(P\colon \B (\Omega ) \rightarrow [0, 1]\) mit \(A \mapsto \frac {\lambda
+^n(A)}{\lambda ^n(\Omega )}\) ein W-Maß auf \((\Omega , \B (\Omega ))\). \(P\) heißt <em><span class="dashuline" >kontinuierliche Gleichverteilung</span></em>.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Aussagen u&#x0308;ber das <span class="textsc" >Lebesgue</span>-Maß</span>):</span>
+</p>
+<ul style="list-style-type:none">
+<li class="list-item-f23"><p>Fu&#x0308;r \(A \subset \real ^n\) ho&#x0308;chstens abza&#x0308;hlbar gilt \(\lambda ^n(A) = 0\), d.&#x202f;h. \(A\) ist eine <em><span class="dashuline" >Nullmenge</span></em>.
+</p>
+</li>
+<li class="list-item-f24"><p>Es gilt \(\lambda ^n([0, 1]^n) = 1\).
+</p>
+</li>
+<li class="list-item-f25"><p>Fu&#x0308;r \(O \subset \real ^n\) offen mit \(O \not = \emptyset \) gilt \(\lambda ^n(O) &gt; 0\).
+</p>
+</li>
+<li class="list-item-f26"><p>Sei \(A \in \B (\real ^n)\) mit \(\lambda ^n(A) &lt; \infty \). Dann gilt \(\lambda ^n(A) = \sup \{\lambda ^n(K) \;|\; K \subset A \text { kompakt}\}\)<br />
+(<em><span class="dashuline" >Regularita&#x0308;t von innen</span></em>).
+</p>
+</li>
+<li class="list-item-f27"><p>Sei \(A \in \B (\real ^n)\). Dann gilt \(\lambda ^n(A) = \inf \{\lambda ^n(O) \;|\; O \supset A \text { offen}\}\)<br />
+(<em><span class="dashuline" >Regularita&#x0308;t von außen</span></em>).
+</p>
+</li>
+<li class="list-item-f28"><p>Fu&#x0308;r jede <em><span class="dashuline" >Isometrie</span></em> \(f\colon \real ^n \rightarrow \real ^n\) (d.&#x202f;h. \(f(x) = Lx + b\) mit \(L \in \real ^{n \times n}\) orthogonal
+und \(b \in \real ^n\)) und alle Mengen \(A \in \B (\real ^n)\) gilt \(f(A) \in \B (\real ^n)\) sowie \(\lambda ^n(f(A)) = \lambda ^n(A)\)<br />
+(<em><span class="dashuline" >Bewegungsinvarianz des <span class="textsc" >Lebesgue</span>-Maßes</span></em>).
+</p>
+</li>
+</ul>
+
+<p>
+<em>Bemerkung</em>: Es gibt kein bewegungsinvariantes Maß \(\mu \colon \P (\real ) \rightarrow [0, \infty ]\) mit \(\mu ([0, 1]) = 1\)<br />
+(<em><span class="dashuline" >Unlo&#x0308;sbarkeit des Maßproblems</span></em>). Mithilfe des Auswahlaxioms kann man zeigen, dass es Mengen (sog. <em><span class="dashuline" ><span class="textsc"
+>Vitali</span>-Mengen</span></em>) gibt, die nicht messbar sind.
+</p>
+
+
+
+<h2 id="konstruktion-von-wahrscheinlichkeitsmassen-auf-r">Konstruktion von Wahrscheinlichkeitsmaßen auf ℝ</h2>
+
+</p>
+
+
+<p>
+<b>Verteilungsfunktion</b>:&#x2003; Eine <em><span class="dashuline" >Verteilungsfunktion</span></em> auf \(\real \) ist eine Funktion \(F\colon \real \rightarrow \real \) mit
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f29"><p>\(F\) monoton wachsend und rechtsstetig (d.&#x202f;h. \(\lim _{y \to x+0} F(y) = F(y)\))
+</p>
+</li>
+<li class="list-item-f30"><p>\(\lim _{x \to -\infty } F(x) = 0\) und \(\lim _{x \to +\infty } F(x) = 1\)
+</p>
+</li>
+</ul>
+
+<p>
+<em>Beispiel</em>: Die Funktion \(F\colon \real \rightarrow \real \) mit \(F(x) = 0\) fu&#x0308;r \(x &lt; 0\), \(F(x) = 1\) fu&#x0308;r \(x &gt; 1\) und \(F(x) = x\) fu&#x0308;r \(x \in [0, 1]\) ist eine
+Verteilungsfunktion.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >von Verteilungsfunktion zu W-Maß</span>):</span> Sei \(F\colon \real \rightarrow \real \).<br />
+Dann existiert genau ein W-Maß \(P\) auf \((\real , \B (\real ))\) mit \(P((-\infty , x]) = F(x)\) fu&#x0308;r alle \(x \in \real \).
+</p>
+
+<p>
+<em>Beispiel</em>: Die Funktion \(F\) von oben erzeugt ein W-Maß \(P\) mit \(P((-\infty , x]) = F(x)\). Es gilt \(P(A) = \lambda (A \cap [0, 1])\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Dichte</b>:&#x2003; Eine <em><span class="dashuline" >Dichte</span></em> ist eine nicht-negative, integrierbare Funktion \(f\colon \real \rightarrow [0, \infty )\) mit \(\int _{-\infty }^{+\infty }
+f(u)\du = 1\). Ein W-Maß \(P\) auf \(\real \) <em><span class="dashuline" >besitzt die Dichte</span></em> \(f\colon \real \rightarrow [0, \infty )\), falls \(f\) eine Dichte ist und \(P((-\infty , x]) = \int
+_{-\infty }^x f(u)\du \) gilt (das ist a&#x0308;quivalent zu \(P([a, b]) = \int _a^b f(u)\du \)).
+</p>
+
+<p>
+<em>Bemerkung</em>: In den meisten praktischen Anwendungen ist \(f\) stu&#x0308;ckweise stetig, sodass<br />
+\(f\) Riemann-integrierbar ist. Spa&#x0308;ter wird ein weiterer Integrationsbegriff eingefu&#x0308;hrt<br />
+(das Lebesgue-Integral), sodass man die Integrierbarkeit auf diesen Begriff erweitern kann.
+</p>
+
+
+
+<h2 id="beispiele-fuer-wahrscheinlichkeitsmasse-mit-dichte">Beispiele für Wahrscheinlichkeitsmaße mit Dichte</h2>
+
+</p>
+
+
+<p>
+<b>Gleichverteilung</b>:&#x2003; Fu&#x0308;r \(a &lt; b\) ist \(f(x) := \frac {1}{b - a} \cdot \1_{[a,b]}(x)\) eine Dichte. Sie erzeugt ein W-Maß \(\U ([a, b])\), die <em><span class="dashuline"
+>Gleichverteilung auf \([a, b]\)</span></em>. Die Verteilungsfunktion ist \(F(x) = \int _{-\infty }^x \frac {1}{b - a} \1_{[a, b]}(u) \du \), d.&#x202f;h. \(F(x) = 0\) fu&#x0308;r \(x &lt; a\), \(F(x) = \frac
+{x - a}{b - a}\) fu&#x0308;r \(a \le x \le b\) und \(F(x) = 1\) fu&#x0308;r \(x &gt; b\). Fu&#x0308;r die Gleichverteilung gilt \(\U ([a, b])(A) = \lambda (A \cap [a, b]) \cdot \frac {1}{b - a}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Exponentialverteilung</b>:&#x2003; Fu&#x0308;r \(\lambda &gt; 0\) ist \(f(x) := \lambda \cdot e^{-\lambda x} \cdot \1_{[0, \infty )}(x)\) eine Dichte, denn<br />
+\(\int _{-\infty }^x f(u)\du = \int _0^x \lambda e^{-\lambda u} \du = [-e^{-\lambda u}]_0^x = 1 - e^{-\lambda x} \xrightarrow {x \to +\infty } 1\) fu&#x0308;r \(x \ge 0\). Die zugeho&#x0308;rige
+Verteilungsfunktion ist \(F(x) = 1 - e^{-\lambda x}\). Die Dichte erzeugt ein W-Maß \(\Exp (\lambda )\), die <em><span class="dashuline" >Exponentialverteilung zum Parameter \(\lambda \)</span></em>.
+</p>
+
+<p>
+<em>Bemerkung</em>: Die Exponentialverteilung ist das kontinuierliche Pendant zur geometrischen Verteilung im diskreten Fall. Zum Beispiel kann durch die Exponentialverteilung atomarer Zerfall durch Radioaktivita&#x0308;t
+modelliert werden. Die Exponentialverteilung ist wie die geometrische Verteilung <em><span class="dashuline" >geda&#x0308;chtnislos</span></em>, d.&#x202f;h. \(P(\{x &gt; s + t\} \;|\; \{x &gt; t\}) = P(\{x
+&gt; s\})\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Normalverteilung</b>:&#x2003; Fu&#x0308;r \(\mu , \sigma \in \real \) mit \(\sigma \not = 0\) ist \(\varphi _{\mu ,\sigma ^2}(x) := \frac {1}{\sqrt {2\pi \sigma ^2}} \exp \left (-\frac {(x - \mu
+)^2}{2\sigma ^2}\right )\) eine Dichte, denn \(\int _{-\infty }^{+\infty } \varphi _{\mu ,\sigma ^2}(u)\du = \frac {1}{\sqrt {2\pi }} \int _{-\infty }^{+\infty } exp\left (-\frac {x^2}{2}\right
+)\dx = \frac {1}{\sqrt {2\pi }} \sqrt {2\pi } = 1\) fu&#x0308;r \(\mu = 0\) und \(\sigma = 1\) (sonst fu&#x0308;hrt man eine Koordinatensubstitution durch). Die Dichte \(\varphi _{\mu ,\sigma ^2}\) definiert
+ein W-Maß \(\N (\mu , \sigma ^2)\), die <em><span class="dashuline" >Normalverteilung mit Erwartungswert \(\mu \) und Varianz \(\sigma ^2\)</span></em>. \(\Phi _{\mu ,\sigma ^2}(x) = \frac {1}{\sqrt {2\pi
+\sigma ^2}} \int _{-\infty }^x \exp \left (-\frac {(u - \mu )^2}{2\sigma ^2}\right ) \du \) ist die Verteilungsfunktion zu \(\N (\mu , \sigma ^2)\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Aussagen zu Normalverteilung</span>):</span>
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f31"><p>\(\Psi _{\mu ,\sigma ^2}(x) = \Psi _{0,1}\left (\frac {x - \mu }{\sigma }\right )\)
+</p>
+</li>
+<li class="list-item-f32"><p>\(\Psi _{\mu ,\sigma ^2}(2\mu - x) = 1 - \psi _{\mu ,\sigma ^2}(x)\)
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="messbare-abbildungen">Messbare Abbildungen</h2>
+<b>messbare Abbildung</b>:&#x2003; Seien \((\Omega , \A )\) und \((\Omega ’, \A ’)\) zwei Messra&#x0308;ume. Dann heißt eine Abbildung \(f\colon \Omega \rightarrow \Omega ’\) <em><span
+class="dashuline" >messbar</span></em>, falls \(f^{-1}(A’) \in \A \) fu&#x0308;r alle \(A’ \in \A ’\). Die Menge \(\M (\Omega , \Omega ’)\) sei die Menge der messbaren Abbildungen von \(\Omega \) nach \(\Omega
+’\). Die Menge \(\M (\Omega )\) sei definiert als \(\M (\Omega , \extreal )\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Erzeugendensystem u&#x0308;berpru&#x0308;fen</span>):</span> Seien \((\Omega , \A )\) und \((\Omega ’, \A ’)\) zwei Messra&#x0308;ume, \(\E
+’\) ein Erzeugendensystem fu&#x0308;r \(\A ’\) und \(f\colon \Omega \rightarrow \Omega ’\). Dann ist \(f\) messbar genau dann, wenn \(f^{-1}(A’) \in \A \) fu&#x0308;r alle \(A’ \in \E ’\).
+</p>
+
+<p>
+<em>Beispiel</em>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f33"><p>Ist \((\Omega , \P (\Omega ))\) diskret, so ist jede Abbildung \(f\colon \Omega \rightarrow \Omega ’\) messbar.
+</p>
+</li>
+<li class="list-item-f34"><p>Fu&#x0308;r \(f\colon \real \rightarrow \real \) stetig mit der Borel-\(\sigma \)-Algebra und \(g\colon \real ^m \rightarrow \real ^n\) stetig, so sind \(f\) und \(g\) messbar. Fu&#x0308;r
+\(h\colon \real \rightarrow \real \) monoton ist \(h\) ebenfalls messbar.
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >messbare Funktionen</span>):</span>
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f35"><p>Fu&#x0308;r \(f\colon (\Omega , \A ) \rightarrow (\Omega ’, \A ’)\) messbar und \(g\colon (\Omega , \A ’) \rightarrow (\Omega ’’, \A ’’)\) messbar ist \(g \circ f\) auch messbar.
+</p>
+</li>
+<li class="list-item-f36"><p>Fu&#x0308;r \(X = (X_1, \dotsc , X_n)\colon \Omega \rightarrow \real ^n\) mit \(X(\omega ) = (X_1(\omega ), \dotsc , X_n(\omega ))\) und \(X_k\colon \Omega \rightarrow \real \) gilt,
+dass \(X\) messbar ist genau dann, wenn \(X_1, \dotsc , X_n\) messbar sind.
+</p>
+</li>
+</ul>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >messbare Funktionen</span>):</span><br />
+Seien \(X_k\colon \Omega \rightarrow \extreal \) messbare Funktionen fu&#x0308;r \(k \in \natural \). Dann sind ebenfalls messbar:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f37"><p>  \(c_1 X_1 + \dotsb + c_n X_n\) fu&#x0308;r \(n \in \natural \) und \(c_1, \dotsc , c_n \in \real \)
+</p>
+</li>
+<li class="list-item-f38"><p>  \(X_1 \cdot \dotsm \cdot X_n\) fu&#x0308;r \(n \in \natural \)
+</p>
+</li>
+<li class="list-item-f39"><p>  \(\sup _{k \in \natural } X_k\)
+</p>
+</li>
+<li class="list-item-f40"><p>  \(\inf _{k \in \natural } X_k\)
+</p>
+</li>
+<li class="list-item-f41"><p>  \(\limsup _{k \to \infty } X_k\)
+</p>
+</li>
+<li class="list-item-f42"><p>  \(\liminf _{k \to \infty } X_k\)
+</p>
+</li>
+<li class="list-item-f43"><p>  \(\lim _{k \to \infty } X_k\) (wenn \(X_k\) punktweise konvergiert)
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Bildmaß</b>:&#x2003; Seien \((\Omega , \A )\) und \((\Omega ’, \A ’)\) zwei Messra&#x0308;ume und \(f\colon \Omega \rightarrow \Omega ’\) eine messbare Abbildung. Ist \(\mu \) ein Maß auf \((\Omega ,
+\A )\), so ist \(\mu _f\colon \A ’ \rightarrow [0, \infty ]\), \(\mu _f(A’) := \mu (f^{-1}(A’))\) ein Maß auf \((\Omega ’, \A ’)\). \(\mu _f\) heißt <em><span class="dashuline" >Bildmaß</span></em> von
+\(\mu \) unter \(f\).<br />
+\(\mu _f\) ist ein W-Maß genau dann, wenn \(\mu \) ein W-Maß ist.
+</p>
+
+<p>
+<b>\(\mu \)-maßerhaltend</b>:&#x2003; Sei \((\Omega , \A , \mu )\) ein Maßraum. Eine messbare Abbildung \(T\colon \Omega \rightarrow \Omega \) heißt <em><span class="dashuline" >\(\mu
+\)-maßerhaltend</span></em>, falls \(\mu _T = \mu \) mit \(\mu _T\) dem Bildmaß von \(\mu \) unter \(T\) gilt.
+</p>
+
+
+
+<h2 id="zufallsvariablen-und-ihre-verteilungen">Zufallsvariablen und ihre Verteilungen</h2>
+
+</p>
+
+
+<p>
+<b>Zufallsvariable</b>:&#x2003; Seien \((\Omega , \A , P)\) ein W-Raum und \((E, \A ’)\) ein Messraum. Dann heißt eine messbare Abbildung \(X\colon \Omega \rightarrow E\) <em><span class="dashuline"
+>Zufallsvariable</span></em> auf \(\Omega \) mit Werten in \(E\).
+</p>
+
+<p>
+<b>Verteilung</b>:&#x2003; Sei \(X\colon \Omega \rightarrow E\) eine Zufallsvariable. Dann heißt \(P_X\colon \A ’ \rightarrow [0, 1]\), \(P_X(B) := P(X \in B) = P(X^{-1}(B))\) die <em><span
+class="dashuline" >Verteilung</span></em> von \(X\).
+</p>
+
+<p>
+<b>Verteilungsfunktion</b>:&#x2003; Sei \(X\colon \Omega \rightarrow \real \) eine reelle Zufallsvariable. Dann heißt \(F_X\colon \real \rightarrow [0, 1]\), \(F_X(x) := P(X \le x) = P_X((-\infty , x])\) die
+<em><span class="dashuline" >Verteilungsfunktion</span></em> von \(X\).
+</p>
+
+<p>
+<em>Beispiel</em>: Beim „gebrochenen Stab“ mit \(\Omega = [0, L]\) kann man die Zufallsvariable betrachten, die jedem Ergebnis die La&#x0308;nge der ku&#x0308;rzeren Bruchstu&#x0308;cks zuordnet, also \(X\colon
+\Omega \rightarrow \real \) mit \(X(\omega ) = \min \{\omega , L - \omega \}\). Fu&#x0308;r die Verteilungsfunktion \(F_X\) gilt \(F_X(x) = P(X \le x) = P([0, x] \cup [L - x, L]) = 2x\) fu&#x0308;r \(x
+\in [0, \frac {L}{2}]\), \(F_X(x) = P(\emptyset ) = 0\) fu&#x0308;r \(x &lt; 0\) und \(F_X(x) = P(\Omega ) = 1\) fu&#x0308;r \(x &gt; \frac {L}{2}\). Also ist \(P_X\) die Gleichverteilung auf \([0, \frac
+{L}{2}]\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Aussagen u&#x0308;ber Verteilungsfunktionen</span>):</span><br />
+Sei \(X\colon \Omega \rightarrow \real \) eine reelle Zufallsvariable mit Verteilungsfunktion \(F_X\). Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f44"><p>\(F_X\) ist monoton wachsend und rechtsseitig stetig.
+</p>
+</li>
+<li class="list-item-f45"><p>\(\lim _{x \to -\infty } F_X(x) = 0\) und \(\lim _{x \to +\infty } F_X(x) = 1\)
+</p>
+</li>
+<li class="list-item-f46"><p>Fu&#x0308;r alle \(x \in \real \) gilt \(F_X(x) - \lim _{y \to x-0} F_X(y) = P(X = x)\), wobei \(F_X(x) = \lim _{y \to x+0} F_X(y)\) aufgrund der rechtsseitigen Stetigkeit.<br />
+Somit ist \(F_X\) stetig genau dann, wenn fu&#x0308;r alle \(x \in \real \) \(P(X = x) = 0\) gilt.
+</p>
+</li>
+</ul>
+
+<p>
+<em>Bemerkung</em>: Nach (a) und (b) stimmt also obige Definition der Verteilungsfunktion mit der Definition im diskreten Fall u&#x0308;berein.
+</p>
+
+<p>
+<b>diskret verteilt/mit Dichte verteilt</b>:&#x2003; Eine reelle Zufallsvariable \(X\colon \Omega \rightarrow \real \) heißt <em><span class="dashuline" >diskret verteilt</span></em>, falls \(P_X\) diskret verteilt ist.
+\(X\) heißt <em><span class="dashuline" >mit Dichte verteilt</span></em> oder <em><span class="dashuline" >absolutstetig verteilt</span></em>, falls \(P_X\) eine Dichte besitzt.
+</p>
+
+
+
+<h2 id="das-lebesgue-integral">Das <span style="font-variant: small-caps;">Lebesgue</span>-Integral</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Im Folgenden sei \((\Omega , \A , \mu )\) ein Maßraum.
+</p>
+
+<p>
+<b><span class="textsc" >Lebesgue</span>-Integral fu&#x0308;r Indikatorfunktionen</b>:&#x2003; Seien \(A \in \A \) und \(\1_A\colon \Omega \rightarrow \extreal \) mit<br />
+\(\1_A(x) = 1\) fu&#x0308;r \(x \in A\) und \(\1_A(x) = 0\) fu&#x0308;r \(x \notin A\) die zugeho&#x0308;rige Indikatorfunktion.<br />
+Dann ist \(\1_A \in \M (\Omega )\) messbar und \(\int _\Omega \1_A d\mu := \mu (A)\) das <em><span class="dashuline" ><span class="textsc" >Lebesgue</span>-Integral von \(\1_A\)</span></em>.
+</p>
+
+<p>
+<b>Elementarfunktion</b>:&#x2003; Seien \(c_k \in \real \setminus \{0\}\) und \(A_k \in \A \) paarweise disjunkt fu&#x0308;r \(k \in \natural \). Dann heißt \(\varphi = \sum _{k=1}^n c_k \cdot \1_{A_k}\)
+<em><span class="dashuline" >Elementarfunktion</span></em> u&#x0308;ber \(\Omega \). \(\E (\Omega )\) sei der Raum der Elementarfunktionen u&#x0308;ber \(\Omega \) (ein \(\real \)-Vektorraum). \(\E _+(\Omega
+)\) sei der Raum aller nicht-negativen Elementarfunktionen.
+</p>
+
+<p>
+<b><span class="textsc" >Lebesgue</span>-Integral fu&#x0308;r Elementarfunktionen</b>:&#x2003;<br />
+Sei \(\varphi = \sum _{k=1}^n c_k \cdot \1_{A_k}\) eine Elementarfunktion.<br />
+Dann ist \(\int _\Omega \varphi d\mu := \sum _{k=1}^n c_k \cdot \int _{\Omega } \1_{A_k} d\mu = \sum _{k=1}^n c_k \cdot \mu (A_k)\) das <em><span class="dashuline" ><span class="textsc"
+>Lebesgue</span>-Integral von \(\varphi \)</span></em>.
+</p>
+
+<p>
+<em>Bemerkung</em>: Man kann zeigen, dass dieses Integral wohldefiniert ist, d.&#x202f;h. der Wert des Integrals ha&#x0308;ngt nicht von der Zerlegung in die \(A_k\) ab. Mit dieser Definition ist das Lebesgue-Integral
+fu&#x0308;r Elementarfunktionen linear (d.&#x202f;h. \(\int _\Omega (a\varphi + b\psi ) d\mu = a \int _\Omega \varphi d\mu + b \int _\Omega \psi d\mu \) fu&#x0308;r \(\varphi , \psi \in \E (\Omega
+)\) mit \(a, b \in \real \)) und monoton (d.&#x202f;h. \(\int _\Omega \varphi d\mu \le \int _\Omega \psi d\mu \) fu&#x0308;r \(\varphi , \psi \in \E (\Omega )\) mit \(\varphi \le \psi \)).
+</p>
+
+<p>
+<b><span class="textsc" >Lebesgue</span>-Integral fu&#x0308;r nicht-negative Funktionen</b>:&#x2003; Sei \(f \in \M (\Omega )\) mit \(f \ge 0\). Dann ist \(\int _\Omega f d\mu := \sup \left \{\left
+.\int _\Omega \varphi d\mu \;\right |\; \varphi \in \E _+(\Omega ),\; \varphi \le f\right \} \in [0, \infty ]\) das <em><span class="dashuline" ><span class="textsc" >Lebesgue</span>-Integral von
+\(f \ge 0\)</span></em>.<br />
+\(f\) heißt <em><span class="dashuline" >positiv <span class="textsc" >Lebesgue</span>-integrierbar</span></em> (\(f \in \L ^1_+(\mu )\)), falls \(\int _\Omega f d\mu &lt; \infty \).
+</p>
+
+<p>
+<em>Bemerkung</em>: Damit gilt eine gewisse „Linearita&#x0308;t“ (na&#x0308;mlich \(\int _\Omega (af + bg) d\mu = a \int _\Omega f d\mu + b \int _\Omega g d\mu \) fu&#x0308;r \(f, g \in \L ^1_+(\mu )\)
+und \(a, b \ge 0\)) und Monotonie (genauer \(f \in \L ^1_+(\mu )\) und \(\int _\Omega f d\mu \le \int _\Omega g d\mu \) fu&#x0308;r \(f \in \M (\Omega )\) und \(g \in \L ^1_+(\mu )\) mit \(0 \le f \le
+g\)).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>punktweise Konvergenz von unten</b>:&#x2003; Seien \(f_n, f\colon \Omega \rightarrow \extreal \) Funktionen. \((f_n)_{n \in \natural }\) <em><span class="dashuline" >konvergiert punktweise von unten
+gegen \(f\)</span></em> (\(f_n \nearrow f\)), falls \(\forall _{x \in \Omega }\; f_1(x) \le f_2(x) \le \dotsb \le f(x)\) und<br />
+\(\lim _{n \to \infty } f_n(x) = f(x)\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Existenz einer Folge von Treppenfunktionen und Grenzwertsatz</span>):</span><br />
+Sei \(f \in \M (\Omega )\) mit \(f \ge 0\). Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f47"><p>Es gibt eine Folge \((\varphi _n)_{n \in \natural }\) mit \(\varphi _n \in \E _+(\Omega )\) und \(\varphi _n \nearrow f\).
+</p>
+</li>
+<li class="list-item-f48"><p>Ist \((\varphi _n)_{n \in \natural }\) eine Folge mit \(\varphi _n \in \E _+(\Omega )\) und \(\varphi _n \nearrow f\), dann gilt<br />
+\(\int _\Omega f d\mu = \lim _{n \to \infty } \left (\int _\Omega \varphi _n d\mu \right )\).
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Nullmenge, \(\mu \)-fast u&#x0308;berall</b>:&#x2003;
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f49"><p>Eine Menge \(N \in \A \) heißt <em><span class="dashuline" >Nullmenge</span></em>, falls \(\mu (N) = 0\).
+</p>
+</li>
+<li class="list-item-f50"><p>Eine Aussage \(A(x)\) mit \(x \in \Omega \) gilt <em><span class="dashuline" >\(\mu \)-fast u&#x0308;berall</span></em> (fu&#x0308;r <em><span class="dashuline" >\(\mu \)-fast alle</span></em>
+\(x \in \Omega \)), falls es eine Nullmenge \(N \in \A \) gibt mit \(\forall _{x \in \Omega \setminus N}\; \lnot A(x)\).
+</p>
+</li>
+<li class="list-item-f51"><p>Fu&#x0308;r zwei Funktionen \(f, g\colon \Omega \rightarrow \real \) mit \(f(x) = g(x)\) fu&#x0308;r \(\mu \)-fast alle \(x \in \Omega \) schreibt man \(f \underset {\mu }{=} g\) (analog sind
+auch \(f \underset {\mu }{\le } g\), \(f \underset {\mu }{&lt;} g\), \(f \underset {\mu }{\nearrow } g\) usw. definiert).
+</p>
+</li>
+</ul>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Lebesgue</span>-Integral invariant auf Nullmenge</span>):</span> Seien \(f \in \L ^1_+(\mu )\) und \(g \in \M (\Omega )\)
+mit \(g \ge 0\), sodass \(N := \{x \in \Omega \;|\; f(x) \not = g(x)\} \in \A \) eine Nullmenge ist.<br />
+Dann gilt \(g \in \L ^1_+(\mu )\) und \(\int _\Omega g d\mu = \int _\Omega f d\mu \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>positiver/negativer Anteil</b>:&#x2003; Sei \(f\colon \Omega \rightarrow \extreal \) eine Funktion.<br />
+Dann heißt \(f_+ := \max (f, 0)\) <em><span class="dashuline" >positiver Anteil</span></em> und \(f_- := \max (-f, 0)\) <em><span class="dashuline" >negativer Anteil</span></em> von \(f\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Es gilt \(f = f_+ - f_-\) und \(|f| = f_+ + f_-\).
+</p>
+
+<p>
+<b><span class="textsc" >Lebesgue</span>-Integral</b>:&#x2003; Sei \(f \in \M (\Omega )\).<br />
+\(f\) heißt <em><span class="dashuline" ><span class="textsc" >Lebesgue</span>-integrierbar</span></em> (\(f \in \L ^1(\mu )\)), falls \(f_+ \in \L ^1_+(\mu )\) und \(f_- \in L^1_+(\mu )\).<br />
+In diesem Fall ist \(\int _\Omega f d\mu := \int _\Omega f_+ d\mu - \int _\Omega f_- d\mu \) das <em><span class="dashuline" ><span class="textsc" >Lebesgue</span>-Integral von \(f\)</span></em>.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Aussagen u&#x0308;ber das <span class="textsc" >Lebesgue</span>-Integral</span>):</span>
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f52"><p>\(\L ^1(\mu )\) ist ein \(\real \)-Vektorraum und es gilt \(\int _\Omega (af + bg) d\mu = a \int _\Omega f d\mu + b \int _\Omega g d\mu \) fu&#x0308;r alle \(f, g \in \L ^1(\mu )\) und \(a, b
+\in \real \) (<em><span class="dashuline" >Linearita&#x0308;t</span></em>).
+</p>
+</li>
+<li class="list-item-f53"><p>Fu&#x0308;r \(f, g \in \L ^1(\mu )\) mit \(f \le g\) gilt \(\int _\Omega f d\mu \le \int _\Omega g d\mu \) (<em><span class="dashuline" >Monotonie</span></em>).
+</p>
+</li>
+<li class="list-item-f54"><p>Fu&#x0308;r \(f \in \L ^1(\mu )\) gilt \(|f| \in \L ^1(\mu )\) und \(\left |\int _\Omega f d\mu \right | \le \int _\Omega |f| d\mu \).
+</p>
+</li>
+<li class="list-item-f55"><p>Fu&#x0308;r \(h \in \M (\Omega )\) und \(f \in \L ^1(\mu )\) mit \(|h| \le f\) gilt \(h \in \L ^1(\mu )\).
+</p>
+</li>
+<li class="list-item-f56"><p>Fu&#x0308;r \(f \in \L ^1(\mu )\) ist \(A := \{x \in \Omega \;|\; |f(x)| = \infty \}\) eine Nullmenge.
+</p>
+</li>
+</ul>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >allgemeiner Transformationssatz</span>):</span> Seien \((\Omega , \A , \mu )\) ein Maßraum, \((\Omega ’, \A ’)\) ein Messraum, \(T \in \M (\Omega
+, \Omega ’)\), \(\mu _T\) das Bildmaß von \(T\) auf \(\Omega ’\) und \(f \in \M (\Omega ’)\).<br />
+Dann gilt \(f \in \L ^1(\mu _T) \iff f \circ T \in \L ^1(\mu )\). In diesem Fall gilt \(\int _{\Omega ’} f d\mu _T = \int _\Omega (f \circ T) d\mu \).
+</p>
+
+
+
+<h2 id="grenzwertsaetze-fuer-das-lebesgue-integral">Grenzwertsätze für das <span style="font-variant: small-caps;">Lebesgue</span>-Integral</h2>
+
+</p>
+
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Satz von <span class="textsc" >Beppo</span>-<span class="textsc" >Levi</span> zur monotonen Konvergenz</span>):</span><br />
+Sei \((f_n)_{n \in \natural }\) eine Folge mit \(f_n \in \M (\Omega )\) und \(0 \le f_1 \le f_2 \le \dotsb \).<br />
+Dann gibt es ein \(f \in \M (\Omega )\) mit \(f \ge 0\) und \(f_n \xrightarrow {(\cdot )} f\) und es gilt \(\int _\Omega f d\mu = \lim _{n \to \infty } \left (\int _\Omega f_n d\mu \right )\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Satz von <span class="textsc" >Lebesgue</span> zur majorisierten Konvergenz</span>):</span><br />
+Seien \((f_n)_{n \in \natural }\) eine Folge mit \(f_n \in \M (\Omega )\), \(f \in \M (\Omega )\) mit \(f_n \xrightarrow {(\cdot )} f\) und \(h \in \L ^1(\mu )\) mit \(|f_n| \le h\).<br />
+Dann gilt \(f \in \L ^1(\mu )\) und \(\int _\Omega f d\mu = \lim _{n \to \infty } \left (\int _\Omega f_n d\mu \right )\).
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >Lemma von <span class="textsc" >Fatou</span></span>): Seien \((f_n)_{n \in \natural }\) eine Folge mit \(f_n \in \M (\Omega )\) und \(f_n \ge 0\).<br />
+Dann gilt \(\int _\Omega (\liminf _{n \to \infty } f_n) d\mu \le \liminf _{n \to \infty } \left (\int _\Omega f_n d\mu \right )\).
+</p>
+
+
+
+<h2 id="integration-in-r-und-rn">Integration in ℝ und ℝⁿ</h2>
+
+</p>
+
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Riemann</span>-integrierbar \(\Rightarrow \) <span class="textsc" >Lebesgue</span>integrierbar</span>):</span><br />
+Sei \(f\colon [a, b] \rightarrow \real \) messbar und Riemann-integrierbar.<br />
+Dann ist \(f \in \L ^1(\lambda )\) und \(\int _{[a, b]} f d\lambda = \int _a^b f(x)\dx \).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >uneigentliche <span class="textsc" >Riemann</span>-Integrierbarkeit</span>):</span> Seien \(I \subset \real \) ein Intervall und \(f\colon I
+\rightarrow \real \) messbar, sodass \(f|_K\) fu&#x0308;r jede kompaktes Intervall \(K \subset I\) Riemann-integrierbar ist.<br />
+Dann gilt \(f \in \L ^1(\lambda ) \iff |f| \text { ist über } I \text { uneigentlich Riemann-integrierbar}\).<br />
+In diesem Fall gilt \(\int _I f d\lambda = \int _a^b f(x)\dx \).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Integration bzgl. W-Maßen mit Dichte</span>):</span><br />
+Seien \((\real , \B (\real ), P)\) ein W-Raum, \(P\) ein W-Maß mit Dichtefunktion \(f\colon \real \rightarrow \real \) und \(g \in \M (\real )\).<br />
+Dann gilt \(g \in \L ^1(P) \iff g \cdot f \in \L ^1(\lambda )\).<br />
+In diesem Fall gilt \(\int _\real g dP = \int _\real g \cdot f d\lambda \) (es gilt außerdem \(\int _{[a, b]} g dP = \int _{[a, b]} g \cdot f d\lambda \)).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Satz von <span class="textsc" >Fubini</span></span>):</span><br />
+Seien \((\Omega _1, \A _1, \mu _1)\) und \((\Omega _2, \A _2, \mu _2)\) zwei \(\sigma \)-endliche Maßra&#x0308;ume und \(f \in \M (\Omega _1 \times \Omega _2)\).<br />
+Zusa&#x0308;tzlich gilt mindestens einer der beiden folgenden Fa&#x0308;lle:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f57"><p>\(f \ge 0\)
+</p>
+</li>
+<li class="list-item-f58"><p>\(f \in \L ^1(\mu _1 \otimes \mu _2)\)
+</p>
+</li>
+</ul>
+
+<p>
+Dann gilt \(\int _{\Omega _1 \times \Omega _2} f d(\mu _1 \otimes \mu _2) = \int _{\Omega _2} \left (\int _{\Omega _1} f(\omega _1, \omega _2) d\mu _1(\omega _1)\right ) d\mu _2(\omega _2)\)<br
+/>
+\(= \int _{\Omega _1} \left (\int _{\Omega _2} f(\omega _1, \omega _2) d\mu _2(\omega _2)\right ) d\mu _1(\omega _1)\).
+</p>
+
+
+
+<h2 id="integration-auf-diskreten-massraeumen">Integration auf diskreten Maßräumen</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Sei \((\Omega , \P (\Omega ), \mu )\) ein diskreter Maßraum, d.&#x202f;h. \(\Omega = \{\omega _1, \omega _2, \dotsc \}\) ist abza&#x0308;hlbar. Jede Funktion \(f\colon \Omega
+\rightarrow \extreal \) ist automatisch messbar. Was ist das Lebesgue-Integral \(\int _\Omega f d\mu \) einer solchen Funktion?
+</p>
+
+<p>
+\(f\) la&#x0308;sst sich als Reihe \(f = \sum _{k=1}^\infty f(\omega _k) \cdot \1_{\{\omega _k\}}\) darstellen. Fu&#x0308;r \(f \ge 0\) gilt fu&#x0308;r die Folge \((\varphi _n)_{n \in \natural }\) mit
+\(\varphi _n := \sum _{k=1}^n f(\omega _k) \cdot \1_{\{\omega _k\}}\), dass \(\varphi _n \in \E _+(\Omega )\) und \(\varphi _n \nearrow f\). Es gilt \(\int _\Omega \varphi _n d\mu = \sum _{k=1}^n
+f(\omega _k) \cdot \mu (\{\omega _k\})\). Somit ist \(f \in \L ^1_+(\omega ) \iff \int _\Omega f d\mu = \sum _{k=1}^\infty f(\omega _k) \cdot \mu (\{\omega _k\}) &lt; \infty \).
+</p>
+
+<p>
+Fu&#x0308;r eine beliebige Funktion \(f\) gilt wegen der Messbarkeit \(f \in \L ^1(\mu ) \iff |f| \in \L ^1(\mu )\) \(\iff \sum _{k=1}^\infty |f(\omega _k)| \cdot \mu (\{\omega _k\}) &lt; \infty \iff
+\sum _{k=1}^\infty f(\omega _k) \cdot \mu (\{\omega _k\}) \text { konvergiert absolut}\).<br />
+In diesem Fall gilt \(\int _\Omega f d\mu = \sum _{k=1}^\infty f(\omega _k) \cdot \mu (\{\omega _k\})\).
+</p>
+
+<p>
+Mit diesen Beziehungen kann man die Theorie der diskreten W-Ra&#x0308;ume als Spezialfall der Theorie der kontinuierlichen W-Ra&#x0308;ume sehen.
+</p>
+
+<p>
+Wa&#x0308;hlt man speziell \(\Omega = \natural \) und \(\mu = \sigma \) das Za&#x0308;hlmaß auf \(\natural \), so sind Funktionen \(a\colon \Omega \rightarrow \real \) eigentlich reelle Zahlenfolgen \((a_n)_{n
+\in \natural }\) mit \(a_n = a(n)\). Nach eben Gesagtem ist \(a\) bzgl. des Za&#x0308;hlmaßes Lebesgue-integrierbar genau dann, wenn die Reihe \(\int _\natural a \d \sigma = \sum _{k=1}^\infty a_k\) absolut
+konvergiert. Daher ist die Theorie der absolut konvergenten Reihen in der Theorie des Lebesgue-Integrals enthalten.
+</p>
+
+
+
+<h2 id="erwartungswerte-von-zufallsvariablen">Erwartungswerte von Zufallsvariablen</h2>
+
+</p>
+
+
+<p>
+<b>Erwartungswert</b>:&#x2003;<br />
+Seien \((\Omega , \A , P)\) ein W-Raum und \(X\colon \Omega \rightarrow \real \) eine reelle Zufallsvariable mit \(X \in \L ^1(P)\).<br />
+Dann heißt \(\EW (X) := \int _\Omega X dP\) <em><span class="dashuline" >Erwartungswert (EW)</span></em> von \(X\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Rechenregeln fu&#x0308;r den Erwartungswert</span>):</span> Seien \(X, Y \in \L ^1(P)\) zwei reelle Zufallsvariablen.<br />
+Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f59"><p>  \(X + Y \in \L ^1(P)\) und \(\EW (X + Y) = \EW (X) + \EW (Y)\)
+</p>
+</li>
+<li class="list-item-f60"><p>  Fu&#x0308;r \(\alpha \in \real \) gilt \(\alpha X \in \L ^1(P)\) und \(\EW (\alpha \cdot X) = \alpha \cdot \EW (X)\).
+</p>
+</li>
+<li class="list-item-f61"><p>  Fu&#x0308;r \(A \in \A \) ist \(\1_A \in \L ^1(P)\) eine reelle Zufallsvariable und \(\EW (\1_A) = P(A)\).
+</p>
+</li>
+<li class="list-item-f62"><p>  Aus \(X \le Y\) folgt \(\EW (X) \le \EW (Y)\).
+</p>
+</li>
+<li class="list-item-f63"><p>  \(|X| \in \L ^1(P)\) ist eine reelle Zufallsvariable und \(|\EW (X)| \le \EW (|X|)\).
+</p>
+</li>
+</ul>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Transformationssatz fu&#x0308;r Erwartungswerte</span>):</span> Seien \((\Omega , \A , P)\) ein W-Raum, \(X\colon \Omega \rightarrow \real \)
+eine reelle Zufallsvariable und \(P_X\) ihre Verteilung.<br />
+Dann ist \(X \in \L ^1(P) \iff \id _\real \in \L ^1(P_X)\). In diesem Fall gilt \(\EW (X) = \int _\Omega X dP = \int _\Omega (\id _\real \circ X) dP = \int _\real \id _\real dP_X\).<br />
+Hat \(P_X\) die Dichtefunktion \(f\), dann gilt außerdem \(\EW (X) = \int _\real x \cdot f(x) d\lambda \).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Erwartungswert von elementaren Verteilungen</span>):</span> Sei \(X\colon \Omega \rightarrow \real \) eine reelle Zufallsvariable mit \(X \in \L
+^1(P)\) und \(P_X\) ihre Verteilung. Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f64"><p>Ist \(P_X = \U ([a, b])\) (d.&#x202f;h. <em><span class="dashuline" >\(X\) ist gleichverteilt</span></em>), dann gilt \(\EW (X) = \frac {a + b}{2}\).
+</p>
+</li>
+<li class="list-item-f65"><p>Ist \(P_X = \Exp (\lambda )\) mit \(\lambda &gt; 0\) (d.&#x202f;h. <em><span class="dashuline" >\(X\) ist exponentialverteilt</span></em>), dann gilt \(\EW (X) = \frac {1}{\lambda }\).
+</p>
+</li>
+<li class="list-item-f66"><p>Ist \(P_X = \N (\mu , \sigma ^2)\) mit \(\mu , \sigma \in \real \) und \(\sigma ^2 &gt; 0\) (d.&#x202f;h. <em><span class="dashuline" >\(X\) ist normalverteilt</span></em>), dann gilt \(\EW (X) =
+\mu \).
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>(stochastisch) unabha&#x0308;ngig</b>:&#x2003; Seien \((\Omega , \A , P)\) ein W-Raum, \((E_i, \A _i)\) Messra&#x0308;ume und<br />
+\(X_i\colon \Omega \rightarrow E_i\) Zufallsvariablen fu&#x0308;r \(i \in I\). Dann heißt die Folge \((X_i)_{i \in I}\) <em><span class="dashuline" >(stochastisch) unabha&#x0308;ngig</span></em>, falls
+fu&#x0308;r jede Wahl von \(B_i \in \A _i’\) (\(i \in I\)) die Ereignisse \(\{X_i \in B_i\} = X_i^{-1}\) stochastisch unabha&#x0308;ngig sind.
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >Kriterium fu&#x0308;r Unabha&#x0308;ngigkeit von Zufallsvariablen</span>): Seien \(X_1, X_2\colon \Omega \rightarrow \real \) zwei reelle Zufallsvariablen, \(X := (X_1,
+X_2)\colon \Omega \rightarrow \real ^2\) und \(P_{X_1}, P_{X_2}, P_X\) die Verteilungen dieser Zufallsvariablen.<br />
+Dann sind \(X_1\) und \(X_2\) unabha&#x0308;ngig genau dann, wenn \(P_X = P_{X_1} \otimes P_{X_2}\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >EW von Produkt von unabha&#x0308;ngigen ZV ist Produkt der EW</span>):</span><br />
+Seien \((\Omega , \A , P)\) ein W-Raum und \(X_1, \dotsc , X_n\colon \Omega \rightarrow \real \) reelle Zufallsvariablen mit \(X_1, \dotsc , X_n \in \L ^1(P)\), die unabha&#x0308;ngig sind. Dann ist auch
+\(X_1 \dotsm X_n \in \L ^1(P)\) und \(\EW (X_1 \dotsm X_n) = \EW (X_1) \dotsm \EW (X_n)\).
+</p>
+
+
+
+<h2 id="k-te-momente-varianz-und-streuung-von-zufallsvariablen">k-te Momente, Varianz und Streuung von Zufallsvariablen</h2>
+
+</p>
+
+
+<p>
+<b>\(p\)-fach <span class="textsc" >Lebesgue</span>-integrierbar</b>:&#x2003; Seien \((\Omega , \A , \mu )\) ein Maßraum, \(f \in \M (\Omega )\) und \(p &gt; 0\).<br />
+Dann heißt \(f\) <em><span class="dashuline" >\(p\)-fach <span class="textsc" >Lebesgue</span>-integrierbar</span></em> (\(f \in \L ^p(\mu )\)), falls \(|f| \in \L ^1(\mu )\).<br />
+In diesem Fall definiert man \(\norm {f}_p := (\int _\Omega |f|^p d\mu )^{1/p}\).
+</p>
+
+<p>
+<em>Bemerkung</em>: \(\L ^p(\mu )\) ist ein reeller Vektorraum.<br />
+\(\norm {\cdot }_p\) ist im Allgemeinen keine Norm auf \(\L ^p(\mu )\), sondern nur eine Halbnorm. Es gilt also \(\norm {f}_p \ge 0\), \(\norm {c f}_p = |c| \norm {f}_p\) (Homogenita&#x0308;t) und \(\norm {f +
+g}_p = \norm {f}_p + \norm {g}_p\) (Dreiecksungleichung, in diesem Fall als <em><span class="dashuline" ><span class="textsc" >Minkowski</span>-Ungleichung</span></em> bekannt), aber aus \(\norm {f}_p = 0\)
+folgt nicht unbedingt \(f = 0\) (sondern nur \(f \underset {\mu }{=} 0\)). In der Tat ist \(\norm {\cdot }_p\) eine Norm genau dann, wenn \(\emptyset \) die einzige \(\mu \)-Nullmenge in \(\A \) ist.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Ho&#x0308;lder</span>sche Ungleichung</span>):</span> Seien \(p, q, r &gt; 0\) mit \(\frac {1}{p} + \frac {1}{q} =
+\frac {1}{r}\) sowie \(f \in \L ^p(\mu )\) und \(g \in \L ^q(\mu )\). Dann ist \(f \cdot g \in \L ^r(\mu )\) und es gilt \(\norm {f \cdot g}_r \le \norm {f}_p \cdot \norm {g}_q\).
+</p>
+
+<p>
+<b>Folgerung</b>: Seien \((\Omega , \A , P)\) ein W-Raum und \(0 &lt; p &lt; q &lt; \infty \).<br />
+Dann gilt \(\L ^q(P) \subset \L ^p(P)\) (es gilt sogar \(\norm {f}_p \le p \cdot \norm {f}_q\) fu&#x0308;r \(f \in \L ^q(P)\)).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>(zentriertes) \(k\)-tes Moment</b>:&#x2003; Seien \((\Omega , \A , P)\) ein W-Raum, \(X\colon \Omega \rightarrow \extreal \) eine Zufallsvariable und \(k \in \natural \). Fu&#x0308;r \(X \in \L ^k(P)\)
+oder \(X^k \ge 0\) heißt \(\EW (X^k)\) <em><span class="dashuline" >\(k\)-tes Moment</span></em> und \(\EW ((X - \EW (X))^k)\) <em><span class="dashuline" >zentriertes \(k\)-tes Moment</span></em> von
+\(X\).
+</p>
+
+<p>
+<b>Varianz</b>:&#x2003;<br />
+Das zentrierte 2. Moment \(\Var (X) := \EW ((X - \EW (X))^2) = \EW (X^2) - \EW (X)^2\) heißt <em><span class="dashuline" >Varianz</span></em> von \(X\).
+</p>
+
+<p>
+<b>Standardabweichung</b>:&#x2003;<br />
+Die Wurzel \(\sigma _X := \sqrt {\Var (X)}\) der Varianz heißt <em><span class="dashuline" >Standardabweichung</span></em> von \(X\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Transformationssatz fu&#x0308;r Momente</span>):</span> Seien \((\Omega , \A , P)\) ein W-Raum, \(X\colon \Omega \rightarrow \real \) eine
+reelle Zufallsvariable, \(P_X\) ihre Verteilung und \(k \in \natural \).<br />
+Dann ist \(X^k \in \L ^1(P) \iff x^k \in \L ^1(P_X)\) mit \(x^k\colon \real \rightarrow \real \), \(x \mapsto x^k\).<br />
+In diesem Fall gilt \(\EW (X^k) = \int _\real x^k dP_X\) und \(\EW ((X - E(X))^k) = \int _\real (x - \EW (X))^k dP_X\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Varianz von elementaren Verteilungen</span>):</span> Sei \(X\colon \Omega \rightarrow \real \) eine reelle Zufallsvariable mit \(X \in \L ^1(P)\) und
+\(P_X\) ihre Verteilung. Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f67"><p>Ist \(P_X = \U ([a, b])\) (d.&#x202f;h. <em><span class="dashuline" >\(X\) ist gleichverteilt</span></em>), dann gilt \(\Var (X) = \frac {1}{12} (b - a)^2\).
+</p>
+</li>
+<li class="list-item-f68"><p>Ist \(P_X = \Exp (\lambda )\) mit \(\lambda &gt; 0\) (d.&#x202f;h. <em><span class="dashuline" >\(X\) ist exponentialverteilt</span></em>), dann gilt \(\Var (X) = \frac {1}{\lambda ^2}\).
+</p>
+</li>
+<li class="list-item-f69"><p>Ist \(P_X = \N (\mu , \sigma ^2)\) mit \(\mu , \sigma \in \real \) und \(\sigma ^2 &gt; 0\) (d.&#x202f;h. <em><span class="dashuline" >\(X\) ist normalverteilt</span></em>), dann gilt \(\Var (X)
+= \sigma ^2\).
+</p>
+</li>
+</ul>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Rechenregeln fu&#x0308;r die Varianz</span>):</span> Seien \((\Omega , \A , P)\) ein W-Raum und \(X, X_1, \dotsc , X_n\colon \Omega
+\rightarrow \real \) reelle Zufallsvariablen mit \(\Var (X), \Var (X_i) &lt; \infty \) fu&#x0308;r \(i = 1, \dotsc , n\). Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f70"><p>Fu&#x0308;r \(\alpha , c \in \real \) ist \(\Var (\alpha \cdot X) = \alpha ^2 \cdot \Var (X)\) und \(\Var (X + c) = \Var (X)\).
+</p>
+</li>
+<li class="list-item-f71"><p>Sind die Zufallsvariablen \(X_1, \dotsc , X_n\) unabha&#x0308;ngig, so gilt<br />
+\(\Var (X_1 + \dotsb + X_n) = \Var (X_1) + \dotsb + \Var (X_n)\).
+</p>
+</li>
+<li class="list-item-f72"><p>Fu&#x0308;r \(\Var (X) = 0\) gilt \(X \underset {P}{=} \EW (X)\).
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Aussage (b) gilt auch schon, wenn die Bildung der Erwartungswerte irgendwelcher der beteiligten Zufallsvariablen mit der Multiplikation vertra&#x0308;glich ist. Daher kann man diese Aussage
+verallgemeinern.
+</p>
+
+<p>
+<b>unkorreliert</b>:&#x2003; Seien \((\Omega , \A , P)\) ein W-Raum und \((X_i)_{i \in I}\) eine Familie von reellen Zufallsvariablen mit \(X_i \in \L ^1(P)\) mit \(I \not = \emptyset \). Dann heißt die Familie
+\((X_i)_{i \in I}\) <em><span class="dashuline" >unkorreliert</span></em>, falls fu&#x0308;r jede endliche Teilmenge \(K \subset I\) mit \(K \not = \emptyset \) gilt, dass \(\EW (\prod _{i \in K} X_i) = \prod
+_{i \in K} \EW (X_i)\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Nach einem vorherigen Satz ist jede unabha&#x0308;ngige Familie von Zufallsvariablen auch unkorelliert. Daher ist der folgende Satz eine Verallgemeinerung der Aussage (b) von eben.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Satz von &#x202f;<span class="textsc" >Bienaymé</span></span>):</span> Seien \((\Omega , \A , P)\) ein W-Raum und \(X_1, \dotsc , X_n\colon
+\Omega \rightarrow \real \) unkorrelierte, reelle Zufallsvariablen mit \(\Var (X_k) &lt; \infty \) fu&#x0308;r \(k = 1, \dotsc , n\). Dann gilt \(\Var (X_1 + \dotsb + X_n) = \Var (X_1) + \dotsb + \Var
+(X_n)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Fu&#x0308;r eine reelle Zufallsvariable \(X \in \L ^1(P)\) gilt<br />
+\(P(|X| \ge t = P_X((-\infty , -t] \cup [t, \infty )) \xrightarrow {t \to \infty } 0\) wegen der Stetigkeit von oben. Die folgende Ungliehcung ergibt eine Abscha&#x0308;tzung der Konvergenzgeschwindigkeit in
+Abha&#x0308;ngigkeit vom Grad der Integrierbarkeit von \(X\).
+</p>
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Markov</span>sche Ungleichung</span>):</span> Seien \((\Omega , \A , P)\) ein W-Raum, \(X\colon \Omega \rightarrow
+\extreal \) eine Zufallsvariable und \(q &gt; 0\). Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f73"><p>Fu&#x0308;r \(X \in \L ^q(P)\) gilt \(P(|X| \ge t) \le \frac {\EW (|X|^q)}{t^q}\) fu&#x0308;r jedes \(t &gt; 0\)<br />
+(<em><span class="dashuline" ><span class="textsc" >Markov</span>sche Ungleichung</span></em>, fu&#x0308;r \(q = 2\) <em><span class="dashuline" ><span class="textsc"
+>Tschebyscheff</span>-Ungleichung</span></em>).
+</p>
+</li>
+<li class="list-item-f74"><p>Wenn es ein \(c &gt; 0\) gibt mit \(P(|X| \ge t) \le \frac {c}{t^q}\) fu&#x0308;r jedes \(t &gt; 0\), dann gilt \(X \in \L ^{q - \varepsilon }(P)\) fu&#x0308;r jedes \(\varepsilon \in (0, q)\).
+</p>
+</li>
+</ul>
+
+<p>
+<b>Folgerung</b>:<br />
+Seien \((\Omega , \A , P)\) ein W-Raum, \(X\colon \Omega \rightarrow \extreal \) eine Zufallsvariable mit \(X \in \L ^2(P)\) und \(\varepsilon &gt; 0\).<br />
+Dann gilt \(P(|X - \EW (X)| \ge \varepsilon ) \le \frac {\Var (X)}{\varepsilon ^2}\).
+</p>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

@@ -1,0 +1,2484 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\renewcommand {\A }{\mathcal {A}}\)
+
+\(\renewcommand {\C }{\mathcal {C}}\)
+
+\(\newcommand {\D }{\text {D}}\)
+
+\(\newcommand {\E }{\mathcal {E}}\)
+
+\(\renewcommand {\F }{\mathcal {F}}\)
+
+\(\renewcommand {\L }{\mathcal {L}}\)
+
+\(\renewcommand {\N }{\mathcal {N}}\)
+
+\(\renewcommand {\O }{\mathcal {O}}\)
+
+\(\renewcommand {\P }{\mathcal {P}}\)
+
+\(\renewcommand {\S }{\mathcal {S}}\)
+
+\(\newcommand {\T }{\mathcal {T}}\)
+
+\(\newcommand {\BB }{\mathbb {B}}\)
+
+\(\newcommand {\PP }{\mathbb {P}}\)
+
+\(\newcommand {\hol }{\text {höl}}\)
+
+\(\newcommand {\Lip }{\text {Lip}}\)
+
+\(\newcommand {\esssup }{\text {ess\,sup}}\)
+
+\(\newcommand {\loc }{\text {loc}}\)
+
+\(\newcommand {\supp }{\operatorname {supp}}\)
+
+\(\newcommand {\grad }{\operatorname {grad}}\)
+
+\(\renewcommand {\div }{\operatorname {div}}\)
+
+\(\newcommand {\rot }{\operatorname {rot}}\)
+
+\(\newcommand {\kin }{\text {kin}}\)
+
+\(\newcommand {\pot }{\text {pot}}\)
+
+\(\newcommand {\Bild }{\operatorname {Bild}}\)
+
+\(\newcommand {\Rang }{\operatorname {Rang}}\)
+
+\(\newcommand {\id }{\operatorname {id}}\)
+
+\(\newcommand {\sgn }{\operatorname {sgn}}\)
+
+\(\newcommand {\diam }{\operatorname {diam}}\)
+
+\(\newcommand {\argmin }{\operatorname {arg\,min}}\)
+
+\(\newcommand {\dcup }{\mathbin {\dot {\cup }}}\)
+
+\(\newcommand {\Span }{\operatorname {Span}}\)
+
+\(\newcommand {\Conv }{\operatorname {Conv}}\)
+
+\(\newcommand {\interior }{\operatorname {int}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f9::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f10::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f11::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f12::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f13::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f14::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f15::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f16::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f17::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f18::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f19::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f20::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f21::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f22::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f23::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f24::marker {
+  font-style:italic;
+  content:'(i)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f25::marker {
+  font-style:italic;
+  content:'(ii)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f26::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f27::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f28::marker {
+  content:'•\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+
+<h2 id="galerkin-verfahren"><span style="font-variant: small-caps;">Galerkin</span>-Verfahren</h2>
+
+</p>
+
+
+<h3 id="diskrete-loesung-und-galerkin-projektion">Diskrete Lösung und <span style="font-variant: small-caps;">Galerkin</span>-Projektion</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Die Idee des Galerkin-Verfahrens ist, dass man zur numerischen Lo&#x0308;sung schwacher Formen von PDEs diese auf endlich-dimensionale Teilra&#x0308;ume einschra&#x0308;nkt.
+</p>
+
+<p>
+<b>diskrete Lo&#x0308;sung</b>:&#x2003; Seien \(V\) ein Hilbertraum, \(a(\cdot , \cdot )\) eine stetige, koerzive Bilinearform auf \(V\), \(\ell (\cdot ) \in V’\), \(\forall _{v \in V}\; a(u, v) = \ell (v)\) die
+schwache Form einer PDE und \(V_h \le V\) ein endlich-dimensionaler Unterraum. Dann heißt \(u_h \in V_h\) mit \(\forall _{v \in V_h}\; a(u_h, v) = \ell (v)\) <em><span class="dashuline" >diskrete
+Lo&#x0308;sung</span></em>.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Ex. + Eind. + Beschr.</span>):</span> Die diskrete Lo&#x0308;sung \(u_h \in V_h\) existiert, ist eindeutig und erfu&#x0308;llt \(\norm {u_h} \le \frac
+{1}{\alpha } \norm {\ell }_{V’}\) mit \(\alpha \) der Koerzivita&#x0308;tskonstanten von \(a\) auf \(V\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Das „\(h\)“ in \(V_h\) zeigt an, dass der Raum von \(V_h\) durch einen Diskretisierungsparameter (z.&#x202f;B. Gitterweite) \(h \in \real ^+\) charakterisiert wird und Hoffnung besteht, dass \(\lim _{h
+\to 0} u_h = u\) mit genu&#x0308;gend schneller Konvergenz. Es treten folgende Fragen auf:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p>Wie ist \(V_h\) geschickt zu konstruieren?
+</p>
+</li>
+<li class="list-item-f1"><p>Existieren a-priori-Fehlerschranken \(\norm {u - u_h} \le C(u) h^p\)?
+</p>
+</li>
+<li class="list-item-f2"><p>Existieren a-posterori-Fehlerschranken \(\norm {u - u_h} \le C(u_h) h^p\)?
+</p>
+</li>
+<li class="list-item-f3"><p>Wie lo&#x0308;st man numerisch das entsprechende LGS?
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" ><span class="textsc" >Galerkin</span>-Orthogonalita&#x0308;t</span>): Seien \(u \in V\) die schwache Lo&#x0308;sung der PDE und \(u_h \in V_h\) die diskrete
+Lo&#x0308;sung. Dann gilt \(\forall _{v \in V_h}\; a(u - u_h, v) = 0\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Fu&#x0308;r \(a(\cdot , \cdot )\) symmetrisch ist dies gerade die Orthogonalita&#x0308;t des Projektionsfehlers der orth. Projektion von \(u\) auf \(V_h\) bzgl. des Energieskalarprodukts, denn
+fu&#x0308;r die orth. Projektion \(P_a\colon V \to V_h\) mit \(\forall _{v \in V} \forall _{w \in V_h}\; \innerproduct {v - P_a v, w}_a = 0\) folgt nach dem Lemma \(P_a u = u_h\) fu&#x0308;r die schwache
+Lo&#x0308;sung \(u\). Damit ist fu&#x0308;r \(a\) symmetrisch die diskrete Lo&#x0308;sung \(u_h\) genau das Bild der orth. Projektion der schwachen Lo&#x0308;sung \(u\) auf \(V_h\) bzgl. \(\innerproduct {\cdot ,
+\cdot }_a\) und heißt daher <em><span class="dashuline" ><span class="textsc" >Galerkin</span>-Projektion</span></em>.
+</p>
+
+<p>
+Fu&#x0308;r \(a(\cdot , \cdot )\) nicht-symmetrisch ist die Galerkin-Projektion i.&#x202f;A. keine orth. Projektion bzgl. irgendeines Skalarprodukts, aber das Lemma gilt weiterhin und man spricht immer noch von
+Galerkin-Projektion/-Orthogonalita&#x0308;t.
+</p>
+
+
+
+<h3 id="eigenschaften-der-diskreten-loesung">Eigenschaften der diskreten Lösung</h3>
+
+</p>
+
+
+<p>
+<em>Lemma</em> (<span class="textsl" >Reproduktion der schw. Lsg.</span>): Sei \(u \in V\) die schw. Lo&#x0308;sung. Ist \(u \in V_h\), dann \(u_h = u\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Daher ist \(V_h := \Span (u)\) ein optimaler, ho&#x0308;chstens eindimensionaler Approximationsraum, der aber zur Berechnung so aufwendig ist wie \(u\) selbst, also inpraktikabel.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >diskretes Problem als LGS</span>):</span> Sei \((\varphi _j)_{j=1}^n\) eine Basis von \(V_h\). Definiere die <em><span class="dashuline"
+>Steifigkeitsmatrix</span></em> \(A_h = (a_{i,j})_{i,j=1}^n\) und die <em><span class="dashuline" >rechte Seite</span></em> \(b_h = (b_i)_{i=1}^n\) durch \(a_{i,j} := a(\varphi _j, \varphi _i)\) und \(b_i
+:= \ell (\varphi _i)\).<br />
+Dann ist \(A_h d = b\) eindeutig lo&#x0308;sbar und es gilt \(u_h = \sum _{j=1}^n d_j \varphi _j\).
+</p>
+
+<p>
+<em>Bemerkung</em>: \(A_h\) ist symmetrisch fu&#x0308;r \(a(\cdot , \cdot )\) symmetrisch (im Gegensatz zum <em><span class="dashuline" >Kollokationsverf.</span></em>).<br />
+\(A_h\) ist positiv definit wg. \(a(\cdot , \cdot )\) koerziv (fu&#x0308;r \(d \not = 0\) gilt \(d^\tp A_h d = \sum _{i,j=1}^n d_i d_j a(\varphi _j, \varphi _i)\)<br />
+\(= a(\sum _{j=1}^n d_j \varphi _j, \sum _{i=1}^n d_i \varphi _i) = a(v, v) \ge \alpha \norm {v}^2 &gt; 0\) mit \(v := \sum _{j=1}^n d_j \varphi _j \not = 0\)).
+</p>
+
+
+
+<h3 id="beispiele-fuer-ansatzraeume">Beispiele für Ansatzräume</h3>
+
+</p>
+
+
+<p>
+<em>Beispiel</em>: Wa&#x0308;hlt man \(V_h\) als Aufspann von Eigenfunktionen des Diff.operators, so erha&#x0308;lt man eine optimale Basis bei unbekannter/variabler rechter Seite.
+</p>
+
+<p>
+Eigenfunktionen und -werte erha&#x0308;lt man dabei aus der <em><span class="dashuline" >schwachen Form des EW-Problems</span></em> des Diff.operators: \(w \in V\) heißt <em><span class="dashuline"
+>Eigenfunktion</span></em> zum <em><span class="dashuline" >Eigenwert</span></em> \(\lambda \), falls \(\forall _{v \in V}\; a(w, v) = \lambda \innerproduct {w, v}_{L^2(\Omega )}\).
+</p>
+
+<p>
+Unter gewissen Voraussetzungen (\(a(\cdot , \cdot )\) symmetrisch und \(\Omega \) zush.) kann man zeigen,
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f4"><p>dass alle EWe \(\lambda _j \in (0, \infty )\) erfu&#x0308;llen (und insb. reell sind),
+</p>
+</li>
+<li class="list-item-f5"><p>dass es abza&#x0308;hlbar unendlich viele, unbeschra&#x0308;nkte Eigenwerte gibt, also \(0 &lt; \lambda _1 \le \lambda _2 \le \dotsb \) und \(\lim _{j \to \infty } \lambda _j = \infty \), und
+</p>
+</li>
+<li class="list-item-f6"><p>dass es eine bzgl. \(\innerproduct {\cdot , \cdot }_{L^2(\Omega )}\) orthonormale Menge \(\{w_j\}_{j\in \natural }\) von Eigenfunktionen zu den Eigenwerten \(\lambda _j\) gibt.
+</p>
+</li>
+</ul>
+
+<p>
+Wa&#x0308;hlt man nun \(n \in \natural \), \(h := \frac {1}{n}\), \(V_h := \Span (\varphi _1, \dotsc , \varphi _n)\), \(\varphi _j := w_j\), so folgt fu&#x0308;r \(A_h\), dass \(a_{ij} = a(\varphi _j,
+\varphi _i) = \lambda _j \innerproduct {w_j, w_i}_{L^2(\Omega )} = \lambda _j \delta _{ij}\), also ist \(A_h\) diagonal und \(d_h = \frac {b_j}{\lambda _j}\).
+</p>
+
+<p>
+Allerdings ist dieser Ansatz i.&#x202f;A. inpraktikabel, da \(w_j\) und \(\lambda _j\) selten bekannt sind.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Beispiel</em>: \(V_h\) kann man auch als polynomiellen Ansatzraum wa&#x0308;hlen. Seien dazu \(d := 1\), \(\Omega := [0, 1]\) und \(a(u, v) := \int _0^1 u’v’ \dx \) auf \(H^1_0(\Omega )\). Dann hat ein
+Polynom mit Nullrandwerten die Gestalt \(p(x) = x(1-x)q(x)\) fu&#x0308;r \(q \in \PP _m\) mit \(\PP _m\) den Polynomen vom Grad \(\le m\).
+</p>
+
+<p>
+Wa&#x0308;hlt man nun \(n \in \natural \), \(h := \frac {1}{n}\), \(\varphi _j(x) := x(1-x) \cdot x^{j-1} = x^j (1-x)\), so folgt fu&#x0308;r \(A_h\), dass i.&#x202f;A. \(a_{ij} = a(\varphi _j, \varphi
+_i) = \int _0^1 \varphi _j’ \varphi _i’ \dx \not = 0\), also ist \(A_h\) i.&#x202f;A. dicht besetzt. Fu&#x0308;r große \(n\) fu&#x0308;hrt dies zu einem Speicherproblem, fu&#x0308;r ma&#x0308;ßig große \(n\) ist
+das Verfahren realisierbar (<em><span class="dashuline" >Spektralverfahren</span></em>).
+</p>
+
+
+
+<h3 id="cea-lemma"><span style="font-variant: small-caps;">Céa</span>-Lemma</h3>
+
+</p>
+
+
+<p>
+<em>Lemma</em> (<span class="textsl" ><span class="textsc" >Céa</span></span>): Seien \(a(\cdot , \cdot )\) eine stetige, koerzive Bilinearform auf \(V\) mit Stetigkeitskonstante \(\gamma \) und
+Koerzivita&#x0308;tskonstante \(\alpha \) und \(\ell \) eine Bilinearform.<br />
+Dann gilt \(\norm {u - u_h} \le \frac {\gamma }{\alpha } \inf _{v \in V_h} \norm {u - v}\) fu&#x0308;r \(u \in V\) schw. Lsg. und \(u_h \in V_h\) diskr. Lsg.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Das Céa-Lemma erlaubt einen Zusammenhang zwischen dem Galerkin-Projektionsfehler und der Bestapproximation, weil \(\inf _{v \in V_h} \norm {u - v}\) der Bestapproximationsfehler der orth.
+Projektion \(P\colon V \to V_h\) ist (unabha&#x0308;ngig von \(a\) und \(\ell \)). Weil der Galerkin-Projektionsfehler ho&#x0308;chstens um einen konstanten Faktor schlechter als die Bestapproximation ist, spricht man von
+<em><span class="dashuline" >Quasi-Optimalita&#x0308;t</span></em> der Galerkin-Projektion.
+</p>
+
+<p>
+\(V_h\) sollte man daher so wa&#x0308;hlen, dass alle mo&#x0308;glichen \(u \in V\) mo&#x0308;glichst gut approximiert werden ko&#x0308;nnen (weil \(\lim _{h \to 0} \inf _{v \in V_h} \norm {u - v} = 0
+\implies \lim _{h \to 0} \norm {u - u_h} = 0\)).
+</p>
+
+<p>
+Fu&#x0308;r \(a(\cdot , \cdot )\) symmetrisch gilt das Céa-Lemma sogar mit Faktor \(\sqrt {\frac {\gamma }{\alpha }}\). Es gilt dann na&#x0308;mlich Norma&#x0308;quivalenz zur Energienorm mit \(\sqrt {\alpha
+} \norm {v} \le \norm {v}_a \le \sqrt {\gamma } \norm {v}\) (wenn man \(\norm {v}_a^2 = a(v, v)\) einsetzt und Stetigkeit/Koerzivita&#x0308;t ausnutzt). Daraus erha&#x0308;lt man fu&#x0308;r \(v \in
+V_h\)<br />
+\(\norm {u - u_h}_a^{\cancel {2}} = a(u - u_h, u - u_h) = a(u - u_h, u - v) = \innerproduct {u - u_h, u - v}_a \le \cancel {\norm {u - u_h}_a} \norm {u - v}_a\), also \(\norm {u - u_h}_a \le
+\norm {u - v}_a\) bzw. \(\norm {u - u_h} \le \sqrt {\frac {\gamma }{\alpha }} \norm {u - v}\).
+</p>
+
+
+
+<h3 id="notwendigkeit-der-koerzivitaet">Notwendigkeit der Koerzivität</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Die Koerzivita&#x0308;t ist bei der Galerkin-Projektion wesentlich. Fu&#x0308;r \(a(\cdot , \cdot )\) nicht-koerziv kann die Galerkin-Projektion aus einem regula&#x0308;ren System in \(V\) ein
+singula&#x0308;res System in \(V_h\) erzeugen.
+</p>
+
+<p>
+<em>Beispiel</em>: Setze \(V := \real ^2\), \(a(u, v) := u^\tp \smallpmatrix {1&amp;0\\0&amp;-1} u\), \(\ell (v) := \smallpmatrix {1&amp;1} v\). Dann ist \(a(\cdot , \cdot )\) nicht-koerziv (negativer EW),
+aber das System ist regula&#x0308;r, weil<br />
+\(\forall _{v \in V}\; a(u, v) = \ell (v) \iff \forall _{v \in V}\; u^\tp \smallpmatrix {1&amp;0\\0&amp;-1} v = \smallpmatrix {1&amp;1} v \iff u^\tp \smallpmatrix {1&amp;0\\0&amp;-1} =
+\smallpmatrix {1&amp;1} \iff u = \smallpmatrix {1\\-1}\).<br />
+Wa&#x0308;hlt man nun \(V_h := \Span (\varphi _1)\) mit \(\varphi _1 := \smallpmatrix {1\\1}\), dann ist das diskrete System singula&#x0308;r, weil das LGS \(A_h d = b_h\) mit \(A_h = a_{1,1} = a(\varphi
+_1, \varphi _1) = 0\) und \(b_h = \ell (\varphi _1) = 2\) nicht lo&#x0308;sbar ist.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Ein Ausweg kann es sein, getrennte Ansatz- und Testra&#x0308;ume zu verwenden<br />
+(<em><span class="dashuline" ><span class="textsc" >Petrov</span>-<span class="textsc" >Galerkin</span>-Projektion</span></em>), d.&#x202f;h. seien \(V_h, \widetilde {V}_h \le V\) endlich-dimensional,
+suche \(u_h \in V_h\) mit \(\forall _{v \in \widetilde {V}_h}\; a(u_h, v) = \ell (v)\). \(\widetilde {V}_h\) sollte so gewa&#x0308;hlt werden, dass das diskrete System regula&#x0308;r ist.
+</p>
+
+<p>
+<em>Beispiel</em>: Im Beispiel von eben seien \(\varphi _1 \in \real ^2 \setminus \Span (\smallpmatrix {1\\1})\), \(\widetilde {\varphi }_1 := \smallpmatrix {1&amp;0\\0&amp;-1} \varphi _1\), \(V_h :=
+\Span (\varphi _1)\) und \(\widetilde {V}_h := \Span (\widetilde {\varphi }_1)\). Damit ist \(A_h = a(\varphi _1, \widetilde {\varphi }_1) = \varphi _1^\tp \smallpmatrix {1&amp;0\\0&amp;-1}
+\widetilde {\varphi }_1 = \varphi _1^\tp \cancel {\smallpmatrix {1&amp;0\\0&amp;-1} \smallpmatrix {1&amp;0\\0&amp;-1}} \varphi _1 = \norm {\varphi _1}^2 &gt; 0\) und \(b_h := \ell (\widetilde
+{\varphi }_1)\), d.&#x202f;h. das diskrete System ist jetzt regula&#x0308;r.
+</p>
+
+
+
+<h2 id="implementierung-der-finite-elemente-methode">Implementierung der Finite-Elemente-Methode</h2>
+
+</p>
+
+
+<h3 id="1d-beispiel-poisson-gleichung">1D-Beispiel (<span style="font-variant: small-caps;">Poisson</span>-Gleichung)</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: U&#x0308;blicherweise wa&#x0308;hlt man Galerkin-Verfahren mit stu&#x0308;ckweise polynomiellen, globalen stetigen Ansatzfunktionen, die einen lokalen Tra&#x0308;ger besitzen.
+</p>
+
+<p>
+<em>Beispiel</em>: Fu&#x0308;r \(d := 1\), \(\Omega := (0, 1)\) sei das a&#x0308;quidistante Gitter \(x_i := ih\), \(i = 0, \dotsc , n + 1\), mit \(n \in \natural \) und \(h := \frac {1}{n+1}\) gegeben.
+Wa&#x0308;hle als Ansatzfunktionen die <em><span class="dashuline" >Hu&#x0308;tchenfunktionen</span></em> \(\varphi _j\) fu&#x0308;r \(j = 1, \dotsc , n\) (d.&#x202f;h. stu&#x0308;ckweise linear mit
+\(\varphi _j(x_i) = \delta _{i,j}\)). Man spricht auch von der <em><span class="dashuline" >nodalen Basis</span></em>. Es gilt \(\supp \varphi _j = [x_{j-1}, x_{j+1}]\). Als Ansatzraum erha&#x0308;lt man
+den Raum \(V_h := \Span ((\varphi _j)_{j=1}^n) \le H^1_0(\Omega )\) der linearen Splines.
+</p>
+
+<p>
+Fu&#x0308;r das Poisson-Problem \(-u’’ = f\) in \(\Omega \) und \(u(0) = 0 = u(1)\) wa&#x0308;hlt man \(a(u, v) := \int _\Omega u’v’\dx \) und \(\ell (v) := \int _\Omega fv\dx \). Mit der Ableitung
+\(\varphi _j’(x) = 1/h\) fu&#x0308;r \(x \in (x_{j-1}, x_j)\) und \(\varphi _j’(x) = -1/h\) fu&#x0308;r \(x \in (x_j, x_{j+1})\) bekommt man \(a_{j,j} = \int _{x_{j-1}}^{x_{j+1}} \frac {1}{h^2} \dx
+= \frac {2}{h}\), \(a_{j+1,j} = \int _{x_j}^{x_{j+1}} \frac {1}{h} (-\frac {1}{h}) \dx = -\frac {1}{h} = a_{j-1,j}\) und \(a_{i,j} = 0\) fu&#x0308;r \(|i - j| \ge 2\), weil dann \(|\supp (\varphi _i)
+\cap \supp (\varphi _j)| = 0\).
+</p>
+
+<p>
+Somit ist \(A_h = \frac {1}{h} \smallpmatrix {2&amp;-1&amp;&amp;\\-1&amp;2&amp;-1&amp;\&amp;\ddots &amp;\ddots &amp;\ddots &amp;\&amp;&amp;-1&amp;2&amp;-1\&amp;&amp;&amp;-1&amp;2}\) tridiagonal und
+du&#x0308;nn besetzt, weswegen es selbst fu&#x0308;r große \(n\) kein Speicherproblem gibt. Wegen der guten Approximationsfa&#x0308;higkeit von Splines erha&#x0308;lt man mit dem Céa-Lemma eine gute Approximation
+durch die Galerkin-Projektion.
+</p>
+
+
+
+<h3 id="simplizes">Simplizes</h3>
+
+</p>
+
+
+<p>
+<b>Simplex</b>:&#x2003; Seien \(a_0, \dotsc , a_s \in \real ^d\) in <em><span class="dashuline" >allgemeiner Lage</span></em>, d.&#x202f;h. \(a_1 - a_0, \dotsc , a_s - a_0 \in \real ^d\) linear
+unabha&#x0308;ngig. Dann heißt \(T := \Conv (a_0, \dotsc , a_s) := \{\sum _{j=0}^s \lambda _j a_j \;|\; \lambda _j \ge 0,\; \sum _{j=0}^s \lambda _j = 1\}\) (nicht-degeneriertes) <em><span
+class="dashuline" >\(s\)-dim. Simplex</span></em> in \(\real ^d\) mit <em><span class="dashuline" >Eckenmenge</span></em> \(\E (T) := \{a_0, \dotsc , a_s\}\).
+</p>
+
+<p>
+<b>Seitensimplex</b>:&#x2003; Seien \(r \in \{0, \dotsc , s\}\) und \(\{a_0’, \dotsc , a_r’\} \subset \{a_0, \dotsc , a_s\}\). Dann heißt<br />
+\(S := \Conv (a_0’, \dotsc , a_r’)\) <em><span class="dashuline" >\(r\)-dim. Seitensimplex</span></em> von \(T\) mit <em><span class="dashuline" >Eckenmenge</span></em> \(\E (S) := \{a_0’, \dotsc ,
+a_r’\}\).
+</p>
+
+<p>
+<b>Einheitssimplex</b>:&#x2003; Der Simplex mit Ecken \(0, e_1, \dotsc , e_d \in \real ^d\) heißt <em><span class="dashuline" >Einheitssimplex</span></em> oder <em><span class="dashuline"
+>Referenzelement</span></em> \(\widehat {T}\) in \(\real ^d\).
+</p>
+
+<p>
+<em>Bemerkung</em>: \(T\) heißt <em><span class="dashuline" >Strecke</span></em>, falls \(s = 1\) und \(d \ge 1\), <em><span class="dashuline" >Dreieck</span></em>, falls \(s = 2\) und \(d \ge 2\), und
+<em><span class="dashuline" >Tetraeder</span></em>, falls \(s = 3\) und \(d \ge 3\). \(S\) ist Ecke von \(T\), falls \(r = 0\), und <em><span class="dashuline" >Kante</span></em> von \(T\), falls \(r = 1\).
+</p>
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >baryzentrische Koordinaten</span>): Sei \(T\) ein \(s\)-dim. Simplex in \(\real ^d\) und \(x \in T\). Dann gibt es eind. bestimmte <em><span class="dashuline" >baryzentrische
+Koord.en</span></em> \((\lambda _j)_{j=0}^s\) mit \(x = \sum _{j=0}^s \lambda _j a_j\), \(\lambda _j \ge 0\) und \(\sum _{j=0}^s \lambda _j = 1\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Mit baryzentrischen Koordinaten kann man \(x \in T\) testen (fu&#x0308;r \(x \in \Span (a_j)_{j=0}^d\) gilt \(x \in T \iff \forall _{j=0,\dotsc ,s}\; \lambda _j \ge 0\)). Außerdem
+la&#x0308;sst sich fu&#x0308;r \(x \in T\) herausfinden, ob \(x\) auf einem echten Seitensimplex von \(T\) liegt (\(|\{j \;|\; \lambda _j \not = 0\}| - 1\) ist die Dimension des Seitensimplex).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>geometrische Maße</b>:&#x2003; Fu&#x0308;r einen Simplex \(T\) seien \(h_T := \diam (T)\) der <em><span class="dashuline" >Durchmesser</span></em> von \(T\), \(\varrho _T := 2 \cdot \sup \{R &gt; 0
+\;|\; \exists _{x_0 \in T}\; B_R(x_0) \subset T\}\) der <em><span class="dashuline" >Inkugeldurchmesser</span></em> und \(\sigma _T := \frac {h_T}{\varrho _T}\).
+</p>
+
+<p>
+<em>Bemerkung</em>: \(\sigma _T\) ist ein Maß fu&#x0308;r die Degeneriertheit von \(T\) (\(\sigma _T\) groß, falls \(T\) einen sehr spitzen Winkel hat, und \(\sigma _T\) klein, falls \(T\) a&#x0308;hnliche Winkel besitzt)
+und ist invariant unter Translation und Skalierung.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Bei der Fehleranalyse und bei der Implementierung der FEM werden Operationen oft auf dem Referenzelement durchgefu&#x0308;hrt und dann auf beliebige Simplizies durch Transformation
+u&#x0308;bertragen.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Referenzabbildung</span>):</span><br />
+Seien \(T \subset \real ^d\) ein \(d\)-dim. Simplex mit Ecken \(\{a_j\}_{j=0}^d\) und \(\widehat {T}\) das Referenzelement. Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f7"><p>Es gibt genau eine affine Abbildung (<em><span class="dashuline" >Referenzabbildung</span></em>) \(F_T\colon \widehat {T} \to T\), \(F_T(\widehat {x}) := B\widehat {x} + t\), mit \(B \in \real
+^{d \times d}\) regula&#x0308;r und \(t \in \real ^d\), sodass \(F_T(e_j) = a_j\) fu&#x0308;r \(j = 0, \dotsc , d\).
+</p>
+</li>
+<li class="list-item-f8"><p>\(\norm {B} \le \frac {h_T}{\varrho _{\widehat {T}}}\) (mit \(\norm {B} = \norm {B}_2 := \sup _{\widehat {x}\not =0} \frac {\norm {B\widehat {x}}}{\norm {\widehat {x}}}\)) und
+</p>
+</li>
+<li class="list-item-f9"><p>\(\norm {B^{-1}} \le \frac {h_{\widehat {T}}}{\varrho _T}\)
+</p>
+</li>
+<li class="list-item-f10"><p>\(|\det B| = \frac {|T|}{|\widehat {T}|}\) und \(\exists _{c, C &gt; 0}\; c\varrho _T^d \le |\det B| \le Ch_T^d\) mit \(c, C\) unabha&#x0308;ngig von \(T\) (abh. von \(d\))
+</p>
+</li>
+</ul>
+
+
+
+<h3 id="triangulierungen-in-d-dimensionen">Triangulierungen in d Dimensionen</h3>
+<b>Triangulierung</b>:&#x2003; Seien \(\Omega \subset \real ^d\) offen, beschra&#x0308;nkt und polygonal berandet sowie \(I\) eine endliche Indexmenge. Dann heißt \(\T _h := \{T_i \;|\; i \in I\}\) <em><span
+class="dashuline" >zula&#x0308;ssige Triangulierung</span></em> von \(\Omega \), falls
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f11"><p>\(\forall _{i \in I}\; [\text {$T_i \subset \real ^d$ ist $d$-dim. Simplex}]\),
+</p>
+</li>
+<li class="list-item-f12"><p>\(\bigcup _{i \in I} T_i = \overline {\Omega }\) (<em>U&#x0308;berdeckung</em>),
+</p>
+</li>
+<li class="list-item-f13"><p>\(\forall _{i \not = j}\; \interior (T_i) \cap \interior (T_j) \not = \emptyset \) (<em>keine U&#x0308;berlappung</em>) und
+</p>
+</li>
+<li class="list-item-f14"><p>fu&#x0308;r \(i \not = j\) ist \(S := T_i \cap T_j\) leer oder \(S\) ist Seitensimplex von \(T_i\) und von \(T_j\) (<em><span class="dashuline" >Konformita&#x0308;t</span></em>).
+</p>
+</li>
+</ul>
+
+<p>
+In diesem Fall heißt \(h := \max _{i \in I} h_{T_i}\) <em><span class="dashuline" >globale Gitterweite/Feinheit</span></em> von \(\T _h\), \(\varrho := \min _{i \in I} \varrho _{T_i}\) <em><span
+class="dashuline" >minimaler Inkugelradius</span></em> von \(\T _h\) und \(\E (\T _h) = \bigcup _{i \in I} \E (T_i)\) <em><span class="dashuline" >Ecken-/Knotenmenge</span></em> von \(\T _h\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Eine zula&#x0308;ssige Triangulierung besitzt keine ha&#x0308;ngenden Knoten.<br />
+Man kann die FEM auch fu&#x0308;r nicht-konforme Gitter definieren (aber technisch aufwa&#x0308;ndiger).<br />
+Wenn \(\Omega \) keinen polygonalen Rand besitzt, dann kann man mit <em><span class="dashuline" >isoparametrischen Elementen</span></em> dem Rand approximieren (Zulassen von nicht-linearen
+Referenzabbildungen).<br />
+Man kann die FEM auch fu&#x0308;r Vierecksgitter, allgemeine polygonale Triangulierungen oder Gitter gemischter Typen durchfu&#x0308;hren.
+</p>
+
+
+
+<h3 id="polynome-in-baryzentrischen-koordinaten">Polynome in baryzentrischen Koordinaten</h3>
+
+</p>
+
+
+<p>
+<b>Polynome auf Simplex</b>:&#x2003; Seien \(T \subset \real ^d\) ein Simplex und \(k \in \natural _0\).<br />
+Dann heißt \(\PP _k(T) := \{p\colon T \to \real \;|\; p(x) = \sum _{|\beta | \le k,\; \beta \in \natural _0^d} a_\beta x^\beta ,\; a_\beta \in \real \}\) <em><span class="dashuline" >Raum der
+polynomialen Funktionen</span></em> bis Grad \(k\) auf \(T\), wobei \(x^\beta := x_1^{\beta _1} \dotsm x_d^{\beta _d}\).
+</p>
+
+<p>
+<b>Polynome auf Triangulierung</b>:&#x2003; Sei \(\T _h\) eine zul. Triangulierung von \(\Omega \) und \(k \in \natural _0\).<br />
+Dann heißt \(\PP _k(\T _h) := \{p \in \C ^0(\Omega ) \;|\; \forall _{T \in \T _h}\; p|_T \in \PP _k(T)\}\) <em><span class="dashuline" >Raum der global stetigen, stu&#x0308;ckweise polynomialen
+Fkt.en</span></em> und \(\PP _{k,0}(\T _h) := \{p \in \PP _k(\T _h) \;|\; p|_{\partial \Omega } \equiv 0\}\) <em><span class="dashuline" >Teilraum mit Nullrandwerten</span></em>.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >Polynome in baryzentrischen Koordinaten</span>): Sei \(T \subset \real ^d\) ein \(d\)-dim. Simplex. Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f15"><p>Fu&#x0308;r alle \(p \in \PP _k(T)\) gibt es ein \(\overline {p} \in \PP _k(\real ^{d+1})\) in der Form \(\overline {p}(\lambda ) = \sum _{1 \le |\beta | \le k,\; \beta \in \natural
+_0^{d+1}} d_\beta \lambda ^\beta \), sodass \(\forall _{x \in T}\; p(x) = \overline {p}(\lambda (x))\) mit \(\lambda (x)\) den baryzentr. Koord.en von \(x\) bzgl. \(T\).
+</p>
+</li>
+<li class="list-item-f16"><p>Fu&#x0308;r alle \(\overline {p} \in \PP _k(\real ^{d+1})\) gilt \(\overline {p}(\lambda (x))|_T \in \PP _k(T)\).
+</p>
+</li>
+</ul>
+
+
+
+<h3 id="lineare-interpolation-auf-triangulierungen">Lineare Interpolation auf Triangulierungen</h3>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >lineares Finite Element/<span class="textsc" >Courant</span>-Element</span>):</span><br />
+Seien \(T \subset \real ^d\) ein \(d\)-dim. Simplex mit Ecken \(\{a_j\}_{j=0}^d\) und \(p_0, \dotsc , p_d \in \real \).<br />
+Dann gibt es genau ein \(p \in \PP _1(T)\) mit \(\forall _{j=0,\dotsc ,d}\; p(a_j) = p_j\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Fu&#x0308;r die Numerik wa&#x0308;hlt man eine konkrete lokale Basis \(\Phi := (\varphi _j)_{j=1}^d\) von \(\PP _1(T)\) (z.&#x202f;B. nodale Basis zu den Ecken) und schreibt \(p \in \PP
+_1(T)\) als Linearkombination dieser Basis.<br />
+Die \(\varphi _j\) heißen auch <em><span class="dashuline" >Formfaktoren</span></em> (<em><span class="dashuline" >shape functions</span></em>).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Ex. + Eind. der \(\PP _1(\T _h)\)-Intp.</span>):</span><br />
+Seien \(\T _h\) eine zul. Triangulierung mit \(n_\E := |\E (\T _h)|\), \(\{v_j\}_{j=1}^{n_\E } := \E (\T _h)\) und \(p_1, \dotsc , p_{n_\E } \in \real \).<br />
+Dann gibt es genau ein \(p \in \PP _1(\T _h)\) mit \(\forall _{j=1,\dotsc ,n_\E }\; p(v_j) = p_j\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Die \(n_\E \)-fache Anwendung des Satzes auf \(p_j = \delta _{i,j}\) fu&#x0308;r \(i = 1, \dotsc , n_\E \) liefert die Lagrange-Basis fu&#x0308;r \(\PP _1(\T _h)\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Lagrange</span>-Basis fu&#x0308;r \(k = 1\)</span>):</span> Sei \(\T _h\) eine zul. Triangulierung mit \(\{v_j\}_{j=1}^{n_\E
+} := \E (\T _h)\).<br />
+Dann gibt es \(\varphi _1, \dotsc , \varphi _{n_\E } \in \PP _1(\T _h)\) mit \(\forall _{i,j=1,\dotsc ,n_\E }\; \varphi _i(v_j) = \delta _{i,j}\).<br />
+\(\Phi := (\varphi _i)_{i=1}^{n_\E }\) ist eine Basis von \(\PP _1(\T _h)\) und heißt <em><span class="dashuline" ><span class="textsc" >Lagrange</span>-/nodale Basis</span></em> von \(\PP _1(\T _h)\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Man kann zeigen, dass \(\PP _1(\T _h) \le H^1(\Omega )\) (siehe folgender Satz) und<br />
+\(\PP _{1,0}(\T _h) = \{p \in \PP _1(\T _h) \;|\; \forall _{v_j \in \E (\T _h) \cap \partial \Omega }\; p(v_j) = 0\} \le H^1_0(\Omega )\), d.&#x202f;h. man kann \(V_h := \PP _{1,0}(\T _h)\) im
+Galerkin-Verfahren verwenden (<em><span class="dashuline" >lineare FEM</span></em>). Freiheitsgrade sind nur Werte in inneren Knoten.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Der folgende Satz begru&#x0308;ndet im Fall \(k = 1\) die Forderung der globalen Stetigkeit (dann ist na&#x0308;mlich \(\PP _1(\T _h) \le H^1(\Omega )\)).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >schwache Ableitung auf Seitensimplizes</span>):</span><br />
+Seien \(\T _h\) eine zul. Triangulierung, \(k \in \natural \) und \(v\colon \Omega \to \real \) mit \(\forall _{T \in \T _h}\; v|_{\interior (T)} \in \C ^k(\interior (T))\).<br />
+Dann gilt \(v \in H^k(\Omega ) \iff v \in \C ^{k-1}(\overline {\Omega })\).
+</p>
+
+
+
+<h3 id="polynomiale-interpolation-auf-triangulierungen">Polynomiale Interpolation auf Triangulierungen</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Es folgt eine Erweiterung von \(\PP _1(\T _h)\) auf ho&#x0308;here Polynomgrade.
+</p>
+
+<p>
+<b><span class="textsc" >Lagrange</span>-Gitter</b>:&#x2003; Sei \(T\) ein \(d\)-dim. Simplex mit Ecken \(\{a_j\}_{j=0}^d\).<br />
+Dann ist das <em><span class="dashuline" ><span class="textsc" >Lagrange</span>-Gitter</span></em> der Ordnung \(k \in \natural \) von \(T\) definiert durch<br />
+\(G_k(T) := \{\sum _{j=0}^d \lambda _j a_j \;|\; \lambda _j \in \{\frac {i}{k} \;|\; i = 0, \dotsc , k\},\; \sum _{j=0}^d \lambda _j = 1\}\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Fu&#x0308;r \(k = 1\) ist \(G_1(T) = \E (T)\) und \(|G_1(T)| = d+1\).<br />
+Fu&#x0308;r \(k \ge 1\) ist \(G_k(T) \supset \E (T)\) mit \(|G_k(T)| = \binom {d+k}{k}\).<br />
+Fu&#x0308;r einen \((d-1)\)-dim. Seitensimplex \(S \subset T\) gilt \(|G_k(T) \cap S| = |G_k(S)| = \binom {d-1+k}{k}\).<br />
+Es gilt \(\{\lambda \in \real ^{d+1} \;|\; \lambda _j \in \{\frac {i}{k} \;|\; i = 0, \dotsc , k\},\; \sum _{j=0}^d \lambda _j = 1\} \cong \{\beta \in \natural _0^{d+1} \;|\; |\beta | = k\}\) via
+\(\lambda := \frac {\beta }{k}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >baryzentrische <span class="textsc" >Lagrange</span>-Polynome</span>):<br />
+Seien \(k \in \natural \) und \(p_\beta (\lambda ) := \prod _{\ell =0}^d \prod _{j=0}^{\beta _\ell -1} \frac {\lambda _\ell - j/k}{\beta _\ell /k - j/k}\) fu&#x0308;r \(\beta \in \natural
+_0^{d+1}\), \(|\beta | = k\), und \(\lambda \in \real ^{d+1}\). Dann gilt
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f17"><p>\(p_\beta (\lambda ) \in \PP _k(\real ^{d+1})\) und
+</p>
+</li>
+<li class="list-item-f18"><p>\(\forall _{\overline {\beta } \in \natural _0^{d+1},\; |\overline {\beta }| \le k}\; p_\beta (\frac {\overline {\beta }}{k}) = \delta _{\beta ,\overline {\beta }}\) (mit \(\delta
+_{\beta ,\overline {\beta }} := \prod _{i=0}^d \delta _{\beta _i,\overline {\beta _i}}\)).
+</p>
+</li>
+</ul>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >allg. simpl. <span class="textsc" >Lagrange</span>-Element</span>):</span> Seien \(k \in \natural \), \(T\) ein \(d\)-dim. Simplex mit
+Lagrange-Gitter \(\{v_j\}_{j=1}^{n_k} := G_k(T)\) fu&#x0308;r \(k \in \natural \) und \(n_k := |G_k(T)|\) sowie \(p_1, \dotsc , p_{n_k} \in \real \).<br />
+Dann gibt es genau ein \(p \in \PP _k(T)\) mit \(\forall _{j=1,\dotsc ,n_k}\; p(v_j) = p_j\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Ex. + Eind. der \(\PP _k(\T _h)\)-Interpolation</span>):</span><br />
+Seien \(\T _h\) eine zul. Triangulierung, \(k \in \natural \), \(\{v_j\}_{j=1}^{m_k} := G_k(\T _h) := \bigcup _{T \in \T _h} G_k(T)\) die <em><span class="dashuline" >Vereinigung aller <span class="textsc"
+>Lagrange</span>-Gitter</span></em> mit \(m_k := |G_k(\T _h)|\) und \(p_1, \dotsc , p_{m_k} \in \real \).<br />
+Dann gibt es genau ein \(p \in \PP _k(\T _h)\) mit \(\forall _{j=1,\dotsc ,m_k}\; p(v_j) = p_j\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Die \(m_k\)-fache Anwendung des Satzes auf \(p_j = \delta _{i,j}\) fu&#x0308;r \(i = 1, \dotsc , m_k\) liefert die Lagrange-Basis fu&#x0308;r \(\PP _k(\T _h)\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Lagrange</span>-Basis fu&#x0308;r \(k \in \natural \)</span>):</span><br />
+Seien \(\T _h\) eine zul. Triangulierung, \(k \in \natural \) und \(\{v_j\}_{j=1}^{m_k} := G_k(\T _h)\).<br />
+Dann existieren \(\varphi _1, \dotsc , \varphi _{m_k} \in \PP _k(\T _h)\) mit \(\forall _{i,j=1,\dotsc ,m_k}\; \varphi _i(v_j) = \delta _{i,j}\).<br />
+\(\Phi := \{\varphi _i\}_{i=1}^{m_k}\) ist eine Basis von \(\PP _k(\T _h)\) und heißt <em><span class="dashuline" ><span class="textsc" >Lagrange</span>-/nodale Basis der Ordnung \(k\)</span></em>.<br />
+\(\Phi _0 := \{\varphi _i \in \Phi \;|\; v_i \notin \partial \Omega \}\) ist eine Basis von \(\PP _{k,0}(\T _h)\) und heißt <em><span class="dashuline" ><span class="textsc" >Lagrange</span>-/nodale
+Basis von \(\PP _{k,0}(\T _h)\)</span></em> zur Knotenmenge \(G_{k,0}(\T _h) := G_k(\T _h) \setminus \partial \Omega \), wobei \(m_{k,0} := \dim \PP _{k,0}(\T _h) = |\Phi _0|\).
+</p>
+
+<p>
+<b><span class="textsc" >Lagrange</span>-FEM-Approximation</b>:&#x2003; Seien \(a(\cdot , \cdot )\) stetig, koerziv, \(\ell (\cdot )\) stetig auf \(H^1_0(\Omega )\) und \(\T _h\) eine zul. Triangulierung mit
+inneren Lagrange-Knoten \(G_{k,0}(\T _h)\) und nodalen Basisfunktionen \(\Phi _0 = \{\varphi _i\}_{i=1}^{m_{k,0}}\). Setze \(V_h := \PP _{k,0}(\T _h) = \Span (\Phi _0)\).<br />
+Dann heißt \(u_h \in V_h\) <em><span class="dashuline" ><span class="textsc" >Lagrange</span>-FEM-Approximation</span></em>, falls \(\forall _{v \in V_h}\; a(u_h, v) = \ell (v)\).
+</p>
+
+
+
+<h3 id="quadraturen">Quadraturen</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Fu&#x0308;r die Aufstellung des Galerkin-LGS (Assemblierung) werden Integrale der Form \(\int _\Omega (A\nabla \varphi _i) \nabla \varphi _j \dx \), \(\int _\Omega f\varphi _j \dx \) und
+\(\int _{\partial \Omega } g_N \varphi _j \dsigma (x)\) durch Quadratur berechnet. Es reicht dabei, die Quadratur nur auf Referenzelementen zu betrachten, die auf beliebige Simplizes transformiert und zu
+zusammengesetzten Quadraturen fu&#x0308;r Gebietsintegrale kombiniert werden ko&#x0308;nnen.
+</p>
+
+<p>
+<b>Quadratur</b>:&#x2003; Seien \(\widehat {T} \subset \real ^d\) der Einheitssimplex, \(\widehat {x}_i \in \widehat {T}\) und \(w_i \in \real \) fu&#x0308;r \(i = 1, \dotsc , \ell \).<br />
+Dann heißt \(\widetilde {I}(g) := \sum _{i=1}^\ell w_i g(\widehat {x}_i)\) <em><span class="dashuline" >Quadratur</span></em> fu&#x0308;r \(g \in \C ^0(\widehat {T})\).<br />
+\(\widetilde {I}\) heißt <em><span class="dashuline" >exakt auf \(\PP _k(\widehat {T})\)</span></em> oder <em><span class="dashuline" >von Ordnung \(\ge k\)</span></em>, falls \(\forall _{g \in \PP
+_k(\widehat {T})}\; \widetilde {I}(g) = I(g) := \int _{\widehat {T}} g(\widehat {x})\d \widehat {x}\).
+</p>
+
+<p>
+<em>Beispiel</em>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f19"><p>Fu&#x0308;r \(d \in \natural \) erha&#x0308;lt man mit dem <em><span class="dashuline" >Schwerpunkt</span></em> \(x_S := \frac {1}{d+1} (1, \dotsc , 1)^\tp \in \real ^d\) von \(\widehat {T}\) die
+<em><span class="dashuline" >Mittelpunktsintegration</span></em> \(\widetilde {I}(g) := |\widehat {T}| g(x_S)\) (von Ordnung \(0\)).
+</p>
+</li>
+<li class="list-item-f20"><p>Fu&#x0308;r \(d = 2\) erha&#x0308;lt man mit den <em><span class="dashuline" >Kantenmittelpunkten</span></em> \(m_{i,j} := \frac {1}{2} (e_i + e_j)\) fu&#x0308;r \(i, j = 0, 1, 2\), \(i \not = j\), die
+Formel \(\widetilde {I}(g) := \frac {1}{3} |\widehat {T}| \sum _{i,j=0,\; i&lt;j}^2 g(m_{i,j})\) (von Ordnung \(2\)).
+</p>
+</li>
+<li class="list-item-f21"><p>Fu&#x0308;r \(d = 2\) erha&#x0308;lt man die Formel<br />
+\(\widetilde {I}(g) := \frac {1}{60} |\widehat {T}| (3 \sum _{i=0}^2 g(e_i) + 8 \sum _{i,j=0,\; i&lt;j}^2 g(m_{i,j}) + 27 g(x_S))\) (von Ordnung \(3\)).
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Fu&#x0308;r einen \(d\)-dim. Simplex \(T \subset \real ^d\) mit Referenzabb. \(F_T\colon \widehat {T} \to T\), \(F_T(\widehat {x}) = B_T \widehat {x} + t_T\), gilt \(\int _T g(x)\dx =
+|\det B_T| \cdot \int _{\widehat {T}} g(F_T(\widehat {x})) \d \widehat {x} \approx |\det B_T| \cdot \widetilde {I}(g \circ F_T) =: \widetilde {I}_T(g)\).<br />
+\(\widetilde {I}_T\) ist exakt auf \(\PP _k(T)\) genau dann, wenn \(\widetilde {I}\) exakt auf \(\PP _k(\widehat {T})\) ist.
+</p>
+
+<p>
+<em>Bemerkung</em>: Bei Differentialausdru&#x0308;cken muss man die Transformation richtig durchfu&#x0308;hren. Sei \(\varphi \in \C ^1(T)\), dann ist \(\widehat {\varphi } := \varphi \circ F_T \in \C
+^1(\widehat {T})\) und es gilt \(\nabla _{\widehat {x}} \widehat {\varphi }(\widehat {x}) = (\D \widehat {\varphi }(\widehat {x}))^\tp = (\D \varphi (x) \cdot \D F_T)^\tp \)<br />
+\(= ((\nabla _x \varphi (x))^\tp \cdot B)^\tp = B^\tp \nabla _x \varphi (x)\) mit \(x = F_T(\widehat {x})\).<br />
+Damit gilt z.&#x202f;B. fu&#x0308;r die Steifigkeitsmatrix-Eintra&#x0308;ge<br />
+\(\int _T (\nabla _x \varphi _i)^\tp A (\nabla _x \varphi _j) \dx = \int _{\widehat {T}} (\nabla _{\widehat {x}} \widehat {\varphi }_{\widehat {i}})^\tp B^{-1} A B^{-\tp } (\nabla _{\widehat
+{x}} \widehat {\varphi }_{\widehat {j}}) |\det B| \d \widehat {x}\)<br />
+fu&#x0308;r die nodale Basis \(\{\widehat {\varphi }_{\widehat {i}}\}_{\widehat {i}=1}^{n_k}\) und geeignete \(\widehat {i}, \widehat {j} \in \{1, \dotsc , n_k\}\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Gebietsintegrale werden einfach approximiert durch zusammengesetzte Quadraturen, d.&#x202f;h. \(\int _\Omega g(x)\dx = \int _{T \in \T _h} \int _T g(x)\dx \approx \sum _{T \in \T _h}
+\widetilde {I}_T(g) = \sum _{T \in \T _h} |\det B_T| \sum _{i=1}^\ell w_i g(F_T(\widehat {x}_i))\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Die Ordnung der Quadratur sollte der (noch zu diskutierenden) FEM-Konvergenzordnung angepasst sein. Zum einen sollte die Quadraturordnung hoch genug sein, damit die Konvergenz fu&#x0308;r \(h \to
+0\) nicht beeintra&#x0308;chtigt wird. Zum anderen sollte sie aber auch nicht zu hoch sein, damit nicht ein Großteil der Rechenzeit fu&#x0308;r die Quadratur verwendet wird.
+</p>
+
+
+
+<h3 id="assemblierung">Assemblierung</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Der Zusammenhang zwischen den lokalen und den globalen Freiheitsgraden wird durch eine sog. globale Indexabbildung realisiert. Seien dazu \(\{\widehat {\varphi }_{\widehat {j}}\}_{\widehat
+{j}=1}^{n_k}\) eine Basis von \(\PP _k(\widehat {T})\) und \(\{\varphi _i\}_{i=1}^{m_k}\) eine Basis von \(\PP _k(\T _h)\). Dann heißt \(\widehat {g}\colon \T _h \times \{1, \dotsc , n_k\} \to \{1, \dotsc
+, m_k\}\) <em><span class="dashuline" >globale Indexabbildung</span></em>, falls \(\forall _{T \in \T _h} \forall _{\widehat {j}=1,\dotsc ,n_k}\; \widehat {\varphi }_{\widehat {j}} = \varphi _i \circ
+F_T\) fu&#x0308;r \(i := \widehat {g}(T, \widehat {j})\).<br />
+Mit der globalen Indexabb. ist die Kenntnis von \(\{\varphi _i\}_{i=1}^{m_k}\) nicht mehr no&#x0308;tig, es reicht, eine Basis auf dem Referenzelement zu definieren.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Die direkte Berechnung der Steifigkeitsmatrix ist i.&#x202f;A. teuer. Fu&#x0308;r die Poisson-Gleichung muss man \(a_{i,j} = \int _\Omega (\nabla \varphi _i)^\tp (\nabla \varphi _j) \dx =
+\sum _{T \in \T _h} \int _T (\nabla \varphi _i)^\tp (\nabla \varphi _j) \dx \) fu&#x0308;r \(i,j = 1, \dotsc , m\) mit \(m := m_{k,0}\) berechnen. Fu&#x0308;r \(k = 1\) ist \(|\T _h| = \O (m)\),
+d.&#x202f;h. der Gesamtaufwand fu&#x0308;r die Berechnung von \(A_h\) ist \(\O (m^3)\) (inpraktikabel fu&#x0308;r \(m\) groß).
+</p>
+
+<p>
+Stattdessen nutzt man die Lokalita&#x0308;t und die globale Indexabbildung:<br />
+Fu&#x0308;r \(S_{i,j} := \supp (\varphi _i) \cap \supp (\varphi _j)\) gilt \(a_{i,j} = \int _{S_{i,j}} (\nabla \varphi _i)^\tp (\nabla \varphi _j) \dx \)<br />
+\(= \sum _{T \in \T _h,\; T \subset S_{i,j}} \int _T \nabla \varphi _i \nabla \varphi _j \dx = \sum _{T \in \T _h,\; T \subset S_{i,j}} \widehat {a}_{\widehat {i},\widehat {j}}\), \(\widehat
+{a}_{\widehat {i},\widehat {j}} := \int _{\widehat {T}} |\det B_T| (\nabla \widehat {\varphi }_{\widehat {i}})^\tp B_T^{-1} B_T^{-\tp } (\nabla \widehat {\varphi }_{\widehat {j}}) \d \widehat
+{x}\),<br />
+mit \(\widehat {i}, \widehat {j} \in \{1, \dotsc , n_k\}\), sodass \(i = \widehat {g}(T, \widehat {i})\) und \(j = \widehat {g}(T, \widehat {j})\).
+</p>
+
+<p>
+Statt einer Schleife u&#x0308;ber \((i,j)\) kann man nun durch Addition der Beitra&#x0308;ge der <em><span class="dashuline" >lokalen Steifigkeitsmatrix</span></em> \(A_{h,T} := (\widehat {a}_{\widehat
+{i},\widehat {j}})_{\widehat {i},\widehat {j}=1}^{n_k}\) die globale Steifigkeitsmatrix \(A_h\) assemblieren:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f22"><p>Setze \(A_h := 0\).
+</p>
+</li>
+<li class="list-item-f23"><p>Wiederhole fu&#x0308;r alle \(T \in \T _h\):
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f24"><p>Berechne \(A_{h,T}\).
+</p>
+</li>
+<li class="list-item-f25"><p>Wiederhole fu&#x0308;r alle \(\widehat {i}, \widehat {j} = 1, \dotsc , n_k\): Setze \((A_h)_{g(T,\widehat {i}),g(T,\widehat {j})} \;+\!\!:= (A_{h,T})_{\widehat {i},\widehat {j}}\).
+</p>
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+Die Gesamtkomplexita&#x0308;t betra&#x0308;gt nun \(\O (|\T _h| n_k^2) = \O (mn_k^2)\) was wegen \(n_k\) konstant und klein wesentlich besser als \(\O (m^3)\) ist.
+</p>
+
+<p>
+A&#x0308;hnlich ist die Assemblierung von \(b_h\) mo&#x0308;glich. Das geht sogar simultan mit \(A_h\) (ohne zusa&#x0308;tzliche Schleifen), d.&#x202f;h. ein einziger Gitterdurchlauf reicht zur Assemblierung des gesamten
+Systems aus.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: \(A_h\) ist du&#x0308;nnbesetzt, da \((A_h)_{i,j} = 0\) fu&#x0308;r \(|\supp (\varphi _i) \cap \supp (\varphi _j)| = 0\).<br />
+Ist \(r\) die maximale Kantenzahl fu&#x0308;r einen Knoten, dann existieren fu&#x0308;r \(k = 1\) ho&#x0308;chstens \(r + 1\) Nichtnull-Eintra&#x0308;ge pro Zeile und fu&#x0308;r \(k &gt; 1\) ho&#x0308;chstens \(r
+\cdot |G_k(T)|\).<br />
+Dies muss man bei der Implementierung durch Sparse-Matrizen beru&#x0308;cksichtigen (insb. sollte bei Verfeinerungen \(r\) nicht unbegrenzt wachsen).
+</p>
+
+<p>
+<em>Bemerkung</em>: Fu&#x0308;r \(k \ge d+1\) gibt es innere Lagrange-Knoten. Die entsprechenden Zeilen von \(A_h\) haben nur Eintra&#x0308;ge fu&#x0308;r Knoten desselben Simplex, nicht aber seiner Nachbarn. Dies
+kann man ausnutzen, indem man z.&#x202f;B. durch Zeilenumformungen Einheitsvektoren in den jeweiligen Zeilen erzeugt und so nur Unbekannte auf Seitensimplizes u&#x0308;brig bleiben (vorteilhaft fu&#x0308;r \(k\)
+groß).<br />
+Man nennt dies <em><span class="dashuline" >innere/statische Kondensation</span></em>.
+</p>
+
+
+
+<h3 id="verallgemeinerungen">Verallgemeinerungen</h3>
+
+</p>
+
+
+<p>
+<b>finites Element</b>:&#x2003; Das Tripel \((T, \Phi , \N )\) heißt <em><span class="dashuline" >finites Element</span></em>, falls
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f26"><p>\(T \subset \real ^d\) beschr. und abg. mit Lipschitz-Rand und \(\interior (T) \not = \emptyset \) (<em><span class="dashuline" >Element-Geometrie</span></em>),
+</p>
+</li>
+<li class="list-item-f27"><p>\(\Phi := \{\varphi _1, \dotsc , \varphi _k\}\) l.&#x202f;u. Fkt.en auf \(T\) (<em><span class="dashuline" >Formfaktoren/-fkt.en</span></em>, <em><span class="dashuline" >shape functions</span></em>)
+mit<br />
+\(\P := \Span (\Phi )\) dem zugeho&#x0308;rigen <em><span class="dashuline" >diskreten Fkt.enraum</span></em> und
+</p>
+</li>
+<li class="list-item-f28"><p>\(\N := \{N_1, \dotsc , N_k\}\) eine Basis von \(\P ’\) ist (<em><span class="dashuline" >Menge der lokalen Freiheitsgrade</span></em>).
+</p>
+</li>
+</ul>
+
+<p>
+\(\Phi \) heißt <em><span class="dashuline" >nodale Basis</span></em> und die \(N_i\) heißen <em><span class="dashuline" >nodale Variablen</span></em>, falls \(\forall _{i,j=1,\dotsc ,k}\; N_i(\varphi _j) =
+\delta _{i,j}\).
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Die Definition verallgemeinert Lagrange-Elemente.<br />
+Sei \(T\) ein Simplex mit Lagrange-Gitter \(\{v_i\}_{i=1}^{n_{\widetilde {k}}} := G_{\widetilde {k}}(T)\), \(k := n_{\widetilde {k}}\), \(\Phi \) die nodale Basis von \(\PP _{\widetilde {k}}(T)\) (d.&#x202f;h.
+\(\varphi _i(v_j) = \delta _{i,j}\)) und \(N_i(p) := p(v_i)\) fu&#x0308;r \(p \in \PP _{\widetilde {k}}(T)\), dann ist \((T, \Phi , \N )\) ein finites Element. Wegen \(N_i(\varphi _j) = \varphi _j(v_i) =
+\delta _{i,j}\) sind die \(N_i\) nodale Variablen.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Statt Simplizes kann man auch andere Geometrien verwenden. Auf Rechtecken und Wu&#x0308;rfeln verwendet man statt linearen Formfaktoren eher bi- bzw. trilineare.<br />
+Allgemein sei fu&#x0308;r \(d \in \natural \) der Funktionenraum \(Q_1([0,1]^d) := \bigotimes _{i=1}^d \PP _1([0,1])\) aller \(d\)-variaten Polynome mit Koordinatengrad \(\le 1\) definiert.<br />
+Beispielsweise hat \(p \in Q_1([0,1]^2)\) fu&#x0308;r \(d = 2\) die Gestalt \(p(x_1, x_2) = a + bx_1 + cx_2 + dx_1 x_2\). Man setzt nun \(\Phi := (x_1 x_2, (1-x_1)x_2, x_1(1-x_2), (1-x_1)(1-x_2))^\tp \)
+und \(\N _i(p) := p(a_i)\) fu&#x0308;r \(p \in Q_1([0,1]^2)\) und \(i = 1, \dotsc , 4\) mit \(a_1, \dotsc , a_4 \in \{0, 1\}^2\) den Ecken von \([0, 1]^2\).<br />
+Analog verfa&#x0308;hrt man fu&#x0308;r \(d = 3\) (trilineare Elemente) oder fu&#x0308;r \(\widetilde {k} = 2\) (bi-/triquadratische Elemente).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Statt Punktauswertungen kann man auch Ableitungswerte vorgeben. Das <em><span class="dashuline" >kubische <span class="textsc" >Hermite</span>-Element</span></em> erha&#x0308;lt man
+wie folgt: Sei \(T \subset \real ^2\) ein Dreieck mit Ecken \(a_0, a_1, a_2\) und Schwerpunkt \(x_S\). Dann ist durch Vorgabe von \(p(a_i), \nabla p(a_i), p(x_S)\) fu&#x0308;r \(i = 0, 1, 2\) eindeutig ein
+interpolierendes Polynom \(p \in \PP _3(T)\) definiert. Die lokalen Freiheitsgrade sind somit gegeben durch \(\N := (N_1(p), \dotsc , N_{10}(p))\)<br />
+\(:= (p(x_S), p(a_0), p(a_1), p(a_2), \partial _{x_1} p(a_0), \partial _{x_1} p(a_1), \partial _{x_1} p(a_2), \partial _{x_2} p(a_0), \partial _{x_2} p(a_1), \partial _{x_2} p(a_2))\).<br />
+Dabei existiert eine eindeutige Basis \(\Phi := (\varphi _1, \dotsc , \varphi _{10})\) von \(\PP _3(T)\) mit \(N_i(\varphi _j) = \delta _{i,j}\).<br />
+Man kann zeigen, dass zusammengesetzte Funktionen aus kubischen Hermite-Elementen (auf zul. Triangulierungen) in \(H^1(\Omega )\) sind, i.&#x202f;A. aber nicht in \(H^2(\Omega )\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Ein Element, welches durch Zusammensetzen \(H^2(\Omega )\)-Funktionen liefert, ist das sog. <em><span class="dashuline" ><span class="textsc" >Agyris</span>-Element</span></em> auf
+Dreiecken. Dazu sei \(T \subset \real ^2\) ein Dreieck mit Ecken \(a_0, a_1, a_2\) und Kantenmittelpunkten \(m_0, m_1, m_2\). Dann ist durch Vorgabe von \(p(a_i), \nabla p(a_i), \D ^2 p(a_i), \nabla p(m_i)
+\cdot n_i\) fu&#x0308;r \(i = 0, 1, 2\) (mit \(n_i \in \real ^2\) dem Normalenvektor in \(m_i\)) eindeutig ein interpolierendes Polynom<br />
+\(p \in \PP _5(T)\) definiert (dabei entha&#x0308;lt \(\D ^2 p(a_i)\) die drei Unbekannten \(\partial _{x_1}^2 p(a_i), \partial _{x_2}^2 p(a_i), \partial _{x_1} \partial _{x_2} p(a_i)\)).
+</p>
+
+
+
+<h2 id="approximationssaetze-und-fem-fehlerabschaetzung">Approximationssätze und FEM-Fehlerabschätzung</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Zur Motivation sei \(I_h\colon V \to V_h\) ein linearer (Interpolations-)Operator mit Approximationsgu&#x0308;te \(\norm {u - I_h u} \le Ch^r\) mit \(C &gt; 0\) mo&#x0308;glichst klein und \(r
+&gt; 0\) mo&#x0308;glichst groß. Dann folgt mit dem Lemma von Céa, dass \(\norm {u - u_h} \le \frac {\gamma }{\alpha } \inf _{v \in V_h} \norm {u - v} \le \frac {\gamma }{\alpha } \norm {u - I_h u}
+\le \frac {\gamma }{\alpha } Ch^r\), also die Konvergenz fu&#x0308;r \(h \to 0\), die Konvergenzordnung \(r\) und eine Fehlerschranke fu&#x0308;r die Galerkin-Projektion \(u_h\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Seien \(\Omega \subset \real ^d\) polygonal berandet, \(V := H^m(\Omega )\), \(V_h := \PP _k(\T _h)\) fu&#x0308;r eine zul. Triang. \(\T _h\) von \(\Omega \) und \(I_h\) der
+Lagrange-Interpolationsoperator. Damit \(I_h\colon H^m(\Omega ) \to \PP _k(\T _h)\) sinnvoll definiert ist, muss \(H^m(\Omega )\) Punktauswertungen erlauben, d.&#x202f;h. jedes \(v \in H^m(\Omega )\) muss einen
+stetigen Repra&#x0308;sentanten \(\widetilde {v} \in \C ^0(\Omega )\) besitzen mit \(\norm {v - \widetilde {v}}_{H^m(\Omega )} = 0\), damit Punkauswertungen von \(v\) als Punktauswertungen von \(\widetilde
+{v}\) definiert werden ko&#x0308;nnen.<br />
+Nach dem 2. Sobolevschen Einbettungssatz kann \(m\) je nach \(d\) aber immer so gewa&#x0308;hlt werden, dass \(I_h\) wohldefiniert ist (z.&#x202f;B. fu&#x0308;r \(d = 2\) reicht z.&#x202f;B. \(m = 2\)). Im Folgenden
+seien \(d, m\) immer derart, dass \(I_h\) wohldefiniert ist.
+</p>
+
+
+
+<h3 id="bramble-hilbert-lemma"><span style="font-variant: small-caps;">Bramble</span>-<span style="font-variant: small-caps;">Hilbert</span>-Lemma</h3>
+
+</p>
+
+
+<p>
+<b>gebrochene Normen</b>:&#x2003; Sei \(\T _h\) eine zul. Triang. von \(\Omega \). Dann ist der <em><span class="dashuline" >gitterabha&#x0308;ngige Raum</span></em> \(H^m(\T _h) := \{v\colon \Omega \to
+\real \;|\; \forall _{T \in \T _h}\; v|_T \in H^m(T)\}\) zusammen mit der Seminorm<br />
+\(|v|_{H^m(\T _h)} := \sqrt {\sum _{T \in \T _h} |v|_{H^m(T)}^2}\) und der Norm \(\norm {v}_{H^m(\T _h)} := \sqrt {\sum _{T \in \T _h} \norm {v}_{H^m(T)}^2}\) definiert.
+</p>
+
+<p>
+<em>Bemerkung</em>: Offensichtlich gilt \(H^m(\T _h) \supset H^m(\Omega )\) und \(\forall _{v \in H^m(\Omega )}\; \norm {v}_{H^m(\T _h)} = \norm {v}_{H^m(\Omega )}\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Rellich</span>scher Auswahlsatz</span>):</span> Seien \(m \in \natural _0\) und \(\Omega \subset \real ^d\) polygonal
+berandet.<br />
+Dann ist die Einbettung \(H^{m+1}(\Omega ) \to H^m(\Omega )\) kompakt.
+</p>
+
+<p>
+<em>Bemerkung</em>: Die Einheitskugel in \(H^{m+1}(\Omega )\) ist kompakt bzgl. der \(\norm {\cdot }_{H^m(\Omega )}\)-Norm bzw. jede bzgl. \(\norm {\cdot }_{H^{m+1}(\Omega )}\) beschra&#x0308;nkte Folge
+entha&#x0308;lt eine bzgl. \(\norm {\cdot }_{H^m(\Omega )}\) konvergente Teilfolge.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >lokaler Interpolationsfehler</span>):</span> Seien \(K \subset \real ^p\) polygonal berandet und abgeschlossen sowie \(k \ge 2\) und
+\(\{x_i\}_{i=1}^{n_k} \subset K\), sodass die Polynominterpolation \(I\colon H^k(K) \to \PP _{k-1}(K)\) wohldefiniert ist (insb. ist die Einbettung \(H^k(K) \to \C ^0(K)\) stetig und \(n_k := \binom
+{k+1}{2}\)).<br />
+Dann gilt \(\exists _{C = C(K, k) &gt; 0} \forall _{v \in H^k(K)}\; \norm {v - Iv}_{H^k(K)} \le C |v|_{H^k(K)}\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Die Voraussetzungen sind z.&#x202f;B. fu&#x0308;r \(d = k = 2\), \(K = T\) Dreieck und \(\{x_1, x_2, x_3\}\) Ecken von \(T\) erfu&#x0308;llt.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" ><span class="textsc" >Bramble</span>-<span class="textsc" >Hilbert</span></span>): Seien \(K \subset \real ^d\) polygonal berandet und abgeschlossen sowie \(k \ge
+2\) und \(g \in (H^k(K))’\) mit \(\forall _{p \in \PP _{k-1}(K)}\; g(p) = 0\).<br />
+Dann gilt \(\exists _{C = C(g, K, k) &gt; 0} \forall _{v \in H^k(K)}\; |g(v)| \le C |v|_{H^k(K)}\).
+</p>
+
+
+
+<h3 id="interpolationsabschaetzung">Interpolationsabschätzung</h3>
+
+</p>
+
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Transformationsformel</span>):</span><br />
+Seien \(T\) ein \(d\)-dim. Simplex mit Referenzabbildung \(F_T(\widehat {x}) = B\widehat {x} + t\) sowie \(v \in H^m(T)\).<br />
+Dann ist \(\widehat {v} := v \circ F_T \in H^m(\widehat {T})\) und es gilt<br />
+\(\exists _{C = C(d, m) &gt; 0} \forall _{v \in H^m(T)}\; |\widehat {v}|_{H^m(\widehat {T})} \le C \norm {B}^m |\det B|^{-1/2} |v|_{H^m(T)}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Interpolationsabscha&#x0308;tzung</span>):</span><br />
+Seien \(k \ge 2\), \(\T _h\) eine zul. Triangulierung von \(\Omega \subset \real ^d\), \(h \le h_{\max }\) und \(\sigma &gt; 0\) mit \(\forall _{T \in \T _h}\; \sigma _T \le \sigma \). Sei außerdem
+\(I_h\colon H^k(\Omega ) \to \PP _{k-1}(\T _h)\) die Lagrange-Interpolation.<br />
+Dann gilt \(\exists _{C = C(k, \Omega , d, h_{\max }, \sigma ) &gt; 0} \forall _{m=0,\dotsc ,k} \forall _{u \in H^k(\Omega )}\; \norm {u - I_h u}_{H^m(\T _h)} \le Ch^{k-m} |u|_{H^k(\Omega )}\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Fu&#x0308;r \(k = 2\) und \(I_h\colon H^2(\Omega ) \to \PP _1(\T _h)\) erha&#x0308;lt man<br />
+\(\norm {u - I_h u}_{H^1(\Omega )} \le Ch |u|_{H^2(\Omega )}\) und \(\norm {u - I_h u}_{L^2(\Omega )} \le Ch^2 |u|_{H^2(\Omega )}\).<br />
+A&#x0308;hnliche Abscha&#x0308;tzungen gelten auch fu&#x0308;r quadratische Gitter und bilineare Elemente.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>nicht-entartet</b>:&#x2003; Eine Folge \((\T _i)_{i\in \natural }\) von zul. Triang.en mit \(\lim _{i \to \infty } h_i = 0\) heißt <em><span class="dashuline" >nicht-entartet</span></em>, falls \(\exists
+_{\sigma &gt;0} \forall _{i \in \natural } \forall _{T \in \T _i}\; \sigma _T = \frac {h_T}{\varrho _T} \le \sigma \).
+</p>
+
+<p>
+<b>quasi-uniform</b>:&#x2003; Eine Folge \((\T _i)_{i\in \natural }\) von zul. Triang.en mit \(\lim _{i \to \infty } h_i = 0\) heißt <em><span class="dashuline" >quasi-uniform</span></em>, falls \(\exists
+_{\sigma &gt;0} \forall _{i \in \natural } \forall _{T \in \T _i}\; \frac {h_i}{\sigma _T} \le \sigma \).
+</p>
+
+<p>
+<em>Bemerkung</em>: Nicht-entartete Gittersequenzen lassen auch lokale Verfeinerungen zu und die Innenwinkel sind nach unten beschra&#x0308;nkt. Bei quasi-uniformen Gittersequenzen ist \(h_T \le h \le Ch_T\).<br />
+Quasi-uniforme Gittersequenzen sind nicht-entartet.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Konvergenz der Interpolation</span>):</span> Seien \(k \ge 2\), \(\{\T _i\}\) eine nicht-entartete Gittersequenz, \(h_{\max } := \max _{i \in \natural
+} h_i\) und \(I_{h_i}\colon H^k(\Omega ) \to \PP _{k-1}(\T _i)\) die Lagrange-Interpolation.<br />
+Dann gilt \(\forall _{m = 0, \dotsc , k - 1} \forall _{u \in H^m(\Omega )}\; \lim _{i \to \infty } \norm {u - I_{h_i} u}_{H^m(\T _i)} = 0\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Die Interpolationsabscha&#x0308;tzung sagt insb. aus, dass<br />
+\(\norm {u - I_h u}_{H^m(\T _h)} \le Ch^{k-m} \norm {u}_{H^k(\Omega )}\), d.&#x202f;h. der Interpolationsfehler wird fu&#x0308;r \(m &lt; k\) in schwa&#x0308;cheren Normen gemessen als \(u\), wobei man
+\(h\)-Potenzen gewinnt.<br />
+Sog. <em><span class="dashuline" >inverse Abscha&#x0308;tzungen</span></em> leisten das Umgekehrte, indem man \(h\)-Potenzen opfert. Sie gelten aber nur fu&#x0308;r FE-Ansatzfunktionen, nicht fu&#x0308;r den
+ganzen Sobolev-Raum.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >inverse Abscha&#x0308;tzung</span>):</span><br />
+Seien \(k \in \natural \), \(\T _h\) eine zul. Triangulierung von \(\Omega \subset \real ^d\) und \(\sigma &gt; 0\) mit \(\forall _{T \in \T _h}\; \sigma _T \le \sigma \).<br />
+Dann gilt \(\exists _{C = C(k, \Omega , d, \sigma ) &gt; 0} \forall _{m=0,\dotsc ,k} \forall _{v_h \in \PP _k(\T _h)}\; \norm {v_h}_{H^k(\T _h)} \le Ch^{m-k} \norm {v_h}_{H^m(\T _h)}\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Fu&#x0308;r \(d = 2\) und lineare Elemente (\(k = 1\), \(m = 0\)) gilt also<br />
+\(\norm {v_h}_{H^1(\T _h)} \le Ch^{-1} \norm {v_h}_{L^2(\T _h)}\).
+</p>
+
+
+
+<h3 id="fem-a-priori-abschaetzungen">FEM-a-priori-Abschätzungen</h3>
+
+</p>
+
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >FEM-a-priori-Fehlerschranke in \(H^1\)</span>):</span><br />
+Seien \(\Omega \subset \real ^d\) offen, beschra&#x0308;nkt und polygonal berandet, \(a(\cdot , \cdot )\) stetig, koerziv und \(\ell (\cdot )\) stetig auf \(H^1_0(\Omega )\), \(u \in H^1_0(\Omega )\) die eindeutige
+schwache Lo&#x0308;sung, \(\T _h\) eine zula&#x0308;ssige Triangulierung und \(\sigma &gt; 0\) mit \(\forall _{T \in \T _h}\; \sigma _T \le \sigma \) sowie \(V_h := \PP _{k,0}(\T _h)\) mit \(k \in
+\natural \) und \(u_h \in V_h\) der Lagrange-FEM-Lo&#x0308;sung.<br />
+Wenn es ein \(s \in \natural \) gibt mit \(h \in H^{s+1}(\Omega ) \cap H^1_0(\Omega )\), dann gilt<br />
+\(\exists _{C = C(\Omega , d, \sigma , k) &gt; 0}\; \norm {u - u_h}_{H^1(\Omega )} \le Ch^s \norm {u}_{H^{s+1}(\Omega )}\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Konvergenz der FEM</span>):</span> Sei \((\T _i)_{i \in \natural }\) eine nicht-entartete Gittersequenz (\(\lim _{i \to \infty } h_i = 0\)), sodass
+die Voraussetzungen des vorherigen Satzes fu&#x0308;r jedes \(\T _i\) erfu&#x0308;llt seien.<br />
+Dann gilt \(\lim _{i \to \infty } \norm {u_{h_i} - u}_{H^1(\Omega )} = 0\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Um \(u \in H^{s+1}(\Omega )\) zu garantieren, wa&#x0308;ren zusa&#x0308;tzlich \(\C ^{s+1}\)-Regularita&#x0308;t von \(\partial \Omega \) und \(f \in H^{s-1}(\Omega )\) fu&#x0308;r
+\(\ell (v) = \int _\Omega fv \dx \) notwendig (Satz von Friedrichs).<br />
+Fu&#x0308;r lineare FEM (\(k = 1\)) reicht \(H^2\)-Regularita&#x0308;t (\(s = 1\)), denn dann folgt lineare Konvergenz in der \(H^1\)-Norm, weil \(\norm {u - u_h}_{H^1(\Omega )} \le Ch\norm {u}_{H^2(\Omega )}
+\le Ch\norm {f}_{L^2(\Omega )}\).<br />
+Fu&#x0308;r polygonal berandete Gebiete kann man eigentlich keine \(H^3\)-Regularita&#x0308;t garantieren, weil kein \(\C ^3\)-Rand vorhanden ist. Daher kann man nicht garantieren, dass quadratische oder kubische FEM
+eine bessere Konvergenzordnung besitzen. In der Praxis sind allerdings quadratische/kubische FEM gegenu&#x0308;ber linearen FEM zu bevorzugen.
+</p>
+
+
+
+<h3 id="aubin-nitsche-trick"><span style="font-variant: small-caps;">Aubin</span>-<span style="font-variant: small-caps;">Nitsche</span>-Trick</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Wegen \(\norm {\cdot }_{L^2(\Omega )} \le \norm {\cdot }_{H^1(\Omega )}\) folgt aus der A-priori-\(H^1\)-Fehlerschranke trivialerweise eine \(L^2\)-Abscha&#x0308;tzung mit derselben
+\(h\)-Potenz. Dies ist jedoch nicht optimal, mittels eines Dualita&#x0308;tsarguments (<em><span class="dashuline" ><span class="textsc" >Aubin</span>-<span class="textsc" >Nitsche</span>-Trick</span></em>)
+gewinnt man eine \(h\)-Potenz.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Aubin</span>-<span class="textsc" >Nitsche</span></span>):</span> Seien \(H\) ein Hilbertraum mit Skalarprodukt
+\(\innerproduct {\cdot , \cdot }_H\) und Norm \(\norm {\cdot }_H\) und \(V \le H\) ein Unterraum, der mit dem Skalarprodukt \(\innerproduct {\cdot , \cdot }_V\) und der Norm \(\norm {\cdot }_V\) ein
+Hilbertraum ist, sodass die Einbettung \(V \to H\) stetig ist (d.&#x202f;h. \(\forall _{v \in V}\; \norm {v}_H \le C \norm {v}_V\)).<br />
+Sei außerdem die schwache Form \(\forall _{v \in V}\; a(u, v) = \ell (v)\) mit \(a\colon V \times V \to \real \) einer stetigen, koerziven Bilinearform, wobei \(u \in V\) die schwache Lo&#x0308;sung und \(u_h
+\in V_h \le V\) die Galerkin-Projektion ist.<br />
+Dann gilt \(\norm {u - u_h}_H = \gamma \norm {u - u_h}_V \cdot \sup _{g \in H \setminus \{0\}} (\frac {1}{\norm {g}_H} \inf _{v_h \in V_h} \norm {\varphi _g - v_h}_V)\), wobei fu&#x0308;r \(g \in
+H\) die <em><span class="dashuline" >duale Lo&#x0308;sung</span></em> \(\varphi _g \in V\) definiert ist als die schwache Lo&#x0308;sung von \(\forall _{w \in V}\; a(w, \varphi _g) = \innerproduct {g,
+w}_H\) ist.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >FEM-a-priori-Fehlerschranke in \(L^2\)</span>):</span> Unter den Vor.en der A-priori-\(H^1\)-Fehlerschranke gilt \(\norm {u - u_h}_{L^2(\Omega )} \le Ch
+\norm {u - u_h}_{H^1(\Omega )}\), d.&#x202f;h. insb. im Fall von \(H^{s+1}\)-Regularita&#x0308;t<br />
+\(\norm {u - u_h}_{L^2(\Omega )} \le Ch^{s+1} \norm {u}_{H^{s+1}(\Omega )} \le Ch^{s+1} \norm {f}_{H^{s-1}(\Omega )}\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Fu&#x0308;r lineare FEM (\(k = 1\), \(s = 1\)) folgt im Fall von \(H^2\)-Regularita&#x0308;t<br />
+\(\norm {u - u_h}_{L^2(\Omega )} \le Ch^2 \norm {u}_{H^2(\Omega )}\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Die bisherigen Abscha&#x0308;tzungen ko&#x0308;nnen keine lokal großen Fehler ausschließen, was das Folgende macht.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >FEM-a-priori-Fehlerabscha&#x0308;tzung in \(L^\infty \)</span>):</span> Unter den Vor.en der A-priori-\(H^1\)-Fehlerschranke sowie \(d = 2\) und \(\T
+_h\) quasi-uniform gilt \(\norm {u - u_h}_{L^\infty (\Omega )} \le Ch\norm {f}_{L^2(\Omega )}\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Die Abscha&#x0308;tzung ist nicht scharf, fu&#x0308;r \(d = 2\) gilt z.&#x202f;B.<br />
+\(\norm {u - u_h}_{L^\infty (\Omega )} \le Ch^2 |\log h|^{3/2} \norm {D^2 u}_{L^\infty (\Omega )}\), fu&#x0308;r \(d = 3\) verschwindet der \(\log \)-Term sogar.
+</p>
+
+
+
+<h3 id="a-posteriori-schaetzer-und-gitteradaptivitaet">A-posteriori-Schätzer und Gitteradaptivität</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Lagrange-Interpolationsoperatoren erfordern Punktauswertungen, d.&#x202f;h. mindestens \(u \in H^2(\Omega )\). Sog. Clément-Operatoren bieten eine Appr.mo&#x0308;glichkeit fu&#x0308;r
+\(H^1(\Omega )\)-Funktionen.
+</p>
+<p>
+<b>Patches</b>:&#x2003; Sei \(\T _h\) eine zul. Triangulierung von \(\Omega \) mit \(\{v_i\}_{i=1}^{m_\E } := \E (\T _h)\).<br />
+Zu jedem \(v_i\) definiere den <em><span class="dashuline" >Patch aller angrenzenden Elemente</span></em> \(w_i := \bigcup _{T \in \T _h,\; v_i \in T} T\) und fu&#x0308;r jedes \(T \in \T _h\) den <em><span
+class="dashuline" >Patch der Nachbarn</span></em> \(w_T := \bigcup _{v_i \in T} w_i = \bigcup _{T’ \in \T _h,\; T’ \cap T \not = \emptyset } T’\).
+</p>
+
+<p>
+<b><span class="textsc" >Clément</span>-Approximation</b>:&#x2003; Fu&#x0308;r \(V_h := \PP _1(\T _h)\) mit nodaler Basis \(\{\varphi _i\}_{i=1}^{m_\E }\) sei der<br />
+<em><span class="dashuline" ><span class="textsc" >Clément</span>-Operator</span></em> \(C_h\colon H^1(\Omega ) \to \PP _1(\T _h)\) definiert durch \(C_h v := \sum _{i=1}^{m_\E } (P_i v)(v_i)
+\varphi _i\) mit der orthogonalen \(L^2\)-Projektion \(P_i\colon L^2(w_i) \to \PP _0(w_i)\) auf Konstanten.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Clément-Approximationsfehler</span>):</span> Seien \(\T _h\) eine zul. Triang. und \(\sigma &gt; 0\) mit \(\forall _{T \in \T _h}\; \sigma _T \le
+\sigma \).<br />
+Dann gilt \(\exists _{C = C(d, \sigma ) &gt; 0} \forall _{T \in \T _h} \forall _{\text {$S \subset \partial T$ Seitensimplex}} \forall _{v \in H^1(\Omega )} \forall _{m = 0, 1}\)<br />
+\(\norm {v - C_h v}_{H^m(T)} \le Ch_T^{1-m} \norm {v}_{H^1(w_T)},\; \norm {v - C_h v}_{L^2(S)} \le Ch_T^{1/2} \norm {v}_{H^1(w_T)}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Die FEM-Approximation \(u_h \in V_h\) erzeugt ein <em><span class="dashuline" >Residuum</span></em>, wenn man \(u_h\) in die starke Form der PDE einsetzt. Daraus kann man
+A-posteriori-Fehlerscha&#x0308;tzer definieren, die bis auf Konstanten obere und untere Schranken fu&#x0308;r den Fehler darstellen. Im Folgenden wird nur das Poisson-Problem betrachtet.
+</p>
+
+<p>
+<b>Residuum</b>:&#x2003; Seien \(\T _h\) eine zul. Triangulierung und \(u_h \in V_h := \PP _{k,0}(\T _h) \le H^1_0(\Omega )\) die FEM-Lo&#x0308;sung der Poisson-Gleichung. Dann ist das <em><span
+class="dashuline" >elementbasierte Residuum</span></em> fu&#x0308;r \(T \in \T _h\) definiert als \(R_T = R_T(u_h) := \Delta u_h + f|_T\) und das <em><span class="dashuline" >kantenbasierte Residuum der
+Ableitungsspru&#x0308;nge</span></em> ist fu&#x0308;r \(S \in \S _0\) mit der <em><span class="dashuline" >Menge der inneren Kanten</span></em> \(\S _0 := \{\text {$S$ Seitensimplex} \;|\; \exists _{T
+\in \T _h}\; S \subset \partial T,\; S \not \subset \partial \Omega \}\) definiert als \(R_S = R_S(u_h) := [\frac {\partial u_h}{\partial n}] := \frac {\partial u_h}{\partial n}|_{T_1} - \frac
+{\partial u_h}{\partial n}|_{T_2}\) fu&#x0308;r \(T_1, T_2 \in \T _h\) mit \(T_1 \not = T_2\) und \(S \subset T_1 \cap T_2\).
+</p>
+
+<p>
+<b>residualer Fehlerscha&#x0308;tzer</b>:&#x2003;<br />
+Fu&#x0308;r \(T \in \T _h\) heißt \(\eta _{T,R} := (h_T^2 \norm {R_T}_{L^2(T)}^2 + \frac {1}{2} \sum _{S \subset \partial T} h_S \norm {R_S}_{L^2(S)}^2)^{1/2}\) <em><span class="dashuline"
+>lokaler Fehlerscha&#x0308;tzer</span></em> und<br />
+\(\eta _R := (\sum _{T \in \T _h} \eta _{T,R}^2)^{1/2} = (\sum _{T \in \T _h} h_T^2 \norm {R_T}_{L^2(T)}^2 + \sum _{S \in \S _0} h_S \norm {R_S}_{L^2(S)}^2)^{1/2}\) <em><span class="dashuline"
+>globaler Fehlersch.</span></em>
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >obere A-posterori-Fehlerschranke</span>):</span> Seien \(\T _h\) eine zul. Triang. und \(\sigma &gt; 0\) mit \(\forall _{T \in \T _h}\; \sigma _T \le
+\sigma \).<br />
+Dann gilt \(\exists _{C = C(\Omega , \sigma )}\; \norm {u - u_h}_{H^1(\Omega )} \le C\eta _R\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Diese Schranke ist ein A-posteriori-Fehlerscha&#x0308;tzer, d.&#x202f;h. erst nach Bestimmung der numerischen Lo&#x0308;sung \(u_h\) kann die Schranke (bis auf die Konstante) berechnet werden.<br />
+Fu&#x0308;r \(u_h \in \PP _1(\T _h)\) ist \(\Delta u_h \equiv 0\), d.&#x202f;h. \(R_T\) ist dann ohne Kenntnis von \(u_h\) a priori berechenbar.<br />
+Bei nicht-trivialem \(f\) ist \(\norm {R_T}_{L^2(T)}\) i.&#x202f;A. nicht exakt berechenbar. Daher wa&#x0308;hlt man in der Praxis eine Approximation \(f_h \approx f\) und approximiert die Residuen durch \(\widetilde
+{R}_T := \Delta u_h + f_h\), \(\widetilde {\eta }_{T,R} := (h_T \norm {\widetilde {R}_T}_{L^2(T)}^2 + \frac {1}{2} \sum _{S \subset \partial T} h_S \norm {R_S}_{L^2(S)}^2)^{1/2}\) und
+\(\widetilde {\eta }_R := (\sum _{T \in \T _h} \widetilde {\eta }_{T,R}^2)^{1/2}\). Durch die Dreiecksungleichung erha&#x0308;lt man \(\norm {\Delta u_h + f}_{L^2(T)}^2 \le \norm {\Delta u_h +
+f_h}_{L^2(T)} + \norm {f - f_h}_{L^2(T)}\) und damit \(\norm {u - u_h}_{H^1(\Omega )} \le C\widetilde {\eta }_R + C (\sum _{T \in \T _h} h_T^2 \norm {f - f_h}_{L^2(T)}^2)^{1/2}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: \(\eta _R\) ist bis auf eine Konstante eine obere Schranke des Fehlers und heißt daher <em><span class="dashuline" >zuverla&#x0308;ssiger Scha&#x0308;tzer</span></em>. Man kann zeigen, dass
+\(\eta _R\) und \(\widetilde {\eta }_R\) auch untere Schranken des Fehlers sind, man spricht von einem <em><span class="dashuline" >effizienten Scha&#x0308;tzer</span></em>.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >untere A-posteriori-Fehlerschranke</span>):</span> Seien \(\T _h\) eine zul. Triang., \(\sigma &gt; 0\) mit \(\forall _{T \in \T _h}\; \sigma _T \le
+\sigma \).<br />
+Definiere fu&#x0308;r einen Seitensimplex \(S\) den <em><span class="dashuline" >Patch der Kantennachbarn</span></em> \(w_S := \bigcup _{T \in \T _h,\; S \subset \partial T} T\) und fu&#x0308;r \(T \in \T
+_h\) analog \(\widetilde {w}_T := \bigcup _{S \subset \partial T} w_S\).<br />
+Dann gilt \(\exists _{C = C(\Omega , \sigma ) &gt; 0}\; \widetilde {\eta }_{T,R} \le C(\norm {u - u_h}_{H^1(\widetilde {w}_T)}^2 + \sum _{T’ \subset w_T} h_{T’}^2 \norm {f -
+f_h}_{L^2(T’)}^2)^{1/2}\) und<br />
+\(\widetilde {\eta }_R \le C(\norm {u - u_h}_{H^1(\Omega )}^2 + \sum _{T \in \T _h} h_T^2 \norm {f - f_T}_{L^2(T)}^2)^{1/2}\).
+</p>
+
+<a id="partial-differential-equations-autofile-last"></a>
+{% endraw %}
+</div>
+{:/nomarkdown}

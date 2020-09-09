@@ -1,0 +1,2349 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\newcommand {\fracsize }[1]{{\large #1}}\)
+
+\(\newcommand {\matrixsize }[1]{{\scriptsize #1}}\)
+
+\(\newcommand {\projective }{\ensuremath {\mathbb {P}}}\)
+
+\(\newcommand {\sphere }{\ensuremath {\mathbb {S}}}\)
+
+\(\newcommand {\ball }{\ensuremath {\mathbb {B}}}\)
+
+\(\newcommand {\dball }{\ensuremath {\mathbb {D}}}\)
+
+\(\renewcommand {\i }{\ensuremath {\mathrm {i}}}\)
+
+\(\renewcommand {\A }{\ensuremath {\mathcal {A}}}\)
+
+\(\newcommand {\B }{\ensuremath {\mathcal {B}}}\)
+
+\(\renewcommand {\C }{\ensuremath {\mathcal {C}}}\)
+
+\(\newcommand {\E }{\ensuremath {\mathcal {E}}}\)
+
+\(\renewcommand {\F }{\ensuremath {\mathcal {F}}}\)
+
+\(\renewcommand {\K }{\ensuremath {\mathcal {K}}}\)
+
+\(\renewcommand {\L }{\ensuremath {\mathcal {L}}}\)
+
+\(\renewcommand {\S }{\ensuremath {\mathcal {S}}}\)
+
+\(\newcommand {\T }{\ensuremath {\mathcal {T}}}\)
+
+\(\renewcommand {\U }{\ensuremath {\mathcal {U}}}\)
+
+\(\newcommand {\Tpw }{\ensuremath {\mathcal {T}_{\text {pw}}}}\)
+
+\(\newcommand {\Tglm }{\ensuremath {\mathcal {T}_{\text {glm}}}}\)
+
+\(\newcommand {\Tkpkt }{\ensuremath {\mathcal {T}_{\text {kpkt}}}}\)
+
+\(\newcommand {\inneres }[1]{\ensuremath {{#1}^\circ }}\)
+
+\(\newcommand {\abschluss }[1]{\ensuremath {\overline {#1}}}\)
+
+\(\newcommand {\rand }[1]{\ensuremath {\operatorname {Rand}(#1)}}\)
+
+\(\newcommand {\Int }{\ensuremath {\operatorname {Int}}}\)
+
+\(\newcommand {\card }{\ensuremath {\operatorname {card}}}\)
+
+\(\newcommand {\id }{\ensuremath {\operatorname {id}}}\)
+
+\(\newcommand {\pr }{\ensuremath {\operatorname {pr}}}\)
+
+\(\newcommand {\homoe }{\ensuremath {\xrightarrow {\cong }}}\)
+
+\(\newcommand {\bij }{\ensuremath {\xrightarrow {\sim }}}\)
+
+\(\newcommand {\aufspann }[1]{\ensuremath {\left \langle {#1}\right \rangle }}\)
+
+\(\newcommand {\cl }{\ensuremath {\operatorname {cl}}}\)
+
+\(\newcommand {\GL }{\ensuremath {\operatorname {GL}}}\)
+
+\(\newcommand {\sign }{\ensuremath {\operatorname {sign}}}\)
+
+\(\newcommand {\Abb }{\ensuremath {\operatorname {Abb}}}\)
+
+\(\newcommand {\supp }{\ensuremath {\operatorname {supp}}}\)
+
+\(\newcommand {\vol }{\ensuremath {\operatorname {vol}}}\)
+
+\(\newcommand {\st }{\ensuremath {\operatorname {st}}}\)
+
+\(\newcommand {\const }{\ensuremath {\operatorname {const}}}\)
+
+\(\newcommand {\adj }[1]{\ensuremath {\widetilde {#1}}}\)
+
+\(\newcommand {\zhk }{\ensuremath {\mathcal {Z}}}\)
+
+\(\newcommand {\cat }[1]{\ensuremath {\mathtt {#1}}}\)
+
+\(\newcommand {\Ob }{\ensuremath {\text {Ob}}}\)
+
+\(\newcommand {\Mor }{\ensuremath {\text {Mor}}}\)
+
+\(\newcommand {\Hom }{\ensuremath {\text {Hom}}}\)
+
+\(\newcommand {\im }{\ensuremath {\text {im}}}\)
+
+\(\newcommand {\ab }{\ensuremath {\text {ab}}}\)
+
+\(\newcommand {\Aut }{\ensuremath {\text {Aut}}}\)
+
+\(\newcommand {\Homeo }{\ensuremath {\text {Homeo}}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f9::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f10::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f11::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f12::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f13::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f14::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f15::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f16::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f17::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f18::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f19::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f20::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f21::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f22::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f23::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f24::marker {
+  content:'•\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+
+<h2 id="homotopie-und-abbildungsgrad">Homotopie und Abbildungsgrad</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Im Folgenden sollen Methoden entwickelt werden, mit denen gezeigt werden ko&#x0308;nnen, dass \(\real ^2 \not \cong \real ^3\). Im Allgemeinen gilt sogar \(\real ^n \not \cong \real ^m\)
+fu&#x0308;r \(n \not = m\).
+</p>
+
+
+
+<h3 id="homotope-abbildungen">Homotope Abbildungen</h3>
+
+</p>
+
+
+<p>
+<b>Homotopie</b>:&#x2003; Seien \(X\) und \(Y\) topologische Ra&#x0308;ume.<br />
+Eine <em><span class="dashuline" >Homotopie</span></em> ist eine stetige Abbildung \(H\colon [0, 1] \times X \rightarrow Y\).<br />
+Fu&#x0308;r \(t \in [0, 1]\) definiert man die stetige Abbildung \(H_t\colon X \rightarrow Y\), \(H_t(x) = H(t, x)\).
+</p>
+
+<p>
+<b>homotop</b>:&#x2003; Zwei stetige Abbildungen \(f, g\colon X \rightarrow Y\) heißen <em><span class="dashuline" >homotop</span></em> in \(Y\) (\(f \simeq g\)), falls es eine Homotopie \(H\colon [0, 1]
+\times X \rightarrow Y\) mit \(H_0 = f\) und \(H_1 = g\) gibt.<br />
+Eine stetige Abbildung \(f\colon X \rightarrow Y\) heißt <em><span class="dashuline" >nullhomotop</span></em>/<em><span class="dashuline" >zusammenziehbar</span></em> (\(f \simeq \ast \)), falls \(f\) zu
+einer konstanten Abbildung \(\const _X^\ast \colon X \rightarrow \{\ast \}\) mit \(\ast \in Y\) homotop ist.<br />
+Der Raum \(X\) heißt <em><span class="dashuline" >zusammenziehbar</span></em> (\(X \simeq \ast \)), falls \(\id _X \simeq \ast \).
+</p>
+
+<p>
+<em>Beispiel</em>: Sei \(X \subset \real ^n\) sternfo&#x0308;rmig bzgl. \(a \in \real ^n\), z.&#x202f;B. \(X = \real ^n\) und \(a = 0\).<br />
+Dann ist \(X\) zusammenziehbar durch \(H(t, x) = (1 - t)x + ta\).<br />
+Jede stetige Abbildung \(f\colon X \rightarrow Y\) ist nullhomotop durch \(H(t, x) = f((1 - t)x + ta)\).<br />
+Jede stetige Abbildung \(f\colon Y \rightarrow X\) ist nullhomotop durch \(H(t, y) = (1 - t)f(y) + ta\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >homotope Abbildungen auf Einheitsspha&#x0308;re</span>):</span> Seien \(X\) ein topologischer Raum und<br />
+\(f, g\colon X \rightarrow \sphere ^n\) stetige Abbildungen, die nirgends <em><span class="dashuline" >antipodal</span></em> sind, d.&#x202f;h. \(\forall _{x \in X}\; f(x) \not = -g(x)\).<br />
+Dann gilt \(f \simeq g\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Man kann jede Homotopie \(H\colon [0, 1] \times X \rightarrow Y\) als einen Weg \(h\colon [0, 1] \rightarrow \C (X, Y)\) mit \((h(t))(x) := H(t, x)\) betrachten. Ist \(H\) stetig, dann ist
+auch \(h\) stetig.<br />
+Ist \(h\) stetig und \(X\) lokal-kompakt, dann ist auch \(H\) stetig.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Homotopie als A&#x0308;quivalenzrelation</span>):</span> Homotopie ist eine A&#x0308;quivalenzrelation auf \(\C (X, Y)\).
+</p>
+
+<p>
+<b>Homotopieklassen</b>:&#x2003; Seien \(X\) und \(Y\) topologische Ra&#x0308;ume. Der Quotientenraum der<br />
+<em><span class="dashuline" >Homotopieklassen</span></em> (A&#x0308;quivalenzklassen bzgl. der Homotopie) heißt \([X, Y] := \C (X, Y) /\! \simeq \).
+</p>
+
+<p>
+<em>Beispiel</em>: Fu&#x0308;r \(X\) lokal-kompakt gilt \([X, Y] = \pi _0(\C (X, Y))\).<br />
+Fu&#x0308;r jeden topologischen Raum \(X\) gilt \([\{\ast \}, X] = \pi _0(X)\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Homotopie bei Kompositionen</span>):</span> Seien \(f_0, f_1\colon X \rightarrow Y\) und \(g_0, g_1\colon Y \rightarrow Z\) stetige Abbildungen.
+Gilt \(f_0 \simeq f_1\) und \(g_0 \simeq g_1\), dann gilt auch \(g_0 \circ f_0 \simeq g_1 \circ f_1\).
+</p>
+
+<p>
+<b>Kategorie \(\cat {hTop}\)</b>:&#x2003; Man kann eine Kategorie \(\cat {hTop}\) definieren. Die Objekte sind die topologischen Ra&#x0308;ume, die Morphismen \([X, Y]\) sind die Homotopieklassen \([f]\) stetiger
+Abbildungen \(f\colon X \rightarrow Y\) und die Komposition ist \([g] \circ [f] := [g \circ f]\) (wohldefiniert nach obigem Satz).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>homotopie-a&#x0308;quivalent</b>:&#x2003; \(X\) und \(Y\) heißen <em><span class="dashuline" >homotopie-a&#x0308;quivalent</span></em> (\(X \simeq Y\)), falls es stetige Abbildungen \(f\colon X
+\rightarrow Y\) und \(g\colon Y \rightarrow X\) gibt mit \(g \circ f \simeq \id _X\) und \(f \circ g \simeq \id _Y\).
+</p>
+
+<p>
+<em>Bemerkung</em>: So wie Homo&#x0308;omorphie die Isomorphie in \(\cat {Top}\) ist, so ist Homotopie-A&#x0308;quivalenz die Isomorphie in \(\cat {hTop}\) (insbesondere ist Homotopie-A&#x0308;quivalenz eine
+A&#x0308;quivalenzrelation).
+</p>
+
+<p>
+<em>Beispiel</em>: Aus \(X \cong Y\) folgt \(X \simeq Y\), die Umkehrung gilt nicht:<br />
+Zum Beispiel sind \(\real \) und \(\real ^2\) nicht homo&#x0308;omorph, aber homotopie-a&#x0308;quivalent.<br />
+Ein Raum \(X\) ist zusammenziehbar genau dann, wenn \(X\) zu \(\{\ast \}\) homotopie-a&#x0308;quivalent ist.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(\sphere ^n \simeq \real ^{n+1} \setminus \{0\}\)</span>):</span> \(\sphere ^n\) und \(\real ^{n+1} \setminus \{0\}\) sind
+homotopie-a&#x0308;quivalent.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Funktoren durch Homotopieklassen</span>):</span> Seien \(X, Y, Z\) topologische Ra&#x0308;ume.
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p>Jede stetige Abbildung \(f\colon X \rightarrow Y\) induziert \(f_\ast \colon [Z, X] \rightarrow [Z, Y]\), \(f_\ast ([h]) := [f \circ h]\).<br />
+Dies definiert einen kovarianten Funktor \([Z, -]\colon \cat {Top} \rightarrow \cat {Set}\).
+</p>
+</li>
+<li class="list-item-f1"><p>Jede stetige Abbildung \(f\colon Y \rightarrow X\) induziert \(f^\ast \colon [Y, Z] \rightarrow [X, Z]\), \(f^\ast ([h]) := [h \circ f]\).<br />
+Dies definiert einen kontravarianten Funktor \([-, Z]\colon \cat {Top} \rightarrow \cat {Set}\).
+</p>
+</li>
+<li class="list-item-f2"><p>Aus \(f \simeq g\) folgt \(f_\ast = g_\ast \) und \(f^\ast = g^\ast \).
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Retraktion</b>:&#x2003; Seien \(X\) ein topologischer Raum und \(A \subset X\) eine Teilmenge.<br />
+Eine <em><span class="dashuline" >Retraktion</span></em> von \(X\) auf \(A \subset X\) ist eine stetige Abbildung \(r\colon X \rightarrow A\) mit \(r|_A = \id _A\).<br />
+\(A \subset X\) heißt <em><span class="dashuline" >Retrakt</span></em> von \(X\), falls es eine Retraktion von \(X\) auf \(A\) gibt.
+</p>
+
+<p>
+<b>Deformationsretraktion</b>:&#x2003; Eine <em><span class="dashuline" >Deformationsretraktion</span></em> von \(X\) auf \(A \subset X\) ist eine Homotopie \(H\colon [0, 1] \times X \rightarrow X\) mit
+\(H_0 = \id _X\) und \(H_1\) eine Retraktion von \(X\) auf \(A\).<br />
+\(A \subset X\) heißt <em><span class="dashuline" >Deformationsretrakt</span></em> von \(X\), falls es eine Deformationsretraktion von \(X\) auf \(A\) gibt.
+</p>
+
+<p>
+<b>starke Deformationsretraktion</b>:&#x2003; Eine <em><span class="dashuline" >starke Deformationsretraktion</span></em> von \(X\) auf \(A \subset X\) ist eine Deformationsretraktion \(H\) mit \(H_t|_A = \id
+_A\) fu&#x0308;r alle \(t \in [0, 1]\).<br />
+\(A \subset X\) heißt <em><span class="dashuline" >starker Deformationsretrakt</span></em> von \(X\), falls es eine starke Deformationsretraktion von \(X\) auf \(A\) gibt.
+</p>
+
+<p>
+<em>Beispiel</em>: \(\sphere ^n \subset \real ^{n+1} \setminus \{0\}\) ist ein starker Def.retrakt.<br />
+Fu&#x0308;r \(a \in X\) ist \(\{a\} \subset X\) ein Retrakt, und ein Def.retrakt genau dann, wenn \(X\) zusz.bar ist.<br />
+Ist \(X\) nicht wegzsh. (z.&#x202f;B. \(X = \real \setminus \{0\}\)), dann ist \(\{a\} \subset X\) ein Retrakt, aber kein Def.retrakt.<br />
+Es gibt keine Retraktion \([0, 1] \rightarrow \{0, 1\}\).
+</p>
+
+
+
+<h3 id="der-abbildungsgrad">Der Abbildungsgrad</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>:<br />
+Fu&#x0308;r \(k \in \integer \) kann man \(\varphi _k\colon \sphere ^1 \rightarrow \sphere ^1\), \(z \mapsto z^k\) definieren, also \(\varphi _k(\cos (t), \sin (t)) := (\cos (kt), \sin (kt))\).<br />
+Anschaulich gesagt wickelt diese Abbildung die Kreislinie \(k\)-mal um den Nullpunkt.<br />
+Dabei ist \(\varphi _0\) konstant, \(\varphi _1\) die Identita&#x0308;t und \(\varphi _{-1}\) die Spiegelung an der \(x\)-Achse.<br />
+Allgemeiner ist \(\phi _k\colon \real ^{n+1} \rightarrow \real ^{n+1}\) definiert durch<br />
+\(\phi _k(r \cos (t), r \sin (t), x_3, \dotsc , x_{n+1}) := (r \cos (kt), r \sin (kt), x_3, \dotsc , x_{n+1})\).<br />
+Es gilt \(|\phi _k(x)| = |x|\), d.&#x202f;h. man erha&#x0308;lt die Einschra&#x0308;nkung \(\varphi _k := \phi _k|_{\sphere ^n}\colon \sphere ^n \rightarrow \sphere ^n\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Brouwer</span>-<span class="textsc" >Hopf</span></span>):</span> Fu&#x0308;r \(k \in \integer \) ist die Abbildung
+\(\integer \rightarrow [\sphere ^n, \sphere ^n]\), \(k \mapsto [\varphi _k]\) eine Bijektion, d.&#x202f;h. jede stetige Abbildung \(f\colon \sphere ^n \rightarrow \sphere ^n\) ist zu genau einer Abbildung
+\(\varphi _k\) homotop.
+</p>
+
+<p>
+<b>Umlaufzahl</b>:&#x2003;<br />
+Die Umkehrabbildung ist der <em><span class="dashuline" >Abbildungsgrad</span></em>/die <em><span class="dashuline" >Umlaufzahl</span></em> \(\deg \colon [\sphere ^n, \sphere ^n] \bij \integer \),
+\([\varphi _k] \mapsto k\).
+</p>
+
+<p>
+<b>Folgerung</b>: Der Abbildungsgrad ist multiplikativ, d.&#x202f;h. \(\deg (f \circ g) = \deg (f) \cdot \deg (g)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Folgerung</b>: \(\sphere ^n\) ist nicht zusammenziehbar (\(\sphere ^n \not \simeq \{\ast \}\)).
+</p>
+
+<p>
+<b>Folgerung</b>: \(\sphere ^n \subset \dball ^{n+1}\) ist kein Retrakt.
+</p>
+
+<p>
+<em>Bemerkung</em>: \(\sphere ^n \subset \dball ^{n+1} \setminus \{0\}\) ist ein Retrakt.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Brouwer</span>scher Fixpunktsatz</span>):</span><br />
+Jede stetige Abbildung \(f\colon \dball ^n \rightarrow \dball ^n\) besitzt mindestens einen Fixpunkt, d.&#x202f;h. \(\exists _{a \in \dball ^n}\; f(a) = a\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>tangentiales Vektorfeld</b>:&#x2003; Ein <em><span class="dashuline" >tangentiales Vektorfeld</span></em> auf \(\sphere ^n\) ist eine stetige Abbildung \(v\colon \sphere ^n \rightarrow \real ^{n+1}\) mit
+\(\innerproduct {v(x), x} = 0\) fu&#x0308;r alle \(x \in \sphere ^n\).
+</p>
+
+<p>
+<em>Beispiel</em>: Sei \(n = 2m - 1\), \(m \in \natural \) ungerade. Dann ist \(v(x_1, x_2, \dots , x_{2m-1}, x_{2m}) =\)<br />
+\((x_2, -x_1, \dotsc , x_{2m}, -x_{2m-1})\) ein tangentiales Vektorfeld auf \(\sphere ^{2m-1}\), das nirgends verschwindet.
+</p>
+
+<p>
+<em>Bemerkung</em>: Sind solche Vektorfelder auch fu&#x0308;r \(n = 2m\) mo&#x0308;glich?
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Satz vom geka&#x0308;mmten Igel</span>):</span><br />
+Jedes tangentiale Vektorfeld \(v\colon \sphere ^{2m} \rightarrow \real ^{2m+1}\) besitzt mindestens eine Nullstelle.
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >Grad linearer Abbildungen</span>): Fu&#x0308;r \(A \in \GL _{n+1}(\real )\) besitzt \(f_A\colon \sphere ^n \rightarrow \sphere ^n\), \(x \mapsto \frac {Ax}{\norm
+{Ax}}\) den Abbildungsgrad \(\deg (f_A) = \sign (\det A) \in \{\pm 1\}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >stetige Abbildungen von \(\sphere ^m\) nach \(\sphere ^n\) mit \(m &lt; n\) sind nullhomotop</span>):</span><br />
+Fu&#x0308;r \(m &lt; n\) ist jede stetige Abbildung \(f\colon \sphere ^m \rightarrow \sphere ^n\) nullhomotop.
+</p>
+
+<p>
+<b>Folgerung</b>: Fu&#x0308;r \(m \not = n\) ist \(\sphere ^m \not \simeq \sphere ^n\), d.&#x202f;h. insbesondere \(\sphere ^m \not \cong \sphere ^n\).
+</p>
+
+<p>
+<b>Folgerung</b>: Fu&#x0308;r \(m \not = n\) ist \(\real ^m \not \cong \real ^n\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Invarianz der Dimension</span>):</span> Seien \(U \subset \real ^m\) offen, \(V \subset \real ^n\) offen und \(U, V \not = \emptyset \).<br />
+Gilt \(U \cong V\), so ist \(m = n\).
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >Umgebungen der \(0\)</span>): Ist \(V \subset \real ^n\) eine Umgebung der \(0\) mit \(V \cong \dball ^m\), so gilt \(n = m\).
+</p>
+
+
+
+<h2 id="simpliziale-komplexe">Simpliziale Komplexe</h2>
+
+</p>
+
+
+<h3 id="simpliziale-komplexe">Simpliziale Komplexe</h3>
+
+</p>
+
+
+<p>
+<b>Standard-Simplex</b>:&#x2003; \(\Delta ^n := \{(t_0, \dotsc , t_n) \in \real ^{n+1} \;|\; t_0, \dotsc , t_n \ge 0,\; t_0 + \dotsb + t_n = 1\}\) heißt <em><span class="dashuline"
+>Standard-Simplex</span></em> der Dimension \(n\) (\(n \in \natural \)).
+</p>
+
+<p>
+<em>Bemerkung</em>: \(\Delta ^n\) ist die konvexe Hu&#x0308;lle von \(e_0, \dotsc , e_n \in \real ^{n+1}\), wobei \((e_0, \dotsc , e_n)\) die kanonische Basis des \(\real ^{n+1}\) ist, d.&#x202f;h. \(\Delta
+^0\) ist ein Punkt, \(\Delta ^1\) eine Strecke, \(\Delta ^2\) ein Dreieck, \(\Delta ^3\) ein Tetraeder usw. Da \(\Delta ^n\) kompakt und sternfo&#x0308;rmig bzgl. der \(\varepsilon \)-Umgebung einer ihrer Punkte ist, gilt
+\(\Delta ^n \cong \dball ^n\).
+</p>
+
+<p>
+<b>affin unabha&#x0308;ngig</b>:&#x2003; Sei \(V\) ein \(\real \)-Vektorraum. Eine Familie \((v_0, v_1, \dotsc , v_n)\) in \(V\) heißt <em><span class="dashuline" >affin unabha&#x0308;ngig</span></em>, falls
+\(v_1 - v_0, \dotsc , v_n - v_0\) linear unabha&#x0308;ngig sind.
+</p>
+
+<p>
+<b>Simplex</b>:&#x2003; Seien \(V\) ein \(\real \)-Vektorraum und \((v_0, v_1, \dotsc , v_n)\) affin unabha&#x0308;ngig.<br />
+\(\Delta = [v_0, v_1, \dotsc , v_n] := \{t_0 v_0 + t_1 v_1 + \dotsb + t_n v_n \;|\; t \in \Delta ^n\}\) heißt der von \((v_0, v_1, \dotsc , v_n)\) aufgespannte affine <em><span class="dashuline"
+>\(n\)-Simplex</span></em>. Die Punkte \(v_0, v_1, \dotsc , v_n\) heißen <em><span class="dashuline" >Ecken</span></em> des Simplex \(\Delta \).<br />
+Fu&#x0308;r die kanonische Basisvektoren vom \(\real ^{n+1}\) gilt \(\Delta ^n = [e_0, e_1, \dotsc , e_n]\).
+</p>
+
+<p>
+<b>baryzentrische Koordinaten</b>:&#x2003; Fu&#x0308;r jeden Punkt \(x = t_0 v_0 + t_1 v_1 + \dotsb + t_n v_n\) heißen die Koordinaten \((t_0, t_1, \dotsc , t_n)\) <em><span class="dashuline"
+>baryzentrische Koordinaten</span></em> von \(x\) bzgl. \((v_0, v_1, \dotsc , v_n)\).<br />
+Die Abbildung \(h\colon \Delta ^n \rightarrow \Delta \), \(t \mapsto \sum _{i=0}^n t_i v_i\) ist eine Bijektion,<br />
+d.&#x202f;h. die Koordinaten sind eindeutig.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Ecken, Dim. eindeutig</span>):</span> \(v\colon [v_0, v_1, \dotsc , v_n] \mapsto \{v_0, v_1, \dotsc , v_n\}\), \(\dim \colon [v_0, v_1,
+\dotsc , v_n] \mapsto n\) sind wohldefinierte Zuordnungen auf der Menge aller affinen Simplizes in einem Vektoraum \(V\), d.&#x202f;h. jeder affine Simplex \(\Delta = [v_0, v_1, \dotsc , v_n]\) in \(V\) bestimmt
+eindeutig seine Eckenmenge.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Seite</b>:&#x2003; Sei \(\Delta = [v_0, v_1, \dotsc , v_n]\) ein \(n\)-Simplex. Fu&#x0308;r jede nicht-leere Teilmenge<br />
+\(F \subset \{v_0, v_1, \dotsc , v_n\}\) mit \(d + 1\) Elementen heißt der \(d\)-Simplex \([F]\) <em><span class="dashuline" >Seite</span></em> von \(\Delta \) der <em><span class="dashuline"
+>Dimension</span></em> \(d\) und der <em><span class="dashuline" >Kodimension</span></em> \(n - d\). Eine Seite der Kodimension \(\ge 1\) heißt <em><span class="dashuline" >echt</span></em>.
+</p>
+
+<p>
+<b>Rand, Inneres</b>:&#x2003; Der <em><span class="dashuline" >Rand</span></em> eines Simplex \(\Delta \) ist die Vereinigung all seiner echten Seiten, d.&#x202f;h. \(\partial \Delta := \bigcup _{\emptyset
+\not = F \subsetneqq \{v_0, v_1, \dotsc , v_n\}} [F]\). Das <em><span class="dashuline" >Innere</span></em> ist \(\Int \Delta := \Delta \setminus \partial \Delta \).
+</p>
+
+<p>
+<em>Bemerkung</em>: Das Innere des Simplex \(\Delta = [v_0, v_1, \dotsc , v_n]\) besteht aus allen Punkten<br />
+\(x = t_0 v_0 + t_1 v_1 + \dotsb + t_n v_n\) mit \(t_0 + t_1 + \dotsb + t_n = 1\) sowie \(t_0, t_1, \dotsc , t_n &gt; 0\). Der Rand besteht aus allen Punkten, fu&#x0308;r die mindestens eine baryzentrische
+Koordinate \(t_k\) verschwindet.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>affiner simplizialer Komplex</b>:&#x2003; Sei \(V\) ein \(\real \)-Vektorraum. Ein <em><span class="dashuline" >(affiner) simplizialer Komplex</span></em> in \(V\) ist eine Menge \(\K \) von Simplizes in \(V\),
+sodass
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f3"><p>fu&#x0308;r alle Simplizes \(\Delta \in \K \) auch alle Seiten von \(\Delta \) ein Element von \(\K \) sind und
+</p>
+</li>
+<li class="list-item-f4"><p>fu&#x0308;r alle Simplizes \(\Delta _1, \Delta _2\) mit Durchschnitt \(\Delta := \Delta _1 \cap \Delta _2 \not = \emptyset \) gilt, dass \(\Delta \) eine gemeinsame Seite ist (d.&#x202f;h. eine Seite
+sowohl von \(\Delta _1\) als auch \(\Delta _2\)).
+</p>
+</li>
+</ul>
+
+<p>
+Die Vereinigung \(|\K | := \bigcup _{\Delta \in \K } \Delta \) heißt <em><span class="dashuline" >Tra&#x0308;ger</span></em> von \(\K \).<br />
+Die <em><span class="dashuline" >(affine) Dimension</span></em> von \(\K \) ist \(\dim \K := \sup \{\dim \Delta \;|\; \Delta \in \K \}\).
+</p>
+
+<p>
+<em>Beispiel</em>: Ist \(\Delta \) ein affiner \(n\)-Simplex, dann bildet die Menge \(\K \) aller Seiten von \(\Delta \) einen simplizialen Komplex der Dimension \(n\) mit Tra&#x0308;ger \(|\K | = \Delta \). Die Menge \(\L
+\) aller echten Seiten von \(\Delta \) bildet einen simplizialen Komplex der Dimension \(n - 1\) mit Tra&#x0308;ger \(|\L | = \partial \Delta \).
+</p>
+
+<p>
+<b>simpliziale Topologie</b>:&#x2003; Sei \(\K \) ein simplizialer Komplex in \(V\). Jeder Simplex \(\Delta \in \K \) wird mit seiner euklidischen Topologie ausgestattet, sodass \(h\colon \Delta ^n \rightarrow \Delta
+\) ein Homo&#x0308;omorphismus ist. \(|\K |\) wird mit der finalen Topologie ausgestattet, d.&#x202f;h. \(U \subset |\K |\) ist offen in \(|\K |\) genau dann, wenn \(U \cap \Delta \) offen in \(\Delta \) ist
+fu&#x0308;r alle \(\Delta \in \K \). Dies heißt <em><span class="dashuline" >simpliziale Topologie</span></em> auf \(|\K |\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Fu&#x0308;r \(\K \) (lokal-)endlich in einem topologischen Vektorraum \(V\) stimmen simpliziale Topologie und Teilraumtopologie u&#x0308;berein.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Ein affiner Simplex \(\Delta = [v_0, \dotsc , v_n]\) in einem Vektorraum \(V\) ist durch seine Eckenmenge \(v(\Delta ) = \{v_0, \dotsc , v_n\}\) festgelegt. Ein affiner simplizialer Komplex \(\K
+\) in \(V\) ist durch seine Simplizes \(\Delta \in \K \) festgelegt. Zu seiner Beschreibung reicht es also aus, die Familie \(K = v(\K ) := \{v(\Delta ) \;|\; \Delta \in \K \}\) aller Eckenmengen anzugeben.
+</p>
+
+<p>
+<b>kombinatorischer simplizialer Komplex</b>:&#x2003;<br />
+Eine Familie \(K\) endlicher nicht-leerer Mengen heißt <em><span class="dashuline" >kombinatorischer simplizialer Komplex</span></em>, falls fu&#x0308;r alle \(S \in K\) und \(\emptyset \not = S’ \subset S\) auch
+\(S’ \in K\) gilt.<br />
+In diesem Fall heißt \(S = \{s_0, \dotsc , s_n\}\) <em><span class="dashuline" >kombinatorischer Simplex</span></em> der <em><span class="dashuline" >Dimension</span></em> \(\dim S := n\).<br />
+\(\Omega (K) := \bigcup _{S \in K} S\) heißt die <em><span class="dashuline" >Eckenmenge</span></em> von \(K\), ihre Elemente heißen <em><span class="dashuline" >Ecken</span></em>.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Darstellung</b>:&#x2003;<br />
+Eine <em><span class="dashuline" >Darstellung</span></em> von \(K\) in einem Vektorraum \(V\) ist eine Abbildung \(f\colon \Omega (K) \rightarrow V\), sodass
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f5"><p>fu&#x0308;r alle \(S \in K\) das Bild \(f(S)\) affin unabha&#x0308;ngig in \(V\) ist und
+</p>
+</li>
+<li class="list-item-f6"><p>fu&#x0308;r alle \(S, T \in K\) gilt \([f(S)] \cap [f(T)] = [f(S \cap T)]\).
+</p>
+</li>
+</ul>
+
+<p>
+In diesem Fall ist \(\K = \{[f(S)] \;|\; S \in K\}\) ein affiner simplizialer Komplex in \(V\).<br />
+\(|K|_f := |\K |\) heißt die <em><span class="dashuline" >topologische Realisierung</span></em> von \(K\) mittels \(f\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Diese Bedingungen gelten insbesondere dann, wenn die Vektoren \((f(s))_{s \in \Omega }\) linear unabha&#x0308;ngig sind.
+</p>
+
+<p>
+<b>kanonische Realisierung</b>:&#x2003;<br />
+Sei \(K\) ein kombinatorischer simplizialer Komplex mit Eckenmenge \(\Omega \). In der Menge \(\real ^{(\Omega )}\) aller Abbildungen \(g\colon \Omega \rightarrow \real \) mit endlichem Tra&#x0308;ger
+(d.&#x202f;h. \(\supp (g) = \{x \in \Omega \;|\; g(x) \not = 0\}\) ist endlich) definiert man die <em><span class="dashuline" >kanonische Basis</span></em> \((\delta _s)_{s \in \Omega }\) mit \(\delta
+_s\colon \Omega \rightarrow \real \), \(\delta _s(t) := \delta _{st}\) (Kronecker-Delta).<br />
+Die Abbildung \(f\colon \Omega \rightarrow \real ^{(\Omega )}\), \(f(s) = \delta _s\) ist eine Darstellung von \(K\), die <em><span class="dashuline" >kanonische Darstellung</span></em>.<br />
+Der so definierte Komplex \(\K := \{[f(S)] \;|\; S \in K\}\) heißt <em><span class="dashuline" >kanonischer affiner Komplex</span></em> von \(K\).<br />
+Der Raum \(|K| := |\K |\) mit der simplizialen Topologie heißt <em><span class="dashuline" >kanonische Realisierung</span></em> von \(K\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Eine andere Schreibweise ist \(|K| = \{x\colon \Omega \rightarrow [0, 1] \;|\; \supp (x) \in K,\; \sum _{s \in \Omega } x(s) = 1\}\).<br />
+Jedem kombinatorischen Simplex \(S \in K\) entspricht der affine Simplex<br />
+\(|S| = \{x \in |K| \;|\; \supp (x) \subset S\}\), d.&#x202f;h. \(\K = \{|S| \;|\; S \in K\}\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >jede Real. ist zur kanon. Real. homo&#x0308;omorph</span>):</span> Seien \(K\) ein kombinatorischer simplizialer Komplex mit Eckenmenge \(\Omega \) und
+\(f\colon \Omega \rightarrow V\) eine Darstellung in einen Vektorraum \(V\).<br />
+Dann ist die Abbildung \(h\colon |K| \homoe |K|_f\), \(h(x) = \sum _{s \in \Omega } x(s) f(s)\) ein Homo&#x0308;omorphismus.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>kombinatorische simpliziale Abbildung</b>:&#x2003; Seien \(K\) und \(L\) kombinatorische simpliziale Komplexe. Eine <em><span class="dashuline" >kombinatorische simpliziale Abbildung</span></em> \(f\colon K
+\rightarrow L\) ist eine Abbildung<br />
+\(f\colon \Omega (K) \rightarrow \Omega (L)\) der Eckenmengen, sodass fu&#x0308;r jeden Simplex \(S \in K\) auch \(f(S) \in L\) gilt.
+</p>
+
+<p>
+<b>affine simpliziale Abbildung</b>:&#x2003; Seien \(\K \) und \(\L \) affine simpliziale Komplexe. Eine <em><span class="dashuline" >affine simpliziale Abbildung</span></em> \(g\colon \K \rightarrow \L \) ist eine
+Abbildung \(g\colon \Omega (\K ) \rightarrow \Omega (\L )\) der Eckenmengen, affin fortgesetzt auf jeden Simplex, sodass fu&#x0308;r jeden Simplex \(\Delta \in \K \) auch \(g(\Delta ) \in \L \) gilt.
+</p>
+
+<p>
+<em>Bemerkung</em>: Seien \(\K \) und \(\L \) affine simpliziale Komplexe sowie \(K = v(\K )\) und \(L = v(\L )\) die zugeho&#x0308;rigen kombinatorischen simplizialen Komplexe.<br />
+Jede kombinatorische simpliziale Abbildung \(f\colon K \rightarrow L\) definiert eine affine simpliziale Abbildung \(g\colon \K \rightarrow \L \) durch \(g(\sum _{s \in \Omega (K)} x(s) \cdot s) = \sum _{s \in
+\Omega (K)} x(s) \cdot f(s)\).<br />
+Jede affine simpliziale Abbildung \(g\colon \K \rightarrow \L \) definiert eine kombinatorische simpliziale Abbildung \(f\colon K \rightarrow L\) durch Einschra&#x0308;nkung auf die Eckenmengen.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>kombinatorischer Teilkomplex</b>:&#x2003; Sei \(K\) ein kombinatorischer simplizialer Komplex. Ein <em><span class="dashuline" >Teilkomplex</span></em> von \(K\) ist eine Teilmenge \(L \subset K\), die selbst ein
+komb. simplizialer Komplex ist.
+</p>
+
+<p>
+<b>affiner Teilkomplex</b>:&#x2003; Sei \(\K \) ein affiner simplizialer Komplex. Ein <em><span class="dashuline" >Teilkomplex</span></em> von \(\K \) ist eine Teilmenge \(\L \subset \K \), die selbst ein affiner
+simplizialer Komplex ist.
+</p>
+
+<p>
+<b>\(n\)-Skelett</b>:&#x2003; Sei \(K\) ein simplizialer Komplex. Fu&#x0308;r \(n \in \natural \) heißt \(K_{\le n} := \{S \in K \;|\; \dim S \le n\}\)<br />
+<em><span class="dashuline" >\(n\)-Skelett</span></em> von \(K\) (Teilkomplex von \(K\) der Dimension \(\le n\)).
+</p>
+
+
+
+<h3 id="triangulierung-topologischer-raeume">Triangulierung topologischer Räume</h3>
+
+</p>
+
+
+<p>
+<b>Triangulierung</b>:&#x2003; Sei \(X\) ein topologischer Raum. Eine <em><span class="dashuline" >Triangulierung</span></em> von \(X\) ist ein Paar \((K, h)\), wobei \(K\) ein simplizialer Komplex und \(h\colon |K|
+\homoe X\) ein Homo&#x0308;omorphismus ist.<br />
+\(X\) heißt <em><span class="dashuline" >triangulierbar</span></em>, falls es eine Triangulierung von \(X\) gibt.
+</p>
+
+<p>
+<em>Beispiel</em>: Jede diskrete Menge \(X\) kann trianguliert werden durch \(K = \{\{x\} \;|\; x \in X\}\) (Komplex der Dimension \(0\)).<br />
+Komplexe der Dimension \(1\) heißen <em><span class="dashuline" >kombinatorische Graphen</span></em>, dazu homo&#x0308;omorphe topologische Ra&#x0308;ume heißen <em><span class="dashuline" >topologische
+Graphen</span></em>.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(\dball ^n\) und \(\sphere ^{n-1}\) triangulierbar</span>):</span> \(\dball ^n\) und \(\sphere ^{n-1}\) sind triangulierbar.
+</p>
+
+<p>
+<em>Bemerkung</em>: Die top. Realisierung \(|K|\) jedes simplizialen Komples \(K\) ist lokal zusammenziehbar, d.&#x202f;h. topologische Ra&#x0308;ume, die nicht lokal zusammenziehbar sind, sind nicht triangulierbar.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Invarianz der Dimension</span>):</span><br />
+Fu&#x0308;r simpliziale Komplexe \(K\) und \(L\) mit \(|K| \cong |L|\) gilt \(\dim K = \dim L\).
+</p>
+
+<p>
+<b>Dimension</b>:&#x2003; Sei \(X\) ein durch \(|K| \cong X\) triangulierbarer topologischer Raum.<br />
+Dann heißt \(\dim X := \dim K\) seine <em><span class="dashuline" >(simpliziale) Dimension</span></em>.
+</p>
+
+<p>
+<em>Beispiel</em>: Es gilt \(\dim \dball ^n = n\) und \(\dim \sphere ^n = n\).
+</p>
+
+
+
+<h3 id="simpliziale-approximation">Simpliziale Approximation</h3>
+
+</p>
+
+
+<p>
+<b>simpliziale Metrik</b>:&#x2003; Sei \(K\) ein kombinatorischer simplizialer Komplex mit Eckenmenge \(\Omega \). Auf der kanonischen Realisierung \(|K| \subset \real ^{(\Omega )}\) ist die <em><span
+class="dashuline" >simpliziale Metrik</span></em> definiert durch<br />
+\(d(x, y) := \max \{|x(s) - y(s)| \;|\; s \in \Omega \}\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Vergleich mit metrischer Topologie</span>):</span> Die metrische Topologie auf \(|K|\) ist gro&#x0308;ber als die simpliziale Topologie. Ist \(K\)
+(lokal-)endlich, so stimmen beide Topologien u&#x0308;berein.
+</p>
+
+<p>
+<b>Folgerung</b>: Fu&#x0308;r jeden simplizialen Komplex \(K\) ist die Realisierung \(|K|\) hausdorffsch.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Stern</b>:&#x2003; Seien \(K\) ein simplizialer Komplex und \(|K|\) seine kanonische Realisierung.<br />
+Fu&#x0308;r jede Ecke \(a \in \Omega \) ist \(\st (a) := \{x \in |K| \;|\; x(a) &gt; 0\}\) der <em><span class="dashuline" >Stern</span></em> um \(a\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Es gilt \(\st (a) = B(a, 1) = \bigcup _{S \in K,\; a \in S} (\Int |S|) = |K| \setminus \{|T| \;|\; T \in K,\; a \notin T\}\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Stern offen und zusammenziehbar</span>):</span><br />
+Fu&#x0308;r jede Ecke \(a \in \Omega \) und jeden Radius \(r\) mit \(0 &lt; r \le 1\) ist \(B(a, r) = \{x \in |K| \;|\; x(a) &gt; 1 - r\}\) eine zusammenziehbare offene Umgebung von \(a\) in \(|K|\),
+d.&#x202f;h. insbesondere auch \(\st (a) = B(a, 1)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>baryzentrische Unterteilung</b>:&#x2003; Sei \(K\) ein kombinatorischer Simplex. Dann heißt<br />
+\(\beta K := \{\{S_0, S_1, \dotsc , S_n\} \subset K \;|\; S_0 \subsetneqq S_1 \subsetneqq \dotsb \subsetneqq S_n\}\) <em><span class="dashuline" >baryzentrische Unterteilung</span></em> von \(K\).
+</p>
+
+<p>
+<em>Bemerkung</em>:<br />
+\(\beta K\) ist ein kombinatorischer Komplex, dessen Ecken genau die Simplizes von \(K\) sind.<br />
+Man kann \(\beta K\) auf \(|\K |\) wie folgt realisieren: Fu&#x0308;r \(S \in K\) wa&#x0308;hle man \(\mu (S) \in \Int |S|\) (z.&#x202f;B. fu&#x0308;r \(S = \{s_0, \dotsc , s_n\}\) den Mittelpunkt \(\mu (S) =
+\frac {1}{n + 1} s_0 + \dotsb + \frac {1}{n + 1} s_n\)). Die Abbildung \(\mu \colon \Omega (\beta K) = K \rightarrow |K|\) ist eine Darstellung von \(\beta K\) und induziert einen Homo&#x0308;omorphismus
+\(h\colon |\beta K| \homoe |K|\).
+</p>
+
+<p>
+<b>Folgerung</b>: In \(|K|\) ist jeder Punkt \(a\) starker Deformationsretrakt einer offenen Umgebung.
+</p>
+
+<p>
+<b>Folgerung</b>: Sei \(K\) ein simplizialer Komplex. Die topologische Realisierung \(|K|\) ist kompakt genau dann, wenn \(K\) endlich ist.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >simpliziale Approximation</span>): Seien \(f\colon |K| \rightarrow |L|\) eine stetige Abbildung und<br />
+\(\varphi \colon \Omega (K) \rightarrow \Omega (L)\) eine Abbildung, sodass \(f(\st (a)) \subset \st (\varphi (a))\) fu&#x0308;r alle \(a \in \Omega (K)\) ist. Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f7"><p>Die Abbildung \(\varphi \) ist simplizial, d.&#x202f;h. fu&#x0308;r alle \(S \in K\) gilt \(\varphi (S) \in L\).
+</p>
+</li>
+<li class="list-item-f8"><p>Die topologische Realisierung \(g\colon |K| \rightarrow |L|\) von \(\varphi \colon K \rightarrow L\) erfu&#x0308;llt:<br />
+Fu&#x0308;r jedes \(x \in |K|\) liegen \(g(x)\) und \(f(x)\) in einem gemeinsamen Simplex in \(|L|\).
+</p>
+</li>
+<li class="list-item-f9"><p>Es gilt \(g \simeq f\) durch \(H(t, x) = (1 - t) \cdot g(x) + t \cdot f(x)\).
+</p>
+</li>
+</ul>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >simpliziale Approximation</span>):</span> Seien \(K\) und \(L\) simpliziale Komplexe, wobei \(K\) endlich ist.<br />
+Dann ist jede Abbildung \(f\colon |K| \rightarrow |L|\) homotop zu einer simplizialen Abbildung<br />
+\(g\colon |K| = |\beta ^n K| \rightarrow |L|\) fu&#x0308;r \(n\) genu&#x0308;gend groß.
+</p>
+
+<p>
+<b>Folgerung</b>: Jede stetige Abbildung \(f\colon \sphere ^m \rightarrow \sphere ^n\) mit \(m &lt; n\) ist nullhomotop.
+</p>
+
+
+
+<h3 id="euler-charakteristik"><span style="font-variant: small-caps;">Euler</span>-Charakteristik</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Gegeben sei ein endlicher simplizialer Komplex \(K\). Gesucht wird eine topologische Invariante \(I(K)\), z.&#x202f;B. eine ganze Zahl, sodass aus \(|K| \cong |L|\) stets \(I(K) = I(L)\) folgt. Die Anzahl
+\(a_i\) der \(i\)-Simplizes eignet sich dafu&#x0308;r nicht, da bspw. die baryzentrischen Unterteilungen die Zahlen \(a_0, a_1 \dotsc \) vera&#x0308;ndern.
+</p>
+
+<p>
+<b><span class="textsc" >Euler</span>-Charakteristik</b>:&#x2003; Sei \(K\) ein kombinatorischer simplizialer Komplex, der endlich ist.<br />
+Dann heißt \(\chi (K) := \sum _{S \in K} (-1)^{\dim S}\) <em><span class="dashuline" ><span class="textsc" >Euler</span>-Charakteristik</span></em>, d.&#x202f;h.<br />
+\(\chi (K) = +\; \text {Anzahl 0-Simplizes (Ecken)} \;-\; \text {Anzahl 1-Simplizes (Kanten)}\)<br />
+\(\;+\; \text {Anzahl 2-Simplizes (Dreiecke)} \;-\; \text {Anzahl 3-Simplizes (Tetraeder)} + \dotsb \).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Euler</span>-Charakteristik von \(D^n\), \(S^n\)</span>):</span> Es gilt \(\dball ^n \cong |D^n|\) und \(\sphere ^n \cong
+|S^n|\) mit<br />
+\(D^n := P(\{0, \dotsc , n\}) \setminus \{\emptyset \}\) und \(S^n := D^{n+1} \setminus \{\{0, \dotsc , n, n + 1\}\}\).<br />
+Dabei ist \(\chi (D^n) = 1\) und \(\chi (S^n) = 1 + (-1)^n\) fu&#x0308;r alle \(n \in \natural \).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Teilkomplexe</span>):</span> Seien \(K\) ein endlicher simplizialer Komplex und \(A, B\) Teilkomplexe von \(K\). Dann sind auch \(A \cap B\) und \(A \cup
+B\) Teilkomplexe und es gilt \(\chi (A \cup B) = \chi (A) + \chi (B) - \chi (A \cap B)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Euler</span>scher Polyedersatz</span>):</span><br />
+Jede Triangulierung der Spha&#x0308;re \(\sphere ^2\) hat Euler-Charakteristik \(2\).
+</p>
+
+<p>
+<em>Beispiel</em>: Bspw. haben die Triangulierungen regelma&#x0308;ßiger Oktaeder und regelma&#x0308;ßiger Ikosaeder die Euler-Charakteristiken \(\chi (\text {Oktaeder}) = 6 - 12 + 8 = 2\) und \(\chi (\text
+{Ikosaeder}) = 12 - 30 + 20 = 2\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Euler</span>-Charakteristik Homo&#x0308;omorphie-invariant</span>):</span><br />
+Seien \(K\) und \(L\) endliche simpliziale Komplexe. Aus \(|K| \cong |L|\) folgt \(\chi (K) = \chi (L)\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Euler</span>-Charakteristik Homotopie-invariant</span>):</span><br />
+Seien \(K\) und \(L\) endliche simpliziale Komplexe. Aus \(|K| \simeq |L|\) folgt \(\chi (K) = \chi (L)\).
+</p>
+
+<p>
+<b><span class="textsc" >Euler</span>-Charakteristik von top. Ra&#x0308;umen</b>:&#x2003; Sei \(X\) ein topologischer Raum.<br />
+Ist \(X\) homo&#x0308;omorph (oder auch nur homotopie-a&#x0308;quivalent) zur Realisierung \(|K|\) eines endlichen simplizialen Komplexes \(K\), dann heißt \(\chi (X) := \chi (K)\) <em><span class="dashuline"
+><span class="textsc" >Euler</span>-Charakteristik</span></em> von \(X\).
+</p>
+
+<p>
+<em>Beispiel</em>: Es gilt \(\chi (\dball ^n) = 1\) und \(\chi (\sphere ^n) = 1 + (-1)^n\).
+</p>
+
+
+
+<h2 id="flaechen">Flächen</h2>
+
+</p>
+
+
+<h3 id="topologische-mannigfaltigkeiten">Topologische Mannigfaltigkeiten</h3>
+
+</p>
+
+
+<p>
+<b>lokal euklidisch</b>:&#x2003; Ein topologischer Raum \(M\) heißt <em><span class="dashuline" >lokal euklidisch</span></em> der Dimension \(n\), falls es zu jedem Punkt \(x \in M\) eine offene Umgebung \(U
+\subset M\) und einen Homo&#x0308;omorphismus \(h\colon U \rightarrow V\) mit \(V \subset \real ^n\) offen gibt.
+</p>
+
+<p>
+<em>Beispiel</em>: \(M\) ist diskret genau dann, wenn \(M\) lokal euklidisch der Dimension \(0\) ist.<br />
+Jede offene Menge \(M \subset \real ^n\) ist lokal euklidisch der Dimension \(n\).<br />
+\(\sphere ^n \subset \real ^{n+1}\) ist lokal euklidisch der Dimension \(n\) (mithilfe der stereographischen Projektion).<br />
+\(\dball ^n \subset \real ^n\) ist nicht lokal euklidisch.
+</p>
+
+<p>
+<em>Bemerkung</em>: Aus lokal euklidisch folgt nicht hausdorffsch. Ein Gegenbeispiel ist die Gerade mit doppeltem Ursprung (lokal euklidisch der Dimension \(1\), aber nicht hausdorffsch).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Mannigfaltigkeit</b>:&#x2003; Fu&#x0308;r \(n \in \natural \) sei \(\real ^n_+ := \{(x_1, \dotsc , x_n) \in \real ^n \;|\; x_1 \ge 0\}\),<br />
+\(\partial \real ^n_+ := \{(x_1, \dotsc , x_n) \in \real ^n \;|\; x_1 = 0\}\) und \(\Int \real ^n_+ := \{(x_1, \dotsc , x_n) \in \real ^n \;|\; x_1 &gt; 0\}\).<br />
+Ein topologischer Raum \(M\) heißt <em><span class="dashuline" >\(n\)-Mannigfaltigkeit</span></em>, falls
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f10"><p>\(M\) hausdorffsch ist und eine abza&#x0308;hlbare Basis besitzt und
+</p>
+</li>
+<li class="list-item-f11"><p>es zu jedem Punkt \(x \in M\) eine offene Umgebung \(U \subset M\) und einen Homo&#x0308;omorphismus \(h\colon U \rightarrow V\) gibt mit \(V \subset \real ^n_+\) offen (\(h\) heißt dann
+<em><span class="dashuline" >lokale Karte</span></em> von \(M\)).
+</p>
+</li>
+</ul>
+
+<p>
+Gilt dabei \(h(x) \in \Int \real ^n_+\), dann heißt \(x\) <em><span class="dashuline" >innerer Punkt von \(M\)</span></em> (\(x \in \Int M\)), gilt stattdessen \(h(x) \in \partial \real ^n_+\), dann heißt \(x\)
+<em><span class="dashuline" >Randpunkt von \(M\)</span></em> (\(x \in \partial M\)).
+</p>
+
+<p>
+<b>offene/geschlossene Mannigfaltigkeit</b>:&#x2003;<br />
+Eine \(n\)-Mannigfaltigkeit mit \(\partial M = \emptyset \) heißt <em><span class="dashuline" >\(n\)-Mannigfaltigkeit ohne Rand</span></em>. Eine \(n\)-Mannigfaltigkeit ohne Rand heißt <em><span
+class="dashuline" >geschlossen</span></em>, falls \(M\) kompakt ist, und <em><span class="dashuline" >offen</span></em>, falls \(M\) nicht kompakt ist.
+</p>
+
+<p>
+<em>Beispiel</em>: \(M\) ist diskret und abza&#x0308;hlbar genau dann, wenn \(M\) eine \(0\)-Mannigfaltigkeit ist.<br />
+\(\ball ^n \subset \real ^n\) (\(\Int \ball ^n = \ball ^n\), \(\partial \ball ^n = \emptyset \)), &#x2003;&#x2003;\(\dball ^n \subset \real ^n\) (\(\Int \dball ^n = \ball ^n\), \(\partial \dball ^n
+= \sphere ^{n-1}\)) und<br />
+\(\sphere ^n \subset \real ^{n+1}\) (\(\Int \sphere ^n = \sphere ^n\), \(\partial \sphere ^n = \emptyset \)) sind \(n\)-Mannigfaltigkeiten.<br />
+\(\emptyset \) ist eine \(n\)-Mannigfaltigkeit fu&#x0308;r alle \(n \in \natural \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Eindeutigkeit der Dimension</span>):</span><br />
+Ist \(M \not = \emptyset \) sowohl \(m\)- als auch \(n\)-Mannigfaltigkeit, dann gilt \(m = n\).
+</p>
+
+<p>
+<b>Dimension</b>:&#x2003; Sei \(M \not = \emptyset \) eine \(n\)-Mannigfaltigkeit.<br />
+Dann heißt \(\dim M := n\) die <em><span class="dashuline" >Dimension</span></em> von \(M\).
+</p>
+
+<p>
+<span
+      class="textcolor"
+      style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Disjunktheit von Innerem und Rand</span>):</span><br />
+Ist \(M\) eine \(n\)-Mannigfaltigkeit, dann gilt \(\Int M \cap \partial M = \emptyset \).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Inneres/Rand als Mannigfaltigkeit</span>):</span> Fu&#x0308;r jede \(n\)-Mannigfaltigkeit \(M \not = \emptyset \) gilt:<br />
+\(\Int M \not = \emptyset \) und \(\Int M\) ist eine \(n\)-Mfkt. ohne Rand. \(\partial M\) ist eine \(n - 1\)-Mfkt. ohne Rand.<br />
+\(\Int M \subset M\) ist offen und \(\partial M \subset M\) ist abgeschlossen. Aus \(M\) kompakt folgt \(\partial M\) kompakt.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Produktmannigfaltigkeit</span>):</span> Sind \(M\) bzw. \(N\) \(m\)- bzw. \(n\)-Mannigfaltigkeiten, so ist \(M \times N\) eine \(m + n\)-Mannigfaltigkeit mit
+\(\partial (M \times N) = (\partial M \times N) \cup (M \times \partial N)\).
+</p>
+
+
+
+<h3 id="beispiele-und-klassifikationssaetze">Beispiele und Klassifikationssätze</h3>
+
+</p>
+<table>
+
+<tr>
+<td class="tdl tvertbarr" style="border-right: 1px solid black"></td>
+<td class="tdc">ohne Rand</td>
+<td class="tdc">mit Rand</td>
+</tr>
+
+
+<tr class="hline" >
+<td class="tdl tvertbarr" style="border-right: 1px solid black">kompakt</td>
+<td class="tdc">\(\sphere ^1\)</td>
+<td class="tdc">\([0, 1]\)</td>
+</tr>
+
+
+<tr>
+<td class="tdl tvertbarr" style="border-right: 1px solid black">nicht kompakt</td>
+<td class="tdc">\(\real \)</td>
+<td class="tdc">\(\left [0, 1\right [\)</td>
+</tr>
+
+</table>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Klassifikation der \(1\)-Mannigfaltigkeiten</span>):</span> Jede zusammenha&#x0308;ngende \(1\)-Mannigfaltigkeit ist homo&#x0308;omorph zu genau
+einer dieser Repra&#x0308;sentanten.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Fla&#x0308;che</b>:&#x2003; Eine <em><span class="dashuline" >Fla&#x0308;che</span></em> ist eine \(2\)-Mannigfaltigkeit.
+</p>
+
+<p>
+<b>geschlossene Fla&#x0308;che</b>:&#x2003; Man startet mit der \(2\)-Spha&#x0308;re \(F_0 := \sphere ^2\) und dem Einheitstorus<br />
+\(F_1 := \sphere ^1 \times \sphere ^1\). Anschließend verklebt man fu&#x0308;r \(g \ge 1\) die Fla&#x0308;chen \(F_g\) und \(F_1\) zu einer neuen Fla&#x0308;che \(F_{g+1}\) mit \(g + 1\) Lo&#x0308;chern.
+\(F_g\) heißt <em><span class="dashuline" >orientierbare geschlossene Fla&#x0308;che vom Geschlecht \(g\)</span></em>.<br />
+Identifiziert man in \(F_g\) gegenu&#x0308;berliegende Punkte paarweise miteinander, so erha&#x0308;lt man die <em><span class="dashuline" >nicht-orientierbare geschlossene Fla&#x0308;che \(N_g := F_g/\pm 1\) vom
+Geschlecht \(g\)</span></em>.<br />
+Fu&#x0308;r \(g = 1\) erha&#x0308;lt man den projektiven Raum \(\real \projective ^2 = F_0/\pm 1\). \(F_1/\pm 1\) ist die <em><span class="dashuline" ><span class="textsc" >Klein</span>sche
+Flasche</span></em>.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Klassifikation der \(2\)-Mannigfaltigkeiten</span>):</span> Jede zusammenha&#x0308;ngende geschlossene Fla&#x0308;che \(F\) ist homo&#x0308;omorph
+zu genau einer dieser Repra&#x0308;sentanten (\(F_g\) oder \(N_g\) fu&#x0308;r ein \(g \in \natural \)).
+</p>
+
+
+
+<h3 id="klassifikation-geschlossener-flaechen">Klassifikation geschlossener Flächen</h3>
+
+</p>
+
+
+<p>
+<b>Modellfla&#x0308;chen</b>:&#x2003; Mit \(Q_0 := [-2, 2] \times [-2, 2]\), \(Q_1 := Q_0 \setminus ([-1, 1] \times [-1, 1])\) und<br />
+\(Q_g := \bigcup _{k=1}^g (Q_1 - 2 - 2g + 4k)\), \(g \ge 2\) werden kompakte Fla&#x0308;chen mit Rand definiert (\(Q_g\) ist ein Rechteck mit \(g\) Lo&#x0308;chern). Der Produktraum \(H_g := Q_g \times [-1,
+1]\) heißt <em><span class="dashuline" >Henkelko&#x0308;rper vom Geschlecht \(g\)</span></em> (\(3\)-Mannigfaltigkeit mit Rand). \(H_g \subset \real ^3\) ist punktsymmetrisch, d.&#x202f;h. \(-H_g = H_g\).
+</p>
+
+<p>
+<b>Orientierbarkeit im triangulierten Fall</b>:&#x2003; Eine Mannigfaltigkeit heißt orientierbar, falls es eine Triangulierung gibt, sodass man jedem Dreieck eine Orientierung zuordnen kann, wobei jede Kante von den
+benachbarten Dreiecken gegenla&#x0308;ufige Orientierungen erbt.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Rand der Modellfla&#x0308;chen</span>):</span> Der Rand \(F_g^+ := \partial H_g\) ist eine zusammenha&#x0308;ngende geschlossene
+Fla&#x0308;che. Sie ist orientierbar und hat Euler-Charakteristik \(\chi (F_g^+) = 2 - 2g\).<br />
+Der Quotientenraum \(F_g^- := F_g^+ / \{\pm \}\) ist ebenfalls eine zusammenha&#x0308;ngende geschlossene Fla&#x0308;che. Sie ist nicht-orientierbar und hat Euler-Charakteristik \(\chi (F_g^-) = 1 - g\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Klassifikationssatz</span>):</span> Jede zusammenha&#x0308;ngende geschlossene Fla&#x0308;che \(F\) ist homo&#x0308;omorph zu genau einer der
+Modellfla&#x0308;chen \(F_g^\pm \). Genauer gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f12"><p>Ist \(F\) orientierbar (\(\varepsilon := +\)), dann ist \(\chi (F) = 2 - 2g\) fu&#x0308;r ein \(g \in \natural \).
+</p>
+</li>
+<li class="list-item-f13"><p>Ist \(F\) nicht-orientierbar (\(\varepsilon := -\)), dann ist \(\chi (F) = 1 - g\) fu&#x0308;r ein \(g \in \natural \).
+</p>
+</li>
+</ul>
+
+<p>
+Allein aus diesen beiden Informationen folgt bereits die Homo&#x0308;omorphie \(F \cong F_g^\varepsilon \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Triangulierbarkeit topologischer Fla&#x0308;chen</span>):</span><br />
+Jede topologische Mannigfaltigkeit der Dimension \(\le 3\) la&#x0308;sst sich triangulieren.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >triangulierte Fla&#x0308;chen</span>):</span><br />
+Sei \(K\) ein endlicher simplizialer Komplex. \(|K|\) ist eine Fla&#x0308;che genau dann, wenn
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f14"><p>jeder Simplex in einem \(2\)-Simplex enthalten ist,
+</p>
+</li>
+<li class="list-item-f15"><p>jeder \(1\)-Simplex in ho&#x0308;chstens zwei \(2\)-Simplizes enthalten ist und
+</p>
+</li>
+<li class="list-item-f16"><p>fu&#x0308;r jede Ecke \(a\) die \(2\)-Simplizes \(\Delta _1, \dotsc , \Delta _k\), die \(a\) enthalten, sich so anordnen lassen, dass jeweils \(\Delta _i\) und \(\Delta _{i+1}\) eine gemeinsame Kante
+haben.
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Polygonmodell</b>:&#x2003; Sei \(n \in \natural \) mit \(n \ge 2\). Die Kreislinie \(\sphere ^1 = \rand {\dball ^2}\) wird in \(n\) gleichlange Segmente \(\gamma _k\colon [0,1] \rightarrow \sphere ^1\)
+mit \(\gamma _k(t) = \exp (\frac {2\pi \i }{n} (k - 1 + t))\), \(k = 1, \dotsc , n\) unterteilt.<br />
+Sei \(w = w_1 \dotsb w_n\) ein Wort u&#x0308;ber dem Alphabet \(a^{\pm 1}, b^{\pm 1}, \dotsc \). Fu&#x0308;r \(w_k = w_\ell \) wird \(\gamma _k(t) \sim \gamma _\ell (t)\) fu&#x0308;r alle \(t \in [0,
+1]\) identifiziert, fu&#x0308;r \(w_k = w_\ell ^{-1}\) wird \(\gamma _k(t) \sim \gamma _\ell (1 - t)\) fu&#x0308;r alle \(t \in [0, 1]\) identifiziert.<br />
+Dies erzeugt eine A&#x0308;quivalenzrelation \(\sim \). Der Quotientenraum ist \(\dball ^2 / \aufspann {w} := \dball ^2 / \sim \).
+</p>
+
+<p>
+<em>Bemerkung</em>: Ist \(n \ge 3\), so kann man das Polygonmodell auch durch ein regelma&#x0308;ßiges \(n\)-Eck realisieren, an dessen Kanten die Buchstaben des Worts stehen.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Polygonmodell geschlossener Fla&#x0308;chen</span>):</span> Der Raum \(\dball ^2 / \aufspann {w}\) ist eine geschlossene Fla&#x0308;che genau
+dann, wenn jeder Buchstabe in \(w\) genau zweimal vorkommt. In diesem Fall heißt \(w\) <em><span class="dashuline" >Fla&#x0308;chenwort</span></em>. Tritt ein Buchstabe in \(w\) zweimal mit gleichem Exponenten auf,
+dann ist \(\dball ^2 / \aufspann {w}\) nicht-orientierbar, andernfalls ist \(\dball ^2 / \aufspann {w}\) orientierbar.
+</p>
+
+<p>
+<em>Beispiel</em>: Der Raum \(\dball ^2 / \aufspann {a_1 b_1 a_1^{-1} b_1^{-1} \dotsb a_g b_g a_g^{-1} b_g^{-1}}\) ist eine zusammenha&#x0308;ngende, orientierbare, geschlossene Fla&#x0308;che mit
+Euler-Charakteristik \(2 - 2g\). Der Raum \(\dball ^2 / \aufspann {c_0 c_0 \dotsb c_g c_g}\) ist eine zusammenha&#x0308;ngende, nicht-orientierbare, geschlossene Fla&#x0308;che mit Euler-Charakteristik \(1 -
+g\).<br />
+Es gilt \(\dball ^2 / \aufspann {a a^{-1}} \cong \sphere ^2\), &#x2003;&#x2003;\(\dball ^2 / \aufspann {a a} \cong \real \projective ^2 = \sphere ^2 / \{\pm 1\}\), &#x2003;&#x2003;\(\dball ^2 /
+\aufspann {a b a^{-1} b^{-1}} \cong \sphere ^1 \times \sphere ^1\) und<br />
+\(\dball ^2 / \aufspann {a b a b^{-1}} \cong (\sphere ^1 \times \sphere ^1) / \{\pm 1\}\)
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >zusammenha&#x0308;ngende, geschlossene Fla&#x0308;che homo&#x0308;omorph zu einem Polygonmodell</span>):<br />
+Jede zusammenha&#x0308;ngende, geschlossene Fla&#x0308;che ist homo&#x0308;omorph zu einem Raum \(\dball ^2 / \aufspann {w}\) fu&#x0308;r ein geeignetes Fla&#x0308;chenwort \(w\).
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >Umformungen</span>): Folgende Umformungen sind mo&#x0308;glich (\(\varepsilon , \delta \in \{\pm 1\}\)):
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f17"><p>\(\dball ^2 / \aufspann     {w_1 w_2 \dotsb w_n} \cong \dball ^2 / \aufspann {w_2 \dotsb w_n w_1}\) (zyklische Umordnung)
+</p>
+</li>
+<li class="list-item-f18"><p>\(\dball ^2 / \aufspann     {\dotsb a^\varepsilon \dotsb a^\delta \dotsb } \cong \dball ^2 / \aufspann {\dotsb b^\varepsilon \dotsb b^\delta \dotsb }\) (wobei \(a\) und \(b\) sonst nicht vorkommen)
+</p>
+</li>
+<li class="list-item-f19"><p>\(\dball ^2 / \aufspann     {\dotsb a^\varepsilon \dotsb a^\delta \dotsb } \cong \dball ^2 / \aufspann {\dotsb a^{-\varepsilon } \dotsb a^{-\delta } \dotsb }\)
+</p>
+</li>
+<li class="list-item-f20"><p>\(\dball ^2 / \aufspann     {\dotsb a b b^{-1} c \dotsb } \cong \dball ^2 / \aufspann {\dotsb a c \dotsb }\) (Einklappen)
+</p>
+</li>
+<li class="list-item-f21"><p>\(\dball ^2 / \aufspann     {\dotsb c \dotsb c \dotsb } \cong \dball ^2 / \aufspann {\dotsb c c \dotsb }\) (Zusammenfassen von <em><span class="dashuline" >Kreuzhauben</span></em>)
+</p>
+</li>
+<li class="list-item-f22"><p>\(\dball ^2 / \aufspann     {\dotsb c c x \dotsb } \cong \dball ^2 / \aufspann {\dotsb x c c \dotsb }\) (Verschieben von Kreuzhauben)
+</p>
+</li>
+<li class="list-item-f23"><p>\(\dball ^2 / \aufspann     {\dotsb a \dotsb b \dotsb a^{-1} \dotsb b^{-1} \dotsb } \cong \dball ^2 / \aufspann {\dotsb a b a^{-1} b^{-1} \dotsb }\) (Zusammenfassen von <em><span class="dashuline"
+>Henkeln</span></em>)
+</p>
+</li>
+<li class="list-item-f24"><p>\(\dball ^2 / \aufspann     {\dotsb a b a^{-1} b^{-1} x \dotsb } \cong \dball ^2 / \aufspann {\dotsb x a b a^{-1} b^{-1} \dotsb }\) (Verschieben von Henkeln)
+</p>
+</li>
+</ul>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Umformung in normalisierte Form</span>):</span> Mit obigen Umformungen kann jedes Fla&#x0308;chenwort u&#x0308;berfu&#x0308;hrt werden in \(w =
+c_1 c_1 \dotsb c_k c_k a_1 b_1 a_1^{-1} b_1^{-1} \dotsb a_\ell b_\ell a_\ell ^{-1} b_\ell ^{-1}\).<br />
+Jede zusammenha&#x0308;ngende geschlossene Fla&#x0308;che \(F\) erfu&#x0308;llt demnach<br />
+\(F \cong \dball ^2 / \aufspann {c_1 c_1 \dotsb c_k c_k a_1 b_1 a_1^{-1} b_1^{-1} \dotsb a_\ell b_\ell a_\ell ^{-1} b_\ell ^{-1}}\) fu&#x0308;r geeignete \(k, \ell \in \natural \).<br />
+Im Falle \(k \ge 1\) kann man dies weiter vereinfachen zu \(F \cong \dball ^2 / \aufspann {c_1 c_1 \dotsb c_{k’} c_{k’}}\) mit \(k’ = k + 2\ell \).<br />
+Fu&#x0308;r den Fall \(k = 0\) erha&#x0308;lt man \(F \cong \dball ^2 / \aufspann {a_1 b_1 a_1^{-1} b_1^{-1} \dotsb a_\ell b_\ell a_\ell ^{-1} b_\ell ^{-1}}\).
+</p>
+
+
+
+<h3 id="klassifikation-kompakter-flaechen-mit-rand">Klassifikation kompakter Flächen mit Rand</h3>
+
+</p>
+
+
+<p>
+<b>Modellfla&#x0308;chen</b>:&#x2003; Als Modell betrachtet man die Fla&#x0308;chen \(F_{g,r}^\pm \) mit \(g \ge 0\) und \(r \ge 1\), wobei \(F_{g,r}^+\) ein Band mit \(g\) angeklebten Paaren von ineinander
+verschra&#x0308;nkten Ba&#x0308;ndern und \(r - 1\) zusa&#x0308;tzliche angeklebte Ba&#x0308;nder sowie \(F_{g,r}^-\) ein Band mit \(g + 1\) angeklebten einmal verdrehten Ba&#x0308;ndern und \(r - 1\)
+zusa&#x0308;tzliche angeklebte Ba&#x0308;nder.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Klassifikation kompakter Fla&#x0308;chen mit Rand</span>):</span> Jede zusammenha&#x0308;ngende, kompakte Fla&#x0308;che \(M\) mit Rand
+\(\partial M \not = \emptyset \) ist homo&#x0308;omorph zu genau einem der Modelle \(F_{g,r}^\pm \).
+</p>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

@@ -1,0 +1,2666 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\newcommand {\fracsize }[1]{{\large #1}}\)
+
+\(\newcommand {\matrixsize }[1]{{\scriptsize #1}}\)
+
+\(\newcommand {\aufspann }[1]{\ensuremath {\left \langle {#1}\right \rangle }}\)
+
+\(\renewcommand {\C }{\ensuremath {\mathcal {C}}}\)
+
+\(\renewcommand {\F }{\ensuremath {\mathcal {F}}}\)
+
+\(\renewcommand {\O }{\ensuremath {\mathcal {O}}}\)
+
+\(\newcommand {\TOL }{\ensuremath {\text {TOL}}}\)
+
+\(\newcommand {\opt }{\ensuremath {\text {opt}}}\)
+
+\(\newcommand {\loc }{\ensuremath {{\text {loc}}}}\)
+
+\(\newcommand {\rel }{\ensuremath {{\text {rel}}}}\)
+
+\(\newcommand {\esssup }{\ensuremath {\operatorname {ess\,sup}\,}}\)
+
+\(\newcommand {\cond }{\ensuremath {\operatorname {cond}}}\)
+
+\(\newcommand {\supp }{\ensuremath {\operatorname {supp}}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  font-style:italic;
+  content:'(i)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  font-style:italic;
+  content:'(ii)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  font-style:italic;
+  content:'(i)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  font-style:italic;
+  content:'(ii)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  font-style:italic;
+  content:'(i)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  font-style:italic;
+  content:'(ii)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f9::marker {
+  font-style:italic;
+  content:'(iii)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f10::marker {
+  font-style:italic;
+  content:'(i)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f11::marker {
+  font-style:italic;
+  content:'(ii)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f12::marker {
+  font-style:italic;
+  content:'(iii)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f13::marker {
+  font-style:italic;
+  content:'(i)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f14::marker {
+  font-style:italic;
+  content:'(ii)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f15::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f16::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f17::marker {
+  font-style:italic;
+  content:'(i)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f18::marker {
+  font-style:italic;
+  content:'(ii)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f19::marker {
+  font-style:italic;
+  content:'(i)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f20::marker {
+  font-style:italic;
+  content:'(ii)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f21::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f22::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f23::marker {
+  content:'•\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+
+<h2 id="wiederholung-landau-notation-und-taylor-entwicklung">Wiederholung: <span style="font-variant: small-caps;">Landau</span>-Notation und <span style="font-variant: small-caps;">Taylor</span>-Entwicklung</h2>
+
+</p>
+
+
+<p>
+<b><span class="textsc" >Landau</span>-Notation</b>:&#x2003; Seien \(f, g\colon \left ]0, +\infty \right [ \rightarrow \real ^n\) Abbildungen.<br />
+Man schreibt \(f = \O (g)\), falls \(\exists _{c &gt; 0} \exists _{\delta &gt; 0} \forall _{x \in \left ]0, \delta \right [}\; \norm {f(x)} \le c \norm {g(x)}\).<br />
+Man schreibt \(f = o(g)\), falls \(\forall _{\varepsilon &gt; 0} \exists _{\delta &gt; 0} \forall _{x \in \left ]0, \delta \right [}\; \norm {f(x)} \le \varepsilon \norm {g(x)}\).
+</p>
+
+<p>
+<em>Beispiel</em>: \(f = \O (1)\) gilt genau dann, wenn \(f\) in einer \(\delta \)-Umgebung von \(0\) beschra&#x0308;nkt ist.<br />
+\(f = o(1)\) ist a&#x0308;quivalent zu \(\lim _{x \to 0} f(x) = 0\).<br />
+\(f = o(x)\) ist a&#x0308;quivalent zu \(\widetilde {f} = o(1)\) mit \(f(x) = x\widetilde {f}(x)\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Taylor</span>-Entwicklung</span>):</span><br />
+Seien \(U \subset \real \) ein Intervall und \(f\colon U \subset \real \rightarrow \real ^n\) in \(x_0 \in U\) \((m + 1)\)-fach stetig differenzierbar.<br />
+Dann gilt \(f(x_0 + h) = f(x_0) + \sum _{k=1}^m \frac {1}{k!} f^{(k)}(x_0) h^k + r_m(x_0, h)\) mit<br />
+\(r_m(x_0, h) = \frac {1}{(m + 1)!} f^{(m+1)}(y) h^{m+1}\) fu&#x0308;r ein \(y \in \overline {x_0, x_0 + h}\), d.&#x202f;h.<br />
+\(r_m(x_0, h) = \O (h^{m+1})\). Es gilt auch \(r_m(x_0, h) = o(h^m)\).
+</p>
+
+
+
+<h2 id="motivation-beispiele">Motivation, Beispiele</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Gegeben seien eine Funktion \(f\colon \real \times \real \rightarrow \real \), \(t_0 \in \real \) und \(u_0 \in \real \). Gesucht ist eine differenzierbare Funktion \(u = u(t)\colon \real
+\rightarrow \real \), sodass \(u’(t) = f(t, u(t))\) fu&#x0308;r \(t \ge t_0\). Dieses Problem heißt <em><span class="dashuline" >Anfangswertproblem</span></em>.
+</p>
+
+<p>
+<em>Beispiel</em>: Sei \(t\) die Zeit und \(P(t)\) eine Population. Fu&#x0308;r die Zunahme \(\Delta P := P(t + \Delta t) - P(t)\) in der Zeit \(\Delta t\) soll \(\Delta P \approx \alpha P(t) \Delta t\) mit
+\(\alpha &gt; 0\) gelten. Fu&#x0308;r \(\Delta t \to 0\) erha&#x0308;lt man die DGL \(\frac {dP}{dt} = \alpha P(t)\). Sie hat die allgemeine Lo&#x0308;sung \(P(t) = c \cdot e^{\alpha t}\) mit \(c\) beliebig
+(<em><span class="dashuline" >exponentielles Wachstum</span></em>). Ist ein Anfangswert \(P_0 = P(t_0)\) gegeben, so bestimmt sich \(c\) durch \(c = P_0 e^{-\alpha t_0}\), d.&#x202f;h. die partikula&#x0308;re
+Lo&#x0308;sung ist \(P(t) = P_0 e^{\alpha (t - t_0)}\).
+</p>
+
+<p>
+<em>Beispiel</em>: Die DGL \(\frac {dP}{dt} = \lambda P(K - P)\) mit \(\lambda , K &gt; 0\) modelliert <em><span class="dashuline" >logistisches Wachstum</span></em>. Zum Beispiel gilt fu&#x0308;r \(P \equiv
+K\), dass \(\frac {dP}{dt} = 0\), d.&#x202f;h. \(P\) a&#x0308;ndert sich nicht. Die DGL hat die Lo&#x0308;sung \(P(t) = \frac {K}{1 + \frac {K}{P_0 - 1} e^{-\lambda K t}}\).
+</p>
+
+<p>
+<em>Beispiel</em>: Eine DGL, mit der das <em><span class="dashuline" >aktuelle Bevo&#x0308;lkerungswachstum</span></em> beschrieben werden kann, lautet \(\frac {dP}{dt} = \alpha P(t)^\beta \) mit \(\alpha
+&gt; 0\), \(\beta &gt; 1\).
+</p>
+
+<p>
+<em>Beispiel</em>: Wird die Menge einer <em><span class="dashuline" >radioaktiven Substanz</span></em> durch \(u = u(t)\) beschrieben, so modelliert die DGL \(du = -\lambda u dt\), \(\lambda &gt; 0\) den Zerfall
+der Substanz aufgrund der Radioaktivita&#x0308;t. Fu&#x0308;r \(t_0 = 0\) lautet eine Lo&#x0308;sung \(u(t) = u_0 e^{-\lambda t}\). Die <em><span class="dashuline" >Halbwertszeit</span></em> ist die Zeit, in der
+sich die Menge der Substanz halbiert. Sie ist unabha&#x0308;ngig von der aktuellen Menge und betra&#x0308;gt \(\tau = \frac {\ln (2)}{\lambda }\).
+</p>
+
+
+
+<h2 id="theoretische-grundlagen">Theoretische Grundlagen</h2>
+
+</p>
+
+
+<p>
+<b>Anfangswertproblem</b>:&#x2003; Seien \(U \subset \real ^n\) offen (<em><span class="dashuline" >Zustandsraum</span></em>), \(f \in \C (\real \times U, \real ^n)\), \(u_0 \in U\), \(I \subset \real
+\) und \(t_0 \in I\). Gesucht ist eine Funktion \(u = (u_1, \dotsc , u_n)^t \in \C ^1(I, U)\) mit \(u’(t) = f(t, u(t))\) fu&#x0308;r \(t \in I\) und \(u(t_0) = u_0\). Dieses Problem heißt <em><span
+class="dashuline" >Anfangswertproblem</span></em> (AWP).
+</p>
+
+<p>
+<em>Beispiel</em>: Im <em><span class="dashuline" >Ra&#x0308;uber-Beute-Modell</span></em> wird mit \(y_1(t)\) bzw. \(y_2(t)\) die Population der Beute- bzw. Raubtiere bezeichnet. Die DGLs \(y_1’(t) = \alpha
+y_1(t) (1 - y_2(t))\) und \(y_2’(t) = \beta y_2(t) (y_1(t) - 1)\) modellieren dann den zeitlichen Verlauf der Populationen.
+</p>
+
+
+
+<h3 id="existenz-und-eindeutigkeit-der-loesung-des-anfangswertproblems">Existenz und Eindeutigkeit der Lösung des Anfangswertproblems</h3>
+
+</p>
+
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Peano</span></span>):</span> Seien \(f\) auf einem kompakten Rechteck<br />
+\(R := \{(t, u) \in \real \times U \;|\; |t - t_0| \le a,\; \norm {u - u_0} \le b\}\) stetig,<br />
+\(\mu := \max _{(t, u) \in R} \norm {f(t, u)} &lt; \infty \) und \(\alpha := \min (a, \frac {b}{\mu })\).<br />
+Dann hat das Anfangswertproblem auf \([t_0 - \alpha , t_0 + \alpha ]\) mindestens eine Lo&#x0308;sung.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Picard</span>-<span class="textsc" >Lindelo&#x0308;f</span></span>):</span> Sei zusa&#x0308;tzlich \(f\) in \(R\) im
+zweiten Argument <span class="textsc" >Lipschitz</span>-stetig, d.&#x202f;h. \(\norm {f(t, w) - f(t, \widetilde {w})} \le L \norm {w - \widetilde {w}}\) fu&#x0308;r alle \((t, w), (t, \widetilde {w})
+\in R\).<br />
+Dann existiert fu&#x0308;r \(U = \real ^n\) genau eine Lo&#x0308;sung \(u \in \C ^1([t_0 - \alpha , t_0 + \alpha ], \real ^n)\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Banach</span>scher Fixpunktsatz</span>):</span> Seien \((X, \norm {\cdot })\) ein Banachraum und \(D \subset X\) eine
+abgeschlossene Teilmenge mit \(D \not = \emptyset \). Sei außerdem \(T\colon D \rightarrow X\) eine Abbildung mit \(T(D) \subset D\) und \(\exists _{0 &lt; c &lt; 1} \forall _{v, \widetilde {v} \in D}\;
+\norm {Tv - T\widetilde {v}} \le c \norm {v - \widetilde {v}}\). Dann gibt es genau ein \(u \in D\), sodass \(Tu = u\).
+</p>
+
+
+
+<h3 id="behandlung-von-anfangswertproblemen-hoeherer-ordnung">Behandlung von Anfangswertproblemen höherer Ordnung</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Ein <em><span class="dashuline" >Anfangswertproblem ho&#x0308;herer Ordnung</span></em> ist ein Anfangswertproblem der Form \(y^{(m)}(t) = f(t, y(t), y’(t), \dotsc , y^{(m-1)}(t))\)
+mit \(y^{(i)}(t_0) = y_{0,i}\) fu&#x0308;r \(i = 0, \dotsc , m - 1\).<br />
+Es kann in ein <em><span class="dashuline" >System 1. Ordnung</span></em> umgeformt werden, indem \(z_1(t) = y(t)\), \(z_2(t) = y’(t)\), &#x2026;, \(z_m(t) = y^{(m-1)}(t)\) gesetzt wird. Damit ist \(z’ =
+(z_1’, z_2’, \dotsc , z_{m-1}’, z_m’)^t\)<br />
+\(= (z_2, z_3, \dotsc , z_m, f(t, z_1, z_2, \dotsc , z_m))^t\) ein System 1. Ordnung mit der Anfangsbedingung<br />
+\(z(t_0) = (y(t_0), y’(t_0), \dotsc , y^{(m-1)}(t_0))^t = (y_{0,0}, y_{0,1}, \dotsc , y_{0,m-1})^t\).
+</p>
+
+<p>
+<em>Beispiel</em>: Die <em><span class="dashuline" >elastische Schwingung</span></em> eines fest eingespannten Federpendels, an dem ein Ko&#x0308;rper mit Masse \(m\) ha&#x0308;ngt, kann durch die DGL \(m y’’(t)
++ r y’(t) + D(y(t) - \ell ) = g(t)\) beschrieben werden, wenn \(y(t)\) die Auslenkung darstellt und \(y(0)\) und \(y’(0)\) gegeben sind. Umgeformt nach \(y’’\) ergibt dies \(y’’ = \frac {1}{m} (g - D(y - \ell )
+- ry’)\). Mit \(z_1 = y\) und \(z_2 = y’\) ist \(z’ = (z_1’, z_2’)^t = (z_2, \frac {1}{m} (g - D(z_1 - \ell ) - r z_2))^t\) ein System 1. Ordnung mit Anfangsbedingung \(z(0) = (y_{0,0}, y_{0,1})^t\).
+</p>
+
+
+
+<h3 id="loesung-durch-trennung-der-variablen">Lösung durch Trennung der Variablen</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Eine DGL hat <em><span class="dashuline" >trennbare Vera&#x0308;nderliche</span></em>, falls sie die Form \(y’(t) = f(t) g(y)\) mit \(y(t_0) = y_0\) besitzt. In diesem Fall kann sie mit der
+Gleichung \(\frac {1}{g(y)} dy = f(t) dt\) und anschließendem Integrieren, also \(\int _{y_0}^y \frac {1}{g(z)}\dz = \int _{t_0}^t f(s)\ds \), gelo&#x0308;st werden, indem nach \(y(t)\) umgeformt und die
+Integrationskonstante mit der Anfangsbedingung berechnet wird.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Korrektheit der Trennung der Vera&#x0308;nderlichen</span>):</span> Seien \(f \in \C (I_t, \real )\), \(g \in \C (I_y, \real )\) und \(t_0\) bzw.
+\(y_0\) seien aus dem Inneren von \(I_t\) bzw. \(I_y\). In diesem Fall ist die obige DGL mit dem eben beschriebenen Algorithmus in einer Umgebung von \(t_0\) eindeutig lo&#x0308;sbar.
+</p>
+
+
+
+<h3 id="spezielle-typen-von-dgl-1-ordnung">Spezielle Typen von DGL 1. Ordnung</h3>
+
+</p>
+
+
+<p>
+<b>autonom</b>:&#x2003; Eine DGL \(u’(t) = f(t, u(t))\) heißt <em><span class="dashuline" >autonom</span></em>, falls \(u’(t) = f(u(t))\).
+</p>
+
+<p>
+<b>linear</b>:&#x2003; Eine DGL \(u’(t) = f(t, u(t))\) heißt <em><span class="dashuline" >linear</span></em>, falls \(u’(t) = A(t) u(t) + b(t)\) mit<br />
+\(A \in \C (I, \real ^{n \times n})\) und \(b \in \C (I, \real ^n)\).<br />
+Eine lineare DGL heißt <em><span class="dashuline" >homogen</span></em>, falls \(b \equiv 0\), sonst heißt sie <em><span class="dashuline" >inhomogen</span></em>/<em><span class="dashuline"
+>affin</span></em>.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >eindeutige Lo&#x0308;sbarkeit linearer DGLs</span>):</span><br />
+Sei \(u’(t) = A(t)u(t) + b(t)\) eine lineare DGL mit \(A \in \C (I, \real ^{n \times n}) \cap L^\infty (\real , \real ^{n \times n})\).<br />
+Dann hat das Anfangswertproblem genau eine Lo&#x0308;sung in \(\C ^1(I, \real ^n)\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Lo&#x0308;sungen linearer DGLs</span>):</span> Unter den Voraussetzungen von eben gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p>Die Lo&#x0308;sungen der homogenen DGL \(u’(t) = A(t) u(t)\) bilden einen \(n\)-dimensionalen Unterraum \(V \subset \C ^1(\real , \real ^n)\) mit einer Basis \(u_i \in \C ^1(\real , \real
+^n)\), \(u_i(0) = e_i\), \(i = 1, \dotsc , n\).<br />
+Die <em><span class="dashuline" >normierte Fundamentalmatrix</span></em> ist \(Y_0(t) = (u_1, \dotsc , u_n)\).
+</p>
+</li>
+<li class="list-item-f1"><p>Die Lo&#x0308;sungen der inhomogen DGL \(u’(t) = A(t) u(t) + b(t)\) bilden einen affinen Unterraum \(\widetilde {u} + V \subset \C ^1(\real , \real ^n)\) mit einer speziellen Lo&#x0308;sung
+\(\widetilde {u}\). Fu&#x0308;r die Lo&#x0308;sung gilt<br />
+\(u(t) = Y_0(t) u_0 + \int _0^t Y_0(t) (Y_0(s))^{-1} b(s) \ds \) (dabei sei \(t_0 = 0)\).
+</p>
+</li>
+<li class="list-item-f2"><p>Ist die DGL autonom, d.&#x202f;h. ist \(u’(t) = A u(t)\), so gilt \(Y_0(t) = e^{At} := \sum _{n=0}^\infty \frac {t^n}{n!} A^n\).
+</p>
+</li>
+</ul>
+
+<p>
+<em>Beispiel</em>: \(\begin {pmatrix}u_1’(t)\\u_2’(t)\end {pmatrix}\) \(=\) \(\begin {pmatrix}u_2(t)\\u_1(t)\end {pmatrix}\) \(+\) \(\begin {pmatrix}1\\0\end {pmatrix}\), d.&#x202f;h. \(A =\) \(\begin
+{pmatrix}0 &amp; 1\\1 &amp; 0\end {pmatrix}\). Es gilt \(A^2 = E_2\), d.&#x202f;h.<br />
+\(Y_0(t) = \sum _{n=0}^\infty \frac {t^n}{n!} A^n = \sum _{k=0}^\infty \frac {t^{2k+1}}{(2k+1)!} A + \sum _{k=0}^\infty \frac {t^{2k}}{(2k)!} E_2 = \sinh (t) A + \cosh (t) E_2 =\) \(\begin
+{pmatrix}\cosh (t) &amp; \sinh (t)\\ \sinh (t) &amp; \cosh (t)\end {pmatrix}\).<br />
+Wegen \(\det Y_0(t) = \cosh ^2(t) - \sinh ^2(t) = 1\) gilt \(Y_0^{-1}(t) =\) \(\begin {pmatrix}\cosh (t) &amp; -\sinh (t)\\ -\sinh (t) &amp; \cosh (t)\end {pmatrix}\) und somit ist die Lo&#x0308;sung
+\(u(t) = 2\) \(\begin {pmatrix}\sinh (t)\\\cosh (t)\end {pmatrix}\) \(-\) \(\begin {pmatrix}0\\1\end {pmatrix}\).
+</p>
+
+<p>
+<em>Beispiel</em>: Fu&#x0308;r \(u’(t) = t^3 u + e^t\), \(u(0) = 1\) ist die homogene DGL \(u_h’ = t^3 u_h\), deren Lo&#x0308;sung ist \(u_h(t) = e^{t^4/4} = Y_0(t)\). Die allgemeine Lo&#x0308;sungsformel von
+oben ergibt nun<br />
+\(u(t) = e^{t^4/4} + e^{t^4/4} \cdot \int _0^t e^{\tau - \tau ^4/4} \d \tau \), jedoch kann das Integral analytisch nicht berechnet werden.<br />
+Die bestehenden Mo&#x0308;glichkeiten sind nun einerseits das Anwenden einer Quadraturformel fu&#x0308;r das Integral, zum anderen numerische Verfahren fu&#x0308;r das Ausgangsproblem.
+</p>
+
+
+
+<h2 id="einzelschrittverfahren">Einzelschrittverfahren</h2>
+
+</p>
+
+
+<p>
+<b>Einzelschrittverfahren</b>:&#x2003; Angenommen, das Anfangswertproblem besitzt eine eindeutige Lo&#x0308;sung \(u \in \C ^1(I, \real ^n)\). Seien \(t_0 := 0\) und \(I := [0, T]\) mit \(T &gt; 0\).<br />
+Ein <em><span class="dashuline" >Schrittweitenvektor</span></em> ist ein Vektor \(h := (h_0, \dotsc , h_{N-1})^t \in [0, T]^N\) mit \(\sum _{j=0}^{N-1} h_j = T\).<br />
+Das <em><span class="dashuline" >Gitter</span></em> \(I_h\) zu \(h\) ist \(I_h := \{0 = t_0, t_1, \dotsc , t_N = T\}\) mit \(t_j := t_{j-1} + h_{j-1}\).<br />
+Das Gitter heißt <em><span class="dashuline" >a&#x0308;quidistant</span></em>, falls \(h_0 = \dotsb = h_{N-1}\). In diesem Fall sei \(h\) skalar (\(h = h_0\)).<br />
+Die <em><span class="dashuline" >Gitterweite</span></em> ist \(|h| := \max _{j=0,\dotsc ,N-1} h_j\).<br />
+Das Ziel ist die Bestimmung einer Gitterfunktion \(u_h\colon I_h \rightarrow \real ^n\). Dabei setzt man \(u_j := u_h(t_j)\) fu&#x0308;r \(j = 0, \dotsc , N\).
+</p>
+<h3 id="das-eulersche-polygonzugverfahren">Das <span style="font-variant: small-caps;">Euler</span>sche Polygonzugverfahren</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Zur Vereinfachung setzt man \(n = 1\), \(I_h\) a&#x0308;quidistant und \(u_h(t_0) = u_0\).<br />
+Fu&#x0308;r die exakte Lo&#x0308;sung \(u\) des Anfangswertproblems gilt \(u(t_1) = u(t_0) + u’(t_{01}) (t_1 - t_0)\)<br />
+\(= u_0 + h f(t_{01}, u(t_{01}))\) mit \(t_{01} \in [t_0, t_1]\) (Taylorformel mit Restglied).<br />
+Mittels \(t_{01} \approx t_0\) erha&#x0308;lt man eine Na&#x0308;herung \(u_1 = u_h(t_1)\) fu&#x0308;r \(u(t_1)\), wobei \(u_1 = u_0 + h f(t_0, u_0)\).
+</p>
+
+<p>
+<b>explizites <span class="textsc" >Euler</span>-Verfahren</b>:&#x2003;<br />
+Das <em><span class="dashuline" >explizite <span class="textsc" >Euler</span>-Verfahren</span></em> hat die Iterationsvorschrift \(u_j := u_{j-1} + h f(t_{j-1}, u_{j-1})\).
+</p>
+
+<p>
+<em>Beispiel</em>: Fu&#x0308;r \(u’(t) = t^3 u + e^t\), \(u(0) = 1\) und \(t \in [0, 1]\) erha&#x0308;lt man schon fu&#x0308;r geringe \(N\) gute Na&#x0308;herungen. Bei \(u’(t) = \sin (t) u(t)\), \(u(0) =
+1\) (exakte Lo&#x0308;sung \(u(t) = e^{1 - \cos (t)}\)) und \(t \in [0, 50]\) beno&#x0308;tigt man schon wesentlich gro&#x0308;ßere Werte fu&#x0308;r \(N\), um sinnvolle Na&#x0308;herungen zu erzeugen.
+</p>
+
+
+
+<h3 id="allgemeine-definition-beispiele">Allgemeine Definition, Beispiele</h3>
+
+</p>
+
+
+<p>
+<b>explizites Einschrittverfahren</b>:&#x2003; Es seien ein Gitter \(I_h\) und eine Funktion<br />
+\(\phi \in \C ([0, T]^2 \times \real ^n, \real ^n)\) gegeben. Dann heißt das Verfahren \(u_j := u_{j-1} + h_{j-1} \phi (h_{j-1}, t_{j-1}, u_{j-1})\), \(j = 1, \dotsc , N\) <em><span class="dashuline"
+>explizites Einschrittverfahren</span></em> (ESV) und \(\phi \) heißt <em><span class="dashuline" >zugeho&#x0308;rige Inkrementfunktion</span></em>.
+</p>
+
+<p>
+<em>Beispiel</em>: Im Euler-Verfahren setzt man \(u’(t_{01}) \approx u’(t_0) = f(t_0, u_0)\).<br />
+Man kann dies auch anders approximieren: \(u’(t_{01}) \approx f(t_0 + \frac {h}{2}, u(t_0 + \frac {h}{2}))\) mit<br />
+\(u(t_0 + \frac {h}{2}) \approx u(t_0) + \frac {h}{2} u’(t_0) = u_0 + \frac {h}{2} f(t_0, u_0)\). Daraus ergibt sich die neue Iterationsvorschrift \(u_j := u_{j-1} + h_{j-1} f(t_{j-1} + \frac
+{h_{j-1}}{2}, u_{j-1} + \frac {h_{j-1}}{2} f(t_{j-1}, u_{j-1}))\), \(j = 1, \dotsc , N\).<br />
+Dieses Verfahren nennt sich <em><span class="dashuline" >modifiziertes explizites <span class="textsc" >Euler</span>-Verfahren</span></em>.
+</p>
+
+<p>
+<em>Beispiel</em>: Ein anderes Verfahren ergibt sich wie folgt: \(u’(t_1) = u(t_0) + (t_1 - t_0) u’(t_{01})\)<br />
+\(= u_0 + h f(t_{01}, u(t_{01})) = u_0 + \frac {h}{2} (f(t_{01}, u(t_{01})) + f(t_{01}, u(t_{01}))) \approx u_0 + \frac {h}{2} (f(t_0, u(t_0)) + f(t_1, u(t_1)))\)<br />
+\(\approx u_0 + \frac {h}{2} (f(t_0, u_0) + f(t_0 + h, u_0 + h f(t_0, u_0)))\).<br />
+Das sogenannte <em><span class="dashuline" >Verfahren von <span class="textsc" >Heun</span></span></em> hat also die Iterationsvorschrift<br />
+\(u_j := u_{j-1} + \frac {h_{j-1}}{2} (f(t_{j-1}, u_{j-1}) + f(t_{j-1} + h_{j-1}, u_{j-1} + h_{j-1} f(t_{j-1}, u_{j-1})))\), \(j = 1, \dotsc , N\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>explizites <span class="textsc" >Euler</span>-Verfahren</b>:&#x2003; Die Inkrementfunktion des <em><span class="dashuline" >expliziten <span class="textsc" >Euler</span>-Verfahrens</span></em> ist<br />
+\(\phi (k, t, w) := f(t, w)\).
+</p>
+
+<p>
+<b>modifiziertes explizites <span class="textsc" >Euler</span>-Verfahren</b>:&#x2003; Die Inkrementfunktion des<br />
+<em><span class="dashuline" >modifizierten expliziten <span class="textsc" >Euler</span>-Verfahrens</span></em> ist \(\phi (k, t, w) := f(t + \frac {k}{2}, w + \frac {k}{2} f(t, w))\).
+</p>
+
+<p>
+<b>Verfahren von <span class="textsc" >Heun</span></b>:&#x2003; Die Inkrementfunktion des <em><span class="dashuline" >Verfahrens von <span class="textsc" >Heun</span></span></em> ist<br />
+\(\phi (k, t, w) := \frac {1}{2} (f(t, w) + f(t + k, w + k f(t, w)))\).
+</p>
+
+
+
+<h3 id="konsistenz-konvergenz-stabilitaet-numerischer-aufwand">Konsistenz, Konvergenz, Stabilität, numerischer Aufwand</h3>
+
+</p>
+
+
+<p>
+<b>globale Fehlerfunktion/globaler Diskretisierungsfehler</b>:&#x2003;<br />
+Die Funktion \(e_h\colon I_h \rightarrow \real ^n\) mit \(e_h := u|_{I_h} - u_h\) heißt <em><span class="dashuline" >globale Fehlerfunktion</span></em>.<br />
+Der <em><span class="dashuline" >globale Diskretisierungsfehler</span></em> ist \(\overline {e_h} := \max _{j=0,\dotsc ,N} \norm {e_h(t_j)}\).
+</p>
+
+<p>
+<b>lokale Fehlerfunktion/lokaler Diskretisierungsfehler</b>:&#x2003;<br />
+Die Funktion \(\varepsilon _h\colon I_h \rightarrow \real ^n\) mit \(\varepsilon _h(t_j) = \frac {1}{h_j} (u(t_{j+1}) - u(t_j) - h_j \phi (h_j, t_j, u(t_j)))\) heißt<br />
+<em><span class="dashuline" >lokale Fehlerfunktion</span></em>. Der <em><span class="dashuline" >lokale Diskretisierungsfehler</span></em> ist \(\overline {\varepsilon _h} := \max _{j=0,\dotsc ,N} \norm
+{\varepsilon _h(t_j)}\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Der lokale Diskretisierungsfehler gibt den Fehler an, der bei einem Schritt gemacht wird. Er kann als Differenz von der Steigung der exakten Lo&#x0308;sung \(u\) und der Steigung der Approximation \(u_h\)
+interpretiert werden.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Konvergenz</b>:&#x2003; Das Einzelschrittverfahren heißt <em><span class="dashuline" >konvergent</span></em>, falls \(\overline {e_h} \to 0\) fu&#x0308;r \(|h| \to 0\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Konsistenz</b>:&#x2003; Das Einzelschrittverfahren heißt <em><span class="dashuline" >konsistent</span></em> zu (AWP), falls \(\overline {\varepsilon _h} \to 0\) fu&#x0308;r \(|h| \to 0\).
+</p>
+
+<p>
+<b>Konsistenzordnung</b>:&#x2003;<br />
+Das Einzelschrittverfahren heißt <em><span class="dashuline" >konsistent zur Ordnung \(p\)</span></em> zu (AWP), falls \(\overline {\varepsilon _h} = \O (|h|^p)\).
+</p>
+
+<p>
+<b>numerischer Aufwand</b>:&#x2003; Der <em><span class="dashuline" >numerische Aufwand</span></em> ist die Anzahl der Auswertungen von \(f\).
+</p>
+
+<p>
+<em>Beispiel</em>: Konsistenz und numerischer Aufwand der bisher betrachteten Verfahren:<br />
+explizites Euler-Verfahren: \(p = 1\) und \(1\)<br />
+modifiziertes Euler-Verfahren: \(p = 2\) und \(2\)<br />
+Verfahren von Heun: \(p = 2\) und \(2\)
+</p>
+
+<p>
+<em>Bemerkung</em>: Der Aufwand pro Zeitschritt ist proportional zu \(p\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Konsistenz von Einzelschrittverfahren</span>):</span> Seien \(h \in [0, T]^N\) ein Schrittweitenvektor, \(I_h\) ein Gitter und \(\phi \in \C ([0, T]^2
+\times \real ^n, \real ^n)\) die Inkrementfunktion fu&#x0308;r ein Einzelschrittverfahren (ESV).
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f3"><p>Das Einzelschrittverfahren ist zu (AWP) konsistent genau dann, wenn<br />
+\(\forall _{t \in I}\; \phi (0, t, u(t)) = f(t, u(t))\).
+</p>
+</li>
+<li class="list-item-f4"><p>Seien zusa&#x0308;tzlich \(f \in \C ^p(I \times \real ^n, \real ^n)\) und \(\phi \in \C ^p([0, T]^2 \times \real ^n, \real ^n)\).<br />
+Dann ist das Einzelschrittverfahren konsistent mit der Ordnung \(p\) zu (AWP) genau dann, wenn \(\forall _{t \in I}\; \frac {d^i}{dt^i} f(t, u(t)) = (i + 1) \frac {\partial ^i}{\partial k^i} \phi (k, t,
+u(t))|_{k=0}\) fu&#x0308;r \(i = 0, \dotsc , p - 1\).
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Was ist der Zusammenhang zwischen dem lokalen Konsistenzfehler \(\varepsilon _h\) und dem globalen Fehler \(e_h\)?
+</p>
+
+<p>
+<b>Raum der beschra&#x0308;nkten Gitterfunktionen</b>:&#x2003; Sei \(I_h\) ein Gitter zum Schrittweitenvektor \(h\). Die Menge \(X_h := \{v_h\colon I_h \setminus \{t_n = T\} \rightarrow \real ^n \;|\;
+\exists _{c &gt; 0} \forall _{j = 0, \dotsc , N - 1}\; \norm {v_h(t_j)} \le c\}\) heißt<br />
+<em><span class="dashuline" >Raum der beschra&#x0308;nkten Gitterfunktionen</span></em>.<br />
+Mit der Norm \(\norm {v_h}_\infty := \max _{j = 0, \dotsc , N - 1} \norm {v_h(t_j)}_\infty \) ist \(X_h\) ein Banachraum isomorph zu \(\real ^{nN}\).
+</p>
+
+<p>
+<b>diskreter Operator</b>:&#x2003; Seien \(I_h\) ein Gitter zum Schrittweitenvektor \(h\) und \(\phi \in \C (I^2 \times \real ^n, \real ^n)\) die Inkrementfunktion fu&#x0308;r ein Einzelschrittverfahren (ESV). Der
+Operator \(T_h\colon X_h \rightarrow X_h\),<br />
+\((T_h v_h)(t_0) := v_h(t_0) - u_0\) und \((T_h v_h)(t_j) := \frac {1}{h_j} (v_h(t_{j+1}) - v_h(t_j) - h_j \phi (h_j, t_j, v_h(t_j)))\) fu&#x0308;r<br />
+\(j = 1, \dotsc , N - 1\) heißt der dem Einzelschrittverfahren (ESV) zugeordnete <em><span class="dashuline" >diskrete Operator</span></em>.
+</p>
+
+<p>
+<em>Bemerkung</em>:<br />
+\(u_h\) ist die Gitterfunktion aus einem Einzelschrittverfahren genau dann, wenn \(T_h u_h = 0\).<br />
+Es gilt \(\norm {T_h(u|_{I_h})} = \O (|h|^p)\), da \((T_h (u|_{I_h}))(t_j) = \varepsilon _h(t_j)\), falls (ESV) kons. mit Ordn. \(p\) ist.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Stabilita&#x0308;t</b>:&#x2003; Der Operator \(T_h\) heißt <em><span class="dashuline" >stabil</span></em>, falls<br />
+\(\exists _{c, \overline {h} &gt; 0} \forall _{h \in [0, T]^N, |h| &lt; \overline {h}} \forall _{v_h^{(1)}, v_h^{(2)} \in X_h}\; \norm {v_h^{(1)} - v_h^{(2)}}_\infty \le c \norm {T_h
+v_h^{(1)} - T_h v_h^{(2)}}_\infty \).
+</p>
+
+<p>
+<em>Bemerkung</em>: Sei das Einzelschrittverfahren (ESV) stabil. Dann gilt:<br />
+Die Lo&#x0308;sung \(u_h\) von \(T_h u_h = 0\) ist eindeutig, denn \(\norm {u_h - \widetilde {u}_h}_\infty \le c \norm {T_h u_h - T_h \widetilde {u}_h}_\infty = 0\).<br />
+Die Lo&#x0308;sung \(u_h\) von \(T_h u_h = 0\) ist beschra&#x0308;nkt, denn<br />
+\(\norm {u_h}_\infty = \norm {u_h - 0}_\infty \le c \norm {T_h u_h - T_h[0]}_\infty = c c_0\) fu&#x0308;r \(c_0 := \norm {T_h u_h}_\infty \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Konvergenz von Einzelschrittverfahren I</span>):</span><br />
+Sei ein ESV mit Inkrementfunktion \(\phi \in \C (I^2 \times \real ^n, \real ^n)\) gegeben. Ist das ESV stabil, so gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f5"><p>Ist das ESV konsistent, so ist es auch konvergent.
+</p>
+</li>
+<li class="list-item-f6"><p>Ist das ESV konsistent zur Ordnung \(p \in \natural \), so gilt \(\overline {e_h} = \O (|h|^p)\).
+</p>
+</li>
+</ul>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Konvergenz von Einzelschrittverfahren II</span>):</span><br />
+Sei ein ESV mit Inkrementfunktion \(\phi \in \C (I^2 \times \real ^n, \real ^n)\) gegeben. Außerdem existiere fu&#x0308;r \(\overline {h}\) fest eine Konstante \(M &gt; 0\) mit \(\forall _{k \in (0, \overline
+{h})} \forall _{t \in I} \forall _{w, \widetilde {w} \in \real ^n}\; \norm {\phi (k, t, w) - \phi (k, t, \widetilde {w})}_\infty \le M \cdot \norm {w - \widetilde {w}}_\infty \)<br />
+(globale Lipschitz-Bedingung an \(\phi \) im dritten Argument).
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f7"><p>Das ESV ist stabil.
+</p>
+</li>
+<li class="list-item-f8"><p>Ist das ESV konsistent, so ist es auch konvergent.
+</p>
+</li>
+<li class="list-item-f9"><p>Ist das ESV konsistent zur Ordnung \(p\), so existiert eine Konstante \(c &gt; 0\), sodass fu&#x0308;r alle Gitter \(I_h\) mit \(|h| &lt; \overline {h}\) die Abscha&#x0308;tzung \(\overline {e_h} \le c
+c_s |h|^p\) gilt, wobei \(c_s := e^{MT} (T+1)\) die <em><span class="dashuline" >Stabilita&#x0308;tskonstante</span></em> und \(I = [0, T]\) ist.
+</p>
+</li>
+</ul>
+
+<p>
+<em>Bemerkung</em>: Die Abscha&#x0308;tzung von (<em>iii</em>) ist bzgl. der Stabilita&#x0308;tskonstanten \(c_s\) bestmo&#x0308;glich, d.&#x202f;h. auf \(I = [0, \infty )\) ist nicht mit gleichma&#x0308;ßiger
+Konvergenz zu rechnen.
+</p>
+
+<p>
+<em>Beispiel</em>: Als Beispiel betrachtet man das AWP \(u’(t) = a u(t)\) mit \(u(0) = 1\) und \(a &gt; 0\). Fu&#x0308;r die Lo&#x0308;sung \(u(t) = e^{at}\) ergibt sich bei Anwendung des expliziten Euler-Verfahrens
+mit a&#x0308;quidistantem Gitter \(u_j = (1 + ah)^{j-1} = (1 + ah)^{t_j/h - 1}\) (mit \(t_j = jh\)), also \(e_h(t_j) = e^{a t_j} - (1 + ah)^{t_j/h - 1}\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Konvergenz von Einzelschrittverfahren III</span>):</span><br />
+Sei ein ESV mit Inkrementfunktion \(\phi \in \C (I^2 \times \real ^n, \real ^n)\) gegeben. Außerdem existiere fu&#x0308;r \(\overline {h}\) und \(\varepsilon &gt; 0\) fest eine Konstante \(M &gt; 0\) mit<br />
+\(\forall _{k \in (0, \overline {h})} \forall _{t \in I} \forall _{w, \widetilde {w} \in \{v \in \real ^n \;|\; \exists _{t \in I}\; \norm {v - u(t)}_\infty \le \varepsilon \}}\; \norm {\phi
+(k, t, w) - \phi (k, t, \widetilde {w})}_\infty \le M \cdot \norm {w - \widetilde {w}}_\infty \)<br />
+(lokale Lipschitz-Bedingung an \(\phi \) im dritten Argument).<br />
+Dann gelten (<em>i</em>), (<em>ii</em>) und (<em>iii</em>) aus obigem Satz:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f10"><p>Das ESV ist stabil.
+</p>
+</li>
+<li class="list-item-f11"><p>Ist das ESV konsistent, so ist es auch konvergent.
+</p>
+</li>
+<li class="list-item-f12"><p>Ist das ESV konsistent zur Ordnung \(p\), so ist es auch konvergent zur Ordnung \(p\).
+</p>
+</li>
+</ul>
+
+
+
+<h3 id="explizite-runge-kutta-verfahren">Explizite <span style="font-variant: small-caps;">Runge</span>-<span style="font-variant: small-caps;">Kutta</span>-Verfahren</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Seien \(p \in \natural _0\) und ein Anfangswertproblem (AWP) mit einer Lo&#x0308;sung<br />
+\(u \in \C ^{p+1}(I, \real ^n)\) vorgegeben (dies ist z.&#x202f;B. der Fall fu&#x0308;r \(f \in \C ^p(I, \real ^n)\)).<br />
+Kann man nun systematisch ein Einzelschrittverfahren mit Konsistenzordnung \(p\) konstruieren?
+</p>
+
+<p>
+<em>Beispiel</em>: Das Heun-Verfahren \(u_{j+1} = u_j + \frac {h_j}{2} (f(t_j, u_j) + f(t_j + h_j, u_j + h_j f(t_j, u_j)))\) mit Inkrementfunktion \(\phi (k, t, w) = \frac {1}{2} (f(t, w) + f(t + k, w
++ k f(t, w)))\) erreicht durch iterative Auswertung von \(f\) eine ho&#x0308;here Konsistenzordnung (na&#x0308;mlich \(2\)). Es geho&#x0308;rt zu den einfachsten expliziten Runge-Kutta-Verfahren.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>explizites <span class="textsc" >Runge</span>-<span class="textsc" >Kutta</span>-Verfahren</b>:&#x2003; Seien \(r \in \natural \), \(\alpha _2, \dotsc , \alpha _r \in \real \), \(\gamma _1,
+\dotsc , \gamma _r \in \real \) und \(\beta _{ij}\) fu&#x0308;r \(i = 2, \dotsc , r\), \(j = 1, \dotsc , r - 1\) und \(i &gt; j\) gegeben.<br />
+Das Einzelschrittverfahren (ESV) mit \(\phi (k, t, w) := \sum _{i=1}^r \gamma _i K_i(k, t, w)\) und<br />
+\(K_1(k, t, w) := f(t, w)\),<br />
+\(K_2(k, t, w) := f(t + \alpha _2 k, w + k \cdot \beta _{21} K_1(k, t, w))\),<br />
+&#x2026;,<br />
+\(K_r(k, t, w) := f(t + \alpha _r k, w + k \cdot \sum _{s=1}^{r-1} \beta _{rs} K_s(k, t, w))\)<br />
+heißt <em><span class="dashuline" >allgemeines explizites <span class="textsc" >Runge</span>-<span class="textsc" >Kutta</span>-Verfahren</span></em> der Stufe \(r\).
+</p>
+
+<p>
+<b><span class="textsc" >Butcher</span>-Tableau</b>:&#x2003; Die Koeffizienten eines allgemeinen Runge-Kutta-Verfahrens ko&#x0308;nnen in der Form einer Tabelle (<em><span class="dashuline" ><span
+class="textsc" >Butcher</span>-Tableau</span></em>) zusammengefasst werden:
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                           α2        β21
+                                                                                                            ..        ..             ..
+                                                                                                             .         .               .
+                                                                                                           αr        β r1            ...          β r,r−1
+                                                                                                                     γ1              ...          γ r−1              γr
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\begin{array}{c|cccc} \alpha _2 &amp; \beta _{21}\\ \vdots &amp; \vdots &amp; \ddots \\ \alpha _r &amp; \beta _{r1} &amp; \hdots &amp; \beta _{r,r-1}\\\hline &amp; \gamma _1 &amp; \hdots
+&amp; \gamma _{r-1} &amp; \gamma _r \end {array}
+\end{align*}
+
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Beispiel</em>: Das explizite Euler-Verfahren \(\phi (k, t, w) = f(t, w)\) (Stufe \(1\)), das modifizierte Euler-Verfahren \(\phi (k, t, w) = f(t + \frac {k}{2}, w + \frac {k}{2} f(t, w))\) (Stufe \(2\)) und das
+Verfahren von Heun<br />
+\(\phi (k, t, w) = \frac {1}{2} (f(t, w) + f(t + k, w + k f(t, w)))\) (Stufe \(2\)) besitzen folgende Butcher-Tableaus:
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                         1           1
+                                                                                                                         2           2
+                                                                                                                                                                 1        1
+                                                                                                                                                                          1   1
+                                                                                                       1                             0        1                           2   2
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\begin{array}{c|c} \\\hline &amp; 1 \end {array} \qquad \begin{array}{c|ccc} \frac {1}{2} &amp; \frac {1}{2}\\\hline &amp; 0 &amp; 1 \end {array} \qquad \begin{array}{c|ccc} 1 &amp; 1\\\hline
+&amp; \frac {1}{2} &amp; \frac {1}{2} \end {array}
+\end{align*}
+
+</p>
+
+<p>
+<em>Bemerkung</em>: Setzt man \(\alpha _1 := 0\), so kann man die Koeffizientenfunktionen \(K_i\) iterativ bestimmen durch die Formel \(K_i(k, t, w) = f(t + \alpha _i k, w + k \cdot \sum _{j=1}^{i-1} \beta
+_{ij} K_j(k, t, w))\) fu&#x0308;r \(i = 1, \dotsc , r\).
+</p>
+
+<p>
+<em>Beispiel</em>: Fu&#x0308;r \(K_1 = f(t_j, u_j)\), \(K_2 = f(t_j + \frac {h_j}{2}, u_j + \frac {1}{2} h_j K_1)\), \(K_3 = f(t_j + \frac {h_j}{2}, u_j + \frac {1}{2} h_j K_2)\), \(K_4 = f(t_j +
+h_j, u_j + h_j K_3)\) ergibt sich ein Runge-Kutta-Verfahren mit der Inkrementfunktion \(u_{j+1} = u_j + \frac {h_j}{6} (K_1 + 2K_2 + 2K_3 + K_4)\). Es heißt <em><span class="dashuline" >klassisches <span
+class="textsc" >Runge</span>-<span class="textsc" >Kutta</span>-Verfahren</span></em> und besitzt folgendes Butcher-Tableau:
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                     1           1
+                                                                                                                     2           2
+                                                                                                                     1                    1
+                                                                                                                     2           0        2
+                                                                                                                     1           0       0          1
+                                                                                                                                 1        1         1        1
+                                                                                                                                 6        3         3        6
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\begin{array}{c|cccc} \frac {1}{2} &amp; \frac {1}{2} \\ \frac {1}{2} &amp; 0 &amp; \frac {1}{2}\\ 1 &amp; 0 &amp; 0 &amp; 1\\\hline &amp; \frac {1}{6} &amp; \frac {1}{3} &amp; \frac {1}{3}
+&amp; \frac {1}{6} \end {array}
+\end{align*}
+
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Man kann sich fragen, wieviele Runge-Kutta-Verfahren \(r\)-ter Ordnung auch eine Konsistenzordnung von \(r\) besitzen.<br />
+Fu&#x0308;r den Fall \(r = 2\) ergibt obiger Satz (Konsistenz von Einzelschrittverfahren) die Bedingungen \(f(t, w) = \phi (0, t, w)\) und \(\frac {d}{dt} f(t, u(t)) = 2 \cdot \frac {\partial }{\partial k}
+\phi (k, t, u(t))|_{k=0}\).<br />
+Es gilt \(\phi (0, t, w) = \gamma _1 f(t, w) + \gamma _2 f(t, w)\) und \(\frac {d}{dt} f(t, u(t)) = \frac {\partial f}{\partial t} + \frac {\partial f}{\partial u} \cdot \frac {du}{dt} = \frac
+{\partial f}{\partial t} + \frac {\partial f}{\partial u} \cdot f(t, u(t))\).<br />
+Fu&#x0308;r die Ableitung von \(\phi \) gilt \(\phi (k, t, w) = \gamma _1 f(t, w) + \gamma _2 f(t + \alpha _2 k, w + k \beta _{21} f(t, w))\), also<br />
+\(2 \cdot \left .\frac {\partial \phi }{\partial k}\right |_{k=0} = 2 \gamma _2 (\alpha _2 \frac {\partial f}{\partial t} + \beta _{21} f(t, u(t)) \frac {\partial f}{\partial u})\).<br />
+Aus Koeffizientenvergleich ergibt sich das nicht-lineare Gleichungssystem \(1 = \gamma _1 + \gamma _2\), \(2 \gamma _2 \alpha _2 = 1\), \(2 \gamma _2 \beta _{21} = 1\). Fu&#x0308;r \(\gamma _2 \not = 0\) kann
+man die drei Gleichungen mit vier Unbekannten mit \(\gamma _2\) als Parameter auflo&#x0308;sen und erha&#x0308;lt \(\gamma _1 = 1 - \gamma _2\), \(\alpha _2 = \frac {1}{2 \gamma _2}\) und \(\beta _{21} =
+\frac {1}{2 \gamma _2}\). Das Butcher-Tableau lautet
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                      1                   1
+                                                                                                                     2γ2                 2γ2
+                                                                                                                                     1 − γ2             γ2 .
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\begin{array}{c|cc} \frac {1}{2 \gamma _2} &amp; \frac {1}{2 \gamma _2}\\\hline &amp; 1 - \gamma _2 &amp; \gamma _2. \end {array}
+\end{align*}
+Fu&#x0308;r \(\gamma _2 = \frac {1}{2}\) erha&#x0308;lt man das Heun-Verfahren und fu&#x0308;r \(\gamma _2 = 1\) das modifizierte Euler-Verfahren.
+</p>
+
+<p>
+<em>Bemerkung</em>: Allgemein muss man ein nicht-lineares Gleichungssystem lo&#x0308;sen. Die Konsistenzordnung eines \(r\)-stufigen Runge-Kutta-Verfahrens ist nach oben durch \(r\) beschra&#x0308;nkt.<br />
+Leider gilt i.&#x202f;A. nicht, dass \(r\) die maximal erreichbare Konsistenzordnung ist:
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                               r           1     2           3       4        5         6        7    8        ≥9
+                                                                                            pmax (r)       1     2           3       4        4         5        6    6       ≤ r −2
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\begin{array}{c|ccccccccc} r &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 &amp; 8 &amp; \ge 9\\\hline p_{\max }(r) &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 4 &amp; 5 &amp; 6 &amp; 6
+&amp; \le r - 2 \end {array}
+\end{align*}
+
+</p>
+
+<p>
+<em>Bemerkung</em>: Ein Runge-Kutta-Verfahren der Stufe \(r\) ist konsistent genau dann, wenn<br />
+\(\sum _{i=1}^r \gamma _i = 1\) gilt, denn aufgrund \(K_i(0, t, w) = f(t, w)\) fu&#x0308;r \(i = 1, \dotsc , r\) gilt<br />
+\(\phi (0, t, w) = \sum _{i=1}^r \gamma _i K_i(0, t, w) = f(t, w) \cdot \sum _{i=1}^r \gamma _i \overset {!}{=} f(t, w)\).
+</p>
+
+
+
+<h3 id="implizite-runge-kutta-verfahren">Implizite <span style="font-variant: small-caps;">Runge</span>-<span style="font-variant: small-caps;">Kutta</span>-Verfahren</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Man spricht von einem <em><span class="dashuline" >impliziten Einzelschrittverfahren</span></em>, falls die Inkrementfunktion \(\phi \) auch von \(u_{i+1} = u_h(t_{i+1})\) abha&#x0308;ngt,
+d.&#x202f;h. \(u_{i+1} = u_i + h_i \phi (h_i t_i, u_i, u_{i+1})\).<br />
+Die Vorteile sind die verbesserte Stabilita&#x0308;t und eine ho&#x0308;here mo&#x0308;gliche Konsistenzordnung von bis zu \(2r\). Der Nachteil ist natu&#x0308;rlich der ho&#x0308;here numerische Aufwand, da man pro
+Zeitschritt ein in der Regel nicht-lineares Gleichungssystem lo&#x0308;sen muss.
+</p>
+
+<p>
+<em>Beispiel</em>: Das <em><span class="dashuline" >implizite <span class="textsc" >Euler</span>-Verfahren</span></em> ist gegeben durch \(u_{i+1} = u_i + h_i f(t_{i+1}, u_{i+1})\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>implizites <span class="textsc" >Runge</span>-<span class="textsc" >Kutta</span>-Verfahren</b>:&#x2003;<br />
+Seien \(r \in \natural \), \(\alpha _1, \dotsc , \alpha _r \in \real \), \(\gamma _1, \dotsc , \gamma _r \in \real \) und \(b_{ij}\) fu&#x0308;r \(i, j = 1, \dotsc , r\) gegeben.<br />
+Das Einzelschrittverfahren (ESV) mit \(\phi (k, t, w) := \sum _{i=1}^r \gamma _i K_i(k, t, w)\) heißt <em><span class="dashuline" >allgemeines<br />
+implizites <span class="textsc" >Runge</span>-<span class="textsc" >Kutta</span>-Verfahren</span></em> der Stufe \(r\), falls das nicht-lineare Gleichungssystem<br />
+\(K_1(k, t, w) := f(t + \alpha _1 k, w + k \cdot \sum _{s=1}^r b_{1s} K_s(k, t, w))\),<br />
+&#x2026;,<br />
+\(K_r(k, t, w) := f(t + \alpha _r k, w + k \cdot \sum _{s=1}^r b_{rs} K_s(k, t, w))\),<br />
+erfu&#x0308;llt ist. Die Koeffizienten ko&#x0308;nnen analog zum expliziten Fall in einem <em><span class="dashuline" ><span class="textsc" >Butcher</span>-Tableau</span></em> zusammengefasst werden:
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                 α1              b11          ...           b1r
+                                                                                                                  ..              ..                         ..
+                                                                                                                   .               .                          .
+                                                                                                                 αr              b r1         ...           br r
+                                                                                                                                 γ1           ...           γr
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\begin{array}{c|cccc} \alpha _1 &amp; b_{11} &amp; \hdots &amp; b_{1r}\\ \vdots &amp; \vdots &amp; &amp; \vdots \\ \alpha _r &amp; b_{r1} &amp; \hdots &amp; b_{rr}\\\hline &amp; \gamma _1
+&amp; \hdots &amp; \gamma _r \end {array}
+\end{align*}
+
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Beispiel</em>: Beim impliziten Euler-Verfahren \(u_{j+1} = u_j + h_j f(t_{j+1}, u_{j+1})\) ist \(K_1 = f(t_{j+1}, u_{j+1})\), d.&#x202f;h. \(K_1 = f(t_{j+1}, u_j + h_j K_1)\). In der Regel ist pro Zeitschritt
+eine nicht-lineare Gleichung zu lo&#x0308;sen. Man kann z.&#x202f;B. eine einfache Iteration \(K_1^{(\ell +1)} = f(t_{j+1}, u_j + h_h K_1^{(\ell )})\) bzw.<br />
+\(u_{j+1}^{(\ell +1)} = u_j + h_j f(t_{j+1}, u_{j+1}^{(\ell )})\) lo&#x0308;sen oder das Newton-Verfahren anwenden.<br />
+Das Butcher-Tableau ist folgendes:
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                                     1        1
+                                                                                                                                              1
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\begin{array}{c|c} 1 &amp; 1\\\hline &amp; 1 \end {array}
+\end{align*}
+
+</p>
+
+<p>
+<em>Beispiel</em>: Allgemeine Runge-Kutta-Verfahren der Stufe \(r = 1\) besitzen im skalaren Fall \(n = 1\) die nicht-lineare Gleichung \(K_1 = f(t + \alpha _1 k, w + k b_{11} K_1)\). Man nimmt an, dass die Gleichung
+eindeutig lo&#x0308;sbar ist mit \(K_1 \in \C ^1(I^2 \times \real , \real )\).<br />
+Fu&#x0308;r die Konsistenz muss \(\phi (0, t, w) = \gamma _1 K_1(0, t, w) = f(t, w)\) gelten, das stimmt fu&#x0308;r \(\gamma _1 = 1\) (fu&#x0308;r \(\alpha _1 = b_{11} = 1\) erha&#x0308;lt man das
+implizite Euler-Verfahren). Differentiation von obiger Gleichung in \(k = 0\) ergibt \(\frac {\partial }{\partial k} \phi (0, t, w) = \frac {\partial f}{\partial t}(t, w) \alpha _1 + \frac {\partial
+f}{\partial w}(t, w) b_{11} K_1(0, t, w)\) und<br />
+\(\frac {d}{dt} f(t, u(t)) = \frac {\partial f}{\partial t}(t, u(t)) + \frac {\partial f}{\partial w}(t, u(t)) f(t, u(t))\). Nach dem Konsistenzsatz muss fu&#x0308;r \(p = 2\) gelten, dass \(2 \frac
+{\partial }{\partial k} \phi (0, t, u(t)) = \frac {d}{dt} f(t, u(t))\), also \(\alpha _1 = b_{11} = \frac {1}{2}\).<br />
+Konkret erha&#x0308;lt man also \(u_{j+1} = u_j + h_j K_1 = u_j + h_j f(t_j + \frac {1}{2} h_j, u_j + \frac {1}{2} h_j K_1)\)<br />
+\(= u_j + h_j f(\frac {1}{2} (t_j + t_{j+1}, u_j + \frac {1}{2} (u_{j+1} - u_j)) = u_j + h_j f(\frac {1}{2} (t_j + t_{j+1}), \frac {1}{2} (u_j + u_{j+1}))\),<br />
+da \(K_1 = \frac {1}{h_j} (u_{j+1} - u_j)\).
+</p>
+
+<p>
+<em>Beispiel</em>: implizites Runge-Kutta-Verfahren der Stufe \(r = 2\) und Ordnung \(p = 4\):
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                    p                                                               p
+                                                                                               (3 − p3)/6                    1/4
+                                                                                                                               p                              1/4 − 3/6
+                                                                                               (3 + 3)/6                 1/4 + 3/6                                1/4
+                                                                                                                             1/2                                  1/2
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\begin{array}{c|cc} (3 - \sqrt {3})/6 &amp; 1/4 &amp; 1/4 - \sqrt {3}/6\\ (3 + \sqrt {3})/6 &amp; 1/4 + \sqrt {3}/6 &amp; 1/4\\\hline &amp; 1/2 &amp; 1/2 \end {array}
+\end{align*}
+
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Jedes implizites ESV la&#x0308;sst sich fu&#x0308;r \(|h|\) hinreichend klein als explizites Verfahren darstellen.
+</p>
+
+<p>
+<em>Beispiel</em>: Wendet man das implizite Euler-Verfahren auf \(u’ = au\) an, so erha&#x0308;lt man<br />
+\(u_{i+1} = u_i + ahu_{i+1}\), also \(u_{i+1} = \frac {1}{1 - ah} u_i = u_i + \left (\frac {1}{1 - ah} - 1\right ) u_i = u_i + h \frac {a}{1 - ah} u_i\).
+</p>
+
+<p>
+<em>Beispiel</em>: Fu&#x0308;r die <em><span class="dashuline" >halbimpliziten <span class="textsc" >Runge</span>-<span class="textsc" >Kutta</span>-Verfahren</span></em> gilt \(b_{is} = 0\) fu&#x0308;r
+\(i &lt; s\), also<br />
+\(K_1(k, t, w) := f(t + \alpha _1 k, w + k b_{11} K_1(k, t, w))\),<br />
+&#x2026;,<br />
+\(K_r(k, t, w) := f(t + \alpha _r k, w + k \cdot \sum _{s=1}^r b_{rs} K_s(k, t, w))\),<br />
+d.&#x202f;h. die einzelnen Gleichungen sind nacheinander lo&#x0308;sbar. Das Butcher-Tableau hat dann folgende Form:
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                 α1              b11                         0
+                                                                                                                  ..              ..           ..
+                                                                                                                   .               .            .
+                                                                                                                 αr              b r1         ...           br r
+                                                                                                                                 γ1           ...           γr
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\begin{array}{c|cccc} \alpha _1 &amp; b_{11} &amp; &amp; 0\\ \vdots &amp; \vdots &amp; \ddots \\ \alpha _r &amp; b_{r1} &amp; \hdots &amp; b_{rr}\\\hline &amp; \gamma _1 &amp; \hdots &amp;
+\gamma _r \end {array}
+\end{align*}
+
+</p>
+
+
+
+<h3 id="zusammenhang-zwischen-runge-kutta-verfahren-und-quadraturformeln">Zusammenhang zwischen <span style="font-variant: small-caps;">Runge</span>-<span style="font-variant: small-caps;">Kutta</span>-Verfahren und Quadraturformeln</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Der Zusammenhang zwischen Runge-Kutta-Verfahren und Quadraturformeln gibt einen weiteren Weg zur systematischen Konstruktion von Runge-Kutta-Verfahren zu einer vorgegebenen Konsistenzordnung
+\(p\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Gegeben sei das allgemeine Runge-Kutta-Verfahren \(u_{j+1} = u_j + h_j \cdot \sum _{i=1}^r \gamma _i K_i\),<br />
+\(K_i = f(t_j + \alpha _i h_j, u_j + h_j \cdot \sum _{s=1}^r b_{is} K_s)\).<br />
+Im Folgenden wird versucht, eine notwendige Bedingung fu&#x0308;r die Konsistenzordnung \(p\) herzuleiten. Betrachtet man das Anfangswertproblem \(u’(t) = g(t)\), \(t \in I\), \(u(0) = u_0 \in \real ^n\) mit
+\(g\colon I \rightarrow \real ^n\) (Lo&#x0308;sung \(u(t) = u_0 + \int _{t_0}^t g(\tau )\d \tau \)), so ergibt das Runge-Kutta-Verfahren<br />
+\(\frac {1}{h_j} (u_{j+1} - u_j) = \sum _{i=1}^r \gamma _i g(t_j + \alpha _i h_j)\). Der Konsistenzfehler ist laut Definition<br />
+\(\varepsilon _h(t_j) = \frac {1}{h_j} (u(t_{j+1}) - u(t_j) - h_j \sum _{i=1}^r \gamma _i g(t_j + \alpha _i h_j)) = \frac {1}{h_j} \left (\int _{t_j}^{t_{j+1}} g(t)\dt - h_j \sum _{i=1}^r
+\gamma _i g(t_j + \alpha _i h_j)\right )\), d.&#x202f;h. um die Konsistenzordnung \(p\) zu erreichen, muss<br />
+\(\left |\int _{t_j}^{t_{j+1}} g(t)\dt - h_j \sum _{i=1}^r \gamma _i g(t_j + \alpha _i h_j)\right | = \O (h_j^{p+1})\) gelten.<br />
+Dies ist ein Quadraturproblem (Gewichte \(\gamma _i\), Stu&#x0308;tzstellen \(t_j + \alpha _i h_j\)). Damit ko&#x0308;nnen die Koeffizienten \(\alpha _1, \dotsc , \alpha _r\) und \(\gamma _1, \dotsc , \gamma
+_r\) bestimmt werden.
+</p>
+
+<p>
+<em>Bemerkung</em>: Das Einsetzen der exakten Lo&#x0308;sung in das Runge-Kutta-Verfahren ergibt<br />
+\(\frac {u(t_{j+1}) - u(t_j)}{h_j} \approx \sum _{i=1}^r \gamma _i K_i(h_j, t_j, u(t_j))\). Daraus folgt \(\int _{t_j}^{t_{j+1}} u’(t)\dt \approx h_j \sum _{i=1}^r \gamma _i K_i(h_j, t_j,
+u(t_j))\).<br />
+Wegen der Gleichung von eben sollte fu&#x0308;r schon gegebene \(\alpha _i\) und \(\gamma _i\) gelten, dass \(K_i \approx u’(t_j + \alpha _i h_j)\) fu&#x0308;r \(i = 1, \dotsc , r\). Aus der Definition der
+\(K_i\) folgt damit \(K_i = f(t_j + \alpha _i h_j, u_j + h_j \sum _{s=1}^r b_{is} K_s) \approx u’(t_j + \alpha _i h_j) = f(t_j + \alpha _i h_j, u(t_j + \alpha _i h_j))\). Daraus folgt \(u(t_j +
+\alpha _i h_j) \approx u(t_j) + h(t_j) \sum _{s=1}^r b_{is} K_s\), d.&#x202f;h. \(\int _{t_j}^{t_j + \alpha _i h_j} u’(t)\dt \approx \sum _{s=1}^r b_{is} u’(t_j + \alpha _s h_j)\) fu&#x0308;r \(i
+= 1, \dotsc , r\). Somit erha&#x0308;lt man ein Quadraturproblem, mit dem sich die \(b_{is}\) bestimmen lassen (\(i, s = 1, \dotsc , r\)).<br />
+Dies motiviert den folgenden Satz.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Butcher</span>, <span class="textsc" >Kunzmann</span>, 1969</span>):</span> Es sei ein Runge-Kutta-Verfahren mit
+\(\alpha _i, \gamma _i \in \real \) fu&#x0308;r \(i = 1, \dotsc , r\) und \(b_{ij} \in \real \) fu&#x0308;r \(i, j = 1, \dotsc , r\) gegeben. Fu&#x0308;r \(p, q \in \natural \) seien die Koeffizienten so
+gewa&#x0308;hlt, dass fu&#x0308;r alle \(g_1 \in \C ^{p+1}(I, \real ^n)\) und \(g_2 \in \C ^{q+1}(I, \real ^n)\) gilt
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f13"><p>\(\left |\frac {1}{h_j} \int _{t_j}^{t_{j+1}} g_1(t)\dt - \sum _{s=1}^r \gamma _s g_1(t_j + \alpha _s h_j)\right | = \O (h_j^p)\) fu&#x0308;r \(j = 0, \dotsc , N - 1\) und
+</p>
+</li>
+<li class="list-item-f14"><p>\(\left |\frac {1}{h_j} \int _{t_j}^{t_j + \alpha _i h_j} g_2(t)\dt - \sum _{s=1}^r \beta _{is} g_2(t_j + \alpha _s h_j)\right | = \O (h_j^q)\) fu&#x0308;r \(j = 0, \dotsc , N - 1\)
+und \(i = 1, \dotsc , r\).
+</p>
+</li>
+</ul>
+
+<p>
+Dann ist das Runge-Kutta-Verfahren konsistent mit der Ordnung \(\min \{p, q + 1\}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Exaktheit einer Quadraturformel</b>:&#x2003; Es seien \(g \in \C ([0, 1], \real )\) und \(\tau \in \left (0, 1\right ]\) gegeben.<br />
+Sei \(Q(g) := \sum _{i=1}^r \gamma _i g(\alpha _i)\) eine Quadraturformel fu&#x0308;r das Integral \(\int _0^\tau g(t)\dt \), wobei \(\alpha _i \in [0, 1]\) und \(\gamma _i \in \real \) fu&#x0308;r \(i =
+1, \dotsc , r\). \(Q\) heißt <em><span class="dashuline" >vom Grad \(\ell \) exakt</span></em>, falls \(Q(p) - \int _0^\tau p(t)\dt = 0\) fu&#x0308;r alle \(p \in P_\ell \)<br />
+(\(P_\ell \) Menge der Polynome vom Grad \(\le \ell \)).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Fehler einer Quadraturformel mit <span class="textsc" >Peano</span>-Kern</span>):</span> Seien \(\ell \in \natural \), \(g \in \C ^{\ell
++1}([0, 1], \real )\),<br />
+\(\tau \in \left (0, 1\right ]\) und \(Q\) eine Quadraturformel, die vom Grad \(\ell \) exakt ist.<br />
+Dann gilt \(\int _0^\tau g(t)\dt = Q(g) + \int _0^1 \pi _{\ell +1}(t) g^{(\ell +1)}(t)\dt \), wobei \(\pi _{\ell +1}\) der <em><span class="dashuline" ><span class="textsc"
+>Peano</span>-Kern</span></em><br />
+\(\pi _{\ell +1}(t) := \frac {1}{(\ell + 1)!} (((\tau - t)_+)^{\ell +1} - (\ell + 1) \cdot \sum _{i=1}^r \gamma _i ((\alpha _i - t)_+)^\ell )\) ist mit<br />
+\(t \in [0, 1]\) und \(\alpha _+(t) = \max \{\alpha (t), 0\}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b><span class="textsc" >Legendre</span>-Polynom</b>:&#x2003; Fu&#x0308;r \(m \in \natural _0\) ist das <em><span class="dashuline" ><span class="textsc" >Legendre</span>-Polynom</span></em>
+\(p_m\) vom Grad \(m\) gegeben durch \(p_m(t) := \frac {m!}{(2m)!} \cdot \frac {d^m}{dt^m} (t^2 - 1)^m\) fu&#x0308;r \(t \in \real \).
+</p>
+
+<p>
+<em>Beispiel</em>: Es gilt \(p_0(t) = 1\), \(p_1(t) = t\), \(p_2(t) = t^2 - \frac {1}{3}\) usw.
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >Nullstellen und Orthogonalita&#x0308;t der <span class="textsc" >Legendre</span>-Polynome</span>):
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f15"><p>Das Legendre-Polynom \(p_m\) besitzt paarweise verschiedene Nullstellen<br />
+\(\varrho _1, \dotsc , \varrho _m\) mit \(-1 &lt; \varrho _1 &lt; \dotsb &lt; \varrho _m &lt; 1\).
+</p>
+</li>
+<li class="list-item-f16"><p>Fu&#x0308;r \(m, n \in \natural \) mit \(m \not = n\) gilt \(\int _{-1}^1 p_m(t) p_n(t) \dt = 0\).
+</p>
+</li>
+</ul>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Gauß</span>-Quadratur</span>):</span> Seien \(g \in \C ([-1, 1], \real )\) und \(Q(g) := \sum _{i=1}^m \omega _i
+g(\varrho _i)\) die<br />
+<em><span class="dashuline" ><span class="textsc" >Gauß</span>-Quadraturformel</span></em> mit den Stu&#x0308;tzstellen \(\varrho _i\) (Nullstellen des Legendre-Polynoms \(p_m\)) und den Gewichten \(\omega
+_i := \int _{-1}^1 \left (\prod _{j=1,\;j\not =i}^m \frac {t - \varrho _j}{\varrho _i - \varrho _j}\right ) \dt \) (Integrale fu&#x0308;r Lagrange-Polynome) fu&#x0308;r \(m \in \natural \).<br />
+Dann gilt \(Q(p) = \int _{-1}^1 p(t)\dt \) fu&#x0308;r alle \(p \in P_{2m-1}\),<br />
+d.&#x202f;h. die Gauß-Quadratur ist exakt vom Grad \(2m - 1\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Nun kann man analysieren, wie gut das Runge-Kutta-Verfahren ist, das durch die Gauß-Quadratur bestimmt wird. Dazu wendet man den Satz von Butcher und Kunzmann an.
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f17"><p>Mit \(t = t_j + h_j \tau \), \(\tau \in [0, 1]\) gilt \(\frac {1}{h_j} \int _{t_j}^{t_{j+1}} g_1(t)\dt = \int _0^1 g_1(t_j + h_j \tau )\d \tau \)<br />
+\(= \sum _{i=1}^r \widetilde {\omega }_i g_1(t_j + h_j \widetilde {\varrho }_i) + \int _0^1 \pi _{2r}(\tau ) g_1^{(2r)}(t_j + h_j \tau ) \d \tau \), da die Gauß-Quadratur exakt vom Grad \(2r - 1\)
+ist. Daraus folgt \(\left |\frac {1}{h_j} \int _{t_j}^{t_{j+1}} g_1(t)\dt - \sum _{i=1}^r \widetilde {\omega }_i g_1(t_j + h_j \widetilde {\varrho }_i) \right |\)<br />
+\(\le \max _{\tau \in [0, 1]} |\pi _{2r}(\tau )| \cdot \int _0^1 |g_1^{(2r)}(t_j + h_j \tau )| \d \tau \le c |h|^{2r}\) aufgrund der Beschra&#x0308;nktheit von \(\pi \) (bei jeder Ableitung von \(g_1\)
+kommt ein Faktor \(h_j\) hinzu). Dabei ist \(\gamma _i := \widetilde {\omega }_i = \frac {\omega _i}{2}\) und \(\alpha _i := \widetilde {\varrho }_i = \frac {\varrho _i + 1}{2}\) fu&#x0308;r \(i = 1,
+\dotsc , r\), weil \(\int _0^1 g(\tau )\d \tau = \frac {1}{2} \int _{-1}^1 g(\frac {z+1}{2})\dz \approx \frac {1}{2} \sum _{i=1}^r \omega _i g(\frac {\varrho _i + 1}{2})\).
+</p>
+</li>
+<li class="list-item-f18"><p>Analog wie eben ist \(\frac {1}{h_j} \int _{t_j}^{t_j + \alpha _i h_j} g_2(t)\dt = \int _0^{\alpha _i} g_2(t_j + h_j \tau )\d \tau \)<br />
+\(= \sum _{s=1}^r \widehat {\omega }_s g_2(t_j + h_j \widehat {\varrho }_s) + \int _0^1 \pi _{2r}(\tau ) g_2^{(2r)}(t_j + h_j \widehat {\varrho }_s)\d \tau \). Daraus folgt wieder<br />
+\(\left |\frac {1}{h_j} \int _{t_j}^{t_j + \alpha _i h_j} g_2(t)\dt - \sum _{s=1}^r \widehat {\omega }_s g_2(t_j + h_j \widehat {\varrho }_s)\right | \le c |h|^{2r}\) mit<br />
+\(\beta _{is} := \widehat {\omega }_s = \frac {\alpha _i \omega _s}{2}\) und \(\widetilde {\varrho }_s = \alpha _i \frac {\varrho _s + 1}{2}\) wegen \(\int _0^\alpha g(\tau )\d \tau = \frac
+{\alpha }{2} \int _{-1}^1 g(\alpha \frac {z + 1}{2})\dz \).
+</p>
+</li>
+</ul>
+
+<p>
+Somit ergibt sich eine Konsistenzordnung von \(p = \min \{2r, 2r + 1\} = 2r\).
+</p>
+
+
+
+<h2 id="mehrschrittverfahren">Mehrschrittverfahren</h2>
+
+</p>
+
+
+<h3 id="definitionen-und-beispiele">Definitionen und Beispiele</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Um die Genauigkeit von Einzelschrittverfahren zu erho&#x0308;hen, verwendet man nicht nur die letzte, sondern die letzten \(k\) Approximationen.
+</p>
+
+<p>
+<b>Mehrschrittverfahren</b>:&#x2003; Seien \(\psi \in \C (I^{k+2} \times \real ^{n(k+1)}, \real ^n)\) und \(k \in \natural \).<br />
+Weiter seien \(a_0, \dotsc , a_k \in \real \) und \(u_0 = u(t_0), u_1, \dotsc , u_{k-1} \in \real ^n\) gegeben. Das Verfahren<br />
+\(\frac {1}{h} (a_0 u_j + a_1 u_{j+1} + \dotsb + a_k u_{j+k}) = \psi (h, t_j, \dotsc , t_{j+k}, u_j, \dotsc , u_{j+k})\) mit \(j = 0, \dotsc , N - k\) heißt<br />
+<em><span class="dashuline" >\(k\)-Mehrschrittverfahren</span></em> (\(k\)-MSV) mit Verfahrensfunktion \(\psi \). (Das Gitter \(I_h\) ist also a&#x0308;quidistant.)
+</p>
+
+<p>
+<em>Bemerkung</em>: Falls \(\psi \) nicht von \(u_{j+k}\) abha&#x0308;ngt und \(a_k \not = 0\) gilt, so heißt das \(k\)-MSV <em><span class="dashuline" >explizit</span></em>.<br />
+Ein explizites \(1\)-MSV ist ein explizites Einzelschrittverfahren.
+</p>
+
+<p>
+<em>Bemerkung</em>: Um die Verfahrensgleichung lo&#x0308;sen zu ko&#x0308;nnen, mu&#x0308;ssen zuna&#x0308;chst die Startwerte \(u_0, \dotsc , u_{k-1}\) bekannt sein. Diese sollte mit einem ESV derselben
+Konsistenzordnung berechnet werden.
+</p>
+
+<p>
+<b>lineares MSV</b>:&#x2003; Falls die Verfahrensfunktion \(\psi \) von der Form \(\psi (h, t_j, \dotsc , t_{j+k}, u_j, \dotsc , u_{j+k}) = \sum _{i=0}^k b_i f(t_{j+i}, u_{j+i})\) mit \(b_0, \dotsc ,
+b_k \in \real \) ist, so heißt das zugeho&#x0308;rige \(k\)-MSV <em><span class="dashuline" >linear</span></em>.<br />
+Lineare MSV haben also die Form \(\frac {1}{h} \sum _{i=0}^k a_i u_{j+i} = \sum _{i=0}^k b_i f(t_{j+i}, u_{j+i})\)
+</p>
+
+<p>
+<span
+       class="textcolor"
+       style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Auch MSV lassen sich durch Quadraturformeln herleiten. Die Integralgleichung \(u(t) = u(s) + \int _s^t f(r, u(r))\dr \) mit \(t &gt; s\) und \(t, s \in I\) ist a&#x0308;quivalent zu \(u’(t) =
+f(t, u(t))\), speziell gilt \(u(t_{j+k}) = u(t_{j+k-1}) + \int _{t_{j+k-1}}^{t_{j+k}} f(r, u(r))\dr = u(t_{j+k-1}) + \int _{t_{j+k-1}}^{t_{j+k}} u’(r)\dr \).
+</p>
+
+<p>
+<em>Beispiel</em>: Verwendet man die Trapezregel<br />
+\(u(t_{j+1}) = u(t_j) + \int _{t_j}^{t_{j+1}} f(r, u(r))\dr \approx u(t_j) + \frac {1}{2} h (f(t_j, u(t_j)) + f(t_{j+1}, u(t_{j+1})))\) (also \(k = 1\)), so ergibt sich das <em><span class="dashuline"
+>Trapezverfahren</span></em> \(u_{j+1} := u_j + \frac {1}{2} h (f(t_j, u_j) + f(t_{j+1}, u_{j+1}))\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Eine Idee fu&#x0308;r weitere Verfahren ist eine bessere Approximation der Integralgleichung durch Ersetzung des Integranden \(u’(r)\) durch ein Interpolationspolynom.<br />
+Die Interpolationspolynome \(p_j \in P_{k-1}\), \(j = 0, \dotsc , N - k\) sind eindeutig bestimmt durch die \(k\) Bedingungen \(p_j(t_{j+i}) := u’(t_{j+i}) = f(t_{j+i}, u(t_{j+i}))\) fu&#x0308;r \(i = 0,
+\dotsc , k - 1\). Man erha&#x0308;lt die vera&#x0308;nderte Integralgleichung \(u(t_{j+k}) \approx u(t_{j+k-1}) + \int _{t_{j+k-1}}^{t_{j+k}} p_j(r)\dr \).<br />
+Da man dafu&#x0308;r allerdings die exakte Lo&#x0308;sung \(u\) beno&#x0308;tigt, kann man auch \(\widetilde {p}_j \in P_{k-1}\) verwenden, die analog definiert sind durch \(\widetilde {p}_j(t_{j+i}) :=
+f(t_{j+i}, u_{j+i})\) fu&#x0308;r \(i = 0, \dotsc , k - 1\). Verwendet man \(\widetilde {p}_j\) statt \(p_j\) in der Integralgleichung, so erha&#x0308;lt man ein explizites \(k\)-MSV<br />
+\(\frac {1}{h} (u_{j+k} - u_{j+k-1}) = \psi (h, t_j, \dotsc , t_{j+k}, u_j, \dotsc , u_{j+k-1}) := \frac {1}{h} \int _{t_{j+k-1}}^{t_{j+k}} \widetilde {p}_j(r)\dr \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Beispiel</em>: Ein Beispiel fu&#x0308;r ein so erhaltenes lineares \(4\)-Mehrschrittverfahren mit \(p = 4\) ist<br />
+\(\frac {1}{h} (u_{j+4} - u_{j+3}) = \frac {1}{24} (55 f(t_j, u_j) - 59 f(t_{j+1}, u_{j+1}) + 37 f(t_{j+2}, u_{j+2}) - 9 f(t_{j+3}, u_{j+3}))\).<br />
+Es heißt <em><span class="dashuline" ><span class="textsc" >Adams</span>-<span class="textsc" >Bashforth</span>-Verfahren</span></em> der Stufe \(k = 4\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Bei jedem Zeitschritt ist nur eine neue Auswertung von \(f\) notwendig<br />
+(und zwar in \((t_{j+k-1}, u_{j+k-1})\)).
+</p>
+
+<p>
+<em>Beispiel</em>: Ein implizites Verfahren la&#x0308;sst sich analog konstruieren, nur bezieht man dabei<br />
+\(t_{j+k}, u_{j+k}\) als Stu&#x0308;tzpunkte fu&#x0308;r die Interpolation ein.<br />
+Diese Verfahren heißen <em><span class="dashuline" ><span class="textsc" >Adams</span>-<span class="textsc" >Moulton</span>-Verfahren</span></em>.<br />
+Ein Beispiel fu&#x0308;r \(k = 4\) und \(p = 5\) ist \(\frac {1}{h} (u_{j+4} - u_{j+3})\)<br />
+\(= \frac {1}{720} (251 f(t_{j+4}, u_{j+4}) + 646 f(t_{j+3}, u_{j+3}) - 269 f(t_{j+2}, u_{j+2}) + 106 f(t_{j+1}, u_{j+1}) - 19 f(t_j, u_j)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Bei den sog. <em><span class="dashuline" >Pra&#x0308;diktor-Korrektor-Verfahren</span></em> kombiniert man implizite und explizite Verfahren. Seien also \(\frac {1}{h} \sum _{i=0}^k a_i
+u_{j+i} = \psi _1(h, t_j, \dotsc , t_{j+k}, u_j, \dotsc , u_{j+k-1})\) ein explizites und \(\frac {1}{h} \sum _{i=0}^k \alpha _i u_{j+i} = \psi _2(h, t_j, \dotsc , t_{j+k}, u_j, \dotsc , u_{j+k})\)
+ein implizites \(k\)-MSV.<br />
+Man berechnen nun zuerst den Pra&#x0308;diktor \(u_{j+k}^{(p)}\) mit dem expliziten MSV, d.&#x202f;h.<br />
+\(\frac {1}{h} \sum _{i=0}^{k-1} a_i u_{j+i} + \frac {1}{h} a_k u_{j+k}^{(p)} = \psi _1(h, t_j, \dotsc , t_{j+k}, u_j, \dotsc , u_{j+k-1})\). Anschließend berechnet man \(u_{j+k}\) mit dem impliziten
+Verfahren, also \(\frac {1}{h} \sum _{i=0}^k \alpha _i u_{j+i} = \psi _2(h, t_j, \dotsc , t_{j+k}, u_j, \dotsc , u_{j+k-1}, u_{j+k}^{(p)})\).<br />
+Man muss also keine nicht-linearen Gleichungen lo&#x0308;sen, sondern man verwendet den Pra&#x0308;diktor als Scha&#x0308;tzwert fu&#x0308;r den wahren Wert \(u_{j+k}\).<br />
+Alternativ la&#x0308;sst sich der Pra&#x0308;diktor auch als Startwert fu&#x0308;r eine Fixpunktiteration verwenden, d.&#x202f;h. \(u_{j+k}^{(0)} := u_{j+k}^{(p)}\) und \(\frac {1}{h} \sum _{i=0}^{k-1} \alpha
+_i u_{j+i} + \frac {1}{h} \alpha _k u_{j+k}^{(m+1)} := \psi _2(h, t_j, \dotsc , t_{j+k}, u_j, \dotsc , u_{j+k-1}, u_{j+k}^{(m)})\).
+</p>
+
+
+
+<h3 id="konsistenz-und-konvergenz-von-mehrschrittverfahren">Konsistenz und Konvergenz von Mehrschrittverfahren</h3>
+
+</p>
+
+
+<p>
+<b>Fehler von linearen Mehrschrittverfahren</b>:&#x2003;<br />
+Es sei \(u_h\colon I_h \rightarrow \real ^n\) durch ein lineares \(k\)-MSV gegeben.<br />
+\(e_h := u|_{I_h} - u_h\) ist die <em><span class="dashuline" >globale Fehlerfunktion</span></em>.<br />
+\(\overline {e_h} := \max _{j=0,\dotsc ,N} \norm {e_h(t_j)}\) ist der <em><span class="dashuline" >globale Diskretisierungsfehler</span></em>.<br />
+\(\varepsilon _h(t_{j+k}) := \frac {1}{h} \sum _{i=0}^k a_i u(t_{j+i}) - \sum _{i=0}^k b_i f(t_{j+i}, u(t_{j+i}))\), \(j = 0, \dotsc , N - k,\) ist die <em><span class="dashuline" >lokale
+Fehlerfunkt.</span></em><br />
+\(\overline {\varepsilon _h} := \max _{j=0,\dotsc ,N-k} \norm {\varepsilon _h(t_{j+k})}\) ist der <em><span class="dashuline" >lokale Diskretisierungsfehler</span></em>.
+</p>
+
+<p>
+<em>Bemerkung</em>: Die Koeffizienten \(a_0, \dotsc , a_k, b_0, \dotsc , b_k\) sollten so bestimmt werden, dass<br />
+\(\overline {\varepsilon _h} = \O (h^p)\). Dafu&#x0308;r betrachtet man \(\varepsilon _h(t_{j+k}) = \frac {1}{h} \sum _{i=0}^k a_i u(t_j + ih) - \sum _{i=0}^k b_i u’(t_j + ih)\) und setzt
+fu&#x0308;r \(p_\ell (i) := \frac {1}{\ell !} i^\ell \) die Taylor-Entwicklungen \(u(t_j + ih) = \sum _{\ell =0}^p h^\ell p_\ell (i) u^{(\ell )}(t_j) + \O (h^{p+1})\) bzw.<br />
+\(u’(t_j + ih) = \sum _{\ell =0}^p h^\ell p_\ell (i) u^{(\ell +1)}(t_j) + \O (h^{p+1}) = \sum _{\ell =1}^p h^{\ell -1} p_{\ell -1}(i) u^{(\ell )}(t_j) + \O (h^p)\)<br />
+\(= \sum _{\ell =1}^p h^{\ell -1} p_\ell ’(i) u^{(\ell )}(t_j) + \O (h^p)\) ein. Daraus folgt dann<br />
+\(\varepsilon _h(t_{j+k}) = \frac {1}{h} \sum _{i=0}^k a_i (\sum _{\ell =0}^p h^\ell p_\ell (i) u^{(\ell )}(t_j)) - \sum _{i=0}^k b_i (\sum _{\ell =1}^p h^{\ell -1} p_\ell ’(i) u^{(\ell
+)}(t_j)) + \O (h^p)\)<br />
+\(= \sum _{\ell =0}^p h^{\ell -1} u^{(\ell )}(t_j) (\sum _{i=0}^k a_i p_\ell (i) - \sum _{i=0}^k b_i p_\ell ’(i)) + \O (h^p)\).<br />
+Verschwindet der Ausdruck in Klammern, so hat das Verfahren die Konsistenzordnung \(p\). Das beweist folgenden Satz.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Konsistenz von MSV</span>):</span> Falls die Koeffizienten eines linearen \(k\)-MSV<br />
+\(a_0, \dotsc , a_k, b_0, \dotsc , b_k \in \real \) die Bedingungen \(\sum _{i=0}^k a_i p_\ell (i) = \sum _{i=0}^k b_i p_\ell ’(i)\) fu&#x0308;r \(\ell = 0, \dotsc , p\) erfu&#x0308;llen, so besitzt das
+MSV die Konsistenzordnung \(p\).<br />
+Dabei ist \(p_\ell (i) := \frac {1}{\ell !} i^\ell \) und \(p_\ell ’(i) := p_{\ell -1}(i) = \frac {1}{(\ell - 1)!} i^{\ell - 1}\) fu&#x0308;r \(\ell \ge 1\) bzw. \(p_0’(i) := 0\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Diese Bedingungen entsprechen einem LGS mit \(p + 1\) Gleichungen und \(2(k + 1)\) Unbekannten. Da die Lo&#x0308;sung \(a_0 = \dotsb = a_k = b_0 = \dotsb = b_k = 0\) keinen Sinn ergibt,
+erga&#x0308;nzt man manchmal die Normierungsbedingung \(\sum _{i=0}^k b_i = 1\).<br />
+Damit das Gleichungssystem nicht u&#x0308;berbestimmt ist, soll es ho&#x0308;chstens so viele Gleichungen wie Variablen geben. Mit der Normierungsbedingung ist dann \(p + 2 \le 2(k + 1)\), d.&#x202f;h. die
+Konsistenzordnung \(p\) ist durch \(2k\) nach oben beschra&#x0308;nkt.<br />
+Bei expliziten Verfahren ist \(b_k = 0\), d.&#x202f;h. es gibt eine Variable weniger. Hier ist \(p + 2 \le 2k + 1\), also ist die Konsistenzordnung \(p\) durch \(2k - 1\) nach oben beschra&#x0308;nkt.
+</p>
+
+<p>
+<em>Beispiel</em>: Fu&#x0308;r \(k = 1\) soll \(p = 2\) erreicht werden, d.&#x202f;h. die Gleichungen \(a_0 + a_1 = 0\), \(a_1 = b_0 + b_1\), \(\frac {1}{2} a_1 = b_1\) und \(b_0 + b_1 = 1\) sollen erfu&#x0308;llt
+werden. Daraus folgt \(a_0 = -1\), \(a_1 = 1\), \(b_0 = \frac {1}{2}\) und \(b_1 = \frac {1}{2}\). Man erha&#x0308;lt also die Trapezregel \(\frac {1}{h} (-u_j + u_{j+1}) = \frac {1}{2} f(t_j, u_j) + \frac
+{1}{2} f(t_{j+1}, u_{j+1})\).
+</p>
+
+
+
+<h3 id="stabilitaet-von-mehrschrittverfahren">Stabilität von Mehrschrittverfahren</h3>
+
+</p>
+
+
+<p>
+<b>erzeugende Polynome</b>:&#x2003;<br />
+Sei ein lineares \(k\)-Mehrschrittverfahren \(\frac {1}{h} \sum _{i=0}^k a_i u_{j+i} = \sum _{i=0}^k b_i f(t_{j+i}, u_{j+i})\) gegeben.<br />
+Dann heißen die Polynome \(\varrho (z) := \sum _{i=0}^k a_i z^i\) und \(\sigma (z) := \sum _{i=0}^k b_i z^i\) <em><span class="dashuline" >erzeugende Polynome</span></em> des MSV (\(z \in \complex
+\)).
+</p>
+
+<p>
+<b>alternative Schreibweise von linearen MSV</b>:&#x2003; Sei \(E\) der Vorwa&#x0308;rts-Shift-Operator, d.&#x202f;h. \(E y_j := y_{j+1}\). Dann la&#x0308;sst sich das lineare \(k\)-Mehrschrittverfahren<br />
+\(\frac {1}{h} \sum _{i=0}^k a_i u_{j+i} = \sum _{i=0}^k b_i f(t_{j+i}, u_{j+i})\) auch durch die erzeugenden Polynome in der Form<br />
+\(\frac {1}{h} \varrho (E) u_j = \sigma (E) f_j\) mit \(f_j = f(t_j, u_j)\) schreiben, wobei \(p(E) y_j := \sum _{i=0}^k p_i y_{j+i}\) mit einem Polynom \(p(z) = \sum _{i=0}^k p_i z^i\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Nicht jedes konsistente lineare MSV ist konvergent. Es wird eine zusa&#x0308;tzliche Stabilita&#x0308;tsbedingung beno&#x0308;tigt.
+</p>
+
+<p>
+<em>Beispiel</em>: Ein Beispiel fu&#x0308;r ein instabiles lineares \(2\)-MSV mit Konsistenzordnung \(p = 3\) ist<br />
+\(\frac {1}{h} (u_{i+2} + 4 u_{i+1} - 5 u_i) = 4 f_{i+1} + 2 f_i\). Die erzeugenden Polynome sind dabei \(\varrho (z) = z^2 + 4z - 5\) und \(\sigma (z) = 4z - 2\). Man wendet das MSV auf das triviale
+Anfangswertproblem \(u’ = 0\), \(u(0) = 1\) (d.&#x202f;h. die Lo&#x0308;sung ist \(u(t) \equiv 1\)) an.<br />
+Sei \(u_1 = 1 + \varepsilon h\) leicht gesto&#x0308;rt. Daraus ergibt sich die Drei-Term-Rekursion \(u_{i+2} + 4 u_{i+1} - 5 u_i = 0\) (rechte Seite verschwindet wegen \(f \equiv 0\)) mit den Startwerten \(u_0 = 1\)
+und \(u_1 = 1 + \varepsilon h\).<br />
+Fu&#x0308;r spezielle Lo&#x0308;sungen betrachtet man die Nullstellen \(z_1 = 1\) und \(z_2 = -5\) des erzeugenden Polynoms \(\varrho (z)\). Setzt man \(u_i = z_1^i\) an, so ist \(z_1^{i+2} + 4 z_1^{i+1} - 5
+z_1^i = 0\) genau dann, wenn \(z_1^i \varrho (z_1) = 0\). Wegen \(\varrho (z_1) = 0\) ist \(u_i = z_1^i\) eine spezielle Lo&#x0308;sung der Rekursion, analog \(u_i = z_2^i\).<br />
+Fu&#x0308;r die allgemeine Lo&#x0308;sung setzt man \(u_i = A z_1^i + B z_2^i\) an, also \(u_{i+2} + 4 u_{i+1} - 5 u_i = 0\) genau dann, wenn \(A z_1^i \varrho (z_1) + B z_2^i \varrho (z_2) = 0\). Die
+Parameter \(A\) und \(B\) ergeben sich aus den Startbedingungen \(1 = u_0 = A z_1^0 + B z_2^0 = A + B\) und \(1 + \varepsilon h = u_1 = A z_1^1 + B z_2^1 = A - 5B\).<br />
+Daraus ergibt sich \(A = 1 + \frac {\varepsilon h}{6}\) und \(B = -\frac {\varepsilon h}{6}\). Somit ist die allgemeine Lo&#x0308;sung der Rekursion<br />
+\(u_i = A z_1^i + B z_2^i = 1 + \frac {\varepsilon h}{6} - \frac {\varepsilon h}{6} \cdot (-5)^i\). Fu&#x0308;r den Fall \(\varepsilon = 0\) kommt die exakte Lo&#x0308;sung heraus. Ist allerdings \(u_1\)
+leicht gesto&#x0308;rt (\(\varepsilon &gt; 0\)), so wird der Fehler durch den Faktor \((-5)^i\) versta&#x0308;rkt, d.&#x202f;h. das MSV ist instabil.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Die Vorgehensweise la&#x0308;sst sich auf allgemeine \(k\)-MSV verallgemeinern. Durch Anwendung der Testgleichung \(u’ = 0\), \(u(0) = 1\) erha&#x0308;lt man die <em><span class="dashuline"
+>homogene Rekursion</span></em> bzw. Differenzengleichung \(a_0 u_j + \dotsb + a_k u_{j+k} = 0\) fu&#x0308;r \(j = 0, \dotsc , N - k\) mit Startwerten \(u_0, \dotsc , u_{k-1}\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Lo&#x0308;sungen der homogenen Rekursion</span>):</span> Sei \(\lambda \in \complex \) eine \(m\)-fache Nullstelle des erzeugenden Polynoms
+\(\varrho (z)\), d.&#x202f;h. \(\varrho (\lambda ) = \varrho ’(\lambda ) = \dotsb = \varrho ^{(m-1)}(\lambda ) = 0\). Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f19"><p>\(u_i^{(1)} := \lambda ^i\),&#x2003;&#x2003;\(u_i^{(2)} := i \lambda ^{i-1}\),&#x2003;&#x2003;&#x2026;,&#x2003;&#x2003;\(u_i^{(m)} := D^{m-1} \lambda ^i = i (i - 1) \dotsm (i - m
++ 2) \lambda ^{i-m+1}\)<br />
+sind spezielle Lo&#x0308;sungen der homogenen Rekursion.
+</p>
+</li>
+<li class="list-item-f20"><p>Die allgemeine Lo&#x0308;sung der homogenen Rekursion ist eine Linearkombination der insgesamt \(k\) speziellen Lo&#x0308;sungen aus (<em>i</em>).<br />
+(Fu&#x0308;r jede Nullstelle \(\lambda \) von \(\varrho (z)\) erha&#x0308;lt man entsprechend der Vielfachheit viele spezielle Lo&#x0308;sungen, d.&#x202f;h. insgesamt \(\text {Grad}(\varrho ) = k\) viele
+Lo&#x0308;sungen.)
+</p>
+</li>
+</ul>
+
+<p>
+<em>Bemerkung</em>: Sei \(\lambda \) eine Nullstelle von \(\varrho (z)\). Dann gilt fu&#x0308;r \(|\lambda | &gt; 1\), dass \(\{u_i\} = \{\lambda ^i\}\) exponentiell wa&#x0308;chst, und fu&#x0308;r \(|\lambda |
+&lt; 1\), dass \(\{u_i\} = \{\lambda ^i\}\) exponentiell fa&#x0308;llt.<br />
+Fu&#x0308;r \(|\lambda | = 1\) und Vielfachheit \(\ell \) von \(\lambda \) ist \(|u_i^{(1)}| = |\lambda |^i = 1\) und \(u_i^{(\ell )} = i (i - 1) \dotsm (i - \ell + 2) \lambda ^{i - \ell + 1}\)
+wa&#x0308;chst polynomial fu&#x0308;r \(\ell \ge 2\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>stabil</b>:&#x2003; Ein \(k\)-Mehrschrittverfahren heißt <em><span class="dashuline" >stabil</span></em>, falls alle Nullstellen des Polynoms \(\varrho (z)\) im abgeschlossenen Einheitskreis liegen und diejenigen auf
+dem Rand nur einfach sind, d.&#x202f;h.<br />
+\(\varrho (\lambda ) = 0 \;\Rightarrow \; |\lambda | \le 1\) und \((\varrho (\lambda ) = 0 \land |\lambda | = 1) \;\Rightarrow \; \varrho ’(\lambda ) \not = 0\).<br />
+Wegen der Testgleichung \(u’ = 0\) spricht man auch von <em><span class="dashuline" >Nullstabilita&#x0308;t</span></em> oder <em><span class="dashuline" >\(D\)-Stabilita&#x0308;t</span></em> (nach <span
+class="textsc" >Dahlquist</span>).
+</p>
+
+<p>
+<b>stark/schwach stabil</b>:&#x2003; Das \(k\)-MSV heißt <em><span class="dashuline" >stark stabil</span></em>, falls fu&#x0308;r alle Nullstellen außer \(\lambda = 1\) gilt, dass \(|\lambda | &lt; 1\). Ansonsten
+heißt das \(k\)-MSV <em><span class="dashuline" >schwach stabil</span></em>.
+</p>
+
+<p>
+<em>Bemerkung</em>:<br />
+Bei konsistenten \(k\)-MSV ist \(\lambda = 1\) immer eine Nullstelle von \(\varrho (z)\), denn \(\varrho (1) = \sum _{i=0}^k a_i = 0\).<br />
+Die <em><span class="dashuline" >Adams-Verfahren</span></em> (Adams-Bashforth und Adams-Moulton) sind stark stabil, denn hier ist \(a_k = 1\), \(a_{k-1} = -1\) und \(a_{k-2} = \dotsb = a_0 = 0\), d.&#x202f;h.
+\(\varrho (z) = z^k - z^{k-1} = z^{k-1} \cdot (z - 1)\).<br />
+\(\lambda = 1\) ist einfache Nullstelle, wa&#x0308;hrend \(\lambda = 0\) eine \((k - 1)\)-fache Nullstelle ist.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Dahlquist</span>-Barriere – maximale Konvergenzordnung stabiler linearer MSV</span>):</span><br />
+Ein lineares \(k\)-Mehrschrittverfahren \(\frac {1}{h} \sum _{i=0}^k a_i u_{j+i} = \sum _{i=0}^k b_i f(t_{j+i}, u_{j+i})\), das obige Stabilita&#x0308;tsbedingung erfu&#x0308;llt, hat maximal die
+Konvergenzordnung
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f21"><p>\(k + 2\) fu&#x0308;r \(k\) gerade,
+</p>
+</li>
+<li class="list-item-f22"><p>\(k + 1\) fu&#x0308;r \(k\) ungerade und
+</p>
+</li>
+<li class="list-item-f23"><p>\(k\) fu&#x0308;r \(\frac {b_k}{a_k} \le 0\) (insbesondere fu&#x0308;r explizite Verfahren).
+</p>
+</li>
+</ul>
+
+<p>
+Die Ordnung \(k + 2\) kann nur erzielt werden, wenn alle Nullstellen von \(\varrho (z)\) auf dem Rand des Einheitskreises liegen.
+</p>
+
+<p>
+<em>Beispiel</em>: Fu&#x0308;r \(k = 1\) wird die maximale Konvergenzordnung \(p = 2\) von der Trapezformel erreicht. Fu&#x0308;r \(k = 2\) wird die maximale Konvergenzordnung \(p = 4\) vom <em><span
+class="dashuline" ><span class="textsc" >Milne</span>-<span class="textsc" >Simpson</span>-Verfahren</span></em> \(u_{i+1} = u_{i-1} + \frac {h}{3} (f_{i-1} + 4 f_i + f_{i+1})\) erreicht (schwach
+stabil).<br />
+Das Adams-Bashforth-Verfahren (\(k = 4\)) ist explizit und erreicht daher nur die Konvergenzordnung \(p = 4\). Das Adams-Moulton-Verfahren ist stark stabil (kann nicht Ordnung \(k + 2\) erreichen) und erreicht die
+Konvergenzordnung \(5 = k + 1\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Konvergenz von MSV</span>):</span> Falls ein lineares MSV die Konsistenzordnung \(p\) hat und obige Stabilita&#x0308;tsbedingung erfu&#x0308;llt, so ist
+es auch konvergent mit Ordnung \(p\).
+</p>
+
+
+
+<h2 id="adaptive-schrittweitensteuerung">Adaptive Schrittweitensteuerung</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Sei ein Einzelschrittverfahren zur Lo&#x0308;sung des Anfangswertproblems (AWP) gegeben. Fu&#x0308;r ein gegebenes Gitter \(I_h\) sei \(T(I_h)\) der numerische Aufwand zur Lo&#x0308;sung des
+ESV auf \(I_h\) (Rechenzeit). Außerdem sei \(\TOL \) eine gegebene Fehlertoleranz.<br />
+Die Aufgabe ist nun, ein Gitter \(I_h^\opt \) zu finden mit \(\overline {e_h} \le \TOL \) und \(T(I_h^\opt ) \le T(I_h)\) fu&#x0308;r alle Gitter \(I_h\) mit \(\overline {e_h} \le \TOL \).<br />
+Man weiß nicht, ob \(I_h^\opt \) u&#x0308;berhaupt existiert oder ob es eindeutig ist. Durch die sog. <em><span class="dashuline" >adaptive Schrittweitensteuerung</span></em> versucht man, eine mo&#x0308;glichst gute
+Approximation von \(I_h^\opt \) zu finden.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Fehlerentwicklung</span>):</span> Seien \(u \in \C ^{p+2}(I, \real ^n)\) eine Lo&#x0308;sung von (AWP) und \(I_h\) ein Gitter. Außerdem sei ein
+stabiles ESV mit Inkrementfunktion \(\phi \in \C ^{p+1}(I^2 \times \real ^n, \real ^n)\), \(u_h(0) = u_0\) und Konsistenzordnung \(p\) gegeben.<br />
+Dann existiert eine Funktion \(e_0 \in \C ^2(I, \real ^n)\) mit \(e_0(0) = 0\) und<br />
+\(\norm {u_h - (u - h^p e_0)|_{I_h}}_\infty = \O (h^{p+1})\).<br />
+Es gibt zusa&#x0308;tzlich eine Funktion \(e_1 \in \C ^3(I, \real ^n)\) mit \(e_1(0) = 0\) und<br />
+\(\norm {u_h - (u - h^p e_0 - h^{p+1} e_1)|_{I_h}}_\infty = \O (h^{p+2})\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Fu&#x0308;hrt man fu&#x0308;r ein festes \(t \in I_h\) das Hilfsproblem \(v’(s) = f(s, v(s))\) fu&#x0308;r \(s &gt; t\) und \(v(t) = u_h(t)\) ein, so gilt \(u_h(t + h) - v(t + h) = h^p
+e_0(t + h) + h^{p+1} e_1(t + h) + \O (h^{p+2}) = h^p (e_0(t) + h e_0’(t)) + h^{p+1} (e_1(t) + h e_1’(t)) + \O (h^{p+2}) = h^{p+1} e_0’(t) + \O (h^{p+2})\) wegen \(e_0(t) = e_1(t) = 0\). Analog
+gilt \(u_{h/2}(t + h) - v(t + h) = \left (\frac {h}{2}\right )^p h e_0’(t) + \O (h^{p+2})\).<br />
+Somit ist \(u_h(t + h) - u_{h/2}(t + h) = \left (h^{p+1} - \left (\frac {h}{2}\right )^p h\right ) e_0’(t) + \O (h^{p+2})\),<br />
+d.&#x202f;h. \(h e_0’(t) = \frac {1}{2^p - 1} \left (\frac {h}{2}\right )^{-p} (u_h(t + h) - u_{h/2}(t + h)) + \O (h^2)\).<br />
+Man erha&#x0308;lt also fu&#x0308;r den Fehler der halben Gitterweite die Formel<br />
+\(u_{h/2}(t + h) - v(t + h) = \Delta _h + \O (h^{p+2})\) mit \(\Delta _h := \frac {1}{2^p - 1} (u_h(t + h) - u_{h/2}(t + h))\) einem <em><span class="dashuline" >Fehlerscha&#x0308;tzer</span></em>,
+der nur aus berechenbaren Gro&#x0308;ßen besteht. Man definiert nun den <em><span class="dashuline" >relativen Fehlerscha&#x0308;tzer</span></em> \(\widetilde {\Delta }_h := \frac {\Delta h}{\max \{1,
+\norm {u_h}\}}\) und kann daraus einen selbstadaptiven Algorithmus erstellen.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>selbstadaptiver Algorithmus mit \((h, h/2)\)-Gittersteuerung</b>:&#x2003;<br />
+Startschrittweite \(h_0 \in [0, T]\),&#x2003;&#x2003;minimale und maximale Schrittweite \(h_{\min } &lt; h_0 &lt; h_{\max }\),<br />
+Fehlertoleranz \(\TOL &gt; 0\),&#x2003;&#x2003;Verkleinerungs-/Vergro&#x0308;ßerungsfaktoren \(k_{\min } &lt; 1\) und \(k_{\max } &gt; 1\),<br />
+Verfahrensordnung \(p \in \natural \)
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                        t := 0;    u := u(0);        h := h0 ;
+                                                                                        while (t < T ) {
+                                                                                                e h | := TOL + 1;
+                                                                                               |∆
+                                                                                                       e h | > TOL) {
+                                                                                               while (|∆
+                                                                                                    v := u + h · φ(h, t, u);
+                                                                                                    z := u + h/2 · φ(h/2, t, u);
+                                                                                                    w := z + h/2 · φ(h/2, t + h/2, z);
+                                                                                                             1        |v − w|
+                                                                                                    |∆
+                                                                                                     e h | :=      ·           ;
+                                                                                                                2p
+                                                                                                              − 1 max{1, u}
+                                                                                                    h := max{hmin , kmin · h};
+                                                                                                    if h = hmin { return; }
+                                                                                               }
+                                                                                               u := w;    h := min{hmax , kmax · h};   t := t + h;
+                                                                                        }
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+&amp;t := 0;\quad u := u(0);\quad h := h_0;\\ &amp;\mathbf {while}\; (t &lt; T)\; \{\\ &amp;\qquad |\widetilde {\Delta }_h| := \TOL + 1;\;\\ &amp;\qquad \mathbf {while}\; (|\widetilde {\Delta
+}_h| &gt; \TOL )\; \{\\ &amp;\qquad \qquad v := u + h \cdot \phi (h, t, u);\\ &amp;\qquad \qquad z := u + h/2 \cdot \phi (h/2, t, u);\\ &amp;\qquad \qquad w := z + h/2 \cdot \phi (h/2, t +
+h/2, z);\\ &amp;\qquad \qquad |\widetilde {\Delta }_h| := \frac {1}{2^p - 1} \cdot \frac {|v - w|}{\max \{1, u\}};\\ &amp;\qquad \qquad h := \max \{h_{\min }, k_{\min } \cdot h\};\\
+&amp;\qquad \qquad \mathbf {if}\; h = h_{\min }\; \{\; \mathbf {return}; \}\\ &amp;\qquad \}\\ &amp;\qquad u := w;\quad h := \min \{h_{\max }, k_{\max } \cdot h\};\quad t := t + h;\\ &amp;\}
+\end{align*}
+
+</p>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

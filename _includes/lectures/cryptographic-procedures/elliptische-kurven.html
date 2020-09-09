@@ -1,0 +1,1871 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\newcommand {\BB }{\mathbb {B}}\)
+
+\(\newcommand {\EE }{\mathbb {E}}\)
+
+\(\newcommand {\FF }{\mathbb {F}}\)
+
+\(\newcommand {\KK }{\mathbb {K}}\)
+
+\(\newcommand {\PP }{\mathbb {P}}\)
+
+\(\renewcommand {\O }{\mathcal {O}}\)
+
+\(\newcommand {\weakO }{\widetilde {\mathcal {O}}}\)
+
+\(\newcommand {\teilt }{\mid }\)
+
+\(\newcommand {\notteilt }{\nmid }\)
+
+\(\newcommand {\ggT }{\operatorname {ggT}}\)
+
+\(\newcommand {\Char }{\operatorname {char}}\)
+
+\(\newcommand {\Rang }{\operatorname {Rang}}\)
+
+\(\newcommand {\ZkZ }{\integer /k\integer }\)
+
+\(\newcommand {\ZmZ }{\integer /m\integer }\)
+
+\(\newcommand {\ZnZ }{\integer /n\integer }\)
+
+\(\newcommand {\ZpZ }{\integer /p\integer }\)
+
+\(\newcommand {\ZqZ }{\integer /q\integer }\)
+
+\(\newcommand {\iu }{\mathrm {i}}\)
+
+\(\newcommand {\xor }{\oplus }\)
+
+\(\newcommand {\bigxor }{\bigoplus }\)
+
+\(\newcommand {\IP }{\operatorname {IP}}\)
+
+\(\newcommand {\PC }{\operatorname {PC}}\)
+
+\(\newcommand {\DES }{\operatorname {DES}}\)
+
+\(\newcommand {\smallbullet }{{\scriptstyle \bullet }}\)
+
+\(\newcommand {\ord }{\operatorname {ord}}\)
+
+\(\newcommand {\erzeugnis }[1]{\langle #1\rangle }\)
+
+\(\newcommand {\true }{\texttt {true}}\)
+
+\(\newcommand {\false }{\texttt {false}}\)
+
+\(\renewcommand {\div }{\operatorname {div}}\)
+
+\(\newcommand {\Pic }{\operatorname {Pic}}\)
+
+\(\newcommand {\code }[1]{\texttt {#1}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f9::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f10::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f11::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f12::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f13::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f14::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f15::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f16::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f17::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f18::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f19::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f20::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f21::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f22::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f23::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f24::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f25::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f26::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f27::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+</style>
+<p>
+Im Folgenden ist \(K\) ein Ko&#x0308;rper und \(k\) der algebraische Abschluss von \(K\). Insbesondere ist \(k\) unendlich und jedes Polynom in \(K[X]\) hat in \(k\) eine Nullstelle (fu&#x0308;r \(K = \real \) ist \(k =
+\complex \)). Dabei sei \(\Char (K) \not = 2\), d.&#x202f;h. \(2 \not = 0\) in \(K\).
+</p>
+
+<p>
+Seien \(A, B \in K\), sodass \(s(X) := X^3 + AX + B \in K[X]\) drei verschiedene Nullstellen in \(k\) besitzt, d.&#x202f;h. \(s(X) = (X - a_1)(X - a_2)(X - a_3)\), wobei \(a_1, a_2, a_3 \in k\) mit \(a_i \not =
+a_j\) fu&#x0308;r \(i \not = j\) (gilt genau dann, wenn \(4A^3 + 27B^2 \not = 0\)).
+</p>
+
+<p>
+<b>elliptische Kurve</b>: Eine <em><span class="dashuline" >elliptische Kurve</span></em> u&#x0308;ber \(K\) ist \(E(K) := \{(a, b) \in K^2 \;|\; b^2 = s(a)\}\), wobei \(s(X) := X^3 + AX + B \in K[X]\) mit
+\(A, B \in K\), sodass \(4A^3 + 27B^2 \not = 0\).
+</p>
+
+<p>
+\(E(k)\) entha&#x0308;lt stets unendlich viele Punkte (fu&#x0308;r jedes \(a \in k\) kann man die Wurzel aus \(a^3 + Aa + B\) ziehen). Ist \(K = \FF _q\) ein endlicher Ko&#x0308;rper, dann gilt \(|E(\FF _q)| \le 2q\)
+(fu&#x0308;r jedes \(a \in K\) gibt es ho&#x0308;chstens zwei Wurzeln \(b \in K\) aus \(a^3 + Aa + B\)). Nach dem Satz von Hasse gilt fu&#x0308;r \(q\) ungerade sogar \(q - 2\sqrt {q} \le |E(\FF _q)| \le q +
+2\sqrt {q}\) („Erwartungswert \(\pm \) Standardabweichung“).
+</p>
+
+
+
+<h2 id="schnitte-von-elliptischen-kurven-mit-geraden">Schnitte von elliptischen Kurven mit Geraden</h2>
+
+</p>
+
+
+<p>
+Im Folgenden sei \(E := E(k) \cup \{\O \}\) fu&#x0308;r einen zusa&#x0308;tzlichen Punkt \(\O \), dem <em><span class="dashuline" >Fernpunkt</span></em>. Gesucht wird eine Mo&#x0308;glichkeit, \(E\) zur
+Gruppe zu machen.
+</p>
+
+<p>
+Fu&#x0308;r \(P = (a, b) \in k^2\) sei \(\overline {P} := (a, -b)\) und es sei \(\overline {\O } := \O \).
+</p>
+
+<p>
+<b>Gerade</b>: Eine <em><span class="dashuline" >Gerade</span></em> \(L\) in \(k^2 \cup \{\O \}\) ist gegeben durch \(L := \{(x, y) \in k^2 \;|\; x = a\} \cup \{\O \}\) fu&#x0308;r ein \(a \in k\)
+(<em><span class="dashuline" >Senkrechte</span></em>) oder \(L := \{(x, y) \in k^2 \;|\; y = \alpha x + \beta \}\) (<em><span class="dashuline" >Nicht-Senkrechte</span></em>).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>\(L \cap E\) fu&#x0308;r \(L\) Senkrechte</b>: Ist \(L\) durch \(x = a\) gegeben, dann sei \(b \in k\) mit \(b^2 = a^3 + Aa + B\). Damit gilt \(P, \overline {P}, \O \in L \cap E\) fu&#x0308;r \(P := (a,
+b)\). Fu&#x0308;r \(b = 0\) gilt \(P = \overline {P}\) und dieser Punkt erscheint doppelt im Schnitt \(L \cap E\). (Sonst gibt es keine Punkte im Schnitt.)
+</p>
+
+<p>
+<b>\(L \cap E\) fu&#x0308;r \(L\) Nicht-Senkrechte</b>: Ist \(L\) durch \(x = \alpha x + \beta \) gegeben, dann gilt fu&#x0308;r jeden Punkt \(P = (a, b) \in L \cap E\) im Schnitt, dass \(a\) eine Nullstelle von
+\(t(X) := s(X) - (\alpha X + \beta )^2\) ist. Dieses Polynom hat Grad 3, d.&#x202f;h. es gibt drei Nullstellen \(x_1, x_2, x_3 \in k\) von \(t(X)\) in \(k\) (nicht notwendigerweise verschieden). Mit \(y_i := \alpha
+x_i + \beta \) gilt dann \(L \cap E = \{(x_i, y_i) \;|\; i = 1, 2, 3\}\). Damit besteht \(L \cap E\) auch in diesem Fall aus genau drei Punkten (mit Vielfachheiten).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Berechnung des dritten Punkts auf einer Geraden</b>:<br />
+Angenommen, es sind zwei Punkte \(P_1, P_2 \in E\) gegeben. Dann la&#x0308;sst sich auf eindeutige Weise ein dritter Punkt \(P_3 \in E\) bestimmen, sodass alle drei Punkte kollinear sind.
+</p>
+
+<p>
+Ist \(P_1 = \O \) oder \(P_2 = \O \), dann ist \(P_3 := \overline {P_2}\) bzw. \(P_3 := \overline {P_1}\). Seien also \(P_1, P_2 \not = \O \). Liegen \(P_1, P_2\) auf einer Senkrechten (d.&#x202f;h. \(P_2 =
+\overline {P_1}\)) und gilt \(P_1 \not = P_2\), dann ist \(P_3 := \O \). Im Folgenden liegen also \(P_1, P_2\) auf keiner Senkrechten (außer fu&#x0308;r \(P_1 = P_2\)) und \(P_3 \not = \O \).
+</p>
+
+<p>
+Seien \(P_i =: (x_i, y_i)\) fu&#x0308;r \(i = 1, 2, 3\) und \(L\colon y = \alpha x + \beta \) die Gerade mit \(P_1, P_2 \in L \cap E\). Dann ist \(s(X) - (\alpha X + \beta )^2 = t(X) = (X - x_1) (X -
+x_2) (X - x_3)\). Koeffizientenvergleich fu&#x0308;r \(X^2\) liefert \(\alpha ^2 = x_1 + x_2 + x_3\). Damit liefert \(x_3 := \alpha ^2 - x_1 - x_2\) und \(y_3 := \alpha x_3 + \beta \) den dritten Punkt auf \(L
+\cap E\). Allerdings ist \(L\) unbekannt. \(\beta \) kann man mit \(\alpha \) bestimmen durch \(\beta := y_1 - \alpha x_1\).
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p>Fu&#x0308;r \(x_1 \not = x_2\) la&#x0308;sst sich \(\alpha \) bestimmen durch \(\alpha := \frac {y_2 - y_1}{x_2 - x_1}\).
+</p>
+</li>
+<li class="list-item-f1"><p>Fu&#x0308;r \(x_1 = x_2\) ist \(x_1\) eine doppelte Nullstelle von \(t(X)\), d.&#x202f;h. \(0 = t’(x_1) = 3x_1^2 + A - 2\alpha y_1\). Es gilt \(y_1 \not = 0\) (sonst \(x_1\) doppelte Nullstelle von \(s(X)\)) und \(2
+\not = 0\), daher folgt \(\alpha := \frac {3x_1^2 + A}{2y_1}\).
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="gruppenstruktur">Gruppenstruktur</h2>
+Obige Rechnungen kann man auch fu&#x0308;r \(K\) statt \(k\) und \(E(K) \cup \{\O \}\) statt \(E\) durchfu&#x0308;hren. Dann gilt nicht notwendigerweise \(x_1, x_2, x_3 \in K\) fu&#x0308;r die Nullstellen von
+\(t(X)\), d.&#x202f;h. Geraden ko&#x0308;nnen jetzt auch (mit Vielfachheiten) weniger als drei Schnittpunkte mit \(E(K) \cup \{\O \}\) haben. Es gilt aber, dass der oben berechnete dritte Punkt \(P_3\) in \(E(K) \cup \{\O
+\}\) liegt, wenn \(P_1\) und \(P_2\) bereits in \(E(K) \cup \{\O \}\) liegen. Damit kann man eine Addition auf dieser Menge definieren. Die Idee dabei ist, dass \(P + Q + R = \O \) fu&#x0308;r drei kollineare Punkte \(P, Q,
+R \in E(K) \cup \{\O \}\) gelten soll.
+</p>
+
+<p>
+<b>Gruppenstruktur auf \(E(K) \cup \{\O \}\)</b>: Fu&#x0308;r \(P_1, P_2 \in E(K) \cup \{\O \}\) sei \(P_1 + P_2 := \overline {P_3}\) mit<br />
+\(P_3 \in E(K) \cup \{\O \}\) dem oben bestimmten dritten Punkt, sodass \(P_1, P_2, P_3\) kollinear sind.
+</p>
+
+<p>
+<b>Eigenschaften</b>: \(E(K) \cup \{\O \}\) ist eine abelsche Gruppe, d.&#x202f;h. es gelten folgende Eigenschaften.
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f2"><p>  \(P + Q = Q + P\) (<em><span class="dashuline" >Kommutativita&#x0308;t</span></em>)
+</p>
+</li>
+<li class="list-item-f3"><p>  \(P + \O = P\) (<em><span class="dashuline" >neutrales Element</span></em>)
+</p>
+</li>
+<li class="list-item-f4"><p>  \(-P = \overline {P}\) (<em><span class="dashuline" >inverse Elemente</span></em>)
+</p>
+</li>
+<li class="list-item-f5"><p>  \((P + Q) + R = P + (Q + R)\) (<em><span class="dashuline" >Assoziativita&#x0308;t</span></em>)
+</p>
+</li>
+</ul>
+
+<p>
+Die letzte Eigenschaft ist schwierig zu beweisen, hier wird sie mithilfe von Polynomen u&#x0308;ber elliptischen Kurven gezeigt.
+</p>
+
+
+
+<h2 id="polynome-ueber-elliptischen-kurven">Polynome über elliptischen Kurven</h2>
+
+</p>
+
+
+<p>
+<b>Polynomring u&#x0308;ber \(E(k)\)</b>: \(k[x, y] := k[X, Y]/\erzeugnis {Y^2 = s(X)}\) heißt <em><span class="dashuline" >Polynomring u&#x0308;ber \(E(k)\)</span></em>.
+</p>
+
+<p>
+Wertet man Polynome in \(k[x, y]\) und \(K[X, Y]\) nur in Punkten auf \(E(k)\) aus, so verhalten sich diese beiden Ringe gleich. Fu&#x0308;r \((a, b) \in E\) und \(f \in k[x, y]\) ist \(f(a, b) \in k\) wohldefiniert.
+</p>
+
+<p>
+Es ist nicht einfach, einen Gradbegriff fu&#x0308;r \(k[x, y]\) zu definieren (\(y^2 = s(x)\) ha&#x0308;tte in \(k[x, y]\) sowohl Grad 2 als auch Grad 3). Außerdem sind Nullstellen von Polynomen in \(k[x, y]\) unklar (\(x
++ y - a\) hat \((a, 0)\) als Nullstelle, aber weder \(x - a\) noch \(y\) lassen sich herausfaktorisieren).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+Sei \(k[x]\) das Bild von \(k[X]\) unter dem kanonischen Homomorphismus \(\pi \colon k[X, Y] \to k[x, y]\). (Beachte: Es gilt \((y^3 - y^2)(y + 1) \in k[x]\), was man dem Polynom nicht sofort ansieht.)
+</p>
+
+<p>
+Fu&#x0308;r \(f \in k[x, y]\) existieren \(v(x), w(x) \in k[x]\) mit \(f(x, y) = v(x) + y \cdot w(x)\) (sukzessives Ersetzen von \(y^2\) durch \(s(x)\)). Nun wird gezeigt, dass diese Darstellung eindeutig ist.
+</p>
+
+<p>
+<b>Lemma</b>: Sei \(f(x, y) \in k[x, y] \setminus \{0\}\). Dann hat \(f\) nur endlich viele Nullstellen auf \(E(k)\).
+</p>
+
+<p>
+<b>Beweis</b>: Wa&#x0308;hle \(v(x), w(x) \in k[x]\) mit \(f(x, y) = v(x) + y \cdot w(x)\) und definiere das Polynom \(g(x, y) := f(x, y) \cdot (v(x) - y \cdot w(x)) \in k[x, y]\). Dann gilt \(g(x, y) =
+v^2(x) - s(x) w^2(x) \in k[x]\). Angenommen, es gilt \(f(a, b) = 0\) fu&#x0308;r unendlich viele \((a, b) \in E(k)\). Dann haben diese Punkte unendlich viele verschiedene \(x\)-Koordinaten \(a\), d.&#x202f;h. \(g\)
+hat unendlich viele Nullstellen in \(k\), also \(g = 0\). Wegen \(\deg (v^2), \deg (w^2)\) gerade und \(\deg (s) = 3\) ungerade folgt \(v = w = 0\). &#x2003;&#x2003;
+</p>
+
+<p>
+<b>Lemma</b>: Die Darstellung \(f(x, y) = v(x) + y \cdot w(x)\) ist eindeutig.
+</p>
+
+<p>
+<b>Beweis</b>: Sei \(f(x, y) = v(x) + y \cdot w(x) = \widetilde {v}(x) + y \cdot \widetilde {w}(x)\). Dann gilt \(g(a, b) = 0\) fu&#x0308;r alle \((a, b) \in E(k)\) mit \(g(x, y) := (v(x) - \widetilde
+{v}(x)) + y \cdot (w(x) - \widetilde {w}(x))\), d.&#x202f;h. \(g\) hat unendlich viele Nullstellen auf \(E(k)\). Nach dem Lemma von eben folgt \(g = 0\) und damit \(v = \widetilde {v}\) sowie \(w = \widetilde
+{w}\). &#x2003;&#x2003;
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Konjugat</b>: Sei \(f(x, y) \in k[x, y]\) mit \(f(x, y) = v(x) + y \cdot w(x)\).<br />
+Dann ist \(\overline {f}(x, y) := v(x) - y \cdot w(x) \in k[x, y]\) <em><span class="dashuline" >Konjugat</span></em> von \(f\).
+</p>
+
+<p>
+<b>Norm</b>: Sei \(f(x, y) \in k[x, y]\). Dann heißt \(N(f) := f \cdot \overline {f} \in k[x]\) <em><span class="dashuline" >Norm</span></em> von \(f\).
+</p>
+
+<p>
+Beispielsweise gelten \(N(x) = x^2\) und \(N(y) = -y^2 = -s(x)\).
+</p>
+
+<p>
+<b>Eigenschaften der Norm</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f6"><p>  \(N(f) = v^2(x) - s(x) w^2(x)\) fu&#x0308;r \(f(x, y) = v(x) + y \cdot w(x)\)
+</p>
+</li>
+<li class="list-item-f7"><p>  \(N(f \cdot g) = N(f) \cdot N(g)\)
+</p>
+</li>
+<li class="list-item-f8"><p>  \(N(f) = 0 \iff f = 0\)
+</p>
+</li>
+<li class="list-item-f9"><p>  \(\deg _x(N(f)) = \max \{2\deg _x(v(x)), 3 + 2\deg _x(w(x))\}\)
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Grad</b>: Sei \(f(x, y) \in k[x, y]\). Dann heißt \(\deg (f) := \deg _x(N(f))\) <em><span class="dashuline" >Grad</span></em> von \(f\) (mit \(\deg (0) := -\infty \)).
+</p>
+
+<p>
+<b>Eigenschaften des Grades</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f10"><p>\(\deg (f) \in \{-\infty , 0, 2, 3, 4, \dotsc \}\)
+</p>
+</li>
+<li class="list-item-f11"><p>\(\deg \colon k[x, y] \xrightarrow {N} k[x] \xrightarrow {\deg _x} \{-\infty \} \cup \natural \) mit \(N\) und \(\deg _x\) Monoidhomomorphismen<br />
+(\(k[x, y]\) und \(k[x]\) multiplikativ, \(\{-\infty \} \cup \natural \) additiv)
+</p>
+</li>
+<li class="list-item-f12"><p>\(\deg (f \cdot g) = \deg (f) + \deg (g)\)
+</p>
+</li>
+</ul>
+
+<p>
+\(k[x, y]\) ist nullteilerfrei (fu&#x0308;r \(f \cdot g = 0\) folgt \(N(f) \cdot N(g) = 0\), d.&#x202f;h. \(N(f) = 0\) oder \(N(g) = 0\) bzw. \(f = 0\) oder \(g = 0\)), d.&#x202f;h. der Quotientenko&#x0308;rper
+\(k(x, y)\) von \(k[x, y]\) existiert.
+
+
+
+<h2 id="ordnung-von-nullstellen">Ordnung von Nullstellen</h2>
+Ist \(P = (a, b) \in E(k)\), dann gilt \(a \in \{a_1, a_2, a_3\}\) genau dann, wenn \(b = 0\)<br />
+(weil \(a \in \{a_1, a_2, a_3\} \iff b^2 = s(a) = 0 \iff b = 0\)).
+</p>
+
+<p>
+<b>Satz</b>: Seien \(f \in k[x, y] \setminus \{0\}\) und \(P = (a, b) \in E(k)\).<br />
+Dann gibt es genau ein \(d \in \natural _0\), sodass \(g, h \in k[x, y]\) existieren mit \(g(P) \not = 0 \not = h(P)\) sowie
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f13"><p>\(fg = (x - a)^d h\) fu&#x0308;r \(a \notin \{a_1, a_2, a_3\}\) und
+</p>
+</li>
+<li class="list-item-f14"><p>\(fg = y^d h\) fu&#x0308;r \(a \in \{a_1, a_2, a_3\}\).
+</p>
+</li>
+</ul>
+
+<p>
+<b>Beweis</b>: Zuna&#x0308;chst wird die Eindeutigkeit bewiesen.
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f15"><p>Sei \(a \notin \{a_1, a_2, a_3\}\). Angenommen, es gilt \(fg = (x - a)^d h\) und \(f\widetilde {g} = (x - a)^e \widetilde {h}\) mit \(d &gt; e \ge 0\). Dann ist \((x - a)^d \widetilde {g} h =
+fg\widetilde {g} = (x - a)^e \widetilde {h} g \iff (x - a)^e ((x - a)^{d-e} \widetilde {g} h - \widetilde {h} g) = 0\). \(k[x, y]\) ist nullteilerfrei, also folgt \((x - a)^{d-e} \widetilde {g} h =
+\widetilde {h} g\). Setzt man \((x, y) = P\) ein, so erha&#x0308;lt man wegen \(d - e &gt; 0\) die Gleichung \(\widetilde {h}(P) g(P) = 0\), ein Widerspruch zu \(g(P) \not = 0 \not = \widetilde {h}(P)\).
+</p>
+</li>
+<li class="list-item-f16"><p>Sei \(a \in \{a_1, a_2, a_3\}\), d.&#x202f;h. \(b = 0\). Angenommen, es gilt \(fg = y^d h\) und \(f\widetilde {g} = y^e \widetilde {h}\) mit \(d &gt; e \ge 0\). Dann ist \(y^d \widetilde {g} h =
+fg\widetilde {g} = y^e \widetilde {h} g \iff y^e (y^{d-e} \widetilde {g} h - \widetilde {h} g) = 0\). \(k[x, y]\) ist nullteilerfrei, also folgt \(y^{d-e} \widetilde {g} h = \widetilde {h} g\). Setzt man
+\((x, y) = (a, 0)\) ein, so erha&#x0308;lt man wegen \(d - e &gt; 0\) die Gleichung \(\widetilde {h}(P) g(P) = 0\), ein Widerspruch zu \(g(P) \not = 0 \not = \widetilde {h}(P)\).
+</p>
+</li>
+</ul>
+
+<p>
+Nun wird die Existenz bewiesen. Durch sukzessives Ausklammern von \((x - a)\) gibt es \(e \in \natural _0\) und \(v, w \in k[x]\), sodass \(f = (x - a)^e (v(x) + y w(x))\) mit \(v(a) \not = 0\) oder \(w(a) \not
+= 0\).
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f17"><p>Sei \(a \notin \{a_1, a_2, a_3\}\), d.&#x202f;h. \(b \not = 0\). Gilt \(v(a) + bw(a) \not = 0\), dann setze \(d := e\), \(g := 1\) und \(h := v(x) + yw(x)\). Sei also \(v(a) + bw(a) = 0\). Dann gilt \(v(a) -
+bw(a) \not = 0\) (weil \(w(a) \not = 0\), sonst wa&#x0308;re \(v(a) + bw(a) = v(a) \not = 0\)) und daher \(g(P) \not = 0\) mit \(g := v(x) - yw(x)\). Man erha&#x0308;lt damit \(fg = (x - a)^e N(g) = (x -
+a)^{e+e’} h(x)\) mit \(h(P) = h(a) \not = 0\) fu&#x0308;r ein \(e’ \in \natural _0\) (\((x - a)\) so oft wie mo&#x0308;glich aus \(N(g) \in k[x]\) ausklammern), d.&#x202f;h. setze \(d := e + e’\).
+</p>
+</li>
+<li class="list-item-f18"><p>Sei \(a \in \{a_1, a_2, a_3\}\), d.&#x202f;h. \(b = 0\) und oBdA \(a = a_1\).<br />
+Es gilt \(f \cdot (x - a_2)^e (x - a_3)^e = s(x)^e (v(x) + yw(x)) = y^{2e} (v(x) + yw(x))\). Gilt \(v(a) \not = 0\), dann setze \(d := 2e\), \(g := (x - a_2)^e (x - a_3)^e\) und \(h := v(x) + yw(x)\)
+(\(a\) ist keine NS von \(g\)).<br />
+Sei also \(v(a) = 0\). Dann gibt es \(c \in \natural \) und \(\widetilde {v} \in k[x]\) mit \(v(x) = (x - a)^c \widetilde {v}(x)\). Es folgt \(f \cdot (x - a_2)^{c+e} (x - a_3)^{c+e} = y^{2e} (s(x)^c
+\widetilde {v}(x) + y\widetilde {w}(x))\) mit \(\widetilde {w}(x) := (x - a_2)^c (x - a_3)^c w(x)\). Wegen \(v(a) = 0\) folgt nach Voraussetzung \(w(a) \not = 0\) und daher \(\widetilde {w}(a) \not =
+0\). Setzt man \(h := \widetilde {w}(x) + ys(x)^{c-1}\widetilde {v}(x)\), so folgt \(h(P) = \widetilde {w}(P) = \widetilde {w}(a) \not = 0\) und damit<br />
+\(f \cdot (x - a_2)^{c+e} (x - a_3)^{c+e} = y^{2e+1} h\), d.&#x202f;h. setze \(d := 2e + 1\).
+</p>
+</li>
+</ul>
+
+<p>
+&#x2003;&#x2003;
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Ordnung einer Nullstelle</b>: Seien \(f \in k[x, y] \setminus \{0\}\) und \(P \in E(k)\).<br />
+Dann heißt \(d\) aus dem vorherigen Satz <em><span class="dashuline" >Ordnung</span></em> \(\ord _P(f) \in \natural _0\) von \(P\) als Nullstelle von \(f\).
+</p>
+
+<p>
+Es gilt \(f(P) = 0 \iff \ord _P(f) \ge 1\).
+</p>
+
+<p>
+Aus der Eindeutigkeit von \(d\) im Satz folgt \(\ord _P(fg) = \ord _P(f) + \ord _P(g)\): Seien \(a \notin \{a_1, a_2, a_3\}\) und \(f_1 g_1 = (x - a)^{d_1} h_1\) sowie \(f_2 g_2 = (x - a)^{d_2} h_2\). Dann
+gilt \((f_1 f_2) (g_1 g_2) = (x - a)^{d_1 + d_2} (h_1 h_2)\) mit \((g_1 g_2)(P) \not = 0 \not = (h_1 h_2)(P) \not = 0\), d.&#x202f;h. wegen der Eindeutigkeit<br />
+\(\ord _P(f_1 f_2) = d_1 + d_2 = \ord _P(f_1) + \ord _P(f_2)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Lemma</b>: Seien \(f, h \in k[x, y] \setminus \{0\}\) mit \(\forall _{P \in E(k)}\; \ord _P(f) \le \ord _P(h)\).<br />
+Dann gibt es ein \(g \in k[x, y]\) mit \(fg = h\).
+</p>
+
+<p>
+<b>Beweis</b>: Es reicht, \(f\overline {f} \cdot g = h\overline {f}\) zu zeigen (daraus folgt na&#x0308;mlich \(\overline {f} (fg - h) = 0\), d.&#x202f;h. wegen der Nullteilerfreiheit \(fg = h\)). Wegen
+\(f\overline {f} \in k[x]\) und \(\ord _P(f\overline {f}) \le \ord _P(h \overline {f})\) reicht es daher, \(fg = h\) fu&#x0308;r \(f \in k[x]\) zu zeigen. Der Beweis erfolgt mit Induktion u&#x0308;ber \(\deg
+_x(f)\).
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f19"><p>Sei \(\deg _x(f) = 0\). Dann ist \(f \in k \setminus \{0\}\) und man kann \(g := f^{-1} h\) setzen.
+</p>
+</li>
+<li class="list-item-f20"><p>Sei \(\deg _x(f) = 1\), oBdA \(f(x) =: x - a\). Schreibe \(h =: v(x) + yw(x)\) und sei \(P = (a, b) \in E(k)\) ein Punkt auf \(E(k)\) mit \(x\)-Koordinate \(a\). Wegen \(\ord _P(h) \ge \ord _P(f) = \ord _P(x
+- a) \ge 1\) und analog \(\ord _{\overline {P}}(h) \ge 1\) folgt \(v(a) + bw(a) = 0 = v(a) - bw(a)\). Ist \(b \not = 0\), dann folgt aus \(2bw(a) = 0\), dass \(w(a) = 0\) und damit \(v(a) = 0\), d.&#x202f;h. \(x
+- a\) la&#x0308;sst sich aus \(h\) herausteilen.<br />
+Sei also \(b = 0\). Dann ist \(v(a) = 0\) und \(a \in \{a_1, a_2, a_3\}\), oBdA \(a = a_1\). Sei \(w(a) \not = 0\) (sonst la&#x0308;sst sich \(x - a\) aus \(h\) herausteilen).<br />
+Wegen \((x - a) \cdot (x - a_2)(x - a_3) = s(x) = y^2 \cdot 1\) ist \(\ord _P(x - a) = 2\).<br />
+Andererseits gilt \(\ord _P(h) = 1\), weil \(h \cdot (x - a_2)(x - a_3) = s(x) \widetilde {v}(x) + y \widetilde {w}(x) = y \cdot (y \widetilde {v}(x) + \widetilde {w}(x))\) mit \(v(x) =: (x - a)
+\widetilde {v}(x)\) und \(\widetilde {w}(x) := (x - a_2) (x - a_3) w(x)\) (mit \(0 \cdot \widetilde {v}(a) + \widetilde {w}(a) \not = 0\)), ein Widerspruch zu \(\ord _P(f) \le \ord _P(h)\). Damit tritt
+der Fall \(b = 0\) und \(w(a) \not = 0\) nicht auf.
+</p>
+</li>
+<li class="list-item-f21"><p>Sei \(\deg _x(f) \ge 2\). Dann gibt es \(f_1, f_2 \in k[x]\) mit \(f = f_1 f_2\) und \(\deg _x(f_i) &lt; \deg _x(f)\). Wegen \(\ord _P(f_1) \le \ord _P(f) \le \ord _P(h)\) la&#x0308;sst sich die IV
+fu&#x0308;r \(f_1\) und \(h\) anwenden und man erha&#x0308;lt \(f_1 g_1 = h\) fu&#x0308;r ein \(g_1 \in k[x, y]\). Es gilt \(\ord _P(h) + \ord _P(f_2) = \ord _P(f_1) + \ord _P(f_2) + \ord _P(g_1)\)<br />
+\(= \ord _P(f) + \ord _P(g_1) \le \ord _P(h) + \ord _P(g_1)\), d.&#x202f;h. \(\ord _P(f_2) \le \ord _P(g_1)\). Damit la&#x0308;sst sich die IV fu&#x0308;r \(f_2\) und \(g_1\) anwenden und man
+erha&#x0308;lt \(f_2 g_2 = g_1\) fu&#x0308;r ein \(g_2 \in k[x, y]\), d.&#x202f;h. \(fg_2 = f_1 f_2 g_2 = h\).
+</p>
+</li>
+</ul>
+
+<p>
+&#x2003;&#x2003;
+
+
+
+<h2 id="divisoren">Divisoren</h2>
+<b>Divisor</b>: Ein <em><span class="dashuline" >Divisor</span></em> ist eine formale Summe \(D := \sum _{P \in E(k)} n_P P\) mit Koeffizienten \(n_P \in \natural _0\) und \(n_P = 0\) fu&#x0308;r fast alle \(P
+\in E(k)\).
+</p>
+
+<p>
+Man kann Divisoren auch als Folgen \((n_P)_{P \in E(k)}\) mit Eintra&#x0308;gen \(n_P\) in \(\natural _0\) fast alle \(0\) auffassen. Die Addition von Divisoren ist definiert durch<br />
+\((\sum _{P \in E(k)} m_P P) + (\sum _{P \in E(k)} n_P P) := \sum _{P \in E(k)} (m_P + n_P) P\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Grad eines Divisors</b>: Der <em><span class="dashuline" >Grad</span></em> von \(D\) ist definiert durch \(\deg (D) := \sum _{P \in E(k)} n_P \in \natural _0\).
+</p>
+<p>
+Es gilt \(\deg (D_1 + D_2) = \deg (D_1) + \deg (D_2)\) fu&#x0308;r zwei Divisoren \(D_1, D_2\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Divisor eines Polynoms</b>: Sei \(f \in k[x, y]\).<br />
+Dann ist \(\div (f) := \sum _{P \in E(k)} \ord _P(f) P\) der <em><span class="dashuline" >Divisor</span></em> von \(f\) (fu&#x0308;r \(f = 0\) sei \(\div (f) := \sum _{P \in E(k)} 0P\)).
+</p>
+
+<p>
+Es gilt \(\div (f \cdot g) = \div (f) + \div (g)\), weil \(\ord _P(f \cdot g) = \ord _P(f) + \ord _P(g)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Hauptdivisor</b>: Ein Divisor \(D\) heißt <em><span class="dashuline" >Hauptdivisor</span></em>, falls \(D = \div (f)\) fu&#x0308;r ein \(f \in k[x, y]\).
+</p>
+
+<p>
+<b>Hauptdivisor von \(f(x) = x - a\)</b>: Seien \(f(x) := x - a\) und \(P = (a, b) \in E(k)\).<br />
+Dann ist \(\div (f) = P + \overline {P}\) (im Fall \(a \in \{a_1, a_2, a_3\} \iff b = 0\) ist \(\div (f) = 2P = P + \overline {P}\)).
+</p>
+
+<p>
+<b>Hauptdivisor von \(f \in k[x]\)</b>: Sei \(f \in k[x]\). Dann zerfa&#x0308;llt \(f\) in Linearfaktoren, d.&#x202f;h.<br />
+\(f = \prod _{i=1}^n (x - x_i)^{d_i}\). Wa&#x0308;hle zu jedem \(x_i\) ein \(y_i \in k\) mit \(P_i := (x_i, y_i) \in E(k)\).<br />
+Dann gilt \(\div (f) = \sum _{i=1}^n d_i \div (x - x_i) = \sum _{i=1}^n d_i (P_i + \overline {P_i})\) und<br />
+\(\deg (\div (f)) = \sum _{i=1}^n 2d_i = 2\deg _x(f) = \deg (f)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Konjugat</b>: Das <em><span class="dashuline" >Konjugat</span></em> von \(D\) ist definiert durch \(\overline {D} := \sum _{P \in E(k)} n_P \overline {P}\).
+</p>
+
+<p>
+Es gilt \(\deg (\overline {D}) = \deg (D)\).
+</p>
+
+<p>
+Sei \(f \in k[x, y]\). Dann folgt aus \(f(\overline {P}) = \overline {f}(P)\), dass \(\ord _{\overline {P}}(f) = \ord _P(\overline {f})\) und \(\div (\overline {f}) = \overline {\div (f)}\). Daraus folgt
+\(\deg (\div (\overline {f})) = \deg (\div (f))\) und daher \(2\deg (f) = 2\deg _x(N(f)) = \deg (N(f))\)<br />
+\(= \deg (\div (N(f))) = \deg (\div (f)) + \deg (\div (\overline {f})) = 2\deg (\div (f))\).<br />
+Es gilt also \(\deg (\div (f)) = \deg (f)\), d.&#x202f;h. Hauptdivisoren haben niemals den Grad \(1\).
+</p>
+
+<p>
+Fu&#x0308;r jeden Divisor \(D\) ist \(D + \overline {D}\) ein Hauptdivisor, weil \(P + \overline {P} = \div (x - a)\) fu&#x0308;r \(P = (a, b) \in E(k)\) ein Hauptdivisor ist.
+</p>
+
+
+
+<h2 id="picard-gruppe"><span style="font-variant: small-caps;">Picard</span>-Gruppe</h2>
+
+</p>
+
+
+<p>
+<b>A&#x0308;quivalenzrelation</b>: Auf der Menge aller Divisoren wird eine A&#x0308;quivalenzrelation \(\sim \) definiert, wobei \(D \sim D’\) gelten soll, falls \(\exists _{f, f’ \in k[x, y]}\; D + \div (f) = D’ +
+\div (f’)\).
+</p>
+
+<p>
+\(\sim \) ist eine Kongruenzrelation, d.&#x202f;h. aus \(D_1 \sim D_1’\) und \(D_2 \sim D_2’\) folgt \(D_1 + D_2 \sim D_1’ + D_2’\) (wa&#x0308;hle \(f := f_1 f_2\) und \(f’ := f_1’ f_2’\)).
+</p>
+
+<p>
+Sei \([D]\) die A&#x0308;quivalenzklasse von \(D\). Definiert man \([D_1] + [D_2] := [D_1 + D_2]\), so bildet die Menge aller A&#x0308;quivalenzklassen ein kommutatives Monoid mit Nullelement \([0]\), wobei alle
+Hauptdivisoren in \([0]\) enthalten sind. Weil \(D + \overline {D}\) stets ein Hauptdivisor ist, gilt \([D] + [\overline {D}] = [D + \overline {D}] = [0]\), d.&#x202f;h. es existieren additive Inverse \(-[D] =
+[\overline {D}]\). Damit ist die Menge aller Divisoren modulo \(\sim \) eine abelsche Gruppe.
+</p>
+
+<p>
+<b><span class="textsc" >Picard</span>-Gruppe</b>: Die Menge aller Divisoren modulo \(\sim \) heißt <em><span class="dashuline" ><span class="textsc" >Picard</span>-Gruppe</span></em> \(\Pic
+^0(E(k))\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>A&#x0308;quivalenzklasse \([0]\)</b>: Die Hauptdivisoren sind in \([0]\) enthalten, und keine anderen Divisoren sind in \([0]\) enthalten: Sei \(D\) ein Divisor mit \(D \sim 0\), d.&#x202f;h. \(D + \div (f) = \div
+(h)\) mit \(f, h \in k[x, y]\).<br />
+Ist \(f = 0\), dann ist \(D = \div (h)\) ein Hauptdivisor.<br />
+Ist \(h = 0\), dann ist \(D = \div (h) - \div (f) = \div (0 \cdot f) - \div (f) = \div (0)\) ein Hauptdivisor.<br />
+Seien daher \(f, h \not = 0\). Es gilt \(\sum _{P \in E(k)} (n_P + \ord _P(f)) P = \sum _{P \in E(k)} \ord _P(h) P\). Somit gilt<br />
+\(\forall _{P \in E(k)}\; \ord _P(f) \le \ord _P(h)\) und obiges Lemma la&#x0308;sst sich anwenden, d.&#x202f;h. \(\exists _{g \in k[x, y]}\; fg = h\). Damit ist \(D = \div (h) - \div (f) = \div (f) +
+\div (g) - \div (f) = \div (g)\) ein Hauptdivisor.
+</p>
+
+<p>
+Insbesondere entha&#x0308;lt \([0]\) keinen Divisor vom Grad \(1\). Daraus folgt, dass fu&#x0308;r \(P \in E(k)\) gilt, dass \([P] \not = [0]\), wenn man \(P\) als Divisor \(P = \sum _{Q \in E(k)} \delta _{PQ} Q\)
+auffasst (\(P\) hat Grad \(1\)).<br />
+Die Picard-Gruppe ist damit nicht-trivial.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+Definiere im Folgenden \([\O ] := [0]\).
+</p>
+
+<p>
+<b>Satz</b>: \([\cdot ]\colon E(k) \cup \{\O \} \to \Pic ^0(E(k))\), \(P \mapsto [P]\) ist ein Gruppenisomorphismus.
+</p>
+
+<p>
+<b>Beweis</b>: Zuna&#x0308;chst zeigt man die Injektivita&#x0308;t. Es gilt \([P] \not = [\O ]\) fu&#x0308;r alle \(P \in E(k)\). Seien daher \(P, Q \in E(k)\) mit \(P \not = Q\).
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f22"><p>Sei \(P \not = \overline {Q}\). Weil auf jeder Vertikalen mit Vielfachheit genau zwei Punkte von \(E(k)\) liegen, haben die Punkte \(P\) und \(Q\) verschiedene \(x\)-Koordinaten (\(Q\) und \(\overline {Q}\) liegen schon
+auf einer Vertikalen). Damit ist \(R := P + \overline {Q} \not = \O \) (d.&#x202f;h. \(\overline {P}, Q, R\) liegen auf einer Geraden), also \([P + \overline {Q}] = [R] \not = [0]\), woraus \([P] \not = [Q]\)
+folgt.
+</p>
+</li>
+<li class="list-item-f23"><p>Sei \(P = \overline {Q}\). Dann ist \(R := P + \overline {Q} \not = \O \) (wegen \(Q \not = \overline {Q}\) ist die Tangente an \(E(k)\) in \(P\) nicht-senkrecht), also \([P + \overline {Q}] = [R] \not =
+[0]\), woraus \([P] \not = [Q]\) folgt.
+</p>
+</li>
+</ul>
+
+<p>
+Die Abbildung ist surjektiv: Fu&#x0308;r \([D] \in \Pic ^0(E(k))\) ersetzt man zuna&#x0308;chst alle Summanden \([P + \overline {P}]\) fu&#x0308;r \(P \in E(k)\) durch \([0]\) (da \(P + \overline {P}\)
+Hauptdivisor). Es bleiben nur noch Summanden \([P + Q]\) mit \(Q \not = \overline {P}\) u&#x0308;brig, die man durch \([\overline {R}]\) ersetzen kann (wenn \(R \in E(k) \cup \{\O \}\) der eindeutige dritte
+Punkt auf einer Geraden ist). Sukzessive wendet man eine der beiden Ersetzungen an und reduziert den Grad von \(D\), bis \(D = [P]\) fu&#x0308;r ein \(P \in E(k) \cup \{\O \}\).
+</p>
+
+<p>
+Die Homomorphie (\(P + Q \mapsto [P + Q] = [P] + [Q]\)) ist klar nach Definition.
+</p>
+
+<p>
+Aus diesen Eigenschaften folgt die Assoziativita&#x0308;t von \(E(k) \cup \{\O \}\), d.&#x202f;h. \(E(k) \cup \{\O \}\) ist eine abelsche Gruppe und damit ist \([\cdot ]\) ein Gruppenisomorphismus. &#x2003;&#x2003;
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+\(E(K) \cup \{\O \}\) ist eine Untergruppe von \(E(k) \cup \{\O \}\) und damit ebenfalls eine abelsche Gruppe.
+</p>
+
+
+
+<h2 id="anwendungen">Anwendungen</h2>
+
+</p>
+
+
+<p>
+Seien \(K\) ein Ko&#x0308;rper mit \(\Char (K) \not = 2\) und \(A, B \in K\) mit \(4A^3 + 27B^2 \not = 0\). Die durch \(A, B\) definierte elliptische Kurve ist gegeben durch \(\widetilde {E}(K) := \{(a, b) \in K^2
+\;|\; b^2 = a^3 + Aa + B\} \cup \{\O \}\) mit dem Fernpunkt \(\O \). \(\widetilde {E}(K)\) wird mit der oben definierten Addition \(+\) zu einer abelschen Gruppe mit Nullelement \(\O \).
+</p>
+
+<p>
+<b>U&#x0308;bergang von zyklischen Gruppen zu elliptischen Kurven</b>: Viele kryptografische Protokolle basieren auf dem Rechnen in zyklischen Gruppen, z.&#x202f;B. in \(\erzeugnis {g} \le (\ZpZ )^\ast \) mit \(g
+\in (\ZpZ )^\ast \). Die Analogie hierzu ist das Rechnen in \(\erzeugnis {P} \le \widetilde {E}(K)\) mit \(P \in \widetilde {E}(K)\). Dabei sollte \(|\erzeugnis {P}|\) nicht zu klein sein und einen großen Primteiler
+besitzen. Elliptische Kurven besitzen den Vorteil, dass man die gleiche Sicherheit wie mit \((\ZpZ )^\ast \) schon mit kleineren Schlu&#x0308;ssella&#x0308;ngen bekommt.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b><span class="textsc" >Diffie</span>-<span class="textsc" >Hellman</span>-Schlu&#x0308;sselaustausch mit elliptischen Kurven</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f24"><p>Alice wa&#x0308;hlt eine elliptische Kurve \(E := \widetilde {E}(\ZpZ )\) und einen Pkt. \(P = (x, y) \in E\) wie folgt: Wa&#x0308;hle \(A, x, y \in \ZpZ \) zufa&#x0308;llig, berechne \(B := y^2 -
+x^3 - Ax\) und u&#x0308;berpru&#x0308;fe \(4A^3 + 27B^2 \not = 0\). Alice schickt \(p, A, B, x, y\) an Bob.
+</p>
+</li>
+<li class="list-item-f25"><p>Alice wa&#x0308;hlt \(a \in \natural \) und schickt \(a \cdot P\) an Bob.
+</p>
+</li>
+<li class="list-item-f26"><p>Bob wa&#x0308;hlt \(b \in \natural \) und schickt \(b \cdot P\) an Alice.
+</p>
+</li>
+<li class="list-item-f27"><p>Alice und Bob berechnen \(Q = ab \cdot P \in E\).
+</p>
+</li>
+</ul>
+
+<p>
+Weil es schwierig ist, aus \(P\) und \(a \cdot P\) die Zahl \(a\) zu bestimmen, kann ein Angreifer \(Q\) nicht effizient berechnen.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Pseudokurven</b>: Man kann elliptische Kurven \(E\colon y^2 = x^3 + Ax + B\) auch u&#x0308;ber allgemeine Restklassenringe \(\ZnZ \) fu&#x0308;r \(n\) nicht prim definieren. In diesem Fall sollte \(n\) weder durch
+\(2\) noch durch \(3\) teilbar sein und es sollte \(\ggT (4A^3 + 27B^2, n) = 1\) gelten. Die Addition ist dann nur partiell definiert und nicht assoziativ.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Faktorisierung</b>: Mittels Pseudokurven kann eine zusammengesetzte Zahl \(n \in \natural \) faktorisiert werden, indem man \(\widetilde {E}(\ZnZ )\) und \(P \in \widetilde {E}(\ZnZ )\) zufa&#x0308;llig
+wa&#x0308;hlt und versucht, \(k \cdot P\) zu berechnen. Wenn das Ergebnis dieser Verknu&#x0308;pfung nicht definiert ist, dann erha&#x0308;lt man einen nicht-trivialen Teiler von \(n\).
+</p>
+
+<a id="cryptographic-procedures-autofile-last"></a>
+{% endraw %}
+</div>
+{:/nomarkdown}

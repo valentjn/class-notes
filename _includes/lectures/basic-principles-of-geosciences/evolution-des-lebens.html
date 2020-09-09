@@ -1,0 +1,1872 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  content:'•\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+
+<h2 id="biologische-zeitenwende-vor-542-millionen-jahren">Biologische Zeitenwende vor 542 Millionen Jahren</h2>
+
+</p>
+
+
+<p>
+<b>Evolution vor der Zeitenwende</b>: a&#x0308;lteste Mikroben stammen von 3,5&#x202f;Ga, freier Sauerstoff in der Atmospha&#x0308;re findet sich seit 2,4&#x202f;Ga, Zellen mit Kern, Atmung und Kohlenstoff-Recycling
+seit 2,1&#x202f;Ga, Sexualita&#x0308;t und Vielzelligkeit seit 1,5&#x202f;Ga bis 0,8&#x202f;Ga, Tiere seit 635&#x202f;Ma und Tiere mit Skelett seit 542&#x202f;Ma
+</p>
+
+<p>
+<b>40&#x202f;Ma Kreativita&#x0308;t</b>: unmittelbar vor der Zeitenwende kam es zu einer raschen Entfaltung vielzelliger Lebewesen (Ediacara) und zu einer versta&#x0308;rkten Freisetzung von <span
+    id="lateximage-basic-principles-of-geosciences-59"
+    class="lateximagesource"
+><!--
+O2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/ABFFEBD824382D4EEEE8C01C494A4C72.svg"
+   alt="\ce{O2}"
+   style=""
+   class="lateximage"
+></span>, der <span
+   id="lateximage-basic-principles-of-geosciences-60"
+   class="lateximagesource"
+><!--
+O2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/ABFFEBD824382D4EEEE8C01C494A4C72.svg"
+   alt="\ce{O2}"
+   style=""
+   class="lateximage"
+></span>-Gehalt erreichte 2&#x202f;%, dies reichte zur Bildung einer Ozonschicht aus, damit war das flache Wasser (Schelfgebiete) besiedelbar geworden
+</p>
+
+<p>
+<b>großes Fressen</b>: Zeitenwende deshalb so wichtig, weil durch Skelette Organspezialisierung mo&#x0308;glich gemacht wurde, Bildung selbstoptimierender Lebensgemeinschaften, Entstehung der O&#x0308;kosysteme des
+Meeres
+</p>
+
+
+
+<h2 id="beschwerlicher-landgang-vor-350-millionen-jahren">Beschwerlicher Landgang vor 350 Millionen Jahren</h2>
+
+</p>
+
+
+<p>
+<b>entscheidende Faktoren</b>: Sauerstoff, Ozon und Skelett, im Unterschied zum Leben im Meer ist ein ho&#x0308;herer Energieaufwand fu&#x0308;r die Fortbewegung notwendig
+</p>
+
+<p>
+<b>Landgang</b>: zuerst wurde das Land durch ho&#x0308;here Pflanzen besiedelt, danach durch Tiere
+</p>
+
+<p>
+<b>Pflanzen</b>: Leitungsgefa&#x0308;ße, Wurzeln, Bla&#x0308;tter (wg. sinkendem <span
+    id="lateximage-basic-principles-of-geosciences-61"
+    class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/725A4192A256649862D52FF3824F9588.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span>-Gehalt) und flugfa&#x0308;hige Samen, es gab riesige Tieflandswa&#x0308;lder und wegen bis zu 30&#x202f;% <span
+   id="lateximage-basic-principles-of-geosciences-62"
+   class="lateximagesource"
+><!--
+O2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/ABFFEBD824382D4EEEE8C01C494A4C72.svg"
+   alt="\ce{O2}"
+   style=""
+   class="lateximage"
+></span> in der Atmospha&#x0308;re Riesenwuchs bei Farnen usw.
+</p>
+
+<p>
+<b>Verholzung</b>: die neu entwickelte Verholzung fu&#x0308;hrt zu einer langsameren Verrottung, dadurch bleibt organisches Material la&#x0308;nger erhalten (Fixierung von Kohlenstoff), Senkung des <span
+    id="lateximage-basic-principles-of-geosciences-63"
+    class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/725A4192A256649862D52FF3824F9588.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span>-Gehalts, Entstehung der Wa&#x0308;lder
+</p>
+
+<p>
+<b>Tiere</b>: wegen dem hohen <span
+    id="lateximage-basic-principles-of-geosciences-64"
+    class="lateximagesource"
+><!--
+O2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/ABFFEBD824382D4EEEE8C01C494A4C72.svg"
+   alt="\ce{O2}"
+   style=""
+   class="lateximage"
+></span>-Gehalt gab es Rieseninsekten und Riesenlurche, außerdem haben sich Vorfahren der Reptilien entwickelt, bei Landwirbeltieren kam es zur Entwicklung von tragfa&#x0308;higen Gliedmaßen und von der Lunge
+</p>
+
+
+
+<h2 id="reptilien">Reptilien</h2>
+
+</p>
+
+
+<p>
+<b>neue Entwicklungen</b>: Schutz gegen Austrocknung, verbesserte Zahnformen und Gebisse, Rippen mit Gelenken (verbesserte Atmung), Gliedmaßen unter dem Ko&#x0308;rper (verbesserte Fortbewegung), innere
+Befruchtung (wenige Eier, Eischale, Doppelaquarium), Kinder kommen als fertige Reptilien auf die Welt (sofort lernfa&#x0308;hig), Kommunikation u&#x0308;ber verbessertes Riechvermo&#x0308;gen (verbesserte Brutpflege),
+Weitergabe von Informationen wa&#x0308;hrend der Brutpflege (Steigerung des kollektiven Geda&#x0308;chtnisses), exponentiell steigende Datenmenge (stark verbesserte Hirnleistung), verbesserter Orientierungssinn
+(Kolonisierung von Panga&#x0308;a)
+</p>
+<div class="framed" >
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p><b>Errungenschaften gegenu&#x0308;ber den Amphibien</b>:<br />
+<em>Eier mit Schale und Dottervorrat, innere Befruchtung, Schutz vor Austrocknung durch verhornte Haut, leistungsfa&#x0308;higes Gebiss, Rippen mit Gelenken</em>
+</p>
+</li>
+</ul>
+
+</div>
+
+
+
+<h2 id="grosses-sterben-vor-251-millionen-jahren">Großes Sterben vor 251 Millionen Jahren</h2>
+<b>großes Sterben</b>: mehr als 90&#x202f;% aller Arten sind ausgestorben, Rekonvaleszenz-Zeit der Biospha&#x0308;re mindestens 50&#x202f;Ma
+</p>
+<div class="framed" >
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f1"><p><b>Ablauf</b>: <em>Eruption großer Basaltmengen in Sibirien<br />
+\(\Rightarrow \) hohe <span
+      id="lateximage-basic-principles-of-geosciences-65"
+      class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/F1388725B584D1465845563D0B183319.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span>-Konzentration<br />
+\(\Rightarrow \) spontane Temperaturerho&#x0308;hung<br />
+\(\Rightarrow \) Destabilisierung von Gashydraten und Freisetzung von Methan<br />
+\(\Rightarrow \) hoher <span
+   id="lateximage-basic-principles-of-geosciences-66"
+   class="lateximagesource"
+><!--
+H2 S
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/76CB505543F6191200FA9E0F52D891AA.svg"
+   alt="\ce{H2S}"
+   style=""
+   class="lateximage"
+></span>- und niedriger <span
+   id="lateximage-basic-principles-of-geosciences-67"
+   class="lateximagesource"
+><!--
+O2
+--><img
+    src="/class-notes/images/lectures/basic-principles-of-geosciences/59639BD88B12C0300905F98A8D197B73.svg"
+    alt="\ce{O2}"
+    style=""
+    class="lateximage"
+></span>-Gehalt im Ozean und in der Atmospha&#x0308;re (Absturz des Sauerstoffgehalts der Atmospha&#x0308;re auf \(&lt; \SI [math-rm=\mathit ,text-rm=\itshape ]{15}{\percent }\))<br />
+\(\Rightarrow \) Kollaps der Nahrungskette<br />
+\(\Rightarrow \) kurzfristiges Supertreibhaus</em>
+</p>
+</li>
+</ul>
+
+</div>
+
+
+
+<h2 id="jura-und-kreidezeit-und-voegel">Jura- und Kreidezeit und Vögel</h2>
+<b>langsam steigender Sauerstoffgehalt</b>: Riesenwuchs bei Meeresechsen, Spezialisierung und Riesenwuchs bei Dinosauriern, Luftsack-System der Dinosaurier und pneumatische Gelenkstu&#x0308;tzen (aus Atemnot
+entstanden), Flugsaurier
+</p>
+
+<p>
+<b>Errungenschaften der Vo&#x0308;gel</b>: Warmblu&#x0308;tigkeit, leichte Knochen (Flugmuskulatur im Dauerbetrieb), verbesserte Sehscha&#x0308;rfe (dreidimensionales Sehen), verbessertes Erinnerungs- und
+Navigationsvermo&#x0308;gen, funktionale Fru&#x0308;hgeburten bei Singvo&#x0308;geln, hohe Lernfa&#x0308;higkeit (verbesserte Anpassung)
+</p>
+
+<p>
+<b>Ursache der Wirbeltiere</b>: hoher <span
+    id="lateximage-basic-principles-of-geosciences-68"
+    class="lateximagesource"
+><!--
+O2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/ABFFEBD824382D4EEEE8C01C494A4C72.svg"
+   alt="\ce{O2}"
+   style=""
+   class="lateximage"
+></span>-Gehalt
+</p>
+
+
+
+<h2 id="explosion-im-treibhaus-vor-65-millionen-jahren">Explosion im Treibhaus vor 65 Millionen Jahren</h2>
+
+</p>
+
+
+<p>
+<b>Explosion im Treibhaus</b>: vor 65,4&#x202f;Ma, 50&#x202f;% aller Arten wurden ausgelo&#x0308;scht
+</p>
+<div class="framed" >
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f2"><p><b>Ablauf</b>: <em>Einschlag auf Kalkablagerungen<br />
+\(\Rightarrow \) Eruption von Basalt<br />
+\(\Rightarrow \) Erho&#x0308;hung des <span
+      id="lateximage-basic-principles-of-geosciences-69"
+      class="lateximagesource"
+><!--
+CO2
+--><img
+    src="/class-notes/images/lectures/basic-principles-of-geosciences/F1388725B584D1465845563D0B183319.svg"
+    alt="\ce{CO2}"
+    style=""
+    class="lateximage"
+></span>-Gehalts<br />
+\(\Rightarrow \) spontane Temperaturerho&#x0308;hung<br />
+\(\Rightarrow \) Einschlag eines Himmelsko&#x0308;rpers auf Kalkablagerungen, diese enthalten Chlor- und Schwefelsalze, Verdampfung fu&#x0308;hrt zur Entweichung von Salzsa&#x0308;ure und Schwefelsa&#x0308;ure<br />
+\(\Rightarrow \) Mega-Tsunami und saurer Regen<br />
+\(\Rightarrow \) jahrelanger globaler Winter<br />
+\(\Rightarrow \) Kollaps der Nahrungskette<br />
+\(\Rightarrow \) kurzfristiges Supertreibhaus</em>
+</p>
+</li>
+</ul>
+
+</div>
+
+<p>
+<b>die Stunde der Sa&#x0308;ugetiere</b>: danach konnten sich die Sa&#x0308;ugetiere ausbreiten, sie waren lebendgeba&#x0308;rend, warmblu&#x0308;tig und behaart, Sa&#x0308;ugetiere besaßen einen sechsfach
+ho&#x0308;heren Sauerstoffbedarf (fu&#x0308;r Plazenta, denn die Vorsorgung des Kindes im Mutterleib ist nur bei hohem <span
+    id="lateximage-basic-principles-of-geosciences-70"
+    class="lateximagesource"
+><!--
+O2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/ABFFEBD824382D4EEEE8C01C494A4C72.svg"
+   alt="\ce{O2}"
+   style=""
+   class="lateximage"
+></span>-Gehalt mo&#x0308;glich), ru&#x0308;ckten spontan in die frei gewordenden Nischen
+</p>
+
+
+
+<h2 id="erdneuzeit-zeitalter-der-saeugetiere">Erdneuzeit: Zeitalter der Säugetiere</h2>
+
+</p>
+
+
+<p>
+<b>Gigantismus im <span
+      id="lateximage-basic-principles-of-geosciences-71"
+      class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/3A08432C0511AC3361CB020E72E41EF8.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span>-<span
+   id="lateximage-basic-principles-of-geosciences-72"
+   class="lateximagesource"
+><!--
+O2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/E1C35C1B8508026182732D5B6849200B.svg"
+   alt="\ce{O2}"
+   style=""
+   class="lateximage"
+></span>-Treibhaus vor 65&#x202f;Ma bis 48&#x202f;Ma</b>: Anstieg von <span
+   id="lateximage-basic-principles-of-geosciences-73"
+   class="lateximagesource"
+><!--
+O2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/ABFFEBD824382D4EEEE8C01C494A4C72.svg"
+   alt="\ce{O2}"
+   style=""
+   class="lateximage"
+></span>, <span
+   id="lateximage-basic-principles-of-geosciences-74"
+   class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/725A4192A256649862D52FF3824F9588.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span> und Temperatur, dadurch Treibhausklima und Gigantismus (Riesenschlangen, Riesenvo&#x0308;gel, Riesennasho&#x0308;rner)
+</p>
+
+<p>
+<b>akzentuiertes und Treibhausklima</b>: je nachdem, ob die Polkappen vereist sind oder nicht, herrscht akzentuiertes (momentanes Klima) oder Treibhausklima vor
+</p>
+
+<p>
+<b>auf dem Weg in die Eiszeit</b>: Kontinent Antarctica driftet zum Su&#x0308;dpol, außerdem entziehen lange Gebirgsketten der Atmospha&#x0308;re <span
+    id="lateximage-basic-principles-of-geosciences-75"
+    class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/725A4192A256649862D52FF3824F9588.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span>, seit 48&#x202f;Ma Abku&#x0308;hlung, seit 34&#x202f;Ma Vereisung der Antarktis (Schwelle 750&#x202f;ppm <span
+   id="lateximage-basic-principles-of-geosciences-76"
+   class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/725A4192A256649862D52FF3824F9588.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span>), seit 2,7&#x202f;Ma Vereisung der Nordhalbkugel (Schwelle 280&#x202f;ppm <span
+   id="lateximage-basic-principles-of-geosciences-77"
+   class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/725A4192A256649862D52FF3824F9588.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span>), dadurch Ru&#x0308;ckgang von <span
+   id="lateximage-basic-principles-of-geosciences-78"
+   class="lateximagesource"
+><!--
+O2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/ABFFEBD824382D4EEEE8C01C494A4C72.svg"
+   alt="\ce{O2}"
+   style=""
+   class="lateximage"
+></span>, <span
+   id="lateximage-basic-principles-of-geosciences-79"
+   class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/725A4192A256649862D52FF3824F9588.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span> und Temperatur, Schließung des Isthmus von Panama und Entstehung des Golfstroms, dadurch wurde warmes Wasser in den Norden geleitet, was leichter als kaltes Wasser verdunstet, damit gab es mehr Feuchtigkeit und
+die Arktis konnte sich auch vereisen
+</p>
+
+<p>
+<b>Errungenschaften der Sa&#x0308;ugetiere</b>: Warmblu&#x0308;tigkeit, verbesserte Kauwerkzeuge (Kiefer dreidimensional bewegbar), Plazenta, Lebendgeba&#x0308;ren, Sa&#x0308;ugen, intensive Brutpflege
+</p>
+
+<p>
+<b>Anpassungen der Sa&#x0308;ugetiere</b>: an sinkende Temperaturen, an Ru&#x0308;ckgang der Wa&#x0308;lder, an Ausbreitung der Gra&#x0308;ser
+</p>
+
+<p>
+<b>Erfolgsgeschichte der Hominiden</b>: aufrechter Gang, Fru&#x0308;hgeburten, Turbo-Brutpflege, Kopfwachstum in der Kindheit, hohe individuelle Lernfa&#x0308;higkeit, Arbeitsteilung, hohe kollektive
+Lernfa&#x0308;higkeit, Nutzung von Brennstoffen, sprechen, denken usw.
+</p>
+<div class="framed" >
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f3"><p><b>biologische Innovationen, die es nur bei Sa&#x0308;ugetieren gab</b>:<br />
+<em>Behaarung, Hirnrinde, aber nicht permanente Warmblu&#x0308;tigkeit</em>
+</p>
+</li>
+<li class="list-item-f4"><p><b>biologische Innovationen, die es nur beim Menschen gab</b>:<br />
+<em>aufrechter Gang, Kopfwachstum in der Kindheit, Daumen, aber nicht funktionale Fru&#x0308;hgeburten, intensive Brutpflege</em>
+</p>
+</li>
+<li class="list-item-f5"><p><b>zeitliche Reihenfolge der Entstehung der Tiere des Festlands</b>:<br />
+<em>Gliedertiere, Amphibien, Reptilien, Sa&#x0308;ugetiere, Vo&#x0308;gel</em>
+</p>
+</li>
+</ul>
+
+</div>
+
+
+
+<h2 id="stammbaum-des-lebens">Stammbaum des Lebens</h2>
+<b>Doma&#x0308;nen</b>: die drei heute akzeptierten Doma&#x0308;nen sind Archaea, Bakterien und Eukaryoten (mit Zellkern), Archaea und Bakterien werden als Prokaryoten bezeichnet (kein Zellkern)
+</p>
+
+<p>
+<b>Archaea</b>: u&#x0308;berwiegend anaerob, chemolithoautotroph (nur anorganische Stoffe werden zur Energiegewinnung umgesetzt), leben von anaeroben Redoxreaktionen, Zellen mit Membranen, gro&#x0308;ßer als
+Viren, aber kleiner als Bakterien, alle tiefsten und ku&#x0308;rzesten A&#x0308;ste im Stammbaum sind von hyperthermophilen (wa&#x0308;rmeliebenden) Archaea besetzt
+</p>
+
+<p>
+<b>planetare Voraussetzungen fu&#x0308;r Archaea</b>: <span
+    id="lateximage-basic-principles-of-geosciences-80"
+    class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/725A4192A256649862D52FF3824F9588.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span> als Kohlenstoffquelle, Wa&#x0308;rme optimal zwischen 80&#x202f;&deg;C bis 106&#x202f;&deg;C, flu&#x0308;ssiges Wasser, Spurenelemente, <span
+   id="lateximage-basic-principles-of-geosciences-81"
+   class="lateximagesource"
+><!--
+H2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/17C054BAE7B10896FB339DCDE9217C30.svg"
+   alt="\ce{H2}"
+   style=""
+   class="lateximage"
+></span> und <span
+   id="lateximage-basic-principles-of-geosciences-82"
+   class="lateximagesource"
+><!--
+S0
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/664F0CD5B29140238EF4A33B211B1118.svg"
+   alt="\ce{S^0}"
+   style=""
+   class="lateximage"
+></span> bzw. <span
+   id="lateximage-basic-principles-of-geosciences-83"
+   class="lateximagesource"
+><!--
+S2 –
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/9ADEDC554A8CB63E69B0421D95CA4485.svg"
+   alt="\ce{S^{2-}}"
+   style=""
+   class="lateximage"
+></span> als Elektronendonor
+</p>
+
+<p>
+<b>Vorkommen der Archaea</b>: 4&#x202f;% in kontinentalen Bo&#x0308;den bis 8&#x202f;m Tiefe, 39&#x202f;% in kontinentalen Bo&#x0308;den ab 8&#x202f;m Tiefe, 2&#x202f;% in Meerwasser, 55&#x202f;% in
+Ozeanbo&#x0308;den ab 10&#x202f;cm Tiefe (Sedimentoberfla&#x0308;che: \(10^9\) bis \(10^{10}\) Zellen pro cm<sup>3</sup>, hpts. Bakterien, Ozeanboden in 1&#x202f;km Tiefe: \(10^6\) Zellen pro
+cm<sup>3</sup>, hpts. Archeaa)
+</p>
+
+<p>
+<b>Archaea im tiefen Untergrund</b>: Anpassung an extrem niedrige Energieflu&#x0308;sse und an ein extrem langsames Wachstum, Beispiel Tiefsee: 1 Elektron pro Zelle pro Sekunde
+</p>
+
+<p>
+<b>wichtigste Reaktionen der Biospha&#x0308;re</b>: Fotosynthese: <span
+    id="lateximage-basic-principles-of-geosciences-84"
+    class="lateximagesource"
+><!--
+6 CO2 + 6 H2 O −−→ C6 H12 O6 + 6 O2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/764553FBE21E8E3FF988D0B49D398515.svg"
+   alt="\ce{6CO2 + 6H2O -&gt; C6H12O6 + 6O2}"
+   style=""
+   class="lateximage"
+></span> (globale Prima&#x0308;rproduktion 100&#x202f;TW u&#x0308;berwiegend durch zwei Gattungen von Cyanobakterien),<br />
+Atmung: <span
+   id="lateximage-basic-principles-of-geosciences-85"
+   class="lateximagesource"
+><!--
+C6 H12 O6 + 6 O2 −−→ 6 CO2 + 6 H2 O
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/1324AD1098D27CF190D410117D20E3AD.svg"
+   alt="\ce{C6H12O6 + 6O2 -&gt; 6CO2 + 6H2O}"
+   style=""
+   class="lateximage"
+></span> (FSE −2870&#x202f;kJ/mol),<br />
+Ga&#x0308;rung: <span
+   id="lateximage-basic-principles-of-geosciences-86"
+   class="lateximagesource"
+><!--
+C6 H12 O6 −−→ 3 CH4 + 3 CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/3734843B9509E56FE98D81FCA90FF09A.svg"
+   alt="\ce{C6H12O6 -&gt; 3CH4 + 3CO2}"
+   style=""
+   class="lateximage"
+></span> (FSE −390&#x202f;kJ/mol),<br />
+anaerobe Methanoxidation: <span
+   id="lateximage-basic-principles-of-geosciences-87"
+   class="lateximagesource"
+><!--
+CH4 + SO42 – + 2 H+ −−→ CO2 + H2 S + 2 H2 O
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/30990D0278CB05032D4732207D1AE51D.svg"
+   alt="\ce{CH4 + SO4^{2-} + 2H+ -&gt; CO2 + H2S + 2H2O}"
+   style=""
+   class="lateximage"
+></span> (FSE −18&#x202f;kJ/mol), zum Vergleich: direkte Methanverbrennung −2480&#x202f;kJ/mol (15&#x202f;kJ/mol bis 20&#x202f;kJ/mol transportiertem <span
+   id="lateximage-basic-principles-of-geosciences-88"
+   class="lateximagesource"
+><!--
+H+
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/2EDA7D50E2762FE816EC785BAA864F19.svg"
+   alt="\ce{H+}"
+   style=""
+   class="lateximage"
+></span> oder <span
+   id="lateximage-basic-principles-of-geosciences-89"
+   class="lateximagesource"
+><!--
+Na+
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/712366007CE51FF29F0C1FB884B8F261.svg"
+   alt="\ce{Na+}"
+   style=""
+   class="lateximage"
+></span> ist das geringste Energiequantum, das gerade noch eine ATP-Synthese erlaubt)
+</p>
+
+<p>
+<b>freie Standardenthalpie</b>: Energie, die aufgewendet werden muss, um bspw. Oxide zu spalten, sodass freier Sauerstoff entsteht, wird als Spaltungsenthalpie bezeichnet und in kJ/mol ausgedru&#x0308;ckt
+</p>
+
+
+
+<h2 id="plattentektonik-und-klima">Plattentektonik und Klima</h2>
+
+</p>
+
+
+<p>
+<b>Gebirge sind <span
+      id="lateximage-basic-principles-of-geosciences-90"
+      class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/3A08432C0511AC3361CB020E72E41EF8.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span>-Verbraucher</b>: durch marine Fotosynthese wird die Reaktion <span
+   id="lateximage-basic-principles-of-geosciences-91"
+   class="lateximagesource"
+><!--
+CO2 + H2 O + CaSiO3 −−→ CaCO3 + SiO2 + H2 O
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/2A74B5B28CBDA99D59EB830F402F985F.svg"
+   alt="\ce{CO2 + H2O + CaSiO3 -&gt; CaCO3 + SiO2 + H2O}"
+   style=""
+   class="lateximage"
+></span> durchgefu&#x0308;hrt, wobei sich <span
+   id="lateximage-basic-principles-of-geosciences-92"
+   class="lateximagesource"
+><!--
+CaSiO3
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/B9A187939CAD7A89911A825EE3A46374.svg"
+   alt="\ce{CaSiO3}"
+   style=""
+   class="lateximage"
+></span> z.&#x202f;B. in Gneis befinden kann und <span
+   id="lateximage-basic-principles-of-geosciences-93"
+   class="lateximagesource"
+><!--
+CaCO3
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/78D7A138804F9B466FC470FAE3DBAD05.svg"
+   alt="\ce{CaCO3}"
+   style=""
+   class="lateximage"
+></span> Kalkstein heißt, besonders, wenn sich ein Gebirge in A&#x0308;quatorna&#x0308;he befindet, wird der <span
+   id="lateximage-basic-principles-of-geosciences-94"
+   class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/725A4192A256649862D52FF3824F9588.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span>-Gehalt deutlich gesenkt
+</p>
+
+<p>
+<b>Ku&#x0308;hlhausfalle</b>: durch die Senkung des <span
+    id="lateximage-basic-principles-of-geosciences-95"
+    class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/725A4192A256649862D52FF3824F9588.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span>-Gehalts (auch z.&#x202f;B. weil nicht genu&#x0308;gend <span
+   id="lateximage-basic-principles-of-geosciences-96"
+   class="lateximagesource"
+><!--
+CO2
+--><img
+    src="/class-notes/images/lectures/basic-principles-of-geosciences/725A4192A256649862D52FF3824F9588.svg"
+    alt="\ce{CO2}"
+    style=""
+    class="lateximage"
+></span> aus dem Erdmantel entgast wurde) kann es zu einer dramatischen Temperaturabsenkung kommen, die erste solche fand vor 2,5&#x202f;Ma statt, zwischen 720&#x202f;Ma bis 582&#x202f;Ma gab es drei sehr starke
+Vereisungen, bei denen nur ein relativer schmaler Streifen am A&#x0308;quator nicht vereist war, die komplette Vereisung ha&#x0308;tte das Ende der Biospha&#x0308;re bedeutet, zusa&#x0308;tzliche <span
+    id="lateximage-basic-principles-of-geosciences-97"
+    class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/725A4192A256649862D52FF3824F9588.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span>-Entgasung durch Krustenrecycling
+</p>
+
+<p>
+<b>ehemaliges <span
+      id="lateximage-basic-principles-of-geosciences-98"
+      class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/3A08432C0511AC3361CB020E72E41EF8.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span> aus der Atmospha&#x0308;re</b>: Teersande, Schwarzschiefer, Erdo&#x0308;l, Erdgas und Gashydrat, Kohle, Kalkstein, Graphitschiefer und graphitische Gneise
+</p>
+
+<p>
+<b>Recycling von <span
+      id="lateximage-basic-principles-of-geosciences-99"
+      class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/3A08432C0511AC3361CB020E72E41EF8.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span> durch Plattentektonik</b>: kohlenstoffhaltige Gesteine ko&#x0308;nnen durch<br />
+<span
+   id="lateximage-basic-principles-of-geosciences-100"
+   class="lateximagesource"
+><!--
+organische Substanz + O2 −−→ H2 O + CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/378C7AFE6D532D04E31A43B1EDE18D62.svg"
+   alt="\ce{\text {organische Substanz} + O2 -&gt; H2O + CO2}"
+   style=""
+   class="lateximage"
+></span> herausgehoben werden, andererseits ko&#x0308;nnen kohlenstoffhaltige Gesteine durch <span
+   id="lateximage-basic-principles-of-geosciences-101"
+   class="lateximagesource"
+><!--
+CaCO3 + SiO2 −−→ CaSiO3 + CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/4B58CE535517EA5DFB998B98A6248F6B.svg"
+   alt="\ce{CaCO3 + SiO2 -&gt; CaSiO3 + CO2}"
+   style=""
+   class="lateximage"
+></span> tief versenkt werden
+</p>
+
+<p>
+<b>Folgen der Plattentektonik</b>: driftende und wachsende Kontinente, wechselnde Verteilung von Land und Meer, wechselnde Stro&#x0308;mungs- und Verwitterungsmuster
+</p>
+
+<p>
+<b>Plattentektonik und Klima</b>: a&#x0308;quatorparallele Kontinentbarrieren verhindern Nord-Su&#x0308;d-Zirkulation und fu&#x0308;hren zu globaler Erwa&#x0308;rmung, Superkontinente oder Kontinente an den Polen
+fu&#x0308;hren zu globaler Abku&#x0308;hlung, Evolutionsanreize durch sta&#x0308;ndig wechselnde Umweltbedingungen
+</p>
+<div class="framed" >
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f6"><p><b>mit welcher plattentektonischen Situation ist mit einer Senkung des <span
+      id="lateximage-basic-principles-of-geosciences-102"
+      class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/3A08432C0511AC3361CB020E72E41EF8.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span>-Gehalts deutlich verknu&#x0308;pft</b>: <em>Gebirge in A&#x0308;quatorna&#x0308;he</em>
+</p>
+</li>
+</ul>
+
+</div>
+
+
+
+<h2 id="energie">Energie</h2>
+<b>Kohlenstoff-Reservoirs</b>: die gro&#x0308;ßten Kohlenstoff-Reservoirs stellen Karbonate (Kalke) und Biomineralien dar, dann folgen Ozeane und kontinentale Gewa&#x0308;sser, Gashydrate, Kohle, Bo&#x0308;den, lebende
+Biomasse, Atmospha&#x0308;re, Erdo&#x0308;l, Erdgas und schließlich Torf
+</p>
+
+<p>
+<b>Energiedichte geordneter Systeme</b>: Galaxien 1 · 10<sup>−4</sup>&#x202f;W/kg, Sterne 5 · 10<sup>−4</sup>&#x202f;W/kg, Planeten 8 · 10<sup>−3</sup>&#x202f;W/kg, Bakterien
+5 · 10<sup>−2</sup>&#x202f;W/kg, Tiere 2 · 10<sup>−1</sup>&#x202f;W/kg, Sa&#x0308;ugetiere 1&#x202f;W/kg, hochtechnisierte Zivilsation 250&#x202f;W/kg
+</p>
+
+<p>
+<b>Nachteile der Verbrennung von Kohlenwasserstoffen</b>: Verbrauch von Ressourcen, Freisetzung von <span
+    id="lateximage-basic-principles-of-geosciences-103"
+    class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/725A4192A256649862D52FF3824F9588.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span>, Abwa&#x0308;rme, selbst bei erfolgreicher <span
+   id="lateximage-basic-principles-of-geosciences-104"
+   class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/725A4192A256649862D52FF3824F9588.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span>-Verminderung bleibt das Problem der Abwa&#x0308;rme (69&#x202f;% der technologischen Abwa&#x0308;rme werden in Atmospha&#x0308;re, Hydrospha&#x0308;re und Bo&#x0308;den gespeichert, was eine <span
+   id="lateximage-basic-principles-of-geosciences-105"
+   class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/725A4192A256649862D52FF3824F9588.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span>-unabha&#x0308;ngige Nettoerwa&#x0308;rmung ergibt)
+</p>
+
+<p>
+<b><span
+      id="lateximage-basic-principles-of-geosciences-106"
+      class="lateximagesource"
+><!--
+CO2
+--><img
+   src="/class-notes/images/lectures/basic-principles-of-geosciences/3A08432C0511AC3361CB020E72E41EF8.svg"
+   alt="\ce{CO2}"
+   style=""
+   class="lateximage"
+></span>-neutrale, aber nicht wa&#x0308;rmeneutrale Energieerzeugung</b>: Kernkraft, tiefe Geothermie
+</p>
+
+<p>
+<b>wa&#x0308;rmeneutrale Energiequellen</b>: Sonnenlicht, Gezeiten, Wind und Wellen, Ozeane und flaches Grundwasser, Flu&#x0308;sse
+</p>
+
+<p>
+<b>Sonneneinstrahlung</b>: von der Leistung der Sonneneinstrahlung von 178&#x202f;000&#x202f;TW gehen knapp 76&#x202f;% durch Reflexion und Absorption verloren und weitere 23&#x202f;% durch Verdunstung, womit
+1,6&#x202f;% auf der Erdoberfla&#x0308;che verfu&#x0308;gbar sind (0,5&#x202f;% und 1,1&#x202f;% auf Kontinenten bzw. Ozeanen)
+</p>
+
+<p>
+<b>globale Prima&#x0308;rproduktion</b>: betra&#x0308;gt 100&#x202f;TW und wird u&#x0308;berwiegend durch zwei Gattungen von Cyanobakterien bewerkstelligt, der Stoffumsatz im Ozean ist 700 Mal ho&#x0308;her
+als auf Kontienten
+</p>
+
+<p>
+<b>zum Vergleich</b>: der Wa&#x0308;rmestrom aus dem Inneren der Erde betra&#x0308;gt 29&#x202f;TW bis 34&#x202f;TW, der zivilisatorische Wa&#x0308;rmestrom 10&#x202f;TW
+</p>
+<div class="framed" >
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f7"><p><b>Kohlenstoff-Reservoirs in der Erdkruste</b>:<br />
+<em>gro&#x0308;ßte sind Karbonate (Kalke), dann Ozeane, kleinste ist Torf</em>
+</p>
+</li>
+</ul>
+
+</div>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

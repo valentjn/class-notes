@@ -1,0 +1,2334 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\renewcommand {\A }{\mathcal {A}}\)
+
+\(\renewcommand {\C }{\mathcal {C}}\)
+
+\(\newcommand {\D }{\text {D}}\)
+
+\(\newcommand {\E }{\mathcal {E}}\)
+
+\(\renewcommand {\F }{\mathcal {F}}\)
+
+\(\renewcommand {\L }{\mathcal {L}}\)
+
+\(\renewcommand {\N }{\mathcal {N}}\)
+
+\(\renewcommand {\O }{\mathcal {O}}\)
+
+\(\renewcommand {\P }{\mathcal {P}}\)
+
+\(\renewcommand {\S }{\mathcal {S}}\)
+
+\(\newcommand {\T }{\mathcal {T}}\)
+
+\(\newcommand {\BB }{\mathbb {B}}\)
+
+\(\newcommand {\PP }{\mathbb {P}}\)
+
+\(\newcommand {\hol }{\text {höl}}\)
+
+\(\newcommand {\Lip }{\text {Lip}}\)
+
+\(\newcommand {\esssup }{\text {ess\,sup}}\)
+
+\(\newcommand {\loc }{\text {loc}}\)
+
+\(\newcommand {\supp }{\operatorname {supp}}\)
+
+\(\newcommand {\grad }{\operatorname {grad}}\)
+
+\(\renewcommand {\div }{\operatorname {div}}\)
+
+\(\newcommand {\rot }{\operatorname {rot}}\)
+
+\(\newcommand {\kin }{\text {kin}}\)
+
+\(\newcommand {\pot }{\text {pot}}\)
+
+\(\newcommand {\Bild }{\operatorname {Bild}}\)
+
+\(\newcommand {\Rang }{\operatorname {Rang}}\)
+
+\(\newcommand {\id }{\operatorname {id}}\)
+
+\(\newcommand {\sgn }{\operatorname {sgn}}\)
+
+\(\newcommand {\diam }{\operatorname {diam}}\)
+
+\(\newcommand {\argmin }{\operatorname {arg\,min}}\)
+
+\(\newcommand {\dcup }{\mathbin {\dot {\cup }}}\)
+
+\(\newcommand {\Span }{\operatorname {Span}}\)
+
+\(\newcommand {\Conv }{\operatorname {Conv}}\)
+
+\(\newcommand {\interior }{\operatorname {int}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f9::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f10::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f11::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f12::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f13::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f14::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f15::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f16::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f17::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f18::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f19::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f20::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f21::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f22::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f23::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f24::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f25::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f26::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f27::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f28::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f29::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f30::marker {
+  content:'•\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Das Ziel dieses Kapitels ist es, fu&#x0308;r die vier wichtigsten linearen PDEs die klassischen Lo&#x0308;sungen und deren Eigenschaften zu bestimmen. Dabei werden Invarianzen ausgenutzt, um die PDE zu
+vereinfachen. Außerdem werden die PDEs zweiter Ordnung klassifiziert.
+</p>
+
+
+
+<h2 id="advektionsgleichung">Advektionsgleichung</h2>
+
+</p>
+
+
+<h3 id="konstante-advektionsgeschwindigkeit">Konstante Advektionsgeschwindigkeit</h3>
+
+</p>
+
+
+<p>
+<b><span class="textsc" >Cauchy</span>problem fu&#x0308;r Advektionsgleichung</b>:&#x2003; Seien \(\Omega := \real ^d\), \(T := \infty \), \(\Omega _T := \Omega \times (0, T)\) \(b \in \real ^d\) die
+konst. <em><span class="dashuline" >Advektionsgeschwindigkeit</span></em> und \(u_0 \in \C ^1(\Omega )\) der <em><span class="dashuline" >Anfangswert</span></em>.<br />
+Das Problem, ein \(u \in \C ^1(\Omega _T) \cap \C ^0(\overline {\Omega _T})\) zu bestimmen mit \(\partial _t u + \div (bu) = 0\) in \(\Omega _T\) und \(u(\cdot , 0) = u_0\) in \(\Omega \), heißt <em><span
+class="dashuline" ><span class="textsc" >Cauchy</span>problem fu&#x0308;r die Advektionsgleichung</span></em>.
+</p>
+
+<p>
+<em>Bemerkung</em>: Diese Form der Advektionsgleichung heißt <em><span class="dashuline" >Divergenzform</span></em>/<em><span class="dashuline" >Erhaltungsform</span></em>.<br />
+In der Literatur findet man auch \(\partial _t u + b \nabla u = 0\). Fu&#x0308;r \(b\colon \Omega \to \real ^d\) <em><span class="dashuline" >divergenzfrei</span></em> (d.&#x202f;h. \(\div b = 0\)) sind beide
+Formen a&#x0308;quivalent, da \(\div (bu) = \cancel {(\div b) u} + b \nabla u = b \nabla u\).<br />
+Cauchyprobleme heißen auch <em><span class="dashuline" >Anfangswertprobleme (AWPs)</span></em>, im Gegensatz zu <em><span class="dashuline" >Anfangs-Randwertproblemen (ARWPs)</span></em> oder <em><span
+class="dashuline" >Randwertproblemen (RWPs)</span></em>.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Translationsinvarianz</span>):</span> Sei \(u\) eine klassische Lo&#x0308;sung des Cauchyproblems.<br />
+Dann gilt \(\forall _{(x, t) \in \Omega _T} \forall _{s \in (-t, T-t)}\; \frac {\d }{\ds } u(x + bs, t + s) = 0\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Die Linien \(\Gamma := \{(x_0 + bs, s) \;|\; s \in (0, T)\} \subset \Omega _T\), entlang denen eine klassische Lo&#x0308;sung des Cauchyproblems konstant ist, heißen <em><span
+class="dashuline" >charakteristische Kurven</span></em> oder <em><span class="dashuline" >Charakteristiken</span></em>.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Ex./Eind. der Traveling-Wave-Lo&#x0308;sung</span>):</span> Die Funktion \(u(x, t) := u_0(x - bt)\) ist die eindeutige Lo&#x0308;sung des
+Cauchyproblems und heißt <em><span class="dashuline" >Traveling-Wave-Lo&#x0308;sung</span></em>.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(L^\infty \)-Stabilita&#x0308;t</span>):</span> Fu&#x0308;r \(u_0 \in \C ^1(\Omega ) \cap L^\infty (\Omega )\) gilt fu&#x0308;r die
+Lo&#x0308;sung \(u\) des Cauchyproblems<br />
+\(\forall _{t \in (0, T)}\; \norm {u(\cdot , t)}_{L^\infty } \le \norm {u_0}_{L^\infty }\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Maximum-/Minimumprinzip</span>):</span> Fu&#x0308;r \(u_0 \in \C ^1(\Omega ) \cap L^\infty (\Omega )\) gilt fu&#x0308;r die Lo&#x0308;sung
+\(u\) des Cauchyproblems \(\forall _{(x, t) \in \Omega _T}\; \inf _{\overline {x} \in \Omega } u_0(\overline {x}) \le u(x, t) \le \sup _{\overline {x} \in \Omega } u_0(\overline {x})\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Die Lo&#x0308;sung nimmt ihr Maximum/Minimum auf dem Rand \(\partial \Omega _T\) an.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >st. Abh. von Anfangsdaten</span>):</span> Seien \(u, u’\) zwei Lo&#x0308;sungen des Cauchyproblems zu den Anfangsdaten \(u_0, u_0’ \in \C
+^1(\Omega ) \cap L^\infty (\Omega )\) mit identischem \(b\). Dann gilt<br />
+\(\forall _{t \in (0, T)}\; \norm {u(\cdot , t) - u’(\cdot , t)}_{L^\infty } \le \norm {u_0 - u_0’}_{L^\infty }\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >keine stetige Abha&#x0308;ngigkeit von \(b\)</span>):</span> Es existiert keine \(t\)-abha&#x0308;ngige Konstante \(C(t)\) mit \(\forall _{t \in (0,
+T)}\; \norm {u(\cdot , t) - u’(\cdot , t)}_\infty \le C(t) \norm {b - b’}\) fu&#x0308;r alle Anfangswerte \(u_0 \in \C ^1(\Omega ) \cap L^\infty (\Omega )\) mit \(\norm {u_0}_{L^\infty } \le 1\),
+wobei \(u, u’\) zwei Lo&#x0308;sungen des Cauchyproblems zu identischem \(u_0\), aber unterschiedlichem \(b, b’ \in \real ^d\) sind.
+</p>
+
+<p>
+<em>Bemerkung</em>: Damit existiert insbesondere keine \(t\)-unabha&#x0308;ngige Konstante. Die Einschra&#x0308;nkung \(\norm {u_0}_{L^\infty } \le 1\) ist erforderlich, weil die linke Seite mit \(\norm
+{u_0}_{L^\infty }\) skaliert. Der Satz zeigt, dass Transportprobleme ohne Diffusion bzgl. der Analysis unscho&#x0308;ne Eigenschaften haben ko&#x0308;nnen und spezielle analytische Werkzeuge erfordern, z.&#x202f;B. neue
+Normen (<em><span class="dashuline" >Totalvariation</span></em>) und Ra&#x0308;ume (<em><span class="dashuline" >BV-Ra&#x0308;ume</span></em>, Ra&#x0308;ume von Funktionen beschra&#x0308;nkter
+Variation).
+</p>
+
+
+
+<h3 id="verallgemeinerung-1-beschraenktes-gebiet">Verallgemeinerung 1: Beschränktes Gebiet</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Ist \(\Omega \) beschra&#x0308;nkt, so betrachte das ARWP \(\partial _t u + \div _x(bu) = 0\) in \(\Omega _T\), \(u(\cdot , 0) = u_0\) in \(\Omega \) und \(u = g\) auf \(\Gamma _\text {in}
+\times (0, T)\) mit Dirichlet-RBen (es sind aber auch Neumann-RBen oder gemischte RBen mo&#x0308;glich). Dabei bezeichnet \(\Gamma _\text {in}\) den sog. <em><span class="dashuline" >Einflussrand</span></em>
+\(\Gamma _\text {in} := \{x \in \partial \Omega \;|\; b^\tp n(x) &lt; 0\}\) (die Stellen auf dem Rand, auf denen \(b\) in \(\Omega \) hinein zeigt).
+</p>
+
+<p>
+Falls \(x - bt \notin \Omega \) ist, so gibt es einen Schnittpunkt der Charakteristik durch \((x, t)\) und dem Zylinderrand \(\partial \Omega \times [0, t)\). Der entsprechende Randwert wird in das Gebiet
+hineintransportiert, sodass man die Lo&#x0308;sungsformel \(u(x, t) := u_0(x - bt)\) fu&#x0308;r \(\forall _{s \in (0, t)}\; x - bs \in \Omega \) und<br />
+\(u(x, t) := g(x - b\overline {t}, t - \overline {t})\) mit \(\overline {t} := \min \{s \in (0, t) \;|\; x - bs \in \partial \Omega \}\) sonst (\(s = \overline {t}\) ist die Zeitspanne, die man
+zuru&#x0308;ckgehen muss, damit \(x - bs\) auf dem Rand liegt).
+</p>
+
+<p>
+Soll die Lo&#x0308;sung zu allen Zeiten stetig auf \(\overline {\Omega }\) sein (d.&#x202f;h. \(u(\cdot , t) \in \C ^0(\overline {\Omega })\)), dann du&#x0308;rfen keine Randwerte auf \(\partial \Omega
+\setminus \Gamma _\text {in}\) vorgegeben werden. Außerdem mu&#x0308;ssen Randwerte auf verschiedenen Zusammenhangskomponenten von \(\Gamma _\text {in}\) kompatibel sein, sonst ist keine Stetigkeit oder gar
+Diffb.keit zu erwarten. Zusa&#x0308;tzlich mu&#x0308;ssen Rand- und Anfangswerte miteinander kompatibel sein, um Stetigkeit/Diffb.keit der Lo&#x0308;sung zu ermo&#x0308;glichen, z.&#x202f;B. ist \(\forall _{x_0 \in
+\Gamma _\text {in}}\; \lim _{x \to x_0} u_0(x) = g(x_0, 0)\) notwendig fu&#x0308;r \(u\) stetig.
+</p>
+
+
+
+<h3 id="verallgemeinerung-2-reaktions-quellterm">Verallgemeinerung 2: Reaktions-/Quellterm</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Sei wieder \(\Omega := \real ^d\). Betrachte das AWP \(\partial _t u + \div (bu) = q\) in \(\Omega _T\) und \(u(\cdot , 0) = u_0\) in \(\Omega \) mit Quellterm \(q \in \C ^0(\Omega _T)\).
+Dann kann man die explizite Lo&#x0308;sung durch Integration u&#x0308;ber die Charakteristik erhalten: \(u(x, t) := u_0(x - bt) + \int _0^t q(x + (s-t)b, s)\ds \) fu&#x0308;r \((x, t) \in \Omega _T\).
+</p>
+
+
+
+<h3 id="verallgemeinerung-3-allgemeine-anfangsdaten">Verallgemeinerung 3: Allgemeine Anfangsdaten</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Auch unstetige Daten wie \(u_0(x) := \chi _{[-1,1]}(x)\) (fu&#x0308;r \(d = 1\)) sind physikalisch sinnvoll und die obige Lo&#x0308;sungsformel ist auch wohldefiniert. Allerdings ist die resultierende
+Lo&#x0308;sung nicht stetig diffb., d.&#x202f;h. keine klassische Lo&#x0308;sung. Deswegen sind verallgemeinerte Lo&#x0308;sungsbegriffe wie der einer schwachen Lo&#x0308;sung sinnvoll (siehe na&#x0308;chstes Kapitel).
+</p>
+
+
+
+<h3 id="verallgemeinerung-4-nicht-lineare-konvektion">Verallgemeinerung 4: Nicht-lineare Konvektion</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Seien nun \(\Omega := \real \) und \(\Omega _T := \Omega \times (0, T)\). Betrachte die Konvektionsgleichung \(\partial _t u + \partial _x(f(u)) = 0\) in \(\Omega _T\) und \(u(\cdot ,
+0) = u_0\) in \(\Omega \) mit \(f \in \C ^2(\real )\) nicht-linear.
+</p>
+
+<p>
+Zu einer Lo&#x0308;sung \(u \in \C ^1(\overline {\Omega _T})\) sei \(\gamma \in \C ^1((0, T))\) mit \(\gamma ’(t) = f’(u(\gamma (t), t))\) und \(\gamma (0) = x_0 \in \Omega \)<br />
+(\(\gamma \) existiert nach dem Satz von Picard-Lindelo&#x0308;f, weil \(f’\) L.-stetig in \(u(\gamma (t), t) \in [u_\text {min}, u_\text {max}]\) ist).<br />
+Dann kann man zu \(u\) Charakteristiken \(\Gamma := \{(\gamma (t), t) \;|\; t \in [0, T)\}\) definieren.<br />
+Die Lo&#x0308;sung \(u\) ist dann wieder konstant entlang Charakteristiken, da<br />
+\(\partial _t((\gamma (t), t)) \cdot \nabla _{(x,t)} u(\gamma (t), t) = (\gamma ’(t), 1) \cdot \left .(\partial _x u, \partial _t u)^\tp \right |_{(\gamma (t), t)} = (\partial _t u + \partial
+_x f(u))|_{(\gamma (t), t)} = 0\).<br />
+Wegen \(\gamma ’(t) = f’(u(\gamma (t), t))\) konstant (da \(u(\gamma (t), t)\) konstant) sind die Charakteristiken wieder Geraden, allerdings haben die Geraden i.&#x202f;A. jeweils eine andere Steigung \(\gamma ’(0)
+= f’(u_0(x_0))\).
+</p>
+
+<p>
+Die Lo&#x0308;sung \(u(x, t)\) ist wieder vollsta&#x0308;ndig durch \(u_0\) definiert, falls die Charakteristiken \(\Omega _T\) u&#x0308;berdecken, sich selbst aber untereinander nicht schneiden. Sonst ist die klassische
+Lo&#x0308;sung i.&#x202f;A. nur bis zu einer endlichen Zeit wohldefiniert. Zwei Charakteristiken ausgehend von \(x_0, x_0’\) schneiden sich genau dann, wenn \(x_0 + f’(u_0(x_0)) \overline {t} = x_0’ +
+f’(u_0(x_0’)) \overline {t}\) fu&#x0308;r eine Zeit \(\overline {t} \in (0, T)\). Durch Umformung bekommt man \(\overline {t} = \frac {x_0’ - x_0}{f’(u(x_0)) - f’(u(x_0’))} = -\frac {1}{f’’(v)}\)
+fu&#x0308;r ein \(v\) zwischen \(u(x_0)\) und \(u(x_0’)\).<br />
+Weil \(\overline {t} \in (0, T)\) gilt, ist es hinreichend, dass \(T \le \inf _{v \in \real } \frac {1}{|f’’(v)|} = (\norm {f’’}_\infty )^{-1}\), damit sich keine Charakteristiken in \(\Omega _T\) schneiden.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >lokale Existenz von klassischen Lo&#x0308;sungen</span>):</span><br />
+Seien \(f \in \C ^2(\real )\) und \(u_0 \in \C ^1(\Omega )\) mit \(\norm {f’’}_\infty , \norm {u_0’}_\infty &lt; \infty \).<br />
+Dann gilt \(\forall _{\overline {x} \in \real } \exists _{\varepsilon &gt; 0} \exists _{T &gt; 0} \exists _{u}\; \big [\text {$u$ klassische Lösung auf $B_\varepsilon (\overline {x}) \times
+(0, T)$}\big ]\),<br />
+wobei die Lo&#x0308;sung \(u(x, t) = u_0(x - tf’(u(x, t)))\) erfu&#x0308;llt.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Beispiel</em>: Betrachte die <em><span class="dashuline" ><span class="textsc" >Burgers</span>gleichung</span></em> \(\partial _t u + \partial _x (\frac {1}{2} u^2) = 0\), d.&#x202f;h. \(f(u) :=
+\frac {1}{2} u^2\).
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p>Verwendet man \(u_0(x) := x\), so erha&#x0308;lt man \(u(x, t) = u_0(x - t u(x, t)) = x - t u(x, t)\)<br />
+\(\iff u(x, t) = \frac {x}{t + 1}\) als Lo&#x0308;sung, die sogar auf \(\real \times (0, \infty )\) definiert ist.
+</p>
+</li>
+<li class="list-item-f1"><p>Verwendet man \(u_0(x) := -x\), so erha&#x0308;lt man analog \(u(x, t) = \frac {x}{t - 1}\). Diese Lo&#x0308;sung ist nur fu&#x0308;r \(T &lt; 1\) wohldefiniert, weil sich alle Charakteristiken in \((x, t) = (0,
+1)\) schneiden.
+</p>
+</li>
+</ul>
+
+<p>
+Trotz glatter Daten ko&#x0308;nnen sich also Unstetigkeiten entwickeln.
+</p>
+
+
+
+<h2 id="poisson-gleichung"><span style="font-variant: small-caps;">Poisson</span>-Gleichung</h2>
+
+</p>
+
+
+<h3 id="gleichung">Gleichung</h3>
+
+</p>
+
+
+<p>
+<b><span class="textsc" >Poisson</span>-/<span class="textsc" >Laplace</span>-Gleichung</b>:&#x2003; Fu&#x0308;r \(\Omega \subset \real ^d\) heißt \(-\Delta u = 0\) in \(\Omega \) <em><span
+class="dashuline" ><span class="textsc" >Laplace</span>-Gleichung</span></em> und fu&#x0308;r \(f\colon \Omega \to \real \) in \(\Omega \) heißt \(-\Delta u = f\) in \(\Omega \) <em><span
+class="dashuline" ><span class="textsc" >Poisson</span>-Gleichung</span></em>.
+</p>
+
+<p>
+<em>Bemerkung</em>: Lo&#x0308;sungseindeutigkeit ist ohne weitere RBen nicht zu erwarten (\(u(x) + (c + dx)\) ist Lo&#x0308;sung, wenn \(u\) Lo&#x0308;sung ist). Lo&#x0308;sungen der Laplace-Gleichung heißen auch
+<em><span class="dashuline" >harmonisch</span></em>.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Rotationsinvarianz</span>):</span> Seien \(\Omega , f\) <em><span class="dashuline" >rotationssymmetrisch</span></em>, d.&#x202f;h. es gibt ein \(O
+\in \real ^{d \times d} \setminus \{I_d\}\) orthogonal mit \(\Omega = O\Omega \) und \(f = f \circ O\), und \(u \in \C ^2(\Omega )\) eine klassische Lo&#x0308;sung der Poisson-Gleichung. Dann ist auch \(v \in
+\C ^2(\Omega )\) mit \(v(x) := u(Ox)\) eine klassische Lo&#x0308;sung.
+</p>
+
+<p>
+<em>Bemerkung</em>: Es gilt <em><span class="dashuline" >Translationsinvarianz</span></em>, d.&#x202f;h. ist \(t \in \real ^d \setminus \{0\}\) mit \(\Omega = \Omega + t\), \(f(\cdot ) = f(\cdot + t)\), dann
+ist auch \(v(x) := u(x + t)\) eine klassische Lo&#x0308;sung. Die Translations-/Rotationsinvarianz gilt insbesondere fu&#x0308;r die Laplace-Gleichung, weil \(f \equiv 0\) translations-/rotationsinvariant ist.
+</p>
+
+
+
+<h3 id="fundamentalloesung-der-laplace-gleichung">Fundamentallösung der <span style="font-variant: small-caps;">Laplace</span>-Gleichung</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Es soll eine explizite Lsg. \(u \in \C ^2(\Omega )\) fu&#x0308;r die Laplace-Gleichung hergeleitet werden, wobei \(\Omega := \real ^d \setminus \{0\}\). Sei \(u\) rot.symm., d.&#x202f;h. es gibt
+\(v \in \C ^2((0, \infty ))\) mit \(u(x) = v(\norm {x})\) fu&#x0308;r alle \(x \in \Omega \). Dann folgt mit \(r := \norm {x}\), dass \(\partial _{x_i} u(x) = v’(r) \cdot \frac {x_i}{r}\), also \(\partial
+_{x_i}^2 u(x) = v’’(r) \cdot \frac {x_i^2}{r^2} + v’(r) \cdot \frac {r - x_i^2/r}{r^2}\). Ist \(u\) harmonisch, so gilt \(0 = \Delta u(x) = v’’(r) + v’(r) \cdot \left (\frac {d}{r} - \frac
+{1}{r}\right ) = v’’(r) + v’(r) \cdot \frac {d-1}{r}\), womit man die DGL \(v’’(r) + v’(r) \cdot \frac {d-1}{r} = 0\) fu&#x0308;r \(v(r)\) erha&#x0308;lt. Sei \(v\) streng monoton, d.&#x202f;h. oBdA
+\(v’(r) &gt; 0\), dann bekommt man \((\ln (v’(r)))’ = \frac {v’’(r)}{v’(r)} = \frac {1-d}{r}\). Daraus folgt \(\ln (v’(r)) = (1 - d)\ln (r) + \ln (a) = \ln (ar^{1-d})\) mit \(a &gt; 0\). Man
+erha&#x0308;lt die DGL \(v’(r) = ar^{1-d}\) mit Lo&#x0308;sung \(v(r) = ar + b\) fu&#x0308;r \(d = 1\), \(v(r) = a\ln (r) + b\) fu&#x0308;r \(d = 2\) und \(v(r) = \frac {a}{(2-d) r^{d-2}} + b\)
+fu&#x0308;r \(d \ge 3\) mit \(b \in \real \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Fundamentallo&#x0308;sung</b>:&#x2003; Sei \(\Omega := \real ^d \setminus \{0\}\) mit \(d &gt; 1\). Dann heißt die Funktion \(\Phi \in \C ^\infty (\Omega )\) mit \(\Phi (x) := -\frac {1}{2\pi }
+\cdot \ln (\norm {x})\) fu&#x0308;r \(d = 2\) und \(\Phi (x) := \frac {1}{(d-2)\omega _d} \cdot \frac {1}{\norm {x}^{d-2}}\) fu&#x0308;r \(d \ge 3\) <em><span class="dashuline"
+>Fundamentallo&#x0308;sung</span></em> der Laplace-Gleichung mit \(\omega _d := |\partial B_1(0)|\) der Oberfla&#x0308;che der Einheitsspha&#x0308;re in \(\real ^d\).
+</p>
+
+<p>
+<em>Bemerkung</em>: \(\Phi \) hat in \(0\) eine Singularita&#x0308;t und ist eine klassische Lo&#x0308;sung der Laplace-Gleichung.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >Eigenschaften von \(\Phi \)</span>):
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f2"><p>   \(\forall _{\varepsilon &gt;0}\; \int _{B_\varepsilon (0)} \Phi (x)\dx &lt; \infty \),&#x2003;\(\int _{B_\varepsilon (0)} \Phi (x)\dx \xrightarrow {\varepsilon \to 0} 0\)
+</p>
+</li>
+<li class="list-item-f3"><p>   \(\Phi \in L^1_\loc (\real ^d)\)
+</p>
+</li>
+<li class="list-item-f4"><p>   \(\Phi (\varepsilon e_1) \varepsilon ^{d-1} \xrightarrow {\varepsilon \to 0} 0\)
+</p>
+</li>
+<li class="list-item-f5"><p>   \(\forall _{\varepsilon &gt;0}\; \int _{\partial B_\varepsilon (0)} \nabla \Phi (x) \cdot n\dsigma (x) = -1\)
+</p>
+</li>
+</ul>
+
+
+
+<h3 id="faltungsloesung-der-poisson-gleichung">Faltungslösung der <span style="font-variant: small-caps;">Poisson</span>-Gleichung</h3>
+
+</p>
+
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Faltung und Differentiation</span>):</span> Seien \(u \in L^1_\loc (\real ^d)\) und \(\phi \in \C ^m_0(\real ^d)\).<br />
+Dann gilt fu&#x0308;r die <em><span class="dashuline" >Faltung</span></em> \(u \ast \phi \) mit \((u \ast \phi )(x) := \int _{\real ^d} u(x-y)\phi (y) \dy = \int _{\real ^d} u(y)\phi (x-y) \dy \),
+dass \(u \ast \phi \in \C ^m(\real ^d)\) mit \(\forall _{|\beta | \le m}\; \partial ^\beta (u \ast \phi ) = u \ast \partial ^\beta \phi \).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Faltungslo&#x0308;sung</span>):</span> Seien \(\Omega := \real ^d\) mit \(d \ge 2\) und \(f \in \C ^2_0(\Omega )\).<br />
+Dann ist \(u := \Phi \ast f\) eine klassische Lo&#x0308;sung der Poisson-Gleichung.
+</p>
+
+
+
+<h3 id="mittelwerteigenschaftmaximumprinzip-harm-funktionen">Mittelwerteigenschaft/Maximumprinzip harm. Funktionen</h3>
+
+</p>
+
+
+<p>
+<b>Mittelwert</b>:&#x2003; Fu&#x0308;r \(K \subset \real ^d\) mit \(0 &lt; |K| &lt; \infty \) und \(u \in L^1(K)\) ist \(\fint _K u(x) \dx := \frac {1}{|K|} \int _K u(x) \dx \) der <em><span
+class="dashuline" >Mittelwert</span></em> von \(u\) auf \(K\). Analog ist fu&#x0308;r \(0 &lt; |\partial K| &lt; \infty \) und \(u \in L^1(\partial K)\) der Mittelwert von \(u\) auf \(\partial K\) definiert durch
+\(\fint _{\partial K} u(x) \dsigma (x) := \frac {1}{|\partial K|} \int _{\partial K} u(x) \dsigma (x)\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Mittelwerte harm. Fkt.en</span>):</span><br />
+Seien \(u \in \C ^2(\Omega )\) harmonisch, \(x \in \Omega \) und \(r &gt; 0\) mit \(\overline {B_r(x)} \subset \Omega \).<br />
+Dann ist \(\fint _{B_r(y)} u(y) \dy = u(x) = \fint _{\partial B_r(x)} u(y) \dsigma (y)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Maximumprinzip fu&#x0308;r harm. Fkt.en</span>):</span><br />
+Seien \(\Omega \subset \real ^d\) offen und beschra&#x0308;nkt sowie \(u \in \C ^2(\overline {\Omega })\) harmonisch. Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f6"><p>\(u\) nimmt das Maximum auf dem Rand an, d.&#x202f;h. \(\max _{x \in \overline {\Omega }} u(x) = \max _{x \in \partial \Omega } u(x)\).
+</p>
+</li>
+<li class="list-item-f7"><p>Wenn \(\Omega \) zusammenha&#x0308;ngend ist und \(\exists _{x \in \Omega }\; u(x) = \max _{y \in \overline {\Omega }} u(y)\), dann ist \(u\) konstant auf \(\Omega \).
+</p>
+</li>
+</ul>
+
+<p>
+<em>Bemerkung</em>: Analog gelten folgende Verallgemeinerungen.
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f8"><p><em><span class="dashuline" >verallg. Max.prinzip</span></em>:<br />
+Fu&#x0308;r \(u \in \C ^2(\Omega ) \cap \C ^0(\overline {\Omega })\) mit \(-\Delta u = f \le 0\) nimmt \(u\) das Maximum auf dem Rand an.
+</p>
+</li>
+<li class="list-item-f9"><p><em><span class="dashuline" >verallg. Min.prinzip</span></em>: wie eben mit \(-\Delta u = f \ge 0\) und Minimum
+</p>
+</li>
+<li class="list-item-f10"><p><em><span class="dashuline" >Vergleichsprinzip</span></em>: Fu&#x0308;r \(u, v \in \C ^2(\Omega ) \cap \C ^0(\overline {\Omega })\) mit \(-\Delta u \le -\Delta v\) in \(\Omega \) und \(u \le v\) auf
+\(\partial \Omega \) gilt \(u \le v\) in \(\Omega \) (wa&#x0308;hle \(w := u - v\) im verallg. Max.prinzip).
+</p>
+</li>
+</ul>
+
+
+
+<h3 id="eindeutigkeit-und-stetige-abhaengigkeit-beim-poisson-rwp">Eindeutigkeit und stetige Abhängigkeit beim <span style="font-variant: small-caps;">Poisson</span>-RWP</h3>
+
+</p>
+
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Eindeutigkeit</span>):</span> Seien \(\Omega \subset \real ^d\) offen und beschra&#x0308;nkt, \(g \in \C ^0(\partial \Omega )\) und \(f \in \C
+^0(\Omega )\).<br />
+Dann gibt es ho&#x0308;chstens eine Lo&#x0308;sung \(u \in \C ^2(\Omega ) \cap \C ^0(\overline {\Omega })\) des <em><span class="dashuline" ><span class="textsc" >Poisson</span>-RWPs</span></em><br
+/>
+\(-\Delta u = f\) in \(\Omega \) und \(u = g\) auf \(\partial \Omega \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >st. Abh. von Randdaten</span>):</span> Seien \(u, u’ \in \C ^2(\Omega ) \cap \C ^0(\overline {\Omega })\) Lsg.en des Poisson-RWPs mit identischem
+\(f \in \C ^0(\Omega )\), aber unterschiedlichem \(g, g’ \in \C ^0(\partial \Omega )\). Dann gilt \(\norm {u - u’}_\infty \le \norm {g - g’}_\infty \).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >st. Abh. von rechter Seite</span>):</span> Seien \(u, u’ \in \C ^2(\Omega ) \cap \C ^0(\overline {\Omega })\) Lo&#x0308;sungen des Poisson-RWPs
+mit identischem \(g \in \C ^0(\partial \Omega )\), aber unterschiedlichem \(f, f’ \in \C ^0(\Omega )\).<br />
+Dann gilt \(\norm {u - u’}_\infty \le C \norm {f - f’}_\infty \) mit \(C := \frac {R^2}{2}\) und \(R := \sup _{x \in \Omega } \norm {x}\).
+</p>
+
+
+
+<h3 id="regularitaet">Regularität</h3>
+
+</p>
+
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(\C ^\infty \)-Regularita&#x0308;t</span>):</span> Seien \(\Omega := \real ^d\) und \(u \in \C ^2(\Omega )\) harmonisch. Dann ist \(u \in \C
+^\infty (\Omega )\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>\(\varepsilon \)-Gla&#x0308;ttungskern</b>:&#x2003; Sei \(\eta \in \C ^\infty _0(\real ^d)\) definiert durch \(\eta (x) := c \exp \!\left (\frac {1}{\norm {x}^2 - 1}\right )\) fu&#x0308;r \(\norm
+{x} &lt; 1\) und \(\eta (x) := 0\) sonst, wobei \(c \in \real \) mit \(\int _{\real ^n} \eta (x) \dx = 1\).<br />
+Dann ist fu&#x0308;r \(\varepsilon &gt; 0\) der <em><span class="dashuline" >\(\varepsilon \)-Gla&#x0308;ttungskern</span></em> \(\eta _\varepsilon \in \C ^\infty _0(\real ^d)\) definiert durch \(\eta
+_\varepsilon (x) := \frac {1}{\varepsilon ^d} \eta (x/\varepsilon )\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Es gilt \(\int _{\real ^d} \eta _\varepsilon (x) \dx = 1\) und \(\supp (\eta _\varepsilon ) = \overline {B_\varepsilon (0)}\).
+</p>
+
+<p>
+<b><span class="textsc" >Friedrichs</span>gla&#x0308;ttung</b>:&#x2003; Fu&#x0308;r \(u \in L^1_\loc (\real ^d)\) und \(\varepsilon &gt; 0\) heißt \(u_\varepsilon := u \ast \eta _\varepsilon \)
+<em><span class="dashuline" ><span class="textsc" >Friedrichs</span>gla&#x0308;ttung</span></em>.
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >Gla&#x0308;ttungseigenschaft</span>): Es gilt \(u_\varepsilon \in \C ^\infty (\real ^d)\).
+</p>
+
+
+
+<h2 id="diffusionsgleichungwaermeleitungsgleichung">Diffusionsgleichung/Wärmeleitungsgleichung</h2>
+
+</p>
+
+
+<h3 id="gleichung">Gleichung</h3>
+
+</p>
+
+
+<p>
+<b>Diffusionsgleichung/instat. Wa&#x0308;rmeleitungsgleichung</b>:&#x2003;<br />
+Fu&#x0308;r \(\Omega \subset \real ^d\), \(T \in (0, \infty ]\) und \(\Omega _T := \Omega \times (0, T)\) heißt \(\partial _t u - \Delta u = 0\) in \(\Omega _T\) <em><span class="dashuline"
+>Diffusionsgleichung</span></em> oder <em><span class="dashuline" >instat. Wa&#x0308;rmeleitungsgleichung</span></em>.
+</p>
+
+<p>
+<em>Bemerkung</em>:<br />
+Fu&#x0308;r \(\Omega = \real ^d\) betrachtet man das Cauchy-Problem (AWP) mit Anfangswerten \(u(\cdot , 0) = u_0\) in \(\Omega \) und fu&#x0308;r \(\Omega \subsetneqq \real ^d\) das ARWP \(u(\cdot , 0) =
+u_0\) in \(\Omega \) und \(u(x, t) = g(x, t)\) fu&#x0308;r \((x, t) \in \partial \Omega \times (0, T)\).<br />
+Ebenfalls mo&#x0308;glich ist \(\partial _t u - \Delta u = f\) in \(\Omega _T\) (inhomogene Gleichung).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Skalierungsinvarianz</span>):</span><br />
+Seien \(\Omega := \real ^d\), \(T := \infty \) und \(u \in \C ^2(\Omega _T)\) eine klassische Lo&#x0308;sung der Diffusionsgleichung.<br />
+Dann ist fu&#x0308;r \(\lambda \in \real \) auch \(u_\lambda \) eine klassische Lo&#x0308;sung mit \(u_\lambda (x, t) := u(\lambda x, \lambda ^2 t)\).
+</p>
+
+
+
+<h3 id="fundamentalloesungfaltungsloesung-der-diffusionsgleichung">Fundamentallösung/Faltungslösung der Diffusionsgleichung</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Die Fundamentallo&#x0308;sung soll rot.inv. und <em><span class="dashuline" >selbsta&#x0308;hnlich</span></em> (\(u(x, t) = C(t, \lambda ) u(\lambda x, \lambda ^2 t)\)) sein und die
+<em><span class="dashuline" >Erhaltungseigenschaft</span></em> \(\forall _{t &gt; 0}\; \int _{\real ^d} u(x, t) \dx = 1\) erfu&#x0308;llen. Dafu&#x0308;r ist der Ansatz<br />
+\(u(x, t) := \gamma (t) v(\frac {\norm {x}^2}{t})\) mit \(\gamma (t) &gt; 0\) geeignet (selbsta&#x0308;hnlich mit \(C(t, \lambda ) := \frac {\gamma (t)}{\gamma (\lambda ^2 t)}\)). \(\gamma \) ergibt sich
+aus \(1 = \gamma (t) \int _{\real ^d} v(\frac {\norm {x}^2}{t}) \dx = \gamma (t) t^{d/2} C_v\) mit \(C_v := \int _{\real ^d} v(\norm {x’}^2) \dx ’\). Fu&#x0308;r \(v\) benutzt man die PDE, also
+\(\partial _t u(x, t) = \gamma ’(t) v(s) - \gamma (t) v’(s) \frac {s}{t}\), \(\partial _{x_i} u(x, t) = \gamma (t) v’(s) \frac {2x_i}{t}\), \(\partial _{x_i}^2 u(x, t) = \gamma (t) \cdot (v’(s)
+\frac {2}{t} + v’’(s) \frac {4x_i^2}{t^2})\) und somit \(0 = \partial _t u(x, t) - \Delta u(x, t) = \gamma (t) (-v’(s) \frac {s}{t} - v’(s) \frac {2d}{t} - v’’(s) \frac {4s}{t}) + \gamma ’(t)
+v(s)\) mit \(s := \frac {\norm {x}^2}{t}\). Durch Einsetzen von \(\gamma (t)\) und \(\gamma ’(t) = -\frac {d}{2C_v t^{d/2+1}}\) erha&#x0308;lt man \(0 = \frac {d}{2} v(s) + (s + 2d) v’(s) + 4s
+v’’(s)\). Diese ODE fu&#x0308;r \(v\) lo&#x0308;st man mit dem Ansatz \(v(s) := be^{as}\) mit \(a, b \in \real \). Man bekommt dann \(0 = v(s) \cdot (s \cdot (4a + 1)a + (2a + \frac {1}{2})d) \iff a =
+-\frac {1}{4}\), also \(v(s) = be^{-s/4}\). Es gilt daher<br />
+\(C_v = \int _{\real ^d} be^{-\norm {x}^2/4} \dx = b (4\pi )^{d/2}\) sowie \(\gamma (t) = \frac {1}{b(4\pi t)^{d/2}}\) und \(u(x, t) = \frac {1}{(4\pi t)^{d/2}} e^{-\norm {x}^2/(4t)}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Fundamentallo&#x0308;sung</b>:&#x2003; Seien \(\Omega := \real ^d\) und \(T := \infty \). Dann heißt die Funktion \(\Phi \in \C ^\infty (\Omega _T)\) mit \(\Phi (x, t) := \frac {1}{(4\pi t)^{d/2}}
+e^{-\norm {x}^2/(4t)}\) <em><span class="dashuline" >Fundamentallo&#x0308;sung</span></em> der Diffusionsgleichung/<em><span class="dashuline" >Wa&#x0308;rmeleitungskern</span></em>.
+</p>
+
+<p>
+<em>Bemerkung</em>: \(\Phi \) ist eine klassische Lo&#x0308;sung der Wa&#x0308;rmeleitungsgleichung und erfu&#x0308;llt<br />
+\(\forall _{t &gt; 0}\; \int _{\real ^d} \Phi (x, t) \dx = 1\) (<em><span class="dashuline" >Erhaltungseigenschaft</span></em>) sowie \(\forall _{\beta \in \natural _0^{d+1}} \forall _{\delta &gt;
+0}\; \partial ^\beta \Phi \in L^\infty (\Omega \times [\delta , \infty ))\).<br />
+Allerdings gilt \(\lim _{t \to 0} \Phi (x, t) = 0\) fu&#x0308;r \(x \not = 0\), aber \(\lim _{t \to 0} \Phi (0, t) = \infty \), d.&#x202f;h. \(\Phi \notin \C ^0(\overline {\Omega _T})\). Insbesondere ist
+\(\Phi \) keine klassische Lo&#x0308;sung des AWPs (erfu&#x0308;llt Anfangswert \(\delta _0\) im Distributionssinn). Eine klassische Lo&#x0308;sung des AWPs erha&#x0308;lt man mittels Faltung.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Faltungslo&#x0308;sung</span>):</span><br />
+Seien \(\Omega := \real ^d\), \(T := \infty \), \(u_0 \in L^\infty (\Omega )\) sowie \(u\colon \Omega _T \to \real \) mit \(u(\cdot , t) := \Phi (\cdot , t) \ast u_0\). Dann gilt
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f11"><p>\(u \in \C ^\infty (\Omega _T)\),
+</p>
+</li>
+<li class="list-item-f12"><p>\(u\) klassische Lo&#x0308;sung der Wa&#x0308;rmeleitungsgleichung und
+</p>
+</li>
+<li class="list-item-f13"><p>fu&#x0308;r \(u_0 \in \C ^0(\real ^d)\), dass \(\forall _{\overline {x} \in \Omega }\; \lim _{(x, t) \to (\overline {x}, 0)} u(x, t) = u_0(\overline {x})\).
+</p>
+</li>
+</ul>
+
+<p>
+<em>Bemerkung</em>: Teil <em>(1)</em> gilt z.&#x202f;B. auch, wenn \(u_0\) unstetig ist. Dies nennt man den <em><span class="dashuline" >gla&#x0308;ttenden/regularisierenden Effekt</span></em> der
+Diffusionsgleichung.<br />
+Wegen \(u(x, t) = \int _{\real ^d} \Phi (x - y, t) u_0(y) \dy \) und \(\Phi (x, t) &gt; 0\) fu&#x0308;r alle \((x, t) \in \Omega _T\) tra&#x0308;gt jeder Punktwert \(u_0(x)\) zu jedem spa&#x0308;teren
+Wert \(u(x’, t)\) fu&#x0308;r \(t &gt; 0\) bei, insbesondere auch, wenn \(x’\) beliebig weit von \(x\) entfernt und \(t\) beliebig klein ist. Man nennt dies <em><span class="dashuline" >unendliche
+Ausbreitungsgeschwindigkeit</span></em>.
+</p>
+
+
+
+<h3 id="eigenschaften-der-loesung">Eigenschaften der Lösung</h3>
+
+</p>
+
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(L^\infty \)-Beschra&#x0308;nktheit</span>):</span> Seien \(\Omega := \real ^d\) und \(u\) die Faltungslo&#x0308;sung fu&#x0308;r die
+Anfangswerte \(u_0\).<br />
+Dann gilt \(\forall _{t &gt; 0}\; \norm {u(\cdot , t)}_{L^\infty (\Omega )} \le \norm {u_0}_{L^\infty (\Omega )}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Eindeutigkeit fu&#x0308;r ARWPs</span>):</span> Sei \(\Omega \subset \real ^d\) ein Lipschitz-Gebiet.<br />
+Dann gibt es ho&#x0308;chstens eine klassische Lo&#x0308;sung des inhomogenen ARWPs<br />
+\(\partial _t u - \Delta u = f\) in \(\Omega _T\), \(u(\cdot , 0) = u_0\) in \(\Omega \) und \(u(x, t) = g(x, t)\) auf \(\partial \Omega \times (0, T)\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Die Aussage gilt a&#x0308;hnlich auch fu&#x0308;r Neumann-/Robin-RBen, aber sie sagt nichts u&#x0308;ber Existenz von Lo&#x0308;sungen aus (z.&#x202f;B. mindestens Stetigkeit und
+Kompatibilita&#x0308;t von \(u_0\) und \(g\) erforderlich).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Maximumprinzip</span>):</span> Sei u eine klassische Lo&#x0308;sung des ARWPs \(\partial _t u - \Delta u = 0\) in \(\Omega _T\),<br />
+\(u(\cdot , 0) = u_0\) in \(\Omega \) und \(u(x, t) = g(x, t)\) auf \(\partial \Omega \times (0, T)\).<br />
+Dann nimmt \(u\) sein Maximum (und Minimum) auf dem <em><span class="dashuline" >parabolischen Rand</span></em><br />
+\(\Gamma := (\Omega \times \{0\}) \cup (\partial \Omega \times [0, T])\) an.
+</p>
+
+
+
+<h3 id="konvergenz-gegen-die-stationaere-loesung">Konvergenz gegen die stationäre Lösung</h3>
+
+</p>
+
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Poincaré</span>-Ungleichung</span>):</span> Sei \(\Omega \subset \real ^d\) ein Lipschitz-Gebiet. Dann gibt es eine kleinste
+<em><span class="dashuline" ><span class="textsc" >Poincaré</span>-Konstante</span></em> \(c_p = c_p(\Omega ) &gt; 0\) mit \(\forall _{w \in \C ^1_0(\Omega )}\; \int _\Omega w(x)^2 \dx \le c_p
+\int _\Omega \norm {\nabla w(x)}^2 \dx \)<br />
+(oder kurz \(\norm {w}_{L^2(\Omega )}^2 \le c_p \norm {\nabla w}_{L^2(\Omega )}^2\)).
+</p>
+
+<p>
+<em>Bemerkung</em>: Die Poincaré-Ungleichung gilt bereits fu&#x0308;r \(w \in \C ^1(\Omega )\) mit \(w|_{\partial \Omega } = 0\).<br />
+Hat \(w\) keine Nullrandwerte, dann gilt die Poincaré-Ungleichung i.&#x202f;A. nicht mehr. Setzt man z.&#x202f;B. \(w(x) :\equiv c\) mit \(c \not = 0\), dann ist \(\int _\Omega w(x)^2 \dx = c^2 |\Omega | &gt; 0\),
+aber \(\int _\Omega \norm {\nabla w(x)}^2 \dx = 0\).<br />
+Ein Beweis fu&#x0308;r \(\Omega = (0, 1)\) sieht wie folgt aus: Es gilt \(w(x) = \int _0^x w’(\xi ) \dxi \), weil \(w(0) = 0\). Nach Cauchy-Schwarz folgt \(|w(x)|^2 = |\int _0^x 1 \cdot w’(\xi ) \dxi |^2 \le
+(\int _0^x |1|^2 \dxi ) \cdot (\int _0^x |w’(\xi )|^2 \dxi )\)<br />
+\(\le x \cdot (\int _0^1 |w’(\xi )|^2 \dxi )\). Durch Integration folgt \(\int _0^1 |w(x)|^2 \dx \le (\int _0^1 x \dx ) \cdot (\int _0^1 |w’(\xi )|^2 \dxi )\)<br />
+\(= \frac {1}{2} \int _0^1 |w’(\xi )|^2 \dxi \), also ist \(c_p \le \frac {1}{2}\) fu&#x0308;r \(\Omega = (0, 1)\). (Genauer gilt \(c_p = \frac {1}{\pi ^2}\).)
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Konvergenz gegen stationa&#x0308;re Lo&#x0308;sung</span>):</span><br />
+Seien \(\Omega \subset \real ^d\) ein Lipschitz-Gebiet, \(f\), \(g\) zeitunabha&#x0308;ngig, \(u(x, t)\) klassische Lo&#x0308;sung des inhomogenen ARWPs \(\partial _t u - \Delta u = f\) in \(\Omega _T\),
+\(u(\cdot , 0) = u_0\) in \(\Omega \) und \(u(x, t) = g\) auf \(\partial \Omega \times (0, T)\) sowie<br />
+\(\overline {u}(x)\) klassische Lo&#x0308;sung des <em><span class="dashuline" >stat. <span class="textsc" >Poisson</span>-Problems</span></em> \(-\Delta \overline {u} = f\) in \(\Omega \) und \(\overline
+{u} = g\) auf \(\partial \Omega \).<br />
+Dann konvergiert \(u\) exp. gegen \(\overline {u}\), genauer \(\forall _{t \in (0, T)}\; \norm {u(\cdot , t) - \overline {u}}_{L^2(\Omega )}^2 \le e^{-2t/c_p} \norm {u_0 - \overline {u}}_{L^2(\Omega
+)}^2\)<br />
+mit \(c_p = c_p(\Omega )\) der Poincaré-Konstanten von \(\Omega \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Man kann die Diffusionsgleichung auch verallgemeinern. Ist \(D &gt; 0\) die <em><span class="dashuline" >Diffusionskonstante</span></em>, dann betrachtet man \(\partial _t u - D\Delta u =
+0\). Die <em><span class="dashuline" >allgemeine Fundamentallo&#x0308;sung</span></em> ist dann \(u(x, t) := \frac {1}{(4\pi Dt)^{d/2}} \exp (-\frac {\norm {x}^2}{4Dt})\). Die Aussage u&#x0308;ber die
+Konvergenz gegen die stationa&#x0308;re Lo&#x0308;sung wird zu \(\forall _{t &gt; 0}\; \norm {u(\cdot , t) - \overline {u}}_{L^2(\Omega )}^2 \le e^{-2Dt/c_p} \norm {u_0 - \overline {u}}_{L^2(\Omega
+)}^2\). Ist also \(D &gt; 1\), dann ist die Fundamentallo&#x0308;sung sta&#x0308;rker gla&#x0308;ttend bzw. die Lo&#x0308;sung fa&#x0308;llt schneller gegen die stationa&#x0308;re Lo&#x0308;sung ab.
+</p>
+
+
+
+<h2 id="wellengleichung">Wellengleichung</h2>
+
+</p>
+
+
+<h3 id="gleichung">Gleichung</h3>
+
+</p>
+
+
+<p>
+<b>Wellengleichung</b>:&#x2003;<br />
+Fu&#x0308;r \(\Omega := \real ^d\), \(T \in (0, \infty ]\), \(\Omega _T := \Omega \times (0, T)\), \(c &gt; 0\) und Anfangswerte \(u_0 \in \C ^2(\Omega ), v_0 \in \C ^1(\Omega )\) heißt das Problem, ein
+\(u \in \C ^2(\Omega _T) \cap \C ^1(\overline {\Omega _T})\) zu finden mit \(\partial _t^2 u - c^2 \Delta u = 0\) in \(\Omega _T\), \(u(\cdot , 0) = u_0\) in \(\Omega \) und \(\partial _t u(\cdot , 0) =
+v_0\) in \(\Omega \), <em><span class="dashuline" ><span class="textsc" >Cauchy</span>-Problem fu&#x0308;r die Wellengleichung</span></em>.
+</p>
+
+<p>
+<em>Bemerkung</em>: Fu&#x0308;r \(c = 1\) ist die Gleichung <em>nicht</em> a&#x0308;quivalent zu \(-\Delta _{(x,t)} u = 0\), weil das Vorzeichen von \(\partial _t^2 u\) umgekehrt ist.
+</p>
+
+
+
+<h3 id="1d-loesung-fuer-v0-0-oder-u0-0">1D-Lösung für v₀ = 0 oder u₀ = 0</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Im Folgenden wird eine Lo&#x0308;sung fu&#x0308;r \(d = 1\) konstruiert. Zuna&#x0308;chst wird die PDE umgeschrieben in ein System 1. Ordnung. Dazu seien \(w_1 := \partial _t u\) und \(w_2
+:= \partial _x u\).<br />
+Es gilt \(\partial _t w_1 - c^2 \partial _x w_2 = 0\), wobei \(w_1(\cdot , 0) = v_0\) und \(w_2(\cdot , 0) = \partial _x u_0 = u_0’\) in \(\Omega \).<br />
+Mit \(w := \smallpmatrix {w_1\\w_2}\), \(A := \smallpmatrix {0&amp;-c^2\\-1&amp;0}\) und \(w_0 := \smallpmatrix {v_0\\u_0’}\) ergibt sich \(\partial _t w + A \partial _x w = 0\), \(w(\cdot , 0) = w_0\)
+in \(\Omega \), weil \(\partial _x w_1 = \partial _t w_2\) (wegen \(u \in \C ^2(\Omega _T)\)).<br />
+\(A\) ist diagonalisierbar mit \(A = R\Lambda R^{-1}\) sowie \(\Lambda := \smallpmatrix {-c&amp;0\\0&amp;c}\), \(R := \smallpmatrix {c&amp;-c\\1&amp;1}\) und \(R^{-1} = \frac {1}{2c} \smallpmatrix
+{1&amp;c\\-1&amp;c}\).<br />
+Durch die Koordinatentransformation \(z := R^{-1} w\) erha&#x0308;lt man \(\partial _t Rz + R\Lambda R^{-1} \partial _x Rz = 0\) und \(z(\cdot , 0) = z_0\) in \(\Omega \) mit \(z_0 = \smallpmatrix
+{z_{0,1}\\z_{0,2}} := R^{-1} w_0\). Multipliziert man von links mit \(R^{-1}\), so bekommt man \(\partial _t z + \Lambda \partial _x z = 0\) und \(z(\cdot , 0) = z_0\) in \(\Omega \). Ausgeschrieben
+erha&#x0308;lt man also zwei entkoppelte Advektionsgleichungen \(\partial _t z_1 - c \partial _x z_1 = 0\), \(z_1(\cdot , 0) = z_{0,1}\) sowie \(\partial _t z_2 + c \partial _x z_2 = 0\), \(z_2(\cdot , 0)
+= z_{0,2}\).<br />
+Mittels der Methode der Charakteristiken kann man eine explizite Lo&#x0308;sung ermitteln als<br />
+\(z(x, t) = \smallpmatrix {z_{0,1} (x - (-c)t)\\z_{0,2} (x - ct)} = \smallpmatrix {z_{0,1} (x + ct)\\z_{0,2} (x - ct)}\), wobei \(z_0 = R^{-1} w_0 = \frac {1}{2c} \smallpmatrix {w_{0,1} +
+cw_{0,2}\\-w_{0,1} + cw_{0,2}}\).<br />
+Man erha&#x0308;lt \(z(x, t) = \frac {1}{2c} \smallpmatrix {w_{0,1} (x + ct) + cw_{0,2} (x + ct)\\ -w_{0,1} (x - ct) + cw_{0,2} (x - ct)}\) bzw. \(w(x, t) = \frac {1}{2c} \smallpmatrix
+{c&amp;-c\\1&amp;1} \smallpmatrix {v_0 (x + ct) + c u_0’ (x + ct)\\-v_0 (x - ct) + c u_0’ (x - ct)}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f14"><p><b>Spezialfall: \(v_0 = 0\)</b><br />
+In diesem Fall ist \(w(x, t) = \frac {1}{2} \smallpmatrix {cu_0’(x+ct) - cu_0’(x-ct)\\u_0’(x+ct) + u_0’(x-ct)}\), also \(\partial _x u(x, t) = \frac {1}{2} (u_0’(x+ct) + u_0’(x-ct))\) und damit \(u(x,
+t) = \frac {1}{2} (u_0(x+ct) + u_0(x-ct)) + K(t)\) mit geeignetem \(K(t) \in \real \). Fu&#x0308;r \(t = 0\) erha&#x0308;lt man \(u_0(x) = u(x, 0) = u_0(x) + K(0) \iff K(0) = 0\). Fu&#x0308;r \(t &gt;
+0\) erha&#x0308;lt man durch \(\partial _t\) auf \(u(x, t)\), dass \(\frac {\d }{\dt } K(t) = \partial _t u(x, t) - \frac {c}{2} (u_0’(x+ct) - u_0’(x-ct)) = \partial _t u(x, t) - w_1(x, t) \equiv
+0\), d.&#x202f;h. \(K(t) \equiv 0\).<br />
+Somit ist \(u(x, t) = \frac {1}{2} (u_0(x+ct) + u_0(x-ct))\) eine notwendige Bedingung fu&#x0308;r die Lo&#x0308;sung, die auch hinreichend ist (U&#x0308;berpru&#x0308;fung durch Einsetzen in PDE). Damit ist
+eine eindeutige Lo&#x0308;sung fu&#x0308;r \(v_0 = 0\) gefunden.
+</p>
+</li>
+<li class="list-item-f15"><p><b>Spezialfall: \(u_0 = 0\)</b><br />
+In diesem Fall ist \(w(x, t) = \frac {1}{2c} \smallpmatrix {cv_0(x+ct) + cv_0(x-ct)\\v_0(x+ct) - v_0(x-ct)}\), also \(\partial _x u(x, t) = \frac {1}{2c} (v_0(x+ct) - v_0(x-ct))\) und damit \(u(x, t) =
+\frac {1}{2c} \left (\int _0^{x+ct} v_0(s) \ds - \int _0^{x-ct} v_0(s) \ds \right ) + K(t)\) mit geeignetem \(K(t) \in \real \), weil aus \(g(x) := \int _0^{z(x)} v_0(s) \ds \) folgt \(g’(x) = z’(x)
+v_0(z(x))\).<br />
+Fu&#x0308;r \(t = 0\) erha&#x0308;lt man \(0 = u_0(x) = u(x, 0) = 0 + K(0) \iff K(0) = 0\). Fu&#x0308;r \(t &gt; 0\) erha&#x0308;lt man durch \(\partial _t\) auf \(u(x, t)\), dass \(\frac {\d }{\dt }
+K(t) = \partial _t u(x, t) - \frac {1}{2c} (c v_0(x+ct) - (-c) v_0(x-ct))\)<br />
+\(= \partial _t u(x, t) - \frac {1}{2} (v_0(x+ct) + v_0(x-ct)) = \partial _t u(x, t) - w_1(x, t) \equiv 0\), d.&#x202f;h. \(K(t) \equiv 0\).<br />
+Somit ist \(u(x, t) = \frac {1}{2c} \int _{x-ct}^{x+ct} v_0(s) \ds \) eine notwendige Bedingung fu&#x0308;r die Lo&#x0308;sung, die ebenfalls wieder hinreichend ist. Damit ist eine eindeutige Lo&#x0308;sung
+fu&#x0308;r \(u_0 = 0\) gefunden.
+</p>
+</li>
+</ul>
+
+
+
+<h3 id="dalembertsche-formel-fuer-1d"><span style="font-variant: small-caps;">d’Alembert</span>sche Formel für 1D</h3>
+
+</p>
+
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Ex. + Eind., <span class="textsc" >d’Alembert</span>sche Formel fu&#x0308;r \(d = 1\)</span>):</span> Fu&#x0308;r \(\Omega := \real \) ist die
+eindeutige klassische Lo&#x0308;sung des AWPs gegeben durch \(u(x, t) = \frac {1}{2} (u_0(x+ct) - u_0(x-ct)) + \frac {1}{2c} \int _{x-ct}^{x+ct} v_0(s) \ds \).
+</p>
+
+<p>
+<em>Bemerkung</em>:<br />
+Die Notwendigkeit von \(u_0 \in \C ^2(\Omega )\) und \(v_0 \in \C ^1(\Omega )\) wird jetzt klar, denn dann gilt \(u \in \C ^2(\Omega )\).<br />
+Die Wellengleichung hat keinen regularisierenden Effekt, da \(u\) nicht glatter als die Anfangsdaten.<br />
+Fu&#x0308;r \(d &gt; 1\) gibt es ebenfalls Lo&#x0308;sungsformeln (die allerdings viel komplizierter sind).
+</p>
+
+<p>
+<em>Bemerkung</em>: <em><span class="dashuline" >Stehende Wellen</span></em>, die man z.&#x202f;B. bei schwingenden Saiten beobachten kann, lassen sich mit der d’Alembertschen Formel erkla&#x0308;ren. Mit
+\(u_0(x) := \sin (\omega t)\) fu&#x0308;r ein \(\omega \not = 0\) und \(v_0 :\equiv 0\) erha&#x0308;lt man \(u(x, t) = \frac {1}{2} (\sin (\omega (x+ct)) + \sin (\omega (x-ct))) = \sin (\omega x)
+\cos (\omega ct)\) (mit dem Additionstheorem), d.&#x202f;h. eine U&#x0308;berlagerung zweier laufender Sinuswellen ergibt eine stehende Welle, denn fu&#x0308;r \(\omega x \in \pi \integer \) ist \(u(x, t) = 0\)
+fu&#x0308;r alle \(t \ge 0\).
+</p>
+
+
+
+<h3 id="eigenschaften-der-1d-loesung">Eigenschaften der 1D-Lösung</h3>
+
+</p>
+
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(L^\infty \)-Stabilita&#x0308;t</span>):</span> Seien \(\Omega := \real \), \(u_0 \in \C ^2(\Omega ) \cap L^\infty (\Omega )\) und \(v_0 \in
+\C ^1(\Omega ) \cap L^1(\Omega )\).<br />
+Dann erfu&#x0308;llt die Lo&#x0308;sung \(u\) des AWPs \(\forall _{t \ge 0}\; \norm {u(\cdot , t)}_{L^\infty (\Omega )} \le \norm {u_0}_{L^\infty (\Omega )} + \frac {1}{2c} \norm {v_0}_{L^1(\Omega
+)}\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Es gilt kein Max.prinzip, denn trotz \(u_0 = 0\) kann \(u(\cdot , t) \not = 0\) gelten (wenn \(v_0 \not = 0\)).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >st. Abh. von Anfangsdaten</span>):</span> Seien \(\Omega := \real \), \(u, \overline {u}\) Lo&#x0308;sungen des AWPs mit identischem \(c\), aber
+unterschiedlichem \(u_0, \overline {u_0} \in \C ^2(\Omega ) \cap L^\infty (\Omega )\) und \(v_0, \overline {v_0} \in \C ^1(\Omega ) \cap L^1(\Omega )\).<br />
+Dann gilt \(\exists _{C &gt; 0} \forall _{t \ge 0}\; \norm {u(\cdot , t) - \overline {u}(\cdot , t)}_{L^\infty (\Omega )} \le C \left (\norm {u_0 - \overline {u_0}}_{L^\infty (\Omega )} + \norm
+{v_0 - \overline {v_0}}_{L^1(\Omega )}\right )\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Wie bei der Advektionsgleichung gibt es keine stetige Abh. bzgl. \(c\) in der \(L^\infty \)-Norm.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Abha&#x0308;ngigkeitskegel</b>:&#x2003; Seien \(\Omega := \real \) und \((x_0, t_0) \in \Omega _T\).<br />
+Dann ist der <em><span class="dashuline" >Abha&#x0308;ngigkeitskegel</span></em> von \((x_0, t_0)\) definiert durch<br />
+\(C := \{(x, t) \in \Omega _T \;|\; t \in [0, t_0],\; |x - x_0| \le c(t_0 - t)\}\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Abha&#x0308;ngigkeitskegel</span>):</span> Seien \(\Omega := \real \), \((x_0, t_0) \in \Omega _T\) und \(C\) der Abha&#x0308;ngigkeitskegel von
+\((x_0, t_0)\). Dann folgt aus \(\forall _{x \in \Omega ,\, |x - x_0| \le ct_0}\; u_0(x) = v_0(x) = 0\), dass \(u|_C \equiv 0\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Umgekehrt kann man sagen, dass der Anfangswert \(u_0(x_0)\) im Punkt \(x_0 \in \Omega \) die Lo&#x0308;sungswerte \(u(x, t)\) nur fu&#x0308;r \(t \ge 0\) und \(|x - x_0| \le ct\)
+beeinflusst. Information breitet sich also nur mit endlicher Geschwindigkeit \(c\) aus (im Gegensatz zur Diffusionsgleichung).
+</p>
+
+
+
+<h3 id="eindeutigkeit-fuer-das-inhomogene-arwp-fuer-lipschitz-gebiete">Eindeutigkeit für das inhomogene ARWP für <span style="font-variant: small-caps;">Lipschitz</span>-Gebiete</h3>
+
+</p>
+
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Eindeutigkeit</span>):</span> Seien \(\Omega \subset \real ^d\) ein Lipschitz-Gebiet, \(\Omega _T := \Omega \times (0, T)\), \(c &gt; 0\), \(f\colon
+\Omega _T \to \real \), \(g\colon \partial \Omega \times (0, T) \to \real \), \(u_0, v_0\colon \Omega \to \real \) und das ARWP \(\partial _t^2 u - c^2 \Delta u = f\) in \(\Omega _T\), \(u(\cdot , 0)
+= u_0\) in \(\Omega \), \(\partial _t u(\cdot , 0) = v_0\) in \(\Omega \) und \(u(x, t) = g(x, t)\) auf \(\partial \Omega \times (0, T)\) gegeben.<br />
+Dann gibt es ho&#x0308;chstens eine Lo&#x0308;sung \(u \in \C ^2(\Omega _T) \cap \C ^1(\overline {\Omega _T})\) des ARWPs.
+</p>
+
+<p>
+<em>Bemerkung</em>: Ohne weitere Forderungen an die Daten (Regularita&#x0308;t, Kompatibilita&#x0308;t) kann man keine Existenzaussage beweisen. Die Anfangsdaten mu&#x0308;ssen sowohl fu&#x0308;r \(u\) als auch
+fu&#x0308;r \(\partial _t u\) vorgegeben werden, wogegen die Randdaten nur fu&#x0308;r eines von beiden vorgegeben werden du&#x0308;rfen, weil das ARWP sonst u&#x0308;berbestimmt ist.
+</p>
+
+
+
+<h3 id="herleitung-durch-linearisierung-der-euler-gleichungen">Herleitung durch Linearisierung der <span style="font-variant: small-caps;">Euler</span>-Gleichungen</h3>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Die Wellengleichung kann auch aus den <em><span class="dashuline" ><span class="textsc" >Euler</span>-Gleichungen</span></em> (beschreiben Stro&#x0308;mungen in reibungsfreien Fluiden)
+hergeleitet werden, die man z.&#x202f;B. in der Akustik verwendet. Nimmt man an, dass man Schallwellen modellieren will und die Luft ein isothermes Gas ist, sich also durch die Druckschwankungen nicht aufwa&#x0308;rmt, so
+lauten die Euler-Gleichungen \(\partial _t \varrho + \div _x(\varrho v) = 0\) (<em><span class="dashuline" >Massenerhaltung</span></em>) und \(\partial _t v + (v \cdot \nabla ) v + \frac {1}{\varrho }
+\nabla p(\varrho ) = 0\) (<em><span class="dashuline" >Impulserhaltung</span></em>) mit den Unbekannten \(\varrho \colon \Omega \to \real \) (Dichte) und \(v\colon \Omega \to \real ^d\)
+(Geschwindigkeit), wobei<br />
+\((v \cdot \nabla ) v := (\sum _{i=1}^d v_i \partial _{x_i} v_j)_{j=1}^d\). Der Druck \(p(\varrho )\) wird meist als <em><span class="dashuline" >Zustandsgleichung</span></em> problemabha&#x0308;ngig
+vorgeschrieben (fu&#x0308;r ein ideales Gas mit adiabatischen NBen kann man z.&#x202f;B. \(p(\varrho ) := K \varrho ^\gamma \) mit \(K, \gamma &gt; 0\) nehmen).
+</p>
+
+<p>
+Wenn man annimmt, dass die Dichte nur kleine Schwankungen um den Mittelwert \(\varrho \in \real ^+\) erfa&#x0308;hrt, also \(\varrho = \varrho _0 (1 + g)\) mit „kleinem“ \(g, \nabla g, v, \div (v)\), so kann
+man die quadratischen Terme \(g\div (v), v \nabla g, (v \cdot \nabla ) v\) vernachla&#x0308;ssigen.
+</p>
+
+<p>
+Eingesetzt in die Massenerhaltung bekommt man \(\varrho _0 (\partial _t g + \div ((1 + g) v)) = 0\)<br />
+\(\iff \partial _t g + (1 + g) \div (v) + v \nabla g = 0 \iff \partial _t g + \div (v) + \cancel {g \div (v)} + \cancel {v \nabla g} = 0 \iff \partial _t g + \div (v) = 0\).
+</p>
+
+<p>
+Fu&#x0308;r die Impulserhaltung approximiert man \(\frac {1}{\varrho } \nabla p(\varrho ) = \frac {\nabla p(\varrho _0 (1 + g))}{\varrho _0 (1 + g)} \approx \frac {p’(\varrho _0) \nabla g}{\varrho
+_0}\) und erha&#x0308;lt so durch Einsetzen \(\partial _t v + \cancel {(v \cdot \nabla ) v} + \frac {p’(\varrho _0) \nabla g}{\varrho _0} = 0 \iff \partial _t v + c^2 \nabla g = 0\) mit \(c^2 :=
+\frac {p’(\varrho _0)}{\varrho _0}\).
+</p>
+
+<p>
+Wendet man nun \(\partial _t\) auf die erste Gleichung und \(\div \) auf die zweite an und zieht das zweite Ergebnis vom ersten ab, so bekommt man \(\partial _t^2 g - c^2 \Delta g = 0\), also die Wellengleichung.
+</p>
+
+<p>
+Dies heißt auch <em><span class="dashuline" >akustische Approximation der <span class="textsc" >Euler</span>-Gleichungen</span></em> und \(c\) ist die Schallgeschwindigkeit.
+</p>
+
+
+
+<h2 id="klassifikation-linearer-pdes-zweiter-ordnung">Klassifikation linearer PDEs zweiter Ordnung</h2>
+
+</p>
+
+
+<p>
+<b>linearer Differentialoperator 2. Ordnung</b>:&#x2003; Seien \(\Omega \subset \real ^d\) offen,<br />
+\(A = (a_{ij})_{i,j=1}^d \in \C ^0(\Omega , \real ^{d \times d})\), \(b = (b_i)_{i=1}^d \in \C ^0(\Omega , \real ^d)\) und \(c \in \C ^0(\Omega )\). Dann heißt<br />
+\(\L \colon \C ^2(\Omega ) \to \C ^0(\Omega )\) mit \((\L u)(x) := -\sum _{i,j=1}^d a_{ij}(x) \partial _{x_i} \partial _{x_j} u(x) + \sum _{i=1}^d b_i(x) \partial _{x_i} u(x) + c(x) u(x)\)<br />
+<em><span class="dashuline" >linearer Differentialoperator 2. Ordnung</span></em>.
+</p>
+
+<p>
+<em>Bemerkung</em>: Mit dem Hadamard-Produkt \(\circ \) (elementweise Matrizenmultiplikation) erha&#x0308;lt man \(\L u = -A \circ (\nabla \nabla ^\tp u) + b \nabla u + cu\). Der erste Summand \(-A \circ
+(\nabla \nabla ^\tp u)\) heißt <em><span class="dashuline" >Hauptteil</span></em> von \(\L \).<br />
+OBdA kann man \(A\) symmetrisch wa&#x0308;hlen (sonst fu&#x0308;hrt \(\widetilde {A} := \frac {1}{2} (A + A^\tp )\) zum selben \(\L \)).<br />
+Mit \(f \in \C ^0(\Omega )\) erha&#x0308;lt man eine PDE \(\L u = f\) in \(\Omega \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Klassifikation von linearen PDEs 2. Ordnung</b>:&#x2003; Sei \(x \in \Omega \). Dann heißt \(\L \)
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f16"><p><em><span class="dashuline" >elliptisch in \(x\)</span></em>, falls alle EWe von \(A(x)\) positiv sind,
+</p>
+</li>
+<li class="list-item-f17"><p><em><span class="dashuline" >parabolisch in \(x\)</span></em>, falls \((d - 1)\) EWe von \(A(x)\) positiv sind und der u&#x0308;brige verschwindet, aber \(\Rang (\smallpmatrix {A(x) &amp; b(x)}) = d\), und
+</p>
+</li>
+<li class="list-item-f18"><p><em><span class="dashuline" >hyperbolisch in \(x\)</span></em>, falls \((d - 1)\) EWe von \(A(x)\) positiv sind und der u&#x0308;brige negativ ist.
+</p>
+</li>
+</ul>
+
+<p>
+\(\L \) heißt <em><span class="dashuline" >elliptisch</span></em>/<em><span class="dashuline" >parabolisch</span></em>/<em><span class="dashuline" >hyperbolisch</span></em>, falls \(\L \) die Eigenschaft in
+allen \(x \in \Omega \) erfu&#x0308;llt.<br />
+Die PDE \(\L u = f\) heißt elliptisch/parabolisch/hyperbolisch, falls \(\L \) diese Eigenschaft erfu&#x0308;llt.
+
+<p>
+<em>Bemerkung</em>: Die Begriffe sind motiviert durch Quadriken, denn \(\{z \in \real ^d \;|\; z^\tp A(x) z = 1\}\) beschreibt unter obigen Bedingungen ein Ellipsoid, Paraboloid bzw. Hyperboloid.
+</p>
+
+<p>
+<em>Beispiel</em>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f19"><p>Die Laplace-/Poisson-Gleichung ist elliptisch, da aus \(\L u := -\Delta u\) folgt, dass \(A(x) :\equiv I_d\) und \(b = c :\equiv 0\) (das erkla&#x0308;rt den Sinn des negativen Vorzeichens).
+</p>
+</li>
+<li class="list-item-f20"><p>Die Diffusionsgleichung ist parabolisch, da aus \(\L u := \partial _t u - \Delta _x u\) folgt, dass<br />
+\(A(x, t) :\equiv \smallpmatrix {I_d&amp;0\\0&amp;0} \in \real ^{(d+1)\times (d+1)}\), \(b :\equiv e_{d+1} \in \real ^{d+1}\) und \(c :\equiv 0\).
+</p>
+</li>
+<li class="list-item-f21"><p>Die Wellengleichung ist hyperbolisch, da aus \(\L u := \partial _t^2 u - \widetilde {c}^2 \Delta _x u\) folgt, dass<br />
+\(A(x, t) :\equiv \smallpmatrix {I_d&amp;0\\0&amp;-\widetilde {c}^2} \in \real ^{(d+1)\times (d+1)}\) und \(b = c :\equiv 0\).
+</p>
+</li>
+<li class="list-item-f22"><p>Die <em><span class="dashuline" ><span class="textsc" >Tricomi</span>-Gleichung</span></em> \(x_2 \partial _{x_1}^2 u + \partial _{x_2}^2 u = 0\) in \(\Omega := \real ^2\) ist vom gemischten Typ, da
+aus \(A(x) := \smallpmatrix {x_2&amp;0\\0&amp;1}\) und \(b = c :\equiv 0\) folgt, dass sie elliptisch in \((x_1, x_2) \in \real \times (0, \infty )\) und hyperbolisch in \((x_1, x_2) \in \real \times
+(-\infty , 0)\) ist.
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Die Unterscheidung ist sinnvoll wg. unterschiedlicher Lo&#x0308;sungseigenschaften.
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f23"><p><em>elliptische PDEs</em>: meist RBen vorgegeben, Lo&#x0308;sungen meist sehr glatt (\(\C ^\infty \)), erfu&#x0308;llen ha&#x0308;ufig ein Maximumprinzip
+</p>
+</li>
+<li class="list-item-f24"><p><em>parabolische PDEs</em>: ausgezeichnete Achse meist Zeit, Umschreiben als \(\partial _t u + \widetilde {\L } u = \widetilde {f}\) mit \(\widetilde {\L }\) elliptisch mo&#x0308;glich, ha&#x0308;ufig ABen
+vorgegeben (ggf. RBen), regularisierender Effekt (Lo&#x0308;sung glatter als Anfangsdaten), unendliche Ausbreitungsgeschwindigkeit
+</p>
+</li>
+<li class="list-item-f25"><p><em>hyperbolische PDEs</em>: ausgezeichnete Achse meist Zeit, Umschreiben als \(\partial _t^2 u + \widetilde {\L } u = \widetilde {f}\) mit \(\widetilde {\L }\) elliptisch mo&#x0308;glich, beschreiben
+Schwingungsvorga&#x0308;nge, ha&#x0308;ufig ABen fu&#x0308;r \(u\) und \(\partial _t u\) vorgegeben (ggf. dazu noch RBen), endliche Ausbreitungsgeschwindigkeit
+</p>
+</li>
+</ul>
+
+<p>
+<em>Bemerkung</em>: Sei \(\L \) elliptisch. Falls \(\L \) rot.inv. ist, so gilt \(\L u = -a \nabla u + cu\). \(\L \) heißt <em><span class="dashuline" >glm. ell.</span></em> mit <em><span class="dashuline"
+>Ell.konst.</span></em> \(\alpha \), falls \(\exists _{\alpha &gt; 0} \forall _{z \in \real ^d} \forall _{x \in \Omega }\; z^\tp A(x) z \ge \alpha \norm {z}^2\) (alle EWe von \(A(\cdot )\) sind \(\ge
+\alpha \)). Maximum-/Minimum-/Vergleichsprinzipien und Eind. von Lsg.en folgen wie bei der Poisson-Gleichung.
+</p>
+
+
+
+<h2 id="einschub-finite-volumen-fuer-skalare-erhaltungsgleichungen-in-1d">Einschub: Finite Volumen für skalare Erhaltungsgleichungen in 1D</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Im Folgenden betrachtet man fu&#x0308;r \(\Omega := \real \), \(\Omega _T := \real \times (0, T)\), \(f \in \C ^1(\Omega )\) (<em><span class="dashuline" >Flussfunktion</span></em>)
+und \(u_0 \in L^1_\loc (\Omega ) \cap L^\infty (\Omega )\) das Cauchy-Problem \(\partial _t u + \partial _x f(u) = 0\) in \(\Omega _T\) und \(u(\cdot , 0) = u_0\).
+</p>
+
+<p>
+Gesucht ist ein num. Verfahren zur Lo&#x0308;sung der PDE, das das Integral \(\int _\Omega u(x, t) \dx \) fu&#x0308;r \(t \in (0, T)\) erha&#x0308;lt. Definiere das Gitter \(x_j := j \Delta x\) und \(t^n := n
+\Delta t\) fu&#x0308;r \(j \in \integer \cup (\integer + \frac {1}{2})\) und \(n \in \natural _0\). Man integriert nun u&#x0308;ber das Kontrollvolumen \(V := [x_{j-1/2}, x_{j+1/2}] \times [t^n,
+t^{n+1}]\) und wendet den Gauß-Integralsatz an: \(0 = \int _V (\partial _t u + \partial _x f(u)) \dx = \int _V \div _{(t,x)}((u, f(u))^\tp ) \dx = \int _{\partial V} (u, f(u))^\tp \cdot n \dsigma
+(t, x)\)<br />
+\(= \int _{x_{j-1/2}}^{x_{j+1/2}} (u(x, t^{n+1}) - u(x, t^n)) \dx + \int _{t^n}^{t^{n+1}} (f(u(x_{j+1/2}, t)) - f(u(x_{j-1/2}, t))) \dt \).
+</p>
+
+<p>
+Als Approximation nimmt man \(u(x, t^n) \approx u_j^n\) konstant fu&#x0308;r \(x \in [x_{j-1/2}, x_{j+1/2}]\) an und definiert \(g_{j+1/2}^n := g(u_j^n, u_{j+1}^n) \approx \frac {1}{\Delta t} \int
+_{t^n}^{t^{n+1}} f(u(x_{j+1/2}, t)) \dt \) fu&#x0308;r einen <em><span class="dashuline" >num. Fluss</span></em> \(g\colon \real ^2 \to \real \).
+</p>
+
+<p>
+Damit erha&#x0308;lt man das diskretisierte Problem \(0 = \Delta x (u_j^{n+1} - u_j^n) + \Delta t (g_{j+1/2}^n - g_{j-1/2}^n)\) bzw.<br />
+\(u_j^{n+1} := u_j^n - \frac {\Delta t}{\Delta x} (g_{j+1/2}^n - g_{j-1/2}^n)\) mit den Anfangswerten \(u_j^0 := \frac {1}{\Delta x} \int _{x_{j-1/2}}^{x_{j+1/2}} u_0(x) \dx \)<br />
+(oder einfacher \(u_j^0 := u_0(x_j)\)).
+</p>
+
+<p>
+Die numerische Lo&#x0308;sung ist dann stu&#x0308;ckweise konstant definiert als \(u_h(x, t) := \sum _{j,n} u_j^n \cdot \chi _{V_{j,n}}(x, t)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Die Erhaltungseigenschaft des Integrals ist gegeben, weil<br />
+\(\sum _j u_j^{n+1} \Delta x = \sum _j u_j^n \Delta x - \cancel {\sum _j \Delta t (g_{j+1/2}^n - g_{j-1/2}^n)} = \sum _j u_j^n \Delta x = \dotsb = \sum _j u_j^0 \Delta x \approx \int _\Omega
+u_0(x) \dx \).
+</p>
+
+<p>
+Es gilt ein <em><span class="dashuline" >lokales Maximumprinzip</span></em>: Ist \(g\) Lipschitz-stetig mit Konstante \(L\) und \(\Delta t \le \frac {\Delta x}{2L}\), dann liegt \(u_j^{n+1}\) in der konvexen
+Hu&#x0308;lle von \(u_{j-1}^n, u_j^n, u_{j+1}^n\).<br />
+Daraus folgt direkt \(L^\infty \)-Stabilita&#x0308;t, d.&#x202f;h. \(\norm {u^{n+1}}_\infty \le \norm {u^n}_\infty \le \dotsb \le \norm {u_0}_{L^\infty (\Omega )}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Allgemein sollte ein geeigneter numerischer Fluss folgende Bedingungen erfu&#x0308;llen:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f26"><p><em><span class="dashuline" >Konsistenz</span></em>: \(g(u, u) = f(u)\)
+</p>
+</li>
+<li class="list-item-f27"><p><em><span class="dashuline" ><span class="textsc" >Lipschitz</span>-Stetigkeit</span></em>: \(g \in \C ^{0,1}(\real ^2)\)
+</p>
+</li>
+<li class="list-item-f28"><p><em><span class="dashuline" >Monotonie</span></em>: \(g(v, w)\) monoton wachsend in \(v\) und fallend in \(w\)
+</p>
+</li>
+</ul>
+
+<p>
+<em>Beispiel</em>: Beispiele fu&#x0308;r numerische Flu&#x0308;sse umfassen:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f29"><p><em><span class="dashuline" ><span class="textsc" >Lax</span>-<span class="textsc" >Friedrichs</span>-Fluss</span></em>: \(g(u, v) := \frac {1}{2} (f(u) + f(v)) + \frac {1}{2\lambda } (u - v)\)
+mit \(\lambda := \frac {\Delta t}{\Delta x}\)
+</p>
+</li>
+<li class="list-item-f30"><p><em><span class="dashuline" ><span class="textsc" >Engquist</span>-<span class="textsc" >Osher</span>-Fluss</span></em>: Fu&#x0308;r \(f’(u) &gt; 0\) sollte man Ru&#x0308;ckwa&#x0308;rtsdifferenzen
+(Downwind) und fu&#x0308;r \(f’(u) &lt; 0\) Vorwa&#x0308;rtsdifferenzen (Upwind) verwenden. Die Berechnung erfolgt mit<br />
+\(f^+(u) := f(0) + \int _0^u \max (f’(s), 0) \ds \) und \(f^-(u) := \int _0^u \min (f’(s), 0) \ds \) (damit \(f = f^+ + f^-\)) durch \(g(v, w) := f^+(v) + f^-(w)\).
+</p>
+</li>
+</ul>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

@@ -1,0 +1,3320 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\newcommand {\Start }{\ensuremath {\text {Start}}}\)
+
+\(\newcommand {\Accept }{\ensuremath {\text {Accept}}}\)
+
+\(\newcommand {\kod }[1]{\ensuremath {\left \langle #1\right \rangle }}\)
+
+\(\newcommand {\TM }{\ensuremath {\text {TM}}}\)
+
+\(\newcommand {\bb }{\ensuremath {\text {bb}}}\)
+
+\(\newcommand {\pb }{\ensuremath {\text {pb}}}\)
+
+\(\renewcommand {\succ }{\ensuremath {\text {succ}}}\)
+
+\(\newcommand {\pr }{\ensuremath {\mathbb {P}}}\)
+
+\(\newcommand {\rec }{\ensuremath {\text {rec}}}\)
+
+\(\newcommand {\IMP }{\ensuremath {\text {IMP}}}\)
+
+\(\newcommand {\true }{\ensuremath {\text {true}}}\)
+
+\(\newcommand {\false }{\ensuremath {\text {false}}}\)
+
+\(\newcommand {\Loc }{\ensuremath {\text {Loc}}}\)
+
+\(\newcommand {\Aexp }{\ensuremath {\text {Aexp}}}\)
+
+\(\newcommand {\Bexp }{\ensuremath {\text {Bexp}}}\)
+
+\(\newcommand {\Cmd }{\ensuremath {\text {Cmd}}}\)
+
+\(\newcommand {\dollar }{\ensuremath {\$}}\)
+
+\(\newcommand {\var }{\ensuremath {\text {var}}}\)
+
+\(\newcommand {\frei }{\ensuremath {\text {frei}}}\)
+
+\(\newcommand {\add }{\ensuremath {\text {add}}}\)
+
+\(\newcommand {\Conf }{\ensuremath {\text {Conf}}}\)
+
+\(\newcommand {\TAUT }{\ensuremath {\text {TAUT}}}\)
+
+\(\newcommand {\opt }{\ensuremath {\text {opt}}}\)
+
+\(\newcommand {\Var }{\ensuremath {\text {Var}}}\)
+
+\(\newcommand {\SAT }{\ensuremath {\text {SAT}}}\)
+
+\(\newcommand {\kSAT }[1]{\ensuremath {#1\text {-SAT}}}\)
+
+\(\newcommand {\KNF }{\ensuremath {\text {KNF}}}\)
+
+\(\newcommand {\kKNF }[1]{\ensuremath {#1\text {-KNF}}}\)
+
+\(\newcommand {\DNF }{\ensuremath {\text {DNF}}}\)
+
+\(\newcommand {\HORN }{\ensuremath {\text {HORN}}}\)
+
+\(\newcommand {\HORNSAT }{\ensuremath {\text {HORNSAT}}}\)
+
+\(\newcommand {\DTIME }{\ensuremath {\mathbf {DTIME}}}\)
+
+\(\newcommand {\NTIME }{\ensuremath {\mathbf {NTIME}}}\)
+
+\(\newcommand {\XTIME }{\ensuremath {\mathbf {XTIME}}}\)
+
+\(\newcommand {\DSPACE }{\ensuremath {\mathbf {DSPACE}}}\)
+
+\(\newcommand {\NSPACE }{\ensuremath {\mathbf {NSPACE}}}\)
+
+\(\newcommand {\XSPACE }{\ensuremath {\mathbf {XSPACE}}}\)
+
+\(\newcommand {\Co }{\ensuremath {\mathbf {Co}}}\)
+
+\(\renewcommand {\L }{\ensuremath {\mathbf {L}}}\)
+
+\(\newcommand {\NL }{\ensuremath {\mathbf {NL}}}\)
+
+\(\renewcommand {\P }{\ensuremath {\mathbf {P}}}\)
+
+\(\newcommand {\NP }{\ensuremath {\mathbf {NP}}}\)
+
+\(\newcommand {\PSPACE }{\ensuremath {\mathbf {PSPACE}}}\)
+
+\(\newcommand {\NPSPACE }{\ensuremath {\mathbf {NPSPACE}}}\)
+
+\(\newcommand {\CS }{\ensuremath {\mathbf {CS}}}\)
+
+\(\newcommand {\LBA }{\ensuremath {\mathbf {LBA}}}\)
+
+\(\newcommand {\LinProg }{\ensuremath {\text {LinProg}}}\)
+
+\(\newcommand {\VC }{\ensuremath {\text {VC}}}\)
+
+\(\newcommand {\NAE }{\ensuremath {\text {NAE}}}\)
+
+\(\newcommand {\NAESAT }{\ensuremath {\text {NAE-SAT}}}\)
+
+\(\newcommand {\NAEkSAT }[1]{\ensuremath {\text {NAE-}#1\text {-SAT}}}\)
+
+\(\newcommand {\kFaerbbarkeit }[1]{\ensuremath {#1\text {-Färbbarkeit}}}\)
+
+\(\newcommand {\red }{\ensuremath {\text {r}}}\)
+
+\(\newcommand {\green }{\ensuremath {\text {g}}}\)
+
+\(\newcommand {\blue }{\ensuremath {\text {b}}}\)
+
+\(\newcommand {\Rucksack }{\ensuremath {\text {Rucksack}}}\)
+
+\(\newcommand {\SubsetSum }{\ensuremath {\text {Subset-Sum}}}\)
+
+\(\newcommand {\QBF }{\ensuremath {\text {QBF}}}\)
+
+\(\renewcommand {\A }{\ensuremath {\mathcal {A}}}\)
+
+\(\newcommand {\B }{\ensuremath {\mathbb {B}}}\)
+
+\(\renewcommand {\C }{\ensuremath {\mathcal {C}}}\)
+
+\(\renewcommand {\F }{\ensuremath {\mathcal {F}}}\)
+
+\(\newcommand {\I }{\ensuremath {\mathcal {I}}}\)
+
+\(\renewcommand {\O }{\ensuremath {\mathcal {O}}}\)
+
+\(\newcommand {\PS }{\ensuremath {\mathcal {P}}}\)
+
+\(\newcommand {\R }{\ensuremath {\mathcal {R}}}\)
+
+\(\renewcommand {\V }{\ensuremath {\mathbb {V}}}\)
+
+\(\newcommand {\FOR }{\ensuremath {\mathbf {for}\;}}\)
+
+\(\newcommand {\FORALL }{\ensuremath {\mathbf {forall}\;}}\)
+
+\(\newcommand {\WHILE }{\ensuremath {\mathbf {while}\;}}\)
+
+\(\newcommand {\UNTIL }{\ensuremath {\mathbf {until}\;}}\)
+
+\(\newcommand {\OR }{\ensuremath {\mathbf {or}\;}}\)
+
+\(\newcommand {\IF }{\ensuremath {\mathbf {if}\;}}\)
+
+\(\newcommand {\THEN }{\ensuremath {\mathbf {then}\;}}\)
+
+\(\newcommand {\ELSE }{\ensuremath {\mathbf {else}\;}}\)
+
+\(\newcommand {\END }{\ensuremath {\mathbf {end}\;}}\)
+
+\(\newcommand {\TO }{\ensuremath {\mathbf {to}\;}}\)
+
+\(\newcommand {\DO }{\ensuremath {\mathbf {do}\;}}\)
+
+\(\newcommand {\RETURN }{\ensuremath {\mathbf {return}\;}}\)
+
+\(\newcommand {\TRUE }{\ensuremath {\mathbf {true}}}\)
+
+\(\newcommand {\FALSE }{\ensuremath {\mathbf {false}}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f9::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f10::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f11::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f12::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f13::marker {
+  content:'(A)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f14::marker {
+  content:'(B)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f15::marker {
+  content:'(C)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f16::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f17::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f18::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f19::marker {
+  content:'(A)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f20::marker {
+  content:'(B)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f21::marker {
+  content:'(C)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f22::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f23::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f24::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f25::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f26::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f27::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f28::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f29::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f30::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f31::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f32::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f33::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f34::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f35::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f36::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f37::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f38::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f39::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f40::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f41::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f42::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f43::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f44::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f45::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f46::marker {
+  font-style:italic;
+  content:'(5)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f47::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f48::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f49::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f50::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f51::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f52::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f53::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f54::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f55::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f56::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f57::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f58::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f59::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f60::marker {
+  font-style:italic;
+  content:'(5)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f61::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f62::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f63::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f64::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f65::marker {
+  content:'•\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+
+<h2 id="komplexitaetsklassen">Komplexitätsklassen</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Zur Wiederholung wird noch einmal definiert, was eine Rechnung einer Turingmaschine ist.
+</p>
+
+<p>
+<b>Rechnung</b>:&#x2003; Sei \(M\) eine Turingmaschine. Eine <em><span class="dashuline" >Rechnung</span></em> von \(M\) bei Eingabe \(w\) ist eine Folge von Konfigurationen \((\alpha _0, \dotsc , \alpha _m)\)
+mit \(\alpha _0 = \Start (w)\) und \(\alpha _{i-1} \vdash \alpha _i\) fu&#x0308;r \(i = 1, \dotsc , m\). Die Berechnung ist <em><span class="dashuline" >erfolgreich</span></em>, falls \(\alpha _m \in
+\Accept \).
+</p>
+
+<p>
+<b>Zeitbedarf</b>:&#x2003; Der <em><span class="dashuline" >Zeitbedarf der Berechnung</span></em> \((\alpha _0, \dotsc , \alpha _m)\) ist \(m\).<br />
+Der <em><span class="dashuline" >Zeitbedarf einer Turingmaschine</span></em> \(M\) bei Eingabe \(w\) ist \(N \in \natural \), falls jede Berechnung von \(M\) bei Eingabe \(w\) Zeitbedarf \(\le N\) hat.
+</p>
+
+<p>
+<b>Platzbedarf</b>:&#x2003; Der <em><span class="dashuline" >Platzbedarf der Berechnung</span></em> \((\alpha _0, \dotsc , \alpha _m)\) ist \(\max _{i = 0, \dotsc , m} |\alpha _i|\).<br />
+Der <em><span class="dashuline" >Platzbedarf einer Turingmaschine</span></em> \(M\) bei Eingabe \(w\) ist \(N \in \natural \), falls jede Berechnung von \(M\) bei Eingabe \(w\) Platzbedarf \(\le N\) hat.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Komplexita&#x0308;tsklassen</b>:&#x2003; Seien \(t, s\colon \natural _0 \rightarrow \natural _0\) monoton steigende Funktionen.<br />
+Dann sind folgende <em><span class="dashuline" >Komplexita&#x0308;tsklassen</span></em> definiert:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p>\(\DTIME (t) := \{L \subset \Sigma ^\ast \;|\; \text {es gibt eine det. TM } M \text { mit } L = L(M) \text {,}\)<br />
+\(\text {die auf allen Eingaben der Länge } n \text { Zeitbedarf } \max \{t(n), n + 1\} \text { hat}\}\)
+</p>
+</li>
+<li class="list-item-f1"><p>\(\NTIME (t) := \{L \subset \Sigma ^\ast \;|\; \text {es gibt eine nicht-det. TM } M \text { mit } L = L(M) \text {,}\)<br />
+\(\text {die auf allen Eingaben der Länge } n \text { Zeitbedarf } \max \{t(n), n + 1\} \text { hat}\}\)
+</p>
+</li>
+<li class="list-item-f2"><p>\(\DSPACE (s) := \{L \subset \Sigma ^\ast \;|\; \text {es gibt eine det. TM } M \text { mit } L = L(M) \text {,}\)<br />
+\(\text {die auf allen Eingaben der Länge } n \text { Platzbedarf } s(n) \text { hat}\}\)
+</p>
+</li>
+<li class="list-item-f3"><p>\(\NSPACE (s) := \{L \subset \Sigma ^\ast \;|\; \text {es gibt eine nicht-det. TM } M \text { mit } L = L(M) \text {,}\)<br />
+\(\text {die auf allen Eingaben der Länge } n \text { Platzbedarf } s(n) \text { hat}\}\)
+</p>
+</li>
+</ul>
+
+<p>
+Fu&#x0308;r eine Komplexita&#x0308;tsklasse \(\C \) ist \(\Co \C := \{L \subset \Sigma ^\ast \;|\; \Sigma ^\ast \setminus L \in \C \}\) die Komplexita&#x0308;tsklasse aller Komplemente.
+</p>
+
+<p>
+<em>Bemerkung</em>: Fu&#x0308;r \(\DTIME (t)\) und \(\NTIME (t)\) werden nur Funktionen \(t\colon \natural _0 \rightarrow \natural _0\) mit \(t(n) \ge n\) fu&#x0308;r alle \(n \in \natural \) betrachtet.
+Das erlaubt, die ganze Eingabe einzulesen (tatsa&#x0308;chlich werden na&#x0308;mlich \(n + 1\) Schritte zugelassen).<br />
+Fu&#x0308;r \(\DSPACE (s)\) und \(\NSPACE (s)\) werden nur Funktionen \(s\colon \natural _0 \rightarrow \natural _0\) mit \(s \in \Omega (\log _2 n)\) betrachtet. Das erlaubt, eine Position \(i \in \{1,
+\dotsc , n\}\) auf dem Arbeitsband abzuspeichern (in bina&#x0308;rer Darstellung).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>gebra&#x0308;uchliche Komplexita&#x0308;tsklassen</b>:&#x2003;
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f4"><p>\(\L := \DSPACE (\log n)\)
+</p>
+</li>
+<li class="list-item-f5"><p>\(\NL := \NSPACE (\log n)\)
+</p>
+</li>
+<li class="list-item-f6"><p>\(\P := \bigcup _{k \in \natural } \DTIME (n^k)\)
+</p>
+</li>
+<li class="list-item-f7"><p>\(\NP := \bigcup _{k \in \natural } \NTIME (n^k)\)
+</p>
+</li>
+<li class="list-item-f8"><p>\(\PSPACE := \bigcup _{k \in \natural } \DSPACE (n^k) = \bigcup _{k \in \natural } \NSPACE (n^k)\)
+</p>
+</li>
+</ul>
+
+<p>
+<em>Bemerkung</em>: Die letzte Gleichung folgt aus dem Satz von Savitch, der weiter unten noch kommt.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Es gelten die Beziehungen \(\L \subset \NL \subset \P \subset \NP \cap \Co \NP \subset \NP \subset \PSPACE \).<br />
+Bei keiner von den Inklusionen ist jedoch bekannt, ob sie echt ist oder nicht.<br />
+Außerdem gilt \(\NL \subsetneqq \bigcup _{k \in \natural } \DSPACE (\log _2^k n) = \bigcup _{k \in \natural } \NSPACE (\log _2^k n) \subsetneqq \DSPACE (n) \subset \)<br />
+\(\NSPACE (n) = \Co \NSPACE (n) \subsetneqq \PSPACE (n)\). Bei \(\DSPACE (n) \subset \NSPACE (n)\) ist ebenfalls nicht bekannt, ob diese Inklusion echt ist (1. LBA-Problem).
+</p>
+
+<p>
+<em>Beispiel</em>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f9"><p>Es gilt \(\{a^n b^n c^n \;|\; n \in \natural \} \in \L \): Eine TM, die die Sprache erkennt, muss sich nur speichern, wie viele \(a\)’s am Anfang gelesen wurden. Dafu&#x0308;r wird nur logarithmischer Platz
+beno&#x0308;tigt.
+</p>
+</li>
+<li class="list-item-f10"><p>Außerdem gilt \(\{w \dollar w^R \;|\; w \in \Sigma ^\ast \}, \{w w^R \;|\; w \in \Sigma ^\ast \} \in \L \): Bei der ersten Sprache geht man zuna&#x0308;chst zum Dollarzeichen in der Mitte, anschließend
+vergleicht man die Zeichen von der Mitte ausgehend (also zuna&#x0308;chst die neben dem Dollar, dann die Nachbarn von diesen usw.). Dafu&#x0308;r muss man die aktuelle Position (logarithmischer Platz) abspeichern).<br />
+Bei der zweiten Sprache ist das ein wenig schwieriger, aber hier pru&#x0308;ft man zuna&#x0308;chst, ob die La&#x0308;nge des Wortes ungerade ist, und la&#x0308;uft dann zur Mitte des Worts (dann verfa&#x0308;hrt man
+wie bei der anderen Sprache).
+</p>
+</li>
+<li class="list-item-f11"><p>Es gilt \(\{w \dollar w \;|\; w \in \Sigma ^\ast \}, \{w w \;|\; w \in \Sigma ^\ast \} \in \L \): Hier geht man wie eben vor, nur dass die Buchstaben jeweils von vorne verglichen werden.
+</p>
+</li>
+<li class="list-item-f12"><p>\(\{p \in 1\{0, 1\}^\ast \;|\; p \text { Binärdarstellung einer Primzahl}\}\) ist in \(\P \) (das wurde erst 2002 mit der Entdeckung des AKS-Primzahltests gezeigt, vorher war nur Mitgliedschaft in \(\NP \cap
+\Co \NP \) bekannt).
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="algorithmische-probleme">Algorithmische Probleme</h2>
+<b>Traveling Salesman Problem (TSP)</b>:&#x2003; Sei \(G = (V, E, \gamma )\) ein gerichteter, gewichteter Graph mit Knotenmenge \(V = \{1, \dotsc , n\}\), Kantenmenge \(E \subset V \times V\) und
+Kantengewichtungsfunktion \(\gamma \colon E \rightarrow \natural \) (d.&#x202f;h. \(\gamma (e) &gt; 0\) fu&#x0308;r alle \(e \in E\)).<br />
+Ein <em><span class="dashuline" >Rundweg</span></em> \(W\) ist eine Folge \(W = (x_0, \dotsc , x_n)\) mit \(x_0 = x_n\), \(x_i \not = x_j\) fu&#x0308;r \(i \not = j\) und \((x_{i-1}, x_i) \in E\)
+fu&#x0308;r \(i = 1, \dotsc , n\).<br />
+Die <em><span class="dashuline" >Kosten</span></em> \(\gamma (W)\) des Rundwegs \(W\) sind \(\gamma (W) = \sum _{i=1}^n \gamma (x_{i-1}, x_i)\).<br />
+Dann sind folgende Varianten des <em><span class="dashuline" >Traveling Salesman Problems (TSP)</span></em> definiert:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f13"><p><em><span class="dashuline" >Entscheidungsvariante</span></em>: Gegeben ist \(G\) und \(k \ge 0\).<br />
+Gefragt ist, ob ein Rundweg mit Kosten \(\le k\) exisiert.
+</p>
+</li>
+<li class="list-item-f14"><p><em><span class="dashuline" >Berechnungsvariante</span></em>: Gegeben ist \(G\) und \(k \ge 0\).<br />
+Gesucht ist ein Rundweg \(W\) mit \(\gamma (W) \le k\), falls ein solcher existiert.
+</p>
+</li>
+<li class="list-item-f15"><p><em><span class="dashuline" >Optimierungsproblem</span></em>: Gegeben ist \(G\).<br />
+Gesucht ist ein Rundweg \(W\) mit kleinstmo&#x0308;glichen Kosten<br />
+(d.&#x202f;h. \(\gamma (W) \le \gamma (W’)\) fu&#x0308;r alle Rundwege \(W’\)).
+</p>
+</li>
+</ul>
+
+<p>
+In allen drei Varianten ist die Eingabegro&#x0308;ße bis auf einen konstanten Faktor gleich<br />
+\(|V| + \sum _{e \in E} \log _2 \gamma (e) \;(+ \log _2 k)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(\text {(A)} \in \P \;\Rightarrow \; \text {(C)} \in \P \)</span>):</span> Ist (A) in Polynomialzeit lo&#x0308;sbar, so auch (C).
+</p>
+
+<p>
+<b>Beweis</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f16"><p>U&#x0308;berpru&#x0308;fe, ob u&#x0308;berhaupt ein Rundweg existiert. Dazu ruft man (A) mit \(k_{\max } = \sum _{e \in E} \gamma (e)\) auf, denn jeder Rundweg hat Kosten \(\le k_{\max }\). Im
+Folgenden wird die Existenz eines Rundwegs vorausgesetzt.
+</p>
+</li>
+<li class="list-item-f17"><p>Berechne \(k_\opt = \min \{\gamma (W) \;|\; W \text { Rundweg}\}\) mittel bina&#x0308;rer Suche:
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                          kmin := 0;
+                                                                                          while (kmin < kmax ) do
+                                                                                                                 kmax − kmin
+                                                                                                               ¡             ¤
+                                                                                              kmitte := kmin +                 ;
+                                                                                                                      2
+                                                                                              if (∃Rundweg W γ(W ) ≤ kmitte ) then kmax := kmitte ;
+                                                                                                else kmin := kmitte + 1;
+                                                                                                end if
+                                                                                          end while
+                                                                                          return kmin ;
+
+
+-->
+
+<p>
+
+\begin{align*}
+&amp;k_{\min } := 0;\\ &amp;\WHILE (k_{\min } &lt; k_{\max })\; \DO \\ &amp;\qquad k_\text {mitte} := k_{\min } + \left \lceil \frac {k_{\max } - k_{\min }}{2} \right \rceil ;\\ &amp;\qquad
+\IF (\exists _{\text {Rundweg } W}\; \gamma (W) \le k_\text {mitte})\; \THEN k_{\max } := k_\text {mitte};\\ &amp;\qquad \ELSE k_{\min } := k_\text {mitte} + 1;\\ &amp;\qquad \END \IF \\
+&amp;\END \WHILE \\ &amp;\RETURN k_{\min };
+\end{align*}
+Die Anzahl der Durchla&#x0308;ufe der While-Schleife ist beschra&#x0308;nkt durch<br />
+\(\log _2 k_{\max } = \log _2 (\sum _{e \in E} \gamma (e)) \le \sum _{e \in E} \log _2 \gamma (e)\).
+</p>
+</li>
+<li class="list-item-f18"><p>Berechne einen optimalen Rundweg mit \(E = \{e_1, \dotsc , e_m\}\) wie folgt:
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                   G0 := G;
+                                                                                   for i := 1 to m do
+                                                                                          if (∃Rundweg W in Gi−1 \{ei } γ(W ) ≤ kopt ) then Gi := Gi−1 \ {ei };
+                                                                                          else Gi := Gi−1 ;
+                                                                                          end if
+                                                                                   end for
+                                                                                   return Gm ;
+
+
+-->
+
+<p>
+
+\begin{align*}
+&amp;G_0 := G;\\ &amp;\FOR i := 1 \;\TO m \;\DO \\ &amp;\qquad \IF (\exists _{\text {Rundweg } W \text { in } G_{i-1} \setminus \{e_i\}}\; \gamma (W) \le k_\opt )\; \THEN G_i := G_{i-1}
+\setminus \{e_i\};\\ &amp;\qquad \ELSE G_i := G_{i-1};\\ &amp;\qquad \END \IF \\ &amp;\END \FOR \\ &amp;\RETURN G_m;
+\end{align*}
+
+</p>
+</li>
+</ul>
+
+<p>
+&#x2003;&#x2003;
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Vertex Cover (VC)</b>:&#x2003; Sei \(G = (V, E)\) ein ungerichteter Graph.<br />
+Eine Teilmenge \(C \subset V\) heißt <em><span class="dashuline" >Knotenu&#x0308;berdeckung</span></em> (oder <em><span class="dashuline" >Tra&#x0308;ger</span></em>) von \(G\), falls fu&#x0308;r jede
+Kante \(\{u, v\} \in E\) gilt, dass \(\{u, v\} \cap C \not = \emptyset \).<br />
+Dann sind folgende Varianten von <em><span class="dashuline" >Vertex Cover (VC)</span></em> definiert:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f19"><p><em><span class="dashuline" >Entscheidungsvariante</span></em>: Gegeben ist \(G\) und \(k \ge 0\).<br />
+Gefragt ist, ob eine Knotenu&#x0308;berdeckung von \(G\) mit \(|C| \le k\) existiert.
+</p>
+</li>
+<li class="list-item-f20"><p><em><span class="dashuline" >Berechnungsvariante</span></em>: Gegeben ist \(G\) und \(k \ge 0\).<br />
+Gesucht ist eine Knotenu&#x0308;berdeckung \(C\) von \(G\) mit \(|C| \le k\), falls eine solche existiert.
+</p>
+</li>
+<li class="list-item-f21"><p><em><span class="dashuline" >Optimierungsproblem</span></em>: Gegeben ist \(G\).<br />
+Gesucht ist eine kleinstmo&#x0308;gliche Knotenu&#x0308;berdeckung \(C\) von \(G\)<br />
+(d.&#x202f;h. \(|C| \le |C’|\) fu&#x0308;r alle Knotenu&#x0308;berdeckungen \(C’\) von \(G\)).
+</p>
+</li>
+</ul>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(\text {(A)} \in \P \;\Rightarrow \; \text {(C)} \in \P \)</span>):</span> Ist (A) in Polynomialzeit lo&#x0308;sbar, so auch (C).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Grapherreichbarkeitsproblem (GAP)</b>:&#x2003; Das <em><span class="dashuline" >Grapherreichbarkeitsproblem (GAP)</span></em> ist wie folgt definiert: Gegeben ist ein gerichteter Graph \(G = (V, E)\) und zwei
+Knoten \(s, t \in V\).<br />
+Gefragt ist, ob ein Pfad in \(G\) von \(s\) nach \(t\) existiert.
+</p>
+
+<p>
+<em>Bemerkung</em>: GAP geho&#x0308;rt zur Klasse \(\P \): GAP kann in Zeit \(\O (|V|)\) mittels Breitensuche gelo&#x0308;st werden (mit der einfachsten Dijkstra-Variante).<br />
+Es gilt sogar die Verscha&#x0308;rfung, dass GAP zur Klasse \(\NL \) geho&#x0308;rt (spa&#x0308;ter wird \(\NL \subset \P \) gezeigt):
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                             v := s;
+                                                                                             while (v 6= t)do
+                                                                                                   wähle einen Knoten w ∈ V mit (v, w) ∈ E;
+                                                                                                   v := w;
+                                                                                             end while
+                                                                                             return „es gibt einen Pfad in G von s nach t “;
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+&amp;v := s;\\ &amp;\WHILE (v \not = t) \DO \\ &amp;\qquad \text {wähle einen Knoten } w \in V \text { mit } (v, w) \in E;\\ &amp;\qquad v := w;\\ &amp;\END \WHILE \\ &amp;\RETURN \text
+{„es gibt einen Pfad in } G \text { von } s \text { nach } t \text {“};
+\end{align*}
+Dieser nicht-det. Algorithmus kann man leicht auf einer nicht-det. TM implementieren. Der Algorithmus beno&#x0308;tigt nur logarithmischen Platz, weil er sich zu jedem Zeitpunkt nur einen Knoten \(v \in V\) merken muss und
+dieser bina&#x0308;r mit \(\log _2 n\) vielen Bits abgespeichert werden kann (wenn man \(V\) mit \(\{1, \dotsc , n\}\) identifiziert).
+</p>
+
+<p>
+<em>Bemerkung</em>: Aus dem Satz von Savitch weiter unten folgt GAP \(\in \DSPACE (\log _2^2 n)\).<br />
+Man konnte 2004 zeigen, dass das Grapherreichbarkeitsproblem fu&#x0308;r ungerichtete Graphen<br />
+UGAP zur Klasse \(\L \) geho&#x0308;rt.
+</p>
+
+
+
+<h2 id="beziehungen-zwischen-den-komplexitaetsklassen">Beziehungen zwischen den Komplexitätsklassen</h2>
+
+</p>
+
+
+<p>
+<b>Komplexita&#x0308;tsklassen in <span class="textsc" >Landau</span>-Notation</b>:&#x2003;<br />
+Man definiert \(\DTIME (\O (f)) = \bigcup _{c \in \natural } \DTIME (c \cdot f) = \bigcup _{g \in \O (f)} \DTIME (g)\).<br />
+Analog sind \(\NTIME (\O (f))\), \(\DSPACE (\O (f))\) und \(\NSPACE (\O (f))\) definiert.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Beziehungen zwischen den Komplexita&#x0308;tsklassen</span>):</span> Sei \(f\colon \natural \rightarrow \natural \) eine Funktion.
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f22"><p>Fu&#x0308;r \(\mathbf {X} \in \{\mathbf {D}, \mathbf {N}\}\) gilt \(\XSPACE (\O (f)) = \XSPACE _{\text {Einband}}(f)\)<br />
+(<em><span class="dashuline" >Bandreduktion</span></em> mit <em><span class="dashuline" >Bandkompression</span></em>).
+</p>
+</li>
+<li class="list-item-f23"><p>Aus \(\exists _{\varepsilon &gt; 0} \forall _{n \in \natural }\; f(n) \ge (1 + \varepsilon ) n\) folgt, dass \(\DTIME (\O (f)) = \DTIME (f)\)<br />
+(deterministische <em><span class="dashuline" >Zeitkompression</span></em>).
+</p>
+</li>
+<li class="list-item-f24"><p>Es gilt \(\NTIME (\O (f)) = \NTIME (f)\)<br />
+(nicht-deterministische <em><span class="dashuline" >Zeitkompression</span></em>).
+</p>
+</li>
+<li class="list-item-f25"><p>Es gilt \(\DTIME (n) \not = \DTIME (\O (n))\).
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Der folgende Satz stellt einen Bandreduktionssatz fu&#x0308;r Zeitkomplexita&#x0308;tsklassen dar.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Satz von <span class="textsc" >Hennie</span> und <span class="textsc" >Stearns</span></span>):</span> Seien \(k \in \natural \) und
+\(f\colon \natural \rightarrow \natural \) mit \(\forall _{n \in \natural }\; f(n) \ge n\).<br />
+Dann gilt \(\DTIME _{k\text {-Band}}(f) \subset \DTIME _{2\text {-Band}}(f \cdot \log f)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(\NTIME (f) \subset \DSPACE (f)\)</span>):</span><br />
+Fu&#x0308;r \(f(n) \ge n\) gilt \(\DTIME (f) \subset \NTIME (f) \subset \DSPACE (f)\).
+</p>
+
+<p>
+<b>Beweis</b>: Die erste Inklusion ist klar, zu zeigen ist also \(\NTIME (f) \subset \DSPACE (f)\).
+</p>
+
+<p>
+Sei \(M = (Q, \Sigma , \Gamma , \delta , q_0, F, \Box )\) eine nicht-deterministische TM, die durch \(f(n)\) zeitbeschra&#x0308;nkt ist. Fu&#x0308;r eine Eingabe \(w \in \Sigma ^\ast \) der La&#x0308;nge \(n\)
+kann man sich alle Rechnungen von \(M\) in einem Berechnungsraum \(T(M, w)\) vorstellen, dessen Knoten Konfigurationen sind. Die Wurzel ist gleich \(\Start (w)\) und die Kinder einer Konfiguration \(\alpha \) sind alle
+Konfigurationen \(\beta \) mit \(\alpha \vdash _M \beta \).<br />
+Diesen Baum \(T(M, w)\) untersucht man jetzt durch Breitensuche auf eine akzeptierende Konfiguration. Dabei merkt man sich nur die aktuelle Konfiguration und das Protokoll \(P \in \delta ^\ast \), mit dem man diese
+Konfiguration von der Wurzel \(\Start (w)\) erreichen kann.
+</p>
+
+<p>
+Die Konfiguration zu merken beno&#x0308;tigt den Platz \(f(n)\), da man nach \(f(n)\) vielen Schritten ho&#x0308;chstens \(f(n)\) viele Felder des Bands beschrieben haben kann. Das Protokoll fu&#x0308;r eine bei \(\Start
+(w)\) beginnende Berechnung hat ho&#x0308;chstens La&#x0308;nge \(f(n)\) und kann somit in Platz \(\O (f)\) gespeichert werden. Also ergibt sich ein gesamter Platzbedarf von \(\O (f)\).
+</p>
+
+<p>
+Nach obigem Satz hat man also den Platzbedarf \(\DSPACE (\O (f)) = \DSPACE (f)\). &#x2003;&#x2003;
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(\NSPACE (f) \subset \DTIME (2^{\O (f)})\)</span>):</span><br />
+Fu&#x0308;r \(f(n) \ge \log n\) gilt \(\DSPACE (f) \subset \NSPACE (f) \subset \DTIME (2^{\O (f)})\).
+</p>
+
+<p>
+<b>Beweis</b>: Die erste Inklusion ist klar, zu zeigen ist also \(\NSPACE (f) \subset \DTIME (2^{\O (f)})\).
+</p>
+
+<p>
+Sei \(M = (Q, \Sigma , \Gamma , \delta , q_0, F, \Box )\) eine nicht-deterministische TM, die durch \(f(n)\) platzbeschra&#x0308;nkt ist. Es gibt eine Konstante \(c &gt; 0\), die nur von \(M\) abha&#x0308;ngt, sodass
+die fu&#x0308;r eine Eingabe \(w \in \Sigma ^\ast \) der La&#x0308;nge \(n\) die Anzahl der von \(\Start (w)\) erreichbaren Konfigurationen durch \(c^{f(n)}\) beschra&#x0308;nkt ist. Hierbei ist \(f(n) \ge \log n\)
+wichtig.
+</p>
+
+<p>
+Nun berechnet man die Menge \(R\) der von \(\Start (w)\) aus erreichbaren Konfigurationen wie folgt (<em><span class="dashuline" >Markierungsalgorithmus</span></em> oder <em><span class="dashuline"
+>Flutalgorithmus</span></em>):
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                             R := {Start(w)};
+                                                                                             while ∃α,β Konfigurationen α ∈ R, β ∈
+                                                                                                                                 / R, α ` M β do
+                                                                                                   R := R ∪ {β};
+                                                                                             end while
+                                                                                             if Accept ∩ R 6= ; then return M akzeptiert w;
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+&amp;R := \{\Start (w)\};\\ &amp;\WHILE \exists _{\alpha , \beta \text { Konfigurationen}}\; \alpha \in R,\; \beta \notin R,\; \alpha \vdash _M \beta \;\DO \\ &amp;\qquad R := R \cup \{\beta
+\};\\ &amp;\END \WHILE \\ &amp;\IF \Accept \cap R \not = \emptyset \;\THEN \RETURN M \text { akzeptiert } w;
+\end{align*}
+\(R\) entha&#x0308;lt maximal \(c^{f(n)}\) Konfigurationen der La&#x0308;nge \(\le f(n)\). Der Test \(\exists _{\alpha , \beta \text { Konfigurationen}}\)<br />
+\(\alpha \in R,\; \beta \notin R,\; \alpha \vdash _M \beta \) kann somit in Zeit \(\O (c^{f(n)} \cdot c^{f(n)} \cdot f(n)) = \O (c^{2f(n)} \cdot f(n))\) implementiert werden. Der gesamte Zeitbedarf des
+Algorithmus betra&#x0308;gt also \(\O (c^{3f(n)} \cdot f(n)) \subset 2^{\O (f)}\). &#x2003;&#x2003;
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Folgerung</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f26"><p>\(\L \subset \NL \subset \DTIME (2^{\O (\log n)}) = \P \)
+</p>
+</li>
+<li class="list-item-f27"><p>\(\CS = \LBA = \NSPACE (n) \subset \DTIME (2^{\O (n)})\)<br />
+(mit \(\CS \) den kontextsensitiven und \(\LBA \) den durch LBAs akzeptierten Sprachen)
+</p>
+</li>
+<li class="list-item-f28"><p>\(\DSPACE (n^2) \subset \DTIME (2^{\O (n^2)})\)
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="der-satz-von-savitch">Der Satz von <span style="font-variant: small-caps;">Savitch</span></h2>
+
+</p>
+
+
+<p>
+<b>platzkonstruierbar</b>:&#x2003; Sei \(f\colon \natural \rightarrow \natural \) eine Funktion mit \(f \in \Omega (\log (n))\). Dann heißt \(f\) <em><span class="dashuline" >platzkonstruierbar</span></em>,
+falls es eine deterministische Turingmaschine gibt, die bei Eingabe \(a^n\) (d.&#x202f;h. una&#x0308;re Kodierung von \(n\)) genau \(f(n)\) Felder auf den Arbeitsba&#x0308;ndern markiert, dann ha&#x0308;lt und bei der
+Berechnung diesen Platz nicht verla&#x0308;sst.
+</p>
+
+<p>
+<b>zeitkonstruierbar</b>:&#x2003; Sei \(f\colon \natural \rightarrow \natural \) eine Funktion mit \(f \in \Omega (n)\). Dann heißt \(f\) <em><span class="dashuline" >zeitkonstruierbar</span></em>, falls es
+eine deterministische Turingmaschine gibt, die bei Eingabe \(a^n\) (d.&#x202f;h. una&#x0308;re Kodierung von \(n\)) nach genau \(f(n)\) Schritten ha&#x0308;lt.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Satz von &#x202f;<span class="textsc" >Savitch</span></span>):</span> Sei \(s \in \Omega (\log n)\). Dann gilt \(\NSPACE (s) \subset \DSPACE
+(s^2)\).
+</p>
+
+<p>
+<b>Beweis</b>: Im Folgenden wird der Satz bewiesen unter der Annahme, dass \(s\) platzkonstruierbar ist. Der Satz ist auch fu&#x0308;r andere \(s\) beweisbar, allerdings ist dann der Beweis etwas schwieriger.
+</p>
+
+<p>
+Sei also \(M\) eine durch \(s\) platzbeschra&#x0308;nkte nicht-deterministische TM und \(w\) eine Eingabe fu&#x0308;r \(M\). Sei außerdem \(\text {Conf}(M, w)\) die Menge aller Konfigurationen \(\alpha \), sodass auf
+dem Eingabeband die Eingabe \(w\) steht und \(|\alpha | \le s(|w|)\). OBdA gebe es nur eine einzige akzeptierende Konfiguration \(\alpha _f\). Fu&#x0308;r \(\alpha , \beta \in \text {Conf}(M, w)\) und \(i \in
+\natural _0\) ist das Pra&#x0308;dikat \(\text {Reach}(\alpha , \beta , i)\) definiert durch \(\text {Reach}(\alpha , \beta , i) \iff \exists _{k \le 2^i}\; \alpha \vdash _M^k \beta \). Aus der
+Beschreibung von \(M\) kann man explizit eine Konstante \(c\) bestimmen, sodass es \(\le 2^{c \cdot s(|w|)}\) Konfigurationen gibt, die nur \(s(|w|)\) viel Platz beno&#x0308;tigen (insbesondere gilt \(\text {Conf}(M, w)
+\le 2^{c \cdot s(|w|)}\)). Damit gilt fu&#x0308;r alle Eingaben \(w\), dass \(w \in L(M) \iff \text {Reach}(\Start (w), \alpha _f, c \cdot s(|w|))\), denn keine Berechnung kann bei Eingabe \(w\)
+la&#x0308;nger als \(2^{c \cdot s(|w|)}\) viel Zeit brauchen.
+</p>
+
+<p>
+Das Ziel ist nun, das Pra&#x0308;dikat \(\text {Reach}(\alpha , \beta , i)\) fu&#x0308;r \(\alpha , \beta \in \text {Conf}(M, w)\) und \(i \in \{0, \dotsc , c \cdot s(|w|)\}\) mit Platz \(\O (s^2)\) durch
+eine deterministische TM zu berechnen. Fu&#x0308;r \(i &gt; 0\) verwendet man dabei das Rekursionsschema \(\exists _{\gamma \in \text {Conf}(M, w)}\; (\text {Reach}(\alpha , \gamma , i - 1) \land \text
+{Reach}(\gamma , \beta , i - 1))\). Das kann man in einen deterministischen Algorithmus umsetzen:
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                 b := false;
+                                                                                 if i = 0 then
+                                                                                        b := ((α = β) ∨ (α ` M β));
+                                                                                 else
+                                                                                        forall γ ∈ Conf(M , w) do
+                                                                                             if ((¬b) ∧ Reach(α, γ, i − 1)) then b := Reach(γ, β, i − 1);
+                                                                                        end for
+                                                                                 end if
+                                                                                 return b;
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+&amp;b := \FALSE ;\\ &amp;\IF i = 0 \;\THEN \\ &amp;\qquad b := ((\alpha = \beta ) \lor (\alpha \vdash _M \beta ));\\ &amp;\ELSE \\ &amp;\qquad \FORALL \gamma \in \text {Conf}(M, w) \;\DO \\
+&amp;\qquad \qquad \IF ((\lnot b) \land \text {Reach}(\alpha , \gamma , i - 1)) \;\THEN b := \text {Reach}(\gamma , \beta , i - 1);\\ &amp;\qquad \END \FOR \\ &amp;\END \IF \\ &amp;\RETURN b;
+\end{align*}
+
+</p>
+
+<p>
+Zu zeigen ist, dass ein Aufruf von \(\text {Reach}(\alpha , \beta , i)\) den Platz \(\O ((i + 1) s(|w|))\) beno&#x0308;tigt. Man kann das induktiv zeigen: Fu&#x0308;r \(i = 0\) kann die Bedingung \(((\alpha =
+\beta ) \lor (\alpha \vdash _M \beta ))\) in \(\O (s(|w|))\) gepru&#x0308;ft werden. Fu&#x0308;r \(i &gt; 0\) beno&#x0308;tigt der erste Aufruf \(\text {Reach}(\alpha , \gamma , i - 1)\) nach
+Induktionsvoraussetzung den Platz \(\O (i \cdot s(|w|))\). Das gleiche gilt auch fu&#x0308;r den zweiten Aufruf \(\text {Reach}(\gamma , \beta , i - 1)\), aber hier kann der Platz, der fu&#x0308;r den ersten Aufruf
+beno&#x0308;tigt wurde, wiederverwendet werden. Zusa&#x0308;tzlich beno&#x0308;tigt man noch den Platz \(s(|w|)\), um die Konfiguration \(\gamma \) zu speichern. Also beno&#x0308;tigt man insgesamt den Platz \(\O
+((i + 1) s(|w|))\).
+</p>
+
+<p>
+Um \(w \in L(M)\) zu entscheiden, kann man noch obiger Bemerkung \(\text {Reach}(\Start (w), \alpha _f, c \cdot s(|w|))\) testen. \(s(|w|)\) kann man berechnen, weil \(s\) nach Annahme platzkonstruierbar ist.
+Also ist der gesamte Platzbedarf \(\O (c \cdot s(|w|) \cdot s(|w|)) = \O (s(|w|)^2)\). &#x2003;&#x2003;
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Der Satz von Savitch besagt, dass eine nicht-deterministische platzbeschra&#x0308;nkte TM unter quadratischem Mehraufwand deterministisch simuliert werden kann. Diese platzeffiziente Simulation wird
+durch einen extremen Mehraufwand an Rechenzeit realisiert.
+</p>
+
+<p>
+<b>Folgerung</b>: GAP ist in \(\DSPACE (\log ^2 n)\), da GAP in \(\NL \) ist.<br />
+\(\PSPACE = \bigcup _{k \in \natural } \DSPACE (n^k) = \bigcup _{k \in \natural } \NSPACE (n^k)\),<br />
+da \(\NSPACE (n^k) \subset \DSPACE (n^{2k})\). Daher wurde auch so etwas wie \(\NPSPACE \) nicht definiert, weil das gleich \(\PSPACE \) wa&#x0308;re.
+</p>
+
+
+
+<h2 id="hierarchiesaetze">Hierarchiesätze</h2>
+
+</p>
+
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Platzhierarchiesatz</span>):</span><br />
+Seien \(s_1, s_2\colon \natural \rightarrow \natural \) Funktionen mit \(s_2\) platzkonstruierbar, \(s_2 \in \Omega (\log n)\) und \(s_2 \notin \O (s_1)\).<br />
+Dann gilt \(\DSPACE (s_2) \not \subset \DSPACE (s_1)\), d.&#x202f;h. \(\DSPACE (s_2) \setminus \DSPACE (s_1) \not = \emptyset \).
+</p>
+
+<p>
+<b>Beweis</b>: Wegen \(s_2 \notin \O (s_1)\) gilt \(\forall _{\varepsilon &gt; 0} \exists _{n \in \natural }\; s_1(n) \le \varepsilon \cdot s_2(n)\).<br />
+Zu zeigen ist \(\exists _{L \in \DSPACE (s_2)}\; L \notin \DSPACE (s_1)\).
+</p>
+
+<p>
+Wa&#x0308;hle zuna&#x0308;chst eine berechenbare bina&#x0308;re Kodierung von deterministischen TM, d.&#x202f;h. eine berechenbare Funktion \(x \mapsto M_x\), sodass zu jeder deterministischen TM \(M\) eine
+Kodierung \(x \in 1\{0, 1\}^\ast \) mit \(L(M) = L(M_x)\) existiert (jedes Wort \(x \in 1\{0, 1\}^\ast \) soll also als Kodierung einer TM \(M_x\) interpretiert werden ko&#x0308;nnen). Fu&#x0308;r beliebige \(x \in
+1\{0, 1\}^\ast \) und \(k \in \natural \) gelte dabei \(M_{0^k x} := M_x\). Somit hat jede TM eine Kodierung in fast allen La&#x0308;ngen. Im Folgenden wird eine TM \(M\) konstruiert mit \(L(M) \in \DSPACE (s_2)
+\setminus \DSPACE (s_1)\).
+</p>
+
+<p>
+Dazu wird zuna&#x0308;chst eine durch \(s_2\) platzbeschra&#x0308;nkte TM \(M’\) konstruiert, die auf Eingabe \(y\) mit \(|y| = n\) wie folgt arbeitet: Zuerst markiert \(M’\) den Platz \(s_2(n)\) auf den
+Arbeitsba&#x0308;ndern (geht, da \(s_2\) platzkonstruierbar). Sobald danach der markierte Platz verlassen wird, stoppt \(M’\) und akzeptiert \(y\) nicht – damit ist \(M’\) automatisch \(s_2\)-platzbeschra&#x0308;nkt und es
+gilt \(L(M’) \in \DSPACE (s_2)\). Jetzt fu&#x0308;hrt \(M’\) die Maschine \(M_y = M_x\) mit \(y =: 0^k x\) und \(x \in 1\{0, 1\}^\ast \) auf der Eingabe \(y\) aus. Danach akzeptiert \(M’\) die Eingabe \(y\) genau
+dann, wenn \(M_x\) die Eingabe \(y\) akzeptiert (und dabei der markierte Platz nicht verlassen wird).
+</p>
+
+<p>
+Da deterministische Platzklassen unter Komplement effektiv abgeschlossen sind, kann man eine TM \(M\) konstruieren mit \(L(M) = \{0, 1\}^\ast \setminus L(M’) \in \DSPACE (s_2)\). Angenommen, es gelte \(L(M) \in
+\DSPACE (s_1)\). Es ist \(L(M) = L(M_x)\) fu&#x0308;r ein \(x \in 1\{0, 1\}^\ast \). Sei \(s_x\) die Platzfunktion von \(M_x\). Wegen \(L(M) \in \DSPACE (s_1)\) gilt \(\forall _{n \in \natural }\; s_x(n) \le
+s_1(n)\). Es gibt eine Konstante \(c_x\), sodass die Simulation von \(M_x\) auf Eingabe \(y\) mit \(|y| = n\) den Platz \(c_x \cdot s_x(n)\) kostet. Wa&#x0308;hle \(\varepsilon &gt; 0\) mit \(c_x \cdot \varepsilon
+&lt; 1\). Wenn man \(n \in \natural \) mit \(n &gt; |x|\) und \(s_1(n) \le \varepsilon \cdot s_2(n)\) wa&#x0308;hlt (geht nach der Voraussetzung \(s_1 \notin \Omega (s_2)\)) und \(y := 0^k x\) mit \(|y|
+:= n\) setzt, dann gilt \(c_x \cdot s_1(n) \le c_x \cdot \varepsilon \cdot s_2(n) &lt; s_2(n)\), also reicht der Platz \(s_2(n)\) aus.
+</p>
+
+<p>
+Es gilt daher \(y \in L(M) \iff y \notin L(M’) \iff y \notin L(M_x) = L(M)\), ein Widerspruch (fu&#x0308;r die zweite A&#x0308;quivalenz beno&#x0308;tigt man, dass der Platz \(s_2(n)\) ausreicht).
+&#x2003;&#x2003;
+</p>
+
+<p>
+<b>Folgerung</b>: Aus dem Platzhierarchiesatz folgt \(\L \subsetneqq \DSPACE (\log ^2 n) \subsetneqq \DSPACE (n)\)<br />
+\(\subset \NSPACE (n) \subsetneqq \DSPACE (n^{2.1}) \subsetneqq \PSPACE \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Zeithierarchiesatz</span>):</span><br />
+Seien \(t_1, t_2\colon \natural \rightarrow \natural \) Funktionen mit \(t_2\) zeitkonstruierbar, \(t_2 \in \Omega (n \cdot \log n)\) und \(t_2 \notin \O (t_1 \cdot \log t_1)\).<br />
+Dann gilt \(\DTIME (t_2) \not \subset \DTIME (t_1)\), d.&#x202f;h. \(\DTIME (t_2) \setminus \DTIME (t_1) \not = \emptyset \).
+</p>
+
+<p>
+<b>Folgerung</b>: Aus dem Zeithierarchiesatz folgt \(\DTIME (\O (n)) \subsetneqq \DTIME (\O (n^2)) \subsetneqq \P \)<br />
+\(\subsetneqq \DTIME (\O (2^n) \subsetneqq \DTIME (\O ((2 + \varepsilon )^n))\).
+</p>
+
+
+
+<h2 id="lueckensatz-von-borodin">Lückensatz von <span style="font-variant: small-caps;">Borodin</span></h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Der Lu&#x0308;ckensatz von Borodin besagt, dass es in der Hierarchie von Komplexita&#x0308;tsklassen beliebig große Lu&#x0308;cken gibt. Egal wie groß \(r\) im folgenden Satz gewa&#x0308;hlt wird,
+es gibt immer eine Funktion \(s\), sodass vom U&#x0308;bergang von \(\DTIME (s)\) zu \(\DTIME (r \circ s)\) keine neuen Elemente dazukommen, d.&#x202f;h. es gibt eine Lu&#x0308;cke zwischen \(\DTIME (s)\) und
+\(\DTIME (r \circ s)\). \(s\) kann nicht zeitkonstruierbar sein, denn sonst wa&#x0308;re das ein Widerspruch zum Zeithierarchiesatz.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Lu&#x0308;ckensatz von &#x202f;<span class="textsc" >Borodin</span></span>):</span><br />
+Sei \(r\colon \natural \rightarrow \natural \) eine u&#x0308;berall definierte, berechenbare Funktion mit \(\forall _{n \in \natural }\; r(n) \ge n\).<br />
+Dann gibt es effektiv eine u&#x0308;berall definierte, berechenbare Funktion \(s\colon \natural \rightarrow \natural \) mit<br />
+\(\forall _{n \in \natural }\; s(n) \ge n + 1\) und \(\DTIME (s) = \DTIME (r \circ s)\).
+</p>
+
+<p>
+<b>Beweis</b>: Seien \(M_1, M_2\) eine Aufza&#x0308;hlung aller deterministischen TM und \(t_k(n) \in \natural \cup \{\infty \}\) der tatsa&#x0308;chliche maximale Zeitbedarf einer Rechnung von \(M_k\) auf einer
+Eingabe der La&#x0308;nge \(\le n\). Betrachte die Menge \(N_n := \{t_k(n) \;|\; 1 \le k \le n\}\). Diese Menge ist endlich, denn \(|N_n| \le n\). Also gibt es fu&#x0308;r alle \(n \in \natural \) ein \(s(n)\) mit
+\(N_n \cap [s(n), r(s(n))] = \emptyset \).
+</p>
+
+<p>
+Einen passenden, berechenbaren Wert \(s(n)\) kann man durch folgenden Algorithmus ermitteln:
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                          s := n + 1;
+                                                                                                          do
+                                                                                                               s := s + 1;
+                                                                                                          until ∀k≤n t k (n) ∈
+                                                                                                                             / [s, r(s)]
+                                                                                                          return s;
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+&amp;s := n + 1;\\ &amp;\DO \\ &amp;\qquad s := s + 1;\\ &amp;\UNTIL \forall _{k \le n}\; t_k(n) \notin [s, r(s)]\\ &amp;\RETURN s;
+\end{align*}
+Somit ist \(s(n)\) u&#x0308;berall definiert, berechenbar und es gilt \(\forall _{n \in \natural }\; s(n) \ge n + 1\).
+</p>
+
+<p>
+Es gilt \(\DTIME (s) = \DTIME (r \circ s)\):<br />
+„\(\subset \)“: Wegen \(\forall _{n \in \natural }\; r(n) \ge n\) gilt \(\DTIME (s) \subset \DTIME (r \circ s)\).<br />
+„\(\supset \)“: Sei \(L \in \DTIME (r \circ s)\). Dann gibt es ein \(k \in \natural \) mit \(L = L(M_k)\) und \(M_k\) einer durch \(r \circ s\) zeitbeschra&#x0308;nkten, deterministischen TM. Es gilt \(\forall _{n
+\in \natural }\; t_k(n) \le r(s(n))\), denn es ist n.&#x202f;V. \(L(M_k) \in \DTIME (r \circ s)\). Wegen \(t_k(n) \in N_n\) fu&#x0308;r \(n \ge k\) und \(N_n \cap [s(n), r(s(n))] = \emptyset \) gilt also
+\(\forall _{n \ge k}\; t_k(n) &lt; s(n)\). Es gilt daher \(t_k(n) \le s(n)\) fu&#x0308;r fast alle \(n \in \natural \). Fu&#x0308;r die endlich vielen Ausnahmen la&#x0308;sst sich eine zweite TM konstruieren, die
+diese Ausnahmen abfa&#x0308;ngt, d.&#x202f;h. es gibt ein \(k’ \in \natural \) mit \(L(M_k) = L(M_{k’})\) und \(\forall _{n \in \natural }\; t_{k’}(n) \le s(n)\).<br />
+Somit gilt \(L = L(M_k) = L(M_{k’}) \in \DTIME (s)\). &#x2003;&#x2003;
+</p>
+
+
+
+<h2 id="der-satz-von-immerman-und-szelepcsenyi">Der Satz von <span style="font-variant: small-caps;">Immerman</span> und <span style="font-variant: small-caps;">Szelepcsényi</span></h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Die Klassen \(\DTIME \) und \(\DSPACE \) sind unter Komplement abgeschlossen. Ob dies auch fu&#x0308;r \(\NSPACE \) gilt, war lange Zeit offen. 1964 stellte Kuroda die Frage, ob die kontextsensitiven
+Sprachen unter Komplement abgeschlossen sind (2. LBA-Problem). A&#x0308;quivalent dazu ist \(\NSPACE (n) = \Co \NSPACE (n)\). Diese Frage konnte nach 20 Jahren von Immerman und Szelepcsényi positiv beantwortet
+werden.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Satz von <span class="textsc" >Immerman</span> und <span class="textsc" >Szelepcsényi</span></span>):</span><br />
+Sei \(f \in \Omega (\log n)\). Dann gilt \(\NSPACE (f) = \Co \NSPACE (f)\).
+</p>
+
+
+
+<h2 id="polynomialzeit-reduktionen">Polynomialzeit-Reduktionen</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Zur Wiederholung wird noch einmal die Definition einer Reduktion angegeben.
+</p>
+
+<p>
+<b>Reduktion</b>:&#x2003; Seien \(L \subset \Sigma ^\ast \) und \(L’ \subset \Sigma ’^\ast \) Sprachen. Dann heißt eine u&#x0308;berall definierte, berechenbare Abbildung \(f\colon \Sigma ^\ast \rightarrow
+\Sigma ’^\ast \) <em><span class="dashuline" >Reduktion</span></em> von \(L\) auf \(L’\), falls \(x \in L \iff f(x) \in L’\) fu&#x0308;r alle \(x \in \Sigma ^\ast \). \(A\) heißt auf \(B\) <em><span
+class="dashuline" >reduzierbar</span></em> (\(L \le L’\)), falls es eine Reduktion von \(L\) auf \(L’\) gibt.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Polynomialzeit-Reduktion</b>:&#x2003; Eine Reduktion \(f\colon \Sigma ^\ast \rightarrow \Sigma ’^\ast \) von \(L\) auf \(L’\) heißt<br />
+<em><span class="dashuline" >Polynomialzeit-Reduktion</span></em>, falls sich \(f\) durch eine deterministische polynomialzeit-beschra&#x0308;nkte Turingmaschine berechnen la&#x0308;sst.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >U&#x0308;bertragbarkeit bei Polynomialzeit-Reduktionen</span>):</span> Seien \(L \subset \Sigma ^\ast \) und \(L’ \subset \Sigma ’^\ast \)
+Sprachen, sodass es eine Polynomialzeit-Reduktion von \(L\) auf \(L’\) gibt. Wenn \(L’ \in \P \) gilt, dann auch \(L \in \P \).
+</p>
+
+<p>
+<b>Beweis</b>: Seien \(L’ \in \DTIME (n^k)\) und \(f\) eine Polynomialzeit-Reduktion, die in Zeit \(n^\ell \) berechnet werden kann. Ist \(x \in \Sigma ^\ast \) eine Eingabe der La&#x0308;nge \(n\), dann kann
+\(f(x)\) in Zeit \(n^\ell \) berechnet werden. Anschließend wird \(f(x) \in L’\) u&#x0308;berpru&#x0308;ft, dies geht in Zeit \((n^\ell )^k = n^{k \cdot \ell }\), weil \(f(x)\) ho&#x0308;chstens La&#x0308;nge
+\(n^\ell \) haben kann. Wegen \(x \in L \iff f(x) \in L’\) wurde \(x \in L\) in polynomialer Zeit \(n^\ell + n^{k \cdot \ell }\) u&#x0308;berpru&#x0308;ft, d.&#x202f;h. \(L \in \P \). &#x2003;&#x2003;
+</p>
+
+
+
+<h2 id="matching-und-fluss-als-beispiel-fuer-eine-polynomialzeit-reduktion">Matching und Fluss als Beispiel für eine Polynomialzeit-Reduktion</h2>
+
+</p>
+
+
+<p>
+<b>bipartiter Graph</b>:&#x2003; \(G = (A, B, E)\) heißt <em><span class="dashuline" >bipartiter Graph</span></em>, wenn \(E \subset A \times B\) und \(A \cap B = \emptyset \).
+</p>
+
+<p>
+<b>Matching</b>:&#x2003; Sei \(G = (A, B, E)\) ein bipartiter Graph. Ein <em><span class="dashuline" >Matching</span></em> \(M \subset E\) eine Teilmenge von \(E\), sodass keine zwei verschiedene Kanten aus \(M\)
+denselben Endknoten haben.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Das Problem, ein Matching maximaler Gro&#x0308;ße zu berechnen, kann sehr effizient auf die Berechnung eines maximalen Flusses in einem Netzwerk reduziert werden.
+</p>
+
+<p>
+<b>Netzwerk</b>:&#x2003; Ein <em><span class="dashuline" >Netzwerk</span></em> ist ein \(5\)-Tupel \(N = (V, E, s, t, c)\), wobei
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f29"><p>\((V, E)\) ein gerichteter Graph (d.&#x202f;h. \(E \subset V \times V\)) ist,
+</p>
+</li>
+<li class="list-item-f30"><p>\(s, t \in V\) mit \(s \not = t\) (<em><span class="dashuline" >Quelle</span></em> und <em><span class="dashuline" >Senke</span></em>) gilt und
+</p>
+</li>
+<li class="list-item-f31"><p>\(c\colon E \rightarrow \natural \) jeder Kante \(e \in E\) eine <em><span class="dashuline" >Kapazita&#x0308;t</span></em> \(c(e) &gt; 0\) zuordnet.
+</p>
+</li>
+</ul>
+
+<p>
+<b>Fluss</b>:&#x2003; Ein <em><span class="dashuline" >Fluss</span></em> \(F\) ist eine Abbildung \(F\colon E \rightarrow \natural _0\) mit
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f32"><p>\(\forall _{v \in V \setminus \{s, t\}}\; \sum _{(x, v) \in E} F(x, v) = \sum _{(v, y) \in E} F(v, y)\) (<em><span class="dashuline" >Flusserhaltung</span></em>)
+</p>
+</li>
+<li class="list-item-f33"><p>\(\forall _{e \in E}\; F(e) \le c(e)\) (<em><span class="dashuline" >Kapazita&#x0308;tskonformita&#x0308;t</span></em>)
+</p>
+</li>
+</ul>
+
+<p>
+\(|F| := \sum _{(s, y) \in E} F(s, y)\) ist die <em><span class="dashuline" >Gro&#x0308;ße</span></em> des Flusses \(F\).
+
+<p>
+<em>Bemerkung</em>: Ein Fluss maximaler Gro&#x0308;ße kann in polynomialer Zeit mittels des Algorithmus von Ford-Fulkerson (Max-Flow-Min-Cut-Theorem) berechnet werden.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Reduktion von Matching auf Fluss</span>):</span> Das Problem, ein maximales Matching zu berechnen, kann auf das Problem, einen maximalen Fluss zu
+berechnen, reduziert werden.<br />
+Genauer gilt: Sei \(G = (A, B, E)\) ein bipartiter Graph. Definiere ein Netzwerk \(N := (V, E’, s, t, c)\) mit \(V := A \cup B \cup \{s, t\}\) (\(s, t \notin A \cup B\)), \(E’ := E \cup \{(s, a) \;|\; a \in
+A\} \cup \{(b, t) \;|\; b \in B\}\) und \(c(x, y) := 1\) fu&#x0308;r alle \((x, y) \in E’\). Ist nun \(F\colon E’ \rightarrow \natural _0\) ein Fluss maximaler Gro&#x0308;ße in \(N\), dann ist \(M := \{e \in
+E \;|\; F(e) = 1\}\) ein Matching maximaler Gro&#x0308;ße in \(G\).
+</p>
+
+
+
+<h2 id="logspace-reduktionen">Logspace-Reduktionen</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Viele in der Praxis wichtige Reduktionen lassen sich in logarithmischem Platz berechnen. Deswegen definiert man Logspace-Reduktionen.
+</p>
+
+<p>
+<b>Logspace-Transducer</b>:&#x2003; Ein <em><span class="dashuline" >logarithmisch platzbeschra&#x0308;nkter Transduktor<br />
+(Logspace-Transducer)</span></em> ist eine deterministische Turingmaschine \(M\) mit
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f34"><p>einem Eingabeband, von dem nur gelesen werden kann,
+</p>
+</li>
+<li class="list-item-f35"><p>einem logarithmisch in der Eingabela&#x0308;nge platzbeschra&#x0308;nkten Arbeitsband und
+</p>
+</li>
+<li class="list-item-f36"><p>einem getrennten Ausgabeband, auf das nur geschrieben werden kann (und der Schreibkopf bewegt sich nur nach rechts).
+</p>
+</li>
+</ul>
+
+<p>
+<b>in Logspace berechenbar</b>:&#x2003; Eine Abbildung \(f\colon \Sigma ^\ast \rightarrow \Sigma ’^\ast \) heißt <em><span class="dashuline" >in Logspace berechenbar</span></em>, falls es einen
+Logspace-Transducer \(M\) gibt, sodass fu&#x0308;r alle \(x \in \Sigma ^\ast \) der Transduktor \(M\) bei Eingabe \(x\) anha&#x0308;lt und \(f(x) \in \Sigma ’^\ast \) auf dem Ausgabeband steht.
+</p>
+
+<p>
+<b>Logspace-Reduktion</b>:&#x2003; Seien \(L \subset \Sigma ^\ast \) und \(L’ \subset \Sigma ’^\ast \) Sprachen. Dann heißt eine u&#x0308;berall definierte, in Logspace berechenbare Abbildung \(f\colon \Sigma
+^\ast \rightarrow \Sigma ’^\ast \) <em><span class="dashuline" >Logspace-Reduktion</span></em> von \(L\) auf \(L’\), falls \(x \in L \iff f(x) \in L’\) fu&#x0308;r alle \(x \in \Sigma ^\ast \). \(L\) heißt auf
+\(L’\) <em><span class="dashuline" >in Logspace reduzierbar</span></em> (\(L \le _m^{\log } L’\)), falls es eine Logspace-Reduktion von \(L\) auf \(L’\) gibt.
+</p>
+
+<p>
+<em>Bemerkung</em>: Der Index \(m\) steht fu&#x0308;r many-one, was bedeutet, dass mehrere \(w \in \Sigma ^\ast \) auf ein Wort in \(\Sigma ’^\ast \) abgebildet werden ko&#x0308;nnen.<br />
+Jede in Logspace berechenbare Abbildung \(f\colon \Sigma ^\ast \rightarrow \Sigma ’^\ast \) ist in polynomialer Zeit berechenbar.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Eine analoge Aussage der folgenden gilt trivialerweise fu&#x0308;r Polynomialzeit-Reduktionen. Fu&#x0308;r Logspace-Reduktionen muss man etwas arbeiten, denn man kann das Ergebnis der ersten
+Reduktion nicht einfach auf das Arbeitsband schreiben (nicht in logarithmischem Platz).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(\le _m^{\log }\) ist transitiv</span>):</span> Seien \(L \subset \Sigma ^\ast \), \(L’ \subset \Sigma ’^\ast \) und \(L’’ \subset \Sigma
+’’^\ast \) mit \(L \le _m^{\log } L’ \le _m^{\log } L’’\).<br />
+Dann gilt \(L \le _m^{\log } L’’\).
+</p>
+
+<p>
+<b>Beweis</b>: Seien \(f\colon \Sigma ^\ast \rightarrow \Sigma ’^\ast \) bzw. \(g\colon \Sigma ’^\ast \rightarrow \Sigma ’’^\ast \) Logspace-Reduktionen von \(L\) auf \(L’\) bzw. von \(L’\) auf \(L’’\) und
+\(w \in \Sigma ^\ast \) eine Eingabe mit \(|w| = n\). Dann wird \(g(f(w))\) in Platz \(\O (\log n)\) wie folgt berechnet:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f37"><p>Starte den Logspace-Transducer zur Berechnung von \(g\) (ohne \(f(w)\) vorher zu berechnen).
+</p>
+</li>
+<li class="list-item-f38"><p>Wenn wa&#x0308;hrend der Berechnung von \(g\) das \(i\)-te Bit von \(f(w)\) beno&#x0308;tigt wird, dann wird der Logspace-Transducer zur Berechnung von \(f(w)\) neugestartet, bis schließlich das \(i\)-te Bit
+von \(f(w)\) ausgegeben ist. Die Bits \(1, \dotsc , i - 1\) von \(f(w)\) werden dabei nicht ausgegeben. Dazu wird ein Bina&#x0308;rza&#x0308;hler jedesmal genau dann inkrementiert, wenn der Logspace-Transducer
+fu&#x0308;r \(f\) ein Ausgabebit produziert.
+</p>
+</li>
+</ul>
+
+<p>
+Der Bina&#x0308;rza&#x0308;hler beno&#x0308;tigt Platz \(\O (\log |f(w)|) = \O (\log n)\), denn es gilt \(|f(w)| \le n^k\) fu&#x0308;r eine Konstante \(k\). Also ist die Komposition \(g \circ f\) eine
+Logspace-Reduktion von \(L\) auf \(L’’\). &#x2003;&#x2003;
+</p>
+
+
+
+<h2 id="zusatz-aussagenlogik">Zusatz: Aussagenlogik</h2>
+
+</p>
+
+
+<p>
+<b>aussagenlogische Formel</b>:&#x2003; Sei \(\Sigma _0 := \{\lnot , \land , \lor , \Rightarrow , \Leftrightarrow , 0, 1, (, ), x\}\). Dann ist \(\mathbb {A} \subset \Sigma _0^\ast \) die Menge aller
+<em><span class="dashuline" >aussagenlogischen Formeln</span></em> u&#x0308;ber der Variablenmenge \(V := x1\{0, 1\}^\ast \) intuitiv definiert.
+</p>
+
+<p>
+<em>Bemerkung</em>: \(\mathbb {A} \subset \Sigma _0^\ast \) ist deterministisch kontextfrei und geho&#x0308;rt damit zu \(\DTIME (n)\).
+</p>
+
+<p>
+<b>erfu&#x0308;llbare Formel</b>:&#x2003; Eine aussagenlogische Formel \(F\) heißt <em><span class="dashuline" >erfu&#x0308;llbar</span></em>, falls es eine Belegung \(\mathcal {B}\colon \Var (F)
+\rightarrow \{\TRUE , \FALSE \}\) der in \(F\) vorkommenden Variablen \(\Var (F)\) mit Wahrheitswerten so gibt, sodass sich \(F\) zu \(\TRUE \) auswertet.
+</p>
+
+<p>
+<b>\(\SAT \)</b>:&#x2003; Das Problem \(\SAT \) ist definiert durch \(\SAT := \{F \in \mathbb {A} \;|\; F \text { erfüllbar}\}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Literal</b>:&#x2003; Ein <em><span class="dashuline" >Literal</span></em> ist eine aussagenlogische Variable oder die Negation einer aussagenlogischen Variablen. Statt \(\lnot x\) kann man auch \(\overline {x}\)
+schreiben. Außerdem sei \(\overline {\overline {x}} := x\).
+</p>
+
+<p>
+<b>Konjunktion</b>:&#x2003; Die <em><span class="dashuline" >Konjunktion</span></em> von zwei aussagenlogischen Formeln \(A\) und \(B\) ist \(A \land B\).
+</p>
+
+<p>
+<b>Disjunktion</b>:&#x2003; Die <em><span class="dashuline" >Disjunktion</span></em> von zwei aussagenlogischen Formeln \(A\) und \(B\) ist \(A \lor B\).
+</p>
+
+<p>
+<b>Klausel</b>:&#x2003; Eine <em><span class="dashuline" >Klausel</span></em> ist eine Disjunktion \(A_1 \lor \dotsb \lor A_n\) von Literalen \(A_1, \dotsc , A_n\).
+</p>
+
+<p>
+<b>\(\DNF \) und \(\KNF \)</b>:&#x2003; Die Probleme \(\DNF \) und \(\KNF \) sind definiert durch<br />
+\(\DNF := \{F \in \mathbb {A} \;|\; F \text { ist Disjunktion von Konjunktionen von Literalen}\}\) und<br />
+\(\KNF := \{F \in \mathbb {A} \;|\; F \text { ist Konjunktion von Disjunktionen von Literalen}\}\).
+</p>
+
+<p>
+<b>\(\kKNF {k}\) und \(\kSAT {k}\)</b>:&#x2003; Die Probleme \(\kKNF {k}\) und \(\kSAT {k}\) sind definiert durch<br />
+\(\kKNF {k} := \{F \in \KNF \;|\; \text {jede Klausel in } F \text { enthält genau } k \text { Literale}\}\) und<br />
+\(\kSAT {k} := \kKNF {k} \cap \SAT \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Umformung in Normalform</span>):</span> Fu&#x0308;r jede aussagenlogische Formel \(F\) gibt es a&#x0308;quivalente Formeln \(\DNF (F) \in \DNF \)
+und \(\KNF (F) \in \KNF \).
+</p>
+
+<p>
+<b>Beweis</b>: Fu&#x0308;r die Konstruktion von \(\DNF (F)\) geht man die Wahrheitstabelle von \(F\) zeilenweise durch. Bei jeder Zeile (also Belegung), fu&#x0308;r die die Formel wahr wird, erstellt man einen Ausdruck, der
+genau fu&#x0308;r diese Belegung wahr wird (z.&#x202f;B. wenn \(F\) fu&#x0308;r \(A = B = \FALSE \) und \(C = \TRUE \) wahr wird, ist der zugeho&#x0308;rige Ausdruck \(\overline {A} \land \overline {B} \land
+C\)). All diese Klauseln werden nachher durch Disjunktionen zusammengefasst, womit man \(\DNF (F)\) erha&#x0308;lt.
+</p>
+
+<p>
+\(\KNF (F)\) erha&#x0308;lt man analog, indem man die Zeilen betrachtet, fu&#x0308;r die die Formel falsch wird, und fu&#x0308;r diese Zeilen die Negation der entsprechenden Klausel aufstellt (z.&#x202f;B. wenn \(F\)
+fu&#x0308;r \(A = \TRUE \) und \(B = C = \FALSE \) falsch wird, dann ist die zugeho&#x0308;rige Klausel \(\overline {A} \lor B \lor C\)). Diese Klauseln werden dann durch Konjunktionen verbunden, womit man
+\(\KNF (F)\) erha&#x0308;lt. &#x2003;&#x2003;
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b><span class="textsc" >Horn</span>-Formel</b>:&#x2003; Eine <em><span class="dashuline" ><span class="textsc" >Horn</span>-Klausel</span></em> ist eine Klausel mit ho&#x0308;chstens einem positiven
+Literal. Eine <em><span class="dashuline" ><span class="textsc" >Horn</span>-Formel</span></em> ist eine Formel in KNF, bei der jeder Disjunktionsterm eine Horn-Klausel ist.
+</p>
+
+<p>
+<b>\(\HORN \) und \(\HORNSAT \)</b>:&#x2003; Die Probleme \(\HORN \) und \(\HORNSAT \) sind definiert durch<br />
+\(\HORN := \{F \in \KNF \;|\; F \text { Horn-Formel}\}\) und \(\HORNSAT := \HORN \cap \SAT \).
+</p>
+
+
+
+<h2 id="schwierige-und-vollstaendige-probleme">Schwierige und vollständige Probleme</h2>
+
+</p>
+
+
+<p>
+<b>schwierig</b>:&#x2003; Sei \(\C \) eine Komplexita&#x0308;tsklasse. Dann heißt \(L \subset \Sigma ^\ast \) <em><span class="dashuline" >schwierig fu&#x0308;r \(\C \)</span></em> oder<br />
+<em><span class="dashuline" >\(\C \)-schwierig</span></em> (bzgl. Logspace-Reduktionen), falls \(\forall _{K \in \C }\; K \le _m^{\log } L\).
+</p>
+
+<p>
+<b>vollsta&#x0308;ndig</b>:&#x2003; Sei \(\C \) eine Komplexita&#x0308;tsklasse. Dann heißt \(L \subset \Sigma ^\ast \) <em><span class="dashuline" >vollsta&#x0308;ndig fu&#x0308;r \(\C \)</span></em> oder
+<em><span class="dashuline" >\(\C \)-vollsta&#x0308;ndig</span></em> (bzgl. Logspace-Reduktionen), falls \(L\) \(\C \)-schwierig ist und \(L \in \C \) gilt.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Abschluss unter Komplement</span>):</span> Wenn die Komplexita&#x0308;tsklasse \(\C \) unter Komplement abgeschlossen ist (d.&#x202f;h. \(\overline
+{L} \in \C \) fu&#x0308;r alle \(L \in \C \)), dann ist eine Sprache \(K \in \Sigma ^\ast \) \(\C \)-vollsta&#x0308;ndig genau dann, wenn \(\overline {K}\) \(\C \)-vollsta&#x0308;ndig ist.
+</p>
+
+<p>
+<b>Beweis</b>: Sei \(K \in \Sigma ^\ast \). Dann gilt \(K \in \C \) genau dann, wenn \(\overline {K} \in \C \) gilt. Außerdem gilt \(K\) \(\C \)-schwierig genau dann, wenn fu&#x0308;r alle \(L \in \C \) gilt, dass
+\(L \le _m^{\log } K\). Das ist a&#x0308;quivalent zu \(\overline {L} \le _m^{\log } K\) fu&#x0308;r alle \(\overline {L} \in \C \), da \(\C \) unter Komplement abgeschlossen ist. Das gilt genau dann, wenn \(L
+\le _m^{\log } \overline {K}\) fu&#x0308;r alle \(L \in \C \) (durch Komplementbildung auf beiden Seiten der Reduktion). Also ist \(K\) \(\C \)-vollsta&#x0308;ndig genau dann, wenn \(\overline {K}\) \(\C
+\)-vollsta&#x0308;ndig ist. &#x2003;&#x2003;
+</p>
+
+
+
+<h2 id="nl-vollstaendige-probleme">NL-vollständige Probleme</h2>
+
+</p>
+
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >GAP \(\NL \)-vollsta&#x0308;ndig</span>):</span> Das Grapherreichbarkeitsproblem GAP ist \(\NL \)-vollsta&#x0308;ndig.
+</p>
+
+<p>
+<b>Beweis</b>: \(\text {GAP} \in \NL \) wurde bereits gezeigt.
+</p>
+
+<p>
+Seien \(L \in \NL \) und \(M\) eine nicht-deterministische logarithmisch platzbeschra&#x0308;nkte Turingmaschine mit \(L(M) = L\). Fu&#x0308;r eine Eingabe \(w \in \Sigma ^\ast \) wird eine Reduktion \(f\) definiert
+durch \(f(w) := (G, s, t)\) mit
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f39"><p>\(G := (V, E)\) der gerichtete Graph mit \(V := \{\alpha \;|\; \alpha \text { Konfiguration von } M \text { bei Eingabe } w,\)<br />
+\(|\alpha | \le \log |w|\}\) und \(E := \{(\alpha , \beta ) \;|\; \alpha , \beta \in V,\; \alpha \vdash _M \beta \}\),
+</p>
+</li>
+<li class="list-item-f40"><p>\(s := \Start (w)\) und
+</p>
+</li>
+<li class="list-item-f41"><p>\(t := \text {die oBdA eindeutige akzeptierende Konfiguration von } M\).
+</p>
+</li>
+</ul>
+
+<p>
+Offensichtlich gilt \(w \in L(M) \iff \text {in } G \text { gibt es einen gerichteten Pfad von } s \text { nach } t\). Also ist \(f\) eine Reduktion von \(L\) auf GAP, die man in logarithmischem Platz berechnen
+kann. &#x2003;&#x2003;
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(\kSAT {2}\) \(\NL \)-vollsta&#x0308;ndig</span>):</span> \(\kSAT {2}\) ist \(\NL \)-vollsta&#x0308;ndig.
+</p>
+
+<p>
+<b>Beweis</b>: Aufgrund des Satzes von Immerman und Szelepcsényi genu&#x0308;gt es, die \(\NL \)-Vollsta&#x0308;ndigkeit von \(2\text {-NSAT} := \kKNF {2} \setminus \SAT \) zu zeigen, denn es gilt \(\overline
+{2\text {-NSAT}} = \kSAT {2}\) (Komplement bzgl. \(\kKNF {2}\)) und \(\NL \) ist unter Komplement abgeschlossen (nach dem Satz von Immerman und Szelepcsényi).
+</p>
+
+<p>
+\(2\text {-NSAT}\) ist \(\NL \)-schwierig: Dies kann man durch Reduktion \(\text {GAP} \le _m^{\log } 2\text {-NSAT}\) des Grapherreichbarkeitsproblems GAP auf \(2\text {-NSAT}\) zeigen. Sei \(G = (V, E)\) ein
+gerichteter Graph und \(s, t \in V\). Fu&#x0308;r jeden Knoten \(u \in V\) erstellt man eine logische Variable und fu&#x0308;r jede Kante \((u, v) \in E\) die Implikation \(u \Rightarrow v\), also die Klausel \(\lnot u
+\lor v\). Außerdem werden die Klauseln \(s\) und \(\lnot t\) hinzugefu&#x0308;gt. Die so durch Konjunktionen zusammengesetzte Formel ist unerfu&#x0308;llbar, wenn in \(G\) ein Weg von \(s\) nach \(t\) existiert. Wenn
+kein Weg existiert, dann ko&#x0308;nnen alle Variablen, deren zugeho&#x0308;rige Knoten von \(s\) aus erreichbar sind, zu \(\TRUE \) und alle anderen zu \(\FALSE \) gesetzt werden. Dies definiert eine die Formel
+erfu&#x0308;llende Belegung. Also ist die Formel erfu&#x0308;llbar genau dann, wenn in \(G\) ein Weg von \(s\) nach \(t\) existiert. Man hat also eine Reduktion von GAP auf \(2\text {-NSAT}\) gefunden. GAP ist \(\NL
+\)-schwierig, also ist auch \(2\text {-NSAT}\) ist \(\NL \)-schwierig.
+</p>
+
+<p>
+\(2\text {-NSAT}\) liegt in \(\NL \): Gegeben sei eine Formel \(\phi \in \kKNF {2}\) in den Variablen \(x_1, \dotsc , x_n\). Nun wird ein Graph mit Knotenmenge \(V := \{x_1, \dotsc , x_n, \overline {x_1},
+\dotsc , \overline {x_n}\}\) konstruiert. Jede Klausel \(\alpha \lor \beta \) kann als Implikation interpretiert werden, denn es gilt \((\alpha \lor \beta ) \iff ((\overline {\alpha } \Rightarrow \beta ) \lor
+(\overline {\beta } \Rightarrow \alpha ))\). Deswegen werden zwei Kanten \(\overline {\alpha } \rightarrow \beta \) und \(\overline {\beta } \rightarrow \alpha \) eingefu&#x0308;gt. Behauptung: Es gibt
+genau dann einen Knoten \(x\) und Pfade \(x \rightarrow ^\ast \overline {x}\) sowie \(\overline {x} \rightarrow ^\ast x\), wenn \(\phi \) unerfu&#x0308;llbar ist. Somit kann die Nichterfu&#x0308;llbarkeit von
+\(\phi \) mithilfe des \(\NL \)-Algorithmus fu&#x0308;r Grapherreichbarkeit u&#x0308;berpru&#x0308;ft werden.
+</p>
+
+<p>
+Es reicht also, die Behauptung zu zeigen. Das kann man wie folgt beweisen:
+</p>
+
+<p>
+„\(\Rightarrow \)“: Wenn es einen Knoten \(x\) und Pfade \(x \rightarrow ^\ast \overline {x}\) sowie \(\overline {x} \rightarrow ^\ast x\) gibt, dann gelten die Implikationen \(x \Rightarrow \overline {x}\)
+und \(\overline {x} \Rightarrow x\), d.&#x202f;h. weder \(x\) noch \(\overline {x}\) kann wahr sein. \(\phi \) ist also nicht erfu&#x0308;llbar.
+</p>
+
+<p>
+„\(\Leftarrow \)“: Fu&#x0308;r jeden Knoten \(x\) existiere nun ho&#x0308;chstens einer der Pfade \(x \rightarrow ^\ast \overline {x}\) oder \(\overline {x} \rightarrow ^\ast x\). Man kann annehmen, dass
+genau einer der Pfade existiert, ansonsten fu&#x0308;ge die Kante \(x \rightarrow \overline {x}\) hinzu.<br />
+Dies erzeugt keinen neuen Kreis: Angenommen, durch die neue Kante \(x \rightarrow \overline {x}\) wurde ein Kreis mit \(\alpha \) und \(\overline {\alpha }\) erzeugt. Dann benutzt dieser Kreis die Kante \(x
+\rightarrow \overline {x}\), d.&#x202f;h. es gilt \(\alpha \rightarrow ^\ast x \rightarrow \overline {x} \rightarrow ^\ast \overline {\alpha } \rightarrow ^\ast \alpha \rightarrow ^\ast x\) oder
+\(\alpha \rightarrow ^\ast x \rightarrow \overline {x} \rightarrow ^\ast \overline {\alpha } \rightarrow ^\ast x \rightarrow \overline {x} \rightarrow ^\ast \alpha \) (\(\rightarrow ^\ast \)
+benutzt nur alte Kanten). Damit ha&#x0308;tte der urspru&#x0308;ngliche Graph einen Pfad \(\overline {x} \rightarrow ^\ast x\), im Widerspruch zur Annahme. Somit kann immer eine Kante neu hinzugefu&#x0308;gt
+werden, sodass immer genau einer der Pfade \(x \rightarrow ^\ast \overline {x}\) oder \(\overline {x} \rightarrow ^\ast x\) existiert.<br />
+Nun wird \(x\) auf \(\TRUE \) gesetzt, wenn \(\overline {x} \rightarrow ^\ast x\) existiert und \(\FALSE \) sonst. Diese Belegung ist erfu&#x0308;llend: Sei \(\alpha \lor \beta \) eine beliebige Klausel mit \(\beta =
+\FALSE \) (sonst ist \(\alpha \lor \beta \) ohnehin schon wahr). Dann gibt es nach Konstruktion einen Pfad \(\beta \rightarrow ^\ast \overline {\beta }\). Außerdem gibt es wegen der Klausel \(\alpha \lor \beta \)
+die Kanten \(\overline {\alpha } \rightarrow \beta \) und \(\overline {\beta } \rightarrow \alpha \). Somit erha&#x0308;lt man den Weg \(\overline {\alpha } \rightarrow \beta \rightarrow ^\ast
+\overline {\beta } \rightarrow \alpha \). Also gilt \(\alpha = \TRUE \) und die Klausel ist erfu&#x0308;llt.<br />
+Es sind also alle Klauseln von \(\phi \) erfu&#x0308;llt und damit \(\phi \) selbst. &#x2003;&#x2003;
+</p>
+
+
+
+<h2 id="np-vollstaendige-probleme">NP-vollständige Probleme</h2>
+
+</p>
+
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(\NP \)-vollsta&#x0308;ndige Sprache</span>):</span> Wenn es eine \(\NP \)-vollsta&#x0308;ndige Sprache \(L\) gibt, dann gibt es eine \(\NP
+\)-vollsta&#x0308;ndige Sprache \(L’ \in \NTIME (n)\).
+</p>
+
+<p>
+<b>Beweis</b>: Fu&#x0308;r eine Eingabe \(w \in \Sigma ^\ast \) der La&#x0308;nge \(|w| = n\) produziert eine Turingmaschine zuna&#x0308;chst \(w\dollar ^{n^k}\) in der Zeit \(n^k\) mit \(\dollar \notin
+\Sigma \) (\(n \mapsto n^k\) ist zeitkonstruierbar).
+</p>
+
+<p>
+Setze nun \(L’ := \{w\dollar ^{|w|^k} \;|\; w \in L\}\). Es gilt \(L \le _m^{\log } L’\) durch \(f\colon \Sigma ^\ast \rightarrow (\Sigma \cup \{\dollar \})^\ast \), \(f(w) := w\dollar ^{|w|^k}\),
+d.&#x202f;h. \(L’\) ist \(\NP \)-vollsta&#x0308;ndig, weil \(L\) auch \(\NP \)-vollsta&#x0308;ndig ist. Es gilt \(L’ \in \NTIME (n)\). &#x2003;&#x2003;
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Satz von <span class="textsc" >Cook</span> (und <span class="textsc" >Levin</span>)</span>):</span> \(\SAT \) ist \(\NP \)-vollsta&#x0308;ndig.
+</p>
+
+<p>
+<b>Beweis</b>: Es gilt \(\SAT \in \NP \): Fu&#x0308;r \(F \in \Sigma _0^\ast \) u&#x0308;berpru&#x0308;ft man \(F \in \SAT ?\), indem man zuna&#x0308;chst in Zeit \(\O (|F|)\) pru&#x0308;ft, ob \(F\)
+u&#x0308;berhaupt eine gu&#x0308;ltige aussagenlogische Formel ist, also \(F \in \A \) (geht, weil \(\A \) deterministisch kontextfrei ist, d.&#x202f;h. \(A \in \DTIME (n)\)). In diesem Fall ra&#x0308;t man eine Belegung
+\(\B \colon \Var (F) \rightarrow {\true , \false }\) der in \(F\) vorkommenden Variablen \(\Var (F)\) mit Wahrheitswerten und man akzeptiert, wenn \(F\) sich unter \(\B \) zu \(\true \) auswertet (kann in
+polynomieller Zeit gepru&#x0308;ft werden).
+</p>
+
+<p>
+Um die \(\NP \)-Schwierigkeit von \(\SAT \) zu zeigen, reduziert man eine beliebige Sprache \(L \in \NP \) auf \(\SAT \), d.&#x202f;h. man konstruiert eine Logspace-Reduktion \(\varphi \colon \Sigma ^\ast
+\rightarrow \Sigma _0^\ast \) mit<br />
+\(w \in L \iff \varphi (w) \text { erfüllbar}\). Dazu seien \(M = (Q, \Sigma , \Gamma , \delta , q_0, F, \Box )\) eine durch das Polynom \(p(n)\) zeitbeschra&#x0308;nkte Turingmaschine mit \(L = L(M)\)
+und \(w = w_1 \dotsb w_n \in \Sigma ^\ast \) eine Eingabe der La&#x0308;nge \(n\). OBdA stellt man folgende Forderungen an \(M\):
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f42"><p>  \(M\) hat nur ein les- und schreibbares Band, auf dem zu Beginn die Eingabe steht.
+</p>
+</li>
+<li class="list-item-f43"><p>  \(F = \{q_f\}\), es gibt also nur einen Endzustand.
+</p>
+</li>
+<li class="list-item-f44"><p>  Bei jeder Eingabe \(w \in \Sigma ^\ast \) ha&#x0308;lt \(M\) nie, aber nach \(p(n)\) Schritten ist \(M\) im Endzustand genau dann, wenn \(w \in L(M)\).
+</p>
+</li>
+<li class="list-item-f45"><p>  Nach \(p(n)\) Schritten ist der Lese- und Schreib-Kopf wieder auf der Ausgangsposition.
+</p>
+</li>
+<li class="list-item-f46"><p>  Aus \((q, a, q’, a’, D) \in \delta \) und \((q, b, p’, b’, D’) \in \delta \) folgt \(a = b\), \(a’ = b’\) und \(D = D’\), d.&#x202f;h. nur der resultierende neue Zustand wird nicht-deterministisch
+festgelegt (ha&#x0308;ngt nicht vom Zeichen auf dem Band ab). Dazu kann man zum Beispiel die Zustandsmenge \(Q\) umdefinieren zu \(Q’ := \{q_{a,a’,D} \;|\; q \in Q,\; a, a’ \in \Gamma ,\; D \in \{L, R,
+N\}\}\) und die U&#x0308;bergangsrelation \(\delta \) zu<br />
+\(\delta ’ := \{(q_{a,a’,D}, a, q’_{b,b’,D’}, a’, D) \;|\; (q, a, q’, a’, D) \in \delta ,\; b, b’ \in \Gamma , D’ \in \{L, R, N\}\}\).
+</p>
+</li>
+</ul>
+
+<p>
+Somit ko&#x0308;nnen die Konfigurationen als \(\Conf := \{\Box uqv \Box \;|\; q \in Q,\; u, v \in \Gamma ^\ast ,\; |uv| = p(n)\}\) aufgefasst werden (nach 1.). Die Startkonfiguration ist \(\Box q_0 w \Box
+^{p(n)-n+1}\) und die akzeptierende Konfigurationen sind aus \(\Box q_f \Gamma ^{p(n)} \Box \) (nach 2. und 4.). Man kann eine Konfiguration \(\alpha \in \Conf \) auch schreiben als \(\alpha = \alpha _{-1} \alpha
+_{0} \dotsb \alpha _{p(n)} \alpha _{p(n)+1}\) mit \(\alpha _{-1} = \Box \), \(\alpha _{0}, \dotsc , \alpha _{p(n)} \in Q \cup \Gamma \) und \(\alpha _{p(n)+1} = \Box \) (dabei ist natu&#x0308;rlich
+genau ein \(\alpha _{0}, \dotsc , \alpha _{p(n)}\) in \(Q\) und die anderen sind in \(\Gamma \)).
+</p>
+
+<p>
+Man definiert nun eine Menge von \(4\)-Tupeln, na&#x0308;mlich die Menge der lokalen Bandinhalte:<br />
+\(\Delta := \{(a, b, c, b) \;|\; a, b, c \in \Gamma \} \;\cup \)<br />
+\(\{(c, b, q, p), (b, q, a, b), (q, a, d, a’) \;|\; (q, a, p, a’, L) \in \delta ,\; c, b, d \in \Gamma ^\ast \} \;\cup \)<br />
+\(\{(c, b, q, b), (b, q, a, p), (q, a, d, a’) \;|\; (q, a, p, a’, N) \in \delta ,\; c, b, d \in \Gamma ^\ast \} \;\cup \)<br />
+\(\{(c, b, q, b), (b, q, a, a), (q, a, d, p) \;|\; (q, a, p, a’, R) \in \delta ,\; c, b, d \in \Gamma ^\ast \}\).<br />
+Wegen 5. gilt dann fu&#x0308;r alle \(\alpha , \alpha ’ \in \Box (Q \cup \Gamma )^\ast \Box \) mit \(|\alpha | = |\alpha ’|\), dass \(\alpha , \alpha ’ \in \Conf \) und \(\alpha \vdash _M \alpha ’\)
+genau dann, wenn \(\alpha \in \Conf \) und \((\alpha _{i-1}, \alpha _{i}, \alpha _{i+1}, \alpha ’_{i}) \in \Delta \) fu&#x0308;r alle \(i = 0, \dotsc , p(n)\).
+</p>
+
+<p>
+Falls zum Beispiel \((q, a, p, a’, L) \in \delta \) gilt, so ist folgende lokale Banda&#x0308;nderung fu&#x0308;r alle \(b \in \Gamma \) mo&#x0308;glich: \(\alpha = \dotsb \alpha _{i-2} b q a \alpha _{i+2}
+\dotsb \vdash _M \alpha = \dotsb \alpha ’_{i-2} p b a’ \alpha ’_{i+2} \dotsb \).
+</p>
+
+<p>
+Eine Rechnung \((\alpha _0, \alpha _1, \dotsc , \alpha _{p(n)})\) von \(M\) kann damit als Matrix beschrieben werden:
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                             α0      =        α0,0       α0,1      ···    α0,p(n)      
+                                                                                             α1      =        α1,0       α1,1      ···    α1,p(n)      
+                                                                                                     ..
+                                                                                                      .
+                                                                                            α p(n)   =       α p(n),0   α p(n),1   ···   α p(n),p(n)   
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\begin{array}{cccccccc} \alpha _0 &amp; = &amp; \Box &amp; \alpha _{0,0} &amp; \alpha _{0,1} &amp; \dotsb &amp; \alpha _{0,p(n)} &amp; \Box \\ \alpha _1 &amp; = &amp; \Box &amp; \alpha _{1,0}
+&amp; \alpha _{1,1} &amp; \dotsb &amp; \alpha _{1,p(n)} &amp; \Box \\ &amp; \vdots \\ \alpha _{p(n)} &amp; = &amp; \Box &amp; \alpha _{p(n),0} &amp; \alpha _{p(n),1} &amp; \dotsb &amp; \alpha
+_{p(n),p(n)} &amp; \Box \end {array}
+\end{align*}
+Fu&#x0308;r jedes Tripel \((a, i, t)\) mit \(a \in Q \cup \Gamma \), \(i \in \{-1, 0, \dotsc , p(n), p(n) + 1\}\) und \(t \in \{0, \dotsc , p(n)\}\) sei nun \(x(a, i, t)\) eine aussagenlogische Variable. Die
+Interpretation der Variable ist, dass \(x(a, i, t)\) wahr sein soll genau dann, wenn zum Zeitpunkt \(t\) das \(i\)-te Zeichen der aktuellen Konfiguration ein \(a\) ist.
+</p>
+
+<p>
+Man definiert folgende Hornformeln:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f47"><p>Konsistenzformel: \(C(n) := \bigwedge _i \bigwedge _t \bigwedge _{a \not = b}\; (\lnot x(a, i, t) \lor \lnot x(b, i, t))\)<br />
+(an der \(i\)-ten Stelle kann zu einem Zeitpunkt nur ein Zeichen stehen)
+</p>
+</li>
+<li class="list-item-f48"><p>Randformel: \(R(n) := \bigwedge _t\; (x(\Box , -1, t) \land x(\Box , p(n) + 1, t))\)<br />
+(es darf nicht u&#x0308;ber den polynomiell beschra&#x0308;nkten Platz hinausgegangen werden)
+</p>
+</li>
+<li class="list-item-f49"><p>Startformel: \(S(w) := X(q_0, 0, 0) \land \bigwedge _{i=1,\dotsc ,n}\; x(a_i, i, 0) \land \bigwedge _{i&gt;n}\; x(\Box , i, 0)\)<br />
+(Startkonfiguration ist \(\Box q_0 w \Box ^{p(n)-n+1}\))
+</p>
+</li>
+<li class="list-item-f50"><p>Akzeptierungsformel: \(A(n) := x(q_f, 0, p(n))\)<br />
+(akzeptierende Konfigurationen sind aus \(\Box q_f \Gamma ^{p(n)} \Box \))
+</p>
+</li>
+</ul>
+
+<p>
+Anschließend definiert man die U&#x0308;bergangsformel \(D(n) := \bigwedge _i \bigwedge _t \bigwedge _{(a, b, c) \in (\Gamma \cup Q)^3}\)<br />
+\(\Big (\big (x(a, i - 1, t - 1) \lor x(b, i, t - 1) \lor x(c, i + 1, t - 1)\big ) \Rightarrow \big (\bigvee _{(a, b, c, d) \in \Delta }\; x(d, i, t)\big )\Big )\).<br />
+Die Endformel ist damit \(\varphi (n) := C(n) \land R(n) \land S(w) \land A(n) \land D(n)\).
+</p>
+
+<p>
+Diese Formel ist in KNF. Sie ist eine Hornformel genau dann, wenn \(M\) deterministisch ist. Dabei sind die Klauseln, die nur negative Literale enthalten, genau die Klauseln in \(C(n)\) und die Klauseln in \(D(n)\), bei denen die
+Disjunktion leer ist.
+</p>
+
+<p>
+Die Formel \(\varphi ’(w) := C(n) \land R(n) \land S(w) \land D(n)\) ist immer erfu&#x0308;llbar. Die erfu&#x0308;llenden Belegungen entsprechen na&#x0308;mlich genau den Rechnungen von \(M\). Am Wert von
+\(A(n)\) kann man einer solchen Belegung ansehen, ob sie erfolgreich ist. Damit ist \(\varphi (w)\) erfu&#x0308;llbar genau dann, wenn \(w \in L\). &#x2003;&#x2003;
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Aus dem Beweis ergibt sich unmittelbar folgendes Korollar.
+</p>
+
+<p>
+<b>Folgerung</b>: \(\HORNSAT \) ist \(\P \)-vollsta&#x0308;ndig.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(\KNF \cap \SAT \) \(\NP \)-vollsta&#x0308;ndig</span>):</span> \(\KNF \cap \SAT \) ist \(\NP \)-vollsta&#x0308;ndig.
+</p>
+
+<p>
+<b>Beweis</b>: Siehe Beweis vom Satz von Cook (und Levin), denn \(\varphi (n)\) ist in KNF. &#x2003;&#x2003;
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(\kSAT {3}\) \(\NP \)-vollsta&#x0308;ndig</span>):</span> \(\kSAT {3}\) ist \(\NP \)-vollsta&#x0308;ndig.
+</p>
+
+<p>
+<b>Beweis</b>: \(\kSAT {3} \in \NP \) gilt, weil die Pru&#x0308;fung der syntaktischen Korrektheit und der Anzahl an Literalen pro Klausel deterministisch in polynomieller Zeit mo&#x0308;glich ist. Anschließend kann eine
+Belegung nicht-deterministisch geraten und in polynomieller Zeit auf Erfu&#x0308;llung gepru&#x0308;ft werden.
+</p>
+
+<p>
+Fu&#x0308;r die \(\NP \)-Schwierigkeit von \(\kSAT {3}\) zeigt man \(\KNF \cap \SAT \le \kSAT {3}\). Sei also \(F\) eine Formel, die schon in \(\KNF \) ist. Dann unterscheidet man drei Fa&#x0308;lle:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f51"><p>\(F\) entha&#x0308;lt eine Klausel \((\widetilde {x})\) mit nur einem Literal. In diesem Fall fu&#x0308;hrt man eine neue Variable \(z\) ein und ersetzt \((\widetilde {x})\) durch \((\widetilde {x} \lor
+z) \land (\widetilde {x} \lor \overline {z})\). (Natu&#x0308;rlich wird fu&#x0308;r jede solche Klausel mit nur einem Literal jeweils eine neue Variable eingefu&#x0308;hrt.)
+</p>
+</li>
+<li class="list-item-f52"><p>\(F\) entha&#x0308;lt eine Klausel \((\widetilde {x} \lor \widetilde {y})\) mit zwei Literalen. In diesem Fall fu&#x0308;hrt man eine neue Variable \(z\) ein und ersetzt \((\widetilde {x} \lor
+\widetilde {y})\) durch \((\widetilde {x} \lor \widetilde {y} \lor z) \land (\widetilde {x} \lor \widetilde {y} \lor \overline {z})\).
+</p>
+</li>
+<li class="list-item-f53"><p>\(F\) entha&#x0308;lt eine Klausel \(c := (\widetilde {x}_1 \lor \dotsb \lor \widetilde {x}_k)\) mit \(k \ge 4\) Literalen. In diesem Fall fu&#x0308;hrt man \(k - 3\) neue Variablen \(z_3, \dotsc ,
+z_{k-1}\) ein und ersetzt \(c\) durch \(c’ :=\)<br />
+\((\widetilde {x}_1 \lor \widetilde {x}_2 \lor z_3) \land (\overline {z}_3 \lor \widetilde {x}_3 \lor z_4) \land (\overline {z}_4 \lor \widetilde {x}_4 \lor z_5) \land \dotsb \land (\overline
+{z}_{k-2} \lor \widetilde {x}_{k-2} \lor z_{k-3}) \land (\overline {z}_{k-1} \lor \widetilde {x}_{k-1} \lor \widetilde {x}_k)\).
+</p>
+</li>
+</ul>
+
+<p>
+Diese Umwandlungen a&#x0308;ndert nichts an der Erfu&#x0308;llbarkeit von \(F\). Fu&#x0308;r die ersten beiden Fa&#x0308;lle ist das klar, fu&#x0308;r den dritten Fall gilt auch:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f54"><p>Sei \(\sigma \) eine erfu&#x0308;llende Belegung fu&#x0308;r \(c\). Dann gilt \(\sigma (\widetilde {x}_j) = 1\) fu&#x0308;r ein \(j \in \{1, \dotsc , k\}\). Wenn man \(\sigma \) zu \(\sigma ’\) erweitert durch
+\(\sigma ’(z_i) := 1\) fu&#x0308;r \(i = 3, \dotsc , j\) und \(\sigma ’(z_i) := 0\) fu&#x0308;r \(i = j + 1, \dotsc , k - 1\), dann ist \(\sigma ’\) eine erfu&#x0308;llende Belegung fu&#x0308;r \(c’\).
+</p>
+</li>
+<li class="list-item-f55"><p>Sei \(\sigma ’\) eine erfu&#x0308;llende Belegung fu&#x0308;r \(c’\). Angenommen, es gelte \(\sigma ’(\widetilde {x}_i) = 0\) fu&#x0308;r alle \(i = 1, \dotsc , k\). Dann muss \(\sigma ’(z_3) = 1\) gelten
+(wegen der ersten Klausel \((\widetilde {x}_1 \lor \widetilde {x}_2 \lor z_3)\)). Induktiv folgt dann \(\sigma ’(z_i) = 1\) fu&#x0308;r alle \(k = 3, \dotsc , k - 1\). Dann gilt aber \(\sigma ’((\overline
+{z}_{k-1} \lor \widetilde {x}_{k-1} \lor \widetilde {x}_k)) = 0\), ein Widerspruch (es mu&#x0308;ssen alle Klauseln erfu&#x0308;llt werden). Also ist die Einschra&#x0308;nkung \(\sigma \) von \(\sigma ’\) auf
+\(\widetilde {x}_1, \dotsc , \widetilde {x}_k\) eine erfu&#x0308;llende Belegung von \(c\).
+</p>
+</li>
+</ul>
+
+<p>
+Somit hat man \(F\) auf eine Formel in \(3\text {-}\KNF \) abgebildet, die erfu&#x0308;llbar ist genau dann, wenn \(F\) erfu&#x0308;llbar ist. &#x2003;&#x2003;
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>\(\LinProg (\integer )\)</b>:&#x2003; <em><span class="dashuline" >\(\LinProg (\integer )\)</span></em> ist definiert durch<br />
+\(\LinProg (\integer ) := \{\kod {A, b} \;|\; A \in \integer ^{m \times n},\; b \in \integer ^m,\; \exists _{x \in \integer ^n}\; Ax \ge b\}\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(\LinProg (\integer )\) \(\NP \)-vollsta&#x0308;ndig</span>):</span> \(\LinProg (\integer )\) ist \(\NP \)-vollsta&#x0308;ndig.
+</p>
+
+<p>
+<b>Beweis</b>: \(\LinProg (\integer ) \in \NP \) ist der schwierige Teil des Beweises und wird hier ausgelassen. Man kann na&#x0308;mlich nicht einfach nicht-deterministisch ein \(x \in \integer ^n\) raten, da das evtl.
+nicht in polynomieller Zeit geht (wenn \(x\) groß genug ist).
+</p>
+
+<p>
+\(\LinProg (\integer )\) \(\NP \)-schwierig zeigt man durch \(\kSAT {3} \le _m^{\log } \LinProg (\integer )\). Sei \(F = c_1 \land \dotsb \land c_m\) eine Formel in \(3\text {-}\KNF \) mit Variablen \(x_1,
+\dotsc , x_n\). Dazu wird das folgende System von ganzzahligen Ungleichungen u&#x0308;ber den Variablen \(x_i, \overline {x}_i\), \(i = 1, \dotsc , n\) gebildet:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f56"><p>\(x_i \ge 0\) fu&#x0308;r \(i = 1, \dotsc , n\)
+</p>
+</li>
+<li class="list-item-f57"><p>\(\overline {x_i} \ge 0\) fu&#x0308;r \(i = 1, \dotsc , n\)
+</p>
+</li>
+<li class="list-item-f58"><p>\(x_i + \overline {x_i} \ge 1\) fu&#x0308;r \(i = 1, \dotsc , n\)
+</p>
+</li>
+<li class="list-item-f59"><p>\(-x_i - \overline {x_i} \ge -1\) fu&#x0308;r \(i = 1, \dotsc , n\)
+</p>
+</li>
+<li class="list-item-f60"><p>\(\widetilde {x}_{j1} + \widetilde {x}_{j2} + \widetilde {x}_{j3} \ge 1\) fu&#x0308;r jede Klausel \(c_j = (\widetilde {x}_{j1} \lor \widetilde {x}_{j2} \lor \widetilde {x}_{j3})\), \(j
+= 1, \dotsc , m\)
+</p>
+</li>
+</ul>
+
+<p>
+Dieses System ist lo&#x0308;sbar genau dann, wenn \(F\) erfu&#x0308;llbar ist. &#x2003;&#x2003;
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Zur Wiederholung wird nochmal definiert, was Vertex Cover (VC) ist.
+</p>
+
+<p>
+<b>Vertex Cover (VC)</b>:&#x2003; Sei \(G = (V, E)\) ein ungerichteter Graph.<br />
+Eine Teilmenge \(C \subset V\) heißt <em><span class="dashuline" >Knotenu&#x0308;berdeckung</span></em> (oder <em><span class="dashuline" >Tra&#x0308;ger</span></em>) von \(G\), falls fu&#x0308;r jede
+Kante \(\{u, v\} \in E\) gilt, dass \(\{u, v\} \cap C \not = \emptyset \). Dann ist <em><span class="dashuline" >Vertex Cover (VC)</span></em> wie folgt definiert:<br />
+Gegeben ist \(G\) und \(k \ge 0\). Gefragt ist, ob eine Knotenu&#x0308;berdeckung von \(G\) mit \(|C| \le k\) existiert.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >VC \(\NP \)-vollsta&#x0308;ndig</span>):</span> VC ist \(\NP \)-vollsta&#x0308;ndig.
+</p>
+
+<p>
+<b>Beweis</b>: \(\VC \in \NP \): Rate eine Teilmenge \(C \subset V\) mit \(|C| \le k\) und pru&#x0308;fe in Polynomialzeit, ob \(C\) eine Knotenu&#x0308;berdeckung ist.
+</p>
+
+<p>
+VC \(\NP \)-schwierig kann man durch \(\kSAT {3} \le _m^{\log } \VC \) zeigen. Sei \(F = c_1 \land \dotsb \land c_m\) eine Formel in \(3\text {-}\KNF \) mit \(c_j = (\widetilde {x}_{j1} \lor \widetilde
+{x}_{j2} \lor \widetilde {x}_{j3})\), \(j = 1, \dotsc , m\). Man konstruiert zu \(F\) einen ungerichteten Graphen \(G(F)\) wie folgt: Fu&#x0308;r jedes Literal in jeder Klausel erstellt man einen Knoten (d.&#x202f;h. es
+gibt insgesamt \(3m\) Knoten). Kanten werden zwischen den Literalen einer Klausel eingefu&#x0308;gt (sodass man lauter disjunkte „Dreiecke“ erha&#x0308;lt) und zusa&#x0308;tzlich noch zwischen allen \(x\) und \(\overline
+{x}\) fu&#x0308;r alle Variablen \(x\) aus \(F\).
+</p>
+
+<p>
+In \(G(F)\) muss jede Knotenu&#x0308;berdeckung \(C\) mindestens \(2m\) Knoten haben, weil in jedem der \(m\) Dreiecke mindestens zwei Knoten zu \(C\) geho&#x0308;ren mu&#x0308;ssen.
+</p>
+
+<p>
+Es gilt nun: \(F \in \kSAT {3} \iff G(F)\) hat eine Knotenu&#x0308;berdeckung \(C\) mit \(|C| = 2m\).
+</p>
+
+<p>
+„\(\Rightarrow \)": Sei \(F\) erfu&#x0308;llbar. Dann wird in jeder Klausel \(c_j\) mindestens ein Literal \(\widetilde {x}_{ji}\) wahr. Sei \(C\) die Knotenmenge, die fu&#x0308;r jedes Dreieck die anderen beiden Literale
+entha&#x0308;lt. Dann entha&#x0308;lt \(C\) genau \(2m\) Elemente und \(C\) ist eine Knotenu&#x0308;berdeckung.
+</p>
+
+<p>
+„\(\Leftarrow \)“: Sei \(C\) eine Knotenu&#x0308;berdeckung mit \(|C| = 2m\). Dann enha&#x0308;lt \(C\) in jedem Dreieck genau zwei Knoten. Definiere eine Belegung \(\sigma \) von \(F\) durch<br />
+\(\sigma (x) := 1\), falls eine Kopie von \(x\) nicht zu \(C\) geho&#x0308;rt,<br />
+\(\sigma (x) := 0\), falls eine Kopie von \(\overline {x}\) nicht zu \(C\) geho&#x0308;rt, und<br />
+\(\sigma (x) := 0\), falls alle Kopien von \(x\) und \(\overline {x}\) zu \(C\) geho&#x0308;ren.<br />
+Weil \(C\) eine Knotenu&#x0308;berdeckung ist und alle Kanten \((x, \overline {x})\) in \(G(F)\) vorhanden sind, wird keine Variable gleichzeitig auf \(0\) und \(1\) gesetzt. Es gilt \(\sigma (F) = 1\). &#x2003;&#x2003;
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>\(\NAEkSAT {k}\)</b>:&#x2003; Das Problem <em><span class="dashuline" >\(\NAEkSAT {k}\)</span></em> ist definiert durch<br />
+\(\NAEkSAT {k} := \{F \in \kKNF {k} \;|\; \exists _{\text {Belegung } \sigma }\; F(\sigma ) = 1 = F(1 - \sigma )\}\).<br />
+Zur Abku&#x0308;rzung definiert man <em><span class="dashuline" >\(\NAESAT := \NAEkSAT {3}\)</span></em>.
+</p>
+
+<p>
+<em>Bemerkung</em>: \(F \in \NAEkSAT {k}\) heißt \(F = c_1 \land \dotsb \land c_m\) mit \(c_j = (\widetilde {x}_{1j} \lor \dotsb \lor \widetilde {x}_{kj})\) Klausel mit \(k\) Literalen, sodass es eine
+Belegung \(\sigma \) gibt, fu&#x0308;r die in jeder Klausel ein Literal wahr und eins falsch ist.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(\NAESAT \) \(\NP \)-vollsta&#x0308;ndig</span>):</span> \(\NAESAT \) ist \(\NP \)-vollsta&#x0308;ndig.
+</p>
+
+<p>
+<b>Beweis</b>: Es gilt \(\NAESAT \in \NP \), da man \(\sigma \) nicht-deterministisch raten und<br />
+\(F(\sigma ) = F(1 - \sigma ) = 1\) in polynomieller Zeit verifizieren kann.
+</p>
+
+<p>
+Fu&#x0308;r \(\NAESAT \) \(\NP \)-schwierig zeigt man zuna&#x0308;chst \(\kSAT {3} \le _m^{\log } \NAEkSAT {4}\).<br />
+Dazu sei \(F \in \kKNF {3}\) (dafu&#x0308;r muss zuerst die syntaktische Korrektheit u&#x0308;berpru&#x0308;ft werden). Sei \(z\) eine neue Variable. Ersetze nun jede Klausel \(c_j\) in \(F\) durch \(c_j’ := (c_j \lor
+z)\), d.&#x202f;h. aus<br />
+\(F = (c_1 \land \dotsb \land c_m)\) wird \(F’ := (c_1’ \land \dotsb \land c_m’)\). Es gilt \(F \in \kSAT {3} \iff F’ \in \NAEkSAT {4}\), denn:
+</p>
+
+<p>
+„\(\Rightarrow \)“: Sei \(F \in \kSAT {3}\), d.&#x202f;h. es gibt eine Belegung \(\sigma \), sodass \(F(\sigma ) = 1\). Erweitere nun \(\sigma \) zu \(\sigma ’\) durch \(\sigma ’(z) := 0\). Dann gilt immer noch
+\(F’(\sigma ’) = 1\) (die \(c_j\) sind weiterhin alle wahr), aber auch \(F’(1 - \sigma ’) = 1\), da \(z\) in der Belegung \(1 - \sigma ’\) zu wahr ausgewertet wird.
+</p>
+
+<p>
+„\(\Leftarrow \)“: Sei \(F’ \in \NAEkSAT {4}\), d.&#x202f;h. es gibt eine Belegung \(\sigma ’\), sodass \(F’(\sigma ’) = F’(1 - \sigma ’) = 1\). Gilt \(\sigma ’(z) = 0\), dann werten alle Klauseln \(c_j\) zu wahr
+aus (weil die \(c_j’ = (c_j \lor z)\) zu wahr auswerten, aber \(z\) falsch ist), d.&#x202f;h. die Einschra&#x0308;nkung von \(F’\) auf die Variablen von \(F\) ist eine erfu&#x0308;llende Belegung von \(F\). Gilt \(\sigma
+’(z) = 1\), so ersetzt man \(\sigma ’\) durch \(1 - \sigma ’\).
+</p>
+
+<p>
+Nun zeigt man \(\NAEkSAT {4} \le _m^{\log } \NAESAT \) wie oben: Fu&#x0308;r \(F \in \kKNF {4}\) mit \(F = (c_1 \land \dotsb \land c_m)\) ersetzt man \(c_j = (\widetilde {x}_{1j} \lor \widetilde
+{x}_{2j} \lor \widetilde {x}_{3j} \lor \widetilde {x}_{4j})\) durch \(c_j’ := (\widetilde {x}_{1j} \lor \widetilde {x}_{2j} \lor z_j) \land (\overline {z_j} \lor \widetilde {x}_{3j} \lor
+\widetilde {x}_{4j})\) (dabei sind die \(z_j\), \(j = 1, \dotsc , m\) neue Variablen). Somit erha&#x0308;lt man \(F’ := c_1’ \land \dotsb \land c_m’\).
+</p>
+<p>
+Es gilt \(F \in \NAEkSAT {4} \iff F’ \in \NAESAT \):
+</p>
+
+<p>
+„\(\Rightarrow \)“: Sei \(F \in \NAEkSAT {4}\), d.&#x202f;h. es gibt eine Belegung \(\sigma \) mit \(F(\sigma ) = F(1 - \sigma ) = 1\).<br />
+Man erweitert \(\sigma \) zu \(\sigma ’\)
+                                        wie folgt:<br />
+Wenn \(\sigma (\widetilde {x}_{1j}) =    \sigma (\widetilde {x}_{2j})\) gilt, dann setze \(\sigma ’(z_j) := 1 - \sigma (\widetilde {x}_{1j})\).<br />
+Wenn \(\sigma (\widetilde {x}_{3j}) =    \sigma (\widetilde {x}_{4j})\) gilt, dann setze \(\sigma ’(z_j) := \sigma (\widetilde {x}_{3j})\).<br />
+(Beide Fa&#x0308;lle ko&#x0308;nnen in Kombination mit \(\sigma (\widetilde {x}_{1j}) = \sigma (\widetilde {x}_{3j})\) nicht auftreten, da ein mindestens Literal wahr und mindestens eins falsch sein muss.)<br />
+Fu&#x0308;r \(\sigma (\widetilde {x}_{1j}) \not = \sigma (\widetilde {x}_{2j})\) und \(\sigma (\widetilde {x}_{3j}) \not = \sigma (\widetilde {x}_{4j})\) setze \(\sigma ’(z_j)\) beliebig.<br />
+Damit gilt \(F’(\sigma ’) = F’(1 - \sigma ’) = 1\) und \(F’ \in \NAESAT \).
+</p>
+
+<p>
+„\(\Leftarrow \)“: Sei \(F’ \in \NAESAT \), d.&#x202f;h. es gibt eine Belegung \(\sigma ’\) mit \(F’(\sigma ’) = F’(1 - \sigma ’) = 1\). Sei \(\sigma \) die Einschra&#x0308;nkung von \(\sigma ’\) auf die Variablen
+von \(F\).<br />
+Wenn \(\sigma ’(\widetilde {x}_{1j}) \not = \sigma ’(\widetilde {x}_{2j})\) oder \(\sigma ’(\widetilde {x}_{3j}) \not = \sigma ’(\widetilde {x}_{4j})\) gilt, dann gilt \(F(\sigma ) = F(1 - \sigma ) =
+1\).<br />
+Sei also \(\sigma ’(\widetilde {x}_{1j}) = \sigma ’(\widetilde {x}_{2j})\) und \(\sigma ’(\widetilde {x}_{3j}) = \sigma ’(\widetilde {x}_{4j})\). Dann muss \(\sigma ’(\widetilde {x}_{2j}) \not =
+\sigma ’(\widetilde {x}_{3j})\) gelten, denn sonst wa&#x0308;re eine der beiden Klauseln aus \(c_j’\) bei \(\sigma ’\) oder \(1 - \sigma ’\) nicht erfu&#x0308;llt (z.&#x202f;B. wenn \(\sigma ’(z_j) = \sigma
+’(\widetilde {x}_{1j})\) gilt, dann wa&#x0308;re die erste Klausel aus \(c_j’\) fu&#x0308;r \(\sigma ’\) nicht erfu&#x0308;llt, wenn \(\sigma ’(z_j) = 1\), und nicht fu&#x0308;r \(1 - \sigma ’\), wenn \(\sigma
+’(z_j) = 0\)). Damit ist aber ebenfalls \(F(\sigma ) = F(1 - \sigma ) = 1\), d.&#x202f;h. \(F \in \NAEkSAT {4}\). &#x2003;&#x2003;
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>\(\kSAT {2\text {-}4}\)</b>:&#x2003; Das Problem <em><span class="dashuline" >\(\kSAT {2\text {-}4}\)</span></em> ist definiert durch \(\kSAT {2\text {-}4} :=\)<br />
+\(\{F \in \kKNF {4} \;|\; \exists _{\text {Belegung } \sigma }\; \text {in jeder Klausel sind zwei Literale wahr und zwei falsch}\}\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(\kSAT {2\text {-}4}\) \(\NP \)-vollsta&#x0308;ndig</span>):</span> \(\kSAT {2\text {-}4}\) ist \(\NP \)-vollsta&#x0308;ndig.
+</p>
+
+<p>
+<b>Beweis</b>: Man zeigt \(\NAESAT \le _m^{\log } \kSAT {2\text {-}4}\), indem man die Klauseln \(c_j = (\widetilde {x}_{1j} \lor \widetilde {x}_{2j} \lor \widetilde {x}_{3j})\) ersetzt durch \(c_j’ :=
+(c_j \lor z_j)\). &#x2003;&#x2003;
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>\(\kFaerbbarkeit {3}\)</b>:&#x2003; Sei \(G = (V, E)\) ein ungerichteter Graph mit \(V = \{1, \dotsc , n\}\) und<br />
+\(E \subset \binom {V}{2} := \{\{u, v\} \;|\; u, v \in V,\; u \not = v\}\).<br />
+Das Problem <em><span class="dashuline" >\(\kFaerbbarkeit {3}\)</span></em> ist damit wie folgt definiert: Gegeben sei \(G = (V, E)\).<br />
+Gefragt ist, ob es eine Abbildung \(c\colon V \rightarrow \{\red , \green , \blue \}\) gibt, sodass \(\forall _{\{x, y\} \in E}\; c(x) \not = c(y)\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(\kFaerbbarkeit {3}\) \(\NP \)-vollsta&#x0308;ndig</span>):</span> \(\kFaerbbarkeit {3}\) ist \(\NP \)-vollsta&#x0308;ndig.
+</p>
+
+<p>
+<b>Beweis</b>: \(\kFaerbbarkeit {3} \in \NP \) ist klar (Raten einer Abbildung \(c\) und U&#x0308;berpru&#x0308;fung der Bedingung).
+</p>
+
+<p>
+Fu&#x0308;r \(\kFaerbbarkeit {3}\) \(\NP \)-schwierig zeigt man \(\NAESAT \le _m^{\log } \kFaerbbarkeit {3}\). Sei also \(F \in \kKNF {3}\) mit \(F = (c_1 \land \dotsb \land c_m)\) eine Formel mit Variablen
+\(x_1, \dotsc , x_n\) und Klauseln \(c_j = (\widetilde {x}_{1j} \lor \widetilde {x}_{2j} \lor \widetilde {x}_{3j})\). Erstelle nun einen Graphen \(G(F)\) wie folgt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f61"><p>Fu&#x0308;hre fu&#x0308;r jede Variable \(x_i\) und der Negation \(\overline {x_i}\) einen Knoten ein, d.&#x202f;h. zuna&#x0308;chst \(2n\) Knoten. Fu&#x0308;hre außerdem einen separaten
+„Wurzelknoten“ ein. Verbinde jedes \(x_i\) mit \(\overline {x_i}\) und alle \(x_i\) und \(\overline {x_i}\) jeweils mit dem Wurzelknoten. Der Wurzelknoten soll im Folgenden immer blau gefa&#x0308;rbt sein. Damit
+ko&#x0308;nnen die anderen Knoten im bisherigen Graphen nur rot oder gru&#x0308;n gefa&#x0308;rbt sein. Die 3-Fa&#x0308;rbungen des Teilgraphen entsprechen den mo&#x0308;glichen Belegungen.
+</p>
+</li>
+<li class="list-item-f62"><p>Fu&#x0308;ge nun fu&#x0308;r jede Klausel \(c_j = (\widetilde {x}_{1j} \lor \widetilde {x}_{2j} \lor \widetilde {x}_{3j})\) jeweils ein disjunktes Dreieck ein. Verbinde in den Dreiecken alle Literale
+mit ihrem komplementa&#x0308;ren Literal aus dem 1. Schritt.
+</p>
+</li>
+</ul>
+
+<p>
+Es gilt \(F \in \NAESAT \iff G(F)\) 3-fa&#x0308;rbbar:
+</p>
+
+<p>
+„\(\Rightarrow \)“: Sei \(\sigma \) eine Belegung von \(F\) mit \(F(\sigma ) = F(1 - \sigma ) = 1\). In den Dreiecken wird ein Knoten rot gefa&#x0308;rbt, dessen entsprechendes Literal in der Klausel fu&#x0308;r
+\(\sigma \) wahr wird. Ein Knoten, dessen Literal falsch ist (bzw. wahr fu&#x0308;r \(1 - \sigma \)), wird gru&#x0308;n gefa&#x0308;rbt und der verbleibende Knoten blau. Die Knoten im 1. Teilgraph werden dann
+entsprechend gefa&#x0308;rbt (\(x_i\) rot und \(\overline {x_i}\), falls \(\sigma (x_i) = 1\), sonst andersherum).
+</p>
+
+<p>
+„\(\Leftarrow \)“: Sei \(G(F)\) 3-fa&#x0308;rbbar, oBdA sei der Wurzelknoten blau gefa&#x0308;rbt. Pro Dreieck mu&#x0308;ssen in jedem Fall alle Farben rot, gru&#x0308;n und blau verwendet werden. Definiere \(\sigma
+(x_i) := 1\), falls \(x_i\) im 1. Teilgraphen rot ist, und \(\sigma (x_i) := 0\), falls \(x_i\) im 1. Teilgraphen gru&#x0308;n ist. Das ist eine erfu&#x0308;llende Belegung, denn wenn z.&#x202f;B. \(\sigma (c_j) = 0\)
+wa&#x0308;re, dann wa&#x0308;ren alle Knoten des entsprechenden Dreiecks mit gru&#x0308;nen Knoten verbunden. Analog muss ein Literal pro Klausel falsch sein. &#x2003;&#x2003;
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>planar</b>:&#x2003; Ein Graph \(G = (V, E)\) heißt <em><span class="dashuline" >planar</span></em>, falls \(G\) kreuzungsfrei in die Ebene \(\real ^2\) eingebettet werden kann.
+</p>
+
+<p>
+<em>Bemerkung</em>: Jeder planare Graph ist 4-fa&#x0308;rbbar.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >planare \(\kFaerbbarkeit {3}\) \(\NP \)-vollsta&#x0308;ndig</span>):</span><br />
+\(\kFaerbbarkeit {3}\) fu&#x0308;r planare Graphen ist \(\NP \)-vollsta&#x0308;ndig.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Rucksack-Problem</b>:&#x2003; Das Problem <em><span class="dashuline" >\(\Rucksack \)</span></em> ist wie folgt definiert:<br />
+Gegeben seien \((s_i, p_i)\) und \(s\) mit \(s_i, p_i, s \in \natural \), \(i = 1, \dotsc , n\). Gesucht ist \(I \subset \{1, \dotsc , n\}\), sodass \(\sum _{i \in I} s_i \le s\) gilt und unter dieser Bedingung
+\(\sum _{i \in I} p_i\) maximal wird.
+</p>
+
+<p>
+<em>Bemerkung</em>: Bei der Entscheidungsvariante ist zusa&#x0308;tzlich ein \(p \in \natural \) gegeben.<br />
+Gefragt ist, ob \(I \subset \{1, \dotsc , n\}\) existiert, sodass \(\sum _{i \in I} s_i \le s\) und \(\sum _{i \in I} p_i \ge p\).<br />
+Mit bina&#x0308;rer Suche (startend bei \(p_{\max } := \sum _{i=1}^n p_i\)) kann man zeigen:<br />
+Wenn die Entscheidungsvariante in \(\P \) liegt, dann auch die Optimierungsvariante.<br />
+In der Kryptografie geht es oft nur um einen Spezialfall von \(\Rucksack \).
+</p>
+
+<p>
+<b>\(\SubsetSum \)</b>:&#x2003; Das Problem <em><span class="dashuline" >\(\Rucksack \)</span></em> ist wie folgt definiert:<br />
+Gegeben seien \(s_i, s \in \natural \), \(i = 1, \dotsc , n\). Gesucht ist \(I \subset \{1, \dotsc , n\}\), sodass \(\sum _{i \in I} s_i = s\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(\Rucksack \)/\(\SubsetSum \) \(\NP \)-vollsta&#x0308;ndig</span>):</span><br />
+\(\Rucksack \) (sogar schon \(\SubsetSum \)) ist \(\NP \)-vollsta&#x0308;ndig.
+</p>
+
+<p>
+<b>Beweis</b>: \(\SubsetSum \in \NP \) ist klar (rate \(I\) und verifiziere).
+</p>
+
+<p>
+\(\SubsetSum \) \(\NP \)-schwierig kann man mit \(\kSAT {2\text {-}4} \le _m^{\log } \SubsetSum \) zeigen.<br />
+Sei also \(F = (c_1 \land \dotsb \land c_m)\) eine Formel in \(\kKNF {4}\) mit Klauseln \(c_j = (\widetilde {x}_{1j} \lor \widetilde {x}_{2j} \lor \widetilde {x}_{3j} \lor \widetilde {x}_{4j})\). Aus
+dieser Formel werden \(2n\) Werte \(\widetilde {s}_i\) (ein Paar fu&#x0308;r jede Variable \(x_i\), die in \(F\) vorkommt) wie folgt erzeugt: \(\widetilde {s}_i := \ast \ast \; \ast \ast \; \dotsb \; \ast \ast
+\;\; \ast \;\; 0 \dotsb 010 \dotsb 0\). Dabei stehen vorne \(2m\) Bits (also \(m\) Paare), danach folgt ein Trennbit und hinten befinden sich \(n\) Bits, wobei die \(1\) an der \(i\)-ten Position von hinten ist. Die vorderen
+Bits bestimmen sich folgendermaßen:<br />
+Das \(j\)-te vordere Paar von \(s_i\) ist \(00\), falls \(x_i \notin c_j\), und \(01\), falls \(x_i \in c_j\).<br />
+Das \(j\)-te vordere Paar von \(\overline {s_i}\) ist \(00\), falls \(\overline {x_i} \notin c_j\), und \(01\), falls \(\overline {x_i} \in c_j\).<br />
+Das Trennbit ist beliebig, z.&#x202f;B. \(0\).
+</p>
+
+<p>
+Wenn man nun \(s := 10\; 10\; \dotsb \; 10\;\; 0\;\; 11 \dotsb 1\) setzt, dann gilt \(F \in \kSAT {2\text {-}4}\) genau dann, wenn es ein \(I \subset \{1, \dotsc , n\}\) gibt mit \(\sum _{i \in I} s_i =
+s\). &#x2003;&#x2003;
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: \(\Rucksack \) und \(\SubsetSum \) sind pseudo-polynomiell lo&#x0308;sbar, d.&#x202f;h. die Probleme liegen in \(\P \), falls die Zahlen una&#x0308;r kodiert werden (zum Lo&#x0308;sen
+beno&#x0308;tigt man also polynomiell viel Zeit, wobei das Polynom nicht von der La&#x0308;nge von \(s\), sondern von \(s\) selbst abha&#x0308;ngt).
+</p>
+
+<p>
+Die Lo&#x0308;sung erfolgt dabei mit <em><span class="dashuline" >dynamischem Programmieren</span></em>:<br />
+Sei \(S[j] := \{\sum _{i \in I} s_i \;|\; I \subset \{1, \dotsc , j\},\; \sum _{i \in I} s_i \le s\}\). Ausgehend von \(S[0] = 0\) kann man \(S[j]\) aus \(S[j-1]\) fu&#x0308;r \(j = 1, \dotsc , n\)
+berechnen durch \(S[j] = \{s_j + k \;|\; k \in S[j-1],\; s_j + k \le s\} \cup S[j-1]\). Es gilt \(S[0] \subset S[1] \subset \dotsb \subset S[n] \subset \{0, \dotsb s\}\), d.&#x202f;h. \(|S[j]| \le s +
+1\) fu&#x0308;r alle \(j = 0, \dotsc , n\). Falls \(|S[n]|\) polynomiell begrenzt bleibt, so ist das Problem polynomiell lo&#x0308;sbar, denn die Laufzeit ist \(\O (n \cdot s \cdot \log s)\).
+</p>
+
+
+
+<h2 id="pspace-vollstaendige-probleme">PSPACE-vollständige Probleme</h2>
+
+</p>
+
+
+<p>
+<b>quantifizierte <span class="textsc" >Boole</span>sche Formel (QBF)</b>:&#x2003; Eine <em><span class="dashuline" >quantifizierte <span class="textsc" >Boole</span>sche Formel (QBF)</span></em> entsteht
+folgendermaßen:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f63"><p>Jede Aussagenvariable \(x\) ist eine QBF. In dieser Formel \(x\) tritt \(x\) <em><span class="dashuline" >frei</span></em> auf.
+</p>
+</li>
+<li class="list-item-f64"><p>\(\lnot \varphi \), \((\varphi \land \psi )\) und \((\varphi \lor \psi )\) sind QBF, falls \(\varphi \) und \(\psi \) QBF sind. Eine Aussagenvariable \(x\) aus \(\varphi \) oder \(\psi \) ist frei in den Formeln,
+falls \(x\) frei in \(\varphi \) oder frei in \(\psi \) ist.
+</p>
+</li>
+<li class="list-item-f65"><p>\(\forall _x \varphi \) und \(\exists _x \varphi \) sind QBF, falls \(\varphi \) QBF und \(x\) eine Aussagenvariable ist. Der Gu&#x0308;ltigkeitsbereich von \(\forall _x\) bzw. \(\exists _x\) erstreckt sich auf jedes
+freie Vorkommen von \(x\) in \(\varphi \). \(x\) ist in der entstehenden Formel nicht mehr frei, alle anderen Aussagenvariablen dagegen schon.
+</p>
+</li>
+</ul>
+
+<p>
+<b>pra&#x0308;nexe Normalform</b>:&#x2003; Eine QBF \(F\) ist in <em><span class="dashuline" >pra&#x0308;nexer Normalform</span></em>, falls<br />
+\(F = Q^{(1)}_{x_1} \dotsb Q^{(n)}_{x_n} \varphi (x_1, \dotsc , x_n)\) mit \(Q^{(1)}, \dotsc , Q^{(n)} \in \{\forall , \exists \}\) und<br />
+\(\varphi (x_1, \dotsc , x_n)\) aussagenlogische Formel ohne Quantoren in den Variablen \(x_1, \dotsc , x_n\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Existenz der pra&#x0308;nexen Normalform</span>):</span> Jede QBF kann in eine a&#x0308;quivalente pra&#x0308;nexe Normalform gebracht werden (in
+polynomieller Zeit).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>\(\QBF \)</b>:&#x2003; Das Problem <em><span class="dashuline" >\(\QBF \)</span></em> ist definiert durch<br />
+\(\QBF := \{F \;|\; F \text { quantifizierte Boolesche Formel, die sich zu wahr auswertet}\}\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(\QBF \) \(\PSPACE \)-schwierig</span>):</span> \(\QBF \) ist \(\PSPACE \)-schwierig.
+</p>
+
+<a id="computability-and-complexity-autofile-last"></a>
+{% endraw %}
+</div>
+{:/nomarkdown}

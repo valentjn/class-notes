@@ -1,0 +1,1456 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\newcommand {\wahr }{\ensuremath {\text {w}}}\)
+
+\(\newcommand {\falsch }{\ensuremath {\text {f}}}\)
+
+\(\newcommand {\ur }{\ensuremath {\leqslant }}\)
+
+\(\newcommand {\aufspann }[1]{\ensuremath {\langle #1 \rangle }}\)
+
+\(\newcommand {\im }{\ensuremath {\operatorname {im}}}\)
+
+\(\newcommand {\basis }[1]{\ensuremath {\mathcal {#1}}}\)
+
+\(\newcommand {\stdbasis }[1]{\ensuremath {\mathcal {E}_{\mathnormal {#1}}}}\)
+
+\(\newcommand {\nk }[1]{\ensuremath {\overline {#1}}}\)
+
+\(\newcommand {\matrixm }{\mathcal {M}}\)
+
+\(\newcommand {\hommatrix }[3]{\ensuremath {\matrixm _{#1}(\basis {#2},\basis {#3})}}\)
+
+\(\newcommand {\enmatrix }[2]{\ensuremath {\matrixm _{#1}(\basis {#2})}}\)
+
+\(\newcommand {\id }{\ensuremath {\operatorname {id}}}\)
+
+\(\newcommand {\Hom }{\ensuremath {\operatorname {Hom}}}\)
+
+\(\newcommand {\End }{\ensuremath {\operatorname {End}}}\)
+
+\(\newcommand {\Aut }{\ensuremath {\operatorname {Aut}}}\)
+
+\(\newcommand {\GL }{\ensuremath {\operatorname {GL}}}\)
+
+\(\newcommand {\SL }{\ensuremath {\operatorname {SL}}}\)
+
+\(\newcommand {\rg }{\ensuremath {\operatorname {rg}}}\)
+
+\(\newcommand {\perm }{\ensuremath {\mathfrak {S}}}\)
+
+\(\newcommand {\sign }{\ensuremath {\operatorname {sign}}}\)
+
+\(\newcommand {\diag }{\ensuremath {\operatorname {diag}}}\)
+
+\(\newcommand {\tr }{\ensuremath {\operatorname {tr}}}\)
+
+\(\newcommand {\adj }{\ensuremath {\operatorname {adj}}}\)
+
+\(\newcommand {\lgs }[1]{\ensuremath {\mathfrak {#1}}}\)
+
+\(\newcommand {\lgslsg }[1]{\ensuremath {\mathcal {L}_{\lgs {#1}}}}\)
+
+\(\newcommand {\affin }[1]{\ensuremath {\mathcal {#1}}}\)
+
+\(\newcommand {\TV }{\ensuremath {\operatorname {TV}}}\)
+
+\(\newcommand {\kk }[1]{\ensuremath {\overline {#1}}}\)
+
+\(\newcommand {\eukl }{\ensuremath {\mathcal {E}}}\)
+
+\(\newcommand {\euklebene }{\ensuremath {\mathcal {E}_2}}\)
+
+\(\newcommand {\euklraum }{\ensuremath {\mathcal {E}_3}}\)
+
+\(\newcommand {\strecke }[1]{\ensuremath {\overline {#1}}}\)
+
+\(\newcommand {\vektor }[1]{\ensuremath {\overrightarrow {#1}}}\)
+
+\(\newcommand {\pdim }{\ensuremath {\operatorname {p-dim}}}\)
+
+\(\newcommand {\orth }{\ensuremath {\;\bot \;}}\)
+
+\(\newcommand {\characteristic }{\ensuremath {\operatorname {char}}}\)
+
+\(\newcommand {\grammatrix }{\ensuremath {\mathcal {G}}}\)
+
+\(\newcommand {\rad }{\ensuremath {\operatorname {rad}}}\)
+
+\(\newcommand {\ggT }{\ensuremath {\operatorname {ggT}}}\)
+
+\(\newcommand {\kgV }{\ensuremath {\operatorname {kgV}}}\)
+
+\(\newcommand {\mi }[1]{\ensuremath {{\boldsymbol{\underline {#1}}}}}\)
+
+\(\newcommand {\alt }{\ensuremath {\mathcal {A}}}\)
+
+\(\newcommand {\ann }{\ensuremath {\operatorname {ann}}}\)
+
+\(\newcommand {\ordnung }{\ensuremath {\mathcal {O}}}\)
+
+\(\newcommand {\matrixsize }[1]{{\scriptsize #1}}\)
+
+\(\newcommand {\fracsize }[1]{{\large #1}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<p>
+
+</p>
+
+
+
+<h2 id="torsionsmoduln">Torsionsmoduln</h2>
+
+</p>
+
+
+<p>
+<b>Annullator</b>:&#x2003; Sei \(R\) ein kommutativer Ring mit Eins und \(M\) ein \(R\)-Modul.<br />
+Dann ist der <em><span class="dashuline" >Annullator</span></em> \(\ann _R(m)\) von \(m \in M\) definiert durch \(\ann _R(m) = \{r \in R \;|\; rm = 0\}\).<br />
+A&#x0308;hnlich ist fu&#x0308;r \(S \subseteq M\) \(\ann _R(S) = \{r \in R \;|\; \forall _{m \in S}\; rm = 0\} = \bigcap _{m \in S}\; \ann _R(m)\).
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >Annullator ist Ideal</span>): \(\ann _R(m)\) und \(\ann _R(S)\) sind Ideale von \(R\).
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >Annullator eines endlich erzeugten Moduls</span>): Sei \(M = \aufspann {m_1, \dotsc , m_k}\) endlich erzeugt. Dann ist \(\ann _R(M) = \bigcap _{i=1}^k \ann _R(m_i)\).
+</p>
+
+<p>
+<b>Torsionselement</b>:&#x2003; Seien \(R\) Integrita&#x0308;tsbereich und \(M\) ein \(R\)-Modul.<br />
+Ein Element \(m \in M\) heißt <em><span class="dashuline" >Torsionselement</span></em>, falls \(\ann _R(m) \not = 0\) ist, d.&#x202f;h. es gibt ein \(r \in R\), \(r \not = 0\) mit \(rm = 0\). Das Nullelement \(0_M\)
+von \(M\) ist immer ein Torsionselement. Ist es auch das einzige Torsionselement, so heißt \(M\) <em><span class="dashuline" >torsionsfrei</span></em>.
+</p>
+
+<p>
+<b>Torsionsmoduln und -untermoduln</b>:&#x2003; Seien \(R\) Integrita&#x0308;tsbereich und \(M\) ein \(R\)-Modul.<br />
+Dann ist die Menge \(T(M)\) der Torsionselemente von \(M\) ein Untermodul von \(M\), der<br />
+<em><span class="dashuline" >Torsionsuntermodul</span></em> von \(M\). Ist \(T(M) = M\), so heißt \(M\) <em><span class="dashuline" >Torsionsmodul</span></em>.
+</p>
+
+<p>
+<em>Bemerkung</em>: Beispielsweise ist \({}_\integer \integer \) ein torsionsfreier Modul und \(\integer /z\integer \) ist Torsionsmodul.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Torsionsmoduln und torsionsfreie Moduln</span>):</span> Sei \(R\) ein Integrita&#x0308;tsbereich.<br />
+Ist \(M\) ein freier \(R\)-Modul, dann ist \(M\) torsionsfrei.<br />
+Ist \(M\) ein \(R\)-Modul, dann ist \(M/T(M)\) torsionsfrei.<br />
+Epimorphe Bilder von Torsionsmoduln sind Torsionsmoduln.<br />
+Sei \(\{M_\alpha \;|\; \alpha \in \mathcal {A}\}\) eine Menge von \(R\)-Moduln. Dann ist \(T\left (\bigoplus _{\alpha \in \mathcal {A}} M_\alpha \right ) = \bigoplus _{\alpha \in \mathcal {A}}
+T(M_\alpha )\). Sind insbesondere die \(M_\alpha \) Torsionsmoduln bzw. torsionsfrei, so ist auch ihre direkte Summe Torsionsmodul bzw. torsionsfrei.<br />
+Untermoduln von Torsionsmoduln sind Torsionsmoduln.<br />
+Untermoduln von torsionsfreien Moduln sind torsionsfrei.
+</p>
+
+<p>
+<b>zyklischer \(R\)-Modul</b>:&#x2003; Seien \(R\) ein kommutativer Ring mit Eins und \(M\) ein \(R\)-Modul.<br />
+\(M\) heißt <em><span class="dashuline" >zyklischer \(R\)-Modul</span></em>, falls \(M\) einelementig erzeugt wird, d.&#x202f;h. \(M = Rm\) fu&#x0308;r ein \(m \in M\).<br />
+In diesem Fall wird durch \(f: {}_R R \rightarrow M\), \(r \mapsto rm\) ein \(R\)-Modulepimorphismus vom regula&#x0308;ren \(R\)-Modul \({}_R R\) auf \(M\) definiert.<br />
+Insbesondere ist \(M\) isomorph zum Faktormodul \(R/\ker f\) mit \(\ker f \trianglelefteq R\).<br />
+Umgekehrt ist \(R/I\) zyklischer \(R\)-Modul ertezgt von der Nebenklasse \(1 + I\), falls \(I \trianglelefteq R\) ist.
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >torsionsfreie, zyklische Moduln sind frei</span>):<br />
+Seien \(R\) ein Integrita&#x0308;tsbereich und \((0) \not = M = Rm\) ein torsionsfreier, zyklischer \(R\)-Modul.<br />
+Dann ist \(M \cong {}_R R\) frei mit Basis \(\{m\}\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Untermoduln von e.e. freien Moduln u&#x0308;ber HIR sind frei von kleinerem Rang</span>):</span><br />
+Seien \(R\) ein Hauptidealring, \(F\) ein endlich erzeugter, freier \(R\)-Modul mit \(\rg F = n\) und \(R\)-Basis \(\basis {B} = \{v_1, \dotsc , v_n\}\) sowie \(M \ur F\). Dann ist \(M\) ein freier \(R\)-Modul mit \(\rg M
+= k \le n\).
+</p>
+
+<p>
+<b>Folgerung</b>: Seien \(R\) ein Hauptidealring und \(M\) ein torsionsfreier, endlich erzeugter \(R\)-Modul mit Erzeugendensystem \(S\) der Kardinalita&#x0308;t \(|S| = k\). Dann ist \(M\) frei vom Rang \(n \le k\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Fu&#x0308;r Hauptidealringe \(R\) sind also die torsionsfreien, endlich erzeugten \(R\)-Moduln genau die freien \(R\)-Moduln mit endlichem Rang. Fu&#x0308;r andere Integrita&#x0308;tsbereiche ist dies
+i.&#x202f;A. falsch.<br />
+Obige Folgerung besagt nicht, dass Erzeugendensysteme freier \(R\)-Moduln eine Basis enthalten. (Beispielsweise wird der freie \(\integer \)-Modul \({}_\integer \integer \) von \(\{2, 3\}\) erzeugt, \(\{2, 3\}\)
+entha&#x0308;lt aber keine Basis.)
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >e.e. Modul u&#x0308;ber HIR als Summe von Torsionsmodul und freiem Modul</span>):</span><br />
+Seien \(R\) ein Hauptidealring und \(M\) ein endlich erzeugter \(R\)-Modul.<br />
+Dann ist \(M = T(M) \oplus U\) mit \(U \ur M\) freier \(R\)-Modul von endlichem Rang mit \(U \cong M/T(M)\).
+</p>
+
+<p>
+Das Ziel, alle endlich erzeugten Moduln u&#x0308;ber Hauptidealringen \(R\) zu klassifizieren, kann man nun darauf reduzieren, alle endlich erzeugten \(R\)-Torsionsmoduln zu klassifizieren.<br />
+Hat man na&#x0308;mlich eine Liste \(\{M_\alpha \;|\; \alpha \in \mathcal {A}\}\) aller paarweise nicht-isomorphen, endlich erzeugten \(R\)-Torsionsmoduln, bekommt man eine aller paarweise nicht-isomorphen, endlich
+erzeugten \(R\)-Moduln als \(\{M_{\alpha ,k} \;|\; \alpha \in \mathcal {A},\; k \in \natural _0\}\) mit \(M_{\alpha ,k} = M_\alpha \oplus R \oplus \overset {k\text {-mal}}{\dotsb } \oplus R\).<br />
+Nun will man eine Liste \(\{M_\alpha \;|\; \alpha \in \mathcal {A}\}\) konstruieren.
+</p>
+
+
+
+<h2 id="primaerkomponenten">Primärkomponenten</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Im Folgenden sei \(R\) immer ein Hauptidealring und \(M\) ein endlich erzeugter \(R\)-Modul.
+</p>
+
+<p>
+<b>\(M_p\), Prima&#x0308;rkomponente</b>:&#x2003; Sei \(p \in R\). Dann ist <em><span class="dashuline" >\(M_p\)</span></em> der Untermodul<br />
+\(M_p = \{m \in M \;|\; \exists _{k \in \natural }\; p^k m = 0\}\) von \(M\).<br />
+Ist \(p \not = 0\) ein Primelement, so heißt \(M_p\) <em><span class="dashuline" >Prima&#x0308;rkomponente</span></em>.
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >direkte Summe von \(M_p\) und \(M_q\)</span>): Seien \(p, q \in R\), \(p, q \not = 0\) mit \(\ggT (p, q) = 1\).<br />
+Dann ist \(M_p \cap M_q = (0)\) und daher ist ihre Summe \(M_p + M_q\) direkt.
+</p>
+
+<p>
+<b>Ordnung</b>:&#x2003; Seien \(R\) ein Hauptidealring und \(M\) ein endlich erzeugter \(R\)-Torsionsmodul.<br />
+Dann ist der Annullator \(\ann _R(M)\) ist nicht-trivial und wird von einem bis auf Einheiten eindeutig bestimmten \(r \in R\) erzeugt, d.&#x202f;h. \(\ann _R(M) = rR \not = (0)\).<br />
+Ein Erzeuger von \(\ann _R(M)\) wird <em><span class="dashuline" >Ordnung</span></em> von \(M\) genannt und mit \(r = \ordnung (M)\) bezeichnet.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Prima&#x0308;rkomponentenzerlegung</span>):</span><br />
+Seien \(R\) ein Hauptidealring und \(M\) ein e.e. \(R\)-Torsionsmodul.<br />
+Ist \(\ordnung (M) = r\) und \(r = p_1^{k_1} \dotsm p_n^{k_n}\) die Primfaktorzerlegung von \(r\) in paarweise nicht-assoziierte Primelemente \(p_1, \dotsc , p_n \in R\), \(k_1, \dotsc , k_n \in \natural \)
+(mo&#x0308;glich da \(R\) UFD),<br />
+so zerlegt sich \(M\) in die direkte Summe \(M = M_{p_1} \oplus \dotsb \oplus M_{p_n}\) seiner (eindeutig bestimmten) Prima&#x0308;rkomponenten \(M_{p_i}\) fu&#x0308;r \(i = 1, \dotsc , n\).<br />
+Diese Zerlegung heißt <em><span class="dashuline" >Prima&#x0308;rkomponentenzerlegung</span></em> des e.e. Torsionsmoduls \(M\).
+</p>
+
+<p>
+<b>Folgerung</b>: Seien \(M\) und \(r = p_1^{k_1} \dotsm p_n^{k_n}\) wie eben. Dann ist \(\ordnung (M_{p_i}) = p_i^{k_i}\).
+</p>
+
+<p>
+<b>Ordnung</b>:&#x2003; Seien \(M\) ein e.e. \(R\)-Torsionsmodul, \(m \in M\) und \(\ann _R(m) = rR\).<br />
+Dann heißt \(r\) die <em><span class="dashuline" >Ordnung</span></em> von \(m\), die mit \(\ordnung (m)\) bezeichnet wird.
+</p>
+
+<p>
+<em>Bemerkung</em>: Ist nun ein beliebiger e.e. \(R\)-Modul \(M\) gegeben (\(R\) HIR), so kann man zuna&#x0308;chst mit<br />
+\(M = T(M) \oplus U\) den torsionsfreien Teil \(U\) von \(M\) abspalten. Der freie \(R\)-Modul \(U \cong M/T(M)\) ist auch e.e. und bis auf Isomorphie eindeutig bestimmt. Der Rang von \(U\) ist eindeutig bestimmt und
+endlich.<br />
+Der Torsionsmodul \(T(M) \cong M/U\) ist ebenfalls e.e. und hat eine eindeutige Zerlegung in Prima&#x0308;rkomponenten \(T(M) = T(M)_{p_1} \oplus \dotsc \oplus T(M)_{p_n}\), wobei die paarweise verschiedenen
+Primelemente \(p_i \in R\), \(i = 1, \dotsc , n\) gerade die Primfaktoren der Ordnung \(\ordnung (M)\) sind, die in der Primfaktorzerlegung von \(\ordnung (M)\) vorkommen. Nun muss man also die Moduln
+\(T(M)_{p_i}\) weiter zerlegen und bestimmen.
+</p>
+
+
+
+<h2 id="elementarteiler-und-prototypen">Elementarteiler und Prototypen</h2>
+
+</p>
+
+
+<p>
+<b>zyklischer Modul</b>:&#x2003; Seien \(R\) ein Ring mit Einselement und \(M\) ein \(R\)-Modul.<br />
+Dann ist \(M\) ein <em><span class="dashuline" >zyklischer \(R\)-Modul</span></em>, falls \(M\) von einem Element erzeugt wird, d.&#x202f;h.<br />
+\(M = Rm = \{rm \;|\; r \in R\}\) fu&#x0308;r ein \(m \in M\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >\(M\) zyklisch \(\Leftrightarrow M\) epimorphes Bild von \({}_R R\)</span>):</span> \(M\) ist zyklischer \(R\)-Modul genau dann, wenn \(M\) epimorphes
+Bild des regula&#x0308;ren \(R\)-Moduls \({}_R R\) ist.<br />
+In diesem Fall (sei \(M = Rm\)) ist \(M \cong R/\ann _R(m)\).
+</p>
+
+<p>
+<b>Folgerung</b>:<br />
+Seien \(R\) ein HIR, \(M\) ein zyklischer \(R\)-Torsionsmodul mit Erzeuger \(m \in M\) sowie \(r = \ordnung (m)\).<br />
+Dann ist \(M \cong R/rR\) als \(R\)-Modul und \(\ordnung (M) = r\).
+</p>
+
+<p>
+<b>unabha&#x0308;ngig</b>:&#x2003; Seien \(R\) ein Ring mit Eins und \(M\) ein \(R\)-Modul.<br />
+Dann heißen \(y_1, \dotsc , y_m \in M\) <em><span class="dashuline" >unabha&#x0308;ngig</span></em>, falls aus \(\lambda _1 y_1 + \dotsb + \lambda _m y_m = 0\) mit \(\lambda _1, \dotsc , \lambda _m
+\in R\) stets \(\lambda _i y_i = 0\) fu&#x0308;r alle \(i = 1, \dotsc , m\) folgt.
+</p>
+
+<p>
+<em>Bemerkung</em>: <em>Vorsicht</em>: Lineare Unabha&#x0308;ngigkeit fordert mehr wie Unabha&#x0308;ngigkeit, d.&#x202f;h. aus linearer Unabha&#x0308;ngigkeit folgt immer Unabha&#x0308;ngigkeit. Die Umkehrung
+gilt <em>nicht</em>.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Erzeugendensystem unabha&#x0308;ngig \(\Leftrightarrow M\) zerfa&#x0308;llt in direkte Summe</span>):</span> Seien \(R\) ein Ring mit Eins, \(M\) ein
+\(R\)-Modul und \(\{y_1, \dotsc , y_m\}\) ein unabha&#x0308;ngiges Erzeugendensystem.<br />
+Dann ist \(M = Ry_1 \oplus \dotsb \oplus Ry_m\).<br />
+Ist umgekehrt \(M = Ry_1 \oplus \dotsb \oplus Ry_m\), so ist \(\{y_1, \dotsc , y_m\}\) unabha&#x0308;ngig.
+</p>
+
+<p>
+<b>Folgerung</b>: Sei \(R\) ein HIR, \(M\) ein \(R\)-Modul, \(\{y_1, \dotsc , y_m\}\) ein unabha&#x0308;ngiges Erzeugendensystem und \(s_i = \ordnung (y_i)\). Dann ist \(M = Ry_1 \oplus \dotsb \oplus Ry_m
+\cong R/Rs_1 \oplus \dotsb \oplus R/Rs_m\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Nun muss fu&#x0308;r e.e. \(R\)-Torsionsmoduln \(M\) (\(R\) HIR) ein unabha&#x0308;ngiges Erzeugendensystem gefunden werden.
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >in Nebenklassen gibt es Elemente gleicher Ordnung</span>): Seien \(R\) ein HIR und \(M\) ein e.e. \(R\)-Torsionsmodul, dessen Ordnung \(\ordnung (M) = p^k\) fu&#x0308;r ein
+Primelement \(p \in R\), \(k \in \natural \) ist (d.&#x202f;h. es gilt \(M = M_p\)). Seien außerdem \(m \in M\) mit \(\ordnung (m) = \ordnung (M) = p^k\) und \(\nk {M} = M/Rm\). Dann gibt es in jeder Nebenklasse
+\(\nk {x} = x + Rm \in \nk {M}\) einen Vektor \(y \in x + Rm\) mit \(\ordnung (\nk {x}) = \ordnung (y)\).
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >unabha&#x0308;ngige Mengen</span>): Seien \(R\) ein HIR und \(M\) ein e.e. \(R\)-Torsionsmodul mit<br />
+\(\ordnung (M) = p^k\) fu&#x0308;r ein Primelement \(p \in R\), \(k \in \natural \). Seien außerdem \(m \in M\), sodass<br />
+\(\ordnung (m) = \ordnung (M) = p^k\) ist, und \(y_1, \dotsc , y_n \in M\), sodass \(\nk {y_i} = y_i + Rm \in M/Rm\) unabha&#x0308;ngig sind.<br />
+Die Repra&#x0308;sentanten \(y_i \in \nk {y_i}\) seien so gewa&#x0308;hlt, dass \(\ordnung (\nk {y_i}) = \ordnung (y_i)\) (\(i = 1, \dotsc , n\)).<br />
+Dann ist auch \(\{m, y_1, \dotsc , y_n\} \subseteq M\) unabha&#x0308;ngig.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Untermoduln des zyklischen Moduls</span>):</span> Sei \(R\) ein HIR und \(M = Rm\) (\(m \in M\)) ein zyklischer \(R\)-Modul mit \(\ordnung (M) = p^k\)
+fu&#x0308;r ein Primelement \(r \in R\), \(k \in \natural \). Dann gilt:<br />
+1. Fu&#x0308;r \(\nu = 0, \dotsc , k\) sei \(M_\nu = p^\nu M = Rp^\nu \cdot m\).<br />
+Dann ist \(M_\nu \in M\) und \(\{M_\nu \;|\; \nu = 0, \dotsc , k\}\) ist genau die Menge der Untermoduln von \(M\).<br />
+2. \((0) = M_k \lneqq M_{k-1} \lneqq \dotsb \lneqq M_1 \lneqq M_0 = M\) und \(\ordnung (M_\nu ) = p^{k - \nu }\) fu&#x0308;r \(nu = 0, \dotsc , k\).<br />
+\(M_\nu \) ist zyklisch mit Erzeuger \(p^\nu m\) der Ordnung \(p^{k-\nu }\).<br />
+3. Sei \(x \in M\). Dann ist \(M = Rx\) (d.&#x202f;h. \(x\) Erzeuger von \(M\)) genau dann, wenn \(x \notin M_1\) ist.<br />
+4. Jedes Erzeugendensystem von \(M\) entha&#x0308;lt ein \(x \notin M_1\) mit \(M = Rx\).
+</p>
+
+<p>
+<b>minimales Erzeugendensystem</b>:&#x2003; Seien \(R\) ein Ring mit Einselement, \(M\) ein \(R\)-Modul und \(S \subseteq M\) Erzeugendensystem von \(M\), d.&#x202f;h. \(M = \aufspann {S} = \sum _{x \in S}
+Rx\).<br />
+\(S\) heißt <em><span class="dashuline" >minimales Erzeugendensystem von \(M\)</span></em>, falls \(\aufspann {T} \lneqq M\) fu&#x0308;r jede echte Teilmenge \(T \subset S\).
+</p>
+
+<p>
+<b>Folgerung</b>: Seien \(R\) ein HIR, \(M\) ein zyklischer \(R\)-Modul der Ordnung \(p^k\) fu&#x0308;r ein Primelement \(p \in R\), \(k \in \natural \) sowie \(S \subseteq M\) minimales Erzeugendensystem von
+\(M\).<br />
+Dann ist \(S = \{x\}\) fu&#x0308;r ein \(x \in M\), aber \(x \notin pM\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Modul zerfa&#x0308;llt in Faktormoduln</span>):</span> Seien \(R\) ein HIR, \(M\) ein e.e. \(R\)-Torsionsmodul der Ordnung \(p^k\) fu&#x0308;r ein
+Primelement \(p \in R\), \(k \in \natural \) sowie \(S = \{m_1, \dotsc , m_n\} \subseteq M\) ein minimales Erzeugendensystem von \(M\). Dann entha&#x0308;lt jedes minimale Erzeugendensystem von \(M\) exakt
+\(n\) Elemente und es gibt eindeutig bestimmte natu&#x0308;rliche Zahlen \(k = e_1 \ge e_2 \ge \dotsb \ge e_n\), sodass \(M \cong R/Rq_1 \oplus \dotsb \oplus R/Rq_n\) mit \(q_i = p^{e_i}\), \(i = 1, \dotsc ,
+n\) ist. (Es gilt \(q_n \;|\; \dotsb \;|\; q_2 \;|\; q_1 = p^k\).)
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Liste I von Prototypen</span>):</span><br />
+Seien \(R\) ein HIR und \(p_1, \dotsc , p_k \in R\) paarweise nicht-assoziierte Primelemente.<br />
+Fu&#x0308;r \(i = 1, \dotsc , k\) seien \(e_1^{(i)} \ge e_2^{(i)} \ge \dotsb \ge e_{n_i}^{(i)} \ge 1\) natu&#x0308;rliche Zahlen sowie \(I_\nu ^{(i)} = Rp^{e_\nu ^{(i)}}\) fu&#x0308;r \(\nu = 1,
+\dotsc , n_i\). Sei \(\mi {e}_i := (e_1^{(i)}, \dotsc , e_{n_i}^{(i)})\) und \(E(p_i, \mi {e}_i) := R/I_1^{(i)} \oplus \dotsb \oplus R/I_{n_i}^{(i)}\).<br />
+Zusa&#x0308;tzlich sei \(M(p_1, \mi {e}_1, \dotsc , p_k, \mi {e}_k, \alpha ) = E(p_1, \mi {e}_1) \oplus \dotsb \oplus E(p_k, \mi {e}_k) \oplus (R \oplus \overset {\alpha \text {-mal}}{\dotsb }
+\oplus R)\) fu&#x0308;r \(\alpha \in \natural _0\).<br />
+Dann ist \(\{M(p_1, \mi {e}_1, \dotsc , p_k, \mi {e}_k, \alpha ) \;|\; k \in \natural _0,\; p_1, \dotsc , p_k \in R \text { Primelemente}\)<br />
+\(\text {(bis auf Assoziierung)}, \alpha \in \natural _0,\; n_i \in \natural \text { und } \mi {e}_i = (e_1^{(i)}, \dotsc , e_{n_i}^{(i)}) \text { mit } e_1^{(i)} \ge \dotsb \ge e_{n_i}^{(i)}
+\text { für } i = 1, \dotsc , k\}\) eine vollsta&#x0308;ndige Liste von paarweise nicht-isomorphen, endlich erzeugten \(R\)-Moduln.
+</p>
+
+<p>
+<em>Bemerkung</em>: Nun ist zuna&#x0308;chst das Klassifikationsproblem gelo&#x0308;st. Das Wiedererkennungsproblem ist damit noch nicht gelo&#x0308;st. Sei \(M = R/Rr\) mit \(r \in R\), \(R\) HIR (d.&#x202f;h. \(M\)
+ist zyklischer \(R\)-Modul der Ordnung \(r\)). Zu welchem der \(R\)-Moduln aus obiger Liste ist \(M\) dann isomorph?
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Zerlegung von \(R/Rr\) in teilerfremde Faktoren</span>):</span> Seien \(R\) ein HIR sowie \(r = s \cdot t\) eine Zerlegung von \(r \in R\) in Faktoren
+\(s, t \in R\), \(s, t \notin U(R)\), wobei \(\ggT (s, t) = 1\) ist.<br />
+Dann ist der zyklische \(R\)-Modul \(M = R/Rr\) isomorph zu \(R/Rs \oplus R/Rt\).
+</p>
+
+<p>
+<b>Folgerung</b>: Seien \(R\) ein HIR und \(q = p_1^{e_1} \dotsm p_k^{e_k}\) Primfaktorzerlegung von \(q \in R\).<br />
+Dann ist \(R/Rq \cong R/Rp_1^{e_1} \oplus \dotsb \oplus R/Rp_k^{e_k}\).<br />
+Diese Zerlegung ist genau die Zerlegung von \(R/Rq\) in Prima&#x0308;rkomponenten \(M = M_{p_1} \oplus \dotsb \oplus M_{p_k}\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Seien \(R\) ein HIR und \(p_1, \dotsc , p_k \in R\) paarweise nicht-assoziierte Primelemente von \(R\). Fu&#x0308;r \(i = 1, \dotsc , k\) seien \(e_1^{(i)}, \dotsc , e_{n_i}^{(i)} \in
+\natural \) mit \(e_1^{(i)} \ge \dotsb \ge e_{n_i}^{(i)}\). Man setzt \(e_\nu ^{(i)} = 0\) fu&#x0308;r \(\nu = n_i, \dotsc , n\) mit \(n = \max \{n_1, \dotsc , n_k\}\). Außerdem seien wie oben \(\mi
+{e}_i = (e_1^{(i)}, \dotsc , e_{n_i}^{(i)})\) und \(E_i = E(p_i, \mi {e}_i) = R/Rp_i^{e_1^{(i)}} \oplus \dotsb \oplus R/Rp_i^{e_n^{(i)}}\). (Beachte: Fu&#x0308;r \(\nu &gt; n_i\) ist \(R/Rp_i^{e_\nu
+^{(i)}} = R/R = (0)\).)<br />
+Sei \(M = M(p_1, \mi {e}_1, \dotsc , p_k, \mi {e}_k) = E_1 \oplus \dotsb \oplus E_k\) aus der Liste oben.<br />
+
+</p>
+<table>
+
+<tr>
+<td class="tdp">
+
+<p>
+\(\begin {array}{ccccccc} e_1^{(1)} &amp; \ge &amp; \cdots &amp; \ge &amp; e_n^{(1)} &amp; \ge &amp; 0 \\ \vdots &amp; &amp; &amp; &amp; \vdots &amp; &amp; \vdots \\ e_n^{(k)} &amp; \ge &amp;
+\cdots &amp; \ge &amp; e_n^{(k)} &amp; \ge &amp; 0 \end {array}\)
+</p>
+</td>
+<td class="tdp">
+<div class="minipage" style="vertical-align:middle ; justify-content:flex-start ; ">
+
+<p>
+Betrachte linksstehendes Schema. Fu&#x0308;r \(i = 1, \dotsc , n\) sei
+</p>
+<p>
+\(q_i = p_1^{e_i^{(1)}} \dotsm p_k^{e_i^{(k)}}\). Dann ist \(q_n \;|\; \dotsb \;|\; q_1\). Nach obiger Liste I ist \(M = M_1 \oplus \dotsb \oplus M_n\) mit \(M_i = R/Rp_1^{e_i^{(1)}} \oplus \dotsb \oplus
+R/Rp_k^{e_i^{(k)}}\).
+</p>
+
+
+</div>
+
+</td>
+</tr>
+
+</table>
+
+<p>
+Es gilt \(M_i \cong R/Rq_i\) nach obiger Folgerung. Die \(q_i\) heißen dabei <em><span class="dashuline" >Elementarteiler</span></em> von \(M\).<br />
+So kommt man auf folgende alternative Liste von e.e. \(R\)-Moduln.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Liste II von Prototypen</span>):</span> Seien \(R\) ein HIR, \(q_1, \dotsc , q_n \in R\) Repra&#x0308;sentanten von Assoziierungsklassen von Elementen
+von \(R\) mit \(q_n \;|\; \dotsb \;|\; q_1\) und \(\alpha \in \natural _0\).<br />
+Sei außerdem \(M(q_1, \dotsc , q_n, \alpha ) = R/Rq_1 \oplus \dotsb \oplus R/Rq_n \oplus R \oplus \overset {\alpha \text {-mal}}{\dotsb } \oplus R\).<br />
+Ist \(R_\alpha \) ein Repra&#x0308;sentantensystem der Assoziierungsklassen von \(R\), dann ist<br />
+\(\{M(q_1, \dotsc , q_n, \alpha ) \;|\; q_1, \dotsc , q_n \in R_\alpha ,\; q_n \;|\; \dotsb \;|\; q_1,\; n \in \natural ,\; \alpha \in \natural _0\}\) ein vollsta&#x0308;ndiges System paarweise
+nicht-isomorpher endlich erzeugter \(R\)-Moduln.<br />
+Dabei ist \(q_1 = \ordnung (M(q_1, \dotsc , q_n, 0))\) und \(\ordnung (M(q_1, \dotsc , q_n, \alpha )) = 0\) fu&#x0308;r \(\alpha \not = 0\).
+</p>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

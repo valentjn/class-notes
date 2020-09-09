@@ -1,0 +1,2422 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\renewcommand {\O }{\ensuremath {\mathcal {O}}}\)
+
+\(\newcommand {\vol }{\ensuremath {\operatorname {vol}}}\)
+
+\(\renewcommand {\i }{\ensuremath {\mathrm {i}}}\)
+
+\(\newcommand {\FFT }{\ensuremath {\operatorname {FFT}}}\)
+
+\(\newcommand {\IFFT }{\ensuremath {\operatorname {IFFT}}}\)
+
+\(\newcommand {\diag }{\ensuremath {\operatorname {diag}}}\)
+
+\(\newcommand {\grad }{\ensuremath {\operatorname {grad}}}\)
+
+\(\newcommand {\const }{\ensuremath {\operatorname {const}}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  content:'•\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+<h2 id="quadrataturformeln">Quadrataturformeln</h2>
+
+</p>
+
+<p>
+Im Folgenden werden Formeln gesucht, mit denen Integrale der Form \(\int _a^b f(x)\dx \) mo&#x0308;glichst gut approximiert werden ko&#x0308;nnen. Die vorgestellten Formeln haben alle die Form \(\int _a^b
+f(x)\dx \approx \sum _{k=1}^n w_k f(x_k)\). Nun ist die Wahl der Stu&#x0308;tzstellen \(x_k\) und Gewichte \(w_k\) maßgeblich, d.&#x202f;h. in diesen Parametern unterscheiden sich die verschiedenen
+Methoden. Allen gemeinsam sind dabei folgende Forderungen, die man an die Approximationsformeln stellt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p>Die Formel sollte exakt fu&#x0308;r \(f \equiv 1\) sein, d.&#x202f;h. \(b - a= \sum _{k=1}^n w_k\).
+</p>
+</li>
+<li class="list-item-f1"><p>Die Gewichte \(w_k &gt; 0\) sollten positiv sein, da man sonst Funktionen definieren ko&#x0308;nnte, die nur bei einem negativen Gewicht gro&#x0308;ßer Null und sonst u&#x0308;berall Null sind. Die Approximation
+wu&#x0308;rde einen negativen Wert ergeben, was offensichtlich sinnlos ist.
+</p>
+</li>
+<li class="list-item-f2"><p>Die Formel sollte exakt fu&#x0308;r Polynome \(f\) von mo&#x0308;glichst hohem Grad sein.
+</p>
+</li>
+</ul>
+
+
+<h3 id="gauss-formel"><span style="font-variant: small-caps;">Gauß</span>-Formel</h3>
+
+</p>
+
+<p>
+Die <b><span class="textsc" >Gauß</span>-Formel der Ordnung \(n\)</b> approximiert das Integral einer Funktion \(f\) durch das Integral des Interpolationspolynoms an den Nullstellen \(x_1 &lt; \dotsb
+&lt; x_n\) des Legendre-Polynoms vom Grad \(n\), d.&#x202f;h.
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                             1                        n
+                                                                                                                                                       X
+                                                                                                                                     f (x) dx ≈              w i f (x i )
+                                                                                                                             −1                        i=1
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\int _{-1}^1 f(x)\dx \approx \sum _{i=1}^n w_i f(x_i)
+\end{align*}
+mit \(w_i\) den Integralen der Lagrange-Polynome u&#x0308;ber das Intervall \([-1, 1]\):
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                        1                                             Y x − xj
+                                                                                                       w i :=                pi (x) dx,             pi (x) :=                             .
+                                                                                                                        −1                                             j6=i
+                                                                                                                                                                               xi − x j
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+w_i := \int _{-1}^1 p_i(x)\dx , \quad p_i(x) := \prod _{j \not = i} \frac {x - x_j}{x_i - x_j}.
+\end{align*}
+
+</p>
+<p>
+Die Formel ist exakt fu&#x0308;r Polynome vom Grad \(&lt; 2n\) und vor allem fu&#x0308;r analytische Funktionen sehr genau. Alle Gewichte \(w_i\) sind positiv und die Stu&#x0308;tzstellen \(x_i\) liegen im
+Integrationsintervall \((-1, 1)\).
+</p>
+<p>
+Gauß-Parameter \(x’\) und \(w’\) fu&#x0308;r ein beliebiges Integrationsintervall \([a, b]\) erha&#x0308;lt man durch lineare Transformation:
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                             b−a                                            b−a
+                                                                                                        x k0 = a +               (x k + 1),                  w0k =              wk .
+                                                                                                                              2                                              2
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+x_k’ = a + \frac {b - a}{2} (x_k + 1), \quad w_k’ = \frac {b - a}{2} w_k.
+\end{align*}
+
+</p>
+
+
+<h3 id="konvergenz-der-gauss-quadratur">Konvergenz der <span style="font-variant: small-caps;">Gauß</span>-Quadratur</h3>
+
+</p>
+
+<p>
+Fu&#x0308;r eine stetige Funktion \(f\) <b>konvergieren die Approximationen der Gauß-Quadratur</b> fu&#x0308;r ein Integrationsintervall \([a, b]\) mit wachsender Zahl \(n\) der Knoten gegen \(\int _a^b
+f(x)\dx \), d.&#x202f;h.
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                             n                                        b
+                                                                                                                                                    n→∞
+                                                                                                                             X
+                                                                                                          sn f :=                    wni f (x in ) −−−→                    f (x) dx.
+                                                                                                                             i=1                                   a
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+s_n f := \sum _{i=1}^n w_i^n f(x_i^n) \xrightarrow {n \to \infty } \int _a^b f(x)\dx .
+\end{align*}
+
+</p>
+
+
+<h3 id="fehler-der-gauss-quadratur">Fehler der <span style="font-variant: small-caps;">Gauß</span>-Quadratur</h3>
+
+</p>
+
+<p>
+Der <b>Fehler der <span class="textsc" >Gauß</span>-Quadratur</b> besitzt die Darstellung
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                n
+                                                                                                X                                   b
+                                                                                                      w i f (x i ) −                     f (x) dx = −γn f (2n) (ξ)(b − a)2n+1
+                                                                                                i=1                              a
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\sum _{i=1}^n w_i f(x_i) - \int _a^b f(x)\dx = -\gamma _n f^{(2n)}(\xi )(b - a)^{2n + 1}
+\end{align*}
+mit
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                  (n!)4
+                                                                                                           γn :=                              ,                  ξ ∈ [a, b].
+                                                                                                                             (2n + 1)((2n)!)3
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\gamma _n := \frac {(n!)^4}{(2n + 1)((2n)!)^3},\quad \xi \in [a, b].
+\end{align*}
+Der Kehrwert der Fehlerkonstanten \(\gamma _n\) besitzt fu&#x0308;r \(n = 1, 2, 3, 4\) die Werte \(24, 4320, 2016000,\) \(1778112000\), d.&#x202f;h. \(\gamma _n\) wird schnell sehr klein.
+</p>
+
+
+<h3 id="gewichtete-gauss-quadratur">Gewichtete <span style="font-variant: small-caps;">Gauß</span>-Quadratur</h3>
+
+</p>
+
+<p>
+Seien \(x_i\) die Nullstellen des Orthogonalpolynoms vom Grad \(n\) zu einer Gewichtsfunktion \(w\) auf einem Intervall \([a, b]\). Dann ist die auf polynomialer Interpolation basierende Quadraturformel
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                        b                               n
+                                                                                                                                                         X
+                                                                                                                             f (x)w(x) dx ≈                     w i f (x i )
+                                                                                                                    a                                    i=1
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\int _a^b f(x)w(x)\dx \approx \sum _{i=1}^n w_i f(x_i)
+\end{align*}
+fu&#x0308;r Polynome vom Grad \(&lt; 2n\) exakt (<b>gewichtete <span class="textsc" >Gauß</span>-Quadratur</b>). Die Gewichte \(w_i\) sind positiv und ko&#x0308;nnen als Integrale der
+Lagrange-Polynome berechnet werden:
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                   b                                                         Y x − xj
+                                                                                                  w i :=                pk (x)w(x) dx,                  pi (x) :=
+                                                                                                                a                                                             j6=i
+                                                                                                                                                                                     xi − x j
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+w_i := \int _a^b p_k(x)w(x)\dx , \quad p_i(x) := \prod _{j \not = i} \frac {x - x_j}{x_i - x_j}
+\end{align*}
+Der Fehler ist gleich \(\gamma _n f^{(2n)}(\xi )\) fu&#x0308;r ein \(\xi \in [a, b]\) mit einer von der Gewichtsfunktion abha&#x0308;ngigen Konstanten \(\gamma _n\).
+</p>
+<p>
+Die folgende Tabelle zeigt die Parameter und Gewichtsfunktionen fu&#x0308;r die klassischen Orthogonalpolynome:
+</p>
+<table>
+<tr class="tbrule">
+<td class="tdl"><b>Typ</b></td>
+<td class="tdl"><b>\([a, b]\)</b></td>
+<td class="tdl"><b>\(w(t)\)</b></td>
+<td class="tdl"><b>\(\gamma _n\)</b></td>
+</tr>
+
+
+<tr class="hline" >
+<td class="tdl"><span class="textsc" >Legendre</span></td>
+<td class="tdl">\([-1, 1]\)</td>
+<td class="tdl">\(1\)</td>
+<td class="tdl">\(\frac {2^{2n + 1} (n!)^4}{(2n + 1)((2n)!)^3}\)</td>
+</tr>
+
+
+<tr>
+<td class="tdl"><span class="textsc" >Tschebyscheff</span></td>
+<td class="tdl">\([-1, 1]\)</td>
+<td class="tdl">\(\sqrt {1 - t^2}\)</td>
+<td class="tdl">\(\frac {\pi }{2^{2n - 1} (2n)!}\), \(n &gt; 0\)</td>
+</tr>
+
+
+<tr>
+<td class="tdl"><span class="textsc" >Jacobi</span></td>
+<td class="tdl">\([-1, 1]\)</td>
+<td class="tdl">\((1 + t)^r (1 - t)^s\)</td>
+<td class="tdl">\(\frac {2^{2n + r + s + 1} n! \Gamma (n + r + 1) \Gamma (n + s + 1) \Gamma (n + r + s + 1)}{(2n + r + s + 1) \Gamma (2n + r + s + 1)^2
+(2n)!}\)</td>
+</tr>
+
+
+<tr>
+<td class="tdl"><span class="textsc" >Laguerre</span></td>
+<td class="tdl">\([0, \infty )\)</td>
+<td class="tdl">\(\exp (-t)\)</td>
+<td class="tdl">\(\frac {(n!)^2}{(2n)!}\)</td>
+</tr>
+
+
+<tr>
+<td class="tdl"><span class="textsc" >Hermite</span></td>
+<td class="tdl">\((-\infty , \infty )\)</td>
+<td class="tdl">\(\exp (-t^2)\)</td>
+<td class="tdl">\(\frac {\sqrt {\pi } n!}{2^n (2n)!}\)</td>
+</tr>
+
+
+<tr class="tbrule">
+<td class="tdl"></td>
+<td class="tdl"></td>
+<td class="tdl"></td>
+<td class="tdl"></td>
+</tr>
+</table>
+
+
+<h3 id="trapezregel">Trapezregel</h3>
+
+</p>
+
+<p>
+Die Na&#x0308;herung
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                         b
+                                                                                                                                                     f (a)                                   f (b)
+                                                                                                                                                                                                                
+                                                                                              f (x) dx ≈ sh f := h                                         + f (a + h) + · · · + f (b − h) +
+                                                                                      a                                                                2                                       2
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\int _a^b f(x)\dx \approx s_h f := h \left (\frac {f(a)}{2} + f(a + h) + \dotsb + f(b - h) + \frac {f(b)}{2}\right )
+\end{align*}
+approximiert das Integral durch <b>Summe von Trapezfla&#x0308;chen (Trapezregel)</b>.
+</p>
+<p>
+Fu&#x0308;r eine zweimal stetig differenzierbare Funktion gilt fu&#x0308;r den Fehler
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                b
+                                                                                                                                                                           b − a 00
+                                                                                                                          sh f −                     f (x) dx =                 f (ξ)h2
+                                                                                                                                             a                              12
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+s_h f - \int _a^b f(x)\dx = \frac {b - a}{12} f”(\xi ) h^2
+\end{align*}
+fu&#x0308;r ein \(\xi \in [a, b]\).
+</p>
+<p>
+Genauer besitzt der Fehler fu&#x0308;r glatte Funktionen die asymptotische Entwicklung
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                     b
+                                                                                 sh f −                    f (x) dx = c1 ( f 0 (b) − f 0 (a))h2 + c2 ( f 000 (b) − f 000 (a))h4 + · · ·
+                                                                                                  a
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+s_h f - \int _a^b f(x)\dx = c_1 (f’(b) - f’(a)) h^2 + c_2 (f”’(b) - f”’(a)) h^4 + \dotsb
+\end{align*}
+mit von \(f\) und \(h\) unabha&#x0308;ngigen Konstanten \(c_j\). Daraus folgt, dass die Trapezregel fu&#x0308;r \((b - a)\)-periodische Funktionen sehr genau ist. Der Fehler strebt schneller als jede \(h\)-Potenz gegen
+Null.
+</p>
+<p>
+Diese Fehlerformel besagt insbesondere, dass fu&#x0308;r glatte periodische Integranden schnell eine hohe Genauigkeit erzielt werden kann.
+</p>
+
+
+<h3 id="bernoulli-polynome"><span style="font-variant: small-caps;">Bernoulli</span>-Polynome</h3>
+
+</p>
+
+<p>
+Die <b>normalisierten <span class="textsc" >Bernoulli</span>-Polynome</b> sind definiert durch die Rekursion
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                                  1
+                                                                                              pi0 := pi−1 ,                  p0 (x) := 1                    mit                        pi (x) dx = 0,   i ∈ N.
+                                                                                                                                                                               0
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+p_i’ := p_{i-1}, \quad p_0(x) := 1 \quad \text {mit} \quad \int _0^1 p_i(x)\dx = 0, \quad i \in \natural .
+\end{align*}
+
+</p>
+<p>
+Die normalisierten Bernoulli-Polynome sind symmetrisch bzgl. \(t = \frac {1}{2}\), d.&#x202f;h. \(p_{2i-1}(x - \frac {1}{2})\) und \(p_{2i}(x - \frac {1}{2})\) sind ungerade bzw. gerade
+Funktionen (\(i \in \natural \)). Fu&#x0308;r \(i \ge 2\) gilt außerdem
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                         p2i−1 (0) = p2i−1 (1/2) = p2i−1 (1) = 0,
+                                                                                                                         p2i−1 (t) 6= 0 für t ∈ (0, 1) \ 12
+                                                                                                                                                           
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+&amp; p_{2i-1}(0) = p_{2i-1}(1/2) = p_{2i-1}(1) = 0, \\ &amp; p_{2i-1}(t) \not = 0 \quad \text {fÃijr}\quad t \in (0, 1) \setminus \left \{\tfrac
+{1}{2}\right \}
+\end{align*}
+und fu&#x0308;r \(i \ge 1\) ist
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                          γ2i := p2i (0) = p2i (1)
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\gamma _{2i} := p_{2i}(0) = p_{2i}(1)
+\end{align*}
+entweder ein Minimum oder ein Maximum von \(p_{2i}\) auf \([0, 1]\).<br />
+Die Werte \(\gamma _{2i}\) heißen <b>normierte <span class="textsc" >Bernoulli</span>-Zahlen</b>.
+</p>
+
+
+<h3 id="euler-maclaurin-entwicklung"><span style="font-variant: small-caps;">Euler</span>-<span style="font-variant: small-caps;">Maclaurin</span>-Entwicklung</h3>
+
+</p>
+
+<p>
+Fu&#x0308;r eine glatte Funktion \(f\) hat der Fehler \(e_h f := s_h f - \int _a^b f(x)\dx \) der Trapezregel die Entwicklung
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                             m−1
+                                                                                                                             X
+                                                                                                                                        γ2i ( f (2i−1) (b) − f (2i−1) (a))h2i
+                                                                                                                             i=1
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\sum _{i=1}^{m-1} \gamma _{2i} (f^{(2i-1)}(b) - f^{(2i-1)}(a)) h^{2i}
+\end{align*}
+mit dem Restglied
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                         γ2m f (2m) (ξ)(b − a)h2m
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\gamma _{2m} f^{(2m)}(\xi ) (b - a) h^{2m}
+\end{align*}
+fu&#x0308;r ein \(\xi \in [a, b]\) und \(\gamma _{2i}\) den normierten Bernoulli-Zahlen<br />
+(<b><span class="textsc" >Euler</span>-<span class="textsc" >Maclaurin</span>-Entwicklung</b>).
+</p>
+<p>
+Aus der Entwicklung folgt insbesondere, dass die Trapezregel fu&#x0308;r unendlich oft differenzierbare \((b - a)\)-periodische Funktionen sehr genau ist. Der Fehler strebt schneller als jede \(h\)-Potenz gegen Null.
+Fu&#x0308;r nicht-periodische Funktionen bildet die Entwicklung die Grundlage fu&#x0308;r Extrapolationsverfahren, mit denen ebenfalls beliebige Approximationsordnungen erzielt werden ko&#x0308;nnen.
+</p>
+
+
+<h3 id="romberg-algorithmus"><span style="font-variant: small-caps;">Romberg</span>-Algorithmus</h3>
+
+</p>
+
+<p>
+Die Genauigkeit der Trapezregel
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                             f (a)                                   f (b)
+                                                                                                                                                                                                       
+                                                                                                          sh1   := h               + f (a + h) + · · · + f (b − h) +
+                                                                                                                               2                                       2
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+s_h^1 := h \left (\frac {f(a)}{2} + f(a + h) + \dotsb + f(b - h) + \frac {f(b)}{2}\right )
+\end{align*}
+la&#x0308;sst sich durch Extrapolation verbessern (<b><span class="textsc" >Romberg</span>-Algorithmus</b>).<br />
+Die rekursiv definierten Approximationen
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                       j               j
+                                                                                                                                                  j+1
+                                                                                                                                                             4 j sh/2 − sh
+                                                                                                                                                 sh     :=
+                                                                                                                                                                  4j − 1
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+s_h^{j+1} := \frac {4^j s_{h/2}^j - s_h^j}{4^j - 1}
+\end{align*}
+haben die Fehlerordnung \(\O (h^{2j+2})\) und ko&#x0308;nnen in einem Dreiecksschema berechnet werden:
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                          sh1          →         sh2           →           sh3
+                                                                                                                                                       %                       %
+                                                                                                                                          1                   2
+                                                                                                                                         sh/2          →     sh/2
+                                                                                                                                                       %
+                                                                                                                                          1
+                                                                                                                                         sh/4
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\begin{array}{ccccc} s_h^1 &amp; \rightarrow &amp; s_h^2 &amp; \rightarrow &amp; s_h^3 \\ &amp; \nearrow &amp; &amp; \nearrow \\ s_{h/2}^1 &amp;
+\rightarrow &amp; s_{h/2}^2 \\ &amp; \nearrow \\ s_{h/4}^1 \end {array}
+\end{align*}
+Es werden solange sukzessive Diagonalen \(s_{2^{-m}}^1, s_{2^{1-m}}^2, \dotsc , s_h^{m+1}\) hinzugefu&#x0308;gt, bis mit dem zuletzt generierten Wert die gewu&#x0308;nschte Genauigkeit erreicht ist. Bei
+den Trapezsummen ko&#x0308;nnen bereits berechnete Funktionswerte genutzt werden:
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                             1 1
+                                                                                                                               s + h f (a + 2h ) + · · · + f b − 2h
+                                                                                                                 1
+                                                                                                                                                                    
+                                                                                                                sh/2 =                                                  .
+                                                                                                                             2 h
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+s_{h/2}^1 = \frac {1}{2} \left (s_h^1 + h \left (f(a + \tfrac {h}{2}) + \dotsb + f\left (b - \tfrac {h}{2}\right )\right )\right ).
+\end{align*}
+
+</p>
+
+
+<h3 id="numerische-integration-mit-matlab">Numerische Integration mit MATLAB</h3>
+
+</p>
+
+<p>
+Das Integral \(s = \int _a^b f(x)\dx \) kann in M ATLAB mit dem Befehl <span class="inlineprogramlisting">s = quad(f, a, b, tol</span>); berechnet werden, wobei die zu integrierende
+Funktion <span class="inlineprogramlisting"></span>f als Funktionshandle, Funktionsname (String) oder Inlinefunktion u&#x0308;bergeben wird. <span
+class="inlineprogramlisting"></span>tol ist optional (standardma&#x0308;ßig \(10^{-6}\)) und gibt die absolute Genauigkeit vor.
+</p>
+<p>
+<span class="inlineprogramlisting"></span>quad basiert dabei auf der Simpson-Regel (abschnittsweise Interpolation mit quadratischen Polynomen und anschließende Integration) mit adaptiver Unterteilung des
+Integrationsintervalls, d.&#x202f;h. die Intervallla&#x0308;ngen bzw. die Anzahl an Funktionsauswertungen werden an die lokale Komplexita&#x0308;t der Funktion angepasst.
+</p>
+<p>
+Alternativ zu <span class="inlineprogramlisting"></span>quad gibt es noch die Befehle <span class="inlineprogramlisting"></span>quadl und <span
+class="inlineprogramlisting"></span>dblquad. <span class="inlineprogramlisting"></span>quadl erzielt eine ho&#x0308;here Approximationsordnung als <span
+class="inlineprogramlisting"></span>quad, sollte aber nur bei hohen Genauigkeiten und glatten Integranden verwendet werden. Bei niedrigen Genauigkeiten oder nicht-glatten Integranden empfiehlt sich daher die
+Verwendung von <span class="inlineprogramlisting"></span>quad. <span class="inlineprogramlisting"></span>dblquad berechnet ein bivariates Integral, d.&#x202f;h. <span
+class="inlineprogramlisting">s = dblquad(f, xmin, xmax, ymin, ymax, tol</span>); berechnet das Integral der bivariaten Funktion <span class="inlineprogramlisting"></span>f
+u&#x0308;ber das Rechteck \([\)<span class="inlineprogramlisting"></span>xmin\(,\;\)<span class="inlineprogramlisting"></span>xmax\(] \times [\)<span
+class="inlineprogramlisting"></span>ymin\(,\;\)<span class="inlineprogramlisting"></span>ymax\(]\).
+</p>
+
+
+<h2 id="mehrfachintegrale">Mehrfachintegrale</h2>
+
+</p>
+
+<h3 id="tensorprodukt-von-integrationsformeln">Tensorprodukt von Integrationsformeln</h3>
+
+</p>
+
+<p>
+<b>Integrationsformeln fu&#x0308;r Rechteck-Gebiete</b>
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                Q := [a1 , b1 ] × · · · × [am , bm ]
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+Q := [a_1, b_1] \times \dotsb \times [a_m, b_m]
+\end{align*}
+erha&#x0308;lt man durch Bilden von Tensorprodukten eindimensionaler Quadraturformeln.
+</p>
+<p>
+Sind die Formeln \(\sum _k w_{k,\nu } f(t_{k,\nu })\) zur Approximation von \(\int _{a_\nu }^{b_\nu } f\) exakt fu&#x0308;r Polynome vom Grad \(\le n_\nu \), \(\nu = 1, \dotsc , m\),
+so ist die Produktformel
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+                                                                                                                         X               X
+                                                                                                                 f ≈            ···        (w k1 ,1 · · · w km ,m ) f (t k1 ,1 , . . . , t km ,m )
+                                                                                                            Q              k1              km
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\int _Q f \approx \sum _{k_1} \dotsb \sum _{k_m} (w_{k_1,1} \dotsb w_{k_m,m}) f(t_{k_1,1}, \dotsc , t_{k_m,m})
+\end{align*}
+exakt fu&#x0308;r Polynome vom Koordinatengrad \(\le (n_1, \dotsc , n_m)\).
+</p>
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+Fu&#x0308;r die <b>Trapezregel</b> mit Schrittweite \(h = \frac {b - a}{n}\) sind die Gewichte an den inneren Knoten gleich \(h\) und an den a&#x0308;ußeren Knoten \(a\) und \(b\) gleich \(\frac {h}{2}\).
+Fu&#x0308;r ein Rechteck \([a_1, b_1] \times [a_2, b_2]\) und den Schrittweiten \(h_1\) und \(h_2\) erha&#x0308;lt man somit drei verschiedene Gewichte: \(h_1 h_2\) fu&#x0308;r innere Knoten, \(\frac
+{h_1 h_2}{2}\) fu&#x0308;r Knoten auf den Kanten (außer den Ecken) und \(\frac {h_1 h_2}{4}\) fu&#x0308;r die Ecken.
+</p>
+<p>
+Allgemein gilt fu&#x0308;r ein \(m\)-dimensionales Rechteck mit Schrittweiten \(h_\nu \), \(\nu = 1, \dotsc , m\), dass \(w_{k_1, \dotsc , k_m} = h^m 2^{-\alpha _1} \dotsm 2^{-\alpha
+_m}\) mit \(\alpha _\nu = 0\) fu&#x0308;r einen inneren Index bzw. \(\alpha _\nu = 1\) fu&#x0308;r einen a&#x0308;ußeren Index \(k_\nu \), \(\nu = 1, \dotsc , m\).
+</p>
+<p>
+Der Fehler der multivariaten Trapezregel besitzt eine quadratische Entwicklung, sodass wie fu&#x0308;r die univariate Formel die Romberg-Extrapolation anwendbar ist.
+</p>
+
+
+<h3 id="transformation-von-integrationsformeln">Transformation von Integrationsformeln</h3>
+
+</p>
+
+<p>
+Fu&#x0308;r eine bijektive, stetig differenzierbare Transformation \(g\) eines regula&#x0308;ren Bereiches \(U \subset \real ^n\) mit \(\det g’(x) \not = 0\) fu&#x0308;r \(x \in U\) gilt fu&#x0308;r stetige
+Funktionen \(f\)
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+                                                                                                                                                                
+                                                                                                                         f ◦ g| det g 0 |dU =                              f dV,            V = g(U),
+                                                                                                                     U                                               V
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\int _U f \circ g |\det g’| dU = \int _V f dV, \quad V = g(U),
+\end{align*}
+wobei \(\det g’\) als Funktionaldeterminante der Transformation bezeichnet wird.
+</p>
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+Eine Integrationsformel
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+                                                                                                                                                           X
+                                                                                                                                                      f ≈          w k f (x k )
+                                                                                                                                                 D           k
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\int _D f \approx \sum _k w_k f(x_k)
+\end{align*}
+kann man durch Variablensubstitution <b>auf andere Gebiete transformieren</b>.<br />
+Ist \(\varphi \colon D \rightarrow \widetilde {D}\) eine bijektive Abbildung, erha&#x0308;lt man durch
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                          e k = det ϕ 0 (x k ) w k ,
+                                                                                                                          w                                                        x k = ϕ(x k )
+                                                                                                                                                                                   e
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\widetilde {w}_k = \left |\det \varphi ’(x_k)\right | w_k, \quad \widetilde {x}_k = \varphi (x_k)
+\end{align*}
+Gewichte und Punkte fu&#x0308;r eine Integrationsformel auf \(\widetilde {D}\). Dabei ist \(\varphi ’(x_k)\) die Jacobi-Matrix von \(\varphi \) im Punkt \(x_k\). \(\det \varphi ’(x_k)\) heißt
+<b>Funktionaldeterminante</b> der Transformation.
+</p>
+<p>
+Speziell gilt bei einer affinen Abbildung \(\varphi (x) = Ax + b\) fu&#x0308;r die Gewichte \(\widetilde {w}_i = |\det A| w_i\).
+</p>
+<p>
+Die Konvergenz der Integrationsformeln bleibt bei glatten Transformationen \(\varphi \) erhalten. Allerdings werden Polynome auf \(\widetilde {D}\) nicht mehr exakt integriert, da der Integrand die
+Funktionaldeterminante der Transformation entha&#x0308;lt.
+</p>
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+Beispielsweise ist ein durch eine Funktion \(h\) berandeter Integrationsbereich<br />
+\(D = \{(x, y) \in \real ^2 \;|\; x \in [a, b],\; y \in [0, h(x)]\}\) als Bild des Rechtecks \(Q = [a, b] \times [0, 1]\) unter der Abbildung \(\varphi \colon Q \rightarrow
+D\), \((u, v) \mapsto (u, v h(u))\) mit der Funktionaldeterminante<br />
+\(\det \varphi ’(u, v) = \det \begin {pmatrix}1 &amp; 0\\vh’(u) &amp; h(u)\end {pmatrix} = h(u)\) darstellbar. Damit transformieren sich Punkte und Gewichte einer Produktformel
+fu&#x0308;r \(Q\) gema&#x0308;ß \((u_i, v_j) \rightarrow (u_i, v_j h(u_i))\) und \(w_{i,j} \rightarrow w_{i,j} h(u_i)\).
+</p>
+
+
+<h3 id="integrationsformeln-fuer-simplizes">Integrationsformeln für Simplizes</h3>
+
+</p>
+
+<p>
+Fu&#x0308;r einen \(m\)-dimensionalen Simplex \(S\) mit den Ecken \(v_0, \dotsc , v_m\) la&#x0308;sst sich eine Integrationsformel durch Interpolation mit Polynomen vom <b>totalen Grad</b> (d.&#x202f;h. die
+Summe der Koordinatengrade) \(\le n\) konstruieren. Das interpolierende Polynom ist eindeutig durch die Werte an den Punkten
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                 n
+                                                                                                                                        1X
+                                                                                                                          xk =                kν vν ,              k0 + · · · + k n = n
+                                                                                                                                        n ν=0
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+x_k = \frac {1}{n} \sum _{\nu =0}^n k_\nu v_\nu , \quad k_0 + \dotsb + k_n = n
+\end{align*}
+bestimmt, die ein regelma&#x0308;ßiges Gitter bilden.
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+                                                                                                                                                                X
+                                                                                                                                        f ≈ vol S                                  w k f (x k )
+                                                                                                                                    S                      k0 +···+kn =n
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\int _S f \approx \vol S \sum _{k_0 + \dotsb + k_n = n} w_k f(x_k)
+\end{align*}
+ist eine Approximation der Ordnung \(n + 1\), d.&#x202f;h. die Integrationsformel ist exakt fu&#x0308;r alle Polynome vom totalen Grad \(\le n\) (<b>Integrationsformel fu&#x0308;r Simplizes</b>). Dabei sind \(\vol
+S \cdot w_k\) die Integrale u&#x0308;ber die Lagrange-Polynome zu \(x_k\).
+</p>
+<p>
+Fu&#x0308;r allgemeine Gebiete kann die Integrationsformel auf den Simplizes einer Triangulierung angewendet werden. Der Fehler hat dann die Ordnung \(\O (h^{n+1})\), wobei \(h\) den maximalen Durchmesser der
+Teilsimplizes bezeichnet.
+</p>
+
+
+<h2 id="monte-carlo-verfahren">Monte-Carlo-Verfahren</h2>
+
+</p>
+
+<h3 id="lineare-kongruenzmethode">Lineare Kongruenzmethode</h3>
+
+</p>
+
+<p>
+Die <b>lineare Kongruenzmethode</b> definiert durch
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                           n` := αn`−1 mod β
+                                                                                                                                             x ` := n` /β
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+n_\ell &amp; := \alpha n_{\ell -1} \mod \beta \\ x_\ell &amp; := n_\ell / \beta
+\end{align*}
+mit \(\alpha \in \natural \), \(1 &lt; \alpha &lt; \beta \) und \(\beta \) einer sehr großen Primzahl kann bei geeigneter Wahl der Parameter zur numerischen Simulation von Zufallszahlen \(x_\ell \in
+\left [0, 1\right )\) benutzt werden.
+</p>
+<p>
+Eine minimale Anforderung ist, dass die maximale Periode \(\beta - 1\) erreicht wird. Daru&#x0308;ber hinaus soll die Folge \(x_0, x_1, \dotsc \) bei mo&#x0308;glichst vielen statistischen Tests gute Ergebnisse
+liefern.
+</p>
+
+
+<h3 id="satz-von-fermat">Satz von <span style="font-variant: small-caps;">Fermat</span></h3>
+
+</p>
+
+<p>
+Fu&#x0308;r jede Primzahl \(\beta \) und \(\alpha \not = 0 \mod \beta \) gilt der <b>Satz von <span class="textsc" >Fermat</span></b>
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                             αβ−1 = 1 mod β.
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\alpha ^{\beta -1} = 1 \mod \beta .
+\end{align*}
+
+</p>
+
+
+<h3 id="maximale-periode-bei-der-linearen-kongruenzmethode">Maximale Periode bei der linearen Kongruenzmethode</h3>
+
+</p>
+
+<p>
+Fu&#x0308;r eine Primzahl \(\beta \) hat die Folge \(\alpha ^\ell \mod \beta \), \(\ell = 0, 1, \dotsc \) keine kleinere Periode als \(\beta - 1\) genau dann, wenn
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                          α(β−1)/m 6= 1 mod β
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\alpha ^{(\beta -1)/m} \not = 1 \mod \beta
+\end{align*}
+fu&#x0308;r alle Primteiler \(m\) von \(\beta - 1\). (Die Periode ist dabei die Anzahl der vorkommenden verschiedenen Zahlen.)
+</p>
+<p>
+Mithilfe dieses Kriteriums lassen sich geeignete Multiplikatoren \(\alpha \) fu&#x0308;r die Simulation von Zufallszahlen mit der linearen Kongruenzmethode bestimmen.
+</p>
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+Gebra&#x0308;uliche Parameter bei der Generierung von Pseudo-Zufallszahlen mit der linearen Kongruenzmethode sind die <span class="textsc" >Mersenne</span>-Primzahl \(\beta = 2147483647 =
+2^{31} - 1\) und der Multiplikator \(\alpha = 16807\). Aufgrund der Gro&#x0308;ße dieser Zahlen ist das Testen der Periodenla&#x0308;nge nicht ganz einfach.
+</p>
+<p>
+Aufgrund der Primfaktorzerlegung \(\beta - 1 = 2 \cdot 3^2 \cdot 7 \cdot 11 \cdot 31 \cdot 151 \cdot 331\) erha&#x0308;lt man als mo&#x0308;gliche Perioden \(m = (\beta - 1)/p_k\):
+\(1073741823, 715827882, 306783378, 195225786, 69273666, 14221746,\) \(6487866\).
+</p>
+<p>
+Zur Berechnung der Potenzen \(\alpha ^m\) geht man zur Dualdarstellung \(m = m_0 + 2m_1 + 4m_2 + \dotsb \), \(m_k \in \{0, 1\}\) u&#x0308;ber. Man kann dann zuna&#x0308;chst rekursiv die
+Potenzen \(\alpha _k := \alpha ^{2^k} \mod \beta \) berechnen, indem man \(\alpha _{k+1} \mod \beta = \alpha _k^2 \mod \beta \) rechnet. Damit ist \(\alpha ^m \mod \beta =
+(\prod _{m_k=1} \alpha _k) \mod \beta \).
+</p>
+<p>
+Zum Beispiel ist \(195225786 = (001011101000101110100010111010)_2\) und man erha&#x0308;lt<br />
+\(16807^{195225786} \mod \beta = 997852928 \not = 1\). Ebenso sind alle sechs anderen zu testenden Potenzen ungleich \(1\) modulo \(\beta \). Damit ist die Periode des <span class="textsc"
+>Mersenne</span>-Generators maximal.
+</p>
+
+
+<h3 id="spektraltest-fuer-die-lineare-kongruenzmethode">Spektraltest für die lineare Kongruenzmethode</h3>
+
+</p>
+
+<p>
+Fu&#x0308;r eine Primzahl \(\beta \) la&#x0308;sst sich die durch
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                               u` := (α`m a mod β)/β,                                                  a := (1, α, . . . , αm−1 ) ∈ Rm
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+u_\ell := (\alpha ^{\ell m} a \mod \beta ) / \beta , \qquad a := (1, \alpha , \dotsc , \alpha ^{m-1}) \in \real ^m
+\end{align*}
+definierte Folge von Vektoren \(u_\ell \) durch parallele Hyperebenen im Abstand
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                              d := (min{knk2 | n ∈ Zm , knk2 6= 0, a t n = 0 mod β})−1
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+d := (\min \{\norm {n}_2 \;|\; n \in \integer ^m,\; \norm {n}_2 \not = 0,\; a^t n = 0 \mod \beta \})^{-1}
+\end{align*}
+u&#x0308;berdecken.
+</p>
+<p>
+Der Abstand \(d\) dient zur Beurteilung der Gu&#x0308;te der Folge der Pseudo-Zufallsvektoren \(u_\ell \) (<b>Spektraltest</b>). Je kleiner \(d\) ist, um so besser sind im Allgemeinen die statistischen Eigenschaften der
+Folge.
+</p>
+
+
+<h3 id="gleichverteilte-folgen">Gleichverteilte Folgen</h3>
+
+</p>
+
+<p>
+Eine Folge \(x_0, x_1, \dotsc \) in einem Quader
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                Q := [a1 , b1 ] × · · · × [an , bn ]
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+Q := [a_1, b_1] \times \dotsb \times [a_n, b_n]
+\end{align*}
+heißt <b>gleichverteilt</b>, falls
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                 |{x k ∈ Q0 | k < `}|   vol Q0
+                                                                                                                             lim                      =
+                                                                                                                             `→∞          `             vol Q
+-->
+
+
+<p>
+
+\begin{align*}
+\lim _{\ell \to \infty } \frac {|\{x_k \in Q’ \;|\; k &lt; \ell \}|}{\ell } = \frac {\vol Q’}{\vol Q}
+\end{align*}
+fu&#x0308;r alle Teilquader \(Q’ \subseteq Q\).
+</p>
+<p>
+Allgemeiner heißt die Folge <b>\(m\)-verteilt</b>, falls
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                               |{x k+1 ∈ Q01 , . . . , x k+m ∈ Q0m | k < `}|                                    vol Q01 · · · vol Q0m
+                                                                                        lim                                                                             =
+                                                                                       `→∞                                  `                                                               vol Q
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\lim _{\ell \to \infty } \frac {|\{x_{k+1} \in Q’_1, \dotsc , x_{k+m} \in Q’_m \;|\; k &lt; \ell \}|}{\ell } = \frac {\vol Q’_1 \dotsm \vol Q’_m}{\vol Q}
+\end{align*}
+fu&#x0308;r alle Teilquader \(Q’_1, \dotsc , Q’_m \subseteq Q\).
+</p>
+<p>
+Eine Folge, die fu&#x0308;r alle \(m \in \natural \) \(m\)-verteilt ist, heißt <b>\(\infty \)-verteilt</b>.
+</p>
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+<span class="textsc" >Franklin</span> hat gezeigt, dass die Folge
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                               x ` := r ` mod 1,                      ` = 0, 1, . . .
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+x_\ell := r^\ell \mod 1,\quad \ell = 0, 1, \dotsc
+\end{align*}
+fu&#x0308;r fast alle \(r &gt; 1\) \(\infty \)-verteilt in \([0, 1)\) ist.
+</p>
+
+
+<h3 id="konvergenz-der-monte-carlo-integration">Konvergenz der Monte-Carlo-Integration</h3>
+
+</p>
+
+<p>
+Fu&#x0308;r eine gleichverteilte Folge \(x_0, x_1, \dotsc \) in \([0, 1)\) gilt
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                  1
+                                                                                                                         1X
+                                                                                                                     lim      f (x k ) =                               f
+                                                                                                                    `→∞ `                                      0
+                                                                                                                          k<`
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\lim _{\ell \to \infty } \frac {1}{\ell } \sum _{k&lt;\ell } f(x_k) = \int _0^1 f
+\end{align*}
+fu&#x0308;r jede Riemann-integrierbare Funktion \(f\). Das entsprechende Approximationsverfahren wird aufgrund der quasi zufa&#x0308;lligen Wahl der Punkte \(x_k\) als <b>Monte-Carlo-Integration</b> bezeichnet.
+</p>
+
+
+<h3 id="transformation-gleichverteilter-zahlenfolgen">Transformation gleichverteilter Zahlenfolgen</h3>
+
+</p>
+
+<p>
+Ausgehend von einer gleichverteilten Folge \(x_0, x_1, \dotsc \) in dem Standardintervall \([0, 1)\) ko&#x0308;nnen gleichverteilte Zahlen und Vektorfolgen auf allgemeineren Mengen konstruiert werden.<br />
+Fu&#x0308;r \(k = 0, 1, \dotsc \) ist
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f3"><p>\(a + (b - a)x_k\) eine Folge in \([a, b)\),
+</p>
+</li>
+<li class="list-item-f4"><p>\(\lfloor m + (n - m)x_k \rfloor \) eine Folge in \(\{m, \dotsc , n - 1\}\),
+</p>
+</li>
+<li class="list-item-f5"><p>\(U_k := (x_{mk}, \dotsc , x_{mk + m - 1})\) eine Folge in \([0, 1)^m\) und
+</p>
+</li>
+<li class="list-item-f6"><p>\(A U_k + b\) mit einer \(m \times m\)-Matrix \(A\) und einem \(m\)-Vektor \(b\) eine Folge in \(A[0,1)^m + b\).
+</p>
+</li>
+</ul>
+<p>
+Außerdem ist fu&#x0308;r eine gleichverteilte Folge in einem Quader \(Q\) die in einer Teilmenge \(D \subseteq Q\) liegende Teilfolge gleichverteilt in \(D\).
+</p>
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+Sei \(x_0, x_1, \dotsc \) eine gleichverteilte Folge in \([0, 1)\).
+</p>
+<p>
+Zur Simulation von Wu&#x0308;rfeln kann die Folge \(n_k = 1 + 6 \lfloor x_k \rfloor \) verwendet werden.
+</p>
+<p>
+Eine Folge im abgeschlossenen Einheitskreis \(D\colon u^2 + v^2 \le 1\) erha&#x0308;lt man durch die Transformation \((u_k, v_k) = 2(x_{2k}, x_{2k+1}) - (1, 1)\) und Auswahl der Teilfolge, die in
+\(D\) liegt.
+</p>
+<p>
+Gleichverteilte Permutationen von \(\{1, \dotsc , n\}\), etwa zum Simulieren des Mischens von Karten, ko&#x0308;nnen durch die Reihenfolge der Indizes beim Sortieren der Komponenten gleichverteilter \(n\)-Vektoren
+generiert werden.
+</p>
+
+
+<h3 id="multivariate-monte-carlo-integration">Multivariate Monte-Carlo-Integration</h3>
+
+</p>
+
+<p>
+Ist \(u_0, u_1, \dotsc \) eine gleichverteilte Folge in einem Quader \(Q\), so la&#x0308;sst sich ein Integral u&#x0308;ber ein Gebiet \(D \subseteq Q\) durch
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+                                                                                                            
+                                                                                                                             vol Q                    X
+                                                                                                                    f = lim                                            f (uk )
+                                                                                                                D        `→∞   `                k<`, uk ∈D
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\int _D f = \lim _{\ell \to \infty } \frac {\vol Q}{\ell } \sum _{k &lt; \ell ,\; u_k \in D} f(u_k)
+\end{align*}
+approximieren (<b>multivariate Monte-Carlo-Integration</b>).<br />
+Im Spezialfall \(f = 1\) erha&#x0308;lt man ein Verfahren zur Volumenbestimmung:
+</p>
+<span class="hidden" > \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                            vol Q
+                                                                                                         vol D = lim              |{uk ∈ D | k < `}|.
+                                                                                                                        `→∞   `
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\vol D = \lim _{\ell \to \infty } \frac {\vol Q}{\ell } |\{u_k \in D \;|\; k &lt; \ell \}|.
+\end{align*}
+
+</p>
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+<p>
+Der Vorteil multivariater Monte-Carlo-Integrationen ist die weitgehende Unabha&#x0308;ngigkeit der Konvergenzrate von der Dimension. Monte-Carlo-Verfahren sind daher besonders in hohen Dimension gut geeignet (z.&#x202f;B.
+besser als Trapezregel).
+</p>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

@@ -1,0 +1,2811 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\newcommand {\fracsize }[1]{{\large #1}}\)
+
+\(\newcommand {\matrixsize }[1]{{\scriptsize #1}}\)
+
+\(\renewcommand {\i }{\ensuremath {\mathrm {i}}}\)
+
+\(\renewcommand {\A }{\ensuremath {\mathcal {A}}}\)
+
+\(\renewcommand {\C }{\ensuremath {\mathcal {C}}}\)
+
+\(\newcommand {\D }{\ensuremath {\mathcal {D}}}\)
+
+\(\renewcommand {\F }{\ensuremath {\mathcal {F}}}\)
+
+\(\renewcommand {\H }{\ensuremath {\mathcal {H}}}\)
+
+\(\renewcommand {\L }{\ensuremath {\mathcal {L}}}\)
+
+\(\renewcommand {\O }{\ensuremath {\mathcal {O}}}\)
+
+\(\renewcommand {\S }{\ensuremath {\mathcal {S}}}\)
+
+\(\newcommand {\orth }{\ensuremath {\;\bot \;}}\)
+
+\(\newcommand {\card }{\ensuremath {\operatorname {card}}}\)
+
+\(\newcommand {\id }{\ensuremath {\operatorname {id}}}\)
+
+\(\newcommand {\dist }{\ensuremath {\operatorname {dist}}}\)
+
+\(\newcommand {\inneres }{\ensuremath {\operatorname {int}}}\)
+
+\(\newcommand {\MT }{\ensuremath {\operatorname {MT}}}\)
+
+\(\newcommand {\Ln }{\ensuremath {\operatorname {Ln}}}\)
+
+\(\newcommand {\const }{\ensuremath {\operatorname {const}}}\)
+
+\(\newcommand {\acc }{\ensuremath {\operatorname {acc}}}\)
+
+\(\newcommand {\iso }{\ensuremath {\operatorname {iso}}}\)
+
+\(\newcommand {\Res }{\ensuremath {\operatorname {Res}}}\)
+
+\(\newcommand {\Kern }{\ensuremath {\operatorname {Kern}}}\)
+
+\(\newcommand {\supp }{\ensuremath {\operatorname {supp}}}\)
+
+\(\newcommand {\loc }{\ensuremath {{\operatorname {loc}}}}\)
+
+\(\newcommand {\vp }{\ensuremath {\operatorname {v.p.}}}\)
+
+\(\renewcommand {\ms }{\ensuremath {\!\!\uparrow }}\)
+
+\(\newcommand {\sms }{\ensuremath {\!\!\upuparrows }}\)
+
+\(\newcommand {\mf }{\ensuremath {\!\!\downarrow }}\)
+
+\(\newcommand {\smf }{\ensuremath {\!\!\downdownarrows }}\)
+
+\(\renewcommand {\Re }{\ensuremath {\operatorname {Re}}}\)
+
+\(\renewcommand {\Im }{\ensuremath {\operatorname {Im}}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f9::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f10::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f11::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f12::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f13::marker {
+  font-style:italic;
+  content:'(5)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f14::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f15::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f16::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f17::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f18::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f19::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f20::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f21::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f22::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f23::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f24::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f25::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f26::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f27::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f28::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f29::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f30::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f31::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f32::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f33::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f34::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f35::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f36::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f37::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f38::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+
+<h2 id="die-topologie-der-erw-kompl-zahlenebene-und-die-moebius-transf">Die Topologie der erw. kompl. Zahlenebene und die <span style="font-variant: small-caps;">Möbius</span>-Transf.</h2>
+
+</p>
+
+
+<p>
+Komplexe Zahlen lassen sich mittels \(z = (x, y) = x + \i y \in \complex \), \(x, y \in \real \) als Element der komplexen Zahlenebene schreiben. Dabei ist \(\i = (0, 1)\) mit \(\i ^2 = -1 = (-1, 0)\). Die zu \(z\)
+komplex konjugierte Zahl ist \(\overline {z} = x - \i y\) und der Betrag von \(z\) ist \(|z| = \sqrt {x^2 + y^2} = \sqrt {z \overline {z}} \ge 0\). Dieser definiert die Abstandsfunktion \(d(z_1, z_2) = |z_1 -
+z_2|\). Damit ist Konvergenz in \(\complex \) definiert, da die Abstandsfunktion \(\varepsilon \)-Umgebungen definiert durch \(U_\varepsilon (z) = \{w \in \complex \;|\; |w - z| &lt; \varepsilon \}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Wie versteht man „\(\infty \)“ im komplexen Fall?</b>
+</p>
+
+<p>
+Im Reellen sagt man, eine Folge \(z_n \in \real \) la&#x0308;uft gegen \(+\infty \), falls \(z_n &gt; R\) fu&#x0308;r \(n \ge N_R\) und jedes beliebige \(R&gt; 0\), d.&#x202f;h. \(z_n \in U_R(+\infty ) := \left
+]R, +\infty \right [\). Analog gilt \(z_n \to -\infty \), falls \(z_n &lt; -R\) fu&#x0308;r \(n \ge N_R\) und jedes beliebige \(R &gt; 0\), d.&#x202f;h. \(z_n \in U_R(-\infty ) := \left ]-\infty , -R\right
+[\).<br />
+Allgemein schreibt man \(z_n \to \infty \), falls \(|z_n| &gt; R\) fu&#x0308;r \(n \ge N_R\) und jedes beliebige \(R &gt; 0\), d.&#x202f;h. \(z_n \in U_R(\infty ) := U_R(+\infty ) \cup U_R(-\infty )\).
+Geometrisch kann man \(U_R(\infty )\) durch die <em>stereographische Projektion</em> als „Umgebung von \(\infty \)“ interpretieren:<br />
+Zeichnet man einen Kreis auf die reelle Achse, der diese in \(0\) beru&#x0308;hrt, so kann man jeder reellen Zahl einen Punkt auf dem Kreis zuweisen, indem man die reelle Zahl mit dem „Nordpol“ (der der \(0\)
+gegenu&#x0308;ber liegende Punkt) verbindet und der reellen Zahl den Schnittpunkt der Verbindungsstrecke mit dem Kreis zuweist. Auf diese Weise entsprechen Umgebungen einer reellen Zahl \(z \in \real \) wieder
+Umgebungen des Bildes von \(z\) auf dem Kreis. Den „Nordpol“ kann man als „\(\infty \)“ bezeichnen, da das Bild von \(U_R(\infty )\) eine Umgebung von \(\infty \) darstellt (nur ohne \(\infty \)).
+</p>
+
+<p>
+Im Komplexen ist dies nicht ganz so einfach, da es dort viele verschiedene Richtungen gibt.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b><span class="textsc" >Riemann</span>sche Zahlenkugel</b>: Auf die komplexe Zahlenebene wird eine Kugel mit Radius \(\frac {1}{2}\) gelegt, die die Ebene in \((0, 0)\) beru&#x0308;hrt. Mithilfe der
+stereographischen Projektion entspricht jeder Punkt \(z = (x, y)\) der komplexen Zahlenebene ein Punkt \((\xi , \eta , \zeta )\) der Kugel \(\mathbb {S}^2\) (man verbinde den Nordpol \(\infty := (0, 0, 1)\) mit
+\((x, y)\) und \((\xi , \eta , \zeta )\) ist dann der Schnittpunkt der Verbindungsgeraden mit der Kugel). Umgebungen auf der Kugel werden (umgekehrt) auf Umgebungen auf der Ebene abgebildet. Man schreibt
+fu&#x0308;r eine Folge \(z_n \in \complex \), dass \(z_n \to \infty \), falls \(|z_n| &gt; R\) fu&#x0308;r alle \(n \ge N_R\) und jedes beliebige \(R &gt; 0\), d.&#x202f;h. \(z_n \in U_R(\infty ) := \{z \in
+\complex \;|\; |z| &gt; R\}\). Das Bild von \(U_R(\infty )\) ist wieder eine Umgebung von \(\infty \) (nur ohne \(\infty \)).
+</p>
+
+<p>
+\(\mathbb {S}^2 \setminus \{(0, 0, 1)\}\) und \(\complex \) lassen sich stetig und bijektiv durch die stereographische Projektion aufeinander abbilden, wenn man nun kanonischerweise wie eben \((0, 0, 1)\) mit \(\infty
+\) identifiziert, erha&#x0308;lt man eine stetige Bijektion zwischen \(\mathbb {S}^2\) und \(\complex ^\ast := \complex \cup \{\infty \}\).
+</p>
+
+<p>
+Insbesondere gilt \(z_n \to \infty \) genau dann, wenn \(\frac {1}{z_n} \to 0\), sowie \(\xi ^2 + \eta ^2 + (\zeta - \frac {1}{2})^2 = \frac {1}{4}\)<br />
+\(\iff \; \xi ^2 + \eta ^2 = \zeta (1 - \zeta )\). Aus der Geradengleichung \(\frac {\xi - 0}{x - 0} = \frac {\eta - 0}{y - 0} = \frac {\zeta - 1}{0 - 1}\) fu&#x0308;r \((0, 0, 1)\), \((\xi , \eta ,
+\zeta )\) und \((x, y, 0)\) folgt, dass \(x = \frac {\xi }{1 - \zeta }\) und \(y = \frac {\eta }{1 - \zeta }\). Umgekehrt gilt \(x^2 + y^2 = \frac {\xi ^2 + \eta ^2}{(1 - \zeta )^2} = \frac {\xi }{1 -
+\zeta }\), daraus folgt dann \(\zeta = \frac {x^2 + y^2}{1 + x^2 + y^2}\), \(\xi = \frac {x}{1 + x^2 + y^2}\) und \(\eta = \frac {y}{1 + x^2 + y^2}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Kreis in \(\complex ^\ast \)</b>: Ein Kreis in \(\complex ^\ast \) ist definiert als ein Kreis in \(\complex \) oder eine Gerade in \(\complex \), die zusa&#x0308;tzlich \(\infty \) entha&#x0308;lt.
+</p>
+
+<p>
+<b>Eigenschaft</b>: Die stereographische Projektion erha&#x0308;lt Kreise und Winkel.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>lineare Abbildung</b>: Eine <em>lineare Abbildung</em> \(f\colon \complex \rightarrow \complex \) (oder \(f\colon \complex ^\ast \rightarrow \complex ^\ast \)) hat die Form \(z \mapsto w = az + b\) mit
+\(a, b \in \complex \) und \(a \not = 0\).
+</p>
+
+<p>
+<b>Spezialfall</b>: \(a = 1\), d.&#x202f;h. \(z \mapsto w = z + b\) ist eine Verschiebung, erha&#x0308;lt Kreise und Winkel
+</p>
+
+<p>
+<b>Spezialfall</b>: \(b = 0\), \(a = e^{\i \beta }\) mit \(\beta \in \left [0, 2\pi \right [\), d.&#x202f;h. Drehung um den Winkel \(\beta \), erha&#x0308;lt Kreise und Winkel
+</p>
+
+<p>
+<b>Spezialfall</b>: \(b = 0\), \(a \in \real \) mit \(a = r &gt; 0\), d.&#x202f;h. Streckung/Stauchung um den Faktor \(r\), erha&#x0308;lt Kreise und Winkel
+</p>
+
+<p>
+Die Abbildungen dieser drei Spezialfa&#x0308;lle nennen sich <b>elementar</b>. Jede lineare Abbildung<br />
+\(z \mapsto az + b\) ist also Komposition von elementaren Abbildungen und erha&#x0308;lt Kreise und Winkel.
+</p>
+
+<p>
+Es gibt auch die Abbildung \(f\colon \complex ^\ast \rightarrow \complex ^\ast \), \(z \mapsto w = \frac {1}{z}\). Diese ist eine Inversion („Spiegelung“) am Einheitskreis: Der neue Betrag ist der Kehrwert des alten
+Betrags, anschließend wird an der reellen Achse gespiegelt (das neue Argument ist die Negation des alten Arguments). Auch diese nicht-lineare Abbildung erha&#x0308;lt Kreise und Winkel.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b><span class="textsc" >Mo&#x0308;bius</span>-Transformation</b>: Eine <em><span class="textsc" >Mo&#x0308;bius</span>-Transformation</em> ist eine Abbildung \(f\colon \complex ^\ast \rightarrow
+\complex ^\ast \),<br />
+\(z \mapsto w = \frac {az + b}{cz + d}\) mit \(a, b, c, d \in \complex \) und \(ad - bc \not = 0\). Aus der letzten Bedingung folgt, dass die Mo&#x0308;bius-Transformation bijektiv ist (außerdem ist sie stetig). Sie
+erha&#x0308;lt Kreise und Winkel, denn \(w = \frac {a}{c} + \frac {bc - ad}{c (cz + d)}\) ist eine Komposition von linearen Abbildungen und \(\frac {1}{z}\).
+</p>
+
+<p>
+Die Umkehrabbildung einer MT ist \(z = \frac {dw + (-b)}{(-c)w + a}\), d.&#x202f;h. wieder eine MT.
+</p>
+
+<p>
+Die Komposition von MTs ist wieder eine MT.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+Es gibt keine 1:1-Beziehung zwischen den MTs \(w = \frac {az + b}{cz + d}\) und den komplexen Matrizen \(\begin {pmatrix}a &amp; b\\c &amp; d\end {pmatrix}\), denn eine MT wird schon durch drei komplexe
+Parameter bestimmt, d.&#x202f;h. drei Gleichungen sind notwendig. Genauer: Seien \(z_j, w_j \in \complex \) fu&#x0308;r \(j = 1, 2, 3\) gegeben, dabei seien \(z_j \not = z_k\) und \(w_j \not = w_k\) fu&#x0308;r
+\(j \not = k\). Dann gibt es genau eine Mo&#x0308;bius-Transformation \(\MT \), sodass \(w_j = \MT (z_j)\) fu&#x0308;r \(j = 1, 2, 3\).
+</p>
+
+<p>
+Dies beweist man, indem man \(z_1, z_2, z_3\) durch den eindeutig bestimmten Kreis verbindet, analog \(w_1, w_2, w_3\). Fu&#x0308;r einen beliebigen Punkt \(z\), fu&#x0308;r den \(\MT (z)\) bestimmt werden soll,
+la&#x0308;sst man den eindeutig bestimmten Kreis durch \(z, z_1, z_2\) mittels \(\MT \) abbilden. Da die MT kreistreu ist, wird der Kreis auf einen Kreis abgebildet, der durch \(w_1\) und \(w_2\) geht. Aufgrund der
+Winkeltreue bleibt der Schnittwinkel der beiden Kreise bei \(z_1\) und \(z_2\) erhalten, d.&#x202f;h. der Kreis durch \(w_1\) und \(w_2\) kann eindeutig bestimmt werden. In der gleichen Weise verfa&#x0308;hrt man mit \(z,
+z_1, z_3\). Auf dem Schnittpunkt der beiden Kreise liegt das gesuchte Bild \(w = \MT (z)\).
+</p>
+
+<p>
+\(w\) kann auch rechnerisch bestimmt werden: Ist \(w = \frac {az + b}{cz + d}\) und \(w_j = \frac {a z_j + b}{c z_j + d}\), so gilt<br />
+\(w_k - w_j = \frac {(ad - bc)(z_k - z_j)}{(c z_k + d)(c z_j + d)}\) fu&#x0308;r \(k, j = 1, 2, 3\).<br />
+Daraus folgt, dass \((w_1, w_2, w, w_3) := \frac {(w - w_1)/(w - w_2)}{(w_3 - w_1)/(w_3 - w_2)} = \frac {(z - z_1)/(z - z_2)}{(z_3 - z_1)/(z_3 - z_2)} =: (z_1, z_2, z, z_3)\) eine Invariante ist, aus
+der \(w\) berechnet werden kann.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+Eine Mo&#x0308;bius-Transformation bildet im nicht-entarteten Fall entweder das Innere eines Kreises auf das Innere oder auf das A&#x0308;ußere des Bilds ab. Wu&#x0308;rde die Transformation einen Teil auf das Innere und
+einen Teil auf das A&#x0308;ußere abbilden, so ko&#x0308;nnte man (MT stetig) einen Pfad definieren, der vollsta&#x0308;ndig im Inneren des Urbilds liegt, dessen Bild aber Endpunkte besitzt, von denen einer im Inneren und
+einer im A&#x0308;ußeren liegt. Dann wu&#x0308;rde das Bildes des Pfads aber den Bild-Kreis schneiden, was aufgrund der Bijektivita&#x0308;t und der Kreistreue nicht mo&#x0308;glich ist. Im entarteten Fall ko&#x0308;nnen
+Kreisinnere auf Halbebenen und Halbebenen auf Inneres bzw. A&#x0308;ußeres von Kreisen abgebildet werden.
+</p>
+
+
+
+<h2 id="mehrwertige-abbildungen-und-riemannsche-flaechen">Mehrwertige Abbildungen und <span style="font-variant: small-caps;">Riemann</span>sche Flächen</h2>
+</p>
+
+
+<p>
+Es gibt Zuordnungen wie \(\complex \rightarrow \complex \), \(z \mapsto w = \sqrt [n]{z}\), \(n \in \natural \), die an sich keine Abbildungen sind, da es mehrere Werte geben kann. Im Beispiel gilt fu&#x0308;r \(z
+= r e^{\i \varphi }\), dass die \(n\) Werte<br />
+\(w_k = r^{1/n} e^{\i (\varphi /n + 2\pi k/n)}\), \(k = 0, \dotsc , n - 1\) die Gleichung \(w_k^n = z\) erfu&#x0308;llen.<br />
+Hier hat man es also mit einer sog. <b>mehrwertigen Abbildung</b> zu tun.<br />
+Welchen Wert soll man auswa&#x0308;hlen, um eine mo&#x0308;glichst sinnvolle Abbildung zu definieren?
+</p>
+
+<p>
+Wenn man z.&#x202f;B. immer die Lo&#x0308;sung fu&#x0308;r \(k = 0\) auswa&#x0308;hlt, so ergibt sich das Problem, dass die Abbildung nicht stetig ist: Nimmt man als Beispiel \(n = 3\) an und „la&#x0308;uft“ von \(1\)
+aus einmal gegen den Uhrzeigersinn um den Ursprung, so la&#x0308;uft das Bild nur bis zum Argument \(\frac {2\pi }{3}\); u&#x0308;berquert man die reelle Achse, so „springt“ die Lo&#x0308;sung wieder zuru&#x0308;ck
+zum Argument \(0\). Man kann also keinen stetigen Zweig der Wurzeldefinition definieren.
+</p>
+
+<p>
+Die Lo&#x0308;sung besteht darin, fu&#x0308;r jeden Zweig (im Beispiel fu&#x0308;r jedes mo&#x0308;gliche \(k\)) eine Kopie von \(\complex \) einzufu&#x0308;hren. Fu&#x0308;r \(n = 3\) gibt es dann im Beispiel drei
+(nummerierte) Kopien der komplexen Ebene; wenn man die Abbildungen auf sie anwendet, verwendet man den der Nummer der Kopie entsprechenden Zweig der mehrwertigen Abbildung. Nun muss man die Zweige noch sinnvoll
+„verkleben“, damit ein Zusammenhang zwischen den Kopien hergestellt ist.
+</p>
+
+<p>
+Bei der Wurzelfunktion geschieht dies z.&#x202f;B. darin, dass man in jeder Kopie die positive reelle Halbachse als Schnitt wa&#x0308;hlt und die beiden Seiten so nummeriert, dass man beim Durchlauf gegen den Uhrzeigersinn
+eine „Ebene“ ho&#x0308;her kommt. Wenn man ganz „oben“ noch eine Ebene weiter geht, gelangt man wieder zuru&#x0308;ck auf die „unterste“. Der Schnitt kann auch anders gewa&#x0308;hlt werden, die geeignete Wahl ist
+vom Zweck abha&#x0308;ngig. Die resultierende Fla&#x0308;che (eine eindimensionale komplexe Mannigfaltigkeit) nennt man <b><span class="textsc" >Riemann</span>-Fla&#x0308;che</b>, die „Ebenen“ heißen
+<b><span class="textsc" >Riemann</span>-Bla&#x0308;tter</b>.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+Ein weiteres Beispiel ist \(f(z) = \sqrt {z(1 - z)}\). Obwohl \(f(z) = \sqrt {z} \sqrt {1 - z}\) ist, gibt es nur zwei Zweige statt vier, da sich die anderen beiden wegku&#x0308;rzen (wa&#x0308;hlt man z.&#x202f;B.
+bei beiden Wurzeln \(k = 1\), so ist die Summe der resultierenden Phasenspru&#x0308;nge in den Argumenten \(2\pi \)). „Erlaubte“ Wege in der komplexen Ebene sind die Wege, die entweder keinen oder beide der Punkte \(0\)
+und \(1\) umlaufen. „Nicht erlaubt“ ist ein Umlaufen nur von \(0\) oder \(1\), da so wieder ein Sprung auftritt (wie oben).
+</p>
+
+<p>
+Eine mo&#x0308;gliche Lo&#x0308;sung besteht darin, zwischen \(0\) und \(1\) einen Schnitt zu machen und die beiden Riemann-Bla&#x0308;tter an gegenu&#x0308;berliegenden Seiten zu verkleben.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+Fu&#x0308;r \(w = \Ln (z)\) gilt \(e^w = z\), d.&#x202f;h. mit \(z = r e^{\i \varphi }\) ist \(w = u + \i v\) (\(u, v \in \real \)) mit \(u = \ln (r)\) und \(v = \arg (z) = \varphi + 2k\pi \), \(k \in
+\integer \). Es gibt also abza&#x0308;hlbar unendlich viele Lo&#x0308;sungen. Dementsprechend gibt es auch unendlich viele Riemann-Bla&#x0308;tter, die analog wie bei der Wurzelfunktion verklebt werden mu&#x0308;ssen.
+</p>
+
+
+
+<h2 id="differenzierbarkeit">Differenzierbarkeit</h2>
+
+</p>
+
+
+<p>
+Ist \(U \subset \complex \) offen, \(z_0 \in U\) und \(f\colon U \rightarrow \complex \), so ist die komplexe Ableitung von \(f\) in \(z_0\) definiert als \(f’(z_0) := \lim _{h \to 0,\; h \in \complex } \frac
+{f(z_0 + h) - f(z_0)}{h}\). \(f\) kann als Funktion \(f(z) = (u(x, y), v(x, y))\)<br />
+\(= u(x, y) + \i v(x, y)\) aufgefasst werden, wobei \(u, v\colon \real ^2 \rightarrow \real \) reelle Funktionen sind.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Spezialfall</b>: Fu&#x0308;r \(h = x \to 0\) (\(x \in \real \)) und \(f’\) in \(z_0\) komplex differenzierbar gilt<br />
+\(f’(z_0) = \lim _{x \to 0} \frac {u(z_0 + x) + \i v(z_0 + x) - u(z_0) - \i v(z_0)}{x} = \lim _{x \to 0} \left (\frac {u(z_0 + x) - u(z_0)}{x} + \i \frac {v(z_0 + x) - v(z_0)}{x}\right )\),<br
+/>
+d.&#x202f;h. \(f’(z_0) = \frac {\partial u}{\partial x}(z_0) + \i \frac {\partial v}{\partial x}(z_0)\).
+</p>
+
+<p>
+<b>Spezialfall</b>: Fu&#x0308;r \(h = \i y \to 0\) (\(y \in \real \)) und \(f’\) in \(z_0\) komplex differenzierbar gilt<br />
+\(f’(z_0) = \lim _{y \to 0} \frac {u(z_0 + \i y) + \i v(z_0 + \i y) - u(z_0) - \i v(z_0)}{\i y} = \lim _{y \to 0} \left (\frac {v(z_0 + \i y) - v(z_0)}{y} - \i \frac {u(z_0 + \i y) -
+u(z_0)}{y}\right )\),<br />
+d.&#x202f;h. \(f’(z_0) = \frac {\partial v}{\partial y}(z_0) - \i \frac {\partial u}{\partial y}(z_0)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+Also gilt: Falls \(f\) in \(z_0\) komplex differenzierbar ist, so sind \(u\) und \(v\) partiell differenzierbar und es gilt \(\frac {\partial u}{\partial x} = \frac {\partial v}{\partial y}\) sowie \(\frac {\partial
+v}{\partial x} = -\frac {\partial u}{\partial y}\) (<b><span class="textsc" >Cauchy</span>-<span class="textsc" >Riemann</span>-Gleichungen</b>).
+</p>
+
+<p>
+In diesem Falle gilt \(\left .\frac {df}{dz}\right |_{z=z_0} = u_x’ + \i v_x’ = v_y’ - \i u_y’ = u_x’ - \i u_y’ = v_y’ + \i v_x’\), d.&#x202f;h. \(f\) kann differenziert werden, ohne den Real- oder
+Imagina&#x0308;rteil zu kennen.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+Sei \(f\) in \(z_0\) komplex diffb.<br />
+Dann gilt \(f(z) = f(z_0) + w_0 h + o(|h|)\) mit \(w_0 := f’(z_0)\) und \(z - z_0 =: h = h_x + \i h_y\).<br />
+Setzt man \(u_0 := u(x_0, y_0) = \Re (f(z_0))\), \(v_0 := v(x_0, y_0) = \Im (f(z_0))\), \(f = u + \i v\), \(f(z_0) = u_0 + \i v_0\) und \(|h|_\complex =\) \(\norm {\begin {pmatrix}h_x\\h_y\end
+{pmatrix}}_{\real ^2}\), so ergibt sich bei Betrachtung der Real- und Imagina&#x0308;rteile<br />
+\(u = u_0 + (w_{0,r} h_x - w_{0,i} h_y) + o\Big (\)\(\norm { \begin {pmatrix}h_x\\h_y\end {pmatrix}}\)\(\Big )\) sowie \(v = v_0 + (w_{0,i} h_x + w_{0,r} h_y) + o\Big (\)\(\norm { \begin
+{pmatrix}h_x\\h_y\end {pmatrix}}\)\(\Big )\) mit \(w_{0,r} := \Re (w_0)\) und \(w_{0,i} := \Im (w_0)\), also \(\begin {pmatrix}u\\v\end {pmatrix} = \begin {pmatrix}u_0\\v_0\end {pmatrix} + \begin
+{pmatrix}w_{0,r} &amp; -w_{0,i}\\w_{0,i} &amp; w_{0,r}\end {pmatrix} \begin {pmatrix}h_x\\h_y\end {pmatrix} + o(\norm {h})\).<br />
+Wegen den CR-Gleichungen gilt \(w_{0,r} = u_x’ = v_y’\) und \(w_{0,i} = -u_y’ = v_x’\), d.&#x202f;h.<br />
+\(\begin {pmatrix}u\\v\end {pmatrix} = \begin {pmatrix}u_0\\v_0\end {pmatrix} + \begin {pmatrix}u_x’ &amp; u_y’\\v_x’ &amp; v_y’\end {pmatrix} \begin {pmatrix}h_x\\h_y\end {pmatrix} + o(\norm
+{h})\). Somit ist \(\begin {pmatrix}u\\v\end {pmatrix}\) Frechet-differenzierbar.
+</p>
+
+<p>
+Es gilt \(\frac {D(u, v)}{D(x, y)} = \begin {pmatrix}w_{0,r} &amp; -w_{0,i}\\w_{0,i} &amp; w_{0,r}\end {pmatrix} = \sqrt {w_{0,r}^2 + w_{0,i}^2} \begin {pmatrix}\cos \theta &amp; -\sin \theta \\
+\sin \theta &amp; \cos \theta \end {pmatrix}\), da \(\left (\frac {w_{0,r}}{|w|}\right )^2 + \left (\frac {w_{0,i}}{|w|}\right )^2 = 1\). Also ist die Jacobi-Matrix eine Drehung mit anschließender
+Streckung. Man nennt Transformationen, deren Jacobi-Matrix gleich einer Rotationsmatrix multipliziert mit einem Skalar ist, <b>konform</b>.
+</p>
+
+<p>
+Es gilt also: Eine Funktion \(f\colon \complex \rightarrow \complex \) ist in \(z_0 \in \complex \) komplex differenzierbar genau dann, wenn die Cauchy-Riemann-Gleichungen erfu&#x0308;llt sind und \(\begin
+{pmatrix}u\\v\end {pmatrix}\) Frechet-differenzierbar ist (die Umkehrung beweist man wie eben, nur umgekehrt).
+</p>
+
+<p>
+Anders gesagt ist \(f\) komplex differenzierbar genau dann, wenn alle partiellen Ableitungen existieren und stetig sind sowie die Cauchy-Riemann-Gleichungen erfu&#x0308;llt sind.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+Angenommen, es existieren alle partiellen Ableitungen zweiter Ordnung und diese sind stetig. Dann folgt aus den CR-Gleichungen \(\frac {\partial }{\partial x} \left (\frac {\partial u}{\partial x}\right ) =
+\frac {\partial }{\partial x} \left (\frac {\partial v}{\partial y}\right ) = \frac {\partial }{\partial y} \left (\frac {\partial v}{\partial x}\right ) = \frac {\partial ^2 v}{\partial x
+\partial y}\) und analog<br />
+\(\frac {\partial }{\partial y} \left (\frac {\partial u}{\partial y}\right ) = -\frac {\partial }{\partial y} \left (\frac {\partial v}{\partial x}\right ) = -\frac {\partial ^2 v}{\partial
+x \partial y}\), d.&#x202f;h. \(\Delta u = \left (\frac {\partial ^2}{\partial x^2} + \frac {\partial ^2}{\partial y^2}\right )u = 0\) und \(\Delta v = \left (\frac {\partial ^2}{\partial x^2} +
+\frac {\partial ^2}{\partial y^2}\right )v = 0\).<br />
+Solche Funktionen (zweifach stetig diffb. mit \(\Delta u = 0\)) nennt man <b>harmonisch</b>.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>„partielle Ableitungen“ \(\frac {\partial }{\partial z}\) und \(\frac {\partial }{\partial \overline {z}}\)</b>:
+</p>
+
+<p>
+Fu&#x0308;r \(f(z) = f(x + \i y) = u(x, y) + \i v(x, y)\) ist \(z = x + \i y\) und \(\overline {z} = x - \i y\), d.&#x202f;h.<br />
+\(x = \frac {z + \overline {z}}{2}\) und \(y = \frac {z - \overline {z}}{2 \i }\). Damit kann \(f(z) = f(x, y) = f(\frac {z + \overline {z}}{2}, \frac {z - \overline {z}}{2 \i }) =: \widetilde
+{f}(z, \overline {z})\) als eine Funktion von zwei voneinander abha&#x0308;ngigen Variablen \(z\) und \(\overline {z}\) betrachtet werden. Tut man so, als wa&#x0308;ren \(z\) und \(\overline {z}\) voneinander
+unabha&#x0308;ngig, dann ist \(\frac {D(z, \overline {z})}{D(x, y)} =\) \(\begin {pmatrix}1 &amp; \i \\1 &amp; -\i \end {pmatrix}\) und<br />
+\(\begin {pmatrix}\partial /\partial z\\ \partial /\partial \overline {z}\end {pmatrix}\) \(= \left (\frac {D(x, y)}{D(z, \overline {z})}\right )^t\) \(\begin {pmatrix}\partial /\partial x\\
+\partial /\partial y\end {pmatrix}\). Damit gilt \(\frac {\partial }{\partial z} := \frac {1}{2} \left (\frac {\partial }{\partial x} - \i \frac {\partial }{\partial y}\right )\) und \(\frac
+{\partial }{\partial \overline {z}} := \frac {1}{2} \left (\frac {\partial }{\partial x} + \i \frac {\partial }{\partial y}\right )\), d.&#x202f;h. zum Beispiel \(\frac {\partial }{\partial z}
+\widetilde {f}(z, \overline {z}) := \frac {1}{2} \left (\frac {\partial }{\partial x} - \i \frac {\partial }{\partial y}\right ) f(x, y)\) und \(\frac {\partial }{\partial \overline {z}}
+\widetilde {f}(z, \overline {z}) := \frac {1}{2} \left (\frac {\partial }{\partial x} + \i \frac {\partial }{\partial y}\right ) f(x, y)\).
+</p>
+
+<p>
+Im Beispiel \(f(z) = z\) gilt \(\frac {\partial }{\partial z} f = \frac {1}{2} + \frac {1}{2} = 1\) und \(\frac {\partial }{\partial \overline {z}} f = \frac {1}{2} - \frac {1}{2} = 0\).
+</p>
+
+<p>
+Existieren die part. Ableitungen, dann gilt \(\frac {\partial }{\partial \overline {z}} (u(x, y) + \i v(x, y)) = \frac {1}{2} \left (\frac {\partial u}{\partial x} - \frac {\partial v}{\partial
+y}\right ) + \frac {\i }{2} \left (\frac {\partial u}{\partial y} + \frac {\partial v}{\partial x}\right )\).<br />
+Die beiden Ausdru&#x0308;cke in den Klammern sind \(0\) genau dann, wenn die CR-Gl. erfu&#x0308;llt sind.
+</p>
+
+<p>
+Damit gilt: \(u + \i v\) erfu&#x0308;llt die Cauchy-Riemann-Gleichungen genau dann, wenn \(\frac {\partial }{\partial \overline {z}} f = 0\).
+</p>
+
+<p>
+Man schreibt auch kurz \(\partial = \frac {\partial }{\partial z}\) und \(\overline {\partial } = \frac {\partial }{\partial \overline {z}}\). \(\overline {\partial }\) heißt <b><span class="textsc"
+>Cauchy</span>-<span class="textsc" >Riemann</span>-Operator</b>.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Beispiele</b>: \(f(z) = z^n\) ist komplex diffb., dagegen ist \(f(z) = |z|^2 = z \overline {z}\) nicht komplex diffb.<br />
+Die Potenzreihe \(f(z) = \sum _{k=0}^\infty a_k z^k\) konvergiert fu&#x0308;r \(|z| &lt; R\) und divergiert fu&#x0308;r \(|z| &gt; R\), wobei \(R = \frac {1}{\limsup _{k \to \infty } \sqrt [k]{|a_k|}}\).
+Fu&#x0308;r \(|z| &lt; R\) konvergiert die Reihe absolut, ist \(|z| \le R’ &lt; R\), so konvergiert die Reihe sogar gleichma&#x0308;ßig. Die Reihe ist in jedem Kreis \(|z| \le R’ &lt; R\) gliedweise komplex diffb.,
+d.&#x202f;h. sie ist fu&#x0308;r \(|z| &lt; R\) komplex diffb. und \(f’(z) = \sum _{k=1}^\infty k a_k z^{k-1}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>holomorph</b>: Seien \(U \subset \complex \) offen und \(f\colon U \rightarrow \complex \) eine Funktion. \(f\) heißt <em>holomorph in \(z_0 \in U\)</em>, falls es ein \(\varepsilon &gt; 0\) gibt, sodass \(f\)
+in allen \(z\) mit \(|z - z_0| &lt; \varepsilon \) komplex differenzierbar ist.<br />
+\(f\) heißt <em>holomorph in \(U\)</em> (\(f \in \A (U)\)), falls \(f\) in allen \(z_0 \in U\) holomorph ist.
+</p>
+
+
+
+<h2 id="gebiete">Gebiete</h2>
+
+</p>
+
+
+<p>
+<b>zusammenha&#x0308;ngend</b>: Sei \(G \subset \complex \) offen mit \(G \not = \emptyset \). Dann heißt \(G\) <em>zusammenha&#x0308;ngend</em>, falls<br />
+\(\lnot (\exists _{G_1, G_2 \subset \complex \text { offen}}\quad G_1 \not = \emptyset , G_2 \not = \emptyset ,\quad G_1 \cup G_2 = G,\quad G_1 \cap G_2 = \emptyset )\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Polygonzug in \(G\)</b>: Sei \(G \subset \complex \) offen mit \(a, b \in G\). Sei außerdem \(z_j \in G\) fu&#x0308;r \(j = 0, \dotsc , n\), wobei \(z_0 := a\) und \(z_n := b\). Die \(k\)-te
+<em>Teilstrecke</em> ist \(\overline {z_k z_{k+1}} := \{z_k + t(z_{k+1} - z_k) \;|\; t \in [0,1]\}\) mit \(k = 0, \dotsc , n - 1\). Der <em>Polygonzug</em> in \(G\) von \(a\) nach \(b\) u&#x0308;ber \(\delta
+= \{z_k\}_{k=0}^n\) ist \(\Gamma _{ab}^\delta := \bigcup _{k=0}^{n-1} \overline {z_k z_{k+1}}\).
+</p>
+
+<p>
+<b>polygonial zusammenha&#x0308;ngend</b>: Sei \(G \subset \complex \) offen mit \(G \not = \emptyset \). Dann heißt \(G\) <em>polygonial zusammenha&#x0308;ngend</em>, falls \(\forall _{a, b \in G}
+\exists _{\delta = \{z_k\}_{k=0}^n}\; \Gamma _{ab}^\delta \subset G\).
+</p>
+
+<p>
+\(G\) ist zusammenha&#x0308;ngend genau dann, wenn \(G\) polygonial zusammenha&#x0308;ngend ist.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Gebiet</b>: Eine nicht-leere, offene, zusammenha&#x0308;ngende Menge \(G \subset \complex \) heißt <em>Gebiet</em>.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Satz</b>: Seien \(G \subset \complex \) ein Gebiet und \(f \in \A (G)\). Dann sind a&#x0308;quivalent:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p>\(f’(z) \equiv 0\)
+</p>
+</li>
+<li class="list-item-f1"><p>\(\Re f(z) \equiv \const \)
+</p>
+</li>
+<li class="list-item-f2"><p>\(\Im f(z) \equiv \const \)
+</p>
+</li>
+<li class="list-item-f3"><p>\(|f(z)| \equiv \const \)
+</p>
+</li>
+<li>
+<p>
+<em>(5)</em>
+</p>
+<p>
+\(f(z) \equiv \const \)
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="kurvenintegrale">Kurvenintegrale</h2>
+<b><span class="textsc" >Jordan</span>-Kurve</b>: Sei \(\gamma \colon [0, T] \rightarrow \complex \) stetig und injektiv (bis auf ggf. \(\gamma (0) = \gamma (T)\)).<br />
+Fu&#x0308;r \(\gamma \in \C ^1\) und \(\dot {\gamma }(t) \not = 0\) fu&#x0308;r alle \(t \in [0, T]\) heißt \(\Gamma _\gamma := \{z = \gamma (t) \;|\; t \in [0, T]\}\) <em><span class="textsc"
+>Jordan</span>-Kurve</em>.
+</p>
+
+<p>
+<b>Zerlegung und Stu&#x0308;tzstellen</b>: \(\delta = \{t_k\}_{k=0}^n\) heißt <em>Zerlegung</em> von \([0, T]\), falls<br />
+\(0 = t_0 &lt; t_1 &lt; \dotsb &lt; t_n = T\). \(\xi = \{\tau _k\}_{k=0}^{n-1}\) heißt <em>Satz von Stu&#x0308;tzstellen</em>, falls \(\tau _k \in [t_k, t_{k+1}]\) fu&#x0308;r \(k = 0, \dotsc , n - 1\).
+Man definiert \(z_k := \gamma (t_k)\) fu&#x0308;r \(k = 0, \dotsc , n\) und \(w_j = \gamma (\tau _j)\) fu&#x0308;r \(j = 0, \dotsc , n - 1\).
+</p>
+
+<p>
+<b><span class="textsc" >Riemann</span>-Summe</b>: Sei \(f\colon \Gamma _\gamma \subset \complex \rightarrow \complex \) stetig. Dann gilt fu&#x0308;r die <em><span class="textsc"
+>Riemann</span>-Summe</em><br />
+\(\sum _{k=0}^{n-1} f(w_k) (z_{k+1} - z_k) = \sum _{k=0}^{n-1} f(\gamma (\tau _k)) (\gamma (t_{k+1}) - \gamma (t_k)) \frac {t_{k+1} - t_k}{t_{k+1} - t_k} = \sum _{k=0}^{n-1} \widetilde
+{f}(\tau _k) \frac {\gamma (t_{k+1}) - \gamma (t_k)}{t_{k+1} - t_k} \Delta t_k\)<br />
+mit \(\widetilde {f} := f \circ \gamma \) und \(\Delta t_k := t_{k+1} - t_k\). La&#x0308;sst man den Rang der Zerlegung \(\lambda (\delta )\) gegen \(0\) laufen, so sieht man, dass folgende Definition Sinn ergibt.
+</p>
+
+<p>
+<b>Kurvenintegral</b>: Fu&#x0308;r eine Jordan-Kurve \(\Gamma _\gamma \) und eine stetige Funktion \(f\colon \Gamma _\gamma \subset \complex \rightarrow \complex \) ist das <em>Kurvenintegral</em> definiert als
+\(\int _{\Gamma _\gamma } f(z)\dz := \int _0^T (f \circ \gamma )(t) \dot {\gamma }(t) \dt \).
+</p>
+
+<p>
+Diese Definition ist unabha&#x0308;ngig von der konkreten Parametrisierung \(\gamma \)<br />
+(bei Erhalt der Richtung).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Eigenschaften</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f4"><p>\(\int _{\Gamma _{ab}} f(z)\dz = -\int _{\Gamma _{ba}} f(z)\dz \)
+</p>
+</li>
+<li class="list-item-f5"><p>\(\int _{\Gamma _{ab}} (\alpha f(z) + \beta g(z))\dz = \alpha \int _{\Gamma _{ab}} f(z)\dz + \beta \int _{\Gamma _{ab}} g(z)\dz \)
+</p>
+</li>
+<li class="list-item-f6"><p>Man kann Jordan-Kurven \(\overrightarrow {\Gamma _1}, \dotsc , \overrightarrow {\Gamma _n}\) aneinanderha&#x0308;ngen. Es ergibt sich ein sog. <em>gerichteter Pfad</em> \(\overrightarrow
+{\Gamma }\), der jedoch nur rein symbolisch als „\(\overrightarrow {\Gamma } = \overrightarrow {\Gamma _1} \cup \dotsb \cup \overrightarrow {\Gamma _n}\)“ geschrieben werden kann, da dieser sich z.&#x202f;B.
+selbst u&#x0308;berschneiden darf (in verschiedenen Jordan-Kurven).<br />
+Es sei dann \(\int _{\overrightarrow {\Gamma }} f(z)\dz := \sum _{k=1}^n \int _{\overrightarrow {\Gamma _k}} f(z)\dz \).
+</p>
+</li>
+</ul>
+
+<p>
+<b>Beispiele</b>: Fu&#x0308;r \(f(z) \equiv 1\) gilt \(\int _{\Gamma _{ab}} f(z)\dz = b - a \in \complex \).<br />
+Fu&#x0308;r \(f(z) = z^n\), \(n \in \integer \) und \(\Gamma = \{z \in \complex \;|\; |z| = 1\}\) mit einfach mathematisch positivem Umlauf (gegen den Uhrzeigersinn) kann man \(\Gamma \) durch \(\gamma
+\colon [0, 2\pi ] \rightarrow \complex \), \(\gamma (t) = e^{\i t}\) parametrisieren. Das entstehende Integral bezeichnet man auch als <em>Ringintegral</em> und man schreibt \(\oint \) dafu&#x0308;r, dass
+u&#x0308;ber einen geschlossenen Pfad mit einfach mathematisch positivem Umlauf integriert wird.<br />
+Es gilt \(\oint _\Gamma z^n \dz = \int _0^{2\pi } e^{\i tn} \i e^{\i t} \dt = \i \cdot \int _0^{2\pi } e^{\i t(n+1)} \dt = \i \cdot \int _0^{2\pi } (\cos ((n+1)t) + \i \sin ((n+1)t)) \dt \).
+Daraus ergibt sich die wichtige Formel \(\oint _\Gamma z^n \dz =\) \(\begin {cases} 2\pi \i &amp; n = -1\\0 &amp; n \not = -1\end {cases}\).
+</p>
+
+<p>
+<b>Anmerkung zur Abscha&#x0308;tzung von Kurvenintegralen</b>: Im Allgemeinen gilt die Formel<br />
+\(|\int _{\Gamma _{ab}} f(z)\dz | \le \sup _{z \in \Gamma _{ab}} |f(z)| \cdot |b - a|\) nicht (ein Gegenbeispiel ist das Beispiel mit \(z^n\) von eben). Dies liegt daran, dass sich in \(|\sum _{k=0}^{n-1} f(w_k)
+(z_{k+1} - z_k)| \le \sum _{k=0}^{n-1} |f(w_k)| |z_{k+1} - z_k|\)<br />
+\(\le \sup _{z \in \Gamma _{ab}} |f(z)| \cdot \sum _{k=0}^{n-1} |z_{k+1} - z_k|\) die letzte Summe aufgrund der Betra&#x0308;ge keine Teleskopsumme ist (im Gegensatz dazu, wie es im Reellen der Fall
+wa&#x0308;re). Jedoch erha&#x0308;lt man im Grenzu&#x0308;bergang \(\lambda (\delta ) \to 0\) die richtige Formel \(|\int _\Gamma f(z)\dz | \le \sup _{z \in \Gamma } |f(z)| \cdot \ell (\Gamma )\) mit
+\(\ell (\Gamma )\) der La&#x0308;nge von \(\Gamma \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Satz (Formel von <span class="textsc" >Newton</span>-<span class="textsc" >Leibniz</span>)</b>:<br />
+Seien \(G \subset \complex \) ein Gebiet, \(a, b \in G\), \(\Gamma _{ab} \subset G\) eine (stu&#x0308;ckweise) \(\C ^1\)-Jordan-Kurve, \(f\colon G \rightarrow \complex \) eine Funktion, wobei \(f\) fu&#x0308;r
+alle \(z \in \Gamma _{ab}\) komplex differenzierbar und \(f’|_{\Gamma _{ab}}\) stetig ist.<br />
+Dann gilt \(\int _{\Gamma _{ab}} f’(z) \dz = f(b) - f(a)\).
+</p>
+
+<p>
+<b>Anmerkung</b>: Ist \(a = b\), d.&#x202f;h. \(\Gamma \) ein geschlossener Pfad, so gilt \(\oint _\Gamma f’(z)\dz = 0\)<br />
+(wenn die Stammfunktion existiert).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Warum gilt dann \(\int _\Gamma \frac {1}{z} \dz = 2\pi \i \)?</b><br />
+(dabei ist \(\Gamma \) der mathematisch positive einfache Umlauf von \(|z| = 1\))
+</p>
+
+<p>
+Dann mu&#x0308;sste man eine Stammfunktion von \(f’(z) = \frac {1}{z}\) finden. Versucht man \(f(z) = \Ln z\), so muss man einen Zweig auswa&#x0308;hlen. Allerdings ist es nicht mo&#x0308;glich, einen auf ganz
+\(\Gamma \) differenzierbaren Zweig von \(\Ln z\) anzugeben (irgendwo muss der „Schnitt“ sein).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Beispiel</em>: Fu&#x0308;r das Polynom \(p(z) = c_0 + c_1 z + \dotsb + c_n z^n\) und \(q(z) = c_0 z + \frac {c_1}{2} z^2 + \dotsb + \frac {c_n}{n + 1} z^{n+1}\) gilt \(p(z) = q’(z)\), d.&#x202f;h.
+\(\int _{\Gamma _{ab}} p(z)\dz = q(b) - q(a)\), insbesondere gilt fu&#x0308;r \(a = b\) \(\oint _\Gamma p(z)\dz = 0\).
+</p>
+
+<p>
+<em>Beispiel</em>: Fu&#x0308;r die Potenzreihe \(p(z) = c_0 + \sum _{k=1}^\infty c_k z^k\) mit Konvergenzradius \(R &gt; 0\) und<br />
+\(q(z) = \sum _{k=1}^\infty \frac {c_{k-1}}{k} z^k\) gilt \(p(z) = q’(z)\) (dabei hat \(q(z)\) den gleichen Konvergenzradius).<br />
+Insbesondere gelten also fu&#x0308;r \(\Gamma _{ab}, \Gamma \subset U_R(0) = \{z \in \complex \;|\; |z| &lt; R\}\) obige Formeln.
+</p>
+
+
+
+<h2 id="der-integralsatz-von-cauchy">Der Integralsatz von <span style="font-variant: small-caps;">Cauchy</span></h2>
+
+</p>
+
+
+<p>
+<b>Satz (Integralsatz von <span class="textsc" >Cauchy</span> fu&#x0308;r Dreiecke)</b>:<br />
+Seien \(G \subset \complex \) ein Gebiet und \(\Delta \subset G\) ein Dreieck (d.&#x202f;h. Rand und Inneres liegen in \(G\)).<br />
+Außerdem seien \(f \in \A (G)\) und \(\Gamma = \partial \Delta \).<br />
+Dann gilt \(\oint _\Gamma f(z)\dz = 0\).
+</p>
+
+<p>
+<b>Anmerkung</b>: Man weiß hier i.&#x202f;A. nicht, ob \(f\) eine Stammfunktion besitzt.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>sternfo&#x0308;rmiges Gebiet</b>: Ein Gebiet \(G \subset \complex \) heißt <em>sternfo&#x0308;rmig</em>, falls es ein \(a \in G\) gibt, sodass \(\forall _{z \in G}\; \overline {az} \subset G\). \(a\) heißt in
+diesem Fall <em>zentraler Punkt</em>.
+</p>
+
+<p>
+<b>Satz (Integralsatz von <span class="textsc" >Cauchy</span> fu&#x0308;r sternfo&#x0308;rmige Gebiete)</b>:<br />
+Seien \(G \subset \complex \) ein sternfo&#x0308;rmiges Gebiet und \(f \in \A (G)\).<br />
+Dann gilt \(F \in \A (G)\) mit \(F(z) := \int _{\overline {az}} f(w)\dw \) und \(F’(z) = F(z)\).
+</p>
+
+<p>
+Holomorphe Funktionen auf sternfo&#x0308;rmigen Gebieten haben also Stammfunktionen.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Zusammenfassung</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f7"><p>Seien \(G \subset \complex \), \(f \in \A (G)\) und \(\exists _{F \in \A (G)}\; F’ = f\). Dann gilt \(\int _{\Gamma _{ab}} f(z)\dz = \int _{\widetilde {\Gamma }_{ab}} f(z)\dz \) (\(\ast
+\)).<br />
+Fu&#x0308;r \(\Gamma \subset G\) geschlossen gilt außerdem \(\oint _\Gamma f(z)\dz = 0\) (\(\ast \ast \)).<br />
+Die Formeln (\(\ast \)) und (\(\ast \ast \)) sind a&#x0308;quivalent, d.&#x202f;h. (\(\ast \)) gilt fu&#x0308;r alle Pfade \(\Gamma _{ab}, \widetilde {\Gamma }_{ab} \subset G\) genau dann, wenn (\(\ast \ast \))
+fu&#x0308;r alle geschlossenen Pfade \(\Gamma \subset G\) gilt.
+</p>
+</li>
+<li class="list-item-f8"><p>Seien \(G \subset \complex \) sternfo&#x0308;rmig und \(f \in \A (G)\). Dann gilt \(\exists _{F \in \A (G)}\; F’ = f\). Also gelten (\(\ast \)), (\(\ast \ast \)).
+</p>
+</li>
+</ul>
+
+<p>
+Ist \(G \subset \complex \) nicht sternfo&#x0308;rmig, so muss \(f\) i.&#x202f;A. keine Stammfunktion besitzen.<br />
+Ein Gegenbeispiel ist \(\int _\Gamma \frac {1}{z} \dz = 2\pi \i \) (hier fehlt die \(0\) in dem Gebiet).
+</p>
+
+<p>
+Ist das Gebiet \(G\) nicht sternfo&#x0308;rmig, aber der geschlossene Pfad \(\Gamma \) zusammenziehbar (z.&#x202f;B. wenn das Gebiet keine „Lo&#x0308;cher“ hat – weiter unten wird dies genauer erkla&#x0308;rt), so kann
+man folgendermaßen vorgehen: Wa&#x0308;hle ein sternfo&#x0308;rmiges Gebiet \(G’ \subset G\), das einen Teil vom Pfad entha&#x0308;lt. Trenne nun einen Teil des Pfades ab (dabei beachte man die Umlaufrichtung), wobei
+man den Schnitt als \(\gamma \) bezeichnet. Dann ist \(\oint _\Gamma = \oint _\Gamma + \int _{\overrightarrow {\gamma }} + \int _{\overleftarrow {\gamma }} = \oint _{\Gamma ’} + \oint _{\Gamma ’’}\),
+wobei \(\Gamma ’\), \(\Gamma ’’\) die zwei geschlossenen Teilpfade sein sollen (\(\Gamma ’’ \subset G’\) soll der Teil sein, der ganz in \(G’\) liegt). Es gilt \(\oint _{\Gamma ’’} = 0\), da \(G’\) sternfo&#x0308;rmig ist.
+Also ist \(\oint _\Gamma = \oint _{\Gamma ’}\), man hat also den Pfad „verkleinert“. In Gebieten ohne Lo&#x0308;cher kann man dies iterativ durchfu&#x0308;hren, so dass schließlich der Pfad vollsta&#x0308;ndig in einem
+sternfo&#x0308;rmigen Gebiet liegt und das Integral somit \(0\) ist.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>elementare Deformation eines Pfades in \(G\)</b>:<br />
+Seien \(G \subset \complex \) ein Gebiet und \(G’ \subset G\) sternfo&#x0308;rmig. Die Ersetzung eines Teils eines geschlossenen Pfads \(\Gamma \subset G\) im sternfo&#x0308;rmigen Gebiet \(G’\) heißt <em>elementare
+Deformation</em> von \(\Gamma \).<br />
+Fu&#x0308;r nicht-geschlossene Pfade \(\Gamma _{ab} \subset G\) ist dies analog definiert, nur mu&#x0308;ssen hier die Anfangs- und Endpunkte \(a, b \in G\) erhalten bleiben.
+</p>
+
+<p>
+<b>wichtig</b>: Das Pfadintegral bleibt fu&#x0308;r \(f \in \A (G)\) bei el. Deformationen des Pfads erhalten.
+</p>
+
+<p>
+<b>homotop</b>: Zwei Pfade \(\Gamma , \Gamma ’ \subset G\) sind in \(G\) <em>homotop</em>, falls \(\Gamma ’\) aus \(\Gamma \) durch eine endliche Anzahl von elementaren Deformationen hervorgeht.
+</p>
+
+<p>
+<b>Satz (Deformationssatz)</b>:<br />
+Seien \(G \subset \complex \) ein Gebiet, \(f \in \A (G)\) und \(\Gamma , \Gamma ’ \subset G\) in \(G\) homotope Pfade.<br />
+Dann gilt \(\int _\Gamma f(z)\dz = \int _{\Gamma ’} f(z)\dz \).
+</p>
+
+<p>
+Betrachtet man einen einzelnen Punkt als Pfad (sog. <b>Nullpfad</b>), so gilt \(\int _\Gamma f(z)\dz = 0\), falls \(\Gamma \) ein geschlossener Pfad in \(G\) homotop zum Nullpfad ist.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>einfach zusammenha&#x0308;ngend</b>: Ein Gebiet \(G \subset \complex \) heißt <em>einfach zusammenha&#x0308;ngend</em>, falls jeder geschlossene Pfad \(\Gamma \subset G\) in \(G\) homotop zum Nullpfad ist.
+</p>
+
+<p>
+<b>Satz (Integralsatz von <span class="textsc" >Cauchy</span> fu&#x0308;r einfach zusammenha&#x0308;ngende Gebiete)</b>:<br />
+Seien \(G \subset \complex \) ein einfach zusammenha&#x0308;ngendes Gebiet und \(f \in \A (G)\).<br />
+Dann gilt \(\oint _\Gamma f(z)\dz = 0\) fu&#x0308;r jeden geschlossenen Pfad \(\Gamma \subset G\).<br />
+Zudem gilt fu&#x0308;r \(a \in G\), dass \(F’ = f\) mit \(F(z) := \int _{\Gamma _{az}} f(w)\dw \), d.&#x202f;h. \(f\) hat eine Stammfunktion.
+</p>
+
+<p>
+Die Umkehrung gilt ebenfalls: Wenn jede holomorphe Funktion \(f \in \A (G)\) eine Stammfunktion besitzt, dann ist \(G\) einfach zusammenha&#x0308;ngend.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>weitere Modifikationen</b>:<br />
+In einem Gebiet, das ein „Loch“ hat, kann man einen Pfad homotop zum Nullpfad so elementar deformieren, dass er sehr nahe an den Rand des Gebiets kommt. Vom a&#x0308;ußeren Rand zum Loch la&#x0308;uft dabei der Pfad
+einmal hin und einmal wieder zuru&#x0308;ck (auf derselben Linie). Weil die Umlaufrichtungen auf dieser Linie gegenla&#x0308;ufig sind, heben sich die Integrale auf und man erha&#x0308;lt \(\oint _{\Gamma _+} f(z)\dz +
+\oint _{\Gamma _-} f(z)\dz = 0\), falls \(\Gamma _+\) bzw. \(\Gamma _-\) den Pfad um den a&#x0308;ußeren bzw. inneren Rand bezeichnet. (Beachte: \(\Gamma _-\) wird im mathematisch negativem Sinne umlaufen!)
+</p>
+
+<p>
+Allgemeiner gilt fu&#x0308;r ein Gebiet \(G\) mit \(k\) „Lo&#x0308;chern“ \(\oint _{\Gamma _+} f(z)\dz + \sum _{j=1}^k \left (\oint _{\Gamma _{-,j}} f(z)\dz \right ) = 0\)<br />
+fu&#x0308;r alle \(f \in \A (G)\). Dabei bezeichnet \(\Gamma _+\) den Pfad um den a&#x0308;ußeren Rand (positiv umlaufen) und \(\Gamma _{-,j}\) den Pfad um das \(j\)-te Loch (negativ umlaufen).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Windungszahl</b>: Fu&#x0308;r \(w \in \complex \) und einen geschlossenen Pfad \(\Gamma \subset \complex \), der \(w\) nicht entha&#x0308;lt, bezeichnet man \(n(\Gamma , w) := \frac {1}{2\pi \i } \cdot
+\oint _\Gamma \frac {1}{z - w} \dz \) als die <em>Windungszahl</em> von \(\Gamma \) um \(w\).
+</p>
+
+<p>
+Parametrisiert man einen nicht-geschlossenen Pfad \(\Gamma _T\) durch \(\gamma \colon [0, T] \rightarrow \complex \), so gilt<br />
+\(\Re (\frac {1}{2\pi \i } \oint _{\Gamma _T} \frac {1}{z - w} \dz ) = \frac {1}{2\pi } \Im (\oint _{\Gamma _T} \frac {1}{z - w} \dz ) = \frac {1}{2\pi } (\arg (\gamma (T) - w) - \arg (\gamma
+(0) - w))\).
+</p>
+
+<p>
+<b>Satz (a&#x0308;quivalente Beschreibungen)</b>: Sei \(G \subset \complex \) ein Gebiet. Dann sind a&#x0308;quivalent:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f9"><p>   \(G\) ist einfach zusammenha&#x0308;ngend.
+</p>
+</li>
+<li class="list-item-f10"><p>   \(\forall _{\Gamma \subset G \text { geschlossen}} \forall _{w \notin G}\; n(\Gamma , w) = 0\)
+</p>
+</li>
+<li class="list-item-f11"><p>   \(\forall _{\Gamma \subset G \text { geschlossen}} \forall _{f \in \A (G)}\; \oint _\Gamma f(z)\dz = 0\)
+</p>
+</li>
+<li class="list-item-f12"><p>   \(\forall _{f \in \A (G)} \exists _{F \in \A (G)}\; F’ = f\)
+</p>
+</li>
+<li class="list-item-f13"><p>   \(\forall _{f \in \A (G),\; \forall _{z \in G}\; f(z) \not = 0\;} \exists _{g \in \A (G)}\; e^g = f\)
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="die-integralformel-von-cauchy">Die Integralformel von <span style="font-variant: small-caps;">Cauchy</span></h2>
+
+</p>
+
+
+<p>
+<b>Satz (Integralformel von <span class="textsc" >Cauchy</span>)</b>: Seien \(G \subset \complex \) ein Gebiet, \(a \in G\) und \(\varepsilon &gt; 0\) mit \(\overline {U_\varepsilon (a)} \subset G\). Sei
+außerdem \(f \in \A (G)\) und \(\Gamma \) homotop in \(G \setminus \{a\}\) zum einfachen, mathematisch positiven Umlauf von \(\partial U_\varepsilon (a)\).<br />
+Dann gilt \(\frac {1}{2\pi \i } \oint _\Gamma \frac {f(z)}{z - a} \dz = f(a)\).
+</p>
+
+<p>
+<em>Beispiel</em>: \(\oint _\Gamma \frac {\cos z}{z} \dz = 2\pi \i \) fu&#x0308;r jeden geschlossenen Pfad \(\Gamma \in \complex \setminus \{0\}\), der homotop zum einfachen, math. positiven Umlauf des
+Einheitskreises ist.
+</p>
+
+<p>
+<b>Spezialfall (Mittelwertsatz)</b>: Seien \(G \subset \complex \) ein Gebiet und \(f \in \A (G)\).<br />
+Dann gilt \(\frac {1}{2\pi } \int _0^{2\pi } f(a + Re^{i\theta }) d\theta = f(a)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>analytisch</b>: \(f\) heißt <em>analytisch</em> im Punkt \(a \in \complex \), falls<br />
+\(\exists _{\varepsilon &gt; 0} \forall _{z \in U_\varepsilon (a)}\; f(z) = \sum _{k=0}^\infty c_k (z - a)^k\) konvergiert (mit bestimmten \(c_k \in \complex \)).
+</p>
+
+<p>
+<b>Folgerung</b>: Ist \(f\) analytisch im Punkt \(a\), so hat die Potenzreihe einen Konvergenzradius \(R\) mit \(0 &lt; \varepsilon \le R\). Fu&#x0308;r \(|z - a| &lt; \varepsilon \) kann man gliedweise
+differenzieren und erha&#x0308;lt \(c_k = \frac {f^{(k)}(a)}{k!}\).
+</p>
+
+<p>
+<b>Satz</b>: Seien \(G \subset \complex \) ein Gebiet. Definiere fu&#x0308;r \(a \in G\) den Abstand<br />
+\(R_a := \dist (a, \partial G) = \inf _{u \in \partial G} |a - u|\) von \(a\) zum Rand von \(G\).<br />
+Dann gilt \(f \in \A (G)\) genau dann, wenn \(f\) analytisch in allen \(a \in G\) ist. Die Potenzreihe hat in diesem Fall einen Konvergenzradius \(\ge R_a\) und es gilt \(c_k = c_k(a) = \frac {1}{2\pi \i } \oint
+_{\partial U_r(a)} \frac {f(z)}{(z - a)^{k+1}} \dz \) mit \(0 &lt; r &lt; R_a\). Mit obiger Formel ergibt sich damit \(\frac {1}{2\pi \i } \oint _{\partial U_r(a)} \frac {f(z)}{(z - a)^{k+1}} \dz =
+\frac {f^{(k)}(a)}{k!}\).
+</p>
+
+<p>
+<b>Folgerung</b>: Ist \(f \in \A (G)\), so ist \(f\) beliebig oft differenzierbar.
+</p>
+
+<p>
+Die \(c_k\) erfu&#x0308;llen die Abscha&#x0308;tzung \(|c_k| \le M r^{-k}\) mit \(M := \sup _{z \in U_r(a)} |f(z)|\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Satz von <span class="textsc" >Liouville</span></b>: Sei \(f \in \A (\complex )\) beschra&#x0308;nkt, d.&#x202f;h. \(\exists _{M &gt; 0} \forall _{z \in \complex }\; |f(z)| \le M\).<br />
+Dann ist \(f(z) \equiv \const \).
+</p>
+
+<p>
+<b>Modifikation</b>: Sei \(f \in \A (\complex )\) mit \(\exists _{M &gt; 0} \exists _{N \in \natural } \forall _{z \in \complex }\; |f(z)| \le M (|z|^N + 1)\).<br />
+Dann ist \(f\) ein Polynom vom Grad \(\le N\).
+</p>
+
+<p>
+Mit dieser Modifikation kann man relativ einfach den Hauptsatz der Algebra beweisen.
+</p>
+
+<p>
+<b>Satz (Multiplikation von Potenzreihen)</b>:<br />
+Seien \(p(z) = \sum _{k=0}^\infty c_k’ z^k\) und \(q(z) = \sum _{k=0}^\infty c_k’’ z^k\) Potenzreihen mit Konvergenzradius \(R’, R’’ &gt; 0\).<br />
+Dann ist \(p(z) q(z) = \sum _{n=0}^\infty d_n z^n\) eine Potenzreihe mit Konvergenzradius \(R \ge \min \{R’, R’’\}\), wobei \(d_n = \sum _{k=0}^n c_k’ c_{n-k}’’\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Satz von <span class="textsc" >Morera</span></b>: Seien \(G \subset \complex \) ein Gebiet und \(f\colon G \rightarrow \complex \) stetig. \(\Delta \) bezeichne ein Dreieck (mit Rand und Innerem).
+Fu&#x0308;r alle \(\Delta \subset G\) gelte \(\oint _{\partial \Delta } f(z)\dz = 0\).<br />
+Dann ist \(f \in \A (G)\).
+</p>
+
+<p>
+<b>komplexe Halbebenen</b>: \(\complex _+ := \{z \in \complex \;|\; \Im z &gt; 0\}\), \(\complex _- := \{z \in \complex \;|\; \Im z &lt; 0\}\),<br />
+\(\overline {\complex _+} := \{z \in \complex \;|\; \Im z \ge 0\}\), \(\overline {\complex _-} := \{z \in \complex \;|\; \Im z \le 0\}\)
+</p>
+
+<p>
+<b>Teilraumtopologie</b>: \(G \subset \overline {\complex _+}\) heißt <em>offen in der induzierten Topologie</em>, falls<br />
+\(\exists _{\widetilde {G} \subset \complex \text { offen}}\; G = \overline {\complex _+} \cap \widetilde {G}\).
+</p>
+
+<p>
+<b>Satz (<span class="textsc" >Schwarz</span>sches Spiegelungsprinzip)</b>:<br />
+Seien \(G \subset \overline {\complex _+}\) offen in der induzierten Topologie, \(f \colon G \rightarrow \complex \) stetig und \(f|_{G \cap \complex _+} \in \A (G \cap \complex _+)\). Seien außerdem
+\(\overline {G} := \{\overline {z} \;|\; z \in G\}\) und \(\widetilde {G} := G \cup \overline {G}\).<br />
+Falls \(\forall _{z \in \real \cap G}\; f(z) \in \real \) gilt, dann gibt es \(\widetilde {f}\colon \widetilde {G} \rightarrow \complex \) mit \(\widetilde {f} \in \A (\widetilde {G})\), wobei
+\(\widetilde {f}(z) =\) \(\begin {cases}f(z) &amp; z \in G\\ \overline {f(\overline {z})} &amp; z \in \overline {G}\end {cases}\).
+</p>
+
+
+
+<h2 id="nullstellen-analytischer-funktionen">Nullstellen analytischer Funktionen</h2>
+
+</p>
+
+
+<p>
+<b>Nullstellenmenge</b>: Seien \(G \subset \complex \) ein Gebiet und \(f \in \A (G)\).<br />
+Dann heißt \(Z(f) := \{z \in G \;|\; f(z) = 0\}\) <em>Nullstellenmenge</em> von \(f\).
+</p>
+
+<p>
+<b>Ordnung von Nullstellen</b>: Die Nullstelle \(a \in Z(f)\) besitzt die <em>(endliche) Ordnung \(m \in \natural \)</em>, falls \(f(a) = f’(a) = \dotsb = f^{(m-1)}(a) = 0\) und \(f^{(m)}(a) \not = 0\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Lemma</b>: Seien \(a \in \complex \), \(f \in \A (U_r(a))\) fu&#x0308;r ein \(r &gt; 0\) mit \(f(z) = \sum _{k=0}^\infty c_k (z - a)^k\) fu&#x0308;r \(z \in U_r(a)\).<br />
+Dann sind a&#x0308;quivalent:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f14"><p>   \(a\) ist eine Nullstelle der Ordnung \(m\).
+</p>
+</li>
+<li class="list-item-f15"><p>   \(f(z) = \sum _{k=m}^\infty c_k (z - a)^k\) mit \(c_m \not = 0\)
+</p>
+</li>
+<li class="list-item-f16"><p>   \(f(z) = (z - a)^m g(z)\) mit \(g \in \A (U_r(a))\) und \(g(a) \not = 0\)
+</p>
+</li>
+<li class="list-item-f17"><p>   \(\exists \lim _{z \to a} (z - a)^{-m} f(z) \not = 0\)
+</p>
+</li>
+</ul>
+
+<p>
+<b>Folgerung</b>: Seien \(f \in \A (U_r(a))\) und \(a \in Z(f)\).<br />
+Dann ist entweder \(a\) eine Nullstelle endlicher Ordnung oder \(f(z) \equiv 0\) fu&#x0308;r \(z \in U_r(a)\).
+</p>
+
+<p>
+<b>Folgerung</b>: Seien \(f \in \A (U_r(a))\) und \(a \in Z(f)\).<br />
+Dann ist \(a\) eine isolierte Nullstelle (d.&#x202f;h. \(\exists _{\varepsilon &gt; 0} \forall _{z \in U_r(a),\, z \not = a}\; f(z) \not = 0\)) genau dann, wenn \(a\) eine Nullstelle endlicher Ordnung ist.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Identita&#x0308;tssatz</b>: Seien \(G \subset \complex \) ein Gebiet und \(f \in \A (G)\) mit \(\acc (Z(f)) \cap G \not = \emptyset \).<br />
+Dann gilt \(f(z) \equiv 0\) fu&#x0308;r \(z \in G\).
+</p>
+
+<p>
+<b>Folgerung</b>:<br />
+Seien \(G \subset \complex \) ein Gebiet und \(f, g \in \A (G)\) mit \(\exists _{M \subset G}\; f|_M = g|_M\) und \(\acc (M) \cap G \not = \emptyset \).<br />
+Dann gilt \(f(z) \equiv g(z)\) fu&#x0308;r \(z \in G\).
+</p>
+
+<p>
+<b>analytische Fortsetzung</b>: Seien \(G, \widetilde {G} \subset \complex \) Gebiete mit \(G \subset \widetilde {G}\), \(f \in \A (G)\) und \(\widetilde {f} \in \A (\widetilde {G})\).<br />
+Dann heißt \(\widetilde {f}\) <em>analytische Fortsetzung</em> von \(f\), falls \(\widetilde {f}|_G = f|_G\).
+</p>
+
+<p>
+Falls zu gegebenen Gebieten \(G, \widetilde {G} \subset \complex \) und \(f \in \A (G)\) eine analytische Fortsetzung \(\widetilde {f} \in \A (\widetilde {G})\) von \(f\) auf \(\widetilde {G}\) existiert, so ist
+diese eindeutig bestimmt.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Beispiel</em>: Die <em><span class="textsc" >Riemann</span>sche Zeta-Funktion</em> \(\zeta (z) = \sum _{n=1}^\infty \frac {1}{n^z}\) fu&#x0308;r \(\Re (z) &gt; 1\) kann analytisch auf \(\complex \)
+fortgesetzt werden. Die beru&#x0308;hmte <em><span class="textsc" >Riemann</span>sche Vermutung</em> besagt, dass alle nicht-trivialen Nullstellen der Fortsetzung auf der Geraden mit \(\Re (z) = \frac {1}{2}\) liegen.
+</p>
+
+<p>
+<em>Beispiel</em>: Die Funktion \(f(z) = \sum _{k=0}^\infty z^k\) fu&#x0308;r \(|z| &lt; 1\) bzw. \(G = \{z \in \complex \;|\; |z| &lt; 1\}\) kann mittels \(\widetilde {f}(z) = \frac {1}{1 - z}\) auf
+\(\widetilde {G} = \complex \setminus \{1\}\) analytisch fortgesetzt werden.
+</p>
+
+
+
+<h2 id="das-maximumsprinzip">Das Maximumsprinzip</h2>
+
+</p>
+
+
+<p>
+<b>Maximumsprinzip fu&#x0308;r Kreise</b>: Seien \(a \in \complex \), \(R &gt; 0\) und \(f \in \A (U_R(a))\) mit<br />
+\(\forall _{z \in U_R(a)}\; |f(a)| \ge |f(z)|\). Dann gilt \(f(z) \equiv f(a)\) fu&#x0308;r \(z \in U_R(a)\).
+</p>
+
+<p>
+<b>Maximumsprinzip fu&#x0308;r allgemeine Gebiete</b>:<br />
+Seien \(G \subset \complex \) ein beschra&#x0308;nktes Gebiet und \(f\colon \overline {G} \rightarrow \complex \) stetig mit \(f|_G \in \A (G)\).<br />
+Dann nimmt \(|f(z)|\) ein globales Maximum auf dem Rand \(\partial G\) an.
+</p>
+
+<p>
+<b>Folgerung</b>: Fu&#x0308;r \(f \in \A (U_R(0))\) mit \(f(0) = 0\) und \(|f(z)| \le M\) fu&#x0308;r alle \(z \in U_R(0)\) gilt die Abscha&#x0308;tzung \(|f(z)| \le \frac {M}{R} |z|\) fu&#x0308;r alle \(z
+\in U_R(0)\).
+</p>
+
+
+
+<h2 id="singularitaeten">Singularitäten</h2>
+
+</p>
+
+
+<p>
+<b>Menge der isolierten Singularita&#x0308;ten</b>: Seien \(G \subset \complex \) ein Gebiet und \(f \in \A (G)\).<br />
+Dann heißt \(J = \iso (\complex \setminus G)\) die <em>Menge der isolierten Singularita&#x0308;ten</em> von \(f\).
+</p>
+
+<p>
+Es gilt \(a \in J\) genau dann, wenn \(a \notin G\) und \(\exists _{\varepsilon &gt; 0}\; U_\varepsilon (a) \setminus \{a\} \subset G\).
+</p>
+
+<p>
+<b>Arten der Singularita&#x0308;t</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f18"><p>\(a \in J\) heißt <em>hebbar</em>, falls \(\exists _{w \in \complex }\; \widetilde {f} \in \A (G \cup \{a\})\) mit \(\widetilde {f}(a) := w\) und \(\widetilde {f}(z) := f(z)\) fu&#x0308;r \(z \not =
+a\).
+</p>
+</li>
+<li class="list-item-f19"><p>\(a \in J\) heißt <em>Polstelle der Ordnung \(m \in \natural \)</em>, falls \(a\) hebbare Singularita&#x0308;t von \((z - a)^m f(z)\) und \(m\) kleinstmo&#x0308;glich ist.
+</p>
+</li>
+<li class="list-item-f20"><p>\(a \in J\) heißt <em>wesentlich</em>, falls \(a\) weder hebbar noch Polstelle endlicher Ordnung ist.
+</p>
+</li>
+</ul>
+
+<p>
+<b>meromorph</b>: Besitzt \(f \in \A (G)\) nur isolierte Singularita&#x0308;ten, welche hebbar bzw. Polstellen endlicher Ordnung sind, so nennt man \(f\) <em>meromorph</em> auf \(G \cup J\).
+</p>
+
+<p>
+<em>Beispiel</em>: \(f(z) = \frac {p(z)}{q(z)}\) ist meromorph auf \(\complex \), wenn \(p\) und \(q\) Polynome mit \(q(z) \not \equiv 0\) sind.
+</p>
+
+<p>
+<em>Beispiel</em>: Ist \(f(z) = \frac {g(z)}{h(z)}\), wobei \(g, h \in \A (U_r(a))\), \(r &gt; 0\) mit \(a\) Nullstelle der Ordnung \(m\) fu&#x0308;r \(h\) und \(a\) Nullstelle der Ordnung \(n\) fu&#x0308;r \(g\) ist,
+so gilt fu&#x0308;r
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f21"><p>\(m &gt; n\), dass \(a\) Polstelle der Ordnung \(m - n\) fu&#x0308;r \(f\) ist,
+</p>
+</li>
+<li class="list-item-f22"><p>\(m = n\), dass \(f\) eine hebbare Singularita&#x0308;t in \(a\) besitzt und \(\widetilde {f}(a) \not = 0\), und
+</p>
+</li>
+<li class="list-item-f23"><p>\(m &lt; n\), dass \(f\) eine hebbare Singularita&#x0308;t in \(a\) und \(\widetilde {f}\) in \(a\) eine Nullstelle der Ordnung<br />
+\(n - m\) besitzt.
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b><span class="textsc" >Laurent</span>-Reihe</b>: Eine <em><span class="textsc" >Laurent</span>-Reihe</em> ist eine Reihe der Form \(f(z) = \sum _{k=-\infty }^{+\infty } c_k (z - a)^k\).<br />
+Sie kann geschrieben werden als \(f(z) = \sum _{k=-\infty }^{-1} c_k (z - a)^k + \sum _{k=0}^{+\infty } c_k (z - a)^k\), wobei der erste Summand als <em>Hauptteil</em> und der zweite Summand als
+<em>Nebenteil</em> bezeichnet wird.
+</p>
+
+<p>
+Die Laurent-Reihe konvergiert genau dann, wenn Haupt- und Nebenteil jeweils fu&#x0308;r sich konvergieren.
+</p>
+
+<p>
+Der Nebenteil ist eine gewo&#x0308;hnliche Potenzreihe mit Konvergenzradius \(R = \frac {1}{\limsup _{k \to \infty } \sqrt [k]{|c_k|}}\).<br />
+Der Hauptteil ist ebenfalls eine Potenzreihe in \(w = \frac {1}{z - a}\) mit Konvergenzradius \(\frac {1}{r}\), wobei<br />
+\(r = \limsup _{k \to \infty } \sqrt [|k|]{|c_k|}\).
+</p>
+
+<p>
+In \(z\) konvergiert somit der Nebenteil fu&#x0308;r \(|z - a| &lt; R\) und der Hauptteil fu&#x0308;r \(|z - a| &gt; r\). Im Falle \(r &lt; R\) bildet sich somit ein Kreisring \(K_{rR}(a) := \{z \in \complex \;|\; r
+&lt; |z - a| &lt; R\}\), in dem die Laurent-Reihe konvergiert (außerhalb divergiert sie, unbestimmtes Verhalten auf dem Rand). Fu&#x0308;r \(r &gt; R\) divergiert die Laurent-Reihe u&#x0308;berall.
+</p>
+
+<p>
+Zusa&#x0308;tzlich gilt \(f \in \A (K_{rR})\) (da Haupt- und Nebenteil dort holomorph sind) und die Laurent-Reihe ist gliedweise differenzierbar mit \(f’(z) = \sum _{k=-\infty ,\;k\not =0}^{+\infty } k c_k (z -
+a)^{k-1}\).
+</p>
+
+<p>
+<b>Stammfunktion von <span class="textsc" >Laurent</span>-Reihen</b>: Eine Laurent-Reihe \(f(z) = \sum _{k=-\infty }^{+\infty } c_k (z - a)^k\) besitzt eine Stammfunktion \(F(z)\) in \(K_{rR}\) genau
+dann, wenn \(c_{-1} = 0\) ist. Durch gliedweises Aufleiten erha&#x0308;lt man fu&#x0308;r diesen Fall \(F(z) = \sum _{k=-\infty ,\;k\not =-1}^{+\infty } \frac {c_k}{k + 1} (z - a)^{k+1}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Berechnung der Koeffizienten \(c_k\) aus \(f\)</b>: Fu&#x0308;r \(a = 0\) und \(0 \le r &lt; R\) la&#x0308;sst sich die Laurent-Reihe schreiben als \(f(z) = \sum _{k=-\infty }^{+\infty } c_k z^k = \sum
+_{k=-\infty }^{-2} c_k z^k + \frac {c_{-1}}{z} + \sum _{k=0}^{+\infty } c_k z^k\). Ist \(\Gamma \) ein Pfad in \(K_{rR}(0)\), der homotop zum einfachen, mathematisch positiven Umlauf von \(0\) in \(K_{rR}(0)\)
+ist, so gilt aufgrund der gleichma&#x0308;ßigen Konvergenz der Laurent-Reihe<br />
+\(\oint _\Gamma f(z)\dz = \oint _\Gamma (\sum _{k=-\infty }^{-2} c_k z^k)\dz + \oint _\Gamma (\sum _{k=0}^{+\infty } c_k z^k)\dz + \oint _\Gamma \frac {c_{-1}}{z}\dz \)<br />
+\(= \sum _{k=-\infty ,\;k\not =-1}^{+\infty } c_k \oint _\Gamma z^k \dz + \oint _\Gamma \frac {c_{-1}}{z}\dz = c_{-1} \cdot 2\pi \i \), da \(\oint _\Gamma z^k \dz = 0\) fu&#x0308;r \(k \not =
+-1\) und \(\oint _\Gamma \frac {1}{z}\dz = 2\pi \i \).
+</p>
+
+<p>
+<b>Residuum</b>: Man bezeichnet \(c_{-1} = \frac {1}{2\pi \i } \cdot \oint _\Gamma f(z) \dz =: \Res (f)\) als das <em>Residuum</em> von \(f\).
+</p>
+
+<p>
+Analog kann man durch Indexverschiebung die Formel \(c_k = \frac {1}{2\pi \i } \cdot \oint _\Gamma f(z)(z - a)^{-1-k}\dz \) herleiten.<br />
+Fu&#x0308;r \(r &lt; \varrho &lt; R\) ergibt sich daraus direkt die Abscha&#x0308;tzung<br />
+\(|c_k| \le \frac {1}{2\pi } \left |\oint _{\partial U_\varrho (a)} f(z)(z - a)^{-1-k}\dz \right | \le M \varrho ^{-k}\) mit \(M : = \sup _{z \in \partial U_\varrho (a)} |f(z)|\).
+</p>
+
+<p>
+<b>Satz</b>: Sei \(f \in \A (K_{rR}(a))\) mit \(a \in \complex \) und \(0 \le r &lt; R\).<br />
+Dann ist \(f\) in \(K_{rR}(a)\) als Laurent-Reihe darstellbar.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Zusammenfassung</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f24"><p><b>Potenzreihen</b>: Es ist \(f \in \A (U_R(a))\) genau dann, wenn \(f(z) = \sum _{k=0}^\infty c_k (z - a)^k\) als Potenzreihe darstellbar ist. Diese konvergiert mindestens in \(U_r(a)\) und ist gliedweise
+differenzierbar. Es existiert immer eine Stammfunktion (durch gliedweises Aufleiten).
+</p>
+</li>
+<li class="list-item-f25"><p><b><span class="textsc" >Laurent</span>-Reihen</b>: Es ist \(f \in \A (K_{rR}(a))\) genau dann, wenn \(f(z) = \sum _{k=-\infty }^\infty c_k (z - a)^k\) als Laurent-Reihe darstellbar ist. Diese konvergiert
+mindestens in \(K_{rR}(a)\) und ist gliedweise differenzierbar. Es existiert eine Stammfunktion genau dann, wenn \(c_{-1} = 0\).
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Spezialfall \(r = 0\)</b>: In diesem Fall ist \(K_{0R} = U_R(a) \setminus \{a\}\) und fu&#x0308;r \(f \in \A (U_R(a) \setminus \{a\})\) ist \(f\) als Laurent-Reihe \(f(z) = \sum _{k=-\infty }^{+\infty } c_k
+(z - a)^k\) fu&#x0308;r \(z \not = a\) darstellbar.
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f26"><p><em>hebbare Singularita&#x0308;t in \(a\)</em>: Falls die Singularita&#x0308;t von \(f\) in \(a\) hebbar ist, gilt \(\widetilde {f} \in \A (U_R(a))\) mit \(\widetilde {f}(z) = f(z)\) fu&#x0308;r \(z \not = a\) und
+\(\widetilde {f}(a) = B\). \(\widetilde {f}\) ist eine analytische Fortsetzung von \(f\), daher stimmen die Potenzreihen u&#x0308;berein, also \(f(z) = \widetilde {f}(z) = \sum _{k=0}^\infty c_k (z - a)^k\).<br
+/>
+Daher hat \(f\) eine hebbare Singularita&#x0308;t in \(a\) genau dann, wenn der Hauptteil verschwindet.
+</p>
+</li>
+<li class="list-item-f27"><p><em>Polstelle der Ordnung \(m\) in \(a\)</em>: In diesem Fall hat \((z - a)^m f(z)\) eine hebbare Singularita&#x0308;t in \(a\), d.&#x202f;h. \((z - a)^m f(z) = \sum _{k=0}^\infty \widetilde {c}_k (z - a)^k\) ist
+als Potenzreihe darstellbar. Daher gilt \(f(z) = \sum _{k=-m}^\infty c_k (z - a)^k\) mit \(c_k = \widetilde {c}_{k+m}\).<br />
+Daher hat \(f\) eine Polstelle der Ordnung \(m\) in \(a\) genau dann, wenn der Hauptteil nur endlich viele Summanden besitzt und der Term bei \((z - a)^{-m}\) nicht verschwindet. Fu&#x0308;r \(z \to a\) geht \(|f(z)| \to
+\infty \) (und zwar wie \((z - a)^{-m}\)).
+</p>
+</li>
+<li class="list-item-f28"><p><em>wesentliche Singularita&#x0308;t in \(a\)</em>: Dieser Fall tritt ein genau dann, wenn die anderen beiden Fa&#x0308;lle nicht gelten, d.&#x202f;h. genau dann, wenn der Hauptteil unendlich viele Summanden besitzt.<br />
+Man kann zeigen: Besitzt \(f\) in \(a\) eine wesentliche Singularita&#x0308;t, dann liegt das Bild<br />
+\(f(U_\varepsilon (a) \setminus \{a\})\) jeder beliebig kleinen \(\varepsilon \)-Umgebung um \(a\) dicht in der komplexen Ebene \(\complex \).
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="residuensatz-und-residuenkalkuel">Residuensatz und Residuenkalkül</h2>
+Seien \(G \subset \complex \) ein Gebiet, \(f \in \A (G \setminus \{a\})\) und \(\Gamma \subset G \setminus \{a\}\) homotop in \(G \setminus \{a\}\) zum einfachen, mathematisch positiven Umlauf von \(a\).
+\(f\) la&#x0308;sst sich als Laurent-Reihe \(f(z) = \sum _{k=-\infty }^{+\infty } c_k (z - a)^k\) darstellen. Dabei gilt \(c_{-1} = \frac {1}{2\pi \i } \oint _\Gamma f(z)\dz \).
+</p>
+
+<p>
+<b>Residuum</b>: Man bezeichnet \(c_{-1} =: \Res _a(f)\) als das <em>Residuum</em> von \(f\) im Punkt \(a\).
+</p>
+
+<p>
+Man kann die Integralformel auch umkehren und bei bekanntem Residuum das Integral berechnen durch \(\oint _\Gamma f(z)\dt = 2\pi \i \cdot \Res _a(f)\).
+</p>
+
+<p>
+Falls \(\Gamma \) mehrere isolierte Singularita&#x0308;ten umla&#x0308;uft, kann man den Pfad aufteilen und die entstehenden Integrale summieren. Falls Singularita&#x0308;ten mehrfach umlaufen werden, mu&#x0308;ssen
+diese natu&#x0308;rlich auch entsprechend der Windungszahl (Umlaufrichtung beachten!) geza&#x0308;hlt werden. Somit gelangt man zum folgenden Satz.
+</p>
+
+<p>
+<b>Residuensatz</b>: Seien \(G \subset \complex \) ein Gebiet, \(J = \{a_1, \dotsc , a_N\} \subset G\), \(f \in \A (G \setminus J)\) und<br />
+\(\Gamma \subset G \setminus J\) in \(G\) homotop zum Nullpfad.<br />
+Dann gilt \(\oint _\Gamma f(z)\dz = \sum _{k=1}^N (2\pi \i ) \cdot n(\Gamma , a_k) \cdot \Res _{a_k}(f)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Residuenkalku&#x0308;l (Bestimmung des Residuums)</b>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f29"><p>Falls \(f\) in \(a_k\) eine hebbare Singularita&#x0308;t hat, gilt \(\Res _{a_k}(f) = c_{-1}(a_k) = 0\) (siehe oben).
+</p>
+</li>
+<li class="list-item-f30"><p>Falls \(f\) in \(a_k\) eine Polstelle der Ordnung \(m\) hat, gilt<br />
+\((z - a_k)^m f(z) = c_{-m} + (z - a_k) c_{-m+1} + \dotsb + (z - a_k)^{m-1} c_{-1} + \dotsb \).<br />
+Man erha&#x0308;lt also \(c_{-1}\) durch \((m - 1)\)-fache Differentiation und Grenzwertbildung:<br />
+\(\lim _{z \to a_k} \frac {d^{m-1}}{dz^{m-1}} (z - a_k)^m f(z) = (m - 1)! \cdot c_{-1}\). Man erha&#x0308;lt die wichtige Formel<br />
+\(\Res _{a_k}(f) = \frac {1}{(m - 1)!} \cdot \lim _{z \to a_k} \frac {d^{m-1}}{dz^{m-1}} (z - a_k)^m f(z)\).
+</p>
+</li>
+<li class="list-item-f31"><p>Fu&#x0308;r wesentliche Singularita&#x0308;ten gibt es keine einheitliche Vorgehensweise.
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Beispiel</em>: Seien \(p(z)\) und \(q(z)\) Polynome mit \(\deg q(z) \ge \deg p(z) + 2\). \(J\) seien die Nullstellen von \(q\), wobei \(J \cap \real = \emptyset \) gelten soll, d.&#x202f;h. keine Nullstelle ist reell.
+Man betrachtet nun die Funktion \(f(z) = \frac {p(z)}{q(z)}\) und mo&#x0308;chte das Integral \(I = \int _{-\infty }^{+\infty } \frac {p(x)}{q(x)} \dx \) berechnen. Das uneigentliche Integral existiert, da \(f\)
+auf \(\real \) stetig ist (\(J \cap \real = \emptyset \)) und \(|f(z)| = \O (|x|^{-2})\) fu&#x0308;r \(|x| \to \infty \). Dabei ist \(I = \lim _{R \to +\infty } I_R\) mit \(I_R = \int _{-R}^{+R} \frac
+{p(x)}{q(x)} \dx \).
+</p>
+
+<p>
+Man definiert nun \(\Gamma _R^{(1)}\) als die Kurve in \(\complex \) von \(-R\) bis \(+R\) und \(\Gamma _R^{(2)}\) als den Halbkreis mit Mittelpunkt \(0\) und Radius \(R\) von \(+R\) bis \(-R\). Dann ist \(\Gamma _R =
+\Gamma _R^{(1)} \cup \Gamma _R^{(2)}\) ein geschlossener Pfad. Man stellt nun drei Beobachtungen an:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f32"><p>Fu&#x0308;r alle \(R &gt; R_1\) mit \(R_1\) groß genug gilt \(J \cap \Gamma _R^{(2)} = \emptyset \), da \(J\) endlich ist.
+</p>
+</li>
+<li class="list-item-f33"><p>Es gilt \(\int _{\Gamma _R^{(1)}} f(z)\dz + \int _{\Gamma _R^{(2)}} f(z)\dz = \oint _{\Gamma _R} f(z)\dz = 2\pi \i \cdot \sum _{\Im a_k &gt; 0} \Res _{a_k}(f)\) fu&#x0308;r \(R &gt; R_1\).
+</p>
+</li>
+<li class="list-item-f34"><p>Fu&#x0308;r alle \(R = |z| &gt; R_2\) mit \(R_2\) groß genug gilt \(|f(z)| \le C |z|^{n-m}\), denn<br />
+\(f(z) = \frac {c_n z^n + \dotsb + c_1 z + c_0} {\widetilde {c}_m z^m + \dotsb \widetilde {c}_1 z + \widetilde {c}_0} = \frac {c_n}{\widetilde {c}_m} z^{n-m} \cdot \frac {1 + \O (1/z)}{1 + \O
+(1/z)}\) fu&#x0308;r \(|z| \to \infty \). Daraus folgt mit \(n - m \le -2\), dass \(\left |\int _{\Gamma _R^{(2)}} f(z)\dz \right | \le \pi R \cdot CR^{-2} \to 0\) fu&#x0308;r \(R \to \infty \).
+</p>
+</li>
+</ul>
+
+<p>
+Damit gilt fu&#x0308;r \(I_R + \int _{\Gamma _R^{(2)}} f(z)\dz = 2\pi \i \cdot \sum _{\Im a_k &gt; 0} \Res _{a_k}(f)\) im Grenzwertu&#x0308;bergang fu&#x0308;r \(R \to \infty \), dass \(I = \int
+_{-\infty }^{+\infty } \frac {p(x)}{q(x)} \dx = 2\pi \i \cdot \sum _{\Im a_k &gt; 0} \Res _{a_k}(f)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Hinweis</b>: Ist \(a_k\) NS von \(q\) mit Ordnung \(1\), so gilt \(\Res _{a_k}(f) = \lim _{z \to a_k} (z - a_k) \frac {p(z)}{q(z) - q(a_k)} = \frac {p(a_k)}{q’(a_k)}\).
+</p>
+
+<p>
+<em>Beispiel</em>: Mit eben Gesagtem gilt \(\int _{-\infty }^{+\infty } \frac {1}{1 + x^2} \dx = 2\pi \i \cdot \frac {1}{2\i } = \pi \).
+</p>
+
+
+
+<h2 id="das-zaehlen-von-pol-und-nullstellen">Das Zählen von Pol- und Nullstellen</h2>
+
+</p>
+
+
+<p>
+„Verschiebt“ man eine reelle Funktion ein wenig, dann a&#x0308;ndert sich die Zahl der Nullstellen meistens nicht (wenn sie nicht mehrfach sind). Das Beispiel \(z^2 + c\) zeigt allerdings, dass bei gro&#x0308;ßeren
+Sto&#x0308;rungen die Zahl der reellen Nullstellen zwischen \(2\), \(1\) und \(0\) variieren kann. Nicht so in der komplexen Ebene: Hier gibt es immer zwei Nullstellen, die sich zuna&#x0308;chst auf der reellen Achse befinden,
+zum Ursprung wandern, sich dort vereinigen und dann wieder auf der imagina&#x0308;ren Achse trennen.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Residuen der logarithmischen Ableitung</b>: Fu&#x0308;r \(\varepsilon &gt; 0\) betrachtet man \(f \in \A (U_\varepsilon (a))\), wobei \(a\) eine Nullstelle von \(f\) der Ordnung \(m\) sein soll. Man will nun die
+sog. <b>logarithmische Ableitung</b> \(\frac {f’(z)}{f(z)}\) betrachten (der Name kommt daher, weil dies die Ableitung von \(\ln (f(z))\) ist). Die Potenzreihe von \(f\) hat die Form \(f(z) = c_m (z - a)^m + c_{m+1}
+(z - a)^{m+1} + \dotsb \), die von \(f’\) ist dann \(f’(z) = m c_m (z - a)^{m-1} + (m + 1) c_{m+1} (z - a)^m + \dotsb \). Daraus folgt<br />
+\(\frac {f’(z)}{f(z)} = \frac {m c_m (z - a)^{m-1} + (m + 1) c_{m+1} (z - a)^m + \dotsb } {c_m (z - a)^m + c_{m+1} (z - a)^{m+1} + \dotsb } = \frac {m c_m (z - a)^{m-1}}{c_m (z - a)^m} \cdot
+\frac {1 + \frac {m + 1}{m} \frac {c_{m+1}}{c_m} (z - a) + \dotsb } {1 + \frac {c_{m+1}}{c_m} (z - a) + \dotsb } = \frac {m}{z - a} (1 + r(z))\) mit \(r \in \A (U_\varepsilon (a))\), \(r(a) = 0\)
+und \(\varepsilon \) klein genug.
+</p>
+
+<p>
+Daher ist \(\Res _a(\frac {f’}{f}) = m\) die Ordnung der Nullstelle von \(f\).<br />
+Ist \(a\) dagegen eine Polstelle von \(f\) der Ordnung \(n\), so erha&#x0308;lt man analog \(\Res _a(\frac {f’}{f}) = -n\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Lemma</b>: Sei \(G \subset \complex \) ein einfach zusammenha&#x0308;ngendes Gebiet und \(\Omega \subset G\) ebenfalls<br />
+ein einfach zusammenha&#x0308;ngendes Gebiet mit \(\C ^1\)-Rand \(\Gamma = \partial \Omega \).<br />
+Seien außerdem \(f \in \A (G \setminus J)\) mit \(J = \{a_1, \dotsc , a_k\} \subset G\) die Polstellen von \(f\) der Ordnung \(n_1, \dotsc , n_k\) und \(\{b_1, \dotsc , b_r\} \subset G\) die Nullstellen von
+\(f\) der Ordnung \(m_1, \dotsc , m_r\).<br />
+Dann gilt \(\frac {1}{2\pi \i } \oint _\Gamma \frac {f’(z)}{f(z)} \dz = \sum _{b_\ell \in \Omega } m_\ell - \sum _{a_\ell \in \Omega } n_\ell \).
+</p>
+
+<p>
+<b>Satz von <span class="textsc" >Rouché</span></b>: Sei \(G \subset \complex \) ein einfach zusammenha&#x0308;ngendes Gebiet und \(\Omega \subset G\) ebenfalls<br />
+ein einfach zusammenha&#x0308;ngendes Gebiet mit \(\C ^1\)-Rand \(\Gamma = \partial \Omega \).<br />
+Seien außerdem \(f, g \in \A (G)\) mit \(\forall _{z \in \Gamma }\; |g(z)| &lt; |f(z)|\).<br />
+Dann gilt \(\sum _{b_\ell (f) \in \Omega } m_\ell (f) = \sum _{b_\ell (f + g) \in \Omega } m_\ell (f + g)\), wenn \(b_\ell (h)\) die Nullstellen einer Funktion \(h\) und \(m_\ell (h)\) deren Ordnungen
+bezeichnen.
+</p>
+
+
+
+<h2 id="harmonische-funktionen">Harmonische Funktionen</h2>
+
+</p>
+
+
+<p>
+Seien \(G \subset \complex \) ein Gebiet und \(f \in \A (G)\). \(f\) la&#x0308;sst sich darstellen als<br />
+\(f(z) = f(x, y) = u(x, y) + \i v(x, y)\) mit reellwertigen Funktionen \(u = \Re f\) und \(v = \Im f\).<br />
+Aufgrund der komplexen Differenzierbarkeit gelten die Cauchy-Riemann-Gleichungen \(u’_x = v’_y\) und \(u’_y = -v’_x\). Wegen der zweifachen stetigen Differenzierbarkeit von \(u\) und \(v\) (\(f\) ist beliebig oft komplex
+diffb.) gilt daher \((u’_x)’_x = (v’_y)’_x = (v_x’)’_y = (-u’_y)’_y\), also \(u’_{xx} = -u’_{yy}\) und \(\Delta u = 0\) (mit dem Laplace-Operator \(\Delta u := u’_{xx} + u’_{yy}\)). Analog zeigt man \(\Delta v
+= 0\).
+</p>
+
+<p>
+<b>harmonische Funktion</b>: Eine Funktion \(u\) heißt <em>harmonisch</em>, falls alle zweiten partiellen Ableitungen existieren und stetig sind sowie \(\Delta u = 0\).<br />
+Die Menge der harmonischen Funktionen auf einem Gebiet \(G\) bezeichnet man mit \(\H (G)\).
+</p>
+
+<p>
+<em>Beispiel</em>: Ist \(f = u + \i v \in \A (G)\), so ist \(u, v \in \H (G)\) mit \(u = \Re f\) und \(v = \Im f\).
+</p>
+
+<p>
+Aus \(u, v \in \H (G)\) folgt i.&#x202f;A. aber nicht \(f = u + \i v \in \A (G)\). Ein Gegenbeispiel ist<br />
+\(f(x, y) = (x^2 - y^2) (1 + \i )\), d.&#x202f;h. \(u(x, y) = v(x, y) = x^2 - y^2\) sowie \(u’_x = v’_x = 2x\) und \(u’_y = v’_y = 2y\).<br />
+Damit die CR-Gleichungen erfu&#x0308;llt sind, muss \(2x = 2y\) und \(2x = -2y\) gelten, also \(x = y = 0\). Somit ist \(f\) in keinem Punkt komplex differenzierbar (keine Umgebung vorhanden).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>harmonisch konjugiert</b>: Sei \(u \in \H (G)\).<br />
+Dann heißt eine Funktion \(v \in \H (G)\) <em>harmonisch konjugiert</em> zu \(u\), falls \(f = u + \i v \in \A (G)\).
+</p>
+
+<p>
+Das harmonische Konjugat von \(u \in \H (G)\) ist bis auf Konstanten eindeutig: Falls \(v_1\) und \(v_2\) harmonisch konjugiert zu \(u\) sind, gilt \(f_1 = u + \i v_1 \in \A (G)\) und \(f_2 = u + \i v_2 \in \A (G)\),
+also \(f = f_1 - f_2 = \i (v_1 - v_2) \in \A (G)\). Wegen \(\Re f \equiv 0\) ist \(f \equiv \const \), also \(v_1 - v_2 \equiv c\).<br />
+Man kann also aus Kenntnis des Realteils einer Funktion (falls existent) den Imagina&#x0308;rteil bis auf Konstanten rekonstruieren.
+</p>
+
+<p>
+<b>Satz</b>: Sei \(G \subset \complex \) ein einfach zusammenha&#x0308;ngendes Gebiet. Dann existiert zu jedem \(u \in \H (G)\) eine harmonisch konjugierte Funktion \(v \in \H (G)\) (d.&#x202f;h. \(f = u + \i v
+\in \A (G)\)).
+</p>
+
+<p>
+Der Beweis gibt eine Methode zur Rekonstruktion des Imagina&#x0308;rteils (analog geht das natu&#x0308;rlich mit dem Realteil). Als Beispiel wird \(G = \real ^2\) und \(u(x, y) = xy - x\) verwendet.
+</p>
+
+<ul style="list-style-type:none">
+
+<li class="list-item-f35"><p>verifizieren, dass die gegebene Funktion harmonisch ist:<br />
+\(u’_{xx} = 0 = u’_{yy}\)
+</p>
+</li>
+<li class="list-item-f36"><p>Funktion \(g = w_r + \i w_i\) mit \(w_r = u’_x\) und \(w_i = -u’_y\) konstruieren:<br />
+\(w_r = y - 1\), \(w_i = -x\), also \(g(x, y) = y - 1 - \i x\)
+</p>
+</li>
+<li class="list-item-f37"><p>\(g\) in Abha&#x0308;ngigkeit von \(z = x + \i y\) schreiben:<br />
+\(g(z) = -\i z - 1\)
+</p>
+</li>
+<li class="list-item-f38"><p>\(g\) aufleiten:<br />
+\(f(z) = -z - \frac {\i }{2} z^2\) (plus Konstante), also \(f(z) = -(x + \i y) - \frac {\i }{2} (x + \i y)^2\)<br />
+\(= x(y - 1) + \i (-y - \frac {1}{2} x^2 + \frac {1}{2} y^2)\), dies ist eine holomorphe Funktion mit \(u\) als Realteil
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Integralformel von <span class="textsc" >Poisson</span></b>:<br />
+Seien \(G \subset \complex \) ein Gebiet, \(u \in \H (G)\), \(\overline {U_R(0)} \subset G\), \(0 \le r &lt; R\) und \(0 \le \theta &lt; 2\pi \).<br />
+Dann gilt \(u(r e^{\i \theta }) = \frac {1}{2\pi } \int _0^{2\pi } \frac {(R^2 - r^2) u(R e^{\i t})} {R^2 - 2rR \cos (\theta - t) + r^2} \dt \).
+</p>
+
+<p>
+<b>Spezialfall (Mittelwertsatz fu&#x0308;r harmonische Funktionen)</b>: \(u(0) = \frac {1}{2\pi } \int _0^{2\pi } u(R e^{\i t}) \dt \)
+</p>
+
+<p>
+Insbesondere gilt, dass auf \(u \in \H (G)\) und \(u|_{\partial U_R} = 0\) folgt, dass \(u \equiv 0\) in \(U_R\) ist, denn aus dem Mittelwertsatz kann man das Maximumsprinzip fu&#x0308;r harmonische Funktionen folgern
+(analog dem fu&#x0308;r holomorphe Funktionen).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Transfer-Lemma</b>: Seien \(G, \widetilde {G} \subset \complex \) einfach zusammenha&#x0308;ngende Gebiete, \(\psi \colon G \rightarrow \widetilde {G}\) bijektiv mit \(\psi \in \A (G)\) und
+\(\widetilde {u} \in \H (\widetilde {G})\). Dann ist \(u := \widetilde {u} \circ \psi \in \H (G)\).
+</p>
+
+<p>
+<b><span class="textsc" >Riemann</span>scher Abbildungssatz</b>: Jedes einfach zusammenha&#x0308;ngende Gebiet \(G \subsetneqq \complex \) la&#x0308;sst sich bijektiv mit einer holomorphen Funktion auf den
+Einheitskreis \(U_1(0)\) abbilden.
+</p>
+
+<p>
+<b><span class="textsc" >Dirichlet</span>-Problem im Einheitskreis</b>: Gesucht ist eine harmonische Funktion \(u \in \H (G)\), d.&#x202f;h. \(\Delta u = 0\), wobei \(u \in \C (\overline {G})\) und \(u\) auf
+dem Rand gegeben ist durch \(u|_{\partial G} = u_0\).<br />
+Hat man zwei Lo&#x0308;sungen des Problems, so ist die Differenz harmonisch und verschwindet auf dem Rand. Nach dem Maximumsprinzip verschwindet sie auch im Inneren, d.&#x202f;h. die Lo&#x0308;sung ist eindeutig.<br
+/>
+Fu&#x0308;r \(G = U_1(0)\), also \(u_0 = u_0(e^{\i t})\), ist die Lo&#x0308;sung \(u(r e^{\i \theta }) = u_0(e^{i \theta })\) fu&#x0308;r \(r = 1\) und<br />
+\(u(r e^{\i \theta }) = \frac {1}{2\pi } \int _0^{2\pi } P_{r,\theta }(t) u_0(e^{\i t}) \dt \) fu&#x0308;r \(0 \le r &lt; 1\) mit dem <em><span class="textsc" >Poisson</span>-Kern</em>
+\(P_{r,\theta }(t) = \frac {1 - r^2}{1 - 2r\cos (\theta - t) + r^2}\).
+</p>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

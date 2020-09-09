@@ -1,0 +1,1817 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\newcommand {\Vb }{\ensuremath {\operatorname {Vb}}}\)
+
+\(\newcommand {\Nb }{\ensuremath {\operatorname {Nb}}}\)
+
+\(\newcommand {\card }{\ensuremath {\operatorname {card}}}\)
+
+\(\renewcommand {\Re }{\ensuremath {\operatorname {Re}}}\)
+
+\(\renewcommand {\Im }{\ensuremath {\operatorname {Im}}}\)
+
+\(\newcommand {\Ln }{\ensuremath {\operatorname {Ln}}}\)
+
+\(\newcommand {\CF }{\ensuremath {\operatorname {CF}}}\)
+
+\(\newcommand {\acc }{\ensuremath {\operatorname {acc}}}\)
+
+\(\newcommand {\iso }{\ensuremath {\operatorname {iso}}}\)
+
+\(\newcommand {\interior }{\ensuremath {\operatorname {int}}}\)
+
+\(\newcommand {\exterior }{\ensuremath {\operatorname {ext}}}\)
+
+\(\newcommand {\sgn }{\ensuremath {\operatorname {sgn}}}\)
+
+\(\newcommand {\arccot }{\ensuremath {\operatorname {arccot}}}\)
+
+\(\newcommand {\arsinh }{\ensuremath {\operatorname {arsinh}}}\)
+
+\(\newcommand {\arcosh }{\ensuremath {\operatorname {arcosh}}}\)
+
+\(\newcommand {\artanh }{\ensuremath {\operatorname {artanh}}}\)
+
+\(\newcommand {\arcoth }{\ensuremath {\operatorname {arcoth}}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  content:'•\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  content:'•\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+
+<h2 id="das-riemann-integral">Das <span style="font-variant: small-caps;">Riemann</span>-Integral</h2>
+
+</p>
+
+
+<p>
+Gegeben sei eine Funktion \(f: [a,b] \rightarrow \mathbb {R}\), wobei \(a \le b\).
+</p>
+
+<p>
+Durch \(a = x_0 \le x_1 \le \cdots \le x_{n-1} \le x_n = b\) wird das Intervall \([a,b]\) zerlegt, die Menge \(\delta = \{x_k\}_{k=0}^n = \{x_0, \ldots , x_n\}\) heißt <b>Zerlegung</b> von \([a,b]\).
+</p>
+
+<p>
+\(\Delta x_k = x_k - x_{k-1}\) ist die La&#x0308;nge, \(\Delta _k = [x_{k-1}, x_k]\) das Intervall des \(k\)-ten Teilstu&#x0308;cks.<br />
+\(\lambda (\delta ) = \max _{k=1,\ldots ,n} \Delta x_k\) bezeichnet den <b>Rang der Zerlegung</b> (La&#x0308;nge des la&#x0308;ngsten Teilstu&#x0308;cks).
+</p>
+
+<p>
+Fu&#x0308;r jedes \(\Delta _k\) kann man eine Stu&#x0308;tzstelle \(\xi _k \in \Delta _k = [x_{k-1}, x_k]\) wa&#x0308;hlen (\(k = 1, \ldots , n\)).<br />
+\(\xi = \{\xi _k\}_{k=1}^n = \{\xi _1, \ldots , \xi _n\}\) bezeichnet einen <b>Satz von Stu&#x0308;tzstellen</b> fu&#x0308;r die Zerlegung \(\delta \).
+</p>
+
+<p>
+\(\mathfrak {S}(f, \delta , \xi ) = \sum _{k=1}^n f(\xi _k) \Delta x_k\) heißt dann <b><span class="textsc" >Riemann</span>-Summe</b> von \(f\) bzgl. der Zerlegung \(\delta \) und dem Satz von
+Stu&#x0308;tzstellen \(\xi \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+\(f: [a,b] \rightarrow \mathbb {R}\) heißt <b><span class="textsc" >Riemann</span>-integrierbar</b>, falls es ein \(I \in \mathbb {R}\) gibt mit \(I = \lim _{\lambda (\delta ) \to 0} \mathfrak {S}(f,
+\delta , \xi )\)<br />
+\(\overset {\text {def.}}{\Leftrightarrow }\; \forall _{\varepsilon &gt; 0} \exists _{\eta &gt; 0} \forall _{\text {Zerlegungen } \delta ,\; \lambda (\delta ) &lt; \eta } \forall _{\text
+{Stützstellen } \xi \text { zu } \delta }\; |I - \mathfrak {S}(f, \delta , \xi )| &lt; \varepsilon \)<br />
+\(\Leftrightarrow \; \forall _{\varepsilon &gt; 0} \exists _{\eta &gt; 0} \forall _{\delta ’, \delta ’’,\; \lambda (\delta ’) &lt; \eta ,\; \lambda (\delta ’’) &lt; \eta } \forall _{\xi ’ =
+\xi ’(\delta ’),\; \xi ’’ = \xi ’’(\delta ’’)}\; |\mathfrak {S}(f, \delta ’, \xi ’) - \mathfrak {S}(f, \delta ’’, \xi ’’)| &lt; \varepsilon \).
+</p>
+
+<p>
+<b>alternative Definition</b>: Eine Folge von Zerlegungen \(\{\delta _k\}_{k \in \mathbb {N}}\) heißt <em>ausgezeichnet</em>, falls<br />
+\(\lambda (\delta ) \to 0\) fu&#x0308;r \(k \to \infty \). Sei \(\xi = \xi (\delta _k)\) ein beliebiger Satz von Stu&#x0308;tzstellen zu \(\delta _k\).<br />
+Falls \(\mathfrak {S}(f, \delta _k, \xi (\delta _k))\) fu&#x0308;r \(k \to \infty \) immer einen Grenzwert \(I\) besitzt und dieser Grenzwert unabha&#x0308;ngig von der Wahl der \(\delta _k\) und \(\xi
+(\delta _k)\) ist, so nennt man \(f\) Riemann-integrierbar.
+</p>
+
+<p>
+In jedem Fall schreibt man dann \(\int _a^b f(x)\dx := I\).
+</p>
+
+<p>
+Es gilt \(\int _a^a f(x)\dx = 0\) &#x2003;und &#x2003;\(\int _b^a f(x)\dx := -\int _a^b f(x)\dx \) fu&#x0308;r \(a &lt; b\)<br />
+(das Riemann-Integral ist <em>gerichtet</em>).
+</p>
+
+<p>
+<b>komplexwertige Funktionen</b>: Eine Funktion \(f: [a,b] \rightarrow \mathbb {C}\) ist Riemann-integrierbar<br />
+\(\overset {\text {def.}}{\Leftrightarrow }\;\) \(\Re f, \Im f\) sind Riemann-integrierbar, &#x2003;\(\int _a^b f(x)\dx := \int _a^b \Re (f(x))\dx + i \cdot \int _a^b \Im (f(x))\dx \).
+</p>
+
+<p>
+<b>vektorwertige Funktionen</b>: Eine Funktion \(f: [a,b] \rightarrow \mathbb {K}^m\) ist Riemann-integrierbar<br />
+\(\overset {\text {def.}}{\Leftrightarrow }\;\) \(\pi _j(f(x))\) ist Riemann-integrierbar fu&#x0308;r \(j = 1, \ldots , m\), &#x2003;\(\pi _j\left (\int _a^b f(x)\dx \right ) := \int _a^b \pi
+_j(f(x))\dx \).
+</p>
+
+<p>
+\(R[a,b]\) ist die <b>Menge der Riemann-integrierbaren Funktionen</b> \(f: [a,b] \rightarrow \mathbb {R}\).
+</p>
+
+<p>
+<b>R.-integr. Funktionen sind beschra&#x0308;nkt</b>: Sei \(f \in R[a,b]\). &#x2003;&#x2003;Dann ist \(f\) beschra&#x0308;nkt.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Stetigkeitsmodul</b>: Seien \(f: [a,b] \rightarrow \mathbb {R}\) sowie \(E \subset [a,b]\).<br />
+\(\omega (f, E) = \sup _{x’, x’’ \in E} |f(x’) - f(x’’)|\) heißt Stetigkeitsmodul von \(f\) auf \(E\).
+</p>
+
+<p>
+<b>Satz</b>: Seien \(f: [a,b] \rightarrow \mathbb {R}\) beschra&#x0308;nkt und \(\lim _{\lambda (\delta ) \to 0} \sum _{k=1}^n \omega (f, \Delta _k) \Delta x_k = 0\), d.&#x202f;h.<br />
+\(\forall _{\varepsilon &gt; 0} \exists _{\eta &gt; 0} \forall _{\delta ,\; \lambda (\delta ) &lt; \eta }\; \sum _{k=1}^n \omega (f, \Delta _k) \Delta x_k &lt; \varepsilon \).
+&#x2003;&#x2003;Dann ist \(f \in R[a,b]\).
+</p>
+
+<p>
+<b>stetige Funktionen</b>: Stetige Funktionen \(f \in C([a,b])\) sind Riemann-integrierbar.<br />
+Ist eine Funktion bis auf endlich viele Punkte stetig, so ist sie Riemann-integrierbar.<br />
+Vera&#x0308;ndert man eine Riemann-integrierbare Funktionen in nur einem Punkt, so ist sie immer noch Riemann-integrierbar und das Integral ist dasselbe.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>obere/untere <span class="textsc" >Darboux</span>-Summe</b>: Seien \(f: [a,b] \rightarrow \mathbb {R}\) beschra&#x0308;nkt und<br />
+\(a = x_0 &lt; x_1 &lt; \cdots &lt; x_{n-1} &lt; x_n = b\) mit \(\Delta _k = [x_{k-1}, x_k]\).<br />
+Außerdem sei \(m_k = \inf _{x \in \Delta _k} f(x)\) und \(M_k = \sup _{x \in \Delta _k} f(x)\).<br />
+Dann heißt \(s(f, \delta ) = \sum _{k=1}^n m_k \Delta x_k\) untere bzw. \(S(f, \delta ) = \sum _{k=1}^n M_k \Delta x_k\) obere Darboux-Summe.<br />
+Es gilt \(s(f, \delta ) \le \mathfrak {S}(f, \delta , \xi ) \le S(f, \delta )\) fu&#x0308;r jeden Satz von Stu&#x0308;tzstellen \(\xi \).
+</p>
+
+<p>
+<b>Konvergenz der <span class="textsc" >Darboux</span>-Summe</b>: Sei \(f: [a,b] \rightarrow \mathbb {R}\) beschra&#x0308;nkt. Dann ist<br />
+\(f \in R[a,b] \;\Leftrightarrow \; \exists I = \lim _{\lambda (\delta ) \to 0} s(f, \delta ) = \lim _{\lambda (\delta ) \to 0} S(f, \delta )\) &#x2003;&#x2003;\((I = \int _a^b f(x)\dx )\).
+</p>
+
+<p>
+<b>Satz</b>: Sei \(f: [a,b] \rightarrow \mathbb {R}\) beschra&#x0308;nkt. Dann ist<br />
+\(f \in R[a,b] \;\Leftrightarrow \; \lim _{\lambda (\delta ) \to 0} \sum _{k=1}^n \omega (f, \Delta _k) \Delta x_k = 0\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b><span class="textsc" >Lebesgue</span>-Maß</b>: Eine Menge \(E \subset \mathbb {R}\) besitzt das Lebesgue-Maß \(0\), falls<br />
+\(\forall _{\varepsilon &gt; 0} \exists _{\{I_k(\varepsilon )\}_{k \in \mathbb {N}}}\) &#x2003;1) \(E \subset \bigcup _{k \in \mathbb {N}} I_k(\varepsilon )\) &#x2003;und &#x2003;2) \(\sup _{n
+\in \mathbb {N}} \left (\sum _{k=1}^n |I_k(\varepsilon )|\right ) &lt; \varepsilon \),<br />
+wobei \(I_k = [\alpha _k, \beta _k] \subset \mathbb {R}\) mit \(k \in \mathbb {N}\) und \(|I_k| = \beta _k - \alpha _k\).
+</p>
+
+<p>
+<b>fast u&#x0308;berall</b>: Eine Aussageform \(H(x)\) ist fast u&#x0308;berall wahr, falls es eine Menge \(E \subset [a,b]\) mit Lebesgue-Maß 0 gibt, sodass \(H(x)\) wahr ist auf \([a,b] \setminus E\).
+</p>
+
+<p>
+<b><span class="textsc" >Lebesgue</span>-Kriterium zur Riemann-Integrierbarkeit</b>: Sei \(f: [a,b] \rightarrow \mathbb {R}\) beschra&#x0308;nkt.<br />
+Dann ist \(f \in R[a,b] \;\Leftrightarrow \;\) \(f\) ist fast u&#x0308;berall auf \([a,b]\) stetig.
+</p>
+
+<p>
+<b>monotone Funktionen</b>: Beschra&#x0308;nkte und monotone Funktionen sind Riemann-integrierbar.
+</p>
+
+<p>
+<b>Struktur von \(R[a,b]\)</b>: Seien \(f, g: [a,b] \rightarrow \mathbb {R}\), \(\alpha \in \mathbb {R}\), \(f, g \in R[a,b]\) und \([c,d] \subset [a,b]\).<br />
+Dann ist auch \(f + g,\quad \alpha \cdot f,\quad |f|,\quad f \cdot g \in R[a,b]\) sowie \(f|_{[c,d]} \in R[c,d]\).
+</p>
+
+
+
+<h2 id="eigenschaften-des-riemann-integrals">Eigenschaften des <span style="font-variant: small-caps;">Riemann</span>-Integrals</h2>
+
+</p>
+
+
+<p>
+<b>Satz (Linearita&#x0308;t)</b>: Seien \(f, g \in R[a,b]\) und \(\alpha , \beta \in \mathbb {R}\).<br />
+Dann ist \(\alpha f + \beta g \in R[a,b]\) und \(\int _a^b (\alpha f + \beta g)(x)\dx = \alpha \int _a^b f(x)\dx + \beta \int _a^b g(x)\dx \).
+</p>
+
+<p>
+<b>Satz (Additivita&#x0308;t bzgl. Integrationsbereich)</b>:<br />
+\(f \in R[a,b] \;\Leftrightarrow \; f|_{[a,c]} \in R[a,c] \land f|_{[c,b]} \in R[c,b]\)<br />
+und \(\int _a^b f(x)\dx = \int _a^c f(x)\dx + \int _c^b f(x)\dx \) fu&#x0308;r \(c \in \left ]a,b\right [\).<br />
+<em>(Satz gilt mit \(\int _b^a f(x)\dx = -\int _a^b f(x)\dx \) unabha&#x0308;ngig von \(c \in \left ]a,b\right [\)!)</em>
+</p>
+
+<p>
+<b>Satz (Monotonie des Riemann-Integrals)</b>: Seien \(f_1, f_2 \in R[a,b]\) mit \(f_1(x) \le f_2(x)\) fu&#x0308;r alle \(x \in [a,b]\), wobei \(a &lt; b\). &#x2003;&#x2003;Dann ist \(\int _a^b f_1(x)\dx
+\le \int _a^b f_2(x)\dx \).
+</p>
+
+<p>
+<b>Spezialfall</b>: Sei \(f: [a,b] \rightarrow \mathbb {R}\) mit \(m \le f(x) \le M\) fu&#x0308;r alle \(x \in [a,b]\), wobei \(a &lt; b\).<br />
+Dann ist \(m \cdot (b - a) \le \int _a^b f(x)\dx \le M \cdot (b - a)\).
+</p>
+
+<p>
+<b>Spezialfall</b>: \(\left |\int _a^b f(x)\dx \right | \le (b - a) \cdot \sup _{x \in [a,b]} |f(x)|\)
+</p>
+
+<p>
+<b>Spezialfall</b>: \(\left |\int _a^b f(x)\dx \right | \le \int _a^b |f(x)|\dx \)
+</p>
+
+
+
+<h2 id="die-formel-von-newton-leibniz">Die Formel von <span style="font-variant: small-caps;">Newton</span>-<span style="font-variant: small-caps;">Leibniz</span></h2>
+
+</p>
+
+
+<p>
+<b>Satz von <span class="textsc" >Newton</span>-<span class="textsc" >Leibniz</span></b>: Seien \(F: [a,b] \rightarrow \mathbb {R}\) stetig, diffb. in \(\left ]a,b\right [\) und<br />
+\(\dot {F}(x) =\) \(\begin {cases}F’(x) &amp; x \in \left ]a,b\right [ \\ 0 &amp; x = a \lor x = b\end {cases}\) mit \(\dot {F}(x) \in R[a,b]\). &#x2003;&#x2003;&#x2003;&#x2003;Dann ist \(\int
+_a^b \dot {F}(x)\dx = F(b) - F(a)\).
+</p>
+
+<p>
+Der Satz la&#x0308;sst sich fu&#x0308;r Funktionen \(F: [a,b] \rightarrow \mathbb {K}^n\) verallgemeinern (komponentenweise).
+</p>
+
+<p>
+<b>Stammfunktion</b>: \(F: [a,b] \rightarrow \mathbb {K}^n\) ist eine Stammfunktion von \(f: [a,b] \rightarrow \mathbb {K}^n\), falls<br />
+\(F\) stetig auf \([a,b]\), &#x2003;&#x2003;\(F\) diffb. in \(\left ]a,b\right [\) &#x2003;&#x2003;und &#x2003;&#x2003;\(F’(x) = f(x)\) fu&#x0308;r alle \(x \in \left ]a,b\right [\).
+</p>
+
+<p>
+Existiert zu \(f\) eine Stammfunktion \(F\), so ist diese bis auf eine Konstante eindeutig bestimmt.
+</p>
+
+<p>
+<b>Hauptsatz der Differential- und Integralrechnung</b>: Sei \(f: [a,b] \rightarrow \mathbb {R}\) mit \(f \in R[a,b]\) und es existiere eine Stammfunktion \(F\) zu \(f\). &#x2003;&#x2003;&#x2003;&#x2003;Dann
+ist \(\int _a^b f(x)\dx = F(b) - F(a)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Satz</b>: Jede stetige Funktion \(f: [a,b] \rightarrow \mathbb {R}\) besitzt eine Stammfunktion \(F\) der Form<br />
+\(F(x) =\) \(\begin {cases}C &amp; x = a \\ \int _a^x f(t)\dt + C &amp; x \in \left ]a,b\right ]\end {cases}\).
+</p>
+
+<p>
+Allerdings besitzt nicht jede Funktion \(f \in R[a,b]\) eine Stammfunktion! Beispiele sind monotone Funktionen mit Sprungstellen. Sie ko&#x0308;nnen nach <span class="textsc" >Darboux</span> keine Ableitung einer
+anderen Funktion darstellen. Auch bedeutet die Existenz nicht, dass man sie explizit hinschreiben kann.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>partielle Integration</b>: Seien \(f, g: [a,b] \rightarrow \mathbb {R}\) stetig auf \([a,b]\), diffb. in \(\left ]a,b\right [\) sowie<br />
+\(f’g, fg’ \in R[a,b]\). &#x2003;&#x2003;&#x2003;&#x2003;Dann ist \(\int _a^b f’g\dx = fg|_a^b - \int _a^b fg’\dx \).
+</p>
+
+
+
+<h2 id="zur-integration-rationaler-funktionen">Zur Integration rationaler Funktionen</h2>
+
+</p>
+
+
+<p>
+Wir betrachten rationale Funktionen \(R(x) =\) \(\frac {P_m(x)}{Q_n(x)}\) \(= \) \(\frac {a_m x^m \;+\; \cdots \;+\; a_1 x \;+\; a_0} {b_m b^m \;+\; \cdots \;+\; b_1 x \;+\; b_0}\) mit \(a_m, b_n \not =
+0\).
+</p>
+
+<p>
+<b>Spezialfa&#x0308;lle</b>:<br />
+\(Q_n(x) = 1\): &#x2003;&#x2003;\(\int P_m(x)\dx = \) \(\frac {a_m}{m + 1}\) \(x^{m+1} + \cdots + \) \(\frac {a_1}{2}\) \(x^2 + a_0 x + C\)<br />
+\(P_m(x) = 1\), \(Q_n(x) = (x - a)^n\): &#x2003;&#x2003;\(\int \) \(\frac {1}{(x - a)^n}\) \(= \) \(\begin {cases}\ln |x - a| + C &amp; \quad n = 1 \\ \frac {(x - a)^{1-n}}{1 - n} + C &amp; \quad n
+\ge 2 \end {cases}\)
+</p>
+
+<p>
+<b>Polynomdivision</b>: Seien \(P_m(x)\) und \(Q_n(x)\) zwei Polynome mit \(m \ge n \ge 1\). Dann existieren eindeutig bestimmte Polynome \(S_{m-n}(x)\) und \(T_\ell (x)\) mit \(\ell &lt; n\), sodass \(\frac
+{P_m(x)}{Q_n(x)}\) \(= S_{m-n}(x) \;+\) \(\frac {T_\ell (x)}{Q_n(x)}\).<br />
+\(S_{m-n}(x)\) und \(T_\ell (x)\) kann man durch <em>Polynomdivision</em> bestimmen.
+</p>
+
+<p>
+<b>Satz</b>: Seien \(P_m(x)\), \(Q_n(x)\) Polynome mit \(m &lt; n\), \(Q_n(x) = \prod _{i=1}^\ell (x - a_i)^{\kappa _i}\) und \(\sum _{i=1}^\ell \kappa _i = n\).<br />
+Dann gibt es eindeutig bestimmte Koeffizienten \(A_{ir}\), sodass \(\frac {P_m(x)}{Q_n(x)}\) \(= \sum _{i=1}^\ell \sum _{r=1}^{\kappa _i}\) \(\frac {A_{ir}}{(x - a_i)^r}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Bestimmung der Koeffizienten</b>: \(\frac {x^2 + 1}{x(x+1)(x-1)} = \frac {A_{11}}{x} + \frac {A_{21}}{x + 1} + \frac {A_{31}}{x - 1}\)
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p><em>Ausmultiplizieren und Koeffizientenvergleich</em>:<br />
+\(\Rightarrow \; x^2 + 0x + 1 = A_{11}(x + 1)(x - 1) + A_{21}x(x - 1) + A_{31}x(x + 1)\)<br />
+\(\Leftrightarrow \; x^2 + 0x + 1 = (A_{11} + A_{21} + A_{31})x^2 + (-A_{21} + A_{31})x + (-A_{11}) \cdot 1\), &#x2003;&#x2003;LGS lo&#x0308;sen
+</p>
+</li>
+<li class="list-item-f1"><p><em>Hand auflegen</em>: \(x_1 = 0\), \(x_2 = -1\), \(x_3 = 1\), \(A_{11} = \frac {x_1^2 + 1}{(x_1 + 1)(x_1 - 1)}\), \(A_{21} = \frac {x_2^2 + 1}{x_2 (x_2 - 1)}\), \(A_{31} = \frac {x_3^2 + 1}{x_3 (x_3
++ 1)}\)<br />
+Man setzt in die linke Seite immer eine Nullstelle ein, wa&#x0308;hrend man den zur Nullstelle zugeho&#x0308;rigen Faktor im Nenner „zudeckt“. Nachteil: Bei mehrfachen Nullstellen kann man nur den Koeffizienten mit dem
+ho&#x0308;chsten Exponenten ermitteln. Empfohlen wird eine gemischte Anwendung beider Methoden mit „Hand auflegen“ zuerst und dann LGS lo&#x0308;sen.
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="die-mittelwertsaetze-der-integralrechnung">Die Mittelwertsätze der Integralrechnung</h2>
+<b>1. Mittelwertsatz der Integralrechnung</b>:<br />
+Seien \(f, g: [a,b] \rightarrow \mathbb {R}\) stetig und \(g(x) \ge 0\) fu&#x0308;r \(x \in [a,b]\).<br />
+Dann gibt es ein \(\xi \in [a,b]\), sodass \(\int _a^b f(x)g(x)\dx = f(\xi ) \cdot \int _a^b g(x)\dx \).
+</p>
+
+<p>
+<b>Spezialfall (\(g(x) = 1\))</b>: Sei \(f: [a,b] \rightarrow \mathbb {R}\) stetig.<br />
+Dann gibt es ein \(\xi \in [a,b]\), sodass \(\int _a^b f(x)\dx = f(\xi ) \cdot (b-a)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Lemma</em>: Sei \(g \in R[a,b]\). Dann ist \(G: [a,b] \rightarrow \mathbb {R}\), \(G(x) = \int _a^\xi g(x)\dx \) stetig.
+</p>
+
+<p>
+<b>2. Mittelwertsatz der Integralrechnung</b>:<br />
+Seien \(f: [a,b] \rightarrow \mathbb {R}\) monoton fallend, \(f \ge 0\) und \(g \in R[a,b]\).<br />
+Dann gibt es ein \(\xi \in [a,b]\), sodass \(\int _a^b f(x)g(x)\dx = f(a) \cdot \int _a^\xi g(x)\dx \).
+</p>
+
+<p>
+<b>Spezialfall (\(g(x) = 1\))</b>: Sei \(f: [a,b] \rightarrow \mathbb {R}\) monoton fallend und \(f \ge 0\).<br />
+Dann gibt es ein \(\xi \in [a,b]\), sodass \(\int _a^b f(x)\dx = f(a) \cdot (\xi - a)\).
+</p>
+
+<p>
+Analog la&#x0308;sst sich der Satz fu&#x0308;r \(f\!\!\uparrow \), \(f \ge 0\) und \(g \in R[a,b]\) formulieren<br />
+(\(\exists _{\xi \in [a,b]}\; \int _a^b f(x)g(x)\dx = f(b) \cdot \int _\xi ^b g(x)\dx \)).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Satz (Erweiterung des 2. MWS)</b>: Sei \(f\) monoton und beschra&#x0308;nkt sowie \(g \in R[a,b]\).<br />
+Dann gibt es ein \(\xi \in [a,b]\), sodass \(\int _a^b f(x)g(x) = f(a) \int _a^\xi g(x)\dx + f(b) \int _\xi ^b g(x)\dx \).
+</p>
+
+<p>
+Die Mittelwertsa&#x0308;tze gelten i.&#x202f;A. nicht fu&#x0308;r komplex- oder vektorwertige Funktionen (beim komponentenweisen Anwenden ko&#x0308;nnen die \(\xi \) unterschiedlich sein).
+</p>
+
+
+
+<h2 id="zur-substitution-der-integrationsvariablen">Zur Substitution der Integrationsvariablen</h2>
+
+</p>
+
+
+<p>
+<b>Satz</b>: Seien \(f: [a,b] \rightarrow \mathbb {K}^n\) und \(\psi : [\alpha ,\beta ] \rightarrow [a,b]\) stetig, \(\psi \) diffb. in \(\left ]\alpha ,\beta \right [\) und \(\psi ’\) stetig in \(\left
+]\alpha ,\beta \right [\), wobei \(\psi (\alpha ) = a\) und \(\psi (\beta ) = b\). Außerdem existieren die Grenzwerte \(\lim _{t \to \alpha } \psi ’(t) \in \mathbb {R}\) und \(\lim _{t \to \beta } \psi
+’(t) \in \mathbb {R}\), d.&#x202f;h. \(\psi ’\) la&#x0308;sst sich in den Randpunkten stetig fortsetzen.<br />
+Dann ist \(\int _a^b f(x)\dx = \int _\alpha ^\beta f(\psi (t)) \psi ’(t)\dt \).
+</p>
+
+
+
+<h2 id="das-restglied-in-der-formel-von-taylor">Das Restglied in der Formel von <span style="font-variant: small-caps;">Taylor</span></h2>
+
+</p>
+
+
+<p>
+<b>Formel von <span class="textsc" >Taylor</span> (Wiederholung)</b>: Sei \(f: X \subset \mathbb {K} \rightarrow \mathbb {K}^n\) mit \(X\) offen, wobei \(\overline {x_0 x} \in X\) (\(x = x_0 + h\)) und
+\(f\) in \(x_0\) \(m\)-fach diffb.<br />
+Dann ist \(f(x_0 + h) = f(x_0) + \sum _{k=1}^m\) \(\frac {f^{(k)}(x_0)}{k!}\)\(h^k + r_m(x_0, h)\) mit \(r_m(x_0, h) = o(h^m)\) fu&#x0308;r \(h \to 0\).
+</p>
+
+<p>
+<b>Satz</b>: Sei \(f\) zusa&#x0308;tzlich in allen Punkten von \(\overline {x_0 x}\) \((m+1)\)-fach stetig diffb.<br />
+Dann ist \(r_m(x_0, h) =\) \(\frac {h^{m+1}}{m!}\) \(\cdot \int _0^1 f^{(m+1)}(x_0 + th) (1 - t)^m \dt \).
+</p>
+
+<p>
+<b>Folgerung</b>: \(\Vert r_m(x_0, h) \Vert \le \) \(\frac {|h|^{m+1}}{(m + 1)!}\) \(\cdot \sup _{y \in \overline {x_0 x}} \Vert f^{(m+1)}(y) \Vert \)
+</p>
+
+<p>
+<b>Spezialfall</b>: Fu&#x0308;r Funktionen \(f: X \subset \mathbb {R} \rightarrow \mathbb {R}\) gilt \(r_m(x_0, h) =\) \(\frac {f^{(m+1)}(y)}{(m + 1)!}\)\(h^{m+1}\) fu&#x0308;r einen bestimmten Punkt \(y
+\in \overline {x_0 x}\).
+</p>
+
+
+
+<h2 id="interpolationsformel-von-lagrange">Interpolationsformel von <span style="font-variant: small-caps;">Lagrange</span></h2>
+
+</p>
+
+
+<p>
+Gegeben sei eine Fkt. \(f: [a,b] \rightarrow \mathbb {R}\) und eine Zerlegung \(a’ = x_0 &lt; x_1 &lt; \cdots &lt; x_{n-1} &lt; x_n = b’\) mit \(a &lt; a’ &lt; b’ &lt; b\). Gesucht wird ein Polynom
+\(P_n(x)\) mit \(P(x_k) = f(x_k)\) fu&#x0308;r \(k = 0, \ldots , n\), wobei \(\deg P_n \le n\).
+</p>
+
+<p>
+Eine Lo&#x0308;sung existiert in der Form \(P_n(x) = \sum _{k=0}^n f(x_k)q_k(x)\) mit \(q_k(x_\ell ) = 0\) fu&#x0308;r \(\ell \not = k\) und \(q_k(x_\ell ) = 1\) fu&#x0308;r \(\ell = k\).<br />
+Die \(q_k\) sind Polynome vom Grad \(\le n\): &#x2003;\(q_k(x) =\) \(\frac {(x - x_0) \cdots (x - x_{k-1}) (x - x_{k+1}) \cdots (x - x_n)} {(x_k - x_0) \cdots (x_k - x_{k-1}) (x_k - x_{k+1}) \cdots
+(x_k - x_n)}\).
+</p>
+
+<p>
+<b>Satz (Fehlerabscha&#x0308;tzung)</b>: Sei \(f\) \((n+1)\)-mal stetig diffb.<br />
+Dann gilt \(\forall _{x \in [a’,b’]} \exists _{\eta _x \in [a’,b’]}\; f(x) - P_n(x) =\) \(\frac {f^{(n+1)}(\eta _x)}{(n + 1)!}\) \((x - x_0) \cdots (x - x_n)\).
+</p>
+
+
+
+<h2 id="anwendungen-der-differential-und-integralrechnung">Anwendungen der Differential- und Integralrechnung</h2>
+
+</p>
+
+
+<h3 id="laenge-und-kruemmung-einer-kurve">Länge und Krümmung einer Kurve</h3>
+
+</p>
+
+
+<p>
+Seien \(\varphi : [a,b] \rightarrow \mathbb {R}^n\) und \(\Gamma _\varphi = \varphi ([a,b])\).
+</p>
+
+<p>
+<b>einfache Kurve</b>: Sei \(\varphi \) stetig und injektiv. Dann erzeugt \(\varphi \) die <em>einfache Kurve</em> \(\Gamma _\varphi \).
+</p>
+
+<p>
+<b>geschlossene Kurve</b>: Sei \(\varphi \) stetig, \(\varphi |_{\left [a,b\right [}\) injektiv und \(\varphi (a) = \varphi (b)\).<br />
+Dann erzeugt \(\varphi \) die <em>geschlossene Kurve</em> \(\Gamma _\varphi \).
+</p>
+
+<p>
+<b><span class="textsc" >Jordan</span>sche Kurve</b>: Einfache/geschlossene Kurven werden <em>Jordansche Kurven</em> genannt.
+</p>
+
+<p>
+<b><span class="textsc" >Jordan</span>sche Kurve der Klasse \(C^p\)</b>: \(\varphi \) erzeuge eine Jordansche Kurve \(\Gamma _\varphi \).<br />
+Ist zusa&#x0308;tzlich \(\varphi \) \(p\)-fach stetig diffb., \(\varphi ^{(k)}\) fu&#x0308;r \(k = 0, \ldots , p\) stetig auf \([a,b]\) fortsetzbar sowie \(\varphi ’(t) \not = 0\) fu&#x0308;r alle \(t \in [a,b]\), so
+erzeugt \(\varphi \) eine <em>Jordansche Kurve der Klasse \(C^p\)</em>.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+\(\varphi : [a,b] \rightarrow \mathbb {R}^n\) erzeuge die Jordansche Kurve \(\Gamma _\varphi \). Fu&#x0308;r jede Zerlegung \(\delta = \{x_k\}_{k=0}^m\) von \([a,b]\) kann man die <b>La&#x0308;nge \(\ell
+^\delta \) des zugeho&#x0308;rigen Polygonzugs</b> definieren als \(\ell ^\delta = \sum _{k=1}^m \Vert \varphi (x_k) - \varphi (x_{k-1}) \Vert \).<br />
+Fu&#x0308;r eine Zerlegung \(\delta ’\) mit \(\delta \subset \delta ’\) gilt \(\ell ^\delta \le \ell ^{\delta ’}\) (aufgrund Dreiecksungleichung).
+</p>
+
+<p>
+Die Kurve \(\Gamma _\varphi \) ist <b>rektifizierbar</b>, falls \(L(\Gamma _\varphi ) = \sup _\delta \ell ^\delta \) endlich ist.<br />
+\(L(\Gamma _\varphi ) = \sup _\delta \ell ^\delta \) heißt dann die <b>Bogenla&#x0308;nge</b> der Kurve \(\Gamma _\varphi \).
+</p>
+
+<p>
+<b>Satz</b>: \(\varphi : [a,b] \rightarrow \mathbb {R}^n\) erzeuge die Jordansche Kurve \(\Gamma _\varphi \) der Klasse \(C^1\).<br />
+Dann ist \(\Gamma _\varphi \) rektifizierbar und \(L(\Gamma _\varphi ) = \int _a^b \Vert \varphi ’(t) \Vert \dt \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Kanon. Parametrisierung</b>: \(\varphi : [a,b] \rightarrow \mathbb {R}^n\) erzeuge die Jordansche Kurve \(\Gamma _\varphi \) der Klasse \(C^1\).<br />
+Sei \(S: [a,b] \rightarrow [0, L(\Gamma _\varphi )]\) mit \(S(t) = L(\Gamma _t) = L(\varphi ([a,t])) = \int _a^t \Vert \varphi ’(\tau ) \Vert d \tau \).<br />
+Es gilt \(S’(t) = \Vert \varphi ’(t) \Vert &gt; 0\) und daher \(S\!\!\upuparrows \), \(S\) stetig.<br />
+Also ist \(S\) bijektiv mit der stetigen Umkehrfunktion \(S^{-1}: [0, L(\Gamma _\varphi )] \rightarrow [a,b]\).<br />
+\(r: [0, L(\Gamma _\varphi )] \rightarrow \mathbb {R}^n\), \(r(s) = \varphi (S^{-1}(s))\) ist dann eine neue Parametrisierung und wird <b>kanonische Parametrisierung</b> genannt. Das Kurvenstu&#x0308;ck zu
+\(r|_{[0,s]}\) besitzt die Bogenla&#x0308;nge \(s\).<br />
+\(r\) ist stetig diffb. und \(\Gamma _r\) ist eine Jordansche Kurve der Klasse \(C^1\).<br />
+\(\tau : \left ]0, L(\Gamma _\varphi )\right [ \rightarrow \mathbb {R}^n\), \(\tau (s) = r’(s) =\) \(\frac {\varphi ’(t)}{\Vert \varphi ’(t) \Vert }\) ist der <b>Tangentialvektor</b> im Punkt \(s\)
+(La&#x0308;nge \(1\)).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Kru&#x0308;mmung</b>: Gilt zusa&#x0308;tzlich \(\varphi \in C^2\), so ist \(\kappa (s) = \tau ’(s)\) der <b>Kru&#x0308;mmungsvektor</b>,<br />
+\(K(s) = \Vert \kappa (s) \Vert \) die <b>Kru&#x0308;mmung</b> und \(\rho (s) =\) \(\frac {1}{K(s)}\) der <b>Kru&#x0308;mmungsradius</b>.
+</p>
+
+<p>
+<b>Lemma</b>: \(\kappa (s) \;\bot \; \tau (s)\)
+</p>
+
+<p>
+<b>Kru&#x0308;mmungsvektor</b>: \(\kappa (s) =\) \(\frac {\varphi ’’(t) \cdot \Vert \varphi ’(t) \Vert ^2 - \varphi ’(t) \cdot \langle \varphi ’(t), \varphi ’’(t) \rangle } {\Vert \varphi
+’(t) \Vert ^4}\) ist der Kru&#x0308;mmungsvektor an \(\Gamma _\varphi \) im Punkt \(r(s) = \varphi (t)\) (\(s = S(t)\)).
+</p>
+
+<p>
+<b>Kru&#x0308;mmung einer Kurve im \(\mathbb {R}^3\)</b>: \(\kappa (s) =\) \(\frac {[\varphi ’(t), [\varphi ’’(t), \varphi ’(t)]]} {\Vert \varphi ’(t) \Vert ^4}\), &#x2003;\(K(s) =\) \(\frac
+{\Vert [\varphi ’’(t), \varphi ’(t)] \Vert } {\Vert \varphi ’(t) \Vert ^3}\)
+</p>
+
+
+
+<h3 id="flaechen-und-volumina">Flächen und Volumina</h3>
+
+</p>
+
+
+<p>
+Seien \(X \subset \mathbb {R}^2\), \(P’, P’’\) Vielecke mit \(P’ \subset X \subset P’’\) und \(A(P’)\) bzw. \(A(P’’)\) der Fla&#x0308;cheninhalt von \(P’\) bzw. \(P’’\). Dann heißen \(S_\ast = \sup _{P’ \subset
+X} A(P’)\) bzw. \(S^\ast = \inf _{P’’ \supset X} A(P’’)\) <b>innerer bzw. a&#x0308;ußerer Fla&#x0308;cheninhalt</b> von \(X\).
+</p>
+
+<p>
+Eine Menge \(X \subset \mathbb {R}^2\) heißt <b>quadrierbar</b>, falls \(S_\ast = S^\ast =: A(X)\).
+</p>
+
+<p>
+<b>Lemma</b>: Sind \(X_1, X_2 \subset \mathbb {R}^2\) quadrierbar mit \(X_1 \cap X_2 = \emptyset \), so ist auch \(X_1 \cup X_2\) quadrierbar und \(A(X_1 \cup X_2) = A(X_1) + A(X_2)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Fla&#x0308;che unter einer Kurve</b>: Seien \(f: [a,b] \rightarrow \left [0, +\infty \right [\) stetig und<br />
+\(X = \{(x, y) \in \mathbb {R}^2 \;|\; x \in [a,b],\; 0 \le y \le f(x)\}\).<br />
+Dann ist \(X\) quadrierbar und \(A(X) = \int _a^b f(x)\dx \).
+</p>
+
+<p>
+<b>Fla&#x0308;che mit Polarkoordinaten</b>: Seien \(f: [\alpha ,\beta ] \subset [0,2\pi ] \rightarrow \left [0,+\infty \right [\) stetig, \((r, \varphi )\) Polarkoordinaten in \(\mathbb {R}^2\) und \(X =
+\{(r, \varphi ) \;|\; \varphi \in [\alpha ,\beta ],\; 0 \le r \le f(\varphi )\}\).<br />
+Dann ist \(X\) quadrierbar und \(A(X) = \frac {1}{2} \int _\alpha ^\beta f^2(\varphi ) d\varphi \).
+</p>
+
+<p>
+<b>Fla&#x0308;che zwischen zwei Kurven</b>: Seien \(f_1, f_2: [a,b] \rightarrow \mathbb {R}\) stetig mit \(f_1(x) \le f_2(x)\) fu&#x0308;r alle \(x \in [a,b]\) und \(X = \{(x,y) \in \mathbb {R}^2 \;|\;
+x \in [a,b],\; f_1(x) \le y \le f_2(x)\}\).<br />
+Dann ist \(X\) quadrierbar und \(A(X) = \int _a^b (f_2(x) - f_1(x))\dx \).
+</p>
+
+<p>
+Man schreibt auch \(A(X) = \int _a^b (f_2(x) - f_1(x))\dx = \int _a^b f_2(x)\dx + \int _b^a f_1(x)\dx = -\oint y\dx = \oint x\dy \) (fu&#x0308;r \(\oint \) bzw. \(-\oint \) kann man auch einen Pfeil
+gegen den bzw. im Uhrzeigersinn schreiben).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Volumen</b>: beliebige Ko&#x0308;rper: \(V := \int _a^b A(x)\dx \) (\(A(x_0)\) ist die Querschnittsfla&#x0308;che bei \(x = x_0\))<br />
+Rotationsko&#x0308;rper: \(A(x) = \pi f^2(x)\), \(V = \pi \int _a^b f^2(x)\dx \)
+</p>
+
+<p>
+<b>Oberfla&#x0308;che von Rotationsko&#x0308;rpern</b>: \(F = 2\pi \int _a^b f(x) \sqrt {1 + (f’(x))^2}\dx \)
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Schwerpunkt einer Kurve</b>: Sei ein System von Massepunkten \(\{x_i, y_i\}\) mit den Massen \(m_i\) gegeben. Dann liegt der Schwerpunkt \(S\) bei \(x_S :=\) \(\frac {\sum m_i x_i}{\sum m_i} = \frac
+{M_x}{M}\) und \(y_S :=\) \(\frac {\sum m_i y_i}{\sum m_i} = \frac {M_y}{M}\).<br />
+U&#x0308;bertra&#x0308;gt man das auf eine Jordansche Kurve \(\Gamma \) der Klasse \(C^1\) (die Masse eines Kurvenstu&#x0308;cks soll proportional zu dessen La&#x0308;nge sein), wobei \(r(s) = (x(s), y(s))\) die
+kanonische Parametrisierung ist, so definiert man \(x_S :=\) \(\frac {\int _0^{L(\Gamma )} x(s)\ds }{L(\Gamma )} = \frac {M_y}{M}\) sowie \(y_S :=\) \(\frac {\int _0^{L(\Gamma )} y(s)\ds }{L(\Gamma )} =
+\frac {M_x}{M}\).
+</p>
+
+<p>
+<b>1. <span class="textsc" >Guldin</span>sche Regel</b>: \(2\pi y_s \cdot L(\Gamma ) = 2\pi \int _0^{L(\Gamma )} y\ds \), wobei \(2\pi y_s\) die Wegla&#x0308;nge des Schwerpunkts bei Rotation um die
+\(x\)-Achse und \(2\pi \int _0^{L(\Gamma )} y\ds \) die Oberfla&#x0308;che des Rotationsko&#x0308;rpers ist.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Schwerpunkt einer Fla&#x0308;che</b>: Sei \(f: [a,b] \rightarrow \mathbb {R}\) mit \(f \ge 0\) eine Funktion, dann definiert man den Schwerpunkt \(S\) mit \(x_S :=\) \(\frac {\int _a^b xf(x)\dx }{A(X)}\)
+und \(y_S :=\) \(\frac {\frac {1}{2} \int _a^b f^2(x)\dx }{A(X)}\), wobei \(A(X) = \int _a^b f(x)\dx \) der Fla&#x0308;cheninhalt des betrachteten Gebiets \(X\) (Fla&#x0308;che zwischen der Kurve von \(f\)
+und der \(x\)-Achse).
+</p>
+
+<p>
+<b>2. <span class="textsc" >Guldin</span>sche Regel</b>: \(2\pi y_s \cdot A(X) = \pi \int _a^b f^2(x)\dx \), wobei \(2\pi y_s\) die Wegla&#x0308;nge des Schwerpunkts bei Rotation um die \(x\)-Achse und
+\(\pi \int _a^b f^2(x)\dx \) das Volumen des Rotationsko&#x0308;rpers ist.
+</p>
+
+
+
+<h2 id="interpolationsformeln-und-numerische-integration">Interpolationsformeln und numerische Integration</h2>
+
+</p>
+
+
+<p>
+Seien \(f: [a,b] \rightarrow \mathbb {R}\) und \(\delta = \{x_k\}_{k=0}^n\) eine <em>a&#x0308;quidistante Zerlegung</em>, also \(x_0 = a\), \(x_n = b\) und \(x_k = a + kh\) mit \(h =\) \(\frac {b - a}{n}\).
+Wa&#x0308;hle \(\xi = \{\xi _k\}_{k=1}^n\) mit \(\xi _k =\) \(\frac {x_{k-1} + x_k}{2}\) als a&#x0308;quidistanten Satz von Stu&#x0308;tzstellen.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>die Rechteckformel (stu&#x0308;ckweise Approximation mit \(P_0\))</b>:<br />
+Auf jedem \(\Delta _k\) wird \(f\) durch das konstante Polynom \(P_0(x) = f(\xi _k)\) fu&#x0308;r \(k = 1, \ldots , n\) approximiert.<br />
+Dann wird die Rechteckformel durch \(\int _a^b f(x)\dx = \sum _{k=1}^n \int _{x_{k-1}}^{x_k} f(x)\dx \approx \sum _{k=1}^n \int _{x_{k-1}}^{x_k} P_0(x)\dx = \sum _{k=1}^n f(\xi _k) h =\) \(\frac {b
+- a}{n}\) \(\sum _{k=1}^n f(\xi _k) := I_R\) hergeleitet.
+</p>
+
+<p>
+<b>Fehlerabscha&#x0308;tzung</b>: Ist \(f \in C^2([a,b])\), so ist \(\left |\int _a^b f(x)\dx - I_R\right | \le \) \(\frac {(b - a)^3}{24n^2}\) \(\max _{x \in [a,b]} |f’’(x)|\),<br />
+d.&#x202f;h. der Fehler verha&#x0308;lt sich wie \(\mathcal {O}(\frac {1}{n^2})\) fu&#x0308;r \(n \to \infty \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>die Trapezformel (stu&#x0308;ckweise Approximation mit \(P_1\))</b>:<br />
+Auf jedem \(\Delta _k\) wird \(f\) durch das Lagrange-Polynom ersten Grades<br />
+\(P_1(x) =\) \(\frac {x - x_k}{x_{k-1} - x_k}\) \(f(x_{k-1}) \;+\) \(\frac {x - x_{k-1}}{x_k - x_{k-1}}\) \(f(x_k)\) approximiert (\(P_1\) geht durch \(x_{k-1}\) und \(x_k\)).<br />
+Dann wird die Trapezformel durch \(\int _a^b f(x)\dx = \sum _{k=1}^n \int _{x_{k-1}}^{x_k} f(x)\dx \approx \sum _{k=1}^n \int _{x_{k-1}}^{x_k} P_1(x)\dx = \sum _{k=1}^n\) \(\frac {f(x_{k-1}) +
+f(x_k)}{2}\) \(\cdot \; h =\) \(\frac {b - a}{n}\) \(\cdot \; \Big (\)\(\frac {f(a) + f(b)}{2}\) \(+\; f(x_1) + \cdots + f(x_{n-1})\Big ) =: I_T\) hergeleitet.
+</p>
+
+<p>
+<b>Fehlerabscha&#x0308;tzung</b>: Ist \(f \in C^2([a,b])\), so ist \(\left |\int _a^b f(x)\dx - I_T\right | \le \) \(\frac {(b - a)^3}{12n^2}\) \(\max _{x \in [a,b]} |f’’(x)|\),<br />
+d.&#x202f;h. der Fehler verha&#x0308;lt sich wie \(\mathcal {O}(\frac {1}{n^2})\) fu&#x0308;r \(n \to \infty \).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>die <span class="textsc" >Simpson</span>sche Regel (stu&#x0308;ckweise Approximation mit \(P_2\))</b>:<br />
+Auf jedem \(\Delta _k\) wird \(f\) durch das Lagrange-Polynom zweiten Grades<br />
+\(P_2(x) =\) \(\frac {(x - \xi _k)(x - x_k)} {(x_{k-1} - \xi _k)(x_{k-1} - x_k)}\) \(f(x_{k-1}) \;+\) \(\frac {(x - x_{k-1})(x - x_k)} {(\xi _k - x_{k-1})(\xi _k - x_k)}\) \(f(\xi _k) \;+\) \(\frac
+{(x - x_{k-1})(x - \xi _k)} {(x_k - x_{k-1})(x_k - \xi _k)}\) \(f(x_k)\)<br />
+approximiert (\(P_2\) geht durch \(x_{k-1}\), \(\xi _k\) und \(x_k\)).<br />
+Dann wird die Simponsche Regel durch \(\int _a^b f(x)\dx = \sum _{k=1}^n \int _{x_{k-1}}^{x_k} f(x)\dx \approx \sum _{k=1}^n \int _{x_{k-1}}^{x_k} P_2(x)\dx \)<br />
+\(= \sum _{k=1}^n (f(x_{k-1}) + 4f(\xi _k) + f(x_k)) \;\cdot \) \(\frac {h}{6}\) \(=\)<br />
+\(\frac {b - a}{6n}\) \(\cdot \Big (f(a) + f(b) + 2 \cdot \big (f(x_1) + \cdots + f(x_{n-1})\big ) + 4 \cdot \big (f(\xi _1) + \cdots + f(\xi _n)\big )\Big ) =: I_S\) hergeleitet.
+</p>
+
+<p>
+<b>Fehlerabscha&#x0308;tzung</b>: Ist \(f \in C^4([a,b])\), so ist \(\left |\int _a^b f(x)\dx - I_S\right | \le \) \(\frac {(b - a)^5}{2880n^4}\) \(\max _{x \in [a,b]} |f^{(4)}(x)|\),<br />
+d.&#x202f;h. der Fehler verha&#x0308;lt sich wie \(\mathcal {O}(\frac {1}{n^4})\) fu&#x0308;r \(n \to \infty \).
+</p>
+
+<a id="analysis-1-autofile-last"></a>
+{% endraw %}
+</div>
+{:/nomarkdown}

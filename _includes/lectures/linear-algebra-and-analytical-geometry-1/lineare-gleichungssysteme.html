@@ -1,0 +1,1638 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\newcommand {\wahr }{\ensuremath {\text {w}}}\)
+
+\(\newcommand {\falsch }{\ensuremath {\text {f}}}\)
+
+\(\newcommand {\ur }{\ensuremath {\leqslant }}\)
+
+\(\newcommand {\aufspann }[1]{\ensuremath {\langle #1 \rangle }}\)
+
+\(\newcommand {\im }{\ensuremath {\operatorname {im}}}\)
+
+\(\newcommand {\basis }[1]{\ensuremath {\mathcal {#1}}}\)
+
+\(\newcommand {\stdbasis }[1]{\ensuremath {\mathcal {E}_{\mathnormal {#1}}}}\)
+
+\(\newcommand {\nk }[1]{\ensuremath {\overline {#1}}}\)
+
+\(\newcommand {\matrixm }{\mathcal {M}}\)
+
+\(\newcommand {\hommatrix }[3]{\ensuremath {\matrixm _{#1}(\basis {#2},\basis {#3})}}\)
+
+\(\newcommand {\id }{\ensuremath {\operatorname {id}}}\)
+
+\(\newcommand {\Hom }{\ensuremath {\operatorname {Hom}}}\)
+
+\(\newcommand {\End }{\ensuremath {\operatorname {End}}}\)
+
+\(\newcommand {\Aut }{\ensuremath {\operatorname {Aut}}}\)
+
+\(\newcommand {\GL }{\ensuremath {\operatorname {GL}}}\)
+
+\(\newcommand {\SL }{\ensuremath {\operatorname {SL}}}\)
+
+\(\newcommand {\rg }{\ensuremath {\operatorname {rg}}}\)
+
+\(\newcommand {\perm }{\ensuremath {\mathfrak {S}}}\)
+
+\(\newcommand {\sign }{\ensuremath {\operatorname {sign}}}\)
+
+\(\newcommand {\diag }{\ensuremath {\operatorname {diag}}}\)
+
+\(\newcommand {\tr }{\ensuremath {\operatorname {tr}}}\)
+
+\(\newcommand {\adj }{\ensuremath {\operatorname {adj}}}\)
+
+\(\newcommand {\lgs }[1]{\ensuremath {\mathfrak {#1}}}\)
+
+\(\newcommand {\lgslsg }[1]{\ensuremath {\mathcal {L}_{\lgs {#1}}}}\)
+
+\(\newcommand {\affin }[1]{\ensuremath {\mathcal {#1}}}\)
+
+\(\newcommand {\TV }{\ensuremath {\operatorname {TV}}}\)
+
+\(\newcommand {\kk }[1]{\ensuremath {\overline {#1}}}\)
+
+\(\newcommand {\eukl }{\ensuremath {\mathcal {E}}}\)
+
+\(\newcommand {\euklebene }{\ensuremath {\mathcal {E}_2}}\)
+
+\(\newcommand {\euklraum }{\ensuremath {\mathcal {E}_3}}\)
+
+\(\newcommand {\strecke }[1]{\ensuremath {\overline {#1}}}\)
+
+\(\newcommand {\vektor }[1]{\ensuremath {\overrightarrow {#1}}}\)
+
+\(\newcommand {\orth }{\ensuremath {\;\bot \;}}\)
+
+\(\newcommand {\xbegriff }[2]{\index {#2}\emph {\dashuline {#1}}}\)
+
+\(\newcommand {\matrixsize }[1]{{\scriptsize #1}}\)
+
+\(\newcommand {\fracsize }[1]{{\large #1}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  font-style:italic;
+  content:'(5)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  font-style:italic;
+  content:'(6)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  font-style:italic;
+  content:'(7)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  font-style:italic;
+  content:'(8)\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+
+<h2 id="theoretisches">Theoretisches</h2>
+
+</p>
+
+
+<p>
+<b>lineares Gleichungssystem</b>:&#x2003;<br />
+
+</p>
+<table>
+
+<tr>
+<td class="tdp">
+
+<p>
+\(\begin {array}{rcrcccrcl} \alpha _{11} x_1 &amp; + &amp; \alpha _{12} x_2 &amp; + &amp; \cdots &amp; + &amp; \alpha _{1n} x_n &amp; = &amp; \beta _1 \\ \alpha _{21} x_1 &amp; + &amp; \alpha
+_{22} x_2 &amp; + &amp; \cdots &amp; + &amp; \alpha _{2n} x_n &amp; = &amp; \beta _2 \\ \vdots &amp; &amp; \vdots &amp; &amp; &amp; &amp; \vdots &amp; &amp; \vdots \\ \alpha _{m1} x_1 &amp; +
+&amp; \alpha _{m2} x_2 &amp; + &amp; \cdots &amp; + &amp; \alpha _{mn} x_n &amp; = &amp; \beta _m \end {array}\)
+</p>
+</td>
+<td class="tdp">
+<div class="minipage" style="vertical-align:middle ; justify-content:flex-start ; ">
+
+<p>
+Ein lineares Gleichungssystem <span
+   id="lateximage-linear-algebra-and-analytical-geometry-1-29"
+   class="lateximagesource"
+><!--
+G
+--><img
+   src="/class-notes/images/lectures/linear-algebra-and-analytical-geometry-1/6B25ADE05F2AD107A6B30BD02E6EB16A.svg"
+   alt="(math image)"
+   style="width:1.063em"
+   class="lateximage"
+></span> besteht aus \(m\) Gleichungen, \(n\) Unbestimmten \(x_j\) (\(1 \le j \le n\)), Koeffizienten \(\alpha _{ij} \in K\) und \(\beta _i \in K\) (\(1 \le i \le m\)) und hat die links angegebene Form.
+</p>
+
+
+</div>
+
+</td>
+</tr>
+
+</table>
+
+<p>
+<b>Matrixform</b>:
+</p>
+&#x2003; Ein LGS <span
+    id="lateximage-linear-algebra-and-analytical-geometry-1-30"
+    class="lateximagesource"
+><!--
+G
+--><img
+   src="/class-notes/images/lectures/linear-algebra-and-analytical-geometry-1/6B25ADE05F2AD107A6B30BD02E6EB16A.svg"
+   alt="(math image)"
+   style="width:1.063em"
+   class="lateximage"
+></span> kann in eine Matrixgleichung \(Ax = b\) umgeschrieben werden.<br />
+Dabei ist \(x =\) \(\begin {pmatrix}x_1 \\ \vdots \\ x_n\end {pmatrix}\) \(\in K^n\), \(b = \) \(\begin {pmatrix}\beta _1 \\ \vdots \\ \beta _m\end {pmatrix}\) \(\in K^m\) und \(A = (\alpha _{ij}) \in
+M_{m \times n}(K)\).<br />
+Der <em><span class="dashuline" >zu <span
+   id="lateximage-linear-algebra-and-analytical-geometry-1-31"
+   class="lateximagesource"
+><!--
+G
+--><img
+   src="/class-notes/images/lectures/linear-algebra-and-analytical-geometry-1/ECDC3FECECB2E627A0A94B4297CBBC28.svg"
+   alt="(math image)"
+   style="width:1.063em"
+   class="lateximage"
+></span> geho&#x0308;rende Homomorphismus</span></em> \(f_A: K^n \rightarrow K^m\) wird definiert als \(f_A(x) = Ax\) fu&#x0308;r \(x \in K^n\) (unabha&#x0308;ngig von \(b\)). Es ist \(\hommatrix
+{f_A}{\stdbasis {m}}{\stdbasis {n}} = A\). Die Lo&#x0308;sungsgesamtheit <span
+   id="lateximage-linear-algebra-and-analytical-geometry-1-32"
+   class="lateximagesource"
+><!--
+LG
+--><img
+   src="/class-notes/images/lectures/linear-algebra-and-analytical-geometry-1/3E6A071A764CF309B5C44FCFD03AFC3F.svg"
+   alt="(math image)"
+   style="width:1.89389em ; vertical-align:-0.29585em "
+   class="lateximage"
+></span> von <span
+   id="lateximage-linear-algebra-and-analytical-geometry-1-33"
+   class="lateximagesource"
+><!--
+G
+--><img
+   src="/class-notes/images/lectures/linear-algebra-and-analytical-geometry-1/6B25ADE05F2AD107A6B30BD02E6EB16A.svg"
+   alt="(math image)"
+   style="width:1.063em"
+   class="lateximage"
+></span> besteht aus allen Vektoren in der Faser \(f_A^{-1}(b)\).
+
+<b>homogenes LGS</b>:&#x2003; Sei ein LGS <span
+   id="lateximage-linear-algebra-and-analytical-geometry-1-34"
+   class="lateximagesource"
+><!--
+G
+--><img
+     src="/class-notes/images/lectures/linear-algebra-and-analytical-geometry-1/6B25ADE05F2AD107A6B30BD02E6EB16A.svg"
+     alt="(math image)"
+     style="width:1.063em"
+     class="lateximage"
+></span> mit \(Ax = b\) gegeben.<br />
+Ist \(b\) der Nullvektor, so heißt <span
+     id="lateximage-linear-algebra-and-analytical-geometry-1-35"
+     class="lateximagesource"
+><!--
+G
+--><img
+     src="/class-notes/images/lectures/linear-algebra-and-analytical-geometry-1/6B25ADE05F2AD107A6B30BD02E6EB16A.svg"
+     alt="(math image)"
+     style="width:1.063em"
+     class="lateximage"
+></span> <em><span class="dashuline" >homogen</span></em>, sonst <em><span class="dashuline" >inhomogen</span></em>.<br />
+Ist <span
+     id="lateximage-linear-algebra-and-analytical-geometry-1-36"
+     class="lateximagesource"
+><!--
+G
+--><img
+     src="/class-notes/images/lectures/linear-algebra-and-analytical-geometry-1/6B25ADE05F2AD107A6B30BD02E6EB16A.svg"
+     alt="(math image)"
+     style="width:1.063em"
+     class="lateximage"
+></span> homogen, so ist die Lo&#x0308;sung \(x = 0\) die <em><span class="dashuline" >triviale Lo&#x0308;sung</span></em>.<br />
+Ist <span
+     id="lateximage-linear-algebra-and-analytical-geometry-1-37"
+     class="lateximagesource"
+><!--
+G
+--><img
+   src="/class-notes/images/lectures/linear-algebra-and-analytical-geometry-1/6B25ADE05F2AD107A6B30BD02E6EB16A.svg"
+   alt="(math image)"
+   style="width:1.063em"
+   class="lateximage"
+></span> inhomogen, so heißt das LGS <span
+   id="lateximage-linear-algebra-and-analytical-geometry-1-38"
+   class="lateximagesource"
+><!--
+H
+--><img
+   src="/class-notes/images/lectures/linear-algebra-and-analytical-geometry-1/266DD38BD7D0EEB4E762953E092565A5.svg"
+   alt="(math image)"
+   style="width:0.97719em ; vertical-align:-0.0831em "
+   class="lateximage"
+></span> mit \(Ax = 0\) das <em><span class="dashuline" >zu <span
+   id="lateximage-linear-algebra-and-analytical-geometry-1-39"
+   class="lateximagesource"
+><!--
+G
+--><img
+   src="/class-notes/images/lectures/linear-algebra-and-analytical-geometry-1/ECDC3FECECB2E627A0A94B4297CBBC28.svg"
+   alt="(math image)"
+   style="width:1.063em"
+   class="lateximage"
+></span> geho&#x0308;rige homogene System</span></em>.
+
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Lo&#x0308;sungen eines homogenen LGS</span>):</span> Die Lo&#x0308;sungsgesamtheit eines homogenen LGS \(Ax = 0\) besteht genau aus den Vektoren
+von \(\ker f_A\).
+
+<b>Folgerung</b>: Ein homogenes LGS <span
+   id="lateximage-linear-algebra-and-analytical-geometry-1-40"
+   class="lateximagesource"
+><!--
+H
+--><img
+    src="/class-notes/images/lectures/linear-algebra-and-analytical-geometry-1/266DD38BD7D0EEB4E762953E092565A5.svg"
+    alt="(math image)"
+    style="width:0.97719em ; vertical-align:-0.0831em "
+    class="lateximage"
+></span> (\(Ax = 0\)) besitzt genau dann nur die triviale Lo&#x0308;sung, wenn der zugeho&#x0308;rige Homomorphismus \(f_A\) injektiv ist.<br />
+Die Menge der Lo&#x0308;sungen von <span
+    id="lateximage-linear-algebra-and-analytical-geometry-1-41"
+    class="lateximagesource"
+><!--
+H
+--><img
+   src="/class-notes/images/lectures/linear-algebra-and-analytical-geometry-1/266DD38BD7D0EEB4E762953E092565A5.svg"
+   alt="(math image)"
+   style="width:0.97719em ; vertical-align:-0.0831em "
+   class="lateximage"
+></span> ist ein Unterraum von \(K^n\) mit der Dimension \(n - \rg (A)\).
+
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Lo&#x0308;sbarkeit</span>):</span> Sei \(\lgs {G}: Ax = b\) ein LGS mit \(A \in M_{m \times n}(K)\). Dann sind folgende Aussagen
+a&#x0308;quivalent: &#x2003;&#x2003;<span
+   id="lateximage-linear-algebra-and-analytical-geometry-1-42"
+   class="lateximagesource"
+><!--
+G
+--><img
+   src="/class-notes/images/lectures/linear-algebra-and-analytical-geometry-1/6B25ADE05F2AD107A6B30BD02E6EB16A.svg"
+   alt="(math image)"
+   style="width:1.063em"
+   class="lateximage"
+></span> besitzt eine Lo&#x0308;sung, &#x2003;&#x2003;\(b \in \im f_A\), &#x2003;&#x2003;\(\rg (A) = \rg (A|b)\).<br />
+<span
+   id="lateximage-linear-algebra-and-analytical-geometry-1-43"
+   class="lateximagesource"
+><!--
+G
+--><img
+   src="/class-notes/images/lectures/linear-algebra-and-analytical-geometry-1/6B25ADE05F2AD107A6B30BD02E6EB16A.svg"
+   alt="(math image)"
+   style="width:1.063em"
+   class="lateximage"
+></span> hat genau dann eine eindeutige Lo&#x0308;sung, wenn \(\rg (A) = \rg (A|b) = n\).
+
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Lo&#x0308;sungen</span>):</span> Sei \(x_0\) eine Lo&#x0308;sung des LGS <span
+   id="lateximage-linear-algebra-and-analytical-geometry-1-44"
+   class="lateximagesource"
+><!--
+G
+--><img
+   src="/class-notes/images/lectures/linear-algebra-and-analytical-geometry-1/6B25ADE05F2AD107A6B30BD02E6EB16A.svg"
+   alt="(math image)"
+   style="width:1.063em"
+   class="lateximage"
+></span>. Dann ist \(\lgslsg {G} = x_0 + \ker f_A\).
+
+<b>Folgerung</b>: Sei \(\lgs {G}: Ax = b\) ein LGS mit \(n\) Gleichungen und \(n\) Unbestimmten. Dann hat <span
+   id="lateximage-linear-algebra-and-analytical-geometry-1-45"
+   class="lateximagesource"
+><!--
+G
+--><img
+   src="/class-notes/images/lectures/linear-algebra-and-analytical-geometry-1/6B25ADE05F2AD107A6B30BD02E6EB16A.svg"
+   alt="(math image)"
+   style="width:1.063em"
+   class="lateximage"
+></span> eine eindeutige Lo&#x0308;sung genau dann, wenn \(A\) invertierbar ist. In diesem Fall ist die Lo&#x0308;sung \(x = A^{-1}b\).
+
+<b>Folgerung</b>: Sei \(m &lt; n\) und \(\lgs {H}: Ax = 0\) ein homogenes LGS mit \(m\) Gleichungen und \(n\) Unbestimmten. Dann hat <span
+   id="lateximage-linear-algebra-and-analytical-geometry-1-46"
+   class="lateximagesource"
+><!--
+H
+--><img
+   src="/class-notes/images/lectures/linear-algebra-and-analytical-geometry-1/266DD38BD7D0EEB4E762953E092565A5.svg"
+   alt="(math image)"
+   style="width:0.97719em ; vertical-align:-0.0831em "
+   class="lateximage"
+></span> nichttriviale Lo&#x0308;sungen.
+
+
+
+6.2&#x2003;Konkretes
+
+<span class="uline" ><em>Satz</em> (<span class="textsl" >LGS-Umformungen</span>):</span> Sei \(\lgs {G}: Ax = b\) ein LGS mit \(A \in M_{m \times n}(K)\).<br />
+Kann man \((A|b)\) in (\(A’|b’)\) mittels elementaren Zeilenoperationen umwandeln, so ist \(\lgslsg {G} = \lgslsg {G’}\)<br />
+(wobei \(\lgs {G’}: A’x = b’\)). Wandelt man \(A\) in \(A’’\) durch eine Permutation \(\pi \) der Spalten von \(A\) um, so erha&#x0308;lt man \(\lgslsg {G}\) aus \(\lgslsg {G’’}\), indem man auf die Komponenten
+jedes Lo&#x0308;sungsvektors \(x_0\) von \(\lgslsg {G’}\) die inverse Permutation \(\pi ^{-1}\) anwendet (wobei \(\lgs {G’’}: A’’x = b\)).
+
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Lo&#x0308;sen von LGS</span>):</span><br />
+<table>
+
+<tr>
+<td class="tdp">
+
+<p>
+\(\left (\begin {array}{ccccccc|c} 1 &amp; 0 &amp; \cdots &amp; 0 &amp; \delta _{1, r+1} &amp; \cdots &amp; \delta _{1, n} &amp; \beta ’_1 \\ 0 &amp; 1 &amp; \cdots &amp; 0 &amp; \delta _{2,
+r+1} &amp; \cdots &amp; \delta _{2, n} &amp; \beta ’_2 \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; &amp; \vdots &amp; \vdots \\ 0 &amp; 0 &amp; \cdots &amp; 1 &amp;
+\delta _{r, r+1} &amp; \cdots &amp; \delta _{r, n} &amp; \beta ’_r \\ 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; \beta ’_{r+1} \\ \vdots &amp; \vdots &amp; &amp; \vdots
+&amp; \vdots &amp; &amp; \vdots &amp; \vdots \\ 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; \beta ’_m \end {array}\right )\)
+</p>
+</td>
+<td class="tdp">
+<div class="minipage" style="vertical-align:middle ; justify-content:flex-start ; ">
+
+<p>
+Sei \(\lgs {G}: Ax = b\) ein LGS mit \(A \in M_{m \times n}(K)\). Dann kann \((A|b)\) durch Zeilenoperationen und Anwendung einer Permutation \(\pi \) der Spalten von \(A\) auf die Gestalt \((A’|b’)\) (siehe links)
+gebrachten werden. Dabei ist \(r = \rg (A)\) sowie \(\delta _{kl}, \beta ’_i \in K\) (\(1 \le k \le r &lt; r+1 \le l \le n\), \(1 \le i \le m\)).
+</p>
+
+
+</div>
+
+</td>
+</tr>
+
+</table>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Lo&#x0308;sungen eines LGS</span>):</span><br />
+
+</p>
+<table>
+
+<tr>
+<td class="tdp">
+
+<p>
+\(x_0 = \begin {pmatrix}\beta ’_1 \\ \vdots \\ \beta ’_r \\ 0 \\ \vdots \\ 0\end {pmatrix} \in K^n,\; x_i = \begin {pmatrix}-\delta _{1, r+i} \\ \vdots \\ -\delta _{r, r+i} \\ 0 \\ \vdots \\
+1 \\ \vdots \\ 0\end {pmatrix} \in K^n\)
+</p>
+</td>
+<td class="tdp">
+<div class="minipage" style="vertical-align:middle ; justify-content:flex-start ; ">
+
+<p>
+Sei \(\lgs {G’}: A’x = b’\) ein LGS mit der obigen Form. Dann ist <span
+   id="lateximage-linear-algebra-and-analytical-geometry-1-47"
+   class="lateximagesource"
+><!--
+G
+--><img
+    src="/class-notes/images/lectures/linear-algebra-and-analytical-geometry-1/6B25ADE05F2AD107A6B30BD02E6EB16A.svg"
+    alt="(math image)"
+    style="width:1.063em"
+    class="lateximage"
+></span> genau dann lo&#x0308;sbar, falls \(\beta ’_{r+1} = \cdots = \beta ’_m = 0\).
+</p>
+<p>
+In diesem Fall besteht \(\lgslsg {G’}\) aus allen Vektoren der Form
+</p>
+<p>
+\(x = x_0 + \lambda _1 x_1 + \cdots + \lambda _s x_s\) mit \(\lambda _1, \ldots , \lambda _s \in K\), \(s = n - r\) sowie \(r = \rg (A)\), wobei der Eintrag \(1\) an der \(r+i\)-ten Stelle steht. Dabei ist
+\(x_0\) eine spezielle Lo&#x0308;sung und \(\aufspann {x_1, \ldots , x_s} = \ker f_A\), genauer \(\{x_1, \ldots , x_s\}\) eine Basis von \(\ker f_A\).
+</p>
+
+
+</div>
+
+</td>
+</tr>
+
+</table>
+
+<p>
+<span class="uline" ><b><kbd>Prozedur</kbd> (Lineares Gleichungssystem lo&#x0308;sen)</b>:</span> Gegeben sei ein LGS \(\lgs {G}: Ax = b\).
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p>  Man bildet die augmentierte Matrix \((A|b)\).
+</p>
+</li>
+<li class="list-item-f1"><p>  Ist die erste Spalte eine Nullspalte, so vertauscht man sie mit der ersten Spalte vom \(A\)-Teil, die keine Nullspalte ist. Ist \(A\) die Nullmatrix, so ist man fertig (Schritt 6).
+</p>
+</li>
+<li class="list-item-f2"><p>  Ist das Element an Position \((1, 1)\) Null, so vertauscht man die erste Zeile mit einer Zeile, an deren erster Position keine Null steht.
+</p>
+</li>
+<li class="list-item-f3"><p>Dann dividiert man die erste Zeile durch den ersten Eintrag, sodass dort eine \(1\) steht.<br />
+Durch Abziehen von Vielfachen der ersten Zeile kann man erreichen, dass in der ersten Spalte bis auf den ersten Eintrag nur Nullen stehen.
+</p>
+</li>
+<li class="list-item-f4"><p>Dann macht man mit der zweiten Spalte und Zeile genau so weiter. Der \((2, 2)\)-te Eintrag ist dann eine Eins, durch Abziehen eines Vielfachen der zweiten Spalte kann man erreichen, dass der \((1, 2)\)-te Eintrag
+\(0\) ist.
+</p>
+</li>
+<li class="list-item-f5"><p>Mit den anderen Zeilen/Spalten fa&#x0308;hrt man auf diese Weise fort. Man endet in einer Matrix \((A’|b’)\) der obigen Form.
+</p>
+</li>
+<li class="list-item-f6"><p>Ist \(\beta ’_i \not = 0\) fu&#x0308;r ein \(i\) mit \(r + i \le i \le m\), dann ist das LGS nicht lo&#x0308;sbar. Andernfalls fu&#x0308;llt man \((A’|b’)\) auf (\(m &lt; n\)) oder streicht Nullen (\(m
+&gt; n\)), bis eine Matrix mit \(n\) Zeilen entsteht.
+</p>
+</li>
+<li class="list-item-f7"><p>\(x_0\) ist dann eine spezielle Lo&#x0308;sung des modifizierten LGS und die \(x_i\) (\(1 \le i \le n - r\)) eine Basis der Lo&#x0308;sungsgesamtheit des zugeho&#x0308;rigen homogenen LGS (<em>siehe
+oben</em>). Dann werden die Spaltenpermutationen durch Anwendung der inversen Permutation auf \(x_0, x_1, \ldots , x_{n-r}\) wieder ru&#x0308;ckga&#x0308;ngig gemacht.<br />
+Die Lo&#x0308;sungsgesamtheit des LGS <span
+    id="lateximage-linear-algebra-and-analytical-geometry-1-48"
+    class="lateximagesource"
+><!--
+G
+--><img
+   src="/class-notes/images/lectures/linear-algebra-and-analytical-geometry-1/6B25ADE05F2AD107A6B30BD02E6EB16A.svg"
+   alt="(math image)"
+   style="width:1.063em"
+   class="lateximage"
+></span> ist dann \(\lgslsg {G} = x_0 + \aufspann {x_1, \ldots , x_{n-r}}\).
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="numerisches">Numerisches</h2>
+<b>Treppenform</b>:&#x2003; \(A = (\alpha _{ji}) \in M_{m \times n}(K)\) mit Zeilenvektoren \(z_j\) ist in <em><span class="dashuline" >Treppenform</span></em>, falls \(A = (0)\) oder es Indizes \(1 \le i_1
+&lt; \cdots &lt; i_r \le n\) (\(r = \rg (A)\)) gibt, sodass<br />
+1. alle Zeilen \(z_j\) mit \(j &gt; r\) Nullzeilen sind und &#x2003;2. fu&#x0308;r \(j \le r\) der erste von Null verschiedene Eintrag der Zeile \(z_j\) in Spalte \(i_j\) ist, d.&#x202f;h. \(\alpha _{ji_{j}} \not = 0\)
+sowie fu&#x0308;r \(k &lt; i_j\) gilt \(\alpha _{jk} = 0\).
+</p>
+
+<p>
+<em>Beobachtung</em>: Ein LGS in oberer Dreiecksgestalt (quadratisch, unter der Hauptdiagonalen Nullen) la&#x0308;sst sich durch Einsetzen von unten nach oben einfach auflo&#x0308;sen. (Man kann immer annehmen, dass die
+Matrix quadratisch ist: sonst Nullzeilen/-spalten hinzufu&#x0308;gen.)
+</p>
+
+<p>
+<b><span class="textsc" >Gauß</span>-Algorithmus</b>:&#x2003; Mit dem <em><span class="dashuline" >Gauß-Algorithmus</span></em> la&#x0308;sst sich ein LGS sogar nur mit elementaren Zeilenoperationen (ohne
+Spaltenoperationen) lo&#x0308;sen.
+</p>
+
+
+
+<h2 id="zusaetzliches-projekt-6-affine-geometrie">Zusätzliches: Projekt 6 (Affine Geometrie)</h2>
+
+</p>
+
+
+<p>
+<b>affiner Raum</b>:&#x2003; Ein <em><span class="dashuline" >affiner Raum</span></em> \((\affin {A}, V, \boldsymbol{+})\) besteht aus einer nicht-leeren Menge \(\affin {A}\) von Punkten, einem
+\(K\)-Vektorraum \(V\) und einer Abbildung \(\boldsymbol{+}: \affin {A} \times V \rightarrow \affin {A}\), sodass \((P + v) + u = P + (v + u)\), \(\exists !_{x \in V}\; Q = P + x\) sowie \(P + 0_V = P\)
+fu&#x0308;r alle \(P, Q \in \affin {A}\) und \(u, v \in V\).<br />
+Der eindeutig bestimmte Vektor \(x \in V\) in der Gleichung \(Q = P + x\) heißt \(x = \vektor {PQ}\).<br />
+Fu&#x0308;r \(\affin {A} = \emptyset \) entfallen Vektorraum und Abbildung.<br />
+Ist \(K = \real \) oder \(K = \complex \), so heißt \(\affin {A}\) <em><span class="dashuline" >reeller oder komplexer affiner Raum</span></em>.<br />
+Die <em><span class="dashuline" >Dimension</span></em> \(\dim \affin {A}\) eines affinen Raums ist \(\dim V\). Fu&#x0308;r \(\affin {A} = \emptyset \) ist \(\dim \affin {A} = -1\).
+</p>
+
+<p>
+<b>affiner Unterraum</b>:&#x2003; Sei \((\affin {A}, V, \boldsymbol{+})\) ein affiner Raum. \((\affin {U}, V_\affin {U}, \boldsymbol{+})\) heißt <em><span class="dashuline" >affiner
+Unterraum</span></em> von \(\affin {A}\), falls \(\affin {U} \subseteq \affin {A}\) und \(V_\affin {U} \ur V\) mit \(V_\affin {U} = \{v \in V \;|\; P + v \in \affin {U} \text { für alle } P \in
+\affin {U}\}\).<br />
+Zwei nicht-leere affine Unterra&#x0308;ume \(\affin {U}, \affin {W}\) des affinen Raums \(\affin {A}\) heißen <em><span class="dashuline" >parallel</span></em> (\(\affin {U} \parallel \affin {W}\)), falls
+\(V_\affin {U} \subseteq V_\affin {W}\) oder \(V_\affin {W} \subseteq V_\affin {U}\). \(\emptyset \) als affiner Unterraum ist parallel zu allen Unterra&#x0308;umen.
+</p>
+
+<p>
+<b>affine Abbildung</b>:&#x2003; Seien \((\affin {A}, V_1, \boldsymbol{+})\), \((\affin {B}, V_2, \boldsymbol{+})\) zwei affine Ra&#x0308;ume (\(V_1, V_2\) \(K\)-Vektorra&#x0308;ume). Eine Abbildung
+\(f: \affin {A} \rightarrow \affin {B}\) heißt <em><span class="dashuline" >affine Abbildung</span></em>, falls es eine \(K\)-lineare Abbildung \(f^\ast : V_1 \rightarrow V_2\) gibt, sodass \(f^\ast (\vektor
+{PQ}) = \vektor {f(P) f(Q)}\) fu&#x0308;r alle \(P, Q \in \affin {A}\)<br />
+(alternativ \(f(P + v) = f(P) + f^\ast (v)\) fu&#x0308;r alle \(P \in \affin {A}\) und \(v \in V_1\)).<br />
+Eine bijektive affine Abbildung eines affinen Raums in sich heißt <em><span class="dashuline" >Affinita&#x0308;t</span></em>.
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >Affinita&#x0308;ten und Isomorphismen</span>): Eine affine Abbildung \(f\) ist genau dann eine Affinita&#x0308;t, wenn \(f^\ast \) ein Isomorphismus ist.
+</p>
+
+<p>
+<b>Punkt, Gerade, Ebene</b>:&#x2003; Sei \(\affin {A}\) ein affiner Raum.<br />
+Ein <em><span class="dashuline" >Punkt</span></em> ist ein Element \(P \in \affin {A}\) (oder ein \(0\)-dimensionaler affiner Unterraum).<br />
+Eine <em><span class="dashuline" >Gerade</span></em> bzw. eine <em><span class="dashuline" >Ebene</span></em> ist ein \(1\)- bzw. \(2\)-dimensionaler Unterraum von \(\affin {A}\).
+</p>
+
+<p>
+<b>Verbindungsraum</b>:&#x2003; Fu&#x0308;r zwei affine Unterra&#x0308;ume \(\affin {U}, \affin {W}\) von \(\affin {A}\) ist \(\affin {U} \lor \affin {W}\) der <em><span class="dashuline"
+>Verbindungsraum</span></em> und zwar der kleinste affine Unterraum von \(\affin {A}\), der \(\affin {U}\) und \(\affin {W}\) als Teilmengen entha&#x0308;lt.
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >Verbindungsraum und Durchschnitt</span>): Es gilt \(V_{\affin {U} \lor \affin {W}} = V_\affin {U} + V_\affin {W}\) fu&#x0308;r \(\affin {U} \cap \affin {W} \not
+= \emptyset \) bzw. \(V_{\affin {U} \lor \affin {W}} = V_\affin {U} + V_\affin {W} + K (\vektor {PP’})\) fu&#x0308;r \(\affin {U} \cap \affin {W} = \emptyset \), wobei \(P \in \affin {U}\) und \(P’
+\in \affin {W}\) fest gewa&#x0308;hlt sind.<br />
+Es gilt \(V_{\affin {U} \cap \affin {W}} = V_\affin {U} \cap V_\affin {W}\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Dimensionssatz</span>):</span> Seien \(\affin {U}, \affin {W}\) zwei endlich-dimensionale affine Unterra&#x0308;ume des affinen Raums \(\affin
+{A}\). Dann gilt \(\dim \affin {U} + \dim \affin {W} = \dim (\affin {U} \lor \affin {W}) + \dim (\affin {U} \cap \affin {W}) + \dim (V_\affin {U} \cap V_\affin {W})\) fu&#x0308;r den Fall \(\affin
+{U}, \affin {W} \not = \emptyset \) und \(\affin {U} \cap \affin {W} = \emptyset \). Andernfalls ist \(\dim \affin {U} + \dim \affin {W} = \dim (\affin {U} \lor \affin {W}) + \dim (\affin {U} \cap
+\affin {W})\).
+</p>
+
+<p>
+<b>kollinear</b>:&#x2003; Drei Punkte \(x, y, z \in \affin {A}\) eines affinen Raums \(\affin {A}\) heißen <em><span class="dashuline" >kollinear</span></em>, falls sie auf einer gemeinsamen Gerade liegen.
+</p>
+
+<p>
+<b>Teilverha&#x0308;ltnis</b>:&#x2003; Seien \(P, Q, R \in \affin {A}\) drei kollineare Punkte eines affinen Raums \(\affin {A}\).<br />
+Ist \(P \not = Q\), dann existiert ein Skalar \(t \in K\), sodass \(\vektor {PR} = t \cdot \vektor {PQ}\).<br />
+\(t = \TV (P, Q, R)\) heißt <em><span class="dashuline" >Teilverha&#x0308;ltnis</span></em> von \(P, Q, R\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >affine Abbildungen erha&#x0308;lt Teilverha&#x0308;ltnis</span>):</span> Seien \(P, Q, R \in \affin {A}\) drei kollineare Punkte eines affinen Raums
+\(\affin {A}\) und \(f: \affin {A} \rightarrow \affin {B}\) eine affine Abbildung.<br />
+Dann sind \(f(P), f(Q), f(R)\) ebenfalls kollinear. Ist \(P \not = Q\) sowie \(f(P) \not = f(Q)\), dann bleibt das Teilverha&#x0308;ltnis erhalten, d.&#x202f;h. ist \(\vektor {PR} = t \cdot \vektor {PQ}\) fu&#x0308;r
+ein \(t \in K\), dann ist \(\vektor {f(P)f(R)} = t \cdot \vektor {f(P)f(Q)}\).
+</p>
+
+<p>
+<b>Fixpunkt, Fixgerade, Fixpunktgerade</b>:&#x2003; Ein <em><span class="dashuline" >Fixpunkt</span></em> \(P\) einer affinen Abbildung \(f: \affin {A} \rightarrow \affin {A}\) ist ein Punkt \(P \in \affin
+{A}\), sodass \(f(P) = P\). Eine <em><span class="dashuline" >Fixgerade</span></em> ist eine Gerade, die wieder auf sich selbst abgebildet wird, d.&#x202f;h. das Bild jeden Punktes der Gerade liegt wieder auf der Gerade.
+Eine <em><span class="dashuline" >Fixpunktgerade</span></em> ist eine Gerade, die nur aus Fixpunkten besteht, d.&#x202f;h. jeder Punkt wird auf sich selbst abgebildet.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Bestimmung von affinen Abbildungen durch Fixpunkte</span>):</span> Sei \(\affin {G}\) eine affine Gerade und \(f: \affin {G} \rightarrow \affin
+{G}\) eine affine Abbildung mit zwei verschiedenen Fixpunkten. Dann ist \(f\) die Identita&#x0308;t.<br />
+Sei \(\affin {E}\) eine affine Ebene und \(f: \affin {E} \rightarrow \affin {E}\) eine affine Abbildung mit zwei verschiedenen Fixpunktgeraden. Dann ist \(f\) die Identita&#x0308;t.
+</p>
+
+<p>
+<b>affines Koordinatensystem</b>:&#x2003; Sei \((\affin {A}, V, \boldsymbol{+})\) ein affiner Raum. Eine Menge \(\{p_0, p_1, \ldots , p_n\}\) heißt <em><span class="dashuline" >affines
+Koordinatensystem</span></em>, falls \(\{\vektor {p_0 p_i} \;|\; 1 \le i \le n\}\) eine Basis von \(V\) bildet.
+</p>
+
+{% endraw %}
+</div>
+{:/nomarkdown}

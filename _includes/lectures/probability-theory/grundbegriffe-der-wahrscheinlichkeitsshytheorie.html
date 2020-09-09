@@ -1,0 +1,2783 @@
+
+{::nomarkdown}
+<div class="lwarp-contents">
+{% raw %}
+<div class="hidden" >
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\mathllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathclap }[2][]{{#1#2}}\)
+
+\(\newcommand {\mathmbox }[1]{#1}\)
+
+\(\newcommand {\clap }[1]{#1}\)
+
+\(\newcommand {\LWRmathmakebox }[2][]{#2}\)
+
+\(\newcommand {\mathmakebox }[1][]{\LWRmathmakebox }\)
+
+\(\newcommand {\cramped }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedllap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedrlap }[2][]{{#1#2}}\)
+
+\(\newcommand {\crampedclap }[2][]{{#1#2}}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\crampedsubstack }{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\adjustlimits }{}\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\require {extpfeil}\)
+
+\(\Newextarrow \xleftrightarrow {10,10}{0x2194}\)
+
+\(\Newextarrow \xLeftarrow {10,10}{0x21d0}\)
+
+\(\Newextarrow \xhookleftarrow {10,10}{0x21a9}\)
+
+\(\Newextarrow \xmapsto {10,10}{0x21a6}\)
+
+\(\Newextarrow \xRightarrow {10,10}{0x21d2}\)
+
+\(\Newextarrow \xLeftrightarrow {10,10}{0x21d4}\)
+
+\(\Newextarrow \xhookrightarrow {10,10}{0x21aa}\)
+
+\(\Newextarrow \xrightharpoondown {10,10}{0x21c1}\)
+
+\(\Newextarrow \xleftharpoondown {10,10}{0x21bd}\)
+
+\(\Newextarrow \xrightleftharpoons {10,10}{0x21cc}\)
+
+\(\Newextarrow \xrightharpoonup {10,10}{0x21c0}\)
+
+\(\Newextarrow \xleftharpoonup {10,10}{0x21bc}\)
+
+\(\Newextarrow \xleftrightharpoons {10,10}{0x21cb}\)
+
+\(\newcommand {\LWRdounderbracket }[3]{\underset {#3}{\underline {#1}}}\)
+
+\(\newcommand {\LWRunderbracket }[2][]{\LWRdounderbracket {#2}}\)
+
+\(\newcommand {\underbracket }[1][]{\LWRunderbracket }\)
+
+\(\newcommand {\LWRdooverbracket }[3]{\overset {#3}{\overline {#1}}}\)
+
+\(\newcommand {\LWRoverbracket }[2][]{\LWRdooverbracket {#2}}\)
+
+\(\newcommand {\overbracket }[1][]{\LWRoverbracket }\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newenvironment {matrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {pmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {smallmatrix*}[1][]{\begin {matrix}}{\end {matrix}}\)
+
+\(\newenvironment {psmallmatrix*}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix*}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix*}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix*}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix*}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newenvironment {psmallmatrix}[1][]{\begin {pmatrix}}{\end {pmatrix}}\)
+
+\(\newenvironment {bsmallmatrix}[1][]{\begin {bmatrix}}{\end {bmatrix}}\)
+
+\(\newenvironment {Bsmallmatrix}[1][]{\begin {Bmatrix}}{\end {Bmatrix}}\)
+
+\(\newenvironment {vsmallmatrix}[1][]{\begin {vmatrix}}{\end {vmatrix}}\)
+
+\(\newenvironment {Vsmallmatrix}[1][]{\begin {Vmatrix}}{\end {Vmatrix}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newenvironment {dcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {dcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {rcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {drcases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newenvironment {cases*}{\begin {cases}}{\end {cases}}\)
+
+\(\newcommand {\MoveEqLeft }[1][]{}\)
+
+\(\def \LWRAboxed #1&amp;#2&amp;#3!|!{\fbox {\(#1\)}&amp;\fbox {\(#2\)}} \newcommand {\Aboxed }[1]{\LWRAboxed #1&amp;&amp;!|!} \)
+
+\( \newcommand {\LWRABLines }[1][\Updownarrow ]{#1 \notag \\}\newcommand {\ArrowBetweenLines }{\ifstar \LWRABLines \LWRABLines } \)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vdotswithin }[1]{\hspace {.5em}\vdots }\)
+
+\(\newcommand {\LWRshortvdotswithinstar }[1]{\vdots \hspace {.5em} &amp; \\}\)
+
+\(\newcommand {\LWRshortvdotswithinnostar }[1]{&amp; \hspace {.5em}\vdots \\}\)
+
+\(\newcommand {\shortvdotswithin }{\ifstar \LWRshortvdotswithinstar \LWRshortvdotswithinnostar }\)
+
+\(\newcommand {\MTFlushSpaceAbove }{}\)
+
+\(\newcommand {\MTFlushSpaceBelow }{\\}\)
+
+\(\newcommand \lparen {(}\)
+
+\(\newcommand \rparen {)}\)
+
+\(\newcommand {\ordinarycolon }{:}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\mathop \ordinarycolon }}\)
+
+\(\newcommand \dblcolon {\vcentcolon \vcentcolon }\)
+
+\(\newcommand \coloneqq {\vcentcolon =}\)
+
+\(\newcommand \Coloneqq {\dblcolon =}\)
+
+\(\newcommand \coloneq {\vcentcolon {-}}\)
+
+\(\newcommand \Coloneq {\dblcolon {-}}\)
+
+\(\newcommand \eqqcolon {=\vcentcolon }\)
+
+\(\newcommand \Eqqcolon {=\dblcolon }\)
+
+\(\newcommand \eqcolon {\mathrel {-}\vcentcolon }\)
+
+\(\newcommand \Eqcolon {\mathrel {-}\dblcolon }\)
+
+\(\newcommand \colonapprox {\vcentcolon \approx }\)
+
+\(\newcommand \Colonapprox {\dblcolon \approx }\)
+
+\(\newcommand \colonsim {\vcentcolon \sim }\)
+
+\(\newcommand \Colonsim {\dblcolon \sim }\)
+
+\(\newcommand {\nuparrow }{\mathrel {\cancel {\uparrow }}}\)
+
+\(\newcommand {\ndownarrow }{\mathrel {\cancel {\downarrow }}}\)
+
+\(\newcommand {\bigtimes }{\mathop {\Large \times }\limits }\)
+
+\(\newcommand {\prescript }[3]{{}^{#1}_{#2}#3}\)
+
+\(\newenvironment {lgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newenvironment {rgathered}{\begin {gathered}}{\end {gathered}}\)
+
+\(\newcommand {\splitfrac }[2]{{}^{#1}_{#2}}\)
+
+\(\let \splitdfrac \splitfrac \)
+
+\(\newcommand {\LWRoverlaysymbols }[2]{\mathord {\smash {\mathop {#2\strut }\limits ^{\smash {\lower 3ex{#1}}}}\strut }}\)
+
+\(\newcommand{\alphaup}{\unicode{x03B1}}\)
+
+\(\newcommand{\betaup}{\unicode{x03B2}}\)
+
+\(\newcommand{\gammaup}{\unicode{x03B3}}\)
+
+\(\newcommand{\digammaup}{\unicode{x03DD}}\)
+
+\(\newcommand{\deltaup}{\unicode{x03B4}}\)
+
+\(\newcommand{\epsilonup}{\unicode{x03F5}}\)
+
+\(\newcommand{\varepsilonup}{\unicode{x03B5}}\)
+
+\(\newcommand{\zetaup}{\unicode{x03B6}}\)
+
+\(\newcommand{\etaup}{\unicode{x03B7}}\)
+
+\(\newcommand{\thetaup}{\unicode{x03B8}}\)
+
+\(\newcommand{\varthetaup}{\unicode{x03D1}}\)
+
+\(\newcommand{\iotaup}{\unicode{x03B9}}\)
+
+\(\newcommand{\kappaup}{\unicode{x03BA}}\)
+
+\(\newcommand{\varkappaup}{\unicode{x03F0}}\)
+
+\(\newcommand{\lambdaup}{\unicode{x03BB}}\)
+
+\(\newcommand{\muup}{\unicode{x03BC}}\)
+
+\(\newcommand{\nuup}{\unicode{x03BD}}\)
+
+\(\newcommand{\xiup}{\unicode{x03BE}}\)
+
+\(\newcommand{\omicronup}{\unicode{x03BF}}\)
+
+\(\newcommand{\piup}{\unicode{x03C0}}\)
+
+\(\newcommand{\varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\rhoup}{\unicode{x03C1}}\)
+
+\(\newcommand{\varrhoup}{\unicode{x03F1}}\)
+
+\(\newcommand{\sigmaup}{\unicode{x03C3}}\)
+
+\(\newcommand{\varsigmaup}{\unicode{x03C2}}\)
+
+\(\newcommand{\tauup}{\unicode{x03C4}}\)
+
+\(\newcommand{\upsilonup}{\unicode{x03C5}}\)
+
+\(\newcommand{\phiup}{\unicode{x03D5}}\)
+
+\(\newcommand{\varphiup}{\unicode{x03C6}}\)
+
+\(\newcommand{\chiup}{\unicode{x03C7}}\)
+
+\(\newcommand{\psiup}{\unicode{x03C8}}\)
+
+\(\newcommand{\omegaup}{\unicode{x03C9}}\)
+
+\(\newcommand{\Alphaup}{\unicode{x0391}}\)
+
+\(\newcommand{\Betaup}{\unicode{x0392}}\)
+
+\(\newcommand{\Gammaup}{\unicode{x0393}}\)
+
+\(\newcommand{\Digammaup}{\unicode{x03DC}}\)
+
+\(\newcommand{\Deltaup}{\unicode{x0394}}\)
+
+\(\newcommand{\Epsilonup}{\unicode{x0395}}\)
+
+\(\newcommand{\Zetaup}{\unicode{x0396}}\)
+
+\(\newcommand{\Etaup}{\unicode{x0397}}\)
+
+\(\newcommand{\Thetaup}{\unicode{x0398}}\)
+
+\(\newcommand{\Varthetaup}{\unicode{x03F4}}\)
+
+\(\newcommand{\Iotaup}{\unicode{x0399}}\)
+
+\(\newcommand{\Kappaup}{\unicode{x039A}}\)
+
+\(\newcommand{\Lambdaup}{\unicode{x039B}}\)
+
+\(\newcommand{\Muup}{\unicode{x039C}}\)
+
+\(\newcommand{\Nuup}{\unicode{x039D}}\)
+
+\(\newcommand{\Xiup}{\unicode{x039E}}\)
+
+\(\newcommand{\Omicronup}{\unicode{x039F}}\)
+
+\(\newcommand{\Piup}{\unicode{x03A0}}\)
+
+\(\newcommand{\Varpiup}{\unicode{x03D6}}\)
+
+\(\newcommand{\Rhoup}{\unicode{x03A1}}\)
+
+\(\newcommand{\Sigmaup}{\unicode{x03A3}}\)
+
+\(\newcommand{\Tauup}{\unicode{x03A4}}\)
+
+\(\newcommand{\Upsilonup}{\unicode{x03A5}}\)
+
+\(\newcommand{\Phiup}{\unicode{x03A6}}\)
+
+\(\newcommand{\Chiup}{\unicode{x03A7}}\)
+
+\(\newcommand{\Psiup}{\unicode{x03A8}}\)
+
+\(\newcommand{\Omegaup}{\unicode{x03A9}}\)
+
+\(\newcommand{\alphait}{\unicode{x1D6FC}}\)
+
+\(\newcommand{\betait}{\unicode{x1D6FD}}\)
+
+\(\newcommand{\gammait}{\unicode{x1D6FE}}\)
+
+\(\newcommand{\digammait}{\mathit{\unicode{x03DD}}}\)
+
+\(\newcommand{\deltait}{\unicode{x1D6FF}}\)
+
+\(\newcommand{\epsilonit}{\unicode{x1D716}}\)
+
+\(\newcommand{\varepsilonit}{\unicode{x1D700}}\)
+
+\(\newcommand{\zetait}{\unicode{x1D701}}\)
+
+\(\newcommand{\etait}{\unicode{x1D702}}\)
+
+\(\newcommand{\thetait}{\unicode{x1D703}}\)
+
+\(\newcommand{\varthetait}{\unicode{x1D717}}\)
+
+\(\newcommand{\iotait}{\unicode{x1D704}}\)
+
+\(\newcommand{\kappait}{\unicode{x1D705}}\)
+
+\(\newcommand{\varkappait}{\unicode{x1D718}}\)
+
+\(\newcommand{\lambdait}{\unicode{x1D706}}\)
+
+\(\newcommand{\muit}{\unicode{x1D707}}\)
+
+\(\newcommand{\nuit}{\unicode{x1D708}}\)
+
+\(\newcommand{\xiit}{\unicode{x1D709}}\)
+
+\(\newcommand{\omicronit}{\unicode{x1D70A}}\)
+
+\(\newcommand{\piit}{\unicode{x1D70B}}\)
+
+\(\newcommand{\varpiit}{\unicode{x1D71B}}\)
+
+\(\newcommand{\rhoit}{\unicode{x1D70C}}\)
+
+\(\newcommand{\varrhoit}{\unicode{x1D71A}}\)
+
+\(\newcommand{\sigmait}{\unicode{x1D70E}}\)
+
+\(\newcommand{\varsigmait}{\unicode{x1D70D}}\)
+
+\(\newcommand{\tauit}{\unicode{x1D70F}}\)
+
+\(\newcommand{\upsilonit}{\unicode{x1D710}}\)
+
+\(\newcommand{\phiit}{\unicode{x1D719}}\)
+
+\(\newcommand{\varphiit}{\unicode{x1D711}}\)
+
+\(\newcommand{\chiit}{\unicode{x1D712}}\)
+
+\(\newcommand{\psiit}{\unicode{x1D713}}\)
+
+\(\newcommand{\omegait}{\unicode{x1D714}}\)
+
+\(\newcommand{\Alphait}{\unicode{x1D6E2}}\)
+
+\(\newcommand{\Betait}{\unicode{x1D6E3}}\)
+
+\(\newcommand{\Gammait}{\unicode{x1D6E4}}\)
+
+\(\newcommand{\Digammait}{\mathit{\unicode{x03DC}}}\)
+
+\(\newcommand{\Deltait}{\unicode{x1D6E5}}\)
+
+\(\newcommand{\Epsilonit}{\unicode{x1D6E6}}\)
+
+\(\newcommand{\Zetait}{\unicode{x1D6E7}}\)
+
+\(\newcommand{\Etait}{\unicode{x1D6E8}}\)
+
+\(\newcommand{\Thetait}{\unicode{x1D6E9}}\)
+
+\(\newcommand{\Varthetait}{\unicode{x1D6F3}}\)
+
+\(\newcommand{\Iotait}{\unicode{x1D6EA}}\)
+
+\(\newcommand{\Kappait}{\unicode{x1D6EB}}\)
+
+\(\newcommand{\Lambdait}{\unicode{x1D6EC}}\)
+
+\(\newcommand{\Muit}{\unicode{x1D6ED}}\)
+
+\(\newcommand{\Nuit}{\unicode{x1D6EE}}\)
+
+\(\newcommand{\Xiit}{\unicode{x1D6EF}}\)
+
+\(\newcommand{\Omicronit}{\unicode{x1D6F0}}\)
+
+\(\newcommand{\Piit}{\unicode{x1D6F1}}\)
+
+\(\newcommand{\Rhoit}{\unicode{x1D6F2}}\)
+
+\(\newcommand{\Sigmait}{\unicode{x1D6F4}}\)
+
+\(\newcommand{\Tauit}{\unicode{x1D6F5}}\)
+
+\(\newcommand{\Upsilonit}{\unicode{x1D6F6}}\)
+
+\(\newcommand{\Phiit}{\unicode{x1D6F7}}\)
+
+\(\newcommand{\Chiit}{\unicode{x1D6F8}}\)
+
+\(\newcommand{\Psiit}{\unicode{x1D6F9}}\)
+
+\(\newcommand{\Omegait}{\unicode{x1D6FA}}\)
+
+\(\let \digammaup \Digammaup \)
+
+\(\renewcommand {\digammait }{\mathit {\digammaup }}\)
+
+\(\newcommand {\smallin }{\unicode {x220A}}\)
+
+\(\newcommand {\smallowns }{\unicode {x220D}}\)
+
+\(\newcommand {\notsmallin }{\LWRoverlaysymbols {/}{\unicode {x220A}}}\)
+
+\(\newcommand {\notsmallowns }{\LWRoverlaysymbols {/}{\unicode {x220D}}}\)
+
+\(\newcommand {\rightangle }{\unicode {x221F}}\)
+
+\(\newcommand {\intclockwise }{\unicode {x2231}}\)
+
+\(\newcommand {\ointclockwise }{\unicode {x2232}}\)
+
+\(\newcommand {\ointctrclockwise }{\unicode {x2233}}\)
+
+\(\newcommand {\oiint }{\unicode {x222F}}\)
+
+\(\newcommand {\oiiint }{\unicode {x2230}}\)
+
+\(\newcommand {\ddag }{\unicode {x2021}}\)
+
+\(\newcommand {\P }{\unicode {x00B6}}\)
+
+\(\newcommand {\copyright }{\unicode {x00A9}}\)
+
+\(\newcommand {\dag }{\unicode {x2020}}\)
+
+\(\newcommand {\pounds }{\unicode {x00A3}}\)
+
+\(\newcommand {\iddots }{\unicode {x22F0}}\)
+
+\(\newcommand {\utimes }{\overline {\times }}\)
+
+\(\newcommand {\dtimes }{\underline {\times }}\)
+
+\(\newcommand {\udtimes }{\overline {\underline {\times }}}\)
+
+\(\newcommand {\leftwave }{\left \{}\)
+
+\(\newcommand {\rightwave }{\right \}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\newcommand {\cmidrule }[2][]{}\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\newcommand {\tothe }[1]{^{#1}}\)
+
+\(\newcommand {\raiseto }[2]{{#2}^{#1}}\)
+
+\(\newcommand {\ang }[2][]{(\mathrm {#2})\degree }\)
+
+\(\newcommand {\num }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\si }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\LWRSI }[2][]{\mathrm {#1\LWRSInumber \,#2}}\)
+
+\(\newcommand {\SI }[2][]{\def \LWRSInumber {#2}\LWRSI }\)
+
+\(\newcommand {\numlist }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\numrange }[3][]{\mathrm {#2\,\unicode {x2013}\,#3}}\)
+
+\(\newcommand {\SIlist }[3][]{\mathrm {#2\,#3}}\)
+
+\(\newcommand {\SIrange }[4][]{\mathrm {#2\,#4\,\unicode {x2013}\,#3\,#4}}\)
+
+\(\newcommand {\tablenum }[2][]{\mathrm {#2}}\)
+
+\(\newcommand {\ampere }{\mathrm {A}}\)
+
+\(\newcommand {\candela }{\mathrm {cd}}\)
+
+\(\newcommand {\kelvin }{\mathrm {K}}\)
+
+\(\newcommand {\kilogram }{\mathrm {kg}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\mole }{\mathrm {mol}}\)
+
+\(\newcommand {\second }{\mathrm {s}}\)
+
+\(\newcommand {\becquerel }{\mathrm {Bq}}\)
+
+\(\newcommand {\degreeCelsius }{\unicode {x2103}}\)
+
+\(\newcommand {\coulomb }{\mathrm {C}}\)
+
+\(\newcommand {\farad }{\mathrm {F}}\)
+
+\(\newcommand {\gray }{\mathrm {Gy}}\)
+
+\(\newcommand {\hertz }{\mathrm {Hz}}\)
+
+\(\newcommand {\henry }{\mathrm {H}}\)
+
+\(\newcommand {\joule }{\mathrm {J}}\)
+
+\(\newcommand {\katal }{\mathrm {kat}}\)
+
+\(\newcommand {\lumen }{\mathrm {lm}}\)
+
+\(\newcommand {\lux }{\mathrm {lx}}\)
+
+\(\newcommand {\newton }{\mathrm {N}}\)
+
+\(\newcommand {\ohm }{\mathrm {\Omega }}\)
+
+\(\newcommand {\pascal }{\mathrm {Pa}}\)
+
+\(\newcommand {\radian }{\mathrm {rad}}\)
+
+\(\newcommand {\siemens }{\mathrm {S}}\)
+
+\(\newcommand {\sievert }{\mathrm {Sv}}\)
+
+\(\newcommand {\steradian }{\mathrm {sr}}\)
+
+\(\newcommand {\tesla }{\mathrm {T}}\)
+
+\(\newcommand {\volt }{\mathrm {V}}\)
+
+\(\newcommand {\watt }{\mathrm {W}}\)
+
+\(\newcommand {\weber }{\mathrm {Wb}}\)
+
+\(\newcommand {\day }{\mathrm {d}}\)
+
+\(\newcommand {\degree }{\mathrm {^\circ }}\)
+
+\(\newcommand {\hectare }{\mathrm {ha}}\)
+
+\(\newcommand {\hour }{\mathrm {h}}\)
+
+\(\newcommand {\litre }{\mathrm {l}}\)
+
+\(\newcommand {\liter }{\mathrm {L}}\)
+
+\(\newcommand {\arcminute }{^\prime }\)
+\(\newcommand {\minute }{\mathrm {min}}\)
+
+\(\newcommand {\arcsecond }{^{\prime \prime }}\)
+
+\(\newcommand {\tonne }{\mathrm {t}}\)
+
+\(\newcommand {\astronomicalunit }{au}\)
+
+\(\newcommand {\atomicmassunit }{u}\)
+
+\(\newcommand {\bohr }{\mathit {a}_0}\)
+
+\(\newcommand {\clight }{\mathit {c}_0}\)
+
+\(\newcommand {\dalton }{\mathrm {D}_\mathrm {a}}\)
+
+\(\newcommand {\electronmass }{\mathit {m}_{\mathrm {e}}}\)
+
+\(\newcommand {\electronvolt }{\mathrm {eV}}\)
+
+\(\newcommand {\elementarycharge }{\mathit {e}}\)
+
+\(\newcommand {\hartree }{\mathit {E}_{\mathrm {h}}}\)
+
+\(\newcommand {\planckbar }{\mathit {\unicode {x210F}}}\)
+
+\(\newcommand {\angstrom }{\mathrm {\unicode {x212B}}}\)
+
+\(\let \LWRorigbar \bar \)
+
+\(\newcommand {\bar }{\mathrm {bar}}\)
+
+\(\newcommand {\barn }{\mathrm {b}}\)
+
+\(\newcommand {\bel }{\mathrm {B}}\)
+
+\(\newcommand {\decibel }{\mathrm {dB}}\)
+
+\(\newcommand {\knot }{\mathrm {kn}}\)
+
+\(\newcommand {\mmHg }{\mathrm {mmHg}}\)
+
+\(\newcommand {\nauticalmile }{\mathrm {M}}\)
+
+\(\newcommand {\neper }{\mathrm {Np}}\)
+
+\(\newcommand {\yocto }{\mathrm {y}}\)
+
+\(\newcommand {\zepto }{\mathrm {z}}\)
+
+\(\newcommand {\atto }{\mathrm {a}}\)
+
+\(\newcommand {\femto }{\mathrm {f}}\)
+
+\(\newcommand {\pico }{\mathrm {p}}\)
+
+\(\newcommand {\nano }{\mathrm {n}}\)
+
+\(\newcommand {\micro }{\mathrm {\unicode {x00B5}}}\)
+
+\(\newcommand {\milli }{\mathrm {m}}\)
+
+\(\newcommand {\centi }{\mathrm {c}}\)
+
+\(\newcommand {\deci }{\mathrm {d}}\)
+
+\(\newcommand {\deca }{\mathrm {da}}\)
+
+\(\newcommand {\hecto }{\mathrm {h}}\)
+
+\(\newcommand {\kilo }{\mathrm {k}}\)
+
+\(\newcommand {\mega }{\mathrm {M}}\)
+
+\(\newcommand {\giga }{\mathrm {G}}\)
+
+\(\newcommand {\tera }{\mathrm {T}}\)
+
+\(\newcommand {\peta }{\mathrm {P}}\)
+
+\(\newcommand {\exa }{\mathrm {E}}\)
+
+\(\newcommand {\zetta }{\mathrm {Z}}\)
+
+\(\newcommand {\yotta }{\mathrm {Y}}\)
+
+\(\newcommand {\percent }{\mathrm {\%}}\)
+
+\(\newcommand {\meter }{\mathrm {m}}\)
+
+\(\newcommand {\metre }{\mathrm {m}}\)
+
+\(\newcommand {\gram }{\mathrm {g}}\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\of }[1]{_{\mathrm {#1}}}\)
+
+\(\newcommand {\squared }{^2}\)
+
+\(\newcommand {\square }[1]{\mathrm {#1}^2}\)
+
+\(\newcommand {\cubed }{^3}\)
+
+\(\newcommand {\cubic }[1]{\mathrm {#1}^3}\)
+
+\(\newcommand {\per }{/}\)
+
+\(\newcommand {\celsius }{\unicode {x2103}}\)
+
+\(\newcommand {\fg }{\femto \gram }\)
+
+\(\newcommand {\pg }{\pico \gram }\)
+
+\(\newcommand {\ng }{\nano \gram }\)
+
+\(\newcommand {\ug }{\micro \gram }\)
+
+\(\newcommand {\mg }{\milli \gram }\)
+
+\(\newcommand {\g }{\gram }\)
+
+\(\newcommand {\kg }{\kilo \gram }\)
+
+\(\newcommand {\amu }{\mathrm {u}}\)
+
+\(\newcommand {\nm }{\nano \metre }\)
+
+\(\newcommand {\um }{\micro \metre }\)
+
+\(\newcommand {\mm }{\milli \metre }\)
+
+\(\newcommand {\cm }{\centi \metre }\)
+
+\(\newcommand {\dm }{\deci \metre }\)
+
+\(\newcommand {\m }{\metre }\)
+
+\(\newcommand {\km }{\kilo \metre }\)
+
+\(\newcommand {\as }{\atto \second }\)
+
+\(\newcommand {\fs }{\femto \second }\)
+
+\(\newcommand {\ps }{\pico \second }\)
+
+\(\newcommand {\ns }{\nano \second }\)
+
+\(\newcommand {\us }{\micro \second }\)
+
+\(\newcommand {\ms }{\milli \second }\)
+
+\(\newcommand {\s }{\second }\)
+
+\(\newcommand {\fmol }{\femto \mol }\)
+
+\(\newcommand {\pmol }{\pico \mol }\)
+
+\(\newcommand {\nmol }{\nano \mol }\)
+
+\(\newcommand {\umol }{\micro \mol }\)
+
+\(\newcommand {\mmol }{\milli \mol }\)
+
+\(\newcommand {\mol }{\mol }\)
+
+\(\newcommand {\kmol }{\kilo \mol }\)
+
+\(\newcommand {\pA }{\pico \ampere }\)
+
+\(\newcommand {\nA }{\nano \ampere }\)
+
+\(\newcommand {\uA }{\micro \ampere }\)
+
+\(\newcommand {\mA }{\milli \ampere }\)
+
+\(\newcommand {\A }{\ampere }\)
+
+\(\newcommand {\kA }{\kilo \ampere }\)
+
+\(\newcommand {\ul }{\micro \litre }\)
+
+\(\newcommand {\ml }{\milli \litre }\)
+
+\(\newcommand {\l }{\litre }\)
+
+\(\newcommand {\hl }{\hecto \litre }\)
+
+\(\newcommand {\uL }{\micro \liter }\)
+
+\(\newcommand {\mL }{\milli \liter }\)
+
+\(\newcommand {\L }{\liter }\)
+
+\(\newcommand {\hL }{\hecto \liter }\)
+
+\(\newcommand {\mHz }{\milli \hertz }\)
+
+\(\newcommand {\Hz }{\hertz }\)
+
+\(\newcommand {\kHz }{\kilo \hertz }\)
+
+\(\newcommand {\MHz }{\mega \hertz }\)
+
+\(\newcommand {\GHz }{\giga \hertz }\)
+
+\(\newcommand {\THz }{\tera \hertz }\)
+
+\(\newcommand {\mN }{\milli \newton }\)
+
+\(\newcommand {\N }{\newton }\)
+
+\(\newcommand {\kN }{\kilo \newton }\)
+
+\(\newcommand {\MN }{\mega \newton }\)
+
+\(\newcommand {\Pa }{\pascal }\)
+
+\(\newcommand {\kPa }{\kilo \pascal }\)
+
+\(\newcommand {\MPa }{\mega \pascal }\)
+
+\(\newcommand {\GPa }{\giga \pascal }\)
+
+\(\newcommand {\mohm }{\milli \ohm }\)
+
+\(\newcommand {\kohm }{\kilo \ohm }\)
+
+\(\newcommand {\Mohm }{\mega \ohm }\)
+
+\(\newcommand {\pV }{\pico \volt }\)
+
+\(\newcommand {\nV }{\nano \volt }\)
+
+\(\newcommand {\uV }{\micro \volt }\)
+
+\(\newcommand {\mV }{\milli \volt }\)
+
+\(\newcommand {\V }{\volt }\)
+
+\(\newcommand {\kV }{\kilo \volt }\)
+
+\(\newcommand {\W }{\watt }\)
+
+\(\newcommand {\uW }{\micro \watt }\)
+
+\(\newcommand {\mW }{\milli \watt }\)
+
+\(\newcommand {\kW }{\kilo \watt }\)
+
+\(\newcommand {\MW }{\mega \watt }\)
+
+\(\newcommand {\GW }{\giga \watt }\)
+
+\(\newcommand {\J }{\joule }\)
+
+\(\newcommand {\uJ }{\micro \joule }\)
+
+\(\newcommand {\mJ }{\milli \joule }\)
+
+\(\newcommand {\kJ }{\kilo \joule }\)
+
+\(\newcommand {\eV }{\electronvolt }\)
+
+\(\newcommand {\meV }{\milli \electronvolt }\)
+
+\(\newcommand {\keV }{\kilo \electronvolt }\)
+
+\(\newcommand {\MeV }{\mega \electronvolt }\)
+
+\(\newcommand {\GeV }{\giga \electronvolt }\)
+
+\(\newcommand {\TeV }{\tera \electronvolt }\)
+
+\(\newcommand {\kWh }{\kilo \watt \hour }\)
+
+\(\newcommand {\F }{\farad }\)
+
+\(\newcommand {\fF }{\femto \farad }\)
+
+\(\newcommand {\pF }{\pico \farad }\)
+
+\(\newcommand {\K }{\mathrm {K}}\)
+
+\(\newcommand {\dB }{\mathrm {dB}}\)
+
+\(\newcommand {\kibi }{\mathrm {Ki}}\)
+
+\(\newcommand {\mebi }{\mathrm {Mi}}\)
+
+\(\newcommand {\gibi }{\mathrm {Gi}}\)
+
+\(\newcommand {\tebi }{\mathrm {Ti}}\)
+
+\(\newcommand {\pebi }{\mathrm {Pi}}\)
+
+\(\newcommand {\exbi }{\mathrm {Ei}}\)
+
+\(\newcommand {\zebi }{\mathrm {Zi}}\)
+
+\(\newcommand {\yobi }{\mathrm {Yi}}\)
+
+\(\require {mhchem}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\fint }{âĺŊ}\)
+
+\(\newcommand {\hdots }{\cdots }\)
+
+\(\newcommand {\mathnormal }[1]{#1}\)
+
+\(\newcommand {\vecs }[2]{\vec {#1}_{#2}}\)
+
+\(\newcommand {\fracsize }[1]{{\large #1}}\)
+
+\(\newcommand {\matrixsize }[1]{{\scriptsize #1}}\)
+
+\(\newcommand {\extreal }{\ensuremath {\widehat {\mathbb {R}}}}\)
+
+\(\renewcommand {\A }{\ensuremath {\mathcal {A}}}\)
+
+\(\newcommand {\B }{\ensuremath {\mathcal {B}}}\)
+
+\(\renewcommand {\C }{\ensuremath {\mathcal {C}}}\)
+
+\(\newcommand {\E }{\ensuremath {\mathcal {E}}}\)
+
+\(\newcommand {\EW }{\ensuremath {\mathbb {E}}}\)
+
+\(\renewcommand {\L }{\ensuremath {\mathcal {L}}}\)
+
+\(\newcommand {\M }{\ensuremath {\mathcal {M}}}\)
+
+\(\renewcommand {\H }{\ensuremath {\mathcal {H}}}\)
+
+\(\renewcommand {\N }{\ensuremath {\mathcal {N}}}\)
+
+\(\renewcommand {\O }{\ensuremath {\mathcal {O}}}\)
+
+\(\renewcommand {\P }{\ensuremath {\mathcal {P}}}\)
+
+\(\newcommand {\T }{\ensuremath {\mathcal {T}}}\)
+
+\(\renewcommand {\U }{\ensuremath {\mathcal {U}}}\)
+
+\(\renewcommand {\1}{\ensuremath {𝟙}}\)
+
+\(\newcommand {\Pois }{\ensuremath {\text {Pois}}}\)
+
+\(\newcommand {\Var }{\ensuremath {\text {Var}}}\)
+
+\(\newcommand {\Exp }{\ensuremath {\text {Exp}}}\)
+
+\(\newcommand {\id }{\ensuremath {\text {id}}}\)
+
+\(\newcommand {\name }[1]{\textsc {#1}}\)
+
+\(\newcommand {\smallpmatrix }[1]{\left (\begin {smallmatrix}#1\end {smallmatrix}\right )}\)
+
+\(\newcommand {\matlab }{{\fontfamily {bch}\scshape \selectfont {}Matlab}}\)
+
+\(\newcommand {\innerproduct }[1]{\left \langle {#1}\right \rangle }\)
+
+\(\newcommand {\norm }[1]{\left \Vert {#1}\right \Vert }\)
+
+\(\renewcommand {\natural }{\mathbb {N}}\)
+
+\(\newcommand {\integer }{\mathbb {Z}}\)
+
+\(\newcommand {\rational }{\mathbb {Q}}\)
+
+\(\newcommand {\real }{\mathbb {R}}\)
+
+\(\newcommand {\complex }{\mathbb {C}}\)
+
+\(\renewcommand {\d }{\mathop {}\!\mathrm {d}}\)
+
+\(\newcommand {\dr }{\d {}r}\)
+
+\(\newcommand {\ds }{\d {}s}\)
+
+\(\newcommand {\dt }{\d {}t}\)
+
+\(\newcommand {\du }{\d {}u}\)
+
+\(\newcommand {\dv }{\d {}v}\)
+
+\(\newcommand {\dw }{\d {}w}\)
+
+\(\newcommand {\dx }{\d {}x}\)
+
+\(\newcommand {\dy }{\d {}y}\)
+
+\(\newcommand {\dz }{\d {}z}\)
+
+\(\newcommand {\dsigma }{\d {}\sigma }\)
+
+\(\newcommand {\dphi }{\d {}\phi }\)
+
+\(\newcommand {\dvarphi }{\d {}\varphi }\)
+
+\(\newcommand {\dtau }{\d {}\tau }\)
+
+\(\newcommand {\dxi }{\d {}\xi }\)
+
+\(\newcommand {\dtheta }{\d {}\theta }\)
+
+\(\newcommand {\tp }{\mathrm {T}}\)
+
+</div>
+
+<style type="text/css">
+.lwarp-contents li.list-item-f0::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f1::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f2::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f3::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f4::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f5::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f6::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f7::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f8::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f9::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f10::marker {
+  font-style:italic;
+  content:'(5)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f11::marker {
+  font-style:italic;
+  content:'(6)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f12::marker {
+  font-style:italic;
+  content:'(7)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f13::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f14::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f15::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f16::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f17::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f18::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f19::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f20::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f21::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f22::marker {
+  font-style:italic;
+  content:'(5)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f23::marker {
+  font-style:italic;
+  content:'(6)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f24::marker {
+  font-style:italic;
+  content:'(7)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f25::marker {
+  font-style:italic;
+  content:'(8)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f26::marker {
+  font-style:italic;
+  content:'(9)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f27::marker {
+  font-style:italic;
+  content:'(10)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f28::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f29::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f30::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f31::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f32::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f33::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f34::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f35::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f36::marker {
+  content:'1.\00a0\00a0';
+}
+.lwarp-contents li.list-item-f37::marker {
+  content:'2.\00a0\00a0';
+}
+.lwarp-contents li.list-item-f38::marker {
+  content:'3.\00a0\00a0';
+}
+.lwarp-contents li.list-item-f39::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f40::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f41::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f42::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f43::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f44::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f45::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f46::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f47::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f48::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f49::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f50::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f51::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f52::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f53::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f54::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f55::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f56::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f57::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f58::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f59::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f60::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f61::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f62::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f63::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f64::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f65::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f66::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f67::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f68::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f69::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f70::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f71::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f72::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f73::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f74::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f75::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f76::marker {
+  font-style:italic;
+  content:'(5)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f77::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f78::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f79::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f80::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f81::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f82::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f83::marker {
+  font-style:italic;
+  content:'(5)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f84::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f85::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f86::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f87::marker {
+  font-style:italic;
+  content:'(1)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f88::marker {
+  font-style:italic;
+  content:'(2)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f89::marker {
+  font-style:italic;
+  content:'(3)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f90::marker {
+  font-style:italic;
+  content:'(4)\00a0\00a0';
+}
+.lwarp-contents li.list-item-f91::marker {
+  font-style:italic;
+  content:'(5)\00a0\00a0';
+}
+</style>
+<p>
+
+</p>
+
+
+
+<h2 id="zufallsexperimente">Zufallsexperimente</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Im Folgenden soll ein mathematisches Fundament aufgebaut werden, sodass Zufallexperimente in der Realita&#x0308;t durch Modellbildung so abstrahiert werden ko&#x0308;nnen, dass sie in ein
+mathematisches Modell (einen Wahrscheinlichkeitsraum) u&#x0308;bersetzt werden. Durch Theoreme der Wahrscheinlichkeitstheorie sind (Vor-)Aussagen u&#x0308;ber das Modell mo&#x0308;glich, die dann durch Interpretation
+auf die Realita&#x0308;t, also das Zufallsexperiment u&#x0308;bertragen werden ko&#x0308;nnen.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Fu&#x0308;r die Definition eines Wahrscheinlichkeitsraums (Modell eines Zufallsexperiments) sind drei Elemente notwendig: ein Ergebnisraum \(\Omega \), ein Ereignisraum \(\A \) und ein
+Wahrscheinlichkeitsmaß \(P\).
+</p>
+
+<p>
+<b>Ergebnisraum</b>:&#x2003; Ein <em><span class="dashuline" >Ergebnisraum</span></em> ist eine Menge \(\Omega \not = \emptyset \). Seine Elemente \(\omega \in \Omega \) heißen <em><span
+class="dashuline" >Ergebnisse/Realisierungen</span></em>. Eine Stichprobe ist ein \(n\)-Tupel \((\omega _1, \dotsc , \omega _n) \in \Omega ^n\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Nach Durchfu&#x0308;hrung eines Zufallsexperiments soll genau ein Ergebnis \(\omega \in \Omega \) feststehen. Ein Ereignis ist nun eine Aussage, die anhand eines Ergebnisses eines Zufallsexperiments
+eindeutig entschieden werden kann. Daher kann man Ereignisse als Teilmengen \(\Omega \) interpretieren. Dabei sollen fu&#x0308;r \(A, B \subset \Omega \) Ereignisse folgende Interpretationen mo&#x0308;glich sein:
+</p>
+<table>
+
+<tr class="tbrule">
+<td class="tdp">
+
+<p>
+<em>Ereignis</em>
+</p>
+</td>
+<td class="tdp">
+
+<p>
+<em>Interpretation</em>
+</p>
+</td>
+</tr>
+
+
+<tr class="hline" >
+<td class="tdp">
+
+<p>
+\(A^C = \Omega \setminus A\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(A\) tritt nicht ein
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(A \cup B\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(A\) oder \(B\) tritt ein
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(A \cap B\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(A\) und \(B\) treten ein
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(A \setminus B\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(A\), aber nicht \(B\) tritt ein
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(A \vartriangle B = (A \cup B) \setminus (A \cap B)\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+entweder \(A\) oder \(B\) tritt ein
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(\bigcup _{i \in I} A_i\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+mindestens eins der \(A_i\) tritt ein
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(\bigcap _{i \in I} A_i\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+alle \(A_i\) treten ein
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(\limsup _{n \in \natural } A_n := \bigcap _{n=1}^\infty \left (\bigcup _{k=n}^\infty A_k\right )\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+unendlich viele der \(A_n\) treten ein
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(\liminf _{n \in \natural } A_n := \bigcup _{n=1}^\infty \left (\bigcap _{k=n}^\infty A_k\right )\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+alle bis auf endlich viele der \(A_n\) treten ein
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(A \subset B\)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(A\) impliziert \(B\)
+</p>
+</td>
+</tr>
+
+
+<tr>
+<td class="tdp">
+
+<p>
+\(A \cap B = \emptyset \)
+</p>
+</td>
+<td class="tdp">
+
+<p>
+\(A\) und \(B\) schließen einander aus
+</p>
+</td>
+</tr>
+
+
+<tr class="tbrule">
+<td class="tdp">
+
+</td>
+<td class="tdp">
+
+</td>
+</tr>
+
+</table>
+
+<p>
+Man fordert daher als Ereignismenge eine Teilmenge der Potenzmenge von \(\Omega \) mit bestimmten Abschlusseigenschaften.
+</p>
+
+<p>
+<b>\(\sigma \)-Algebra</b>:&#x2003; Sei \(\Omega \not = \emptyset \). Dann heißt \(\A \subset \P (\Omega )\) <em><span class="dashuline" >\(\sigma \)-Algebra</span></em> u&#x0308;ber \(\Omega \), falls
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f0"><p>\(\emptyset \in \A \)
+</p>
+</li>
+<li class="list-item-f1"><p>\(A \in \A \;\Rightarrow \; \Omega \setminus A \in \A \)
+</p>
+</li>
+<li class="list-item-f2"><p>\(A_n \in \A \) fu&#x0308;r \(n \in \natural \) \(\Rightarrow \;\) \(\bigcup _{n=1}^\infty A_n \in \A \)
+</p>
+</li>
+</ul>
+
+<p>
+In diesem Fall heißt \((\Omega , \A )\) <em><span class="dashuline" >Messraum</span></em> und \(A \in \A \) heißt <em><span class="dashuline" >messbar</span></em>.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Eigenschaften von Messra&#x0308;umen</span>):</span> Sei \((\Omega , \A )\) ein Messraum. Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f3"><p>\(\Omega \in \A \)
+</p>
+</li>
+<li class="list-item-f4"><p>\(\bigcap _{n=1}^\infty A_n, \limsup _{n \in \natural } A_n, \liminf _{n \in \natural } A_n \in \A \) fu&#x0308;r \(A_n \in \A \) und \(n \in \natural \)
+</p>
+</li>
+<li class="list-item-f5"><p>\(A \cup B, A \cap B, A \setminus B, A \vartriangle B \in \A \) fu&#x0308;r \(A, B \in \A \)
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Ereignisraum</b>:&#x2003; Ein <em><span class="dashuline" >Ereignisraum</span></em> u&#x0308;ber \(\Omega \not = \emptyset \) ist eine \(\sigma \)-Algebra \(\A \subset \P (\Omega )\) u&#x0308;ber
+\(\Omega \).<br />
+\(\emptyset \) heißt <em><span class="dashuline" >unmo&#x0308;gliches Ereignis</span></em> und \(\Omega \) heißt <em><span class="dashuline" >sicheres Ereignis</span></em>.<br />
+Fu&#x0308;r \(\omega \in \Omega \) heißt \(\{\omega \}\) <em><span class="dashuline" >Elementarereignis</span></em>.
+</p>
+
+<p>
+<em>Beispiel</em>: Es gibt manchmal mehrere Mo&#x0308;glichkeiten, ein Zufallsexperiment zu modellieren.
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f6"><p>Wurf eines Wu&#x0308;rfels und „gerade Augenzahl“: \(\Omega = \{1, \dotsc , 6\}\), \(A = \{2, 4, 6\}\)
+</p>
+</li>
+<li class="list-item-f7"><p>Wurf zweier Wu&#x0308;rfel und „Pasch“:<br />
+\(\Omega _1 = \{(k, \ell ) \;|\; k, \ell \in \{1, \dotsc , 6\}\}\) fu&#x0308;r Beachtung der Reihenfolge, \(A_1 = \{(1, 1), \dotsc , (6, 6)\}\),<br />
+\(\Omega _2 = \{\{k, \ell \} \;|\; k, \ell \in \{1, \dotsc , 6\}\}\) ohne Beachtung der Reihenfolge, \(A_2 = \{\{1\}, \dotsc , \{6\}\}\),<br />
+\(\Omega _3 = \{2, \dotsc , 12\}\) mit Summe der Augenzahlen, hier ist das Ereignis nicht modellierbar
+</p>
+</li>
+<li class="list-item-f8"><p>Mischen eines Kartenblatts mit 52 Karten: \(\Omega = \{\text {mögliche Anordnungen}\}\),<br />
+\(|\Omega | = 52! \approx 8 \cdot 10^{67}\)
+</p>
+</li>
+<li class="list-item-f9"><p>unendlicher Mu&#x0308;nzwurf mit Reihenfolge: \(\Omega = \{(\omega _k)_{k \in \natural } \;|\; \omega _k \in \{0, 1\}\}\) (0 = Kopf, 1 = Zahl),<br />
+z.&#x202f;B. „der fu&#x0308;nfte Wurf ist Zahl„ durch \(A = \{(\omega _k)_{k \in \natural } \;|\; \omega _5 = 1\}\)<br />
+oder „es wird unendlich oft Zahl geworfen“ durch \(B = \{(\omega _k)_{k \in \natural } \;|\; \forall _{n \in \natural } \exists _{k \ge n}\; \omega _k = 1\}\)
+</p>
+</li>
+<li class="list-item-f10"><p>Brechen eines Stabs der La&#x0308;nge \(L\) an einer zufa&#x0308;lligen Stelle: \(\Omega = [0, L]\) u&#x0308;berabza&#x0308;hlbar,<br />
+z.&#x202f;B. „Bruch ist ist linken Dritten“ durch \(A = [0, \frac {1}{3} L]\)<br />
+oder „Bruch ist genau in der Mitte“ durch \(B = \{\frac {1}{2} L\}\)
+</p>
+</li>
+<li class="list-item-f11"><p>Schadensho&#x0308;he bei einem Autounfall: \(\Omega = [0, \infty )\)
+</p>
+</li>
+<li class="list-item-f12"><p>zufa&#x0308;llige Bewegung eines Teilchens in einer Flu&#x0308;ssigkeit (<em><span class="dashuline" >random walk</span></em>):<br />
+\(\Omega = \{\omega \in [0, \infty ) \rightarrow \real ^3 \;|\; \omega \text { stetig}\}\)
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="wahrscheinlichkeitsmasse">Wahrscheinlichkeitsmaße</h2>
+<b>Maß</b>:&#x2003; Sei \((\Omega , \A )\) ein Messraum.<br />
+Dann heißt eine Abbildung \(\mu \colon \A \rightarrow [0, \infty ]\) <em><span class="dashuline" >Maß</span></em> auf \((\Omega , \A )\), falls
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f13"><p>\(\mu (\emptyset ) = 0\) (<em><span class="dashuline" >Nulltreue</span></em>)
+</p>
+</li>
+<li class="list-item-f14"><p>\(\mu (\bigcup _{n=1}^\infty A_n) = \sum _{n=1}^\infty \mu (A_n)\) fu&#x0308;r \(A_n \in \A \) paarweise disjunkt (<em><span class="dashuline" >\(\sigma \)-Additivita&#x0308;t</span></em>)
+</p>
+</li>
+</ul>
+
+<p>
+Falls zusa&#x0308;tzlich \(\mu (\Omega ) &lt; \infty \) gilt, dann heißt \(\mu \) <em><span class="dashuline" >endlich</span></em>.<br />
+Falls sogar \(\mu (\Omega ) = 1\) gilt, dann heißt \(\mu = P\) <em><span class="dashuline" >Wahrscheinlichkeitsmaß</span></em> (<em><span class="dashuline" >W-Maß</span></em>).
+</p>
+
+<p>
+<b>Wahrscheinlichkeitsraum</b>:&#x2003;<br />
+Ein <em><span class="dashuline" >Wahrscheinlichkeitsraum</span></em> (<em><span class="dashuline" >W-Raum</span></em>) ist ein Tripel \((\Omega , \A , P)\) mit
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f15"><p>\(\Omega \not = \emptyset \) (Ergebnisraum)
+</p>
+</li>
+<li class="list-item-f16"><p>\(\A \) eine \(\sigma \)-Algebra u&#x0308;ber \(\Omega \) (\(\sigma \)-Algebra der messbaren Ereignisse)
+</p>
+</li>
+<li class="list-item-f17"><p>\(P\) ein Wahrscheinlichkeitsmaß auf \((\Omega , \A )\)
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Eigenschaften von W-Ra&#x0308;umen</span>):</span><br />
+Seien \((\Omega , \A , P)\) ein W-Raum und \(A, B, A_k \in \A \) fu&#x0308;r \(k \in \natural \). Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f18"><p>\(P(B \setminus A) = P(B) - P(A \cap B)\)
+</p>
+</li>
+<li class="list-item-f19"><p>\(A \subset B \;\Rightarrow \; P(A) \le P(B)\) (<em><span class="dashuline" >Monotonie</span></em>)
+</p>
+</li>
+<li class="list-item-f20"><p>\(0 \le P(A) \le 1\), \(P(\Omega \setminus A) = 1 - P(A)\)
+</p>
+</li>
+<li class="list-item-f21"><p>\(P(A \cup B) = P(A) + P(B) - P(A \cap B) \le P(A) + P(B)\)
+</p>
+</li>
+<li class="list-item-f22"><p>\(P(\bigcup _{k=1}^n A_k) = \sum _{k=1}^n (-1)^{k+1} \sum _{1 \le i_1 &lt; \dotsb &lt; i_k \le n} P(A_{i_1} \cap \dotsb \cap A_{i_k}) \le \sum _{k=1}^n P(A_k)\)<br />
+(<em><span class="dashuline" ><span class="textsc" >Poincaré</span>-<span class="textsc" >Sylvester</span>-Formel</span></em>, <em><span class="dashuline" >Formel des Ein- und Ausschließens</span></em>)
+</p>
+</li>
+<li class="list-item-f23"><p>\(A_1 \subset A_2 \subset \dotsb \;\Rightarrow \; P(\bigcup _{k=1}^\infty A_k) = \lim _{n \to \infty } P(A_n)\) (<em><span class="dashuline" >Stetigkeit von unten</span></em>)
+</p>
+</li>
+<li class="list-item-f24"><p>\(A_1 \supset A_2 \supset \dotsb \;\Rightarrow \; P(\bigcap _{k=1}^\infty A_k) = \lim _{n \to \infty } P(A_n)\) (<em><span class="dashuline" >Stetigkeit von oben</span></em>)
+</p>
+</li>
+<li class="list-item-f25"><p>\(P(\bigcup _{k=1}^\infty A_k) \le \sum _{k=1}^\infty P(A_k)\) (<em><span class="dashuline" >\(\sigma \)-Subadditivita&#x0308;t</span></em>)
+</p>
+</li>
+<li class="list-item-f26"><p>\(\sum _{k=1}^\infty P(A_k) &lt; \infty \;\Rightarrow \; P(\limsup _{k \to \infty } A_k) = 0\) (<em><span class="dashuline" >Satz von <span class="textsc" >Borel</span>-<span
+class="textsc" >Cantelli</span>, 1. Teil</span></em>)
+</p>
+</li>
+<li class="list-item-f27"><p>\(\lim _{k \to \infty } P(A_k) = 0,\; \sum _{k=1}^\infty P(A_k^c \cap A_{k+1}) &lt; \infty \;\Rightarrow \; P(\limsup _{k \to \infty } A_k) = 0\)<br />
+(<em><span class="dashuline" ><span class="textsc" >Barndorff-Nielsen</span>s Verscha&#x0308;rfung des Satzes von <span class="textsc" >Borel</span>-<span class="textsc" >Cantelli</span></span></em>)
+</p>
+</li>
+</ul>
+
+<p>
+<em>Beispiel</em>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f28"><p>Fu&#x0308;r \(\Omega \not = \emptyset \) endlich ist \((\Omega , \P (\Omega ), P)\) mit \(P\colon \P (\Omega ) \rightarrow [0, 1]\), \(A \mapsto \frac {|A|}{n}\) ein W-Raum.<br />
+\(P\) heißt <em><span class="dashuline" >Gleichverteilung</span></em>.
+</p>
+</li>
+<li class="list-item-f29"><p>Fu&#x0308;r \(\Omega \not = \emptyset \) beliebig ist \((\Omega , \P (\Omega ), \mu )\) mit dem <em><span class="dashuline" >Za&#x0308;hlmaß</span></em> \(\mu \colon \P (\Omega )
+\rightarrow [0, \infty ]\), \(A \mapsto |A|\) fu&#x0308;r \(A\) endlich und \(A \mapsto \infty \) fu&#x0308;r \(A\) unendlich ein W-Raum.
+</p>
+</li>
+<li class="list-item-f30"><p>Fu&#x0308;r \(\Omega \not = \emptyset \) beliebig und festes \(\omega \in \Omega \) ist \((\Omega , \P (\Omega ), P_{\{\omega \}})\) mit dem <em><span class="dashuline" ><span
+class="textsc" >Dirac</span>maß</span></em><br />
+\(P_{\{\omega \}}\colon \P (\Omega ) \rightarrow [0, 1]\), \(A \mapsto 1\) fu&#x0308;r \(\omega \in A\) und \(A \mapsto 0\) fu&#x0308;r \(\omega \notin A\) ein W-Raum.
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="diskrete-wahrscheinlichkeitsraeume">Diskrete Wahrscheinlichkeitsräume</h2>
+<b>diskreter W-Raum</b>:&#x2003;<br />
+Ein W-Raum \((\Omega , \A , P)\) heißt <em><span class="dashuline" >diskret</span></em>, falls \(\Omega \) ho&#x0308;chstens abza&#x0308;hlbar ist und \(\A = \P (\Omega )\) gilt.
+</p>
+
+<p>
+<b>Za&#x0308;hldichte</b>:&#x2003; Wenn \((\Omega , \P (\Omega ), P)\) ein diskreter W-Raum ist, dann gilt fu&#x0308;r jedes Ereignis<br />
+\(A \subset \Omega \), dass \(P(A) = P(\bigcup _{\omega \in A} \{\omega \}) = \sum _{\omega \in A} P(\{\omega \}) = \sum _{\omega \in A} p_\omega \) fu&#x0308;r \(p_\omega := P(\{\omega \})\).<br
+/>
+Fu&#x0308;r die \(p_\omega \) gilt \(p_\omega \in [0, 1]\) und \(\sum _{\omega \in \Omega } p_\omega = P(\Omega ) = 1\). Die Folge \((p_\omega )_{\omega \in \Omega }\) heißt <em><span class="dashuline"
+>Za&#x0308;hldichte</span></em>.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Konstruktion von diskreten W-Ra&#x0308;umen</span>):</span>
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f31"><p>Sei \(\Omega \not = \emptyset \) ho&#x0308;chstens abza&#x0308;hlbar und \((p_\omega )_{\omega \in \Omega }\) eine Folge von Zahlen in \([0, 1]\) mit<br />
+\(\sum _{\omega \in \Omega } p_\omega = 1\) (d.&#x202f;h. eine Za&#x0308;hldichte). Dann ist \((\Omega , \P (\Omega ), P)\) mit \(P\colon \P (\Omega ) \rightarrow [0, 1]\),<br />
+\(A \mapsto \sum _{\omega \in A} p_\omega \) ein diskreter W-Raum mit \(P(\{\omega \}) = p_\omega \) fu&#x0308;r \(\omega \in \Omega \).
+</p>
+</li>
+<li class="list-item-f32"><p>Ist \((\Omega , \P (\Omega ), P)\) ein diskreter W-Raum, so ist \((p_\omega )_{\omega \in \Omega }\) mit \(p_\omega := P(\{\omega \})\) eine Za&#x0308;hldichte auf \(\Omega \) und \(P\) entsteht aus
+\((p_\omega )_{\omega \in \Omega }\) durch die Konstruktion in (a).
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>diskrete Gleichverteilung</b>:&#x2003; Seien \(N \in \natural \), \(\Omega := \{1, \dotsc , N\}\) und \(p_k := \frac {1}{N}\) fu&#x0308;r \(k \in \Omega \). Dann ist \((p_k)_{k \in \Omega }\) eine
+Za&#x0308;hldichte und heißt <em><span class="dashuline" >Gleichverteilung</span></em> oder <em><span class="dashuline" ><span class="textsc" >Laplace</span>-Verteilung</span></em>. Dadurch ist ein diskreter
+W-Raum \((\Omega , \P (\Omega ), P)\), ein sog. <em><span class="dashuline" ><span class="textsc" >Laplace</span>scher W-Raum</span></em> gegeben.<br />
+Fu&#x0308;r ein Ereignis \(A \subset \Omega \) gilt \(P(A) = \sum _{\omega \in A} p_\omega = \frac {|A|}{|\Omega |}\).
+</p>
+
+<p>
+<em>Beispiel</em>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f33"><p>Wurf eines fairen, sechsseitigen Wu&#x0308;rfels: \(\Omega = \{1, \dotsc , 6\}\), Laplace-W-Raum \((\Omega , \P (\Omega ), P)\).<br />
+Fu&#x0308;r das Ereignis \(A :=\) „Augenzahl gerade“ \(= \{2, 4, 6\}\) gilt \(P(A) = \frac {|A|}{|\Omega |} = \frac {3}{6} = \frac {1}{2}\).
+</p>
+</li>
+<li class="list-item-f34"><p>\(n\)-maliger Wurf einer fairen Mu&#x0308;nze:<br />
+\(\Omega = \{0, 1\}^n = \{(\omega _1, \dotsc , \omega _n) \;|\; \omega _k \in \{0, 1\}\}\), Laplace-W-Raum \((\Omega , \P (\Omega ), P)\).<br />
+Fu&#x0308;r \(n = 3\) und das Ereignis \(A\), dass mindestens einmal Zahl auftritt, gilt \(\Omega \setminus A = \{0, 0, 0\}\), d.&#x202f;h. \(P(A) = P(\Omega \setminus (\Omega \setminus A)) = 1 - P(\Omega
+\setminus A) = 1 - \frac {|\Omega \setminus A|}{|\Omega |} = 1 - \frac {1}{8} = \frac {7}{8}\).
+</p>
+</li>
+<li class="list-item-f35"><p><em><span class="dashuline" >Ziegenproblem</span></em>: In einer Spielshow gibt es drei Tore. Hinter genau einem befindet sich ein Auto, hinter den anderen beiden sind Nieten. Nach Auswahl eines Tores durch
+einen Kandidaten o&#x0308;ffnet der Showmaster ein anderes Tor, hinter dem sich eine Niete befindet, und fragt den Kandidaten, ob er das Tor wechseln mo&#x0308;chte. Wie soll der Kandidat sich entscheiden, wenn er das Auto
+gewinnen will?<br />
+Angenommen, der Kandidat wa&#x0308;hlt Tor 1 und es ist unbekannt, hinter welchem das Auto steht. Es liegt Gleichverteilung vor und es gibt drei Mo&#x0308;glichkeiten:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f36"><p>Das Auto ist hinter Tor 1. Der Showmaster o&#x0308;ffnet also Tor 2 oder Tor 3, aber in beiden Fa&#x0308;llen sollte der Kandidat nicht wechseln.
+</p>
+</li>
+<li class="list-item-f37"><p>Das Auto ist hinter Tor 2. Der Showmaster o&#x0308;ffnet also Tor 3, in diesem Fall sollte der Kandidat wechseln.
+</p>
+</li>
+<li class="list-item-f38"><p>Das Auto ist hinter Tor 3. Der Showmaster o&#x0308;ffnet also Tor 2, in diesem Fall sollte der Kandidat ebenfalls wechseln.
+</p>
+</li>
+</ul>
+<p>
+Mit einer Wahrscheinlichkeit von \(p = \frac {2}{3}\) ist es also ratsam, das Tor zu wechseln.
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b><span class="textsc" >Bernoulli</span>-Verteilung</b>:&#x2003; Seien \(\Omega := \{0, 1\}\), \(p \in [0, 1]\), \(p_0 := 1 - p\) und \(p_1 := p\). Dann ist \((p_k)_{k \in \Omega }\) eine
+Za&#x0308;hldichte und heißt <em><span class="dashuline" ><span class="textsc" >Bernoulli</span>-Verteilung</span></em>. Sie definiert ein diskretes W-Maß.
+</p>
+
+<p>
+<em>Beispiel</em>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f39"><p>Wurf einer unfairen Mu&#x0308;nze: \(\Omega = \{0, 1\}\), Wahrscheinlichkeit fu&#x0308;r Zahl (1) sei \(p \in [0, 1]\)
+</p>
+</li>
+<li class="list-item-f40"><p>\(n\)-maliger Wurf einer unfairen Mu&#x0308;nze: \(\Omega = \{0, 1\}^n = \{\omega = (\omega _1, \dotsc , \omega _n) \;|\; \omega _k \in \{0, 1\}\}\).<br />
+Ein Ergebnis \(\omega \) hat die Wahrscheinlichkeit \(p_\omega = \prod _{k=1}^n\) \(\begin {cases}p &amp; \omega _k = 1\\1 - p &amp; \omega _k = 0\end {cases}\), da jeder Wurf unabha&#x0308;ngig von allen
+anderen ist. Definiert man \(k(\omega ) = \sum _{k=1}^n \omega _k\) als die Anzahl von Zahl in \(\omega \), so gilt \(p_\omega = p^{k(\omega )} (1 - p)^{n - k(\omega )}\). Diese Za&#x0308;hldichte definiert ein
+diskretes W-Maß auf \(\Omega \). Wie groß ist die Wahrscheinlichkeit, genau \(k\)-mal Zahl zu werfen? Dazu sei<br />
+\(A_k := \text {„es wird genau } k\text {-mal Zahl geworfen“} = \{\omega \in \Omega \;|\; k(\omega ) = k\}\). Fu&#x0308;r die Wahrscheinlichkeit gilt aufgrund der Diskretheit \(P(A_k) = \sum
+_{p_\omega \in A_k} p_\omega = p^k (1 - p)^{n-k} \cdot |A_k|\).<br />
+Um \(|A_k|\) zu bestimmen, verteilt man in das \(n\)-Tupel \(\omega = (0, \dotsc , 0)\) \(k\) Einsen und za&#x0308;hlt die verschiedenen mo&#x0308;glichen Resultate. Allerdings darf es auf die Reihenfolge nicht
+ankommen (ob man zuerst \(\omega _1 = 1\) und dann \(\omega _2 = 1\) setzt oder andersherum muss egal sein). Daher muss man noch durch die Anzahl der verschiedenen Verteilungen mit gleichen Resultaten dividieren. Dies
+entspricht genau den \(k!\) Permutationen der Einsen, daher ist \(|A_k| = \frac {n (n - 1) \dotsm (n - k + 1)}{k (k - 1) \dotsm 1} = \frac {n!}{(n - k)! k!} = \binom {n}{k}\) ein <em><span
+class="dashuline" >Binomialkoeffizient</span></em>.<br />
+Damit gilt \(P(A_k) = \binom {n}{k} p^k (1 - p)^{n-k}\).
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Binomialverteilung</b>:&#x2003; Seien \(n \in \natural \) und \(p \in [0, 1]\). Auf \(\Omega := \natural _0\) ist \(p_k := \binom {n}{k} p^k (1 - p)^{n-k}\) fu&#x0308;r \(0 \le k \le n\) und \(p_k :=
+0\) sonst mit \(k \in \Omega \) eine Za&#x0308;hldichte. Das zugeho&#x0308;rige W-Maß heißt <em><span class="dashuline" >Binomialverteilung</span></em> \(B(n, p)\). Man definiert \(B(n, p, k) := p_k\).
+</p>
+
+<p>
+<b><span class="textsc" >Poisson</span>-Verteilung</b>:&#x2003; Sei \(\lambda &gt; 0\). Auf \(\Omega := \natural _0\) ist \(p_k := \frac {\lambda ^k}{k!} e^{-\lambda }\) eine Za&#x0308;hldichte und heißt
+<em><span class="dashuline" ><span class="textsc" >Poisson</span>-Verteilung</span></em> zum Parameter \(\lambda \). Man definiert \(\Pois (\lambda , k) := p_k\). Das zugeho&#x0308;rige W-Maß heißt
+<em><span class="dashuline" ><span class="textsc" >Poisson</span>-Maß</span></em> \(\Pois (\lambda )\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" ><span class="textsc" >Poisson</span>-Verteilung als Grenzwert der Binomialverteilung</span>):</span><br />
+Fu&#x0308;r \(\lambda &gt; 0\) und \(k \in \natural _0\) gilt \(\lim _{n \to \infty } B(n, \frac {\lambda }{n}, k) = \Pois (\lambda , k)\).
+</p>
+
+<p>
+<em>Beispiel</em>: Beim Roulette gibt es 37 mo&#x0308;gliche Zahlen, die alle gleich wahrscheinlich sind. Die Gewinnwahrscheinlichkeit pro Spiel betra&#x0308;gt also \(p = \frac {1}{37}\).<br />
+Wie groß ist die Wahrscheinlichkeit fu&#x0308;r genau \(k\) Gewinne bei 37 Spielen?<br />
+Die Binomialverteilung ergibt \(B(37, \frac {1}{37}, k) = \binom {37}{k} p^k (1 - p)^{37-k} = \frac {37!}{(37 - k)! k!} \cdot \frac {36^{37-k}}{37^{37}}\).<br />
+Weil sich das nicht so leicht ausrechnen la&#x0308;sst, nutzt man die ungefa&#x0308;hre Gleichheit zu<br />
+\(\Pois (1, k) = \frac {1}{e \cdot k!}\) aus. Die Abweichung betra&#x0308;gt nur \(0{,}005\).
+</p>
+
+
+
+<h2 id="kombinatorik">Kombinatorik</h2>
+
+</p>
+
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Produktregel</span>):</span> Wenn eine Auswahl von Objekten in \(n\) Schritten getroffen werden soll, dabei die Reihenfolge wichtig ist und fu&#x0308;r die
+\(k\)-te Auswahl \(\alpha _k\) Mo&#x0308;glichkeiten zur Verfu&#x0308;gung stehen, so gibt es fu&#x0308;r die Gesamtauswahl \(\alpha _1 \dotsm \alpha _n\) verschiedene Mo&#x0308;glichkeiten.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Summenregel</span>):</span> Wenn ein einzelnes Objekt in der Weise ausgewa&#x0308;hlt werden soll, dass zuna&#x0308;chst eine Wahl unter \(n\) Sorten
+von Objekten getroffen und dann ein Objekt der gewa&#x0308;hlten Sorte ausgewa&#x0308;hlt wird, so gibt es, falls es jeweils \(\alpha _k\) verschiedene Objekte der \(k\)-ten Sorte gibt, insgesamt \(\alpha _1 + \dotsb +
+\alpha _n\) Mo&#x0308;glichkeiten, ein Objekt auszuwa&#x0308;hlen.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Permutation</b>:&#x2003; Gegeben seien \(n\) Objekte \(a_1, \dotsc , a_n\) (nicht notwendigerweise verschieden).<br />
+Dann heißt ein \(n\)-Tupel \((a_{i_1}, \dotsc , a_{i_n})\) mit \(i_j \in \{1, \dotsc , n\}\) und \(i_j \not = i_k\) fu&#x0308;r \(j \not = k\) <em><span class="dashuline" >Permutation</span></em> der
+gegebenen Objekte.
+</p>
+
+<p>
+<em>Beispiel</em>: Es gibt \(6\) Permutationen der Zahlen \(1, 2, 3\), na&#x0308;mlich \((1, 2, 3)\), \((1, 3, 2)\), \((2, 1, 3)\), \((2, 3, 1)\), \((3, 1, 2)\) und \((3, 2, 1)\).<br />
+Dagegen gibt es nur die \(3\) Permutationen \((1, 2, 2)\), \((2, 1, 2)\) und \((2, 2, 1)\) der Zahlen \(1, 2, 2\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Anzahl an Permutationen</span>):</span>
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f41"><p>Es gibt \(n!\) viele Permutationen von \(n\) verschiedenen Objekten.
+</p>
+</li>
+<li class="list-item-f42"><p>Es gibt \(\frac {n!}{n_1! \dotsm n_p!}\) viele Permutationen von \(n\) Objekten, unter denen es \(p \le n\) verschiedene Objekte gibt, falls das \(i\)-te Objekt insgesamt \(n_i\)-mal unter den gegebenen
+Objekten vorkommt (\(i = 1, \dotsc , p\)).
+</p>
+</li>
+</ul>
+
+<p>
+<em>Beispiel</em>: Die \(32\) Karten eines Skatblatts lassen sich in \(32! \approx 2{,}6 \cdot 10^{35}\) verschiedene Anordnungen bringen. Wenn es nur auf die \(8\) verschiedenen Symbole ankommt, die jeweils in \(4\)
+Farben vorkommen, so gibt es \(\frac {32!}{(4!)^8} \approx 2{,}4 \cdot 10^{24}\) Mo&#x0308;glichkeiten. Bei der gleichen Frage fu&#x0308;r die Farben gibt es \(\frac {32!}{(8!)^4} \approx 1{,}0 \cdot
+10^{16}\) Mo&#x0308;glichkeiten.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Bei wahrscheinlichkeitstheoretischen Fragen im Zusammenhang mit Kombinatorik mu&#x0308;ssen ha&#x0308;ufig aus \(n\) Objekten \(k\)-viele ausgewa&#x0308;hlt werden. Solche Sachverhalte werden
+durch <em><span class="dashuline" >Urnenmodelle</span></em> veranschaulicht. Dabei stellt man sich vor, dass man eine Urne \(S\) gegeben hat, in der sich \(n\) Kugeln befinden. Aus dieser werden \(k\) Kugeln
+zufa&#x0308;llig gezogen (<em><span class="dashuline" >Stichprobe</span></em>).<br />
+Es gibt vier Mo&#x0308;glichkeiten der Ziehung:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f43"><p><em><span class="dashuline" >geordnete Stichprobe ohne Zuru&#x0308;cklegen</span></em>:<br />
+Stichprobe ist \(k\)-Tupel \((\omega _1, \dotsc , \omega _k)\) mit \(\omega _1, \dotsc , \omega _k \in S\) paarweise verschieden
+</p>
+</li>
+<li class="list-item-f44"><p><em><span class="dashuline" >geordnete Stichprobe mit Zuru&#x0308;cklegen</span></em>:<br />
+Stichprobe ist \(k\)-Tupel \((\omega _1, \dotsc , \omega _k)\) mit \(\omega _1, \dotsc , \omega _k \in S\)
+</p>
+</li>
+<li class="list-item-f45"><p><em><span class="dashuline" >ungeordnete Stichprobe ohne Zuru&#x0308;cklegen</span></em>:<br />
+Stichprobe ist \(k\)-elementige Teilmenge \(\{\omega _1, \dotsc , \omega _k\}\) von \(S\)
+</p>
+</li>
+<li class="list-item-f46"><p><em><span class="dashuline" >ungeordnete Stichprobe mit Zuru&#x0308;cklegen</span></em>:<br />
+Stichprobe ist „Sammlung“ \([\omega _1, \dotsc , \omega _k]\) von \(k\) Elementen aus \(S\), die mehrfach vorkommen ko&#x0308;nnen, hinsichtlich ihrer Reihenfolge aber nicht unterschieden werden (<em><span
+class="dashuline" >Multimenge</span></em>)
+</p>
+</li>
+</ul>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Anzahl der Mo&#x0308;glichkeiten beim Urnenmodell</span>):</span> Sei \(S\) eine \(n\)-elementige Menge und<br />
+\(k \in \natural _0\). Dann gilt fu&#x0308;r die Anzahl an Stichproben bei Ziehung von \(k\) Elementen aus \(S\):
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f47"><p><em><span       class="dashuline" >geordnete Stichprobe ohne Zuru&#x0308;cklegen</span></em>: \(\frac {n!}{(n - k)!} = n \cdot (n - 1) \cdot \dotsm \cdot (n - k + 1)\)
+</p>
+</li>
+<li class="list-item-f48"><p><em><span       class="dashuline" >geordnete Stichprobe mit Zuru&#x0308;cklegen</span></em>: \(n^k\)
+</p>
+</li>
+<li class="list-item-f49"><p><em><span       class="dashuline" >ungeordnete Stichprobe ohne Zuru&#x0308;cklegen</span></em>: \(\binom {n}{k} = \frac {n!}{(n - k)! \cdot k!} = \frac {n \cdot (n - 1) \cdot \dotsm \cdot (n -
+k + 1)}{k!}\)
+</p>
+</li>
+<li class="list-item-f50"><p><em><span       class="dashuline" >ungeordnete Stichprobe mit Zuru&#x0308;cklegen</span></em>: \(\binom {n + k - 1}{k}\)
+</p>
+</li>
+</ul>
+
+<p>
+<em>Beispiel</em>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f51"><p>In einem Turnier mit \(20\) Teilnehmern sollen die ersten drei Podiumspla&#x0308;te zufa&#x0308;llig ermittelt werden. Das entspricht einer geordneten Stichprobe ohne Zuru&#x0308;cklegen mit \(n = 20\) und
+\(k = 3\). Es gibt daher \(20 \cdot 19 \cdot 18 = 6840\) Mo&#x0308;glichkeiten.
+</p>
+</li>
+<li class="list-item-f52"><p>Die Verteilung von Geburtstagen von \(k\) Schu&#x0308;lern einer Klasse ist a&#x0308;quivalent zu einer geordneten Stichprobe mit Zuru&#x0308;cklegen mit \(n = 365\). Hier gibt es \(365^k\)
+Mo&#x0308;glichkeiten.
+</p>
+</li>
+<li class="list-item-f53"><p>Beim Lotto (6 aus 49) ist das Ergebnis eine ungeordnete Stichprobe ohne Zuru&#x0308;cklegen mit \(n = 49\) und \(k = 6\). Es gibt \(\binom {49}{6} = 13983816\) Mo&#x0308;glichkeiten.<br />
+Um die Wahrscheinlichkeit fu&#x0308;r genau \(\ell \) Richtige zu berechnen, za&#x0308;hlt man die Anzahl der Mo&#x0308;glichkeiten, aus 49 Zahlen \(\ell \) Richtige und \(6 - \ell \) Falsche zu ziehen. Es gibt genau
+\(\binom {6}{\ell } \binom {43}{6 - \ell }\) solche Mo&#x0308;glichkeiten. Somit erha&#x0308;lt man fu&#x0308;r die gesuchte Wahrscheinlichkeit<br />
+\(p_\ell = \binom {6}{\ell } \binom {43}{6 - \ell } \left /\binom {49}{6}\right .\). Es gilt \(p_0 \approx 43{,}6\%\), \(p_1 \approx 41{,}5\%\), \(p_2 \approx 13{,}2\%\), &#x2026;, \(p_6 \approx
+0{,}0000072\%\).
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>hypergeometrische Verteilung</b>:&#x2003; Seien \(n, k \in \natural \) und \(m \in \natural _0\) mit \(m, k \le n\). Auf \(\Omega := \natural _0\) ist \(p_\ell := \binom {m}{l}\binom {n - m}{k - \ell
+} \left /\binom {n}{k}\right .\) fu&#x0308;r \(\ell \in \{\max \{0, k - (n - m)\}, \dotsc , \min \{m, k\}\}\) und \(p_\ell := 0\) sonst mit \(\ell \in \Omega \) eine Za&#x0308;hldichte. Das
+zugeho&#x0308;rige W-Maß heißt <em><span class="dashuline" >hypergeometrische Verteilung</span></em> \(H(n, m, k)\) mit Parametern \(n\), \(m\) und \(k\). Man definiert \(H(n, m, k, \ell ) := p_\ell \).<br />
+\(H(n, m, k, \ell )\) gibt die Wahrscheinlichkeit an, dass bei einer ungeordneten Ziehung von \(k\) Kugeln ohne Zuru&#x0308;cklegen aus einer Urne mit \(m\) schwarzen Kugeln und \(n - m\) weißen Kugeln genau \(\ell \)
+schwarze Kugeln gezogen werden.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Grenzwert der hypergeometrischen Verteilung</span>):</span><br />
+Sei \(n_0(n) \in \{0, \dotsc , n\}\) eine Folge mit \(\lim _{n \to \infty } \frac {n_0(n)}{n} = p \in (0, 1)\).<br />
+Dann gilt \(\lim _{n \to \infty } H(n, n_0(n), k, l) = \binom {k}{l} p^l (1 - p)^{k-l}\) fu&#x0308;r \(k \in \natural \) und \(l \in \{0, \dotsc , k\}\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Beispiel</em>: Die Wahrscheinlichkeit, dass in einer Klasse mit \(k\) Schu&#x0308;lern mindestens zwei am selben Tag Geburtstag haben, la&#x0308;sst sich mit der Wahrscheinlichkeit des Komplementa&#x0308;rereignisses
+berechnen, d.&#x202f;h. alle Schu&#x0308;ler haben an unterschiedlichen Tagen Geburtstag. Dies entspricht einer geordneten Ziehung von \(k\) Kugeln aus einer Urne mit 365 Kugeln ohne Zuru&#x0308;cklegen.
+Dementsprechend gibt es \(\frac {365!}{(365 - k)!}\) Mo&#x0308;glichkeiten. Insgesamt gibt es \(365^k\) verschiedene Geburtstagsverteilungen, d.&#x202f;h. die gesuchte Wahrscheinlichkeit, dass alle an unterschiedlichen
+Tagen Geburtstag haben, betra&#x0308;gt \(1 - \frac {365!}{(365 - k)! 365^k}\). Schon fu&#x0308;r \(k = 23\) ist das ungefa&#x0308;hr \(50{,}7\%\). Das erscheint intuitiv erstaunlich, was als <em><span
+class="dashuline" >Geburtstagsparadoxon</span></em> bekannt ist.<br />
+Die auftretenden Fakulta&#x0308;ten lassen sich mit der <em><span class="dashuline" ><span class="textsc" >Stirling</span>-Formel</span></em> gut abscha&#x0308;tzen:<br />
+\(n! \approx \sqrt {2\pi n} (n/e)^n e^{n/12}\).
+</p>
+
+
+
+<h2 id="bedingte-wahrscheinlichkeiten">Bedingte Wahrscheinlichkeiten</h2>
+
+</p>
+
+
+<p>
+<em>Beispiel</em>: Einer Gruppe von \(66\) Menschen wird befragt, ob sie Sport machen und welches Geschlecht sie haben. Es stellt sich heraus, dass von den Ma&#x0308;nnern \(12\) Sport machen und \(18\) nicht; bei den
+Frauen machen \(16\) Sport und \(20\) nicht. Nun wird zufa&#x0308;llig eine Person ausgewa&#x0308;hlt. Dann ist die Wahrscheinlichkeit, dass diese Person weiblich ist, gleich \(\frac {38}{66} = \frac {19}{33}\).<br />
+Angenommen, man weiß schon, dass die Person Sport treibt. Wie hoch ist dann die Wahrscheinlichkeit, dass die Person eine Frau ist? Offensichtlich muss man nur noch die Befragten anschauen, die Sport machen. Von diesen sind
+\(12\) ma&#x0308;nnlich und \(16\) weiblich, d.&#x202f;h. die Wahrscheinlichkeit ist jetzt gleich \(\frac {|\text {Frau} \cap \text {Sport}|}{|\text {Sport}|} = \frac {18}{30} = \frac {3}{5}\). Man kann das zu
+\(\frac {|\text {Frau} \cap \text {Sport}|/|\Omega |}{|\text {Sport}|/|\Omega |} = \frac {P(\text {Frau} \cap \text {Sport})}{P(\text {Sport})}\) umschreiben. Genau diese Darstellung verwendet man
+nun zur Verallgemeinerung von so einer bedingten Wahrscheinlichkeit auf allgemeine Wahrscheinlichkeitsra&#x0308;ume.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>bedingte Wahrscheinlichkeit</b>:&#x2003; Seien \((\Omega , \A , P)\) ein W-Raum und \(A, B \in \A \) mit \(P(A) &gt; 0\).<br />
+Dann heißt \(P(B \,|\, A) := \frac {P(B \cap A)}{P(A)}\) die <em><span class="dashuline" >bedingte Wahrscheinlichkeit</span></em> von \(B\) unter dem Vorwissen von \(A\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Aussagen u&#x0308;ber bedingte Wahrscheinlichkeit</span>):</span><br />
+Seien \((\Omega , \A , P)\) ein W-Raum und \(A \in \A \). Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f54"><p>\(P(\cdot \,|\, A)\colon \A \rightarrow [0, 1]\), \(B \mapsto P(B \,|\, A)\) ist ein W-Maß auf \(\Omega \) mit \(P(A \,|\, A) = 1\).
+</p>
+</li>
+<li class="list-item-f55"><p>Fu&#x0308;r \(B \in \A \) mit \(P(B) &gt; 0\) gilt \(P(A \,|\, B) = P(B \,|\, A) \cdot \frac {P(A)}{P(B)}\) (<em><span class="dashuline" >erste Formel von <span class="textsc"
+>Bayes</span></span></em>).
+</p>
+</li>
+<li class="list-item-f56"><p>Fu&#x0308;r \(B_1, \dotsc , B_m \in \A \) mit \(P(B_1 \cap \dotsb \cap B_m) &gt; 0\) gilt<br />
+\(P(B_1 \cap \dotsb \cap B_m) = P(B_1) \cdot P(B_2 \,|\, B_1) \cdot P(B_3 \,|\, (B_1 \cap B_2)) \cdot \dotsm \cdot P(B_m \,|\, (B_1 \cap \dotsb B_{m-1}))\).
+</p>
+</li>
+</ul>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >bedingte Wahrscheinlichkeit mit unendlich vielen Ereignissen</span>):</span><br />
+Seien \((\Omega , \A , P)\) ein W-Raum und \(A_i, B \in \A \) mit \(P(A_i) &gt; 0\) fu&#x0308;r \(i \in I\) mit \(I\) ho&#x0308;chstens abza&#x0308;hlbar. Die \(A_i\) sollen eine Zerlegung von \(\Omega \) bilden
+(d.&#x202f;h. \(A_i\) paarweise disjunkt, \(\bigcup _{i \in I} A_i = \Omega \)). Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f57"><p>\(P(B) = \sum _{i \in I} P(B \,|\, A_i) \cdot P(A_i)\) (<em><span class="dashuline" >Formel von der totalen Wahrscheinlichkeit</span></em>)
+</p>
+</li>
+<li class="list-item-f58"><p>\(P(A_j \,|\, B) = \frac {P(B \,|\, A_j) \cdot P(A_j)} {\sum _{i \in I} P(B \,|\, A_i) \cdot P(A_i)}\) fu&#x0308;r \(j \in I\) (<em><span class="dashuline" >zweite Formel von <span
+class="textsc" >Bayes</span></span></em>)
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Beispiel</em>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f59"><p>Ein Ehepaar hat zwei Kinder. Man weiß, dass mindestens eines davon ma&#x0308;nnlich ist.<br />
+Wie hoch ist die Wahrscheinlichkeit, dass das Ehepaar sogar zwei So&#x0308;hne hat?<br />
+Mit \(A := \text {„mindestens ein Sohn“}\) und \(B := \text {„zwei Söhne“}\) gilt mithilfe der ersten Formel von Bayes \(P(B \,|\, A) = P(A \,|\, B) \cdot \frac {P(B)}{P(A)} = 1
+\cdot \frac {1/4}{3/4} = \frac {1}{3}\), wieder ein unintuitives Ergebnis.
+</p>
+</li>
+<li class="list-item-f60"><p>Ein Test auf eine Krankheit hat eine Zuverla&#x0308;ssigkeit von \(99{,}9\%\). Die Krankheit tritt fu&#x0308;r eine einzelne Person mit einer Wahrscheinlichkeit von \(0{,}01\%\) auf. Nun ist der Test bei einer
+bestimmten Person positiv ausgefallen. Wie hoch ist die Wahrscheinlichkeit, dass die Person tatsa&#x0308;chlich erkrankt ist?<br />
+Mit \(A := \text {„Test positiv“}\) und \(B := \text {„Person krank“}\) ist zuna&#x0308;chst mit der Formel von der totalen Wahrscheinlichkeit \(P(A) = P(A \,|\, B) \cdot P(B) + P(A
+\,|\, B^c) \cdot P(B^c)\)<br />
+\(= (1 - 10^{-3}) \cdot 10^{-4} + 10^{-3} \cdot (1 - 10^{-4}) = \frac {10998}{10^7}\). Damit kann man nun<br />
+\(P(B \,|\, A) = P(A \,|\, B) \cdot \frac {P(B)}{P(A)} = (1 - 10^{-3}) \cdot 10^{-4} \cdot \frac {10^7}{10998} = \frac {999}{10998} \approx 9{,}1\%\) errechnen. Diese geringe Wahrscheinlichkeit
+la&#x0308;sst sich damit erkla&#x0308;ren, dass die Krankheit im Vergleich zur Zuverla&#x0308;ssigkeit des Tests zu selten auftritt. Ohne weitere Tests oder andere Anhaltspunkte la&#x0308;sst sich also nicht pauschal sagen,
+dass die Person krank ist.
+</p>
+</li>
+<li class="list-item-f61"><p>Auch das Ziegenproblem la&#x0308;sst sich bedingten Wahrscheinlichkeiten erkla&#x0308;ren:<br />
+Angenommen, der Kandidat wa&#x0308;hlt Tor 1. Seien \(A_k := \text {„Auto hinter Tor } k \text {“}\) und<br />
+\(B := \text {„Showmaster öffnet Tor } 2 \text {“}\). Wenn der Showmaster nun tatsa&#x0308;chlich Tor 2 o&#x0308;ffnet, wie groß ist die Wahrscheinlichkeit, dass das Auto hinter Tor \(k\) ist?
+Es gilt \(P(A_k) = \frac {1}{3}\) sowie \(P(B \,|\, A_1) = \frac {1}{2}\), \(P(B \,|\, A_2) = 0\) und \(P(B \,|\, A_3) = 1\). Damit gilt mit der zweiten Formel von Bayes \(P(A_k \,|\, B) = \frac {P(A_k) \cdot
+P(B \,|\, A_k)} {\sum _{i=1}^3 P(A_i) \cdot P(B \,|\, A_i)} = \frac {1/3 \cdot P(B \,|\, A_k)}{1/2} = \frac {2}{3} \cdot P(B \,|\, A_k)\), d.&#x202f;h. \(P(A_1 \,|\, B) = \frac {1}{3}\), \(P(A_2
+\,|\, B) = 0\) und \(P(A_3 \,|\, B) = \frac {2}{3}\), der Kandidat sollte also wechseln.
+</p>
+</li>
+</ul>
+
+
+
+<h2 id="unabhaengigkeit-von-ereignissen">Unabhängigkeit von Ereignissen</h2>
+<em>Bemerkung</em>: Man mo&#x0308;chte einen Unabha&#x0308;ngigkeitsbegriff fu&#x0308;r Ereignisse definieren. Fu&#x0308;r zwei unabha&#x0308;ngige Ereignisse \(A\) und \(B\) soll \(P(B) = P(B \,|\, A)\) gelten,
+d.&#x202f;h. die Wahrscheinlichkeit von \(B\) soll sich mit dem Vorwissen von \(A\) nicht a&#x0308;ndern (und umgekehrt). Wenn man die Definition von \(P(B \,|\, A)\) ausschreibt, kommt man auf \(P(A \cap B) = P(A)
+\cdot P(B)\), eine Definition, die auch fu&#x0308;r \(P(A) = 0\) oder \(P(B) = 0\) verwendet werden kann.
+</p>
+
+<p>
+<b>(stochastisch) unabha&#x0308;ngig</b>:&#x2003; Seien \((\Omega , \A , P)\) ein W-Raum und \(A, B \in \A \).<br />
+\(A\) und \(B\) heißen <em><span class="dashuline" >(stochastisch) unabha&#x0308;ngig</span></em>, falls \(P(A \cap B) = P(A) \cdot P(B)\).
+</p>
+
+<p>
+<em>Beispiel</em>: Man wirft einen Wu&#x0308;rfel zweimal unter Beachtung der Reihenfolge, \(\Omega = \{1, \dotsc , 6\}^2\). Seien \(A := \text {„erster Wurf gerade“}\), \(B := \text
+{„zweiter Wurf gerade“}\) und \(C := \text {„Summe gerade“}\).<br />
+Dann ist \(P(A) = P(B) = P(C) = \frac {1}{2}\) und \(P(A \cap B) = P(A \cap C) = P(B \cap C) = \frac {9}{36} = \frac {1}{4}\).<br />
+Somit sind \(A\) und \(B\), \(A\) und \(C\) bzw. \(B\) und \(C\) stochastisch unabha&#x0308;ngig.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Im Folgenden soll ein W-Raum \((\Omega , \A , P)\) konstruiert werden, der die Durchfu&#x0308;hrung von zwei Experimenten, dargestellt von zwei W-Ra&#x0308;umen \((\Omega _1, \A _1, P_1)\)
+und \((\Omega _2, \A _2, P_2)\), hintereinander darstellt. Es soll also \(\Omega = \Omega _1 \times \Omega _2\) sein. Fu&#x0308;r den Ereignisraum \(\A \) soll gelten, dass alle Ereignisse \(A_1 \times A_2\) mit \(A_1
+\in \A _1\) und \(A_2 \in \A _2\) messbar sein sollen. Allerdings reichen diese „Rechtecke“ noch nicht, denn die Vereinigung von zwei disjunkten Rechtecken ist i.&#x202f;A. nicht wieder ein Rechteck. Somit wa&#x0308;hlt
+man \(\A \) als die kleinste \(\sigma \)-Algebra, die alle \(A_1 \times A_2\) entha&#x0308;lt. Fu&#x0308;r das Wahrscheinlichkeitsmaß \(P\) soll \(P(A_1 \times A_2) = P_1(A_1) \times P_2(A_2)\) fu&#x0308;r alle
+\(A_1 \in \A _1\) und \(A_2 \in \A _2\) gelten, weil die beiden Experimente sich nicht beeinflussen sollen.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Existenz und Eindeutigkeit des Produktraums</span>):</span> Seien \((\Omega _1, \A _1, P_1)\) und \((\Omega _2, \A _2, P_2)\) zwei
+W-Ra&#x0308;ume. Dann gibt es eine kleinste \(\sigma \)-Algebra \(\A _1 \otimes \A _2\) auf \(\Omega _1 \times \Omega _2\) mit \(A_1 \times A_2 \in \A _1 \otimes \A _2\) fu&#x0308;r alle \(A_1 \in \A _1\)
+und \(A_2 \in \A _2\) und es gibt genau ein W-Maß \(P_1 \otimes P_2\) auf dem Messraum \((\Omega _1 \times \Omega _2, \A _1 \otimes \A _2)\) mit \((P_1 \otimes P_2)(A_1 \times A_2) = P_1(A_1) \cdot
+P_2(A_2)\) fu&#x0308;r alle \(A_1 \in \A _1\) und \(A_2 \in \A _2\).
+</p>
+
+<p>
+<b>Produktraum</b>:&#x2003; Seien \((\Omega _1, \A _1, P_1)\) und \((\Omega _2, \A _2, P_2)\) zwei W-Ra&#x0308;ume.<br />
+Dann heißt \(P_1 \otimes P_2\) <em><span class="dashuline" >Produktmaß</span></em> und \((\Omega _1 \times \Omega _2, \A _1 \otimes \A _2, P_1 \otimes P_2)\) heißt <em><span class="dashuline"
+>Produktraum</span></em> der beiden W-Ra&#x0308;ume \((\Omega _1, \A _1, P_1)\) und \((\Omega _2, \A _2, P_2)\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>(stochastisch) unabha&#x0308;ngig fu&#x0308;r beliebige Familien</b>:&#x2003; Seien \((\Omega , \A , P)\) ein W-Raum und \(A_i \in \A \) fu&#x0308;r \(i \in I\). Die \((A_i)_{i \in I}\) heißen
+<em><span class="dashuline" >(stochastisch) unabha&#x0308;ngig</span></em>, falls \(P(\bigcap _{i \in K}) = \prod _{i \in K} P(A_i)\) fu&#x0308;r alle \(K \subset I\) endlich.
+</p>
+
+<p>
+<em>Bemerkung</em>:<br />
+\((A_i)_{i \in I}\) sind unabha&#x0308;ngig genau dann, wenn die Komplemente \((\Omega \setminus A_i)_{i \in I}\) unabha&#x0308;ngig sind.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Satz von <span class="textsc" >Borel</span>-<span class="textsc" >Cantelli</span>, 2. Teil</span>):</span><br />
+Seien \((\Omega , \A , P)\) ein W-Raum und \(A_k \in \A \) fu&#x0308;r \(k \in \natural \). Gilt \(\sum _{k=1}^\infty P(A_n) = \infty \) und sind die \((A_k)_{k \in \natural }\) stochastisch
+unabha&#x0308;ngig, dann gilt \(P(\limsup _{k \to \infty } A_k) = 1\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Somit gilt fu&#x0308;r \((A_k)_{k \in \natural }\) stoch. unabha&#x0308;ngig, dass entweder \(P(\limsup _{k \to \infty } A_k) = 0\) oder \(P(\limsup _{k \to \infty } A_k) = 1\)
+(<em><span class="dashuline" >Null-Eins-Gesetz fu&#x0308;r stochastisch unabha&#x0308;ngige Ereignisse</span></em>).
+</p>
+
+
+
+<h2 id="zufallsvariablen-in-diskreten-wahrscheinlichkeitsraeumen">Zufallsvariablen in diskreten Wahrscheinlichkeitsräumen</h2>
+
+</p>
+
+
+<p>
+<b>Zufallsvariable</b>:&#x2003; Seien \((\Omega , \P (\Omega ), P)\) ein diskreter W-Raum und \(E\) eine Menge.<br />
+Dann heißt eine Abbildung \(X\colon \Omega \rightarrow E\) eine <em><span class="dashuline" >Zufallsvariable (ZV) mit Werten in \(E\)</span></em>.
+</p>
+
+<p>
+<em>Bemerkung</em>: Seien \((\Omega , \P (\Omega ), P)\) ein diskreter W-Raum und \(X\colon \Omega \rightarrow E\) eine Zufallsvariable. Dann ist \((p_x)_{x \in \widetilde {E}}\) mit \(p_x := P(\{\omega \in
+\Omega \;|\; X(\omega ) = x\})\) eine Za&#x0308;hldichte auf dem Bild \(\widetilde {E} := X(\Omega )\), da \(p_x \ge 0\) fu&#x0308;r alle \(x \in \widetilde {E}\) und \(\sum _{x \in \widetilde {E}} p_x =
+1\). Somit ist \(\widetilde {P}_X\colon \P (\widetilde {E}) \rightarrow [0, 1]\), \(B \mapsto \sum _{x \in B} p_x\) ein diskretes W-Maß auf \((\widetilde {E}, P(\widetilde {E}))\). Man kann dieses W-Maß
+auf \(E\) fortsetzen, indem man \(p_x := 0\) fu&#x0308;r \(x \in E \setminus \widetilde {E}\) setzt. Dann erha&#x0308;lt man ein W-Maß auf \((E, \P (E))\) durch \(P_X\colon \P (E) \rightarrow [0, 1]\), \(B
+\mapsto \widetilde {P}_X(B \cap \widetilde {E}) = \sum _{x \in B \cap \widetilde {E}} p_x = P(\{\omega \in \Omega \;|\; X(\omega ) \in B\})\). Man beachte, dass die Summe zwar
+u&#x0308;berabza&#x0308;hlbar viele Glieder entha&#x0308;lt, aber nur ho&#x0308;chstens abza&#x0308;hlbar viele davon ko&#x0308;nnen ungleich Null sein.
+</p>
+
+<p>
+<b>Notation</b>:&#x2003; Man definiert fu&#x0308;r \(B \subset E\) und \(x \in B\) die Schreibweisen<br />
+\(\{X \in B\} := \{\omega \in \Omega \;|\; X(\Omega ) \in B\}\) und \(\{X = x\} := \{\omega \in \Omega \;|\; X(\Omega ) = x\}\). Die Mengenklammern ko&#x0308;nnen weggelassen werden. (Fu&#x0308;r
+\(E \subset \real \) kann man auch „\(\le \)“ und „\(&lt;\)“ statt „\(=\)“ verwenden.)
+</p>
+
+<p>
+<b>Verteilung einer Zufallsvariablen</b>:&#x2003; Seien \((\Omega , \P (\Omega ), P)\) ein diskreter W-Raum und<br />
+\(X\colon \Omega \rightarrow E\) eine Zufallsvariable. Dann heißt das W-Maß \(P_X\colon \P (E) \rightarrow [0, 1]\), \(B \mapsto P(X \in B)\) die <em><span class="dashuline" >Verteilung von \(X\) unter
+\(P\)</span></em>.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Beispiel</em>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f62"><p>Wurf von zwei fairen Wu&#x0308;rfeln mit Reihenfolge: \(\Omega = \{1, \dotsc , 6\}^2\) mit<br />
+\(X\colon \Omega \rightarrow \natural \), \((\omega _1, \omega _2) \mapsto \omega _1 + \omega _2\) der Summe der Augenzahlen.<br />
+Um \(P(X = n)\) fu&#x0308;r \(n \in \{2, \dotsc , 12\}\) zu berechnen, ermittelt man wegen<br />
+\(P(X = n) = P(\{\omega \in \Omega \;|\; X(\omega ) = n\}) = \frac {|\{\omega \in \Omega \;|\; X(\omega ) = n\}|}{|\Omega |}\) die Mengen \(\{X = 2\} = \{(1, 1)\}\), \(\{X = 3\} = \{(1, 2), (2,
+1)\}\) usw.<br />
+Somit ist \(P(X = 2) = P_X(\{2\}) = \frac {1}{36}\), \(P(X = 3) = P_X(\{3\}) = \frac {2}{36}\) etc.
+</p>
+</li>
+<li class="list-item-f63"><p>Angenommen, ein Kongress mit 500 Teilnehmern wird ero&#x0308;ffnet. Zur U&#x0308;berraschung der Ga&#x0308;ste sollen diejenigen ein Geschenk bekommen, die am Tag der Ero&#x0308;ffnung Geburtstag
+haben. Wie viele Geschenke sollen gekauft werden, damit zu einer vorgegebenen Wahrscheinlichkeit (z.&#x202f;B. \(99\%\)) die Anzahl der Geschenke fu&#x0308;r die Ga&#x0308;ste ausreichen?<br />
+Sei \(\Omega = \{1, \dotsc , 365\}^{500}\), wobei \(\omega = (\omega _1, \dotsc , \omega _{500}) \in \Omega \) bedeutet, dass Gast Nummer \(k\) an Tag \(\omega _k\) Geburtstag hat (\(k = 1, \dotsc ,
+500\)). Außerdem sei \(h \in \{1, \dotsc , 365\}\) der Tag der Kongressero&#x0308;ffnung. Definiere nun \(X_k\colon \Omega \rightarrow \natural _0\), \(\omega \mapsto 1\) fu&#x0308;r \(\omega _k = h\) und
+\(\omega \mapsto 0\) sonst. Damit ist \(X\colon \Omega \rightarrow \natural _0\) mit \(\omega \mapsto \sum _{k=1}^{500} X_k(\omega )\) die Anzahl der Teilnehmer in \(\omega \), die am Tag \(h\) der
+Kongressero&#x0308;ffnung Geburtstag haben. Fu&#x0308;r die Anzahl der Blumenstra&#x0308;uße \(n \in \natural _0\) ist nun \(P(X \le n)\) gesucht, d.&#x202f;h. die Wahrscheinlichkeit, dass weniger als \(n\) Leute
+am Tag \(h\) Geburtstag haben.<br />
+Es gilt \(P_X(\{n\}) = P(X = n) = \frac {|\{X = n\}|}{|\Omega |} = \frac {1}{365^{500}} \cdot \binom {500}{n} \cdot 364^{500-n}\) (Binomialverteilung: Ziehen von \(500\) Kugeln aus einer Urne mit \(365\)
+Kugeln mit Zuru&#x0308;cklegen ohne Beachtung der Reihenfolge). Damit ist \(P(X \le n) = P_X(\{0, \dotsc , n\}) = \sum _{k=0}^n P_X(\{k\}) = \frac {1}{365^{500}} \cdot \sum _{k=0}^n 364^{500-k} \cdot
+\binom {500}{k}\). Es gilt zum Beispiel \(P(X \le 4) \approx 98{,}7\%\) und \(P(X \le 5) \approx 99{,}7\%\).
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>Verteilungsfunktion</b>:&#x2003; Seien \((\Omega , \P (\Omega ), P)\) ein diskreter W-Raum und<br />
+\(X\colon \Omega \rightarrow E\) eine Zufallsvariable. Dann heißt \(F_X\colon \real \rightarrow [0, 1]\),<br />
+\(F_X(x) := P(X \le x) = P_X((-\infty , x])\) die <em><span class="dashuline" >Verteilungsfunktion von \(X\) unter \(P\)</span></em>.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Eigenschaften der Verteilungsfunktion</span>):</span> Seien \((\Omega , \P (\Omega ), P)\) ein diskreter W-Raum und<br />
+\(X\colon \Omega \rightarrow E\) eine Zufallsvariable. Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f64"><p>  \(F_X\) ist monoton wachsend und rechtsseitig stetig.
+</p>
+</li>
+<li class="list-item-f65"><p>  \(\lim _{x \to -\infty } F_X(x) = 0\), \(\lim _{x \to +\infty } F_X(x) = 1\)
+</p>
+</li>
+<li class="list-item-f66"><p>  Es gilt \(F_X(x) - \lim _{y \to x - 0} F_X(y) = P(X = x)\), d.&#x202f;h. \(P\) kann aus \(P_X\) rekonstruiert werden und \(F_X\) hat ho&#x0308;chstens abza&#x0308;hlbar viele Sprungstellen.
+</p>
+</li>
+<li class="list-item-f67"><p>  \(F_X(x) = \sum _{y \le x} P(X = y)\)
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>geometrische Verteilung</b>:&#x2003; Sei \(p \in (0, 1]\). Auf \(\Omega := \natural \) ist \(p_k := p \cdot (1 - p)^{k-1}\) eine Za&#x0308;hldichte. Das zugeho&#x0308;rige W-Maß heißt <em><span
+class="dashuline" >geometrische Verteilung</span></em> \(G(p)\) mit Parameter \(p\). Man definiert \(G(p, k) := p_k\).<br />
+\(G(p, k)\) gibt die Wahrscheinlichkeit an, dass bei unabha&#x0308;ngigen Wu&#x0308;rfen auf eine Dartscheibe mit \(p = \frac {1}{4}\) im \(k\)-ten Wurf erstmals das rechte obere Viertel trifft.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Zufallsvariable geometrisch verteilt \(\iff \) geda&#x0308;chtnislos</span>):</span><br />
+Eine Zufallsvariable \(X\colon \Omega \rightarrow \natural \) auf einem diskreten W-Raum \((\Omega , \P (\Omega ), P)\) ist geometrisch verteilt genau dann, wenn sie <em><span class="dashuline"
+>geda&#x0308;chtnislos</span></em> ist, d.&#x202f;h. \(P(\{X &gt; n + k\} \;|\; \{X &gt; n\}) = P(X &gt; k)\) fu&#x0308;r alle \(n, k \in \natural \).
+</p>
+
+
+
+<h2 id="erwartungswert-in-diskreten-wahrscheinlichkeitsraeumen">Erwartungswert in diskreten Wahrscheinlichkeitsräumen</h2>
+
+</p>
+
+
+<p>
+<b>Erwartungswert</b>:&#x2003; Seien \((\Omega , \P (\Omega ), P)\) ein diskreter W-Raum und \(X\colon \Omega \rightarrow E\) eine Zufallsvariable mit \(\sum _{\omega \in \Omega } |X(\omega )| \cdot
+P(\{\omega \}) &lt; \infty \) (d.&#x202f;h. <em><span class="dashuline" >\(X\) hat endlichen Erwartungswert</span></em>).<br />
+Dann heißt \(\EW (X) := \sum _{\omega \in \Omega } X(\omega ) \cdot P(\{\omega \})\) <em><span class="dashuline" >Erwartungswert (EW)</span></em> von \(X\).<br />
+(Fu&#x0308;r \(X \ge 0\) sei auch \(\EW (X) = \infty \) zugelassen.)
+</p>
+
+<p>
+<em>Beispiel</em>:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f68"><p>Wurf eines fairen Wu&#x0308;rfels: Sei \(X\colon \Omega \rightarrow \real \) die Zufallsvariable, die jedem \(\omega \in \Omega \) die Augenzahl zuordnet. Dann gilt \(\EW (X) = 1 \cdot \frac {1}{6} +
+\dotsb + 6 \cdot \frac {1}{6} = \frac {7}{2}\).
+</p>
+</li>
+<li class="list-item-f69"><p>Wurf zweier Wu&#x0308;rfel: Sei \(X\colon \Omega \rightarrow \real \), \((\omega _1, \omega _2) \mapsto \omega _1 + \omega _2\) die Zufallsvariable, die jedem Ergebnis die Summe der Augenzahlen
+zuordnet.<br />
+Dann gilt \(\EW (X) = X((1, 1)) \cdot P(\{(1, 1)\}) + X((1, 2)) \cdot P(\{(1, 2)\}) + \dotsb = 7\).<br />
+Dies la&#x0308;sst sich allerdings einfacher bestimmen, wenn man die Summanden mit gleichem Wert der Zufallsvariablen \(X\) zusammenfasst. Mit dieser Methode ist<br />
+\(\EW (X) = \sum _{n=2}^{12} n \cdot P(X = n) = 2 \cdot \frac {1}{36} + 2 \cdot \frac {2}{36} + \dotsb + 12 \cdot \frac {1}{36} = 7\).
+</p>
+</li>
+</ul>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >diskreter Transformationssatz</span>):</span> Seien \((\Omega , \P (\Omega ), P)\) ein diskreter W-Raum und \(X\colon \Omega \rightarrow E\) eine
+Zufallsvariable mit Verteilung \(P_X\). Dann sind a&#x0308;quivalent:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f70"><p>\(X\) hat endlichen Erwartungswert.
+</p>
+</li>
+<li class="list-item-f71"><p>\(\sum _{x \in X(\Omega )} |x| \cdot P_X(\{x\}) &lt; \infty \)
+</p>
+</li>
+</ul>
+
+<p>
+In diesem Fall gilt \(\EW (X) = \sum _{x \in X(\Omega )} x \cdot P_X(\{x\})\).
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Rechenregeln fu&#x0308;r den Erwartungswert</span>):</span><br />
+Seien \(X, Y\colon \Omega \rightarrow \real \) zwei reelle Zufallsvariablen mit endlichen Erwartungswerten. Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f72"><p>\(X + Y\) hat endlichen Erwartungswert \(\EW (X + Y) = \EW (X) + \EW (Y)\).
+</p>
+</li>
+<li class="list-item-f73"><p>Fu&#x0308;r \(\alpha \in \real \) hat \(\alpha \cdot X\) endlichen Erwartungswert \(\EW (\alpha \cdot X) = \alpha \cdot \EW (X)\).
+</p>
+</li>
+<li class="list-item-f74"><p>Fu&#x0308;r \(A \in \P (\Omega )\) hat die <em><span class="dashuline" >Indikatorfunktion</span></em> von \(A\) \(\1_A\colon \Omega \rightarrow \real \) mit \(\omega \mapsto 1\) fu&#x0308;r
+\(\omega \in A\) und \(\omega \mapsto 0\) fu&#x0308;r \(\omega \notin A\) endlichen Erwartungswert \(\EW (\1_A) = P(A)\).
+</p>
+</li>
+<li class="list-item-f75"><p>Aus \(X \le Y\) folgt \(\EW (X) \le \EW (Y)\).
+</p>
+</li>
+<li class="list-item-f76"><p>\(|X|\) hat endlichen Erwartungswert mit \(|\EW (X)| \le \EW (|X|)\).
+</p>
+</li>
+</ul>
+
+<p>
+<em>Beispiel</em>: Wenn man den Erwartungswert etwas umschreibt, la&#x0308;sst er sich oft leichter berechnen.
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f77"><p>Wurf zweier Wu&#x0308;rfel: Hier kann man die Zufallsvariable „Summe der Augenzahlen“ als Summe \(X = X_1 + X_2\) der beiden Zufallsvariablen \(X_k\colon \Omega \rightarrow \real \), \((\omega _1,
+\omega _2) \mapsto \omega _k\) fu&#x0308;r \(k = 1, 2\) schreiben. Somit gilt \(\EW (X) = \EW (X_1) + \EW (X_2) = \frac {7}{2} + \frac {7}{2} = 7\).
+</p>
+</li>
+<li class="list-item-f78"><p>Kongressero&#x0308;ffnung: Es gilt \(X = X_1 + \dotsb + X_{500}\), wobei \(X_k\colon \Omega \rightarrow \{0, 1\}\) mit \(\omega \mapsto 1\) fu&#x0308;r \(\omega _k = h\) und \(\omega \mapsto
+0\) sonst (also \(X_k = \1_{\{\omega _k = h\}}\)). Den Erwartungswert \(\EW (X_k)\) kann man einfach ausrechnen, da \(\EW (X_k) = P(\{\omega _k = h\}) = \frac {1}{365}\). Damit gilt \(\EW (X) = \frac
+{500}{365} = \frac {100}{73}\).
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Erwartungswert von elementaren Verteilungen</span>):</span> Seien \((\Omega , \P (\Omega ), P)\) ein diskreter<br />
+W-Raum und \(X\colon \Omega \rightarrow E\) eine Zufallsvariable mit Verteilung \(P_X\). Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f79"><p>Fu&#x0308;r \(X \equiv c\) hat \(X\) endlichen Erwartungswert \(\EW (X) = c\).
+</p>
+</li>
+<li class="list-item-f80"><p>Ist \(n := |X(\Omega )| &lt; \infty \) und \(P_X\) die Gleichverteilung auf X(\(\Omega )\) (<em><span class="dashuline" >\(X\) ist diskret gleichverteilt</span></em>), dann hat \(X\) endlichen
+Erwartungswert \(\EW (X) = \frac {1}{n} \cdot \sum _{x \in X(\Omega )} x\).
+</p>
+</li>
+<li class="list-item-f81"><p>Ist \(P_X\) die Binomialverteilung auf \(X(\Omega ) = \natural _0\) zu den Parametern \(n\) und \(p\), dann hat \(X\) endlichen Erwartungswert \(\EW (X) = np\).
+</p>
+</li>
+<li class="list-item-f82"><p>Ist \(P_X\) die Poissonverteilung auf \(X(\Omega ) = \natural _0\) zum Parameter \(\lambda &gt; 0\), dann hat \(X\) endlichen Erwartungswert \(\EW (X) = \lambda \).
+</p>
+</li>
+<li class="list-item-f83"><p>Ist \(P_X\) die hypergeometrische Verteilung auf \(X(\Omega ) = \natural _0\) zu den Parametern \(k\), \(n\) und \(s\), dann hat \(X\) endlichen Erwartungswert \(\EW (X) = \frac {ks}{n}\).
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Bemerkung</em>: Im Allgemeinen gilt \(\EW (X \cdot Y) \not = \EW (X) \cdot \EW (Y)\) fu&#x0308;r zwei reelle Zufallsvariablen \(X\) und \(Y\). Es gilt na&#x0308;mlich<br />
+\(\EW (X \cdot Y) = \sum _{\omega \in \Omega } X(\omega ) \cdot Y(\omega ) \cdot P(\{\omega \}) = \sum _{x \in X(\Omega )} \sum _{y \in Y(\Omega )} x \cdot y \cdot P(\{X = x\} \cap \{Y =
+y\})\),<br />
+aber \(\EW (X) \cdot \EW (Y) = \left (\sum _{x \in X(\Omega )} x \cdot P(X = x)\right ) \cdot \left (\sum _{y \in Y(\Omega )} y \cdot P(Y = y)\right )\)<br />
+\(= \sum _{x \in X(\Omega )} \sum _{y \in Y(\Omega )} x \cdot y \cdot P(X = x) \cdot P(Y = y)\).<br />
+Wenn also \(P(\{X = x\} \cap \{Y = y\}) = P(X = x) \cdot P(Y = y)\) fu&#x0308;r alle \(x \in X(\Omega )\) und \(y \in Y(\Omega )\) gelten wu&#x0308;rde, dann wu&#x0308;rde \(\EW (X \cdot Y) = \EW (X)
+\cdot \EW (Y)\) gelten (das ist i.&#x202f;A. aber nicht der Fall). Dies ist a&#x0308;quivalent zur stochastischen Unabha&#x0308;ngigkeit von \(\{X = x\}\) und \(\{Y = y\}\). Man erweitert diese Bedingung noch etwas, um
+zu einer Definition von stochastischer Unabha&#x0308;ngigkeit fu&#x0308;r Zufallsvariablen zu kommen.
+</p>
+
+<p>
+<b>(stochastisch) unabha&#x0308;ngig fu&#x0308;r ZV</b>:&#x2003;<br />
+Seien \((\Omega , \P (\Omega ), P)\) ein diskreter W-Raum und \(X_i\colon \Omega \rightarrow E_i\) Zufallsvariablen fu&#x0308;r \(i \in I\) (\(I \not = \emptyset \)).<br />
+Die \((X_i)_{i \in I}\) heißen <em><span class="dashuline" >(stochastisch) unabha&#x0308;ngig</span></em>, falls fu&#x0308;r jede Wahl von Teilmengen \(B_i \subset E_i\) fu&#x0308;r \(i \in I\) die Familie von
+Ereignissen \((\{X_i \in B_i\})_{i \in I}\) stochastisch unabha&#x0308;ngig ist.
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Produktregel fu&#x0308;r unabha&#x0308;ngige ZV</span>):</span> Seien \(X, Y\colon \Omega \rightarrow \real \) reelle Zufallsvariablen mit
+endlichen Erwartungswerten. Wenn \(X\) und \(Y\) unabha&#x0308;ngig sind, dann hat \(X \cdot Y\) endlichen Erwartungswert \(\EW (X \cdot Y) = \EW (X) \cdot \EW (Y)\).
+</p>
+
+<p>
+<em>Bemerkung</em>: Der Satz la&#x0308;sst sich auf eine beliebige endliche Zahl von Zufallsvariablen verallgemeinern.
+</p>
+
+
+
+<h2 id="varianz-in-diskreten-wahrscheinlichkeitsraeumen">Varianz in diskreten Wahrscheinlichkeitsräumen</h2>
+
+</p>
+
+
+<p>
+<em>Bemerkung</em>: Im Folgenden soll eine Gro&#x0308;ße fu&#x0308;r die „Schwankungsbreite“ einer reellen Zufallsvariable eingefu&#x0308;hrt werden. Dafu&#x0308;r betrachtet man den Fehler \(X - \EW (X)\). Um den
+absoluten Fehler zu beru&#x0308;cksichtigen und die Rechnung nicht unno&#x0308;tig zu verkomplizieren, verwendet man das Quadrat \((X - \EW (X))^2\). Dies ist wieder eine Zufallsvariable, von der man unter gewissen
+Umsta&#x0308;nden den Erwartungswert berechnen kann, d.&#x202f;h. der „durchschnittliche“ Fehler, den die Zufallsvariable \(X\) gegenu&#x0308;ber dem Erwartungswert \(\EW (X)\) macht.
+</p>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<em>Lemma</em> (<span class="textsl" >Varianz</span>): Seien \((\Omega , \P (\Omega ), P)\) ein diskreter W-Raum und \(X\colon \Omega \rightarrow \real \) eine reelle ZV.<br />
+Wenn \(X^2\) einen endlichen Erwartungswert besitzt, dann auch \(X\) und \((X - \EW (X))^2\). In diesem Fall gilt \(\EW ((X - \EW (X))^2) = \EW (X^2) - \EW (X)^2\).
+</p>
+
+<p>
+<b>Varianz</b>:&#x2003; Seien \((\Omega , \P (\Omega ), P)\) ein diskreter W-Raum und \(X\colon \Omega \rightarrow \real \) eine reelle ZV mit \(\EW (X^2) &lt; \infty \). Dann heißt \(\Var (X) := \EW ((X -
+\EW (X))^2) = \EW (X^2) - \EW (X)^2\) die <em><span class="dashuline" >Varianz</span></em> von \(X\).
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Aussagen u&#x0308;ber Varianz</span>):</span> Seien \((\Omega , \P (\Omega ), P)\) ein diskreter W-Raum und<br />
+\(X, X_1, \dotsc , X_n\colon \Omega \rightarrow \real \) reelle ZV mit \(\EW (X^2), \EW (X_i^2) &lt; \infty \) fu&#x0308;r \(i = 1, \dotsc , n\). Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f84"><p>\(\Var (\alpha X) = \alpha ^2 \Var (X)\) und \(\Var (X + c) = \Var (X)\) fu&#x0308;r \(\alpha , c \in \real \)
+</p>
+</li>
+<li class="list-item-f85"><p>\(\Var (X_1 + \dotsb + X_n) = \Var (X_1) + \dotsb + \Var (X_n)\), falls \(X_1, \dotsc , X_n\) unabha&#x0308;ngig sind<br />
+(<em><span class="dashuline" >Satz von <span class="textsc" >Bienaymé</span></span></em>)
+</p>
+</li>
+<li class="list-item-f86"><p>\(\Var (X) = 0 \;\Rightarrow \; P(X = \EW (X)) = 1\)
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<span class="uline" ><em>Satz</em> (<span class="textsl" >Varianz von elementaren Verteilungen</span>):</span> Seien \((\Omega , \P (\Omega ), P)\) ein diskreter W-Raum und \(X\colon \Omega \rightarrow
+\real \) eine reelle Zufallsvariable mit Verteilung \(P_X\). Dann gilt:
+</p>
+<ul style="list-style-type:none">
+
+<li class="list-item-f87"><p>Ist \(X\) konstant, so gilt \(\Var (X) = 0\).
+</p>
+</li>
+<li class="list-item-f88"><p>Ist \(n := |X(\Omega )| &lt; \infty \) und \(P_X\) die Gleichverteilung auf \(X(\Omega )\), dann gilt<br />
+\(\Var (X) = \frac {1}{n} \cdot \sum _{x \in X(\Omega )} (x - \EW (X))^2\).
+</p>
+</li>
+<li class="list-item-f89"><p>Ist \(P_X\) die Binomialverteilung auf \(X(\Omega ) = \natural _0\) zu den Parametern \(n\) und \(p\), dann gilt \(\Var (X) = np(1 - p)\).
+</p>
+</li>
+<li class="list-item-f90"><p>Ist \(P_X\) die Poissonverteilung auf \(X(\Omega ) = \natural _0\) zum Parameter \(\lambda &gt; 0\), dann gilt \(\Var (X) = \lambda \).
+</p>
+</li>
+<li class="list-item-f91"><p>Ist \(P_X\) die hypergeometrische Verteilung auf \(X(\Omega ) = \natural _0\) zu den Parametern \(k\), \(n\) und \(s\), dann gilt \(\Var (X) = \frac {ks}{n} \cdot (1 - \frac {s}{n}) \cdot \frac {n
+- k}{n - 1}\).
+</p>
+</li>
+</ul>
+
+<p>
+<span
+    class="textcolor"
+    style="color:#808080"
+>
+</span>
+</p>
+
+<p>
+<b>standarisiert</b>:&#x2003; Seien \((\Omega , \P (\Omega ), P)\) ein diskreter W-Raum und \(X\colon \Omega \rightarrow \real \) eine reelle Zufallsvariable mit \(\EW (X^2) &lt; \infty \). Dann heißt \(X\)
+standarisiert, falls \(\EW (X) = 0\) und \(\Var (X) = 1\).
+</p>
+
+<p>
+<b>Standarisierung</b>:&#x2003; Sei \(X\colon \Omega \rightarrow \real \) eine reelle Zufallsvariable mit \(\EW (X^2) &lt; \infty \) und \(\Var (X) \not = 0\). Dann ist \(X^\ast := \frac {X - \EW (X)}{\sqrt
+{\Var (X)}}\) eine standarisierte Zufallsvariable, die sog. <em><span class="dashuline" >Standarisierung</span></em> von \(X\).
+</p>
+
+{% endraw %}
+</div>
+{:/nomarkdown}
