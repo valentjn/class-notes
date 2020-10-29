@@ -4,7 +4,7 @@
 
 *Julian Valentin*
 
-[![Travis CI status](https://img.shields.io/travis/valentjn/class-notes/master)](https://travis-ci.org/github/valentjn/class-notes)
+[![Travis CI status](https://img.shields.io/travis/com/valentjn/class-notes/master)](https://travis-ci.com/github/valentjn/class-notes)
 [![Collection PDF download](https://img.shields.io/badge/collection%20PDF-download-blue)][collection]
 [![CC BY-SA 4.0 license](https://img.shields.io/badge/license-CC%20BY--SA%204.0-blue)][license]
 
