@@ -24,8 +24,11 @@ install:
 
 script:
   - "/usr/bin/env python3 $(which scons) -j $(nproc) all-pdf"
+  # generating the HTML pages in parallel results in weird errors
   - "/usr/bin/env python3 $(which scons) all-html"
   - "/usr/bin/env python3 gh-pages/tools/generateWebsite.py"
+  # ideally, this would be in before_deploy, but that stage is triggered before every
+  # deployment provider (see https://github.com/travis-ci/travis-ci/issues/2570)
   - "mkdir deploy"
   - "find build -name '*.pdf' | sort | grep -E 'lectures/([^/]+)/\\1.pdf' | xargs cp -t deploy/"
   - "cp build/collection/collection.pdf deploy/-collection.pdf"
