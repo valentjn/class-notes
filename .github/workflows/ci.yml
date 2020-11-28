@@ -1,0 +1,77 @@
+name: "CI"
+
+on:
+  push:
+    branches:
+      - "develop"
+    tags:
+      - "*"
+  pull_request:
+    branches:
+      - "develop"
+  workflow_dispatch:
+
+env:
+  # list of LaTeX packages (heavily modified output of "\RequirePackage{snapshot}")
+  LATEX_PACKAGES: "bbm bbm-macros booktabs cancel capt-of catchfile charter chemgreek comment courier cleveref cyrillic dashrule environ enumitem epstopdf esint esvect etoc everyhook floatflt fontaxes framed gofonts ifmtarg ifptex import koma-script lastpage listings lwarp ly1 mathdesign mathtools mhchem microtype multirow newfloat newunicodechar printlen silence siunitx snapshot svn-prov translator trimspaces ulem upquote varwidth xcharter xcolor xifthen xkeyval xpatch xstring xypic"
+
+jobs:
+  build:
+    name: "CI - Build Job"
+    runs-on: "ubuntu-20.04"
+
+    steps:
+      - name: "Checkout Repository"
+        uses: "actions/checkout@v2"
+        with:
+          fetch-depth: 2
+
+      - name: "Checkout Head of PR Instead of Merge Commit"
+        if: "${{ github.event_name == 'pull_request' }}"
+        run: "git checkout HEAD^2"
+
+      - name: "Install Ubuntu Packages"
+        run: "sudo apt-get update && sudo apt-get -y install poppler-utils scons"
+
+      - name: "Set Paths for TeX Live Installer"
+        run: "sed -i \"s|GITHUB_TEXDIR|$HOME/local/share/texlive|g\" .github/texlive-profile && sed -i \"s|GITHUB_TEXMFCONFIG|$HOME/.texlive/texmf-config|g\" .github/texlive-profile && sed -i \"s|GITHUB_TEXMFHOME|$HOME/.texmf|g\" .github/texlive-profile && sed -i \"s|GITHUB_TEXMFLOCAL|$HOME/local/share/texlive/texmf-local|g\" .github/texlive-profile && sed -i \"s|GITHUB_TEXMFSYSCONFIG|$HOME/local/share/texlive/texmf-config|g\" .github/texlive-profile && sed -i \"s|GITHUB_TEXMFSYSVAR|$HOME/local/share/texlive/texmf-var|g\" .github/texlive-profile && sed -i \"s|GITHUB_TEXMFVAR|$HOME/.texlive/texmf-var|g\" .github/texlive-profile"
+
+      - name: "Install TeX Live"
+        run: "wget https://ftp.tu-chemnitz.de/pub/tug/historic/systems/texlive/2020/install-tl-unx.tar.gz && tar -xzf install-tl-unx.tar.gz && rm -f install-tl-unx.tar.gz && cd install-tl* && ./install-tl \"--profile=$GITHUB_WORKSPACE/.github/texlive-profile\" && cd .. && rm -rf install-tl* && echo \"PATH=$HOME/local/share/texlive/bin/x86_64-linux:$PATH\" >> $GITHUB_ENV"
+
+      - name: "Install LaTeX Packages"
+        run: "tlmgr install $LATEX_PACKAGES"
+
+      - name: "Build PDFs"
+        run: "python $(which scons) -j $(nproc) all-pdf"
+
+      - name: "Build HTML Pages"
+        # generating the HTML pages in parallel results in weird errors
+        run: "python $(which scons) all-html"
+
+      - name: "Generate Website"
+        run: "python gh-pages/tools/generateWebsite.py"
+
+      - name: "Collect PDFs"
+        if: "${{ startsWith(github.ref, 'refs/tags/') }}"
+        run: "mkdir deploy && find build -name '*.pdf' | sort | grep -E 'lectures/([^/]+)/\\1.pdf' | xargs cp -t deploy/ && cp build/collection/collection.pdf deploy/-collection.pdf"
+
+      - name: "Create GitHub Release"
+        id: "create_github_release"
+        if: "${{ startsWith(github.ref, 'refs/tags/') }}"
+        uses: "actions/create-release@v1"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        with:
+          tag_name: "${{ github.ref }}"
+
+      - name: "Upload PDFs to GitHub Release"
+        if: "${{ startsWith(github.ref, 'refs/tags/') }}"
+        uses: "actions/github-script@v3"
+        with:
+          github-token: "${{secrets.GITHUB_TOKEN}}"
+          script: "const path = require('path'); const fs = require('fs'); const releaseId = '${{ steps.create_github_release.outputs.id }}'; for (let fileName of await fs.readdirSync('deploy')) { if (path.extname(fileName) === '.pdf') { console.log('uploadReleaseAsset', fileName); await github.repos.uploadReleaseAsset({owner: context.repo.owner, repo: context.repo.repo, release_id: releaseId, name: fileName, data: await fs.readFileSync(`./deploy/${fileName}`)}); } }"
+
+      - name: "Push Website to gh-pages"
+        if: "${{ startsWith(github.ref, 'refs/tags/') }}"
+        run: "python gh-pages/tools/pushWebsite.py"

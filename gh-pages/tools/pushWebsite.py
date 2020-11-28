@@ -16,7 +16,6 @@ def main():
   subprocess.run(["git", "add", "-f", "pages/index.md", "pages/table-of-contents.md",
       "pages/lectures"])
   subprocess.run(["git", "commit", "-m", "Update gh-pages"])
-  subprocess.run(["git", "remote", "add", "origin", "git@github.com:valentjn/class-notes.git"])
   subprocess.run(["git", "push", "-f", "origin", "gh-pages"])
 
   shutil.rmtree(".git")

@@ -4,7 +4,7 @@
 
 *Julian Valentin*
 
-[![Travis CI status](https://img.shields.io/travis/com/valentjn/class-notes/master)](https://travis-ci.com/github/valentjn/class-notes)
+[![CI](https://github.com/valentjn/class-notes/workflows/CI/badge.svg?branch=develop)](https://github.com/valentjn/class-notes/actions?query=workflow%3ACI+branch%3Adevelop)
 [![Collection PDF download](https://img.shields.io/badge/collection%20PDF-download-blue)][collection]
 [![CC BY-SA 4.0 license](https://img.shields.io/badge/license-CC%20BY--SA%204.0-blue)][license]
 
@@ -75,7 +75,7 @@ Execute `scons` to build the collection and all lectures. Use `-j 4` to run four
 ### Possible Problems
 
 - Make sure that your system runs SCons with Python 3, otherwise running `scons` might fail (e.g., Ubuntu). On Linux, you can try running `/usr/bin/env python3 $(which scons)` instead.
-- For other potential build problems, a look at `.travis.yml` might help.
+- For other potential build problems, a look at `.github/workflows/ci.yml` might help.
 
 [collection]: https://github.com/valentjn/class-notes/releases/latest/download/-collection.pdf
 [license]: https://creativecommons.org/licenses/by-sa/4.0/
